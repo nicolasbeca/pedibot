@@ -21,7 +21,7 @@ Versión 0.1 — 2026-08-24. Redactado como plan completo del relanzamiento; se 
 
 ## 2. Usuarios y casos de uso
 
-**Usuario principal**: madre/padre/cuidador en España (y luego LatAm) de un niño de 0-14 años, sin formación sanitaria, a menudo con el móvil en una mano y el niño en la otra. Preguntas típicas (de las hojas SEUP "Información para padres" y de la guía "las 50 principales consultas"):
+**Usuario principal**: madre/padre/cuidador **de cualquier país** (decisión operador 2026-08-24: internacional desde el inicio; web en inglés primero, español después, otros idiomas más tarde) de un niño de 0-14 años, sin formación sanitaria, a menudo con el móvil en una mano y el niño en la otra. Preguntas típicas (de las hojas SEUP "Información para padres" y de la guía "las 50 principales consultas"):
 
 1. "Tiene 38,5 y 2 años, ¿le doy algo? ¿cuánto?" → fiebre + calculadora de dosis.
 2. "Se ha dado un golpe en la cabeza y ha vomitado" → traumatismo craneal → red flag → urgencias.
@@ -167,7 +167,7 @@ Carta de presentación. Debe transmitir: seriedad médica, calidez, gratuidad, t
 
 ### 6.2 Identidad visual
 
-Del logo: **verde menta** `#7FD1C4` (burbuja), **verde bosque** `#3D8C6E` (texto "pedibot"), **crema** `#FFF8E7` (cara), blanco. Acentos: **coral suave** `#F28B82` para alertas (nunca rojo agresivo) y **ámbar** `#F4B942` para avisos. Fondo blanco/crema, mucho aire. Tipografía: Inter (texto), JetBrains Mono (cifras, dosis). Ilustraciones planas estilo del logo de familia (`LOGOS/minimalist_family_logo_no_bg.png`). Tono: cercano, sin infantilizar.
+Del logo: **verde menta** `#7FD1C4` (burbuja), **verde bosque** `#3D8C6E` (texto "pedibot"), **crema** `#FFF8E7` (cara), blanco. Acentos: **coral suave** `#F28B82` para alertas (nunca rojo agresivo) y **ámbar** `#F4B942` para avisos. Fondo blanco/crema, mucho aire. Tipografía: Nunito (títulos), Atkinson Hyperlegible (texto), JetBrains Mono (cifras, dosis). Tema día (crema `#FFFBF2`) y tema noche (verde noche `#0F2A22`, "las 3 de la mañana"). Boceto v1 en `web/mockups/home.html` (24-ago). Ilustraciones planas estilo del logo de familia (`LOGOS/minimalist_family_logo_no_bg.png`). Tono: cercano, sin infantilizar.
 
 ### 6.3 Mapa del sitio
 
@@ -182,7 +182,7 @@ Del logo: **verde menta** `#7FD1C4` (burbuja), **verde bosque** `#3D8C6E` (texto
 | `/guias/<tema>` | Artículos temáticos (generados + revisados), con fuentes al pie y enlace al chat precargado |
 | `/fuentes` | Las 50 fuentes, organismo, año, enlace original. Transparencia total |
 | `/metodo` | Cómo responde el bot, qué no hace, evaluación (publicar las métricas del golden set) |
-| `/apoya` | Donación (Ko-fi/Stripe) + explicación honesta del token PDBT + libro de cuentas |
+| `/support` | Explicación honesta del token PDBT + libro de cuentas público (sin donaciones fiat por ahora) |
 | `/privacidad`, `/aviso-legal` | RGPD, no consejo médico |
 
 ### 6.4 SEO
@@ -197,12 +197,20 @@ Del logo: **verde menta** `#7FD1C4` (burbuja), **verde bosque** `#3D8C6E` (texto
 
 Vanilla TS, streaming SSE, estados: escribiendo / banner urgencias / fuentes plegables / 👍👎 / "copiar" / "compartir". Consentimiento inline en el primer mensaje. Funciona en móvil a una mano. Sin login.
 
+### 2.1 Implicaciones de "internacional desde el inicio"
+
+- Las fuentes son ~80 % españolas. No es un problema para la calidad (las hojas SEUP/AEP son excelentes y el LLM traduce), pero la **cita** dirá "SEUP (Spanish Society of Paediatric Emergency Medicine)" y el enlace irá al PDF en español. En `/sources` se explica con claridad.
+- **Números de emergencia por país** (`config/emergency_numbers.yaml`, 18 países + default). El usuario elige país en el widget (o se infiere del navegador); si no se sabe, el banner dice "your local emergency number (112 in the EU, 911 in the Americas)".
+- Calendario vacunal y dosis: las tablas son españolas (Ministerio 2025, AEPap). En inglés se presentan como "Spanish schedule — check your country's"; añadir calendarios de otros países está en `IDEAS.md` (F-04).
+- Idioma de respuesta = idioma del mensaje (detección heurística es/en + instrucción al LLM). Web: Astro con i18n (`/en/`, `/es/`), inglés por defecto.
+- SEO: artículos en inglés primero; la versión española del mismo artículo se genera después con las mismas fuentes.
+
 ## 7. Bloque 4 — Publicación automática (`publish/`)
 
 - **Generador de artículos**: elige un tema de la taxonomía aún sin artículo (o con artículo > 6 meses), recupera los chunks del tema, redacta con DeepSeek bajo un prompt de artículo (estructura fija, fuentes al pie obligatorias, sin cifras de dosis fuera de tabla), pasa el **mismo verificador de citas** del bot, y deja el Markdown en `web/src/content/guias/` con `draft: true`.
-- **Cola de revisión**: aviso por Telegram con el enlace; el operador aprueba (`/aprobar <id>`) o corrige. Opción de auto-publicar tras N artículos sin correcciones (decisión del operador más adelante).
+- **Auto-publicación** (decisión operador 2026-08-24): el artículo se publica si pasa el verificador de citas y el juez de fidelidad; el operador recibe aviso por Telegram con el enlace y puede despublicar con un comando. Sin cola de revisión previa.
 - **Cadencia**: 2 artículos/semana al principio (≈ 40 temas → 5 meses), después mantenimiento.
-- **X (@pedibotai)**: por cada artículo, 1 post + hilo corto de 3 tuits con la idea clave y la fuente. X ya no tiene API gratuita (desde febrero 2026 es pago por uso: 0,015 $/post, 0,20 $/post con enlace) → ≈ 2-6 $/mes. Ver duda D-06.
+- **X (@pedibotai)**: **sin API** (no hay tier gratuito desde feb-2026; el operador descartó pagarla, D-06). El generador escribe el texto del post en `publish/queue/x/` y el operador lo pega a mano cuando quiera. Si X recupera un tier gratuito, se automatiza.
 - **Instagram** (había token en la v1): en `IDEAS.md`, no en v2.0.
 
 ## 8. Bloque 5 — Operación (`ops/`)
@@ -251,19 +259,18 @@ Estimación de esfuerzo (sesiones de trabajo con Claude Code, orientativo): F0 1
 |---|---|
 | VPS Hetzner CX22/CX23 | 4-6 |
 | DeepSeek (1.000 consultas/día × 3 k tokens) | 1-3 |
-| X API (10 posts/semana) | 1-6 |
 | Dominio | ~1 |
 | Backup off-site | 0-3 |
-| **Total** | **≈ 8-19** |
+| **Total** | **≈ 5-13** |
 
-Ingresos previstos (no medidos): afiliación Amazon (v1 tenía 50 productos), donaciones, reserva del token. Objetivo mínimo: cubrir el coste.
+Ingresos previstos (no medidos): reserva del token PDBT (vía principal, decisión operador 2026-08-24 — sin donaciones por ahora, D-11), afiliación Amazon más adelante. Objetivo mínimo: cubrir el coste.
 
 ## 12. Riesgos
 
 | Riesgo | Mitigación |
 |---|---|
 | Respuesta clínicamente peligrosa | Triaje por reglas, fuente o silencio, verificador de citas, golden set, beta cerrada con revisión total, disclaimer |
-| Responsabilidad legal | Aviso legal claro, no diagnóstico, no datos personales, asesoría legal antes de F6 (duda D-10) |
+| Responsabilidad legal | Aviso legal genérico claro, no diagnóstico, no datos personales. Sin asesoría legal por ahora (decisión operador, D-10) |
 | Fuentes desactualizadas | Campo `anio` visible en cada cita; revisión anual del catálogo; alerta si una fuente > 5 años se cita mucho |
 | Copyright de fuentes | Campo `uso`; solo hojas de organismos públicos/sociedades en el índice público; enlaces al PDF original, nunca rehosting de obras editoriales |
 | Coste descontrolado | Tope diario, rate limit, modo degradado sin LLM |

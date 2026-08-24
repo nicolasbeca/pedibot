@@ -1,0 +1,315 @@
+# Triaje por reglas. Corre ANTES del LLM. Fuente canónica: SEUP "¿Debo acudir a urgencias?" +
+# hojas SEUP. Patrones = regex (case-insensitive), en español e inglés.
+# level: emergency (llama al 112 / emergencias YA) | urgent (acude a urgencias hoy) | mental_health
+# Cada regla cita su fuente para que el banner sea verificable.
+
+rules:
+  # ---------------- EMERGENCY ----------------
+  - id: not_responding
+    level: emergency
+    source: seup_acudir_urgencias
+    reason_es: "No responde a estímulos"
+    reason_en: "Not responding to stimuli"
+    patterns:
+      - "no responde"
+      - "no reacciona"
+      - "inconsciente"
+      - "no se despierta"
+      - "unresponsive"
+      - "not responding"
+      - "won'?t wake"
+      - "unconscious"
+      - "passed out"
+  - id: seizure
+    level: emergency
+    source: seup_acudir_urgencias
+    reason_es: "Movimientos anormales / convulsión"
+    reason_en: "Abnormal movements / seizure"
+    patterns:
+      - "convulsi"
+      - "ataque epil"
+      - "se ha puesto rígid"
+      - "seizure"
+      - "convuls"
+      - "fitting"
+      - "jerking"
+  - id: severe_breathing
+    level: emergency
+    source: seup_acudir_urgencias
+    reason_es: "Dificultad para respirar grave (se marcan las costillas, respira muy rápido, pausas en la respiración, color azulado)"
+    reason_en: "Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)"
+    patterns:
+      - "no puede respirar"
+      - "le cuesta (mucho )?respirar"
+      - "dificultad (grave |seria )?para respirar"
+      - "se le marcan las costillas"
+      - "pausas? (en la|de) respiraci"
+      - "deja de respirar"
+      - "(labios|piel) (azul|morad)"
+      - "azulad"
+      - "can'?t breathe"
+      - "struggling to breathe"
+      - "difficulty breathing"
+      - "ribs (are )?(pulling|sucking) in"
+      - "stopp?ed breathing"
+      - "(lips|skin) (are |is )?(blue|purple|grey|gray)"
+      - "turning blue"
+  - id: anaphylaxis
+    level: emergency
+    source: seup_anafilaxia
+    reason_es: "Sospecha de reacción alérgica grave (hinchazón de labios/párpados con dificultad para respirar, vómitos o mareo)"
+    reason_en: "Suspected severe allergic reaction (swollen lips/eyelids with breathing difficulty, vomiting or dizziness)"
+    patterns:
+      - "anafila"
+      - "hinchaz[oó]n de (labios|lengua|p[aá]rpados|cara|garganta)"
+      - "(labios|lengua|cara) hinchad"
+      - "anaphyla"
+      - "(lips|tongue|face|throat) (is |are )?swell"
+      - "swollen (lips|tongue|face|throat)"
+  - id: choking
+    level: emergency
+    source: seup_acudir_urgencias
+    reason_es: "Atragantamiento con dificultad para respirar"
+    reason_en: "Choking with breathing difficulty"
+    patterns:
+      - "atragant"
+      - "se est[aá] ahogando"
+      - "choking"
+      - "something stuck in (his|her|their) throat"
+  - id: mottled_skin
+    level: emergency
+    source: seup_acudir_urgencias
+    reason_es: "Mala coloración (palidez extrema, piel moteada, azul o grisácea)"
+    reason_en: "Poor colour (extreme pallor, mottled, blue or greyish skin)"
+    patterns:
+      - "piel moteada"
+      - "(color|piel) gris"
+      - "mottled"
+      - "greyish skin"
+  - id: head_injury_loss_consciousness
+    level: emergency
+    source: seup_tce
+    reason_es: "Golpe en la cabeza con pérdida de conocimiento"
+    reason_en: "Head injury with loss of consciousness"
+    patterns:
+      - "(golpe|cabeza|ca[ií]d).{0,80}(perdi[oó] el conocimiento|inconsciente|desmay)"
+      - "(head|fell|fall|hit).{0,80}(knocked out|unconscious|passed out|lost consciousness)"
+  - id: severe_bleeding
+    level: emergency
+    source: seup_acudir_urgencias
+    reason_es: "Herida profunda con sangrado abundante que no cede tras 10 minutos de presión"
+    reason_en: "Deep wound with heavy bleeding that does not stop after 10 minutes of pressure"
+    patterns:
+      - "sangra (mucho|sin parar|a chorro)"
+      - "no (para|deja) de sangrar"
+      - "hemorragia"
+      - "bleeding (heavily|a lot|won'?t stop)"
+      - "won'?t stop bleeding"
+  - id: open_fracture
+    level: emergency
+    source: seup_acudir_urgencias
+    reason_es: "Fractura abierta (se ve el hueso)"
+    reason_en: "Open fracture (bone is visible)"
+    patterns:
+      - "se (le )?ve el hueso"
+      - "fractura abierta"
+      - "bone (is )?(sticking|showing|visible)"
+      - "open fracture"
+  - id: petechiae_fever
+    level: emergency
+    source: seup_fiebre
+    reason_es: "Manchas en la piel que no desaparecen al presionar (posible sepsis/meningitis)"
+    reason_en: "Spots on the skin that do not fade when pressed (possible sepsis/meningitis)"
+    patterns:
+      - "manchas.{0,60}no (desaparecen|se van|se quitan|blanquean).{0,30}(presion|apret)"
+      - "petequia"
+      - "(spots|rash).{0,60}(don'?t|do not|doesn'?t) (fade|disappear|go away).{0,30}press"
+      - "petechia"
+      - "glass test"
+
+  # ---------------- URGENT ----------------
+  - id: infant_fever_under_3_months
+    level: urgent
+    source: seup_acudir_urgencias
+    reason_es: "Bebé menor de 3 meses con fiebre (≥38 °C)"
+    reason_en: "Baby under 3 months with fever (≥38 °C / 100.4 °F)"
+    requires: [age_under_3_months, fever]
+  - id: very_high_fever
+    level: urgent
+    source: seup_acudir_urgencias
+    reason_es: "Fiebre de más de 40,5 °C"
+    reason_en: "Fever above 40.5 °C (105 °F)"
+    patterns:
+      - "4[1-2][,\\.]?\\d?\\s*(°|º|grados|ºc|°c)"
+      - "40[,\\.][5-9]\\s*(°|º|grados|ºc|°c)?"
+      - "10[5-7](\\.\\d)?\\s*(°|º)?\\s*f\\b"
+  - id: moderate_breathing
+    level: urgent
+    source: seup_acudir_urgencias
+    reason_es: "Dificultad para respirar: respira rápido, «pitido» al respirar, se marcan las costillas"
+    reason_en: "Breathing difficulty: fast breathing, wheezing, ribs pulling in"
+    patterns:
+      - "respira (r[aá]pido|muy r[aá]pido|agitad)"
+      - "pitos? al respirar"
+      - "pitido"
+      - "silbido"
+      - "breathing fast"
+      - "fast breathing"
+      - "wheez"
+      - "whistling"
+  - id: drowsy_irritable
+    level: urgent
+    source: seup_acudir_urgencias
+    reason_es: "Irritabilidad o somnolencia excesivas"
+    reason_en: "Excessive irritability or drowsiness"
+    patterns:
+      - "(muy|demasiado) (adormilad|dormid|somnolient|decaíd|decaid|apagad)"
+      - "no se le puede despertar"
+      - "cuesta despertarl"
+      - "irritab.{0,20}(mucho|extrem|incontrol)"
+      - "llanto inconsolable"
+      - "(very|extremely|unusually) (drowsy|sleepy|floppy|limp|lethargic)"
+      - "hard to wake"
+      - "inconsolable"
+      - "lethargic"
+  - id: dehydration
+    level: urgent
+    source: seup_gastroenteritis
+    reason_es: "Signos de deshidratación: ojos hundidos, orina poco, boca seca, vómitos persistentes o diarrea abundante >24 h"
+    reason_en: "Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h"
+    patterns:
+      - "ojos hundidos"
+      - "no (hace|ha hecho) pis"
+      - "orina (muy )?poco"
+      - "pañal seco"
+      - "sin l[aá]grimas"
+      - "deshidrat"
+      - "sunken eyes"
+      - "(no|hasn'?t|not) (peed|urinated|wet)"
+      - "dry (nappy|diaper)"
+      - "no tears"
+      - "dehydrat"
+  - id: vomiting_headache
+    level: urgent
+    source: seup_acudir_urgencias
+    reason_es: "Vómitos repetidos con dolor de cabeza fuerte"
+    reason_en: "Repeated vomiting with severe headache"
+    patterns:
+      - "v[oó]mit.{0,80}dolor de cabeza"
+      - "dolor de cabeza.{0,80}v[oó]mit"
+      - "vomit.{0,80}headache"
+      - "headache.{0,80}vomit"
+  - id: vomiting_after_head_injury
+    level: urgent
+    source: seup_tce
+    reason_es: "Vómitos tras un golpe en la cabeza"
+    reason_en: "Vomiting after a head injury"
+    patterns:
+      - "(golpe|cabeza|ca[ií]d).{0,100}v[oó]mit"
+      - "v[oó]mit.{0,100}(golpe en la cabeza|cabeza)"
+      - "(head|fell|fall|hit).{0,100}vomit"
+      - "vomit.{0,100}(head|fell|fall)"
+  - id: foreign_body_ingestion
+    level: urgent
+    source: seup_acudir_urgencias
+    reason_es: "Ingesta de un objeto (sobre todo pilas o imanes)"
+    reason_en: "Swallowed an object (especially batteries or magnets)"
+    patterns:
+      - "(se ha tragado|ha tragado|trag[oó]).{0,40}(pila|im[aá]n|moneda|objeto|bater[ií]a)"
+      - "(pila|im[aá]n|moneda).{0,40}(trag|comid)"
+      - "swallowed.{0,40}(battery|magnet|coin|object|toy)"
+      - "(battery|magnet|coin).{0,40}swallow"
+  - id: poisoning
+    level: urgent
+    source: seup_intoxicaciones
+    reason_es: "Ingesta de productos tóxicos o sobredosis de medicamentos"
+    reason_en: "Ingestion of toxic products or medication overdose"
+    patterns:
+      - "(ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado).{0,60}(lej[ií]a|detergente|amoniaco|producto de limpieza|pastillas|medicament|jarabe entero|alcohol|colonia|gasolina|pila|planta)"
+      - "intoxica"
+      - "sobredosis"
+      - "(drank|swallowed|took|ate).{0,60}(bleach|detergent|cleaning|pills|medication|medicine|tablets|alcohol|perfume|petrol|gasoline|plant|dishwasher)"
+      - "poison"
+      - "overdose"
+  - id: severe_abdominal_pain
+    level: urgent
+    source: seup_dolor_abdominal
+    reason_es: "Dolor de barriga fuerte, continuo, que empeora"
+    reason_en: "Severe, continuous, worsening abdominal pain"
+    patterns:
+      - "dolor (de barriga|abdominal|de tripa).{0,60}(muy fuerte|insoportable|no para|empeora|continuo)"
+      - "(muy fuerte|insoportable).{0,30}(barriga|tripa|abdom)"
+      - "(severe|terrible|unbearable|worsening).{0,30}(stomach|belly|abdominal|tummy)"
+      - "(stomach|belly|tummy).{0,40}(severe|unbearable|getting worse)"
+  - id: deformity_fracture
+    level: urgent
+    source: seup_acudir_urgencias
+    reason_es: "Traumatismo con deformidad aparente / herida que precisa sutura"
+    reason_en: "Injury with visible deformity / wound that needs stitches"
+    patterns:
+      - "deform"
+      - "(brazo|pierna|mu[ñn]eca|dedo|tobillo).{0,40}(torcid|raro|doblad)"
+      - "necesita puntos"
+      - "deform"
+      - "(arm|leg|wrist|finger|ankle).{0,40}(bent|crooked|deformed)"
+      - "needs stitches"
+  - id: newborn_refusing_feeds
+    level: urgent
+    source: seup_acudir_urgencias
+    reason_es: "Bebé menor de 1 mes que rechaza las tomas"
+    reason_en: "Baby under 1 month refusing feeds"
+    patterns:
+      - "(reci[eé]n nacido|\\b[1-4] semanas|\\b\\d{1,2} d[ií]as).{0,80}(no (quiere )?(come|mama|toma)|rechaza)"
+      - "(newborn|\\b[1-4] weeks? old|\\b\\d{1,2} days? old).{0,80}(refus|won'?t (feed|eat|nurse)|not feeding)"
+  - id: burn
+    level: urgent
+    source: ninojesus_primeros_auxilios
+    reason_es: "Quemadura (especialmente en cara, manos, genitales o extensa)"
+    reason_en: "Burn (especially face, hands, genitals or large area)"
+    patterns:
+      - "quemad"
+      - "escaldad"
+      - "burn(ed|t)? (his|her|their|him|self)"
+      - "scald"
+      - "\\bburn\\b"
+
+  # ---------------- MENTAL HEALTH (fixed protocol) ----------------
+  - id: suicidal_ideation
+    level: mental_health
+    source: seup_conducta_suicida
+    reason_es: "Expresa pensamientos suicidas"
+    reason_en: "Expressing suicidal thoughts"
+    patterns:
+      - "suicid"
+      - "quitarse la vida"
+      - "no quiere vivir"
+      - "quiere morir"
+      - "matarse"
+      - "kill (him|her|them)self"
+      - "wants? to die"
+      - "doesn'?t want to live"
+      - "end (his|her|their) life"
+  - id: self_harm
+    level: mental_health
+    source: seup_autolesion
+    reason_es: "Conducta autolesiva"
+    reason_en: "Self-harm"
+    patterns:
+      - "se (hace|ha hecho) cortes"
+      - "se corta"
+      - "autoles"
+      - "self[- ]harm"
+      - "cutting (him|her|them)self"
+      - "cuts? (him|her|them)self"
+
+# Extractores de contexto usados por reglas con `requires`
+context:
+  fever:
+    - "fiebre"
+    - "febr"
+    - "\\b3[89][,\\.]?\\d?\\s*(°|º|grados)"
+    - "\\b4[0-2][,\\.]?\\d?\\s*(°|º|grados)"
+    - "fever"
+    - "temperature of"
+    - "\\b(100\\.[4-9]|10[1-6](\\.\\d)?)\\s*(°|º)?\\s*f\\b"
+  # age_under_3_months is computed by the age parser (bot/triage.py), not by regex

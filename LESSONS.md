@@ -21,3 +21,9 @@
 ## Propias de la v2
 
 (Se añaden a partir de F1.)
+
+- **L11 — Las guías en formato tabla se trocean en confeti si se confía en la detección de títulos.** La guía de dosificación AEPap produjo 693 chunks, 422 de ellos de < 15 palabras (cada nombre de fármaco en mayúsculas era "título"). → `merge_small` fusiona los trozos < 40 palabras en el vecino conservando el título dentro del texto ("PARACETAMOL: …"). De 6.981 chunks a 4.792, y solo 10 pequeños.
+- **L12 — Nombres de fichero con ñ vienen descompuestos (n + U+0303) desde Windows.** `14_Estreñimiento.pdf` no casaba con el catálogo y pdftotext (Git Bash) devolvía 0 palabras, lo que se interpretó como "escaneado". → normalizar NFC en ambos lados; era un PDF con texto.
+- **L13 — YAML convierte `112` o `911` en enteros.** Un `re.escape(112)` revienta con un TypeError críptico dentro de `re`. → `str(k)` siempre en listas de palabras clave; o entrecomillar en el YAML.
+- **L14 — `\b` dentro de un heredoc de Python no crudo es un BACKSPACE.** Al generar código con `python - <<'EOF'` y cadenas normales, `"\b"` se escribe como `\b` (0x08) invisible en el fichero y la regex deja de casar sin error. → escribir regex siempre con `r"..."` en el fichero final y comprobar `'\x08' not in text` tras generar código.
+- **L15 — BM25 no encuentra tablas.** "how much paracetamol for 12 kg" no sube la tabla pediátrica de la AEPap aunque exista. → las preguntas de dosis con peso van por un enrutador determinista a la calculadora (sin LLM); los embeddings quedan para F2.

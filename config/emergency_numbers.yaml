@@ -1,0 +1,23 @@
+# Emergency and helpline numbers by country (ISO 3166-1 alpha-2). "default" when unknown.
+# poison: poison control centre. mental: crisis / suicide prevention line.
+default:
+  emergency: "your local emergency number (112 in the EU, 911 in the Americas)"
+  poison: null
+  mental: null
+ES: {emergency: "112", poison: "91 562 04 20 (Instituto Nacional de Toxicología)", mental: "024 (línea de atención a la conducta suicida)"}
+PT: {emergency: "112", poison: "800 250 250 (CIAV)", mental: "SNS 24 — 808 24 24 24"}
+FR: {emergency: "15 / 112", poison: "Centre antipoison (regional)", mental: "3114"}
+IT: {emergency: "112", poison: "Centro Antiveleni (regional)", mental: "Telefono Amico 02 2327 2327"}
+DE: {emergency: "112", poison: "Giftnotruf (regional)", mental: "0800 111 0 111"}
+GB: {emergency: "999 / 112", poison: "NHS 111", mental: "Samaritans 116 123"}
+IE: {emergency: "112 / 999", poison: "01 809 2166 (NPIC)", mental: "Samaritans 116 123"}
+US: {emergency: "911", poison: "1-800-222-1222 (Poison Control)", mental: "988"}
+CA: {emergency: "911", poison: "1-844-764-7669", mental: "988"}
+MX: {emergency: "911", poison: "800 00 47 800 (CIAT)", mental: "800 911 2000 (Línea de la Vida)"}
+AR: {emergency: "911 / 107 (SAME)", poison: "0800 333 0160", mental: "135"}
+CL: {emergency: "131 (SAMU)", poison: "+56 2 2635 3800 (CITUC)", mental: "*4141"}
+CO: {emergency: "123", poison: "01 8000 916012", mental: "106"}
+PE: {emergency: "116 / 106 (SAMU)", poison: null, mental: "113 opción 5"}
+BR: {emergency: "192 (SAMU) / 193", poison: "0800 722 6001", mental: "188 (CVV)"}
+AU: {emergency: "000", poison: "13 11 26", mental: "Lifeline 13 11 14"}
+NZ: {emergency: "111", poison: "0800 764 766", mental: "1737"}

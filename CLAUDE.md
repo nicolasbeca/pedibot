@@ -4,7 +4,7 @@
 
 ## Qué es PediBot
 
-Asistente pediátrico para madres, padres y cuidadores, en español, que responde **solo a partir de fuentes médicas verificadas** (guías de la AEP, SEUP, AEPap, OMS, AAP, Ministerio de Sanidad, Junta de Andalucía…) y **cita la fuente concreta** en cada respuesta. No sustituye al pediatra: es el primer punto de referencia para reducir la incertidumbre a las 3 de la mañana y decir con claridad cuándo hay que ir a urgencias.
+Asistente pediátrico para madres, padres y cuidadores, **internacional (interfaz y respuestas en el idioma del usuario; web en inglés primero, español después)**, que responde **solo a partir de fuentes médicas verificadas** (guías de la AEP, SEUP, AEPap, OMS, AAP, Ministerio de Sanidad, Junta de Andalucía…) y **cita la fuente concreta** en cada respuesta. No sustituye al pediatra: es el primer punto de referencia para reducir la incertidumbre a las 3 de la mañana y decir con claridad cuándo hay que ir a urgencias.
 
 Es un **relanzamiento**. La v1 (2025) corría en n8n + OpenAI + Wix Premium: no llegó a funcionar bien y era cara de mantener. La v2 se construye desde cero, con código propio, en un VPS de Hetzner (mismo patrón que MultiBot), con motor LLM barato (DeepSeek) y una web estática muy profesional que es la carta de presentación.
 
@@ -20,10 +20,10 @@ Activos que se heredan: las **fuentes PDF** (`FUENTES/`, 50 documentos, catálog
 
 Cada bloque es independiente, con su propio código, tests y unit de systemd. Uno roto no tumba a los demás.
 
-1. **Ingesta (`ingest/`)** — el "pequeño bot que trocea": PDF → texto (OCR si hace falta) → limpieza → troceado por secciones → clasificación (tema, edad, tipo de documento, organismo, nivel de evidencia) → export a JSONL + índice SQLite (FTS5 léxico + vectores). Determinista, reproducible, se ejecuta en local y en el VPS con el mismo comando. Ver PRD §4.
-2. **Motor de respuesta (`bot/`)** — API FastAPI. Pipeline: triaje de gravedad (reglas + LLM) → recuperación híbrida (BM25 + embeddings, RRF) → redacción con DeepSeek forzada a citar → verificación de citas (cada cita apunta a un chunk real) → respuesta con banner de urgencias si aplica. Ver PRD §5.
+1. **Ingesta (`src/pedibot/ingest/`)** — el "pequeño bot que trocea": PDF → texto (OCR si hace falta) → limpieza → troceado por secciones → clasificación (tema, edad, tipo de documento, organismo, nivel de evidencia) → export a JSONL + índice SQLite (FTS5 léxico + vectores). Determinista, reproducible, se ejecuta en local y en el VPS con el mismo comando. Ver PRD §4.
+2. **Motor de respuesta (`src/pedibot/bot/` + `src/pedibot/index/`)** — API FastAPI. Pipeline: triaje de gravedad (reglas + LLM) → recuperación híbrida (BM25 + embeddings, RRF) → redacción con DeepSeek forzada a citar → verificación de citas (cada cita apunta a un chunk real) → respuesta con banner de urgencias si aplica. Ver PRD §5.
 3. **Web (`web/`)** — sitio estático (Astro) muy cuidado, SEO fuerte, con el widget de chat embebido, biblioteca de artículos temáticos con fuentes, páginas de herramientas (calculadora de dosis, percentiles, calendario vacunal) y página "Apoya el proyecto" (donación + token). Ver PRD §6.
-4. **Publicación (`publish/`)** — generador de artículos cortos a partir de las fuentes (revisión humana opcional por cola), rebuild del sitio, sitemap, y post en X. Ver PRD §7.
+4. **Publicación (`src/pedibot/publish/`)** — generador de artículos cortos a partir de las fuentes, **auto-publicados** (decisión operador 2026-08-24), rebuild del sitio, sitemap. **X queda fuera** (no hay API gratuita desde feb-2026 y el operador descartó pagarla): el generador deja el texto del post listo para copiar a mano. Ver PRD §7.
 5. **Operación (`ops/`)** — despliegue en Hetzner, Caddy, systemd, backups, watchdog, métricas de uso y coste por consulta, alertas por Telegram (reutilizamos el patrón del outbox de MultiBot). Ver PRD §8.
 
 ## Reglas clínicas innegociables
@@ -54,19 +54,20 @@ Esto no son recomendaciones. Son gates que el código y los tests hacen cumplir.
 - **Índice**: SQLite con **FTS5** (búsqueda léxica) + **`sqlite-vec`** (vectores). Embeddings locales con `multilingual-e5-small` vía `sentence-transformers` (cabe en el CX22; sin coste por consulta). Un solo fichero `index/pedibot.db`. Sin Pinecone/Qdrant (los de la v1 se abandonan).
 - **LLM**: DeepSeek (API compatible OpenAI, cliente `openai`). Streaming SSE al widget.
 - **API**: FastAPI + uvicorn en `127.0.0.1:8601`, detrás de Caddy. Rate limit por IP (`slowapi`), CORS solo al dominio propio.
-- **Web**: **Astro** (estático, content collections para artículos, sitemap, RSS, JSON-LD). Sin React salvo el widget del chat (vanilla JS/TS). Fuentes: Inter + JetBrains Mono. Paleta del logo (ver PRD §6.2).
-- **Publicación**: script Python que genera artículos (LLM + fuentes) en Markdown con frontmatter, `astro build`, y post a X con `tweepy` (X API de pago por uso: 0,015 $/post sin enlace, 0,20 $/post con enlace).
+- **Web**: **Astro** (estático, content collections para artículos, sitemap, RSS, JSON-LD). Sin React salvo el widget del chat (vanilla JS/TS). Fuentes: Nunito (títulos, redondeada como el wordmark) + Atkinson Hyperlegible (cuerpo, diseñada para legibilidad) + JetBrains Mono (dosis/cifras). Paleta del logo (ver PRD §6.2). Boceto v1: `web/mockups/home.html`.
+- **Publicación**: script Python que genera artículos (LLM + fuentes) en Markdown con frontmatter y `astro build`. Sin API de X (descartada 2026-08-24): el post se genera como texto y se publica a mano.
 - **Persistencia operativa**: SQLite `data/pedibot_ops.db` (conversaciones anonimizadas, feedback 👍/👎, costes, outbox Telegram).
 - **Logging**: `loguru` JSON. Toda respuesta es auditable a posteriori (qué chunks, qué prompt, qué modelo, qué coste).
 - **Test / dev**: `pytest` + `pytest-asyncio`, `hypothesis` en calculadoras, `ruff` (line-length 100), `mypy`. Golden set en `eval/`.
-- **Hosting**: VPS Hetzner nuevo (CX22/CX23, Ubuntu 24.04), Caddy con TLS automático, systemd units, backups diarios. Coste objetivo total: **< 15 €/mes** (VPS ≈ 4-5 €, DeepSeek ≈ 1-3 €, X ≈ 1-6 €, dominio).
+- **Hosting**: VPS Hetzner nuevo (CX22/CX23, Ubuntu 24.04), Caddy con TLS automático, systemd units, backups diarios. Hasta F4 **todo en local**. Coste objetivo total: **< 12 €/mes** (VPS ≈ 4-5 €, DeepSeek ≈ 1-3 €, dominio nuevo).
 
 ## Comandos
 
 ```bash
-make install     # uv sync
-make ingest      # troceado + índice completo (idempotente, por hash de fichero)
+make install     # uv sync --group dev
+make ingest      # troceado + índice completo (idempotente por hash; --force para rehacer)
 make eval        # golden set contra el motor actual → informe en eval/reports/
+# CLI: uv run pedibot {ingest|search|triage|dose|ask} — `ask --fake` ejercita todo sin clave de API
 make test        # uv run pytest tests/ -v
 make lint        # uv run ruff check src/ tests/ scripts/
 make typecheck   # uv run mypy src/
@@ -81,6 +82,7 @@ make deploy      # rsync + restart units en el VPS
 - **Secretos**: nunca en el repo. `.env` (en `.gitignore`) cargado con `pydantic-settings`. `.env.example` documenta cada variable. ⚠️ El fichero `pass.txt` heredado de la v1 contiene credenciales en claro: está en `.gitignore`, hay que **rotar** todas esas claves (ver STATE.md, deuda D1) y borrarlo.
 - **Las fuentes (`FUENTES/`) no se commitean** (122 MB, algunos documentos con copyright editorial). Se commitea el catálogo `FUENTES/CATALOGO.md` y los chunks derivados solo de fuentes con licencia de redistribución permitida. Copia de seguridad de las fuentes fuera del repo.
 - **Licencias de fuentes**: cada documento tiene en el catálogo un campo `uso` ∈ {`publico`, `citar_solo`, `excluido`}. `excluido` (p. ej. el tratado de dermatología de Elsevier) no entra en el índice del bot público.
+- **Idioma**: el código, los prompts y los nombres de campos van en inglés; los docs del proyecto en español. Las fuentes son mayoritariamente en español: la recuperación traduce la pregunta (sinónimos offline + LLM) y el LLM responde en el idioma del usuario. Los números de emergencia salen de `config/emergency_numbers.yaml` por país (112/911/999…), nunca hardcodeados en el prompt.
 - **Un chunk = una unidad citable**: id estable (`<doc_id>#<seccion>#<n>`), título de sección, página(s), organismo, año, tema, franja de edad. Sin eso no hay cita verificable.
 - **Commits pequeños y revisables**. Mensaje en presente; español para docs/infra, inglés para código.
 - **Antes de implementar algo nuevo: leer `LESSONS.md`.**
@@ -89,7 +91,7 @@ make deploy      # rsync + restart units en el VPS
 
 ## Reglas de trabajo conmigo (perfil del usuario)
 
-- Soy arquitecto, no programador, y padre reciente. **Español llano**; cada término técnico explicado en una línea.
+- Soy arquitecto, no programador, y padre reciente. **Español llano** conmigo (el producto es en inglés/internacional); cada término técnico explicado en una línea.
 - **Pregunta antes de asumir** en decisiones de producto o clínicas. Las dudas se acumulan y se envían al final de cada bloque de trabajo.
 - Trabajo en Windows con Chrome. Comandos Bash en sintaxis Unix.
 - **Las ideas nuevas van a `IDEAS.md`**, no se implementan sobre la marcha. Las decidimos juntos.

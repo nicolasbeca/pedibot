@@ -66,3 +66,13 @@
 | O-02 | Juez LLM nocturno sobre las conversaciones del día → informe de fidelidad | nueva |
 | O-03 | Panel `/admin` con las métricas del PRD §8 | aceptada → F4 |
 | O-04 | Reutilizar el bot de Telegram de MultiBot como código base para las alertas | aceptada → F4 |
+
+## Añadidas el 24-ago (noche)
+
+| Id | Idea | Estado |
+|---|---|---|
+| I-16 | Selector de país en el widget (banderita) para el número de emergencias; por defecto el del navegador (`navigator.language`). | aceptada → F3 |
+| I-17 | Expansión de sinónimos es→en para las 9 guías en inglés (hoy solo en→es). | nueva |
+| I-18 | "Modo noche" como tema por defecto entre 22:00 y 07:00 hora local (la web como linterna). | nueva |
+| I-19 | Router de intención: dosis (hecho), vacunas por edad (calendario tabulado, sin LLM), "¿urgencias?" (checklist), resto → RAG. | aceptada → F2 |
+| I-20 | Reintroducir X solo si vuelve un tier gratuito; mientras, cola de posts en texto para pegar a mano. | aceptada |

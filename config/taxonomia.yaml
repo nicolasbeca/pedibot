@@ -1,0 +1,35 @@
+# Taxonomía cerrada de temas (es + en). Palabras clave = prefijos (regex \b(kw)\w*).
+topics:
+  fiebre: [fiebre, febril, antitérmico, antitermico, temperatura, fever, febrile]
+  respiratorio: [tos, bronquiolitis, laringitis, crup, asma, neumonía, neumonia, catarro, mocos, sibilancia, pitos, respirar, respiración, disnea, cough, wheez, breath, pneumonia, croup, asthma, cold]
+  digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat, vomit, diarrh, constipat, stomach, dehydrat]
+  neurologia: [convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding]
+  accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke]
+  intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic]
+  alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
+  piel: [urticaria, exantema, sarpullido, eccema, dermatitis, ronchas, habones, manchas, rash, eczema, skin]
+  orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear, throat, tonsil]
+  salud_mental: [ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]
+  alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids]
+  recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice]
+  lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant, crying, reflux]
+  vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz]
+  desarrollo: [desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen]
+  medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
+  urgencias: [urgencias, 112, emergencia, sedoanalgesia, emergency, "911", "999"]
+  crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]
+  general: []
+
+subtopics:
+  signos_alarma: [alarma, urgencias, 112, inmediat, gravedad, warning, emergency, immediately]
+  tratamiento_casa: [en casa, tratamiento, qué hacer, que hacer, cuidados, at home, treatment, what to do]
+  prevencion: [prevención, prevencion, evitar, prevent, avoid]
+  cuando_consultar: [cuándo consultar, cuando consultar, cuándo acudir, cuando acudir, pediatra, when to]
+  dosis: [mg/kg, dosis, dose, cada 6, cada 8, every 6, every 8]
+  contagio: [contagio, contagios, guardería, guarderia, colegio, contagious, daycare, school]
+
+age_groups:
+  lactante: [lactante, bebé, bebe, recién nacido, recien nacido, meses de edad, menor de 2 años, menores de 2 años, infant, baby, newborn, months old, under 2]
+  preescolar: [preescolar, 2 a 5 años, guardería, guarderia, preschool, toddler]
+  escolar: [escolar, colegio, 6 a 12 años, school-age, school age]
+  adolescente: [adolescente, adolescencia, adolescent, teen]

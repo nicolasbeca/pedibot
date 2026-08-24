@@ -1,6 +1,6 @@
 # Catálogo de fuentes — PediBot
 
-Inventario de los 50 PDF de `FUENTES/` (24-ago-2026). Los PDF **no se commitean**; este catálogo sí. Columna `uso`: `publico` = hoja de organismo público / sociedad científica destinada a padres, se indexa y se cita con enlace al original; `citar_solo` = obra de referencia clínica, se indexa para respaldo y se cita, pero no se reproduce en artículos; `excluido` = no entra en el índice; `?` = decidir (duda D-03).
+Inventario de los 49 PDF de `FUENTES/` (los 2 PDF del dossier de inversores están en la raíz y no son fuentes) (24-ago-2026). Los PDF **no se commitean**; este catálogo sí. Columna `uso`: `publico` = hoja de organismo público / sociedad científica destinada a padres, se indexa y se cita con enlace al original; `citar_solo` = obra de referencia clínica, se indexa para respaldo y se cita, pero no se reproduce en artículos; `excluido` = no entra en el índice; `?` = decidir (duda D-03).
 
 `texto`: ✅ extraíble · 🔍 escaneado, necesita OCR · ⚠️ corrupto/protegido.
 
@@ -23,7 +23,7 @@ Serie numerada 1-27 (faltan algunos números). Año no consta en el texto → du
 | `11_Crisisasma.pdf` | Crisis asmática | todas | ✅ | publico · red flag parcial |
 | `Subidos/12_Dolorabdominal.pdf` | Dolor abdominal | todas | ✅ | publico |
 | `13_Sollozos.pdf` | Espasmos del sollozo | lactante/preescolar | ✅ | publico |
-| `Subidos/14_Estreñimiento.pdf` | Estreñimiento | todas | 🔍 | publico |
+| `Subidos/14_Estreñimiento.pdf` | Estreñimiento | todas | ✅ | publico |
 | `Subidos/15_Fiebre.pdf` | Fiebre | todas | ✅ | publico · **la más consultada** |
 | `Subidos/16_Gastroente.pdf` | Gastroenteritis aguda | todas | ✅ | publico |
 | `Subidos/17_Golpecalor.pdf` | Golpe de calor | todas | ✅ | publico · **red flag** |
@@ -77,7 +77,7 @@ Serie numerada 1-27 (faltan algunos números). Año no consta en el texto → du
 
 ## Resumen
 
-- 50 ficheros · 27 hojas SEUP · 3 de triaje/primeros auxilios · 13 de alimentación/desarrollo/prevención · 6 de referencia clínica · 1 excluido.
-- OCR pendiente: 2. Licencia por decidir (`?`): 7.
+- 49 ficheros · 27 hojas SEUP · 3 de triaje/primeros auxilios · 13 de alimentación/desarrollo/prevención · 6 de referencia clínica · 1 excluido. Fuente de verdad para el código: `config/fuentes.yaml`.
+- OCR pendiente: 1 (`las_50_principales_consultas.pdf`; `14_Estreñimiento.pdf` SÍ tiene capa de texto para pymupdf — pdftotext fallaba por el nombre con ñ). Licencia por decidir (`?`): 7.
 - Idiomas: español 41, inglés 9.
 - Faltan (candidatas, ver `IDEAS.md` F-01…F-05): hojas "En Familia" AEP, AEPap "Familia y salud", Toxicología, calendarios autonómicos.

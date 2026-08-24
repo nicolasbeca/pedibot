@@ -33,3 +33,7 @@ web/.astro/
 .DS_Store
 Thumbs.db
 ~$*
+
+# derivados de la ingesta (se regeneran con make ingest)
+index/chunks/
+index/ingest_run.log
