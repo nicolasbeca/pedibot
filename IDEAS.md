@@ -1,0 +1,68 @@
+# IDEAS.md — cuaderno de ideas y mejoras sin decidir
+
+> Aquí se anota todo lo que surja. Nada de esta lista se implementa sin decidirlo juntos. Cada idea: qué es, por qué podría valer, qué costaría, y estado (`nueva` / `aceptada → fase` / `descartada: motivo`).
+
+## Producto — funciones que no son "ChatGPT"
+
+| Id | Idea | Por qué | Coste | Estado |
+|---|---|---|---|---|
+| I-01 | **Comparador de medicamentos de venta libre** (paracetamol vs ibuprofeno; jarabes para la tos que NO recomienda la AEP; sueros de rehidratación) con tabla de edad mínima, dosis, intervalo, cuándo no dar | Pregunta real y frecuente; determinista; muy compartible | Medio (tablas + página) | nueva (mencionada por el operador) |
+| I-02 | **"¿Debo ir a urgencias?" interactivo**: checklist guiada por edad y síntoma a partir de la hoja SEUP/AEP, sin LLM | Es el caso de uso nº 1 y se puede hacer 100 % determinista | Bajo | nueva |
+| I-03 | **Diario de síntomas** local (en el navegador, sin cuenta): temperatura, dosis dadas y hora → evita doble dosis y da al pediatra un registro | Utilidad diaria real; sin datos en servidor (localStorage) | Medio | nueva |
+| I-04 | **Recordatorio de próxima dosis** (notificación del navegador) | Complementa I-03 | Bajo | nueva |
+| I-05 | **Calculadora de percentiles con curva dibujada** (OMS 0-5, y OMS 5-19) | Los padres lo buscan mucho; SEO | Medio | nueva |
+| I-06 | **"Explícaselo a mi hijo"**: versión de la respuesta para leer a un niño de 5-10 años | Diferenciador cálido; barato (un prompt) | Bajo | nueva |
+| I-07 | **Modo pediatra**: respuesta con el nivel de la guía clínica (Manual PUC, antibióticos Donostia) para profesionales, con toggle | Segundo usuario; las fuentes ya están | Bajo-medio | nueva; ojo con responsabilidad |
+| I-08 | **Voz** (dictar la pregunta, escuchar la respuesta) — Web Speech API gratis | Padre con el niño en brazos | Bajo | nueva |
+| I-09 | **WhatsApp** (Cloud API, gratis hasta cierto volumen) | Canal natural de padres | Medio-alto; verificación Meta | nueva |
+| I-10 | **Fotos**: "¿qué es este sarpullido?" con modelo de visión | Muy demandado, muy arriesgado clínicamente | Alto | descartada por ahora: riesgo |
+| I-11 | **Mapa de urgencias pediátricas cercanas** (OpenStreetMap) | Cierra el "ve a urgencias" con "¿dónde?" | Medio | nueva |
+| I-12 | **Chat precargado desde cada artículo** ("pregunta sobre esto") | Convierte SEO en uso | Bajo | aceptada → F3 |
+| I-13 | **Historial multi-hijo con edades** (local) para no repetir la edad cada vez | Fricción menor | Bajo | nueva |
+| I-14 | **Alertas estacionales** en la home (bronquiolitis en invierno, golpe de calor en verano, gastroenteritis) | Contenido fresco sin esfuerzo | Bajo | nueva |
+| I-15 | **Traducción a inglés / portugués** con las mismas fuentes | LatAm / Brasil; e5 es multilingüe | Medio | nueva; después de España |
+
+## Fuentes
+
+| Id | Idea | Estado |
+|---|---|---|
+| F-01 | Añadir las hojas "En Familia" de la AEP (enfamilia.aeped.es) — muchas, en español, actualizadas | nueva; comprobar licencia |
+| F-02 | Hojas de la AEPap "Familia y salud" | nueva |
+| F-03 | Fichas de Toxicología (Instituto Nacional de Toxicología, 91 562 04 20) | nueva |
+| F-04 | Calendario vacunal por comunidad autónoma (difieren) | nueva |
+| F-05 | Reemplazar/actualizar la guía cubana 2016 y el Manual PUC por guías españolas equivalentes | nueva |
+| F-06 | Versión estructurada (tabla) de la guía de dosificación AEPap para las calculadoras | aceptada → F2 |
+
+## Web / SEO / difusión
+
+| Id | Idea | Estado |
+|---|---|---|
+| W-01 | Página "Fuentes" con logos de organismos citados (con permiso de uso de marca) | aceptada → F3 |
+| W-02 | Publicar las métricas del golden set en `/metodo` (transparencia como marketing) | aceptada → F3 |
+| W-03 | Widget embebible para blogs de crianza / webs de pediatras (`<script>`) | nueva |
+| W-04 | Instagram automático (había token en la v1) — carruseles a partir de artículos | nueva; después de X |
+| W-05 | Newsletter mensual (Buttondown gratis) con las guías del mes | nueva |
+| W-06 | Colaboración con pediatras para "revisado por" en los artículos | nueva; muy valioso para confianza y SEO (E-E-A-T) |
+| W-07 | Búsqueda del sitio con el mismo índice del bot | nueva |
+| W-08 | CAPTCHA/Turnstile si aparece abuso del rate limit | nueva |
+
+## Token PDBT
+
+| Id | Idea | Estado |
+|---|---|---|
+| T-01 | Página `/apoya` con libro de cuentas público y recompras verificables on-chain | aceptada → F3/F6 (detalle en PRD §9, duda D-09) |
+| T-02 | Actualizar el perfil del agente en Virtuals con la web nueva y enlaces | nueva |
+| T-03 | Muro de "familias que apoyan" (firma opcional de wallet) | nueva |
+| T-04 | Acceso anticipado a features para holders — SIEMPRE gratis para todos después | nueva |
+| T-05 | Informe mensual "estado de PediBot" en X: consultas, coste, fuentes nuevas, recompras | aceptada → F6 |
+| T-06 | Explorar si Virtuals ACP (agent commerce) permite que PediBot sea un "agente" invocable por otros agentes con pago en PDBT — utilidad sin gating al usuario humano | nueva; investigar |
+| T-07 | Recompra + quema vs recompra + bloqueo (bóveda) | pendiente de decidir |
+
+## Operación
+
+| Id | Idea | Estado |
+|---|---|---|
+| O-01 | Caché de respuestas por pregunta normalizada (misma pregunta → misma respuesta, coste 0) | nueva; ojo con contexto de edad |
+| O-02 | Juez LLM nocturno sobre las conversaciones del día → informe de fidelidad | nueva |
+| O-03 | Panel `/admin` con las métricas del PRD §8 | aceptada → F4 |
+| O-04 | Reutilizar el bot de Telegram de MultiBot como código base para las alertas | aceptada → F4 |

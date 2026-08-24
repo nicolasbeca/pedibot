@@ -1,0 +1,35 @@
+# secretos
+.env
+.env.*
+!.env.example
+pass.txt
+*.pem
+*.key
+
+# fuentes y derivados pesados (fuera del repo; catálogo sí)
+FUENTES/*.pdf
+FUENTES/**/*.pdf
+FUENTES/ocr/
+index/*.db
+index/*.db-*
+data/
+backups/
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+eval/reports/
+
+# web
+web/node_modules/
+web/dist/
+web/.astro/
+
+# so
+.DS_Store
+Thumbs.db
+~$*
