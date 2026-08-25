@@ -7,6 +7,7 @@ from fastapi.testclient import TestClient
 
 from pedibot.api import ApiConfig, create_app
 from pedibot.bot.answer import EmergencyNumbers, Engine
+from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.llm import FakeProvider
 from pedibot.bot.retrieval import Retriever, Synonyms
 from pedibot.bot.triage import Triage
@@ -60,6 +61,7 @@ def client(tmp_path: Path, config_dir):
         Triage(config_dir / "red_flags.yaml"),
         llm,
         EmergencyNumbers(config_dir / "emergency_numbers.yaml"),
+        drugs=DrugCatalog(config_dir / "drugs.yaml"),
     )
     ops = OpsStore(tmp_path / "ops.db")
     cfg = ApiConfig(

@@ -1,0 +1,100 @@
+from __future__ import annotations
+
+from pathlib import Path
+
+import pytest
+from fastapi.testclient import TestClient
+
+from pedibot.api import ApiConfig, create_app
+from pedibot.bot.answer import EmergencyNumbers, Engine
+from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.llm import FakeProvider
+from pedibot.bot.retrieval import Retriever, Synonyms
+from pedibot.bot.triage import Triage
+from pedibot.index.store import Index, build_index
+from pedibot.ingest.classify import Taxonomy
+from pedibot.ingest.schema import Chunk
+from pedibot.ops.store import OpsStore
+
+
+@pytest.fixture
+def client(tmp_path: Path, config_dir):
+    db = tmp_path / "i.db"
+    build_index(
+        [
+            Chunk(
+                chunk_id="seup_fiebre#s#1",
+                doc_id="seup_fiebre",
+                org="SEUP",
+                doc_title="Fiebre",
+                year=None,
+                lang="es",
+                section="S",
+                pages=[1],
+                text="La fiebre no es peligrosa.",
+                topic="fiebre",
+                doc_type="hoja_padres",
+                evidence="sociedad_cientifica",
+                usage="publico",
+                source_hash="h",
+                n_words=5,
+            )
+        ],
+        db,
+    )
+    engine = Engine(
+        Retriever(
+            Index(db),
+            Synonyms(config_dir / "synonyms.yaml"),
+            taxonomy=Taxonomy(config_dir / "taxonomia.yaml"),
+        ),
+        Triage(config_dir / "red_flags.yaml"),
+        FakeProvider("x [1]."),
+        EmergencyNumbers(config_dir / "emergency_numbers.yaml"),
+        drugs=DrugCatalog(config_dir / "drugs.yaml"),
+    )
+    return TestClient(
+        create_app(engine, OpsStore(tmp_path / "ops.db"), ApiConfig(allowed_origins=["*"]))
+    )
+
+
+def test_dose_api_with_brand(client):
+    r = client.post(
+        "/api/dose", json={"drug": "Calpol", "weight_kg": 14, "age_months": 36, "lang": "en"}
+    )
+    assert r.status_code == 200, r.text
+    j = r.json()
+    assert j["drug"] == "paracetamol" and j["brand"] == "Calpol" and j["mg_min"] == 140
+    forms = {f["form"]: f for f in j["ml_by_form"]}
+    assert (
+        forms["infant 120 mg/5 ml"]["ml_min"] == 5.8
+        and forms["infant 120 mg/5 ml"]["ml_max"] == 8.8
+    )
+    assert "AEPap" in j["source"]
+
+
+def test_dose_api_generic_uses_default_presentations(client):
+    j = client.post(
+        "/api/dose", json={"drug": "ibuprofeno", "weight_kg": 20, "age_months": 48, "lang": "es"}
+    ).json()
+    assert j["brand"] is None and j["generic"] == "Ibuprofeno" and len(j["ml_by_form"]) == 2
+
+
+def test_dose_api_refers_young_infant_and_rejects_unknown(client):
+    j = client.post("/api/dose", json={"drug": "nurofen", "weight_kg": 5, "age_months": 2}).json()
+    assert j["refer"] is True and "under_3_months_refer" in j["warnings"]
+    assert client.post("/api/dose", json={"drug": "aspirin", "weight_kg": 10}).status_code == 422
+
+
+def test_drugs_list(client):
+    j = client.get("/api/drugs?country=ES&lang=es").json()
+    assert set(j) == {"paracetamol", "ibuprofen"}
+    assert "ES" in j["ibuprofen"]["brands"][0]["countries"]
+
+
+def test_ask_routes_brand_dose_question(client):
+    j = client.post(
+        "/api/ask",
+        json={"question": "how much Calpol for my 3 year old, she weighs 14 kg", "country": "GB"},
+    ).json()
+    assert j["verification"] == "dose_calculator" and "140" in j["text"]

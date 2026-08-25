@@ -1,0 +1,64 @@
+# Dose calculator catalogue (PRD §5.3). Only over-the-counter paediatric antipyretics/analgesics.
+# Ranges come from AEPap "Guía rápida de dosificación práctica en pediatría" (3.ª ed.) and are
+# deliberately conservative; hard caps from the Spanish/UK/US product labels. Every row has a test.
+# Brands map to the SAME two molecules; the concentration is what changes and what parents get
+# wrong — so each brand lists its usual liquid strengths by country. Verify on the bottle, always.
+
+drugs:
+  paracetamol:
+    generic: {en: "Paracetamol (acetaminophen)", es: "Paracetamol"}
+    aliases: [acetaminophen, acetaminofen, acetaminofén, apap]
+    brands:
+      - {name: "Apiretal", countries: [ES], forms: ["gotas 100 mg/ml"]}
+      - {name: "Dalsy (no — Dalsy is ibuprofen)", hidden: true}
+      - {name: "Termalgin", countries: [ES], forms: ["jarabe 120 mg/5 ml"]}
+      - {name: "Gelocatil", countries: [ES], forms: ["gotas 100 mg/ml", "jarabe 120 mg/5 ml"]}
+      - {name: "Efferalgan", countries: [ES, FR, IT], forms: ["jarabe 150 mg/5 ml (3 %)"]}
+      - {name: "Doliprane", countries: [FR], forms: ["suspensión 2,4 %  (120 mg/5 ml)"]}
+      - {name: "Calpol", countries: [GB, IE], forms: ["infant 120 mg/5 ml", "six plus 250 mg/5 ml"]}
+      - {name: "Tylenol Children's / Infants'", countries: [US, CA], forms: ["160 mg/5 ml"]}
+      - {name: "Panadol Children", countries: [AU, NZ, GB], forms: ["baby drops 100 mg/ml", "1-5 years 120 mg/5 ml", "5-12 years 250 mg/5 ml"]}
+      - {name: "Tempra / Tylenol", countries: [MX, AR, CL, CO], forms: ["gotas 100 mg/ml", "jarabe 160 mg/5 ml"]}
+      - {name: "Tachipirina", countries: [IT], forms: ["jarabe 120 mg/5 ml", "gotas 100 mg/ml"]}
+      - {name: "Ben-u-ron", countries: [DE, PT], forms: ["jarabe 200 mg/5 ml (4 %)"]}
+      - {name: "Tylenol / Paracetamol genérico", countries: [BR], forms: ["gotas 200 mg/ml", "suspensão 160 mg/5 ml"]}
+    strengths_mg_per_ml: [100, 24, 30, 32, 40, 50, 200]
+    per_dose_mg_per_kg: [10, 15]
+    interval_hours: [4, 6]
+    max_mg_per_kg_day: 60
+    max_single_mg: 1000
+    max_daily_mg: 4000
+    min_age_months: 0
+    min_weight_kg: 0
+    notes:
+      en: "Under 3 months, only if a doctor has told you to. Do not combine with other products that also contain paracetamol (cold remedies)."
+      es: "Menores de 3 meses: solo si lo ha indicado el pediatra. No combinar con otros productos que también lleven paracetamol (anticatarrales)."
+    source: "AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos"
+
+  ibuprofen:
+    generic: {en: "Ibuprofen", es: "Ibuprofeno"}
+    aliases: [ibuprofeno, ibuprofène, ibuprofene]
+    brands:
+      - {name: "Dalsy", countries: [ES], forms: ["suspensión 2 % (100 mg/5 ml)", "suspensión 4 % (200 mg/5 ml)"]}
+      - {name: "Junifen", countries: [ES], forms: ["2 % (100 mg/5 ml)", "4 % (200 mg/5 ml)"]}
+      - {name: "Apirofeno", countries: [ES], forms: ["2 % (100 mg/5 ml)", "4 % (200 mg/5 ml)"]}
+      - {name: "Nurofen for Children", countries: [GB, IE, AU, NZ, DE, IT, PT], forms: ["100 mg/5 ml"]}
+      - {name: "Advil Children's / Infants'", countries: [US, CA, FR], forms: ["children 100 mg/5 ml", "infant drops 200 mg/5 ml (40 mg/ml)"]}
+      - {name: "Motrin Children's / Infants'", countries: [US, CA, MX], forms: ["children 100 mg/5 ml", "infant drops 40 mg/ml"]}
+      - {name: "Advil Pediátrico / Ibupirac", countries: [AR, CL, CO, MX], forms: ["2 % (100 mg/5 ml)", "4 % (200 mg/5 ml)"]}
+      - {name: "Alivium", countries: [BR], forms: ["gotas 50 mg/ml", "suspensão 100 mg/5 ml"]}
+    strengths_mg_per_ml: [20, 40, 50]
+    per_dose_mg_per_kg: [5, 10]
+    interval_hours: [6, 8]
+    max_mg_per_kg_day: 30
+    max_single_mg: 400
+    max_daily_mg: 1200
+    min_age_months: 3
+    min_weight_kg: 5
+    notes:
+      en: "Not under 3 months or under 5 kg. Give with food. Avoid if dehydrated (vomiting/diarrhoea), with chickenpox, or with kidney problems."
+      es: "No en menores de 3 meses ni de 5 kg. Con comida. Evitar si está deshidratado (vómitos/diarrea), con varicela o con problemas renales."
+    source: "AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos"
+
+# Deliberately NOT included (parents ask, guidelines say no or "doctor only"): aspirin (Reye syndrome),
+# cough syrups (AEP: not under 6), antihistamines, antibiotics, codeine.

@@ -9,6 +9,7 @@ from pathlib import Path
 import typer
 from loguru import logger
 
+from pedibot.bot.drugs import DrugCatalog
 from pedibot.settings import ROOT, get_settings
 
 app = typer.Typer(help="PediBot v2 — pediatric assistant grounded in verified guidelines.")
@@ -160,6 +161,7 @@ def ask(
         Triage(s.config_dir / "red_flags.yaml"),
         llm,
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
+        drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
     )
     a = eng.ask(query, country=country)
     typer.echo(a.render())
@@ -180,6 +182,9 @@ def eval_cmd(
     llm: bool = typer.Option(
         False, "--llm", help="also draft every answer with the REAL LLM (costs money)"
     ),
+    judge: bool = typer.Option(
+        False, "--judge", help="with --llm: second call judging faithfulness (costs money)"
+    ),
 ) -> None:
     """Golden-set evaluation of triage + retrieval + routing (no LLM needed)."""
     import datetime as dt
@@ -187,7 +192,7 @@ def eval_cmd(
     from pedibot.eval import fake_engine_from_settings, load_golden, run_eval
 
     if llm:
-        _llm_eval(golden, report_dir)
+        _llm_eval(golden, report_dir, judge)
         return
     rep = run_eval(fake_engine_from_settings(), load_golden(golden), k=k)
     summ = rep.summary()
@@ -247,7 +252,7 @@ def publish(
         )
 
 
-def _llm_eval(golden: Path, report_dir: Path) -> None:
+def _llm_eval(golden: Path, report_dir: Path, use_judge: bool = False) -> None:
     import datetime as dt
 
     from pedibot.api import app_from_settings  # noqa: F401  (validates settings/provider)
@@ -273,12 +278,14 @@ def _llm_eval(golden: Path, report_dir: Path) -> None:
         prov,
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
     )
-    rep = run_llm_eval(eng, load_golden(golden))
+    rep = run_llm_eval(eng, load_golden(golden), use_judge=use_judge)
     summ = rep.summary()
     typer.echo(json.dumps(summ, indent=2))
     for c in rep.cases:
         if c.verification == "fallback":
             typer.echo(f"  ! {c.id} «{c.q}» → fallback (draft failed verification twice)")
+        if c.judge_verdict and c.judge_verdict != "faithful":
+            typer.echo(f"  ⚖ {c.id} {c.judge_verdict}: {c.judge_notes} {c.judge_issues}")
     report_dir.mkdir(parents=True, exist_ok=True)
     out = report_dir / f"eval_llm_{dt.date.today().isoformat()}.json"
     out.write_text(

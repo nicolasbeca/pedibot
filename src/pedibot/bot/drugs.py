@@ -1,0 +1,92 @@
+"""Brand/alias catalogue for the dose calculator (`config/drugs.yaml`). The arithmetic stays in
+`dose.py`; this module resolves what the parent typed ("Calpol", "Tylenol", "Dalsy") to a molecule
+and lists the liquid strengths sold under that name in their country."""
+
+from __future__ import annotations
+
+import re
+from dataclasses import dataclass
+from pathlib import Path
+
+import yaml
+
+_STRENGTH = re.compile(r"(\d+(?:[.,]\d+)?)\s*mg\s*/\s*(\d+(?:[.,]\d+)?)\s*ml", re.I)
+
+
+@dataclass(frozen=True)
+class Brand:
+    name: str
+    countries: tuple[str, ...]
+    forms: tuple[str, ...]
+
+    def strengths_mg_per_ml(self) -> list[tuple[str, float]]:
+        out = []
+        for f in self.forms:
+            m = _STRENGTH.search(f)
+            if m:
+                mg = float(m.group(1).replace(",", "."))
+                ml = float(m.group(2).replace(",", "."))
+                out.append((f, round(mg / ml, 3)))
+        return out
+
+
+@dataclass(frozen=True)
+class DrugInfo:
+    key: str
+    generic: dict[str, str]
+    aliases: tuple[str, ...]
+    brands: tuple[Brand, ...]
+    notes: dict[str, str]
+    source: str
+
+
+class DrugCatalog:
+    def __init__(self, path: Path):
+        raw = yaml.safe_load(path.read_text(encoding="utf-8"))["drugs"]
+        self.drugs: dict[str, DrugInfo] = {}
+        for key, d in raw.items():
+            brands = tuple(
+                Brand(b["name"], tuple(b.get("countries", [])), tuple(b.get("forms", [])))
+                for b in d.get("brands", [])
+                if not b.get("hidden")
+            )
+            self.drugs[key] = DrugInfo(
+                key,
+                dict(d["generic"]),
+                tuple(str(a).lower() for a in d.get("aliases", [])),
+                brands,
+                dict(d.get("notes", {})),
+                str(d["source"]),
+            )
+
+    def resolve(self, name: str) -> tuple[str, Brand | None] | None:
+        """'calpol' → ('paracetamol', Brand Calpol); 'ibuprofeno' → ('ibuprofen', None)."""
+        n = name.strip().lower()
+        for key, d in self.drugs.items():
+            if (
+                n == key
+                or n in d.aliases
+                or n == d.generic["en"].lower()
+                or n == d.generic["es"].lower()
+            ):
+                return key, None
+        for key, d in self.drugs.items():
+            for b in d.brands:
+                first = b.name.lower().split(" ")[0].split("/")[0]
+                if n == b.name.lower() or n == first or n.startswith(first) and len(first) >= 4:
+                    return key, b
+        return None
+
+    def brands_for(self, key: str, country: str | None = None) -> list[Brand]:
+        bs = list(self.drugs[key].brands)
+        if country:
+            c = country.upper()
+            bs.sort(key=lambda b: (c not in b.countries, b.name))
+        return bs
+
+    def all_names(self) -> list[str]:
+        names: list[str] = []
+        for d in self.drugs.values():
+            names.append(d.generic["en"])
+            names.extend(b.name for b in d.brands)
+        return names

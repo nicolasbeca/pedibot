@@ -9,6 +9,7 @@ from pathlib import Path
 import yaml
 
 from pedibot.bot.dose import DRUGS, calculate, format_result
+from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.triage import Triage, TriageResult
@@ -81,7 +82,7 @@ class EmergencyNumbers:
         return self.raw.get(c) or self.raw["default"]
 
 
-def load_prompt(version: str = "answer_v1") -> tuple[str, str]:
+def load_prompt(version: str = "answer_v2") -> tuple[str, str]:
     text = (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
     return version, text
 
@@ -114,16 +115,27 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
     return head + "\n" + why
 
 
-def dose_intent(query: str) -> tuple[str, float] | None:
-    """(drug_key, weight_kg) when the message is a dose question with an explicit weight."""
-    d = _DRUG.search(query)
+def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, float] | None:
+    """(drug_key, weight_kg) when the message is a dose question with an explicit weight.
+
+    Brand names (Calpol, Tylenol, Dalsy, Nurofen…) resolve through the catalogue when given."""
     w = _WEIGHT.search(query)
-    if not d or not w:
+    if not w:
         return None
-    key = _DRUG_ALIAS.get(d.group(1).lower(), d.group(1).lower())
-    if key not in DRUGS:
+    kg = float(w.group(1).replace(",", "."))
+    key: str | None = None
+    d = _DRUG.search(query)
+    if d:
+        key = _DRUG_ALIAS.get(d.group(1).lower(), d.group(1).lower())
+    elif drugs is not None:
+        for tok in re.findall(r"[a-záéíóúñ][a-záéíóúñ'\-]{3,}", query.lower()):
+            r = drugs.resolve(tok)
+            if r:
+                key = r[0]
+                break
+    if key is None or key not in DRUGS:
         return None
-    return key, float(w.group(1).replace(",", "."))
+    return key, kg
 
 
 def _age_context(tr: TriageResult) -> str:
@@ -183,13 +195,15 @@ class Engine:
         triage: Triage,
         llm: LLMProvider,
         numbers: EmergencyNumbers,
-        prompt_version: str = "answer_v1",
+        prompt_version: str = "answer_v2",
+        drugs: DrugCatalog | None = None,
     ):
         self.retriever = retriever
         self.triage = triage
         self.llm = llm
         self.numbers = numbers
         self.prompt_version, self.prompt = load_prompt(prompt_version)
+        self.drugs = drugs
 
     def ask(self, query: str, country: str | None = None, lang: str | None = None) -> Answer:
         lang = lang or detect_lang(query)
@@ -199,7 +213,7 @@ class Engine:
         nums = self.numbers.get(country)
         banner = build_banner(tr, lang, nums)
 
-        intent = dose_intent(query)
+        intent = dose_intent(query, self.drugs)
         if intent and tr.level == "routine":
             drug, kg = intent
             text = format_result(calculate(drug, kg, tr.age_months), lang)

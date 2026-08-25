@@ -12,6 +12,7 @@ Metrics:
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -175,13 +176,17 @@ class LLMCase:
     latency_ms: int
     tokens_in: int
     tokens_out: int
+    judge_verdict: str | None = None
+    judge_notes: str = ""
+    judge_issues: list[str] = field(default_factory=list)
+    answer_text: str = ""
 
 
 @dataclass
 class LLMReport:
     cases: list[LLMCase] = field(default_factory=list)
 
-    def summary(self) -> dict[str, float | int | None]:
+    def summary(self) -> dict[str, object]:
         drafted = [c for c in self.cases if c.verification in ("ok", "regenerated", "fallback")]
         ok = [c for c in drafted if c.verification in ("ok", "regenerated")]
         lat = sorted(c.latency_ms for c in self.cases)
@@ -197,10 +202,17 @@ class LLMReport:
             if drafted
             else None,
             "latency_p95_ms": p95,
+            "judged": len([c for c in self.cases if c.judge_verdict]),
+            "faithful_rate": _ratio(
+                [c.judge_verdict == "faithful" for c in self.cases if c.judge_verdict]
+            ),
+            "unfaithful": [c.id for c in self.cases if c.judge_verdict == "unfaithful"],
         }
 
 
-def run_llm_eval(engine: Engine, golden: list[dict], only_drafted: bool = True) -> LLMReport:
+def run_llm_eval(
+    engine: Engine, golden: list[dict], only_drafted: bool = True, use_judge: bool = False
+) -> LLMReport:
     """Ask the real engine every golden question; measure the drafting/verification layer."""
     import time
 
@@ -211,17 +223,28 @@ def run_llm_eval(engine: Engine, golden: list[dict], only_drafted: bool = True) 
         t0 = time.perf_counter()
         a = engine.ask(g["q"], lang=g.get("lang"))
         ms = int((time.perf_counter() - t0) * 1000)
-        rep.cases.append(
-            LLMCase(
-                g["id"],
-                g["q"],
-                a.verification,
-                a.level,
-                len(a.sources),
-                a.llm.cost_usd if a.llm else 0.0,
-                ms,
-                a.llm.tokens_in if a.llm else 0,
-                a.llm.tokens_out if a.llm else 0,
-            )
+        case = LLMCase(
+            g["id"],
+            g["q"],
+            a.verification,
+            a.level,
+            len(a.sources),
+            a.llm.cost_usd if a.llm else 0.0,
+            ms,
+            a.llm.tokens_in if a.llm else 0,
+            a.llm.tokens_out if a.llm else 0,
+            answer_text=a.text,
         )
+        if use_judge and a.verification in ("ok", "regenerated") and a.chunk_ids:
+            from pedibot.bot.judge import judge
+            from pedibot.index.store import Hit
+
+            chunks = [engine.retriever.index.get(cid) for cid in a.chunk_ids]
+            hits = [Hit(c, 0.0, 0) for c in chunks if c]
+            cited = sorted({int(n) for n in re.findall(r"\[(\d{1,2})\]", a.text)})
+            v = judge(engine.llm, a.text, hits, cited)
+            case.judge_verdict, case.judge_notes = v.verdict, v.notes
+            case.judge_issues = v.unsupported + v.contradicted
+            case.cost_usd += v.cost_usd
+        rep.cases.append(case)
     return rep
