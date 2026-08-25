@@ -1,10 +1,12 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-08-24, noche** (fin de la primera sesión de construcción).
+Última actualización: **2026-08-25** (segunda sesión de construcción).
 
 ## Fase actual
 
-**F1 Ingesta — HECHA en local. F2 Motor — en marcha (esqueleto completo, sin LLM real todavía).** Todo corre en local; no hay VPS, dominio ni clave de DeepSeek aún.
+**F1 Ingesta — HECHA. F2 Motor — COMPLETO salvo la prueba con LLM real (falta la clave de DeepSeek). F3 Web+API — API hecha y prototipo estático servible; la web Astro espera a Node.** Todo corre en local; no hay VPS ni dominio.
+
+Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8601 (con `LLM_PROVIDER=fake` en `.env` funciona sin clave, pero las respuestas serán el fallback "no tengo fuente"; con `DEEPSEEK_API_KEY` responde de verdad).
 
 ## Decisiones del operador (24-ago, respuestas a las dudas D-01…D-13)
 

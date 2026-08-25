@@ -157,3 +157,71 @@ def fake_engine_from_settings() -> Engine:
         llm,
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
     )
+
+
+# ---------------------------------------------------------------------------------------------
+# LLM-in-the-loop evaluation (needs a real provider; PRD §5.5 citation_validity, cost, latency)
+# ---------------------------------------------------------------------------------------------
+
+
+@dataclass
+class LLMCase:
+    id: str
+    q: str
+    verification: str
+    level: str
+    n_sources: int
+    cost_usd: float
+    latency_ms: int
+    tokens_in: int
+    tokens_out: int
+
+
+@dataclass
+class LLMReport:
+    cases: list[LLMCase] = field(default_factory=list)
+
+    def summary(self) -> dict[str, float | int | None]:
+        drafted = [c for c in self.cases if c.verification in ("ok", "regenerated", "fallback")]
+        ok = [c for c in drafted if c.verification in ("ok", "regenerated")]
+        lat = sorted(c.latency_ms for c in self.cases)
+        p95 = lat[int(len(lat) * 0.95) - 1] if lat else None
+        return {
+            "n": len(self.cases),
+            "drafted": len(drafted),
+            "citation_validity": _ratio([c.verification != "fallback" for c in drafted]),
+            "regenerated_rate": _ratio([c.verification == "regenerated" for c in drafted]),
+            "with_sources": _ratio([c.n_sources > 0 for c in ok]),
+            "cost_total_usd": round(sum(c.cost_usd for c in self.cases), 5),
+            "cost_mean_usd": round(sum(c.cost_usd for c in drafted) / len(drafted), 6)
+            if drafted
+            else None,
+            "latency_p95_ms": p95,
+        }
+
+
+def run_llm_eval(engine: Engine, golden: list[dict], only_drafted: bool = True) -> LLMReport:
+    """Ask the real engine every golden question; measure the drafting/verification layer."""
+    import time
+
+    rep = LLMReport()
+    for g in golden:
+        if only_drafted and g.get("expect") in ("asked_age", "dose_calculator", "no_source"):
+            continue
+        t0 = time.perf_counter()
+        a = engine.ask(g["q"], lang=g.get("lang"))
+        ms = int((time.perf_counter() - t0) * 1000)
+        rep.cases.append(
+            LLMCase(
+                g["id"],
+                g["q"],
+                a.verification,
+                a.level,
+                len(a.sources),
+                a.llm.cost_usd if a.llm else 0.0,
+                ms,
+                a.llm.tokens_in if a.llm else 0,
+                a.llm.tokens_out if a.llm else 0,
+            )
+        )
+    return rep

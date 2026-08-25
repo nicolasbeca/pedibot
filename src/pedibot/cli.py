@@ -175,12 +175,18 @@ def eval_cmd(
     golden: Path = ROOT / "eval" / "golden.jsonl",
     k: int = 3,
     report_dir: Path = ROOT / "eval" / "reports",
+    llm: bool = typer.Option(
+        False, "--llm", help="also draft every answer with the REAL LLM (costs money)"
+    ),
 ) -> None:
     """Golden-set evaluation of triage + retrieval + routing (no LLM needed)."""
     import datetime as dt
 
     from pedibot.eval import fake_engine_from_settings, load_golden, run_eval
 
+    if llm:
+        _llm_eval(golden, report_dir)
+        return
     rep = run_eval(fake_engine_from_settings(), load_golden(golden), k=k)
     summ = rep.summary()
     typer.echo(json.dumps(summ, indent=2))
@@ -237,6 +243,51 @@ def publish(
         typer.echo(
             f"  ✓ {t} → {md}  (social text: {q})  cost=${a.llm.cost_usd:.4f} {a.verification}"
         )
+
+
+def _llm_eval(golden: Path, report_dir: Path) -> None:
+    import datetime as dt
+
+    from pedibot.api import app_from_settings  # noqa: F401  (validates settings/provider)
+    from pedibot.bot.answer import EmergencyNumbers, Engine
+    from pedibot.bot.llm import provider_from_settings
+    from pedibot.bot.retrieval import Retriever, Synonyms
+    from pedibot.bot.triage import Triage
+    from pedibot.eval import load_golden, run_llm_eval
+    from pedibot.index.store import Index
+    from pedibot.ingest.classify import Taxonomy
+
+    s = get_settings()
+    prov = provider_from_settings()
+    eng = Engine(
+        Retriever(
+            Index(s.index_db_path),
+            Synonyms(s.config_dir / "synonyms.yaml"),
+            llm=prov,
+            top_k=s.retrieval_top_k,
+            taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
+        ),
+        Triage(s.config_dir / "red_flags.yaml"),
+        prov,
+        EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
+    )
+    rep = run_llm_eval(eng, load_golden(golden))
+    summ = rep.summary()
+    typer.echo(json.dumps(summ, indent=2))
+    for c in rep.cases:
+        if c.verification == "fallback":
+            typer.echo(f"  ! {c.id} «{c.q}» → fallback (draft failed verification twice)")
+    report_dir.mkdir(parents=True, exist_ok=True)
+    out = report_dir / f"eval_llm_{dt.date.today().isoformat()}.json"
+    out.write_text(
+        json.dumps(
+            {"summary": summ, "cases": [c.__dict__ for c in rep.cases]},
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    typer.echo(f"→ {out}")
 
 
 if __name__ == "__main__":
