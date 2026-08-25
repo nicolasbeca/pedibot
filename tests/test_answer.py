@@ -190,3 +190,12 @@ def test_prompt_carries_age_context_for_young_infants(engine_factory):
         "CHILD AGE: 48 months" in llm2.calls[0][1]
         and "ANSWER LANGUAGE: English" in llm2.calls[0][1]
     )
+
+
+def test_triage_rule_source_is_injected_as_first_hit(engine_factory):
+    eng, llm = engine_factory("Ofrezca suero [1].")
+    a = eng.ask("my 3 year old is vomiting and having a seizure", country="US")
+    # the seizure rule cites seup_acudir_urgencias, absent from the tiny test index → no injection,
+    # but the vomiting red-flag chunk (seup_vomitos) must still be among the hits
+    assert any("seup_vomitos" in c for c in a.chunk_ids)
+    assert "[WARNING SIGNS]" in llm.calls[0][1]

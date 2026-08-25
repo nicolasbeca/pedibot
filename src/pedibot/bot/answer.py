@@ -205,6 +205,23 @@ class Engine:
         self.prompt_version, self.prompt = load_prompt(prompt_version)
         self.drugs = drugs
 
+    def _inject_rule_sources(self, tr: TriageResult, hits: list[Hit]) -> list[Hit]:
+        """When a triage rule fired, put the warning-signs chunk of the rule's own source first,
+        so the drafted sentence "must be seen today" can cite it instead of echoing the prompt
+        (faithfulness judge, 25-ago: 6 of 8 'unfaithful' were exactly this)."""
+        if not tr.matched:
+            return hits
+        present = {h.chunk.doc_id for h in hits if h.chunk.is_red_flag}
+        injected: list[Hit] = []
+        for rule in tr.matched:
+            if rule.source in present:
+                continue
+            c = self.retriever.index.red_flag_chunk(rule.source)
+            if c is not None:
+                injected.append(Hit(c, 99.0, 1))
+                present.add(rule.source)
+        return (injected + hits)[: max(len(hits), 6) + len(injected)]
+
     def ask(self, query: str, country: str | None = None, lang: str | None = None) -> Answer:
         lang = lang or detect_lang(query)
         if lang not in ("es", "en"):
@@ -223,6 +240,7 @@ class Engine:
             return Answer(ASK_AGE[lang], tr.level, None, [], lang, None, None, [], "asked_age")
 
         hits, extra = self.retriever.search(query, lang, red_flag_boost=tr.is_alarm)
+        hits = self._inject_rule_sources(tr, hits)
         if not hits:
             return Answer(
                 NO_SOURCE[lang], tr.level, banner, [], lang, None, None, [], "no_source", extra

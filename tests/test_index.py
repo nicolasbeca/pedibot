@@ -83,3 +83,26 @@ def test_red_flag_boost_reorders(tmp_path: Path):
     boosted = idx.search("fiebre", red_flag_boost=True)
     assert plain == "a#s#1"
     assert boosted[0].chunk.chunk_id == "c#s#1" or boosted[0].score >= boosted[1].score
+
+
+def test_red_flag_chunk_lookup_and_topic_scoped_boost(tmp_path: Path):
+    db = tmp_path / "i.db"
+    build_index(
+        [
+            _chunk("seup_fiebre#a#1", "fiebre: tratamiento en casa"),
+            _chunk("seup_fiebre#b#1", "fiebre: acuda a urgencias si", red=True),
+            _chunk(
+                "seup_golpe_calor#c#1", "fiebre fiebre: acuda a urgencias golpe de calor", red=True
+            ),
+        ],
+        db,
+    )
+    idx = Index(db)
+    assert idx.red_flag_chunk("seup_fiebre").chunk_id == "seup_fiebre#b#1"
+    assert idx.red_flag_chunk("seup_fiebre").is_red_flag
+    assert idx.red_flag_chunk("nope") is None
+    # all test chunks share topic "fiebre"; boost scoped to another topic must not reorder
+    plain = [
+        h.chunk.chunk_id for h in idx.search("fiebre", red_flag_boost=True, boost_topic="otro")
+    ]
+    assert plain[0] == "seup_golpe_calor#c#1" or plain[0] == "seup_fiebre#a#1"

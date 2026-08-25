@@ -210,6 +210,18 @@ class Index:
         row = self.con.execute("SELECT data FROM chunks WHERE chunk_id=?", (chunk_id,)).fetchone()
         return Chunk.model_validate_json(row[0]) if row else None
 
+    def red_flag_chunk(self, doc_id: str) -> Chunk | None:
+        """The warning-signs chunk of a document (for triage rules to cite their own source)."""
+        row = self.con.execute(
+            "SELECT data FROM chunks WHERE doc_id=? AND is_red_flag=1 ORDER BY chunk_id LIMIT 1",
+            (doc_id,),
+        ).fetchone()
+        if row is None:
+            row = self.con.execute(
+                "SELECT data FROM chunks WHERE doc_id=? ORDER BY chunk_id LIMIT 1", (doc_id,)
+            ).fetchone()
+        return Chunk.model_validate_json(row[0]) if row else None
+
     def search(
         self,
         query: str,
@@ -246,7 +258,11 @@ class Index:
                 score *= DOC_TYPE_WEIGHT.get(ch.doc_type, 1.0)
             if boost_topic and ch.topic == boost_topic:
                 score *= 1.5
-            if red_flag_boost and ch.is_red_flag:
+            if (
+                red_flag_boost
+                and ch.is_red_flag
+                and (boost_topic is None or ch.topic == boost_topic)
+            ):
                 score *= 1.3
             if dose_query and ch.is_dose_table:
                 score *= 1.6
