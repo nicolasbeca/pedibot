@@ -24,7 +24,7 @@ It remembers the conversation (age, symptoms) for follow-up questions, works in 
 
 **Next (Q3–Q4 2026)**
 - Closed beta with parents; every anonymised conversation reviewed by a human before opening wider.
-- Two new guides per week, auto-generated from the sources and verified, in EN and ES.
+- One new guide a day in EN and ES, auto-generated from the sources and verified.
 - "Reviewed by" programme with practising paediatricians.
 - Photo check limited to warning signs (petechiae, cyanosis, lip swelling) — never a diagnosis.
 - Register PediBot as a **service provider on Virtuals ACP**: other agents can buy sourced paediatric answers, paid in $PDBT / $VIRTUAL.

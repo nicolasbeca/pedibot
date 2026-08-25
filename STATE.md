@@ -58,6 +58,11 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 - **Prompt `answer_v2`** (25-ago): la fuente se nombra en la frase ("According to the SEUP…") además del [n]; tono calmado; regla explícita sobre instrucciones de seguridad sin pasaje.
 - **Calculadora con marcas** (`config/drugs.yaml`): 20 marcas de 12 países para paracetamol/ibuprofeno con su concentración; `/api/dose`, `/api/drugs`; el chat enruta "how much Calpol for 14 kg" a la calculadora.
 
+## Políticas de comunicación (decisiones del operador)
+
+- **Costes e interioridades son privados** (25-ago): la web y los textos públicos dicen que mantener PediBot cuesta dinero y que el token lo financia, pero **no cifras** (servidor, coste por respuesta, saldo) ni detalles de infraestructura. El «libro de cuentas» público se retiró; en su lugar, tarjeta «qué financia el token» y novedades periódicas de producto. Los informes con cifras van solo al Telegram del operador.
+- **Respuestas sin bloque de fuentes** (25-ago): el organismo se nombra en la frase; sin enlaces, títulos ni marcadores. Máximo ~110 palabras.
+
 ## Lo que NO está hecho / conocido
 
 - **Recuperación de tablas de dosis floja**: la guía AEPap es una tabla y BM25 no la puntúa bien ("how much paracetamol for 12 kg" no sube la tabla pediátrica). Mitigado por el enrutador determinista (pregunta con peso → calculadora sin LLM). Solución de fondo: embeddings (extra `[embeddings]`, e5-small) en F2.
