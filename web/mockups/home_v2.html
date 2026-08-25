@@ -1,4 +1,5 @@
 <title>PediBot</title>
+<meta name="color-scheme" content="light">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -11,15 +12,7 @@
     --shadow: 0 10px 30px rgba(43, 58, 53, .07);
     --r: 20px;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ground: #1B2522; --paper: #22302C; --cream: #263631;
-      --mint: #23413A; --mint-2: #2C5348; --peach: #3D302A; --lavender: #2E2D3F; --sky: #243542;
-      --sage: #9FD9C8; --sage-deep: #C6ECE1; --ink: #EAF2EE; --ink-2: #B4C6BE; --ink-3: #7F958C;
-      --line: #33453F; --coral: #F0A497; --coral-soft: #45302C; --amber: #F1C97A; --amber-soft: #463A22;
-      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
-    }
-  }
+  /* Light by default (operator decision 25-ago): the OS dark setting is ignored; night mode only via the 🌙 toggle. */
   :root[data-theme="dark"] {
     --ground: #1B2522; --paper: #22302C; --cream: #263631;
     --mint: #23413A; --mint-2: #2C5348; --peach: #3D302A; --lavender: #2E2D3F; --sky: #243542;
@@ -315,7 +308,7 @@
   document.getElementById('calc').addEventListener('click', calc); calc();
 
   const root = document.documentElement, tg = document.getElementById('toggle');
-  const isDark = () => root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+  const isDark = () => root.dataset.theme === 'dark';
   const label = () => { tg.textContent = isDark() ? '☀️' : '🌙'; };
   tg.addEventListener('click', () => { root.dataset.theme = isDark() ? 'light' : 'dark'; label(); }); label();
 })();
