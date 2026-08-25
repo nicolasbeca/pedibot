@@ -198,7 +198,9 @@ class Index:
     def __init__(self, db_path: Path):
         if not db_path.exists():
             raise FileNotFoundError(f"index not found: {db_path} (run `pedibot ingest` first)")
-        self.con = sqlite3.connect(db_path, check_same_thread=False)  # read-only use from API threads
+        self.con = sqlite3.connect(
+            db_path, check_same_thread=False
+        )  # read-only use from API threads
 
     def size(self) -> int:
         row = self.con.execute("SELECT v FROM meta WHERE k='n_chunks'").fetchone()

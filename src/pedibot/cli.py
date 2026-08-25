@@ -207,6 +207,38 @@ def serve(host: str = "127.0.0.1", port: int = 8601, reload: bool = False) -> No
     uvicorn.run("pedibot.api:app_from_settings", host=host, port=port, reload=reload, factory=True)
 
 
+@app.command()
+def publish(
+    topic: str | None = None,
+    lang: str = "en",
+    n: int = 1,
+    fake: bool = False,
+    site_url: str = "https://pedibot.example",
+) -> None:
+    """Generate grounded article(s) → web/content/<lang>/ + publish/queue/x/. Auto-publish policy."""
+    from pedibot.bot.llm import FakeProvider, provider_from_settings
+    from pedibot.index.store import Index
+    from pedibot.publish.articles import generate_article, pending_topics, write_article
+
+    s = get_settings()
+    fake_text = "TITLE: t\nSUMMARY: s\nBODY:\n## What it is\nx [1]."
+    llm = FakeProvider(fake_text) if fake else provider_from_settings()
+    index = Index(s.index_db_path)
+    content = ROOT / "web" / "content"
+    queue = ROOT / "publish" / "queue"
+    topics = [topic] if topic else pending_topics(content, lang)[:n]
+    for t in topics:
+        try:
+            a = generate_article(index, llm, t, lang)
+        except ValueError as e:
+            typer.echo(f"  ! {t}: {e}")
+            continue
+        md, q = write_article(a, content, queue, site_url)
+        typer.echo(
+            f"  ✓ {t} → {md}  (social text: {q})  cost=${a.llm.cost_usd:.4f} {a.verification}"
+        )
+
+
 if __name__ == "__main__":
     logger.disable("pedibot")
     app()

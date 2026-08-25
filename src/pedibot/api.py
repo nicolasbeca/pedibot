@@ -11,11 +11,15 @@ from dataclasses import dataclass
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from pedibot import __version__
 from pedibot.bot.answer import NO_SOURCE, Engine
 from pedibot.ops.store import AnswerRecord, OpsStore
+from pedibot.settings import ROOT
+
+STATIC_DIR = ROOT / "web" / "static"
 
 
 class AskIn(BaseModel):
@@ -177,6 +181,9 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
             raise HTTPException(404, "answer not found for this session")
         return {"ok": True}
 
+    static = STATIC_DIR
+    if static.exists():
+        app.mount("/", StaticFiles(directory=static, html=True), name="static")
     return app
 
 

@@ -34,9 +34,11 @@
 | Calculadora de dosis | ✅ paracetamol / ibuprofeno con rangos de la guía AEPap, topes duros, edad/peso mínimos, ml por presentación; test por fila + property-based (hypothesis) de que nunca supera los topes. | `src/pedibot/bot/dose.py` |
 | Motor de respuesta | ✅ pipeline completo: triaje → (enrutador de dosis determinista) → (pregunta la edad si falta con fiebre) → recuperación con expansión cross-lingüe (`config/synonyms.yaml` + LLM opcional) → prompt `answer_v1` → **verificador** (citas existentes, ninguna cifra mg/ml sin tabla de dosis) → 1 regeneración → fallback "no tengo fuente" → ensamblado con banner por país (`config/emergency_numbers.yaml`, 18 países). Proveedor LLM intercambiable (`FakeProvider` en tests; DeepSeek vía cliente OpenAI). | `src/pedibot/bot/answer.py`, `retrieval.py`, `llm.py`, `prompts/answer_v1.md` |
 | API HTTP | ✅ FastAPI: `POST /api/ask` (JSON: question, country, lang, session), `POST /api/feedback` (👍/👎 solo desde la sesión propietaria), `GET /api/health`, `GET /api/stats`. Registro anonimizado en `data/pedibot_ops.db` (sesión aleatoria, IP solo como hash con sal, tokens/coste/latencia/versión de prompt). Rate limit por IP (20/10 min, 200/día) y **modo degradado** al superar `MAX_DAILY_LLM_USD`: devuelve pasajes sin LLM. CORS solo a `ALLOWED_ORIGINS`. 7 tests con `TestClient`. `pedibot serve` arranca uvicorn en 127.0.0.1:8601. | `src/pedibot/api.py`, `src/pedibot/ops/store.py` |
-| CLI | ✅ `pedibot ingest / search / triage / dose / ask [--fake] / eval / serve` | `src/pedibot/cli.py` |
+| Publicación | ✅ Generador de artículos (`publish/articles.py`): plan de 28 temas anclados en hojas para padres, prompt `article_v1` (TITLE/SUMMARY/BODY con 4 secciones fijas, siempre "cuándo ir a urgencias"), **mismo verificador de citas/dosis que el bot** (1 reintento, si falla se descarta), salida Markdown con frontmatter (`web/content/<lang>/<slug>.md`) + texto para X en `publish/queue/x/` (publicación manual). `pedibot publish [--topic] [--lang] [--n] [--fake]`. 5 tests. Sin LLM real todavía. | `src/pedibot/publish/` |
+| Web (prototipo servible) | ✅ `web/static/index.html`: el boceto convertido en página real — el chat llama a `/api/ask`, renderiza banner/citas/fuentes con enlace al PDF, 👍/👎 a `/api/feedback`, selector de país (auto por idioma del navegador), sesión en localStorage. La API la sirve en `/` (`pedibot serve` → http://127.0.0.1:8601). Probado end-to-end con `LLM_PROVIDER=fake`. Astro/i18n/artículos siguen pendientes (Node). | `web/static/` |
+| CLI | ✅ `pedibot ingest / search / triage / dose / ask [--fake] / eval / serve / publish` | `src/pedibot/cli.py` |
 | Golden set + eval | ✅ `eval/golden.jsonl` (60 preguntas es/en con nivel, reglas, documento esperado o ruta esperada) y `pedibot eval` (sin LLM). **Resultado 25-ago: triaje 1,0 · recall red flags 1,0 · precisión 1,0 · reglas 1,0 · fuente en top-3 0,96 · enrutado 1,0.** Informe en `eval/reports/`. Mejoras que lo lograron: pesos por tipo de documento (hoja_padres ×1,6, libro ×0,55), boost por tema de la taxonomía, sinónimos es→es coloquiales, filtro de bibliografías en la ingesta, regla fuera-de-ámbito (sin tema pediátrico → 3 términos o silencio). | `src/pedibot/eval.py` |
-| Tests | ✅ **82 tests verdes**, ruff + mypy limpios. | `tests/` |
+| Tests | ✅ **94 tests verdes**, ruff + mypy limpios. | `tests/` |
 | Web | 🎨 Boceto v1 (HTML autocontenido, día/noche, chat demo operable con 3 conversaciones guionizadas, pipeline en 3 pasos, herramientas, muro de fuentes, sección del token con libro de cuentas). Sin Astro todavía (no hay Node en el equipo). | `web/mockups/home.html` · artefacto publicado |
 
 ## Lo que NO está hecho / conocido
@@ -47,7 +49,7 @@
 - Fallos abiertos del golden set (2 de 60): g49 "¿cuánto tiene que dormir un niño de 2 años?" (la guía OMS está en inglés y no hay expansión es→en, I-17) y g60 recién nacido que rechaza tomas (fuente AEP no sube; el triaje sí lo marca urgente).
 - **OCR pendiente** de `las_50_principales_consultas.pdf` (sin tesseract local).
 - **Fuentes en inglés** se indexan tal cual; la expansión de sinónimos solo va en→es (para una pregunta en español sobre una guía de la OMS en inglés no hay expansión es→en).
-- **Sin API HTTP ni widget real**; sin persistencia de conversaciones ni coste; sin Astro; sin VPS.
+- **Sin Astro ni VPS**; la web real (i18n, artículos renderizados, SEO) espera a Node. El prototipo estático ya funciona contra la API.
 - 7 fuentes con licencia `?` en el catálogo (aceptadas provisionalmente como `citar_solo`).
 
 ## Deudas técnicas
