@@ -32,7 +32,7 @@ sudo -u pedibot bash -c 'cd /opt/pedibot && ~/.local/bin/uv sync --no-dev -q'
 cp /opt/pedibot/ops/systemd/*.service /opt/pedibot/ops/systemd/*.timer /etc/systemd/system/
 cp /opt/pedibot/ops/Caddyfile /etc/caddy/Caddyfile
 systemctl daemon-reload
-systemctl enable --now pedibot-api.service pedibot-watchdog.timer pedibot-backup.timer pedibot-publish.timer
+systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-watchdog.timer pedibot-backup.timer pedibot-publish.timer
 systemctl restart pedibot-api.service
 caddy validate --config /etc/caddy/Caddyfile && systemctl reload caddy
 sleep 2

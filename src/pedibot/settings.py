@@ -37,6 +37,9 @@ class Settings(BaseSettings):
     rate_limit_per_day: int = 200
     ops_db_path: Path = ROOT / "data" / "pedibot_ops.db"
 
+    # Telegram (public chatbot; alerts use TELEGRAM_BOT_TOKEN in ops/watchdog.py)
+    telegram_public_bot_token: str = ""
+
     # Config files
     config_dir: Path = ROOT / "config"
 

@@ -320,6 +320,17 @@ def balance(warn_below_pct: float = 20.0, initial_usd: float = 0.0) -> None:
         raise typer.Exit(code=2)
 
 
+@app.command()
+def telegram() -> None:
+    """Run the public Telegram chatbot (long polling). Needs TELEGRAM_PUBLIC_BOT_TOKEN."""
+    from pedibot.telegram_bot import front_from_settings, run_polling
+
+    s = get_settings()
+    if not s.telegram_public_bot_token:
+        raise typer.BadParameter("TELEGRAM_PUBLIC_BOT_TOKEN missing in .env")
+    run_polling(front_from_settings(), s.telegram_public_bot_token)
+
+
 if __name__ == "__main__":
     logger.disable("pedibot")
     app()

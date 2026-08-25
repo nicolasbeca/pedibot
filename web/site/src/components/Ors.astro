@@ -1,0 +1,37 @@
+---
+import type { Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = lang === 'es' ? { h: 'Suero de rehidratación oral: cuánto y cómo', p: 'Cantidades tomadas del prospecto oficial (AEMPS) y de la hoja de vómitos de la SEUP. Sin IA.', age: 'Edad', vom: 'Está vomitando', calc: 'Ver pauta', src: 'Fuentes' }
+  : { h: 'Oral rehydration solution: how much and how', p: 'Amounts quoted from the official leaflet (AEMPS, Spain), the SEUP vomiting sheet and the UK Dioralyte leaflet. No AI.', age: 'Age', vom: 'Currently vomiting', calc: 'Show guidance', src: 'Sources' };
+const ages = lang === 'es' ? [['0.5','menos de 1 mes'],['6','1–11 meses'],['24','1–2 años'],['48','3–5 años'],['96','6–11 años'],['156','12+ años']] : [['0.5','under 1 month'],['6','1–11 months'],['24','1–2 years'],['48','3–5 years'],['96','6–11 years'],['156','12+ years']];
+---
+<section class="block" id="ors" data-lang={lang} data-t={JSON.stringify(T)}>
+  <p class="eyebrow">ORS</p>
+  <h2 style="margin-top:8px">{T.h}</h2>
+  <p class="lede">{T.p}</p>
+  <div class="ors-form" style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-top:18px">
+    <label class="f"><span>{T.age}</span><select id="ors-age">{ages.map(([v, l]) => <option value={v} selected={v === '48'}>{l}</option>)}</select></label>
+    <label class="pill" style="padding:10px 14px"><input id="ors-vom" type="checkbox" /> {T.vom}</label>
+    <button class="btn btn-primary" id="ors-go" type="button">{T.calc}</button>
+  </div>
+  <div id="ors-out" class="card" style="margin-top:16px" aria-live="polite"></div>
+</section>
+<style>
+  .f { display: grid; gap: 4px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .9rem; }
+  .f select { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 10px 12px; font-weight: 400; font-family: "Atkinson Hyperlegible", sans-serif; }
+  #ors-out :global(.warn) { background: var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 10px; font-size: .92rem; }
+  #ors-out :global(.src) { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+</style>
+<script>
+  const sec = document.getElementById('ors') as HTMLElement; const T = JSON.parse(sec.dataset.t || '{}'); const lang = sec.dataset.lang || 'en';
+  const out = document.getElementById('ors-out')!;
+  const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+  async function go() {
+    const age = (document.getElementById('ors-age') as HTMLSelectElement).value; const vom = (document.getElementById('ors-vom') as HTMLInputElement).checked;
+    const r = await fetch(`/api/ors?age_months=${age}&vomiting=${vom}&lang=${lang}`); if (!r.ok) return;
+    const j = await r.json();
+    out.innerHTML = j.lines.map((l: string) => `<p style="margin:6px 0">${esc(l)}</p>`).join('') + j.warnings.map((w: string) => `<div class="warn">⚠️ ${esc(w)}</div>`).join('') + `<p class="src">${T.src}: ${j.sources.map(esc).join(' · ')}</p>`;
+  }
+  document.getElementById('ors-go')!.addEventListener('click', go); go();
+</script>

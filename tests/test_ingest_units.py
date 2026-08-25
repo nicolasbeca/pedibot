@@ -109,7 +109,7 @@ def test_long_section_split_with_overlap():
 # ---------- catalog ----------
 def test_catalog_loads_and_covers_all_pdfs(config_dir):
     docs = load_catalog(config_dir / "fuentes.yaml")
-    pdf_docs = [d for d in docs if d.file.endswith('.pdf')]
+    pdf_docs = [d for d in docs if d.file.endswith(".pdf") and not d.file.startswith("web/")]
     assert len(pdf_docs) == 49  # 49 PDFs in FUENTES (the 2 pitch decks live at the repo root)
     assert len(docs) >= 49 + 150  # + curated web pages (config/fuentes_web.yaml)
     by_file = catalog_by_file(docs)

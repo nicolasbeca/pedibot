@@ -130,3 +130,13 @@ def test_child_mode_reaches_prompt(client):
         "/api/ask", json={"question": "mi hijo de 4 años tiene fiebre", "mode": "child"}
     ).json()
     assert j["verification"] in ("ok", "fallback")
+
+
+def test_ors_endpoint(client):
+    j = client.get("/api/ors?age_months=36&vomiting=true&lang=es").json()
+    assert (
+        j["age_band"] == "vomiting"
+        and any("200 ml" in ln for ln in j["lines"])
+        and any("SEUP" in s for s in j["sources"])
+    )
+    assert client.get("/api/ors?age_months=0.5").json()["refer"] is True

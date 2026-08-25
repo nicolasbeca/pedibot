@@ -20,6 +20,7 @@ Patrón heredado de MultiBot: un VPS Ubuntu 24.04, usuario de servicio, `uv`, sy
 | `deploy.sh` | Despliegue incremental desde el PC: rsync del código, `index/pedibot.db`, `web/site/dist`; `uv sync`; restart de la API. |
 | `Caddyfile` | `pedibot.xyz` → estático `dist` + `/api/*` y `/a/*` → `127.0.0.1:8601`. Cabeceras de seguridad. |
 | `systemd/pedibot-api.service` | uvicorn en 127.0.0.1:8601 como usuario `pedibot`. |
+| `systemd/pedibot-telegram.service` | El mismo motor por Telegram (long polling, `pedibot telegram`), token `TELEGRAM_PUBLIC_BOT_TOKEN`. |
 | `systemd/pedibot-watchdog.{service,timer}` | Cada 10 min: `/api/health`, saldo DeepSeek (< 20 % → CRITICAL), disco, coste del día. Avisa por Telegram. |
 | `systemd/pedibot-backup.{service,timer}` | Diario 05:30: `data/pedibot_ops.db` + `web/content/` a `/opt/pedibot/backups/` (30 días). |
 | `systemd/pedibot-publish.{service,timer}` | Lunes y jueves 07:00: `pedibot publish --n 1` en EN y ES + `make web-build`. |

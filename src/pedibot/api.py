@@ -302,6 +302,21 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
 <style>body{{margin:0;background:#FFFDF9;color:#2B3A35;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.6}}main{{max-width:720px;margin:0 auto;padding:32px 18px}}.q{{background:#E3F4EF;border-radius:18px;padding:14px 18px;margin-bottom:14px}}.a{{background:#fff;border:1px solid #EAE4DA;border-radius:18px;padding:16px 20px;box-shadow:0 10px 30px rgba(43,58,53,.07)}}.n{{color:#8A9992;font-size:.85rem;margin-top:14px}}a{{color:#2F6B57}}</style></head>
 <body><main><p><a href="/">← pedibot.xyz</a></p><div class="q">{q}</div><div class="a">{body_html}</div><p class="n">{note}</p></main></body></html>"""
 
+    @app.get("/api/ors")
+    def ors(
+        age_months: float | None = None, vomiting: bool = False, lang: str = "en"
+    ) -> dict[str, object]:
+        from pedibot.bot.ors import advise
+
+        a = advise(age_months, vomiting, "es" if lang == "es" else "en")
+        return {
+            "age_band": a.age_band,
+            "lines": a.lines,
+            "warnings": a.warnings,
+            "sources": a.sources,
+            "refer": a.refer,
+        }
+
     @app.post("/api/feedback")
     def feedback(body: FeedbackIn) -> dict[str, bool]:
         ok = ops.set_feedback(body.answer_id, body.session, body.value)

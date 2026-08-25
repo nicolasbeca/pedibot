@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import DoseCalc from '../../components/DoseCalc.astro';
+import Ors from '../../components/Ors.astro';
 import { t } from '../../i18n';
 const lang = 'es'; const s = t(lang);
 const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: 'Calculadora de dosis de paracetamol e ibuprofeno para niños', about: { '@type': 'Drug', name: 'Paracetamol, ibuprofeno' }, audience: { '@type': 'Patient' } };
@@ -11,6 +12,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
     <h1 style="margin-top:8px">{s.dose_h2}</h1>
     <p class="lede">{s.dose_lede}</p>
     <DoseCalc lang={lang} />
+    <Ors lang="es" />
     <section class="block" style="padding-top:48px">
       <h2>¿Por qué solo estos dos?</h2>
       <p class="lede">Son los únicos medicamentos de venta libre para fiebre y dolor que las guías pediátricas recomiendan en niños. La aspirina no se da a niños (síndrome de Reye), los jarabes para la tos no se recomiendan en menores de 6 años y los antibióticos siempre necesitan pediatra.</p>
