@@ -13,6 +13,7 @@ cd "$ROOT"
 echo "== code"
 tar czf - --exclude='__pycache__' --exclude='.pytest_cache' --exclude='.mypy_cache' --exclude='.ruff_cache' \
   src config scripts eval pyproject.toml uv.lock Makefile README.md ops web/content \
+  web/site/src web/site/public web/site/package.json web/site/package-lock.json web/site/astro.config.mjs web/site/tsconfig.json 
   | $SSH "tar xzf - -C /opt/pedibot"
 
 if [ $NO_INDEX -eq 0 ]; then
