@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     # LLM
     llm_provider: str = "deepseek"
     deepseek_api_key: str = ""
-    deepseek_model: str = "deepseek-chat"
+    deepseek_model: str = "deepseek-v4-flash"
     deepseek_base_url: str = "https://api.deepseek.com"
     # USD per 1M tokens (cache miss). Updated by hand; see PRD §11.
     llm_price_in_per_m: float = 0.14
