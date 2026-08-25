@@ -55,8 +55,8 @@ const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
         </div>
       </div>
       <div class="ledger">
-        <div class="h"><span>{s.ledger_title}</span><span class="mono">USD</span></div>
-        {s.ledger_rows.map(([k, v]) => <div><span>{k}</span><span class="mono">{v}</span></div>)}
+        <div class="h"><span>{s.token_card_title}</span><span></span></div>
+        {s.token_card_rows.map(([k, v]) => <div><span>{k}</span><span class="mono">{v}</span></div>)}
         <div class="foot"><span class="mono" style="font-size:.78rem">PDBT · Base · 0x196A…15E1</span></div>
       </div>
     </div>
