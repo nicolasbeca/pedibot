@@ -1,0 +1,26 @@
+---
+import Base from '../../layouts/Base.astro';
+import Checklist from '../../components/Checklist.astro';
+const lang = 'es';
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: '¿Debo llevar a mi hijo a urgencias?', about: 'Signos de alarma pediátricos para padres' };
+---
+<Base lang={lang} title="¿Debo llevar a mi hijo a urgencias? — lista de signos de alarma" description="La guía rápida de la SEUP para padres: qué signos significan llamar ya, ir hoy o pedir cita con el pediatra. Sin IA." path="/es/emergency" jsonld={jsonld}>
+  <div class="wrap" style="padding:40px 18px">
+    <p class="eyebrow">Signos de alarma</p>
+    <h1 style="margin-top:8px">¿Debo llevar a mi hijo a urgencias?</h1>
+    <p class="lede">La misma lista que PediBot usa en su comprobación de seguridad, tal como la publican los pediatras de urgencias para las familias. Ante la duda, ve.</p>
+    <p style="margin-top:14px"><button class="btn btn-ghost" id="near" type="button">📍 Buscar urgencias cerca de mí</button> <span id="near-hint" class="n"></span></p>
+    <Checklist lang={lang} />
+  </div>
+  <script>
+    document.getElementById('near')?.addEventListener('click', () => {
+      const hint = document.getElementById('near-hint')!;
+      if (!navigator.geolocation) { window.open('https://www.openstreetmap.org/search?query=hospital%20urgencias', '_blank'); return; }
+      hint.textContent = '…';
+      navigator.geolocation.getCurrentPosition(p => {
+        const { latitude: la, longitude: lo } = p.coords;
+        window.open(`https://www.openstreetmap.org/search?query=hospital%20urgencias&lat=${la}&lon=${lo}#map=14/${la}/${lo}`, '_blank'); hint.textContent = '';
+      }, () => { window.open('https://www.openstreetmap.org/search?query=hospital%20urgencias', '_blank'); hint.textContent = ''; });
+    });
+  </script>
+</Base>

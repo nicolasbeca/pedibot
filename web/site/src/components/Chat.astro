@@ -8,7 +8,7 @@ const ages = lang === 'es'
   ? [['', s.not_set], ['2 semanas','2 semanas'], ['2 meses','2 meses'], ['6 meses','6 meses'], ['1 año','1 año'], ['2 años','2 años'], ['4 años','4 años'], ['8 años','8 años'], ['13 años','13 años']]
   : [['', s.not_set], ['2 weeks','2 weeks'], ['2 months','2 months'], ['6 months','6 months'], ['1 year','1 year'], ['2 years','2 years'], ['4 years','4 years'], ['8 years','8 years'], ['13 years','13 years']];
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net })}>
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer })}>
   <div class="chat" id="thread">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo.svg" width="72" height="72" alt="" />
@@ -28,9 +28,10 @@ const ages = lang === 'es'
       </div>
       <form class="composer" id="composer">
         <textarea id="input" rows="1" placeholder={s.placeholder} aria-label={s.placeholder}></textarea>
+        <button class="mic" type="button" id="mic" aria-label={s.voice} title={s.voice}>🎤</button>
         <button class="send" type="submit" aria-label={s.send}>➤</button>
       </form>
-      <p class="legal">{s.legal_line}</p>
+      <p class="legal">{s.legal_line} · <a href={`${lang === 'es' ? '/es' : ''}/emergency`}>{s.nav_emergency}</a></p>
     </div>
   </div>
 </div>
@@ -67,6 +68,8 @@ const ages = lang === 'es'
   .ctx input { width: 64px; border: 0; background: transparent; color: inherit; }
   .composer { display: flex; align-items: flex-end; gap: 8px; background: var(--paper); border: 1px solid var(--line); border-radius: 26px; padding: 8px 8px 8px 18px; box-shadow: var(--shadow); }
   .composer textarea { flex: 1; border: 0; background: transparent; color: var(--ink); resize: none; max-height: 140px; padding: 8px 0; line-height: 1.5; }
+  .mic { width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--cream); cursor: pointer; font-size: 1rem; }
+  .mic.on { background: var(--coral-soft); }
   .send { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--sage); color: #fff; cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; }
   :global(:root.night) .send { color: var(--ground); }
   .legal { text-align: center; font-size: .74rem; color: var(--ink-3); margin-top: 8px; }
@@ -93,7 +96,7 @@ const ages = lang === 'es'
     if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
     h += esc(j.text).replace(/\[(\d{1,2})\]/g, '<span class="cite">$1</span>').replace(/\n/g, '<br>');
     if (j.sources?.length) h += `<div class="sources"><b>${S.sources}</b><div>` + j.sources.map((s: any) => `<span class="mono">[${s.n}]</span><span>${esc(s.citation)}${s.url ? ` · <a href="${esc(s.url)}" target="_blank" rel="noopener">PDF</a>` : ''}</span>`).join('') + '</div></div>';
-    h += `<div class="foot"><span>ℹ️ ${esc(j.disclaimer)}</span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button></span></div>`;
+    h += `<div class="foot"><span>ℹ️ ${esc(j.disclaimer)}</span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button> <button class="fb share" data-id="${j.answer_id}" type="button">🔗 ${S.share}</button>${j.verification === 'ok' || j.verification === 'regenerated' ? ` <button class="fb child" data-q="${esc(j.question || '')}" type="button">🧸 ${S.child}</button> <button class="fb listen" type="button">🔊 ${S.listen}</button>` : ''}</span></div>`;
     return h;
   }
   function context(q: string) {
@@ -103,20 +106,30 @@ const ages = lang === 'es'
     if (kgIn.value && !/\bkg|kilos?\b/i.test(q)) parts.push(lang === 'es' ? `(pesa ${kgIn.value} kg)` : `(weight: ${kgIn.value} kg)`);
     return parts.join(' ');
   }
-  async function ask(q: string) {
-    bubble('user', esc(q));
+  async function ask(q: string, mode: 'parent' | 'child' = 'parent') {
+    bubble('user', esc(mode === 'child' ? '🧸 ' + q : q));
     const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
     try {
-      const r = await fetch('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: context(q), country: countrySel.value || null, lang, session }) });
+      const r = await fetch('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: context(q), country: countrySel.value || null, lang, session, mode }) });
       if (r.status === 429) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_rate; return; }
       if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_server; return; }
-      const j = await r.json(); session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
+      const j = await r.json(); j.question = q; session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
       t.innerHTML = render(j);
     } catch (e) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_net; }
     t.scrollIntoView({ block: 'end' });
   }
   thread.addEventListener('click', async e => {
     const b = (e.target as HTMLElement).closest('.fb') as HTMLButtonElement | null; if (!b) return;
+    if (b.classList.contains('share')) {
+      const r = await fetch('/api/share', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session }) });
+      if (r.ok) { const j = await r.json(); const url = location.origin + j.path; try { await navigator.clipboard.writeText(url); b.textContent = '✓ ' + S.copied; } catch (err) { prompt(S.share, url); } }
+      return;
+    }
+    if (b.classList.contains('child')) { ask(b.dataset.q || '', 'child'); return; }
+    if (b.classList.contains('listen')) {
+      const msg = b.closest('.msg') as HTMLElement; const text = (msg.querySelector('.sources') ? msg.innerText.split(S.sources)[0] : msg.innerText).replace(/^pedibot/, '');
+      const u = new SpeechSynthesisUtterance(text); u.lang = lang === 'es' ? 'es-ES' : 'en-GB'; speechSynthesis.cancel(); speechSynthesis.speak(u); return;
+    }
     await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session, value: Number(b.dataset.v) }) });
     b.parentElement!.querySelectorAll('.fb').forEach(x => (x as HTMLButtonElement).disabled = true); b.textContent += ' ✓';
   });
@@ -125,4 +138,21 @@ const ages = lang === 'es'
   input.addEventListener('input', () => { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 140) + 'px'; });
   input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
   const pre = new URLSearchParams(location.search).get('q'); if (pre) { input.value = pre; }
+
+  // voice input (Web Speech API, free, in-browser)
+  const mic = document.getElementById('mic') as HTMLButtonElement;
+  const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+  if (!SR) mic.style.display = 'none';
+  else mic.addEventListener('click', () => {
+    const rec = new SR(); rec.lang = lang === 'es' ? 'es-ES' : 'en-GB'; rec.interimResults = false; mic.classList.add('on');
+    rec.onresult = (ev: any) => { input.value = (input.value ? input.value + ' ' : '') + ev.results[0][0].transcript; input.dispatchEvent(new Event('input')); };
+    rec.onend = () => mic.classList.remove('on'); rec.onerror = () => mic.classList.remove('on'); rec.start();
+  });
+
+  // seasonal suggestion (I-27): replace the last card by the season's frequent question
+  const month = new Date().getMonth() + 1; const south = ['AU', 'NZ', 'AR', 'CL', 'BR'].includes(countrySel.value);
+  const winter = south ? (month >= 6 && month <= 9) : (month >= 11 || month <= 3);
+  const summer = south ? (month >= 12 || month <= 2) : (month >= 6 && month <= 9);
+  const card = document.querySelector('.sug.d') as HTMLElement | null; const pick = winter ? S.sug_winter : summer ? S.sug_summer : null;
+  if (card && pick) { card.dataset.q = pick[0]; card.innerHTML = esc(pick[0]) + '<small>' + esc(pick[1]) + '</small>'; }
 </script>

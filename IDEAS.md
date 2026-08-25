@@ -7,17 +7,17 @@
 | Id | Idea | Por qué | Coste | Estado |
 |---|---|---|---|---|
 | I-01 | **Comparador de medicamentos de venta libre** (paracetamol vs ibuprofeno; jarabes para la tos que NO recomienda la AEP; sueros de rehidratación) con tabla de edad mínima, dosis, intervalo, cuándo no dar | Pregunta real y frecuente; determinista; muy compartible | Medio (tablas + página) | nueva (mencionada por el operador) |
-| I-02 | **"¿Debo ir a urgencias?" interactivo**: checklist guiada por edad y síntoma a partir de la hoja SEUP/AEP, sin LLM | Es el caso de uso nº 1 y se puede hacer 100 % determinista | Bajo | aceptada 25-ago → F3 |
+| I-02 | **"¿Debo ir a urgencias?" interactivo**: checklist guiada por edad y síntoma a partir de la hoja SEUP/AEP, sin LLM | Es el caso de uso nº 1 y se puede hacer 100 % determinista | Bajo | HECHA 25-ago (config/er_checklist.yaml + /emergency) |
 | I-03 | **Diario de síntomas** local (en el navegador, sin cuenta): temperatura, dosis dadas y hora → evita doble dosis y da al pediatra un registro | Utilidad diaria real; sin datos en servidor (localStorage) | Medio | aceptada 25-ago → F3 (con I-04) |
 | I-04 | **Recordatorio de próxima dosis** (notificación del navegador) | Complementa I-03 | Bajo | aceptada 25-ago → F3 |
 | I-05 | **Calculadora de percentiles con curva dibujada** (OMS 0-5, y OMS 5-19) | Los padres lo buscan mucho; SEO | Medio | nueva |
-| I-06 | **"Explícaselo a mi hijo"**: versión de la respuesta para leer a un niño de 5-10 años | Diferenciador cálido; barato (un prompt) | Bajo | aceptada 25-ago → F3 |
+| I-06 | **"Explícaselo a mi hijo"**: versión de la respuesta para leer a un niño de 5-10 años | Diferenciador cálido; barato (un prompt) | Bajo | HECHA 25-ago (mode=child, botón 🧸) |
 | I-07 | **Modo pediatra**: respuesta con el nivel de la guía clínica (Manual PUC, antibióticos Donostia) para profesionales, con toggle | Segundo usuario; las fuentes ya están | Bajo-medio | DESCARTADA por el operador 25-ago (responsabilidad) |
-| I-08 | **Voz** (dictar la pregunta, escuchar la respuesta) — Web Speech API gratis | Padre con el niño en brazos | Bajo | aceptada 25-ago → F3 |
+| I-08 | **Voz** (dictar la pregunta, escuchar la respuesta) — Web Speech API gratis | Padre con el niño en brazos | Bajo | HECHA 25-ago (Web Speech: dictar 🎤 y escuchar 🔊) |
 | I-09 | **WhatsApp** (Cloud API, gratis hasta cierto volumen) | Canal natural de padres | Medio-alto; verificación Meta | nueva |
 | I-10 | **Fotos**: "¿qué es este sarpullido?" con modelo de visión | Muy demandado, muy arriesgado clínicamente | Bajo en coste (vision-exp ≈ 0,0002 $/foto), alto en riesgo | descartada como diagnóstico; ver I-10b |
 | I-10b | **Foto solo para signos de alarma**: la imagen se compara con la lista SEUP (petequias, cianosis, hinchazón de labios) y el bot responde "urgencias" o "no veo signos de alarma, pero no puedo decirte qué es" — nunca un nombre de enfermedad | Cubre lo que los padres quieren sin diagnosticar | Medio | nueva (propuesta 25-ago tras pregunta del operador) |
-| I-11 | **Mapa de urgencias pediátricas cercanas** (OpenStreetMap) | Cierra el "ve a urgencias" con "¿dónde?" | Medio | aceptada 25-ago → F3 |
+| I-11 | **Mapa de urgencias pediátricas cercanas** (OpenStreetMap) | Cierra el "ve a urgencias" con "¿dónde?" | Medio | HECHA 25-ago (botón «urgencias cerca de mí» → OpenStreetMap con geolocalización) |
 | I-12 | **Chat precargado desde cada artículo** ("pregunta sobre esto") | Convierte SEO en uso | Bajo | aceptada → F3 |
 | I-13 | **Historial multi-hijo con edades** (local) para no repetir la edad cada vez | Fricción menor | Bajo | nueva |
 | I-14 | **Alertas estacionales** en la home (bronquiolitis en invierno, golpe de calor en verano, gastroenteritis) | Contenido fresco sin esfuerzo | Bajo | nueva |
@@ -51,7 +51,7 @@
 
 | Id | Idea | Estado |
 |---|---|---|
-| T-01 | Página `/apoya` con libro de cuentas público y recompras verificables on-chain | aceptada → F3/F6 (detalle en PRD §9, duda D-09) |
+| T-01 | Página `/apoya` con libro de cuentas público y recompras verificables on-chain | HECHA 25-ago (/support con libro de cuentas; recompras pendientes de decisión D-09) |
 | T-02 | Actualizar el perfil del agente en Virtuals con la web nueva y enlaces | nueva |
 | T-03 | Muro de "familias que apoyan" (firma opcional de wallet) | nueva |
 | T-04 | Acceso anticipado a features para holders — SIEMPRE gratis para todos después | nueva |
@@ -86,11 +86,11 @@
 | I-22 | **Fuente nombrada en la frase** ("Según la SEUP…", "La OMS recomienda…") además del [n] verificable. | aceptada → prompt `answer_v2` desplegado |
 | I-23 | **Juez de fidelidad** (2.ª llamada al LLM que comprueba frase a frase contra los pasajes citados). Como métrica en `eval --llm --judge`; no como puerta en vivo (duplicaría coste y latencia). Nocturno sobre las conversaciones del día cuando haya tráfico. | aceptada → hecho en eval |
 | I-24 | **Calculadora de dosis con marcas por país** (Calpol, Tylenol, Apiretal, Dalsy, Nurofen, Advil, Motrin, Doliprane, Panadol, Tachipirina, Alivium…) → `config/drugs.yaml`, `/api/dose`, `/api/drugs`. Solo paracetamol e ibuprofeno; aspirina, jarabes para la tos y antihistamínicos excluidos a propósito. | aceptada → hecho |
-| I-25 | Contexto de edad y peso como "chips" en el compositor del chat (se envían con la pregunta; evita repetir la edad). | aceptada 25-ago → F3 |
+| I-25 | Contexto de edad y peso como "chips" en el compositor del chat (se envían con la pregunta; evita repetir la edad). | HECHA 25-ago (chips edad/peso/país en el compositor) |
 | I-26 | Selector de idioma de interfaz (EN/ES) en la barra; el bot ya responde en el idioma del mensaje. | aceptada 25-ago → F3 |
-| I-27 | "Tarjetas" de sugerencia en la pantalla de bienvenida con las 4 preguntas más frecuentes por temporada (bronquiolitis en invierno, golpe de calor en verano). | aceptada 25-ago → F3 |
-| I-28 | Botón "Compartir esta respuesta" → enlace público a la respuesta (sin datos del usuario) para mandarla a la pareja/abuelos. | aceptada 25-ago → F3 |
-| I-29 | Calculadora de dosis como página propia con URL (`/dose/calpol-14kg`) para SEO: "how much calpol for a 14 kg child". | aceptada 25-ago → F3 |
+| I-27 | "Tarjetas" de sugerencia en la pantalla de bienvenida con las 4 preguntas más frecuentes por temporada (bronquiolitis en invierno, golpe de calor en verano). | HECHA 25-ago (4.ª tarjeta cambia por temporada y hemisferio) |
+| I-28 | Botón "Compartir esta respuesta" → enlace público a la respuesta (sin datos del usuario) para mandarla a la pareja/abuelos. | HECHA 25-ago (/api/share → /a/<token>, noindex, sin sesión) |
+| I-29 | Calculadora de dosis como página propia con URL (`/dose/calpol-14kg`) para SEO: "how much calpol for a 14 kg child". | HECHA 25-ago (685 páginas /dose/<marca>-<kg>kg en EN y ES, 5-40 kg) |
 | I-30 | Ampliar la calculadora a suero oral (cantidad por kg tras cada deposición, hoja SEUP) — determinista y muy preguntado. | aceptada 25-ago → F2 |
 | I-31 | Conversación con memoria corta (últimos turnos) para poder preguntar "¿y si además vomita?" sin repetir todo. El motor hoy es de un turno. | HECHA 25-ago (commit a478e1b) |
 | I-32 | Aviso por Telegram cuando el saldo de DeepSeek baje del 20 % (`pedibot balance`) — parte del watchdog de F4. | aceptada → F4 |

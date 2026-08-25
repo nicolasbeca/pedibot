@@ -47,3 +47,9 @@ for key, info in cat.drugs.items():
 target2 = ROOT / "web" / "site" / "src" / "data" / "drugs.json"
 target2.write_text(json.dumps(drugs_out, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"{len(drugs_out)} drugs → {target2}")
+
+# ER checklist → web/site/src/data/checklist.json (I-02 static page)
+raw = yaml.safe_load((ROOT / "config" / "er_checklist.yaml").read_text(encoding="utf-8"))
+target3 = ROOT / "web" / "site" / "src" / "data" / "checklist.json"
+target3.write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding="utf-8")
+print(f"{len(raw['items'])} checklist items → {target3}")

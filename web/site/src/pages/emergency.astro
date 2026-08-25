@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Checklist from '../components/Checklist.astro';
+const lang = 'en';
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: 'Should I take my child to the emergency department?', about: 'Paediatric warning signs for parents' };
+---
+<Base lang={lang} title="Should I take my child to the emergency department? — checklist" description="The Spanish paediatric emergency doctors' (SEUP) quick guide for parents: which signs mean call now, go today, or see your paediatrician. No AI." path="/emergency" jsonld={jsonld}>
+  <div class="wrap" style="padding:40px 18px">
+    <p class="eyebrow">Warning signs</p>
+    <h1 style="margin-top:8px">Should I take my child to the emergency department?</h1>
+    <p class="lede">The same checklist PediBot uses for its safety check, exactly as the emergency paediatricians publish it for parents. If in doubt, go.</p>
+    <p style="margin-top:14px"><button class="btn btn-ghost" id="near" type="button">📍 Find an emergency department near me</button> <span id="near-hint" class="n"></span></p>
+    <Checklist lang={lang} />
+  </div>
+  <script>
+    document.getElementById('near')?.addEventListener('click', () => {
+      const hint = document.getElementById('near-hint')!;
+      if (!navigator.geolocation) { window.open('https://www.openstreetmap.org/search?query=hospital', '_blank'); return; }
+      hint.textContent = '…';
+      navigator.geolocation.getCurrentPosition(p => {
+        const { latitude: la, longitude: lo } = p.coords;
+        window.open(`https://www.openstreetmap.org/search?query=hospital%20emergency&lat=${la}&lon=${lo}#map=14/${la}/${lo}`, '_blank'); hint.textContent = '';
+      }, () => { window.open('https://www.openstreetmap.org/search?query=hospital', '_blank'); hint.textContent = ''; });
+    });
+  </script>
+</Base>

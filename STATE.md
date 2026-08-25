@@ -62,7 +62,7 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 - Fallos abiertos del golden set (2 de 60): g49 "¿cuánto tiene que dormir un niño de 2 años?" (la guía OMS está en inglés y no hay expansión es→en, I-17) y g60 recién nacido que rechaza tomas (fuente AEP no sube; el triaje sí lo marca urgente).
 - **OCR pendiente** de `las_50_principales_consultas.pdf` (sin tesseract local).
 - **Fuentes en inglés** se indexan tal cual; la expansión de sinónimos solo va en→es (para una pregunta en español sobre una guía de la OMS en inglés no hay expansión es→en).
-- **Sin VPS ni dominio.** La web Astro ya existe; faltan de las ideas aceptadas: I-02 checklist urgencias, I-03/04 diario y recordatorio, I-06 explícaselo a mi hijo, I-08 voz, I-11 mapa, I-27 sugerencias por temporada, I-28 compartir, I-29 páginas de dosis por marca/peso, I-30 suero (necesita fuente), página del token/libro de cuentas, privacidad/aviso legal.
+- **Sin VPS** (dominio pedibot.xyz comprado, Cloudflare). De las ideas aceptadas faltan: I-03/04 diario y recordatorio de dosis (navegador), I-30 suero (necesita fuente nueva), I-26 selector de idioma (hoy: enlace EN/ES en la barra), T-06 Virtuals ACP, W-06 pediatras revisores. Hechas el 25-ago: checklist urgencias, explícaselo a mi hijo, voz, mapa, temporada, compartir, 685 páginas de dosis SEO por idioma, /support, /legal.
 - 7 fuentes con licencia `?` en el catálogo (aceptadas provisionalmente como `citar_solo`).
 
 ## Deudas técnicas
