@@ -10,7 +10,9 @@ from pathlib import Path
 
 import yaml
 
-_STRENGTH = re.compile(r"(\d+(?:[.,]\d+)?)\s*mg\s*/\s*(\d+(?:[.,]\d+)?)?\s*ml", re.I)  # "100 mg/ml" → 1 ml
+_STRENGTH = re.compile(
+    r"(\d+(?:[.,]\d+)?)\s*mg\s*/\s*(\d+(?:[.,]\d+)?)?\s*ml", re.I
+)  # "100 mg/ml" → 1 ml
 
 
 @dataclass(frozen=True)

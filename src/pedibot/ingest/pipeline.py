@@ -14,6 +14,7 @@ from pedibot.ingest.chunk import chunk_section, merge_small
 from pedibot.ingest.classify import Taxonomy
 from pedibot.ingest.clean import clean
 from pedibot.ingest.extract import extract_pdf, file_sha256
+from pedibot.ingest.extract_html import extract_html
 from pedibot.ingest.schema import Chunk, SourceDoc
 from pedibot.ingest.sections import split_sections
 
@@ -50,7 +51,7 @@ class DocReport:
 
 
 def build_chunks(doc: SourceDoc, pdf: Path, tax: Taxonomy) -> tuple[list[Chunk], DocReport]:
-    ex = clean(extract_pdf(pdf))
+    ex = clean(extract_html(pdf) if pdf.suffix.lower() in (".html", ".htm") else extract_pdf(pdf))
     rep = DocReport(doc.doc_id, pdf.name, "ok", n_pages=len(ex.pages), n_words=ex.n_words)
     if ex.n_words < 50:
         rep.status = "no_text"
@@ -116,7 +117,9 @@ def run_ingest(
     chunks_dir = out_dir / "chunks"
     chunks_dir.mkdir(parents=True, exist_ok=True)
     reports: list[DocReport] = []
-    pdfs = {nfc(p.name): p for p in sources_dir.rglob("*.pdf")}
+    pdfs = {
+        nfc(p.name): p for p in list(sources_dir.rglob("*.pdf")) + list(sources_dir.rglob("*.html"))
+    }
 
     for name, doc in by_file.items():
         pdf = pdfs.get(name)

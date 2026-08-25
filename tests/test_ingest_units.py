@@ -109,9 +109,11 @@ def test_long_section_split_with_overlap():
 # ---------- catalog ----------
 def test_catalog_loads_and_covers_all_pdfs(config_dir):
     docs = load_catalog(config_dir / "fuentes.yaml")
-    assert len(docs) == 49  # 49 PDFs in FUENTES (the 2 pitch decks live at the repo root)
+    pdf_docs = [d for d in docs if d.file.endswith('.pdf')]
+    assert len(pdf_docs) == 49  # 49 PDFs in FUENTES (the 2 pitch decks live at the repo root)
+    assert len(docs) >= 49 + 150  # + curated web pages (config/fuentes_web.yaml)
     by_file = catalog_by_file(docs)
-    assert len(by_file) == 49
+    assert len(by_file) == len(docs)
     assert by_file["15_Fiebre.pdf"].topic == "fiebre"
     assert by_file["dermatologia_pedi.pdf"].usage == "excluido"
     assert {d.usage for d in docs} <= {"publico", "citar_solo", "excluido"}
@@ -174,3 +176,28 @@ def test_taxonomy_empty_topic_never_matches(config_dir):
     assert tax.topic_for("what is the capital of France") is None
     assert tax.topic_for("mi perro puede comer chocolate") is None
     assert tax.topic_for("my baby has a fever and a cough") in ("fiebre", "respiratorio")
+
+
+def test_extract_html_keeps_main_and_headings(tmp_path: Path):
+    from pedibot.ingest.extract_html import extract_html
+    from pedibot.ingest.sections import split_sections
+
+    html = """<html><head><title>Fever in children - NHS</title></head><body>
+    <header><nav><a>Home</a></nav></header>
+    <main><h1>Fever in children</h1><p>A fever is a high temperature.</p>
+    <h2>When to get help</h2><ul><li>your child is under 3 months</li><li>has a rash that does not fade</li></ul>
+    <div class="nhsuk-feedback">Was this page useful?</div><p>Page last reviewed: 12 May 2024</p></main>
+    <footer>© Crown copyright</footer></body></html>"""
+    p = tmp_path / "x.html"
+    p.write_text(html, encoding="utf-8")
+    ex = extract_html(p)
+    texts = [ln.text for ln in ex.pages[0].lines]
+    assert (
+        "Home" not in texts
+        and "Was this page useful?" not in texts
+        and "© Crown copyright" not in texts
+    )
+    assert not any(t.startswith("Page last reviewed") for t in texts)
+    secs = split_sections(ex)
+    assert [s.title for s in secs][-1] == "When to get help"
+    assert "under 3 months" in secs[-1].text

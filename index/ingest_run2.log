@@ -1,0 +1,2129 @@
+warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+[32m2026-08-25 10:12:31.660[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m1_alteraciones.pdf → 3 chunks (ok)[0m
+[32m2026-08-25 10:12:31.687[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m2_Anafilaxia.pdf → 2 chunks (ok)[0m
+[32m2026-08-25 10:12:31.704[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m3_Ansiedad.pdf → 5 chunks (ok)[0m
+[32m2026-08-25 10:12:31.729[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m4_Bronquiolitis.pdf → 7 chunks (ok)[0m
+[32m2026-08-25 10:12:31.754[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m5_Catarro.pdf → 4 chunks (ok)[0m
+[32m2026-08-25 10:12:31.779[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m6_Cefalea.pdf → 7 chunks (ok)[0m
+[32m2026-08-25 10:12:31.804[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m7_Colico.pdf → 7 chunks (ok)[0m
+[32m2026-08-25 10:12:31.820[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m8_Autolesiva.pdf → 5 chunks (ok)[0m
+[32m2026-08-25 10:12:31.845[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m9_Suicida.pdf → 5 chunks (ok)[0m
+[32m2026-08-25 10:12:31.867[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m10_Convulsion.pdf → 2 chunks (ok)[0m
+[32m2026-08-25 10:12:31.898[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m11_Crisisasma.pdf → 6 chunks (ok)[0m
+[32m2026-08-25 10:12:31.920[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m12_Dolorabdominal.pdf → 7 chunks (ok)[0m
+[32m2026-08-25 10:12:31.939[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m13_Sollozos.pdf → 4 chunks (ok)[0m
+[32m2026-08-25 10:12:31.970[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m14_Estreñimiento.pdf → 4 chunks (ok)[0m
+[32m2026-08-25 10:12:31.999[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m15_Fiebre.pdf → 6 chunks (ok)[0m
+[32m2026-08-25 10:12:32.026[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m16_Gastroente.pdf → 3 chunks (ok)[0m
+[32m2026-08-25 10:12:32.052[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m17_Golpecalor.pdf → 4 chunks (ok)[0m
+[32m2026-08-25 10:12:32.092[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m18_Intoxicacion.pdf → 3 chunks (ok)[0m
+[32m2026-08-25 10:12:32.115[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m19_Laringitis.pdf → 5 chunks (ok)[0m
+[32m2026-08-25 10:12:32.147[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m20_Neumonia.pdf → 7 chunks (ok)[0m
+[32m2026-08-25 10:12:32.171[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m21_Otitis_media.pdf → 5 chunks (ok)[0m
+[32m2026-08-25 10:12:32.196[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m22_Sincope.pdf → 5 chunks (ok)[0m
+[32m2026-08-25 10:12:32.213[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m23_GuiaConductaaliment.pdf → 7 chunks (ok)[0m
+[32m2026-08-25 10:12:32.297[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m24_Traumatismo-craneal_nueva.pdf → 5 chunks (ok)[0m
+[32m2026-08-25 10:12:32.316[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m25_Urticaria.pdf → 3 chunks (ok)[0m
+[32m2026-08-25 10:12:32.338[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m26_Procedimientos.pdf → 8 chunks (ok)[0m
+[32m2026-08-25 10:12:32.368[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m27_Vomitos.pdf → 5 chunks (ok)[0m
+[32m2026-08-25 10:12:32.680[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1macudir_urgencias.pdf → 3 chunks (ok)[0m
+[32m2026-08-25 10:12:33.535[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m8_ACCIONES_NO_2020.pdf → 2 chunks (ok)[0m
+[32m2026-08-25 10:12:34.331[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mguia_primeros_auxilios.pdf → 53 chunks (ok)[0m
+[32m2026-08-25 10:12:34.469[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mrecomendaciones_aep_sobre_alimentacio_n_complementaria.pdf → 35 chunks (ok)[0m
+[32m2026-08-25 10:12:35.514[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mAlimentacion_OMS.pdf → 154 chunks (ok)[0m
+[32m2026-08-25 10:12:35.770[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mSedentarismo_OMS.pdf → 61 chunks (ok)[0m
+[32m2026-08-25 10:12:35.997[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mAutismo_OMS.pdf → 43 chunks (ok)[0m
+[32m2026-08-25 10:12:36.352[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mCalendarioVacunacion_Todalavida.pdf → 9 chunks (ok)[0m
+[32m2026-08-25 10:12:36.995[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1m3-cuidame_esp.pdf → 80 chunks (ok)[0m
+[32m2026-08-25 10:12:41.341[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mGuia_Cuidame_comienzo_vida.pdf → 143 chunks (ok)[0m
+[32m2026-08-25 10:12:41.447[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mcuidados_recien_nacido.pdf → 15 chunks (ok)[0m
+[32m2026-08-25 10:12:45.135[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mECE101_version1.2.pdf → 658 chunks (ok)[0m
+[32m2026-08-25 10:12:46.781[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mObesidad_AAP.pdf → 172 chunks (ok)[0m
+[32m2026-08-25 10:12:47.179[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mHiperactividad_AAP.pdf → 27 chunks (ok)[0m
+[32m2026-08-25 10:12:47.595[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mSindromedown_AAP.pdf → 31 chunks (ok)[0m
+[32m2026-08-25 10:12:52.710[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mneonatal_AAP.pdf → 12 chunks (ok)[0m
+[32m2026-08-25 10:12:53.284[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mGuia_dosificacion_3_edicion.pdf → 92 chunks (ok)[0m
+[32m2026-08-25 10:12:55.964[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mGuia_Antibiotico_Pediatria.pdf → 41 chunks (ok)[0m
+[32m2026-08-25 10:13:04.862[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mManual-de-Pediatria.pdf → 926 chunks (ok)[0m
+[32m2026-08-25 10:13:23.192[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mcub-ch-20-01-guideline-2016-esp-pediatria-completo.pdf → 2056 chunks (ok)[0m
+[32m2026-08-25 10:15:02.619[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mlas_50_principales_consultas.pdf → 0 chunks (no_text)[0m
+[32m2026-08-25 10:15:02.673[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_fever_in_children.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:02.691[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_bronchiolitis.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:02.707[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for nhs_en_croup.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_croup.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='nhs_en_croup', file='web/nhs_en_croup.html', org='NHS', org_full='NHS (National Health Service, England)', ...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='nhs_en_bronchiolitis#bronchiolitis#1', doc_id='nhs_en_bronchiolitis', org='NHS', doc_title='Bronchiolitis', ...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_croup.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_croup.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_croup.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main class="nhsuk-main-wrapper nhsuk-main-wrapper--s" id="maincontent" lang="en-GB">[0m
+    [36m    │             [0m[36m[1m<div class="nhsuk-grid-row">[0m
+    [36m    │             [0m[36m[1m<div class...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:02.738[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_febrile_seizures.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:02.758[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_head_injury_and_concussion.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:02.784[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_diarrhoea_and_vomiting.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:02.805[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_constipation.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:02.829[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_dehydration.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:02.858[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_norovirus.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:02.899[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_chickenpox.html → 8 chunks (ok)[0m
+[32m2026-08-25 10:15:02.924[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_hand_foot_mouth_disease.html → 8 chunks (ok)[0m
+[32m2026-08-25 10:15:02.949[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_meningitis.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:02.982[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_sepsis.html → 10 chunks (ok)[0m
+[32m2026-08-25 10:15:03.144[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_rashes_babies_and_children.html → 39 chunks (ok)[0m
+[32m2026-08-25 10:15:03.165[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_colic.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:03.183[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_reflux_in_babies.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:03.200[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_baby_teething_symptoms.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:03.225[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_ear_infections.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:03.246[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_glue_ear.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:03.271[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_sore_throat.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:03.292[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_tonsillitis.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:03.312[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_scarlet_fever.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:03.337[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_slapped_cheek_syndrome.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:03.361[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_impetigo.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:03.382[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_molluscum_contagiosum.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:03.401[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_roseola.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:03.424[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_threadworms.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:03.456[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_urinary_tract_infections_utis.html → 11 chunks (ok)[0m
+[32m2026-08-25 10:15:03.470[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_burns_and_scalds.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:03.495[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_poisoning.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:03.528[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_asthma.html → 12 chunks (ok)[0m
+[32m2026-08-25 10:15:03.556[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_respiratory_syncytial_virus_rsv.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:03.579[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_pneumonia.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:03.603[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_flu.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:03.619[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for nhs_en_whooping_cough.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_whooping_cough.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='nhs_en_whooping_cough', file='web/nhs_en_whooping_cough.html', org='NHS', org_full='NHS (National Health Se...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='nhs_en_flu#flu#1', doc_id='nhs_en_flu', org='NHS', doc_title='Flu', year=2026, lang='en', section='Flu', pag...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_whooping_cough.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_whooping_cough.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_whooping_cough.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main class="nhsuk-main-wrapper nhsuk-main-wrapper--s" id="maincontent" lang="en-GB">[0m
+    [36m    │             [0m[36m[1m<div class="nhsuk-grid-row">[0m
+    [36m    │             [0m[36m[1m<div class...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:03.644[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_measles.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:03.679[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_mumps.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:03.758[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_nhs_vaccinations_and_when_to_have_them.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:03.801[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_babys_first_solid_foods.html → 16 chunks (ok)[0m
+[32m2026-08-25 10:15:03.807[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_caring_for_a_newborn.html → 1 chunks (ok)[0m
+[32m2026-08-25 10:15:03.833[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_anaphylaxis.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:03.859[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_food_allergy.html → 8 chunks (ok)[0m
+[32m2026-08-25 10:15:03.890[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_hives.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:03.907[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_conjunctivitis.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:03.932[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_nosebleed.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:03.949[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_heat_exhaustion_heatstroke.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:03.965[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_sunburn.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:04.000[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_insect_bites_and_stings.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:04.022[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_headaches_in_children.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:04.039[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_breath_holding_in_babies_and_children.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:04.060[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_head_lice_and_nits.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:04.076[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_bedwetting.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:04.088[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_growing_pains.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:04.111[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_cradle_cap.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:04.146[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mnhs_en_paracetamol_for_children.html → 12 chunks (ok)[0m
+[32m2026-08-25 10:15:04.152[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for nhs_en_ibuprofen_for_children.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_ibuprofen_for_children.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='nhs_en_ibuprofen_for_children', file='web/nhs_en_ibuprofen_for_children.html', org='NHS', org_full='NHS (Na...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='nhs_en_paracetamol_for_children#paracetamol_for_children_calpol_other_co#1', doc_id='nhs_en_paracetamol_for_...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_ibuprofen_for_children.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_ibuprofen_for_children.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/nhs_en_ibuprofen_for_children.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main class="nhsuk-main-wrapper nhsuk-main-wrapper--s" id="maincontent" lang="en-GB">[0m
+    [36m    │             [0m[36m[1m<div class="nhsuk-grid-row">[0m
+    [36m    │             [0m[36m[1m<div class...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:04.207[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_fever.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:04.257[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_commoncold.html → 8 chunks (ok)[0m
+[32m2026-08-25 10:15:04.297[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_cough.html → 2 chunks (ok)[0m
+[32m2026-08-25 10:15:04.323[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_croup.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:04.374[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_gastroenteritis.html → 8 chunks (ok)[0m
+[32m2026-08-25 10:15:04.431[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_diarrhea.html → 15 chunks (ok)[0m
+[32m2026-08-25 10:15:04.475[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_dehydration.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:04.523[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_constipation.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:04.572[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_seizures.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:04.605[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_headinjuries.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:04.659[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_concussion.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:04.729[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_choking.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:04.775[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_burns.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:04.816[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_poisoning.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:04.873[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_infantandnewborncare.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:04.917[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_infantandnewbornnutrition.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:04.967[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_breastfeeding.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:05.013[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_childdevelopment.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:05.069[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_childhoodimmunization.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:05.119[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_earinfections.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:05.161[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_sorethroat.html → 2 chunks (ok)[0m
+[32m2026-08-25 10:15:05.210[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_chickenpox.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:05.261[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_rashes.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:05.348[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_asthmainchildren.html → 18 chunks (ok)[0m
+[32m2026-08-25 10:15:05.401[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_toddlerhealth.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:05.431[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_childsafety.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:05.479[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_heatillness.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:05.555[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_foodallergy.html → 13 chunks (ok)[0m
+[32m2026-08-25 10:15:05.619[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_allergy.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:05.741[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_pneumonia.html → 10 chunks (ok)[0m
+[32m2026-08-25 10:15:05.791[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_whoopingcough.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:05.839[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_measles.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:05.890[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_meningitis.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:05.946[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_urinarytractinfections.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:05.996[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_eczema.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:06.035[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_pinkeye.html → 2 chunks (ok)[0m
+[32m2026-08-25 10:15:06.076[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_headlice.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:06.119[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_sunexposure.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:06.168[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_insectbitesandstings.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:06.225[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_autismspectrumdisorder.html → 8 chunks (ok)[0m
+[32m2026-08-25 10:15:06.290[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_teenmentalhealth.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:06.346[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_suicide.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:06.383[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_selfharm.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:06.451[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_eatingdisorders.html → 11 chunks (ok)[0m
+[32m2026-08-25 10:15:06.510[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_childrenshealth.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:06.563[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_headache.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:06.596[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_fainting.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:06.681[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_impetigo.html → 1 chunks (ok)[0m
+[32m2026-08-25 10:15:06.705[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_pinworms.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:06.753[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_en_bedwetting.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:06.786[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_fever.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:06.837[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_commoncold.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:06.860[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_croup.html → 2 chunks (ok)[0m
+[32m2026-08-25 10:15:06.910[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_gastroenteritis.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:06.966[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_diarrhea.html → 12 chunks (ok)[0m
+[32m2026-08-25 10:15:06.999[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_dehydration.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:07.032[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_headinjuries.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:07.069[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_choking.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:07.107[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_burns.html → 2 chunks (ok)[0m
+[32m2026-08-25 10:15:07.161[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_poisoning.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:07.216[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_infantandnewborncare.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:07.257[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_infantandnewbornnutrition.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:07.296[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_breastfeeding.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:07.331[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_childhoodimmunization.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:07.391[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_earinfections.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:07.426[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_chickenpox.html → 2 chunks (ok)[0m
+[32m2026-08-25 10:15:07.492[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_asthmainchildren.html → 15 chunks (ok)[0m
+[32m2026-08-25 10:15:07.533[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_toddlerhealth.html → 4 chunks (ok)[0m
+[32m2026-08-25 10:15:07.565[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_childsafety.html → 2 chunks (ok)[0m
+[32m2026-08-25 10:15:07.640[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_heatillness.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:07.677[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_measles.html → 3 chunks (ok)[0m
+[32m2026-08-25 10:15:07.723[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_meningitis.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:07.779[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_teenmentalhealth.html → 5 chunks (ok)[0m
+[32m2026-08-25 10:15:07.829[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mmlp_es_childrenshealth.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:07.879[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_child_easyread.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_child_easyread.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_child_easyread', file='web/cdc_en_child_easyread.html', org='CDC', org_full='Centers for Disease Con...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_child_easyread.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_child_easyread.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_child_easyread.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:07.918[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_rsv_about_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rsv_about_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_rsv_about_index', file='web/cdc_en_rsv_about_index.html', org='CDC', org_full='Centers for Disease C...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rsv_about_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rsv_about_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rsv_about_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:07.950[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_rsv_infants_young_children_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rsv_infants_young_children_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_rsv_infants_young_children_index', file='web/cdc_en_rsv_infants_young_children_index.html', org='CDC...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rsv_infants_young_children_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rsv_infants_young_children_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rsv_infants_young_children_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:07.984[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_hand_foot_mouth_about_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_hand_foot_mouth_about_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_hand_foot_mouth_about_index', file='web/cdc_en_hand_foot_mouth_about_index.html', org='CDC', org_ful...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_hand_foot_mouth_about_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_hand_foot_mouth_about_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_hand_foot_mouth_about_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<section class="cdc-page-title-bar cdc-page-offs...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.028[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_children.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_children.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_children', file='web/cdc_en_children.html', org='CDC', org_full='Centers for Disease Control and Pre...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_children.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_children.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_children.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.067[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_heads_up_about_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_heads_up_about_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_heads_up_about_index', file='web/cdc_en_heads_up_about_index.html', org='CDC', org_full='Centers for...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_heads_up_about_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_heads_up_about_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_heads_up_about_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<section class="cdc-page-title-bar cdc-page-offs...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.101[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_heads_up_signs_symptoms_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_heads_up_signs_symptoms_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_heads_up_signs_symptoms_index', file='web/cdc_en_heads_up_signs_symptoms_index.html', org='CDC', org...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_heads_up_signs_symptoms_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_heads_up_signs_symptoms_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_heads_up_signs_symptoms_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.145[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_act_early_milestones_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_act_early_milestones_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_act_early_milestones_index', file='web/cdc_en_act_early_milestones_index.html', org='CDC', org_full=...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_act_early_milestones_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_act_early_milestones_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_act_early_milestones_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.182[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_drowning_prevention_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_drowning_prevention_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_drowning_prevention_index', file='web/cdc_en_drowning_prevention_index.html', org='CDC', org_full='C...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='mlp_es_childrenshealth#salud_del_nino_enterese#1', doc_id='mlp_es_childrenshealth', org='MedlinePlus', doc_t...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_drowning_prevention_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_drowning_prevention_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_drowning_prevention_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.219[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mcdc_en_infant_toddler_nutrition_index.html → 2 chunks (ok)[0m
+[32m2026-08-25 10:15:08.247[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_child_development_positive_parenting_tips_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_child_development_positive_parenting_tips_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_child_development_positive_parenting_tips_index', file='web/cdc_en_child_development_positive_parent...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_child_development_positive_parenting_tips_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_child_development_positive_parenting_tips_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_child_development_positive_parenting_tips_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.325[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_rotavirus_about_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rotavirus_about_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_rotavirus_about_index', file='web/cdc_en_rotavirus_about_index.html', org='CDC', org_full='Centers f...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rotavirus_about_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rotavirus_about_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_rotavirus_about_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<section class="cdc-page-title-bar cdc-page-offs...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.361[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_norovirus_about_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_norovirus_about_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_norovirus_about_index', file='web/cdc_en_norovirus_about_index.html', org='CDC', org_full='Centers f...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_norovirus_about_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_norovirus_about_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_norovirus_about_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<section class="cdc-page-title-bar cdc-page-offs...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.399[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_pertussis_about_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_pertussis_about_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_pertussis_about_index', file='web/cdc_en_pertussis_about_index.html', org='CDC', org_full='Centers f...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_pertussis_about_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_pertussis_about_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_pertussis_about_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.435[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_measles_signs_symptoms_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_measles_signs_symptoms_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_measles_signs_symptoms_index', file='web/cdc_en_measles_signs_symptoms_index.html', org='CDC', org_f...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_measles_signs_symptoms_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_measles_signs_symptoms_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_measles_signs_symptoms_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.475[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_chickenpox_about_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_chickenpox_about_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_chickenpox_about_index', file='web/cdc_en_chickenpox_about_index.html', org='CDC', org_full='Centers...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_chickenpox_about_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_chickenpox_about_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_chickenpox_about_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<section class="cdc-page-title-bar cdc-page-offs...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.506[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_lice_about_index.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_lice_about_index.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_lice_about_index', file='web/cdc_en_lice_about_index.html', org='CDC', org_full='Centers for Disease...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_lice_about_index.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_lice_about_index.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_lice_about_index.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<section class="cdc-page-title-bar cdc-page-offs...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.530[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_ear_infection.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_ear_infection.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_ear_infection', file='web/cdc_en_ear_infection.html', org='CDC', org_full='Centers for Disease Contr...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_ear_infection.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_ear_infection.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_ear_infection.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.563[0m | [31m[1mERROR   [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m140[0m - [31m[1mingest failed for cdc_en_colds.html[0m
+[33m[1mTraceback (most recent call last):[0m
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "[32mD:\Nicolas\pedibot\.venv\Scripts\pedibot.exe\[0m[32m[1m__main__.py[0m", line [33m10[0m, in [35m<module>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1137, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x00000221BE10AAE0>
+           └ <function get_command at 0x00000221BDACD800>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 807, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x00000221BDACD260>
+           └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1203, in main
+    return _main(
+           └ <function _main at 0x00000221BDABF380>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 189, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <typer._click.core.Context object at 0x00000221BBC919D0>
+         │    └ <function TyperGroup.invoke at 0x00000221BDACCE00>
+         └ <TyperGroup >
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\core.py", line 1125, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+           │               │       │       │      └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │               │       │       └ <function Command.invoke at 0x00000221BC21C220>
+           │               │       └ <TyperCommand ingest>
+           │               └ <typer._click.core.Context object at 0x00000221BDADA900>
+           └ <function TyperGroup.invoke.<locals>._process_result at 0x00000221BEF95F80>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 746, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │   │      │    │           └ <typer._click.core.Context object at 0x00000221BDADA900>
+           │   │      │    └ <function ingest at 0x00000221BEF95B20>
+           │   │      └ <TyperCommand ingest>
+           │   └ <function Context.invoke at 0x00000221BC213560>
+           └ <typer._click.core.Context object at 0x00000221BDADA900>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\_click\core.py", line 489, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'out': 'index', 'force': True, 'sources': 'FUENTES', 'no_index': False}
+           │         └ ()
+           └ <function ingest at 0x00000221BEF95B20>
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\typer\main.py", line 1524, in wrapper
+    return callback(**use_params)
+           │          └ {'sources': WindowsPath('FUENTES'), 'out': WindowsPath('index'), 'force': True, 'no_index': False}
+           └ <function ingest at 0x00000221BE234B80>
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\[0m[32m[1mcli.py[0m", line [33m32[0m, in [35mingest[0m
+    [1mreports[0m [35m[1m=[0m [1mrun_ingest[0m[1m([0m
+    [36m          └ [0m[36m[1m<function run_ingest at 0x00000221BFE84720>[0m
+
+> File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m137[0m, in [35mrun_ingest[0m
+    [1mchunks[0m[1m,[0m [1mrep[0m [35m[1m=[0m [1mbuild_chunks[0m[1m([0m[1mdoc[0m[1m,[0m [1mpdf[0m[1m,[0m [1mtax[0m[1m)[0m
+    [36m│             │            │    │    └ [0m[36m[1m<pedibot.ingest.classify.Taxonomy object at 0x00000221BE3172F0>[0m
+    [36m│             │            │    └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_colds.html')[0m
+    [36m│             │            └ [0m[36m[1mSourceDoc(doc_id='cdc_en_colds', file='web/cdc_en_colds.html', org='CDC', org_full='Centers for Disease Control and Preventio...[0m
+    [36m│             └ [0m[36m[1m<function build_chunks at 0x00000221BEFE8220>[0m
+    [36m└ [0m[36m[1m[Chunk(chunk_id='cdc_en_infant_toddler_nutrition_index#infant_and_toddler_nutrition_featured#1', doc_id='cdc_en_infant_toddle...[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mpipeline.py[0m", line [33m54[0m, in [35mbuild_chunks[0m
+    [1mex[0m [35m[1m=[0m [1mclean[0m[1m([0m[1mextract_html[0m[1m([0m[1mpdf[0m[1m)[0m [35m[1mif[0m [1mpdf[0m[35m[1m.[0m[1msuffix[0m[35m[1m.[0m[1mlower[0m[1m([0m[1m)[0m [35m[1min[0m [1m([0m[36m".html"[0m[1m,[0m [36m".htm"[0m[1m)[0m [35m[1melse[0m [1mextract_pdf[0m[1m([0m[1mpdf[0m[1m)[0m[1m)[0m
+    [36m     │     │            │       │   │                                        │           └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_colds.html')[0m
+    [36m     │     │            │       │   │                                        └ [0m[36m[1m<function extract_pdf at 0x00000221BFDD0AE0>[0m
+    [36m     │     │            │       │   └ [0m[36m[1m<property object at 0x00000221BBDF6F20>[0m
+    [36m     │     │            │       └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_colds.html')[0m
+    [36m     │     │            └ [0m[36m[1mWindowsPath('FUENTES/web/cdc_en_colds.html')[0m
+    [36m     │     └ [0m[36m[1m<function extract_html at 0x00000221BFDD1BC0>[0m
+    [36m     └ [0m[36m[1m<function clean at 0x00000221BFDD0A40>[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m85[0m, in [35mextract_html[0m
+
+  File "[32mD:\Nicolas\pedibot\src\pedibot\ingest\[0m[32m[1mextract_html.py[0m", line [33m77[0m, in [35m_drop_noise[0m
+    [35m[1mdef[0m [1m_drop_noise[0m[1m([0m[1mnode[0m[1m:[0m [1mTag[0m[1m)[0m [35m[1m->[0m [36m[1mNone[0m[1m:[0m
+    [36m    │           │     └ [0m[36m[1m<class 'bs4.element.Tag'>[0m
+    [36m    │           └ [0m[36m[1m<main aria-label="Main Content Area" class="container cdc-main" role="main">[0m
+    [36m    │             [0m[36m[1m<div class="cdc-page-title cdc-page-offset syndi...[0m
+    [36m    └ [0m[36m[1m<function _drop_noise at 0x00000221BFDD1800>[0m
+
+  File "D:\Nicolas\pedibot\.venv\Lib\site-packages\bs4\element.py", line 2449, in get
+    return self.attrs.get(key, default)
+           │              │    └ []
+           │              └ 'class'
+           └ <></>
+
+[31m[1mAttributeError[0m:[1m 'NoneType' object has no attribute 'get'[0m
+[32m2026-08-25 10:15:08.621[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_en_infant_and_young_child_feeding.html → 6 chunks (ok)[0m
+[32m2026-08-25 10:15:08.671[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_es_infant_and_young_child_feeding.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:08.729[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_en_diarrhoeal_disease.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:08.778[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_es_diarrhoeal_disease.html → 7 chunks (ok)[0m
+[32m2026-08-25 10:15:08.827[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_en_pneumonia.html → 8 chunks (ok)[0m
+[32m2026-08-25 10:15:08.869[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_es_pneumonia.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:08.918[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_en_measles.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:08.966[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_es_measles.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:09.083[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_en_immunization_coverage.html → 8 chunks (ok)[0m
+[32m2026-08-25 10:15:09.124[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_es_immunization_coverage.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:09.176[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_en_malnutrition.html → 9 chunks (ok)[0m
+[32m2026-08-25 10:15:09.233[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_en_adolescent_mental_health.html → 12 chunks (ok)[0m
+[32m2026-08-25 10:15:09.275[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_es_adolescent_mental_health.html → 12 chunks (ok)[0m
+[32m2026-08-25 10:15:09.338[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mwho_en_malaria.html → 10 chunks (ok)[0m
+ingest: {'ok': 189, 'no_text': 1, 'skipped_excluded': 1, 'error': 21}  → index\ingest_report.csv
+  ! las_50_principales_consultas.pdf: no_text scanned or protected PDF — needs OCR
+  ! nhs_en_croup.html: error 'NoneType' object has no attribute 'get'
+  ! nhs_en_whooping_cough.html: error 'NoneType' object has no attribute 'get'
+  ! nhs_en_ibuprofen_for_children.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_child_easyread.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_rsv_about_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_rsv_infants_young_children_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_hand_foot_mouth_about_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_children.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_heads_up_about_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_heads_up_signs_symptoms_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_act_early_milestones_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_drowning_prevention_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_child_development_positive_parenting_tips_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_rotavirus_about_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_norovirus_about_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_pertussis_about_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_measles_signs_symptoms_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_chickenpox_about_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_lice_about_index.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_ear_infection.html: error 'NoneType' object has no attribute 'get'
+  ! cdc_en_colds.html: error 'NoneType' object has no attribute 'get'
+index: 5645 chunks → D:\Nicolas\pedibot\index\pedibot.db  {'chunks': 5645, 'docs': 189, 'red_flag': 72, 'dose': 278}

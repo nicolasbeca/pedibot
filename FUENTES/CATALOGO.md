@@ -81,3 +81,16 @@ Serie numerada 1-27 (faltan algunos números). Año no consta en el texto → du
 - OCR pendiente: 1 (`las_50_principales_consultas.pdf`; `14_Estreñimiento.pdf` SÍ tiene capa de texto para pymupdf — pdftotext fallaba por el nombre con ñ). Licencia por decidir (`?`): 7.
 - Idiomas: español 41, inglés 9.
 - Faltan (candidatas, ver `IDEAS.md` F-01…F-05): hojas "En Familia" AEP, AEPap "Familia y salud", Toxicología, calendarios autonómicos.
+
+## Fuentes web públicas internacionales (añadidas el 25-ago-2026)
+
+Descargadas con `scripts/fetch_web_sources.py` a `FUENTES/web/` (no se commitean) y catalogadas en `config/fuentes_web.yaml` (generado; **se edita el script, no el YAML**). Solo organismos públicos con licencia de reutilización explícita; nada de webs comerciales ni de sociedades que no permiten reproducir texto (Raising Children Network, HealthyChildren.org/AAP → solo enlace, fuera del índice).
+
+| Organismo | Páginas | Idioma | Licencia | Notas |
+|---|---|---|---|---|
+| **NHS** (Inglaterra) | 57 | EN | Open Government Licence v3.0 (atribución "Information from the NHS website, licensed under the OGL") | Hojas "conditions" para padres: fiebre, bronquiolitis, crup, convulsión febril, golpe en la cabeza, diarrea y vómitos, meningitis, sepsis, exantemas, cólico, reflujo, dentición, otitis, faringitis, escarlatina, varicela, boca-mano-pie, impétigo, quemaduras, intoxicación, asma, VRS, neumonía, gripe, tos ferina, sarampión, vacunas, primeros sólidos, recién nacido, anafilaxia, alergia, urticaria, conjuntivitis, golpe de calor, picaduras, cefalea, espasmos del sollozo, piojos, enuresis, paracetamol e ibuprofeno para niños… |
+| **MedlinePlus** (NLM, EE. UU.) | 50 EN + 24 ES | EN, ES | Dominio público (obra del Gobierno de EE. UU.) — **solo el resumen del tema** (`#topic-summary`); las listas de enlaces y la enciclopedia ADAM, con copyright, se excluyen en la extracción | Español neutro (útil para LatAm): fiebre, resfriado, crup, gastroenteritis, deshidratación, golpes en la cabeza, atragantamiento, quemaduras, intoxicación, recién nacido, alimentación, lactancia, vacunas, otitis, varicela, asma, seguridad, calor, sarampión, meningitis, salud mental adolescente… |
+| **CDC** (EE. UU.) | 19 | EN | Dominio público | Calendario vacunal fácil de leer, VRS, boca-mano-pie, gripe en niños, HEADS UP (conmoción), hitos del desarrollo, ahogamiento, nutrición 0-2 años, rotavirus, norovirus, tos ferina, sarampión, varicela, piojos, uso de antibióticos (otitis, resfriados) |
+| **OMS** | 8 EN + 6 ES | EN, ES | CC BY-NC-SA 3.0 IGO | Hojas informativas: alimentación del lactante, enfermedades diarreicas, neumonía, sarampión, cobertura vacunal, malnutrición, salud mental adolescente, malaria |
+
+Total web: **163 páginas** (129 EN, 34 ES). Cada entrada guarda URL, año de "última revisión" cuando la página lo indica, y la licencia en `notes`. Descartadas por licencia: Raising Children (AU), HealthyChildren (AAP), KidsHealth (Nemours). Pendiente de valorar: HSE mychild.ie (Irlanda), NHS inform (Escocia, OGL), Public Health Agency of Canada (Open Government Licence – Canada), healthdirect (AU).
