@@ -258,6 +258,8 @@ class Index:
                 score *= DOC_TYPE_WEIGHT.get(ch.doc_type, 1.0)
             if boost_topic and ch.topic == boost_topic:
                 score *= 1.5
+            elif boost_topic and ch.topic not in (boost_topic, "general", "urgencias"):
+                score *= 0.7  # off-topic leaflets (heat stroke vs fever) must not outrank on-topic ones
             if (
                 red_flag_boost
                 and ch.is_red_flag
