@@ -1,0 +1,10 @@
+[Unit]
+Description=PediBot daily backup
+
+[Timer]
+OnCalendar=*-*-* 05:30:00
+Persistent=true
+Unit=pedibot-backup.service
+
+[Install]
+WantedBy=timers.target

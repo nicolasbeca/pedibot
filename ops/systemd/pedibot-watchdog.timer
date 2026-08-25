@@ -1,0 +1,10 @@
+[Unit]
+Description=Run PediBot watchdog every 10 minutes
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=10min
+Unit=pedibot-watchdog.service
+
+[Install]
+WantedBy=timers.target

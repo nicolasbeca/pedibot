@@ -1,0 +1,38 @@
+# /etc/caddy/Caddyfile — PediBot
+pedibot.xyz {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "geolocation=(self), microphone=(self), camera=()"
+		-Server
+	}
+
+	# API + shared answers → FastAPI
+	@api path /api/* /a/*
+	handle @api {
+		reverse_proxy 127.0.0.1:8601
+	}
+
+	# Static site (Astro build)
+	handle {
+		root * /opt/pedibot/web/site/dist
+		try_files {path} {path}/ {path}/index.html /404.html
+		file_server
+	}
+
+	log {
+		output file /var/log/caddy/pedibot.log {
+			roll_size 10mb
+			roll_keep 5
+		}
+		format json
+	}
+}
+
+www.pedibot.xyz {
+	redir https://pedibot.xyz{uri} permanent
+}

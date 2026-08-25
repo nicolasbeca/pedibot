@@ -1,0 +1,8 @@
+[Unit]
+Description=PediBot daily backup (ops DB + guides)
+
+[Service]
+Type=oneshot
+User=pedibot
+WorkingDirectory=/opt/pedibot
+ExecStart=/bin/bash -c 'd=backups/$(date +%%F); mkdir -p "$d" && sqlite3 data/pedibot_ops.db ".backup $d/pedibot_ops.db" 2>/dev/null || cp data/pedibot_ops.db "$d/"; cp -r web/content "$d/"; find backups -maxdepth 1 -mtime +30 -type d -exec rm -rf {} +'
