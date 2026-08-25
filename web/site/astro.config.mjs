@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // SITE_URL is read at build time (Makefile passes it); placeholder until the domain exists (D-01).
-const site = process.env.SITE_URL || 'https://pedibot.example';
+const site = process.env.SITE_URL || 'https://pedibot.xyz';
 
 export default defineConfig({
   site,

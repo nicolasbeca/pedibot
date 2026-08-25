@@ -92,7 +92,7 @@ def test_generate_and_write(index, tmp_path: Path):
     assert a.verification == "ok" and a.title.startswith("When should")
     assert len(a.sources) == 2 and a.sources[0].startswith("[1] SEUP")
     md_path, q_path = write_article(
-        a, tmp_path / "content", tmp_path / "queue", "https://pedibot.example"
+        a, tmp_path / "content", tmp_path / "queue", "https://pedibot.xyz"
     )
     md = md_path.read_text(encoding="utf-8")
     assert (
@@ -102,7 +102,7 @@ def test_generate_and_write(index, tmp_path: Path):
         and "not medical advice" in md
     )
     social = q_path.read_text(encoding="utf-8")
-    assert "https://pedibot.example/en/guides/" in social and "SEUP" in social
+    assert "https://pedibot.xyz/en/guides/" in social and "SEUP" in social
     assert "fiebre" not in pending_topics(tmp_path / "content", "en")
     assert "laringitis" in pending_topics(tmp_path / "content", "en")
 

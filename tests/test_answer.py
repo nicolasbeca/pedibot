@@ -233,3 +233,9 @@ def test_age_from_history_still_triggers_infant_rule(engine_factory):
     ]
     a = eng.ask("tiene 38,2 de fiebre", country="ES", history=hist)
     assert a.level == "urgent"
+
+
+def test_child_mode_adds_instruction(engine_factory):
+    eng, llm = engine_factory("Tu cuerpo está luchando [1].")
+    eng.ask("mi hijo de 6 años tiene fiebre", country="ES", mode="child")
+    assert "EXPLAIN TO THE CHILD" in llm.calls[0][1]

@@ -11,6 +11,7 @@ from dataclasses import dataclass
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -33,6 +34,7 @@ class AskIn(BaseModel):
     country: str | None = Field(default=None, max_length=2)
     lang: str | None = Field(default=None, pattern="^(es|en)$")
     session: str | None = Field(default=None, max_length=64)
+    mode: str = Field(default="parent", pattern="^(parent|child)$")
 
 
 class SourceOut(BaseModel):
@@ -60,6 +62,11 @@ class DoseIn(BaseModel):
     age_months: float | None = Field(default=None, ge=0, le=216)
     country: str | None = Field(default=None, max_length=2)
     lang: str = Field(default="en", pattern="^(es|en)$")
+
+
+class ShareIn(BaseModel):
+    answer_id: int
+    session: str
 
 
 class FeedbackIn(BaseModel):
@@ -149,7 +156,9 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
             )
         else:
             hist = ops.history(session) if body.session else []
-            a = engine.ask(body.question, country=body.country, lang=body.lang, history=hist)
+            a = engine.ask(
+                body.question, country=body.country, lang=body.lang, history=hist, mode=body.mode
+            )
         latency = int((time.perf_counter() - t0) * 1000)
         rec = AnswerRecord(
             session=session,
@@ -248,6 +257,50 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
             "notes": info.notes.get(body.lang, "") if info else "",
             "source": r.drug.source,
         }
+
+    @app.get("/api/checklist")
+    def checklist(lang: str = "en") -> dict[str, object]:
+        import yaml
+
+        from pedibot.settings import get_settings
+
+        raw = yaml.safe_load(
+            (get_settings().config_dir / "er_checklist.yaml").read_text(encoding="utf-8")
+        )
+        lg = "es" if lang == "es" else "en"
+        return {
+            "source": raw["source_label"][lg],
+            "levels": {k: v[lg] for k, v in raw["levels"].items()},
+            "categories": {k: v[lg] for k, v in raw["categories"].items()},
+            "items": [{"level": i["level"], "cat": i["cat"], "text": i[lg]} for i in raw["items"]],
+        }
+
+    @app.post("/api/share")
+    def share(body: ShareIn) -> dict[str, str]:
+        token = ops.create_share(body.answer_id, body.session)
+        if not token:
+            raise HTTPException(404, "answer not found for this session")
+        return {"token": token, "path": f"/a/{token}"}
+
+    @app.get("/a/{token}", response_class=HTMLResponse)
+    def shared_answer(token: str) -> str:
+        d = ops.get_share(token)
+        if not d:
+            raise HTTPException(404, "not found")
+        import html
+
+        lang = str(d["lang"])
+        title = "PediBot — shared answer" if lang != "es" else "PediBot — respuesta compartida"
+        body_html = html.escape(str(d["answer"])).replace("\n", "<br>")
+        q = html.escape(str(d["question"]))
+        note = (
+            "Shared from PediBot. Information from official paediatric guidelines — not medical advice."
+            if lang != "es"
+            else "Compartido desde PediBot. Información de guías pediátricas oficiales — no es consejo médico."
+        )
+        return f"""<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>{title}</title>
+<style>body{{margin:0;background:#FFFDF9;color:#2B3A35;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.6}}main{{max-width:720px;margin:0 auto;padding:32px 18px}}.q{{background:#E3F4EF;border-radius:18px;padding:14px 18px;margin-bottom:14px}}.a{{background:#fff;border:1px solid #EAE4DA;border-radius:18px;padding:16px 20px;box-shadow:0 10px 30px rgba(43,58,53,.07)}}.n{{color:#8A9992;font-size:.85rem;margin-top:14px}}a{{color:#2F6B57}}</style></head>
+<body><main><p><a href="/">← pedibot.xyz</a></p><div class="q">{q}</div><div class="a">{body_html}</div><p class="n">{note}</p></main></body></html>"""
 
     @app.post("/api/feedback")
     def feedback(body: FeedbackIn) -> dict[str, bool]:

@@ -17,6 +17,12 @@ from pedibot.index.store import Hit
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 MAX_TURNS = 6  # PRD §5.4: short window
+CHILD_MODE = (
+    "MODE: EXPLAIN TO THE CHILD. The parent wants a version to read aloud to a child aged 5-10. "
+    "Keep every rule (sources only, citations [n], no doses). Write 3-5 very short, warm sentences "
+    "in second person to the child ('your body…'), no scary words, one simple comparison, and end "
+    "with one thing the child can do (drink, rest, tell mum or dad if…). Keep the citations.\n"
+)
 _CIT = re.compile(r"\[(\d{1,2})\]")
 _WEIGHT = re.compile(r"(\d{1,3}(?:[.,]\d)?)\s*(?:kg|kilos?|kilogramos?|kgs)\b", re.I)
 _DRUG = re.compile(
@@ -243,6 +249,7 @@ class Engine:
         country: str | None = None,
         lang: str | None = None,
         history: list[dict[str, str]] | None = None,
+        mode: str = "parent",
     ) -> Answer:
         """`history`: previous turns, oldest first, [{"role": "user"|"assistant", "text": ...}].
         Only the last MAX_TURNS are used (PRD §5.4)."""
@@ -302,6 +309,7 @@ class Engine:
             "the sources may be in another language, translate faithfully.\n"
             f"{_age_context(tr)}"
             f"{_history_block(history)}"
+            f"{CHILD_MODE if mode == 'child' else ''}"
             f"PARENT MESSAGE:\n{query}\n\nSOURCES:\n{_format_sources(hits)}"
         )
         result = self.llm.complete(self.prompt, user, temperature=0.2)

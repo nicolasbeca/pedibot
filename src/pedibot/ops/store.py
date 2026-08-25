@@ -44,6 +44,11 @@ CREATE TABLE IF NOT EXISTS turns (
     text TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS turns_session ON turns(session, id);
+CREATE TABLE IF NOT EXISTS shares (
+    token TEXT PRIMARY KEY,
+    answer_id INTEGER NOT NULL,
+    ts TEXT NOT NULL
+);
 """
 
 
@@ -164,6 +169,30 @@ class OpsStore:
             (session, cutoff, max_turns),
         ).fetchall()
         return [{"role": r, "text": t} for r, t in reversed(rows)]
+
+    # ---- public shares (I-28): the answer text only, never the session ----
+    def create_share(self, answer_id: int, session: str) -> str | None:
+        import secrets
+
+        row = self.con.execute(
+            "SELECT 1 FROM answers WHERE id=? AND session=?", (answer_id, session)
+        ).fetchone()
+        if not row:
+            return None
+        token = secrets.token_urlsafe(9)
+        self.con.execute("INSERT INTO shares VALUES (?,?,?)", (token, answer_id, _now()))
+        self.con.commit()
+        return token
+
+    def get_share(self, token: str) -> dict[str, object] | None:
+        row = self.con.execute(
+            "SELECT a.question, a.answer, a.level, a.lang, a.ts FROM shares s"
+            " JOIN answers a ON a.id = s.answer_id WHERE s.token=?",
+            (token,),
+        ).fetchone()
+        if not row:
+            return None
+        return {"question": row[0], "answer": row[1], "level": row[2], "lang": row[3], "ts": row[4]}
 
     # ---- rate limiting ----
     def ip_hash(self, ip: str) -> str:

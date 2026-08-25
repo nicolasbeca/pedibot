@@ -226,7 +226,7 @@ def publish(
     lang: str = "en",
     n: int = 1,
     fake: bool = False,
-    site_url: str = "https://pedibot.example",
+    site_url: str = "https://pedibot.xyz",
 ) -> None:
     """Generate grounded article(s) → web/content/<lang>/ + publish/queue/x/. Auto-publish policy."""
     from pedibot.bot.llm import FakeProvider, provider_from_settings

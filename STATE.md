@@ -12,7 +12,7 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 
 | Duda | Decisión |
 |---|---|
-| D-01 dominio | Nuevo (era pedibotai.com; da igual cuál). Pendiente elegir y comprar. |
+| D-01 dominio | **pedibot.xyz** — comprado el 25-ago, DNS en Cloudflare (en registro). |
 | D-02 repo | Solo local por ahora; a GitHub más adelante. |
 | D-03 licencias | Propuesta aceptada: obras de referencia = `citar_solo`; Elsevier excluido. |
 | D-04 mercado | **Internacional desde el inicio. Inglés primero, español después, otros idiomas más tarde.** |
@@ -73,7 +73,7 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 | D2 | OCR de `las_50_principales_consultas.pdf` (VPS/WSL). | F1 tail |
 | D3 | Confirmar año de las hojas SEUP. | F1 tail |
 | D4 | Instalar Node/Astro para la web real. | F3 |
-| D5 | Dominio + DNS. | F4 |
+| D5 | ~~Dominio~~ pedibot.xyz comprado; DNS Cloudflare → apuntar al VPS en F4. | F4 |
 
 ## Próximos pasos (orden propuesto)
 

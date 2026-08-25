@@ -98,3 +98,35 @@ def test_ask_routes_brand_dose_question(client):
         json={"question": "how much Calpol for my 3 year old, she weighs 14 kg", "country": "GB"},
     ).json()
     assert j["verification"] == "dose_calculator" and "140" in j["text"]
+
+
+def test_checklist_endpoint(client):
+    j = client.get("/api/checklist?lang=es").json()
+    assert "SEUP" in j["source"] and len(j["items"]) >= 30
+    assert {i["level"] for i in j["items"]} == {"call_now", "go_today", "gp"}
+    assert any("3 meses" in i["text"] for i in j["items"])
+    assert "Skin" in client.get("/api/checklist?lang=en").json()["categories"].values()
+
+
+def test_share_flow(client):
+    j = client.post("/api/ask", json={"question": "mi hijo de 4 años tiene fiebre"}).json()
+    assert (
+        client.post(
+            "/api/share", json={"answer_id": j["answer_id"], "session": "other"}
+        ).status_code
+        == 404
+    )
+    s = client.post(
+        "/api/share", json={"answer_id": j["answer_id"], "session": j["session"]}
+    ).json()
+    page = client.get(s["path"])
+    assert page.status_code == 200 and "noindex" in page.text and "fiebre" in page.text
+    assert j["session"] not in page.text
+    assert client.get("/a/nope").status_code == 404
+
+
+def test_child_mode_reaches_prompt(client):
+    j = client.post(
+        "/api/ask", json={"question": "mi hijo de 4 años tiene fiebre", "mode": "child"}
+    ).json()
+    assert j["verification"] in ("ok", "fallback")

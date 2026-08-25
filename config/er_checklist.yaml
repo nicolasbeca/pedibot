@@ -1,0 +1,55 @@
+# "¿Debo acudir a urgencias?" — transcripción estructurada de la hoja SEUP para padres y cuidadores
+# (FUENTES/Subidos/acudir_urgencias.pdf, https://seup.org/pdf_public/pub/hojas_padres/acudir_urgencias.pdf).
+# Determinista, sin IA (idea I-02). Cada ítem lleva su categoría y el nivel de la hoja:
+#   call_now  = "Llame al 112 o acuda a urgencias de forma inmediata si"
+#   go_today  = "Acuda a urgencias si"
+#   gp        = "No urgente, pida consulta en su pediatra si"
+source: seup_acudir_urgencias
+source_label: {es: "SEUP — ¿Debo acudir a urgencias? Guía rápida para padres y cuidadores", en: "SEUP (Spanish paediatric emergency doctors) — Should I go to the emergency department? Quick guide for parents"}
+levels:
+  call_now: {es: "Llame al 112 o acuda a urgencias de forma inmediata si…", en: "Call the emergency number or go to the emergency department immediately if…"}
+  go_today: {es: "Acuda a urgencias si…", en: "Go to the emergency department if…"}
+  gp: {es: "No urgente: pida consulta en su pediatra si…", en: "Not urgent: book an appointment with your paediatrician if…"}
+categories:
+  piel: {es: "Piel", en: "Skin"}
+  comportamiento: {es: "Comportamiento", en: "Behaviour"}
+  respiracion: {es: "Respiración", en: "Breathing"}
+  fiebre: {es: "Fiebre", en: "Fever"}
+  gastrointestinal: {es: "Tripa y vómitos", en: "Tummy and vomiting"}
+  accidentes: {es: "Accidentes", en: "Accidents"}
+  otro: {es: "Otros", en: "Other"}
+items:
+  - {level: call_now, cat: piel, es: "Mala coloración: palidez, piel moteada, coloración azul o grisácea", en: "Poor colour: pallor, mottled skin, blue or greyish colour"}
+  - {level: call_now, cat: piel, es: "Aparición súbita de manchas en la piel, hinchazón de labios o párpados (sospecha de alergia) con dificultad para respirar, vómitos o mareo", en: "Sudden skin blotches, swollen lips or eyelids (suspected allergy) with breathing difficulty, vomiting or dizziness"}
+  - {level: call_now, cat: comportamiento, es: "No responde a estímulos", en: "Not responding to stimuli"}
+  - {level: call_now, cat: comportamiento, es: "Irritabilidad o somnolencia excesivas", en: "Excessive irritability or drowsiness"}
+  - {level: call_now, cat: comportamiento, es: "Movimientos anormales (convulsión)", en: "Abnormal movements (seizure)"}
+  - {level: call_now, cat: respiracion, es: "Dificultad para respirar grave: se marcan las costillas, respira muy rápido o hace pausas en la respiración, adormilado", en: "Severe breathing difficulty: ribs pulling in, very fast breathing or pauses in breathing, drowsy"}
+  - {level: call_now, cat: respiracion, es: "Atragantamiento y dificultad para respirar, o vómitos/salivación constante", en: "Choking with breathing difficulty, or constant vomiting/drooling"}
+  - {level: call_now, cat: accidentes, es: "Herida profunda con sangrado abundante que no cede tras aplicar presión durante 10 minutos", en: "Deep wound with heavy bleeding that does not stop after 10 minutes of pressure"}
+  - {level: call_now, cat: accidentes, es: "Fractura abierta (se ve el hueso)", en: "Open fracture (bone visible)"}
+  - {level: call_now, cat: accidentes, es: "Golpe en la cabeza con pérdida de conocimiento", en: "Head injury with loss of consciousness"}
+  - {level: go_today, cat: piel, es: "Manchas rojas en la piel que no desaparecen al presionar", en: "Red spots on the skin that do not fade when pressed"}
+  - {level: go_today, cat: piel, es: "Aparición súbita de manchas en la piel o hinchazón de labios o párpados sin otros síntomas", en: "Sudden skin blotches or swollen lips/eyelids without other symptoms"}
+  - {level: go_today, cat: fiebre, es: "Bebé menor de 3 meses con fiebre (≥ 38 °C)", en: "Baby under 3 months with fever (≥ 38 °C / 100.4 °F)"}
+  - {level: go_today, cat: fiebre, es: "Fiebre que se acompaña de cualquier signo de los apartados de piel, comportamiento o respiración", en: "Fever together with any of the skin, behaviour or breathing signs above"}
+  - {level: go_today, cat: fiebre, es: "Fiebre de más de 40,5 °C", en: "Fever above 40.5 °C (105 °F)"}
+  - {level: go_today, cat: comportamiento, es: "Mareo, pérdida de fuerza", en: "Dizziness, loss of strength"}
+  - {level: go_today, cat: comportamiento, es: "Expresa pensamientos suicidas", en: "Expresses suicidal thoughts"}
+  - {level: go_today, cat: respiracion, es: "Dificultad para respirar: se marcan las costillas, respira rápido, «pitido» al respirar", en: "Breathing difficulty: ribs pulling in, fast breathing, wheezing"}
+  - {level: go_today, cat: gastrointestinal, es: "Bebé menor de 1 mes que rechaza las tomas", en: "Baby under 1 month refusing feeds"}
+  - {level: go_today, cat: gastrointestinal, es: "Vómitos persistentes o diarrea abundante y frecuente durante más de 24 horas, ojos hundidos, orina poco", en: "Persistent vomiting or heavy, frequent diarrhoea for more than 24 hours, sunken eyes, little urine"}
+  - {level: go_today, cat: gastrointestinal, es: "Vómitos repetidos y dolor de cabeza fuerte", en: "Repeated vomiting with severe headache"}
+  - {level: go_today, cat: gastrointestinal, es: "Ingesta de un objeto, sobre todo pilas o imanes", en: "Swallowed an object, especially batteries or magnets"}
+  - {level: go_today, cat: gastrointestinal, es: "Dolor de barriga fuerte, continuo, que empeora", en: "Severe, continuous, worsening tummy pain"}
+  - {level: go_today, cat: gastrointestinal, es: "Ingesta de productos tóxicos o sobredosificación de medicamentos", en: "Ingestion of toxic products or medication overdose"}
+  - {level: go_today, cat: accidentes, es: "Traumatismo con deformidad aparente", en: "Injury with visible deformity"}
+  - {level: go_today, cat: accidentes, es: "Herida profunda que precisa sutura", en: "Deep wound that needs stitches"}
+  - {level: gp, cat: piel, es: "Manchas en la piel que desaparecen al presionar", en: "Skin spots that fade when pressed"}
+  - {level: gp, cat: fiebre, es: "Bebé entre 3 y 24 meses con temperatura > 39 °C sin datos de alarma", en: "Baby aged 3–24 months with temperature above 39 °C and no warning signs"}
+  - {level: gp, cat: fiebre, es: "Fiebre (> 38 °C) durante más de 5 días", en: "Fever (above 38 °C) for more than 5 days"}
+  - {level: gp, cat: respiracion, es: "Tos o mocos sin dificultad para respirar", en: "Cough or runny nose without breathing difficulty"}
+  - {level: gp, cat: gastrointestinal, es: "Vómitos y/o diarrea sin datos de alarma", en: "Vomiting and/or diarrhoea without warning signs"}
+  - {level: gp, cat: gastrointestinal, es: "Dolor de barriga no muy intenso que viene y va", en: "Mild tummy pain that comes and goes"}
+  - {level: gp, cat: otro, es: "Dolor de oído durante más de dos días", en: "Earache for more than two days"}
+  - {level: gp, cat: otro, es: "Ojo rojo o picor ocular", en: "Red eye or itchy eyes"}
