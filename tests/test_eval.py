@@ -32,8 +32,8 @@ def _chunk(cid, text):
     )
 
 
-def _engine(tmp_path: Path, config_dir, responder):
-    db = tmp_path / "i.db"
+def _engine(tmp_path: Path, config_dir, responder, name: str = "i.db"):
+    db = tmp_path / name  # one file per engine: Windows cannot unlink an open SQLite db
     build_index([_chunk("seup_fiebre#s#1", "La fiebre no es peligrosa. Ofrezca líquidos.")], db)
     llm = FakeProvider(responder)
     return Engine(
@@ -98,5 +98,5 @@ def test_run_llm_eval_measures_verification(tmp_path, config_dir):
     s = rep.summary()
     assert s["n"] == 2  # asked_age case skipped
     assert s["citation_validity"] == 0.0  # every draft fell back
-    rep2 = run_llm_eval(_engine(tmp_path, config_dir, "Con cita [1]."), GOLDEN)
+    rep2 = run_llm_eval(_engine(tmp_path, config_dir, "Con cita [1].", "j.db"), GOLDEN)
     assert rep2.summary()["citation_validity"] == 1.0 and rep2.summary()["with_sources"] == 1.0
