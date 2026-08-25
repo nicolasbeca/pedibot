@@ -1,10 +1,10 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-08-25** (segunda sesión de construcción).
+Última actualización: **2026-08-25, 16:30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
 ## Fase actual
 
-**F1 Ingesta — HECHA. F2 Motor — HECHO y probado con el LLM real. F3 Web+API — en marcha: API completa y sitio Astro construido (home chat, dosis, fuentes, guías, EN/ES) con las 2 primeras guías reales.** Todo corre en local; no hay VPS ni dominio. Para verlo: `make web-build` y `uv run pedibot serve` → http://127.0.0.1:8601.
+**F1–F3 HECHAS. F4 Despliegue — HECHO el 25-ago**: VPS Hetzner `46.225.74.13` (1 vCPU / 2 GB, Ubuntu 24.04, hostname `pedibot`), Caddy con certificado Let's Encrypt para `pedibot.xyz` (DNS en Cloudflare, nube gris), units `pedibot-api`, `pedibot-telegram` (@Pedichat_bot), watchdog cada 10 min (alertas a @Pedibot_ops_bot), backup 05:30, guías lunes/jueves 07:00. Despliegue desde el PC: `bash ops/deploy.sh 46.225.74.13` (tar sobre SSH; la web se construye en el PC con `make web-build`). **Siguiente: F5 beta cerrada** (10-20 padres, revisar TODAS las conversaciones).
 
 Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8601 (con `LLM_PROVIDER=fake` en `.env` funciona sin clave, pero las respuestas serán el fallback "no tengo fuente"; con `DEEPSEEK_API_KEY` responde de verdad).
 
@@ -65,7 +65,7 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 - Fallos abiertos del golden set (2 de 60): g49 "¿cuánto tiene que dormir un niño de 2 años?" (la guía OMS está en inglés y no hay expansión es→en, I-17) y g60 recién nacido que rechaza tomas (fuente AEP no sube; el triaje sí lo marca urgente).
 - **OCR pendiente** de `las_50_principales_consultas.pdf` (sin tesseract local).
 - **Fuentes en inglés** se indexan tal cual; la expansión de sinónimos solo va en→es (para una pregunta en español sobre una guía de la OMS en inglés no hay expansión es→en).
-- **Sin VPS** (dominio pedibot.xyz comprado, Cloudflare). De las ideas aceptadas faltan: T-06 Virtuals ACP (investigado; tras F4), W-06 pediatras revisores (contactos). Telegram: falta el token del bot nuevo. Hechas el 25-ago: diario+recordatorio, checklist urgencias, explícaselo a mi hijo, voz, mapa, temporada, compartir, 685 páginas de dosis SEO por idioma, /support, /legal.
+- **Producción**: el servidor es de 1 vCPU/2 GB (no CX22): suficiente para API+bot; la web se construye en el PC. Cloudflare en modo DNS-only; si se activa el proxy naranja hay que poner SSL «Full (strict)». De las ideas aceptadas faltan: T-06 Virtuals ACP (investigado; tras F4), W-06 pediatras revisores (contactos). Telegram: falta el token del bot nuevo. Hechas el 25-ago: diario+recordatorio, checklist urgencias, explícaselo a mi hijo, voz, mapa, temporada, compartir, 685 páginas de dosis SEO por idioma, /support, /legal.
 - 7 fuentes con licencia `?` en el catálogo (aceptadas provisionalmente como `citar_solo`).
 
 ## Deudas técnicas
