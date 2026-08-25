@@ -95,10 +95,8 @@ const ages = lang === 'es'
     // Operator decision 25-ago: no source list, no [n] markers, no per-message disclaimer.
     // The organisation is named inside the text; the legal line lives under the composer.
     let h = '<div class="who">pedibot</div>';
-    if (j.banner) { const lines = String(j.banner).split('
-'); h += `<div class="banner ${j.level}">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
-    h += esc(String(j.text).replace(/\s*\[\d{1,2}\]/g, '')).replace(/
-/g, '<br>');
+    if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
+    h += esc(String(j.text).replace(/\s*\[\d{1,2}\]/g, '')).replace(/\n/g, '<br>');
     h += `<div class="foot"><span></span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button> <button class="fb share" data-id="${j.answer_id}" type="button">🔗 ${S.share}</button>${j.verification === 'ok' || j.verification === 'regenerated' ? ` <button class="fb child" data-q="${esc(j.question || '')}" type="button">🧸 ${S.child}</button> <button class="fb listen" type="button">🔊 ${S.listen}</button>` : ''}</span></div>`;
     return h;
   }
