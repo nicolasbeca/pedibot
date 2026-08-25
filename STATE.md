@@ -43,9 +43,16 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 | Tests | ✅ **94 tests verdes**, ruff + mypy limpios. | `tests/` |
 | Web | 🎨 Boceto v1 (HTML autocontenido, día/noche, chat demo operable con 3 conversaciones guionizadas, pipeline en 3 pasos, herramientas, muro de fuentes, sección del token con libro de cuentas). Sin Astro todavía (no hay Node en el equipo). | `web/mockups/home.html` · artefacto publicado |
 
+## LLM real (desde el 25-ago)
+
+- Clave en `.env` (el operador la dejó como `.env.txt`; renombrada). Saldo cargado: **10 USD el 25-ago**. `uv run pedibot balance --initial-usd 10` consulta el saldo real y avisa por debajo del 20 % (exit 2) — **pendiente cablearlo al watchdog/Telegram en F4**; mientras, se comprueba a mano en cada sesión.
+- Modelo verificado: `deepseek-v4-flash` (también existen `deepseek-v4-pro` y `-vision-exp`). **V4 razona por defecto**: los tokens de razonamiento se facturan como salida y consumen `max_tokens` (la primera respuesta se cortó a 900 tokens). Desactivado con `extra_body={"thinking": {"type": "disabled"}}`. Coste medido: **0,0003-0,0005 $ por respuesta** (≈ 2.000-3.000 tokens de entrada, 180-240 de salida), 8-12 s de latencia.
+- Dos correcciones que solo se vieron con el modelo real: (1) respondía en el idioma de las fuentes (español) a preguntas en inglés → línea `ANSWER LANGUAGE` explícita; (2) a un bebé de 2 meses con fiebre le sugería "paracetamol o ibuprofeno a la dosis de su pediatra" copiando la hoja genérica → contexto de edad en el prompt (`<3 meses: nada de medicación en casa`, `<6 meses: sin ibuprofeno`). Con eso la respuesta pasa a "no le dé ningún medicamento sin indicación médica; debe ser evaluado hoy".
+- El AVG **no** mató la conexión TLS en este Windows (L06 no aplicó aquí).
+- **`pedibot eval --llm` (25-ago, 55 preguntas del golden set con `deepseek-v4-flash`)**: 54 redactadas (1 fuera de ámbito → silencio correcto), **validez de citas 1,0** (ninguna cita inventada, ninguna cifra de dosis fuera de tabla), **0 regeneraciones**, 100 % con fuentes, coste total **0,0198 $** (0,00037 $/respuesta), latencia p95 3,9 s. Informe: `eval/reports/eval_llm_2026-08-25.json`. Saldo tras la prueba: 9,98 $. Pendiente: juez de fidelidad (¿dice algo que la fuente no dice?) — hoy solo lo verifica un humano leyendo respuestas.
+
 ## Lo que NO está hecho / conocido
 
-- **Sin LLM real**: falta la clave de DeepSeek en `.env` (`DEEPSEEK_API_KEY`) y confirmar el nombre exacto del modelo V4 Flash (`DEEPSEEK_MODEL`). El pipeline se ha probado solo con `FakeProvider`. ⚠️ En este Windows el AVG mata procesos Python con TLS (L06): la primera prueba real puede necesitar el guard o hacerse desde el VPS.
 - **Recuperación de tablas de dosis floja**: la guía AEPap es una tabla y BM25 no la puntúa bien ("how much paracetamol for 12 kg" no sube la tabla pediátrica). Mitigado por el enrutador determinista (pregunta con peso → calculadora sin LLM). Solución de fondo: embeddings (extra `[embeddings]`, e5-small) en F2.
 - **El golden set mide triaje/recuperación/enrutado, NO la calidad de la redacción**: fidelidad a la fuente y validez de citas con el LLM real quedan pendientes de la clave de DeepSeek (métricas `citation_validity` y juez de fidelidad del PRD §5.5).
 - Fallos abiertos del golden set (2 de 60): g49 "¿cuánto tiene que dormir un niño de 2 años?" (la guía OMS está en inglés y no hay expansión es→en, I-17) y g60 recién nacido que rechaza tomas (fuente AEP no sube; el triaje sí lo marca urgente).
