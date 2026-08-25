@@ -22,6 +22,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <link rel="alternate" hreflang={lang} href={canonical} />
   <link rel="alternate" hreflang={other} href={`${site}${otherPath === '/' ? '' : otherPath}`} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate" type="application/rss+xml" title="PediBot guides" href={lang === 'es' ? '/es/rss.xml' : '/rss.xml'} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />

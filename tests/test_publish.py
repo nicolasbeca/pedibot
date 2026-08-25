@@ -122,14 +122,9 @@ def test_dose_numbers_without_table_rejected(index):
 
 
 def test_topic_plan_docs_exist_in_catalog(config_dir):
-    import yaml
+    from pedibot.ingest.catalog import load_catalog
 
-    ids = {
-        d["doc_id"]
-        for d in yaml.safe_load((config_dir / "fuentes.yaml").read_text(encoding="utf-8"))[
-            "sources"
-        ]
-    }
+    ids = {d.doc_id for d in load_catalog(config_dir / "fuentes.yaml")}
     for topic, plan in TOPIC_PLAN.items():
         for d in plan["docs"]:
             assert d in ids, (topic, d)

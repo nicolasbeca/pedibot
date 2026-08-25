@@ -227,6 +227,11 @@ def publish(
     n: int = 1,
     fake: bool = False,
     site_url: str = "https://pedibot.xyz",
+    social: bool = typer.Option(
+        True,
+        "--social/--no-social",
+        help="syndicate to Bluesky / Telegram channel / X if configured",
+    ),
 ) -> None:
     """Generate grounded article(s) → web/content/<lang>/ + publish/queue/x/. Auto-publish policy."""
     from pedibot.bot.llm import FakeProvider, provider_from_settings
@@ -250,6 +255,13 @@ def publish(
         typer.echo(
             f"  ✓ {t} → {md}  (social text: {q})  cost=${a.llm.cost_usd:.4f} {a.verification}"
         )
+        if social and not fake:
+            from pedibot.publish.social import Post, providers_from_env, syndicate
+
+            prefix = "/es" if lang == "es" else ""
+            post = Post(a.title, a.summary, f"{site_url}{prefix}/guides/{a.slug}", lang)
+            res = syndicate(post, providers_from_env())
+            typer.echo(f"    social: {res or 'no providers configured'}")
 
 
 def _llm_eval(golden: Path, report_dir: Path, use_judge: bool = False) -> None:

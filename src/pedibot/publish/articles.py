@@ -90,6 +90,185 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "conducta autolesiva adolescente",
     },
     "tca": {"docs": ["seup_tca"], "query": "trastorno conducta alimentaria adolescente"},
+    # ---- added 25-ago with the international public sources ----
+    "chickenpox": {
+        "docs": ["nhs_en_chickenpox", "mlp_en_chickenpox", "cdc_en_chickenpox_about_index"],
+        "query": "chickenpox varicella symptoms itching when to see doctor",
+    },
+    "hand_foot_mouth": {
+        "docs": ["nhs_en_hand_foot_mouth_disease", "cdc_en_hand_foot_mouth_about_index"],
+        "query": "hand foot and mouth disease children",
+    },
+    "scarlet_fever": {
+        "docs": ["nhs_en_scarlet_fever"],
+        "query": "scarlet fever rash strawberry tongue",
+    },
+    "meningitis_signs": {
+        "docs": ["nhs_en_meningitis", "mlp_en_meningitis", "nhs_en_sepsis"],
+        "query": "meningitis sepsis signs rash glass test children",
+    },
+    "teething": {"docs": ["nhs_en_baby_teething_symptoms"], "query": "teething symptoms baby"},
+    "reflux": {"docs": ["nhs_en_reflux_in_babies"], "query": "reflux babies bringing up milk"},
+    "constipation": {
+        "docs": ["nhs_en_constipation", "mlp_en_constipation", "seup_estrenimiento"],
+        "query": "constipation children hard stools",
+    },
+    "ear_infection": {
+        "docs": ["nhs_en_ear_infections", "mlp_en_earinfections", "cdc_en_ear_infection"],
+        "query": "ear infection children earache antibiotics",
+    },
+    "sore_throat": {
+        "docs": ["nhs_en_sore_throat", "nhs_en_tonsillitis", "mlp_en_sorethroat"],
+        "query": "sore throat tonsillitis children",
+    },
+    "common_cold": {
+        "docs": ["mlp_en_commoncold", "cdc_en_colds", "seup_catarro"],
+        "query": "common cold children runny nose antibiotics",
+    },
+    "flu": {
+        "docs": ["nhs_en_flu", "cdc_en_children"],
+        "query": "flu influenza children symptoms high risk",
+    },
+    "rsv": {
+        "docs": [
+            "nhs_en_respiratory_syncytial_virus_rsv",
+            "cdc_en_rsv_infants_young_children_index",
+            "cdc_en_rsv_about_index",
+        ],
+        "query": "RSV infants bronchiolitis symptoms",
+    },
+    "whooping_cough": {
+        "docs": ["nhs_en_whooping_cough", "mlp_en_whoopingcough", "cdc_en_pertussis_about_index"],
+        "query": "whooping cough pertussis babies vaccine",
+    },
+    "measles": {
+        "docs": ["nhs_en_measles", "mlp_en_measles", "who_en_measles"],
+        "query": "measles symptoms rash vaccine",
+    },
+    "head_injury_en": {
+        "docs": [
+            "nhs_en_head_injury_and_concussion",
+            "mlp_en_headinjuries",
+            "cdc_en_heads_up_signs_symptoms_index",
+        ],
+        "query": "head injury concussion children signs",
+    },
+    "febrile_seizure": {
+        "docs": ["nhs_en_febrile_seizures", "seup_convulsion_febril"],
+        "query": "febrile seizure what to do",
+    },
+    "diarrhoea_vomiting": {
+        "docs": ["nhs_en_diarrhoea_and_vomiting", "mlp_en_gastroenteritis", "nhs_en_dehydration"],
+        "query": "diarrhoea vomiting children fluids dehydration",
+    },
+    "burns": {
+        "docs": ["nhs_en_burns_and_scalds", "mlp_en_burns"],
+        "query": "burns scalds first aid children cool water",
+    },
+    "poisoning_en": {
+        "docs": ["nhs_en_poisoning", "mlp_en_poisoning"],
+        "query": "poisoning children swallowed what to do",
+    },
+    "choking": {
+        "docs": ["mlp_en_choking", "ninojesus_primeros_auxilios"],
+        "query": "choking baby child first aid",
+    },
+    "anaphylaxis_en": {
+        "docs": ["nhs_en_anaphylaxis", "nhs_en_food_allergy", "seup_anafilaxia"],
+        "query": "anaphylaxis food allergy adrenaline auto-injector",
+    },
+    "hives": {"docs": ["nhs_en_hives", "seup_urticaria"], "query": "hives urticaria children"},
+    "rashes": {
+        "docs": ["nhs_en_rashes_babies_and_children", "mlp_en_rashes"],
+        "query": "rashes babies children spots",
+    },
+    "heat": {
+        "docs": ["nhs_en_heat_exhaustion_heatstroke", "mlp_en_heatillness", "seup_golpe_calor"],
+        "query": "heat exhaustion heatstroke children",
+    },
+    "sunburn": {"docs": ["nhs_en_sunburn"], "query": "sunburn children sun protection"},
+    "insect_bites": {
+        "docs": ["nhs_en_insect_bites_and_stings", "mlp_en_insectbitesandstings"],
+        "query": "insect bites stings children",
+    },
+    "head_lice": {
+        "docs": ["nhs_en_head_lice_and_nits", "cdc_en_lice_about_index"],
+        "query": "head lice nits treatment",
+    },
+    "threadworms": {
+        "docs": ["nhs_en_threadworms", "mlp_en_pinworms"],
+        "query": "threadworms pinworms children",
+    },
+    "uti": {
+        "docs": ["nhs_en_urinary_tract_infections_utis", "mlp_en_urinarytractinfections"],
+        "query": "urinary tract infection children symptoms",
+    },
+    "conjunctivitis": {
+        "docs": ["nhs_en_conjunctivitis", "mlp_en_pinkeye"],
+        "query": "conjunctivitis pink eye children",
+    },
+    "nosebleed": {"docs": ["nhs_en_nosebleed"], "query": "nosebleed children how to stop"},
+    "headache_en": {
+        "docs": ["nhs_en_headaches_in_children", "mlp_en_headache", "seup_cefalea"],
+        "query": "headaches children when to worry",
+    },
+    "bedwetting": {
+        "docs": ["nhs_en_bedwetting", "mlp_en_bedwetting"],
+        "query": "bedwetting children",
+    },
+    "growing_pains": {"docs": ["nhs_en_growing_pains"], "query": "growing pains legs night"},
+    "cradle_cap": {"docs": ["nhs_en_cradle_cap"], "query": "cradle cap baby scalp"},
+    "newborn_care_en": {
+        "docs": ["nhs_en_caring_for_a_newborn", "mlp_en_infantandnewborncare"],
+        "query": "caring for a newborn first weeks",
+    },
+    "weaning_en": {
+        "docs": [
+            "nhs_en_babys_first_solid_foods",
+            "who_en_infant_and_young_child_feeding",
+            "cdc_en_infant_toddler_nutrition_index",
+        ],
+        "query": "baby first solid foods weaning 6 months",
+    },
+    "breastfeeding": {
+        "docs": ["mlp_en_breastfeeding", "who_en_infant_and_young_child_feeding"],
+        "query": "breastfeeding how often benefits",
+    },
+    "vaccines_en": {
+        "docs": [
+            "nhs_en_nhs_vaccinations_and_when_to_have_them",
+            "cdc_en_child_easyread",
+            "mlp_en_childhoodimmunization",
+        ],
+        "query": "childhood vaccination schedule when",
+    },
+    "milestones": {
+        "docs": ["cdc_en_act_early_milestones_index", "mlp_en_childdevelopment"],
+        "query": "developmental milestones baby toddler",
+    },
+    "screen_sleep": {
+        "docs": [
+            "who_physical_activity_under5",
+            "cdc_en_child_development_positive_parenting_tips_index",
+        ],
+        "query": "screen time sleep physical activity under 5",
+    },
+    "asthma_en": {
+        "docs": ["nhs_en_asthma", "mlp_en_asthmainchildren", "seup_crisis_asma"],
+        "query": "asthma children inhaler attack",
+    },
+    "paracetamol_en": {
+        "docs": ["nhs_en_paracetamol_for_children"],
+        "query": "paracetamol for children how to give",
+    },
+    "ibuprofen_en": {
+        "docs": ["nhs_en_ibuprofen_for_children"],
+        "query": "ibuprofen for children how to give",
+    },
+    "teen_mental_health": {
+        "docs": ["mlp_en_teenmentalhealth", "who_en_adolescent_mental_health"],
+        "query": "teen mental health anxiety depression signs",
+    },
 }
 
 
