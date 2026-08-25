@@ -18,7 +18,7 @@ class LLMResult:
 
 class LLMProvider(Protocol):
     def complete(
-        self, system: str, user: str, temperature: float = 0.2, max_tokens: int = 900
+        self, system: str, user: str, temperature: float = 0.2, max_tokens: int = 1500
     ) -> LLMResult: ...
 
 
@@ -30,7 +30,7 @@ class FakeProvider:
         self.calls: list[tuple[str, str]] = []
 
     def complete(
-        self, system: str, user: str, temperature: float = 0.2, max_tokens: int = 900
+        self, system: str, user: str, temperature: float = 0.2, max_tokens: int = 1500
     ) -> LLMResult:
         self.calls.append((system, user))
         text = self._responder(system, user) if callable(self._responder) else self._responder
@@ -55,13 +55,16 @@ class OpenAICompatibleProvider:
         self._pout = price_out_per_m
 
     def complete(
-        self, system: str, user: str, temperature: float = 0.2, max_tokens: int = 900
+        self, system: str, user: str, temperature: float = 0.2, max_tokens: int = 1500
     ) -> LLMResult:
         resp = self._client.chat.completions.create(
             model=self.model,
             messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
             temperature=temperature,
             max_tokens=max_tokens,
+            # DeepSeek V4 reasons by default; reasoning tokens are billed as output and count
+            # against max_tokens (first real call: 900 tokens, answer cut mid-sentence). Off.
+            extra_body={"thinking": {"type": "disabled"}},
         )
         text = resp.choices[0].message.content or ""
         usage = resp.usage
@@ -88,3 +91,24 @@ def provider_from_settings() -> LLMProvider:
     if s.llm_provider == "fake":
         return FakeProvider()
     raise RuntimeError(f"unsupported LLM_PROVIDER={s.llm_provider}")
+
+
+def deepseek_balance(api_key: str, base_url: str) -> dict[str, object]:
+    """DeepSeek `GET /user/balance` → {"available": bool, "total_usd": float, "raw": ...}."""
+    import httpx
+
+    r = httpx.get(
+        base_url.rstrip("/") + "/user/balance",
+        headers={"Authorization": f"Bearer {api_key}"},
+        timeout=20,
+    )
+    r.raise_for_status()
+    data = r.json()
+    total = None
+    for info in data.get("balance_infos", []):
+        if info.get("currency") == "USD":
+            total = float(info.get("total_balance", 0))
+    if total is None and data.get("balance_infos"):
+        info = data["balance_infos"][0]
+        total = float(info.get("total_balance", 0))
+    return {"available": bool(data.get("is_available")), "total_usd": total, "raw": data}

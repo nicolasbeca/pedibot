@@ -126,6 +126,25 @@ def dose_intent(query: str) -> tuple[str, float] | None:
     return key, float(w.group(1).replace(",", "."))
 
 
+def _age_context(tr: TriageResult) -> str:
+    """Age line for the prompt. Under 3 months: home medication advice is never appropriate."""
+    if tr.age_months is None:
+        return "CHILD AGE: unknown\n"
+    if tr.age_months < 3:
+        return (
+            f"CHILD AGE: {tr.age_months:g} months — UNDER 3 MONTHS. Do NOT suggest giving any "
+            "medication at home (no paracetamol, no ibuprofen); do not describe home management "
+            "of fever. Say that babies this young must be assessed by a doctor the same day and "
+            "keep the answer short.\n"
+        )
+    if tr.age_months < 6:
+        return (
+            f"CHILD AGE: {tr.age_months:g} months — under 6 months. Do not suggest ibuprofen; "
+            "any medication only if a doctor advised it.\n"
+        )
+    return f"CHILD AGE: {tr.age_months:g} months\n"
+
+
 def _needs_age(query: str, tr: TriageResult) -> bool:
     """Fever without age → ask (rule: <3 months with fever is urgent, we cannot know)."""
     return tr.has_fever and tr.age_months is None
@@ -195,7 +214,13 @@ class Engine:
                 NO_SOURCE[lang], tr.level, banner, [], lang, None, None, [], "no_source", extra
             )
 
-        user = f"PARENT MESSAGE:\n{query}\n\nSOURCES:\n{_format_sources(hits)}"
+        answer_lang = "English" if lang == "en" else "Spanish"
+        user = (
+            f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
+            "the sources may be in another language, translate faithfully.\n"
+            f"{_age_context(tr)}"
+            f"PARENT MESSAGE:\n{query}\n\nSOURCES:\n{_format_sources(hits)}"
+        )
         result = self.llm.complete(self.prompt, user, temperature=0.2)
         problems = verify(result.text, hits)
         verification = "ok"

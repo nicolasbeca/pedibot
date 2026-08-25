@@ -141,6 +141,7 @@ def ask(
     from pedibot.bot.retrieval import Retriever, Synonyms
     from pedibot.bot.triage import Triage
     from pedibot.index.store import Index
+    from pedibot.ingest.classify import Taxonomy
 
     s = get_settings()
     llm = (
@@ -154,6 +155,7 @@ def ask(
             Synonyms(s.config_dir / "synonyms.yaml"),
             llm=None if fake else llm,
             top_k=s.retrieval_top_k,
+            taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
         ),
         Triage(s.config_dir / "red_flags.yaml"),
         llm,
@@ -288,6 +290,27 @@ def _llm_eval(golden: Path, report_dir: Path) -> None:
         encoding="utf-8",
     )
     typer.echo(f"→ {out}")
+
+
+@app.command()
+def balance(warn_below_pct: float = 20.0, initial_usd: float = 0.0) -> None:
+    """DeepSeek account balance (GET /user/balance). Exit code 2 when below the warning threshold."""
+    from pedibot.bot.llm import deepseek_balance
+
+    s = get_settings()
+    b = deepseek_balance(s.deepseek_api_key, s.deepseek_base_url)
+    typer.echo(json.dumps(b, indent=2))
+    raw_total = b.get("total_usd")
+    total = float(raw_total) if isinstance(raw_total, (int, float)) else None
+    if total is not None and initial_usd > 0:
+        pct = 100 * total / initial_usd
+        typer.echo(f"remaining: {pct:.1f}% of {initial_usd} USD")
+        if pct < warn_below_pct:
+            typer.echo("⚠️  BALANCE LOW — top up at platform.deepseek.com")
+            raise typer.Exit(code=2)
+    elif total is not None and total < 1.0:
+        typer.echo("⚠️  BALANCE LOW (< 1 USD) — top up at platform.deepseek.com")
+        raise typer.Exit(code=2)
 
 
 if __name__ == "__main__":

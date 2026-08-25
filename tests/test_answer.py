@@ -176,3 +176,17 @@ def test_dose_question_infant_refers(engine_factory):
     eng, _ = engine_factory("x")
     a = eng.ask("ibuprofen dose for my 2 month old, 5 kg")
     assert a.verification == "dose_calculator" and "Do not give" in a.text
+
+
+def test_prompt_carries_age_context_for_young_infants(engine_factory):
+    eng, llm = engine_factory("Fiebre en bebé pequeño: acuda a urgencias [1].")
+    eng.ask("mi bebé de 2 meses tiene 38,2 de fiebre", country="ES")
+    user_msg = llm.calls[0][1]
+    assert "UNDER 3 MONTHS" in user_msg and "Do NOT suggest giving any medication" in user_msg
+    assert "ANSWER LANGUAGE: Spanish" in user_msg
+    eng2, llm2 = engine_factory("[1]")
+    eng2.ask("my 4 year old has a fever")
+    assert (
+        "CHILD AGE: 48 months" in llm2.calls[0][1]
+        and "ANSWER LANGUAGE: English" in llm2.calls[0][1]
+    )
