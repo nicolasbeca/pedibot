@@ -1,0 +1,7 @@
+# Server-side files must stay LF (bash/systemd/caddy break with CRLF)
+*.sh text eol=lf
+ops/** text eol=lf
+*.service text eol=lf
+*.timer text eol=lf
+Caddyfile text eol=lf
+Makefile text eol=lf
