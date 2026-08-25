@@ -1,0 +1,85 @@
+---
+import type { Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = lang === 'es' ? {
+  h: 'Diario de síntomas', p: 'Anota temperatura y medicación en el móvil, sin cuenta. Se guarda solo en este navegador. Sirve para no repetir una dosis antes de tiempo y para contárselo al pediatra.',
+  temp: 'Temperatura (°C)', med: 'Medicamento', none: 'ninguno', note: 'Nota (tos, vómito, come, duerme…)', add: 'Anotar', clear: 'Borrar todo',
+  next: 'Próxima dosis posible', ok: 'ya se puede', wait: 'espera', notify: 'Avisarme cuando toque', notified: 'Aviso activado', unsupported: 'Este navegador no permite avisos',
+  empty: 'Aún no hay anotaciones.', export: 'Copiar para el pediatra', copied: 'Copiado', when: 'Cuándo', what: 'Qué',
+  warn: 'Si la fiebre dura más de 5 días, o aparece cualquier signo de alarma, consulta. Este diario no avisa de eso.',
+} : {
+  h: 'Symptom diary', p: 'Log temperature and medicines on your phone, no account. Stored only in this browser. Helps you avoid repeating a dose too early and tell the doctor what happened.',
+  temp: 'Temperature (°C)', med: 'Medicine', none: 'none', note: 'Note (cough, vomit, eating, sleeping…)', add: 'Log', clear: 'Clear all',
+  next: 'Next dose possible', ok: 'now', wait: 'wait', notify: 'Remind me when due', notified: 'Reminder set', unsupported: 'This browser does not allow reminders',
+  empty: 'Nothing logged yet.', export: 'Copy for the doctor', copied: 'Copied', when: 'When', what: 'What',
+  warn: 'If fever lasts more than 5 days, or any warning sign appears, seek care. This diary does not detect that.',
+};
+---
+<div class="diary" data-t={JSON.stringify(T)}>
+  <h1>{T.h}</h1>
+  <p class="lede">{T.p}</p>
+  <form id="dform" class="card" style="margin-top:22px;display:grid;gap:10px;grid-template-columns:1fr 1fr">
+    <label class="f"><span>{T.temp}</span><input id="dtemp" type="number" step="0.1" min="34" max="43" placeholder="38.4" /></label>
+    <label class="f"><span>{T.med}</span><select id="dmed"><option value="">{T.none}</option><option value="paracetamol">Paracetamol</option><option value="ibuprofen">Ibuprofen</option></select></label>
+    <label class="f" style="grid-column:1/-1"><span>{T.note}</span><input id="dnote" type="text" maxlength="120" /></label>
+    <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-primary" type="submit">{T.add}</button><button class="btn btn-ghost" type="button" id="dexport">{T.export}</button><button class="btn btn-ghost" type="button" id="dclear">{T.clear}</button></div>
+  </form>
+  <div id="dnext" class="card" style="margin-top:14px"></div>
+  <div id="dlist" style="margin-top:14px"></div>
+  <p class="n" style="margin-top:16px">{T.warn}</p>
+</div>
+<style>
+  .f { display: grid; gap: 4px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .9rem; }
+  .f input, .f select { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 10px 12px; font-family: "Atkinson Hyperlegible", sans-serif; font-weight: 400; }
+  .diary :global(.row) { display: grid; grid-template-columns: 140px 1fr auto; gap: 10px; padding: 10px 0; border-bottom: 1px dashed var(--line); font-size: .95rem; align-items: center; }
+  .diary :global(.del) { border: 0; background: transparent; color: var(--ink-3); cursor: pointer; }
+  .diary :global(.due) { font-family: "JetBrains Mono", monospace; font-size: 1.3rem; color: var(--sage-deep); }
+  :global(:root.night) .diary :global(.due) { color: var(--sage); }
+</style>
+<script>
+  const box = document.querySelector('.diary') as HTMLElement; const T = JSON.parse(box.dataset.t || '{}');
+  const KEY = 'pedibot_diary'; const INTERVAL = { paracetamol: 4, ibuprofen: 6 }; // hours — minimum interval (AEPap: 4-6 h / 6-8 h)
+  type Row = { ts: number; temp?: number; med?: string; note?: string };
+  const load = (): Row[] => { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } };
+  const save = (rows: Row[]) => { try { localStorage.setItem(KEY, JSON.stringify(rows)); } catch (e) {} };
+  const fmt = (ts: number) => new Date(ts).toLocaleString(undefined, { weekday: 'short', hour: '2-digit', minute: '2-digit' });
+  const list = document.getElementById('dlist')!, next = document.getElementById('dnext')!;
+  let timer: number | undefined;
+  function render() {
+    const rows = load().sort((a, b) => b.ts - a.ts);
+    list.innerHTML = rows.length ? rows.map((r, i) => `<div class="row"><span class="mono">${fmt(r.ts)}</span><span>${r.temp ? r.temp + ' °C ' : ''}${r.med ? '💊 ' + r.med + ' ' : ''}${r.note ? '· ' + r.note.replace(/</g, '&lt;') : ''}</span><button class="del" data-i="${i}" aria-label="delete">✕</button></div>`).join('') : `<p class="n">${T.empty}</p>`;
+    const last: Record<string, number> = {};
+    for (const r of rows) if (r.med && !(r.med in last)) last[r.med] = r.ts;
+    let h = `<b>${T.next}</b>`;
+    for (const [med, hrs] of Object.entries(INTERVAL)) {
+      if (!(med in last)) continue;
+      const due = last[med] + hrs * 3600e3, left = due - Date.now();
+      h += `<div style="margin-top:6px">${med}: <span class="due">${left <= 0 ? T.ok : T.wait + ' ' + Math.floor(left / 3600e3) + 'h ' + Math.floor((left % 3600e3) / 60e3) + 'min'}</span> ${left > 0 ? `<button class="fb" data-due="${due}" data-med="${med}" type="button" style="margin-left:8px">🔔 ${T.notify}</button>` : ''}</div>`;
+    }
+    next.innerHTML = h + (Object.keys(last).length ? '' : `<p class="n">—</p>`);
+    clearTimeout(timer); timer = window.setTimeout(render, 60e3);
+  }
+  document.getElementById('dform')!.addEventListener('submit', e => {
+    e.preventDefault();
+    const temp = parseFloat((document.getElementById('dtemp') as HTMLInputElement).value), med = (document.getElementById('dmed') as HTMLSelectElement).value, note = (document.getElementById('dnote') as HTMLInputElement).value.trim();
+    if (!temp && !med && !note) return;
+    const rows = load(); rows.push({ ts: Date.now(), temp: temp || undefined, med: med || undefined, note: note || undefined }); save(rows);
+    (document.getElementById('dform') as HTMLFormElement).reset(); render();
+  });
+  list.addEventListener('click', e => { const b = (e.target as HTMLElement).closest('.del') as HTMLElement | null; if (!b) return; const rows = load().sort((a, b) => b.ts - a.ts); rows.splice(Number(b.dataset.i), 1); save(rows); render(); });
+  next.addEventListener('click', async e => {
+    const b = (e.target as HTMLElement).closest('[data-due]') as HTMLButtonElement | null; if (!b) return;
+    if (!('Notification' in window)) { b.textContent = T.unsupported; return; }
+    const perm = await Notification.requestPermission(); if (perm !== 'granted') { b.textContent = T.unsupported; return; }
+    const ms = Number(b.dataset.due) - Date.now(); b.textContent = '✓ ' + T.notified; b.disabled = true;
+    setTimeout(() => new Notification('PediBot', { body: `${b.dataset.med}: ${T.ok}` }), Math.max(0, ms));
+  });
+  document.getElementById('dclear')!.addEventListener('click', () => { if (confirm('?')) { save([]); render(); } });
+  document.getElementById('dexport')!.addEventListener('click', async e => {
+    const rows = load().sort((a, b) => a.ts - b.ts);
+    const txt = rows.map(r => `${new Date(r.ts).toLocaleString()} — ${r.temp ? r.temp + ' °C ' : ''}${r.med ? r.med + ' ' : ''}${r.note || ''}`).join('\n');
+    try { await navigator.clipboard.writeText(txt); (e.target as HTMLElement).textContent = '✓ ' + T.copied; } catch (err) { prompt(T.export, txt); }
+  });
+  render();
+</script>

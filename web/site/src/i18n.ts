@@ -36,7 +36,7 @@ const strings = {
     footer_legal: 'PediBot provides general information from published paediatric guidelines. It is not medical advice, does not diagnose, and does not replace your paediatrician. No personal data is collected.',
     guides_h1: 'Guides for parents', guides_lede: 'Short answers to the questions parents ask most, written only from the guidelines and with the source on every sentence.',
     updated: 'Updated', read_more: 'Read', ask_about: 'Ask PediBot about this',
-    child: 'Explain it to my child', listen: 'Listen', voice: 'Speak your question', nav_emergency: 'Should I go to the ER?', nav_support: 'Support', nav_legal: 'Legal & privacy',
+    child: 'Explain it to my child', listen: 'Listen', voice: 'Speak your question', nav_emergency: 'Should I go to the ER?', nav_support: 'Support', nav_legal: 'Legal & privacy', nav_diary: 'Symptom diary',
     sug_winter: ['My 5-month-old has a cold and is breathing with a whistle', 'bronchiolitis · winter'], sug_summer: ['He has been in the sun all day and now feels dizzy with a fever', 'heat stroke · summer'],
   },
   es: {
@@ -74,7 +74,7 @@ const strings = {
     footer_legal: 'PediBot ofrece información general a partir de guías pediátricas publicadas. No es consejo médico, no diagnostica y no sustituye a tu pediatra. No se recogen datos personales.',
     guides_h1: 'Guías para padres', guides_lede: 'Respuestas cortas a las preguntas más frecuentes, escritas solo a partir de las guías y con la fuente en cada frase.',
     updated: 'Actualizado', read_more: 'Leer', ask_about: 'Pregunta a PediBot sobre esto',
-    child: 'Explícaselo a mi hijo', listen: 'Escuchar', voice: 'Dicta tu pregunta', nav_emergency: '¿Voy a urgencias?', nav_support: 'Apoyo', nav_legal: 'Aviso legal y privacidad',
+    child: 'Explícaselo a mi hijo', listen: 'Escuchar', voice: 'Dicta tu pregunta', nav_emergency: '¿Voy a urgencias?', nav_support: 'Apoyo', nav_legal: 'Aviso legal y privacidad', nav_diary: 'Diario de síntomas',
     sug_winter: ['Mi bebé de 5 meses tiene mocos y respira con pitos', 'bronquiolitis · invierno'], sug_summer: ['Ha estado todo el día al sol y ahora está mareado y con fiebre', 'golpe de calor · verano'],
   },
 } as const;
