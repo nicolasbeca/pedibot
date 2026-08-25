@@ -149,14 +149,14 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
             latency_ms=latency,
         )
         answer_id = ops.log_answer(rec)
-        sources = []
+        out_sources: list[SourceOut] = []
         for s in a.sources:
             n = int(s[1 : s.index("]")])
             url = None
             cit = s[s.index("]") + 2 :]
             if " — http" in cit:
                 cit, url = cit.rsplit(" — ", 1)
-            sources.append(SourceOut(n=n, citation=cit, url=url))
+            out_sources.append(SourceOut(n=n, citation=cit, url=url))
         return AskOut(
             answer_id=answer_id,
             session=session,
@@ -164,7 +164,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
             level=a.level,
             banner=a.banner,
             text=a.text,
-            sources=sources,
+            sources=out_sources,
             disclaimer=DISCLAIMER[a.lang],
             verification=a.verification,
             degraded=degraded,
