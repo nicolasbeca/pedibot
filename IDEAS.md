@@ -8,8 +8,8 @@
 |---|---|---|---|---|
 | I-01 | **Comparador de medicamentos de venta libre** (paracetamol vs ibuprofeno; jarabes para la tos que NO recomienda la AEP; sueros de rehidratación) con tabla de edad mínima, dosis, intervalo, cuándo no dar | Pregunta real y frecuente; determinista; muy compartible | Medio (tablas + página) | nueva (mencionada por el operador) |
 | I-02 | **"¿Debo ir a urgencias?" interactivo**: checklist guiada por edad y síntoma a partir de la hoja SEUP/AEP, sin LLM | Es el caso de uso nº 1 y se puede hacer 100 % determinista | Bajo | HECHA 25-ago (config/er_checklist.yaml + /emergency) |
-| I-03 | **Diario de síntomas** local (en el navegador, sin cuenta): temperatura, dosis dadas y hora → evita doble dosis y da al pediatra un registro | Utilidad diaria real; sin datos en servidor (localStorage) | Medio | aceptada 25-ago → F3 (con I-04) |
-| I-04 | **Recordatorio de próxima dosis** (notificación del navegador) | Complementa I-03 | Bajo | aceptada 25-ago → F3 |
+| I-03 | **Diario de síntomas** local (en el navegador, sin cuenta): temperatura, dosis dadas y hora → evita doble dosis y da al pediatra un registro | Utilidad diaria real; sin datos en servidor (localStorage) | Medio | HECHA 25-ago (/diary: localStorage + Notification API) |
+| I-04 | **Recordatorio de próxima dosis** (notificación del navegador) | Complementa I-03 | Bajo | HECHA 25-ago (/diary: localStorage + Notification API) |
 | I-05 | **Calculadora de percentiles con curva dibujada** (OMS 0-5, y OMS 5-19) | Los padres lo buscan mucho; SEO | Medio | nueva |
 | I-06 | **"Explícaselo a mi hijo"**: versión de la respuesta para leer a un niño de 5-10 años | Diferenciador cálido; barato (un prompt) | Bajo | HECHA 25-ago (mode=child, botón 🧸) |
 | I-07 | **Modo pediatra**: respuesta con el nivel de la guía clínica (Manual PUC, antibióticos Donostia) para profesionales, con toggle | Segundo usuario; las fuentes ya están | Bajo-medio | DESCARTADA por el operador 25-ago (responsabilidad) |
