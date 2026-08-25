@@ -63,3 +63,10 @@ def test_catalog_matches_calculator_keys(cat):
     for key in cat.drugs:
         assert key in DRUGS
         calculate(key, 10, 24)  # must not raise
+
+
+def test_drops_strength_without_ml_quantity(cat):
+    _, apiretal = cat.resolve("apiretal")
+    assert apiretal.strengths_mg_per_ml() == [("gotas 100 mg/ml", 100.0)]
+    _, alivium = cat.resolve("alivium")
+    assert ("gotas 50 mg/ml", 50.0) in alivium.strengths_mg_per_ml()

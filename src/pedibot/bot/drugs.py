@@ -10,7 +10,7 @@ from pathlib import Path
 
 import yaml
 
-_STRENGTH = re.compile(r"(\d+(?:[.,]\d+)?)\s*mg\s*/\s*(\d+(?:[.,]\d+)?)\s*ml", re.I)
+_STRENGTH = re.compile(r"(\d+(?:[.,]\d+)?)\s*mg\s*/\s*(\d+(?:[.,]\d+)?)?\s*ml", re.I)  # "100 mg/ml" → 1 ml
 
 
 @dataclass(frozen=True)
@@ -25,7 +25,7 @@ class Brand:
             m = _STRENGTH.search(f)
             if m:
                 mg = float(m.group(1).replace(",", "."))
-                ml = float(m.group(2).replace(",", "."))
+                ml = float((m.group(2) or "1").replace(",", "."))
                 out.append((f, round(mg / ml, 3)))
         return out
 
