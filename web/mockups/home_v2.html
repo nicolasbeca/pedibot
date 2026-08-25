@@ -1,0 +1,322 @@
+<title>PediBot</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  :root {
+    --ground: #FFFDF9; --paper: #FFFFFF; --cream: #FFF6EA;
+    --mint: #E3F4EF; --mint-2: #C8E9E0; --peach: #FFE8DC; --lavender: #EDEAF8; --sky: #E6F1FA;
+    --sage: #2F6B57; --sage-deep: #1F4F40; --ink: #2B3A35; --ink-2: #5B6D66; --ink-3: #8A9992;
+    --line: #EAE4DA; --coral: #E38C7E; --coral-soft: #FBE3DD; --amber: #E7B85C; --amber-soft: #FBF0D8;
+    --shadow: 0 10px 30px rgba(43, 58, 53, .07);
+    --r: 20px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #1B2522; --paper: #22302C; --cream: #263631;
+      --mint: #23413A; --mint-2: #2C5348; --peach: #3D302A; --lavender: #2E2D3F; --sky: #243542;
+      --sage: #9FD9C8; --sage-deep: #C6ECE1; --ink: #EAF2EE; --ink-2: #B4C6BE; --ink-3: #7F958C;
+      --line: #33453F; --coral: #F0A497; --coral-soft: #45302C; --amber: #F1C97A; --amber-soft: #463A22;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #1B2522; --paper: #22302C; --cream: #263631;
+    --mint: #23413A; --mint-2: #2C5348; --peach: #3D302A; --lavender: #2E2D3F; --sky: #243542;
+    --sage: #9FD9C8; --sage-deep: #C6ECE1; --ink: #EAF2EE; --ink-2: #B4C6BE; --ink-3: #7F958C;
+    --line: #33453F; --coral: #F0A497; --coral-soft: #45302C; --amber: #F1C97A; --amber-soft: #463A22;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--ground); color: var(--ink); font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: "Nunito", "Segoe UI", sans-serif; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+  h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.15; }
+  h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 700; }
+  h3 { font-size: 1.05rem; font-weight: 700; }
+  p { margin: 0; }
+  a { color: var(--sage); }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+  .eyebrow { font-family: Nunito, sans-serif; font-weight: 700; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); }
+  button, input, select { font: inherit; }
+  :focus-visible { outline: 3px solid var(--mint-2); outline-offset: 2px; }
+
+  /* ---------- top bar ---------- */
+  .bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .bar-in { max-width: 1040px; margin: 0 auto; padding: 0 18px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--ink); font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.2rem; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-2); border-radius: 999px; padding: 6px 12px; font-size: .86rem; cursor: pointer; }
+  .pill select { border: 0; background: transparent; color: inherit; cursor: pointer; }
+  .bar nav { display: flex; gap: 8px; }
+  @media (max-width: 640px) { .bar .hide-sm { display: none; } }
+
+  /* ---------- chat stage ---------- */
+  .stage { min-height: calc(100vh - 60px); display: flex; flex-direction: column; }
+  .chat { flex: 1; max-width: 760px; width: 100%; margin: 0 auto; padding: 28px 18px 140px; display: flex; flex-direction: column; gap: 18px; }
+  .welcome { text-align: center; padding: 6vh 0 8px; }
+  .welcome .face { width: 72px; height: 72px; margin: 0 auto 18px; }
+  .welcome p { color: var(--ink-2); max-width: 46ch; margin: 12px auto 0; }
+  .suggest { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 26px; }
+  @media (max-width: 560px) { .suggest { grid-template-columns: 1fr; } }
+  .sug { text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; cursor: pointer; color: var(--ink); transition: transform .15s, box-shadow .15s; }
+  .sug:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--mint-2); }
+  .sug small { display: block; color: var(--ink-3); font-size: .8rem; margin-top: 2px; }
+  .sug.a { background: var(--mint); } .sug.b { background: var(--peach); } .sug.c { background: var(--lavender); } .sug.d { background: var(--sky); }
+
+  .msg { max-width: 92%; padding: 14px 18px; border-radius: 20px; line-height: 1.6; }
+  .msg.user { align-self: flex-end; background: var(--mint); border-bottom-right-radius: 6px; }
+  .msg.bot { align-self: flex-start; background: var(--paper); border: 1px solid var(--line); border-bottom-left-radius: 6px; box-shadow: var(--shadow); }
+  .msg.bot ul { margin: 8px 0 0; padding-left: 18px; }
+  .who { display: flex; align-items: center; gap: 8px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .85rem; color: var(--sage); margin-bottom: 6px; }
+  .cite { font-family: "JetBrains Mono", monospace; font-size: .7rem; padding: 0 5px; border-radius: 6px; background: var(--mint); color: var(--sage-deep); vertical-align: 2px; margin-left: 2px; }
+  .banner { border-radius: 14px; padding: 12px 14px; font-weight: 700; margin-bottom: 10px; border-left: 5px solid; }
+  .banner.emergency { background: var(--coral-soft); border-color: var(--coral); }
+  .banner.urgent { background: var(--amber-soft); border-color: var(--amber); }
+  .banner small { display: block; font-weight: 400; color: var(--ink-2); margin-top: 4px; }
+  .sources { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: .84rem; color: var(--ink-2); }
+  .sources b { color: var(--ink); }
+  .sources div { display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; margin-top: 4px; }
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: .78rem; color: var(--ink-3); margin-top: 10px; }
+  .fb { border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 3px 9px; cursor: pointer; color: var(--ink-2); }
+  .typing { display: inline-flex; gap: 4px; padding: 6px 2px; }
+  .typing i { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-3); animation: blink 1.2s infinite; }
+  .typing i:nth-child(2) { animation-delay: .2s; } .typing i:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25 } 40% { opacity: 1 } }
+  @media (prefers-reduced-motion: reduce) { .typing i { animation: none; } .sug { transition: none; } }
+
+  /* composer, fixed like a chat app */
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; background: linear-gradient(to top, var(--ground) 70%, transparent); padding: 18px 12px 14px; }
+  .dock-in { max-width: 760px; margin: 0 auto; }
+  .ctx { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  .ctx .pill { background: var(--cream); }
+  .composer { display: flex; align-items: flex-end; gap: 8px; background: var(--paper); border: 1px solid var(--line); border-radius: 26px; padding: 8px 8px 8px 18px; box-shadow: var(--shadow); }
+  .composer textarea { flex: 1; border: 0; background: transparent; color: var(--ink); resize: none; max-height: 140px; padding: 8px 0; line-height: 1.5; }
+  .composer textarea::placeholder { color: var(--ink-3); }
+  .send { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--sage); color: #fff; cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; }
+  :root[data-theme="dark"] .send { color: var(--ground); }
+  .dock .legal { text-align: center; font-size: .74rem; color: var(--ink-3); margin-top: 8px; }
+
+  /* ---------- below the fold ---------- */
+  .more { max-width: 1040px; margin: 0 auto; padding: 0 18px; }
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  .lede { color: var(--ink-2); max-width: 60ch; margin-top: 12px; font-size: 1.05rem; }
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  @media (max-width: 800px) { .trio { grid-template-columns: 1fr; } }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; }
+  .card.tint-a { background: var(--mint); border-color: transparent; }
+  .card.tint-b { background: var(--peach); border-color: transparent; }
+  .card.tint-c { background: var(--lavender); border-color: transparent; }
+  .card p { color: var(--ink-2); font-size: .97rem; margin-top: 6px; }
+  .n { font-family: "JetBrains Mono", monospace; font-size: .8rem; color: var(--sage); }
+
+  /* dose calculator */
+  .calc { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; margin-top: 28px; }
+  @media (max-width: 800px) { .calc { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; margin-bottom: 14px; }
+  .field label { font-family: Nunito, sans-serif; font-weight: 700; font-size: .9rem; }
+  .field input, .field select { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 11px 14px; }
+  .result { background: var(--cream); border-radius: var(--r); padding: 22px; }
+  .result .big { font-family: "JetBrains Mono", monospace; font-size: 1.7rem; color: var(--sage-deep); }
+  :root[data-theme="dark"] .result .big { color: var(--sage); }
+  .result table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .95rem; }
+  .result td { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .result td:last-child { text-align: right; font-family: "JetBrains Mono", monospace; }
+  .result .warn { background: var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
+  .result .src { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+
+  .orgs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 26px; }
+  .org { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .org b { display: block; font-family: Nunito, sans-serif; }
+  .org span { font-size: .84rem; color: var(--ink-3); }
+  .support { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start; }
+  @media (max-width: 800px) { .support { grid-template-columns: 1fr; } }
+  .ledger { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; font-size: .92rem; }
+  .ledger div { display: grid; grid-template-columns: 1fr auto; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  .ledger div:last-child { border: 0; } .ledger .h { background: var(--cream); font-weight: 700; }
+  footer { padding: 30px 0 60px; color: var(--ink-3); font-size: .86rem; border-top: 1px solid var(--line); }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; font-family: Nunito, sans-serif; font-weight: 800; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: .95rem; }
+  .btn-primary { background: var(--sage); color: #fff; } :root[data-theme="dark"] .btn-primary { color: var(--ground); }
+  .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--paper); }
+</style>
+
+<div class="bar">
+  <div class="bar-in">
+    <a class="brand" href="#">
+      <svg width="34" height="34" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6a44 44 0 0 1 0 88c-7 0-13-1.5-19-4l-19 6 6-18A44 44 0 0 1 50 6z" fill="#A9DED2"/><ellipse cx="53" cy="50" rx="27" ry="26" fill="#FFF8E7"/><circle cx="26" cy="50" r="6" fill="#FFF8E7"/><path d="M60 22c6-4 12 2 8 8" stroke="#2F6B57" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="43" cy="47" r="4" fill="#2F6B57"/><circle cx="63" cy="47" r="4" fill="#2F6B57"/><path d="M44 60q9 8 18 0" stroke="#2F6B57" stroke-width="4.5" fill="none" stroke-linecap="round"/></svg>
+      pedibot
+    </a>
+    <nav class="hide-sm">
+      <a class="pill" href="#how">How it works</a>
+      <a class="pill" href="#dose">Dose calculator</a>
+      <a class="pill" href="#sources">Sources</a>
+    </nav>
+    <div style="display:flex;gap:8px">
+      <label class="pill">🌍 <select id="country" aria-label="Country"><option value="GB">UK</option><option value="ES">ES</option><option value="US">US</option><option value="IE">IE</option><option value="FR">FR</option><option value="DE">DE</option><option value="MX">MX</option><option value="AR">AR</option><option value="AU">AU</option></select></label>
+      <button class="pill" id="toggle" type="button">🌙</button>
+    </div>
+  </div>
+</div>
+
+<div class="stage">
+  <div class="chat" id="thread">
+    <div class="welcome" id="welcome">
+      <svg class="face" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 6a44 44 0 0 1 0 88c-7 0-13-1.5-19-4l-19 6 6-18A44 44 0 0 1 50 6z" fill="#A9DED2"/><ellipse cx="53" cy="50" rx="27" ry="26" fill="#FFF8E7"/><circle cx="26" cy="50" r="6" fill="#FFF8E7"/><path d="M60 22c6-4 12 2 8 8" stroke="#2F6B57" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="43" cy="47" r="4" fill="#2F6B57"/><circle cx="63" cy="47" r="4" fill="#2F6B57"/><path d="M44 60q9 8 18 0" stroke="#2F6B57" stroke-width="4.5" fill="none" stroke-linecap="round"/></svg>
+      <h1>Hi. What's going on with your little one?</h1>
+      <p>I answer only from published paediatric guidelines, tell you where each sentence comes from, and say clearly when it's time to see a doctor.</p>
+      <div class="suggest">
+        <button class="sug a" type="button" data-q="fever">My 4-year-old has a fever of 38.8 °C <small>fever · what to do at home</small></button>
+        <button class="sug b" type="button" data-q="head">She fell off the sofa and has vomited twice <small>head bump · warning signs</small></button>
+        <button class="sug c" type="button" data-q="solids">When can I start solids with my baby? <small>feeding · 6 months</small></button>
+        <button class="sug d" type="button" data-q="dose">How much Calpol for 14 kg? <small>dose · calculator, no AI</small></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dock">
+    <div class="dock-in">
+      <div class="ctx">
+        <label class="pill">👶 Age <select id="age" aria-label="Child's age"><option value="">not set</option><option>2 weeks</option><option>2 months</option><option>6 months</option><option>1 year</option><option>2 years</option><option selected>4 years</option><option>8 years</option><option>13 years</option></select></label>
+        <label class="pill">⚖️ Weight <input id="kg" type="number" min="1" max="120" step="0.5" placeholder="kg" style="width:64px;border:0;background:transparent;color:inherit" aria-label="Weight in kg"></label>
+      </div>
+      <form class="composer" id="composer">
+        <textarea id="input" rows="1" placeholder="Describe what's happening…" aria-label="Your question"></textarea>
+        <button class="send" type="submit" aria-label="Send">➤</button>
+      </form>
+      <p class="legal">Information from official guidelines · not medical advice · in an emergency call your local number</p>
+    </div>
+  </div>
+</div>
+
+<div class="more">
+  <section id="how">
+    <p class="eyebrow">How it works</p>
+    <h2 style="margin-top:8px">Three checks before a single word is written</h2>
+    <p class="lede">The safety check runs first, the guidelines are found second, and the writing comes last — only from what was found. If nothing is found, PediBot says so.</p>
+    <div class="trio">
+      <div class="card tint-a"><span class="n">1 · safety</span><h3>Warning signs first</h3><p>A rule-based check looks for the signs emergency paediatricians publish for parents — a baby under 3 months with fever, vomiting after a head bump, a swallowed battery. If one matches, the answer opens with "go now".</p></div>
+      <div class="card tint-b"><span class="n">2 · sources</span><h3>Only published guidelines</h3><p>49 documents from paediatric societies and public health bodies. No forums, no blogs. Each one is listed below with its organisation and a link to the original.</p></div>
+      <div class="card tint-c"><span class="n">3 · writing</span><h3>Every sentence names its source</h3><p>"According to the SEUP…", "The WHO recommends…". A verifier rejects any reply that cites something that wasn't found, or states a dose the guideline didn't. Doses come from the calculator, never from the AI.</p></div>
+    </div>
+  </section>
+
+  <section id="dose">
+    <p class="eyebrow">Dose calculator</p>
+    <h2 style="margin-top:8px">Paracetamol and ibuprofen, by weight — in ml for your bottle</h2>
+    <p class="lede">Type the name on your bottle (Calpol, Tylenol, Apiretal, Dalsy, Nurofen, Advil…) and your child's weight. Fixed tables from the AEPap dosing guide, with hard maximums. No AI involved.</p>
+    <div class="calc">
+      <div>
+        <div class="field"><label for="drug">Medicine (generic or brand)</label><input id="drug" list="drugs" placeholder="e.g. Calpol, ibuprofen, Tylenol" value="Calpol"><datalist id="drugs"><option>Paracetamol</option><option>Acetaminophen</option><option>Ibuprofen</option><option>Calpol</option><option>Tylenol</option><option>Apiretal</option><option>Dalsy</option><option>Nurofen</option><option>Advil</option><option>Motrin</option><option>Doliprane</option><option>Panadol</option><option>Tachipirina</option></datalist></div>
+        <div class="field"><label for="w">Weight (kg)</label><input id="w" type="number" min="1" max="120" step="0.5" value="14"></div>
+        <div class="field"><label for="m">Age</label><select id="m"><option value="">not sure</option><option value="1">under 3 months</option><option value="4">3–5 months</option><option value="9" >6–11 months</option><option value="24">1–2 years</option><option value="36" selected>3–5 years</option><option value="96">6–11 years</option><option value="156">12+ years</option></select></div>
+        <button class="btn btn-primary" id="calc" type="button">Calculate</button>
+      </div>
+      <div class="result" id="result" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="sources">
+    <p class="eyebrow">Sources</p>
+    <h2 style="margin-top:8px">Who PediBot is allowed to quote</h2>
+    <p class="lede">Most are Spanish paediatric-society leaflets written for parents; PediBot translates faithfully and always links the original. The full list, with years and links, is public.</p>
+    <div class="orgs">
+      <div class="org"><b>SEUP</b><span>Spanish paediatric emergency doctors · 29 parent leaflets</span></div>
+      <div class="org"><b>AEP · AEPap</b><span>Spanish Paediatric Association · feeding, newborn care, dosing</span></div>
+      <div class="org"><b>WHO</b><span>Complementary feeding · activity &amp; sleep under 5</span></div>
+      <div class="org"><b>AAP</b><span>American Academy of Pediatrics · clinical guidelines</span></div>
+      <div class="org"><b>Ministry of Health (Spain)</b><span>2025 vaccination schedule</span></div>
+      <div class="org"><b>Hospital Niño Jesús</b><span>First aid for parents</span></div>
+    </div>
+  </section>
+
+  <section id="support">
+    <div class="support">
+      <div>
+        <p class="eyebrow">Support</p>
+        <h2 style="margin-top:8px">Free for every parent. Funded in the open.</h2>
+        <p class="lede">PediBot costs about €10 a month to run and is funded through the PDBT token on Base — a way for people who believe in the project to back it. Holding it buys nothing here: everything is free for everyone, always. Each month we publish what it cost and what was built.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px"><a class="btn btn-primary" href="#">Monthly report</a><a class="btn btn-ghost" href="#">About the token</a></div>
+      </div>
+      <div class="ledger">
+        <div class="h"><span>Public ledger · August 2026</span><span class="mono">USD</span></div>
+        <div><span>AI answers (55-question test)</span><span class="mono">0.02</span></div>
+        <div><span>Server</span><span class="mono">— not yet</span></div>
+        <div><span>Questions answered</span><span class="mono">— launching</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <b style="font-family:Nunito,sans-serif;color:var(--ink)">pedibot</b> · pedibot.ai@gmail.com · @pedibotai · Sources · Method · Privacy · Legal · English / Español<br>
+    PediBot provides general information from published paediatric guidelines. It is not medical advice, does not diagnose, and does not replace your paediatrician. No personal data is collected.
+  </footer>
+</div>
+
+<script>
+(function () {
+  const thread = document.getElementById('thread'), welcome = document.getElementById('welcome');
+  const form = document.getElementById('composer'), input = document.getElementById('input');
+  const ageSel = document.getElementById('age'), kgIn = document.getElementById('kg');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const demos = {
+    fever: { q: "My 4-year-old has a fever of 38.8 °C. What should I do?", banner: null,
+      html: `According to the SEUP (Spanish paediatric emergency doctors), a fever itself isn't dangerous — it's a sign the body is fighting an infection, and the goal is your child's comfort, not a normal number <span class="cite">1</span>. The SEUP suggests offering fluids often, keeping the room cool and not over-dressing them <span class="cite">1</span>. It's normal for appetite to drop for a few days <span class="cite">1</span>.
+      <ul><li>Watch general state and colour rather than the thermometer <span class="cite">2</span>.</li><li>See a doctor if it lasts more than 5 days — sooner if they're very drowsy, breathing fast, or have spots that don't fade when pressed <span class="cite">2</span>.</li></ul><p style="margin-top:8px">For the right paracetamol or ibuprofen amount, use the dose calculator below.</p>`,
+      sources: [["1","SEUP — <b>Fever. Information for parents</b>, “What can we do at home”, p. 1"],["2","SEUP — <b>Fever. Information for parents</b>, “When to go to the emergency department”, p. 2"]] },
+    head: { q: "She fell off the sofa, hit her head and has vomited twice", banner: { level: "urgent", text: "With these symptoms your child should be seen in the emergency department today, without waiting.", why: "Reason: vomiting after a head injury [SEUP — Head injury]" },
+      html: `According to the SEUP, repeated vomiting after a blow to the head is one of the signs that needs a doctor's assessment the same day <span class="cite">1</span>. Until you're seen, the SEUP advises not giving food or medicine, keeping her calm and not leaving her alone <span class="cite">1</span>. Call the emergency number immediately if she becomes hard to wake, has a seizure, or her pupils look different sizes <span class="cite">1</span>.`,
+      sources: [["1","SEUP — <b>Head injury. Information for parents</b>, “When to go to the emergency department”, p. 2"]] },
+    solids: { q: "When can I start solids with my baby?", banner: null,
+      html: `The AEP (Spanish Paediatric Association) recommends exclusive breastfeeding for the first 6 months and introducing solids gradually from then on <span class="cite">1</span>. According to the AEP and the WHO, a baby is ready when they sit with support, hold their head steady and show interest in food — usually around 6 months, never before 4 <span class="cite">1</span><span class="cite">2</span>. The AEP notes there is no fixed order of foods; iron-rich foods matter early on <span class="cite">1</span>.`,
+      sources: [["1","AEP — <b>Recommendations on complementary feeding</b> (2018), “When to start”, p. 3"],["2","WHO — <b>Guideline for complementary feeding 6–23 months</b> (2023), Recommendation 1, p. 12"]] },
+    dose: { q: "How much Calpol for 14 kg?", banner: null, calc: true,
+      html: `<b>Paracetamol (Calpol) for 14 kg</b> — from the AEPap dosing table, no AI involved:<br>140–210 mg every 4–6 h, at most 4 doses a day.<br>Calpol infant 120 mg/5 ml: <span class="mono">5.8–8.8 ml</span> · Calpol six plus 250 mg/5 ml: <span class="mono">2.8–4.2 ml</span><br><small>Always check the strength on your bottle. Under 3 months, ask a doctor before giving anything.</small>`,
+      sources: [["1","AEPap — <b>Guía rápida de dosificación práctica en pediatría</b> (3.ª ed.), analgesics/antipyretics table"]] }
+  };
+  function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+  function bubble(cls, html) { welcome.style.display = 'none'; const d = document.createElement('div'); d.className = 'msg ' + cls; d.innerHTML = html; thread.appendChild(d); d.scrollIntoView({ block: 'end', behavior: reduced ? 'auto' : 'smooth' }); return d; }
+  function answer(demo) {
+    const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
+    setTimeout(() => {
+      let h = '<div class="who">pedibot</div>';
+      if (demo.banner) h += `<div class="banner ${demo.banner.level}">🚨 ${demo.banner.text}<small>${demo.banner.why}</small></div>`;
+      h += demo.html;
+      h += '<div class="sources"><b>Sources</b><div>' + demo.sources.map(s => `<span class="mono">[${s[0]}]</span><span>${s[1]}</span>`).join('') + '</div></div>';
+      h += '<div class="foot"><span>ℹ️ From official guidelines — not medical advice.</span><span><button class="fb" type="button">👍</button> <button class="fb" type="button">👎</button></span></div>';
+      t.innerHTML = h; t.scrollIntoView({ block: 'end' });
+    }, reduced ? 0 : 900);
+  }
+  document.addEventListener('click', e => { const b = e.target.closest('.sug'); if (!b) return; const d = demos[b.dataset.q]; bubble('user', esc(d.q)); answer(d); });
+  form.addEventListener('submit', e => { e.preventDefault(); const q = input.value.trim(); if (!q) return; input.value = ''; input.style.height = 'auto';
+    bubble('user', esc(q) + (ageSel.value ? ` <span class="cite">${ageSel.value}</span>` : '') + (kgIn.value ? ` <span class="cite">${kgIn.value} kg</span>` : ''));
+    const key = /calpol|tylenol|dose|mg|ml|paracetamol|ibuprofen|dalsy|nurofen/i.test(q) ? 'dose' : /fever|temperature|38|39/i.test(q) ? 'fever' : /head|fell|vomit/i.test(q) ? 'head' : /solid|food|feed|wean/i.test(q) ? 'solids' : null;
+    if (key) answer(demos[key]); else { const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>'); setTimeout(() => { t.innerHTML = '<div class="who">pedibot</div>This is a design preview — the live assistant answers from the full set of guidelines. Try one of the suggested questions.'; }, reduced ? 0 : 700); } });
+  input.addEventListener('input', () => { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 140) + 'px'; });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
+
+  // dose calculator (same tables as the API; demo only)
+  const D = { paracetamol: { n: 'Paracetamol', lo: 10, hi: 15, iv: '4–6', maxkg: 60, maxd: 1000, maxday: 4000, minm: 0, forms: { generic: [['drops 100 mg/ml',100],['syrup 120 mg/5 ml',24],['syrup 160 mg/5 ml',32]], calpol: [['Calpol infant 120 mg/5 ml',24],['Calpol six plus 250 mg/5 ml',50]], tylenol: [["Tylenol Children's 160 mg/5 ml",32]], apiretal: [['Apiretal gotas 100 mg/ml',100]], doliprane: [['Doliprane 2,4 % (120 mg/5 ml)',24]], panadol: [['Panadol baby drops 100 mg/ml',100],['Panadol 1-5 years 120 mg/5 ml',24]], tachipirina: [['Tachipirina 120 mg/5 ml',24]] } },
+              ibuprofen: { n: 'Ibuprofen', lo: 5, hi: 10, iv: '6–8', maxkg: 30, maxd: 400, maxday: 1200, minm: 3, forms: { generic: [['2 % (100 mg/5 ml)',20],['4 % (200 mg/5 ml)',40]], dalsy: [['Dalsy 2 % (100 mg/5 ml)',20],['Dalsy 4 % (200 mg/5 ml)',40]], nurofen: [['Nurofen for Children 100 mg/5 ml',20]], advil: [["Advil Children's 100 mg/5 ml",20],["Advil Infants' drops 40 mg/ml",40]], motrin: [["Motrin Children's 100 mg/5 ml",20],["Motrin Infants' drops 40 mg/ml",40]] } } };
+  const alias = { acetaminophen: 'paracetamol', paracetamol: 'paracetamol', ibuprofen: 'ibuprofen', ibuprofeno: 'ibuprofen', calpol: 'paracetamol', tylenol: 'paracetamol', apiretal: 'paracetamol', doliprane: 'paracetamol', panadol: 'paracetamol', tachipirina: 'paracetamol', dalsy: 'ibuprofen', nurofen: 'ibuprofen', advil: 'ibuprofen', motrin: 'ibuprofen' };
+  function calc() {
+    const name = document.getElementById('drug').value.trim().toLowerCase(), kg = parseFloat(document.getElementById('w').value), m = document.getElementById('m').value, out = document.getElementById('result');
+    const key = alias[name.split(' ')[0]]; if (!key || !(kg > 0)) { out.innerHTML = '<p>Type paracetamol/acetaminophen or ibuprofen — or a brand such as Calpol, Tylenol, Apiretal, Dalsy, Nurofen, Advil, Motrin.</p>'; return; }
+    const d = D[key], forms = d.forms[name.split(' ')[0]] || d.forms.generic;
+    let lo = d.lo * kg, hi = Math.min(d.hi * kg, d.maxd); lo = Math.min(lo, hi);
+    const doses = Math.max(1, Math.min(Math.floor(Math.min(d.maxkg * kg, d.maxday) / hi), 24 / parseInt(d.iv)));
+    let h = `<div class="who">${d.n}${key !== name.split(' ')[0] && alias[name.split(' ')[0]] ? ' (' + name.split(' ')[0].replace(/^./, c => c.toUpperCase()) + ')' : ''} · ${kg} kg</div><div class="big">${lo.toFixed(0)}–${hi.toFixed(0)} mg</div><p>every ${d.iv} hours · at most ${doses} doses a day</p><table>`;
+    forms.forEach(([label, c]) => { h += `<tr><td>${label}</td><td>${(lo / c).toFixed(1)}–${(hi / c).toFixed(1)} ml</td></tr>`; });
+    h += '</table>';
+    if (m !== '' && parseFloat(m) < 3) h += '<div class="warn">⚠️ Under 3 months: do not give without a doctor\'s advice. A baby this young with fever needs to be seen the same day.</div>';
+    else if (key === 'ibuprofen' && m !== '' && parseFloat(m) < 6) h += '<div class="warn">⚠️ Ibuprofen is not recommended under 6 months unless a doctor advised it.</div>';
+    if (key === 'ibuprofen') h += '<div class="warn" style="background:var(--sky);border-color:var(--mint-2)">Give with food. Avoid if vomiting/diarrhoea (dehydration) or chickenpox.</div>';
+    h += '<p class="src">Source: AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.). Always check the strength printed on your bottle.</p>';
+    out.innerHTML = h;
+  }
+  document.getElementById('calc').addEventListener('click', calc); calc();
+
+  const root = document.documentElement, tg = document.getElementById('toggle');
+  const isDark = () => root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+  const label = () => { tg.textContent = isDark() ? '☀️' : '🌙'; };
+  tg.addEventListener('click', () => { root.dataset.theme = isDark() ? 'light' : 'dark'; label(); }); label();
+})();
+</script>

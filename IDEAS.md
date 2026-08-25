@@ -76,3 +76,20 @@
 | I-18 | "Modo noche" como tema por defecto entre 22:00 y 07:00 hora local (la web como linterna). | nueva |
 | I-19 | Router de intención: dosis (hecho), vacunas por edad (calendario tabulado, sin LLM), "¿urgencias?" (checklist), resto → RAG. | aceptada → F2 |
 | I-20 | Reintroducir X solo si vuelve un tier gratuito; mientras, cola de posts en texto para pegar a mano. | aceptada |
+
+## Añadidas el 25-ago (revisión del boceto + LLM real)
+
+| Id | Idea | Estado |
+|---|---|---|
+| I-21 | **Web chat-first** (como ChatGPT/Claude): el cuadro de conversación ocupa la pantalla, el resto (cómo funciona, calculadora, fuentes, token) va debajo al hacer scroll. Paleta calma: blancos, crema, pasteles menta/melocotón/lavanda. | aceptada por el operador → boceto v2 |
+| I-22 | **Fuente nombrada en la frase** ("Según la SEUP…", "La OMS recomienda…") además del [n] verificable. | aceptada → prompt `answer_v2` desplegado |
+| I-23 | **Juez de fidelidad** (2.ª llamada al LLM que comprueba frase a frase contra los pasajes citados). Como métrica en `eval --llm --judge`; no como puerta en vivo (duplicaría coste y latencia). Nocturno sobre las conversaciones del día cuando haya tráfico. | aceptada → hecho en eval |
+| I-24 | **Calculadora de dosis con marcas por país** (Calpol, Tylenol, Apiretal, Dalsy, Nurofen, Advil, Motrin, Doliprane, Panadol, Tachipirina, Alivium…) → `config/drugs.yaml`, `/api/dose`, `/api/drugs`. Solo paracetamol e ibuprofeno; aspirina, jarabes para la tos y antihistamínicos excluidos a propósito. | aceptada → hecho |
+| I-25 | Contexto de edad y peso como "chips" en el compositor del chat (se envían con la pregunta; evita repetir la edad). | nueva (en el boceto v2) |
+| I-26 | Selector de idioma de interfaz (EN/ES) en la barra; el bot ya responde en el idioma del mensaje. | nueva |
+| I-27 | "Tarjetas" de sugerencia en la pantalla de bienvenida con las 4 preguntas más frecuentes por temporada (bronquiolitis en invierno, golpe de calor en verano). | nueva |
+| I-28 | Botón "Compartir esta respuesta" → enlace público a la respuesta (sin datos del usuario) para mandarla a la pareja/abuelos. | nueva |
+| I-29 | Calculadora de dosis como página propia con URL (`/dose/calpol-14kg`) para SEO: "how much calpol for a 14 kg child". | nueva |
+| I-30 | Ampliar la calculadora a suero oral (cantidad por kg tras cada deposición, hoja SEUP) — determinista y muy preguntado. | nueva |
+| I-31 | Conversación con memoria corta (últimos turnos) para poder preguntar "¿y si además vomita?" sin repetir todo. El motor hoy es de un turno. | nueva; prioridad alta |
+| I-32 | Aviso por Telegram cuando el saldo de DeepSeek baje del 20 % (`pedibot balance`) — parte del watchdog de F4. | aceptada → F4 |
