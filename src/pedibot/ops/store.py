@@ -36,6 +36,14 @@ CREATE TABLE IF NOT EXISTS ratelimit (
     ts TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS ratelimit_ip ON ratelimit(ip_hash, ts);
+CREATE TABLE IF NOT EXISTS turns (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    session TEXT NOT NULL,
+    ts TEXT NOT NULL,
+    role TEXT NOT NULL,
+    text TEXT NOT NULL
+);
+CREATE INDEX IF NOT EXISTS turns_session ON turns(session, id);
 """
 
 
@@ -136,6 +144,26 @@ class OpsStore:
             "thumbs_up": up,
             "thumbs_down": down,
         }
+
+    # ---- conversation turns (short window, expire with the session) ----
+    def add_turn(self, session: str, role: str, text: str) -> None:
+        self.con.execute(
+            "INSERT INTO turns (session, ts, role, text) VALUES (?,?,?,?)",
+            (session, _now(), role, text),
+        )
+        self.con.commit()
+
+    def history(
+        self, session: str, max_turns: int = 6, max_age_hours: int = 24
+    ) -> list[dict[str, str]]:
+        cutoff = (dt.datetime.now(dt.UTC) - dt.timedelta(hours=max_age_hours)).isoformat(
+            timespec="seconds"
+        )
+        rows = self.con.execute(
+            "SELECT role, text FROM turns WHERE session=? AND ts>=? ORDER BY id DESC LIMIT ?",
+            (session, cutoff, max_turns),
+        ).fetchall()
+        return [{"role": r, "text": t} for r, t in reversed(rows)]
 
     # ---- rate limiting ----
     def ip_hash(self, ip: str) -> str:

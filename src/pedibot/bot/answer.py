@@ -12,10 +12,11 @@ from pedibot.bot.dose import DRUGS, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
-from pedibot.bot.triage import Triage, TriageResult
+from pedibot.bot.triage import LEVEL_ORDER, Triage, TriageResult
 from pedibot.index.store import Hit
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
+MAX_TURNS = 6  # PRD §5.4: short window
 _CIT = re.compile(r"\[(\d{1,2})\]")
 _WEIGHT = re.compile(r"(\d{1,3}(?:[.,]\d)?)\s*(?:kg|kilos?|kilogramos?|kgs)\b", re.I)
 _DRUG = re.compile(
@@ -157,6 +158,20 @@ def _age_context(tr: TriageResult) -> str:
     return f"CHILD AGE: {tr.age_months:g} months\n"
 
 
+def _history_block(history: list[dict[str, str]]) -> str:
+    if not history:
+        return ""
+    lines = []
+    for t in history:
+        who = "Parent" if t.get("role") == "user" else "PediBot"
+        lines.append(f"{who}: {t['text'][:600]}")
+    return (
+        "CONVERSATION SO FAR (answer the LAST parent message; earlier turns give context such as age or symptoms already mentioned):\n"
+        + "\n".join(lines)
+        + "\n\n"
+    )
+
+
 def _needs_age(query: str, tr: TriageResult) -> bool:
     """Fever without age → ask (rule: <3 months with fever is urgent, we cannot know)."""
     return tr.has_fever and tr.age_months is None
@@ -222,24 +237,59 @@ class Engine:
                 present.add(rule.source)
         return (injected + hits)[: max(len(hits), 6) + len(injected)]
 
-    def ask(self, query: str, country: str | None = None, lang: str | None = None) -> Answer:
+    def ask(
+        self,
+        query: str,
+        country: str | None = None,
+        lang: str | None = None,
+        history: list[dict[str, str]] | None = None,
+    ) -> Answer:
+        """`history`: previous turns, oldest first, [{"role": "user"|"assistant", "text": ...}].
+        Only the last MAX_TURNS are used (PRD §5.4)."""
+        history = (history or [])[-MAX_TURNS:]
+        prior_user = " ".join(t["text"] for t in history if t.get("role") == "user")
+        context_text = f"{prior_user} {query}".strip() if prior_user else query
         lang = lang or detect_lang(query)
         if lang not in ("es", "en"):
             lang = "en"
-        tr = self.triage.assess(query)
+        tr = self.triage.assess(context_text)
+        tr_now = self.triage.assess(query)
+        # rules that fired only because of OLD messages must not re-trigger a banner every turn,
+        # except the age-based ones (age is context, not a symptom)
+        if history:
+            keep = {r.id for r in tr_now.matched} | {
+                "infant_fever_under_3_months",
+                "newborn_refusing_feeds",
+            }
+            tr.matched = [r for r in tr.matched if r.id in keep]
+            tr.level = max(
+                (r.level for r in tr.matched), key=lambda lv: LEVEL_ORDER[lv], default="routine"
+            )
         nums = self.numbers.get(country)
         banner = build_banner(tr, lang, nums)
 
-        intent = dose_intent(query, self.drugs)
+        intent = dose_intent(query, self.drugs) or (
+            dose_intent(context_text, self.drugs)
+            if _DRUG.search(query)
+            or (
+                self.drugs
+                and any(
+                    self.drugs.resolve(t) for t in re.findall(r"[a-záéíóúñ]{4,}", query.lower())
+                )
+            )
+            else None
+        )
         if intent and tr.level == "routine":
             drug, kg = intent
             text = format_result(calculate(drug, kg, tr.age_months), lang)
             return Answer(text, tr.level, None, [], lang, None, None, [], "dose_calculator")
 
-        if tr.level == "routine" and _needs_age(query, tr):
+        if tr.level == "routine" and _needs_age(context_text, tr):
             return Answer(ASK_AGE[lang], tr.level, None, [], lang, None, None, [], "asked_age")
 
-        hits, extra = self.retriever.search(query, lang, red_flag_boost=tr.is_alarm)
+        prev_user = next((t["text"] for t in reversed(history) if t.get("role") == "user"), "")
+        search_q = f"{prev_user} {query}" if prev_user and len(query.split()) <= 8 else query
+        hits, extra = self.retriever.search(search_q, lang, red_flag_boost=tr.is_alarm)
         hits = self._inject_rule_sources(tr, hits)
         if not hits:
             return Answer(
@@ -251,6 +301,7 @@ class Engine:
             f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
             "the sources may be in another language, translate faithfully.\n"
             f"{_age_context(tr)}"
+            f"{_history_block(history)}"
             f"PARENT MESSAGE:\n{query}\n\nSOURCES:\n{_format_sources(hits)}"
         )
         result = self.llm.complete(self.prompt, user, temperature=0.2)

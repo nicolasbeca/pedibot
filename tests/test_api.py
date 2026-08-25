@@ -138,3 +138,14 @@ def test_degraded_mode_when_budget_spent(client, monkeypatch):
     monkeypatch.setattr(ops, "cost_today_usd", lambda: 99.0)
     j = c.post("/api/ask", json={"question": "mi hijo de 4 años tiene fiebre"}).json()
     assert j["degraded"] is True and j["verification"] == "degraded" and j["sources"]
+
+
+def test_api_keeps_conversation_per_session(client):
+    c, ops = client
+    j1 = c.post("/api/ask", json={"question": "mi hijo de 4 años tiene fiebre"}).json()
+    j2 = c.post(
+        "/api/ask", json={"question": "¿y si además vomita?", "session": j1["session"]}
+    ).json()
+    assert j2["session"] == j1["session"] and j2["verification"] == "ok"
+    h = ops.history(j1["session"])
+    assert [t["role"] for t in h] == ["user", "assistant", "user", "assistant"]

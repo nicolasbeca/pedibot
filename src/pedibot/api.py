@@ -143,7 +143,8 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
                 "degraded",
             )
         else:
-            a = engine.ask(body.question, country=body.country, lang=body.lang)
+            hist = ops.history(session) if body.session else []
+            a = engine.ask(body.question, country=body.country, lang=body.lang, history=hist)
         latency = int((time.perf_counter() - t0) * 1000)
         rec = AnswerRecord(
             session=session,
@@ -162,6 +163,8 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
             latency_ms=latency,
         )
         answer_id = ops.log_answer(rec)
+        ops.add_turn(session, "user", body.question)
+        ops.add_turn(session, "assistant", a.text)
         out_sources: list[SourceOut] = []
         for s in a.sources:
             n = int(s[1 : s.index("]")])

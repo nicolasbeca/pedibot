@@ -199,3 +199,37 @@ def test_triage_rule_source_is_injected_as_first_hit(engine_factory):
     # but the vomiting red-flag chunk (seup_vomitos) must still be among the hits
     assert any("seup_vomitos" in c for c in a.chunk_ids)
     assert "[WARNING SIGNS]" in llm.calls[0][1]
+
+
+def test_history_gives_age_and_context_to_follow_up(engine_factory):
+    eng, llm = engine_factory("Ofrezca suero [1].")
+    hist = [
+        {"role": "user", "text": "mi hijo de 4 años tiene fiebre desde ayer"},
+        {"role": "assistant", "text": "La fiebre no es peligrosa [1]."},
+    ]
+    a = eng.ask("¿y si además vomita?", country="ES", history=hist)
+    assert a.verification == "ok"
+    user_msg = llm.calls[0][1]
+    assert "CONVERSATION SO FAR" in user_msg and "4 años" in user_msg
+    assert "CHILD AGE: 48 months" in user_msg  # age taken from the earlier turn
+    assert any("seup_vomitos" in c for c in a.chunk_ids)  # follow-up retrieved vomiting leaflet
+
+
+def test_old_symptom_does_not_retrigger_banner(engine_factory):
+    eng, _ = engine_factory("Texto [1].")
+    hist = [
+        {"role": "user", "text": "mi hijo de 4 años ha tenido una convulsión"},
+        {"role": "assistant", "text": "x [1]"},
+    ]
+    a = eng.ask("¿puede ir al colegio mañana si tiene fiebre?", country="ES", history=hist)
+    assert a.level == "routine" and a.banner is None
+
+
+def test_age_from_history_still_triggers_infant_rule(engine_factory):
+    eng, _ = engine_factory("x [1]")
+    hist = [
+        {"role": "user", "text": "tengo un bebé de 2 meses"},
+        {"role": "assistant", "text": "ok"},
+    ]
+    a = eng.ask("tiene 38,2 de fiebre", country="ES", history=hist)
+    assert a.level == "urgent"
