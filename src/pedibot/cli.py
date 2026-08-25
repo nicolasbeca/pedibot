@@ -199,6 +199,14 @@ def eval_cmd(
     typer.echo(f"→ {out}")
 
 
+@app.command()
+def serve(host: str = "127.0.0.1", port: int = 8601, reload: bool = False) -> None:
+    """Run the HTTP API (uvicorn). Needs DEEPSEEK_API_KEY unless LLM_PROVIDER=fake."""
+    import uvicorn
+
+    uvicorn.run("pedibot.api:app_from_settings", host=host, port=port, reload=reload, factory=True)
+
+
 if __name__ == "__main__":
     logger.disable("pedibot")
     app()
