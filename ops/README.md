@@ -17,7 +17,7 @@ Patrón heredado de MultiBot: un VPS Ubuntu 24.04, usuario de servicio, `uv`, sy
 | Fichero | Qué |
 |---|---|
 | `bootstrap.sh` | Instalación inicial del VPS (una vez). |
-| `deploy.sh` | Despliegue incremental desde el PC: rsync del código, `index/pedibot.db`, `web/site/dist`; `uv sync`; restart de la API. |
+| `deploy.sh` | Despliegue desde el PC: trae las guías generadas en el servidor al repo, sube código + fuentes del sitio (+ índice), `uv sync`, units, y **construye la web en el servidor** (el contenido del servidor manda). |
 | `Caddyfile` | `pedibot.xyz` → estático `dist` + `/api/*` y `/a/*` → `127.0.0.1:8601`. Cabeceras de seguridad. |
 | `systemd/pedibot-api.service` | uvicorn en 127.0.0.1:8601 como usuario `pedibot`. |
 | `systemd/pedibot-telegram.service` | El mismo motor por Telegram (long polling, `pedibot telegram`), token `TELEGRAM_PUBLIC_BOT_TOKEN`. |

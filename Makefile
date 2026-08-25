@@ -17,5 +17,5 @@ web-install:
 	cd web/site && npm install --no-audit --no-fund
 web-dev:
 	cd web/site && npm run dev
-web-build:
+web-build:  # local preview only; production builds on the server (ops/deploy.sh)
 	uv run python scripts/export_catalog.py && cd web/site && npm run build
