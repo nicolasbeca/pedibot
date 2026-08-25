@@ -1,1 +1,6 @@
 warning: The `fitz` API is deprecated and will be removed in future. Use `import pymupdf` instead.
+[32m2026-08-25 13:04:29.782[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1mlas_50_principales_consultas.pdf → 0 chunks (no_text)[0m
+[32m2026-08-25 13:04:29.818[0m | [1mINFO    [0m | [36mpedibot.ingest.pipeline[0m:[36mrun_ingest[0m:[36m147[0m - [1maemps_es_sueroral_hiposodico_prospecto.pdf → 7 chunks (ok)[0m
+ingest: {'unchanged': 210, 'no_text': 1, 'skipped_excluded': 1, 'ok': 1}  → index\ingest_report.csv
+  ! las_50_principales_consultas.pdf: no_text scanned or protected PDF — needs OCR
+index: 5500 chunks → D:\Nicolas\pedibot\index\pedibot.db  {'chunks': 5500, 'docs': 211, 'red_flag': 161, 'dose': 278}
