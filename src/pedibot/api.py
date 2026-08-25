@@ -20,7 +20,12 @@ from pedibot.bot.drugs import DrugCatalog
 from pedibot.ops.store import AnswerRecord, OpsStore
 from pedibot.settings import ROOT
 
-STATIC_DIR = ROOT / "web" / "static"
+# Built Astro site when present (make web-build), else the static prototype
+STATIC_DIR = (
+    (ROOT / "web" / "site" / "dist")
+    if (ROOT / "web" / "site" / "dist").exists()
+    else ROOT / "web" / "static"
+)
 
 
 class AskIn(BaseModel):

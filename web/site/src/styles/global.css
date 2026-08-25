@@ -1,0 +1,60 @@
+/* PediBot design tokens — from web/mockups/home_v2.html (25-ago). Light always; night via .night */
+:root {
+  --ground: #FFFDF9; --paper: #FFFFFF; --cream: #FFF6EA;
+  --mint: #E3F4EF; --mint-2: #C8E9E0; --peach: #FFE8DC; --lavender: #EDEAF8; --sky: #E6F1FA;
+  --sage: #2F6B57; --sage-deep: #1F4F40; --ink: #2B3A35; --ink-2: #5B6D66; --ink-3: #8A9992;
+  --line: #EAE4DA; --coral: #E38C7E; --coral-soft: #FBE3DD; --amber: #E7B85C; --amber-soft: #FBF0D8;
+  --shadow: 0 10px 30px rgba(43, 58, 53, .07);
+  --r: 20px;
+}
+:root.night {
+  --ground: #1B2522; --paper: #22302C; --cream: #263631;
+  --mint: #23413A; --mint-2: #2C5348; --peach: #3D302A; --lavender: #2E2D3F; --sky: #243542;
+  --sage: #9FD9C8; --sage-deep: #C6ECE1; --ink: #EAF2EE; --ink-2: #B4C6BE; --ink-3: #7F958C;
+  --line: #33453F; --coral: #F0A497; --coral-soft: #45302C; --amber: #F1C97A; --amber-soft: #463A22;
+  --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; color-scheme: light; }
+:root.night { color-scheme: dark; }
+body { margin: 0; background: var(--ground); color: var(--ink); font-family: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+h1, h2, h3 { font-family: "Nunito", "Segoe UI", sans-serif; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 700; line-height: 1.15; }
+h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); font-weight: 700; }
+h3 { font-size: 1.05rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--sage); }
+.mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: Nunito, sans-serif; font-weight: 700; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); }
+button, input, select, textarea { font: inherit; }
+:focus-visible { outline: 3px solid var(--mint-2); outline-offset: 2px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 18px; }
+.narrow { max-width: 760px; margin: 0 auto; padding: 0 18px; }
+.lede { color: var(--ink-2); max-width: 60ch; margin-top: 12px; font-size: 1.05rem; }
+.pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-2); border-radius: 999px; padding: 6px 12px; font-size: .86rem; cursor: pointer; text-decoration: none; }
+.pill select { border: 0; background: transparent; color: inherit; cursor: pointer; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; font-family: Nunito, sans-serif; font-weight: 800; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: .95rem; }
+.btn-primary { background: var(--sage); color: #fff; }
+:root.night .btn-primary { color: var(--ground); }
+.btn-ghost { border-color: var(--line); color: var(--ink); background: var(--paper); }
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; }
+.card.tint-a { background: var(--mint); border-color: transparent; }
+.card.tint-b { background: var(--peach); border-color: transparent; }
+.card.tint-c { background: var(--lavender); border-color: transparent; }
+.card p { color: var(--ink-2); font-size: .97rem; margin-top: 6px; }
+.n { font-family: "JetBrains Mono", monospace; font-size: .8rem; color: var(--sage); }
+.trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+@media (max-width: 800px) { .trio { grid-template-columns: 1fr; } }
+section.block { padding: 64px 0; border-top: 1px solid var(--line); }
+.banner { border-radius: 14px; padding: 12px 14px; font-weight: 700; margin-bottom: 10px; border-left: 5px solid; }
+.banner.emergency { background: var(--coral-soft); border-color: var(--coral); }
+.banner.urgent, .banner.mental_health { background: var(--amber-soft); border-color: var(--amber); }
+.banner small { display: block; font-weight: 400; color: var(--ink-2); margin-top: 4px; }
+.cite { font-family: "JetBrains Mono", monospace; font-size: .7rem; padding: 0 5px; border-radius: 6px; background: var(--mint); color: var(--sage-deep); vertical-align: 2px; margin-left: 2px; }
+.prose { max-width: 68ch; }
+.prose h2 { margin-top: 32px; }
+.prose ul { padding-left: 20px; }
+.prose p { margin: 12px 0; }
+table.plain { width: 100%; border-collapse: collapse; font-size: .95rem; }
+table.plain td, table.plain th { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

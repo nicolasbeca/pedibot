@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import DoseCalc from '../components/DoseCalc.astro';
+import { t } from '../i18n';
+const lang = 'en'; const s = t(lang);
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: 'Paracetamol and ibuprofen dose calculator for children', about: { '@type': 'Drug', name: 'Paracetamol, ibuprofen' }, audience: { '@type': 'Patient' } };
+---
+<Base lang={lang} title="Children's dose calculator — paracetamol & ibuprofen by weight" description="Paracetamol (Calpol, Tylenol) and ibuprofen (Nurofen, Advil) doses for children by weight, in ml for your bottle. Fixed tables from the AEPap dosing guide. No AI." path="/dose" jsonld={jsonld}>
+  <div class="wrap" style="padding-top:40px">
+    <p class="eyebrow">{s.dose_eyebrow}</p>
+    <h1 style="margin-top:8px">{s.dose_h2}</h1>
+    <p class="lede">{s.dose_lede}</p>
+    <DoseCalc lang={lang} />
+    <section class="block" style="padding-top:48px">
+      <h2>Why only these two medicines?</h2>
+      <p class="lede">They are the only over-the-counter fever and pain medicines paediatric guidelines recommend for children. Aspirin is not given to children (Reye syndrome), cough syrups are not recommended under 6, and antibiotics always need a doctor.</p>
+    </section>
+  </div>
+</Base>

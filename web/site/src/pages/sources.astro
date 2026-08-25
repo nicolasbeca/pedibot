@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import SourcesTable from '../components/SourcesTable.astro';
+const lang = 'en';
+---
+<Base lang={lang} title="Sources — the guidelines PediBot quotes" description="Every document PediBot is allowed to quote: organisation, title, year, language and a link to the original." path="/sources">
+  <div class="wrap" style="padding:40px 18px">
+    <p class="eyebrow">Sources</p>
+    <h1 style="margin-top:8px">Who PediBot is allowed to quote</h1>
+    <p class="lede">PediBot never answers from memory or from the open web. Every sentence comes from one of these documents, and the answer shows which one. Documents marked "reference" add depth but are never reproduced in the guides.</p>
+    <SourcesTable lang={lang} />
+  </div>
+</Base>

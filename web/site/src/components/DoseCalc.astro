@@ -1,0 +1,58 @@
+---
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang; drug?: string; kg?: number }
+const { lang, drug = lang === 'es' ? 'Apiretal' : 'Calpol', kg = 14 } = Astro.props;
+const s = t(lang);
+const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpol', 'Tylenol', 'Panadol', 'Apiretal', 'Termalgin', 'Gelocatil', 'Efferalgan', 'Doliprane', 'Tachipirina', 'Dalsy', 'Junifen', 'Apirofeno', 'Nurofen', 'Advil', 'Motrin', 'Alivium'];
+---
+<div class="calc" data-lang={lang} data-strings={JSON.stringify({ every: s.dose_every, hours: s.dose_hours, max: s.dose_max, perday: s.dose_perday, check: s.dose_check, refer: s.dose_refer })}>
+  <div>
+    <div class="field"><label for="drug">{s.dose_drug}</label><input id="drug" list="drugs" value={drug} autocomplete="off" /><datalist id="drugs">{names.map(n => <option value={n} />)}</datalist></div>
+    <div class="field"><label for="w">{s.dose_weight}</label><input id="w" type="number" min="1" max="120" step="0.5" value={kg} /></div>
+    <div class="field"><label for="m">{s.dose_age}</label><select id="m">{s.age_opts.map(([v, l]) => <option value={v} selected={v === '36'}>{l}</option>)}</select></div>
+    <button class="btn btn-primary" id="calc" type="button">{s.dose_calc}</button>
+  </div>
+  <div class="result" id="result" aria-live="polite"></div>
+</div>
+<style>
+  .calc { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; margin-top: 28px; }
+  @media (max-width: 800px) { .calc { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 6px; margin-bottom: 14px; }
+  .field label { font-family: Nunito, sans-serif; font-weight: 700; font-size: .9rem; }
+  .field input, .field select { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 11px 14px; }
+  .result { background: var(--cream); border-radius: var(--r); padding: 22px; min-height: 200px; }
+  .result :global(.big) { font-family: "JetBrains Mono", monospace; font-size: 1.7rem; color: var(--sage-deep); }
+  :global(:root.night) .result :global(.big) { color: var(--sage); }
+  .result :global(table) { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .95rem; }
+  .result :global(td) { padding: 8px 0; border-bottom: 1px dashed var(--line); }
+  .result :global(td:last-child) { text-align: right; font-family: "JetBrains Mono", monospace; }
+  .result :global(.warn) { background: var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
+  .result :global(.note) { background: var(--sky); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
+  .result :global(.src) { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+  .result :global(.who) { font-family: Nunito, sans-serif; font-weight: 700; color: var(--sage); }
+</style>
+<script>
+  const box = document.querySelector('.calc') as HTMLElement; const S = JSON.parse(box.dataset.strings || '{}'); const lang = box.dataset.lang || 'en';
+  const out = document.getElementById('result')!;
+  const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+  async function calc() {
+    const drug = (document.getElementById('drug') as HTMLInputElement).value.trim();
+    const kg = parseFloat((document.getElementById('w') as HTMLInputElement).value);
+    const m = (document.getElementById('m') as HTMLSelectElement).value;
+    if (!drug || !(kg > 0)) return;
+    let country = null; try { country = localStorage.getItem('pedibot_country'); } catch (e) {}
+    const r = await fetch('/api/dose', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ drug, weight_kg: kg, age_months: m === '' ? null : Number(m), country, lang }) });
+    if (!r.ok) { out.innerHTML = '<p>' + (lang === 'es' ? 'Solo paracetamol e ibuprofeno (o sus marcas: Apiretal, Dalsy, Calpol, Nurofen, Tylenol, Advil…).' : 'Only paracetamol/acetaminophen and ibuprofen — or a brand such as Calpol, Tylenol, Apiretal, Dalsy, Nurofen, Advil, Motrin.') + '</p>'; return; }
+    const j = await r.json();
+    let h = `<div class="who">${esc(j.generic)}${j.brand ? ' (' + esc(j.brand) + ')' : ''} · ${j.weight_kg} kg</div>`;
+    h += `<div class="big">${j.mg_min}–${j.mg_max} mg</div><p>${S.every} ${j.interval_hours[0]}–${j.interval_hours[1]} ${S.hours} · ${S.max} ${j.max_doses_per_day} ${S.perday}</p><table>`;
+    for (const f of j.ml_by_form) h += `<tr><td>${esc(f.form)}</td><td>${f.ml_min}–${f.ml_max} ml</td></tr>`;
+    h += '</table>';
+    if (j.refer) h += `<div class="warn">⚠️ ${S.refer} ${j.warnings.join(', ')}</div>`;
+    if (j.notes) h += `<div class="note">${esc(j.notes)}</div>`;
+    h += `<p class="src">${esc(j.source)}. ${S.check}</p>`;
+    out.innerHTML = h;
+  }
+  document.getElementById('calc')!.addEventListener('click', calc);
+  calc();
+</script>

@@ -37,3 +37,8 @@ Thumbs.db
 # derivados de la ingesta (se regeneran con make ingest)
 index/chunks/
 index/ingest_run.log
+
+# astro
+web/site/node_modules/
+web/site/dist/
+web/site/.astro/

@@ -1,0 +1,128 @@
+---
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const countries = [['GB','UK'],['ES','ES'],['US','US'],['IE','IE'],['FR','FR'],['DE','DE'],['IT','IT'],['PT','PT'],['MX','MX'],['AR','AR'],['CL','CL'],['CO','CO'],['BR','BR'],['AU','AU'],['CA','CA'],['NZ','NZ']];
+const ages = lang === 'es'
+  ? [['', s.not_set], ['2 semanas','2 semanas'], ['2 meses','2 meses'], ['6 meses','6 meses'], ['1 año','1 año'], ['2 años','2 años'], ['4 años','4 años'], ['8 años','8 años'], ['13 años','13 años']]
+  : [['', s.not_set], ['2 weeks','2 weeks'], ['2 months','2 months'], ['6 months','6 months'], ['1 year','1 year'], ['2 years','2 years'], ['4 years','4 years'], ['8 years','8 years'], ['13 years','13 years']];
+---
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net })}>
+  <div class="chat" id="thread">
+    <div class="welcome" id="welcome">
+      <img class="face" src="/logo.svg" width="72" height="72" alt="" />
+      <h1>{s.welcome_h1}</h1>
+      <p>{s.welcome_p}</p>
+      <div class="suggest">
+        {s.sug.map(([q, hint], i) => <button class={`sug ${'abcd'[i]}`} type="button" data-q={q}>{q}<small>{hint}</small></button>)}
+      </div>
+    </div>
+  </div>
+  <div class="dock">
+    <div class="dock-in">
+      <div class="ctx">
+        <label class="pill">🌍 <select id="country" aria-label="Country">{countries.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
+        <label class="pill">👶 {s.age} <select id="age" aria-label={s.age}>{ages.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
+        <label class="pill">⚖️ {s.weight} <input id="kg" type="number" min="1" max="120" step="0.5" placeholder="kg" aria-label="kg" /></label>
+      </div>
+      <form class="composer" id="composer">
+        <textarea id="input" rows="1" placeholder={s.placeholder} aria-label={s.placeholder}></textarea>
+        <button class="send" type="submit" aria-label={s.send}>➤</button>
+      </form>
+      <p class="legal">{s.legal_line}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .stage { min-height: calc(100vh - 60px); display: flex; flex-direction: column; }
+  .chat { flex: 1; max-width: 760px; width: 100%; margin: 0 auto; padding: 28px 18px 160px; display: flex; flex-direction: column; gap: 18px; }
+  .welcome { text-align: center; padding: 6vh 0 8px; }
+  .welcome .face { display: block; margin: 0 auto 18px; }
+  .welcome p { color: var(--ink-2); max-width: 46ch; margin: 12px auto 0; }
+  .suggest { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 26px; }
+  @media (max-width: 560px) { .suggest { grid-template-columns: 1fr; } }
+  .sug { text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; cursor: pointer; color: var(--ink); transition: transform .15s, box-shadow .15s; }
+  .sug:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--mint-2); }
+  .sug small { display: block; color: var(--ink-3); font-size: .8rem; margin-top: 2px; }
+  .sug.a { background: var(--mint); } .sug.b { background: var(--peach); } .sug.c { background: var(--lavender); } .sug.d { background: var(--sky); }
+  .chat :global(.msg) { max-width: 92%; padding: 14px 18px; border-radius: 20px; line-height: 1.6; }
+  .chat :global(.msg.user) { align-self: flex-end; background: var(--mint); border-bottom-right-radius: 6px; }
+  .chat :global(.msg.bot) { align-self: flex-start; background: var(--paper); border: 1px solid var(--line); border-bottom-left-radius: 6px; box-shadow: var(--shadow); }
+  .chat :global(.who) { font-family: Nunito, sans-serif; font-weight: 700; font-size: .85rem; color: var(--sage); margin-bottom: 6px; }
+  .chat :global(.sources) { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: .84rem; color: var(--ink-2); }
+  .chat :global(.sources b) { color: var(--ink); }
+  .chat :global(.sources div) { display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; margin-top: 4px; }
+  .chat :global(.foot) { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: .78rem; color: var(--ink-3); margin-top: 10px; }
+  .chat :global(.fb) { border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 3px 9px; cursor: pointer; color: var(--ink-2); }
+  .chat :global(.typing) { display: inline-flex; gap: 4px; padding: 6px 2px; }
+  .chat :global(.typing i) { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-3); animation: blink 1.2s infinite; }
+  .chat :global(.typing i:nth-child(2)) { animation-delay: .2s; } .chat :global(.typing i:nth-child(3)) { animation-delay: .4s; }
+  @keyframes blink { 0%, 80%, 100% { opacity: .25 } 40% { opacity: 1 } }
+  .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; background: linear-gradient(to top, var(--ground) 70%, transparent); padding: 18px 12px 14px; }
+  .dock-in { max-width: 760px; margin: 0 auto; }
+  .ctx { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+  .ctx .pill { background: var(--cream); }
+  .ctx input { width: 64px; border: 0; background: transparent; color: inherit; }
+  .composer { display: flex; align-items: flex-end; gap: 8px; background: var(--paper); border: 1px solid var(--line); border-radius: 26px; padding: 8px 8px 8px 18px; box-shadow: var(--shadow); }
+  .composer textarea { flex: 1; border: 0; background: transparent; color: var(--ink); resize: none; max-height: 140px; padding: 8px 0; line-height: 1.5; }
+  .send { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--sage); color: #fff; cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; }
+  :global(:root.night) .send { color: var(--ground); }
+  .legal { text-align: center; font-size: .74rem; color: var(--ink-3); margin-top: 8px; }
+  @media (prefers-reduced-motion: reduce) { .chat :global(.typing i) { animation: none; } .sug { transition: none; } }
+</style>
+
+<script>
+  const stage = document.querySelector('.stage') as HTMLElement;
+  const lang = stage.dataset.lang || 'en';
+  const S = JSON.parse(stage.dataset.strings || '{}');
+  const thread = document.getElementById('thread')!, welcome = document.getElementById('welcome')!;
+  const form = document.getElementById('composer') as HTMLFormElement, input = document.getElementById('input') as HTMLTextAreaElement;
+  const countrySel = document.getElementById('country') as HTMLSelectElement, ageSel = document.getElementById('age') as HTMLSelectElement, kgIn = document.getElementById('kg') as HTMLInputElement;
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let session: string | null = null;
+  try { session = localStorage.getItem('pedibot_session'); const c = localStorage.getItem('pedibot_country'); if (c) countrySel.value = c; } catch (e) {}
+  try { const loc = (navigator.language || '').split('-')[1]; if (loc && !localStorage.getItem('pedibot_country') && [...countrySel.options].some(o => o.value === loc)) countrySel.value = loc; } catch (e) {}
+  countrySel.addEventListener('change', () => { try { localStorage.setItem('pedibot_country', countrySel.value); } catch (e) {} });
+
+  const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+  function bubble(cls: string, html: string) { welcome.style.display = 'none'; const d = document.createElement('div'); d.className = 'msg ' + cls; d.innerHTML = html; thread.appendChild(d); d.scrollIntoView({ block: 'end', behavior: reduced ? 'auto' : 'smooth' }); return d; }
+  function render(j: any) {
+    let h = '<div class="who">pedibot</div>';
+    if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
+    h += esc(j.text).replace(/\[(\d{1,2})\]/g, '<span class="cite">$1</span>').replace(/\n/g, '<br>');
+    if (j.sources?.length) h += `<div class="sources"><b>${S.sources}</b><div>` + j.sources.map((s: any) => `<span class="mono">[${s.n}]</span><span>${esc(s.citation)}${s.url ? ` · <a href="${esc(s.url)}" target="_blank" rel="noopener">PDF</a>` : ''}</span>`).join('') + '</div></div>';
+    h += `<div class="foot"><span>ℹ️ ${esc(j.disclaimer)}</span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button></span></div>`;
+    return h;
+  }
+  function context(q: string) {
+    // age/weight chips are sent as part of the message so triage and the dose router see them
+    const parts = [q];
+    if (ageSel.value && !/\d\s*(años|año|meses|mes|years?|months?|weeks?|semanas?)/i.test(q)) parts.push(lang === 'es' ? `(tiene ${ageSel.value})` : `(age: ${ageSel.value})`);
+    if (kgIn.value && !/\bkg|kilos?\b/i.test(q)) parts.push(lang === 'es' ? `(pesa ${kgIn.value} kg)` : `(weight: ${kgIn.value} kg)`);
+    return parts.join(' ');
+  }
+  async function ask(q: string) {
+    bubble('user', esc(q));
+    const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
+    try {
+      const r = await fetch('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: context(q), country: countrySel.value || null, lang, session }) });
+      if (r.status === 429) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_rate; return; }
+      if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_server; return; }
+      const j = await r.json(); session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
+      t.innerHTML = render(j);
+    } catch (e) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_net; }
+    t.scrollIntoView({ block: 'end' });
+  }
+  thread.addEventListener('click', async e => {
+    const b = (e.target as HTMLElement).closest('.fb') as HTMLButtonElement | null; if (!b) return;
+    await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session, value: Number(b.dataset.v) }) });
+    b.parentElement!.querySelectorAll('.fb').forEach(x => (x as HTMLButtonElement).disabled = true); b.textContent += ' ✓';
+  });
+  document.addEventListener('click', e => { const b = (e.target as HTMLElement).closest('.sug') as HTMLElement | null; if (b?.dataset.q) ask(b.dataset.q); });
+  form.addEventListener('submit', e => { e.preventDefault(); const q = input.value.trim(); if (!q) return; input.value = ''; input.style.height = 'auto'; ask(q); });
+  input.addEventListener('input', () => { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 140) + 'px'; });
+  input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
+  const pre = new URLSearchParams(location.search).get('q'); if (pre) { input.value = pre; }
+</script>

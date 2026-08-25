@@ -1,0 +1,55 @@
+---
+import { t, langPrefix, type Lang } from '../i18n';
+import sources from '../data/sources.json';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const orgs = [
+  ['SEUP', lang === 'es' ? 'Sociedad Española de Urgencias de Pediatría · 29 hojas para padres' : 'Spanish paediatric emergency doctors · 29 parent leaflets'],
+  ['AEP · AEPap', lang === 'es' ? 'Asociación Española de Pediatría · alimentación, recién nacido, dosis' : 'Spanish Paediatric Association · feeding, newborn care, dosing'],
+  ['WHO / OMS', lang === 'es' ? 'Alimentación complementaria · actividad y sueño < 5 años' : 'Complementary feeding · activity & sleep under 5'],
+  ['AAP', lang === 'es' ? 'Academia Americana de Pediatría · guías clínicas' : 'American Academy of Pediatrics · clinical guidelines'],
+  [lang === 'es' ? 'Ministerio de Sanidad' : 'Ministry of Health (Spain)', lang === 'es' ? 'Calendario de vacunación 2025' : '2025 vaccination schedule'],
+  ['Hospital Niño Jesús', lang === 'es' ? 'Primeros auxilios para padres' : 'First aid for parents'],
+];
+const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
+---
+<div class="wrap">
+  <section class="block" id="how">
+    <p class="eyebrow">{s.how_eyebrow}</p>
+    <h2 style="margin-top:8px">{s.how_h2}</h2>
+    <p class="lede">{s.how_lede}</p>
+    <div class="trio">
+      <div class="card tint-a"><span class="n">1</span><h3>{s.how_1t}</h3><p>{s.how_1}</p></div>
+      <div class="card tint-b"><span class="n">2</span><h3>{s.how_2t}</h3><p>{s.how_2.replace('49', String(n))}</p></div>
+      <div class="card tint-c"><span class="n">3</span><h3>{s.how_3t}</h3><p>{s.how_3}</p></div>
+    </div>
+  </section>
+
+  <section class="block" id="dose">
+    <p class="eyebrow">{s.dose_eyebrow}</p>
+    <h2 style="margin-top:8px">{s.dose_h2}</h2>
+    <p class="lede">{s.dose_lede}</p>
+    <p style="margin-top:18px"><a class="btn btn-primary" href={`${langPrefix(lang)}/dose`}>{s.nav_dose} →</a></p>
+  </section>
+
+  <section class="block" id="sources">
+    <p class="eyebrow">{s.src_eyebrow}</p>
+    <h2 style="margin-top:8px">{s.src_h2}</h2>
+    <p class="lede">{s.src_lede}</p>
+    <div class="orgs">{orgs.map(([b, d]) => <div class="org"><b>{b}</b><span>{d}</span></div>)}</div>
+    <p style="margin-top:18px"><a class="btn btn-ghost" href={`${langPrefix(lang)}/sources`}>{s.src_all} ({n})</a></p>
+  </section>
+
+  <section class="block" id="support">
+    <p class="eyebrow">{s.support_eyebrow}</p>
+    <h2 style="margin-top:8px">{s.support_h2}</h2>
+    <p class="lede">{s.support_p}</p>
+  </section>
+</div>
+<style>
+  .orgs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 26px; }
+  .org { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+  .org b { display: block; font-family: Nunito, sans-serif; }
+  .org span { font-size: .84rem; color: var(--ink-3); }
+</style>

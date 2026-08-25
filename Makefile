@@ -13,3 +13,9 @@ ingest:
 	uv run pedibot ingest FUENTES --out index
 eval:
 	uv run pedibot eval eval/golden.jsonl
+web-install:
+	cd web/site && npm install --no-audit --no-fund
+web-dev:
+	cd web/site && npm run dev
+web-build:
+	uv run python scripts/export_catalog.py && cd web/site && npm run build

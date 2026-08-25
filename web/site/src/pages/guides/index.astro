@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { t } from '../../i18n';
+const lang = 'en'; const s = t(lang);
+const guides = (await getCollection('guides', g => g.data.lang === lang && !g.data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base lang={lang} title="Guides for parents — PediBot" description={s.guides_lede} path="/guides">
+  <div class="wrap" style="padding:40px 18px">
+    <p class="eyebrow">{s.nav_guides}</p>
+    <h1 style="margin-top:8px">{s.guides_h1}</h1>
+    <p class="lede">{s.guides_lede}</p>
+    {guides.length === 0 && <p class="lede" style="margin-top:28px">First guides coming soon.</p>}
+    <div class="trio" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+      {guides.map(g => <a class="card" href={`/guides/${g.id.replace(/^en\//, '')}`} style="text-decoration:none;color:inherit"><span class="n">{g.data.topic}</span><h3 style="margin-top:6px">{g.data.title}</h3><p>{g.data.description}</p></a>)}
+    </div>
+  </div>
+</Base>

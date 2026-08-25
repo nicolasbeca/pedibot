@@ -1,0 +1,79 @@
+---
+import '../styles/global.css';
+import { t, langPrefix, type Lang } from '../i18n';
+interface Props { lang: Lang; title: string; description: string; path: string; jsonld?: object }
+const { lang, title, description, path, jsonld } = Astro.props;
+const s = t(lang);
+const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const other: Lang = lang === 'en' ? 'es' : 'en';
+const strip = (p: string) => p.replace(/^\/es(?=\/|$)/, '') || '/';
+const otherPath = `${langPrefix(other)}${strip(path)}`.replace(/\/$/, '') || '/';
+const canonical = `${site}${path === '/' ? '' : path}`;
+const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'PediBot', url: site, logo: `${site}/logo.svg`, email: 'pedibot.ai@gmail.com', sameAs: ['https://x.com/pedibotai'] };
+---
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="alternate" hreflang={lang} href={canonical} />
+  <link rel="alternate" hreflang={other} href={`${site}${otherPath === '/' ? '' : otherPath}`} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={`${site}/og.png`} />
+  <meta name="generator" content={Astro.generator} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" />
+  <script type="application/ld+json" set:html={JSON.stringify(org)} />
+  {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
+  <script is:inline>try{if(localStorage.getItem('pedibot_theme')==='night')document.documentElement.classList.add('night')}catch(e){}</script>
+</head>
+<body>
+  <header class="bar">
+    <div class="wrap bar-in">
+      <a class="brand" href={langPrefix(lang) || '/'}>
+        <img src="/logo.svg" width="34" height="34" alt="" />
+        pedibot
+      </a>
+      <nav class="hide-sm">
+        <a class="pill" href={`${langPrefix(lang) || ''}/#how`}>{s.nav_how}</a>
+        <a class="pill" href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a>
+        <a class="pill" href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a>
+        <a class="pill" href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a>
+      </nav>
+      <div style="display:flex;gap:8px">
+        <a class="pill" href={otherPath} hreflang={other}>{other.toUpperCase()}</a>
+        <button class="pill" id="theme" type="button" aria-label="Night mode">🌙</button>
+      </div>
+    </div>
+  </header>
+  <slot />
+  <footer>
+    <div class="wrap">
+      <b style="font-family:Nunito,sans-serif;color:var(--ink)">pedibot</b> · pedibot.ai@gmail.com · <a href="https://x.com/pedibotai" rel="me">@pedibotai</a> ·
+      <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a> · <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a> · <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a><br />
+      {s.footer_legal}
+    </div>
+  </footer>
+  <style>
+    .bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+    .bar-in { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--ink); font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.2rem; }
+    .bar nav { display: flex; gap: 8px; }
+    @media (max-width: 720px) { .bar .hide-sm { display: none; } }
+    footer { padding: 30px 0 60px; color: var(--ink-3); font-size: .86rem; border-top: 1px solid var(--line); }
+  </style>
+  <script>
+    const root = document.documentElement, tg = document.getElementById('theme');
+    const label = () => { if (tg) tg.textContent = root.classList.contains('night') ? '☀️' : '🌙'; };
+    tg?.addEventListener('click', () => { root.classList.toggle('night'); try { localStorage.setItem('pedibot_theme', root.classList.contains('night') ? 'night' : 'day'); } catch (e) {} label(); });
+    label();
+  </script>
+</body>
+</html>

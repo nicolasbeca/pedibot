@@ -133,3 +133,14 @@ def test_topic_plan_docs_exist_in_catalog(config_dir):
     for topic, plan in TOPIC_PLAN.items():
         for d in plan["docs"]:
             assert d in ids, (topic, d)
+
+
+def test_frontmatter_is_valid_yaml_with_quotes(index, tmp_path: Path):
+    import yaml
+
+    llm = FakeProvider(GOOD.replace("When should I worry", 'When should I "worry"'))
+    a = generate_article(index, llm, "fiebre", "en")
+    md_path, _ = write_article(a, tmp_path / "content", tmp_path / "queue", "https://x")
+    fm = md_path.read_text(encoding="utf-8").split("---")[1]
+    data = yaml.safe_load(fm)
+    assert '"worry"' in data["title"] and data["sources"][0].startswith("[1] SEUP")

@@ -1,0 +1,21 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { t } from '../../i18n';
+export async function getStaticPaths() {
+  const guides = await getCollection('guides', g => g.data.lang === 'en' && !g.data.draft);
+  return guides.map(g => ({ params: { slug: g.id.replace(/^en\//, '') }, props: { g } }));
+}
+const { g } = Astro.props; const lang = 'en'; const s = t(lang);
+const { Content } = await render(g);
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', headline: g.data.title, description: g.data.description, datePublished: g.data.date.toISOString(), inLanguage: 'en', author: { '@type': 'Organization', name: 'PediBot' }, citation: g.data.sources };
+---
+<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/guides/${g.id.replace(/^en\//, '')}`} jsonld={jsonld}>
+  <article class="narrow prose" style="padding:40px 18px">
+    <p class="eyebrow">{g.data.topic} · {s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString('en-GB')}</time></p>
+    <h1 style="margin-top:8px">{g.data.title}</h1>
+    <p class="lede">{g.data.description}</p>
+    <Content />
+    <p style="margin-top:32px"><a class="btn btn-primary" href={`/?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
+  </article>
+</Base>

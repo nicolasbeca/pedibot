@@ -4,7 +4,7 @@
 
 ## Fase actual
 
-**F1 Ingesta — HECHA. F2 Motor — HECHO y probado con el LLM real (DeepSeek, eval con juez). F3 Web+API — API hecha (con memoria, dosis con marcas) y prototipo estático servible; boceto v2 chat-first aprobado como dirección; la web Astro espera a Node.** Todo corre en local; no hay VPS ni dominio.
+**F1 Ingesta — HECHA. F2 Motor — HECHO y probado con el LLM real. F3 Web+API — en marcha: API completa y sitio Astro construido (home chat, dosis, fuentes, guías, EN/ES) con las 2 primeras guías reales.** Todo corre en local; no hay VPS ni dominio. Para verlo: `make web-build` y `uv run pedibot serve` → http://127.0.0.1:8601.
 
 Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8601 (con `LLM_PROVIDER=fake` en `.env` funciona sin clave, pero las respuestas serán el fallback "no tengo fuente"; con `DEEPSEEK_API_KEY` responde de verdad).
 
@@ -41,8 +41,9 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 | Memoria de conversación (I-31) | ✅ `Engine.ask(..., history=[...])`: ventana de 6 turnos; la edad dicha en un turno anterior cuenta (regla <3 meses incluida); los síntomas viejos NO re-disparan el banner; la recuperación de un seguimiento corto ("¿y si además vomita?") usa también el mensaje anterior; el prompt recibe CONVERSATION SO FAR. Turnos por sesión en `data/pedibot_ops.db` (24 h). Probado con el modelo real: el seguimiento recupera la hoja de vómitos y mantiene los 4 años. | `bot/answer.py`, `ops/store.py`, `api.py` |
 | CLI | ✅ `pedibot ingest / search / triage / dose / ask [--fake] / eval [--llm --judge] / serve / publish / balance` | `src/pedibot/cli.py` |
 | Golden set + eval | ✅ `eval/golden.jsonl` (60 preguntas es/en con nivel, reglas, documento esperado o ruta esperada) y `pedibot eval` (sin LLM). **Resultado 25-ago: triaje 1,0 · recall red flags 1,0 · precisión 1,0 · reglas 1,0 · fuente en top-3 0,96 · enrutado 1,0.** Informe en `eval/reports/`. Mejoras que lo lograron: pesos por tipo de documento (hoja_padres ×1,6, libro ×0,55), boost por tema de la taxonomía, sinónimos es→es coloquiales, filtro de bibliografías en la ingesta, regla fuera-de-ámbito (sin tema pediátrico → 3 términos o silencio). | `src/pedibot/eval.py` |
-| Tests | ✅ **126 tests verdes**, ruff + mypy limpios. | `tests/` |
-| Web | 🎨 Boceto v1 (HTML autocontenido, día/noche, chat demo operable con 3 conversaciones guionizadas, pipeline en 3 pasos, herramientas, muro de fuentes, sección del token con libro de cuentas). Sin Astro todavía (no hay Node en el equipo). | `web/mockups/home.html` · artefacto publicado |
+| Tests | ✅ **127 tests verdes**, ruff + mypy limpios. | `tests/` |
+| Web Astro (F3) | ✅ **Node 24 instalado el 25-ago (winget, autorizado por el operador)**. Sitio en `web/site` (Astro 7 + sitemap): i18n `en` (raíz) / `es` (`/es`), layout con canonical/hreflang/OpenGraph/JSON-LD (Organization, WebApplication, MedicalWebPage), tema **siempre claro** (noche solo con el botón; el ajuste del navegador se ignora — decisión operador), tokens del boceto v2. Páginas: home chat-first (widget real contra `/api/ask` con chips de país/edad/peso enviados en el mensaje, sesión y país en localStorage, 👍/👎, `?q=` precarga), `/dose` (calculadora contra `/api/dose` con marcas), `/sources` (tabla desde `config/fuentes.yaml` vía `scripts/export_catalog.py`), `/guides` + `/guides/<slug>` (colección desde `web/content/<lang>/*.md`). **Primeras 2 guías reales generadas con DeepSeek** (fiebre EN+ES, 0,0006 $ cada una). `make web-build` → `web/site/dist`, que la API sirve en `/` cuando existe (probado: 10 páginas, chat real OK). | `web/site/`, `web/content/` |
+| Boceto | 🎨 v1 y v2 (`web/mockups/`), v2 = dirección aprobada. | artefactos publicados |
 
 ## LLM real (desde el 25-ago)
 
@@ -61,7 +62,7 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 - Fallos abiertos del golden set (2 de 60): g49 "¿cuánto tiene que dormir un niño de 2 años?" (la guía OMS está en inglés y no hay expansión es→en, I-17) y g60 recién nacido que rechaza tomas (fuente AEP no sube; el triaje sí lo marca urgente).
 - **OCR pendiente** de `las_50_principales_consultas.pdf` (sin tesseract local).
 - **Fuentes en inglés** se indexan tal cual; la expansión de sinónimos solo va en→es (para una pregunta en español sobre una guía de la OMS en inglés no hay expansión es→en).
-- **Sin Astro ni VPS**; la web real (i18n, artículos renderizados, SEO) espera a Node. El prototipo estático ya funciona contra la API.
+- **Sin VPS ni dominio.** La web Astro ya existe; faltan de las ideas aceptadas: I-02 checklist urgencias, I-03/04 diario y recordatorio, I-06 explícaselo a mi hijo, I-08 voz, I-11 mapa, I-27 sugerencias por temporada, I-28 compartir, I-29 páginas de dosis por marca/peso, I-30 suero (necesita fuente), página del token/libro de cuentas, privacidad/aviso legal.
 - 7 fuentes con licencia `?` en el catálogo (aceptadas provisionalmente como `citar_solo`).
 
 ## Deudas técnicas

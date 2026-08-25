@@ -7,6 +7,7 @@ publish/queue/x/<slug>.txt with a hand-postable social text (no X API — operat
 from __future__ import annotations
 
 import datetime as dt
+import json
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -110,11 +111,11 @@ class Article:
 
     def frontmatter(self) -> str:
         today = dt.date.today().isoformat()
-        srcs = "\n".join(f'  - "{s}"' for s in self.sources)
+        srcs = "\n".join(f"  - {json.dumps(s, ensure_ascii=False)}" for s in self.sources)
         return (
             "---\n"
-            f'title: "{self.title.replace(chr(34), chr(39))}"\n'
-            f'description: "{self.summary.replace(chr(34), chr(39))}"\n'
+            f"title: {json.dumps(self.title, ensure_ascii=False)}\n"
+            f"description: {json.dumps(self.summary, ensure_ascii=False)}\n"
             f"lang: {self.lang}\n"
             f"topic: {self.topic}\n"
             f"date: {today}\n"
@@ -147,7 +148,12 @@ def gather_hits(index: Index, topic: str, max_chunks: int = 10) -> list[Hit]:
     hits = index.search(str(plan["query"]), top_k=40, prefer_parent_leaflets=True)
     wanted: list[str] = list(plan["docs"])  # type: ignore[call-overload]
     anchored = [h for h in hits if h.chunk.doc_id in wanted]
-    others = [h for h in hits if h.chunk.doc_id not in wanted and h.chunk.usage == "publico"]
+    topics = {h.chunk.topic for h in anchored}
+    others = [
+        h
+        for h in hits
+        if h.chunk.doc_id not in wanted and h.chunk.usage == "publico" and h.chunk.topic in topics
+    ]
     return (anchored + others)[:max_chunks]
 
 
