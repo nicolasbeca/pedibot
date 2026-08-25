@@ -16,12 +16,14 @@ _DOSE = re.compile(r"\bmg\s*/\s*kg\b|\bmg/kg/d[ií]a\b|\bml/kg\b", re.I)
 _RED_FLAG_TITLE = re.compile(
     r"urgencias|112|alarma|cu[aá]ndo (debo|hay que|tengo que) (consultar|acudir|ir)|"
     r"cu[aá]ndo consultar|cu[aá]ndo acudir|signos de gravedad|when to (seek|go|call)|"
-    r"emergency|warning signs",
+    r"emergency|warning signs|urgent|get help|call 999|call 911|a&e|immediate action|"
+    r"when to (see|get|call|seek)|ask for an urgent|red flags?|danger signs",
     re.I,
 )
 _RED_FLAG_TEXT = re.compile(
     r"(acud[ae]|acudir|llam[ae]|llamar)\s+(a|al)\s+(urgencias|112)|llame al 112|"
-    r"de forma inmediata|urgentemente",
+    r"de forma inmediata|urgentemente|call 999|call 911|go to a&e|emergency department|"
+    r"call an ambulance|immediately|straight away",
     re.I,
 )
 _BIBLIO = re.compile(r"\bet al\b|\bdoi:|https?://|PMID", re.I)

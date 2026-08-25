@@ -7,7 +7,10 @@ import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 docs = yaml.safe_load((ROOT / "config" / "fuentes.yaml").read_text(encoding="utf-8"))["sources"]
-keys = ("doc_id", "org", "org_full", "title", "year", "lang", "topic", "doc_type", "usage", "url")
+_web = ROOT / "config" / "fuentes_web.yaml"
+if _web.exists():
+    docs += (yaml.safe_load(_web.read_text(encoding="utf-8")) or {}).get("sources", [])
+keys = ("doc_id", "org", "org_full", "title", "year", "lang", "topic", "doc_type", "usage", "url", "notes")
 out = [{k: d.get(k) for k in keys} for d in docs]
 target = ROOT / "web" / "site" / "src" / "data" / "sources.json"
 target.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")

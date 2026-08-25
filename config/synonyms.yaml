@@ -128,7 +128,6 @@ es:
   sueño: [sueño, descanso]
   llora: [llanto, cólico]
   llanto: [llanto, cólico]
-  cabeza: [traumatismo craneal, golpe]
   caíd: [traumatismo, golpe, caída]
   golpe: [traumatismo]
   cambiador: [caída, traumatismo craneal]
