@@ -4,7 +4,7 @@
 
 ## Fase actual
 
-**F1 Ingesta — HECHA. F2 Motor — COMPLETO salvo la prueba con LLM real (falta la clave de DeepSeek). F3 Web+API — API hecha y prototipo estático servible; la web Astro espera a Node.** Todo corre en local; no hay VPS ni dominio.
+**F1 Ingesta — HECHA. F2 Motor — HECHO y probado con el LLM real (DeepSeek, eval con juez). F3 Web+API — API hecha (con memoria, dosis con marcas) y prototipo estático servible; boceto v2 chat-first aprobado como dirección; la web Astro espera a Node.** Todo corre en local; no hay VPS ni dominio.
 
 Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8601 (con `LLM_PROVIDER=fake` en `.env` funciona sin clave, pero las respuestas serán el fallback "no tengo fuente"; con `DEEPSEEK_API_KEY` responde de verdad).
 
@@ -38,9 +38,10 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 | API HTTP | ✅ FastAPI: `POST /api/ask` (JSON: question, country, lang, session), `POST /api/feedback` (👍/👎 solo desde la sesión propietaria), `GET /api/health`, `GET /api/stats`. Registro anonimizado en `data/pedibot_ops.db` (sesión aleatoria, IP solo como hash con sal, tokens/coste/latencia/versión de prompt). Rate limit por IP (20/10 min, 200/día) y **modo degradado** al superar `MAX_DAILY_LLM_USD`: devuelve pasajes sin LLM. CORS solo a `ALLOWED_ORIGINS`. 7 tests con `TestClient`. `pedibot serve` arranca uvicorn en 127.0.0.1:8601. | `src/pedibot/api.py`, `src/pedibot/ops/store.py` |
 | Publicación | ✅ Generador de artículos (`publish/articles.py`): plan de 28 temas anclados en hojas para padres, prompt `article_v1` (TITLE/SUMMARY/BODY con 4 secciones fijas, siempre "cuándo ir a urgencias"), **mismo verificador de citas/dosis que el bot** (1 reintento, si falla se descarta), salida Markdown con frontmatter (`web/content/<lang>/<slug>.md`) + texto para X en `publish/queue/x/` (publicación manual). `pedibot publish [--topic] [--lang] [--n] [--fake]`. 5 tests. Sin LLM real todavía. | `src/pedibot/publish/` |
 | Web (prototipo servible) | ✅ `web/static/index.html`: el boceto convertido en página real — el chat llama a `/api/ask`, renderiza banner/citas/fuentes con enlace al PDF, 👍/👎 a `/api/feedback`, selector de país (auto por idioma del navegador), sesión en localStorage. La API la sirve en `/` (`pedibot serve` → http://127.0.0.1:8601). Probado end-to-end con `LLM_PROVIDER=fake`. Astro/i18n/artículos siguen pendientes (Node). | `web/static/` |
-| CLI | ✅ `pedibot ingest / search / triage / dose / ask [--fake] / eval / serve / publish` | `src/pedibot/cli.py` |
+| Memoria de conversación (I-31) | ✅ `Engine.ask(..., history=[...])`: ventana de 6 turnos; la edad dicha en un turno anterior cuenta (regla <3 meses incluida); los síntomas viejos NO re-disparan el banner; la recuperación de un seguimiento corto ("¿y si además vomita?") usa también el mensaje anterior; el prompt recibe CONVERSATION SO FAR. Turnos por sesión en `data/pedibot_ops.db` (24 h). Probado con el modelo real: el seguimiento recupera la hoja de vómitos y mantiene los 4 años. | `bot/answer.py`, `ops/store.py`, `api.py` |
+| CLI | ✅ `pedibot ingest / search / triage / dose / ask [--fake] / eval [--llm --judge] / serve / publish / balance` | `src/pedibot/cli.py` |
 | Golden set + eval | ✅ `eval/golden.jsonl` (60 preguntas es/en con nivel, reglas, documento esperado o ruta esperada) y `pedibot eval` (sin LLM). **Resultado 25-ago: triaje 1,0 · recall red flags 1,0 · precisión 1,0 · reglas 1,0 · fuente en top-3 0,96 · enrutado 1,0.** Informe en `eval/reports/`. Mejoras que lo lograron: pesos por tipo de documento (hoja_padres ×1,6, libro ×0,55), boost por tema de la taxonomía, sinónimos es→es coloquiales, filtro de bibliografías en la ingesta, regla fuera-de-ámbito (sin tema pediátrico → 3 términos o silencio). | `src/pedibot/eval.py` |
-| Tests | ✅ **94 tests verdes**, ruff + mypy limpios. | `tests/` |
+| Tests | ✅ **126 tests verdes**, ruff + mypy limpios. | `tests/` |
 | Web | 🎨 Boceto v1 (HTML autocontenido, día/noche, chat demo operable con 3 conversaciones guionizadas, pipeline en 3 pasos, herramientas, muro de fuentes, sección del token con libro de cuentas). Sin Astro todavía (no hay Node en el equipo). | `web/mockups/home.html` · artefacto publicado |
 
 ## LLM real (desde el 25-ago)
