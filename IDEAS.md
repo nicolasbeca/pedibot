@@ -100,3 +100,16 @@
 Virtuals tiene el **Agent Commerce Protocol (ACP)**: un mercado on-chain donde agentes de IA se contratan y pagan entre sí (roles Cliente / Proveedor / Evaluador; fases petición → negociación → escrow → evaluación → liquidación). En 2026 lanzaron la "Revenue Network" (hasta 1 M$/mes repartidos entre agentes que venden servicios por ACP) y ACP v2 (SDK/CLI unificados, wallet no custodial, multi-cadena). **Encaje para PediBot**: registrar "PediBot" como agente **proveedor** con un servicio "respuesta pediátrica con fuentes" (la misma API `/api/ask`) cobrando en PDBT o VIRTUAL — utilidad real del token **sin exigir nada al padre** (la web sigue gratis; pagan otros agentes). Riesgos: uso médico por agentes sin contexto → mantener el mismo triaje/disclaimer y **rechazar** peticiones fuera de ámbito; revisar los términos del ACP sobre servicios de salud. Coste: medio (SDK de Virtuals + un endpoint firmado). Estado: **aceptada por el operador; para después del despliegue (F4)**. Fuentes: whitepaper.virtuals.io (ACP, Commerce Layer, changelogs), rockawayx.com, prnewswire (feb-2026).
 
 | I-33 | **Chatbot por Telegram** (mismo motor, sesión por chat, 👍/👎, /country, /lang). Pedido por el operador 25-ago. | HECHA 25-ago (`pedibot telegram`, unit systemd; falta el token del bot nuevo) |
+
+## Visibilidad (25-ago) — plan de difusión sin presupuesto
+
+| Id | Acción | Coste | Estado |
+|---|---|---|---|
+| V-01 | Google Search Console + Bing con sitemap y RSS | 0 | operador |
+| V-02 | Bluesky @pedibot + canal Telegram @pedibot_news con sindicación automática diaria | 0 | hecho en código; faltan cuentas/credenciales |
+| V-03 | X @pedibotai: pegar a mano desde `publish/queue/x/` o activar pago por uso (~6 $/mes) | 0-6 $/mes | operador decide |
+| V-04 | Lanzamientos manuales honestos: Product Hunt, Hacker News "Show HN", r/Parenting, r/daddit, foros de crianza en español | 0 | tras la beta cerrada |
+| V-05 | Pediatras y matronas que enlacen/revisen (W-06) | 0 | operador |
+| V-06 | Directorios de herramientas de IA (There's An AI For That, Futurepedia, AI Tools) | 0 | tras la beta |
+| V-07 | Comunidad Virtuals: perfil verificado (hecho), post de lanzamiento, ACP (T-06) | 0 | en curso |
+| V-08 | Mastodon/Threads (API gratuita) como 3.º y 4.º canal automáticos | 0 | nueva |
