@@ -91,10 +91,12 @@
 | I-27 | "Tarjetas" de sugerencia en la pantalla de bienvenida con las 4 preguntas más frecuentes por temporada (bronquiolitis en invierno, golpe de calor en verano). | HECHA 25-ago (4.ª tarjeta cambia por temporada y hemisferio) |
 | I-28 | Botón "Compartir esta respuesta" → enlace público a la respuesta (sin datos del usuario) para mandarla a la pareja/abuelos. | HECHA 25-ago (/api/share → /a/<token>, noindex, sin sesión) |
 | I-29 | Calculadora de dosis como página propia con URL (`/dose/calpol-14kg`) para SEO: "how much calpol for a 14 kg child". | HECHA 25-ago (685 páginas /dose/<marca>-<kg>kg en EN y ES, 5-40 kg) |
-| I-30 | Ampliar la calculadora a suero oral (cantidad por kg tras cada deposición, hoja SEUP) — determinista y muy preguntado. | aceptada 25-ago → F2 |
+| I-30 | Ampliar la calculadora a suero oral (cantidad por kg tras cada deposición, hoja SEUP) — determinista y muy preguntado. | HECHA 25-ago (prospecto AEMPS Sueroral + hoja SEUP vómitos → /api/ors y sección en /dose) |
 | I-31 | Conversación con memoria corta (últimos turnos) para poder preguntar "¿y si además vomita?" sin repetir todo. El motor hoy es de un turno. | HECHA 25-ago (commit a478e1b) |
 | I-32 | Aviso por Telegram cuando el saldo de DeepSeek baje del 20 % (`pedibot balance`) — parte del watchdog de F4. | aceptada → F4 |
 
 ## Investigación T-06 — Virtuals ACP (25-ago)
 
 Virtuals tiene el **Agent Commerce Protocol (ACP)**: un mercado on-chain donde agentes de IA se contratan y pagan entre sí (roles Cliente / Proveedor / Evaluador; fases petición → negociación → escrow → evaluación → liquidación). En 2026 lanzaron la "Revenue Network" (hasta 1 M$/mes repartidos entre agentes que venden servicios por ACP) y ACP v2 (SDK/CLI unificados, wallet no custodial, multi-cadena). **Encaje para PediBot**: registrar "PediBot" como agente **proveedor** con un servicio "respuesta pediátrica con fuentes" (la misma API `/api/ask`) cobrando en PDBT o VIRTUAL — utilidad real del token **sin exigir nada al padre** (la web sigue gratis; pagan otros agentes). Riesgos: uso médico por agentes sin contexto → mantener el mismo triaje/disclaimer y **rechazar** peticiones fuera de ámbito; revisar los términos del ACP sobre servicios de salud. Coste: medio (SDK de Virtuals + un endpoint firmado). Estado: **aceptada por el operador; para después del despliegue (F4)**. Fuentes: whitepaper.virtuals.io (ACP, Commerce Layer, changelogs), rockawayx.com, prnewswire (feb-2026).
+
+| I-33 | **Chatbot por Telegram** (mismo motor, sesión por chat, 👍/👎, /country, /lang). Pedido por el operador 25-ago. | HECHA 25-ago (`pedibot telegram`, unit systemd; falta el token del bot nuevo) |
