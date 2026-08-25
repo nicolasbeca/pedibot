@@ -42,12 +42,35 @@ const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
   </section>
 
   <section class="block" id="support">
-    <p class="eyebrow">{s.support_eyebrow}</p>
-    <h2 style="margin-top:8px">{s.support_h2}</h2>
-    <p class="lede">{s.support_p}</p>
+    <div class="support">
+      <div>
+        <p class="eyebrow">{s.support_eyebrow}</p>
+        <h2 style="margin-top:8px">{s.support_h2}</h2>
+        <p class="lede">{s.support_p}</p>
+        <ul class="never">{s.support_points.map(pt => <li>{pt}</li>)}</ul>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
+          <a class="btn btn-primary" href={`${langPrefix(lang)}/support`}>{s.support_more}</a>
+          <a class="btn btn-ghost" href="https://app.uniswap.org/explore/tokens/base/0x196a67ba334dbed501e19baec47d217bb2fc15e1" target="_blank" rel="noopener">{s.support_buy} ↗</a>
+          <a class="btn btn-ghost" href="https://basescan.org/token/0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1" target="_blank" rel="noopener">Basescan ↗</a>
+        </div>
+      </div>
+      <div class="ledger">
+        <div class="h"><span>{s.ledger_title}</span><span class="mono">USD</span></div>
+        {s.ledger_rows.map(([k, v]) => <div><span>{k}</span><span class="mono">{v}</span></div>)}
+        <div class="foot"><span class="mono" style="font-size:.78rem">PDBT · Base · 0x196A…15E1</span></div>
+      </div>
+    </div>
   </section>
 </div>
 <style>
+  .support { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start; }
+  @media (max-width: 800px) { .support { grid-template-columns: 1fr; } }
+  .never { margin: 16px 0 0; padding-left: 0; list-style: none; color: var(--ink-2); display: grid; gap: 6px; }
+  .ledger { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; font-size: .92rem; }
+  .ledger div { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  .ledger div:last-child { border: 0; }
+  .ledger .h { background: var(--cream); font-weight: 700; }
+  .ledger .foot { color: var(--ink-3); }
   .orgs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 26px; }
   .org { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
   .org b { display: block; font-family: Nunito, sans-serif; }
