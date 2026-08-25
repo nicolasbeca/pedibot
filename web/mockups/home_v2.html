@@ -12,8 +12,8 @@
     --shadow: 0 10px 30px rgba(43, 58, 53, .07);
     --r: 20px;
   }
-  /* Light by default (operator decision 25-ago): the OS dark setting is ignored; night mode only via the 🌙 toggle. */
-  :root[data-theme="dark"] {
+  /* Light ALWAYS by default (operator decision 25-ago): neither the OS setting nor the host theme changes it; night mode only via the 🌙 toggle (class .night). */
+  :root.night {
     --ground: #1B2522; --paper: #22302C; --cream: #263631;
     --mint: #23413A; --mint-2: #2C5348; --peach: #3D302A; --lavender: #2E2D3F; --sky: #243542;
     --sage: #9FD9C8; --sage-deep: #C6ECE1; --ink: #EAF2EE; --ink-2: #B4C6BE; --ink-3: #7F958C;
@@ -86,7 +86,7 @@
   .composer textarea { flex: 1; border: 0; background: transparent; color: var(--ink); resize: none; max-height: 140px; padding: 8px 0; line-height: 1.5; }
   .composer textarea::placeholder { color: var(--ink-3); }
   .send { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--sage); color: #fff; cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; }
-  :root[data-theme="dark"] .send { color: var(--ground); }
+  :root.night .send { color: var(--ground); }
   .dock .legal { text-align: center; font-size: .74rem; color: var(--ink-3); margin-top: 8px; }
 
   /* ---------- below the fold ---------- */
@@ -110,7 +110,7 @@
   .field input, .field select { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 11px 14px; }
   .result { background: var(--cream); border-radius: var(--r); padding: 22px; }
   .result .big { font-family: "JetBrains Mono", monospace; font-size: 1.7rem; color: var(--sage-deep); }
-  :root[data-theme="dark"] .result .big { color: var(--sage); }
+  :root.night .result .big { color: var(--sage); }
   .result table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: .95rem; }
   .result td { padding: 8px 0; border-bottom: 1px dashed var(--line); }
   .result td:last-child { text-align: right; font-family: "JetBrains Mono", monospace; }
@@ -128,7 +128,7 @@
   .ledger div:last-child { border: 0; } .ledger .h { background: var(--cream); font-weight: 700; }
   footer { padding: 30px 0 60px; color: var(--ink-3); font-size: .86rem; border-top: 1px solid var(--line); }
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; font-family: Nunito, sans-serif; font-weight: 800; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: .95rem; }
-  .btn-primary { background: var(--sage); color: #fff; } :root[data-theme="dark"] .btn-primary { color: var(--ground); }
+  .btn-primary { background: var(--sage); color: #fff; } :root.night .btn-primary { color: var(--ground); }
   .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--paper); }
 </style>
 
@@ -308,8 +308,8 @@
   document.getElementById('calc').addEventListener('click', calc); calc();
 
   const root = document.documentElement, tg = document.getElementById('toggle');
-  const isDark = () => root.dataset.theme === 'dark';
+  const isDark = () => root.classList.contains('night');
   const label = () => { tg.textContent = isDark() ? '☀️' : '🌙'; };
-  tg.addEventListener('click', () => { root.dataset.theme = isDark() ? 'light' : 'dark'; label(); }); label();
+  tg.addEventListener('click', () => { root.classList.toggle('night'); label(); }); label();
 })();
 </script>
