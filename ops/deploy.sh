@@ -33,6 +33,8 @@ chown -R pedibot:pedibot /opt/pedibot
 chmod o+x /opt/pedibot /opt/pedibot/web /opt/pedibot/web/site && chmod -R o+rX /opt/pedibot/web/site/dist
 [ -f /opt/pedibot/.env ] || echo "!! /opt/pedibot/.env missing — copy it first (chmod 600)"
 sudo -u pedibot bash -c 'cd /opt/pedibot && ~/.local/bin/uv sync --no-dev -q'
+# site deps for the daily rebuild on the server (once, or when package-lock changes)
+sudo -u pedibot bash -c 'cd /opt/pedibot/web/site && ([ -d node_modules ] && cmp -s package-lock.json node_modules/.package-lock.json || npm ci --no-audit --no-fund --silent)'
 cp /opt/pedibot/ops/systemd/*.service /opt/pedibot/ops/systemd/*.timer /etc/systemd/system/
 cp /opt/pedibot/ops/Caddyfile /etc/caddy/Caddyfile
 systemctl daemon-reload

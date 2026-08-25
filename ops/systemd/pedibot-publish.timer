@@ -1,8 +1,8 @@
 [Unit]
-Description=PediBot guides: Monday and Thursday 07:00
+Description=PediBot guides: daily 07:00 (1 EN + 1 ES)
 
 [Timer]
-OnCalendar=Mon,Thu *-*-* 07:00:00
+OnCalendar=*-*-* 07:00:00
 Persistent=true
 Unit=pedibot-publish.service
 

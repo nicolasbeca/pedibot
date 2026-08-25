@@ -23,7 +23,7 @@ Patrón heredado de MultiBot: un VPS Ubuntu 24.04, usuario de servicio, `uv`, sy
 | `systemd/pedibot-telegram.service` | El mismo motor por Telegram (long polling, `pedibot telegram`), token `TELEGRAM_PUBLIC_BOT_TOKEN`. |
 | `systemd/pedibot-watchdog.{service,timer}` | Cada 10 min: `/api/health`, saldo DeepSeek (< 20 % → CRITICAL), disco, coste del día. Avisa por Telegram. |
 | `systemd/pedibot-backup.{service,timer}` | Diario 05:30: `data/pedibot_ops.db` + `web/content/` a `/opt/pedibot/backups/` (30 días). |
-| `systemd/pedibot-publish.{service,timer}` | Lunes y jueves 07:00: `pedibot publish --n 1` en EN y ES + `make web-build`. |
+| `systemd/pedibot-publish.{service,timer}` | **Diario 07:00 UTC**: `pedibot publish --n 1` en EN y ES (+ Bluesky/canal Telegram si hay credenciales) + build de la web en el servidor. |
 | `watchdog.py` | Lógica del watchdog (usa `pedibot balance` y el outbox de Telegram). |
 
 ## Costes
