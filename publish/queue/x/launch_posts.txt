@@ -1,0 +1,94 @@
+=== 1 · Relaunch (pin this one) ===
+PediBot is back — rebuilt from scratch.
+
+A free assistant for parents that answers only from published paediatric guidelines (NHS, CDC, WHO, Spanish paediatric societies) and names the source in every sentence.
+
+If something sounds serious, it tells you to go to the ER first.
+
+pedibot.xyz
+
+=== 2 · How it's different ===
+Most health chatbots answer from memory. PediBot doesn't.
+
+Every question goes through 3 checks:
+1. Warning signs first (no AI, just the emergency doctors' list)
+2. Only published guidelines — 211 documents, nothing else
+3. A verifier rejects any answer that cites something it didn't find
+
+pedibot.xyz
+
+=== 3 · Dose calculator ===
+"How much Calpol for 14 kg?"
+
+PediBot's dose calculator gives paracetamol and ibuprofen doses by weight, in ml for your actual bottle — Calpol, Tylenol, Apiretal, Dalsy, Nurofen, Advil, Motrin, Doliprane…
+
+No AI involved. Fixed tables from the AEPap dosing guide, with hard maximums.
+
+pedibot.xyz/dose
+
+=== 4 · Telegram ===
+PediBot also lives on Telegram now.
+
+Same engine, same sources, in your pocket at 3 a.m.:
+t.me/Pedichat_bot
+
+Tell it what's happening and your child's age. Free, no account.
+
+=== 5 · ER checklist ===
+"Should I take my child to the ER?"
+
+The exact checklist emergency paediatricians publish for parents — call now / go today / see your paediatrician — as a simple page. Plus a button to find the nearest ER.
+
+pedibot.xyz/emergency
+
+=== 6 · Symptom diary ===
+New: a symptom diary that lives only in your phone.
+
+Log temperature and medicines, get a reminder when the next dose is allowed, copy the log for the doctor.
+
+No account, no data leaves your browser.
+
+pedibot.xyz/diary
+
+=== 7 · Sources & honesty ===
+PediBot cannot say anything it can't point to.
+
+211 sources, all public and listed with their licence: SEUP, AEP, NHS, CDC, MedlinePlus, WHO, Spanish Ministry of Health.
+
+If the guidelines don't cover your question, it says "I don't know" — and that's a feature.
+
+pedibot.xyz/sources
+
+=== 8 · Oral rehydration ===
+Diarrhoea or vomiting: how much rehydration solution, and how?
+
+PediBot quotes the official leaflet: ~200 ml per loose stool for children over 1 year, in 25–30 ml sips every 10–15 min; after a vomit, 5–10 ml every 10 minutes.
+
+pedibot.xyz/dose#ors
+
+=== 9 · Spanish ===
+PediBot también en español.
+
+Responde solo con guías pediátricas publicadas (SEUP, AEP, OMS…), nombra la fuente en cada frase y te dice claramente cuándo ir a urgencias. Gratis, sin registro.
+
+pedibot.xyz/es
+
+=== 10 · Token, honest ===
+About $PDBT: PediBot is free for every parent and always will be. No token needed, no premium tier.
+
+The token is how the project is funded. Each month we publish what it cost and what was built.
+
+pedibot.xyz/support
+
+=== REPLY · to someone sharing a link / asking ===
+Thanks for sharing! It's live at pedibot.xyz — free, no account. It answers only from published paediatric guidelines and names the source in every sentence. Try it with a real question (and tell me where it falls short, that's how it gets better).
+
+=== REPLY · "is this medical advice?" ===
+No — and it says so. PediBot summarises published guidelines (NHS, CDC, WHO, SEUP…) and tells you when to see a doctor or go to the ER. It never diagnoses or prescribes; doses come from fixed tables, not from the AI.
+
+=== PERSONAL · from Nicolás ===
+A year ago I built PediBot as a new dad with a chatbot builder and a hope. It didn't hold up.
+
+I rebuilt it from zero: own code, 211 verified sources, a safety check before any answer, a verifier after it. It's free, and it says "I don't know" when it should.
+
+pedibot.xyz — back in the game.

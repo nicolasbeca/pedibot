@@ -17,6 +17,12 @@ pedibot.xyz {
 		reverse_proxy 127.0.0.1:8601
 	}
 
+	# Access log → journald (stderr); the weekly report counts page views from it
+	log {
+		output stderr
+		format json
+	}
+
 	# Static site (Astro build)
 	handle {
 		root * /opt/pedibot/web/site/dist

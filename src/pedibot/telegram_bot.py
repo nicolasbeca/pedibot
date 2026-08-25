@@ -81,7 +81,7 @@ class TelegramFront:
             lang=a.lang,
             country=p.country,
             question=text,
-            answer=a.render(),
+            answer=a.render_debug(),
             level=a.level,
             verification=a.verification,
             chunk_ids=a.chunk_ids,

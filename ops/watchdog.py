@@ -30,7 +30,11 @@ def telegram(text: str) -> None:
         print("telegram not configured:", text)
         return
     try:
-        httpx.post(f"https://api.telegram.org/bot{token}/sendMessage", json={"chat_id": chat, "text": text}, timeout=15)
+        httpx.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat, "text": text},
+            timeout=15,
+        )
     except Exception as e:  # noqa: BLE001
         print("telegram failed:", e, file=sys.stderr)
 
@@ -43,7 +47,9 @@ def main() -> int:
         r.raise_for_status()
         h = r.json()
         if float(h.get("cost_today_usd", 0)) >= DAILY_COST_WARN_USD:
-            problems["daily_cost"] = f"⚠️ Coste LLM de hoy {h['cost_today_usd']} USD ≥ tope {DAILY_COST_WARN_USD} → modo degradado activo"
+            problems["daily_cost"] = (
+                f"⚠️ Coste LLM de hoy {h['cost_today_usd']} USD ≥ tope {DAILY_COST_WARN_USD} → modo degradado activo"
+            )
     except Exception as e:  # noqa: BLE001
         problems["api_down"] = f"🚨 PediBot API no responde: {e}"
     # 2. DeepSeek balance
@@ -57,7 +63,9 @@ def main() -> int:
         if isinstance(total, (int, float)):
             pct = 100 * float(total) / BALANCE_INITIAL_USD if BALANCE_INITIAL_USD else 100
             if pct < BALANCE_WARN_PCT or float(total) < 1.0:
-                problems["balance"] = f"🚨 Saldo DeepSeek bajo: {total:.2f} USD ({pct:.0f}% de {BALANCE_INITIAL_USD}). Recarga en platform.deepseek.com"
+                problems["balance"] = (
+                    f"🚨 Saldo DeepSeek bajo: {total:.2f} USD ({pct:.0f}% de {BALANCE_INITIAL_USD}). Recarga en platform.deepseek.com"
+                )
     except Exception as e:  # noqa: BLE001
         problems["balance_check"] = f"⚠️ No se pudo consultar el saldo de DeepSeek: {e}"
     # 3. disk

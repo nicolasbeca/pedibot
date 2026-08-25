@@ -31,6 +31,7 @@ echo "== install + units"
 $SSH bash -s <<'REMOTE'
 set -euo pipefail
 chown -R pedibot:pedibot /opt/pedibot
+usermod -aG systemd-journal pedibot 2>/dev/null || true
 # Caddy (user caddy) must traverse to dist: home dirs are created 750
 chmod o+x /opt/pedibot /opt/pedibot/web /opt/pedibot/web/site && chmod -R o+rX /opt/pedibot/web/site/dist
 [ -f /opt/pedibot/.env ] || echo "!! /opt/pedibot/.env missing — copy it first (chmod 600)"
@@ -40,7 +41,7 @@ sudo -u pedibot bash -c 'cd /opt/pedibot/web/site && if [ ! -d node_modules ] ||
 cp /opt/pedibot/ops/systemd/*.service /opt/pedibot/ops/systemd/*.timer /etc/systemd/system/
 cp /opt/pedibot/ops/Caddyfile /etc/caddy/Caddyfile
 systemctl daemon-reload
-systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-watchdog.timer pedibot-backup.timer pedibot-publish.timer >/dev/null 2>&1 || true
+systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-watchdog.timer pedibot-backup.timer pedibot-publish.timer pedibot-token.timer pedibot-weekly.timer >/dev/null 2>&1 || true
 systemctl restart pedibot-api.service pedibot-telegram.service pedibot-publish.timer
 caddy validate --config /etc/caddy/Caddyfile >/dev/null 2>&1 && systemctl reload caddy
 sleep 3

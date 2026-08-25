@@ -67,11 +67,27 @@ class Answer:
     verification: str  # ok | no_source | asked_age | dose_calculator | regenerated | fallback
     expansion: list[str] = field(default_factory=list)
 
+    @property
+    def clean_text(self) -> str:
+        """Answer text for humans: citation markers removed (they stay in `text` for verification)."""
+        t = _CIT.sub("", self.text)
+        t = re.sub(r"[ \t]+([.,;:!?])", r"\1", t)  # "word [1]." → "word."
+        t = re.sub(r"[ \t]{2,}", " ", t)
+        return t.strip()
+
     def render(self) -> str:
+        """What the parent sees (operator decision 25-ago): banner + short answer. No source list,
+        no document titles, no links — the organisation is already named inside the text. The legal
+        line lives in the UI, not in every message."""
         parts = []
         if self.banner:
             parts.append(self.banner)
-        parts.append(self.text)
+        parts.append(self.clean_text)
+        return "\n\n".join(parts)
+
+    def render_debug(self) -> str:
+        """Full rendering with numbered sources, for logs, eval and the operator."""
+        parts = [self.render()]
         if self.sources:
             parts.append(
                 ("Fuentes:" if self.lang == "es" else "Sources:") + "\n" + "\n".join(self.sources)
@@ -89,7 +105,7 @@ class EmergencyNumbers:
         return self.raw.get(c) or self.raw["default"]
 
 
-def load_prompt(version: str = "answer_v2") -> tuple[str, str]:
+def load_prompt(version: str = "answer_v3") -> tuple[str, str]:
     text = (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
     return version, text
 
@@ -98,7 +114,6 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
     if tr.level == "routine":
         return None
     reasons = "; ".join(tr.reasons(lang))
-    src = ", ".join(sorted({r.source for r in tr.matched}))
     if tr.level == "emergency":
         head = (
             f"🚨 Llama ahora al {numbers['emergency']} o acude a urgencias."
@@ -118,7 +133,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             if lang == "es"
             else f"💛 This matters and you are not alone. Call {mental} (or {numbers['emergency']} if there is immediate danger). If your child has already done something to harm themselves, go to the emergency department now."
         )
-    why = ("Motivo" if lang == "es" else "Reason") + f": {reasons} [{src}]"
+    why = ("Motivo" if lang == "es" else "Reason") + f": {reasons}"
     return head + "\n" + why
 
 
@@ -216,7 +231,7 @@ class Engine:
         triage: Triage,
         llm: LLMProvider,
         numbers: EmergencyNumbers,
-        prompt_version: str = "answer_v2",
+        prompt_version: str = "answer_v3",
         drugs: DrugCatalog | None = None,
     ):
         self.retriever = retriever

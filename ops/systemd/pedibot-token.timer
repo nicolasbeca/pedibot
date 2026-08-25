@@ -1,0 +1,10 @@
+[Unit]
+Description=PediBot token snapshot daily 23:50 UTC
+
+[Timer]
+OnCalendar=*-*-* 23:50:00
+Persistent=true
+Unit=pedibot-token.service
+
+[Install]
+WantedBy=timers.target

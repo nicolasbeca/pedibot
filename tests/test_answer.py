@@ -94,7 +94,8 @@ def test_routine_answer_with_sources(engine_factory):
     assert a.level == "routine" and a.banner is None and a.verification == "ok"
     assert a.sources and a.sources[0].startswith("[1] SEUP") and "seup.org" in a.sources[0]
     rendered = a.render()
-    assert "Fuentes:" in rendered and "no sustituye" in rendered
+    assert "Fuentes:" not in rendered and "[1]" not in rendered
+    assert "Fuentes:" in a.render_debug() and "no sustituye" in a.render_debug()
     assert "SOURCES:" in llm.calls[0][1] and "[1] SEUP" in llm.calls[0][1]
 
 
@@ -153,7 +154,7 @@ def test_english_query_reaches_spanish_sources(engine_factory):
     eng, _ = engine_factory("Fever is not dangerous by itself [1].")
     a = eng.ask("my 4 year old has a fever, what should I do?", country="GB")
     assert a.verification == "ok" and "fiebre" in a.expansion
-    assert "Sources:" in a.render()
+    assert "Sources:" not in a.render() and "Sources:" in a.render_debug()
 
 
 def test_dose_intent_parsing():
@@ -239,3 +240,11 @@ def test_child_mode_adds_instruction(engine_factory):
     eng, llm = engine_factory("Tu cuerpo está luchando [1].")
     eng.ask("mi hijo de 6 años tiene fiebre", country="ES", mode="child")
     assert "EXPLAIN TO THE CHILD" in llm.calls[0][1]
+
+
+def test_clean_text_strips_citation_markers(engine_factory):
+    eng, _ = engine_factory("Según la SEUP, la fiebre no es peligrosa [1]. Ofrece líquidos [1] [1].")
+    a = eng.ask("mi hijo de 4 años tiene fiebre", country="ES")
+    assert a.clean_text == "Según la SEUP, la fiebre no es peligrosa. Ofrece líquidos."
+    assert "[1]" in a.text  # kept for verification
+    assert a.render() == a.clean_text

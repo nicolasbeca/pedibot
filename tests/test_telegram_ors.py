@@ -80,10 +80,10 @@ def test_commands(front):
 def test_message_flow_and_feedback(front):
     front.handle_command(7, "/country ES")
     text, aid = front.handle_message(7, "mi hijo de 4 años tiene fiebre")
-    assert "Fuentes:" in text and aid >= 1
+    assert "Fuentes:" not in text and "[1]" not in text and aid >= 1
     assert front.feedback(7, aid, 1) is True
     assert front.feedback(8, aid, 1) is False  # another chat cannot rate
     text2, _ = front.handle_message(7, "¿y si además vomita?")
-    assert "Fuentes:" in text2 or "No tengo" in text2
+    assert text2
     assert len(front.ops.history(front.session_for(7))) == 4
     assert front.session_for(7) != front.session_for(8)

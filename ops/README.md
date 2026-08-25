@@ -29,3 +29,7 @@ Patrón heredado de MultiBot: un VPS Ubuntu 24.04, usuario de servicio, `uv`, sy
 ## Costes
 
 CX22 ≈ 4,35 €/mes. Sin IPv4 adicional. Backups off-site: pendiente (Storage Box 3,81 €/mes o B2).
+
+## Informe semanal (25-ago)
+
+`pedibot-weekly.timer` → domingos 08:00 (Europe/Madrid) → `ops/weekly_report.py` → Telegram del operador: visitas (Caddy access log en journald: páginas vistas, visitantes únicos por hash IP+UA, vistas del chat), consultas (web/Telegram, idiomas, alarmas, sin fuente, 👍/👎, coste IA, saldo DeepSeek), token PDBT (suma de las fotos diarias de Dexscreener: compras/ventas/volumen/precio/FDV — `pedibot-token.timer` 23:50 UTC) y guías publicadas. Prueba manual: `systemctl start pedibot-weekly.service`.
