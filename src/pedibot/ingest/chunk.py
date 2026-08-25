@@ -24,6 +24,7 @@ _RED_FLAG_TEXT = re.compile(
     r"de forma inmediata|urgentemente",
     re.I,
 )
+_BIBLIO = re.compile(r"\bet al\b|\bdoi:|https?://|PMID", re.I)
 _SENT = re.compile(r"(?<=[\.\?\!])\s+(?=[A-ZÁÉÍÓÚÑ¿¡•\-])")
 
 
@@ -80,8 +81,17 @@ def _sentences(text: str) -> list[str]:
     return [p.strip() for p in parts if p.strip()]
 
 
+def is_bibliography(text: str) -> bool:
+    """Reference lists: many 'et al.'/DOI/URL markers per 100 words."""
+    n = len(_BIBLIO.findall(text))
+    words = max(1, len(text.split()))
+    return n >= 3 and n / words > 0.02
+
+
 def chunk_section(sec: Section) -> list[RawChunk]:
     text = sec.text
+    if is_bibliography(text):
+        return []
     words = text.split()
     dose = bool(_DOSE.search(text))
     red = bool(_RED_FLAG_TITLE.search(sec.title)) or bool(_RED_FLAG_TEXT.search(text))

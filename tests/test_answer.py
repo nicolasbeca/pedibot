@@ -9,6 +9,7 @@ from pedibot.bot.llm import FakeProvider
 from pedibot.bot.retrieval import Retriever, Synonyms, detect_lang
 from pedibot.bot.triage import Triage
 from pedibot.index.store import Hit, Index, build_index
+from pedibot.ingest.classify import Taxonomy
 from pedibot.ingest.schema import Chunk
 
 
@@ -62,6 +63,7 @@ def engine_factory(tmp_path: Path, config_dir):
                 Index(db),
                 Synonyms(config_dir / "synonyms.yaml"),
                 llm=llm if llm_for_retrieval else None,
+                taxonomy=Taxonomy(config_dir / "taxonomia.yaml"),
             ),
             Triage(config_dir / "red_flags.yaml"),
             llm,

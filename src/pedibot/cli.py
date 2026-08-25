@@ -81,9 +81,15 @@ def search(query: str, k: int = 6, red_flag: bool = False) -> None:
     """Lexical search in the index (with cross-lingual expansion)."""
     from pedibot.bot.retrieval import Retriever, Synonyms, detect_lang
     from pedibot.index.store import Index
+    from pedibot.ingest.classify import Taxonomy
 
     s = get_settings()
-    r = Retriever(Index(s.index_db_path), Synonyms(s.config_dir / "synonyms.yaml"), top_k=k)
+    r = Retriever(
+        Index(s.index_db_path),
+        Synonyms(s.config_dir / "synonyms.yaml"),
+        top_k=k,
+        taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
+    )
     lang = detect_lang(query)
     hits, extra = r.search(query, lang, red_flag_boost=red_flag)
     typer.echo(f"lang={lang} expansion={extra}")
@@ -162,6 +168,35 @@ def ask(
         )
     if show_chunks:
         typer.echo("--- chunks: " + ", ".join(a.chunk_ids))
+
+
+@app.command("eval")
+def eval_cmd(
+    golden: Path = ROOT / "eval" / "golden.jsonl",
+    k: int = 3,
+    report_dir: Path = ROOT / "eval" / "reports",
+) -> None:
+    """Golden-set evaluation of triage + retrieval + routing (no LLM needed)."""
+    import datetime as dt
+
+    from pedibot.eval import fake_engine_from_settings, load_golden, run_eval
+
+    rep = run_eval(fake_engine_from_settings(), load_golden(golden), k=k)
+    summ = rep.summary()
+    typer.echo(json.dumps(summ, indent=2))
+    fails = rep.failures()
+    typer.echo(f"\n{len(fails)} cases with problems:")
+    for f in fails:
+        typer.echo("  " + f)
+    report_dir.mkdir(parents=True, exist_ok=True)
+    out = report_dir / f"eval_{dt.date.today().isoformat()}.json"
+    out.write_text(
+        json.dumps(
+            {"summary": summ, "failures": fails, "n": len(rep.cases)}, ensure_ascii=False, indent=2
+        ),
+        encoding="utf-8",
+    )
+    typer.echo(f"→ {out}")
 
 
 if __name__ == "__main__":

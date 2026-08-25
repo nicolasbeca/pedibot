@@ -1,0 +1,60 @@
+{"id": "g01", "q": "My 4-year-old has a fever of 38.8 °C. What should I do?", "lang": "en", "level": "routine", "docs": ["seup_fiebre"], "note": "fever, age given"}
+{"id": "g02", "q": "Mi hijo de 3 años tiene 39 de fiebre desde ayer, ¿qué hago?", "lang": "es", "level": "routine", "docs": ["seup_fiebre"]}
+{"id": "g03", "q": "Mi bebé de 2 meses tiene 38,2 de fiebre", "lang": "es", "level": "urgent", "docs": ["seup_fiebre", "seup_acudir_urgencias", "andalucia_cuidame_comienzo_vida"], "rules": ["infant_fever_under_3_months"]}
+{"id": "g04", "q": "My 6 week old baby has a temperature of 100.6 F", "lang": "en", "level": "urgent", "docs": ["seup_fiebre", "seup_acudir_urgencias", "andalucia_cuidame_comienzo_vida"], "rules": ["infant_fever_under_3_months"]}
+{"id": "g05", "q": "mi hijo tiene fiebre", "lang": "es", "level": "routine", "expect": "asked_age"}
+{"id": "g06", "q": "She fell off the sofa, hit her head and has vomited twice", "lang": "en", "level": "urgent", "docs": ["seup_tce"], "rules": ["vomiting_after_head_injury"]}
+{"id": "g07", "q": "Se ha caído del cambiador y se ha dado en la cabeza, está bien, ¿qué vigilo?", "lang": "es", "level": "routine", "docs": ["seup_tce"]}
+{"id": "g08", "q": "He hit his head and was unconscious for a few seconds", "lang": "en", "level": "emergency", "docs": ["seup_tce"], "rules": ["head_injury_loss_consciousness"]}
+{"id": "g09", "q": "Tos de perro por la noche, tiene 2 años", "lang": "es", "level": "routine", "docs": ["seup_laringitis"]}
+{"id": "g10", "q": "My toddler has a barking cough and a hoarse voice", "lang": "en", "level": "routine", "docs": ["seup_laringitis"]}
+{"id": "g11", "q": "Mi hija de 5 meses tiene mocos, tos y respira con pitos", "lang": "es", "level": "urgent", "docs": ["seup_bronquiolitis"], "rules": ["moderate_breathing"]}
+{"id": "g12", "q": "My baby is struggling to breathe and her lips look blue", "lang": "en", "level": "emergency", "docs": ["seup_acudir_urgencias", "seup_bronquiolitis"], "rules": ["severe_breathing"]}
+{"id": "g13", "q": "Lleva 3 días con diarrea, ¿qué le doy de comer?", "lang": "es", "level": "routine", "docs": ["seup_gastroenteritis"]}
+{"id": "g14", "q": "My 2 year old has diarrhoea and vomiting, what should she drink?", "lang": "en", "level": "routine", "docs": ["seup_gastroenteritis", "seup_vomitos"]}
+{"id": "g15", "q": "Diarrea desde hace 2 días, tiene los ojos hundidos y casi no hace pis", "lang": "es", "level": "urgent", "docs": ["seup_gastroenteritis"], "rules": ["dehydration"]}
+{"id": "g16", "q": "Vomita todo lo que toma desde esta mañana, tiene 4 años", "lang": "es", "level": "routine", "docs": ["seup_vomitos"]}
+{"id": "g17", "q": "¿Cuándo empiezo con la alimentación complementaria?", "lang": "es", "level": "routine", "docs": ["aep_alimentacion_complementaria", "who_complementary_feeding"]}
+{"id": "g18", "q": "When can I start solids with my baby?", "lang": "en", "level": "routine", "docs": ["aep_alimentacion_complementaria", "who_complementary_feeding"]}
+{"id": "g19", "q": "¿Qué vacunas le tocan a los 4 meses?", "lang": "es", "level": "routine", "docs": ["msan_calendario_vacunacion_2025"]}
+{"id": "g20", "q": "What vaccines does a 12 month old get?", "lang": "en", "level": "routine", "docs": ["msan_calendario_vacunacion_2025"]}
+{"id": "g21", "q": "Ha bebido un trago de lejía, tiene 2 años", "lang": "es", "level": "urgent", "docs": ["seup_intoxicaciones", "seup_toxicos_8_no"], "rules": ["poisoning"]}
+{"id": "g22", "q": "My son swallowed some of my blood pressure pills", "lang": "en", "level": "urgent", "docs": ["seup_intoxicaciones", "seup_toxicos_8_no"], "rules": ["poisoning"]}
+{"id": "g23", "q": "Se ha tragado una pila de botón", "lang": "es", "level": "urgent", "docs": ["seup_intoxicaciones", "seup_acudir_urgencias", "ninojesus_primeros_auxilios"], "rules": ["foreign_body_ingestion"]}
+{"id": "g24", "q": "Mi hijo de 13 años se hace cortes en los brazos", "lang": "es", "level": "mental_health", "docs": ["seup_autolesion"], "rules": ["self_harm"]}
+{"id": "g25", "q": "My 15 year old said she wants to die", "lang": "en", "level": "mental_health", "docs": ["seup_conducta_suicida"], "rules": ["suicidal_ideation"]}
+{"id": "g26", "q": "Mi hija de 14 años apenas come y ha perdido mucho peso", "lang": "es", "level": "routine", "docs": ["seup_tca"]}
+{"id": "g27", "q": "Le ha dado una convulsión con fiebre, ya ha pasado, tiene 18 meses", "lang": "es", "level": "emergency", "docs": ["seup_convulsion_febril"], "rules": ["seizure"]}
+{"id": "g28", "q": "My 2 year old had a febrile seizure last week, will it happen again?", "lang": "en", "level": "emergency", "docs": ["seup_convulsion_febril"], "rules": ["seizure"], "note": "acceptable over-triage: seizure word always escalates"}
+{"id": "g29", "q": "Le han salido ronchas por todo el cuerpo que pican mucho, tiene 6 años", "lang": "es", "level": "routine", "docs": ["seup_urticaria"]}
+{"id": "g30", "q": "Hives all over after eating peanuts and now his lips are swelling", "lang": "en", "level": "emergency", "docs": ["seup_anafilaxia"], "rules": ["anaphylaxis"]}
+{"id": "g31", "q": "Le duele el oído desde ayer y tiene 38, tiene 3 años", "lang": "es", "level": "routine", "docs": ["seup_otitis"]}
+{"id": "g32", "q": "My 4 year old has an earache and a fever", "lang": "en", "level": "routine", "docs": ["seup_otitis", "seup_fiebre"]}
+{"id": "g33", "q": "Dolor de barriga que va y viene, tiene 7 años", "lang": "es", "level": "routine", "docs": ["seup_dolor_abdominal"]}
+{"id": "g34", "q": "Severe continuous stomach pain that is getting worse, he is 9", "lang": "en", "level": "urgent", "docs": ["seup_dolor_abdominal"], "rules": ["severe_abdominal_pain"]}
+{"id": "g35", "q": "Mi bebé de 1 mes llora sin parar cada tarde", "lang": "es", "level": "routine", "docs": ["seup_colico"]}
+{"id": "g36", "q": "My 3 week old cries for hours every evening, is it colic?", "lang": "en", "level": "routine", "docs": ["seup_colico"]}
+{"id": "g37", "q": "Se ha desmayado en el colegio, tiene 12 años", "lang": "es", "level": "routine", "docs": ["seup_sincope"]}
+{"id": "g38", "q": "Se pone morado y deja de respirar cuando llora, tiene 1 año", "lang": "es", "level": "emergency", "docs": ["seup_espasmos_sollozo"], "rules": ["severe_breathing"], "note": "acceptable: breath-holding spells match the severe breathing rule"}
+{"id": "g39", "q": "Dolor de cabeza frecuente, tiene 10 años", "lang": "es", "level": "routine", "docs": ["seup_cefalea"]}
+{"id": "g40", "q": "Headache and vomiting several times, he is 8", "lang": "en", "level": "urgent", "docs": ["seup_cefalea"], "rules": ["vomiting_headache"]}
+{"id": "g41", "q": "Está muy adormilado y cuesta despertarle, tiene 3 años", "lang": "es", "level": "urgent", "docs": ["seup_acudir_urgencias", "seup_fiebre"], "rules": ["drowsy_irritable"]}
+{"id": "g42", "q": "Tiene manchas rojas que no desaparecen al presionar", "lang": "es", "level": "emergency", "docs": ["seup_fiebre", "seup_acudir_urgencias"], "rules": ["petechiae_fever"]}
+{"id": "g43", "q": "Golpe de calor: ha estado al sol y está mareado y con 39", "lang": "es", "level": "routine", "docs": ["seup_golpe_calor"]}
+{"id": "g44", "q": "Se ha quemado la mano con la plancha, tiene 4 años", "lang": "es", "level": "urgent", "docs": ["ninojesus_primeros_auxilios"], "rules": ["burn"]}
+{"id": "g45", "q": "Tiene asma y hoy le cuesta mucho respirar", "lang": "es", "level": "emergency", "docs": ["seup_crisis_asma"], "rules": ["severe_breathing"]}
+{"id": "g46", "q": "Sospecho que tiene neumonía, respira rápido y tiene fiebre, 5 años", "lang": "es", "level": "urgent", "docs": ["seup_neumonia"], "rules": ["moderate_breathing"]}
+{"id": "g47", "q": "Estreñimiento desde hace una semana, tiene 3 años", "lang": "es", "level": "routine", "docs": ["seup_estrenimiento"]}
+{"id": "g48", "q": "How do I care for the umbilical cord stump?", "lang": "en", "level": "routine", "docs": ["aep_cuidados_recien_nacido", "andalucia_cuidame_comienzo_vida"]}
+{"id": "g49", "q": "¿Cuánto tiene que dormir un niño de 2 años?", "lang": "es", "level": "routine", "docs": ["who_physical_activity_under5", "andalucia_cuidame_guia"]}
+{"id": "g50", "q": "How much screen time is ok for a 3 year old?", "lang": "en", "level": "routine", "docs": ["who_physical_activity_under5"]}
+{"id": "g51", "q": "cuánto paracetamol le doy, pesa 14 kg y tiene 3 años", "lang": "es", "level": "routine", "expect": "dose_calculator"}
+{"id": "g52", "q": "ibuprofen dose for 20 kg", "lang": "en", "level": "routine", "expect": "dose_calculator"}
+{"id": "g53", "q": "¿Puedo darle ibuprofeno a un bebé de 2 meses?", "lang": "es", "level": "routine", "docs": ["aepap_guia_dosificacion_3ed", "seup_fiebre"]}
+{"id": "g54", "q": "¿Mi perro puede comer chocolate?", "lang": "es", "level": "routine", "expect": "no_source"}
+{"id": "g55", "q": "What is the capital of France?", "lang": "en", "level": "routine", "expect": "no_source"}
+{"id": "g56", "q": "Mi hijo de 4 años tiene mocos y algo de tos, está contento", "lang": "es", "level": "routine", "docs": ["seup_catarro"]}
+{"id": "g57", "q": "My 3 year old has a runny nose and a cough but is playing normally", "lang": "en", "level": "routine", "docs": ["seup_catarro"]}
+{"id": "g58", "q": "Tiene 41 grados de fiebre, 5 años", "lang": "es", "level": "urgent", "docs": ["seup_fiebre"], "rules": ["very_high_fever"]}
+{"id": "g59", "q": "Signs of ADHD in a 7 year old?", "lang": "en", "level": "routine", "docs": ["aap_adhd_cpg"]}
+{"id": "g60", "q": "¿Es normal que un recién nacido de 5 días rechace las tomas?", "lang": "es", "level": "urgent", "docs": ["aep_cuidados_recien_nacido", "seup_acudir_urgencias"], "rules": ["newborn_refusing_feeds"]}

@@ -103,6 +103,13 @@ STOP = {
     "dia",
     "día",
     "much",
+    "puede",
+    "pueden",
+    "puedes",
+    "comer",
+    "hacer",
+    "normal",
+    "tener",
     "how",
     "many",
     "cuánto",
@@ -117,6 +124,16 @@ _DOSE_QUERY = re.compile(
     r"\b(dosis|dose|dosage|mg|ml|kilos?|kg|paracetamol|ibuprofen\w*|acetaminophen|cu[aá]nt[oa]|how much)\b",
     re.I,
 )
+
+
+DOC_TYPE_WEIGHT = {
+    "hoja_padres": 1.6,
+    "calendario": 1.3,
+    "guia_clinica": 1.15,
+    "informe": 0.8,
+    "manual": 0.75,
+    "libro": 0.55,
+}
 
 
 @dataclass
@@ -199,13 +216,14 @@ class Index:
         prefer_parent_leaflets: bool = True,
         red_flag_boost: bool = False,
         topic: str | None = None,
+        boost_topic: str | None = None,
     ) -> list[Hit]:
         terms = query_terms(query, extra_terms)
         if not terms:
             return []
         dose_query = bool(_DOSE_QUERY.search(query))
         sql = (
-            "SELECT f.chunk_id, bm25(chunks_fts, 0, 1.0, 2.0, 1.5) AS r, c.data "
+            "SELECT f.chunk_id, bm25(chunks_fts, 0, 1.0, 2.0, 3.0) AS r, c.data "
             "FROM chunks_fts f JOIN chunks c ON c.chunk_id = f.chunk_id "
             "WHERE chunks_fts MATCH ? "
         )
@@ -222,8 +240,10 @@ class Index:
             score = -float(r)
             low = (ch.text + " " + ch.section).lower()
             matched = sum(1 for t in terms if t in low)
-            if prefer_parent_leaflets and ch.doc_type == "hoja_padres":
-                score *= 1.25
+            if prefer_parent_leaflets:
+                score *= DOC_TYPE_WEIGHT.get(ch.doc_type, 1.0)
+            if boost_topic and ch.topic == boost_topic:
+                score *= 1.5
             if red_flag_boost and ch.is_red_flag:
                 score *= 1.3
             if dose_query and ch.is_dose_table:

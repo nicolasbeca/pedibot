@@ -151,6 +151,8 @@ rules:
     patterns:
       - "respira (r[aá]pido|muy r[aá]pido|agitad)"
       - "pitos? al respirar"
+      - "respira con pitos"
+      - "(con|hace) pitos"
       - "pitido"
       - "silbido"
       - "breathing fast"
@@ -259,7 +261,7 @@ rules:
     reason_es: "Bebé menor de 1 mes que rechaza las tomas"
     reason_en: "Baby under 1 month refusing feeds"
     patterns:
-      - "(reci[eé]n nacido|\\b[1-4] semanas|\\b\\d{1,2} d[ií]as).{0,80}(no (quiere )?(come|mama|toma)|rechaza)"
+      - "(reci[eé]n nacido|\\b[1-4] semanas|\\b\\d{1,2} d[ií]as).{0,80}(no (quiere )?(come|mama|toma)|rechaz|rechac)"
       - "(newborn|\\b[1-4] weeks? old|\\b\\d{1,2} days? old).{0,80}(refus|won'?t (feed|eat|nurse)|not feeding)"
   - id: burn
     level: urgent

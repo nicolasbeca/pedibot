@@ -34,14 +34,16 @@
 | Calculadora de dosis | ✅ paracetamol / ibuprofeno con rangos de la guía AEPap, topes duros, edad/peso mínimos, ml por presentación; test por fila + property-based (hypothesis) de que nunca supera los topes. | `src/pedibot/bot/dose.py` |
 | Motor de respuesta | ✅ pipeline completo: triaje → (enrutador de dosis determinista) → (pregunta la edad si falta con fiebre) → recuperación con expansión cross-lingüe (`config/synonyms.yaml` + LLM opcional) → prompt `answer_v1` → **verificador** (citas existentes, ninguna cifra mg/ml sin tabla de dosis) → 1 regeneración → fallback "no tengo fuente" → ensamblado con banner por país (`config/emergency_numbers.yaml`, 18 países). Proveedor LLM intercambiable (`FakeProvider` en tests; DeepSeek vía cliente OpenAI). | `src/pedibot/bot/answer.py`, `retrieval.py`, `llm.py`, `prompts/answer_v1.md` |
 | CLI | ✅ `pedibot ingest / search / triage / dose / ask [--fake]` | `src/pedibot/cli.py` |
-| Tests | ✅ **80 tests verdes**, ruff limpio. | `tests/` |
+| Golden set + eval | ✅ `eval/golden.jsonl` (60 preguntas es/en con nivel, reglas, documento esperado o ruta esperada) y `pedibot eval` (sin LLM). **Resultado 25-ago: triaje 1,0 · recall red flags 1,0 · precisión 1,0 · reglas 1,0 · fuente en top-3 0,96 · enrutado 1,0.** Informe en `eval/reports/`. Mejoras que lo lograron: pesos por tipo de documento (hoja_padres ×1,6, libro ×0,55), boost por tema de la taxonomía, sinónimos es→es coloquiales, filtro de bibliografías en la ingesta, regla fuera-de-ámbito (sin tema pediátrico → 3 términos o silencio). | `src/pedibot/eval.py` |
+| Tests | ✅ **82 tests verdes**, ruff + mypy limpios. | `tests/` |
 | Web | 🎨 Boceto v1 (HTML autocontenido, día/noche, chat demo operable con 3 conversaciones guionizadas, pipeline en 3 pasos, herramientas, muro de fuentes, sección del token con libro de cuentas). Sin Astro todavía (no hay Node en el equipo). | `web/mockups/home.html` · artefacto publicado |
 
 ## Lo que NO está hecho / conocido
 
 - **Sin LLM real**: falta la clave de DeepSeek en `.env` (`DEEPSEEK_API_KEY`) y confirmar el nombre exacto del modelo V4 Flash (`DEEPSEEK_MODEL`). El pipeline se ha probado solo con `FakeProvider`. ⚠️ En este Windows el AVG mata procesos Python con TLS (L06): la primera prueba real puede necesitar el guard o hacerse desde el VPS.
 - **Recuperación de tablas de dosis floja**: la guía AEPap es una tabla y BM25 no la puntúa bien ("how much paracetamol for 12 kg" no sube la tabla pediátrica). Mitigado por el enrutador determinista (pregunta con peso → calculadora sin LLM). Solución de fondo: embeddings (extra `[embeddings]`, e5-small) en F2.
-- **Golden set (`eval/golden.jsonl`) vacío** — siguiente tarea de F2.
+- **El golden set mide triaje/recuperación/enrutado, NO la calidad de la redacción**: fidelidad a la fuente y validez de citas con el LLM real quedan pendientes de la clave de DeepSeek (métricas `citation_validity` y juez de fidelidad del PRD §5.5).
+- Fallos abiertos del golden set (2 de 60): g49 "¿cuánto tiene que dormir un niño de 2 años?" (la guía OMS está en inglés y no hay expansión es→en, I-17) y g60 recién nacido que rechaza tomas (fuente AEP no sube; el triaje sí lo marca urgente).
 - **OCR pendiente** de `las_50_principales_consultas.pdf` (sin tesseract local).
 - **Fuentes en inglés** se indexan tal cual; la expansión de sinónimos solo va en→es (para una pregunta en español sobre una guía de la OMS en inglés no hay expansión es→en).
 - **Sin API HTTP ni widget real**; sin persistencia de conversaciones ni coste; sin Astro; sin VPS.
@@ -59,11 +61,10 @@
 
 ## Próximos pasos (orden propuesto)
 
-1. Operador: clave de DeepSeek en `.env` → primera respuesta real con `uv run pedibot ask "..."`.
-2. `eval/golden.jsonl` (≥50 preguntas) + comando `pedibot eval` con las métricas del PRD §5.5.
-3. Embeddings opcionales (e5-small + sqlite-vec) y RRF.
-4. API FastAPI + SSE + persistencia anonimizada + coste por consulta.
-5. Astro + widget a partir del boceto.
+1. Operador: clave de DeepSeek en `.env` → primera respuesta real con `uv run pedibot ask "..."` y ampliar `pedibot eval` con `citation_validity` + juez de fidelidad.
+2. API FastAPI (`/api/ask`, SSE) + persistencia anonimizada + coste por consulta + rate limit.
+3. Embeddings opcionales (e5-small + sqlite-vec) y RRF, solo si el golden set con LLM lo pide.
+4. Astro + widget a partir del boceto (requiere Node).
 
 ## Calendario
 

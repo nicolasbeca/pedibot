@@ -151,3 +151,26 @@ def test_merge_small_respects_max():
     tiny = RawChunk("B", [1], "corto corto", False, False)
     out = merge_small([full, tiny])
     assert len(out) == 2
+
+
+def test_bibliography_chunks_dropped():
+    from pedibot.ingest.chunk import is_bibliography
+
+    refs = " ".join(
+        f"{i}. Smith J, et al. Title of paper. J Pediatr 2020;{i}:1-9. doi:10.1000/{i}"
+        for i in range(12)
+    )
+    assert is_bibliography(refs)
+    assert not is_bibliography(
+        "La fiebre es una elevación de la temperatura corporal por encima de 38ºC. " * 20
+    )
+    assert chunk_section(Section("REFERENCES", [Line(refs, 10, page=9)])) == []
+
+
+def test_taxonomy_empty_topic_never_matches(config_dir):
+    from pedibot.ingest.classify import Taxonomy
+
+    tax = Taxonomy(config_dir / "taxonomia.yaml")
+    assert tax.topic_for("what is the capital of France") is None
+    assert tax.topic_for("mi perro puede comer chocolate") is None
+    assert tax.topic_for("my baby has a fever and a cough") in ("fiebre", "respiratorio")

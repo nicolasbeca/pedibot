@@ -35,5 +35,7 @@ class Taxonomy:
 
 
 def _compile(kws: list[str]) -> re.Pattern[str]:
-    parts = [re.escape(str(k)) for k in kws]
+    parts = [re.escape(str(k)) for k in kws if str(k).strip()]
+    if not parts:
+        return re.compile(r"(?!x)x")  # never matches (empty keyword list, e.g. "general")
     return re.compile(r"\b(" + "|".join(parts) + r")\w*", re.I)

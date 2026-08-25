@@ -9,6 +9,7 @@ import yaml
 
 from pedibot.bot.llm import LLMProvider
 from pedibot.index.store import Hit, Index, query_terms
+from pedibot.ingest.classify import Taxonomy
 
 _TOKEN = re.compile(r"[\wáéíóúñü]+", re.I)
 
@@ -22,12 +23,13 @@ TRANSLATE_SYSTEM = (
 class Synonyms:
     def __init__(self, path: Path):
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        self._map: dict[str, list[str]] = raw.get("en", {})
+        self._maps: dict[str, dict[str, list[str]]] = {k: v or {} for k, v in raw.items()}
 
-    def expand(self, query: str) -> list[str]:
+    def expand(self, query: str, lang: str = "en") -> list[str]:
         extra: list[str] = []
+        table = self._maps.get(lang, {})
         for tok in _TOKEN.findall(query.lower()):
-            for trigger, terms in self._map.items():
+            for trigger, terms in table.items():
                 if tok.startswith(trigger):
                     for t in terms:
                         if t not in extra:
@@ -93,15 +95,21 @@ def detect_lang(text: str) -> str:
 
 class Retriever:
     def __init__(
-        self, index: Index, synonyms: Synonyms, llm: LLMProvider | None = None, top_k: int = 6
+        self,
+        index: Index,
+        synonyms: Synonyms,
+        llm: LLMProvider | None = None,
+        top_k: int = 6,
+        taxonomy: Taxonomy | None = None,
     ):
         self.index = index
         self.synonyms = synonyms
         self.llm = llm
         self.top_k = top_k
+        self.taxonomy = taxonomy
 
     def expand(self, query: str, lang: str) -> list[str]:
-        extra = self.synonyms.expand(query) if lang != "es" else []
+        extra = self.synonyms.expand(query, lang)
         if self.llm is not None and lang != "es" and len(extra) < 3:
             try:
                 out = self.llm.complete(
@@ -119,10 +127,20 @@ class Retriever:
         self, query: str, lang: str, red_flag_boost: bool = False
     ) -> tuple[list[Hit], list[str]]:
         extra = self.expand(query, lang)
+        topic = self.taxonomy.topic_for(query + " " + " ".join(extra)) if self.taxonomy else None
         hits = self.index.search(
-            query, top_k=self.top_k, extra_terms=extra, red_flag_boost=red_flag_boost
+            query,
+            top_k=self.top_k,
+            extra_terms=extra,
+            red_flag_boost=red_flag_boost,
+            boost_topic=topic,
         )
-        # "source or silence": require at least one meaningful term matched in the text itself
+        # "source or silence": a hit must match a query term in its own text, and the question must
+        # look paediatric (a taxonomy topic) unless it matches >= 3 terms; "my dog ate chocolate"
+        # would otherwise match "perro" in the croup leaflet (one term, no topic).
         terms = query_terms(query, extra)
-        good = [h for h in hits if h.matched_terms >= 1] if terms else []
+        if not terms:
+            return [], extra
+        min_matched = 1 if topic else 3
+        good = [h for h in hits if h.matched_terms >= min_matched]
         return good, extra
