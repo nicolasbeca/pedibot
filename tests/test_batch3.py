@@ -106,3 +106,21 @@ def test_agent_endpoint_requires_key(client, monkeypatch):
         and r2.json()["verification"] == "ok"
         and "SEUP" in r2.json()["answer"]
     )
+
+
+def test_a_clear_question_in_everyday_words_is_not_clarified(client):
+    """26-ago: the clarify filter read the raw question only, so «se ha desmayado en el colegio»
+    or «llora sin parar» — which the taxonomy does not name literally — were treated as vague and
+    the parent got a menu instead of an answer. The synonyms already know these words."""
+    for q in (
+        "Se ha desmayado en el colegio, tiene 12 años",
+        "Mi bebé de 1 mes llora sin parar cada tarde",
+        "Mi hija de 14 años apenas come y ha perdido mucho peso",
+    ):
+        j = client.post("/api/ask", json={"question": q, "lang": "es"}).json()
+        assert j["verification"] != "clarify", q
+
+
+def test_a_genuinely_vague_message_is_still_clarified(client):
+    j = client.post("/api/ask", json={"question": "mi hijo está malito", "lang": "es"}).json()
+    assert j["verification"] == "clarify"

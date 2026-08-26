@@ -110,12 +110,16 @@ def test_long_section_split_with_overlap():
 def test_catalog_loads_and_covers_all_pdfs(config_dir):
     docs = load_catalog(config_dir / "fuentes.yaml")
     pdf_docs = [d for d in docs if d.file.endswith(".pdf") and not d.file.startswith("web/")]
-    assert len(pdf_docs) == 49  # 49 PDFs in FUENTES (the 2 pitch decks live at the repo root)
+    # 50: the 49 original PDFs (the 2 pitch decks live at the repo root) plus the OCR'd copy of
+    # "las 50 principales consultas", whose scanned original stays catalogued as `excluido`
+    assert len(pdf_docs) == 50
     assert len(docs) >= 49 + 150  # + curated web pages (config/fuentes_web.yaml)
     by_file = catalog_by_file(docs)
     assert len(by_file) == len(docs)
     assert by_file["15_Fiebre.pdf"].topic == "fiebre"
     assert by_file["dermatologia_pedi.pdf"].usage == "excluido"
+    # the 2008 primary-care manual was measured and left out of the index (see its catalogue note)
+    assert by_file["las_50_principales_consultas_ocr.pdf"].usage == "excluido"
     assert {d.usage for d in docs} <= {"publico", "citar_solo", "excluido"}
 
 

@@ -71,6 +71,7 @@ def looks_like_medication_dose(text: str) -> bool:
             return True
     return False
 
+
 DISCLAIMER = {
     "en": "PediBot gives information from official paediatric guidelines. It is not medical advice and does not replace your paediatrician.",
     "es": "PediBot informa a partir de guías pediátricas oficiales. No es consejo médico y no sustituye a tu pediatra.",
@@ -286,7 +287,8 @@ def verify(text: str, hits: list[Hit]) -> list[str]:
     for n in nums:
         if n < 1 or n > len(hits):
             problems.append(f"bad_citation_{n}")
-    if looks_like_medication_dose(text) and not any(h.chunk.is_dose_table for h in hits):
+    sanctioned = any(h.chunk.is_dose_table and h.chunk.is_dose_source for h in hits)
+    if looks_like_medication_dose(text) and not sanctioned:
         problems.append("dose_without_table")
     return problems
 
@@ -382,11 +384,17 @@ class Engine:
                 return Answer(text, tr.level, None, [], lang, None, None, [], "vaccine_schedule")
             # no tabulated schedule for this country → fall through to the sources
 
+        # vague first message -> offer options. The topic is read from the query PLUS its synonym
+        # expansion, the same as retrieval does: "se ha desmayado" or "llora sin parar" are clear
+        # questions that the taxonomy does not name literally, and clarifying them is a bad answer.
         if (
             tr.level == "routine"
             and not history
             and self.retriever.taxonomy is not None
-            and self.retriever.taxonomy.topic_for(query) is None
+            and self.retriever.taxonomy.topic_for(
+                query + " " + " ".join(self.retriever.expand(query, lang))
+            )
+            is None
             and (len(query.split()) <= 3 or _mentions_child(query))
         ):
             return Answer(

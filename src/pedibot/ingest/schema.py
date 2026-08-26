@@ -29,6 +29,10 @@ class SourceDoc(BaseModel):
     usage: Usage
     age_groups: list[str] = Field(default_factory=lambda: ["todas"])
     url: str | None = None
+    # true only for material we are willing to turn into a dose for a parent (the AEPap dosing
+    # guide, same source as the calculator). Professional textbooks prescribe corticoids and
+    # antibiotics: their mg/kg figures must never unlock a dose in an answer.
+    dose_source: bool = False
     notes: str = ""
 
 
@@ -50,6 +54,7 @@ class Chunk(BaseModel):
     usage: Usage
     is_red_flag: bool = False
     is_dose_table: bool = False
+    is_dose_source: bool = False
     source_url: str | None = None
     source_hash: str
     n_words: int = 0

@@ -13,7 +13,7 @@ from pedibot.ingest.classify import Taxonomy
 from pedibot.ingest.schema import Chunk
 
 
-def _chunk(cid, text, red=False, dose=False, url=None):
+def _chunk(cid, text, red=False, dose=False, url=None, dose_source=False):
     return Chunk(
         chunk_id=cid,
         doc_id=cid.split("#")[0],
@@ -30,6 +30,7 @@ def _chunk(cid, text, red=False, dose=False, url=None):
         usage="publico",
         is_red_flag=red,
         is_dose_table=dose,
+        is_dose_source=dose_source,
         source_url=url,
         source_hash="h",
         n_words=len(text.split()),
@@ -84,8 +85,14 @@ def test_verify_rules():
     assert verify("Con cita [1].", hits) == []
     assert "bad_citation_3" in verify("Con cita [3].", hits)
     assert "dose_without_table" in verify("Dale 150 mg [1].", hits)
-    dose_hits = [Hit(_chunk("a#s#1", "x", dose=True), 1.0, 1)]
+    # a dose table alone is not enough: it must come from the sanctioned dosing source, or every
+    # professional textbook in the corpus would unlock antibiotic and corticoid doses (26-ago)
+    textbook = [Hit(_chunk("a#s#1", "x", dose=True), 1.0, 1)]
+    assert "dose_without_table" in verify("Dale 150 mg [1].", textbook)
+    dose_hits = [Hit(_chunk("a#s#1", "x", dose=True, dose_source=True), 1.0, 1)]
     assert verify("Dale 150 mg [1].", dose_hits) == []
+    # rehydration volumes are not a medication dose and never needed a table
+    assert verify("Ofrece 5 ml de suero cada 10 minutos [1].", hits) == []
 
 
 def test_routine_answer_with_sources(engine_factory):

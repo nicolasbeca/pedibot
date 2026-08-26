@@ -12,7 +12,6 @@ from pedibot.index.store import Hit, Index, query_terms
 from pedibot.ingest.classify import Taxonomy
 
 _TOKEN = re.compile(r"[\wáéíóúñü]+", re.I)
-
 TRANSLATE_SYSTEM = (
     "You translate a parent's question about a child's health into 5-10 Spanish medical search "
     "keywords (nouns, symptoms, condition names). Output only the keywords separated by commas. "
@@ -154,4 +153,10 @@ class Retriever:
             return [], extra
         min_matched = 1 if topic else 3
         good = [h for h in hits if h.matched_terms >= min_matched]
+        # NOTE (26-ago-2026): a relevance floor was measured here and REJECTED. Neither an absolute
+        # bm25 threshold nor a term-coverage ratio separates "the corpus covers this" from "it does
+        # not": legitimate questions match as little as 1 term of 7 (g23) and score 20, while
+        # "se hace pis en la cama" — covered by nothing — scores 10 and matches 1 of 3. The ranges
+        # overlap, and an absolute score is not even comparable between corpora (it silenced every
+        # test fixture). Separating them needs semantic similarity, not another threshold.
         return good, extra
