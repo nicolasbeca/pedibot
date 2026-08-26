@@ -21,12 +21,14 @@ HELP = {
         "I answer only from published paediatric guidelines and name the source in every sentence. "
         "Tell me what's happening and your child's age.\n\n"
         "/country ES — set your country for emergency numbers\n/lang es — Spanish\n"
+        "/stop — no notices (you can keep asking questions)\n"
         "Not medical advice. In an emergency call your local number."
     ),
     "es": (
         "Respondo solo con guías pediátricas publicadas y nombro la fuente en cada frase. "
         "Cuéntame qué le pasa y la edad.\n\n"
         "/country ES — país para los números de emergencia\n/lang en — inglés\n"
+        "/stop — sin avisos (puedes seguir preguntando)\n"
         "No es consejo médico. En una emergencia llama a tu número local."
     ),
 }
@@ -55,7 +57,16 @@ class TelegramFront:
         cmd, _, arg = text.strip().partition(" ")
         cmd = cmd.lower().split("@")[0]
         if cmd in ("/start", "/help"):
+            self.ops.touch_tg_user(chat_id, p.lang, p.country)
+            self.ops.set_tg_opt_out(chat_id, False)
             return HELP[p.lang or "en"]
+        if cmd == "/stop":
+            self.ops.set_tg_opt_out(chat_id, True)
+            return (
+                "Listo: no recibirás avisos. Puedes seguir preguntando cuando quieras."
+                if (p.lang or "en") == "es"
+                else "Done: you will not receive notices. You can still ask questions any time."
+            )
         if cmd == "/country":
             arg = arg.strip().upper()[:2]
             if len(arg) == 2:
@@ -74,6 +85,7 @@ class TelegramFront:
         """Returns (rendered answer, answer_id)."""
         p = self.prefs.setdefault(chat_id, ChatPrefs())
         session = self.session_for(chat_id)
+        self.ops.touch_tg_user(chat_id, p.lang, p.country)
         hist = self.ops.history(session)
         a = self.engine.ask(text, country=p.country, lang=p.lang, history=hist)
         rec = AnswerRecord(
@@ -158,7 +170,7 @@ def run_polling(front: TelegramFront, token: str) -> None:
         await q.answer("Thanks!" if ok else "Not found")
 
     app = Application.builder().token(token).build()
-    app.add_handler(CommandHandler(["start", "help", "country", "lang"], on_command))
+    app.add_handler(CommandHandler(["start", "help", "country", "lang", "stop"], on_command))
     app.add_handler(CallbackQueryHandler(on_callback, pattern=r"^fb:"))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, on_text))
     app.run_polling(allowed_updates=Update.ALL_TYPES)

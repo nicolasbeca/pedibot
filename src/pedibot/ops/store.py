@@ -44,6 +44,21 @@ CREATE TABLE IF NOT EXISTS turns (
     text TEXT NOT NULL
 );
 CREATE INDEX IF NOT EXISTS turns_session ON turns(session, id);
+CREATE TABLE IF NOT EXISTS tg_users (
+    chat_id INTEGER PRIMARY KEY,
+    lang TEXT,
+    country TEXT,
+    first_seen TEXT NOT NULL,
+    last_seen TEXT NOT NULL,
+    opted_out INTEGER NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS announcements (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    ts TEXT NOT NULL,
+    text TEXT NOT NULL,
+    sent INTEGER NOT NULL,
+    failed INTEGER NOT NULL
+);
 CREATE TABLE IF NOT EXISTS shares (
     token TEXT PRIMARY KEY,
     answer_id INTEGER NOT NULL,
@@ -193,6 +208,44 @@ class OpsStore:
         if not row:
             return None
         return {"question": row[0], "answer": row[1], "level": row[2], "lang": row[3], "ts": row[4]}
+
+    # ---- Telegram audience (chat ids, so the bot can reply and send rare notices) ----
+    def touch_tg_user(self, chat_id: int, lang: str | None, country: str | None) -> None:
+        now = _now()
+        self.con.execute(
+            "INSERT INTO tg_users (chat_id, lang, country, first_seen, last_seen) VALUES (?,?,?,?,?)"
+            " ON CONFLICT(chat_id) DO UPDATE SET last_seen=excluded.last_seen,"
+            " lang=COALESCE(excluded.lang, tg_users.lang), country=COALESCE(excluded.country, tg_users.country)",
+            (chat_id, lang, country, now, now),
+        )
+        self.con.commit()
+
+    def set_tg_opt_out(self, chat_id: int, opted_out: bool) -> None:
+        self.con.execute(
+            "UPDATE tg_users SET opted_out=? WHERE chat_id=?", (int(opted_out), chat_id)
+        )
+        self.con.commit()
+
+    def tg_audience(self, lang: str | None = None) -> list[tuple[int, str | None]]:
+        sql = "SELECT chat_id, lang FROM tg_users WHERE opted_out=0"
+        params: list[object] = []
+        if lang:
+            sql += " AND COALESCE(lang,'en')=?"
+            params.append(lang)
+        return [(int(r[0]), r[1]) for r in self.con.execute(sql, params).fetchall()]
+
+    def last_announcement(self) -> tuple[str, str] | None:
+        row = self.con.execute(
+            "SELECT ts, text FROM announcements ORDER BY id DESC LIMIT 1"
+        ).fetchone()
+        return (str(row[0]), str(row[1])) if row else None
+
+    def log_announcement(self, text: str, sent: int, failed: int) -> None:
+        self.con.execute(
+            "INSERT INTO announcements (ts, text, sent, failed) VALUES (?,?,?,?)",
+            (_now(), text, sent, failed),
+        )
+        self.con.commit()
 
     # ---- rate limiting ----
     def ip_hash(self, ip: str) -> str:

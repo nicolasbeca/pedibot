@@ -345,6 +345,30 @@ def telegram() -> None:
     run_polling(front_from_settings(), s.telegram_public_bot_token)
 
 
+@app.command()
+def announce(
+    text: str,
+    lang: str | None = None,
+    dry_run: bool = typer.Option(False, "--dry-run"),
+    force: bool = typer.Option(False, "--force", help="ignore the 14-day guard"),
+) -> None:
+    """Send a RARE notice to people who used the Telegram bot (no channel, opt-out honoured)."""
+    from pedibot.announce import send_announcement, too_soon
+    from pedibot.ops.store import OpsStore
+
+    s = get_settings()
+    ops = OpsStore(s.ops_db_path)
+    soon, last = too_soon(ops)
+    if soon and not force:
+        raise typer.BadParameter(
+            f"last notice was {last} (<14 days). Use --force only if it matters."
+        )
+    if not s.telegram_public_bot_token:
+        raise typer.BadParameter("TELEGRAM_PUBLIC_BOT_TOKEN missing")
+    res = send_announcement(ops, s.telegram_public_bot_token, text, lang, dry_run)
+    typer.echo(json.dumps(res))
+
+
 if __name__ == "__main__":
     logger.disable("pedibot")
     app()
