@@ -13,9 +13,9 @@
 2. **No lanzar un token nuevo.** Buscar la opción de vincular/migrar el token existente (`0x196A…15E1`). Si el flujo solo ofrece lanzar uno nuevo o pedir $VIRTUAL, **parar** y mandar captura.
 3. Volver a la tarjeta del token → **Link EconomyOS agent** → elegir el agente PediBot.
 4. Con el agente vinculado: **Agentic Commerce → Offerings → crear oferta**. Cuando pida cómo se entrega el servicio (endpoint HTTP o worker con su SDK/CLI), mandar captura: si es endpoint, `https://pedibot.xyz/api/agent/ask` + clave; si es SDK, escribo el worker (la doc está en os.virtuals.io/acp → cli/provider-workflow).
-2. Servicio propuesto: `pediatric_sourced_answer` — entrada `{question, lang, country}`; salida = el JSON de `/api/agent/ask`. Precio inicial sugerido: el mínimo que permita ACP (el coste real es ≈ 0,0005 $).
-3. Si ACP exige integrar su SDK (`acp-python` / `virtuals-acp`) en lugar de llamar a un endpoint HTTP, el adaptador es pequeño: un proceso que escucha trabajos ACP y llama a `/api/agent/ask` con la clave. Lo escribo cuando tengamos acceso al panel de proveedor y sepamos la versión exacta del SDK.
-4. Generar una clave: `python -c "import secrets;print(secrets.token_urlsafe(24))"` → `AGENT_API_KEYS=<clave>` en `/opt/pedibot/.env` → `systemctl restart pedibot-api`.
+5. Servicio propuesto: `pediatric_sourced_answer` — entrada `{question, lang, country}`; salida = el JSON de `/api/agent/ask`. Precio inicial: el mínimo que permita ACP (el coste real es ≈ 0,0005 $).
+
+**Notas**: si ACP exige su SDK/CLI en vez de un endpoint, el adaptador es un worker que escucha trabajos y llama a `/api/agent/ask`; lo escribo cuando se vea la pantalla. La clave se genera con `python -c "import secrets;print(secrets.token_urlsafe(24))"` → `AGENT_API_KEYS=<clave>` en `/opt/pedibot/.env` → `systemctl restart pedibot-api`.
 
 **Prueba**:
 ```
