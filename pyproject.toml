@@ -19,6 +19,8 @@ dependencies = [
     "atproto>=0.0.71",
     "tweepy>=4.17.0",
     "python-multipart>=0.0.32",
+    "eth-account>=0.13.7",
+    "virtuals-acp>=0.3.23",
 ]
 
 [project.optional-dependencies]
