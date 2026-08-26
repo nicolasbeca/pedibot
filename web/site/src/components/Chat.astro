@@ -99,6 +99,7 @@ const ages = lang === 'es'
     let h = '<div class="who">pedibot</div>';
     if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
     h += esc(String(j.text).replace(/\s*\[\d{1,2}\]/g, '')).replace(/\n/g, '<br>');
+    if (j.verification === 'clarify' && j.options?.length) { h += '<div class="opts">' + j.options.map((o: string) => `<button class="fb opt" type="button" data-q="${esc(o)}">${esc(o)}</button>`).join(' ') + '</div>'; return h; }
     h += `<div class="foot"><span></span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button> <button class="fb share" data-id="${j.answer_id}" type="button">🔗 ${S.share}</button>${j.verification === 'ok' || j.verification === 'regenerated' ? ` <button class="fb child" data-q="${esc(j.question || '')}" type="button">🧸 ${S.child}</button> <button class="fb listen" type="button">🔊 ${S.listen}</button>` : ''}</span></div>`;
     return h;
   }

@@ -1,0 +1,16 @@
+# Editorial calendar (idea 4): topics that matter most in each month, by hemisphere.
+# `pedibot publish` picks the first pending topic from the current month's list before the rest.
+# Keys are TOPIC_PLAN ids (publish/articles.py). Hemisphere "south" shifts by 6 months for AU/NZ/AR/CL/BR.
+north:
+  1: [bronquiolitis, rsv, flu, croup, laringitis, gastroenteritis, diarrhoea_vomiting]
+  2: [bronquiolitis, rsv, flu, chickenpox, scarlet_fever, otitis, ear_infection]
+  3: [chickenpox, scarlet_fever, asthma_en, crisis_asma, common_cold, catarro]
+  4: [asthma_en, hives, rashes, urticaria, insect_bites, hand_foot_mouth]
+  5: [insect_bites, sunburn, hand_foot_mouth, alimentacion_complementaria, weaning_en, milestones]
+  6: [heat, golpe_calor, sunburn, choking, burns, gastroenteritis, diarrhoea_vomiting]
+  7: [heat, golpe_calor, sunburn, insect_bites, burns, diarrhoea_vomiting, ors_hydration]
+  8: [heat, golpe_calor, head_lice, threadworms, vaccines_en, vacunas, milestones]
+  9: [head_lice, threadworms, common_cold, catarro, vaccines_en, vacunas, screen_sleep]
+  10: [flu, vaccines_en, vacunas, common_cold, catarro, croup, laringitis, bedwetting]
+  11: [bronquiolitis, rsv, flu, croup, laringitis, whooping_cough]
+  12: [bronquiolitis, rsv, flu, croup, laringitis, gastroenteritis, poisoning_en, intoxicaciones]

@@ -113,3 +113,18 @@ Virtuals tiene el **Agent Commerce Protocol (ACP)**: un mercado on-chain donde a
 | V-06 | Directorios de herramientas de IA (There's An AI For That, Futurepedia, AI Tools) | 0 | tras la beta |
 | V-07 | Comunidad Virtuals: perfil verificado (hecho), post de lanzamiento, ACP (T-06) | 0 | en curso |
 | V-08 | Mastodon/Threads (API gratuita) como 3.º y 4.º canal automáticos | 0 | nueva |
+
+## Lote del 26-ago (10 ideas propuestas; decisión del operador)
+
+| # | Idea | Estado |
+|---|---|---|
+| 1 | Perfil del niño en el navegador (multi-hijo) | aceptada, **más adelante** |
+| 2 | Vacunas tabuladas por país | **HECHA** (ES/GB/US desde documentos oficiales; `/vaccines`, `/api/vaccines`, enrutado en el chat) |
+| 3 | Aclaración guiada en el chat | **HECHA** (mensaje vago con mención al niño → 7 opciones; nunca en seguimientos) |
+| 4 | Calendario editorial por temporada | **HECHA** (`config/seasonal.yaml`; publish prioriza el mes) |
+| 5 | Guías comparativas "qué dicen las guías" | **HECHA** (5 temas con ≥2 organismos, prompt `article_compare_v1` con tabla) |
+| 6 | Widget embebible | aceptada, **más adelante** |
+| 7 | Avisos de salud pública en la home | **HECHA** (WHO/PAHO/UKHSA/CDC, filtro estricto a eventos infantiles, máx. 3, 14 días) |
+| 8 | Foto solo para signos de alarma (I-10b) | **HECHA** (`/api/photo`, botón 📷; vision-exp; nunca nombra enfermedades) |
+| 9 | Panel privado `/admin` | **HECHA** (basic auth Caddy; métricas, PDBT, conversaciones, flag → golden set) |
+| 10 | Virtuals ACP | **endpoint hecho** (`/api/agent/ask` con clave); registro como proveedor = operador, pasos en `ops/ACP.md` |

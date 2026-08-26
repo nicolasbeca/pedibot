@@ -55,6 +55,7 @@ class AskOut(BaseModel):
     disclaimer: str
     verification: str
     degraded: bool = False
+    options: list[str] = []
 
 
 class DoseIn(BaseModel):
@@ -211,6 +212,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             disclaimer=DISCLAIMER[a.lang],
             verification=a.verification,
             degraded=degraded,
+            options=list(getattr(a, "options", [])),
         )
 
     @app.get("/api/drugs")
@@ -335,6 +337,44 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             )
         )
         return {"level": level, "text": text, "signs": d, "source": SOURCE, "session": session}
+
+    @app.post("/api/agent/ask")
+    def agent_ask(body: AskIn, request: Request) -> dict[str, object]:
+        """Machine-to-machine endpoint for Virtuals ACP jobs (idea 10). Same engine, same safety
+        checks; returns structured JSON with sources. Auth: X-Api-Key in AGENT_API_KEYS."""
+        import os
+
+        keys = {k.strip() for k in os.environ.get("AGENT_API_KEYS", "").split(",") if k.strip()}
+        if not keys or request.headers.get("x-api-key") not in keys:
+            raise HTTPException(401, "invalid api key")
+        a = engine.ask(body.question, country=body.country, lang=body.lang)
+        ops.log_answer(
+            AnswerRecord(
+                session="agent_" + secrets.token_urlsafe(8),
+                lang=a.lang,
+                country=body.country,
+                question=body.question,
+                answer=a.render_debug(),
+                level=a.level,
+                verification=a.verification,
+                chunk_ids=a.chunk_ids,
+                prompt_version=a.prompt_version,
+                model=a.llm.model if a.llm else None,
+                tokens_in=a.llm.tokens_in if a.llm else 0,
+                tokens_out=a.llm.tokens_out if a.llm else 0,
+                cost_usd=a.llm.cost_usd if a.llm else 0.0,
+                latency_ms=0,
+            )
+        )
+        return {
+            "level": a.level,
+            "banner": a.banner,
+            "answer": a.clean_text,
+            "sources": a.sources,
+            "verification": a.verification,
+            "lang": a.lang,
+            "disclaimer": DISCLAIMER[a.lang],
+        }
 
     @app.get("/api/checklist")
     def checklist(lang: str = "en") -> dict[str, object]:

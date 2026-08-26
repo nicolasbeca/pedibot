@@ -49,6 +49,30 @@ NO_SOURCE = {
     "en": "I don't have reliable information on this in my sources, so I'd rather not guess. Please contact your paediatrician or a nurse line. If your child seems seriously unwell, go to the emergency department.",
     "es": "No tengo información fiable sobre esto en mis fuentes y prefiero no adivinar. Consulta con tu pediatra. Si tu hijo o hija parece estar grave, acude a urgencias.",
 }
+CLARIFY = {
+    "en": "I want to get this right. What's the main thing going on?",
+    "es": "Quiero acertar. ¿Qué es lo principal que le pasa?",
+}
+CLARIFY_OPTIONS = {
+    "en": [
+        "Fever",
+        "Cough or breathing",
+        "Vomiting or diarrhoea",
+        "Rash or skin",
+        "A fall or injury",
+        "Feeding or sleep",
+        "Something else",
+    ],
+    "es": [
+        "Fiebre",
+        "Tos o respiración",
+        "Vómitos o diarrea",
+        "Manchas o piel",
+        "Golpe o caída",
+        "Comida o sueño",
+        "Otra cosa",
+    ],
+}
 ASK_AGE = {
     "en": "To answer safely I need to know how old your child is (months or years). Could you tell me?",
     "es": "Para responder con seguridad necesito saber la edad (meses o años). ¿Me la dices?",
@@ -65,8 +89,9 @@ class Answer:
     prompt_version: str | None
     llm: LLMResult | None
     chunk_ids: list[str]
-    verification: str  # ok | no_source | asked_age | dose_calculator | regenerated | fallback
+    verification: str  # ok | no_source | asked_age | dose_calculator | vaccine_schedule | clarify | regenerated | fallback
     expansion: list[str] = field(default_factory=list)
+    options: list[str] = field(default_factory=list)  # quick replies when verification == 'clarify'
 
     @property
     def clean_text(self) -> str:
@@ -159,6 +184,17 @@ def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, floa
     if key is None or key not in DRUGS:
         return None
     return key, kg
+
+
+_CHILD = re.compile(
+    r"\b(hij[oa]|beb[eé]|ni[ñn][oa]|peque|my (son|daughter|baby|child|toddler|kid|little one)|"
+    r"\d+\s*(años|año|meses|mes|year|years|month|months|weeks?|semanas?)\b)",
+    re.I,
+)
+
+
+def _mentions_child(text: str) -> bool:
+    return bool(_CHILD.search(text))
 
 
 def _age_context(tr: TriageResult) -> str:
@@ -315,6 +351,26 @@ class Engine:
                 text = format_answer(self.vaccines, c, tr.age_months, lang)
                 return Answer(text, tr.level, None, [], lang, None, None, [], "vaccine_schedule")
             # no tabulated schedule for this country → fall through to the sources
+
+        if (
+            tr.level == "routine"
+            and not history
+            and self.retriever.taxonomy is not None
+            and self.retriever.taxonomy.topic_for(query) is None
+            and (len(query.split()) <= 3 or _mentions_child(query))
+        ):
+            return Answer(
+                CLARIFY[lang],
+                tr.level,
+                None,
+                [],
+                lang,
+                None,
+                None,
+                [],
+                "clarify",
+                options=CLARIFY_OPTIONS[lang],
+            )
 
         if tr.level == "routine" and _needs_age(context_text, tr):
             return Answer(ASK_AGE[lang], tr.level, None, [], lang, None, None, [], "asked_age")

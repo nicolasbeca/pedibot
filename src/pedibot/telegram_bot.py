@@ -95,7 +95,10 @@ class TelegramFront:
         answer_id = self.ops.log_answer(rec)
         self.ops.add_turn(session, "user", text)
         self.ops.add_turn(session, "assistant", a.text)
-        return a.render(), answer_id
+        text = a.render()
+        if a.verification == "clarify" and a.options:
+            text += "\n\n" + "\n".join(f"• {o}" for o in a.options)
+        return text, answer_id
 
     def feedback(self, chat_id: int, answer_id: int, value: int) -> bool:
         return self.ops.set_feedback(answer_id, self.session_for(chat_id), value)

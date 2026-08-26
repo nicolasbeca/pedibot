@@ -265,6 +265,41 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "docs": ["nhs_en_ibuprofen_for_children"],
         "query": "ibuprofen for children how to give",
     },
+    # ---- comparison guides (idea 5): several organisations on one practical question ----
+    "compare_fever_threshold": {
+        "compare": True,
+        "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever"],
+        "query": "what is a fever temperature threshold 38 when to treat",
+    },
+    "compare_start_solids": {
+        "compare": True,
+        "docs": [
+            "aep_alimentacion_complementaria",
+            "who_en_infant_and_young_child_feeding",
+            "nhs_en_babys_first_solid_foods",
+            "cdc_en_infant_toddler_nutrition_index",
+        ],
+        "query": "when to start solid foods 6 months signs of readiness",
+    },
+    "compare_cough_medicines": {
+        "compare": True,
+        "docs": ["seup_catarro", "mlp_en_commoncold", "cdc_en_colds", "nhs_en_croup"],
+        "query": "cough medicines children not recommended honey",
+    },
+    "compare_fever_medicine": {
+        "compare": True,
+        "docs": ["seup_fiebre", "nhs_en_paracetamol_for_children", "nhs_en_ibuprofen_for_children"],
+        "query": "paracetamol ibuprofen fever when to give alternate",
+    },
+    "compare_head_injury_watch": {
+        "compare": True,
+        "docs": [
+            "seup_tce",
+            "nhs_en_head_injury_and_concussion",
+            "cdc_en_heads_up_signs_symptoms_index",
+        ],
+        "query": "head injury what to watch for 48 hours",
+    },
     "teen_mental_health": {
         "docs": ["mlp_en_teenmentalhealth", "who_en_adolescent_mental_health"],
         "query": "teen mental health anxiety depression signs",
@@ -298,7 +333,7 @@ class Article:
             f"lang: {self.lang}\n"
             f"topic: {self.topic}\n"
             f"date: {today}\n"
-            f"prompt_version: article_v1\n"
+            f"prompt_version: {'article_compare_v1' if TOPIC_PLAN.get(self.topic, {}).get('compare') else 'article_v1'}\n"
             f"model: {self.llm.model}\n"
             f"sources:\n{srcs}\n"
             "draft: false\n"
@@ -333,6 +368,12 @@ def gather_hits(index: Index, topic: str, max_chunks: int = 10) -> list[Hit]:
         for h in hits
         if h.chunk.doc_id not in wanted and h.chunk.usage == "publico" and h.chunk.topic in topics
     ]
+    if plan.get("compare"):
+        # one or two passages per organisation so the table has every voice
+        per_org: dict[str, list[Hit]] = {}
+        for h in anchored:
+            per_org.setdefault(h.chunk.org, []).append(h)
+        anchored = [h for hs in per_org.values() for h in hs[:2]]
     return (anchored + others)[:max_chunks]
 
 
@@ -361,7 +402,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
     hits = gather_hits(index, topic)
     if not hits:
         raise ValueError(f"no sources for topic {topic}")
-    system = load_prompt()
+    system = load_prompt("article_compare_v1" if TOPIC_PLAN[topic].get("compare") else "article_v1")
     user = f"LANGUAGE: {'English' if lang == 'en' else 'Spanish'}\nTOPIC: {topic}\n\nSOURCES:\n{_format_sources(hits)}"
     result = llm.complete(system, user, temperature=0.3, max_tokens=1800)
     title, summary, body = parse_output(result.text)
@@ -412,6 +453,29 @@ def write_article(
     return out, q
 
 
+def seasonal_first(
+    topics: list[str], month: int | None = None, hemisphere: str = "north"
+) -> list[str]:
+    """Reorder pending topics so this month's seasonal ones (config/seasonal.yaml) come first."""
+    import datetime as _dt
+
+    import yaml
+
+    from pedibot.settings import get_settings
+
+    m = month or _dt.date.today().month
+    if hemisphere == "south":
+        m = (m + 6 - 1) % 12 + 1
+    try:
+        cal = yaml.safe_load(
+            (get_settings().config_dir / "seasonal.yaml").read_text(encoding="utf-8")
+        )
+        first = [t for t in cal["north"].get(m, []) if t in topics]
+    except Exception:  # noqa: BLE001
+        first = []
+    return first + [t for t in topics if t not in first]
+
+
 def pending_topics(content_dir: Path, lang: str) -> list[str]:
     """Topics without an article yet in this language (by frontmatter `topic:`)."""
     done: set[str] = set()
@@ -419,4 +483,4 @@ def pending_topics(content_dir: Path, lang: str) -> list[str]:
         m = re.search(r"^topic:\s*(\S+)", f.read_text(encoding="utf-8"), re.M)
         if m:
             done.add(m.group(1))
-    return [t for t in TOPIC_PLAN if t not in done]
+    return seasonal_first([t for t in TOPIC_PLAN if t not in done])
