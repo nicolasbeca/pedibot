@@ -1,0 +1,52 @@
+---
+import vax from '../data/vaccines.json';
+import type { Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = lang === 'es'
+  ? { h: 'Calendario de vacunas por país y edad', p: 'Tablas transcritas de los calendarios oficiales (España, Reino Unido, Estados Unidos). Sin IA. Tu pediatra o el calendario de tu comunidad tienen la última palabra.', country: 'País', age: 'Edad del niño', show: 'Ver', full: 'Calendario completo', due: 'A esta edad tocan', next: 'Siguiente cita', none: 'No hay vacuna programada justo a esta edad.', src: 'Fuente' }
+  : { h: 'Vaccination schedule by country and age', p: 'Tables transcribed from the official schedules (Spain, UK, US). No AI. Your paediatrician or your regional schedule has the final word.', country: 'Country', age: "Child's age", show: 'Show', full: 'Full schedule', due: 'Due at this age', next: 'Next visit', none: 'No vaccine is scheduled at this exact age.', src: 'Source' };
+const countries = Object.keys(vax as any);
+const ages = lang === 'es'
+  ? [['','—'],['0','recién nacido'],['2','2 meses'],['4','4 meses'],['6','6 meses'],['11','11 meses'],['12','12 meses'],['15','15 meses'],['18','18 meses'],['42','3-4 años'],['72','6 años'],['144','12 años'],['168','14 años']]
+  : [['','—'],['0','newborn'],['2','2 months'],['3','12 weeks'],['4','4 months'],['6','6 months'],['12','1 year'],['15','15 months'],['18','18 months'],['40','3 years 4 months'],['48','4-6 years'],['72','6 years'],['144','12 years'],['168','14 years']];
+---
+<div class="vax" data-lang={lang} data-t={JSON.stringify(T)} data-vax={JSON.stringify(vax)}>
+  <h1>{T.h}</h1>
+  <p class="lede">{T.p}</p>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-top:20px">
+    <label class="f"><span>{T.country}</span><select id="vx-country">{countries.map(c => <option value={c} selected={c === (lang === 'es' ? 'ES' : 'GB')}>{(vax as any)[c].name[lang]}</option>)}</select></label>
+    <label class="f"><span>{T.age}</span><select id="vx-age">{ages.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
+  </div>
+  <div id="vx-out" class="card" style="margin-top:16px" aria-live="polite"></div>
+</div>
+<style>
+  .f { display: grid; gap: 4px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .9rem; }
+  .f select { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 10px 12px; font-weight: 400; font-family: "Atkinson Hyperlegible", sans-serif; }
+  #vx-out :global(table) { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  #vx-out :global(td) { padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  #vx-out :global(td:first-child) { white-space: nowrap; font-family: Nunito, sans-serif; font-weight: 700; width: 160px; }
+  #vx-out :global(.due) { background: var(--mint); }
+  #vx-out :global(.src) { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+</style>
+<script>
+  const box = document.querySelector('.vax') as HTMLElement; const T = JSON.parse(box.dataset.t || '{}'); const V = JSON.parse(box.dataset.vax || '{}'); const lang = box.dataset.lang || 'en';
+  const out = document.getElementById('vx-out')!, cSel = document.getElementById('vx-country') as HTMLSelectElement, aSel = document.getElementById('vx-age') as HTMLSelectElement;
+  const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+  function render() {
+    const c = V[cSel.value]; const age = aSel.value === '' ? null : Number(aSel.value);
+    const tol = age !== null && age < 24 ? 1.5 : 6;
+    const rows = c.schedule.map((s: any) => {
+      const due = age !== null && ((!s.every_year && Math.abs(s.age - age) <= tol) || (s.every_year && s.age <= age));
+      return `<tr class="${due ? 'due' : ''}"><td>${esc(s.label[lang])}</td><td>${s.vaccines.map(esc).join(', ')}</td></tr>`;
+    }).join('');
+    let head = '';
+    if (age !== null) {
+      const due = c.schedule.filter((s: any) => (!s.every_year && Math.abs(s.age - age) <= tol) || (s.every_year && s.age <= age));
+      head = due.length ? `<p><b>${T.due}:</b> ${due.map((s: any) => esc(s.label[lang]) + ' — ' + s.vaccines.map(esc).join(', ')).join(' · ')}</p>` : `<p>${T.none}</p>`;
+    }
+    out.innerHTML = head + `<p class="eyebrow" style="margin-top:10px">${T.full}</p><table>${rows}</table><p class="src">${T.src}: ${esc(c.source)}. ${esc(c.note[lang])}</p>`;
+  }
+  cSel.addEventListener('change', render); aSel.addEventListener('change', render); render();
+  try { const cc = localStorage.getItem('pedibot_country'); if (cc && V[cc]) { cSel.value = cc; render(); } } catch (e) {}
+</script>

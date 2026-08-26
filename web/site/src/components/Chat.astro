@@ -8,7 +8,7 @@ const ages = lang === 'es'
   ? [['', s.not_set], ['2 semanas','2 semanas'], ['2 meses','2 meses'], ['6 meses','6 meses'], ['1 año','1 año'], ['2 años','2 años'], ['4 años','4 años'], ['8 años','8 años'], ['13 años','13 años']]
   : [['', s.not_set], ['2 weeks','2 weeks'], ['2 months','2 months'], ['6 months','6 months'], ['1 year','1 year'], ['2 years','2 years'], ['4 years','4 years'], ['8 years','8 years'], ['13 years','13 years']];
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer })}>
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer })}>
   <div class="chat" id="thread">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo.svg" width="72" height="72" alt="" />
@@ -28,6 +28,8 @@ const ages = lang === 'es'
       </div>
       <form class="composer" id="composer">
         <textarea id="input" rows="1" placeholder={s.placeholder} aria-label={s.placeholder}></textarea>
+        <button class="mic" type="button" id="photo-btn" aria-label={s.photo} title={s.photo}>📷</button>
+        <input id="photo-in" type="file" accept="image/*" capture="environment" hidden />
         <button class="mic" type="button" id="mic" aria-label={s.voice} title={s.voice}>🎤</button>
         <button class="send" type="submit" aria-label={s.send}>➤</button>
       </form>
@@ -139,6 +141,30 @@ const ages = lang === 'es'
   input.addEventListener('input', () => { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 140) + 'px'; });
   input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
   const pre = new URLSearchParams(location.search).get('q'); if (pre) { input.value = pre; }
+
+  // photo check (warning signs only): resize in the browser, send base64, render as a bot message
+  const photoBtn = document.getElementById('photo-btn') as HTMLButtonElement, photoIn = document.getElementById('photo-in') as HTMLInputElement;
+  photoBtn.addEventListener('click', () => { if (confirm(S.photo_hint)) photoIn.click(); });
+  photoIn.addEventListener('change', async () => {
+    const file = photoIn.files?.[0]; if (!file) return; photoIn.value = '';
+    const img = new Image(); img.src = URL.createObjectURL(file); await img.decode();
+    const max = 1024, k = Math.min(1, max / Math.max(img.width, img.height));
+    const cv = document.createElement('canvas'); cv.width = Math.round(img.width * k); cv.height = Math.round(img.height * k);
+    cv.getContext('2d')!.drawImage(img, 0, 0, cv.width, cv.height);
+    const b64 = cv.toDataURL('image/jpeg', 0.85).split(',')[1];
+    bubble('user', '📷 ' + esc(file.name));
+    const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
+    try {
+      const r = await fetch('/api/photo', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ image_b64: b64, mime: 'image/jpeg', lang, country: countrySel.value || null, session }) });
+      if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + (r.status === 503 ? S.err_server : S.err_server); return; }
+      const j = await r.json(); session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
+      let hh = '<div class="who">pedibot</div>';
+      if (j.level === 'emergency' || j.level === 'urgent') hh += `<div class="banner ${j.level}">🚨 ${esc(j.text.split('. ')[0])}.</div>`;
+      hh += esc(j.text).replace(/\n/g, '<br>');
+      t.innerHTML = hh;
+    } catch (e) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_net; }
+    t.scrollIntoView({ block: 'end' });
+  });
 
   // voice input (Web Speech API, free, in-browser)
   const mic = document.getElementById('mic') as HTMLButtonElement;

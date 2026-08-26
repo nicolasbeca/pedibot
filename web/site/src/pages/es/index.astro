@@ -1,11 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Chat from '../../components/Chat.astro';
+import Alerts from '../../components/Alerts.astro';
 import Sections from '../../components/Sections.astro';
 const lang = 'es';
 const jsonld = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'PediBot', applicationCategory: 'HealthApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0' }, description: 'Asistente gratuito para padres que responde solo con guías pediátricas publicadas y cita la fuente.' };
 ---
 <Base lang={lang} title="PediBot — orientación pediátrica con fuentes" description="Asistente gratuito para padres que responde solo con guías pediátricas publicadas, nombra la fuente en cada frase y te dice cuándo ir a urgencias." path="/es" jsonld={jsonld}>
   <Chat lang={lang} />
+  <Alerts lang={lang} />
   <Sections lang={lang} />
 </Base>

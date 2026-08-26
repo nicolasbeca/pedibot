@@ -1,0 +1,51 @@
+# Vaccination schedules, tabulated from official documents in FUENTES (idea 2, 26-ago-2026).
+# Deterministic tool: the LLM never invents dates. Each country cites its document.
+# ages in months; "every_year" = seasonal campaign. Names kept as the official source writes them.
+
+countries:
+  ES:
+    name: {en: "Spain — common schedule 2025", es: "España — calendario común 2025"}
+    source: "Ministerio de Sanidad / Consejo Interterritorial del SNS — Calendario común de vacunación e inmunización a lo largo de toda la vida, 2025"
+    source_url: "https://www.sanidad.gob.es/areas/promocionPrevencion/vacunaciones/calendario-y-coberturas/home.htm"
+    note: {en: "Regional calendars may add vaccines or shift ages slightly; check your community's schedule.", es: "Los calendarios autonómicos pueden añadir vacunas o ajustar edades; consulta el de tu comunidad."}
+    schedule:
+      - {age: 0, label: {en: "Birth", es: "Al nacer"}, vaccines: ["Hepatitis B (HB)", "VRS: nirsevimab (anticuerpo, temporada octubre-marzo)"]}
+      - {age: 2, label: {en: "2 months", es: "2 meses"}, vaccines: ["Polio (VPI)", "Difteria-tétanos-tosferina (DTPa)", "Haemophilus influenzae b (Hib)", "Hepatitis B (HB)", "Neumococo (VNC)", "Meningococo B (MenB)", "Rotavirus (RV, 1.ª dosis)"]}
+      - {age: 4, label: {en: "4 months", es: "4 meses"}, vaccines: ["Polio (VPI)", "DTPa", "Hib", "Hepatitis B (HB)", "Neumococo (VNC)", "Meningococo B (MenB)", "Meningococo C (MenC)", "Rotavirus (RV, 2.ª dosis; 3.ª a los 6 meses según la vacuna)"]}
+      - {age: 11, label: {en: "11 months", es: "11 meses"}, vaccines: ["Polio (VPI)", "DTPa", "Hib", "Hepatitis B (HB)", "Neumococo (VNC)"]}
+      - {age: 12, label: {en: "12 months", es: "12 meses"}, vaccines: ["Sarampión-rubeola-parotiditis (triple vírica, TV)", "Meningococo B (MenB)", "Meningococo C (MenC)"]}
+      - {age: 15, label: {en: "15 months", es: "15 meses"}, vaccines: ["Varicela (VVZ)"]}
+      - {age: 6, label: {en: "6–59 months, every autumn", es: "6-59 meses, cada otoño"}, every_year: true, vaccines: ["Gripe estacional"]}
+      - {age: 42, label: {en: "3–4 years", es: "3-4 años"}, vaccines: ["Triple vírica (TV, 2.ª dosis)", "Varicela (VVZ, 2.ª dosis)"]}
+      - {age: 72, label: {en: "6 years", es: "6 años"}, vaccines: ["DTPa", "Polio (VPI)"]}
+      - {age: 144, label: {en: "12 years", es: "12 años"}, vaccines: ["Virus del papiloma humano (VPH)", "Meningococo ACWY (MenACWY)"]}
+      - {age: 168, label: {en: "14 years", es: "14 años"}, vaccines: ["Tétanos-difteria (Td)"]}
+  GB:
+    name: {en: "United Kingdom — NHS schedule", es: "Reino Unido — calendario del NHS"}
+    source: "NHS — NHS vaccinations and when to have them (page last reviewed 2025)"
+    source_url: "https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/"
+    note: {en: "Some doses depend on the child's date of birth (MMRV, 6-in-1 4th dose); your GP surgery will invite you.", es: "Algunas dosis dependen de la fecha de nacimiento (MMRV, 4.ª de la 6-en-1); el centro de salud te avisa."}
+    schedule:
+      - {age: 2, label: {en: "8 weeks", es: "8 semanas"}, vaccines: ["6-in-1 vaccine (1st dose)", "Rotavirus vaccine (1st dose)", "MenB vaccine (1st dose)"]}
+      - {age: 3, label: {en: "12 weeks", es: "12 semanas"}, vaccines: ["6-in-1 vaccine (2nd dose)", "MenB vaccine (2nd dose)", "Rotavirus vaccine (2nd dose)"]}
+      - {age: 4, label: {en: "16 weeks", es: "16 semanas"}, vaccines: ["6-in-1 vaccine (3rd dose)", "Pneumococcal vaccine (1st dose)"]}
+      - {age: 12, label: {en: "1 year", es: "1 año"}, vaccines: ["MMRV vaccine (1st dose, children born on or after 1 January 2025)", "Pneumococcal vaccine (2nd dose)", "MenB vaccine (3rd dose)"]}
+      - {age: 18, label: {en: "18 months", es: "18 meses"}, vaccines: ["6-in-1 vaccine (4th dose, children born on or after 1 July 2024)", "MMRV vaccine (1st or 2nd dose, children born on or after 1 July 2024)"]}
+      - {age: 24, label: {en: "2 to 15 years, every year", es: "2 a 15 años, cada año"}, every_year: true, vaccines: ["Children's flu vaccine (nasal spray)"]}
+      - {age: 40, label: {en: "3 years and 4 months", es: "3 años y 4 meses"}, vaccines: ["4-in-1 pre-school booster", "MMRV vaccine (1st or 2nd dose, children born 1 Sept 2022 – 31 Dec 2024)"]}
+      - {age: 144, label: {en: "12 to 13 years", es: "12-13 años"}, vaccines: ["HPV vaccine"]}
+      - {age: 168, label: {en: "14 years", es: "14 años"}, vaccines: ["Td/IPV (3-in-1 teenage booster)", "MenACWY vaccine"]}
+  US:
+    name: {en: "United States — CDC schedule 2025", es: "Estados Unidos — calendario CDC 2025"}
+    source: "CDC — Recommended Immunizations for Birth Through 6 Years Old, United States, 2025 (easy-read)"
+    source_url: "https://www.cdc.gov/vaccines/imz-schedules/child-easyread.html"
+    note: {en: "Ranges are the CDC windows; your pediatrician sets the exact visit. RSV antibody depends on the mother's RSV vaccine status.", es: "Los rangos son las ventanas del CDC; tu pediatra fija la visita exacta. El anticuerpo VRS depende de si la madre se vacunó."}
+    schedule:
+      - {age: 0, label: {en: "Birth", es: "Al nacer"}, vaccines: ["Hepatitis B (dose 1)", "RSV antibody (birth–7 months, depends on mother's RSV vaccine status)"]}
+      - {age: 1, label: {en: "1–2 months", es: "1-2 meses"}, vaccines: ["Hepatitis B (dose 2)"]}
+      - {age: 2, label: {en: "2 months", es: "2 meses"}, vaccines: ["Rotavirus (dose 1)", "DTaP (dose 1)", "Hib (dose 1)", "Pneumococcal (dose 1)", "Polio (dose 1)"]}
+      - {age: 4, label: {en: "4 months", es: "4 meses"}, vaccines: ["Rotavirus (dose 2)", "DTaP (dose 2)", "Hib (dose 2)", "Pneumococcal (dose 2)", "Polio (dose 2)"]}
+      - {age: 6, label: {en: "6 months", es: "6 meses"}, vaccines: ["Rotavirus (dose 3, some brands)", "DTaP (dose 3)", "Hib (dose 3)", "Pneumococcal (dose 3)", "Polio (dose 3, 6–18 months)", "Hepatitis B (dose 3, 6–18 months)", "Influenza (every year from 6 months; two doses the first season)", "COVID-19 (from 6 months, per current guidance)"]}
+      - {age: 12, label: {en: "12–15 months", es: "12-15 meses"}, vaccines: ["MMR (dose 1)", "Chickenpox/varicella (dose 1)", "Hib (dose 4)", "Pneumococcal (dose 4)", "Hepatitis A (2 doses, 6 months apart, 12–23 months)"]}
+      - {age: 15, label: {en: "15–18 months", es: "15-18 meses"}, vaccines: ["DTaP (dose 4)"]}
+      - {age: 48, label: {en: "4–6 years", es: "4-6 años"}, vaccines: ["DTaP (dose 5)", "Polio (dose 4)", "MMR (dose 2)", "Chickenpox/varicella (dose 2)"]}

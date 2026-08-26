@@ -1,0 +1,29 @@
+---
+import alerts from '../data/alerts.json';
+import type { Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const items = (alerts as any[]).slice(0, 3);
+const title = lang === 'es' ? 'Avisos de salud pública' : 'Public health notices';
+const hint = lang === 'es' ? 'De organismos oficiales, filtrados a salud infantil. Enlazan al original.' : 'From official bodies, filtered to child health. Links go to the original.';
+---
+{items.length > 0 && (
+  <section class="alerts" aria-label={title}>
+    <div class="wrap">
+      <p class="eyebrow">{title}</p>
+      <ul>
+        {items.map(a => <li><span class="src">{a.source}</span><a href={a.link} target="_blank" rel="noopener">{a.title}</a><span class="d mono">{a.date}</span></li>)}
+      </ul>
+      <p class="hint">{hint}</p>
+    </div>
+  </section>
+)}
+<style>
+  .alerts { background: var(--sky); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 14px 0; }
+  .alerts ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 6px; }
+  .alerts li { display: grid; grid-template-columns: 70px 1fr auto; gap: 10px; align-items: baseline; font-size: .92rem; }
+  .src { font-family: Nunito, sans-serif; font-weight: 800; color: var(--sage); font-size: .78rem; letter-spacing: .04em; }
+  .d { color: var(--ink-3); font-size: .78rem; }
+  .hint { color: var(--ink-3); font-size: .78rem; margin-top: 6px; }
+  @media (max-width: 560px) { .alerts li { grid-template-columns: 1fr; gap: 2px; } }
+</style>

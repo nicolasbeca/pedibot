@@ -13,6 +13,7 @@ from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.triage import LEVEL_ORDER, Triage, TriageResult
+from pedibot.bot.vaccines import Vaccines, format_answer, is_vaccine_question
 from pedibot.index.store import Hit
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
@@ -233,6 +234,7 @@ class Engine:
         numbers: EmergencyNumbers,
         prompt_version: str = "answer_v3",
         drugs: DrugCatalog | None = None,
+        vaccines: Vaccines | None = None,
     ):
         self.retriever = retriever
         self.triage = triage
@@ -240,6 +242,7 @@ class Engine:
         self.numbers = numbers
         self.prompt_version, self.prompt = load_prompt(prompt_version)
         self.drugs = drugs
+        self.vaccines = vaccines
 
     def _inject_rule_sources(self, tr: TriageResult, hits: list[Hit]) -> list[Hit]:
         """When a triage rule fired, put the warning-signs chunk of the rule's own source first,
@@ -305,6 +308,13 @@ class Engine:
             drug, kg = intent
             text = format_result(calculate(drug, kg, tr.age_months), lang)
             return Answer(text, tr.level, None, [], lang, None, None, [], "dose_calculator")
+
+        if self.vaccines is not None and tr.level == "routine" and is_vaccine_question(query):
+            c = self.vaccines.resolve_country(country)
+            if c is not None:
+                text = format_answer(self.vaccines, c, tr.age_months, lang)
+                return Answer(text, tr.level, None, [], lang, None, None, [], "vaccine_schedule")
+            # no tabulated schedule for this country → fall through to the sources
 
         if tr.level == "routine" and _needs_age(context_text, tr):
             return Answer(ASK_AGE[lang], tr.level, None, [], lang, None, None, [], "asked_age")

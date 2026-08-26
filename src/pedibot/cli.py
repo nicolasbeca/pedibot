@@ -10,6 +10,7 @@ import typer
 from loguru import logger
 
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.vaccines import Vaccines
 from pedibot.settings import ROOT, get_settings
 
 app = typer.Typer(help="PediBot v2 — pediatric assistant grounded in verified guidelines.")
@@ -162,6 +163,7 @@ def ask(
         llm,
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
+        vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
     )
     a = eng.ask(query, country=country)
     typer.echo(a.render())

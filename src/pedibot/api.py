@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field
 from pedibot import __version__
 from pedibot.bot.answer import NO_SOURCE, Engine
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.vaccines import Vaccines
 from pedibot.ops.store import AnswerRecord, OpsStore
 from pedibot.settings import ROOT
 
@@ -64,6 +65,14 @@ class DoseIn(BaseModel):
     lang: str = Field(default="en", pattern="^(es|en)$")
 
 
+class PhotoIn(BaseModel):
+    image_b64: str = Field(min_length=100, max_length=6_000_000)
+    mime: str = Field(default="image/jpeg", pattern="^image/(jpeg|png|webp)$")
+    lang: str = Field(default="en", pattern="^(es|en)$")
+    country: str | None = Field(default=None, max_length=2)
+    session: str | None = Field(default=None, max_length=64)
+
+
 class ShareIn(BaseModel):
     answer_id: int
     session: str
@@ -83,7 +92,11 @@ class ApiConfig:
     max_daily_llm_usd: float = 2.0
 
 
-def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
+def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) -> FastAPI:  # type: ignore[no-untyped-def]
+    from pedibot.bot.llm import vision_json
+    from pedibot.bot.vaccines import format_answer
+
+    vision_fn = vision_fn or vision_json
     from pedibot.bot.answer import DISCLAIMER
 
     app = FastAPI(title="PediBot API", version=__version__, docs_url=None, redoc_url=None)
@@ -258,6 +271,71 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
             "source": r.drug.source,
         }
 
+    @app.get("/api/vaccines")
+    def vaccines(
+        country: str = "ES", age_months: float | None = None, lang: str = "en"
+    ) -> dict[str, object]:
+        v = engine.vaccines
+        if v is None:
+            raise HTTPException(503, "vaccine schedules not loaded")
+        c = v.resolve_country(country)
+        if c is None:
+            raise HTTPException(404, f"no schedule for {country}; available: {v.countries}")
+        due, nxt = v.at_age(c, age_months, lang) if age_months is not None else ([], None)
+        return {
+            "country": c,
+            "meta": v.meta(c, lang),
+            "schedule": [s.__dict__ for s in v.schedule(c, lang)],
+            "due": [s.__dict__ for s in due],
+            "next": nxt.__dict__ if nxt else None,
+            "text": format_answer(v, c, age_months, lang),
+        }
+
+    @app.post("/api/photo")
+    def photo(body: PhotoIn, request: Request) -> dict[str, object]:
+        from pedibot.bot.photo import SOURCE, VISION_SYSTEM, interpret, parse
+        from pedibot.settings import get_settings
+
+        s = get_settings()
+        if not s.photo_enabled or not s.deepseek_api_key:
+            raise HTTPException(503, "photo check disabled")
+        ip = client_ip(request)
+        if ops.hit_and_count(ip, 10) > cfg.rate_limit_per_10min:
+            raise HTTPException(429, "Too many requests")
+        if ops.cost_today_usd() >= cfg.max_daily_llm_usd:
+            raise HTTPException(503, "daily budget reached")
+        raw, cost = vision_fn(
+            s.deepseek_api_key,
+            s.deepseek_base_url,
+            s.deepseek_vision_model,
+            VISION_SYSTEM,
+            body.image_b64,
+            body.mime,
+        )
+        d = parse(raw)
+        nums = engine.numbers.get(body.country)
+        level, text = interpret(d, body.lang, str(nums["emergency"]))
+        session = body.session or secrets.token_urlsafe(16)
+        ops.log_answer(
+            AnswerRecord(
+                session=session,
+                lang=body.lang,
+                country=body.country,
+                question="[photo]",
+                answer=text,
+                level=level if level != "unsure" else "routine",
+                verification="photo",
+                chunk_ids=[],
+                prompt_version="photo_v1",
+                model=s.deepseek_vision_model,
+                tokens_in=0,
+                tokens_out=0,
+                cost_usd=cost,
+                latency_ms=0,
+            )
+        )
+        return {"level": level, "text": text, "signs": d, "source": SOURCE, "session": session}
+
     @app.get("/api/checklist")
     def checklist(lang: str = "en") -> dict[str, object]:
         import yaml
@@ -358,6 +436,7 @@ def app_from_settings() -> FastAPI:
         llm,
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
+        vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
     )
     cfg = ApiConfig(
         allowed_origins=[o.strip() for o in s.allowed_origins.split(",") if o.strip()],

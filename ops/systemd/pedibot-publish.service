@@ -7,4 +7,4 @@ User=pedibot
 WorkingDirectory=/opt/pedibot
 EnvironmentFile=/opt/pedibot/.env
 Environment=PYTHONIOENCODING=utf-8
-ExecStart=/bin/bash -c '~/.local/bin/uv run --no-dev pedibot publish --lang en --n 1 --site-url https://pedibot.xyz && ~/.local/bin/uv run --no-dev pedibot publish --lang es --n 1 --site-url https://pedibot.xyz && ~/.local/bin/uv run --no-dev python scripts/export_catalog.py && cd web/site && SITE_URL=https://pedibot.xyz npm run build'
+ExecStart=/bin/bash -c '~/.local/bin/uv run --no-dev pedibot publish --lang en --n 1 --site-url https://pedibot.xyz && ~/.local/bin/uv run --no-dev pedibot publish --lang es --n 1 --site-url https://pedibot.xyz && ~/.local/bin/uv run --no-dev python scripts/export_catalog.py && (~/.local/bin/uv run --no-dev python ops/alerts_fetch.py || true) && cd web/site && SITE_URL=https://pedibot.xyz npm run build'

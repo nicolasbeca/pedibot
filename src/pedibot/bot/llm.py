@@ -93,6 +93,36 @@ def provider_from_settings() -> LLMProvider:
     raise RuntimeError(f"unsupported LLM_PROVIDER={s.llm_provider}")
 
 
+def vision_json(
+    api_key: str, base_url: str, model: str, system: str, image_b64: str, mime: str = "image/jpeg"
+) -> tuple[str, float]:
+    """One image + system prompt → raw text (expected JSON) and cost. DeepSeek vision-exp model."""
+    from openai import OpenAI
+
+    client = OpenAI(api_key=api_key, base_url=base_url)
+    resp = client.chat.completions.create(
+        model=model,
+        temperature=0,
+        max_tokens=200,
+        messages=[
+            {"role": "system", "content": system},
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": "Photo:"},
+                    {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{image_b64}"}},
+                ],
+            },
+        ],
+        extra_body={"thinking": {"type": "disabled"}},
+    )
+    usage = resp.usage
+    cost = ((usage.prompt_tokens if usage else 0) / 1e6 * 0.14) + (
+        (usage.completion_tokens if usage else 0) / 1e6 * 0.28
+    )
+    return resp.choices[0].message.content or "", cost
+
+
 def deepseek_balance(api_key: str, base_url: str) -> dict[str, object]:
     """DeepSeek `GET /user/balance` → {"available": bool, "total_usd": float, "raw": ...}."""
     import httpx

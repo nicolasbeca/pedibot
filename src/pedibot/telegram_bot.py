@@ -167,6 +167,7 @@ def front_from_settings() -> TelegramFront:
     from pedibot.bot.llm import provider_from_settings
     from pedibot.bot.retrieval import Retriever, Synonyms
     from pedibot.bot.triage import Triage
+    from pedibot.bot.vaccines import Vaccines
     from pedibot.index.store import Index
     from pedibot.ingest.classify import Taxonomy
     from pedibot.settings import get_settings
@@ -185,5 +186,6 @@ def front_from_settings() -> TelegramFront:
         llm,
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
+        vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
     )
     return TelegramFront(engine, OpsStore(s.ops_db_path))

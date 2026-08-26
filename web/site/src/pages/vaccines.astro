@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import VaccinesTool from '../components/VaccinesTool.astro';
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: 'Childhood vaccination schedule by country and age', about: 'Immunization schedules (Spain, UK, US)' };
+---
+<Base lang="en" title="Childhood vaccination schedule by country and age — PediBot" description="Which vaccines are due at each age in Spain, the UK and the US, transcribed from the official schedules. No AI." path="/vaccines" jsonld={jsonld}>
+  <div class="wrap" style="padding:40px 18px"><p class="eyebrow">Vaccines</p><VaccinesTool lang="en" /></div>
+</Base>

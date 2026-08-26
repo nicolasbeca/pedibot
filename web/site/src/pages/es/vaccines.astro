@@ -1,0 +1,8 @@
+---
+import Base from '../../layouts/Base.astro';
+import VaccinesTool from '../../components/VaccinesTool.astro';
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: 'Calendario de vacunas infantil por país y edad', about: 'Calendarios de vacunación (España, Reino Unido, EE. UU.)' };
+---
+<Base lang="es" title="Calendario de vacunas infantil por país y edad — PediBot" description="Qué vacunas tocan a cada edad en España, Reino Unido y Estados Unidos, transcritas de los calendarios oficiales. Sin IA." path="/es/vaccines" jsonld={jsonld}>
+  <div class="wrap" style="padding:40px 18px"><p class="eyebrow">Vacunas</p><VaccinesTool lang="es" /></div>
+</Base>

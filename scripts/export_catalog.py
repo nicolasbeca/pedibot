@@ -56,3 +56,9 @@ raw = yaml.safe_load((ROOT / "config" / "er_checklist.yaml").read_text(encoding=
 target3 = ROOT / "web" / "site" / "src" / "data" / "checklist.json"
 target3.write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"{len(raw['items'])} checklist items → {target3}")
+
+# vaccines → web/site/src/data/vaccines.json (VaccinesTool)
+vraw = yaml.safe_load((ROOT / "config" / "vaccines.yaml").read_text(encoding="utf-8"))["countries"]
+target4 = ROOT / "web" / "site" / "src" / "data" / "vaccines.json"
+target4.write_text(json.dumps(vraw, ensure_ascii=False, indent=1), encoding="utf-8")
+print(f"{len(vraw)} vaccine schedules → {target4}")
