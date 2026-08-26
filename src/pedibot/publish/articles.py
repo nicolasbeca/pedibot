@@ -14,6 +14,7 @@ from pathlib import Path
 
 from pedibot.bot.answer import verify
 from pedibot.bot.llm import LLMProvider, LLMResult
+from pedibot.bot.retrieval import detect_lang
 from pedibot.index.store import Hit, Index
 from pedibot.ingest.pipeline import slug as make_slug
 
@@ -398,6 +399,17 @@ def parse_output(text: str) -> tuple[str, str, str]:
     return m_t.group(1).strip(), m_s.group(1).strip(), m_b.group(1).strip()
 
 
+def _problems(title: str, body: str, hits: list[Hit], lang: str) -> list[str]:
+    """Verification of the draft: citations and doses (shared with the answer engine) plus the
+    language. A Spanish guide written into web/content/en carries `lang: en` in its frontmatter,
+    which breaks canonical and hreflang as well as reading wrong."""
+    problems = verify(body, hits)
+    if detect_lang(f"{title} {body}") != lang:
+        want = "English" if lang == "en" else "Spanish"
+        problems.append(f"wrong_language (write the WHOLE article in {want})")
+    return problems
+
+
 def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en") -> Article:
     hits = gather_hits(index, topic)
     if not hits:
@@ -406,7 +418,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
     user = f"LANGUAGE: {'English' if lang == 'en' else 'Spanish'}\nTOPIC: {topic}\n\nSOURCES:\n{_format_sources(hits)}"
     result = llm.complete(system, user, temperature=0.3, max_tokens=1800)
     title, summary, body = parse_output(result.text)
-    problems = verify(body, hits)
+    problems = _problems(title, body, hits, lang)
     verification = "ok"
     if problems:
         retry = llm.complete(
@@ -419,7 +431,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
             max_tokens=1800,
         )
         title, summary, body = parse_output(retry.text)
-        if verify(body, hits):
+        if _problems(title, body, hits, lang):
             raise ValueError(f"article for {topic} failed verification twice: {problems}")
         result, verification = retry, "regenerated"
     cited = sorted({int(n) for n in _CIT.findall(body)})
@@ -483,4 +495,7 @@ def pending_topics(content_dir: Path, lang: str) -> list[str]:
         m = re.search(r"^topic:\s*(\S+)", f.read_text(encoding="utf-8"), re.M)
         if m:
             done.add(m.group(1))
-    return seasonal_first([t for t in TOPIC_PLAN if t not in done])
+    # a `_en` suffix means the topic is anchored on English-speaking material (the NHS and CDC
+    # vaccination schedules, for instance): in Spanish it only produces a near-duplicate guide
+    pending = [t for t in TOPIC_PLAN if t not in done and (lang == "en" or not t.endswith("_en"))]
+    return seasonal_first(pending)

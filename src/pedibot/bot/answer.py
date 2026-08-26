@@ -41,6 +41,36 @@ _DRUG_ALIAS = {
 }
 _DOSE_NUM = re.compile(r"\b\d+([.,]\d+)?\s*(mg|ml)\b", re.I)
 
+
+# A millilitre figure is a medication dose unless the words around it clearly say fluid: the
+# rehydration volumes in the SEUP vómitos/gastroenteritis leaflets are not doses. Fails closed —
+# an unexplained "5 ml" still counts as a dose. Milligrams are always a dose.
+_FLUID_WORDS = re.compile(
+    r"(suero|rehidrataci|sales de rehidrat|rehydration|\bors\b|agua\b|water\b|leche|milk|"
+    r"pecho|breast|biber[oó]n|bottle|toma[s]?\b|feed|l[ií]quido|fluid|zumo|juice)",
+    re.I,
+)
+_MEDICINE_WORDS = re.compile(
+    r"(paracetamol|acetaminophen|ibuprofeno|ibuprofen|antibi[oó]tic|antibiotic|amoxicilin|"
+    r"amoxicillin|jarabe|syrup|antihistam[ií]nic|antihistamine|medicamento|medicine|dosis|dose|"
+    r"calpol|dalsy|apiretal|junifen|tylenol|nurofen)",
+    re.I,
+)
+_DOSE_WINDOW = 90
+
+
+def looks_like_medication_dose(text: str) -> bool:
+    """True if the text states a medication dose (mg always; ml unless clearly a fluid)."""
+    for m in _DOSE_NUM.finditer(text):
+        if m.group(2).lower() == "mg":
+            return True
+        around = text[max(0, m.start() - _DOSE_WINDOW) : m.end() + _DOSE_WINDOW]
+        if _MEDICINE_WORDS.search(around):
+            return True
+        if not _FLUID_WORDS.search(around):
+            return True
+    return False
+
 DISCLAIMER = {
     "en": "PediBot gives information from official paediatric guidelines. It is not medical advice and does not replace your paediatrician.",
     "es": "PediBot informa a partir de guías pediátricas oficiales. No es consejo médico y no sustituye a tu pediatra.",
@@ -256,7 +286,7 @@ def verify(text: str, hits: list[Hit]) -> list[str]:
     for n in nums:
         if n < 1 or n > len(hits):
             problems.append(f"bad_citation_{n}")
-    if _DOSE_NUM.search(text) and not any(h.chunk.is_dose_table for h in hits):
+    if looks_like_medication_dose(text) and not any(h.chunk.is_dose_table for h in hits):
         problems.append("dose_without_table")
     return problems
 

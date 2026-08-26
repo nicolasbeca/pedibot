@@ -139,3 +139,54 @@ def test_frontmatter_is_valid_yaml_with_quotes(index, tmp_path: Path):
     fm = md_path.read_text(encoding="utf-8").split("---")[1]
     data = yaml.safe_load(fm)
     assert '"worry"' in data["title"] and data["sources"][0].startswith("[1] SEUP")
+
+
+_ES_DRAFT = (
+    "TITLE: ¿Qué vacunas necesita mi hijo y cuándo?\n"
+    "SUMMARY: Guía clara sobre el calendario de vacunación infantil en España.\n"
+    "BODY:\n## Qué es\nLas vacunas protegen a tu hijo de enfermedades graves antes de que se "
+    "exponga a ellas [1]. En España el calendario recomendado incluye varias dosis durante la "
+    "infancia y es importante que se administren en tiempo [1].\n"
+)
+
+
+def test_an_article_in_the_wrong_language_is_rejected(tmp_path: Path, monkeypatch):
+    """26-ago: a Spanish topic generated with --lang en wrote a Spanish guide into web/content/en
+    with `lang: en` in the frontmatter, which also breaks canonical/hreflang."""
+    db = tmp_path / "i.db"
+    build_index(
+        [_chunk("seup_vacunas#1", "calendario de vacunación infantil dosis a los 2 meses")], db
+    )
+    monkeypatch.setitem(
+        TOPIC_PLAN, "_vacunas", {"docs": ["seup_vacunas"], "query": "calendario vacunación"}
+    )
+    with pytest.raises(ValueError, match="wrong_language"):
+        generate_article(Index(db), FakeProvider(_ES_DRAFT), "_vacunas", lang="en")
+
+
+def test_an_article_in_the_requested_language_passes(tmp_path: Path, monkeypatch):
+    db = tmp_path / "i.db"
+    build_index(
+        [_chunk("seup_vacunas#1", "calendario de vacunación infantil dosis a los 2 meses")], db
+    )
+    monkeypatch.setitem(
+        TOPIC_PLAN, "_vacunas", {"docs": ["seup_vacunas"], "query": "calendario vacunación"}
+    )
+    draft = (
+        "TITLE: What vaccines does my child need?\n"
+        "SUMMARY: A clear guide to the childhood immunisation schedule.\n"
+        "BODY:\n## What it is\nVaccines protect your child from serious illness before they are "
+        "exposed to it [1]. The schedule gives several doses during the first year [1].\n"
+    )
+    a = generate_article(Index(db), FakeProvider(draft), "_vacunas", lang="en")
+    assert a.lang == "en"
+
+
+def test_english_only_topics_are_not_offered_in_spanish(tmp_path: Path):
+    """A topic key ending in `_en` is anchored on English-speaking material (NHS/CDC schedules).
+    Generated in Spanish it produced a second, near-duplicate vaccines guide about the UK and US
+    calendars — duplicate content that also confuses the reader."""
+    es = pending_topics(tmp_path, "es")
+    assert [t for t in es if t.endswith("_en")] == []
+    assert "vacunas" in es, "the Spanish calendar topic must still be offered"
+    assert "vaccines_en" in pending_topics(tmp_path, "en")
