@@ -243,7 +243,9 @@ def test_child_mode_adds_instruction(engine_factory):
 
 
 def test_clean_text_strips_citation_markers(engine_factory):
-    eng, _ = engine_factory("Según la SEUP, la fiebre no es peligrosa [1]. Ofrece líquidos [1] [1].")
+    eng, _ = engine_factory(
+        "Según la SEUP, la fiebre no es peligrosa [1]. Ofrece líquidos [1] [1]."
+    )
     a = eng.ask("mi hijo de 4 años tiene fiebre", country="ES")
     assert a.clean_text == "Según la SEUP, la fiebre no es peligrosa. Ofrece líquidos."
     assert "[1]" in a.text  # kept for verification

@@ -11,6 +11,15 @@ pedibot.xyz {
 		-Server
 	}
 
+	# Operator panel: basic auth (hash injected by deploy.sh from /etc/caddy/admin.hash)
+	@admin path /admin /admin/*
+	handle @admin {
+		basic_auth {
+			nico __ADMIN_HASH__
+		}
+		reverse_proxy 127.0.0.1:8601
+	}
+
 	# API + shared answers → FastAPI
 	@api path /api/* /a/*
 	handle @api {

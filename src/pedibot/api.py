@@ -324,6 +324,11 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig) -> FastAPI:
             raise HTTPException(404, "answer not found for this session")
         return {"ok": True}
 
+    # operator panel (Caddy basic-auth protects /admin in production)
+    from pedibot.admin import make_router
+
+    app.include_router(make_router(lambda: ops.con))
+
     static = STATIC_DIR
     if static.exists():
         app.mount("/", StaticFiles(directory=static, html=True), name="static")

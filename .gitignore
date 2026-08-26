@@ -42,3 +42,4 @@ index/ingest_run.log
 web/site/node_modules/
 web/site/dist/
 web/site/.astro/
+eval/flagged.jsonl

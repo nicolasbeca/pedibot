@@ -56,7 +56,16 @@ def main() -> int:
     day = dt.datetime.now(dt.UTC).date().isoformat()
     con.execute(
         "INSERT OR REPLACE INTO token_daily VALUES (?,?,?,?,?,?,?,?)",
-        (day, d["price_usd"], d["fdv_usd"], d["liquidity_usd"], d["volume_24h_usd"], d["buys_24h"], d["sells_24h"], json.dumps({"pool": POOL, "src": "geckoterminal"})),
+        (
+            day,
+            d["price_usd"],
+            d["fdv_usd"],
+            d["liquidity_usd"],
+            d["volume_24h_usd"],
+            d["buys_24h"],
+            d["sells_24h"],
+            json.dumps({"pool": POOL, "src": "geckoterminal"}),
+        ),
     )
     con.commit()
     print(json.dumps({"day": day, **d}))

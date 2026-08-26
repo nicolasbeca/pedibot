@@ -4,14 +4,30 @@ import sources from '../data/sources.json';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
-const orgs = [
-  ['SEUP', lang === 'es' ? 'Sociedad Española de Urgencias de Pediatría · 29 hojas para padres' : 'Spanish paediatric emergency doctors · 29 parent leaflets'],
-  ['AEP · AEPap', lang === 'es' ? 'Asociación Española de Pediatría · alimentación, recién nacido, dosis' : 'Spanish Paediatric Association · feeding, newborn care, dosing'],
-  ['WHO / OMS', lang === 'es' ? 'Alimentación complementaria · actividad y sueño < 5 años' : 'Complementary feeding · activity & sleep under 5'],
-  ['AAP', lang === 'es' ? 'Academia Americana de Pediatría · guías clínicas' : 'American Academy of Pediatrics · clinical guidelines'],
-  [lang === 'es' ? 'Ministerio de Sanidad' : 'Ministry of Health (Spain)', lang === 'es' ? 'Calendario de vacunación 2025' : '2025 vaccination schedule'],
-  ['Hospital Niño Jesús', lang === 'es' ? 'Primeros auxilios para padres' : 'First aid for parents'],
-];
+// Cards from the catalog: one per organisation, shuffled at build time so the mix is international
+const byOrg = new Map<string, { n: number; langs: Set<string>; full: string }>();
+for (const d of sources as any[]) {
+  if (d.usage === 'excluido') continue;
+  const e = byOrg.get(d.org) ?? { n: 0, langs: new Set<string>(), full: d.org_full || d.org };
+  e.n += 1; e.langs.add(d.lang); byOrg.set(d.org, e);
+}
+const blurb: Record<string, [string, string]> = {
+  SEUP: ['Spanish paediatric emergency doctors', 'Pediatras de urgencias (España)'],
+  AEP: ['Spanish Paediatric Association', 'Asociación Española de Pediatría'],
+  AEPap: ['Spanish primary-care paediatricians', 'Pediatras de atención primaria (España)'],
+  NHS: ['National Health Service, England', 'Servicio Nacional de Salud, Inglaterra'],
+  CDC: ['US public health agency', 'Agencia de salud pública de EE. UU.'],
+  MedlinePlus: ['US National Library of Medicine', 'Biblioteca Nacional de Medicina de EE. UU.'],
+  WHO: ['World Health Organization', 'Organización Mundial de la Salud'],
+  AAP: ['American Academy of Pediatrics', 'Academia Americana de Pediatría'],
+  'Ministerio de Sanidad': ['Spanish Ministry of Health', 'Ministerio de Sanidad (España)'],
+  'Junta de Andalucía': ['Regional health service, Andalusia', 'Consejería de Salud de Andalucía'],
+  'H. Niño Jesús': ["Children's hospital, Madrid", 'Hospital infantil, Madrid'],
+  AEMPS: ['Spanish medicines agency', 'Agencia Española de Medicamentos'],
+};
+const seed = new Date().getUTCDate() + new Date().getUTCMonth() * 31;
+const shuffled = [...byOrg.entries()].sort((a, b) => ((a[0].charCodeAt(0) * 7 + seed) % 13) - ((b[0].charCodeAt(0) * 7 + seed) % 13) || b[1].n - a[1].n);
+const orgs = shuffled.slice(0, 8).map(([org, e]) => [org, `${(blurb[org] ?? [e.full, e.full])[lang === 'es' ? 1 : 0]} · ${e.n} ${lang === 'es' ? 'documentos' : 'documents'}`]);
 const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
 ---
 <div class="wrap">
@@ -71,7 +87,8 @@ const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
   .ledger div:last-child { border: 0; }
   .ledger .h { background: var(--cream); font-weight: 700; }
   .ledger .foot { color: var(--ink-3); }
-  .orgs { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-top: 26px; }
+  .orgs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
+  @media (max-width: 900px) { .orgs { grid-template-columns: repeat(2, 1fr); } }
   .org { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
   .org b { display: block; font-family: Nunito, sans-serif; }
   .org span { font-size: .84rem; color: var(--ink-3); }

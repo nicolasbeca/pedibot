@@ -18,6 +18,7 @@ dependencies = [
     "python-telegram-bot>=22.8",
     "atproto>=0.0.71",
     "tweepy>=4.17.0",
+    "python-multipart>=0.0.32",
 ]
 
 [project.optional-dependencies]
@@ -63,6 +64,8 @@ select = ["E", "F", "I", "W", "UP", "B"]
 "src/pedibot/telegram_bot.py" = ["E501"]
 "src/pedibot/publish/articles.py" = ["E501"]
 "src/pedibot/publish/social.py" = ["E501"]
+"src/pedibot/admin.py" = ["E501"]
+"src/pedibot/ops/report.py" = ["E501"]
 "src/pedibot/ops/store.py" = ["E501"]
 "tests/*" = ["E501"]
 "scripts/*" = ["E501"]

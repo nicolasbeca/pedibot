@@ -149,3 +149,32 @@ def test_api_keeps_conversation_per_session(client):
     assert j2["session"] == j1["session"] and j2["verification"] == "ok"
     h = ops.history(j1["session"])
     assert [t["role"] for t in h] == ["user", "assistant", "user", "assistant"]
+
+
+def test_admin_panel_renders_and_flags(client, monkeypatch):
+    c, ops = client
+    from pedibot.ops import report
+
+    monkeypatch.setattr(
+        report,
+        "web_visits",
+        lambda days=7: {
+            "views": 3,
+            "visitors": 2,
+            "chat_pageviews": 1,
+            "top": [("/", 3)],
+            "per_day": {"2026-08-25": 3},
+        },
+    )
+    monkeypatch.setattr(report, "balance", lambda: 9.5)
+    j = c.post("/api/ask", json={"question": "mi hijo de 4 años tiene fiebre"}).json()
+    r = c.get("/admin?days=7")
+    assert (
+        r.status_code == 200
+        and "PediBot · admin" in r.text
+        and "mi hijo de 4 años" in r.text
+        and "noindex" in r.text
+    )
+    r2 = c.post("/admin/flag", data={"id": j["answer_id"]}, follow_redirects=False)
+    assert r2.status_code == 303
+    assert "🚩" in c.get("/admin").text
