@@ -25,12 +25,23 @@ class Synonyms:
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         self._maps: dict[str, dict[str, list[str]]] = {k: v or {} for k, v in raw.items()}
 
+    def _tables(self, lang: str) -> list[dict[str, list[str]]]:
+        """`es` (colloquial → leaflet) plus any cross-lingual table such as `es_en`."""
+        return [v for k, v in self._maps.items() if k == lang or k.startswith(f"{lang}_")]
+
     def expand(self, query: str, lang: str = "en") -> list[str]:
+        low = query.lower()
+        tokens = _TOKEN.findall(low)
         extra: list[str] = []
-        table = self._maps.get(lang, {})
-        for tok in _TOKEN.findall(query.lower()):
+        for table in self._tables(lang):
             for trigger, terms in table.items():
-                if tok.startswith(trigger):
+                # a trigger with a space is a phrase ("stomach bug"), matched on the whole query;
+                # a single word is matched by prefix on each token ("vomit" → "vomiting")
+                if " " in trigger:
+                    hit = trigger in low
+                else:
+                    hit = any(t.startswith(trigger) for t in tokens)
+                if hit:
                     for t in terms:
                         if t not in extra:
                             extra.append(t)

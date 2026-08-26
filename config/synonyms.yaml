@@ -18,7 +18,13 @@ en:
   vomit: [vómitos, vomita]
   throw: [vómitos]
   diarr: [diarrea, gastroenteritis]
-  stomach: [dolor abdominal, barriga, gastroenteritis]
+  stomach: [dolor abdominal, barriga]
+  stomach bug: [gastroenteritis, vómitos, diarrea]
+  stomach flu: [gastroenteritis, vómitos, diarrea]
+  pain: [dolor]
+  sever: [intenso]
+  wors: [empeora, intenso]
+  continu: [continuo]
   belly: [dolor abdominal, barriga]
   tummy: [dolor abdominal, barriga]
   constipat: [estreñimiento]
@@ -183,3 +189,23 @@ es:
   neumon: [neumonía]
   estreñ: [estreñimiento]
   duro: [estreñimiento, deposiciones]
+
+# Spanish -> English, deliberately TINY. The corpus has no Spanish source for sleep duration,
+# screen time or physical activity (checked doc by doc on 26-ago: the Andalusian guide only talks
+# about the parents' interrupted sleep), so a question in Spanish about them reaches nothing.
+# Everything else HAS a Spanish leaflet, and bridging it made the English sheets outrank the
+# Spanish ones (source@3 0.964 -> 0.891 on the golden set). Add an entry here only after checking
+# that no Spanish source covers it.
+es_en:
+  dormir: [sleep, sleep duration, hours of sleep]
+  duerme: [sleep, sleep duration]
+  sueño: [sleep, sleep duration]
+  siesta: [sleep, nap]
+  pantalla: [screen time, sedentary]
+  tablet: [screen time]
+  móvil: [screen time]
+  televisión: [screen time]
+  sedentar: [sedentary]
+  ejercicio: [physical activity]
+  actividad física: [physical activity]
+
