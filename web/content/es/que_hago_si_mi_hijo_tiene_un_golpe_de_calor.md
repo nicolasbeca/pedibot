@@ -1,81 +1,107 @@
 ---
 title: "¿Qué hago si mi hijo tiene un golpe de calor?"
-description: "Guía práctica para reconocer y actuar ante un golpe de calor en niños, con medidas caseras y señales de urgencia."
+description: "Guía práctica para reconocer y tratar el agotamiento por calor y saber cuándo es una emergencia."
 lang: es
-topic: golpe_calor
+topic: heat
 date: 2026-08-26
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Golpe de calor. Información para padres\", section \"¿CÓMO PODEMOS PREVENIR EL GOLPE DE CALOR?\", p. 2"
-  - "[2] SEUP — \"Golpe de calor. Información para padres\", section \"¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN GOLPE DE CALOR?\", p. 1, 2"
-  - "[3] SEUP — \"Golpe de calor. Información para padres\", section \"¿QUÉ ES UN GOLPE DE CALOR? ¿POR QUÉ SE PRODUCE?\", p. 1"
-  - "[4] SEUP — \"Golpe de calor. Información para padres\", section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[5] MedlinePlus — \"Enfermedades causadas por el calor\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/heatillness.html"
+  - "[1] NHS — \"Heat exhaustion and heatstroke\" (2026), section \"Heat exhaustion and heatstroke\", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/"
+  - "[2] NHS — \"Heat exhaustion and heatstroke\" (2026), section \"Preventing heat exhaustion and heatstroke\", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/"
+  - "[3] NHS — \"Heat exhaustion and heatstroke\" (2026), section \"Symptoms of heatstroke\", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/"
+  - "[4] NHS — \"Heat exhaustion and heatstroke\" (2026), section \"What to do while waiting for help with heatstroke\", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/"
+  - "[5] NHS — \"Heat exhaustion and heatstroke\" (2026), section \"Things you can do to cool someone down\", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/"
+  - "[6] MedlinePlus — \"Heat Illness\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/heatillness.html"
+  - "[7] NHS — \"Burns and scalds\" (2026), section \"Burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[8] MedlinePlus — \"Burns\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/burns.html"
 draft: false
 ---
 
-## What it is
+## Qué es
 
-El golpe de calor es una condición grave que puede afectar a los niños, especialmente en épocas de altas temperaturas. Sucede cuando el cuerpo no puede regular su temperatura de manera efectiva y se produce un aumento excesivo de la temperatura corporal [3]. Esto puede ocurrir por exposición prolongada al sol o ambientes calurosos, actividad física intensa en climas cálidos, falta de hidratación adecuada o uso de ropa inadecuada que impida la transpiración [3].
+El cuerpo normalmente se enfría sudando. En clima caluroso, especialmente con humedad, sudar no es suficiente para refrescar el cuerpo. La temperatura corporal puede subir a niveles peligrosos y se puede desarrollar una enfermedad por calor [6]. La mayoría de las enfermedades por calor ocurren cuando se permanece demasiado tiempo en el calor. Hacer ejercicio o trabajar al aire libre con calor intenso también puede causarlas [6].
 
-Los síntomas incluyen:
-- Piel caliente, enrojecida y seca (sin sudoración en casos graves) [3].
-- Fiebre alta (mayor a 39°C) [3].
-- Mareos, confusión o desorientación [3].
-- Dolor de cabeza intenso [3].
-- Náuseas o vómitos [3].
-- Pérdida de conocimiento en casos severos [3].
+El agotamiento por calor es una enfermedad que puede ocurrir después de varios días de exposición a temperaturas altas y sin suficientes líquidos [6]. No suele necesitar ayuda médica de emergencia si la persona puede refrescarse en 30 minutos [1]. Si no se trata, puede convertirse en un golpe de calor [6].
 
-En climas calurosos, especialmente con altos niveles de humedad, la sudoración no es suficiente para enfriar el cuerpo. La temperatura corporal puede elevarse hasta niveles peligrosos [5]. En el golpe de calor, la temperatura corporal puede subir por encima de 41°C en minutos [5]. Los niños pequeños tienen un riesgo mayor [5].
+El golpe de calor es una enfermedad que pone en peligro la vida. La temperatura corporal puede subir por encima de 41 °C en minutos [6]. Es una emergencia médica [3].
 
-## What you can do at home
+Los síntomas del agotamiento por calor incluyen:
+- Cansancio y mareos
+- Dolor de cabeza
+- Náuseas o vómitos
+- Sudoración excesiva y piel pálida y húmeda (el cambio de color de piel puede ser más difícil de ver en piel morena o negra)
+- Calambres en brazos, piernas y estómago
+- Temperatura alta
+- Mucha sed
+- Sentirse irritable [1]
 
-Si su hijo ha estado expuesto a altas temperaturas o ha realizado ejercicio físico intenso en un ambiente cálido y no se encuentra bien, actúe rápido [1]:
+Los síntomas del golpe de calor incluyen:
+- Temperatura muy alta
+- Piel caliente sin sudoración
+- Respiración rápida y latidos cardíacos rápidos
+- Confusión e inquietud
+- Convulsiones
+- Pérdida de conocimiento [3]
 
-- Llévelo inmediatamente a un ambiente fresco y con sombra [1][2].
-- Retire el exceso de ropa para favorecer la pérdida de calor [1][2].
-- Aplique paños húmedos en la frente, cuello y axilas [2].
-- Ofrézcale agua fresca en pequeños sorbos [2].
-- Use ventiladores o abanicos para bajar la temperatura corporal [1][2].
+## Qué puede hacer en casa
 
-Para prevenir el golpe de calor:
-- Mantenga al niño hidratado con agua y jugos naturales [1].
-- Evite la exposición directa al sol entre las 11:00 y las 17:00 [1].
-- Vista con ropa ligera y de colores claros [1].
-- No deje a los niños dentro de los coches [1].
-- Fomente el descanso en lugares frescos y ventilados [1].
+Si alguien tiene agotamiento por calor, siga estos 4 pasos:
+1. Muévalo a un lugar fresco.
+2. Quite toda la ropa innecesaria, como chaquetas o calcetines.
+3. Dele mucha agua para beber. También puede darle una bebida deportiva isotónica o polvo de rehidratación oral mezclado con agua, que ayuda a reponer la sal perdida por el sudor.
+4. Enfríe su piel: rocíe o humedezca con agua fresca y abaníquelo. Las bolsas de frío envueltas en un paño y puestas debajo de las axilas o en el cuello también son buenas.
 
-Si el golpe de calor se trata rápidamente, la mayoría de los niños se recuperan sin complicaciones. Sin embargo, si no se maneja de inmediato, puede provocar daños en órganos vitales y poner en riesgo la vida [2].
+Quédese con la persona hasta que mejore. Debería empezar a refrescarse y sentirse mejor en 30 minutos [5].
 
-## When to see a doctor or go to the emergency department
+Para prevenir el agotamiento por calor o el golpe de calor:
+- Beba más bebidas frías, especialmente si está activo o haciendo ejercicio
+- Use ropa de color claro y holgada
+- Evite el sol entre las 11 de la mañana y las 3 de la tarde
+- Evite beber demasiado alcohol
+- Evite el ejercicio extremo
+- Si está dentro de casa en un día muy caluroso, cierre las cortinas y cierre las ventanas si hace más calor afuera que adentro. Apague aparatos eléctricos y luces que se calientan [2]
 
-Acuda a urgencias cuando un niño ha estado expuesto a altas temperaturas o ha realizado ejercicio intenso en ambiente cálido y presenta [4]:
+Vigile a los niños, las personas mayores y las personas con enfermedades crónicas como diabetes o problemas cardíacos, ya que tienen más riesgo de agotamiento por calor o golpe de calor [2].
 
-- Fiebre que supera los 39°C y no baja con medidas caseras [4].
-- Pérdida de conocimiento o convulsiones [4].
-- Confusión, dificultad para hablar o moverse [4].
-- Vómitos persistentes y no puede hidratarse [4].
+## Cuándo ver a un médico o ir al servicio de urgencias
 
-También busque ayuda médica de inmediato si ve síntomas como piel seca, pulso rápido y fuerte, mareos, náuseas y confusión [5].
+Busque ayuda urgente si usted o alguien más tiene síntomas de agotamiento por calor que le cuesta tratar o necesita consejo [5].
 
-## Common questions
+Llame a emergencias (999) de inmediato si usted o alguien más tiene signos de golpe de calor, incluyendo:
+- Sigue sintiéndose mal después de 30 minutos de descansar en un lugar fresco, haberse enfriado y haber bebido líquidos
+- Temperatura muy alta
+- Piel caliente que no suda y puede verse roja (esto puede ser más difícil de ver en piel morena o negra)
+- Latidos cardíacos rápidos
+- Respiración rápida o dificultad para respirar
+- Confusión y falta de coordinación
+- Convulsiones
+- Pérdida de conocimiento [5]
 
-¿Cuánto tarda en recuperarse un niño del golpe de calor?
-Si se trata rápidamente, la mayoría de los niños se recuperan sin complicaciones [2]. La prevención y la atención rápida son clave para evitar complicaciones graves [1].
+No conduzca usted mismo al servicio de urgencias. La persona con la que hable en el 999 le dará consejos sobre qué hacer [5].
 
-¿Puedo darle medicamentos para bajar la fiebre?
-Las fuentes no mencionan medicamentos específicos para el golpe de calor. Se recomienda usar medidas físicas como paños húmedos y ventiladores, y ofrecer agua fresca en pequeños sorbos [2]. Si la fiebre supera los 39°C y no baja con estas medidas, acuda a urgencias [4].
+Mientras espera ayuda para el golpe de calor: envuelva a la persona en una sábana fresca y húmeda, o abaníquela o humedézcala con agua fría. Si pierde el conocimiento mientras espera, póngala en posición de recuperación y avise al servicio de ambulancias. Compruebe su respiración y pulso y haga RCP si no muestra signos de vida [4].
 
-¿Qué diferencia hay entre golpe de calor y agotamiento por calor?
-El agotamiento por calor puede ocurrir después de varios días expuesto a altas temperaturas y sin suficientes líquidos. Sus síntomas incluyen sudoración profusa, respiración rápida y pulso rápido y débil. Si no recibe tratamiento, puede preceder al golpe de calor [5]. El golpe de calor es una enfermedad peligrosa para la vida en la cual la temperatura corporal puede subir por encima de 41°C en minutos [5].
+## Preguntas comunes
+
+¿Los síntomas son diferentes en niños y adultos?
+No. Los síntomas del agotamiento por calor suelen ser los mismos en adultos y niños [1].
+
+¿Qué otros problemas de salud puede causar el calor?
+Además del agotamiento por calor y el golpe de calor, el calor puede causar calambres por calor (dolores o espasmos musculares durante ejercicio intenso, generalmente en abdomen, brazos o piernas) y sarpullido por calor (irritación de la piel por sudoración excesiva, más común en niños pequeños) [6].
+
+¿Qué pasa si mi hijo tiene una quemadura por calor?
+Las quemaduras y escaldaduras a menudo se pueden tratar en casa si son pequeñas. Pero si son graves, puede necesitar tratamiento en el hospital [7]. Las quemaduras pueden causar hinchazón, ampollas, cicatrices y, en casos graves, shock e incluso la muerte. También pueden causar infecciones porque dañan la barrera protectora de la piel [8].
 
 ## Fuentes
 
-[1] SEUP — "Golpe de calor. Información para padres", section "¿CÓMO PODEMOS PREVENIR EL GOLPE DE CALOR?", p. 2
-[2] SEUP — "Golpe de calor. Información para padres", section "¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN GOLPE DE CALOR?", p. 1, 2
-[3] SEUP — "Golpe de calor. Información para padres", section "¿QUÉ ES UN GOLPE DE CALOR? ¿POR QUÉ SE PRODUCE?", p. 1
-[4] SEUP — "Golpe de calor. Información para padres", section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
-[5] MedlinePlus — "Enfermedades causadas por el calor", section "Introducción", p. 1 — https://medlineplus.gov/spanish/heatillness.html
+[1] NHS — "Heat exhaustion and heatstroke" (2026), section "Heat exhaustion and heatstroke", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/
+[2] NHS — "Heat exhaustion and heatstroke" (2026), section "Preventing heat exhaustion and heatstroke", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/
+[3] NHS — "Heat exhaustion and heatstroke" (2026), section "Symptoms of heatstroke", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/
+[4] NHS — "Heat exhaustion and heatstroke" (2026), section "What to do while waiting for help with heatstroke", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/
+[5] NHS — "Heat exhaustion and heatstroke" (2026), section "Things you can do to cool someone down", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/
+[6] MedlinePlus — "Heat Illness" (2024), section "Introducción", p. 1 — https://medlineplus.gov/heatillness.html
+[7] NHS — "Burns and scalds" (2026), section "Burns and scalds", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/
+[8] MedlinePlus — "Burns" (2024), section "Introducción", p. 1 — https://medlineplus.gov/burns.html
 
 *Esta guía resume guías pediátricas publicadas. No es consejo médico y no sustituye a tu pediatra. En una emergencia, llama a tu número de emergencias.*

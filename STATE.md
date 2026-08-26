@@ -76,7 +76,10 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 | **Guías publicadas** | ✅ De 4+3 a **16 en inglés y 13 en español**, en línea y en el sitemap (1.487 URLs). Sin difundir en redes para no hacer spam. |
 | **Verificador de artículos** | ✅ Rechaza el artículo escrito en un idioma distinto al pedido (salió uno en español dentro de `/en`) y los temas `_en` ya no se ofrecen en español (generaban una guía gemela). |
 | **Guard de dosis** | ✅ Estrechado: los mg siempre cuentan como dosis, los ml solo se perdonan cuando el texto habla de suero, agua, leche o tomas, y si no está claro cuenta como dosis. Antes bloqueaba las guías de vómitos y gastroenteritis por los volúmenes de suero oral del SEUP. |
-| **OCR de las 50 consultas** | 🔄 402 páginas con `ocrmypdf -l spa` en el servidor (prioridad baja para no molestar al sitio). |
+| **OCR de las 50 consultas** | ✅ Hecho (402 páginas, 179.034 palabras, OCR limpio) y **medido**: el libro es de **2008**, para profesionales, nunca es la 1.ª fuente y no llega ni a las preguntas de sus capítulos → **excluido del índice**, OCR guardado y ficha conservada para revertir (L27). Identificado de paso: ISBN 978-84-691-1444-5, **no es de la AEPap** sino de cuatro pediatras con patrocinio de Merck. |
+| **Dosis: fuente autorizada** | ✅ La excepción que permite dar una cifra ya no es "parece una tabla de dosis" (cualquier manual profesional lo parecía, con corticoides y antibióticos dentro) sino `dose_source: true` en el catálogo — hoy solo la guía de dosificación de la AEPap, la misma que usa la calculadora. |
+| **Palabras con doble sentido** | ✅ «pis», «oído» y «pecho» citaban la hoja equivocada (deshidratación, otitis, lactancia) en preguntas que el corpus no cubre; ahora son frases. Un umbral de relevancia se midió y se **descartó**: los rangos se solapan con casos legítimos (L25). |
+| **Aclaración** | ✅ Leía solo la pregunta cruda y mandaba al menú preguntas claras («se ha desmayado en el colegio», «llora sin parar»): 4 de 55 del golden set. Ahora lee la pregunta expandida con sinónimos, igual que la búsqueda. Redactadas 50 → **54 de 55**. |
 | **Watchdog** | ✅ Vigila los cuatro servicios cada 10 min (antes un `pedibot-telegram` muerto era silencioso). |
 
 ## Lo que NO está hecho / conocido
