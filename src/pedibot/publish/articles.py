@@ -170,7 +170,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "poisoning children swallowed what to do",
     },
     "choking": {
-        "docs": ["mlp_en_choking", "ninojesus_primeros_auxilios"],
+        "docs": ["mlp_en_choking", "mlp_es_choking", "andalucia_cuidame_guia"],
         "query": "choking baby child first aid",
     },
     "anaphylaxis_en": {
@@ -361,7 +361,7 @@ def gather_hits(index: Index, topic: str, max_chunks: int = 10) -> list[Hit]:
     plan = TOPIC_PLAN[topic]
     hits = index.search(str(plan["query"]), top_k=40, prefer_parent_leaflets=True)
     wanted: list[str] = list(plan["docs"])  # type: ignore[call-overload]
-    anchored = [h for h in hits if h.chunk.doc_id in wanted]
+    anchored = [h for h in hits if h.chunk.doc_id in wanted and h.chunk.usage == "publico"]
     topics = {h.chunk.topic for h in anchored}
     others = [
         h

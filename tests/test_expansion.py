@@ -50,8 +50,6 @@ def test_unknown_language_returns_nothing(syn: Synonyms):
     assert syn.expand("mon enfant a de la fievre", "fr") == []
 
 
-
-
 def test_spanish_question_reaches_the_english_only_material(syn: Synonyms):
     """Sleep duration and screen time exist ONLY in the WHO guideline, which is in English."""
     got = syn.expand("¿Cuánto tiene que dormir un niño de 2 años?", "es")
