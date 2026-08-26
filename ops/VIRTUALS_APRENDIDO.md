@@ -97,7 +97,7 @@ acp offering create \
 ## 6. Ciclo de vida de un trabajo (lado proveedor)
 
 ```bash
-acp job list --all --json                 # trabajos activos (REST)
+acp job list --json                       # trabajos activos (REST puro) ← usar ESTE
 acp job history --job-id <id> --json      # contexto completo, mensajes y requirement
 acp job watch --job-id <id>               # bloquea hasta que te toca actuar
 acp events listen --output eventos.jsonl  # o streaming a fichero…
@@ -105,6 +105,12 @@ acp events drain --file eventos.jsonl --limit 20   # …y consumirlo por lotes
 acp provider set-budget --job-id <id> --amount 0.05    # proponer precio (USDC)
 acp provider submit --job-id <id> --deliverable '<texto o JSON>'
 ```
+
+⚠️ **`acp job list --all` se cuelga con `restricted`.** El flag `--all` (y `--legacy`) añade los trabajos
+del contrato viejo, que se leen **on-chain**; esa llamada RPC la deniega la política y la CLI se queda
+esperando una aprobación manual hasta agotar el tiempo. Medido el 26-ago: `acp job list` a secas devuelve
+`{"jobs":[]}` en **3 s**; con `--all`, **3 minutos** y ni un dato. Para un proveedor que sondea, usar
+siempre `acp job list` a secas (v2, REST puro).
 
 Cadena por defecto **Base (8453)**; los pagos van en **USDC** y quedan en escrow hasta la evaluación.
 
@@ -123,7 +129,7 @@ Cadena por defecto **Base (8453)**; los pagos van en **USDC** y quedan en escrow
 2. Al crear el agente, **`Link existing`** o pierdes el token y los holders.
 3. Descripción del agente ≤100 car.; de la oferta ≤500 car.
 4. La URL de aprobación del firmante necesita el `publicKey` **entero y codificado**.
-5. `restricted` no elimina todas las aprobaciones manuales.
+5. `restricted` no elimina todas las aprobaciones manuales… y **cuelga** `acp job list --all` / `--legacy` (lectura on-chain): usar `acp job list` a secas.
 6. El SDK de Python es del flujo viejo; con EconomyOS se va por CLI.
 7. `virtuals-acp` choca con `eth-account>=0.14`.
 8. Los créditos gratis de inferencia solo sirven si usas su runtime.

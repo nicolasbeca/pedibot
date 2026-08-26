@@ -11,6 +11,7 @@ import json
 import os
 import pathlib
 import shutil
+import subprocess
 import sys
 
 import httpx
@@ -22,6 +23,23 @@ BALANCE_WARN_PCT = float(os.environ.get("BALANCE_WARN_PCT", "20"))
 BALANCE_INITIAL_USD = float(os.environ.get("BALANCE_INITIAL_USD", "10"))
 DAILY_COST_WARN_USD = float(os.environ.get("MAX_DAILY_LLM_USD", "2"))
 DISK_WARN_PCT = 85
+UNITS = ("pedibot-api", "pedibot-telegram", "pedibot-acp", "caddy")
+
+
+def unit_status(name: str) -> str:
+    """`systemctl is-active <unit>`; anything we cannot read counts as not running."""
+    try:
+        out = subprocess.run(
+            ["systemctl", "is-active", name], capture_output=True, text=True, timeout=10
+        )
+        return out.stdout.strip() or "unknown"
+    except Exception:  # noqa: BLE001
+        return "unknown"
+
+
+def dead_units(status_of=unit_status, units: tuple[str, ...] = UNITS) -> list[str]:
+    """Units that are not `active`. Pure enough to test without systemd."""
+    return [u for u in units if status_of(u) != "active"]
 
 
 def telegram(text: str) -> None:
@@ -68,7 +86,13 @@ def main() -> int:
                 )
     except Exception as e:  # noqa: BLE001
         problems["balance_check"] = f"⚠️ No se pudo consultar el saldo de DeepSeek: {e}"
-    # 3. disk
+    # 3. our own services (a dead telegram or acp worker is silent otherwise)
+    dead = dead_units()
+    if dead:
+        problems["units"] = (
+            f"🚨 Servicios parados: {', '.join(dead)}. Arranca con: systemctl restart {dead[0]}"
+        )
+    # 4. disk
     du = shutil.disk_usage("/")
     used_pct = 100 * (du.total - du.free) / du.total
     if used_pct > DISK_WARN_PCT:

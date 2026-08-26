@@ -6,6 +6,10 @@ Design notes (26-ago-2026):
   Python SDK (the SDK expects a raw EVM private key, which we deliberately do not have).
 - Polling instead of `acp events listen`: one process, no socket to babysit, and `acp job list`
   is REST. Every POLL_SECONDS we list active jobs and act on the ones that need us.
+- NEVER pass `--all` (or `--legacy`) to `acp job list`: legacy jobs are read on-chain, the
+  `restricted` signer policy denies that RPC call, and the CLI then blocks waiting for a manual
+  approval that never comes (verified 26-ago: 3 s with plain `job list`, full timeout with
+  `--all`). Our offering is v2, so plain `job list` is the complete picture.
 - The answer itself comes from the local API (`/api/agent/ask`), so ACP jobs go through exactly
   the same triage, sources and verifier as the web and Telegram, and are logged the same way.
 - Field names in ACP payloads are not stable across versions, so we search the JSON recursively
@@ -32,7 +36,7 @@ PRICE_USDC = os.environ.get("ACP_PRICE_USDC", "0.05")
 API = os.environ.get("PEDIBOT_API", "http://127.0.0.1:8601")
 API_KEY = (os.environ.get("AGENT_API_KEYS", "").split(",") or [""])[0].strip()
 DRY_RUN = os.environ.get("ACP_DRY_RUN", "").lower() == "true"
-CLI_TIMEOUT = 120
+CLI_TIMEOUT = int(os.environ.get("ACP_CLI_TIMEOUT", "60"))
 
 
 def acp(*args: str) -> dict[str, Any] | list[Any] | None:
@@ -196,7 +200,7 @@ def main() -> int:
     )
     state = load_state()
     while True:
-        listed = acp("job", "list", "--all")
+        listed = acp("job", "list")
         jobs = listed.get("jobs", []) if isinstance(listed, dict) else (listed or [])
         if jobs:
             logger.info("{} active job(s)", len(jobs))
