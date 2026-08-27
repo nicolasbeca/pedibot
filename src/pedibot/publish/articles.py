@@ -350,8 +350,13 @@ class Article:
         )
         return f"{self.frontmatter()}\n{self.body_md.strip()}\n\n## {'Sources' if self.lang == 'en' else 'Fuentes'}\n\n{foot}\n\n{disclaimer}\n"
 
+    def public_url(self, site_url: str) -> str:
+        """English is served from the root of the site; only Spanish carries a /es prefix."""
+        prefix = "" if self.lang == "en" else f"/{self.lang}"
+        return f"{site_url}{prefix}/guides/{self.slug}"
+
     def social_text(self, site_url: str) -> str:
-        return f"{self.title}\n\n{self.summary}\n\n{site_url}/{self.lang}/guides/{self.slug}\n\nSources: {', '.join(sorted({s.split(' — ')[0].split('] ')[1] for s in self.sources}))}"
+        return f"{self.title}\n\n{self.summary}\n\n{self.public_url(site_url)}\n\nSources: {', '.join(sorted({s.split(' — ')[0].split('] ')[1] for s in self.sources}))}"
 
 
 def load_prompt(version: str = "article_v1") -> str:
@@ -498,4 +503,27 @@ def pending_topics(content_dir: Path, lang: str) -> list[str]:
     # a `_en` suffix means the topic is anchored on English-speaking material (the NHS and CDC
     # vaccination schedules, for instance): in Spanish it only produces a near-duplicate guide
     pending = [t for t in TOPIC_PLAN if t not in done and (lang == "en" or not t.endswith("_en"))]
-    return seasonal_first(pending)
+    return seasonal_first([t for t in pending if not _already_covered(t, done)])
+
+
+def _already_covered(topic: str, done: set[str]) -> bool:
+    """True if a published guide already speaks about this subject.
+
+    The plan carries two keys for several subjects, one Spanish and one English (golpe_calor/heat,
+    urticaria/hives, cefalea/headache_en…), and publishing both gives two nearly identical guides
+    in the same language. Two topics are the same subject when they share most of their anchor
+    documents. The `compare_*` articles reuse sources deliberately and are exempt.
+    """
+    plan = TOPIC_PLAN[topic]
+    if plan.get("compare"):
+        return False
+    docs: set[str] = set(plan["docs"])  # type: ignore[call-overload]
+    for other in done:
+        other_plan = TOPIC_PLAN.get(other)
+        if not other_plan or other_plan.get("compare"):
+            continue
+        other_docs: set[str] = set(other_plan["docs"])  # type: ignore[call-overload]
+        shared = docs & other_docs
+        if shared and len(shared) / min(len(docs), len(other_docs)) >= 0.5:
+            return True
+    return False

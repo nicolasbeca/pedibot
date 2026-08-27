@@ -1,13 +1,17 @@
 ---
 import '../styles/global.css';
 import { t, langPrefix, type Lang } from '../i18n';
-interface Props { lang: Lang; title: string; description: string; path: string; jsonld?: object }
-const { lang, title, description, path, jsonld } = Astro.props;
+interface Props { lang: Lang; title: string; description: string; path: string; jsonld?: object;
+  // guides have a different slug per language, so the page passes the real counterpart here;
+  // null means there is no version in the other language yet and no alternate link is emitted
+  otherHref?: string | null }
+const { lang, title, description, path, jsonld, otherHref } = Astro.props;
 const s = t(lang);
 const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const other: Lang = lang === 'en' ? 'es' : 'en';
 const strip = (p: string) => p.replace(/^\/es(?=\/|$)/, '') || '/';
-const otherPath = `${langPrefix(other)}${strip(path)}`.replace(/\/$/, '') || '/';
+const otherPath = otherHref ?? (`${langPrefix(other)}${strip(path)}`.replace(/\/$/, '') || '/');
+const hasOther = otherHref !== null;
 const canonical = `${site}${path === '/' ? '' : path}`;
 const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'PediBot', url: site, logo: `${site}/logo.svg`, email: 'pedibot.ai@gmail.com', sameAs: ['https://x.com/pedibotai'] };
 ---
@@ -20,7 +24,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   <link rel="alternate" hreflang={lang} href={canonical} />
-  <link rel="alternate" hreflang={other} href={`${site}${otherPath === '/' ? '' : otherPath}`} />
+  {hasOther && <link rel="alternate" hreflang={other} href={`${site}${otherPath === '/' ? '' : otherPath}`} />}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate" type="application/rss+xml" title="PediBot guides" href={lang === 'es' ? '/es/rss.xml' : '/rss.xml'} />
   <meta property="og:title" content={title} />
@@ -52,7 +56,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
         <a class="pill" href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a>
       </nav>
       <div style="display:flex;gap:8px">
-        <a class="pill" href={otherPath} hreflang={other}>{other.toUpperCase()}</a>
+        {hasOther && <a class="pill" href={otherPath} hreflang={other}>{other.toUpperCase()}</a>}
         <button class="pill" id="theme" type="button" aria-label="Night mode">🌙</button>
       </div>
     </div>

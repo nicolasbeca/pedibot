@@ -102,7 +102,8 @@ def test_generate_and_write(index, tmp_path: Path):
         and "not medical advice" in md
     )
     social = q_path.read_text(encoding="utf-8")
-    assert "https://pedibot.xyz/en/guides/" in social and "SEUP" in social
+    # English is served from the root: /en/guides/<slug> is a 404 (fixed 26-ago)
+    assert "https://pedibot.xyz/guides/" in social and "SEUP" in social
     assert "fiebre" not in pending_topics(tmp_path / "content", "en")
     assert "laringitis" in pending_topics(tmp_path / "content", "en")
 
@@ -190,3 +191,48 @@ def test_english_only_topics_are_not_offered_in_spanish(tmp_path: Path):
     assert [t for t in es if t.endswith("_en")] == []
     assert "vacunas" in es, "the Spanish calendar topic must still be offered"
     assert "vaccines_en" in pending_topics(tmp_path, "en")
+
+
+def test_the_social_link_points_at_a_page_that_exists(tmp_path: Path, monkeypatch):
+    """English lives at the root of the site, not under /en: every English social post was
+    linking to /en/guides/<slug>, which is a 404 (26-ago)."""
+    db = tmp_path / "i.db"
+    build_index([_chunk("seup_fiebre#1", "la fiebre no es peligrosa por si misma")], db)
+    monkeypatch.setitem(TOPIC_PLAN, "_f", {"docs": ["seup_fiebre"], "query": "fiebre"})
+    draft = "TITLE: Fever in children\nSUMMARY: What to do.\nBODY:\n## What it is\nFever is common [1].\n"
+    en = generate_article(Index(db), FakeProvider(draft), "_f", lang="en")
+    assert "https://pedibot.xyz/guides/" in en.social_text("https://pedibot.xyz")
+    assert "/en/guides/" not in en.social_text("https://pedibot.xyz")
+
+    draft_es = (
+        "TITLE: La fiebre\nSUMMARY: Qué hacer.\nBODY:\n## Qué es\nLa fiebre es frecuente [1].\n"
+    )
+    es = generate_article(Index(db), FakeProvider(draft_es), "_f", lang="es")
+    assert "https://pedibot.xyz/es/guides/" in es.social_text("https://pedibot.xyz")
+
+
+def _publish_stub(dir_: Path, lang: str, slug: str, topic: str) -> None:
+    d = dir_ / lang
+    d.mkdir(parents=True, exist_ok=True)
+    (d / f"{slug}.md").write_text(
+        f"---\ntitle: t\ntopic: {topic}\nlang: {lang}\n---\nx\n", encoding="utf-8"
+    )
+
+
+def test_a_subject_is_not_published_twice_under_two_topic_names(tmp_path: Path):
+    """TOPIC_PLAN carries a Spanish-named and an English-named key for the same subject
+    (golpe_calor/heat, urticaria/hives, cefalea/headache_en…). In English both were offered and we
+    ended up with two guides about heatstroke — duplicate content that splits the SEO signal."""
+    _publish_stub(tmp_path, "en", "what_should_i_do_if_my_child_has_heat_stroke", "golpe_calor")
+    pending = pending_topics(tmp_path, "en")
+    assert "golpe_calor" not in pending  # already published
+    assert "heat" not in pending, "same sources as the guide already published"
+
+
+def test_comparison_articles_are_still_offered(tmp_path: Path):
+    """The `compare_*` topics reuse the same sources on purpose (a comparison table is a different
+    article from the guide), so the deduplication must not swallow them."""
+    _publish_stub(tmp_path, "en", "fever", "fiebre")
+    pending = pending_topics(tmp_path, "en")
+    assert "compare_fever_medicine" in pending
+    assert "compare_fever_threshold" in pending

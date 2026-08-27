@@ -7,10 +7,12 @@ export async function getStaticPaths() {
   return guides.map(g => ({ params: { slug: g.id.replace(/^en\//, '') }, props: { g } }));
 }
 const { g } = Astro.props; const lang = 'en'; const s = t(lang);
+const twins = await getCollection('guides', x => x.data.lang === 'es' && !x.data.draft && x.data.topic === g.data.topic);
+const otherHref = twins.length ? `/es/guides/${twins[0].id.replace(/^es\//, '')}` : null;
 const { Content } = await render(g);
 const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', headline: g.data.title, description: g.data.description, datePublished: g.data.date.toISOString(), inLanguage: 'en', author: { '@type': 'Organization', name: 'PediBot' }, citation: g.data.sources };
 ---
-<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/guides/${g.id.replace(/^en\//, '')}`} jsonld={jsonld}>
+<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/guides/${g.id.replace(/^en\//, '')}`} jsonld={jsonld} otherHref={otherHref}>
   <article class="narrow prose" style="padding:40px 18px">
     <p class="eyebrow">{g.data.topic} · {s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString('en-GB')}</time></p>
     <h1 style="margin-top:8px">{g.data.title}</h1>

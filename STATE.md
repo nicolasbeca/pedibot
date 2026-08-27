@@ -81,7 +81,12 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 | **Palabras con doble sentido** | ✅ «pis», «oído» y «pecho» citaban la hoja equivocada (deshidratación, otitis, lactancia) en preguntas que el corpus no cubre; ahora son frases. Un umbral de relevancia se midió y se **descartó**: los rangos se solapan con casos legítimos (L25). |
 | **Aclaración** | ✅ Leía solo la pregunta cruda y mandaba al menú preguntas claras («se ha desmayado en el colegio», «llora sin parar»): 4 de 55 del golden set. Ahora lee la pregunta expandida con sinónimos, igual que la búsqueda. Redactadas 50 → **54 de 55**. |
 | **Watchdog** | ✅ Vigila los cuatro servicios cada 10 min (antes un `pedibot-telegram` muerto era silencioso). |
-| **robots.txt** | ✅ Estaba dando 404 — y es donde un buscador va a buscar el sitemap. Añadido con la línea `Sitemap:` y dejando fuera `/api/`, `/a/` (enlaces privados de compartir) y `/admin`. Falta solo que el operador envíe el sitemap en Search Console. |
+| **robots.txt** | ✅ Estaba dando 404 y **Googlebot lo pidió 6 veces** en 24 h. Añadido con la línea `Sitemap:` y dejando fuera `/api/`, `/a/` y `/admin`. **Sitemap ya leído con 200 el 27-ago a las 07:05:43 UTC** (verificado en el registro de Caddy; el panel de Search Console va con retraso). |
+| **Imagen social** | ✅ `og:image` apuntaba a `/og.png`, que **no existía**: todo enlace compartido salía sin miniatura. Generada (1200×630, marca del logo) con `scripts/make_og_image.py`, junto con el `favicon.ico`. |
+| **hreflang** | ✅ Declaraba la gemela cambiando solo el prefijo de idioma → `/es/guides/<slug-inglés>`, un 404 (de ahí los 404 de Google en el registro). Ahora cada guía busca su gemela por `topic` y omite la etiqueta si no existe. **Las 15 guías EN y las 15 ES quedan emparejadas 1 a 1.** |
+| **Enlaces de redes** | ✅ Los textos de las guías inglesas enlazaban `/en/guides/…`, que no existe (el inglés vive en la raíz). |
+| **URLs sin redirección** | ✅ Astro construye con `trailingSlash: 'never'` pero Caddy redirigía cada URL a la versión con barra: las 1.488 del sitemap respondían 308 antes de servir. Corregido; ambas formas dan 200 directo. |
+| **Duplicado de golpe de calor** | ✅ Dos claves de tema (`heat` y `golpe_calor`) generaron dos guías inglesas del mismo asunto. Retirada una con **301** hacia la que se queda, y regla nueva para que no se repita (los `compare_*` quedan exentos). |
 
 ## Lo que NO está hecho / conocido
 

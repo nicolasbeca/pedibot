@@ -37,4 +37,3 @@ def test_chest_is_not_a_breast(syn: Synonyms):
 def test_wetting_the_bed_is_not_dehydration(syn: Synonyms):
     assert "deshidratación" not in syn.expand("se hace pis en la cama con 7 años", "es")
     assert "deshidratación" in syn.expand("hace muy poco pis desde ayer", "es")
-
