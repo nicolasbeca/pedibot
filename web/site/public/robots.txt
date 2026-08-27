@@ -1,0 +1,10 @@
+# PediBot — https://pedibot.xyz
+User-agent: *
+Allow: /
+
+# not for search engines: the API, the private share links and the admin panel
+Disallow: /api/
+Disallow: /a/
+Disallow: /admin
+
+Sitemap: https://pedibot.xyz/sitemap-index.xml
