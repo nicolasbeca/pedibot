@@ -67,6 +67,14 @@ const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
       <a class="ch" href="https://bsky.app/profile/pedibot.bsky.social" target="_blank" rel="noopener"><span class="ic">🦋</span><b>{s.channels_bs}</b><span>{s.channels_bs_d}</span></a>
       <a class="ch" href={lang === 'es' ? '/es/rss.xml' : '/rss.xml'}><span class="ic">📡</span><b>{s.channels_rss}</b><span>{s.channels_rss_d}</span></a>
     </div>
+    <!-- LaunchLeague badge. Their SVG, served from our own domain: no third-party request, which
+         is what /legal promises, and it does not break if their CDN goes down. -->
+    <p class="ll">
+      <a href="https://launchleague.xyz/?product=pedibot-ai" target="_blank" rel="noopener">
+        <img class="day" src="/launchleague-badge-light.svg" alt="PediBot on LaunchLeague" width="260" height="65" loading="lazy" decoding="async" />
+        <img class="night-only" src="/launchleague-badge-dark.svg" alt="PediBot on LaunchLeague" width="260" height="65" loading="lazy" decoding="async" />
+      </a>
+    </p>
   </section>
 
   <section class="block" id="support">
@@ -90,6 +98,14 @@ const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
   </section>
 </div>
 <style>
+    .ll { margin: 26px 0 0; text-align: center; }
+    .ll a { display: inline-block; line-height: 0; opacity: .85; transition: opacity .2s; }
+    .ll a:hover { opacity: 1; }
+    .ll img { width: 260px; height: 65px; }
+    .ll .night-only { display: none; }
+    :global(html.night) .ll .day { display: none; }
+    :global(html.night) .ll .night-only { display: inline-block; }
+
   .support { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start; }
   @media (max-width: 800px) { .support { grid-template-columns: 1fr; } }
   .never { margin: 18px 0 0; padding-left: 0; list-style: none; color: var(--ink-2); display: grid; gap: 8px; }
