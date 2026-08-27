@@ -66,6 +66,24 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 - **Costes e interioridades son privados** (25-ago): la web y los textos públicos dicen que mantener PediBot cuesta dinero y que el token lo financia, pero **no cifras** (servidor, coste por respuesta, saldo) ni detalles de infraestructura. El «libro de cuentas» público se retiró; en su lugar, tarjeta «qué financia el token» y novedades periódicas de producto. Los informes con cifras van solo al Telegram del operador.
 - **Respuestas sin bloque de fuentes** (25-ago): el organismo se nombra en la frase; sin enlaces, títulos ni marcadores. Máximo ~110 palabras.
 
+## 📌 Pendiente datado — LaunchLeague, jornada del 31-ago-2026
+
+**Qué pasa**: PediBot está dado de alta pero **entra en la jornada nº 36, que abre el lunes 31-ago** (la tabla se reinicia cada lunes; la 35, del 24 al 30-ago, ya estaba cerrada a nuevas entradas cuando se envió). La insignia ya está puesta en las dos portadas y enlaza a `https://launchleague.xyz/?product=pedibot-ai`.
+
+**Revisar durante esa semana (y al cerrar la jornada, el domingo 6-sep)**, con datos y no con impresiones:
+
+1. **¿Aparece la ficha?** El 27-ago el HTML de su portada tenía 0 menciones de PediBot.
+   `curl -s -L -A "Mozilla/5.0 Chrome/128" https://launchleague.xyz/ | grep -oi pedibot | wc -l`
+2. **¿Cuántos votos y qué puesto?** (referencia: la jornada 35 tuvo 10 productos con 2-7 votos).
+3. **¿Cuánta visita real manda?** Los enlaces de su tabla llegan como `pedibot.xyz/?ref=https://launchleague.xyz`, así que se cuenta exacto desde el servidor:
+   `journalctl -u caddy --since "7 days ago" | grep -c "ref=https://launchleague"`
+   y por cabecera de origen: `journalctl -u caddy --since "7 days ago" | grep -ci "Referer.*launchleague"`
+4. **¿Se indexó el enlace?** Mirar en Search Console → Enlaces si aparece launchleague.xyz.
+
+**Decisión que sale de ahí**: si la visita es residual (lo esperable: su público son fundadores, no padres), **la insignia se queda o se quita** y se descarta reentrar cada lunes. Los 29 $/mes del puesto destacado siguen descartados en cualquier caso.
+
+**Referencia para comparar**: el 27-ago, en 48 h, X (`t.co`) ya mandaba 23 visitas por sí solo.
+
 ## Trabajo del 26-ago-2026 (tarde)
 
 | Qué | Estado |
