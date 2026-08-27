@@ -1,0 +1,10 @@
+[Unit]
+Description=PediBot: announce $PDBT buys and sells on Telegram (silent when there are none)
+
+[Service]
+Type=oneshot
+User=pedibot
+WorkingDirectory=/opt/pedibot
+EnvironmentFile=/opt/pedibot/.env
+Environment=PYTHONIOENCODING=utf-8
+ExecStart=/bin/bash -c '~/.local/bin/uv run --no-dev python ops/token_alert.py'

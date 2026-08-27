@@ -66,6 +66,8 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 - **Costes e interioridades son privados** (25-ago): la web y los textos públicos dicen que mantener PediBot cuesta dinero y que el token lo financia, pero **no cifras** (servidor, coste por respuesta, saldo) ni detalles de infraestructura. El «libro de cuentas» público se retiró; en su lugar, tarjeta «qué financia el token» y novedades periódicas de producto. Los informes con cifras van solo al Telegram del operador.
 - **Respuestas sin bloque de fuentes** (25-ago): el organismo se nombra en la frase; sin enlaces, títulos ni marcadores. Máximo ~110 palabras.
 
+| **Aviso de compra/venta de $PDBT (27-ago)** | ✅ `ops/token_alert.py` + `pedibot-token-alert.timer` **cada hora**. Lee las operaciones reales de la pool (PDBT/VIRTUAL en `virtuals-unicorn-base`, donde **PDBT es el token base**, así que el `kind` de la API ya es desde nuestro punto de vista) y avisa solo de las que no ha visto, identificadas por hash de transacción. **Sin novedades no manda nada.** Primera ejecución = línea base, para no anunciar de golpe lo viejo; ráfagas de más de 5 se resumen en un mensaje. Límite conocido: el endpoint solo cubre 24 h — si el timer se para un día entero, la operación sigue contándose en el resumen diario y sale en el informe del domingo, pero sin push. 9 tests. |
+
 ## 📌 Pendiente datado — LaunchLeague, jornada del 31-ago-2026
 
 **Qué pasa**: PediBot está dado de alta pero **entra en la jornada nº 36, que abre el lunes 31-ago** (la tabla se reinicia cada lunes; la 35, del 24 al 30-ago, ya estaba cerrada a nuevas entradas cuando se envió). La insignia ya está puesta en las dos portadas y enlaza a `https://launchleague.xyz/?product=pedibot-ai`.

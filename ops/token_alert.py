@@ -1,0 +1,162 @@
+"""Push a Telegram message when somebody buys or sells $PDBT — and stay silent otherwise.
+
+The daily snapshot (`token_snapshot.py`) only counts trades for the Sunday report, so a purchase
+on a Tuesday was not known until the weekend. This reads the pool's actual trades from the free
+GeckoTerminal API, remembers each transaction hash, and announces only the ones it has not seen.
+
+The pool is PDBT / VIRTUAL on Base (`virtuals-unicorn-base`) and **PDBT is its base token**, so
+the API's `kind` is already from our point of view: `buy` means somebody bought PDBT.
+
+Run hourly by pedibot-token-alert.timer. Nothing new → no message, no noise. The endpoint only
+returns the last 24 h of trades: if this stops running for a whole day the trade is still counted
+in the daily snapshot and shows up in the Sunday report, just without a push.
+"""
+
+from __future__ import annotations
+
+import os
+import sqlite3
+import sys
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any
+
+import httpx
+
+POOL = "0x94dfe42f6dc61d1caad037a79214b684f5377784"
+TRADES_URL = f"https://api.geckoterminal.com/api/v2/networks/base/pools/{POOL}/trades"
+HEADERS = {"Accept": "application/json;version=20230302", "User-Agent": "PediBot-ops/1.0"}
+MAX_LINES = 5  # a burst is summarised instead of flooding the chat
+
+
+@dataclass(frozen=True)
+class Trade:
+    tx_hash: str
+    ts: str
+    kind: str  # buy | sell, already from PDBT's point of view
+    usd: float
+    tokens: float
+    wallet: str
+
+
+def parse_trades(payload: dict[str, Any]) -> list[Trade]:
+    out: list[Trade] = []
+    for item in (payload or {}).get("data") or []:
+        a = (item or {}).get("attributes") or {}
+        tx = a.get("tx_hash")
+        if not tx:
+            continue
+        kind = str(a.get("kind") or "").lower()
+        # from/to are the sides of the swap: buying PDBT receives it, selling it gives it away
+        tokens = a.get("to_token_amount") if kind == "buy" else a.get("from_token_amount")
+        out.append(
+            Trade(
+                tx_hash=str(tx),
+                ts=str(a.get("block_timestamp") or ""),
+                kind=kind,
+                usd=float(a.get("volume_in_usd") or 0),
+                tokens=float(tokens or 0),
+                wallet=str(a.get("tx_from_address") or ""),
+            )
+        )
+    return out
+
+
+def new_trades(trades: list[Trade], seen: set[str]) -> list[Trade]:
+    return [t for t in trades if t.tx_hash not in seen]
+
+
+def _money(value: float) -> str:
+    return f"{value:,.2f}".replace(",", "@").replace(".", ",").replace("@", ".")
+
+
+def _amount(value: float) -> str:
+    return f"{value:,.0f}".replace(",", ".")
+
+
+def format_message(trades: list[Trade]) -> str:
+    if not trades:
+        return ""
+    trades = sorted(trades, key=lambda t: t.ts)
+    head = "PediBot · $PDBT: " + (
+        "1 movimiento nuevo" if len(trades) == 1 else f"{len(trades)} movimientos nuevos"
+    )
+    lines = []
+    for t in trades[:MAX_LINES]:
+        arrow = "🟢 COMPRA" if t.kind == "buy" else "🔴 VENTA "
+        clock = t.ts[11:16] + " UTC" if len(t.ts) >= 16 else t.ts
+        lines.append(
+            f"{arrow}  {_money(t.usd)} USD · {_amount(t.tokens)} PDBT · {clock}\n"
+            f"   https://basescan.org/tx/{t.tx_hash}"
+        )
+    if len(trades) > MAX_LINES:
+        rest = trades[MAX_LINES:]
+        lines.append(f"…y {len(rest)} más, {_money(sum(t.usd for t in rest))} USD en total.")
+    total = sum(t.usd for t in trades if t.kind == "buy") - sum(
+        t.usd for t in trades if t.kind == "sell"
+    )
+    tail = f"Saldo del lote: {'+' if total >= 0 else '−'}{_money(abs(total))} USD"
+    return f"{head}\n\n" + "\n".join(lines) + f"\n\n{tail}"
+
+
+def record_and_select(db_path: Path, trades: list[Trade]) -> list[Trade]:
+    """Store the trades and return the ones worth announcing.
+
+    The very first run only takes a baseline: without it the first poll would announce every
+    trade the pool has had in the last 24 hours as if it had just happened.
+    """
+    con = sqlite3.connect(db_path)
+    first_run = not con.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' AND name='token_trades'"
+    ).fetchone()
+    con.execute(
+        "CREATE TABLE IF NOT EXISTS token_trades (tx_hash TEXT PRIMARY KEY, ts TEXT, kind TEXT,"
+        " usd REAL, tokens REAL, wallet TEXT, announced INTEGER NOT NULL DEFAULT 0)"
+    )
+    seen = {r[0] for r in con.execute("SELECT tx_hash FROM token_trades")}
+    fresh = new_trades(trades, seen)
+    con.executemany(
+        "INSERT OR IGNORE INTO token_trades VALUES (?,?,?,?,?,?,?)",
+        [
+            (t.tx_hash, t.ts, t.kind, t.usd, t.tokens, t.wallet, 0 if first_run else 1)
+            for t in fresh
+        ],
+    )
+    con.commit()
+    con.close()
+    return [] if first_run else fresh
+
+
+def telegram(text: str) -> bool:
+    token, chat = os.environ.get("TELEGRAM_BOT_TOKEN"), os.environ.get("TELEGRAM_CHAT_ID")
+    if not token or not chat:
+        print("telegram not configured:", text, file=sys.stderr)
+        return False
+    r = httpx.post(
+        f"https://api.telegram.org/bot{token}/sendMessage",
+        json={"chat_id": chat, "text": text, "disable_web_page_preview": True},
+        timeout=20,
+    )
+    return r.status_code == 200
+
+
+def main() -> int:
+    from pedibot.settings import get_settings
+
+    try:
+        r = httpx.get(TRADES_URL, headers=HEADERS, timeout=30)
+        r.raise_for_status()
+        trades = parse_trades(r.json())
+    except Exception as e:  # noqa: BLE001 — a flaky public API must not page the operator
+        print("geckoterminal trades failed:", e, file=sys.stderr)
+        return 1
+    fresh = record_and_select(get_settings().ops_db_path, trades)
+    if not fresh:
+        return 0  # nothing happened: say nothing
+    telegram(format_message(fresh))
+    print(f"announced {len(fresh)} trade(s)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
