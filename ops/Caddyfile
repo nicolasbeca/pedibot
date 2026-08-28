@@ -53,3 +53,8 @@ pedibot.xyz {
 www.pedibot.xyz {
 	redir https://pedibot.xyz{uri} permanent
 }
+
+# Otros proyectos alojados en este VPS (Econogar, ...). Cada uno deja su fichero en
+# /etc/caddy/sites/ y este import los carga. NO BORRAR: sin esta linea, el despliegue de
+# PediBot dejaria a los demas sin HTTPS (deuda D2 de Econogar, 27-ago-2026).
+import /etc/caddy/sites/*.caddy
