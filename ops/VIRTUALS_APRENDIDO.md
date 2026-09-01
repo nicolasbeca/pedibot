@@ -158,3 +158,9 @@ Resumen de lo nuevo:
   sirve para medir el mercado actual.
 - Cifras del mercado, convención de nombres (`snake_case`) y precios reales: §10 de la otra
   copia.
+
+11. **Un esquema sin descripciones sale marcado en amarillo.** Hacen falta las dos: la `description` del objeto y una en **cada propiedad**. No es cosmético: es lo único que lee el agente comprador para saber si puede usar tu trabajo.
+12. **`acp resource update` y `acp resource delete` no aceptan opciones** en la versión probada (son stubs): un recurso mal creado solo se arregla desde el panel web. Los `offering` sí se actualizan bien por CLI. Crea los recursos con el esquema ya completo a la primera.
+13. **El precio no puede vivir en una constante del trabajador.** Si bajas el precio en el mercado y el worker sigue proponiendo el viejo, le pides al primer comprador más de lo anunciado. Léelo de `acp offering list` y, si no identificas la oferta, cobra la más barata.
+14. **Una oferta genérica no aparece en las búsquedas.** Una ficha por producto, en `snake_case`, con su propio formulario. El worker enruta cada formulario a su endpoint.
+15. **Suscripciones**: paquetes reutilizables de 7/15/30/90 días. El primer trabajo con `--package-id` se cobra al precio del paquete y abre la ventana; los siguientes contra cualquier oferta enganchada son gratis hasta que expire. Se enganchan con `acp offering update --subscription-ids`.
