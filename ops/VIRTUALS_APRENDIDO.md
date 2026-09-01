@@ -135,3 +135,26 @@ Cadena por defecto **Base (8453)**; los pagos van en **USDC** y quedan en escrow
 8. Los créditos gratis de inferencia solo sirven si usas su runtime.
 9. Una cuenta de X/GitHub respalda **un solo agente**.
 10. La documentación oficial estaba a medias (404 en varias rutas): la fuente fiable fue `acp <comando> --help`.
+
+---
+
+## Actualizado el 1-sep-2026 en la copia de Regime
+
+Montando el segundo agente (Regime) salieron cosas que **no están arriba** y que aplican
+igual aquí. La copia con todo es `D:/Nicolas/Regime_Virtuals/VIRTUALS_APRENDIDO.md` §8-§10.
+Resumen de lo nuevo:
+
+- **La CLI exige Node ≥ 20** y falla con `ERR_REQUIRE_ESM`, que no dice nada de la versión.
+- **`HOME` decide dónde vive el llavero del firmante**: hay que correr la CLI como el
+  usuario del servicio, y el unit lleva `Environment=HOME=…`. Creado como root, el servicio
+  no puede firmar.
+- **Cada propiedad del esquema necesita su `description`**, también las del entregable, o la
+  UI marca la oferta con «Missing descriptions».
+- **`cluster` y `category` del agente no se tocan por CLI** y no hay token que reutilizar (la
+  CLI se autentica firmando). Ofertas y recursos sí se editan.
+- **Los `Resources Offered` son URLs públicas sin autenticación**: sirven para lo que ya
+  publicas gratis, y son superficie de búsqueda a coste cero.
+- **`acpx.virtuals.io/api/agents` es el registro VIEJO** (nada posterior al 22-jul-2026): no
+  sirve para medir el mercado actual.
+- Cifras del mercado, convención de nombres (`snake_case`) y precios reales: §10 de la otra
+  copia.

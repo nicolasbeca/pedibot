@@ -23,6 +23,7 @@ import os
 import subprocess
 import sys
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -32,10 +33,14 @@ from loguru import logger
 ROOT = Path(__file__).resolve().parents[1]
 STATE_FILE = ROOT / "data" / "acp_state.json"
 POLL_SECONDS = int(os.environ.get("ACP_POLL_SECONDS", "30"))
-PRICE_USDC = os.environ.get("ACP_PRICE_USDC", "0.05")
+PRICE_USDC = os.environ.get("ACP_PRICE_USDC", "0.01")  # only if the market does not answer
 API = os.environ.get("PEDIBOT_API", "http://127.0.0.1:8601")
 API_KEY = (os.environ.get("AGENT_API_KEYS", "").split(",") or [""])[0].strip()
 DRY_RUN = os.environ.get("ACP_DRY_RUN", "").lower() == "true"
+PRICE_REFRESH_EVERY = 60  # polls between price re-reads (30 s x 60 = 30 min)
+DISCLAIMER = (
+    "Information from published paediatric guidelines. Not medical advice, not a diagnosis."
+)
 CLI_TIMEOUT = int(os.environ.get("ACP_CLI_TIMEOUT", "60"))
 
 
@@ -79,6 +84,96 @@ def find_first(obj: Any, keys: tuple[str, ...]) -> Any:
     return None
 
 
+# ── prices ───────────────────────────────────────────────────────────────────
+# The budget we propose must be exactly the price shown on the listing. Keeping it in a
+# constant meant that lowering the price in the marketplace left the worker proposing the old
+# one. Read it from the market at start-up; when a job does not say which offering it came
+# from, charge the CHEAPEST: better to undercharge than to charge above the listing.
+
+OFFER_KEYS = ("offeringid", "offering_id", "serviceid", "service_id", "offering", "service")
+NAME_KEYS = ("offeringname", "servicename", "offering_name", "service_name", "name")
+
+
+def prices_from(offerings: list[dict[str, Any]]) -> dict[str, str]:
+    table: dict[str, str] = {}
+    for o in offerings or []:
+        price = o.get("priceValue")
+        if price is None:
+            continue
+        text = f"{float(price):g}"
+        for key in (o.get("id"), o.get("name")):
+            if key:
+                table[str(key)] = text
+    return table
+
+
+def price_for(job: dict[str, Any], table: dict[str, str], *, fallback: str) -> str:
+    if not table:
+        return fallback
+    for keys in (OFFER_KEYS, NAME_KEYS):
+        value = find_first(job, keys)
+        if isinstance(value, dict):
+            value = value.get("id") or value.get("name")
+        if value is not None and str(value) in table:
+            return table[str(value)]
+    return min(table.values(), key=float)
+
+
+def fetch_prices() -> dict[str, str]:
+    listed = acp("offering", "list")
+    if isinstance(listed, dict):
+        listed = listed.get("data") or []
+    return prices_from(listed if isinstance(listed, list) else [])
+
+
+# ── routing ──────────────────────────────────────────────────────────────────
+# Each offering has its own form. Doses and vaccination schedules are answered from fixed
+# tables through the same endpoints the website uses — the model is not involved in a number.
+
+
+@dataclass(frozen=True)
+class Route:
+    path: str
+    method: str
+    payload: dict[str, Any]
+
+
+def _num(value: Any) -> float | None:
+    try:
+        return float(str(value).replace(",", "."))
+    except (TypeError, ValueError):
+        return None
+
+
+def route(req: dict[str, Any]) -> Route | None:
+    """Which endpoint answers this form. None if the form cannot be served."""
+    req = {k.lower(): v for k, v in (req or {}).items()}
+    question = str(req.get("question") or req.get("query") or req.get("prompt") or "").strip()
+    country = str(req.get("country") or "").strip().upper()
+    weight = _num(req.get("weight_kg") or req.get("weight"))
+    drug = str(req.get("drug") or req.get("medicine") or req.get("brand") or "").strip()
+    lang = "es" if str(req.get("lang", "en")).lower().startswith("es") else "en"
+    age = _num(req.get("age_months"))
+
+    if question:
+        return Route(
+            "/api/agent/ask",
+            "POST",
+            {"question": question, "lang": lang, "country": country[:2] or "GB"},
+        )
+    if drug and weight is not None:
+        payload: dict[str, Any] = {"drug": drug, "weight_kg": weight}
+        if age is not None:
+            payload["age_months"] = age
+        return Route("/api/dose", "POST", payload)
+    if country:
+        return Route(f"/api/vaccines?country={country[:2]}", "GET", {})
+    if weight is not None:
+        tail = f"&age_months={int(age)}" if age is not None else ""
+        return Route(f"/api/ors?weight_kg={weight}{tail}", "GET", {})
+    return None
+
+
 def load_state() -> dict[str, dict[str, Any]]:
     if STATE_FILE.exists():
         try:
@@ -94,7 +189,10 @@ def save_state(state: dict[str, dict[str, Any]]) -> None:
 
 
 def job_requirement(job: dict[str, Any], job_id: str) -> dict[str, Any]:
-    """The buyer's requirement: {question, lang, country}. Looks in the job and, if needed, history."""
+    """The buyer's form, as it comes. Looks in the job and, if needed, in its history.
+
+    It is NOT normalised here: each offering has its own form (a question, a weight and a
+    medicine, a country) and `route` is what decides which endpoint serves it."""
     req = find_first(job, ("requirement", "requirements", "servicerequirement"))
     if req is None:
         hist = acp("job", "history", "--job-id", job_id)
@@ -108,30 +206,26 @@ def job_requirement(job: dict[str, Any], job_id: str) -> dict[str, Any]:
             req = json.loads(req)
         except json.JSONDecodeError:
             req = {"question": req}
-    if not isinstance(req, dict):
-        return {}
-    return {
-        "question": str(req.get("question") or req.get("query") or req.get("prompt") or "").strip(),
-        "lang": "es" if str(req.get("lang", "en")).lower().startswith("es") else "en",
-        "country": (str(req.get("country") or "GB")[:2] or "GB").upper(),
-    }
+    return req if isinstance(req, dict) else {}
 
 
-def answer(req: dict[str, Any]) -> dict[str, Any] | None:
-    if not API_KEY:
+def serve(r: Route) -> dict[str, Any] | None:
+    """Call the endpoint that answers this job. The reply IS the deliverable."""
+    if r.path == "/api/agent/ask" and not API_KEY:
         logger.error("AGENT_API_KEYS empty: cannot answer ACP jobs")
         return None
+    headers = {"content-type": "application/json"}
+    if API_KEY:
+        headers["x-api-key"] = API_KEY
     try:
-        r = httpx.post(
-            f"{API}/api/agent/ask",
-            headers={"x-api-key": API_KEY, "content-type": "application/json"},
-            json={"question": req["question"], "lang": req["lang"], "country": req["country"]},
-            timeout=90,
-        )
-        r.raise_for_status()
-        return dict(r.json())
+        if r.method == "GET":
+            resp = httpx.get(f"{API}{r.path}", headers=headers, timeout=90)
+        else:
+            resp = httpx.post(f"{API}{r.path}", headers=headers, json=r.payload, timeout=90)
+        resp.raise_for_status()
+        return dict(resp.json())
     except Exception as e:  # noqa: BLE001
-        logger.error("engine call failed: {}", e)
+        logger.error("call to {} failed: {}", r.path, e)
         return None
 
 
@@ -139,7 +233,9 @@ def phase_of(job: dict[str, Any]) -> str:
     return str(find_first(job, ("phase", "status", "state")) or "").upper()
 
 
-def handle(job: dict[str, Any], state: dict[str, dict[str, Any]]) -> None:
+def handle(
+    job: dict[str, Any], state: dict[str, dict[str, Any]], prices: dict[str, str] | None = None
+) -> None:
     job_id = str(find_first(job, ("onchainjobid", "jobid", "id")) or "")
     if not job_id:
         return
@@ -149,13 +245,14 @@ def handle(job: dict[str, Any], state: dict[str, dict[str, Any]]) -> None:
         st["raw_logged"] = True
     phase = phase_of(job)
 
-    # 1. new request → propose our fixed price
+    # 1. new request → propose the price its own offering advertises
     if not st.get("budget_set") and any(
         k in phase for k in ("REQUEST", "NEGOTIAT", "PENDING", "CREATED")
     ):
-        logger.info("job {} phase={} → set-budget {} USDC", job_id, phase, PRICE_USDC)
+        price = price_for(job, prices or {}, fallback=PRICE_USDC)
+        logger.info("job {} phase={} → set-budget {} USDC", job_id, phase, price)
         if not DRY_RUN:
-            res = acp("provider", "set-budget", "--job-id", job_id, "--amount", PRICE_USDC)
+            res = acp("provider", "set-budget", "--job-id", job_id, "--amount", price)
             logger.info("set-budget result: {}", json.dumps(res)[:300] if res else "none")
         st["budget_set"] = time.time()
         return
@@ -167,38 +264,36 @@ def handle(job: dict[str, Any], state: dict[str, dict[str, Any]]) -> None:
         and any(k in phase for k in ("TRANSACTION", "FUNDED", "PAID", "IN_PROGRESS", "ACCEPTED"))
     ):
         req = job_requirement(job, job_id)
-        if not req.get("question"):
-            logger.warning("job {}: no question found in requirement; skipping this round", job_id)
+        r = route(req)
+        if r is None:
+            logger.warning("job {}: the form does not match any offering; leaving it", job_id)
             return
-        a = answer(req)
+        a = serve(r)
         if a is None:
             return
-        deliverable = json.dumps(
-            {
-                "level": a.get("level"),
-                "banner": a.get("banner"),
-                "answer": a.get("answer"),
-                "sources": a.get("sources", []),
-                "verification": a.get("verification"),
-                "disclaimer": a.get("disclaimer"),
-            },
-            ensure_ascii=False,
-        )
+        a.setdefault("disclaimer", DISCLAIMER)
+        deliverable = json.dumps(a, ensure_ascii=False)
         logger.info("job {} phase={} → submit ({} chars)", job_id, phase, len(deliverable))
         if not DRY_RUN:
             res = acp("provider", "submit", "--job-id", job_id, "--deliverable", deliverable)
             logger.info("submit result: {}", json.dumps(res)[:300] if res else "none")
         st["submitted"] = time.time()
-        st["question"] = req["question"][:120]
+        st["served"] = r.path
 
 
 def main() -> int:
     logger.remove()
     logger.add(sys.stderr, level="INFO", format="{time:HH:mm:ss} {level} {message}")
+    prices = fetch_prices()
+    tariff = ", ".join(sorted(set(prices.values()), key=float)) or f"{PRICE_USDC} (fallback)"
     logger.info(
-        "acp worker up (poll={}s, price={} USDC, dry_run={})", POLL_SECONDS, PRICE_USDC, DRY_RUN
+        "acp worker up (poll={}s, listed prices: {} USDC, dry_run={})",
+        POLL_SECONDS,
+        tariff,
+        DRY_RUN,
     )
     state = load_state()
+    rounds = 0
     while True:
         listed = acp("job", "list")
         jobs = listed.get("jobs", []) if isinstance(listed, dict) else (listed or [])
@@ -207,10 +302,16 @@ def main() -> int:
         for job in jobs:
             if isinstance(job, dict):
                 try:
-                    handle(job, state)
+                    handle(job, state, prices)
                 except Exception as e:  # noqa: BLE001
                     logger.exception("job handling failed: {}", e)
         save_state(state)
+        rounds += 1
+        if rounds % PRICE_REFRESH_EVERY == 0:  # a price can change without a restart
+            fresh = fetch_prices()
+            if fresh and fresh != prices:
+                logger.info("prices updated: {}", sorted(set(fresh.values()), key=float))
+                prices = fresh
         time.sleep(POLL_SECONDS)
 
 

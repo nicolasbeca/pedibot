@@ -1,69 +1,64 @@
 ---
 title: "What vaccines does my child need and when?"
-description: "A plain-language guide to the childhood vaccination schedule, what to expect, and when to seek medical help."
+description: "A guide to the recommended childhood vaccine schedule, what to do at home, and when to seek medical help."
 lang: en
-topic: vacunas
-date: 2026-08-27
+topic: vaccines_en
+date: 2026-09-01
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"4Enfermedad neumocócica (VNC/VN)\", p. 2"
-  - "[2] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"6 Enfermedad meningocócica ( (Men B, Men C, MenACWY)\", p. 2, 3"
-  - "[3] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"12 COVID-19\", p. 3, 4"
-  - "[4] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"7Sarampión, rubeola y parotiditis (triple vírica, TV)\", p. 3"
-  - "[5] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"11 Gripe 10 Herpes zóster (HZ)\", p. 3"
-  - "[6] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"Introducción\", p. 1, 2"
-  - "[7] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"13Virus Respiratorio Sincitial (VRS)\", p. 4"
-  - "[8] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"8Varicela (VVZ)\", p. 3"
-  - "[9] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"1 Poliomielitis (VPI) 2 Difteria, tétanos, tosferina (DTPa, dTpa, Td) 3 Hepatitis B (HB)\", p. 2"
-  - "[10] MedlinePlus — \"Vacunas para los niños\", section \"¿Cuándo necesito vacunar a mi hijo?\", p. 1 — https://medlineplus.gov/spanish/childhoodimmunization.html"
+  - "[1] MedlinePlus — \"Childhood Vaccines\" (2024), section \"When do I need to vaccinate my child?\", p. 1 — https://medlineplus.gov/childhoodimmunization.html"
+  - "[2] NHS — \"NHS vaccinations and when to have them\" (2023), section \"NHS vaccinations and when to have them\", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/"
+  - "[4] NHS — \"NHS vaccinations and when to have them\" (2023), section \"Extra vaccines for at-risk people\", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/"
+  - "[5] NHS — \"NHS vaccinations and when to have them\" (2023), section \"Vaccines for young people\", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/"
+  - "[6] MedlinePlus — \"Childhood Vaccines\" (2024), section \"Can vaccines overload my child's immune system?\", p. 1 — https://medlineplus.gov/childhoodimmunization.html"
+  - "[7] NHS — \"NHS vaccinations and when to have them\" (2023), section \"Extra vaccines for at-risk people\", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/"
+  - "[8] MedlinePlus — \"Childhood Vaccines\" (2024), section \"Why do I need to vaccinate my child?\", p. 1 — https://medlineplus.gov/childhoodimmunization.html"
 draft: false
 ---
 
 ## What it is
 
-Vaccines protect your child from serious diseases by helping their body build immunity before they are exposed to germs [10]. In Spain, there is a common vaccination calendar recommended for all children [6]. It was approved by the Interterritorial Council of the National Health System on December 16, 2024 [6]. Your child will receive vaccines at well-child visits, according to this schedule [10]. Following the schedule gives your child protection at the right time [10].
+Vaccines protect your child from serious diseases that can harm or even kill infants and children [8]. Your child gets vaccines during well-child visits, following a schedule that lists which vaccines are recommended, how many doses are needed, and at what age [1]. In the United States, the Centers for Disease Control and Prevention (CDC) publishes this schedule [1]. Following the schedule gives your child's body time to build immunity before being exposed to these diseases [1].
 
-The childhood schedule includes several vaccines [6]. At 2, 4, and 11 months, children receive the combined vaccine against diphtheria, tetanus, whooping cough, polio, Haemophilus influenzae type b, and hepatitis B [9]. It is important that this vaccine is given on time at 2, 4, and 11 months [9]. At 6 years, children who were vaccinated at 2, 4, and 11 months receive a booster dose [9]. Children who received a different schedule (2, 4, 6, and 18 months) receive a different booster at 6 years [9].
+In the UK, the NHS recommends vaccines at specific ages. At 8 weeks, your baby gets the 6-in-1 vaccine (1st dose), rotavirus vaccine (1st dose), and MenB vaccine (1st dose) [2]. At 12 weeks, they get the 6-in-1 vaccine (2nd dose), MenB vaccine (2nd dose), and rotavirus vaccine (2nd dose) [2]. At 16 weeks, they get the 6-in-1 vaccine (3rd dose) and pneumococcal vaccine (1st dose) [2]. At 1 year, they get the MMRV vaccine (1st dose for children born on or after 1 January 2025), pneumococcal vaccine (2nd dose), and MenB vaccine (3rd dose) [2]. At 18 months, some children get a 4th dose of the 6-in-1 vaccine and the MMRV vaccine [2]. From 2 to 15 years, children get the flu vaccine every year [2]. At 3 years and 4 months, they get the 4-in-1 pre-school booster and MMRV vaccine [2]. At 12 to 13 years, they get the HPV vaccine [2]. At 14 years, they get the Td/IPV teenage booster and MenACWY vaccine [2].
 
-The pneumococcal vaccine is given at 2 and 4 months, or at 2, 4, and 6 months, depending on the vaccine used [1]. The meningococcal B vaccine is given at 2 and 4 months, and meningococcal C at 4 and 12 months [2]. It is very important that these vaccines are given on time [2]. The measles, mumps, and rubella (MMR) vaccine is also part of the schedule [4]. The varicella (chickenpox) vaccine is given in childhood [8]. Rotavirus vaccine is given to infants from 6 weeks of age [9]. Respiratory syncytial virus (RSV) immunization is recommended for all babies born between April 1 and March 31, with one dose given before or during the RSV season [7]. Babies born during the season (October to March) should receive it very early, preferably within 24-48 hours after birth [7].
+Some vaccines are only available for groups who need extra protection, such as children with long-term health conditions or weakened immune systems [4][7]. For example, children with diabetes may need the pneumococcal and flu vaccines [7]. Children with chronic kidney disease may need the pneumococcal, flu, and hepatitis B vaccines [7].
 
 ## What you can do at home
 
-- Keep a record of your child's vaccines and bring it to every appointment [10].
-- Ask your doctor if your child is up to date on the schedule [10].
-- If your child missed a dose, ask the doctor about catching up [4].
-- For teenagers who have not had chickenpox or the vaccine, two doses are given at least 4 weeks apart [8].
-- For adults without evidence of chickenpox immunity, a blood test is done first; if negative, two doses are given [8].
-- For measles, mumps, and rubella, people born in Spain from 1978 without documented vaccination should be vaccinated [4]. Two doses are given at least 4 weeks apart [4].
-- Pregnant women should receive a dose of whooping cough vaccine in each pregnancy from week 27, preferably at weeks 27 or 28 [9].
-- Pregnant women can also receive the flu vaccine and COVID-19 vaccine in any trimester [3][5].
+- Keep your child's vaccination appointments. It's important that vaccines are given on time for the best protection [2].
+- If you miss a vaccine, contact your GP to catch up [2]. You can still catch up on most vaccines if you miss them [5].
+- If you think your child has missed any vaccinations, speak to your GP surgery [5].
+- If you have a vaccination appointment but missed it or cannot attend, your GP surgery can book or rearrange an appointment [5].
+
+Vaccines do not overload your child's immune system [6]. Every day, a healthy child's immune system fights off thousands of germs [6]. Vaccines contain weakened or dead germs, so even several vaccines in one day expose your child to a tiny amount of germs compared to what they encounter daily [6].
+
+Vaccinating your child also protects others [8]. When enough people are vaccinated, it's harder for a disease to spread, which is called "community immunity" [8]. This is especially important for people who cannot get vaccines, such as those with weakened immune systems, allergies to vaccine ingredients, or newborn babies too young for some vaccines [8].
 
 ## When to see a doctor or go to the emergency department
 
-The sources do not describe specific warning signs after vaccination. However, you should contact your doctor if you have any concerns about your child's reaction to a vaccine [10]. Always ask your healthcare provider if you are unsure about anything [10].
+The sources do not list specific warning signs for when to see a doctor after vaccination. However, if you think your child has missed any vaccinations, or if you have a vaccination appointment but missed it or cannot attend, speak to your GP surgery [5]. Your GP can book or rearrange an appointment [5]. If you are concerned about your child after a vaccine, contact your GP or seek medical advice.
 
 ## Common questions
 
-**Is the vaccine schedule the same everywhere?** The calendar is common across Spain, but the age may vary slightly in programs implemented in schools [6]. The age for seasonal vaccines may also vary each season [6].
+**Can vaccines overload my child's immune system?**
+No. Vaccines do not overload the immune system [6]. A healthy child's immune system fights off thousands of germs every day [6]. Even several vaccines in one day expose your child to a tiny amount of germs compared to what they encounter in their environment [6].
 
-**Can my child get vaccines if they are sick?** The sources do not address this. Ask your doctor.
+**What if I missed a vaccine appointment?**
+Contact your GP to catch up [2]. It's best to have vaccines on time, but you can still catch up on most vaccines if you miss them [5]. Your GP surgery can book or rearrange an appointment [5].
 
-**Are there people who should not get certain vaccines?** Yes. The MMR vaccine is contraindicated in pregnant women and immunocompromised people [4]. The varicella vaccine is also contraindicated in pregnant women and immunocompromised people [8].
-
-**What about teenagers?** At 12 years, one dose of MenACWY is given to those who have not received it from age 10 [2]. Unvaccinated adolescents up to 18 years should be vaccinated [2]. At 12 years, boys and girls receive one dose of the HPV vaccine [8]. Unvaccinated adolescents up to 18 years can also be caught up on varicella with one dose [8].
+**Why does my child need vaccines at specific ages?**
+Following the vaccine schedule allows your child to get protection at exactly the right time [1]. It gives their body the chance to build up immunity before being exposed to these serious diseases [1].
 
 ## Sources
 
-[1] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "4Enfermedad neumocócica (VNC/VN)", p. 2
-[2] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "6 Enfermedad meningocócica ( (Men B, Men C, MenACWY)", p. 2, 3
-[3] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "12 COVID-19", p. 3, 4
-[4] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "7Sarampión, rubeola y parotiditis (triple vírica, TV)", p. 3
-[5] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "11 Gripe 10 Herpes zóster (HZ)", p. 3
-[6] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "Introducción", p. 1, 2
-[7] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "13Virus Respiratorio Sincitial (VRS)", p. 4
-[8] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "8Varicela (VVZ)", p. 3
-[9] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), section "1 Poliomielitis (VPI) 2 Difteria, tétanos, tosferina (DTPa, dTpa, Td) 3 Hepatitis B (HB)", p. 2
-[10] MedlinePlus — "Vacunas para los niños", section "¿Cuándo necesito vacunar a mi hijo?", p. 1 — https://medlineplus.gov/spanish/childhoodimmunization.html
+[1] MedlinePlus — "Childhood Vaccines" (2024), section "When do I need to vaccinate my child?", p. 1 — https://medlineplus.gov/childhoodimmunization.html
+[2] NHS — "NHS vaccinations and when to have them" (2023), section "NHS vaccinations and when to have them", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/
+[4] NHS — "NHS vaccinations and when to have them" (2023), section "Extra vaccines for at-risk people", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/
+[5] NHS — "NHS vaccinations and when to have them" (2023), section "Vaccines for young people", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/
+[6] MedlinePlus — "Childhood Vaccines" (2024), section "Can vaccines overload my child's immune system?", p. 1 — https://medlineplus.gov/childhoodimmunization.html
+[7] NHS — "NHS vaccinations and when to have them" (2023), section "Extra vaccines for at-risk people", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/
+[8] MedlinePlus — "Childhood Vaccines" (2024), section "Why do I need to vaccinate my child?", p. 1 — https://medlineplus.gov/childhoodimmunization.html
 
 *This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*

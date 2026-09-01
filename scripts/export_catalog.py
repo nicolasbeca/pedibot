@@ -25,8 +25,13 @@ keys = (
 )
 out = [{k: d.get(k) for k in keys} for d in docs]
 target = ROOT / "web" / "site" / "src" / "data" / "sources.json"
-target.write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
-print(f"{len(out)} sources → {target}")
+body = json.dumps(out, ensure_ascii=False, indent=1)
+target.write_text(body, encoding="utf-8")
+# also served as a plain file: it is the provenance of every answer, and other agents buy
+# from us precisely because they can check where the material comes from (ACP resource)
+public = ROOT / "web" / "site" / "public" / "sources.json"
+public.write_text(body, encoding="utf-8")
+print(f"{len(out)} sources → {target} + {public}")
 
 
 # drugs → web/site/src/data/drugs.json (I-29 static dose pages)
