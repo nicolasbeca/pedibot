@@ -52,6 +52,13 @@ ORGS = {
         "evidence": "organismo_publico",
         "usage": "publico",
     },
+    "rki": {
+        "org": "RKI",
+        "org_full": "Robert Koch-Institut (Deutschland)",
+        "license": "Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de)",
+        "evidence": "organismo_publico",
+        "usage": "publico",
+    },
     "who": {
         "org": "WHO",
         "org_full": "World Health Organization",
@@ -537,6 +544,40 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         ["adolescente"],
     ),
     ("who", "https://www.who.int/news-room/fact-sheets/detail/malaria", "general", "en", ["todas"]),
+    # ---------------- Deutsch (fase alemana, 3-sep-2026) ----------------
+    # RKI-Ratgeber: the one German public-health corpus whose licence allows reuse. BZgA
+    # (kindergesundheit-info), the paediatricians' portal and the AWMF guidelines all require
+    # written permission, and there is no German WHO site — see FUENTES/ALEMAN.md.
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Masern.html", "piel", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Varizellen.html", "piel", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Roeteln.html", "piel", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Mumps.html", "general", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Pertussis.html", "respiratorio", "de", ["lactante", "todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Streptococcus_pyogenes.html", "general", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_RSV.html", "respiratorio", "de", ["lactante"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Influenza_saisonal.html", "respiratorio", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Noroviren.html", "digestivo", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Rotaviren.html", "digestivo", "de", ["lactante", "todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HFMK.html", "piel", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Meningokokken.html", "general", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Pneumokokken.html", "respiratorio", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Kopflausbefall.html", "piel", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Skabies.html", "piel", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Salmonellose.html", "digestivo", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Campylobacter.html", "digestivo", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_EHEC.html", "digestivo", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HepatitisA.html", "digestivo", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_LymeBorreliose.html", "piel", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_FSME.html", "general", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Adenovirus_Konjunktivitis.html", "general", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Tuberkulose.html", "respiratorio", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_COVID-19.html", "respiratorio", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Poliomyelitis.html", "general", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Tetanus.html", "accidentes", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Diphtherie.html", "respiratorio", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HaemophilusInfluenzae.html", "respiratorio", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Toxoplasmose.html", "general", "de", ["todas"]),
+    ("rki", "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Zytomegalievirus.html", "general", "de", ["lactante"]),
     # ---------------- Français (fase francesa, opción A del operador, 2-sep-2026) ----------------
     # OMS: espejos en francés de las fichas ya aceptadas (misma licencia CC BY-NC-SA)
     ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/measles", "piel", "fr", ["todas"]),
@@ -588,13 +629,19 @@ def doc_id_for(key: str, url: str, lang: str) -> str:
 
 def page_meta(html: str) -> tuple[str, int | None]:
     soup = BeautifulSoup(html, "html.parser")
-    h1 = soup.find("h1")
-    title = (
-        h1.get_text(" ", strip=True)
-        if h1
-        else (soup.title.get_text(strip=True) if soup.title else "")
-    ).strip()
-    title = re.sub(r"\s*[-|–]\s*(NHS|MedlinePlus|CDC).*$", "", title)
+    # Some sites open with a skip-navigation heading: the RKI's first <h1> is literally
+    # "Navigation und Service", which named all thirty German documents the same thing.
+    CHROME = ("navigation und service", "navigation", "hauptmenü", "menu", "skip to content")
+    title = ""
+    for h1 in soup.find_all("h1"):
+        candidate = h1.get_text(" ", strip=True)
+        if candidate and candidate.lower() not in CHROME:
+            title = candidate
+            break
+    if not title and soup.title:
+        title = soup.title.get_text(strip=True)
+    title = title.strip()
+    title = re.sub(r"\s*[-|–]\s*(NHS|MedlinePlus|CDC|RKI).*$", "", title)
     text = soup.get_text(" ", strip=True)
     year = None
     for rx in _DATE_PATTERNS:
@@ -616,7 +663,7 @@ def main() -> int:
     entries = []
     ok = skipped = failed = 0
     with httpx.Client(
-        headers={"User-Agent": UA, "Accept-Language": "en,es"}, follow_redirects=True, timeout=30
+        headers={"User-Agent": UA, "Accept-Language": "en,es,fr,de"}, follow_redirects=True, timeout=30
     ) as client:
         for key, url, topic, lang, ages in WEB_SOURCES:
             org = ORGS[key]

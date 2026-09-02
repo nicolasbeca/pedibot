@@ -28,12 +28,15 @@ DIST = ROOT / "web" / "site" / "dist"
 # 'sources'/'guides'/'documents' are shared between English and French and are not markers.
 MARKERS: dict[str, tuple[str, ...]] = {
     "es": ("¿", "años", "niño", "hijo", "qué ", "cómo", "vacunas", "urgencias", "guías",
-           "síntomas", "medicación", "dosis", "cuándo", "preguntas frecuentes"),
+           # "dosis" was a marker until German arrived and spells it the same way
+           "síntomas", "medicación", "cuándo", "preguntas frecuentes"),
     "en": ("child", "should", "what ", "when ", "vaccination schedule", "symptom diary",
            "dose calculator", "guidelines", "warning signs", "how it works", "common questions",
            "where they agree", "where they differ"),
     "fr": ("enfant", "urgences", "vaccinal", "posologie", "dois-je", "médicaments",
            "quels ", "âge", "santé", "questions fréquentes"),
+    "de": ("kind", "notaufnahme", "impfkalender", "dosisrechner", "warnzeichen", "soll ich",
+           "ratgeber", "häufige fragen", "quellen", "symptomtagebuch"),
 }
 
 

@@ -10,7 +10,7 @@ const guides = (await getCollection('guides', g => g.data.lang === lang && !g.da
     <p class="eyebrow">{s.nav_guides}</p>
     <h1 style="margin-top:8px">{s.guides_h1}</h1>
     <p class="lede">{s.guides_lede}</p>
-    {guides.length === 0 && <p class="lede" style="margin-top:28px">First guides coming soon.</p>}
+    {guides.length === 0 && <p class="lede" style="margin-top:28px">{s.guides_empty}</p>}
     <p class="count"><input id="gfilter" type="search" placeholder="Filter: fever, cough, vaccines…" autocomplete="off" />
       <span id="gcount">{guides.length} guides</span></p>
     <p id="gempty" class="lede" hidden>No guide matches that word yet — try asking PediBot directly.</p>

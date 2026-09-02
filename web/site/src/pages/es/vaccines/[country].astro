@@ -5,11 +5,13 @@
  * The vaccines guide alone took eight of the twenty-eight visits Google sent in a fortnight, more
  * than any other page. That is a query with real demand and a country-specific answer, so the
  * single tool page becomes a page per schedule — each one a transcribed table with the body that
- * issues it, its source URL and the date it was reviewed, which is the part nobody else publishes
- * next to a plain answer.
+ * issues it, its source URL and the date it was reviewed.
  */
 import Base from '../../../layouts/Base.astro';
 import schedules from '../../../data/vaccines.json';
+import { t } from '../../../i18n';
+
+const lang = 'es'; const s = t(lang);
 
 export async function getStaticPaths() {
   return Object.entries(schedules as any).map(([code, data]) => ({
@@ -19,14 +21,13 @@ export async function getStaticPaths() {
 }
 
 const { code, data } = Astro.props as any;
-const lang = 'es';
-const name = data.name?.[lang] ?? code;
+const name = data.name?.[lang] ?? data.name?.en ?? code;
 // each row carries its own wording ("8 weeks", "12 months"); the computed one is only a fallback
 const label = (row: any) =>
-  row.label?.[lang] ??
-  (row.age === 0 ? 'At birth' : row.age < 24 ? `${row.age} months` : `${Math.round(row.age / 12)} years`);
-const title = `${name}: qué vacunas y cuándo`;
-const desc = `El calendario de vacunación infantil de ${name}: cada edad con las vacunas que tocan y de qué protegen, transcrito de la fuente oficial. No es consejo médico.`;
+  row.label?.[lang] ?? row.label?.en ??
+  (row.age === 0 ? '0' : `${row.age}`);
+const title = s.vaxcountry_title.replace('{name}', name);
+const desc = s.vaxcountry_desc.replace('{name}', name);
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
@@ -39,12 +40,9 @@ const others = Object.entries(schedules as any).filter(([c]) => c !== code);
 ---
 <Base lang={lang} title={`${title} — PediBot`} description={desc} path={`/es/vaccines/${code.toLowerCase()}`} jsonld={jsonld}>
   <div class="narrow" style="padding:40px 18px">
-    <p class="eyebrow">Vacunas</p>
+    <p class="eyebrow">{s.nav_vaccines}</p>
     <h1 style="margin-top:8px">{title}</h1>
-    <p class="lede">
-      Transcrito del calendario que publica su propia autoridad sanitaria — esta tabla no la ha
-      escrito una IA. Quien decide qué le toca a tu hijo es tu servicio de salud.
-    </p>
+    <p class="lede">{s.vaxcountry_lede}</p>
 
     <div class="card" style="margin-top:24px">
       <ul class="sched">
@@ -55,21 +53,21 @@ const others = Object.entries(schedules as any).filter(([c]) => c !== code);
           </li>
         ))}
       </ul>
-      {data.note?.[lang] && <p class="note">{data.note[lang]}</p>}
+      {(data.note?.[lang] ?? data.note?.en) && <p class="note">{data.note[lang] ?? data.note.en}</p>}
       <p class="src">
-        {data.source}{data.source_url && <> · <a href={data.source_url} rel="nofollow noopener" target="_blank">página oficial</a></>}
+        {data.source}{data.source_url && <> · <a href={data.source_url} rel="nofollow noopener" target="_blank">{s.vaxcountry_official}</a></>}
       </p>
     </div>
 
     <p style="margin-top:22px">
-      <a class="btn btn-primary" href="/es/vaccines">Consultar por la edad de tu hijo</a>
-      <a class="btn btn-ghost" href="/es/?q=%C2%BFQu%C3%A9%20vacunas%20le%20tocan%20ahora%3F">Preguntar a PediBot</a>
+      <a class="btn btn-primary" href="/es/vaccines">{s.vaxcountry_by_age}</a>
+      <a class="btn btn-ghost" href={`/es/?q=${encodeURIComponent(s.vaxcountry_ask_q)}`}>{s.ask_about}</a>
     </p>
 
     <p class="n" style="margin-top:26px">
-      Otros calendarios:{' '}
+      {s.vaxcountry_others}{' '}
       {others.map(([c, d]: any) => (
-        <a href={`/es/vaccines/${c.toLowerCase()}`} style="margin-right:10px">{d.name?.[lang] ?? c}</a>
+        <a href={`/es/vaccines/${c.toLowerCase()}`} style="margin-right:10px">{d.name?.[lang] ?? d.name?.en ?? c}</a>
       ))}
     </p>
   </div>

@@ -1,447 +1,571 @@
-# Triaje por reglas. Corre ANTES del LLM. Fuente canónica: SEUP "¿Debo acudir a urgencias?" +
-# hojas SEUP. Patrones = regex (case-insensitive), en español e inglés.
-# level: emergency (llama al 112 / emergencias YA) | urgent (acude a urgencias hoy) | mental_health
-# Cada regla cita su fuente para que el banner sea verificable.
-
 rules:
-  # ---------------- EMERGENCY ----------------
-  - id: not_responding
-    level: emergency
-    source: seup_acudir_urgencias
-    reason_es: "No responde a estímulos"
-    reason_en: "Not responding to stimuli"
-    reason_fr: "Ne répond pas aux stimulations"
-    patterns:
-      - "no responde"
-      - "no reacciona"
-      - "inconsciente"
-      - "no se despierta"
-      - "unresponsive"
-      - "not responding"
-      - "won'?t wake"
-      - "unconscious"
-      - "passed out"
-      # français (3-sep-2026)
-      - "ne r[ée]pond pas"
-      - "ne r[ée]agit pas"
-      - "inconscient"
-      - "ne se r[ée]veille pas"
-      - "perte de connaissance"
-      - "[ée]vanoui"
-  - id: seizure
-    level: emergency
-    source: seup_acudir_urgencias
-    reason_es: "Movimientos anormales / convulsión"
-    reason_en: "Abnormal movements / seizure"
-    reason_fr: "Mouvements anormaux / convulsion"
-    patterns:
-      - "convulsi"
-      - "ataque epil"
-      - "se ha puesto rígid"
-      - "seizure"
-      - "convuls"
-      - "fitting"
-      - "jerking"
-      # français (3-sep-2026)
-      - "crise d'?[ée]pilepsie"
-      - "tout raide"
-      - "des convulsions"
-  - id: severe_breathing
-    level: emergency
-    source: seup_acudir_urgencias
-    reason_es: "Dificultad para respirar grave (se marcan las costillas, respira muy rápido, pausas en la respiración, color azulado)"
-    reason_en: "Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)"
-    reason_fr: "Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)"
-    patterns:
-      - "no puede respirar"
-      - "le cuesta (mucho )?respirar"
-      - "dificultad (grave |seria )?para respirar"
-      - "se le marcan las costillas"
-      - "pausas? (en la|de) respiraci"
-      - "deja de respirar"
-      - "(labios|piel) (azul|morad)"
-      - "azulad"
-      - "can'?t breathe"
-      - "struggling to breathe"
-      - "difficulty breathing"
-      - "ribs (are )?(pulling|sucking) in"
-      - "stopp?ed breathing"
-      - "(lips|skin) (are |is )?(blue|purple|grey|gray)"
-      - "turning blue"
-      # français (3-sep-2026)
-      - "ne peut pas respirer"
-      - "n'arrive pas [aà] respirer"
-      - "du mal [aà] respirer"
-      - "difficult[ée] [aà] respirer"
-      - "arr[eê]t[ée]? de respirer"
-      - "pauses? respiratoires?"
-      - "(l[eè]vres|peau) bleu"
-      - "bleut[ée]"
-      - "cyanos"
-  - id: anaphylaxis
-    level: emergency
-    source: seup_anafilaxia
-    reason_es: "Sospecha de reacción alérgica grave (hinchazón de labios/párpados con dificultad para respirar, vómitos o mareo)"
-    reason_en: "Suspected severe allergic reaction (swollen lips/eyelids with breathing difficulty, vomiting or dizziness)"
-    reason_fr: "Suspicion de réaction allergique grave (gonflement des lèvres/paupières avec difficulté à respirer, vomissements ou malaise)"
-    patterns:
-      - "anafila"
-      - "hinchaz[oó]n de (labios|lengua|p[aá]rpados|cara|garganta)"
-      - "(labios|lengua|cara) hinchad"
-      - "anaphyla"
-      - "(lips|tongue|face|throat) (is |are )?swell"
-      - "swollen (lips|tongue|face|throat)"
-      # français (3-sep-2026)
-      - "gonflement (des?|de la) (l[eè]vres?|langue|paupi[eè]res?|visage|gorge)"
-      - "(l[eè]vres|langue|visage|gorge) (est |sont )?gonfl[ée]"
-  - id: choking
-    level: emergency
-    source: seup_acudir_urgencias
-    reason_es: "Atragantamiento con dificultad para respirar"
-    reason_en: "Choking with breathing difficulty"
-    reason_fr: "Étouffement avec difficulté à respirer"
-    patterns:
-      - "atragant"
-      - "se est[aá] ahogando"
-      - "choking"
-      - "something stuck in (his|her|their) throat"
-      # français (3-sep-2026)
-      - "s'[ée]touffe"
-      - "[ée]touffement"
-      - "fausse route"
-      - "aval[ée] de travers"
-      - "coinc[ée] dans la gorge"
-  - id: mottled_skin
-    level: emergency
-    source: seup_acudir_urgencias
-    reason_es: "Mala coloración (palidez extrema, piel moteada, azul o grisácea)"
-    reason_en: "Poor colour (extreme pallor, mottled, blue or greyish skin)"
-    reason_fr: "Mauvaise coloration (pâleur extrême, peau marbrée, bleue ou grise)"
-    patterns:
-      - "piel moteada"
-      - "(color|piel) gris"
-      - "mottled"
-      - "greyish skin"
-      # français (3-sep-2026)
-      - "peau (est )?(toute )?marbr[ée]e"
-      - "marbrures"
-      - "peau.{0,14}gris"
-  - id: head_injury_loss_consciousness
-    level: emergency
-    source: seup_tce
-    reason_es: "Golpe en la cabeza con pérdida de conocimiento"
-    reason_en: "Head injury with loss of consciousness"
-    reason_fr: "Coup à la tête avec perte de connaissance"
-    patterns:
-      - "(golpe|cabeza|ca[ií]d).{0,80}(perdi[oó] el conocimiento|inconsciente|desmay)"
-      - "(head|fell|fall|hit).{0,80}(knocked out|unconscious|passed out|lost consciousness)"
-      # français (3-sep-2026)
-      - "(t[eê]te|tomb[ée]|chute|cogn[ée]).{0,80}(perdu connaissance|inconscient|[ée]vanoui)"
-  - id: severe_bleeding
-    level: emergency
-    source: seup_acudir_urgencias
-    reason_es: "Herida profunda con sangrado abundante que no cede tras 10 minutos de presión"
-    reason_en: "Deep wound with heavy bleeding that does not stop after 10 minutes of pressure"
-    reason_fr: "Plaie profonde qui saigne abondamment malgré 10 minutes de compression"
-    patterns:
-      - "sangra (mucho|sin parar|a chorro)"
-      - "no (para|deja) de sangrar"
-      - "hemorragia"
-      - "bleeding (heavily|a lot|won'?t stop)"
-      - "won'?t stop bleeding"
-      # français (3-sep-2026)
-      - "saigne (beaucoup|sans arr[eê]t|abondamment)"
-      - "n'arr[eê]te pas de saigner"
-      - "h[ée]morragie"
-  - id: open_fracture
-    level: emergency
-    source: seup_acudir_urgencias
-    reason_es: "Fractura abierta (se ve el hueso)"
-    reason_en: "Open fracture (bone is visible)"
-    reason_fr: "Fracture ouverte (l'os est visible)"
-    patterns:
-      - "se (le )?ve el hueso"
-      - "fractura abierta"
-      - "bone (is )?(sticking|showing|visible)"
-      - "open fracture"
-      # français (3-sep-2026)
-      - "fracture ouverte"
-      - "on voit l'os"
-  - id: petechiae_fever
-    level: emergency
-    source: seup_fiebre
-    reason_es: "Manchas en la piel que no desaparecen al presionar (posible sepsis/meningitis)"
-    reason_en: "Spots on the skin that do not fade when pressed (possible sepsis/meningitis)"
-    reason_fr: "Taches sur la peau qui ne s'effacent pas à la pression (possible sepsis/méningite)"
-    patterns:
-      - "manchas.{0,60}no (desaparecen|se van|se quitan|blanquean).{0,30}(presion|apret)"
-      - "petequia"
-      - "(spots|rash).{0,60}(don'?t|do not|doesn'?t) (fade|disappear|go away).{0,30}press"
-      - "petechia"
-      - "glass test"
-
-  # ---------------- URGENT ----------------
-      # français (3-sep-2026)
-      - "taches.{0,60}ne (disparaissent|partent|s'effacent) pas.{0,40}(appuie|pression|presse)"
-      - "p[ée]t[ée]chie"
-  - id: infant_fever_under_3_months
-    level: urgent
-    source: seup_acudir_urgencias
-    reason_es: "Bebé menor de 3 meses con fiebre (≥38 °C)"
-    reason_en: "Baby under 3 months with fever (≥38 °C / 100.4 °F)"
-    reason_fr: "Bébé de moins de 3 mois avec de la fièvre (≥38 °C)"
-    requires: [age_under_3_months, fever]
-  - id: very_high_fever
-    level: urgent
-    source: seup_acudir_urgencias
-    reason_es: "Fiebre de más de 40,5 °C"
-    reason_en: "Fever above 40.5 °C (105 °F)"
-    reason_fr: "Fièvre au-dessus de 40,5 °C"
-    patterns:
-      - "4[1-2][,\\.]?\\d?\\s*(°|º|grados|ºc|°c)"
-      - "40[,\\.][5-9]\\s*(°|º|grados|ºc|°c)?"
-      - "10[5-7](\\.\\d)?\\s*(°|º)?\\s*f\\b"
-      # français (3-sep-2026)
-      - "4[1-2][,\\.]?\\d?\\s*degr[ée]s"
-      - "40[,\\.][5-9]\\s*degr[ée]s"
-  - id: moderate_breathing
-    level: urgent
-    source: seup_acudir_urgencias
-    reason_es: "Dificultad para respirar: respira rápido, «pitido» al respirar, se marcan las costillas"
-    reason_en: "Breathing difficulty: fast breathing, wheezing, ribs pulling in"
-    reason_fr: "Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent"
-    patterns:
-      - "respira (r[aá]pido|muy r[aá]pido|agitad)"
-      - "pitos? al respirar"
-      - "respira con pitos"
-      - "(con|hace) pitos"
-      - "pitido"
-      - "silbido"
-      - "breathing fast"
-      - "fast breathing"
-      - "wheez"
-      - "whistling"
-      # français (3-sep-2026)
-      - "respire (vite|tr[eè]s vite|rapidement)"
-      - "respiration sifflante"
-      - "siffle (en respirant)?"
-      - "sifflements?"
-      - "tirage"
-  - id: drowsy_irritable
-    level: urgent
-    source: seup_acudir_urgencias
-    reason_es: "Irritabilidad o somnolencia excesivas"
-    reason_en: "Excessive irritability or drowsiness"
-    reason_fr: "Irritabilité ou somnolence excessives"
-    patterns:
-      - "(muy|demasiado) (adormilad|dormid|somnolient|decaíd|decaid|apagad)"
-      - "no se le puede despertar"
-      - "cuesta despertarl"
-      - "irritab.{0,20}(mucho|extrem|incontrol)"
-      - "llanto inconsolable"
-      - "(very|extremely|unusually) (drowsy|sleepy|floppy|limp|lethargic)"
-      - "hard to wake"
-      - "inconsolable"
-      - "lethargic"
-      # français (3-sep-2026)
-      - "(tr[eè]s|trop) (somnolent|endormi|mou|apathique|abattu)"
-      - "difficile [aà] r[ée]veiller"
-      - "pleurs inconsolables"
-      - "l[ée]thargique"
-  - id: dehydration
-    level: urgent
-    source: seup_gastroenteritis
-    reason_es: "Signos de deshidratación: ojos hundidos, orina poco, boca seca, vómitos persistentes o diarrea abundante >24 h"
-    reason_en: "Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h"
-    reason_fr: "Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h"
-    patterns:
-      - "ojos hundidos"
-      - "no (hace|ha hecho) pis"
-      - "orina (muy )?poco"
-      - "pañal seco"
-      - "sin l[aá]grimas"
-      - "deshidrat"
-      - "sunken eyes"
-      - "(no|hasn'?t|not) (peed|urinated|wet)"
-      - "dry (nappy|diaper)"
-      - "no tears"
-      - "dehydrat"
-      # français (3-sep-2026)
-      - "yeux enfonc[ée]s"
-      - "ne fait plus pipi"
-      - "n'a pas urin[ée]"
-      - "couche s[eè]che"
-      - "sans larmes"
-      - "d[ée]shydrat"
-  - id: vomiting_headache
-    level: urgent
-    source: seup_acudir_urgencias
-    reason_es: "Vómitos repetidos con dolor de cabeza fuerte"
-    reason_en: "Repeated vomiting with severe headache"
-    reason_fr: "Vomissements répétés avec fort mal de tête"
-    patterns:
-      - "v[oó]mit.{0,80}dolor de cabeza"
-      - "dolor de cabeza.{0,80}v[oó]mit"
-      - "vomit.{0,80}headache"
-      - "headache.{0,80}vomit"
-      # français (3-sep-2026)
-      - "vomi.{0,80}mal de t[eê]te"
-      - "mal de t[eê]te.{0,80}vomi"
-  - id: vomiting_after_head_injury
-    level: urgent
-    source: seup_tce
-    reason_es: "Vómitos tras un golpe en la cabeza"
-    reason_en: "Vomiting after a head injury"
-    reason_fr: "Vomissements après un coup à la tête"
-    patterns:
-      - "(golpe|cabeza|ca[ií]d).{0,100}v[oó]mit"
-      - "v[oó]mit.{0,100}(golpe en la cabeza|cabeza)"
-      - "(head|fell|fall|hit).{0,100}vomit"
-      - "vomit.{0,100}(head|fell|fall)"
-      # français (3-sep-2026)
-      - "(t[eê]te|tomb[ée]|chute|cogn[ée]).{0,100}vomi"
-      - "vomi.{0,100}(t[eê]te|chute)"
-  - id: foreign_body_ingestion
-    level: urgent
-    source: seup_acudir_urgencias
-    reason_es: "Ingesta de un objeto (sobre todo pilas o imanes)"
-    reason_en: "Swallowed an object (especially batteries or magnets)"
-    reason_fr: "Ingestion d'un objet (surtout piles ou aimants)"
-    patterns:
-      - "(se ha tragado|ha tragado|trag[oó]).{0,40}(pila|im[aá]n|moneda|objeto|bater[ií]a)"
-      - "(pila|im[aá]n|moneda).{0,40}(trag|comid)"
-      - "swallowed.{0,40}(battery|magnet|coin|object|toy)"
-      - "(battery|magnet|coin).{0,40}swallow"
-      # français (3-sep-2026)
-      - "(a aval[ée]|aval[ée]).{0,40}(pile|aimant|pi[eè]ce|objet|bille|bouton)"
-      - "(pile|aimant|pi[eè]ce).{0,40}aval"
-  - id: poisoning
-    level: urgent
-    source: seup_intoxicaciones
-    reason_es: "Ingesta de productos tóxicos o sobredosis de medicamentos"
-    reason_en: "Ingestion of toxic products or medication overdose"
-    reason_fr: "Ingestion de produits toxiques ou surdose de médicaments"
-    patterns:
-      - "(ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado).{0,60}(lej[ií]a|detergente|amoniaco|producto de limpieza|pastillas|medicament|jarabe entero|alcohol|colonia|gasolina|pila|planta)"
-      - "intoxica"
-      - "sobredosis"
-      - "(drank|swallowed|took|ate).{0,60}(bleach|detergent|cleaning|pills|medication|medicine|tablets|alcohol|perfume|petrol|gasoline|plant|dishwasher)"
-      - "poison"
-      - "overdose"
-      # français (3-sep-2026)
-      - "(a bu|a aval[ée]|a pris).{0,60}(javel|d[ée]tergent|produit m[ée]nager|comprim[ée]s|m[ée]dicament|sirop|alcool|parfum|essence|plante|lessive)"
-      - "intoxiqu"
-      - "surdose"
-  - id: severe_abdominal_pain
-    level: urgent
-    source: seup_dolor_abdominal
-    reason_es: "Dolor de barriga fuerte, continuo, que empeora"
-    reason_en: "Severe, continuous, worsening abdominal pain"
-    reason_fr: "Mal de ventre fort, continu, qui empire"
-    patterns:
-      - "dolor (de barriga|abdominal|de tripa).{0,60}(muy fuerte|insoportable|no para|empeora|continuo)"
-      - "(muy fuerte|insoportable).{0,30}(barriga|tripa|abdom)"
-      - "(severe|terrible|unbearable|worsening).{0,30}(stomach|belly|abdominal|tummy)"
-      - "(stomach|belly|tummy).{0,40}(severe|unbearable|getting worse)"
-      # français (3-sep-2026)
-      - "mal au ventre.{0,60}(tr[eè]s fort|insupportable|empire|continu)"
-      - "(tr[eè]s fort|insupportable).{0,30}ventre"
-      - "douleur abdominale.{0,40}(forte|insupportable|empire)"
-  - id: deformity_fracture
-    level: urgent
-    source: seup_acudir_urgencias
-    reason_es: "Traumatismo con deformidad aparente / herida que precisa sutura"
-    reason_en: "Injury with visible deformity / wound that needs stitches"
-    reason_fr: "Traumatisme avec déformation visible / plaie qui nécessite des points"
-    patterns:
-      - "deform"
-      - "(brazo|pierna|mu[ñn]eca|dedo|tobillo).{0,40}(torcid|raro|doblad)"
-      - "necesita puntos"
-      - "deform"
-      - "(arm|leg|wrist|finger|ankle).{0,40}(bent|crooked|deformed)"
-      - "needs stitches"
-      # français (3-sep-2026)
-      - "(bras|jambe|poignet|doigt|cheville).{0,40}(tordu|d[ée]form[ée]|bizarre)"
-      - "points de suture"
-  - id: newborn_refusing_feeds
-    level: urgent
-    source: seup_acudir_urgencias
-    reason_es: "Bebé menor de 1 mes que rechaza las tomas"
-    reason_en: "Baby under 1 month refusing feeds"
-    reason_fr: "Bébé de moins d'un mois qui refuse de téter"
-    patterns:
-      - "(reci[eé]n nacido|\\b[1-4] semanas|\\b\\d{1,2} d[ií]as).{0,80}(no (quiere )?(come|mama|toma)|rechaz|rechac)"
-      - "(newborn|\\b[1-4] weeks? old|\\b\\d{1,2} days? old).{0,80}(refus|won'?t (feed|eat|nurse)|not feeding)"
-      # français (3-sep-2026)
-      - "(nouveau[- ]n[ée]|\\b[1-4] semaines|\\b\\d{1,2} jours).{0,80}(refuse|ne (veut pas )?(t[ée]ter|manger|boire))"
-  - id: burn
-    level: urgent
-    source: ninojesus_primeros_auxilios
-    reason_es: "Quemadura (especialmente en cara, manos, genitales o extensa)"
-    reason_en: "Burn (especially face, hands, genitals or large area)"
-    reason_fr: "Brûlure (surtout au visage, aux mains, aux parties génitales ou étendue)"
-    patterns:
-      - "quemad"
-      - "escaldad"
-      - "burn(ed|t)? (his|her|their|him|self)"
-      - "scald"
-      - "\\bburn\\b"
-
-  # ---------------- MENTAL HEALTH (fixed protocol) ----------------
-      # français (3-sep-2026)
-      - "br[uû]l"
-      - "[ée]bouillant"
-  - id: suicidal_ideation
-    level: mental_health
-    source: seup_conducta_suicida
-    reason_es: "Expresa pensamientos suicidas"
-    reason_en: "Expressing suicidal thoughts"
-    reason_fr: "Exprime des pensées suicidaires"
-    patterns:
-      - "suicid"
-      - "quitarse la vida"
-      - "no quiere vivir"
-      - "quiere morir"
-      - "matarse"
-      - "kill (him|her|them)self"
-      - "wants? to die"
-      - "doesn'?t want to live"
-      - "end (his|her|their) life"
-      # français (3-sep-2026)
-      - "veut mourir"
-      - "ne veut plus vivre"
-      - "se tuer"
-      - "mettre fin [aà] ses jours"
-  - id: self_harm
-    level: mental_health
-    source: seup_autolesion
-    reason_es: "Conducta autolesiva"
-    reason_en: "Self-harm"
-    reason_fr: "Conduite auto-agressive"
-    patterns:
-      - "se (hace|ha hecho) cortes"
-      - "se corta"
-      - "autoles"
-      - "self[- ]harm"
-      - "cutting (him|her|them)self"
-      - "cuts? (him|her|them)self"
-
-# Extractores de contexto usados por reglas con `requires`
-      # français (3-sep-2026)
-      - "se (fait du mal|mutile|coupe|scarifie)"
-      - "automutil"
-      - "scarification"
+- id: not_responding
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: No responde a estímulos
+  reason_en: Not responding to stimuli
+  reason_fr: Ne répond pas aux stimulations
+  patterns:
+  - no responde
+  - no reacciona
+  - inconsciente
+  - no se despierta
+  - unresponsive
+  - not responding
+  - won'?t wake
+  - unconscious
+  - passed out
+  - ne r[ée]pond pas
+  - ne r[ée]agit pas
+  - inconscient
+  - ne se r[ée]veille pas
+  - perte de connaissance
+  - '[ée]vanoui'
+  - reagiert nicht
+  - nicht ansprechbar
+  - bewusstlos
+  - wacht nicht auf
+  - wird nicht wach
+  - ohnmächtig
+  - ohnmacht
+  reason_de: Reagiert nicht auf Ansprache
+- id: seizure
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: Movimientos anormales / convulsión
+  reason_en: Abnormal movements / seizure
+  reason_fr: Mouvements anormaux / convulsion
+  patterns:
+  - convulsi
+  - ataque epil
+  - se ha puesto rígid
+  - seizure
+  - convuls
+  - fitting
+  - jerking
+  - crise d'?[ée]pilepsie
+  - tout raide
+  - des convulsions
+  - krampf
+  - krampfanfall
+  - zuckt
+  - zuckungen
+  - anfall
+  - fieberkrampf
+  - epilep
+  reason_de: Auffällige Bewegungen / Krampfanfall
+- id: severe_breathing
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: Dificultad para respirar grave (se marcan las costillas, respira muy rápido, pausas en la respiración, color azulado)
+  reason_en: Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)
+  reason_fr: Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)
+  patterns:
+  - no puede respirar
+  - le cuesta (mucho )?respirar
+  - dificultad (grave |seria )?para respirar
+  - se le marcan las costillas
+  - pausas? (en la|de) respiraci
+  - deja de respirar
+  - (labios|piel) (azul|morad)
+  - azulad
+  - can'?t breathe
+  - struggling to breathe
+  - difficulty breathing
+  - ribs (are )?(pulling|sucking) in
+  - stopp?ed breathing
+  - (lips|skin) (are |is )?(blue|purple|grey|gray)
+  - turning blue
+  - ne peut pas respirer
+  - n'arrive pas [aà] respirer
+  - du mal [aà] respirer
+  - difficult[ée] [aà] respirer
+  - arr[eê]t[ée]? de respirer
+  - pauses? respiratoires?
+  - (l[eè]vres|peau) bleu
+  - bleut[ée]
+  - cyanos
+  - atemnot
+  - bekommt keine luft
+  - kriegt keine luft
+  - atmet schwer
+  - schwer am atmen
+  - einziehungen
+  - atempausen
+  - blau anlaufen
+  - läuft blau an
+  - keucht
+  - ringt nach luft
+  reason_de: Schwere Atemnot (Einziehungen, sehr schnelle Atmung, Atempausen, blaue Färbung)
+- id: anaphylaxis
+  level: emergency
+  source: seup_anafilaxia
+  reason_es: Sospecha de reacción alérgica grave (hinchazón de labios/párpados con dificultad para respirar, vómitos o mareo)
+  reason_en: Suspected severe allergic reaction (swollen lips/eyelids with breathing difficulty, vomiting or dizziness)
+  reason_fr: Suspicion de réaction allergique grave (gonflement des lèvres/paupières avec difficulté à respirer, vomissements ou malaise)
+  patterns:
+  - anafila
+  - hinchaz[oó]n de (labios|lengua|p[aá]rpados|cara|garganta)
+  - (labios|lengua|cara) hinchad
+  - anaphyla
+  - (lips|tongue|face|throat) (is |are )?swell
+  - swollen (lips|tongue|face|throat)
+  - gonflement (des?|de la) (l[eè]vres?|langue|paupi[eè]res?|visage|gorge)
+  - (l[eè]vres|langue|visage|gorge) (est |sont )?gonfl[ée]
+  - allergische reaktion
+  - lippen geschwollen
+  - geschwollene lippen
+  - gesicht geschwollen
+  - zunge geschwollen
+  - quaddeln
+  reason_de: Verdacht auf schwere allergische Reaktion (geschwollene Lippen oder Lider mit Atemnot, Erbrechen oder Schwindel)
+- id: choking
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: Atragantamiento con dificultad para respirar
+  reason_en: Choking with breathing difficulty
+  reason_fr: Étouffement avec difficulté à respirer
+  patterns:
+  - atragant
+  - se est[aá] ahogando
+  - choking
+  - something stuck in (his|her|their) throat
+  - s'[ée]touffe
+  - '[ée]touffement'
+  - fausse route
+  - aval[ée] de travers
+  - coinc[ée] dans la gorge
+  - erstick
+  - verschluckt sich
+  - hat sich verschluckt
+  - bekommt nichts mehr durch
+  - steckt im hals
+  reason_de: Erstickungsgefahr mit Atemnot
+- id: mottled_skin
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: Mala coloración (palidez extrema, piel moteada, azul o grisácea)
+  reason_en: Poor colour (extreme pallor, mottled, blue or greyish skin)
+  reason_fr: Mauvaise coloration (pâleur extrême, peau marbrée, bleue ou grise)
+  patterns:
+  - piel moteada
+  - (color|piel) gris
+  - mottled
+  - greyish skin
+  - peau (est )?(toute )?marbr[ée]e
+  - marbrures
+  - peau.{0,14}gris
+  - marmoriert
+  - blaue lippen
+  - blau im gesicht
+  - graue haut
+  - ganz blass
+  - auffallend blass
+  - blass und kalt
+  reason_de: Schlechte Hautfarbe (auffallende Blässe, marmoriert, blau oder grau)
+- id: head_injury_loss_consciousness
+  level: emergency
+  source: seup_tce
+  reason_es: Golpe en la cabeza con pérdida de conocimiento
+  reason_en: Head injury with loss of consciousness
+  reason_fr: Coup à la tête avec perte de connaissance
+  patterns:
+  - (golpe|cabeza|ca[ií]d).{0,80}(perdi[oó] el conocimiento|inconsciente|desmay)
+  - (head|fell|fall|hit).{0,80}(knocked out|unconscious|passed out|lost consciousness)
+  - (t[eê]te|tomb[ée]|chute|cogn[ée]).{0,80}(perdu connaissance|inconscient|[ée]vanoui)
+  - kopf gestoßen.{0,40}bewusstlos
+  - sturz auf den kopf.{0,40}bewusstlos
+  - war kurz weg
+  - kurz bewusstlos
+  reason_de: Kopfverletzung mit Bewusstlosigkeit
+- id: severe_bleeding
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: Herida profunda con sangrado abundante que no cede tras 10 minutos de presión
+  reason_en: Deep wound with heavy bleeding that does not stop after 10 minutes of pressure
+  reason_fr: Plaie profonde qui saigne abondamment malgré 10 minutes de compression
+  patterns:
+  - sangra (mucho|sin parar|a chorro)
+  - no (para|deja) de sangrar
+  - hemorragia
+  - bleeding (heavily|a lot|won'?t stop)
+  - won'?t stop bleeding
+  - saigne (beaucoup|sans arr[eê]t|abondamment)
+  - n'arr[eê]te pas de saigner
+  - h[ée]morragie
+  - blutet stark
+  - starke blutung
+  - blutet nicht auf
+  - hört nicht auf zu bluten
+  reason_de: Tiefe Wunde, die nach 10 Minuten Druck weiterblutet
+- id: open_fracture
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: Fractura abierta (se ve el hueso)
+  reason_en: Open fracture (bone is visible)
+  reason_fr: Fracture ouverte (l'os est visible)
+  patterns:
+  - se (le )?ve el hueso
+  - fractura abierta
+  - bone (is )?(sticking|showing|visible)
+  - open fracture
+  - fracture ouverte
+  - on voit l'os
+  - knochen sichtbar
+  - offener bruch
+  - knochen schaut raus
+  reason_de: Offener Bruch (Knochen sichtbar)
+- id: petechiae_fever
+  level: emergency
+  source: seup_fiebre
+  reason_es: Manchas en la piel que no desaparecen al presionar (posible sepsis/meningitis)
+  reason_en: Spots on the skin that do not fade when pressed (possible sepsis/meningitis)
+  reason_fr: Taches sur la peau qui ne s'effacent pas à la pression (possible sepsis/méningite)
+  patterns:
+  - manchas.{0,60}no (desaparecen|se van|se quitan|blanquean).{0,30}(presion|apret)
+  - petequia
+  - (spots|rash).{0,60}(don'?t|do not|doesn'?t) (fade|disappear|go away).{0,30}press
+  - petechia
+  - glass test
+  - taches.{0,60}ne (disparaissent|partent|s'effacent) pas.{0,40}(appuie|pression|presse)
+  - p[ée]t[ée]chie
+  - flecken.{0,40}nicht weg
+  - punkte.{0,40}nicht weg
+  - glastest
+  - petechien
+  - verschwinden nicht.{0,20}druck
+  reason_de: Flecken auf der Haut, die auf Druck nicht verschwinden (möglicherweise Sepsis oder Meningitis)
+- id: infant_fever_under_3_months
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: Bebé menor de 3 meses con fiebre (≥38 °C)
+  reason_en: Baby under 3 months with fever (≥38 °C / 100.4 °F)
+  reason_fr: Bébé de moins de 3 mois avec de la fièvre (≥38 °C)
+  requires:
+  - age_under_3_months
+  - fever
+  reason_de: Säugling unter 3 Monaten mit Fieber (≥ 38 °C)
+  patterns:
+  - baby.{0,30}fieber
+  - säugling.{0,30}fieber
+  - neugeboren.{0,40}fieber
+- id: very_high_fever
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: Fiebre de más de 40,5 °C
+  reason_en: Fever above 40.5 °C (105 °F)
+  reason_fr: Fièvre au-dessus de 40,5 °C
+  patterns:
+  - 4[1-2][,\.]?\d?\s*(°|º|grados|ºc|°c)
+  - 40[,\.][5-9]\s*(°|º|grados|ºc|°c)?
+  - 10[5-7](\.\d)?\s*(°|º)?\s*f\b
+  - 4[1-2][,\.]?\d?\s*degr[ée]s
+  - 40[,\.][5-9]\s*degr[ée]s
+  - 4[01][,\.]\d\s*grad
+  - über 40 grad
+  - 41 grad
+  - 42 grad
+  reason_de: Fieber über 40,5 °C
+- id: moderate_breathing
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: 'Dificultad para respirar: respira rápido, «pitido» al respirar, se marcan las costillas'
+  reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
+  reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
+  patterns:
+  - respira (r[aá]pido|muy r[aá]pido|agitad)
+  - pitos? al respirar
+  - respira con pitos
+  - (con|hace) pitos
+  - pitido
+  - silbido
+  - breathing fast
+  - fast breathing
+  - wheez
+  - whistling
+  - respire (vite|tr[eè]s vite|rapidement)
+  - respiration sifflante
+  - siffle (en respirant)?
+  - sifflements?
+  - tirage
+  - pfeifende atmung
+  - giemen
+  - schnelle atmung
+  - atmet schnell
+  - kurzatmig
+  reason_de: 'Atembeschwerden: schnelle Atmung, Pfeifen, Einziehungen'
+- id: drowsy_irritable
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: Irritabilidad o somnolencia excesivas
+  reason_en: Excessive irritability or drowsiness
+  reason_fr: Irritabilité ou somnolence excessives
+  patterns:
+  - (muy|demasiado) (adormilad|dormid|somnolient|decaíd|decaid|apagad)
+  - no se le puede despertar
+  - cuesta despertarl
+  - irritab.{0,20}(mucho|extrem|incontrol)
+  - llanto inconsolable
+  - (very|extremely|unusually) (drowsy|sleepy|floppy|limp|lethargic)
+  - hard to wake
+  - inconsolable
+  - lethargic
+  - (tr[eè]s|trop) (somnolent|endormi|mou|apathique|abattu)
+  - difficile [aà] r[ée]veiller
+  - pleurs inconsolables
+  - l[ée]thargique
+  - sehr schläfrig
+  - schläft nur
+  - apathisch
+  - teilnahmslos
+  - schreit untröstlich
+  - lässt sich nicht beruhigen
+  reason_de: Auffällige Unruhe oder Schläfrigkeit
+- id: dehydration
+  level: urgent
+  source: seup_gastroenteritis
+  reason_es: 'Signos de deshidratación: ojos hundidos, orina poco, boca seca, vómitos persistentes o diarrea abundante >24 h'
+  reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
+  reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
+  patterns:
+  - ojos hundidos
+  - no (hace|ha hecho) pis
+  - orina (muy )?poco
+  - pañal seco
+  - sin l[aá]grimas
+  - deshidrat
+  - sunken eyes
+  - (no|hasn'?t|not) (peed|urinated|wet)
+  - dry (nappy|diaper)
+  - no tears
+  - dehydrat
+  - yeux enfonc[ée]s
+  - ne fait plus pipi
+  - n'a pas urin[ée]
+  - couche s[eè]che
+  - sans larmes
+  - d[ée]shydrat
+  - eingesunkene augen
+  - wenig pipi
+  - kaum urin
+  - windel bleibt trocken
+  - trinkt nichts
+  - trockener mund
+  - erbricht seit
+  - durchfall seit
+  reason_de: 'Zeichen von Austrocknung: eingesunkene Augen, wenig Urin, trockener Mund, anhaltendes Erbrechen oder starker Durchfall über 24 h'
+- id: vomiting_headache
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: Vómitos repetidos con dolor de cabeza fuerte
+  reason_en: Repeated vomiting with severe headache
+  reason_fr: Vomissements répétés avec fort mal de tête
+  patterns:
+  - v[oó]mit.{0,80}dolor de cabeza
+  - dolor de cabeza.{0,80}v[oó]mit
+  - vomit.{0,80}headache
+  - headache.{0,80}vomit
+  - vomi.{0,80}mal de t[eê]te
+  - mal de t[eê]te.{0,80}vomi
+  - erbricht.{0,40}kopfschmerz
+  - kopfschmerz.{0,40}erbricht
+  - kopfweh.{0,30}erbrochen
+  reason_de: Wiederholtes Erbrechen mit starken Kopfschmerzen
+- id: vomiting_after_head_injury
+  level: urgent
+  source: seup_tce
+  reason_es: Vómitos tras un golpe en la cabeza
+  reason_en: Vomiting after a head injury
+  reason_fr: Vomissements après un coup à la tête
+  patterns:
+  - (golpe|cabeza|ca[ií]d).{0,100}v[oó]mit
+  - v[oó]mit.{0,100}(golpe en la cabeza|cabeza)
+  - (head|fell|fall|hit).{0,100}vomit
+  - vomit.{0,100}(head|fell|fall)
+  - (t[eê]te|tomb[ée]|chute|cogn[ée]).{0,100}vomi
+  - vomi.{0,100}(t[eê]te|chute)
+  - kopf gestoßen.{0,50}erbroch
+  - sturz.{0,40}kopf.{0,40}erbroch
+  - gegen den kopf.{0,50}übergeben
+  reason_de: Erbrechen nach einer Kopfverletzung
+- id: foreign_body_ingestion
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: Ingesta de un objeto (sobre todo pilas o imanes)
+  reason_en: Swallowed an object (especially batteries or magnets)
+  reason_fr: Ingestion d'un objet (surtout piles ou aimants)
+  patterns:
+  - (se ha tragado|ha tragado|trag[oó]).{0,40}(pila|im[aá]n|moneda|objeto|bater[ií]a)
+  - (pila|im[aá]n|moneda).{0,40}(trag|comid)
+  - swallowed.{0,40}(battery|magnet|coin|object|toy)
+  - (battery|magnet|coin).{0,40}swallow
+  - (a aval[ée]|aval[ée]).{0,40}(pile|aimant|pi[eè]ce|objet|bille|bouton)
+  - (pile|aimant|pi[eè]ce).{0,40}aval
+  - hat.{0,25}verschluckt
+  - knopfzelle
+  - batterie verschluckt
+  - magnet verschluckt
+  - münze verschluckt
+  reason_de: Gegenstand verschluckt (besonders Batterien oder Magnete)
+- id: poisoning
+  level: urgent
+  source: seup_intoxicaciones
+  reason_es: Ingesta de productos tóxicos o sobredosis de medicamentos
+  reason_en: Ingestion of toxic products or medication overdose
+  reason_fr: Ingestion de produits toxiques ou surdose de médicaments
+  patterns:
+  - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado).{0,60}(lej[ií]a|detergente|amoniaco|producto de limpieza|pastillas|medicament|jarabe entero|alcohol|colonia|gasolina|pila|planta)
+  - intoxica
+  - sobredosis
+  - (drank|swallowed|took|ate).{0,60}(bleach|detergent|cleaning|pills|medication|medicine|tablets|alcohol|perfume|petrol|gasoline|plant|dishwasher)
+  - poison
+  - overdose
+  - (a bu|a aval[ée]|a pris).{0,60}(javel|d[ée]tergent|produit m[ée]nager|comprim[ée]s|m[ée]dicament|sirop|alcool|parfum|essence|plante|lessive)
+  - intoxiqu
+  - surdose
+  - vergiftung
+  - putzmittel getrunken
+  - hat medikamente genommen
+  - tabletten genommen
+  - zu viel.{0,20}(paracetamol|ibuprofen)
+  reason_de: Giftige Stoffe oder zu viel Medikament eingenommen
+- id: severe_abdominal_pain
+  level: urgent
+  source: seup_dolor_abdominal
+  reason_es: Dolor de barriga fuerte, continuo, que empeora
+  reason_en: Severe, continuous, worsening abdominal pain
+  reason_fr: Mal de ventre fort, continu, qui empire
+  patterns:
+  - dolor (de barriga|abdominal|de tripa).{0,60}(muy fuerte|insoportable|no para|empeora|continuo)
+  - (muy fuerte|insoportable).{0,30}(barriga|tripa|abdom)
+  - (severe|terrible|unbearable|worsening).{0,30}(stomach|belly|abdominal|tummy)
+  - (stomach|belly|tummy).{0,40}(severe|unbearable|getting worse)
+  - mal au ventre.{0,60}(tr[eè]s fort|insupportable|empire|continu)
+  - (tr[eè]s fort|insupportable).{0,30}ventre
+  - douleur abdominale.{0,40}(forte|insupportable|empire)
+  - starke bauchschmerzen
+  - bauch tut sehr weh
+  - krümmt sich vor schmerzen
+  - bauch ist hart
+  reason_de: Starke, anhaltende, zunehmende Bauchschmerzen
+- id: deformity_fracture
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: Traumatismo con deformidad aparente / herida que precisa sutura
+  reason_en: Injury with visible deformity / wound that needs stitches
+  reason_fr: Traumatisme avec déformation visible / plaie qui nécessite des points
+  patterns:
+  - deform
+  - (brazo|pierna|mu[ñn]eca|dedo|tobillo).{0,40}(torcid|raro|doblad)
+  - necesita puntos
+  - deform
+  - (arm|leg|wrist|finger|ankle).{0,40}(bent|crooked|deformed)
+  - needs stitches
+  - (bras|jambe|poignet|doigt|cheville).{0,40}(tordu|d[ée]form[ée]|bizarre)
+  - points de suture
+  - steht schief
+  - verdreht
+  - muss genäht
+  - klafft
+  - tiefe schnittwunde
+  reason_de: Verletzung mit sichtbarer Fehlstellung / Wunde, die genäht werden muss
+- id: newborn_refusing_feeds
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: Bebé menor de 1 mes que rechaza las tomas
+  reason_en: Baby under 1 month refusing feeds
+  reason_fr: Bébé de moins d'un mois qui refuse de téter
+  patterns:
+  - (reci[eé]n nacido|\b[1-4] semanas|\b\d{1,2} d[ií]as).{0,80}(no (quiere )?(come|mama|toma)|rechaz|rechac)
+  - (newborn|\b[1-4] weeks? old|\b\d{1,2} days? old).{0,80}(refus|won'?t (feed|eat|nurse)|not feeding)
+  - (nouveau[- ]n[ée]|\b[1-4] semaines|\b\d{1,2} jours).{0,80}(refuse|ne (veut pas )?(t[ée]ter|manger|boire))
+  - trinkt nicht mehr
+  - verweigert die brust
+  - verweigert die flasche
+  - will nicht trinken
+  reason_de: Säugling unter 1 Monat trinkt nicht
+- id: burn
+  level: urgent
+  source: ninojesus_primeros_auxilios
+  reason_es: Quemadura (especialmente en cara, manos, genitales o extensa)
+  reason_en: Burn (especially face, hands, genitals or large area)
+  reason_fr: Brûlure (surtout au visage, aux mains, aux parties génitales ou étendue)
+  patterns:
+  - quemad
+  - escaldad
+  - burn(ed|t)? (his|her|their|him|self)
+  - scald
+  - \bburn\b
+  - br[uû]l
+  - '[ée]bouillant'
+  - verbrannt
+  - verbrühung
+  - verbrüht
+  - heißes wasser über
+  - brandwunde
+  - blasen.{0,20}verbrenn
+  reason_de: Verbrennung (besonders Gesicht, Hände, Genitalbereich oder große Fläche)
+- id: suicidal_ideation
+  level: mental_health
+  source: seup_conducta_suicida
+  reason_es: Expresa pensamientos suicidas
+  reason_en: Expressing suicidal thoughts
+  reason_fr: Exprime des pensées suicidaires
+  patterns:
+  - suicid
+  - quitarse la vida
+  - no quiere vivir
+  - quiere morir
+  - matarse
+  - kill (him|her|them)self
+  - wants? to die
+  - doesn'?t want to live
+  - end (his|her|their) life
+  - veut mourir
+  - ne veut plus vivre
+  - se tuer
+  - mettre fin [aà] ses jours
+  - will nicht mehr leben
+  - sich umbringen
+  - suizid
+  - selbstmord
+  - nicht mehr da sein wollen
+  reason_de: Äußert Suizidgedanken
+- id: self_harm
+  level: mental_health
+  source: seup_autolesion
+  reason_es: Conducta autolesiva
+  reason_en: Self-harm
+  reason_fr: Conduite auto-agressive
+  patterns:
+  - se (hace|ha hecho) cortes
+  - se corta
+  - autoles
+  - self[- ]harm
+  - cutting (him|her|them)self
+  - cuts? (him|her|them)self
+  - se (fait du mal|mutile|coupe|scarifie)
+  - automutil
+  - scarification
+  - ritzt sich
+  - hat sich geschnitten
+  - selbstverletz
+  - tut sich weh
+  reason_de: Selbstverletzung
 context:
   fever:
-    - "fi[eè]vre"
-    - "temp[ée]rature de"
-    - "\\b3[89][,\\.]?\\d?\\s*degr[ée]s"
-    - "\\b4[0-2][,\\.]?\\d?\\s*degr[ée]s"
-    - "fiebre"
-    - "febr"
-    - "\\b3[89][,\\.]?\\d?\\s*(°|º|grados)"
-    - "\\b4[0-2][,\\.]?\\d?\\s*(°|º|grados)"
-    - "fever"
-    - "temperature of"
-    - "\\b(100\\.[4-9]|10[1-6](\\.\\d)?)\\s*(°|º)?\\s*f\\b"
-  # age_under_3_months is computed by the age parser (bot/triage.py), not by regex
+  - fi[eè]vre
+  - temp[ée]rature de
+  - \b3[89][,\.]?\d?\s*degr[ée]s
+  - \b4[0-2][,\.]?\d?\s*degr[ée]s
+  - fiebre
+  - febr
+  - \b3[89][,\.]?\d?\s*(°|º|grados)
+  - \b4[0-2][,\.]?\d?\s*(°|º|grados)
+  - fever
+  - temperature of
+  - \b(100\.[4-9]|10[1-6](\.\d)?)\s*(°|º)?\s*f\b
+  - fieber
+  - \b3[89][,\.]?\d?\s*grad
+  - \b4[0-2][,\.]?\d?\s*grad
+  - temperatur von

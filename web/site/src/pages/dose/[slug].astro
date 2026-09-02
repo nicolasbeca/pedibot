@@ -1,48 +1,49 @@
 ---
-// One page per medicine with the full weight table (2-sep-2026). It replaces 1,442 pages of one
-// weight each: see src/dosepages.ts for what was measured before deciding.
+// One page per medicine with the whole weight table (2-sep-2026). It replaces 1,442 single-weight
+// pages; the measurement behind that is in src/dosepages.ts. Every word comes from i18n.ts, so
+// this file is identical in every language but the code and the URL prefix.
 import Base from '../../layouts/Base.astro';
 import { medicines, weightTable, maxDoses, type Medicine } from '../../dosepages';
+import { t } from '../../i18n';
+
+const lang = 'en'; const s = t(lang);
 
 export async function getStaticPaths() {
-  return medicines().map((m) => ({ params: { slug: m.slug }, props: { m } }));
+  return medicines().map((m) => ({ params: { slug: m.slug_by['en'] }, props: { m } }));
 }
 
 const { m } = Astro.props as { m: Medicine };
 const rows = weightTable(m);
 const d = m.d;
 const isIbu = m.key === 'ibuprofen';
-const title = `${m.name_en} dose by weight`;
-const desc = `${m.name_en} for children: the dose in mg and in ml for every weight from 5 to 40 kg, for each bottle strength sold. Fixed table from the AEPap dosing guide. Not medical advice.`;
+const name = m.name_by[lang];
+const generic = d.generic[lang] ?? d.generic.en;
+const title = s.dosedrug_title.replace('{name}', name);
+const desc = s.dosedrug_desc.replace('{name}', name);
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
   name: title,
-  about: { '@type': 'Drug', name: m.name_en, activeIngredient: d.generic.en },
+  about: { '@type': 'Drug', name, activeIngredient: generic },
   audience: { '@type': 'Patient' },
 };
 ---
-<Base lang="en" title={`${title} — PediBot`} description={desc} path={`/dose/${m.slug}`} jsonld={jsonld}>
+<Base lang={lang} title={`${title} — PediBot`} description={desc} path={`/dose/${m.slug_by[lang]}`} jsonld={jsonld}>
   <div class="narrow" style="padding:40px 18px">
-    <p class="eyebrow">Dose calculator · {d.generic.en}</p>
+    <p class="eyebrow">{s.dose_eyebrow} · {generic}</p>
     <h1 style="margin-top:8px">{title}</h1>
-    <p class="lede">
-      Every weight from 5 to 40 kg, in milligrams and in millilitres for each bottle strength.
-      A fixed table from the AEPap dosing guide — no AI involved. Always check the strength
-      printed on your own bottle, because it varies by country and by presentation.
-    </p>
+    <p class="lede">{s.dosedrug_lede}</p>
 
     <div class="card" style="margin-top:24px">
-      <p><b>Every {d.interval_hours[0]}–{d.interval_hours[1]} hours</b>, and never more than the
-      doses in the last column in 24 hours.</p>
+      <p set:html={s.dosedrug_every.replace('{h0}', d.interval_hours[0]).replace('{h1}', d.interval_hours[1])} />
       <div class="scroll">
         <table class="plain">
           <thead>
             <tr>
-              <th>Weight</th>
-              <th>Dose</th>
+              <th>{s.dosedrug_th_weight}</th>
+              <th>{s.dosedrug_th_dose}</th>
               {m.forms.map((f) => <th>{f.label}</th>)}
-              <th>Max / 24 h</th>
+              <th>{s.dosedrug_th_max}</th>
             </tr>
           </thead>
           <tbody>
@@ -57,22 +58,20 @@ const jsonld = {
           </tbody>
         </table>
       </div>
-      <p class="warn">⚠️ Rows in grey are below the minimum weight for {d.generic.en}: do not give
-      it without a doctor's advice. Under 3 months, no medicine at all without being told to.
-      {isIbu && ' Ibuprofen is also avoided when the child is dehydrated (vomiting, diarrhoea) or has chickenpox.'}</p>
-      <p class="note">{d.notes.en}</p>
+      <p class="warn">⚠️ {s.dosedrug_warn.replace('{generic}', generic)}{isIbu ? ' ' + s.dosedrug_ibu : ''}</p>
+      <p class="note">{d.notes[lang] ?? d.notes.en}</p>
       <p class="src">{d.source}.</p>
     </div>
 
     <p style="margin-top:22px">
-      <a class="btn btn-primary" href="/dose">Open the calculator</a>
-      <a class="btn btn-ghost" href={`/?q=${encodeURIComponent('How much ' + m.name_en + ' for my child?')}`}>Ask PediBot</a>
+      <a class="btn btn-primary" href="/dose">{s.dosedrug_open_calc}</a>
+      <a class="btn btn-ghost" href={`/?q=${encodeURIComponent(s.dosedrug_ask_q.replace('{name}', name))}`}>{s.ask_about}</a>
     </p>
 
     <p class="n" style="margin-top:26px">
-      Other medicines:{' '}
-      {medicines().filter((o) => o.slug !== m.slug).slice(0, 8).map((o) => (
-        <a href={`/dose/${o.slug}`} style="margin-right:10px">{o.name_en}</a>
+      {s.dosedrug_others}{' '}
+      {medicines().filter((o) => o.slug_by[lang] !== m.slug_by[lang]).slice(0, 8).map((o) => (
+        <a href={`/dose/${o.slug_by[lang]}`} style="margin-right:10px">{o.name_by[lang]}</a>
       ))}
     </p>
   </div>

@@ -1,0 +1,89 @@
+---
+// One page per medicine with the whole weight table (2-sep-2026). It replaces 1,442 single-weight
+// pages; the measurement behind that is in src/dosepages.ts. Every word comes from i18n.ts, so
+// this file is identical in every language but the code and the URL prefix.
+import Base from '../../../layouts/Base.astro';
+import { medicines, weightTable, maxDoses, type Medicine } from '../../../dosepages';
+import { t } from '../../../i18n';
+
+const lang = 'de'; const s = t(lang);
+
+export async function getStaticPaths() {
+  return medicines().map((m) => ({ params: { slug: m.slug_by['de'] }, props: { m } }));
+}
+
+const { m } = Astro.props as { m: Medicine };
+const rows = weightTable(m);
+const d = m.d;
+const isIbu = m.key === 'ibuprofen';
+const name = m.name_by[lang];
+const generic = d.generic[lang] ?? d.generic.en;
+const title = s.dosedrug_title.replace('{name}', name);
+const desc = s.dosedrug_desc.replace('{name}', name);
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: title,
+  about: { '@type': 'Drug', name, activeIngredient: generic },
+  audience: { '@type': 'Patient' },
+};
+---
+<Base lang={lang} title={`${title} — PediBot`} description={desc} path={`/de/dose/${m.slug_by[lang]}`} jsonld={jsonld}>
+  <div class="narrow" style="padding:40px 18px">
+    <p class="eyebrow">{s.dose_eyebrow} · {generic}</p>
+    <h1 style="margin-top:8px">{title}</h1>
+    <p class="lede">{s.dosedrug_lede}</p>
+
+    <div class="card" style="margin-top:24px">
+      <p set:html={s.dosedrug_every.replace('{h0}', d.interval_hours[0]).replace('{h1}', d.interval_hours[1])} />
+      <div class="scroll">
+        <table class="plain">
+          <thead>
+            <tr>
+              <th>{s.dosedrug_th_weight}</th>
+              <th>{s.dosedrug_th_dose}</th>
+              {m.forms.map((f) => <th>{f.label}</th>)}
+              <th>{s.dosedrug_th_max}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr class={r.belowMin ? 'low' : undefined}>
+                <th scope="row">{r.kg} kg</th>
+                <td class="mono">{r.mgMin}–{r.mgMax} mg</td>
+                {r.ml.map((v) => <td class="mono">{v} ml</td>)}
+                <td class="mono">{maxDoses(m, r.kg)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="warn">⚠️ {s.dosedrug_warn.replace('{generic}', generic)}{isIbu ? ' ' + s.dosedrug_ibu : ''}</p>
+      <p class="note">{d.notes[lang] ?? d.notes.en}</p>
+      <p class="src">{d.source}.</p>
+    </div>
+
+    <p style="margin-top:22px">
+      <a class="btn btn-primary" href="/de/dose">{s.dosedrug_open_calc}</a>
+      <a class="btn btn-ghost" href={`/de/?q=${encodeURIComponent(s.dosedrug_ask_q.replace('{name}', name))}`}>{s.ask_about}</a>
+    </p>
+
+    <p class="n" style="margin-top:26px">
+      {s.dosedrug_others}{' '}
+      {medicines().filter((o) => o.slug_by[lang] !== m.slug_by[lang]).slice(0, 8).map((o) => (
+        <a href={`/de/dose/${o.slug_by[lang]}`} style="margin-right:10px">{o.name_by[lang]}</a>
+      ))}
+    </p>
+  </div>
+  <style>
+    .scroll { overflow-x: auto; margin-top: 12px; }
+    table.plain { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    table.plain th, table.plain td { padding: 6px 10px; text-align: left; white-space: nowrap; }
+    table.plain thead th { border-bottom: 2px solid var(--line); font-size: .84rem; }
+    table.plain tbody tr { border-bottom: 1px solid var(--line); }
+    table.plain tbody tr.low { color: var(--ink-3); background: var(--cream); }
+    .warn { background: var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 14px; font-size: .92rem; }
+    .note { background: var(--sky); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
+    .src { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+  </style>
+</Base>

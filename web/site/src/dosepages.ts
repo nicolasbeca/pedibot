@@ -11,6 +11,7 @@
  * are redirected in Caddy with a single pattern.
  */
 import drugs from './data/drugs.json';
+import { LANGS, type Lang } from './i18n';
 
 export interface Form {
   label: string;
@@ -20,17 +21,22 @@ export interface Form {
 export interface Medicine {
   key: string;
   slug: string;
-  /** The Spanish page keeps its own slug for the generics (/es/dose/ibuprofeno), as it always did. */
-  slug_es: string;
-  /** Same idea in French: /fr/dose/ibuprofene. */
-  slug_fr: string;
-  name_en: string;
-  name_es: string;
-  name_fr: string;
+  /** Slug and name per language: the generic is spelled differently in each (/es/dose/
+   *  ibuprofeno, /fr/dose/ibuprofene), a brand is spelled the same everywhere. One field per
+   *  language meant adding a field for every new language. */
+  slug_by: Record<Lang, string>;
+  name_by: Record<Lang, string>;
   isBrand: boolean;
   forms: Form[];
   d: any;
 }
+
+/** How each language spells the two generics in a URL. Anything unlisted keeps the key. */
+const GENERIC_SLUG: Partial<Record<Lang, Record<string, string>>> = {
+  es: { ibuprofen: 'ibuprofeno' },
+  fr: { ibuprofen: 'ibuprofene', paracetamol: 'paracetamol' },
+  de: { ibuprofen: 'ibuprofen', paracetamol: 'paracetamol' },
+};
 
 /** Every generic and every brand that has at least one presentation, deduplicated by slug. */
 export function medicines(): Medicine[] {
@@ -42,11 +48,12 @@ export function medicines(): Medicine[] {
       {
         key,
         slug: key,
-        slug_es: key === 'ibuprofen' ? 'ibuprofeno' : key,
-        slug_fr: key === 'ibuprofen' ? 'ibuprofene' : 'paracetamol',
-        name_en: drug.generic.en,
-        name_es: drug.generic.es,
-        name_fr: drug.generic.fr ?? drug.generic.en,
+        slug_by: Object.fromEntries(
+          LANGS.map((l) => [l, GENERIC_SLUG[l]?.[key] ?? key])
+        ) as Record<Lang, string>,
+        name_by: Object.fromEntries(
+          LANGS.map((l) => [l, drug.generic[l] ?? drug.generic.en])
+        ) as Record<Lang, string>,
         isBrand: false,
         forms: drug.presentations.map((p: any) => ({ label: p.name, mg_per_ml: p.mg_per_ml })),
         d: drug,
@@ -56,11 +63,8 @@ export function medicines(): Medicine[] {
         .map((b: any) => ({
           key,
           slug: b.slug,
-          slug_es: b.slug,
-          slug_fr: b.slug,
-          name_en: b.name,
-          name_es: b.name,
-          name_fr: b.name,
+          slug_by: Object.fromEntries(LANGS.map((l) => [l, b.slug])) as Record<Lang, string>,
+          name_by: Object.fromEntries(LANGS.map((l) => [l, b.name])) as Record<Lang, string>,
           isBrand: true,
           forms: b.forms,
           d: drug,

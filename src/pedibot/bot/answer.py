@@ -74,22 +74,25 @@ def looks_like_medication_dose(text: str) -> bool:
 
 # Every language the engine will answer in. Adding one here is not enough on its own: it needs
 # its triage patterns in red_flags.yaml and its texts below, or the safety layer goes silent.
-SUPPORTED_LANGS = ("es", "en", "fr")
+SUPPORTED_LANGS = ("es", "en", "fr", "de")
 
 DISCLAIMER = {
     "en": "PediBot gives information from official paediatric guidelines. It is not medical advice and does not replace your paediatrician.",
     "es": "PediBot informa a partir de guías pediátricas oficiales. No es consejo médico y no sustituye a tu pediatra.",
     "fr": "PediBot informe à partir de recommandations pédiatriques officielles. Ce n'est pas un avis médical et cela ne remplace pas votre pédiatre.",
+    "de": "PediBot gibt Informationen aus offiziellen kinderärztlichen Leitlinien wieder. Das ist keine medizinische Beratung und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt.",
 }
 NO_SOURCE = {
     "en": "I don't have reliable information on this in my sources, so I'd rather not guess. Please contact your paediatrician or a nurse line. If your child seems seriously unwell, go to the emergency department.",
     "es": "No tengo información fiable sobre esto en mis fuentes y prefiero no adivinar. Consulta con tu pediatra. Si tu hijo o hija parece estar grave, acude a urgencias.",
     "fr": "Je n'ai pas d'information fiable à ce sujet dans mes sources et je préfère ne pas deviner. Parlez-en à votre pédiatre. Si votre enfant semble aller très mal, allez aux urgences.",
+    "de": "Dazu habe ich in meinen Quellen keine verlässliche Information, und raten möchte ich nicht. Sprechen Sie bitte mit Ihrer Kinderärztin oder Ihrem Kinderarzt. Wenn Ihr Kind schwer krank wirkt, fahren Sie in die Notaufnahme.",
 }
 CLARIFY = {
     "en": "I want to get this right. What's the main thing going on?",
     "es": "Quiero acertar. ¿Qué es lo principal que le pasa?",
     "fr": "Je veux bien comprendre. Quel est le principal problème ?",
+    "de": "Ich möchte es richtig verstehen. Was ist das Hauptproblem?",
 }
 CLARIFY_OPTIONS = {
     "en": [
@@ -119,11 +122,21 @@ CLARIFY_OPTIONS = {
         "Alimentation ou sommeil",
         "Autre chose",
     ],
+    "de": [
+        "Fieber",
+        "Husten oder Atmung",
+        "Erbrechen oder Durchfall",
+        "Ausschlag oder Haut",
+        "Sturz oder Verletzung",
+        "Essen oder Schlaf",
+        "Etwas anderes",
+    ],
 }
 ASK_AGE = {
     "en": "To answer safely I need to know how old your child is (months or years). Could you tell me?",
     "es": "Para responder con seguridad necesito saber la edad (meses o años). ¿Me la dices?",
     "fr": "Pour répondre en toute sécurité, j'ai besoin de l'âge de votre enfant (en mois ou en années). Pouvez-vous me le dire ?",
+    "de": "Um sicher antworten zu können, muss ich wissen, wie alt Ihr Kind ist (in Monaten oder Jahren). Können Sie mir das sagen?",
 }
 
 
@@ -193,12 +206,14 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "es": f"🚨 Llama ahora al {numbers['emergency']} o acude a urgencias.",
             "en": f"🚨 Call {numbers['emergency']} now or go to the emergency department.",
             "fr": f"🚨 Appelez tout de suite le {numbers['emergency']} ou allez aux urgences.",
+            "de": f"🚨 Rufen Sie jetzt {numbers['emergency']} an oder fahren Sie in die Notaufnahme.",
         }
     elif tr.level == "urgent":
         heads = {
             "es": "🚨 Con estos síntomas hay que acudir a urgencias hoy, sin esperar.",
             "en": "🚨 With these symptoms your child should be seen in the emergency department today, without waiting.",
             "fr": "🚨 Avec ces signes, votre enfant doit être vu aux urgences aujourd'hui, sans attendre.",
+            "de": "🚨 Mit diesen Anzeichen sollte Ihr Kind heute in der Notaufnahme gesehen werden, ohne zu warten.",
         }
     else:  # mental_health
         mental = numbers.get("mental") or numbers["emergency"]
@@ -206,9 +221,10 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "es": f"💛 Esto es importante y no estás solo/a. Llama al {mental} (o al {numbers['emergency']} si hay peligro inmediato). Si el menor ha hecho algo para hacerse daño, acude a urgencias ahora.",
             "en": f"💛 This matters and you are not alone. Call {mental} (or {numbers['emergency']} if there is immediate danger). If your child has already done something to harm themselves, go to the emergency department now.",
             "fr": f"💛 C'est important et vous n'êtes pas seul·e. Appelez le {mental} (ou le {numbers['emergency']} en cas de danger immédiat). Si votre enfant s'est déjà fait du mal, allez aux urgences maintenant.",
+            "de": f"💛 Das ist wichtig, und Sie sind damit nicht allein. Rufen Sie {mental} an (oder {numbers['emergency']} bei unmittelbarer Gefahr). Wenn Ihr Kind sich bereits etwas angetan hat, fahren Sie jetzt in die Notaufnahme.",
         }
     head = heads.get(lang, heads["en"])
-    why = {"es": "Motivo", "fr": "Raison"}.get(lang, "Reason") + f": {reasons}"
+    why = {"es": "Motivo", "fr": "Raison", "de": "Grund"}.get(lang, "Reason") + f": {reasons}"
     return head + "\n" + why
 
 
@@ -237,7 +253,9 @@ def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, floa
 
 _CHILD = re.compile(
     r"\b(hij[oa]|beb[eé]|ni[ñn][oa]|peque|my (son|daughter|baby|child|toddler|kid|little one)|"
-    r"\d+\s*(años|año|meses|mes|year|years|month|months|weeks?|semanas?)\b)",
+    r"mon (fils|b[eé]b[eé]|enfant)|ma (fille|petite)|mein[e]? (sohn|tochter|kind|baby)|"
+    r"\d+\s*(años|año|meses|mes|year|years|month|months|weeks?|semanas?|ans|mois|"
+    r"jahre[n]?|monate[n]?|wochen)\b)",
     re.I,
 )
 

@@ -48,8 +48,10 @@ class Synonyms:
 
 
 def detect_lang(text: str) -> str:
-    """Tiny heuristic: es / en / fr — enough to pick the synonym direction, the answer language
-    and the triage wording. French joined on 3-sep-2026, when it got its own triage patterns."""
+    """Tiny heuristic: es / en / fr / de — enough to pick the synonym direction, the answer
+    language and the triage wording. A language only joins here once it has its own triage
+    patterns: guessing the language of a message the safety layer cannot read is worse than
+    defaulting to English."""
     low = " " + re.sub(r"[¿¡?!.,;:]", " ", text.lower()) + " "
     es_markers = [
         " mi ",
@@ -124,11 +126,41 @@ def detect_lang(text: str) -> str:
         " ventre",
         " tête",
     ]
+    de_markers = [
+        " mein ",
+        " meine ",
+        " sohn",
+        " tochter",
+        " kind",
+        " baby",
+        " hat ",
+        " ist ",
+        " nicht ",
+        " und ",
+        " der ",
+        " die ",
+        " das ",
+        " ich ",
+        " was ",
+        " soll ",
+        " kann ",
+        " wie ",
+        " fieber",
+        " husten",
+        " bauch",
+        " kopf",
+        " monate",
+        " jahre",
+        " jahren",
+        " wochen",
+    ]
     es = sum(m in low for m in es_markers) + sum(ch in "ñ¿¡" for ch in text.lower())
     en = sum(m in low for m in en_markers)
     # French shares most accents with Spanish, so only the ones Spanish never uses count: è ê ô û ç
     fr = sum(m in low for m in fr_markers) + sum(ch in "èêôûçà" for ch in text.lower())
-    best = max(es, en, fr)
+    # ä ö ü ß are German alone among the four; "das/der/die" carry most of the rest
+    de = sum(m in low for m in de_markers) + sum(ch in "äöüß" for ch in text.lower())
+    best = max(es, en, fr, de)
     if best == 0:
         return "en"
     # ties go to the more conservative side: es before fr, because "mi/ma" and "hijo/fils" overlap
@@ -136,6 +168,8 @@ def detect_lang(text: str) -> str:
         return "es"
     if fr == best:
         return "fr"
+    if de == best:
+        return "de"
     return "en"
 
 
