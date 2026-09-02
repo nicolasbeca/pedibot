@@ -69,7 +69,7 @@ def plan(lang: str) -> list[tuple[pathlib.Path, str, str]]:
 def redirect_block(moves: dict[str, list[tuple[str, str]]]) -> str:
     lines = [START]
     for lang, items in moves.items():
-        prefix = "/guides" if lang == "en" else "/es/guides"
+        prefix = "/guides" if lang == "en" else f"/{lang}/guides"
         for gone, stays in sorted(items):
             lines.append(f"\tredir {prefix}/{gone} {prefix}/{stays} permanent")
     lines.append(END)
@@ -81,7 +81,9 @@ def main() -> int:
     ap.add_argument("--apply", action="store_true")
     args = ap.parse_args()
 
-    moves = {lang: [(d.stem, keep) for d, _, keep in plan(lang)] for lang in ("en", "es")}
+    # every language that has guides, not a hardcoded pair: French was silently skipped
+    langs = sorted(d.name for d in CONTENT.iterdir() if d.is_dir())
+    moves = {lang: [(d.stem, keep) for d, _, keep in plan(lang)] for lang in langs}
     total = sum(len(v) for v in moves.values())
     for lang, items in moves.items():
         print(f"--- {lang}: {len(items)} duplicate(s)")
@@ -91,7 +93,7 @@ def main() -> int:
         print("\n(report only; pass --apply to remove them)" if total else "\nnothing to do")
         return 0
 
-    for lang in ("en", "es"):
+    for lang in langs:
         for drop, _, _ in plan(lang):
             drop.unlink()
             q = ROOT / "publish" / "queue" / "x" / f"{lang}-{drop.stem}.txt"

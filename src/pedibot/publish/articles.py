@@ -343,15 +343,12 @@ class Article:
 
     def markdown(self) -> str:
         foot = "\n".join(f"{s}" for s in self.sources)
-        disclaimer = (
-            "*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*"
-            if self.lang == "en"
-            else "*Esta guía resume guías pediátricas publicadas. No es consejo médico y no sustituye a tu pediatra. En una emergencia, llama a tu número de emergencias.*"
-        )
-        return f"{self.frontmatter()}\n{self.body_md.strip()}\n\n## {'Sources' if self.lang == 'en' else 'Fuentes'}\n\n{foot}\n\n{disclaimer}\n"
+        disclaimer = ARTICLE_DISCLAIMER.get(self.lang, ARTICLE_DISCLAIMER["en"])
+        heading = SOURCES_HEADING.get(self.lang, "Sources")
+        return f"{self.frontmatter()}\n{self.body_md.strip()}\n\n## {heading}\n\n{foot}\n\n{disclaimer}\n"
 
     def public_url(self, site_url: str) -> str:
-        """English is served from the root of the site; only Spanish carries a /es prefix."""
+        """English is served from the root of the site; the others carry their /es or /fr prefix."""
         prefix = "" if self.lang == "en" else f"/{self.lang}"
         return f"{site_url}{prefix}/guides/{self.slug}"
 
@@ -399,8 +396,15 @@ def parse_output(text: str) -> tuple[str, str, str]:
     m_t = re.search(r"TITLE:\s*(.+)", text)
     m_s = re.search(r"SUMMARY:\s*(.+)", text)
     m_b = re.search(r"BODY:\s*(.+)", text, re.S)
+    if not m_b:
+        # The model often goes straight from SUMMARY to the first heading and never writes the
+        # literal marker. That is a formatting slip, not a bad article: the first "## " is an
+        # unambiguous start of the body, and throwing the draft away costs a whole generation.
+        m_b = re.search(r"(^##\s.+)", text, re.S | re.M)
     if not (m_t and m_s and m_b):
-        raise ValueError("article output missing TITLE/SUMMARY/BODY")
+        # keep a snippet: "missing TITLE/SUMMARY/BODY" alone says nothing about what came back
+        head = " ".join(text.split())[:140]
+        raise ValueError(f"article output missing TITLE/SUMMARY/BODY — got: {head!r}")
     return m_t.group(1).strip(), m_s.group(1).strip(), m_b.group(1).strip()
 
 
@@ -410,7 +414,7 @@ def _problems(title: str, body: str, hits: list[Hit], lang: str) -> list[str]:
     which breaks canonical and hreflang as well as reading wrong."""
     problems = verify(body, hits)
     if detect_lang(f"{title} {body}") != lang:
-        want = "English" if lang == "en" else "Spanish"
+        want = LANGUAGE_NAME.get(lang, "English")
         problems.append(f"wrong_language (write the WHOLE article in {want})")
     return problems
 
@@ -420,7 +424,17 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
     if not hits:
         raise ValueError(f"no sources for topic {topic}")
     system = load_prompt("article_compare_v1" if TOPIC_PLAN[topic].get("compare") else "article_v1")
-    user = f"LANGUAGE: {'English' if lang == 'en' else 'Spanish'}\nTOPIC: {topic}\n\nSOURCES:\n{_format_sources(hits)}"
+    # The language is named at the top AND repeated after the sources: the sources are thousands
+    # of words in another language sitting at the end of the prompt, which is where a model
+    # weighs hardest. With the instruction only at the top, drafts came back in the sources'
+    # language and without the TITLE/SUMMARY header at all (3-sep-2026).
+    name = LANGUAGE_NAME.get(lang, "English")
+    user = (
+        f"LANGUAGE: {name}\n"
+        f"TOPIC: {topic}\n\nSOURCES:\n{_format_sources(hits)}\n\n"
+        f"REMINDER: write the article in {name}, whatever language the sources above are in, "
+        f"and start your answer with the line 'TITLE:' followed by 'SUMMARY:' and the sections."
+    )
     result = llm.complete(system, user, temperature=0.3, max_tokens=1800)
     title, summary, body = parse_output(result.text)
     problems = _problems(title, body, hits, lang)
@@ -491,6 +505,18 @@ def seasonal_first(
     except Exception:  # noqa: BLE001
         first = []
     return first + [t for t in topics if t not in first]
+
+
+# What each language is called when the model is told which one to write in, and how its
+# sources section is headed. Adding a language here is not enough on its own: it also needs its
+# triage patterns, or the guides would exist without a safety layer behind the chat.
+LANGUAGE_NAME = {"en": "English", "es": "Spanish", "fr": "French"}
+SOURCES_HEADING = {"en": "Sources", "es": "Fuentes", "fr": "Sources"}
+ARTICLE_DISCLAIMER = {
+    "en": "*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*",
+    "es": "*Esta guía resume guías pediátricas publicadas. No es consejo médico y no sustituye a tu pediatra. En una emergencia, llama a tu número de emergencias.*",
+    "fr": "*Ce guide résume des recommandations pédiatriques publiées. Ce n'est pas un avis médical et cela ne remplace pas votre pédiatre. En cas d'urgence, appelez votre numéro d'urgence.*",
+}
 
 
 # Topic keys that are two names for the same subject, one Spanish and one English. Publishing

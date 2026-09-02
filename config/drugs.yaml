@@ -6,7 +6,7 @@
 
 drugs:
   paracetamol:
-    generic: {en: "Paracetamol (acetaminophen)", es: "Paracetamol"}
+    generic: {en: "Paracetamol (acetaminophen)", es: "Paracetamol", fr: "Paracétamol"}
     aliases: [acetaminophen, acetaminofen, acetaminofén, apap]
     brands:
       - {name: "Apiretal", countries: [ES], forms: ["gotas 100 mg/ml"]}
@@ -33,10 +33,11 @@ drugs:
     notes:
       en: "Under 3 months, only if a doctor has told you to. Do not combine with other products that also contain paracetamol (cold remedies)."
       es: "Menores de 3 meses: solo si lo ha indicado el pediatra. No combinar con otros productos que también lleven paracetamol (anticatarrales)."
+      fr: "Avant 3 mois, uniquement sur avis médical. Ne pas associer à d'autres produits contenant du paracétamol (médicaments contre le rhume)."
     source: "AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos"
 
   ibuprofen:
-    generic: {en: "Ibuprofen", es: "Ibuprofeno"}
+    generic: {en: "Ibuprofen", es: "Ibuprofeno", fr: "Ibuprofène"}
     aliases: [ibuprofeno, ibuprofène, ibuprofene]
     brands:
       - {name: "Dalsy", countries: [ES], forms: ["suspensión 2 % (100 mg/5 ml)", "suspensión 4 % (200 mg/5 ml)"]}
@@ -58,6 +59,7 @@ drugs:
     notes:
       en: "Not under 3 months or under 5 kg. Give with food. Avoid if dehydrated (vomiting/diarrhoea), with chickenpox, or with kidney problems."
       es: "No en menores de 3 meses ni de 5 kg. Con comida. Evitar si está deshidratado (vómitos/diarrea), con varicela o con problemas renales."
+      fr: "Pas avant 3 mois ni en dessous de 5 kg. À prendre avec de la nourriture. À éviter en cas de déshydratation (vomissements/diarrhée), de varicelle ou de problèmes rénaux."
     source: "AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos"
 
 # Deliberately NOT included (parents ask, guidelines say no or "doctor only"): aspirin (Reye syndrome),

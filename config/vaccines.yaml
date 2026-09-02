@@ -4,7 +4,7 @@
 
 countries:
   ES:
-    name: {en: "Spain — common schedule 2025", es: "España — calendario común 2025"}
+    name: {en: "Spain — common schedule 2025", es: "España — calendario común 2025", fr: "Espagne — calendrier commun 2025"}
     source: "Ministerio de Sanidad / Consejo Interterritorial del SNS — Calendario común de vacunación e inmunización a lo largo de toda la vida, 2025"
     source_url: "https://www.sanidad.gob.es/areas/promocionPrevencion/vacunaciones/calendario-y-coberturas/home.htm"
     note: {en: "Regional calendars may add vaccines or shift ages slightly; check your community's schedule.", es: "Los calendarios autonómicos pueden añadir vacunas o ajustar edades; consulta el de tu comunidad."}
@@ -21,7 +21,7 @@ countries:
       - {age: 144, label: {en: "12 years", es: "12 años"}, vaccines: ["Virus del papiloma humano (VPH)", "Meningococo ACWY (MenACWY)"]}
       - {age: 168, label: {en: "14 years", es: "14 años"}, vaccines: ["Tétanos-difteria (Td)"]}
   GB:
-    name: {en: "United Kingdom — NHS schedule", es: "Reino Unido — calendario del NHS"}
+    name: {en: "United Kingdom — NHS schedule", es: "Reino Unido — calendario del NHS", fr: "Royaume-Uni — calendrier du NHS"}
     source: "NHS — NHS vaccinations and when to have them (page last reviewed 2025)"
     source_url: "https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/"
     note: {en: "Some doses depend on the child's date of birth (MMRV, 6-in-1 4th dose); your GP surgery will invite you.", es: "Algunas dosis dependen de la fecha de nacimiento (MMRV, 4.ª de la 6-en-1); el centro de salud te avisa."}
@@ -36,7 +36,7 @@ countries:
       - {age: 144, label: {en: "12 to 13 years", es: "12-13 años"}, vaccines: ["HPV vaccine"]}
       - {age: 168, label: {en: "14 years", es: "14 años"}, vaccines: ["Td/IPV (3-in-1 teenage booster)", "MenACWY vaccine"]}
   US:
-    name: {en: "United States — CDC schedule 2025", es: "Estados Unidos — calendario CDC 2025"}
+    name: {en: "United States — CDC schedule 2025", es: "Estados Unidos — calendario CDC 2025", fr: "États-Unis — calendrier CDC 2025"}
     source: "CDC — Recommended Immunizations for Birth Through 6 Years Old, United States, 2025 (easy-read)"
     source_url: "https://www.cdc.gov/vaccines/imz-schedules/child-easyread.html"
     note: {en: "Ranges are the CDC windows; your pediatrician sets the exact visit. RSV antibody depends on the mother's RSV vaccine status.", es: "Los rangos son las ventanas del CDC; tu pediatra fija la visita exacta. El anticuerpo VRS depende de si la madre se vacunó."}
@@ -50,7 +50,7 @@ countries:
       - {age: 15, label: {en: "15–18 months", es: "15-18 meses"}, vaccines: ["DTaP (dose 4)"]}
       - {age: 48, label: {en: "4–6 years", es: "4-6 años"}, vaccines: ["DTaP (dose 5)", "Polio (dose 4)", "MMR (dose 2)", "Chickenpox/varicella (dose 2)"]}
   FR:
-    name: {en: "France — calendrier vaccinal 2026", es: "Francia — calendario vacunal 2026"}
+    name: {en: "France — calendrier vaccinal 2026", es: "Francia — calendario vacunal 2026", fr: "France — calendrier vaccinal 2026"}
     source: "Santé publique France — vaccination-info-service.fr, calendrier des vaccinations 2026 (MenB et MenACWY obligatoires pour les nourrissons depuis le 1er janvier 2025)"
     source_url: "https://vaccination-info-service.fr/La-vaccination-au-cours-de-la-vie/Nourrissons-et-enfants-de-la-naissance-a-10-ans"
     note: {en: "In France 12 vaccinations are MANDATORY for infants (marked 'obligatoire'); 'recommandé' ones are advised but optional. Newborns also get RSV protection (nirsevimab) in season when the mother was not vaccinated in pregnancy.", es: "En Francia 12 vacunas son OBLIGATORIAS en lactantes (marcadas 'obligatoire'); las 'recommandé' se aconsejan pero son opcionales. Los recién nacidos reciben además protección VRS (nirsevimab) en temporada si la madre no se vacunó en el embarazo."}
@@ -66,7 +66,7 @@ countries:
       - {age: 72, label: {en: "6 years", es: "6 años"}, vaccines: ["DTCaPolio (rappel)"]}
       - {age: 132, label: {en: "11–14 years", es: "11-14 años"}, vaccines: ["dTcaPolio (rappel, 11-13 ans)", "Papillomavirus HPV (2 doses à 5 mois d'écart, 11-14 ans, filles et garçons, recommandé)", "Méningocoque ACWY (11-14 ans, recommandé)"]}
   DE:
-    name: {en: "Germany — STIKO Impfkalender 2026", es: "Alemania — calendario STIKO 2026"}
+    name: {en: "Germany — STIKO Impfkalender 2026", es: "Alemania — calendario STIKO 2026", fr: "Allemagne — calendrier STIKO 2026"}
     source: "Robert Koch-Institut — Empfehlungen der Ständigen Impfkommission (STIKO) 2026, Impfkalender (Epidemiologisches Bulletin 4/2026)"
     source_url: "https://www.rki.de/DE/Themen/Infektionskrankheiten/Impfen/Impfkalender/impfkalender-node.html"
     note: {en: "Transcribed from the RKI's own English edition of the 2026 calendar. Premature babies get an extra dose of the 6-in-1 and pneumococcal at 3 months. Flu is NOT a routine childhood vaccine in Germany (risk groups only).", es: "Transcrito de la edición en inglés del propio RKI del calendario 2026. Los prematuros reciben una dosis extra de la hexavalente y del neumococo a los 3 meses. La gripe NO es vacuna infantil rutinaria en Alemania (solo grupos de riesgo)."}

@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import { t } from '../../../i18n';
+const lang = 'fr'; const s = t(lang);
+const guides = (await getCollection('guides', g => g.data.lang === lang && !g.data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base lang={lang} title="Guides pour les parents — PediBot" description={s.guides_lede} path="/fr/guides">
+  <div class="wrap" style="padding:40px 18px">
+    <p class="eyebrow">{s.nav_guides}</p>
+    <h1 style="margin-top:8px">{s.guides_h1}</h1>
+    <p class="lede">{s.guides_lede}</p>
+    {guides.length === 0 && <p class="lede" style="margin-top:28px">Las primeras guías llegan pronto.</p>}
+    <p class="count"><input id="gfilter" type="search" placeholder="Filtrer : fièvre, toux, vaccins…" autocomplete="off" />
+      <span id="gcount">{guides.length} guías</span></p>
+    <p id="gempty" class="lede" hidden>Aucun guide ne correspond à ce mot — essayez de poser la question à PediBot.</p>
+    <div class="trio" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+      {guides.map(g => <a class="card gcard" href={`/fr/guides/${g.id.replace(/^fr\//, '')}`} style="text-decoration:none;color:inherit"><span class="n">{g.data.topic}</span><h3 style="margin-top:6px">{g.data.title}</h3><p>{g.data.description}</p></a>)}
+    </div>
+  </div>
+</Base>
+
+<style>
+  .count { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 18px 0 6px; }
+  .count input {
+    flex: 1 1 260px; max-width: 420px; padding: 10px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink); font: inherit;
+  }
+  .count span { font-size: .86rem; color: var(--ink-3); }
+</style>
+
+<script is:inline>
+  // A list of sixty cards is not a list, it is a wall. Filtering happens in the page: no request,
+  // no library, and it still works with the keyboard.
+  (() => {
+    const box = document.getElementById('gfilter');
+    const cards = [...document.querySelectorAll('.gcard')];
+    const count = document.getElementById('gcount');
+    const empty = document.getElementById('gempty');
+    if (!box || !cards.length) return;
+    const noun = count?.textContent?.replace(/^\d+\s*/, '') ?? '';
+    const norm = (s) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const hay = cards.map((c) => norm(c.textContent || ''));
+    box.addEventListener('input', () => {
+      const q = norm(box.value.trim());
+      let shown = 0;
+      cards.forEach((c, i) => {
+        const ok = !q || hay[i].includes(q);
+        c.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (count) count.textContent = `${shown} ${noun}`;
+      if (empty) empty.hidden = shown > 0;
+    });
+  })();
+</script>

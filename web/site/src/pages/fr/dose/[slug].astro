@@ -1,0 +1,90 @@
+---
+// Una página por medicamento con la tabla completa de pesos (2-sep-2026). Sustituye a 1.442
+// páginas de un solo peso: el motivo, medido, está en src/dosepages.ts.
+import Base from '../../../layouts/Base.astro';
+import { medicines, weightTable, maxDoses, type Medicine } from '../../../dosepages';
+
+export async function getStaticPaths() {
+  return medicines().map((m) => ({ params: { slug: m.slug_fr }, props: { m } }));
+}
+
+const { m } = Astro.props as { m: Medicine };
+const rows = weightTable(m);
+const d = m.d;
+const isIbu = m.key === 'ibuprofen';
+const title = `Dose de ${m.name_fr} selon le poids`;
+const desc = `${m.name_fr} chez l'enfant : la dose en mg et en ml pour chaque poids de 5 à 40 kg et pour chaque concentration du flacon. Table fixe du guide de posologie de l'AEPap. Ce n'est pas un avis médical.`;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: title,
+  about: { '@type': 'Drug', name: m.name_fr, activeIngredient: d.generic.fr },
+  audience: { '@type': 'Patient' },
+};
+---
+<Base lang="fr" title={`${title} — PediBot`} description={desc} path={`/fr/dose/${m.slug_fr}`} jsonld={jsonld}>
+  <div class="narrow" style="padding:40px 18px">
+    <p class="eyebrow">Calculateur de doses · {d.generic.fr}</p>
+    <h1 style="margin-top:8px">{title}</h1>
+    <p class="lede">
+      Chaque poids de 5 à 40 kg, en milligrammes et en millilitres selon la concentration du
+      flacon. Table fixe du guide de posologie de l'AEPap — sans IA. Vérifiez toujours la
+      concentration inscrite sur votre flacon : elle change selon le pays et la présentation.
+    </p>
+
+    <div class="card" style="margin-top:24px">
+      <p><b>Toutes les {d.interval_hours[0]}–{d.interval_hours[1]} heures</b>, et jamais plus de
+      doses en 24 heures que ce qu'indique la dernière colonne.</p>
+      <div class="scroll">
+        <table class="plain">
+          <thead>
+            <tr>
+              <th>Poids</th>
+              <th>Dose</th>
+              {m.forms.map((f) => <th>{f.label}</th>)}
+              <th>Max. / 24 h</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr class={r.belowMin ? 'low' : undefined}>
+                <th scope="row">{r.kg} kg</th>
+                <td class="mono">{r.mgMin}–{r.mgMax} mg</td>
+                {r.ml.map((v) => <td class="mono">{v} ml</td>)}
+                <td class="mono">{maxDoses(m, r.kg)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="warn">⚠️ Les lignes en gris sont en dessous du poids minimum pour {d.generic.fr} :
+      ne le donnez pas sans avis médical. Avant 3 mois, aucun médicament sans prescription.
+      {isIbu && " L'ibuprofène est aussi à éviter si l'enfant est déshydraté (vomissements, diarrhée) ou s'il a la varicelle."}</p>
+      <p class="note">{d.notes.fr}</p>
+      <p class="src">{d.source}.</p>
+    </div>
+
+    <p style="margin-top:22px">
+      <a class="btn btn-primary" href="/fr/dose">Ouvrir le calculateur</a>
+      <a class="btn btn-ghost" href={`/fr/?q=${encodeURIComponent('Quelle dose de ' + m.name_fr + ' pour mon enfant ?')}`}>Poser la question à PediBot</a>
+    </p>
+
+    <p class="n" style="margin-top:26px">
+      Autres médicaments :{' '}
+      {medicines().filter((o) => o.slug_fr !== m.slug_fr).slice(0, 8).map((o) => (
+        <a href={`/fr/dose/${o.slug_fr}`} style="margin-right:10px">{o.name_fr}</a>
+      ))}
+    </p>
+  </div>
+  <style>
+    .scroll { overflow-x: auto; margin-top: 12px; }
+    table.plain { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    table.plain th, table.plain td { padding: 6px 10px; text-align: left; white-space: nowrap; }
+    table.plain thead th { border-bottom: 2px solid var(--line); font-size: .84rem; }
+    table.plain tbody tr { border-bottom: 1px solid var(--line); }
+    table.plain tbody tr.low { color: var(--ink-3); background: var(--cream); }
+    .warn { background: var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 14px; font-size: .92rem; }
+    .note { background: var(--sky); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
+    .src { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+  </style>
+</Base>

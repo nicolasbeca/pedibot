@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import SourcesTable from '../../components/SourcesTable.astro';
+const lang = 'fr';
+---
+<Base lang={lang} title="Sources — les recommandations que PediBot cite" description="Tous les documents que PediBot peut citer : organisme, titre, année, langue et lien vers l'original." path="/fr/sources">
+  <div class="wrap" style="padding:40px 18px">
+    <p class="eyebrow">Fuentes</p>
+    <h1 style="margin-top:8px">A quién puede citar PediBot</h1>
+    <p class="lede">PediBot nunca responde de memoria ni desde la web abierta. Cada frase sale de uno de estos documentos y la respuesta indica cuál. Los marcados como "referencia" aportan profundidad pero nunca se reproducen en las guías.</p>
+    <SourcesTable lang={lang} />
+  </div>
+</Base>

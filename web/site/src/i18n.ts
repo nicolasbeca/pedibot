@@ -1,4 +1,4 @@
-export type Lang = 'en' | 'es';
+export type Lang = 'en' | 'es' | 'fr';
 
 const strings = {
   en: {
@@ -93,8 +93,54 @@ const strings = {
     child: 'Explícaselo a mi hijo', listen: 'Escuchar', voice: 'Dicta tu pregunta', nav_emergency: '¿Voy a urgencias?', nav_support: 'Apoyo', nav_legal: 'Aviso legal y privacidad', nav_diary: 'Diario de síntomas', nav_vaccines: 'Vacunas', nav_telegram: 'Bot de Telegram', photo: 'Comprobar una foto (signos de alarma)', photo_hint: 'Solo se comprueban tres signos (manchas que no desaparecen, color azulado, labios hinchados). Nunca dice qué es un sarpullido.',
     sug_winter: ['Mi bebé de 5 meses tiene mocos y respira con pitos', 'bronquiolitis · invierno'], sug_summer: ['Ha estado todo el día al sol y ahora está mareado y con fiebre', 'golpe de calor · verano'],
   },
+  fr: {
+    tagline: 'Des réponses pédiatriques sourcées',
+    nav_how: 'Comment ça marche', nav_dose: 'Calculateur de doses', nav_sources: 'Sources', nav_guides: 'Guides',
+    welcome_h1: 'Bonjour. Que se passe-t-il avec votre enfant ?',
+    welcome_p: "Je réponds uniquement à partir de recommandations pédiatriques publiées, je vous dis d'où vient chaque phrase, et je vous dis clairement quand il faut consulter.",
+    sug: [
+      ['Mon fils de 4 ans a 38,8 de fièvre', 'fièvre · que faire à la maison'],
+      ['Elle est tombée du canapé et a vomi deux fois', 'coup à la tête · signes d\'alerte'],
+      ['Quand puis-je commencer la diversification ?', 'alimentation · 6 mois'],
+      ['Quelle dose de Doliprane pour 14 kg ?', 'doses · calculateur, sans IA'],
+    ],
+    age: 'Âge', weight: 'Poids', not_set: 'non indiqué', placeholder: 'Racontez-moi ce qui se passe…', send: 'Envoyer',
+    legal_line: "Informations issues de recommandations officielles · pas un avis médical · en cas d'urgence, appelez votre numéro local",
+    sources: 'Sources', helpful: 'Utile', not_helpful: 'Pas utile', share: 'Copier le lien', copied: 'Copié',
+    err_rate: 'Trop de questions depuis cette connexion pour le moment. Réessayez dans quelques minutes.',
+    err_server: "Quelque chose a échoué de notre côté. Si c'est urgent, appelez votre numéro d'urgence.",
+    err_net: "Impossible de joindre le serveur. Si c'est urgent, appelez votre numéro d'urgence.",
+    how_eyebrow: 'Comment ça marche', how_h2: "Trois vérifications avant d'écrire le moindre mot",
+    how_lede: "D'abord la vérification de sécurité, ensuite la recherche dans les recommandations, et l'écriture en dernier — uniquement à partir de ce qui a été trouvé. Si rien n'est trouvé, PediBot le dit.",
+    how_1t: "Les signes d'alerte d'abord", how_1: "Une vérification par règles cherche les signes que les urgentistes pédiatriques publient pour les parents : bébé de moins de 3 mois avec de la fièvre, vomissements après un coup à la tête, une pile avalée. Si l'un d'eux correspond, la réponse commence par « allez-y maintenant ».",
+    how_2t: 'Uniquement des recommandations publiées', how_2: "Des documents de sociétés pédiatriques et d'organismes publics. Ni forums ni blogs. Chacun apparaît avec son organisme et le lien vers l'original.",
+    how_3t: 'Chaque phrase nomme sa source', how_3: "« Selon le NHS… », « L\'OMS recommande… ». Un vérificateur rejette toute réponse qui cite ce qui n\'a pas été trouvé ou qui donne une dose absente de la recommandation. Les doses viennent du calculateur, jamais de l\'IA.",
+    dose_eyebrow: 'Calculateur de doses', dose_h2: 'Paracétamol et ibuprofène selon le poids — en ml pour votre flacon',
+    dose_lede: "Écrivez le nom inscrit sur le flacon (Doliprane, Efferalgan, Advil, Nurofen, Calpol…) et le poids. Tables fixes issues du guide de posologie de l'AEPap, avec les maximums. Sans IA.",
+    dose_drug: 'Médicament (générique ou marque)', dose_weight: 'Poids (kg)', dose_age: 'Âge', dose_calc: 'Calculer',
+    dose_every: 'toutes les', dose_hours: 'heures', dose_max: 'maximum', dose_perday: 'doses par jour',
+    dose_check: 'Vérifiez toujours la concentration inscrite sur le flacon.', dose_refer: 'Ne pas donner sans avis médical :',
+    age_opts: [['', 'je ne sais pas'], ['1', 'moins de 3 mois'], ['4', '3–5 mois'], ['9', '6–11 mois'], ['24', '1–2 ans'], ['36', '3–5 ans'], ['96', '6–11 ans'], ['156', '12 ans et plus']],
+    src_eyebrow: 'Sources', src_h2: 'Qui PediBot peut citer',
+    src_lede: "Sociétés pédiatriques et organismes de santé publique d'Espagne, du Royaume-Uni, des États-Unis, du Canada et l'OMS — des fiches écrites pour les familles, sous des licences qui autorisent leur réutilisation. Rien d'autre.",
+    src_all: 'Voir la liste complète', support_eyebrow: 'Soutien', support_h2: 'Gratuit pour toutes les familles. Financé au grand jour.',
+    support_p: "Faire tourner PediBot coûte de l'argent. C'est financé par le jeton PDBT sur Base — une façon de soutenir le projet pour qui y croit. En avoir ne donne rien ici : tout est gratuit pour tout le monde, toujours.",
+    support_points: ["Aucun jeton n'est nécessaire pour utiliser PediBot, jamais.", 'Pas de niveaux payants, pas de réponses « premium », pas de remises pour les détenteurs.', 'Des nouvelles régulières de ce qui est construit et de ce qui vient.', 'Les nouveautés arrivent à tout le monde en même temps — avec ou sans jeton.'],
+    channels_eyebrow: 'Où trouver PediBot', channels_h2: 'Sur le web, sur Telegram, et en publiant ce qu\'il écrit',
+    channels_web: 'Posez votre question ici', channels_web_d: "Sans compte, sans appli. Ça marche sur le téléphone à 3 heures du matin.",
+    channels_tg: 'PediBot sur Telegram', channels_tg_d: 'Le même moteur et les mêmes sources, dans vos discussions.',
+    channels_x: 'Suivez-le sur X', channels_x_d: 'Nouveaux guides et nouveautés, sur @pedibotai.',
+    channels_bs: 'Suivez-le sur Bluesky', channels_bs_d: 'Chaque nouveau guide, publié automatiquement.',
+    channels_rss: 'Flux RSS', channels_rss_d: 'Pour les lecteurs et les agrégateurs.',
+    support_more: 'Comment c\'est financé', support_buy: 'PDBT sur Uniswap', token_card_title: 'Ce que le jeton finance', token_card_rows: [['Serveur et hébergement', '✓'], ['Réponses de l\'IA', '✓'], ['Nouvelles sources et guides', '✓'], ['Murs payants ou niveaux premium', '✗ jamais']],
+    footer_legal: "PediBot fournit des informations générales issues de recommandations pédiatriques publiées. Ce n'est pas un avis médical, cela ne pose pas de diagnostic et ne remplace pas votre pédiatre. Aucune donnée personnelle n'est collectée.",
+    guides_h1: 'Guides pour les parents', guides_lede: "Des réponses courtes aux questions que les parents posent le plus, écrites uniquement à partir des recommandations et avec la source à chaque phrase.",
+    updated: 'Mis à jour', read_more: 'Lire', ask_about: 'Poser la question à PediBot',
+    child: 'Explique-le à mon enfant', listen: 'Écouter', voice: 'Dictez votre question', nav_emergency: 'Dois-je aller aux urgences ?', nav_support: 'Soutien', nav_legal: 'Mentions légales et vie privée', nav_diary: 'Journal des symptômes', nav_vaccines: 'Vaccins', nav_telegram: 'Bot Telegram', photo: 'Vérifier une photo (signes d\'alerte)', photo_hint: "Seuls trois signes sont vérifiés (taches qui ne s'effacent pas, coloration bleutée, lèvres gonflées). Il ne dit jamais ce qu'est une éruption.",
+    sug_winter: ['Mon bébé de 5 mois est enrhumé et respire en sifflant', 'bronchiolite · hiver'], sug_summer: ["Il est resté au soleil toute la journée et il a la tête qui tourne avec de la fièvre", 'coup de chaleur · été'],
+  },
 } as const;
 
 export function t(lang: Lang) { return strings[lang]; }
 export function langPrefix(lang: Lang) { return lang === 'en' ? '' : `/${lang}`; }
-export const LANGS: Lang[] = ['en', 'es'];
+export const LANGS: Lang[] = ['en', 'es', 'fr'];

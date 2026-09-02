@@ -250,3 +250,45 @@ def test_a_batch_does_not_publish_two_guides_on_the_same_subject(tmp_path: Path)
     _publish_stub(content, "en", "one", "hives")
     assert "urticaria" not in pending_topics(content, "en"), "same subject as the one just published"
     assert "breastfeeding" in pending_topics(content, "en"), "a different subject must survive"
+
+
+def test_a_french_guide_is_asked_for_and_checked_in_french(tmp_path: Path, monkeypatch):
+    """The generator said "English if en else Spanish": French would have been requested in
+    Spanish, and the language verifier would have demanded Spanish back (3-sep-2026)."""
+    db = tmp_path / "i.db"
+    build_index([_chunk("who_fr_measles#1", "la rougeole est une maladie très contagieuse")], db)
+    monkeypatch.setitem(TOPIC_PLAN, "_fr", {"docs": ["who_fr_measles"], "query": "rougeole"})
+    draft = (
+        "TITLE: La rougeole chez l'enfant\n"
+        "SUMMARY: Ce qu'il faut savoir et quand consulter.\n"
+        "BODY:\n## Ce que c'est\nLa rougeole est une maladie très contagieuse [1].\n"
+    )
+    a = generate_article(Index(db), FakeProvider(draft), "_fr", lang="fr")
+    assert a.lang == "fr"
+    assert "/fr/guides/" in a.public_url("https://pedibot.xyz")
+    assert "## Sources" in a.markdown()  # French keeps the English word for this heading
+
+    # a Spanish draft asked for in French must be refused, exactly as English/Spanish are
+    spanish = "TITLE: El sarampión\nSUMMARY: Qué es.\nBODY:\n## Qué es\nEl sarampión es contagioso [1].\n"
+    with pytest.raises(ValueError, match="wrong_language"):
+        generate_article(Index(db), FakeProvider(spanish), "_fr", lang="fr")
+
+
+def test_a_draft_without_the_body_marker_is_still_usable():
+    """The model sometimes goes straight from SUMMARY to the first heading and never writes the
+    literal "BODY:". Throwing away a perfectly good article over a missing marker wasted a whole
+    French batch (3-sep-2026); the first heading is an unambiguous start of the body."""
+    text = (
+        "TITLE: Mon bébé a le VRS, que faire ?\n\n"
+        "SUMMARY: Le VRS est un virus courant qui peut devenir grave chez les bébés.\n\n"
+        "## Ce que c'est\n\nLe VRS est un virus respiratoire [1].\n"
+    )
+    title, summary, body = parse_output(text)
+    assert title.startswith("Mon bébé")
+    assert summary.startswith("Le VRS")
+    assert body.startswith("## Ce que c'est")
+
+
+def test_a_draft_with_neither_marker_nor_heading_is_still_refused():
+    with pytest.raises(ValueError, match="missing"):
+        parse_output("I cannot help with that.")

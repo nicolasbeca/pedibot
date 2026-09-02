@@ -22,8 +22,11 @@ export interface Medicine {
   slug: string;
   /** The Spanish page keeps its own slug for the generics (/es/dose/ibuprofeno), as it always did. */
   slug_es: string;
+  /** Same idea in French: /fr/dose/ibuprofene. */
+  slug_fr: string;
   name_en: string;
   name_es: string;
+  name_fr: string;
   isBrand: boolean;
   forms: Form[];
   d: any;
@@ -40,8 +43,10 @@ export function medicines(): Medicine[] {
         key,
         slug: key,
         slug_es: key === 'ibuprofen' ? 'ibuprofeno' : key,
+        slug_fr: key === 'ibuprofen' ? 'ibuprofene' : 'paracetamol',
         name_en: drug.generic.en,
         name_es: drug.generic.es,
+        name_fr: drug.generic.fr ?? drug.generic.en,
         isBrand: false,
         forms: drug.presentations.map((p: any) => ({ label: p.name, mg_per_ml: p.mg_per_ml })),
         d: drug,
@@ -52,8 +57,10 @@ export function medicines(): Medicine[] {
           key,
           slug: b.slug,
           slug_es: b.slug,
+          slug_fr: b.slug,
           name_en: b.name,
           name_es: b.name,
+          name_fr: b.name,
           isBrand: true,
           forms: b.forms,
           d: drug,

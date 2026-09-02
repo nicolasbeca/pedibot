@@ -8,8 +8,18 @@ export async function getStaticPaths() {
   return guides.map(g => ({ params: { slug: g.id.replace(/^es\//, '') }, props: { g } }));
 }
 const { g } = Astro.props; const lang = 'es'; const s = t(lang);
-const twins = await getCollection('guides', x => x.data.lang === 'en' && !x.data.draft && x.data.topic === g.data.topic);
-const otherHref = twins.length ? `/guides/${twins[0].id.replace(/^en\//, '')}` : null;
+// the same guide in the other languages: matched by `topic`, which is language-neutral.
+// An explicit null tells the layout there is no translation yet, so it emits neither an
+// hreflang nor a switch link — pointing at a page that does not exist is worse than both.
+const others: Record<string, string | null> = {};
+{
+  const twins = await getCollection('guides', x => x.data.lang === 'en' && !x.data.draft && x.data.topic === g.data.topic);
+  others['en'] = twins.length ? `/guides/${twins[0].id.replace(/^en\//, '')}` : null;
+}
+{
+  const twins = await getCollection('guides', x => x.data.lang === 'fr' && !x.data.draft && x.data.topic === g.data.topic);
+  others['fr'] = twins.length ? `/fr/guides/${twins[0].id.replace(/^fr\//, '')}` : null;
+}
 const family = await getCollection('guides', x => x.data.lang === 'es' && !x.data.draft);
 const related = relatedTo(g, family);
 const faqs = faqsFrom(g.body ?? '');
@@ -28,7 +38,7 @@ const faqLd = faqs.length
   : null;
 const jsonld = faqLd ? [page, faqLd] : page;
 ---
-<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/es/guides/${g.id.replace(/^es\//, '')}`} jsonld={jsonld} otherHref={otherHref}>
+<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/es/guides/${g.id.replace(/^es\//, '')}`} jsonld={jsonld} others={others}>
   <article class="narrow prose" style="padding:40px 18px">
     <p class="eyebrow">{g.data.topic} · {s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString('es-ES')}</time></p>
     <h1 style="margin-top:8px">{g.data.title}</h1>
