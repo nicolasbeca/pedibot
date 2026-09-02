@@ -10,6 +10,8 @@ from pathlib import Path
 
 from pedibot.ingest.schema import Chunk
 
+THIN_LANG_BOOST = 1.6  # see `thin_lang` in Index.search
+
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS chunks (
     chunk_id TEXT PRIMARY KEY,
@@ -202,6 +204,14 @@ class Index:
             db_path, check_same_thread=False
         )  # read-only use from API threads
 
+    def thin_languages(self, share: float = 0.10) -> frozenset[str]:
+        """Languages with less than `share` of the chunks. Computed once, from the data."""
+        rows = self.con.execute(
+            "SELECT json_extract(data, '$.lang') AS l, COUNT(*) FROM chunks GROUP BY l"
+        ).fetchall()
+        total = sum(n for _, n in rows) or 1
+        return frozenset(lang for lang, n in rows if lang and n / total < share)
+
     def size(self) -> int:
         row = self.con.execute("SELECT v FROM meta WHERE k='n_chunks'").fetchone()
         return int(row[0]) if row else 0
@@ -231,6 +241,7 @@ class Index:
         red_flag_boost: bool = False,
         topic: str | None = None,
         boost_topic: str | None = None,
+        thin_lang: str | None = None,
     ) -> list[Hit]:
         terms = query_terms(query, extra_terms)
         if not terms:
@@ -256,6 +267,13 @@ class Index:
             matched = sum(1 for t in terms if t in low)
             if prefer_parent_leaflets:
                 score *= DOC_TYPE_WEIGHT.get(ch.doc_type, 1.0)
+            if thin_lang and ch.lang == thin_lang:
+                # A language with a handful of documents needs its own material to surface: the
+                # cross-lingual bridge is so much bigger that it buries it (French pertussis lost
+                # to three English pertussis pages, 3-sep-2026). This is a boost to the thin
+                # language, never a penalty to the others — penalising the other side was measured
+                # in August and broke the English→Spanish direction the corpus depends on.
+                score *= THIN_LANG_BOOST
             if boost_topic and ch.topic == boost_topic:
                 score *= 1.5
             elif boost_topic and ch.topic not in (boost_topic, "general"):

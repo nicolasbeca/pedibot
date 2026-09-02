@@ -1,6 +1,6 @@
 """PediBot on Telegram: the same Engine, one session per chat (python-telegram-bot, long polling).
 
-Commands: /start, /country XX, /lang en|es, /help. Any other text → engine.ask with the chat's
+Commands: /start, /country XX, /lang en|es|fr, /help. Any other text → engine.ask with the chat's
 history. Answers carry 👍/👎 inline buttons (feedback into the ops DB). No personal data stored:
 the chat id is hashed into the session token.
 """
@@ -75,7 +75,7 @@ class TelegramFront:
             return "Usage: /country ES"
         if cmd == "/lang":
             arg = arg.strip().lower()[:2]
-            if arg in ("en", "es"):
+            if arg in ("en", "es", "fr"):
                 p.lang = arg
                 return "Language set to English." if arg == "en" else "Idioma: español."
             return "Usage: /lang en | /lang es"

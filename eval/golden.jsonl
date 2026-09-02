@@ -58,3 +58,13 @@
 {"id": "g58", "q": "Tiene 41 grados de fiebre, 5 años", "lang": "es", "level": "urgent", "docs": ["seup_fiebre"], "rules": ["very_high_fever"]}
 {"id": "g59", "q": "Signs of ADHD in a 7 year old?", "lang": "en", "level": "routine", "docs": ["aap_adhd_cpg", "mlp_en_childdevelopment"]}
 {"id": "g60", "q": "¿Es normal que un recién nacido de 5 días rechace las tomas?", "lang": "es", "level": "urgent", "docs": ["aep_cuidados_recien_nacido", "seup_acudir_urgencias"], "rules": ["newborn_refusing_feeds"]}
+{"id": "f01", "q": "Mon bébé de 2 mois a de la fièvre, que dois-je faire ?", "lang": "fr", "level": "urgent", "rules": ["infant_fever_under_3_months"], "docs": ["seup_fiebre", "who_fr_immunization_coverage", "nhs_en_fever_in_children"]}
+{"id": "f02", "q": "Mon fils ne répond pas et ne se réveille pas", "lang": "fr", "level": "emergency", "rules": ["not_responding"], "docs": ["nhs_en_meningitis", "seup_acudir_urgencias"]}
+{"id": "f03", "q": "Ma fille a avalé une pile bouton", "lang": "fr", "level": "urgent", "rules": ["foreign_body_ingestion"], "docs": ["nhs_en_poisoning", "mlp_en_poisoning", "seup_intoxicaciones"]}
+{"id": "f04", "q": "Des taches sur la peau qui ne disparaissent pas quand j'appuie", "lang": "fr", "level": "emergency", "rules": ["petechiae_fever"], "docs": ["nhs_en_rashes_babies_and_children", "seup_fiebre", "nhs_en_meningitis"]}
+{"id": "f05", "q": "Quels vaccins pour un bébé de 3 mois en France ?", "lang": "fr", "level": "routine", "docs": ["canada_fr_vaccinations_pour_enfants", "who_fr_immunization_coverage"]}
+{"id": "f06", "q": "Qu'est-ce que la rougeole et comment la soigner ?", "lang": "fr", "level": "routine", "docs": ["canada_fr_rougeole", "who_fr_measles"]}
+{"id": "f07", "q": "Mon bébé a une bronchiolite, le VRS c'est grave ?", "lang": "fr", "level": "routine", "docs": ["canada_fr_virus_respiratoire_syncytial_vrs"]}
+{"id": "f08", "q": "Combien de temps faut-il allaiter mon bébé ?", "lang": "fr", "level": "routine", "docs": ["who_fr_infant_and_young_child_feeding"]}
+{"id": "f09", "q": "Mon enfant a la coqueluche, que faire ?", "lang": "fr", "level": "routine", "docs": ["canada_fr_coqueluche_toux_coquelucheuse"]}
+{"id": "f10", "q": "Mon fils s'est cogné la tête, que dois-je surveiller ?", "lang": "fr", "level": "routine", "docs": ["nhs_en_head_injury_and_concussion", "canada_fr_commotions_cerebrales_signes_symptomes", "seup_tce"]}

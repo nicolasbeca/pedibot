@@ -47,7 +47,9 @@ def test_multiword_trigger_matches_the_phrase(syn: Synonyms):
 
 
 def test_unknown_language_returns_nothing(syn: Synonyms):
-    assert syn.expand("mon enfant a de la fievre", "fr") == []
+    # French stopped being unknown on 3-sep-2026, when it got its own triage and tables
+    assert syn.expand("mein Kind hat Fieber", "de") == []
+    assert "fever" in syn.expand("mon enfant a de la fievre", "fr")
 
 
 def test_spanish_question_reaches_the_english_only_material(syn: Synonyms):

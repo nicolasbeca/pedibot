@@ -45,6 +45,13 @@ ORGS = {
         "evidence": "organismo_publico",
         "usage": "publico",
     },
+    "canada": {
+        "org": "Gouvernement du Canada",
+        "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+        "license": "Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca)",
+        "evidence": "organismo_publico",
+        "usage": "publico",
+    },
     "who": {
         "org": "WHO",
         "org_full": "World Health Organization",
@@ -530,6 +537,26 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         ["adolescente"],
     ),
     ("who", "https://www.who.int/news-room/fact-sheets/detail/malaria", "general", "en", ["todas"]),
+    # ---------------- Français (fase francesa, opción A del operador, 2-sep-2026) ----------------
+    # OMS: espejos en francés de las fichas ya aceptadas (misma licencia CC BY-NC-SA)
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/measles", "piel", "fr", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/pneumonia", "respiratorio", "fr", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/diarrhoeal-disease", "digestivo", "fr", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/infant-and-young-child-feeding", "alimentacion", "fr", ["lactante"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/adolescent-mental-health", "salud_mental", "fr", ["adolescente"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/immunization-coverage", "vacunas", "fr", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/malnutrition", "alimentacion", "fr", ["todas"]),
+    # Canada.ca: URLs francesas resueltas desde el conmutador de idioma de cada página y verificadas 200
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/maladies/virus-respiratoire-syncytial-vrs.html", "respiratorio", "fr", ["lactante"]),
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/maladies/rougeole.html", "piel", "fr", ["todas"]),
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/maladies/coqueluche-toux-coquelucheuse.html", "respiratorio", "fr", ["lactante", "todas"]),
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/maladies/grippe-influenza.html", "respiratorio", "fr", ["todas"]),
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/maladies/oreillons.html", "general", "fr", ["todas"]),
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/maladies/rubeole.html", "piel", "fr", ["todas"]),
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/maladies/maladie-lyme.html", "piel", "fr", ["todas"]),
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/maladies/commotions-cerebrales-signes-symptomes.html", "accidentes", "fr", ["todas"]),
+    ("canada", "https://www.canada.ca/fr/sante-canada/services/securite-soleil.html", "accidentes", "fr", ["todas"]),
+    ("canada", "https://www.canada.ca/fr/sante-publique/services/vaccinations-pour-enfants.html", "vacunas", "fr", ["todas"]),
 ]
 
 _DATE_PATTERNS = [

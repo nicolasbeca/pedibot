@@ -48,7 +48,8 @@ class Synonyms:
 
 
 def detect_lang(text: str) -> str:
-    """Tiny heuristic: es vs en (enough to pick synonym direction and answer language hints)."""
+    """Tiny heuristic: es / en / fr — enough to pick the synonym direction, the answer language
+    and the triage wording. French joined on 3-sep-2026, when it got its own triage patterns."""
     low = " " + re.sub(r"[¿¡?!.,;:]", " ", text.lower()) + " "
     es_markers = [
         " mi ",
@@ -96,11 +97,46 @@ def detect_lang(text: str) -> str:
         " he ",
         " she ",
     ]
-    es = sum(m in low for m in es_markers) + sum(ch in "áéíóúñ¿¡" for ch in text.lower())
+    fr_markers = [
+        " mon ",
+        " ma ",
+        " mes ",
+        " fils",
+        " fille",
+        " bébé",
+        " enfant",
+        " il a ",
+        " elle a ",
+        " que faire",
+        " est ",
+        " des ",
+        " du ",
+        " avec ",
+        " pas ",
+        " pour ",
+        " dois",
+        " puis",
+        " nuit",
+        " ans",
+        " mois",
+        " fièvre",
+        " toux",
+        " ventre",
+        " tête",
+    ]
+    es = sum(m in low for m in es_markers) + sum(ch in "ñ¿¡" for ch in text.lower())
     en = sum(m in low for m in en_markers)
-    if es == en == 0:
+    # French shares most accents with Spanish, so only the ones Spanish never uses count: è ê ô û ç
+    fr = sum(m in low for m in fr_markers) + sum(ch in "èêôûçà" for ch in text.lower())
+    best = max(es, en, fr)
+    if best == 0:
         return "en"
-    return "es" if es >= en else "en"
+    # ties go to the more conservative side: es before fr, because "mi/ma" and "hijo/fils" overlap
+    if es == best:
+        return "es"
+    if fr == best:
+        return "fr"
+    return "en"
 
 
 class Retriever:
@@ -117,6 +153,9 @@ class Retriever:
         self.llm = llm
         self.top_k = top_k
         self.taxonomy = taxonomy
+        # Languages holding less than a tenth of the corpus: measured from the index itself, so a
+        # language stops being "thin" on its own once it has enough material.
+        self.thin_langs = index.thin_languages()
 
     def expand(self, query: str, lang: str) -> list[str]:
         extra = self.synonyms.expand(query, lang)
@@ -144,6 +183,7 @@ class Retriever:
             extra_terms=extra,
             red_flag_boost=red_flag_boost,
             boost_topic=topic,
+            thin_lang=lang if lang in self.thin_langs else None,
         )
         # "source or silence": a hit must match a query term in its own text, and the question must
         # look paediatric (a taxonomy topic) unless it matches >= 3 terms; "my dog ate chocolate"

@@ -72,17 +72,24 @@ def looks_like_medication_dose(text: str) -> bool:
     return False
 
 
+# Every language the engine will answer in. Adding one here is not enough on its own: it needs
+# its triage patterns in red_flags.yaml and its texts below, or the safety layer goes silent.
+SUPPORTED_LANGS = ("es", "en", "fr")
+
 DISCLAIMER = {
     "en": "PediBot gives information from official paediatric guidelines. It is not medical advice and does not replace your paediatrician.",
     "es": "PediBot informa a partir de guías pediátricas oficiales. No es consejo médico y no sustituye a tu pediatra.",
+    "fr": "PediBot informe à partir de recommandations pédiatriques officielles. Ce n'est pas un avis médical et cela ne remplace pas votre pédiatre.",
 }
 NO_SOURCE = {
     "en": "I don't have reliable information on this in my sources, so I'd rather not guess. Please contact your paediatrician or a nurse line. If your child seems seriously unwell, go to the emergency department.",
     "es": "No tengo información fiable sobre esto en mis fuentes y prefiero no adivinar. Consulta con tu pediatra. Si tu hijo o hija parece estar grave, acude a urgencias.",
+    "fr": "Je n'ai pas d'information fiable à ce sujet dans mes sources et je préfère ne pas deviner. Parlez-en à votre pédiatre. Si votre enfant semble aller très mal, allez aux urgences.",
 }
 CLARIFY = {
     "en": "I want to get this right. What's the main thing going on?",
     "es": "Quiero acertar. ¿Qué es lo principal que le pasa?",
+    "fr": "Je veux bien comprendre. Quel est le principal problème ?",
 }
 CLARIFY_OPTIONS = {
     "en": [
@@ -103,10 +110,20 @@ CLARIFY_OPTIONS = {
         "Comida o sueño",
         "Otra cosa",
     ],
+    "fr": [
+        "Fièvre",
+        "Toux ou respiration",
+        "Vomissements ou diarrhée",
+        "Boutons ou peau",
+        "Chute ou coup",
+        "Alimentation ou sommeil",
+        "Autre chose",
+    ],
 }
 ASK_AGE = {
     "en": "To answer safely I need to know how old your child is (months or years). Could you tell me?",
     "es": "Para responder con seguridad necesito saber la edad (meses o años). ¿Me la dices?",
+    "fr": "Pour répondre en toute sécurité, j'ai besoin de l'âge de votre enfant (en mois ou en années). Pouvez-vous me le dire ?",
 }
 
 
@@ -172,25 +189,26 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
         return None
     reasons = "; ".join(tr.reasons(lang))
     if tr.level == "emergency":
-        head = (
-            f"🚨 Llama ahora al {numbers['emergency']} o acude a urgencias."
-            if lang == "es"
-            else f"🚨 Call {numbers['emergency']} now or go to the emergency department."
-        )
+        heads = {
+            "es": f"🚨 Llama ahora al {numbers['emergency']} o acude a urgencias.",
+            "en": f"🚨 Call {numbers['emergency']} now or go to the emergency department.",
+            "fr": f"🚨 Appelez tout de suite le {numbers['emergency']} ou allez aux urgences.",
+        }
     elif tr.level == "urgent":
-        head = (
-            "🚨 Con estos síntomas hay que acudir a urgencias hoy, sin esperar."
-            if lang == "es"
-            else "🚨 With these symptoms your child should be seen in the emergency department today, without waiting."
-        )
+        heads = {
+            "es": "🚨 Con estos síntomas hay que acudir a urgencias hoy, sin esperar.",
+            "en": "🚨 With these symptoms your child should be seen in the emergency department today, without waiting.",
+            "fr": "🚨 Avec ces signes, votre enfant doit être vu aux urgences aujourd'hui, sans attendre.",
+        }
     else:  # mental_health
         mental = numbers.get("mental") or numbers["emergency"]
-        head = (
-            f"💛 Esto es importante y no estás solo/a. Llama al {mental} (o al {numbers['emergency']} si hay peligro inmediato). Si el menor ha hecho algo para hacerse daño, acude a urgencias ahora."
-            if lang == "es"
-            else f"💛 This matters and you are not alone. Call {mental} (or {numbers['emergency']} if there is immediate danger). If your child has already done something to harm themselves, go to the emergency department now."
-        )
-    why = ("Motivo" if lang == "es" else "Reason") + f": {reasons}"
+        heads = {
+            "es": f"💛 Esto es importante y no estás solo/a. Llama al {mental} (o al {numbers['emergency']} si hay peligro inmediato). Si el menor ha hecho algo para hacerse daño, acude a urgencias ahora.",
+            "en": f"💛 This matters and you are not alone. Call {mental} (or {numbers['emergency']} if there is immediate danger). If your child has already done something to harm themselves, go to the emergency department now.",
+            "fr": f"💛 C'est important et vous n'êtes pas seul·e. Appelez le {mental} (ou le {numbers['emergency']} en cas de danger immédiat). Si votre enfant s'est déjà fait du mal, allez aux urgences maintenant.",
+        }
+    head = heads.get(lang, heads["en"])
+    why = {"es": "Motivo", "fr": "Raison"}.get(lang, "Reason") + f": {reasons}"
     return head + "\n" + why
 
 
@@ -343,7 +361,7 @@ class Engine:
         prior_user = " ".join(t["text"] for t in history if t.get("role") == "user")
         context_text = f"{prior_user} {query}".strip() if prior_user else query
         lang = lang or detect_lang(query)
-        if lang not in ("es", "en"):
+        if lang not in SUPPORTED_LANGS:
             lang = "en"
         tr = self.triage.assess(context_text)
         tr_now = self.triage.assess(query)
@@ -422,7 +440,7 @@ class Engine:
                 NO_SOURCE[lang], tr.level, banner, [], lang, None, None, [], "no_source", extra
             )
 
-        answer_lang = "English" if lang == "en" else "Spanish"
+        answer_lang = {"en": "English", "es": "Spanish", "fr": "French"}.get(lang, "English")
         user = (
             f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
             "the sources may be in another language, translate faithfully.\n"

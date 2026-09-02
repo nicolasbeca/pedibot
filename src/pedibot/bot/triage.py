@@ -15,16 +15,19 @@ LEVEL_ORDER = {"routine": 0, "mental_health": 1, "urgent": 2, "emergency": 3}
 
 _AGE_PATTERNS = [
     # (regex, unit multiplier to months)
-    (re.compile(r"(\d{1,2})\s*(?:meses|mes|months?|mo)\b", re.I), 1.0),
-    (re.compile(r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|y\.?o\.?)\b", re.I), 12.0),
-    (re.compile(r"(\d{1,2})\s*(?:semanas|semana|weeks?|wks?)\b", re.I), 1 / 4.345),
+    (re.compile(r"(\d{1,2})\s*(?:meses|mes|months?|mois|mo)\b", re.I), 1.0),
+    (re.compile(r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|ans?|y\.?o\.?)\b", re.I), 12.0),
+    (re.compile(r"(\d{1,2})\s*(?:semanas|semana|weeks?|semaines?|wks?)\b", re.I), 1 / 4.345),
     (
-        re.compile(r"(\d{1,2})\s*(?:d[ií]as|d[ií]a|days?)\s*(?:de (?:vida|edad|nacid)|old)", re.I),
+        re.compile(
+            r"(\d{1,2})\s*(?:d[ií]as|d[ií]a|days?|jours?)\s*(?:de (?:vida|edad|nacid|vie)|old)",
+            re.I,
+        ),
         1 / 30.4,
     ),
     (re.compile(r"(?:tiene|has|is|de)\s+(\d{1,2})\s*(?:a|y)\b", re.I), 12.0),
 ]
-_NEWBORN = re.compile(r"reci[eé]n nacid|newborn|neonat", re.I)
+_NEWBORN = re.compile(r"reci[eé]n nacid|newborn|neonat|nouveau[- ]n[eé]", re.I)
 _WORD_AGES = {
     "un mes": 1,
     "1 mes": 1,
@@ -37,6 +40,11 @@ _WORD_AGES = {
     "dos años": 24,
     "one year": 12,
     "two years": 24,
+    "un mois": 1,
+    "deux mois": 2,
+    "trois mois": 3,
+    "un an": 12,
+    "deux ans": 24,
 }
 
 
@@ -47,6 +55,7 @@ class Rule:
     source: str
     reason_es: str
     reason_en: str
+    reason_fr: str = ""
     patterns: list[re.Pattern[str]] = field(default_factory=list)
     requires: list[str] = field(default_factory=list)
 
@@ -59,7 +68,14 @@ class TriageResult:
     has_fever: bool
 
     def reasons(self, lang: str = "en") -> list[str]:
-        return [r.reason_es if lang == "es" else r.reason_en for r in self.matched]
+        def pick(r: Rule) -> str:
+            if lang == "es":
+                return r.reason_es
+            if lang == "fr" and r.reason_fr:
+                return r.reason_fr
+            return r.reason_en
+
+        return [pick(r) for r in self.matched]
 
     @property
     def is_alarm(self) -> bool:
@@ -92,6 +108,7 @@ class Triage:
                     source=r["source"],
                     reason_es=r["reason_es"],
                     reason_en=r["reason_en"],
+                    reason_fr=r.get("reason_fr", ""),
                     patterns=[re.compile(p, re.I) for p in r.get("patterns", [])],
                     requires=list(r.get("requires", [])),
                 )

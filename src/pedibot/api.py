@@ -33,7 +33,7 @@ STATIC_DIR = (
 class AskIn(BaseModel):
     question: str = Field(min_length=2, max_length=1500)
     country: str | None = Field(default=None, max_length=2)
-    lang: str | None = Field(default=None, pattern="^(es|en)$")
+    lang: str | None = Field(default=None, pattern="^(es|en|fr)$")
     session: str | None = Field(default=None, max_length=64)
     mode: str = Field(default="parent", pattern="^(parent|child)$")
 
@@ -63,13 +63,13 @@ class DoseIn(BaseModel):
     weight_kg: float = Field(gt=0.5, lt=150)
     age_months: float | None = Field(default=None, ge=0, le=216)
     country: str | None = Field(default=None, max_length=2)
-    lang: str = Field(default="en", pattern="^(es|en)$")
+    lang: str = Field(default="en", pattern="^(es|en|fr)$")
 
 
 class PhotoIn(BaseModel):
     image_b64: str = Field(min_length=100, max_length=6_000_000)
     mime: str = Field(default="image/jpeg", pattern="^image/(jpeg|png|webp)$")
-    lang: str = Field(default="en", pattern="^(es|en)$")
+    lang: str = Field(default="en", pattern="^(es|en|fr)$")
     country: str | None = Field(default=None, max_length=2)
     session: str | None = Field(default=None, max_length=64)
 
