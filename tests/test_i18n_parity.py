@@ -114,3 +114,19 @@ def test_the_tool_strings_carry_the_same_keys() -> None:
     assert set(STRINGS) == set(langs()), f"idiomas del motor {set(STRINGS)} vs web {set(langs())}"
     warn = {lang: set(table["dose_warn"]) for lang, table in STRINGS.items()}
     assert len(set(map(frozenset, warn.values()))) == 1, warn
+
+
+def test_the_model_is_told_the_right_language() -> None:
+    """The mapping the model is given used to be written inline in two places, and both times a
+    new language fell back to English: French guides were requested as "Spanish", and a German
+    question was answered in English."""
+    from pedibot.bot.strings import LANGUAGE_NAME, STRINGS
+
+    assert set(LANGUAGE_NAME) == set(STRINGS)
+    src = (ROOT / "src" / "pedibot").rglob("*.py")
+    inline = [
+        f"{f.relative_to(ROOT)}"
+        for f in src
+        if f.name != "strings.py" and '"es": "Spanish"' in f.read_text(encoding="utf-8")
+    ]
+    assert not inline, f"la tabla de idiomas vuelve a estar escrita a mano en {inline}"

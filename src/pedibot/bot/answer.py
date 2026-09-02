@@ -12,6 +12,7 @@ from pedibot.bot.dose import DRUGS, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
+from pedibot.bot.strings import LANGUAGE_NAME
 from pedibot.bot.triage import LEVEL_ORDER, Triage, TriageResult
 from pedibot.bot.vaccines import Vaccines, format_answer, is_vaccine_question
 from pedibot.index.store import Hit
@@ -458,7 +459,7 @@ class Engine:
                 NO_SOURCE[lang], tr.level, banner, [], lang, None, None, [], "no_source", extra
             )
 
-        answer_lang = {"en": "English", "es": "Spanish", "fr": "French"}.get(lang, "English")
+        answer_lang = LANGUAGE_NAME.get(lang, "English")
         user = (
             f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
             "the sources may be in another language, translate faithfully.\n"

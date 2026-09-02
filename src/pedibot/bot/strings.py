@@ -148,6 +148,13 @@ STRINGS: dict[str, Table] = {
 }
 
 
+LANGUAGE_NAME = {"en": "English", "es": "Spanish", "fr": "French", "de": "German"}
+"""What the model is told to write in. Kept here, in one place, because this exact mapping was
+written inline twice — in the answer prompt and in the article prompt — and both times a new
+language silently fell back to English. The article generator asked for "Spanish" when it meant
+French, and the answer engine replied in English to a German question."""
+
+
 def tool_strings(lang: str) -> Table:
     """The table for this language, falling back to English rather than to a blank string."""
     return STRINGS.get(lang, STRINGS["en"])

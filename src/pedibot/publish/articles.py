@@ -510,7 +510,8 @@ def seasonal_first(
 # What each language is called when the model is told which one to write in, and how its
 # sources section is headed. Adding a language here is not enough on its own: it also needs its
 # triage patterns, or the guides would exist without a safety layer behind the chat.
-LANGUAGE_NAME = {"en": "English", "es": "Spanish", "fr": "French", "de": "German"}
+from pedibot.bot.strings import LANGUAGE_NAME  # noqa: E402 — one mapping, not two
+
 SOURCES_HEADING = {"en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen"}
 ARTICLE_DISCLAIMER = {
     "en": "*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*",
