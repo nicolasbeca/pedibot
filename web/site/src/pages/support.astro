@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import Donate from '../components/Donate.astro';
 const lang = 'en';
 ---
 <Base lang={lang} title="Support PediBot — free for every parent, funded in the open" description="How PediBot is funded: the PDBT token on Base, and the promise that nothing is ever gated." path="/support">
@@ -21,5 +22,6 @@ const lang = 'en';
     </ul>
     <h2>Token</h2>
     <p>PediBot (PDBT) · Base · contract <code class="mono">0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1</code> · launched on Virtuals, now trading on Uniswap.</p>
+    <Donate lang={lang} />
   </div>
 </Base>

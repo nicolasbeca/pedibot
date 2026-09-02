@@ -1,0 +1,80 @@
+---
+/**
+ * Direct donation block. Renders nothing while DONATION_ADDRESS is empty.
+ *
+ * No wallet-connect library and no third-party script: an address, a copy button and a link that
+ * opens the wallet. /legal promises no third-party requests, and a donation button is not a
+ * reason to break that promise. It also means this works with MetaMask, Rabby, Coinbase Wallet
+ * or a phone camera without us knowing who donated — which is the point.
+ */
+import { DONATION_ADDRESS, donationLink } from '../donation';
+import type { Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const es = lang === 'es';
+const address = DONATION_ADDRESS;
+const qr = `/donation-qr.svg`;
+---
+{address && (
+  <section class="donate">
+    <h2>{es ? 'Donar directamente' : 'Donate directly'}</h2>
+    <p>
+      {es
+        ? 'Si PediBot te ha sido útil y quieres echar una mano con lo que cuesta mantenerlo, puedes enviar lo que quieras a esta dirección. No hace falta cuenta ni registro, y no cambia nada: nada de PediBot está cerrado ni lo estará.'
+        : 'If PediBot has been useful and you want to help with what it costs to run, you can send whatever you like to this address. No account, no sign-up, and it changes nothing: nothing here is gated and nothing ever will be.'}
+    </p>
+    <div class="card">
+      <div class="qr"><img src={qr} alt={es ? 'Código QR de la dirección de donación' : 'QR code of the donation address'} width="132" height="132" loading="lazy" /></div>
+      <div class="addr">
+        <p class="net">{es ? 'Red Base · ETH o USDC' : 'Base network · ETH or USDC'}</p>
+        <code class="mono" id="donate-addr">{address}</code>
+        <p class="row">
+          <button class="btn btn-ghost" id="donate-copy" type="button">{es ? 'Copiar dirección' : 'Copy address'}</button>
+          <a class="btn btn-primary" href={donationLink(address)}>{es ? 'Abrir en la cartera' : 'Open in wallet'}</a>
+        </p>
+      </div>
+    </div>
+    <p class="fine">
+      {es
+        ? 'Esta cartera se usa solo para esto. Todo lo que entra queda escrito en la cadena y cualquiera puede verlo. Envía solo en la red Base: en otra red el dinero se pierde. Una donación no es una consulta médica ni da acceso a nada distinto.'
+        : 'This wallet is used only for this. Everything it receives is written on-chain and anyone can look. Send on the Base network only: on another network the money is lost. A donation is not a medical consultation and buys no different access.'}
+    </p>
+  </section>
+)}
+
+{address && (
+  <script is:inline define:vars={{ address, copied: es ? '¡Copiada!' : 'Copied!' }}>
+    document.getElementById('donate-copy')?.addEventListener('click', async (e) => {
+      const b = e.currentTarget;
+      const old = b.textContent;
+      try {
+        await navigator.clipboard.writeText(address);
+      } catch (err) {
+        const r = document.createRange();
+        r.selectNode(document.getElementById('donate-addr'));
+        getSelection()?.removeAllRanges();
+        getSelection()?.addRange(r);
+      }
+      b.textContent = copied;
+      setTimeout(() => { b.textContent = old; }, 1600);
+    });
+  </script>
+)}
+
+<style>
+  .donate { margin-top: 34px; }
+  .donate .card {
+    display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+    background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px;
+  }
+  .donate .qr { background: #fff; border-radius: 10px; padding: 6px; line-height: 0; }
+  .donate .addr { flex: 1 1 260px; min-width: 0; }
+  .donate .net { margin: 0 0 6px; font-size: .82rem; color: var(--ink-3); }
+  .donate code {
+    display: block; overflow-wrap: anywhere; font-size: .86rem;
+    background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px;
+  }
+  .donate .row { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0 0; }
+  .donate .fine { font-size: .84rem; color: var(--ink-3); margin-top: 12px; }
+</style>
