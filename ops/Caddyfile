@@ -36,6 +36,19 @@ pedibot.xyz {
 	# heatstroke on 26-ago-2026. The surviving one is the one paired with the Spanish version.
 	redir /guides/how_do_i_know_if_my_child_has_heat_exhaustion_or_heatstroke /guides/what_should_i_do_if_my_child_has_heat_stroke permanent
 
+	# Caching. The HTML carried no Cache-Control at all, so browsers fell back to heuristic
+	# caching and kept serving an old copy after a deploy — a change was invisible to anyone who
+	# had already visited (1-sep-2026). HTML now revalidates every time, which costs one 304 of a
+	# few bytes thanks to the ETag; the built assets carry a content hash in the filename, so they
+	# can be cached forever and a change simply produces a new name.
+	# Matching by extension missed /support and every other clean URL (the file is
+	# /support/index.html but the request path has no .html), so the rule is inverted: everything
+	# revalidates EXCEPT the built assets, whose filename already carries a content hash.
+	@hashed path /_astro/*
+	@revalidate not path /_astro/*
+	header @revalidate Cache-Control "no-cache"
+	header @hashed Cache-Control "public, max-age=31536000, immutable"
+
 	# Static site (Astro build)
 	handle {
 		root * /opt/pedibot/web/site/dist

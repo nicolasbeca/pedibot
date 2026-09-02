@@ -1,8 +1,13 @@
-"""The LaunchLeague badge is served from our own domain (27-ago-2026).
+"""The LaunchLeague badge was retired on 2-sep-2026 after measuring it.
 
-/legal promises no third-party trackers and that the visitor's IP is only ever a salted hash on
-our side; embedding the badge from their CDN would hand every visitor's IP to a third party. The
-SVG is theirs, self-contained (paths only, no fonts), so we host it.
+Seven days on the leaderboard brought 20 distinct visitors and not one question to the bot: they
+opened the home page, a few looked at /dose and /guides, and left. The listing is free and stays;
+the badge does not, because it put a startup-competition mark on a paediatric health page and
+sent an outbound link from both home pages.
+
+What is locked here is the rule that outlives the decision: if the badge ever goes back, it is
+served from our own domain. /legal promises no third-party requests, and handing every visitor's
+IP to another company for a decorative image is not a trade worth making.
 """
 
 from __future__ import annotations
@@ -13,15 +18,18 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 SECTIONS = ROOT / "web" / "site" / "src" / "components" / "Sections.astro"
 
 
-def test_both_badge_files_are_present():
+def test_the_badge_is_not_on_the_site_any_more():
+    html = SECTIONS.read_text(encoding="utf-8")
+    assert "launchleague.xyz/?product=" not in html
+    assert "launchleague-badge" not in html
+
+
+def test_if_it_ever_comes_back_it_is_self_hosted():
+    """The two SVGs stay in public/ precisely so that putting it back never means reaching for
+    their CDN."""
+    html = SECTIONS.read_text(encoding="utf-8")
+    assert "cdn.launchleague.xyz" not in html, "serve the badge from our own domain"
     for name in ("launchleague-badge-light.svg", "launchleague-badge-dark.svg"):
         f = ROOT / "web" / "site" / "public" / name
         assert f.exists(), f"{name} is missing"
         assert f.read_text(encoding="utf-8").lstrip().startswith("<svg")
-
-
-def test_the_badge_is_not_loaded_from_a_third_party():
-    html = SECTIONS.read_text(encoding="utf-8")
-    assert 'src="/launchleague-badge-light.svg"' in html
-    assert "cdn.launchleague.xyz" not in html, "serve the badge from our own domain"
-    assert 'href="https://launchleague.xyz/?product=pedibot-ai"' in html

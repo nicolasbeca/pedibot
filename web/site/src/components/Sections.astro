@@ -67,14 +67,12 @@ const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
       <a class="ch" href="https://bsky.app/profile/pedibot.bsky.social" target="_blank" rel="noopener"><span class="ic">🦋</span><b>{s.channels_bs}</b><span>{s.channels_bs_d}</span></a>
       <a class="ch" href={lang === 'es' ? '/es/rss.xml' : '/rss.xml'}><span class="ic">📡</span><b>{s.channels_rss}</b><span>{s.channels_rss_d}</span></a>
     </div>
-    <!-- LaunchLeague badge. Their SVG, served from our own domain: no third-party request, which
-         is what /legal promises, and it does not break if their CDN goes down. -->
-    <p class="ll">
-      <a href="https://launchleague.xyz/?product=pedibot-ai" target="_blank" rel="noopener">
-        <img class="day" src="/launchleague-badge-light.svg" alt="PediBot on LaunchLeague" width="260" height="65" loading="lazy" decoding="async" />
-        <img class="night-only" src="/launchleague-badge-dark.svg" alt="PediBot on LaunchLeague" width="260" height="65" loading="lazy" decoding="async" />
-      </a>
-    </p>
+    <!-- LaunchLeague badge retired 2-sep-2026, measured: in seven days it brought 20 distinct
+         visitors and NOT ONE of them asked the bot a single question — they looked at the home
+         page, a few opened /dose or /guides, and left. The listing itself is free and stays; what
+         goes is the badge, which put a startup-competition mark on a paediatric health page and
+         sent an outbound link from both home pages, our most valuable ones. The block is in git
+         (commit 2577b0d) and the two SVGs are still in public/ if it ever goes back. -->
   </section>
 
   <section class="block" id="support">
