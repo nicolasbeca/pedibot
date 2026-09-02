@@ -246,13 +246,25 @@ def publish(
     index = Index(s.index_db_path)
     content = ROOT / "web" / "content"
     queue = ROOT / "publish" / "queue"
-    topics = [topic] if topic else pending_topics(content, lang)[:n]
-    for t in topics:
+    # Re-read the pending list before each article instead of taking it once: otherwise a batch
+    # cannot see what the batch itself just wrote, and a run of 90 topics happily publishes both
+    # `hives` and `urticaria` (2-sep-2026).
+    written, failed = 0, set()  # `failed` matters: nothing is written, so the topic would be
+    while written < n:            # picked again for ever on the next round
+        if topic:
+            t = topic if written == 0 and topic not in failed else None
+        else:
+            remaining = [x for x in pending_topics(content, lang) if x not in failed]
+            t = remaining[0] if remaining else None
+        if t is None:
+            break
         try:
             a = generate_article(index, llm, t, lang)
         except ValueError as e:
             typer.echo(f"  ! {t}: {e}")
+            failed.add(t)
             continue
+        written += 1
         md, q = write_article(a, content, queue, site_url)
         typer.echo(
             f"  ✓ {t} → {md}  (social text: {q})  cost=${a.llm.cost_usd:.4f} {a.verification}"

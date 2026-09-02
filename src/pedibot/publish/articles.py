@@ -493,6 +493,39 @@ def seasonal_first(
     return first + [t for t in topics if t not in first]
 
 
+# Topic keys that are two names for the same subject, one Spanish and one English. Publishing
+# both gives two nearly identical guides in the same language that split the ranking between
+# them. This is an explicit list and not a heuristic on purpose: measuring the overlap of their
+# source documents flagged pairs that are genuinely different subjects (breastfeeding vs starting
+# solids, asthma vs an asthma attack, gastroenteritis vs vomiting), and losing one of those costs
+# a real guide. The rule for adding a pair here: the two keys are the same word in two languages.
+SAME_SUBJECT: tuple[frozenset[str], ...] = tuple(
+    frozenset(pair)
+    for pair in (
+        ("anafilaxia", "anaphylaxis_en"),
+        ("catarro", "common_cold"),
+        ("cefalea", "headache_en"),
+        ("constipation", "estrenimiento"),
+        ("convulsion_febril", "febrile_seizure"),
+        ("golpe_calor", "heat"),
+        ("hives", "urticaria"),
+        ("head_injury_en", "traumatismo_craneal"),
+        ("intoxicaciones", "poisoning_en"),
+        ("newborn_care_en", "recien_nacido"),
+        ("screen_sleep", "sueno_pantallas"),
+        ("vacunas", "vaccines_en"),
+        ("alimentacion_complementaria", "weaning_en"),
+        ("diarrhoea_vomiting", "gastroenteritis"),
+        ("otitis", "ear_infection"),
+    )
+)
+
+
+def same_subject_as(topic: str) -> set[str]:
+    """The other keys naming the same subject as this one."""
+    return {t for pair in SAME_SUBJECT if topic in pair for t in pair} - {topic}
+
+
 def pending_topics(content_dir: Path, lang: str) -> list[str]:
     """Topics without an article yet in this language (by frontmatter `topic:`)."""
     done: set[str] = set()
@@ -507,23 +540,5 @@ def pending_topics(content_dir: Path, lang: str) -> list[str]:
 
 
 def _already_covered(topic: str, done: set[str]) -> bool:
-    """True if a published guide already speaks about this subject.
-
-    The plan carries two keys for several subjects, one Spanish and one English (golpe_calor/heat,
-    urticaria/hives, cefalea/headache_en…), and publishing both gives two nearly identical guides
-    in the same language. Two topics are the same subject when they share most of their anchor
-    documents. The `compare_*` articles reuse sources deliberately and are exempt.
-    """
-    plan = TOPIC_PLAN[topic]
-    if plan.get("compare"):
-        return False
-    docs: set[str] = set(plan["docs"])  # type: ignore[call-overload]
-    for other in done:
-        other_plan = TOPIC_PLAN.get(other)
-        if not other_plan or other_plan.get("compare"):
-            continue
-        other_docs: set[str] = set(other_plan["docs"])  # type: ignore[call-overload]
-        shared = docs & other_docs
-        if shared and len(shared) / min(len(docs), len(other_docs)) >= 0.5:
-            return True
-    return False
+    """True if a published guide already speaks about this same subject (see SAME_SUBJECT)."""
+    return bool(same_subject_as(topic) & done)

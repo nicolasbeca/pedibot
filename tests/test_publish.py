@@ -236,3 +236,17 @@ def test_comparison_articles_are_still_offered(tmp_path: Path):
     pending = pending_topics(tmp_path, "en")
     assert "compare_fever_medicine" in pending
     assert "compare_fever_threshold" in pending
+
+
+def test_a_batch_does_not_publish_two_guides_on_the_same_subject(tmp_path: Path):
+    """`pending_topics` was read once at the start of the run, so within a single batch the
+    deduplication never saw what the batch itself had just written: a run of 90 topics produced
+    both hives and urticaria, and both screen_sleep and sueno_pantallas (2-sep-2026). The list
+    has to be re-read before each article, and the pairs are declared in SAME_SUBJECT."""
+    content = tmp_path / "content"
+    first = pending_topics(content, "en")
+    assert "hives" in first and "urticaria" in first  # both offered while nothing is published
+
+    _publish_stub(content, "en", "one", "hives")
+    assert "urticaria" not in pending_topics(content, "en"), "same subject as the one just published"
+    assert "breastfeeding" in pending_topics(content, "en"), "a different subject must survive"
