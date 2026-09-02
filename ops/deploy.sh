@@ -37,6 +37,10 @@ fi
 echo "== install + units + site build"
 $SSH bash -s <<'REMOTE'
 set -euo pipefail
+# Editing a script from Windows can leave CRLF, and bash then fails with the useless
+# "set: pipefail: invalid option name". Normalise on arrival instead of debugging it again.
+# (tr with an octal code, so this line survives being edited from Windows itself.)
+python3 -c "import glob,pathlib;[pathlib.Path(f).write_bytes(pathlib.Path(f).read_bytes().replace(bytes([13]),bytes())) for f in glob.glob('/opt/pedibot/ops/*.sh')]"
 chown -R pedibot:pedibot /opt/pedibot
 usermod -aG systemd-journal pedibot 2>/dev/null || true
 chmod o+x /opt/pedibot /opt/pedibot/web /opt/pedibot/web/site

@@ -102,3 +102,20 @@ def test_an_unusable_form_is_not_routed():
     m = _mod()
     assert m.route({}) is None
     assert m.route({"lang": "en"}) is None
+
+
+def test_the_worker_knows_the_same_languages_as_the_engine() -> None:
+    """It runs as a standalone script on the server, so its list is a copy — copies drift."""
+    from pedibot.bot.answer import SUPPORTED_LANGS as ENGINE
+
+    assert set(_mod().SUPPORTED_LANGS) == set(ENGINE)
+
+
+def test_the_requested_language_reaches_every_tool() -> None:
+    m = _mod()
+    assert m.route({"question": "Ma fille tousse", "lang": "fr"}).payload["lang"] == "fr"
+    assert m.route({"drug": "Doliprane", "weight_kg": 14, "lang": "fr"}).payload["lang"] == "fr"
+    assert "lang=fr" in m.route({"country": "FR", "lang": "fr"}).path
+    assert "lang=fr" in m.route({"weight_kg": 12, "lang": "fr"}).path
+    # an unknown language falls back to English rather than to a blank answer
+    assert m.route({"question": "hi", "lang": "pt"}).payload["lang"] == "en"

@@ -145,6 +145,11 @@ def _num(value: Any) -> float | None:
         return None
 
 
+# Kept in step with pedibot.bot.answer.SUPPORTED_LANGS by tests/test_acp_worker.py; the worker
+# runs as a plain script on the server and does not import the package.
+SUPPORTED_LANGS = ("en", "es", "fr")
+
+
 def route(req: dict[str, Any]) -> Route | None:
     """Which endpoint answers this form. None if the form cannot be served."""
     req = {k.lower(): v for k, v in (req or {}).items()}
@@ -152,7 +157,10 @@ def route(req: dict[str, Any]) -> Route | None:
     country = str(req.get("country") or "").strip().upper()
     weight = _num(req.get("weight_kg") or req.get("weight"))
     drug = str(req.get("drug") or req.get("medicine") or req.get("brand") or "").strip()
-    lang = "es" if str(req.get("lang", "en")).lower().startswith("es") else "en"
+    # every language the engine speaks, not "Spanish or English": a French buyer asking in
+    # French used to be answered in English
+    asked = str(req.get("lang") or "en").lower()[:2]
+    lang = asked if asked in SUPPORTED_LANGS else "en"
     age = _num(req.get("age_months"))
 
     if question:
@@ -162,15 +170,15 @@ def route(req: dict[str, Any]) -> Route | None:
             {"question": question, "lang": lang, "country": country[:2] or "GB"},
         )
     if drug and weight is not None:
-        payload: dict[str, Any] = {"drug": drug, "weight_kg": weight}
+        payload: dict[str, Any] = {"drug": drug, "weight_kg": weight, "lang": lang}
         if age is not None:
             payload["age_months"] = age
         return Route("/api/dose", "POST", payload)
     if country:
-        return Route(f"/api/vaccines?country={country[:2]}", "GET", {})
+        return Route(f"/api/vaccines?country={country[:2]}&lang={lang}", "GET", {})
     if weight is not None:
         tail = f"&age_months={int(age)}" if age is not None else ""
-        return Route(f"/api/ors?weight_kg={weight}{tail}", "GET", {})
+        return Route(f"/api/ors?weight_kg={weight}{tail}&lang={lang}", "GET", {})
     return None
 
 
