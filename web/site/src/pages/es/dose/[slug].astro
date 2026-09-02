@@ -1,51 +1,90 @@
 ---
+// Una página por medicamento con la tabla completa de pesos (2-sep-2026). Sustituye a 1.442
+// páginas de un solo peso: el motivo, medido, está en src/dosepages.ts.
 import Base from '../../../layouts/Base.astro';
-import drugs from '../../../data/drugs.json';
+import { medicines, weightTable, maxDoses, type Medicine } from '../../../dosepages';
+
 export async function getStaticPaths() {
-  const out: any[] = [];
-  const weights = Array.from({ length: 36 }, (_, i) => i + 5);
-  for (const [key, d] of Object.entries(drugs as any)) {
-    const entries = [{ slug: key === 'ibuprofen' ? 'ibuprofeno' : key, name: (d as any).generic.es, forms: (d as any).presentations.map((p: any) => ({ label: p.name, mg_per_ml: p.mg_per_ml })), brand: null }]
-      .concat((d as any).brands.filter((b: any) => b.forms.length).map((b: any) => ({ slug: b.slug, name: b.name, forms: b.forms, brand: b.name })));
-    for (const e of entries) for (const kg of weights) out.push({ params: { slug: `${e.slug}-${kg}kg` }, props: { key, d, e, kg } });
-  }
-  return out;
+  return medicines().map((m) => ({ params: { slug: m.slug_es }, props: { m } }));
 }
-const { key, d, e, kg } = Astro.props as any;
-const [lo, hi] = d.per_dose_mg_per_kg;
-let mgMin = lo * kg, mgMax = Math.min(hi * kg, d.max_single_mg); mgMin = Math.min(mgMin, mgMax);
-const dailyCap = Math.min(d.max_mg_per_kg_day * kg, d.max_daily_mg);
-const maxDoses = Math.max(1, Math.min(Math.floor(dailyCap / mgMax), Math.floor(24 / d.interval_hours[0])));
-const r1 = (x: number) => Math.round(x * 10) / 10;
-const title = `Dosis de ${e.name} para un niño de ${kg} kg`;
-const desc = `${e.name} para ${kg} kg: ${Math.round(mgMin)}–${Math.round(mgMax)} mg cada ${d.interval_hours[0]}–${d.interval_hours[1]} horas, en ml según la concentración del envase. Guía de dosificación AEPap. No es consejo médico.`;
-const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: title, about: { '@type': 'Drug', name: e.name }, audience: { '@type': 'Patient' } };
-const isIbu = key === 'ibuprofen';
+
+const { m } = Astro.props as { m: Medicine };
+const rows = weightTable(m);
+const d = m.d;
+const isIbu = m.key === 'ibuprofen';
+const title = `Dosis de ${m.name_es} por peso`;
+const desc = `${m.name_es} en niños: la dosis en mg y en ml para cada peso de 5 a 40 kg y para cada concentración del envase. Tabla fija de la guía de dosificación de la AEPap. No es consejo médico.`;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: title,
+  about: { '@type': 'Drug', name: m.name_es, activeIngredient: d.generic.es },
+  audience: { '@type': 'Patient' },
+};
 ---
-<Base lang="es" title={`${title} — PediBot`} description={desc} path={`/es/dose/${e.slug}-${kg}kg`} jsonld={jsonld}>
+<Base lang="es" title={`${title} — PediBot`} description={desc} path={`/es/dose/${m.slug_es}`} jsonld={jsonld}>
   <div class="narrow" style="padding:40px 18px">
     <p class="eyebrow">Calculadora de dosis · {d.generic.es}</p>
     <h1 style="margin-top:8px">{title}</h1>
-    <p class="lede">Tabla fija de la guía de dosificación de la AEPap — sin IA. Comprueba siempre la concentración impresa en el envase.</p>
+    <p class="lede">
+      Cada peso de 5 a 40 kg, en miligramos y en mililitros según la concentración del envase.
+      Tabla fija de la guía de dosificación de la AEPap — sin IA. Comprueba siempre la
+      concentración impresa en tu envase: cambia según el país y la presentación.
+    </p>
+
     <div class="card" style="margin-top:24px">
-      <div class="big mono">{Math.round(mgMin)}–{Math.round(mgMax)} mg</div>
-      <p>cada {d.interval_hours[0]}–{d.interval_hours[1]} horas · máximo {maxDoses} dosis en 24 horas</p>
-      <table class="plain" style="margin-top:12px">
-        <thead><tr><th>Concentración del envase</th><th>ml por dosis</th></tr></thead>
-        <tbody>{e.forms.map((f: any) => <tr><td>{f.label}</td><td class="mono">{r1(mgMin / f.mg_per_ml)}–{r1(mgMax / f.mg_per_ml)} ml</td></tr>)}</tbody>
-      </table>
-      {kg < d.min_weight_kg && <p class="warn">⚠️ Por debajo del peso mínimo para {d.generic.es} — no dar sin indicación médica.</p>}
-      <p class="warn">⚠️ Menores de 3 meses: no dar ningún medicamento sin indicación médica. {isIbu && 'El ibuprofeno no es para bebés de menos de 3 meses / 5 kg, y debe evitarse si está deshidratado (vómitos, diarrea) o tiene varicela.'}</p>
+      <p><b>Cada {d.interval_hours[0]}–{d.interval_hours[1]} horas</b>, y nunca más dosis en 24
+      horas que las de la última columna.</p>
+      <div class="scroll">
+        <table class="plain">
+          <thead>
+            <tr>
+              <th>Peso</th>
+              <th>Dosis</th>
+              {m.forms.map((f) => <th>{f.label}</th>)}
+              <th>Máx. / 24 h</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr class={r.belowMin ? 'low' : undefined}>
+                <th scope="row">{r.kg} kg</th>
+                <td class="mono">{r.mgMin}–{r.mgMax} mg</td>
+                {r.ml.map((v) => <td class="mono">{v} ml</td>)}
+                <td class="mono">{maxDoses(m, r.kg)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="warn">⚠️ Las filas en gris están por debajo del peso mínimo para {d.generic.es}:
+      no lo des sin que te lo indique un médico. Por debajo de 3 meses, ningún medicamento sin
+      indicación.
+      {isIbu && ' El ibuprofeno además se evita si el niño está deshidratado (vómitos, diarrea) o tiene varicela.'}</p>
       <p class="note">{d.notes.es}</p>
       <p class="src">{d.source}.</p>
     </div>
-    <p style="margin-top:22px"><a class="btn btn-primary" href="/es/dose">Abrir la calculadora</a> <a class="btn btn-ghost" href={`/es?q=${encodeURIComponent('¿Cuánto ' + e.name + ' para ' + kg + ' kg?')}`}>Pregunta a PediBot</a></p>
-    <p class="n" style="margin-top:22px">Otros pesos: {[kg - 2, kg - 1, kg + 1, kg + 2].filter(w => w >= 5 && w <= 40).map(w => <a href={`/es/dose/${e.slug}-${w}kg`} style="margin-right:8px">{w} kg</a>)}</p>
+
+    <p style="margin-top:22px">
+      <a class="btn btn-primary" href="/es/dose">Abrir la calculadora</a>
+      <a class="btn btn-ghost" href={`/es/?q=${encodeURIComponent('¿Cuánto ' + m.name_es + ' le doy a mi hijo?')}`}>Preguntar a PediBot</a>
+    </p>
+
+    <p class="n" style="margin-top:26px">
+      Otros medicamentos:{' '}
+      {medicines().filter((o) => o.slug_es !== m.slug_es).slice(0, 8).map((o) => (
+        <a href={`/es/dose/${o.slug_es}`} style="margin-right:10px">{o.name_es}</a>
+      ))}
+    </p>
   </div>
   <style>
-    .big { font-size: 2rem; color: var(--sage-deep); }
-    :global(:root.night) .big { color: var(--sage); }
-    .warn { background: var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
+    .scroll { overflow-x: auto; margin-top: 12px; }
+    table.plain { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    table.plain th, table.plain td { padding: 6px 10px; text-align: left; white-space: nowrap; }
+    table.plain thead th { border-bottom: 2px solid var(--line); font-size: .84rem; }
+    table.plain tbody tr { border-bottom: 1px solid var(--line); }
+    table.plain tbody tr.low { color: var(--ink-3); background: var(--cream); }
+    .warn { background: var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 14px; font-size: .92rem; }
     .note { background: var(--sky); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
     .src { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
   </style>

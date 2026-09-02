@@ -32,6 +32,12 @@ pedibot.xyz {
 		format json
 	}
 
+	# The 1,442 dose pages (one per brand AND weight) became one page per medicine carrying the
+	# whole weight table, on 2-sep-2026: Googlebot had crawled 13 of them in a week and they
+	# brought no visits. One pattern redirects every old URL to the page that now answers it.
+	@doseweight path_regexp dw ^(/es)?/dose/(.+)-[0-9]+kg/?$
+	redir @doseweight {re.dw.1}/dose/{re.dw.2} permanent
+
 	# Retired duplicate: two topic keys (heat / golpe_calor) produced two English guides about
 	# heatstroke on 26-ago-2026. The surviving one is the one paired with the Spanish version.
 	redir /guides/how_do_i_know_if_my_child_has_heat_exhaustion_or_heatstroke /guides/what_should_i_do_if_my_child_has_heat_stroke permanent

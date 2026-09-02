@@ -1,76 +1,79 @@
 ---
 title: "My child hit their head. What should I do?"
-description: "A head injury is common in kids. Here is how to watch them at home and know when to get help."
+description: "Learn how to care for a child after a head injury and when to get urgent medical help."
 lang: en
-topic: traumatismo_craneal
-date: 2026-08-26
+topic: head_injury_en
+date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Traumatismo craneal. Información para padres\", section \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 1, 2"
-  - "[2] SEUP — \"Traumatismo craneal. Información para padres\", section \"¿QUÉ ES UN TRAUMATISMO CRANEAL?\", p. 1"
-  - "[3] SEUP — \"Traumatismo craneal. Información para padres\", section \"¿CÓMO PODEMOS PREVENIR LOS TRAUMATISMOS CRANEALES?\", p. 2"
-  - "[4] SEUP — \"Traumatismo craneal. Información para padres\", section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
-  - "[5] SEUP — \"Traumatismo craneal. Información para padres\", section \"¿CUÁNDO DEBEMOS ACUDIR A UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[6] MedlinePlus — \"Lesiones en la cabeza\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/headinjuries.html"
+  - "[1] CDC — \"Signs and Symptoms of Concussion\", section \"Concussion danger signs\", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html"
+  - "[2] CDC — \"Signs and Symptoms of Concussion\", section \"Signs and Symptoms of Concussion Key points\", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html"
+  - "[3] NHS — \"Head injury and concussion\" (2025), section \"How to care for a minor head injury\", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/"
+  - "[4] NHS — \"Head injury and concussion\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/"
+  - "[6] NHS — \"Head injury and concussion\" (2025), section \"Head injury and concussion\", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/"
+  - "[7] CDC — \"Signs and Symptoms of Concussion\", section \"Signs: What to watch for according to your child's age\", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html"
+  - "[8] CDC — \"Signs and Symptoms of Concussion\", section \"Symptoms: What your child may experience or report after a concussion\", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html"
+  - "[9] CDC — \"Concussion Basics\", section \"Concussion Basics Key points\", p. 1 — https://www.cdc.gov/heads-up/about/index.html"
 draft: false
 ---
 
 ## What it is
-A head injury, or traumatismo craneal, is the medical term for a blow to the head. It usually happens from a fall, an accident, or during sports [2]. The skull is hard and protects the brain, so most head injuries are minor [6]. However, some can be more serious, like a fracture, concussion, or brain injury [6]. Injuries can be closed, where the skull is not broken, or open, where an object goes through the skull into the brain [6]. A closed injury is not always less serious than an open one [6].
 
-Common symptoms after a head injury include headache, confusion, temporary memory loss, dizziness, nausea, vomiting, and sleepiness [2].
+A concussion is a type of traumatic brain injury caused by a bump, blow, or jolt to the head, or by a hit to the body that makes the head and brain move rapidly back and forth [9]. This movement can cause chemical changes in the brain and sometimes stretch or damage brain cells [9]. Most head injuries are not serious, but it is important to get medical help for any symptoms [6]. Concussion symptoms may not show up right away; they can take hours or days to appear [2]. Symptoms are usually most severe right after the injury [9]. Most children with a concussion feel better within 2 to 4 weeks [9].
+
+Signs and symptoms can look different depending on your child's age [2]. In infants and toddlers, watch for irritability, crying more than usual, refusing to nurse or eat, changes in sleeping patterns, or not wanting to play [7]. In school-aged children and adolescents, look for appearing dazed or confused, difficulty remembering or concentrating, answering questions slowly, clumsiness, vomiting right after the injury, or mood and behavior changes [7]. Children may also report headaches, dizziness, feeling tired, nausea, vision problems, or feeling foggy [8].
 
 ## What you can do at home
-Watch your child closely for the first 24 hours after the hit to look for serious symptoms [3]. Most head injuries are mild and not dangerous [3].
 
-- For a headache, you can give ibuprofen or paracetamol in the doses your doctor advised [4].
-- Your child may sleep. For more significant injuries, it is recommended to wake them every 4 hours [4].
-- No special diet is needed. Your child can eat their normal food according to their appetite [4].
-- Keep your child at physical and mental rest for 24 to 48 hours, depending on how hard the hit was [1].
-- During this rest time, no sports or physical activities. Also, no electronic devices like tablets, video games, or smartphones [1].
-- After the rest period, your child should return to normal activities gradually [1].
+If your child has been sent home from hospital with a minor head injury, or does not need to go to hospital, you can usually look after them at home [3]. Symptoms may last up to 2 weeks after a head injury [3].
 
-Most children recover quickly. Some may have symptoms for several hours or even days, especially if the injury was more significant [4].
+- Hold an ice pack (or a bag of frozen peas) wrapped in a tea towel to the area regularly for short periods in the first few days to bring down swelling [3].
+- Rest and avoid stress – your child does not need to stay awake if they are tired [3].
+- You can give painkillers such as paracetamol for children if your child has a headache [3].
+- Make sure an adult stays with your child for at least the first 24 hours [3].
+
+Do not let your child go back to school until they are feeling better [4]. Children should avoid rough play for a few days [4]. Do not give your child sleeping pills while they are recovering unless a doctor advises you to [4].
 
 ## When to see a doctor or go to the emergency department
-Go to the emergency department if your child has any of these warning signs [5][6]:
 
-- A headache that is intense, gets worse, or does not improve with usual medication [1].
-- Repeated vomiting [1].
-- Disorientation or confusion. In very young children, if they are irritable or hard to wake up [1].
-- Changes in usual behavior, or trouble speaking or walking [1].
-- Blood or clear fluid coming from the nose or ears [1].
-- Seizures [6].
-- Inability to get up [6].
-- Pupils that are dilated in one or both eyes [6].
-- Weakness or numbness in the arms or legs [6].
-- Lack of coordination [6].
-- Increasing confusion, restlessness, or agitation [6].
+Call 911 or go to your nearest emergency department if your child has any of these danger signs after a bump, blow, or jolt to the head [1]:
 
-You should also go to the emergency department if [5]:
-- Your child is less than three months old.
-- The fall was from a height of more than one meter.
+- Convulsions or seizures (shaking or twitching) [1]
+- Not able to recognize people or places [1]
+- Repeated nausea or vomiting [1]
+- Unusual behavior, increased confusion, restlessness, or agitation [1]
+- Loss of consciousness with increasing drowsiness, inability to wake up, or inability to stay awake [1]
+- Slurred speech, weakness, numbness, or decreased coordination [1]
+- A headache that gets worse and does not go away [1]
+- One pupil larger than the other or double vision [1]
+- Will not stop crying and cannot be consoled (infants and toddlers) [1]
+- Will not nurse or eat (infants and toddlers) [1]
 
-Also, go if your child has any behavior or attitude that worries you [5]. Doctors will do the needed exams and decide if more tests are required, though in most cases they are not necessary [5].
+Call 999 (or your local emergency number) if your child has been knocked out and has not woken up, cannot stay awake, has a fit (seizure), has problems with vision or hearing, has clear fluid coming from their ears or nose, is bleeding from their ears, has new numbness or weakness, has problems with walking, balance, understanding, speaking or writing, or has a head wound with something inside it or a dent in their head [6]. Also call if your child is under 1 year old and has a bruise, swelling, or large cut on their head, or if their behavior has changed, like being more irritable or losing interest in things [6].
+
+Get urgent help if your child is being sick (vomiting), feels dizzy, has a condition that thins their blood or takes medicine that thins their blood, or if you have any other symptoms you are worried about [6]. Seek immediate emergency medical care if your child has any concussion danger signs [2].
 
 ## Common questions
-**Can my child sleep after hitting their head?**
-Yes, your child can sleep. For more important injuries, it is recommended to wake them every 4 hours [4].
 
-**When can my child go back to school or sports?**
-Your child should rest, both physically and mentally, for 24 to 48 hours. This means no sports or electronic devices. After that, they can return to normal activities gradually [1].
+**How long will symptoms last?**
+Concussion symptoms are usually most severe right after the injury, typically 1 to 2 days after [2]. Most children feel better within 2 to 4 weeks [9]. Symptoms may last up to 2 weeks after a minor head injury [3]. See a GP if symptoms last more than 2 weeks [4].
 
-**How can I prevent head injuries?**
-Use approved helmets that fit well for bikes, scooters, skateboards, or skiing [3]. Do not leave young children unsupervised, and make sure older kids follow safety rules [3]. Use approved car seats and make sure children are properly secured [3]. Protect windows and stairs with safety barriers to prevent falls [3].
+**Can my child sleep after a head injury?**
+Yes. Your child does not need to stay awake if they are tired [3]. However, an adult should stay with your child for at least the first 24 hours [3].
+
+**When can my child return to sports?**
+Children should avoid rough play for a few days [4]. Do not let your child play contact sports for at least 3 weeks [4]. See a GP if you are not sure if it is safe to return to school or sports after a head injury [4].
 
 ## Sources
 
-[1] SEUP — "Traumatismo craneal. Información para padres", section "¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?", p. 1, 2
-[2] SEUP — "Traumatismo craneal. Información para padres", section "¿QUÉ ES UN TRAUMATISMO CRANEAL?", p. 1
-[3] SEUP — "Traumatismo craneal. Información para padres", section "¿CÓMO PODEMOS PREVENIR LOS TRAUMATISMOS CRANEALES?", p. 2
-[4] SEUP — "Traumatismo craneal. Información para padres", section "¿QUÉ PODEMOS HACER EN CASA?", p. 1
-[5] SEUP — "Traumatismo craneal. Información para padres", section "¿CUÁNDO DEBEMOS ACUDIR A UN SERVICIO DE URGENCIAS?", p. 2
-[6] MedlinePlus — "Lesiones en la cabeza", section "Introducción", p. 1 — https://medlineplus.gov/spanish/headinjuries.html
+[1] CDC — "Signs and Symptoms of Concussion", section "Concussion danger signs", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html
+[2] CDC — "Signs and Symptoms of Concussion", section "Signs and Symptoms of Concussion Key points", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html
+[3] NHS — "Head injury and concussion" (2025), section "How to care for a minor head injury", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/
+[4] NHS — "Head injury and concussion" (2025), section "Don’t", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/
+[6] NHS — "Head injury and concussion" (2025), section "Head injury and concussion", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/
+[7] CDC — "Signs and Symptoms of Concussion", section "Signs: What to watch for according to your child's age", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html
+[8] CDC — "Signs and Symptoms of Concussion", section "Symptoms: What your child may experience or report after a concussion", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html
+[9] CDC — "Concussion Basics", section "Concussion Basics Key points", p. 1 — https://www.cdc.gov/heads-up/about/index.html
 
 *This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*

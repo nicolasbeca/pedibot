@@ -1,0 +1,85 @@
+---
+/**
+ * One page per country schedule (2-sep-2026).
+ *
+ * The vaccines guide alone took eight of the twenty-eight visits Google sent in a fortnight, more
+ * than any other page. That is a query with real demand and a country-specific answer, so the
+ * single tool page becomes a page per schedule — each one a transcribed table with the body that
+ * issues it, its source URL and the date it was reviewed, which is the part nobody else publishes
+ * next to a plain answer.
+ */
+import Base from '../../layouts/Base.astro';
+import schedules from '../../data/vaccines.json';
+
+export async function getStaticPaths() {
+  return Object.entries(schedules as any).map(([code, data]) => ({
+    params: { country: code.toLowerCase() },
+    props: { code, data },
+  }));
+}
+
+const { code, data } = Astro.props as any;
+const lang = 'en';
+const name = data.name?.[lang] ?? code;
+// each row carries its own wording ("8 weeks", "12 months"); the computed one is only a fallback
+const label = (row: any) =>
+  row.label?.[lang] ??
+  (row.age === 0 ? 'At birth' : row.age < 24 ? `${row.age} months` : `${Math.round(row.age / 12)} years`);
+const title = `${name}: which vaccines and when`;
+const desc = `The childhood vaccination schedule of ${name}: every age with the vaccines due and what each protects against, transcribed from the official source. Not medical advice.`;
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: title,
+  about: { '@type': 'MedicalTherapy', name: 'Childhood immunisation schedule' },
+  audience: { '@type': 'Patient' },
+  citation: data.source,
+};
+const others = Object.entries(schedules as any).filter(([c]) => c !== code);
+---
+<Base lang={lang} title={`${title} — PediBot`} description={desc} path={`/vaccines/${code.toLowerCase()}`} jsonld={jsonld}>
+  <div class="narrow" style="padding:40px 18px">
+    <p class="eyebrow">Vaccines</p>
+    <h1 style="margin-top:8px">{title}</h1>
+    <p class="lede">
+      Transcribed from the schedule its own health authority publishes — no AI wrote this table.
+      Your own service decides what applies to your child.
+    </p>
+
+    <div class="card" style="margin-top:24px">
+      <ul class="sched">
+        {data.schedule.map((row: any) => (
+          <li>
+            <b>{label(row)}</b>
+            <span>{(row.vaccines ?? []).map((v: any) => (typeof v === 'string' ? v : v[lang] ?? v.name)).join(' · ')}</span>
+          </li>
+        ))}
+      </ul>
+      {data.note?.[lang] && <p class="note">{data.note[lang]}</p>}
+      <p class="src">
+        {data.source}{data.source_url && <> · <a href={data.source_url} rel="nofollow noopener" target="_blank">official page</a></>}
+      </p>
+    </div>
+
+    <p style="margin-top:22px">
+      <a class="btn btn-primary" href="/vaccines">Check by your child's age</a>
+      <a class="btn btn-ghost" href="/?q=When%20are%20my%20child%27s%20next%20vaccines%20due%3F">Ask PediBot</a>
+    </p>
+
+    <p class="n" style="margin-top:26px">
+      Other schedules:{' '}
+      {others.map(([c, d]: any) => (
+        <a href={`/vaccines/${c.toLowerCase()}`} style="margin-right:10px">{d.name?.[lang] ?? c}</a>
+      ))}
+    </p>
+  </div>
+  <style>
+    .sched { list-style: none; padding: 0; margin: 0; }
+    .sched li { display: grid; grid-template-columns: 130px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+    .sched li:last-child { border-bottom: 0; }
+    .sched b { color: var(--sage-deep); }
+    .note { background: var(--sky); border-radius: 10px; padding: 10px 12px; margin-top: 14px; font-size: .92rem; }
+    .src { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+    @media (max-width: 520px) { .sched li { grid-template-columns: 1fr; gap: 2px; } }
+  </style>
+</Base>
