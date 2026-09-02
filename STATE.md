@@ -74,6 +74,28 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 
 | **Aviso de compra/venta de $PDBT (27-ago)** | ✅ `ops/token_alert.py` + `pedibot-token-alert.timer` **cada hora**. Lee las operaciones reales de la pool (PDBT/VIRTUAL en `virtuals-unicorn-base`, donde **PDBT es el token base**, así que el `kind` de la API ya es desde nuestro punto de vista) y avisa solo de las que no ha visto, identificadas por hash de transacción. **Sin novedades no manda nada.** Primera ejecución = línea base, para no anunciar de golpe lo viejo; ráfagas de más de 5 se resumen en un mensaje. Límite conocido: el endpoint solo cubre 24 h — si el timer se para un día entero, la operación sigue contándose en el resumen diario y sale en el informe del domingo, pero sin push. 9 tests. |
 
+### Posicionamiento — reestructuración del 2-sep-2026
+
+**Punto de partida, medido en el registro del servidor** (7 días de Googlebot, 14 de visitas): 1.494 páginas en el sitemap de las que **1.442 eran de dosis** (96 %), Google había rastreado 13 de ellas y habían traído **0 visitas**; todas las entradas desde Google aterrizaban en guías. Es decir: el 96 % del sitio era ruido que se comía el presupuesto de rastreo del 2,5 % que funciona.
+
+| Qué se hizo | Antes | Ahora |
+|---|---|---|
+| Páginas de dosis | 1.442 (una por marca **y peso**, 216 palabras, casi idénticas) | **42**, una por medicamento con la **tabla completa de 5 a 40 kg**; las viejas redirigen con un solo patrón en Caddy |
+| Guías | 30 | **121** (61 EN + 60 ES, 53 emparejadas) |
+| Calendarios de vacunas | 1 herramienta | **6 páginas por país** (ES/GB/US en los dos idiomas), enlazadas desde la herramienta |
+| Enlaces entre guías | **0** — cada guía era una isla | 3 relacionadas en cada una, empezando por su mismo tema |
+| Datos estructurados | MedicalWebPage | **+ FAQPage** con las preguntas que cada guía ya traía |
+| Índice de guías | lista de 30 tarjetas | buscador instantáneo (sin librería) sobre 60 |
+| Composición del sitemap | 96 % dosis | **66 % guías**, 23 % dosis |
+
+**Coste de las 121 guías: 0,8 USD** del saldo de DeepSeek (queda el 91,9 %).
+
+**Dos fallos propios encontrados y corregidos por el camino**:
+1. `pending_topics` se leía **una sola vez** al empezar la tanda, así que el filtro anti-duplicados no veía lo que la propia tanda acababa de escribir: se publicaron las dos caras de varios temas (hives/urticaria, screen_sleep/sueño_pantallas…). Ahora se relee antes de cada artículo, con guarda para que un tema que falla no se reintente en bucle infinito.
+2. El criterio para decidir "mismo tema" era el **solapamiento de fuentes**, y se pasa: quería borrar la guía de lactancia por la de alimentación complementaria, y la de asma por la de crisis asmática. Sustituido por una **lista explícita** (`SAME_SUBJECT`, 15 parejas que son la misma palabra en dos idiomas), decidida a mano y anotada. Se retiraron 9 guías duplicadas con 301 a la que se queda.
+
+**El compositor del chat tapaba el pie de página** de forma permanente (`position: fixed`): la página reserva ahora la altura real del compositor, medida en vivo.
+
 ### LaunchLeague — medido y cerrado (2-sep-2026)
 
 **Veredicto: la ficha se queda (es gratis), la insignia se retira.** Siete días en su tabla, contados en el registro del servidor y no en su panel:
