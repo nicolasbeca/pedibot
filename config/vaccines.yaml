@@ -49,3 +49,35 @@ countries:
       - {age: 12, label: {en: "12–15 months", es: "12-15 meses"}, vaccines: ["MMR (dose 1)", "Chickenpox/varicella (dose 1)", "Hib (dose 4)", "Pneumococcal (dose 4)", "Hepatitis A (2 doses, 6 months apart, 12–23 months)"]}
       - {age: 15, label: {en: "15–18 months", es: "15-18 meses"}, vaccines: ["DTaP (dose 4)"]}
       - {age: 48, label: {en: "4–6 years", es: "4-6 años"}, vaccines: ["DTaP (dose 5)", "Polio (dose 4)", "MMR (dose 2)", "Chickenpox/varicella (dose 2)"]}
+  FR:
+    name: {en: "France — calendrier vaccinal 2026", es: "Francia — calendario vacunal 2026"}
+    source: "Santé publique France — vaccination-info-service.fr, calendrier des vaccinations 2026 (MenB et MenACWY obligatoires pour les nourrissons depuis le 1er janvier 2025)"
+    source_url: "https://vaccination-info-service.fr/La-vaccination-au-cours-de-la-vie/Nourrissons-et-enfants-de-la-naissance-a-10-ans"
+    note: {en: "In France 12 vaccinations are MANDATORY for infants (marked 'obligatoire'); 'recommandé' ones are advised but optional. Newborns also get RSV protection (nirsevimab) in season when the mother was not vaccinated in pregnancy.", es: "En Francia 12 vacunas son OBLIGATORIAS en lactantes (marcadas 'obligatoire'); las 'recommandé' se aconsejan pero son opcionales. Los recién nacidos reciben además protección VRS (nirsevimab) en temporada si la madre no se vacunó en el embarazo."}
+    schedule:
+      - {age: 2, label: {en: "2 months", es: "2 meses"}, vaccines: ["Hexavalent DTCaPolio-Hib-HepB (1re dose, obligatoire)", "Pneumocoque (1re dose, obligatoire)", "Rotavirus (1re dose, recommandé)"]}
+      - {age: 3, label: {en: "3 months", es: "3 meses"}, vaccines: ["Méningocoque B (1re dose, obligatoire)"]}
+      - {age: 4, label: {en: "4 months", es: "4 meses"}, vaccines: ["Hexavalent DTCaPolio-Hib-HepB (2e dose, obligatoire)", "Pneumocoque (2e dose, obligatoire)", "Rotavirus (dose suivante — 2 ou 3 doses selon le vaccin, recommandé)"]}
+      - {age: 5, label: {en: "5 months", es: "5 meses"}, vaccines: ["Méningocoque B (2e dose, obligatoire)"]}
+      - {age: 6, label: {en: "6 months", es: "6 meses"}, vaccines: ["Méningocoque ACWY (1re dose, obligatoire)"]}
+      - {age: 11, label: {en: "11 months", es: "11 meses"}, vaccines: ["Hexavalent DTCaPolio-Hib-HepB (rappel, obligatoire)", "Pneumocoque (rappel, obligatoire)"]}
+      - {age: 12, label: {en: "12 months", es: "12 meses"}, vaccines: ["ROR rougeole-oreillons-rubéole (1re dose, obligatoire)", "Méningocoque B (rappel, obligatoire)", "Méningocoque ACWY (rappel, obligatoire)"]}
+      - {age: 16, label: {en: "16–18 months", es: "16-18 meses"}, vaccines: ["ROR (2e dose, obligatoire)"]}
+      - {age: 72, label: {en: "6 years", es: "6 años"}, vaccines: ["DTCaPolio (rappel)"]}
+      - {age: 132, label: {en: "11–14 years", es: "11-14 años"}, vaccines: ["dTcaPolio (rappel, 11-13 ans)", "Papillomavirus HPV (2 doses à 5 mois d'écart, 11-14 ans, filles et garçons, recommandé)", "Méningocoque ACWY (11-14 ans, recommandé)"]}
+  DE:
+    name: {en: "Germany — STIKO Impfkalender 2026", es: "Alemania — calendario STIKO 2026"}
+    source: "Robert Koch-Institut — Empfehlungen der Ständigen Impfkommission (STIKO) 2026, Impfkalender (Epidemiologisches Bulletin 4/2026)"
+    source_url: "https://www.rki.de/DE/Themen/Infektionskrankheiten/Impfen/Impfkalender/impfkalender-node.html"
+    note: {en: "Transcribed from the RKI's own English edition of the 2026 calendar. Premature babies get an extra dose of the 6-in-1 and pneumococcal at 3 months. Flu is NOT a routine childhood vaccine in Germany (risk groups only).", es: "Transcrito de la edición en inglés del propio RKI del calendario 2026. Los prematuros reciben una dosis extra de la hexavalente y del neumococo a los 3 meses. La gripe NO es vacuna infantil rutinaria en Alemania (solo grupos de riesgo)."}
+    schedule:
+      - {age: 0, label: {en: "Birth (in RSV season)", es: "Al nacer (en temporada VRS)"}, vaccines: ["RSV: nirsevimab/clesrovimab antibody (babies born Oct–Mar: right after birth; born Apr–Sep: the autumn before their first RSV season)"]}
+      - {age: 1, label: {en: "From 6 weeks", es: "Desde las 6 semanas"}, vaccines: ["Rotavirus (G1; 2 or 3 doses depending on the vaccine, ≥4 weeks apart)"]}
+      - {age: 2, label: {en: "2 months", es: "2 meses"}, vaccines: ["6-in-1 Tdap-Hib-IPV-HepB (G1)", "Pneumococcal (G1)", "Meningococcal B — MenB (G1)", "Rotavirus (G2)"]}
+      - {age: 4, label: {en: "4 months", es: "4 meses"}, vaccines: ["6-in-1 Tdap-Hib-IPV-HepB (G2)", "Pneumococcal (G2)", "MenB (G2)", "Rotavirus (G3, some vaccines)"]}
+      - {age: 11, label: {en: "11 months", es: "11 meses"}, vaccines: ["6-in-1 Tdap-Hib-IPV-HepB (G3)", "Pneumococcal (G3)", "Measles-mumps-rubella MMR (G1)", "Varicella (G1)"]}
+      - {age: 12, label: {en: "12 months", es: "12 meses"}, vaccines: ["MenB (G3)"]}
+      - {age: 15, label: {en: "15 months", es: "15 meses"}, vaccines: ["MMR (G2)", "Varicella (G2)"]}
+      - {age: 66, label: {en: "5–6 years", es: "5-6 años"}, vaccines: ["Tdap booster (A1)"]}
+      - {age: 108, label: {en: "9–14 years", es: "9-14 años"}, vaccines: ["HPV (G1+G2, ≥5 months apart; 3 doses if started at ≥15 years)", "Tdap booster (A2)", "Polio booster (A1)"]}
+      - {age: 144, label: {en: "12–14 years", es: "12-14 años"}, vaccines: ["Meningococcal ACWY (G1) — new in the 2026 calendar, replacing the old MenC dose at 12 months"]}

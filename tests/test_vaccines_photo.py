@@ -25,8 +25,8 @@ def vax(config_dir):
 
 
 def test_vaccines_countries_and_lookup(vax):
-    assert set(vax.countries) >= {"ES", "GB", "US"}
-    assert vax.resolve_country("uk") == "GB" and vax.resolve_country("fr") is None
+    assert set(vax.countries) >= {"ES", "GB", "US", "FR", "DE"}
+    assert vax.resolve_country("uk") == "GB" and vax.resolve_country("fr") == "FR"
     due, nxt = vax.at_age("ES", 4, "es")
     assert any("MenC" in v for s in due for v in s.vaccines) and nxt and nxt.age_months == 11
     due_gb, _ = vax.at_age("GB", 12, "en")
@@ -114,7 +114,7 @@ def client(tmp_path: Path, config_dir):
 def test_vaccine_api_and_chat_routing(client):
     j = client.get("/api/vaccines?country=GB&age_months=2&lang=en").json()
     assert j["country"] == "GB" and any("6-in-1" in v for s in j["due"] for v in s["vaccines"])
-    assert client.get("/api/vaccines?country=FR").status_code == 404
+    assert client.get("/api/vaccines?country=IT").status_code == 404
     a = client.post(
         "/api/ask",
         json={"question": "what vaccines does my 4 month old get?", "country": "ES", "lang": "en"},
@@ -149,3 +149,24 @@ def test_photo_api(client, monkeypatch):
     assert r.status_code == 200, r.text
     j = r.json()
     assert j["level"] == "urgent" and "glass test" in j["text"] and j["signs"]["petechiae"] == "yes"
+
+
+def test_french_and_german_schedules_lock_the_2026_facts(vax):
+    """Transcribed on 2-sep-2026 from the official pages, not from memory — and rightly so:
+    the STIKO 2026 calendar moved meningococcal ACWY to 12-14 YEARS and dropped the old MenC
+    dose at 12 months, and France made MenB (3/5/12 m) and MenACWY (6+12 m) MANDATORY on
+    1-jan-2025. These asserts exist so a future re-transcription cannot silently regress."""
+    # France writes its own names: Méningocoque B at 3 months, mandatory
+    due_fr, _ = vax.at_age("FR", 3, "en")
+    assert any("Méningocoque B" in v and "obligatoire" in v for s in due_fr for v in s.vaccines)
+    # France: MenACWY starts at 6 months
+    due_fr6, _ = vax.at_age("FR", 6, "en")
+    assert any("Méningocoque ACWY" in v for s in due_fr6 for v in s.vaccines)
+    # Germany: MenB is an infant series (2 months onwards)...
+    due_de, _ = vax.at_age("DE", 2, "en")
+    assert any("MenB" in v for s in due_de for v in s.vaccines)
+    # ...and MenACWY is the adolescent dose at 12-14 years, NOT at 12 months
+    due_de12m, _ = vax.at_age("DE", 12, "en")
+    assert not any("ACWY" in v for s in due_de12m for v in s.vaccines)
+    due_de13y, _ = vax.at_age("DE", 150, "en")
+    assert any("ACWY" in v for s in due_de13y for v in s.vaccines)
