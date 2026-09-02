@@ -47,3 +47,35 @@ def test_the_block_is_only_built_when_there_is_an_address():
         assert _address() in html, "there is an address but the support page does not show it"
     else:
         assert "Donate directly" not in html, "a donation block was published with no address"
+
+
+def test_the_listed_networks_have_the_right_chain_ids():
+    """A wrong id in the wallet link sends the donor to the wrong network. Checked on 1-sep
+    against a public RPC on each one: the address is a plain account on all six."""
+    text = CONFIG.read_text(encoding="utf-8")
+    expected = {
+        "Base": 8453,
+        "Ethereum": 1,
+        "Arbitrum": 42161,
+        "Optimism": 10,
+        "Polygon": 137,
+        "BNB Chain": 56,
+    }
+    found = dict(re.findall(r"\{\s*id:\s*(\d+),\s*name:\s*'([^']+)'", text))
+    got = {name: int(cid) for cid, name in found.items()}
+    assert got == expected, got
+
+
+def test_only_one_network_is_recommended():
+    text = CONFIG.read_text(encoding="utf-8")
+    assert text.count("recommended: true") == 1
+
+
+def test_the_page_no_longer_says_base_only():
+    """It did while Base was the only network listed; saying it now would be false and would
+    scare off a donor who only holds funds on Ethereum or BNB."""
+    built = ROOT / "web" / "site" / "dist" / "support" / "index.html"
+    if built.exists():
+        html = built.read_text(encoding="utf-8", errors="ignore")
+        assert "Base network only" not in html
+        assert "Ethereum" in html and "BNB Chain" in html

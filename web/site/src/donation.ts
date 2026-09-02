@@ -17,7 +17,24 @@
  */
 export const DONATION_ADDRESS = '0x1EC1445342713b1dF48E6768456800B1260aeaBb';
 
-/** Base (chain id 8453): the network PDBT already lives on, and cents in fees instead of euros. */
+/**
+ * The networks we list. It is the same EVM address on every one of them, so this list is a
+ * courtesy — telling a donor which chains are worth using — and not a limitation of the wallet.
+ * Every one was checked on 1-sep-2026 with eth_getCode: a plain externally-owned account on all
+ * six, which is what makes receiving safe.
+ *
+ * Base goes first because it is the cheapest and the network PDBT already lives on; the QR and
+ * the wallet button point there.
+ */
+export const DONATION_CHAINS = [
+  { id: 8453, name: 'Base', coin: 'ETH', recommended: true },
+  { id: 1, name: 'Ethereum', coin: 'ETH', recommended: false },
+  { id: 42161, name: 'Arbitrum', coin: 'ETH', recommended: false },
+  { id: 10, name: 'Optimism', coin: 'ETH', recommended: false },
+  { id: 137, name: 'Polygon', coin: 'POL', recommended: false },
+  { id: 56, name: 'BNB Chain', coin: 'BNB', recommended: false },
+] as const;
+
 export const DONATION_CHAIN_ID = 8453;
 
 /** Opens MetaMask (and most mobile wallets) straight on the transfer screen. EIP-681. */
