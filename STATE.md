@@ -74,6 +74,15 @@ Para probarlo en el navegador: `uv run pedibot serve` y abrir http://127.0.0.1:8
 
 | **Aviso de compra/venta de $PDBT (27-ago)** | ✅ `ops/token_alert.py` + `pedibot-token-alert.timer` **cada hora**. Lee las operaciones reales de la pool (PDBT/VIRTUAL en `virtuals-unicorn-base`, donde **PDBT es el token base**, así que el `kind` de la API ya es desde nuestro punto de vista) y avisa solo de las que no ha visto, identificadas por hash de transacción. **Sin novedades no manda nada.** Primera ejecución = línea base, para no anunciar de golpe lo viejo; ráfagas de más de 5 se resumen en un mensaje. Límite conocido: el endpoint solo cubre 24 h — si el timer se para un día entero, la operación sigue contándose en el resumen diario y sale en el informe del domingo, pero sin push. 9 tests. |
 
+### Fase francesa — arrancada el 2-sep-2026 (orden del operador: fuentes → triaje y terminal → guías y web)
+
+| Paso | Estado |
+|---|---|
+| **Calendarios FR y DE** | ✅ Transcritos de las fuentes primarias y en producción (`/vaccines/fr`, `/vaccines/de`, ambos idiomas + API + ficha ACP actualizada). Francia: calendrier 2026 — MenB (3/5/12 m) y MenACWY (6+12 m) **obligatorias desde el 1-ene-2025**; contrastado en dos páginas oficiales porque la primera lectura daba MenB a los 2 meses (era un error de extracción). Alemania: **STIKO 2026 del RKI (edición oficial en inglés)** — MenB en lactantes 2/4/12 m y **MenACWY nueva a los 12-14 AÑOS, desaparece MenC a los 12 meses**: transcribir del PDF vigente y no de memoria evitó publicar el calendario del año pasado. Tests-candado con los hechos de 2026. |
+| **Fuentes francesas (paso 1)** | 🔶 Rastreo de licencias hecho y documentado en `FUENTES/FRANCES.md`: **SpF y ameli cerradas** (derechos reservados, permiso escrito), **OMS-FR y Canada.ca abiertas** (clase NC, como la OMS ya aceptada), **sante.gouv.fr sin verificar** (WAF con CAPTCHA). **Decisión bloqueante planteada al operador**: corpus abierto, pedir permiso, o ambas (recomendada). |
+| Triaje y terminal en francés | ⏳ tras la decisión de fuentes |
+| Guías y web en francés | ⏳ al final |
+
 ### Posicionamiento — reestructuración del 2-sep-2026
 
 **Punto de partida, medido en el registro del servidor** (7 días de Googlebot, 14 de visitas): 1.494 páginas en el sitemap de las que **1.442 eran de dosis** (96 %), Google había rastreado 13 de ellas y habían traído **0 visitas**; todas las entradas desde Google aterrizaban en guías. Es decir: el 96 % del sitio era ruido que se comía el presupuesto de rastreo del 2,5 % que funciona.
