@@ -31,6 +31,27 @@ export interface Medicine {
   d: any;
 }
 
+/** The dosage form, translated for display only.
+ *
+ * "jarabe 120 mg/5 ml" is a catalogue key — it identifies a presentation and must not change.
+ * What a parent reads is the word, so only the word is swapped, and only when the language has
+ * one; the numbers are the same everywhere.
+ */
+const FORM_WORD: Partial<Record<Lang, Record<string, string>>> = {
+  en: { jarabe: 'syrup', gotas: 'drops', 'suspensión': 'suspension', sobres: 'sachets', comprimidos: 'tablets', supositorios: 'suppositories' },
+  fr: { jarabe: 'sirop', gotas: 'gouttes', 'suspensión': 'suspension', sobres: 'sachets', comprimidos: 'comprimés', supositorios: 'suppositoires' },
+  de: { jarabe: 'Sirup', gotas: 'Tropfen', 'suspensión': 'Suspension', sobres: 'Beutel', comprimidos: 'Tabletten', supositorios: 'Zäpfchen' },
+};
+
+/** The label of a presentation, with its form word in the reader's language. */
+export function formLabel(label: string, lang: Lang): string {
+  const words = FORM_WORD[lang];
+  if (!words) return label;
+  const first = label.split(' ')[0];
+  const word = words[first.toLowerCase()];
+  return word ? word + label.slice(first.length) : label;
+}
+
 /** How each language spells the two generics in a URL. Anything unlisted keeps the key. */
 const GENERIC_SLUG: Partial<Record<Lang, Record<string, string>>> = {
   es: { ibuprofen: 'ibuprofeno' },

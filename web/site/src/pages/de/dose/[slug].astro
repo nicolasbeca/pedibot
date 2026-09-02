@@ -3,7 +3,7 @@
 // pages; the measurement behind that is in src/dosepages.ts. Every word comes from i18n.ts, so
 // this file is identical in every language but the code and the URL prefix.
 import Base from '../../../layouts/Base.astro';
-import { medicines, weightTable, maxDoses, type Medicine } from '../../../dosepages';
+import { medicines, weightTable, maxDoses, formLabel, type Medicine } from '../../../dosepages';
 import { t } from '../../../i18n';
 
 const lang = 'de'; const s = t(lang);
@@ -42,7 +42,7 @@ const jsonld = {
             <tr>
               <th>{s.dosedrug_th_weight}</th>
               <th>{s.dosedrug_th_dose}</th>
-              {m.forms.map((f) => <th>{f.label}</th>)}
+              {m.forms.map((f) => <th>{formLabel(f.label, lang)}</th>)}
               <th>{s.dosedrug_th_max}</th>
             </tr>
           </thead>
