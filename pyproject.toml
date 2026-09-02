@@ -38,6 +38,7 @@ dev = [
     "mypy>=1.10",
     "types-pyyaml",
     "pillow>=12.3.0",
+    "segno>=1.6.6",
 ]
 
 [build-system]
