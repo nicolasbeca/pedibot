@@ -510,12 +510,13 @@ def seasonal_first(
 # What each language is called when the model is told which one to write in, and how its
 # sources section is headed. Adding a language here is not enough on its own: it also needs its
 # triage patterns, or the guides would exist without a safety layer behind the chat.
-LANGUAGE_NAME = {"en": "English", "es": "Spanish", "fr": "French"}
-SOURCES_HEADING = {"en": "Sources", "es": "Fuentes", "fr": "Sources"}
+LANGUAGE_NAME = {"en": "English", "es": "Spanish", "fr": "French", "de": "German"}
+SOURCES_HEADING = {"en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen"}
 ARTICLE_DISCLAIMER = {
     "en": "*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*",
     "es": "*Esta guía resume guías pediátricas publicadas. No es consejo médico y no sustituye a tu pediatra. En una emergencia, llama a tu número de emergencias.*",
     "fr": "*Ce guide résume des recommandations pédiatriques publiées. Ce n'est pas un avis médical et cela ne remplace pas votre pédiatre. En cas d'urgence, appelez votre numéro d'urgence.*",
+    "de": "*Dieser Ratgeber fasst veröffentlichte kinderärztliche Leitlinien zusammen. Er ist keine medizinische Beratung und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt. Rufen Sie im Notfall Ihre Notrufnummer an.*",
 }
 
 

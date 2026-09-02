@@ -16,8 +16,16 @@ LEVEL_ORDER = {"routine": 0, "mental_health": 1, "urgent": 2, "emergency": 3}
 _AGE_PATTERNS = [
     # (regex, unit multiplier to months)
     (re.compile(r"(\d{1,2})\s*(?:meses|mes|months?|mois|monate[n]?|monat|mo)\b", re.I), 1.0),
-    (re.compile(r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|ans?|jahre[n]?|jahr|y\.?o\.?)\b", re.I), 12.0),
-    (re.compile(r"(\d{1,2})\s*(?:semanas|semana|weeks?|semaines?|wochen|woche|wks?)\b", re.I), 1 / 4.345),
+    (
+        re.compile(
+            r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|ans?|jahre[n]?|jahr|y\.?o\.?)\b", re.I
+        ),
+        12.0,
+    ),
+    (
+        re.compile(r"(\d{1,2})\s*(?:semanas|semana|weeks?|semaines?|wochen|woche|wks?)\b", re.I),
+        1 / 4.345,
+    ),
     (
         re.compile(
             r"(\d{1,2})\s*(?:d[ií]as|d[ií]a|days?|jours?)\s*(?:de (?:vida|edad|nacid|vie)|old)",

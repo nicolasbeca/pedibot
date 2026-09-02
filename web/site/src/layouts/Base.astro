@@ -10,7 +10,10 @@ const { lang, title, description, path, jsonld, others } = Astro.props;
 const s = t(lang);
 const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const otherLangs: Lang[] = LANGS.filter((l) => l !== lang);
-const strip = (p: string) => p.replace(/^\/(es|fr)(?=\/|$)/, '') || '/';
+// built from LANGS so a new language cannot be forgotten here — /de was, and the language
+// switch on every German page would have pointed at /de/de/...
+const PREFIXED = LANGS.filter((l) => l !== 'en').join('|');
+const strip = (p: string) => p.replace(new RegExp(`^/(${PREFIXED})(?=/|$)`), '') || '/';
 /** Where the same page lives in each of the other languages, or null when it does not. */
 const alternates = otherLangs
   .map((l) => {

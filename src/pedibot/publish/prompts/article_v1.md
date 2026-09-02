@@ -15,5 +15,7 @@ RULES
    English → "## What it is" / "## What you can do at home" / "## When to see a doctor or go to the emergency department" / "## Common questions"
    Spanish → "## Qué es" / "## Qué puedes hacer en casa" / "## Cuándo acudir al médico o a urgencias" / "## Preguntas frecuentes"
    French  → "## Ce que c'est" / "## Ce que vous pouvez faire à la maison" / "## Quand consulter un médecin ou aller aux urgences" / "## Questions fréquentes"
+   German  → "## Was es ist" / "## Was Sie zu Hause tun können" / "## Wann Sie zur Ärztin oder in die Notaufnahme sollten" / "## Häufige Fragen"
 7. No headings other than these four. No markdown links. No mention of PediBot. Do not moralise.
 8. NEVER send the reader to a service that only exists in the source's country (NHS 111, 911, a GP surgery, a specific helpline), even when the source names it — the reader may live anywhere. Write "your doctor", "your local emergency number" or "the emergency department" instead. Naming the ORGANISATION behind a fact ("According to the NHS…") is required and different: keep that.
+9. Register: in German address the reader as "Sie", never "du" — the rest of the site does, and a guide that switches sounds like a different website. In Spanish and French use the same form the site uses ("tú" in Spanish, "vous" in French).

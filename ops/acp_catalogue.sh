@@ -72,7 +72,7 @@ echo "   child_medicine_brand_table"
 
 acp resource create --name "emergency_department_checklist" --description "$CHECK_DESC" \
   --url "https://pedibot.xyz/api/checklist" \
-  --params '{"type":"object","description":"Optional language for the checklist.","properties":{"lang":{"type":"string","enum":["en","es","fr"],"default":"en","description":"Language of the warning-sign wording: en, es or fr. The source is the same SEUP sheet in every case."}}}' \
+  --params '{"type":"object","description":"Optional language for the checklist.","properties":{"lang":{"type":"string","enum":["en","es","fr","de"],"default":"en","description":"Language of the warning-sign wording: en, es, fr or de. The source is the same SEUP sheet in every case."}}}' \
   --no-hidden --json >/dev/null
 echo "   emergency_department_checklist"
 

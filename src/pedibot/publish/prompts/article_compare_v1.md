@@ -20,4 +20,6 @@ RULES
    English → "## What the guidelines say" / "## Where they agree" / "## Where they differ (and why it may not matter)" / "## When to see a doctor or go to the emergency department"
    Spanish → "## Qué dicen las guías" / "## En qué coinciden" / "## En qué se diferencian (y por qué puede dar igual)" / "## Cuándo acudir al médico o a urgencias"
    French  → "## Ce que disent les recommandations" / "## Ce sur quoi elles s'accordent" / "## Ce sur quoi elles diffèrent (et pourquoi cela peut ne pas changer grand-chose)" / "## Quand consulter un médecin ou aller aux urgences"
+   German  → "## Was die Leitlinien sagen" / "## Worin sie übereinstimmen" / "## Worin sie sich unterscheiden (und warum das oft nichts ändert)" / "## Wann Sie zur Ärztin oder in die Notaufnahme sollten"
 6. No other headings. No markdown links. No mention of PediBot. If the sources agree completely, say so plainly in "Where they differ".
+9. Register: in German address the reader as "Sie", never "du" — the rest of the site does, and a guide that switches sounds like a different website. In Spanish and French use the same form the site uses ("tú" in Spanish, "vous" in French).
