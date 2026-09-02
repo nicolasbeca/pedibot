@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Incremental deploy from the PC (Git Bash on Windows: no rsync → tar over ssh).
-# Usage: bash ops/deploy.sh <IP> [--no-index]
+# Usage: bash ops/deploy.sh <IP> [--no-index] [--no-pull]
 # Flow: pull server-generated guides back into the repo → upload code + site sources (+ index)
 #       → install deps → units → rebuild the site ON THE SERVER (its content is the source of truth).
 set -euo pipefail
@@ -8,12 +8,19 @@ IP="${1:?usage: deploy.sh <IP> [--no-index]}"; shift || true
 KEY="${SSH_KEY:-$HOME/.ssh/multibot_hetzner_auto}"
 SSH="ssh -i $KEY root@$IP"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-NO_INDEX=0
-for a in "$@"; do case "$a" in --no-index) NO_INDEX=1;; esac; done
+NO_INDEX=0; NO_PULL=0
+for a in "$@"; do case "$a" in --no-index) NO_INDEX=1;; --no-pull) NO_PULL=1;; esac; done
 cd "$ROOT"
 
-echo "== pull guides generated on the server (web/content)"
-$SSH "cd /opt/pedibot && tar czf - web/content 2>/dev/null" | tar xzf - -C "$ROOT" || true
+# The server writes new guides, so normally its web/content wins. --no-pull is for the other
+# direction: when the guides were edited HERE (a heading fix across every file, say) and pulling
+# first would quietly throw that work away before uploading it back.
+if [ $NO_PULL -eq 0 ]; then
+  echo "== pull guides generated on the server (web/content)"
+  $SSH "cd /opt/pedibot && tar czf - web/content 2>/dev/null" | tar xzf - -C "$ROOT" || true
+else
+  echo "== skipping the pull: local web/content wins this time"
+fi
 
 echo "== code (+ site sources for the rebuild on the server)"
 tar czf - --exclude='__pycache__' --exclude='.pytest_cache' --exclude='.mypy_cache' --exclude='.ruff_cache' \

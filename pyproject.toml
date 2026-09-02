@@ -65,6 +65,7 @@ select = ["E", "F", "I", "W", "UP", "B"]
 "src/pedibot/api.py" = ["E501"]
 "src/pedibot/bot/judge.py" = ["E501"]
 "src/pedibot/bot/ors.py" = ["E501"]
+"src/pedibot/bot/strings.py" = ["E501"]  # one translated sentence per line beats wrapping
 "src/pedibot/telegram_bot.py" = ["E501"]
 "src/pedibot/publish/articles.py" = ["E501"]
 "src/pedibot/publish/social.py" = ["E501"]

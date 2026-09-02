@@ -18,6 +18,7 @@ from pydantic import BaseModel, Field
 from pedibot import __version__
 from pedibot.bot.answer import NO_SOURCE, Engine
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.strings import data_lang
 from pedibot.bot.vaccines import Vaccines
 from pedibot.ops.store import AnswerRecord, OpsStore
 from pedibot.settings import ROOT
@@ -385,12 +386,15 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         raw = yaml.safe_load(
             (get_settings().config_dir / "er_checklist.yaml").read_text(encoding="utf-8")
         )
-        lg = "es" if lang == "es" else "en"
+        pick = lambda node: node[data_lang(node, lang)]  # noqa: E731
         return {
-            "source": raw["source_label"][lg],
-            "levels": {k: v[lg] for k, v in raw["levels"].items()},
-            "categories": {k: v[lg] for k, v in raw["categories"].items()},
-            "items": [{"level": i["level"], "cat": i["cat"], "text": i[lg]} for i in raw["items"]],
+            "source": pick(raw["source_label"]),
+            "levels": {k: pick(v) for k, v in raw["levels"].items()},
+            "categories": {k: pick(v) for k, v in raw["categories"].items()},
+            "items": [
+                {"level": i["level"], "cat": i["cat"], "text": i[data_lang(i, lang)]}
+                for i in raw["items"]
+            ],
         }
 
     @app.post("/api/share")
@@ -426,7 +430,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
     ) -> dict[str, object]:
         from pedibot.bot.ors import advise
 
-        a = advise(age_months, vomiting, "es" if lang == "es" else "en")
+        a = advise(age_months, vomiting, lang)
         return {
             "age_band": a.age_band,
             "lines": a.lines,

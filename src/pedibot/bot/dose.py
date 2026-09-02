@@ -13,6 +13,8 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+from pedibot.bot.strings import tool_strings
+
 
 @dataclass(frozen=True)
 class Presentation:
@@ -155,39 +157,24 @@ def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) 
 
 def format_result(r: DoseResult, lang: str = "en") -> str:
     d = r.drug
+    T = tool_strings(lang)
     name = d.name_es if lang == "es" else d.name_en
-    if lang == "es":
-        lines = [f"{name} para {r.weight_kg:g} kg:"]
-        if r.refer:
-            lines.append(
-                "⚠️ No dar sin consultar: " + ", ".join(_warn_es(w) for w in r.warnings) + "."
-            )
-        lines.append(
-            f"• Dosis: {r.mg_min:g}–{r.mg_max:g} mg cada {d.interval_hours[0]}–{d.interval_hours[1]} h (máx. {r.max_doses_per_day} dosis/día)."
+    lines = [T["dose_for"].format(name=name, kg=r.weight_kg)]
+    if r.refer:
+        lines.append(T["dose_refer"] + ", ".join(T["dose_warn"].get(w, w) for w in r.warnings) + ".")
+    lines.append(
+        T["dose_line"].format(
+            mg_min=r.mg_min,
+            mg_max=r.mg_max,
+            h0=d.interval_hours[0],
+            h1=d.interval_hours[1],
+            max_doses=r.max_doses_per_day,
         )
-        for pname, (a, b) in r.ml.items():
-            lines.append(f"  – {pname}: {a:g}–{b:g} ml")
-        lines.append(f"Fuente: {d.source}.")
-        lines.append(
-            "Comprueba siempre la concentración del envase. Si tiene menos de 3 meses, consulta antes de dar nada."
-        )
-    else:
-        lines = [f"{name} for {r.weight_kg:g} kg:"]
-        if r.refer:
-            lines.append(
-                "⚠️ Do not give without medical advice: "
-                + ", ".join(_warn_en(w) for w in r.warnings)
-                + "."
-            )
-        lines.append(
-            f"• Dose: {r.mg_min:g}–{r.mg_max:g} mg every {d.interval_hours[0]}–{d.interval_hours[1]} h (max {r.max_doses_per_day} doses/day)."
-        )
-        for pname, (a, b) in r.ml.items():
-            lines.append(f"  – {pname}: {a:g}–{b:g} ml")
-        lines.append(f"Source: {d.source}.")
-        lines.append(
-            "Always check the concentration on the bottle. Under 3 months, ask a doctor before giving anything."
-        )
+    )
+    for pname, (a, b) in r.ml.items():
+        lines.append(f"  – {pname}: {a:g}–{b:g} ml")
+    lines.append(T["dose_source"].format(source=d.source))
+    lines.append(T["dose_check"])
     return "\n".join(lines)
 
 

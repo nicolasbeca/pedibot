@@ -8,6 +8,8 @@ from pathlib import Path
 
 import yaml
 
+from pedibot.bot.strings import data_lang, tool_strings
+
 _VACC = re.compile(
     r"\b(vacun\w*|vaccin\w*|inmuniz\w*|immuniz\w*|shots?|jabs?|mmr|dtap|dtpa|menb|hpv|vph|triple v[ií]rica)\b",
     re.I,
@@ -38,9 +40,9 @@ class Vaccines:
         return c if c in self.raw else None
 
     def schedule(self, country: str, lang: str = "en") -> list[Slot]:
-        lg = "es" if lang == "es" else "en"
         out = []
         for s in self.raw[country]["schedule"]:
+            lg = data_lang(s["label"], lang)
             out.append(
                 Slot(
                     float(s["age"]), s["label"][lg], list(s["vaccines"]), bool(s.get("every_year"))
@@ -49,13 +51,12 @@ class Vaccines:
         return sorted(out, key=lambda x: x.age_months)
 
     def meta(self, country: str, lang: str = "en") -> dict[str, str]:
-        lg = "es" if lang == "es" else "en"
         c = self.raw[country]
         return {
-            "name": c["name"][lg],
+            "name": c["name"][data_lang(c["name"], lang)],
             "source": c["source"],
             "source_url": c.get("source_url", ""),
-            "note": c["note"][lg],
+            "note": c["note"][data_lang(c["note"], lang)],
         }
 
     def at_age(
@@ -75,35 +76,24 @@ def is_vaccine_question(text: str) -> bool:
 
 
 def format_answer(v: Vaccines, country: str, age_months: float | None, lang: str = "en") -> str:
-    es = lang == "es"
+    T = tool_strings(lang)
     m = v.meta(country, lang)
     if age_months is None:
         sched = v.schedule(country, lang)
         lines = [f"{m['name']}:"]
         for s in sched:
             lines.append(f"• {s.label}: " + ", ".join(s.vaccines))
-        lines.append(("Fuente: " if es else "Source: ") + m["source"] + ". " + m["note"])
+        lines.append(T["vax_source"] + m["source"] + ". " + m["note"])
         return "\n".join(lines)
     due, nxt = v.at_age(country, age_months, lang)
     lines = []
     if due:
-        lines.append(
-            "A esta edad tocan, según el calendario oficial:"
-            if es
-            else "At this age the official schedule lists:"
-        )
+        lines.append(T["vax_due"])
         for s in due:
             lines.append(f"• {s.label}: " + ", ".join(s.vaccines))
     else:
-        lines.append(
-            "A esta edad no hay ninguna vacuna programada en el calendario oficial."
-            if es
-            else "There is no vaccine scheduled at this exact age in the official calendar."
-        )
+        lines.append(T["vax_none"])
     if nxt:
-        lines.append(
-            (f"Siguiente cita: {nxt.label} — " if es else f"Next: {nxt.label} — ")
-            + ", ".join(nxt.vaccines)
-        )
-    lines.append(("Fuente: " if es else "Source: ") + m["source"] + ". " + m["note"])
+        lines.append(T["vax_next"].format(label=nxt.label) + ", ".join(nxt.vaccines))
+    lines.append(T["vax_source"] + m["source"] + ". " + m["note"])
     return "\n".join(lines)

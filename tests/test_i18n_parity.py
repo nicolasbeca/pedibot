@@ -103,3 +103,14 @@ def test_no_component_decides_the_language_with_a_ternary() -> None:
             if re.search(r"\blang\s*===\s*'\w+'\s*\?", line) or re.search(r"\bconst \w+ = lang === '\w+';", line):
                 offenders.append(f"{f.relative_to(SITE)}:{i}")
     assert not offenders, offenders
+
+
+def test_the_tool_strings_carry_the_same_keys() -> None:
+    """Same guard on the engine side: dose, rehydration, vaccines and the photo check."""
+    from pedibot.bot.strings import STRINGS
+
+    shapes = {lang: set(table) for lang, table in STRINGS.items()}
+    assert len(set(map(frozenset, shapes.values()))) == 1, shapes
+    assert set(STRINGS) == set(langs()), f"idiomas del motor {set(STRINGS)} vs web {set(langs())}"
+    warn = {lang: set(table["dose_warn"]) for lang, table in STRINGS.items()}
+    assert len(set(map(frozenset, warn.values()))) == 1, warn
