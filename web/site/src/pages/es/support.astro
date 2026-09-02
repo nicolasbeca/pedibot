@@ -1,27 +1,13 @@
 ---
 import Base from '../../layouts/Base.astro';
-import Donate from '../../components/Donate.astro';
+import SupportBody from '../../components/SupportBody.astro';
 const lang = 'es';
 ---
-<Base lang={lang} title="Apoya a PediBot — gratis para todas las familias, financiado a la vista" description="Cómo se financia PediBot: el token PDBT en Base y la promesa de que nada estará nunca cerrado." path="/es/support">
-  <div class="narrow prose" style="padding:40px 18px">
-    <p class="eyebrow">Apoyo</p>
-    <h1 style="margin-top:8px">Gratis para todas las familias. Financiado a la vista.</h1>
-    <p class="lede">Mantener PediBot cuesta dinero: un servidor y la IA que hay detrás de cada respuesta. Se financia con el <b>token PDBT</b> en la red Base — una forma de apoyar el proyecto para quien crea en él.</p>
-    <h2>Lo que el token no es</h2>
-    <ul>
-      <li><b>No</b> hace falta para usar PediBot. Nada está cerrado, y nunca lo estará.</li>
-      <li>No hay niveles de pago, "respuestas premium" ni descuentos para quien lo tenga.</li>
-      <li>No prometemos nada sobre su precio y no pagamos listados, "trending" ni engagement.</li>
-    </ul>
-    <h2>A lo que nos comprometemos</h2>
-    <ul>
-      <li><b>Novedades públicas</b> periódicas de lo construido y de lo que viene.</li>
-      <li>Nada se cierra nunca: sin muros de pago, sin niveles premium, sin funciones solo para holders.</li>
-      <li>Las novedades del producto llegan a todos a la vez — con token o sin él.</li>
-    </ul>
-    <h2>Token</h2>
-    <p>PediBot (PDBT) · Base · contrato <code class="mono">0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1</code> · lanzado en Virtuals, ahora en Uniswap.</p>
-    <Donate lang={lang} />
-  </div>
+<Base
+  lang={lang}
+  title="Apoya a PediBot — gratis para todas las familias, lo mantiene una persona"
+  description="Lo que PediBot regala, cómo puedes ayudar sin gastar nada y cómo echar una mano con lo que cuesta mantenerlo."
+  path="/es/support"
+>
+  <SupportBody lang={lang} />
 </Base>

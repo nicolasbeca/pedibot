@@ -1,27 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
-import Donate from '../components/Donate.astro';
+import SupportBody from '../components/SupportBody.astro';
 const lang = 'en';
 ---
-<Base lang={lang} title="Support PediBot — free for every parent, funded in the open" description="How PediBot is funded: the PDBT token on Base, and the promise that nothing is ever gated." path="/support">
-  <div class="narrow prose" style="padding:40px 18px">
-    <p class="eyebrow">Support</p>
-    <h1 style="margin-top:8px">Free for every parent. Funded in the open.</h1>
-    <p class="lede">Keeping PediBot running has a cost — a server and the AI behind every answer. It is funded through the <b>PDBT token</b> on the Base network — a way for people who believe in the project to back it, and to share in its visibility if it grows.</p>
-    <h2>What the token is not</h2>
-    <ul>
-      <li>It is <b>not</b> required to use PediBot. Nothing here is gated, and never will be.</li>
-      <li>There are no paid tiers, "premium answers" or discounts for holders.</li>
-      <li>We do not make promises about its price and we do not pay for listings, trending or engagement.</li>
-    </ul>
-    <h2>What we commit to</h2>
-    <ul>
-      <li>Regular <b>public updates</b> on what was built and what comes next.</li>
-      <li>Nothing is ever gated: no paywalls, no premium tiers, no holder-only features.</li>
-      <li>Product news reach everyone at the same time — holders or not.</li>
-    </ul>
-    <h2>Token</h2>
-    <p>PediBot (PDBT) · Base · contract <code class="mono">0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1</code> · launched on Virtuals, now trading on Uniswap.</p>
-    <Donate lang={lang} />
-  </div>
+<Base
+  lang={lang}
+  title="Support PediBot — free for every family, kept running by one person"
+  description="What PediBot gives away for free, how you can help without spending anything, and how to chip in with what it costs to run."
+  path="/support"
+>
+  <SupportBody lang={lang} />
 </Base>

@@ -56,6 +56,9 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
         <a class="pill" href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a>
       </nav>
       <div style="display:flex;gap:8px">
+        {/* in the right-hand group and not in <nav>, because that one is hidden on phones and
+            this is the page that asks for help: it has to survive on a small screen */}
+        <a class="pill pill-support" href={`${langPrefix(lang)}/support`}>♥ <span class="hide-xs">{s.nav_support}</span></a>
         {hasOther && <a class="pill" href={otherPath} hreflang={other}>{other.toUpperCase()}</a>}
         <button class="pill" id="theme" type="button" aria-label="Night mode">🌙</button>
       </div>
@@ -76,6 +79,9 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     .bar nav { display: flex; gap: 8px; }
     @media (max-width: 720px) { .bar .hide-sm { display: none; } }
     footer { padding: 30px 0 60px; color: var(--ink-3); font-size: .86rem; border-top: 1px solid var(--line); }
+    .pill-support { border-color: var(--coral-soft); color: var(--coral); }
+    .pill-support:hover { background: var(--coral-soft); }
+    @media (max-width: 460px) { .hide-xs { display: none; } }
   </style>
   <script>
     const root = document.documentElement, tg = document.getElementById('theme');
