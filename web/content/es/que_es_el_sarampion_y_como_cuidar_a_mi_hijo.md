@@ -28,7 +28,7 @@ La erupción aparece de 3 a 5 días después de los primeros síntomas [4]. Suel
 
 No existe tratamiento para el sarampión [1]. La vacuna MMR (sarampión, paperas y rubéola) o MMRV (que también protege contra la varicela) puede prevenirlo [1][8]. La vacunación es la mejor manera de evitar enfermarse o contagiar a otros [3]. Los niños deben recibir dos dosis de la vacuna para estar inmunes [7]. La primera dosis se da usualmente a los 12-15 meses en la mayoría de países [7]. La segunda dosis se da más tarde, usualmente a los 15-18 meses [7]. Es poco probable que sea sarampión si el niño ha recibido ambas dosis de la vacuna o ya tuvo la enfermedad antes [6].
 
-## Qué puede hacer en casa
+## Qué puedes hacer en casa
 Después de ver al médico, puede ayudar a aliviar los síntomas [10]. El sarampión suele mejorar en aproximadamente una semana [10].
 
 - Descanse y beba muchos líquidos, como agua, para evitar la deshidratación [10].
@@ -44,7 +44,7 @@ Para reducir el riesgo de contagio [5]:
 - Quédese en casa sin ir a la guardería, escuela o trabajo al menos 4 días desde que aparece la erupción [10].
 - Evite el contacto cercano con bebés, mujeres embarazadas o personas con sistema inmunitario debilitado [10].
 
-## Cuándo ver a un médico o ir al servicio de urgencias
+## Cuándo acudir al médico o a urgencias
 Pida una cita urgente con el médico o busque ayuda si [6]:
 - Piensa que usted o su hijo pueden tener sarampión [6].
 - Su hijo es menor de 1 año y ha estado en contacto con alguien con sarampión [6].
@@ -66,7 +66,6 @@ Llame a su médico antes de ir. Pueden sugerir hablar por teléfono u organizar 
 ¿La rubéola es lo mismo que el sarampión? No. La "rubéola alemana", también conocida como rubéola, es una enfermedad completamente diferente [1].
 
 ## Fuentes
-
 [1] MedlinePlus — "Measles" (2025), section "Introducción", p. 1 — https://medlineplus.gov/measles.html
 [2] NHS — "Measles" (2025), section "Measles", p. 1 — https://www.nhs.uk/conditions/measles/
 [3] WHO — "Measles", section "Overview", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles

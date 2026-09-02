@@ -1,21 +1,18 @@
 ---
 import vax from '../data/vaccines.json';
-import type { Lang } from '../i18n';
+import { t, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const T = lang === 'es'
-  ? { h: 'Calendario de vacunas por país y edad', p: 'Tablas transcritas de los calendarios oficiales (España, Reino Unido, Estados Unidos). Sin IA. Tu pediatra o el calendario de tu comunidad tienen la última palabra.', country: 'País', age: 'Edad del niño', show: 'Ver', full: 'Calendario completo', due: 'A esta edad tocan', next: 'Siguiente cita', none: 'No hay vacuna programada justo a esta edad.', src: 'Fuente' }
-  : { h: 'Vaccination schedule by country and age', p: 'Tables transcribed from the official schedules (Spain, UK, US). No AI. Your paediatrician or your regional schedule has the final word.', country: 'Country', age: "Child's age", show: 'Show', full: 'Full schedule', due: 'Due at this age', next: 'Next visit', none: 'No vaccine is scheduled at this exact age.', src: 'Source' };
+const s = t(lang);
+const T = s.vax;
 const countries = Object.keys(vax as any);
-const ages = lang === 'es'
-  ? [['','—'],['0','recién nacido'],['2','2 meses'],['4','4 meses'],['6','6 meses'],['11','11 meses'],['12','12 meses'],['15','15 meses'],['18','18 meses'],['42','3-4 años'],['72','6 años'],['144','12 años'],['168','14 años']]
-  : [['','—'],['0','newborn'],['2','2 months'],['3','12 weeks'],['4','4 months'],['6','6 months'],['12','1 year'],['15','15 months'],['18','18 months'],['40','3 years 4 months'],['48','4-6 years'],['72','6 years'],['144','12 years'],['168','14 years']];
+const ages = s.vax_ages;
 ---
 <div class="vax" data-lang={lang} data-t={JSON.stringify(T)} data-vax={JSON.stringify(vax)}>
   <h1>{T.h}</h1>
   <p class="lede">{T.p}</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-top:20px">
-    <label class="f"><span>{T.country}</span><select id="vx-country">{countries.map(c => <option value={c} selected={c === (lang === 'es' ? 'ES' : 'GB')}>{(vax as any)[c].name[lang]}</option>)}</select></label>
+    <label class="f"><span>{T.country}</span><select id="vx-country">{countries.map(c => <option value={c} selected={c === s.vax_default_country}>{(vax as any)[c].name[lang] ?? (vax as any)[c].name.en}</option>)}</select></label>
     <label class="f"><span>{T.age}</span><select id="vx-age">{ages.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
   </div>
   <div id="vx-out" class="card" style="margin-top:16px" aria-live="polite"></div>

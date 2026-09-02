@@ -16,7 +16,6 @@ draft: false
 ---
 
 ## What it is
-
 Fever is a sign that the body’s defenses are working. The main symptom is discomfort, though children often tolerate fever better than adults [3]. It is normal for a child with fever to have less appetite, feel tired, or have a headache [3].
 
 When the fever is rising, it is normal for the child to feel cold, have chills, and have a mottled skin color (cutis marmorata), especially on the hands and feet [3]. When the fever goes down, the child will sweat, turn red, and feel hot [3].
@@ -24,7 +23,6 @@ When the fever is rising, it is normal for the child to feel cold, have chills, 
 Fever usually lasts 2 to 4 days, but it can last longer without being more serious [4]. Antipyretics lower the temperature but do not always bring it down completely, especially if it started very high [4]. Fever that persists after an antipyretic is common and does not mean the illness is more severe [4].
 
 ## What you can do at home
-
 The main goal is to make your child comfortable. Treat the discomfort, not the number on the thermometer [5].
 
 - Keep your child well hydrated with plenty of fluids [5].
@@ -40,7 +38,6 @@ To prevent infections, wash hands frequently with soap and water or use hand san
 A child with fever should not go to school or daycare, to avoid spreading infection [2]. It is prudent to wait 24 hours without fever before returning to school or daycare [4]. When the child has no fever and feels well, they can resume normal activity [4].
 
 ## When to see a doctor or go to the emergency department
-
 Go to the emergency department if your child has any of these warning signs [1]:
 
 - Is listless, poorly reactive, or very irritable.
@@ -52,7 +49,6 @@ Go to the emergency department if your child has any of these warning signs [1]:
 At home, watch your child’s general condition and that they have good color [4]. Also watch for petechiae, which are small red spots on the skin that do not disappear when you press on their sides [4].
 
 ## Common questions
-
 **Should I wake my child to give medicine?**
 The goal is comfort, not a normal temperature. If your child is sleeping comfortably, there is no need to wake them. Antipyretics do not cure the infection; when the effect wears off, the fever will return [5].
 
@@ -63,7 +59,6 @@ No. Fever that persists after an antipyretic is common and does not mean the ill
 It is normal to have less appetite. Do not force your child to eat. Make sure they drink plenty of fluids to stay hydrated [5].
 
 ## Sources
-
 [1] SEUP — "Fiebre. Información para padres", section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf
 [2] SEUP — "Fiebre. Información para padres", section "¿CÓMO PODEMOS PREVENIR LAS INFECCIONES?", p. 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf
 [3] SEUP — "Fiebre. Información para padres", section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf

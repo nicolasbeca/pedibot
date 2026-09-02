@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## What it is
-
 Vaccines protect your child from serious diseases that can harm or kill infants and children [8]. Babies are born with immune systems that can fight most germs, but they cannot handle some serious diseases on their own [8]. Vaccines strengthen their immune system so they can build immunity without getting sick [8].
 
 In the United States, the Centers for Disease Control and Prevention (CDC) publishes the vaccine schedule [1]. This schedule lists which vaccines are recommended, how many doses are needed, and at what age they should be given [1]. Following the schedule gives your child's body the chance to build immunity before being exposed to these very serious diseases [1].
@@ -30,7 +29,6 @@ Some children need extra vaccines because of health conditions or risk factors [
 Vaccinating your child also protects others [8]. When enough people are vaccinated, it is harder for a disease to spread [8]. This is called "community immunity" [8]. It helps protect people who cannot get vaccines, such as those with weakened immune systems or allergies to vaccine ingredients, and newborn babies who are too young for some vaccines [8].
 
 ## What you can do at home
-
 - Keep your child's vaccine appointments at the scheduled times [1][2].
 - If you think your child missed a vaccine, contact your doctor or GP surgery to catch up [2][5].
 - If you missed a vaccination appointment, contact your GP surgery to book or rearrange it [5].
@@ -39,14 +37,12 @@ Vaccinating your child also protects others [8]. When enough people are vaccinat
 Vaccines do not overload the immune system [6]. Every day, a healthy child's immune system fights off thousands of germs [6]. Vaccines contain weakened or dead germs, so even several vaccines in one day expose your child to a tiny amount of germs compared to what they encounter daily [6].
 
 ## When to see a doctor or go to the emergency department
-
 - If you think your child has missed any vaccinations, speak to your GP surgery [5].
 - If you have a vaccination appointment but missed it or cannot attend, contact your GP surgery to rearrange [5].
 - If your child has a long-term health condition, ask your doctor whether they need extra vaccines like the flu or pneumococcal vaccine [7].
 - If your child has a weakened immune system, ask about additional vaccines such as COVID-19 [7].
 
 ## Common questions
-
 **What if my child missed a vaccine?**
 It is best to have vaccines on time, but you can still catch up on most vaccines if you miss them [5]. Contact your GP to arrange a catch-up appointment [2][5].
 
@@ -57,7 +53,6 @@ No. Vaccines do not overload the immune system [6]. A healthy child's immune sys
 Some vaccines are only available for groups who need extra protection [4]. This includes children with certain health conditions, such as problems with the spleen, diabetes, or chronic heart conditions [7]. Babies born to mothers with hepatitis B also get extra vaccines [7].
 
 ## Sources
-
 [1] MedlinePlus — "Childhood Vaccines" (2024), section "When do I need to vaccinate my child?", p. 1 — https://medlineplus.gov/childhoodimmunization.html
 [2] NHS — "NHS vaccinations and when to have them" (2023), section "NHS vaccinations and when to have them", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/
 [4] NHS — "NHS vaccinations and when to have them" (2023), section "Extra vaccines for at-risk people", p. 1 — https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/

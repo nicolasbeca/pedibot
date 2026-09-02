@@ -20,7 +20,6 @@ draft: false
 ---
 
 ## What it is
-
 Measles is an infection caused by a virus. It spreads very easily from person to person [1][3]. The virus spreads when an infected person breathes, coughs, or sneezes [3][5]. It can cause serious problems and even death in some people [2][3]. Measles can affect anyone but is most common in children [3].
 
 Symptoms usually begin 7–14 days after exposure [4]. Early symptoms last 4–7 days and include:
@@ -38,7 +37,6 @@ Measles can lead to complications, especially in children under 5 years and adul
 There is no treatment for measles itself [1]. The MMR or MMRV vaccine is the best way to prevent it [1][2][3][8]. Children should receive two doses of the vaccine [7]. The first dose is usually given at 9 months in countries where measles is common, or 12–15 months in other countries. A second dose is given later in childhood, usually at 15–18 months [7].
 
 ## What you can do at home
-
 Measles usually starts to get better in about a week [10]. After seeing a GP, you can help ease symptoms and reduce spread [10]. It can help to:
 - Rest and drink plenty of fluids, such as water, to avoid dehydration [10]
 - Give your child paracetamol for children or ibuprofen for children if they are distressed or uncomfortable – check the packaging or leaflet to make sure the medicine is suitable, or ask a pharmacist or GP [10]
@@ -56,7 +54,6 @@ Stay off nursery, school, or work for at least 4 days from when the rash first a
 You are infectious from when you first have symptoms (around 4 days before the rash appears) until 4 days after you get the rash [5].
 
 ## When to see a doctor or go to the emergency department
-
 Ask for an urgent GP appointment or get help from NHS 111 if [6]:
 - You think you or your child may have measles [6]
 - Your child is under 1 year old and has come into contact with someone who has measles [6]
@@ -71,7 +68,6 @@ Ask for an urgent GP appointment or get help from NHS 111 if [6]:
 Measles can spread easily to others. Call your GP surgery before you go in. They may suggest talking over the phone or arrange for you to come to a part of the surgery where you are separated from others [6].
 
 ## Common questions
-
 **Is it measles if my child has been vaccinated?**
 It is unlikely to be measles if your child has had both doses of the MMRV or MMR vaccine, or has had measles before [6].
 
@@ -82,7 +78,6 @@ It is unlikely to be measles if your child has had both doses of the MMRV or MMR
 Measles usually starts to get better in about a week [10]. The rash typically lasts 4–8 days before fading [4].
 
 ## Sources
-
 [1] MedlinePlus — "Measles" (2025), section "Introducción", p. 1 — https://medlineplus.gov/measles.html
 [2] NHS — "Measles" (2025), section "Measles", p. 1 — https://www.nhs.uk/conditions/measles/
 [3] WHO — "Measles", section "Overview", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles

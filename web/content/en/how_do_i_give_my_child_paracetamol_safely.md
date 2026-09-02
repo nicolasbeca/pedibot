@@ -61,7 +61,6 @@ Yes, your child can eat and drink normally when taking paracetamol [7].
 Children do not usually get any side effects [4]. Rarely, serious side effects can occur, such as an allergic reaction, liver problems, or blood cell problems [10]. Call NHS 111 if you think your child might be having serious side effects [10]. For a full list of side effects, see the leaflet that comes with the medicine [9].
 
 ## Sources
-
 [1] NHS — "Paracetamol for children (Calpol) - Other common brands: Panadol" (2025), section "Paracetamol for children (Calpol) - Other common brands: Panadol", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/
 [2] NHS — "Paracetamol for children (Calpol) - Other common brands: Panadol" (2025), section "What paracetamol is for", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/
 [3] NHS — "Paracetamol for children (Calpol) - Other common brands: Panadol" (2025), section "Who can and cannot take paracetamol", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/

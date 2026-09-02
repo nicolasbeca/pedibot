@@ -20,7 +20,6 @@ draft: false
 ---
 
 ## What it is
-
 Chickenpox is an infection caused by the varicella-zoster virus [1]. It spreads very easily from one person to another [1]. Most cases are in children under age 15 [1]. Up to 90% of people who are not immune and are close to someone with chickenpox will get infected [6].
 
 The classic symptom is an itchy rash [1]. The rash turns into fluid-filled blisters and then into scabs [1]. It usually shows up on the face, chest, and back, then spreads to the rest of the body [1]. A person may have as many as 500 blisters [8]. It takes about 1 week for all blisters to become scabs [8].
@@ -30,7 +29,6 @@ Other symptoms include fever, headache, tiredness, and loss of appetite [1]. Chi
 A person with chickenpox is contagious 1 to 2 days before the rash begins, until all lesions have crusted over [6]. For most people, getting chickenpox once provides immunity for life [2]. It is uncommon, but a person can get it more than once [2].
 
 ## What you can do at home
-
 Stay off school, nursery, or work until all spots have formed a scab. This is usually 5 days after the spots first appeared [3].
 
 Do:
@@ -51,7 +49,6 @@ Don't:
 Do not go near newborn babies, anyone who is pregnant, or anyone with a weakened immune system. Chickenpox can be dangerous for them [3].
 
 ## When to see a doctor or go to the emergency department
-
 See a GP if:
 - You are not sure it is chickenpox [4].
 - You are breastfeeding and have chickenpox symptoms [4].
@@ -71,7 +68,6 @@ Some people may be able to take medicine to prevent complications. It needs to b
 Chickenpox can be serious, even life-threatening, especially during pregnancy, in babies, adolescents, adults, and people with weakened immune systems [10]. Antiviral medication is recommended for people more likely to develop dangerous illness [9].
 
 ## Common questions
-
 Can my child get chickenpox after being vaccinated?
 Yes. Some vaccinated people can still get chickenpox, but they usually have milder symptoms [8]. Vaccinated people who get the disease can still spread it to others [6].
 
@@ -82,7 +78,6 @@ Can chickenpox come back later?
 Once you catch chickenpox, the virus usually stays in your body. You probably will not get chickenpox again, but the virus can cause shingles in adults [1].
 
 ## Sources
-
 [1] MedlinePlus — "Chickenpox" (2025), section "Introducción", p. 1 — https://medlineplus.gov/chickenpox.html
 [2] CDC — "About Chickenpox", section "About Chickenpox Key points", p. 1 — https://www.cdc.gov/chickenpox/about/index.html
 [3] NHS — "Chickenpox" (2025), section "How you can treat chickenpox yourself", p. 1 — https://www.nhs.uk/conditions/chickenpox/

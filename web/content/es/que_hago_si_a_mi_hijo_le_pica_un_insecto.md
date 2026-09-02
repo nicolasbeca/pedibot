@@ -22,7 +22,7 @@ draft: false
 ## Qué es
 La mayoría de las picaduras de insectos son inofensivas, aunque a veces causan molestias [1]. Las picaduras de abejas, avispas y avispones, y las de hormigas rojas, suelen doler. Las de mosquitos y pulgas suelen picar [1]. Los insectos también pueden transmitir enfermedades, como el virus del Nilo Occidental por mosquitos en Estados Unidos, o la malaria en otras partes del mundo [1]. Algunas picaduras pueden infectarse o causar una reacción alérgica grave [2]. Las garrapatas pueden transmitir la enfermedad de Lyme [2]. Los piojos son insectos parásitos que viven en la cabeza y se alimentan de sangre humana [10]. El impétigo, una infección bacteriana de la piel, a menudo comienza cuando las bacterias entran por una picadura de insecto [9].
 
-## Qué puede hacer en casa
+## Qué puedes hacer en casa
 Si no hay nada en la piel, o ya lo ha retirado, lave la zona con agua y jabón para reducir el riesgo de infección [3]. La picadura debería mejorar en pocos días [3]. Para aliviar los síntomas:
 - Ponga una bolsa de hielo envuelta en un paño, o un paño limpio mojado en agua fría, sobre la picadura durante al menos 20 minutos si está hinchada [3].
 - Mantenga la zona elevada si es posible [3].
@@ -76,7 +76,6 @@ Los síntomas incluyen sensación de cosquilleo en el cabello, picor frecuente (
 Sí. El impétigo es una infección bacteriana que suele comenzar cuando las bacterias entran por una rotura en la piel, como un corte, un rasguño o una picadura de insecto [9]. Es más común en niños de 2 a 6 años [9]. Para prevenirlo, mantenga limpias las picaduras lavándolas con agua tibia y jabón [6].
 
 ## Fuentes
-
 [1] MedlinePlus — "Insect Bites and Stings" (2026), section "Introducción", p. 1 — https://medlineplus.gov/insectbitesandstings.html
 [2] NHS — "Insect bites and stings" (2023), section "Insect bites and stings", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/
 [3] NHS — "Insect bites and stings" (2023), section "Easing your symptoms", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/

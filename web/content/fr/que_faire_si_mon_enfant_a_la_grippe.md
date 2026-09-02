@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 La grippe peut être plus dangereuse que le rhume pour les enfants [2]. Les symptômes apparaissent très vite, en quelques heures [3]. Chez l'enfant, ils incluent : une forte fièvre soudaine, un corps courbaturé, une fatigue extrême, une toux sèche, un mal de gorge, des maux de tête, des difficultés à dormir et une perte d'appétit [3]. Les enfants peuvent aussi avoir mal à l'oreille, les yeux irrités, des glandes enflées et sembler moins actifs [3]. Des diarrhées, des maux de ventre, des nausées ou des vomissements sont possibles [3].
 
 Contrairement au rhume, la grippe touche plus que le nez et la gorge et donne l'impression d'être trop malade pour faire ses activités normales [3]. Les enfants de moins de 5 ans, surtout ceux de moins de 2 ans, et ceux ayant des maladies chroniques comme l'asthme ou le diabète, ont un risque plus élevé de complications graves [1][2]. Ces complications peuvent inclure une pneumonie, une déshydratation, une aggravation de problèmes de santé existants ou, dans de rares cas, des atteintes du cerveau [5].
@@ -29,7 +28,6 @@ Contrairement au rhume, la grippe touche plus que le nez et la gorge et donne l'
 Le vaccin annuel contre la grippe est recommandé pour tous à partir de 6 mois [1][6]. Il réduit les maladies, les consultations chez le médecin et les hospitalisations liées à la grippe [5]. Il faut environ deux semaines après le vaccin pour être protégé [7].
 
 ## Ce que vous pouvez faire à la maison
-
 Pour soulager votre enfant, vous pouvez :
 - Donner du paracétamol ou de l'ibuprofène pour enfants en cas de forte fièvre ou d'inconfort – vérifiez toujours la notice pour vous assurer que c'est adapté à votre enfant [10].
 - Utiliser des gouttes nasales salines de pharmacie si le nez est bouché [10].
@@ -44,13 +42,11 @@ Pour éviter de propager la grippe :
 Les antibiotiques ne fonctionnent pas contre les virus comme la grippe [9]. Si un médecin diagnostique la grippe, des médicaments antiviraux peuvent réduire les symptômes et raccourcir la maladie, mais ils doivent être commencés rapidement, idéalement dans les 2 jours suivant le début des symptômes [8].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez rapidement votre médecin si votre enfant présente des symptômes de grippe et fait partie des groupes à risque : moins de 5 ans (surtout moins de 2 ans) ou maladie chronique comme l'asthme ou le diabète [1][2]. Un traitement antiviral précoce peut réduire le risque de complications [8].
 
 Allez aux urgences si votre enfant semble gravement malade, notamment s'il est très fatigué, déshydraté ou a du mal à respirer. La déshydratation survient quand le corps perd trop d'eau et de sels [5]. La pneumonie, une infection des poumons, est aussi une complication possible [5]. En cas de doute, contactez votre médecin ou appelez votre numéro d'urgence local.
 
-## Preguntas frecuentes
-
+## Questions fréquentes
 **La grippe est-elle plus grave qu'un rhume ?**
 Oui, la grippe est plus dangereuse que le rhume pour les enfants [2]. Elle apparaît soudainement et rend l'enfant épuisé, alors que le rhume est plus progressif et laisse l'enfant capable de faire ses activités [3].
 
@@ -61,7 +57,6 @@ Oui, le vaccin annuel est recommandé pour tous les enfants de 6 mois et plus [1
 Vous pouvez lui donner du paracétamol ou de l'ibuprofène pour enfants, en vérifiant toujours la notice [10]. Assurez-vous qu'il boit beaucoup de liquides [10].
 
 ## Sources
-
 [1] CDC — "Flu and Children", section "Parents help children fight flu", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
 [2] CDC — "Flu and Children", section "Flu and Children At a glance", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
 [3] NHS — "Flu" (2026), section "Symptoms of flu", p. 1 — https://www.nhs.uk/conditions/flu/

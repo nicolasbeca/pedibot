@@ -18,15 +18,13 @@ draft: false
 ---
 
 ## Qué es
-
 Los cólicos del lactante son episodios de llanto prolongado que aparecen en bebés sanos y se repiten casi a diario, sobre todo por las tardes y noches [4]. Pueden durar de minutos a horas [4]. Es un trastorno benigno, no es una enfermedad grave [1].
 
 El llanto suele comenzar a los 15 días de vida, alcanza su punto máximo en la 5ª-6ª semana y es raro que persista más allá del 4º mes [1]. La causa no se conoce con exactitud, pero se han propuesto varias explicaciones: inmadurez del aparato digestivo, estreñimiento, alteraciones en la flora bacteriana o dificultad para expulsar los gases [4].
 
 Durante los episodios, el bebé suele encoger las piernas sobre el abdomen y cerrar los puños, manteniéndose vigoroso y con la cara enrojecida por el esfuerzo [2]. Cuando el llanto cede, vuelve a presentar un aspecto normal [2]. El llanto es característicamente paroxístico (tiene un inicio y un final marcado), intenso, de tono elevado e inconsolable [2].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 - Intente mantener la calma, ya que es un proceso benigno y pasajero [5].
 - Acuda a consolarle e intente descartar otras causas de llanto: hambre, sed, pañal sucio, calor o frío [5].
 - Procure que el ambiente sea tranquilo y relajado; intente no transmitir ansiedad al bebé [5].
@@ -37,8 +35,7 @@ Los cólicos son algo menos frecuentes en bebés alimentados con leche materna [
 
 No le administre ningún producto de farmacia, parafarmacia o herbolario, ni cambie de leche sin consultar antes con el pediatra [7]. Muchos productos comercializados tienen una eficacia más aparente que real, similar a la de un placebo [7]. Algunas plantas naturales, como el anís estrellado, pueden ser peligrosas [7]. No existe ningún tratamiento con efectividad probada [7]. Es normal que los bebés sanos lloren dos horas o más al día, aunque no tengan cólicos [7].
 
-## Cuándo acudir a un servicio de urgencias
-
+## Cuándo acudir al médico o a urgencias
 Acuda a urgencias si observa alguno de estos signos:
 
 - Si entre los episodios de llanto el bebé no recupera su estado normal [3].
@@ -46,7 +43,6 @@ Acuda a urgencias si observa alguno de estos signos:
 - Si el bebé presenta fiebre, vomita o hace deposiciones con sangre [3].
 
 ## Preguntas frecuentes
-
 **¿Los cólicos son peligrosos?** No. Es un trastorno benigno y pasajero que desaparece por sí solo, generalmente antes del 4º mes de vida [1].
 
 **¿Debo cambiar la leche de mi bebé?** No sin consultar antes con el pediatra. La alergia a la proteína de leche de vaca solo explica una pequeña parte de los casos [6]. Cualquier cambio de alimentación debe ser indicado por un profesional [6].
@@ -56,7 +52,6 @@ Acuda a urgencias si observa alguno de estos signos:
 **¿Es normal que mi bebé llore tanto?** Sí. Es normal que los bebés sanos lloren dos horas o más al día, aunque no tengan cólicos [7].
 
 ## Fuentes
-
 [1] SEUP — "Cólico del lactante. Información para padres" (2025), section "CÓLICO DEL LACTANTE PAROXÍSTICO INTENSO INCONSOLABLE CARACTERÍSTICAS DEL LLANTO ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 2
 [2] SEUP — "Cólico del lactante. Información para padres" (2025), section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1
 [3] SEUP — "Cólico del lactante. Información para padres" (2025), section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2

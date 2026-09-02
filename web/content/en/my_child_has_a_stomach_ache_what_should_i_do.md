@@ -21,13 +21,11 @@ draft: false
 ---
 
 ## What it is
-
 Stomach pain is a frequent and non-specific symptom in children. It can have many causes, and most are benign and get better on their own, such as constipation, gas, diarrhea, or increased intestinal movement [1]. Only a small percentage of cases require hospital admission or surgery, but it is essential to know when to consult a doctor to tell apart mild causes from those needing urgent treatment [1].
 
 The pain is a feeling of discomfort or distress that your child refers to in the belly [6]. It can come with fever, vomiting, diarrhea, or a cough [6]. The location, how it evolves, and associated symptoms are important for a diagnosis [6]. Sometimes, illnesses outside the abdomen, like a sore throat, a cold, pneumonia, or an ear infection, can also cause stomach pain [6].
 
 ## What you can do at home
-
 - Try to judge how bad the pain is without asking constantly. Observe if your child is playing, if the pain goes away when sleeping, if it wakes them at night, or if it forces them to rest [4].
 - Let your child maintain their normal activity [4].
 - Watch your child's bowel movements. Note when the last one was and its consistency [4].
@@ -39,7 +37,6 @@ The pain is a feeling of discomfort or distress that your child refers to in the
 To prevent the spread of viral infections that often cause stomach pain, wash hands with soap before meals and after using the toilet [3]. Dispose of dirty diapers in plastic bags before throwing them in the trash [3]. Clean the changing mat and wash your hands after changing diapers [3]. To prevent constipation, encourage eating fresh fruit and vegetables and promote physical activity [3].
 
 ## When to see a doctor or go to the emergency department
-
 Your child should be evaluated if they have any of these signs:
 
 - Poor general condition, is listless, pale, or clearly refuses to eat [2].
@@ -58,7 +55,6 @@ Your child should be evaluated if they have any of these signs:
 Also seek urgent care if your child has vomiting and any of the following: they are under 3 months old and have vomited two or more feeds, they vomit a lot and cannot tolerate solids or liquids, or vomit even without taking anything, or the vomit is greenish, has blood, or looks like coffee grounds [8]. Other warning signs include being drowsy, listless, very thirsty, having sunken eyes, crying without tears, or urinating little [8][10]. Also seek care for intense stomach pain or headache [8], or for stools that are very liquid, abundant, and frequent so the child cannot drink as fast as they are losing fluids [10].
 
 ## Common questions
-
 **Should I give my child medicine for the pain or diarrhea?**
 Do not give your child laxatives or enemas without consulting their pediatrician [9]. Do not give medication for diarrhea or vomiting without consulting your pediatrician [10].
 
@@ -69,7 +65,6 @@ Offer a soft, appealing, low-fat diet without forcing intake [7]. For constipati
 Returning to school depends on the cause. If the cause is infectious, wait until your child feels well to avoid spreading it to others [2]. For recurrent pain without new symptoms, after a medical evaluation, it may be recommended not to interrupt school attendance [2].
 
 ## Sources
-
 [1] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿QUÉ ES EL DOLOR ABDOMINAL?", p. 1
 [2] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?", p. 1
 [3] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿CÓMO LO PODEMOS PREVENIR?", p. 2

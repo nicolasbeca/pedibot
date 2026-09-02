@@ -21,13 +21,11 @@ draft: false
 ---
 
 ## Qué es
-
 El dolor abdominal es un síntoma frecuente e inespecífico en los niños. Puede deberse a diversas causas, siendo la mayoría benignas y autolimitadas, como estreñimiento, aumento del movimiento del intestino, gases o diarrea [1]. Solo un porcentaje escaso requiere ingreso o cirugía, pero es fundamental saber cuándo consultar para diferenciar las causas leves de las que necesitan tratamiento urgente [1].
 
 El dolor es una sensación de molestia o malestar que el niño refiere en el abdomen [6]. Puede asociar fiebre, vómitos, diarrea o tos [6]. Es importante valorar la localización, la evolución y los síntomas que asocia para llegar a un diagnóstico [6]. Algunas enfermedades no localizadas en el abdomen, como anginas, catarro de vías altas, neumonía u otitis, también pueden provocar dolor abdominal [6].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 - Observe la intensidad sin preguntar continuamente. Fíjese si juega, si el dolor desaparece al dormir, si le despierta por la noche o si le obliga a reposar [4].
 - Deje que mantenga su actividad normal [4].
 - Observe las deposiciones. Tenga en cuenta cuándo fue la última y su consistencia [4].
@@ -36,8 +34,7 @@ El dolor es una sensación de molestia o malestar que el niño refiere en el abd
 - Para prevenir el estreñimiento, aumente la ingesta de líquidos (preferiblemente agua) y el número de comidas con fibra (cereales, pan con fibra, frutas, verduras) [9]. No sustituya las frutas por zumos, ya que tienen poca fibra [9].
 - Para prevenir el contagio de infecciones virales, lave las manos con jabón antes de las comidas y después de usar el inodoro [3]. Deposite los pañales sucios en bolsas de plástico y limpie el cambiador después de cambiar al bebé [3].
 
-## Cuándo ver a un médico o acudir a urgencias
-
+## Cuándo acudir al médico o a urgencias
 Debe valorarse al paciente si presenta alguno de estos signos:
 
 - Mal estado general, está decaído, pálido o asocia rechazo alimentario marcado [2].
@@ -61,7 +58,6 @@ Debe valorarse al paciente si presenta alguno de estos signos:
 - En caso de estreñimiento, si hay dolor abdominal importante, si está muy decaído, si presenta sangre en las heces, o si vomita muchas veces y no tolera sólidos ni líquidos [9].
 
 ## Preguntas frecuentes
-
 **¿Puede volver a la escuela o guardería?**
 Habitualmente el dolor abdominal es transitorio [2]. La vuelta al centro escolar dependerá de la causa [2]. Si la causa es infecciosa, espere a que el niño se encuentre bien para evitar el contagio de otros compañeros [2]. En casos de dolor abdominal recurrente sin síntomas nuevos respecto a episodios previos, tras una valoración médica, podría recomendarse no interrumpir la asistencia escolar [2].
 
@@ -72,7 +68,6 @@ No administre laxantes, enemas, ni medicamentos para la diarrea o los vómitos s
 Siga una alimentación variada normal, mantenga una rutina regular y evite que el niño se aguante las ganas de ir al baño [9]. La mayoría de los casos de estreñimiento infantil (95%) no está producida por ninguna enfermedad [9]. No es imprescindible que el niño realice deposición todos los días; el ritmo y la consistencia varían de unas personas a otras [9].
 
 ## Fuentes
-
 [1] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿QUÉ ES EL DOLOR ABDOMINAL?", p. 1
 [2] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?", p. 1
 [3] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿CÓMO LO PODEMOS PREVENIR?", p. 2

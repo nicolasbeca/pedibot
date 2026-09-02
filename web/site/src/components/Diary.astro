@@ -1,20 +1,8 @@
 ---
-import type { Lang } from '../i18n';
+import { t, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const T = lang === 'es' ? {
-  h: 'Diario de síntomas', p: 'Anota temperatura y medicación en el móvil, sin cuenta. Se guarda solo en este navegador. Sirve para no repetir una dosis antes de tiempo y para contárselo al pediatra.',
-  temp: 'Temperatura (°C)', med: 'Medicamento', none: 'ninguno', note: 'Nota (tos, vómito, come, duerme…)', add: 'Anotar', clear: 'Borrar todo',
-  next: 'Próxima dosis posible', ok: 'ya se puede', wait: 'espera', notify: 'Avisarme cuando toque', notified: 'Aviso activado', unsupported: 'Este navegador no permite avisos',
-  empty: 'Aún no hay anotaciones.', export: 'Copiar para el pediatra', copied: 'Copiado', when: 'Cuándo', what: 'Qué',
-  warn: 'Si la fiebre dura más de 5 días, o aparece cualquier signo de alarma, consulta. Este diario no avisa de eso.',
-} : {
-  h: 'Symptom diary', p: 'Log temperature and medicines on your phone, no account. Stored only in this browser. Helps you avoid repeating a dose too early and tell the doctor what happened.',
-  temp: 'Temperature (°C)', med: 'Medicine', none: 'none', note: 'Note (cough, vomit, eating, sleeping…)', add: 'Log', clear: 'Clear all',
-  next: 'Next dose possible', ok: 'now', wait: 'wait', notify: 'Remind me when due', notified: 'Reminder set', unsupported: 'This browser does not allow reminders',
-  empty: 'Nothing logged yet.', export: 'Copy for the doctor', copied: 'Copied', when: 'When', what: 'What',
-  warn: 'If fever lasts more than 5 days, or any warning sign appears, seek care. This diary does not detect that.',
-};
+const T = t(lang).diary;
 ---
 <div class="diary" data-t={JSON.stringify(T)}>
   <h1>{T.h}</h1>

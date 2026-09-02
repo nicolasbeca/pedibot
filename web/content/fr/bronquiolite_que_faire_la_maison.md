@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 La bronchiolite est une infection qui touche les petites bronches des poumons [6]. Elle est causée par des virus, le plus souvent le virus respiratoire syncytial (VRS), mais d’autres virus respiratoires peuvent aussi en être responsables [6]. Elle survient par épidémies entre octobre et mars et touche surtout les enfants de moins de 2 ans [6].
 
 La maladie commence souvent comme un rhume normal, avec toux et nez qui coule [3]. Une fièvre est possible [3]. Après 2 à 4 jours, des difficultés à respirer peuvent apparaître [3]. On les remarque parce que l’enfant respire plus vite, est irritable et a du mal à manger [3]. Parfois, on entend des bruits dans la poitrine, les côtes se marquent, la poitrine se creuse ou le ventre bouge à chaque respiration [3].
@@ -26,7 +25,6 @@ La maladie commence souvent comme un rhume normal, avec toux et nez qui coule [3
 La plupart des bronchiolites sont légères et peuvent être gérées avec des mesures générales et un suivi par votre pédiatre [1]. Dans certains cas, la difficulté à respirer peut être plus grave et nécessiter de l’oxygène à l’hôpital [1]. Les bébés de moins de 3 mois, ceux qui ont un problème de santé préexistant et les prématurés sont particulièrement vulnérables [1]. Aujourd’hui, aucun médicament ne guérit la bronchiolite [1]. Dans la plupart des cas, l’enfant va mieux en 2 semaines, mais la toux peut durer plus longtemps [1].
 
 ## Ce que vous pouvez faire à la maison
-
 - Faites des lavages de nez pour garder le nez libre de mucus [7].
 - Proposez des repas fractionnés, c’est-à-dire petits et fréquents, pour maintenir une bonne alimentation et hydratation [7].
 - Installez l’enfant en position semi-assise pour faciliter la respiration [7].
@@ -39,7 +37,6 @@ Les antibiotiques ne sont pas utiles car ils ne agissent pas contre les virus [5
 Pour prévenir la bronchiolite, lavez-vous les mains et évitez le contact des bébés avec des personnes enrhumées [5]. Évitez aussi les espaces fermés et bondés pendant l’épidémie, comme les centres commerciaux [5]. L’allaitement maternel aide à protéger contre ce type d’infections [5]. Il existe un anticorps immunisant (Nirsevimab) contre le VRS qui offre une protection immédiate et prévient l’hospitalisation dans plus de 80 % des cas [5]. Cette immunisation est sûre, avec de légers effets secondaires possibles : éruption cutanée, fièvre et douleur au point d’injection [5].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin ou allez aux urgences si votre enfant :
 
 - Respire de plus en plus mal ou de plus en plus vite [4].
@@ -52,7 +49,6 @@ Consultez un médecin ou allez aux urgences si votre enfant :
 Ne l’emmenez pas à la crèche si une bronchiolite aiguë a été diagnostiquée, car elle se transmet de personne à personne, en toussant ou en éternuant, et par contact avec des surfaces contaminées [1].
 
 ## Questions fréquentes
-
 **Mon bébé peut-il retourner à la crèche ?**
 Il est recommandé de ne pas l’emmener à la crèche après un diagnostic de bronchiolite aiguë, car la maladie se transmet facilement [1].
 
@@ -63,7 +59,6 @@ Dans la plupart des cas, l’enfant s’améliore en 2 semaines, mais la toux pe
 Non, les sirops contre la toux, les mucolytiques et les corticoïdes ne sont pas utiles [5].
 
 ## Sources
-
 [1] SEUP — "Bronquiolitis. Información para padres" (2025), section "¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 1, 2
 [2] SEUP — "Bronquiolitis. Información para padres" (2025), section "LA INMUNIZACION CONTRA EL VRS DISMINUYE LA HOSPITALIZACIÓN HASTA", p. 2
 [3] SEUP — "Bronquiolitis. Información para padres" (2025), section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1

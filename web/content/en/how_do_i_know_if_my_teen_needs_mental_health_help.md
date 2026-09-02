@@ -60,7 +60,6 @@ Yes. Globally, one in seven 10–19-year-olds experiences a mental disorder [3].
 Yes. The consequences of failing to address adolescent mental health conditions extend to adulthood, impairing both physical and mental health and limiting opportunities to lead fulfilling lives as adults [3].
 
 ## Sources
-
 [1] WHO — "Mental health of adolescents", section "Emotional disorders", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health
 [2] MedlinePlus — "Teen Mental Health" (2024), section "Introducción", p. 1 — https://medlineplus.gov/teenmentalhealth.html
 [3] WHO — "Mental health of adolescents", section "Key facts", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health

@@ -39,7 +39,7 @@ Después de que la hemorragia se detenga, para reducir la probabilidad de otra, 
 - Arrancarse costras
 - Acostarse completamente plano
 
-## Cuándo ver a un médico o ir a urgencias
+## Cuándo acudir al médico o a urgencias
 Las hemorragias nasales no suelen ser señal de algo grave [5]. Pero busca atención no urgente de un médico de cabecera si [5]:
 - Un niño menor de 2 años ha tenido una hemorragia nasal
 - Tu hijo tiene hemorragias nasales frecuentes
@@ -65,7 +65,6 @@ Si un médico puede ver de dónde viene la sangre, puede usar un palo con una su
 Cuando la hemorragia nasal se detiene, el médico puede recetar una crema antiséptica para usar dentro de la nariz [2]. Esto evita la formación de costras o escaras [2]. Revisa los ingredientes de la crema primero, ya que puede no ser adecuada si hay alergia al maní o a la soja [2].
 
 ## Fuentes
-
 [1] NHS — "Nosebleed" (2026), section "When a nosebleed stops", p. 1 — https://www.nhs.uk/conditions/nosebleed/
 [2] NHS — "Nosebleed" (2026), section "Treatment for nosebleeds", p. 1 — https://www.nhs.uk/conditions/nosebleed/
 [3] NHS — "Nosebleed" (2026), section "How to stop a nosebleed yourself", p. 1 — https://www.nhs.uk/conditions/nosebleed/

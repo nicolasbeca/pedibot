@@ -21,13 +21,11 @@ draft: false
 ---
 
 ## What it is
-
 Asthma is a long-term lung disease that affects the airways, the tubes that carry air in and out of the lungs [10]. In asthma, the airways can become inflamed and narrowed, which causes symptoms like wheezing, coughing, shortness of breath, and chest tightness [5][10]. Symptoms can be mild or severe and often come and go [5]. They may be worse at night and early in the morning [5]. An asthma attack is when symptoms become severe and it is difficult to breathe, which can be life-threatening [5].
 
 In children, symptoms can also include rapid breathing, gasping for air, feeling tired, dark circles under the eyes, being irritable, and trouble eating or sucking in infants [8]. Asthma usually starts in children, but it can happen at any age [5]. It cannot currently be cured, but with good treatment, symptoms should not be a problem [5]. Asthma in young children sometimes goes away by the teenage years or adulthood [6].
 
 ## What you can do at home
-
 Work with your child's healthcare provider to create a treatment plan [3]. The plan should include ways to manage symptoms and prevent attacks [3].
 
 Things you can do to help prevent symptoms and reduce the risk of attacks:
@@ -44,7 +42,6 @@ Treatment plans may include short-term relief medicines (quick-relief) to stop s
 If your child has an asthma attack, sit them up straight and try to keep them calm [1]. Use their reliever inhaler as prescribed. If you have a blue reliever inhaler, take 1 puff every 30 to 60 seconds until they feel better, up to a maximum of 10 puffs [1]. Shake the inhaler between puffs and use a spacer if available [1]. If your child has an AIR or MART inhaler, take 1 puff every 1 to 3 minutes, up to a maximum of 6 puffs [1]. Always follow your child's personal asthma action plan if it has a different maximum dose [1].
 
 ## When to see a doctor or go to the emergency department
-
 Call 999 (emergency services) immediately if your child is having an asthma attack and:
 - Starts to feel worse at any time [1].
 - Does not feel better after taking the maximum dose of their reliever inhaler [1].
@@ -63,7 +60,6 @@ Ask for an urgent GP appointment if:
 Hospital treatment for a severe attack may include oxygen through a mask, nebuliser treatment with high-dose medicine, or steroid tablets or injections [2].
 
 ## Common questions
-
 **Can asthma be cured?**
 Asthma cannot currently be cured, but with good treatment, symptoms should not be a problem [5]. In young children, asthma sometimes goes away by the teenage years or adulthood [6].
 
@@ -74,7 +70,6 @@ Symptoms can be triggered by exercise, high levels of air pollution, cold air, o
 If your child's symptoms are not improving, or you need to use the inhaler more often, see a GP for advice [5]. It is important to use the inhaler correctly so the medicine works properly [7]. A doctor, nurse, or pharmacist will show you how to use it [7].
 
 ## Sources
-
 [1] NHS — "Asthma" (2024), section "How to treat an asthma attack", p. 1 — https://www.nhs.uk/conditions/asthma/
 [2] NHS — "Asthma" (2024), section "Hospital treatment for an asthma attack", p. 1 — https://www.nhs.uk/conditions/asthma/
 [3] MedlinePlus — "Asthma in Children" (2024), section "What are the treatments for asthma in children?", p. 1 — https://medlineplus.gov/asthmainchildren.html

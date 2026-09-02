@@ -19,8 +19,7 @@ sources:
 draft: false
 ---
 
-## What it is
-
+## Qué es
 Una infección de orina (también llamada infección del tracto urinario o ITU) afecta a diferentes partes del sistema urinario, como la vejiga (cistitis), la uretra (uretritis) o los riñones [3]. El sistema urinario incluye dos riñones, dos uréteres, la vejiga y la uretra [10]. Las ITU suelen estar causadas por bacterias del excremento que entran en el tracto urinario a través de la uretra [6].
 
 En los niños, los síntomas pueden incluir:
@@ -37,8 +36,7 @@ Los niños con ITU también pueden:
 - Mojar la cama o mojarse [1].
 - Vomitar [1].
 
-## What you can do at home
-
+## Qué puedes hacer en casa
 Si sospechas que tu hijo tiene una infección de orina, es importante que consulte a un médico. El tratamiento suele ser con antibióticos, aunque no siempre son necesarios [3]. Un médico puede hacer una prueba de orina, aunque no siempre se necesita [4]. Puede recomendar cuidados en casa y un analgésico, o recetar un ciclo corto de antibióticos [4]. A veces piden esperar 48 horas por si los síntomas desaparecen solos [4]. Si te recetan antibióticos, es importante tomar todo el medicamento, incluso si el niño empieza a sentirse mejor [4].
 
 Para aliviar los síntomas en casa:
@@ -53,8 +51,7 @@ Para prevenir infecciones de orina:
 - Cambiar rápidamente los pañales o compresas si están sucios [8].
 - Usar ropa interior de algodón [8].
 
-## When to see a doctor or go to the emergency department
-
+## Cuándo acudir al médico o a urgencias
 Pide una cita urgente con el médico o busca ayuda si tu hijo tiene 15 años o menos y crees que puede tener una infección de orina [7]. También pide ayuda urgente si:
 - Tu hijo tiene una temperatura muy alta o muy baja, se siente con calor o frío, o tiene escalofríos [7].
 - Los síntomas empeoran rápidamente o no mejoran en 48 horas (2 días) después de empezar el tratamiento [7].
@@ -66,8 +63,7 @@ Algunos de estos síntomas podrían ser de una infección de riñón, que puede 
 
 Acción inmediata: llama al 999 o ve a urgencias si tu hijo está confundido, somnoliento o tiene dificultad para hablar [7]. No conduzcas tú; pide a alguien que conduzca o llama al 999 para pedir una ambulancia [7].
 
-## Common questions
-
+## Preguntas frecuentes
 **¿Puedo darle zumo de arándanos a mi hijo?**
 No hay evidencia de que los productos de arándanos o las bolsitas de cistitis ayuden a aliviar los síntomas o traten una ITU si la infección ya ha comenzado [2]. Algunas personas los usan para prevenir infecciones, pero no para tratarlas [2]. Además, los zumos de frutas pueden irritar la vejiga [2].
 
@@ -78,7 +74,6 @@ A veces los síntomas de ITU no desaparecen. Los antibióticos a corto plazo pue
 Las mujeres tienen una uretra más corta que los hombres. Esto significa que las bacterias tienen más probabilidades de llegar a la vejiga o los riñones y causar una infección [6]. Las personas de cualquier edad o sexo pueden tener ITU, pero aproximadamente cuatro veces más mujeres que hombres las padecen [10].
 
 ## Fuentes
-
 [1] NHS — "Urinary tract infections (UTIs)" (2025), section "Symptoms in children", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/
 [2] NHS — "Urinary tract infections (UTIs)" (2025), section "Things you can do yourself", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/
 [3] NHS — "Urinary tract infections (UTIs)" (2025), section "Urinary tract infections (UTIs)", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/

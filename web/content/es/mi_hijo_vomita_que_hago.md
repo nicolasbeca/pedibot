@@ -19,13 +19,11 @@ draft: false
 ---
 
 ## Qué es
-
 Los vómitos son la expulsión por la boca del contenido del aparato digestivo, como alimentos o jugo gástrico. Pueden ser el síntoma de distintas enfermedades, pero lo más frecuente es que la causa sea gastrointestinal [4]. A menudo se acompañan de dolor abdominal, diarrea o fiebre [4]. No hay que confundirlos con la regurgitación, que es normal y común en bebés: en la regurgitación se expulsan pequeñas cantidades y no existe esfuerzo [4].
 
 El mayor riesgo de los vómitos es la deshidratación, por eso lo prioritario es asegurar el aporte de líquidos [1][5]. La gastroenteritis aguda, una infección del tubo digestivo, es una causa frecuente y suele resolverse espontáneamente en menos de una semana [3][8].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 - Cuando vomite, espere 20 minutos y luego ofrezca suero de rehidratación oral, 2-5 ml cada 5 minutos durante una hora [1].
 - Observe si el niño acepta los líquidos. Si los tolera bien, puede aumentar la frecuencia poco a poco [1].
 - No use soluciones caseras como limonada alcalina ni refrescos comerciales [1].
@@ -40,8 +38,7 @@ El mayor riesgo de los vómitos es la deshidratación, por eso lo prioritario es
 - Para prevenir contagios, aumente la higiene, en especial el lavado de manos frecuente del paciente y de los cuidadores [5].
 - Mantenga al niño fuera de la escuela, la guardería o las piscinas hasta que los vómitos hayan desaparecido [3].
 
-## Cuándo ver a un médico o acudir a urgencias
-
+## Cuándo acudir al médico o a urgencias
 Consulte con su pediatra o acuda a urgencias si el niño presenta alguno de estos signos:
 
 - Es menor de 3 meses y ha vomitado dos o más tomas [2].
@@ -56,7 +53,6 @@ Consulte con su pediatra o acuda a urgencias si el niño presenta alguno de esto
 - Presenta un cambio en su estado mental, como irritabilidad o falta de energía [7].
 
 ## Preguntas frecuentes
-
 **¿Puedo darle medicamentos para cortar los vómitos?**  
 No se menciona en las fuentes el uso de medicamentos para los vómitos. Lo recomendado es la rehidratación oral con suero y la alimentación progresiva [1][3].
 
@@ -67,7 +63,6 @@ En general, los síntomas se resuelven espontáneamente en menos de 1 semana [3]
 Debe mantenerse fuera de la escuela, la guardería o las piscinas hasta que los vómitos hayan desaparecido [3].
 
 ## Fuentes
-
 [1] SEUP — "Vómitos. Información para padres", section "¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?", p. 1
 [2] SEUP — "Vómitos. Información para padres", section "¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
 [3] SEUP — "Vómitos. Información para padres", section "¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1, 2

@@ -70,7 +70,7 @@ Consultez immédiatement un médecin si [10] :
 - quelqu’un s’évanouit et ne peut pas être réveillé
 - un enfant est mou, flasque ou ne réagit pas comme d’habitude
 
-## Preguntas frecuentes
+## Questions fréquentes
 **La scarlatine est-elle dangereuse pendant la grossesse ?**
 Il n’y a aucune preuve que contracter la scarlatine pendant la grossesse nuise à votre bébé [7]. Mais cela peut vous rendre malade, il est donc préférable d’éviter tout contact étroit avec une personne qui l’a [7]. Beaucoup d’antibiotiques utilisés pour la scarlatine peuvent être pris pendant la grossesse [7].
 
@@ -81,7 +81,6 @@ Votre enfant doit rester à la maison jusqu’à 24 heures après la première d
 Oui, un médecin prescrira des antibiotiques pour la scarlatine [4]. Ils aident à guérir plus vite, réduisent le risque de maladie grave comme la pneumonie et diminuent le risque de transmettre l’infection à d’autres personnes [4].
 
 ## Sources
-
 [1] NHS — "Scarlet fever" (2024), section "Scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
 [2] NHS — "Scarlet fever" (2024), section "Complications of scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
 [3] NHS — "Scarlet fever" (2024), section "How long scarlet fever lasts", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/

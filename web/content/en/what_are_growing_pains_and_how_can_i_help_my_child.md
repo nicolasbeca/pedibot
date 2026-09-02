@@ -14,13 +14,11 @@ draft: false
 ---
 
 ## What it is
-
 Growing pains is a term used for leg pain that is common in children aged 3 to 12. It's harmless and usually gets better on its own [1]. The pain is usually an aching or throbbing in both legs, in the muscles or joints, and happens in the evening or night-time, going away by morning [1]. Symptoms can come and go over months, even years [1].
 
 It's not known what causes growing pains. It's not caused by growing and is not a sign of anything serious [3]. Growing pains are more common in active children and can happen after playing lots of sport. It's also common in children with very flexible joints (joint hypermobility syndrome) [3].
 
 ## What you can do at home
-
 - Gently massage your child's legs [1].
 - Put a covered hot water bottle or heat pack on the painful area [1].
 - Give children's ibuprofen or paracetamol to ease the pain [1].
@@ -29,7 +27,6 @@ It's not known what causes growing pains. It's not caused by growing and is not 
 The pain can be treated with painkillers like paracetamol [1]. For dosing, always use the product instructions or ask your pharmacist or doctor.
 
 ## When to see a doctor or go to the emergency department
-
 See a GP if your child has any of the following [2]:
 
 - Pain in 1 leg only
@@ -44,7 +41,6 @@ See a GP if your child has any of the following [2]:
 These signs are not typical of growing pains and need a medical check [2]. If your child has a high temperature along with leg pain, see a GP [2]. If your child seems very unwell, trust your instincts and seek urgent medical advice.
 
 ## Common questions
-
 **Do growing pains mean my child is growing too fast?**
 No. Growing pains are not caused by growing and are not a sign of anything serious [3]. The exact cause is unknown [3].
 
@@ -58,7 +54,6 @@ Symptoms can come and go over months, even years [1]. Each episode usually settl
 No. Growing pains usually affect both legs [1]. Pain in only one leg is a sign to see a GP [2].
 
 ## Sources
-
 [1] NHS — "Growing pains" (2026), section "Growing pains", p. 1 — https://www.nhs.uk/conditions/growing-pains/
 [2] NHS — "Growing pains" (2026), section "Don’t", p. 1 — https://www.nhs.uk/conditions/growing-pains/
 [3] NHS — "Growing pains" (2026), section "Causes of growing pains", p. 1 — https://www.nhs.uk/conditions/growing-pains/

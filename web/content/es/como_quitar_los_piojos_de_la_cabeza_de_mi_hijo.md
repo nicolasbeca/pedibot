@@ -65,7 +65,6 @@ Consulta con tu proveedor de salud o farmacéutico si no estás seguro de qué t
 **¿Necesito lavar la ropa en agua caliente?** No necesitas lavar la ropa en un ciclo caliente [2]. Pero si ya tienes piojos, lava ropa, ropa de cama y toallas con agua caliente y sécalas con calor [10].
 
 ## Fuentes
-
 [1] NHS — "Head lice and nits" (2024), section "Medicated lotions and sprays", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/
 [2] NHS — "Head lice and nits" (2024), section "Head lice and nits", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/
 [3] NHS — "Head lice and nits" (2024), section "You cannot prevent head lice", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/

@@ -1,7 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import Diary from '../components/Diary.astro';
+import { t } from '../i18n';
+const lang = 'en'; const s = t(lang);
 ---
-<Base lang="en" title="Symptom diary — fever and medicine log for your child" description="Log your child's temperature and medicines on your phone, with a reminder for the next possible dose. No account; stored only in your browser." path="/diary">
-  <div class="narrow" style="padding:40px 18px"><Diary lang="en" /></div>
+<Base lang={lang} title={s.diary_title} description={s.diary_desc} path="/diary">
+  <div class="narrow" style="padding:40px 18px"><Diary lang={lang} /></div>
 </Base>

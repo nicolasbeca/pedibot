@@ -16,11 +16,9 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Une intoxication survient après un contact avec une substance potentiellement toxique, qui peut être dangereuse pour la santé de l’enfant. Ce contact peut se faire principalement par ingestion, inhalation ou par la peau [2]. Un poison est toute substance dangereuse pour le corps : il peut être avalé, inhalé, injecté ou absorbé par la peau. Toute substance peut devenir un poison si on en ingère trop [6]. Parmi les poisons courants, on trouve les médicaments à dose trop élevée, les produits ménagers, les pesticides, les plantes, ou encore le monoxyde de carbone [6].
 
 ## Ce que vous pouvez faire à la maison
-
 **En cas d’ingestion :**
 - Éloignez l’enfant de la substance toxique [2].
 - Si un produit solide est visible et accessible dans sa bouche, retirez-le, mais jamais à l’aveugle [2].
@@ -50,7 +48,6 @@ Une intoxication survient après un contact avec une substance potentiellement t
 - Faites vérifier régulièrement le gaz, les chaudières et tout système de combustion [4].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un service d’urgences dans les cas suivants :
 - Lorsque votre centre antipoison ou les urgences vous le recommandent [5].
 - Quand des médicaments, des drogues, des produits de nettoyage, de jardin ou d’automobile sont impliqués [5].
@@ -60,7 +57,6 @@ Consultez un service d’urgences dans les cas suivants :
 Si on vous conseille d’aller aux urgences, faites-le dès que possible et, si possible, apportez l’emballage du produit concerné [5].
 
 ## Questions fréquentes
-
 **Faut-il faire vomir un enfant qui a avalé un produit ?**
 Non, ne provoquez jamais le vomissement [2]. Cela peut aggraver la situation [3].
 
@@ -74,7 +70,6 @@ Non, ne l’administrez pas sans avis médical. Il n’est pas indiqué dans la 
 Oui, appelez immédiatement votre centre antipoison local en cas de suspicion d’intoxication [6]. Il est disponible pour vous guider [2].
 
 ## Sources
-
 [2] SEUP — "Intoxicaciones. Información para padres" (2025), section "¿QUÉ SON?", p. 1
 [3] SEUP — "8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica" (2020), section "8 ACCIONES QUE NO HAY QUE HACER ANTE UN PACIENTE PEDIÁTRICO QUE HA CONTACTADO CON UNA SUSTANCIA POTENCIALMENTE TÓXICA NO HACER Tratar una ingesta no tóxica Infravalorar la toxicidad", p. 1
 [4] SEUP — "Intoxicaciones. Información para padres" (2025), section "¿CÓMO LO PODEMOS PREVENIR?", p. 2

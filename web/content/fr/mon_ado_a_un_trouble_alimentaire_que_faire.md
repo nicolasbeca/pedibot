@@ -18,13 +18,11 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Un trouble des conduites alimentaires (TCA) est un trouble mental caractérisé par un comportement perturbé face à l’alimentation, ainsi que par des pensées erronées et une préoccupation excessive pour le poids, les régimes et l’image corporelle [1]. Il peut entraîner de graves problèmes physiques, psychologiques et sociaux [1].
 
 Ces troubles, comme l’anorexie et la boulimie, apparaissent souvent à l’adolescence et chez les jeunes adultes [8]. Ils se manifestent par des comportements alimentaires anormaux et une préoccupation pour l’alimentation, et dans la plupart des cas, pour le poids et la silhouette [8]. Ils sont plus fréquents chez les adolescentes que chez les garçons du même âge [8]. Ils peuvent affecter la santé physique et coexistent souvent avec la dépression, l’anxiété et la consommation de substances [8]. L’anorexie peut mener à une mort prématurée, souvent due à des complications médicales ou au suicide [8].
 
 ## Ce que vous pouvez faire à la maison
-
 Si vous détectez des signes chez un proche, voici comment l’aider [7] :
 - Créez un environnement sûr et compréhensif, en évitant les jugements et les critiques [7].
 - Offrez votre soutien et votre accompagnement, en fournissant un espace sûr où il peut exprimer ses peurs et difficultés [7].
@@ -44,7 +42,6 @@ Soyez attentifs aux signes d’alerte, notamment [2][4] :
 - Perfectionnisme et insatisfaction, rigidité et obsession accrues [2].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Il est conseillé de se rendre aux urgences en cas de [3] :
 - Œdèmes des extrémités [3].
 - Évanouissements, convulsions ou hypoglycémies [3].
@@ -54,7 +51,6 @@ Il est conseillé de se rendre aux urgences en cas de [3] :
 En cas de suspicion d’un TCA, parlez-en à votre médecin. Selon l’OMS, protéger les adolescents des adversités et leur assurer l’accès aux services de santé mentale est essentiel pour leur bien-être [10]. Votre médecin pourra vous orienter vers les ressources adaptées.
 
 ## Questions fréquentes
-
 **Mon enfant peut-il guérir d’un TCA ?**
 Les TCA sont des troubles mentaux graves, mais avec un soutien et un traitement adaptés, une évolution positive est possible. L’accompagnement familial est clé pour favoriser l’adhésion au traitement [7].
 
@@ -65,7 +61,6 @@ Il est préférable d’éviter les conversations sur la nourriture, les régime
 Oui, mais ils sont plus fréquents chez les adolescentes que chez les garçons du même âge [8].
 
 ## Sources
-
 [1] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "¿QUÉ SON LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA (TCA)?", p. 1
 [2] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "PREVENCIÓN Y MANEJO DE LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA", p. 1
 [3] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2

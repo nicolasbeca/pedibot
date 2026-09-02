@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## What it is
-
 Teething is when your baby's first teeth break through the gums. Most babies start teething at around 6 months, but some start before 4 months and others after 12 months. A few babies are even born with their first teeth [1]. Baby teeth sometimes come through with no pain or only mild symptoms that last a few days [2].
 
 Common signs of teething include [2]:
@@ -35,7 +34,6 @@ Common signs of teething include [2]:
 There is no evidence that teething causes diarrhoea [2]. Teeth usually appear in a rough order: front teeth at about 6 months, side teeth at about 8 months, first molars at about 12 months, canines at about 18 months, and second molars at about 24 months. Most children have all their milk teeth by age 2 to 3 [3].
 
 ## What you can do at home
-
 You can help your teething baby with simple measures. The source does not list specific home remedies, so focus on comfort and monitoring. If your baby seems distressed, try gentle soothing and extra cuddles. Keep their face clean and dry if they are dribbling more. Offer safe things to chew on, but always supervise your baby. Do not try spinal manipulation or cranial osteopathy — there is little evidence these work, and they may hurt your baby [4].
 
 If your baby is also bringing up milk during or after feeds, this may be reflux, not teething. Reflux is common and usually gets better on its own. You can help by [6]:
@@ -45,7 +43,6 @@ If your baby is also bringing up milk during or after feeds, this may be reflux,
 - Asking a health visitor for advice on feeding position
 
 ## When to see a doctor or go to the emergency department
-
 You know your baby best. Get medical advice if they have any symptoms that cause you concern [2]. Call NHS 111 or see a GP if [4]:
 - You are worried about your baby's crying
 - Nothing seems to be working to settle them
@@ -60,7 +57,6 @@ Go to A&E or call 999 if [4]:
 Trust your instincts if you think something is seriously wrong, especially if they have other worrying symptoms [4]. If your baby is not keeping down enough food and not gaining weight, see a doctor [7]. A GP may check for cow's milk allergy if reflux symptoms are severe [8].
 
 ## Common questions
-
 **Can teething cause a fever?**  
 Teething may cause a slightly raised temperature, but it should be less than 38C. If your baby has a higher fever, that is not typical teething [2].
 
@@ -74,7 +70,6 @@ No. There is no evidence that teething causes diarrhoea [2]. If your baby has di
 Symptoms may be mild and last only a few days, or teeth may come through with no discomfort at all [2].
 
 ## Sources
-
 [1] NHS — "Baby teething symptoms" (2026), section "Baby teething symptoms", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/
 [2] NHS — "Baby teething symptoms" (2026), section "Teething symptoms", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/
 [3] NHS — "Baby teething symptoms" (2026), section "What order do baby teeth appear in?", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/

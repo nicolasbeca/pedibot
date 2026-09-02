@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Le mal de gorge est une irritation de la gorge, souvent causée par un virus comme ceux du rhume ou de la grippe [2]. Il peut aussi être lié à une laryngite, une amygdalite, une angine bactérienne, la mononucléose, des allergies ou le tabagisme [2][3].
 
 L’amygdalite est une infection des amygdales, situées sur les côtés de la gorge. C’est une maladie courante chez les enfants, mais les adolescents et les adultes peuvent aussi l’attraper [1]. Les symptômes incluent un mal de gorge, des difficultés à avaler, une température élevée, une toux, des maux de tête, des nausées ou vomissements, des maux d’oreille et une fatigue [1]. Les amygdales sont rouges et gonflées [1].
@@ -29,7 +28,6 @@ L’amygdalite est une infection des amygdales, situées sur les côtés de la g
 Dans certains cas, les symptômes peuvent être plus graves : ganglions gonflés et douloureux dans le cou, taches blanches ou points de pus sur les amygdales, mauvaise haleine [1]. Un mal de gorge peut aussi provoquer une gorge douloureuse, surtout en avalant, une gorge sèche et irritée, des rougeurs au fond de la bouche, une toux légère et des ganglions gonflés dans le cou [6]. Chez les enfants, on observe parfois une température élevée et une baisse d’activité [6].
 
 ## Ce que vous pouvez faire à la maison
-
 Le mal de gorge guérit généralement tout seul en une semaine [7]. Pour soulager votre enfant :
 
 - Proposez-lui beaucoup d’eau à boire [7].
@@ -43,7 +41,6 @@ Pour l’amygdalite, en plus du repos et des boissons fraîches, vous pouvez don
 Un pharmacien peut aussi conseiller des pastilles contenant un anesthésique local, un antiseptique ou un anti-inflammatoire, ainsi que des solutions antiseptiques [4]. Les sprays pour la gorge sont peu prouvés efficaces [4]. Les pastilles et les gargarismes peuvent soulager la douleur [3]. Ne donnez pas d’aspirine aux enfants [3].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin si :
 
 - Les symptômes de l’amygdalite ne disparaissent pas après une semaine [4].
@@ -62,8 +59,7 @@ Rendez-vous aux urgences immédiatement si votre enfant présente :
 
 Ces signes peuvent indiquer un abcès (quinsy), une complication rare mais grave [5]. Ne conduisez pas vous-même aux urgences dans ce cas [5].
 
-## Preguntas frecuentes
-
+## Questions fréquentes
 **Mon enfant a besoin d’antibiotiques ?**
 La plupart des amygdalites sont virales et guérissent seules [10]. Pour une amygdalite bactérienne, un médecin peut prescrire des antibiotiques, souvent après un test [10].
 
@@ -74,7 +70,6 @@ Le médecin examine la gorge et peut faire un prélèvement avec un coton-tige p
 C’est très rare. Cette opération n’est envisagée qu’en cas d’amygdalite sévère qui revient souvent [10].
 
 ## Sources
-
 [1] NHS — "Tonsillitis" (2024), section "Tonsillitis", p. 1 — https://www.nhs.uk/conditions/tonsillitis/
 [2] NHS — "Sore throat" (2023), section "Causes of sore throats", p. 1 — https://www.nhs.uk/conditions/sore-throat/
 [3] MedlinePlus — "Sore Throat" (2025), section "Introducción", p. 1 — https://medlineplus.gov/sorethroat.html

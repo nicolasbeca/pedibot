@@ -17,7 +17,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Une convulsion fébrile est une réponse du cerveau à la fièvre chez certains enfants sains, généralement entre 6 mois et 5 ans [1]. Elle survient presque toujours pendant le premier jour de fièvre [1]. Toute infection courante avec fièvre (rhume, angine, gastro-entérite) peut la déclencher [1].
 
 Pendant la crise, l'enfant perd brusquement connaissance [1]. Son corps peut devenir rigide, avec des secousses, ou au contraire complètement mou [1]. La bouche peut être violacée, fermée fortement, et le regard fixe [1]. Les convulsions fébriles durent généralement de 2 à 3 minutes, rarement plus de 10 minutes [6]. Après la crise, l'enfant est souvent endormi ou confus pendant une courte période [2].
@@ -25,7 +24,6 @@ Pendant la crise, l'enfant perd brusquement connaissance [1]. Son corps peut dev
 Une convulsion fébrile n'est pas de l'épilepsie [4]. Elle ne cause pas de dommages durables et le développement neurologique futur n'est pas affecté [2]. Le risque d'épilepsie plus tard dans la vie est légèrement augmenté, mais cela reste rare [4].
 
 ## Ce que vous pouvez faire à la maison
-
 Pendant la convulsion :
 - Allongez l'enfant sur le côté, dans un endroit sûr, loin des objets contre lesquels il pourrait se cogner [2].
 - Protégez sa tête avec vos mains ou quelque chose de doux [5].
@@ -45,7 +43,6 @@ Après la convulsion :
 Vous ne pouvez pas prévenir une convulsion fébrile [2][4]. Traitez la fièvre comme pour tout autre enfant [2]. L'enfant peut retourner à la crèche ou à l'école après 24 heures sans fièvre et s'il tolère ses activités habituelles [2].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin ou allez aux urgences si :
 - C'est la première convulsion fébrile [2][6].
 - La convulsion se répète [2].
@@ -59,8 +56,7 @@ Consultez un médecin ou allez aux urgences si :
 
 Si l'enfant convulse encore ou est inconscient, ne le transportez pas vous-même : appelez votre numéro d'urgence local [6]. Après une première convulsion, l'enfant sera examiné à l'hôpital, avec possiblement des analyses de sang, d'urine ou une ponction lombaire [4].
 
-## Preguntas frecuentes
-
+## Questions fréquentes
 **La convulsion fébrile signifie-t-elle que la cause de la fièvre est grave ?**
 Non. Dans la plupart des cas, il s'agit d'une infection virale courante [2].
 
@@ -71,7 +67,6 @@ Non. Les convulsions fébriles ont un bon pronostic et l'enfant retrouve son ét
 Non, le traitement est le même que pour les autres enfants [2]. La plupart des convulsions fébriles ne nécessitent aucun traitement [4].
 
 ## Sources
-
 [1] SEUP — "Convulsión febril. Información para padres" (2025), section "¿QUÉ ES UNA CONVULSIÓN FEBRIL? ¿POR QUÉ SE PRODUCEN?", p. 1
 [2] SEUP — "Convulsión febril. Información para padres" (2025), section "¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CONVULSIÓN FEBRIL?", p. 1, 2
 [4] NHS — "Febrile seizures" (2023), section "Treatment for febrile seizures", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/

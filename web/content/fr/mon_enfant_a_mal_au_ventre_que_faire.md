@@ -21,13 +21,11 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Le mal de ventre est un symptôme fréquent et peu spécifique chez les enfants. Il peut avoir plusieurs causes, mais la plupart sont bénignes et disparaissent seules, comme la constipation, l'augmentation des mouvements de l'intestin, les gaz ou la diarrhée [1]. Un petit nombre de cas nécessite une hospitalisation ou une opération, mais il est essentiel de savoir quand consulter pour distinguer les causes légères de celles qui demandent un traitement urgent [1].
 
 L'enfant ressent une gêne, un malaise ou une plainte au niveau du ventre [6]. Cela peut s'accompagner de fièvre, de vomissements, de diarrhée ou de toux [6]. Parfois, des maladies qui ne sont pas dans le ventre peuvent aussi provoquer des maux de ventre, comme une angine, un rhume, une pneumonie ou une otite [6].
 
 ## Ce que vous pouvez faire à la maison
-
 - Observez votre enfant sans lui poser tout le temps de questions. Regardez s'il joue, si la douleur disparaît quand il dort, si elle le réveille la nuit ou l'oblige à se reposer [4].
 - Laissez-le garder son activité normale [4].
 - Surveillez ses selles : notez quand a eu lieu la dernière et sa consistance [4].
@@ -39,7 +37,6 @@ L'enfant ressent une gêne, un malaise ou une plainte au niveau du ventre [6]. C
 - Pour éviter la contagion en cas d'infection, lavez-vous les mains avec du savon avant les repas et après les toilettes, jetez les couches sales dans un sac en plastique et nettoyez la table à langer [3].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin ou allez aux urgences si votre enfant présente l'un de ces signes :
 
 - Il a mauvaise mine, il est abattu, pâle ou refuse nettement de manger [2].
@@ -60,7 +57,6 @@ Consultez un médecin ou allez aux urgences si votre enfant présente l'un de ce
 - Il a du sang dans les selles ou très mal quand il va à la selle [9].
 
 ## Questions fréquentes
-
 **Peut-il retourner à l'école ?**
 En général, le mal de ventre est passager [2]. Le retour à l'école dépend de la cause. Si elle est infectieuse, attendez que l'enfant aille bien pour éviter de contaminer les autres [2]. En cas de douleurs récurrentes sans nouveaux symptômes, après un avis médical, il peut être conseillé de ne pas interrompre l'école [2].
 
@@ -71,7 +67,6 @@ Ne donnez jamais de laxatifs, de lavements, de médicaments contre la diarrhée 
 Chez les plus grands, augmentez les liquides, surtout l'eau, et les aliments riches en fibres comme les céréales, le pain complet, les fruits et les légumes [9]. Ne remplacez pas les fruits par des jus, car ils contiennent peu de fibres [9]. Il n'est pas obligatoire d'aller à la selle tous les jours : le rythme varie selon les personnes [9].
 
 ## Sources
-
 [1] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿QUÉ ES EL DOLOR ABDOMINAL?", p. 1
 [2] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?", p. 1
 [3] SEUP — "Dolor abdominal. Información para padres" (2025), section "¿CÓMO LO PODEMOS PREVENIR?", p. 2

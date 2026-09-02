@@ -15,7 +15,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Les croûtes de lait sont une affection cutanée sans danger, fréquente chez les bébés [1]. Elles disparaissent généralement d'elles-mêmes en quelques mois [1].
 
 Le principal symptôme est des plaques de peau grasse et squameuse [1]. On les trouve surtout sur le cuir chevelu et le visage, mais parfois sur la zone des couches et dans les plis de la peau [1]. Elles peuvent ressembler à des plaques de squames grasses blanches ou jaunes qui forment une croûte pouvant se détacher [1]. Sur la zone des couches, on peut voir de petites squames sèches [1].
@@ -25,7 +24,6 @@ Les squames se ressemblent sur toutes les carnations [1]. La peau sous et autour
 La cause n'est pas claire, mais cela ne s'attrape pas des autres bébés [1].
 
 ## Ce que vous pouvez faire à la maison
-
 Plusieurs gestes peuvent aider à retirer les croûtes de lait [2]. Les cheveux de votre bébé peuvent tomber avec les squames. Ne vous inquiétez pas, ils repousseront vite [2].
 
 - Massez doucement un émollient (hydratant) ou de l'huile de coco sur le cuir chevelu pour décoller les squames [2].
@@ -42,7 +40,6 @@ Plusieurs gestes peuvent aider à retirer les croûtes de lait [2]. Les cheveux 
 Vous pouvez demander conseil à un pharmacien pour un émollient, des shampoings pour bébé sans parfum ou des crèmes barrières [3].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin si [3] :
 - Les croûtes de lait ne s'améliorent pas après quelques semaines de traitement [3].
 - Votre bébé a des croûtes de lait sur tout le corps [3].
@@ -51,8 +48,7 @@ Consultez un médecin si [3] :
 
 Les saignements, les suintements et l'enflure peuvent être des signes d'infection ou d'une autre affection comme l'eczéma atopique ou la gale [3].
 
-## Preguntas frecuentes
-
+## Questions fréquentes
 **Les croûtes de lait sont-elles contagieuses ?**
 Non, elles ne s'attrapent pas des autres bébés [1].
 
@@ -66,7 +62,6 @@ Non, l'huile d'olive peut ne pas convenir à la peau [5]. Utilisez plutôt un é
 Non, ce n'est pas irritant et cela ne gêne pas votre bébé [1].
 
 ## Sources
-
 [1] NHS — "Cradle cap" (2025), section "Cradle cap", p. 1 — https://www.nhs.uk/conditions/cradle-cap/
 [2] NHS — "Cradle cap" (2025), section "Things you can do to help with cradle cap", p. 1 — https://www.nhs.uk/conditions/cradle-cap/
 [3] NHS — "Cradle cap" (2025), section "A pharmacist can help with cradle cap", p. 1 — https://www.nhs.uk/conditions/cradle-cap/

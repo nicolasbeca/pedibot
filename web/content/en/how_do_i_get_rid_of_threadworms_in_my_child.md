@@ -53,7 +53,6 @@ Yes. Treat everyone over 2 years old in your household, even if they do not have
 A health care provider can diagnose pinworm infection by finding the eggs. A common way to collect the eggs is with a sticky piece of clear tape [3].
 
 ## Sources
-
 [1] NHS — "Threadworms" (2023), section "Threadworms", p. 1 — https://www.nhs.uk/conditions/threadworms/
 [2] NHS — "Threadworms" (2023), section "How threadworms spread", p. 1 — https://www.nhs.uk/conditions/threadworms/
 [3] MedlinePlus — "Pinworms" (2024), section "Introducción", p. 1 — https://medlineplus.gov/pinworms.html

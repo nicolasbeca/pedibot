@@ -20,7 +20,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Le rhume est une infection bénigne des voies respiratoires supérieures (le nez et la gorge) [4]. C’est probablement la maladie la plus courante : les adultes attrapent en moyenne 2 à 3 rhumes par an, et les enfants encore plus [4]. Les rhumes sont plus fréquents en hiver et au printemps, mais ils peuvent survenir à tout moment [4].
 
 Plus de 200 virus différents peuvent provoquer un rhume, mais les rhinovirus sont les plus courants [2]. Ces virus sont très contagieux. Ils se propagent par l’air et par contact rapproché, ou lorsque vous touchez une surface contaminée puis vos yeux, votre bouche ou votre nez [2]. Les symptômes incluent : éternuements, nez bouché, nez qui coule, mal de gorge, toux et maux de tête [2]. Ils apparaissent généralement quelques jours après l’infection et peuvent durer de 10 à 14 jours [2].
@@ -28,7 +27,6 @@ Plus de 200 virus différents peuvent provoquer un rhume, mais les rhinovirus so
 Il n’existe aucun vaccin contre le rhume [6]. Les antibiotiques ne fonctionnent pas contre les virus et ne vous aideront pas à aller mieux [5]. Dans de rares cas, une infection virale peut mener à une infection bactérienne, comme une pneumonie, qui nécessite des antibiotiques [1].
 
 ## Ce que vous pouvez faire à la maison
-
 Il n’existe pas de remède contre le rhume, mais vous pouvez soulager les symptômes en attendant que le corps se défende [3][7] :
 
 - Se reposer beaucoup [3][7].
@@ -46,7 +44,6 @@ Pour la fièvre, les jeunes enfants peuvent prendre de l’acétaminophène ou d
 Pour prévenir la propagation : lavez-vous les mains souvent avec de l’eau et du savon pendant au moins 20 secondes, évitez de toucher votre visage, évitez les contacts rapprochés, nettoyez les surfaces fréquemment touchées, couvrez-vous la bouche en toussant et restez à la maison quand vous êtes malade [6].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin si vous ou votre enfant présentez [3][10] :
 
 - Des difficultés à respirer ou une respiration rapide [3][10].
@@ -59,7 +56,6 @@ Consultez un médecin si vous ou votre enfant présentez [3][10] :
 Cette liste n’est pas exhaustive : consultez pour tout symptôme grave ou préoccupant [10]. Si vous pensez à un COVID-19 ou à une grippe, faites un test, surtout si vous êtes à risque élevé ; des traitements antiviraux existent et fonctionnent mieux s’ils sont commencés tôt [5][9].
 
 ## Questions fréquentes
-
 **Les antibiotiques aident-ils contre le rhume ?**
 Non. Les antibiotiques traitent les infections bactériennes, pas les infections virales comme le rhume [3][5].
 
@@ -73,7 +69,6 @@ Il n’y a pas de vaccin, mais le lavage des mains et l’évitement des contact
 Rarement, il peut mener à une infection bactérienne comme une pneumonie, surtout chez les personnes immunodéprimées ou asthmatiques [1][3].
 
 ## Sources
-
 [1] CDC — "Manage Common Cold", section "Overview", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html
 [2] MedlinePlus — "Common Cold" (2022), section "What causes the common cold?", p. 1 — https://medlineplus.gov/commoncold.html
 [3] MedlinePlus — "Common Cold" (2022), section "What are the treatments for the common cold?", p. 1 — https://medlineplus.gov/commoncold.html

@@ -19,13 +19,11 @@ draft: false
 ---
 
 ## What it is
-
 A concussion is a type of traumatic brain injury caused by a bump, blow, or jolt to the head, or by a hit to the body that makes the head and brain move rapidly back and forth [9]. This movement can cause chemical changes in the brain and sometimes stretch or damage brain cells [9]. Most head injuries are not serious, but it is important to get medical help for any symptoms [6]. Concussion symptoms may not show up right away; they can take hours or days to appear [2]. Symptoms are usually most severe right after the injury [9]. Most children with a concussion feel better within 2 to 4 weeks [9].
 
 Signs and symptoms can look different depending on your child's age [2]. In infants and toddlers, watch for irritability, crying more than usual, refusing to nurse or eat, changes in sleeping patterns, or not wanting to play [7]. In school-aged children and adolescents, look for appearing dazed or confused, difficulty remembering or concentrating, answering questions slowly, clumsiness, vomiting right after the injury, or mood and behavior changes [7]. Children may also report headaches, dizziness, feeling tired, nausea, vision problems, or feeling foggy [8].
 
 ## What you can do at home
-
 If your child has been sent home from hospital with a minor head injury, or does not need to go to hospital, you can usually look after them at home [3]. Symptoms may last up to 2 weeks after a head injury [3].
 
 - Hold an ice pack (or a bag of frozen peas) wrapped in a tea towel to the area regularly for short periods in the first few days to bring down swelling [3].
@@ -36,7 +34,6 @@ If your child has been sent home from hospital with a minor head injury, or does
 Do not let your child go back to school until they are feeling better [4]. Children should avoid rough play for a few days [4]. Do not give your child sleeping pills while they are recovering unless a doctor advises you to [4].
 
 ## When to see a doctor or go to the emergency department
-
 Call 911 or go to your nearest emergency department if your child has any of these danger signs after a bump, blow, or jolt to the head [1]:
 
 - Convulsions or seizures (shaking or twitching) [1]
@@ -55,7 +52,6 @@ Call 999 (or your local emergency number) if your child has been knocked out and
 Get urgent help if your child is being sick (vomiting), feels dizzy, has a condition that thins their blood or takes medicine that thins their blood, or if you have any other symptoms you are worried about [6]. Seek immediate emergency medical care if your child has any concussion danger signs [2].
 
 ## Common questions
-
 **How long will symptoms last?**
 Concussion symptoms are usually most severe right after the injury, typically 1 to 2 days after [2]. Most children feel better within 2 to 4 weeks [9]. Symptoms may last up to 2 weeks after a minor head injury [3]. See a GP if symptoms last more than 2 weeks [4].
 
@@ -66,7 +62,6 @@ Yes. Your child does not need to stay awake if they are tired [3]. However, an a
 Children should avoid rough play for a few days [4]. Do not let your child play contact sports for at least 3 weeks [4]. See a GP if you are not sure if it is safe to return to school or sports after a head injury [4].
 
 ## Sources
-
 [1] CDC — "Signs and Symptoms of Concussion", section "Concussion danger signs", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html
 [2] CDC — "Signs and Symptoms of Concussion", section "Signs and Symptoms of Concussion Key points", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html
 [3] NHS — "Head injury and concussion" (2025), section "How to care for a minor head injury", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/

@@ -21,13 +21,11 @@ draft: false
 ---
 
 ## What it is
-
 Pneumonia is an infection of the lower part of the airways, the lungs [7]. It is a common illness caused by viruses or, less often, by bacteria [7]. In children under 2 years old, viruses are the most common cause, so antibiotics are not always needed [3]. The infection spreads through contact with secretions from a person with a respiratory infection, via coughs and sneezes [7].
 
 The most common symptoms are fever and cough [1]. Babies often seem listless or irritable [1]. Older children may have abdominal, chest, or side pain [1]. Breathing difficulty is less common and shows up as fast or labored breathing, with the belly moving a lot, ribs showing, or the chest sinking in [1]. In children under 5 with cough or breathing trouble, pneumonia is diagnosed by fast breathing or chest retractions [8]. Wheezing is more common in viral infections [8]. In general, these are mild infections that can be treated at home and recover fully without after-effects [3]. Your child can usually return to normal activity in 4-5 days [3].
 
 ## What you can do at home
-
 - Offer fluids often to help loosen secretions so they can be cleared by coughing [4].
 - It is normal for your child to have little appetite. Do not force them to eat [4].
 - For young children, do nasal washes with saline solution when needed [4].
@@ -40,7 +38,6 @@ The most common symptoms are fever and cough [1]. Babies often seem listless or 
 - Expect fatigue with exercise for the first few days. Relative rest is recommended, avoiding sports activity [5].
 
 ## When to see a doctor or go to the emergency department
-
 Go to urgent care if your child has any of these signs [6]:
 
 - Poor general condition, listless, sleepy, or very irritable [6].
@@ -53,7 +50,6 @@ Go to urgent care if your child has any of these signs [6]:
 Also, if an antibiotic was prescribed and fever continues after 48-72 hours, go for a check-up at your health center [2]. Watch for poor general condition, breathing difficulty, or chest or side pain when breathing [2]. Complications are uncommon [2]. If your child has poor general condition, chest pain, or breathing difficulty, go to urgent care to rule out complications [6].
 
 ## Common questions
-
 **How is pneumonia diagnosed?**
 The pediatrician considers symptoms and a physical exam [3]. X-ray and ultrasound can support the diagnosis, but they are not essential to confirm it [3].
 
@@ -64,7 +60,6 @@ The most effective measures are frequent hand washing with soap and water or alc
 Pneumonia represents 14% of all deaths in children under 5, and in 2019 it caused the death of 740,180 children [9]. However, in general, childhood pneumonia has a good outcome with oral treatment at home [6]. Bacterial pneumonia can be treated with antibiotics, but only one third of children with pneumonia receive the antibiotics they need [9].
 
 ## Sources
-
 [1] SEUP — "Neumonía. Información para padres" (2025), section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1
 [2] SEUP — "Neumonía. Información para padres" (2025), section "¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?", p. 2
 [3] SEUP — "Neumonía. Información para padres" (2025), section "¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 1, 2

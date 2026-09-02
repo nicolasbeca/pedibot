@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## What it is
-
 Anxiety is a natural response to situations that feel threatening or challenging, and feeling it occasionally is a normal part of life [1]. It becomes a problem when worries and fears are intense, excessive, and persistent in everyday situations, interfering with daily activities [1]. Anxiety disorders are the most common emotional disorders in adolescents, and they are more common in older teens than younger ones [6]. If left untreated, mental health conditions in teens can have consequences that extend into adulthood [7].
 
 Warning signs of an anxiety episode can include:
@@ -31,7 +30,6 @@ Warning signs of an anxiety episode can include:
 - Rapid breathing, sweating, tremors, nervous tics, headache, stomachache [2]
 
 ## What you can do at home
-
 - Let your child express themselves. Offer a space to listen where they can communicate how they feel and what they fear; verbalizing helps reduce anxiety levels [3].
 - Establish routines to reduce uncertainty, with regular times for studying, playing, and sleeping [3].
 - Promote physical activity and adequate rest [3].
@@ -44,7 +42,6 @@ Warning signs of an anxiety episode can include:
 - Stay with them during a crisis, showing support with phrases like "If you need me, I am here, you are not alone" [5].
 
 ## When to see a doctor or go to the emergency department
-
 Go to the pediatric emergency department of your area if your child:
 - Presents symptoms they have never had before that are very intense, such as trouble breathing, rapid heart rate, or chest pain [4].
 - Has another heart or respiratory disease that could cause the same symptoms, to rule out an organic complication [4].
@@ -53,7 +50,6 @@ Go to the pediatric emergency department of your area if your child:
 In Spain, the circuit to follow is to go to your reference primary care health center and inform them of the situation. If necessary, they will refer you to the child and adolescent mental health center [3]. In Spain, there is also a 24-hour telephone service available [4].
 
 ## Common questions
-
 **Is anxiety normal in teenagers?**
 Yes, anxiety is a natural response to threats or challenges, and feeling it occasionally is normal [1]. However, anxiety disorders are the most frequent emotional disorders in adolescents [6]. It becomes a problem when it is intense, excessive, and persistent, interfering with daily life [1].
 
@@ -64,7 +60,6 @@ Yes, anxiety and depression can considerably affect school attendance, studying,
 Be patient; anxiety will not disappear in one day, and the recovery process can take time [3].
 
 ## Sources
-
 [1] SEUP — "Ansiedad. Información para padres" (2025), section "¿QUÉ ES LA ANSIEDAD?", p. 1
 [2] SEUP — "Ansiedad. Información para padres" (2025), section "GUÍA INFORMATIVA PARA LA DETECCIÓN, PREVENCIÓN Y MANEJO DE LA ANSIEDAD", p. 1
 [3] SEUP — "Ansiedad. Información para padres" (2025), section "Signos y síntomas", p. 2

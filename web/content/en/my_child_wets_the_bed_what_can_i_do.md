@@ -16,7 +16,6 @@ draft: false
 ---
 
 ## What it is
-
 Bedwetting is common and often runs in families [2]. Many children under the age of 5 wet the bed, and it can take time for a child to learn to stay dry all night [3]. It can be upsetting, but most children and young people will grow out of it [2].
 
 There are many reasons why a child might wet the bed [1]. Causes include:
@@ -27,7 +26,6 @@ There are many reasons why a child might wet the bed [1]. Causes include:
 Bedwetting may also be caused by an underlying health condition such as diabetes or constipation [1].
 
 ## What you can do at home
-
 Things you can do at home to help with bedwetting [2]:
 - Give your child enough water to drink during the day [2]
 - Make sure your child goes to the toilet regularly, around 4 to 7 times a day, including just before bedtime [2]
@@ -41,7 +39,6 @@ Do not do these things [4]:
 - Do not regularly wake or carry your child in the night to use the toilet – this will not help in the long term [4]
 
 ## When to see a doctor or go to the emergency department
-
 See a GP if [3]:
 - You have tried things you can do at home and your child keeps wetting the bed [3]
 - Your child has started wetting the bed again after being dry for more than 6 months [3]
@@ -53,7 +50,6 @@ If your child keeps wetting the bed, a GP can suggest options such as [5]:
 The GP will check if treatment is helping and can offer support if you are finding it hard to cope [5]. If these treatments do not work, your child may be referred to a specialist [5].
 
 ## Common questions
-
 **Is bedwetting my child's fault?**
 No. It is not their fault, and punishing them can make bedwetting worse [4]. Bedwetting is common and often runs in families [2].
 
@@ -67,7 +63,6 @@ Yes. Do not give your child drinks containing caffeine, such as cola, tea and co
 No. Do not regularly wake or carry your child in the night to use the toilet – this will not help in the long term [4]. Instead, make sure they go to the toilet just before bedtime [2].
 
 ## Sources
-
 [1] NHS — "Bedwetting in children" (2023), section "Causes of bedwetting", p. 1 — https://www.nhs.uk/conditions/bedwetting/
 [2] NHS — "Bedwetting in children" (2023), section "Bedwetting in children", p. 1 — https://www.nhs.uk/conditions/bedwetting/
 [3] NHS — "Bedwetting in children" (2023), section "Important: Bedwetting in young children is normal", p. 1 — https://www.nhs.uk/conditions/bedwetting/

@@ -16,11 +16,9 @@ draft: false
 ---
 
 ## Qué es
-
 Una intoxicación ocurre cuando un niño o niña entra en contacto con una sustancia potencialmente tóxica que puede ser perjudicial para su salud [2]. El contacto puede ser por ingesta, inhalación o a través de la piel [2]. Cualquier sustancia puede ser un veneno si se ingiere en cantidad excesiva [6]. Entre los tóxicos más comunes están los medicamentos, productos de limpieza, pesticidas, plantas y el monóxido de carbono [6].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 Si la intoxicación es por **ingestión** [2]:
 - Separe al niño o niña de la sustancia tóxica.
 - Si tiene algo sólido en la boca, se ve y está accesible, quíteselo. Nunca a ciegas, podría empeorar la situación.
@@ -40,8 +38,7 @@ Si es por **inhalación de gases o humo** [2]:
 
 **No haga** lavado gástrico ni administre carbón activado por su cuenta. Estas medidas solo pueden estar indicadas en situaciones muy concretas y siempre bajo evaluación médica [3]. Tampoco administre flumazenilo ni N-acetilcisteína sin indicación médica [3].
 
-## Cuándo acudir a un servicio de urgencias
-
+## Cuándo acudir al médico o a urgencias
 Debe consultar en urgencias [5]:
 - Cuando se lo indiquen desde el Instituto Nacional de Toxicología o Emergencias.
 - Cuando estén implicados medicamentos, drogas de abuso, productos de limpieza, del jardín o del automóvil.
@@ -51,7 +48,6 @@ Debe consultar en urgencias [5]:
 Si le recomiendan acudir a urgencias, hágalo lo antes posible y, si es posible, lleve el envase del producto implicado [5]. Recuerde que el teléfono de Información Toxicológica está disponible todos los días las 24 horas: 91 562 04 20 [4].
 
 ## Preguntas frecuentes
-
 **¿Debo provocar el vómito?** No. Nunca intente provocar el vómito [2][3]. Puede empeorar la situación.
 
 **¿Puedo darle agua o leche?** No. No administre agua, leche, aceite u otro alimento tras la ingestión [2][3].
@@ -59,7 +55,6 @@ Si le recomiendan acudir a urgencias, hágalo lo antes posible y, si es posible,
 **¿Cómo puedo prevenir las intoxicaciones?** Guarde los medicamentos y productos tóxicos fuera del alcance y la vista de los niños, en altura, bajo llave o con cierres de seguridad [4]. Consérvelos en su envase original y con etiquetado [4]. No administre fármacos diciendo que son caramelos [4]. No mezcle diferentes productos del hogar [4]. Si tiene niños menores de 6 años, evite las cápsulas de detergente [4]. Revise periódicamente el gas, calderas y sistemas de combustión [4].
 
 ## Fuentes
-
 [2] SEUP — "Intoxicaciones. Información para padres" (2025), section "¿QUÉ SON?", p. 1
 [3] SEUP — "8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica" (2020), section "8 ACCIONES QUE NO HAY QUE HACER ANTE UN PACIENTE PEDIÁTRICO QUE HA CONTACTADO CON UNA SUSTANCIA POTENCIALMENTE TÓXICA NO HACER Tratar una ingesta no tóxica Infravalorar la toxicidad", p. 1
 [4] SEUP — "Intoxicaciones. Información para padres" (2025), section "¿CÓMO LO PODEMOS PREVENIR?", p. 2

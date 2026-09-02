@@ -18,7 +18,7 @@ draft: false
 ## Qué es
 La conjuntivitis es el nombre médico del "ojo rosado". Es la inflamación de la capa externa del ojo y del interior del párpado [1]. Puede causar hinchazón, picazón, ardor, secreción y enrojecimiento [1]. Las causas incluyen infecciones bacterianas o virales, alergias, sustancias irritantes, productos para lentes de contacto, gotas o ungüentos oculares [1]. Por lo general, la conjuntivitis no afecta la visión [1]. La conjuntivitis infecciosa se contagia fácilmente de una persona a otra [1]. En la mayoría de los casos, la infección desaparece sin atención médica, pero la conjuntivitis bacteriana necesita tratamiento con gotas o ungüento antibiótico [1]. La conjuntivitis por infección o alergia suele mejorar en un par de semanas sin tratamiento [2].
 
-## Qué puede hacer en casa
+## Qué puedes hacer en casa
 Puede aliviar los síntomas con estos pasos [2]:
 - Lave los párpados con agua limpia. Hierva el agua y déjela enfriar, luego limpie suavemente las pestañas con un algodón limpio (uno para cada ojo) para quitar las costras [2].
 - Sostenga un paño frío sobre los ojos durante unos minutos para refrescarlos [2].
@@ -57,7 +57,6 @@ Estos pueden ser signos de un problema ocular más grave [3]. Llame al 111 si ne
 **¿Cuánto tarda en curarse?** Generalmente mejora en un par de semanas sin tratamiento [2]. Si los síntomas no desaparecen en 7 días, consulte a un médico [3].
 
 ## Fuentes
-
 [1] MedlinePlus — "Pink Eye" (2017), section "Introducción", p. 1 — https://medlineplus.gov/pinkeye.html
 [2] NHS — "Conjunctivitis" (2024), section "Conjunctivitis", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/
 [3] NHS — "Conjunctivitis" (2024), section "Staying away from work or school", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/

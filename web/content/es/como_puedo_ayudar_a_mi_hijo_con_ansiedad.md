@@ -18,8 +18,7 @@ sources:
 draft: false
 ---
 
-## What it is
-
+## Qué es
 La ansiedad es una respuesta natural ante situaciones que se perciben como amenazas o desafíos. Sentirla de manera ocasional es una parte normal de la vida. Se convierte en un problema cuando aparece como preocupaciones y miedos intensos, excesivos y persistentes que interfieren con las actividades diarias [1].
 
 Los trastornos de ansiedad son los más frecuentes entre los adolescentes. Se calcula que el 4,1 % de los adolescentes de 10 a 14 años y el 5,3 % de los de 15 a 19 años sufre un trastorno ansioso [6]. La depresión y la ansiedad pueden compartir algunos síntomas, como los cambios repentinos e inesperados del estado de ánimo [6].
@@ -33,8 +32,7 @@ Las señales de alarma incluyen:
 - Sensación de debilidad o cansancio [2]
 - Respiración acelerada, sudoración, temblores, tics nerviosos, dolor de cabeza o dolor de estómago [2]
 
-## What you can do at home
-
+## Qué puedes hacer en casa
 - Permite que se exprese. Ofrece un espacio de escucha donde pueda comunicar cómo se siente y sus temores. Verbalizar ayuda a reducir los niveles de ansiedad [3].
 - Establece rutinas. Asegura tiempos regulados para estudiar, jugar y dormir. Esto reduce la incertidumbre y la ansiedad [3].
 - Promueve la actividad física y un descanso adecuado [3].
@@ -46,8 +44,7 @@ Las señales de alarma incluyen:
 - Aplica técnicas de relajación como la respiración cuadrada, la técnica de la tortuga o la relajación progresiva de Jacobson [3].
 - Ten paciencia. La ansiedad no desaparece en un día; el proceso de recuperación puede conllevar tiempo [3].
 
-## When to see a doctor or go to the emergency department
-
+## Cuándo acudir al médico o a urgencias
 Se recomienda acudir al servicio de urgencias pediátricas de la zona en caso de:
 - Presentar síntomas que antes no había presentado y son muy intensos, como problemas para respirar, taquicardia o dolor en el pecho [4].
 - Presentar alguna otra enfermedad cardíaca o respiratoria que pueda causar los mismos síntomas, para descartar que no sea una complicación orgánica [4].
@@ -55,8 +52,7 @@ Se recomienda acudir al servicio de urgencias pediátricas de la zona en caso de
 
 En España, el circuito a seguir es acudir al centro de salud de referencia de atención primaria e informar de la situación. Si es preciso, se realizará una derivación al centro de salud mental infanto-juvenil de referencia [3]. En el territorio español también se dispone de un servicio telefónico de atención 24 horas [4].
 
-## Common questions
-
+## Preguntas frecuentes
 **¿Es normal que mi hijo sienta ansiedad?**
 Sí, sentir ansiedad de manera ocasional es una parte normal de la vida. Se vuelve un problema cuando es intensa, excesiva y persistente, e interfiere con las actividades diarias [1].
 
@@ -67,7 +63,6 @@ Cuando un trastorno de salud mental de un adolescente no se trata, sus consecuen
 Es fundamental abordar las necesidades de los adolescentes con trastornos de salud mental. Se priorizan las soluciones no farmacológicas y se evita la medicalización excesiva [9].
 
 ## Fuentes
-
 [1] SEUP — "Ansiedad. Información para padres" (2025), section "¿QUÉ ES LA ANSIEDAD?", p. 1
 [2] SEUP — "Ansiedad. Información para padres" (2025), section "GUÍA INFORMATIVA PARA LA DETECCIÓN, PREVENCIÓN Y MANEJO DE LA ANSIEDAD", p. 1
 [3] SEUP — "Ansiedad. Información para padres" (2025), section "Signos y síntomas", p. 2

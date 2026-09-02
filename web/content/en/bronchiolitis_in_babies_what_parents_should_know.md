@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## What it is
-
 Bronchiolitis is an infection that affects the small airways (bronchioles) of the lungs [6]. It is caused by viruses, most commonly the Respiratory Syncytial Virus (RSV), although other respiratory viruses can also cause it [6]. It occurs in epidemics from October to March and mostly affects children under 2 years of age [6].
 
 It usually starts like a normal cold, with cough and nasal mucus. There may be fever [3]. After 2-4 days, difficulty breathing may appear. You may notice your child breathing faster, being irritable, and having trouble feeding [3]. Sometimes you can hear noises in the chest, see the ribs showing, the chest sinking in, or the belly moving with each breath [3].
@@ -28,7 +27,6 @@ Most bronchiolitis cases are mild and can be managed with general measures and f
 Currently, there is no medication that cures bronchiolitis [1]. In most cases, it improves within 2 weeks, although the cough may last longer [1].
 
 ## What you can do at home
-
 - Do nasal washes to keep the nose clear of mucus [7].
 - Offer small, frequent feeds to maintain good nutrition and hydration [7].
 - Keep your child in a semi-upright position to make breathing easier [7].
@@ -43,7 +41,6 @@ Prevention includes hand washing, avoiding contact between babies and people wit
 It is recommended not to take your child to daycare if they have been diagnosed with acute bronchiolitis, as it spreads from person to person through coughing, sneezing, and contact with contaminated surfaces [1].
 
 ## When to see a doctor or go to the emergency department
-
 Go to the emergency department if your child:
 
 - Is breathing worse or faster each time [4].
@@ -54,7 +51,6 @@ Go to the emergency department if your child:
 - Has very high fever [4].
 
 ## Common questions
-
 **How long does bronchiolitis last?**
 Most cases improve within 2 weeks, although the cough can last longer [1].
 
@@ -68,7 +64,6 @@ Watch your child's breathing, difficulty feeding, skin color and general conditi
 Yes. There is an immunizing antibody (Nirsevimab) against RSV that prevents hospitalization in more than 80% of cases [5]. Hand washing and avoiding contact with sick people also help [5].
 
 ## Sources
-
 [1] SEUP — "Bronquiolitis. Información para padres", section "¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 1, 2
 [2] SEUP — "Bronquiolitis. Información para padres", section "LA INMUNIZACION CONTRA EL VRS DISMINUYE LA HOSPITALIZACIÓN HASTA", p. 2
 [3] SEUP — "Bronquiolitis. Información para padres", section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1

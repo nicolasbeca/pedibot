@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## What it is
-
 A sore throat is a painful, dry, or scratchy feeling in the throat, especially when swallowing [6]. It is usually caused by viruses like cold or flu, or by smoking [2]. Less often, bacteria cause it [2]. Other causes include tonsillitis, strep throat, laryngitis, glandular fever, and allergies [2][3].
 
 Tonsillitis is an infection of the tonsils at the sides of the throat [1]. It is common in children, but teenagers and adults can get it too [1]. Symptoms of tonsillitis can feel like a bad cold or flu, with red and swollen tonsils [1]. Signs in children and adults include a sore throat, problems swallowing, a high temperature, coughing, a headache, feeling and being sick, earache, and feeling tired [1]. More severe symptoms can include swollen, painful glands in the neck, pus-filled spots or white patches on the tonsils, and bad breath [1].
@@ -29,7 +28,6 @@ Tonsillitis is an infection of the tonsils at the sides of the throat [1]. It is
 Children with a sore throat may also have a high temperature and appear less active [6]. Other symptoms include redness in the back of the mouth, a mild cough, and swollen neck glands [6].
 
 ## What you can do at home
-
 Sore throats normally get better by themselves within a week [7]. Tonsillitis usually gets better on its own after a few days, but it can last longer [8]. To help soothe the throat and shorten how long it lasts, you can [7][8]:
 
 - Give plenty of water or cool drinks to drink [7][8]
@@ -44,7 +42,6 @@ To make the salt gargle, dissolve half a teaspoon of salt in a glass of warm wat
 A pharmacist can also give advice and suggest treatments like lozenges containing a local anaesthetic, antiseptic, or anti-inflammatory medicine, throat sprays, or antiseptic solutions [4].
 
 ## When to see a doctor or go to the emergency department
-
 See a GP if the symptoms of tonsillitis do not go away within 1 week, or if you keep getting throat infections [4].
 
 Get urgent help from NHS 111 if your child has pus-filled spots on their tonsils, or a sore throat so painful it is difficult to eat or drink [4].
@@ -61,7 +58,6 @@ Call 999 or go to A&E immediately if your child has [5]:
 These are signs of quinsy, a rare complication where an abscess forms between the tonsils and the throat wall [5]. Do not drive to A&E – ask someone to drive you or call 999 for an ambulance [5].
 
 ## Common questions
-
 **Is tonsillitis the same as a sore throat?**  
 No. A sore throat is a symptom that can have many causes, including tonsillitis [2]. Tonsillitis is a specific infection of the tonsils [1].
 
@@ -72,7 +68,6 @@ Most children get viral tonsillitis, which clears up on its own [10]. For bacter
 It is very rare that someone needs their tonsils removed [10]. This is usually only done if there is severe tonsillitis that keeps coming back [10].
 
 ## Sources
-
 [1] NHS — "Tonsillitis" (2024), section "Tonsillitis", p. 1 — https://www.nhs.uk/conditions/tonsillitis/
 [2] NHS — "Sore throat" (2023), section "Causes of sore throats", p. 1 — https://www.nhs.uk/conditions/sore-throat/
 [3] MedlinePlus — "Sore Throat" (2025), section "Introducción", p. 1 — https://medlineplus.gov/sorethroat.html

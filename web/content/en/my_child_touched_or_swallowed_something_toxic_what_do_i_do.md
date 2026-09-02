@@ -17,11 +17,9 @@ draft: false
 ---
 
 ## What it is
-
 Poisoning happens after contact with a substance that can harm a child's health. Contact can happen by swallowing, breathing in, or touching the skin [2]. A poison is any substance that is dangerous to the body. It can be swallowed, inhaled, injected, or absorbed through the skin [6]. Examples include medicines in too-high doses, illegal drug overdoses, carbon monoxide from gas burners, household products like laundry powder or furniture polish, pesticides, indoor and outdoor plants, and metals like lead and mercury [6]. Effects can range from short-term illness to brain injury, coma, and death [6].
 
 ## What you can do at home
-
 If the contact was by swallowing [2]:
 - Separate the child from the toxic substance.
 - If there is something solid in the mouth, visible and reachable, remove it. Never do this blindly, as it could make things worse.
@@ -54,7 +52,6 @@ Do not do these things [3]:
 One exception: massive paracetamol ingestion (more than 30 g) requires immediate start of the antidote [1].
 
 ## When to see a doctor or go to the emergency department
-
 Go to the emergency department when [5]:
 - The Poison Information Institute or Emergency Services tells you to.
 - Medicines, drugs of abuse, cleaning products, garden products, or car products are involved.
@@ -64,7 +61,6 @@ Go to the emergency department when [5]:
 If they recommend going to an emergency department, go as soon as possible. If possible, bring the container of the product involved [5].
 
 ## Common questions
-
 How can I prevent poisoning at home?
 - Store medicines and toxic products out of reach and sight, in high places, locked, or with safety closures. Do this immediately after use [4].
 - Keep them in their original containers with original labels. Avoid containers that could be confused with drinks [4].
@@ -81,7 +77,6 @@ Should I make my child vomit?
 No. Do not try to induce vomiting [2][3].
 
 ## Sources
-
 [1] SEUP — "8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica" (2020), section "transcurridas 8 horas desde la ingesta", p. 1
 [2] SEUP — "Intoxicaciones. Información para padres", section "¿QUÉ SON?", p. 1
 [3] SEUP — "8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica" (2020), section "8 ACCIONES QUE NO HAY QUE HACER ANTE UN PACIENTE PEDIÁTRICO QUE HA CONTACTADO CON UNA SUSTANCIA POTENCIALMENTE TÓXICA NO HACER Tratar una ingesta no tóxica Infravalorar la toxicidad", p. 1

@@ -40,7 +40,7 @@ No hagas esto:
 
 No es necesario faltar a la guardería, escuela o trabajo si hay lombrices [4].
 
-## Cuándo ver a un médico o ir a urgencias
+## Cuándo acudir al médico o a urgencias
 Consulta a un farmacéutico si crees que tú o tu hijo tienen lombrices [1]. Habla con un médico si necesitas tratar a un niño menor de 2 años, o si estás embarazada o amamantando [5]. Si no puedes tomar medicamento, puedes tratar las lombrices con métodos de higiene durante 6 semanas [5]. El médico puede diagnosticar la infección encontrando los huevos, a menudo con una cinta adhesiva transparente [3]. Si necesitas medicamento, todos en el hogar deben tomarlo [3].
 
 ## Preguntas frecuentes
@@ -53,7 +53,6 @@ Consulta a un farmacéutico si crees que tú o tu hijo tienen lombrices [1]. Hab
 **¿Mi hijo puede reinfectarse?** Sí, si traga huevos después del tratamiento [2]. Lávate las manos con frecuencia y sigue las medidas de higiene durante 2 semanas [4].
 
 ## Fuentes
-
 [1] NHS — "Threadworms" (2023), section "Threadworms", p. 1 — https://www.nhs.uk/conditions/threadworms/
 [2] NHS — "Threadworms" (2023), section "How threadworms spread", p. 1 — https://www.nhs.uk/conditions/threadworms/
 [3] MedlinePlus — "Pinworms" (2024), section "Introducción", p. 1 — https://medlineplus.gov/pinworms.html

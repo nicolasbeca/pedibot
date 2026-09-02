@@ -23,7 +23,9 @@ export interface Faq {
  * simply yields nothing instead of guessing.
  */
 export function faqsFrom(markdown: string): Faq[] {
-  const heading = /^##\s+(Common questions|Preguntas (?:frecuentes|habituales))\s*$/im;
+  // one alternative per language: a heading missing here silently costs that language its
+  // FAQ structured data, which is what happened to every French guide
+  const heading = /^##\s+(Common questions|Preguntas (?:frecuentes|habituales)|Questions fr[ée]quentes)\s*$/im;
   const start = markdown.search(heading);
   if (start < 0) return [];
   const after = markdown.slice(start);

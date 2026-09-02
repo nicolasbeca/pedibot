@@ -19,7 +19,6 @@ draft: false
 ---
 
 ## What it is
-
 A cold (catarrh) is a viral infection of the upper airways, which includes the nose and throat [1]. It is very common in the first years of life. It is normal for children to have between 6 and 8 colds per year, and even more if they attend daycare [1]. Adults get an average of 2 to 3 colds per year, and children get even more [8]. Colds are more common in winter and spring, but they can happen at any time [8].
 
 Symptoms include nasal mucus, sneezing, cough, and sometimes fever [1]. Other symptoms can include a stuffy nose, sore throat, and headache [6]. Symptoms usually begin a few days after infection with the virus [6]. Some symptoms can last 10 to 14 days [6].
@@ -27,7 +26,6 @@ Symptoms include nasal mucus, sneezing, cough, and sometimes fever [1]. Other sy
 The duration of a cold is very variable. In general, nasal mucus can last up to one week. Fever, if present, usually goes away in 2 to 3 days. Cough can last more than a week [3].
 
 ## What you can do at home
-
 - Encourage your child to drink plenty of fluids [3].
 - For young children, do nasal washes before feedings and before sleeping. Use saline solution, never tap water [3].
 - Check the temperature. If your child has a fever above 38ºC and is uncomfortable, give the fever medicine your pediatrician usually recommends [3].
@@ -41,7 +39,6 @@ To prevent colds, wash hands often and avoid touching the mouth, nose, and eyes 
 Antibiotics do not cure a cold and do not prevent complications [4]. There are no medicines that cure colds [4].
 
 ## When to see a doctor or go to the emergency department
-
 Watch your child's general condition at home [2]. Watch for signs of difficulty breathing, such as the ribs showing or the chest sinking in, fast breathing, or tiredness when walking or running [2]. Also watch for chest pain when breathing [2].
 
 Go to the emergency department if:
@@ -49,7 +46,6 @@ Go to the emergency department if:
 - Difficulty breathing appears [2].
 
 ## Common questions
-
 **Can my child go to school or daycare?**
 In general, if your child is well and has no fever, they can attend school and do physical activity [2]. If they have a fever, it is recommended that 24 hours pass without fever before returning to school [2].
 
@@ -60,7 +56,6 @@ A cold can sometimes start like a normal cold with cough and mucus, and then dev
 Asthma attacks are episodes of cough, difficulty breathing, and chest noises called wheezing [7]. They can be triggered by colds, allergies, pollution, or exercise [7]. In preschool children, the main cause of wheezing is viral respiratory infections [7]. Not all children who wheeze in childhood will have asthma later [7].
 
 ## Sources
-
 [1] SEUP — "Catarro de vías altas. Información para padres", section "¿QUÉ ES UN CATARRO DE VÍAS ALTAS?", p. 1
 [2] SEUP — "Catarro de vías altas. Información para padres", section "CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?", p. 2
 [3] SEUP — "Catarro de vías altas. Información para padres", section "¿QUÉ PODEMOS HACER EN CASA?", p. 1

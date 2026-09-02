@@ -22,7 +22,7 @@ draft: false
 ## Qué es
 La gastroenteritis aguda es una infección del tubo digestivo que produce un aumento del número de deposiciones, de consistencia blanda o líquida [3]. Las deposiciones pueden tener pequeñas cantidades de sangre o moco [3]. También puede haber dolor abdominal, vómitos y fiebre [3]. Los vómitos son la expulsión por la boca del contenido del aparato digestivo y suelen tener causa gastrointestinal [6]. La gastroenteritis no suele ser grave, pero a veces puede causar deshidratación [8]. El peligro de deshidratación es mayor cuanto más pequeño es el niño [2].
 
-## Qué puede hacer en casa
+## Qué puedes hacer en casa
 Lo más importante es evitar la deshidratación por la pérdida de líquidos [3]. Use soluciones de rehidratación oral que ya vienen preparadas [2]. Contienen agua, azúcar y sales en una proporción precisa para compensar las pérdidas [3]. Administre la cantidad indicada tras cada deposición líquida o vómito [3]. Ofrézcalas en dosis pequeñas y tomas frecuentes para que sean bien toleradas [3].
 
 - Si vomita, espere 20 minutos y luego ofrezca suero de rehidratación oral en pequeñas cantidades cada 5 minutos durante una hora [5].
@@ -68,7 +68,6 @@ En bebés y niños, también acuda si hay [8]:
 ¿Puede volver a la escuela? Debe mantenerse fuera de la escuela, guardería o piscinas hasta que los vómitos hayan desaparecido [7].
 
 ## Fuentes
-
 [1] SEUP — "Gastroenteritis aguda. Información para padres", section "¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1
 [2] SEUP — "Gastroenteritis aguda. Información para padres", section "Ofrecer en pequeñas cantidades SRO Dolor abdominal", p. 2
 [3] SEUP — "Gastroenteritis aguda. Información para padres", section "¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?", p. 1

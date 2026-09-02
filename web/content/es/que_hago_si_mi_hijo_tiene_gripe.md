@@ -21,15 +21,13 @@ draft: false
 ---
 
 ## Qué es
-
 La gripe es una infección respiratoria que puede ser más peligrosa que un resfriado común en los niños [2]. Los síntomas aparecen muy rápido, en pocas horas, e incluyen: fiebre alta repentina, dolor de cuerpo, cansancio o agotamiento, tos seca, dolor de garganta, dolor de cabeza y dificultad para dormir [3]. También puede haber pérdida de apetito, diarrea, dolor de estómago, náuseas o vómitos, aunque estos son menos comunes en adultos [3]. En los niños, los síntomas pueden incluir además dolor de oído, ojos irritados, glándulas inflamadas y menor actividad de lo habitual [3].
 
 Los niños menores de 5 años, especialmente los menores de 2, y aquellos con enfermedades crónicas como asma o diabetes, tienen mayor riesgo de sufrir complicaciones graves por la gripe [1][2]. Las complicaciones pueden incluir problemas de sinusitis, infecciones de oído, neumonía, deshidratación y empeoramiento de problemas médicos de larga duración [5].
 
 La vacuna anual contra la gripe es la mejor protección contra la enfermedad y sus complicaciones [1]. Se recomienda para todas las personas de 6 meses en adelante [1]. La vacuna puede ser una inyección o un aerosol nasal, según la edad y condiciones médicas del niño [6]. Lo ideal es vacunarse en septiembre u octubre, antes de que la gripe comience a circular [7].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 Si su hijo tiene síntomas leves de gripe, puede ayudar a aliviar las molestias con estas medidas:
 
 - Déle paracetamol o ibuprofeno infantil si tiene fiebre alta y está incómodo. Siempre revise el prospecto para asegurarse de que es adecuado para su hijo [10].
@@ -45,7 +43,6 @@ La gripe es muy contagiosa y se propaga fácilmente. Es más probable transmitir
 Si un profesional de la salud diagnostica gripe a su hijo, puede ser elegible para tratamiento antiviral que alivia los síntomas y acorta la enfermedad [8]. Este tratamiento funciona mejor si se inicia dentro de los 2 días posteriores al inicio de los síntomas [8]. Contacte a su proveedor de atención médica rápidamente si tiene síntomas y está en mayor riesgo de complicaciones [8].
 
 ## Cuándo acudir al médico o a urgencias
-
 Busque atención médica de inmediato si su hijo presenta signos de complicaciones graves. Los signos de alarma incluyen:
 
 - Dificultad para respirar o respiración rápida.
@@ -60,7 +57,6 @@ Busque atención médica de inmediato si su hijo presenta signos de complicacion
 En casos raros, las complicaciones de la gripe pueden llevar a la muerte [5]. Los niños con enfermedades crónicas o menores de 5 años tienen mayor riesgo de hospitalización [1][5].
 
 ## Preguntas frecuentes
-
 **¿Puedo darle antibióticos a mi hijo para la gripe?**
 No. Los antibióticos no funcionan contra los virus y no ayudarán a que su hijo se sienta mejor [9].
 
@@ -71,7 +67,6 @@ No. Vacunarse más tarde en la temporada aún puede ser protector, siempre que l
 Se necesitan aproximadamente dos semanas después de la vacunación para que el cuerpo desarrolle anticuerpos contra el virus de la gripe [7]. Por eso es mejor vacunarse antes de que la gripe comience a propagarse en la comunidad [7].
 
 ## Fuentes
-
 [1] CDC — "Flu and Children", section "Parents help children fight flu", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
 [2] CDC — "Flu and Children", section "Flu and Children At a glance", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
 [3] NHS — "Flu" (2026), section "Symptoms of flu", p. 1 — https://www.nhs.uk/conditions/flu/

@@ -43,7 +43,7 @@ Vous connaissez votre bébé mieux que quiconque. Faites confiance à votre inst
 
 Rendez-vous aux urgences ou appelez votre numéro d’urgence local si votre bébé a un cri faible ou aigu, ou si son cri ne ressemble pas à son cri habituel [4]. Demandez un avis médical si votre bébé a des symptômes qui vous préoccupent, comme une température élevée [2]. Si votre bébé ne prend pas assez de poids à cause de vomissements ou de régurgitations, parlez-en à votre médecin [7].
 
-## Preguntas frecuentes
+## Questions fréquentes
 **Mon bébé a-t-il de la fièvre à cause des dents ?**  
 Une température légèrement élevée, mais inférieure à 38 °C, peut accompagner les poussées dentaires [2]. Une vraie fièvre n’est pas un signe typique : consultez votre médecin si vous êtes inquiet [2].
 
@@ -57,7 +57,6 @@ Les premières dents sortent souvent vers 6 mois, mais cela varie de moins de 4 
 Vérifiez s’il a faim, une couche sale, des gaz, un reflux ou une constipation [5]. Si les pleurs durent plus de 3 heures par jour, 3 jours par semaine pendant au moins 1 semaine, parlez-en à votre médecin [5].
 
 ## Sources
-
 [1] NHS — "Baby teething symptoms" (2026), section "Baby teething symptoms", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/
 [2] NHS — "Baby teething symptoms" (2026), section "Teething symptoms", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/
 [3] NHS — "Baby teething symptoms" (2026), section "What order do baby teeth appear in?", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/

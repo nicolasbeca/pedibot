@@ -17,7 +17,6 @@ draft: false
 ---
 
 ## Qué es
-
 El reflujo ocurre cuando el bebé devuelve leche o vomita durante o poco después de la toma [1]. Es muy común y, por lo general, mejora solo [1]. Suele comenzar antes de las 8 semanas de vida y desaparece alrededor del año [1].
 
 El reflujo pasa porque el anillo muscular en el esófago del bebé puede ser débil, lo que permite que la leche suba con facilidad [3]. Ese músculo se fortalece con la edad y el reflujo debería detenerse [3].
@@ -33,7 +32,6 @@ Los síntomas del reflujo incluyen [1]:
 A veces el bebé tiene signos de reflujo pero no devuelve leche ni vomita. Esto se llama reflujo silencioso [1].
 
 ## Qué puedes hacer en casa
-
 Si el reflujo molesta a tu bebé, prueba estas medidas [4]:
 - Sostén al bebé erguido durante la toma y el mayor tiempo posible después
 - Eructa al bebé con regularidad durante las tomas
@@ -50,8 +48,7 @@ Si tu bebé es alimentado con fórmula, un médico puede recomendar [2]:
 
 Si el polvo espesante no ayuda o el bebé es amamantado, el médico podría recetar medicamentos para reducir el malestar y la producción de ácido [2]. En casos muy raros y graves, puede ser necesaria cirugía para fortalecer el músculo que evita que la leche suba [2].
 
-## Cuándo ver a un médico o ir a urgencias
-
+## Cuándo acudir al médico o a urgencias
 Consulta a un médico de cabecera si tu bebé [5]:
 - No mejora después de probar las medidas caseras
 - Tiene reflujo por primera vez después de los 6 meses
@@ -72,13 +69,11 @@ Pide una cita urgente con el médico o llama al 111 si tu bebé [5]:
 También llama al médico o al 111 si tienes cualquier otra preocupación sobre tu bebé [5].
 
 ## Preguntas frecuentes
-
 ¿El reflujo es lo mismo que el cólico? No exactamente. El cólico es cuando un bebé sano llora más de 3 horas al día, 3 días a la semana durante al menos 1 semana [7]. El llanto del cólico puede ser difícil de calmar, con puños cerrados, cara roja o rodillas hacia el abdomen [7]. El reflujo es una de las posibles causas del llanto excesivo [7]. Si no estás segura de qué le pasa a tu bebé, habla con tu visitador de salud, llama al 111 o consulta a un médico [7].
 
 ¿Puede ser alergia a la leche de vaca? Sí. Un médico puede querer comprobar si tu bebé tiene alergia a la leche de vaca, porque los síntomas pueden ser muy similares al reflujo [2].
 
 ## Fuentes
-
 [1] NHS — "Reflux in babies" (2025), section "Reflux in babies", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/
 [2] NHS — "Reflux in babies" (2025), section "Treatment for reflux in babies", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/
 [3] NHS — "Reflux in babies" (2025), section "Causes of reflux", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/

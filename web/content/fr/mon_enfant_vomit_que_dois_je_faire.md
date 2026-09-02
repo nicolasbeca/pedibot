@@ -17,13 +17,11 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Les vomissements sont l'expulsion par la bouche du contenu du tube digestif (aliments, sucs gastriques) [1]. Ils peuvent être le symptôme de différentes maladies, mais la cause la plus fréquente est gastro-intestinale [1]. Ils peuvent s'accompagner de douleurs abdominales, de diarrhée ou de fièvre [1]. La différence avec la régurgitation, normale et fréquente chez les bébés, est que la régurgitation concerne de petites quantités et ne demande aucun effort [1].
 
 Le plus grand risque des vomissements est la déshydratation [5]. Les bébés et les jeunes enfants sont plus susceptibles d'avoir une déshydratation car ils ont plus de risques d'avoir de la diarrhée ou des vomissements [10].
 
 ## Ce que vous pouvez faire à la maison
-
 La priorité est d'assurer un apport de liquides pour éviter la déshydratation [1].
 
 - Quand l'enfant vomit, attendez 20 minutes, puis donnez-lui une solution de réhydratation orale, en petites quantités toutes les 5 minutes pendant une heure [1].
@@ -38,7 +36,6 @@ La priorité est d'assurer un apport de liquides pour éviter la déshydratation
 En général, les symptômes disparaissent spontanément en moins d'une semaine [3]. Gardez l'enfant malade à la maison, loin de l'école, de la crèche ou des piscines, jusqu'à ce que les vomissements aient disparu [3].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin ou allez aux urgences si votre enfant présente l'un de ces signes [2] :
 
 - Il a moins de 3 mois et a vomi deux fois ou plus ses repas.
@@ -50,7 +47,6 @@ Consultez un médecin ou allez aux urgences si votre enfant présente l'un de ce
 Consultez aussi rapidement si votre enfant a un changement d'état mental (irritabilité ou manque d'énergie), une diarrhée qui dure plus d'un jour, de la fièvre (surtout chez un bébé), des selles molles fréquentes, des vomissements fréquents, ou des signes de déshydratation comme une bouche sèche, uriner moins que d'habitude ou ne pas mouiller ses couches pendant 3 heures ou plus, et ne pas avoir de larmes en pleurant [7].
 
 ## Questions fréquentes
-
 **Dois-je donner des médicaments contre les vomissements ?**
 Les sources ne recommandent pas de médicaments spécifiques contre les vomissements. La priorité est la réhydratation orale [1]. Parlez-en à votre médecin si vous avez des questions.
 
@@ -61,7 +57,6 @@ Oui, une fois qu'il tolère les liquides, proposez-lui de petits repas fréquent
 En général, les vomissements se résolvent spontanément en moins d'une semaine [3].
 
 ## Sources
-
 [1] SEUP — "Vómitos. Información para padres" (2025), section "¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?", p. 1
 [2] SEUP — "Vómitos. Información para padres" (2025), section "¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
 [3] SEUP — "Vómitos. Información para padres" (2025), section "¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1, 2

@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## Qué es
-
 El virus respiratorio sincitial (VRS) es un virus común que suele causar síntomas parecidos a un resfriado leve [1][5]. Casi todos los niños lo contraen al menos una vez antes de cumplir 2 años [9]. En la mayoría de los casos, la enfermedad es leve y mejora sola [9].
 
 Sin embargo, el VRS puede ser peligroso para algunos bebés y niños pequeños [10]. Los bebés menores de 6 meses y los niños con ciertos factores de riesgo tienen más probabilidades de enfermarse gravemente y necesitar hospitalización [1][9]. El VRS es la causa más común de bronquiolitis (inflamación de las vías respiratorias pequeñas) y de neumonía (infección de los pulmones) en niños menores de 1 año [1]. También puede causar estas infecciones graves en bebés y adultos mayores [9].
@@ -30,8 +29,7 @@ Cada año, 2 a 3 de cada 100 bebés menores de 3 meses son hospitalizados por VR
 
 Los síntomas del VRS suelen aparecer unos días después del contagio [6]. Al principio, pueden ser: moqueo, tos, comer o beber menos [4]. La tos puede empeorar y convertirse en sibilancias o dificultad para respirar [4]. En bebés muy pequeños (menores de 6 meses), los síntomas pueden incluir irritabilidad, menos actividad, comer o beber menos y pausas en la respiración de más de 10 segundos (apnea) [3]. Muchos bebés no tienen fiebre con el VRS [3].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 La mayoría de las infecciones por VRS son leves y se pueden manejar en casa con cuidados de apoyo. No existe un tratamiento específico para el virus; el objetivo es aliviar los síntomas mientras el cuerpo combate la infección.
 
 - Ofrezca líquidos con frecuencia para mantener al niño hidratado. Si el bebé come o bebe menos de lo normal, ofrézcale pequeñas cantidades más a menudo.
@@ -44,7 +42,6 @@ La mayoría de las infecciones por VRS son leves y se pueden manejar en casa con
 Recuerde que el VRS puede no ser grave al principio, pero puede empeorar unos días después del inicio de la enfermedad [4]. Observe al niño de cerca durante toda la enfermedad.
 
 ## Cuándo acudir al médico o a urgencias
-
 Busque ayuda médica urgente si su hijo está enfermo y empeora, o si presenta alguno de estos signos [6]:
 
 - Come o bebe mucho menos de lo normal [6].
@@ -59,7 +56,6 @@ Busque ayuda médica urgente si su hijo está enfermo y empeora, o si presenta a
 En bebés muy pequeños, esté atento a la irritabilidad, la disminución de la actividad y las pausas en la respiración de más de 10 segundos [3]. Si nota cualquiera de estos signos, busque atención médica de inmediato.
 
 ## Preguntas frecuentes
-
 **¿Puedo prevenir el VRS en mi bebé?**
 Sí. Existen inmunizaciones que pueden proteger a los bebés de enfermarse gravemente por VRS [5][10]. Hable con su pediatra sobre las opciones de vacunación o inmunización para su hijo. Además, si está embarazada de 28 semanas o más, puede recibir una vacuna que ayuda a proteger a su bebé durante los primeros meses después del nacimiento [8]. Los niños pequeños con muy alto riesgo de enfermarse gravemente pueden recibir una inyección de anticuerpos cada invierno para reducir el riesgo de bronquiolitis grave [7].
 
@@ -70,7 +66,6 @@ No. En la mayoría de los niños, el VRS causa solo síntomas de resfriado leve 
 No necesariamente. Muchos bebés con VRS no tienen fiebre [3]. La ausencia de fiebre no significa que la infección no sea grave.
 
 ## Fuentes
-
 [1] CDC — "About RSV", section "RSV can be dangerous for infants and older adults", p. 1 — https://www.cdc.gov/rsv/about/index.html
 [2] CDC — "RSV in Infants and Young Children", section "Severe RSV illness", p. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html
 [3] CDC — "RSV in Infants and Young Children", section "RSV in very young Infants", p. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html

@@ -63,7 +63,6 @@ Yes. CDC recommends immunizations to protect infants and some young children fro
 RSV causes cold-like symptoms such as a runny or blocked nose, cough, sneezing, and tiredness [6]. Many viruses cause these symptoms, so you cannot tell for sure without a test. Watch your child closely, because RSV can become more severe a few days into the illness [4]. If you are worried, get medical help [6].
 
 ## Sources
-
 [1] CDC — "About RSV", section "RSV can be dangerous for infants and older adults", p. 1 — https://www.cdc.gov/rsv/about/index.html
 [2] CDC — "RSV in Infants and Young Children", section "Severe RSV illness", p. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html
 [3] CDC — "RSV in Infants and Young Children", section "RSV in very young Infants", p. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html

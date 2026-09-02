@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## What it is
-
 Hives (urticaria) are raised, red or skin-coloured bumps on the skin that itch a lot [1][7]. They can appear anywhere on the body, in many shapes and sizes [7]. They may be on one area or spread across the body [7]. The rash can feel itchy, sting, or burn [7]. On white skin, hives look pink or red; on brown or black skin, the colour can be harder to see [7].
 
 A key feature is that hives are evanescent — they appear in one area while disappearing from another [1]. Hives can also come with swelling of the hands, feet, elbows, or face [1]. In rare cases, they can cause trouble breathing or swallowing [1].
@@ -28,7 +27,6 @@ In children, most hives are caused by an infection [1][2]. An allergic cause is 
 Most hives rashes get better within a few days [8]. Outbreaks usually last 5 to 7 days, though they can continue for several weeks without being more serious [2]. In most cases, no tests are needed [2].
 
 ## What you can do at home
-
 - Watch for any trouble swallowing or breathing [3].
 - Avoid rubbing the skin [3].
 - Avoid baths or showers with very hot water [3].
@@ -39,7 +37,6 @@ Most hives rashes get better within a few days [8]. Outbreaks usually last 5 to 
 Hives can usually be treated at home [6][8]. If you are not sure the rash is hives, check with your doctor [5].
 
 ## When to see a doctor or go to the emergency department
-
 Go to the emergency department right away if your child has any of these warning signs [2]:
 
 - Trouble breathing, hoarseness, or wheezing sounds in the chest [2]
@@ -50,7 +47,6 @@ Go to the emergency department right away if your child has any of these warning
 Also call emergency services (like 999) if there is swelling around your child's mouth or they are struggling to breathe [6].
 
 ## Common questions
-
 **How long will the hives last?**  
 Most hives rashes get better within a few days [8]. Outbreaks usually last 5 to 7 days [2]. They can continue for several weeks without meaning the condition is more serious [2].
 
@@ -64,7 +60,6 @@ No. A child with hives can eat their usual food [3]. Just do not introduce new f
 Do not give any syrups or medicines without asking your child's doctor first [3]. Also, do not apply powders or creams to the skin without checking with the doctor [3].
 
 ## Sources
-
 [1] SEUP — "Urticaria. Información para padres" (2025), section "¿QUÉ ES LA URTICARIA?", p. 1
 [2] SEUP — "Urticaria. Información para padres" (2025), section "¿CUÁNDO DEBE CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 1
 [3] SEUP — "Urticaria. Información para padres" (2025), section "¿QUÉ PODEMOS HACER EN CASA?", p. 1

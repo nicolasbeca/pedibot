@@ -16,11 +16,9 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Le saignement de nez survient quand l’intérieur du nez est abîmé. Cela peut arriver en se grattant le nez, en se mouchant trop fort, ou si l’intérieur du nez est trop sec, par exemple à cause d’un changement de température de l’air [4]. Les saignements de nez sont courants, surtout chez les enfants, et la plupart peuvent être traités facilement à la maison [5]. Ils ne sont généralement pas le signe de quelque chose de grave [5].
 
 ## Ce que vous pouvez faire à la maison
-
 Pour arrêter un saignement de nez, selon le NHS [3] :
 - Asseyez-vous et penchez-vous en avant, la tête inclinée vers l’avant et la bouche ouverte.
 - Pincez le nez juste au-dessus des narines pendant 10 à 15 minutes.
@@ -37,7 +35,6 @@ Après l’arrêt du saignement, pour réduire le risque qu’il revienne, évit
 - De vous allonger à plat.
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin si [5] :
 - Un enfant de moins de 2 ans a eu un saignement de nez.
 - Vous avez des saignements de nez réguliers.
@@ -56,7 +53,6 @@ Rendez-vous aux urgences si vous avez un saignement de nez et que [5] :
 Ne conduisez pas aux urgences. Demandez à quelqu’un de vous conduire ou appelez votre numéro d’urgence local. Apportez les médicaments que vous prenez [5].
 
 ## Questions fréquentes
-
 **Que fait le médecin si le saignement ne s’arrête pas ?**
 Si le médecin voit d’où vient le sang, il peut utiliser un bâtonnet avec un produit chimique pour sceller la zone, poussé dans la narine. Si cela n’est pas possible, il peut remplir le nez avec une gaze ou une éponge. Vous devrez peut-être rester à l’hôpital un jour ou deux [2].
 
@@ -67,7 +63,6 @@ Quand le saignement s’arrête, le médecin peut prescrire une crème antisepti
 Certaines personnes sont plus sujettes aux saignements de nez, notamment les enfants, les adultes de plus de 45 ans, les femmes enceintes et les personnes ayant une pression artérielle élevée [4].
 
 ## Sources
-
 [1] NHS — "Nosebleed" (2026), section "When a nosebleed stops", p. 1 — https://www.nhs.uk/conditions/nosebleed/
 [2] NHS — "Nosebleed" (2026), section "Treatment for nosebleeds", p. 1 — https://www.nhs.uk/conditions/nosebleed/
 [3] NHS — "Nosebleed" (2026), section "How to stop a nosebleed yourself", p. 1 — https://www.nhs.uk/conditions/nosebleed/

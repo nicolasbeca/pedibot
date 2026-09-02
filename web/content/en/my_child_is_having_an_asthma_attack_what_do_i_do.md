@@ -19,7 +19,6 @@ draft: false
 ---
 
 ## What it is
-
 An asthma attack, also called an asthma crisis, happens when the airways become inflamed and narrow [7]. This causes symptoms like coughing, trouble breathing, and a whistling sound when your child breathes out, called wheezing [3][6].
 
 Common triggers include colds, allergies, pollution, and exercise [3]. In preschool children, viral respiratory infections are the main cause of wheezing [3]. Sometimes an attack starts with only a cough [1]. Children of parents who smoke have more respiratory illnesses [1].
@@ -27,7 +26,6 @@ Common triggers include colds, allergies, pollution, and exercise [3]. In presch
 Symptoms can include a feeling of shortness of breath or choking [6]. You may notice your child’s chest sinking in, ribs or collarbones becoming visible with each breath, or faster breathing than normal [6]. In more severe cases, children may have continuous coughing, trouble speaking, or a bluish color around the lips, which means oxygen levels are low [6].
 
 ## What you can do at home
-
 Most asthma attacks are mild and can be managed at home with bronchodilators [2]. Here is what to do:
 
 - Give 2 to 4 puffs of salbutamol, one puff at a time, using a spacer chamber [4]. For young children, use a spacer with a face mask [4].
@@ -43,7 +41,6 @@ Symptoms usually resolve within a few days but can last up to a week [2]. Avoid 
 If the attack does not improve after home treatment, or if you have any doubts, go to a healthcare center as soon as possible [4]. Remember to bring the spacer chamber with you [1].
 
 ## When to see a doctor or go to the emergency department
-
 Go to an emergency department if your child shows any of these warning signs:
 
 - Is very agitated or drowsy [1]
@@ -59,7 +56,6 @@ Go to an emergency department if your child shows any of these warning signs:
 Any child with bronchospasm should start treatment with salbutamol [1]. If there is no clear improvement, you should go to a healthcare center [1]. If rescue medications do not work during a severe attack, seek medical help immediately [9].
 
 ## Common questions
-
 **Will my child always have asthma?**
 No. Not all children who wheeze during childhood will have asthma later in life [3]. Children are more likely to develop asthma if they have atopy, asthmatic parents, or an egg allergy [3].
 
@@ -70,7 +66,6 @@ It is recommended to avoid physical exercise during the asthma attack [2]. Child
 More severe cases need treatment at a healthcare center with inhaled or nebulized bronchodilators [2]. Some children need oral corticosteroids for a few days [2]. The most severe cases require oxygen therapy and hospital admission [2].
 
 ## Sources
-
 [1] SEUP — "Crisis asmática. Información para padres" (2025), section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
 [2] SEUP — "Crisis asmática. Información para padres" (2025), section "CRISIS ASMÁTICA tos TIRAJE evitar ambientes con humo o fumar ADMINISTRAR SALBUTAMOL CON CÁMARA ESPACIADORA (Y MASCARILLA EN NIÑOS PEQUEÑOS) ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 2
 [3] SEUP — "Crisis asmática. Información para padres" (2025), section "¿QUÉ SON LAS CRISIS ASMÁTICAS?", p. 1

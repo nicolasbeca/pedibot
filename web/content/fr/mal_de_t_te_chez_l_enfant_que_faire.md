@@ -18,13 +18,11 @@ draft: false
 ---
 
 ## Ce que c'est
-
 La céphalée est une sensation de malaise ou de douleur qui touche la tête. Elle est très fréquente chez l’enfant et l’adolescent [2]. Dans la plupart des cas, le mal de tête est associé à des infections comme l’otite, la pharyngite, la sinusite, la grippe, le rhume ou la gastro-entérite [2]. Il peut aussi être dû à un manque de sommeil, à la fatigue, au stress, à la consommation de boissons contenant de la caféine, ou à des changements sociaux (familiaux, scolaires, amis) [2]. Chez un petit groupe d’enfants, les épisodes de mal de tête peuvent se répéter et devenir chroniques [2].
 
 La douleur peut toucher toute la tête ou une partie (par exemple derrière les yeux ou sur le front) [3]. Elle peut être continue ou intermittente [3]. Elle peut être oppressante (comme un poids sur la tête) ou lancinante/pulsatile (comme des piqûres d’aiguille) [3]. Elle peut s’accompagner de nausées, de vomissements, de somnolence, de fatigue, de douleurs abdominales, d’une pâleur, ou d’une gêne avec le bruit ou la lumière [3]. En général, l’enfant peut dormir et faire ses activités habituelles [3].
 
 ## Ce que vous pouvez faire à la maison
-
 - Maintenir un environnement calme, sans bruit et avec peu de lumière [7].
 - Si la douleur est intense, il peut être nécessaire que l’enfant dorme pour qu’elle se calme (très fréquent dans les migraines) [7].
 - Éviter les écrans (télévision, jeux vidéo, téléphones, tablettes) [7].
@@ -43,7 +41,6 @@ Pour prévenir les maux de tête [4] :
 Dans la plupart des cas, les épisodes de mal de tête sont limités dans le temps (ils durent des minutes ou des heures) [6]. Ils s’améliorent généralement après la prise d’analgésiques habituels (paracétamol/ibuprofène) et avec le repos [6]. Les maux de tête chez les enfants sont le plus souvent bénins [6]. L’enfant peut retourner à l’école quand il se sent bien et peut gérer la douleur avec l’analgésie habituelle [6].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin ou allez aux urgences si votre enfant présente l’un de ces signes [5] :
 - Fièvre élevée, mal de tête intense et vomissements à plusieurs reprises.
 - Il dort beaucoup plus que d’habitude ou il est difficile de le réveiller.
@@ -62,7 +59,6 @@ Surveillez aussi à la maison ces signes qui peuvent indiquer que l’état s’
 - L’enfant a moins de 5 ans et présente un mal de tête persistant, car ce symptôme n’est pas habituel chez ces patients.
 
 ## Questions fréquentes
-
 **Faut-il offrir une alimentation spéciale ?**
 Non, il n’est pas nécessaire d’offrir un régime spécial, mais il est recommandé de garantir une ingestion d’eau abondante [7].
 
@@ -70,7 +66,6 @@ Non, il n’est pas nécessaire d’offrir un régime spécial, mais il est reco
 Il est recommandé que l’enfant maintienne son activité quotidienne habituelle si les symptômes le permettent [6]. Il pourra retourner à l’école quand il se sent bien et peut gérer la douleur avec l’analgésie habituelle [6].
 
 ## Sources
-
 [1] SEUP — "Cefalea. Información para padres" (2025), section "CEFALEA DOLOR DE CABEZA ¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?", p. 2
 [2] SEUP — "Cefalea. Información para padres" (2025), section "¿QUÉ ES LA CEFALEA?", p. 1
 [3] SEUP — "Cefalea. Información para padres" (2025), section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1

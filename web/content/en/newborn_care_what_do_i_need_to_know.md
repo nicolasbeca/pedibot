@@ -63,7 +63,6 @@ Yes, you can bathe your baby even if the cord has not fallen off yet [6]. Just d
 Always place your baby on the back or side, on a firm mattress without a pillow. Never place a baby on the stomach unless a doctor says it is medically necessary [1][5].
 
 ## Sources
-
 [1] AEP — "Cuidados generales del recién nacido sano", section "CUIDADOS DESPUÉS DEL PARTO", p. 3, 4, 5, 6, 7, 8
 [2] AEP — "Cuidados generales del recién nacido sano", section "CUIDADOS DESPUÉS DEL PARTO", p. 3, 4, 5, 6, 7, 8
 [3] AEP — "Cuidados generales del recién nacido sano", section "3. Tras la salida del feto se debe clampar el", p. 2, 3

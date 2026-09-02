@@ -16,7 +16,6 @@ draft: false
 ---
 
 ## Qué es
-
 Una quemadura es un daño en los tejidos del cuerpo causado por calor, productos químicos, electricidad, luz solar o radiación [5]. Las quemaduras ocurren cuando el calor seco, como el fuego o una plancha caliente, toca la piel. Las escaldaduras son causadas por líquidos calientes o vapor [2]. También hay quemaduras por inhalación de humo [5].
 
 Hay tres tipos de quemaduras [5]:
@@ -27,7 +26,6 @@ Hay tres tipos de quemaduras [5]:
 Las quemaduras pueden causar hinchazón, ampollas, cicatrices y, en casos graves, shock e incluso la muerte. También pueden provocar infecciones porque dañan la barrera protectora de la piel [5]. Las quemaduras pequeñas suelen sanar en unas 2 semanas. Las graves, que son grandes o profundas, pueden necesitar tratamiento en el hospital [3].
 
 ## Qué puedes hacer en casa
-
 Trata todas las quemaduras y escaldaduras de inmediato [1]. Si la quemadura es pequeña, a menudo se puede tratar en casa [2].
 
 Pasos a seguir [1]:
@@ -46,7 +44,6 @@ Evita lo siguiente [4]:
 - No revientes las ampollas.
 
 ## Cuándo acudir al médico o a urgencias
-
 Acción inmediata: llama al 112 o ve a urgencias si la quemadura [1]:
 - Es muy grande o profunda.
 - Está en la cara, los genitales o el trasero.
@@ -65,7 +62,6 @@ Las quemaduras graves pueden necesitar tratamiento hospitalario, que incluye [3]
 - Cirugía para reparar la herida o reconstruir la piel.
 
 ## Preguntas frecuentes
-
 **¿Puedo usar hielo o agua muy fría?**
 Las fuentes no mencionan el uso de hielo. Recomiendan agua fría corriente durante 15 a 30 minutos [1].
 
@@ -79,7 +75,6 @@ Las quemaduras pequeñas pueden tratarse en casa y suelen tardar unas 2 semanas 
 Sí, las fuentes indican que todas las quemaduras y escaldaduras deben tratarse de inmediato con agua fría corriente [1].
 
 ## Fuentes
-
 [1] NHS — "Burns and scalds" (2026), section "What to do if you have a burn or scald", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/
 [2] NHS — "Burns and scalds" (2026), section "Burns and scalds", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/
 [3] NHS — "Burns and scalds" (2026), section "Treatments for burns and scalds", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/

@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## What it is
-
 Eating disorders are mental health conditions. They involve altered eating behavior, wrong thoughts, and high concern about weight, diet, and body image [1]. These disorders can cause serious physical, psychological, and social problems [1].
 
 Anorexia and bulimia nervosa often appear during adolescence and youth [8]. They are more common in adolescent girls than boys [8]. Eating disorders can affect physical health and often occur with depression, anxiety, and substance misuse [8]. Anorexia can lead to early death, often from medical complications or suicide [8].
@@ -47,7 +46,6 @@ Psychological and behavioral signs may include:
 - Buying and using weight-loss products [4]
 
 ## What you can do at home
-
 If you detect warning signs in a family member, you can help by:
 - Creating a safe and understanding environment, avoiding judgments and criticism [7]
 - Offering support and company during the process to encourage treatment adherence [7]
@@ -62,7 +60,6 @@ If you detect warning signs in a family member, you can help by:
 In Spain, if you suspect an eating disorder, go to your primary care health center and inform them [6]. They can refer you to the child and adolescent mental health center [6]. There are also urgent resources by phone or at pediatric emergency services [6].
 
 ## When to see a doctor or go to the emergency department
-
 Go to the emergency department if your child has:
 - Swelling in the arms or legs [3]
 - Fainting, seizures, or low blood sugar [3]
@@ -70,7 +67,6 @@ Go to the emergency department if your child has:
 - Severe behavioral changes [3]
 
 ## Common questions
-
 **How common are eating disorders in teens?**
 They affect about 0.1% of adolescents aged 10 to 14 years and 0.4% of those aged 15 to 19 years [8]. They are associated with suicide [8].
 
@@ -81,7 +77,6 @@ Yes. They can cause serious physical, psychological, and social problems [1]. An
 Go to your primary care center and explain the situation [6]. They can guide you on next steps and referrals [6].
 
 ## Sources
-
 [1] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "¿QUÉ SON LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA (TCA)?", p. 1
 [2] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "PREVENCIÓN Y MANEJO DE LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA", p. 1
 [3] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2

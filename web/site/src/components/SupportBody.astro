@@ -1,82 +1,47 @@
 ---
 /**
- * The support page, in both languages from one file so they cannot drift apart.
+ * The support page, in every language from one file so they cannot drift apart.
  *
  * Tone, decided with the operator (1-sep-2026): this is an almost altruistic project, so the
  * page leads with what PediBot gives away and with the ways to help that cost nothing, and only
  * then asks for money. It never states what running it costs — that figure is private — and it
  * makes no promise it cannot keep.
+ *
+ * It used to read `const es = lang === 'es'`, which served the whole page in English to every
+ * other language. The copy lives in i18n.ts now: a new language is a block of data.
  */
 import Donate from './Donate.astro';
-import type { Lang } from '../i18n';
+import { t, langPrefix, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const es = lang === 'es';
-const p = es ? '/es' : '';
-
-const facts = es
-  ? [
-      ['214', 'documentos publicados de los que puede citar: SEUP, AEP, NHS, CDC, OMS, MedlinePlus, Ministerio de Sanidad…'],
-      ['Cada frase', 'clínica dice de qué organismo sale. Si no encuentra un pasaje que lo respalde, lo dice en vez de inventarlo.'],
-      ['Las dosis', 'salen de tablas fijas y de una guía de dosificación pediátrica. El modelo no calcula ni una cifra.'],
-      ['30 guías', 'escritas solo desde esas fuentes, en inglés y español, con el organismo en cada afirmación.'],
-      ['0 €', 'para quien lo usa. Sin cuenta, sin registro, sin anuncios y sin rastreadores de terceros.'],
-    ]
-  : [
-      ['214', 'published documents it is allowed to quote: SEUP, AEP, NHS, CDC, WHO, MedlinePlus, health ministries…'],
-      ['Every', 'clinical sentence names the organisation it came from. When no passage backs it up, it says so instead of inventing one.'],
-      ['Doses', 'come from fixed tables and a paediatric dosing guide. The model never works out a number.'],
-      ['30 guides', 'written only from those sources, in English and Spanish, naming the body behind each claim.'],
-      ['Free', 'for whoever uses it. No account, no sign-up, no ads and no third-party trackers.'],
-    ];
-
-// every card has somewhere to go: an ask with no way to act on it is a dead end
+const T = t(lang).support;
+const p = langPrefix(lang);
 const MAIL = 'pedibot.ai@gmail.com';
-const help = es
-  ? [
-      ['🗣️', 'Cuéntaselo a otro padre o madre', 'Es lo más útil que puedes hacer y no cuesta nada. La mayoría de la gente que lo necesita todavía no sabe que existe.', `${p}/guides`, 'Ver una guía para enviar'],
-      ['👎', 'Marca una respuesta mala', 'Debajo de cada respuesta hay un pulgar hacia abajo. Cada aviso se lee de verdad y arregla la respuesta para quien venga después.', `${p}/`, 'Ir a preguntar'],
-      ['🩺', '¿Eres pediatra?', 'Revisa respuestas reales y dinos qué está mal. Es la ayuda que más falta hace y la única que no se puede comprar.', `mailto:${MAIL}?subject=${encodeURIComponent('Revisión de respuestas de PediBot')}`, 'Escríbenos'],
-      ['🪙', 'Echa una mano con el coste', 'Un servidor que no duerme y la IA de cada respuesta. Si te sobra algo, aquí abajo tienes cómo.', '#donar', 'Ver cómo donar'],
-    ]
-  : [
-      ['🗣️', 'Tell another parent', 'The most useful thing you can do, and it costs nothing. Most of the people who need this still do not know it exists.', `${p}/guides`, 'Find a guide to send'],
-      ['👎', 'Flag a bad answer', 'There is a thumbs-down under every answer. Each one is actually read, and it fixes that answer for whoever comes next.', `${p}/`, 'Go and ask something'],
-      ['🩺', 'Are you a paediatrician?', 'Review real answers and tell us what is wrong. It is the help this needs most and the only one that cannot be bought.', `mailto:${MAIL}?subject=${encodeURIComponent('Reviewing PediBot answers')}`, 'Write to us'],
-      ['🪙', 'Help with the cost', 'A server that never sleeps and the AI behind every answer. If you have something spare, here is how.', '#donar', 'See how to donate'],
-    ];
+/** '/guides' and '/' are language-relative; 'mailto' is the address plus a translated subject. */
+const target = (href: string) =>
+  href === 'mailto' ? `mailto:${MAIL}?subject=${encodeURIComponent(T.mail_subject)}`
+  : href.startsWith('#') ? href
+  : `${p}${href}`;
 ---
 <div class="narrow prose" style="padding:40px 18px">
-  <p class="eyebrow">{es ? 'Apoyo' : 'Support'}</p>
-  <h1 style="margin-top:8px">
-    {es ? 'Gratis para todas las familias. Lo mantiene una persona.' : 'Free for every family. Kept running by one person.'}
-  </h1>
-  <p class="lede">
-    {es
-      ? 'PediBot no vende nada, no enseña anuncios, no pide cuenta y no sigue a nadie. Mantenerlo sí cuesta dinero, y hoy lo paga quien lo hizo. Esta página cuenta qué es y cómo puedes ayudar — empezando por lo que no cuesta un céntimo.'
-      : 'PediBot sells nothing, shows no ads, asks for no account and follows nobody. Keeping it running does cost money, and today the person who built it pays for it. This page is what it is and how you can help — starting with the parts that cost nothing.'}
-  </p>
+  <p class="eyebrow">{T.eyebrow}</p>
+  <h1 style="margin-top:8px">{T.h1}</h1>
+  <p class="lede">{T.lede}</p>
 
-  <section class="why">
-    <p>
-      {es
-        ? '«Soy arquitecto, no médico. Lo construí porque quería, a las tres de la mañana y con un niño con fiebre, algo que dijera de dónde saca lo que dice — y que dijera "vete a urgencias" cuando esa es la respuesta.»'
-        : '"I am an architect, not a doctor. I built it because at three in the morning, with a feverish child, I wanted something that said where its answers come from — and that says ‘go to the emergency department’ when that is the answer."'}
-    </p>
-  </section>
+  <section class="why"><p>{T.quote}</p></section>
 
-  <h2>{es ? 'Lo que hace sin pedirte nada' : 'What it does without asking you for anything'}</h2>
+  <h2>{T.facts_h}</h2>
   <ul class="facts">
-    {facts.map(([lead, rest]) => (
+    {T.facts.map(([lead, rest]) => (
       <li><b>{lead}</b> {rest}</li>
     ))}
   </ul>
 
-  <h2>{es ? 'Cómo puedes ayudar' : 'How you can help'}</h2>
+  <h2>{T.help_h}</h2>
   <div class="help">
-    {help.map(([icon, title, body, href, cta]) => (
-      <a class="hcard" href={href}>
+    {T.help.map(([icon, title, body, href, cta]) => (
+      <a class="hcard" href={target(href)}>
         <span class="hi">{icon}</span>
         <b>{title}</b>
         <span>{body}</span>
@@ -87,27 +52,20 @@ const help = es
 
   <div id="donar"><Donate lang={lang} /></div>
 
-  <h2>{es ? 'El token, en dos líneas' : 'The token, in two lines'}</h2>
-  <p>
-    {es
-      ? 'Existe un token, PDBT, en la red Base, para quien prefiera apoyar el proyecto por ahí. No hace falta para usar PediBot, no da acceso a nada distinto y no prometemos nada sobre su precio.'
-      : 'There is a token, PDBT, on the Base network, for anyone who prefers to back the project that way. It is not needed to use PediBot, it unlocks nothing different, and we make no promises about its price.'}
-  </p>
+  <h2>{T.token_h}</h2>
+  <p>{T.token_p}</p>
   <p class="mono contract">0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1</p>
 
-  <h2>{es ? 'Lo que no va a cambiar' : 'What will not change'}</h2>
+  <h2>{T.never_h}</h2>
   <ul>
-    <li>{es ? 'Nada estará nunca cerrado: sin muros de pago, sin niveles premium, sin funciones solo para quien tenga tokens.' : 'Nothing will ever be gated: no paywalls, no premium tiers, no holder-only features.'}</li>
-    <li>{es ? 'Las novedades llegan a todo el mundo a la vez, tenga tokens o no.' : 'Product news reaches everyone at the same time, holders or not.'}</li>
-    <li>{es ? 'No pagamos por listados, por aparecer en tendencias ni por interacciones.' : 'We do not pay for listings, trending spots or engagement.'}</li>
-    <li>{es ? 'Y seguirá diciendo que no es consejo médico, porque no lo es.' : 'And it will keep saying it is not medical advice, because it is not.'}</li>
+    {T.never.map((line) => <li>{line}</li>)}
   </ul>
 
   <p class="closing">
-    {es ? 'Gracias por leer hasta aquí. ' : 'Thank you for reading this far. '}
-    <a href={`${p}/`}>{es ? 'Volver a preguntar' : 'Back to asking'}</a>
+    {T.closing}
+    <a href={`${p}/`}>{T.back}</a>
     {' · '}
-    <a href={`${p}/sources`}>{es ? 'Ver las fuentes' : 'See the sources'}</a>
+    <a href={`${p}/sources`}>{T.see_sources}</a>
   </p>
 </div>
 

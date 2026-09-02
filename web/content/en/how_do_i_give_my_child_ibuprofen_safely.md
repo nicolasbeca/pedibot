@@ -39,7 +39,6 @@ Ibuprofen can be given 3 to 4 times in 24 hours, depending on your child's age a
 If paracetamol is not helping, you can try giving ibuprofen instead, if it is suitable for your child [2].
 
 ## Sources
-
 [1] NHS — "Ibuprofen for children - Brand names: Nurofen for Children, Calprofen, Brufen", section "Ibuprofen for children - Brand names: Nurofen for Children, Calprofen, Brufen", p. 1 — https://www.nhs.uk/medicines/ibuprofen-for-children/
 [2] NHS — "Paracetamol for children (Calpol) - Other common brands: Panadol" (2025), section "Giving paracetamol with ibuprofen", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/
 

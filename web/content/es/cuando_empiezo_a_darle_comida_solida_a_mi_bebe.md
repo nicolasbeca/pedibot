@@ -21,13 +21,11 @@ draft: false
 ---
 
 ## Qué es
-
 La alimentación complementaria es el proceso por el cual se ofrecen al lactante alimentos sólidos o líquidos distintos de la leche materna o de una fórmula infantil, como complemento y no como sustitución de esta [9]. Se recomienda mantener la lactancia materna de forma exclusiva durante los 6 primeros meses de edad y, a partir de ese momento, añadir de forma paulatina el resto de los alimentos, manteniendo la lactancia a demanda todo el tiempo que madre e hijo deseen [3]. En lactantes no amamantados, la alimentación se puede introducir entre el cuarto y el sexto mes, y es adecuado esperar a que el lactante presente signos de que ya está listo para comenzar [10].
 
 Un bebé está preparado cuando adquiere las destrezas psicomotoras que permiten manejar y tragar de forma segura los alimentos. Como cualquier otro hito del desarrollo, no todos los niños lo van a adquirir al mismo tiempo, aunque en general estos cambios suelen ocurrir en torno al sexto mes [4]. Se requiere que el bebé presente un interés activo por la comida, que haya desaparecido el reflejo de extrusión (expulsión de alimentos no líquidos con la lengua), que sea capaz de coger comida con la mano y llevarla a la boca, y que mantenga la postura de sedestación con apoyo [4].
 
 ## Qué puedes hacer en casa
-
 No hay alimentos mejores que otros para empezar, aunque se recomienda ofrecer de manera prioritaria alimentos ricos en hierro y zinc [1]. Se recomienda introducir los alimentos de uno en uno, con intervalos de unos días, para observar la tolerancia y la aceptación, y no añadirles sal, azúcar ni edulcorantes, para que el bebé se acostumbre a los sabores naturales de los alimentos [1]. Las pautas varían mucho entre regiones y culturas, y no se deben dar instrucciones rígidas [1].
 
 En cuanto a la forma de ofrecer la comida, ningún método respetuoso con el bebé es mejor que otro [7]. Puedes elegir entre el método tradicional con purés o el baby-led weaning (BLW), también llamado alimentación guiada o autorregulada por el bebé [7]. Cuando el BLW se analiza en contextos en los que los padres han recibido información básica, no se han encontrado diferencias en estado nutricional, ingesta de hierro o atragantamientos [2]. El BLW favorece la alimentación perceptiva y basada en las señales de hambre y saciedad del niño, y favorece la preferencia por la comida sana y variada a medio y largo plazo [2]. Si optas por el BLW, al principio se debe ofrecer la comida tipo finger food o en palitos, para que el bebé pueda agarrarla con su puño y comer lo que sobresale. Cuando la habilidad motora mejora, se pueden ofrecer comidas seguras cortadas en pequeños trozos [5].
@@ -46,12 +44,10 @@ Establecer rutinas puede ayudar [6]:
 
 En cuanto a los alimentos potencialmente alergénicos, no hay evidencia de que retrasar su introducción más allá de los 6 meses prevenga el desarrollo de alergia [8]. Se recomienda el seguimiento de las pautas de la OMS: mantenimiento de la lactancia materna e introducción progresiva de los distintos alimentos alrededor del sexto mes, nunca antes del cuarto mes, de uno en uno, según las costumbres familiares [8].
 
-## Cuándo ver a un médico o acudir a urgencias
-
+## Cuándo acudir al médico o a urgencias
 Consulta con el pediatra si tu bebé no muestra interés por la comida cuando ya tiene alrededor de 6 meses, si no es capaz de mantener la postura de sedestación con apoyo, o si presenta dificultades para tragar o signos de atragantamiento frecuente. También debes consultar si observas signos de alergia tras introducir un alimento nuevo, como erupciones, hinchazón o dificultad para respirar. Ante cualquier duda sobre el crecimiento o la aceptación de alimentos, acude a tu pediatra.
 
 ## Preguntas frecuentes
-
 **¿Puedo empezar antes de los 6 meses?**
 En lactantes no amamantados, la alimentación se puede introducir entre el cuarto y el sexto mes, siempre que el lactante presente signos de que ya está listo [10]. En bebés amamantados, se recomienda mantener la lactancia materna exclusiva durante los 6 primeros meses [3].
 
@@ -62,7 +58,6 @@ Ningún método respetuoso con el bebé es mejor que otro [7]. Ambos son válido
 No lo interpretes como un rechazo permanente. Sigue ofreciéndolo en los siguientes días o semanas sin presionar; pueden ser necesarias hasta 10-15 ocasiones para conseguir la aceptación [6].
 
 ## Fuentes
-
 [1] AEP — "Recomendaciones de la AEP sobre la alimentación complementaria" (2018), section "ALIMENTACIÓN COMPLEMENTARIA ¿QUÉ ALIMENTOS UTILIZAR Y CON QUÉ SECUENCIA?", p. 7
 [2] AEP — "Recomendaciones de la AEP sobre la alimentación complementaria" (2018), section "ALIMENTACIÓN COMPLEMENTARIA ¿Y si comparamos el BLW con el abordaje tradicional con purés?", p. 17
 [3] AEP — "Recomendaciones de la AEP sobre la alimentación complementaria" (2018), section "ALIMENTACIÓN COMPLEMENTARIA ¿CUÁNDO COMENZAR? ¿Cuánto tiempo se recomienda mantener la lactancia materna de forma exclusiva?", p. 3

@@ -73,7 +73,6 @@ Do not give any medication for diarrhea or vomiting without consulting a pediatr
 Keep sick children out of school, daycare, or pools until vomiting has stopped [7].
 
 ## Sources
-
 [1] SEUP — "Gastroenteritis aguda. Información para padres", section "¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1
 [2] SEUP — "Gastroenteritis aguda. Información para padres", section "Ofrecer en pequeñas cantidades SRO Dolor abdominal", p. 2
 [3] SEUP — "Gastroenteritis aguda. Información para padres", section "¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?", p. 1

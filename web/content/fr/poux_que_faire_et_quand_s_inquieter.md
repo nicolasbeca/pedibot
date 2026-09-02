@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Les poux de tête sont de petits insectes qui vivent sur le cuir chevelu et se nourrissent de sang humain [6][8]. Les adultes ont la taille d’une graine de sésame, et leurs œufs, appelés lentes, sont encore plus petits [8]. On les trouve souvent près du cuir chevelu, surtout à la nuque et derrière les oreilles [8].
 
 Les poux se transmettent par contact direct de tête à tête avec une personne infestée [2][5]. Ils ne sautent pas et ne volent pas : ils rampent [5]. Ils ne sont pas causés par des cheveux sales [2]. Les animaux domestiques ne transmettent pas les poux humains [5].
@@ -29,7 +28,6 @@ Les poux se transmettent par contact direct de tête à tête avec une personne 
 Les symptômes incluent une sensation de chatouillement dans les cheveux, des démangeaisons fréquentes, des plaies dues au grattage et des difficultés à dormir, car les poux sont plus actifs dans le noir [9]. Le diagnostic se fait en voyant un pou ou une lente, parfois avec une loupe et un peigne fin [9].
 
 ## Ce que vous pouvez faire à la maison
-
 Traitez les poux dès que vous les repérez, sans consulter un médecin [2]. Vérifiez toutes les personnes qui vivent avec vous ou ont un contact proche, et traitez le même jour toute personne infestée [2]. Il n’est pas nécessaire de garder votre enfant à la maison à cause des poux [2].
 
 - **Peignage humide** : lavez les cheveux avec un shampoing ordinaire, appliquez beaucoup d’après-shampoing, puis peignez des racines aux pointes avec un peigne fin spécial [4]. Comptez environ 10 minutes pour les cheveux courts, 20 à 30 minutes pour les cheveux longs, frisés ou bouclés [4]. Refaites un passage complet une seconde fois [4]. Répétez aux jours 1, 5, 9 et 13, puis vérifiez à nouveau au jour 17 [4].
@@ -39,11 +37,9 @@ Traitez les poux dès que vous les repérez, sans consulter un médecin [2]. Vé
 Évitez les traitements non recommandés comme les produits à base de perméthrine, les répulsifs, les peignes électriques, les huiles végétales (arbre à thé, eucalyptus, lavande) et les remèdes à base de plantes, car ils ne fonctionnent probablement pas [1]. N’utilisez jamais de kérosène ou d’essence : c’est dangereux et inflammable [10]. Il n’y a pas de preuve que la mayonnaise ou l’huile d’olive étouffent les poux [10].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez votre médecin ou demandez conseil à un pharmacien si une lotion ou un spray ne fonctionne pas [1][7]. Parlez-en aussi à votre médecin avant tout traitement si vous êtes enceinte ou si vous allaitez, ou pour un jeune enfant [7]. Consultez si les plaies de grattage semblent infectées par des bactéries [9].
 
 ## Questions fréquentes
-
 **Peut-on prévenir les poux ?**
 Non, il n’y a rien à faire pour les prévenir [3]. Vous pouvez aider à stopper leur propagation en peignant régulièrement avec un peigne de détection [3]. N’utilisez pas de lotions ou sprays médicamenteux en prévention : ils peuvent irriter le cuir chevelu [3].
 
@@ -57,7 +53,6 @@ Il n’est pas nécessaire de le garder à la maison [2]. Vérifiez toutefois le
 Seul le pou de corps peut transmettre des maladies ; le pou de tête ne le fait pas [5].
 
 ## Sources
-
 [1] NHS — "Head lice and nits" (2024), section "Medicated lotions and sprays", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/
 [2] NHS — "Head lice and nits" (2024), section "Head lice and nits", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/
 [3] NHS — "Head lice and nits" (2024), section "You cannot prevent head lice", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/

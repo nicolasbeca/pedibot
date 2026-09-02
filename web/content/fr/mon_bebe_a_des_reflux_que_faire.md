@@ -19,7 +19,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Le reflux, c'est quand un bébé remonte du lait ou vomit pendant ou juste après la tétée. C'est très fréquent et cela s'améliore généralement tout seul [1]. Le reflux commence souvent avant 8 semaines et disparaît vers l'âge de 1 an [1].
 
 Les symptômes du reflux incluent :
@@ -35,7 +34,6 @@ Parfois, un bébé peut avoir des signes de reflux sans vomir : c'est ce qu'on a
 Le reflux arrive souvent parce que l'anneau musculaire dans l'œsophage du bébé est faible, ce qui permet au lait de remonter facilement. Ce muscle se renforce avec l'âge et le reflux s'arrête [3].
 
 ## Ce que vous pouvez faire à la maison
-
 Il est courant qu'un bébé de moins de 1 an remonte un peu de lait pendant ou après un repas, sans être gêné. Votre bébé n'a généralement pas besoin de voir un médecin pour un reflux, s'il est content, en bonne santé et prend du poids [4].
 
 Si les symptômes semblent gêner votre bébé, vous pouvez :
@@ -50,7 +48,6 @@ Si les symptômes semblent gêner votre bébé, vous pouvez :
 Si votre bébé est nourri au biberon, un médecin peut recommander une poudre à mélanger au lait pour l'épaissir, ou un lait pré-épaissi. Si cela ne suffit pas ou si votre bébé est allaité, des médicaments peuvent aider contre la gêne du reflux et réduire l'acidité de l'estomac [2]. Ne donnez jamais de médicament sans avis médical.
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez votre médecin si votre bébé :
 - Ne s'améliore pas après avoir essayé ces conseils
 - A un reflux pour la première fois après l'âge de 6 mois
@@ -70,8 +67,7 @@ Demandez une consultation urgente ou allez aux urgences si votre bébé :
 
 En cas de doute, parlez-en à votre médecin.
 
-## Preguntas frecuentes
-
+## Questions fréquentes
 **Mon bébé a des reflux et pleure beaucoup, est-ce des coliques ?**
 Les coliques peuvent ressembler au reflux. Un bébé peut avoir des coliques s'il pleure plus de 3 heures par jour, 3 jours par semaine, pendant au moins 1 semaine, tout en étant par ailleurs en bonne santé. Pendant les pleurs, il peut serrer les poings, devenir rouge, ramener les genoux vers le ventre ou avoir le ventre qui gargouille [7]. Les coliques commencent vers quelques semaines et s'arrêtent vers 3 à 4 mois [7]. Si vous n'êtes pas sûr de la cause des pleurs, parlez-en à votre médecin [7].
 
@@ -82,7 +78,6 @@ Oui, les symptômes d'une allergie aux protéines de lait de vache peuvent resse
 Les premières dents apparaissent souvent vers 6 mois, mais cela varie beaucoup [9]. Le reflux, lui, commence généralement avant 8 semaines [1]. Si votre bébé a plus de 6 mois et présente un reflux pour la première fois, consultez votre médecin [5].
 
 ## Sources
-
 [1] NHS — "Reflux in babies" (2025), section "Reflux in babies", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/
 [2] NHS — "Reflux in babies" (2025), section "Treatment for reflux in babies", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/
 [3] NHS — "Reflux in babies" (2025), section "Causes of reflux", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/

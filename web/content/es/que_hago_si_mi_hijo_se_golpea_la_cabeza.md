@@ -17,13 +17,11 @@ draft: false
 ---
 
 ## Qué es
-
 Un traumatismo craneal es el término médico para describir un golpe en la cabeza, que generalmente ocurre debido a una caída, un accidente o durante la práctica de un deporte [2]. La mayoría de estos golpes son leves y no representan un peligro [3]. El cráneo es duro y protege el cerebro, pero algunas lesiones pueden ser más graves, como una fractura, conmoción cerebral o traumatismo cerebral [6].
 
 Los síntomas más habituales tras un golpe en la cabeza son: dolor de cabeza, confusión, pérdida de memoria transitoria, sensación de mareo, náuseas, vómitos y somnolencia [2].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 - Vigile al niño o niña durante las primeras 24 horas tras el golpe para detectar síntomas de gravedad [3].
 - Si tiene dolor de cabeza, puede administrar ibuprofeno o paracetamol en las dosis indicadas por su médico [4].
 - Puede dormir, pero en casos de traumatismos más importantes, es recomendable despertarlo cada 4 horas [4].
@@ -34,8 +32,7 @@ Los síntomas más habituales tras un golpe en la cabeza son: dolor de cabeza, c
 
 La mayoría de los niños se recuperan rápidamente, aunque algunos pueden presentar síntomas durante varias horas o incluso días, especialmente en casos donde el traumatismo ha sido más importante [4].
 
-## Cuándo ver a un médico o acudir a urgencias
-
+## Cuándo acudir al médico o a urgencias
 Debe consultarse en urgencias si presenta alguno de los siguientes síntomas o si tiene un comportamiento o actitud que le preocupe [5]:
 
 - Dolor de cabeza intenso, progresivo o que no mejora con la medicación habitual (paracetamol o ibuprofeno) [1].
@@ -55,7 +52,6 @@ También se recomienda acudir a urgencias en los siguientes casos [5]:
 - Si la caída fue desde una altura superior a un metro.
 
 ## Preguntas frecuentes
-
 **¿Cómo puedo prevenir los traumatismos craneales?**
 Se pueden adoptar medidas de seguridad: usar cascos homologados y de tamaño adecuado al utilizar bicicletas, monopatines, patinetes o durante deportes como el esquí; no dejar a los niños pequeños sin vigilancia; utilizar sillas de seguridad homologadas en los vehículos; y proteger ventanas y escaleras con barreras de seguridad [3].
 
@@ -66,7 +62,6 @@ Generalmente no es necesario realizar ninguna prueba. Es importante vigilar al n
 Se recomienda reposo físico y mental entre 24 y 48 horas. Después, la reincorporación a las actividades habituales debe hacerse de forma gradual [1].
 
 ## Fuentes
-
 [1] SEUP — "Traumatismo craneal. Información para padres", section "¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?", p. 1, 2
 [2] SEUP — "Traumatismo craneal. Información para padres", section "¿QUÉ ES UN TRAUMATISMO CRANEAL?", p. 1
 [3] SEUP — "Traumatismo craneal. Información para padres", section "¿CÓMO PODEMOS PREVENIR LOS TRAUMATISMOS CRANEALES?", p. 2

@@ -16,7 +16,6 @@ draft: false
 ---
 
 ## What it is
-
 Sunburn is damage to the skin caused by too much sun [1]. Ultraviolet (UV) rays are an invisible form of radiation that can pass through the skin and damage skin cells [5]. Sunburns are a sign of skin damage [5].
 
 Symptoms of sunburn include skin that feels hot to touch, feels sore or painful, or flakes or peels a few days later [1]. Skin may also blister if the sunburn is severe [1]. On white skin, the skin will usually be red or pink [1]. On black or brown skin, you may not notice a change in skin colour [1].
@@ -24,7 +23,6 @@ Symptoms of sunburn include skin that feels hot to touch, feels sore or painful,
 Sunburn usually gets better within 7 days [1]. Getting sunburnt can increase the risk of skin cancer [3]. UV rays can cause skin damage during any season or at any temperature [5].
 
 ## What you can do at home
-
 You can treat sunburn yourself [1]. Here is what to do:
 
 - Get out of the sun as soon as possible [4].
@@ -45,7 +43,6 @@ Do not do these things:
 To prevent sunburn in the future, protect your child by staying out of the sun when it is strongest, between 10 a.m. and 2 p.m. [5]. Use sunscreen with an SPF of 15 or higher [5]. Wear protective clothing and wraparound sunglasses that provide 100% UV ray protection [5]. Avoid sunlamps and tanning beds [5]. Check your skin regularly for changes in the size, shape, colour, or feel of birthmarks, moles, and spots [5].
 
 ## When to see a doctor or go to the emergency department
-
 Ask for an urgent GP appointment or get help from NHS 111 if your child has been out in the sun and has any of these signs [3]:
 
 - Skin is blistered or swollen [3].
@@ -58,7 +55,6 @@ Ask for an urgent GP appointment or get help from NHS 111 if your child has been
 Call 111 if you need advice for a child under 5 years old [3]. Severe sunburn can lead to heat exhaustion and heatstroke, which can be very serious [3].
 
 ## Common questions
-
 **Can I pop sunburn blisters?**
 No. Do not pop any blisters [2]. Let them heal on their own.
 
@@ -72,7 +68,6 @@ No. Suntans are not healthy either [5]. They appear after the sun's rays have al
 Yes. UV rays can cause skin damage during any season or at any temperature [5]. Protect skin even when it is not sunny.
 
 ## Sources
-
 [1] NHS — "Sunburn" (2025), section "Sunburn", p. 1 — https://www.nhs.uk/conditions/sunburn/
 [2] NHS — "Sunburn" (2025), section "Don’t", p. 1 — https://www.nhs.uk/conditions/sunburn/
 [3] NHS — "Sunburn" (2025), section "A pharmacist can help with sunburn", p. 1 — https://www.nhs.uk/conditions/sunburn/

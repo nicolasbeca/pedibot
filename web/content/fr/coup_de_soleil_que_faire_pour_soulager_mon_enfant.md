@@ -17,7 +17,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Le coup de soleil est une lésion de la peau causée par une exposition excessive au soleil [1]. Il guérit généralement en 7 jours [1]. Les rayons ultraviolets (UV) sont une forme de rayonnement invisible qui peut endommager les cellules de la peau [5]. Les coups de soleil sont un signe de dommages cutanés, et les bronzages ne sont pas sains non plus [5].
 
 Les symptômes possibles incluent :
@@ -29,7 +28,6 @@ Les symptômes possibles incluent :
 Sur une peau blanche, la peau devient rouge ou rose. Sur une peau noire ou brune, le changement de couleur peut ne pas être visible [1].
 
 ## Ce que vous pouvez faire à la maison
-
 - Sortez du soleil dès que possible [4]
 - Refroidissez la peau avec une douche ou un bain frais, ou un linge humide – veillez à ce que bébé ou jeune enfant n’ait pas trop froid [4]
 - Appliquez une crème ou un spray après-soleil, ou une crème hydratante sans parfum [4]
@@ -47,7 +45,6 @@ Sur une peau blanche, la peau devient rouge ou rose. Sur une peau noire ou brune
 Pour prévenir les coups de soleil : évitez le soleil entre 10 h et 14 h, utilisez un écran solaire avec un FPS de 15 ou plus, portez des vêtements protecteurs et des lunettes de soleil enveloppantes avec protection UV à 100 % [5]. Évitez les lampes solaires et les lits de bronzage [5]. Vérifiez régulièrement la peau pour tout changement de taille, forme, couleur ou texture des grains de beauté et taches [5].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez rapidement un médecin ou les urgences si, après une exposition au soleil, votre enfant présente :
 - Une peau avec cloques ou gonflée [3]
 - Une température très élevée, ou une sensation de chaud, de froid ou de frissons [3]
@@ -58,8 +55,7 @@ Consultez rapidement un médecin ou les urgences si, après une exposition au so
 
 Un coup de soleil sévère peut entraîner une épuisement par la chaleur ou un coup de chaleur, qui peuvent être très graves [3]. Un coup de soleil augmente également le risque de cancer de la peau [3].
 
-## Preguntas frecuentes
-
+## Questions fréquentes
 **Puis-je donner du paracétamol ou de l’ibuprofène à mon enfant ?**
 Oui, pour la douleur, en suivant la notice [4]. Attention : ne donnez pas de paracétamol à un enfant de moins de 2 mois, et pas d’ibuprofène à un enfant de moins de 3 mois ou de moins de 5 kg [6]. Ne combinez pas ibuprofène et paracétamol sans avis médical [6]. Ne donnez pas d’ibuprofène aux enfants asthmatiques [6].
 
@@ -70,7 +66,6 @@ Non, ne percez jamais les cloques [2].
 Il guérit généralement en 7 jours [1]. La peau peut peler quelques jours après [1].
 
 ## Sources
-
 [1] NHS — "Sunburn" (2025), section "Sunburn", p. 1 — https://www.nhs.uk/conditions/sunburn/
 [2] NHS — "Sunburn" (2025), section "Don’t", p. 1 — https://www.nhs.uk/conditions/sunburn/
 [3] NHS — "Sunburn" (2025), section "A pharmacist can help with sunburn", p. 1 — https://www.nhs.uk/conditions/sunburn/

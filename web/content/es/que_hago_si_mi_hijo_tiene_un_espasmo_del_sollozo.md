@@ -15,21 +15,18 @@ draft: false
 ---
 
 ## Qué es
-
 Los espasmos del sollozo son episodios que no son graves ni peligrosos. Ocurren cuando un niño o niña, tras un susto fuerte, una caída o por enfado, llora o intenta llorar y deja de respirar durante unos segundos, poniéndose morado o pálido [1]. Generalmente, luego rompe a llorar [1]. A veces puede desmayarse o realizar movimientos como sacudidas [1]. Popularmente, se dice que el niño o niña se ha “privado”, “enganchado” o “encanado” [1].
 
 Son frecuentes en niños y niñas de entre 6 meses y 5 años [1]. La duración es breve, habitualmente menos de 1 minuto, y el niño se recupera rápidamente [2]. Son benignos y no producen ningún daño en ese momento ni causan complicaciones en el futuro [2]. No se pueden prevenir y acaban desapareciendo antes de los 5 años [3].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 Cuando ocurre un episodio, es normal sentir ansiedad y preocupación, pero es importante intentar mantener la calma, ya que se resolverá solo sin hacer nada [4].
 
 - Mantenga la calma [4].
 - Espere unos segundos; el episodio se resolverá solo [3][4].
 - No zarandee, agite, haga el boca a boca, reanime ni grite al niño o niña, ya que esto podría incluso empeorar la situación [4].
 
-## Cuándo acudir a un servicio de urgencias
-
+## Cuándo acudir al médico o a urgencias
 Acuda a urgencias si ocurre alguna de estas situaciones [3]:
 
 - Es la primera vez que le ocurre.
@@ -42,7 +39,6 @@ Acuda a urgencias si ocurre alguna de estas situaciones [3]:
 Si los episodios son muy frecuentes o si tiene dudas, puede o debe consultar a su pediatra [3]. Si es posible, grabe el episodio para poder enseñárselo al pediatra [3].
 
 ## Preguntas frecuentes
-
 **¿Los espasmos del sollozo causan daño al cerebro o al corazón?**
 No. Son benignos y no producen ningún daño al niño o niña en ese momento ni le van a causar complicaciones en el futuro [2].
 
@@ -59,7 +55,6 @@ La duración es breve, habitualmente menos de 1 minuto, y el niño se recupera r
 A veces puede desmayarse o realizar movimientos como sacudidas [1]. Sin embargo, si se desmaya o realiza movimientos anormales, debe acudir a urgencias [3].
 
 ## Fuentes
-
 [1] SEUP — "Espasmos del sollozo. Información para padres" (2025), section "¿QUÉ SON LOS ESPASMOS DEL SOLLOZO? ¿CUÁLES SON LOS SÍNTOMAS?", p. 1
 [2] SEUP — "Espasmos del sollozo. Información para padres" (2025), section "¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 1
 [3] SEUP — "Espasmos del sollozo. Información para padres" (2025), section "¿CUÁNDO ACUDIR A UN SERVICIO DE URGENCIAS?", p. 1

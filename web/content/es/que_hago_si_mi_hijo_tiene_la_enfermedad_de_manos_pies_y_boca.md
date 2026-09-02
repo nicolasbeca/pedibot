@@ -20,13 +20,11 @@ draft: false
 ---
 
 ## Qué es
-
 La enfermedad de manos, pies y boca es una infección común en niños menores de 5 años, aunque cualquiera puede contagiarse [2]. No es lo mismo que la fiebre aftosa que afecta al ganado [4]. Suele causar fiebre, llagas dolorosas en la boca y sarpullido en manos y pies [2]. La mayoría de los niños tienen síntomas leves que duran de 7 a 10 días [2]. Las complicaciones son raras [2].
 
 Es muy contagiosa y se propaga por la tos, los estornudos, las heces y el líquido de las ampollas [3]. Puedes contagiarte más de una vez [3]. Se empieza a contagiar unos días antes de tener síntomas, pero el mayor riesgo es durante los primeros 5 días después de que aparezcan [3].
 
 ## Qué puedes hacer en casa
-
 La enfermedad suele mejorar sola en 7 a 10 días [6]. No hay antibióticos ni medicamentos que la curen [6]. Para aliviar los síntomas:
 
 - Ofrece líquidos fríos para calmar la boca y evitar la deshidratación. Evita bebidas ácidas como el zumo de frutas [6].
@@ -44,7 +42,6 @@ Para evitar contagiar a otros [3]:
 Tu hijo puede volver a la escuela o guardería cuando se sienta mejor. No hace falta esperar a que todas las ampollas se curen [10]. Mantenerlo alejado más tiempo no evitará el contagio [10].
 
 ## Cuándo acudir al médico o a urgencias
-
 Pide cita con el médico de cabecera si [1]:
 
 - Los síntomas no mejoran después de 7 a 10 días [1].
@@ -59,7 +56,6 @@ Busca atención urgente o llama al 111 si [1]:
 Antes de ir a la consulta, avisa porque la enfermedad es contagiosa. Pueden sugerir una consulta telefónica [1].
 
 ## Preguntas frecuentes
-
 ¿Puedo contagiarme como adulto? Sí, la enfermedad también afecta a adultos [4].
 
 ¿Es grave? Generalmente no es grave, pero es muy contagiosa [2]. La mayoría se recupera sola en 7 a 10 días [2].
@@ -71,7 +67,6 @@ Antes de ir a la consulta, avisa porque la enfermedad es contagiosa. Pueden suge
 ¿Qué hago si estoy embarazada? Evita el contacto cercano con enfermos y habla con tu médico o matrona si has estado expuesta [5][7].
 
 ## Fuentes
-
 [1] NHS — "Hand, foot and mouth disease" (2024), section "A pharmacist can help with hand, foot and mouth disease", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/
 [2] CDC — "About Hand, Foot, and Mouth Disease", section "About Hand, Foot, and Mouth Disease Key points", p. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html
 [3] NHS — "Hand, foot and mouth disease" (2024), section "How to stop hand, foot and mouth disease spreading", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/

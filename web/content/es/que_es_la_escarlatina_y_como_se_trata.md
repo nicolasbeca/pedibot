@@ -24,7 +24,7 @@ La escarlatina es una infección contagiosa que afecta sobre todo a niños peque
 
 Un sarpullido de pequeñas protuberancias que se siente áspero, como papel de lija, podría ser escarlatina. Si cree que su hijo tiene escarlatina, hable con un médico [8]. La escarlatina dura aproximadamente una semana [3]. Puede contagiar a otras personas hasta 24 horas después de tomar la primera dosis de antibióticos. Si no toma antibióticos, puede contagiar la infección durante 2 a 3 semanas después de que comiencen los síntomas [3].
 
-## Qué puede hacer en casa
+## Qué puedes hacer en casa
 Mientras toma los antibióticos recetados por el médico, puede aliviar los síntomas de la escarlatina [5]:
 - Beba líquidos fríos.
 - Coma alimentos blandos si le duele la garganta.
@@ -63,7 +63,6 @@ Sí. Sin antibióticos, puede contagiar la infección durante 2 a 3 semanas desp
 No hay evidencia de que tener escarlatina durante el embarazo dañe al bebé. Pero puede hacer que se sienta mal, así que es mejor evitar el contacto cercano con quien la tenga. Contacte a un médico si tiene síntomas. Muchos antibióticos para la escarlatina se pueden tomar durante el embarazo [7].
 
 ## Fuentes
-
 [1] NHS — "Scarlet fever" (2024), section "Scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
 [2] NHS — "Scarlet fever" (2024), section "Complications of scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
 [3] NHS — "Scarlet fever" (2024), section "How long scarlet fever lasts", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/

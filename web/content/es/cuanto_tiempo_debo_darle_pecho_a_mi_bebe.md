@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## Qué es
-
 La lactancia materna ofrece muchos beneficios para tu bebé. La leche materna contiene el equilibrio adecuado de nutrientes para ayudar a tu bebé a crecer fuerte y sano. Algunos nutrientes de la leche materna también ayudan a proteger a tu bebé contra enfermedades e infecciones comunes de la infancia [1].
 
 Los expertos recomiendan que todos los bebés comiencen a amamantarse dentro de la primera hora después del nacimiento [4]. También recomiendan dar solo leche materna (lactancia exclusiva) durante los primeros 6 meses de vida [4]. Después de los 6 meses, se pueden introducir alimentos sólidos seguros y adecuados, pero se recomienda continuar con la lactancia hasta los 2 años o más [4].
@@ -28,7 +27,6 @@ La leche materna sigue siendo importante después de los 6 meses. Puede proporci
 La lactancia también beneficia a la madre. Reduce el riesgo de cáncer de ovario y de mama [2][3]. Amamantar exclusivamente a un bebé menor de 6 meses puede retrasar el regreso de la fertilidad [2][3].
 
 ## Qué puedes hacer en casa
-
 - Ofrece el pecho cada vez que tu bebé quiera, tanto de día como de noche [2].
 - Mantén a tu bebé contigo las 24 horas del día (habitación compartida) [2].
 - No des a tu bebé otros alimentos ni bebidas, ni siquiera agua, durante los primeros 6 meses, a menos que sea médicamente necesario [2].
@@ -37,14 +35,12 @@ La lactancia también beneficia a la madre. Reduce el riesgo de cáncer de ovari
 - Continúa amamantando frecuentemente mientras introduces alimentos sólidos [6].
 - Durante una enfermedad, aumenta la ingesta de líquidos, incluyendo amamantar con más frecuencia [6].
 
-## Cuándo consultar a un médico o ir al servicio de urgencias
-
+## Cuándo acudir al médico o a urgencias
 - Si tienes problemas con la lactancia, contacta a un consultor de lactancia [1].
 - Consulta con tu proveedor de atención médica si tienes dudas sobre si debes amamantar [1].
 - Algunos medicamentos, drogas ilegales y alcohol pueden pasar a través de la leche materna y causar daño a tu bebé. Consulta con tu proveedor de atención médica si tienes preocupaciones [1].
 
-## Preguntas comunes
-
+## Preguntas frecuentes
 **¿Puedo amamantar si tengo problemas de salud?**
 La mayoría de las mujeres con problemas de salud pueden amamantar [1]. Hay excepciones raras en las que se aconseja a las mujeres no amamantar debido a ciertas enfermedades [1]. Consulta con tu proveedor de atención médica.
 
@@ -61,7 +57,6 @@ Sí. La lactancia temprana, exclusiva y continuada protege a los bebés de enfer
 Los niños y adolescentes que fueron amamantados cuando eran bebés tienen menos probabilidades de tener sobrepeso u obesidad [3]. También obtienen mejores resultados en pruebas de inteligencia y tienen mayor asistencia escolar [3].
 
 ## Fuentes
-
 [1] MedlinePlus — "Breastfeeding" (2017), section "Introducción", p. 1 — https://medlineplus.gov/breastfeeding.html
 [2] WHO — "Infant and young child feeding", section "Breastfeeding", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding
 [3] WHO — "Infant and young child feeding", section "Breastfeeding", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding

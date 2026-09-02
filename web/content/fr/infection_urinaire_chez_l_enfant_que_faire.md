@@ -20,7 +20,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Une infection urinaire (IU) touche une partie du système urinaire : la vessie (cystite), l’urètre (urétrite) ou les reins (infection rénale) [3]. Elle est généralement causée par des bactéries provenant des selles qui entrent dans l’urètre [6].
 
 Chez les enfants, les symptômes peuvent inclure :
@@ -34,7 +33,6 @@ Chez les enfants, les symptômes peuvent inclure :
 - des douleurs dans le bas du ventre ou dans le dos, sous les côtes [3]
 
 ## Ce que vous pouvez faire à la maison
-
 Pour soulager les symptômes d’une infection urinaire :
 - Donnez du paracétamol liquide pour enfants, jusqu’à 4 fois par jour, afin de réduire la douleur et la fièvre [2]
 - Faites reposer votre enfant et assurez-vous qu’il boive assez de liquides pour uriner régulièrement des urines pâles pendant la journée [2]
@@ -48,7 +46,6 @@ Pour prévenir les infections urinaires ou leur retour :
 - Portez des sous-vêtements en coton [8]
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez rapidement un médecin si votre enfant a 15 ans ou moins et que vous pensez à une infection urinaire [7]. Demandez aussi un avis médical urgent si :
 - votre enfant a une température très élevée ou très basse, ou frissonne [7]
 - les symptômes s’aggravent rapidement ou ne s’améliorent pas dans les 48 heures après le début du traitement ou des soins à la maison [7]
@@ -58,8 +55,7 @@ Consultez rapidement un médecin si votre enfant a 15 ans ou moins et que vous p
 
 Rendez-vous immédiatement aux urgences si votre enfant est confus, somnolent ou a des difficultés à parler [7]. Une infection rénale non traitée peut être grave et provoquer un sepsis [7].
 
-## Preguntas frecuentes
-
+## Questions fréquentes
 **Mon enfant a besoin d’antibiotiques ?**
 Les infections urinaires sont parfois traitées par antibiotiques, mais ce n’est pas toujours nécessaire [3]. Un médecin peut faire un test d’urine, prescrire des antibiotiques pour une courte durée, ou demander d’attendre 48 heures pour voir si les symptômes disparaissent seuls [4]. S’ils sont prescrits, il est important de prendre tous les médicaments, même si l’enfant se sent mieux [4].
 
@@ -70,7 +66,6 @@ Il n’y a pas de preuve qu’ils soulagent les symptômes ou traitent une infec
 Si les symptômes ne disparaissent pas après un traitement, parlez-en à votre médecin. Une infection urinaire chronique est possible, même si les tests d’urine ne montrent rien [5].
 
 ## Sources
-
 [1] NHS — "Urinary tract infections (UTIs)" (2025), section "Symptoms in children", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/
 [2] NHS — "Urinary tract infections (UTIs)" (2025), section "Things you can do yourself", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/
 [3] NHS — "Urinary tract infections (UTIs)" (2025), section "Urinary tract infections (UTIs)", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/

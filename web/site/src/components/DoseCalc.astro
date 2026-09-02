@@ -1,11 +1,12 @@
 ---
 import { t, type Lang } from '../i18n';
 interface Props { lang: Lang; drug?: string; kg?: number }
-const { lang, drug = lang === 'es' ? 'Apiretal' : 'Calpol', kg = 14 } = Astro.props;
+const { lang, kg = 14 } = Astro.props;
 const s = t(lang);
+const { drug = s.dose_default_drug } = Astro.props;
 const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpol', 'Tylenol', 'Panadol', 'Apiretal', 'Termalgin', 'Gelocatil', 'Efferalgan', 'Doliprane', 'Tachipirina', 'Dalsy', 'Junifen', 'Apirofeno', 'Nurofen', 'Advil', 'Motrin', 'Alivium'];
 ---
-<div class="calc" data-lang={lang} data-strings={JSON.stringify({ every: s.dose_every, hours: s.dose_hours, max: s.dose_max, perday: s.dose_perday, check: s.dose_check, refer: s.dose_refer })}>
+<div class="calc" data-lang={lang} data-strings={JSON.stringify({ every: s.dose_every, hours: s.dose_hours, max: s.dose_max, perday: s.dose_perday, check: s.dose_check, refer: s.dose_refer, only_known: s.dose_only_known })}>
   <div>
     <div class="field"><label for="drug">{s.dose_drug}</label><input id="drug" list="drugs" value={drug} autocomplete="off" /><datalist id="drugs">{names.map(n => <option value={n} />)}</datalist></div>
     <div class="field"><label for="w">{s.dose_weight}</label><input id="w" type="number" min="1" max="120" step="0.5" value={kg} /></div>
@@ -42,7 +43,7 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
     if (!drug || !(kg > 0)) return;
     let country = null; try { country = localStorage.getItem('pedibot_country'); } catch (e) {}
     const r = await fetch('/api/dose', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ drug, weight_kg: kg, age_months: m === '' ? null : Number(m), country, lang }) });
-    if (!r.ok) { out.innerHTML = '<p>' + (lang === 'es' ? 'Solo paracetamol e ibuprofeno (o sus marcas: Apiretal, Dalsy, Calpol, Nurofen, Tylenol, Advil…).' : 'Only paracetamol/acetaminophen and ibuprofen — or a brand such as Calpol, Tylenol, Apiretal, Dalsy, Nurofen, Advil, Motrin.') + '</p>'; return; }
+    if (!r.ok) { out.innerHTML = '<p>' + S.only_known + '</p>'; return; }
     const j = await r.json();
     let h = `<div class="who">${esc(j.generic)}${j.brand ? ' (' + esc(j.brand) + ')' : ''} · ${j.weight_kg} kg</div>`;
     h += `<div class="big">${j.mg_min}–${j.mg_max} mg</div><p>${S.every} ${j.interval_hours[0]}–${j.interval_hours[1]} ${S.hours} · ${S.max} ${j.max_doses_per_day} ${S.perday}</p><table>`;

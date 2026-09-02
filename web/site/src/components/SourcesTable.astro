@@ -1,18 +1,19 @@
 ---
 import sources from '../data/sources.json';
-import type { Lang } from '../i18n';
+import { t, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const docs = (sources as any[]).filter(d => d.usage !== 'excluido');
 const groups: Record<string, any[]> = {};
 for (const d of docs) (groups[d.org_full || d.org] ??= []).push(d);
-const usageLabel = (u: string) => lang === 'es' ? (u === 'publico' ? 'hoja para padres' : 'referencia') : (u === 'publico' ? 'parent leaflet' : 'reference');
+const s = t(lang);
+const usageLabel = (u: string) => (u === 'publico' ? s.src_use_public : s.src_use_ref);
 ---
 {Object.entries(groups).map(([org, ds]) => (
   <section style="margin-top:32px">
     <h2 style="font-size:1.2rem">{org} <span class="n">({ds.length})</span></h2>
     <div style="overflow-x:auto"><table class="plain">
-      <thead><tr><th>{lang === 'es' ? 'Documento' : 'Document'}</th><th>{lang === 'es' ? 'Año' : 'Year'}</th><th>{lang === 'es' ? 'Idioma' : 'Lang'}</th><th>{lang === 'es' ? 'Uso' : 'Use'}</th></tr></thead>
+      <thead><tr><th>{s.src_col_doc}</th><th>{s.src_col_year}</th><th>{s.src_col_lang}</th><th>{s.src_col_use}</th></tr></thead>
       <tbody>{ds.map((d: any) => <tr><td>{d.url ? <a href={d.url} target="_blank" rel="noopener">{d.title}</a> : d.title}</td><td class="mono">{d.year ?? '—'}</td><td>{d.lang}</td><td>{usageLabel(d.usage)}</td></tr>)}</tbody>
     </table></div>
   </section>

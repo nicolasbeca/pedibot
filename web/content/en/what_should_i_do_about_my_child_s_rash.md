@@ -19,7 +19,6 @@ draft: false
 ---
 
 ## What it is
-
 Many childhood rashes are common and can be managed at home. The right approach depends on what the rash looks like and what other symptoms your child has.
 
 - **Molluscum contagiosum**: Small, firm, raised spots that can be the same colour as the skin, darker, or pink. It can usually be treated at home [1].
@@ -31,7 +30,6 @@ Many childhood rashes are common and can be managed at home. The right approach 
 - **Scabies**: Very itchy, raised spots caused by tiny mites. There may be raised lines with a dot at one end, often first appearing between the fingers. It can usually be treated at home [8].
 
 ## What you can do at home
-
 For many rashes, home care is enough. Always check with a pharmacist or doctor if you are unsure.
 
 - **For chickenpox** [6]:
@@ -52,11 +50,9 @@ For many rashes, home care is enough. Always check with a pharmacist or doctor i
 - **For molluscum contagiosum and scabies**: These can usually be treated at home. Speak to a pharmacist about the right treatment.
 
 ## When to see a doctor or go to the emergency department
-
 The sources provided do not list specific warning signs for when to see a doctor. If you are worried about your child's rash, or if it is not improving with home care, contact a healthcare professional for advice.
 
 ## Common questions
-
 **My baby has tiny spots on their face. Is this serious?**
 Very small spots called milia often appear on a baby's face when they are a few days old. They usually appear on the nose but can be on other parts of the face, inside the mouth, or on the scalp or chest. In young babies, they usually go away within a few weeks and do not need treatment [5].
 
@@ -67,7 +63,6 @@ A high temperature can be a symptom of both hand, foot and mouth disease and chi
 No. Do not use ibuprofen for chickenpox unless you are told to by a doctor, as it may cause serious skin infections [6]. You can use paracetamol to help with pain and discomfort [6].
 
 ## Sources
-
 [1] NHS — "Rashes in babies and children" (2024), section "Skin-coloured or pink spots", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/
 [2] NHS — "Rashes in babies and children" (2024), section "Symptoms of nappy rash", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/
 [3] NHS — "Rashes in babies and children" (2024), section "Symptoms of hand, foot and mouth disease", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/

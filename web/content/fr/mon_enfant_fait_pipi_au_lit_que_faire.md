@@ -39,7 +39,7 @@ Consultez votre médecin si :
 
 Si le problème persiste, votre médecin pourra proposer des options comme un réveil d’énurésie ou un médicament pour réduire la quantité d’urine produite la nuit [5]. Il vérifiera si le traitement fonctionne et pourra vous offrir un soutien si vous avez du mal à faire face [5]. Si ces traitements ne marchent pas, votre enfant pourra être orienté vers un spécialiste [5].
 
-## Preguntas frecuentes
+## Questions fréquentes
 **Est-ce que mon enfant va en guérir ?**
 Oui, la plupart des enfants et des jeunes finissent par ne plus faire pipi au lit [2].
 
@@ -53,7 +53,6 @@ Oui, le stress à la maison ou à l’école est une cause possible [1].
 Parlez-en à votre médecin. Il pourra suggérer un traitement adapté, comme un réveil d’énurésie ou un médicament [5].
 
 ## Sources
-
 [1] NHS — "Bedwetting in children" (2023), section "Causes of bedwetting", p. 1 — https://www.nhs.uk/conditions/bedwetting/
 [2] NHS — "Bedwetting in children" (2023), section "Bedwetting in children", p. 1 — https://www.nhs.uk/conditions/bedwetting/
 [3] NHS — "Bedwetting in children" (2023), section "Important: Bedwetting in young children is normal", p. 1 — https://www.nhs.uk/conditions/bedwetting/

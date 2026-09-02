@@ -16,13 +16,11 @@ draft: false
 ---
 
 ## Qué es
-
 La urticaria es la aparición en la piel de ronchas y habones que pican mucho [1]. El síntoma principal son los habones: placas rojas y elevadas en la piel [1]. Son evanescentes, es decir, mientras aparecen en una zona, desaparecen de otras [1]. Puede haber inflamación de manos, pies, codos y cara [1]. En la infancia, la mayoría de las urticarias están causadas por una infección; la causa alérgica es menos frecuente [1][2].
 
 El sarpullido puede aparecer en cualquier parte del cuerpo, en una sola zona o extenderse [7]. Puede picar, escocer o quemar [7]. En piel blanca se ve rosado o rojo; en piel morena o negra, el color puede ser más difícil de ver [7]. Los brotes suelen durar entre 5 y 7 días, aunque pueden continuar varias semanas sin que eso signifique mayor gravedad [2].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 - Vigile la aparición de dificultad para tragar o respirar [3].
 - Evite frotar la piel [3].
 - Evite baños o duchas con agua muy caliente [3].
@@ -33,7 +31,6 @@ El sarpullido puede aparecer en cualquier parte del cuerpo, en una sola zona o e
 En la mayoría de los casos no se necesita ningún estudio [2]. Coméntele a su pediatra habitual en la siguiente revisión lo que ha pasado [2].
 
 ## Cuándo acudir al médico o a urgencias
-
 Acuda a urgencias si su hijo presenta alguno de estos signos [2]:
 
 - Respira con dificultad.
@@ -45,7 +42,6 @@ Acuda a urgencias si su hijo presenta alguno de estos signos [2]:
 También debe buscar ayuda urgente si hay hinchazón alrededor de la boca o si le cuesta respirar [6]. La urticaria suele poder tratarse en casa, pero estos signos requieren atención inmediata [6].
 
 ## Preguntas frecuentes
-
 **¿Cuánto dura la urticaria?**
 Los brotes suelen durar entre 5 y 7 días, aunque pueden continuar durante varias semanas sin que eso signifique mayor gravedad [2].
 
@@ -59,7 +55,6 @@ Sí, puede comer su comida habitual, pero sin introducir alimentos nuevos en su 
 En la mayoría de las ocasiones no se necesita ningún estudio [2]. Aun así, coménteselo a su pediatra habitual en la siguiente revisión [2].
 
 ## Fuentes
-
 [1] SEUP — "Urticaria. Información para padres" (2025), section "¿QUÉ ES LA URTICARIA?", p. 1
 [2] SEUP — "Urticaria. Información para padres" (2025), section "¿CUÁNDO DEBE CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 1
 [3] SEUP — "Urticaria. Información para padres" (2025), section "¿QUÉ PODEMOS HACER EN CASA?", p. 1

@@ -25,7 +25,7 @@ Les compétences comme faire ses premiers pas, sourire pour la première fois ou
 ## Quand consulter un médecin ou aller aux urgences
 Agissez tôt si votre enfant ne fait pas une ou plusieurs étapes de son âge, s'il a perdu des compétences qu'il avait déjà, ou si vous avez d'autres inquiétudes [3]. Parlez-en à votre médecin, partagez vos préoccupations et demandez un dépistage du développement [3]. L'American Academy of Pediatrics recommande un dépistage général à 9, 18 et 30 mois, et un dépistage de l'autisme à 18 et 24 mois, ou dès qu'un parent ou un professionnel a une inquiétude [3]. Si vous ou le médecin êtes toujours inquiets, demandez une orientation vers un spécialiste pour une évaluation plus complète [3]. Vous pouvez aussi contacter le programme d'intervention précoce de votre région pour savoir si votre enfant peut recevoir de l'aide [3].
 
-## Preguntas frecuentes
+## Questions fréquentes
 **Mon enfant est-il en retard s'il ne fait pas une étape à la date exacte ?**
 Les étapes sont des repères, pas des dates fixes. Mais si votre enfant ne fait pas une ou plusieurs étapes, ou s'il perd des compétences, parlez-en à votre médecin [3].
 
@@ -36,7 +36,6 @@ Ne tardez pas. Discutez avec votre médecin, demandez un dépistage et, si besoi
 Non. Ils ne remplacent pas un dépistage standardisé et validé [2]. Ils servent à vous guider et à préparer vos échanges avec le médecin [3].
 
 ## Sources
-
 [1] CDC — "CDC's Developmental Milestones", section "CDC's Developmental Milestones What to know", p. 1 — https://www.cdc.gov/act-early/milestones/index.html
 [2] CDC — "CDC's Developmental Milestones", section "Resources", p. 1 — https://www.cdc.gov/act-early/milestones/index.html
 [3] CDC — "CDC's Developmental Milestones", section "Developmental Milestone Videos", p. 1 — https://www.cdc.gov/act-early/milestones/index.html

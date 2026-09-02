@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## What it is
-
 Screen time and sleep are both part of your child's 24-hour day. The World Health Organization (WHO) looks at physical activity, sedentary screen time, and sleep together because they all affect your child's health [3]. Less screen time and more sleep are linked to better cognitive development and healthier weight in children aged 1 to 4 years [3]. Sleep is essential for your child's cognitive, physical, and psychosocial development [6][10]. Healthy sleep and screen habits are formed early in life and can shape habits through childhood and into adulthood [6].
 
 WHO recommends specific amounts of sleep for young children:
@@ -38,7 +37,6 @@ For screen time, WHO recommends:
 Sedentary screen time means passively watching screen-based entertainment like TV, computers, or mobile devices. It does not include active screen-based games where movement is required [8].
 
 ## What you can do at home
-
 - Keep regular sleep and wake-up times for your child [1].
 - Replace screen time with more physical activity while preserving sufficient sleep [5].
 - When your child is sedentary, encourage reading and storytelling with a caregiver instead of screens [2][4][5].
@@ -47,11 +45,9 @@ Sedentary screen time means passively watching screen-based entertainment like T
 - The greatest health benefits come from meeting all three recommendations: more physical activity, less screen time, and longer sleep [3].
 
 ## When to see a doctor or go to the emergency department
-
 These guidelines are for healthy children under 5 years of age [5]. If your child has a disability or a medical condition, you may need additional guidance from a health professional [5][7]. These guidelines do not specifically address the needs of children with disabilities or chronic disease, and parents should seek advice from health professionals or early intervention services if needed [7][9]. If you have concerns about your child's sleep, screen use, or development, talk to your doctor or paediatrician.
 
 ## Common questions
-
 **Is any screen time okay for my 1-year-old?**
 No. WHO recommends no screen time for 1-year-olds [2][4]. For 2-year-olds, screen time should be no more than 1 hour, and less is better [2][4].
 
@@ -68,7 +64,6 @@ Reading and storytelling with a caregiver is encouraged when your child is seden
 Children 1–2 years should spend at least 180 minutes in physical activity of any intensity spread throughout the day [1]. Children 3–4 years should spend at least 180 minutes in physical activity, with at least 60 minutes being moderate-to-vigorous intensity [1]. More is better [1].
 
 ## Sources
-
 [1] WHO — "Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age" (2019), section "SEDENTARY SCREEN TIME SEDENTARY SCREEN TIME GOOD QUALITY SLEEP GOOD QUALITY SLEEP PHYSICAL ACTIVITY PHYSICAL ACTIVITY", p. 11
 [2] WHO — "Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age" (2019), section "minutes", p. 11, 12
 [3] WHO — "Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age" (2019), section "Rationale", p. 24

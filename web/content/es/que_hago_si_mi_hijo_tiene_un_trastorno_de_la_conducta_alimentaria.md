@@ -18,13 +18,11 @@ draft: false
 ---
 
 ## Qué es
-
 Los trastornos de la conducta alimentaria (TCA) son un trastorno mental. Se caracterizan por una conducta alterada frente a la ingesta de alimentos, junto con pensamientos erróneos y una elevada preocupación por el peso, la dieta y la imagen corporal [1]. Pueden conllevar graves problemas físicos, psicológicos y sociales [1].
 
 Suelen aparecer durante la adolescencia y la juventud [8]. Son más frecuentes en las adolescentes que en los varones de esa misma edad [8]. Pueden afectar a la salud física y, a menudo, coexisten con depresión, ansiedad y consumo indebido de sustancias [8]. La anorexia nerviosa puede llevar a la muerte prematura, a menudo debido a complicaciones médicas o al suicidio [8].
 
 ## Qué puedes hacer en casa
-
 Si detectas señales de alarma en un familiar, puedes ayudar de las siguientes maneras [7]:
 
 - Crea un ambiente seguro y de comprensión, evitando juicios y críticas.
@@ -34,8 +32,7 @@ Si detectas señales de alarma en un familiar, puedes ayudar de las siguientes m
 - Fomenta un ambiente saludable y tranquilo en las ingestas. Intenta llevar una alimentación saludable en casa.
 - Se recomienda realizar cinco ingestas al día (desayuno, media mañana, comida, merienda y cena), comer sentados y con los convivientes habituales del domicilio [7].
 
-## Cuándo acudir a un médico o a urgencias
-
+## Cuándo acudir al médico o a urgencias
 En España, si sospechas de un TCA, el circuito a seguir es acudir al centro de salud de atención primaria de referencia e informar de la situación. Si es preciso, se realizará una derivación al centro de salud mental infanto-juvenil de referencia [6]. También existen recursos para solicitar ayuda urgente, tanto telefónicamente como en los servicios de urgencias de pediatría [6].
 
 Es aconsejable acudir al servicio de urgencias en caso de presentar [3]:
@@ -46,7 +43,6 @@ Es aconsejable acudir al servicio de urgencias en caso de presentar [3]:
 - Alteraciones de conducta graves.
 
 ## Preguntas frecuentes
-
 **¿Cuáles son las señales de alarma físicas?**
 Presta atención a estos signos físicos [2]:
 - Trastornos menstruales.
@@ -70,7 +66,6 @@ Los signos psicológicos incluyen [2]:
 Observa si hay cambios en los hábitos alimentarios o rituales extraños con la comida [4]. También son señales la práctica de ejercicio físico excesivo, la obsesión por pesarse continuamente, el creciente interés por cocinar o la moda, acudir al baño o a la habitación inmediatamente después de las ingestas, y comprar o consumir productos para adelgazar [4].
 
 ## Fuentes
-
 [1] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "¿QUÉ SON LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA (TCA)?", p. 1
 [2] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "PREVENCIÓN Y MANEJO DE LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA", p. 1
 [3] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2

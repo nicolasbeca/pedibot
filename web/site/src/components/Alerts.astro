@@ -1,11 +1,12 @@
 ---
 import alerts from '../data/alerts.json';
-import type { Lang } from '../i18n';
+import { t, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const items = (alerts as any[]).slice(0, 3);
-const title = lang === 'es' ? 'Avisos de salud pública' : 'Public health notices';
-const hint = lang === 'es' ? 'De organismos oficiales, filtrados a salud infantil. Enlazan al original.' : 'From official bodies, filtered to child health. Links go to the original.';
+const s = t(lang);
+const title = s.alerts_title;
+const hint = s.alerts_hint;
 ---
 {items.length > 0 && (
   <section class="alerts" aria-label={title}>

@@ -19,7 +19,6 @@ draft: false
 ---
 
 ## What it is
-
 Almost everyone has had a headache. It is the most common form of pain and a major reason children miss school or visit the doctor [4]. Most headaches go away on their own and are not a sign of something more serious [2].
 
 The most common type is a tension headache, caused by tight muscles in the shoulders, neck, scalp and jaw. These are often linked to stress, depression or anxiety [4]. Other common types include migraines, cluster headaches and sinus headaches [4].
@@ -37,7 +36,6 @@ Common causes of headaches in children include:
 Headaches can last 30 minutes, several hours, or sometimes several days [2]. Keeping a headache diary might help you work out what triggers your child's headaches [3].
 
 ## What you can do at home
-
 You can ease most headaches yourself with simple measures [2].
 
 Do:
@@ -54,7 +52,6 @@ Do not:
 - Give your child alcohol [5]
 
 ## When to see a doctor or go to the emergency department
-
 Most headaches are not serious, but sometimes you need medical help [1].
 
 See a GP if:
@@ -86,7 +83,6 @@ Also get medical help right away if your child has a headache after a blow to th
 Do not drive to A&E. Ask someone to drive you or call 999 and ask for an ambulance. Bring any medicines you take with you [1].
 
 ## Common questions
-
 **Can a headache be a sign of something serious?**
 Most headaches are not serious [2]. But sometimes headaches warn of a more serious disorder [4]. Sudden, severe headaches should be reported to your health care provider [4].
 
@@ -99,7 +95,6 @@ Breath-holding is when a baby or child stops breathing for up to 1 minute and ma
 Call 999 if your child faints and cannot be woken up, is stiff, shaking or jerking, or if their lips, tongue, face or skin suddenly turn pale, blue or grey. On black or brown skin this may be easier to see on the palms of the hands or the soles of the feet. If a doctor has not previously told you it is breath-holding, get it checked immediately [8].
 
 ## Sources
-
 [1] NHS — "Headaches" (2024), section "When and where to get medical help", p. 1 — https://www.nhs.uk/conditions/headaches-in-children/
 [2] NHS — "Headaches" (2024), section "Headaches", p. 1 — https://www.nhs.uk/conditions/headaches-in-children/
 [3] NHS — "Headaches" (2024), section "What can cause headaches", p. 1 — https://www.nhs.uk/conditions/headaches-in-children/

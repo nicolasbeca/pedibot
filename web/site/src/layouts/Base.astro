@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { t, langPrefix, LANGS, type Lang } from '../i18n';
+import { t, langPrefix, LANGS, LANG_NAMES, type Lang } from '../i18n';
 interface Props { lang: Lang; title: string; description: string; path: string; jsonld?: object;
   // Guides have a different slug per language, so the page passes the real counterparts here:
   // { es: '/es/guides/…', fr: null } — an explicit null means "not translated yet", and that
@@ -36,7 +36,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     <link rel="alternate" hreflang={a.lang} href={`${site}${a.href === '/' ? '' : a.href}`} />
   ))}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="alternate" type="application/rss+xml" title="PediBot guides" href={lang === 'es' ? '/es/rss.xml' : '/rss.xml'} />
+  <link rel="alternate" type="application/rss+xml" title="PediBot guides" href={`${langPrefix(lang)}/rss.xml`} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
@@ -58,20 +58,28 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
         pedibot
       </a>
       <nav class="hide-sm">
-        <a class="pill" href={`${langPrefix(lang) || ''}/#how`}>{s.nav_how}</a>
+        <a class="pill lg-only" href={`${langPrefix(lang) || ''}/#how`}>{s.nav_how}</a>
         <a class="pill" href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a>
         <a class="pill" href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a>
-        <a class="pill" href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a>
-        <a class="pill" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a>
+        <a class="pill md-only" href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a>
+        <a class="pill sm-only" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a>
         <a class="pill" href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a>
       </nav>
-      <div style="display:flex;gap:8px">
+      <div class="bar-end">
         {/* in the right-hand group and not in <nav>, because that one is hidden on phones and
             this is the page that asks for help: it has to survive on a small screen */}
         <a class="pill pill-support" href={`${langPrefix(lang)}/support`}>♥ <span class="hide-xs">{s.nav_support}</span></a>
-        {alternates.map((a) => (
-          <a class="pill" href={a.href} hreflang={a.lang}>{a.lang.toUpperCase()}</a>
-        ))}
+        {/* a menu, not one pill per language: its width no longer grows with the language
+            list, and <details> means it opens with no JavaScript and answers the keyboard */}
+        <details class="langsel">
+          <summary class="pill" aria-label={s.lang_label}>{lang.toUpperCase()}<span class="caret" aria-hidden="true">▾</span></summary>
+          <ul>
+            <li><span class="cur" aria-current="true">{LANG_NAMES[lang]}</span></li>
+            {alternates.map((a) => (
+              <li><a href={a.href} hreflang={a.lang}>{LANG_NAMES[a.lang]}</a></li>
+            ))}
+          </ul>
+        </details>
         <button class="pill" id="theme" type="button" aria-label="Night mode">🌙</button>
       </div>
     </div>
@@ -88,8 +96,33 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     .bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
     .bar-in { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--ink); font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.2rem; }
-    .bar nav { display: flex; gap: 8px; }
+    .bar nav { display: flex; gap: 8px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+    .bar nav::-webkit-scrollbar { display: none; }
+    .bar nav > a { flex: 0 0 auto; }
+    .bar-end { display: flex; gap: 8px; flex: 0 0 auto; }
+    /* Shed links as the window narrows. Everything dropped here is still in the footer, and the
+       widths are where each one starts to push the bar past the 1040 px content column. */
+    @media (max-width: 1020px) { .bar .lg-only { display: none; } }
+    @media (max-width: 900px) { .bar .md-only { display: none; } }
+    @media (max-width: 800px) { .bar .sm-only { display: none; } }
     @media (max-width: 720px) { .bar .hide-sm { display: none; } }
+    .langsel { position: relative; }
+    .langsel > summary { list-style: none; user-select: none; }
+    .langsel > summary::-webkit-details-marker { display: none; }
+    .langsel[open] > summary { border-color: var(--sage); color: var(--ink); }
+    .langsel .caret { font-size: .68em; opacity: .55; }
+    .langsel > ul {
+      position: absolute; right: 0; top: calc(100% + 7px); z-index: 30; margin: 0; padding: 6px;
+      min-width: 152px; list-style: none; background: var(--paper);
+      border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
+    }
+    .langsel li { margin: 0; }
+    .langsel a, .langsel .cur {
+      display: block; padding: 8px 12px; border-radius: 9px; text-decoration: none;
+      font-size: .9rem; white-space: nowrap; color: var(--ink-2);
+    }
+    .langsel a:hover { background: var(--mint); color: var(--ink); }
+    .langsel .cur { color: var(--ink); font-weight: 700; }
     footer { padding: 30px 0 60px; color: var(--ink-3); font-size: .86rem; border-top: 1px solid var(--line); }
     .pill-support { border-color: var(--coral-soft); color: var(--coral); }
     .pill-support:hover { background: var(--coral-soft); }
@@ -100,6 +133,15 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     const label = () => { if (tg) tg.textContent = root.classList.contains('night') ? '☀️' : '🌙'; };
     tg?.addEventListener('click', () => { root.classList.toggle('night'); try { localStorage.setItem('pedibot_theme', root.classList.contains('night') ? 'night' : 'day'); } catch (e) {} label(); });
     label();
+
+    // a menu that only closes by clicking its own button is a trap on a phone
+    const langsel = document.querySelector('.langsel') as HTMLDetailsElement | null;
+    document.addEventListener('click', (e) => {
+      if (langsel?.open && !langsel.contains(e.target as Node)) langsel.open = false;
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && langsel?.open) { langsel.open = false; langsel.querySelector('summary')?.focus(); }
+    });
   </script>
 </body>
 </html>

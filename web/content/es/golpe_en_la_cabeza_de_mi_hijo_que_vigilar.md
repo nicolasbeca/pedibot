@@ -17,8 +17,7 @@ sources:
 draft: false
 ---
 
-## What the guidelines say
-
+## Qué dicen las guías
 | Organización | Qué dice | Fuente |
 |---|---|---|
 | NHS | Tras un golpe menor, puede cuidar a su hijo en casa. Aplique hielo envuelto en un paño, deje que descanse y use paracetamol infantil para el dolor de cabeza. Un adulto debe permanecer con el niño al menos las primeras 24 horas. | [1] |
@@ -28,20 +27,16 @@ draft: false
 | MedlinePlus | Busque ayuda inmediata si hay dolor de cabeza que empeora, vómitos repetidos, convulsiones, dificultad para despertar, pupilas dilatadas, habla arrastrada, debilidad o confusión. | [6][7] |
 | MedlinePlus | El descanso es esencial para la recuperación. Limite actividades físicas y de concentración (estudiar, videojuegos) al principio, y vuelva a la normalidad gradualmente cuando el médico lo indique. | [7] |
 
-## Where they agree
-
+## En qué coinciden
 Las tres organizaciones coinciden en que los síntomas de una lesión cerebral pueden no aparecer de inmediato, sino horas o días después [3][7]. Todas enfatizan la importancia de la supervisión adulta y la observación de cambios en el comportamiento del niño [1][3]. También coinciden en que el descanso es fundamental para la recuperación [1][7], y que la mayoría de los niños mejoran en un plazo de 2 a 4 semanas [1][8]. Las señales de alarma graves (vómitos repetidos, convulsiones, dificultad para despertar, debilidad) son similares entre CDC y MedlinePlus [4][6][7].
 
-## Where they differ (and why it may not matter)
-
+## En qué se diferencian (y por qué puede dar igual)
 Las diferencias son menores y de énfasis, no de contenido. El NHS se centra en el cuidado inmediato en casa (hielo, paracetamol, compañía durante 24 horas) [1], mientras que CDC y MedlinePlus ponen más atención en la identificación de signos específicos según la edad y en las señales de emergencia [4][6]. El NHS menciona plazos concretos para volver al colegio o al deporte (3 semanas para contacto) [2], algo que CDC y MedlinePlus no detallan. Estas diferencias reflejan que cada guía aborda un aspecto distinto del mismo problema: el NHS da instrucciones prácticas para el hogar, CDC ofrece listas de síntomas por edad, y MedlinePlus resume las señales de alarma. En la práctica, todas las recomendaciones son compatibles y complementarias.
 
-## When to see a doctor or go to the emergency department
-
+## Cuándo acudir al médico o a urgencias
 Acuda a urgencias inmediatamente si su hijo presenta: dolor de cabeza que empeora o no desaparece, vómitos repetidos, convulsiones, dificultad para despertar, pupilas dilatadas, habla arrastrada, debilidad o entumecimiento en brazos o piernas, pérdida de coordinación, o confusión o agitación crecientes [6][7]. También busque atención médica si los síntomas duran más de 2 semanas o si no está seguro de cuándo puede volver al colegio o al deporte [2]. Si su hijo tiene una conmoción diagnosticada, debe ser valorado por un profesional sanitario [8].
 
 ## Fuentes
-
 [1] NHS — "Head injury and concussion" (2025), section "How to care for a minor head injury", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/
 [2] NHS — "Head injury and concussion" (2025), section "Don’t", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/
 [3] CDC — "Signs and Symptoms of Concussion", section "Signs and Symptoms of Concussion Key points", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html

@@ -11,23 +11,23 @@ for (const d of sources as any[]) {
   const e = byOrg.get(d.org) ?? { n: 0, langs: new Set<string>(), full: d.org_full || d.org };
   e.n += 1; e.langs.add(d.lang); byOrg.set(d.org, e);
 }
-const blurb: Record<string, [string, string]> = {
-  SEUP: ['Spanish paediatric emergency doctors', 'Pediatras de urgencias (España)'],
-  AEP: ['Spanish Paediatric Association', 'Asociación Española de Pediatría'],
-  AEPap: ['Spanish primary-care paediatricians', 'Pediatras de atención primaria (España)'],
-  NHS: ['National Health Service, England', 'Servicio Nacional de Salud, Inglaterra'],
-  CDC: ['US public health agency', 'Agencia de salud pública de EE. UU.'],
-  MedlinePlus: ['US National Library of Medicine', 'Biblioteca Nacional de Medicina de EE. UU.'],
-  WHO: ['World Health Organization', 'Organización Mundial de la Salud'],
-  AAP: ['American Academy of Pediatrics', 'Academia Americana de Pediatría'],
-  'Ministerio de Sanidad': ['Spanish Ministry of Health', 'Ministerio de Sanidad (España)'],
-  'Junta de Andalucía': ['Regional health service, Andalusia', 'Consejería de Salud de Andalucía'],
-  'H. Niño Jesús': ["Children's hospital, Madrid", 'Hospital infantil, Madrid'],
-  AEMPS: ['Spanish medicines agency', 'Agencia Española de Medicamentos'],
+const blurb: Record<string, Partial<Record<Lang, string>>> = {
+  SEUP: { en: 'Spanish paediatric emergency doctors', es: 'Pediatras de urgencias (España)', fr: "Urgentistes pédiatriques (Espagne)" },
+  AEP: { en: 'Spanish Paediatric Association', es: 'Asociación Española de Pediatría', fr: 'Association espagnole de pédiatrie' },
+  AEPap: { en: 'Spanish primary-care paediatricians', es: 'Pediatras de atención primaria (España)', fr: 'Pédiatres de ville (Espagne)' },
+  NHS: { en: 'National Health Service, England', es: 'Servicio Nacional de Salud, Inglaterra', fr: "Service national de santé, Angleterre" },
+  CDC: { en: 'US public health agency', es: 'Agencia de salud pública de EE. UU.', fr: 'Agence de santé publique des États-Unis' },
+  MedlinePlus: { en: 'US National Library of Medicine', es: 'Biblioteca Nacional de Medicina de EE. UU.', fr: 'Bibliothèque nationale de médecine des États-Unis' },
+  WHO: { en: 'World Health Organization', es: 'Organización Mundial de la Salud', fr: 'Organisation mondiale de la santé' },
+  AAP: { en: 'American Academy of Pediatrics', es: 'Academia Americana de Pediatría', fr: 'Académie américaine de pédiatrie' },
+  'Ministerio de Sanidad': { en: 'Spanish Ministry of Health', es: 'Ministerio de Sanidad (España)', fr: 'Ministère de la Santé (Espagne)' },
+  'Junta de Andalucía': { en: 'Regional health service, Andalusia', es: 'Consejería de Salud de Andalucía', fr: "Service régional de santé, Andalousie" },
+  'H. Niño Jesús': { en: "Children's hospital, Madrid", es: 'Hospital infantil, Madrid', fr: 'Hôpital pédiatrique, Madrid' },
+  AEMPS: { en: 'Spanish medicines agency', es: 'Agencia Española de Medicamentos', fr: 'Agence espagnole du médicament' },
 };
 const seed = new Date().getUTCDate() + new Date().getUTCMonth() * 31;
 const shuffled = [...byOrg.entries()].sort((a, b) => ((a[0].charCodeAt(0) * 7 + seed) % 13) - ((b[0].charCodeAt(0) * 7 + seed) % 13) || b[1].n - a[1].n);
-const orgs = shuffled.slice(0, 8).map(([org, e]) => [org, `${(blurb[org] ?? [e.full, e.full])[lang === 'es' ? 1 : 0]} · ${e.n} ${lang === 'es' ? 'documentos' : 'documents'}`]);
+const orgs = shuffled.slice(0, 8).map(([org, e]) => [org, `${blurb[org]?.[lang] ?? blurb[org]?.en ?? e.full} · ${e.n} ${s.documents}`]);
 const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
 ---
 <div class="wrap">
@@ -65,7 +65,7 @@ const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
       <a class="ch tg" href="https://t.me/Pedichat_bot" target="_blank" rel="noopener"><span class="ic">✈️</span><b>{s.channels_tg}</b><span>{s.channels_tg_d}</span></a>
       <a class="ch" href="https://x.com/pedibotai" target="_blank" rel="noopener"><span class="ic">𝕏</span><b>{s.channels_x}</b><span>{s.channels_x_d}</span></a>
       <a class="ch" href="https://bsky.app/profile/pedibot.bsky.social" target="_blank" rel="noopener"><span class="ic">🦋</span><b>{s.channels_bs}</b><span>{s.channels_bs_d}</span></a>
-      <a class="ch" href={lang === 'es' ? '/es/rss.xml' : '/rss.xml'}><span class="ic">📡</span><b>{s.channels_rss}</b><span>{s.channels_rss_d}</span></a>
+      <a class="ch" href={`${langPrefix(lang)}/rss.xml`}><span class="ic">📡</span><b>{s.channels_rss}</b><span>{s.channels_rss_d}</span></a>
     </div>
     <!-- LaunchLeague badge retired 2-sep-2026, measured: in seven days it brought 20 distinct
          visitors and NOT ONE of them asked the bot a single question — they looked at the home

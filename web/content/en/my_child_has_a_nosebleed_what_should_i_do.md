@@ -64,7 +64,6 @@ Pinch the nose just above the nostrils for 10 to 15 minutes [3]. If the bleeding
 No. For 24 hours after a nosebleed, your child should not lie down flat [1].
 
 ## Sources
-
 [1] NHS — "Nosebleed" (2026), section "When a nosebleed stops", p. 1 — https://www.nhs.uk/conditions/nosebleed/
 [2] NHS — "Nosebleed" (2026), section "Treatment for nosebleeds", p. 1 — https://www.nhs.uk/conditions/nosebleed/
 [3] NHS — "Nosebleed" (2026), section "How to stop a nosebleed yourself", p. 1 — https://www.nhs.uk/conditions/nosebleed/

@@ -17,15 +17,13 @@ draft: false
 ---
 
 ## Qué es
-
 El estreñimiento es el aumento excesivo de la dureza de las heces, acompañado de molestias al defecar o de una evacuación incompleta [3]. Puede haber una disminución en el número de veces que el niño hace deposición [3]. A veces, las heces duras pueden producir pequeñas heridas en el ano, llamadas fisuras anales, que aumentan el dolor [3].
 
 El síntoma principal es la disminución de la frecuencia de las deposiciones y el aumento de su consistencia [4]. También puede haber dolor de tripa, hinchazón y sensación de no haber vaciado completamente el intestino [4]. Si hay lesiones anales, puede aparecer sangre en las heces y dolor al hacer deposición [4].
 
 La mayoría de los casos de estreñimiento infantil (95%) no se debe a ninguna enfermedad [1]. El dolor abdominal en niños es frecuente y suele ser benigno; el estreñimiento es una de sus causas más comunes [5].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 - Aumente la ingesta de líquidos, preferiblemente agua, para ablandar las heces [1].
 - Aumente el número de comidas con fibra: cereales, pan con fibra, frutas y verduras [1].
 - No sustituya las frutas por zumos, ya que los zumos tienen poca fibra [1].
@@ -40,8 +38,7 @@ La mayoría de los casos de estreñimiento infantil (95%) no se debe a ninguna e
 
 El estreñimiento suele mejorar modificando la dieta y, en ocasiones, con tratamiento laxante si lo indica un pediatra, aunque puede reaparecer [1].
 
-## Cuándo acudir a un servicio de urgencias
-
+## Cuándo acudir al médico o a urgencias
 El estreñimiento debe ser controlado por su pediatra, salvo que se acompañe de [1]:
 
 - Dolor abdominal importante [1].
@@ -52,7 +49,6 @@ El estreñimiento debe ser controlado por su pediatra, salvo que se acompañe de
 También debe ser valorado por un pediatra en caso de dolor intenso, continuo o con afectación del estado general [6].
 
 ## Preguntas frecuentes
-
 **¿Puedo darle laxantes a mi hijo?**
 No debe administrar laxantes ni enemas sin consultar con su pediatra [1].
 
@@ -66,7 +62,6 @@ No. No sustituya las frutas por zumos, ya que los zumos tienen poca fibra [1].
 Es recomendable seguir una alimentación variada y normal, mantener una rutina regular y no aguantarse las ganas de ir al baño [1]. También ayuda comer fruta y verdura frescas y realizar actividad física [6].
 
 ## Fuentes
-
 [1] SEUP — "Estreñimiento. Información para padres" (2025), section "¿PODEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1, 2
 [2] SEUP — "Estreñimiento. Información para padres" (2025), section "¿QUÉ PODEMOS HACER EN CASA?", p. 1
 [3] SEUP — "Estreñimiento. Información para padres" (2025), section "¿QUÉ ES EL ESTREÑIMIENTO?", p. 1

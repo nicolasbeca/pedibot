@@ -1,22 +1,17 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { t } from '../../i18n';
+const lang = 'fr'; const s = t(lang);
 ---
-<Base lang="fr" title="Mentions légales y privacidad — PediBot" description="Ce qu'est PediBot et ce qu'il n'est pas, et quelles données il ne conserve pas." path="/fr/legal">
+<Base lang={lang} title={s.legal_title} description={s.legal_desc} path="/fr/legal">
   <div class="narrow prose" style="padding:40px 18px">
-    <p class="eyebrow">Aviso legal</p>
-    <h1 style="margin-top:8px">Qué es PediBot — y qué no es</h1>
-    <p>PediBot es un servicio de información para madres, padres y cuidadores. Resume guías pediátricas publicadas y muestra de dónde sale cada afirmación. <b>No es consejo médico, no diagnostica y no sustituye a tu pediatra, enfermera ni a los servicios de urgencias.</b> Ante un niño enfermo, busca siempre atención profesional; en una emergencia, llama a tu número de emergencias.</p>
-    <p>Las guías citadas pertenecen a sus autores (sociedades científicas, organismos públicos). PediBot enlaza los originales y no presume de su respaldo.</p>
-    <h2>Privacidad</h2>
-    <ul>
-      <li>Sin cuenta, sin nombre, sin correo. Nunca pedimos datos personales y no debes escribirlos.</li>
-      <li>Tus preguntas y las respuestas se guardan <b>de forma anónima</b> (un identificador de sesión aleatorio, sin dirección IP) para evaluar y mejorar la calidad. La memoria de conversación dura 24 horas.</li>
-      <li>Tu IP solo se usa como hash con sal para limitar el número de preguntas; no se guarda en claro.</li>
-      <li>Tu navegador conserva localmente el identificador de sesión, el país elegido y el modo noche. Sin rastreadores publicitarios.</li>
-      <li>Las respuestas compartidas (botón "copiar enlace") son páginas públicas que solo contienen la pregunta y la respuesta.</li>
-      <li>En Telegram guardamos el identificador de tu chat para que el bot pueda responder y, muy de vez en cuando, enviar un aviso sobre PediBot. Escribe <b>/stop</b> para no recibir ninguno; puedes seguir preguntando.</li>
-    </ul>
-    <h2>Contacto</h2>
+    <p class="eyebrow">{s.legal_eyebrow}</p>
+    <h1 style="margin-top:8px">{s.legal_h1}</h1>
+    <p set:html={s.legal_p1} />
+    <p>{s.legal_p2}</p>
+    <h2>{s.legal_priv_h}</h2>
+    <ul>{s.legal_priv.map((line) => <li set:html={line} />)}</ul>
+    <h2>{s.legal_contact_h}</h2>
     <p>pedibot.ai@gmail.com</p>
   </div>
 </Base>

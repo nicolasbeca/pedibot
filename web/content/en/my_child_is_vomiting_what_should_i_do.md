@@ -19,13 +19,11 @@ draft: false
 ---
 
 ## What it is
-
 Vomiting is the forceful expulsion of the contents of the digestive system through the mouth [4]. It is often a symptom of a gastrointestinal infection, but it can also be a sign of other illnesses [4]. Vomiting can be accompanied by abdominal pain, diarrhea, or fever [4]. It is different from regurgitation, which is normal in babies and involves small amounts without effort [4].
 
 The most frequent cause is gastrointestinal [4]. When it is due to an intestinal infection or gastroenteritis, the main risk is dehydration from fluid loss [5][8]. Gastroenteritis is an infection of the digestive tract that increases the number of loose or liquid stools [8]. It can also cause abdominal pain, vomiting, and fever [8]. Symptoms of gastroenteritis include diarrhea, stomach cramps, nausea, vomiting, and sometimes fever [7].
 
 ## What you can do at home
-
 The priority is to ensure fluid intake to prevent dehydration [1]. Do not give homemade solutions like alkaline lemonade or commercial soft drinks [1]. Avoid sports drinks, as they have too much sugar and inadequate electrolytes for a child with diarrhea [6].
 
 Here is what to do:
@@ -48,7 +46,6 @@ Here is what to do:
 To prevent the spread of infection, increase hygiene measures, especially frequent hand washing for both the patient and caregivers [5].
 
 ## When to see a doctor or go to the emergency department
-
 Seek medical attention if your child has any of the following warning signs:
 
 - Is younger than 3 months and has vomited two or more feedings [2].
@@ -72,7 +69,6 @@ Seek medical attention if your child has any of the following warning signs:
 If your child is listless, vomits many times, or does not take fluids, consult your pediatrician [5].
 
 ## Common questions
-
 **How long will the vomiting last?**
 In general, symptoms resolve on their own in less than one week [3].
 
@@ -83,7 +79,6 @@ Keep sick children out of school, daycare, or pools until the vomiting has disap
 Once fluids are tolerated, you can offer food in small amounts without forcing. Introduce a normal diet progressively. Cereals, chicken, turkey, fruits, and vegetables are generally well tolerated [3]. Avoid fatty, fried, or highly seasoned foods, sweets, and sugary drinks [3][6].
 
 ## Sources
-
 [1] SEUP — "Vómitos. Información para padres", section "¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?", p. 1
 [2] SEUP — "Vómitos. Información para padres", section "¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
 [3] SEUP — "Vómitos. Información para padres", section "¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1, 2

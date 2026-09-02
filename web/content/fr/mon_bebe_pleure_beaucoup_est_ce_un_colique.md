@@ -18,7 +18,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Les coliques du nourrisson sont des épisodes de pleurs prolongés qui surviennent chez des bébés en bonne santé, presque tous les jours, surtout en fin d'après-midi et le soir [4]. Ces épisodes peuvent durer de quelques minutes à plusieurs heures [4]. La cause exacte n'est pas connue, mais plusieurs explications ont été proposées : immaturité du système digestif, constipation, modifications de la flore bactérienne ou difficulté à évacuer les gaz [4].
 
 Les pleurs commencent généralement vers 15 jours de vie, atteignent un pic vers la 5e-6e semaine et disparaissent rarement après le 4e mois [1]. C'est un trouble bénin, ce n'est pas une maladie grave [1].
@@ -31,7 +30,6 @@ Pendant les épisodes de pleurs, votre bébé peut :
 Le cri est caractéristique : il a un début et une fin marqués, il est intense et aigu, et le bébé est inconsolable [2]. Quand les pleurs s'arrêtent, votre bébé retrouve un aspect normal [2].
 
 ## Ce que vous pouvez faire à la maison
-
 - Essayez de rester calme, car c'est un processus bénin et passager [5].
 - Allez consoler votre bébé et cherchez d'autres causes de pleurs : faim, soif, couche sale, chaleur, froid [5].
 - Créez un environnement calme et détendu, essayez de ne pas transmettre votre anxiété au bébé [5].
@@ -46,14 +44,12 @@ Concernant l'alimentation :
 - Des probiotiques ont semblé aider certains bébés, surtout ceux nourris au lait maternel, mais il n'existe pas d'études montrant une preuve scientifique solide [7].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin ou allez aux urgences si :
 - Entre les épisodes de pleurs, votre bébé ne retrouve pas son état normal [3].
 - Les pleurs s'accompagnent de pâleur, de sueurs, d'abattement ou d'un refus des biberons ou des repas [3].
 - Votre bébé a de la fièvre, vomit ou fait des selles avec du sang [3].
 
 ## Questions fréquentes
-
 **Est-ce normal que mon bébé pleure autant ?**
 Oui, il est normal que les bébés en bonne santé pleurent deux heures ou plus par jour, même sans avoir de coliques [7].
 
@@ -64,7 +60,6 @@ Les coliques commencent vers 15 jours de vie, atteignent un pic vers la 5e-6e se
 Non, ne donnez aucun produit sans consulter votre pédiatre [7]. Aucun traitement n'a d'efficacité prouvée, et certaines plantes peuvent être dangereuses [7].
 
 ## Sources
-
 [1] SEUP — "Cólico del lactante. Información para padres" (2025), section "CÓLICO DEL LACTANTE PAROXÍSTICO INTENSO INCONSOLABLE CARACTERÍSTICAS DEL LLANTO ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 2
 [2] SEUP — "Cólico del lactante. Información para padres" (2025), section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1
 [3] SEUP — "Cólico del lactante. Información para padres" (2025), section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2

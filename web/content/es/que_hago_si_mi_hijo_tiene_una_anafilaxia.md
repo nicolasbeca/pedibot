@@ -13,7 +13,6 @@ draft: false
 ---
 
 ## Qué es
-
 La anafilaxia es una reacción alérgica extremadamente grave que afecta a varios órganos a la vez y aparece a los minutos de haber estado expuesto a un alérgeno, como alimentos, medicamentos, picaduras de insectos o látex [1]. Es poco frecuente y se da en aproximadamente el 1% de la población [1].
 
 Los síntomas se desarrollan de forma rápida y pueden combinar cualquiera de los siguientes [1]:
@@ -26,8 +25,7 @@ Los síntomas se desarrollan de forma rápida y pueden combinar cualquiera de lo
 - Enrojecimiento de ojos o estornudos
 - Mareos, pérdida de conciencia o vómitos
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 Si sospecha que su hijo tiene una anafilaxia, actúe rápido [1]:
 
 - Mantenga la calma.
@@ -51,7 +49,6 @@ Si el paciente no mejora, se puede usar un segundo autoinyector transcurridos 5-
 Si la causa fue un alimento o se sospecha de él, tome medidas para evitar su contacto o exposición [2]. Si no se pone tratamiento, la anafilaxia puede evolucionar a un shock o colapso cardiocirculatorio [2].
 
 ## Cuándo acudir al médico o a urgencias
-
 Acuda de inmediato a urgencias o llame al 112 ante cualquier sospecha de anafilaxia [1]. También vigile estos síntomas tras el alta, que indican que el niño está peor [2]:
 
 - Dificultad para respirar o ruido al respirar
@@ -62,7 +59,6 @@ Acuda de inmediato a urgencias o llame al 112 ante cualquier sospecha de anafila
 Si dispone de adrenalina, adminístrela cuanto antes y busque asistencia médica de inmediato [2].
 
 ## Preguntas frecuentes
-
 **¿Debemos ofrecerle alguna alimentación especial?**  
 Si la causa fue un alimento, evite su contacto o exposición [2].
 
@@ -73,7 +69,6 @@ Una vez que el niño tenga buen estado general y hayan desaparecido los síntoma
 Si conocemos la fuente alergénica, evitaremos su contacto o exposición [2].
 
 ## Fuentes
-
 [1] SEUP — "Anafilaxia. Información para padres" (2025), section "¿QUÉ ES lA ANAFILAXIA?", p. 1
 [2] SEUP — "Anafilaxia. Información para padres" (2025), section "HABONES", p. 2
 

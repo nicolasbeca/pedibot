@@ -40,7 +40,7 @@ const jsonld = faqLd ? [page, faqLd] : page;
 ---
 <Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/fr/guides/${g.id.replace(/^fr\//, '')}`} jsonld={jsonld} others={others}>
   <article class="narrow prose" style="padding:40px 18px">
-    <p class="eyebrow">{g.data.topic} · {s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString('es-ES')}</time></p>
+    <p class="eyebrow">{s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString(s.speech_locale)}</time></p>
     <h1 style="margin-top:8px">{g.data.title}</h1>
     <p class="lede">{g.data.description}</p>
     <Content />

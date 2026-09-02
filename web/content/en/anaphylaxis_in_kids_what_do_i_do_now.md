@@ -13,7 +13,6 @@ draft: false
 ---
 
 ## What it is
-
 Anaphylaxis is an extremely serious allergic reaction that affects several organs at once. It starts within minutes of contact with an allergen, such as food, medication, insect stings, or latex [1]. It is rare, affecting about 1% of the population [1].
 
 Symptoms develop quickly and can include any combination of the following [1]:
@@ -29,7 +28,6 @@ Symptoms develop quickly and can include any combination of the following [1]:
 - Vomiting
 
 ## What you can do at home
-
 If you suspect anaphylaxis, act immediately [1]:
 - Stay calm.
 - Call emergency services (112 in Spain) or take your child to the nearest emergency department.
@@ -53,7 +51,6 @@ While waiting for help [2]:
 Do not offer any special food. If the cause was a food, take measures to avoid any contact or exposure [2].
 
 ## When to see a doctor or go to the emergency department
-
 Anaphylaxis always requires urgent medical care. Call emergency services or go to the nearest emergency department immediately [1]. Without treatment, anaphylaxis can progress to shock or cardiovascular collapse [2].
 
 After being discharged, watch for these signs that your child is getting worse and seek medical help [2]:
@@ -65,7 +62,6 @@ After being discharged, watch for these signs that your child is getting worse a
 Your child can return to daycare or school once they have a good general condition and symptoms have disappeared [2].
 
 ## Common questions
-
 **Can I use a second adrenaline injector?**
 Yes. If symptoms do not improve, you can use a second auto-injector 5 to 15 minutes after the first one [1].
 
@@ -76,7 +72,6 @@ If a food caused the reaction, take measures to avoid contact or exposure to tha
 If you know the allergen source, avoid contact or exposure to it [2].
 
 ## Sources
-
 [1] SEUP — "Anafilaxia. Información para padres" (2025), section "¿QUÉ ES lA ANAFILAXIA?", p. 1
 [2] SEUP — "Anafilaxia. Información para padres" (2025), section "HABONES", p. 2
 

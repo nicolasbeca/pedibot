@@ -18,13 +18,11 @@ draft: false
 ---
 
 ## Qué es
-
 La cefalea es la sensación de malestar o dolor que afecta a la cabeza. Es muy frecuente en la infancia y la adolescencia [2]. En la mayoría de los casos, el dolor de cabeza se asocia a infecciones como otitis, faringitis, sinusitis, gripe, catarro o gastroenteritis [2]. También puede deberse a falta de sueño, cansancio, estrés, consumo de bebidas con cafeína o cambios sociales (familiares, escolares, amigos) [2].
 
 El dolor puede ser continuo o intermitente [3]. Puede sentirse opresivo, como si tuviera un peso encima, o punzante y pulsátil, como si le pincharan con una aguja [3]. Puede afectar a toda la cabeza o a zonas concretas, como detrás de los ojos o en la frente [3]. A veces se acompaña de náuseas, vómitos, somnolencia, cansancio, dolor abdominal, palidez o molestias con el ruido y la luz [3]. En general, el niño puede dormir y realizar sus actividades habituales [3].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 - Mantenga un ambiente tranquilo, sin ruidos y con poca luz [7].
 - Si el dolor es intenso, deje que duerma; esto suele aliviar el dolor, sobre todo en las migrañas [7].
 - Evite el uso de pantallas: televisión, videojuegos, móviles y tabletas [7].
@@ -42,8 +40,7 @@ Para prevenir nuevos episodios [4]:
 
 En general, los episodios de dolor de cabeza son limitados en el tiempo y suelen mejorar con analgésicos habituales como paracetamol o ibuprofeno y con descanso [6]. No es necesaria una dieta especial, solo garantizar una ingesta hídrica abundante [7]. El niño puede volver a la escuela cuando se encuentre bien y pueda manejar el dolor con la analgesia habitual [6].
 
-## Cuándo acudir a un servicio de urgencias
-
+## Cuándo acudir al médico o a urgencias
 Acuda a urgencias si su hijo presenta alguno de estos signos [5]:
 - Fiebre alta, dolor de cabeza intenso y vómitos repetidos.
 - Duerme mucho más de lo habitual o es difícil despertarle.
@@ -62,7 +59,6 @@ También vigile en casa estos signos de empeoramiento [1]:
 - Si el niño es menor de 5 años y tiene cefalea persistente, ya que no es un síntoma habitual a esa edad.
 
 ## Preguntas frecuentes
-
 **¿Es grave el dolor de cabeza en los niños?**
 En su mayoría, las cefaleas infantiles son benignas y solo algunos casos precisan estudios o tratamientos especiales [6].
 
@@ -73,7 +69,6 @@ Se recomienda que mantenga su actividad diaria habitual si los síntomas se lo p
 No es necesaria una dieta especial, pero sí es recomendable garantizar una ingesta abundante de agua [7].
 
 ## Fuentes
-
 [1] SEUP — "Cefalea. Información para padres" (2025), section "CEFALEA DOLOR DE CABEZA ¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?", p. 2
 [2] SEUP — "Cefalea. Información para padres" (2025), section "¿QUÉ ES LA CEFALEA?", p. 1
 [3] SEUP — "Cefalea. Información para padres" (2025), section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1

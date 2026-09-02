@@ -71,7 +71,7 @@ Chez un enfant de 5 ans ou plus, consultez immédiatement si [4] :
 
 Ne conduisez pas vous-même aux urgences [4]. Appelez votre numéro d'urgence local ou demandez à quelqu'un d'autre de conduire [6]. La personne à qui vous parlez vous donnera des conseils sur ce qu'il faut faire [4].
 
-## Preguntas frecuentes
+## Questions fréquentes
 **Comment vérifier l'éruption cutanée au verre ?**
 Appuyez un verre transparent sur les taches ou l'éruption. Si elles ne s'estompent pas sous la pression, cela peut être un signe de méningite [1]. Sur une peau brune ou noire, cette éruption peut être plus difficile à voir [1]. Pour la septicémie, sur une peau brune ou noire, il peut être plus facile de la voir sur les paumes des mains ou la plante des pieds [2].
 
@@ -82,7 +82,6 @@ Les premiers symptômes de la méningite peuvent ressembler à une grippe, à un
 Les tests pour diagnostiquer la méningite comprennent des analyses de sang, des examens d'imagerie et une ponction lombaire pour tester le liquide céphalorachidien [3]. Vous aurez besoin de tests à l'hôpital pour déterminer si l'infection est bactérienne ou virale [5].
 
 ## Sources
-
 [1] NHS — "Meningitis" (2026), section "Meningitis", p. 1 — https://www.nhs.uk/conditions/meningitis/
 [2] NHS — "Sepsis" (2024), section "Symptoms of sepsis in babies and children", p. 1 — https://www.nhs.uk/conditions/sepsis/
 [3] MedlinePlus — "Meningitis" (2025), section "Introducción", p. 1 — https://medlineplus.gov/meningitis.html

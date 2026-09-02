@@ -19,11 +19,9 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Une crise d’asthme est un épisode de toux, de difficulté à respirer et de sifflements dans la poitrine, causé par un rétrécissement des bronches [3]. Ces symptômes s’améliorent généralement avec des médicaments bronchodilatateurs comme le salbutamol [3]. Les crises peuvent être déclenchées par des rhumes, des allergies, la pollution ou l’exercice [3]. Chez les jeunes enfants, les infections respiratoires virales sont la cause principale des sifflements [3]. Tous les enfants qui sifflent ne deviendront pas asthmatiques, mais le risque est plus élevé en cas d’allergie, de parents asthmatiques ou d’allergie à l’œuf [3]. L’asthme est une maladie pulmonaire chronique qui touche les voies respiratoires [7].
 
 ## Ce que vous pouvez faire à la maison
-
 - Administrez 2 à 4 bouffées de salbutamol, une par une, avec une chambre d’inhalation (et un masque facial chez les petits) [4]. Répétez cette dose après 10 à 15 minutes [4].
 - Utilisez toujours une chambre d’inhalation, jamais directement dans la bouche, car le médicament fait moins d’effet [1].
 - Gardez l’enfant au repos et évitez l’exercice vigoureux [4].
@@ -34,7 +32,6 @@ Une crise d’asthme est un épisode de toux, de difficulté à respirer et de s
 - Pendant une crise, évitez l’exercice physique et, chez les enfants allergiques, l’exposition aux allergènes [2].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez rapidement un médecin ou allez aux urgences si :
 
 - L’enfant est très agité ou somnolent, ou devient violet ou pâle [1].
@@ -50,7 +47,6 @@ Consultez rapidement un médecin ou allez aux urgences si :
 Si vous allez dans un centre médical, n’oubliez pas d’apporter la chambre d’inhalation [1].
 
 ## Questions fréquentes
-
 **Mon enfant doit-il aller à l’école pendant une crise ?**
 Il est recommandé d’éviter l’exercice physique pendant la crise [2]. Les enfants qui ont des crises répétées doivent porter leur inhalateur à l’école [2].
 
@@ -61,7 +57,6 @@ Non, tous les enfants qui ont des sifflements ne seront pas asthmatiques plus ta
 Les cas plus graves doivent être traités dans un centre médical avec des bronchodilatateurs inhalés ou nébulisés [2]. Certains enfants ont besoin de corticoïdes oraux pendant quelques jours [2]. Les cas les plus graves nécessitent de l’oxygène et une hospitalisation [2].
 
 ## Sources
-
 [1] SEUP — "Crisis asmática. Información para padres" (2025), section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
 [2] SEUP — "Crisis asmática. Información para padres" (2025), section "CRISIS ASMÁTICA tos TIRAJE evitar ambientes con humo o fumar ADMINISTRAR SALBUTAMOL CON CÁMARA ESPACIADORA (Y MASCARILLA EN NIÑOS PEQUEÑOS) ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 2
 [3] SEUP — "Crisis asmática. Información para padres" (2025), section "¿QUÉ SON LAS CRISIS ASMÁTICAS?", p. 1

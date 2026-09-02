@@ -1,14 +1,12 @@
 ---
-import { t, type Lang } from '../i18n';
+import { t, langPrefix, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
 const countries = [['GB','UK'],['ES','ES'],['US','US'],['IE','IE'],['FR','FR'],['DE','DE'],['IT','IT'],['PT','PT'],['MX','MX'],['AR','AR'],['CL','CL'],['CO','CO'],['BR','BR'],['AU','AU'],['CA','CA'],['NZ','NZ']];
-const ages = lang === 'es'
-  ? [['', s.not_set], ['2 semanas','2 semanas'], ['2 meses','2 meses'], ['6 meses','6 meses'], ['1 año','1 año'], ['2 años','2 años'], ['4 años','4 años'], ['8 años','8 años'], ['13 años','13 años']]
-  : [['', s.not_set], ['2 weeks','2 weeks'], ['2 months','2 months'], ['6 months','6 months'], ['1 year','1 year'], ['2 years','2 years'], ['4 years','4 years'], ['8 years','8 years'], ['13 years','13 years']];
+const ages = [['', s.not_set], ...s.chat_ages];
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer })}>
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale })}>
   <div class="chat" id="thread">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo.svg" width="72" height="72" alt="" />
@@ -33,7 +31,7 @@ const ages = lang === 'es'
         <button class="mic" type="button" id="mic" aria-label={s.voice} title={s.voice}>🎤</button>
         <button class="send" type="submit" aria-label={s.send}>➤</button>
       </form>
-      <p class="legal">{s.legal_line} · <a href={`${lang === 'es' ? '/es' : ''}/emergency`}>{s.nav_emergency}</a> · <a href="https://t.me/Pedichat_bot" target="_blank" rel="noopener">{s.nav_telegram}</a></p>
+      <p class="legal">{s.legal_line} · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href="https://t.me/Pedichat_bot" target="_blank" rel="noopener">{s.nav_telegram}</a></p>
     </div>
   </div>
 </div>
@@ -113,8 +111,8 @@ const ages = lang === 'es'
   function context(q: string) {
     // age/weight chips are sent as part of the message so triage and the dose router see them
     const parts = [q];
-    if (ageSel.value && !/\d\s*(años|año|meses|mes|years?|months?|weeks?|semanas?)/i.test(q)) parts.push(lang === 'es' ? `(tiene ${ageSel.value})` : `(age: ${ageSel.value})`);
-    if (kgIn.value && !/\bkg|kilos?\b/i.test(q)) parts.push(lang === 'es' ? `(pesa ${kgIn.value} kg)` : `(weight: ${kgIn.value} kg)`);
+    if (ageSel.value && !/\d\s*(años|año|meses|mes|years?|months?|weeks?|semanas?)/i.test(q)) parts.push(`(${S.chat_age_note.replace('{v}', ageSel.value)})`);
+    if (kgIn.value && !/\bkg|kilos?\b/i.test(q)) parts.push(`(${S.chat_weight_note.replace('{v}', kgIn.value)})`);
     return parts.join(' ');
   }
   async function ask(q: string, mode: 'parent' | 'child' = 'parent') {
@@ -139,7 +137,7 @@ const ages = lang === 'es'
     if (b.classList.contains('child')) { ask(b.dataset.q || '', 'child'); return; }
     if (b.classList.contains('listen')) {
       const msg = b.closest('.msg') as HTMLElement; const text = msg.innerText.replace(/^pedibot/, '').replace(/👍.*$/s, '');
-      const u = new SpeechSynthesisUtterance(text); u.lang = lang === 'es' ? 'es-ES' : 'en-GB'; speechSynthesis.cancel(); speechSynthesis.speak(u); return;
+      const u = new SpeechSynthesisUtterance(text); u.lang = S.speech_locale; speechSynthesis.cancel(); speechSynthesis.speak(u); return;
     }
     await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session, value: Number(b.dataset.v) }) });
     b.parentElement!.querySelectorAll('.fb').forEach(x => (x as HTMLButtonElement).disabled = true); b.textContent += ' ✓';
@@ -179,7 +177,7 @@ const ages = lang === 'es'
   const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
   if (!SR) mic.style.display = 'none';
   else mic.addEventListener('click', () => {
-    const rec = new SR(); rec.lang = lang === 'es' ? 'es-ES' : 'en-GB'; rec.interimResults = false; mic.classList.add('on');
+    const rec = new SR(); rec.lang = S.speech_locale; rec.interimResults = false; mic.classList.add('on');
     rec.onresult = (ev: any) => { input.value = (input.value ? input.value + ' ' : '') + ev.results[0][0].transcript; input.dispatchEvent(new Event('input')); };
     rec.onend = () => mic.classList.remove('on'); rec.onerror = () => mic.classList.remove('on'); rec.start();
   });

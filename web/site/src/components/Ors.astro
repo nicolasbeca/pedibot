@@ -1,10 +1,9 @@
 ---
-import type { Lang } from '../i18n';
+import { t, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const T = lang === 'es' ? { h: 'Suero de rehidratación oral: cuánto y cómo', p: 'Cantidades tomadas del prospecto oficial (AEMPS) y de la hoja de vómitos de la SEUP. Sin IA.', age: 'Edad', vom: 'Está vomitando', calc: 'Ver pauta', src: 'Fuentes' }
-  : { h: 'Oral rehydration solution: how much and how', p: 'Amounts quoted from the official leaflet (AEMPS, Spain), the SEUP vomiting sheet and the UK Dioralyte leaflet. No AI.', age: 'Age', vom: 'Currently vomiting', calc: 'Show guidance', src: 'Sources' };
-const ages = lang === 'es' ? [['0.5','menos de 1 mes'],['6','1–11 meses'],['24','1–2 años'],['48','3–5 años'],['96','6–11 años'],['156','12+ años']] : [['0.5','under 1 month'],['6','1–11 months'],['24','1–2 years'],['48','3–5 years'],['96','6–11 years'],['156','12+ years']];
+const T = t(lang).ors;
+const ages = t(lang).ors_ages;
 ---
 <section class="block" id="ors" data-lang={lang} data-t={JSON.stringify(T)}>
   <p class="eyebrow">ORS</p>

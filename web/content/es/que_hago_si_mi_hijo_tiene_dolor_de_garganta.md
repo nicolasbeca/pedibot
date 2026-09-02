@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## Qué es
-
 El dolor de garganta es muy común y, por lo general, no es motivo de preocupación. Casi siempre mejora solo en una semana [7]. La garganta es un tubo que lleva la comida al esófago y el aire a la tráquea y la laringe [3].
 
 Las causas más frecuentes son los virus, como los del resfriado o la gripe, o fumar [2]. Otras causas incluyen alergias, mononucleosis, amigdalitis o faringitis estreptocócica (una infección bacteriana) [2][3].
@@ -32,8 +31,7 @@ Los síntomas del dolor de garganta pueden incluir: dolor al tragar, garganta se
 
 En la amigdalitis, los síntomas pueden incluir: dolor de garganta, problemas para tragar, temperatura alta, tos, dolor de cabeza, náuseas o vómitos, dolor de oído y cansancio [1]. En casos más graves: ganglios dolorosos e inflamados en el cuello, manchas blancas o puntos de pus en las amígdalas y mal aliento [1].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 Para aliviar el dolor de garganta y acortar su duración [7]:
 
 - Beba mucha agua.
@@ -53,7 +51,6 @@ Gárgaras con agua salada tibia: disuelva media cucharadita de sal en un vaso de
 Puede consultar a un farmacéutico. Ofrece consejo y sugiere tratamientos como pastillas para chupar con anestésico local, antiséptico o antiinflamatorio, o soluciones antisépticas. Los aerosoles para la garganta tienen poca evidencia de que ayuden [4].
 
 ## Cuándo acudir al médico o a urgencias
-
 Consulte a un médico de cabecera si [4]:
 
 - Los síntomas de amigdalitis no desaparecen en una semana.
@@ -76,7 +73,6 @@ Llame al 999 o vaya a urgencias inmediatamente si [5]:
 Estos son signos de un absceso (quinsy), una complicación rara pero grave. No conduzca usted; pida a alguien que le lleve o llame a una ambulancia. Lleve los medicamentos que toma [5].
 
 ## Preguntas frecuentes
-
 **¿Cuándo debo llevar a mi hijo al médico por amigdalitis?**  
 Si los síntomas no mejoran en una semana o las infecciones son frecuentes, pida cita con el médico [4]. Si hay pus en las amígdalas o el dolor impide comer o beber, busque ayuda urgente [4].
 
@@ -87,7 +83,6 @@ La mayoría de las amigdalitis son virales y se curan solas. Solo las bacteriana
 No. No dé aspirina a niños menores de 16 años [8]. Use paracetamol o ibuprofeno, y evite la aspirina también en niños con dolor de garganta [3][8].
 
 ## Fuentes
-
 [1] NHS — "Tonsillitis" (2024), section "Tonsillitis", p. 1 — https://www.nhs.uk/conditions/tonsillitis/
 [2] NHS — "Sore throat" (2023), section "Causes of sore throats", p. 1 — https://www.nhs.uk/conditions/sore-throat/
 [3] MedlinePlus — "Sore Throat" (2025), section "Introducción", p. 1 — https://medlineplus.gov/sorethroat.html

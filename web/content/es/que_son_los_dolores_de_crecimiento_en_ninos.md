@@ -20,7 +20,7 @@ Los síntomas suelen aparecer y desaparecer durante meses o incluso años [1]. E
 - Un dolor sordo o pulsátil en ambas piernas, en los músculos o articulaciones.
 - Ocurre por la tarde o por la noche y desaparece por la mañana [1].
 
-## Qué puede hacer en casa
+## Qué puedes hacer en casa
 Para aliviar el dolor, puede probar lo siguiente:
 - Masajear suavemente las piernas del niño [1].
 - Aplicar una bolsa de agua caliente cubierta o una compresa térmica en la zona dolorida [1].
@@ -53,7 +53,6 @@ Los dolores de crecimiento son más comunes en niños activos y pueden ocurrir d
 Si el dolor es solo en una pierna, aparece por la mañana, le impide caminar, o viene con fiebre, hinchazón, moretones o cansancio extremo, debe consultar a un médico [2].
 
 ## Fuentes
-
 [1] NHS — "Growing pains" (2026), section "Growing pains", p. 1 — https://www.nhs.uk/conditions/growing-pains/
 [2] NHS — "Growing pains" (2026), section "Don’t", p. 1 — https://www.nhs.uk/conditions/growing-pains/
 [3] NHS — "Growing pains" (2026), section "Causes of growing pains", p. 1 — https://www.nhs.uk/conditions/growing-pains/

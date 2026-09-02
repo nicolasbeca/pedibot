@@ -39,7 +39,6 @@ Encourage them to keep coughing. Do not interfere if they can cough forcefully o
 Yes. Taking a certified first aid course that covers back blows, the Heimlich maneuver, and CPR is the best way to be prepared [1]. Practice on mannequins so you know what to do in a real emergency [1].
 
 ## Sources
-
 [1] MedlinePlus — "Choking" (2024), section "Introducción", p. 1 — https://medlineplus.gov/choking.html
 
 *This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*

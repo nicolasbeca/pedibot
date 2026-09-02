@@ -15,7 +15,7 @@ const guides = (await getCollection('guides', g => g.data.lang === lang && !g.da
       <span id="gcount">{guides.length} guides</span></p>
     <p id="gempty" class="lede" hidden>No guide matches that word yet — try asking PediBot directly.</p>
     <div class="trio" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
-      {guides.map(g => <a class="card gcard" href={`/guides/${g.id.replace(/^en\//, '')}`} style="text-decoration:none;color:inherit"><span class="n">{g.data.topic}</span><h3 style="margin-top:6px">{g.data.title}</h3><p>{g.data.description}</p></a>)}
+      {guides.map(g => <a class="card gcard" href={`/guides/${g.id.replace(/^en\//, '')}`} style="text-decoration:none;color:inherit"><span class="n">{s.updated} {g.data.date.toLocaleDateString(s.speech_locale)}</span><h3 style="margin-top:6px">{g.data.title}</h3><p>{g.data.description}</p></a>)}
     </div>
   </div>
 </Base>

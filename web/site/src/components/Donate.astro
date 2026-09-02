@@ -8,50 +8,46 @@
  * or a phone camera without us knowing who donated — which is the point.
  */
 import { DONATION_ADDRESS, DONATION_CHAINS, donationLink } from '../donation';
-import type { Lang } from '../i18n';
+import { t, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const es = lang === 'es';
+const T = t(lang).donate;
 const address = DONATION_ADDRESS;
 const qr = `/donation-qr.svg`;
 ---
 {address && (
   <section class="donate">
-    <h2>{es ? 'Donar directamente' : 'Donate directly'}</h2>
+    <h2>{T.h}</h2>
     <p>
-      {es
-        ? 'Si PediBot te ha sido útil y quieres echar una mano con lo que cuesta mantenerlo, puedes enviar lo que quieras a esta dirección. No hace falta cuenta ni registro, y no cambia nada: nada de PediBot está cerrado ni lo estará.'
-        : 'If PediBot has been useful and you want to help with what it costs to run, you can send whatever you like to this address. No account, no sign-up, and it changes nothing: nothing here is gated and nothing ever will be.'}
+      {T.p}
     </p>
     <div class="card">
-      <div class="qr"><img src={qr} alt={es ? 'Código QR de la dirección de donación' : 'QR code of the donation address'} width="132" height="132" loading="lazy" /></div>
+      <div class="qr"><img src={qr} alt={T.qr_alt} width="132" height="132" loading="lazy" /></div>
       <div class="addr">
-        <p class="net">{es ? 'La misma dirección en:' : 'The same address on:'}</p>
+        <p class="net">{T.same_on}</p>
         <p class="nets">
           {DONATION_CHAINS.map((c) => (
             <span class={c.recommended ? 'net-tag best' : 'net-tag'}>
-              {c.name} <i>{c.coin}</i>{c.recommended ? (es ? ' · la más barata' : ' · cheapest') : ''}
+              {c.name} <i>{c.coin}</i>{c.recommended ? T.cheapest : ''}
             </span>
           ))}
         </p>
         <code class="mono" id="donate-addr">{address}</code>
         <p class="row">
-          <button class="btn btn-ghost" id="donate-copy" type="button">{es ? 'Copiar dirección' : 'Copy address'}</button>
-          <a class="btn btn-primary" href={donationLink(address)}>{es ? 'Abrir en la cartera (Base)' : 'Open in wallet (Base)'}</a>
+          <button class="btn btn-ghost" id="donate-copy" type="button">{T.copy}</button>
+          <a class="btn btn-primary" href={donationLink(address)}>{T.open_wallet}</a>
         </p>
       </div>
     </div>
     <p class="fine">
-      {es
-        ? 'Es la misma dirección en todas esas redes: elige la que ya uses, y si te da igual, Base es la más barata. Envía solo desde una de ellas — si mandas desde una red que no es EVM (USDC en Solana o en Tron, por ejemplo), el dinero se pierde y no hay forma de recuperarlo. Todo lo que entra queda escrito en la cadena y cualquiera puede verlo. Una donación no es una consulta médica ni da acceso a nada distinto.'
-        : 'It is the same address on all of those networks: pick the one you already use, and if you have no preference, Base is the cheapest. Send from one of them only — money sent over a network that is not EVM (USDC on Solana or Tron, say) is lost with no way back. Everything it receives is written on-chain and anyone can look. A donation is not a medical consultation and buys no different access.'}
+      {T.fine}
     </p>
   </section>
 )}
 
 {address && (
-  <script is:inline define:vars={{ address, copied: es ? '¡Copiada!' : 'Copied!' }}>
+  <script is:inline define:vars={{ address, copied: T.copied }}>
     document.getElementById('donate-copy')?.addEventListener('click', async (e) => {
       const b = e.currentTarget;
       const old = b.textContent;

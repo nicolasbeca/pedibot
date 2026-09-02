@@ -21,13 +21,11 @@ draft: false
 ---
 
 ## What it is
-
 Insect bites and stings are common and usually not serious. They often get better in a few days [2]. Bee, wasp, and hornet stings and fire ant bites usually hurt. Mosquito and flea bites usually itch [1]. Some insects can spread diseases. In the United States, some mosquitoes spread West Nile virus. Travelers outside the United States may be at risk for malaria and other infections [1]. Bites from ticks can cause Lyme disease, and mites can cause scabies [2].
 
 Insect bites can sometimes become infected or cause a serious allergic reaction [2]. For example, impetigo is a bacterial skin infection that often starts when bacteria get into a break in the skin, such as an insect bite [9]. It is most common in children between ages two and six [9]. Head lice are different. They are tiny insects that live on the scalp and feed on human blood [10]. Lice spread by close person-to-person contact [8].
 
 ## What you can do at home
-
 If there is a stinger, tick, or caterpillar on the skin, remove it carefully first [4].
 
 - Brush or scrape a stinger sideways with your fingernail or the edge of a bank card. Do not use tweezers, as you could squeeze poison out [4].
@@ -47,7 +45,6 @@ To ease symptoms:
 Do not scratch the bite, as it could get infected [5]. Do not use home remedies such as bicarbonate of soda [5].
 
 ## When to see a doctor or go to the emergency department
-
 See a pharmacist if your child aged 1 year or older has a bite or sting and any of these are present [5]:
 
 - The skin around it feels hot or looks red. Redness can be harder to see on brown and black skin [5].
@@ -81,7 +78,6 @@ Call 999 if your child shows signs of a serious allergic reaction [5]:
 - A child is limp, floppy, or not responding normally [5].
 
 ## Common questions
-
 **Can I pull out a stinger with tweezers?**
 No. Brush or scrape the stinger sideways with your fingernail or a bank card. Tweezers can squeeze more poison into the skin [4].
 
@@ -92,7 +88,6 @@ Symptoms include a tickling feeling in the hair, frequent itching from an allerg
 Yes. Impetigo often starts when bacteria get into a break in the skin, such as an insect bite [9]. Keeping bites clean with soap and water helps prevent it [6].
 
 ## Sources
-
 [1] MedlinePlus — "Insect Bites and Stings" (2026), section "Introducción", p. 1 — https://medlineplus.gov/insectbitesandstings.html
 [2] NHS — "Insect bites and stings" (2023), section "Insect bites and stings", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/
 [3] NHS — "Insect bites and stings" (2023), section "Easing your symptoms", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/

@@ -20,15 +20,13 @@ draft: false
 ---
 
 ## Qué es
-
 Las pantallas y el sueño son dos partes importantes del día de un niño pequeño. Pasar demasiado tiempo frente a una pantalla puede quitar tiempo de juego activo y de sueño. Dormir lo suficiente es esencial para el desarrollo cognitivo, físico y psicosocial de los niños pequeños [6][10].
 
 Las recomendaciones de la Organización Mundial de la Salud (OMS) combinan actividad física, tiempo sedentario y sueño en un enfoque de 24 horas. Cumplir las tres recomendaciones juntas da los mayores beneficios para la salud [3].
 
 Las pautas son para niños sanos menores de 5 años. Si su hijo tiene una discapacidad o una condición médica, consulte con un profesional de la salud [5][7].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 **Límites de pantalla por edad:**
 
 - Menores de 1 año: no se recomienda tiempo de pantalla [2][4][5].
@@ -53,11 +51,9 @@ Las pautas son para niños sanos menores de 5 años. Si su hijo tiene una discap
 - Para bebés que aún no se mueven solos, incluya al menos 30 minutos de tiempo boca abajo (tummy time) repartidos durante el día mientras están despiertos [5].
 
 ## Cuándo acudir al médico o a urgencias
-
 Las fuentes no describen señales específicas de alarma para acudir al médico o a urgencias relacionadas con pantallas o sueño. Sin embargo, si su hijo tiene una discapacidad o una condición médica, busque orientación adicional de un profesional de la salud [5][7]. También puede consultar con un profesional si le preocupa el sueño de su hijo, ya que es un motivo común de consulta entre padres [6][10].
 
 ## Preguntas frecuentes
-
 **¿Qué cuenta como tiempo de pantalla sedentario?**
 
 Es el tiempo que el niño pasa viendo pasivamente entretenimiento basado en pantallas, como TV, computadora o dispositivos móviles. No incluye juegos activos de pantalla donde se requiere movimiento físico [8].
@@ -71,7 +67,6 @@ Sí, leer sentado tranquilamente se considera comportamiento sedentario. Pero se
 Las recomendaciones no pretenden cubrir cada hora del día del niño. Habrá tiempo de juego tranquilo y momentos sentados, como durante las comidas [3][7]. Puede empezar reemplazando gradualmente comportamientos menos deseables por otros más saludables [3].
 
 ## Fuentes
-
 [1] WHO — "Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age" (2019), section "SEDENTARY SCREEN TIME SEDENTARY SCREEN TIME GOOD QUALITY SLEEP GOOD QUALITY SLEEP PHYSICAL ACTIVITY PHYSICAL ACTIVITY", p. 11
 [2] WHO — "Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age" (2019), section "minutes", p. 11, 12
 [3] WHO — "Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age" (2019), section "Rationale", p. 24

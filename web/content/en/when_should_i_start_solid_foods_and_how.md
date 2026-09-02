@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## What it is
-
 Complementary feeding means offering your baby solid foods or liquids other than breast milk or formula, as a complement and not a replacement [9]. Experts recommend exclusive breastfeeding for the first 6 months. After that, add other foods gradually while continuing breastfeeding on demand for as long as you and your baby wish [3]. For babies who are not breastfed, there is no clear consensus on the best time, but food can be introduced between 4 and 6 months, waiting until the baby shows signs of readiness [10].
 
 A baby is ready when they show active interest in food, have lost the tongue-thrust reflex that pushes food out, can pick up food and bring it to their mouth, and can sit with support [4]. These skills usually appear around 6 months, but not all babies develop them at the same time [4].
@@ -29,7 +28,6 @@ A baby is ready when they show active interest in food, have lost the tongue-thr
 There is no single best food to start with, and no rigid rules [1]. Offer foods rich in iron and zinc first [1]. Introduce foods one at a time, with a few days between each new food, to watch tolerance and acceptance [1]. Do not add salt, sugar, or sweeteners, so your baby gets used to natural flavors [1]. There is no evidence that delaying potentially allergenic foods past 6 months prevents allergies [8]. Follow WHO guidance: keep breastfeeding and introduce different foods gradually around the 6th month, never before the 4th month [8].
 
 ## What you can do at home
-
 - Respect your baby’s pace and allow some autonomy [6].
 - Tolerate mess appropriate for their age; do not clean them after every bite [6].
 - Do not treat an initial rejection as permanent. Offer the food again over the next days or weeks without pressure. It may take 10–15 tries for acceptance [6].
@@ -47,11 +45,9 @@ There is no single best food to start with, and no rigid rules [1]. Offer foods 
 Baby-led weaning and traditional spoon-feeding with purees are both acceptable. No respectful method is better than another [7]. When parents receive basic information, no differences are found in nutrition, iron intake, or choking between methods [2]. Baby-led weaning may help maintain breastfeeding and supports responsive feeding based on hunger and fullness signals [2]. More studies are needed on long-term effects [2].
 
 ## When to see a doctor or go to the emergency department
-
 The sources do not describe specific warning signs for when to see a doctor or go to the emergency department during complementary feeding. If you have concerns about your baby’s feeding, growth, or reactions to foods, contact your pediatrician.
 
 ## Common questions
-
 **Is baby-led weaning better than purees?**
 No. No respectful method is better than another [7]. When parents have basic information, no differences are found in nutrition, iron intake, or choking [2]. Baby-led weaning may support breastfeeding and responsive feeding, but long-term effects need more study [2].
 
@@ -65,7 +61,6 @@ Offer foods rich in iron and zinc first [1]. There are no foods better than othe
 There is no evidence that delaying potentially allergenic foods past 6 months prevents allergies [8]. Follow WHO guidance: introduce foods gradually around 6 months, never before 4 months [8].
 
 ## Sources
-
 [1] AEP — "Recomendaciones de la AEP sobre la alimentación complementaria" (2018), section "ALIMENTACIÓN COMPLEMENTARIA ¿QUÉ ALIMENTOS UTILIZAR Y CON QUÉ SECUENCIA?", p. 7
 [2] AEP — "Recomendaciones de la AEP sobre la alimentación complementaria" (2018), section "ALIMENTACIÓN COMPLEMENTARIA ¿Y si comparamos el BLW con el abordaje tradicional con purés?", p. 17
 [3] AEP — "Recomendaciones de la AEP sobre la alimentación complementaria" (2018), section "ALIMENTACIÓN COMPLEMENTARIA ¿CUÁNDO COMENZAR? ¿Cuánto tiempo se recomienda mantener la lactancia materna de forma exclusiva?", p. 3

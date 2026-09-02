@@ -20,7 +20,6 @@ draft: false
 ---
 
 ## What it is
-
 Self-harm, also called non-suicidal self-injury (NSSI), means a person deliberately hurts their own body without intending to end their life [3]. It is often used as a way to cope with emotional pain, a problem, or a difficulty [3]. It includes behaviors like cutting, burning, scratching, biting, or hitting oneself [3]. It is more common than you might think, and it happens in people with and without mental health conditions [3].
 
 It is important to understand that people who self-harm often feel relief afterward, which can make them want to do it again [4]. They are not doing it as a selfish call for attention, but from suffering and not having other ways to cope [5].
@@ -34,7 +33,6 @@ Warning signs to watch for include [1]:
 - Carrying or hiding sharp objects or traces of blood
 
 ## What you can do at home
-
 Feeling supported at home is a key factor. Create a climate of trust with an open, understanding perspective, without judging or criticizing [4]. Do not punish them for self-harming; they need support to stop, and punishment may make them hide the behavior [5].
 
 These questions can help start a conversation [5]:
@@ -52,7 +50,6 @@ You can encourage positive alternatives to self-harm at home, such as [5]:
 - Putting a rubber band on the wrist and playing with it
 
 ## When to see a doctor or go to the emergency department
-
 In Spain, the pathway is to go to your primary care health center and inform them of the situation. If needed, they will refer you to the child and adolescent mental health center [2].
 
 You should consult a health professional when [2]:
@@ -65,7 +62,6 @@ You should consult a health professional when [2]:
 Go to the nearest pediatric emergency department if the self-harm requires specific care, such as stitches or signs of infection [2]. For urgent help in Spain, you can call the emergency service at 900 20 20 10 [2].
 
 ## Common questions
-
 **Is my child doing this just to get attention?**
 No. Children and adolescents who self-harm do it to release negative emotions, not as a call for attention [2]. Offering support and active listening helps them express their emotions [2].
 
@@ -73,7 +69,6 @@ No. Children and adolescents who self-harm do it to release negative emotions, n
 This is different from non-suicidal self-harm. Suicidal behavior involves some intention to end one's own life [6]. Warning signs include verbal phrases like "I want to die" or "No one loves me," giving away belongings, mood changes, withdrawal, and risky behaviors [7]. If you suspect suicidal behavior, follow the same pathway: go to your primary care center, and in urgent cases, seek help from pediatric emergency services [8]. Offer support through listening, without judging or minimizing their distress [10]. Remove sharp objects, cleaning products, and any medications from their reach [10].
 
 ## Sources
-
 [1] SEUP — "Conducta autolesiva no suicida. Información para padres" (2025), section "PREVENCIÓN Y MANEJO DE LA CONDUCTA AUTOLESIVA NO SUICIDA", p. 1
 [2] SEUP — "Conducta autolesiva no suicida. Información para padres" (2025), section "¿DÓNDE PUEDO ACUDIR SI PRESENTA ALGUNA DE LAS SEÑALES DE ALARMA?", p. 2
 [3] SEUP — "Conducta autolesiva no suicida. Información para padres" (2025), section "¿QUÉ ES LA CONDUCTA AUTOLESIVA NO SUICIDA (ANS)?", p. 1

@@ -16,7 +16,6 @@ draft: false
 ---
 
 ## Qué es
-
 La meningitis es una infección de las capas protectoras que cubren el cerebro y la médula espinal. Puede ser muy grave e incluso poner en peligro la vida si no se trata rápidamente [1]. Es una inflamación del tejido delgado que rodea el cerebro y la médula espinal, llamado meninges [3].
 
 Hay varios tipos de meningitis. La más común es la viral. La meningitis bacteriana es rara pero puede ser mortal [3]. Puede causar derrames cerebrales, pérdida de audición y daño cerebral [3]. Los síntomas aparecen de repente [1].
@@ -25,8 +24,7 @@ Los síntomas pueden incluir: fiebre alta, manos y pies muy fríos, cuello rígi
 
 Los bebés y niños menores de 5 años también pueden: no querer comer, tener un llanto agudo o inusual, tener el cuerpo rígido o estar flácidos o sin respuesta, o tener una fontanela (mollera) abultada en la parte superior de la cabeza [1]. Algunos síntomas tempranos pueden parecerse a la gripe, un malestar estomacal o una resaca [1].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 La meningitis puede empeorar muy rápido. Si usted piensa que su hijo podría tener meningitis, necesita ayuda médica de inmediato [4]. No espere para ver si mejora en casa.
 
 Para la meningitis viral, el tratamiento suele ser en casa con reposo, analgésicos y medicamentos contra las náuseas [5]. Pero primero un médico debe confirmar el diagnóstico en el hospital [5].
@@ -34,7 +32,6 @@ Para la meningitis viral, el tratamiento suele ser en casa con reposo, analgési
 No conduzca usted mismo al servicio de urgencias. La persona con la que hable en el 999 le dará instrucciones sobre qué hacer [4].
 
 ## Cuándo acudir al médico o a urgencias
-
 Llame al 999 o vaya a urgencias de inmediato si su bebé o niño menor de 5 años tiene:
 
 - Fiebre muy alta: 38 °C o más en bebés menores de 3 meses, o 39 °C o más en bebés de 3 a 6 meses [4].
@@ -57,7 +54,6 @@ Para niños de 5 años o más, busque ayuda inmediata si tienen:
 Confíe en sus instintos. Un niño con meningitis podría no tener todos los síntomas. Busque ayuda médica inmediata si su hijo está enfermo y usted piensa que hay algo seriamente mal [4].
 
 ## Preguntas frecuentes
-
 **¿Qué causa la meningitis?**
 La meningitis viral ocurre cuando un virus entra al cuerpo por la nariz o la boca y viaja al cerebro [3]. La meningitis bacteriana generalmente comienza con bacterias que causan una infección similar a un resfriado [3]. Las infecciones neumocócicas y meningocócicas son las causas bacterianas más comunes [3].
 
@@ -68,7 +64,6 @@ Sí. Las vacunas son una de las formas más seguras y efectivas de proteger a su
 La meningitis viral tiende a mejorar sola en 7 a 10 días [5]. La meningitis bacteriana necesita tratamiento en el hospital, generalmente durante al menos una semana [5]. Los tratamientos pueden incluir antibióticos por vía intravenosa, líquidos por vía intravenosa y oxígeno con mascarilla [5].
 
 ## Fuentes
-
 [1] NHS — "Meningitis" (2026), section "Meningitis", p. 1 — https://www.nhs.uk/conditions/meningitis/
 [3] MedlinePlus — "Meningitis" (2025), section "Introducción", p. 1 — https://medlineplus.gov/meningitis.html
 [4] NHS — "Meningitis" (2026), section "When and where to get medical help", p. 1 — https://www.nhs.uk/conditions/meningitis/

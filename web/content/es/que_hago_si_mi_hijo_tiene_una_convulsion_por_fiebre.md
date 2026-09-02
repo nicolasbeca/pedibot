@@ -19,7 +19,6 @@ draft: false
 ---
 
 ## Qué es
-
 Una convulsión febril es una respuesta del cerebro ante la fiebre que ocurre en algunos niños sanos entre los 6 meses y los 5 años [1]. Casi siempre sucede durante el primer día de fiebre [1]. Cualquier infección común con fiebre, como un catarro, anginas o gastroenteritis, puede provocarla [1].
 
 Durante la convulsión, el niño pierde bruscamente la conciencia [1]. El cuerpo puede ponerse rígido y comenzar con sacudidas, o quedar completamente flácido [1]. También es frecuente que la boca esté morada, cerrada con fuerza y con la mirada perdida [1]. Puede vomitar u orinarse [6].
@@ -27,7 +26,6 @@ Durante la convulsión, el niño pierde bruscamente la conciencia [1]. El cuerpo
 Suele durar poco tiempo, generalmente menos de 5 minutos [2]. Es raro que dure más de 10 minutos [6]. Al terminar, el niño suele quedarse dormido o confuso durante un periodo corto [2]. No suele ser grave ni causar daños a largo plazo [3]. El desarrollo neurológico futuro no se ve afectado [2]. No es lo mismo que la epilepsia, aunque hay una probabilidad ligeramente mayor de tener epilepsia más adelante, pero es raro [4].
 
 ## Qué puedes hacer en casa
-
 Si tu hijo tiene una convulsión, mantén la calma y sigue estos pasos [2][5]:
 
 - Colócalo tumbado de lado, en un sitio seguro, lejos de objetos con los que pueda golpearse [2].
@@ -44,8 +42,7 @@ Cuando la convulsión ceda, colócalo en posición lateral de seguridad [2][5]. 
 
 No se puede prevenir una convulsión febril, pero sí se puede tratar la fiebre con antitérmicos igual que en cualquier otro niño [2]. Tras una convulsión, es recomendable ser valorado por un médico [2]. Puede volver a la guardería o escuela cuando esté al menos 24 horas sin fiebre y tolere la actividad habitual [2].
 
-## Cuándo ver a un médico o ir a urgencias
-
+## Cuándo acudir al médico o a urgencias
 Debes acudir a urgencias en estos casos [2][6]:
 
 - Primera convulsión febril [2][6].
@@ -60,7 +57,6 @@ Debes acudir a urgencias en estos casos [2][6]:
 Si el niño aún está convulsionando o está inconsciente, no lo lleves en coche a urgencias [6]. Llama al 999 o pide una ambulancia [6]. No conduzcas tú; pide a alguien que te lleve o llama a emergencias [6].
 
 ## Preguntas frecuentes
-
 **¿Necesita tratamiento?** La mayoría de las convulsiones febriles no necesitan tratamiento [4]. Pero el niño debe ser revisado en el hospital tras la primera convulsión [4]. Puede necesitar análisis de sangre, de orina o una punción lumbar para descartar infecciones [4]. Si hay una infección, puede necesitar medicación para tratarla [4].
 
 **¿Puede repetirse?** Sí, puede repetirse [2]. Muy raramente, si el niño sigue teniendo convulsiones, el médico puede recetar una medicina para usar durante la convulsión [4]. El médico te dará instrucciones sobre cómo usarla [4].
@@ -68,7 +64,6 @@ Si el niño aún está convulsionando o está inconsciente, no lo lleves en coch
 **¿Es grave?** No suele ser grave [3]. Es poco probable que dañe al niño o cause efectos a largo plazo [3]. La mayoría de las convulsiones duran de 30 segundos a 2 minutos y no causan daño duradero [8]. Tener una convulsión febril no implica que la causa de la fiebre sea más grave [2].
 
 ## Fuentes
-
 [1] SEUP — "Convulsión febril. Información para padres" (2025), section "¿QUÉ ES UNA CONVULSIÓN FEBRIL? ¿POR QUÉ SE PRODUCEN?", p. 1
 [2] SEUP — "Convulsión febril. Información para padres" (2025), section "¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CONVULSIÓN FEBRIL?", p. 1, 2
 [3] NHS — "Febrile seizures" (2023), section "Febrile seizures", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/

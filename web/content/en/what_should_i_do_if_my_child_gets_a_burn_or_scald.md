@@ -16,7 +16,6 @@ draft: false
 ---
 
 ## What it is
-
 Burns happen when dry heat touches the skin, like from a fire or a hot iron. Scalds come from hot liquids or steam. Burns can also be caused by electricity or chemicals [2]. A burn is damage to body tissues from heat, chemicals, electricity, sunlight, or radiation [5].
 
 There are three types of burns:
@@ -27,7 +26,6 @@ There are three types of burns:
 Burns can cause swelling, blistering, scarring, and in serious cases, shock or even death. They can also lead to infections because they damage the skin's protective barrier [5]. Small burns can often be treated at home and may take around 2 weeks to heal. Severe burns that are large or deep may need hospital treatment [3].
 
 ## What you can do at home
-
 Treat all burns and scalds straight away. Do these steps:
 
 - Hold the burn under cool running water for 15 to 30 minutes, or until the pain feels better. If no running water is available, use cool bottled water [1].
@@ -42,7 +40,6 @@ Do not do these things:
 - Do not burst any blisters [4].
 
 ## When to see a doctor or go to the emergency department
-
 Call 999 or go to A&E immediately if the burn or scald:
 - Is very large or deep
 - Is on the face, genitals, or bottom
@@ -57,7 +54,6 @@ Get urgent advice from NHS 111 if:
 Hospital treatment for severe burns may include medicines like antibiotics or painkillers, cleaning and dressing the wound, giving fluids through a vein, or surgery to repair the wound or reconstruct skin [3].
 
 ## Common questions
-
 **How long does a small burn take to heal?**
 Small burns and scalds can often be treated at home and can take around 2 weeks to heal [3].
 
@@ -71,7 +67,6 @@ Remove clothing near the area, but do not remove anything that is stuck to the a
 Yes. Scalds are caused by hot liquids or steam. Burns usually happen when dry heat touches the skin, such as fire or a hot iron. Burns can also be caused by electricity or chemicals [2].
 
 ## Sources
-
 [1] NHS — "Burns and scalds" (2026), section "What to do if you have a burn or scald", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/
 [2] NHS — "Burns and scalds" (2026), section "Burns and scalds", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/
 [3] NHS — "Burns and scalds" (2026), section "Treatments for burns and scalds", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/

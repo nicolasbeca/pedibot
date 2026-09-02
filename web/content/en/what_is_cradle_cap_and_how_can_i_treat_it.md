@@ -43,7 +43,6 @@ Yes. Your baby's hair may come away with the scales, but it will soon grow back 
 No. Cradle cap is not itchy or painful and does not bother your baby [1].
 
 ## Sources
-
 [1] NHS — "Cradle cap" (2025), section "Cradle cap", p. 1 — https://www.nhs.uk/conditions/cradle-cap/
 [2] NHS — "Cradle cap" (2025), section "Things you can do to help with cradle cap", p. 1 — https://www.nhs.uk/conditions/cradle-cap/
 [3] NHS — "Cradle cap" (2025), section "A pharmacist can help with cradle cap", p. 1 — https://www.nhs.uk/conditions/cradle-cap/

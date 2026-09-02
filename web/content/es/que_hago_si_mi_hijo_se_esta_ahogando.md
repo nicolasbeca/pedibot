@@ -14,7 +14,7 @@ draft: false
 ## Qué es
 El ahogo ocurre cuando la comida o un objeto pequeño se atasca en la garganta y bloquea las vías respiratorias. Esto impide que el oxígeno llegue a los pulmones y al cerebro. Si el cerebro no recibe oxígeno durante más de cuatro minutos, puede haber daño cerebral o incluso la muerte [1]. Los niños pequeños tienen un riesgo especialmente alto de ahogarse. Pueden ahogarse con alimentos como salchichas, nueces y uvas, y con objetos pequeños como piezas de juguetes o monedas [1]. Mantenga estos peligros fuera de su alcance y supervise a su hijo mientras come [1]. Cuando alguien se está ahogando, actuar rápido puede salvarle la vida. Aprenda a hacer golpes en la espalda, la maniobra de Heimlich (compresiones abdominales) y RCP [1].
 
-## Qué puede hacer en casa
+## Qué puedes hacer en casa
 - Mantenga los alimentos y objetos pequeños fuera del alcance de los niños pequeños [1].
 - Supervise siempre a su hijo mientras come [1].
 - Aprenda las técnicas de primeros auxilios: golpes en la espalda, compresiones abdominales y RCP [1].
@@ -42,7 +42,6 @@ Sí. Saber hacer golpes en la espalda, la maniobra de Heimlich y RCP puede ser v
 Si puede toser o respirar, anímele a seguir tosiendo para expulsar el objeto. No le dé golpes en la espalda si está tosiendo con fuerza, ya que podría empeorar la obstrucción [1]. Si la tos no funciona o deja de respirar, aplique las maniobras de primeros auxilios [1].
 
 ## Fuentes
-
 [1] MedlinePlus — "Choking" (2024), section "Introducción", p. 1 — https://medlineplus.gov/choking.html
 
 *Esta guía resume guías pediátricas publicadas. No es consejo médico y no sustituye a tu pediatra. En una emergencia, llama a tu número de emergencias.*

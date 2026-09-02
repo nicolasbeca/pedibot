@@ -65,7 +65,6 @@ Also call your GP or 111 if you have any other concerns about your baby [5].
 **When does reflux stop?** It usually gets better by the time your baby is 1 [1]. Colic, which is different, usually stops by 3 to 4 months [7].
 
 ## Sources
-
 [1] NHS — "Reflux in babies" (2025), section "Reflux in babies", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/
 [2] NHS — "Reflux in babies" (2025), section "Treatment for reflux in babies", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/
 [3] NHS — "Reflux in babies" (2025), section "Causes of reflux", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/

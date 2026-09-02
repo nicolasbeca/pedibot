@@ -17,11 +17,9 @@ draft: false
 ---
 
 ## Ce que c'est
-
 Un traumatisme crânien est le terme médical pour décrire un coup à la tête, qui survient généralement à cause d'une chute, d'un accident ou pendant la pratique d'un sport [2]. Dans la plupart des cas, la blessure est mineure car le crâne est dur et protège le cerveau [6]. Les symptômes les plus courants sont : mal de tête, confusion, perte de mémoire passagère, sensation de vertige, nausées, vomissements et somnolence [2].
 
 ## Ce que vous pouvez faire à la maison
-
 - Surveillez l'apparition des symptômes décrits ci-dessus [4].
 - En cas de mal de tête, vous pouvez donner de l'ibuprofène ou du paracétamol aux doses indiquées par votre médecin [4].
 - L'enfant peut dormir, mais en cas de traumatisme plus important, il est recommandé de le réveiller toutes les 4 heures [4].
@@ -32,7 +30,6 @@ Un traumatisme crânien est le terme médical pour décrire un coup à la tête,
 - Il est important de surveiller l'enfant pendant les 24 premières heures après le coup pour détecter des symptômes graves [3].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez aux urgences si l'enfant présente l'un des symptômes suivants, ou un comportement qui vous préoccupe [5] :
 
 - Mal de tête intense, progressif ou qui ne s'améliore pas avec le médicament habituel [1].
@@ -54,7 +51,6 @@ Il est aussi recommandé d'aller aux urgences dans les cas suivants [5] :
 Le personnel médical fera les examens nécessaires et décidera si des tests supplémentaires sont requis, même si dans la plupart des cas ils ne seront pas nécessaires [5].
 
 ## Questions fréquentes
-
 **Combien de temps durent les symptômes ?**
 La plupart des enfants se rétablissent rapidement. Cependant, certains peuvent présenter des symptômes pendant plusieurs heures, voire plusieurs jours, surtout si le traumatisme a été plus important [4].
 
@@ -68,7 +64,6 @@ En général, aucun test n'est nécessaire. Il est surtout important de surveill
 - Protéger les fenêtres et les escaliers avec des barrières de sécurité [3].
 
 ## Sources
-
 [1] SEUP — "Traumatismo craneal. Información para padres" (2025), section "¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?", p. 1, 2
 [2] SEUP — "Traumatismo craneal. Información para padres" (2025), section "¿QUÉ ES UN TRAUMATISMO CRANEAL?", p. 1
 [3] SEUP — "Traumatismo craneal. Información para padres" (2025), section "¿CÓMO PODEMOS PREVENIR LOS TRAUMATISMOS CRANEALES?", p. 2

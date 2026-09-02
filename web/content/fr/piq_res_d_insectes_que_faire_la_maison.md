@@ -21,11 +21,9 @@ draft: false
 ---
 
 ## Ce que c'est
-
 La plupart des piqûres d’insectes sont sans danger, même si elles peuvent être gênantes [1]. Les piqûres d’abeilles, de guêpes, de frelons et de fourmis de feu font généralement mal ; celles des moustiques et des puces démangent [1]. Les piqûres ne sont pas habituellement graves et s’améliorent en quelques jours [2]. Mais elles peuvent parfois s’infecter ou provoquer une réaction allergique sérieuse [2]. Certaines piqûres peuvent aussi transmettre des maladies, comme la maladie de Lyme par les tiques, la gale par les acariens, ou le paludisme par les moustiques dans certaines régions du monde [2]. Les poux sont des insectes parasites qui vivent sur la tête et le corps et se propagent par contact étroit entre personnes [8]. L’impétigo, une infection cutanée bactérienne, peut débuter quand des bactéries entrent par une piqûre d’insecte [9].
 
 ## Ce que vous pouvez faire à la maison
-
 Si un dard, une tique ou une chenille reste sur la peau, retirez-le avec précaution [4]. Pour un dard, grattez-le ou raclez-le sur le côté avec l’ongle ou le bord d’une carte bancaire ; n’utilisez pas de pince à épiler, car vous pourriez presser le venin [4]. Pour une tique, saisissez-la au plus près de la peau avec une pince fine, tirez lentement vers le haut sans l’écraser, puis nettoyez la zone [4]. Pour une chenille, retirez-la doucement avec une pince ou un stylo, rincez la peau à l’eau courante, laissez sécher à l’air, puis utilisez du ruban adhésif pour enlever les poils restants [4]. Lavez la zone avec de l’eau et du savon pour réduire le risque d’infection [3][4]. Gardez les piqûres propres, par exemple en les lavant à l’eau tiède et au savon [6].
 
 Pour soulager les symptômes :
@@ -42,7 +40,6 @@ Pour soulager les symptômes :
 Pour prévenir les piqûres : ne dérangez pas les insectes, utilisez un répulsif, portez des vêtements protecteurs et soyez prudent en mangeant dehors, car la nourriture attire les insectes [1]. Si vous savez que vous avez une réaction allergique grave (anaphylaxie), portez un kit d’épinéphrine d’urgence [1].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez un médecin si :
 - Un enfant de moins de 1 an a une piqûre d’insecte [5].
 - Vous pensez avoir été mordu par une tique et avoir des symptômes grippaux ou une éruption ronde ou ovale qui peut ressembler à une cible [5].
@@ -68,7 +65,6 @@ Rendez-vous aux urgences si :
 Ces signes peuvent indiquer une réaction allergique grave nécessitant un traitement immédiat à l’hôpital [5].
 
 ## Questions fréquentes
-
 **Comment savoir si c’est une piqûre d’insecte ?** Si vous n’êtes pas sûr, renseignez-vous sur les autres causes de démangeaisons cutanées et les éruptions courantes chez les bébés et les enfants [2].
 
 **Les poux de tête sont-ils liés aux piqûres ?** Les poux de tête sont des parasites qui se nourrissent de sang humain [10]. Les symptômes incluent une sensation de chatouillement dans les cheveux, des démangeaisons fréquentes causées par une réaction allergique aux piqûres, des plaies dues au grattage qui peuvent s’infecter, et des troubles du sommeil [7]. Le diagnostic se fait généralement en voyant un pou ou une lente, parfois avec une loupe et un peigne fin [7]. Des médicaments en vente libre ou sur ordonnance peuvent traiter les poux [8].
@@ -76,7 +72,6 @@ Ces signes peuvent indiquer une réaction allergique grave nécessitant un trait
 **Une piqûre peut-elle s’infecter ?** Oui, une piqûre peut s’infecter, par exemple avec l’impétigo, une infection bactérienne qui commence souvent par une coupure, une égratignure ou une piqûre d’insecte [9]. Elle se manifeste par des plaies rouges ou semblables à des boutons, remplies de pus, qui se brisent et forment une croûte épaisse [9]. L’impétigo se traite avec des antibiotiques [9]. Garder les piqûres propres aide à éviter cette infection [6].
 
 ## Sources
-
 [1] MedlinePlus — "Insect Bites and Stings" (2026), section "Introducción", p. 1 — https://medlineplus.gov/insectbitesandstings.html
 [2] NHS — "Insect bites and stings" (2023), section "Insect bites and stings", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/
 [3] NHS — "Insect bites and stings" (2023), section "Easing your symptoms", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/

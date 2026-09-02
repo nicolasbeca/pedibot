@@ -20,8 +20,7 @@ sources:
 draft: false
 ---
 
-## What the guidelines say
-
+## Ce que disent les recommandations
 | Organisation | What it says | Source |
 |---|---|---|
 | CDC | Déconseille les médicaments contre la toux et le rhume en vente libre chez les moins de 6 ans, en raison d’effets secondaires graves. Recommande repos, liquides, humidificateur, spray nasal salin, miel (après 1 an) et pastilles (après 4 ans). | [1] |
@@ -34,20 +33,16 @@ draft: false
 | MedlinePlus (asthme) | Ne traite pas la toux du rhume, mais précise que l’asthme nécessite un plan de traitement avec inhalateurs de secours et médicaments de contrôle. | [8] |
 | NHS (vaccin coqueluche) | Ne mentionne pas les médicaments contre la toux ; insiste sur la vaccination pour prévenir la coqueluche. | [10] |
 
-## Where they agree
-
+## Ce sur quoi elles s'accordent
 Le CDC et MedlinePlus s’accordent : les médicaments contre la toux en vente libre ne sont pas recommandés chez les jeunes enfants — moins de 6 ans pour le CDC, moins de 4 ans pour MedlinePlus. Les deux recommandent des alternatives non médicamenteuses : repos, liquides, humidificateur ou vapeur, et solutions salines nasales. Le NHS rejoint cette approche pour la coqueluche en conseillant repos et liquides, avec paracétamol ou ibuprofène si nécessaire. Aucune source ne recommande l’aspirine chez l’enfant.
 
-## Where they differ (and why it may not matter)
-
+## Ce sur quoi elles diffèrent (et pourquoi cela peut ne pas changer grand-chose)
 Les seuils d’âge diffèrent : le CDC dit « moins de 6 ans », MedlinePlus dit « moins de 4 ans ». Cette différence reflète des précautions variables, mais le message commun est clair : éviter ces médicaments chez les plus jeunes et demander un avis médical avant toute administration. Le NHS ne donne pas de limite d’âge pour les médicaments contre la toux, mais précise que le paracétamol et l’ibuprofène sont acceptables si l’enfant est inconfortable. Ces écarts ne changent pas la conduite pratique : consulter un professionnel avant de donner un médicament contre la toux à un enfant.
 
-## When to see a doctor or go to the emergency department
-
+## Quand consulter un médecin ou aller aux urgences
 Consultez un médecin en urgence (ou appelez le 111 au Royaume-Uni) si votre enfant a une toux qui empire, une respiration difficile ou rapide, une fièvre durant plus de 4 jours, des symptômes durant plus de 10 jours sans amélioration, ou si la fièvre ou la toux revient après une amélioration [2]. Pour la coqueluche, demandez une consultation urgente si votre bébé a moins de 6 mois avec des symptômes, ou si la toux est très forte et s’aggrave [5]. Rendez-vous aux urgences (appelez le 999) si les lèvres, la langue ou la peau deviennent bleues ou grises, si l’enfant a du mal à respirer, a des douleurs thoraciques en respirant ou en toussant, ou fait des convulsions [5]. Pour la pneumonie, allez aux urgences en cas de difficulté à respirer, de peau pâle ou bleutée, de crachats de sang, de confusion soudaine, ou si le bébé ne se réveille pas ou semble mou [6].
 
 ## Sources
-
 [1] CDC — "Manage Common Cold", section "Children", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html
 [2] MedlinePlus — "Common Cold" (2022), section "What are the treatments for the common cold?", p. 1 — https://medlineplus.gov/commoncold.html
 [3] NHS — "Croup" (2025), section "Symptoms of croup", p. 1 — https://www.nhs.uk/conditions/croup/

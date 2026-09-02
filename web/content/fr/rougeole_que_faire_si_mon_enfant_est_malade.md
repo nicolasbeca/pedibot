@@ -20,7 +20,6 @@ draft: false
 ---
 
 ## Ce que c'est
-
 La rougeole est une maladie infectieuse causée par un virus. Elle se transmet très facilement d'une personne à l'autre, notamment lorsqu'une personne infectée respire, tousse ou éternue [1][3]. Elle peut toucher tout le monde, mais elle est plus fréquente chez les enfants [3].
 
 Les symptômes commencent généralement 7 à 14 jours après l'exposition au virus [4]. Au début, la rougeole ressemble à un rhume [2]. Les premiers symptômes incluent :
@@ -37,7 +36,6 @@ La rougeole peut entraîner des complications graves, surtout chez les enfants d
 Il n'existe pas de traitement contre la rougeole, mais le vaccin ROR (rougeole-oreillons-rubéole) peut la prévenir [1]. Le vaccin est sûr et efficace [3][7]. Deux doses sont recommandées pour assurer l'immunité [7].
 
 ## Ce que vous pouvez faire à la maison
-
 La rougeole commence généralement à s'améliorer en une semaine [10]. Après avoir consulté un médecin, vous pouvez aider à soulager les symptômes :
 - faire reposer l'enfant et lui donner beaucoup de liquides, comme de l'eau, pour éviter la déshydratation
 - donner du paracétamol ou de l'ibuprofène pour enfants si l'enfant est gêné ou inconfortable – vérifiez toujours l'emballage ou la notice pour vous assurer que le médicament convient à votre enfant
@@ -52,7 +50,6 @@ Pour éviter de propager la rougeole :
 Restez à la maison, ne pas aller à la crèche, à l'école ou au travail pendant au moins 4 jours à partir de l'apparition de l'éruption cutanée [10]. Évitez tout contact étroit avec les bébés, les femmes enceintes et les personnes ayant un système immunitaire affaibli [10].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez rapidement un médecin si vous pensez que vous ou votre enfant avez la rougeole [6]. Appelez avant de vous rendre au cabinet pour éviter de contaminer d'autres personnes [6].
 
 Consultez aussi un médecin ou allez aux urgences si :
@@ -65,8 +62,7 @@ Consultez aussi un médecin ou allez aux urgences si :
 - vous ou votre enfant urinez moins que d'habitude (ou le bébé a moins de couches mouillées)
 - vous ou votre enfant vous sentez très mal, ou vous êtes inquiet que quelque chose de grave ne va pas [6]
 
-## Preguntas frecuentes
-
+## Questions fréquentes
 **Mon enfant a-t-il besoin du vaccin ?**
 Oui, la vaccination est le meilleur moyen de prévenir la rougeole [2][3]. Tous les enfants devraient être vaccinés [7]. Le vaccin ROR protège aussi contre les oreillons et la rubéole [8]. Si vous n'êtes pas sûr que votre enfant ait reçu ses vaccins, demandez à votre médecin [8].
 
@@ -77,7 +73,6 @@ Non. La « rubéole », parfois appelée « rougeole allemande », est une malad
 Il est peu probable que ce soit la rougeole si votre enfant a reçu les deux doses du vaccin ROR ou s'il a déjà eu la rougeole [6].
 
 ## Sources
-
 [1] MedlinePlus — "Measles" (2025), section "Introducción", p. 1 — https://medlineplus.gov/measles.html
 [2] NHS — "Measles" (2025), section "Measles", p. 1 — https://www.nhs.uk/conditions/measles/
 [3] WHO — "Measles", section "Overview", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles

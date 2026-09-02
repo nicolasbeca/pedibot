@@ -21,7 +21,6 @@ draft: false
 ---
 
 ## Qué es
-
 La tos ferina, también llamada pertussis, es una infección respiratoria muy contagiosa causada por una bacteria llamada Bordetella pertussis [5]. Esta bacteria se adhiere a las vías respiratorias y libera toxinas que dañan los tejidos y causan inflamación [5]. Se propaga de persona a persona al toser, estornudar o respirar muy cerca de alguien [7]. También puede contagiarse al tocar una superficie infectada y luego tocarse la nariz o la boca [7].
 
 Los primeros síntomas son similares a un resfriado: moqueo, dolor de garganta y tos ocasional [3][6]. La fiebre alta es poco común [3]. Después de aproximadamente una semana, aparecen los accesos de tos que pueden durar varios minutos y empeoran por la noche [3]. Entre los síntomas típicos se incluyen:
@@ -35,8 +34,7 @@ Los síntomas suelen aparecer entre 5 y 10 días después de la exposición, aun
 
 La tos ferina es especialmente grave en bebés menores de 1 año que no han sido vacunados [1]. Aproximadamente la mitad de los bebés menores de 1 año que contraen la enfermedad necesitan hospitalización [1]. Los bebés menores de 6 meses tienen mayor riesgo de deshidratación, dificultades respiratorias, neumonía y convulsiones [9]. En niños mayores y adultos, la enfermedad suele ser menos grave, pero puede causar costillas doloridas, hernias, infecciones de oído o pérdida de orina al toser [9].
 
-## Qué puede hacer en casa
-
+## Qué puedes hacer en casa
 La mejor prevención es la vacunación [4]. La vacuna se administra como parte de la vacuna 6 en 1 a los 2, 4, 6 y 18 meses, y como refuerzo preescolar a los 3 años y 4 meses [2]. Si está embarazada, debe recibir la vacuna alrededor de la semana 20 para proteger al bebé durante sus primeras semanas de vida [2].
 
 Para prevenir la propagación:
@@ -51,7 +49,6 @@ Para prevenir la propagación:
 Si su hijo tiene tos ferina, los antibióticos pueden hacer la infección menos grave si se administran temprano [8]. También pueden acortar el tiempo de contagio [7]. Los miembros de la familia expuestos pueden recibir antibióticos para prevenir la enfermedad [4]. Consulte siempre a un profesional de salud para el tratamiento adecuado.
 
 ## Cuándo acudir al médico o a urgencias
-
 Busque atención médica de inmediato si su bebé:
 - Presenta pausas en la respiración o se pone azul [6].
 - Tiene dificultad para respirar después de un acceso de tos [3].
@@ -64,7 +61,6 @@ También acuda al médico si:
 - Tiene fiebre o cualquier signo de complicaciones como neumonía [9].
 
 ## Preguntas frecuentes
-
 **¿Cuánto tiempo es contagiosa la tos ferina?**
 Una persona es contagiosa aproximadamente 2 semanas después de comenzar a toser [7]. Los antibióticos pueden acortar este período [7].
 
@@ -75,7 +71,6 @@ Sí. Algunas personas tienen síntomas leves y no saben que tienen tos ferina, p
 La vacuna es la mejor forma de prevención [4]. Sin embargo, los síntomas pueden variar según la edad y si la persona fue vacunada o no [5]. Aun así, es fundamental completar todas las dosis recomendadas [2].
 
 ## Fuentes
-
 [1] MedlinePlus — "Whooping Cough" (2024), section "What is whooping cough?", p. 1 — https://medlineplus.gov/whoopingcough.html
 [2] NHS — "Whooping cough" (2025), section "The whooping cough vaccine", p. 1 — https://www.nhs.uk/conditions/whooping-cough/
 [3] NHS — "Whooping cough" (2025), section "Whooping cough", p. 1 — https://www.nhs.uk/conditions/whooping-cough/

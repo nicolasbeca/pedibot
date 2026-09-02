@@ -59,7 +59,6 @@ Most laxatives work within 3 days [7]. They should only be used for a short time
 Long-term constipation can lead to faecal impaction, where poo builds up in the rectum and diarrhoea leaks around it [6]. This requires medical treatment [6].
 
 ## Sources
-
 [2] NHS — "Constipation" (2026), section "Symptoms of constipation", p. 1 — https://www.nhs.uk/conditions/constipation/
 [3] MedlinePlus — "Constipation" (2025), section "Introducción", p. 1 — https://medlineplus.gov/constipation.html
 [4] NHS — "Constipation" (2026), section "How you can treat and prevent constipation yourself", p. 1 — https://www.nhs.uk/conditions/constipation/

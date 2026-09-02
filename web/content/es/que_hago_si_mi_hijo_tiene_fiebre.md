@@ -16,7 +16,6 @@ draft: false
 ---
 
 ## Qué es
-
 La fiebre es un mecanismo de defensa del cuerpo. No es una enfermedad, sino un síntoma de que el sistema inmunitario está trabajando [5]. El principal síntoma que aparece con la fiebre es el malestar, aunque muchas veces los niños la toleran mejor que los adultos [3]. Es normal que tengan menos apetito, cansancio o dolor de cabeza [3].
 
 Cuando la fiebre está subiendo, es normal que el niño tenga frío, incluso escalofríos, y un color de piel reticulado (cutis marmorata), especialmente en manos y pies [3]. Cuando la fiebre baja, sudará, se pondrá rojo y tendrá calor [3].
@@ -24,7 +23,6 @@ Cuando la fiebre está subiendo, es normal que el niño tenga frío, incluso esc
 La duración de la fiebre varía según la causa. Lo más habitual es que dure entre 2 y 4 días, pero puede durar más sin que sea motivo de mayor gravedad [4].
 
 ## Qué puedes hacer en casa
-
 El objetivo principal es el confort del niño, no bajar la fiebre a toda costa [5]. La fiebre refleja la activación de las defensas, así que trata el malestar, no el número del termómetro [5].
 
 - Mantén al niño bien hidratado. Ofrécele líquidos con frecuencia [5].
@@ -40,8 +38,7 @@ Para prevenir infecciones, la medida más eficaz es el lavado de manos frecuente
 
 Si el niño tiene fiebre, no debe acudir al colegio o guardería para evitar contagiar a los demás [2]. Cuando no tenga fiebre y se encuentre bien, podrá retomar su vida normal. Es prudente esperar 24 horas sin fiebre para volver a la guardería o escuela [4].
 
-## Cuándo acudir a un servicio de urgencias
-
+## Cuándo acudir al médico o a urgencias
 Debes consultar en urgencias si el niño presenta alguno de estos signos [1]:
 
 - Está decaído, poco reactivo o muy irritable.
@@ -53,7 +50,6 @@ Debes consultar en urgencias si el niño presenta alguno de estos signos [1]:
 En casa, vigila el estado general del niño y que tenga buen color [4]. También vigila la aparición de petequias, que son puntos rojos en la piel que no desaparecen cuando aprietas en sus laterales [4].
 
 ## Preguntas frecuentes
-
 **¿Cuándo puede volver a la escuela?** Cuando no tenga fiebre y se encuentre bien, pero es prudente esperar 24 horas sin fiebre [4].
 
 **¿Debo despertarlo para darle antitérmicos?** El objetivo es el confort. Si el niño está durmiendo y no tiene malestar, no es necesario despertarlo. Trata el malestar, no la fiebre en sí [5].
@@ -61,7 +57,6 @@ En casa, vigila el estado general del niño y que tenga buen color [4]. También
 **¿Es grave si la fiebre no baja con el antitérmico?** No. La persistencia de fiebre tras un antitérmico es frecuente y no implica mayor gravedad [4].
 
 ## Fuentes
-
 [1] SEUP — "Fiebre. Información para padres", section "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf
 [2] SEUP — "Fiebre. Información para padres", section "¿CÓMO PODEMOS PREVENIR LAS INFECCIONES?", p. 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf
 [3] SEUP — "Fiebre. Información para padres", section "¿CUÁLES SON LOS SÍNTOMAS?", p. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf

@@ -60,7 +60,6 @@ Antibiotics only work for bacterial conjunctivitis. They will not work if the ca
 Most cases get better in a couple of weeks without treatment [2]. If symptoms have not cleared within 7 days, see a GP [3].
 
 ## Sources
-
 [1] MedlinePlus — "Pink Eye" (2017), section "Introducción", p. 1 — https://medlineplus.gov/pinkeye.html
 [2] NHS — "Conjunctivitis" (2024), section "Conjunctivitis", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/
 [3] NHS — "Conjunctivitis" (2024), section "Staying away from work or school", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/

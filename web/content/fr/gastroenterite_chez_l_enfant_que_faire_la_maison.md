@@ -20,12 +20,10 @@ sources:
 draft: false
 ---
 
-## Ce que c’est
-
+## Ce que c'est
 La gastroentérite est une infection du tube digestif qui augmente le nombre de selles, molles ou liquides. Elles peuvent contenir un peu de sang ou de mucus. L’enfant peut aussi avoir mal au ventre, vomir et avoir de la fièvre [3]. Les vomissements sont l’expulsion par la bouche du contenu digestif ; ils sont souvent d’origine gastro-intestinale et peuvent s’accompagner de douleurs abdominales, de diarrhée ou de fièvre [6]. La cause est le plus souvent un virus, mais des bactéries, des parasites, des produits chimiques ou des réactions à certains médicaments peuvent aussi la provoquer [10]. La gastro n’est généralement pas grave chez les personnes en bonne santé, mais elle peut parfois causer une déshydratation [10]. Le risque de déshydratation est plus grand chez les petits enfants [2].
 
 ## Ce que vous pouvez faire à la maison
-
 Le plus important est d’éviter la déshydratation causée par la perte de liquide dans les selles et les vomissements [3]. Les solutions de réhydratation orale contiennent de l’eau, du sucre et des sels dans des proportions précises pour compenser ces pertes [3]. Donnez-les en petites quantités et souvent, après chaque selle liquide ou chaque vomissement [3]. Si l’enfant vomit, attendez 20 minutes, puis proposez le sérum en très petites quantités toutes les 5 minutes pendant une heure, en augmentant progressivement s’il le tolère [5]. Ne donnez jamais de solutions maison ni de sodas du commerce pour remplacer les pertes [2][5].
 
 - Ne forcez pas l’enfant à jeûner : il peut manger une alimentation presque normale, en plus petites quantités et plus souvent, en respectant son appétit [1].
@@ -38,7 +36,6 @@ Le plus important est d’éviter la déshydratation causée par la perte de liq
 - Gardez l’enfant malade à la maison, loin de l’école, de la crèche ou de la piscine, jusqu’à disparition des vomissements [7].
 
 ## Quand consulter un médecin ou aller aux urgences
-
 Consultez rapidement si l’enfant présente un de ces signes [2][8] :
 
 - Vomissements très fréquents, impossibilité de garder solides ou liquides, ou vomissements verdâtres, avec du sang ou qui ressemblent à du marc de café [1].
@@ -51,7 +48,6 @@ Consultez rapidement si l’enfant présente un de ces signes [2][8] :
 - Chez les enfants plus grands : fièvre élevée, diarrhée durant plus d’un jour, selles noires ou avec du sang ou du pus [8].
 
 ## Questions fréquentes
-
 **Faut-il donner une alimentation spéciale ?** Non, une alimentation presque normale est possible, en petites quantités et plus souvent. La « diète » n’est pas recommandée [1][7].
 
 **Peut-on donner du lait ?** Oui, les produits laitiers ne sont pas à éviter. Le lait maternel ou le lait artificiel habituel convient [1][7].
@@ -61,7 +57,6 @@ Consultez rapidement si l’enfant présente un de ces signes [2][8] :
 **Les probiotiques aident-ils ?** Certains probiotiques peuvent aider à raccourcir un épisode de diarrhée, selon des études [9]. Demandez conseil à votre médecin.
 
 ## Sources
-
 [1] SEUP — "Gastroenteritis aguda. Información para padres" (2025), section "¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1
 [2] SEUP — "Gastroenteritis aguda. Información para padres" (2025), section "Ofrecer en pequeñas cantidades SRO Dolor abdominal", p. 2
 [3] SEUP — "Gastroenteritis aguda. Información para padres" (2025), section "¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?", p. 1
