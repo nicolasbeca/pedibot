@@ -64,6 +64,13 @@ const ages = lang === 'es'
   .chat :global(.typing i:nth-child(2)) { animation-delay: .2s; } .chat :global(.typing i:nth-child(3)) { animation-delay: .4s; }
   @keyframes blink { 0%, 80%, 100% { opacity: .25 } 40% { opacity: 1 } }
   .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; background: linear-gradient(to top, var(--ground) 70%, transparent); padding: 18px 12px 14px; }
+  /* The composer is pinned to the bottom of the window, so it floated over the end of the page
+     for good: the footer was unreadable and its links unclickable (reported 2-sep-2026). The
+     page now reserves exactly the height the composer takes — measured in the script below,
+     because the textarea grows as you type — with a sensible default in case the script never
+     runs. Only the pages that carry the chat get it. */
+  :global(body:has(.dock)),
+  :global(body.has-dock) { padding-bottom: var(--dock-h, 132px); } /* the class covers browsers without :has() */
   .dock-in { max-width: 760px; margin: 0 auto; }
   .ctx { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
   .ctx .pill { background: var(--cream); }
@@ -178,6 +185,17 @@ const ages = lang === 'es'
   });
 
   // seasonal suggestion (I-27): replace the last card by the season's frequent question
+  // keep --dock-h in step with the real height of the composer (it grows with the textarea)
+  const dock = document.querySelector('.dock') as HTMLElement | null;
+  if (dock) {
+    document.body.classList.add('has-dock');
+    const measure = () =>
+      document.documentElement.style.setProperty('--dock-h', `${dock.offsetHeight + 8}px`);
+    measure();
+    addEventListener('resize', measure);
+    if ('ResizeObserver' in window) new ResizeObserver(measure).observe(dock);
+  }
+
   const month = new Date().getMonth() + 1; const south = ['AU', 'NZ', 'AR', 'CL', 'BR'].includes(countrySel.value);
   const winter = south ? (month >= 6 && month <= 9) : (month >= 11 || month <= 3);
   const summer = south ? (month >= 12 || month <= 2) : (month >= 6 && month <= 9);

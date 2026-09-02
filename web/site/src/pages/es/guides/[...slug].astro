@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import { t } from '../../../i18n';
+import { faqsFrom, relatedTo } from '../../../guides';
 export async function getStaticPaths() {
   const guides = await getCollection('guides', g => g.data.lang === 'es' && !g.data.draft);
   return guides.map(g => ({ params: { slug: g.id.replace(/^es\//, '') }, props: { g } }));
@@ -9,8 +10,23 @@ export async function getStaticPaths() {
 const { g } = Astro.props; const lang = 'es'; const s = t(lang);
 const twins = await getCollection('guides', x => x.data.lang === 'en' && !x.data.draft && x.data.topic === g.data.topic);
 const otherHref = twins.length ? `/guides/${twins[0].id.replace(/^en\//, '')}` : null;
+const family = await getCollection('guides', x => x.data.lang === 'es' && !x.data.draft);
+const related = relatedTo(g, family);
+const faqs = faqsFrom(g.body ?? '');
 const { Content } = await render(g);
-const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', headline: g.data.title, description: g.data.description, datePublished: g.data.date.toISOString(), inLanguage: 'es', author: { '@type': 'Organization', name: 'PediBot' }, citation: g.data.sources };
+const page = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', headline: g.data.title, description: g.data.description, datePublished: g.data.date.toISOString(), inLanguage: 'es', author: { '@type': 'Organization', name: 'PediBot' }, citation: g.data.sources };
+const faqLd = faqs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }
+  : null;
+const jsonld = faqLd ? [page, faqLd] : page;
 ---
 <Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/es/guides/${g.id.replace(/^es\//, '')}`} jsonld={jsonld} otherHref={otherHref}>
   <article class="narrow prose" style="padding:40px 18px">
@@ -19,5 +35,27 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', he
     <p class="lede">{g.data.description}</p>
     <Content />
     <p style="margin-top:32px"><a class="btn btn-primary" href={`/es?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
+    {related.length > 0 && (
+      <nav class="related">
+        <h2>Guías relacionadas</h2>
+        <ul>
+          {related.map((r) => (
+            <li>
+              <a href={`/es/guides/${r.id.replace(/^es\//, '')}`}>{r.data.title}</a>
+              <span>{r.data.description}</span>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
   </article>
 </Base>
+
+<style>
+  .related { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .related h2 { margin-top: 0; font-size: 1.1rem; }
+  .related ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .related li { margin: 0; }
+  .related a { font-weight: 600; }
+  .related span { display: block; font-size: .88rem; color: var(--ink-3); }
+</style>
