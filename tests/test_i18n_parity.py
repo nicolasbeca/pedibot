@@ -170,3 +170,13 @@ def test_the_api_accepts_every_language_the_engine_speaks() -> None:
     for lang in SUPPORTED_LANGS:
         assert _re.fullmatch(_LANG_PATTERN, lang), f"la API rechazaría lang={lang}"
     assert not _re.fullmatch(_LANG_PATTERN, "xx")
+
+
+def test_the_telegram_bot_speaks_every_language_the_engine_does() -> None:
+    """`/lang` listed ("en","es","fr") by hand, and HELP was indexed with [...] rather than .get —
+    so a user who set French and typed /help crashed the handler."""
+    from pedibot.bot.answer import SUPPORTED_LANGS
+    from pedibot.telegram_bot import HELP, LANG_SET
+
+    assert set(SUPPORTED_LANGS) <= set(HELP), f"/help falta en {set(SUPPORTED_LANGS) - set(HELP)}"
+    assert set(SUPPORTED_LANGS) <= set(LANG_SET)

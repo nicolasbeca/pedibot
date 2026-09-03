@@ -1,6 +1,6 @@
 """PediBot on Telegram: the same Engine, one session per chat (python-telegram-bot, long polling).
 
-Commands: /start, /country XX, /lang en|es|fr, /help. Any other text → engine.ask with the chat's
+Commands: /start, /country XX, /lang <code>, /help. Any other text → engine.ask with the chat's
 history. Answers carry 👍/👎 inline buttons (feedback into the ops DB). No personal data stored:
 the chat id is hashed into the session token.
 """
@@ -11,7 +11,7 @@ import hashlib
 import re
 from dataclasses import dataclass
 
-from pedibot.bot.answer import Engine
+from pedibot.bot.answer import SUPPORTED_LANGS, Engine
 from pedibot.ops.store import AnswerRecord, OpsStore
 
 _CIT = re.compile(r"\[(\d{1,2})\]")
@@ -31,6 +31,45 @@ HELP = {
         "/stop — sin avisos (puedes seguir preguntando)\n"
         "No es consejo médico. En una emergencia llama a tu número local."
     ),
+    "fr": (
+        "Je réponds uniquement à partir de recommandations pédiatriques publiées et je nomme la "
+        "source à chaque phrase. Dites-moi ce qui se passe et l'âge de votre enfant.\n\n"
+        "/country FR — pays pour les numéros d'urgence\n/lang en — anglais\n"
+        "/stop — plus d'avis (vous pouvez continuer à poser des questions)\n"
+        "Ce n'est pas un avis médical. En cas d'urgence, appelez votre numéro local."
+    ),
+    "de": (
+        "Ich antworte ausschließlich aus veröffentlichten kinderärztlichen Leitlinien und nenne "
+        "in jedem Satz die Quelle. Sagen Sie mir, was los ist, und wie alt Ihr Kind ist.\n\n"
+        "/country DE — Land für die Notrufnummern\n/lang en — Englisch\n"
+        "/stop — keine Hinweise mehr (Fragen können Sie weiter stellen)\n"
+        "Keine medizinische Beratung. Rufen Sie im Notfall Ihre örtliche Nummer an."
+    ),
+    "ru": (
+        "Я отвечаю только по опубликованным педиатрическим рекомендациям и называю источник в "
+        "каждой фразе. Расскажите, что случилось, и сколько лет ребёнку.\n\n"
+        "/country RU — страна для номеров экстренных служб\n/lang en — английский\n"
+        "/stop — без уведомлений (вопросы задавать можно)\n"
+        "Это не медицинская консультация. В экстренной ситуации звоните по местному номеру."
+    ),
+    "ar": (
+        "أجيب فقط من إرشادات طب الأطفال المنشورة وأذكر المصدر في كل جملة. "
+        "أخبرني بما يحدث وبعمر طفلك.\n\n"
+        "/country SA — البلد لأرقام الطوارئ\n/lang en — الإنجليزية\n"
+        "/stop — بدون إشعارات (يمكنك الاستمرار في طرح الأسئلة)\n"
+        "هذه ليست استشارة طبية. في الحالات الطارئة اتصل برقمك المحلي."
+    ),
+}
+
+# What the bot says back when the language changes — in the language it changed to, which is the
+# only way the user can tell it worked.
+LANG_SET = {
+    "en": "Language set to English.",
+    "es": "Idioma: español.",
+    "fr": "Langue : français.",
+    "de": "Sprache: Deutsch.",
+    "ru": "Язык: русский.",
+    "ar": "اللغة: العربية.",
 }
 
 
@@ -59,7 +98,8 @@ class TelegramFront:
         if cmd in ("/start", "/help"):
             self.ops.touch_tg_user(chat_id, p.lang, p.country)
             self.ops.set_tg_opt_out(chat_id, False)
-            return HELP[p.lang or "en"]
+            # .get, not [...]: a language without its own help text must fall back, not crash
+            return HELP.get(p.lang or "en", HELP["en"])
         if cmd == "/stop":
             self.ops.set_tg_opt_out(chat_id, True)
             return (
@@ -75,10 +115,10 @@ class TelegramFront:
             return "Usage: /country ES"
         if cmd == "/lang":
             arg = arg.strip().lower()[:2]
-            if arg in ("en", "es", "fr"):
+            if arg in SUPPORTED_LANGS:
                 p.lang = arg
-                return "Language set to English." if arg == "en" else "Idioma: español."
-            return "Usage: /lang en | /lang es"
+                return LANG_SET.get(arg, LANG_SET["en"])
+            return "Usage: /lang " + " | /lang ".join(SUPPORTED_LANGS)
         return None
 
     def handle_message(self, chat_id: int, text: str) -> tuple[str, int]:
