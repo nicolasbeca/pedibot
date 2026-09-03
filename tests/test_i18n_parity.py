@@ -144,3 +144,16 @@ def test_slugs_survive_a_non_latin_script() -> None:
     assert len(ar) > 10, ar
     # and the Latin languages are unchanged
     assert slug("¿Qué hago si mi hijo tiene fiebre?") == "que_hago_si_mi_hijo_tiene_fiebre"
+
+
+def test_every_language_names_the_dosage_forms() -> None:
+    """The dose table headers are the strength printed on the bottle, and the first word of each
+    is the form. A language missing from that map showed "gotas 100 mg/ml" on the Russian page."""
+    text = (SITE / "dosepages.ts").read_text(encoding="utf-8")
+    block = text[text.index("const FORM_WORD"):]
+    block = block[: block.index("};")]
+    have = set(re.findall(r"^  (\w+):\s*\{", block, re.M))
+    # Spanish needs no entry: the keys of the map are the Spanish words themselves, because the
+    # drug catalogue is written in Spanish and those strings are what a presentation is called.
+    want = set(langs()) - {"es"}
+    assert want <= have, f"faltan formas farmacéuticas en {want - have}"
