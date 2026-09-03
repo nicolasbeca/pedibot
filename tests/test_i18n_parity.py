@@ -180,3 +180,14 @@ def test_the_telegram_bot_speaks_every_language_the_engine_does() -> None:
 
     assert set(SUPPORTED_LANGS) <= set(HELP), f"/help falta en {set(SUPPORTED_LANGS) - set(HELP)}"
     assert set(SUPPORTED_LANGS) <= set(LANG_SET)
+
+
+def test_each_rss_feed_declares_its_own_language() -> None:
+    """Cloning a language folder copied the German feed title onto Russian and Arabic: the
+    strings are not the language code, so the clone's find-and-replace never touched them."""
+    pages = SITE / "pages"
+    for lang in langs():
+        feed = (pages if lang == "en" else pages / lang) / "rss.xml.ts"
+        text = feed.read_text(encoding="utf-8")
+        assert f"<language>{lang}</language>" in text, f"{lang}: el feed declara otro idioma"
+        assert f"g.data.lang === '{lang}'" in text, f"{lang}: el feed lista otras guías"

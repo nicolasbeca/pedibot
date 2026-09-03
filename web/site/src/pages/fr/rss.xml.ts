@@ -2,8 +2,9 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 
-// One feed per language. Title, description and <language> come from the language it is for —
-// every feed used to carry the Spanish ones, whatever guides it listed.
+// One feed per language. Title, description and <language> belong to the language the feed is
+// for — cloning a language folder copied the German ones onto Russian and Arabic, because they
+// are plain strings and the clone only rewrote the quoted language code.
 export async function GET(context: APIContext) {
   const guides = (await getCollection('guides', g => g.data.lang === 'fr' && !g.data.draft))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
