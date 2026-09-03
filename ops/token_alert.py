@@ -22,6 +22,7 @@ import datetime as dt
 import os
 import sqlite3
 import sys
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -87,17 +88,29 @@ def parse_trades(payload: dict[str, Any]) -> list[Trade]:
     return out
 
 
-def _rpc(method: str, params: list[Any]) -> Any:
-    r = httpx.post(
-        HYPEREVM_RPC,
-        json={"jsonrpc": "2.0", "id": 1, "method": method, "params": params},
-        timeout=30,
-    )
-    r.raise_for_status()
-    body = r.json()
-    if "error" in body:
-        raise RuntimeError(str(body["error"]))
-    return body["result"]
+def _rpc(method: str, params: list[Any], tries: int = 5) -> Any:
+    """One JSON-RPC call, with backoff.
+
+    The public node rate-limits a burst of range queries, and it answers that as a JSON error
+    rather than an HTTP status — so a scan that does not retry silently reads zero trades and
+    reports "nothing happened", which is the worst possible failure for an alert.
+    """
+    last = ""
+    for attempt in range(tries):
+        r = httpx.post(
+            HYPEREVM_RPC,
+            json={"jsonrpc": "2.0", "id": 1, "method": method, "params": params},
+            timeout=30,
+        )
+        r.raise_for_status()
+        body = r.json()
+        if "error" not in body:
+            return body["result"]
+        last = str(body["error"])
+        if "rate limit" not in last.lower():
+            break
+        time.sleep(1.5 + 1.5 * attempt)
+    raise RuntimeError(last)
 
 
 def _addr(topic: str) -> str:
@@ -168,6 +181,7 @@ def hyperevm_trades(from_block: int) -> tuple[list[Trade], int]:
             )
         a = b + 1
         chunks += 1
+        time.sleep(0.4)  # the node is free; do not make it regret that
     return out, head
 
 

@@ -194,8 +194,10 @@ def test_one_chain_failing_does_not_silence_the_other(monkeypatch, tmp_path) -> 
     # both down → non-zero, and nothing announced
     import sys as _sys
 
-    fake = type("M", (), {"get_settings": lambda: type("S", (), {"ops_db_path": db})()})
-    _sys.modules.setdefault("pedibot.settings", fake)
+    # setitem, not setdefault: monkeypatch puts the real module back afterwards. Replacing it
+    # outright leaked a stub into every test that ran later.
+    fake = type("M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())})
+    monkeypatch.setitem(_sys.modules, "pedibot.settings", fake)
     assert m.main() == 1
     assert "text" not in msg
 
@@ -241,8 +243,10 @@ def test_the_first_hyperevm_run_takes_a_baseline_instead_of_announcing_history(m
     monkeypatch.setattr(m, "httpx", NoAggregator())
     import sys as _sys
 
-    _sys.modules["pedibot.settings"] = type(
-        "M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())}
+    monkeypatch.setitem(
+        _sys.modules,
+        "pedibot.settings",
+        type("M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())}),
     )
     m.main()
     assert sent == [], sent  # nothing pushed on the baseline run
