@@ -217,3 +217,42 @@ def test_the_message_never_invents_a_price() -> None:
     assert "0,00 USD" not in text
     assert "importe no visible" in text
     assert "HyperEVM" in text
+
+
+def test_the_first_hyperevm_run_takes_a_baseline_instead_of_announcing_history(monkeypatch, tmp_path) -> None:
+    """Without a watermark the first scan sees the curve's whole history. Announcing it would
+    push last week's purchases as if they had just happened."""
+    m = _mod()
+    db = tmp_path / "ops.db"
+    sent = []
+    monkeypatch.setattr(m, "telegram", lambda t: sent.append(t) or True)
+    old = m.Trade(
+        tx_hash="0x" + "ee" * 32, ts="2026-09-01T10:00:00Z", kind="buy", usd=0.0,
+        tokens=368.0, wallet="0x" + "11" * 20, chain="hyperevm", native=0.05,
+    )
+    monkeypatch.setattr(m, "hyperevm_trades", lambda frm: ([old], 44902000))
+
+    class NoAggregator:
+        def get(self, *a, **k):
+            raise RuntimeError("skip base in this test")
+
+        post = get
+
+    monkeypatch.setattr(m, "httpx", NoAggregator())
+    import sys as _sys
+
+    _sys.modules["pedibot.settings"] = type(
+        "M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())}
+    )
+    m.main()
+    assert sent == [], sent  # nothing pushed on the baseline run
+    assert m.scan_state(db, "hyperevm") == 44902000  # but the watermark moved
+
+    # a genuinely new trade after the baseline IS announced
+    fresh = m.Trade(
+        tx_hash="0x" + "ff" * 32, ts="2026-09-03T10:00:00Z", kind="sell", usd=0.0,
+        tokens=10.0, wallet="0x" + "22" * 20, chain="hyperevm", native=None,
+    )
+    monkeypatch.setattr(m, "hyperevm_trades", lambda frm: ([fresh], 44903000))
+    m.main()
+    assert len(sent) == 1 and "VENTA" in sent[0]

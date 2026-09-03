@@ -326,14 +326,25 @@ def main() -> int:
         failures += 1
 
     # HyperEVM, straight off the chain. One chain failing must not silence the other.
+    baseline_only: list[Trade] = []
     try:
         last = scan_state(db, "hyperevm")
         found, head = hyperevm_trades(last + 1 if last else 0)
-        trades += found
+        # The very first run has no watermark, so it sees the whole history of the curve. Those
+        # trades already happened: they are recorded so they are never announced, but the operator
+        # is not woken up for a purchase from last week.
+        if last:
+            trades += found
+        else:
+            baseline_only = found
+            print(f"hyperevm baseline: {len(found)} past trade(s) recorded, none announced")
         save_scan_state(db, "hyperevm", head)
     except Exception as e:  # noqa: BLE001
         print("hyperevm scan failed:", e, file=sys.stderr)
         failures += 1
+
+    if baseline_only:
+        record_and_select(db, baseline_only)  # stored, and now "seen"
 
     fresh = record_and_select(db, trades)
     if fresh:
