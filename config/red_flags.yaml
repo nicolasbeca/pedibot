@@ -28,7 +28,15 @@ rules:
   - wird nicht wach
   - ohnmächtig
   - ohnmacht
+  - не реагирует
+  - не отзывается
+  - без сознания
+  - не просыпается
+  - не приходит в себя
+  - потерял[а]? сознание
+  - обморок
   reason_de: Reagiert nicht auf Ansprache
+  reason_ru: Не реагирует на обращение
 - id: seizure
   level: emergency
   source: seup_acudir_urgencias
@@ -53,7 +61,16 @@ rules:
   - anfall
   - fieberkrampf
   - epilep
+  - судорог
+  - приступ
+  - трясёт
+  - трясет
+  - подёргива
+  - подергива
+  - закатил[аи] глаза
+  - эпилепт
   reason_de: Auffällige Bewegungen / Krampfanfall
+  reason_ru: Необычные движения / судороги
 - id: severe_breathing
   level: emergency
   source: seup_acudir_urgencias
@@ -96,7 +113,17 @@ rules:
   - läuft blau an
   - keucht
   - ringt nach luft
+  - не дыш
+  - тяжело дыш
+  - трудно дыш
+  - задыха
+  - втяжени
+  - втягива.{0,20}рёбр
+  - остановк.{0,15}дыхан
+  - перестал[а]? дышать
+  - хрип
   reason_de: Schwere Atemnot (Einziehungen, sehr schnelle Atmung, Atempausen, blaue Färbung)
+  reason_ru: Тяжёлое нарушение дыхания (втяжения, очень частое дыхание, паузы, синюшность)
 - id: anaphylaxis
   level: emergency
   source: seup_anafilaxia
@@ -118,7 +145,16 @@ rules:
   - gesicht geschwollen
   - zunge geschwollen
   - quaddeln
+  - анафилак
+  - аллергическая реакция
+  - отёк губ
+  - отек губ
+  - распухл.{0,15}губ
+  - отёк квинке
+  - отек квинке
+  - крапивниц.{0,30}дыш
   reason_de: Verdacht auf schwere allergische Reaktion (geschwollene Lippen oder Lider mit Atemnot, Erbrechen oder Schwindel)
+  reason_ru: Подозрение на тяжёлую аллергическую реакцию (отёк губ или век с нарушением дыхания, рвотой или головокружением)
 - id: choking
   level: emergency
   source: seup_acudir_urgencias
@@ -140,7 +176,13 @@ rules:
   - hat sich verschluckt
   - bekommt nichts mehr durch
   - steckt im hals
+  - подавил
+  - поперхнул
+  - застрял[оа]? в горле
+  - не может продохнуть
+  - задыхается.{0,20}едой
   reason_de: Erstickungsgefahr mit Atemnot
+  reason_ru: Удушье с нарушением дыхания
 - id: mottled_skin
   level: emergency
   source: seup_acudir_urgencias
@@ -162,7 +204,15 @@ rules:
   - ganz blass
   - auffallend blass
   - blass und kalt
+  - мраморн
+  - синие губы
+  - посинел
+  - синюшн
+  - серая кожа
+  - очень бледн
+  - весь бледный
   reason_de: Schlechte Hautfarbe (auffallende Blässe, marmoriert, blau oder grau)
+  reason_ru: Плохой цвет кожи (резкая бледность, мраморность, синюшность или серый оттенок)
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce
@@ -177,7 +227,11 @@ rules:
   - sturz auf den kopf.{0,40}bewusstlos
   - war kurz weg
   - kurz bewusstlos
+  - удар.{0,25}голов.{0,40}сознани
+  - упал.{0,30}голов.{0,40}сознани
+  - отключился на
   reason_de: Kopfverletzung mit Bewusstlosigkeit
+  reason_ru: Травма головы с потерей сознания
 - id: severe_bleeding
   level: emergency
   source: seup_acudir_urgencias
@@ -197,7 +251,12 @@ rules:
   - starke blutung
   - blutet nicht auf
   - hört nicht auf zu bluten
+  - сильно кровоточит
+  - кровь не останавлива
+  - не могу остановить кровь
+  - сильное кровотечение
   reason_de: Tiefe Wunde, die nach 10 Minuten Druck weiterblutet
+  reason_ru: Глубокая рана с сильным кровотечением, которое не останавливается после 10 минут давления
 - id: open_fracture
   level: emergency
   source: seup_acudir_urgencias
@@ -214,7 +273,11 @@ rules:
   - knochen sichtbar
   - offener bruch
   - knochen schaut raus
+  - открытый перелом
+  - видна кость
+  - кость торчит
   reason_de: Offener Bruch (Knochen sichtbar)
+  reason_ru: Открытый перелом (видна кость)
 - id: petechiae_fever
   level: emergency
   source: seup_fiebre
@@ -234,7 +297,13 @@ rules:
   - glastest
   - petechien
   - verschwinden nicht.{0,20}druck
+  - пятна.{0,30}не исчеза
+  - сыпь.{0,30}не бледне
+  - не бледнеет при надавлив
+  - петехи
+  - проба стаканом
   reason_de: Flecken auf der Haut, die auf Druck nicht verschwinden (möglicherweise Sepsis oder Meningitis)
+  reason_ru: Пятна на коже, которые не бледнеют при надавливании (возможен сепсис или менингит)
 - id: infant_fever_under_3_months
   level: urgent
   source: seup_acudir_urgencias
@@ -249,6 +318,11 @@ rules:
   - baby.{0,30}fieber
   - säugling.{0,30}fieber
   - neugeboren.{0,40}fieber
+  - младенц.{0,25}температур
+  - новорожд.{0,30}температур
+  - грудничк.{0,25}температур
+  - месяц.{0,20}температура 38
+  reason_ru: Младенец до 3 месяцев с температурой (≥ 38 °C)
 - id: very_high_fever
   level: urgent
   source: seup_acudir_urgencias
@@ -265,7 +339,12 @@ rules:
   - über 40 grad
   - 41 grad
   - 42 grad
+  - 4[01][,\.]\d\s*(°|градус)
+  - выше 40
+  - температура 41
+  - температура 42
   reason_de: Fieber über 40,5 °C
+  reason_ru: Температура выше 40,5 °C
 - id: moderate_breathing
   level: urgent
   source: seup_acudir_urgencias
@@ -293,7 +372,14 @@ rules:
   - schnelle atmung
   - atmet schnell
   - kurzatmig
+  - часто дышит
+  - свистящ
+  - одышк
+  - со свистом
+  - учащённое дыхание
+  - учащенное дыхание
   reason_de: 'Atembeschwerden: schnelle Atmung, Pfeifen, Einziehungen'
+  reason_ru: 'Затруднённое дыхание: частое дыхание, свист, втяжения'
 - id: drowsy_irritable
   level: urgent
   source: seup_acudir_urgencias
@@ -320,7 +406,14 @@ rules:
   - teilnahmslos
   - schreit untröstlich
   - lässt sich nicht beruhigen
+  - очень вял
+  - сонлив
+  - заторможен
+  - не успокаива
+  - плачет без остановки
+  - постоянно спит
   reason_de: Auffällige Unruhe oder Schläfrigkeit
+  reason_ru: Чрезмерная возбудимость или сонливость
 - id: dehydration
   level: urgent
   source: seup_gastroenteritis
@@ -353,7 +446,17 @@ rules:
   - trockener mund
   - erbricht seit
   - durchfall seit
+  - запавшие глаза
+  - мало писает
+  - сухой памперс
+  - не писает
+  - сухо во рту
+  - рвота.{0,25}сутки
+  - понос.{0,25}сутки
+  - не пьёт
+  - не пьет
   reason_de: 'Zeichen von Austrocknung: eingesunkene Augen, wenig Urin, trockener Mund, anhaltendes Erbrechen oder starker Durchfall über 24 h'
+  reason_ru: 'Признаки обезвоживания: запавшие глаза, мало мочи, сухость во рту, непрекращающаяся рвота или сильный понос дольше 24 часов'
 - id: vomiting_headache
   level: urgent
   source: seup_acudir_urgencias
@@ -370,7 +473,11 @@ rules:
   - erbricht.{0,40}kopfschmerz
   - kopfschmerz.{0,40}erbricht
   - kopfweh.{0,30}erbrochen
+  - рвот.{0,35}голов.{0,15}бол
+  - голова.{0,25}болит.{0,25}рв
+  - болит голова.{0,30}рвёт
   reason_de: Wiederholtes Erbrechen mit starken Kopfschmerzen
+  reason_ru: Повторная рвота с сильной головной болью
 - id: vomiting_after_head_injury
   level: urgent
   source: seup_tce
@@ -387,7 +494,11 @@ rules:
   - kopf gestoßen.{0,50}erbroch
   - sturz.{0,40}kopf.{0,40}erbroch
   - gegen den kopf.{0,50}übergeben
+  - удар.{0,30}голов.{0,40}рв
+  - упал.{0,35}голов.{0,40}рв
+  - стукнулся головой.{0,40}рв
   reason_de: Erbrechen nach einer Kopfverletzung
+  reason_ru: Рвота после травмы головы
 - id: foreign_body_ingestion
   level: urgent
   source: seup_acudir_urgencias
@@ -406,7 +517,12 @@ rules:
   - batterie verschluckt
   - magnet verschluckt
   - münze verschluckt
+  - проглотил
+  - батарейк
+  - магнит.{0,20}проглот
+  - монет.{0,20}проглот
   reason_de: Gegenstand verschluckt (besonders Batterien oder Magnete)
+  reason_ru: Проглотил предмет (особенно батарейку или магниты)
 - id: poisoning
   level: urgent
   source: seup_intoxicaciones
@@ -428,7 +544,13 @@ rules:
   - hat medikamente genommen
   - tabletten genommen
   - zu viel.{0,20}(paracetamol|ibuprofen)
+  - отравлен
+  - выпил.{0,25}(химию|моющее|бытов)
+  - съел таблетк
+  - выпил таблетк
+  - слишком много.{0,20}(парацетамол|ибупрофен)
   reason_de: Giftige Stoffe oder zu viel Medikament eingenommen
+  reason_ru: Приём ядовитых веществ или передозировка лекарства
 - id: severe_abdominal_pain
   level: urgent
   source: seup_dolor_abdominal
@@ -447,7 +569,13 @@ rules:
   - bauch tut sehr weh
   - krümmt sich vor schmerzen
   - bauch ist hart
+  - сильно болит живот
+  - живот твёрд
+  - живот тверд
+  - скручивает от боли
+  - нестерпим.{0,20}бол.{0,20}живот
   reason_de: Starke, anhaltende, zunehmende Bauchschmerzen
+  reason_ru: Сильная, непрерывная, нарастающая боль в животе
 - id: deformity_fracture
   level: urgent
   source: seup_acudir_urgencias
@@ -468,7 +596,13 @@ rules:
   - muss genäht
   - klafft
   - tiefe schnittwunde
+  - деформац
+  - неестественно вывернут
+  - нужно зашивать
+  - глубокий порез
+  - рана расходится
   reason_de: Verletzung mit sichtbarer Fehlstellung / Wunde, die genäht werden muss
+  reason_ru: Травма с видимой деформацией / рана, требующая швов
 - id: newborn_refusing_feeds
   level: urgent
   source: seup_acudir_urgencias
@@ -483,7 +617,13 @@ rules:
   - verweigert die brust
   - verweigert die flasche
   - will nicht trinken
+  - отказывается от груди
+  - отказывается от бутылочки
+  - не берёт грудь
+  - не берет грудь
+  - перестал[а]? есть
   reason_de: Säugling unter 1 Monat trinkt nicht
+  reason_ru: Младенец до 1 месяца отказывается от еды
 - id: burn
   level: urgent
   source: ninojesus_primeros_auxilios
@@ -504,7 +644,13 @@ rules:
   - heißes wasser über
   - brandwunde
   - blasen.{0,20}verbrenn
+  - ожог
+  - обварил
+  - ошпарил
+  - кипятк
+  - волдыр.{0,20}ожог
   reason_de: Verbrennung (besonders Gesicht, Hände, Genitalbereich oder große Fläche)
+  reason_ru: Ожог (особенно лица, кистей, половых органов или большой площади)
 - id: suicidal_ideation
   level: mental_health
   source: seup_conducta_suicida
@@ -530,7 +676,13 @@ rules:
   - suizid
   - selbstmord
   - nicht mehr da sein wollen
+  - не хочет жить
+  - покончить с собой
+  - суицид
+  - самоубийств
+  - лучше бы меня не было
   reason_de: Äußert Suizidgedanken
+  reason_ru: Высказывает суицидальные мысли
 - id: self_harm
   level: mental_health
   source: seup_autolesion
@@ -551,7 +703,12 @@ rules:
   - hat sich geschnitten
   - selbstverletz
   - tut sich weh
+  - режет себя
+  - порезал[а]? себе
+  - самоповрежд
+  - причиняет себе вред
   reason_de: Selbstverletzung
+  reason_ru: Самоповреждение
 context:
   fever:
   - fi[eè]vre
@@ -569,3 +726,7 @@ context:
   - \b3[89][,\.]?\d?\s*grad
   - \b4[0-2][,\.]?\d?\s*grad
   - temperatur von
+  - температур
+  - \b3[89][,\.]?\d?\s*(°|градус)
+  - \b4[0-2][,\.]?\d?\s*(°|градус)
+  - 'жар '

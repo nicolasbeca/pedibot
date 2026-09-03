@@ -130,3 +130,17 @@ def test_the_model_is_told_the_right_language() -> None:
         if f.name != "strings.py" and '"es": "Spanish"' in f.read_text(encoding="utf-8")
     ]
     assert not inline, f"la tabla de idiomas vuelve a estar escrita a mano en {inline}"
+
+
+def test_slugs_survive_a_non_latin_script() -> None:
+    """A Cyrillic title used to collapse to the fallback "s", so the second Russian guide
+    overwrote the first — same filename, no error, one guide gone."""
+    from pedibot.ingest.pipeline import slug
+
+    ru = [slug("Вши у детей: что действительно помогает"), slug("Что делать при простуде у ребёнка")]
+    assert all(len(s) > 10 for s in ru), ru
+    assert len(set(ru)) == 2, ru
+    ar = slug("ما يجب فعله عند ارتفاع حرارة الطفل")
+    assert len(ar) > 10, ar
+    # and the Latin languages are unchanged
+    assert slug("¿Qué hago si mi hijo tiene fiebre?") == "que_hago_si_mi_hijo_tiene_fiebre"

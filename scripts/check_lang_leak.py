@@ -37,6 +37,9 @@ MARKERS: dict[str, tuple[str, ...]] = {
            "quels ", "âge", "santé", "questions fréquentes"),
     "de": ("kind", "notaufnahme", "impfkalender", "dosisrechner", "warnzeichen", "soll ich",
            "ratgeber", "häufige fragen", "quellen", "symptomtagebuch"),
+    # Russian is in its own script, so any Cyrillic at all on a non-Russian page is a leak
+    "ru": ("ребён", "ребен", "температур", "прививк", "источник", "калькулятор доз",
+           "тревожн", "статьи для родителей", "дневник симптомов"),
 }
 
 

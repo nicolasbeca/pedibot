@@ -75,25 +75,28 @@ def looks_like_medication_dose(text: str) -> bool:
 
 # Every language the engine will answer in. Adding one here is not enough on its own: it needs
 # its triage patterns in red_flags.yaml and its texts below, or the safety layer goes silent.
-SUPPORTED_LANGS = ("es", "en", "fr", "de")
+SUPPORTED_LANGS = ("es", "en", "fr", "de", "ru")
 
 DISCLAIMER = {
     "en": "PediBot gives information from official paediatric guidelines. It is not medical advice and does not replace your paediatrician.",
     "es": "PediBot informa a partir de guías pediátricas oficiales. No es consejo médico y no sustituye a tu pediatra.",
     "fr": "PediBot informe à partir de recommandations pédiatriques officielles. Ce n'est pas un avis médical et cela ne remplace pas votre pédiatre.",
     "de": "PediBot gibt Informationen aus offiziellen kinderärztlichen Leitlinien wieder. Das ist keine medizinische Beratung und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt.",
+    "ru": "PediBot даёт информацию из опубликованных педиатрических рекомендаций. Это не медицинская консультация и не заменяет вашего педиатра.",
 }
 NO_SOURCE = {
     "en": "I don't have reliable information on this in my sources, so I'd rather not guess. Please contact your paediatrician or a nurse line. If your child seems seriously unwell, go to the emergency department.",
     "es": "No tengo información fiable sobre esto en mis fuentes y prefiero no adivinar. Consulta con tu pediatra. Si tu hijo o hija parece estar grave, acude a urgencias.",
     "fr": "Je n'ai pas d'information fiable à ce sujet dans mes sources et je préfère ne pas deviner. Parlez-en à votre pédiatre. Si votre enfant semble aller très mal, allez aux urgences.",
     "de": "Dazu habe ich in meinen Quellen keine verlässliche Information, und raten möchte ich nicht. Sprechen Sie bitte mit Ihrer Kinderärztin oder Ihrem Kinderarzt. Wenn Ihr Kind schwer krank wirkt, fahren Sie in die Notaufnahme.",
+    "ru": "В моих источниках нет надёжной информации об этом, а гадать я не хочу. Обратитесь, пожалуйста, к своему педиатру. Если ребёнку явно плохо, поезжайте в приёмное отделение.",
 }
 CLARIFY = {
     "en": "I want to get this right. What's the main thing going on?",
     "es": "Quiero acertar. ¿Qué es lo principal que le pasa?",
     "fr": "Je veux bien comprendre. Quel est le principal problème ?",
     "de": "Ich möchte es richtig verstehen. Was ist das Hauptproblem?",
+    "ru": "Хочу понять правильно. Что беспокоит больше всего?",
 }
 CLARIFY_OPTIONS = {
     "en": [
@@ -132,12 +135,22 @@ CLARIFY_OPTIONS = {
         "Essen oder Schlaf",
         "Etwas anderes",
     ],
+    "ru": [
+        "Температура",
+        "Кашель или дыхание",
+        "Рвота или понос",
+        "Сыпь или кожа",
+        "Падение или травма",
+        "Еда или сон",
+        "Другое",
+    ],
 }
 ASK_AGE = {
     "en": "To answer safely I need to know how old your child is (months or years). Could you tell me?",
     "es": "Para responder con seguridad necesito saber la edad (meses o años). ¿Me la dices?",
     "fr": "Pour répondre en toute sécurité, j'ai besoin de l'âge de votre enfant (en mois ou en années). Pouvez-vous me le dire ?",
     "de": "Um sicher antworten zu können, muss ich wissen, wie alt Ihr Kind ist (in Monaten oder Jahren). Können Sie mir das sagen?",
+    "ru": "Чтобы ответить безопасно, мне нужно знать возраст ребёнка (в месяцах или годах). Подскажете?",
 }
 
 
@@ -208,6 +221,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "en": f"🚨 Call {numbers['emergency']} now or go to the emergency department.",
             "fr": f"🚨 Appelez tout de suite le {numbers['emergency']} ou allez aux urgences.",
             "de": f"🚨 Rufen Sie jetzt {numbers['emergency']} an oder fahren Sie in die Notaufnahme.",
+            "ru": f"🚨 Немедленно звоните {numbers['emergency']} или везите ребёнка в приёмное отделение.",
         }
     elif tr.level == "urgent":
         heads = {
@@ -215,6 +229,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "en": "🚨 With these symptoms your child should be seen in the emergency department today, without waiting.",
             "fr": "🚨 Avec ces signes, votre enfant doit être vu aux urgences aujourd'hui, sans attendre.",
             "de": "🚨 Mit diesen Anzeichen sollte Ihr Kind heute in der Notaufnahme gesehen werden, ohne zu warten.",
+            "ru": "🚨 С такими признаками ребёнка нужно показать врачу в приёмном отделении сегодня, не откладывая.",
         }
     else:  # mental_health
         mental = numbers.get("mental") or numbers["emergency"]
@@ -223,9 +238,12 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "en": f"💛 This matters and you are not alone. Call {mental} (or {numbers['emergency']} if there is immediate danger). If your child has already done something to harm themselves, go to the emergency department now.",
             "fr": f"💛 C'est important et vous n'êtes pas seul·e. Appelez le {mental} (ou le {numbers['emergency']} en cas de danger immédiat). Si votre enfant s'est déjà fait du mal, allez aux urgences maintenant.",
             "de": f"💛 Das ist wichtig, und Sie sind damit nicht allein. Rufen Sie {mental} an (oder {numbers['emergency']} bei unmittelbarer Gefahr). Wenn Ihr Kind sich bereits etwas angetan hat, fahren Sie jetzt in die Notaufnahme.",
+            "ru": f"💛 Это важно, и вы не одни. Позвоните {mental} (или {numbers['emergency']}, если опасность прямо сейчас). Если ребёнок уже причинил себе вред, везите его в приёмное отделение немедленно.",
         }
     head = heads.get(lang, heads["en"])
-    why = {"es": "Motivo", "fr": "Raison", "de": "Grund"}.get(lang, "Reason") + f": {reasons}"
+    why = {"es": "Motivo", "fr": "Raison", "de": "Grund", "ru": "Причина"}.get(
+        lang, "Reason"
+    ) + f": {reasons}"
     return head + "\n" + why
 
 
@@ -255,8 +273,9 @@ def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, floa
 _CHILD = re.compile(
     r"\b(hij[oa]|beb[eé]|ni[ñn][oa]|peque|my (son|daughter|baby|child|toddler|kid|little one)|"
     r"mon (fils|b[eé]b[eé]|enfant)|ma (fille|petite)|mein[e]? (sohn|tochter|kind|baby)|"
+    r"(мой|моя|моего|моей|у) (сын|доч|ребён|ребен|малыш|младен)|ребён[коа]|ребен[коа]|"
     r"\d+\s*(años|año|meses|mes|year|years|month|months|weeks?|semanas?|ans|mois|"
-    r"jahre[n]?|monate[n]?|wochen)\b)",
+    r"jahre[n]?|monate[n]?|wochen|лет|год\w*|месяц\w*|недел\w*)\b)",
     re.I,
 )
 

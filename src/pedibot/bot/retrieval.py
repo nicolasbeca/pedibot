@@ -48,10 +48,21 @@ class Synonyms:
 
 
 def detect_lang(text: str) -> str:
-    """Tiny heuristic: es / en / fr / de — enough to pick the synonym direction, the answer
+    """Tiny heuristic: es / en / fr / de / ru — enough to pick the synonym direction, the answer
     language and the triage wording. A language only joins here once it has its own triage
     patterns: guessing the language of a message the safety layer cannot read is worse than
-    defaulting to English."""
+    defaulting to English.
+
+    Languages in their own script are decided by the script and never reach the word counting:
+    counting Latin-alphabet markers in a Cyrillic sentence compares it against vocabularies it
+    has no letters in common with."""
+    # A different script is not a hint, it is the answer. Measured over the letters only, so a
+    # Cyrillic question with a Latin brand name in it ("Нурофен 200 mg") still counts as Russian.
+    letters = [c for c in text if c.isalpha()]
+    if letters:
+        cyrillic = sum("\u0400" <= c <= "\u04ff" for c in letters)
+        if cyrillic / len(letters) > 0.5:
+            return "ru"
     low = " " + re.sub(r"[¿¡?!.,;:]", " ", text.lower()) + " "
     es_markers = [
         " mi ",

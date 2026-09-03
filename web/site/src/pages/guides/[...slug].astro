@@ -24,6 +24,10 @@ const others: Record<string, string | null> = {};
   const twins = await getCollection('guides', x => x.data.lang === 'de' && !x.data.draft && x.data.topic === g.data.topic);
   others['de'] = twins.length ? `/de/guides/${twins[0].id.replace(/^de\//, '')}` : null;
 }
+{
+  const twins = await getCollection('guides', x => x.data.lang === 'ru' && !x.data.draft && x.data.topic === g.data.topic);
+  others['ru'] = twins.length ? `/ru/guides/${twins[0].id.replace(/^ru\//, '')}` : null;
+}
 const family = await getCollection('guides', x => x.data.lang === 'en' && !x.data.draft);
 const related = relatedTo(g, family);
 const faqs = faqsFrom(g.body ?? '');

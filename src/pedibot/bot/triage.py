@@ -15,15 +15,24 @@ LEVEL_ORDER = {"routine": 0, "mental_health": 1, "urgent": 2, "emergency": 3}
 
 _AGE_PATTERNS = [
     # (regex, unit multiplier to months)
-    (re.compile(r"(\d{1,2})\s*(?:meses|mes|months?|mois|monate[n]?|monat|mo)\b", re.I), 1.0),
     (
         re.compile(
-            r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|ans?|jahre[n]?|jahr|y\.?o\.?)\b", re.I
+            r"(\d{1,2})\s*(?:meses|mes|months?|mois|monate[n]?|monat|mo|месяц\w*|мес)\b", re.I
+        ),
+        1.0,
+    ),
+    (
+        re.compile(
+            r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|ans?|jahre[n]?|jahr|год\w*|лет|y\.?o\.?)\b",
+            re.I,
         ),
         12.0,
     ),
     (
-        re.compile(r"(\d{1,2})\s*(?:semanas|semana|weeks?|semaines?|wochen|woche|wks?)\b", re.I),
+        re.compile(
+            r"(\d{1,2})\s*(?:semanas|semana|weeks?|semaines?|wochen|woche|недел\w*|нед|wks?)\b",
+            re.I,
+        ),
         1 / 4.345,
     ),
     (
@@ -35,7 +44,7 @@ _AGE_PATTERNS = [
     ),
     (re.compile(r"(?:tiene|has|is|de)\s+(\d{1,2})\s*(?:a|y)\b", re.I), 12.0),
 ]
-_NEWBORN = re.compile(r"reci[eé]n nacid|newborn|neonat|nouveau[- ]n[eé]|neugeboren", re.I)
+_NEWBORN = re.compile(r"reci[eé]n nacid|newborn|neonat|nouveau[- ]n[eé]|neugeboren|новорожд", re.I)
 _WORD_AGES = {
     "un mes": 1,
     "1 mes": 1,
@@ -63,6 +72,13 @@ _WORD_AGES = {
     "einem jahr": 12,
     "zwei jahre": 24,
     "zwei jahren": 24,
+    "один месяц": 1,
+    "месяц": 1,
+    "два месяца": 2,
+    "три месяца": 3,
+    "год": 12,
+    "одного года": 12,
+    "два года": 24,
 }
 
 
@@ -75,6 +91,7 @@ class Rule:
     reason_en: str
     reason_fr: str = ""
     reason_de: str = ""
+    reason_ru: str = ""
     patterns: list[re.Pattern[str]] = field(default_factory=list)
     requires: list[str] = field(default_factory=list)
 
@@ -94,6 +111,8 @@ class TriageResult:
                 return r.reason_fr
             if lang == "de" and r.reason_de:
                 return r.reason_de
+            if lang == "ru" and r.reason_ru:
+                return r.reason_ru
             return r.reason_en
 
         return [pick(r) for r in self.matched]
@@ -131,6 +150,7 @@ class Triage:
                     reason_en=r["reason_en"],
                     reason_fr=r.get("reason_fr", ""),
                     reason_de=r.get("reason_de", ""),
+                    reason_ru=r.get("reason_ru", ""),
                     patterns=[re.compile(p, re.I) for p in r.get("patterns", [])],
                     requires=list(r.get("requires", [])),
                 )

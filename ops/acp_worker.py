@@ -147,7 +147,7 @@ def _num(value: Any) -> float | None:
 
 # Kept in step with pedibot.bot.answer.SUPPORTED_LANGS by tests/test_acp_worker.py; the worker
 # runs as a plain script on the server and does not import the package.
-SUPPORTED_LANGS = ("en", "es", "fr", "de")
+SUPPORTED_LANGS = ("en", "es", "fr", "de", "ru")
 
 
 def route(req: dict[str, Any]) -> Route | None:

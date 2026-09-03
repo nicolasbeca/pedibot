@@ -145,10 +145,41 @@ STRINGS: dict[str, Table] = {
         "photo_clear": "Auf dem Foto sehe ich keines der drei Warnzeichen, auf die ich achte (Flecken, die auf Druck nicht verschwinden, bläuliche Färbung, geschwollene Lippen). Das sagt aber nicht, was es ist — ein Foto ersetzt keine Untersuchung. Wenn der Ausschlag sich ausbreitet, hohes Fieber dazukommt oder Ihr Kind matt wirkt, gehen Sie heute zur Kinderärztin oder zum Kinderarzt.",
         "photo_unsure": "Auf diesem Foto kann ich es nicht sicher sagen. Wenn die Flecken beim Draufdrücken mit einem Glas nicht verschwinden, oder wenn Lippen geschwollen oder bläulich sind, fahren Sie in die Notaufnahme; sonst gehen Sie heute zur Kinderärztin oder zum Kinderarzt.",
     },
+    "ru": {
+        "ors_under_1_month": "Ребёнка младше месяца с рвотой или поносом должен осмотреть врач сегодня; раствор для регидратации без назначения врача не дают.",
+        "ors_under_2y": "До 2 лет: обратитесь к педиатру, если рвота или понос длятся больше 24 часов или ребёнок отказывается пить.",
+        "ors_after_vomit": "После рвоты давайте раствор для оральной регидратации очень маленькими порциями: 5–10 мл (одна-две чайные ложки, ложкой или шприцем без иглы) каждые 10 минут, постепенно увеличивая, если рвоты больше нет.",
+        "ors_infant": "Грудной ребёнок старше 1 месяца с поносом: примерно 1–1,5 объёма обычного кормления, маленькими порциями и медленно; грудное вскармливание прекращать не нужно.",
+        "ors_child": "Ребёнок от 1 года: около 200 мл раствора после каждого жидкого стула, порциями по 25–30 мл каждые 10–15 минут.",
+        "ors_sachet": "Разводите пакетик строго по инструкции (один пакетик на указанный объём воды); не делайте раствор крепче или слабее. Не используйте спортивные напитки, газировку и соки.",
+        "ors_go_er": "Поезжайте в приёмное отделение, если ребёнок не удерживает жидкость, мало мочится, у него запавшие глаза, необычная сонливость или кровь в стуле.",
+        "dose_for": "{name} для {kg:g} кг:",
+        "dose_refer": "⚠️ Не давать без назначения врача: ",
+        "dose_line": "• Доза: {mg_min:g}–{mg_max:g} мг каждые {h0}–{h1} ч (не более {max_doses} доз в сутки).",
+        "dose_source": "Источник: {source}.",
+        "dose_check": "Всегда проверяйте концентрацию, указанную на вашем флаконе. До 3 месяцев ничего не давайте без назначения врача.",
+        "dose_warn": {
+            "under_3_months_refer": "младше 3 месяцев",
+            "below_min_age": "младше минимального возраста для этого препарата",
+            "below_min_weight": "меньше минимального веса для этого препарата",
+            "capped_single_dose": "доза ограничена максимумом на один приём",
+        },
+        "vax_source": "Источник: ",
+        "vax_due": "В этом возрасте по официальному календарю положены:",
+        "vax_none": "Ровно в этом возрасте в официальном календаре прививок нет.",
+        "vax_next": "Следующий визит: {label} — ",
+        "photo_poor": "По этой фотографии я не могу ничего сказать (слишком темно, размыто или не видно кожи). Если сомневаетесь, обратитесь к педиатру сегодня; при затруднённом дыхании, пятнах, которые не бледнеют при надавливании, или отёке губ — в приёмное отделение.",
+        "photo_emergency": "Вижу возможный тревожный признак ({sign}). По данным SEUP, это требует немедленной помощи: звоните {number} или везите ребёнка в приёмное отделение сейчас, особенно если дыхание затруднено.",
+        "photo_sign_cyanosis": "синюшные или серые губы либо кожа",
+        "photo_sign_swelling": "отёк губ или век",
+        "photo_petechiae": "Вижу пятна, которые, возможно, не бледнеют при надавливании. Сделайте пробу стаканом: прижмите прозрачный стакан к пятнам; если они видны сквозь стекло, по данным SEUP нужно ехать в приёмное отделение сегодня, не откладывая. Причину назвать я не могу.",
+        "photo_clear": "На фотографии я не вижу ни одного из трёх тревожных признаков, которые проверяю (пятна, не бледнеющие при надавливании, синюшность, отёк губ). Это не говорит, что именно у ребёнка: фотография не заменяет осмотра. Если сыпь распространяется, есть высокая температура или ребёнок вялый, обратитесь к педиатру сегодня.",
+        "photo_unsure": "По этой фотографии я не могу решить. Если пятна не бледнеют при надавливании стаканом или есть отёк губ либо синюшность — в приёмное отделение; в остальных случаях обратитесь к педиатру сегодня.",
+    },
 }
 
 
-LANGUAGE_NAME = {"en": "English", "es": "Spanish", "fr": "French", "de": "German"}
+LANGUAGE_NAME = {"en": "English", "es": "Spanish", "fr": "French", "de": "German", "ru": "Russian"}
 """What the model is told to write in. Kept here, in one place, because this exact mapping was
 written inline twice — in the answer prompt and in the article prompt — and both times a new
 language silently fell back to English. The article generator asked for "Spanish" when it meant

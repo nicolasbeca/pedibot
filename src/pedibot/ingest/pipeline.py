@@ -21,17 +21,40 @@ from pedibot.ingest.sections import split_sections
 _SLUG = re.compile(r"[^a-z0-9]+")
 
 
+# Latin letters with accents are folded to their base letter; whole scripts are transliterated.
+# Without this a Cyrillic or Arabic title collapses to the "s" fallback and two guides in the
+# same language end up sharing one filename, the second overwriting the first.
+_FOLD = str.maketrans({
+    "á": "a", "à": "a", "â": "a", "ä": "a", "ã": "a", "å": "a",
+    "é": "e", "è": "e", "ê": "e", "ë": "e",
+    "í": "i", "ì": "i", "î": "i", "ï": "i",
+    "ó": "o", "ò": "o", "ô": "o", "ö": "o", "õ": "o",
+    "ú": "u", "ù": "u", "û": "u", "ü": "u",
+    "ñ": "n", "ç": "c", "ß": "ss", "ø": "o", "æ": "ae", "œ": "oe",
+})
+
+_CYRILLIC = {
+    "а": "a", "б": "b", "в": "v", "г": "g", "д": "d", "е": "e", "ё": "e", "ж": "zh",
+    "з": "z", "и": "i", "й": "y", "к": "k", "л": "l", "м": "m", "н": "n", "о": "o",
+    "п": "p", "р": "r", "с": "s", "т": "t", "у": "u", "ф": "f", "х": "kh", "ц": "ts",
+    "ч": "ch", "ш": "sh", "щ": "shch", "ъ": "", "ы": "y", "ь": "", "э": "e", "ю": "yu",
+    "я": "ya", "і": "i", "ї": "yi", "є": "ye", "ґ": "g",
+}
+
+_ARABIC = {
+    "ا": "a", "أ": "a", "إ": "i", "آ": "a", "ب": "b", "ت": "t", "ث": "th", "ج": "j",
+    "ح": "h", "خ": "kh", "د": "d", "ذ": "dh", "ر": "r", "ز": "z", "س": "s", "ش": "sh",
+    "ص": "s", "ض": "d", "ط": "t", "ظ": "z", "ع": "a", "غ": "gh", "ف": "f", "ق": "q",
+    "ك": "k", "ل": "l", "م": "m", "ن": "n", "ه": "h", "و": "w", "ي": "y", "ى": "a",
+    "ة": "a", "ء": "", "ؤ": "u", "ئ": "i",
+}
+
+_TRANSLIT = {**_CYRILLIC, **_ARABIC}
+
+
 def slug(text: str, max_len: int = 40) -> str:
-    t = text.lower()
-    t = (
-        t.replace("á", "a")
-        .replace("é", "e")
-        .replace("í", "i")
-        .replace("ó", "o")
-        .replace("ú", "u")
-        .replace("ñ", "n")
-        .replace("ü", "u")
-    )
+    t = text.lower().translate(_FOLD)
+    t = "".join(_TRANSLIT.get(c, c) for c in t)
     t = _SLUG.sub("_", t).strip("_")
     return t[:max_len].strip("_") or "s"
 

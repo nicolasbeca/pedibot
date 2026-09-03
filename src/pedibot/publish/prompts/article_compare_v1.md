@@ -21,5 +21,6 @@ RULES
    Spanish → "## Qué dicen las guías" / "## En qué coinciden" / "## En qué se diferencian (y por qué puede dar igual)" / "## Cuándo acudir al médico o a urgencias"
    French  → "## Ce que disent les recommandations" / "## Ce sur quoi elles s'accordent" / "## Ce sur quoi elles diffèrent (et pourquoi cela peut ne pas changer grand-chose)" / "## Quand consulter un médecin ou aller aux urgences"
    German  → "## Was die Leitlinien sagen" / "## Worin sie übereinstimmen" / "## Worin sie sich unterscheiden (und warum das oft nichts ändert)" / "## Wann Sie zur Ärztin oder in die Notaufnahme sollten"
+   Russian → "## Что говорят рекомендации" / "## В чём они сходятся" / "## В чём они расходятся (и почему это может быть неважно)" / "## Когда обращаться к врачу или в приёмное отделение"
 6. No other headings. No markdown links. No mention of PediBot. If the sources agree completely, say so plainly in "Where they differ".
-9. Register: in German address the reader as "Sie", never "du" — the rest of the site does, and a guide that switches sounds like a different website. In Spanish and French use the same form the site uses ("tú" in Spanish, "vous" in French).
+9. Register: in German address the reader as "Sie", never "du" — the rest of the site does, and a guide that switches sounds like a different website. In Russian address the reader as "вы". In Spanish and French use the same form the site uses ("tú" in Spanish, "vous" in French).

@@ -544,6 +544,25 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         ["adolescente"],
     ),
     ("who", "https://www.who.int/news-room/fact-sheets/detail/malaria", "general", "en", ["todas"]),
+    # ---------------- Русский (fase rusa, 3-sep-2026) ----------------
+    # The WHO in Russian: one of its six official languages, so the fact sheets exist there
+    # under the licence already accepted. Slugs checked for a 200 first — four of the ones
+    # used in other languages have no Russian version and are not listed. See FUENTES/RUSO.md.
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/measles", "piel", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/rubella", "piel", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/pneumonia", "respiratorio", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/diarrhoeal-disease", "digestivo", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/infant-and-young-child-feeding", "alimentacion", "ru", ["lactante"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/malnutrition", "alimentacion", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/adolescent-mental-health", "salud_mental", "ru", ["adolescente"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/immunization-coverage", "vacunas", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/meningitis", "general", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/poliomyelitis", "general", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/hepatitis-b", "general", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/tuberculosis", "respiratorio", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/drowning", "accidentes", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/burns", "accidentes", "ru", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/falls", "accidentes", "ru", ["todas"]),
     # ---------------- Deutsch (fase alemana, 3-sep-2026) ----------------
     # RKI-Ratgeber: the one German public-health corpus whose licence allows reuse. BZgA
     # (kindergesundheit-info), the paediatricians' portal and the AWMF guidelines all require

@@ -10,6 +10,10 @@ FR: {emergency: "15 / 112", poison: "Centre antipoison (regional)", mental: "311
 IT: {emergency: "112", poison: "Centro Antiveleni (regional)", mental: "Telefono Amico 02 2327 2327"}
 DE: {emergency: "112", poison: "Giftnotruf (regional)", mental: "0800 111 0 111"}
 GB: {emergency: "999 / 112", poison: "NHS 111", mental: "Samaritans 116 123"}
+RU: {emergency: "103 / 112", poison: "токсикологический центр (региональный)", mental: null}
+KZ: {emergency: "103 / 112", poison: "токсикологический центр (региональный)", mental: null}
+BY: {emergency: "103 / 112", poison: "токсикологический центр (региональный)", mental: null}
+UA: {emergency: "103 / 112", poison: "токсикологічний центр (регіональний)", mental: null}
 IE: {emergency: "112 / 999", poison: "01 809 2166 (NPIC)", mental: "Samaritans 116 123"}
 US: {emergency: "911", poison: "1-800-222-1222 (Poison Control)", mental: "988"}
 CA: {emergency: "911", poison: "1-844-764-7669", mental: "988"}
