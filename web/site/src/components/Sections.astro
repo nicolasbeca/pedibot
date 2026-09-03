@@ -30,6 +30,7 @@ const seed = new Date().getUTCDate() + new Date().getUTCMonth() * 31;
 const shuffled = [...byOrg.entries()].sort((a, b) => ((a[0].charCodeAt(0) * 7 + seed) % 13) - ((b[0].charCodeAt(0) * 7 + seed) % 13) || b[1].n - a[1].n);
 const orgs = shuffled.slice(0, 8).map(([org, e]) => [org, `${blurb[org]?.[lang] ?? blurb[org]?.en ?? e.full} · ${e.n} ${s.documents}`]);
 const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
+const fill = (text: string) => text.replace(/\{docs\}/g, String(n));
 ---
 <div class="wrap">
   <section class="block" id="how">

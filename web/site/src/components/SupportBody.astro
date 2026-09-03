@@ -11,6 +11,8 @@
  * other language. The copy lives in i18n.ts now: a new language is a block of data.
  */
 import Donate from './Donate.astro';
+import sources from '../data/sources.json';
+import { getCollection } from 'astro:content';
 import { t, langPrefix, type Lang } from '../i18n';
 import { TOKENS } from '../tokens';
 
@@ -20,6 +22,13 @@ const s = t(lang);
 const T = s.support;
 const p = langPrefix(lang);
 const MAIL = 'pedibot.ai@gmail.com';
+/* Counted, not written down: the same two numbers were typed into six translations and all six
+   went stale at different moments, so the site claimed three different corpus sizes at once. */
+const counts = {
+  docs: String((sources as any[]).filter((d) => d.usage !== 'excluido').length),
+  guides: String((await getCollection('guides', (g) => !g.data.draft)).length),
+};
+const fill = (text: string) => text.replace(/\{docs\}/g, counts.docs).replace(/\{guides\}/g, counts.guides);
 /** '/guides' and '/' are language-relative; 'mailto' is the address plus a translated subject. */
 const target = (href: string) =>
   href === 'mailto' ? `mailto:${MAIL}?subject=${encodeURIComponent(T.mail_subject)}`
@@ -36,7 +45,7 @@ const target = (href: string) =>
   <h2>{T.facts_h}</h2>
   <ul class="facts">
     {T.facts.map(([lead, rest]) => (
-      <li><b>{lead}</b> {rest}</li>
+      <li><b>{fill(lead)}</b> {fill(rest)}</li>
     ))}
   </ul>
 
