@@ -7,66 +7,77 @@
  * reason to break that promise. It also means this works with MetaMask, Rabby, Coinbase Wallet
  * or a phone camera without us knowing who donated — which is the point.
  */
-import { DONATION_ADDRESS, DONATION_CHAINS, donationLink } from '../donation';
+import { donationWallets, donationLink, donationQr } from '../donation';
 import { t, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = t(lang).donate;
-const address = DONATION_ADDRESS;
-const qr = `/donation-qr.svg`;
+const wallets = donationWallets();
 ---
-{address && (
+{wallets.length > 0 && (
   <section class="donate">
     <h2>{T.h}</h2>
     <p>
       {T.p}
     </p>
-    <div class="card">
-      <div class="qr"><img src={qr} alt={T.qr_alt} width="132" height="132" loading="lazy" /></div>
-      <div class="addr">
-        <p class="net">{T.same_on}</p>
-        <p class="nets">
-          {DONATION_CHAINS.map((c) => (
-            <span class={c.recommended ? 'net-tag best' : 'net-tag'}>
-              {c.name} <i>{c.coin}</i>{c.recommended ? T.cheapest : ''}
-            </span>
-          ))}
-        </p>
-        <code class="mono" id="donate-addr">{address}</code>
-        <p class="row">
-          <button class="btn btn-ghost" id="donate-copy" type="button">{T.copy}</button>
-          <a class="btn btn-primary" href={donationLink(address)}>{T.open_wallet}</a>
-        </p>
+    {wallets.map((w) => (
+      <div class="card">
+        <div class="qr"><img src={donationQr(w.key)} alt={T.qr_alt} width="132" height="132" loading="lazy" /></div>
+        <div class="addr">
+          <p class="net">{w.chains.length > 1 ? T.same_on : T.on_network}</p>
+          <p class="nets">
+            {w.chains.map((c) => (
+              <span class={c.recommended ? 'net-tag best' : 'net-tag'}>
+                {c.name} <i>{c.coin}</i>{c.recommended ? T.cheapest : ''}
+              </span>
+            ))}
+          </p>
+          <code class="mono" data-addr={w.address}>{w.address}</code>
+          <p class="row">
+            <button class="btn btn-ghost" type="button" data-copy={w.address}>{T.copy}</button>
+            {w.kind === 'evm' && (
+              <a class="btn btn-primary" href={donationLink(w.address, w.defaultChainId ?? w.chains[0].id)}>{T.open_wallet}</a>
+            )}
+          </p>
+        </div>
       </div>
-    </div>
+    ))}
     <p class="fine">
       {T.fine}
     </p>
   </section>
 )}
 
-{address && (
-  <script is:inline define:vars={{ address, copied: T.copied }}>
-    document.getElementById('donate-copy')?.addEventListener('click', async (e) => {
-      const b = e.currentTarget;
-      const old = b.textContent;
-      try {
-        await navigator.clipboard.writeText(address);
-      } catch (err) {
-        const r = document.createRange();
-        r.selectNode(document.getElementById('donate-addr'));
-        getSelection()?.removeAllRanges();
-        getSelection()?.addRange(r);
-      }
-      b.textContent = copied;
-      setTimeout(() => { b.textContent = old; }, 1600);
+{wallets.length > 0 && (
+  <script is:inline define:vars={{ copied: T.copied }}>
+    // one handler for every card: the address travels on the button, so adding a wallet needs
+    // no new id and no new listener
+    document.querySelectorAll('[data-copy]').forEach((b) => {
+      b.addEventListener('click', async () => {
+        const address = b.getAttribute('data-copy');
+        const old = b.textContent;
+        try {
+          await navigator.clipboard.writeText(address);
+        } catch (err) {
+          const node = document.querySelector(`[data-addr="${address}"]`);
+          if (node) {
+            const r = document.createRange();
+            r.selectNode(node);
+            getSelection()?.removeAllRanges();
+            getSelection()?.addRange(r);
+          }
+        }
+        b.textContent = copied;
+        setTimeout(() => { b.textContent = old; }, 1600);
+      });
     });
   </script>
 )}
 
 <style>
   .donate { margin-top: 34px; }
+  .donate .card + .card { margin-top: 12px; }
   .donate .card {
     display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
     background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 16px 18px;
