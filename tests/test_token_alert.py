@@ -261,3 +261,94 @@ def test_the_first_hyperevm_run_takes_a_baseline_instead_of_announcing_history(m
     monkeypatch.setattr(m, "hyperevm_trades", lambda frm: ([fresh], 44903000))
     m.main()
     assert len(sent) == 1 and "VENTA" in sent[0]
+
+
+# --- Solana, the third chain (3-sep-2026) ------------------------------------------------------
+# Jupiter Studio's token trades in a Meteora bonding curve that GeckoTerminal indexes as
+# `PDBT / USDC` with PDBT as the base token — the same shape as Base, so it is a third source of
+# the same reader, not a third mechanism. What it must not do is inherit Base's label or link.
+
+SOLANA_PAYLOAD = {
+    "data": [
+        {
+            "attributes": {
+                "tx_hash": "45CgFWEnFpjVtii9",
+                "block_timestamp": "2026-09-03T18:45:22Z",
+                "kind": "buy",
+                "volume_in_usd": "38.38",
+                "from_token_amount": "38.38",
+                "to_token_amount": "7100000.0",
+                "tx_from_address": "GyVBHu1Xexpa",
+            }
+        }
+    ]
+}
+
+
+def test_a_solana_trade_is_tagged_solana_and_not_silently_filed_under_base():
+    """`chain` defaults to base for the caller that has always existed; Solana must pass its own,
+    or every Solana trade would show a Basescan link to a hash that is not on Base."""
+    m = _mod()
+    (trade,) = m.parse_trades(SOLANA_PAYLOAD, chain="solana")
+    assert trade.chain == "solana"
+    assert (trade.kind, trade.usd, trade.tokens) == ("buy", 38.38, 7100000.0)
+    # the old signature keeps working untouched
+    assert m.parse_trades(PAYLOAD)[0].chain == "base"
+
+
+def test_the_solana_message_prices_the_trade_and_links_to_its_own_explorer():
+    m = _mod()
+    text = m.format_message(m.parse_trades(SOLANA_PAYLOAD, chain="solana"))
+    assert "Solana" in text
+    assert "38,38 USD" in text  # the aggregator knows the price here, unlike the HyperEVM curve
+    assert "solscan.io/tx/45CgFWEnFpjVtii9" in text
+    assert "basescan" not in text
+
+
+def test_the_first_solana_run_takes_a_baseline_instead_of_announcing_the_launch(
+    monkeypatch, tmp_path
+) -> None:
+    """The pool already had the launch snipes in it when the alert was wired up. Announcing them
+    on the first poll would push hours-old trades as if they had just happened."""
+    m = _mod()
+    db = tmp_path / "ops.db"
+    sent: list[str] = []
+    monkeypatch.setattr(m, "telegram", lambda t: sent.append(t) or True)
+    payload = {"data": list(SOLANA_PAYLOAD["data"])}
+
+    class OnlySolana:
+        def get(self, url, **k):
+            if "solana" not in url:
+                raise RuntimeError("base not under test here")
+            return type("R", (), {"raise_for_status": lambda s: None, "json": lambda s: payload})()
+
+        def post(self, *a, **k):
+            raise RuntimeError("hyperevm not under test here")
+
+    monkeypatch.setattr(m, "httpx", OnlySolana())
+    import sys as _sys
+
+    monkeypatch.setitem(
+        _sys.modules,
+        "pedibot.settings",
+        type("M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())}),
+    )
+    m.main()
+    assert sent == [], sent
+    assert m.scan_state(db, "solana") > 0  # seen once, so the next real trade is not swallowed
+
+    payload["data"] = [
+        {
+            "attributes": {
+                "tx_hash": "9zzNEWTRADEzz",
+                "block_timestamp": "2026-09-04T08:00:00Z",
+                "kind": "sell",
+                "volume_in_usd": "7.5",
+                "from_token_amount": "1000000.0",
+                "to_token_amount": "7.5",
+                "tx_from_address": "GyVBHu1Xexpa",
+            }
+        }
+    ]
+    m.main()
+    assert len(sent) == 1 and "VENTA" in sent[0] and "Solana" in sent[0]

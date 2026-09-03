@@ -1,8 +1,9 @@
 """Push a Telegram message when somebody buys or sells $PDBT — and stay silent otherwise.
 
-Two chains, read two different ways. Base trades in a Uniswap pool that GeckoTerminal indexes;
-HyperEVM trades in a LiquidLaunch bonding curve that nothing indexes, so that one is read from
-the chain's own Transfer logs (curve → wallet is a buy, wallet → curve is a sell).
+Three chains, read two different ways. Base (Uniswap) and Solana (a Meteora bonding curve out
+of Jupiter Studio) are both indexed by GeckoTerminal and answer with the same payload, so they
+share a reader. HyperEVM trades in a LiquidLaunch bonding curve that nothing indexes, so that
+one is read from the chain's own Transfer logs (curve → wallet is a buy, wallet → curve is a sell).
 
 The daily snapshot (`token_snapshot.py`) only counts trades for the Sunday report, so a purchase
 on a Tuesday was not known until the weekend. This reads the pool's actual trades from the free
@@ -29,8 +30,15 @@ from typing import Any
 
 import httpx
 
+GECKO = "https://api.geckoterminal.com/api/v2/networks"
 POOL = "0x94dfe42f6dc61d1caad037a79214b684f5377784"
-TRADES_URL = f"https://api.geckoterminal.com/api/v2/networks/base/pools/{POOL}/trades"
+TRADES_URL = f"{GECKO}/base/pools/{POOL}/trades"
+
+# --- Solana: same aggregator, same payload, a different pool ----------------------------
+# The Jupiter Studio launch trades in a Meteora dynamic bonding curve. PDBT is that pool's
+# base token too, so `kind` is already from our point of view and needs no flipping.
+SOLANA_POOL = "9TYrAWquKToiwJj4yX46rqhSjYSBHMWFQFLpndexoQCR"
+SOLANA_TRADES_URL = f"{GECKO}/solana/pools/{SOLANA_POOL}/trades"
 HEADERS = {"Accept": "application/json;version=20230302", "User-Agent": "PediBot-ops/1.0"}
 MAX_LINES = 5  # a burst is summarised instead of flooding the chat
 
@@ -48,8 +56,12 @@ EXPLORER = {
     # LiquidLaunch's own page rather than a block explorer: the HyperEVM explorers refuse
     # datacenter IPs, so this is the only link that was actually verified to load.
     "hyperevm": "https://liquidlaunch.app/token/" + PDBT_HYPEREVM + "?tx=",
+    "solana": "https://solscan.io/tx/",
 }
-CHAIN_LABEL = {"base": "Base", "hyperevm": "HyperEVM"}
+CHAIN_LABEL = {"base": "Base", "hyperevm": "HyperEVM", "solana": "Solana"}
+#: Chains whose trades arrive with a dollar value already attached. The HyperEVM curve
+#: does not, and printing 0,00 USD there would be inventing a number.
+PRICED_CHAINS = ("base", "solana")
 
 
 @dataclass(frozen=True)
@@ -65,7 +77,13 @@ class Trade:
     native: float | None = None
 
 
-def parse_trades(payload: dict[str, Any]) -> list[Trade]:
+def parse_trades(payload: dict[str, Any], chain: str = "base") -> list[Trade]:
+    """Trades out of a GeckoTerminal pool response.
+
+    `chain` defaults to base because that was this function's only caller for a week. A
+    Solana trade filed under it would be shown with a Basescan link to a hash that is not
+    on Base, which is worse than not announcing it at all.
+    """
     out: list[Trade] = []
     for item in (payload or {}).get("data") or []:
         a = (item or {}).get("attributes") or {}
@@ -83,6 +101,7 @@ def parse_trades(payload: dict[str, Any]) -> list[Trade]:
                 usd=float(a.get("volume_in_usd") or 0),
                 tokens=float(tokens or 0),
                 wallet=str(a.get("tx_from_address") or ""),
+                chain=chain,
             )
         )
     return out
@@ -208,9 +227,9 @@ def format_message(trades: list[Trade]) -> str:
     for t in trades[:MAX_LINES]:
         arrow = "🟢 COMPRA" if t.kind == "buy" else "🔴 VENTA "
         clock = t.ts[11:16] + " UTC" if len(t.ts) >= 16 else t.ts
-        # Base knows the dollar value from the pool; the curve does not, so it shows what it has
-        # (the HYPE paid) and says nothing where it knows nothing.
-        if t.chain == "base":
+        # The indexed pools know the dollar value; the HyperEVM curve does not, so it shows
+        # what it has (the HYPE paid) and says nothing where it knows nothing.
+        if t.chain in PRICED_CHAINS:
             size = f"{_money(t.usd)} USD"
         elif t.native is not None:
             size = f"{t.native:.4f} HYPE".replace(".", ",")
@@ -223,23 +242,30 @@ def format_message(trades: list[Trade]) -> str:
     if len(trades) > MAX_LINES:
         rest = trades[MAX_LINES:]
         lines.append(f"…y {len(rest)} más, {_money(sum(t.usd for t in rest))} USD en total.")
-    priced = [t for t in trades if t.chain == "base"]
+    priced = [t for t in trades if t.chain in PRICED_CHAINS]
     total = sum(t.usd for t in priced if t.kind == "buy") - sum(
         t.usd for t in priced if t.kind == "sell"
     )
     tail = (
-        f"Saldo del lote (Base): {'+' if total >= 0 else '−'}{_money(abs(total))} USD"
+        f"Saldo del lote: {'+' if total >= 0 else '−'}{_money(abs(total))} USD"
         if priced
         else f"{len(trades)} movimiento(s) en la curva de HyperEVM"
     )
     return f"{head}\n\n" + "\n".join(lines) + f"\n\n{tail}"
 
 
-def record_and_select(db_path: Path, trades: list[Trade]) -> list[Trade]:
+def record_and_select(
+    db_path: Path, trades: list[Trade], baseline_chains: frozenset[str] = frozenset()
+) -> list[Trade]:
     """Store the trades and return the ones worth announcing.
 
     The very first run only takes a baseline: without it the first poll would announce every
     trade the pool has had in the last 24 hours as if it had just happened.
+
+    `baseline_chains` is that same idea for a chain that joins later, when the database is no
+    longer new: Solana was wired up hours after its launch, with the launch trades already
+    sitting in the pool. They are remembered so they are never announced, and everything after
+    them is news.
     """
     con = sqlite3.connect(db_path)
     first_run = not con.execute(
@@ -272,7 +298,7 @@ def record_and_select(db_path: Path, trades: list[Trade]) -> list[Trade]:
                 t.usd,
                 t.tokens,
                 t.wallet,
-                0 if first_run else 1,
+                0 if (first_run or t.chain in baseline_chains) else 1,
                 t.chain,
                 t.native,
             )
@@ -281,7 +307,9 @@ def record_and_select(db_path: Path, trades: list[Trade]) -> list[Trade]:
     )
     con.commit()
     con.close()
-    return [] if first_run else fresh
+    if first_run:
+        return []
+    return [t for t in fresh if t.chain not in baseline_chains]
 
 
 def telegram(text: str) -> bool:
@@ -329,6 +357,7 @@ def main() -> int:
     db = get_settings().ops_db_path
     trades: list[Trade] = []
     failures = 0
+    baseline: set[str] = set()
 
     # Base, through the pool aggregator
     try:
@@ -339,7 +368,21 @@ def main() -> int:
         print("geckoterminal trades failed:", e, file=sys.stderr)
         failures += 1
 
-    # HyperEVM, straight off the chain. One chain failing must not silence the other.
+    # Solana, through the same aggregator. Its first sighting is a baseline, not an
+    # announcement. The watermark is written even when the pool answers with nothing, so a
+    # chain that has not traded yet cannot stay "new" and swallow its first real trade.
+    try:
+        if not scan_state(db, "solana"):
+            baseline.add("solana")
+        r = httpx.get(SOLANA_TRADES_URL, headers=HEADERS, timeout=30)
+        r.raise_for_status()
+        trades += parse_trades(r.json(), chain="solana")
+        save_scan_state(db, "solana", int(time.time()))
+    except Exception as e:  # noqa: BLE001
+        print("solana trades failed:", e, file=sys.stderr)
+        failures += 1
+
+    # HyperEVM, straight off the chain. One chain failing must not silence the others.
     try:
         last = scan_state(db, "hyperevm")
         if not last:
@@ -357,11 +400,12 @@ def main() -> int:
         print("hyperevm scan failed:", e, file=sys.stderr)
         failures += 1
 
-    fresh = record_and_select(db, trades)
+    fresh = record_and_select(db, trades, frozenset(baseline))
     if fresh:
         telegram(format_message(fresh))
         print(f"announced {len(fresh)} trade(s)")
-    return 1 if failures == 2 else 0
+    # only a total blackout is worth a non-zero exit; one flaky source is not an incident
+    return 1 if failures == 3 else 0
 
 
 if __name__ == "__main__":

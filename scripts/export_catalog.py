@@ -78,7 +78,7 @@ print(f"{len(raw['items'])} checklist items → {target3}")
 # `topic` is what the language switcher matches on, and the same subject has two keys when the
 # English guide was anchored on English sources (constipation/estrenimiento, otitis/ear_infection).
 # The generator has always known this; without exporting it the site showed no twins for them.
-import sys as _sys
+import sys as _sys  # noqa: E402 — deliberate: it needs ROOT, which is computed above
 
 _sys.path.insert(0, str(ROOT / "src"))
 from pedibot.publish.articles import SAME_SUBJECT  # noqa: E402

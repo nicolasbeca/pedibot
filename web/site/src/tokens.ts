@@ -35,7 +35,19 @@ export const TOKENS: TokenDeployment[] = [
     explorer: 'https://basescan.org/token/0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1',
     buy: 'https://app.uniswap.org/explore/tokens/base/0x196a67ba334dbed501e19baec47d217bb2fc15e1',
   },
-  { network: 'Solana', platform: 'Jupiter Studio', ticker: 'PDBT', address: null },
+  {
+    // Launched 3-sep-2026. Verified against the chain before publishing, not against the UI: the
+    // account is owned by the SPL Token program, is a mint of 1e9 at 6 decimals, and BOTH
+    // authorities are renounced — `mintAuthority` and `freezeAuthority` are null, so no more can
+    // ever be printed and no holder's balance can be frozen. Jupiter reports name "PediBot",
+    // symbol PDBT, launchpad jup-studio.
+    network: 'Solana',
+    platform: 'Jupiter Studio',
+    ticker: 'PDBT',
+    address: 'EUiC7nSriqfASMbEe5ZwkD6P4j4bKH5eLoMTajr4jups',
+    explorer: 'https://solscan.io/token/EUiC7nSriqfASMbEe5ZwkD6P4j4bKH5eLoMTajr4jups',
+    buy: 'https://jup.ag/tokens/EUiC7nSriqfASMbEe5ZwkD6P4j4bKH5eLoMTajr4jups',
+  },
   {
     // Launched 3-sep-2026, tx 0xd362e52f…b27c58d. The address was read off the creation receipt
     // and checked against the token itself (name "PediBot", symbol PDBT, 6 decimals, 1e9 supply)
