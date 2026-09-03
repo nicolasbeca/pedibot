@@ -60,9 +60,10 @@ def detect_lang(text: str) -> str:
     # Cyrillic question with a Latin brand name in it ("Нурофен 200 mg") still counts as Russian.
     letters = [c for c in text if c.isalpha()]
     if letters:
-        cyrillic = sum("\u0400" <= c <= "\u04ff" for c in letters)
-        if cyrillic / len(letters) > 0.5:
-            return "ru"
+        for script, code in (("\u0400\u04ff", "ru"), ("\u0600\u06ff", "ar")):
+            lo, hi = script[:1], script[1:]
+            if sum(lo <= c <= hi for c in letters) / len(letters) > 0.5:
+                return code
     low = " " + re.sub(r"[¿¡?!.,;:]", " ", text.lower()) + " "
     es_markers = [
         " mi ",

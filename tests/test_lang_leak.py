@@ -37,5 +37,8 @@ def test_every_language_has_markers() -> None:
     text = (SCRIPT_ROOT / "web" / "site" / "src" / "i18n.ts").read_text(encoding="utf-8")
     import re
 
-    langs = re.findall(r"'(\w+)'", re.search(r"LANGS: Lang\[\] = \[(.*?)\]", text).group(1))
+    # anchored on `export const LANGS`: unanchored it matched RTL_LANGS, which lists only Arabic
+    langs = re.findall(
+        r"'(\w+)'", re.search(r"export const LANGS: Lang\[\] = \[(.*?)\]", text).group(1)
+    )
     assert set(langs) == set(MARKERS), f"añade marcadores para {set(langs) ^ set(MARKERS)}"

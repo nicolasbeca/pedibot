@@ -35,8 +35,20 @@ rules:
   - не приходит в себя
   - потерял[а]? сознание
   - обморок
+  - لا يستجيب
+  - ما يستجيب
+  - فاقد الوعي
+  - مغمى علي
+  - لا يفيق
+  - غائب عن الوعي
+  - لا تستجيب
+  - لا تفيق
+  - لا تتجاوب
+  - غائبة عن الوعي
+  - مغمى عليها
   reason_de: Reagiert nicht auf Ansprache
   reason_ru: Не реагирует на обращение
+  reason_ar: لا يستجيب
 - id: seizure
   level: emergency
   source: seup_acudir_urgencias
@@ -69,8 +81,15 @@ rules:
   - подергива
   - закатил[аи] глаза
   - эпилепт
+  - تشنج
+  - اختلاج
+  - نوبة صرع
+  - يرتجف بقوة
+  - ترتعش
+  - ترتجف بقوة
   reason_de: Auffällige Bewegungen / Krampfanfall
   reason_ru: Необычные движения / судороги
+  reason_ar: حركات غير طبيعية / تشنجات
 - id: severe_breathing
   level: emergency
   source: seup_acudir_urgencias
@@ -122,8 +141,20 @@ rules:
   - остановк.{0,15}дыхан
   - перестал[а]? дышать
   - хрип
+  - لا يتنفس
+  - صعوبة في التنفس
+  - ضيق تنفس
+  - يلهث
+  - انسحاب.{0,20}ضلوع
+  - توقف.{0,15}تنفس
+  - يشهق
+  - صفير في التنفس
+  - لا تتنفس
+  - تلهث
+  - تشهق
   reason_de: Schwere Atemnot (Einziehungen, sehr schnelle Atmung, Atempausen, blaue Färbung)
   reason_ru: Тяжёлое нарушение дыхания (втяжения, очень частое дыхание, паузы, синюшность)
+  reason_ar: صعوبة شديدة في التنفس (انسحاب الأضلاع، تنفس سريع جدا، انقطاع النفس، ازرقاق)
 - id: anaphylaxis
   level: emergency
   source: seup_anafilaxia
@@ -153,8 +184,15 @@ rules:
   - отёк квинке
   - отек квинке
   - крапивниц.{0,30}дыш
+  - حساسية شديدة
+  - تورم الشفت
+  - انتفاخ الشفت
+  - تورم الوجه
+  - تورم اللسان
+  - صدمة تحسسية
   reason_de: Verdacht auf schwere allergische Reaktion (geschwollene Lippen oder Lider mit Atemnot, Erbrechen oder Schwindel)
   reason_ru: Подозрение на тяжёлую аллергическую реакцию (отёк губ или век с нарушением дыхания, рвотой или головокружением)
+  reason_ar: اشتباه بتفاعل تحسسي شديد (تورم الشفتين أو الجفون مع صعوبة تنفس أو قيء أو دوخة)
 - id: choking
   level: emergency
   source: seup_acudir_urgencias
@@ -181,8 +219,13 @@ rules:
   - застрял[оа]? в горле
   - не может продохнуть
   - задыхается.{0,20}едой
+  - اختناق
+  - شرق
+  - علق في حلق
+  - غصة
   reason_de: Erstickungsgefahr mit Atemnot
   reason_ru: Удушье с нарушением дыхания
+  reason_ar: اختناق مع صعوبة في التنفس
 - id: mottled_skin
   level: emergency
   source: seup_acudir_urgencias
@@ -211,8 +254,15 @@ rules:
   - серая кожа
   - очень бледн
   - весь бледный
+  - شفاه زرقاء
+  - ازرقاق
+  - لونه أزرق
+  - شاحب جدا
+  - بشرة رمادية
+  - تبقع الجلد
   reason_de: Schlechte Hautfarbe (auffallende Blässe, marmoriert, blau oder grau)
   reason_ru: Плохой цвет кожи (резкая бледность, мраморность, синюшность или серый оттенок)
+  reason_ar: لون بشرة غير طبيعي (شحوب شديد، تبقع، ازرقاق أو لون رمادي)
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce
@@ -230,8 +280,12 @@ rules:
   - удар.{0,25}голов.{0,40}сознани
   - упал.{0,30}голов.{0,40}сознани
   - отключился на
+  - ضرب.{0,20}رأس.{0,35}وعي
+  - سقط.{0,25}رأس.{0,35}وعي
+  - فقد الوعي بعد
   reason_de: Kopfverletzung mit Bewusstlosigkeit
   reason_ru: Травма головы с потерей сознания
+  reason_ar: إصابة في الرأس مع فقدان الوعي
 - id: severe_bleeding
   level: emergency
   source: seup_acudir_urgencias
@@ -255,8 +309,14 @@ rules:
   - кровь не останавлива
   - не могу остановить кровь
   - сильное кровотечение
+  - نزيف شديد
+  - ينزف بغزارة
+  - النزيف لا يتوقف
+  - لا أستطيع إيقاف الدم
+  - تنزف بغزارة
   reason_de: Tiefe Wunde, die nach 10 Minuten Druck weiterblutet
   reason_ru: Глубокая рана с сильным кровотечением, которое не останавливается после 10 минут давления
+  reason_ar: جرح عميق مع نزيف غزير لا يتوقف بعد 10 دقائق من الضغط
 - id: open_fracture
   level: emergency
   source: seup_acudir_urgencias
@@ -276,8 +336,12 @@ rules:
   - открытый перелом
   - видна кость
   - кость торчит
+  - كسر مفتوح
+  - العظم ظاهر
+  - العظم بارز
   reason_de: Offener Bruch (Knochen sichtbar)
   reason_ru: Открытый перелом (видна кость)
+  reason_ar: كسر مفتوح (العظم ظاهر)
 - id: petechiae_fever
   level: emergency
   source: seup_fiebre
@@ -302,8 +366,13 @@ rules:
   - не бледнеет при надавлив
   - петехи
   - проба стаканом
+  - بقع.{0,25}لا تختفي
+  - طفح.{0,25}لا يختفي
+  - لا تختفي عند الضغط
+  - اختبار الكوب
   reason_de: Flecken auf der Haut, die auf Druck nicht verschwinden (möglicherweise Sepsis oder Meningitis)
   reason_ru: Пятна на коже, которые не бледнеют при надавливании (возможен сепсис или менингит)
+  reason_ar: بقع على الجلد لا تختفي عند الضغط (احتمال إنتان أو التهاب سحايا)
 - id: infant_fever_under_3_months
   level: urgent
   source: seup_acudir_urgencias
@@ -322,7 +391,14 @@ rules:
   - новорожд.{0,30}температур
   - грудничк.{0,25}температур
   - месяц.{0,20}температура 38
+  - رضيع.{0,25}حرار
+  - رضيع.{0,25}حمى
+  - حديث الولادة.{0,25}حمى
+  - شهرين.{0,20}حرار
+  - اب[ني]{1,2}.{0,20}(شهر|أشهر|شهران|شهرين).{0,25}(حرار|حمى)
+  - (شهران|شهرين|شهر واحد).{0,25}(حرار|حمى)
   reason_ru: Младенец до 3 месяцев с температурой (≥ 38 °C)
+  reason_ar: رضيع أقل من 3 أشهر لديه حمى (‏≥ 38 °م)
 - id: very_high_fever
   level: urgent
   source: seup_acudir_urgencias
@@ -343,8 +419,13 @@ rules:
   - выше 40
   - температура 41
   - температура 42
+  - 4[01][٫,\.]\d
+  - حرارته 41
+  - حرارته 42
+  - أعلى من 40
   reason_de: Fieber über 40,5 °C
   reason_ru: Температура выше 40,5 °C
+  reason_ar: حرارة أعلى من 40٫5 °م
 - id: moderate_breathing
   level: urgent
   source: seup_acudir_urgencias
@@ -378,8 +459,14 @@ rules:
   - со свистом
   - учащённое дыхание
   - учащенное дыхание
+  - تنفس سريع
+  - يتنفس بسرعة
+  - أزيز
+  - ضيق في النفس
+  - تتنفس بسرعة
   reason_de: 'Atembeschwerden: schnelle Atmung, Pfeifen, Einziehungen'
   reason_ru: 'Затруднённое дыхание: частое дыхание, свист, втяжения'
+  reason_ar: 'صعوبة في التنفس: تنفس سريع، أزيز، انسحاب الأضلاع'
 - id: drowsy_irritable
   level: urgent
   source: seup_acudir_urgencias
@@ -412,8 +499,16 @@ rules:
   - не успокаива
   - плачет без остановки
   - постоянно спит
+  - نعسان جدا
+  - خامل
+  - لا يهدأ
+  - يبكي بلا توقف
+  - نائم طوال الوقت
+  - لا تهدأ
+  - تبكي بلا توقف
   reason_de: Auffällige Unruhe oder Schläfrigkeit
   reason_ru: Чрезмерная возбудимость или сонливость
+  reason_ar: هياج أو نعاس شديد
 - id: dehydration
   level: urgent
   source: seup_gastroenteritis
@@ -455,8 +550,19 @@ rules:
   - понос.{0,25}сутки
   - не пьёт
   - не пьет
+  - عيون غائرة
+  - لا يتبول
+  - بول قليل
+  - الحفاض جاف
+  - جفاف
+  - قيء مستمر
+  - إسهال.{0,20}يوم
+  - لا يشرب
+  - لا تتبول
+  - لا تشرب
   reason_de: 'Zeichen von Austrocknung: eingesunkene Augen, wenig Urin, trockener Mund, anhaltendes Erbrechen oder starker Durchfall über 24 h'
   reason_ru: 'Признаки обезвоживания: запавшие глаза, мало мочи, сухость во рту, непрекращающаяся рвота или сильный понос дольше 24 часов'
+  reason_ar: 'علامات جفاف: عيون غائرة، بول قليل، جفاف الفم، قيء مستمر أو إسهال شديد أكثر من 24 ساعة'
 - id: vomiting_headache
   level: urgent
   source: seup_acudir_urgencias
@@ -476,8 +582,12 @@ rules:
   - рвот.{0,35}голов.{0,15}бол
   - голова.{0,25}болит.{0,25}рв
   - болит голова.{0,30}рвёт
+  - قيء.{0,30}صداع
+  - صداع.{0,30}قيء
+  - ألم رأس.{0,25}يتقيأ
   reason_de: Wiederholtes Erbrechen mit starken Kopfschmerzen
   reason_ru: Повторная рвота с сильной головной болью
+  reason_ar: قيء متكرر مع صداع شديد
 - id: vomiting_after_head_injury
   level: urgent
   source: seup_tce
@@ -497,8 +607,12 @@ rules:
   - удар.{0,30}голов.{0,40}рв
   - упал.{0,35}голов.{0,40}рв
   - стукнулся головой.{0,40}рв
+  - ضرب.{0,25}رأس.{0,35}تقيأ
+  - سقط.{0,30}رأس.{0,35}قيء
+  - ارتطم.{0,25}رأس.{0,30}قيء
   reason_de: Erbrechen nach einer Kopfverletzung
   reason_ru: Рвота после травмы головы
+  reason_ar: قيء بعد إصابة في الرأس
 - id: foreign_body_ingestion
   level: urgent
   source: seup_acudir_urgencias
@@ -521,8 +635,14 @@ rules:
   - батарейк
   - магнит.{0,20}проглот
   - монет.{0,20}проглот
+  - ابتلع
+  - بطارية
+  - مغناطيس.{0,20}ابتلع
+  - عملة.{0,20}ابتلع
+  - ابتلعت
   reason_de: Gegenstand verschluckt (besonders Batterien oder Magnete)
   reason_ru: Проглотил предмет (особенно батарейку или магниты)
+  reason_ar: ابتلع جسما غريبا (خاصة بطارية أو مغناطيس)
 - id: poisoning
   level: urgent
   source: seup_intoxicaciones
@@ -549,8 +669,16 @@ rules:
   - съел таблетк
   - выпил таблетк
   - слишком много.{0,20}(парацетамол|ибупрофен)
+  - تسمم
+  - شرب.{0,20}منظف
+  - شرب مبيد
+  - أخذ حبوب
+  - جرعة زائدة
+  - شربت.{0,20}منظف
+  - أخذت حبوب
   reason_de: Giftige Stoffe oder zu viel Medikament eingenommen
   reason_ru: Приём ядовитых веществ или передозировка лекарства
+  reason_ar: تناول مواد سامة أو جرعة زائدة من دواء
 - id: severe_abdominal_pain
   level: urgent
   source: seup_dolor_abdominal
@@ -574,8 +702,14 @@ rules:
   - живот тверд
   - скручивает от боли
   - нестерпим.{0,20}бол.{0,20}живот
+  - ألم شديد في البطن
+  - بطنه قاسي
+  - يتلوى من الألم
+  - مغص شديد
+  - تتلوى من الألم
   reason_de: Starke, anhaltende, zunehmende Bauchschmerzen
   reason_ru: Сильная, непрерывная, нарастающая боль в животе
+  reason_ar: ألم بطن شديد ومستمر ويزداد
 - id: deformity_fracture
   level: urgent
   source: seup_acudir_urgencias
@@ -601,8 +735,14 @@ rules:
   - нужно зашивать
   - глубокий порез
   - рана расходится
+  - تشوه
+  - ملتوي بشكل غريب
+  - يحتاج غرز
+  - جرح عميق
+  - تحتاج غرز
   reason_de: Verletzung mit sichtbarer Fehlstellung / Wunde, die genäht werden muss
   reason_ru: Травма с видимой деформацией / рана, требующая швов
+  reason_ar: إصابة مع تشوه واضح / جرح يحتاج غرزا
 - id: newborn_refusing_feeds
   level: urgent
   source: seup_acudir_urgencias
@@ -622,8 +762,15 @@ rules:
   - не берёт грудь
   - не берет грудь
   - перестал[а]? есть
+  - يرفض الرضاعة
+  - لا يرضع
+  - رفض الحليب
+  - توقف عن الرضاعة
+  - ترفض الرضاعة
+  - لا ترضع
   reason_de: Säugling unter 1 Monat trinkt nicht
   reason_ru: Младенец до 1 месяца отказывается от еды
+  reason_ar: رضيع أقل من شهر يرفض الرضاعة
 - id: burn
   level: urgent
   source: ninojesus_primeros_auxilios
@@ -649,8 +796,16 @@ rules:
   - ошпарил
   - кипятк
   - волдыр.{0,20}ожог
+  - حرق
+  - احترق
+  - ماء ساخن
+  - انسكب.{0,20}ساخن
+  - فقاعات.{0,15}حرق
+  - احترقت
+  - انسكب عليها
   reason_de: Verbrennung (besonders Gesicht, Hände, Genitalbereich oder große Fläche)
   reason_ru: Ожог (особенно лица, кистей, половых органов или большой площади)
+  reason_ar: حرق (خاصة الوجه أو اليدين أو المنطقة التناسلية أو مساحة كبيرة)
 - id: suicidal_ideation
   level: mental_health
   source: seup_conducta_suicida
@@ -681,8 +836,17 @@ rules:
   - суицид
   - самоубийств
   - лучше бы меня не было
+  - يريد أن يموت
+  - ينتحر
+  - انتحار
+  - لا يريد العيش
+  - تريد أن يموت
+  - تنتحر
+  - لا تريد العيش
+  - تريد أن تموت
   reason_de: Äußert Suizidgedanken
   reason_ru: Высказывает суицидальные мысли
+  reason_ar: يعبر عن أفكار انتحارية
 - id: self_harm
   level: mental_health
   source: seup_autolesion
@@ -707,8 +871,17 @@ rules:
   - порезал[а]? себе
   - самоповрежд
   - причиняет себе вред
+  - يجرح نفسه
+  - أذى نفسه
+  - إيذاء النفس
+  - يقطع نفسه
+  - تجرح نفسه
+  - تقطع نفسه
+  - تجرح نفسها
+  - آذت نفسها
   reason_de: Selbstverletzung
   reason_ru: Самоповреждение
+  reason_ar: إيذاء النفس
 context:
   fever:
   - fi[eè]vre
@@ -730,3 +903,7 @@ context:
   - \b3[89][,\.]?\d?\s*(°|градус)
   - \b4[0-2][,\.]?\d?\s*(°|градус)
   - 'жар '
+  - حرار
+  - حمى
+  - \b3[89][٫,\.]?\d?\s*(°|درج)
+  - \b4[0-2][٫,\.]?\d?\s*(°|درج)

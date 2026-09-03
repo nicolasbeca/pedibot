@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { t, langPrefix, LANGS, LANG_NAMES, type Lang } from '../i18n';
+import { t, langPrefix, dirFor, LANGS, LANG_NAMES, type Lang } from '../i18n';
 interface Props { lang: Lang; title: string; description: string; path: string; jsonld?: object;
   // Guides have a different slug per language, so the page passes the real counterparts here:
   // { es: '/es/guides/…', fr: null } — an explicit null means "not translated yet", and that
@@ -26,7 +26,7 @@ const alternates = otherLangs
 const canonical = `${site}${path === '/' ? '' : path}`;
 const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'PediBot', url: site, logo: `${site}/logo.svg`, email: 'pedibot.ai@gmail.com', sameAs: ['https://x.com/pedibotai'] };
 ---
-<html lang={lang}>
+<html lang={lang} dir={dirFor(lang)}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -49,6 +49,11 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <meta name="virtual-protocol-site-verification" content="2e15ae48f7b5e83eda0e6748181645d4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" />
+  {dirFor(lang) === 'rtl' && (
+    /* none of the three faces above has Arabic glyphs, so without this the page falls back to
+       whatever the device happens to have; loaded only where it is needed */
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&display=swap" />
+  )}
   <script type="application/ld+json" set:html={JSON.stringify(org)} />
   {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   <script is:inline>try{if(localStorage.getItem('pedibot_theme')==='night')document.documentElement.classList.add('night')}catch(e){}</script>
@@ -96,6 +101,9 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     </div>
   </footer>
   <style>
+    :global(html[dir='rtl'] body) { font-family: 'Noto Sans Arabic', 'Atkinson Hyperlegible', sans-serif; }
+    :global(html[dir='rtl']) h1, :global(html[dir='rtl']) h2, :global(html[dir='rtl']) h3,
+    :global(html[dir='rtl']) .brand { font-family: 'Noto Sans Arabic', Nunito, sans-serif; }
     .bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
     .bar-in { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--ink); font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.2rem; }

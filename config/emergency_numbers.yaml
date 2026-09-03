@@ -14,6 +14,15 @@ RU: {emergency: "103 / 112", poison: "токсикологический цен�
 KZ: {emergency: "103 / 112", poison: "токсикологический центр (региональный)", mental: null}
 BY: {emergency: "103 / 112", poison: "токсикологический центр (региональный)", mental: null}
 UA: {emergency: "103 / 112", poison: "токсикологічний центр (регіональний)", mental: null}
+SA: {emergency: "997 (الهلال الأحمر) / 911", poison: "مركز السموم (إقليمي)", mental: null}
+AE: {emergency: "998 / 999", poison: "مركز السموم (إقليمي)", mental: null}
+EG: {emergency: "123", poison: "مركز السموم (إقليمي)", mental: null}
+MA: {emergency: "150 / 141", poison: "مركز مكافحة التسمم", mental: null}
+DZ: {emergency: "14 / 112", poison: "مركز السموم (إقليمي)", mental: null}
+TN: {emergency: "190", poison: "مركز السموم (إقليمي)", mental: null}
+JO: {emergency: "911", poison: "مركز السموم (إقليمي)", mental: null}
+QA: {emergency: "999", poison: "مركز السموم (إقليمي)", mental: null}
+KW: {emergency: "112", poison: "مركز السموم (إقليمي)", mental: null}
 IE: {emergency: "112 / 999", poison: "01 809 2166 (NPIC)", mental: "Samaritans 116 123"}
 US: {emergency: "911", poison: "1-800-222-1222 (Poison Control)", mental: "988"}
 CA: {emergency: "911", poison: "1-844-764-7669", mental: "988"}

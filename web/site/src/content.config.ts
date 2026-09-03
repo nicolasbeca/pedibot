@@ -9,7 +9,7 @@ const guides = defineCollection({
     description: z.string(),
     // keep in step with LANGS in src/i18n.ts: a guide in a language missing here fails
     // the whole build, not just its own page
-    lang: z.enum(['en', 'es', 'fr', 'de', 'ru']),
+    lang: z.enum(['en', 'es', 'fr', 'de', 'ru', 'ar']),
     topic: z.string(),
     date: z.coerce.date(),
     prompt_version: z.string().optional(),

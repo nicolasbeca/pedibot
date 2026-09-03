@@ -512,13 +512,14 @@ def seasonal_first(
 # triage patterns, or the guides would exist without a safety layer behind the chat.
 from pedibot.bot.strings import LANGUAGE_NAME  # noqa: E402 — one mapping, not two
 
-SOURCES_HEADING = {"en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen", "ru": "Источники"}
+SOURCES_HEADING = {"en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen", "ru": "Источники", "ar": "المصادر"}
 ARTICLE_DISCLAIMER = {
     "en": "*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*",
     "es": "*Esta guía resume guías pediátricas publicadas. No es consejo médico y no sustituye a tu pediatra. En una emergencia, llama a tu número de emergencias.*",
     "fr": "*Ce guide résume des recommandations pédiatriques publiées. Ce n'est pas un avis médical et cela ne remplace pas votre pédiatre. En cas d'urgence, appelez votre numéro d'urgence.*",
     "de": "*Dieser Ratgeber fasst veröffentlichte kinderärztliche Leitlinien zusammen. Er ist keine medizinische Beratung und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt. Rufen Sie im Notfall Ihre Notrufnummer an.*",
     "ru": "*Эта статья обобщает опубликованные педиатрические рекомендации. Это не медицинская консультация, и она не заменяет вашего педиатра. В экстренной ситуации звоните по местному номеру экстренной службы.*",
+    "ar": "*يلخّص هذا الدليل إرشادات طب أطفال منشورة. وهو ليس استشارة طبية ولا يغني عن طبيب طفلك. وفي الحالات الطارئة اتصل برقم الطوارئ المحلي لديك.*",
 }
 
 

@@ -1,0 +1,17 @@
+---
+import Base from '../../layouts/Base.astro';
+import { t } from '../../i18n';
+const lang = 'ar'; const s = t(lang);
+---
+<Base lang={lang} title={s.legal_title} description={s.legal_desc} path="/ar/legal">
+  <div class="narrow prose" style="padding:40px 18px">
+    <p class="eyebrow">{s.legal_eyebrow}</p>
+    <h1 style="margin-top:8px">{s.legal_h1}</h1>
+    <p set:html={s.legal_p1} />
+    <p>{s.legal_p2}</p>
+    <h2>{s.legal_priv_h}</h2>
+    <ul>{s.legal_priv.map((line) => <li set:html={line} />)}</ul>
+    <h2>{s.legal_contact_h}</h2>
+    <p>pedibot.ai@gmail.com</p>
+  </div>
+</Base>

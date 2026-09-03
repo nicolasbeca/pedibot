@@ -6,7 +6,7 @@
 
 drugs:
   paracetamol:
-    generic: {en: "Paracetamol (acetaminophen)", es: "Paracetamol", fr: "Paracétamol", de: "Paracetamol", ru: "Парацетамол"}
+    generic: {en: "Paracetamol (acetaminophen)", es: "Paracetamol", fr: "Paracétamol", de: "Paracetamol", ru: "Парацетамол", ar: "باراسيتامول"}
     aliases: [acetaminophen, acetaminofen, acetaminofén, apap]
     brands:
       - {name: "Apiretal", countries: [ES], forms: ["gotas 100 mg/ml"]}
@@ -36,10 +36,11 @@ drugs:
       fr: "Avant 3 mois, uniquement sur avis médical. Ne pas associer à d'autres produits contenant du paracétamol (médicaments contre le rhume)."
       de: "Unter 3 Monaten nur, wenn eine Ärztin es angeordnet hat. Nicht mit anderen Mitteln kombinieren, die ebenfalls Paracetamol enthalten (Erkältungsmittel)."
       ru: "До 3 месяцев — только если назначил врач. Не сочетать с другими средствами, которые тоже содержат парацетамол (препараты от простуды)."
+      ar: "قبل 3 أشهر لا يُعطى إلا بوصفة طبيب. ولا يُجمع مع مستحضرات أخرى تحتوي أيضا على الباراسيتامول (أدوية الزكام)."
     source: "AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos"
 
   ibuprofen:
-    generic: {en: "Ibuprofen", es: "Ibuprofeno", fr: "Ibuprofène", de: "Ibuprofen", ru: "Ибупрофен"}
+    generic: {en: "Ibuprofen", es: "Ibuprofeno", fr: "Ibuprofène", de: "Ibuprofen", ru: "Ибупрофен", ar: "إيبوبروفين"}
     aliases: [ibuprofeno, ibuprofène, ibuprofene]
     brands:
       - {name: "Dalsy", countries: [ES], forms: ["suspensión 2 % (100 mg/5 ml)", "suspensión 4 % (200 mg/5 ml)"]}
@@ -64,6 +65,7 @@ drugs:
       fr: "Pas avant 3 mois ni en dessous de 5 kg. À prendre avec de la nourriture. À éviter en cas de déshydratation (vomissements/diarrhée), de varicelle ou de problèmes rénaux."
       de: "Nicht unter 3 Monaten und nicht unter 5 kg. Mit einer Mahlzeit geben. Vermeiden bei Austrocknung (Erbrechen/Durchfall), bei Windpocken oder bei Nierenproblemen."
       ru: "Не давать до 3 месяцев и при весе меньше 5 кг. Давать во время еды. Не давать при обезвоживании (рвота, понос), при ветрянке и при болезнях почек."
+      ar: "لا يُعطى قبل 3 أشهر ولا لوزن أقل من 5 كغ. يُعطى مع الطعام. ويُتجنب عند الجفاف (قيء أو إسهال) وعند الجدري المائي وعند مشاكل الكلى."
     source: "AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos"
 
 # Deliberately NOT included (parents ask, guidelines say no or "doctor only"): aspirin (Reye syndrome),
