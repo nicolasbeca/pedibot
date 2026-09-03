@@ -1,5 +1,6 @@
 ---
 import { t, langPrefix, type Lang } from '../i18n';
+import { TOKENS, liveTokens, shortAddress } from '../tokens';
 import sources from '../data/sources.json';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -84,13 +85,21 @@ const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
         <ul class="never">{s.support_points.map((pt, idx) => <li><span class={idx < 2 ? "no" : "yes"}>{idx < 2 ? "✕" : "✓"}</span>{pt}</li>)}</ul>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:20px">
           <a class="btn btn-primary" href={`${langPrefix(lang)}/support`}>{s.support_more}</a>
-          <a class="btn btn-ghost" href="https://app.uniswap.org/explore/tokens/base/0x196a67ba334dbed501e19baec47d217bb2fc15e1" target="_blank" rel="noopener">{s.support_buy} ↗</a>
+          {liveTokens()[0]?.buy && (
+            <a class="btn btn-ghost" href={liveTokens()[0].buy} target="_blank" rel="noopener">{s.support_buy} ↗</a>
+          )}
         </div>
       </div>
       <div class="ledger">
         <div class="h"><span>{s.token_card_title}</span><span></span></div>
         {s.token_card_rows.map(([k, v]) => <div><span>{k}</span><span class="mono">{v}</span></div>)}
-        <div class="foot"><a class="mono" style="font-size:.78rem" href="https://basescan.org/token/0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1" target="_blank" rel="noopener">PDBT · Base · 0x196A…15E1 ↗</a></div>
+        <div class="foot">
+          {TOKENS.map((tk) => (
+            tk.address
+              ? <a class="mono" style="font-size:.78rem;display:block" href={tk.explorer} target="_blank" rel="noopener">{tk.ticker} · {tk.network} · {shortAddress(tk.address)} ↗</a>
+              : <span class="mono" style="font-size:.78rem;display:block;opacity:.6">{tk.ticker} · {tk.network} · {s.token_soon}</span>
+          ))}
+        </div>
       </div>
     </div>
   </section>

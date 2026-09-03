@@ -12,10 +12,12 @@
  */
 import Donate from './Donate.astro';
 import { t, langPrefix, type Lang } from '../i18n';
+import { TOKENS } from '../tokens';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
-const T = t(lang).support;
+const s = t(lang);
+const T = s.support;
 const p = langPrefix(lang);
 const MAIL = 'pedibot.ai@gmail.com';
 /** '/guides' and '/' are language-relative; 'mailto' is the address plus a translated subject. */
@@ -54,7 +56,18 @@ const target = (href: string) =>
 
   <h2>{T.token_h}</h2>
   <p>{T.token_p}</p>
-  <p class="mono contract">0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1</p>
+  <h3 class="wh">{s.token_where}</h3>
+  <ul class="deploys">
+    {TOKENS.map((tk) => (
+      <li>
+        <b>{tk.network}</b> <span class="n">· {tk.platform}</span><br />
+        {tk.address
+          ? <a class="mono contract" href={tk.explorer} target="_blank" rel="noopener">{tk.address}</a>
+          : <span class="n">{s.token_soon}</span>}
+      </li>
+    ))}
+  </ul>
+  <p class="n scam">{s.token_scam_note}</p>
 
   <h2>{T.never_h}</h2>
   <ul>
@@ -94,5 +107,12 @@ const target = (href: string) =>
   .hcard b { color: var(--ink); }
   .hcard span:last-child { font-size: .9rem; color: var(--ink-2); }
   .contract { font-size: .84rem; overflow-wrap: anywhere; color: var(--ink-3); }
+  .wh { font-size: 1rem; margin-top: 22px; }
+  .deploys { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 10px; }
+  .deploys li { padding: 10px 14px; border: 1px solid var(--line); border-radius: 12px; margin: 0; }
+  .deploys a.contract { color: var(--sage); text-decoration: none; }
+  .deploys a.contract:hover { text-decoration: underline; }
+  /* the address is the only thing that identifies the real token, so it gets its own warning */
+  .scam { margin-top: 12px; font-size: .86rem; }
   .closing { margin-top: 30px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-3); }
 </style>
