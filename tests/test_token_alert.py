@@ -233,6 +233,7 @@ def test_the_first_hyperevm_run_takes_a_baseline_instead_of_announcing_history(m
         tokens=368.0, wallet="0x" + "11" * 20, chain="hyperevm", native=0.05,
     )
     monkeypatch.setattr(m, "hyperevm_trades", lambda frm: ([old], 44902000))
+    monkeypatch.setattr(m, "_rpc", lambda method, params, tries=5: hex(44902000))
 
     class NoAggregator:
         def get(self, *a, **k):

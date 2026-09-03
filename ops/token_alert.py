@@ -41,7 +41,7 @@ PDBT_HYPEREVM_DECIMALS = 6  # not 18 — checked on the contract before writing 
 LIQUIDLAUNCH_CURVE = "0xdec3540f5ba6f2aa3764583a9c29501feb020030"
 TRANSFER_TOPIC = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
 RPC_MAX_RANGE = 1000  # the public node refuses a wider eth_getLogs window
-RPC_MAX_CHUNKS = 40  # ~22 h of chain per run; the timer is hourly, so this is slack, not a cap
+RPC_MAX_CHUNKS = 12  # ~6 h of chain: slack for a few missed runs, gentle on a free node
 
 EXPLORER = {
     "base": "https://basescan.org/tx/",
@@ -340,25 +340,22 @@ def main() -> int:
         failures += 1
 
     # HyperEVM, straight off the chain. One chain failing must not silence the other.
-    baseline_only: list[Trade] = []
     try:
         last = scan_state(db, "hyperevm")
-        found, head = hyperevm_trades(last + 1 if last else 0)
-        # The very first run has no watermark, so it sees the whole history of the curve. Those
-        # trades already happened: they are recorded so they are never announced, but the operator
-        # is not woken up for a purchase from last week.
-        if last:
-            trades += found
+        if not last:
+            # First run: just note where the chain is and watch from there. Reading the curve's
+            # whole history would announce last week's trades as if they had just happened, and
+            # asking the free node for forty range queries at once gets the door shut anyway.
+            head = int(_rpc("eth_blockNumber", []), 16)
+            save_scan_state(db, "hyperevm", head)
+            print(f"hyperevm baseline set at block {head}; watching from here")
         else:
-            baseline_only = found
-            print(f"hyperevm baseline: {len(found)} past trade(s) recorded, none announced")
-        save_scan_state(db, "hyperevm", head)
+            found, head = hyperevm_trades(last + 1)
+            trades += found
+            save_scan_state(db, "hyperevm", head)
     except Exception as e:  # noqa: BLE001
         print("hyperevm scan failed:", e, file=sys.stderr)
         failures += 1
-
-    if baseline_only:
-        record_and_select(db, baseline_only)  # stored, and now "seen"
 
     fresh = record_and_select(db, trades)
     if fresh:
