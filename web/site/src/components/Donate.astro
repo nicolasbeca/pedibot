@@ -37,7 +37,11 @@ const wallets = donationWallets();
           <p class="row">
             <button class="btn btn-ghost" type="button" data-copy={w.address}>{T.copy}</button>
             {w.kind === 'evm' && (
-              <a class="btn btn-primary" href={donationLink(w.address, w.defaultChainId ?? w.chains[0].id)}>{T.open_wallet}</a>
+              /* the network comes from the wallet, not from the sentence: the label said "(Base)"
+                 on the HyperEVM card, which is the one place a donor checks before sending */
+              <a class="btn btn-primary" href={donationLink(w.address, w.defaultChainId ?? w.chains[0].id)}>
+                {T.open_wallet} ({(w.chains.find((c) => c.id === (w.defaultChainId ?? w.chains[0].id)) ?? w.chains[0]).name})
+              </a>
             )}
           </p>
         </div>
