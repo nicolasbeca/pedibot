@@ -9,7 +9,7 @@ model: deepseek-v4-flash
 sources:
   - "[1] NHS — \"Tonsillitis\" (2024), section \"Tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
   - "[2] NHS — \"Sore throat\" (2023), section \"Causes of sore throats\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
-  - "[3] MedlinePlus — \"Sore Throat\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/sorethroat.html"
+  - "[3] MedlinePlus — \"Sore Throat\" (2025), p. 1 — https://medlineplus.gov/sorethroat.html"
   - "[4] NHS — \"Tonsillitis\" (2024), section \"A pharmacist can help with tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
   - "[5] NHS — \"Tonsillitis\" (2024), section \"Complications of tonsillitis (quinsy)\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
   - "[6] NHS — \"Sore throat\" (2023), section \"Sore throat symptoms\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"

@@ -7,12 +7,12 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Sunburn\" (2025), section \"Sunburn\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[2] NHS — \"Sunburn\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[3] NHS — \"Sunburn\" (2025), section \"A pharmacist can help with sunburn\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[4] NHS — \"Sunburn\" (2025), section \"How to ease sunburn yourself\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[5] MedlinePlus — \"Sun Exposure\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/sunexposure.html"
-  - "[7] NHS — \"Roseola\" (2023), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/roseola/"
+  - "[1] NHS — \"Sunburn\" (2025), sección \"Sunburn\", pág. 1 — https://www.nhs.uk/conditions/sunburn/"
+  - "[2] NHS — \"Sunburn\" (2025), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/sunburn/"
+  - "[3] NHS — \"Sunburn\" (2025), sección \"A pharmacist can help with sunburn\", pág. 1 — https://www.nhs.uk/conditions/sunburn/"
+  - "[4] NHS — \"Sunburn\" (2025), sección \"How to ease sunburn yourself\", pág. 1 — https://www.nhs.uk/conditions/sunburn/"
+  - "[5] MedlinePlus — \"Sun Exposure\" (2017), p. 1 — https://medlineplus.gov/sunexposure.html"
+  - "[7] NHS — \"Roseola\" (2023), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/roseola/"
 draft: false
 ---
 
@@ -39,7 +39,7 @@ Lo que NO debe hacer:
 Para prevenir futuras quemaduras: evite el sol entre las 10 a.m. y las 2 p.m., use protector solar con SPF 15 o más, ropa protectora y gafas de sol envolventes con protección UV 100% [5]. Evite lámparas y camas de bronceado [5]. Revise regularmente la piel para detectar cambios en lunares o manchas [5].
 
 ## Cuándo acudir al médico o a urgencias
-Pida una cita urgente con el médico o llame al 111 si el niño ha estado al sol y presenta:
+Pida una cita urgente con el médico si el niño ha estado al sol y presenta:
 - Piel con ampollas o hinchada [3].
 - Temperatura muy alta, o sensación de calor, frío o escalofríos [3].
 - Mucho cansancio, mareos o náuseas [3].
@@ -47,7 +47,7 @@ Pida una cita urgente con el médico o llame al 111 si el niño ha estado al sol
 - Calambres musculares [3].
 - Quemadura de sol en un bebé o niño pequeño [3].
 
-Llame al 111 si necesita consejo para un niño menor de 5 años [3]. La quemadura grave puede provocar agotamiento por calor o golpe de calor, que son muy serios [3]. Además, quemarse con el sol aumenta el riesgo de cáncer de piel [3].
+Consulte con su servicio de salud si necesita consejo para un niño menor de 5 años [3]. La quemadura grave puede provocar agotamiento por calor o golpe de calor, que son muy serios [3]. Además, quemarse con el sol aumenta el riesgo de cáncer de piel [3].
 
 ## Preguntas frecuentes
 ¿Puedo darle paracetamol o ibuprofeno? Sí, puede usarlos para el dolor siguiendo las instrucciones del prospecto [4]. No combine ibuprofeno y paracetamol a menos que un médico lo indique [7]. No dé paracetamol a menores de 2 meses ni ibuprofeno a menores de 3 meses o que pesen menos de 5 kg [7]. Tampoco dé ibuprofeno a niños con asma [7]. No dé aspirina a menores de 16 años [7].

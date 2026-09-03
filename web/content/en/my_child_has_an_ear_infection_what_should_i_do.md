@@ -11,7 +11,7 @@ sources:
   - "[2] CDC — \"Ear Infection Basics\", section \"Treatment\", p. 1 — https://www.cdc.gov/antibiotic-use/ear-infection.html"
   - "[3] NHS — \"Ear infections\" (2025), section \"Ear infections\", p. 1 — https://www.nhs.uk/conditions/ear-infections/"
   - "[4] CDC — \"Ear Infection Basics\", section \"Ear Infection Basics Key points\", p. 1 — https://www.cdc.gov/antibiotic-use/ear-infection.html"
-  - "[5] MedlinePlus — \"Ear Infections\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/earinfections.html"
+  - "[5] MedlinePlus — \"Ear Infections\" (2025), p. 1 — https://medlineplus.gov/earinfections.html"
   - "[6] CDC — \"Ear Infection Basics\", section \"How to feel better\", p. 1 — https://www.cdc.gov/antibiotic-use/ear-infection.html"
   - "[7] NHS — \"Ear infections\" (2025), section \"Things you can do to help an ear infection\", p. 1 — https://www.nhs.uk/conditions/ear-infections/"
   - "[8] CDC — \"Ear Infection Basics\", section \"Overview\", p. 1 — https://www.cdc.gov/antibiotic-use/ear-infection.html"
@@ -44,7 +44,7 @@ There are also things you should not do:
 ## When to see a doctor or go to the emergency department
 See a pharmacist for non-urgent advice if your child is aged 1 to 17 years and you think they have an ear infection, as a pharmacist can give children the same treatments as a GP [1]. See a GP if your child is under 12 months old and you think they have an ear infection, if earache does not get better after 3 days, or if you or your child keep getting ear infections [1].
 
-Ask for an urgent GP appointment or get help from NHS 111 now if you or your child have symptoms of an ear infection and:
+Ask for an urgent GP appointment or get medical advice now if you or your child have symptoms of an ear infection and:
 - Feel generally unwell
 - Have a very high temperature, or feel hot, cold, or shivery
 - Have swelling around the ear
@@ -55,7 +55,7 @@ Ask for an urgent GP appointment or get help from NHS 111 now if you or your chi
 - Have diabetes, or a heart, lung, kidney, or neurological condition
 - Have a weakened immune system (for example, because of chemotherapy) [1]
 
-Call 111 if you need advice for a child under 5 years old [1]. Severe middle ear infections or infections that last longer than 2-3 days need antibiotics right away [2]. Severe infections and infections in young babies may require antibiotics [5].
+Get medical advice if you need it — check if it is urgente for a child under 5 years old [1]. Severe middle ear infections or infections that last longer than 2-3 days need antibiotics right away [2]. Severe infections and infections in young babies may require antibiotics [5].
 
 ## Common questions
 **Will my child need antibiotics?**

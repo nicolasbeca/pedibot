@@ -43,14 +43,14 @@ If your baby is also bringing up milk during or after feeds, this may be reflux,
 - Asking a health visitor for advice on feeding position
 
 ## When to see a doctor or go to the emergency department
-You know your baby best. Get medical advice if they have any symptoms that cause you concern [2]. Call NHS 111 or see a GP if [4]:
+You know your baby best. Get medical advice if they have any symptoms that cause you concern [2]. Get medical advice or see a doctor if [4]:
 - You are worried about your baby's crying
 - Nothing seems to be working to settle them
 - You are finding it hard to cope
 - Your baby is not growing or putting on weight as expected
 - Symptoms continue after 4 months of age
 
-Go to A&E or call 999 if [4]:
+Go to the emergency department or call your emergency number if [4]:
 - Your baby has a weak or high-pitched cry
 - Your baby's cry does not sound like their normal cry
 

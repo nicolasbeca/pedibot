@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"ALIMENTACIÓN COMPLEMENTARIA ¿QUÉ ALIMENTOS UTILIZAR Y CON QUÉ SECUENCIA?\", p. 7"
-  - "[2] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"ALIMENTACIÓN COMPLEMENTARIA ¿Y si comparamos el BLW con el abordaje tradicional con purés?\", p. 17"
-  - "[3] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"ALIMENTACIÓN COMPLEMENTARIA ¿CUÁNDO COMENZAR? ¿Cuánto tiempo se recomienda mantener la lactancia materna de forma exclusiva?\", p. 3"
-  - "[4] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"ALIMENTACIÓN COMPLEMENTARIA\", p. 5"
-  - "[5] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"¿Cómo se debe ofrecer la comida si se realiza BLW?\", p. 16"
-  - "[6] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"Alimentación activa o cómo ofrecer la alimentación complementaria con un enfoque positivo\", p. 14"
-  - "[7] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"ALIMENTACIÓN COMPLEMENTARIA\", p. 15"
-  - "[8] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"RECOMENDACIONES ¿Cuándo introducir los alimentos potencialmente alergénicos?\", p. 8"
-  - "[9] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"Introducción\", p. 1, 2"
-  - "[10] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"¿Y en los lactantes que no toman el pecho?\", p. 3"
+  - "[1] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"ALIMENTACIÓN COMPLEMENTARIA ¿QUÉ ALIMENTOS UTILIZAR Y CON QUÉ SECUENCIA?\", pág. 7"
+  - "[2] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"ALIMENTACIÓN COMPLEMENTARIA ¿Y si comparamos el BLW con el abordaje tradicional con purés?\", pág. 17"
+  - "[3] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"ALIMENTACIÓN COMPLEMENTARIA ¿CUÁNDO COMENZAR? ¿Cuánto tiempo se recomienda mantener la lactancia materna de forma exclusiva?\", pág. 3"
+  - "[4] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"ALIMENTACIÓN COMPLEMENTARIA\", pág. 5"
+  - "[5] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"¿Cómo se debe ofrecer la comida si se realiza BLW?\", pág. 16"
+  - "[6] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"Alimentación activa o cómo ofrecer la alimentación complementaria con un enfoque positivo\", pág. 14"
+  - "[7] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"ALIMENTACIÓN COMPLEMENTARIA\", pág. 15"
+  - "[8] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"RECOMENDACIONES ¿Cuándo introducir los alimentos potencialmente alergénicos?\", pág. 8"
+  - "[9] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), p. 1, 2"
+  - "[10] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), sección \"¿Y en los lactantes que no toman el pecho?\", pág. 3"
 draft: false
 ---
 

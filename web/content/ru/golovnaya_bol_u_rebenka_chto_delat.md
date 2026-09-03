@@ -7,13 +7,13 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Cefalea. Información para padres\" (2025), section \"CEFALEA DOLOR DE CABEZA ¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", p. 2"
-  - "[2] SEUP — \"Cefalea. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[3] SEUP — \"Cefalea. Información para padres\" (2025), section \"¿QUÉ ES LA CEFALEA?\", p. 1"
-  - "[4] SEUP — \"Cefalea. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[5] SEUP — \"Cefalea. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[6] SEUP — \"Cefalea. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1"
-  - "[7] SEUP — \"Cefalea. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE CEFALEA?\", p. 1"
+  - "[1] SEUP — \"Cefalea. Información para padres\" (2025), раздел \"CEFALEA DOLOR DE CABEZA ¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", с. 2"
+  - "[2] SEUP — \"Cefalea. Información para padres\" (2025), раздел \"¿CUÁLES SON LOS SÍNTOMAS?\", с. 1"
+  - "[3] SEUP — \"Cefalea. Información para padres\" (2025), раздел \"¿QUÉ ES LA CEFALEA?\", с. 1"
+  - "[4] SEUP — \"Cefalea. Información para padres\" (2025), раздел \"¿CÓMO LO PODEMOS PREVENIR?\", с. 2"
+  - "[5] SEUP — \"Cefalea. Información para padres\" (2025), раздел \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", с. 2"
+  - "[6] SEUP — \"Cefalea. Información para padres\" (2025), раздел \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", с. 1"
+  - "[7] SEUP — \"Cefalea. Información para padres\" (2025), раздел \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE CEFALEA?\", с. 1"
 draft: false
 ---
 

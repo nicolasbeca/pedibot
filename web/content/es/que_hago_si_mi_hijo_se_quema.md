@@ -7,11 +7,11 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Burns and scalds\" (2026), section \"What to do if you have a burn or scald\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[2] NHS — \"Burns and scalds\" (2026), section \"Burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[3] NHS — \"Burns and scalds\" (2026), section \"Treatments for burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[4] NHS — \"Burns and scalds\" (2026), section \"Things you can do to help while burns and scalds heal\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[5] MedlinePlus — \"Burns\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/burns.html"
+  - "[1] NHS — \"Burns and scalds\" (2026), sección \"What to do if you have a burn or scald\", pág. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[2] NHS — \"Burns and scalds\" (2026), sección \"Burns and scalds\", pág. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[3] NHS — \"Burns and scalds\" (2026), sección \"Treatments for burns and scalds\", pág. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[4] NHS — \"Burns and scalds\" (2026), sección \"Things you can do to help while burns and scalds heal\", pág. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[5] MedlinePlus — \"Burns\" (2024), p. 1 — https://medlineplus.gov/burns.html"
 draft: false
 ---
 
@@ -44,14 +44,14 @@ Evita lo siguiente [4]:
 - No revientes las ampollas.
 
 ## Cuándo acudir al médico o a urgencias
-Acción inmediata: llama al 112 o ve a urgencias si la quemadura [1]:
+Acción inmediata: llama a tu número de emergencias o ve a urgencias si la quemadura [1]:
 - Es muy grande o profunda.
 - Está en la cara, los genitales o el trasero.
 - Ha sido causada por un ácido, un producto químico o electricidad.
 
-No conduzcas tú a urgencias. Pide a alguien que te lleve o llama al 112 y pide una ambulancia. Lleva los medicamentos que tomas [1].
+No conduzcas tú a urgencias. Pide a alguien que te lleve o llama a tu número de emergencias y pide una ambulancia. Lleva los medicamentos que tomas [1].
 
-Consejo urgente: llama al 112 o busca ayuda si [1]:
+Consejo urgente: llama a tu número de emergencias o busca ayuda si [1]:
 - Tú o tu hijo tenéis una quemadura y no sabéis qué hacer.
 - Necesitas consejo para un niño menor de 5 años.
 

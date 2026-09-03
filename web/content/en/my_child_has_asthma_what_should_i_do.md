@@ -42,12 +42,12 @@ Treatment plans may include short-term relief medicines (quick-relief) to stop s
 If your child has an asthma attack, sit them up straight and try to keep them calm [1]. Use their reliever inhaler as prescribed. If you have a blue reliever inhaler, take 1 puff every 30 to 60 seconds until they feel better, up to a maximum of 10 puffs [1]. Shake the inhaler between puffs and use a spacer if available [1]. If your child has an AIR or MART inhaler, take 1 puff every 1 to 3 minutes, up to a maximum of 6 puffs [1]. Always follow your child's personal asthma action plan if it has a different maximum dose [1].
 
 ## When to see a doctor or go to the emergency department
-Call 999 (emergency services) immediately if your child is having an asthma attack and:
+Call your emergency number immediately if your child is having an asthma attack and:
 - Starts to feel worse at any time [1].
 - Does not feel better after taking the maximum dose of their reliever inhaler [1].
 - Does not have an asthma inhaler [1].
 
-If symptoms are no better after 10 minutes and an ambulance has not arrived, use the inhaler again up to the same maximum dose [1]. Do not drive yourself to the emergency department [1]. The 999 operator will give you advice [1].
+If symptoms are no better after 10 minutes and an ambulance has not arrived, use the inhaler again up to the same maximum dose [1]. Do not drive yourself to the emergency department [1]. The emergency operator will give you advice [1].
 
 Get medical help right away if your child has warning signs of a severe attack, including severe coughing, serious breathing problems, or turning very pale or blue in the face, lips, or fingernails [8]. If a severe attack does not get better with short-term relief medicines, get medical help right away [3].
 

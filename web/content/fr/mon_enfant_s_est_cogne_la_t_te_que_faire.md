@@ -12,7 +12,7 @@ sources:
   - "[3] SEUP — \"Traumatismo craneal. Información para padres\" (2025), section \"¿CÓMO PODEMOS PREVENIR LOS TRAUMATISMOS CRANEALES?\", p. 2"
   - "[4] SEUP — \"Traumatismo craneal. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
   - "[5] SEUP — \"Traumatismo craneal. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS ACUDIR A UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[6] MedlinePlus — \"Lesiones en la cabeza\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/headinjuries.html"
+  - "[6] MedlinePlus — \"Lesiones en la cabeza\", p. 1 — https://medlineplus.gov/spanish/headinjuries.html"
 draft: false
 ---
 

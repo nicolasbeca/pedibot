@@ -7,9 +7,9 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] CDC — \"CDC's Developmental Milestones\", section \"CDC's Developmental Milestones What to know\", p. 1 — https://www.cdc.gov/act-early/milestones/index.html"
-  - "[2] CDC — \"CDC's Developmental Milestones\", section \"Resources\", p. 1 — https://www.cdc.gov/act-early/milestones/index.html"
-  - "[3] CDC — \"CDC's Developmental Milestones\", section \"Developmental Milestone Videos\", p. 1 — https://www.cdc.gov/act-early/milestones/index.html"
+  - "[1] CDC — \"CDC's Developmental Milestones\", قسم \"CDC's Developmental Milestones What to know\", ص. 1 — https://www.cdc.gov/act-early/milestones/index.html"
+  - "[2] CDC — \"CDC's Developmental Milestones\", قسم \"Resources\", ص. 1 — https://www.cdc.gov/act-early/milestones/index.html"
+  - "[3] CDC — \"CDC's Developmental Milestones\", قسم \"Developmental Milestone Videos\", ص. 1 — https://www.cdc.gov/act-early/milestones/index.html"
 draft: false
 ---
 

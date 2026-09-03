@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Symptoms in children\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[2] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Things you can do yourself\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[3] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[4] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Treatment for a urinary tract infection (UTI)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[5] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Long-term (chronic) UTIs\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[6] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Causes of urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[7] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Symptoms in older, frail people or people with a urinary catheter\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[8] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"How to prevent urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[9] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Other ways to prevent some UTIs coming back\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[10] MedlinePlus — \"Urinary Tract Infections\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/urinarytractinfections.html"
+  - "[1] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"Symptoms in children\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[2] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"Things you can do yourself\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[3] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"Urinary tract infections (UTIs)\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[4] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"Treatment for a urinary tract infection (UTI)\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[5] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"Long-term (chronic) UTIs\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[6] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"Causes of urinary tract infections (UTIs)\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[7] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"Symptoms in older, frail people or people with a urinary catheter\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[8] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"How to prevent urinary tract infections (UTIs)\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[9] NHS — \"Urinary tract infections (UTIs)\" (2025), Abschnitt \"Other ways to prevent some UTIs coming back\", S. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[10] MedlinePlus — \"Urinary Tract Infections\" (2025), p. 1 — https://medlineplus.gov/urinarytractinfections.html"
 draft: false
 ---
 

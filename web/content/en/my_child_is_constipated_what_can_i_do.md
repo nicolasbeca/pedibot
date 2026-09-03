@@ -8,7 +8,7 @@ prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
   - "[2] NHS — \"Constipation\" (2026), section \"Symptoms of constipation\", p. 1 — https://www.nhs.uk/conditions/constipation/"
-  - "[3] MedlinePlus — \"Constipation\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/constipation.html"
+  - "[3] MedlinePlus — \"Constipation\" (2025), p. 1 — https://medlineplus.gov/constipation.html"
   - "[4] NHS — \"Constipation\" (2026), section \"How you can treat and prevent constipation yourself\", p. 1 — https://www.nhs.uk/conditions/constipation/"
   - "[5] NHS — \"Constipation\" (2026), section \"What causes constipation\", p. 1 — https://www.nhs.uk/conditions/constipation/"
   - "[6] NHS — \"Constipation\" (2026), section \"Complications of long-term constipation\", p. 1 — https://www.nhs.uk/conditions/constipation/"

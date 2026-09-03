@@ -7,11 +7,11 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Bedwetting in children\" (2023), section \"Causes of bedwetting\", p. 1 — https://www.nhs.uk/conditions/bedwetting/"
-  - "[2] NHS — \"Bedwetting in children\" (2023), section \"Bedwetting in children\", p. 1 — https://www.nhs.uk/conditions/bedwetting/"
-  - "[3] NHS — \"Bedwetting in children\" (2023), section \"Important: Bedwetting in young children is normal\", p. 1 — https://www.nhs.uk/conditions/bedwetting/"
-  - "[4] NHS — \"Bedwetting in children\" (2023), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/bedwetting/"
-  - "[5] NHS — \"Bedwetting in children\" (2023), section \"Treatments from a GP\", p. 1 — https://www.nhs.uk/conditions/bedwetting/"
+  - "[1] NHS — \"Bedwetting in children\" (2023), раздел \"Causes of bedwetting\", с. 1 — https://www.nhs.uk/conditions/bedwetting/"
+  - "[2] NHS — \"Bedwetting in children\" (2023), раздел \"Bedwetting in children\", с. 1 — https://www.nhs.uk/conditions/bedwetting/"
+  - "[3] NHS — \"Bedwetting in children\" (2023), раздел \"Important: Bedwetting in young children is normal\", с. 1 — https://www.nhs.uk/conditions/bedwetting/"
+  - "[4] NHS — \"Bedwetting in children\" (2023), раздел \"Don’t\", с. 1 — https://www.nhs.uk/conditions/bedwetting/"
+  - "[5] NHS — \"Bedwetting in children\" (2023), раздел \"Treatments from a GP\", с. 1 — https://www.nhs.uk/conditions/bedwetting/"
 draft: false
 ---
 

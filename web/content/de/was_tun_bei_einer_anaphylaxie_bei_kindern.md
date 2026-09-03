@@ -7,8 +7,8 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Anafilaxia. Información para padres\" (2025), section \"¿QUÉ ES lA ANAFILAXIA?\", p. 1"
-  - "[2] SEUP — \"Anafilaxia. Información para padres\" (2025), section \"HABONES\", p. 2"
+  - "[1] SEUP — \"Anafilaxia. Información para padres\" (2025), Abschnitt \"¿QUÉ ES lA ANAFILAXIA?\", S. 1"
+  - "[2] SEUP — \"Anafilaxia. Información para padres\" (2025), Abschnitt \"HABONES\", S. 2"
 draft: false
 ---
 

@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Measles\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/measles.html"
-  - "[2] NHS — \"Measles\" (2025), section \"Measles\", p. 1 — https://www.nhs.uk/conditions/measles/"
-  - "[3] WHO — \"Measles\", section \"Overview\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
-  - "[4] WHO — \"Measles\", section \"Signs and symptoms\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
-  - "[5] NHS — \"Measles\" (2025), section \"How to avoid spreading or catching measles\", p. 1 — https://www.nhs.uk/conditions/measles/"
-  - "[6] NHS — \"Measles\" (2025), section \"Vaccination or previous infection\", p. 1 — https://www.nhs.uk/conditions/measles/"
-  - "[7] WHO — \"Measles\", section \"Prevention\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
-  - "[8] NHS — \"Measles\" (2025), section \"Get vaccinated against measles\", p. 1 — https://www.nhs.uk/conditions/measles/"
-  - "[9] WHO — \"Measles\", section \"Key facts\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
-  - "[10] NHS — \"Measles\" (2025), section \"How to look after yourself or your child\", p. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[1] MedlinePlus — \"Measles\" (2025), p. 1 — https://medlineplus.gov/measles.html"
+  - "[2] NHS — \"Measles\" (2025), Abschnitt \"Measles\", S. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[3] WHO — \"Measles\", Abschnitt \"Overview\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
+  - "[4] WHO — \"Measles\", Abschnitt \"Signs and symptoms\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
+  - "[5] NHS — \"Measles\" (2025), Abschnitt \"How to avoid spreading or catching measles\", S. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[6] NHS — \"Measles\" (2025), Abschnitt \"Vaccination or previous infection\", S. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[7] WHO — \"Measles\", Abschnitt \"Prevention\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
+  - "[8] NHS — \"Measles\" (2025), Abschnitt \"Get vaccinated against measles\", S. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[9] WHO — \"Measles\", Abschnitt \"Key facts\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
+  - "[10] NHS — \"Measles\" (2025), Abschnitt \"How to look after yourself or your child\", S. 1 — https://www.nhs.uk/conditions/measles/"
 draft: false
 ---
 

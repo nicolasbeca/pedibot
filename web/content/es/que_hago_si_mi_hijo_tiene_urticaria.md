@@ -7,11 +7,11 @@ date: 2026-08-29
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Urticaria. Información para padres\" (2025), section \"¿QUÉ ES LA URTICARIA?\", p. 1"
-  - "[2] SEUP — \"Urticaria. Información para padres\" (2025), section \"¿CUÁNDO DEBE CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 1"
-  - "[3] SEUP — \"Urticaria. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
-  - "[6] NHS — \"Rashes in babies and children\" (2024), section \"Raised, itchy spots or patches\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[7] NHS — \"Rashes in babies and children\" (2024), section \"Symptoms of hives\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[1] SEUP — \"Urticaria. Información para padres\" (2025), sección \"¿QUÉ ES LA URTICARIA?\", pág. 1"
+  - "[2] SEUP — \"Urticaria. Información para padres\" (2025), sección \"¿CUÁNDO DEBE CONSULTAR EN UN SERVICIO DE URGENCIAS?\", pág. 1"
+  - "[3] SEUP — \"Urticaria. Información para padres\" (2025), sección \"¿QUÉ PODEMOS HACER EN CASA?\", pág. 1"
+  - "[6] NHS — \"Rashes in babies and children\" (2024), sección \"Raised, itchy spots or patches\", pág. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[7] NHS — \"Rashes in babies and children\" (2024), sección \"Symptoms of hives\", pág. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
 draft: false
 ---
 

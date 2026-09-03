@@ -7,12 +7,12 @@ date: 2026-09-03
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] CDC — \"Manage Common Cold\", section \"Children\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[2] MedlinePlus — \"Common Cold\" (2022), section \"What are the treatments for the common cold?\", p. 1 — https://medlineplus.gov/commoncold.html"
-  - "[4] MedlinePlus — \"Cough\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/cough.html"
-  - "[5] NHS — \"Whooping cough\" (2025), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
-  - "[6] NHS — \"Pneumonia\" (2026), section \"Symptoms of pneumonia\", p. 1 — https://www.nhs.uk/conditions/pneumonia/"
-  - "[9] NHS — \"Whooping cough\" (2025), section \"How to ease the symptoms of whooping cough\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[1] CDC — \"Manage Common Cold\", раздел \"Children\", с. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[2] MedlinePlus — \"Common Cold\" (2022), раздел \"What are the treatments for the common cold?\", с. 1 — https://medlineplus.gov/commoncold.html"
+  - "[4] MedlinePlus — \"Cough\" (2025), p. 1 — https://medlineplus.gov/cough.html"
+  - "[5] NHS — \"Whooping cough\" (2025), раздел \"When and where to get medical help\", с. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[6] NHS — \"Pneumonia\" (2026), раздел \"Symptoms of pneumonia\", с. 1 — https://www.nhs.uk/conditions/pneumonia/"
+  - "[9] NHS — \"Whooping cough\" (2025), раздел \"How to ease the symptoms of whooping cough\", с. 1 — https://www.nhs.uk/conditions/whooping-cough/"
 draft: false
 ---
 

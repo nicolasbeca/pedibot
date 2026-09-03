@@ -7,16 +7,16 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Tonsillitis\" (2024), section \"Tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[2] MedlinePlus — \"Sore Throat\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/sorethroat.html"
-  - "[3] NHS — \"Sore throat\" (2023), section \"Causes of sore throats\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
-  - "[4] NHS — \"Tonsillitis\" (2024), section \"A pharmacist can help with tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[5] NHS — \"Tonsillitis\" (2024), section \"Complications of tonsillitis (quinsy)\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[6] NHS — \"Sore throat\" (2023), section \"Sore throat symptoms\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
-  - "[7] NHS — \"Sore throat\" (2023), section \"Sore throat\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
-  - "[8] NHS — \"Tonsillitis\" (2024), section \"How to treat tonsillitis yourself\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[9] NHS — \"Tonsillitis\" (2024), section \"Treatment from a GP for tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[10] NHS — \"Tonsillitis\" (2024), section \"What happens at your GP appointment\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[1] NHS — \"Tonsillitis\" (2024), قسم \"Tonsillitis\", ص. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[2] MedlinePlus — \"Sore Throat\" (2025), p. 1 — https://medlineplus.gov/sorethroat.html"
+  - "[3] NHS — \"Sore throat\" (2023), قسم \"Causes of sore throats\", ص. 1 — https://www.nhs.uk/conditions/sore-throat/"
+  - "[4] NHS — \"Tonsillitis\" (2024), قسم \"A pharmacist can help with tonsillitis\", ص. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[5] NHS — \"Tonsillitis\" (2024), قسم \"Complications of tonsillitis (quinsy)\", ص. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[6] NHS — \"Sore throat\" (2023), قسم \"Sore throat symptoms\", ص. 1 — https://www.nhs.uk/conditions/sore-throat/"
+  - "[7] NHS — \"Sore throat\" (2023), قسم \"Sore throat\", ص. 1 — https://www.nhs.uk/conditions/sore-throat/"
+  - "[8] NHS — \"Tonsillitis\" (2024), قسم \"How to treat tonsillitis yourself\", ص. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[9] NHS — \"Tonsillitis\" (2024), قسم \"Treatment from a GP for tonsillitis\", ص. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[10] NHS — \"Tonsillitis\" (2024), قسم \"What happens at your GP appointment\", ص. 1 — https://www.nhs.uk/conditions/tonsillitis/"
 draft: false
 ---
 

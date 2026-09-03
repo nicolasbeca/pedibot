@@ -1,5 +1,5 @@
 ---
-title: "Bronquiolite : que faire à la maison ?"
+title: "Bronchiolite : que faire à la maison ?"
 description: "La bronchiolite est une infection virale fréquente chez le bébé. La plupart des cas sont légers et se soignent à la maison."
 lang: fr
 topic: bronquiolitis

@@ -7,15 +7,15 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Hand, foot and mouth disease\" (2024), section \"A pharmacist can help with hand, foot and mouth disease\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[2] CDC — \"About Hand, Foot, and Mouth Disease\", section \"About Hand, Foot, and Mouth Disease Key points\", p. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
-  - "[3] NHS — \"Hand, foot and mouth disease\" (2024), section \"How to stop hand, foot and mouth disease spreading\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[4] NHS — \"Hand, foot and mouth disease\" (2024), section \"Hand, foot and mouth disease\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[5] NHS — \"Hand, foot and mouth disease\" (2024), section \"Hand, foot and mouth disease in pregnancy\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[6] NHS — \"Hand, foot and mouth disease\" (2024), section \"How to treat hand, foot and mouth disease yourself\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[7] CDC — \"About Hand, Foot, and Mouth Disease\", section \"Who is at risk\", p. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
-  - "[8] CDC — \"About Hand, Foot, and Mouth Disease\", section \"Manage symptoms at home\", p. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
-  - "[10] NHS — \"Hand, foot and mouth disease\" (2024), section \"Staying off school or nursery\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[1] NHS — \"Hand, foot and mouth disease\" (2024), Abschnitt \"A pharmacist can help with hand, foot and mouth disease\", S. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[2] CDC — \"About Hand, Foot, and Mouth Disease\", Abschnitt \"About Hand, Foot, and Mouth Disease Key points\", S. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
+  - "[3] NHS — \"Hand, foot and mouth disease\" (2024), Abschnitt \"How to stop hand, foot and mouth disease spreading\", S. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[4] NHS — \"Hand, foot and mouth disease\" (2024), Abschnitt \"Hand, foot and mouth disease\", S. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[5] NHS — \"Hand, foot and mouth disease\" (2024), Abschnitt \"Hand, foot and mouth disease in pregnancy\", S. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[6] NHS — \"Hand, foot and mouth disease\" (2024), Abschnitt \"How to treat hand, foot and mouth disease yourself\", S. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[7] CDC — \"About Hand, Foot, and Mouth Disease\", Abschnitt \"Who is at risk\", S. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
+  - "[8] CDC — \"About Hand, Foot, and Mouth Disease\", Abschnitt \"Manage symptoms at home\", S. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
+  - "[10] NHS — \"Hand, foot and mouth disease\" (2024), Abschnitt \"Staying off school or nursery\", S. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
 draft: false
 ---
 

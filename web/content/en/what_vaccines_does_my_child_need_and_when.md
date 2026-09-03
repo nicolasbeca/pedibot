@@ -30,15 +30,15 @@ Vaccinating your child also protects others [8]. When enough people are vaccinat
 
 ## What you can do at home
 - Keep your child's vaccine appointments at the scheduled times [1][2].
-- If you think your child missed a vaccine, contact your doctor or GP surgery to catch up [2][5].
-- If you missed a vaccination appointment, contact your GP surgery to book or rearrange it [5].
+- If you think your child missed a vaccine, contact your doctor or doctor's surgery to catch up [2][5].
+- If you missed a vaccination appointment, contact your doctor's surgery to book or rearrange it [5].
 - Ask your doctor if your child needs any extra vaccines due to health conditions or risk factors [4][7].
 
 Vaccines do not overload the immune system [6]. Every day, a healthy child's immune system fights off thousands of germs [6]. Vaccines contain weakened or dead germs, so even several vaccines in one day expose your child to a tiny amount of germs compared to what they encounter daily [6].
 
 ## When to see a doctor or go to the emergency department
-- If you think your child has missed any vaccinations, speak to your GP surgery [5].
-- If you have a vaccination appointment but missed it or cannot attend, contact your GP surgery to rearrange [5].
+- If you think your child has missed any vaccinations, speak to your doctor's surgery [5].
+- If you have a vaccination appointment but missed it or cannot attend, contact your doctor's surgery to rearrange [5].
 - If your child has a long-term health condition, ask your doctor whether they need extra vaccines like the flu or pneumococcal vaccine [7].
 - If your child has a weakened immune system, ask about additional vaccines such as COVID-19 [7].
 

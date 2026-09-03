@@ -7,12 +7,12 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica\" (2020), section \"transcurridas 8 horas desde la ingesta\", p. 1"
-  - "[2] SEUP — \"Intoxicaciones. Información para padres\" (2025), section \"¿QUÉ SON?\", p. 1"
-  - "[3] SEUP — \"8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica\" (2020), section \"8 ACCIONES QUE NO HAY QUE HACER ANTE UN PACIENTE PEDIÁTRICO QUE HA CONTACTADO CON UNA SUSTANCIA POTENCIALMENTE TÓXICA NO HACER Tratar una ingesta no tóxica Infravalorar la toxicidad\", p. 1"
-  - "[4] SEUP — \"Intoxicaciones. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[5] SEUP — \"Intoxicaciones. Información para padres\" (2025), section \"Si el contacto ha sido ocular o cutáneo, lave con agua abundante no provoque el vómito Abrir las ventanas Solicite ayuda Salga al aire libre no administre ningún líquido ni alimento ¿CUÁNDO DEBEMoS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[6] MedlinePlus — \"Envenenamiento\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/poisoning.html"
+  - "[1] SEUP — \"8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica\" (2020), قسم \"transcurridas 8 horas desde la ingesta\", ص. 1"
+  - "[2] SEUP — \"Intoxicaciones. Información para padres\" (2025), قسم \"¿QUÉ SON?\", ص. 1"
+  - "[3] SEUP — \"8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica\" (2020), قسم \"8 ACCIONES QUE NO HAY QUE HACER ANTE UN PACIENTE PEDIÁTRICO QUE HA CONTACTADO CON UNA SUSTANCIA POTENCIALMENTE TÓXICA NO HACER Tratar una ingesta no tóxica Infravalorar la toxicidad\", ص. 1"
+  - "[4] SEUP — \"Intoxicaciones. Información para padres\" (2025), قسم \"¿CÓMO LO PODEMOS PREVENIR?\", ص. 2"
+  - "[5] SEUP — \"Intoxicaciones. Información para padres\" (2025), قسم \"Si el contacto ha sido ocular o cutáneo, lave con agua abundante no provoque el vómito Abrir las ventanas Solicite ayuda Salga al aire libre no administre ningún líquido ni alimento ¿CUÁNDO DEBEMoS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", ص. 2"
+  - "[6] MedlinePlus — \"Envenenamiento\", ص. 1 — https://medlineplus.gov/spanish/poisoning.html"
 draft: false
 ---
 

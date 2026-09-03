@@ -7,12 +7,12 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[2] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[4] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[5] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[6] Junta de Andalucía — \"Cuídame: orientaciones para el comienzo de la vida\", section \"4.1 Cuidados del recién nacido El aseo\", p. 41"
-  - "[8] AEP — \"Cuidados generales del recién nacido sano\", section \"Cuidados generales del recién nacido sano\", p. 1"
+  - "[1] AEP — \"Cuidados generales del recién nacido sano\", قسم \"CUIDADOS DESPUÉS DEL PARTO\", ص. 3, 4, 5, 6, 7, 8"
+  - "[2] AEP — \"Cuidados generales del recién nacido sano\", قسم \"CUIDADOS DESPUÉS DEL PARTO\", ص. 3, 4, 5, 6, 7, 8"
+  - "[4] AEP — \"Cuidados generales del recién nacido sano\", قسم \"CUIDADOS DESPUÉS DEL PARTO\", ص. 3, 4, 5, 6, 7, 8"
+  - "[5] AEP — \"Cuidados generales del recién nacido sano\", قسم \"CUIDADOS DESPUÉS DEL PARTO\", ص. 3, 4, 5, 6, 7, 8"
+  - "[6] Junta de Andalucía — \"Cuídame: orientaciones para el comienzo de la vida\", قسم \"4.1 Cuidados del recién nacido El aseo\", ص. 41"
+  - "[8] AEP — \"Cuidados generales del recién nacido sano\", قسم \"Cuidados generales del recién nacido sano\", ص. 1"
 draft: false
 ---
 

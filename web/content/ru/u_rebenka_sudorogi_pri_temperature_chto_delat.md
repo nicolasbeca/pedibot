@@ -7,13 +7,13 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Convulsión febril. Información para padres\" (2025), section \"¿QUÉ ES UNA CONVULSIÓN FEBRIL? ¿POR QUÉ SE PRODUCEN?\", p. 1"
-  - "[2] SEUP — \"Convulsión febril. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CONVULSIÓN FEBRIL?\", p. 1, 2"
-  - "[3] NHS — \"Febrile seizures\" (2023), section \"Febrile seizures\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[4] NHS — \"Febrile seizures\" (2023), section \"Treatment for febrile seizures\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[5] NHS — \"Febrile seizures\" (2023), section \"What to do if your child is having a febrile seizure\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[6] NHS — \"Febrile seizures\" (2023), section \"Symptoms of a febrile seizure\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[7] NHS — \"Febrile seizures\" (2023), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[1] SEUP — \"Convulsión febril. Información para padres\" (2025), раздел \"¿QUÉ ES UNA CONVULSIÓN FEBRIL? ¿POR QUÉ SE PRODUCEN?\", с. 1"
+  - "[2] SEUP — \"Convulsión febril. Información para padres\" (2025), раздел \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CONVULSIÓN FEBRIL?\", с. 1, 2"
+  - "[3] NHS — \"Febrile seizures\" (2023), раздел \"Febrile seizures\", с. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[4] NHS — \"Febrile seizures\" (2023), раздел \"Treatment for febrile seizures\", с. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[5] NHS — \"Febrile seizures\" (2023), раздел \"What to do if your child is having a febrile seizure\", с. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[6] NHS — \"Febrile seizures\" (2023), раздел \"Symptoms of a febrile seizure\", с. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[7] NHS — \"Febrile seizures\" (2023), раздел \"Don’t\", с. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
 draft: false
 ---
 

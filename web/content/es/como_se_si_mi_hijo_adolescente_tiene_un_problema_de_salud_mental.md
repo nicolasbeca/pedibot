@@ -7,13 +7,13 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] WHO — \"Mental health of adolescents\", section \"Emotional disorders\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[2] MedlinePlus — \"Teen Mental Health\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/teenmentalhealth.html"
-  - "[3] WHO — \"Mental health of adolescents\", section \"Key facts\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[4] WHO — \"Mental health of adolescents\", section \"Eating disorders\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[6] WHO — \"Mental health of adolescents\", section \"Introduction\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[7] WHO — \"Mental health of adolescents\", section \"Early detection and treatment\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[8] WHO — \"Mental health of adolescents\", section \"Mental health determinants\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[1] WHO — \"Mental health of adolescents\", sección \"Emotional disorders\", pág. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[2] MedlinePlus — \"Teen Mental Health\" (2024), p. 1 — https://medlineplus.gov/teenmentalhealth.html"
+  - "[3] WHO — \"Mental health of adolescents\", sección \"Key facts\", pág. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[4] WHO — \"Mental health of adolescents\", sección \"Eating disorders\", pág. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[6] WHO — \"Mental health of adolescents\", sección \"Introduction\", pág. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[7] WHO — \"Mental health of adolescents\", sección \"Early detection and treatment\", pág. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[8] WHO — \"Mental health of adolescents\", sección \"Mental health determinants\", pág. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health"
 draft: false
 ---
 

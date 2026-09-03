@@ -10,9 +10,9 @@ sources:
   - "[1] NHS — \"Headaches\" (2024), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/headaches-in-children/"
   - "[2] NHS — \"Headaches\" (2024), section \"Headaches\", p. 1 — https://www.nhs.uk/conditions/headaches-in-children/"
   - "[3] NHS — \"Headaches\" (2024), section \"What can cause headaches\", p. 1 — https://www.nhs.uk/conditions/headaches-in-children/"
-  - "[4] MedlinePlus — \"Headache\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/headache.html"
+  - "[4] MedlinePlus — \"Headache\" (2025), p. 1 — https://medlineplus.gov/headache.html"
   - "[5] NHS — \"Headaches\" (2024), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/headaches-in-children/"
-  - "[6] MedlinePlus — \"Fainting\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/fainting.html"
+  - "[6] MedlinePlus — \"Fainting\" (2025), p. 1 — https://medlineplus.gov/fainting.html"
   - "[7] NHS — \"Breath-holding in babies and children\" (2023), section \"What to do when a child has a breath-holding episode\", p. 1 — https://www.nhs.uk/conditions/breath-holding-in-babies-and-children/"
   - "[8] NHS — \"Breath-holding in babies and children\" (2023), section \"Breath-holding in babies and children\", p. 1 — https://www.nhs.uk/conditions/breath-holding-in-babies-and-children/"
 draft: false
@@ -58,16 +58,16 @@ See a GP if:
 - You have tried treating the headache yourself and it is not getting better or is getting worse
 - Your child regularly gets headaches [1]
 
-Ask for an urgent GP appointment or get help from NHS 111 if your child has a headache and:
+Ask for an urgent GP appointment or get medical advice if your child has a headache and:
 - Vision or eye problems
 - The headache is triggered or made worse by coughing, sneezing, bending down or exercising
 - Your child is being sick (vomiting)
 - The headache is getting worse or wakes them at night
 - Any other symptoms you are worried about [1]
 
-Call 111 if you need advice for a child under 5 years old [1].
+Get medical advice if you need it — check if it is urgente for a child under 5 years old [1].
 
-Call 999 or go to A&E if your child has a headache and:
+Call your emergency number or go to the emergency department if your child has a headache and:
 - Has had a seizure (fit)
 - Has numbness or weakness in the body or face
 - The headache started suddenly and is extremely painful
@@ -80,7 +80,7 @@ Call 999 or go to A&E if your child has a headache and:
 
 Also get medical help right away if your child has a headache after a blow to the head, or a headache along with a stiff neck, fever, confusion, loss of consciousness, or pain in the eye or ear [4].
 
-Do not drive to A&E. Ask someone to drive you or call 999 and ask for an ambulance. Bring any medicines you take with you [1].
+Do not drive to the emergency department. Ask someone to drive you or call your emergency number and ask for an ambulance. Bring any medicines you take with you [1].
 
 ## Common questions
 **Can a headache be a sign of something serious?**
@@ -92,7 +92,7 @@ Fainting is a temporary loss of consciousness. If someone faints, make sure the 
 **What if my child stops breathing briefly?**
 Breath-holding is when a baby or child stops breathing for up to 1 minute and may faint. It can happen when a child is frightened, upset, angry, or has a sudden shock or pain. It is usually harmless but can be scary [8]. Stay calm – it should pass in less than 1 minute. Lie the child on their side, do not pick them up, and stay with them until the episode ends [7].
 
-Call 999 if your child faints and cannot be woken up, is stiff, shaking or jerking, or if their lips, tongue, face or skin suddenly turn pale, blue or grey. On black or brown skin this may be easier to see on the palms of the hands or the soles of the feet. If a doctor has not previously told you it is breath-holding, get it checked immediately [8].
+Call your emergency number if your child faints and cannot be woken up, is stiff, shaking or jerking, or if their lips, tongue, face or skin suddenly turn pale, blue or grey. On black or brown skin this may be easier to see on the palms of the hands or the soles of the feet. If a doctor has not previously told you it is breath-holding, get it checked immediately [8].
 
 ## Sources
 [1] NHS — "Headaches" (2024), section "When and where to get medical help", p. 1 — https://www.nhs.uk/conditions/headaches-in-children/

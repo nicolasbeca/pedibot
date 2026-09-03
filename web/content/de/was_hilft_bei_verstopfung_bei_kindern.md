@@ -7,11 +7,11 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿PODEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[2] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
-  - "[3] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿QUÉ ES EL ESTREÑIMIENTO?\", p. 1"
-  - "[4] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[6] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
+  - "[1] SEUP — \"Estreñimiento. Información para padres\" (2025), Abschnitt \"¿PODEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", S. 1, 2"
+  - "[2] SEUP — \"Estreñimiento. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA?\", S. 1"
+  - "[3] SEUP — \"Estreñimiento. Información para padres\" (2025), Abschnitt \"¿QUÉ ES EL ESTREÑIMIENTO?\", S. 1"
+  - "[4] SEUP — \"Estreñimiento. Información para padres\" (2025), Abschnitt \"¿CUÁLES SON LOS SÍNTOMAS?\", S. 1"
+  - "[6] SEUP — \"Dolor abdominal. Información para padres\" (2025), Abschnitt \"¿CÓMO LO PODEMOS PREVENIR?\", S. 2"
 draft: false
 ---
 

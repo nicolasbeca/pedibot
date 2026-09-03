@@ -7,13 +7,13 @@ date: 2026-09-02
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Head injury and concussion\" (2025), section \"How to care for a minor head injury\", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/"
-  - "[2] NHS — \"Head injury and concussion\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/"
-  - "[3] CDC — \"Signs and Symptoms of Concussion\", section \"Signs and Symptoms of Concussion Key points\", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html"
-  - "[4] CDC — \"Signs and Symptoms of Concussion\", section \"Signs: What to watch for according to your child's age\", p. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html"
-  - "[6] MedlinePlus — \"Head Injuries\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/headinjuries.html"
-  - "[7] MedlinePlus — \"Concussion\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/concussion.html"
-  - "[8] CDC — \"Concussion Basics\", section \"Concussion Basics Key points\", p. 1 — https://www.cdc.gov/heads-up/about/index.html"
+  - "[1] NHS — \"Head injury and concussion\" (2025), Abschnitt \"How to care for a minor head injury\", S. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/"
+  - "[2] NHS — \"Head injury and concussion\" (2025), Abschnitt \"Don’t\", S. 1 — https://www.nhs.uk/conditions/head-injury-and-concussion/"
+  - "[3] CDC — \"Signs and Symptoms of Concussion\", Abschnitt \"Signs and Symptoms of Concussion Key points\", S. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html"
+  - "[4] CDC — \"Signs and Symptoms of Concussion\", Abschnitt \"Signs: What to watch for according to your child's age\", S. 1 — https://www.cdc.gov/heads-up/signs-symptoms/index.html"
+  - "[6] MedlinePlus — \"Head Injuries\" (2024), p. 1 — https://medlineplus.gov/headinjuries.html"
+  - "[7] MedlinePlus — \"Concussion\" (2025), p. 1 — https://medlineplus.gov/concussion.html"
+  - "[8] CDC — \"Concussion Basics\", Abschnitt \"Concussion Basics Key points\", S. 1 — https://www.cdc.gov/heads-up/about/index.html"
 draft: false
 ---
 

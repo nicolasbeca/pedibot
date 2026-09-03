@@ -7,14 +7,14 @@ date: 2026-08-26
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Otitis media aguda. Información para padres\", section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE OTITIS MEDIA AGUDA?\", p. 1"
-  - "[2] SEUP — \"Otitis media aguda. Información para padres\", section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[3] SEUP — \"Otitis media aguda. Información para padres\", section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[4] SEUP — \"Otitis media aguda. Información para padres\", section \"¿QUÉ ES LA OTITIS MEDIA AGUDA?\", p. 1"
-  - "[5] SEUP — \"Otitis media aguda. Información para padres\", section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[6] MedlinePlus — \"Infecciones de los oídos\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/earinfections.html"
-  - "[7] NHS — \"Ear infections\" (2025), section \"Ear infections\", p. 1 — https://www.nhs.uk/conditions/ear-infections/"
-  - "[9] MedlinePlus — \"Ear Infections\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/earinfections.html"
+  - "[1] SEUP — \"Otitis media aguda. Información para padres\", sección \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE OTITIS MEDIA AGUDA?\", pág. 1"
+  - "[2] SEUP — \"Otitis media aguda. Información para padres\", sección \"¿CUÁLES SON LOS SÍNTOMAS?\", pág. 1"
+  - "[3] SEUP — \"Otitis media aguda. Información para padres\", sección \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", pág. 1, 2"
+  - "[4] SEUP — \"Otitis media aguda. Información para padres\", sección \"¿QUÉ ES LA OTITIS MEDIA AGUDA?\", pág. 1"
+  - "[5] SEUP — \"Otitis media aguda. Información para padres\", sección \"¿CÓMO LO PODEMOS PREVENIR?\", pág. 2"
+  - "[6] MedlinePlus — \"Infecciones de los oídos\", pág. 1 — https://medlineplus.gov/spanish/earinfections.html"
+  - "[7] NHS — \"Ear infections\" (2025), sección \"Ear infections\", pág. 1 — https://www.nhs.uk/conditions/ear-infections/"
+  - "[9] MedlinePlus — \"Ear Infections\" (2025), p. 1 — https://medlineplus.gov/earinfections.html"
 draft: false
 ---
 

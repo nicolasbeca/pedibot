@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] CDC — \"Manage Common Cold\", section \"Overview\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[2] MedlinePlus — \"Common Cold\" (2022), section \"What causes the common cold?\", p. 1 — https://medlineplus.gov/commoncold.html"
-  - "[3] MedlinePlus — \"Common Cold\" (2022), section \"What are the treatments for the common cold?\", p. 1 — https://medlineplus.gov/commoncold.html"
-  - "[4] MedlinePlus — \"Common Cold\" (2022), section \"What is the common cold?\", p. 1 — https://medlineplus.gov/commoncold.html"
-  - "[5] CDC — \"Manage Common Cold\", section \"Manage Common Cold Key points\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[6] MedlinePlus — \"Common Cold\" (2022), section \"Can the common cold be prevented?\", p. 1 — https://medlineplus.gov/commoncold.html"
-  - "[7] CDC — \"Manage Common Cold\", section \"Children\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[10] CDC — \"Manage Common Cold\", section \"When to seek medical care\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[1] CDC — \"Manage Common Cold\", раздел \"Overview\", с. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[2] MedlinePlus — \"Common Cold\" (2022), раздел \"What causes the common cold?\", с. 1 — https://medlineplus.gov/commoncold.html"
+  - "[3] MedlinePlus — \"Common Cold\" (2022), раздел \"What are the treatments for the common cold?\", с. 1 — https://medlineplus.gov/commoncold.html"
+  - "[4] MedlinePlus — \"Common Cold\" (2022), раздел \"What is the common cold?\", с. 1 — https://medlineplus.gov/commoncold.html"
+  - "[5] CDC — \"Manage Common Cold\", раздел \"Manage Common Cold Key points\", с. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[6] MedlinePlus — \"Common Cold\" (2022), раздел \"Can the common cold be prevented?\", с. 1 — https://medlineplus.gov/commoncold.html"
+  - "[7] CDC — \"Manage Common Cold\", раздел \"Children\", с. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[10] CDC — \"Manage Common Cold\", раздел \"When to seek medical care\", с. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
 draft: false
 ---
 

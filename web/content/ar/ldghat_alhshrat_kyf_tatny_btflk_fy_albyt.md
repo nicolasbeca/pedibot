@@ -7,16 +7,16 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Insect Bites and Stings\" (2026), section \"Introducción\", p. 1 — https://medlineplus.gov/insectbitesandstings.html"
-  - "[2] NHS — \"Insect bites and stings\" (2023), section \"Insect bites and stings\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
-  - "[3] NHS — \"Insect bites and stings\" (2023), section \"Easing your symptoms\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
-  - "[4] NHS — \"Insect bites and stings\" (2023), section \"Removing stingers, ticks or caterpillars\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
-  - "[5] NHS — \"Insect bites and stings\" (2023), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
-  - "[6] NHS — \"Impetigo\" (2024), section \"How to avoid impetigo\", p. 1 — https://www.nhs.uk/conditions/impetigo/"
-  - "[7] MedlinePlus — \"Head Lice\" (2025), section \"What are the symptoms of head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
-  - "[8] CDC — \"About Lice\", section \"About Lice Key points\", p. 1 — https://www.cdc.gov/lice/about/index.html"
-  - "[9] MedlinePlus — \"Impetigo\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/impetigo.html"
-  - "[10] MedlinePlus — \"Head Lice\" (2025), section \"What are head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
+  - "[1] MedlinePlus — \"Insect Bites and Stings\" (2026), p. 1 — https://medlineplus.gov/insectbitesandstings.html"
+  - "[2] NHS — \"Insect bites and stings\" (2023), قسم \"Insect bites and stings\", ص. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
+  - "[3] NHS — \"Insect bites and stings\" (2023), قسم \"Easing your symptoms\", ص. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
+  - "[4] NHS — \"Insect bites and stings\" (2023), قسم \"Removing stingers, ticks or caterpillars\", ص. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
+  - "[5] NHS — \"Insect bites and stings\" (2023), قسم \"Don’t\", ص. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
+  - "[6] NHS — \"Impetigo\" (2024), قسم \"How to avoid impetigo\", ص. 1 — https://www.nhs.uk/conditions/impetigo/"
+  - "[7] MedlinePlus — \"Head Lice\" (2025), قسم \"What are the symptoms of head lice?\", ص. 1 — https://medlineplus.gov/headlice.html"
+  - "[8] CDC — \"About Lice\", قسم \"About Lice Key points\", ص. 1 — https://www.cdc.gov/lice/about/index.html"
+  - "[9] MedlinePlus — \"Impetigo\" (2025), p. 1 — https://medlineplus.gov/impetigo.html"
+  - "[10] MedlinePlus — \"Head Lice\" (2025), قسم \"What are head lice?\", ص. 1 — https://medlineplus.gov/headlice.html"
 draft: false
 ---
 

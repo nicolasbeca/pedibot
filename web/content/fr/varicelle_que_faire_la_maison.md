@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Chickenpox\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/chickenpox.html"
+  - "[1] MedlinePlus — \"Chickenpox\" (2025), p. 1 — https://medlineplus.gov/chickenpox.html"
   - "[2] CDC — \"About Chickenpox\", section \"About Chickenpox Key points\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
   - "[3] NHS — \"Chickenpox\" (2025), section \"How you can treat chickenpox yourself\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
   - "[4] NHS — \"Chickenpox\" (2025), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"

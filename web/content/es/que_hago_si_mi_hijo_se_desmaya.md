@@ -7,11 +7,11 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Síncope. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[2] SEUP — \"Síncope. Información para padres\" (2025), section \"¿QUÉ ES UN SÍNCOPE? ¿POR QUÉ SE PRODUCEN?\", p. 1"
-  - "[3] SEUP — \"Síncope. Información para padres\" (2025), section \"¿CÓMO LOS PODEMOS PREVENIR?\", p. 2"
-  - "[4] SEUP — \"Síncope. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN SÍNCOPE?\", p. 1, 2"
-  - "[5] SEUP — \"Síncope. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
+  - "[1] SEUP — \"Síncope. Información para padres\" (2025), sección \"¿CUÁLES SON LOS SÍNTOMAS?\", pág. 1"
+  - "[2] SEUP — \"Síncope. Información para padres\" (2025), sección \"¿QUÉ ES UN SÍNCOPE? ¿POR QUÉ SE PRODUCEN?\", pág. 1"
+  - "[3] SEUP — \"Síncope. Información para padres\" (2025), sección \"¿CÓMO LOS PODEMOS PREVENIR?\", pág. 2"
+  - "[4] SEUP — \"Síncope. Información para padres\" (2025), sección \"¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN SÍNCOPE?\", pág. 1, 2"
+  - "[5] SEUP — \"Síncope. Información para padres\" (2025), sección \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", pág. 2"
 draft: false
 ---
 

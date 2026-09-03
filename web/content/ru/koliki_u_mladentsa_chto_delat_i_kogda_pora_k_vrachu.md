@@ -7,13 +7,13 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Cólico del lactante. Información para padres\" (2025), section \"CÓLICO DEL LACTANTE PAROXÍSTICO INTENSO INCONSOLABLE CARACTERÍSTICAS DEL LLANTO ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 2"
-  - "[2] SEUP — \"Cólico del lactante. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[3] SEUP — \"Cólico del lactante. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[4] SEUP — \"Cólico del lactante. Información para padres\" (2025), section \"¿QUÉ SON LOS CÓLICOS DEL LACTANTE? ¿POR QUÉ SE PRODUCEN?\", p. 1"
-  - "[5] SEUP — \"Cólico del lactante. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN CÓLICO DEL LACTANTE?\", p. 1"
-  - "[6] SEUP — \"Cólico del lactante. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1"
-  - "[7] SEUP — \"Cólico del lactante. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
+  - "[1] SEUP — \"Cólico del lactante. Información para padres\" (2025), раздел \"CÓLICO DEL LACTANTE PAROXÍSTICO INTENSO INCONSOLABLE CARACTERÍSTICAS DEL LLANTO ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", с. 2"
+  - "[2] SEUP — \"Cólico del lactante. Información para padres\" (2025), раздел \"¿CUÁLES SON LOS SÍNTOMAS?\", с. 1"
+  - "[3] SEUP — \"Cólico del lactante. Información para padres\" (2025), раздел \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", с. 2"
+  - "[4] SEUP — \"Cólico del lactante. Información para padres\" (2025), раздел \"¿QUÉ SON LOS CÓLICOS DEL LACTANTE? ¿POR QUÉ SE PRODUCEN?\", с. 1"
+  - "[5] SEUP — \"Cólico del lactante. Información para padres\" (2025), раздел \"¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN CÓLICO DEL LACTANTE?\", с. 1"
+  - "[6] SEUP — \"Cólico del lactante. Información para padres\" (2025), раздел \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", с. 1"
+  - "[7] SEUP — \"Cólico del lactante. Información para padres\" (2025), раздел \"¿CÓMO LO PODEMOS PREVENIR?\", с. 2"
 draft: false
 ---
 

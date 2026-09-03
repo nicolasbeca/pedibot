@@ -7,13 +7,13 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Bronquiolitis. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[2] SEUP — \"Bronquiolitis. Información para padres\" (2025), section \"LA INMUNIZACION CONTRA EL VRS DISMINUYE LA HOSPITALIZACIÓN HASTA\", p. 2"
-  - "[3] SEUP — \"Bronquiolitis. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[4] SEUP — \"Bronquiolitis. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[5] SEUP — \"Bronquiolitis. Información para padres\" (2025), section \"¿PUEDE PREVENIRSE?\", p. 2"
-  - "[6] SEUP — \"Bronquiolitis. Información para padres\" (2025), section \"¿QUÉ ES LA BRONQUIOLITIS?\", p. 1"
-  - "[7] SEUP — \"Bronquiolitis. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
+  - "[1] SEUP — \"Bronquiolitis. Información para padres\" (2025), قسم \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", ص. 1, 2"
+  - "[2] SEUP — \"Bronquiolitis. Información para padres\" (2025), قسم \"LA INMUNIZACION CONTRA EL VRS DISMINUYE LA HOSPITALIZACIÓN HASTA\", ص. 2"
+  - "[3] SEUP — \"Bronquiolitis. Información para padres\" (2025), قسم \"¿CUÁLES SON LOS SÍNTOMAS?\", ص. 1"
+  - "[4] SEUP — \"Bronquiolitis. Información para padres\" (2025), قسم \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", ص. 2"
+  - "[5] SEUP — \"Bronquiolitis. Información para padres\" (2025), قسم \"¿PUEDE PREVENIRSE?\", ص. 2"
+  - "[6] SEUP — \"Bronquiolitis. Información para padres\" (2025), قسم \"¿QUÉ ES LA BRONQUIOLITIS?\", ص. 1"
+  - "[7] SEUP — \"Bronquiolitis. Información para padres\" (2025), قسم \"¿QUÉ PODEMOS HACER EN CASA?\", ص. 1"
 draft: false
 ---
 

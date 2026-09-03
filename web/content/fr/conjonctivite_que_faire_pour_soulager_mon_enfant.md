@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Pink Eye\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/pinkeye.html"
+  - "[1] MedlinePlus — \"Pink Eye\" (2017), p. 1 — https://medlineplus.gov/pinkeye.html"
   - "[2] NHS — \"Conjunctivitis\" (2024), section \"Conjunctivitis\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
   - "[3] NHS — \"Conjunctivitis\" (2024), section \"Staying away from work or school\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
   - "[4] NHS — \"Conjunctivitis\" (2024), section \"Stop infectious conjunctivitis from spreading\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"

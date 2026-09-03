@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Measles\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/measles.html"
-  - "[2] NHS — \"Measles\" (2025), section \"Measles\", p. 1 — https://www.nhs.uk/conditions/measles/"
-  - "[3] WHO — \"Measles\", section \"Overview\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
-  - "[4] WHO — \"Measles\", section \"Signs and symptoms\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
-  - "[5] NHS — \"Measles\" (2025), section \"How to avoid spreading or catching measles\", p. 1 — https://www.nhs.uk/conditions/measles/"
-  - "[6] NHS — \"Measles\" (2025), section \"Vaccination or previous infection\", p. 1 — https://www.nhs.uk/conditions/measles/"
-  - "[7] WHO — \"Measles\", section \"Prevention\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
-  - "[10] NHS — \"Measles\" (2025), section \"How to look after yourself or your child\", p. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[1] MedlinePlus — \"Measles\" (2025), p. 1 — https://medlineplus.gov/measles.html"
+  - "[2] NHS — \"Measles\" (2025), قسم \"Measles\", ص. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[3] WHO — \"Measles\", قسم \"Overview\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
+  - "[4] WHO — \"Measles\", قسم \"Signs and symptoms\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
+  - "[5] NHS — \"Measles\" (2025), قسم \"How to avoid spreading or catching measles\", ص. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[6] NHS — \"Measles\" (2025), قسم \"Vaccination or previous infection\", ص. 1 — https://www.nhs.uk/conditions/measles/"
+  - "[7] WHO — \"Measles\", قسم \"Prevention\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
+  - "[10] NHS — \"Measles\" (2025), قسم \"How to look after yourself or your child\", ص. 1 — https://www.nhs.uk/conditions/measles/"
 draft: false
 ---
 

@@ -11,7 +11,7 @@ sources:
   - "[2] NHS — \"Sunburn\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
   - "[3] NHS — \"Sunburn\" (2025), section \"A pharmacist can help with sunburn\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
   - "[4] NHS — \"Sunburn\" (2025), section \"How to ease sunburn yourself\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[5] MedlinePlus — \"Sun Exposure\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/sunexposure.html"
+  - "[5] MedlinePlus — \"Sun Exposure\" (2017), p. 1 — https://medlineplus.gov/sunexposure.html"
   - "[6] NHS — \"Roseola\" (2023), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/roseola/"
 draft: false
 ---

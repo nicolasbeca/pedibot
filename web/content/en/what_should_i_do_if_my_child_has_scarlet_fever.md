@@ -45,7 +45,7 @@ To avoid spreading scarlet fever:
 If you do not take antibiotics, you can spread the infection for 2 to 3 weeks after symptoms start [3]. Stay away from nursery, school, or work for 24 hours after the first dose of antibiotics [3].
 
 ## When to see a doctor or go to the emergency department
-Trust your judgement if your child seems seriously unwell [9]. Call 999 or go to A&E now if your child is unwell with a rash and has any of these symptoms:
+Trust your judgement if your child seems seriously unwell [9]. Call your emergency number or go to the emergency department now if your child is unwell with a rash and has any of these symptoms:
 - A stiff neck [9]
 - Bothered by light [9]
 - They seem confused, agitated, or not responding like they usually do [9]
@@ -55,7 +55,7 @@ Trust your judgement if your child seems seriously unwell [9]. Call 999 or go to
 - Their throat feels tight or they are struggling to swallow [9]
 - The rash looks like small bruises or bleeding under the skin and does not fade when you press a glass against it [9]
 
-On brown and black skin, it may be easier to see the rash or colour changes on the soles of the feet, palms, lips, tongue, and inside the eyelids [9]. Do not drive to A&E. Ask someone to drive you or call 999 for an ambulance [9]. Bring any medicines your child takes with you [9].
+On brown and black skin, it may be easier to see the rash or colour changes on the soles of the feet, palms, lips, tongue, and inside the eyelids [9]. Do not drive to the emergency department. Ask someone to drive you or call your emergency number for an ambulance [9]. Bring any medicines your child takes with you [9].
 
 ## Common questions
 **Can scarlet fever harm my baby during pregnancy?**

@@ -11,7 +11,7 @@ sources:
   - "[2] NHS — \"Burns and scalds\" (2026), section \"Burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
   - "[3] NHS — \"Burns and scalds\" (2026), section \"Treatments for burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
   - "[4] NHS — \"Burns and scalds\" (2026), section \"Things you can do to help while burns and scalds heal\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[5] MedlinePlus — \"Burns\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/burns.html"
+  - "[5] MedlinePlus — \"Burns\" (2024), p. 1 — https://medlineplus.gov/burns.html"
 draft: false
 ---
 
@@ -40,14 +40,14 @@ Do not do these things:
 - Do not burst any blisters [4].
 
 ## When to see a doctor or go to the emergency department
-Call 999 or go to A&E immediately if the burn or scald:
+Call your emergency number or go to the emergency department immediately if the burn or scald:
 - Is very large or deep
 - Is on the face, genitals, or bottom
 - Was caused by an acid or chemical, or by electricity [1]
 
-Do not drive to A&E. Ask someone to drive you or call 999 for an ambulance [1].
+Do not drive to the emergency department. Ask someone to drive you or call your emergency number for an ambulance [1].
 
-Get urgent advice from NHS 111 if:
+Get urgent advice from a health advice line if:
 - You or your child has a burn or scald and you're not sure what to do
 - You need advice for a child under 5 years old [1]
 

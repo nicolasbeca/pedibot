@@ -7,15 +7,15 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[2] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", p. 2"
-  - "[3] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[4] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE NEUMONÍA?\", p. 1"
-  - "[5] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA?¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 2"
-  - "[6] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[7] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ ES LA NEUMONÍA?\", p. 1"
-  - "[8] WHO — \"Neumonía infantil\", section \"Formas de presentación\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
-  - "[10] WHO — \"Neumonía infantil\", section \"Prevención\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
+  - "[1] SEUP — \"Neumonía. Información para padres\" (2025), قسم \"¿CUÁLES SON LOS SÍNTOMAS?\", ص. 1"
+  - "[2] SEUP — \"Neumonía. Información para padres\" (2025), قسم \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", ص. 2"
+  - "[3] SEUP — \"Neumonía. Información para padres\" (2025), قسم \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", ص. 1, 2"
+  - "[4] SEUP — \"Neumonía. Información para padres\" (2025), قسم \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE NEUMONÍA?\", ص. 1"
+  - "[5] SEUP — \"Neumonía. Información para padres\" (2025), قسم \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA?¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", ص. 2"
+  - "[6] SEUP — \"Neumonía. Información para padres\" (2025), قسم \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", ص. 2"
+  - "[7] SEUP — \"Neumonía. Información para padres\" (2025), قسم \"¿QUÉ ES LA NEUMONÍA?\", ص. 1"
+  - "[8] WHO — \"Neumonía infantil\", قسم \"Formas de presentación\", ص. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
+  - "[10] WHO — \"Neumonía infantil\", قسم \"Prevención\", ص. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
 draft: false
 ---
 

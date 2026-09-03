@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Measles\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/measles.html"
+  - "[1] MedlinePlus — \"Measles\" (2025), p. 1 — https://medlineplus.gov/measles.html"
   - "[2] NHS — \"Measles\" (2025), section \"Measles\", p. 1 — https://www.nhs.uk/conditions/measles/"
   - "[3] WHO — \"Measles\", section \"Overview\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
   - "[4] WHO — \"Measles\", section \"Signs and symptoms\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"

@@ -7,12 +7,12 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Fiebre. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
-  - "[2] SEUP — \"Fiebre. Información para padres\" (2025), section \"¿CÓMO PODEMOS PREVENIR LAS INFECCIONES?\", p. 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
-  - "[3] SEUP — \"Fiebre. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
-  - "[4] SEUP — \"Fiebre. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
-  - "[5] SEUP — \"Fiebre. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE FIEBRE?\", p. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
-  - "[6] MedlinePlus — \"Fiebre\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/fever.html"
+  - "[1] SEUP — \"Fiebre. Información para padres\" (2025), Abschnitt \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", S. 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
+  - "[2] SEUP — \"Fiebre. Información para padres\" (2025), Abschnitt \"¿CÓMO PODEMOS PREVENIR LAS INFECCIONES?\", S. 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
+  - "[3] SEUP — \"Fiebre. Información para padres\" (2025), Abschnitt \"¿CUÁLES SON LOS SÍNTOMAS?\", S. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
+  - "[4] SEUP — \"Fiebre. Información para padres\" (2025), Abschnitt \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", S. 1, 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
+  - "[5] SEUP — \"Fiebre. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE FIEBRE?\", S. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
+  - "[6] MedlinePlus — \"Fiebre\", S. 1 — https://medlineplus.gov/spanish/fever.html"
 draft: false
 ---
 

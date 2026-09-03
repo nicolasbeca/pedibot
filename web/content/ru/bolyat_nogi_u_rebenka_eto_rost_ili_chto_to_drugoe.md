@@ -7,10 +7,10 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Growing pains\" (2026), section \"Growing pains\", p. 1 — https://www.nhs.uk/conditions/growing-pains/"
-  - "[2] NHS — \"Growing pains\" (2026), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/growing-pains/"
-  - "[3] NHS — \"Growing pains\" (2026), section \"Causes of growing pains\", p. 1 — https://www.nhs.uk/conditions/growing-pains/"
-  - "[4] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[1] NHS — \"Growing pains\" (2026), раздел \"Growing pains\", с. 1 — https://www.nhs.uk/conditions/growing-pains/"
+  - "[2] NHS — \"Growing pains\" (2026), раздел \"Don’t\", с. 1 — https://www.nhs.uk/conditions/growing-pains/"
+  - "[3] NHS — \"Growing pains\" (2026), раздел \"Causes of growing pains\", с. 1 — https://www.nhs.uk/conditions/growing-pains/"
+  - "[4] NHS — \"Urinary tract infections (UTIs)\" (2025), раздел \"Urinary tract infections (UTIs)\", с. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
 draft: false
 ---
 

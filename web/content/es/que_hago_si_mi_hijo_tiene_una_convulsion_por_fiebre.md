@@ -7,14 +7,14 @@ date: 2026-08-27
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Convulsión febril. Información para padres\" (2025), section \"¿QUÉ ES UNA CONVULSIÓN FEBRIL? ¿POR QUÉ SE PRODUCEN?\", p. 1"
-  - "[2] SEUP — \"Convulsión febril. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CONVULSIÓN FEBRIL?\", p. 1, 2"
-  - "[3] NHS — \"Febrile seizures\" (2023), section \"Febrile seizures\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[4] NHS — \"Febrile seizures\" (2023), section \"Treatment for febrile seizures\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[5] NHS — \"Febrile seizures\" (2023), section \"What to do if your child is having a febrile seizure\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[6] NHS — \"Febrile seizures\" (2023), section \"Symptoms of a febrile seizure\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[7] NHS — \"Febrile seizures\" (2023), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
-  - "[8] MedlinePlus — \"Seizures\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/seizures.html"
+  - "[1] SEUP — \"Convulsión febril. Información para padres\" (2025), sección \"¿QUÉ ES UNA CONVULSIÓN FEBRIL? ¿POR QUÉ SE PRODUCEN?\", pág. 1"
+  - "[2] SEUP — \"Convulsión febril. Información para padres\" (2025), sección \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CONVULSIÓN FEBRIL?\", pág. 1, 2"
+  - "[3] NHS — \"Febrile seizures\" (2023), sección \"Febrile seizures\", pág. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[4] NHS — \"Febrile seizures\" (2023), sección \"Treatment for febrile seizures\", pág. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[5] NHS — \"Febrile seizures\" (2023), sección \"What to do if your child is having a febrile seizure\", pág. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[6] NHS — \"Febrile seizures\" (2023), sección \"Symptoms of a febrile seizure\", pág. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[7] NHS — \"Febrile seizures\" (2023), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/febrile-seizures/"
+  - "[8] MedlinePlus — \"Seizures\" (2017), p. 1 — https://medlineplus.gov/seizures.html"
 draft: false
 ---
 
@@ -54,7 +54,7 @@ Debes acudir a urgencias en estos casos [2][6]:
 - Ves al niño muy dormido, confuso, irritable o con comportamiento anormal [2].
 - Hay dolor de cabeza intenso o vómitos repetidos [2].
 
-Si el niño aún está convulsionando o está inconsciente, no lo lleves en coche a urgencias [6]. Llama al 999 o pide una ambulancia [6]. No conduzcas tú; pide a alguien que te lleve o llama a emergencias [6].
+Si el niño aún está convulsionando o está inconsciente, no lo lleves en coche a urgencias [6]. Llama a tu número de emergencias o pide una ambulancia [6]. No conduzcas tú; pide a alguien que te lleve o llama a emergencias [6].
 
 ## Preguntas frecuentes
 **¿Necesita tratamiento?** La mayoría de las convulsiones febriles no necesitan tratamiento [4]. Pero el niño debe ser revisado en el hospital tras la primera convulsión [4]. Puede necesitar análisis de sangre, de orina o una punción lumbar para descartar infecciones [4]. Si hay una infección, puede necesitar medicación para tratarla [4].

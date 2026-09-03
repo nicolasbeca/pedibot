@@ -50,7 +50,15 @@ def is_heading(ln: Line, body_size: float) -> bool:
     return False
 
 
-def split_sections(ex: Extracted, default_title: str = "Introducción") -> list[Section]:
+#: The text before a document's first heading has no section of its own, so this is the label we
+#: give it — not a heading the document contains. It used to be the Spanish word "Introducción",
+#: which then travelled into the citation of English and Russian documents as if it were theirs.
+#: It is a sentinel now, and `Chunk.citation` omits it rather than claiming a section that is not
+#: in the source.
+LEAD_SECTION = "__lead__"
+
+
+def split_sections(ex: Extracted, default_title: str = LEAD_SECTION) -> list[Section]:
     sections: list[Section] = [Section(title=default_title)]
     for p in ex.pages:
         for ln in p.lines:

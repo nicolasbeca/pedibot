@@ -7,12 +7,12 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", p. 1"
-  - "[2] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[3] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[6] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1"
-  - "[7] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los síntomas de la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[1] SEUP — \"Vómitos. Información para padres\" (2025), раздел \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", с. 1"
+  - "[2] SEUP — \"Vómitos. Información para padres\" (2025), раздел \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", с. 2"
+  - "[3] SEUP — \"Vómitos. Información para padres\" (2025), раздел \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", с. 1, 2"
+  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), раздел \"¿CÓMO LO PODEMOS PREVENIR?\", с. 2"
+  - "[6] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), раздел \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", с. 1"
+  - "[7] MedlinePlus — \"Gastroenteritis\", раздел \"¿Cuáles son los síntomas de la gastroenteritis?\", с. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
 draft: false
 ---
 

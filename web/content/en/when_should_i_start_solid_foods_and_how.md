@@ -15,7 +15,7 @@ sources:
   - "[6] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"Alimentación activa o cómo ofrecer la alimentación complementaria con un enfoque positivo\", p. 14"
   - "[7] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"ALIMENTACIÓN COMPLEMENTARIA\", p. 15"
   - "[8] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"RECOMENDACIONES ¿Cuándo introducir los alimentos potencialmente alergénicos?\", p. 8"
-  - "[9] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"Introducción\", p. 1, 2"
+  - "[9] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), p. 1, 2"
   - "[10] AEP — \"Recomendaciones de la AEP sobre la alimentación complementaria\" (2018), section \"¿Y en los lactantes que no toman el pecho?\", p. 3"
 draft: false
 ---

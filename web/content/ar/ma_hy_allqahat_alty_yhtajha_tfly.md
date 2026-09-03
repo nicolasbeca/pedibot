@@ -7,15 +7,15 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"4Enfermedad neumocócica (VNC/VN)\", p. 2"
-  - "[2] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"6 Enfermedad meningocócica ( (Men B, Men C, MenACWY)\", p. 2, 3"
-  - "[3] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"12 COVID-19\", p. 3, 4"
-  - "[4] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"7Sarampión, rubeola y parotiditis (triple vírica, TV)\", p. 3"
-  - "[5] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"11 Gripe 10 Herpes zóster (HZ)\", p. 3"
-  - "[7] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"13Virus Respiratorio Sincitial (VRS)\", p. 4"
-  - "[8] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"8Varicela (VVZ)\", p. 3"
-  - "[9] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"1 Poliomielitis (VPI) 2 Difteria, tétanos, tosferina (DTPa, dTpa, Td) 3 Hepatitis B (HB)\", p. 2"
-  - "[10] MedlinePlus — \"Vacunas para los niños\", section \"¿Cuándo necesito vacunar a mi hijo?\", p. 1 — https://medlineplus.gov/spanish/childhoodimmunization.html"
+  - "[1] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), قسم \"4Enfermedad neumocócica (VNC/VN)\", ص. 2"
+  - "[2] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), قسم \"6 Enfermedad meningocócica ( (Men B, Men C, MenACWY)\", ص. 2, 3"
+  - "[3] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), قسم \"12 COVID-19\", ص. 3, 4"
+  - "[4] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), قسم \"7Sarampión, rubeola y parotiditis (triple vírica, TV)\", ص. 3"
+  - "[5] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), قسم \"11 Gripe 10 Herpes zóster (HZ)\", ص. 3"
+  - "[7] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), قسم \"13Virus Respiratorio Sincitial (VRS)\", ص. 4"
+  - "[8] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), قسم \"8Varicela (VVZ)\", ص. 3"
+  - "[9] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), قسم \"1 Poliomielitis (VPI) 2 Difteria, tétanos, tosferina (DTPa, dTpa, Td) 3 Hepatitis B (HB)\", ص. 2"
+  - "[10] MedlinePlus — \"Vacunas para los niños\", قسم \"¿Cuándo necesito vacunar a mi hijo?\", ص. 1 — https://medlineplus.gov/spanish/childhoodimmunization.html"
 draft: false
 ---
 

@@ -13,7 +13,7 @@ sources:
   - "[4] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), section \"singnos y síntomas pSICOLÓGICOS\", p. 1"
   - "[7] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), section \"signos y síntomas conductuales signos y síntomas físicos SI SE TRATA DE UN FAMILIAR, ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", p. 2"
   - "[8] WHO — \"La salud mental de los adolescentes\", section \"Trastornos de la conducta alimentaria\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[10] WHO — \"La salud mental de los adolescentes\", section \"Introducción\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[10] WHO — \"La salud mental de los adolescentes\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
 draft: false
 ---
 

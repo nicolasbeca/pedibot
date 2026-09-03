@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Fever\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/fever.html"
+  - "[1] MedlinePlus — \"Fever\" (2025), p. 1 — https://medlineplus.gov/fever.html"
   - "[2] NHS — \"High temperature (fever) in children\" (2025), section \"High temperature (fever) in children\", p. 1 — https://www.nhs.uk/conditions/fever-in-children/"
   - "[3] NHS — \"High temperature (fever) in children\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/fever-in-children/"
 draft: false
@@ -28,9 +28,9 @@ The main difference is the threshold. NHS gives a clear number for children: 38�
 Another difference involves medicine. NHS gives detailed rules: no paracetamol under 2 months, no ibuprofen under 3 months or under 5kg, and no alternating ibuprofen and paracetamol unless told by a professional [3]. MedlinePlus only says a provider may recommend acetaminophen or ibuprofen for a very high fever [1]. This difference is practical, not contradictory. NHS provides more specific safety guidance for young children. MedlinePlus gives a general statement for all ages.
 
 ## When to see a doctor or go to the emergency department
-Call your doctor or NHS 111 if your child is under 3 months old with a temperature of 38°C or higher, or if you think they have a high temperature. Also call if your child is 3 to 6 months old with a temperature of 39°C or higher. Call if the fever lasts 5 days or more, if your child has a rash, is dehydrated, or is not their usual self [3].
+Call your doctor or a health advice line if your child is under 3 months old with a temperature of 38°C or higher, or if you think they have a high temperature. Also call if your child is 3 to 6 months old with a temperature of 39°C or higher. Call if the fever lasts 5 days or more, if your child has a rash, is dehydrated, or is not their usual self [3].
 
-Go to the emergency department (call 999 in the UK) if your child has a stiff neck, a rash that does not fade when pressed with a glass, is bothered by light, has a first febrile seizure, has cold hands and feet, has blue or pale skin or lips, is drowsy and hard to wake, is extremely agitated or confused, has difficulty breathing, or is not responding normally [3].
+Go to the emergency department (call your emergency number in the UK) if your child has a stiff neck, a rash that does not fade when pressed with a glass, is bothered by light, has a first febrile seizure, has cold hands and feet, has blue or pale skin or lips, is drowsy and hard to wake, is extremely agitated or confused, has difficulty breathing, or is not responding normally [3].
 
 ## Sources
 [1] MedlinePlus — "Fever" (2025), section "Introducción", p. 1 — https://medlineplus.gov/fever.html

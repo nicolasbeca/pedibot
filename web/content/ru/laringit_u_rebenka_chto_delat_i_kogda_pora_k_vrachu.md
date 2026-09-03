@@ -7,12 +7,12 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[2] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[3] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿QUÉ ES LA LARINGITIS?\", p. 1"
-  - "[4] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[5] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE LARINGITIS?\", p. 1"
-  - "[6] MedlinePlus — \"Crup\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/croup.html"
+  - "[1] SEUP — \"Laringitis. Información para padres\" (2025), раздел \"¿CUÁLES SON LOS SÍNTOMAS?\", с. 1"
+  - "[2] SEUP — \"Laringitis. Información para padres\" (2025), раздел \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", с. 1, 2"
+  - "[3] SEUP — \"Laringitis. Información para padres\" (2025), раздел \"¿QUÉ ES LA LARINGITIS?\", с. 1"
+  - "[4] SEUP — \"Laringitis. Información para padres\" (2025), раздел \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", с. 2"
+  - "[5] SEUP — \"Laringitis. Información para padres\" (2025), раздел \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE LARINGITIS?\", с. 1"
+  - "[6] MedlinePlus — \"Crup\", с. 1 — https://medlineplus.gov/spanish/croup.html"
 draft: false
 ---
 

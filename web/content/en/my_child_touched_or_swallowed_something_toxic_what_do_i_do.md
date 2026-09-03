@@ -12,7 +12,7 @@ sources:
   - "[3] SEUP — \"8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica\" (2020), section \"8 ACCIONES QUE NO HAY QUE HACER ANTE UN PACIENTE PEDIÁTRICO QUE HA CONTACTADO CON UNA SUSTANCIA POTENCIALMENTE TÓXICA NO HACER Tratar una ingesta no tóxica Infravalorar la toxicidad\", p. 1"
   - "[4] SEUP — \"Intoxicaciones. Información para padres\", section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
   - "[5] SEUP — \"Intoxicaciones. Información para padres\", section \"Si el contacto ha sido ocular o cutáneo, lave con agua abundante no provoque el vómito Abrir las ventanas Solicite ayuda Salga al aire libre no administre ningún líquido ni alimento ¿CUÁNDO DEBEMoS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[6] MedlinePlus — \"Envenenamiento\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/poisoning.html"
+  - "[6] MedlinePlus — \"Envenenamiento\", p. 1 — https://medlineplus.gov/spanish/poisoning.html"
 draft: false
 ---
 
@@ -26,7 +26,7 @@ If the contact was by swallowing [2]:
 - Do not try to make the child vomit [2][3].
 - Do not give water, milk, oil, or any other food [2].
 - Try to determine how much was swallowed.
-- Call the Poison Information phone number, or call 112 if the child is not responding normally, is not breathing well, or has a bad color [2].
+- Call your national poison information service, or your emergency number, if the child is not responding normally, is not breathing well, or has a bad color [2].
 
 If the contact was on the skin or eyes [2]:
 - Remove all contaminated clothing.
@@ -37,7 +37,7 @@ If the contact was by breathing in gas or smoke [2]:
 - Get outside into fresh air as quickly as possible.
 - Call the emergency phone number.
 
-The Poison Information phone number is available 24 hours a day, every day: 91 562 04 20 [4]. In the United States, call the local poison control center at 1-800-222-1222 immediately if you suspect poisoning [6].
+The Poison Information phone number is available 24 hours a day, every day: your national poison information service [4]. In the United States, call the local poison control center at your national poison information service immediately if you suspect poisoning [6].
 
 Do not do these things [3]:
 - Do not treat a non-toxic ingestion as if it were harmless and ignore it.

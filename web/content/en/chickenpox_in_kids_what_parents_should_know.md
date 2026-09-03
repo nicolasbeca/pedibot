@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Chickenpox\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/chickenpox.html"
+  - "[1] MedlinePlus — \"Chickenpox\" (2025), p. 1 — https://medlineplus.gov/chickenpox.html"
   - "[2] CDC — \"About Chickenpox\", section \"About Chickenpox Key points\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
   - "[3] NHS — \"Chickenpox\" (2025), section \"How you can treat chickenpox yourself\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
   - "[4] NHS — \"Chickenpox\" (2025), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
@@ -53,7 +53,7 @@ See a GP if:
 - You are not sure it is chickenpox [4].
 - You are breastfeeding and have chickenpox symptoms [4].
 
-Contact the GP surgery before you go in. Tell the receptionist you think it might be chickenpox [4].
+Contact your doctor's surgery before you go in. Tell the receptionist you think it might be chickenpox [4].
 
 Get urgent help now if:
 - Symptoms get worse, such as red, hot, or painful skin around the blisters. Redness may be harder to see on brown or black skin [4].
@@ -63,7 +63,7 @@ Get urgent help now if:
 - You have chickenpox and you are more short of breath than usual [4].
 - You or your child have any other symptoms you are worried about [4].
 
-Some people may be able to take medicine to prevent complications. It needs to be started within 24 hours of the spots appearing [4]. Call 111 if you need advice for a child under 5 years old [4].
+Some people may be able to take medicine to prevent complications. It needs to be started within 24 hours of the spots appearing [4]. Get medical advice if you need it — check if it is urgente for a child under 5 years old [4].
 
 Chickenpox can be serious, even life-threatening, especially during pregnancy, in babies, adolescents, adults, and people with weakened immune systems [10]. Antiviral medication is recommended for people more likely to develop dangerous illness [9].
 

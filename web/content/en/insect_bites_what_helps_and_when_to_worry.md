@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Insect Bites and Stings\" (2026), section \"Introducción\", p. 1 — https://medlineplus.gov/insectbitesandstings.html"
+  - "[1] MedlinePlus — \"Insect Bites and Stings\" (2026), p. 1 — https://medlineplus.gov/insectbitesandstings.html"
   - "[2] NHS — \"Insect bites and stings\" (2023), section \"Insect bites and stings\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
   - "[3] NHS — \"Insect bites and stings\" (2023), section \"Easing your symptoms\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
   - "[4] NHS — \"Insect bites and stings\" (2023), section \"Removing stingers, ticks or caterpillars\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
@@ -15,7 +15,7 @@ sources:
   - "[6] NHS — \"Impetigo\" (2024), section \"How to avoid impetigo\", p. 1 — https://www.nhs.uk/conditions/impetigo/"
   - "[7] MedlinePlus — \"Head Lice\" (2025), section \"What are the symptoms of head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
   - "[8] CDC — \"About Lice\", section \"About Lice Key points\", p. 1 — https://www.cdc.gov/lice/about/index.html"
-  - "[9] MedlinePlus — \"Impetigo\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/impetigo.html"
+  - "[9] MedlinePlus — \"Impetigo\" (2025), p. 1 — https://medlineplus.gov/impetigo.html"
   - "[10] MedlinePlus — \"Head Lice\" (2025), section \"What are head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
 draft: false
 ---
@@ -57,7 +57,7 @@ See a GP if [5]:
 - A child under 1 year old has an insect bite or sting [5].
 - You think your child was bitten by a tick and has flu-like symptoms, or a round or oval rash that may look like a bullseye [5].
 
-Ask for an urgent GP appointment or get help from NHS 111 if [5]:
+Ask for an urgent GP appointment or get medical advice if [5]:
 
 - Symptoms get worse or are not getting better [5].
 - The sting was in the mouth, throat, or near the eyes [5].
@@ -67,7 +67,7 @@ Ask for an urgent GP appointment or get help from NHS 111 if [5]:
 - Your child was stung more than once [5].
 - Your child has had a serious allergic reaction to an insect bite before [5].
 
-Call 999 if your child shows signs of a serious allergic reaction [5]:
+Call your emergency number if your child shows signs of a serious allergic reaction [5]:
 
 - Lips, mouth, throat, or tongue suddenly become swollen [5].
 - Breathing very fast or struggling to breathe [5].

@@ -7,10 +7,10 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Cradle cap\" (2025), section \"Cradle cap\", p. 1 — https://www.nhs.uk/conditions/cradle-cap/"
-  - "[2] NHS — \"Cradle cap\" (2025), section \"Things you can do to help with cradle cap\", p. 1 — https://www.nhs.uk/conditions/cradle-cap/"
-  - "[3] NHS — \"Cradle cap\" (2025), section \"A pharmacist can help with cradle cap\", p. 1 — https://www.nhs.uk/conditions/cradle-cap/"
-  - "[5] NHS — \"Cradle cap\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/cradle-cap/"
+  - "[1] NHS — \"Cradle cap\" (2025), Abschnitt \"Cradle cap\", S. 1 — https://www.nhs.uk/conditions/cradle-cap/"
+  - "[2] NHS — \"Cradle cap\" (2025), Abschnitt \"Things you can do to help with cradle cap\", S. 1 — https://www.nhs.uk/conditions/cradle-cap/"
+  - "[3] NHS — \"Cradle cap\" (2025), Abschnitt \"A pharmacist can help with cradle cap\", S. 1 — https://www.nhs.uk/conditions/cradle-cap/"
+  - "[5] NHS — \"Cradle cap\" (2025), Abschnitt \"Don’t\", S. 1 — https://www.nhs.uk/conditions/cradle-cap/"
 draft: false
 ---
 

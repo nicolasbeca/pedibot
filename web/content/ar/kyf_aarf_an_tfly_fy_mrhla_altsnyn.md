@@ -7,11 +7,11 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Baby teething symptoms\" (2026), section \"Baby teething symptoms\", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
-  - "[2] NHS — \"Baby teething symptoms\" (2026), section \"Teething symptoms\", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
-  - "[3] NHS — \"Baby teething symptoms\" (2026), section \"What order do baby teeth appear in?\", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
-  - "[4] NHS — \"Colic\" (2022), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/colic/"
-  - "[5] NHS — \"Colic\" (2022), section \"Symptoms of colic\", p. 1 — https://www.nhs.uk/conditions/colic/"
+  - "[1] NHS — \"Baby teething symptoms\" (2026), قسم \"Baby teething symptoms\", ص. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
+  - "[2] NHS — \"Baby teething symptoms\" (2026), قسم \"Teething symptoms\", ص. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
+  - "[3] NHS — \"Baby teething symptoms\" (2026), قسم \"What order do baby teeth appear in?\", ص. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
+  - "[4] NHS — \"Colic\" (2022), قسم \"Don’t\", ص. 1 — https://www.nhs.uk/conditions/colic/"
+  - "[5] NHS — \"Colic\" (2022), قسم \"Symptoms of colic\", ص. 1 — https://www.nhs.uk/conditions/colic/"
 draft: false
 ---
 

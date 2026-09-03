@@ -7,13 +7,13 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Otitis media aguda. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE OTITIS MEDIA AGUDA?\", p. 1"
-  - "[2] SEUP — \"Otitis media aguda. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[3] SEUP — \"Otitis media aguda. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[4] SEUP — \"Otitis media aguda. Información para padres\" (2025), section \"¿QUÉ ES LA OTITIS MEDIA AGUDA?\", p. 1"
-  - "[5] SEUP — \"Otitis media aguda. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[7] NHS — \"Ear infections\" (2025), section \"Ear infections\", p. 1 — https://www.nhs.uk/conditions/ear-infections/"
-  - "[9] MedlinePlus — \"Ear Infections\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/earinfections.html"
+  - "[1] SEUP — \"Otitis media aguda. Información para padres\" (2025), قسم \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE OTITIS MEDIA AGUDA?\", ص. 1"
+  - "[2] SEUP — \"Otitis media aguda. Información para padres\" (2025), قسم \"¿CUÁLES SON LOS SÍNTOMAS?\", ص. 1"
+  - "[3] SEUP — \"Otitis media aguda. Información para padres\" (2025), قسم \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", ص. 1, 2"
+  - "[4] SEUP — \"Otitis media aguda. Información para padres\" (2025), قسم \"¿QUÉ ES LA OTITIS MEDIA AGUDA?\", ص. 1"
+  - "[5] SEUP — \"Otitis media aguda. Información para padres\" (2025), قسم \"¿CÓMO LO PODEMOS PREVENIR?\", ص. 2"
+  - "[7] NHS — \"Ear infections\" (2025), قسم \"Ear infections\", ص. 1 — https://www.nhs.uk/conditions/ear-infections/"
+  - "[9] MedlinePlus — \"Ear Infections\" (2025), p. 1 — https://medlineplus.gov/earinfections.html"
 draft: false
 ---
 

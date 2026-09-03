@@ -7,16 +7,16 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] CDC — \"Flu and Children\", section \"Parents help children fight flu\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
-  - "[2] CDC — \"Flu and Children\", section \"Flu and Children At a glance\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
-  - "[3] NHS — \"Flu\" (2026), section \"Symptoms of flu\", p. 1 — https://www.nhs.uk/conditions/flu/"
-  - "[4] NHS — \"Flu\" (2026), section \"How to avoid spreading the flu\", p. 1 — https://www.nhs.uk/conditions/flu/"
-  - "[5] CDC — \"Flu and Children\", section \"Who's at risk Flu can be dangerous for children\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
-  - "[6] CDC — \"Flu and Children\", section \"Types of flu vaccines for children\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
-  - "[7] CDC — \"Flu and Children\", section \"When children should get a flu vaccine\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
-  - "[8] CDC — \"Manage Common Cold\", section \"Fact\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[9] CDC — \"Manage Common Cold\", section \"Manage Common Cold Key points\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[10] NHS — \"Respiratory syncytial virus (RSV)\" (2024), section \"Things you can do to ease symptoms of an RSV infection\", p. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
+  - "[1] CDC — \"Flu and Children\", раздел \"Parents help children fight flu\", с. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[2] CDC — \"Flu and Children\", раздел \"Flu and Children At a glance\", с. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[3] NHS — \"Flu\" (2026), раздел \"Symptoms of flu\", с. 1 — https://www.nhs.uk/conditions/flu/"
+  - "[4] NHS — \"Flu\" (2026), раздел \"How to avoid spreading the flu\", с. 1 — https://www.nhs.uk/conditions/flu/"
+  - "[5] CDC — \"Flu and Children\", раздел \"Who's at risk Flu can be dangerous for children\", с. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[6] CDC — \"Flu and Children\", раздел \"Types of flu vaccines for children\", с. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[7] CDC — \"Flu and Children\", раздел \"When children should get a flu vaccine\", с. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[8] CDC — \"Manage Common Cold\", раздел \"Fact\", с. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[9] CDC — \"Manage Common Cold\", раздел \"Manage Common Cold Key points\", с. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[10] NHS — \"Respiratory syncytial virus (RSV)\" (2024), раздел \"Things you can do to ease symptoms of an RSV infection\", с. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
 draft: false
 ---
 

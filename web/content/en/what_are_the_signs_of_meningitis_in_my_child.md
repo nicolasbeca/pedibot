@@ -9,7 +9,7 @@ model: deepseek-v4-flash
 sources:
   - "[1] NHS — \"Meningitis\" (2026), section \"Meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
   - "[2] NHS — \"Sepsis\" (2024), section \"Symptoms of sepsis in babies and children\", p. 1 — https://www.nhs.uk/conditions/sepsis/"
-  - "[3] MedlinePlus — \"Meningitis\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/meningitis.html"
+  - "[3] MedlinePlus — \"Meningitis\" (2025), p. 1 — https://medlineplus.gov/meningitis.html"
   - "[4] NHS — \"Meningitis\" (2026), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
   - "[5] NHS — \"Meningitis\" (2026), section \"Treatments for meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
   - "[6] NHS — \"Sepsis\" (2024), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/sepsis/"
@@ -49,7 +49,7 @@ Do not try to treat suspected meningitis at home. If you think your child might 
 Vaccines are one of the safest and most effective ways to protect your child against meningitis [7]. Children and teenagers are offered vaccines that protect against the main causes of meningitis, such as the MenB, MenACWY, pneumococcal, 6-in-1, and MMRV vaccines [7].
 
 ## When to see a doctor or go to the emergency department
-Call 999 or go to A&E immediately if you think your child might have meningitis [4]. Do not drive yourself to A&E [4]. The person you speak to at 999 will give you advice about what to do [4].
+Call your emergency number or go to the emergency department immediately if you think your child might have meningitis [4]. Do not drive yourself to the emergency department [4]. The person who answers will give you advice about what to do [4].
 
 For a baby or child under 5 years, get immediate help if they have:
 - A very high temperature – 38C or more in babies under 3 months old, or 39C or more in babies 3 to 6 months old [4]

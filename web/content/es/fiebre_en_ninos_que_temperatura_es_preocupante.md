@@ -7,9 +7,9 @@ date: 2026-09-02
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Fever\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/fever.html"
-  - "[2] NHS — \"High temperature (fever) in children\" (2025), section \"High temperature (fever) in children\", p. 1 — https://www.nhs.uk/conditions/fever-in-children/"
-  - "[3] NHS — \"High temperature (fever) in children\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/fever-in-children/"
+  - "[1] MedlinePlus — \"Fever\" (2025), p. 1 — https://medlineplus.gov/fever.html"
+  - "[2] NHS — \"High temperature (fever) in children\" (2025), sección \"High temperature (fever) in children\", pág. 1 — https://www.nhs.uk/conditions/fever-in-children/"
+  - "[3] NHS — \"High temperature (fever) in children\" (2025), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/fever-in-children/"
 draft: false
 ---
 
@@ -28,9 +28,9 @@ La diferencia principal está en el umbral numérico. MedlinePlus no establece u
 Otra diferencia menor: NHS menciona que no se deben alternar ibuprofeno y paracetamol sin indicación médica, y da restricciones de edad y peso para estos medicamentos [3]. MedlinePlus solo menciona que se pueden usar, sin esos detalles [1]. Esto no es un desacuerdo, sino un nivel de detalle distinto. NHS también incluye causas como vacunas y enfermedades infantiles, mientras que MedlinePlus añade causas menos comunes como cáncer o enfermedades autoinmunes [1][3].
 
 ## Cuándo acudir al médico o a urgencias
-NHS da pautas claras de urgencia [3]. Llame al 111 (servicio de asesoramiento en Reino Unido) si su hijo: tiene menos de 3 meses y temperatura de 38 °C o más; tiene 3 a 6 meses y temperatura de 39 °C o más; presenta sarpullido además de fiebre; tiene fiebre que dura 5 días o más; no quiere comer o no es su comportamiento habitual; o muestra signos de deshidratación (pañales secos, ojos hundidos, sin lágrimas).
+NHS da pautas claras de urgencia [3]. Consulte con su servicio de salud si su hijo: tiene menos de 3 meses y temperatura de 38 °C o más; tiene 3 a 6 meses y temperatura de 39 °C o más; presenta sarpullido además de fiebre; tiene fiebre que dura 5 días o más; no quiere comer o no es su comportamiento habitual; o muestra signos de deshidratación (pañales secos, ojos hundidos, sin lágrimas).
 
-Acuda a urgencias (llame al 999 en Reino Unido) si su hijo: tiene rigidez en el cuello; presenta un sarpullido que no desaparece al presionar un vaso contra la piel; le molesta la luz; tiene una convulsión febril por primera vez; tiene manos y pies fríos; presenta cambios de color en la piel (azul, gris, pálido o manchado, más difícil de ver en piel oscura) o labios/lengua azulados o grises; está somnoliento y difícil de despertar; está muy irritable o confundido; tiene dificultad para respirar o respira muy rápido; o no responde con normalidad ni se interesa por comer o jugar [3].
+Acuda a urgencias si su hijo: tiene rigidez en el cuello; presenta un sarpullido que no desaparece al presionar un vaso contra la piel; le molesta la luz; tiene una convulsión febril por primera vez; tiene manos y pies fríos; presenta cambios de color en la piel (azul, gris, pálido o manchado, más difícil de ver en piel oscura) o labios/lengua azulados o grises; está somnoliento y difícil de despertar; está muy irritable o confundido; tiene dificultad para respirar o respira muy rápido; o no responde con normalidad ni se interesa por comer o jugar [3].
 
 MedlinePlus no ofrece criterios específicos de urgencia en la sección proporcionada [1]. Si no está en Reino Unido, consulte las pautas locales o a su pediatra.
 

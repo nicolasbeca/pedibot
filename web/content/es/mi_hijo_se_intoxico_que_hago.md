@@ -7,11 +7,11 @@ date: 2026-08-27
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[2] SEUP — \"Intoxicaciones. Información para padres\" (2025), section \"¿QUÉ SON?\", p. 1"
-  - "[3] SEUP — \"8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica\" (2020), section \"8 ACCIONES QUE NO HAY QUE HACER ANTE UN PACIENTE PEDIÁTRICO QUE HA CONTACTADO CON UNA SUSTANCIA POTENCIALMENTE TÓXICA NO HACER Tratar una ingesta no tóxica Infravalorar la toxicidad\", p. 1"
-  - "[4] SEUP — \"Intoxicaciones. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[5] SEUP — \"Intoxicaciones. Información para padres\" (2025), section \"Si el contacto ha sido ocular o cutáneo, lave con agua abundante no provoque el vómito Abrir las ventanas Solicite ayuda Salga al aire libre no administre ningún líquido ni alimento ¿CUÁNDO DEBEMoS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[6] MedlinePlus — \"Envenenamiento\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/poisoning.html"
+  - "[2] SEUP — \"Intoxicaciones. Información para padres\" (2025), sección \"¿QUÉ SON?\", pág. 1"
+  - "[3] SEUP — \"8 acciones que NO hay que hacer ante un paciente pediátrico que ha contactado con una sustancia potencialmente tóxica\" (2020), sección \"8 ACCIONES QUE NO HAY QUE HACER ANTE UN PACIENTE PEDIÁTRICO QUE HA CONTACTADO CON UNA SUSTANCIA POTENCIALMENTE TÓXICA NO HACER Tratar una ingesta no tóxica Infravalorar la toxicidad\", pág. 1"
+  - "[4] SEUP — \"Intoxicaciones. Información para padres\" (2025), sección \"¿CÓMO LO PODEMOS PREVENIR?\", pág. 2"
+  - "[5] SEUP — \"Intoxicaciones. Información para padres\" (2025), sección \"Si el contacto ha sido ocular o cutáneo, lave con agua abundante no provoque el vómito Abrir las ventanas Solicite ayuda Salga al aire libre no administre ningún líquido ni alimento ¿CUÁNDO DEBEMoS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", pág. 2"
+  - "[6] MedlinePlus — \"Envenenamiento\", pág. 1 — https://medlineplus.gov/spanish/poisoning.html"
 draft: false
 ---
 
@@ -25,7 +25,7 @@ Si la intoxicación es por **ingestión** [2]:
 - **No** intente provocar el vómito [2][3].
 - **No** administre agua, leche, aceite u otro alimento [2][3].
 - Intente determinar la cantidad ingerida.
-- Llame al teléfono de Información Toxicológica (91 562 04 20) o al 112 si el niño no responde con normalidad, no respira bien o tiene mal color [2].
+- Llame al servicio de toxicología de su país o a su número de emergencias si el niño no responde con normalidad, no respira bien o tiene mal color [2].
 
 Si es por **contacto con la piel o los ojos** [2]:
 - Quite toda la ropa contaminada.
@@ -45,7 +45,7 @@ Debe consultar en urgencias [5]:
 - Cuando el niño o niña tenga síntomas.
 - Cuando haya dudas que no se han resuelto telefónicamente.
 
-Si le recomiendan acudir a urgencias, hágalo lo antes posible y, si es posible, lleve el envase del producto implicado [5]. Recuerde que el teléfono de Información Toxicológica está disponible todos los días las 24 horas: 91 562 04 20 [4].
+Si le recomiendan acudir a urgencias, hágalo lo antes posible y, si es posible, lleve el envase del producto implicado [5]. Recuerde que el servicio de toxicología de tu país suele estar disponible todos los días las 24 horas [4].
 
 ## Preguntas frecuentes
 **¿Debo provocar el vómito?** No. Nunca intente provocar el vómito [2][3]. Puede empeorar la situación.

@@ -11,7 +11,7 @@ sources:
   - "[2] SEUP — \"Golpe de calor. Información para padres\", section \"¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN GOLPE DE CALOR?\", p. 1, 2"
   - "[3] SEUP — \"Golpe de calor. Información para padres\", section \"¿QUÉ ES UN GOLPE DE CALOR? ¿POR QUÉ SE PRODUCE?\", p. 1"
   - "[4] SEUP — \"Golpe de calor. Información para padres\", section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[5] MedlinePlus — \"Enfermedades causadas por el calor\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/heatillness.html"
+  - "[5] MedlinePlus — \"Enfermedades causadas por el calor\", p. 1 — https://medlineplus.gov/spanish/heatillness.html"
 draft: false
 ---
 

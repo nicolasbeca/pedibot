@@ -7,12 +7,12 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Sepsis\" (2024), section \"Symptoms of sepsis in babies and children\", p. 1 — https://www.nhs.uk/conditions/sepsis/"
-  - "[2] NHS — \"Meningitis\" (2026), section \"Meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
-  - "[3] MedlinePlus — \"Meningitis\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/meningitis.html"
-  - "[4] NHS — \"Meningitis\" (2026), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
-  - "[5] NHS — \"Meningitis\" (2026), section \"Treatments for meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
-  - "[6] NHS — \"Sepsis\" (2024), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/sepsis/"
+  - "[1] NHS — \"Sepsis\" (2024), Abschnitt \"Symptoms of sepsis in babies and children\", S. 1 — https://www.nhs.uk/conditions/sepsis/"
+  - "[2] NHS — \"Meningitis\" (2026), Abschnitt \"Meningitis\", S. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[3] MedlinePlus — \"Meningitis\" (2025), p. 1 — https://medlineplus.gov/meningitis.html"
+  - "[4] NHS — \"Meningitis\" (2026), Abschnitt \"When and where to get medical help\", S. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[5] NHS — \"Meningitis\" (2026), Abschnitt \"Treatments for meningitis\", S. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[6] NHS — \"Sepsis\" (2024), Abschnitt \"When and where to get medical help\", S. 1 — https://www.nhs.uk/conditions/sepsis/"
 draft: false
 ---
 

@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Pink Eye\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/pinkeye.html"
+  - "[1] MedlinePlus — \"Pink Eye\" (2017), p. 1 — https://medlineplus.gov/pinkeye.html"
   - "[2] NHS — \"Conjunctivitis\" (2024), section \"Conjunctivitis\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
   - "[3] NHS — \"Conjunctivitis\" (2024), section \"Staying away from work or school\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
   - "[4] NHS — \"Conjunctivitis\" (2024), section \"Stop infectious conjunctivitis from spreading\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
@@ -40,14 +40,14 @@ See a GP if:
 - You wear contact lenses and have conjunctivitis symptoms plus spots on your eyelids — you might be allergic to the lenses [3].
 - Symptoms have not cleared up within 7 days [3].
 
-Ask for an urgent GP appointment or get help from NHS 111 if you have:
+Ask for an urgent GP appointment or get medical advice if you have:
 - Pain in your eyes [3]
 - Sensitivity to light [3]
 - Changes in your vision, like wavy lines or flashing [3]
 - Very red eyes (1 eye or both eyes) [3]
 - A baby less than 30 days old with red, sticky eyes [3]
 
-These can be signs of a more serious eye problem [3]. Call 111 if you need help for a child under 5 [3].
+These can be signs of a more serious eye problem [3]. Get medical advice if you need help for a child under 5 [3].
 
 ## Common questions
 **Can my child go to school with pink eye?**

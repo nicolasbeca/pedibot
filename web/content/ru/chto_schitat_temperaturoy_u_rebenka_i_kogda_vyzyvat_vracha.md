@@ -7,9 +7,9 @@ date: 2026-09-03
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Fever\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/fever.html"
-  - "[2] NHS — \"High temperature (fever) in children\" (2025), section \"High temperature (fever) in children\", p. 1 — https://www.nhs.uk/conditions/fever-in-children/"
-  - "[3] NHS — \"High temperature (fever) in children\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/fever-in-children/"
+  - "[1] MedlinePlus — \"Fever\" (2025), p. 1 — https://medlineplus.gov/fever.html"
+  - "[2] NHS — \"High temperature (fever) in children\" (2025), раздел \"High temperature (fever) in children\", с. 1 — https://www.nhs.uk/conditions/fever-in-children/"
+  - "[3] NHS — \"High temperature (fever) in children\" (2025), раздел \"Don’t\", с. 1 — https://www.nhs.uk/conditions/fever-in-children/"
 draft: false
 ---
 
@@ -39,7 +39,7 @@ NHS даёт подробные инструкции, MedlinePlus в предо�
 - температура держится 5 дней или дольше;
 - ребёнок обезвожен (редко мокрые подгузники, запавшие глаза, нет слёз при плаче).
 
-Вызывайте скорую (999), если у ребёнка [3]:
+Вызывайте скорую помощь, если у ребёнка [3]:
 - жёсткая шея, сыпь, которая не бледнеет при нажатии стеклом, или светобоязнь;
 - судороги (фебрильные) впервые;
 - необычно холодные руки и ноги, синюшная или бледная кожа;

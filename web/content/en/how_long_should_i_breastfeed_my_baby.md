@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Breastfeeding\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/breastfeeding.html"
+  - "[1] MedlinePlus — \"Breastfeeding\" (2017), p. 1 — https://medlineplus.gov/breastfeeding.html"
   - "[2] WHO — \"Infant and young child feeding\", section \"Breastfeeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
   - "[3] WHO — \"Infant and young child feeding\", section \"Breastfeeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
   - "[4] WHO — \"Infant and young child feeding\", section \"Key facts\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"

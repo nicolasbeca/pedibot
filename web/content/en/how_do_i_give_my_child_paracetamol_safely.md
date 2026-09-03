@@ -40,9 +40,9 @@ Do not give other medicines that contain paracetamol, such as cold and flu medic
 Children do not usually get any side effects after taking paracetamol [4].
 
 ## When to see a doctor or go to the emergency department
-Get help from NHS 111 if you have given your child more paracetamol than it says on the packet, leaflet, or prescription [4]. An extra dose can sometimes be dangerous [4]. Call 111 for a child under 5 years old [4]. If you are told to go to A&E, do not drive. Ask someone to drive you or call 999 for an ambulance [4]. Bring the paracetamol packet or leaflet, any remaining medicine, and any other medicines your child takes [4].
+Get medical advice if you have given your child more paracetamol than it says on the packet, leaflet, or prescription [4]. An extra dose can sometimes be dangerous [4]. Get medical advice for a child under 5 years old [4]. If you are told to go to the emergency department, do not drive. Ask someone to drive you or call your emergency number for an ambulance [4]. Bring the paracetamol packet or leaflet, any remaining medicine, and any other medicines your child takes [4].
 
-Call NHS 111 if you have given your child paracetamol and think they might be having serious side effects [10]. Rarely, paracetamol can cause serious side effects in children, including [10]:
+Get medical advice if you have given your child paracetamol and think they might be having serious side effects [10]. Rarely, paracetamol can cause serious side effects in children, including [10]:
 - An allergic reaction (anaphylaxis) – symptoms include a swollen throat or tongue, a raised and itchy rash, and difficulty breathing [10].
 - A liver problem – symptoms include feeling sick (nausea) and skin or the white part of the eyes turning yellow (jaundice), which may be harder to notice on black or brown skin [10].
 - A blood cell problem – symptoms include bruising easily and nosebleeds [10].
@@ -52,13 +52,13 @@ Call NHS 111 if you have given your child paracetamol and think they might be ha
 Do not give them at the same time [7]. You can alternate between them only if a health professional tells you to [7]. If you do alternate, write down when you gave each medicine [7].
 
 **What if I give too much paracetamol?**
-Get medical advice from NHS 111, because an extra dose can sometimes be dangerous [4]. Call 111 for a child under 5 years old [4].
+Get medical advice, because an extra dose can sometimes be dangerous [4]. Get medical advice for a child under 5 years old [4].
 
 **Can my child eat and drink with paracetamol?**
 Yes, your child can eat and drink normally when taking paracetamol [7].
 
 **What if my child has side effects?**
-Children do not usually get any side effects [4]. Rarely, serious side effects can occur, such as an allergic reaction, liver problems, or blood cell problems [10]. Call NHS 111 if you think your child might be having serious side effects [10]. For a full list of side effects, see the leaflet that comes with the medicine [9].
+Children do not usually get any side effects [4]. Rarely, serious side effects can occur, such as an allergic reaction, liver problems, or blood cell problems [10]. Get medical advice if you think your child might be having serious side effects [10]. For a full list of side effects, see the leaflet that comes with the medicine [9].
 
 ## Sources
 [1] NHS — "Paracetamol for children (Calpol) - Other common brands: Panadol" (2025), section "Paracetamol for children (Calpol) - Other common brands: Panadol", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/

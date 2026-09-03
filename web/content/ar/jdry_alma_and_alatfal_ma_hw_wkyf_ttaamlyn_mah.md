@@ -7,16 +7,16 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Chickenpox\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/chickenpox.html"
-  - "[2] NHS — \"Chickenpox\" (2025), section \"How you can treat chickenpox yourself\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[3] CDC — \"About Chickenpox\", section \"About Chickenpox Key points\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[4] NHS — \"Chickenpox\" (2025), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[5] NHS — \"Chickenpox\" (2025), section \"The chickenpox vaccine\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[6] CDC — \"About Chickenpox\", section \"How it spreads Contact with someone with chickenpox\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[7] NHS — \"Chickenpox\" (2025), section \"Chickenpox\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[8] CDC — \"About Chickenpox\", section \"Signs and symptoms\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[9] CDC — \"About Chickenpox\", section \"Treatment and recovery\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[10] CDC — \"About Chickenpox\", section \"Who is at risk\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[1] MedlinePlus — \"Chickenpox\" (2025), p. 1 — https://medlineplus.gov/chickenpox.html"
+  - "[2] NHS — \"Chickenpox\" (2025), قسم \"How you can treat chickenpox yourself\", ص. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[3] CDC — \"About Chickenpox\", قسم \"About Chickenpox Key points\", ص. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[4] NHS — \"Chickenpox\" (2025), قسم \"When and where to get medical help\", ص. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[5] NHS — \"Chickenpox\" (2025), قسم \"The chickenpox vaccine\", ص. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[6] CDC — \"About Chickenpox\", قسم \"How it spreads Contact with someone with chickenpox\", ص. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[7] NHS — \"Chickenpox\" (2025), قسم \"Chickenpox\", ص. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[8] CDC — \"About Chickenpox\", قسم \"Signs and symptoms\", ص. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[9] CDC — \"About Chickenpox\", قسم \"Treatment and recovery\", ص. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[10] CDC — \"About Chickenpox\", قسم \"Who is at risk\", ص. 1 — https://www.cdc.gov/chickenpox/about/index.html"
 draft: false
 ---
 

@@ -11,7 +11,7 @@ sources:
   - "[2] NHS — \"Burns and scalds\" (2026), section \"Burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
   - "[3] NHS — \"Burns and scalds\" (2026), section \"Treatments for burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
   - "[4] NHS — \"Burns and scalds\" (2026), section \"Things you can do to help while burns and scalds heal\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[5] MedlinePlus — \"Burns\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/burns.html"
+  - "[5] MedlinePlus — \"Burns\" (2024), p. 1 — https://medlineplus.gov/burns.html"
 draft: false
 ---
 

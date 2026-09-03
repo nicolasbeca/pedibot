@@ -7,12 +7,12 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Traumatismo craneal. Información para padres\" (2025), section \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 1, 2"
-  - "[2] SEUP — \"Traumatismo craneal. Información para padres\" (2025), section \"¿QUÉ ES UN TRAUMATISMO CRANEAL?\", p. 1"
-  - "[3] SEUP — \"Traumatismo craneal. Información para padres\" (2025), section \"¿CÓMO PODEMOS PREVENIR LOS TRAUMATISMOS CRANEALES?\", p. 2"
-  - "[4] SEUP — \"Traumatismo craneal. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
-  - "[5] SEUP — \"Traumatismo craneal. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS ACUDIR A UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[6] MedlinePlus — \"Lesiones en la cabeza\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/headinjuries.html"
+  - "[1] SEUP — \"Traumatismo craneal. Información para padres\" (2025), Abschnitt \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", S. 1, 2"
+  - "[2] SEUP — \"Traumatismo craneal. Información para padres\" (2025), Abschnitt \"¿QUÉ ES UN TRAUMATISMO CRANEAL?\", S. 1"
+  - "[3] SEUP — \"Traumatismo craneal. Información para padres\" (2025), Abschnitt \"¿CÓMO PODEMOS PREVENIR LOS TRAUMATISMOS CRANEALES?\", S. 2"
+  - "[4] SEUP — \"Traumatismo craneal. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA?\", S. 1"
+  - "[5] SEUP — \"Traumatismo craneal. Información para padres\" (2025), Abschnitt \"¿CUÁNDO DEBEMOS ACUDIR A UN SERVICIO DE URGENCIAS?\", S. 2"
+  - "[6] MedlinePlus — \"Lesiones en la cabeza\", S. 1 — https://medlineplus.gov/spanish/headinjuries.html"
 draft: false
 ---
 

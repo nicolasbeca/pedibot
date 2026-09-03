@@ -7,10 +7,10 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Espasmos del sollozo. Información para padres\" (2025), section \"¿QUÉ SON LOS ESPASMOS DEL SOLLOZO? ¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[2] SEUP — \"Espasmos del sollozo. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1"
-  - "[3] SEUP — \"Espasmos del sollozo. Información para padres\" (2025), section \"¿CUÁNDO ACUDIR A UN SERVICIO DE URGENCIAS?\", p. 1"
-  - "[4] SEUP — \"Espasmos del sollozo. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
+  - "[1] SEUP — \"Espasmos del sollozo. Información para padres\" (2025), Abschnitt \"¿QUÉ SON LOS ESPASMOS DEL SOLLOZO? ¿CUÁLES SON LOS SÍNTOMAS?\", S. 1"
+  - "[2] SEUP — \"Espasmos del sollozo. Información para padres\" (2025), Abschnitt \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", S. 1"
+  - "[3] SEUP — \"Espasmos del sollozo. Información para padres\" (2025), Abschnitt \"¿CUÁNDO ACUDIR A UN SERVICIO DE URGENCIAS?\", S. 1"
+  - "[4] SEUP — \"Espasmos del sollozo. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA?\", S. 1"
 draft: false
 ---
 

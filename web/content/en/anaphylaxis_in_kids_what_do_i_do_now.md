@@ -30,7 +30,7 @@ Symptoms develop quickly and can include any combination of the following [1]:
 ## What you can do at home
 If you suspect anaphylaxis, act immediately [1]:
 - Stay calm.
-- Call emergency services (112 in Spain) or take your child to the nearest emergency department.
+- Call emergency services or take your child to the nearest emergency department.
 - If your child has a prescribed adrenaline auto-injector, use it right away [2].
 
 How to use an adrenaline auto-injector [1]:

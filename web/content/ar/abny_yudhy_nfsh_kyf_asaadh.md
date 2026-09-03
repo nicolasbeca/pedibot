@@ -7,13 +7,13 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Conducta autolesiva no suicida. Información para padres\" (2025), section \"PREVENCIÓN Y MANEJO DE LA CONDUCTA AUTOLESIVA NO SUICIDA\", p. 1"
-  - "[3] SEUP — \"Conducta autolesiva no suicida. Información para padres\" (2025), section \"¿DÓNDE PUEDO ACUDIR SI PRESENTA ALGUNA DE LAS SEÑALES DE ALARMA?\", p. 2"
-  - "[4] SEUP — \"Conducta autolesiva no suicida. Información para padres\" (2025), section \"EN EL CASO DE UN FAMILIAR, ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", p. 1"
-  - "[5] SEUP — \"Conducta autolesiva no suicida. Información para padres\" (2025), section \"Señales de alarma\", p. 2"
-  - "[6] SEUP — \"Conducta suicida. Información para padres\" (2025), section \"¿QUÉ ES LA CONDUCTA SUICIDA?\", p. 1"
-  - "[7] SEUP — \"Conducta suicida. Información para padres\" (2025), section \"PREVENCIÓN Y MANEJO DE LA CONDUCTA SUICIDA\", p. 1"
-  - "[10] SEUP — \"Conducta suicida. Información para padres\" (2025), section \"Señales NO verbales Señales verbales ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", p. 2"
+  - "[1] SEUP — \"Conducta autolesiva no suicida. Información para padres\" (2025), قسم \"PREVENCIÓN Y MANEJO DE LA CONDUCTA AUTOLESIVA NO SUICIDA\", ص. 1"
+  - "[3] SEUP — \"Conducta autolesiva no suicida. Información para padres\" (2025), قسم \"¿DÓNDE PUEDO ACUDIR SI PRESENTA ALGUNA DE LAS SEÑALES DE ALARMA?\", ص. 2"
+  - "[4] SEUP — \"Conducta autolesiva no suicida. Información para padres\" (2025), قسم \"EN EL CASO DE UN FAMILIAR, ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", ص. 1"
+  - "[5] SEUP — \"Conducta autolesiva no suicida. Información para padres\" (2025), قسم \"Señales de alarma\", ص. 2"
+  - "[6] SEUP — \"Conducta suicida. Información para padres\" (2025), قسم \"¿QUÉ ES LA CONDUCTA SUICIDA?\", ص. 1"
+  - "[7] SEUP — \"Conducta suicida. Información para padres\" (2025), قسم \"PREVENCIÓN Y MANEJO DE LA CONDUCTA SUICIDA\", ص. 1"
+  - "[10] SEUP — \"Conducta suicida. Información para padres\" (2025), قسم \"Señales NO verbales Señales verbales ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", ص. 2"
 draft: false
 ---
 

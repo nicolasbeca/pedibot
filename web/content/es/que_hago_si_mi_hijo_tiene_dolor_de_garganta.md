@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Tonsillitis\" (2024), section \"Tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[2] NHS — \"Sore throat\" (2023), section \"Causes of sore throats\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
-  - "[3] MedlinePlus — \"Sore Throat\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/sorethroat.html"
-  - "[4] NHS — \"Tonsillitis\" (2024), section \"A pharmacist can help with tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[5] NHS — \"Tonsillitis\" (2024), section \"Complications of tonsillitis (quinsy)\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[6] NHS — \"Sore throat\" (2023), section \"Sore throat symptoms\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
-  - "[7] NHS — \"Sore throat\" (2023), section \"Sore throat\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
-  - "[8] NHS — \"Tonsillitis\" (2024), section \"How to treat tonsillitis yourself\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[9] NHS — \"Tonsillitis\" (2024), section \"What happens at your GP appointment\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
-  - "[10] NHS — \"Tonsillitis\" (2024), section \"Treatment from a GP for tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[1] NHS — \"Tonsillitis\" (2024), sección \"Tonsillitis\", pág. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[2] NHS — \"Sore throat\" (2023), sección \"Causes of sore throats\", pág. 1 — https://www.nhs.uk/conditions/sore-throat/"
+  - "[3] MedlinePlus — \"Sore Throat\" (2025), p. 1 — https://medlineplus.gov/sorethroat.html"
+  - "[4] NHS — \"Tonsillitis\" (2024), sección \"A pharmacist can help with tonsillitis\", pág. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[5] NHS — \"Tonsillitis\" (2024), sección \"Complications of tonsillitis (quinsy)\", pág. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[6] NHS — \"Sore throat\" (2023), sección \"Sore throat symptoms\", pág. 1 — https://www.nhs.uk/conditions/sore-throat/"
+  - "[7] NHS — \"Sore throat\" (2023), sección \"Sore throat\", pág. 1 — https://www.nhs.uk/conditions/sore-throat/"
+  - "[8] NHS — \"Tonsillitis\" (2024), sección \"How to treat tonsillitis yourself\", pág. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[9] NHS — \"Tonsillitis\" (2024), sección \"What happens at your GP appointment\", pág. 1 — https://www.nhs.uk/conditions/tonsillitis/"
+  - "[10] NHS — \"Tonsillitis\" (2024), sección \"Treatment from a GP for tonsillitis\", pág. 1 — https://www.nhs.uk/conditions/tonsillitis/"
 draft: false
 ---
 
@@ -56,12 +56,12 @@ Consulte a un médico de cabecera si [4]:
 - Los síntomas de amigdalitis no desaparecen en una semana.
 - Las infecciones de garganta son recurrentes.
 
-Busque ayuda urgente (llame al 111 o use su servicio online) si [4]:
+Busque ayuda urgente si [4]:
 
 - Tiene puntos de pus en las amígdalas.
 - El dolor de garganta es tan fuerte que dificulta comer o beber.
 
-Llame al 999 o vaya a urgencias inmediatamente si [5]:
+Llame a su número de emergencias o vaya a urgencias inmediatamente si [5]:
 
 - Dolor de garganta severo que empeora rápido.
 - Hinchazón dentro de la boca y la garganta.

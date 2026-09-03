@@ -7,11 +7,11 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Nosebleed\" (2026), section \"When a nosebleed stops\", p. 1 — https://www.nhs.uk/conditions/nosebleed/"
-  - "[2] NHS — \"Nosebleed\" (2026), section \"Treatment for nosebleeds\", p. 1 — https://www.nhs.uk/conditions/nosebleed/"
-  - "[3] NHS — \"Nosebleed\" (2026), section \"How to stop a nosebleed yourself\", p. 1 — https://www.nhs.uk/conditions/nosebleed/"
-  - "[4] NHS — \"Nosebleed\" (2026), section \"Causes of a nosebleed\", p. 1 — https://www.nhs.uk/conditions/nosebleed/"
-  - "[5] NHS — \"Nosebleed\" (2026), section \"Nosebleed\", p. 1 — https://www.nhs.uk/conditions/nosebleed/"
+  - "[1] NHS — \"Nosebleed\" (2026), Abschnitt \"When a nosebleed stops\", S. 1 — https://www.nhs.uk/conditions/nosebleed/"
+  - "[2] NHS — \"Nosebleed\" (2026), Abschnitt \"Treatment for nosebleeds\", S. 1 — https://www.nhs.uk/conditions/nosebleed/"
+  - "[3] NHS — \"Nosebleed\" (2026), Abschnitt \"How to stop a nosebleed yourself\", S. 1 — https://www.nhs.uk/conditions/nosebleed/"
+  - "[4] NHS — \"Nosebleed\" (2026), Abschnitt \"Causes of a nosebleed\", S. 1 — https://www.nhs.uk/conditions/nosebleed/"
+  - "[5] NHS — \"Nosebleed\" (2026), Abschnitt \"Nosebleed\", S. 1 — https://www.nhs.uk/conditions/nosebleed/"
 draft: false
 ---
 

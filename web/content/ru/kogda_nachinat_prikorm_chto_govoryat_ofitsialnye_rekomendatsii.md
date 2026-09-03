@@ -7,12 +7,12 @@ date: 2026-09-03
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Your baby's first solid foods\" (2026), section \"Signs your baby is ready for solid foods\", p. 1 — https://www.nhs.uk/conditions/baby/weaning-and-feeding/babys-first-solid-foods/"
-  - "[2] NHS — \"Your baby's first solid foods\" (2026), section \"Your baby's first solid foods When to start introducing solid foods\", p. 1 — https://www.nhs.uk/conditions/baby/weaning-and-feeding/babys-first-solid-foods/"
-  - "[3] CDC — \"Infant and Toddler Nutrition\", section \"Infant and Toddler Nutrition Featured\", p. 1 — https://www.cdc.gov/infant-toddler-nutrition/index.html"
-  - "[4] WHO — \"Infant and young child feeding\", section \"Complementary feeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[5] MedlinePlus — \"Infant and Newborn Nutrition\" (2023), section \"Introducción\", p. 1 — https://medlineplus.gov/infantandnewbornnutrition.html"
-  - "[6] WHO — \"WHO guideline for complementary feeding of infants and young children 6–23 months of age\" (2023), section \"3.3 Age of introduction of complementary foods\", p. 36, 37, 38, 39, 40"
+  - "[1] NHS — \"Your baby's first solid foods\" (2026), раздел \"Signs your baby is ready for solid foods\", с. 1 — https://www.nhs.uk/conditions/baby/weaning-and-feeding/babys-first-solid-foods/"
+  - "[2] NHS — \"Your baby's first solid foods\" (2026), раздел \"Your baby's first solid foods When to start introducing solid foods\", с. 1 — https://www.nhs.uk/conditions/baby/weaning-and-feeding/babys-first-solid-foods/"
+  - "[3] CDC — \"Infant and Toddler Nutrition\", раздел \"Infant and Toddler Nutrition Featured\", с. 1 — https://www.cdc.gov/infant-toddler-nutrition/index.html"
+  - "[4] WHO — \"Infant and young child feeding\", раздел \"Complementary feeding\", с. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[5] MedlinePlus — \"Infant and Newborn Nutrition\" (2023), p. 1 — https://medlineplus.gov/infantandnewbornnutrition.html"
+  - "[6] WHO — \"WHO guideline for complementary feeding of infants and young children 6–23 months of age\" (2023), раздел \"3.3 Age of introduction of complementary foods\", с. 36, 37, 38, 39, 40"
 draft: false
 ---
 

@@ -7,11 +7,11 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Pink Eye\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/pinkeye.html"
-  - "[2] NHS — \"Conjunctivitis\" (2024), section \"Conjunctivitis\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
-  - "[3] NHS — \"Conjunctivitis\" (2024), section \"Staying away from work or school\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
-  - "[4] NHS — \"Conjunctivitis\" (2024), section \"Stop infectious conjunctivitis from spreading\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
-  - "[5] NHS — \"Conjunctivitis\" (2024), section \"Treatment for conjunctivitis\", p. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
+  - "[1] MedlinePlus — \"Pink Eye\" (2017), p. 1 — https://medlineplus.gov/pinkeye.html"
+  - "[2] NHS — \"Conjunctivitis\" (2024), sección \"Conjunctivitis\", pág. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
+  - "[3] NHS — \"Conjunctivitis\" (2024), sección \"Staying away from work or school\", pág. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
+  - "[4] NHS — \"Conjunctivitis\" (2024), sección \"Stop infectious conjunctivitis from spreading\", pág. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
+  - "[5] NHS — \"Conjunctivitis\" (2024), sección \"Treatment for conjunctivitis\", pág. 1 — https://www.nhs.uk/conditions/conjunctivitis/"
 draft: false
 ---
 
@@ -47,7 +47,7 @@ Solicite una cita urgente o ayuda médica si presenta [3]:
 - Ojos muy rojos (uno o ambos) [3].
 - Un bebé menor de 30 días con ojos rojos y pegajosos [3].
 
-Estos pueden ser signos de un problema ocular más grave [3]. Llame al 111 si necesita ayuda para un niño menor de 5 años [3].
+Estos pueden ser signos de un problema ocular más grave [3]. Consulte con su servicio de salud si necesita ayuda para un niño menor de 5 años [3].
 
 ## Preguntas frecuentes
 **¿La conjuntivitis siempre necesita antibióticos?** No. Los antibióticos solo funcionan si es una infección bacteriana; no funcionan si es viral o alérgica [5]. Algunas infecciones de transmisión sexual pueden causar conjuntivitis, y este tipo tarda más en mejorar [5].

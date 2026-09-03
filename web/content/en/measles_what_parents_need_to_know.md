@@ -7,7 +7,7 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Measles\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/measles.html"
+  - "[1] MedlinePlus — \"Measles\" (2025), p. 1 — https://medlineplus.gov/measles.html"
   - "[2] NHS — \"Measles\" (2025), section \"Measles\", p. 1 — https://www.nhs.uk/conditions/measles/"
   - "[3] WHO — \"Measles\", section \"Overview\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
   - "[4] WHO — \"Measles\", section \"Signs and symptoms\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/measles"
@@ -54,7 +54,7 @@ Stay off nursery, school, or work for at least 4 days from when the rash first a
 You are infectious from when you first have symptoms (around 4 days before the rash appears) until 4 days after you get the rash [5].
 
 ## When to see a doctor or go to the emergency department
-Ask for an urgent GP appointment or get help from NHS 111 if [6]:
+Ask for an urgent GP appointment or get medical advice if [6]:
 - You think you or your child may have measles [6]
 - Your child is under 1 year old and has come into contact with someone who has measles [6]
 - You have been in close contact with someone who has measles and you are pregnant or have a weakened immune system [6]
@@ -65,7 +65,7 @@ Ask for an urgent GP appointment or get help from NHS 111 if [6]:
 - You or your child are peeing less than usual (or your baby has fewer wet nappies) [6]
 - You or your child feels very unwell, or you are worried something is seriously wrong [6]
 
-Measles can spread easily to others. Call your GP surgery before you go in. They may suggest talking over the phone or arrange for you to come to a part of the surgery where you are separated from others [6].
+Measles can spread easily to others. Call your doctor's surgery before you go in. They may suggest talking over the phone or arrange for you to come to a part of the surgery where you are separated from others [6].
 
 ## Common questions
 **Is it measles if my child has been vaccinated?**

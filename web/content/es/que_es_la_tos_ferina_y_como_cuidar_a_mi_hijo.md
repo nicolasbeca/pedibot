@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Whooping Cough\" (2024), section \"What is whooping cough?\", p. 1 — https://medlineplus.gov/whoopingcough.html"
-  - "[2] NHS — \"Whooping cough\" (2025), section \"The whooping cough vaccine\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
-  - "[3] NHS — \"Whooping cough\" (2025), section \"Whooping cough\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
-  - "[4] MedlinePlus — \"Whooping Cough\" (2024), section \"Can whooping cough be prevented?\", p. 1 — https://medlineplus.gov/whoopingcough.html"
-  - "[5] CDC — \"About Whooping Cough\", section \"What it is\", p. 1 — https://www.cdc.gov/pertussis/about/index.html"
-  - "[6] MedlinePlus — \"Whooping Cough\" (2024), section \"What are the symptoms of whooping cough?\", p. 1 — https://medlineplus.gov/whoopingcough.html"
-  - "[7] MedlinePlus — \"Whooping Cough\" (2024), section \"What causes whooping cough?\", p. 1 — https://medlineplus.gov/whoopingcough.html"
-  - "[8] CDC — \"About Whooping Cough\", section \"About Whooping Cough Key points\", p. 1 — https://www.cdc.gov/pertussis/about/index.html"
-  - "[9] NHS — \"Whooping cough\" (2025), section \"Whooping cough can be dangerous\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
-  - "[10] CDC — \"About Whooping Cough\", section \"People can unknowingly spread the bacteria\", p. 1 — https://www.cdc.gov/pertussis/about/index.html"
+  - "[1] MedlinePlus — \"Whooping Cough\" (2024), sección \"What is whooping cough?\", pág. 1 — https://medlineplus.gov/whoopingcough.html"
+  - "[2] NHS — \"Whooping cough\" (2025), sección \"The whooping cough vaccine\", pág. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[3] NHS — \"Whooping cough\" (2025), sección \"Whooping cough\", pág. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[4] MedlinePlus — \"Whooping Cough\" (2024), sección \"Can whooping cough be prevented?\", pág. 1 — https://medlineplus.gov/whoopingcough.html"
+  - "[5] CDC — \"About Whooping Cough\", sección \"What it is\", pág. 1 — https://www.cdc.gov/pertussis/about/index.html"
+  - "[6] MedlinePlus — \"Whooping Cough\" (2024), sección \"What are the symptoms of whooping cough?\", pág. 1 — https://medlineplus.gov/whoopingcough.html"
+  - "[7] MedlinePlus — \"Whooping Cough\" (2024), sección \"What causes whooping cough?\", pág. 1 — https://medlineplus.gov/whoopingcough.html"
+  - "[8] CDC — \"About Whooping Cough\", sección \"About Whooping Cough Key points\", pág. 1 — https://www.cdc.gov/pertussis/about/index.html"
+  - "[9] NHS — \"Whooping cough\" (2025), sección \"Whooping cough can be dangerous\", pág. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[10] CDC — \"About Whooping Cough\", sección \"People can unknowingly spread the bacteria\", pág. 1 — https://www.cdc.gov/pertussis/about/index.html"
 draft: false
 ---
 

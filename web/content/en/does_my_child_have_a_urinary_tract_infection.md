@@ -15,7 +15,7 @@ sources:
   - "[6] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Causes of urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
   - "[7] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Symptoms in older, frail people or people with a urinary catheter\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
   - "[8] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"How to prevent urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[10] MedlinePlus — \"Urinary Tract Infections\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/urinarytractinfections.html"
+  - "[10] MedlinePlus — \"Urinary Tract Infections\" (2025), p. 1 — https://medlineplus.gov/urinarytractinfections.html"
 draft: false
 ---
 
@@ -44,7 +44,7 @@ To help prevent UTIs from happening or returning, you can try these things:
 There is no evidence that cranberry drinks or products help ease symptoms or treat a UTI if the infection has already started [2]. If a doctor thinks your child has a UTI, they may do a urine test, although this is not always needed [4]. They may offer self-care advice, recommend a painkiller, or give a prescription for a short course of antibiotics [4]. Sometimes they may ask you to wait 48 hours to see if symptoms go away on their own [4]. It is important to take all the medicine you are prescribed, even if your child starts to feel better [4].
 
 ## When to see a doctor or go to the emergency department
-Ask for an urgent GP appointment or get help from NHS 111 if your child is aged 15 or younger and you think they may have a UTI [7]. You should also seek urgent advice if:
+Ask for an urgent GP appointment or get medical advice if your child is aged 15 or younger and you think they may have a UTI [7]. You should also seek urgent advice if:
 
 - Your child has a very high or low temperature, feels hot or cold, or is shivering [7].
 - Symptoms get worse quickly, or do not improve within 48 hours of starting treatment [7].
@@ -53,7 +53,7 @@ Ask for an urgent GP appointment or get help from NHS 111 if your child is aged 
 - Your child has pain in the lower tummy or in the back, just under the ribs [7].
 - Your child has a weakened immune system [7].
 
-Call 999 or go to A&E now if your child is confused, drowsy, or has difficulty speaking [7]. Do not drive to A&E. Ask someone to drive you or call 999 and ask for an ambulance [7].
+Call your emergency number or go to the emergency department now if your child is confused, drowsy, or has difficulty speaking [7]. Do not drive to the emergency department. Ask someone to drive you or call your emergency number and ask for an ambulance [7].
 
 ## Common questions
 **Can a UTI go away on its own?**

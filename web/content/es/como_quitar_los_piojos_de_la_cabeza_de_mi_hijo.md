@@ -7,15 +7,15 @@ date: 2026-08-26
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Head lice and nits\" (2024), section \"Medicated lotions and sprays\", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/"
-  - "[2] NHS — \"Head lice and nits\" (2024), section \"Head lice and nits\", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/"
-  - "[3] NHS — \"Head lice and nits\" (2024), section \"You cannot prevent head lice\", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/"
-  - "[4] NHS — \"Head lice and nits\" (2024), section \"Wet combing\", p. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/"
-  - "[5] CDC — \"About Lice\", section \"Types\", p. 1 — https://www.cdc.gov/lice/about/index.html"
-  - "[7] MedlinePlus — \"Head Lice\" (2025), section \"What are the treatments for head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
-  - "[8] MedlinePlus — \"Head Lice\" (2025), section \"What are head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
-  - "[9] MedlinePlus — \"Head Lice\" (2025), section \"What are the symptoms of head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
-  - "[10] MedlinePlus — \"Head Lice\" (2025), section \"Can head lice be prevented?\", p. 1 — https://medlineplus.gov/headlice.html"
+  - "[1] NHS — \"Head lice and nits\" (2024), sección \"Medicated lotions and sprays\", pág. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/"
+  - "[2] NHS — \"Head lice and nits\" (2024), sección \"Head lice and nits\", pág. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/"
+  - "[3] NHS — \"Head lice and nits\" (2024), sección \"You cannot prevent head lice\", pág. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/"
+  - "[4] NHS — \"Head lice and nits\" (2024), sección \"Wet combing\", pág. 1 — https://www.nhs.uk/conditions/head-lice-and-nits/"
+  - "[5] CDC — \"About Lice\", sección \"Types\", pág. 1 — https://www.cdc.gov/lice/about/index.html"
+  - "[7] MedlinePlus — \"Head Lice\" (2025), sección \"What are the treatments for head lice?\", pág. 1 — https://medlineplus.gov/headlice.html"
+  - "[8] MedlinePlus — \"Head Lice\" (2025), sección \"What are head lice?\", pág. 1 — https://medlineplus.gov/headlice.html"
+  - "[9] MedlinePlus — \"Head Lice\" (2025), sección \"What are the symptoms of head lice?\", pág. 1 — https://medlineplus.gov/headlice.html"
+  - "[10] MedlinePlus — \"Head Lice\" (2025), sección \"Can head lice be prevented?\", pág. 1 — https://medlineplus.gov/headlice.html"
 draft: false
 ---
 

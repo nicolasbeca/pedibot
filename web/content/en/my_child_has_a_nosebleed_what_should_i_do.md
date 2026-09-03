@@ -43,7 +43,7 @@ See a GP (non-urgent advice) if:
 - Your child has a nosebleed and is taking a medicine that helps prevent blood clots, such as warfarin [5].
 - Your child has a nosebleed and has a condition that means their blood cannot clot properly, such as haemophilia [5].
 
-Go to A&E (emergency department) if your child has a nosebleed and:
+Go to the emergency department if your child has a nosebleed and:
 - The nosebleed lasts longer than 10 to 15 minutes [5].
 - The bleeding seems excessive [5].
 - They are swallowing a large amount of blood that makes them vomit [5].
@@ -51,14 +51,14 @@ Go to A&E (emergency department) if your child has a nosebleed and:
 - They are feeling weak or dizzy [5].
 - They are having difficulty breathing [5].
 
-Do not drive to A&E. Ask someone to drive you or call 999 and ask for an ambulance. Bring any medicines your child takes with you [5].
+Do not drive to the emergency department. Ask someone to drive you or call your emergency number and ask for an ambulance. Bring any medicines your child takes with you [5].
 
 ## Common questions
 **Why do children get nosebleeds?**
 The inside of the nose is easy to damage, and nosebleeds happen when it is damaged [4]. Picking the nose, blowing the nose too hard, or having a dry nose from a change in air temperature can all cause a nosebleed [4].
 
 **How long should I pinch the nose?**
-Pinch the nose just above the nostrils for 10 to 15 minutes [3]. If the bleeding lasts longer than 10 to 15 minutes, go to A&E [5].
+Pinch the nose just above the nostrils for 10 to 15 minutes [3]. If the bleeding lasts longer than 10 to 15 minutes, go to the emergency department [5].
 
 **Can my child lie down after a nosebleed?**
 No. For 24 hours after a nosebleed, your child should not lie down flat [1].

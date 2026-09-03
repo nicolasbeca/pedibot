@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[2] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", p. 2"
-  - "[3] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[4] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE NEUMONÍA?\", p. 1"
-  - "[5] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA?¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 2"
-  - "[6] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[7] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ ES LA NEUMONÍA?\", p. 1"
-  - "[9] WHO — \"Neumonía infantil\", section \"Datos y cifras\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
-  - "[10] WHO — \"Neumonía infantil\", section \"Prevención\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
+  - "[2] SEUP — \"Neumonía. Información para padres\" (2025), раздел \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", с. 2"
+  - "[3] SEUP — \"Neumonía. Información para padres\" (2025), раздел \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", с. 1, 2"
+  - "[4] SEUP — \"Neumonía. Información para padres\" (2025), раздел \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE NEUMONÍA?\", с. 1"
+  - "[5] SEUP — \"Neumonía. Información para padres\" (2025), раздел \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA?¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", с. 2"
+  - "[6] SEUP — \"Neumonía. Información para padres\" (2025), раздел \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", с. 2"
+  - "[7] SEUP — \"Neumonía. Información para padres\" (2025), раздел \"¿QUÉ ES LA NEUMONÍA?\", с. 1"
+  - "[9] WHO — \"Neumonía infantil\", раздел \"Datos y cifras\", с. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
+  - "[10] WHO — \"Neumonía infantil\", раздел \"Prevención\", с. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
 draft: false
 ---
 

@@ -7,14 +7,14 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1"
-  - "[2] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", p. 2"
-  - "[3] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[4] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", p. 1"
-  - "[6] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ SON LOS VÓMITOS?\", p. 1"
-  - "[7] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[8] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los síntomas de la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[1] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), Abschnitt \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", S. 1"
+  - "[2] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), Abschnitt \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", S. 2"
+  - "[3] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), Abschnitt \"¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?\", S. 1"
+  - "[4] SEUP — \"Vómitos. Información para padres\" (2025), Abschnitt \"¿CÓMO LO PODEMOS PREVENIR?\", S. 2"
+  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", S. 1"
+  - "[6] SEUP — \"Vómitos. Información para padres\" (2025), Abschnitt \"¿QUÉ SON LOS VÓMITOS?\", S. 1"
+  - "[7] SEUP — \"Vómitos. Información para padres\" (2025), Abschnitt \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", S. 1, 2"
+  - "[8] MedlinePlus — \"Gastroenteritis\", Abschnitt \"¿Cuáles son los síntomas de la gastroenteritis?\", S. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
 draft: false
 ---
 

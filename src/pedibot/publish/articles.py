@@ -455,7 +455,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
         result, verification = retry, "regenerated"
     cited = sorted({int(n) for n in _CIT.findall(body)})
     sources = [
-        f"[{n}] {hits[n - 1].chunk.citation()}"
+        f"[{n}] {localise_citation(hits[n - 1].chunk.citation(), lang)}"
         + (f" — {hits[n - 1].chunk.source_url}" if hits[n - 1].chunk.source_url else "")
         for n in cited
     ]
@@ -510,7 +510,10 @@ def seasonal_first(
 # What each language is called when the model is told which one to write in, and how its
 # sources section is headed. Adding a language here is not enough on its own: it also needs its
 # triage patterns, or the guides would exist without a safety layer behind the chat.
-from pedibot.bot.strings import LANGUAGE_NAME  # noqa: E402 — one mapping, not two
+from pedibot.bot.strings import (  # noqa: E402 — one mapping, not two
+    LANGUAGE_NAME,
+    localise_citation,
+)
 
 SOURCES_HEADING = {"en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen", "ru": "Источники", "ar": "المصادر"}
 ARTICLE_DISCLAIMER = {

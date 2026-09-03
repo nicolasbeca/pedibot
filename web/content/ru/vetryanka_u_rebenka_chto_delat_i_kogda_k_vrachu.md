@@ -7,16 +7,16 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Chickenpox\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/chickenpox.html"
-  - "[2] NHS — \"Chickenpox\" (2025), section \"How you can treat chickenpox yourself\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[3] CDC — \"About Chickenpox\", section \"About Chickenpox Key points\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[4] NHS — \"Chickenpox\" (2025), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[5] NHS — \"Chickenpox\" (2025), section \"The chickenpox vaccine\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[6] CDC — \"About Chickenpox\", section \"How it spreads Contact with someone with chickenpox\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[7] NHS — \"Chickenpox\" (2025), section \"Chickenpox\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[8] CDC — \"About Chickenpox\", section \"Signs and symptoms\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[9] CDC — \"About Chickenpox\", section \"Treatment and recovery\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[10] CDC — \"About Chickenpox\", section \"Who is at risk\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[1] MedlinePlus — \"Chickenpox\" (2025), p. 1 — https://medlineplus.gov/chickenpox.html"
+  - "[2] NHS — \"Chickenpox\" (2025), раздел \"How you can treat chickenpox yourself\", с. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[3] CDC — \"About Chickenpox\", раздел \"About Chickenpox Key points\", с. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[4] NHS — \"Chickenpox\" (2025), раздел \"When and where to get medical help\", с. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[5] NHS — \"Chickenpox\" (2025), раздел \"The chickenpox vaccine\", с. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[6] CDC — \"About Chickenpox\", раздел \"How it spreads Contact with someone with chickenpox\", с. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[7] NHS — \"Chickenpox\" (2025), раздел \"Chickenpox\", с. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[8] CDC — \"About Chickenpox\", раздел \"Signs and symptoms\", с. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[9] CDC — \"About Chickenpox\", раздел \"Treatment and recovery\", с. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[10] CDC — \"About Chickenpox\", раздел \"Who is at risk\", с. 1 — https://www.cdc.gov/chickenpox/about/index.html"
 draft: false
 ---
 

@@ -7,13 +7,13 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Reflux in babies\" (2025), section \"Reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[2] NHS — \"Reflux in babies\" (2025), section \"Treatment for reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[3] NHS — \"Reflux in babies\" (2025), section \"Causes of reflux\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[4] NHS — \"Reflux in babies\" (2025), section \"Things you can try to ease reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[5] NHS — \"Reflux in babies\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[6] NHS — \"Colic\" (2022), section \"Causes of colic\", p. 1 — https://www.nhs.uk/conditions/colic/"
-  - "[7] NHS — \"Colic\" (2022), section \"Symptoms of colic\", p. 1 — https://www.nhs.uk/conditions/colic/"
+  - "[1] NHS — \"Reflux in babies\" (2025), قسم \"Reflux in babies\", ص. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[2] NHS — \"Reflux in babies\" (2025), قسم \"Treatment for reflux in babies\", ص. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[3] NHS — \"Reflux in babies\" (2025), قسم \"Causes of reflux\", ص. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[4] NHS — \"Reflux in babies\" (2025), قسم \"Things you can try to ease reflux in babies\", ص. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[5] NHS — \"Reflux in babies\" (2025), قسم \"Don’t\", ص. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[6] NHS — \"Colic\" (2022), قسم \"Causes of colic\", ص. 1 — https://www.nhs.uk/conditions/colic/"
+  - "[7] NHS — \"Colic\" (2022), قسم \"Symptoms of colic\", ص. 1 — https://www.nhs.uk/conditions/colic/"
 draft: false
 ---
 

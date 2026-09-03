@@ -7,11 +7,11 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Meningitis\" (2026), section \"Meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
-  - "[3] MedlinePlus — \"Meningitis\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/meningitis.html"
-  - "[4] NHS — \"Meningitis\" (2026), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
-  - "[5] NHS — \"Meningitis\" (2026), section \"Treatments for meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
-  - "[7] NHS — \"Meningitis\" (2026), section \"How to reduce your risk of meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[1] NHS — \"Meningitis\" (2026), sección \"Meningitis\", pág. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[3] MedlinePlus — \"Meningitis\" (2025), p. 1 — https://medlineplus.gov/meningitis.html"
+  - "[4] NHS — \"Meningitis\" (2026), sección \"When and where to get medical help\", pág. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[5] NHS — \"Meningitis\" (2026), sección \"Treatments for meningitis\", pág. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[7] NHS — \"Meningitis\" (2026), sección \"How to reduce your risk of meningitis\", pág. 1 — https://www.nhs.uk/conditions/meningitis/"
 draft: false
 ---
 
@@ -29,10 +29,10 @@ La meningitis puede empeorar muy rápido. Si usted piensa que su hijo podría te
 
 Para la meningitis viral, el tratamiento suele ser en casa con reposo, analgésicos y medicamentos contra las náuseas [5]. Pero primero un médico debe confirmar el diagnóstico en el hospital [5].
 
-No conduzca usted mismo al servicio de urgencias. La persona con la que hable en el 999 le dará instrucciones sobre qué hacer [4].
+No conduzca usted mismo al servicio de urgencias. La persona que le atienda le dará instrucciones sobre qué hacer [4].
 
 ## Cuándo acudir al médico o a urgencias
-Llame al 999 o vaya a urgencias de inmediato si su bebé o niño menor de 5 años tiene:
+Llame a su número de emergencias o vaya a urgencias de inmediato si su bebé o niño menor de 5 años tiene:
 
 - Fiebre muy alta: 38 °C o más en bebés menores de 3 meses, o 39 °C o más en bebés de 3 a 6 meses [4].
 - Temperatura muy baja: menos de 36 °C, o se siente frío al tacto o tiene escalofríos [4].

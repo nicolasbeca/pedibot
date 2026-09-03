@@ -12,7 +12,7 @@ sources:
   - "[3] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿QUÉ ES LA LARINGITIS?\", p. 1"
   - "[4] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
   - "[5] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE LARINGITIS?\", p. 1"
-  - "[6] MedlinePlus — \"Crup\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/croup.html"
+  - "[6] MedlinePlus — \"Crup\", p. 1 — https://medlineplus.gov/spanish/croup.html"
   - "[8] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
   - "[10] SEUP — \"Catarro de vías altas. Información para padres\" (2025), section \"CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 2"
 draft: false

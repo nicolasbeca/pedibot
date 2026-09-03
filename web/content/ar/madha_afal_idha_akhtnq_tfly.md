@@ -7,7 +7,7 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Choking\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/choking.html"
+  - "[1] MedlinePlus — \"Choking\" (2024), p. 1 — https://medlineplus.gov/choking.html"
 draft: false
 ---
 

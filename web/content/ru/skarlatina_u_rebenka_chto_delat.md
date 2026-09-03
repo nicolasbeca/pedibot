@@ -7,15 +7,15 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Scarlet fever\" (2024), section \"Scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[2] NHS — \"Scarlet fever\" (2024), section \"Complications of scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[3] NHS — \"Scarlet fever\" (2024), section \"How long scarlet fever lasts\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[4] NHS — \"Scarlet fever\" (2024), section \"Treating scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[5] NHS — \"Scarlet fever\" (2024), section \"Things you can do yourself to help scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[6] NHS — \"Scarlet fever\" (2024), section \"How to avoid spreading scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[7] NHS — \"Scarlet fever\" (2024), section \"Pregnancy advice\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[8] NHS — \"Rashes in babies and children\" (2024), section \"How to treat hand, foot and mouth disease yourself\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[9] NHS — \"Rashes in babies and children\" (2024), section \"Rashes in babies and children\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[1] NHS — \"Scarlet fever\" (2024), раздел \"Scarlet fever\", с. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[2] NHS — \"Scarlet fever\" (2024), раздел \"Complications of scarlet fever\", с. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[3] NHS — \"Scarlet fever\" (2024), раздел \"How long scarlet fever lasts\", с. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[4] NHS — \"Scarlet fever\" (2024), раздел \"Treating scarlet fever\", с. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[5] NHS — \"Scarlet fever\" (2024), раздел \"Things you can do yourself to help scarlet fever\", с. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[6] NHS — \"Scarlet fever\" (2024), раздел \"How to avoid spreading scarlet fever\", с. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[7] NHS — \"Scarlet fever\" (2024), раздел \"Pregnancy advice\", с. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[8] NHS — \"Rashes in babies and children\" (2024), раздел \"How to treat hand, foot and mouth disease yourself\", с. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[9] NHS — \"Rashes in babies and children\" (2024), раздел \"Rashes in babies and children\", с. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
 draft: false
 ---
 

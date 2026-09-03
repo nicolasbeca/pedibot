@@ -7,15 +7,15 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"SEDENTARY SCREEN TIME SEDENTARY SCREEN TIME GOOD QUALITY SLEEP GOOD QUALITY SLEEP PHYSICAL ACTIVITY PHYSICAL ACTIVITY\", p. 11"
-  - "[2] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"minutes\", p. 11, 12"
-  - "[3] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"Rationale\", p. 24"
-  - "[4] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"SEDENTARY TIME • Infants (less than 1 year)\", p. 20"
-  - "[5] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"14–17hours\", p. 10"
-  - "[6] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"RATIONALE\", p. 14"
-  - "[7] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"SCOPE AND PURPOSE OF GUIDELINES\", p. 15"
-  - "[8] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"MVPA\", p. 7"
-  - "[10] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), section \"RATIONALE\", p. 14"
+  - "[1] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"SEDENTARY SCREEN TIME SEDENTARY SCREEN TIME GOOD QUALITY SLEEP GOOD QUALITY SLEEP PHYSICAL ACTIVITY PHYSICAL ACTIVITY\", ص. 11"
+  - "[2] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"minutes\", ص. 11, 12"
+  - "[3] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"Rationale\", ص. 24"
+  - "[4] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"SEDENTARY TIME • Infants (less than 1 year)\", ص. 20"
+  - "[5] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"14–17hours\", ص. 10"
+  - "[6] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"RATIONALE\", ص. 14"
+  - "[7] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"SCOPE AND PURPOSE OF GUIDELINES\", ص. 15"
+  - "[8] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"MVPA\", ص. 7"
+  - "[10] WHO — \"Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age\" (2019), قسم \"RATIONALE\", ص. 14"
 draft: false
 ---
 

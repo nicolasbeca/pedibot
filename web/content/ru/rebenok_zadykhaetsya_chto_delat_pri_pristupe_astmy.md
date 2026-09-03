@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[2] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"CRISIS ASMÁTICA tos TIRAJE evitar ambientes con humo o fumar ADMINISTRAR SALBUTAMOL CON CÁMARA ESPACIADORA (Y MASCARILLA EN NIÑOS PEQUEÑOS) ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 2"
-  - "[3] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿QUÉ SON LAS CRISIS ASMÁTICAS?\", p. 1"
-  - "[4] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CRISIS ASMÁTICA?\", p. 1"
-  - "[5] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", p. 2"
-  - "[6] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[7] MedlinePlus — \"Asma en niños\", section \"¿Qué es el asma?\", p. 1 — https://medlineplus.gov/spanish/asthmainchildren.html"
-  - "[9] MedlinePlus — \"Asma en niños\", section \"¿Cuáles son los tratamientos para el asma en niños?\", p. 1 — https://medlineplus.gov/spanish/asthmainchildren.html"
+  - "[1] SEUP — \"Crisis asmática. Información para padres\" (2025), раздел \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", с. 2"
+  - "[2] SEUP — \"Crisis asmática. Información para padres\" (2025), раздел \"CRISIS ASMÁTICA tos TIRAJE evitar ambientes con humo o fumar ADMINISTRAR SALBUTAMOL CON CÁMARA ESPACIADORA (Y MASCARILLA EN NIÑOS PEQUEÑOS) ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", с. 2"
+  - "[3] SEUP — \"Crisis asmática. Información para padres\" (2025), раздел \"¿QUÉ SON LAS CRISIS ASMÁTICAS?\", с. 1"
+  - "[4] SEUP — \"Crisis asmática. Información para padres\" (2025), раздел \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CRISIS ASMÁTICA?\", с. 1"
+  - "[5] SEUP — \"Crisis asmática. Información para padres\" (2025), раздел \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", с. 2"
+  - "[6] SEUP — \"Crisis asmática. Información para padres\" (2025), раздел \"¿CUÁLES SON LOS SÍNTOMAS?\", с. 1"
+  - "[7] MedlinePlus — \"Asma en niños\", раздел \"¿Qué es el asma?\", с. 1 — https://medlineplus.gov/spanish/asthmainchildren.html"
+  - "[9] MedlinePlus — \"Asma en niños\", раздел \"¿Cuáles son los tratamientos para el asma en niños?\", с. 1 — https://medlineplus.gov/spanish/asthmainchildren.html"
 draft: false
 ---
 

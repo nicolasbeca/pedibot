@@ -36,7 +36,19 @@ export const TOKENS: TokenDeployment[] = [
     buy: 'https://app.uniswap.org/explore/tokens/base/0x196a67ba334dbed501e19baec47d217bb2fc15e1',
   },
   { network: 'Solana', platform: 'Jupiter Studio', ticker: 'PDBT', address: null },
-  { network: 'HyperEVM', platform: 'LiquidLaunch', ticker: 'PDBT', address: null },
+  {
+    // Launched 3-sep-2026, tx 0xd362e52f…b27c58d. The address was read off the creation receipt
+    // and checked against the token itself (name "PediBot", symbol PDBT, 6 decimals, 1e9 supply)
+    // before being published — not taken from the launchpad's UI, which took an hour to index it.
+    // The link goes to the LiquidLaunch page rather than a block explorer: it is the one URL that
+    // was verified to load, and it is where a reader can actually see and buy the token.
+    network: 'HyperEVM',
+    platform: 'LiquidLaunch',
+    ticker: 'PDBT',
+    address: '0x4a2caac88e85cc858a6265e773fc8db5aa40b5e5',
+    explorer: 'https://liquidlaunch.app/token/0x4a2caac88e85cc858a6265e773fc8db5aa40b5e5',
+    buy: 'https://liquidlaunch.app/token/0x4a2caac88e85cc858a6265e773fc8db5aa40b5e5',
+  },
 ];
 
 /** The ones that actually exist on-chain. */

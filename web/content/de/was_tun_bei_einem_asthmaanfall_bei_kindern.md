@@ -7,13 +7,13 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[2] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"CRISIS ASMÁTICA tos TIRAJE evitar ambientes con humo o fumar ADMINISTRAR SALBUTAMOL CON CÁMARA ESPACIADORA (Y MASCARILLA EN NIÑOS PEQUEÑOS) ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 2"
-  - "[3] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿QUÉ SON LAS CRISIS ASMÁTICAS?\", p. 1"
-  - "[4] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CRISIS ASMÁTICA?\", p. 1"
-  - "[5] SEUP — \"Crisis asmática. Información para padres\" (2025), section \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", p. 2"
-  - "[7] MedlinePlus — \"Asma en niños\", section \"¿Qué es el asma?\", p. 1 — https://medlineplus.gov/spanish/asthmainchildren.html"
-  - "[9] MedlinePlus — \"Asma en niños\", section \"¿Cuáles son los tratamientos para el asma en niños?\", p. 1 — https://medlineplus.gov/spanish/asthmainchildren.html"
+  - "[1] SEUP — \"Crisis asmática. Información para padres\" (2025), Abschnitt \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", S. 2"
+  - "[2] SEUP — \"Crisis asmática. Información para padres\" (2025), Abschnitt \"CRISIS ASMÁTICA tos TIRAJE evitar ambientes con humo o fumar ADMINISTRAR SALBUTAMOL CON CÁMARA ESPACIADORA (Y MASCARILLA EN NIÑOS PEQUEÑOS) ¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", S. 2"
+  - "[3] SEUP — \"Crisis asmática. Información para padres\" (2025), Abschnitt \"¿QUÉ SON LAS CRISIS ASMÁTICAS?\", S. 1"
+  - "[4] SEUP — \"Crisis asmática. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE UNA CRISIS ASMÁTICA?\", S. 1"
+  - "[5] SEUP — \"Crisis asmática. Información para padres\" (2025), Abschnitt \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", S. 2"
+  - "[7] MedlinePlus — \"Asma en niños\", Abschnitt \"¿Qué es el asma?\", S. 1 — https://medlineplus.gov/spanish/asthmainchildren.html"
+  - "[9] MedlinePlus — \"Asma en niños\", Abschnitt \"¿Cuáles son los tratamientos para el asma en niños?\", S. 1 — https://medlineplus.gov/spanish/asthmainchildren.html"
 draft: false
 ---
 

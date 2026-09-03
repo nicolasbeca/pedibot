@@ -7,15 +7,15 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] CDC — \"About RSV\", section \"RSV can be dangerous for infants and older adults\", p. 1 — https://www.cdc.gov/rsv/about/index.html"
-  - "[2] CDC — \"RSV in Infants and Young Children\", section \"Severe RSV illness\", p. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html"
-  - "[3] CDC — \"RSV in Infants and Young Children\", section \"RSV in very young Infants\", p. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html"
-  - "[4] CDC — \"RSV in Infants and Young Children\", section \"Did you know? Symptoms in infants and young children\", p. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html"
-  - "[5] CDC — \"About RSV\", section \"About RSV What to know\", p. 1 — https://www.cdc.gov/rsv/about/index.html"
-  - "[6] NHS — \"Respiratory syncytial virus (RSV)\" (2024), section \"Symptoms of an RSV infection\", p. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
-  - "[7] NHS — \"Respiratory syncytial virus (RSV)\" (2024), section \"Injection for children at risk of serious infections\", p. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
-  - "[8] NHS — \"Respiratory syncytial virus (RSV)\" (2024), section \"RSV vaccination\", p. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
-  - "[9] NHS — \"Respiratory syncytial virus (RSV)\" (2024), section \"Respiratory syncytial virus (RSV)\", p. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
+  - "[1] CDC — \"About RSV\", Abschnitt \"RSV can be dangerous for infants and older adults\", S. 1 — https://www.cdc.gov/rsv/about/index.html"
+  - "[2] CDC — \"RSV in Infants and Young Children\", Abschnitt \"Severe RSV illness\", S. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html"
+  - "[3] CDC — \"RSV in Infants and Young Children\", Abschnitt \"RSV in very young Infants\", S. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html"
+  - "[4] CDC — \"RSV in Infants and Young Children\", Abschnitt \"Did you know? Symptoms in infants and young children\", S. 1 — https://www.cdc.gov/rsv/infants-young-children/index.html"
+  - "[5] CDC — \"About RSV\", Abschnitt \"About RSV What to know\", S. 1 — https://www.cdc.gov/rsv/about/index.html"
+  - "[6] NHS — \"Respiratory syncytial virus (RSV)\" (2024), Abschnitt \"Symptoms of an RSV infection\", S. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
+  - "[7] NHS — \"Respiratory syncytial virus (RSV)\" (2024), Abschnitt \"Injection for children at risk of serious infections\", S. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
+  - "[8] NHS — \"Respiratory syncytial virus (RSV)\" (2024), Abschnitt \"RSV vaccination\", S. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
+  - "[9] NHS — \"Respiratory syncytial virus (RSV)\" (2024), Abschnitt \"Respiratory syncytial virus (RSV)\", S. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
 draft: false
 ---
 

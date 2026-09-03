@@ -7,11 +7,11 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Threadworms\" (2023), section \"Threadworms\", p. 1 — https://www.nhs.uk/conditions/threadworms/"
-  - "[2] NHS — \"Threadworms\" (2023), section \"How threadworms spread\", p. 1 — https://www.nhs.uk/conditions/threadworms/"
-  - "[3] MedlinePlus — \"Pinworms\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/pinworms.html"
-  - "[4] NHS — \"Threadworms\" (2023), section \"Things you should do at home for threadworms\", p. 1 — https://www.nhs.uk/conditions/threadworms/"
-  - "[5] NHS — \"Threadworms\" (2023), section \"Treatment for threadworms from a pharmacy\", p. 1 — https://www.nhs.uk/conditions/threadworms/"
+  - "[1] NHS — \"Threadworms\" (2023), قسم \"Threadworms\", ص. 1 — https://www.nhs.uk/conditions/threadworms/"
+  - "[2] NHS — \"Threadworms\" (2023), قسم \"How threadworms spread\", ص. 1 — https://www.nhs.uk/conditions/threadworms/"
+  - "[3] MedlinePlus — \"Pinworms\" (2024), p. 1 — https://medlineplus.gov/pinworms.html"
+  - "[4] NHS — \"Threadworms\" (2023), قسم \"Things you should do at home for threadworms\", ص. 1 — https://www.nhs.uk/conditions/threadworms/"
+  - "[5] NHS — \"Threadworms\" (2023), قسم \"Treatment for threadworms from a pharmacy\", ص. 1 — https://www.nhs.uk/conditions/threadworms/"
 draft: false
 ---
 

@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[2] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", p. 2"
-  - "[3] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[4] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE NEUMONÍA?\", p. 1"
-  - "[5] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA?¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 2"
-  - "[6] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[7] SEUP — \"Neumonía. Información para padres\" (2025), section \"¿QUÉ ES LA NEUMONÍA?\", p. 1"
-  - "[8] WHO — \"Neumonía infantil\", section \"Formas de presentación\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
-  - "[9] WHO — \"Neumonía infantil\", section \"Datos y cifras\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
-  - "[10] WHO — \"Neumonía infantil\", section \"Prevención\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
+  - "[1] SEUP — \"Neumonía. Información para padres\" (2025), Abschnitt \"¿CUÁLES SON LOS SÍNTOMAS?\", S. 1"
+  - "[2] SEUP — \"Neumonía. Información para padres\" (2025), Abschnitt \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR?\", S. 2"
+  - "[3] SEUP — \"Neumonía. Información para padres\" (2025), Abschnitt \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", S. 1, 2"
+  - "[4] SEUP — \"Neumonía. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE NEUMONÍA?\", S. 1"
+  - "[5] SEUP — \"Neumonía. Información para padres\" (2025), Abschnitt \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA?¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", S. 2"
+  - "[6] SEUP — \"Neumonía. Información para padres\" (2025), Abschnitt \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", S. 2"
+  - "[7] SEUP — \"Neumonía. Información para padres\" (2025), Abschnitt \"¿QUÉ ES LA NEUMONÍA?\", S. 1"
+  - "[8] WHO — \"Neumonía infantil\", Abschnitt \"Formas de presentación\", S. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
+  - "[9] WHO — \"Neumonía infantil\", Abschnitt \"Datos y cifras\", S. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
+  - "[10] WHO — \"Neumonía infantil\", Abschnitt \"Prevención\", S. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia"
 draft: false
 ---
 

@@ -7,11 +7,11 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Burns and scalds\" (2026), section \"What to do if you have a burn or scald\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[2] NHS — \"Burns and scalds\" (2026), section \"Burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[3] NHS — \"Burns and scalds\" (2026), section \"Treatments for burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[4] NHS — \"Burns and scalds\" (2026), section \"Things you can do to help while burns and scalds heal\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[5] MedlinePlus — \"Burns\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/burns.html"
+  - "[1] NHS — \"Burns and scalds\" (2026), раздел \"What to do if you have a burn or scald\", с. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[2] NHS — \"Burns and scalds\" (2026), раздел \"Burns and scalds\", с. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[3] NHS — \"Burns and scalds\" (2026), раздел \"Treatments for burns and scalds\", с. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[4] NHS — \"Burns and scalds\" (2026), раздел \"Things you can do to help while burns and scalds heal\", с. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[5] MedlinePlus — \"Burns\" (2024), p. 1 — https://medlineplus.gov/burns.html"
 draft: false
 ---
 

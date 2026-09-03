@@ -7,15 +7,15 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Symptoms in children\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[2] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Things you can do yourself\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[3] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[4] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Treatment for a urinary tract infection (UTI)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[5] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Long-term (chronic) UTIs\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[6] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Causes of urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[7] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"Symptoms in older, frail people or people with a urinary catheter\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[8] NHS — \"Urinary tract infections (UTIs)\" (2025), section \"How to prevent urinary tract infections (UTIs)\", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
-  - "[10] MedlinePlus — \"Urinary Tract Infections\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/urinarytractinfections.html"
+  - "[1] NHS — \"Urinary tract infections (UTIs)\" (2025), sección \"Symptoms in children\", pág. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[2] NHS — \"Urinary tract infections (UTIs)\" (2025), sección \"Things you can do yourself\", pág. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[3] NHS — \"Urinary tract infections (UTIs)\" (2025), sección \"Urinary tract infections (UTIs)\", pág. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[4] NHS — \"Urinary tract infections (UTIs)\" (2025), sección \"Treatment for a urinary tract infection (UTI)\", pág. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[5] NHS — \"Urinary tract infections (UTIs)\" (2025), sección \"Long-term (chronic) UTIs\", pág. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[6] NHS — \"Urinary tract infections (UTIs)\" (2025), sección \"Causes of urinary tract infections (UTIs)\", pág. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[7] NHS — \"Urinary tract infections (UTIs)\" (2025), sección \"Symptoms in older, frail people or people with a urinary catheter\", pág. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[8] NHS — \"Urinary tract infections (UTIs)\" (2025), sección \"How to prevent urinary tract infections (UTIs)\", pág. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/"
+  - "[10] MedlinePlus — \"Urinary Tract Infections\" (2025), p. 1 — https://medlineplus.gov/urinarytractinfections.html"
 draft: false
 ---
 
@@ -61,7 +61,7 @@ Pide una cita urgente con el médico o busca ayuda si tu hijo tiene 15 años o m
 
 Algunos de estos síntomas podrían ser de una infección de riñón, que puede ser grave si no se trata y podría causar sepsis [7].
 
-Acción inmediata: llama al 999 o ve a urgencias si tu hijo está confundido, somnoliento o tiene dificultad para hablar [7]. No conduzcas tú; pide a alguien que conduzca o llama al 999 para pedir una ambulancia [7].
+Acción inmediata: llama a tu número de emergencias o ve a urgencias si tu hijo está confundido, somnoliento o tiene dificultad para hablar [7]. No conduzcas tú; pide a alguien que conduzca o llama a tu número de emergencias para pedir una ambulancia [7].
 
 ## Preguntas frecuentes
 **¿Puedo darle zumo de arándanos a mi hijo?**

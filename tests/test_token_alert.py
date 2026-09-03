@@ -103,3 +103,117 @@ def test_a_trade_without_a_hash_is_ignored():
 def test_an_empty_or_broken_answer_is_not_a_crash(payload):
     m = _mod()
     assert m.parse_trades(payload) == []
+
+
+# ---------------------------------------------------------------- HyperEVM (3-sep-2026)
+def test_a_transfer_to_the_curve_is_a_sale_and_from_it_a_purchase(monkeypatch) -> None:
+    """The bonding curve has no aggregator, so direction is read off the Transfer itself.
+    Getting this backwards would announce every sale as a purchase."""
+    m = _mod()
+    curve = m.LIQUIDLAUNCH_CURVE.lower()
+    buyer = "0x" + "11" * 20
+
+    def pad(a: str) -> str:
+        return "0x" + "0" * 24 + a[2:]
+
+    calls = {"blocks": 0}
+
+    def fake_rpc(method, params):
+        if method == "eth_blockNumber":
+            return hex(1000)
+        if method == "eth_getLogs":
+            lo = int(params[0]["fromBlock"], 16)
+            hi = int(params[0]["toBlock"], 16)
+            everything = [
+                {  # curve → buyer: a purchase
+                    "topics": [m.TRANSFER_TOPIC, pad(curve), pad(buyer)],
+                    "data": hex(5_000_000),  # 5 PDBT at 6 decimals
+                    "blockNumber": hex(900),
+                    "transactionHash": "0x" + "aa" * 32,
+                },
+                {  # buyer → curve: a sale
+                    "topics": [m.TRANSFER_TOPIC, pad(buyer), pad(curve)],
+                    "data": hex(2_000_000),
+                    "blockNumber": hex(901),
+                    "transactionHash": "0x" + "bb" * 32,
+                },
+                {  # wallet to wallet: not a trade at all
+                    "topics": [m.TRANSFER_TOPIC, pad(buyer), pad("0x" + "22" * 20)],
+                    "data": hex(1_000_000),
+                    "blockNumber": hex(902),
+                    "transactionHash": "0x" + "cc" * 32,
+                },
+                {  # the launch mint: not a purchase
+                    "topics": [m.TRANSFER_TOPIC, pad("0x" + "00" * 20), pad(curve)],
+                    "data": hex(10**15),
+                    "blockNumber": hex(903),
+                    "transactionHash": "0x" + "dd" * 32,
+                },
+            ]
+            # a real node honours the window; a fake that ignores it hides double-counting
+            return [x for x in everything if lo <= int(x["blockNumber"], 16) <= hi]
+        if method == "eth_getBlockByNumber":
+            calls["blocks"] += 1
+            return {"timestamp": hex(1788400000)}
+        if method == "eth_getTransactionByHash":
+            return {"value": hex(3 * 10**17)}  # 0.3 HYPE
+        raise AssertionError(method)
+
+    monkeypatch.setattr(m, "_rpc", fake_rpc)
+    trades, head = m.hyperevm_trades(0)
+    assert head == 1000
+    kinds = {t.tx_hash[:6]: t.kind for t in trades}
+    assert len(trades) == 2, [t.tx_hash for t in trades]
+    assert kinds["0xaaaa"] == "buy"
+    assert kinds["0xbbbb"] == "sell"
+    buy = next(t for t in trades if t.kind == "buy")
+    assert buy.tokens == 5.0  # 6 decimals, not 18
+    assert buy.native == 0.3
+    assert buy.chain == "hyperevm"
+
+
+def test_one_chain_failing_does_not_silence_the_other(monkeypatch, tmp_path) -> None:
+    """A flaky public RPC must not swallow a Base trade, and a flaky aggregator must not swallow
+    a HyperEVM one."""
+    m = _mod()
+    msg = {}
+    monkeypatch.setattr(m, "telegram", lambda t: msg.setdefault("text", t) or True)
+
+    class Boom:
+        def get(self, *a, **k):
+            raise RuntimeError("aggregator down")
+
+        def post(self, *a, **k):
+            raise RuntimeError("rpc down")
+
+    monkeypatch.setattr(m, "httpx", Boom())
+    db = tmp_path / "ops.db"
+    monkeypatch.setattr(
+        m, "get_settings", lambda: type("S", (), {"ops_db_path": db})(), raising=False
+    )
+    # both down → non-zero, and nothing announced
+    import sys as _sys
+
+    fake = type("M", (), {"get_settings": lambda: type("S", (), {"ops_db_path": db})()})
+    _sys.modules.setdefault("pedibot.settings", fake)
+    assert m.main() == 1
+    assert "text" not in msg
+
+
+def test_the_message_never_invents_a_price() -> None:
+    """Base knows the dollar value; the curve does not. A missing amount says so."""
+    m = _mod()
+    t = m.Trade(
+        tx_hash="0x" + "ab" * 32,
+        ts="2026-09-03T10:00:00Z",
+        kind="buy",
+        usd=0.0,
+        tokens=1234.0,
+        wallet="0x" + "11" * 20,
+        chain="hyperevm",
+        native=None,
+    )
+    text = m.format_message([t])
+    assert "0,00 USD" not in text
+    assert "importe no visible" in text
+    assert "HyperEVM" in text

@@ -7,10 +7,10 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[2] NHS — \"Meningitis\" (2026), section \"Meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
-  - "[3] MedlinePlus — \"Meningitis\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/meningitis.html"
-  - "[4] NHS — \"Meningitis\" (2026), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
-  - "[5] NHS — \"Meningitis\" (2026), section \"Treatments for meningitis\", p. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[2] NHS — \"Meningitis\" (2026), قسم \"Meningitis\", ص. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[3] MedlinePlus — \"Meningitis\" (2025), p. 1 — https://medlineplus.gov/meningitis.html"
+  - "[4] NHS — \"Meningitis\" (2026), قسم \"When and where to get medical help\", ص. 1 — https://www.nhs.uk/conditions/meningitis/"
+  - "[5] NHS — \"Meningitis\" (2026), قسم \"Treatments for meningitis\", ص. 1 — https://www.nhs.uk/conditions/meningitis/"
 draft: false
 ---
 

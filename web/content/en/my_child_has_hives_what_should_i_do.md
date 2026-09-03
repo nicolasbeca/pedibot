@@ -44,7 +44,7 @@ Go to the emergency department right away if your child has any of these warning
 - Feels unwell or their face is swelling [2]
 - Hives appear after an insect sting or after eating a food that has caused an allergic reaction before [2]
 
-Also call emergency services (like 999) if there is swelling around your child's mouth or they are struggling to breathe [6].
+Also call emergency services if there is swelling around your child's mouth or they are struggling to breathe [6].
 
 ## Common questions
 **How long will the hives last?**  

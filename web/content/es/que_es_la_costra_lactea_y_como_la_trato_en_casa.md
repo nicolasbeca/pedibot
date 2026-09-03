@@ -7,13 +7,13 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Cradle cap\" (2025), section \"Cradle cap\", p. 1 — https://www.nhs.uk/conditions/cradle-cap/"
-  - "[2] NHS — \"Cradle cap\" (2025), section \"Things you can do to help with cradle cap\", p. 1 — https://www.nhs.uk/conditions/cradle-cap/"
-  - "[3] NHS — \"Cradle cap\" (2025), section \"A pharmacist can help with cradle cap\", p. 1 — https://www.nhs.uk/conditions/cradle-cap/"
-  - "[5] NHS — \"Cradle cap\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/cradle-cap/"
-  - "[6] NHS — \"Rashes in babies and children\" (2024), section \"Symptoms of cradle cap\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[7] NHS — \"Rashes in babies and children\" (2024), section \"Things you can do to help with cradle cap\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[8] NHS — \"Rashes in babies and children\" (2024), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[1] NHS — \"Cradle cap\" (2025), sección \"Cradle cap\", pág. 1 — https://www.nhs.uk/conditions/cradle-cap/"
+  - "[2] NHS — \"Cradle cap\" (2025), sección \"Things you can do to help with cradle cap\", pág. 1 — https://www.nhs.uk/conditions/cradle-cap/"
+  - "[3] NHS — \"Cradle cap\" (2025), sección \"A pharmacist can help with cradle cap\", pág. 1 — https://www.nhs.uk/conditions/cradle-cap/"
+  - "[5] NHS — \"Cradle cap\" (2025), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/cradle-cap/"
+  - "[6] NHS — \"Rashes in babies and children\" (2024), sección \"Symptoms of cradle cap\", pág. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[7] NHS — \"Rashes in babies and children\" (2024), sección \"Things you can do to help with cradle cap\", pág. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[8] NHS — \"Rashes in babies and children\" (2024), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
 draft: false
 ---
 

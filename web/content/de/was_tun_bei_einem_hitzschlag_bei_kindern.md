@@ -7,11 +7,11 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Golpe de calor. Información para padres\" (2025), section \"¿CÓMO PODEMOS PREVENIR EL GOLPE DE CALOR?\", p. 2"
-  - "[2] SEUP — \"Golpe de calor. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN GOLPE DE CALOR?\", p. 1, 2"
-  - "[3] SEUP — \"Golpe de calor. Información para padres\" (2025), section \"¿QUÉ ES UN GOLPE DE CALOR? ¿POR QUÉ SE PRODUCE?\", p. 1"
-  - "[4] SEUP — \"Golpe de calor. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[5] MedlinePlus — \"Enfermedades causadas por el calor\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/heatillness.html"
+  - "[1] SEUP — \"Golpe de calor. Información para padres\" (2025), Abschnitt \"¿CÓMO PODEMOS PREVENIR EL GOLPE DE CALOR?\", S. 2"
+  - "[2] SEUP — \"Golpe de calor. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN GOLPE DE CALOR?\", S. 1, 2"
+  - "[3] SEUP — \"Golpe de calor. Información para padres\" (2025), Abschnitt \"¿QUÉ ES UN GOLPE DE CALOR? ¿POR QUÉ SE PRODUCE?\", S. 1"
+  - "[4] SEUP — \"Golpe de calor. Información para padres\" (2025), Abschnitt \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", S. 2"
+  - "[5] MedlinePlus — \"Enfermedades causadas por el calor\", S. 1 — https://medlineplus.gov/spanish/heatillness.html"
 draft: false
 ---
 

@@ -7,15 +7,15 @@ date: 2026-08-26
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Gastroenteritis aguda. Información para padres\", section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1"
-  - "[2] SEUP — \"Gastroenteritis aguda. Información para padres\", section \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", p. 2"
-  - "[3] SEUP — \"Gastroenteritis aguda. Información para padres\", section \"¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[4] SEUP — \"Vómitos. Información para padres\", section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[5] SEUP — \"Vómitos. Información para padres\", section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", p. 1"
-  - "[6] SEUP — \"Vómitos. Información para padres\", section \"¿QUÉ SON LOS VÓMITOS?\", p. 1"
-  - "[7] SEUP — \"Vómitos. Información para padres\", section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[8] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los síntomas de la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
-  - "[9] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los tratamientos para la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[1] SEUP — \"Gastroenteritis aguda. Información para padres\", sección \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", pág. 1"
+  - "[2] SEUP — \"Gastroenteritis aguda. Información para padres\", sección \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", pág. 2"
+  - "[3] SEUP — \"Gastroenteritis aguda. Información para padres\", sección \"¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?\", pág. 1"
+  - "[4] SEUP — \"Vómitos. Información para padres\", sección \"¿CÓMO LO PODEMOS PREVENIR?\", pág. 2"
+  - "[5] SEUP — \"Vómitos. Información para padres\", sección \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", pág. 1"
+  - "[6] SEUP — \"Vómitos. Información para padres\", sección \"¿QUÉ SON LOS VÓMITOS?\", pág. 1"
+  - "[7] SEUP — \"Vómitos. Información para padres\", sección \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", pág. 1, 2"
+  - "[8] MedlinePlus — \"Gastroenteritis\", sección \"¿Cuáles son los síntomas de la gastroenteritis?\", pág. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[9] MedlinePlus — \"Gastroenteritis\", sección \"¿Cuáles son los tratamientos para la gastroenteritis?\", pág. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
 draft: false
 ---
 

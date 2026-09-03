@@ -7,12 +7,12 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿PODEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[2] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
-  - "[3] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿QUÉ ES EL ESTREÑIMIENTO?\", p. 1"
-  - "[4] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[5] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿QUÉ ES EL DOLOR ABDOMINAL?\", p. 1"
-  - "[6] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
+  - "[1] SEUP — \"Estreñimiento. Información para padres\" (2025), قسم \"¿PODEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", ص. 1, 2"
+  - "[2] SEUP — \"Estreñimiento. Información para padres\" (2025), قسم \"¿QUÉ PODEMOS HACER EN CASA?\", ص. 1"
+  - "[3] SEUP — \"Estreñimiento. Información para padres\" (2025), قسم \"¿QUÉ ES EL ESTREÑIMIENTO?\", ص. 1"
+  - "[4] SEUP — \"Estreñimiento. Información para padres\" (2025), قسم \"¿CUÁLES SON LOS SÍNTOMAS?\", ص. 1"
+  - "[5] SEUP — \"Dolor abdominal. Información para padres\" (2025), قسم \"¿QUÉ ES EL DOLOR ABDOMINAL?\", ص. 1"
+  - "[6] SEUP — \"Dolor abdominal. Información para padres\" (2025), قسم \"¿CÓMO LO PODEMOS PREVENIR?\", ص. 2"
 draft: false
 ---
 

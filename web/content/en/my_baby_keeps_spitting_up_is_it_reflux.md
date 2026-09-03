@@ -44,7 +44,7 @@ See a GP if your baby [5]:
 - Is older than 1 and still has reflux.
 - Is not gaining weight or is losing weight.
 
-Ask for an urgent GP appointment or call NHS 111 if your baby [5]:
+Ask for an urgent GP appointment or get medical advice if your baby [5]:
 - Has vomit that’s green or yellow, or has blood in it.
 - Is projectile vomiting (being sick with more force than usual).
 - Has blood in their poo.
@@ -55,7 +55,7 @@ Ask for an urgent GP appointment or call NHS 111 if your baby [5]:
 - Will not stop crying and is very distressed.
 - Is refusing to feed.
 
-Also call your GP or 111 if you have any other concerns about your baby [5].
+Also contact your doctor if you have any other concerns about your baby [5].
 
 ## Common questions
 **Is reflux the same as colic?** No. Colic is when a baby cries more than 3 hours a day, 3 days a week for at least 1 week but is otherwise healthy [7]. Reflux is one possible reason a baby may be crying, but colic can also be from hunger, a dirty nappy, wind, constipation, or food allergies [7]. If you’re not sure what’s wrong, speak to your health visitor, call NHS 111, or see a GP [7].

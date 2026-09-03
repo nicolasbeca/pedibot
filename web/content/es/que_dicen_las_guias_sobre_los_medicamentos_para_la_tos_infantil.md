@@ -7,11 +7,11 @@ date: 2026-09-02
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] CDC — \"Manage Common Cold\", section \"Children\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[2] MedlinePlus — \"Common Cold\" (2022), section \"What are the treatments for the common cold?\", p. 1 — https://medlineplus.gov/commoncold.html"
-  - "[3] NHS — \"Croup\" (2025), section \"Symptoms of croup\", p. 1 — https://www.nhs.uk/conditions/croup/"
-  - "[4] MedlinePlus — \"Cough\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/cough.html"
-  - "[9] NHS — \"Whooping cough\" (2025), section \"How to ease the symptoms of whooping cough\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[1] CDC — \"Manage Common Cold\", sección \"Children\", pág. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[2] MedlinePlus — \"Common Cold\" (2022), sección \"What are the treatments for the common cold?\", pág. 1 — https://medlineplus.gov/commoncold.html"
+  - "[3] NHS — \"Croup\" (2025), sección \"Symptoms of croup\", pág. 1 — https://www.nhs.uk/conditions/croup/"
+  - "[4] MedlinePlus — \"Cough\" (2025), p. 1 — https://medlineplus.gov/cough.html"
+  - "[9] NHS — \"Whooping cough\" (2025), sección \"How to ease the symptoms of whooping cough\", pág. 1 — https://www.nhs.uk/conditions/whooping-cough/"
 draft: false
 ---
 

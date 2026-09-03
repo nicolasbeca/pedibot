@@ -22,10 +22,40 @@ export interface Faq {
  * prompt (**question** on its own line, answer underneath), so a guide that does not follow it
  * simply yields nothing instead of guessing.
  */
+import samePairs from './data/same_subject.json';
+
+/** Every topic key naming the same subject as this one, itself included.
+ *
+ *  The same subject carries two keys when the English guide was anchored on English sources
+ *  (`constipation` / `estrenimiento`). Matching `topic` exactly therefore found no twins and the
+ *  language switcher showed nothing on those guides, in both directions. The pairs come from
+ *  SAME_SUBJECT in the generator, exported by scripts/export_catalog.py.
+ */
+export function topicKeys(topic: string): string[] {
+  const out = new Set<string>([topic]);
+  for (const pair of samePairs as string[][]) {
+    if (pair.includes(topic)) pair.forEach((t) => out.add(t));
+  }
+  return [...out];
+}
+
+/** The "common questions" heading in every language the site publishes, exactly as
+ *  src/pedibot/publish/prompts/article_v1.md asks the model to write it. Adding a language
+ *  without adding its heading here costs that language its FAQ structured data, silently. */
+export const FAQ_HEADINGS = [
+  'Common questions',
+  'Preguntas (?:frecuentes|habituales)',
+  'Questions fr[ée]quentes',
+  'Häufige Fragen',
+  'Частые вопросы',
+  'أسئلة شائعة',
+];
+
 export function faqsFrom(markdown: string): Faq[] {
-  // one alternative per language: a heading missing here silently costs that language its
-  // FAQ structured data, which is what happened to every French guide
-  const heading = /^##\s+(Common questions|Preguntas (?:frecuentes|habituales)|Questions fr[ée]quentes)\s*$/im;
+  // One alternative per language, and it must stay in step with the canonical headings the
+  // article prompt asks for. A heading missing here silently costs that language its FAQ
+  // structured data — it cost French that in July, and German, Russian and Arabic until 3-sep.
+  const heading = new RegExp('^##\\s+(' + FAQ_HEADINGS.join('|') + ')\\s*$', 'im');
   const start = markdown.search(heading);
   if (start < 0) return [];
   const after = markdown.slice(start);

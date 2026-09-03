@@ -7,14 +7,14 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Chickenpox\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/chickenpox.html"
-  - "[2] NHS — \"Chickenpox\" (2025), section \"How you can treat chickenpox yourself\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[3] CDC — \"About Chickenpox\", section \"About Chickenpox Key points\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[4] NHS — \"Chickenpox\" (2025), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[5] NHS — \"Chickenpox\" (2025), section \"The chickenpox vaccine\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[6] CDC — \"About Chickenpox\", section \"How it spreads Contact with someone with chickenpox\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
-  - "[7] NHS — \"Chickenpox\" (2025), section \"Chickenpox\", p. 1 — https://www.nhs.uk/conditions/chickenpox/"
-  - "[8] CDC — \"About Chickenpox\", section \"Signs and symptoms\", p. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[1] MedlinePlus — \"Chickenpox\" (2025), p. 1 — https://medlineplus.gov/chickenpox.html"
+  - "[2] NHS — \"Chickenpox\" (2025), Abschnitt \"How you can treat chickenpox yourself\", S. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[3] CDC — \"About Chickenpox\", Abschnitt \"About Chickenpox Key points\", S. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[4] NHS — \"Chickenpox\" (2025), Abschnitt \"When and where to get medical help\", S. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[5] NHS — \"Chickenpox\" (2025), Abschnitt \"The chickenpox vaccine\", S. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[6] CDC — \"About Chickenpox\", Abschnitt \"How it spreads Contact with someone with chickenpox\", S. 1 — https://www.cdc.gov/chickenpox/about/index.html"
+  - "[7] NHS — \"Chickenpox\" (2025), Abschnitt \"Chickenpox\", S. 1 — https://www.nhs.uk/conditions/chickenpox/"
+  - "[8] CDC — \"About Chickenpox\", Abschnitt \"Signs and symptoms\", S. 1 — https://www.cdc.gov/chickenpox/about/index.html"
 draft: false
 ---
 

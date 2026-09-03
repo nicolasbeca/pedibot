@@ -7,15 +7,15 @@ date: 2026-08-26
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Catarro de vías altas. Información para padres\", section \"¿QUÉ ES UN CATARRO DE VÍAS ALTAS?\", p. 1"
-  - "[2] SEUP — \"Catarro de vías altas. Información para padres\", section \"CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 2"
-  - "[3] SEUP — \"Catarro de vías altas. Información para padres\", section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
-  - "[4] SEUP — \"Catarro de vías altas. Información para padres\", section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[5] SEUP — \"Bronquiolitis. Información para padres\", section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[6] MedlinePlus — \"Resfrío\", section \"¿Cuáles son los síntomas del resfrío común?\", p. 1 — https://medlineplus.gov/spanish/commoncold.html"
-  - "[7] SEUP — \"Crisis asmática. Información para padres\", section \"¿QUÉ SON LAS CRISIS ASMÁTICAS?\", p. 1"
-  - "[8] MedlinePlus — \"Resfrío\", section \"¿Qué es el resfrío común?\", p. 1 — https://medlineplus.gov/spanish/commoncold.html"
-  - "[9] SEUP — \"Bronquiolitis. Información para padres\", section \"¿PUEDE PREVENIRSE?\", p. 2"
+  - "[1] SEUP — \"Catarro de vías altas. Información para padres\", sección \"¿QUÉ ES UN CATARRO DE VÍAS ALTAS?\", pág. 1"
+  - "[2] SEUP — \"Catarro de vías altas. Información para padres\", sección \"CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", pág. 2"
+  - "[3] SEUP — \"Catarro de vías altas. Información para padres\", sección \"¿QUÉ PODEMOS HACER EN CASA?\", pág. 1"
+  - "[4] SEUP — \"Catarro de vías altas. Información para padres\", sección \"¿CÓMO LO PODEMOS PREVENIR?\", pág. 2"
+  - "[5] SEUP — \"Bronquiolitis. Información para padres\", sección \"¿CUÁLES SON LOS SÍNTOMAS?\", pág. 1"
+  - "[6] MedlinePlus — \"Resfrío\", sección \"¿Cuáles son los síntomas del resfrío común?\", pág. 1 — https://medlineplus.gov/spanish/commoncold.html"
+  - "[7] SEUP — \"Crisis asmática. Información para padres\", sección \"¿QUÉ SON LAS CRISIS ASMÁTICAS?\", pág. 1"
+  - "[8] MedlinePlus — \"Resfrío\", sección \"¿Qué es el resfrío común?\", pág. 1 — https://medlineplus.gov/spanish/commoncold.html"
+  - "[9] SEUP — \"Bronquiolitis. Información para padres\", sección \"¿PUEDE PREVENIRSE?\", pág. 2"
 draft: false
 ---
 

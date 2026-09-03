@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"4Enfermedad neumocócica (VNC/VN)\", p. 2"
-  - "[2] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"6 Enfermedad meningocócica ( (Men B, Men C, MenACWY)\", p. 2, 3"
-  - "[3] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"12 COVID-19\", p. 3, 4"
-  - "[4] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"7Sarampión, rubeola y parotiditis (triple vírica, TV)\", p. 3"
-  - "[5] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"11 Gripe 10 Herpes zóster (HZ)\", p. 3"
-  - "[6] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"Introducción\", p. 1, 2"
-  - "[7] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"13Virus Respiratorio Sincitial (VRS)\", p. 4"
-  - "[8] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"8Varicela (VVZ)\", p. 3"
-  - "[9] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), section \"1 Poliomielitis (VPI) 2 Difteria, tétanos, tosferina (DTPa, dTpa, Td) 3 Hepatitis B (HB)\", p. 2"
-  - "[10] MedlinePlus — \"Vacunas para los niños\", section \"¿Cuándo necesito vacunar a mi hijo?\", p. 1 — https://medlineplus.gov/spanish/childhoodimmunization.html"
+  - "[1] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), Abschnitt \"4Enfermedad neumocócica (VNC/VN)\", S. 2"
+  - "[2] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), Abschnitt \"6 Enfermedad meningocócica ( (Men B, Men C, MenACWY)\", S. 2, 3"
+  - "[3] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), Abschnitt \"12 COVID-19\", S. 3, 4"
+  - "[4] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), Abschnitt \"7Sarampión, rubeola y parotiditis (triple vírica, TV)\", S. 3"
+  - "[5] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), Abschnitt \"11 Gripe 10 Herpes zóster (HZ)\", S. 3"
+  - "[6] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), p. 1, 2"
+  - "[7] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), Abschnitt \"13Virus Respiratorio Sincitial (VRS)\", S. 4"
+  - "[8] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), Abschnitt \"8Varicela (VVZ)\", S. 3"
+  - "[9] Ministerio de Sanidad — \"Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025\" (2025), Abschnitt \"1 Poliomielitis (VPI) 2 Difteria, tétanos, tosferina (DTPa, dTpa, Td) 3 Hepatitis B (HB)\", S. 2"
+  - "[10] MedlinePlus — \"Vacunas para los niños\", Abschnitt \"¿Cuándo necesito vacunar a mi hijo?\", S. 1 — https://medlineplus.gov/spanish/childhoodimmunization.html"
 draft: false
 ---
 

@@ -12,7 +12,7 @@ sources:
   - "[3] SEUP — \"Fiebre. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
   - "[4] SEUP — \"Fiebre. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
   - "[5] SEUP — \"Fiebre. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE FIEBRE?\", p. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf"
-  - "[6] MedlinePlus — \"Fiebre\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/fever.html"
+  - "[6] MedlinePlus — \"Fiebre\", p. 1 — https://medlineplus.gov/spanish/fever.html"
 draft: false
 ---
 

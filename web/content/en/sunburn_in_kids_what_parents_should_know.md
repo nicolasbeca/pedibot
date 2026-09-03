@@ -11,7 +11,7 @@ sources:
   - "[2] NHS — \"Sunburn\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
   - "[3] NHS — \"Sunburn\" (2025), section \"A pharmacist can help with sunburn\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
   - "[4] NHS — \"Sunburn\" (2025), section \"How to ease sunburn yourself\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[5] MedlinePlus — \"Sun Exposure\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/sunexposure.html"
+  - "[5] MedlinePlus — \"Sun Exposure\" (2017), p. 1 — https://medlineplus.gov/sunexposure.html"
 draft: false
 ---
 
@@ -43,7 +43,7 @@ Do not do these things:
 To prevent sunburn in the future, protect your child by staying out of the sun when it is strongest, between 10 a.m. and 2 p.m. [5]. Use sunscreen with an SPF of 15 or higher [5]. Wear protective clothing and wraparound sunglasses that provide 100% UV ray protection [5]. Avoid sunlamps and tanning beds [5]. Check your skin regularly for changes in the size, shape, colour, or feel of birthmarks, moles, and spots [5].
 
 ## When to see a doctor or go to the emergency department
-Ask for an urgent GP appointment or get help from NHS 111 if your child has been out in the sun and has any of these signs [3]:
+Ask for an urgent GP appointment or get medical advice if your child has been out in the sun and has any of these signs [3]:
 
 - Skin is blistered or swollen [3].
 - Temperature is very high, or they feel hot, cold, or shivery [3].
@@ -52,7 +52,7 @@ Ask for an urgent GP appointment or get help from NHS 111 if your child has been
 - They have muscle cramps [3].
 - Your baby or young child has sunburn [3].
 
-Call 111 if you need advice for a child under 5 years old [3]. Severe sunburn can lead to heat exhaustion and heatstroke, which can be very serious [3].
+Get medical advice if you need it — check if it is urgente for a child under 5 years old [3]. Severe sunburn can lead to heat exhaustion and heatstroke, which can be very serious [3].
 
 ## Common questions
 **Can I pop sunburn blisters?**

@@ -217,6 +217,25 @@ language silently fell back to English. The article generator asked for "Spanish
 French, and the answer engine replied in English to a German question."""
 
 
+#: The two words that hold a citation together. The document's title and its section stay in the
+#: language the document is written in — translating those would break the verification they
+#: exist for — but "section" and "p." are ours, and they were English on every page.
+CITATION_WORDS: dict[str, tuple[str, str]] = {
+    "en": ("section", "p."),
+    "es": ("sección", "pág."),
+    "fr": ("section", "p."),
+    "de": ("Abschnitt", "S."),
+    "ru": ("раздел", "с."),
+    "ar": ("قسم", "ص."),
+}
+
+
+def localise_citation(text: str, lang: str) -> str:
+    """Swap the scaffolding of a citation into `lang`, leaving the quoted document alone."""
+    section, page = CITATION_WORDS.get(lang, CITATION_WORDS["en"])
+    return text.replace(', section "', f', {section} "').replace(", p. ", f", {page} ")
+
+
 def tool_strings(lang: str) -> Table:
     """The table for this language, falling back to English rather than to a blank string."""
     return STRINGS.get(lang, STRINGS["en"])

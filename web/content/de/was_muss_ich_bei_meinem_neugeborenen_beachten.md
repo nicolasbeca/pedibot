@@ -7,15 +7,15 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[2] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[3] AEP — \"Cuidados generales del recién nacido sano\", section \"3. Tras la salida del feto se debe clampar el\", p. 2, 3"
-  - "[4] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[5] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[6] Junta de Andalucía — \"Cuídame: orientaciones para el comienzo de la vida\", section \"4.1 Cuidados del recién nacido El aseo\", p. 41"
-  - "[7] AEP — \"Cuidados generales del recién nacido sano\", section \"3. Tras la salida del feto se debe clampar el\", p. 2, 3"
-  - "[8] AEP — \"Cuidados generales del recién nacido sano\", section \"Cuidados generales del recién nacido sano\", p. 1"
-  - "[10] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS EN EL PARITORIO\", p. 1, 2"
+  - "[1] AEP — \"Cuidados generales del recién nacido sano\", Abschnitt \"CUIDADOS DESPUÉS DEL PARTO\", S. 3, 4, 5, 6, 7, 8"
+  - "[2] AEP — \"Cuidados generales del recién nacido sano\", Abschnitt \"CUIDADOS DESPUÉS DEL PARTO\", S. 3, 4, 5, 6, 7, 8"
+  - "[3] AEP — \"Cuidados generales del recién nacido sano\", Abschnitt \"3. Tras la salida del feto se debe clampar el\", S. 2, 3"
+  - "[4] AEP — \"Cuidados generales del recién nacido sano\", Abschnitt \"CUIDADOS DESPUÉS DEL PARTO\", S. 3, 4, 5, 6, 7, 8"
+  - "[5] AEP — \"Cuidados generales del recién nacido sano\", Abschnitt \"CUIDADOS DESPUÉS DEL PARTO\", S. 3, 4, 5, 6, 7, 8"
+  - "[6] Junta de Andalucía — \"Cuídame: orientaciones para el comienzo de la vida\", Abschnitt \"4.1 Cuidados del recién nacido El aseo\", S. 41"
+  - "[7] AEP — \"Cuidados generales del recién nacido sano\", Abschnitt \"3. Tras la salida del feto se debe clampar el\", S. 2, 3"
+  - "[8] AEP — \"Cuidados generales del recién nacido sano\", Abschnitt \"Cuidados generales del recién nacido sano\", S. 1"
+  - "[10] AEP — \"Cuidados generales del recién nacido sano\", Abschnitt \"CUIDADOS EN EL PARITORIO\", S. 1, 2"
 draft: false
 ---
 

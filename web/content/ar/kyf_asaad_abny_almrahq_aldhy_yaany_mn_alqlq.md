@@ -7,15 +7,15 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Ansiedad. Información para padres\" (2025), section \"¿QUÉ ES LA ANSIEDAD?\", p. 1"
-  - "[2] SEUP — \"Ansiedad. Información para padres\" (2025), section \"GUÍA INFORMATIVA PARA LA DETECCIÓN, PREVENCIÓN Y MANEJO DE LA ANSIEDAD\", p. 1"
-  - "[3] SEUP — \"Ansiedad. Información para padres\" (2025), section \"Signos y síntomas\", p. 2"
-  - "[4] SEUP — \"Ansiedad. Información para padres\" (2025), section \"SE RECOMIENDA ACUDIR AL SERVICIO DE URGENCIAS PEDIÁTRICAS DE LA ZONA EN CASO\", p. 2"
-  - "[5] SEUP — \"Ansiedad. Información para padres\" (2025), section \"EN EL CASO DE UN FAMILIAR, ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", p. 1"
-  - "[6] WHO — \"La salud mental de los adolescentes\", section \"Trastornos emocionales\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[7] WHO — \"La salud mental de los adolescentes\", section \"Datos y cifras\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[8] WHO — \"La salud mental de los adolescentes\", section \"Trastornos de la conducta alimentaria\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
-  - "[9] WHO — \"La salud mental de los adolescentes\", section \"Detección y tratamiento tempranos\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[1] SEUP — \"Ansiedad. Información para padres\" (2025), قسم \"¿QUÉ ES LA ANSIEDAD?\", ص. 1"
+  - "[2] SEUP — \"Ansiedad. Información para padres\" (2025), قسم \"GUÍA INFORMATIVA PARA LA DETECCIÓN, PREVENCIÓN Y MANEJO DE LA ANSIEDAD\", ص. 1"
+  - "[3] SEUP — \"Ansiedad. Información para padres\" (2025), قسم \"Signos y síntomas\", ص. 2"
+  - "[4] SEUP — \"Ansiedad. Información para padres\" (2025), قسم \"SE RECOMIENDA ACUDIR AL SERVICIO DE URGENCIAS PEDIÁTRICAS DE LA ZONA EN CASO\", ص. 2"
+  - "[5] SEUP — \"Ansiedad. Información para padres\" (2025), قسم \"EN EL CASO DE UN FAMILIAR, ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", ص. 1"
+  - "[6] WHO — \"La salud mental de los adolescentes\", قسم \"Trastornos emocionales\", ص. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[7] WHO — \"La salud mental de los adolescentes\", قسم \"Datos y cifras\", ص. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[8] WHO — \"La salud mental de los adolescentes\", قسم \"Trastornos de la conducta alimentaria\", ص. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[9] WHO — \"La salud mental de los adolescentes\", قسم \"Detección y tratamiento tempranos\", ص. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
 draft: false
 ---
 

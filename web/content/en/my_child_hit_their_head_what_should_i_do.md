@@ -34,7 +34,7 @@ If your child has been sent home from hospital with a minor head injury, or does
 Do not let your child go back to school until they are feeling better [4]. Children should avoid rough play for a few days [4]. Do not give your child sleeping pills while they are recovering unless a doctor advises you to [4].
 
 ## When to see a doctor or go to the emergency department
-Call 911 or go to your nearest emergency department if your child has any of these danger signs after a bump, blow, or jolt to the head [1]:
+Call your emergency number or go to your nearest emergency department if your child has any of these danger signs after a bump, blow, or jolt to the head [1]:
 
 - Convulsions or seizures (shaking or twitching) [1]
 - Not able to recognize people or places [1]
@@ -47,7 +47,7 @@ Call 911 or go to your nearest emergency department if your child has any of the
 - Will not stop crying and cannot be consoled (infants and toddlers) [1]
 - Will not nurse or eat (infants and toddlers) [1]
 
-Call 999 (or your local emergency number) if your child has been knocked out and has not woken up, cannot stay awake, has a fit (seizure), has problems with vision or hearing, has clear fluid coming from their ears or nose, is bleeding from their ears, has new numbness or weakness, has problems with walking, balance, understanding, speaking or writing, or has a head wound with something inside it or a dent in their head [6]. Also call if your child is under 1 year old and has a bruise, swelling, or large cut on their head, or if their behavior has changed, like being more irritable or losing interest in things [6].
+Call your emergency number (or your local emergency number) if your child has been knocked out and has not woken up, cannot stay awake, has a fit (seizure), has problems with vision or hearing, has clear fluid coming from their ears or nose, is bleeding from their ears, has new numbness or weakness, has problems with walking, balance, understanding, speaking or writing, or has a head wound with something inside it or a dent in their head [6]. Also call if your child is under 1 year old and has a bruise, swelling, or large cut on their head, or if their behavior has changed, like being more irritable or losing interest in things [6].
 
 Get urgent help if your child is being sick (vomiting), feels dizzy, has a condition that thins their blood or takes medicine that thins their blood, or if you have any other symptoms you are worried about [6]. Seek immediate emergency medical care if your child has any concussion danger signs [2].
 

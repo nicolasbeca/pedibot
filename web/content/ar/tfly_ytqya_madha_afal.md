@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", p. 1"
-  - "[2] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[3] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[4] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ SON LOS VÓMITOS?\", p. 1"
-  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[6] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1"
-  - "[7] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los síntomas de la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
-  - "[10] MedlinePlus — \"Deshidratación\", section \"¿Quién tiene más probabilidades de tener deshidratación?\", p. 1 — https://medlineplus.gov/spanish/dehydration.html"
+  - "[1] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", ص. 1"
+  - "[2] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", ص. 2"
+  - "[3] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", ص. 1, 2"
+  - "[4] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿QUÉ SON LOS VÓMITOS?\", ص. 1"
+  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿CÓMO LO PODEMOS PREVENIR?\", ص. 2"
+  - "[6] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), قسم \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", ص. 1"
+  - "[7] MedlinePlus — \"Gastroenteritis\", قسم \"¿Cuáles son los síntomas de la gastroenteritis?\", ص. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[10] MedlinePlus — \"Deshidratación\", قسم \"¿Quién tiene más probabilidades de tener deshidratación?\", ص. 1 — https://medlineplus.gov/spanish/dehydration.html"
 draft: false
 ---
 

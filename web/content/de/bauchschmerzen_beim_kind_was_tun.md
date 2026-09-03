@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿QUÉ ES EL DOLOR ABDOMINAL?\", p. 1"
-  - "[2] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 1"
-  - "[3] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[4] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
-  - "[5] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"DOLOR ABDOMINAL\", p. 2"
-  - "[6] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[7] SEUP — \"Dolor abdominal. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1"
-  - "[8] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[9] SEUP — \"Estreñimiento. Información para padres\" (2025), section \"¿PODEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[10] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", p. 2"
+  - "[1] SEUP — \"Dolor abdominal. Información para padres\" (2025), Abschnitt \"¿QUÉ ES EL DOLOR ABDOMINAL?\", S. 1"
+  - "[2] SEUP — \"Dolor abdominal. Información para padres\" (2025), Abschnitt \"¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", S. 1"
+  - "[3] SEUP — \"Dolor abdominal. Información para padres\" (2025), Abschnitt \"¿CÓMO LO PODEMOS PREVENIR?\", S. 2"
+  - "[4] SEUP — \"Dolor abdominal. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA?\", S. 1"
+  - "[5] SEUP — \"Dolor abdominal. Información para padres\" (2025), Abschnitt \"DOLOR ABDOMINAL\", S. 2"
+  - "[6] SEUP — \"Dolor abdominal. Información para padres\" (2025), Abschnitt \"¿CUÁLES SON LOS SÍNTOMAS?\", S. 1"
+  - "[7] SEUP — \"Dolor abdominal. Información para padres\" (2025), Abschnitt \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", S. 1"
+  - "[8] SEUP — \"Vómitos. Información para padres\" (2025), Abschnitt \"¿QUÉ SÍNTOMAS DEBEMOS VIGILAR EN CASA QUE NOS PUEDEN INDICAR QUE ESTÁ PEOR? Y ¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", S. 2"
+  - "[9] SEUP — \"Estreñimiento. Información para padres\" (2025), Abschnitt \"¿PODEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", S. 1, 2"
+  - "[10] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), Abschnitt \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", S. 2"
 draft: false
 ---
 

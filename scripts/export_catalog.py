@@ -74,6 +74,22 @@ target3 = ROOT / "web" / "site" / "src" / "data" / "checklist.json"
 target3.write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"{len(raw['items'])} checklist items → {target3}")
 
+# same-subject topic pairs → web/site/src/data/same_subject.json
+# `topic` is what the language switcher matches on, and the same subject has two keys when the
+# English guide was anchored on English sources (constipation/estrenimiento, otitis/ear_infection).
+# The generator has always known this; without exporting it the site showed no twins for them.
+import sys as _sys
+
+_sys.path.insert(0, str(ROOT / "src"))
+from pedibot.publish.articles import SAME_SUBJECT  # noqa: E402
+
+target_same = ROOT / "web" / "site" / "src" / "data" / "same_subject.json"
+target_same.write_text(
+    json.dumps([sorted(pair) for pair in SAME_SUBJECT], ensure_ascii=False, indent=1) + "\n",
+    encoding="utf-8",
+)
+print(f"{len(SAME_SUBJECT)} same-subject pairs → {target_same}")
+
 # vaccines → web/site/src/data/vaccines.json (VaccinesTool)
 vraw = yaml.safe_load((ROOT / "config" / "vaccines.yaml").read_text(encoding="utf-8"))["countries"]
 target4 = ROOT / "web" / "site" / "src" / "data" / "vaccines.json"

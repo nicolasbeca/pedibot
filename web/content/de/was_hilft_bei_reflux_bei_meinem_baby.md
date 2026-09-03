@@ -7,13 +7,13 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Reflux in babies\" (2025), section \"Reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[2] NHS — \"Reflux in babies\" (2025), section \"Treatment for reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[3] NHS — \"Reflux in babies\" (2025), section \"Causes of reflux\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[4] NHS — \"Reflux in babies\" (2025), section \"Things you can try to ease reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[5] NHS — \"Reflux in babies\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[7] NHS — \"Colic\" (2022), section \"Symptoms of colic\", p. 1 — https://www.nhs.uk/conditions/colic/"
-  - "[9] NHS — \"Baby teething symptoms\" (2026), section \"Baby teething symptoms\", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
+  - "[1] NHS — \"Reflux in babies\" (2025), Abschnitt \"Reflux in babies\", S. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[2] NHS — \"Reflux in babies\" (2025), Abschnitt \"Treatment for reflux in babies\", S. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[3] NHS — \"Reflux in babies\" (2025), Abschnitt \"Causes of reflux\", S. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[4] NHS — \"Reflux in babies\" (2025), Abschnitt \"Things you can try to ease reflux in babies\", S. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[5] NHS — \"Reflux in babies\" (2025), Abschnitt \"Don’t\", S. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[7] NHS — \"Colic\" (2022), Abschnitt \"Symptoms of colic\", S. 1 — https://www.nhs.uk/conditions/colic/"
+  - "[9] NHS — \"Baby teething symptoms\" (2026), Abschnitt \"Baby teething symptoms\", S. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
 draft: false
 ---
 

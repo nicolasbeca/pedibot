@@ -7,15 +7,15 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Insect Bites and Stings\" (2026), section \"Introducción\", p. 1 — https://medlineplus.gov/insectbitesandstings.html"
-  - "[2] NHS — \"Insect bites and stings\" (2023), section \"Insect bites and stings\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
-  - "[3] NHS — \"Insect bites and stings\" (2023), section \"Easing your symptoms\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
-  - "[4] NHS — \"Insect bites and stings\" (2023), section \"Removing stingers, ticks or caterpillars\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
-  - "[5] NHS — \"Insect bites and stings\" (2023), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
-  - "[6] NHS — \"Impetigo\" (2024), section \"How to avoid impetigo\", p. 1 — https://www.nhs.uk/conditions/impetigo/"
-  - "[7] MedlinePlus — \"Head Lice\" (2025), section \"What are the symptoms of head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
-  - "[9] MedlinePlus — \"Impetigo\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/impetigo.html"
-  - "[10] MedlinePlus — \"Head Lice\" (2025), section \"What are head lice?\", p. 1 — https://medlineplus.gov/headlice.html"
+  - "[1] MedlinePlus — \"Insect Bites and Stings\" (2026), p. 1 — https://medlineplus.gov/insectbitesandstings.html"
+  - "[2] NHS — \"Insect bites and stings\" (2023), sección \"Insect bites and stings\", pág. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
+  - "[3] NHS — \"Insect bites and stings\" (2023), sección \"Easing your symptoms\", pág. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
+  - "[4] NHS — \"Insect bites and stings\" (2023), sección \"Removing stingers, ticks or caterpillars\", pág. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
+  - "[5] NHS — \"Insect bites and stings\" (2023), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/insect-bites-and-stings/"
+  - "[6] NHS — \"Impetigo\" (2024), sección \"How to avoid impetigo\", pág. 1 — https://www.nhs.uk/conditions/impetigo/"
+  - "[7] MedlinePlus — \"Head Lice\" (2025), sección \"What are the symptoms of head lice?\", pág. 1 — https://medlineplus.gov/headlice.html"
+  - "[9] MedlinePlus — \"Impetigo\" (2025), p. 1 — https://medlineplus.gov/impetigo.html"
+  - "[10] MedlinePlus — \"Head Lice\" (2025), sección \"What are head lice?\", pág. 1 — https://medlineplus.gov/headlice.html"
 draft: false
 ---
 
@@ -48,7 +48,7 @@ Acuda a un médico de cabecera si:
 - Un niño menor de 1 año tiene una picadura de insecto [5].
 - Cree que usted o su hijo fueron mordidos por una garrapata y tienen síntomas parecidos a la gripe, o una erupción redonda u ovalada que puede parecer un blanco de diana [5].
 
-Pida una cita urgente o llame al 111 si:
+Pida una cita urgente con su médico si:
 - Los síntomas empeoran o no mejoran [5].
 - La picadura fue en la boca, la garganta o cerca de los ojos [5].
 - Hay dolor de estómago y vómitos [5].
@@ -57,7 +57,7 @@ Pida una cita urgente o llame al 111 si:
 - Fue picado más de una vez [5].
 - Ha tenido una reacción alérgica grave a una picadura antes [5].
 
-Llame al 999 (emergencias) si:
+Llame a su número de emergencias si:
 - Los labios, la boca, la garganta o la lengua se hinchan de repente [5].
 - Respira muy rápido o le cuesta respirar (puede tener sibilancias o sentir que se ahoga) [5].
 - Siente la garganta apretada o le cuesta tragar [5].

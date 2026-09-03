@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1"
-  - "[2] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", p. 2"
-  - "[3] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", p. 1"
-  - "[6] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ SON LOS VÓMITOS?\", p. 1"
-  - "[7] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[8] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los síntomas de la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
-  - "[10] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los tratamientos para la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[1] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), раздел \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", с. 1"
+  - "[2] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), раздел \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", с. 2"
+  - "[3] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), раздел \"¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?\", с. 1"
+  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), раздел \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", с. 1"
+  - "[6] SEUP — \"Vómitos. Información para padres\" (2025), раздел \"¿QUÉ SON LOS VÓMITOS?\", с. 1"
+  - "[7] SEUP — \"Vómitos. Información para padres\" (2025), раздел \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", с. 1, 2"
+  - "[8] MedlinePlus — \"Gastroenteritis\", раздел \"¿Cuáles son los síntomas de la gastroenteritis?\", с. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[10] MedlinePlus — \"Gastroenteritis\", раздел \"¿Cuáles son los tratamientos para la gastroenteritis?\", с. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
 draft: false
 ---
 

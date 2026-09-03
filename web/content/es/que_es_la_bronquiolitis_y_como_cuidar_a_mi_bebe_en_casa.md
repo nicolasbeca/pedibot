@@ -7,13 +7,13 @@ date: 2026-08-26
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Bronquiolitis. Información para padres\", section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[2] SEUP — \"Bronquiolitis. Información para padres\", section \"LA INMUNIZACION CONTRA EL VRS DISMINUYE LA HOSPITALIZACIÓN HASTA\", p. 2"
-  - "[3] SEUP — \"Bronquiolitis. Información para padres\", section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[4] SEUP — \"Bronquiolitis. Información para padres\", section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[5] SEUP — \"Bronquiolitis. Información para padres\", section \"¿PUEDE PREVENIRSE?\", p. 2"
-  - "[6] SEUP — \"Bronquiolitis. Información para padres\", section \"¿QUÉ ES LA BRONQUIOLITIS?\", p. 1"
-  - "[7] SEUP — \"Bronquiolitis. Información para padres\", section \"¿QUÉ PODEMOS HACER EN CASA?\", p. 1"
+  - "[1] SEUP — \"Bronquiolitis. Información para padres\", sección \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", pág. 1, 2"
+  - "[2] SEUP — \"Bronquiolitis. Información para padres\", sección \"LA INMUNIZACION CONTRA EL VRS DISMINUYE LA HOSPITALIZACIÓN HASTA\", pág. 2"
+  - "[3] SEUP — \"Bronquiolitis. Información para padres\", sección \"¿CUÁLES SON LOS SÍNTOMAS?\", pág. 1"
+  - "[4] SEUP — \"Bronquiolitis. Información para padres\", sección \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", pág. 2"
+  - "[5] SEUP — \"Bronquiolitis. Información para padres\", sección \"¿PUEDE PREVENIRSE?\", pág. 2"
+  - "[6] SEUP — \"Bronquiolitis. Información para padres\", sección \"¿QUÉ ES LA BRONQUIOLITIS?\", pág. 1"
+  - "[7] SEUP — \"Bronquiolitis. Información para padres\", sección \"¿QUÉ PODEMOS HACER EN CASA?\", pág. 1"
 draft: false
 ---
 

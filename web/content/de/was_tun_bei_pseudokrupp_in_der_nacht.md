@@ -7,13 +7,13 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[2] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[3] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿QUÉ ES LA LARINGITIS?\", p. 1"
-  - "[4] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[5] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE LARINGITIS?\", p. 1"
-  - "[6] MedlinePlus — \"Crup\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/croup.html"
-  - "[10] SEUP — \"Catarro de vías altas. Información para padres\" (2025), section \"CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 2"
+  - "[1] SEUP — \"Laringitis. Información para padres\" (2025), Abschnitt \"¿CUÁLES SON LOS SÍNTOMAS?\", S. 1"
+  - "[2] SEUP — \"Laringitis. Información para padres\" (2025), Abschnitt \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", S. 1, 2"
+  - "[3] SEUP — \"Laringitis. Información para padres\" (2025), Abschnitt \"¿QUÉ ES LA LARINGITIS?\", S. 1"
+  - "[4] SEUP — \"Laringitis. Información para padres\" (2025), Abschnitt \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", S. 2"
+  - "[5] SEUP — \"Laringitis. Información para padres\" (2025), Abschnitt \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE LARINGITIS?\", S. 1"
+  - "[6] MedlinePlus — \"Crup\", S. 1 — https://medlineplus.gov/spanish/croup.html"
+  - "[10] SEUP — \"Catarro de vías altas. Información para padres\" (2025), Abschnitt \"CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", S. 2"
 draft: false
 ---
 

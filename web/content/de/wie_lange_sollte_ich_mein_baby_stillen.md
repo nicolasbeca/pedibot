@@ -7,12 +7,12 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Breastfeeding\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/breastfeeding.html"
-  - "[2] WHO — \"Infant and young child feeding\", section \"Breastfeeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[3] WHO — \"Infant and young child feeding\", section \"Breastfeeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[4] WHO — \"Infant and young child feeding\", section \"Key facts\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[5] WHO — \"Infant and young child feeding\", section \"Overview\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[6] WHO — \"Infant and young child feeding\", section \"Complementary feeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[1] MedlinePlus — \"Breastfeeding\" (2017), p. 1 — https://medlineplus.gov/breastfeeding.html"
+  - "[2] WHO — \"Infant and young child feeding\", Abschnitt \"Breastfeeding\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[3] WHO — \"Infant and young child feeding\", Abschnitt \"Breastfeeding\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[4] WHO — \"Infant and young child feeding\", Abschnitt \"Key facts\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[5] WHO — \"Infant and young child feeding\", Abschnitt \"Overview\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[6] WHO — \"Infant and young child feeding\", Abschnitt \"Complementary feeding\", S. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
 draft: false
 ---
 

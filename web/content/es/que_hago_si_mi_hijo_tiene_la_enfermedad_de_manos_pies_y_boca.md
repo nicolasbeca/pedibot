@@ -7,15 +7,15 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Hand, foot and mouth disease\" (2024), section \"A pharmacist can help with hand, foot and mouth disease\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[2] CDC — \"About Hand, Foot, and Mouth Disease\", section \"About Hand, Foot, and Mouth Disease Key points\", p. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
-  - "[3] NHS — \"Hand, foot and mouth disease\" (2024), section \"How to stop hand, foot and mouth disease spreading\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[4] NHS — \"Hand, foot and mouth disease\" (2024), section \"Hand, foot and mouth disease\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[5] NHS — \"Hand, foot and mouth disease\" (2024), section \"Hand, foot and mouth disease in pregnancy\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[6] NHS — \"Hand, foot and mouth disease\" (2024), section \"How to treat hand, foot and mouth disease yourself\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
-  - "[7] CDC — \"About Hand, Foot, and Mouth Disease\", section \"Who is at risk\", p. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
-  - "[9] CDC — \"About Hand, Foot, and Mouth Disease\", section \"Manage symptoms at home\", p. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
-  - "[10] NHS — \"Hand, foot and mouth disease\" (2024), section \"Staying off school or nursery\", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[1] NHS — \"Hand, foot and mouth disease\" (2024), sección \"A pharmacist can help with hand, foot and mouth disease\", pág. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[2] CDC — \"About Hand, Foot, and Mouth Disease\", sección \"About Hand, Foot, and Mouth Disease Key points\", pág. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
+  - "[3] NHS — \"Hand, foot and mouth disease\" (2024), sección \"How to stop hand, foot and mouth disease spreading\", pág. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[4] NHS — \"Hand, foot and mouth disease\" (2024), sección \"Hand, foot and mouth disease\", pág. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[5] NHS — \"Hand, foot and mouth disease\" (2024), sección \"Hand, foot and mouth disease in pregnancy\", pág. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[6] NHS — \"Hand, foot and mouth disease\" (2024), sección \"How to treat hand, foot and mouth disease yourself\", pág. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
+  - "[7] CDC — \"About Hand, Foot, and Mouth Disease\", sección \"Who is at risk\", pág. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
+  - "[9] CDC — \"About Hand, Foot, and Mouth Disease\", sección \"Manage symptoms at home\", pág. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html"
+  - "[10] NHS — \"Hand, foot and mouth disease\" (2024), sección \"Staying off school or nursery\", pág. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/"
 draft: false
 ---
 
@@ -47,7 +47,7 @@ Pide cita con el médico de cabecera si [1]:
 - Los síntomas no mejoran después de 7 a 10 días [1].
 - Estás embarazada y te contagias [1]. Si estás embarazada y crees que has estado expuesta, contacta con tu médico [7]. Aunque generalmente no hay riesgo para el embarazo, es mejor evitar el contacto cercano con alguien infectado [5]. Habla con tu médico o matrona si has estado en contacto con un enfermo [5].
 
-Busca atención urgente o llama al 111 si [1]:
+Busca atención urgente si [1]:
 
 - Tu hijo tiene fiebre muy alta, o siente calor, frío o escalofríos [1].
 - Te preocupan los síntomas de tu hijo [1].

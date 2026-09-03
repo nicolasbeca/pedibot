@@ -55,9 +55,9 @@ Non-urgent advice: See a GP if:
 - Symptoms of hand, foot and mouth disease do not improve after 7 to 10 days [1]
 - You're pregnant and get hand, foot and mouth disease [1]
 
-Hand, foot and mouth disease can be spread to other people [1]. Check with your GP surgery before going [1]. They may suggest a phone consultation [1].
+Hand, foot and mouth disease can be spread to other people [1]. Check with your doctor's surgery before going [1]. They may suggest a phone consultation [1].
 
-Urgent advice: Ask for an urgent GP appointment or get help from NHS 111 if:
+Urgent advice: Ask for an urgent GP appointment or get medical advice if:
 - You or your child has a very high temperature, or feels hot, cold or shivery [1]
 - You're worried about your child's hand, foot and mouth disease symptoms [1]
 - Your child has hand, foot and mouth disease and is peeing less than usual (they may be becoming dehydrated) [1]

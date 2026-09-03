@@ -7,13 +7,13 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Breastfeeding\" (2017), section \"Introducción\", p. 1 — https://medlineplus.gov/breastfeeding.html"
-  - "[2] WHO — \"Infant and young child feeding\", section \"Breastfeeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[3] WHO — \"Infant and young child feeding\", section \"Breastfeeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[4] WHO — \"Infant and young child feeding\", section \"Key facts\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[5] WHO — \"Infant and young child feeding\", section \"Overview\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[6] WHO — \"Infant and young child feeding\", section \"Complementary feeding\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
-  - "[7] WHO — \"Infant and young child feeding\", section \"Feeding in exceptionally difficult circumstances\", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[1] MedlinePlus — \"Breastfeeding\" (2017), p. 1 — https://medlineplus.gov/breastfeeding.html"
+  - "[2] WHO — \"Infant and young child feeding\", قسم \"Breastfeeding\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[3] WHO — \"Infant and young child feeding\", قسم \"Breastfeeding\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[4] WHO — \"Infant and young child feeding\", قسم \"Key facts\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[5] WHO — \"Infant and young child feeding\", قسم \"Overview\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[6] WHO — \"Infant and young child feeding\", قسم \"Complementary feeding\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  - "[7] WHO — \"Infant and young child feeding\", قسم \"Feeding in exceptionally difficult circumstances\", ص. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
 draft: false
 ---
 

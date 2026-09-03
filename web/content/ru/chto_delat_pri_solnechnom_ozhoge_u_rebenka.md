@@ -7,11 +7,11 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Sunburn\" (2025), section \"Sunburn\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[2] NHS — \"Sunburn\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[3] NHS — \"Sunburn\" (2025), section \"A pharmacist can help with sunburn\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[4] NHS — \"Sunburn\" (2025), section \"How to ease sunburn yourself\", p. 1 — https://www.nhs.uk/conditions/sunburn/"
-  - "[5] MedlinePlus — \"Sun Exposure\" (2026), section \"Introducción\", p. 1 — https://medlineplus.gov/sunexposure.html"
+  - "[1] NHS — \"Sunburn\" (2025), раздел \"Sunburn\", с. 1 — https://www.nhs.uk/conditions/sunburn/"
+  - "[2] NHS — \"Sunburn\" (2025), раздел \"Don’t\", с. 1 — https://www.nhs.uk/conditions/sunburn/"
+  - "[3] NHS — \"Sunburn\" (2025), раздел \"A pharmacist can help with sunburn\", с. 1 — https://www.nhs.uk/conditions/sunburn/"
+  - "[4] NHS — \"Sunburn\" (2025), раздел \"How to ease sunburn yourself\", с. 1 — https://www.nhs.uk/conditions/sunburn/"
+  - "[5] MedlinePlus — \"Sun Exposure\" (2026), p. 1 — https://medlineplus.gov/sunexposure.html"
 draft: false
 ---
 

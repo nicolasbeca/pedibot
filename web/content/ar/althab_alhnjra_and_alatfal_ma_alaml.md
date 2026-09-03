@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[2] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", p. 1, 2"
-  - "[3] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿QUÉ ES LA LARINGITIS?\", p. 1"
-  - "[4] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[5] SEUP — \"Laringitis. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE LARINGITIS?\", p. 1"
-  - "[6] MedlinePlus — \"Crup\", section \"Introducción\", p. 1 — https://medlineplus.gov/spanish/croup.html"
-  - "[7] MedlinePlus — \"Resfrío\", section \"¿Cuáles son los tratamientos para el resfrío común?\", p. 1 — https://medlineplus.gov/spanish/commoncold.html"
-  - "[10] SEUP — \"Catarro de vías altas. Información para padres\" (2025), section \"CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", p. 2"
+  - "[1] SEUP — \"Laringitis. Información para padres\" (2025), قسم \"¿CUÁLES SON LOS SÍNTOMAS?\", ص. 1"
+  - "[2] SEUP — \"Laringitis. Información para padres\" (2025), قسم \"¿CUÁL ES LA EVOLUCIÓN ESPERABLE?\", ص. 1, 2"
+  - "[3] SEUP — \"Laringitis. Información para padres\" (2025), قسم \"¿QUÉ ES LA LARINGITIS?\", ص. 1"
+  - "[4] SEUP — \"Laringitis. Información para padres\" (2025), قسم \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", ص. 2"
+  - "[5] SEUP — \"Laringitis. Información para padres\" (2025), قسم \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE LARINGITIS?\", ص. 1"
+  - "[6] MedlinePlus — \"Crup\", ص. 1 — https://medlineplus.gov/spanish/croup.html"
+  - "[7] MedlinePlus — \"Resfrío\", قسم \"¿Cuáles son los tratamientos para el resfrío común?\", ص. 1 — https://medlineplus.gov/spanish/commoncold.html"
+  - "[10] SEUP — \"Catarro de vías altas. Información para padres\" (2025), قسم \"CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?\", ص. 2"
 draft: false
 ---
 

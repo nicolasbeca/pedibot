@@ -7,15 +7,15 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1"
-  - "[2] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", p. 2"
-  - "[3] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), section \"¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?\", p. 1"
-  - "[4] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿CÓMO LO PODEMOS PREVENIR?\", p. 2"
-  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", p. 1"
-  - "[6] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿QUÉ SON LOS VÓMITOS?\", p. 1"
-  - "[7] SEUP — \"Vómitos. Información para padres\" (2025), section \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", p. 1, 2"
-  - "[8] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los síntomas de la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
-  - "[10] MedlinePlus — \"Gastroenteritis\", section \"¿Cuáles son los tratamientos para la gastroenteritis?\", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[1] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), قسم \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", ص. 1"
+  - "[2] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), قسم \"Ofrecer en pequeñas cantidades SRO Dolor abdominal\", ص. 2"
+  - "[3] SEUP — \"Gastroenteritis aguda. Información para padres\" (2025), قسم \"¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?\", ص. 1"
+  - "[4] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿CÓMO LO PODEMOS PREVENIR?\", ص. 2"
+  - "[5] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE VÓMITOS?\", ص. 1"
+  - "[6] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿QUÉ SON LOS VÓMITOS?\", ص. 1"
+  - "[7] SEUP — \"Vómitos. Información para padres\" (2025), قسم \"¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?\", ص. 1, 2"
+  - "[8] MedlinePlus — \"Gastroenteritis\", قسم \"¿Cuáles son los síntomas de la gastroenteritis?\", ص. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
+  - "[10] MedlinePlus — \"Gastroenteritis\", قسم \"¿Cuáles son los tratamientos para la gastroenteritis?\", ص. 1 — https://medlineplus.gov/spanish/gastroenteritis.html"
 draft: false
 ---
 

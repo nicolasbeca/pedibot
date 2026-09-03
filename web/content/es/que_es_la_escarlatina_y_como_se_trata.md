@@ -7,15 +7,15 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Scarlet fever\" (2024), section \"Scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[2] NHS — \"Scarlet fever\" (2024), section \"Complications of scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[3] NHS — \"Scarlet fever\" (2024), section \"How long scarlet fever lasts\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[4] NHS — \"Scarlet fever\" (2024), section \"Treating scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[5] NHS — \"Scarlet fever\" (2024), section \"Things you can do yourself to help scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[6] NHS — \"Scarlet fever\" (2024), section \"How to avoid spreading scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[7] NHS — \"Scarlet fever\" (2024), section \"Pregnancy advice\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
-  - "[8] NHS — \"Rashes in babies and children\" (2024), section \"How to treat hand, foot and mouth disease yourself\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[9] NHS — \"Rashes in babies and children\" (2024), section \"Rashes in babies and children\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[1] NHS — \"Scarlet fever\" (2024), sección \"Scarlet fever\", pág. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[2] NHS — \"Scarlet fever\" (2024), sección \"Complications of scarlet fever\", pág. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[3] NHS — \"Scarlet fever\" (2024), sección \"How long scarlet fever lasts\", pág. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[4] NHS — \"Scarlet fever\" (2024), sección \"Treating scarlet fever\", pág. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[5] NHS — \"Scarlet fever\" (2024), sección \"Things you can do yourself to help scarlet fever\", pág. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[6] NHS — \"Scarlet fever\" (2024), sección \"How to avoid spreading scarlet fever\", pág. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[7] NHS — \"Scarlet fever\" (2024), sección \"Pregnancy advice\", pág. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[8] NHS — \"Rashes in babies and children\" (2024), sección \"How to treat hand, foot and mouth disease yourself\", pág. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[9] NHS — \"Rashes in babies and children\" (2024), sección \"Rashes in babies and children\", pág. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
 draft: false
 ---
 
@@ -41,7 +41,7 @@ Para evitar contagiar a otras personas [6]:
 Es importante que termine todos los antibióticos, incluso si se siente mejor [4]. Los antibióticos ayudan a mejorar más rápido, reducen la posibilidad de una enfermedad grave como neumonía y hacen menos probable que contagie la infección a otros [4].
 
 ## Cuándo acudir al médico o a urgencias
-Llame al 999 o vaya a urgencias (A&E) ahora si su hijo está enfermo con un sarpullido y tiene alguno de estos síntomas [9]:
+Llame a su número de emergencias o vaya a urgencias ahora si su hijo está enfermo con un sarpullido y tiene alguno de estos síntomas [9]:
 - Rigidez en el cuello.
 - Molestia con la luz.
 - Parece confundido, agitado o no responde como de costumbre.
@@ -51,7 +51,7 @@ Llame al 999 o vaya a urgencias (A&E) ahora si su hijo está enfermo con un sarp
 - Sensación de opresión en la garganta o dificultad para tragar.
 - El sarpullido parece pequeños moretones o sangrado bajo la piel y no desaparece al presionar un vaso contra él.
 
-En piel negra o morena, puede ser más fácil ver el sarpullido o los cambios de color en las plantas de los pies, las palmas de las manos, los labios, la lengua y el interior de los párpados [9]. No conduzca usted mismo a urgencias. Pida a alguien que conduzca o llame al 999 y pida una ambulancia. Lleve cualquier medicamento que su hijo tome [9].
+En piel negra o morena, puede ser más fácil ver el sarpullido o los cambios de color en las plantas de los pies, las palmas de las manos, los labios, la lengua y el interior de los párpados [9]. No conduzca usted mismo a urgencias. Pida a alguien que conduzca o llame a su número de emergencias y pida una ambulancia. Lleve cualquier medicamento que su hijo tome [9].
 
 Las complicaciones de la escarlatina son poco frecuentes, pero pueden ocurrir durante la infección o en las semanas posteriores. Pueden incluir: infección de oído, absceso en la garganta, sinusitis, neumonía, meningitis o fiebre reumática [2].
 

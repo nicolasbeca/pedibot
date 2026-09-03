@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] CDC — \"Manage Common Cold\", section \"Children\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[2] MedlinePlus — \"Common Cold\" (2022), section \"What are the treatments for the common cold?\", p. 1 — https://medlineplus.gov/commoncold.html"
-  - "[3] NHS — \"Croup\" (2025), section \"Symptoms of croup\", p. 1 — https://www.nhs.uk/conditions/croup/"
-  - "[4] MedlinePlus — \"Cough\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/cough.html"
-  - "[5] NHS — \"Whooping cough\" (2025), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
-  - "[6] NHS — \"Pneumonia\" (2026), section \"Symptoms of pneumonia\", p. 1 — https://www.nhs.uk/conditions/pneumonia/"
-  - "[8] MedlinePlus — \"Asthma in Children\" (2024), section \"What are the treatments for asthma in children?\", p. 1 — https://medlineplus.gov/asthmainchildren.html"
-  - "[9] NHS — \"Whooping cough\" (2025), section \"How to ease the symptoms of whooping cough\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[1] CDC — \"Manage Common Cold\", قسم \"Children\", ص. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[2] MedlinePlus — \"Common Cold\" (2022), قسم \"What are the treatments for the common cold?\", ص. 1 — https://medlineplus.gov/commoncold.html"
+  - "[3] NHS — \"Croup\" (2025), قسم \"Symptoms of croup\", ص. 1 — https://www.nhs.uk/conditions/croup/"
+  - "[4] MedlinePlus — \"Cough\" (2025), p. 1 — https://medlineplus.gov/cough.html"
+  - "[5] NHS — \"Whooping cough\" (2025), قسم \"When and where to get medical help\", ص. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[6] NHS — \"Pneumonia\" (2026), قسم \"Symptoms of pneumonia\", ص. 1 — https://www.nhs.uk/conditions/pneumonia/"
+  - "[8] MedlinePlus — \"Asthma in Children\" (2024), قسم \"What are the treatments for asthma in children?\", ص. 1 — https://medlineplus.gov/asthmainchildren.html"
+  - "[9] NHS — \"Whooping cough\" (2025), قسم \"How to ease the symptoms of whooping cough\", ص. 1 — https://www.nhs.uk/conditions/whooping-cough/"
 draft: false
 ---
 

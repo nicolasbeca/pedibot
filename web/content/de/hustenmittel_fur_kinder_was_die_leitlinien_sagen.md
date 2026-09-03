@@ -7,10 +7,10 @@ date: 2026-09-02
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] CDC — \"Manage Common Cold\", section \"Children\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
-  - "[2] MedlinePlus — \"Common Cold\" (2022), section \"What are the treatments for the common cold?\", p. 1 — https://medlineplus.gov/commoncold.html"
-  - "[4] MedlinePlus — \"Cough\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/cough.html"
-  - "[9] NHS — \"Whooping cough\" (2025), section \"How to ease the symptoms of whooping cough\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[1] CDC — \"Manage Common Cold\", Abschnitt \"Children\", S. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[2] MedlinePlus — \"Common Cold\" (2022), Abschnitt \"What are the treatments for the common cold?\", S. 1 — https://medlineplus.gov/commoncold.html"
+  - "[4] MedlinePlus — \"Cough\" (2025), p. 1 — https://medlineplus.gov/cough.html"
+  - "[9] NHS — \"Whooping cough\" (2025), Abschnitt \"How to ease the symptoms of whooping cough\", S. 1 — https://www.nhs.uk/conditions/whooping-cough/"
 draft: false
 ---
 

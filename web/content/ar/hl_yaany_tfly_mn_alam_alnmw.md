@@ -7,9 +7,9 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Growing pains\" (2026), section \"Growing pains\", p. 1 — https://www.nhs.uk/conditions/growing-pains/"
-  - "[2] NHS — \"Growing pains\" (2026), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/growing-pains/"
-  - "[3] NHS — \"Growing pains\" (2026), section \"Causes of growing pains\", p. 1 — https://www.nhs.uk/conditions/growing-pains/"
+  - "[1] NHS — \"Growing pains\" (2026), قسم \"Growing pains\", ص. 1 — https://www.nhs.uk/conditions/growing-pains/"
+  - "[2] NHS — \"Growing pains\" (2026), قسم \"Don’t\", ص. 1 — https://www.nhs.uk/conditions/growing-pains/"
+  - "[3] NHS — \"Growing pains\" (2026), قسم \"Causes of growing pains\", ص. 1 — https://www.nhs.uk/conditions/growing-pains/"
 draft: false
 ---
 

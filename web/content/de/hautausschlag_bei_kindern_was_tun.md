@@ -7,16 +7,16 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Rashes in babies and children\" (2024), section \"Skin-coloured or pink spots\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[2] NHS — \"Rashes in babies and children\" (2024), section \"Symptoms of nappy rash\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[3] NHS — \"Rashes in babies and children\" (2024), section \"Symptoms of hand, foot and mouth disease\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[4] NHS — \"Rashes in babies and children\" (2024), section \"Symptoms of chickenpox\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[5] NHS — \"Rashes in babies and children\" (2024), section \"Rash without fever or itching Tiny spots on a baby's face\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[6] NHS — \"Rashes in babies and children\" (2024), section \"How you can treat chickenpox yourself\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[7] NHS — \"Rashes in babies and children\" (2024), section \"Red, yellow and white spots in babies\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[8] NHS — \"Rashes in babies and children\" (2024), section \"Small and very itchy spots\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[9] NHS — \"Rashes in babies and children\" (2024), section \"Small spots and blisters\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
-  - "[10] NHS — \"Rashes in babies and children\" (2024), section \"Raised, itchy spots or patches\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[1] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Skin-coloured or pink spots\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[2] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Symptoms of nappy rash\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[3] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Symptoms of hand, foot and mouth disease\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[4] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Symptoms of chickenpox\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[5] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Rash without fever or itching Tiny spots on a baby's face\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[6] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"How you can treat chickenpox yourself\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[7] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Red, yellow and white spots in babies\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[8] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Small and very itchy spots\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[9] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Small spots and blisters\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[10] NHS — \"Rashes in babies and children\" (2024), Abschnitt \"Raised, itchy spots or patches\", S. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
 draft: false
 ---
 

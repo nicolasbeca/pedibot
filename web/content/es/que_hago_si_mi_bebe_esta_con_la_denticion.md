@@ -7,10 +7,10 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Baby teething symptoms\" (2026), section \"Baby teething symptoms\", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
-  - "[2] NHS — \"Baby teething symptoms\" (2026), section \"Teething symptoms\", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
-  - "[3] NHS — \"Baby teething symptoms\" (2026), section \"What order do baby teeth appear in?\", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
-  - "[4] NHS — \"Colic\" (2022), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/colic/"
+  - "[1] NHS — \"Baby teething symptoms\" (2026), sección \"Baby teething symptoms\", pág. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
+  - "[2] NHS — \"Baby teething symptoms\" (2026), sección \"Teething symptoms\", pág. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
+  - "[3] NHS — \"Baby teething symptoms\" (2026), sección \"What order do baby teeth appear in?\", pág. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/"
+  - "[4] NHS — \"Colic\" (2022), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/colic/"
 draft: false
 ---
 
@@ -30,12 +30,12 @@ No hay tratamientos que aceleren la salida de los dientes, pero puedes aliviar l
 - Mantén su rutina habitual de sueño y alimentación, aunque esté más inquieto.
 - Si la temperatura es menor de 38 °C, no es fiebre; vigílale y mantén una temperatura ambiente agradable [2].
 
-No uses remedios caseros sin consultar antes con un profesional. Si el bebé tiene síntomas que te preocupan, llama al 111 o contacta con un médico de cabecera [2].
+No uses remedios caseros sin consultar antes con un profesional. Si el bebé tiene síntomas que te preocupan, contacta con tu médico [2].
 
 ## Cuándo acudir al médico o a urgencias
-Pide consejo no urgente (llama al 111 o ve al médico) si: estás preocupado por el llanto de tu bebé, nada parece funcionar para calmarle, te resulta difícil sobrellevar la situación, tu bebé no gana peso como se espera o los síntomas continúan después de los 4 meses [4].
+Pide consejo no urgente a tu médico si: estás preocupado por el llanto de tu bebé, nada parece funcionar para calmarle, te resulta difícil sobrellevar la situación, tu bebé no gana peso como se espera o los síntomas continúan después de los 4 meses [4].
 
-Acude a urgencias o llama al 999 si: tu bebé tiene un llanto débil o agudo, o su llanto no suena como el habitual [4]. Confía en tus instintos: si crees que algo va realmente mal, especialmente si hay otros síntomas preocupantes, busca ayuda médica [4]. No tienes que conducir tú; pide a alguien que te lleve o llama a una ambulancia [4].
+Acude a urgencias o llama a tu número de emergencias si: tu bebé tiene un llanto débil o agudo, o su llanto no suena como el habitual [4]. Confía en tus instintos: si crees que algo va realmente mal, especialmente si hay otros síntomas preocupantes, busca ayuda médica [4]. No tienes que conducir tú; pide a alguien que te lleve o llama a una ambulancia [4].
 
 ## Preguntas frecuentes
 **¿La dentición causa fiebre alta?**

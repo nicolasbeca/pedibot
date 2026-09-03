@@ -7,13 +7,13 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), section \"¿QUÉ SON LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA (TCA)?\", p. 1"
-  - "[2] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), section \"PREVENCIÓN Y MANEJO DE LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA\", p. 1"
-  - "[3] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), section \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", p. 2"
-  - "[4] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), section \"singnos y síntomas pSICOLÓGICOS\", p. 1"
-  - "[6] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), section \"¿DÓNDE PUEDO ACUDIR SI PRESENTA ALGUNA DE LAS SEÑALES DE ALARMA?\", p. 2"
-  - "[7] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), section \"signos y síntomas conductuales signos y síntomas físicos SI SE TRATA DE UN FAMILIAR, ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", p. 2"
-  - "[8] WHO — \"La salud mental de los adolescentes\", section \"Trastornos de la conducta alimentaria\", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
+  - "[1] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), Abschnitt \"¿QUÉ SON LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA (TCA)?\", S. 1"
+  - "[2] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), Abschnitt \"PREVENCIÓN Y MANEJO DE LOS TRASTORNOS DE LA CONDUCTA ALIMENTARIA\", S. 1"
+  - "[3] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), Abschnitt \"¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?\", S. 2"
+  - "[4] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), Abschnitt \"singnos y síntomas pSICOLÓGICOS\", S. 1"
+  - "[6] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), Abschnitt \"¿DÓNDE PUEDO ACUDIR SI PRESENTA ALGUNA DE LAS SEÑALES DE ALARMA?\", S. 2"
+  - "[7] SEUP — \"Trastornos de la conducta alimentaria. Información para padres\" (2025), Abschnitt \"signos y síntomas conductuales signos y síntomas físicos SI SE TRATA DE UN FAMILIAR, ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?\", S. 2"
+  - "[8] WHO — \"La salud mental de los adolescentes\", Abschnitt \"Trastornos de la conducta alimentaria\", S. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health"
 draft: false
 ---
 

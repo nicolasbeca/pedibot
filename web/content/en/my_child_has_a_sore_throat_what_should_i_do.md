@@ -9,7 +9,7 @@ model: deepseek-v4-flash
 sources:
   - "[1] NHS — \"Tonsillitis\" (2024), section \"Tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
   - "[2] NHS — \"Sore throat\" (2023), section \"Causes of sore throats\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
-  - "[3] MedlinePlus — \"Sore Throat\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/sorethroat.html"
+  - "[3] MedlinePlus — \"Sore Throat\" (2025), p. 1 — https://medlineplus.gov/sorethroat.html"
   - "[4] NHS — \"Tonsillitis\" (2024), section \"A pharmacist can help with tonsillitis\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
   - "[5] NHS — \"Tonsillitis\" (2024), section \"Complications of tonsillitis (quinsy)\", p. 1 — https://www.nhs.uk/conditions/tonsillitis/"
   - "[6] NHS — \"Sore throat\" (2023), section \"Sore throat symptoms\", p. 1 — https://www.nhs.uk/conditions/sore-throat/"
@@ -44,9 +44,9 @@ A pharmacist can also give advice and suggest treatments like lozenges containin
 ## When to see a doctor or go to the emergency department
 See a GP if the symptoms of tonsillitis do not go away within 1 week, or if you keep getting throat infections [4].
 
-Get urgent help from NHS 111 if your child has pus-filled spots on their tonsils, or a sore throat so painful it is difficult to eat or drink [4].
+Get urgent medical advice if your child has pus-filled spots on their tonsils, or a sore throat so painful it is difficult to eat or drink [4].
 
-Call 999 or go to A&E immediately if your child has [5]:
+Call your emergency number or go to the emergency department immediately if your child has [5]:
 
 - A severe sore throat that quickly gets worse
 - Swelling inside the mouth and throat
@@ -55,7 +55,7 @@ Call 999 or go to A&E immediately if your child has [5]:
 - Difficulty breathing
 - Difficulty opening the mouth
 
-These are signs of quinsy, a rare complication where an abscess forms between the tonsils and the throat wall [5]. Do not drive to A&E – ask someone to drive you or call 999 for an ambulance [5].
+These are signs of quinsy, a rare complication where an abscess forms between the tonsils and the throat wall [5]. Do not drive to the emergency department – ask someone to drive you or call your emergency number for an ambulance [5].
 
 ## Common questions
 **Is tonsillitis the same as a sore throat?**  

@@ -7,14 +7,14 @@ date: 2026-09-03
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[3] AEP — \"Cuidados generales del recién nacido sano\", section \"3. Tras la salida del feto se debe clampar el\", p. 2, 3"
-  - "[4] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[5] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS DESPUÉS DEL PARTO\", p. 3, 4, 5, 6, 7, 8"
-  - "[6] Junta de Andalucía — \"Cuídame: orientaciones para el comienzo de la vida\", section \"4.1 Cuidados del recién nacido El aseo\", p. 41"
-  - "[7] AEP — \"Cuidados generales del recién nacido sano\", section \"3. Tras la salida del feto se debe clampar el\", p. 2, 3"
-  - "[8] AEP — \"Cuidados generales del recién nacido sano\", section \"Cuidados generales del recién nacido sano\", p. 1"
-  - "[10] AEP — \"Cuidados generales del recién nacido sano\", section \"CUIDADOS EN EL PARITORIO\", p. 1, 2"
+  - "[1] AEP — \"Cuidados generales del recién nacido sano\", раздел \"CUIDADOS DESPUÉS DEL PARTO\", с. 3, 4, 5, 6, 7, 8"
+  - "[3] AEP — \"Cuidados generales del recién nacido sano\", раздел \"3. Tras la salida del feto se debe clampar el\", с. 2, 3"
+  - "[4] AEP — \"Cuidados generales del recién nacido sano\", раздел \"CUIDADOS DESPUÉS DEL PARTO\", с. 3, 4, 5, 6, 7, 8"
+  - "[5] AEP — \"Cuidados generales del recién nacido sano\", раздел \"CUIDADOS DESPUÉS DEL PARTO\", с. 3, 4, 5, 6, 7, 8"
+  - "[6] Junta de Andalucía — \"Cuídame: orientaciones para el comienzo de la vida\", раздел \"4.1 Cuidados del recién nacido El aseo\", с. 41"
+  - "[7] AEP — \"Cuidados generales del recién nacido sano\", раздел \"3. Tras la salida del feto se debe clampar el\", с. 2, 3"
+  - "[8] AEP — \"Cuidados generales del recién nacido sano\", раздел \"Cuidados generales del recién nacido sano\", с. 1"
+  - "[10] AEP — \"Cuidados generales del recién nacido sano\", раздел \"CUIDADOS EN EL PARITORIO\", с. 1, 2"
 draft: false
 ---
 

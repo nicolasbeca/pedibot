@@ -7,9 +7,9 @@ date: 2026-09-02
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] MedlinePlus — \"Fever\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/fever.html"
-  - "[2] NHS — \"High temperature (fever) in children\" (2025), section \"High temperature (fever) in children\", p. 1 — https://www.nhs.uk/conditions/fever-in-children/"
-  - "[3] NHS — \"High temperature (fever) in children\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/fever-in-children/"
+  - "[1] MedlinePlus — \"Fever\" (2025), p. 1 — https://medlineplus.gov/fever.html"
+  - "[2] NHS — \"High temperature (fever) in children\" (2025), Abschnitt \"High temperature (fever) in children\", S. 1 — https://www.nhs.uk/conditions/fever-in-children/"
+  - "[3] NHS — \"High temperature (fever) in children\" (2025), Abschnitt \"Don’t\", S. 1 — https://www.nhs.uk/conditions/fever-in-children/"
 draft: false
 ---
 

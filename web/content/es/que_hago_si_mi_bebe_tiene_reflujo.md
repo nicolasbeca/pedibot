@@ -7,12 +7,12 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Reflux in babies\" (2025), section \"Reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[2] NHS — \"Reflux in babies\" (2025), section \"Treatment for reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[3] NHS — \"Reflux in babies\" (2025), section \"Causes of reflux\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[4] NHS — \"Reflux in babies\" (2025), section \"Things you can try to ease reflux in babies\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[5] NHS — \"Reflux in babies\" (2025), section \"Don’t\", p. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
-  - "[7] NHS — \"Colic\" (2022), section \"Symptoms of colic\", p. 1 — https://www.nhs.uk/conditions/colic/"
+  - "[1] NHS — \"Reflux in babies\" (2025), sección \"Reflux in babies\", pág. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[2] NHS — \"Reflux in babies\" (2025), sección \"Treatment for reflux in babies\", pág. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[3] NHS — \"Reflux in babies\" (2025), sección \"Causes of reflux\", pág. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[4] NHS — \"Reflux in babies\" (2025), sección \"Things you can try to ease reflux in babies\", pág. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[5] NHS — \"Reflux in babies\" (2025), sección \"Don’t\", pág. 1 — https://www.nhs.uk/conditions/reflux-in-babies/"
+  - "[7] NHS — \"Colic\" (2022), sección \"Symptoms of colic\", pág. 1 — https://www.nhs.uk/conditions/colic/"
 draft: false
 ---
 
@@ -55,7 +55,7 @@ Consulta a un médico de cabecera si tu bebé [5]:
 - Tiene más de 1 año y aún tiene reflujo
 - No gana peso o está perdiendo peso
 
-Pide una cita urgente con el médico o llama al 111 si tu bebé [5]:
+Pide una cita urgente con el médico si tu bebé [5]:
 - Tiene vómito verde o amarillo, o con sangre
 - Vomita en proyectil (con más fuerza de lo normal)
 - Tiene sangre en las heces
@@ -66,10 +66,10 @@ Pide una cita urgente con el médico o llama al 111 si tu bebé [5]:
 - No deja de llorar y está muy angustiado
 - Se niega a comer
 
-También llama al médico o al 111 si tienes cualquier otra preocupación sobre tu bebé [5].
+También llama a tu médico si tienes cualquier otra preocupación sobre tu bebé [5].
 
 ## Preguntas frecuentes
-¿El reflujo es lo mismo que el cólico? No exactamente. El cólico es cuando un bebé sano llora más de 3 horas al día, 3 días a la semana durante al menos 1 semana [7]. El llanto del cólico puede ser difícil de calmar, con puños cerrados, cara roja o rodillas hacia el abdomen [7]. El reflujo es una de las posibles causas del llanto excesivo [7]. Si no estás segura de qué le pasa a tu bebé, habla con tu visitador de salud, llama al 111 o consulta a un médico [7].
+¿El reflujo es lo mismo que el cólico? No exactamente. El cólico es cuando un bebé sano llora más de 3 horas al día, 3 días a la semana durante al menos 1 semana [7]. El llanto del cólico puede ser difícil de calmar, con puños cerrados, cara roja o rodillas hacia el abdomen [7]. El reflujo es una de las posibles causas del llanto excesivo [7]. Si no estás segura de qué le pasa a tu bebé, habla con tu enfermera de pediatría o consulta a un médico [7].
 
 ¿Puede ser alergia a la leche de vaca? Sí. Un médico puede querer comprobar si tu bebé tiene alergia a la leche de vaca, porque los síntomas pueden ser muy similares al reflujo [2].
 

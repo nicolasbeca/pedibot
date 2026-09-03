@@ -7,12 +7,12 @@ date: 2026-09-02
 prompt_version: article_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Burns and scalds\" (2026), section \"What to do if you have a burn or scald\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[2] NHS — \"Burns and scalds\" (2026), section \"Burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[3] NHS — \"Burns and scalds\" (2026), section \"Treatments for burns and scalds\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[4] NHS — \"Burns and scalds\" (2026), section \"Things you can do to help while burns and scalds heal\", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
-  - "[5] MedlinePlus — \"Burns\" (2024), section \"Introducción\", p. 1 — https://medlineplus.gov/burns.html"
-  - "[6] NHS — \"Heat exhaustion and heatstroke\" (2026), section \"Things you can do to cool someone down\", p. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/"
+  - "[1] NHS — \"Burns and scalds\" (2026), Abschnitt \"What to do if you have a burn or scald\", S. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[2] NHS — \"Burns and scalds\" (2026), Abschnitt \"Burns and scalds\", S. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[3] NHS — \"Burns and scalds\" (2026), Abschnitt \"Treatments for burns and scalds\", S. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[4] NHS — \"Burns and scalds\" (2026), Abschnitt \"Things you can do to help while burns and scalds heal\", S. 1 — https://www.nhs.uk/conditions/burns-and-scalds/"
+  - "[5] MedlinePlus — \"Burns\" (2024), p. 1 — https://medlineplus.gov/burns.html"
+  - "[6] NHS — \"Heat exhaustion and heatstroke\" (2026), Abschnitt \"Things you can do to cool someone down\", S. 1 — https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/"
 draft: false
 ---
 

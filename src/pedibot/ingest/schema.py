@@ -6,6 +6,8 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 
+from pedibot.ingest.sections import LEAD_SECTION
+
 Usage = Literal["publico", "citar_solo", "excluido"]
 DocType = Literal["hoja_padres", "guia_clinica", "calendario", "manual", "libro", "informe"]
 Evidence = Literal[
@@ -60,7 +62,16 @@ class Chunk(BaseModel):
     n_words: int = 0
 
     def citation(self) -> str:
-        """Human-readable citation used at the bottom of every answer."""
+        """Human-readable citation used at the bottom of every answer.
+
+        The section is named only when the document actually has one. Text before the first
+        heading gets a synthetic label from the chunker, and printing that as if it were a
+        heading sends a reader looking for something that is not there.
+        """
         year = f" ({self.year})" if self.year else ""
         pages = ", ".join(str(p) for p in self.pages)
-        return f'{self.org} — "{self.doc_title}"{year}, section "{self.section}", p. {pages}'
+        head = f'{self.org} — "{self.doc_title}"{year}'
+        # "Introducción" is the old sentinel: it is still in the index until the next full ingest
+        if self.section and self.section not in (LEAD_SECTION, "Introducción"):
+            head += f', section "{self.section}"'
+        return f"{head}, p. {pages}"

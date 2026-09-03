@@ -7,8 +7,8 @@ date: 2026-09-03
 prompt_version: article_compare_v1
 model: deepseek-v4-flash
 sources:
-  - "[1] NHS — \"Paracetamol for children (Calpol) - Other common brands: Panadol\" (2025), section \"Giving paracetamol with ibuprofen\", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/"
-  - "[2] NHS — \"Paracetamol for children (Calpol) - Other common brands: Panadol\" (2025), section \"What paracetamol is for\", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/"
+  - "[1] NHS — \"Paracetamol for children (Calpol) - Other common brands: Panadol\" (2025), раздел \"Giving paracetamol with ibuprofen\", с. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/"
+  - "[2] NHS — \"Paracetamol for children (Calpol) - Other common brands: Panadol\" (2025), раздел \"What paracetamol is for\", с. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/"
 draft: false
 ---
 
