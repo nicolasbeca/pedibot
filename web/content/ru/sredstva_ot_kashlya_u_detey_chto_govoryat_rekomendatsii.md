@@ -1,0 +1,48 @@
+---
+title: "Средства от кашля у детей: что говорят рекомендации"
+description: "Сравнение рекомендаций CDC, MedlinePlus и NHS о лекарствах от кашля для детей."
+lang: ru
+topic: compare_cough_medicines
+date: 2026-09-03
+prompt_version: article_compare_v1
+model: deepseek-v4-flash
+sources:
+  - "[1] CDC — \"Manage Common Cold\", section \"Children\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[2] MedlinePlus — \"Common Cold\" (2022), section \"What are the treatments for the common cold?\", p. 1 — https://medlineplus.gov/commoncold.html"
+  - "[4] MedlinePlus — \"Cough\" (2025), section \"Introducción\", p. 1 — https://medlineplus.gov/cough.html"
+  - "[5] NHS — \"Whooping cough\" (2025), section \"When and where to get medical help\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+  - "[6] NHS — \"Pneumonia\" (2026), section \"Symptoms of pneumonia\", p. 1 — https://www.nhs.uk/conditions/pneumonia/"
+  - "[9] NHS — \"Whooping cough\" (2025), section \"How to ease the symptoms of whooping cough\", p. 1 — https://www.nhs.uk/conditions/whooping-cough/"
+draft: false
+---
+
+## Что говорят рекомендации
+
+| Организация | Что говорит | Источник |
+|---|---|---|
+| CDC | Безрецептурные средства от кашля и простуды не рекомендуются детям младше 6 лет — возможны серьёзные, иногда опасные для жизни побочные эффекты. Мёд можно давать детям от 1 года, леденцы — только с 4 лет. | [1] |
+| MedlinePlus | Детям до 4 лет не следует давать лекарства от кашля. Детям старше 4 лет — с осторожностью, внимательно читая этикетки. Перед приёмом любых средств от кашля у ребёнка нужно посоветоваться с врачом. | [2], [4] |
+| NHS | При коклюше для облегчения симптомов можно давать парацетамол или ибупрофен, если ребёнку некомфортно — проверьте инструкцию. Аспирин детям до 16 лет не давать. | [9] |
+
+## В чём они совпадают
+
+Все три организации сходятся в том, что лекарства от кашля детям нужно давать с большой осторожностью или не давать вовсе. CDC и MedlinePlus прямо предупреждают об опасности для маленьких детей. NHS не рекомендует аспирин детям и подросткам — это же подчёркивает и MedlinePlus [2], [9]. Все источники советуют при кашле больше отдыхать, пить жидкость и увлажнять воздух [1], [2]. Мёд как домашнее средство упоминает только CDC, и только для детей старше года [1].
+
+## В чём они расходятся (и почему это может дать равнозначный результат)
+
+Главное расхождение — возрастные границы. CDC говорит о запрете до 6 лет, MedlinePlus — до 4 лет [1], [4]. Это может выглядеть противоречием, но на практике обе организации призывают родителей консультироваться с врачом перед приёмом любых средств от кашля у детей [1], [2]. Для детей 4–6 лет разница в рекомендациях невелика: и CDC, и MedlinePlus советуют осторожность и врачебный контроль. NHS в предоставленных источниках вообще не обсуждает безрецептурные средства от кашля, а описывает только лечение коклюша — там рекомендации касаются парацетамола и ибупрофена [9]. Таким образом, для практики важнее не точный возраст, а правило: не давать ребёнку лекарства без консультации врача.
+
+## Когда обращаться к врачу или в приёмное отделение
+
+Обратитесь к врачу, если у ребёнка кашель длится более 3 недель, поднимается температура дольше 4 дней, симптомы длятся более 10 дней без улучшения, или кашель усиливается после улучшения [2], [6]. Срочная помощь нужна при затруднённом или учащённом дыхании, посиневших губах, языке или коже, крови в мокроте, судорогах, или если ребёнок не просыпается или стал вялым [2], [5], [6]. Для детей младше 6 месяцев с симптомами коклюша — немедленно обратитесь за помощью [5].
+
+## Источники
+
+[1] CDC — "Manage Common Cold", section "Children", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html
+[2] MedlinePlus — "Common Cold" (2022), section "What are the treatments for the common cold?", p. 1 — https://medlineplus.gov/commoncold.html
+[4] MedlinePlus — "Cough" (2025), section "Introducción", p. 1 — https://medlineplus.gov/cough.html
+[5] NHS — "Whooping cough" (2025), section "When and where to get medical help", p. 1 — https://www.nhs.uk/conditions/whooping-cough/
+[6] NHS — "Pneumonia" (2026), section "Symptoms of pneumonia", p. 1 — https://www.nhs.uk/conditions/pneumonia/
+[9] NHS — "Whooping cough" (2025), section "How to ease the symptoms of whooping cough", p. 1 — https://www.nhs.uk/conditions/whooping-cough/
+
+*Эта статья обобщает опубликованные педиатрические рекомендации. Это не медицинская консультация, и она не заменяет вашего педиатра. В экстренной ситуации звоните по местному номеру экстренной службы.*

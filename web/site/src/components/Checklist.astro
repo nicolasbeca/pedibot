@@ -21,12 +21,12 @@ const itemsBy = (lvl: string) => (data.items as any[]).filter(i => i.level === l
 </div>
 <style>
   .check { display: grid; gap: 18px; margin-top: 28px; }
-  .lvl { border-radius: var(--r); padding: 22px 24px; border-left: 6px solid; }
+  .lvl { border-radius: var(--r); padding: 22px 24px; border-inline-start: 6px solid; }
   .lvl.emergency { background: var(--coral-soft); border-color: var(--coral); }
   .lvl.urgent { background: var(--amber-soft); border-color: var(--amber); }
   .lvl.gp { background: var(--mint); border-color: var(--mint-2); }
   .lvl h2 { font-size: 1.15rem; }
-  .lvl ul { margin: 12px 0 0; padding-left: 0; list-style: none; display: grid; gap: 8px; }
+  .lvl ul { margin: 12px 0 0; padding-inline-start: 0; list-style: none; display: grid; gap: 8px; }
   .lvl li { display: grid; grid-template-columns: 150px 1fr; gap: 12px; align-items: start; font-size: .98rem; }
   .cat { font-family: Nunito, sans-serif; font-weight: 700; font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); padding-top: 4px; overflow-wrap: anywhere; }
   @media (max-width: 640px) { .lvl li { grid-template-columns: 1fr; gap: 2px; } }

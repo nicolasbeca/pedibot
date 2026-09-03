@@ -544,6 +544,24 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         ["adolescente"],
     ),
     ("who", "https://www.who.int/news-room/fact-sheets/detail/malaria", "general", "en", ["todas"]),
+    # ---------------- العربية (fase árabe, 3-sep-2026) ----------------
+    # Arabic is another of the WHO's six official languages, so the same fact sheets exist
+    # under the same licence. All fifteen checked for a 200 before being listed.
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/measles", "piel", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/rubella", "piel", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/pneumonia", "respiratorio", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/diarrhoeal-disease", "digestivo", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/infant-and-young-child-feeding", "alimentacion", "ar", ["lactante"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/malnutrition", "alimentacion", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/adolescent-mental-health", "salud_mental", "ar", ["adolescente"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/immunization-coverage", "vacunas", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/meningitis", "general", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/poliomyelitis", "general", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/hepatitis-b", "general", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/tuberculosis", "respiratorio", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/drowning", "accidentes", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/burns", "accidentes", "ar", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/falls", "accidentes", "ar", ["todas"]),
     # ---------------- Русский (fase rusa, 3-sep-2026) ----------------
     # The WHO in Russian: one of its six official languages, so the fact sheets exist there
     # under the licence already accepted. Slugs checked for a 200 first — four of the ones

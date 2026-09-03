@@ -71,18 +71,18 @@ const jsonld = {
     <p class="n" style="margin-top:26px">
       {s.dosedrug_others}{' '}
       {medicines().filter((o) => o.slug_by[lang] !== m.slug_by[lang]).slice(0, 8).map((o) => (
-        <a href={`/ru/dose/${o.slug_by[lang]}`} style="margin-right:10px">{o.name_by[lang]}</a>
+        <a href={`/ru/dose/${o.slug_by[lang]}`} style="margin-inline-end:10px">{o.name_by[lang]}</a>
       ))}
     </p>
   </div>
   <style>
     .scroll { overflow-x: auto; margin-top: 12px; }
     table.plain { width: 100%; border-collapse: collapse; font-size: .92rem; }
-    table.plain th, table.plain td { padding: 6px 10px; text-align: left; white-space: nowrap; }
+    table.plain th, table.plain td { padding: 6px 10px; text-align: start; white-space: nowrap; }
     table.plain thead th { border-bottom: 2px solid var(--line); font-size: .84rem; }
     table.plain tbody tr { border-bottom: 1px solid var(--line); }
     table.plain tbody tr.low { color: var(--ink-3); background: var(--cream); }
-    .warn { background: var(--amber-soft); border-left: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 14px; font-size: .92rem; }
+    .warn { background: var(--amber-soft); border-inline-start: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 14px; font-size: .92rem; }
     .note { background: var(--sky); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
     .src { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
   </style>

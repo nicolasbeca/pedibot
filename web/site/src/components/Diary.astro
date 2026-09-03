@@ -43,7 +43,7 @@ const T = t(lang).diary;
     for (const [med, hrs] of Object.entries(INTERVAL)) {
       if (!(med in last)) continue;
       const due = last[med] + hrs * 3600e3, left = due - Date.now();
-      h += `<div style="margin-top:6px">${med}: <span class="due">${left <= 0 ? T.ok : T.wait + ' ' + Math.floor(left / 3600e3) + 'h ' + Math.floor((left % 3600e3) / 60e3) + 'min'}</span> ${left > 0 ? `<button class="fb" data-due="${due}" data-med="${med}" type="button" style="margin-left:8px">🔔 ${T.notify}</button>` : ''}</div>`;
+      h += `<div style="margin-top:6px">${med}: <span class="due">${left <= 0 ? T.ok : T.wait + ' ' + Math.floor(left / 3600e3) + 'h ' + Math.floor((left % 3600e3) / 60e3) + 'min'}</span> ${left > 0 ? `<button class="fb" data-due="${due}" data-med="${med}" type="button" style="margin-inline-start:8px">🔔 ${T.notify}</button>` : ''}</div>`;
     }
     next.innerHTML = h + (Object.keys(last).length ? '' : `<p class="n">—</p>`);
     clearTimeout(timer); timer = window.setTimeout(render, 60e3);

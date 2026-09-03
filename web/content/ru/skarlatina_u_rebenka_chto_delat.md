@@ -1,0 +1,83 @@
+---
+title: "Скарлатина у ребёнка: что делать?"
+description: "Скарлатина — заразная инфекция, которая лечится антибиотиками. Узнайте, что делать дома и когда нужен врач."
+lang: ru
+topic: scarlet_fever
+date: 2026-09-03
+prompt_version: article_v1
+model: deepseek-v4-flash
+sources:
+  - "[1] NHS — \"Scarlet fever\" (2024), section \"Scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[2] NHS — \"Scarlet fever\" (2024), section \"Complications of scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[3] NHS — \"Scarlet fever\" (2024), section \"How long scarlet fever lasts\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[4] NHS — \"Scarlet fever\" (2024), section \"Treating scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[5] NHS — \"Scarlet fever\" (2024), section \"Things you can do yourself to help scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[6] NHS — \"Scarlet fever\" (2024), section \"How to avoid spreading scarlet fever\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[7] NHS — \"Scarlet fever\" (2024), section \"Pregnancy advice\", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/"
+  - "[8] NHS — \"Rashes in babies and children\" (2024), section \"How to treat hand, foot and mouth disease yourself\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+  - "[9] NHS — \"Rashes in babies and children\" (2024), section \"Rashes in babies and children\", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/"
+draft: false
+---
+
+## Что это
+
+Скарлатина — это заразная инфекция, которая чаще всего поражает маленьких детей. Она легко лечится антибиотиками [1]. Врач часто может поставить диагноз, посмотрев на язык и сыпь. Иногда он может взять мазок из горла или назначить анализ крови [1].
+
+Сыпь при скарлатине — это мелкие приподнятые бугорки, которые на ощупь шершавые, как наждачная бумага. Если вы думаете, что у ребёнка скарлатина, обратитесь к врачу [8].
+
+Болезнь длится около недели [3]. Благодаря антибиотикам скарлатина сейчас встречается реже и лечится проще, чем раньше, хотя число случаев выросло в последние годы [2]. Осложнения редки, но могут возникнуть во время болезни или в течение нескольких недель после неё: инфекция уха, абсцесс горла, синусит, пневмония, менингит, ревматическая лихорадка [2].
+
+## Что можно сделать дома
+
+Пока вы принимаете антибиотики, назначенные врачом, можно облегчить симптомы [5]:
+- Пить прохладные жидкости.
+- Есть мягкую пищу, если болит горло.
+- Принимать обезболивающие, например парацетамол, чтобы снизить высокую температуру (не давайте аспирин детям до 16 лет) [5].
+- Использовать каламиновый лосьон или антигистаминные таблетки, чтобы уменьшить зуд [5].
+
+Чтобы не заражать других [6]:
+- Не ходите в сад, школу или на работу, пока не пройдёт 24 часа после первой дозы антибиотиков [3][6].
+- Мойте руки с мылом.
+- Используйте салфетки при кашле и чихании и сразу выбрасывайте их.
+- Не делитесь столовыми приборами, чашками, полотенцами, одеждой, постельным бельём или ванной [6].
+
+Антибиотики назначает врач. Они помогают быстрее выздороветь, снижают риск серьёзных болезней и уменьшают вероятность заражения других [4]. Продолжайте принимать антибиотики до конца курса, даже если стало лучше [4].
+
+## Когда обращаться к врачу или в приёмное отделение
+
+Обратитесь к врачу, если вы думаете, что у ребёнка скарлатина [8]. Немедленно вызывайте скорую или езжайте в приёмное отделение, если ребёнок болен и у него сыпь, а также есть любой из этих признаков [9]:
+- Скованность шеи.
+- Чувствительность к свету.
+- Ребёнок спутан, возбуждён или реагирует не как обычно.
+- Затруднённое дыхание (хрипы, втягивание живота под рёбрами), одышка или очень частое дыхание.
+- Кожа, губы или язык выглядят бледными, синими, серыми или пятнистыми.
+- Внезапный отёк губ, рта, горла или языка.
+- Ощущение сжатия в горле или трудности с глотанием.
+- Сыпь выглядит как мелкие синяки или кровоизлияния под кожей и не исчезает при нажатии стеклом.
+
+На тёмной коже сыпь или изменение цвета легче заметить на подошвах, ладонях, губах, языке и внутри век [9]. Не садитесь за руль — попросите кого-то отвезти вас или вызовите скорую [9].
+
+## Частые вопросы
+
+**Можно ли заразиться скарлатиной при беременности?**
+Нет доказательств, что скарлатина во время беременности навредит ребёнку. Но она может вызвать плохое самочувствие, поэтому лучше избегать тесного контакта с больными. Если появились симптомы, обратитесь к врачу. Многие антибиотики от скарлатины можно принимать при беременности [7].
+
+**Сколько дней ребёнок заразен?**
+Ребёнок заразен до 24 часов после первой дозы антибиотиков. Если антибиотики не принимать, заразность сохраняется 2–3 недели после начала симптомов [3].
+
+**Можно ли вылечить скарлатину без антибиотиков?**
+Нет. Врач назначит антибиотики — они необходимы, чтобы быстрее выздороветь и избежать серьёзных осложнений [4].
+
+## Источники
+
+[1] NHS — "Scarlet fever" (2024), section "Scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
+[2] NHS — "Scarlet fever" (2024), section "Complications of scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
+[3] NHS — "Scarlet fever" (2024), section "How long scarlet fever lasts", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
+[4] NHS — "Scarlet fever" (2024), section "Treating scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
+[5] NHS — "Scarlet fever" (2024), section "Things you can do yourself to help scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
+[6] NHS — "Scarlet fever" (2024), section "How to avoid spreading scarlet fever", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
+[7] NHS — "Scarlet fever" (2024), section "Pregnancy advice", p. 1 — https://www.nhs.uk/conditions/scarlet-fever/
+[8] NHS — "Rashes in babies and children" (2024), section "How to treat hand, foot and mouth disease yourself", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/
+[9] NHS — "Rashes in babies and children" (2024), section "Rashes in babies and children", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/
+
+*Эта статья обобщает опубликованные педиатрические рекомендации. Это не медицинская консультация, и она не заменяет вашего педиатра. В экстренной ситуации звоните по местному номеру экстренной службы.*

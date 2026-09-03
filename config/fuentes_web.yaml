@@ -2468,6 +2468,231 @@ sources:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/malaria
   notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_measles
+  file: web/who_ar_measles.html
+  org: WHO
+  org_full: World Health Organization
+  title: الحصبة
+  year: null
+  lang: ar
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/measles
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_rubella
+  file: web/who_ar_rubella.html
+  org: WHO
+  org_full: World Health Organization
+  title: الحصبة الألمانية
+  year: null
+  lang: ar
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/rubella
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_pneumonia
+  file: web/who_ar_pneumonia.html
+  org: WHO
+  org_full: World Health Organization
+  title: الالتهاب الرئوي لدى الأطفال
+  year: null
+  lang: ar
+  topic: respiratorio
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/pneumonia
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_diarrhoeal_disease
+  file: web/who_ar_diarrhoeal_disease.html
+  org: WHO
+  org_full: World Health Organization
+  title: مرض الإسهال
+  year: null
+  lang: ar
+  topic: digestivo
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/diarrhoeal-disease
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_infant_and_young_child_feeding
+  file: web/who_ar_infant_and_young_child_feeding.html
+  org: WHO
+  org_full: World Health Organization
+  title: تغذية الرضّع وصغار الأطفال
+  year: null
+  lang: ar
+  topic: alimentacion
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/infant-and-young-child-feeding
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_malnutrition
+  file: web/who_ar_malnutrition.html
+  org: WHO
+  org_full: World Health Organization
+  title: سوء التغذية
+  year: null
+  lang: ar
+  topic: alimentacion
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/malnutrition
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_adolescent_mental_health
+  file: web/who_ar_adolescent_mental_health.html
+  org: WHO
+  org_full: World Health Organization
+  title: صحة المراهقين النفسية
+  year: null
+  lang: ar
+  topic: salud_mental
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - adolescente
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/adolescent-mental-health
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_immunization_coverage
+  file: web/who_ar_immunization_coverage.html
+  org: WHO
+  org_full: World Health Organization
+  title: التغطية بالتمنيع
+  year: null
+  lang: ar
+  topic: vacunas
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/immunization-coverage
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_meningitis
+  file: web/who_ar_meningitis.html
+  org: WHO
+  org_full: World Health Organization
+  title: التهاب السحايا
+  year: null
+  lang: ar
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/meningitis
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_poliomyelitis
+  file: web/who_ar_poliomyelitis.html
+  org: WHO
+  org_full: World Health Organization
+  title: شلل الأطفال
+  year: null
+  lang: ar
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/poliomyelitis
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_hepatitis_b
+  file: web/who_ar_hepatitis_b.html
+  org: WHO
+  org_full: World Health Organization
+  title: التهاب الكبد B
+  year: null
+  lang: ar
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/hepatitis-b
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_tuberculosis
+  file: web/who_ar_tuberculosis.html
+  org: WHO
+  org_full: World Health Organization
+  title: السل
+  year: null
+  lang: ar
+  topic: respiratorio
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/tuberculosis
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_drowning
+  file: web/who_ar_drowning.html
+  org: WHO
+  org_full: World Health Organization
+  title: الغرق
+  year: null
+  lang: ar
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/drowning
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_burns
+  file: web/who_ar_burns.html
+  org: WHO
+  org_full: World Health Organization
+  title: الحروق
+  year: null
+  lang: ar
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/burns
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
+- doc_id: who_ar_falls
+  file: web/who_ar_falls.html
+  org: WHO
+  org_full: World Health Organization
+  title: حالات السقوط
+  year: null
+  lang: ar
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/ar/news-room/fact-sheets/detail/falls
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03'
 - doc_id: who_ru_measles
   file: web/who_ru_measles.html
   org: WHO

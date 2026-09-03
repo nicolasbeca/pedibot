@@ -46,15 +46,15 @@ button, input, select, textarea { font: inherit; }
 .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
 @media (max-width: 800px) { .trio { grid-template-columns: 1fr; } }
 section.block { padding: 64px 0; border-top: 1px solid var(--line); }
-.banner { border-radius: 14px; padding: 12px 14px; font-weight: 700; margin-bottom: 10px; border-left: 5px solid; }
+.banner { border-radius: 14px; padding: 12px 14px; font-weight: 700; margin-bottom: 10px; border-inline-start: 5px solid; }
 .banner.emergency { background: var(--coral-soft); border-color: var(--coral); }
 .banner.urgent, .banner.mental_health { background: var(--amber-soft); border-color: var(--amber); }
 .banner small { display: block; font-weight: 400; color: var(--ink-2); margin-top: 4px; }
-.cite { font-family: "JetBrains Mono", monospace; font-size: .7rem; padding: 0 5px; border-radius: 6px; background: var(--mint); color: var(--sage-deep); vertical-align: 2px; margin-left: 2px; }
+.cite { font-family: "JetBrains Mono", monospace; font-size: .7rem; padding: 0 5px; border-radius: 6px; background: var(--mint); color: var(--sage-deep); vertical-align: 2px; margin-inline-start: 2px; }
 .prose { max-width: 68ch; }
 .prose h2 { margin-top: 32px; }
-.prose ul { padding-left: 20px; }
+.prose ul { padding-inline-start: 20px; }
 .prose p { margin: 12px 0; }
 table.plain { width: 100%; border-collapse: collapse; font-size: .95rem; }
-table.plain td, table.plain th { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+table.plain td, table.plain th { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

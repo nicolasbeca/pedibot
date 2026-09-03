@@ -1,0 +1,91 @@
+---
+title: "Грипп у ребёнка: что делать и когда к врачу"
+description: "Грипп опаснее простуды для детей. Узнайте симптомы, как помочь дома и когда нужен врач."
+lang: ru
+topic: flu
+date: 2026-09-03
+prompt_version: article_v1
+model: deepseek-v4-flash
+sources:
+  - "[1] CDC — \"Flu and Children\", section \"Parents help children fight flu\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[2] CDC — \"Flu and Children\", section \"Flu and Children At a glance\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[3] NHS — \"Flu\" (2026), section \"Symptoms of flu\", p. 1 — https://www.nhs.uk/conditions/flu/"
+  - "[4] NHS — \"Flu\" (2026), section \"How to avoid spreading the flu\", p. 1 — https://www.nhs.uk/conditions/flu/"
+  - "[5] CDC — \"Flu and Children\", section \"Who's at risk Flu can be dangerous for children\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[6] CDC — \"Flu and Children\", section \"Types of flu vaccines for children\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[7] CDC — \"Flu and Children\", section \"When children should get a flu vaccine\", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm"
+  - "[8] CDC — \"Manage Common Cold\", section \"Fact\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[9] CDC — \"Manage Common Cold\", section \"Manage Common Cold Key points\", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html"
+  - "[10] NHS — \"Respiratory syncytial virus (RSV)\" (2024), section \"Things you can do to ease symptoms of an RSV infection\", p. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/"
+draft: false
+---
+
+## Что это
+
+Грипп — это вирусная инфекция, которая для детей может быть опаснее, чем обычная простуда [2]. Каждый год миллионы детей болеют гриппом, тысячи попадают в больницу, и, к сожалению, некоторые умирают [5]. Дети младше 5 лет, особенно младше 2 лет, а также дети любого возраста с хроническими заболеваниями (например, астмой или диабетом) имеют более высокий риск серьёзных осложнений [1][2]. Даже здоровые дети старше 5 лет могут тяжело заболеть и заразить уязвимых членов семьи, таких как младенцы до 6 месяцев или пожилые люди [1].
+
+Симптомы гриппа появляются очень быстро, в течение нескольких часов [3]. У детей они включают:
+- Внезапно высокую температуру
+- Ломоту в теле
+- Усталость или полное истощение
+- Сухой кашель
+- Боль в горле
+- Головную боль
+- Потерю аппетита
+- Боль в ухе, sore eyes, отёк желёз, снижение активности (у детей) [3]
+
+Грипп отличается от простуды тем, что поражает не только нос и горло, и ребёнок чувствует себя слишком плохо, чтобы заниматься обычными делами [3].
+
+Осложнения у детей до 5 лет могут включать: проблемы с пазухами и ушные инфекции, пневмонию, обезвоживание, ухудшение хронических болезней (сердца или астмы) и, в редких случаях, поражение мозга [5].
+
+## Что можно сделать дома
+
+Лучшая защита — ежегодная вакцинация от гриппа для всех от 6 месяцев и старше [1][6]. Вакцина снижает риск госпитализации и смерти от гриппа [5]. Прививку лучше сделать в сентябре или октябре, но не поздно и позже, пока вирус циркулирует [7]. Некоторым детям нужно две дозы с интервалом минимум 4 недели [7].
+
+Чтобы облегчить симптомы дома:
+- Давайте детский парацетамол или ибупрофен, если у ребёнка высокая температура и ему некомфортно — всегда проверяйте инструкцию, подходит ли лекарство вашему ребёнку [10]
+- Поите ребёнка жидкостью: младенцам — чаще и меньшими порциями, детям постарше — водой или разбавленным соком [10]
+- Если нос заложен, можно использовать солевые капли из аптеки [10]
+
+Чтобы не распространять грипп:
+- Мойте руки тёплой водой с мылом
+- При кашле и чихании прикрывайте рот и нос салфеткой или сгибом локтя, а не ладонью
+- Сразу выбрасывайте использованные салфетки [4]
+
+Оставайтесь дома и избегайте контактов с другими, если у ребёнка высокая температура или он чувствует себя слишком плохо для обычных занятий [4]. Антибиотики не действуют на вирусы и не помогут [9].
+
+## Когда обращаться к врачу или в приёмное отделение
+
+Обратитесь к врачу promptly, если у ребёнка симптомы гриппа и он в группе высокого риска (младше 5 лет, особенно младше 2, или есть хронические заболевания) [1][8]. Противовирусные препараты от гриппа могут уменьшить симптомы и сократить болезнь, но их нужно начать в течение 2 дней после появления симптомов [8]. Врач может назначить тест на грипп, особенно при высоком риске [9].
+
+Немедленно обратитесь в приёмное отделение или вызовите скорую, если у ребёнка:
+- Затруднённое дыхание или одышка
+- Сильная слабость или вялость
+- Признаки обезвоживания (мало мочи, сухость во рту)
+- Судороги
+- Спутанность сознания или необычное поведение
+
+Эти признаки могут указывать на серьёзные осложнения, такие как пневмония или поражение мозга [5]. Не ждите — при гриппе у детей лучше перестраховаться.
+
+## Частые вопросы
+
+**Можно ли прививать ребёнка каждый год?** Да, CDC рекомендует ежегодную вакцинацию от гриппа для всех от 6 месяцев [6]. Вакцина безопасна и эффективна [4].
+
+**Чем грипп отличается от простуды?** Грипп начинается резко, в течение часов, и поражает всё тело, вызывая истощение. Простуда развивается постепенно за 1–2 дня и в основном затрагивает нос и горло [3].
+
+**Что делать, если ребёнок заразил младенца или пожилого родственника?** Держите больного ребёнка изолированно от них, мойте руки и проветривайте помещение. Вакцинация всех членов семьи снижает риск передачи [1][4].
+
+## Источники
+
+[1] CDC — "Flu and Children", section "Parents help children fight flu", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
+[2] CDC — "Flu and Children", section "Flu and Children At a glance", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
+[3] NHS — "Flu" (2026), section "Symptoms of flu", p. 1 — https://www.nhs.uk/conditions/flu/
+[4] NHS — "Flu" (2026), section "How to avoid spreading the flu", p. 1 — https://www.nhs.uk/conditions/flu/
+[5] CDC — "Flu and Children", section "Who's at risk Flu can be dangerous for children", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
+[6] CDC — "Flu and Children", section "Types of flu vaccines for children", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
+[7] CDC — "Flu and Children", section "When children should get a flu vaccine", p. 1 — https://www.cdc.gov/flu/highrisk/children.htm
+[8] CDC — "Manage Common Cold", section "Fact", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html
+[9] CDC — "Manage Common Cold", section "Manage Common Cold Key points", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html
+[10] NHS — "Respiratory syncytial virus (RSV)" (2024), section "Things you can do to ease symptoms of an RSV infection", p. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/
+
+*Эта статья обобщает опубликованные педиатрические рекомендации. Это не медицинская консультация, и она не заменяет вашего педиатра. В экстренной ситуации звоните по местному номеру экстренной службы.*

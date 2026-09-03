@@ -67,7 +67,7 @@ const others = Object.entries(schedules as any).filter(([c]) => c !== code);
     <p class="n" style="margin-top:26px">
       {s.vaxcountry_others}{' '}
       {others.map(([c, d]: any) => (
-        <a href={`/es/vaccines/${c.toLowerCase()}`} style="margin-right:10px">{d.name?.[lang] ?? d.name?.en ?? c}</a>
+        <a href={`/es/vaccines/${c.toLowerCase()}`} style="margin-inline-end:10px">{d.name?.[lang] ?? d.name?.en ?? c}</a>
       ))}
     </p>
   </div>

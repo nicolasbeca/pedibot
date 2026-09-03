@@ -44,7 +44,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
   .welcome p { color: var(--ink-2); max-width: 46ch; margin: 12px auto 0; }
   .suggest { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 26px; }
   @media (max-width: 560px) { .suggest { grid-template-columns: 1fr; } }
-  .sug { text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; cursor: pointer; color: var(--ink); transition: transform .15s, box-shadow .15s; }
+  .sug { text-align: start; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; cursor: pointer; color: var(--ink); transition: transform .15s, box-shadow .15s; }
   .sug:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--mint-2); }
   .sug small { display: block; color: var(--ink-3); font-size: .8rem; margin-top: 2px; }
   .sug.a { background: var(--mint); } .sug.b { background: var(--peach); } .sug.c { background: var(--lavender); } .sug.d { background: var(--sky); }
