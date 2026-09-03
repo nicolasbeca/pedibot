@@ -157,3 +157,16 @@ def test_every_language_names_the_dosage_forms() -> None:
     # drug catalogue is written in Spanish and those strings are what a presentation is called.
     want = set(langs()) - {"es"}
     assert want <= have, f"faltan formas farmacéuticas en {want - have}"
+
+
+def test_the_api_accepts_every_language_the_engine_speaks() -> None:
+    """It was typed as "^(es|en|fr)$", so the live German and Russian pages — which send their
+    language explicitly — got a 422 for every question asked. The sites were up; the chat was not."""
+    import re as _re
+
+    from pedibot.api import _LANG_PATTERN
+    from pedibot.bot.answer import SUPPORTED_LANGS
+
+    for lang in SUPPORTED_LANGS:
+        assert _re.fullmatch(_LANG_PATTERN, lang), f"la API rechazaría lang={lang}"
+    assert not _re.fullmatch(_LANG_PATTERN, "xx")

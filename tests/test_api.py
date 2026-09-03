@@ -122,10 +122,16 @@ def test_rate_limit(client):
 def test_validation(client):
     c, _ = client
     assert c.post("/api/ask", json={"question": "x"}).status_code == 422
-    # French joined the supported languages on 3-sep-2026 (it has its own triage patterns);
-    # a language WITHOUT a safety layer must still be refused rather than answered in English
-    assert c.post("/api/ask", json={"question": "bonjour", "lang": "fr"}).status_code == 200
-    assert c.post("/api/ask", json={"question": "hallo", "lang": "de"}).status_code == 422
+    # Every language the engine speaks must be accepted, and one it does not must be refused
+    # rather than answered in English. This test used to name the languages itself — it asserted
+    # that German was refused, so when German shipped the test passed and hid a live 422 on
+    # every question asked from the German site. It reads the list from the engine now.
+    from pedibot.bot.answer import SUPPORTED_LANGS
+
+    # one real request per side: the rate limiter would answer 429 to six of them, and the full
+    # list is checked against the pattern in test_i18n_parity without spending the quota
+    assert c.post("/api/ask", json={"question": "hola", "lang": SUPPORTED_LANGS[-1]}).status_code == 200
+    assert c.post("/api/ask", json={"question": "ola", "lang": "pt"}).status_code == 422
 
 
 def test_emergency_banner_in_api(client):

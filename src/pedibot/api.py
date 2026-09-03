@@ -16,7 +16,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from pedibot import __version__
-from pedibot.bot.answer import NO_SOURCE, Engine
+from pedibot.bot.answer import NO_SOURCE, SUPPORTED_LANGS, Engine
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.strings import data_lang
 from pedibot.bot.vaccines import Vaccines
@@ -31,10 +31,16 @@ STATIC_DIR = (
 )
 
 
+# Built from the engine's own list instead of typed out: this was written "^(es|en|fr)$"
+# and silently rejected every request from the German and Russian pages with a 422 —
+# the sites were live and their chat answered nothing at all.
+_LANG_PATTERN = "^(" + "|".join(SUPPORTED_LANGS) + ")$"
+
+
 class AskIn(BaseModel):
     question: str = Field(min_length=2, max_length=1500)
     country: str | None = Field(default=None, max_length=2)
-    lang: str | None = Field(default=None, pattern="^(es|en|fr)$")
+    lang: str | None = Field(default=None, pattern=_LANG_PATTERN)
     session: str | None = Field(default=None, max_length=64)
     mode: str = Field(default="parent", pattern="^(parent|child)$")
 
@@ -64,13 +70,13 @@ class DoseIn(BaseModel):
     weight_kg: float = Field(gt=0.5, lt=150)
     age_months: float | None = Field(default=None, ge=0, le=216)
     country: str | None = Field(default=None, max_length=2)
-    lang: str = Field(default="en", pattern="^(es|en|fr)$")
+    lang: str = Field(default="en", pattern=_LANG_PATTERN)
 
 
 class PhotoIn(BaseModel):
     image_b64: str = Field(min_length=100, max_length=6_000_000)
     mime: str = Field(default="image/jpeg", pattern="^image/(jpeg|png|webp)$")
-    lang: str = Field(default="en", pattern="^(es|en|fr)$")
+    lang: str = Field(default="en", pattern=_LANG_PATTERN)
     country: str | None = Field(default=None, max_length=2)
     session: str | None = Field(default=None, max_length=64)
 
