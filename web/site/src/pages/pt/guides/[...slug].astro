@@ -4,10 +4,10 @@ import Base from '../../../layouts/Base.astro';
 import { t } from '../../../i18n';
 import { faqsFrom, relatedTo, topicKeys } from '../../../guides';
 export async function getStaticPaths() {
-  const guides = await getCollection('guides', g => g.data.lang === 'ru' && !g.data.draft);
-  return guides.map(g => ({ params: { slug: g.id.replace(/^ru\//, '') }, props: { g } }));
+  const guides = await getCollection('guides', g => g.data.lang === 'pt' && !g.data.draft);
+  return guides.map(g => ({ params: { slug: g.id.replace(/^pt\//, '') }, props: { g } }));
 }
-const { g } = Astro.props; const lang = 'ru'; const s = t(lang);
+const { g } = Astro.props; const lang = 'pt'; const s = t(lang);
 // the same guide in the other languages: matched by `topic`, which is language-neutral.
 // An explicit null tells the layout there is no translation yet, so it emits neither an
 // hreflang nor a switch link — pointing at a page that does not exist is worse than both.
@@ -15,10 +15,6 @@ const others: Record<string, string | null> = {};
 {
   const twins = await getCollection('guides', x => x.data.lang === 'en' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
   others['en'] = twins.length ? `/guides/${twins[0].id.replace(/^en\//, '')}` : null;
-}
-{
-  const twins = await getCollection('guides', x => x.data.lang === 'es' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
-  others['es'] = twins.length ? `/es/guides/${twins[0].id.replace(/^es\//, '')}` : null;
 }
 {
   const twins = await getCollection('guides', x => x.data.lang === 'fr' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
@@ -29,14 +25,18 @@ const others: Record<string, string | null> = {};
   others['de'] = twins.length ? `/de/guides/${twins[0].id.replace(/^de\//, '')}` : null;
 }
 {
+  const twins = await getCollection('guides', x => x.data.lang === 'ru' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
+  others['ru'] = twins.length ? `/ru/guides/${twins[0].id.replace(/^ru\//, '')}` : null;
+}
+{
   const twins = await getCollection('guides', x => x.data.lang === 'ar' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
   others['ar'] = twins.length ? `/ar/guides/${twins[0].id.replace(/^ar\//, '')}` : null;
 }
 {
-  const twins = await getCollection('guides', x => x.data.lang === 'pt' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
-  others['pt'] = twins.length ? `/pt/guides/${twins[0].id.replace(/^pt\//, '')}` : null;
+  const twins = await getCollection('guides', x => x.data.lang === 'es' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
+  others['es'] = twins.length ? `/es/guides/${twins[0].id.replace(/^es\//, '')}` : null;
 }
-const family = await getCollection('guides', x => x.data.lang === 'ru' && !x.data.draft);
+const family = await getCollection('guides', x => x.data.lang === 'pt' && !x.data.draft);
 const related = relatedTo(g, family);
 const faqs = faqsFrom(g.body ?? '');
 const { Content } = await render(g);
@@ -54,7 +54,7 @@ const faqLd = faqs.length
   : null;
 const jsonld = faqLd ? [page, faqLd] : page;
 ---
-<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/ru/guides/${g.id.replace(/^ru\//, '')}`} jsonld={jsonld} others={others}>
+<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/pt/guides/${g.id.replace(/^es\//, '')}`} jsonld={jsonld} others={others}>
   <article class="narrow prose" style="padding:40px 18px">
     <p class="eyebrow">{s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString(s.speech_locale)}</time></p>
     <h1 style="margin-top:8px">{g.data.title}</h1>
@@ -67,7 +67,7 @@ const jsonld = faqLd ? [page, faqLd] : page;
         <ul>
           {related.map((r) => (
             <li>
-              <a href={`/ru/guides/${r.id.replace(/^ru\//, '')}`}>{r.data.title}</a>
+              <a href={`/pt/guides/${r.id.replace(/^es\//, '')}`}>{r.data.title}</a>
               <span>{r.data.description}</span>
             </li>
           ))}

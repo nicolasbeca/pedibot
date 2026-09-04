@@ -2,6 +2,10 @@ export type Lang = 'en' | 'es' | 'fr' | 'de' | 'ru' | 'ar' | 'pt';
 
 const strings = {
   en: {
+    related_h: "Related guides",
+    guides_filter_ph: "Filter: fever, cough, vaccines…",
+    guides_count: "{n} guides",
+    guides_none: "No guide matches that word yet — try asking PediBot directly.",
     nav_emergency_short: "Emergency",
     popular_h: "What parents ask most",
     meta_home_title: "PediBot — paediatric guidance with sources",
@@ -155,6 +159,10 @@ const strings = {
     sug_winter: ['My 5-month-old has a cold and is breathing with a whistle', 'bronchiolitis · winter'], sug_summer: ['He has been in the sun all day and now feels dizzy with a fever', 'heat stroke · summer'],
   },
   es: {
+    related_h: "Guías relacionadas",
+    guides_filter_ph: "Filtrar: fiebre, tos, vacunas…",
+    guides_count: "{n} guías",
+    guides_none: "Ninguna guía coincide con esa palabra — prueba a preguntárselo a PediBot.",
     nav_emergency_short: "Urgencias",
     popular_h: "Lo que más preguntan los padres",
     meta_home_title: "PediBot — orientación pediátrica con fuentes",
@@ -308,6 +316,10 @@ const strings = {
     sug_winter: ['Mi bebé de 5 meses tiene mocos y respira con pitos', 'bronquiolitis · invierno'], sug_summer: ['Ha estado todo el día al sol y ahora está mareado y con fiebre', 'golpe de calor · verano'],
   },
   fr: {
+    related_h: "Guides associés",
+    guides_filter_ph: "Filtrer : fièvre, toux, vaccins…",
+    guides_count: "{n} guides",
+    guides_none: "Aucun guide ne correspond à ce mot — essayez de le demander à PediBot.",
     nav_emergency_short: "Urgences",
     popular_h: "Ce que les parents demandent le plus",
     meta_home_title: "PediBot — des réponses pédiatriques sourcées",
@@ -461,6 +473,10 @@ const strings = {
     sug_winter: ['Mon bébé de 5 mois est enrhumé et respire en sifflant', 'bronchiolite · hiver'], sug_summer: ["Il est resté au soleil toute la journée et il a la tête qui tourne avec de la fièvre", 'coup de chaleur · été'],
   },
   de: {
+    related_h: "Verwandte Ratgeber",
+    guides_filter_ph: "Filtern: Fieber, Husten, Impfungen…",
+    guides_count: "{n} Ratgeber",
+    guides_none: "Kein Ratgeber passt zu diesem Wort — fragen Sie PediBot einfach direkt.",
     nav_emergency_short: "Notaufnahme",
     popular_h: "Was Eltern am häufigsten fragen",
     meta_home_title: "PediBot — pädiatrische Antworten mit Quellenangabe",
@@ -614,6 +630,10 @@ const strings = {
     sug_winter: ['Mein 5 Monate altes Baby ist erkältet und atmet pfeifend', 'Bronchiolitis · Winter'], sug_summer: ['Er war den ganzen Tag in der Sonne und ist jetzt schwindelig und hat Fieber', 'Hitzschlag · Sommer'],
   },
   ru: {
+    related_h: "Похожие руководства",
+    guides_filter_ph: "Фильтр: температура, кашель, прививки…",
+    guides_count: "руководств: {n}",
+    guides_none: "Ни одно руководство не подходит под это слово — спросите PediBot напрямую.",
     nav_emergency_short: "Скорая помощь",
     popular_h: "О чём родители спрашивают чаще всего",
     meta_home_title: "PediBot — педиатрические ответы с источниками",
@@ -767,6 +787,10 @@ const strings = {
     sug_winter: ['Моему пятимесячному ребёнку 5 месяцев, он простужен и дышит со свистом', 'бронхиолит · зима'], sug_summer: ['Он весь день был на солнце, теперь кружится голова и температура', 'тепловой удар · лето'],
   },
   ar: {
+    related_h: "أدلة ذات صلة",
+    guides_filter_ph: "تصفية: حرارة، سعال، تطعيمات…",
+    guides_count: "{n} أدلة",
+    guides_none: "لا يوجد دليل يطابق هذه الكلمة — جرّب أن تسأل PediBot مباشرة.",
     nav_emergency_short: "الطوارئ",
     popular_h: "أكثر ما يسأل عنه الوالدان",
     meta_home_title: "PediBot — إجابات طب الأطفال مع مصادرها",
@@ -920,6 +944,10 @@ const strings = {
     sug_winter: ['ابني عمره 5 أشهر ومصاب بالزكام ويتنفس بأزيز', 'التهاب القصيبات · الشتاء'], sug_summer: ['بقي في الشمس طوال اليوم والآن يشعر بدوار مع حرارة', 'ضربة شمس · الصيف'],
   },
   pt: {
+    related_h: "Guias relacionados",
+    guides_filter_ph: "Filtrar: febre, tosse, vacinas…",
+    guides_count: "{n} guias",
+    guides_none: "Nenhum guia corresponde a essa palavra — experimente perguntar ao PediBot.",
     nav_emergency_short: "Pronto-socorro",
     popular_h: "O que os pais mais perguntam",
     meta_home_title: "PediBot — orientação pediátrica com fontes",

@@ -32,6 +32,10 @@ const others: Record<string, string | null> = {};
   const twins = await getCollection('guides', x => x.data.lang === 'ru' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
   others['ru'] = twins.length ? `/ru/guides/${twins[0].id.replace(/^ru\//, '')}` : null;
 }
+{
+  const twins = await getCollection('guides', x => x.data.lang === 'pt' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
+  others['pt'] = twins.length ? `/pt/guides/${twins[0].id.replace(/^pt\//, '')}` : null;
+}
 const family = await getCollection('guides', x => x.data.lang === 'ar' && !x.data.draft);
 const related = relatedTo(g, family);
 const faqs = faqsFrom(g.body ?? '');
@@ -59,7 +63,7 @@ const jsonld = faqLd ? [page, faqLd] : page;
     <p style="margin-top:32px"><a class="btn btn-primary" href={`/es?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
     {related.length > 0 && (
       <nav class="related">
-        <h2>Guides associés</h2>
+        <h2>{s.related_h}</h2>
         <ul>
           {related.map((r) => (
             <li>

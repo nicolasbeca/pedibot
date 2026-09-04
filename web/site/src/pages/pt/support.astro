@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import SupportBody from '../../components/SupportBody.astro';
+import { t } from '../../i18n';
+const lang = 'pt';
+const s = t(lang);
+---
+<Base
+  lang={lang}
+  title={s.meta_support_title}
+  description={s.meta_support_desc}
+  path="/pt/support"
+>
+  <SupportBody lang={lang} />
+</Base>

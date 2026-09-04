@@ -11,9 +11,9 @@ const guides = (await getCollection('guides', g => g.data.lang === lang && !g.da
     <h1 style="margin-top:8px">{s.guides_h1}</h1>
     <p class="lede">{s.guides_lede}</p>
     {guides.length === 0 && <p class="lede" style="margin-top:28px">{s.guides_empty}</p>}
-    <p class="count"><input id="gfilter" type="search" placeholder="Filtrer : fièvre, toux, vaccins…" autocomplete="off" />
-      <span id="gcount">{guides.length} guías</span></p>
-    <p id="gempty" class="lede" hidden>Aucun guide ne correspond à ce mot — essayez de poser la question à PediBot.</p>
+    <p class="count"><input id="gfilter" type="search" placeholder={s.guides_filter_ph} autocomplete="off" />
+      <span id="gcount">{s.guides_count.replace("{n}", String(guides.length))}</span></p>
+    <p id="gempty" class="lede" hidden>{s.guides_none}</p>
     <div class="trio" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
       {guides.map(g => <a class="card gcard" href={`/ru/guides/${g.id.replace(/^ru\//, '')}`} style="text-decoration:none;color:inherit"><span class="n">{s.updated} {g.data.date.toLocaleDateString(s.date_locale)}</span><h3 style="margin-top:6px">{g.data.title}</h3><p>{g.data.description}</p></a>)}
     </div>

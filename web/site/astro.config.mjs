@@ -38,12 +38,12 @@ export default defineConfig({
   build: { format: 'directory' },
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'es', 'fr', 'de', 'ru', 'ar'],
+    locales: ['en', 'es', 'fr', 'de', 'ru', 'ar', 'pt'],
     routing: { prefixDefaultLocale: false },
   },
   integrations: [
     sitemap({
-      i18n: { defaultLocale: 'en', locales: { en: 'en', es: 'es', fr: 'fr', de: 'de', ru: 'ru', ar: 'ar' } },
+      i18n: { defaultLocale: 'en', locales: { en: 'en', es: 'es', fr: 'fr', de: 'de', ru: 'ru', ar: 'ar', pt: 'pt' } },
       serialize(item) {
         const p = new URL(item.url).pathname.replace(/\/$/, '');
         item.lastmod = (guideDates.get(p) ?? BUILD_DATE).toISOString();

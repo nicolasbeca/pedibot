@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import SourcesTable from '../../components/SourcesTable.astro';
+import { t } from '../../i18n';
+const lang = 'pt'; const s = t(lang);
+---
+<Base lang={lang} title={s.srcpage_title} description={s.srcpage_desc} path="/pt/sources">
+  <div class="wrap" style="padding:40px 18px">
+    <p class="eyebrow">{s.nav_sources}</p>
+    <h1 style="margin-top:8px">{s.srcpage_h1}</h1>
+    <p class="lede">{s.srcpage_lede}</p>
+    <SourcesTable lang={lang} />
+  </div>
+</Base>
