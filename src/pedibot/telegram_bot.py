@@ -17,6 +17,13 @@ from pedibot.ops.store import AnswerRecord, OpsStore
 _CIT = re.compile(r"\[(\d{1,2})\]")
 
 HELP = {
+    "pt": (
+        "Respondo apenas com diretrizes pediátricas publicadas e digo a fonte em cada frase. "
+        "Conte o que está acontecendo e a idade da criança.\n\n"
+        "/country BR — país para os números de emergência\n/lang en — inglês\n"
+        "/stop — sem avisos (você pode continuar perguntando)\n"
+        "Não é aconselhamento médico. Em uma emergência, ligue para o número do seu país."
+    ),
     "en": (
         "I answer only from published paediatric guidelines and name the source in every sentence. "
         "Tell me what's happening and your child's age.\n\n"
@@ -70,6 +77,7 @@ LANG_SET = {
     "de": "Sprache: Deutsch.",
     "ru": "Язык: русский.",
     "ar": "اللغة: العربية.",
+    "pt": "Idioma: português.",
 }
 
 

@@ -118,4 +118,7 @@ def test_the_requested_language_reaches_every_tool() -> None:
     assert "lang=fr" in m.route({"country": "FR", "lang": "fr"}).path
     assert "lang=fr" in m.route({"weight_kg": 12, "lang": "fr"}).path
     # an unknown language falls back to English rather than to a blank answer
-    assert m.route({"question": "hi", "lang": "pt"}).payload["lang"] == "en"
+    # a code that will never be one of ours, not the next language on the roadmap: this line
+    # said "pt" and broke the day Portuguese shipped
+    unknown = next(c for c in ("zz", "qq", "xx") if c not in m.SUPPORTED_LANGS)
+    assert m.route({"question": "hi", "lang": unknown}).payload["lang"] == "en"

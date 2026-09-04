@@ -75,7 +75,7 @@ def looks_like_medication_dose(text: str) -> bool:
 
 # Every language the engine will answer in. Adding one here is not enough on its own: it needs
 # its triage patterns in red_flags.yaml and its texts below, or the safety layer goes silent.
-SUPPORTED_LANGS = ("es", "en", "fr", "de", "ru", "ar")
+SUPPORTED_LANGS = ("es", "en", "fr", "de", "ru", "ar", "pt")
 
 DISCLAIMER = {
     "en": "PediBot gives information from official paediatric guidelines. It is not medical advice and does not replace your paediatrician.",
@@ -84,6 +84,7 @@ DISCLAIMER = {
     "de": "PediBot gibt Informationen aus offiziellen kinderärztlichen Leitlinien wieder. Das ist keine medizinische Beratung und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt.",
     "ru": "PediBot даёт информацию из опубликованных педиатрических рекомендаций. Это не медицинская консультация и не заменяет вашего педиатра.",
     "ar": "يقدم PediBot معلومات مأخوذة من إرشادات طب الأطفال المنشورة. هذه ليست استشارة طبية ولا تغني عن طبيب طفلك.",
+    "pt": "O PediBot informa a partir de diretrizes pediátricas oficiais. Não é aconselhamento médico e não substitui o seu pediatra.",
 }
 NO_SOURCE = {
     "en": "I don't have reliable information on this in my sources, so I'd rather not guess. Please contact your paediatrician or a nurse line. If your child seems seriously unwell, go to the emergency department.",
@@ -92,6 +93,7 @@ NO_SOURCE = {
     "de": "Dazu habe ich in meinen Quellen keine verlässliche Information, und raten möchte ich nicht. Sprechen Sie bitte mit Ihrer Kinderärztin oder Ihrem Kinderarzt. Wenn Ihr Kind schwer krank wirkt, fahren Sie in die Notaufnahme.",
     "ru": "В моих источниках нет надёжной информации об этом, а гадать я не хочу. Обратитесь, пожалуйста, к своему педиатру. Если ребёнку явно плохо, поезжайте в приёмное отделение.",
     "ar": "لا توجد في مصادري معلومات موثوقة عن هذا، ولا أريد التخمين. من فضلك تحدث إلى طبيب طفلك. وإذا بدا على طفلك تعب شديد، فتوجّه إلى قسم الطوارئ.",
+    "pt": "Não tenho informação confiável sobre isso nas minhas fontes e prefiro não adivinhar. Procure o seu pediatra. Se a criança parecer estar mal, vá ao pronto-socorro.",
 }
 CLARIFY = {
     "en": "I want to get this right. What's the main thing going on?",
@@ -100,6 +102,7 @@ CLARIFY = {
     "de": "Ich möchte es richtig verstehen. Was ist das Hauptproblem?",
     "ru": "Хочу понять правильно. Что беспокоит больше всего?",
     "ar": "أريد أن أفهم الأمر بدقة. ما الذي يقلقك أكثر؟",
+    "pt": "Quero acertar. O que está acontecendo, principalmente?",
 }
 CLARIFY_OPTIONS = {
     "en": [
@@ -156,6 +159,15 @@ CLARIFY_OPTIONS = {
         "طعام أو نوم",
         "شيء آخر",
     ],
+    "pt": [
+        "Febre",
+        "Tosse ou respiração",
+        "Vômitos ou diarreia",
+        "Manchas ou pele",
+        "Batida ou queda",
+        "Comida ou sono",
+        "Outra coisa",
+    ],
 }
 ASK_AGE = {
     "en": "To answer safely I need to know how old your child is (months or years). Could you tell me?",
@@ -164,6 +176,15 @@ ASK_AGE = {
     "de": "Um sicher antworten zu können, muss ich wissen, wie alt Ihr Kind ist (in Monaten oder Jahren). Können Sie mir das sagen?",
     "ru": "Чтобы ответить безопасно, мне нужно знать возраст ребёнка (в месяцах или годах). Подскажете?",
     "ar": "لكي أجيب بأمان أحتاج أن أعرف عمر طفلك (بالأشهر أو بالسنوات). هل يمكنك إخباري؟",
+    "pt": [
+        "Febre",
+        "Tosse ou respiração",
+        "Vômitos ou diarreia",
+        "Manchas ou pele",
+        "Batida ou queda",
+        "Comida ou sono",
+        "Outra coisa",
+    ],
 }
 
 
@@ -236,6 +257,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "de": f"🚨 Rufen Sie jetzt {numbers['emergency']} an oder fahren Sie in die Notaufnahme.",
             "ru": f"🚨 Немедленно звоните {numbers['emergency']} или везите ребёнка в приёмное отделение.",
             "ar": f"🚨 اتصل الآن بـ {numbers['emergency']} أو توجّه فورا إلى قسم الطوارئ.",
+    "pt": "Para responder com segurança preciso saber a idade (meses ou anos). Pode me dizer?",
         }
     elif tr.level == "urgent":
         heads = {
@@ -245,6 +267,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "de": "🚨 Mit diesen Anzeichen sollte Ihr Kind heute in der Notaufnahme gesehen werden, ohne zu warten.",
             "ru": "🚨 С такими признаками ребёнка нужно показать врачу в приёмном отделении сегодня, не откладывая.",
             "ar": "🚨 مع هذه العلامات يجب أن يراه طبيب في قسم الطوارئ اليوم، دون تأخير.",
+            "pt": f"🚨 Ligue agora para {numbers['emergency']} ou vá ao pronto-socorro.",
         }
     else:  # mental_health
         mental = numbers.get("mental") or numbers["emergency"]
@@ -255,9 +278,13 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "de": f"💛 Das ist wichtig, und Sie sind damit nicht allein. Rufen Sie {mental} an (oder {numbers['emergency']} bei unmittelbarer Gefahr). Wenn Ihr Kind sich bereits etwas angetan hat, fahren Sie jetzt in die Notaufnahme.",
             "ru": f"💛 Это важно, и вы не одни. Позвоните {mental} (или {numbers['emergency']}, если опасность прямо сейчас). Если ребёнок уже причинил себе вред, везите его в приёмное отделение немедленно.",
             "ar": f"💛 هذا أمر مهم ولست وحدك. اتصل بـ {mental} (أو بـ {numbers['emergency']} إذا كان الخطر الآن). وإذا كان طفلك قد آذى نفسه بالفعل، فتوجّه إلى قسم الطوارئ حالا.",
+            "pt": "🚨 Com esses sintomas é preciso ir ao pronto-socorro hoje, sem esperar.",
         }
     head = heads.get(lang, heads["en"])
-    why = {"es": "Motivo", "fr": "Raison", "de": "Grund", "ru": "Причина", "ar": "السبب"}.get(
+    why = {
+        "es": "Motivo", "fr": "Raison", "de": "Grund", "ru": "Причина", "ar": "السبب",
+        "pt": "Motivo",
+    }.get(
         lang, "Reason"
     ) + f": {reasons}"
     return head + "\n" + why

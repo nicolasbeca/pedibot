@@ -131,7 +131,11 @@ def test_validation(client):
     # one real request per side: the rate limiter would answer 429 to six of them, and the full
     # list is checked against the pattern in test_i18n_parity without spending the quota
     assert c.post("/api/ask", json={"question": "hola", "lang": SUPPORTED_LANGS[-1]}).status_code == 200
-    assert c.post("/api/ask", json={"question": "ola", "lang": "pt"}).status_code == 422
+    # A code that will never be a language of this site, rather than the next one on the roadmap:
+    # this line said "pt" and broke the day Portuguese shipped, which is the same trap in miniature
+    # as the German one above.
+    unsupported = next(c for c in ("zz", "qq", "xx") if c not in SUPPORTED_LANGS)
+    assert c.post("/api/ask", json={"question": "ola", "lang": unsupported}).status_code == 422
 
 
 def test_emergency_banner_in_api(client):

@@ -515,7 +515,10 @@ from pedibot.bot.strings import (  # noqa: E402 — one mapping, not two
     localise_citation,
 )
 
-SOURCES_HEADING = {"en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen", "ru": "Источники", "ar": "المصادر"}
+SOURCES_HEADING = {
+    "en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen",
+    "ru": "Источники", "ar": "المصادر", "pt": "Fontes",
+}
 ARTICLE_DISCLAIMER = {
     "en": "*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*",
     "es": "*Esta guía resume guías pediátricas publicadas. No es consejo médico y no sustituye a tu pediatra. En una emergencia, llama a tu número de emergencias.*",

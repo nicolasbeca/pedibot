@@ -207,10 +207,44 @@ STRINGS: dict[str, Table] = {
         "photo_clear": "لا أرى في الصورة أيا من علامات التحذير الثلاث التي أتحقق منها (بقع لا تختفي عند الضغط، ازرقاق، تورم الشفتين). وهذا لا يعني أنني أعرف ما هو: الصورة لا تغني عن الفحص. وإذا انتشر الطفح أو ارتفعت الحرارة كثيرا أو بدا طفلك متعبا فراجع طبيبه اليوم.",
         "photo_unsure": "لا أستطيع الجزم من هذه الصورة. إذا لم تختفِ البقع عند الضغط عليها بكوب، أو كان هناك تورم في الشفتين أو ازرقاق، فتوجّه إلى قسم الطوارئ؛ وإلا فراجع طبيب طفلك اليوم.",
     },
+    "pt": {
+        "ors_under_1_month": "Um bebê com menos de um mês que vomita ou tem diarreia precisa ser avaliado por um médico hoje; não se dá soro sem orientação médica.",
+        "ors_under_2y": "Menores de 2 anos: procure o pediatra se os vômitos ou a diarreia durarem mais de 24 horas ou se a criança recusar líquidos.",
+        "ors_after_vomit": "Depois de um vômito, ofereça soro de reidratação oral em quantidades bem pequenas: 5–10 ml (uma ou duas colheres de chá, com colher ou seringa) a cada 10 minutos, aumentando aos poucos se não vomitar de novo.",
+        "ors_infant": "Bebê com mais de 1 mês com diarreia: cerca de 1–1,5 vez o volume da mamada habitual, em pequenas quantidades e devagar; não é preciso interromper a amamentação.",
+        "ors_child": "Criança a partir de 1 ano: cerca de 200 ml de soro a cada evacuação diarreica, dados em porções de 25–30 ml a cada 10–15 minutos.",
+        "ors_sachet": "Prepare o sachê exatamente como diz a bula (um sachê para a quantidade de água indicada); não dilua mais nem menos. Não use bebidas isotônicas, refrigerantes nem sucos.",
+        "ors_go_er": "Vá ao pronto-socorro se a criança não conseguir reter líquidos, urinar muito pouco, estiver com os olhos fundos, muito abatida, ou se houver sangue nas fezes.",
+        "dose_for": "{name} para {kg:g} kg:",
+        "dose_refer": "⚠️ Não dar sem consultar: ",
+        "dose_line": "• Dose: {mg_min:g}–{mg_max:g} mg a cada {h0}–{h1} h (máx. {max_doses} doses/dia).",
+        "dose_source": "Fonte: {source}.",
+        "dose_check": "Confira sempre a concentração impressa na embalagem. Com menos de 3 meses, não dê nada sem orientação médica.",
+        "dose_warn": {
+            "under_3_months_refer": "menor de 3 meses",
+            "below_min_age": "abaixo da idade mínima do medicamento",
+            "below_min_weight": "abaixo do peso mínimo do medicamento",
+            "capped_single_dose": "dose limitada ao máximo por tomada",
+        },
+        "vax_source": "Fonte: ",
+        "vax_due": "Nesta idade estão previstas, segundo o calendário oficial:",
+        "vax_next": "Próxima: {label} — ",
+        "vax_none": "Nesta idade não há nenhuma vacina prevista no calendário oficial.",
+        "photo_poor": "Não consigo avaliar esta foto (pouca luz, desfoque ou a pele não aparece). Na dúvida, procure o pediatra hoje; se houver dificuldade para respirar, manchas que não somem ao pressionar ou inchaço nos lábios, vá ao pronto-socorro.",
+        "photo_emergency": "Vejo um possível sinal de alarme ({sign}). Segundo a SEUP, isso exige atendimento imediato: ligue para {number} ou vá ao pronto-socorro agora, principalmente se estiver com dificuldade para respirar.",
+        "photo_sign_cyanosis": "lábios ou pele arroxeados",
+        "photo_sign_swelling": "inchaço nos lábios ou nas pálpebras",
+        "photo_petechiae": "Vejo manchas que podem não sumir ao pressionar. Faça o teste do copo: pressione um copo transparente sobre a mancha; se ela continuar visível através do vidro, segundo a SEUP é preciso ir ao pronto-socorro hoje, sem esperar. Não posso dizer o que a causa.",
+        "photo_clear": "Não vejo na foto nenhum dos três sinais de alarme que eu verifico (manchas que não somem ao pressionar, coloração arroxeada, inchaço nos lábios). Isso não me diz o que é: uma foto não substitui o exame. Se a erupção se espalhar, houver febre alta ou a criança estiver abatida, procure o pediatra hoje.",
+        "photo_unsure": "Não consigo ter certeza por esta foto. Se as manchas não sumirem ao pressioná-las com um copo, ou se houver inchaço nos lábios ou coloração arroxeada, vá ao pronto-socorro; caso contrário, procure o pediatra hoje.",
+    },
 }
 
 
-LANGUAGE_NAME = {"en": "English", "es": "Spanish", "fr": "French", "de": "German", "ru": "Russian", "ar": "Arabic"}
+LANGUAGE_NAME = {
+    "en": "English", "es": "Spanish", "fr": "French", "de": "German",
+    "ru": "Russian", "ar": "Arabic", "pt": "Brazilian Portuguese",
+}
 """What the model is told to write in. Kept here, in one place, because this exact mapping was
 written inline twice — in the answer prompt and in the article prompt — and both times a new
 language silently fell back to English. The article generator asked for "Spanish" when it meant
@@ -227,6 +261,8 @@ CITATION_WORDS: dict[str, tuple[str, str]] = {
     "de": ("Abschnitt", "S."),
     "ru": ("раздел", "с."),
     "ar": ("قسم", "ص."),
+    # Brazilian spelling: Portugal writes "secção"
+    "pt": ("seção", "p."),
 }
 
 
