@@ -191,3 +191,34 @@ def test_each_rss_feed_declares_its_own_language() -> None:
         text = feed.read_text(encoding="utf-8")
         assert f"<language>{lang}</language>" in text, f"{lang}: el feed declara otro idioma"
         assert f"g.data.lang === '{lang}'" in text, f"{lang}: el feed lista otras guías"
+
+
+# --- the home-kit page (4-sep-2026) -------------------------------------------------------------
+# Key parity cannot see this one: an array with three items instead of five has exactly the same
+# keys as one with five. A language quietly carrying two fewer items is the same failure as a
+# missing translation, only harder to notice.
+
+
+def kit_list(body: str, name: str) -> list[tuple[str, str, str]]:
+    m = re.search(rf"\n      {name}: \[(.*?)\n      \]", body, re.S)
+    assert m, f"no encuentro la lista {name}"
+    return re.findall(r'\{ name: "(.*?)", what: "(.*?)", cite: "(.*?)" \}', m.group(1))
+
+
+@pytest.mark.parametrize("name", ["have", "avoid"])
+def test_the_home_kit_lists_the_same_number_of_things_in_every_language(name: str) -> None:
+    counts = {lang: len(kit_list(block(lang), name)) for lang in langs()}
+    assert len(set(counts.values())) == 1, f"la lista {name} no coincide por idioma: {counts}"
+    assert next(iter(counts.values())) >= 4
+
+
+def test_every_line_of_the_home_kit_names_its_source() -> None:
+    """The page only exists because each item can be traced back to a published document. An item
+    with no citation is a claim the site cannot back, which is the one thing it must not publish.
+    """
+    for lang in langs():
+        body = block(lang)
+        for name in ("have", "avoid"):
+            for item, what, cite in kit_list(body, name):
+                assert what.strip(), f"[{lang}] {item}: sin texto"
+                assert "—" in cite and len(cite) > 12, f"[{lang}] {item}: sin fuente citada"

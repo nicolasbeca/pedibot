@@ -1,0 +1,103 @@
+---
+/**
+ * What the guidelines say to keep at home (4-sep-2026).
+ *
+ * The shape of this page was decided by a search that came back empty: `"first aid kit" OR
+ * botiquín OR "medicine cabinet"` matches nothing in the 288 documents. Not one of them publishes
+ * a list. So the page does not publish one either — it says, item by item, what the guidelines do
+ * say, names the source next to each line, and says out loud that no list exists. A plausible list
+ * nobody could check would have been easier and worth less.
+ *
+ * Half of it is what NOT to keep, and that half is the better half: aspirin at any age is carried
+ * by three separate sources.
+ */
+import { t, type Lang, langPrefix } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const k = s.kit;
+---
+
+<div class="wrap" style="padding-top:40px">
+  <p class="eyebrow">{k.eyebrow}</p>
+  <h1 style="margin-top:8px">{k.h1}</h1>
+  <p class="lede">{k.lede}</p>
+  <p class="note">{k.note}</p>
+
+  <section class="block">
+    <h2>{k.have_h}</h2>
+    <ul class="items">
+      {k.have.map((it) => (
+        <li>
+          <span class="mark yes">✓</span>
+          <div>
+            <strong>{it.name}</strong>
+            <p>{it.what}</p>
+            <p class="cite">{it.cite}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <p class="more">
+      <a class="btn btn-ghost" href={`${langPrefix(lang)}/dose`}>{s.nav_dose} →</a>
+    </p>
+  </section>
+
+  <section class="block">
+    <h2>{k.avoid_h}</h2>
+    <ul class="items">
+      {k.avoid.map((it) => (
+        <li>
+          <span class="mark no">✕</span>
+          <div>
+            <strong>{it.name}</strong>
+            <p>{it.what}</p>
+            <p class="cite">{it.cite}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="block two">
+    <div>
+      <h2>{k.store_h}</h2>
+      <p class="lede">{k.store_p}</p>
+      <p class="cite">{k.store_cite}</p>
+    </div>
+    <div>
+      <h2>{k.expiry_h}</h2>
+      <p class="lede">{k.expiry_p}</p>
+      <p class="cite">{k.expiry_cite}</p>
+    </div>
+  </section>
+
+  <p class="foot">
+    {k.foot} <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources} →</a>
+  </p>
+</div>
+
+<style>
+  /* Logical properties throughout: this page has to read the same way in Arabic. */
+  .note {
+    margin: 18px 0 0;
+    padding: 14px 16px;
+    border-inline-start: 3px solid var(--line);
+    background: var(--paper);
+    border-radius: var(--r);
+    color: var(--ink-2);
+    font-size: 0.95rem;
+  }
+  .items { margin: 18px 0 0; padding-inline-start: 0; list-style: none; display: grid; gap: 20px; }
+  .items li { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; }
+  .items strong { display: block; font-size: 1.02rem; }
+  .items p { margin: 4px 0 0; color: var(--ink-2); }
+  .mark { font-weight: 700; line-height: 1.5; }
+  .mark.yes { color: var(--sage); }
+  .mark.no { color: var(--coral); }
+  .cite { font-size: 0.82rem; color: var(--ink-3, var(--ink-2)); opacity: 0.85; }
+  .more { margin-top: 22px; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+  @media (max-width: 800px) { .two { grid-template-columns: 1fr; } }
+  .foot { margin: 36px 0 8px; color: var(--ink-2); font-size: 0.92rem; }
+</style>

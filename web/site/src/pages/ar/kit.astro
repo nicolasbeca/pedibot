@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import Kit from '../../components/Kit.astro';
+import { t } from '../../i18n';
+const lang = 'ar'; const s = t(lang);
+// MedicalWebPage rather than Article: this is reference material about home care, and the
+// language comes from the page instead of a literal, which is how 240 pages ended up claiming
+// to be in Spanish back in July.
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  name: s.kit.h1,
+  description: s.kit.lede,
+  inLanguage: lang,
+  audience: { '@type': 'Patient' },
+};
+---
+<Base lang={lang} title={s.kit.h1} description={s.kit.lede} path="/ar/kit" jsonld={jsonld}>
+  <Kit lang={lang} />
+</Base>
