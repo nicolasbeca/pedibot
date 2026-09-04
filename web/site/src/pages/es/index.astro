@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Chat from '../../components/Chat.astro';
 import Alerts from '../../components/Alerts.astro';
+import PopularGuides from '../../components/PopularGuides.astro';
 import Sections from '../../components/Sections.astro';
 import { t } from '../../i18n';
 const lang = 'es';
@@ -11,5 +12,6 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebApplication', na
 <Base lang={lang} title={s.meta_home_title} description={s.meta_home_desc} path="/es" jsonld={jsonld}>
   <Chat lang={lang} />
   <Alerts lang={lang} />
+  <PopularGuides lang={lang} />
   <Sections lang={lang} />
 </Base>

@@ -2,6 +2,7 @@ export type Lang = 'en' | 'es' | 'fr' | 'de' | 'ru' | 'ar';
 
 const strings = {
   en: {
+    popular_h: "What parents ask most",
     meta_home_title: "PediBot — paediatric guidance with sources",
     meta_home_desc: "Free assistant for parents that answers only from published paediatric guidelines, names the source in every sentence, and tells you when to go to the emergency department.",
     meta_guides_title: "Guides for parents — PediBot",
@@ -153,6 +154,7 @@ const strings = {
     sug_winter: ['My 5-month-old has a cold and is breathing with a whistle', 'bronchiolitis · winter'], sug_summer: ['He has been in the sun all day and now feels dizzy with a fever', 'heat stroke · summer'],
   },
   es: {
+    popular_h: "Lo que más preguntan los padres",
     meta_home_title: "PediBot — orientación pediátrica con fuentes",
     meta_home_desc: "Asistente gratuito para padres que responde solo con guías pediátricas publicadas, nombra la fuente en cada frase y te dice cuándo ir a urgencias.",
     meta_guides_title: "Guías para padres — PediBot",
@@ -304,6 +306,7 @@ const strings = {
     sug_winter: ['Mi bebé de 5 meses tiene mocos y respira con pitos', 'bronquiolitis · invierno'], sug_summer: ['Ha estado todo el día al sol y ahora está mareado y con fiebre', 'golpe de calor · verano'],
   },
   fr: {
+    popular_h: "Ce que les parents demandent le plus",
     meta_home_title: "PediBot — des réponses pédiatriques sourcées",
     meta_home_desc: "Assistant gratuit pour les parents : il répond uniquement à partir de recommandations pédiatriques publiées, nomme la source à chaque phrase et vous dit quand aller aux urgences.",
     meta_guides_title: "Guides pour les parents — PediBot",
@@ -455,6 +458,7 @@ const strings = {
     sug_winter: ['Mon bébé de 5 mois est enrhumé et respire en sifflant', 'bronchiolite · hiver'], sug_summer: ["Il est resté au soleil toute la journée et il a la tête qui tourne avec de la fièvre", 'coup de chaleur · été'],
   },
   de: {
+    popular_h: "Was Eltern am häufigsten fragen",
     meta_home_title: "PediBot — pädiatrische Antworten mit Quellenangabe",
     meta_home_desc: "Kostenloser Helfer für Eltern: antwortet ausschließlich aus veröffentlichten Kinderleitlinien, nennt in jedem Satz die Quelle und sagt Ihnen, wann Sie in die Notaufnahme müssen.",
     meta_guides_title: "Ratgeber für Eltern — PediBot",
@@ -606,6 +610,7 @@ const strings = {
     sug_winter: ['Mein 5 Monate altes Baby ist erkältet und atmet pfeifend', 'Bronchiolitis · Winter'], sug_summer: ['Er war den ganzen Tag in der Sonne und ist jetzt schwindelig und hat Fieber', 'Hitzschlag · Sommer'],
   },
   ru: {
+    popular_h: "О чём родители спрашивают чаще всего",
     meta_home_title: "PediBot — педиатрические ответы с источниками",
     meta_home_desc: "Бесплатный помощник для родителей: отвечает только по опубликованным педиатрическим рекомендациям, называет источник в каждой фразе и подсказывает, когда пора в скорую.",
     meta_guides_title: "Руководства для родителей — PediBot",
@@ -757,6 +762,7 @@ const strings = {
     sug_winter: ['Моему пятимесячному ребёнку 5 месяцев, он простужен и дышит со свистом', 'бронхиолит · зима'], sug_summer: ['Он весь день был на солнце, теперь кружится голова и температура', 'тепловой удар · лето'],
   },
   ar: {
+    popular_h: "أكثر ما يسأل عنه الوالدان",
     meta_home_title: "PediBot — إجابات طب الأطفال مع مصادرها",
     meta_home_desc: "مساعد مجاني للوالدين: يجيب من الإرشادات الطبية المنشورة وحدها، ويذكر المصدر في كل جملة، ويقول لك متى تذهب إلى الطوارئ.",
     meta_guides_title: "أدلة للوالدين — PediBot",

@@ -1,0 +1,75 @@
+---
+/**
+ * The questions parents actually open, on the front door (4-sep-2026).
+ *
+ * Measured over 45 days of the access log: the home page took 1.406 of 2.085 English page views
+ * and linked to **no individual guide at all**, in any language — only to the index. A reader
+ * arrived and never saw a single question they might have. The Spanish edition, whose visitors
+ * come in through guides, reads 1,46 guides per visitor; the English one, which lands on this
+ * page, reads 0,28.
+ *
+ * The order is not editorial. It is what real people opened, most first, on 4-sep-2026:
+ * vaccines 58, heat stroke 45, fever 16, anaphylaxis 14, colic 13, hives 12, gastroenteritis 8,
+ * febrile seizure 7. Re-measure with `journalctl -u caddy` filtered to `/guides/` and 200s from
+ * non-bot agents; the list is worth revisiting when the traffic mix changes, and heat stroke in
+ * particular was measured at the end of a summer.
+ *
+ * Topics, never slugs: the same subject has a different slug in each language, and two of these
+ * carry a second topic key from when the English guide was anchored on English sources — which
+ * is what `topicKeys` is for. A language missing one is skipped rather than rendered blank; a
+ * missing translation drawing an empty row is this project's oldest bug.
+ */
+import { getCollection } from 'astro:content';
+import { topicKeys } from '../guides';
+import { t, langPrefix, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+
+const ORDER = [
+  'vacunas',
+  'golpe_calor',
+  'fiebre',
+  'anafilaxia',
+  'colico_lactante',
+  'urticaria',
+  'gastroenteritis',
+  'convulsion_febril',
+];
+
+const mine = await getCollection('guides', (g) => g.data.lang === lang && !g.data.draft);
+const picks = ORDER.map((topic) => {
+  const keys = topicKeys(topic);
+  const g = mine.find((x) => keys.includes(x.data.topic));
+  if (!g) return null;
+  const slug = g.id.replace(new RegExp(`^${lang}/`), '');
+  return { title: g.data.title, href: `${langPrefix(lang)}/guides/${slug}` };
+}).filter((x): x is { title: string; href: string } => x !== null);
+---
+
+{picks.length > 0 && (
+  <section class="block popular">
+    <h2>{s.popular_h}</h2>
+    <ul>
+      {picks.map((p) => <li><a href={p.href}>{p.title}</a></li>)}
+    </ul>
+    <p class="all"><a href={`${langPrefix(lang)}/guides`}>{s.nav_guides} →</a></p>
+  </section>
+)}
+
+<style>
+  .popular ul {
+    margin: 18px 0 0;
+    padding-inline-start: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 28px;
+  }
+  @media (max-width: 700px) { .popular ul { grid-template-columns: 1fr; } }
+  .popular li { border-inline-start: 2px solid var(--line); padding-inline-start: 12px; }
+  .popular li a { color: var(--ink); }
+  .popular li a:hover { color: var(--sage); }
+  .all { margin-top: 20px; }
+</style>

@@ -76,3 +76,20 @@ def test_the_brand_pages_are_linked_from_the_dose_page_in_every_language() -> No
         html = page.read_text(encoding="utf-8", errors="replace")
         links = [h for h in HREF.findall(html) if h.startswith(f"{prefix}/dose/")]
         assert len(links) >= 15, f"[{lang}] solo {len(links)} enlaces a marcas desde /dose"
+
+
+def test_the_home_page_offers_actual_questions_in_every_language() -> None:
+    """It offered none. Measured over 45 days, the home page took 1.406 of 2.085 English views and
+    linked to no individual guide at all — only to the index — so a reader arrived and never saw a
+    question they might have. And a link is what makes a page get crawled: pages one click from
+    here are fetched 92% of the time, pages three clicks away half that.
+    """
+    for lang in ("en", "es", "fr", "de", "ru", "ar"):
+        prefix = "" if lang == "en" else f"/{lang}"
+        page = DIST / (prefix.strip("/") or ".") / "index.html"
+        html = page.read_text(encoding="utf-8", errors="replace")
+        links = {h for h in HREF.findall(html) if h.startswith(f"{prefix}/guides/")}
+        assert len(links) >= 6, f"[{lang}] la portada solo ofrece {len(links)} guías"
+        # and each one leads somewhere real, in that language
+        for href in links:
+            assert (DIST / href.strip("/") / "index.html").exists(), f"[{lang}] roto: {href}"
