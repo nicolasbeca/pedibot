@@ -1,4 +1,10 @@
 # PediBot — https://pedibot.xyz
+#
+# One group on purpose. Naming a crawler here starts a NEW group for it, and a named group does
+# not inherit the rules below — so adding "User-agent: GPTBot / Allow: /" without repeating the
+# Disallow lines would hand that crawler the private share links under /a/. The answer engines
+# (GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot and the rest) are already welcome through this
+# group, with the same three exceptions as everybody else. Leave it as one group.
 User-agent: *
 Allow: /
 
@@ -8,3 +14,7 @@ Disallow: /a/
 Disallow: /admin
 
 Sitemap: https://pedibot.xyz/sitemap-index.xml
+
+# A map of the site for the crawlers that read it to answer questions, generated from the content
+# itself at build time: what each page answers, and where every claim came from.
+# https://pedibot.xyz/llms.txt
