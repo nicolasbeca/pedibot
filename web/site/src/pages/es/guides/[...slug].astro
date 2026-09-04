@@ -40,7 +40,24 @@ const family = await getCollection('guides', x => x.data.lang === 'es' && !x.dat
 const related = relatedTo(g, family);
 const faqs = faqsFrom(g.body ?? '');
 const { Content } = await render(g);
-const page = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', headline: g.data.title, description: g.data.description, datePublished: g.data.date.toISOString(), inLanguage: lang, author: { '@type': 'Organization', name: 'PediBot' }, citation: g.data.sources };
+// Only fields that are true. No `reviewedBy` and no `lastReviewed`: no clinician has read
+// these, and claiming a medical review is exactly the kind of thing this site refuses to
+// state. What IS true — who publishes it, who it is for, what field it belongs to, when it
+// was written and which documents it cites — is what Google looks for in health content.
+const page = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalWebPage',
+  headline: g.data.title,
+  description: g.data.description,
+  datePublished: g.data.date.toISOString(),
+  dateModified: g.data.date.toISOString(),
+  inLanguage: lang,
+  author: { '@type': 'Organization', name: 'PediBot', url: 'https://pedibot.xyz' },
+  publisher: { '@type': 'Organization', name: 'PediBot', url: 'https://pedibot.xyz' },
+  audience: { '@type': 'MedicalAudience', audienceType: 'Patient' },
+  specialty: 'https://schema.org/Pediatric',
+  citation: g.data.sources,
+};
 const faqLd = faqs.length
   ? {
       '@context': 'https://schema.org',

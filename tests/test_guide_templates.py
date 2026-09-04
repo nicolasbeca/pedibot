@@ -73,3 +73,23 @@ def test_no_heading_is_typed_into_the_template(lang: str) -> None:
     said it in French. Headings belong in the catalogue, where the parity test can see them."""
     typed = re.findall(r"<h2>([^<{][^<]*)</h2>", template(lang))
     assert not typed, f"[{lang}] encabezado escrito a mano: {typed}"
+
+
+@pytest.mark.parametrize("lang", LANGS)
+def test_the_guide_never_claims_a_medical_review(lang: str) -> None:
+    """Google's health guidelines reward `reviewedBy` and `lastReviewed`, and no clinician has
+    read these guides. Claiming either would be the one kind of statement this site exists to not
+    make — worse than the SEO is worth, and worse coming from a page whose whole argument is that
+    it says only what it can show.
+    """
+    t = template(lang)
+    for claim in ("reviewedBy", "lastReviewed", "reviewedByOrganization"):
+        assert claim not in t, f"[{lang}] declara {claim} sin que nadie haya revisado nada"
+
+
+@pytest.mark.parametrize("lang", LANGS)
+def test_the_guide_declares_what_is_true_about_it(lang: str) -> None:
+    """The honest half: who publishes it, who it is for, what field, when, and its citations."""
+    t = template(lang)
+    for field in ("publisher", "audience", "specialty", "dateModified", "citation", "inLanguage"):
+        assert field in t, f"[{lang}] los datos estructurados no declaran {field}"
