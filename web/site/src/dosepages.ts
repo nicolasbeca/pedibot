@@ -43,6 +43,7 @@ const FORM_WORD: Partial<Record<Lang, Record<string, string>>> = {
   de: { jarabe: 'Sirup', gotas: 'Tropfen', 'suspensión': 'Suspension', sobres: 'Beutel', comprimidos: 'Tabletten', supositorios: 'Zäpfchen' },
   ru: { jarabe: 'сироп', gotas: 'капли', 'suspensión': 'суспензия', sobres: 'пакетики', comprimidos: 'таблетки', supositorios: 'свечи' },
   ar: { jarabe: 'شراب', gotas: 'نقط', 'suspensión': 'معلّق', sobres: 'أكياس', comprimidos: 'أقراص', supositorios: 'تحاميل' },
+  pt: { jarabe: 'xarope', gotas: 'gotas', 'suspensión': 'suspensão', sobres: 'sachês', comprimidos: 'comprimidos', supositorios: 'supositórios' },
 };
 
 /** The label of a presentation, with its form word in the reader's language. */

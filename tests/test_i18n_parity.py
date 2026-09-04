@@ -215,7 +215,14 @@ def test_each_rss_feed_declares_its_own_language() -> None:
     for lang in langs():
         feed = (pages if lang == "en" else pages / lang) / "rss.xml.ts"
         text = feed.read_text(encoding="utf-8")
-        assert f"<language>{lang}</language>" in text, f"{lang}: el feed declara otro idioma"
+        # A regional tag is allowed and often better: a Brazilian feed should say pt-BR, not pt.
+        # What must never happen is a feed declaring a DIFFERENT language, which is what the
+        # cloned German feeds did to Russian and Arabic.
+        declared = re.search(r"<language>([\w-]+)</language>", text)
+        assert declared, f"{lang}: el feed no declara idioma"
+        assert declared.group(1).split("-")[0] == lang, (
+            f"{lang}: el feed declara {declared.group(1)}"
+        )
         assert f"g.data.lang === '{lang}'" in text, f"{lang}: el feed lista otras guías"
 
 

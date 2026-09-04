@@ -49,6 +49,7 @@ export const FAQ_HEADINGS = [
   'Häufige Fragen',
   'Частые вопросы',
   'أسئلة شائعة',
+  'Perguntas frequentes',
 ];
 
 export function faqsFrom(markdown: string): Faq[] {

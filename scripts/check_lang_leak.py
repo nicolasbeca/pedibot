@@ -45,6 +45,9 @@ MARKERS: dict[str, tuple[str, ...]] = {
            "тревожн", "статьи для родителей", "дневник симптомов"),
     "ar": ("طفل", "الطوارئ", "التطعيمات", "حاسبة الجرعات", "المصادر", "علامات التحذير",
            "أدلة للوالدين", "مفكرة الأعراض"),
+    # Portuguese words that Spanish does not spell the same way, which is the only real risk here
+    "pt": ("criança", "você", "vômitos", "diretrizes", "pronto-socorro", "não ",
+           "guias para pais", "sinais de alarme"),
 }
 
 
