@@ -352,3 +352,189 @@ def test_the_first_solana_run_takes_a_baseline_instead_of_announcing_the_launch(
     ]
     m.main()
     assert len(sent) == 1 and "VENTA" in sent[0] and "Solana" in sent[0]
+
+
+# --- the day a real purchase was swallowed (4-sep-2026) ----------------------------------------
+# The operator bought 1.317.824 PDBT on 3-sep at 19:03 UTC and no alert arrived. Two independent
+# faults, either of which alone was enough to lose it:
+#
+#   1. the public node refused every single scan for fourteen hours straight, and
+#   2. when a scan is behind, it used to jump to `head - 12000` and then save `head` as scanned —
+#      so the blocks it skipped were marked as read and could never be looked at again.
+#
+# The second is the dangerous one: the first is a visible outage, the second is silent data loss.
+
+
+def _fake_chain(monkeypatch, m, head: int, logs_at: dict[int, list] | None = None):
+    """A chain that answers range queries and records exactly which ranges were asked for."""
+    asked: list[tuple[int, int]] = []
+    logs_at = logs_at or {}
+
+    def fake_rpc(method, params, tries=5):
+        if method == "eth_blockNumber":
+            return hex(head)
+        if method == "eth_getLogs":
+            lo, hi = int(params[0]["fromBlock"], 16), int(params[0]["toBlock"], 16)
+            asked.append((lo, hi))
+            return [log for blk, ls in logs_at.items() if lo <= blk <= hi for log in ls]
+        if method == "eth_getBlockByNumber":
+            return {"timestamp": hex(1788000000)}
+        if method == "eth_getTransactionByHash":
+            return {"value": hex(10**17)}
+        raise AssertionError(f"unexpected call {method}")
+
+    monkeypatch.setattr(m, "_rpc", fake_rpc)
+    monkeypatch.setattr(m, "time", type("T", (), {"sleep": staticmethod(lambda s: None)}))
+    return asked
+
+
+def test_a_scan_that_fell_behind_resumes_where_it_stopped_instead_of_jumping_to_the_head(
+    monkeypatch,
+) -> None:
+    """The fault that lost the purchase. After a long outage the watermark is far behind; the
+    scan used to start near the head, skip everything in between, and then record the head as
+    read — quietly burying every trade in the gap."""
+    m = _mod()
+    watermark = 44_932_826
+    head = watermark + 58_315  # the real gap on the morning of 4-sep
+    asked = _fake_chain(monkeypatch, m, head)
+    _, scanned = m.hyperevm_trades(watermark + 1)
+    assert asked, "no llegó a preguntar nada"
+    assert asked[0][0] == watermark + 1, f"empezó en {asked[0][0]}, saltándose el hueco"
+    assert scanned == head
+
+
+def test_a_scan_too_far_behind_to_finish_records_only_the_ground_it_covered(monkeypatch) -> None:
+    """A gap wider than one run's budget must be caught up across runs, never abandoned. Saving
+    the head here is what turns a slow catch-up into permanent loss."""
+    m = _mod()
+    start = 40_000_000
+    head = start + m.RPC_MAX_RANGE * m.RPC_MAX_CHUNKS * 3  # three runs' worth
+    _fake_chain(monkeypatch, m, head)
+    _, scanned = m.hyperevm_trades(start)
+    assert scanned < head, "dijo haber leído hasta la cabeza sin haber llegado"
+    assert scanned == start + m.RPC_MAX_RANGE * m.RPC_MAX_CHUNKS - 1
+
+
+def test_a_purchase_sitting_in_the_gap_is_found_and_reported(monkeypatch) -> None:
+    """The concrete case: the operator's own buy, 1.317.824 PDBT at block 44942765."""
+    m = _mod()
+    watermark, block = 44_932_826, 44_942_765
+    buy = {
+        "topics": [
+            m.TRANSFER_TOPIC,
+            "0x" + "0" * 24 + m.LIQUIDLAUNCH_CURVE[2:],
+            "0x" + "0" * 24 + "804404c8d293197b76d9fc524d1ea25f830b12f1",
+        ],
+        "data": hex(1_317_824_300000),
+        "blockNumber": hex(block),
+        "transactionHash": "0x5bb5a6dc",
+    }
+    _fake_chain(monkeypatch, m, block + 100, {block: [buy]})
+    trades, _ = m.hyperevm_trades(watermark + 1)
+    assert len(trades) == 1
+    assert trades[0].kind == "buy"
+    assert round(trades[0].tokens) == 1_317_824
+
+
+def test_a_scan_blind_for_hours_says_so_instead_of_looking_like_a_quiet_market(tmp_path) -> None:
+    """The failure that made this invisible. Fifteen consecutive refusals produced no message of
+    any kind, so silence read as "nobody is trading" — the one thing an alert must never do."""
+    m = _mod()
+    db = tmp_path / "ops.db"
+    assert m.note_scan_health(db, "hyperevm", ok=False) is None  # one blip is not news
+    assert m.note_scan_health(db, "hyperevm", ok=False) is None
+    warning = m.note_scan_health(db, "hyperevm", ok=False)
+    assert warning and "hyperevm" in warning.lower()
+    # ...and it does not repeat itself every hour once it has been said
+    assert m.note_scan_health(db, "hyperevm", ok=False) is None
+    recovered = m.note_scan_health(db, "hyperevm", ok=True)
+    assert recovered and ("recuper" in recovered.lower() or "vuelve" in recovered.lower())
+    assert m.note_scan_health(db, "hyperevm", ok=True) is None  # healthy is not news either
+
+
+# --- delivery, not intent (4-sep-2026) ---------------------------------------------------------
+# `telegram()` has always returned whether the API accepted the message and nobody looked. The
+# row was marked announced before the send was attempted, so a refusal buried the trade exactly
+# the way the scan gap did — and the run printed "announced 1 trade(s)" either way.
+
+CCC = {
+    "data": [
+        {
+            "attributes": {
+                "tx_hash": "0xccc",
+                "block_timestamp": "2026-08-27T11:00:00Z",
+                "kind": "buy",
+                "volume_in_usd": "9.9",
+                "from_token_amount": "3.0",
+                "to_token_amount": "120000.0",
+                "tx_from_address": "0xfeed",
+            }
+        }
+    ]
+}
+
+
+def test_a_trade_stays_queued_until_telegram_actually_takes_it(tmp_path: pathlib.Path):
+    m = _mod()
+    db = tmp_path / "ops.db"
+    m.record_and_select(db, m.parse_trades(PAYLOAD))  # first run: baseline, nothing to say
+    assert m.pending_trades(db) == []
+
+    m.record_and_select(db, m.parse_trades(CCC))
+    assert [t.tx_hash for t in m.pending_trades(db)] == ["0xccc"]
+
+    # a later run that finds nothing new must not lose the one still waiting
+    m.record_and_select(db, [])
+    assert [t.tx_hash for t in m.pending_trades(db)] == ["0xccc"]
+
+    # and it survives the round trip through the database intact
+    (queued,) = m.pending_trades(db)
+    assert (queued.kind, queued.usd, queued.tokens, queued.chain) == ("buy", 9.9, 120000.0, "base")
+
+    m.mark_announced(db, m.pending_trades(db))
+    assert m.pending_trades(db) == []
+
+
+def test_a_refused_send_is_retried_on_the_next_run(monkeypatch, tmp_path) -> None:
+    """End to end through main(): Telegram says no, so the trade is still there afterwards."""
+    m = _mod()
+    db = tmp_path / "ops.db"
+    payload = {"data": []}
+    accepted: list[str] = []
+    refused: list[str] = []
+
+    class OnlySolana:
+        def get(self, url, **k):
+            if "solana" not in url:
+                raise RuntimeError("base not under test here")
+            return type("R", (), {"raise_for_status": lambda s: None, "json": lambda s: payload})()
+
+        def post(self, *a, **k):
+            raise RuntimeError("hyperevm not under test here")
+
+    monkeypatch.setattr(m, "httpx", OnlySolana())
+    import sys as _sys
+
+    monkeypatch.setitem(
+        _sys.modules,
+        "pedibot.settings",
+        type("M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())}),
+    )
+    monkeypatch.setattr(m, "telegram", lambda t: refused.append(t) and False)
+    m.main()  # baseline run, empty pool
+
+    payload["data"] = list(CCC["data"])
+    m.main()  # a real trade arrives, but the send is refused
+    assert refused, "no llegó a intentar el envío"
+    assert [t.tx_hash for t in m.pending_trades(db)] == ["0xccc"], "se dio por anunciada sin salir"
+
+    monkeypatch.setattr(m, "telegram", lambda t: accepted.append(t) or True)
+    payload["data"] = []  # the aggregator has already forgotten it; the outbox has not
+    m.main()
+    # the queued trade goes out; the other messages are the blindness warnings for the two
+    # chains this test keeps broken on purpose, which is them working, not noise
+    trade_msgs = [msg for msg in accepted if "0xccc" in msg]
+    assert len(trade_msgs) == 1, accepted
+    assert "COMPRA" in trade_msgs[0]
+    assert m.pending_trades(db) == []
