@@ -48,8 +48,8 @@ class Synonyms:
 
 
 def detect_lang(text: str) -> str:
-    """Tiny heuristic: es / en / fr / de / ru / ar / pt — enough to pick the synonym direction, the answer
-    language and the triage wording. A language only joins here once it has its own triage
+    """Tiny heuristic over the seven languages — enough to pick the synonym direction, the
+    answer language and the triage wording. A language only joins here once it has its own triage
     patterns: guessing the language of a message the safety layer cannot read is worse than
     defaulting to English.
 
