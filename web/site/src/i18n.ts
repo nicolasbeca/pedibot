@@ -2,6 +2,7 @@ export type Lang = 'en' | 'es' | 'fr' | 'de' | 'ru' | 'ar';
 
 const strings = {
   en: {
+    dose_brands_h: "Dose by brand name",
     kit: {
       eyebrow: "At home",
       h1: "What the guidelines say to keep at home",
@@ -147,6 +148,7 @@ const strings = {
     sug_winter: ['My 5-month-old has a cold and is breathing with a whistle', 'bronchiolitis · winter'], sug_summer: ['He has been in the sun all day and now feels dizzy with a fever', 'heat stroke · summer'],
   },
   es: {
+    dose_brands_h: "Dosis por nombre comercial",
     kit: {
       eyebrow: "En casa",
       h1: "Qué dicen las guías que tengas en casa",
@@ -292,6 +294,7 @@ const strings = {
     sug_winter: ['Mi bebé de 5 meses tiene mocos y respira con pitos', 'bronquiolitis · invierno'], sug_summer: ['Ha estado todo el día al sol y ahora está mareado y con fiebre', 'golpe de calor · verano'],
   },
   fr: {
+    dose_brands_h: "Doses par nom commercial",
     kit: {
       eyebrow: "À la maison",
       h1: "Ce que les recommandations disent d'avoir à la maison",
@@ -437,6 +440,7 @@ const strings = {
     sug_winter: ['Mon bébé de 5 mois est enrhumé et respire en sifflant', 'bronchiolite · hiver'], sug_summer: ["Il est resté au soleil toute la journée et il a la tête qui tourne avec de la fièvre", 'coup de chaleur · été'],
   },
   de: {
+    dose_brands_h: "Dosierung nach Handelsname",
     kit: {
       eyebrow: "Zu Hause",
       h1: "Was die Leitlinien sagen, das man zu Hause haben sollte",
@@ -582,6 +586,7 @@ const strings = {
     sug_winter: ['Mein 5 Monate altes Baby ist erkältet und atmet pfeifend', 'Bronchiolitis · Winter'], sug_summer: ['Er war den ganzen Tag in der Sonne und ist jetzt schwindelig und hat Fieber', 'Hitzschlag · Sommer'],
   },
   ru: {
+    dose_brands_h: "Дозы по торговому названию",
     kit: {
       eyebrow: "Дома",
       h1: "Что, по рекомендациям, стоит держать дома",
@@ -727,6 +732,7 @@ const strings = {
     sug_winter: ['Моему пятимесячному ребёнку 5 месяцев, он простужен и дышит со свистом', 'бронхиолит · зима'], sug_summer: ['Он весь день был на солнце, теперь кружится голова и температура', 'тепловой удар · лето'],
   },
   ar: {
+    dose_brands_h: "الجرعة حسب الاسم التجاري",
     kit: {
       eyebrow: "في البيت",
       h1: "ما تقوله الإرشادات أن تحتفظ به في البيت",

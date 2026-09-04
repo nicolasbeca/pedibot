@@ -70,7 +70,7 @@ const jsonld = {
 
     <p class="n" style="margin-top:26px">
       {s.dosedrug_others}{' '}
-      {medicines().filter((o) => o.slug_by[lang] !== m.slug_by[lang]).slice(0, 8).map((o) => (
+      {medicines().filter((o) => o.slug_by[lang] !== m.slug_by[lang]).map((o) => (
         <a href={`/de/dose/${o.slug_by[lang]}`} style="margin-inline-end:10px">{o.name_by[lang]}</a>
       ))}
     </p>

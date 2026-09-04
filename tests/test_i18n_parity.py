@@ -92,6 +92,20 @@ def test_data_files_carry_every_language(name: str) -> None:
     assert not walk(data), walk(data)[:6]
 
 
+def ternary(line: str) -> str | None:
+    """The offending shape in one line of code, ignoring anything after a `//` comment.
+
+    `lang === 'es' ? a : b` hands `b` to every language after the second, which is the bug
+    this whole file exists for. Filtering a collection by `data.lang` is a different thing
+    and stays allowed.
+    """
+    code = line.split("//")[0]
+    m = re.search(r"(?<!\.)\blang\s*===\s*'\w+'\s*\?", code) or re.search(
+        r"\bconst \w+ = lang === '\w+';", code
+    )
+    return m.group(0) if m else None
+
+
 def test_no_component_decides_the_language_with_a_ternary() -> None:
     """`lang === 'es' ? a : b` is the shape of the bug: every other language gets `b`.
 
@@ -100,9 +114,21 @@ def test_no_component_decides_the_language_with_a_ternary() -> None:
     offenders = []
     for f in sorted(SITE.rglob("*.astro")):
         for i, line in enumerate(f.read_text(encoding="utf-8").splitlines(), 1):
-            if re.search(r"\blang\s*===\s*'\w+'\s*\?", line) or re.search(r"\bconst \w+ = lang === '\w+';", line):
+            if ternary(line):
                 offenders.append(f"{f.relative_to(SITE)}:{i}")
     assert not offenders, offenders
+
+
+def test_the_ternary_guard_reads_code_and_not_prose() -> None:
+    """A checker nobody has seen fire is not a checker — and this one used to fire at its own
+    documentation. It matched the whole line, so a comment warning about the pattern tripped
+    it, and the only way to document the rule was to avoid naming it.
+    """
+    assert ternary("const p = lang === 'en' ? '' : `/${lang}`;")
+    assert ternary("  const isSpanish = lang === 'es';")
+    assert not ternary("// never write lang === 'en' ? a : b — use langPrefix instead")
+    assert not ternary("const p = langPrefix(lang); // and not lang === 'en' ? a : b")
+    assert not ternary("const mine = all.filter((g) => g.data.lang === lang);")
 
 
 def test_the_tool_strings_carry_the_same_keys() -> None:

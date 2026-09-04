@@ -1,0 +1,33 @@
+---
+/**
+ * The way into the brand pages (4-sep-2026).
+ *
+ * Without this block the 120 `/dose/{brand}` pages were an island: they linked to each other and
+ * nothing on the site linked to them, so the only route in was the sitemap — and measured against
+ * 45 days of Googlebot, orphan pages were crawled 0% of the time while pages one click from the
+ * homepage were crawled 92%. They are also the pages most likely to be searched for by name.
+ */
+import { medicines } from '../dosepages';
+import { t, langPrefix, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+// Always langPrefix, never a ternary on the language: that shape is how the third language
+// quietly inherited the English branch a dozen times over, and a test refuses it now.
+const prefix = langPrefix(lang);
+---
+
+<section class="block" style="padding-top:40px">
+  <h2>{s.dose_brands_h}</h2>
+  <p class="brands">
+    {medicines().map((m) => (
+      <a href={`${prefix}/dose/${m.slug_by[lang]}`}>{m.name_by[lang]}</a>
+    ))}
+  </p>
+</section>
+
+<style>
+  .brands { margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 10px 16px; }
+  .brands a { color: var(--ink-2); }
+  .brands a:hover { color: var(--ink); }
+</style>

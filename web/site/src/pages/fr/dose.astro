@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import DoseCalc from '../../components/DoseCalc.astro';
 import Ors from '../../components/Ors.astro';
+import DoseBrands from '../../components/DoseBrands.astro';
 import { t } from '../../i18n';
 const lang = 'fr'; const s = t(lang);
 const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: s.dosepage_name, about: { '@type': 'Drug', name: 'Paracetamol, ibuprofen' }, audience: { '@type': 'Patient' } };
@@ -13,6 +14,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
     <p class="lede">{s.dose_lede}</p>
     <DoseCalc lang={lang} />
     <Ors lang={lang} />
+    <DoseBrands lang={lang} />
     <section class="block" style="padding-top:48px">
       <h2>{s.dose_why_h}</h2>
       <p class="lede">{s.dose_why_p}</p>
