@@ -44,7 +44,8 @@ def test_every_link_in_the_map_points_at_a_page_that_was_built() -> None:
 def test_the_map_covers_every_language_and_all_the_guides() -> None:
     text = LLMS.read_text(encoding="utf-8")
     sections = re.findall(r"^## Guides — (.+?) \((\d+)\)$", text, re.M)
-    assert len(sections) == 6, f"idiomas listados: {sections}"
+    langs = {d.name for d in (ROOT / "web" / "content").iterdir() if d.is_dir()}
+    assert len(sections) == len(langs), f"idiomas listados: {sections} frente a {langs}"
     assert sum(int(n) for _, n in sections) == len(list((ROOT / "web" / "content").rglob("*.md")))
 
 

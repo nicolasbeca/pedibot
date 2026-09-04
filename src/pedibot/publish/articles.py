@@ -408,6 +408,15 @@ def parse_output(text: str) -> tuple[str, str, str]:
     return m_t.group(1).strip(), m_s.group(1).strip(), m_b.group(1).strip()
 
 
+#: Numbers and services that only work where the source was written. The prompt forbids these in
+#: capital letters and the model prints them anyway, so the draft is refused and rewritten
+#: instead of asked nicely. Kept here rather than in the test so the two cannot drift.
+FOREIGN_SERVICE = re.compile(
+    r"\b999\b|\b911\b|NHS\s*111|(?<![\d.,])111(?![\d.,])|\bA&E\b|GP surgery|"
+    r"1-800-222-1222|91\s?562\s?04\s?20"
+)
+
+
 def _problems(title: str, body: str, hits: list[Hit], lang: str) -> list[str]:
     """Verification of the draft: citations and doses (shared with the answer engine) plus the
     language. A Spanish guide written into web/content/en carries `lang: en` in its frontmatter,
@@ -416,6 +425,18 @@ def _problems(title: str, body: str, hits: list[Hit], lang: str) -> list[str]:
     if detect_lang(f"{title} {body}") != lang:
         want = LANGUAGE_NAME.get(lang, "English")
         problems.append(f"wrong_language (write the WHOLE article in {want})")
+    # the sources block quotes documents verbatim, so only the prose is checked
+    prose = "\n".join(
+        line for line in body.splitlines()
+        if not line.strip().startswith(('- "[', '*', '['))
+    )
+    m = FOREIGN_SERVICE.search(prose)
+    if m:
+        problems.append(
+            f"foreign_service ({m.group(0)!r}): never send the reader to a number or service"
+            " that only exists where the source was written. Write 'your doctor', 'your local"
+            " emergency number' or 'the emergency department'."
+        )
     return problems
 
 

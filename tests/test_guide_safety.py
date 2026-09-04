@@ -20,10 +20,9 @@ CONTENT = ROOT / "web" / "content"
 
 # Numbers and national brands a reader in another country cannot use. 112 is deliberately absent:
 # it is the shared European number, and where a guide names it, it names its own country too.
-FORBIDDEN = re.compile(
-    r"\b999\b|\b911\b|NHS\s*111|(?<![\d.,])111(?![\d.,])|\bA&E\b|GP surgery|"
-    r"1-800-222-1222|91\s?562\s?04\s?20"
-)
+# The same pattern the generator refuses drafts with, imported rather than copied: a guard and
+# the check that proves it works must not be two lists that can drift.
+from pedibot.publish.articles import FOREIGN_SERVICE as FORBIDDEN  # noqa: E402
 
 
 def _prose(path: pathlib.Path) -> list[tuple[int, str]]:
