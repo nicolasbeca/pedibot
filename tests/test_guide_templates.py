@@ -82,9 +82,15 @@ def test_the_guide_never_claims_a_medical_review(lang: str) -> None:
     make — worse than the SEO is worth, and worse coming from a page whose whole argument is that
     it says only what it can show.
     """
-    t = template(lang)
-    for claim in ("reviewedBy", "lastReviewed", "reviewedByOrganization"):
-        assert claim not in t, f"[{lang}] declara {claim} sin que nadie haya revisado nada"
+    # code only: the comment above the block explains why those fields are absent, and a check
+    # that fires at its own documentation teaches people to stop documenting. Same trap as the
+    # ternary guard, twice in one day.
+    code = "\n".join(
+        line.split("//")[0] for line in template(lang).splitlines()
+        if not line.lstrip().startswith(("//", "/*", "*"))
+    )
+    for claim in ("reviewedBy", "lastReviewed"):
+        assert claim not in code, f"[{lang}] declara {claim} sin que nadie haya revisado nada"
 
 
 @pytest.mark.parametrize("lang", LANGS)
