@@ -33,8 +33,11 @@ MARKERS: dict[str, tuple[str, ...]] = {
     "en": ("child", "should", "what ", "when ", "vaccination schedule", "symptom diary",
            "dose calculator", "guidelines", "warning signs", "how it works", "common questions",
            "where they agree", "where they differ"),
+    # the last four were added on 4-sep: the German, Russian and Arabic home pages carried the
+    # French title for weeks and none of the words above appear in it
     "fr": ("enfant", "urgences", "vaccinal", "posologie", "dois-je", "médicaments",
-           "quels ", "âge", "santé", "questions fréquentes"),
+           "quels ", "âge", "santé", "questions fréquentes",
+           "gratuit ", "réponses", "sourcé", "pour les parents", "toutes les"),
     "de": ("kind", "notaufnahme", "impfkalender", "dosisrechner", "warnzeichen", "soll ich",
            "ratgeber", "häufige fragen", "quellen", "symptomtagebuch"),
     # Russian is in its own script, so any Cyrillic at all on a non-Russian page is a leak
@@ -86,7 +89,9 @@ HEADLINE = re.compile(
     r"|<h1[^>]*>(.*?)</h1>"
     r"|<h2[^>]*>(.*?)</h2>"
     r'|<p class="eyebrow"[^>]*>(.*?)</p>'
-    r'|<p class="lede"[^>]*>(.*?)</p>',
+    r'|<p class="lede"[^>]*>(.*?)</p>'
+    # the meta description was not read at all, and it shipped in French on nine pages
+    r'|<meta name="description" content="([^"]*)"',
     re.S | re.I,
 )
 TAG = re.compile(r"<[^>]*>")

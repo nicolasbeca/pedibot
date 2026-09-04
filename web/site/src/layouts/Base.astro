@@ -24,6 +24,14 @@ const alternates = otherLangs
   })
   .filter((x): x is { lang: Lang; href: string } => x !== null);
 const canonical = `${site}${path === '/' ? '' : path}`;
+// x-default names the edition to serve a reader Google cannot place by language. Without it
+// Google picks one on its own, and it was missing from all 571 pages. English at the root is
+// this site's default; a page with no English counterpart claims none rather than lying.
+// `alternates` leaves out the current language, so add it back and look the default up in
+// the whole set. No ternary on the language: treating the page's own edition as one entry
+// among the six is the same principle the rest of this file runs on.
+const everyEdition = [{ lang, href: path }, ...alternates];
+const enHref = everyEdition.find((a) => a.lang === 'en')?.href ?? null;
 const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'PediBot', url: site, logo: `${site}/logo.svg`, email: 'pedibot.ai@gmail.com', sameAs: ['https://x.com/pedibotai'] };
 ---
 <html lang={lang} dir={dirFor(lang)}>
@@ -35,6 +43,9 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   <link rel="alternate" hreflang={lang} href={canonical} />
+  {enHref !== null && (
+    <link rel="alternate" hreflang="x-default" href={`${site}${enHref === '/' ? '' : enHref}`} />
+  )}
   {alternates.map((a) => (
     <link rel="alternate" hreflang={a.lang} href={`${site}${a.href === '/' ? '' : a.href}`} />
   ))}

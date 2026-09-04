@@ -42,3 +42,29 @@ def test_every_language_has_markers() -> None:
         r"'(\w+)'", re.search(r"export const LANGS: Lang\[\] = \[(.*?)\]", text).group(1)
     )
     assert set(langs) == set(MARKERS), f"añade marcadores para {set(langs) ^ set(MARKERS)}"
+
+
+def test_the_scan_now_catches_the_title_that_slipped_past_it() -> None:
+    """It did not, for weeks. The German home page carried the French title and none of the
+    French markers — enfant, urgences, posologie — appear in it, so the scan said the site was
+    clean. A word list is never finished; this pins the words that were missing.
+    """
+    french_on_a_german_page = (
+        "<title>PediBot — des réponses pédiatriques sourcées</title>"
+        '<meta name="description" content="Assistant gratuit pour les parents : il répond '
+        'uniquement à partir de recommandations pédiatriques publiées.">'
+    )
+    assert leaks(french_on_a_german_page, "de")
+    assert leaks("<title>Guides pour les parents — PediBot</title>", "ru")
+    assert leaks(
+        "<title>Soutenir PediBot — gratuit pour toutes les familles</title>", "ar"
+    )
+    # and none of it fires on the page it actually belongs to
+    assert not leaks(french_on_a_german_page, "fr")
+
+
+def test_the_spanish_word_for_free_is_not_read_as_french() -> None:
+    """`gratuit` was added as a French marker and matched inside the Spanish `gratuito`, which
+    flagged the Spanish home page. Markers have to end where the word ends."""
+    spanish = '<meta name="description" content="Asistente gratuito para padres.">'
+    assert not leaks(spanish, "es")

@@ -1,12 +1,14 @@
 ---
 import Base from '../layouts/Base.astro';
 import SupportBody from '../components/SupportBody.astro';
+import { t } from '../i18n';
 const lang = 'en';
+const s = t(lang);
 ---
 <Base
   lang={lang}
-  title="Support PediBot — free for every family, kept running by one person"
-  description="What PediBot gives away for free, how you can help without spending anything, and how to chip in with what it costs to run."
+  title={s.meta_support_title}
+  description={s.meta_support_desc}
   path="/support"
 >
   <SupportBody lang={lang} />

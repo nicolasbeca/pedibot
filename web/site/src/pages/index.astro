@@ -3,10 +3,12 @@ import Base from '../layouts/Base.astro';
 import Chat from '../components/Chat.astro';
 import Alerts from '../components/Alerts.astro';
 import Sections from '../components/Sections.astro';
+import { t } from '../i18n';
 const lang = 'en';
-const jsonld = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'PediBot', applicationCategory: 'HealthApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0' }, description: 'Free assistant for parents that answers only from published paediatric guidelines and cites the page.' };
+const s = t(lang);
+const jsonld = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'PediBot', applicationCategory: 'HealthApplication', operatingSystem: 'Web', offers: { '@type': 'Offer', price: '0' }, description: s.meta_home_desc };
 ---
-<Base lang={lang} title="PediBot — paediatric guidance with sources" description="Free assistant for parents that answers only from published paediatric guidelines, names the source in every sentence, and tells you when to go to the emergency department." path="/" jsonld={jsonld}>
+<Base lang={lang} title={s.meta_home_title} description={s.meta_home_desc} path="/" jsonld={jsonld}>
   <Chat lang={lang} />
   <Alerts lang={lang} />
   <Sections lang={lang} />

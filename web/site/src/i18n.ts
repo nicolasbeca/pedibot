@@ -2,6 +2,11 @@ export type Lang = 'en' | 'es' | 'fr' | 'de' | 'ru' | 'ar';
 
 const strings = {
   en: {
+    meta_home_title: "PediBot — paediatric guidance with sources",
+    meta_home_desc: "Free assistant for parents that answers only from published paediatric guidelines, names the source in every sentence, and tells you when to go to the emergency department.",
+    meta_guides_title: "Guides for parents — PediBot",
+    meta_support_title: "Support PediBot — free for every family, kept running by one person",
+    meta_support_desc: "What PediBot gives away for free, how you can help without spending anything, and how to chip in with what it costs to run.",
     dose_brands_h: "Dose by brand name",
     kit: {
       eyebrow: "At home",
@@ -148,6 +153,11 @@ const strings = {
     sug_winter: ['My 5-month-old has a cold and is breathing with a whistle', 'bronchiolitis · winter'], sug_summer: ['He has been in the sun all day and now feels dizzy with a fever', 'heat stroke · summer'],
   },
   es: {
+    meta_home_title: "PediBot — orientación pediátrica con fuentes",
+    meta_home_desc: "Asistente gratuito para padres que responde solo con guías pediátricas publicadas, nombra la fuente en cada frase y te dice cuándo ir a urgencias.",
+    meta_guides_title: "Guías para padres — PediBot",
+    meta_support_title: "Apoya a PediBot — gratis para todas las familias, lo mantiene una persona",
+    meta_support_desc: "Lo que PediBot regala, cómo puedes ayudar sin gastar nada y cómo echar una mano con lo que cuesta mantenerlo.",
     dose_brands_h: "Dosis por nombre comercial",
     kit: {
       eyebrow: "En casa",
@@ -294,6 +304,11 @@ const strings = {
     sug_winter: ['Mi bebé de 5 meses tiene mocos y respira con pitos', 'bronquiolitis · invierno'], sug_summer: ['Ha estado todo el día al sol y ahora está mareado y con fiebre', 'golpe de calor · verano'],
   },
   fr: {
+    meta_home_title: "PediBot — des réponses pédiatriques sourcées",
+    meta_home_desc: "Assistant gratuit pour les parents : il répond uniquement à partir de recommandations pédiatriques publiées, nomme la source à chaque phrase et vous dit quand aller aux urgences.",
+    meta_guides_title: "Guides pour les parents — PediBot",
+    meta_support_title: "Soutenir PediBot — gratuit pour toutes les familles, maintenu par une seule personne",
+    meta_support_desc: "Ce que PediBot offre, comment aider sans rien dépenser, et comment participer à ce que cela coûte.",
     dose_brands_h: "Doses par nom commercial",
     kit: {
       eyebrow: "À la maison",
@@ -440,6 +455,11 @@ const strings = {
     sug_winter: ['Mon bébé de 5 mois est enrhumé et respire en sifflant', 'bronchiolite · hiver'], sug_summer: ["Il est resté au soleil toute la journée et il a la tête qui tourne avec de la fièvre", 'coup de chaleur · été'],
   },
   de: {
+    meta_home_title: "PediBot — pädiatrische Antworten mit Quellenangabe",
+    meta_home_desc: "Kostenloser Helfer für Eltern: antwortet ausschließlich aus veröffentlichten Kinderleitlinien, nennt in jedem Satz die Quelle und sagt Ihnen, wann Sie in die Notaufnahme müssen.",
+    meta_guides_title: "Ratgeber für Eltern — PediBot",
+    meta_support_title: "PediBot unterstützen — für alle Familien kostenlos, betrieben von einer Person",
+    meta_support_desc: "Was PediBot verschenkt, wie Sie ohne Geld helfen können und wie Sie sich an den laufenden Kosten beteiligen.",
     dose_brands_h: "Dosierung nach Handelsname",
     kit: {
       eyebrow: "Zu Hause",
@@ -586,6 +606,11 @@ const strings = {
     sug_winter: ['Mein 5 Monate altes Baby ist erkältet und atmet pfeifend', 'Bronchiolitis · Winter'], sug_summer: ['Er war den ganzen Tag in der Sonne und ist jetzt schwindelig und hat Fieber', 'Hitzschlag · Sommer'],
   },
   ru: {
+    meta_home_title: "PediBot — педиатрические ответы с источниками",
+    meta_home_desc: "Бесплатный помощник для родителей: отвечает только по опубликованным педиатрическим рекомендациям, называет источник в каждой фразе и подсказывает, когда пора в скорую.",
+    meta_guides_title: "Руководства для родителей — PediBot",
+    meta_support_title: "Поддержать PediBot — бесплатно для всех семей, держится на одном человеке",
+    meta_support_desc: "Что PediBot отдаёт бесплатно, как помочь, не тратя денег, и как поучаствовать в расходах на его работу.",
     dose_brands_h: "Дозы по торговому названию",
     kit: {
       eyebrow: "Дома",
@@ -732,6 +757,11 @@ const strings = {
     sug_winter: ['Моему пятимесячному ребёнку 5 месяцев, он простужен и дышит со свистом', 'бронхиолит · зима'], sug_summer: ['Он весь день был на солнце, теперь кружится голова и температура', 'тепловой удар · лето'],
   },
   ar: {
+    meta_home_title: "PediBot — إجابات طب الأطفال مع مصادرها",
+    meta_home_desc: "مساعد مجاني للوالدين: يجيب من الإرشادات الطبية المنشورة وحدها، ويذكر المصدر في كل جملة، ويقول لك متى تذهب إلى الطوارئ.",
+    meta_guides_title: "أدلة للوالدين — PediBot",
+    meta_support_title: "ادعم PediBot — مجاني لكل الأسر، ويشغّله شخص واحد",
+    meta_support_desc: "ما يقدمه PediBot مجانا، وكيف تساعد دون أن تنفق شيئا، وكيف تشارك في تكلفة تشغيله.",
     dose_brands_h: "الجرعة حسب الاسم التجاري",
     kit: {
       eyebrow: "في البيت",

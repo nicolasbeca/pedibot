@@ -5,7 +5,7 @@ import { t } from '../../../i18n';
 const lang = 'es'; const s = t(lang);
 const guides = (await getCollection('guides', g => g.data.lang === lang && !g.data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<Base lang={lang} title="Guías para padres — PediBot" description={s.guides_lede} path="/es/guides">
+<Base lang={lang} title={s.meta_guides_title} description={s.guides_lede} path="/es/guides">
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.nav_guides}</p>
     <h1 style="margin-top:8px">{s.guides_h1}</h1>
