@@ -108,6 +108,7 @@ class Rule:
     reason_de: str = ""
     reason_ru: str = ""
     reason_ar: str = ""
+    reason_pt: str = ""
     patterns: list[re.Pattern[str]] = field(default_factory=list)
     requires: list[str] = field(default_factory=list)
 
@@ -121,17 +122,10 @@ class TriageResult:
 
     def reasons(self, lang: str = "en") -> list[str]:
         def pick(r: Rule) -> str:
-            if lang == "es":
-                return r.reason_es
-            if lang == "fr" and r.reason_fr:
-                return r.reason_fr
-            if lang == "de" and r.reason_de:
-                return r.reason_de
-            if lang == "ru" and r.reason_ru:
-                return r.reason_ru
-            if lang == "ar" and r.reason_ar:
-                return r.reason_ar
-            return r.reason_en
+            # a lookup, not a ladder of ifs: a new language used to mean remembering to add
+            # a branch here, and forgetting meant silently answering in English
+            own = getattr(r, f"reason_{lang}", "")
+            return own or r.reason_en
 
         return [pick(r) for r in self.matched]
 
@@ -170,6 +164,7 @@ class Triage:
                     reason_de=r.get("reason_de", ""),
                     reason_ru=r.get("reason_ru", ""),
                     reason_ar=r.get("reason_ar", ""),
+                    reason_pt=r.get("reason_pt", ""),
                     patterns=[re.compile(p, re.I) for p in r.get("patterns", [])],
                     requires=list(r.get("requires", [])),
                 )

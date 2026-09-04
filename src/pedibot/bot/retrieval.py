@@ -48,7 +48,7 @@ class Synonyms:
 
 
 def detect_lang(text: str) -> str:
-    """Tiny heuristic: es / en / fr / de / ru — enough to pick the synonym direction, the answer
+    """Tiny heuristic: es / en / fr / de / ru / ar / pt — enough to pick the synonym direction, the answer
     language and the triage wording. A language only joins here once it has its own triage
     patterns: guessing the language of a message the safety layer cannot read is worse than
     defaulting to English.
@@ -137,6 +137,13 @@ def detect_lang(text: str) -> str:
         " toux",
         " ventre",
         " tête",
+        # French-only words that carry a short question on their own. Added when the
+        # cedilla stopped counting for French — it is shared with Portuguese — and
+        # «Ça fait mal quand il avale» was left scoring zero in every language.
+        " ça ",
+        " quand ",
+        " fait ",
+        " avale",
     ]
     de_markers = [
         " mein ",
@@ -166,15 +173,45 @@ def detect_lang(text: str) -> str:
         " jahren",
         " wochen",
     ]
+    pt_markers = [
+        " você",
+        " não ",
+        " nao ",
+        " criança",
+        " crianca",
+        " filho",
+        " filha",
+        " meu ",
+        " minha ",
+        " tem ",
+        " pode ",
+        " febre",
+        " com ",
+        " uma ",
+        " são ",
+        " é ",
+        " está com",
+        " vômito",
+        " vomito ",
+        " remédio",
+    ]
     es = sum(m in low for m in es_markers) + sum(ch in "ñ¿¡" for ch in text.lower())
     en = sum(m in low for m in en_markers)
-    # French shares most accents with Spanish, so only the ones Spanish never uses count: è ê ô û ç
-    fr = sum(m in low for m in fr_markers) + sum(ch in "èêôûçà" for ch in text.lower())
+    # French shares most accents with Spanish, so only the ones Spanish never uses count. NOT ç:
+    # Portuguese writes it too (criança, cabeça), so it separates neither and it used to hand
+    # "A criança bateu a cabeça" to French on two cedillas alone.
+    fr = sum(m in low for m in fr_markers) + sum(ch in "èêôûà" for ch in text.lower())
     # ä ö ü ß are German alone among the four; "das/der/die" carry most of the rest
     de = sum(m in low for m in de_markers) + sum(ch in "äöüß" for ch in text.lower())
-    best = max(es, en, fr, de)
+    # ã and õ belong to Portuguese alone here; Spanish has ñ, which is counted for Spanish
+    pt = sum(m in low for m in pt_markers) + sum(ch in "ãõ" for ch in text.lower())
+    best = max(es, en, fr, de, pt)
     if best == 0:
         return "en"
+    # Portuguese first among the Latin ones when it wins outright: its markers are disjoint
+    # from Spanish's, so a tie means the text is not really Portuguese and Spanish should win.
+    if pt == best and pt > es:
+        return "pt"
     # ties go to the more conservative side: es before fr, because "mi/ma" and "hijo/fils" overlap
     if es == best:
         return "es"
