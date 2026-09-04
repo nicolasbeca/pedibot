@@ -27,8 +27,13 @@ const MAIL = 'pedibot.ai@gmail.com';
 const counts = {
   docs: String((sources as any[]).filter((d) => d.usage !== 'excluido').length),
   guides: String((await getCollection('guides', (g) => !g.data.draft)).length),
+  // counted, never typed: every edition used to name the languages that existed when it was
+  // written, so English still said three and German four long after Russian and Arabic
+  // shipped. And counted from guides that EXIST, so a language shows up here the day it has
+  // something to read, not the day its interface is translated.
+  langs: String(new Set((await getCollection('guides', (g) => !g.data.draft)).map((g) => g.data.lang)).size),
 };
-const fill = (text: string) => text.replace(/\{docs\}/g, counts.docs).replace(/\{guides\}/g, counts.guides);
+const fill = (text: string) => text.replace(/\{docs\}/g, counts.docs).replace(/\{guides\}/g, counts.guides).replace(/\{langs\}/g, counts.langs);
 /** '/guides' and '/' are language-relative; 'mailto' is the address plus a translated subject. */
 const target = (href: string) =>
   href === 'mailto' ? `mailto:${MAIL}?subject=${encodeURIComponent(T.mail_subject)}`

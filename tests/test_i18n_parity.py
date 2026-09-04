@@ -302,3 +302,27 @@ def test_the_full_question_survives_where_it_fits() -> None:
     assert "s.nav_emergency_short" in base, "la barra debe usar la etiqueta corta"
     assert "s.nav_emergency}" in base, "el pie debe conservar la pregunta completa"
     assert "s.nav_emergency}" in chat, "el aviso bajo el chat debe conservar la pregunta"
+
+
+def test_no_edition_counts_the_languages_by_hand() -> None:
+    """Every edition used to name the languages the site had when THAT edition was written.
+
+    English, Spanish and French said "in English, Spanish and French" long after German, Russian
+    and Arabic had shipped; German said four; Russian said five. Only Arabic was right, and only
+    because it happened to be last. On a page whose entire argument is that this project does not
+    state what it has not checked, that sentence was the worst thing on it.
+
+    It is `{langs}` now, counted at build time from the guides that exist. This refuses the
+    hand-written version coming back.
+    """
+    named = ("Spanish and French", "español y francés", "espagnol et en français",
+             "Spanisch, Französisch", "испанском, французском", "والإسبانية والفرنسية")
+    guilty = {}
+    for lang in langs():
+        body = block(lang)
+        hits = [n for n in named if n in body]
+        if hits:
+            guilty[lang] = hits
+    assert not guilty, f"idiomas enumerados a mano en vez de contados: {guilty}"
+    for lang in langs():
+        assert "{langs}" in block(lang), f"[{lang}] no usa el marcador {{langs}}"
