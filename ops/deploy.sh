@@ -49,6 +49,17 @@ sudo -u pedibot bash -c 'cd /opt/pedibot && ~/.local/bin/uv sync --no-dev -q'
 sudo -u pedibot bash -c 'cd /opt/pedibot/web/site && if [ ! -d node_modules ] || ! cmp -s package-lock.json node_modules/.package-lock.json; then npm ci --no-audit --no-fund --silent; fi'
 sudo -u pedibot bash -c 'cd /opt/pedibot && ~/.local/bin/uv run --no-dev python scripts/export_catalog.py >/dev/null && cd web/site && SITE_URL=https://pedibot.xyz npm run build 2>&1 | grep -E "page\(s\)|rror"'
 chmod -R o+rX /opt/pedibot/web/site/dist
+# A unit deleted from the repo has to disappear from the server too. The upload does not
+# delete, so removing pedibot-publish.* from git left it running and a deploy reinstalled it
+# from the copy still sitting in /opt/pedibot/ops/systemd. Prune first, then copy.
+for f in /etc/systemd/system/pedibot-*.service /etc/systemd/system/pedibot-*.timer; do
+  [ -e "$f" ] || continue
+  if [ ! -e "/opt/pedibot/ops/systemd/$(basename "$f")" ]; then
+    echo "== retirando unidad que ya no está en el repositorio: $(basename "$f")"
+    systemctl disable --now "$(basename "$f")" >/dev/null 2>&1 || true
+    rm -f "$f"
+  fi
+done
 cp /opt/pedibot/ops/systemd/*.service /opt/pedibot/ops/systemd/*.timer /etc/systemd/system/
 cp /opt/pedibot/ops/Caddyfile /etc/caddy/Caddyfile
 # admin panel password: created once (ops/README), hash kept outside the repo

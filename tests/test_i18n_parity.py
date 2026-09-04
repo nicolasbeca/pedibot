@@ -373,3 +373,54 @@ def test_the_three_emergency_headers_are_three_different_sentences() -> None:
     for lang, texts in per_lang.items():
         assert len(texts) == 3, f"[{lang}] sólo aparece en {len(texts)} de las tres cabeceras"
         assert len(set(texts)) == 3, f"[{lang}] repite texto entre cabeceras: {texts}"
+
+
+def paths(body: str) -> set[str]:
+    """Every key with the object it lives in — `donate.on_network`, not `on_network`.
+
+    `keys()` flattens, which is what let a value exist and still render as nothing: Russian and
+    Arabic had `on_network` one level up, outside `donate`, so `t(lang).donate.on_network` was
+    undefined and the donation cards drew two empty lines. The names all matched.
+    """
+    stripped = re.sub(r"'(?:[^'\\]|\\.)*'|\"(?:[^\"\\]|\\.)*\"", "''", body)
+    out: set[str] = set()
+    stack: list[str] = []
+    i = 0
+    while i < len(stripped):
+        m = re.compile(r"([a-z_][a-z_0-9]*)\s*:\s*").match(stripped, i)
+        if m and (i == 0 or stripped[i - 1] in "{,\n \t"):
+            name = m.group(1)
+            j = m.end()
+            if j < len(stripped) and stripped[j] == "{":
+                stack.append(name)
+                i = j + 1
+                continue
+            out.add(".".join([*stack, name]))
+            i = j
+            continue
+        if stripped[i] == "{":
+            stack.append("[]")  # an object inside an array: its keys are positional, not named
+        elif stripped[i] == "}" and stack:
+            stack.pop()
+        i += 1
+    return out
+
+
+def test_every_key_lives_in_the_same_object_in_every_language() -> None:
+    per_lang = {lang: paths(block(lang)) for lang in langs()}
+    everything = set.union(*per_lang.values())
+    misplaced = {lang: sorted(everything - p) for lang, p in per_lang.items()}
+    assert not any(misplaced.values()), (
+        "claves que faltan o están anidadas en otro sitio: "
+        f"{ {k: v for k, v in misplaced.items() if v} }"
+    )
+
+
+def test_the_path_check_catches_a_key_moved_out_of_its_object() -> None:
+    """A checker nobody has seen fire is not a checker, and this one exists because the flat
+    version passed while two pages rendered blank."""
+    good = "donate: {\n  h: 'x',\n  on_network: 'y',\n},\n"
+    bad = "donate: {\n  h: 'x',\n},\non_network: 'y',\n"
+    assert "donate.on_network" in paths(good)
+    assert "donate.on_network" not in paths(bad)
+    assert "on_network" in paths(bad)
