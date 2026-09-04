@@ -4,9 +4,13 @@ import Base from '../../layouts/Base.astro';
 import VaccinesTool from '../../components/VaccinesTool.astro';
 import { t, langPrefix } from '../../i18n';
 const lang = 'pt'; const s = t(lang); const p = langPrefix(lang);
+// counted, never typed: this sentence used to name five countries and there are
+// seven. See the same fix for {langs} on the support page.
+const countryCount = String(Object.keys(schedules).length);
+const fillCountries = (x: string) => x.replace(/\{countries\}/g, countryCount);
 const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: s.vaxpage_name, about: s.vaxpage_about };
 ---
-<Base lang={lang} title={s.vaxpage_title} description={s.vaxpage_desc} path="/pt/vaccines" jsonld={jsonld}>
+<Base lang={lang} title={s.vaxpage_title} description={fillCountries(s.vaxpage_desc)} path="/pt/vaccines" jsonld={jsonld}>
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.nav_vaccines}</p>
     <VaccinesTool lang={lang} />
