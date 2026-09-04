@@ -82,7 +82,11 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
         <a class="pill md-only" href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a>
         <a class="pill md-only" href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a>
         <a class="pill sm-only" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a>
-        <a class="pill" href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a>
+        {/* the short label here on purpose: a nav pill is a noun, not a sentence. The full
+            question — "Soll ich in die Notaufnahme?" — is 28 characters and pushed the German
+            and French bars past the 1040px column, cutting the last pill in half. The whole
+            question still reads in the footer and under the chat box, where it fits. */}
+        <a class="pill" href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency_short}</a>
       </nav>
       <div class="bar-end">
         {/* in the right-hand group and not in <nav>, because that one is hidden on phones and

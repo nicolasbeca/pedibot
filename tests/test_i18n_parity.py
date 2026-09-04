@@ -248,3 +248,50 @@ def test_every_line_of_the_home_kit_names_its_source() -> None:
             for item, what, cite in kit_list(body, name):
                 assert what.strip(), f"[{lang}] {item}: sin texto"
                 assert "—" in cite and len(cite) > 12, f"[{lang}] {item}: sin fuente citada"
+
+
+#: The pills that live inside <nav> in Base.astro. The bar is capped at the 1040px `.wrap`
+#: column, and it shares that column with the logo, the support pill, the language menu and the
+#: theme toggle — so the labels have perhaps sixty characters between them before the last one
+#: gets cut in half.
+NAV_PILLS = ["nav_dose", "nav_guides", "nav_kit", "nav_sources", "nav_vaccines",
+             "nav_emergency_short"]
+NAV_BUDGET = 66
+
+
+def test_the_menu_labels_still_fit_in_the_bar() -> None:
+    """German cut "Soll ich in die Notaufna…" off the end of the bar, and French was worse.
+
+    The cause was not the number of pills but their wording: the emergency label was a whole
+    question — 28 characters in German and French — where a nav label should be a noun. Nothing
+    failed; the pill was simply sliced, and only in some languages, which is why it survived a
+    redesign and two reviews. A budget makes the next long translation fail here instead of on
+    someone's screen.
+    """
+    text = I18N.read_text(encoding="utf-8")
+    over = {}
+    for lang in langs():
+        body = block(lang)
+        total = 0
+        for key in NAV_PILLS:
+            m = re.search(rf"{key}: ['\"](.*?)['\"],", body)
+            assert m, f"[{lang}] falta la etiqueta {key}"
+            total += len(m.group(1))
+        if total > NAV_BUDGET:
+            over[lang] = total
+    assert not over, (
+        f"etiquetas del menú demasiado largas (presupuesto {NAV_BUDGET}): {over}. "
+        "Acorta una: una pastilla de menú es un sustantivo, no una frase."
+    )
+    # exactamente una vez por idioma en el catálogo; el uso vive en Base.astro, otro fichero
+    assert text.count("nav_emergency_short") == len(langs())
+
+
+def test_the_full_question_survives_where_it_fits() -> None:
+    """Shortening the pill must not lose the question: it still introduces the page in the footer
+    and under the chat box, which is where a parent reads it as a question rather than a label."""
+    base = (SITE / "layouts" / "Base.astro").read_text(encoding="utf-8")
+    chat = (SITE / "components" / "Chat.astro").read_text(encoding="utf-8")
+    assert "s.nav_emergency_short" in base, "la barra debe usar la etiqueta corta"
+    assert "s.nav_emergency}" in base, "el pie debe conservar la pregunta completa"
+    assert "s.nav_emergency}" in chat, "el aviso bajo el chat debe conservar la pregunta"
