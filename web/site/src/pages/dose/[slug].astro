@@ -50,7 +50,7 @@ const jsonld = {
             {rows.map((r) => (
               <tr class={r.belowMin ? 'low' : undefined}>
                 <th scope="row">{r.kg} kg</th>
-                <td class="mono">{r.mgMin}–{r.mgMax} mg</td>
+                <td class="mono">{r.mg} mg</td>
                 {r.ml.map((v) => <td class="mono">{v} ml</td>)}
                 <td class="mono">{maxDoses(m, r.kg)}</td>
               </tr>
@@ -59,6 +59,7 @@ const jsonld = {
         </table>
       </div>
       <p class="warn">⚠️ {s.dosedrug_warn.replace('{generic}', generic)}{isIbu ? ' ' + s.dosedrug_ibu : ''}</p>
+      <p class="note" set:html={s.dosedrug_band.replaceAll("{lo}", String(d.per_dose_mg_per_kg[0])).replaceAll("{hi}", String(d.per_dose_mg_per_kg[1]))} />
       <p class="note">{d.notes[lang] ?? d.notes.en}</p>
       <p class="src">{d.source}.</p>
     </div>

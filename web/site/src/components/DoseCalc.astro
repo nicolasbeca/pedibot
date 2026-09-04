@@ -46,8 +46,8 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
     if (!r.ok) { out.innerHTML = '<p>' + S.only_known + '</p>'; return; }
     const j = await r.json();
     let h = `<div class="who">${esc(j.generic)}${j.brand ? ' (' + esc(j.brand) + ')' : ''} · ${j.weight_kg} kg</div>`;
-    h += `<div class="big">${j.mg_min}–${j.mg_max} mg</div><p>${S.every} ${j.interval_hours[0]}–${j.interval_hours[1]} ${S.hours} · ${S.max} ${j.max_doses_per_day} ${S.perday}</p><table>`;
-    for (const f of j.ml_by_form) h += `<tr><td>${esc(f.form)}</td><td>${f.ml_min}–${f.ml_max} ml</td></tr>`;
+    h += `<div class="big">${j.mg} mg</div><p>${S.every} ${j.interval_hours[0]}–${j.interval_hours[1]} ${S.hours} · ${S.max} ${j.max_doses_per_day} ${S.perday}</p><table>`;
+    for (const f of j.ml_by_form) h += `<tr><td>${esc(f.form)}</td><td><b>${f.ml} ml</b></td></tr>`;
     h += '</table>';
     if (j.refer) h += `<div class="warn">⚠️ ${S.refer} ${j.warnings.join(', ')}</div>`;
     if (j.notes) h += `<div class="note">${esc(j.notes)}</div>`;

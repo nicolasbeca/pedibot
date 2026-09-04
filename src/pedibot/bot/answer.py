@@ -176,15 +176,7 @@ ASK_AGE = {
     "de": "Um sicher antworten zu können, muss ich wissen, wie alt Ihr Kind ist (in Monaten oder Jahren). Können Sie mir das sagen?",
     "ru": "Чтобы ответить безопасно, мне нужно знать возраст ребёнка (в месяцах или годах). Подскажете?",
     "ar": "لكي أجيب بأمان أحتاج أن أعرف عمر طفلك (بالأشهر أو بالسنوات). هل يمكنك إخباري؟",
-    "pt": [
-        "Febre",
-        "Tosse ou respiração",
-        "Vômitos ou diarreia",
-        "Manchas ou pele",
-        "Batida ou queda",
-        "Comida ou sono",
-        "Outra coisa",
-    ],
+    "pt": "Para responder com segurança preciso saber a idade (meses ou anos). Pode me dizer?",
 }
 
 
@@ -257,7 +249,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "de": f"🚨 Rufen Sie jetzt {numbers['emergency']} an oder fahren Sie in die Notaufnahme.",
             "ru": f"🚨 Немедленно звоните {numbers['emergency']} или везите ребёнка в приёмное отделение.",
             "ar": f"🚨 اتصل الآن بـ {numbers['emergency']} أو توجّه فورا إلى قسم الطوارئ.",
-    "pt": "Para responder com segurança preciso saber a idade (meses ou anos). Pode me dizer?",
+            "pt": f"🚨 Ligue agora para {numbers['emergency']} ou vá ao pronto-socorro.",
         }
     elif tr.level == "urgent":
         heads = {
@@ -267,7 +259,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "de": "🚨 Mit diesen Anzeichen sollte Ihr Kind heute in der Notaufnahme gesehen werden, ohne zu warten.",
             "ru": "🚨 С такими признаками ребёнка нужно показать врачу в приёмном отделении сегодня, не откладывая.",
             "ar": "🚨 مع هذه العلامات يجب أن يراه طبيب في قسم الطوارئ اليوم، دون تأخير.",
-            "pt": f"🚨 Ligue agora para {numbers['emergency']} ou vá ao pronto-socorro.",
+            "pt": "🚨 Com esses sintomas é preciso ir ao pronto-socorro hoje, sem esperar.",
         }
     else:  # mental_health
         mental = numbers.get("mental") or numbers["emergency"]
@@ -278,7 +270,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "de": f"💛 Das ist wichtig, und Sie sind damit nicht allein. Rufen Sie {mental} an (oder {numbers['emergency']} bei unmittelbarer Gefahr). Wenn Ihr Kind sich bereits etwas angetan hat, fahren Sie jetzt in die Notaufnahme.",
             "ru": f"💛 Это важно, и вы не одни. Позвоните {mental} (или {numbers['emergency']}, если опасность прямо сейчас). Если ребёнок уже причинил себе вред, везите его в приёмное отделение немедленно.",
             "ar": f"💛 هذا أمر مهم ولست وحدك. اتصل بـ {mental} (أو بـ {numbers['emergency']} إذا كان الخطر الآن). وإذا كان طفلك قد آذى نفسه بالفعل، فتوجّه إلى قسم الطوارئ حالا.",
-            "pt": "🚨 Com esses sintomas é preciso ir ao pronto-socorro hoje, sem esperar.",
+            "pt": f"💛 Isso é importante e você não está sozinho(a). Ligue para {mental} (ou para {numbers['emergency']} se houver perigo imediato). Se a criança já fez algo para se machucar, vá ao pronto-socorro agora.",
         }
     head = heads.get(lang, heads["en"])
     why = {

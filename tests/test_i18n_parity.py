@@ -326,3 +326,50 @@ def test_no_edition_counts_the_languages_by_hand() -> None:
     assert not guilty, f"idiomas enumerados a mano en vez de contados: {guilty}"
     for lang in langs():
         assert "{langs}" in block(lang), f"[{lang}] no usa el marcador {{langs}}"
+
+
+def test_every_language_table_in_the_engine_holds_the_same_shape() -> None:
+    """A positional patch across seven similar tables drifted by one and put the clarify buttons
+    into ASK_AGE, the age question into the emergency header, and nothing into the mental-health
+    one. mypy caught it, which is what mypy is for — but a table of strings with one list in it is
+    worth refusing here too, where the message says which table.
+    """
+    from pedibot.bot.answer import (
+        ASK_AGE,
+        CLARIFY,
+        CLARIFY_OPTIONS,
+        DISCLAIMER,
+        NO_SOURCE,
+        SUPPORTED_LANGS,
+    )
+
+    for name, table, kind in (
+        ("DISCLAIMER", DISCLAIMER, str),
+        ("NO_SOURCE", NO_SOURCE, str),
+        ("CLARIFY", CLARIFY, str),
+        ("ASK_AGE", ASK_AGE, str),
+        ("CLARIFY_OPTIONS", CLARIFY_OPTIONS, list),
+    ):
+        assert set(table) >= set(SUPPORTED_LANGS), f"{name}: faltan {set(SUPPORTED_LANGS) - set(table)}"
+        for lang, value in table.items():
+            assert isinstance(value, kind), f"{name}[{lang}] es {type(value).__name__}, no {kind.__name__}"
+        if kind is list:
+            sizes = {len(v) for v in table.values()}
+            assert len(sizes) == 1, f"{name}: listas de distinta longitud {sizes}"
+
+
+def test_the_three_emergency_headers_are_three_different_sentences() -> None:
+    """They are built in three separate dicts a few lines apart, which is exactly how one ended up
+    carrying another's text — twice — without anything failing."""
+    import re
+
+    src = (ROOT / "src" / "pedibot" / "bot" / "answer.py").read_text(encoding="utf-8")
+    blocks = re.findall(r"heads = \{(.*?)\n        \}", src, re.S)
+    assert len(blocks) == 3, f"esperaba tres cabeceras, hay {len(blocks)}"
+    per_lang: dict[str, list[str]] = {}
+    for block in blocks:
+        for lang, text in re.findall(r'"(\w\w)": f?"([^"]+)"', block):
+            per_lang.setdefault(lang, []).append(text)
+    for lang, texts in per_lang.items():
+        assert len(texts) == 3, f"[{lang}] sólo aparece en {len(texts)} de las tres cabeceras"
+        assert len(set(texts)) == 3, f"[{lang}] repite texto entre cabeceras: {texts}"

@@ -106,6 +106,7 @@ export function medicines(): Medicine[] {
 
 export interface Row {
   kg: number;
+  mg: number;
   mgMin: number;
   mgMax: number;
   ml: string[];
@@ -121,11 +122,17 @@ export function weightTable(m: Medicine): Row[] {
   for (let kg = 5; kg <= 40; kg++) {
     const mgMax = Math.min(hi * kg, m.d.max_single_mg);
     const mgMin = Math.min(lo * kg, mgMax);
+    // The figure to act on is the top of the band: it is the one the published daily
+    // maximum is built from (paracetamol 15 × 4 = 60, ibuprofen 10 × 3 = 30) and the one
+    // the manufacturers' own leaflets give. The band stays in `mgBand` as context.
+    const mg = mgMax;
     rows.push({
       kg,
+      mg: Math.round(mg),
       mgMin: Math.round(mgMin),
       mgMax: Math.round(mgMax),
-      ml: m.forms.map((f) => `${r1(mgMin / f.mg_per_ml)}–${r1(mgMax / f.mg_per_ml)}`),
+      // floor, not nearest: a volume must never sit above the milligrams behind it
+      ml: m.forms.map((f) => String(Math.floor((mg / f.mg_per_ml) * 10) / 10)),
       belowMin: kg < m.d.min_weight_kg,
     });
   }

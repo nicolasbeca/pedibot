@@ -29,7 +29,8 @@ STRINGS: dict[str, Table] = {
         # --- dose calculator ---
         "dose_for": "{name} for {kg:g} kg:",
         "dose_refer": "⚠️ Do not give without medical advice: ",
-        "dose_line": "• Dose: {mg_min:g}–{mg_max:g} mg every {h0}–{h1} h (max {max_doses} doses/day).",
+        "dose_line": "• Dose: {mg:g} mg every {h0}–{h1} h (max {max_doses} doses/day).",
+        "dose_band": "The guide allows {mg_min:g}–{mg_max:g} mg; this is the usual dose for fever.",
         "dose_source": "Source: {source}.",
         "dose_check": "Always check the concentration on the bottle. Under 3 months, ask a doctor before giving anything.",
         "dose_warn": {
@@ -62,7 +63,8 @@ STRINGS: dict[str, Table] = {
         "ors_go_er": "Acude a urgencias si no consigue retener líquidos, orina muy poco, tiene los ojos hundidos, está muy decaído o hay sangre en las heces.",
         "dose_for": "{name} para {kg:g} kg:",
         "dose_refer": "⚠️ No dar sin consultar: ",
-        "dose_line": "• Dosis: {mg_min:g}–{mg_max:g} mg cada {h0}–{h1} h (máx. {max_doses} dosis/día).",
+        "dose_line": "• Dosis: {mg:g} mg cada {h0}–{h1} h (máx. {max_doses} dosis/día).",
+        "dose_band": "La guía admite de {mg_min:g} a {mg_max:g} mg; esta es la dosis habitual para la fiebre.",
         "dose_source": "Fuente: {source}.",
         "dose_check": "Comprueba siempre la concentración del envase. Si tiene menos de 3 meses, consulta antes de dar nada.",
         "dose_warn": {
@@ -93,7 +95,8 @@ STRINGS: dict[str, Table] = {
         "ors_go_er": "Allez aux urgences si l'enfant ne garde pas les liquides, s'il urine très peu, s'il a les yeux creux, s'il est anormalement somnolent ou s'il y a du sang dans les selles.",
         "dose_for": "{name} pour {kg:g} kg :",
         "dose_refer": "⚠️ Ne pas donner sans avis médical : ",
-        "dose_line": "• Dose : {mg_min:g}–{mg_max:g} mg toutes les {h0}–{h1} h (max. {max_doses} doses par jour).",
+        "dose_line": "• Dose : {mg:g} mg toutes les {h0}–{h1} h (max. {max_doses} doses par jour).",
+        "dose_band": "Le guide admet {mg_min:g}–{mg_max:g} mg ; c'est la dose habituelle contre la fièvre.",
         "dose_source": "Source : {source}.",
         "dose_check": "Vérifiez toujours la concentration inscrite sur le flacon. Avant 3 mois, demandez à un médecin avant de donner quoi que ce soit.",
         "dose_warn": {
@@ -124,7 +127,8 @@ STRINGS: dict[str, Table] = {
         "ors_go_er": "Fahren Sie in die Notaufnahme, wenn das Kind nichts bei sich behält, sehr wenig Urin ausscheidet, eingesunkene Augen hat, auffallend schläfrig ist oder Blut im Stuhl hat.",
         "dose_for": "{name} für {kg:g} kg:",
         "dose_refer": "⚠️ Nicht ohne ärztlichen Rat geben: ",
-        "dose_line": "• Dosis: {mg_min:g}–{mg_max:g} mg alle {h0}–{h1} h (höchstens {max_doses} Dosen pro Tag).",
+        "dose_line": "• Dosis: {mg:g} mg alle {h0}–{h1} h (höchstens {max_doses} Dosen pro Tag).",
+        "dose_band": "Die Leitlinie erlaubt {mg_min:g}–{mg_max:g} mg; dies ist die übliche Dosis bei Fieber.",
         "dose_source": "Quelle: {source}.",
         "dose_check": "Prüfen Sie immer die auf Ihrer Flasche angegebene Konzentration. Unter 3 Monaten nichts ohne ärztlichen Rat geben.",
         "dose_warn": {
@@ -155,7 +159,8 @@ STRINGS: dict[str, Table] = {
         "ors_go_er": "Поезжайте в приёмное отделение, если ребёнок не удерживает жидкость, мало мочится, у него запавшие глаза, необычная сонливость или кровь в стуле.",
         "dose_for": "{name} для {kg:g} кг:",
         "dose_refer": "⚠️ Не давать без назначения врача: ",
-        "dose_line": "• Доза: {mg_min:g}–{mg_max:g} мг каждые {h0}–{h1} ч (не более {max_doses} доз в сутки).",
+        "dose_line": "• Доза: {mg:g} мг каждые {h0}–{h1} ч (не более {max_doses} доз в сутки).",
+        "dose_band": "Руководство допускает {mg_min:g}–{mg_max:g} мг; это обычная доза при температуре.",
         "dose_source": "Источник: {source}.",
         "dose_check": "Всегда проверяйте концентрацию, указанную на вашем флаконе. До 3 месяцев ничего не давайте без назначения врача.",
         "dose_warn": {
@@ -186,7 +191,8 @@ STRINGS: dict[str, Table] = {
         "ors_go_er": "توجّه إلى قسم الطوارئ إذا لم يحتفظ الطفل بالسوائل، أو تبوّل قليلا جدا، أو غارت عيناه، أو كان نعسانا بشكل غير معتاد، أو ظهر دم في البراز.",
         "dose_for": "{name} لوزن {kg:g} كغ:",
         "dose_refer": "⚠️ لا يُعطى دون إرشاد طبي: ",
-        "dose_line": "• الجرعة: {mg_min:g}–{mg_max:g} ملغ كل {h0}–{h1} ساعة (بحد أقصى {max_doses} جرعات في اليوم).",
+        "dose_line": "• الجرعة: {mg:g} ملغ كل {h0}–{h1} ساعة (بحد أقصى {max_doses} جرعات في اليوم).",
+        "dose_band": "يسمح الدليل بـ {mg_min:g}–{mg_max:g} ملغ؛ وهذه هي الجرعة المعتادة للحرارة.",
         "dose_source": "المصدر: {source}.",
         "dose_check": "تحقق دائما من التركيز المطبوع على عبوتك. وقبل عمر 3 أشهر لا تعطِ أي دواء دون وصفة.",
         "dose_warn": {
@@ -217,7 +223,8 @@ STRINGS: dict[str, Table] = {
         "ors_go_er": "Vá ao pronto-socorro se a criança não conseguir reter líquidos, urinar muito pouco, estiver com os olhos fundos, muito abatida, ou se houver sangue nas fezes.",
         "dose_for": "{name} para {kg:g} kg:",
         "dose_refer": "⚠️ Não dar sem consultar: ",
-        "dose_line": "• Dose: {mg_min:g}–{mg_max:g} mg a cada {h0}–{h1} h (máx. {max_doses} doses/dia).",
+        "dose_line": "• Dose: {mg:g} mg a cada {h0}–{h1} h (máx. {max_doses} doses/dia).",
+        "dose_band": "O guia admite de {mg_min:g} a {mg_max:g} mg; esta é a dose habitual para a febre.",
         "dose_source": "Fonte: {source}.",
         "dose_check": "Confira sempre a concentração impressa na embalagem. Com menos de 3 meses, não dê nada sem orientação médica.",
         "dose_warn": {

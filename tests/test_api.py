@@ -191,3 +191,17 @@ def test_admin_panel_renders_and_flags(client, monkeypatch):
     r2 = c.post("/admin/flag", data={"id": j["answer_id"]}, follow_redirects=False)
     assert r2.status_code == 303
     assert "🚩" in c.get("/admin").text
+
+
+def test_the_dose_endpoint_hands_the_page_a_figure_not_a_band(client):
+    """The web calculator rendered `mg_min–mg_max` and `ml_min–ml_max` joined by a dash, and a
+    parent at three in the morning cannot measure "3–6 ml". The endpoint carries `mg` and a
+    per-form `ml` now; the band stays alongside so the page can show it as context."""
+    c, _ = client
+    j = c.post("/api/dose", json={"drug": "dalsy", "weight_kg": 12}).json()
+    assert j["mg"] == 120, j
+    two_percent = next(f for f in j["ml_by_form"] if "2 %" in f["form"] or "100 mg/5 ml" in f["form"])
+    assert two_percent["ml"] == 6.0, two_percent  # what the Dalsy leaflet gives for 12 kg
+    assert (j["mg_min"], j["mg_max"]) == (60, 120)
+    for f in j["ml_by_form"]:
+        assert isinstance(f["ml"], (int, float)), "una dosis es un número, no una banda"

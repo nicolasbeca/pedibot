@@ -258,6 +258,8 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         ml_by_form = [
             {
                 "form": label,
+                # down, never nearest: rounding up puts the volume above the milligrams
+                "ml": int(r.mg / mg_ml * 10) / 10,
                 "ml_min": round(r.mg_min / mg_ml, 1),
                 "ml_max": round(r.mg_max / mg_ml, 1),
             }
@@ -269,6 +271,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             "generic": info.generic.get(body.lang, info.generic["en"]) if info else r.drug.name_en,
             "brand": brand.name if brand else None,
             "weight_kg": r.weight_kg,
+            "mg": r.mg,
             "mg_min": r.mg_min,
             "mg_max": r.mg_max,
             "interval_hours": list(r.interval_hours),

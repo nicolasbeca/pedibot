@@ -2,6 +2,7 @@ export type Lang = 'en' | 'es' | 'fr' | 'de' | 'ru' | 'ar' | 'pt';
 
 const strings = {
   en: {
+    dosedrug_band: "The guide publishes a band of {lo}–{hi} mg/kg per dose. This table uses {hi} mg/kg: it is the dose the published daily maximum is built from, and the one the manufacturers' leaflets give. A lower dose within the band is also correct.",
     related_h: "Related guides",
     guides_filter_ph: "Filter: fever, cough, vaccines…",
     guides_count: "{n} guides",
@@ -159,6 +160,7 @@ const strings = {
     sug_winter: ['My 5-month-old has a cold and is breathing with a whistle', 'bronchiolitis · winter'], sug_summer: ['He has been in the sun all day and now feels dizzy with a fever', 'heat stroke · summer'],
   },
   es: {
+    dosedrug_band: "La guía publica una banda de {lo}–{hi} mg/kg por toma. Esta tabla usa {hi} mg/kg: es la dosis sobre la que está construido el máximo diario publicado y la que dan los prospectos. Una dosis menor dentro de la banda también es correcta.",
     related_h: "Guías relacionadas",
     guides_filter_ph: "Filtrar: fiebre, tos, vacunas…",
     guides_count: "{n} guías",
@@ -316,6 +318,7 @@ const strings = {
     sug_winter: ['Mi bebé de 5 meses tiene mocos y respira con pitos', 'bronquiolitis · invierno'], sug_summer: ['Ha estado todo el día al sol y ahora está mareado y con fiebre', 'golpe de calor · verano'],
   },
   fr: {
+    dosedrug_band: "Le guide publie une fourchette de {lo}–{hi} mg/kg par prise. Ce tableau utilise {hi} mg/kg : c'est la dose sur laquelle repose le maximum journalier publié et celle que donnent les notices. Une dose plus faible dans la fourchette est également correcte.",
     related_h: "Guides associés",
     guides_filter_ph: "Filtrer : fièvre, toux, vaccins…",
     guides_count: "{n} guides",
@@ -473,6 +476,7 @@ const strings = {
     sug_winter: ['Mon bébé de 5 mois est enrhumé et respire en sifflant', 'bronchiolite · hiver'], sug_summer: ["Il est resté au soleil toute la journée et il a la tête qui tourne avec de la fièvre", 'coup de chaleur · été'],
   },
   de: {
+    dosedrug_band: "Die Leitlinie nennt eine Spanne von {lo}–{hi} mg/kg pro Gabe. Diese Tabelle benutzt {hi} mg/kg: darauf beruht die veröffentlichte Tagesgrenze, und das ist die Dosis der Beipackzettel. Eine niedrigere Dosis innerhalb der Spanne ist ebenfalls richtig.",
     related_h: "Verwandte Ratgeber",
     guides_filter_ph: "Filtern: Fieber, Husten, Impfungen…",
     guides_count: "{n} Ratgeber",
@@ -630,6 +634,7 @@ const strings = {
     sug_winter: ['Mein 5 Monate altes Baby ist erkältet und atmet pfeifend', 'Bronchiolitis · Winter'], sug_summer: ['Er war den ganzen Tag in der Sonne und ist jetzt schwindelig und hat Fieber', 'Hitzschlag · Sommer'],
   },
   ru: {
+    dosedrug_band: "Руководство публикует диапазон {lo}–{hi} мг/кг на приём. В этой таблице взято {hi} мг/кг: именно на этой дозе построен опубликованный суточный максимум, и её же дают инструкции к препаратам. Меньшая доза внутри диапазона тоже верна.",
     related_h: "Похожие руководства",
     guides_filter_ph: "Фильтр: температура, кашель, прививки…",
     guides_count: "руководств: {n}",
@@ -787,6 +792,7 @@ const strings = {
     sug_winter: ['Моему пятимесячному ребёнку 5 месяцев, он простужен и дышит со свистом', 'бронхиолит · зима'], sug_summer: ['Он весь день был на солнце, теперь кружится голова и температура', 'тепловой удар · лето'],
   },
   ar: {
+    dosedrug_band: "ينشر الدليل نطاقا من {lo}–{hi} ملغ/كغ للجرعة. ويستعمل هذا الجدول {hi} ملغ/كغ: وهي الجرعة التي بُني عليها الحد اليومي المنشور، وهي التي تعطيها نشرات الدواء. والجرعة الأقل داخل النطاق صحيحة أيضا.",
     related_h: "أدلة ذات صلة",
     guides_filter_ph: "تصفية: حرارة، سعال، تطعيمات…",
     guides_count: "{n} أدلة",
@@ -944,6 +950,7 @@ const strings = {
     sug_winter: ['ابني عمره 5 أشهر ومصاب بالزكام ويتنفس بأزيز', 'التهاب القصيبات · الشتاء'], sug_summer: ['بقي في الشمس طوال اليوم والآن يشعر بدوار مع حرارة', 'ضربة شمس · الصيف'],
   },
   pt: {
+    dosedrug_band: "O guia publica uma faixa de {lo}–{hi} mg/kg por dose. Esta tabela usa {hi} mg/kg: é a dose sobre a qual está construído o máximo diário publicado e a que as bulas dão. Uma dose menor dentro da faixa também está correta.",
     related_h: "Guias relacionados",
     guides_filter_ph: "Filtrar: febre, tosse, vacinas…",
     guides_count: "{n} guias",

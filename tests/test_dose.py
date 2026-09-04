@@ -9,9 +9,13 @@ from pedibot.bot.dose import DoseError, calculate, format_result
 
 def test_paracetamol_10kg():
     r = calculate("paracetamol", 10)
+    # one figure to act on: 15 mg/kg, which is what the published 60 mg/kg/day is built from
+    assert r.mg == 150
+    assert r.ml["gotas 100 mg/ml"] == 1.5
+    assert r.ml["jarabe 120 mg/5 ml"] == 6.2
+    # and the band the guide publishes, kept visible rather than hidden
     assert (r.mg_min, r.mg_max) == (100, 150)
-    assert r.ml["gotas 100 mg/ml"] == (1.0, 1.5)
-    assert r.ml["jarabe 120 mg/5 ml"] == (4.2, 6.2)
+    assert r.ml_band["gotas 100 mg/ml"] == (1.0, 1.5)
     assert r.interval_hours == (4, 6)
     assert r.max_doses_per_day == 4  # 60 mg/kg/day / 15 mg/kg
     assert not r.refer and r.warnings == []
@@ -19,10 +23,32 @@ def test_paracetamol_10kg():
 
 def test_ibuprofen_20kg():
     r = calculate("ibuprofen", 20, age_months=48)
+    assert r.mg == 200  # 10 mg/kg, the figure behind the 30 mg/kg/day cap
+    assert r.ml["jarabe 2 % (100 mg/5 ml)"] == 10.0
+    assert r.ml["jarabe 4 % (200 mg/5 ml)"] == 5.0
     assert (r.mg_min, r.mg_max) == (100, 200)
-    assert r.ml["jarabe 2 % (100 mg/5 ml)"] == (5.0, 10.0)
-    assert r.ml["jarabe 4 % (200 mg/5 ml)"] == (2.5, 5.0)
     assert r.max_doses_per_day == 3
+
+
+def test_the_dose_shown_is_a_number_a_syringe_can_measure() -> None:
+    """It used to print the mg/kg band — "3–6 ml" — which at three in the morning is the same as
+    nothing, and which no manufacturer's leaflet does. Dalsy tells a 12 kg child 6 ml."""
+    r = calculate("ibuprofeno", 12)
+    assert r.ml["jarabe 2 % (100 mg/5 ml)"] == 6.0
+    for millilitres in r.ml.values():
+        assert isinstance(millilitres, float), "una dosis es un número, no una banda"
+
+
+def test_millilitres_round_down_and_never_above_the_dose() -> None:
+    """Rounding to the nearest tenth can put the volume above the milligrams it came from. On the
+    one page where a number is an instruction, err downwards."""
+    for kg in range(5, 41):
+        for drug in ("paracetamol", "ibuprofeno"):
+            r = calculate(drug, kg)
+            for name, millilitres in r.ml.items():
+                strength = next(p.mg_per_ml for p in r.drug.presentations if p.name == name)
+                assert millilitres * strength <= r.mg + 1e-9, f"{drug} {kg}kg {name}: se pasa"
+                assert round(millilitres * 10) == millilitres * 10, "más fino que 0,1 ml"
 
 
 def test_ibuprofen_under_3_months_refers():

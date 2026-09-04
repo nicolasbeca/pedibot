@@ -29,6 +29,10 @@ class Drug:
     name_en: str
     mg_per_kg_min: float
     mg_per_kg_max: float
+    #: The single figure to act on. The band is what the guide publishes; this is the
+    #: dose the published daily maximum is built from (15 × 4 = 60, 10 × 3 = 30) and the
+    #: one the sources state outright for fever. A parent cannot measure a range.
+    usual_mg_per_kg: float
     interval_hours: tuple[int, int]
     max_mg_per_kg_day: float
     max_single_dose_mg: float
@@ -45,6 +49,7 @@ PARACETAMOL = Drug(
     name_en="Paracetamol (acetaminophen)",
     mg_per_kg_min=10,
     mg_per_kg_max=15,
+    usual_mg_per_kg=15,
     interval_hours=(4, 6),
     max_mg_per_kg_day=60,
     max_single_dose_mg=1000,
@@ -65,6 +70,7 @@ IBUPROFENO = Drug(
     name_en="Ibuprofen",
     mg_per_kg_min=5,
     mg_per_kg_max=10,
+    usual_mg_per_kg=10,
     interval_hours=(6, 8),
     max_mg_per_kg_day=30,
     max_single_dose_mg=400,
@@ -92,7 +98,10 @@ class DoseResult:
     weight_kg: float
     mg_min: float
     mg_max: float
-    ml: dict[str, tuple[float, float]]
+    #: the single figure to act on; mg_min/mg_max stay as the band the guide publishes
+    mg: float
+    ml: dict[str, float]
+    ml_band: dict[str, tuple[float, float]]
     interval_hours: tuple[int, int]
     max_doses_per_day: int
     warnings: list[str]
@@ -105,6 +114,15 @@ class DoseError(ValueError):
 
 def _round_ml(x: float) -> float:
     return round(x * 10) / 10
+
+
+def _floor_ml(x: float) -> float:
+    """Down to the tenth of a millilitre an oral syringe can actually show.
+
+    Down, not nearest: rounding up moves the dose above the milligrams it was computed
+    from, and this is the one page where a number is an instruction.
+    """
+    return int(x * 10) / 10
 
 
 def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) -> DoseResult:
@@ -128,26 +146,31 @@ def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) 
 
     mg_min = drug.mg_per_kg_min * weight_kg
     mg_max = drug.mg_per_kg_max * weight_kg
+    mg = drug.usual_mg_per_kg * weight_kg
     if mg_max > drug.max_single_dose_mg:
         warnings.append("capped_single_dose")
         mg_max = drug.max_single_dose_mg
         mg_min = min(mg_min, mg_max)
+    mg = min(mg, drug.max_single_dose_mg)
 
     # daily cap → max number of doses at the max single dose
     daily_cap = min(drug.max_mg_per_kg_day * weight_kg, drug.max_daily_mg)
     max_doses = int(daily_cap // mg_max) if mg_max > 0 else 0
     max_doses = max(1, min(max_doses, 24 // drug.interval_hours[0]))
 
-    ml = {
+    ml_band = {
         p.name: (_round_ml(mg_min / p.mg_per_ml), _round_ml(mg_max / p.mg_per_ml))
         for p in drug.presentations
     }
+    ml = {p.name: _floor_ml(mg / p.mg_per_ml) for p in drug.presentations}
     return DoseResult(
         drug=drug,
         weight_kg=weight_kg,
         mg_min=round(mg_min, 1),
         mg_max=round(mg_max, 1),
+        mg=round(mg, 1),
         ml=ml,
+        ml_band=ml_band,
         interval_hours=drug.interval_hours,
         max_doses_per_day=max_doses,
         warnings=warnings,
@@ -164,15 +187,17 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
         lines.append(T["dose_refer"] + ", ".join(T["dose_warn"].get(w, w) for w in r.warnings) + ".")
     lines.append(
         T["dose_line"].format(
-            mg_min=r.mg_min,
-            mg_max=r.mg_max,
+            mg=r.mg,
             h0=d.interval_hours[0],
             h1=d.interval_hours[1],
             max_doses=r.max_doses_per_day,
         )
     )
-    for pname, (a, b) in r.ml.items():
-        lines.append(f"  – {pname}: {a:g}–{b:g} ml")
+    for pname, millilitres in r.ml.items():
+        lines.append(f"  – {pname}: {millilitres:g} ml")
+    # the band the guide publishes, so a different figure from a paediatrician is
+    # visibly inside it rather than looking like a contradiction
+    lines.append(T["dose_band"].format(mg_min=r.mg_min, mg_max=r.mg_max))
     lines.append(T["dose_source"].format(source=d.source))
     lines.append(T["dose_check"])
     return "\n".join(lines)
