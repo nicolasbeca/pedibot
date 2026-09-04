@@ -538,7 +538,7 @@ from pedibot.bot.strings import (  # noqa: E402 — one mapping, not two
 
 SOURCES_HEADING = {
     "en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen",
-    "ru": "Источники", "ar": "المصادر", "pt": "Fontes",
+    "ru": "Источники", "ar": "المصادر", "pt": "Fontes", "hi": "स्रोत",
 }
 ARTICLE_DISCLAIMER = {
     "en": "*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*",

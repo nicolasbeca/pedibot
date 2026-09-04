@@ -50,7 +50,7 @@ def test_the_portuguese_warning_signs_fire(triage: Triage, question: str, level:
 def test_every_rule_can_explain_itself_in_portuguese(triage: Triage) -> None:
     """A rule that fires without a Portuguese reason answers a Brazilian parent in English at the
     exact moment they are least able to read it."""
-    missing = [r.id for r in triage.rules if not r.reason_pt]
+    missing = [r.id for r in triage.rules if not r.reasons_by_lang.get("pt")]
     assert not missing, f"reglas sin razón en portugués: {missing}"
 
 

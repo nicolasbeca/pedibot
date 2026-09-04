@@ -60,9 +60,17 @@ def detect_lang(text: str) -> str:
     # Cyrillic question with a Latin brand name in it ("Нурофен 200 mg") still counts as Russian.
     letters = [c for c in text if c.isalpha()]
     if letters:
-        for script, code in (("\u0400\u04ff", "ru"), ("\u0600\u06ff", "ar")):
-            lo, hi = script[:1], script[1:]
-            if sum(lo <= c <= hi for c in letters) / len(letters) > 0.5:
+        # Devanagari joins Cyrillic and Arabic: a different alphabet is not a hint,
+        # it is the answer. Hindi typed in Latin letters is very common in India and
+        # falls through to the word markers below, which is why it also has those.
+        for script, code in (
+            ("\u0400\u04ff", "ru"),
+            ("\u0600\u06ff", "ar"),
+            ("\u0900\u097f", "hi"),
+        ):
+            # not lo/hi:  is also the Hindi score further down, and mypy caught the clash
+            first, last = script[:1], script[1:]
+            if sum(first <= c <= last for c in letters) / len(letters) > 0.5:
                 return code
     low = " " + re.sub(r"[¿¡?!.,;:]", " ", text.lower()) + " "
     es_markers = [
@@ -195,6 +203,26 @@ def detect_lang(text: str) -> str:
         " vomito ",
         " remédio",
     ]
+    hi_markers = [
+        " bukhar",
+        " bacche",
+        " bachche",
+        " bachcha",
+        " mera beta",
+        " meri beti",
+        " saans",
+        " sans nahi",
+        " ulti",
+        " dast ",
+        " kya karu",
+        " kya karoon",
+        " mahine ka",
+        " saal ka",
+        " dawa ",
+        " doodh",
+        " behosh",
+        " nahi le raha",
+    ]
     es = sum(m in low for m in es_markers) + sum(ch in "ñ¿¡" for ch in text.lower())
     en = sum(m in low for m in en_markers)
     # French shares most accents with Spanish, so only the ones Spanish never uses count. NOT ç:
@@ -205,11 +233,15 @@ def detect_lang(text: str) -> str:
     de = sum(m in low for m in de_markers) + sum(ch in "äöüß" for ch in text.lower())
     # ã and õ belong to Portuguese alone here; Spanish has ñ, which is counted for Spanish
     pt = sum(m in low for m in pt_markers) + sum(ch in "ãõ" for ch in text.lower())
-    best = max(es, en, fr, de, pt)
+    # Latin-script Hindi only; anything in Devanagari was decided by script above
+    hi = sum(m in low for m in hi_markers)
+    best = max(es, en, fr, de, pt, hi)
     if best == 0:
         return "en"
     # Portuguese first among the Latin ones when it wins outright: its markers are disjoint
     # from Spanish's, so a tie means the text is not really Portuguese and Spanish should win.
+    if hi == best and hi > es and hi > en:
+        return "hi"
     if pt == best and pt > es:
         return "pt"
     # ties go to the more conservative side: es before fr, because "mi/ma" and "hijo/fils" overlap

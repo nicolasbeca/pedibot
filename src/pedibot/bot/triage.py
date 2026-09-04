@@ -104,11 +104,10 @@ class Rule:
     source: str
     reason_es: str
     reason_en: str
-    reason_fr: str = ""
-    reason_de: str = ""
-    reason_ru: str = ""
-    reason_ar: str = ""
-    reason_pt: str = ""
+    #: every other language, keyed by code. It used to be one field per language with the
+    #: loader copying each by name, so a new language silently answered in English — which
+    #: is what happened to Hindi, on the component where silence is worst.
+    reasons_by_lang: dict[str, str] = field(default_factory=dict)
     patterns: list[re.Pattern[str]] = field(default_factory=list)
     requires: list[str] = field(default_factory=list)
 
@@ -124,8 +123,9 @@ class TriageResult:
         def pick(r: Rule) -> str:
             # a lookup, not a ladder of ifs: a new language used to mean remembering to add
             # a branch here, and forgetting meant silently answering in English
-            own = getattr(r, f"reason_{lang}", "")
-            return own or r.reason_en
+            if lang == "es":
+                return r.reason_es
+            return r.reasons_by_lang.get(lang) or r.reason_en
 
         return [pick(r) for r in self.matched]
 
@@ -160,11 +160,10 @@ class Triage:
                     source=r["source"],
                     reason_es=r["reason_es"],
                     reason_en=r["reason_en"],
-                    reason_fr=r.get("reason_fr", ""),
-                    reason_de=r.get("reason_de", ""),
-                    reason_ru=r.get("reason_ru", ""),
-                    reason_ar=r.get("reason_ar", ""),
-                    reason_pt=r.get("reason_pt", ""),
+                    reasons_by_lang={
+                        k[7:]: v for k, v in r.items()
+                        if k.startswith("reason_") and k not in ("reason_es", "reason_en")
+                    },
                     patterns=[re.compile(p, re.I) for p in r.get("patterns", [])],
                     requires=list(r.get("requires", [])),
                 )

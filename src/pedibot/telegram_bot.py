@@ -17,6 +17,13 @@ from pedibot.ops.store import AnswerRecord, OpsStore
 _CIT = re.compile(r"\[(\d{1,2})\]")
 
 HELP = {
+    "hi": (
+        "मैं सिर्फ़ प्रकाशित बाल रोग दिशानिर्देशों से जवाब देता हूँ और हर बात का स्रोत बताता हूँ। "
+        "बताइए क्या हो रहा है और बच्चे की उम्र क्या है।\n\n"
+        "/country IN — आपातकालीन नंबरों के लिए देश\n/lang en — अंग्रेज़ी\n"
+        "/stop — कोई सूचना नहीं (सवाल पूछते रह सकते हैं)\n"
+        "यह चिकित्सकीय सलाह नहीं है। आपात स्थिति में अपने देश के नंबर पर कॉल करें।"
+    ),
     "pt": (
         "Respondo apenas com diretrizes pediátricas publicadas e digo a fonte em cada frase. "
         "Conte o que está acontecendo e a idade da criança.\n\n"
@@ -78,6 +85,7 @@ LANG_SET = {
     "ru": "Язык: русский.",
     "ar": "اللغة: العربية.",
     "pt": "Idioma: português.",
+    "hi": "भाषा: हिन्दी।",
 }
 
 

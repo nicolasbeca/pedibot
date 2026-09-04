@@ -52,10 +52,19 @@ rules:
   - n[aã]o acorda
   - desmaiou
   - apagou
+  - बेहोश
+  - जवाब नहीं दे
+  - होश नहीं
+  - जाग नहीं
+  - behosh
+  - hosh nahi
+  - jawab nahi de
+  - jaag nahi
   reason_de: Reagiert nicht auf Ansprache
   reason_ru: Не реагирует на обращение
   reason_ar: لا يستجيب
   reason_pt: "Não responde a estímulos"
+  reason_hi: "जवाब नहीं दे रहा"
 - id: seizure
   level: emergency
   source: seup_acudir_urgencias
@@ -100,10 +109,19 @@ rules:
   - tremendo todo
   - revirando os olhos
   - espasmos
+  - दौरा
+  - मिर्गी
+  - झटके आ रहे
+  - अकड़ गया
+  - daura
+  - jhatke
+  - mirgi
+  - fits
   reason_de: Auffällige Bewegungen / Krampfanfall
   reason_ru: Необычные движения / судороги
   reason_ar: حركات غير طبيعية / تشنجات
   reason_pt: "Movimentos anormais / convulsão"
+  reason_hi: "असामान्य हरकतें / दौरा"
 - id: severe_breathing
   level: emergency
   source: seup_acudir_urgencias
@@ -176,10 +194,20 @@ rules:
   - cianose
   - respira muito r[aá]pido
   - batendo asa do nariz
+  - साँस नहीं ले
+  - सांस नहीं ले
+  - पसलियाँ धँस
+  - नीला पड़
+  - साँस रुक
+  - saans nahi le
+  - sans nahi le
+  - neela pad
+  - pasliyan dhas
   reason_de: Schwere Atemnot (Einziehungen, sehr schnelle Atmung, Atempausen, blaue Färbung)
   reason_ru: Тяжёлое нарушение дыхания (втяжения, очень частое дыхание, паузы, синюшность)
   reason_ar: صعوبة شديدة في التنفس (انسحاب الأضلاع، تنفس سريع جدا، انقطاع النفس، ازرقاق)
   reason_pt: "Dificuldade grave para respirar (costelas aparecem, respira muito rápido, pausas na respiração, coloração arroxeada)"
+  reason_hi: "साँस लेने में गंभीर दिक्कत (पसलियाँ दिखना, बहुत तेज़ साँस, साँस रुकना, नीलापन)"
 - id: anaphylaxis
   level: emergency
   source: seup_anafilaxia
@@ -221,10 +249,18 @@ rules:
   - in(chou|chado) (o )?rosto
   - l[ií]ngua inchada
   - garganta fechando
+  - होंठ सूज
+  - चेहरा सूज
+  - गला बंद
+  - एलर्जी और साँस
+  - honth suj
+  - chehra suj
+  - gala band
   reason_de: Verdacht auf schwere allergische Reaktion (geschwollene Lippen oder Lider mit Atemnot, Erbrechen oder Schwindel)
   reason_ru: Подозрение на тяжёлую аллергическую реакцию (отёк губ или век с нарушением дыхания, рвотой или головокружением)
   reason_ar: اشتباه بتفاعل تحسسي شديد (تورم الشفتين أو الجفون مع صعوبة تنفس أو قيء أو دوخة)
   reason_pt: "Suspeita de reação alérgica grave (inchaço de lábios ou pálpebras com dificuldade para respirar, vômitos ou tontura)"
+  reason_hi: "गंभीर एलर्जी का शक (होंठ या पलकों की सूजन के साथ साँस की दिक्कत, उल्टी या चक्कर)"
 - id: choking
   level: emergency
   source: seup_acudir_urgencias
@@ -260,10 +296,16 @@ rules:
   - engasgando
   - engoliu e n[aã]o consegue respirar
   - entalou na garganta
+  - गला घुट
+  - फँस गया गले
+  - निगल लिया और साँस
+  - gala ghut
+  - phas gaya gale
   reason_de: Erstickungsgefahr mit Atemnot
   reason_ru: Удушье с нарушением дыхания
   reason_ar: اختناق مع صعوبة في التنفس
   reason_pt: "Engasgo com dificuldade para respirar"
+  reason_hi: "गला घुटना, साँस लेने में दिक्कत"
 - id: mottled_skin
   level: emergency
   source: seup_acudir_urgencias
@@ -303,10 +345,16 @@ rules:
   - manchada de frio
   - acinzentad
   - cor estranha na pele
+  - बहुत पीला
+  - चितकबर
+  - भूरा पड़
+  - bahut peela
+  - chitkabra
   reason_de: Schlechte Hautfarbe (auffallende Blässe, marmoriert, blau oder grau)
   reason_ru: Плохой цвет кожи (резкая бледность, мраморность, синюшность или серый оттенок)
   reason_ar: لون بشرة غير طبيعي (شحوب شديد، تبقع، ازرقاق أو لون رمادي)
   reason_pt: "Coloração ruim (palidez extrema, pele mosqueada, azulada ou acinzentada)"
+  reason_hi: "त्वचा का रंग बिगड़ना (बहुत पीला, चितकबरा, नीला या भूरा)"
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce
@@ -330,10 +378,14 @@ rules:
   - bateu a cabe[cç]a e desmaiou
   - bateu a cabe[cç]a e apagou
   - bateu a cabe[cç]a e perdeu a consci[eê]ncia
+  - सिर.{0,15}चोट.{0,20}बेहोश
+  - सिर.{0,15}लगी.{0,20}होश नहीं
+  - sir.{0,12}chot.{0,18}behosh
   reason_de: Kopfverletzung mit Bewusstlosigkeit
   reason_ru: Травма головы с потерей сознания
   reason_ar: إصابة في الرأس مع فقدان الوعي
   reason_pt: "Batida na cabeça com perda de consciência"
+  reason_hi: "सिर पर चोट और बेहोशी"
 - id: severe_bleeding
   level: emergency
   source: seup_acudir_urgencias
@@ -366,10 +418,16 @@ rules:
   - sangramento que n[aã]o para
   - n[aã]o para de sangrar
   - hemorragia
+  - बहुत खून
+  - खून नहीं रुक
+  - खून बह रहा
+  - bahut khoon
+  - khoon nahi ruk
   reason_de: Tiefe Wunde, die nach 10 Minuten Druck weiterblutet
   reason_ru: Глубокая рана с сильным кровотечением, которое не останавливается после 10 минут давления
   reason_ar: جرح عميق مع نزيف غزير لا يتوقف بعد 10 دقائق من الضغط
   reason_pt: "Ferimento profundo com sangramento abundante que não para após 10 minutos de pressão"
+  reason_hi: "गहरा घाव, बहुत खून, दस मिनट दबाने पर भी न रुके"
 - id: open_fracture
   level: emergency
   source: seup_acudir_urgencias
@@ -396,10 +454,15 @@ rules:
   - osso aparecendo
   - osso para fora
   - osso [aà] mostra
+  - हड्डी दिख
+  - हड्डी बाहर
+  - haddi dikh
+  - haddi bahar
   reason_de: Offener Bruch (Knochen sichtbar)
   reason_ru: Открытый перелом (видна кость)
   reason_ar: كسر مفتوح (العظم ظاهر)
   reason_pt: "Fratura exposta (o osso aparece)"
+  reason_hi: "खुला फ़्रैक्चर (हड्डी दिख रही है)"
 - id: petechiae_fever
   level: emergency
   source: seup_fiebre
@@ -434,10 +497,16 @@ rules:
   - peteq
   - manchinhas vermelhas e febre
   - teste do copo
+  - दबाने पर नहीं मिट
+  - दाने नहीं जा रहे
+  - गिलास.{0,15}दाने
+  - dabane par nahi mit
+  - glass test
   reason_de: Flecken auf der Haut, die auf Druck nicht verschwinden (möglicherweise Sepsis oder Meningitis)
   reason_ru: Пятна на коже, которые не бледнеют при надавливании (возможен сепсис или менингит)
   reason_ar: بقع على الجلد لا تختفي عند الضغط (احتمال إنتان أو التهاب سحايا)
   reason_pt: "Manchas na pele que não somem ao pressionar (possível sepse ou meningite)"
+  reason_hi: "दबाने पर न मिटने वाले दाने (सेप्सिस या मेनिन्जाइटिस का शक)"
 - id: infant_fever_under_3_months
   level: urgent
   source: seup_acudir_urgencias
@@ -465,9 +534,14 @@ rules:
   - beb[eê] de \d+ (dias|semanas) com febre
   - rec[eé]m.nascido com febre
   - beb[eê] de (um|1|dois|2) m[eê]s(es)? com febre
+  - \d+ (दिन|हफ़्ते|हफ्ते) का.{0,15}बुखार
+  - नवजात.{0,15}बुखार
+  - (एक|1|दो|2) महीने का.{0,15}बुखार
+  - navjat.{0,12}bukhar
   reason_ru: Младенец до 3 месяцев с температурой (≥ 38 °C)
   reason_ar: رضيع أقل من 3 أشهر لديه حمى (‏≥ 38 °م)
   reason_pt: "Bebê com menos de 3 meses com febre (≥38 °C)"
+  reason_hi: "तीन महीने से छोटे शिशु को बुखार (38 °C या ज़्यादा)"
 - id: very_high_fever
   level: urgent
   source: seup_acudir_urgencias
@@ -495,10 +569,14 @@ rules:
   - febre de 4[1-3]
   - 4[01],[5-9] de febre
   - temperatura de 4[1-3]
+  - बुखार 4[1-3]
+  - 4[01][.,][5-9] बुखार
+  - bukhar 4[1-3]
   reason_de: Fieber über 40,5 °C
   reason_ru: Температура выше 40,5 °C
   reason_ar: حرارة أعلى من 40٫5 °م
   reason_pt: "Febre acima de 40,5 °C"
+  reason_hi: "40,5 °C से ज़्यादा बुखार"
 - id: moderate_breathing
   level: urgent
   source: seup_acudir_urgencias
@@ -543,10 +621,18 @@ rules:
   - respira[cç][aã]o r[aá]pida
   - falta de ar
   - puxando o peito
+  - सीटी जैसी
+  - घरघराहट
+  - तेज़ साँस
+  - तेज सांस
+  - ghargharahat
+  - tez saans
+  - seeti jaisi
   reason_de: 'Atembeschwerden: schnelle Atmung, Pfeifen, Einziehungen'
   reason_ru: 'Затруднённое дыхание: частое дыхание, свист, втяжения'
   reason_ar: 'صعوبة في التنفس: تنفس سريع، أزيز، انسحاب الأضلاع'
   reason_pt: "Dificuldade para respirar: respira rápido, chiado no peito, costelas aparecem"
+  reason_hi: "साँस की दिक्कत: तेज़ साँस, सीटी जैसी आवाज़, पसलियाँ दिखना"
 - id: drowsy_irritable
   level: urgent
   source: seup_acudir_urgencias
@@ -593,10 +679,16 @@ rules:
   - prostrad
   - abatid
   - moleza
+  - बहुत सुस्त
+  - रो.{0,10}चुप नहीं
+  - लगातार रो
+  - bahut sust
+  - chup nahi ho raha
   reason_de: Auffällige Unruhe oder Schläfrigkeit
   reason_ru: Чрезмерная возбудимость или сонливость
   reason_ar: هياج أو نعاس شديد
   reason_pt: "Irritabilidade ou sonolência excessivas"
+  reason_hi: "बहुत ज़्यादा सुस्ती या चिड़चिड़ापन"
 - id: dehydration
   level: urgent
   source: seup_gastroenteritis
@@ -655,10 +747,19 @@ rules:
   - desidratad
   - n[aã]o consegue beber
   - n[aã]o segura l[ií]quido
+  - आँखें धँस
+  - आंखें धंस
+  - पेशाब नहीं
+  - मुँह सूख
+  - पानी की कमी
+  - aankhen dhas
+  - peshab nahi
+  - muh sukh
   reason_de: 'Zeichen von Austrocknung: eingesunkene Augen, wenig Urin, trockener Mund, anhaltendes Erbrechen oder starker Durchfall über 24 h'
   reason_ru: 'Признаки обезвоживания: запавшие глаза, мало мочи, сухость во рту, непрекращающаяся рвота или сильный понос дольше 24 часов'
   reason_ar: 'علامات جفاف: عيون غائرة، بول قليل، جفاف الفم، قيء مستمر أو إسهال شديد أكثر من 24 ساعة'
   reason_pt: "Sinais de desidratação: olhos fundos, urina pouco, boca seca, vômitos persistentes ou diarreia abundante por mais de 24 h"
+  reason_hi: "पानी की कमी के लक्षण: आँखें धँसी, कम पेशाब, सूखा मुँह, लगातार उल्टी या 24 घंटे से ज़्यादा दस्त"
 - id: vomiting_headache
   level: urgent
   source: seup_acudir_urgencias
@@ -683,10 +784,14 @@ rules:
   - ألم رأس.{0,25}يتقيأ
   - v[oô]mito.{0,20}dor de cabe[cç]a
   - dor de cabe[cç]a.{0,20}v[oô]mito
+  - उल्टी.{0,20}सिरदर्द
+  - सिरदर्द.{0,20}उल्टी
+  - ulti.{0,18}sardard
   reason_de: Wiederholtes Erbrechen mit starken Kopfschmerzen
   reason_ru: Повторная рвота с сильной головной болью
   reason_ar: قيء متكرر مع صداع شديد
   reason_pt: "Vômitos repetidos com dor de cabeça forte"
+  reason_hi: "बार-बार उल्टी और तेज़ सिरदर्द"
 - id: vomiting_after_head_injury
   level: urgent
   source: seup_tce
@@ -712,10 +817,14 @@ rules:
   - bateu a cabe[cç]a.{0,30}vomit
   - vomit.{0,30}bateu a cabe[cç]a
   - caiu.{0,20}cabe[cç]a.{0,20}vomit
+  - सिर.{0,15}चोट.{0,25}उल्टी
+  - उल्टी.{0,25}सिर.{0,15}चोट
+  - sir.{0,12}chot.{0,20}ulti
   reason_de: Erbrechen nach einer Kopfverletzung
   reason_ru: Рвота после травмы головы
   reason_ar: قيء بعد إصابة في الرأس
   reason_pt: "Vômitos depois de uma batida na cabeça"
+  reason_hi: "सिर पर चोट के बाद उल्टी"
 - id: foreign_body_ingestion
   level: urgent
   source: seup_acudir_urgencias
@@ -748,10 +857,16 @@ rules:
   - engoliu (uma )?bateria
   - engoliu (uma )?moeda
   - engoliu (um )?brinquedo
+  - बैटरी निगल
+  - चुंबक निगल
+  - सिक्का निगल
+  - battery nigal
+  - sikka nigal
   reason_de: Gegenstand verschluckt (besonders Batterien oder Magnete)
   reason_ru: Проглотил предмет (особенно батарейку или магниты)
   reason_ar: ابتلع جسما غريبا (خاصة بطارية أو مغناطيس)
   reason_pt: "Ingestão de um objeto (principalmente pilhas ou ímãs)"
+  reason_hi: "कोई चीज़ निगल लेना (ख़ासकर बैटरी या चुंबक)"
 - id: poisoning
   level: urgent
   source: seup_intoxicaciones
@@ -791,10 +906,18 @@ rules:
   - tomou rem[eé]dio demais
   - engoliu (um )?rem[eé]dio
   - "[aá]lcool"
+  - ज़हर
+  - जहर खा
+  - फिनाइल पी
+  - ज़्यादा दवा खा
+  - zeher
+  - jahar pi
+  - dawa zyada kha
   reason_de: Giftige Stoffe oder zu viel Medikament eingenommen
   reason_ru: Приём ядовитых веществ или передозировка лекарства
   reason_ar: تناول مواد سامة أو جرعة زائدة من دواء
   reason_pt: "Ingestão de produtos tóxicos ou dose excessiva de medicamentos"
+  reason_hi: "ज़हरीली चीज़ या ज़्यादा दवा खा लेना"
 - id: severe_abdominal_pain
   level: urgent
   source: seup_dolor_abdominal
@@ -827,10 +950,16 @@ rules:
   - dor abdominal intensa
   - barriga dura
   - dor que piora na barriga
+  - पेट में तेज़ दर्द
+  - पेट बहुत दर्द
+  - पेट सख़्त
+  - pet me tez dard
+  - pet bahut dard
   reason_de: Starke, anhaltende, zunehmende Bauchschmerzen
   reason_ru: Сильная, непрерывная, нарастающая боль в животе
   reason_ar: ألم بطن شديد ومستمر ويزداد
   reason_pt: "Dor de barriga forte, contínua, que piora"
+  reason_hi: "पेट में तेज़, लगातार, बढ़ता दर्द"
 - id: deformity_fracture
   level: urgent
   source: seup_acudir_urgencias
@@ -866,10 +995,18 @@ rules:
   - membro deformado
   - precisa de pontos
   - corte profundo
+  - हाथ टेढ़ा
+  - पैर टेढ़ा
+  - टाँके
+  - गहरा कट
+  - haath tedha
+  - tanke
+  - gehra cut
   reason_de: Verletzung mit sichtbarer Fehlstellung / Wunde, die genäht werden muss
   reason_ru: Травма с видимой деформацией / рана, требующая швов
   reason_ar: إصابة مع تشوه واضح / جرح يحتاج غرزا
   reason_pt: "Trauma com deformidade aparente / ferimento que precisa de pontos"
+  reason_hi: "चोट के बाद अंग टेढ़ा दिखना / टाँके लगने जैसा घाव"
 - id: newborn_refusing_feeds
   level: urgent
   source: seup_acudir_urgencias
@@ -899,10 +1036,16 @@ rules:
   - n[aã]o quer mamar
   - recusa (a )?mamada
   - n[aã]o pega o peito
+  - दूध नहीं पी
+  - फ़ीड नहीं ले
+  - स्तन नहीं ले
+  - doodh nahi pi
+  - feed nahi le
   reason_de: Säugling unter 1 Monat trinkt nicht
   reason_ru: Младенец до 1 месяца отказывается от еды
   reason_ar: رضيع أقل من شهر يرفض الرضاعة
   reason_pt: "Bebê com menos de 1 mês que recusa as mamadas"
+  reason_hi: "एक महीने से छोटा शिशु दूध नहीं पी रहा"
 - id: burn
   level: urgent
   source: ninojesus_primeros_auxilios
@@ -939,10 +1082,16 @@ rules:
   - queimou
   - se escaldou
   - "[aá]gua fervendo"
+  - जल गया
+  - जल गई
+  - खौलता पानी
+  - jal gaya
+  - khaulta pani
   reason_de: Verbrennung (besonders Gesicht, Hände, Genitalbereich oder große Fläche)
   reason_ru: Ожог (особенно лица, кистей, половых органов или большой площади)
   reason_ar: حرق (خاصة الوجه أو اليدين أو المنطقة التناسلية أو مساحة كبيرة)
   reason_pt: "Queimadura (especialmente no rosto, mãos, genitais ou extensa)"
+  reason_hi: "जलना (ख़ासकर चेहरा, हाथ, गुप्तांग या बड़ा हिस्सा)"
 - id: suicidal_ideation
   level: mental_health
   source: seup_conducta_suicida
@@ -986,10 +1135,18 @@ rules:
   - quer morrer
   - n[aã]o quer mais viver
   - tirar a pr[oó]pria vida
+  - मरना चाहता
+  - जान देना
+  - आत्महत्या
+  - जीना नहीं चाहता
+  - marna chahta
+  - jaan dena
+  - atmahatya
   reason_de: Äußert Suizidgedanken
   reason_ru: Высказывает суицидальные мысли
   reason_ar: يعبر عن أفكار انتحارية
   reason_pt: "Expressa pensamentos suicidas"
+  reason_hi: "आत्महत्या के विचार बताना"
 - id: self_harm
   level: mental_health
   source: seup_autolesion
@@ -1027,10 +1184,16 @@ rules:
   - automutila
   - se machucar de prop[oó]sito
   - se fere de prop[oó]sito
+  - खुद को काट
+  - खुद को नुकसान
+  - नस काट
+  - khud ko kaat
+  - khud ko nuksan
   reason_de: Selbstverletzung
   reason_ru: Самоповреждение
   reason_ar: إيذاء النفس
   reason_pt: "Conduta autolesiva"
+  reason_hi: "खुद को नुकसान पहुँचाना"
 context:
   fever:
   - fi[eè]vre

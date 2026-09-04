@@ -245,12 +245,44 @@ STRINGS: dict[str, Table] = {
         "photo_clear": "Não vejo na foto nenhum dos três sinais de alarme que eu verifico (manchas que não somem ao pressionar, coloração arroxeada, inchaço nos lábios). Isso não me diz o que é: uma foto não substitui o exame. Se a erupção se espalhar, houver febre alta ou a criança estiver abatida, procure o pediatra hoje.",
         "photo_unsure": "Não consigo ter certeza por esta foto. Se as manchas não sumirem ao pressioná-las com um copo, ou se houver inchaço nos lábios ou coloração arroxeada, vá ao pronto-socorro; caso contrário, procure o pediatra hoje.",
     },
+    "hi": {
+        "ors_under_1_month": "एक महीने से छोटे शिशु को उल्टी या दस्त हो तो आज ही डॉक्टर को दिखाएँ; बिना डॉक्टर की सलाह के ओआरएस न दें।",
+        "ors_under_2y": "दो साल से छोटे बच्चे: अगर उल्टी या दस्त 24 घंटे से ज़्यादा चले, या बच्चा पीना ही मना कर दे, तो डॉक्टर से मिलें।",
+        "ors_after_vomit": "उल्टी के बाद ओआरएस बहुत थोड़ा-थोड़ा दें: हर 10 मिनट में 5 से 10 मिली (एक-दो चम्मच, चम्मच या सिरिंज से), और उल्टी न हो तो धीरे-धीरे बढ़ाएँ।",
+        "ors_infant": "एक महीने से बड़ा शिशु, दस्त के साथ: उसकी आम फ़ीड का लगभग 1 से 1.5 गुना, थोड़ा-थोड़ा और धीरे-धीरे; स्तनपान रोकने की ज़रूरत नहीं।",
+        "ors_child": "एक साल या बड़ा बच्चा: हर पतले दस्त के बाद लगभग 200 मिली ओआरएस, हर 10 से 15 मिनट में 25 से 30 मिली करके।",
+        "ors_sachet": "पैकेट को ठीक वैसे ही घोलें जैसे उस पर लिखा है (एक पैकेट, बताए हुए पानी में); न ज़्यादा गाढ़ा, न ज़्यादा पतला। स्पोर्ट्स ड्रिंक, कोल्ड ड्रिंक या जूस न दें।",
+        "ors_go_er": "अगर बच्चा कुछ भी अंदर न रोक पाए, बहुत कम पेशाब करे, आँखें धँसी हों, बहुत सुस्त हो, या मल में खून आए, तो इमरजेंसी ले जाएँ।",
+        "dose_for": "{kg:g} किलो के लिए {name}:",
+        "dose_refer": "⚠️ डॉक्टर से पूछे बिना न दें: ",
+        "dose_line": "• खुराक: {mg:g} मिग्रा, हर {h0}–{h1} घंटे में (दिन में ज़्यादा से ज़्यादा {max_doses} खुराक)।",
+        "dose_band": "दिशानिर्देश {mg_min:g} से {mg_max:g} मिग्रा तक मानता है; बुखार के लिए यही आम खुराक है।",
+        "dose_source": "स्रोत: {source}।",
+        "dose_check": "डिब्बे पर लिखी ताक़त हमेशा जाँच लें। तीन महीने से छोटे बच्चे को डॉक्टर की सलाह के बिना कुछ न दें।",
+        "dose_warn": {
+            "under_3_months_refer": "तीन महीने से छोटा",
+            "below_min_age": "दवा की कम से कम उम्र से छोटा",
+            "below_min_weight": "दवा के कम से कम वज़न से हल्का",
+            "capped_single_dose": "एक बार की अधिकतम खुराक तक सीमित",
+        },
+        "vax_source": "स्रोत: ",
+        "vax_due": "इस उम्र पर आधिकारिक कैलेंडर के अनुसार ये टीके हैं:",
+        "vax_next": "अगली बार: {label} — ",
+        "vax_none": "आधिकारिक कैलेंडर में ठीक इस उम्र पर कोई टीका नहीं है।",
+        "photo_poor": "इस तस्वीर से मैं कुछ नहीं कह सकता (कम रोशनी, धुँधली, या त्वचा दिख नहीं रही)। शक हो तो आज ही डॉक्टर को दिखाएँ; साँस लेने में दिक्कत, दबाने पर न मिटने वाले दाने, या होंठ सूजे हों तो इमरजेंसी जाएँ।",
+        "photo_emergency": "मुझे एक चेतावनी का निशान दिख रहा है ({sign})। SEUP के अनुसार इसे तुरंत देखना चाहिए: अभी {number} पर कॉल करें या इमरजेंसी जाएँ, ख़ासकर अगर साँस लेने में दिक्कत हो।",
+        "photo_sign_cyanosis": "होंठ या त्वचा का नीला पड़ना",
+        "photo_sign_swelling": "होंठ या पलकों की सूजन",
+        "photo_petechiae": "मुझे ऐसे दाने दिख रहे हैं जो दबाने पर शायद न मिटें। गिलास वाली जाँच करें: एक साफ़ गिलास दानों पर दबाएँ; अगर वे काँच के आर-पार भी दिखते रहें, तो SEUP के अनुसार आज ही, बिना रुके, इमरजेंसी जाना चाहिए। इनका कारण मैं नहीं बता सकता।",
+        "photo_clear": "तस्वीर में मुझे वे तीनों चेतावनी के निशान नहीं दिख रहे जो मैं जाँचता हूँ (दबाने पर न मिटने वाले दाने, नीलापन, होंठों की सूजन)। इसका मतलब यह नहीं कि मुझे पता है यह क्या है: तस्वीर जाँच की जगह नहीं लेती। दाने फैलें, तेज़ बुखार हो, या बच्चा सुस्त लगे, तो आज ही डॉक्टर को दिखाएँ।",
+        "photo_unsure": "इस तस्वीर से मैं पक्का नहीं कह सकता। अगर गिलास से दबाने पर दाने न मिटें, या होंठ सूजे हों या नीलापन हो, तो इमरजेंसी जाएँ; वरना आज ही डॉक्टर को दिखाएँ।",
+    },
 }
 
 
 LANGUAGE_NAME = {
     "en": "English", "es": "Spanish", "fr": "French", "de": "German",
-    "ru": "Russian", "ar": "Arabic", "pt": "Brazilian Portuguese",
+    "ru": "Russian", "ar": "Arabic", "pt": "Brazilian Portuguese", "hi": "Hindi",
 }
 """What the model is told to write in. Kept here, in one place, because this exact mapping was
 written inline twice — in the answer prompt and in the article prompt — and both times a new
@@ -270,6 +302,7 @@ CITATION_WORDS: dict[str, tuple[str, str]] = {
     "ar": ("قسم", "ص."),
     # Brazilian spelling: Portugal writes "secção"
     "pt": ("seção", "p."),
+    "hi": ("खंड", "पृ."),
 }
 
 
