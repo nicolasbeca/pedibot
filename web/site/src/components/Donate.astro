@@ -7,7 +7,7 @@
  * reason to break that promise. It also means this works with MetaMask, Rabby, Coinbase Wallet
  * or a phone camera without us knowing who donated — which is the point.
  */
-import { donationWallets, donationLink, donationQr } from '../donation';
+import { donationWallets, donationQr, donationUri } from '../donation';
 import { t, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
@@ -36,13 +36,15 @@ const wallets = donationWallets();
           <code class="mono" data-addr={w.address}>{w.address}</code>
           <p class="row">
             <button class="btn btn-ghost" type="button" data-copy={w.address}>{T.copy}</button>
-            {w.kind === 'evm' && (
-              /* the network comes from the wallet, not from the sentence: the label said "(Base)"
-                 on the HyperEVM card, which is the one place a donor checks before sending */
-              <a class="btn btn-primary" href={donationLink(w.address, w.defaultChainId ?? w.chains[0].id)}>
-                {T.open_wallet} ({(w.chains.find((c) => c.id === (w.defaultChainId ?? w.chains[0].id)) ?? w.chains[0]).name})
-              </a>
-            )}
+            {/* Every card gets the button, Solana included. Its QR already encodes
+                `solana:<address>` — Solana Pay, which Phantom, Solflare and Backpack open — so
+                the card was handing that URI to a phone camera and withholding it from the
+                button right underneath it. The network name comes from the wallet, not from the
+                sentence: the label once said "(Base)" on the HyperEVM card, which is the one
+                place a donor checks before sending. */}
+            <a class="btn btn-primary" href={donationUri(w)}>
+              {T.open_wallet} ({(w.chains.find((c) => c.id === (w.defaultChainId ?? w.chains[0].id)) ?? w.chains[0]).name})
+            </a>
           </p>
         </div>
       </div>

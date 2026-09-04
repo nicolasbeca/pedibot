@@ -104,7 +104,11 @@ const target = (href: string) =>
   }
   .facts li:last-child { border-bottom: 0; }
   .facts b { color: var(--sage-deep); }
-  .help { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 14px 0 0; }
+  /* Two by two, not auto-fit. This column is 760px wide, so auto-fit chose three across and
+     left the fourth card hanging alone on its own row. Four across would be 172px each,
+     too narrow for the text; two gives 356px and nothing is left over. */
+  .help { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 14px 0 0; }
+  @media (max-width: 560px) { .help { grid-template-columns: 1fr; } }
   .hcard {
     display: flex; flex-direction: column; gap: 5px; padding: 14px 16px;
     background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
