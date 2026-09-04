@@ -182,12 +182,16 @@ def test_admin_panel_renders_and_flags(client, monkeypatch):
     monkeypatch.setattr(report, "balance", lambda: 9.5)
     j = c.post("/api/ask", json={"question": "mi hijo de 4 años tiene fiebre"}).json()
     r = c.get("/admin?days=7")
-    assert (
-        r.status_code == 200
-        and "PediBot · admin" in r.text
-        and "mi hijo de 4 años" in r.text
-        and "noindex" in r.text
-    )
+    assert r.status_code == 200
+    assert "noindex" in r.text, "el panel nunca debe indexarse"
+    # the question and its answer are the point of the page, not a metric beside them
+    assert "mi hijo de 4 años" in r.text
+    assert "ver la respuesta" in r.text
+    # and the shape it was rewritten into: a chart, bars, and no token block
+    assert "<svg" in r.text and "consultas por día" in r.text
+    assert 'class="bars"' in r.text
+    assert "PDBT" not in r.text, "el token tiene su propio aviso; aquí sobra"
+
     r2 = c.post("/admin/flag", data={"id": j["answer_id"]}, follow_redirects=False)
     assert r2.status_code == 303
     assert "🚩" in c.get("/admin").text

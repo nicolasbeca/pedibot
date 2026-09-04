@@ -1,8 +1,17 @@
 """Operator panel at /admin (protected by Caddy basic auth in production; never linked publicly).
 
-Server-rendered HTML, no framework: metrics of the last 7/30 days, PDBT series, recent
-conversations with verification/feedback, and a "flag" button that appends the case to
-eval/flagged.jsonl so it can join the golden set later."""
+Rewritten to be read at a glance (4-sep-2026). It used to be a wall of numbers — twelve tiles, a
+PDBT price table, and two lists of `label ▁▁▁ 7` — and the operator had stopped opening it, which
+makes it worth nothing however correct it is. Now it opens with one chart of the last N days,
+puts the pages and the languages side by side as bars, and gives most of the room to the thing
+that actually needs reading: what people asked and what PediBot answered.
+
+The token block is gone. It has its own alert on Telegram the moment anything trades, and it was
+the only part of this page nobody needed to check.
+
+Server-rendered HTML with inline SVG and no library, matching the site: a dashboard that needs a
+CDN is a dashboard that breaks the day the CDN does.
+"""
 
 from __future__ import annotations
 
@@ -10,6 +19,7 @@ import datetime as dt
 import html
 import json
 import sqlite3
+from typing import Any
 
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -20,122 +30,229 @@ from pedibot.settings import ROOT
 FLAGGED = ROOT / "eval" / "flagged.jsonl"
 
 _CSS = """
-body{margin:0;background:#FFFDF9;color:#2B3A35;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:15px}
-main{max-width:1100px;margin:0 auto;padding:24px 18px}h1,h2{font-family:Nunito,sans-serif;margin:0 0 8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:14px 0 24px}
-.k{background:#fff;border:1px solid #EAE4DA;border-radius:14px;padding:12px 14px}.k b{display:block;font-family:"JetBrains Mono",monospace;font-size:1.4rem;color:#1F4F40}
-.k span{color:#8A9992;font-size:.85rem}table{width:100%;border-collapse:collapse;font-size:.9rem}td,th{padding:6px 8px;border-bottom:1px solid #EAE4DA;vertical-align:top;text-align:left}
-.lvl-urgent,.lvl-emergency{color:#C0392B;font-weight:700}.lvl-mental_health{color:#B7791F;font-weight:700}.ok{color:#2F6B57}.bad{color:#C0392B}
-details summary{cursor:pointer;color:#2F6B57}pre{white-space:pre-wrap;background:#FFF6EA;padding:10px;border-radius:10px;font-size:.85rem}
-button{border:1px solid #EAE4DA;background:#fff;border-radius:999px;padding:3px 10px;cursor:pointer}.bar{display:inline-block;height:8px;background:#C8E9E0;border-radius:4px}
-.mono{font-family:"JetBrains Mono",monospace}a{color:#2F6B57}
+:root{--ink:#2B3A35;--ink2:#5B6D66;--ink3:#8A9992;--line:#EAE4DA;--paper:#fff;--ground:#FFFDF9;
+--sage:#2F6B57;--sage2:#C8E9E0;--coral:#C0392B;--amber:#B7791F;--mint:#EAF7F2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,sans-serif;font-size:15px}
+main{max-width:1180px;margin:0 auto;padding:22px 18px 60px}
+h1{font-family:Nunito,sans-serif;margin:0;font-size:1.5rem}
+h2{font-family:Nunito,sans-serif;margin:0 0 12px;font-size:1.05rem;color:var(--ink2)}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.range a{display:inline-block;padding:4px 12px;border:1px solid var(--line);border-radius:999px;
+text-decoration:none;color:var(--ink2);margin-left:6px;background:var(--paper)}
+.range a.on{background:var(--sage);color:#fff;border-color:var(--sage)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.k{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.k b{display:block;font-family:"JetBrains Mono",monospace;font-size:1.7rem;line-height:1.1;color:var(--sage)}
+.k span{color:var(--ink3);font-size:.82rem}
+.k.warn b{color:var(--coral)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:16px}
+.two{display:grid;grid-template-columns:1.15fr 1fr;gap:16px}
+@media(max-width:880px){.two{grid-template-columns:1fr}}
+.bars{display:grid;gap:7px}
+.brow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;font-size:.9rem}
+.btrack{position:relative;background:var(--mint);border-radius:6px;height:22px;overflow:hidden}
+.bfill{position:absolute;inset:0 auto 0 0;background:var(--sage2);border-radius:6px}
+.blabel{position:relative;padding:2px 8px;line-height:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bnum{font-family:"JetBrains Mono",monospace;color:var(--ink2);font-size:.85rem}
+.legend{display:flex;gap:16px;font-size:.82rem;color:var(--ink3);margin-bottom:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.qa{border-top:1px solid var(--line);padding:14px 0}
+.qa:first-of-type{border-top:0}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.78rem;color:var(--ink3);margin-bottom:6px}
+.tag{border:1px solid var(--line);border-radius:999px;padding:1px 9px;background:var(--ground)}
+.tag.lvl-emergency,.tag.lvl-urgent{border-color:var(--coral);color:var(--coral);font-weight:700}
+.tag.lvl-mental_health{border-color:var(--amber);color:var(--amber);font-weight:700}
+.tag.bad{border-color:var(--coral);color:var(--coral)}
+.q{font-size:1.02rem;margin:0 0 6px}
+details summary{cursor:pointer;color:var(--sage);font-size:.88rem}
+pre{white-space:pre-wrap;background:var(--ground);border:1px solid var(--line);padding:12px;
+border-radius:10px;font-size:.86rem;margin:8px 0 0;font-family:inherit;line-height:1.5}
+button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:2px 11px;
+cursor:pointer;font-size:.78rem;color:var(--ink2)}
+button:hover{border-color:var(--coral);color:var(--coral)}
+.mono{font-family:"JetBrains Mono",monospace}
+a{color:var(--sage)}
+.empty{color:var(--ink3);font-style:italic}
 """
 
 
-def _kpi(label: str, value: object) -> str:
-    return f'<div class="k"><b>{html.escape(str(value))}</b><span>{html.escape(label)}</span></div>'
-
-
-def _series(d: dict[str, int]) -> str:
-    if not d:
-        return "<p>—</p>"
-    mx = max(d.values()) or 1
-    return "".join(
-        f'<div><span class="mono" style="display:inline-block;width:90px">{k}</span><span class="bar" style="width:{int(200 * v / mx)}px"></span> {v}</div>'
-        for k, v in d.items()
+def _kpi(label: str, value: object, warn: bool = False) -> str:
+    return (
+        f'<div class="k{" warn" if warn else ""}"><b>{html.escape(str(value))}</b>'
+        f"<span>{html.escape(label)}</span></div>"
     )
+
+
+def _chart(visits: dict[str, int], questions: dict[str, int], days: int) -> str:
+    """One picture of the period: visits as an area, questions as bars on the same days.
+
+    Drawn as inline SVG because the two series only make sense together — a day with visitors and
+    no questions means something different from a quiet day, and two separate lists never showed
+    that.
+    """
+    end = dt.date.today()
+    span = [(end - dt.timedelta(days=i)).isoformat() for i in range(days - 1, -1, -1)]
+    v = [visits.get(d, 0) for d in span]
+    q = [questions.get(d, 0) for d in span]
+    if not any(v) and not any(q):
+        return '<p class="empty">Todavía no hay nada que dibujar en este periodo.</p>'
+
+    W, H, PAD = 1100, 190, 26
+    top = max(max(v), 1)
+    inner_w, inner_h = W - PAD * 2, H - PAD * 2
+    step = inner_w / max(len(span) - 1, 1)
+
+    def y(value: int) -> float:
+        return PAD + inner_h - (value / top) * inner_h
+
+    pts = " ".join(f"{PAD + i * step:.1f},{y(n):.1f}" for i, n in enumerate(v))
+    area = f"{PAD},{PAD + inner_h} {pts} {PAD + inner_w},{PAD + inner_h}"
+
+    qtop = max(max(q), 1)
+    bar_w = max(2.0, step * 0.34)
+    bars = "".join(
+        f'<rect x="{PAD + i * step - bar_w / 2:.1f}" y="{PAD + inner_h - (n / qtop) * inner_h * 0.55:.1f}"'
+        f' width="{bar_w:.1f}" height="{(n / qtop) * inner_h * 0.55:.1f}" rx="2" fill="#2F6B57" opacity=".75"/>'
+        for i, n in enumerate(q)
+        if n
+    )
+    # a label every few days, so the axis stays legible at 7, 30 and 90
+    every = max(1, len(span) // 9)
+    ticks = "".join(
+        f'<text x="{PAD + i * step:.1f}" y="{H - 6}" text-anchor="middle" font-size="10" fill="#8A9992">'
+        f"{span[i][8:10]}/{span[i][5:7]}</text>"
+        for i in range(0, len(span), every)
+    )
+    return (
+        '<div class="legend"><span><i style="background:#C8E9E0"></i>visitas</span>'
+        '<span><i style="background:#2F6B57"></i>consultas</span></div>'
+        f'<svg viewBox="0 0 {W} {H}" width="100%" height="{H}" role="img" aria-label="visitas y consultas por día">'
+        f'<polyline points="{area}" fill="#EAF7F2" stroke="none"/>'
+        f'<polyline points="{pts}" fill="none" stroke="#C8E9E0" stroke-width="2.5"/>'
+        f"{bars}{ticks}"
+        f'<text x="{PAD}" y="{PAD - 8}" font-size="11" fill="#8A9992">máx {top} visitas/día</text>'
+        "</svg>"
+    )
+
+
+def _bars(items: list[tuple[str, int]], limit: int = 10) -> str:
+    items = items[:limit]
+    if not items:
+        return '<p class="empty">Nada todavía.</p>'
+    top = max(n for _, n in items) or 1
+    rows = "".join(
+        f'<div class="brow"><div class="btrack">'
+        f'<div class="bfill" style="width:{100 * n / top:.0f}%"></div>'
+        f'<div class="blabel">{html.escape(str(label))}</div></div>'
+        f'<span class="bnum">{n}</span></div>'
+        for label, n in items
+    )
+    return f'<div class="bars">{rows}</div>'
+
+
+_LANG_NAME = {
+    "en": "English", "es": "Español", "fr": "Français", "de": "Deutsch",
+    "ru": "Русский", "ar": "العربية", "pt": "Português",
+}
 
 
 def render(con: sqlite3.Connection, days: int) -> str:
     w = report.web_visits(days)
     q = report.questions(con, days)
-    tk = report.token(con, days)
     g = report.guides(days)
-    bal = report.balance()
-    rows = report.recent_answers(con, 60)
-    flagged = set()
+    rows = report.recent_answers(con, 80)
+    flagged: set[int] = set()
     if FLAGGED.exists():
         for line in FLAGGED.read_text(encoding="utf-8").splitlines():
             try:
                 flagged.add(json.loads(line).get("id"))
             except json.JSONDecodeError:
                 pass
-    h = [
-        f"<!doctype html><html><head><meta charset=utf-8><meta name=robots content=noindex><title>PediBot admin</title><style>{_CSS}</style></head><body><main>"
+
+    def link(n: int) -> str:
+        return f'<a href="/admin?days={n}" class="{"on" if n == days else ""}">{n} días</a>'
+
+    h: list[str] = [
+        "<!doctype html><html lang=es><head><meta charset=utf-8>"
+        '<meta name=viewport content="width=device-width,initial-scale=1">'
+        "<meta name=robots content=noindex><title>PediBot · panel</title>"
+        f"<style>{_CSS}</style></head><body><main>",
+        '<div class="top"><h1>PediBot · panel</h1>'
+        f'<div class="range">{link(7)}{link(30)}{link(90)}</div></div>',
     ]
+
+    down = q["down"]
     h.append(
-        f'<h1>PediBot · admin</h1><p>Últimos <a href="/admin?days=7">7</a> · <a href="/admin?days=30">30</a> · <a href="/admin?days=90">90</a> días — generado {dt.datetime.now(dt.UTC).strftime("%Y-%m-%d %H:%M")} UTC</p>'
-    )
-    h.append(
-        '<div class="grid">'
+        '<div class="kpis">'
+        + _kpi("visitantes", w["visitors"])
         + _kpi("páginas vistas", w["views"])
-        + _kpi("visitantes únicos", w["visitors"])
-        + _kpi("vistas del chat", w["chat_pageviews"])
         + _kpi("consultas", q["total"])
-        + _kpi("web / telegram", f"{q['web']} / {q['telegram']}")
-        + _kpi("con alarma", q["alarms"])
-        + _kpi("sin fuente", q["no_source"])
-        + _kpi("👍 / 👎", f"{q['up']} / {q['down']}")
-        + _kpi("coste IA (USD)", f"{q['cost']:.3f}")
-        + _kpi("saldo DeepSeek", f"{bal:.2f}" if bal is not None else "?")
+        + _kpi("con signo de alarma", q["alarms"], warn=q["alarms"] > 0)
+        + _kpi("sin fuente", q["no_source"], warn=q["no_source"] > 0)
+        + _kpi("pulgar abajo", down, warn=down > 0)
         + _kpi("guías publicadas", g)
         + "</div>"
     )
-    if tk:
-        h.append(
-            '<h2>PDBT</h2><div class="grid">'
-            + _kpi("compras", tk["buys"])
-            + _kpi("ventas", tk["sells"])
-            + _kpi("volumen USD", f"{tk['volume']:.0f}")
-            + _kpi("precio USD", f"{tk['price']:.7f}")
-            + _kpi("variación", f"{tk['price_change_pct']:+.1f} %")
-            + _kpi("FDV USD", f"{tk['fdv']:.0f}")
-            + _kpi("liquidez USD", f"{tk['liquidity']:.0f}")
-            + "</div>"
-        )
-        h.append(
-            "<table><tr><th>día</th><th>precio</th><th>compras</th><th>ventas</th></tr>"
-            + "".join(
-                f"<tr><td class=mono>{d}</td><td class=mono>{p:.7f}</td><td>{b}</td><td>{s}</td></tr>"
-                for d, p, b, s in tk["series"]
-            )
-            + "</table>"
-        )
+
     h.append(
-        "<h2>Visitas por día</h2>"
-        + _series(w["per_day"])
-        + "<h2>Consultas por día</h2>"
-        + _series(q["per_day"])
+        '<div class="card"><h2>Visitas y consultas por día</h2>'
+        + _chart(w["per_day"], q["per_day"], days)
+        + "</div>"
     )
+
+    langs = sorted(q["langs"].items(), key=lambda kv: -kv[1])
+    levels = sorted(q["levels"].items(), key=lambda kv: -kv[1])
     h.append(
-        "<h2>Páginas más vistas</h2><table>"
-        + "".join(f"<tr><td class=mono>{html.escape(u)}</td><td>{n}</td></tr>" for u, n in w["top"])
-        + "</table>"
+        '<div class="two">'
+        '<div class="card"><h2>Páginas más vistas</h2>'
+        + _bars(list(w["top"]))
+        + "</div>"
+        '<div class="card"><h2>Consultas por idioma</h2>'
+        + _bars([(_LANG_NAME.get(k, k), n) for k, n in langs])
+        + '<h2 style="margin-top:18px">Por nivel</h2>'
+        + _bars(levels)
+        + "</div></div>"
     )
+
     h.append(
-        f"<p>Idiomas: {html.escape(json.dumps(q['langs']))} · niveles: {html.escape(json.dumps(q['levels']))}</p>"
+        f'<div class="card"><h2>Qué se preguntó y qué se respondió '
+        f'<span class="bnum">({len(rows)} últimas)</span></h2>'
     )
-    h.append(
-        "<h2>Últimas conversaciones</h2><table><tr><th>#</th><th>cuándo</th><th>canal</th><th>nivel</th><th>verif.</th><th>fb</th><th>coste</th><th>pregunta / respuesta</th><th></th></tr>"
-    )
+    if not rows:
+        h.append('<p class="empty">Ninguna consulta todavía.</p>')
     for r in rows:
         fb = "👍" if r["feedback"] == 1 else ("👎" if r["feedback"] == -1 else "")
-        ver = r["verification"]
-        vcls = "ok" if ver in ("ok", "regenerated", "dose_calculator") else "bad"
+        ver = str(r["verification"])
+        good = ver in ("ok", "regenerated", "dose_calculator")
         flag = (
-            "🚩"
+            '<span class="tag bad">marcada 🚩</span>'
             if r["id"] in flagged
-            else f'<form method=post action="/admin/flag" style="display:inline"><input type=hidden name=id value="{r["id"]}"><button title="marcar como mala para el golden set">flag</button></form>'
+            else (
+                '<form method=post action="/admin/flag" style="display:inline">'
+                f'<input type=hidden name=id value="{r["id"]}">'
+                '<button title="guardar en el golden set como respuesta mala">marcar como mala</button>'
+                "</form>"
+            )
         )
         h.append(
-            f'<tr><td class=mono>{r["id"]}</td><td class=mono>{str(r["ts"])[5:16]}</td><td>{r["channel"]}</td><td class="lvl-{r["level"]}">{r["level"]}</td><td class="{vcls}">{ver}</td><td>{fb}</td><td class=mono>{r["cost_usd"]:.4f}</td>'
-            f"<td><details><summary>{html.escape(str(r['question'])[:110])}</summary><pre>{html.escape(str(r['answer']))}</pre></details></td><td>{flag}</td></tr>"
+            '<div class="qa"><div class="meta">'
+            f'<span class="mono">{str(r["ts"])[5:16].replace("T", " ")}</span>'
+            f'<span class="tag">{html.escape(_LANG_NAME.get(str(r["lang"]), str(r["lang"])))}</span>'
+            f'<span class="tag">{html.escape(str(r["channel"]))}</span>'
+            f'<span class="tag lvl-{html.escape(str(r["level"]))}">{html.escape(str(r["level"]))}</span>'
+            + (f'<span class="tag bad">{html.escape(ver)}</span>' if not good else "")
+            + (f"<span>{fb}</span>" if fb else "")
+            + f"<span style=\"margin-left:auto\">{flag}</span></div>"
+            f'<p class="q"><b>{html.escape(str(r["question"]))}</b></p>'
+            f"<details><summary>ver la respuesta</summary>"
+            f"<pre>{html.escape(str(r['answer']))}</pre></details></div>"
         )
-    h.append("</table></main></body></html>")
+    h.append("</div></main></body></html>")
     return "".join(h)
 
 
-def make_router(con_factory) -> APIRouter:  # type: ignore[no-untyped-def]
+def make_router(con_factory: Any) -> APIRouter:
     router = APIRouter()
 
     @router.get("/admin", response_class=HTMLResponse)
