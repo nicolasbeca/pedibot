@@ -18,6 +18,12 @@
  * carry a second topic key from when the English guide was anchored on English sources — which
  * is what `topicKeys` is for. A language missing one is skipped rather than rendered blank; a
  * missing translation drawing an empty row is this project's oldest bug.
+ *
+ * Layout note, learned the hard way: this must sit inside `.wrap` like every other section. The
+ * first version did not, so it ran the full width of the window while the rest of the page stayed
+ * in its 1040px column — the heading started at the very edge of the screen and the two columns
+ * were a third of a screen apart. And the site says "list of things" with cards, not with
+ * underlined links.
  */
 import { getCollection } from 'astro:content';
 import { topicKeys } from '../guides';
@@ -49,27 +55,32 @@ const picks = ORDER.map((topic) => {
 ---
 
 {picks.length > 0 && (
-  <section class="block popular">
-    <h2>{s.popular_h}</h2>
-    <ul>
-      {picks.map((p) => <li><a href={p.href}>{p.title}</a></li>)}
-    </ul>
-    <p class="all"><a href={`${langPrefix(lang)}/guides`}>{s.nav_guides} →</a></p>
-  </section>
+  <div class="wrap">
+    <section class="block popular">
+      <h2>{s.popular_h}</h2>
+      <div class="qs">
+        {picks.map((p) => <a class="q" href={p.href}>{p.title}</a>)}
+      </div>
+      <p class="all"><a href={`${langPrefix(lang)}/guides`}>{s.nav_guides} →</a></p>
+    </section>
+  </div>
 )}
 
 <style>
-  .popular ul {
-    margin: 18px 0 0;
-    padding-inline-start: 0;
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px 28px;
+  /* the same card the sources grid uses, so this reads as part of the page and not bolted on */
+  .qs { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px; }
+  @media (max-width: 760px) { .qs { grid-template-columns: 1fr; } }
+  .q {
+    display: block;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 16px;
+    color: var(--ink);
+    text-decoration: none;
+    line-height: 1.4;
+    transition: border-color .15s, color .15s;
   }
-  @media (max-width: 700px) { .popular ul { grid-template-columns: 1fr; } }
-  .popular li { border-inline-start: 2px solid var(--line); padding-inline-start: 12px; }
-  .popular li a { color: var(--ink); }
-  .popular li a:hover { color: var(--sage); }
+  .q:hover { border-color: var(--sage); color: var(--sage-deep); }
   .all { margin-top: 20px; }
 </style>

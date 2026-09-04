@@ -33,7 +33,7 @@ const k = s.kit;
           <div>
             <strong>{it.name}</strong>
             <p>{it.what}</p>
-            <p class="cite">{it.cite}</p>
+            <p class="from">{it.cite}</p>
           </div>
         </li>
       ))}
@@ -52,7 +52,7 @@ const k = s.kit;
           <div>
             <strong>{it.name}</strong>
             <p>{it.what}</p>
-            <p class="cite">{it.cite}</p>
+            <p class="from">{it.cite}</p>
           </div>
         </li>
       ))}
@@ -63,12 +63,12 @@ const k = s.kit;
     <div>
       <h2>{k.store_h}</h2>
       <p class="lede">{k.store_p}</p>
-      <p class="cite">{k.store_cite}</p>
+      <p class="from">{k.store_cite}</p>
     </div>
     <div>
       <h2>{k.expiry_h}</h2>
       <p class="lede">{k.expiry_p}</p>
-      <p class="cite">{k.expiry_cite}</p>
+      <p class="from">{k.expiry_cite}</p>
     </div>
   </section>
 
@@ -95,7 +95,7 @@ const k = s.kit;
   .mark { font-weight: 700; line-height: 1.5; }
   .mark.yes { color: var(--sage); }
   .mark.no { color: var(--coral); }
-  .cite { font-size: 0.82rem; color: var(--ink-3, var(--ink-2)); opacity: 0.85; }
+  .from { font-size: 0.82rem; color: var(--ink-3, var(--ink-2)); opacity: 0.85; }
   .more { margin-top: 22px; }
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
   @media (max-width: 800px) { .two { grid-template-columns: 1fr; } }
