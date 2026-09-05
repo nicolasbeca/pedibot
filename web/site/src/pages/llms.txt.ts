@@ -48,7 +48,10 @@ export async function GET(context: APIContext) {
     '3. **When nothing in the corpus supports an answer, it says so.** It does not fill the gap.',
     '',
     `The corpus is ${docs.length} documents from ${orgs.length} organisations — ${orgs.slice(0, 8).join(', ')} and others.`,
-    `There are ${all.length} guides across ${LANGS.length} languages.`,
+    // languages that actually HAVE guides, not the languages the site is built in: the two
+    // differ for as long as a new edition exists before its guides are generated, and this
+    // line is read by machines that quote it.
+    `There are ${all.length} guides across ${new Set(all.map((g) => g.data.lang)).size} languages.`,
     'Everything is free, with no account, no ads and no third-party trackers.',
     '',
     'This is reference material for parents. It is not a diagnosis and it does not replace a',
