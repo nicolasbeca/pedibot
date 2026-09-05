@@ -197,6 +197,41 @@ def test_admin_panel_renders_and_flags(client, monkeypatch):
     assert "🚩" in c.get("/admin").text
 
 
+def test_the_panel_opens_on_the_totals(client, monkeypatch):
+    """It opened on the last 7 days, so the first question it answered was "how did this week go",
+    and the one the operator actually has is "how much is there at all". The windows stay one
+    click away."""
+    c, _ = client
+    from pedibot.ops import report
+
+    monkeypatch.setattr(
+        report,
+        "web_visits",
+        lambda days=7: {
+            "views": 3,
+            "visitors": 2,
+            "chat_pageviews": 1,
+            "top": [("/", 3)],
+            "per_day": {"2026-08-25": 3},
+            "covers": ("2026-08-25", "2026-08-25"),
+        },
+    )
+    c.post("/api/ask", json={"question": "mi hijo de 4 años tiene fiebre"})
+
+    landing = c.get("/admin").text
+    assert 'href="/admin?days=0" class="on"' in landing, "no entra por los totales"
+    assert "desde el principio" in landing
+    # the two blocks of numbers do NOT cover the same period, and the page has to say so:
+    # questions live in the database for ever, visits only as long as the journal keeps them
+    assert "desde el 25 ago" in landing
+    assert "no guarda desde siempre" in landing
+
+    week = c.get("/admin?days=7").text
+    assert 'href="/admin?days=7" class="on"' in week
+    assert "últimos 7 días" in week
+    assert "consultas por día" in week
+
+
 def test_the_dose_endpoint_hands_the_page_a_figure_not_a_band(client):
     """The web calculator rendered `mg_min–mg_max` and `ml_min–ml_max` joined by a dash, and a
     parent at three in the morning cannot measure "3–6 ml". The endpoint carries `mg` and a
@@ -209,3 +244,17 @@ def test_the_dose_endpoint_hands_the_page_a_figure_not_a_band(client):
     assert (j["mg_min"], j["mg_max"]) == (60, 120)
     for f in j["ml_by_form"]:
         assert isinstance(f["ml"], (int, float)), "una dosis es un número, no una banda"
+
+
+def test_the_panel_can_name_every_language_and_level() -> None:
+    """`_LANG_NAME` is a hand-written list and Hindi shipped in it as a bare "hi". A list of
+    languages typed by hand always exempts the one just added — which is the one most likely to
+    be wrong. Same for the triage levels, which decide whether a red banner sits over a parent's
+    answer and were printed in their internal English."""
+    from pedibot.admin import _LANG_NAME, _LEVEL_NAME
+    from pedibot.bot.answer import SUPPORTED_LANGS
+    from pedibot.bot.triage import LEVEL_ORDER
+
+    missing = set(SUPPORTED_LANGS) - set(_LANG_NAME)
+    assert not missing, f"el panel no sabe nombrar {sorted(missing)}"
+    assert not set(LEVEL_ORDER) - set(_LEVEL_NAME), "falta traducir algún nivel de triaje"

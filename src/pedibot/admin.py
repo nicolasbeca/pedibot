@@ -41,6 +41,8 @@ h2{font-family:Nunito,sans-serif;margin:0 0 12px;font-size:1.05rem;color:var(--i
 .range a{display:inline-block;padding:4px 12px;border:1px solid var(--line);border-radius:999px;
 text-decoration:none;color:var(--ink2);margin-left:6px;background:var(--paper)}
 .range a.on{background:var(--sage);color:#fff;border-color:var(--sage)}
+.period{margin:0 0 12px;color:var(--ink3);font-size:.86rem}
+.period b{color:var(--ink2)}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
 .k{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .k b{display:block;font-family:"JetBrains Mono",monospace;font-size:1.7rem;line-height:1.1;color:var(--sage)}
@@ -66,6 +68,11 @@ text-decoration:none;color:var(--ink2);margin-left:6px;background:var(--paper)}
 .tag.bad{border-color:var(--coral);color:var(--coral)}
 .q{font-size:1.02rem;margin:0 0 6px}
 details summary{cursor:pointer;color:var(--sage);font-size:.88rem}
+/* the sources are a second fold on purpose: which documents it used is a fair question,
+   and on a five-sentence answer they are longer than the answer itself */
+details.src{margin-top:8px}
+details.src summary{color:var(--ink3);font-size:.8rem}
+details.src pre{font-size:.78rem;color:var(--ink3)}
 pre{white-space:pre-wrap;background:var(--ground);border:1px solid var(--line);padding:12px;
 border-radius:10px;font-size:.86rem;margin:8px 0 0;font-family:inherit;line-height:1.5}
 button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:2px 11px;
@@ -75,6 +82,18 @@ button:hover{border-color:var(--coral);color:var(--coral)}
 a{color:var(--sage)}
 .empty{color:var(--ink3);font-style:italic}
 """
+
+
+def _day(iso: str | None) -> str:
+    """2026-09-05 → 5 sep. The panel is read by one person who knows what year it is."""
+    if not iso:
+        return "—"
+    months = ("ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic")
+    try:
+        d = dt.date.fromisoformat(iso[:10])
+    except ValueError:
+        return iso
+    return f"{d.day} {months[d.month - 1]}"
 
 
 def _kpi(label: str, value: object, warn: bool = False) -> str:
@@ -92,7 +111,18 @@ def _chart(visits: dict[str, int], questions: dict[str, int], days: int) -> str:
     that.
     """
     end = dt.date.today()
-    span = [(end - dt.timedelta(days=i)).isoformat() for i in range(days - 1, -1, -1)]
+    if days > 0:
+        span = [(end - dt.timedelta(days=i)).isoformat() for i in range(days - 1, -1, -1)]
+    else:
+        # "everything": from the first day either series saw, so the curve starts where the site
+        # did instead of at an arbitrary window edge
+        seen = sorted(set(visits) | set(questions))
+        if not seen:
+            return '<p class="empty">Todavía no hay nada que dibujar.</p>'
+        start = dt.date.fromisoformat(seen[0])
+        span = [
+            (start + dt.timedelta(days=i)).isoformat() for i in range((end - start).days + 1)
+        ]
     v = [visits.get(d, 0) for d in span]
     q = [questions.get(d, 0) for d in span]
     if not any(v) and not any(q):
@@ -151,9 +181,21 @@ def _bars(items: list[tuple[str, int]], limit: int = 10) -> str:
     return f'<div class="bars">{rows}</div>'
 
 
+#: Each language named in itself, as the site names it. Hand-written and therefore checked
+#: against SUPPORTED_LANGS by a test: Hindi shipped as a bare "hi" here because this list was
+#: seven long and nothing said so.
 _LANG_NAME = {
     "en": "English", "es": "Español", "fr": "Français", "de": "Deutsch",
-    "ru": "Русский", "ar": "العربية", "pt": "Português",
+    "ru": "Русский", "ar": "العربية", "pt": "Português", "hi": "हिन्दी",
+}
+
+#: The triage levels are internal words and they decide whether a red banner sits above a
+#: parent's answer. On a panel written in Spanish they should be readable.
+_LEVEL_NAME = {
+    "routine": "rutina",
+    "mental_health": "salud mental",
+    "urgent": "urgente (hoy)",
+    "emergency": "emergencia (ahora)",
 }
 
 
@@ -170,8 +212,19 @@ def render(con: sqlite3.Connection, days: int) -> str:
             except json.JSONDecodeError:
                 pass
 
-    def link(n: int) -> str:
-        return f'<a href="/admin?days={n}" class="{"on" if n == days else ""}">{n} días</a>'
+    def link(n: int, label: str | None = None) -> str:
+        on = "on" if n == days else ""
+        return f'<a href="/admin?days={n}" class="{on}">{label or f"{n} días"}</a>'
+
+    # what each block of numbers is counting, said out loud. The two are not the same period:
+    # questions are every one ever asked; visits are what the journal still had.
+    if days > 0:
+        period = f"últimos {days} días"
+        covered = period
+    else:
+        period = f"desde el principio ({_day(q['first_day'])})" if q["first_day"] else "todavía nada"
+        covers = w.get("covers") or ()
+        covered = f"desde el {_day(covers[0])}" if covers else "sin registro"
 
     h: list[str] = [
         "<!doctype html><html lang=es><head><meta charset=utf-8>"
@@ -179,24 +232,31 @@ def render(con: sqlite3.Connection, days: int) -> str:
         "<meta name=robots content=noindex><title>PediBot · panel</title>"
         f"<style>{_CSS}</style></head><body><main>",
         '<div class="top"><h1>PediBot · panel</h1>'
-        f'<div class="range">{link(7)}{link(30)}{link(90)}</div></div>',
+        f'<div class="range">{link(0, "total")}{link(7)}{link(30)}{link(90)}</div></div>',
     ]
 
     down = q["down"]
     h.append(
+        f'<p class="period">Consultas y guías: <b>{html.escape(period)}</b>. '
+        f'Visitas: <b>{html.escape(covered)}</b> — salen del registro del servidor, que no '
+        "guarda desde siempre.</p>"
         '<div class="kpis">'
         + _kpi("visitantes", w["visitors"])
         + _kpi("páginas vistas", w["views"])
         + _kpi("consultas", q["total"])
+        + _kpi("por Telegram", q["telegram"])
         + _kpi("con signo de alarma", q["alarms"], warn=q["alarms"] > 0)
         + _kpi("sin fuente", q["no_source"], warn=q["no_source"] > 0)
+        + _kpi("pulgar arriba", q["up"])
         + _kpi("pulgar abajo", down, warn=down > 0)
         + _kpi("guías publicadas", g)
         + "</div>"
     )
 
     h.append(
-        '<div class="card"><h2>Visitas y consultas por día</h2>'
+        '<div class="card"><h2>'
+        + ("Visitas y consultas por día" if days > 0 else "Por día, desde el principio")
+        + "</h2>"
         + _chart(w["per_day"], q["per_day"], days)
         + "</div>"
     )
@@ -211,7 +271,7 @@ def render(con: sqlite3.Connection, days: int) -> str:
         '<div class="card"><h2>Consultas por idioma</h2>'
         + _bars([(_LANG_NAME.get(k, k), n) for k, n in langs])
         + '<h2 style="margin-top:18px">Por nivel</h2>'
-        + _bars(levels)
+        + _bars([(_LEVEL_NAME.get(k, k), n) for k, n in levels])
         + "</div></div>"
     )
 
@@ -240,7 +300,8 @@ def render(con: sqlite3.Connection, days: int) -> str:
             f'<span class="mono">{str(r["ts"])[5:16].replace("T", " ")}</span>'
             f'<span class="tag">{html.escape(_LANG_NAME.get(str(r["lang"]), str(r["lang"])))}</span>'
             f'<span class="tag">{html.escape(str(r["channel"]))}</span>'
-            f'<span class="tag lvl-{html.escape(str(r["level"]))}">{html.escape(str(r["level"]))}</span>'
+            f'<span class="tag lvl-{html.escape(str(r["level"]))}">'
+            f'{html.escape(_LEVEL_NAME.get(str(r["level"]), str(r["level"])))}</span>'
             + (f'<span class="tag bad">{html.escape(ver)}</span>' if not good else "")
             + (f"<span>{fb}</span>" if fb else "")
             + f"<span style=\"margin-left:auto\">{flag}</span></div>"
@@ -285,8 +346,9 @@ def make_router(con_factory: Any) -> APIRouter:
     router = APIRouter()
 
     @router.get("/admin", response_class=HTMLResponse)
-    def admin(days: int = 7) -> str:
-        return render(con_factory(), max(1, min(days, 365)))
+    def admin(days: int = 0) -> str:
+        """`days=0` is the landing view: the totals. The windows are for the shape of a period."""
+        return render(con_factory(), max(0, min(days, 365)))
 
     @router.post("/admin/flag")
     async def flag(request: Request) -> RedirectResponse:

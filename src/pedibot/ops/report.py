@@ -20,17 +20,26 @@ _BOT_UA = re.compile(r"bot|crawl|spider|curl|python|monitor|wget|httpx", re.I)
 
 
 def web_visits(days: int = 7) -> dict[str, Any]:
-    """Page views, unique visitors (hash of IP+UA) and top pages from Caddy's JSON access log."""
+    """Page views, unique visitors (hash of IP+UA) and top pages from Caddy's JSON access log.
+
+    `days <= 0` means "as much as there is". It is NOT all-time and must never be shown as such:
+    the journal rotates, and this one was capped after it grew to 4 GB. The returned `covers`
+    says which days were actually seen, so the panel can label the number with its own period.
+    A year is the ceiling either way — beyond that the read costs more than the answer is worth.
+    """
+    since = f"-{days}d" if days > 0 else "-365d"
     try:
         out = subprocess.run(
-            ["journalctl", "-u", "caddy", "--since", f"-{days}d", "-o", "cat", "--no-pager"],
+            ["journalctl", "-u", "caddy", "--since", since, "-o", "cat", "--no-pager"],
             capture_output=True,
             text=True,
             timeout=120,
         ).stdout
     except Exception as e:  # noqa: BLE001
         print("journalctl failed:", e, file=sys.stderr)
-        return {"views": 0, "visitors": 0, "chat_pageviews": 0, "top": [], "per_day": {}}
+        return {
+            "views": 0, "visitors": 0, "chat_pageviews": 0, "top": [], "per_day": {}, "covers": ()
+        }
     views, chat = 0, 0
     visitors: set[str] = set()
     top: dict[str, int] = {}
@@ -63,11 +72,20 @@ def web_visits(days: int = 7) -> dict[str, Any]:
         "chat_pageviews": chat,
         "top": sorted(top.items(), key=lambda kv: -kv[1])[:10],
         "per_day": dict(sorted(per_day.items())),
+        # what the journal actually held, so the panel never calls a rotated log a total
+        "covers": (min(per_day), max(per_day)) if per_day else (),
     }
 
 
 def questions(con: sqlite3.Connection, days: int = 7) -> dict[str, Any]:
-    since = (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).isoformat(timespec="seconds")
+    """`days <= 0` counts everything: these rows live in the ops database and nothing deletes
+    them, so unlike the visits this really is every question ever asked. Every ISO timestamp
+    sorts after the empty string, which is why "everything" needs no separate query."""
+    since = (
+        (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).isoformat(timespec="seconds")
+        if days > 0
+        else ""
+    )
     q = con.execute
     total = q("SELECT COUNT(*) FROM answers WHERE ts>=?", (since,)).fetchone()[0]
     tg = q("SELECT COUNT(*) FROM answers WHERE ts>=? AND session LIKE 'tg_%'", (since,)).fetchone()[
@@ -95,7 +113,9 @@ def questions(con: sqlite3.Connection, days: int = 7) -> dict[str, Any]:
             (since,),
         ).fetchall()
     )
+    first = q("SELECT MIN(substr(ts,1,10)) FROM answers WHERE ts>=?", (since,)).fetchone()[0]
     return {
+        "first_day": first,
         "total": total,
         "telegram": tg,
         "web": total - tg,
@@ -134,8 +154,9 @@ def token(con: sqlite3.Connection, days: int = 7) -> dict[str, Any] | None:
 
 
 def guides(days: int = 7) -> int:
+    """`days <= 0` counts every published guide, which is the number the operator asks for."""
     n = 0
-    since = dt.date.today() - dt.timedelta(days=days)
+    since = dt.date.today() - dt.timedelta(days=days) if days > 0 else dt.date.min
     for f in (ROOT / "web" / "content").rglob("*.md"):
         m = re.search(r"^date:\s*(\d{4}-\d{2}-\d{2})", f.read_text(encoding="utf-8"), re.M)
         if m and dt.date.fromisoformat(m.group(1)) >= since:
