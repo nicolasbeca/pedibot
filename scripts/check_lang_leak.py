@@ -48,6 +48,10 @@ MARKERS: dict[str, tuple[str, ...]] = {
     # Portuguese words that Spanish does not spell the same way, which is the only real risk here
     "pt": ("criança", "você", "vômitos", "diretrizes", "pronto-socorro", "não ",
            "guias para pais", "sinais de alarme"),
+    # Devanagari is its own script, so any of it on a non-Hindi page is a leak by itself;
+    # these are the words the Hindi pages actually print, for the reverse direction
+    "hi": ("बच्चे", "बुखार", "टीक", "इमरजेंसी", "खुराक", "स्रोत", "गाइड",
+           "चेतावनी के निशान", "आम सवाल"),
 }
 
 

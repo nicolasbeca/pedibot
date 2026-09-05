@@ -36,6 +36,10 @@ const others: Record<string, string | null> = {};
   const twins = await getCollection('guides', x => x.data.lang === 'pt' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
   others['pt'] = twins.length ? `/pt/guides/${twins[0].id.replace(/^pt\//, '')}` : null;
 }
+{
+  const twins = await getCollection('guides', x => x.data.lang === 'hi' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
+  others['hi'] = twins.length ? `/hi/guides/${twins[0].id.replace(/^hi\//, '')}` : null;
+}
 const family = await getCollection('guides', x => x.data.lang === 'de' && !x.data.draft);
 const related = relatedTo(g, family);
 const faqs = faqsFrom(g.body ?? '');
@@ -77,7 +81,7 @@ const jsonld = faqLd ? [page, faqLd] : page;
     <h1 style="margin-top:8px">{g.data.title}</h1>
     <p class="lede">{g.data.description}</p>
     <Content />
-    <p style="margin-top:32px"><a class="btn btn-primary" href={`/es?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
+    <p style="margin-top:32px"><a class="btn btn-primary" href={`/de?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
     {related.length > 0 && (
       <nav class="related">
         <h2>{s.related_h}</h2>

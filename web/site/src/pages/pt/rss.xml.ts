@@ -12,7 +12,7 @@ export async function GET(context: APIContext) {
     title: 'PediBot — guias para pais',
     description: 'Respostas curtas às perguntas que os pais mais fazem, escritas apenas a partir de diretrizes pediátricas publicadas, com a fonte em cada frase.',
     site: context.site!,
-    items: guides.map(g => ({ title: g.data.title, description: g.data.description, pubDate: g.data.date, link: `/pt/guides/${g.id.replace(/^es\//, '')}` })),
+    items: guides.map(g => ({ title: g.data.title, description: g.data.description, pubDate: g.data.date, link: `/pt/guides/${g.id.replace(/^pt\//, '')}` })),
     customData: '<language>pt-BR</language>',
   });
 }

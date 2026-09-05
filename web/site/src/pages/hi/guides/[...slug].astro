@@ -4,10 +4,10 @@ import Base from '../../../layouts/Base.astro';
 import { t } from '../../../i18n';
 import { faqsFrom, relatedTo, topicKeys } from '../../../guides';
 export async function getStaticPaths() {
-  const guides = await getCollection('guides', g => g.data.lang === 'ar' && !g.data.draft);
-  return guides.map(g => ({ params: { slug: g.id.replace(/^ar\//, '') }, props: { g } }));
+  const guides = await getCollection('guides', g => g.data.lang === 'hi' && !g.data.draft);
+  return guides.map(g => ({ params: { slug: g.id.replace(/^hi\//, '') }, props: { g } }));
 }
-const { g } = Astro.props; const lang = 'ar'; const s = t(lang);
+const { g } = Astro.props; const lang = 'hi'; const s = t(lang);
 // the same guide in the other languages: matched by `topic`, which is language-neutral.
 // An explicit null tells the layout there is no translation yet, so it emits neither an
 // hreflang nor a switch link — pointing at a page that does not exist is worse than both.
@@ -15,10 +15,6 @@ const others: Record<string, string | null> = {};
 {
   const twins = await getCollection('guides', x => x.data.lang === 'en' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
   others['en'] = twins.length ? `/guides/${twins[0].id.replace(/^en\//, '')}` : null;
-}
-{
-  const twins = await getCollection('guides', x => x.data.lang === 'es' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
-  others['es'] = twins.length ? `/es/guides/${twins[0].id.replace(/^es\//, '')}` : null;
 }
 {
   const twins = await getCollection('guides', x => x.data.lang === 'fr' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
@@ -33,14 +29,18 @@ const others: Record<string, string | null> = {};
   others['ru'] = twins.length ? `/ru/guides/${twins[0].id.replace(/^ru\//, '')}` : null;
 }
 {
+  const twins = await getCollection('guides', x => x.data.lang === 'ar' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
+  others['ar'] = twins.length ? `/ar/guides/${twins[0].id.replace(/^ar\//, '')}` : null;
+}
+{
+  const twins = await getCollection('guides', x => x.data.lang === 'es' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
+  others['es'] = twins.length ? `/es/guides/${twins[0].id.replace(/^es\//, '')}` : null;
+}
+{
   const twins = await getCollection('guides', x => x.data.lang === 'pt' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
   others['pt'] = twins.length ? `/pt/guides/${twins[0].id.replace(/^pt\//, '')}` : null;
 }
-{
-  const twins = await getCollection('guides', x => x.data.lang === 'hi' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
-  others['hi'] = twins.length ? `/hi/guides/${twins[0].id.replace(/^hi\//, '')}` : null;
-}
-const family = await getCollection('guides', x => x.data.lang === 'ar' && !x.data.draft);
+const family = await getCollection('guides', x => x.data.lang === 'hi' && !x.data.draft);
 const related = relatedTo(g, family);
 const faqs = faqsFrom(g.body ?? '');
 const { Content } = await render(g);
@@ -75,20 +75,20 @@ const faqLd = faqs.length
   : null;
 const jsonld = faqLd ? [page, faqLd] : page;
 ---
-<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/ar/guides/${g.id.replace(/^ar\//, '')}`} jsonld={jsonld} others={others}>
+<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/hi/guides/${g.id.replace(/^hi\//, '')}`} jsonld={jsonld} others={others}>
   <article class="narrow prose" style="padding:40px 18px">
     <p class="eyebrow">{s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString(s.speech_locale)}</time></p>
     <h1 style="margin-top:8px">{g.data.title}</h1>
     <p class="lede">{g.data.description}</p>
     <Content />
-    <p style="margin-top:32px"><a class="btn btn-primary" href={`/ar?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
+    <p style="margin-top:32px"><a class="btn btn-primary" href={`/hi?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
     {related.length > 0 && (
       <nav class="related">
         <h2>{s.related_h}</h2>
         <ul>
           {related.map((r) => (
             <li>
-              <a href={`/ar/guides/${r.id.replace(/^ar\//, '')}`}>{r.data.title}</a>
+              <a href={`/hi/guides/${r.id.replace(/^hi\//, '')}`}>{r.data.title}</a>
               <span>{r.data.description}</span>
             </li>
           ))}

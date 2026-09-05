@@ -2,10 +2,10 @@
 import { getCollection } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
 import { t } from '../../../i18n';
-const lang = 'pt'; const s = t(lang);
+const lang = 'hi'; const s = t(lang);
 const guides = (await getCollection('guides', g => g.data.lang === lang && !g.data.draft)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
-<Base lang={lang} title={s.meta_guides_title} description={s.guides_lede} path="/pt/guides">
+<Base lang={lang} title={s.meta_guides_title} description={s.guides_lede} path="/hi/guides">
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.nav_guides}</p>
     <h1 style="margin-top:8px">{s.guides_h1}</h1>
@@ -15,7 +15,7 @@ const guides = (await getCollection('guides', g => g.data.lang === lang && !g.da
       <span id="gcount">{s.guides_count.replace("{n}", String(guides.length))}</span></p>
     <p id="gempty" class="lede" hidden>{s.guides_none}</p>
     <div class="trio" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
-      {guides.map(g => <a class="card gcard" href={`/pt/guides/${g.id.replace(/^pt\//, '')}`} style="text-decoration:none;color:inherit"><span class="n">{s.updated} {g.data.date.toLocaleDateString(s.date_locale)}</span><h3 style="margin-top:6px">{g.data.title}</h3><p>{g.data.description}</p></a>)}
+      {guides.map(g => <a class="card gcard" href={`/hi/guides/${g.id.replace(/^hi\//, '')}`} style="text-decoration:none;color:inherit"><span class="n">{s.updated} {g.data.date.toLocaleDateString(s.date_locale)}</span><h3 style="margin-top:6px">{g.data.title}</h3><p>{g.data.description}</p></a>)}
     </div>
   </div>
 </Base>

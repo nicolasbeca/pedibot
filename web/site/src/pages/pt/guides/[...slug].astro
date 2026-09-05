@@ -36,6 +36,10 @@ const others: Record<string, string | null> = {};
   const twins = await getCollection('guides', x => x.data.lang === 'es' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
   others['es'] = twins.length ? `/es/guides/${twins[0].id.replace(/^es\//, '')}` : null;
 }
+{
+  const twins = await getCollection('guides', x => x.data.lang === 'hi' && !x.data.draft && topicKeys(g.data.topic).includes(x.data.topic));
+  others['hi'] = twins.length ? `/hi/guides/${twins[0].id.replace(/^hi\//, '')}` : null;
+}
 const family = await getCollection('guides', x => x.data.lang === 'pt' && !x.data.draft);
 const related = relatedTo(g, family);
 const faqs = faqsFrom(g.body ?? '');
@@ -71,20 +75,20 @@ const faqLd = faqs.length
   : null;
 const jsonld = faqLd ? [page, faqLd] : page;
 ---
-<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/pt/guides/${g.id.replace(/^es\//, '')}`} jsonld={jsonld} others={others}>
+<Base lang={lang} title={`${g.data.title} — PediBot`} description={g.data.description} path={`/pt/guides/${g.id.replace(/^pt\//, '')}`} jsonld={jsonld} others={others}>
   <article class="narrow prose" style="padding:40px 18px">
     <p class="eyebrow">{s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString(s.speech_locale)}</time></p>
     <h1 style="margin-top:8px">{g.data.title}</h1>
     <p class="lede">{g.data.description}</p>
     <Content />
-    <p style="margin-top:32px"><a class="btn btn-primary" href={`/es?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
+    <p style="margin-top:32px"><a class="btn btn-primary" href={`/pt?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
     {related.length > 0 && (
       <nav class="related">
         <h2>{s.related_h}</h2>
         <ul>
           {related.map((r) => (
             <li>
-              <a href={`/pt/guides/${r.id.replace(/^es\//, '')}`}>{r.data.title}</a>
+              <a href={`/pt/guides/${r.id.replace(/^pt\//, '')}`}>{r.data.title}</a>
               <span>{r.data.description}</span>
             </li>
           ))}

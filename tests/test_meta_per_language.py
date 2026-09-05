@@ -22,7 +22,17 @@ import pytest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DIST = ROOT / "web" / "site" / "dist"
-LANGS = ("es", "fr", "de", "ru", "ar")
+LANGS = tuple(
+    x
+    for x in re.findall(
+        r"'(\w+)'",
+        re.search(
+            r"export const LANGS: Lang\[\] = \[(.*?)\];",
+            (ROOT / "web" / "site" / "src" / "i18n.ts").read_text(encoding="utf-8"),
+        ).group(1),
+    )
+    if x != "en"  # English lives at the root, where there is no prefix to compare
+)
 
 pytestmark = pytest.mark.skipif(not DIST.exists(), reason="no hay build en web/site/dist")
 

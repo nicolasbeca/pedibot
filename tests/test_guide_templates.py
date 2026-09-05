@@ -23,7 +23,20 @@ import pytest
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 PAGES = ROOT / "web" / "site" / "src" / "pages"
-LANGS = ("en", "es", "fr", "de", "ru", "ar", "pt")
+
+
+def _langs() -> tuple[str, ...]:
+    """Read from i18n.ts, never typed here: a hand-written list silently exempts the language
+    that was just added, which is the one most likely to be a broken copy of another."""
+    m = re.search(
+        r"export const LANGS: Lang\[\] = \[(.*?)\];",
+        (ROOT / "web" / "site" / "src" / "i18n.ts").read_text(encoding="utf-8"),
+    )
+    assert m, "no encuentro LANGS en i18n.ts"
+    return tuple(re.findall(r"'(\w+)'", m.group(1)))
+
+
+LANGS = _langs()
 
 
 def template(lang: str) -> str:
@@ -42,8 +55,24 @@ def test_the_template_lists_guides_of_its_own_language(lang: str) -> None:
 
 @pytest.mark.parametrize("lang", LANGS)
 def test_the_template_strips_its_own_slug_prefix(lang: str) -> None:
-    strips = set(re.findall(r"replace\(/\^(\w+)\\/", template(lang)))
-    assert lang in strips, f"[{lang}] no recorta su prefijo; recorta {sorted(strips)}"
+    r"""`g.id` and `r.id` are guides of THIS page; only `twins[0].id` belongs to another language.
+    Portuguese stripped `/^es\//` from all four of its own links and still passed the old check,
+    which only asked whether `pt` appeared somewhere — so sixty guides linked to /pt/guides/pt/…
+    """
+    mine = re.findall(r"\b[gr]\.id\.replace\(/\^(\w+)\\/", template(lang))
+    assert mine, f"[{lang}] no encuentro ningún recorte de prefijo propio"
+    assert set(mine) == {lang}, f"[{lang}] recorta {sorted(set(mine) - {lang})} en sus propios enlaces"
+
+
+@pytest.mark.parametrize("lang", LANGS)
+def test_the_ask_button_goes_to_its_own_edition(lang: str) -> None:
+    r"""It read `/es?q=…` in every language but English: a German reader who finished a German
+    guide and pressed the button landed on the Spanish site with a German question typed in."""
+    m = re.search(r"href=\{`(/\w*)\?q=\$\{encodeURIComponent\(g\.data\.title\)\}`\}", template(lang))
+    assert m, f"[{lang}] no encuentro el botón de preguntar"
+    assert m.group(1) == ("/" if lang == "en" else f"/{lang}"), (
+        f"[{lang}] el botón lleva a '{m.group(1)}'"
+    )
 
 
 @pytest.mark.parametrize("lang", LANGS)
