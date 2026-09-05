@@ -4,12 +4,12 @@
 // this file is identical in every language but the code and the URL prefix.
 import Base from '../../../layouts/Base.astro';
 import { medicines, weightTable, maxDoses, formLabel, type Medicine } from '../../../dosepages';
-import { t } from '../../../i18n';
+import { t, langPrefix, LANGS } from '../../../i18n';
 
 const lang = 'hi'; const s = t(lang);
 
 export async function getStaticPaths() {
-  return medicines().map((m) => ({ params: { slug: m.slug_by['es'] }, props: { m } }));
+  return medicines().map((m) => ({ params: { slug: m.slug_by['hi'] }, props: { m } }));
 }
 
 const { m } = Astro.props as { m: Medicine };
@@ -20,6 +20,13 @@ const name = m.name_by[lang];
 const generic = d.generic[lang] ?? d.generic.en;
 const title = s.dosedrug_title.replace('{name}', name);
 const desc = s.dosedrug_desc.replace('{name}', name);
+// Every edition of this medicine, by name. The switcher in the layout derives the other
+// languages by swapping the prefix on this path, which is right for a page whose slug is the
+// same everywhere and wrong for a drug: ibuprofeno, ibuprofen, ibuprofène. It offered
+// /pt/dose/ibuprofen from the Arabic page, and fed the same wrong URLs to the hreflang tags.
+const others = Object.fromEntries(
+  LANGS.map((l) => [l, `${langPrefix(l)}/dose/${m.slug_by[l]}`]),
+) as Record<string, string>;
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'MedicalWebPage',
@@ -28,7 +35,7 @@ const jsonld = {
   audience: { '@type': 'Patient' },
 };
 ---
-<Base lang={lang} title={`${title} — PediBot`} description={desc} path={`/hi/dose/${m.slug_by[lang]}`} jsonld={jsonld}>
+<Base lang={lang} title={`${title} — PediBot`} description={desc} path={`/hi/dose/${m.slug_by[lang]}`} jsonld={jsonld} others={others}>
   <div class="narrow" style="padding:40px 18px">
     <p class="eyebrow">{s.dose_eyebrow} · {generic}</p>
     <h1 style="margin-top:8px">{title}</h1>

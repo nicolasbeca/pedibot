@@ -52,5 +52,12 @@ def test_the_map_covers_every_language_and_all_the_guides() -> None:
 def test_the_map_states_the_rules_that_make_the_site_worth_quoting() -> None:
     """If the promise ever leaves the page, it should leave this file too — loudly, not quietly."""
     text = LLMS.read_text(encoding="utf-8")
-    for claim in ("names the document it came from", "never from a language model", "it says so"):
+    # Reworded on 5-sep when the site stopped claiming that EVERY SENTENCE names its source —
+    # it never did: the answers carried one or two attributions across five sentences. This test
+    # is what noticed, which is what it is for.
+    for claim in (
+        "not in one of those documents",
+        "never from a language model",
+        "it says so",
+    ):
         assert claim in text, f"falta la regla: {claim}"
