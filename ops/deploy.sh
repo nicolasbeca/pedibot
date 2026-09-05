@@ -28,6 +28,17 @@ if [ $NO_PULL -eq 0 ]; then
       echo "   - retirando local (ya no está en el servidor): $f"; rm -f "$ROOT/$f"
     done
   fi
+  # The ops database lives ONLY on the server: the daily backup writes beside it, on the same
+  # disk, so it survives a mistake and not the machine. 384 KB holding every question ever asked.
+  # Brought down next to the guides — not a schedule, but it makes the copy exist twice.
+  mkdir -p "$ROOT/backups"
+  if $SSH "test -f /opt/pedibot/data/pedibot_ops.db"; then
+    scp -q -i "$KEY" root@$IP:/opt/pedibot/data/pedibot_ops.db \
+      "$ROOT/backups/pedibot_ops_$(date +%F).db" && \
+      echo "   copia local de la base de operaciones: backups/pedibot_ops_$(date +%F).db"
+    # thirty days of daily copies of a 384 KB file is 11 MB; older ones go
+    find "$ROOT/backups" -name 'pedibot_ops_*.db' -mtime +30 -delete 2>/dev/null || true
+  fi
 else
   echo "== skipping the pull: local web/content wins this time"
   (cd "$ROOT" && ls web/content/*/*.md 2>/dev/null | sort) > /tmp/pedibot_local_guides
