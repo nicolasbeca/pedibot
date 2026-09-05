@@ -78,7 +78,7 @@ const strings = {
     },
     donate: {
       h: 'Donate directly',
-      p: 'If PediBot has been useful and you want to help with what it costs to run, you can send whatever you like to this address. No account, no sign-up, and it changes nothing: nothing here is gated and nothing ever will be.',
+      p: 'If PediBot has been useful and you want to help with what it costs to run, you can send whatever you like. No account, no sign-up, and it changes nothing: nothing here is gated and nothing ever will be.',
       qr_alt: 'QR code of the donation address', same_on: 'The same address on:', on_network: 'On this network:', cheapest: ' · cheapest',
       copy: 'Copy address', copied: 'Copied!', open_wallet: 'Open in wallet',
       fine: "One wallet, the same address on all seven chains: send on the one you actually use and it arrives. If you have no preference, Base is the cheapest. Everything received is written on-chain and anyone can look. A donation is not a medical consultation and buys no different access.",
@@ -236,7 +236,7 @@ const strings = {
     },
     donate: {
       h: 'Donar directamente',
-      p: 'Si PediBot te ha sido útil y quieres echar una mano con lo que cuesta mantenerlo, puedes enviar lo que quieras a esta dirección. No hace falta cuenta ni registro, y no cambia nada: nada de PediBot está cerrado ni lo estará.',
+      p: 'Si PediBot te ha sido útil y quieres echar una mano con lo que cuesta mantenerlo, puedes enviar lo que quieras. No hace falta cuenta ni registro, y no cambia nada: nada de PediBot está cerrado ni lo estará.',
       qr_alt: 'Código QR de la dirección de donación', same_on: 'La misma dirección en:', on_network: 'En esta red:', cheapest: ' · la más barata',
       copy: 'Copiar dirección', copied: '¡Copiada!', open_wallet: 'Abrir en la cartera',
       fine: "Una sola cartera, la misma dirección en las siete cadenas: envía por la que uses de verdad y llegará. Si te da igual, Base es la más barata. Todo lo que entra queda escrito en la cadena y cualquiera puede verlo. Una donación no es una consulta médica ni da acceso a nada distinto.",
@@ -394,7 +394,7 @@ const strings = {
     },
     donate: {
       h: 'Faire un don direct',
-      p: "Si PediBot vous a été utile et que vous voulez aider à couvrir ce qu'il coûte, vous pouvez envoyer ce que vous voulez à cette adresse. Sans compte ni inscription, et cela ne change rien : rien ici n'est réservé et rien ne le sera.",
+      p: "Si PediBot vous a été utile et que vous voulez aider à couvrir ce qu'il coûte, vous pouvez envoyer ce que vous voulez. Sans compte ni inscription, et cela ne change rien : rien ici n'est réservé et rien ne le sera.",
       qr_alt: 'Code QR de l’adresse de don', same_on: 'La même adresse sur :', on_network: 'Sur ce réseau :', cheapest: ' · la moins chère',
       copy: 'Copier l’adresse', copied: 'Copiée !', open_wallet: 'Ouvrir dans le portefeuille',
       fine: "Un seul portefeuille, la même adresse sur les sept chaînes : envoyez sur celle que vous utilisez vraiment et cela arrivera. Si cela vous est égal, Base est la moins chère. Tout ce qui arrive est inscrit sur la chaîne et n'importe qui peut le consulter. Un don n'est pas une consultation médicale et ne donne accès à rien de différent.",
@@ -583,7 +583,7 @@ const strings = {
     },
     donate: {
       h: 'Direkt spenden',
-      p: 'Wenn PediBot Ihnen geholfen hat und Sie bei den Betriebskosten mit anpacken wollen, können Sie an diese Adresse schicken, was Sie möchten. Kein Konto, keine Anmeldung, und es ändert nichts: Hier ist nichts abgesperrt und wird es nie sein.',
+      p: 'Wenn PediBot Ihnen geholfen hat und Sie bei den Betriebskosten mit anpacken wollen, können Sie schicken, was Sie möchten. Kein Konto, keine Anmeldung, und es ändert nichts: Hier ist nichts abgesperrt und wird es nie sein.',
       qr_alt: 'QR-Code der Spendenadresse', same_on: 'Dieselbe Adresse auf:', on_network: 'Auf diesem Netzwerk:', cheapest: ' · am günstigsten',
       copy: 'Adresse kopieren', copied: 'Kopiert!', open_wallet: 'In der Wallet öffnen',
       fine: "Ein Wallet, dieselbe Adresse auf allen sieben Chains: schicken Sie über die, die Sie wirklich benutzen, und es kommt an. Wenn es Ihnen gleich ist, ist Base die günstigste. Alles, was ankommt, steht in der Blockchain und jeder kann es sehen. Eine Spende ist keine ärztliche Beratung und kauft keinen anderen Zugang.",
@@ -740,7 +740,7 @@ const strings = {
     },
     donate: {
       h: 'Поддержать напрямую',
-      p: 'Если PediBot оказался полезен и вы хотите помочь с расходами на его работу, вы можете отправить сколько захотите на этот адрес. Без аккаунта и без регистрации, и это ничего не меняет: здесь ничего не закрыто и не будет закрыто.',
+      p: 'Если PediBot оказался полезен и вы хотите помочь с расходами на его работу, вы можете отправить сколько захотите. Без аккаунта и без регистрации, и это ничего не меняет: здесь ничего не закрыто и не будет закрыто.',
       qr_alt: 'QR-код адреса для пожертвований', same_on: 'Тот же адрес в сетях:', on_network: 'В этой сети:', cheapest: ' · самая дешёвая',
       copy: 'Скопировать адрес', copied: 'Скопировано!', open_wallet: 'Открыть в кошельке',
       fine: "Один кошелёк, один и тот же адрес во всех семи сетях: отправляйте из той, которой пользуетесь, и деньги придут. Если всё равно — Base самая дешёвая. Всё, что приходит, записано в блокчейне и видно любому. Пожертвование — не медицинская консультация и не даёт особого доступа.",
@@ -897,7 +897,7 @@ const strings = {
     },
     donate: {
       h: 'تبرّع مباشرة',
-      p: 'إذا كان PediBot قد نفعك وأردت المساعدة في تكاليف تشغيله، يمكنك إرسال ما تشاء إلى هذا العنوان. بدون حساب وبدون تسجيل، وهذا لا يغيّر شيئا: لا شيء هنا محجوب ولن يكون.',
+      p: 'إذا كان PediBot قد نفعك وأردت المساعدة في تكاليف تشغيله، يمكنك إرسال ما تشاء. بدون حساب وبدون تسجيل، وهذا لا يغيّر شيئا: لا شيء هنا محجوب ولن يكون.',
       qr_alt: 'رمز الاستجابة السريعة لعنوان التبرع', same_on: 'العنوان نفسه على:', on_network: 'على هذه الشبكة:', cheapest: ' · الأرخص',
       copy: 'نسخ العنوان', copied: 'تم النسخ!', open_wallet: 'فتح في المحفظة',
       fine: "محفظة واحدة، والعنوان نفسه على الشبكات السبع: أرسل من الشبكة التي تستخدمها فعلا وسيصل. وإن لم يكن لديك تفضيل فـ Base هي الأرخص. وكل ما يصل مكتوب على السلسلة ويستطيع أي أحد رؤيته. والتبرع ليس استشارة طبية ولا يمنح أي وصول مختلف.",
@@ -1024,7 +1024,7 @@ const strings = {
     },
     donate: {
       h: "Doar diretamente",
-      p: "Se o PediBot foi útil para você e quer ajudar com o que custa mantê-lo, pode enviar o quanto quiser para este endereço. Não precisa de conta nem de cadastro, e não muda nada: nada do PediBot está fechado nem vai ficar.",
+      p: "Se o PediBot foi útil para você e quer ajudar com o que custa mantê-lo, pode enviar o quanto quiser. Não precisa de conta nem de cadastro, e não muda nada: nada do PediBot está fechado nem vai ficar.",
       qr_alt: "Código QR do endereço de doação", same_on: "O mesmo endereço em:", on_network: "Nesta rede:", cheapest: " · a mais barata",
       copy: "Copiar endereço", copied: "Copiado!", open_wallet: "Abrir na carteira",
       fine: "Uma só carteira, o mesmo endereço nas sete redes: envie pela que você realmente usa e chega. Se tanto faz, a Base é a mais barata. Tudo o que entra fica escrito na blockchain e qualquer um pode ver. Uma doação não é uma consulta médica nem dá acesso a nada diferente.",
@@ -1182,7 +1182,7 @@ const strings = {
     },
     donate: {
       h: "सीधे दान करें",
-      p: "अगर PediBot आपके काम आया और आप इसे चलाने के ख़र्च में मदद करना चाहते हैं, तो जितना चाहें इस पते पर भेज सकते हैं। न खाता चाहिए न पंजीकरण, और इससे कुछ नहीं बदलता: यहाँ कुछ भी बंद नहीं है और न होगा।",
+      p: "अगर PediBot आपके काम आया और आप इसे चलाने के ख़र्च में मदद करना चाहते हैं, तो जितना चाहें भेज सकते हैं। न खाता चाहिए न पंजीकरण, और इससे कुछ नहीं बदलता: यहाँ कुछ भी बंद नहीं है और न होगा।",
       qr_alt: "दान के पते का क्यूआर कोड", same_on: "यही पता इन पर:", on_network: "इस नेटवर्क पर:", cheapest: " · सबसे सस्ता",
       copy: "पता कॉपी करें", copied: "कॉपी हो गया!", open_wallet: "वॉलेट में खोलें",
       fine: "एक ही वॉलेट, सातों चेन पर वही पता: जिस चेन का आप सचमुच इस्तेमाल करते हैं उसी से भेजिए, पहुँच जाएगा। कोई पसंद न हो तो Base सबसे सस्ती है। जो कुछ आता है वह चेन पर लिखा जाता है और कोई भी देख सकता है। दान चिकित्सकीय परामर्श नहीं है और इससे कोई अलग पहुँच नहीं मिलती।",

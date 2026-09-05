@@ -97,7 +97,7 @@ export interface DonationLink {
 
 export const DONATION_LINKS: DonationLink[] = [
   { key: 'coffee', label: 'Buy Me a Coffee', url: null },
-  { key: 'paypal', label: 'PayPal', url: null },
+  { key: 'paypal', label: 'PayPal', url: 'https://paypal.me/nicobeca' },
 ];
 
 /** The ones actually set up. */
