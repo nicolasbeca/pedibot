@@ -73,7 +73,9 @@ def test_no_network_is_announced_without_being_deployed() -> None:
     assert entries, "no encuentro ninguna dirección en TOKENS"
     pending = [e for e in entries if e.strip() == "null"]
     assert not pending, f"{len(pending)} red(es) anunciadas sin desplegar"
-    assert len(entries) == 3, f"se esperaban tres redes, hay {len(entries)}"
+    # trimmed to Base on 5-sep: the other two deployments still exist on their chains,
+    # but three addresses on one page is three chances to send to the wrong one
+    assert len(entries) == 1, f"se esperaba una sola red, hay {len(entries)}"
 
 
 def test_the_catalogue_is_the_same_in_every_place_it_is_published() -> None:

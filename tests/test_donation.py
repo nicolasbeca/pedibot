@@ -14,8 +14,11 @@ from __future__ import annotations
 import pathlib
 import re
 
+import pytest
+
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CONFIG = ROOT / "web" / "site" / "src" / "donation.ts"
+DIST = ROOT / "web" / "site" / "dist"
 
 # addresses that must never be used to receive donations
 PDBT_CONTRACT = "0x196a67ba334dbed501e19baec47d217bb2fc15e1"
@@ -100,7 +103,8 @@ def test_the_block_is_only_built_when_there_is_an_address():
 
 def test_the_listed_networks_have_the_right_chain_ids():
     """A wrong id in the wallet link sends the donor to the wrong network. Checked against a
-    public RPC on each: the six EVM ones on 1-sep, HyperEVM on 3-sep (eth_chainId → 0x3e7)."""
+    public RPC on each: the six EVM ones on 1-sep, HyperEVM on 3-sep (eth_chainId → 0x3e7).
+    Solana left the page on 5-sep along with the second and third wallets."""
     text = CONFIG.read_text(encoding="utf-8")
     expected = {
         "Base": 8453,
@@ -110,7 +114,6 @@ def test_the_listed_networks_have_the_right_chain_ids():
         "Polygon": 137,
         "BNB Chain": 56,
         "HyperEVM": 999,
-        "Solana": 0,  # not an EVM chain id, and it never reaches a wallet link
     }
     found = dict(re.findall(r"\{\s*id:\s*(\d+),\s*name:\s*'([^']+)'", text))
     got = {name: int(cid) for cid, name in found.items()}
@@ -122,11 +125,34 @@ def test_only_one_network_is_recommended():
     assert text.count("recommended: true") == 1
 
 
-def test_the_page_no_longer_says_base_only():
-    """It did while Base was the only network listed; saying it now would be false and would
-    scare off a donor who only holds funds on Ethereum, BNB or Solana."""
-    built = ROOT / "web" / "site" / "dist" / "support" / "index.html"
-    if built.exists():
-        html = built.read_text(encoding="utf-8", errors="ignore")
-        assert "Base network only" not in html
-        assert "Ethereum" in html and "BNB Chain" in html and "Solana" in html
+def test_the_page_offers_every_chain_the_one_wallet_covers():
+    """It went from three wallets to one on 5-sep. An EVM key signs on every EVM chain, so the
+    single address now covers the seven that used to need three cards — and a donor is no longer
+    asked to choose between two addresses of ours, which is a way to get it wrong for nothing."""
+    page = DIST / "support" / "index.html"
+    if not page.exists():
+        pytest.skip("no hay build en web/site/dist")
+    html = page.read_text(encoding="utf-8")
+    for chain in ("Base", "Ethereum", "Arbitrum", "Optimism", "Polygon", "BNB Chain", "HyperEVM"):
+        assert chain in html, f"la página no ofrece {chain}"
+
+
+def test_solana_is_gone_from_the_whole_site():
+    """The deployment still exists on its chain; the site simply stops pointing at it. A stale
+    address on a donation page is money sent somewhere nobody is watching."""
+    if not DIST.exists():
+        pytest.skip("no hay build en web/site/dist")
+    guilty = [
+        f.relative_to(DIST).as_posix()
+        for f in DIST.rglob("*.html")
+        if "jqEx2Q1qFnGH7pr8kAqcdTmuaWdgwhbNUm5VQFMo5h1" in f.read_text(encoding="utf-8", errors="replace")
+    ]
+    assert not guilty, f"la dirección de Solana sigue en {guilty[:4]}"
+
+
+def test_only_one_wallet_is_offered():
+    """Fewer addresses is fewer ways to send money to a chain nobody is watching."""
+    text = CONFIG.read_text(encoding="utf-8")
+    start = text.index("export const DONATION_WALLETS")
+    body = text[start : text.index(chr(10) + "];", start)]
+    assert body.count("address:") == 1, "se esperaba una sola cartera"

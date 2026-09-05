@@ -1,5 +1,10 @@
 /**
- * Where PDBT lives, one entry per network (3-sep-2026).
+ * Where PDBT lives (3-sep-2026; trimmed to Base on 5-sep by the operator).
+ *
+ * It went out on three chains and the site advertised all three. It now names only Base:
+ * the Solana and HyperEVM deployments still exist on their chains, but three addresses on a
+ * page is three chances for a reader to send money to the wrong one, and the token is not
+ * what this site is for.
  *
  * The token was the funding mechanism from the start, and it is going to three networks so that
  * someone who wants to back the project can do it from the chain they already use. The site used
@@ -34,32 +39,6 @@ export const TOKENS: TokenDeployment[] = [
     address: '0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1',
     explorer: 'https://basescan.org/token/0x196A67BA334DbeD501E19BAEc47D217BB2FC15E1',
     buy: 'https://app.uniswap.org/explore/tokens/base/0x196a67ba334dbed501e19baec47d217bb2fc15e1',
-  },
-  {
-    // Launched 3-sep-2026. Verified against the chain before publishing, not against the UI: the
-    // account is owned by the SPL Token program, is a mint of 1e9 at 6 decimals, and BOTH
-    // authorities are renounced — `mintAuthority` and `freezeAuthority` are null, so no more can
-    // ever be printed and no holder's balance can be frozen. Jupiter reports name "PediBot",
-    // symbol PDBT, launchpad jup-studio.
-    network: 'Solana',
-    platform: 'Jupiter Studio',
-    ticker: 'PDBT',
-    address: 'EUiC7nSriqfASMbEe5ZwkD6P4j4bKH5eLoMTajr4jups',
-    explorer: 'https://solscan.io/token/EUiC7nSriqfASMbEe5ZwkD6P4j4bKH5eLoMTajr4jups',
-    buy: 'https://jup.ag/tokens/EUiC7nSriqfASMbEe5ZwkD6P4j4bKH5eLoMTajr4jups',
-  },
-  {
-    // Launched 3-sep-2026, tx 0xd362e52f…b27c58d. The address was read off the creation receipt
-    // and checked against the token itself (name "PediBot", symbol PDBT, 6 decimals, 1e9 supply)
-    // before being published — not taken from the launchpad's UI, which took an hour to index it.
-    // The link goes to the LiquidLaunch page rather than a block explorer: it is the one URL that
-    // was verified to load, and it is where a reader can actually see and buy the token.
-    network: 'HyperEVM',
-    platform: 'LiquidLaunch',
-    ticker: 'PDBT',
-    address: '0x4a2caac88e85cc858a6265e773fc8db5aa40b5e5',
-    explorer: 'https://liquidlaunch.app/token/0x4a2caac88e85cc858a6265e773fc8db5aa40b5e5',
-    buy: 'https://liquidlaunch.app/token/0x4a2caac88e85cc858a6265e773fc8db5aa40b5e5',
   },
 ];
 

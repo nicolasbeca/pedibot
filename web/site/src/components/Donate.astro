@@ -7,20 +7,28 @@
  * reason to break that promise. It also means this works with MetaMask, Rabby, Coinbase Wallet
  * or a phone camera without us knowing who donated — which is the point.
  */
-import { donationWallets, donationQr, donationUri } from '../donation';
+import { donationWallets, donationQr, donationUri, liveLinks } from '../donation';
 import { t, type Lang } from '../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const T = t(lang).donate;
 const wallets = donationWallets();
+const links = liveLinks();
 ---
-{wallets.length > 0 && (
+{(wallets.length > 0 || links.length > 0) && (
   <section class="donate">
     <h2>{T.h}</h2>
     <p>
       {T.p}
     </p>
+    {links.length > 0 && (
+      <p class="links">
+        {links.map((l) => (
+          <a class="btn btn-primary" href={l.url!} target="_blank" rel="noopener">{l.label} ↗</a>
+        ))}
+      </p>
+    )}
     {wallets.map((w) => (
       <div class="card">
         <div class="qr"><img src={donationQr(w.key)} alt={T.qr_alt} width="132" height="132" loading="lazy" /></div>
@@ -82,6 +90,7 @@ const wallets = donationWallets();
 )}
 
 <style>
+  .links { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 18px; }
   .donate { margin-top: 34px; }
   .donate .card + .card { margin-top: 12px; }
   .donate .card {

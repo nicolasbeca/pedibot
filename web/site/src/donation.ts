@@ -31,8 +31,9 @@ export interface DonationChain {
 
 export interface DonationWallet {
   key: string;
-  /** 'evm' can open a wallet through EIP-681; 'solana' can only offer the bare address. */
-  kind: 'evm' | 'solana';
+  /** Only EVM now. The Solana card was retired on 5-sep; the type stopped naming a branch
+   *  that no longer exists, because dead code that claims a capability is what rots. */
+  kind: 'evm';
   address: string;
   /** The networks this address can receive on. */
   chains: DonationChain[];
@@ -58,25 +59,11 @@ export const DONATION_WALLETS: DonationWallet[] = [
       { id: 10, name: 'Optimism', coin: 'ETH', recommended: false },
       { id: 137, name: 'Polygon', coin: 'POL', recommended: false },
       { id: 56, name: 'BNB Chain', coin: 'BNB', recommended: false },
+      // Added 5-sep when the separate HyperEVM wallet was retired: the same key signs here
+      // too, and asking a donor to choose between two of our own addresses only creates a
+      // way to get it wrong.
+      { id: 999, name: 'HyperEVM', coin: 'HYPE', recommended: false },
     ],
-  },
-  {
-    // HyperEVM has its own wallet, not the one above. The chain id was read from the network
-    // itself (eth_chainId → 0x3e7 = 999) instead of remembered, and eth_getCode → 0x, so it is
-    // an ordinary wallet.
-    key: 'hyperevm',
-    kind: 'evm',
-    address: '0x16364F3D20d692b25CF9829965f2dBE9a33abD8B',
-    defaultChainId: 999,
-    chains: [{ id: 999, name: 'HyperEVM', coin: 'HYPE', recommended: false }],
-  },
-  {
-    // Solana is not EVM: nothing sent to the addresses above would arrive. Checked on mainnet —
-    // owned by the System Program and not executable, i.e. an ordinary wallet.
-    key: 'solana',
-    kind: 'solana',
-    address: 'jqEx2Q1qFnGH7pr8kAqcdTmuaWdgwhbNUm5VQFMo5h1',
-    chains: [{ id: 0, name: 'Solana', coin: 'SOL', recommended: false }],
   },
 ];
 
@@ -90,8 +77,28 @@ export const donationLink = (address: string, chainId: number) => `ethereum:${ad
 /** Where a wallet's QR lives. Written by scripts/make_donation_qr.py. */
 export const donationQr = (key: string) => `/donation-qr-${key}.svg`;
 
-/** What the QR encodes: a wallet-openable URI where one exists, the bare address otherwise. */
+/** What the QR encodes: a wallet-openable URI. */
 export function donationUri(w: DonationWallet): string {
-  if (w.kind === 'evm') return donationLink(w.address, w.defaultChainId ?? w.chains[0].id);
-  return `solana:${w.address}`;
+  return donationLink(w.address, w.defaultChainId ?? w.chains[0].id);
 }
+
+/** Ways to give that do not need a wallet.
+ *
+ *  Most people who would send five euros are not going to install one, and telling them to is
+ *  telling them not to bother. `url: null` means not set up yet and the card is not rendered:
+ *  the same rule the token list follows for an address that does not exist. A button that goes
+ *  nowhere is worse than no button.
+ */
+export interface DonationLink {
+  key: string;
+  label: string;
+  url: string | null;
+}
+
+export const DONATION_LINKS: DonationLink[] = [
+  { key: 'coffee', label: 'Buy Me a Coffee', url: null },
+  { key: 'paypal', label: 'PayPal', url: null },
+];
+
+/** The ones actually set up. */
+export const liveLinks = (): DonationLink[] => DONATION_LINKS.filter((l) => l.url !== null);
