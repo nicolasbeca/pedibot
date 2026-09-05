@@ -16,6 +16,49 @@ _VACC = re.compile(
 )
 COUNTRY_ALIASES = {"UK": "GB", "EN": "GB", "USA": "US", "SPAIN": "ES", "ESPAÑA": "ES"}
 
+#: Country names as a parent writes them, in the eight languages of the site. Used ONLY to read a
+#: country the question states out loud — never to infer one from the language. A French speaker
+#: may be in Belgium, Canada or Switzerland, and handing a Belgian family the French calendar
+#: would be worse than saying nothing, because it would look right.
+COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
+    "ES": ("españa", "espana", "spain", "espagne", "spanien", "испани", "إسبانيا", "espanha", "स्पेन"),
+    "FR": ("francia", "france", "frankreich", "франци", "فرنسا", "frança", "फ़्रांस", "फ्रांस"),
+    "DE": (
+        "alemania", "germany", "allemagne", "deutschland", "герман", "ألمانيا", "alemanha",
+        "जर्मनी",
+    ),
+    "GB": (
+        "reino unido", "united kingdom", "royaume-uni", "vereinigtes königreich",
+        "великобритани", "المملكة المتحدة", "inglaterra", "england", "angleterre",
+        "यूनाइटेड किंगडम",
+    ),
+    "US": (
+        "estados unidos", "united states", "états-unis", "etats-unis", "vereinigte staaten",
+        "сша", "الولايات المتحدة", "eeuu", "अमेरिका", "usa",
+    ),
+    "PT": ("portugal", "португали", "البرتغال", "पुर्तगाल"),
+    "BR": (
+        "brasil", "brazil", "brésil", "bresil", "brasilien", "бразили", "البرازيل",
+        "ब्राज़ील", "ब्राजील",
+    ),
+}
+
+
+def country_in_question(text: str) -> str | None:
+    """The country the question names out loud, or None.
+
+    Longest name wins, so "reino unido" is not read as a shorter name that happens to sit inside
+    it. Only consulted when the reader picked no country: a country they wrote themselves beats a
+    guess, and there is no guess to fall back on.
+    """
+    low = text.lower()
+    best: tuple[int, str] | None = None
+    for code, names in COUNTRY_IN_TEXT.items():
+        for name in names:
+            if name in low and (best is None or len(name) > best[0]):
+                best = (len(name), code)
+    return best[1] if best else None
+
 
 @dataclass(frozen=True)
 class Slot:

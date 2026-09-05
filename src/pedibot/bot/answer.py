@@ -15,7 +15,12 @@ from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME
 from pedibot.bot.triage import LEVEL_ORDER, Triage, TriageResult
-from pedibot.bot.vaccines import Vaccines, format_answer, is_vaccine_question
+from pedibot.bot.vaccines import (
+    Vaccines,
+    country_in_question,
+    format_answer,
+    is_vaccine_question,
+)
 from pedibot.index.store import Hit
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
@@ -210,6 +215,9 @@ class Answer:
     # The guide written from the sources this answer used. None when nothing overlaps: a guide
     # that is merely on a related subject is not worth putting under a health answer.
     guide: GuideLink | None = None
+    # Why the first draft was thrown away, when it was. Empty otherwise. Kept because "22% of
+    # answers are regenerated" is a number you cannot act on without knowing which check fired.
+    problems: list[str] = field(default_factory=list)
 
     @property
     def clean_text(self) -> str:
@@ -620,7 +628,13 @@ class Engine:
             return Answer(text, tr.level, None, [], lang, None, None, [], "dose_calculator")
 
         if self.vaccines is not None and tr.level == "routine" and is_vaccine_question(query):
-            c = self.vaccines.resolve_country(country)
+            # "Quels vaccins pour un bébé de 3 mois EN FRANCE ?" used to fall through to the
+            # corpus and come back as "I have no reliable information", with the country sitting
+            # in the sentence the whole time. Read only when the reader picked none, and only a
+            # name they wrote themselves — never inferred from the language.
+            c = self.vaccines.resolve_country(country) or self.vaccines.resolve_country(
+                country_in_question(context_text)
+            )
             if c is not None:
                 text = format_answer(self.vaccines, c, tr.age_months, lang)
                 return Answer(text, tr.level, None, [], lang, None, None, [], "vaccine_schedule")
@@ -703,6 +717,7 @@ class Engine:
                     [h.chunk.chunk_id for h in hits],
                     "fallback",
                     extra,
+                    problems=problems,
                 )
             result = retry
 
@@ -731,4 +746,5 @@ class Engine:
             verification,
             extra,
             guide=guide,
+            problems=problems,
         )

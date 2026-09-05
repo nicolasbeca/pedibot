@@ -11,6 +11,7 @@ Metrics:
 
 from __future__ import annotations
 
+import collections
 import json
 import re
 from dataclasses import dataclass, field
@@ -192,6 +193,7 @@ class LLMCase:
     latency_ms: int
     tokens_in: int
     tokens_out: int
+    problems: list[str] = field(default_factory=list)
     judge_verdict: str | None = None
     judge_notes: str = ""
     judge_issues: list[str] = field(default_factory=list)
@@ -212,6 +214,15 @@ class LLMReport:
             "drafted": len(drafted),
             "citation_validity": _ratio([c.verification != "fallback" for c in drafted]),
             "regenerated_rate": _ratio([c.verification == "regenerated" for c in drafted]),
+            # which check is costing the second call, so the rate is actionable and not just a
+            # number: each problem string starts with its name
+            "regenerated_because": dict(
+                collections.Counter(
+                    p.split(" ")[0].split(":")[0].rstrip(":")
+                    for c in self.cases
+                    for p in c.problems
+                ).most_common()
+            ),
             "with_sources": _ratio([c.n_sources > 0 for c in ok]),
             "cost_total_usd": round(sum(c.cost_usd for c in self.cases), 5),
             "cost_mean_usd": round(sum(c.cost_usd for c in drafted) / len(drafted), 6)
@@ -250,6 +261,7 @@ def run_llm_eval(
             a.llm.tokens_in if a.llm else 0,
             a.llm.tokens_out if a.llm else 0,
             answer_text=a.text,
+            problems=list(a.problems),
         )
         if use_judge and a.verification in ("ok", "regenerated") and a.chunk_ids:
             from pedibot.bot.judge import judge

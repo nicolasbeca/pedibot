@@ -122,7 +122,15 @@ def test_the_prompt_asks_for_the_organisation_once_per_source() -> None:
     statement, and that is what makes an answer checkable."""
     _, prompt = load_prompt()
     low = prompt.lower()
-    assert "not in every sentence" in low
+    # The rule was two instructions pulling apart — "the first sentence must name one" and "not in
+    # every sentence" — and the model split the difference: 9 answers in 99 named nobody and 6
+    # named the same body three times. One instruction now, and it says the number.
+    # Measured, not guessed. Two instructions pulling apart ("the first sentence must name one"
+    # and "not in every sentence") gave 15% retries. "Name each one EXACTLY ONCE" read as a cap
+    # and gave 35%, all of them answers naming nobody. What the rule needs is a hard floor said
+    # first and the ceiling said after it, which is what these two lines pin.
+    assert "must name it in words" in low, "el suelo dejó de ser obligatorio"
+    assert "do not name it again" in low, "falta el techo"
     assert "square brackets" in low, "el marcador [n] tiene que seguir siendo obligatorio"
 
 
