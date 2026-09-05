@@ -40,7 +40,7 @@ See a GP if:
 - You wear contact lenses and have conjunctivitis symptoms plus spots on your eyelids — you might be allergic to the lenses [3].
 - Symptoms have not cleared up within 7 days [3].
 
-Ask for an urgent GP appointment or get medical advice if you have:
+Ask your doctor for an urgent appointment or get medical advice if you have:
 - Pain in your eyes [3]
 - Sensitivity to light [3]
 - Changes in your vision, like wavy lines or flashing [3]

@@ -44,7 +44,7 @@ See a GP if your baby [5]:
 - Is older than 1 and still has reflux.
 - Is not gaining weight or is losing weight.
 
-Ask for an urgent GP appointment or get medical advice if your baby [5]:
+Ask your doctor for an urgent appointment or get medical advice if your baby [5]:
 - Has vomit that’s green or yellow, or has blood in it.
 - Is projectile vomiting (being sick with more force than usual).
 - Has blood in their poo.

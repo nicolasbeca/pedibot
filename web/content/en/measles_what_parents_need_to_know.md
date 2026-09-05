@@ -54,7 +54,7 @@ Stay off nursery, school, or work for at least 4 days from when the rash first a
 You are infectious from when you first have symptoms (around 4 days before the rash appears) until 4 days after you get the rash [5].
 
 ## When to see a doctor or go to the emergency department
-Ask for an urgent GP appointment or get medical advice if [6]:
+Ask your doctor for an urgent appointment or get medical advice if [6]:
 - You think you or your child may have measles [6]
 - Your child is under 1 year old and has come into contact with someone who has measles [6]
 - You have been in close contact with someone who has measles and you are pregnant or have a weakened immune system [6]

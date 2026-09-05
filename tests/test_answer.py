@@ -44,7 +44,7 @@ def engine_factory(tmp_path: Path, config_dir):
         [
             _chunk(
                 "seup_fiebre#que_hacer#1",
-                "La fiebre no es peligrosa por sí misma. Ofrezca líquidos y no abrigue en exceso. Acuda a urgencias si el niño tiene menos de 3 meses.",
+                "La fiebre no es peligrosa por sí misma, según la SEUP. Ofrezca líquidos y no abrigue en exceso. Acuda a urgencias si el niño tiene menos de 3 meses.",
                 url="https://seup.org/x.pdf",
             ),
             _chunk(
@@ -96,7 +96,7 @@ def test_verify_rules():
 
 
 def test_routine_answer_with_sources(engine_factory):
-    eng, llm = engine_factory("La fiebre no es peligrosa por sí misma [1]. Ofrece líquidos [1].")
+    eng, llm = engine_factory("La fiebre no es peligrosa por sí misma, según la SEUP [1]. Ofrece líquidos [1].")
     a = eng.ask("mi hijo de 4 años tiene fiebre, ¿qué hago?", country="ES")
     assert a.level == "routine" and a.banner is None and a.verification == "ok"
     assert a.sources and a.sources[0].startswith("[1] SEUP") and "seup.org" in a.sources[0]
@@ -113,7 +113,7 @@ def test_fever_without_age_asks(engine_factory):
 
 
 def test_emergency_banner_first_with_country_numbers(engine_factory):
-    eng, _ = engine_factory("Ofrezca suero [1].")
+    eng, _ = engine_factory("Ofrezca suero, según la SEUP [1].")
     a = eng.ask("my 3 year old is vomiting and having a seizure", country="US")
     assert a.level == "emergency"
     assert a.banner and a.banner.startswith("🚨 Call 911")
@@ -141,10 +141,10 @@ def test_bad_citation_triggers_regeneration_then_fallback(engine_factory):
 
 
 def test_regeneration_succeeds(engine_factory):
-    answers = iter(["Sin cita.", "Con cita [1]."])
+    answers = iter(["Sin cita.", "Con cita de la SEUP [1]."])
     eng, llm = engine_factory(lambda s, u: next(answers))
     a = eng.ask("mi hijo de 4 años tiene fiebre")
-    assert a.verification == "regenerated" and a.text == "Con cita [1]."
+    assert a.verification == "regenerated" and a.text == "Con cita de la SEUP [1]."
 
 
 def test_dose_number_without_table_is_rejected(engine_factory):
@@ -158,7 +158,7 @@ def test_dose_number_without_table_is_rejected(engine_factory):
 
 
 def test_english_query_reaches_spanish_sources(engine_factory):
-    eng, _ = engine_factory("Fever is not dangerous by itself [1].")
+    eng, _ = engine_factory("Fever is not dangerous by itself, according to the SEUP [1].")
     a = eng.ask("my 4 year old has a fever, what should I do?", country="GB")
     assert a.verification == "ok" and "fiebre" in a.expansion
     assert "Sources:" not in a.render() and "Sources:" in a.render_debug()
@@ -201,7 +201,7 @@ def test_prompt_carries_age_context_for_young_infants(engine_factory):
 
 
 def test_triage_rule_source_is_injected_as_first_hit(engine_factory):
-    eng, llm = engine_factory("Ofrezca suero [1].")
+    eng, llm = engine_factory("Ofrezca suero, según la SEUP [1].")
     a = eng.ask("my 3 year old is vomiting and having a seizure", country="US")
     # the seizure rule cites seup_acudir_urgencias, absent from the tiny test index → no injection,
     # but the vomiting red-flag chunk (seup_vomitos) must still be among the hits
@@ -210,7 +210,7 @@ def test_triage_rule_source_is_injected_as_first_hit(engine_factory):
 
 
 def test_history_gives_age_and_context_to_follow_up(engine_factory):
-    eng, llm = engine_factory("Ofrezca suero [1].")
+    eng, llm = engine_factory("Ofrezca suero, según la SEUP [1].")
     hist = [
         {"role": "user", "text": "mi hijo de 4 años tiene fiebre desde ayer"},
         {"role": "assistant", "text": "La fiebre no es peligrosa [1]."},

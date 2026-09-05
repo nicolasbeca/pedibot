@@ -44,7 +44,7 @@ To help prevent UTIs from happening or returning, you can try these things:
 There is no evidence that cranberry drinks or products help ease symptoms or treat a UTI if the infection has already started [2]. If a doctor thinks your child has a UTI, they may do a urine test, although this is not always needed [4]. They may offer self-care advice, recommend a painkiller, or give a prescription for a short course of antibiotics [4]. Sometimes they may ask you to wait 48 hours to see if symptoms go away on their own [4]. It is important to take all the medicine you are prescribed, even if your child starts to feel better [4].
 
 ## When to see a doctor or go to the emergency department
-Ask for an urgent GP appointment or get medical advice if your child is aged 15 or younger and you think they may have a UTI [7]. You should also seek urgent advice if:
+Ask your doctor for an urgent appointment or get medical advice if your child is aged 15 or younger and you think they may have a UTI [7]. You should also seek urgent advice if:
 
 - Your child has a very high or low temperature, feels hot or cold, or is shivering [7].
 - Symptoms get worse quickly, or do not improve within 48 hours of starting treatment [7].

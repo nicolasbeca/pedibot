@@ -51,7 +51,7 @@ If symptoms are no better after 10 minutes and an ambulance has not arrived, use
 
 Get medical help right away if your child has warning signs of a severe attack, including severe coughing, serious breathing problems, or turning very pale or blue in the face, lips, or fingernails [8]. If a severe attack does not get better with short-term relief medicines, get medical help right away [3].
 
-Ask for an urgent GP appointment if:
+Ask your doctor for an urgent appointment if:
 - You have had an asthma attack and have recovered. Even if you feel better, see a GP within 2 days to discuss treatment and prevent another attack [1].
 - Your child has asthma symptoms [5].
 - Treatments are not helping, you need to use the inhaler more often, or you need advice about using the inhaler [5].

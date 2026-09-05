@@ -57,7 +57,7 @@ See a GP if [5]:
 - A child under 1 year old has an insect bite or sting [5].
 - You think your child was bitten by a tick and has flu-like symptoms, or a round or oval rash that may look like a bullseye [5].
 
-Ask for an urgent GP appointment or get medical advice if [5]:
+Ask your doctor for an urgent appointment or get medical advice if [5]:
 
 - Symptoms get worse or are not getting better [5].
 - The sting was in the mouth, throat, or near the eyes [5].

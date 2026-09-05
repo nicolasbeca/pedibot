@@ -43,7 +43,7 @@ Do not do these things:
 To prevent sunburn in the future, protect your child by staying out of the sun when it is strongest, between 10 a.m. and 2 p.m. [5]. Use sunscreen with an SPF of 15 or higher [5]. Wear protective clothing and wraparound sunglasses that provide 100% UV ray protection [5]. Avoid sunlamps and tanning beds [5]. Check your skin regularly for changes in the size, shape, colour, or feel of birthmarks, moles, and spots [5].
 
 ## When to see a doctor or go to the emergency department
-Ask for an urgent GP appointment or get medical advice if your child has been out in the sun and has any of these signs [3]:
+Ask your doctor for an urgent appointment or get medical advice if your child has been out in the sun and has any of these signs [3]:
 
 - Skin is blistered or swollen [3].
 - Temperature is very high, or they feel hot, cold, or shivery [3].

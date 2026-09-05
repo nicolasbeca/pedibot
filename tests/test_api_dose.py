@@ -49,7 +49,7 @@ def client(tmp_path: Path, config_dir):
             taxonomy=Taxonomy(config_dir / "taxonomia.yaml"),
         ),
         Triage(config_dir / "red_flags.yaml"),
-        FakeProvider("x [1]."),
+        FakeProvider("Según la SEUP, x [1]."),
         EmergencyNumbers(config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(config_dir / "drugs.yaml"),
     )

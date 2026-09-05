@@ -249,7 +249,7 @@ class EmergencyNumbers:
         return self.raw.get(c) or self.raw["default"]
 
 
-def load_prompt(version: str = "answer_v3") -> tuple[str, str]:
+def load_prompt(version: str = "answer_v4") -> tuple[str, str]:
     text = (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
     return version, text
 
@@ -391,6 +391,68 @@ def _format_sources(hits: list[Hit]) -> str:
     return "\n\n".join(lines)
 
 
+#: Numbers and services that only work in the country the source was written in. A parent reading
+#: an English answer may be anywhere, and "call NHS 111" is worse than no number at all: it costs
+#: them the seconds they spend finding out it does not ring. The prompt forbids these in capital
+#: letters and the model prints them anyway, so the draft is refused and rewritten instead of
+#: asked nicely. Shared with the guide generator so the two lists cannot drift.
+FOREIGN_SERVICE = re.compile(
+    r"\b999\b|\b911\b|NHS\s*111|(?<![\d.,])111(?![\d.,])|\bA&E\b|GP surgery|GP appointment|"
+    r"1-800-222-1222|91\s?562\s?04\s?20"
+)
+
+
+def foreign_service_problem(text: str) -> str | None:
+    """The verification message for a text that sends the reader somewhere they cannot go."""
+    m = FOREIGN_SERVICE.search(text)
+    if not m:
+        return None
+    return (
+        f"foreign_service ({m.group(0)!r}): never send the reader to a number or service that"
+        " only exists where the source was written. Write 'your doctor', 'your local emergency"
+        " number' or 'the emergency department'."
+    )
+
+
+#: The few organisations whose name is not the same word in every language. The rest are acronyms
+#: (SEUP, NHS, CDC, RKI, AEP, AEMPS) or a product name (MedlinePlus) and travel unchanged.
+ORG_ALIASES: dict[str, tuple[str, ...]] = {
+    "WHO": ("OMS", "ВОЗ", "منظمة الصحة العالمية", "Weltgesundheitsorganisation",
+            "विश्व स्वास्थ्य संगठन"),
+    "Gouvernement du Canada": ("Canada", "Canadá", "Kanada", "Канада", "كندا", "कनाडा"),
+    "Junta de Andalucía": ("Andalucía", "Andalusia", "Andalusien", "Andaluzia"),
+    "Ministerio de Sanidad": ("Ministerio de Sanidad", "Ministry of Health", "ministère",
+                              "Gesundheitsministerium", "Минздрав", "وزارة الصحة",
+                              "स्वास्थ्य मंत्रालय"),
+}
+
+
+def _org_mentions(text: str, hits: list[Hit]) -> dict[str, int]:
+    """How many times the answer names each body it cited, counting its aliases as the same one."""
+    cited = {int(n) for n in _CIT.findall(text)}
+    low = text.lower()
+    out: dict[str, int] = {}
+    for n in sorted(cited):
+        if not 1 <= n <= len(hits):
+            continue
+        org = hits[n - 1].chunk.org
+        if org in out:
+            continue
+        out[org] = sum(low.count(name.lower()) for name in (org, *ORG_ALIASES.get(org, ())))
+    return out
+
+
+def names_a_source(text: str, hits: list[Hit]) -> bool:
+    """Does the answer say, in words, where any of what it cited came from?"""
+    counts = _org_mentions(text, hits)
+    return any(counts.values()) if counts else True
+
+
+#: Naming the SAME body this many times is where an answer stops reading like prose and starts
+#: reading like a deposition. Two different bodies twice each is fine and often right.
+MAX_SAME_ORG = 2
+
+
 def verify(text: str, hits: list[Hit]) -> list[str]:
     """Return a list of problems (empty = ok)."""
     problems: list[str] = []
@@ -406,6 +468,34 @@ def verify(text: str, hits: list[Hit]) -> list[str]:
     return problems
 
 
+def verify_answer(text: str, hits: list[Hit]) -> list[str]:
+    """`verify` plus the guard on services that only exist in one country.
+
+    Kept separate because an article is verified on a filtered copy of its body — its sources are
+    quoted verbatim in a block that legitimately contains "NHS 111" — while an answer is checked
+    on exactly what the model wrote. The banner above the answer is ours, carries the reader's own
+    emergency number, and is never part of this.
+    """
+    problems = verify(text, hits)
+    found = foreign_service_problem(text)
+    if found:
+        problems.append(found)
+    counts = _org_mentions(text, hits)
+    if not names_a_source(text, hits):
+        problems.append(
+            "no_organisation_named: name the organisation in words the first time you use a"
+            " source (SEUP, NHS, WHO, CDC, MedlinePlus…), with the fact first"
+        )
+    worst = max(counts.items(), key=lambda kv: kv[1], default=("", 0))
+    if worst[1] > MAX_SAME_ORG:
+        problems.append(
+            f"repeated_attribution ({worst[0]} named {worst[1]} times): name each source once,"
+            " when you first use it. Repeating it in sentence after sentence reads like a"
+            " deposition, not like someone helping a worried parent."
+        )
+    return problems
+
+
 class Engine:
     def __init__(
         self,
@@ -413,7 +503,7 @@ class Engine:
         triage: Triage,
         llm: LLMProvider,
         numbers: EmergencyNumbers,
-        prompt_version: str = "answer_v3",
+        prompt_version: str = "answer_v4",
         drugs: DrugCatalog | None = None,
         vaccines: Vaccines | None = None,
         guides: GuideIndex | None = None,
@@ -547,7 +637,7 @@ class Engine:
             f"PARENT MESSAGE:\n{query}\n\nSOURCES:\n{_format_sources(hits)}"
         )
         result = self.llm.complete(self.prompt, user, temperature=0.2)
-        problems = verify(result.text, hits)
+        problems = verify_answer(result.text, hits)
         verification = "ok"
         if problems:
             verification = "regenerated"
@@ -559,6 +649,11 @@ class Engine:
                 user,
                 temperature=0.0,
             )
+            # `verify`, not `verify_answer`: only the SAFETY checks can send an answer to the
+            # fallback. A style problem — the same body named three times, nobody named at all —
+            # gets its one retry and then ships as written. Turning a medically sound answer into
+            # "I have no reliable information on this" because it reads stiffly would be a far
+            # worse failure than the stiffness.
             if verify(retry.text, hits):
                 return Answer(
                     NO_SOURCE[lang],

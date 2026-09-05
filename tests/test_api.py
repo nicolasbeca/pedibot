@@ -51,7 +51,7 @@ def client(tmp_path: Path, config_dir):
         ],
         db,
     )
-    llm = FakeProvider("La fiebre no es peligrosa [1].")
+    llm = FakeProvider("La fiebre no es peligrosa, según la SEUP [1].")
     engine = Engine(
         Retriever(
             Index(db),

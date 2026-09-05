@@ -246,10 +246,39 @@ def render(con: sqlite3.Connection, days: int) -> str:
             + f"<span style=\"margin-left:auto\">{flag}</span></div>"
             f'<p class="q"><b>{html.escape(str(r["question"]))}</b></p>'
             f"<details><summary>ver la respuesta</summary>"
-            f"<pre>{html.escape(str(r['answer']))}</pre></details></div>"
+            f"<pre>{html.escape(_split_answer(str(r['answer']))[0])}</pre>"
+            + (
+                f"<details class=\"src\"><summary>{len(_split_answer(str(r['answer']))[1])}"
+                " fuentes</summary><pre>"
+                + html.escape("\n".join(_split_answer(str(r["answer"]))[1]))
+                + "</pre></details>"
+                if _split_answer(str(r["answer"]))[1]
+                else ""
+            )
+            + "</details></div>"
         )
     h.append("</div></main></body></html>")
     return "".join(h)
+
+
+#: The record is stored as `Answer.render_debug()`: answer, then "Fuentes:"/"Sources:" with one
+#: numbered line per document, then the legal line. Here the answer is the point — the sources are
+#: usually longer than it, and the legal line is identical on every card.
+_SOURCE_HEADS = ("Fuentes:", "Sources:", "Quellen:", "Fontes:", "Источники:", "المصادر:", "स्रोत:")
+
+
+def _split_answer(raw: str) -> tuple[str, list[str]]:
+    """(what PediBot said, one line per source)."""
+    body, sources = raw, []
+    for head in _SOURCE_HEADS:
+        marker = "\n\n" + head + "\n"
+        if marker in body:
+            body, rest = body.split(marker, 1)
+            sources = [ln for ln in rest.splitlines() if ln.startswith("[")]
+            break
+    # the legal line rides at the end of every record and says the same thing every time
+    body = body.split("\n\nℹ️ ")[0]
+    return body.strip(), sources
 
 
 def make_router(con_factory: Any) -> APIRouter:

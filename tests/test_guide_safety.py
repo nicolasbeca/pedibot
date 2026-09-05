@@ -20,13 +20,12 @@ CONTENT = ROOT / "web" / "content"
 
 import pytest  # noqa: E402
 
-from pedibot.bot.answer import SUPPORTED_LANGS  # noqa: E402
-
 # Numbers and national brands a reader in another country cannot use. 112 is deliberately absent:
 # it is the shared European number, and where a guide names it, it names its own country too.
 # The same pattern the generator refuses drafts with, imported rather than copied: a guard and
 # the check that proves it works must not be two lists that can drift.
-from pedibot.publish.articles import FOREIGN_SERVICE as FORBIDDEN  # noqa: E402
+from pedibot.bot.answer import FOREIGN_SERVICE as FORBIDDEN  # noqa: E402
+from pedibot.bot.answer import SUPPORTED_LANGS  # noqa: E402
 
 
 def _prose(path: pathlib.Path) -> list[tuple[int, str]]:
@@ -34,7 +33,10 @@ def _prose(path: pathlib.Path) -> list[tuple[int, str]]:
     out = []
     for i, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
         stripped = line.strip()
-        if stripped.startswith('- "[') or stripped.startswith("*"):
+        # `- "[n] …` is the frontmatter list, `[n] …` the rendered block at the foot. Both quote
+        # the document verbatim, section title included, and a section can legitimately be called
+        # "What happens at your GP appointment" — which is the source's words, not our advice.
+        if stripped.startswith(('- "[', "*", "[")):
             continue
         out.append((i, line))
     return out

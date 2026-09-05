@@ -57,7 +57,7 @@ Non-urgent advice: See a GP if:
 
 Hand, foot and mouth disease can be spread to other people [1]. Check with your doctor's surgery before going [1]. They may suggest a phone consultation [1].
 
-Urgent advice: Ask for an urgent GP appointment or get medical advice if:
+Urgent advice: Ask your doctor for an urgent appointment or get medical advice if:
 - You or your child has a very high temperature, or feels hot, cold or shivery [1]
 - You're worried about your child's hand, foot and mouth disease symptoms [1]
 - Your child has hand, foot and mouth disease and is peeing less than usual (they may be becoming dehydrated) [1]

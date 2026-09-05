@@ -44,7 +44,7 @@ There are also things you should not do:
 ## When to see a doctor or go to the emergency department
 See a pharmacist for non-urgent advice if your child is aged 1 to 17 years and you think they have an ear infection, as a pharmacist can give children the same treatments as a GP [1]. See a GP if your child is under 12 months old and you think they have an ear infection, if earache does not get better after 3 days, or if you or your child keep getting ear infections [1].
 
-Ask for an urgent GP appointment or get medical advice now if you or your child have symptoms of an ear infection and:
+Ask your doctor for an urgent appointment or get medical advice now if you or your child have symptoms of an ear infection and:
 - Feel generally unwell
 - Have a very high temperature, or feel hot, cold, or shivery
 - Have swelling around the ear

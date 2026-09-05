@@ -58,7 +58,7 @@ See a GP if:
 - You have tried treating the headache yourself and it is not getting better or is getting worse
 - Your child regularly gets headaches [1]
 
-Ask for an urgent GP appointment or get medical advice if your child has a headache and:
+Ask your doctor for an urgent appointment or get medical advice if your child has a headache and:
 - Vision or eye problems
 - The headache is triggered or made worse by coughing, sneezing, bending down or exercising
 - Your child is being sick (vomiting)
