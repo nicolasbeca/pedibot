@@ -498,6 +498,18 @@ def write_article(
 ) -> tuple[Path, Path]:
     out = content_dir / a.lang / f"{a.slug}.md"
     out.parent.mkdir(parents=True, exist_ok=True)
+    # A slug that collapses writes every guide of that language to one filename, and each new
+    # guide costs money and deletes the last one — fifty-five Hindi guides went into hi/s.md
+    # before anyone looked. Regenerating the same topic is fine and overwrites on purpose;
+    # a different topic at the same path is a slug bug and has to stop the run.
+    if out.exists():
+        previous = out.read_text(encoding="utf-8")
+        for line in previous.splitlines():
+            if line.startswith("topic: ") and line[7:].strip() != a.topic:
+                raise ValueError(
+                    f"colisión de slug en {out.name}: ya es «{line[7:].strip()}» y ahora "
+                    f"«{a.topic}». El slug de este idioma no distingue títulos."
+                )
     out.write_text(a.markdown(), encoding="utf-8")
     q = queue_dir / "x" / f"{a.lang}-{a.slug}.txt"
     q.parent.mkdir(parents=True, exist_ok=True)

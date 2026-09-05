@@ -13,11 +13,20 @@ import yaml
 
 LEVEL_ORDER = {"routine": 0, "mental_health": 1, "urgent": 2, "emergency": 3}
 
+# `\b` is useless after Devanagari: most words end in a combining vowel sign, which Python does
+# not count as a word character, so there is no boundary there to match. This pair works for both
+# scripts — "not followed by a letter, a digit or any Devanagari sign" — and is what every age
+# lookup below uses instead.
+DEV = "\u0900-\u097f"
+NOT_BEFORE = rf"(?<![\w{DEV}])"
+NOT_AFTER = rf"(?![\w{DEV}])"
+
 _AGE_PATTERNS = [
     # (regex, unit multiplier to months)
     (
         re.compile(
-            r"(\d{1,2})\s*(?:meses|mes|months?|mois|monate[n]?|monat|mo|месяц\w*|мес|شهر|أشهر|شهور)\b",
+            r"(\d{1,2})\s*(?:meses|m[eê]s|months?|mois|monate[n]?|monat|mo|месяц\w*|мес"
+            r"|شهر|أشهر|شهور)\b",
             re.I,
         ),
         1.0,
@@ -44,9 +53,23 @@ _AGE_PATTERNS = [
         1 / 30.4,
     ),
     (re.compile(r"(?:tiene|has|is|de)\s+(\d{1,2})\s*(?:a|y)\b", re.I), 12.0),
+    # Hindi, in both scripts. Separate entries because they end with NOT_AFTER instead of `\b`.
+    (
+        re.compile(
+            rf"(\d{{1,2}})\s*(?:महीने|महीना|महीनों|माह|मास|mahin[ae]|maheene){NOT_AFTER}", re.I
+        ),
+        1.0,
+    ),
+    (re.compile(rf"(\d{{1,2}})\s*(?:साल|वर्ष|बरस|s[a]?al|varsh){NOT_AFTER}", re.I), 12.0),
+    (
+        re.compile(rf"(\d{{1,2}})\s*(?:हफ़्ते|हफ्ते|हफ़्ता|हफ्ता|सप्ताह|haft[ae]|saptah){NOT_AFTER}", re.I),
+        1 / 4.345,
+    ),
+    (re.compile(rf"(\d{{1,2}})\s*(?:दिन|din)\s*(?:का|के|की|ka|ke){NOT_AFTER}", re.I), 1 / 30.4),
 ]
 _NEWBORN = re.compile(
-    r"reci[eé]n nacid|newborn|neonat|nouveau[- ]n[eé]|neugeboren|новорожд|حديث الولادة|مولود جديد",
+    r"reci[eé]n nacid|rec[eé]m[- ]?nascid|newborn|neonat|nouveau[- ]n[eé]|neugeboren|новорожд"
+    r"|حديث الولادة|مولود جديد|नवजात|navjat|naujaat",
     re.I,
 )
 _WORD_AGES = {
@@ -57,6 +80,10 @@ _WORD_AGES = {
     "one month": 1,
     "two months": 2,
     "three months": 3,
+    # "my two month old" — English drops the plural when the age is used as an adjective, and
+    # that is the phrasing a parent types
+    "two month": 2,
+    "three month": 3,
     "un año": 12,
     "dos años": 24,
     "one year": 12,
@@ -94,6 +121,28 @@ _WORD_AGES = {
     "سنة واحدة": 12,
     "سنتان": 24,
     "سنتين": 24,
+    # Portuguese: it had been riding on the Spanish words, which works for "meses" and not for "mês"
+    "um mês": 1,
+    "um mes": 1,
+    "dois meses": 2,
+    "três meses": 3,
+    "um ano": 12,
+    "dois anos": 24,
+    # Hindi, both scripts
+    "एक महीने": 1,
+    "एक महीना": 1,
+    "एक माह": 1,
+    "दो महीने": 2,
+    "दो महीना": 2,
+    "तीन महीने": 3,
+    "एक साल": 12,
+    "दो साल": 24,
+    "ek mahina": 1,
+    "ek mahine": 1,
+    "do mahine": 2,
+    "teen mahine": 3,
+    "ek saal": 12,
+    "do saal": 24,
 }
 
 
@@ -139,7 +188,7 @@ def parse_age_months(text: str) -> float | None:
     if _NEWBORN.search(low):
         return 0.5
     for phrase, months in _WORD_AGES.items():
-        if re.search(rf"\b{re.escape(phrase)}\b", low):
+        if re.search(rf"{NOT_BEFORE}{re.escape(phrase)}{NOT_AFTER}", low):
             return float(months)
     for rx, mult in _AGE_PATTERNS:
         m = rx.search(text)

@@ -49,11 +49,75 @@ _ARABIC = {
     "ة": "a", "ء": "", "ؤ": "u", "ئ": "i",
 }
 
+
+# Devanagari needs a scanner, not a table: a consonant carries an inherent "a" that a vowel sign
+# or a virama takes away, so what a letter sounds like depends on the character after it.
+# बुखार is "bukhaar" — b-u-kh-aa-r — and not "ba-u-kha-a-ra".
+_DEV_CONS = {
+    "क": "k", "ख": "kh", "ग": "g", "घ": "gh", "ङ": "ng",
+    "च": "ch", "छ": "chh", "ज": "j", "झ": "jh", "ञ": "ny",
+    "ट": "t", "ठ": "th", "ड": "d", "ढ": "dh", "ण": "n",
+    "त": "t", "थ": "th", "द": "d", "ध": "dh", "न": "n",
+    "प": "p", "फ": "ph", "ब": "b", "भ": "bh", "म": "m",
+    "य": "y", "र": "r", "ल": "l", "ळ": "l", "व": "v",
+    "श": "sh", "ष": "sh", "स": "s", "ह": "h",
+}
+# the same letters with a nukta under them, which Hindi uses for sounds Sanskrit did not have
+_DEV_NUKTA = {"क": "q", "ख": "kh", "ग": "gh", "ज": "z", "ड": "r", "ढ": "rh", "फ": "f"}
+_DEV_VOWELS = {
+    "अ": "a", "आ": "aa", "इ": "i", "ई": "ee", "उ": "u", "ऊ": "oo", "ऋ": "ri",
+    "ए": "e", "ऐ": "ai", "ओ": "o", "औ": "au", "ऍ": "e", "ऑ": "o",
+}
+_DEV_MATRA = {
+    "ा": "aa", "ि": "i", "ी": "ee", "ु": "u", "ू": "oo", "ृ": "ri",
+    "े": "e", "ै": "ai", "ो": "o", "ौ": "au", "ॅ": "e", "ॉ": "o",
+}
+_DEV_SIGNS = {"ं": "n", "ँ": "n", "ः": "h", "ऽ": "", "़": ""}
+_DEV_DIGITS = {"०": "0", "१": "1", "२": "2", "३": "3", "४": "4",
+               "५": "5", "६": "6", "७": "7", "८": "8", "९": "9"}
+_VIRAMA = "\u094d"
+_NUKTA = "\u093c"
+
+
+def devanagari(text: str) -> str:
+    """Romanise Devanagari. Readability for a URL, not a scholarly scheme."""
+    out: list[str] = []
+    i, n = 0, len(text)
+    while i < n:
+        c = text[i]
+        if c in _DEV_CONS:
+            base = _DEV_CONS[c]
+            i += 1
+            if i < n and text[i] == _NUKTA:
+                base = _DEV_NUKTA.get(c, base)
+                i += 1
+            out.append(base)
+            if i < n and text[i] in _DEV_MATRA:
+                out.append(_DEV_MATRA[text[i]])
+                i += 1
+            elif i < n and text[i] == _VIRAMA:
+                i += 1  # the inherent vowel is exactly what a virama removes
+            elif i < n and "ऀ" <= text[i] <= "ॿ":
+                out.append("a")  # inside a word the inherent vowel is heard
+            # at the end of a word Hindi drops it: बुखार is "bukhaar", not "bukhaara"
+            continue
+        for table in (_DEV_VOWELS, _DEV_MATRA, _DEV_SIGNS, _DEV_DIGITS):
+            if c in table:
+                out.append(table[c])
+                break
+        else:
+            out.append(c)
+        i += 1
+    return "".join(out)
+
+
 _TRANSLIT = {**_CYRILLIC, **_ARABIC}
 
 
 def slug(text: str, max_len: int = 40) -> str:
     t = text.lower().translate(_FOLD)
+    if any("\u0900" <= c <= "\u097f" for c in t):
+        t = devanagari(t)
     t = "".join(_TRANSLIT.get(c, c) for c in t)
     t = _SLUG.sub("_", t).strip("_")
     return t[:max_len].strip("_") or "s"
