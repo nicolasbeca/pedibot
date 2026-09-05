@@ -1,0 +1,10 @@
+[Unit]
+Description=PediBot daily review, 08:30 Europe/Madrid
+
+[Timer]
+OnCalendar=*-*-* 08:30:00 Europe/Madrid
+Persistent=true
+Unit=pedibot-daily.service
+
+[Install]
+WantedBy=timers.target

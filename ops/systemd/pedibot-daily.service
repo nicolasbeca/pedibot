@@ -1,0 +1,10 @@
+[Unit]
+Description=PediBot daily review: yesterday's questions → Telegram (silent when there were none)
+
+[Service]
+Type=oneshot
+User=pedibot
+WorkingDirectory=/opt/pedibot
+EnvironmentFile=/opt/pedibot/.env
+Environment=PYTHONIOENCODING=utf-8
+ExecStart=/opt/pedibot/.local/bin/uv run --no-dev python ops/daily_review.py
