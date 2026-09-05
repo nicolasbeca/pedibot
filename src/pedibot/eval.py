@@ -116,11 +116,14 @@ def run_eval(engine: Engine, golden: list[dict], k: int = 3) -> Report:
         for h in hits:
             if h.chunk.doc_id not in docs_pred:
                 docs_pred.append(h.chunk.doc_id)
-        # Not measurable without a model when the language has no local synonyms: retrieval for
-        # it goes through a translation call that this harness deliberately does not make. Marked
-        # None (skipped) rather than False, so the ratio stays a fact about the system.
-        local = engine.retriever.expand(q, g.get("lang") or "en")
-        measurable = bool(local) or not isinstance(engine.llm, FakeProvider)
+        # Not measurable without a model when the LANGUAGE has no local synonym table at all:
+        # its retrieval goes through a translation call this harness deliberately does not make.
+        # Not "this query expanded to nothing" — a question already written in the words of the
+        # leaflet needs no expansion and searches fine. Marked None rather than False, so the
+        # ratio stays a fact about the system.
+        measurable = engine.retriever.synonyms.knows(
+            g.get("lang") or "en"
+        ) or not isinstance(engine.llm, FakeProvider)
         source_hit = (
             (any(d in docs_pred[:k] for d in docs_expected) if docs_expected else None)
             if measurable

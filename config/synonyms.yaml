@@ -1,317 +1,5658 @@
-# Cross-lingual query expansion (offline). The sources are mostly Spanish; queries may come in any
-# language. Each entry: trigger term (lowercase, prefix match) → extra Spanish search terms.
-# The LLM-based query translation (bot/retrieval.py) complements this when available.
+# Cross-lingual query expansion (offline). The sources are mostly Spanish and English;
+# queries may come in any of the eight languages. Each entry: trigger term (lowercase,
+# prefix match on a token, or substring when it contains a space) → extra search terms.
+#
+# `X_es` reaches the Spanish corpus (SEUP, the parent-facing backbone), `X_en` the English
+# one (NHS, CDC, MedlinePlus, WHO), and `de` the RKI documents, which nothing else reaches.
+# The LLM query translation in bot/retrieval.py complements this — and until 5-sep-2026 it
+# was the ONLY thing that worked for de/ru/ar/pt/hi, so a failed call or a spent budget cost
+# those five languages their sources while en and es kept working offline.
+#
+# Arabic triggers appear bare and with the article: the match is a prefix on the token, and
+# "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
-  fever: [fiebre, febril, temperatura]
-  temperature: [fiebre, temperatura]
-  cough: [tos]
-  cold: [catarro, resfriado, mocos]
-  runny: [mocos, catarro]
-  nose: [mocos, nariz]
-  wheez: [sibilancias, pitos, asma, bronquiolitis]
-  breath: [respirar, respiración, dificultad respiratoria]
-  croup: [laringitis, crup]
-  barking: [laringitis, tos perruna]
-  bronchiolitis: [bronquiolitis]
-  pneumonia: [neumonía]
-  asthma: [asma, crisis asmática]
-  vomit: [vómitos, vomita]
-  throw: [vómitos]
-  diarr: [diarrea, gastroenteritis]
-  stomach: [dolor abdominal, barriga]
-  stomach bug: [gastroenteritis, vómitos, diarrea]
-  stomach flu: [gastroenteritis, vómitos, diarrea]
-  pain: [dolor]
-  sever: [intenso]
-  wors: [empeora, intenso]
-  continu: [continuo]
-  belly: [dolor abdominal, barriga]
-  tummy: [dolor abdominal, barriga]
-  constipat: [estreñimiento]
-  poop: [deposiciones, heces, estreñimiento]
-  dehydrat: [deshidratación, suero, rehidratación]
-  seizure: [convulsión, convulsión febril]
-  convuls: [convulsión]
-  headache: [cefalea, dolor de cabeza]
-  faint: [síncope, desmayo]
-  head: [cabeza, traumatismo craneal, golpe]
-  fell: [caída, golpe, traumatismo]
-  fall: [caída, golpe, traumatismo]
-  hit: [golpe, traumatismo]
-  bump: [golpe, traumatismo craneal]
-  burn: [quemadura]
-  wound: [herida]
-  cut: [herida, corte]
-  bleed: [sangrado, herida]
-  chok: [atragantamiento]
-  poison: [intoxicación, tóxico]
-  swallow: [ingesta, tragado, intoxicación]
-  bleach: [lejía, intoxicación]
-  allerg: [alergia, anafilaxia]
-  anaphyl: [anafilaxia]
-  hives: [urticaria, ronchas, habones]
-  rash: [exantema, manchas, urticaria, piel]
-  spots: [manchas, exantema]
-  itch: [picor, urticaria]
-  ear: [oído, otitis]
-  otitis: [otitis]
-  throat: [garganta, faringitis]
-  colic: [cólico del lactante, llanto]
-  cry: [llanto, cólico]
-  reflux: [reflujo]
-  newborn: [recién nacido]
-  baby: [bebé, lactante]
-  infant: [lactante, bebé]
-  toddler: [preescolar, niño pequeño]
-  teen: [adolescente]
-  feed: [alimentación, lactancia, tomas]
-  breastfe: [lactancia materna]
-  formula: [leche de fórmula, biberón]
-  solid: [alimentación complementaria, sólidos]
-  wean: [alimentación complementaria, destete]
-  vaccin: [vacuna, calendario de vacunación]
-  shot: [vacuna]
-  immuni: [vacuna, inmunización]
-  dose: [dosis, dosificación]
-  dosage: [dosis, dosificación]
-  paracetamol: [paracetamol]
-  acetaminophen: [paracetamol]
-  tylenol: [paracetamol]
-  ibuprofen: [ibuprofeno]
-  advil: [ibuprofeno]
-  antibiotic: [antibiótico]
-  amoxicillin: [amoxicilina]
-  sleep: [sueño, dormir]
-  sun: [golpe de calor, sol]
-  heat: [golpe de calor]
-  anxi: [ansiedad]
-  self: [autolesión]
-  suicid: [suicida, conducta suicida]
-  eating: [conducta alimentaria, alimentación]
-  autis: [autismo]
-  adhd: [tdah, hiperactividad]
-  growth: [crecimiento, percentil]
-  weight: [peso]
-  emergency: [urgencias, 112]
-  die: [suicida, conducta suicida]
-  kill: [suicida]
-  swell: [hinchazón, anafilaxia, alergia]
-  swollen: [hinchazón, anafilaxia]
-  peanut: [alergia, anafilaxia, cacahuete]
-  nut: [alergia, anafilaxia]
-  screen: [pantallas, sedentarismo, actividad física]
-  cord: [cordón umbilical, recién nacido]
-  umbilic: [cordón umbilical]
-  drowsy: [somnoliento, decaído, adormilado]
-  lethargic: [decaído, somnoliento]
-  battery: [pila, cuerpo extraño, intoxicación]
-  magnet: [imán, cuerpo extraño]
-  pill: [medicamento, intoxicación]
-  stitches: [herida, sutura]
-  earache: [otitis, dolor de oído]
-  urgent: [urgencias]
-  hospital: [urgencias, hospital]
-  daycare: [guardería, contagio]
-  school: [colegio, contagio]
-
-# Spanish -> Spanish (colloquial -> leaflet vocabulary)
+  fever:
+  - fiebre
+  - febril
+  - temperatura
+  temperature:
+  - fiebre
+  - temperatura
+  cough:
+  - tos
+  cold:
+  - catarro
+  - resfriado
+  - mocos
+  runny:
+  - mocos
+  - catarro
+  nose:
+  - mocos
+  - nariz
+  wheez:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  breath:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  croup:
+  - laringitis
+  - crup
+  barking:
+  - laringitis
+  - tos perruna
+  bronchiolitis:
+  - bronquiolitis
+  pneumonia:
+  - neumonía
+  asthma:
+  - asma
+  - crisis asmática
+  vomit:
+  - vómitos
+  - vomita
+  throw:
+  - vómitos
+  diarr:
+  - diarrea
+  - gastroenteritis
+  stomach:
+  - dolor abdominal
+  - barriga
+  stomach bug:
+  - gastroenteritis
+  - vómitos
+  - diarrea
+  stomach flu:
+  - gastroenteritis
+  - vómitos
+  - diarrea
+  pain:
+  - dolor
+  sever:
+  - intenso
+  wors:
+  - empeora
+  - intenso
+  continu:
+  - continuo
+  belly:
+  - dolor abdominal
+  - barriga
+  tummy:
+  - dolor abdominal
+  - barriga
+  constipat:
+  - estreñimiento
+  poop:
+  - deposiciones
+  - heces
+  - estreñimiento
+  dehydrat:
+  - deshidratación
+  - suero
+  - rehidratación
+  seizure:
+  - convulsión
+  - convulsión febril
+  convuls:
+  - convulsión
+  headache:
+  - cefalea
+  - dolor de cabeza
+  faint:
+  - síncope
+  - desmayo
+  head:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  fell:
+  - caída
+  - golpe
+  - traumatismo
+  fall:
+  - caída
+  - golpe
+  - traumatismo
+  hit:
+  - golpe
+  - traumatismo
+  bump:
+  - golpe
+  - traumatismo craneal
+  burn:
+  - quemadura
+  wound:
+  - herida
+  cut:
+  - herida
+  - corte
+  bleed:
+  - sangrado
+  - herida
+  chok:
+  - atragantamiento
+  poison:
+  - intoxicación
+  - tóxico
+  swallow:
+  - ingesta
+  - tragado
+  - intoxicación
+  bleach:
+  - lejía
+  - intoxicación
+  allerg:
+  - alergia
+  - anafilaxia
+  anaphyl:
+  - anafilaxia
+  hives:
+  - urticaria
+  - ronchas
+  - habones
+  rash:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  spots:
+  - manchas
+  - exantema
+  itch:
+  - picor
+  - urticaria
+  ear:
+  - oído
+  - otitis
+  otitis:
+  - otitis
+  throat:
+  - garganta
+  - faringitis
+  colic:
+  - cólico del lactante
+  - llanto
+  cry:
+  - llanto
+  - cólico
+  reflux:
+  - reflujo
+  teeth:
+  - dentición
+  - diente
+  - dientes
+  teething:
+  - dentición
+  - diente
+  - dientes
+  newborn:
+  - recién nacido
+  baby:
+  - bebé
+  - lactante
+  infant:
+  - lactante
+  - bebé
+  toddler:
+  - preescolar
+  - niño pequeño
+  teen:
+  - adolescente
+  feed:
+  - alimentación
+  - lactancia
+  - tomas
+  breastfe:
+  - lactancia materna
+  formula:
+  - leche de fórmula
+  - biberón
+  solid:
+  - alimentación complementaria
+  - sólidos
+  wean:
+  - alimentación complementaria
+  - destete
+  vaccin:
+  - vacuna
+  - calendario de vacunación
+  shot:
+  - vacuna
+  immuni:
+  - vacuna
+  - inmunización
+  dose:
+  - dosis
+  - dosificación
+  dosage:
+  - dosis
+  - dosificación
+  paracetamol:
+  - paracetamol
+  acetaminophen:
+  - paracetamol
+  tylenol:
+  - paracetamol
+  ibuprofen:
+  - ibuprofeno
+  advil:
+  - ibuprofeno
+  antibiotic:
+  - antibiótico
+  amoxicillin:
+  - amoxicilina
+  sleep:
+  - sueño
+  - dormir
+  sun:
+  - golpe de calor
+  - sol
+  heat:
+  - golpe de calor
+  anxi:
+  - ansiedad
+  self:
+  - autolesión
+  suicid:
+  - suicida
+  - conducta suicida
+  eating:
+  - conducta alimentaria
+  - alimentación
+  autis:
+  - autismo
+  adhd:
+  - tdah
+  - hiperactividad
+  growth:
+  - crecimiento
+  - percentil
+  weight:
+  - peso
+  emergency:
+  - urgencias
+  - 112
+  die:
+  - suicida
+  - conducta suicida
+  kill:
+  - suicida
+  swell:
+  - hinchazón
+  - anafilaxia
+  - alergia
+  swollen:
+  - hinchazón
+  - anafilaxia
+  peanut:
+  - alergia
+  - anafilaxia
+  - cacahuete
+  nut:
+  - alergia
+  - anafilaxia
+  screen:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  cord:
+  - cordón umbilical
+  - recién nacido
+  umbilic:
+  - cordón umbilical
+  drowsy:
+  - somnoliento
+  - decaído
+  - adormilado
+  lethargic:
+  - decaído
+  - somnoliento
+  battery:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  magnet:
+  - imán
+  - cuerpo extraño
+  pill:
+  - medicamento
+  - intoxicación
+  stitches:
+  - herida
+  - sutura
+  earache:
+  - otitis
+  - dolor de oído
+  urgent:
+  - urgencias
+  hospital:
+  - urgencias
+  - hospital
+  daycare:
+  - guardería
+  - contagio
+  school:
+  - colegio
+  - contagio
 es:
-  desmay: [síncope, desmayo, pérdida de conocimiento]
-  mareo: [síncope, mareo]
-  mareado: [síncope, mareo, golpe de calor]
-  pila: [intoxicación, cuerpo extraño, ingesta]
-  imán: [cuerpo extraño, ingesta]
-  tragad: [ingesta, cuerpo extraño, intoxicación]
-  lejía: [intoxicación, tóxico, cáustico]
-  detergente: [intoxicación, tóxico]
-  pastillas: [intoxicación, medicamento]
-  quemad: [quemadura, primeros auxilios]
-  plancha: [quemadura]
-  adormilad: [decaído, somnoliento, poco reactivo]
-  dormid: [decaído, somnoliento]
-  despertar: [decaído, somnoliento, poco reactivo]
-  dormir: [sueño, descanso]
-  sueño: [sueño, descanso]
-  llora: [llanto, cólico]
-  llanto: [llanto, cólico]
-  caíd: [traumatismo, golpe, caída]
-  golpe: [traumatismo]
-  cambiador: [caída, traumatismo craneal]
-  vacun: [vacunación, calendario, inmunización]
-  mocos: [catarro, vías altas]
-  resfriad: [catarro]
-  tos: [tos, catarro, laringitis]
-  pitos: [sibilancias, bronquiolitis, dificultad respiratoria]
-  pitido: [sibilancias, bronquiolitis]
-  fatiga: [dificultad respiratoria]
-  ahog: [dificultad respiratoria, atragantamiento]
-  barriga: [dolor abdominal, abdomen]
-  tripa: [dolor abdominal, abdomen]
-  cagalera: [diarrea, gastroenteritis]
-  diarrea: [gastroenteritis, deposiciones]
-  vómit: [vómitos, gastroenteritis]
-  vomit: [vómitos, gastroenteritis]
-  caca: [deposiciones, heces]
-  poco pis: [orina, deshidratación]
-  no hace pis: [orina, deshidratación]
-  orina poco: [orina, deshidratación]
-  sin pañal mojado: [orina, deshidratación]
-  hundidos: [deshidratación]
-  ronchas: [urticaria, habones]
-  habones: [urticaria]
-  granos: [exantema, piel]
-  sarpullido: [exantema, piel]
-  manchas: [exantema, petequias, piel]
-  duele el oído: [otitis]
-  dolor de oído: [otitis]
-  dolor de oidos: [otitis]
-  se toca el oído: [otitis]
-  supura el oído: [otitis]
-  oreja: [otitis, oído]
-  garganta: [faringitis, amigdalitis]
-  fiebre: [fiebre, temperatura]
-  grados: [fiebre, temperatura]
-  cortes: [autolesión, conducta autolesiva]
-  morir: [conducta suicida, suicida]
-  suicid: [conducta suicida]
-  peso: [peso, conducta alimentaria, obesidad]
-  papilla: [alimentación complementaria]
-  sólidos: [alimentación complementaria]
-  destete: [alimentación complementaria]
-  teta: [lactancia materna]
-  dar el pecho: [lactancia materna]
-  del pecho: [lactancia materna]
-  al pecho: [lactancia materna]
-  coge el pecho: [lactancia materna]
-  rechaza el pecho: [lactancia materna]
-  biberón: [lactancia, fórmula]
-  cordón: [cordón umbilical, recién nacido]
-  ombligo: [cordón umbilical, recién nacido]
-  tomas: [lactancia, alimentación, recién nacido]
-  rechaz: [rechaza las tomas, recién nacido]
-  convuls: [convulsión febril]
-  ataque: [convulsión]
-  morado: [cianosis, espasmo del sollozo, dificultad respiratoria]
-  calor: [golpe de calor]
-  sol: [golpe de calor]
-  perruna: [laringitis, crup]
-  foca: [laringitis]
-  asma: [asma, crisis asmática]
-  neumon: [neumonía]
-  estreñ: [estreñimiento]
-  duro: [estreñimiento, deposiciones]
-
-# Spanish -> English, deliberately TINY. The corpus has no Spanish source for sleep duration,
-# screen time or physical activity (checked doc by doc on 26-ago: the Andalusian guide only talks
-# about the parents' interrupted sleep), so a question in Spanish about them reaches nothing.
-# Everything else HAS a Spanish leaflet, and bridging it made the English sheets outrank the
-# Spanish ones (source@3 0.964 -> 0.891 on the golden set). Add an entry here only after checking
-# that no Spanish source covers it.
+  desmay:
+  - síncope
+  - desmayo
+  - pérdida de conocimiento
+  mareo:
+  - síncope
+  - mareo
+  mareado:
+  - síncope
+  - mareo
+  - golpe de calor
+  pila:
+  - intoxicación
+  - cuerpo extraño
+  - ingesta
+  imán:
+  - cuerpo extraño
+  - ingesta
+  tragad:
+  - ingesta
+  - cuerpo extraño
+  - intoxicación
+  lejía:
+  - intoxicación
+  - tóxico
+  - cáustico
+  detergente:
+  - intoxicación
+  - tóxico
+  pastillas:
+  - intoxicación
+  - medicamento
+  quemad:
+  - quemadura
+  - primeros auxilios
+  plancha:
+  - quemadura
+  adormilad:
+  - decaído
+  - somnoliento
+  - poco reactivo
+  dormid:
+  - decaído
+  - somnoliento
+  despertar:
+  - decaído
+  - somnoliento
+  - poco reactivo
+  dormir:
+  - sueño
+  - descanso
+  sueño:
+  - sueño
+  - descanso
+  llora:
+  - llanto
+  - cólico
+  llanto:
+  - llanto
+  - cólico
+  caíd:
+  - traumatismo
+  - golpe
+  - caída
+  golpe:
+  - traumatismo
+  cambiador:
+  - caída
+  - traumatismo craneal
+  vacun:
+  - vacunación
+  - calendario
+  - inmunización
+  mocos:
+  - catarro
+  - vías altas
+  resfriad:
+  - catarro
+  tos:
+  - tos
+  - catarro
+  - laringitis
+  pitos:
+  - sibilancias
+  - bronquiolitis
+  - dificultad respiratoria
+  pitido:
+  - sibilancias
+  - bronquiolitis
+  fatiga:
+  - dificultad respiratoria
+  ahog:
+  - dificultad respiratoria
+  - atragantamiento
+  barriga:
+  - dolor abdominal
+  - abdomen
+  tripa:
+  - dolor abdominal
+  - abdomen
+  cagalera:
+  - diarrea
+  - gastroenteritis
+  diarrea:
+  - gastroenteritis
+  - deposiciones
+  vómit:
+  - vómitos
+  - gastroenteritis
+  vomit:
+  - vómitos
+  - gastroenteritis
+  caca:
+  - deposiciones
+  - heces
+  poco pis:
+  - orina
+  - deshidratación
+  no hace pis:
+  - orina
+  - deshidratación
+  orina poco:
+  - orina
+  - deshidratación
+  sin pañal mojado:
+  - orina
+  - deshidratación
+  hundidos:
+  - deshidratación
+  ronchas:
+  - urticaria
+  - habones
+  habones:
+  - urticaria
+  granos:
+  - exantema
+  - piel
+  sarpullido:
+  - exantema
+  - piel
+  manchas:
+  - exantema
+  - petequias
+  - piel
+  duele el oído:
+  - otitis
+  dolor de oído:
+  - otitis
+  dolor de oidos:
+  - otitis
+  se toca el oído:
+  - otitis
+  supura el oído:
+  - otitis
+  oreja:
+  - otitis
+  - oído
+  garganta:
+  - faringitis
+  - amigdalitis
+  fiebre:
+  - fiebre
+  - temperatura
+  grados:
+  - fiebre
+  - temperatura
+  cortes:
+  - autolesión
+  - conducta autolesiva
+  morir:
+  - conducta suicida
+  - suicida
+  suicid:
+  - conducta suicida
+  peso:
+  - peso
+  - conducta alimentaria
+  - obesidad
+  papilla:
+  - alimentación complementaria
+  sólidos:
+  - alimentación complementaria
+  destete:
+  - alimentación complementaria
+  teta:
+  - lactancia materna
+  dar el pecho:
+  - lactancia materna
+  del pecho:
+  - lactancia materna
+  al pecho:
+  - lactancia materna
+  coge el pecho:
+  - lactancia materna
+  rechaza el pecho:
+  - lactancia materna
+  biberón:
+  - lactancia
+  - fórmula
+  cordón:
+  - cordón umbilical
+  - recién nacido
+  ombligo:
+  - cordón umbilical
+  - recién nacido
+  tomas:
+  - lactancia
+  - alimentación
+  - recién nacido
+  rechaz:
+  - rechaza las tomas
+  - recién nacido
+  convuls:
+  - convulsión febril
+  ataque:
+  - convulsión
+  morado:
+  - cianosis
+  - espasmo del sollozo
+  - dificultad respiratoria
+  calor:
+  - golpe de calor
+  sol:
+  - golpe de calor
+  perruna:
+  - laringitis
+  - crup
+  foca:
+  - laringitis
+  asma:
+  - asma
+  - crisis asmática
+  neumon:
+  - neumonía
+  estreñ:
+  - estreñimiento
+  duro:
+  - estreñimiento
+  - deposiciones
 es_en:
-  dormir: [sleep, sleep duration, hours of sleep]
-  duerme: [sleep, sleep duration]
-  sueño: [sleep, sleep duration]
-  siesta: [sleep, nap]
-  pantalla: [screen time, sedentary]
-  tablet: [screen time]
-  móvil: [screen time]
-  televisión: [screen time]
-  sedentar: [sedentary]
-  ejercicio: [physical activity]
-  actividad física: [physical activity]
-
-
-# ---------------------------------------------------------------------------------------------
-# Francés (fase francesa, 3-sep-2026). Dos tablas, por el mismo motivo que la de español→inglés:
-#   fr      → coloquial francés → vocabulario de las fichas en francés (17 documentos: OMS + Canadá)
-#   fr_en   → puente al corpus grande. Aquí NO es un recurso de última instancia como en español:
-#             el francés tiene 17 documentos frente a 228, así que casi toda pregunta necesita
-#             cruzar. Se mide con los casos franceses del golden set antes de tocar nada.
+  dormir:
+  - sleep
+  - sleep duration
+  - hours of sleep
+  duerme:
+  - sleep
+  - sleep duration
+  sueño:
+  - sleep
+  - sleep duration
+  siesta:
+  - sleep
+  - nap
+  pantalla:
+  - screen time
+  - sedentary
+  tablet:
+  - screen time
+  móvil:
+  - screen time
+  televisión:
+  - screen time
+  sedentar:
+  - sedentary
+  ejercicio:
+  - physical activity
+  actividad física:
+  - physical activity
 fr:
-  fièvre: [fièvre, température]
-  fievre: [fièvre, température]
-  toux: [toux]
-  rhume: [rhume]
-  vomi: [vomissements]
-  diarrhée: [diarrhée]
-  ventre: [douleur abdominale, ventre]
-  boutons: [éruption, peau]
-  éruption: [éruption, peau]
-  vaccin: [vaccination, vaccins]
-  sommeil: [sommeil]
-  écran: [écrans, temps d'écran]
-  téter: [allaitement]
-  allaite: [allaitement]
-  rougeole: [rougeole]
-  coqueluche: [coqueluche]
-  grippe: [grippe]
-  oreillons: [oreillons]
-  rubéole: [rubéole]
-  vrs: [virus respiratoire syncytial, bronchiolite]
-  bronchiolite: [bronchiolite, virus respiratoire syncytial]
-
+  fièvre:
+  - fièvre
+  - température
+  fievre:
+  - fièvre
+  - température
+  toux:
+  - toux
+  rhume:
+  - rhume
+  vomi:
+  - vomissements
+  diarrhée:
+  - diarrhée
+  ventre:
+  - douleur abdominale
+  - ventre
+  boutons:
+  - éruption
+  - peau
+  éruption:
+  - éruption
+  - peau
+  vaccin:
+  - vaccination
+  - vaccins
+  sommeil:
+  - sommeil
+  écran:
+  - écrans
+  - temps d'écran
+  téter:
+  - allaitement
+  allaite:
+  - allaitement
+  rougeole:
+  - rougeole
+  coqueluche:
+  - coqueluche
+  grippe:
+  - grippe
+  oreillons:
+  - oreillons
+  rubéole:
+  - rubéole
+  vrs:
+  - virus respiratoire syncytial
+  - bronchiolite
+  bronchiolite:
+  - bronchiolite
+  - virus respiratoire syncytial
 fr_en:
-  fièvre: [fever, temperature]
-  fievre: [fever, temperature]
-  toux: [cough]
-  rhume: [cold, common cold]
-  respir: [breathing, breathless]
-  siffle: [wheeze, wheezing]
-  vomi: [vomiting]
-  diarrhée: [diarrhoea, gastroenteritis]
-  ventre: [abdominal pain, tummy]
-  constipation: [constipation]
-  boutons: [rash, spots]
-  éruption: [rash]
-  urticaire: [hives, urticaria]
-  démange: [itching, rash]
-  oreille: [ear infection, earache]
-  gorge: [sore throat, tonsillitis]
-  yeux: [conjunctivitis, eye]
-  poux: [head lice]
-  vers: [threadworms]
-  brûlure: [burn, scald]
-  chute: [injury, fall]
-  # «tête» a secas era ambiguo: «s'est cogné la tête» es un golpe, no un dolor de cabeza — la
-  # misma trampa de homógrafos que en español con «oído» (L24). Frases, no la palabra suelta.
-  cogné la tête: [head injury, concussion]
-  coup à la tête: [head injury, concussion]
-  tombé sur la tête: [head injury, concussion]
-  mal à la tête: [headache]
-  mal de tête: [headache]
-  convulsion: [seizure, febrile seizure]
-  méningite: [meningitis]
-  allergie: [allergy, allergic reaction]
-  piqûre: [insect bite, sting]
-  vaccin: [vaccination, immunisation]
-  allaitement: [breastfeeding]
-  biberon: [formula feeding, bottle]
-  diversification: [solid foods, weaning]
-  colique: [colic, crying]
-  dents: [teething]
-  sommeil: [sleep, sleep duration]
-  écran: [screen time, sedentary]
-  varicelle: [chickenpox]
-  rougeole: [measles]
-  coqueluche: [whooping cough, pertussis]
-  grippe: [flu, influenza]
-  bronchiolite: [bronchiolitis, RSV]
-  asthme: [asthma, wheeze]
-  pneumonie: [pneumonia]
-  déshydrat: [dehydration]
-  pipi: [urine, urinary tract infection]
-  nouveau-né: [newborn, baby]
-  # frases de emergencia: sin esto, una pregunta grave en francés no alcanza ninguna hoja del
-  # corpus grande y el padre solo recibe el banner, sin nada que leer detrás
-  ne répond pas: [unresponsive, not responding, emergency department]
-  ne se réveille pas: [unresponsive, drowsy, emergency department]
-  inconscient: [unconscious, emergency department]
-  avalé une pile: [swallowed battery, foreign body, poisoning]
-  pile bouton: [button battery, swallowed battery]
-  taches: [rash, spots, petechiae]
-  pétéchie: [petechiae, meningitis, sepsis]
-  ne disparaissent pas: [do not fade, glass test, petechiae]
-  javel: [bleach, poisoning]
-  étouffe: [choking]
-  saigne: [bleeding]
-  brûlé: [burn, scald]
+  fièvre:
+  - fever
+  - temperature
+  fievre:
+  - fever
+  - temperature
+  toux:
+  - cough
+  rhume:
+  - cold
+  - common cold
+  respir:
+  - breathing
+  - breathless
+  siffle:
+  - wheeze
+  - wheezing
+  vomi:
+  - vomiting
+  diarrhée:
+  - diarrhoea
+  - gastroenteritis
+  ventre:
+  - abdominal pain
+  - tummy
+  constipation:
+  - constipation
+  boutons:
+  - rash
+  - spots
+  éruption:
+  - rash
+  urticaire:
+  - hives
+  - urticaria
+  démange:
+  - itching
+  - rash
+  oreille:
+  - ear infection
+  - earache
+  gorge:
+  - sore throat
+  - tonsillitis
+  yeux:
+  - conjunctivitis
+  - eye
+  poux:
+  - head lice
+  vers:
+  - threadworms
+  brûlure:
+  - burn
+  - scald
+  chute:
+  - injury
+  - fall
+  cogné la tête:
+  - head injury
+  - concussion
+  coup à la tête:
+  - head injury
+  - concussion
+  tombé sur la tête:
+  - head injury
+  - concussion
+  mal à la tête:
+  - headache
+  mal de tête:
+  - headache
+  convulsion:
+  - seizure
+  - febrile seizure
+  méningite:
+  - meningitis
+  allergie:
+  - allergy
+  - allergic reaction
+  piqûre:
+  - insect bite
+  - sting
+  vaccin:
+  - vaccination
+  - immunisation
+  allaitement:
+  - breastfeeding
+  biberon:
+  - formula feeding
+  - bottle
+  diversification:
+  - solid foods
+  - weaning
+  colique:
+  - colic
+  - crying
+  dents:
+  - teething
+  sommeil:
+  - sleep
+  - sleep duration
+  écran:
+  - screen time
+  - sedentary
+  varicelle:
+  - chickenpox
+  rougeole:
+  - measles
+  coqueluche:
+  - whooping cough
+  - pertussis
+  grippe:
+  - flu
+  - influenza
+  bronchiolite:
+  - bronchiolitis
+  - RSV
+  asthme:
+  - asthma
+  - wheeze
+  pneumonie:
+  - pneumonia
+  déshydrat:
+  - dehydration
+  pipi:
+  - urine
+  - urinary tract infection
+  nouveau-né:
+  - newborn
+  - baby
+  ne répond pas:
+  - unresponsive
+  - not responding
+  - emergency department
+  ne se réveille pas:
+  - unresponsive
+  - drowsy
+  - emergency department
+  inconscient:
+  - unconscious
+  - emergency department
+  avalé une pile:
+  - swallowed battery
+  - foreign body
+  - poisoning
+  pile bouton:
+  - button battery
+  - swallowed battery
+  taches:
+  - rash
+  - spots
+  - petechiae
+  pétéchie:
+  - petechiae
+  - meningitis
+  - sepsis
+  ne disparaissent pas:
+  - do not fade
+  - glass test
+  - petechiae
+  javel:
+  - bleach
+  - poisoning
+  étouffe:
+  - choking
+  saigne:
+  - bleeding
+  brûlé:
+  - burn
+  - scald
+de_es:
+  fieber:
+  - fiebre
+  - febril
+  - temperatura
+  temperatur:
+  - fiebre
+  - febril
+  - temperatura
+  fiebert:
+  - fiebre
+  - febril
+  - temperatura
+  husten:
+  - tos
+  hustet:
+  - tos
+  erkältung:
+  - catarro
+  - resfriado
+  - mocos
+  erkaltung:
+  - catarro
+  - resfriado
+  - mocos
+  schnupfen:
+  - catarro
+  - resfriado
+  - mocos
+  nase:
+  - mocos
+  - nariz
+  nasen:
+  - mocos
+  - nariz
+  pfeifen:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  giemen:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  keuchen:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  atmen:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  atmung:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  atemnot:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  luft:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  pseudokrupp:
+  - laringitis
+  - crup
+  krupp:
+  - laringitis
+  - crup
+  bellender husten:
+  - laringitis
+  - crup
+  bronchiolitis:
+  - bronquiolitis
+  rsv:
+  - bronquiolitis
+  lungenentzündung:
+  - neumonía
+  lungenentzundung:
+  - neumonía
+  asthma:
+  - asma
+  - crisis asmática
+  asthmaanfall:
+  - asma
+  - crisis asmática
+  erbrech:
+  - vómitos
+  - vomita
+  erbricht:
+  - vómitos
+  - vomita
+  übergeben:
+  - vómitos
+  - vomita
+  durchfall:
+  - diarrea
+  - gastroenteritis
+  brechdurchfall:
+  - diarrea
+  - gastroenteritis
+  magen-darm:
+  - diarrea
+  - gastroenteritis
+  bauchschmerz:
+  - dolor abdominal
+  - barriga
+  bauchweh:
+  - dolor abdominal
+  - barriga
+  bauch:
+  - dolor abdominal
+  - barriga
+  verstopfung:
+  - estreñimiento
+  austrocknung:
+  - deshidratación
+  - suero
+  - rehidratación
+  dehydration:
+  - deshidratación
+  - suero
+  - rehidratación
+  flüssigkeitsmangel:
+  - deshidratación
+  - suero
+  - rehidratación
+  krampfanfall:
+  - convulsión
+  - convulsión febril
+  fieberkrampf:
+  - convulsión
+  - convulsión febril
+  krampf:
+  - convulsión
+  - convulsión febril
+  kopfschmerz:
+  - cefalea
+  - dolor de cabeza
+  kopfweh:
+  - cefalea
+  - dolor de cabeza
+  ohnmacht:
+  - síncope
+  - desmayo
+  kollaps:
+  - síncope
+  - desmayo
+  umgekippt:
+  - síncope
+  - desmayo
+  kopfverletzung:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  auf den kopf:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  sturz:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  gestürzt:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  gefallen:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  verbrennung:
+  - quemadura
+  verbrüh:
+  - quemadura
+  verbrannt:
+  - quemadura
+  wunde:
+  - herida
+  schnitt:
+  - herida
+  platzwunde:
+  - herida
+  blutung:
+  - sangrado
+  - herida
+  blutet:
+  - sangrado
+  - herida
+  nasenbluten:
+  - sangrado
+  - herida
+  erstick:
+  - atragantamiento
+  verschluckt sich:
+  - atragantamiento
+  atemwege verlegt:
+  - atragantamiento
+  vergiftung:
+  - intoxicación
+  - tóxico
+  giftig:
+  - intoxicación
+  - tóxico
+  gift:
+  - intoxicación
+  - tóxico
+  verschluckt:
+  - ingesta
+  - tragado
+  - intoxicación
+  geschluckt:
+  - ingesta
+  - tragado
+  - intoxicación
+  knopfzelle:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  batterie:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  allergie:
+  - alergia
+  - anafilaxia
+  allergisch:
+  - alergia
+  - anafilaxia
+  anaphyla:
+  - anafilaxia
+  anaphylaktisch:
+  - anafilaxia
+  nesselsucht:
+  - urticaria
+  - ronchas
+  - habones
+  quaddeln:
+  - urticaria
+  - ronchas
+  - habones
+  urtikaria:
+  - urticaria
+  - ronchas
+  - habones
+  ausschlag:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  hautausschlag:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  flecken:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  pünktchen:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  juckreiz:
+  - picor
+  - urticaria
+  juckt:
+  - picor
+  - urticaria
+  ohrenschmerz:
+  - oído
+  - otitis
+  ohr:
+  - oído
+  - otitis
+  mittelohrentzündung:
+  - oído
+  - otitis
+  halsschmerz:
+  - garganta
+  - faringitis
+  hals:
+  - garganta
+  - faringitis
+  mandelentzündung:
+  - garganta
+  - faringitis
+  koliken:
+  - cólico del lactante
+  - llanto
+  dreimonatskoliken:
+  - cólico del lactante
+  - llanto
+  schreit:
+  - cólico del lactante
+  - llanto
+  reflux:
+  - reflujo
+  spuckt:
+  - reflujo
+  zahnen:
+  - dentición
+  - diente
+  - dientes
+  zähne:
+  - dentición
+  - diente
+  - dientes
+  neugeboren:
+  - recién nacido
+  säugling:
+  - recién nacido
+  baby:
+  - bebé
+  - lactante
+  kleinkind:
+  - bebé
+  - lactante
+  jugendlich:
+  - adolescente
+  teenager:
+  - adolescente
+  ernährung:
+  - alimentación
+  - lactancia
+  - tomas
+  füttern:
+  - alimentación
+  - lactancia
+  - tomas
+  trinkt:
+  - alimentación
+  - lactancia
+  - tomas
+  stillen:
+  - lactancia materna
+  muttermilch:
+  - lactancia materna
+  beikost:
+  - alimentación complementaria
+  - sólidos
+  feste nahrung:
+  - alimentación complementaria
+  - sólidos
+  impfung:
+  - vacuna
+  - calendario de vacunación
+  impfkalender:
+  - vacuna
+  - calendario de vacunación
+  impfen:
+  - vacuna
+  - calendario de vacunación
+  dosis:
+  - dosis
+  - dosificación
+  dosierung:
+  - dosis
+  - dosificación
+  paracetamol:
+  - paracetamol
+  benuron:
+  - paracetamol
+  ibuprofen:
+  - ibuprofeno
+  nurofen:
+  - ibuprofeno
+  antibiotik:
+  - antibiótico
+  schlaf:
+  - sueño
+  - dormir
+  schläft:
+  - sueño
+  - dormir
+  hitzschlag:
+  - golpe de calor
+  sonnenstich:
+  - golpe de calor
+  sonne:
+  - golpe de calor
+  angst:
+  - ansiedad
+  ängstlich:
+  - ansiedad
+  selbstverletz:
+  - autolesión
+  ritzt:
+  - autolesión
+  suizid:
+  - suicida
+  - conducta suicida
+  selbstmord:
+  - suicida
+  - conducta suicida
+  leben nehmen:
+  - suicida
+  - conducta suicida
+  wachstum:
+  - crecimiento
+  - percentil
+  perzentil:
+  - crecimiento
+  - percentil
+  bildschirmzeit:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  bildschirm:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  schläfrig:
+  - somnoliento
+  - decaído
+  - adormilado
+  teilnahmslos:
+  - somnoliento
+  - decaído
+  - adormilado
+  apathisch:
+  - somnoliento
+  - decaído
+  - adormilado
+  notaufnahme:
+  - urgencias
+  - '112'
+  notfall:
+  - urgencias
+  - '112'
+de_en:
+  fieber:
+  - fever
+  - temperature
+  temperatur:
+  - fever
+  - temperature
+  fiebert:
+  - fever
+  - temperature
+  husten:
+  - cough
+  hustet:
+  - cough
+  erkältung:
+  - cold
+  - common cold
+  erkaltung:
+  - cold
+  - common cold
+  schnupfen:
+  - cold
+  - common cold
+  nase:
+  - runny nose
+  - nose
+  nasen:
+  - runny nose
+  - nose
+  pfeifen:
+  - wheezing
+  - wheeze
+  giemen:
+  - wheezing
+  - wheeze
+  keuchen:
+  - wheezing
+  - wheeze
+  atmen:
+  - breathing
+  - difficulty breathing
+  atmung:
+  - breathing
+  - difficulty breathing
+  atemnot:
+  - breathing
+  - difficulty breathing
+  luft:
+  - breathing
+  - difficulty breathing
+  pseudokrupp:
+  - croup
+  krupp:
+  - croup
+  bellender husten:
+  - croup
+  bronchiolitis:
+  - bronchiolitis
+  - rsv
+  rsv:
+  - bronchiolitis
+  - rsv
+  lungenentzündung:
+  - pneumonia
+  lungenentzundung:
+  - pneumonia
+  asthma:
+  - asthma
+  - asthma attack
+  asthmaanfall:
+  - asthma
+  - asthma attack
+  erbrech:
+  - vomiting
+  - throwing up
+  erbricht:
+  - vomiting
+  - throwing up
+  übergeben:
+  - vomiting
+  - throwing up
+  durchfall:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  brechdurchfall:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  magen-darm:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  bauchschmerz:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  bauchweh:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  bauch:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  verstopfung:
+  - constipation
+  austrocknung:
+  - dehydration
+  - oral rehydration
+  dehydration:
+  - dehydration
+  - oral rehydration
+  flüssigkeitsmangel:
+  - dehydration
+  - oral rehydration
+  krampfanfall:
+  - seizure
+  - febrile seizure
+  - convulsion
+  fieberkrampf:
+  - seizure
+  - febrile seizure
+  - convulsion
+  krampf:
+  - seizure
+  - febrile seizure
+  - convulsion
+  kopfschmerz:
+  - headache
+  kopfweh:
+  - headache
+  ohnmacht:
+  - fainting
+  - syncope
+  kollaps:
+  - fainting
+  - syncope
+  umgekippt:
+  - fainting
+  - syncope
+  kopfverletzung:
+  - head injury
+  - bump on the head
+  - concussion
+  auf den kopf:
+  - head injury
+  - bump on the head
+  - concussion
+  sturz:
+  - head injury
+  - bump on the head
+  - concussion
+  gestürzt:
+  - head injury
+  - bump on the head
+  - concussion
+  gefallen:
+  - head injury
+  - bump on the head
+  - concussion
+  verbrennung:
+  - burn
+  - scald
+  verbrüh:
+  - burn
+  - scald
+  verbrannt:
+  - burn
+  - scald
+  wunde:
+  - wound
+  - cut
+  schnitt:
+  - wound
+  - cut
+  platzwunde:
+  - wound
+  - cut
+  blutung:
+  - bleeding
+  - nosebleed
+  blutet:
+  - bleeding
+  - nosebleed
+  nasenbluten:
+  - bleeding
+  - nosebleed
+  erstick:
+  - choking
+  verschluckt sich:
+  - choking
+  atemwege verlegt:
+  - choking
+  vergiftung:
+  - poisoning
+  - toxic
+  giftig:
+  - poisoning
+  - toxic
+  gift:
+  - poisoning
+  - toxic
+  verschluckt:
+  - swallowed
+  - foreign body
+  geschluckt:
+  - swallowed
+  - foreign body
+  knopfzelle:
+  - button battery
+  - battery
+  batterie:
+  - button battery
+  - battery
+  allergie:
+  - allergy
+  - allergic reaction
+  allergisch:
+  - allergy
+  - allergic reaction
+  anaphyla:
+  - anaphylaxis
+  anaphylaktisch:
+  - anaphylaxis
+  nesselsucht:
+  - hives
+  - urticaria
+  quaddeln:
+  - hives
+  - urticaria
+  urtikaria:
+  - hives
+  - urticaria
+  ausschlag:
+  - rash
+  - spots
+  hautausschlag:
+  - rash
+  - spots
+  flecken:
+  - rash
+  - spots
+  pünktchen:
+  - rash
+  - spots
+  juckreiz:
+  - itching
+  juckt:
+  - itching
+  ohrenschmerz:
+  - earache
+  - ear infection
+  ohr:
+  - earache
+  - ear infection
+  mittelohrentzündung:
+  - earache
+  - ear infection
+  halsschmerz:
+  - sore throat
+  - tonsillitis
+  hals:
+  - sore throat
+  - tonsillitis
+  mandelentzündung:
+  - sore throat
+  - tonsillitis
+  koliken:
+  - colic
+  - crying
+  dreimonatskoliken:
+  - colic
+  - crying
+  schreit:
+  - colic
+  - crying
+  reflux:
+  - reflux
+  spuckt:
+  - reflux
+  zahnen:
+  - teething
+  zähne:
+  - teething
+  neugeboren:
+  - newborn
+  säugling:
+  - newborn
+  baby:
+  - baby
+  - infant
+  kleinkind:
+  - baby
+  - infant
+  jugendlich:
+  - teenager
+  - adolescent
+  teenager:
+  - teenager
+  - adolescent
+  ernährung:
+  - feeding
+  füttern:
+  - feeding
+  trinkt:
+  - feeding
+  stillen:
+  - breastfeeding
+  muttermilch:
+  - breastfeeding
+  beikost:
+  - solid foods
+  - weaning
+  - complementary feeding
+  feste nahrung:
+  - solid foods
+  - weaning
+  - complementary feeding
+  impfung:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  impfkalender:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  impfen:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  dosis:
+  - dose
+  - dosage
+  dosierung:
+  - dose
+  - dosage
+  paracetamol:
+  - paracetamol
+  - acetaminophen
+  benuron:
+  - paracetamol
+  - acetaminophen
+  ibuprofen:
+  - ibuprofen
+  nurofen:
+  - ibuprofen
+  antibiotik:
+  - antibiotic
+  schlaf:
+  - sleep
+  schläft:
+  - sleep
+  hitzschlag:
+  - heat stroke
+  - sun
+  sonnenstich:
+  - heat stroke
+  - sun
+  sonne:
+  - heat stroke
+  - sun
+  angst:
+  - anxiety
+  ängstlich:
+  - anxiety
+  selbstverletz:
+  - self-harm
+  ritzt:
+  - self-harm
+  suizid:
+  - suicidal
+  - suicide
+  selbstmord:
+  - suicidal
+  - suicide
+  leben nehmen:
+  - suicidal
+  - suicide
+  wachstum:
+  - growth
+  - percentile
+  perzentil:
+  - growth
+  - percentile
+  bildschirmzeit:
+  - screen time
+  bildschirm:
+  - screen time
+  schläfrig:
+  - drowsy
+  - lethargic
+  teilnahmslos:
+  - drowsy
+  - lethargic
+  apathisch:
+  - drowsy
+  - lethargic
+  notaufnahme:
+  - emergency department
+  - emergency
+  notfall:
+  - emergency department
+  - emergency
+ru_es:
+  температур:
+  - fiebre
+  - febril
+  - temperatura
+  лихорадк:
+  - fiebre
+  - febril
+  - temperatura
+  жар:
+  - fiebre
+  - febril
+  - temperatura
+  кашел:
+  - tos
+  кашля:
+  - tos
+  простуд:
+  - catarro
+  - resfriado
+  - mocos
+  насморк:
+  - catarro
+  - resfriado
+  - mocos
+  нос:
+  - mocos
+  - nariz
+  сопл:
+  - mocos
+  - nariz
+  свистящ:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  хрип:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  свист:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  дыхан:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  дыш:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  одышк:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  круп:
+  - laringitis
+  - crup
+  лающ:
+  - laringitis
+  - crup
+  бронхиолит:
+  - bronquiolitis
+  рсв:
+  - bronquiolitis
+  пневмони:
+  - neumonía
+  воспаление лёгких:
+  - neumonía
+  астм:
+  - asma
+  - crisis asmática
+  приступ астмы:
+  - asma
+  - crisis asmática
+  рвот:
+  - vómitos
+  - vomita
+  тошнит:
+  - vómitos
+  - vomita
+  вырвал:
+  - vómitos
+  - vomita
+  понос:
+  - diarrea
+  - gastroenteritis
+  диаре:
+  - diarrea
+  - gastroenteritis
+  жидкий стул:
+  - diarrea
+  - gastroenteritis
+  живот:
+  - dolor abdominal
+  - barriga
+  болит живот:
+  - dolor abdominal
+  - barriga
+  запор:
+  - estreñimiento
+  обезвожив:
+  - deshidratación
+  - suero
+  - rehidratación
+  регидратац:
+  - deshidratación
+  - suero
+  - rehidratación
+  судорог:
+  - convulsión
+  - convulsión febril
+  припадок:
+  - convulsión
+  - convulsión febril
+  приступ:
+  - convulsión
+  - convulsión febril
+  головная боль:
+  - cefalea
+  - dolor de cabeza
+  болит голова:
+  - cefalea
+  - dolor de cabeza
+  обморок:
+  - síncope
+  - desmayo
+  потерял сознание:
+  - síncope
+  - desmayo
+  ударил голов:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  упал:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  травма голов:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  ожог:
+  - quemadura
+  обжёг:
+  - quemadura
+  обжег:
+  - quemadura
+  рана:
+  - herida
+  порез:
+  - herida
+  кровотечен:
+  - sangrado
+  - herida
+  кровь идёт:
+  - sangrado
+  - herida
+  кровь идет:
+  - sangrado
+  - herida
+  подавился:
+  - atragantamiento
+  задохнул:
+  - atragantamiento
+  поперхнул:
+  - atragantamiento
+  отравлен:
+  - intoxicación
+  - tóxico
+  яд:
+  - intoxicación
+  - tóxico
+  токсич:
+  - intoxicación
+  - tóxico
+  проглотил:
+  - ingesta
+  - tragado
+  - intoxicación
+  проглотила:
+  - ingesta
+  - tragado
+  - intoxicación
+  батарейк:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  аллерг:
+  - alergia
+  - anafilaxia
+  анафилакс:
+  - anafilaxia
+  крапивниц:
+  - urticaria
+  - ronchas
+  - habones
+  волдыр:
+  - urticaria
+  - ronchas
+  - habones
+  сыпь:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  пятн:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  высыпан:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  зуд:
+  - picor
+  - urticaria
+  чешет:
+  - picor
+  - urticaria
+  ухо:
+  - oído
+  - otitis
+  ушк:
+  - oído
+  - otitis
+  отит:
+  - oído
+  - otitis
+  болит ухо:
+  - oído
+  - otitis
+  горло:
+  - garganta
+  - faringitis
+  болит горло:
+  - garganta
+  - faringitis
+  ангин:
+  - garganta
+  - faringitis
+  колик:
+  - cólico del lactante
+  - llanto
+  плачет:
+  - cólico del lactante
+  - llanto
+  рефлюкс:
+  - reflujo
+  срыгива:
+  - reflujo
+  зубы режутся:
+  - dentición
+  - diente
+  - dientes
+  прорезыван:
+  - dentición
+  - diente
+  - dientes
+  новорождён:
+  - recién nacido
+  новорожден:
+  - recién nacido
+  младенц:
+  - bebé
+  - lactante
+  грудничк:
+  - bebé
+  - lactante
+  малыш:
+  - bebé
+  - lactante
+  подростк:
+  - adolescente
+  кормлен:
+  - alimentación
+  - lactancia
+  - tomas
+  питани:
+  - alimentación
+  - lactancia
+  - tomas
+  грудное вскармлив:
+  - lactancia materna
+  кормлю грудью:
+  - lactancia materna
+  прикорм:
+  - alimentación complementaria
+  - sólidos
+  привив:
+  - vacuna
+  - calendario de vacunación
+  вакцин:
+  - vacuna
+  - calendario de vacunación
+  доз:
+  - dosis
+  - dosificación
+  парацетамол:
+  - paracetamol
+  панадол:
+  - paracetamol
+  ибупрофен:
+  - ibuprofeno
+  нурофен:
+  - ibuprofeno
+  антибиотик:
+  - antibiótico
+  сон:
+  - sueño
+  - dormir
+  спит:
+  - sueño
+  - dormir
+  тепловой удар:
+  - golpe de calor
+  солнечный удар:
+  - golpe de calor
+  перегрел:
+  - golpe de calor
+  тревог:
+  - ansiedad
+  беспокойств:
+  - ansiedad
+  самоповрежд:
+  - autolesión
+  режет себя:
+  - autolesión
+  суицид:
+  - suicida
+  - conducta suicida
+  самоубийств:
+  - suicida
+  - conducta suicida
+  хочет умереть:
+  - suicida
+  - conducta suicida
+  рост:
+  - crecimiento
+  - percentil
+  перцентил:
+  - crecimiento
+  - percentil
+  экранное время:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  экран:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  вял:
+  - somnoliento
+  - decaído
+  - adormilado
+  сонлив:
+  - somnoliento
+  - decaído
+  - adormilado
+  заторможен:
+  - somnoliento
+  - decaído
+  - adormilado
+  приёмное отделение:
+  - urgencias
+  - '112'
+  скорая:
+  - urgencias
+  - '112'
+  неотложк:
+  - urgencias
+  - '112'
+  задых:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  втягива:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  втянул:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  рёбр:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  ребр:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+ru_en:
+  температур:
+  - fever
+  - temperature
+  лихорадк:
+  - fever
+  - temperature
+  жар:
+  - fever
+  - temperature
+  кашел:
+  - cough
+  кашля:
+  - cough
+  простуд:
+  - cold
+  - common cold
+  насморк:
+  - cold
+  - common cold
+  нос:
+  - runny nose
+  - nose
+  сопл:
+  - runny nose
+  - nose
+  свистящ:
+  - wheezing
+  - wheeze
+  хрип:
+  - breathing
+  - difficulty breathing
+  свист:
+  - wheezing
+  - wheeze
+  дыхан:
+  - breathing
+  - difficulty breathing
+  дыш:
+  - breathing
+  - difficulty breathing
+  одышк:
+  - breathing
+  - difficulty breathing
+  круп:
+  - croup
+  лающ:
+  - croup
+  бронхиолит:
+  - bronchiolitis
+  - rsv
+  рсв:
+  - bronchiolitis
+  - rsv
+  пневмони:
+  - pneumonia
+  воспаление лёгких:
+  - pneumonia
+  астм:
+  - asthma
+  - asthma attack
+  приступ астмы:
+  - asthma
+  - asthma attack
+  рвот:
+  - vomiting
+  - throwing up
+  тошнит:
+  - vomiting
+  - throwing up
+  вырвал:
+  - vomiting
+  - throwing up
+  понос:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  диаре:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  жидкий стул:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  живот:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  болит живот:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  запор:
+  - constipation
+  обезвожив:
+  - dehydration
+  - oral rehydration
+  регидратац:
+  - dehydration
+  - oral rehydration
+  судорог:
+  - seizure
+  - febrile seizure
+  - convulsion
+  припадок:
+  - seizure
+  - febrile seizure
+  - convulsion
+  приступ:
+  - seizure
+  - febrile seizure
+  - convulsion
+  головная боль:
+  - headache
+  болит голова:
+  - headache
+  обморок:
+  - fainting
+  - syncope
+  потерял сознание:
+  - fainting
+  - syncope
+  ударил голов:
+  - head injury
+  - bump on the head
+  - concussion
+  упал:
+  - head injury
+  - bump on the head
+  - concussion
+  травма голов:
+  - head injury
+  - bump on the head
+  - concussion
+  ожог:
+  - burn
+  - scald
+  обжёг:
+  - burn
+  - scald
+  обжег:
+  - burn
+  - scald
+  рана:
+  - wound
+  - cut
+  порез:
+  - wound
+  - cut
+  кровотечен:
+  - bleeding
+  - nosebleed
+  кровь идёт:
+  - bleeding
+  - nosebleed
+  кровь идет:
+  - bleeding
+  - nosebleed
+  подавился:
+  - choking
+  задохнул:
+  - choking
+  поперхнул:
+  - choking
+  отравлен:
+  - poisoning
+  - toxic
+  яд:
+  - poisoning
+  - toxic
+  токсич:
+  - poisoning
+  - toxic
+  проглотил:
+  - swallowed
+  - foreign body
+  проглотила:
+  - swallowed
+  - foreign body
+  батарейк:
+  - button battery
+  - battery
+  аллерг:
+  - allergy
+  - allergic reaction
+  анафилакс:
+  - anaphylaxis
+  крапивниц:
+  - hives
+  - urticaria
+  волдыр:
+  - hives
+  - urticaria
+  сыпь:
+  - rash
+  - spots
+  пятн:
+  - rash
+  - spots
+  высыпан:
+  - rash
+  - spots
+  зуд:
+  - itching
+  чешет:
+  - itching
+  ухо:
+  - earache
+  - ear infection
+  ушк:
+  - earache
+  - ear infection
+  отит:
+  - earache
+  - ear infection
+  болит ухо:
+  - earache
+  - ear infection
+  горло:
+  - sore throat
+  - tonsillitis
+  болит горло:
+  - sore throat
+  - tonsillitis
+  ангин:
+  - sore throat
+  - tonsillitis
+  колик:
+  - colic
+  - crying
+  плачет:
+  - colic
+  - crying
+  рефлюкс:
+  - reflux
+  срыгива:
+  - reflux
+  зубы режутся:
+  - teething
+  прорезыван:
+  - teething
+  новорождён:
+  - newborn
+  новорожден:
+  - newborn
+  младенц:
+  - baby
+  - infant
+  грудничк:
+  - baby
+  - infant
+  малыш:
+  - baby
+  - infant
+  подростк:
+  - teenager
+  - adolescent
+  кормлен:
+  - feeding
+  питани:
+  - feeding
+  грудное вскармлив:
+  - breastfeeding
+  кормлю грудью:
+  - breastfeeding
+  прикорм:
+  - solid foods
+  - weaning
+  - complementary feeding
+  привив:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  вакцин:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  доз:
+  - dose
+  - dosage
+  парацетамол:
+  - paracetamol
+  - acetaminophen
+  панадол:
+  - paracetamol
+  - acetaminophen
+  ибупрофен:
+  - ibuprofen
+  нурофен:
+  - ibuprofen
+  антибиотик:
+  - antibiotic
+  сон:
+  - sleep
+  спит:
+  - sleep
+  тепловой удар:
+  - heat stroke
+  - sun
+  солнечный удар:
+  - heat stroke
+  - sun
+  перегрел:
+  - heat stroke
+  - sun
+  тревог:
+  - anxiety
+  беспокойств:
+  - anxiety
+  самоповрежд:
+  - self-harm
+  режет себя:
+  - self-harm
+  суицид:
+  - suicidal
+  - suicide
+  самоубийств:
+  - suicidal
+  - suicide
+  хочет умереть:
+  - suicidal
+  - suicide
+  рост:
+  - growth
+  - percentile
+  перцентил:
+  - growth
+  - percentile
+  экранное время:
+  - screen time
+  экран:
+  - screen time
+  вял:
+  - drowsy
+  - lethargic
+  сонлив:
+  - drowsy
+  - lethargic
+  заторможен:
+  - drowsy
+  - lethargic
+  приёмное отделение:
+  - emergency department
+  - emergency
+  скорая:
+  - emergency department
+  - emergency
+  неотложк:
+  - emergency department
+  - emergency
+  задых:
+  - breathing
+  - difficulty breathing
+  втягива:
+  - breathing
+  - difficulty breathing
+  втянул:
+  - breathing
+  - difficulty breathing
+  рёбр:
+  - breathing
+  - difficulty breathing
+  ребр:
+  - breathing
+  - difficulty breathing
+ar_es:
+  حمى:
+  - fiebre
+  - febril
+  - temperatura
+  الحمى:
+  - fiebre
+  - febril
+  - temperatura
+  حرارة:
+  - fiebre
+  - febril
+  - temperatura
+  الحرارة:
+  - fiebre
+  - febril
+  - temperatura
+  سخونة:
+  - fiebre
+  - febril
+  - temperatura
+  سعال:
+  - tos
+  السعال:
+  - tos
+  كحة:
+  - tos
+  الكحة:
+  - tos
+  زكام:
+  - catarro
+  - resfriado
+  - mocos
+  الزكام:
+  - catarro
+  - resfriado
+  - mocos
+  نزلة برد:
+  - catarro
+  - resfriado
+  - mocos
+  رشح:
+  - catarro
+  - resfriado
+  - mocos
+  أنف:
+  - mocos
+  - nariz
+  الأنف:
+  - mocos
+  - nariz
+  مخاط:
+  - mocos
+  - nariz
+  أزيز:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  الأزيز:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  صفير:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  تنفس:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  التنفس:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  يتنفس:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  خانوق:
+  - laringitis
+  - crup
+  الخانوق:
+  - laringitis
+  - crup
+  سعال نباحي:
+  - laringitis
+  - crup
+  التهاب القصيبات:
+  - bronquiolitis
+  قصيبات:
+  - bronquiolitis
+  التهاب رئوي:
+  - neumonía
+  ذات الرئة:
+  - neumonía
+  ربو:
+  - asma
+  - crisis asmática
+  الربو:
+  - asma
+  - crisis asmática
+  قيء:
+  - vómitos
+  - vomita
+  القيء:
+  - vómitos
+  - vomita
+  يتقيأ:
+  - vómitos
+  - vomita
+  استفراغ:
+  - vómitos
+  - vomita
+  إسهال:
+  - diarrea
+  - gastroenteritis
+  الإسهال:
+  - diarrea
+  - gastroenteritis
+  بطن:
+  - dolor abdominal
+  - barriga
+  البطن:
+  - dolor abdominal
+  - barriga
+  ألم في البطن:
+  - dolor abdominal
+  - barriga
+  إمساك:
+  - estreñimiento
+  الإمساك:
+  - estreñimiento
+  جفاف:
+  - deshidratación
+  - suero
+  - rehidratación
+  الجفاف:
+  - deshidratación
+  - suero
+  - rehidratación
+  محلول معالجة الجفاف:
+  - deshidratación
+  - suero
+  - rehidratación
+  تشنج:
+  - convulsión
+  - convulsión febril
+  التشنج:
+  - convulsión
+  - convulsión febril
+  اختلاج:
+  - convulsión
+  - convulsión febril
+  صداع:
+  - cefalea
+  - dolor de cabeza
+  الصداع:
+  - cefalea
+  - dolor de cabeza
+  إغماء:
+  - síncope
+  - desmayo
+  الإغماء:
+  - síncope
+  - desmayo
+  أغمي:
+  - síncope
+  - desmayo
+  ضربة في الرأس:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  سقط:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  رأس:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  الرأس:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  حرق:
+  - quemadura
+  الحرق:
+  - quemadura
+  حروق:
+  - quemadura
+  جرح:
+  - herida
+  الجرح:
+  - herida
+  قطع:
+  - herida
+  نزيف:
+  - sangrado
+  - herida
+  النزيف:
+  - sangrado
+  - herida
+  ينزف:
+  - sangrado
+  - herida
+  اختناق:
+  - atragantamiento
+  الاختناق:
+  - atragantamiento
+  شرقة:
+  - atragantamiento
+  تسمم:
+  - intoxicación
+  - tóxico
+  التسمم:
+  - intoxicación
+  - tóxico
+  سام:
+  - intoxicación
+  - tóxico
+  ابتلع:
+  - ingesta
+  - tragado
+  - intoxicación
+  ابتلعت:
+  - ingesta
+  - tragado
+  - intoxicación
+  بلع:
+  - ingesta
+  - tragado
+  - intoxicación
+  بطارية:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  البطارية:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  حساسية:
+  - alergia
+  - anafilaxia
+  الحساسية:
+  - alergia
+  - anafilaxia
+  تحسس:
+  - alergia
+  - anafilaxia
+  تأق:
+  - anafilaxia
+  صدمة تحسسية:
+  - anafilaxia
+  شرى:
+  - urticaria
+  - ronchas
+  - habones
+  الشرى:
+  - urticaria
+  - ronchas
+  - habones
+  أرتيكاريا:
+  - urticaria
+  - ronchas
+  - habones
+  طفح:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  الطفح:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  بقع:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  حكة:
+  - picor
+  - urticaria
+  الحكة:
+  - picor
+  - urticaria
+  أذن:
+  - oído
+  - otitis
+  الأذن:
+  - oído
+  - otitis
+  التهاب الأذن:
+  - oído
+  - otitis
+  حلق:
+  - garganta
+  - faringitis
+  الحلق:
+  - garganta
+  - faringitis
+  التهاب اللوزتين:
+  - garganta
+  - faringitis
+  مغص:
+  - cólico del lactante
+  - llanto
+  المغص:
+  - cólico del lactante
+  - llanto
+  بكاء:
+  - cólico del lactante
+  - llanto
+  ارتجاع:
+  - reflujo
+  الارتجاع:
+  - reflujo
+  تسنين:
+  - dentición
+  - diente
+  - dientes
+  التسنين:
+  - dentición
+  - diente
+  - dientes
+  حديث الولادة:
+  - recién nacido
+  مولود:
+  - recién nacido
+  رضيع:
+  - bebé
+  - lactante
+  الرضيع:
+  - bebé
+  - lactante
+  طفل صغير:
+  - bebé
+  - lactante
+  مراهق:
+  - adolescente
+  المراهق:
+  - adolescente
+  تغذية:
+  - alimentación
+  - lactancia
+  - tomas
+  الرضاعة:
+  - alimentación
+  - lactancia
+  - tomas
+  إطعام:
+  - alimentación
+  - lactancia
+  - tomas
+  رضاعة طبيعية:
+  - lactancia materna
+  الرضاعة الطبيعية:
+  - lactancia materna
+  أطعمة صلبة:
+  - alimentación complementaria
+  - sólidos
+  الطعام التكميلي:
+  - alimentación complementaria
+  - sólidos
+  تطعيم:
+  - vacuna
+  - calendario de vacunación
+  التطعيم:
+  - vacuna
+  - calendario de vacunación
+  لقاح:
+  - vacuna
+  - calendario de vacunación
+  اللقاح:
+  - vacuna
+  - calendario de vacunación
+  جرعة:
+  - dosis
+  - dosificación
+  الجرعة:
+  - dosis
+  - dosificación
+  باراسيتامول:
+  - paracetamol
+  بنادول:
+  - paracetamol
+  إيبوبروفين:
+  - ibuprofeno
+  بروفين:
+  - ibuprofeno
+  مضاد حيوي:
+  - antibiótico
+  المضاد الحيوي:
+  - antibiótico
+  نوم:
+  - sueño
+  - dormir
+  النوم:
+  - sueño
+  - dormir
+  ينام:
+  - sueño
+  - dormir
+  ضربة شمس:
+  - golpe de calor
+  ضربة حر:
+  - golpe de calor
+  قلق:
+  - ansiedad
+  القلق:
+  - ansiedad
+  إيذاء النفس:
+  - autolesión
+  يؤذي نفسه:
+  - autolesión
+  انتحار:
+  - suicida
+  - conducta suicida
+  الانتحار:
+  - suicida
+  - conducta suicida
+  يريد أن يموت:
+  - suicida
+  - conducta suicida
+  نمو:
+  - crecimiento
+  - percentil
+  النمو:
+  - crecimiento
+  - percentil
+  وقت الشاشة:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  الشاشات:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  خمول:
+  - somnoliento
+  - decaído
+  - adormilado
+  الخمول:
+  - somnoliento
+  - decaído
+  - adormilado
+  نعاس:
+  - somnoliento
+  - decaído
+  - adormilado
+  طوارئ:
+  - urgencias
+  - '112'
+  الطوارئ:
+  - urgencias
+  - '112'
+  حرار:
+  - fiebre
+  - febril
+  - temperatura
+  الحرار:
+  - fiebre
+  - febril
+  - temperatura
+  سخون:
+  - fiebre
+  - febril
+  - temperatura
+  الكح:
+  - tos
+  ذات الرئ:
+  - neumonía
+  شرق:
+  - atragantamiento
+  بطاري:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  البطاري:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  حساسي:
+  - alergia
+  - anafilaxia
+  الحساسي:
+  - alergia
+  - anafilaxia
+  صدمة تحسسي:
+  - anafilaxia
+  الحك:
+  - picor
+  - urticaria
+  حديث الولاد:
+  - recién nacido
+  تغذي:
+  - alimentación
+  - lactancia
+  - tomas
+  الرضاع:
+  - alimentación
+  - lactancia
+  - tomas
+  رضاعة طبيعي:
+  - lactancia materna
+  الرضاعة الطبيعي:
+  - lactancia materna
+  أطعمة صلب:
+  - alimentación complementaria
+  - sólidos
+  جرع:
+  - dosis
+  - dosificación
+  الجرع:
+  - dosis
+  - dosificación
+  وقت الشاش:
+  - pantallas
+  - sedentarismo
+  - actividad física
+ar_en:
+  حمى:
+  - fever
+  - temperature
+  الحمى:
+  - fever
+  - temperature
+  حرارة:
+  - fever
+  - temperature
+  الحرارة:
+  - fever
+  - temperature
+  سخونة:
+  - fever
+  - temperature
+  سعال:
+  - cough
+  السعال:
+  - cough
+  كحة:
+  - cough
+  الكحة:
+  - cough
+  زكام:
+  - cold
+  - common cold
+  الزكام:
+  - cold
+  - common cold
+  نزلة برد:
+  - cold
+  - common cold
+  رشح:
+  - cold
+  - common cold
+  أنف:
+  - runny nose
+  - nose
+  الأنف:
+  - runny nose
+  - nose
+  مخاط:
+  - runny nose
+  - nose
+  أزيز:
+  - wheezing
+  - wheeze
+  الأزيز:
+  - wheezing
+  - wheeze
+  صفير:
+  - wheezing
+  - wheeze
+  تنفس:
+  - breathing
+  - difficulty breathing
+  التنفس:
+  - breathing
+  - difficulty breathing
+  يتنفس:
+  - breathing
+  - difficulty breathing
+  خانوق:
+  - croup
+  الخانوق:
+  - croup
+  سعال نباحي:
+  - croup
+  التهاب القصيبات:
+  - bronchiolitis
+  - rsv
+  قصيبات:
+  - bronchiolitis
+  - rsv
+  التهاب رئوي:
+  - pneumonia
+  ذات الرئة:
+  - pneumonia
+  ربو:
+  - asthma
+  - asthma attack
+  الربو:
+  - asthma
+  - asthma attack
+  قيء:
+  - vomiting
+  - throwing up
+  القيء:
+  - vomiting
+  - throwing up
+  يتقيأ:
+  - vomiting
+  - throwing up
+  استفراغ:
+  - vomiting
+  - throwing up
+  إسهال:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  الإسهال:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  بطن:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  البطن:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  ألم في البطن:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  إمساك:
+  - constipation
+  الإمساك:
+  - constipation
+  جفاف:
+  - dehydration
+  - oral rehydration
+  الجفاف:
+  - dehydration
+  - oral rehydration
+  محلول معالجة الجفاف:
+  - dehydration
+  - oral rehydration
+  تشنج:
+  - seizure
+  - febrile seizure
+  - convulsion
+  التشنج:
+  - seizure
+  - febrile seizure
+  - convulsion
+  اختلاج:
+  - seizure
+  - febrile seizure
+  - convulsion
+  صداع:
+  - headache
+  الصداع:
+  - headache
+  إغماء:
+  - fainting
+  - syncope
+  الإغماء:
+  - fainting
+  - syncope
+  أغمي:
+  - fainting
+  - syncope
+  ضربة في الرأس:
+  - head injury
+  - bump on the head
+  - concussion
+  سقط:
+  - head injury
+  - bump on the head
+  - concussion
+  رأس:
+  - head injury
+  - bump on the head
+  - concussion
+  الرأس:
+  - head injury
+  - bump on the head
+  - concussion
+  حرق:
+  - burn
+  - scald
+  الحرق:
+  - burn
+  - scald
+  حروق:
+  - burn
+  - scald
+  جرح:
+  - wound
+  - cut
+  الجرح:
+  - wound
+  - cut
+  قطع:
+  - wound
+  - cut
+  نزيف:
+  - bleeding
+  - nosebleed
+  النزيف:
+  - bleeding
+  - nosebleed
+  ينزف:
+  - bleeding
+  - nosebleed
+  اختناق:
+  - choking
+  الاختناق:
+  - choking
+  شرقة:
+  - choking
+  تسمم:
+  - poisoning
+  - toxic
+  التسمم:
+  - poisoning
+  - toxic
+  سام:
+  - poisoning
+  - toxic
+  ابتلع:
+  - swallowed
+  - foreign body
+  ابتلعت:
+  - swallowed
+  - foreign body
+  بلع:
+  - swallowed
+  - foreign body
+  بطارية:
+  - button battery
+  - battery
+  البطارية:
+  - button battery
+  - battery
+  حساسية:
+  - allergy
+  - allergic reaction
+  الحساسية:
+  - allergy
+  - allergic reaction
+  تحسس:
+  - allergy
+  - allergic reaction
+  تأق:
+  - anaphylaxis
+  صدمة تحسسية:
+  - anaphylaxis
+  شرى:
+  - hives
+  - urticaria
+  الشرى:
+  - hives
+  - urticaria
+  أرتيكاريا:
+  - hives
+  - urticaria
+  طفح:
+  - rash
+  - spots
+  الطفح:
+  - rash
+  - spots
+  بقع:
+  - rash
+  - spots
+  حكة:
+  - itching
+  الحكة:
+  - itching
+  أذن:
+  - earache
+  - ear infection
+  الأذن:
+  - earache
+  - ear infection
+  التهاب الأذن:
+  - earache
+  - ear infection
+  حلق:
+  - sore throat
+  - tonsillitis
+  الحلق:
+  - sore throat
+  - tonsillitis
+  التهاب اللوزتين:
+  - sore throat
+  - tonsillitis
+  مغص:
+  - colic
+  - crying
+  المغص:
+  - colic
+  - crying
+  بكاء:
+  - colic
+  - crying
+  ارتجاع:
+  - reflux
+  الارتجاع:
+  - reflux
+  تسنين:
+  - teething
+  التسنين:
+  - teething
+  حديث الولادة:
+  - newborn
+  مولود:
+  - newborn
+  رضيع:
+  - baby
+  - infant
+  الرضيع:
+  - baby
+  - infant
+  طفل صغير:
+  - baby
+  - infant
+  مراهق:
+  - teenager
+  - adolescent
+  المراهق:
+  - teenager
+  - adolescent
+  تغذية:
+  - feeding
+  الرضاعة:
+  - feeding
+  إطعام:
+  - feeding
+  رضاعة طبيعية:
+  - breastfeeding
+  الرضاعة الطبيعية:
+  - breastfeeding
+  أطعمة صلبة:
+  - solid foods
+  - weaning
+  - complementary feeding
+  الطعام التكميلي:
+  - solid foods
+  - weaning
+  - complementary feeding
+  تطعيم:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  التطعيم:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  لقاح:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  اللقاح:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  جرعة:
+  - dose
+  - dosage
+  الجرعة:
+  - dose
+  - dosage
+  باراسيتامول:
+  - paracetamol
+  - acetaminophen
+  بنادول:
+  - paracetamol
+  - acetaminophen
+  إيبوبروفين:
+  - ibuprofen
+  بروفين:
+  - ibuprofen
+  مضاد حيوي:
+  - antibiotic
+  المضاد الحيوي:
+  - antibiotic
+  نوم:
+  - sleep
+  النوم:
+  - sleep
+  ينام:
+  - sleep
+  ضربة شمس:
+  - heat stroke
+  - sun
+  ضربة حر:
+  - heat stroke
+  - sun
+  قلق:
+  - anxiety
+  القلق:
+  - anxiety
+  إيذاء النفس:
+  - self-harm
+  يؤذي نفسه:
+  - self-harm
+  انتحار:
+  - suicidal
+  - suicide
+  الانتحار:
+  - suicidal
+  - suicide
+  يريد أن يموت:
+  - suicidal
+  - suicide
+  نمو:
+  - growth
+  - percentile
+  النمو:
+  - growth
+  - percentile
+  وقت الشاشة:
+  - screen time
+  الشاشات:
+  - screen time
+  خمول:
+  - drowsy
+  - lethargic
+  الخمول:
+  - drowsy
+  - lethargic
+  نعاس:
+  - drowsy
+  - lethargic
+  طوارئ:
+  - emergency department
+  - emergency
+  الطوارئ:
+  - emergency department
+  - emergency
+  حرار:
+  - fever
+  - temperature
+  الحرار:
+  - fever
+  - temperature
+  سخون:
+  - fever
+  - temperature
+  الكح:
+  - cough
+  ذات الرئ:
+  - pneumonia
+  شرق:
+  - choking
+  بطاري:
+  - button battery
+  - battery
+  البطاري:
+  - button battery
+  - battery
+  حساسي:
+  - allergy
+  - allergic reaction
+  الحساسي:
+  - allergy
+  - allergic reaction
+  صدمة تحسسي:
+  - anaphylaxis
+  الحك:
+  - itching
+  حديث الولاد:
+  - newborn
+  تغذي:
+  - feeding
+  الرضاع:
+  - feeding
+  رضاعة طبيعي:
+  - breastfeeding
+  الرضاعة الطبيعي:
+  - breastfeeding
+  أطعمة صلب:
+  - solid foods
+  - weaning
+  - complementary feeding
+  جرع:
+  - dose
+  - dosage
+  الجرع:
+  - dose
+  - dosage
+  وقت الشاش:
+  - screen time
+pt_es:
+  febre:
+  - fiebre
+  - febril
+  - temperatura
+  febril:
+  - fiebre
+  - febril
+  - temperatura
+  temperatura:
+  - fiebre
+  - febril
+  - temperatura
+  tosse:
+  - tos
+  tossindo:
+  - tos
+  resfriado:
+  - catarro
+  - resfriado
+  - mocos
+  gripe:
+  - catarro
+  - resfriado
+  - mocos
+  constipação:
+  - catarro
+  - resfriado
+  - mocos
+  nariz:
+  - mocos
+  - nariz
+  coriza:
+  - mocos
+  - nariz
+  chiado:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  chiando:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  respirar:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  respiração:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  respiracao:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  crupe:
+  - laringitis
+  - crup
+  laringite:
+  - laringitis
+  - crup
+  tosse de cachorro:
+  - laringitis
+  - crup
+  bronquiolite:
+  - bronquiolitis
+  vsr:
+  - bronquiolitis
+  pneumonia:
+  - neumonía
+  asma:
+  - asma
+  - crisis asmática
+  crise de asma:
+  - asma
+  - crisis asmática
+  vômito:
+  - vómitos
+  - vomita
+  vomito:
+  - vómitos
+  - vomita
+  vomitando:
+  - vómitos
+  - vomita
+  diarreia:
+  - diarrea
+  - gastroenteritis
+  diarréia:
+  - diarrea
+  - gastroenteritis
+  barriga:
+  - dolor abdominal
+  - barriga
+  dor de barriga:
+  - dolor abdominal
+  - barriga
+  abdominal:
+  - dolor abdominal
+  - barriga
+  prisão de ventre:
+  - estreñimiento
+  constipação intestinal:
+  - estreñimiento
+  intestino preso:
+  - estreñimiento
+  desidratação:
+  - deshidratación
+  - suero
+  - rehidratación
+  desidratacao:
+  - deshidratación
+  - suero
+  - rehidratación
+  soro:
+  - deshidratación
+  - suero
+  - rehidratación
+  convulsão:
+  - convulsión
+  - convulsión febril
+  convulsao:
+  - convulsión
+  - convulsión febril
+  crise convulsiva:
+  - convulsión
+  - convulsión febril
+  dor de cabeça:
+  - cefalea
+  - dolor de cabeza
+  cefaleia:
+  - cefalea
+  - dolor de cabeza
+  desmaio:
+  - síncope
+  - desmayo
+  desmaiou:
+  - síncope
+  - desmayo
+  bateu a cabeça:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  caiu:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  cabeça:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  queimadura:
+  - quemadura
+  queimou:
+  - quemadura
+  ferida:
+  - herida
+  corte:
+  - herida
+  cortou:
+  - herida
+  sangramento:
+  - sangrado
+  - herida
+  sangrando:
+  - sangrado
+  - herida
+  sangue:
+  - sangrado
+  - herida
+  engasgo:
+  - atragantamiento
+  engasgou:
+  - atragantamiento
+  intoxicação:
+  - intoxicación
+  - tóxico
+  envenenamento:
+  - intoxicación
+  - tóxico
+  tóxico:
+  - intoxicación
+  - tóxico
+  engoliu:
+  - ingesta
+  - tragado
+  - intoxicación
+  pilha:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  bateria:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  alergia:
+  - alergia
+  - anafilaxia
+  alérgic:
+  - alergia
+  - anafilaxia
+  anafilaxia:
+  - anafilaxia
+  urticária:
+  - urticaria
+  - ronchas
+  - habones
+  urticaria:
+  - urticaria
+  - ronchas
+  - habones
+  erupção:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  manchas:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  brotoeja:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  coceira:
+  - picor
+  - urticaria
+  coçando:
+  - picor
+  - urticaria
+  dor de ouvido:
+  - oído
+  - otitis
+  ouvido:
+  - oído
+  - otitis
+  otite:
+  - oído
+  - otitis
+  dor de garganta:
+  - garganta
+  - faringitis
+  garganta:
+  - garganta
+  - faringitis
+  amigdalite:
+  - garganta
+  - faringitis
+  cólica:
+  - cólico del lactante
+  - llanto
+  colica:
+  - cólico del lactante
+  - llanto
+  chorando:
+  - cólico del lactante
+  - llanto
+  refluxo:
+  - reflujo
+  golfando:
+  - reflujo
+  nascendo dente:
+  - dentición
+  - diente
+  - dientes
+  dentição:
+  - dentición
+  - diente
+  - dientes
+  recém-nascido:
+  - recién nacido
+  recem-nascido:
+  - recién nacido
+  bebê:
+  - bebé
+  - lactante
+  bebe:
+  - bebé
+  - lactante
+  adolescente:
+  - adolescente
+  alimentação:
+  - alimentación
+  - lactancia
+  - tomas
+  mamada:
+  - alimentación
+  - lactancia
+  - tomas
+  amamentação:
+  - lactancia materna
+  amamentar:
+  - lactancia materna
+  alimentação complementar:
+  - alimentación complementaria
+  - sólidos
+  papinha:
+  - alimentación complementaria
+  - sólidos
+  introdução alimentar:
+  - alimentación complementaria
+  - sólidos
+  vacina:
+  - vacuna
+  - calendario de vacunación
+  vacinação:
+  - vacuna
+  - calendario de vacunación
+  calendário vacinal:
+  - vacuna
+  - calendario de vacunación
+  dose:
+  - dosis
+  - dosificación
+  dosagem:
+  - dosis
+  - dosificación
+  paracetamol:
+  - paracetamol
+  tylenol:
+  - paracetamol
+  ibuprofeno:
+  - ibuprofeno
+  antibiótico:
+  - antibiótico
+  antibiotico:
+  - antibiótico
+  sono:
+  - sueño
+  - dormir
+  dormir:
+  - sueño
+  - dormir
+  insolação:
+  - golpe de calor
+  golpe de calor:
+  - golpe de calor
+  sol:
+  - golpe de calor
+  ansiedade:
+  - ansiedad
+  ansioso:
+  - ansiedad
+  automutilação:
+  - autolesión
+  se cortando:
+  - autolesión
+  suicídio:
+  - suicida
+  - conducta suicida
+  suicida:
+  - suicida
+  - conducta suicida
+  quer morrer:
+  - suicida
+  - conducta suicida
+  crescimento:
+  - crecimiento
+  - percentil
+  percentil:
+  - crecimiento
+  - percentil
+  tempo de tela:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  telas:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  sonolento:
+  - somnoliento
+  - decaído
+  - adormilado
+  prostrado:
+  - somnoliento
+  - decaído
+  - adormilado
+  molinho:
+  - somnoliento
+  - decaído
+  - adormilado
+  pronto-socorro:
+  - urgencias
+  - '112'
+  emergência:
+  - urgencias
+  - '112'
+  urgência:
+  - urgencias
+  - '112'
+pt_en:
+  febre:
+  - fever
+  - temperature
+  febril:
+  - fever
+  - temperature
+  temperatura:
+  - fever
+  - temperature
+  tosse:
+  - cough
+  tossindo:
+  - cough
+  resfriado:
+  - cold
+  - common cold
+  gripe:
+  - cold
+  - common cold
+  constipação:
+  - cold
+  - common cold
+  nariz:
+  - runny nose
+  - nose
+  coriza:
+  - runny nose
+  - nose
+  chiado:
+  - wheezing
+  - wheeze
+  chiando:
+  - wheezing
+  - wheeze
+  respirar:
+  - breathing
+  - difficulty breathing
+  respiração:
+  - breathing
+  - difficulty breathing
+  respiracao:
+  - breathing
+  - difficulty breathing
+  crupe:
+  - croup
+  laringite:
+  - croup
+  tosse de cachorro:
+  - croup
+  bronquiolite:
+  - bronchiolitis
+  - rsv
+  vsr:
+  - bronchiolitis
+  - rsv
+  pneumonia:
+  - pneumonia
+  asma:
+  - asthma
+  - asthma attack
+  crise de asma:
+  - asthma
+  - asthma attack
+  vômito:
+  - vomiting
+  - throwing up
+  vomito:
+  - vomiting
+  - throwing up
+  vomitando:
+  - vomiting
+  - throwing up
+  diarreia:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  diarréia:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  barriga:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  dor de barriga:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  abdominal:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  prisão de ventre:
+  - constipation
+  constipação intestinal:
+  - constipation
+  intestino preso:
+  - constipation
+  desidratação:
+  - dehydration
+  - oral rehydration
+  desidratacao:
+  - dehydration
+  - oral rehydration
+  soro:
+  - dehydration
+  - oral rehydration
+  convulsão:
+  - seizure
+  - febrile seizure
+  - convulsion
+  convulsao:
+  - seizure
+  - febrile seizure
+  - convulsion
+  crise convulsiva:
+  - seizure
+  - febrile seizure
+  - convulsion
+  dor de cabeça:
+  - headache
+  cefaleia:
+  - headache
+  desmaio:
+  - fainting
+  - syncope
+  desmaiou:
+  - fainting
+  - syncope
+  bateu a cabeça:
+  - head injury
+  - bump on the head
+  - concussion
+  caiu:
+  - head injury
+  - bump on the head
+  - concussion
+  cabeça:
+  - head injury
+  - bump on the head
+  - concussion
+  queimadura:
+  - burn
+  - scald
+  queimou:
+  - burn
+  - scald
+  ferida:
+  - wound
+  - cut
+  corte:
+  - wound
+  - cut
+  cortou:
+  - wound
+  - cut
+  sangramento:
+  - bleeding
+  - nosebleed
+  sangrando:
+  - bleeding
+  - nosebleed
+  sangue:
+  - bleeding
+  - nosebleed
+  engasgo:
+  - choking
+  engasgou:
+  - choking
+  intoxicação:
+  - poisoning
+  - toxic
+  envenenamento:
+  - poisoning
+  - toxic
+  tóxico:
+  - poisoning
+  - toxic
+  engoliu:
+  - swallowed
+  - foreign body
+  pilha:
+  - button battery
+  - battery
+  bateria:
+  - button battery
+  - battery
+  alergia:
+  - allergy
+  - allergic reaction
+  alérgic:
+  - allergy
+  - allergic reaction
+  anafilaxia:
+  - anaphylaxis
+  urticária:
+  - hives
+  - urticaria
+  urticaria:
+  - hives
+  - urticaria
+  erupção:
+  - rash
+  - spots
+  manchas:
+  - rash
+  - spots
+  brotoeja:
+  - rash
+  - spots
+  coceira:
+  - itching
+  coçando:
+  - itching
+  dor de ouvido:
+  - earache
+  - ear infection
+  ouvido:
+  - earache
+  - ear infection
+  otite:
+  - earache
+  - ear infection
+  dor de garganta:
+  - sore throat
+  - tonsillitis
+  garganta:
+  - sore throat
+  - tonsillitis
+  amigdalite:
+  - sore throat
+  - tonsillitis
+  cólica:
+  - colic
+  - crying
+  colica:
+  - colic
+  - crying
+  chorando:
+  - colic
+  - crying
+  refluxo:
+  - reflux
+  golfando:
+  - reflux
+  nascendo dente:
+  - teething
+  dentição:
+  - teething
+  recém-nascido:
+  - newborn
+  recem-nascido:
+  - newborn
+  bebê:
+  - baby
+  - infant
+  bebe:
+  - baby
+  - infant
+  adolescente:
+  - teenager
+  - adolescent
+  alimentação:
+  - feeding
+  mamada:
+  - feeding
+  amamentação:
+  - breastfeeding
+  amamentar:
+  - breastfeeding
+  alimentação complementar:
+  - solid foods
+  - weaning
+  - complementary feeding
+  papinha:
+  - solid foods
+  - weaning
+  - complementary feeding
+  introdução alimentar:
+  - solid foods
+  - weaning
+  - complementary feeding
+  vacina:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  vacinação:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  calendário vacinal:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  dose:
+  - dose
+  - dosage
+  dosagem:
+  - dose
+  - dosage
+  paracetamol:
+  - paracetamol
+  - acetaminophen
+  tylenol:
+  - paracetamol
+  - acetaminophen
+  ibuprofeno:
+  - ibuprofen
+  antibiótico:
+  - antibiotic
+  antibiotico:
+  - antibiotic
+  sono:
+  - sleep
+  dormir:
+  - sleep
+  insolação:
+  - heat stroke
+  - sun
+  golpe de calor:
+  - heat stroke
+  - sun
+  sol:
+  - heat stroke
+  - sun
+  ansiedade:
+  - anxiety
+  ansioso:
+  - anxiety
+  automutilação:
+  - self-harm
+  se cortando:
+  - self-harm
+  suicídio:
+  - suicidal
+  - suicide
+  suicida:
+  - suicidal
+  - suicide
+  quer morrer:
+  - suicidal
+  - suicide
+  crescimento:
+  - growth
+  - percentile
+  percentil:
+  - growth
+  - percentile
+  tempo de tela:
+  - screen time
+  telas:
+  - screen time
+  sonolento:
+  - drowsy
+  - lethargic
+  prostrado:
+  - drowsy
+  - lethargic
+  molinho:
+  - drowsy
+  - lethargic
+  pronto-socorro:
+  - emergency department
+  - emergency
+  emergência:
+  - emergency department
+  - emergency
+  urgência:
+  - emergency department
+  - emergency
+hi_es:
+  बुखार:
+  - fiebre
+  - febril
+  - temperatura
+  बुख़ार:
+  - fiebre
+  - febril
+  - temperatura
+  ज्वर:
+  - fiebre
+  - febril
+  - temperatura
+  bukhar:
+  - fiebre
+  - febril
+  - temperatura
+  bukhaar:
+  - fiebre
+  - febril
+  - temperatura
+  खाँसी:
+  - tos
+  खांसी:
+  - tos
+  khansi:
+  - tos
+  khaansi:
+  - tos
+  ज़ुकाम:
+  - catarro
+  - resfriado
+  - mocos
+  जुकाम:
+  - catarro
+  - resfriado
+  - mocos
+  सर्दी:
+  - catarro
+  - resfriado
+  - mocos
+  zukam:
+  - catarro
+  - resfriado
+  - mocos
+  sardi:
+  - catarro
+  - resfriado
+  - mocos
+  नाक:
+  - mocos
+  - nariz
+  naak:
+  - mocos
+  - nariz
+  सीटी:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  घरघर:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  seeti:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  gharghar:
+  - sibilancias
+  - pitos
+  - asma
+  - bronquiolitis
+  साँस:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  सांस:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  saans:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  sans:
+  - respirar
+  - respiración
+  - dificultad respiratoria
+  लैरिंगाइटिस:
+  - laringitis
+  - crup
+  भौंकने वाली खाँसी:
+  - laringitis
+  - crup
+  kutte jaisi khansi:
+  - laringitis
+  - crup
+  ब्रोंकियोलाइटिस:
+  - bronquiolitis
+  bronkiyolaitis:
+  - bronquiolitis
+  निमोनिया:
+  - neumonía
+  nimoniya:
+  - neumonía
+  दमा:
+  - asma
+  - crisis asmática
+  अस्थमा:
+  - asma
+  - crisis asmática
+  dama:
+  - asma
+  - crisis asmática
+  asthma:
+  - asma
+  - crisis asmática
+  उल्टी:
+  - vómitos
+  - vomita
+  उलटी:
+  - vómitos
+  - vomita
+  ulti:
+  - vómitos
+  - vomita
+  ultee:
+  - vómitos
+  - vomita
+  दस्त:
+  - diarrea
+  - gastroenteritis
+  डायरिया:
+  - diarrea
+  - gastroenteritis
+  dast:
+  - diarrea
+  - gastroenteritis
+  dayriya:
+  - diarrea
+  - gastroenteritis
+  पेट:
+  - dolor abdominal
+  - barriga
+  पेट दर्द:
+  - dolor abdominal
+  - barriga
+  pet dard:
+  - dolor abdominal
+  - barriga
+  कब्ज:
+  - estreñimiento
+  क़ब्ज़:
+  - estreñimiento
+  kabz:
+  - estreñimiento
+  निर्जलीकरण:
+  - deshidratación
+  - suero
+  - rehidratación
+  पानी की कमी:
+  - deshidratación
+  - suero
+  - rehidratación
+  ors:
+  - deshidratación
+  - suero
+  - rehidratación
+  दौरा:
+  - convulsión
+  - convulsión febril
+  झटके:
+  - convulsión
+  - convulsión febril
+  daura:
+  - convulsión
+  - convulsión febril
+  jhatke:
+  - convulsión
+  - convulsión febril
+  सिरदर्द:
+  - cefalea
+  - dolor de cabeza
+  सिर दर्द:
+  - cefalea
+  - dolor de cabeza
+  sir dard:
+  - cefalea
+  - dolor de cabeza
+  बेहोश:
+  - síncope
+  - desmayo
+  चक्कर:
+  - síncope
+  - desmayo
+  behosh:
+  - síncope
+  - desmayo
+  chakkar:
+  - síncope
+  - desmayo
+  सिर पर चोट:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  गिर:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  sir par chot:
+  - cabeza
+  - traumatismo craneal
+  - golpe
+  जल गया:
+  - quemadura
+  जलन:
+  - quemadura
+  jal gaya:
+  - quemadura
+  घाव:
+  - herida
+  कट:
+  - herida
+  ghaav:
+  - herida
+  ख़ून:
+  - sangrado
+  - herida
+  खून:
+  - sangrado
+  - herida
+  khoon:
+  - sangrado
+  - herida
+  गला अटक:
+  - atragantamiento
+  दम घुट:
+  - atragantamiento
+  gala atak:
+  - atragantamiento
+  ज़हर:
+  - intoxicación
+  - tóxico
+  जहर:
+  - intoxicación
+  - tóxico
+  विषाक्त:
+  - intoxicación
+  - tóxico
+  zahar:
+  - intoxicación
+  - tóxico
+  निगल:
+  - ingesta
+  - tragado
+  - intoxicación
+  nigal:
+  - ingesta
+  - tragado
+  - intoxicación
+  बटन सेल:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  बैटरी:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  battery:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  button cell:
+  - pila
+  - cuerpo extraño
+  - intoxicación
+  एलर्जी:
+  - alergia
+  - anafilaxia
+  elarji:
+  - alergia
+  - anafilaxia
+  allergy:
+  - alergia
+  - anafilaxia
+  एनाफिलेक्सिस:
+  - anafilaxia
+  anaphylaxis:
+  - anafilaxia
+  पित्ती:
+  - urticaria
+  - ronchas
+  - habones
+  pitti:
+  - urticaria
+  - ronchas
+  - habones
+  दाने:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  चकत्ते:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  daane:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  chakatte:
+  - exantema
+  - manchas
+  - urticaria
+  - piel
+  खुजली:
+  - picor
+  - urticaria
+  khujli:
+  - picor
+  - urticaria
+  कान:
+  - oído
+  - otitis
+  कान दर्द:
+  - oído
+  - otitis
+  kaan dard:
+  - oído
+  - otitis
+  गले:
+  - garganta
+  - faringitis
+  गला:
+  - garganta
+  - faringitis
+  gale men dard:
+  - garganta
+  - faringitis
+  पेट का दर्द:
+  - cólico del lactante
+  - llanto
+  रोता:
+  - cólico del lactante
+  - llanto
+  rota rehta:
+  - cólico del lactante
+  - llanto
+  रिफ्लक्स:
+  - reflujo
+  riflaks:
+  - reflujo
+  दाँत निकल:
+  - dentición
+  - diente
+  - dientes
+  daant nikal:
+  - dentición
+  - diente
+  - dientes
+  नवजात:
+  - recién nacido
+  navjat:
+  - recién nacido
+  शिशु:
+  - bebé
+  - lactante
+  बच्चा:
+  - bebé
+  - lactante
+  shishu:
+  - bebé
+  - lactante
+  bachcha:
+  - bebé
+  - lactante
+  किशोर:
+  - adolescente
+  kishor:
+  - adolescente
+  दूध:
+  - alimentación
+  - lactancia
+  - tomas
+  खाना:
+  - alimentación
+  - lactancia
+  - tomas
+  doodh:
+  - alimentación
+  - lactancia
+  - tomas
+  स्तनपान:
+  - lactancia materna
+  stanpan:
+  - lactancia materna
+  ठोस आहार:
+  - alimentación complementaria
+  - sólidos
+  ऊपरी आहार:
+  - alimentación complementaria
+  - sólidos
+  thos aahar:
+  - alimentación complementaria
+  - sólidos
+  टीका:
+  - vacuna
+  - calendario de vacunación
+  टीके:
+  - vacuna
+  - calendario de vacunación
+  वैक्सीन:
+  - vacuna
+  - calendario de vacunación
+  teeka:
+  - vacuna
+  - calendario de vacunación
+  vaccine:
+  - vacuna
+  - calendario de vacunación
+  खुराक:
+  - dosis
+  - dosificación
+  डोज़:
+  - dosis
+  - dosificación
+  khurak:
+  - dosis
+  - dosificación
+  dose:
+  - dosis
+  - dosificación
+  पैरासिटामोल:
+  - paracetamol
+  क्रोसिन:
+  - paracetamol
+  paracetamol:
+  - paracetamol
+  calpol:
+  - paracetamol
+  crocin:
+  - paracetamol
+  dolo:
+  - paracetamol
+  आइबुप्रोफ़ेन:
+  - ibuprofeno
+  ibuprofen:
+  - ibuprofeno
+  brufen:
+  - ibuprofeno
+  एंटीबायोटिक:
+  - antibiótico
+  antibiotic:
+  - antibiótico
+  नींद:
+  - sueño
+  - dormir
+  सोता:
+  - sueño
+  - dormir
+  neend:
+  - sueño
+  - dormir
+  लू:
+  - golpe de calor
+  धूप:
+  - golpe de calor
+  loo lagna:
+  - golpe de calor
+  चिंता:
+  - ansiedad
+  घबराहट:
+  - ansiedad
+  chinta:
+  - ansiedad
+  ख़ुद को नुकसान:
+  - autolesión
+  खुद को काट:
+  - autolesión
+  khud ko nuksan:
+  - autolesión
+  आत्महत्या:
+  - suicida
+  - conducta suicida
+  मरना चाहता:
+  - suicida
+  - conducta suicida
+  atmahatya:
+  - suicida
+  - conducta suicida
+  विकास:
+  - crecimiento
+  - percentil
+  बढ़:
+  - crecimiento
+  - percentil
+  vikas:
+  - crecimiento
+  - percentil
+  स्क्रीन:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  skreen:
+  - pantallas
+  - sedentarismo
+  - actividad física
+  सुस्त:
+  - somnoliento
+  - decaído
+  - adormilado
+  बेहोशी जैसा:
+  - somnoliento
+  - decaído
+  - adormilado
+  sust:
+  - somnoliento
+  - decaído
+  - adormilado
+  इमरजेंसी:
+  - urgencias
+  - '112'
+  आपातकाल:
+  - urgencias
+  - '112'
+  imarjensi:
+  - urgencias
+  - '112'
+hi_en:
+  बुखार:
+  - fever
+  - temperature
+  बुख़ार:
+  - fever
+  - temperature
+  ज्वर:
+  - fever
+  - temperature
+  bukhar:
+  - fever
+  - temperature
+  bukhaar:
+  - fever
+  - temperature
+  खाँसी:
+  - cough
+  खांसी:
+  - cough
+  khansi:
+  - cough
+  khaansi:
+  - cough
+  ज़ुकाम:
+  - cold
+  - common cold
+  जुकाम:
+  - cold
+  - common cold
+  सर्दी:
+  - cold
+  - common cold
+  zukam:
+  - cold
+  - common cold
+  sardi:
+  - cold
+  - common cold
+  नाक:
+  - runny nose
+  - nose
+  naak:
+  - runny nose
+  - nose
+  सीटी:
+  - wheezing
+  - wheeze
+  घरघर:
+  - wheezing
+  - wheeze
+  seeti:
+  - wheezing
+  - wheeze
+  gharghar:
+  - wheezing
+  - wheeze
+  साँस:
+  - breathing
+  - difficulty breathing
+  सांस:
+  - breathing
+  - difficulty breathing
+  saans:
+  - breathing
+  - difficulty breathing
+  sans:
+  - breathing
+  - difficulty breathing
+  लैरिंगाइटिस:
+  - croup
+  भौंकने वाली खाँसी:
+  - croup
+  kutte jaisi khansi:
+  - croup
+  ब्रोंकियोलाइटिस:
+  - bronchiolitis
+  - rsv
+  bronkiyolaitis:
+  - bronchiolitis
+  - rsv
+  निमोनिया:
+  - pneumonia
+  nimoniya:
+  - pneumonia
+  दमा:
+  - asthma
+  - asthma attack
+  अस्थमा:
+  - asthma
+  - asthma attack
+  dama:
+  - asthma
+  - asthma attack
+  asthma:
+  - asthma
+  - asthma attack
+  उल्टी:
+  - vomiting
+  - throwing up
+  उलटी:
+  - vomiting
+  - throwing up
+  ulti:
+  - vomiting
+  - throwing up
+  ultee:
+  - vomiting
+  - throwing up
+  दस्त:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  डायरिया:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  dast:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  dayriya:
+  - diarrhoea
+  - diarrhea
+  - gastroenteritis
+  पेट:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  पेट दर्द:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  pet dard:
+  - stomach ache
+  - tummy pain
+  - abdominal pain
+  कब्ज:
+  - constipation
+  क़ब्ज़:
+  - constipation
+  kabz:
+  - constipation
+  निर्जलीकरण:
+  - dehydration
+  - oral rehydration
+  पानी की कमी:
+  - dehydration
+  - oral rehydration
+  ors:
+  - dehydration
+  - oral rehydration
+  दौरा:
+  - seizure
+  - febrile seizure
+  - convulsion
+  झटके:
+  - seizure
+  - febrile seizure
+  - convulsion
+  daura:
+  - seizure
+  - febrile seizure
+  - convulsion
+  jhatke:
+  - seizure
+  - febrile seizure
+  - convulsion
+  सिरदर्द:
+  - headache
+  सिर दर्द:
+  - headache
+  sir dard:
+  - headache
+  बेहोश:
+  - fainting
+  - syncope
+  चक्कर:
+  - fainting
+  - syncope
+  behosh:
+  - fainting
+  - syncope
+  chakkar:
+  - fainting
+  - syncope
+  सिर पर चोट:
+  - head injury
+  - bump on the head
+  - concussion
+  गिर:
+  - head injury
+  - bump on the head
+  - concussion
+  sir par chot:
+  - head injury
+  - bump on the head
+  - concussion
+  जल गया:
+  - burn
+  - scald
+  जलन:
+  - burn
+  - scald
+  jal gaya:
+  - burn
+  - scald
+  घाव:
+  - wound
+  - cut
+  कट:
+  - wound
+  - cut
+  ghaav:
+  - wound
+  - cut
+  ख़ून:
+  - bleeding
+  - nosebleed
+  खून:
+  - bleeding
+  - nosebleed
+  khoon:
+  - bleeding
+  - nosebleed
+  गला अटक:
+  - choking
+  दम घुट:
+  - choking
+  gala atak:
+  - choking
+  ज़हर:
+  - poisoning
+  - toxic
+  जहर:
+  - poisoning
+  - toxic
+  विषाक्त:
+  - poisoning
+  - toxic
+  zahar:
+  - poisoning
+  - toxic
+  निगल:
+  - swallowed
+  - foreign body
+  nigal:
+  - swallowed
+  - foreign body
+  बटन सेल:
+  - button battery
+  - battery
+  बैटरी:
+  - button battery
+  - battery
+  battery:
+  - button battery
+  - battery
+  button cell:
+  - button battery
+  - battery
+  एलर्जी:
+  - allergy
+  - allergic reaction
+  elarji:
+  - allergy
+  - allergic reaction
+  allergy:
+  - allergy
+  - allergic reaction
+  एनाफिलेक्सिस:
+  - anaphylaxis
+  anaphylaxis:
+  - anaphylaxis
+  पित्ती:
+  - hives
+  - urticaria
+  pitti:
+  - hives
+  - urticaria
+  दाने:
+  - rash
+  - spots
+  चकत्ते:
+  - rash
+  - spots
+  daane:
+  - rash
+  - spots
+  chakatte:
+  - rash
+  - spots
+  खुजली:
+  - itching
+  khujli:
+  - itching
+  कान:
+  - earache
+  - ear infection
+  कान दर्द:
+  - earache
+  - ear infection
+  kaan dard:
+  - earache
+  - ear infection
+  गले:
+  - sore throat
+  - tonsillitis
+  गला:
+  - sore throat
+  - tonsillitis
+  gale men dard:
+  - sore throat
+  - tonsillitis
+  पेट का दर्द:
+  - colic
+  - crying
+  रोता:
+  - colic
+  - crying
+  rota rehta:
+  - colic
+  - crying
+  रिफ्लक्स:
+  - reflux
+  riflaks:
+  - reflux
+  दाँत निकल:
+  - teething
+  daant nikal:
+  - teething
+  नवजात:
+  - newborn
+  navjat:
+  - newborn
+  शिशु:
+  - baby
+  - infant
+  बच्चा:
+  - baby
+  - infant
+  shishu:
+  - baby
+  - infant
+  bachcha:
+  - baby
+  - infant
+  किशोर:
+  - teenager
+  - adolescent
+  kishor:
+  - teenager
+  - adolescent
+  दूध:
+  - feeding
+  खाना:
+  - feeding
+  doodh:
+  - feeding
+  स्तनपान:
+  - breastfeeding
+  stanpan:
+  - breastfeeding
+  ठोस आहार:
+  - solid foods
+  - weaning
+  - complementary feeding
+  ऊपरी आहार:
+  - solid foods
+  - weaning
+  - complementary feeding
+  thos aahar:
+  - solid foods
+  - weaning
+  - complementary feeding
+  टीका:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  टीके:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  वैक्सीन:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  teeka:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  vaccine:
+  - vaccine
+  - vaccination schedule
+  - immunisation
+  खुराक:
+  - dose
+  - dosage
+  डोज़:
+  - dose
+  - dosage
+  khurak:
+  - dose
+  - dosage
+  dose:
+  - dose
+  - dosage
+  पैरासिटामोल:
+  - paracetamol
+  - acetaminophen
+  क्रोसिन:
+  - paracetamol
+  - acetaminophen
+  paracetamol:
+  - paracetamol
+  - acetaminophen
+  calpol:
+  - paracetamol
+  - acetaminophen
+  crocin:
+  - paracetamol
+  - acetaminophen
+  dolo:
+  - paracetamol
+  - acetaminophen
+  आइबुप्रोफ़ेन:
+  - ibuprofen
+  ibuprofen:
+  - ibuprofen
+  brufen:
+  - ibuprofen
+  एंटीबायोटिक:
+  - antibiotic
+  antibiotic:
+  - antibiotic
+  नींद:
+  - sleep
+  सोता:
+  - sleep
+  neend:
+  - sleep
+  लू:
+  - heat stroke
+  - sun
+  धूप:
+  - heat stroke
+  - sun
+  loo lagna:
+  - heat stroke
+  - sun
+  चिंता:
+  - anxiety
+  घबराहट:
+  - anxiety
+  chinta:
+  - anxiety
+  ख़ुद को नुकसान:
+  - self-harm
+  खुद को काट:
+  - self-harm
+  khud ko nuksan:
+  - self-harm
+  आत्महत्या:
+  - suicidal
+  - suicide
+  मरना चाहता:
+  - suicidal
+  - suicide
+  atmahatya:
+  - suicidal
+  - suicide
+  विकास:
+  - growth
+  - percentile
+  बढ़:
+  - growth
+  - percentile
+  vikas:
+  - growth
+  - percentile
+  स्क्रीन:
+  - screen time
+  skreen:
+  - screen time
+  सुस्त:
+  - drowsy
+  - lethargic
+  बेहोशी जैसा:
+  - drowsy
+  - lethargic
+  sust:
+  - drowsy
+  - lethargic
+  इमरजेंसी:
+  - emergency department
+  - emergency
+  आपातकाल:
+  - emergency department
+  - emergency
+  imarjensi:
+  - emergency department
+  - emergency
+de:
+  fieber:
+  - fieber
+  - temperatur
+  temperatur:
+  - fieber
+  - temperatur
+  fiebert:
+  - fieber
+  - temperatur
+  husten:
+  - husten
+  - hustet
+  hustet:
+  - husten
+  - hustet
+  erkältung:
+  - erkältung
+  - erkaltung
+  erkaltung:
+  - erkältung
+  - erkaltung
+  schnupfen:
+  - erkältung
+  - erkaltung
+  nase:
+  - nase
+  - nasen
+  nasen:
+  - nase
+  - nasen
+  pfeifen:
+  - pfeifen
+  - giemen
+  giemen:
+  - pfeifen
+  - giemen
+  keuchen:
+  - pfeifen
+  - giemen
+  atmen:
+  - atmen
+  - atmung
+  atmung:
+  - atmen
+  - atmung
+  atemnot:
+  - atmen
+  - atmung
+  luft:
+  - atmen
+  - atmung
+  pseudokrupp:
+  - pseudokrupp
+  - krupp
+  krupp:
+  - pseudokrupp
+  - krupp
+  bellender husten:
+  - pseudokrupp
+  - krupp
+  bronchiolitis:
+  - bronchiolitis
+  - rsv
+  rsv:
+  - bronchiolitis
+  - rsv
+  lungenentzündung:
+  - lungenentzündung
+  - lungenentzundung
+  lungenentzundung:
+  - lungenentzündung
+  - lungenentzundung
+  asthma:
+  - asthma
+  - asthmaanfall
+  asthmaanfall:
+  - asthma
+  - asthmaanfall
+  erbrech:
+  - erbrech
+  - erbricht
+  erbricht:
+  - erbrech
+  - erbricht
+  übergeben:
+  - erbrech
+  - erbricht
+  durchfall:
+  - durchfall
+  - brechdurchfall
+  brechdurchfall:
+  - durchfall
+  - brechdurchfall
+  magen-darm:
+  - durchfall
+  - brechdurchfall
+  bauchschmerz:
+  - bauchschmerz
+  - bauchweh
+  bauchweh:
+  - bauchschmerz
+  - bauchweh
+  bauch:
+  - bauchschmerz
+  - bauchweh
+  verstopfung:
+  - verstopfung
+  austrocknung:
+  - austrocknung
+  - dehydration
+  dehydration:
+  - austrocknung
+  - dehydration
+  flüssigkeitsmangel:
+  - austrocknung
+  - dehydration
+  krampfanfall:
+  - krampfanfall
+  - fieberkrampf
+  fieberkrampf:
+  - krampfanfall
+  - fieberkrampf
+  krampf:
+  - krampfanfall
+  - fieberkrampf
+  kopfschmerz:
+  - kopfschmerz
+  - kopfweh
+  kopfweh:
+  - kopfschmerz
+  - kopfweh
+  ohnmacht:
+  - ohnmacht
+  - kollaps
+  kollaps:
+  - ohnmacht
+  - kollaps
+  umgekippt:
+  - ohnmacht
+  - kollaps
+  kopfverletzung:
+  - kopfverletzung
+  - auf den kopf
+  auf den kopf:
+  - kopfverletzung
+  - auf den kopf
+  sturz:
+  - kopfverletzung
+  - auf den kopf
+  gestürzt:
+  - kopfverletzung
+  - auf den kopf
+  gefallen:
+  - kopfverletzung
+  - auf den kopf
+  verbrennung:
+  - verbrennung
+  - verbrüh
+  verbrüh:
+  - verbrennung
+  - verbrüh
+  verbrannt:
+  - verbrennung
+  - verbrüh
+  wunde:
+  - wunde
+  - schnitt
+  schnitt:
+  - wunde
+  - schnitt
+  platzwunde:
+  - wunde
+  - schnitt
+  blutung:
+  - blutung
+  - blutet
+  blutet:
+  - blutung
+  - blutet
+  nasenbluten:
+  - blutung
+  - blutet
+  erstick:
+  - erstick
+  - verschluckt sich
+  verschluckt sich:
+  - erstick
+  - verschluckt sich
+  atemwege verlegt:
+  - erstick
+  - verschluckt sich
+  vergiftung:
+  - vergiftung
+  - giftig
+  giftig:
+  - vergiftung
+  - giftig
+  gift:
+  - vergiftung
+  - giftig
+  verschluckt:
+  - verschluckt
+  - geschluckt
+  geschluckt:
+  - verschluckt
+  - geschluckt
+  knopfzelle:
+  - knopfzelle
+  - batterie
+  batterie:
+  - knopfzelle
+  - batterie
+  allergie:
+  - allergie
+  - allergisch
+  allergisch:
+  - allergie
+  - allergisch
+  anaphyla:
+  - anaphyla
+  - anaphylaktisch
+  anaphylaktisch:
+  - anaphyla
+  - anaphylaktisch
+  nesselsucht:
+  - nesselsucht
+  - quaddeln
+  quaddeln:
+  - nesselsucht
+  - quaddeln
+  urtikaria:
+  - nesselsucht
+  - quaddeln
+  ausschlag:
+  - ausschlag
+  - hautausschlag
+  hautausschlag:
+  - ausschlag
+  - hautausschlag
+  flecken:
+  - ausschlag
+  - hautausschlag
+  pünktchen:
+  - ausschlag
+  - hautausschlag
+  juckreiz:
+  - juckreiz
+  - juckt
+  juckt:
+  - juckreiz
+  - juckt
+  ohrenschmerz:
+  - ohrenschmerz
+  - ohr
+  ohr:
+  - ohrenschmerz
+  - ohr
+  mittelohrentzündung:
+  - ohrenschmerz
+  - ohr
+  halsschmerz:
+  - halsschmerz
+  - hals
+  hals:
+  - halsschmerz
+  - hals
+  mandelentzündung:
+  - halsschmerz
+  - hals
+  koliken:
+  - koliken
+  - dreimonatskoliken
+  dreimonatskoliken:
+  - koliken
+  - dreimonatskoliken
+  schreit:
+  - koliken
+  - dreimonatskoliken
+  reflux:
+  - reflux
+  - spuckt
+  spuckt:
+  - reflux
+  - spuckt
+  zahnen:
+  - zahnen
+  - zähne
+  zähne:
+  - zahnen
+  - zähne
+  neugeboren:
+  - neugeboren
+  - säugling
+  säugling:
+  - neugeboren
+  - säugling
+  baby:
+  - baby
+  - kleinkind
+  kleinkind:
+  - baby
+  - kleinkind
+  jugendlich:
+  - jugendlich
+  - teenager
+  teenager:
+  - jugendlich
+  - teenager
+  ernährung:
+  - ernährung
+  - füttern
+  füttern:
+  - ernährung
+  - füttern
+  trinkt:
+  - ernährung
+  - füttern
+  stillen:
+  - stillen
+  - muttermilch
+  muttermilch:
+  - stillen
+  - muttermilch
+  beikost:
+  - beikost
+  - feste nahrung
+  feste nahrung:
+  - beikost
+  - feste nahrung
+  impfung:
+  - impfung
+  - impfkalender
+  impfkalender:
+  - impfung
+  - impfkalender
+  impfen:
+  - impfung
+  - impfkalender
+  dosis:
+  - dosis
+  - dosierung
+  dosierung:
+  - dosis
+  - dosierung
+  paracetamol:
+  - paracetamol
+  - benuron
+  benuron:
+  - paracetamol
+  - benuron
+  ibuprofen:
+  - ibuprofen
+  - nurofen
+  nurofen:
+  - ibuprofen
+  - nurofen
+  antibiotik:
+  - antibiotik
+  schlaf:
+  - schlaf
+  - schläft
+  schläft:
+  - schlaf
+  - schläft
+  hitzschlag:
+  - hitzschlag
+  - sonnenstich
+  sonnenstich:
+  - hitzschlag
+  - sonnenstich
+  sonne:
+  - hitzschlag
+  - sonnenstich
+  angst:
+  - angst
+  - ängstlich
+  ängstlich:
+  - angst
+  - ängstlich
+  selbstverletz:
+  - selbstverletz
+  - ritzt
+  ritzt:
+  - selbstverletz
+  - ritzt
+  suizid:
+  - suizid
+  - selbstmord
+  selbstmord:
+  - suizid
+  - selbstmord
+  leben nehmen:
+  - suizid
+  - selbstmord
+  wachstum:
+  - wachstum
+  - perzentil
+  perzentil:
+  - wachstum
+  - perzentil
+  bildschirmzeit:
+  - bildschirmzeit
+  - bildschirm
+  bildschirm:
+  - bildschirmzeit
+  - bildschirm
+  schläfrig:
+  - schläfrig
+  - teilnahmslos
+  teilnahmslos:
+  - schläfrig
+  - teilnahmslos
+  apathisch:
+  - schläfrig
+  - teilnahmslos
+  notaufnahme:
+  - notaufnahme
+  - notfall
+  notfall:
+  - notaufnahme
+  - notfall

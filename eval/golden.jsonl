@@ -68,44 +68,44 @@
 {"id": "f08", "q": "Combien de temps faut-il allaiter mon bébé ?", "lang": "fr", "level": "routine", "docs": ["who_fr_infant_and_young_child_feeding"]}
 {"id": "f09", "q": "Mon enfant a la coqueluche, que faire ?", "lang": "fr", "level": "routine", "docs": ["canada_fr_coqueluche_toux_coquelucheuse"]}
 {"id": "f10", "q": "Mon fils s'est cogné la tête, que dois-je surveiller ?", "lang": "fr", "level": "routine", "docs": ["nhs_en_head_injury_and_concussion", "canada_fr_commotions_cerebrales_signes_symptomes", "seup_tce"]}
-{"id": "g71", "q": "Mein Baby ist 2 Monate alt und hat 38,5 Fieber", "lang": "de", "level": "urgent", "docs": ["seup_fiebre", "seup_acudir_urgencias"], "rules": ["infant_fever_under_3_months"]}
-{"id": "g72", "q": "Mein Kind hat einen Krampfanfall", "lang": "de", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["seizure"]}
-{"id": "g73", "q": "Mein Sohn bekommt kaum Luft, die Rippen ziehen sich ein", "lang": "de", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["severe_breathing"]}
-{"id": "g74", "q": "Er ist auf den Kopf gefallen und war kurz bewusstlos", "lang": "de", "level": "emergency", "docs": ["seup_tce"], "rules": ["head_injury_loss_consciousness"]}
-{"id": "g75", "q": "Meine Tochter hat eine Knopfbatterie verschluckt", "lang": "de", "level": "urgent", "docs": ["seup_acudir_urgencias"], "rules": ["foreign_body_ingestion"]}
-{"id": "g76", "q": "Sie erbricht seit gestern, die Augen sind eingefallen und sie macht kaum Windeln nass", "lang": "de", "level": "urgent", "docs": ["seup_gastroenteritis"], "rules": ["dehydration"]}
-{"id": "g77", "q": "Mein Sohn sagt, er will sich das Leben nehmen", "lang": "de", "level": "mental_health", "docs": ["seup_conducta_suicida"], "rules": ["suicidal_ideation"]}
-{"id": "g78", "q": "Mein Kind hat Fieber", "lang": "de", "level": "routine", "docs": ["seup_fiebre"], "expect": "asked_age"}
-{"id": "g79", "q": "Моему ребёнку 2 месяца, температура 38,5", "lang": "ru", "level": "urgent", "docs": ["seup_fiebre", "seup_acudir_urgencias"], "rules": ["infant_fever_under_3_months"]}
-{"id": "g80", "q": "У ребёнка судороги", "lang": "ru", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["seizure"]}
-{"id": "g81", "q": "Ребёнок задыхается, втягиваются рёбра", "lang": "ru", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["severe_breathing"]}
-{"id": "g82", "q": "Он упал и ударился головой, потерял сознание", "lang": "ru", "level": "emergency", "docs": ["seup_tce"], "rules": ["head_injury_loss_consciousness"]}
-{"id": "g83", "q": "Дочь проглотила батарейку", "lang": "ru", "level": "urgent", "docs": ["seup_acudir_urgencias"], "rules": ["foreign_body_ingestion"]}
-{"id": "g84", "q": "Рвота и понос со вчера, глаза запали и почти не писает", "lang": "ru", "level": "urgent", "docs": ["seup_gastroenteritis"], "rules": ["dehydration"]}
-{"id": "g85", "q": "Сын говорит, что хочет умереть", "lang": "ru", "level": "mental_health", "docs": ["seup_conducta_suicida"], "rules": ["suicidal_ideation"]}
-{"id": "g86", "q": "У ребёнка температура", "lang": "ru", "level": "routine", "docs": ["seup_fiebre"], "expect": "asked_age"}
-{"id": "g87", "q": "طفلي عمره شهران وحرارته 38.5", "lang": "ar", "level": "urgent", "docs": ["seup_fiebre", "seup_acudir_urgencias"], "rules": ["infant_fever_under_3_months"]}
-{"id": "g88", "q": "ابني عنده تشنج", "lang": "ar", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["seizure"]}
-{"id": "g89", "q": "طفلي لا يتنفس جيدا وأرى انسحاب الأضلاع", "lang": "ar", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["severe_breathing"]}
-{"id": "g90", "q": "سقط على رأسه وفقد الوعي", "lang": "ar", "level": "emergency", "docs": ["seup_tce"], "rules": ["head_injury_loss_consciousness"]}
-{"id": "g91", "q": "ابنتي ابتلعت بطارية", "lang": "ar", "level": "urgent", "docs": ["seup_acudir_urgencias"], "rules": ["foreign_body_ingestion"]}
-{"id": "g92", "q": "قيء وإسهال منذ أمس وعيناه غائرتان ولا يتبول", "lang": "ar", "level": "urgent", "docs": ["seup_gastroenteritis"], "rules": ["dehydration"]}
-{"id": "g93", "q": "ابني يقول إنه يريد أن يموت", "lang": "ar", "level": "mental_health", "docs": ["seup_conducta_suicida"], "rules": ["suicidal_ideation"]}
-{"id": "g94", "q": "طفلي عنده حرارة", "lang": "ar", "level": "routine", "docs": ["seup_fiebre"], "expect": "asked_age"}
-{"id": "g95", "q": "Meu bebê de 2 meses está com febre de 38,5", "lang": "pt", "level": "urgent", "docs": ["seup_fiebre", "seup_acudir_urgencias"], "rules": ["infant_fever_under_3_months"]}
-{"id": "g96", "q": "Meu filho está tendo uma convulsão", "lang": "pt", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["seizure"]}
-{"id": "g97", "q": "Meu filho não consegue respirar, as costelas aparecem", "lang": "pt", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["severe_breathing"]}
-{"id": "g98", "q": "Ele bateu a cabeça e desmaiou", "lang": "pt", "level": "emergency", "docs": ["seup_tce"], "rules": ["head_injury_loss_consciousness"]}
-{"id": "g99", "q": "Minha filha engoliu uma pilha", "lang": "pt", "level": "urgent", "docs": ["seup_acudir_urgencias"], "rules": ["foreign_body_ingestion"]}
-{"id": "g100", "q": "Está vomitando e com diarreia desde ontem, olhos fundos e quase não faz xixi", "lang": "pt", "level": "urgent", "docs": ["seup_gastroenteritis"], "rules": ["dehydration"]}
-{"id": "g101", "q": "Meu filho diz que quer morrer", "lang": "pt", "level": "mental_health", "docs": ["seup_conducta_suicida"], "rules": ["suicidal_ideation"]}
-{"id": "g102", "q": "Meu filho está com febre", "lang": "pt", "level": "routine", "docs": ["seup_fiebre"], "expect": "asked_age"}
-{"id": "g103", "q": "मेरे 2 महीने के बच्चे को 38.5 बुखार है", "lang": "hi", "level": "urgent", "docs": ["seup_fiebre", "seup_acudir_urgencias"], "rules": ["infant_fever_under_3_months"], "note": "the case that shipped broken: the pattern wanted का where a parent writes के"}
-{"id": "g104", "q": "mere 2 mahine ke bachche ko 38.5 bukhar hai", "lang": "hi", "level": "urgent", "docs": ["seup_fiebre", "seup_acudir_urgencias"], "rules": ["infant_fever_under_3_months"], "note": "Latin script, which is how a great many will type"}
-{"id": "g105", "q": "मेरे बच्चे को दौरा पड़ा है", "lang": "hi", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["seizure"]}
-{"id": "g106", "q": "बच्चा साँस नहीं ले पा रहा, पसलियाँ धँस रही हैं", "lang": "hi", "level": "emergency", "docs": ["seup_acudir_urgencias"], "rules": ["severe_breathing"]}
-{"id": "g107", "q": "सिर के बल गिरा और बेहोश हो गया", "lang": "hi", "level": "emergency", "docs": ["seup_tce"], "rules": ["head_injury_loss_consciousness"]}
-{"id": "g108", "q": "मेरी बेटी ने बटन सेल निगल ली", "lang": "hi", "level": "urgent", "docs": ["seup_acudir_urgencias"], "rules": ["foreign_body_ingestion"]}
-{"id": "g109", "q": "कल से उल्टी और दस्त हैं, आँखें धँसी हैं और पेशाब नहीं कर रहा", "lang": "hi", "level": "urgent", "docs": ["seup_gastroenteritis"], "rules": ["dehydration"]}
-{"id": "g110", "q": "मेरा बेटा कहता है कि वह मरना चाहता है", "lang": "hi", "level": "mental_health", "docs": ["seup_conducta_suicida"], "rules": ["suicidal_ideation"]}
-{"id": "g111", "q": "मेरे बच्चे को बुखार है", "lang": "hi", "level": "routine", "docs": ["seup_fiebre"], "expect": "asked_age"}
+{"id": "g71", "q": "Mein Baby ist 2 Monate alt und hat 38,5 Fieber", "lang": "de", "level": "urgent", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "rules": ["infant_fever_under_3_months"]}
+{"id": "g72", "q": "Mein Kind hat einen Krampfanfall", "lang": "de", "level": "emergency", "docs": ["seup_convulsion_febril", "nhs_en_febrile_seizures"], "rules": ["seizure"]}
+{"id": "g73", "q": "Mein Sohn bekommt kaum Luft, die Rippen ziehen sich ein", "lang": "de", "level": "emergency", "docs": ["seup_bronquiolitis", "seup_neumonia", "seup_crisis_asma", "who_es_pneumonia", "nhs_en_respiratory_syncytial_virus_rsv", "seup_catarro"], "rules": ["severe_breathing"]}
+{"id": "g74", "q": "Er ist auf den Kopf gefallen und war kurz bewusstlos", "lang": "de", "level": "emergency", "docs": ["seup_tce", "nhs_en_head_injury_and_concussion", "mlp_en_headinjuries", "cdc_en_heads_up_signs_symptoms_index", "cdc_en_heads_up_about_index"], "rules": ["head_injury_loss_consciousness"]}
+{"id": "g75", "q": "Meine Tochter hat eine Knopfbatterie verschluckt", "lang": "de", "level": "urgent", "docs": ["seup_intoxicaciones", "seup_toxicos_8_no", "nhs_en_poisoning", "mlp_en_poisoning"], "rules": ["foreign_body_ingestion"]}
+{"id": "g76", "q": "Sie erbricht seit gestern, die Augen sind eingefallen und sie macht kaum Windeln nass", "lang": "de", "level": "urgent", "docs": ["seup_gastroenteritis", "seup_vomitos", "nhs_en_diarrhoea_and_vomiting", "mlp_en_gastroenteritis", "rki_de_ratgeber_noroviren", "rki_de_ratgeber_rotaviren"], "rules": ["dehydration"]}
+{"id": "g77", "q": "Mein Sohn sagt, er will sich das Leben nehmen", "lang": "de", "level": "mental_health", "docs": ["seup_conducta_suicida", "seup_autolesion"], "rules": ["suicidal_ideation"]}
+{"id": "g78", "q": "Mein Kind hat Fieber", "lang": "de", "level": "routine", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "expect": "asked_age"}
+{"id": "g79", "q": "Моему ребёнку 2 месяца, температура 38,5", "lang": "ru", "level": "urgent", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "rules": ["infant_fever_under_3_months"]}
+{"id": "g80", "q": "У ребёнка судороги", "lang": "ru", "level": "emergency", "docs": ["seup_convulsion_febril", "nhs_en_febrile_seizures"], "rules": ["seizure"]}
+{"id": "g81", "q": "Ребёнок задыхается, втягиваются рёбра", "lang": "ru", "level": "emergency", "docs": ["seup_bronquiolitis", "seup_neumonia", "seup_crisis_asma", "who_es_pneumonia", "nhs_en_respiratory_syncytial_virus_rsv", "seup_catarro"], "rules": ["severe_breathing"]}
+{"id": "g82", "q": "Он упал и ударился головой, потерял сознание", "lang": "ru", "level": "emergency", "docs": ["seup_tce", "nhs_en_head_injury_and_concussion", "mlp_en_headinjuries", "cdc_en_heads_up_signs_symptoms_index", "cdc_en_heads_up_about_index"], "rules": ["head_injury_loss_consciousness"]}
+{"id": "g83", "q": "Дочь проглотила батарейку", "lang": "ru", "level": "urgent", "docs": ["seup_intoxicaciones", "seup_toxicos_8_no", "nhs_en_poisoning", "mlp_en_poisoning"], "rules": ["foreign_body_ingestion"]}
+{"id": "g84", "q": "Рвота и понос со вчера, глаза запали и почти не писает", "lang": "ru", "level": "urgent", "docs": ["seup_gastroenteritis", "seup_vomitos", "nhs_en_diarrhoea_and_vomiting", "mlp_en_gastroenteritis", "rki_de_ratgeber_noroviren", "rki_de_ratgeber_rotaviren"], "rules": ["dehydration"]}
+{"id": "g85", "q": "Сын говорит, что хочет умереть", "lang": "ru", "level": "mental_health", "docs": ["seup_conducta_suicida", "seup_autolesion"], "rules": ["suicidal_ideation"]}
+{"id": "g86", "q": "У ребёнка температура", "lang": "ru", "level": "routine", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "expect": "asked_age"}
+{"id": "g87", "q": "طفلي عمره شهران وحرارته 38.5", "lang": "ar", "level": "urgent", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "rules": ["infant_fever_under_3_months"]}
+{"id": "g88", "q": "ابني عنده تشنج", "lang": "ar", "level": "emergency", "docs": ["seup_convulsion_febril", "nhs_en_febrile_seizures"], "rules": ["seizure"]}
+{"id": "g89", "q": "طفلي لا يتنفس جيدا وأرى انسحاب الأضلاع", "lang": "ar", "level": "emergency", "docs": ["seup_bronquiolitis", "seup_neumonia", "seup_crisis_asma", "who_es_pneumonia", "nhs_en_respiratory_syncytial_virus_rsv", "seup_catarro"], "rules": ["severe_breathing"]}
+{"id": "g90", "q": "سقط على رأسه وفقد الوعي", "lang": "ar", "level": "emergency", "docs": ["seup_tce", "nhs_en_head_injury_and_concussion", "mlp_en_headinjuries", "cdc_en_heads_up_signs_symptoms_index", "cdc_en_heads_up_about_index"], "rules": ["head_injury_loss_consciousness"]}
+{"id": "g91", "q": "ابنتي ابتلعت بطارية", "lang": "ar", "level": "urgent", "docs": ["seup_intoxicaciones", "seup_toxicos_8_no", "nhs_en_poisoning", "mlp_en_poisoning"], "rules": ["foreign_body_ingestion"]}
+{"id": "g92", "q": "قيء وإسهال منذ أمس وعيناه غائرتان ولا يتبول", "lang": "ar", "level": "urgent", "docs": ["seup_gastroenteritis", "seup_vomitos", "nhs_en_diarrhoea_and_vomiting", "mlp_en_gastroenteritis", "rki_de_ratgeber_noroviren", "rki_de_ratgeber_rotaviren"], "rules": ["dehydration"]}
+{"id": "g93", "q": "ابني يقول إنه يريد أن يموت", "lang": "ar", "level": "mental_health", "docs": ["seup_conducta_suicida", "seup_autolesion"], "rules": ["suicidal_ideation"]}
+{"id": "g94", "q": "طفلي عنده حرارة", "lang": "ar", "level": "routine", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "expect": "asked_age"}
+{"id": "g95", "q": "Meu bebê de 2 meses está com febre de 38,5", "lang": "pt", "level": "urgent", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "rules": ["infant_fever_under_3_months"]}
+{"id": "g96", "q": "Meu filho está tendo uma convulsão", "lang": "pt", "level": "emergency", "docs": ["seup_convulsion_febril", "nhs_en_febrile_seizures"], "rules": ["seizure"]}
+{"id": "g97", "q": "Meu filho não consegue respirar, as costelas aparecem", "lang": "pt", "level": "emergency", "docs": ["seup_bronquiolitis", "seup_neumonia", "seup_crisis_asma", "who_es_pneumonia", "nhs_en_respiratory_syncytial_virus_rsv", "seup_catarro"], "rules": ["severe_breathing"]}
+{"id": "g98", "q": "Ele bateu a cabeça e desmaiou", "lang": "pt", "level": "emergency", "docs": ["seup_tce", "nhs_en_head_injury_and_concussion", "mlp_en_headinjuries", "cdc_en_heads_up_signs_symptoms_index", "cdc_en_heads_up_about_index"], "rules": ["head_injury_loss_consciousness"]}
+{"id": "g99", "q": "Minha filha engoliu uma pilha", "lang": "pt", "level": "urgent", "docs": ["seup_intoxicaciones", "seup_toxicos_8_no", "nhs_en_poisoning", "mlp_en_poisoning"], "rules": ["foreign_body_ingestion"]}
+{"id": "g100", "q": "Está vomitando e com diarreia desde ontem, olhos fundos e quase não faz xixi", "lang": "pt", "level": "urgent", "docs": ["seup_gastroenteritis", "seup_vomitos", "nhs_en_diarrhoea_and_vomiting", "mlp_en_gastroenteritis", "rki_de_ratgeber_noroviren", "rki_de_ratgeber_rotaviren"], "rules": ["dehydration"]}
+{"id": "g101", "q": "Meu filho diz que quer morrer", "lang": "pt", "level": "mental_health", "docs": ["seup_conducta_suicida", "seup_autolesion"], "rules": ["suicidal_ideation"]}
+{"id": "g102", "q": "Meu filho está com febre", "lang": "pt", "level": "routine", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "expect": "asked_age"}
+{"id": "g103", "q": "मेरे 2 महीने के बच्चे को 38.5 बुखार है", "lang": "hi", "level": "urgent", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "rules": ["infant_fever_under_3_months"], "note": "the case that shipped broken: the pattern wanted का where a parent writes के"}
+{"id": "g104", "q": "mere 2 mahine ke bachche ko 38.5 bukhar hai", "lang": "hi", "level": "urgent", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "rules": ["infant_fever_under_3_months"], "note": "Latin script, which is how a great many will type"}
+{"id": "g105", "q": "मेरे बच्चे को दौरा पड़ा है", "lang": "hi", "level": "emergency", "docs": ["seup_convulsion_febril", "nhs_en_febrile_seizures"], "rules": ["seizure"]}
+{"id": "g106", "q": "बच्चा साँस नहीं ले पा रहा, पसलियाँ धँस रही हैं", "lang": "hi", "level": "emergency", "docs": ["seup_bronquiolitis", "seup_neumonia", "seup_crisis_asma", "who_es_pneumonia", "nhs_en_respiratory_syncytial_virus_rsv", "seup_catarro"], "rules": ["severe_breathing"]}
+{"id": "g107", "q": "सिर के बल गिरा और बेहोश हो गया", "lang": "hi", "level": "emergency", "docs": ["seup_tce", "nhs_en_head_injury_and_concussion", "mlp_en_headinjuries", "cdc_en_heads_up_signs_symptoms_index", "cdc_en_heads_up_about_index"], "rules": ["head_injury_loss_consciousness"]}
+{"id": "g108", "q": "मेरी बेटी ने बटन सेल निगल ली", "lang": "hi", "level": "urgent", "docs": ["seup_intoxicaciones", "seup_toxicos_8_no", "nhs_en_poisoning", "mlp_en_poisoning"], "rules": ["foreign_body_ingestion"]}
+{"id": "g109", "q": "कल से उल्टी और दस्त हैं, आँखें धँसी हैं और पेशाब नहीं कर रहा", "lang": "hi", "level": "urgent", "docs": ["seup_gastroenteritis", "seup_vomitos", "nhs_en_diarrhoea_and_vomiting", "mlp_en_gastroenteritis", "rki_de_ratgeber_noroviren", "rki_de_ratgeber_rotaviren"], "rules": ["dehydration"]}
+{"id": "g110", "q": "मेरा बेटा कहता है कि वह मरना चाहता है", "lang": "hi", "level": "mental_health", "docs": ["seup_conducta_suicida", "seup_autolesion"], "rules": ["suicidal_ideation"]}
+{"id": "g111", "q": "मेरे बच्चे को बुखार है", "lang": "hi", "level": "routine", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "expect": "asked_age"}

@@ -47,8 +47,18 @@ def test_multiword_trigger_matches_the_phrase(syn: Synonyms):
 
 
 def test_unknown_language_returns_nothing(syn: Synonyms):
-    # French stopped being unknown on 3-sep-2026, when it got its own triage and tables
-    assert syn.expand("mein Kind hat Fieber", "de") == []
+    """The negative example is a code that will never be a language of this site.
+
+    It used to be French, then German — each time, the day that language shipped its tables the
+    test went green while asserting the opposite of what we wanted, exactly as `test_api` once
+    asserted that the German chat should return 422. A test that names a real language is a copy
+    of the language list, and the copy is always the one nobody updates.
+    """
+    from pedibot.bot.answer import SUPPORTED_LANGS
+
+    never = next(c for c in ("zz", "qq", "xx") if c not in SUPPORTED_LANGS)
+    assert syn.expand("mein Kind hat Fieber", never) == []
+    # and every language that IS supported expands: see tests/test_synonyms_coverage.py
     assert "fever" in syn.expand("mon enfant a de la fievre", "fr")
 
 

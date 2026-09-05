@@ -11,7 +11,11 @@ from pedibot.bot.llm import LLMProvider
 from pedibot.index.store import Hit, Index, query_terms
 from pedibot.ingest.classify import Taxonomy
 
-_TOKEN = re.compile(r"[\wáéíóúñü]+", re.I)
+# The Devanagari range is spelled out because Python's `\w` excludes combining vowel signs:
+# without it "बुखार" tokenises as ब, ख, र and every single-word Hindi trigger below is
+# unmatchable. Same property of `\w` that made a word boundary useless in the triage
+# patterns (see NOT_AFTER in bot/triage.py): the third thing it broke quietly today.
+_TOKEN = re.compile(r"[\wáéíóúñüऀ-ॿ]+", re.I)
 TRANSLATE_SYSTEM = (
     "You translate a parent's question about a child's health into 5-10 Spanish medical search "
     "keywords (nouns, symptoms, condition names). Output only the keywords separated by commas. "
@@ -24,13 +28,36 @@ class Synonyms:
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         self._maps: dict[str, dict[str, list[str]]] = {k: v or {} for k, v in raw.items()}
 
+    def knows(self, lang: str) -> bool:
+        """Whether this language has any local table, so retrieval works without a model."""
+        return any(self._tables(lang))
+
     def _tables(self, lang: str) -> list[dict[str, list[str]]]:
         """`es` (colloquial → leaflet) plus any cross-lingual table such as `es_en`."""
         return [v for k, v in self._maps.items() if k == lang or k.startswith(f"{lang}_")]
 
+    @staticmethod
+    def _candidates(token: str) -> list[str]:
+        """The token, plus the Arabic forms with a leading clitic removed.
+
+        Arabic writes «and», «with», «the» joined to the next word: "and his temperature" is one
+        token, «وحرارته». A prefix match against «حرارة» finds nothing, and listing every
+        combination would be four entries per trigger and still miss the fifth.
+        """
+        if not ("\u0600" <= token[0] <= "\u06ff"):
+            return [token]
+        out = [token]
+        for clitic in ("ال", "و", "ف", "ب", "ك", "ل"):
+            if token.startswith(clitic) and len(token) > len(clitic) + 1:
+                rest = token[len(clitic) :]
+                out.append(rest)
+                if rest.startswith("ال") and len(rest) > 3:
+                    out.append(rest[2:])
+        return out
+
     def expand(self, query: str, lang: str = "en") -> list[str]:
         low = query.lower()
-        tokens = _TOKEN.findall(low)
+        tokens = [c for t in _TOKEN.findall(low) for c in self._candidates(t)]
         extra: list[str] = []
         for table in self._tables(lang):
             for trigger, terms in table.items():
