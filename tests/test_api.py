@@ -164,9 +164,14 @@ def test_api_keeps_conversation_per_session(client):
     assert [t["role"] for t in h] == ["user", "assistant", "user", "assistant"]
 
 
-def test_admin_panel_renders_and_flags(client, monkeypatch):
+def test_admin_panel_renders_and_flags(client, monkeypatch, tmp_path):
     c, ops = client
+    from pedibot import admin
     from pedibot.ops import report
+
+    # the flag file used to be a module constant, so every run of this test appended a line to
+    # the working copy: it held 189 lines, all of them this same answer, before anybody looked
+    monkeypatch.setattr(admin, "flagged_path", lambda: tmp_path / "flagged.jsonl")
 
     monkeypatch.setattr(
         report,
@@ -195,6 +200,13 @@ def test_admin_panel_renders_and_flags(client, monkeypatch):
     r2 = c.post("/admin/flag", data={"id": j["answer_id"]}, follow_redirects=False)
     assert r2.status_code == 303
     assert "🚩" in c.get("/admin").text
+
+    # pressing it twice does not write it twice, and it can be taken back: a misclick used to
+    # mark an answer for ever
+    c.post("/admin/flag", data={"id": j["answer_id"]}, follow_redirects=False)
+    assert "🚩" not in c.get("/admin").text
+    c.post("/admin/flag", data={"id": j["answer_id"]}, follow_redirects=False)
+    assert len(admin.load_flagged()) == 1
 
 
 def test_the_panel_opens_on_the_totals(client, monkeypatch):

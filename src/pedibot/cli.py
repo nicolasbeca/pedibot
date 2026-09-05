@@ -340,6 +340,39 @@ def _llm_eval(golden: Path, report_dir: Path, use_judge: bool = False) -> None:
     typer.echo(f"→ {out}")
 
 
+
+@app.command()
+def flagged(clear: bool = False) -> None:
+    """Answers marked as bad in /admin, ready to become golden cases.
+
+    Prints each one with a draft entry for eval/golden.jsonl. The expected level and documents are
+    left as they came out, marked TODO: a golden case states what SHOULD have happened, and taking
+    that from the answer that was wrong would freeze the mistake into the test that guards it.
+    """
+    from pedibot.admin import load_flagged, save_flagged
+
+    items = load_flagged()
+    if not items:
+        typer.echo("Nada marcado. En /admin, «marcar como mala» aparta una respuesta para aquí.")
+        return
+    for rec in items.values():
+        typer.echo(f"\n── #{rec['id']}  {rec.get('lang', '?')}  {rec.get('ts', '')}")
+        typer.echo(f"   P: {rec.get('question', '')}")
+        answer = str(rec.get("answer", "")).split("\n\n")[0]
+        typer.echo(f"   R: {answer[:300]}")
+        draft = {
+            "id": "TODO",
+            "q": rec.get("question", ""),
+            "lang": rec.get("lang", "es"),
+            "level": f"TODO (salió {rec.get('level')})",
+            "docs": ["TODO"],
+        }
+        typer.echo("   golden.jsonl: " + json.dumps(draft, ensure_ascii=False))
+    typer.echo(f"\n{len(items)} marcadas.")
+    if clear:
+        save_flagged({})
+        typer.echo("Lista vaciada.")
+
 @app.command()
 def balance(warn_below_pct: float = 20.0, initial_usd: float = 0.0) -> None:
     """DeepSeek account balance (GET /user/balance). Exit code 2 when below the warning threshold."""

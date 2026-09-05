@@ -38,10 +38,15 @@ def web_visits(days: int = 7) -> dict[str, Any]:
     except Exception as e:  # noqa: BLE001
         print("journalctl failed:", e, file=sys.stderr)
         return {
-            "views": 0, "visitors": 0, "chat_pageviews": 0, "top": [], "per_day": {}, "covers": ()
+            "views": 0, "visitors": 0, "returning": 0, "chat_pageviews": 0,
+            "top": [], "per_day": {}, "covers": (),
         }
     views, chat = 0, 0
     visitors: set[str] = set()
+    # how many pages each one asked for: one page and gone is a crawler, whatever its user agent
+    # says. 600 of 919 browser-labelled addresses did exactly that, and 1.505 of their hits were
+    # the home page.
+    pages_each: dict[str, int] = {}
     top: dict[str, int] = {}
     per_day: dict[str, int] = {}
     for line in out.splitlines():
@@ -65,10 +70,13 @@ def web_visits(days: int = 7) -> dict[str, Any]:
         top[uri] = top.get(uri, 0) + 1
         day = dt.datetime.fromtimestamp(float(j.get("ts", 0)), dt.UTC).date().isoformat()
         per_day[day] = per_day.get(day, 0) + 1
-        visitors.add(hashlib.sha256(f"{req.get('remote_ip')}|{ua}".encode()).hexdigest()[:16])
+        who = hashlib.sha256(f"{req.get('remote_ip')}|{ua}".encode()).hexdigest()[:16]
+        visitors.add(who)
+        pages_each[who] = pages_each.get(who, 0) + 1
     return {
         "views": views,
         "visitors": len(visitors),
+        "returning": sum(1 for n in pages_each.values() if n > 1),
         "chat_pageviews": chat,
         "top": sorted(top.items(), key=lambda kv: -kv[1])[:10],
         "per_day": dict(sorted(per_day.items())),

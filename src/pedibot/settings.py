@@ -47,6 +47,10 @@ class Settings(BaseSettings):
     # Where `pedibot publish` writes the guides. The engine reads it so an answer can link
     # to the guide built from the same sources.
     content_dir: Path = ROOT / "web" / "content"
+    # Answers the operator marked as bad in /admin, waiting to become golden cases. A path
+    # and not a constant because the panel test posts to /admin/flag, and with a constant every
+    # run of the suite appended a line to the operator's own working copy of this file.
+    flagged_path: Path = ROOT / "eval" / "flagged.jsonl"
 
 
 def get_settings() -> Settings:

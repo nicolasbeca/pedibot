@@ -18,6 +18,7 @@ from __future__ import annotations
 import datetime as dt
 import html
 import json
+import pathlib
 import sqlite3
 from typing import Any
 
@@ -25,9 +26,43 @@ from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 
 from pedibot.ops import report
-from pedibot.settings import ROOT
 
-FLAGGED = ROOT / "eval" / "flagged.jsonl"
+
+def flagged_path() -> pathlib.Path:
+    """Read from settings each time: the panel test points it at a temporary directory, and with a
+    module constant every run of the suite wrote into the working copy of this file."""
+    from pedibot.settings import get_settings
+
+    return get_settings().flagged_path
+
+
+def load_flagged() -> dict[int, dict[str, object]]:
+    """The marked answers, by id. One entry each — it used to append a line per press, and the
+    file ended up holding 189 copies of the same test answer."""
+    path = flagged_path()
+    if not path.exists():
+        return {}
+    out: dict[int, dict[str, object]] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        try:
+            rec = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(rec.get("id"), int):
+            out[rec["id"]] = rec  # a later line replaces an earlier one
+    return out
+
+
+def save_flagged(items: dict[int, dict[str, object]]) -> None:
+    path = flagged_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    body = "".join(
+        json.dumps(items[k], ensure_ascii=False) + "\n" for k in sorted(items)
+    )
+    path.write_text(body, encoding="utf-8", newline="\n")
+
 
 _CSS = """
 :root{--ink:#2B3A35;--ink2:#5B6D66;--ink3:#8A9992;--line:#EAE4DA;--paper:#fff;--ground:#FFFDF9;
@@ -204,13 +239,7 @@ def render(con: sqlite3.Connection, days: int) -> str:
     q = report.questions(con, days)
     g = report.guides(days)
     rows = report.recent_answers(con, 80)
-    flagged: set[int] = set()
-    if FLAGGED.exists():
-        for line in FLAGGED.read_text(encoding="utf-8").splitlines():
-            try:
-                flagged.add(json.loads(line).get("id"))
-            except json.JSONDecodeError:
-                pass
+    flagged = set(load_flagged())
 
     def link(n: int, label: str | None = None) -> str:
         on = "on" if n == days else ""
@@ -239,9 +268,13 @@ def render(con: sqlite3.Connection, days: int) -> str:
     h.append(
         f'<p class="period">Consultas y guías: <b>{html.escape(period)}</b>. '
         f'Visitas: <b>{html.escape(covered)}</b> — salen del registro del servidor, que no '
-        "guarda desde siempre.</p>"
+        "guarda desde siempre.<br>Una dirección no es una persona: la mayoría pide una sola "
+        "página y se va, que es lo que hace un rastreador aunque diga ser un navegador. "
+        "La cifra de al lado, quien abrió una segunda página, se parece más a alguien leyendo."
+        "</p>"
         '<div class="kpis">'
-        + _kpi("visitantes", w["visitors"])
+        + _kpi("direcciones", w["visitors"])
+        + _kpi("vieron 2+ páginas", w.get("returning", 0))
         + _kpi("páginas vistas", w["views"])
         + _kpi("consultas", q["total"])
         + _kpi("por Telegram", q["telegram"])
@@ -286,14 +319,15 @@ def render(con: sqlite3.Connection, days: int) -> str:
         ver = str(r["verification"])
         good = ver in ("ok", "regenerated", "dose_calculator")
         flag = (
-            '<span class="tag bad">marcada 🚩</span>'
-            if r["id"] in flagged
-            else (
-                '<form method=post action="/admin/flag" style="display:inline">'
-                f'<input type=hidden name=id value="{r["id"]}">'
-                '<button title="guardar en el golden set como respuesta mala">marcar como mala</button>'
-                "</form>"
+            '<form method=post action="/admin/flag" style="display:inline">'
+            f'<input type=hidden name=id value="{r["id"]}">'
+            + (
+                '<button class="unflag" title="quitar la marca">🚩 marcada — quitar</button>'
+                if r["id"] in flagged
+                else '<button title="apartarla para revisarla: pedibot flagged las lista">'
+                "marcar como mala</button>"
             )
+            + "</form>"
         )
         h.append(
             '<div class="qa"><div class="meta">'
@@ -356,25 +390,22 @@ def make_router(con_factory: Any) -> APIRouter:
         aid = int(str(form.get("id", "0")))
         con = con_factory()
         row = con.execute(
-            "SELECT question, answer, level, verification FROM answers WHERE id=?", (aid,)
+            "SELECT question, answer, level, verification, lang FROM answers WHERE id=?", (aid,)
         ).fetchone()
-        if row:
-            FLAGGED.parent.mkdir(parents=True, exist_ok=True)
-            with FLAGGED.open("a", encoding="utf-8") as f:
-                f.write(
-                    json.dumps(
-                        {
-                            "id": aid,
-                            "ts": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
-                            "question": row[0],
-                            "answer": row[1],
-                            "level": row[2],
-                            "verification": row[3],
-                        },
-                        ensure_ascii=False,
-                    )
-                    + "\n"
-                )
+        items = load_flagged()
+        if aid in items:
+            del items[aid]  # a misclick used to be permanent
+        elif row:
+            items[aid] = {
+                "id": aid,
+                "ts": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
+                "lang": row[4],
+                "question": row[0],
+                "answer": row[1],
+                "level": row[2],
+                "verification": row[3],
+            }
+        save_flagged(items)
         return RedirectResponse("/admin", status_code=303)
 
     return router
