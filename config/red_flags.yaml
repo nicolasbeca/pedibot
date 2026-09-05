@@ -155,10 +155,14 @@ rules:
   - cyanos
   - atemnot
   - bekommt keine luft
+  - bekommt kaum luft
+  - kriegt kaum luft
   - kriegt keine luft
   - atmet schwer
   - schwer am atmen
   - einziehungen
+  - rippen ziehen sich ein
+  - zieht die rippen ein
   - atempausen
   - blau anlaufen
   - läuft blau an
@@ -380,6 +384,8 @@ rules:
   - bateu a cabe[cç]a e perdeu a consci[eê]ncia
   - सिर.{0,15}चोट.{0,20}बेहोश
   - सिर.{0,15}लगी.{0,20}होश नहीं
+  - सिर के बल गिर.{0,25}बेहोश
+  - गिर.{0,20}सिर.{0,20}बेहोश
   - sir.{0,12}chot.{0,18}behosh
   reason_de: Kopfverletzung mit Bewusstlosigkeit
   reason_ru: Травма головы с потерей сознания
@@ -858,9 +864,13 @@ rules:
   - engoliu (uma )?moeda
   - engoliu (um )?brinquedo
   - बैटरी निगल
+  - बटन सेल निगल
+  - बटन बैटरी निगल
+  - सेल निगल
   - चुंबक निगल
   - सिक्का निगल
   - battery nigal
+  - button cell nigal
   - sikka nigal
   reason_de: Gegenstand verschluckt (besonders Batterien oder Magnete)
   reason_ru: Проглотил предмет (особенно батарейку или магниты)
@@ -1114,11 +1124,14 @@ rules:
   - mettre fin [aà] ses jours
   - will nicht mehr leben
   - sich umbringen
+  - (sich )?das leben nehmen
   - suizid
   - selbstmord
   - nicht mehr da sein wollen
   - не хочет жить
   - покончить с собой
+  - хоч(ет|у) умереть
+  - хочет покончить
   - суицид
   - самоубийств
   - лучше бы меня не было

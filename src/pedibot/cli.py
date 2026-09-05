@@ -200,6 +200,14 @@ def eval_cmd(
     summ = rep.summary()
     typer.echo(json.dumps(summ, indent=2))
     fails = rep.failures()
+    if rep.unmeasured_sources:
+        # said out loud rather than folded into the ratio: those languages have no local
+        # synonym table, so their retrieval goes through a translation call this harness
+        # deliberately does not make
+        typer.echo(
+            f"\nsource_hit no medible en {len(rep.unmeasured_sources)} casos "
+            "(idiomas sin sinónimos locales: su recuperación pasa por la IA)"
+        )
     typer.echo(f"\n{len(fails)} cases with problems:")
     for f in fails:
         typer.echo("  " + f)
@@ -207,7 +215,14 @@ def eval_cmd(
     out = report_dir / f"eval_{dt.date.today().isoformat()}.json"
     out.write_text(
         json.dumps(
-            {"summary": summ, "failures": fails, "n": len(rep.cases)}, ensure_ascii=False, indent=2
+            {
+                "summary": summ,
+                "failures": fails,
+                "n": len(rep.cases),
+                "source_hit_unmeasured": rep.unmeasured_sources,
+            },
+            ensure_ascii=False,
+            indent=2,
         ),
         encoding="utf-8",
     )

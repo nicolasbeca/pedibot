@@ -47,6 +47,8 @@ class CaseResult:
 @dataclass
 class Report:
     cases: list[CaseResult] = field(default_factory=list)
+    #: cases whose retrieval could not be judged here — see run_eval
+    unmeasured_sources: list[str] = field(default_factory=list)
 
     def metric(self, name: str) -> float | None:
         c = self.cases
@@ -114,7 +116,18 @@ def run_eval(engine: Engine, golden: list[dict], k: int = 3) -> Report:
         for h in hits:
             if h.chunk.doc_id not in docs_pred:
                 docs_pred.append(h.chunk.doc_id)
-        source_hit = any(d in docs_pred[:k] for d in docs_expected) if docs_expected else None
+        # Not measurable without a model when the language has no local synonyms: retrieval for
+        # it goes through a translation call that this harness deliberately does not make. Marked
+        # None (skipped) rather than False, so the ratio stays a fact about the system.
+        local = engine.retriever.expand(q, g.get("lang") or "en")
+        measurable = bool(local) or not isinstance(engine.llm, FakeProvider)
+        source_hit = (
+            (any(d in docs_pred[:k] for d in docs_expected) if docs_expected else None)
+            if measurable
+            else None
+        )
+        if not measurable:
+            rep.unmeasured_sources.append(g["id"])
         expect = g.get("expect")
         a = engine.ask(q, lang=g.get("lang"))
         routing_ok = (a.verification == expect) if expect else None
