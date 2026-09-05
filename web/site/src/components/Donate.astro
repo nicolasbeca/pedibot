@@ -57,8 +57,10 @@ const links = liveLinks();
         </div>
       </div>
     ))}
+    {/* counted, never typed: the sentence said "seven chains" in eight languages, and a
+        chain added or dropped would have made all eight wrong at once */}
     <p class="fine">
-      {T.fine}
+      {T.fine.replace('{chains}', String(wallets[0]?.chains.length ?? 0))}
     </p>
   </section>
 )}
