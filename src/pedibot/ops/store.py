@@ -123,6 +123,21 @@ class OpsStore:
         self.con.commit()
         return int(cur.lastrowid or 0)
 
+    def answers_today(self, session: str) -> int:
+        """How many questions this browser has asked since midnight UTC.
+
+        By session, not by address: the token lives in the reader's own localStorage and never
+        leaves their browser except attached to their own questions. /legal promises the answers
+        are stored "with a random session identifier, no IP address", and this keeps that.
+        """
+        day = _now()[:10]
+        return int(
+            self.con.execute(
+                "SELECT COUNT(*) FROM answers WHERE session=? AND substr(ts,1,10)=?",
+                (session, day),
+            ).fetchone()[0]
+        )
+
     def set_feedback(self, answer_id: int, session: str, value: int) -> bool:
         """value: +1 / -1. Only the owning session may rate."""
         cur = self.con.execute(

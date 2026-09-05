@@ -58,6 +58,33 @@ class GuideOut(BaseModel):
     url: str
 
 
+#: How many calm questions in a day before mentioning who pays for this. Five is "somebody is
+#: really using it", and the line shows on that one and never again — there is no counter to
+#: store and no way for it to become a nag.
+INVITE_AFTER = 5
+
+
+def _should_invite(answer: object, ops: object, session: str) -> bool:
+    """Whether to put one quiet line about the support page under this answer.
+
+    NEVER on an alarm. A parent whose child has just had a seizure is not asked for money, and
+    that is the whole of the rule: everything else here is about not being tiresome.
+    """
+    if getattr(answer, "level", "routine") != "routine":
+        return False
+    if getattr(answer, "verification", "") not in (
+        "ok",
+        "regenerated",
+        "dose_calculator",
+        "vaccine_schedule",
+    ):
+        return False
+    try:
+        return int(ops.answers_today(session)) == INVITE_AFTER  # type: ignore[attr-defined]
+    except Exception:  # noqa: BLE001 — a counter is never a reason to fail an answer
+        return False
+
+
 class ToolOut(BaseModel):
     """A page of the site that answers the question better than prose. The web puts the words on
     it: `kind` keeps the eight translations in i18n.ts instead of in the engine."""
@@ -80,6 +107,9 @@ class AskOut(BaseModel):
     options: list[str] = []
     guide: GuideOut | None = None
     tool: ToolOut | None = None
+    #: True exactly once, on a calm fifth question of the day: an invitation to the support page.
+    #: Never on an answer with a warning sign — see `_should_invite`.
+    invite: bool = False
 
 
 class DoseIn(BaseModel):
@@ -226,6 +256,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 cit, url = cit.rsplit(" — ", 1)
             out_sources.append(SourceOut(n=n, citation=cit, url=url))
         return AskOut(
+            invite=_should_invite(a, ops, session),
             answer_id=answer_id,
             session=session,
             lang=a.lang,
