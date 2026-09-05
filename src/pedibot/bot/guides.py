@@ -13,16 +13,22 @@ Keywords were the obvious alternative and they are worse. "My son has a rash aft
 is about vaccines, or about rashes, depending on which word you weigh — and a wrong guide under
 a right answer reads like the site does not know what it is talking about.
 
-Two guides can share a document (`seup_fiebre` feeds three topics), so ties break first on how
-much of the guide's own material the answer used, then on how many of the question's words appear
-in the guide's title, then on the more specific guide. When nothing overlaps, there is no link:
-a related-looking guide is not worth the click, and this is a health site.
+What counts is how MUCH of each document the answer used, not whether it touched it. That is the
+difference between the subject and a passing mention: a Russian fever answer quoted the fever
+sheet twice and the heat-stroke sheet once, for one "when to consult" line, and the first version
+of this offered the reader the guide to heat stroke. Remaining ties break on the words of the
+question that appear in the guide's own title, then on how much of the guide's material was used,
+then on the more specific guide.
+
+When nothing overlaps there is no link: a related-looking guide is not worth the click, and this
+is a health site.
 """
 
 from __future__ import annotations
 
 import functools
 import re
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -96,25 +102,28 @@ class GuideIndex:
         guides = self.by_lang.get(lang)
         if not guides or not chunk_ids:
             return None
-        # "seup_fiebre#3" → "seup_fiebre"
-        cited = {c.split("#", 1)[0] for c in chunk_ids}
+        # "seup_fiebre#3" → "seup_fiebre", counted: how MUCH of each document the answer used is
+        # the difference between the subject and a passing mention. A Russian fever answer quoted
+        # the fever sheet twice and the heat-stroke sheet once, for its "when to consult" line —
+        # and offered the reader the guide to heat stroke.
+        weight = Counter(c.split("#", 1)[0] for c in chunk_ids)
         asked = set(_WORD.findall(query.lower()))
         plans = _docs_by_topic()
 
-        best: tuple[int, float, int, int] | None = None
+        best: tuple[int, int, float, int] | None = None
         pick: GuideLink | None = None
         for g in guides:
             docs = plans.get(g.topic)
             if not docs:
                 continue
-            shared = [d for d in docs if d in cited]
+            shared = [d for d in docs if d in weight]
             if not shared:
                 continue
             key = (
-                len(shared),                                    # material in common
-                len(shared) / len(docs),                        # how much of the guide it covers
+                sum(weight[d] for d in shared),                 # how much material in common
                 # words of the question that appear in the guide's own title
                 len(asked & set(_WORD.findall(g.title.lower()))),
+                len(shared) / len(docs),                        # how much of the guide it covers
                 -len(docs),                                     # the more specific guide
             )
             if best is None or key > best:

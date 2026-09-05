@@ -509,6 +509,15 @@ def _problems(
     return problems
 
 
+# How much room a draft gets, by writing system. A guide is 500-800 words in every language, but
+# a tokenizer does not charge the same for them: Devanagari costs roughly twice what Latin does
+# for the same article, and the flat 1800 that fits an English guide cut eight Hindi ones off
+# mid-sentence — one of them in the middle of a list of anaphylaxis warning signs.
+# This is a ceiling, not a spend: the model is asked for 500-800 words and stops there.
+DRAFT_TOKENS = {"hi": 3200, "ru": 2400, "ar": 2400}
+DRAFT_TOKENS_DEFAULT = 1800
+
+
 def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en") -> Article:
     hits = gather_hits(index, topic)
     if not hits:
@@ -526,7 +535,8 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
         f"REMINDER: write the article in {name}, whatever language the sources above are in, "
         f"and start your answer with the line 'TITLE:' followed by 'SUMMARY:' and the sections."
     )
-    result = llm.complete(system, user, temperature=0.3, max_tokens=1800)
+    room = DRAFT_TOKENS.get(lang, DRAFT_TOKENS_DEFAULT)
+    result = llm.complete(system, user, temperature=0.3, max_tokens=room)
     title, summary, body = parse_output(result.text)
     problems = _problems(title, body, hits, lang, compare)
     verification = "ok"
@@ -538,7 +548,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
             + ". Fix it.",
             user,
             temperature=0.0,
-            max_tokens=1800,
+            max_tokens=room,
         )
         title, summary, body = parse_output(retry.text)
         if _problems(title, body, hits, lang, compare):

@@ -15,11 +15,28 @@ cd "$ROOT"
 # The server writes new guides, so normally its web/content wins. --no-pull is for the other
 # direction: when the guides were edited HERE (a heading fix across every file, say) and pulling
 # first would quietly throw that work away before uploading it back.
+# tar adds and overwrites; it never deletes. So a guide the server removed came back from the
+# local copy on the next deploy, and one removed here came back from the server. Whichever side
+# is the source of truth mirrors, and says what it drops — this deletes written work.
 if [ $NO_PULL -eq 0 ]; then
   echo "== pull guides generated on the server (web/content)"
   $SSH "cd /opt/pedibot && tar czf - web/content 2>/dev/null" | tar xzf - -C "$ROOT" || true
+  $SSH "cd /opt/pedibot && ls web/content/*/*.md 2>/dev/null" | tr -d '\r' | sort > /tmp/pedibot_remote_guides
+  if [ -s /tmp/pedibot_remote_guides ]; then
+    (cd "$ROOT" && ls web/content/*/*.md 2>/dev/null | sort) > /tmp/pedibot_local_guides
+    comm -23 /tmp/pedibot_local_guides /tmp/pedibot_remote_guides | while read -r f; do
+      echo "   - retirando local (ya no está en el servidor): $f"; rm -f "$ROOT/$f"
+    done
+  fi
 else
   echo "== skipping the pull: local web/content wins this time"
+  (cd "$ROOT" && ls web/content/*/*.md 2>/dev/null | sort) > /tmp/pedibot_local_guides
+  if [ -s /tmp/pedibot_local_guides ]; then
+    $SSH "cd /opt/pedibot && ls web/content/*/*.md 2>/dev/null" | tr -d '\r' | sort > /tmp/pedibot_remote_guides
+    comm -13 /tmp/pedibot_local_guides /tmp/pedibot_remote_guides | while read -r f; do
+      echo "   - retirando del servidor (ya no está aquí): $f"; $SSH "rm -f /opt/pedibot/$f"
+    done
+  fi
 fi
 
 echo "== code (+ site sources for the rebuild on the server)"

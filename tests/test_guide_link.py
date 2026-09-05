@@ -49,6 +49,23 @@ def test_it_picks_the_guide_built_from_the_cited_documents(tmp_path: pathlib.Pat
     assert g is not None and g.topic == "fiebre"
 
 
+def test_a_passing_mention_does_not_win(tmp_path: pathlib.Path) -> None:
+    """A Russian answer about fever quoted the fever sheet twice and the heat-stroke sheet once,
+    for its one "when to consult" line — and the first version of this offered the reader the
+    guide to heat stroke, because both had "a document in common". What the answer is ABOUT is
+    the document it drew most from."""
+    write(tmp_path, "ru", "fiebre", "fiebre", "Что делать, если у ребёнка температура?")
+    write(tmp_path, "ru", "calor", "golpe_calor", "Тепловой удар у ребёнка: что делать?")
+    gi = GuideIndex(tmp_path)
+
+    g = gi.best_for(["seup_fiebre#1", "seup_fiebre#2", "seup_golpe_calor#3"], "ru", "температура")
+    assert g is not None and g.topic == "fiebre"
+
+    # and the reverse still works: an answer that is really about heat stroke
+    g = gi.best_for(["seup_golpe_calor#1", "seup_golpe_calor#2"], "ru", "весь день на солнце")
+    assert g is not None and g.topic == "golpe_calor"
+
+
 def test_no_overlap_means_no_link(tmp_path: pathlib.Path) -> None:
     """A guide on a merely related subject is not worth the click on a health site."""
     write(tmp_path, "es", "fiebre", "fiebre", "Fiebre")
