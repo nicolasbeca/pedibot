@@ -244,9 +244,22 @@ class EmergencyNumbers:
     def __init__(self, path: Path):
         self.raw = yaml.safe_load(path.read_text(encoding="utf-8"))
 
-    def get(self, country: str | None) -> dict[str, str | None]:
+    def get(self, country: str | None, lang: str = "en") -> dict[str, str | None]:
+        """The country's own numbers, or a fallback phrase IN THE READER'S LANGUAGE.
+
+        The fallback is not a number — no country has been chosen — so it is a sentence, and a
+        sentence has a language. It used to be one English string dropped into all eight banners:
+        "Rufen Sie jetzt your local emergency number an".
+        """
         c = (country or "").upper()
-        return self.raw.get(c) or self.raw["default"]
+        found = self.raw.get(c)
+        if found:
+            return dict(found)
+        default = dict(self.raw["default"])
+        phrases = default.get("emergency")
+        if isinstance(phrases, dict):
+            default["emergency"] = phrases.get(lang) or phrases["en"]
+        return default
 
 
 def load_prompt(version: str = "answer_v4") -> tuple[str, str]:
@@ -281,16 +294,40 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "hi": "🚨 इन लक्षणों के साथ बच्चे को आज ही इमरजेंसी में दिखाना चाहिए, देर न करें।",
         }
     else:  # mental_health
-        mental = numbers.get("mental") or numbers["emergency"]
+        # The bracket exists to tell two different numbers apart. Where the country has no
+        # separate line for suicide — or no country was chosen — `mental` IS `emergency`, and the
+        # sentence used to name the same long phrase twice, in nested brackets, on the banner that
+        # sits above a parent who has just typed that their child wants to die.
+        mental = numbers.get("mental")
+        also = numbers["emergency"] if mental and mental != numbers["emergency"] else None
+        mental = mental or numbers["emergency"]
         heads = {
-            "es": f"💛 Esto es importante y no estás solo/a. Llama al {mental} (o al {numbers['emergency']} si hay peligro inmediato). Si el menor ha hecho algo para hacerse daño, acude a urgencias ahora.",
-            "en": f"💛 This matters and you are not alone. Call {mental} (or {numbers['emergency']} if there is immediate danger). If your child has already done something to harm themselves, go to the emergency department now.",
-            "fr": f"💛 C'est important et vous n'êtes pas seul·e. Appelez le {mental} (ou le {numbers['emergency']} en cas de danger immédiat). Si votre enfant s'est déjà fait du mal, allez aux urgences maintenant.",
-            "de": f"💛 Das ist wichtig, und Sie sind damit nicht allein. Rufen Sie {mental} an (oder {numbers['emergency']} bei unmittelbarer Gefahr). Wenn Ihr Kind sich bereits etwas angetan hat, fahren Sie jetzt in die Notaufnahme.",
-            "ru": f"💛 Это важно, и вы не одни. Позвоните {mental} (или {numbers['emergency']}, если опасность прямо сейчас). Если ребёнок уже причинил себе вред, везите его в приёмное отделение немедленно.",
-            "ar": f"💛 هذا أمر مهم ولست وحدك. اتصل بـ {mental} (أو بـ {numbers['emergency']} إذا كان الخطر الآن). وإذا كان طفلك قد آذى نفسه بالفعل، فتوجّه إلى قسم الطوارئ حالا.",
-            "pt": f"💛 Isso é importante e você não está sozinho(a). Ligue para {mental} (ou para {numbers['emergency']} se houver perigo imediato). Se a criança já fez algo para se machucar, vá ao pronto-socorro agora.",
-            "hi": f"💛 यह ज़रूरी है और आप अकेले नहीं हैं। {mental} पर कॉल करें (या {numbers['emergency']} पर अगर खतरा अभी है)। अगर बच्चे ने खुद को नुकसान पहुँचाया है, तो अभी इमरजेंसी ले जाएँ।",
+            "es": f"💛 Esto es importante y no estás solo/a. Llama al {mental}"
+            + (f" (o al {also} si hay peligro inmediato)" if also else "")
+            + ". Si el menor ha hecho algo para hacerse daño, acude a urgencias ahora.",
+            "en": f"💛 This matters and you are not alone. Call {mental}"
+            + (f" (or {also} if there is immediate danger)" if also else "")
+            + ". If your child has already done something to harm themselves, go to the emergency"
+            " department now.",
+            "fr": f"💛 C'est important et vous n'êtes pas seul·e. Appelez le {mental}"
+            + (f" (ou le {also} en cas de danger immédiat)" if also else "")
+            + ". Si votre enfant s'est déjà fait du mal, allez aux urgences maintenant.",
+            "de": f"💛 Das ist wichtig, und Sie sind damit nicht allein. Rufen Sie {mental} an"
+            + (f" (oder {also} bei unmittelbarer Gefahr)" if also else "")
+            + ". Wenn Ihr Kind sich bereits etwas angetan hat, fahren Sie jetzt in die"
+            " Notaufnahme.",
+            "ru": f"💛 Это важно, и вы не одни. Позвоните {mental}"
+            + (f" (или {also}, если опасность прямо сейчас)" if also else "")
+            + ". Если ребёнок уже причинил себе вред, везите его в приёмное отделение немедленно.",
+            "ar": f"💛 هذا أمر مهم ولست وحدك. اتصل بـ {mental}"
+            + (f" (أو بـ {also} إذا كان الخطر الآن)" if also else "")
+            + ". وإذا كان طفلك قد آذى نفسه بالفعل، فتوجّه إلى قسم الطوارئ حالا.",
+            "pt": f"💛 Isso é importante e você não está sozinho(a). Ligue para {mental}"
+            + (f" (ou para {also} se houver perigo imediato)" if also else "")
+            + ". Se a criança já fez algo para se machucar, vá ao pronto-socorro agora.",
+            "hi": f"💛 यह ज़रूरी है और आप अकेले नहीं हैं। {mental} पर कॉल करें"
+            + (f" (या {also} पर अगर खतरा अभी है)" if also else "")
+            + "। अगर बच्चे ने खुद को नुकसान पहुँचाया है, तो अभी इमरजेंसी ले जाएँ।",
         }
     head = heads.get(lang, heads["en"])
     why = {
@@ -563,7 +600,7 @@ class Engine:
             tr.level = max(
                 (r.level for r in tr.matched), key=lambda lv: LEVEL_ORDER[lv], default="routine"
             )
-        nums = self.numbers.get(country)
+        nums = self.numbers.get(country, lang)
         banner = build_banner(tr, lang, nums)
 
         intent = dose_intent(query, self.drugs) or (

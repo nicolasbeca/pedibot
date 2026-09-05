@@ -1,7 +1,19 @@
 # Emergency and helpline numbers by country (ISO 3166-1 alpha-2). "default" when unknown.
 # poison: poison control centre. mental: crisis / suicide prevention line.
+# The fallback for a reader who has not chosen a country. It is a PHRASE, not a number, so
+# it needs one per language: interpolated into the German banner, the English one read
+# "Rufen Sie jetzt your local emergency number an". Each is worded to fit the sentence it
+# lands in — Spanish says "Llama ahora al {x}", so its phrase starts with "número", not "tu".
 default:
-  emergency: "your local emergency number (112 in the EU, 911 in the Americas)"
+  emergency:
+    en: "your local emergency number (112 in the EU, 911 in the Americas)"
+    es: "número de emergencias de tu país (112 en la UE, 911 en América)"
+    fr: "numéro d'urgence de votre pays (112 dans l'UE, 911 en Amérique)"
+    de: "Ihre Notrufnummer (112 in der EU, 911 in Amerika)"
+    ru: "по местному номеру экстренной службы (112 в ЕС, 911 в Америке)"
+    ar: "رقم الطوارئ في بلدك (112 في الاتحاد الأوروبي، 911 في الأمريكتين)"
+    pt: "o número de emergência da sua região (112 na UE, 911 nas Américas)"
+    hi: "अपने इलाक़े के आपातकालीन नंबर"
   poison: null
   mental: null
 ES: {emergency: "112", poison: "91 562 04 20 (Instituto Nacional de Toxicología)", mental: "024 (línea de atención a la conducta suicida)"}
