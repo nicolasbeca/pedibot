@@ -142,3 +142,25 @@ def test_the_pattern_lives_in_one_place() -> None:
     assert "FOREIGN_SERVICE = re.compile" not in articles, "el generador ha vuelto a definir el suyo"
     assert "foreign_service_problem" in articles, "el generador ya no usa el guardián compartido"
     assert FOREIGN_SERVICE.search("call NHS 111"), "el patrón compartido no funciona"
+
+
+def test_the_brevity_rule_does_not_contradict_the_sourcing_rule() -> None:
+    """The two rules were incompatible and the model obeyed the one asking for brevity.
+
+    Rule 3 says name the organisation; rule 8 says an emergency answer is "Call the emergency
+    number now" plus two sentences. Thirteen of the fifteen drafts that named nobody were alarms:
+    told to be telegraphic, the model dropped the attribution — not disobedience, contradictory
+    orders. Measured over 99 answers, twice each: ~15.7% of drafts needed a second call before
+    rule 8 said the two sentences still name the source, ~10.6% after.
+
+    The fix that was NOT made, on purpose: exempting emergencies from naming a source. It would
+    have removed the retries at a stroke and made those answers worse, in the moment a parent is
+    most likely to act on them. They read perfectly well with it — "Lay the child on their side,
+    according to the SEUP".
+    """
+    _, prompt = load_prompt()
+    rule8 = next(line for line in prompt.splitlines() if line.startswith("8."))
+    assert "two sentences" in rule8, "la regla 8 dejó de pedir brevedad"
+    assert "name the organisation" in rule8, (
+        "la regla 8 vuelve a contradecir a la 3: pide brevedad sin decir que la fuente se nombra"
+    )
