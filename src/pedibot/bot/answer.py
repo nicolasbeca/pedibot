@@ -10,6 +10,7 @@ import yaml
 
 from pedibot.bot.dose import DRUGS, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.guides import GuideIndex, GuideLink
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME
@@ -206,6 +207,9 @@ class Answer:
     verification: str  # ok | no_source | asked_age | dose_calculator | vaccine_schedule | clarify | regenerated | fallback
     expansion: list[str] = field(default_factory=list)
     options: list[str] = field(default_factory=list)  # quick replies when verification == 'clarify'
+    # The guide written from the sources this answer used. None when nothing overlaps: a guide
+    # that is merely on a related subject is not worth putting under a health answer.
+    guide: GuideLink | None = None
 
     @property
     def clean_text(self) -> str:
@@ -412,6 +416,7 @@ class Engine:
         prompt_version: str = "answer_v3",
         drugs: DrugCatalog | None = None,
         vaccines: Vaccines | None = None,
+        guides: GuideIndex | None = None,
     ):
         self.retriever = retriever
         self.triage = triage
@@ -420,6 +425,7 @@ class Engine:
         self.prompt_version, self.prompt = load_prompt(prompt_version)
         self.drugs = drugs
         self.vaccines = vaccines
+        self.guides = guides
 
     def _inject_rule_sources(self, tr: TriageResult, hits: list[Hit]) -> list[Hit]:
         """When a triage rule fired, put the warning-signs chunk of the rule's own source first,
@@ -574,6 +580,13 @@ class Engine:
             + (f" — {hits[n - 1].chunk.source_url}" if hits[n - 1].chunk.source_url else "")
             for n in cited
         ]
+        # the CITED chunks, not every hit: the guide to offer is the one built from the material
+        # this answer actually used, and half the retrieved chunks never make it into the text
+        guide = (
+            self.guides.best_for([hits[n - 1].chunk.chunk_id for n in cited], lang, query)
+            if self.guides is not None
+            else None
+        )
         return Answer(
             result.text.strip(),
             tr.level,
@@ -585,4 +598,5 @@ class Engine:
             [h.chunk.chunk_id for h in hits],
             verification,
             extra,
+            guide=guide,
         )

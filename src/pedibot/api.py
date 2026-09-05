@@ -51,6 +51,13 @@ class SourceOut(BaseModel):
     url: str | None
 
 
+class GuideOut(BaseModel):
+    """The guide built from the same sources the answer used. Absent when there is none."""
+
+    title: str
+    url: str
+
+
 class AskOut(BaseModel):
     answer_id: int
     session: str
@@ -63,6 +70,7 @@ class AskOut(BaseModel):
     verification: str
     degraded: bool = False
     options: list[str] = []
+    guide: GuideOut | None = None
 
 
 class DoseIn(BaseModel):
@@ -220,6 +228,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             verification=a.verification,
             degraded=degraded,
             options=list(getattr(a, "options", [])),
+            guide=GuideOut(title=a.guide.title, url=a.guide.url) if a.guide else None,
         )
 
     @app.get("/api/drugs")
@@ -384,6 +393,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             "verification": a.verification,
             "lang": a.lang,
             "disclaimer": DISCLAIMER[a.lang],
+            "guide": {"title": a.guide.title, "url": a.guide.url} if a.guide else None,
         }
 
     @app.get("/api/checklist")
@@ -468,6 +478,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
 
 def app_from_settings() -> FastAPI:
     from pedibot.bot.answer import EmergencyNumbers
+    from pedibot.bot.guides import GuideIndex
     from pedibot.bot.llm import provider_from_settings
     from pedibot.bot.retrieval import Retriever, Synonyms
     from pedibot.bot.triage import Triage
@@ -490,6 +501,7 @@ def app_from_settings() -> FastAPI:
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
         vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
+        guides=GuideIndex(s.content_dir),
     )
     cfg = ApiConfig(
         allowed_origins=[o.strip() for o in s.allowed_origins.split(",") if o.strip()],

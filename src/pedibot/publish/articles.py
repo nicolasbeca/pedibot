@@ -417,7 +417,68 @@ FOREIGN_SERVICE = re.compile(
 )
 
 
-def _problems(title: str, body: str, hits: list[Hit], lang: str) -> list[str]:
+# The "common questions" heading of each language, exactly as the article prompt asks for it and
+# as web/site/src/guides.ts looks for it. A guide whose FAQ heading drifts loses its structured
+# data with no error; a language missing from here would silently stop being checked, which is
+# why a test walks SUPPORTED_LANGS against it.
+FAQ_HEADING = {
+    "en": "Common questions", "es": "Preguntas frecuentes", "fr": "Questions fréquentes",
+    "de": "Häufige Fragen", "ru": "Частые вопросы", "ar": "أسئلة شائعة",
+    "pt": "Perguntas frequentes", "hi": "आम सवाल",
+}
+
+# Deliberately loose: the question is whether the section EXISTS, not how it is worded. German
+# alone writes that heading three ways across the published guides and all three are fine.
+DOCTOR_WORDS = {
+    "en": ("doctor", "emergency"), "es": ("médico", "urgencias"),
+    "fr": ("médecin", "urgences"), "de": ("arzt", "ärztin", "notaufnahme"),
+    "ru": ("врач", "отделение"), "ar": ("الطبيب", "الطوارئ"),
+    "pt": ("médico", "pronto-socorro", "emergência"),
+    "hi": ("डॉक्टर", "इमरजेंसी", "अस्पताल"),
+}
+
+# Languages with an alphabet of their own: a heading with none of it is a heading in another
+# language. Two Hindi guides shipped with "En qué coinciden" over an article of Devanagari.
+OWN_SCRIPT = {
+    "ru": ("\u0400", "\u04ff"), "ar": ("\u0600", "\u06ff"), "hi": ("\u0900", "\u097f"),
+}
+
+# German addresses the reader as "Sie" everywhere else on the site (prompt rule 9). A guide that
+# switches to "du" reads like a different website; three did.
+_DUZEN = re.compile(r"\b(du|dein|deine|deinem|deinen|deiner|deines|dich|dir)\b", re.I)
+
+
+def _structure_problems(body: str, lang: str, compare: bool) -> list[str]:
+    """The sections the prompt demands, checked on the draft instead of counted afterwards."""
+    out: list[str] = []
+    heads = [h.strip() for h in re.findall(r"^## (.+)$", body, re.M)]
+    if len(heads) < 3:
+        out.append(f"missing_sections (only {len(heads)} headings; the prompt asks for four)")
+    words = DOCTOR_WORDS.get(lang, DOCTOR_WORDS["en"])
+    if not any(w in h.lower() for h in heads for w in words):
+        out.append(
+            "no_doctor_section: every guide must end with the section on when to see a doctor"
+            " or go to the emergency department, written in the requested language"
+        )
+    faq = FAQ_HEADING.get(lang)
+    if not compare and faq and not any(faq in h for h in heads):
+        out.append(f"no_faq_section: the last heading must be exactly '## {faq}'")
+    lo, hi = OWN_SCRIPT.get(lang, ("", ""))
+    if lo:
+        alien = [h for h in heads if not any(lo <= c <= hi for c in h)]
+        if alien:
+            out.append(
+                f"heading_in_another_language ({alien[0]!r}): every heading in the language of"
+                " the article, not only the body"
+            )
+    if lang == "de" and len(_DUZEN.findall(body)) >= 3:
+        out.append("wrong_register: address the reader as 'Sie', never 'du'")
+    return out
+
+
+def _problems(
+    title: str, body: str, hits: list[Hit], lang: str, compare: bool = False
+) -> list[str]:
     """Verification of the draft: citations and doses (shared with the answer engine) plus the
     language. A Spanish guide written into web/content/en carries `lang: en` in its frontmatter,
     which breaks canonical and hreflang as well as reading wrong."""
@@ -437,6 +498,7 @@ def _problems(title: str, body: str, hits: list[Hit], lang: str) -> list[str]:
             " that only exists where the source was written. Write 'your doctor', 'your local"
             " emergency number' or 'the emergency department'."
         )
+    problems.extend(_structure_problems(body, lang, compare))
     return problems
 
 
@@ -444,7 +506,8 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
     hits = gather_hits(index, topic)
     if not hits:
         raise ValueError(f"no sources for topic {topic}")
-    system = load_prompt("article_compare_v1" if TOPIC_PLAN[topic].get("compare") else "article_v1")
+    compare = bool(TOPIC_PLAN[topic].get("compare"))
+    system = load_prompt("article_compare_v1" if compare else "article_v1")
     # The language is named at the top AND repeated after the sources: the sources are thousands
     # of words in another language sitting at the end of the prompt, which is where a model
     # weighs hardest. With the instruction only at the top, drafts came back in the sources'
@@ -458,7 +521,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
     )
     result = llm.complete(system, user, temperature=0.3, max_tokens=1800)
     title, summary, body = parse_output(result.text)
-    problems = _problems(title, body, hits, lang)
+    problems = _problems(title, body, hits, lang, compare)
     verification = "ok"
     if problems:
         retry = llm.complete(
@@ -471,7 +534,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
             max_tokens=1800,
         )
         title, summary, body = parse_output(retry.text)
-        if _problems(title, body, hits, lang):
+        if _problems(title, body, hits, lang, compare):
             raise ValueError(f"article for {topic} failed verification twice: {problems}")
         result, verification = retry, "regenerated"
     cited = sorted({int(n) for n in _CIT.findall(body)})

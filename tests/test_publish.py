@@ -148,6 +148,9 @@ _ES_DRAFT = (
     "BODY:\n## Qué es\nLas vacunas protegen a tu hijo de enfermedades graves antes de que se "
     "exponga a ellas [1]. En España el calendario recomendado incluye varias dosis durante la "
     "infancia y es importante que se administren en tiempo [1].\n"
+    "## Qué puedes hacer en casa\nLleva la cartilla al día [1].\n"
+    "## Cuándo acudir al médico o a urgencias\nSi hay fiebre alta tras la vacuna [1].\n"
+    "## Preguntas frecuentes\n¿Se pueden juntar dosis? Sí [1].\n"
 )
 
 
@@ -178,6 +181,9 @@ def test_an_article_in_the_requested_language_passes(tmp_path: Path, monkeypatch
         "SUMMARY: A clear guide to the childhood immunisation schedule.\n"
         "BODY:\n## What it is\nVaccines protect your child from serious illness before they are "
         "exposed to it [1]. The schedule gives several doses during the first year [1].\n"
+        "## What you can do at home\nKeep the record up to date [1].\n"
+        "## When to see a doctor or go to the emergency department\nHigh fever after a dose [1].\n"
+        "## Common questions\nCan doses be combined? Yes [1].\n"
     )
     a = generate_article(Index(db), FakeProvider(draft), "_vacunas", lang="en")
     assert a.lang == "en"
@@ -199,13 +205,22 @@ def test_the_social_link_points_at_a_page_that_exists(tmp_path: Path, monkeypatc
     db = tmp_path / "i.db"
     build_index([_chunk("seup_fiebre#1", "la fiebre no es peligrosa por si misma")], db)
     monkeypatch.setitem(TOPIC_PLAN, "_f", {"docs": ["seup_fiebre"], "query": "fiebre"})
-    draft = "TITLE: Fever in children\nSUMMARY: What to do.\nBODY:\n## What it is\nFever is common [1].\n"
+    draft = (
+        "TITLE: Fever in children\nSUMMARY: What to do.\n"
+        "BODY:\n## What it is\nFever is common [1].\n"
+        "## What you can do at home\nFluids and rest [1].\n"
+        "## When to see a doctor or go to the emergency department\nIf the baby is under three months [1].\n"
+        "## Common questions\nHow long does it last? A few days [1].\n"
+    )
     en = generate_article(Index(db), FakeProvider(draft), "_f", lang="en")
     assert "https://pedibot.xyz/guides/" in en.social_text("https://pedibot.xyz")
     assert "/en/guides/" not in en.social_text("https://pedibot.xyz")
 
     draft_es = (
         "TITLE: La fiebre\nSUMMARY: Qué hacer.\nBODY:\n## Qué es\nLa fiebre es frecuente [1].\n"
+        "## Qué puedes hacer en casa\nLíquidos y descanso [1].\n"
+        "## Cuándo acudir al médico o a urgencias\nSi el bebé tiene menos de tres meses [1].\n"
+        "## Preguntas frecuentes\n¿Cuánto dura? Unos días [1].\n"
     )
     es = generate_article(Index(db), FakeProvider(draft_es), "_f", lang="es")
     assert "https://pedibot.xyz/es/guides/" in es.social_text("https://pedibot.xyz")
@@ -262,6 +277,9 @@ def test_a_french_guide_is_asked_for_and_checked_in_french(tmp_path: Path, monke
         "TITLE: La rougeole chez l'enfant\n"
         "SUMMARY: Ce qu'il faut savoir et quand consulter.\n"
         "BODY:\n## Ce que c'est\nLa rougeole est une maladie très contagieuse [1].\n"
+        "## Ce que vous pouvez faire à la maison\nDu repos et des liquides [1].\n"
+        "## Quand consulter un médecin ou aller aux urgences\nEn cas de gêne respiratoire [1].\n"
+        "## Questions fréquentes\nCombien de temps ? Quelques jours [1].\n"
     )
     a = generate_article(Index(db), FakeProvider(draft), "_fr", lang="fr")
     assert a.lang == "fr"
@@ -269,7 +287,12 @@ def test_a_french_guide_is_asked_for_and_checked_in_french(tmp_path: Path, monke
     assert "## Sources" in a.markdown()  # French keeps the English word for this heading
 
     # a Spanish draft asked for in French must be refused, exactly as English/Spanish are
-    spanish = "TITLE: El sarampión\nSUMMARY: Qué es.\nBODY:\n## Qué es\nEl sarampión es contagioso [1].\n"
+    spanish = (
+        "TITLE: El sarampión\nSUMMARY: Qué es.\nBODY:\n## Qué es\nEl sarampión es contagioso [1].\n"
+        "## Qué puedes hacer en casa\nReposo [1].\n"
+        "## Cuándo acudir al médico o a urgencias\nSi cuesta respirar [1].\n"
+        "## Preguntas frecuentes\n¿Cuánto dura? Unos días [1].\n"
+    )
     with pytest.raises(ValueError, match="wrong_language"):
         generate_article(Index(db), FakeProvider(spanish), "_fr", lang="fr")
 

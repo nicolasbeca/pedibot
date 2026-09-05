@@ -6,7 +6,7 @@ const s = t(lang);
 const countries = [['GB','UK'],['ES','ES'],['US','US'],['IE','IE'],['FR','FR'],['DE','DE'],['IT','IT'],['PT','PT'],['MX','MX'],['AR','AR'],['CL','CL'],['CO','CO'],['BR','BR'],['AU','AU'],['CA','CA'],['NZ','NZ'],['RU','RU'],['KZ','KZ'],['BY','BY'],['UA','UA'],['SA','SA'],['AE','AE'],['EG','EG'],['MA','MA'],['DZ','DZ'],['TN','TN'],['JO','JO'],['QA','QA'],['KW','KW']];
 const ages = [['', s.not_set], ...s.chat_ages];
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale })}>
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta })}>
   <div class="chat" id="thread">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo.svg" width="72" height="72" alt="" />
@@ -52,6 +52,8 @@ const ages = [['', s.not_set], ...s.chat_ages];
   .chat :global(.msg.user) { align-self: flex-end; background: var(--mint); border-bottom-right-radius: 6px; }
   .chat :global(.msg.bot) { align-self: flex-start; background: var(--paper); border: 1px solid var(--line); border-bottom-left-radius: 6px; box-shadow: var(--shadow); }
   .chat :global(.who) { font-family: Nunito, sans-serif; font-weight: 700; font-size: .85rem; color: var(--sage); margin-bottom: 6px; }
+  .chat :global(.guide) { margin: 14px 0 0; font-size: .9rem; }
+  .chat :global(.guide a) { font-weight: 600; }
   .chat :global(.sources) { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: .84rem; color: var(--ink-2); }
   .chat :global(.sources b) { color: var(--ink); }
   .chat :global(.sources div) { display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; margin-top: 4px; }
@@ -104,6 +106,9 @@ const ages = [['', s.not_set], ...s.chat_ages];
     let h = '<div class="who">pedibot</div>';
     if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
     h += esc(String(j.text).replace(/\s*\[\d{1,2}\]/g, '')).replace(/\n/g, '<br>');
+    // The guide built from the same sources this answer used. Its own title is the link text:
+    // that is what tells the reader whether it is worth opening.
+    if (j.guide?.url) h += `<p class="guide">📄 ${S.guide_cta}: <a href="${esc(j.guide.url)}">${esc(j.guide.title)}</a></p>`;
     if (j.verification === 'clarify' && j.options?.length) { h += '<div class="opts">' + j.options.map((o: string) => `<button class="fb opt" type="button" data-q="${esc(o)}">${esc(o)}</button>`).join(' ') + '</div>'; return h; }
     h += `<div class="foot"><span></span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button> <button class="fb share" data-id="${j.answer_id}" type="button">🔗 ${S.share}</button>${j.verification === 'ok' || j.verification === 'regenerated' ? ` <button class="fb child" data-q="${esc(j.question || '')}" type="button">🧸 ${S.child}</button> <button class="fb listen" type="button">🔊 ${S.listen}</button>` : ''}</span></div>`;
     return h;

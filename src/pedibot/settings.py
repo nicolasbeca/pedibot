@@ -44,6 +44,9 @@ class Settings(BaseSettings):
 
     # Config files
     config_dir: Path = ROOT / "config"
+    # Where `pedibot publish` writes the guides. The engine reads it so an answer can link
+    # to the guide built from the same sources.
+    content_dir: Path = ROOT / "web" / "content"
 
 
 def get_settings() -> Settings:
