@@ -57,8 +57,15 @@ export function formLabel(label: string, lang: Lang): string {
 }
 
 /** How each language spells the two generics in a URL. Anything unlisted keeps the key. */
+// A language missing from here falls back to the English key, which is right for the languages
+// that write the drug the English way and wrong for the ones that do not. Portuguese was missing:
+// its pages were built from the SPANISH slug by accident, which gave the correct
+// /pt/dose/ibuprofeno for the wrong reason, and fixing that accident would have moved a live URL.
+// Hindi is deliberately not here: its slugs are Latin transliterations, and "ibuprofen" is the
+// transliteration — "ibuprofeno" was the Spanish word, inherited from the same accident.
 const GENERIC_SLUG: Partial<Record<Lang, Record<string, string>>> = {
   es: { ibuprofen: 'ibuprofeno' },
+  pt: { ibuprofen: 'ibuprofeno' },
   fr: { ibuprofen: 'ibuprofene', paracetamol: 'paracetamol' },
   de: { ibuprofen: 'ibuprofen', paracetamol: 'paracetamol' },
 };
