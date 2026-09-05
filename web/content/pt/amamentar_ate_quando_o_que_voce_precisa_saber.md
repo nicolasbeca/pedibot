@@ -64,4 +64,4 @@ Bebês de mães que recebem terapia antirretroviral podem iniciar a amamentaçã
 [5] WHO — "Infant and young child feeding", seção "Overview", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding
 [6] WHO — "Infant and young child feeding", seção "Complementary feeding", p. 1 — https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

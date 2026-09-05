@@ -76,4 +76,4 @@ Mantenha a criança fora da escola, creche ou piscinas até que os vômitos tenh
 [7] MedlinePlus — "Gastroenteritis", seção "¿Cuáles son los síntomas de la gastroenteritis?", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html
 [8] SEUP — "Gastroenteritis aguda. Información para padres" (2025), seção "¿QUÉ ES LA GASTROENTERITIS AGUDA? ¿CUÁLES SON LOS SÍNTOMAS?", p. 1
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

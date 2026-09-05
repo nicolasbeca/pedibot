@@ -62,4 +62,4 @@ Em geral, não. A maioria dos desmaios não é causada por problemas médicos im
 [4] SEUP — "Síncope. Información para padres" (2025), seção "¿QUÉ PODEMOS HACER EN CASA CUANDO UN NIÑO O NIÑA SUFRE UN SÍNCOPE?", p. 1, 2
 [5] SEUP — "Síncope. Información para padres" (2025), seção "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

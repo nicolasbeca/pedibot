@@ -80,4 +80,4 @@ As consequências de não tratar condições de saúde mental na adolescência p
 [8] WHO — "Mental health of adolescents", seção "Mental health determinants", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health
 [10] WHO — "Mental health of adolescents", seção "Psychosis", p. 1 — https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -57,4 +57,4 @@ Se loções ou sprays não funcionarem, fale com um farmacêutico sobre outros t
 [9] MedlinePlus — "Head Lice" (2025), seção "What are the symptoms of head lice?", p. 1 — https://medlineplus.gov/headlice.html
 [10] MedlinePlus — "Head Lice" (2025), seção "Can head lice be prevented?", p. 1 — https://medlineplus.gov/headlice.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

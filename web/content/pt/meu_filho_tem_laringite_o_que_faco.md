@@ -70,4 +70,4 @@ A laringite é produzida por diferentes vírus [3]. Como começa como um resfria
 [8] SEUP — "Crisis asmática. Información para padres" (2025), seção "¿CUÁLES SON LOS SÍNTOMAS?", p. 1
 [10] SEUP — "Catarro de vías altas. Información para padres" (2025), seção "CATARRO DE VÍAS ALTAS FIEBRE CUBRIRSE LA BOCA CON UN PAÑUELO AL ESTORNUDAR O TOSER ¿CUÁNDO PUEDE VOLVER A LA GUARDERÍA/ ESCUELA? ¿CUÁNDO PUEDE REALIZAR ACTIVIDAD FÍSICA?", p. 2
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -75,4 +75,4 @@ Não tente aplicar pressão na coluna ou no crânio do bebê (manipulação espi
 [3] NHS — "Baby teething symptoms" (2026), seção "What order do baby teeth appear in?", p. 1 — https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/
 [4] NHS — "Colic" (2022), seção "Don’t", p. 1 — https://www.nhs.uk/conditions/colic/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -36,4 +36,4 @@ As fontes fornecidas não abordam diretamente quando procurar médico ou emergê
 [1] NHS — "Paracetamol for children (Calpol) - Other common brands: Panadol" (2025), seção "Giving paracetamol with ibuprofen", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/
 [2] NHS — "Paracetamol for children (Calpol) - Other common brands: Panadol" (2025), seção "What paracetamol is for", p. 1 — https://www.nhs.uk/medicines/paracetamol-for-children/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -61,4 +61,4 @@ Sim. Uma dose de dTpa é recomendada em cada gravidez a partir da 27ª semana, p
 [9] Ministerio de Sanidad — "Calendario común de vacunación e inmunización a lo largo de toda la vida. Calendario recomendado año 2025" (2025), seção "1 Poliomielitis (VPI) 2 Difteria, tétanos, tosferina (DTPa, dTpa, Td) 3 Hepatitis B (HB)", p. 2
 [10] MedlinePlus — "Vacunas para los niños", seção "¿Cuándo necesito vacunar a mi hijo?", p. 1 — https://medlineplus.gov/spanish/childhoodimmunization.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

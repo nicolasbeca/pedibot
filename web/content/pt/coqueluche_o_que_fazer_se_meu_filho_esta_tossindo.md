@@ -75,4 +75,4 @@ A recuperação é lenta. A tosse melhora aos poucos, mas as crises podem voltar
 [9] NHS — "Whooping cough" (2025), seção "Whooping cough can be dangerous", p. 1 — https://www.nhs.uk/conditions/whooping-cough/
 [10] CDC — "About Whooping Cough", seção "People can unknowingly spread the bacteria", p. 1 — https://www.cdc.gov/pertussis/about/index.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

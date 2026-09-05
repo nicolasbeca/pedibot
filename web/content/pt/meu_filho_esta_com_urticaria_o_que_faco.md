@@ -75,4 +75,4 @@ Não dê xaropes sem consultar o pediatra [3]. O médico é quem deve indicar o 
 [7] NHS — "Rashes in babies and children" (2024), seção "Symptoms of hives", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/
 [8] NHS — "Hives" (2024), seção "Hives", p. 1 — https://www.nhs.uk/conditions/hives/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

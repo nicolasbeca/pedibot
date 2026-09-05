@@ -81,4 +81,4 @@ Os sintomas podem ser muito parecidos. Um médico pode verificar se há alergia 
 [6] NHS — "Colic" (2022), seção "Causes of colic", p. 1 — https://www.nhs.uk/conditions/colic/
 [7] NHS — "Colic" (2022), seção "Symptoms of colic", p. 1 — https://www.nhs.uk/conditions/colic/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

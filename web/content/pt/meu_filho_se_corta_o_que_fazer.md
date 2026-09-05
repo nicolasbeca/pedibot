@@ -65,4 +65,4 @@ Se a autolesão exigir cuidados específicos, como pontos ou sinais de infecçã
 [8] SEUP — "Conducta suicida. Información para padres" (2025), seção "¿DÓNDE PUEDO ACUDIR SI PRESENTA ALGUNA DE LAS SEÑALES DE ALARMA?", p. 2
 [10] SEUP — "Conducta suicida. Información para padres" (2025), seção "Señales NO verbales Señales verbales ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?", p. 2
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

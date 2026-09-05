@@ -79,4 +79,4 @@ Aumente a ingestão de líquidos, principalmente água, e o consumo de fibras, c
 [9] SEUP — "Estreñimiento. Información para padres" (2025), seção "¿PODEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1, 2
 [10] SEUP — "Gastroenteritis aguda. Información para padres" (2025), seção "Ofrecer en pequeñas cantidades SRO Dolor abdominal", p. 2
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

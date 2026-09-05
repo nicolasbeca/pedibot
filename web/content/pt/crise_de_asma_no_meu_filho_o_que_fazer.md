@@ -79,4 +79,4 @@ Sim. Os broncoespasmos às vezes começam apenas com tosse [1]. Filhos de pais f
 [7] MedlinePlus — "Asma en niños", seção "¿Qué es el asma?", p. 1 — https://medlineplus.gov/spanish/asthmainchildren.html
 [9] MedlinePlus — "Asma en niños", seção "¿Cuáles son los tratamientos para el asma en niños?", p. 1 — https://medlineplus.gov/spanish/asthmainchildren.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -49,4 +49,4 @@ Procure atendimento urgente se a tosse vier com sinais de alerta. O NHS lista: d
 [8] MedlinePlus — "Asthma in Children" (2024), seção "What are the treatments for asthma in children?", p. 1 — https://medlineplus.gov/asthmainchildren.html
 [9] NHS — "Whooping cough" (2025), seção "How to ease the symptoms of whooping cough", p. 1 — https://www.nhs.uk/conditions/whooping-cough/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -74,4 +74,4 @@ Mantenha a queimadura sob água fria corrente por 20 minutos, o mais rápido pos
 [4] NHS — "Burns and scalds" (2026), seção "Things you can do to help while burns and scalds heal", p. 1 — https://www.nhs.uk/conditions/burns-and-scalds/
 [5] MedlinePlus — "Burns" (2024), p. 1 — https://medlineplus.gov/burns.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

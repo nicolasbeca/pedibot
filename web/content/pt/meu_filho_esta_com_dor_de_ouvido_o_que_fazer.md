@@ -71,4 +71,4 @@ O médico pode diagnosticar olhando dentro do ouvido com um instrumento chamado 
 [7] NHS — "Ear infections" (2025), seção "Ear infections", p. 1 — https://www.nhs.uk/conditions/ear-infections/
 [9] MedlinePlus — "Ear Infections" (2025), p. 1 — https://medlineplus.gov/earinfections.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

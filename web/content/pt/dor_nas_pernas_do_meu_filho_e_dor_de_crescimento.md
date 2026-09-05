@@ -60,4 +60,4 @@ A dor de crescimento é mais comum em crianças ativas e pode acontecer depois d
 [2] NHS — "Growing pains" (2026), seção "Don’t", p. 1 — https://www.nhs.uk/conditions/growing-pains/
 [3] NHS — "Growing pains" (2026), seção "Causes of growing pains", p. 1 — https://www.nhs.uk/conditions/growing-pains/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

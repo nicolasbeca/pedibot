@@ -67,4 +67,4 @@ Sim. Quando a criança está parada, ler e contar histórias com um cuidador é 
 [8] WHO — "Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age" (2019), seção "MVPA", p. 7
 [10] WHO — "Guidelines on physical activity, sedentary behaviour and sleep for children under 5 years of age" (2019), seção "RATIONALE", p. 14
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

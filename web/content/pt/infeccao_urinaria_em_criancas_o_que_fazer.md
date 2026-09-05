@@ -84,4 +84,4 @@ Sim, alguns fatores aumentam o risco, como constipação intestinal e não beber
 [7] NHS — "Urinary tract infections (UTIs)" (2025), seção "Symptoms in older, frail people or people with a urinary catheter", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/
 [8] NHS — "Urinary tract infections (UTIs)" (2025), seção "How to prevent urinary tract infections (UTIs)", p. 1 — https://www.nhs.uk/conditions/urinary-tract-infections-utis/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

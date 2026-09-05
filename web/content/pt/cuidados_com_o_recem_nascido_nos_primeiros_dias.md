@@ -76,4 +76,4 @@ Sim, é recomendado que o bebê permaneça no quarto com a mãe durante todo o d
 [6] Junta de Andalucía — "Cuídame: orientaciones para el comienzo de la vida", seção "4.1 Cuidados del recién nacido El aseo", p. 41
 [8] AEP — "Cuidados generales del recién nacido sano", seção "Cuidados generales del recién nacido sano", p. 1
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

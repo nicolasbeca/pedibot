@@ -76,4 +76,4 @@ Ficar queimado de sol pode aumentar o risco de câncer de pele [3]. Verifique re
 [4] NHS — "Sunburn" (2025), seção "How to ease sunburn yourself", p. 1 — https://www.nhs.uk/conditions/sunburn/
 [5] MedlinePlus — "Sun Exposure" (2026), p. 1 — https://medlineplus.gov/sunexposure.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

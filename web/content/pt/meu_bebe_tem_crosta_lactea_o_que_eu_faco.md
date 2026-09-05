@@ -59,4 +59,4 @@ Não. Ela não coça nem dói e não incomoda o bebê [1].
 [3] NHS — "Cradle cap" (2025), seção "A pharmacist can help with cradle cap", p. 1 — https://www.nhs.uk/conditions/cradle-cap/
 [5] NHS — "Cradle cap" (2025), seção "Don’t", p. 1 — https://www.nhs.uk/conditions/cradle-cap/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -68,4 +68,4 @@ Também fique atento em casa a estes sinais de piora: vômitos persistentes ou m
 [6] SEUP — "Cefalea. Información para padres" (2025), seção "¿CUÁL ES LA EVOLUCIÓN ESPERABLE?", p. 1
 [7] SEUP — "Cefalea. Información para padres" (2025), seção "¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE CEFALEA?", p. 1
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

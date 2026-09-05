@@ -74,4 +74,4 @@ Sim. O impetigo geralmente infecta pele já danificada, como cortes, arranhões 
 [8] CDC — "About Lice", seção "About Lice Key points", p. 1 — https://www.cdc.gov/lice/about/index.html
 [9] MedlinePlus — "Impetigo" (2025), p. 1 — https://medlineplus.gov/impetigo.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

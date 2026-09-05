@@ -71,4 +71,4 @@ Também procure o médico se, com antibiótico indicado, a febre persistir após
 [9] WHO — "Neumonía infantil", seção "Datos y cifras", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia
 [10] WHO — "Neumonía infantil", seção "Prevención", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/pneumonia
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

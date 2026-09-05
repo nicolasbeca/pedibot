@@ -54,4 +54,4 @@ Não. Os recursos de marcos do desenvolvimento não substituem ferramentas de tr
 [2] CDC — "CDC's Developmental Milestones", seção "Resources", p. 1 — https://www.cdc.gov/act-early/milestones/index.html
 [3] CDC — "CDC's Developmental Milestones", seção "Developmental Milestone Videos", p. 1 — https://www.cdc.gov/act-early/milestones/index.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

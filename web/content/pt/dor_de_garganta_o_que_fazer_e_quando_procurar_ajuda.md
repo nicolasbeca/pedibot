@@ -74,4 +74,4 @@ Esses sinais podem indicar uma complicação rara chamada abscesso periamigdalia
 [9] NHS — "Tonsillitis" (2024), seção "Treatment from a GP for tonsillitis", p. 1 — https://www.nhs.uk/conditions/tonsillitis/
 [10] NHS — "Tonsillitis" (2024), seção "What happens at your GP appointment", p. 1 — https://www.nhs.uk/conditions/tonsillitis/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

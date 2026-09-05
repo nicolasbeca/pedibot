@@ -46,4 +46,4 @@ Nenhuma das fontes fornece sinais de alerta específicos para procurar emergênc
 [5] MedlinePlus — "Infant and Newborn Nutrition" (2023), p. 1 — https://medlineplus.gov/infantandnewbornnutrition.html
 [6] WHO — "WHO guideline for complementary feeding of infants and young children 6–23 months of age" (2023), seção "3.3 Age of introduction of complementary foods", p. 36, 37, 38, 39, 40
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

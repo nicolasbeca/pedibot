@@ -76,4 +76,4 @@ Sim, a ansiedade pode afetar de forma considerável a frequência escolar, o est
 [7] WHO — "La salud mental de los adolescentes", seção "Datos y cifras", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health
 [9] WHO — "La salud mental de los adolescentes", seção "Detección y tratamiento tempranos", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

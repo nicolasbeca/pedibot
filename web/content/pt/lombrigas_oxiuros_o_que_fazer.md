@@ -63,4 +63,4 @@ O médico pode diagnosticar encontrando os ovos, geralmente com um pedaço de fi
 [4] NHS — "Threadworms" (2023), seção "Things you should do at home for threadworms", p. 1 — https://www.nhs.uk/conditions/threadworms/
 [5] NHS — "Threadworms" (2023), seção "Treatment for threadworms from a pharmacy", p. 1 — https://www.nhs.uk/conditions/threadworms/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

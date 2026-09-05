@@ -74,4 +74,4 @@ Se houver adrenalina disponível, administre-a por via intramuscular o quanto an
 [1] SEUP — "Anafilaxia. Información para padres" (2025), seção "¿QUÉ ES lA ANAFILAXIA?", p. 1
 [2] SEUP — "Anafilaxia. Información para padres" (2025), seção "HABONES", p. 2
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

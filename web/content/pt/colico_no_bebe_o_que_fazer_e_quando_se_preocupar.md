@@ -72,4 +72,4 @@ Não. Não existe nenhum tratamento com eficácia comprovada [7]. Não administr
 [6] SEUP — "Cólico del lactante. Información para padres" (2025), seção "¿DEBEMOS OFRECERLE ALGUNA ALIMENTACIÓN ESPECIAL?", p. 1
 [7] SEUP — "Cólico del lactante. Información para padres" (2025), seção "¿CÓMO LO PODEMOS PREVENIR?", p. 2
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

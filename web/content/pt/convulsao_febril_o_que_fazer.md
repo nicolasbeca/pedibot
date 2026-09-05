@@ -81,4 +81,4 @@ Não. Convulsão febril não é epilepsia, mas crianças que tiveram convulsão 
 [6] NHS — "Febrile seizures" (2023), seção "Symptoms of a febrile seizure", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/
 [7] NHS — "Febrile seizures" (2023), seção "Don’t", p. 1 — https://www.nhs.uk/conditions/febrile-seizures/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -72,4 +72,4 @@ A medida mais eficaz é lavar as mãos com frequência com água e sabão ou usa
 [5] SEUP — "Fiebre. Información para padres" (2025), seção "¿QUÉ PODEMOS HACER EN CASA CUANDO TIENE FIEBRE?", p. 1 — https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf
 [6] MedlinePlus — "Fiebre", p. 1 — https://medlineplus.gov/spanish/fever.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -65,4 +65,4 @@ Não deixe a criança exposta ao calor por muito tempo [5]. Se a criança esteve
 [4] SEUP — "Golpe de calor. Información para padres" (2025), seção "¿CUÁNDO DEBEMOS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
 [5] MedlinePlus — "Enfermedades causadas por el calor", p. 1 — https://medlineplus.gov/spanish/heatillness.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -70,4 +70,4 @@ Certas pessoas são mais propensas a ter sangramentos nasais, incluindo criança
 [4] NHS — "Nosebleed" (2026), seção "Causes of a nosebleed", p. 1 — https://www.nhs.uk/conditions/nosebleed/
 [5] NHS — "Nosebleed" (2026), seção "Nosebleed", p. 1 — https://www.nhs.uk/conditions/nosebleed/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

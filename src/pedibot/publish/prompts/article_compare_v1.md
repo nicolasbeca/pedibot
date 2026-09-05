@@ -23,5 +23,7 @@ RULES
    German  → "## Was die Leitlinien sagen" / "## Worin sie übereinstimmen" / "## Worin sie sich unterscheiden (und warum das oft nichts ändert)" / "## Wann Sie zur Ärztin oder in die Notaufnahme sollten"
    Russian → "## Что говорят рекомендации" / "## В чём они сходятся" / "## В чём они расходятся (и почему это может быть неважно)" / "## Когда обращаться к врачу или в приёмное отделение"
    Arabic  → "## ما تقوله الإرشادات" / "## ما تتفق عليه" / "## ما تختلف فيه (ولماذا قد لا يغيّر ذلك شيئا)" / "## متى تراجع الطبيب أو قسم الطوارئ"
+   Portuguese → "## O que dizem as diretrizes" / "## Em que elas concordam" / "## Em que elas diferem (e por que pode não importar)" / "## Quando consultar um médico ou ir ao pronto-socorro"
+   Hindi   → "## दिशानिर्देश क्या कहते हैं" / "## वे किस बात पर सहमत हैं" / "## वे किस बात पर अलग हैं (और शायद इससे फ़र्क़ न पड़े)" / "## डॉक्टर के पास या इमरजेंसी कब जाएँ"
 6. No other headings. No markdown links. No mention of PediBot. If the sources agree completely, say so plainly in "Where they differ".
 9. Register: in German address the reader as "Sie", never "du" — the rest of the site does, and a guide that switches sounds like a different website. In Russian address the reader as "вы". In Spanish and French use the same form the site uses ("tú" in Spanish, "vous" in French).

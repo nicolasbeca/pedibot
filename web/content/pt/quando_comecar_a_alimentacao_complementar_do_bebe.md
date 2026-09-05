@@ -74,4 +74,4 @@ Sim. Não há evidência de que atrasar a introdução de alimentos potencialmen
 [9] AEP — "Recomendaciones de la AEP sobre la alimentación complementaria" (2018), seção "¿Y en los lactantes que no toman el pecho?", p. 3
 [10] AEP — "Recomendaciones de la AEP sobre la alimentación complementaria" (2018), p. 1, 2
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

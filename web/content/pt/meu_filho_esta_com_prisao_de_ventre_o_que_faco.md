@@ -64,4 +64,4 @@ Não é recomendado substituir frutas por sucos, pois os sucos têm pouca fibra 
 [5] SEUP — "Dolor abdominal. Información para padres" (2025), seção "¿QUÉ ES EL DOLOR ABDOMINAL?", p. 1
 [6] SEUP — "Dolor abdominal. Información para padres" (2025), seção "¿CÓMO LO PODEMOS PREVENIR?", p. 2
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

@@ -80,4 +80,4 @@ Na maioria dos casos, não é necessário realizar nenhuma prova. O médico aval
 [5] SEUP — "Traumatismo craneal. Información para padres" (2025), seção "¿CUÁNDO DEBEMOS ACUDIR A UN SERVICIO DE URGENCIAS?", p. 2
 [6] MedlinePlus — "Lesiones en la cabeza", p. 1 — https://medlineplus.gov/spanish/headinjuries.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

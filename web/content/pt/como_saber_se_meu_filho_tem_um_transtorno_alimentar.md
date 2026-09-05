@@ -82,4 +82,4 @@ Crie um ambiente acolhedor, sem críticas, e converse com seu filho [7]. Procure
 [7] SEUP — "Trastornos de la conducta alimentaria. Información para padres" (2025), seção "signos y síntomas conductuales signos y síntomas físicos SI SE TRATA DE UN FAMILIAR, ¿CÓMO PUEDO AYUDAR A LA PERSONA SI DETECTO ESTAS SEÑALES?", p. 2
 [8] WHO — "La salud mental de los adolescentes", seção "Trastornos de la conducta alimentaria", p. 1 — https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

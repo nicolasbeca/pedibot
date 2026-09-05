@@ -547,6 +547,8 @@ ARTICLE_DISCLAIMER = {
     "de": "*Dieser Ratgeber fasst veröffentlichte kinderärztliche Leitlinien zusammen. Er ist keine medizinische Beratung und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt. Rufen Sie im Notfall Ihre Notrufnummer an.*",
     "ru": "*Эта статья обобщает опубликованные педиатрические рекомендации. Это не медицинская консультация, и она не заменяет вашего педиатра. В экстренной ситуации звоните по местному номеру экстренной службы.*",
     "ar": "*يلخّص هذا الدليل إرشادات طب أطفال منشورة. وهو ليس استشارة طبية ولا يغني عن طبيب طفلك. وفي الحالات الطارئة اتصل برقم الطوارئ المحلي لديك.*",
+    "pt": "*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*",
+    "hi": "*यह गाइड प्रकाशित बाल रोग दिशानिर्देशों का सार देती है। यह चिकित्सकीय सलाह नहीं है और आपके बाल रोग विशेषज्ञ की जगह नहीं लेती। आपात स्थिति में अपने इलाक़े के आपातकालीन नंबर पर फ़ोन कीजिए।*",
 }
 
 

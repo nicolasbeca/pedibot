@@ -63,4 +63,4 @@ Não necessariamente. Procure o pronto-socorro quando houver sintomas, quando es
 [5] SEUP — "Intoxicaciones. Información para padres" (2025), seção "Si el contacto ha sido ocular o cutáneo, lave con agua abundante no provoque el vómito Abrir las ventanas Solicite ayuda Salga al aire libre no administre ningún líquido ni alimento ¿CUÁNDO DEBEMoS CONSULTAR EN UN SERVICIO DE URGENCIAS?", p. 2
 [6] MedlinePlus — "Envenenamiento", p. 1 — https://medlineplus.gov/spanish/poisoning.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

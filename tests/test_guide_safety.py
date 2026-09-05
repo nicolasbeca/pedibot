@@ -18,6 +18,10 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "web" / "content"
 
+import pytest  # noqa: E402
+
+from pedibot.bot.answer import SUPPORTED_LANGS  # noqa: E402
+
 # Numbers and national brands a reader in another country cannot use. 112 is deliberately absent:
 # it is the shared European number, and where a guide names it, it names its own country too.
 # The same pattern the generator refuses drafts with, imported rather than copied: a guard and
@@ -121,3 +125,40 @@ def test_the_citation_scaffolding_is_in_the_guide_s_own_language() -> None:
         assert not english, f"{lang}: {len(english)} guías citan con «section» en inglés"
         localised = sum(1 for f in files if f', {word} \\"' in f.read_text(encoding="utf-8"))
         assert localised > 0, f"{lang}: ninguna guía usa «{word}»"
+
+
+@pytest.mark.parametrize("lang", sorted(SUPPORTED_LANGS))
+def test_every_language_has_its_own_disclaimer(lang: str) -> None:
+    """`ARTICLE_DISCLAIMER` falls back to English, silently. It had no Portuguese entry, so all
+    sixty published Portuguese guides ended with an English paragraph — and it is the one
+    paragraph on the page that has to be understood.
+
+    A fallback that reads as a working default is worse than a missing key: nothing breaks, the
+    build is green, and only a reader notices.
+    """
+    from pedibot.publish.articles import ARTICLE_DISCLAIMER, SOURCES_HEADING
+
+    assert lang in ARTICLE_DISCLAIMER, f"[{lang}] sin descargo: sale el inglés"
+    assert lang in SOURCES_HEADING, f"[{lang}] sin encabezado de fuentes"
+    if lang != "en":
+        assert ARTICLE_DISCLAIMER[lang] != ARTICLE_DISCLAIMER["en"], f"[{lang}] copia el inglés"
+        assert SOURCES_HEADING[lang] != SOURCES_HEADING["en"] or lang == "fr", lang
+
+
+@pytest.mark.parametrize("lang", sorted(SUPPORTED_LANGS))
+def test_both_prompts_name_the_headings_in_every_language(lang: str) -> None:
+    """Rule 6 lists the four headings language by language. A language missing from that list
+    gets whatever the model invents, and five Portuguese guides duly invented their own wording
+    for "when to see a doctor" — which no test can recognise afterwards."""
+    from pedibot.publish.articles import load_prompt
+
+    names = {
+        "en": "English", "es": "Spanish", "fr": "French", "de": "German",
+        "ru": "Russian", "ar": "Arabic", "pt": "Portuguese", "hi": "Hindi",
+    }
+    assert lang in names, f"[{lang}] añade su nombre en inglés a este mapa"
+    for version in ("article_v1", "article_compare_v1"):
+        text = load_prompt(version)
+        assert re.search(rf"^\s*{names[lang]}\s*→", text, re.M), (
+            f"[{lang}] {version} no dice cómo se escriben sus encabezados"
+        )

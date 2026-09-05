@@ -101,4 +101,4 @@ Não há vacina para o resfriado comum [6].
 [9] CDC — "Manage Common Cold", seção "Fact", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html
 [10] CDC — "Manage Common Cold", seção "When to seek medical care", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

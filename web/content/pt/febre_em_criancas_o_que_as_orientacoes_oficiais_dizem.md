@@ -38,4 +38,4 @@ O NHS orienta procurar ajuda médica (ligue para seu médico ou serviço de saú
 [2] NHS — "High temperature (fever) in children" (2025), seção "High temperature (fever) in children", p. 1 — https://www.nhs.uk/conditions/fever-in-children/
 [3] NHS — "High temperature (fever) in children" (2025), seção "Don’t", p. 1 — https://www.nhs.uk/conditions/fever-in-children/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

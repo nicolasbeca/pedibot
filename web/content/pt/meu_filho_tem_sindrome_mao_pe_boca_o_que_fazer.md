@@ -84,4 +84,4 @@ Geralmente não é grave, mas é muito contagiosa. A maioria das pessoas melhora
 [8] CDC — "About Hand, Foot, and Mouth Disease", seção "Manage symptoms at home", p. 1 — https://www.cdc.gov/hand-foot-mouth/about/index.html
 [9] NHS — "Hand, foot and mouth disease" (2024), seção "Staying off school or nursery", p. 1 — https://www.nhs.uk/conditions/hand-foot-mouth-disease/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

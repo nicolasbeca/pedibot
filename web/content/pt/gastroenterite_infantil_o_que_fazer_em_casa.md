@@ -82,4 +82,4 @@ Sim, não é necessário evitar laticínios. Mantenha a amamentação normal e a
 [8] MedlinePlus — "Gastroenteritis", seção "¿Cuáles son los síntomas de la gastroenteritis?", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html
 [10] MedlinePlus — "Gastroenteritis", seção "¿Cuáles son los tratamientos para la gastroenteritis?", p. 1 — https://medlineplus.gov/spanish/gastroenteritis.html
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

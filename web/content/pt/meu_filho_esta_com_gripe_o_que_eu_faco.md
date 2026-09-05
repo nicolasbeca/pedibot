@@ -69,4 +69,4 @@ Não. A gripe tende a ser mais grave que o resfriado comum [3]. Ela afeta mais d
 [9] CDC — "Manage Common Cold", seção "Manage Common Cold Key points", p. 1 — https://www.cdc.gov/antibiotic-use/colds.html
 [10] NHS — "Respiratory syncytial virus (RSV)" (2024), seção "Things you can do to ease symptoms of an RSV infection", p. 1 — https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

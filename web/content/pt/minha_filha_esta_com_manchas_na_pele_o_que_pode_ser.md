@@ -59,4 +59,4 @@ Pequenas manchas com coceira que viram bolhas e depois crostas podem ser catapor
 [9] NHS — "Rashes in babies and children" (2024), seção "Small spots and blisters", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/
 [10] NHS — "Rashes in babies and children" (2024), seção "Raised, itchy spots or patches", p. 1 — https://www.nhs.uk/conditions/rashes-babies-and-children/
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*

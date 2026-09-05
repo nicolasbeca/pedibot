@@ -71,4 +71,4 @@ Também é importante observar em casa se a respiração piora, se há dificulda
 [6] SEUP — "Bronquiolitis. Información para padres" (2025), seção "¿QUÉ ES LA BRONQUIOLITIS?", p. 1
 [7] SEUP — "Bronquiolitis. Información para padres" (2025), seção "¿QUÉ PODEMOS HACER EN CASA?", p. 1
 
-*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*
+*Este guia resume diretrizes pediátricas publicadas. Não é orientação médica e não substitui o seu pediatra. Em uma emergência, ligue para o número de emergência da sua região.*
