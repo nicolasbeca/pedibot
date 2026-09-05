@@ -79,7 +79,25 @@ def test_the_four_failures_are_caught() -> None:
 
     duzen = "## Was es ist\nDu solltest dein Kind zu dir nehmen.\n## Wann zum Arzt\nx\n## Häufige Fragen\nx"
     assert any("wrong_register" in p for p in _structure_problems(duzen, "de", compare=False))
-    assert _structure_problems(duzen.replace("Du solltest dein Kind zu dir", "Sie sollten Ihr Kind zu sich"), "de", compare=False) == []
+    formal = duzen.replace("Du solltest dein Kind zu dir", "Sie sollten Ihr Kind zu sich")
+    assert _structure_problems(formal, "de", compare=False) == []
+
+
+def test_what_a_parent_should_say_to_the_child_may_be_informal() -> None:
+    """The register rule is about the guide's own prose. A guide that gives a parent the words to
+    use quotes them, and inside the quotes "du" is the correct German — telling a parent to say
+    «Ich verstehe, dass Sie das beschäftigt» to their own child would be absurd.
+
+    Counting quoted speech failed the two guides that do this best, on anxiety and on self-harm,
+    twice each, so neither could be published; the German guide that really did address the
+    reader as "du" from its first line sat next to them with the same complaint.
+    """
+    quoted = (
+        "## Was es ist\nSagen Sie nicht „Beruhige dich“. Sagen Sie: „Ich verstehe, dass dich das "
+        "beschäftigt. Möchtest du mehr darüber sprechen?“ und „Wenn du mich brauchst, bin ich da.“\n"
+        "## Wann Sie zum Arzt sollten\nx\n## Häufige Fragen\nx"
+    )
+    assert _structure_problems(quoted, "de", compare=False) == []
 
 
 @pytest.mark.skipif(not CONTENT.is_dir(), reason="no hay guías publicadas")

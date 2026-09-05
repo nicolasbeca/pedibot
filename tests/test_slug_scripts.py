@@ -54,6 +54,39 @@ def test_hindi_reads_the_way_it_sounds() -> None:
     assert slug("क्या करें", max_len=70) == "kyaa_karen"
 
 
+def test_regenerating_replaces_the_guide_instead_of_adding_one(tmp_path: pathlib.Path) -> None:
+    """The filename comes from the title and a regenerated guide gets a new title, so the old
+    file stayed: two German guides about the common cold, competing for the same search and both
+    linked from the index. One topic, one language, one guide."""
+    from pedibot.publish.articles import write_article
+
+    class Fake:
+        lang = "de"
+        topic = "common_cold"
+
+        def __init__(self, slug: str) -> None:
+            self.slug = slug
+
+        def markdown(self) -> str:
+            return f"---\nlang: de\ntopic: {self.topic}\n---\n\n{self.slug}\n"
+
+        def social_text(self, site_url: str) -> str:
+            return "x"
+
+    content, queue = tmp_path / "content", tmp_path / "queue"
+    write_article(Fake("was_tun_bei_einer_erk_ltung"), content, queue, "https://pedibot.xyz")
+    write_article(Fake("was_tun_bei_einer_erkaltung"), content, queue, "https://pedibot.xyz")
+    left = sorted(f.name for f in (content / "de").glob("*.md"))
+    assert left == ["was_tun_bei_einer_erkaltung.md"], left
+
+    # a guide on a DIFFERENT topic in the same folder is untouched
+    other = Fake("fieber")
+    other.topic = "fiebre"
+    write_article(other, content, queue, "https://pedibot.xyz")
+    write_article(Fake("was_tun_bei_einer_erkaeltung"), content, queue, "https://pedibot.xyz")
+    assert (content / "de" / "fieber.md").exists()
+
+
 def test_the_writer_refuses_to_overwrite_another_topic(tmp_path: pathlib.Path) -> None:
     """The guard that turns a slug bug into a stopped run instead of a quiet loss."""
     from pedibot.publish.articles import write_article

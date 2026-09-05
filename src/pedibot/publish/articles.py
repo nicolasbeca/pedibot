@@ -446,6 +446,13 @@ OWN_SCRIPT = {
 # German addresses the reader as "Sie" everywhere else on the site (prompt rule 9). A guide that
 # switches to "du" reads like a different website; three did.
 _DUZEN = re.compile(r"\b(du|dein|deine|deinem|deinen|deiner|deines|dich|dir)\b", re.I)
+# What the guide tells a parent to SAY to their child is quoted, and inside those quotes
+# the informal form is the correct German: «Sagen Sie: „Ich verstehe, dass dich das
+# beschäftigt"». Counting those failed the two guides that handle it best — anxiety and
+# self-harm, the topics that exist to give a parent words — while the one that really did
+# address the reader as "du" from its first line sat next to them. The rule is about the
+# guide's own prose, so the prose is what gets counted.
+_QUOTED = re.compile('[„“”"«»][^„“”"«»]{0,400}[“”"»]')
 
 
 def _structure_problems(body: str, lang: str, compare: bool) -> list[str]:
@@ -471,7 +478,7 @@ def _structure_problems(body: str, lang: str, compare: bool) -> list[str]:
                 f"heading_in_another_language ({alien[0]!r}): every heading in the language of"
                 " the article, not only the body"
             )
-    if lang == "de" and len(_DUZEN.findall(body)) >= 3:
+    if lang == "de" and len(_DUZEN.findall(_QUOTED.sub(" ", body))) >= 3:
         out.append("wrong_register: address the reader as 'Sie', never 'du'")
     return out
 
@@ -574,6 +581,17 @@ def write_article(
                     f"«{a.topic}». El slug de este idioma no distingue títulos."
                 )
     out.write_text(a.markdown(), encoding="utf-8")
+    # The filename comes from the title, and a regenerated guide gets a new title — so without
+    # this the old file stays and the language ends up with two guides on one subject, competing
+    # for the same search. One topic, one language, one guide.
+    for other in sorted(out.parent.glob("*.md")):
+        if other == out:
+            continue
+        for line in other.read_text(encoding="utf-8").splitlines()[:12]:
+            if line.startswith("topic: "):
+                if line[7:].strip() == a.topic:
+                    other.unlink()
+                break
     q = queue_dir / "x" / f"{a.lang}-{a.slug}.txt"
     q.parent.mkdir(parents=True, exist_ok=True)
     q.write_text(a.social_text(site_url), encoding="utf-8")
