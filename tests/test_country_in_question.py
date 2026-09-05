@@ -73,3 +73,44 @@ def test_every_country_with_a_schedule_can_be_named() -> None:
     raw = yaml.safe_load((root / "config" / "vaccines.yaml").read_text(encoding="utf-8"))
     missing = set(raw["countries"]) - set(COUNTRY_IN_TEXT)
     assert not missing, f"calendarios que nadie puede pedir por su nombre: {sorted(missing)}"
+
+
+#: The same question in each language. Every one must reach the vaccination table.
+VACCINE_QUESTION = {
+    "en": "what vaccines does my baby need at 2 months",
+    "es": "qué vacunas le tocan a mi bebé a los 2 meses",
+    "fr": "quels vaccins pour mon bébé de 2 mois",
+    "de": "welche Impfungen braucht mein Baby mit 2 Monaten",
+    "ru": "какие прививки нужны ребёнку в 2 месяца",
+    "ar": "ما التطعيمات التي يحتاجها طفلي في الشهر الثاني",
+    "pt": "quais vacinas meu bebê precisa aos 2 meses",
+    "hi": "मेरे बच्चे को कौन से टीके लगने हैं",
+}
+
+
+@pytest.mark.parametrize("lang", sorted(SUPPORTED_LANGS))
+def test_every_language_reaches_the_vaccination_table(lang: str) -> None:
+    """The gate to the calendars, which are the most visited pages on the site. It knew Spanish,
+    English and French — so German, Russian, Arabic, Hindi and Portuguese ("vacina", without the
+    u) fell through to the corpus and never saw a calendar at all. Five of eight languages.
+    """
+    from pedibot.bot.vaccines import is_vaccine_question
+
+    assert lang in VACCINE_QUESTION, f"[{lang}] escribe la pregunta de vacunas en ese idioma"
+    assert is_vaccine_question(VACCINE_QUESTION[lang]), (
+        f"[{lang}] «{VACCINE_QUESTION[lang]}» no llega a la tabla de vacunas"
+    )
+
+
+@pytest.mark.parametrize("lang", sorted(SUPPORTED_LANGS))
+def test_a_fever_question_is_not_a_vaccine_question(lang: str) -> None:
+    """The other half: a gate that opens for everything is not a gate."""
+    from pedibot.bot.vaccines import is_vaccine_question
+
+    fever = {
+        "en": "my child has a fever", "es": "mi hijo tiene fiebre",
+        "fr": "mon enfant a de la fièvre", "de": "mein Kind hat Fieber",
+        "ru": "у ребёнка температура", "ar": "طفلي عنده حرارة",
+        "pt": "meu filho está com febre", "hi": "मेरे बच्चे को बुखार है",
+    }
+    assert not is_vaccine_question(fever[lang]), f"[{lang}] confunde fiebre con vacunas"

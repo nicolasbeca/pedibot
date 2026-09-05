@@ -10,8 +10,22 @@ import yaml
 
 from pedibot.bot.strings import data_lang, tool_strings
 
+#: "Is this about vaccines?" — the gate to the vaccination tables, which are the most visited
+#: pages on the site. It knew Spanish, English and French, so German, Russian, Arabic, Hindi and
+#: PORTUGUESE ("vacina", no u) fell through to the corpus and never saw a calendar at all.
+#: Devanagari sits outside the `\b(...)\b` group: `\w` excludes its combining vowel signs, so a
+#: word boundary after टीके never matches — the same property that broke the triage patterns and
+#: the query tokeniser.
 _VACC = re.compile(
-    r"\b(vacun\w*|vaccin\w*|inmuniz\w*|immuniz\w*|shots?|jabs?|mmr|dtap|dtpa|menb|hpv|vph|triple v[ií]rica)\b",
+    r"\b("
+    r"vacun\w*|vacin\w*|vaccin\w*|inmuniz\w*|immuniz\w*|imuniz\w*"
+    r"|impf\w*|geimpft"
+    r"|привив\w*|вакцин\w*"
+    r"|تطعيم\w*|التطعيم\w*|تلقيح|لقاح|اللقاح"
+    r"|teeka|teeke|teekaakaran"
+    r"|shots?|jabs?|mmr|dtap|dtpa|menb|hpv|vph|triple v[ií]rica"
+    r")\b"
+    r"|टीक|वैक्सीन",
     re.I,
 )
 COUNTRY_ALIASES = {"UK": "GB", "EN": "GB", "USA": "US", "SPAIN": "ES", "ESPAÑA": "ES"}

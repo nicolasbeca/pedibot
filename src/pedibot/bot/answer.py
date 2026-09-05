@@ -218,6 +218,9 @@ class Answer:
     # Why the first draft was thrown away, when it was. Empty otherwise. Kept because "22% of
     # answers are regenerated" is a number you cannot act on without knowing which check fired.
     problems: list[str] = field(default_factory=list)
+    # The page of this site that answers the same question better than prose: the vaccination
+    # table, the dose calculator. None when there is not one.
+    tool: ToolLink | None = None
 
     @property
     def clean_text(self) -> str:
@@ -273,6 +276,27 @@ class EmergencyNumbers:
 def load_prompt(version: str = "answer_v4") -> tuple[str, str]:
     text = (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
     return version, text
+
+
+@dataclass(frozen=True)
+class ToolLink:
+    """A page of this site that answers the same question better than prose can.
+
+    `kind` and not a label: the words live in i18n.ts in eight languages, and a Spanish string
+    coming out of the engine would be a ninth copy waiting to drift.
+    """
+
+    kind: str  # "vaccines" | "dose"
+    url: str
+
+
+def tool_link(kind: str, lang: str, country: str | None = None) -> ToolLink:
+    prefix = "" if lang == "en" else f"/{lang}"
+    if kind == "vaccines":
+        tail = f"/vaccines/{country.lower()}" if country else "/vaccines"
+    else:
+        tail = "/dose"
+    return ToolLink(kind, f"{prefix}{tail}")
 
 
 def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) -> str | None:
@@ -625,7 +649,10 @@ class Engine:
         if intent and tr.level == "routine":
             drug, kg = intent
             text = format_result(calculate(drug, kg, tr.age_months), lang)
-            return Answer(text, tr.level, None, [], lang, None, None, [], "dose_calculator")
+            return Answer(
+                text, tr.level, None, [], lang, None, None, [], "dose_calculator",
+                tool=tool_link("dose", lang),
+            )
 
         if self.vaccines is not None and tr.level == "routine" and is_vaccine_question(query):
             # "Quels vaccins pour un bébé de 3 mois EN FRANCE ?" used to fall through to the
@@ -637,7 +664,10 @@ class Engine:
             )
             if c is not None:
                 text = format_answer(self.vaccines, c, tr.age_months, lang)
-                return Answer(text, tr.level, None, [], lang, None, None, [], "vaccine_schedule")
+                return Answer(
+                    text, tr.level, None, [], lang, None, None, [], "vaccine_schedule",
+                    tool=tool_link("vaccines", lang, c),
+                )
             # no tabulated schedule for this country → fall through to the sources
 
         # vague first message -> offer options. The topic is read from the query PLUS its synonym
@@ -734,6 +764,19 @@ class Engine:
             if self.guides is not None
             else None
         )
+        # A drafted answer can still be about vaccines or about a medicine — the tool did not
+        # answer it because no country was known, or because no weight was given. The page is
+        # still the better place for what they asked.
+        tool = None
+        if self.vaccines is not None and is_vaccine_question(context_text):
+            tool = tool_link(
+                "vaccines",
+                lang,
+                self.vaccines.resolve_country(country)
+                or self.vaccines.resolve_country(country_in_question(context_text)),
+            )
+        elif intent or _DRUG.search(context_text):
+            tool = tool_link("dose", lang)
         return Answer(
             result.text.strip(),
             tr.level,
@@ -747,4 +790,5 @@ class Engine:
             extra,
             guide=guide,
             problems=problems,
+            tool=tool,
         )

@@ -6,7 +6,7 @@ const s = t(lang);
 const countries = [['GB','UK'],['ES','ES'],['US','US'],['IE','IE'],['FR','FR'],['DE','DE'],['IT','IT'],['PT','PT'],['MX','MX'],['AR','AR'],['CL','CL'],['CO','CO'],['BR','BR'],['AU','AU'],['CA','CA'],['NZ','NZ'],['RU','RU'],['KZ','KZ'],['BY','BY'],['UA','UA'],['SA','SA'],['AE','AE'],['EG','EG'],['MA','MA'],['DZ','DZ'],['TN','TN'],['JO','JO'],['QA','QA'],['KW','KW']];
 const ages = [['', s.not_set], ...s.chat_ages];
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta })}>
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age })}>
   <div class="chat" id="thread">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo.svg" width="72" height="72" alt="" />
@@ -109,6 +109,14 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // The guide built from the same sources this answer used. Its own title is the link text:
     // that is what tells the reader whether it is worth opening.
     if (j.guide?.url) h += `<p class="guide">📄 ${S.guide_cta}: <a href="${esc(j.guide.url)}">${esc(j.guide.title)}</a></p>`;
+    // The page of this site that answers the same question better than prose: the vaccination
+    // table for the country, or the dose calculator. The engine sends the KIND, the words live
+    // here — in i18n.ts, in eight languages, where every other word on the site lives.
+    if (j.tool?.url) {
+      const label = j.tool.kind === 'vaccines' ? S.tool_vaccines : S.tool_dose;
+      const icon = j.tool.kind === 'vaccines' ? '💉' : '💊';
+      h += `<p class="guide">${icon} <a href="${esc(j.tool.url)}">${esc(label)}</a></p>`;
+    }
     if (j.verification === 'clarify' && j.options?.length) { h += '<div class="opts">' + j.options.map((o: string) => `<button class="fb opt" type="button" data-q="${esc(o)}">${esc(o)}</button>`).join(' ') + '</div>'; return h; }
     h += `<div class="foot"><span></span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button> <button class="fb share" data-id="${j.answer_id}" type="button">🔗 ${S.share}</button>${j.verification === 'ok' || j.verification === 'regenerated' ? ` <button class="fb child" data-q="${esc(j.question || '')}" type="button">🧸 ${S.child}</button> <button class="fb listen" type="button">🔊 ${S.listen}</button>` : ''}</span></div>`;
     return h;

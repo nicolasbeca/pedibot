@@ -58,6 +58,14 @@ class GuideOut(BaseModel):
     url: str
 
 
+class ToolOut(BaseModel):
+    """A page of the site that answers the question better than prose. The web puts the words on
+    it: `kind` keeps the eight translations in i18n.ts instead of in the engine."""
+
+    kind: str
+    url: str
+
+
 class AskOut(BaseModel):
     answer_id: int
     session: str
@@ -71,6 +79,7 @@ class AskOut(BaseModel):
     degraded: bool = False
     options: list[str] = []
     guide: GuideOut | None = None
+    tool: ToolOut | None = None
 
 
 class DoseIn(BaseModel):
@@ -229,6 +238,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             degraded=degraded,
             options=list(getattr(a, "options", [])),
             guide=GuideOut(title=a.guide.title, url=a.guide.url) if a.guide else None,
+            tool=ToolOut(kind=a.tool.kind, url=a.tool.url) if a.tool else None,
         )
 
     @app.get("/api/drugs")
@@ -394,6 +404,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             "lang": a.lang,
             "disclaimer": DISCLAIMER[a.lang],
             "guide": {"title": a.guide.title, "url": a.guide.url} if a.guide else None,
+            "tool": {"kind": a.tool.kind, "url": a.tool.url} if a.tool else None,
         }
 
     @app.get("/api/checklist")
