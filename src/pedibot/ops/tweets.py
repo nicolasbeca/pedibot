@@ -76,6 +76,12 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
     con.close()
 
     vax = yaml.safe_load((root / "config" / "vaccines.yaml").read_text(encoding="utf-8"))
+    # the body before the dash in each calendar's source line. Named rather than described,
+    # because "a health ministry" is true of three of the seven and the model dropped the
+    # "or equivalent" that was supposed to cover the NHS, the CDC, SpF and the RKI.
+    authorities = sorted(
+        {str(c["source"]).split("—")[0].split("/")[0].strip() for c in vax["countries"].values()}
+    )
     drugs = yaml.safe_load((root / "config" / "drugs.yaml").read_text(encoding="utf-8"))["drugs"]
 
     # real headlines, so a tweet can quote a question the site actually answers instead of
@@ -95,6 +101,7 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
         "organisation_names": [o for o, _ in orgs.most_common(10) if o],
         "vaccine_countries": len(vax["countries"]),
         "vaccine_country_codes": sorted(vax["countries"]),
+        "vaccine_authorities": authorities,
         "medicines_in_the_dose_calculator": len(drugs),
         "guide_titles_english": titles,
     }
@@ -135,8 +142,9 @@ def fact_sheet(f: dict[str, Any]) -> str:
             f"- built from {f['documents']} published documents by {f['organisations']} bodies,"
             f" including {', '.join(f['organisation_names'][:6])}",
             f"- vaccination schedules for {f['vaccine_countries']} countries:"
-            f" {', '.join(f['vaccine_country_codes'])}. Each one cites its OWN national source"
-            " (a health ministry or equivalent). They are NOT drawn from the corpus above.",
+            f" {', '.join(f['vaccine_country_codes'])}. Each cites its OWN authority by name:"
+            f" {'; '.join(f['vaccine_authorities'])}. Not all are ministries — do not call them"
+            " that. They are NOT drawn from the corpus above.",
             f"- a weight-based dose calculator for {f['medicines_in_the_dose_calculator']}"
             " medicines. It cites ONE named dosing table, not the corpus above.",
             "- so: the corpus, the schedules and the calculator are three separate sets of"
@@ -168,6 +176,9 @@ HARD RULES, and a post that breaks one is thrown away:
 - Never say or imply that a doctor, paediatrician or any clinician reviewed, approved or wrote \
 anything. Nobody has. Saying so would be the one lie that matters.
 - Never promise accuracy, safety or a diagnosis.
+- A GUIDE numbers every statement and lists its documents at the foot. A chat ANSWER does not
+  show numbers; it names the sources it used. Never write that answers are numbered, and never
+  use "answer" where you mean a sentence in a guide.
 - Never join two facts into a claim neither of them makes. The first batch this job
   ever wrote said the vaccination schedules and the dose calculator both draw on the
   same source documents. That is false, and nothing in the facts said it: those have
