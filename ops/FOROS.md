@@ -37,23 +37,31 @@ enlaces, que suelen estar en un hilo fijado):
 | **árabe** | supermama.me |
 | **hindi** | parenting.firstcry.com, Momspresso |
 
-## ⚠️ No escribas en un idioma en el que no puedas contestar
+## Los idiomas que no hablas: el procedimiento
 
-Es la trampa de tener ocho idiomas. Si dejas un comentario en ruso o en hindi y alguien te
-responde con una pregunta, tu silencio lo convierte en lo que precisamente querías evitar: alguien
-que pasó a dejar un enlace y desapareció. Eso hace más daño que no haber escrito.
+El peligro real de tener ocho idiomas es el silencio. Si dejas un comentario en ruso y alguien te
+responde con una pregunta, no contestar lo convierte en lo que querías evitar: alguien que pasó a
+dejar un enlace y desapareció. Eso hace más daño que no haber escrito.
 
-**Escribe tú en español y en inglés.** Los otros seis, solo si algún día hay alguien que pueda
-sostener la conversación.
+**Decisión del operador (6-sep): escribe en los ocho, y las respuestas que reciba las trae aquí
+para traducirlas y contestar.** Con eso el riesgo desaparece, pero solo mientras el procedimiento
+se cumpla: si un hilo se queda sin contestar dos días, es mejor borrar el comentario que dejarlo.
 
-## El texto — respuesta en un hilo, español
+**Cuándo:** después del 19 de septiembre de 2026.
 
-> Sustituye el primer párrafo por la respuesta real a lo que haya preguntado esa persona, con la
-> fuente dicha en voz alta. Ese párrafo es el que hace que esto no sea publicidad.
+## El texto, en los ocho idiomas
+> El **primer párrafo lo escribes tú por cada hilo**, respondiendo a lo que preguntó esa
+> persona y diciendo de dónde sale. Ese párrafo es el que hace que el comentario no sea
+> publicidad, y por eso es el único que no está aquí traducido: depende del hilo. Tráemelo y
+> lo escribimos juntos.
+
+> Redactados en cada idioma, no traducidos del español palabra por palabra: un párrafo que
+> suena a traductor automático delata al forastero antes que el propio enlace.
+
+### Español
 
 ```
-[Dos o tres líneas respondiendo a lo que pregunta, diciendo de dónde sale: «la AEP recomienda…»,
-«en la hoja del NHS sobre esto pone…». Concreto, sin rodeos.]
+[Dos o tres líneas respondiendo a lo que pregunta, diciendo de dónde sale.]
 
 Te lo cuento porque me pasó lo mismo: fui padre primerizo y me encontré con que la información
 sobre esto es contradictoria según dónde mires. Acabé montándome una web que solo responde con
@@ -64,11 +72,10 @@ Aviso por delante: no la ha revisado ningún médico, yo no lo soy, y no sustitu
 Sirve para llegar a las fuentes, no para saltárselas.
 ```
 
-## El texto — respuesta en un hilo, inglés
+### English
 
 ```
-[Two or three lines answering what they actually asked, naming the source: "the NHS page on this
-says…", "the AAP recommends…". Concrete, no preamble.]
+[Two or three lines answering what they actually asked, naming the source.]
 
 I mention it because I ran into the same thing when I became a father: what I found was
 contradictory depending on where I looked. I ended up building a site that only answers from
@@ -77,6 +84,89 @@ things: pedibot.xyz. It is free and has no ads.
 
 Worth saying up front: no clinician has reviewed it, I am not a doctor, and it does not replace
 one. It is for getting to the sources, not for skipping them.
+```
+
+### Français
+
+```
+[Deux ou trois lignes qui répondent à ce qui est demandé, en nommant la source.]
+
+Je le dis parce que j'ai vécu la même chose : quand je suis devenu père pour la première fois, je
+trouvais des réponses contradictoires selon l'endroit où je regardais. J'ai fini par construire un
+site qui ne répond qu'à partir de recommandations publiées et qui montre de quel document vient
+chaque phrase, au cas où ça t'aiderait à vérifier : pedibot.xyz. C'est gratuit et sans publicité.
+
+Je le précise tout de suite : aucun médecin ne l'a relu, je n'en suis pas un, et ça ne remplace
+pas une consultation. C'est fait pour aller aux sources, pas pour les contourner.
+```
+
+### Deutsch
+
+```
+[Zwei oder drei Zeilen, die die eigentliche Frage beantworten, mit Quelle.]
+
+Ich schreibe das, weil es mir genauso ging: Als ich zum ersten Mal Vater wurde, fand ich je nach
+Quelle etwas anderes. Am Ende habe ich eine Seite gebaut, die nur aus veröffentlichten Leitlinien
+antwortet und zu jedem Satz zeigt, aus welchem Dokument er stammt — falls es dir beim Nachprüfen
+hilft: pedibot.xyz. Kostenlos und ohne Werbung.
+
+Gleich vorweg: Kein Arzt hat das geprüft, ich bin keiner, und es ersetzt keine Untersuchung. Es
+soll zu den Quellen führen, nicht an ihnen vorbei.
+```
+
+### Português (BR)
+
+```
+[Duas ou três linhas respondendo ao que foi perguntado, dizendo a fonte.]
+
+Falo isso porque passei pela mesma coisa: quando virei pai de primeira viagem, o que eu encontrava
+era contraditório dependendo de onde olhasse. Acabei montando um site que só responde a partir de
+diretrizes publicadas e que mostra de qual documento sai cada frase, caso ajude você a conferir:
+pedibot.xyz. É gratuito e sem anúncios.
+
+Já aviso: nenhum médico revisou isso, eu não sou médico, e não substitui uma consulta. Serve para
+chegar às fontes, não para pulá-las.
+```
+
+### Русский
+
+```
+[Две-три строки с ответом на заданный вопрос и с указанием источника.]
+
+Пишу это, потому что сам через такое прошёл: когда я впервые стал отцом, ответы на подобные
+вопросы отличались в зависимости от того, где искать. В итоге я сделал сайт, который отвечает
+только по опубликованным клиническим рекомендациям и показывает, из какого документа взята каждая
+фраза — вдруг пригодится, чтобы перепроверить: pedibot.xyz. Бесплатно и без рекламы.
+
+Сразу оговорюсь: врач это не проверял, я не врач, и это не заменяет приём. Это способ дойти до
+первоисточников, а не обойти их.
+```
+
+### العربية
+
+```
+[سطران أو ثلاثة تجيب عمّا سُئل فعلًا، مع ذكر المصدر.]
+
+أكتب هذا لأنني مررت بالشيء نفسه: عندما صرت أبًا لأول مرة، كنت أجد إجابات متضاربة حسب المصدر.
+فانتهى بي الأمر إلى بناء موقع لا يجيب إلا من إرشادات منشورة، ويبيّن من أي وثيقة جاءت كل جملة،
+لعله يساعدك على التحقق: pedibot.xyz. مجاني وبلا إعلانات.
+
+أقولها من البداية: لم يراجعه أي طبيب، ولستُ طبيبًا، وهو لا يغني عن استشارة. الغرض منه الوصول إلى
+المصادر، لا تجاوزها.
+```
+
+### हिन्दी
+
+```
+[दो-तीन पंक्तियाँ जो पूछे गए सवाल का जवाब दें, स्रोत का नाम लेते हुए।]
+
+यह इसलिए बता रहा हूँ क्योंकि मेरे साथ भी यही हुआ था: पहली बार पिता बना तो इन सवालों के जवाब हर जगह
+अलग-अलग मिलते थे। आख़िर में मैंने एक साइट बनाई जो सिर्फ़ प्रकाशित दिशानिर्देशों से जवाब देती है और हर
+वाक्य के साथ दिखाती है कि वह किस दस्तावेज़ से आया है — जाँचने में काम आए तो देख लीजिए: pedibot.xyz.
+मुफ़्त है और कोई विज्ञापन नहीं।
+
+पहले ही कह दूँ: इसे किसी डॉक्टर ने नहीं देखा है, मैं डॉक्टर नहीं हूँ, और यह डॉक्टर की जगह नहीं ले
+सकता। यह स्रोतों तक पहुँचने के लिए है, उन्हें छोड़ने के लिए नहीं।
 ```
 
 ## La versión sin enlace, para cuando el foro los prohíbe
