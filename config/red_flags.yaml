@@ -1163,6 +1163,110 @@ rules:
   reason_ar: حرق (خاصة الوجه أو اليدين أو المنطقة التناسلية أو مساحة كبيرة)
   reason_pt: "Queimadura (especialmente no rosto, mãos, genitais ou extensa)"
   reason_hi: "जलना (ख़ासकर चेहरा, हाथ, गुप्तांग या बड़ा हिस्सा)"
+- id: bilious_or_bloody_vomit
+  level: urgent
+  source: seup_dolor_abdominal
+  reason_es: Vómitos verdosos, marrones o con sangre — la hoja de dolor abdominal de la SEUP pide consultar
+  reason_en: Green, brown or bloody vomit — a documented reason to seek care
+  reason_fr: Vomissements verts, bruns ou sanglants — motif de consultation
+  reason_de: Grünes, braunes oder blutiges Erbrechen — ein dokumentierter Grund, Hilfe zu suchen
+  reason_ru: Рвота зелёная, коричневая или с кровью — повод обратиться к врачу
+  reason_ar: قيء أخضر أو بني أو مصحوب بدم — سبب موثّق لطلب الرعاية
+  reason_pt: Vômito verde, marrom ou com sangue — motivo documentado para procurar ajuda
+  reason_hi: हरी, भूरी या खून वाली उल्टी — डॉक्टर को दिखाने का दर्ज कारण
+  patterns:
+  - v[oó]mit\w*.{0,25}(verde|verdos|marr[oó]n|marrones|con sangre|sanguinolent|bilis)
+  - (verde|verdos|marr[oó]n|con sangre|bilis).{0,25}v[oó]mit
+  - vomita\w*.{0,20}(verde|verdos|marr[oó]n|sangre|bilis)
+  - (vomit\w*|throwing up).{0,25}(green|greenish|brown|blood|bile|coffee ground)
+  - (green|brown|bloody|bile).{0,20}(vomit|sick)
+  - (vomi\w*).{0,25}(vert|brun|sang|bile)
+  - (erbroch|erbricht|erbrechen).{0,25}(grün|braun|blut|galle)
+  - рвот\w*.{0,25}(зелён|зелен|коричнев|кров|жёлч|желч)
+  - (قيء|تقيؤ|يتقيأ).{0,25}(أخضر|بني|دم|صفراء)
+  - (v[oô]mit\w*).{0,25}(verde|marrom|sangue|bile)
+  - (उल्टी|उलटी).{0,25}(हरी|भूरी|ख़ून|खून|पित्त)
+
+- id: blood_in_stool
+  level: urgent
+  source: seup_dolor_abdominal
+  reason_es: Deposiciones negras como alquitrán o con sangre roja — la hoja de dolor abdominal de la SEUP pide consultar
+  reason_en: Black tarry stools or red blood in the stool — a documented reason to seek care
+  reason_fr: Selles noires comme du goudron ou avec du sang rouge — motif de consultation
+  reason_de: Schwarzer, teerartiger Stuhl oder rotes Blut im Stuhl — ein dokumentierter Grund
+  reason_ru: Чёрный дёгтеобразный стул или алая кровь в кале — повод обратиться к врачу
+  reason_ar: براز أسود كالقطران أو به دم أحمر — سبب موثّق لطلب الرعاية
+  reason_pt: Fezes pretas como piche ou com sangue vermelho — motivo para procurar ajuda
+  reason_hi: कालेे लुक जैसे या लाल ख़ून वाले मल — डॉक्टर को दिखाने का दर्ज कारण
+  patterns:
+  - (caca|heces|deposicion\w*|pañal|popo).{0,30}(negra|negras|con sangre|sanguinolent|alquitr)
+  - (sangre|negra como alquitr).{0,30}(caca|heces|deposicion|pañal)
+  - melena[s]?\b
+  - (stool|poo|poop|nappy|diaper|bowel motion).{0,30}(black|tarry|blood|bloody|red blood)
+  - (black|tarry|bloody|blood).{0,25}(stool|poo|poop|motion|nappy|diaper)
+  - (selles).{0,30}(noires|goudron|sang)
+  - (stuhl|windel|kot).{0,30}(schwarz|teer|blut)
+  - (стул|кал|подгузник).{0,30}(чёрн|черн|кров|дёгт|дегт)
+  - (براز|بُراز).{0,30}(أسود|دم)
+  - (fezes|coc[oô]|fralda).{0,30}(preta|pretas|sangue|piche)
+  - (मल|पॉटी).{0,25}(काला|काली|ख़ून|खून)
+
+- id: abdominal_pain_localised_or_worsening
+  level: urgent
+  source: seup_dolor_abdominal
+  reason_es: Dolor abdominal en el lado derecho, o continuo y cada vez más intenso — la hoja de la SEUP pide consultar
+  reason_en: Abdominal pain on the right side, or continuous and getting worse — a documented reason to seek care
+  reason_fr: Douleur abdominale à droite, ou continue et croissante — motif de consultation
+  reason_de: Bauchschmerz rechts, oder anhaltend und zunehmend — ein dokumentierter Grund
+  reason_ru: Боль в животе справа, или постоянная и усиливающаяся — повод обратиться к врачу
+  reason_ar: ألم بطن في الجهة اليمنى، أو مستمر ويزداد — سبب موثّق لطلب الرعاية
+  reason_pt: Dor de barriga do lado direito, ou contínua e piorando — motivo para procurar ajuda
+  reason_hi: पेट में दाहिनी ओर दर्द, या लगातार और बढ़ता दर्द — दिखाने का दर्ज कारण
+  patterns:
+  - (dolor|duele).{0,40}(barriga|tripa|abdomen|abdominal).{0,40}(lado derecho|derecha|derecho)
+  - (barriga|tripa|abdomen).{0,30}(lado derecho|parte derecha)
+  - (dolor|duele).{0,30}(lado derecho|parte derecha).{0,30}(barriga|tripa|abdomen)
+  - (dolor de (barriga|tripa)|dolor abdominal).{0,50}(cada vez (m[aá]s|peor)|va a m[aá]s|no le deja dormir|no puede dormir|no para de dolerle)
+  - (le duele|duele).{0,25}(la )?(barriga|tripa|abdomen).{0,50}(cada vez (m[aá]s|peor)|va a m[aá]s|no le deja dormir|no puede dormir|no para)
+  - (abdominal|stomach|belly|tummy) pain.{0,40}(right side|lower right|right hand side)
+  - (right side|lower right).{0,30}(abdominal|stomach|belly|tummy) pain
+  - (stomach|belly|tummy).{0,40}(getting worse|worse and worse|keeps him awake|keeps her awake)
+  - (douleur|mal).{0,40}(ventre|abdomen).{0,40}(c[oô]t[ée] droit|[aà] droite)
+  - (bauchschmerz|bauchweh).{0,40}(rechts|rechte seite)
+  - (живот).{0,40}(справа|правой стороне)
+  - (ألم).{0,30}(البطن).{0,30}(الجهة اليمنى|اليمين)
+  - (dor).{0,30}(barriga|abdome).{0,30}(lado direito|direita)
+  - (पेट).{0,30}(दाहिन|दाईं|दायीं).{0,20}(दर्द)
+
+- id: eating_disorder_signs
+  level: mental_health
+  source: seup_tca
+  reason_es: Señales de un trastorno de la conducta alimentaria
+  reason_en: Signs of an eating disorder
+  reason_fr: Signes d'un trouble du comportement alimentaire
+  reason_de: Anzeichen einer Essstörung
+  reason_ru: Признаки расстройства пищевого поведения
+  reason_ar: علامات اضطراب في سلوك الأكل
+  reason_pt: Sinais de um transtorno alimentar
+  reason_hi: खानपान के विकार के संकेत
+  patterns:
+  - (se salta|salta|se est[aá] saltando).{0,20}(las )?comidas
+  - (deja|ha dejado|dejado) de comer.{0,40}(semana|mes|d[ií]as)
+  - (obsesion|obsesionad|preocupad).{0,30}(peso|calor[ií]as|comida|figura|cuerpo)
+  - vomita.{0,40}(despu[ée]s de comer|para no engordar|a prop[oó]sito)
+  - (se provoca|provocarse).{0,15}(el )?v[oó]mito
+  - (anorexia|bulimia|atrac[oó]n|atracones)
+  - (skipping|skips|skipped).{0,15}meals
+  - (stopped eating|not eating).{0,30}(weeks?|months?)
+  - (obsess\w*|fixated).{0,25}(weight|calories|food|body)
+  - (vomits?|throws up|purg\w*).{0,35}(after (eating|meals)|to lose weight|on purpose)
+  - (anorexi|bulimi|binge eating)
+  - (saute|sauté|saute des).{0,15}repas
+  - (mahlzeiten|essen).{0,25}(auslass|verweiger)
+  - (магazин)?(пропускает|отказывается).{0,20}(еду|прием пищи|есть)
+  - (يتخطى|ترفض|يرفض).{0,20}(الوجبات|الأكل)
+  - (pula|pulando).{0,15}refei[çc][õo]es
+
 - id: suicidal_ideation
   level: mental_health
   source: seup_conducta_suicida

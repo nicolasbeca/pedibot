@@ -99,3 +99,53 @@ def test_an_ordinary_question_does_not_raise_an_alarm(
     mocos enseña a ignorarla, y entonces no salta cuando importa."""
     nivel = str(triage.assess(pregunta).level)
     assert ORDEN.get(nivel, 9) < ORDEN["urgent"], f"[{lang}] falsa alarma en «{pregunta}»: {nivel}"
+
+
+#: Lo que la hoja «Dolor abdominal» de la SEUP (2025) enumera como motivo de consulta, y que el
+#: triaje no miraba: las cuatro salían RUTINA el 6-sep-2026, estando escritas en un documento que
+#: la web ya cita. Se encontraron preguntando al corpus por los cinco umbrales que el operador
+#: quería revisar — tres de los cinco cambiaron de respuesta al leer la fuente, y estas cuatro no
+#: las había preguntado nadie.
+DE_LA_HOJA_SEUP = [
+    ("vomita verde", "es", "urgent"),
+    ("está vomitando algo verdoso", "es", "urgent"),
+    ("he vomited something green", "en", "urgent"),
+    ("ha vomitado con sangre", "es", "urgent"),
+    ("hace caca negra como alquitrán", "es", "urgent"),
+    ("tiene sangre roja en la caca", "es", "urgent"),
+    ("there is blood in his poo", "en", "urgent"),
+    ("le duele mucho la tripa en el lado derecho al saltar", "es", "urgent"),
+    ("my son has stomach pain on the right side", "en", "urgent"),
+    ("le duele la tripa cada vez más y no puede dormir", "es", "urgent"),
+    # y la hoja de trastornos de la conducta alimentaria, en nivel de aviso, no de alarma roja
+    ("mi hija de 15 años se salta las comidas y se obsesiona con el peso", "es", "mental_health"),
+    ("vomita después de comer para no engordar", "es", "mental_health"),
+]
+
+#: Las trampas de esas mismas reglas. Un niño que no come verdura y un bebé que devuelve la toma
+#: son el pan de cada día; si esto salta, la alarma deja de significar nada.
+NI_SE_LE_OCURRA = [
+    ("le duele un poco la tripa", "es"),
+    ("mi hijo no come verdura", "es"),
+    ("my toddler will not eat his vegetables", "en"),
+    ("mi bebé ha vomitado la toma", "es"),
+    ("le está saliendo un diente", "es"),
+]
+
+
+@pytest.mark.parametrize(("pregunta", "lang", "minimo"), DE_LA_HOJA_SEUP)
+def test_what_our_own_source_lists_as_a_reason_to_consult(
+    triage: Triage, pregunta: str, lang: str, minimo: str
+) -> None:
+    nivel = str(triage.assess(pregunta).level)
+    assert ORDEN.get(nivel, -1) >= ORDEN[minimo], (
+        f"[{lang}] «{pregunta}» sale {nivel}; la hoja de la SEUP lo lista como motivo de consulta"
+    )
+
+
+@pytest.mark.parametrize(("pregunta", "lang"), NI_SE_LE_OCURRA)
+def test_the_everyday_version_of_those_same_rules_stays_quiet(
+    triage: Triage, pregunta: str, lang: str
+) -> None:
+    nivel = str(triage.assess(pregunta).level)
+    assert ORDEN.get(nivel, 9) < ORDEN["urgent"], f"[{lang}] falsa alarma en «{pregunta}»: {nivel}"
