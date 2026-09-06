@@ -66,9 +66,12 @@ def test_dose_api_with_brand(client):
     j = r.json()
     assert j["drug"] == "paracetamol" and j["brand"] == "Calpol" and j["mg_min"] == 140
     forms = {f["form"]: f for f in j["ml_by_form"]}
+    # 8.7 y no 8.8: 210 mg a 24 mg/ml son 8.75 ml exactos, y los mililitros NUNCA redondean
+    # hacia arriba (6-sep-2026 — ver test_millilitres_never_round_up). Esta expectativa guardaba
+    # el redondeo al más cercano que tenían los extremos de la banda antes de arreglarlos.
     assert (
         forms["infant 120 mg/5 ml"]["ml_min"] == 5.8
-        and forms["infant 120 mg/5 ml"]["ml_max"] == 8.8
+        and forms["infant 120 mg/5 ml"]["ml_max"] == 8.7
     )
     assert "AEPap" in j["source"]
 
