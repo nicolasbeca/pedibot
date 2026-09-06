@@ -175,3 +175,32 @@ def test_security_txt_has_not_expired() -> None:
     when = dt.datetime.fromisoformat(m.group(1).replace("Z", "+00:00"))
     quedan = (when - dt.datetime.now(dt.UTC)).days
     assert quedan > 60, f"security.txt caduca en {quedan} días: renueva la fecha"
+
+
+def test_no_page_loads_anything_from_a_third_party(have: set[str]) -> None:
+    """El pie de cada página y /legal prometen «sin rastreadores de terceros». Hasta el 6-sep-2026
+    cada carga pedía el CSS a fonts.googleapis.com, que recibía la IP y el navegador del lector
+    antes de que la página se pintara, y después los ficheros a fonts.gstatic.com.
+
+    Google Fonts no es un rastreador publicitario. Pero es un tercero que el lector no eligió, la
+    frase dice «terceros», y el mayor público de esta web en Google es Alemania, donde un tribunal
+    de Múnich declaró en 2022 que incrustarlo sin consentimiento vulnera el RGPD por esa
+    transmisión. Ahora las tipografías se sirven desde aquí (licencia SIL OFL).
+
+    Un ENLACE a otro dominio no cuenta: no envía nada hasta que alguien lo pulsa. Lo que se
+    comprueba es lo que el navegador se descarga solo.
+    """
+    carga = re.compile(
+        r'<(?:script|img|iframe|source|video|audio|embed)\b[^>]*\bsrc="(https?://[^"]+)"'
+        r'|<link\b[^>]*\brel="(?:stylesheet|preconnect|preload|dns-prefetch)"[^>]*\bhref="(https?://[^"]+)"'
+        r'|<link\b[^>]*\bhref="(https?://[^"]+)"[^>]*\brel="(?:stylesheet|preconnect|preload|dns-prefetch)"',
+        re.I,
+    )
+    ajenos: list[str] = []
+    for f in sorted(DIST.rglob("*.html")):
+        for grupos in carga.findall(f.read_text(encoding="utf-8", errors="ignore")):
+            url = next((g for g in grupos if g), "")
+            host = url.split("/")[2] if url.count("/") >= 2 else ""
+            if host and not host.endswith("pedibot.xyz"):
+                ajenos.append(f"{f.relative_to(DIST)} carga {host}")
+    assert not ajenos, "\n".join(sorted(set(ajenos))[:15])

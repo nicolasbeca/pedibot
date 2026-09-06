@@ -105,8 +105,40 @@ def _now() -> str:
     return dt.datetime.now(dt.UTC).isoformat(timespec="seconds")
 
 
+def deployment_salt(beside: Path) -> str:
+    """La sal para los hashes de IP, propia de este despliegue.
+
+    Se guarda en un fichero junto a la base y se crea sola la primera vez. Antes era la constante
+    `"pedibot"`, escrita en un repositorio público, porque el parámetro no se pasaba nunca desde
+    ningún sitio: con una sal conocida, revertir una IPv4 desde su hash son cuatro mil millones de
+    sha256, o sea nada. Y /legal promete «hash con sal».
+
+    Se genera en vez de pedirla por configuración a propósito: una sal que hay que acordarse de
+    poner es una sal que se queda en su valor por defecto.
+    """
+    import os
+    import secrets
+
+    env = os.environ.get("PEDIBOT_OPS_SALT")
+    if env:
+        return env
+    f = beside.parent / ".ops_salt"
+    if f.exists():
+        actual = f.read_text(encoding="utf-8").strip()
+        if actual:
+            return actual
+    nueva = secrets.token_hex(16)
+    f.parent.mkdir(parents=True, exist_ok=True)
+    f.write_text(nueva, encoding="utf-8", newline="\n")
+    try:
+        f.chmod(0o600)
+    except OSError:  # sistemas de ficheros sin permisos POSIX (Windows en desarrollo)
+        pass
+    return nueva
+
+
 class OpsStore:
-    def __init__(self, path: Path, salt: str = "pedibot"):
+    def __init__(self, path: Path, salt: str | None = None):
         path.parent.mkdir(parents=True, exist_ok=True)
         self.con = sqlite3.connect(path, check_same_thread=False)
         self.con.executescript(_SCHEMA)
@@ -116,7 +148,7 @@ class OpsStore:
                 "ALTER TABLE answers ADD COLUMN source TEXT NOT NULL DEFAULT 'unknown'"
             )
             self.con.commit()
-        self.salt = salt
+        self.salt = salt if salt is not None else deployment_salt(path)
 
     # ---- answers ----
     def log_answer(self, r: AnswerRecord) -> int:
@@ -219,11 +251,21 @@ class OpsStore:
         }
 
     # ---- conversation turns (short window, expire with the session) ----
+    #: /legal promete que «la memoria de conversación dura 24 horas». `history()` solo leía las
+    #: últimas 24, pero las filas se quedaban para siempre: quien lee esa frase entiende que a las
+    #: 24 horas ya no están. Se borran con el mismo patrón oportunista del limitador de peticiones
+    #: — sin timer que se pueda parar sin que nadie lo note.
+    TURN_TTL_HOURS = 24
+
     def add_turn(self, session: str, role: str, text: str) -> None:
         self.con.execute(
             "INSERT INTO turns (session, ts, role, text) VALUES (?,?,?,?)",
             (session, _now(), role, text),
         )
+        vencidas = (
+            dt.datetime.now(dt.UTC) - dt.timedelta(hours=self.TURN_TTL_HOURS)
+        ).isoformat(timespec="seconds")
+        self.con.execute("DELETE FROM turns WHERE ts < ?", (vencidas,))
         self.con.commit()
 
     def history(

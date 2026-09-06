@@ -62,13 +62,18 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <meta property="og:image" content={`${site}/og.png`} />
   <meta name="generator" content={Astro.generator} />
   <meta name="virtual-protocol-site-verification" content="2e15ae48f7b5e83eda0e6748181645d4" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap" />
-  {dirFor(lang) === 'rtl' && (
-    /* none of the three faces above has Arabic glyphs, so without this the page falls back to
-       whatever the device happens to have; loaded only where it is needed */
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&display=swap" />
-  )}
+  {/* Las tipografías se sirven desde aquí desde el 6-sep-2026. Antes venían de
+      fonts.googleapis.com, que recibía la IP y el navegador de cada lector antes de que la página
+      se pintara — y esta web promete «sin rastreadores de terceros» en su pie y en /legal. Google
+      Fonts no es un rastreador publicitario, pero sí es un tercero que el lector no eligió, y el
+      mayor público de esta web en Google es Alemania, donde un tribunal de Múnich declaró en 2022
+      que incrustarlo sin consentimiento vulnera el RGPD por esa transmisión.
+
+      Las cuatro familias son SIL Open Font License, que permite alojarlas. El fichero conserva
+      los unicode-range de Google intactos: por eso un lector en español no se descarga el árabe
+      ni el devanagari, y el peso real por visita sigue siendo de decenas de KB. Incluye el árabe,
+      que ninguna de las otras tres cubre. */}
+  <link rel="stylesheet" href="/fonts/fonts.css" />
   <script type="application/ld+json" set:html={JSON.stringify(org)} />
   {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   <script is:inline>try{if(localStorage.getItem('pedibot_theme')==='night')document.documentElement.classList.add('night')}catch(e){}</script>

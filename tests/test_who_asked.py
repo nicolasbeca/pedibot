@@ -225,3 +225,44 @@ def test_a_visit_ends_after_half_an_hour_and_the_middle_one_is_reported() -> Non
     assert d["visits"] == 5, "la vuelta de 'c' diez horas despues es otra visita"
     assert d["timed"] == 3 and d["median_seconds"] == 30
     assert d["over_a_minute"] == 1
+
+
+def test_the_ip_salt_is_not_a_constant_in_the_repository(tmp_path) -> None:
+    """/legal promete «tu IP solo se usa como hash con sal». Había sal —la constante «pedibot»,
+    escrita en un repositorio público— porque el parámetro no se pasaba desde ninguno de los tres
+    sitios que construyen el almacén. Con una sal conocida, revertir una IPv4 desde su hash son
+    cuatro mil millones de sha256, o sea nada.
+
+    Se genera por despliegue y se guarda junto a la base, fuera de git."""
+    from pedibot.ops.store import OpsStore, deployment_salt
+
+    a = OpsStore(tmp_path / "a" / "ops.db")
+    assert a.salt != "pedibot", "la sal sigue siendo la constante del repositorio"
+    assert len(a.salt) >= 16, f"la sal es demasiado corta: {len(a.salt)}"
+
+    # estable dentro de un mismo despliegue: si cambiara en cada arranque, el límite de peticiones
+    # se reiniciaría con cada reinicio del servicio
+    assert deployment_salt(tmp_path / "a" / "ops.db") == a.salt
+
+    # y distinta en otro
+    b = OpsStore(tmp_path / "b" / "ops.db")
+    assert b.salt != a.salt, "dos despliegues comparten sal"
+
+
+def test_the_conversation_really_is_gone_after_24_hours(tmp_path) -> None:
+    """/legal dice «la memoria de conversación dura 24 horas». history() solo LEÍA las últimas 24,
+    pero las filas se quedaban para siempre. Quien lee esa frase entiende que ya no están."""
+    import datetime as dt
+
+    ops = OpsStore(tmp_path / "ops.db")
+    viejo = (dt.datetime.now(dt.UTC) - dt.timedelta(hours=30)).isoformat(timespec="seconds")
+    ops.con.execute(
+        "INSERT INTO turns (session, ts, role, text) VALUES (?,?,?,?)",
+        ("s1", viejo, "user", "una pregunta de hace treinta horas"),
+    )
+    ops.con.commit()
+    assert ops.con.execute("SELECT COUNT(*) FROM turns").fetchone()[0] == 1
+
+    ops.add_turn("s2", "user", "una de ahora")  # cualquier turno nuevo limpia lo vencido
+    quedan = [r[0] for r in ops.con.execute("SELECT text FROM turns")]
+    assert quedan == ["una de ahora"], f"la conversación vieja sigue guardada: {quedan}"

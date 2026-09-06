@@ -46,3 +46,6 @@ eval/flagged.jsonl
 
 # La clave de servicio de Search Console. Nunca al repositorio.
 gsc_key.json
+
+# La sal de los hashes de IP: propia de cada despliegue, nunca al repositorio.
+.ops_salt
