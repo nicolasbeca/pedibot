@@ -147,6 +147,19 @@ class ApiConfig:
     max_daily_llm_usd: float = 2.0
 
 
+def _ml(mg: float, mg_per_ml: float) -> float:
+    """Mililitros a partir de miligramos, SIEMPRE hacia abajo.
+
+    Nunca al más cercano: redondear hacia arriba pone en la jeringa más volumen del que justifican
+    los miligramos. Medido el 6-sep-2026, cuando los extremos de la banda usaban `round()` y 277
+    de 710 subían — en un bebé de 5 kg con gotas de 100 mg/ml la web enseñaba 0,8 ml donde el
+    exacto era 0,75, es decir 16 mg/kg contra los 15 del techo.
+
+    Hacia abajo se queda corto por centésimas, y quedarse corto con un antitérmico no hace daño.
+    """
+    return int(mg / mg_per_ml * 10) / 10
+
+
 def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) -> FastAPI:  # type: ignore[no-untyped-def]
     from pedibot.bot.llm import vision_json
     from pedibot.bot.vaccines import format_answer
@@ -321,10 +334,9 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         ml_by_form = [
             {
                 "form": label,
-                # down, never nearest: rounding up puts the volume above the milligrams
-                "ml": int(r.mg / mg_ml * 10) / 10,
-                "ml_min": round(r.mg_min / mg_ml, 1),
-                "ml_max": round(r.mg_max / mg_ml, 1),
+                "ml": _ml(r.mg, mg_ml),
+                "ml_min": _ml(r.mg_min, mg_ml),
+                "ml_max": _ml(r.mg_max, mg_ml),
             }
             for label, mg_ml in forms
         ]

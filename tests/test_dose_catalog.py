@@ -146,3 +146,32 @@ def test_the_title_promises_a_calculator_in_every_language() -> None:
         elif w.lower() not in m.group(2).lower():
             bad.append(f"[{lang}] el título no dice calculadora: «{m.group(2)}»")
     assert not bad, "\n".join(bad)
+
+
+def test_millilitres_never_round_up() -> None:
+    """Es la única parte de esta web que acaba dentro de una jeringa.
+
+    El valor principal ya redondeaba hacia abajo y lo decía en un comentario; los dos extremos de
+    la banda usaban `round()`, y medido sobre 710 casos **277 subían**. En un bebé de 5 kg con
+    gotas de 100 mg/ml la web enseñaba un máximo de 0,8 ml donde el exacto es 0,75 — 16 mg/kg
+    contra los 15 del techo declarado.
+
+    Hacia abajo se queda corto por centésimas, y quedarse corto con un antitérmico no hace daño.
+    """
+    from pedibot.api import _ml
+
+    casos = [
+        (75, 100, 0.7),      # el bebé de 5 kg: 0.75 exactos, jamás 0.8
+        (600, 32, 18.7),     # 18.75 exactos
+        (105, 100, 1.0),     # 1.05 exactos
+        (195, 100, 1.9),     # 1.95 exactos
+        (90, 100, 0.9),      # exacto, se queda igual
+        (250, 20, 12.5),     # exacto con decimal
+    ]
+    for mg, conc, esperado in casos:
+        assert _ml(mg, conc) == esperado, f"{mg} mg a {conc} mg/ml → {_ml(mg, conc)}, no {esperado}"
+
+    # y la propiedad, no solo los ejemplos: nunca por encima del valor exacto
+    for mg in range(25, 1001, 5):
+        for conc in (20, 24, 30, 32, 40, 50, 100, 200):
+            assert _ml(mg, conc) <= mg / conc + 1e-9, f"{mg} mg a {conc} mg/ml redondea hacia arriba"
