@@ -234,6 +234,29 @@ _LEVEL_NAME = {
 }
 
 
+def _dwell_label(w: dict[str, Any]) -> str:
+    """The middle visit, of those whose length can be known — or a dash, which is the honest
+    answer when it cannot. Never a zero: zero is a measurement and this is the absence of one."""
+    secs = w.get("median_seconds")
+    if not w.get("timed") or secs is None:
+        return "—"
+    secs = int(secs)
+    return f"{secs} s" if secs < 90 else f"{secs // 60} min"
+
+
+def _dwell_sentence(w: dict[str, Any]) -> str:
+    timed, visits = int(w.get("timed", 0)), int(w.get("visits", 0))
+    if not visits:
+        return ""
+    return (
+        f"<br>El tiempo solo se puede medir cuando alguien pide una segunda página — sin ella "
+        f"nada marca el final de la visita. Aquí sale de <b>{timed}</b> visitas de {visits}; "
+        f"de esas, {w.get('over_a_minute', 0)} pasaron del minuto. "
+        f"No hay ningún rastreador en la web y no va a haberlo, así que esto es todo lo que se "
+        f"puede saber."
+    )
+
+
 def _tests_line(q: dict[str, Any], days: int, include_test: bool) -> str:
     """Says out loud which questions are on screen, and links to the other set.
 
@@ -300,12 +323,14 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
         "guarda desde siempre.<br>Una dirección no es una persona: la mayoría pide una sola "
         "página y se va, que es lo que hace un rastreador aunque diga ser un navegador. "
         "La cifra de al lado, quien abrió una segunda página, se parece más a alguien leyendo."
+        + _dwell_sentence(w)
         + _tests_line(q, days, include_test)
         + "</p>"
         '<div class="kpis">'
         + _kpi("direcciones", w["visitors"])
         + _kpi("vieron 2+ páginas", w.get("returning", 0))
         + _kpi("páginas vistas", w["views"])
+        + _kpi("cuánto se quedan", _dwell_label(w))
         + _kpi("consultas", q["total"])
         + _kpi("por Telegram", q["telegram"])
         + _kpi("con signo de alarma", q["alarms"], warn=q["alarms"] > 0)

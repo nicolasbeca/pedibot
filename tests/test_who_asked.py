@@ -195,3 +195,33 @@ def test_the_operator_is_not_one_of_his_own_visitors(monkeypatch) -> None:
     assert w["visitors"] == 2
     assert w["views"] == 3
     assert w["returning"] == 1, "solo uno de los dos abrió una segunda página"
+
+
+def test_a_one_page_visit_has_no_duration() -> None:
+    """The only clock a site without a tracker has is the gap between two requests. One page
+    leaves nothing to measure against — not zero seconds: no measurement. Thirty days of this
+    site is 1.942 such visits out of 2.222, and reporting an average over them would be making
+    it up."""
+    from pedibot.ops.report import _dwell
+
+    d = _dwell({"solo": [100.0], "otro": [500.0]})
+    assert d["visits"] == 2 and d["timed"] == 0
+    assert d["median_seconds"] is None
+
+
+def test_a_visit_ends_after_half_an_hour_and_the_middle_one_is_reported() -> None:
+    """The median, not the average: one machine coming back after ten hours pulls the average of
+    the real numbers to nineteen minutes while the middle visit is nineteen seconds."""
+    from pedibot.ops.report import _dwell
+
+    d = _dwell(
+        {
+            "a": [0.0, 10.0],  # 10 s
+            "b": [0.0, 30.0],  # 30 s
+            "c": [0.0, 36000.0],  # ten hours apart: two visits of one page, not one of ten hours
+            "d": [0.0, 20.0, 100.0],  # 100 s
+        }
+    )
+    assert d["visits"] == 5, "la vuelta de 'c' diez horas despues es otra visita"
+    assert d["timed"] == 3 and d["median_seconds"] == 30
+    assert d["over_a_minute"] == 1

@@ -49,6 +49,41 @@ def _operator_hashes(lines: list[str]) -> set[str]:
     return out
 
 
+#: a visit ends after half an hour with no page. The usual convention, and a convention.
+VISIT_GAP = 1800.0
+
+
+def _dwell(seen_at: dict[str, list[float]]) -> dict[str, Any]:
+    """How long a visit lasted, for the visits where that can be known at all.
+
+    The only clock this site has is the gap between two requests, so a visit of one page has no
+    duration — nothing marks its end. Reporting a number for those would be inventing it, so they
+    are counted and left out, and the count is shown next to the figure.
+
+    The median, not the average: one machine returning after ten hours pulls the average of these
+    to nineteen minutes while the middle visit is nineteen seconds.
+    """
+    visits: list[list[float]] = []
+    for times in seen_at.values():
+        times.sort()
+        cur = [times[0]]
+        for t in times[1:]:
+            if t - cur[-1] > VISIT_GAP:
+                visits.append(cur)
+                cur = [t]
+            else:
+                cur.append(t)
+        visits.append(cur)
+    lasted = sorted(v[-1] - v[0] for v in visits if len(v) > 1)
+    return {
+        "visits": len(visits),
+        "timed": len(lasted),
+        "median_seconds": lasted[len(lasted) // 2] if lasted else None,
+        # how many of the timed ones were more than a glance
+        "over_a_minute": sum(1 for x in lasted if x >= 60),
+    }
+
+
 def web_visits(days: int = 7) -> dict[str, Any]:
     """Page views, unique visitors (hash of IP+UA) and top pages from Caddy's JSON access log.
 
@@ -69,6 +104,7 @@ def web_visits(days: int = 7) -> dict[str, Any]:
         print("journalctl failed:", e, file=sys.stderr)
         return {
             "views": 0, "visitors": 0, "returning": 0, "chat_pageviews": 0,
+            "visits": 0, "timed": 0, "median_seconds": None, "over_a_minute": 0,
             "top": [], "per_day": {}, "covers": (),
         }
     lines = out.splitlines()
@@ -81,6 +117,8 @@ def web_visits(days: int = 7) -> dict[str, Any]:
     # says. 600 of 919 browser-labelled addresses did exactly that, and 1.505 of their hits were
     # the home page.
     pages_each: dict[str, int] = {}
+    # when each browser asked for something, for the dwell time below
+    seen_at: dict[str, list[float]] = {}
     top: dict[str, int] = {}
     per_day: dict[str, int] = {}
     for line in lines:
@@ -111,9 +149,11 @@ def web_visits(days: int = 7) -> dict[str, Any]:
         per_day[day] = per_day.get(day, 0) + 1
         visitors.add(who)
         pages_each[who] = pages_each.get(who, 0) + 1
+        seen_at.setdefault(who, []).append(float(j.get("ts", 0)))
     return {
         "views": views,
         "visitors": len(visitors),
+        **_dwell(seen_at),
         "returning": sum(1 for n in pages_each.values() if n > 1),
         "chat_pageviews": chat,
         "top": sorted(top.items(), key=lambda kv: -kv[1])[:10],
