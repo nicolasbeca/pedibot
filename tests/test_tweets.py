@@ -221,3 +221,13 @@ def test_the_health_account_never_posts_about_the_token(draft: str) -> None:
     This is that separation held by the code instead of by somebody remembering.
     """
     assert any("token" in p for p in problems(draft, FACTS))
+
+
+def test_the_token_check_does_not_eat_ordinary_english() -> None:
+    """"listed" threw away a good draft on the first real run: the documents of a guide are
+    listed at the foot. A guard that rejects true sentences costs drafts every week."""
+    fine = (
+        "Every sentence in a guide carries the number of its document, and the documents "
+        "are listed at the foot."
+    )
+    assert problems(fine, FACTS) == []

@@ -59,8 +59,10 @@ ABOUT_A_GUIDE = re.compile(r"\bguides?\b", re.I)
 #: by the operator's own decision, and it is kept out of here for the same reason: a reader who
 #: came for a fever question does not need to find out the answer has a coin attached.
 TOKEN_TALK = re.compile(
+    # «listed» NO está aquí: tiró un borrador bueno en la primera tanda real, porque los
+    # documentos de una guía van listados al pie — inglés corriente, y está en la hoja de datos
     r"\b(PDBT|token|tokens|coin|crypto|ETH|airdrop|presale|holders?|market ?cap|ticker"
-    r"|blockchain|on-?chain|wallet|mint(ed|ing)?|listed?)\b",
+    r"|blockchain|on-?chain|wallet|mint(ed|ing)?)\b",
     re.I,
 )
 
