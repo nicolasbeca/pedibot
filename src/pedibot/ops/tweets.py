@@ -135,9 +135,12 @@ def fact_sheet(f: dict[str, Any]) -> str:
             f"- built from {f['documents']} published documents by {f['organisations']} bodies,"
             f" including {', '.join(f['organisation_names'][:6])}",
             f"- vaccination schedules for {f['vaccine_countries']} countries:"
-            f" {', '.join(f['vaccine_country_codes'])}",
+            f" {', '.join(f['vaccine_country_codes'])}. Each one cites its OWN national source"
+            " (a health ministry or equivalent). They are NOT drawn from the corpus above.",
             f"- a weight-based dose calculator for {f['medicines_in_the_dose_calculator']}"
-            " medicines",
+            " medicines. It cites ONE named dosing table, not the corpus above.",
+            "- so: the corpus, the schedules and the calculator are three separate sets of"
+            "  sources. Never say one is built from another, or add their numbers together.",
             "- every statement in a guide carries the number of the document it came from, and",
             "  the documents are listed at the foot with organisation, title and page",
             "- when no source covers the question, it says so instead of answering",
@@ -165,6 +168,11 @@ HARD RULES, and a post that breaks one is thrown away:
 - Never say or imply that a doctor, paediatrician or any clinician reviewed, approved or wrote \
 anything. Nobody has. Saying so would be the one lie that matters.
 - Never promise accuracy, safety or a diagnosis.
+- Never join two facts into a claim neither of them makes. The first batch this job
+  ever wrote said the vaccination schedules and the dose calculator both draw on the
+  same source documents. That is false, and nothing in the facts said it: those have
+  their own sources. If a sentence needs a link between two bullets that is not
+  written in them, do not write it.
 - No links, no URLs, no @handles.
 - At most 280 characters each, counted exactly.
 - Each post must stand alone. No threads, no numbering, no "1/7".
