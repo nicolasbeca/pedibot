@@ -44,6 +44,7 @@ FACTS = {
     "organisation_names": ["WHO", "NHS", "RKI"],
     "vaccine_countries": 7,
     "vaccine_country_codes": ["BR", "ES"],
+    "vaccine_authorities": ["Ministerio de Sanidad", "NHS"],
     "medicines_in_the_dose_calculator": 4,
     "guide_titles_english": ["What should I do if my child has a fever?"],
 }
@@ -89,6 +90,13 @@ def test_the_fact_sheet_carries_no_number_the_verifier_would_reject() -> None:
     import re
 
     assert not [n for n in re.findall(r"\d+", fact_sheet(FACTS)) if n not in OK]
+
+
+def test_the_sample_facts_carry_every_key_the_sheet_reads() -> None:
+    """This is how three tests broke at once: a key was added to facts() and the sample here did
+    not have it, so fact_sheet() raised KeyError and nothing said which key."""
+    real = facts(ROOT, ROOT / "index" / "pedibot.db")
+    assert set(real) == set(FACTS), f"faltan en el ejemplo: {sorted(set(real) - set(FACTS))}"
 
 
 def test_facts_are_counted_in_this_deployment_not_stored() -> None:
