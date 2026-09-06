@@ -93,7 +93,7 @@ cp /opt/pedibot/ops/Caddyfile /etc/caddy/Caddyfile
 # admin panel password: created once (ops/README), hash kept outside the repo
 if [ -f /etc/caddy/admin.hash ]; then sed -i "s|__ADMIN_HASH__|$(cat /etc/caddy/admin.hash)|" /etc/caddy/Caddyfile; else sed -i '/@admin path/,/^	}/d' /etc/caddy/Caddyfile; echo '!! no /etc/caddy/admin.hash: /admin disabled'; fi
 systemctl daemon-reload
-systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-acp.service pedibot-watchdog.timer pedibot-backup.timer pedibot-token.timer pedibot-token-alert.timer pedibot-weekly.timer pedibot-daily.timer pedibot-tweets.timer >/dev/null 2>&1 || true
+systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-acp.service pedibot-watchdog.timer pedibot-backup.timer pedibot-token.timer pedibot-token-alert.timer pedibot-weekly.timer pedibot-daily.timer pedibot-tweets.timer pedibot-indexnow.timer >/dev/null 2>&1 || true
 systemctl restart pedibot-api.service pedibot-telegram.service pedibot-acp.service
 caddy validate --config /etc/caddy/Caddyfile >/dev/null 2>&1 && systemctl reload caddy
 systemctl is-active pedibot-api.service pedibot-telegram.service caddy | tr '\n' ' '; echo

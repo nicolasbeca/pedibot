@@ -1,0 +1,12 @@
+[Unit]
+Description=PediBot: tell Bing, Yandex, Seznam and Naver what changed
+
+[Service]
+Type=oneshot
+User=pedibot
+WorkingDirectory=/opt/pedibot
+EnvironmentFile=/opt/pedibot/.env
+Environment=PYTHONIOENCODING=utf-8
+# no --new: the memory in data/indexnow_sent.json already decides what is news, and it decides
+# it by lastmod rather than by a window, so a guide republished today is sent and nothing else is
+ExecStart=/opt/pedibot/.local/bin/uv run --no-dev python ops/indexnow.py

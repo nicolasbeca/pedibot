@@ -1,0 +1,11 @@
+[Unit]
+Description=PediBot IndexNow: daily at 07:15 Europe/Madrid
+
+[Timer]
+# after the guides that get written overnight, before the daily review at 08:30
+OnCalendar=*-*-* 07:15:00 Europe/Madrid
+Persistent=true
+Unit=pedibot-indexnow.service
+
+[Install]
+WantedBy=timers.target

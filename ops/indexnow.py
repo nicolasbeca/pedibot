@@ -45,9 +45,9 @@ def key() -> str:
     return k
 
 
-def urls(newer_than_days: int | None = None) -> list[str]:
-    """Every URL in the built sitemaps, optionally only those changed recently."""
-    out: list[str] = []
+def urls(newer_than_days: int | None = None) -> list[tuple[str, str]]:
+    """(URL, lastmod) for every page in the built sitemaps, optionally only recent ones."""
+    out: list[tuple[str, str]] = []
     cutoff = None
     if newer_than_days is not None:
         cutoff = dt.datetime.now(dt.UTC) - dt.timedelta(days=newer_than_days)
@@ -57,14 +57,37 @@ def urls(newer_than_days: int | None = None) -> list[str]:
             loc = re.search(r"<loc>(.*?)</loc>", m.group(1))
             if not loc:
                 continue
-            if cutoff is not None:
-                mod = re.search(r"<lastmod>(.*?)</lastmod>", m.group(1))
-                if mod:
-                    when = dt.datetime.fromisoformat(mod.group(1).replace("Z", "+00:00"))
-                    if when < cutoff:
-                        continue
-            out.append(loc.group(1))
+            mod = re.search(r"<lastmod>(.*?)</lastmod>", m.group(1))
+            stamp = mod.group(1) if mod else ""
+            if cutoff is not None and stamp:
+                when = dt.datetime.fromisoformat(stamp.replace("Z", "+00:00"))
+                if when < cutoff:
+                    continue
+            out.append((loc.group(1), stamp))
     return out
+
+
+def state_path() -> pathlib.Path:
+    """What we last told the engines, so we do not tell them again for nothing."""
+    return ROOT / "data" / "indexnow_sent.json"
+
+
+def already_sent() -> dict[str, str]:
+    p = state_path()
+    if not p.exists():
+        return {}
+    try:
+        loaded = json.loads(p.read_text(encoding="utf-8"))
+        return loaded if isinstance(loaded, dict) else {}
+    except json.JSONDecodeError:
+        # a corrupt file means we resubmit once, which is harmless; failing here is not
+        return {}
+
+
+def remember(sent: dict[str, str]) -> None:
+    p = state_path()
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(sent, indent=1, sort_keys=True), encoding="utf-8", newline="\n")
 
 
 def submit(url_list: list[str], k: str) -> tuple[int, str]:
@@ -93,6 +116,11 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--new", type=int, metavar="DAYS", help="sólo lo cambiado en N días")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument(
+        "--all",
+        action="store_true",
+        help="reenvía aunque ya se enviara con ese mismo lastmod",
+    )
     args = ap.parse_args()
 
     if not DIST.exists():
@@ -100,22 +128,30 @@ def main() -> int:
         return 2
 
     k = key()
-    todo = urls(args.new)
+    found = urls(args.new)
+    sent = {} if args.all else already_sent()
+    # a page whose lastmod has not moved since we told them is not news
+    todo = [(u, m) for u, m in found if args.all or sent.get(u) != m]
     if not todo:
-        print("nada que enviar")
+        print(f"nada nuevo que enviar ({len(found)} URLs, todas ya avisadas)")
         return 0
-    print(f"{len(todo)} URLs · clave {k}")
+    print(f"{len(todo)} URLs nuevas o cambiadas de {len(found)} · clave {k}")
     if args.dry_run:
-        for u in todo[:5]:
+        for u, _ in todo[:5]:
             print("   ", u)
         print("    …") if len(todo) > 5 else None
         return 0
 
     for i in range(0, len(todo), BATCH):
-        status, body = submit(todo[i : i + BATCH], k)
+        batch = todo[i : i + BATCH]
+        status, body = submit([u for u, _ in batch], k)
         print(f"lote {i // BATCH + 1}: HTTP {status} {body}".rstrip())
         if status not in (200, 202):
+            # remember what did get through, so a later failure does not resend everything
+            remember(sent)
             return 1
+        sent.update(dict(batch))
+    remember(sent)
     return 0
 
 
