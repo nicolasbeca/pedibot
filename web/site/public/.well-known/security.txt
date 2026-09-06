@@ -1,0 +1,7 @@
+# https://www.rfc-editor.org/rfc/rfc9116 — dónde avisar de un problema de seguridad.
+# Pedido 13 veces en 30 días y contestado con un 404 hasta el 6-sep-2026. En una web sobre
+# la salud de niños, no tener por dónde avisar es peor que en una cualquiera.
+Contact: mailto:pedibot.ai@gmail.com
+Preferred-Languages: es, en
+Canonical: https://pedibot.xyz/.well-known/security.txt
+Expires: 2027-09-06T00:00:00.000Z

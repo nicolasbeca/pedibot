@@ -160,3 +160,18 @@ def test_every_medicine_page_carries_the_calculator() -> None:
         src = tpl.read_text(encoding="utf-8")
         assert "<DoseCalc" in src, f"{tpl.name}: la página promete calculadora y no la lleva"
         assert "drug={name}" in src, f"{tpl.name}: la calculadora no viene con su fármaco puesto"
+
+
+def test_security_txt_has_not_expired() -> None:
+    """El RFC 9116 obliga a un campo Expires, y un security.txt caducado se ignora: quien
+    encuentre un fallo se queda sin saber a quién avisar. Avisa dos meses antes en vez de
+    caducar en silencio."""
+    import datetime as dt
+
+    p = ROOT / "web" / "site" / "public" / ".well-known" / "security.txt"
+    assert p.exists(), "no hay security.txt"
+    m = re.search(r"^Expires:\s*(\S+)", p.read_text(encoding="utf-8"), re.M)
+    assert m, "security.txt sin campo Expires — el RFC lo exige"
+    when = dt.datetime.fromisoformat(m.group(1).replace("Z", "+00:00"))
+    quedan = (when - dt.datetime.now(dt.UTC)).days
+    assert quedan > 60, f"security.txt caduca en {quedan} días: renueva la fecha"
