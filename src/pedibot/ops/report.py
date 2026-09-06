@@ -27,7 +27,13 @@ def _who(ip: object, ua: str) -> str:
 
 
 def _operator_hashes(lines: list[str]) -> set[str]:
-    """Whoever asked for /admin. Caddy guards it with a password, so that is the operator."""
+    """Whoever OPENED /admin. Caddy guards it with a password, so that is the operator.
+
+    Opened, not asked for: 65 different browsers have requested /admin on this server and 64 of
+    them are scanners hunting for an admin panel, which Caddy answered with a 401. Taking the
+    request alone as proof would have quietly deleted them from the visit count — flattering,
+    and false in the same direction the rest of this change exists to prevent.
+    """
     out: set[str] = set()
     for line in lines:
         if "/admin" not in line or '"handled request"' not in line:
@@ -37,7 +43,7 @@ def _operator_hashes(lines: list[str]) -> set[str]:
         except json.JSONDecodeError:
             continue
         req = j.get("request", {})
-        if not str(req.get("uri", "")).startswith("/admin"):
+        if j.get("status") != 200 or not str(req.get("uri", "")).startswith("/admin"):
             continue
         out.add(_who(req.get("remote_ip"), (req.get("headers", {}).get("User-Agent") or [""])[0]))
     return out

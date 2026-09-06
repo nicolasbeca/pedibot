@@ -141,14 +141,16 @@ def test_the_daily_review_skips_our_own(tmp_path) -> None:
     assert daily_text(c, day="2026-09-04") is None
 
 
-def _caddy(ip: str, uri: str, ua: str = "Mozilla/5.0 (Windows NT 10.0) Chrome/120") -> str:
+def _caddy(
+    ip: str, uri: str, ua: str = "Mozilla/5.0 (Windows NT 10.0) Chrome/120", status: int = 200
+) -> str:
     import json as _json
 
     return _json.dumps(
         {
             "msg": "handled request",
             "ts": 1788700000.0,
-            "status": 200,
+            "status": status,
             "request": {
                 "uri": uri,
                 "method": "GET",
@@ -178,12 +180,18 @@ def test_the_operator_is_not_one_of_his_own_visitors(monkeypatch) -> None:
             _caddy("203.0.113.9", "/"),  # somebody else
             _caddy("203.0.113.9", "/es/guias/fiebre"),
             _caddy("198.51.100.4", "/", ua="curl/8.5.0"),  # our scripts, already excluded
+            # a scanner hunting for an admin panel: Caddy answers 401, so it is NOT the operator
+            _caddy("192.0.2.7", "/admin", status=401),
+            _caddy("192.0.2.7", "/"),
         ]
     )
     monkeypatch.setattr(
         subprocess, "run", lambda *a, **k: type("R", (), {"stdout": log})()
     )
     w = report.web_visits(7)
-    assert w["visitors"] == 1, "solo hay una persona ahí que no seamos nosotros"
-    assert w["views"] == 2
-    assert w["returning"] == 1
+    # the reader, and the scanner that failed the password: two, not one. Guessing the scanner
+    # away would shrink the number in the flattering direction, which is the failure this whole
+    # change exists to stop.
+    assert w["visitors"] == 2
+    assert w["views"] == 3
+    assert w["returning"] == 1, "solo uno de los dos abrió una segunda página"
