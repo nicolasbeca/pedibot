@@ -43,3 +43,6 @@ web/site/node_modules/
 web/site/dist/
 web/site/.astro/
 eval/flagged.jsonl
+
+# La clave de servicio de Search Console. Nunca al repositorio.
+gsc_key.json
