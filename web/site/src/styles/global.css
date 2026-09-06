@@ -36,6 +36,11 @@ button, input, select, textarea { font: inherit; }
 .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; font-family: Nunito, sans-serif; font-weight: 800; text-decoration: none; border: 2px solid transparent; cursor: pointer; font-size: .95rem; }
 .btn-primary { background: var(--sage); color: #fff; }
 :root.night .btn-primary { color: var(--ground); }
+/* the way into the chat at the head of a guide. Deliberately not a second .btn: two identical
+   green buttons on one page teach the reader to ignore both. */
+.ask-top { margin-top: 16px; font-size: .95rem; }
+.ask-top a { color: var(--sage); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--mint-2); padding-bottom: 2px; }
+.ask-top a:hover { border-bottom-color: var(--sage); }
 .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--paper); }
 .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; }
 .card.tint-a { background: var(--mint); border-color: transparent; }

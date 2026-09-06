@@ -80,6 +80,7 @@ const jsonld = faqLd ? [page, faqLd] : page;
     <p class="eyebrow">{s.updated} <time datetime={g.data.date.toISOString()}>{g.data.date.toLocaleDateString(s.speech_locale)}</time></p>
     <h1 style="margin-top:8px">{g.data.title}</h1>
     <p class="lede">{g.data.description}</p>
+    <p class="ask-top"><a href={`/pt?q=${encodeURIComponent(g.data.title)}`}>{s.ask_top} →</a></p>
     <Content />
     <p style="margin-top:32px"><a class="btn btn-primary" href={`/pt?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
     {related.length > 0 && (

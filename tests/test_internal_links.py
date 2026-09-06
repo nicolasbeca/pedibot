@@ -90,3 +90,40 @@ def test_a_medicine_offers_the_right_name_in_each_language(have: set[str]) -> No
     assert any(a.endswith("/ibuprofeno") for a in alts), "ninguna alternativa usa el slug español"
     for a in alts:
         assert reachable(a, have), a
+
+
+#: the eight guide templates: one per language, identical apart from their language wiring
+_TPLS = sorted((ROOT / "web" / "site" / "src" / "pages").glob("**/guides/[[]...slug[]].astro"))
+
+
+def _lang_of(tpl: pathlib.Path) -> str:
+    """English lives at the root, every other language under its own folder."""
+    parts = tpl.relative_to(ROOT / "web" / "site" / "src" / "pages").parts
+    return "en" if parts[0] == "guides" else parts[0]
+
+
+def test_every_guide_offers_the_chat_at_the_top_and_the_bottom() -> None:
+    """A guide's way into the chat used to be one button below the whole article. Somebody who
+    arrives from a search reads a paragraph and leaves without ever scrolling to it, so the same
+    door is offered again under the opening line (6-sep-2026).
+
+    Source-level on purpose: this one runs without a build.
+    """
+    assert len(_TPLS) == 8, f"esperaba 8 plantillas de guía, hay {len(_TPLS)}"
+    for tpl in _TPLS:
+        src = tpl.read_text(encoding="utf-8")
+        assert src.count('class="ask-top"') == 1, f"{tpl.name} [{_lang_of(tpl)}]: falta el de arriba"
+        assert src.count("s.ask_about") == 1, f"{tpl.name} [{_lang_of(tpl)}]: falta el de abajo"
+
+
+def test_a_guide_never_sends_its_reader_to_another_language_chat() -> None:
+    """The clone rot, in the place it would hurt most: a Spanish guide whose button opens the
+    English chat. Both links in a file must carry that file's own prefix."""
+    bad: list[str] = []
+    for tpl in _TPLS:
+        lang = _lang_of(tpl)
+        want = "/?q=" if lang == "en" else f"/{lang}?q="
+        found = re.findall(r"href=\{`(/[a-z]{0,2}\?q=)\$\{encodeURIComponent", tpl.read_text(encoding="utf-8"))
+        assert len(found) == 2, f"{tpl.name}: esperaba dos enlaces al chat, hay {len(found)}"
+        bad += [f"[{lang}] apunta a {f}, debería ser {want}" for f in found if f != want]
+    assert not bad, "\n".join(bad)
