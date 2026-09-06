@@ -32,7 +32,7 @@ def main() -> int:
     from pedibot.ops.sources_alive import report_lines
     from pedibot.settings import ROOT
 
-    extra = report_lines(ROOT / 'config')
+    extra = report_lines(ROOT)
     if extra:
         text += "\n" + "\n".join(extra)
     print(text)

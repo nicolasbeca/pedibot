@@ -71,7 +71,12 @@ ORGS = {
 # (key, url, topic, lang, age_groups)
 WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     # ---------------- NHS (England) ----------------
-    ("nhs", "https://www.nhs.uk/conditions/fever-in-children/", "fiebre", "en", ["todas"]),
+    # Direcciones revisadas el 6-sep-2026 contra el sitio real: ninguna de las 243 del corpus
+    # estaba rota, pero 17 respondían por una redirección y la redirección de hoy es el 404 de
+    # mañana. Catorce se actualizaron aquí. Las tres que NO se tocaron cambiaron de TEMA, no de
+    # sitio, y eso es una decisión de contenido: breath-holding (el NHS retiró la página),
+    # mlp bedwetting (lleva a desarrollo infantil) y headaches-in-children (ahora es la general).
+    ("nhs", "https://www.nhs.uk/symptoms/fever-in-children/", "fiebre", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/bronchiolitis/", "respiratorio", "en", ["lactante"]),
     (
         "nhs",
@@ -94,7 +99,7 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "en",
         ["todas"],
     ),
-    ("nhs", "https://www.nhs.uk/conditions/diarrhoea-and-vomiting/", "digestivo", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/diarrhoea-and-vomiting/", "digestivo", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/constipation/", "digestivo", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/dehydration/", "digestivo", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/norovirus/", "digestivo", "en", ["todas"]),
@@ -110,7 +115,7 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("nhs", "https://www.nhs.uk/conditions/sepsis/", "urgencias", "en", ["todas"]),
     (
         "nhs",
-        "https://www.nhs.uk/conditions/rashes-babies-and-children/",
+        "https://www.nhs.uk/symptoms/rashes-babies-and-children/",
         "piel",
         "en",
         ["lactante", "preescolar"],
@@ -119,14 +124,14 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("nhs", "https://www.nhs.uk/conditions/reflux-in-babies/", "lactante", "en", ["lactante"]),
     (
         "nhs",
-        "https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/",
+        "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/",
         "lactante",
         "en",
         ["lactante"],
     ),
     ("nhs", "https://www.nhs.uk/conditions/ear-infections/", "orl", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/glue-ear/", "orl", "en", ["preescolar", "escolar"]),
-    ("nhs", "https://www.nhs.uk/conditions/sore-throat/", "orl", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/sore-throat/", "orl", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/tonsillitis/", "orl", "en", ["todas"]),
     (
         "nhs",
@@ -176,21 +181,21 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("nhs", "https://www.nhs.uk/conditions/mumps/", "general", "en", ["escolar"]),
     (
         "nhs",
-        "https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/",
+        "https://www.nhs.uk/vaccinations/nhs-vaccinations-and-when-to-have-them/",
         "vacunas",
         "en",
         ["todas"],
     ),
     (
         "nhs",
-        "https://www.nhs.uk/conditions/baby/weaning-and-feeding/babys-first-solid-foods/",
+        "https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/",
         "alimentacion",
         "en",
         ["lactante"],
     ),
     (
         "nhs",
-        "https://www.nhs.uk/conditions/baby/caring-for-a-newborn/",
+        "https://www.nhs.uk/baby/caring-for-a-newborn/",
         "recien_nacido",
         "en",
         ["lactante"],
@@ -226,7 +231,7 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("nhs", "https://www.nhs.uk/conditions/head-lice-and-nits/", "piel", "en", ["escolar"]),
     (
         "nhs",
-        "https://www.nhs.uk/conditions/bedwetting/",
+        "https://www.nhs.uk/symptoms/bedwetting/",
         "desarrollo",
         "en",
         ["preescolar", "escolar"],
@@ -284,7 +289,7 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ),
     ("mlp", "https://medlineplus.gov/breastfeeding.html", "alimentacion", "en", ["lactante"]),
     ("mlp", "https://medlineplus.gov/childdevelopment.html", "desarrollo", "en", ["todas"]),
-    ("mlp", "https://medlineplus.gov/childhoodimmunization.html", "vacunas", "en", ["todas"]),
+    ("mlp", "https://medlineplus.gov/childhoodvaccines.html", "vacunas", "en", ["todas"]),
     ("mlp", "https://medlineplus.gov/earinfections.html", "orl", "en", ["todas"]),
     ("mlp", "https://medlineplus.gov/sorethroat.html", "orl", "en", ["todas"]),
     ("mlp", "https://medlineplus.gov/chickenpox.html", "piel", "en", ["todas"]),
@@ -368,7 +373,7 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ),
     (
         "mlp",
-        "https://medlineplus.gov/spanish/childhoodimmunization.html",
+        "https://medlineplus.gov/spanish/childhoodvaccines.html",
         "vacunas",
         "es",
         ["todas"],
@@ -418,7 +423,7 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "en",
         ["lactante", "preescolar"],
     ),
-    ("cdc", "https://www.cdc.gov/flu/highrisk/children.htm", "respiratorio", "en", ["todas"]),
+    ("cdc", "https://www.cdc.gov/flu/highrisk/children.html", "respiratorio", "en", ["todas"]),
     (
         "cdc",
         "https://www.cdc.gov/heads-up/about/index.html",
@@ -461,8 +466,8 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("cdc", "https://www.cdc.gov/measles/signs-symptoms/index.html", "piel", "en", ["todas"]),
     ("cdc", "https://www.cdc.gov/chickenpox/about/index.html", "piel", "en", ["todas"]),
     ("cdc", "https://www.cdc.gov/lice/about/index.html", "piel", "en", ["escolar"]),
-    ("cdc", "https://www.cdc.gov/antibiotic-use/ear-infection.html", "orl", "en", ["todas"]),
-    ("cdc", "https://www.cdc.gov/antibiotic-use/colds.html", "respiratorio", "en", ["todas"]),
+    ("cdc", "https://www.cdc.gov/ear-infection/about/", "orl", "en", ["todas"]),
+    ("cdc", "https://www.cdc.gov/common-cold/treatment/", "respiratorio", "en", ["todas"]),
     # ---------------- WHO ----------------
     (
         "who",

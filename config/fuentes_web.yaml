@@ -13,7 +13,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/fever-in-children/
+  url: https://www.nhs.uk/symptoms/fever-in-children/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_bronchiolitis
   file: web/nhs_en_bronchiolitis.html
@@ -90,7 +90,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/diarrhoea-and-vomiting/
+  url: https://www.nhs.uk/symptoms/diarrhoea-and-vomiting/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_constipation
   file: web/nhs_en_constipation.html
@@ -212,7 +212,7 @@ sources:
   age_groups:
   - lactante
   - preescolar
-  url: https://www.nhs.uk/conditions/rashes-babies-and-children/
+  url: https://www.nhs.uk/symptoms/rashes-babies-and-children/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_colic
   file: web/nhs_en_colic.html
@@ -257,7 +257,7 @@ sources:
   usage: publico
   age_groups:
   - lactante
-  url: https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/
+  url: https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_ear_infections
   file: web/nhs_en_ear_infections.html
@@ -303,7 +303,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/sore-throat/
+  url: https://www.nhs.uk/symptoms/sore-throat/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_tonsillitis
   file: web/nhs_en_tonsillitis.html
@@ -577,7 +577,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/
+  url: https://www.nhs.uk/vaccinations/nhs-vaccinations-and-when-to-have-them/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_babys_first_solid_foods
   file: web/nhs_en_babys_first_solid_foods.html
@@ -592,7 +592,7 @@ sources:
   usage: publico
   age_groups:
   - lactante
-  url: https://www.nhs.uk/conditions/baby/weaning-and-feeding/babys-first-solid-foods/
+  url: https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_caring_for_a_newborn
   file: web/nhs_en_caring_for_a_newborn.html
@@ -607,7 +607,7 @@ sources:
   usage: publico
   age_groups:
   - lactante
-  url: https://www.nhs.uk/conditions/baby/caring-for-a-newborn/
+  url: https://www.nhs.uk/baby/caring-for-a-newborn/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_anaphylaxis
   file: web/nhs_en_anaphylaxis.html
@@ -790,7 +790,7 @@ sources:
   age_groups:
   - preescolar
   - escolar
-  url: https://www.nhs.uk/conditions/bedwetting/
+  url: https://www.nhs.uk/symptoms/bedwetting/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-03'
 - doc_id: nhs_en_growing_pains
   file: web/nhs_en_growing_pains.html
@@ -1137,7 +1137,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://medlineplus.gov/childhoodimmunization.html
+  url: https://medlineplus.gov/childhoodvaccines.html
   notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-03'
 - doc_id: mlp_en_earinfections
   file: web/mlp_en_earinfections.html
@@ -1816,7 +1816,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://medlineplus.gov/spanish/childhoodimmunization.html
+  url: https://medlineplus.gov/spanish/childhoodvaccines.html
   notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-03'
 - doc_id: mlp_es_earinfections
   file: web/mlp_es_earinfections.html
@@ -2042,7 +2042,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.cdc.gov/flu/highrisk/children.htm
+  url: https://www.cdc.gov/flu/highrisk/children.html
   notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-03'
 - doc_id: cdc_en_heads_up_about_index
   file: web/cdc_en_heads_up_about_index.html
@@ -2241,7 +2241,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.cdc.gov/antibiotic-use/ear-infection.html
+  url: https://www.cdc.gov/ear-infection/about/
   notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-03'
 - doc_id: cdc_en_colds
   file: web/cdc_en_colds.html
@@ -2256,7 +2256,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.cdc.gov/antibiotic-use/colds.html
+  url: https://www.cdc.gov/common-cold/treatment/
   notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-03'
 - doc_id: who_en_infant_and_young_child_feeding
   file: web/who_en_infant_and_young_child_feeding.html
