@@ -60,13 +60,6 @@ ABOUT_A_GUIDE = re.compile(r"\bguides?\b", re.I)
 HAS_LINK = re.compile(r"https?://|\bwww\.|pedibot\.xyz", re.I)
 
 
-#: only a spelling table: the sheet counts languages by code and a tweet writes their names
-LANGUAGE_NAME = {
-    "en": "English", "es": "Spanish", "fr": "French", "de": "German",
-    "ru": "Russian", "ar": "Arabic", "pt": "Portuguese", "hi": "Hindi",
-}
-
-
 def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
     """Everything a tweet is allowed to assert, counted here and now.
 
@@ -76,6 +69,10 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
     stale and starts being false.
     """
     import yaml
+
+    # the engine's own table, never a second copy: written inline twice before, and both times a
+    # new language quietly fell back to English (tests/test_i18n_parity.py)
+    from pedibot.bot.strings import LANGUAGE_NAME
 
     per_lang = collections.Counter(
         p.parent.name for p in (root / "web" / "content").rglob("*.md")
