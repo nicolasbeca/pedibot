@@ -11,12 +11,36 @@ import subprocess
 import sys
 from typing import Any
 
+from pedibot.ops.store import NOT_REAL, REAL_ONLY
 from pedibot.settings import ROOT
 
 _STATIC = re.compile(
     r"\.(xml|svg|png|ico|css|js|txt|woff2?|webmanifest)$|^/_astro/|^/api/|^/a/|^/admin", re.I
 )
 _BOT_UA = re.compile(r"bot|crawl|spider|curl|python|monitor|wget|httpx", re.I)
+
+
+def _who(ip: object, ua: str) -> str:
+    """A visitor, as the panel has always counted one: address and browser together, hashed. The
+    hash is computed to be compared with other hashes and is never written anywhere."""
+    return hashlib.sha256(f"{ip}|{ua}".encode()).hexdigest()[:16]
+
+
+def _operator_hashes(lines: list[str]) -> set[str]:
+    """Whoever asked for /admin. Caddy guards it with a password, so that is the operator."""
+    out: set[str] = set()
+    for line in lines:
+        if "/admin" not in line or '"handled request"' not in line:
+            continue
+        try:
+            j = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        req = j.get("request", {})
+        if not str(req.get("uri", "")).startswith("/admin"):
+            continue
+        out.add(_who(req.get("remote_ip"), (req.get("headers", {}).get("User-Agent") or [""])[0]))
+    return out
 
 
 def web_visits(days: int = 7) -> dict[str, Any]:
@@ -41,6 +65,10 @@ def web_visits(days: int = 7) -> dict[str, Any]:
             "views": 0, "visitors": 0, "returning": 0, "chat_pageviews": 0,
             "top": [], "per_day": {}, "covers": (),
         }
+    lines = out.splitlines()
+    # who the operator is, before counting anybody: the panel is password-protected, so a browser
+    # that asked for /admin is his. Costs one extra pass over the journal and no configuration.
+    ours = _operator_hashes(lines)
     views, chat = 0, 0
     visitors: set[str] = set()
     # how many pages each one asked for: one page and gone is a crawler, whatever its user agent
@@ -49,7 +77,7 @@ def web_visits(days: int = 7) -> dict[str, Any]:
     pages_each: dict[str, int] = {}
     top: dict[str, int] = {}
     per_day: dict[str, int] = {}
-    for line in out.splitlines():
+    for line in lines:
         if '"handled request"' not in line:
             continue
         try:
@@ -63,6 +91,11 @@ def web_visits(days: int = 7) -> dict[str, Any]:
         ua = (req.get("headers", {}).get("User-Agent") or [""])[0]
         if _BOT_UA.search(ua):
             continue
+        who = _who(req.get("remote_ip"), ua)
+        if who in ours:
+            # the operator looking at his own site is not a visit, and at this traffic one person
+            # opening it twice a day would be most of the number he is looking at
+            continue
         views += 1
         uri = uri.split("?")[0]
         if uri in ("/", "/es", "/es/"):
@@ -70,7 +103,6 @@ def web_visits(days: int = 7) -> dict[str, Any]:
         top[uri] = top.get(uri, 0) + 1
         day = dt.datetime.fromtimestamp(float(j.get("ts", 0)), dt.UTC).date().isoformat()
         per_day[day] = per_day.get(day, 0) + 1
-        who = hashlib.sha256(f"{req.get('remote_ip')}|{ua}".encode()).hexdigest()[:16]
         visitors.add(who)
         pages_each[who] = pages_each.get(who, 0) + 1
     return {
@@ -85,48 +117,74 @@ def web_visits(days: int = 7) -> dict[str, Any]:
     }
 
 
-def questions(con: sqlite3.Connection, days: int = 7) -> dict[str, Any]:
+def questions(con: sqlite3.Connection, days: int = 7, include_test: bool = False) -> dict[str, Any]:
     """`days <= 0` counts everything: these rows live in the ops database and nothing deletes
     them, so unlike the visits this really is every question ever asked. Every ISO timestamp
-    sorts after the empty string, which is why "everything" needs no separate query."""
+    sorts after the empty string, which is why "everything" needs no separate query.
+
+    Readers only, unless `include_test`. Our own test traffic is real work against a real engine
+    and it belongs in the database, but it is not somebody asking about their child, and every
+    number on this panel is read as if it were. `test` counts them so the operator can see how
+    much of the day was us; `cost` is money and always counts every question, ours included.
+    """
     since = (
         (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).isoformat(timespec="seconds")
         if days > 0
         else ""
     )
+    only = "" if include_test else REAL_ONLY
     q = con.execute
-    total = q("SELECT COUNT(*) FROM answers WHERE ts>=?", (since,)).fetchone()[0]
-    tg = q("SELECT COUNT(*) FROM answers WHERE ts>=? AND session LIKE 'tg_%'", (since,)).fetchone()[
-        0
-    ]
+    total = q("SELECT COUNT(*) FROM answers WHERE ts>=?" + only, (since,)).fetchone()[0]
+    tg = q(
+        "SELECT COUNT(*) FROM answers WHERE ts>=?" + only + " AND source='telegram'", (since,)
+    ).fetchone()[0]
+    ours = q(
+        "SELECT COUNT(*) FROM answers WHERE ts>=?" + NOT_REAL, (since,)
+    ).fetchone()[0]
     alarms = q(
-        "SELECT COUNT(*) FROM answers WHERE ts>=? AND level<>'routine'", (since,)
+        "SELECT COUNT(*) FROM answers WHERE ts>=?" + only + " AND level<>'routine'", (since,)
     ).fetchone()[0]
     nosrc = q(
-        "SELECT COUNT(*) FROM answers WHERE ts>=? AND verification IN ('no_source','fallback')",
+        "SELECT COUNT(*) FROM answers WHERE ts>=?"
+        + only
+        + " AND verification IN ('no_source','fallback')",
         (since,),
     ).fetchone()[0]
-    up = q("SELECT COUNT(*) FROM answers WHERE ts>=? AND feedback=1", (since,)).fetchone()[0]
-    down = q("SELECT COUNT(*) FROM answers WHERE ts>=? AND feedback=-1", (since,)).fetchone()[0]
+    up = q(
+        "SELECT COUNT(*) FROM answers WHERE ts>=?" + only + " AND feedback=1", (since,)
+    ).fetchone()[0]
+    down = q(
+        "SELECT COUNT(*) FROM answers WHERE ts>=?" + only + " AND feedback=-1", (since,)
+    ).fetchone()[0]
+    # money is never filtered: a test question is charged exactly like a real one
     cost = q("SELECT COALESCE(SUM(cost_usd),0) FROM answers WHERE ts>=?", (since,)).fetchone()[0]
     langs = dict(
-        q("SELECT lang, COUNT(*) FROM answers WHERE ts>=? GROUP BY 1", (since,)).fetchall()
+        q(
+            "SELECT lang, COUNT(*) FROM answers WHERE ts>=?" + only + " GROUP BY 1", (since,)
+        ).fetchall()
     )
     levels = dict(
-        q("SELECT level, COUNT(*) FROM answers WHERE ts>=? GROUP BY 1", (since,)).fetchall()
+        q(
+            "SELECT level, COUNT(*) FROM answers WHERE ts>=?" + only + " GROUP BY 1", (since,)
+        ).fetchall()
     )
     per_day = dict(
         q(
-            "SELECT substr(ts,1,10), COUNT(*) FROM answers WHERE ts>=? GROUP BY 1 ORDER BY 1",
+            "SELECT substr(ts,1,10), COUNT(*) FROM answers WHERE ts>=?"
+            + only
+            + " GROUP BY 1 ORDER BY 1",
             (since,),
         ).fetchall()
     )
-    first = q("SELECT MIN(substr(ts,1,10)) FROM answers WHERE ts>=?", (since,)).fetchone()[0]
+    first = q(
+        "SELECT MIN(substr(ts,1,10)) FROM answers WHERE ts>=?" + only, (since,)
+    ).fetchone()[0]
     return {
         "first_day": first,
         "total": total,
         "telegram": tg,
         "web": total - tg,
+        "test": ours,
         "alarms": alarms,
         "no_source": nosrc,
         "up": up,
@@ -185,10 +243,14 @@ def balance() -> float | None:
         return None
 
 
-def recent_answers(con: sqlite3.Connection, limit: int = 50) -> list[dict[str, Any]]:
+def recent_answers(
+    con: sqlite3.Connection, limit: int = 50, include_test: bool = False
+) -> list[dict[str, Any]]:
+    """The cards under the numbers. Same rule: ours are not shown unless asked for, and when they
+    are, the card says so — a test answer read as a parent's is how a fake problem gets chased."""
     rows = con.execute(
-        "SELECT id, ts, lang, country, level, verification, feedback, cost_usd, latency_ms, question, answer, session"
-        " FROM answers ORDER BY id DESC LIMIT ?",
+        "SELECT id, ts, lang, country, level, verification, feedback, cost_usd, latency_ms, question, answer, source"
+        " FROM answers WHERE 1=1" + ("" if include_test else REAL_ONLY) + " ORDER BY id DESC LIMIT ?",
         (limit,),
     ).fetchall()
     keys = (
@@ -203,15 +265,24 @@ def recent_answers(con: sqlite3.Connection, limit: int = 50) -> list[dict[str, A
         "latency_ms",
         "question",
         "answer",
-        "session",
+        "source",
     )
     out = []
     for r in rows:
         d = dict(zip(keys, r, strict=True))
-        d["channel"] = "telegram" if str(d["session"]).startswith("tg_") else "web"
-        del d["session"]
+        d["channel"] = _CHANNEL.get(str(d["source"]), str(d["source"]))
         out.append(d)
     return out
+
+
+#: for the little tag on each card
+_CHANNEL = {
+    "web": "web",
+    "telegram": "telegram",
+    "agent": "agente",
+    "test": "prueba nuestra",
+    "unknown": "sin identificar",
+}
 
 
 def weekly_text(con: sqlite3.Connection) -> str:

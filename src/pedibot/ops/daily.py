@@ -21,6 +21,8 @@ import datetime as dt
 import sqlite3
 from typing import Any
 
+from pedibot.ops.store import REAL_ONLY
+
 LEVEL_MARK = {"emergency": "🚨", "urgent": "🚨", "mental_health": "💛"}
 LANG_NAME = {
     "en": "inglés", "es": "español", "fr": "francés", "de": "alemán",
@@ -34,7 +36,9 @@ def _rows(con: sqlite3.Connection, day: str) -> list[dict[str, Any]]:
         dict(r)
         for r in con.execute(
             "SELECT id, ts, lang, level, verification, feedback, question, session "
-            "FROM answers WHERE substr(ts,1,10)=? ORDER BY id",
+            # readers only: the review exists to be read at breakfast, and a morning spent
+            # reading yesterday's test strings is the review being trained to be ignored
+            "FROM answers WHERE substr(ts,1,10)=?" + REAL_ONLY + " ORDER BY id",
             (day,),
         )
     ]

@@ -70,7 +70,12 @@ def client(tmp_path: Path, config_dir):
         rate_limit_per_day=5,
         max_daily_llm_usd=2.0,
     )
-    return TestClient(create_app(engine, ops, cfg)), ops
+    # the same header the chat sends. Without it a request is `unknown` and the panel does not
+    # count it as a reader, which is the whole point of test_who_asked.py — here we are standing
+    # in for the front end, so we say so.
+    return TestClient(
+        create_app(engine, ops, cfg), headers={"x-pedibot-client": "web"}
+    ), ops
 
 
 def test_health(client):
@@ -89,6 +94,19 @@ def test_ask_returns_sources_and_logs(client):
     assert "SEUP" in j["sources"][0]["citation"]
     assert j["session"] and j["answer_id"] >= 1
     assert ops.stats()["answers"] == 1
+
+
+def test_a_request_that_does_not_say_who_it_is_is_not_a_reader(client):
+    """The header is the whole mechanism (see tests/test_who_asked.py). A POST without it is
+    answered exactly the same — nobody is ever refused help — but it does not reach the panel
+    as somebody asking about their child. That is how 103 of my own test strings got there."""
+    c, ops = client
+    q = {"question": "mi hijo de 4 años tiene fiebre"}
+    assert c.post("/api/ask", json=q, headers={"x-pedibot-client": ""}).status_code == 200
+    assert c.post("/api/ask", json=q, headers={"x-pedibot-client": "test"}).status_code == 200
+    assert ops.stats()["answers"] == 0
+    # the rows are there, they are simply not readers
+    assert ops.con.execute("SELECT COUNT(*) FROM answers").fetchone()[0] == 2
 
 
 def test_feedback_only_from_owning_session(client):

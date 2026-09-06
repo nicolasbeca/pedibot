@@ -137,7 +137,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
     bubble('user', esc(mode === 'child' ? '🧸 ' + q : q));
     const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
     try {
-      const r = await fetch('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ question: context(q), country: countrySel.value || null, lang, session, mode }) });
+      const r = await fetch('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ question: context(q), country: countrySel.value || null, lang, session, mode }) });
       if (r.status === 429) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_rate; return; }
       if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_server; return; }
       const j = await r.json(); j.question = q; session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
@@ -148,7 +148,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
   thread.addEventListener('click', async e => {
     const b = (e.target as HTMLElement).closest('.fb') as HTMLButtonElement | null; if (!b) return;
     if (b.classList.contains('share')) {
-      const r = await fetch('/api/share', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session }) });
+      const r = await fetch('/api/share', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session }) });
       if (r.ok) { const j = await r.json(); const url = location.origin + j.path; try { await navigator.clipboard.writeText(url); b.textContent = '✓ ' + S.copied; } catch (err) { prompt(S.share, url); } }
       return;
     }
@@ -157,7 +157,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
       const msg = b.closest('.msg') as HTMLElement; const text = msg.innerText.replace(/^pedibot/, '').replace(/👍.*$/s, '');
       const u = new SpeechSynthesisUtterance(text); u.lang = S.speech_locale; speechSynthesis.cancel(); speechSynthesis.speak(u); return;
     }
-    await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session, value: Number(b.dataset.v) }) });
+    await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session, value: Number(b.dataset.v) }) });
     b.parentElement!.querySelectorAll('.fb').forEach(x => (x as HTMLButtonElement).disabled = true); b.textContent += ' ✓';
   });
   document.addEventListener('click', e => { const b = (e.target as HTMLElement).closest('.sug') as HTMLElement | null; if (b?.dataset.q) ask(b.dataset.q); });
@@ -179,7 +179,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
     bubble('user', '📷 ' + esc(file.name));
     const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
     try {
-      const r = await fetch('/api/photo', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ image_b64: b64, mime: 'image/jpeg', lang, country: countrySel.value || null, session }) });
+      const r = await fetch('/api/photo', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ image_b64: b64, mime: 'image/jpeg', lang, country: countrySel.value || null, session }) });
       if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + (r.status === 503 ? S.err_server : S.err_server); return; }
       const j = await r.json(); session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
       let hh = '<div class="who">pedibot</div>';

@@ -28,7 +28,9 @@ CREATE TABLE IF NOT EXISTS answers (
     tokens_out INTEGER NOT NULL DEFAULT 0,
     cost_usd REAL NOT NULL DEFAULT 0,
     latency_ms INTEGER NOT NULL DEFAULT 0,
-    feedback INTEGER
+    feedback INTEGER,
+    -- who asked: 'web' (our chat), 'telegram', 'agent' (ACP), 'test' (ours), 'unknown'
+    source TEXT NOT NULL DEFAULT 'unknown'
 );
 CREATE INDEX IF NOT EXISTS answers_ts ON answers(ts);
 CREATE TABLE IF NOT EXISTS ratelimit (
@@ -66,6 +68,18 @@ CREATE TABLE IF NOT EXISTS shares (
 );
 """
 
+#: The sources that are a person asking. `test` is us; `unknown` is a request that did not say
+#: which client it came from — our front end always says, so an anonymous one is not our front
+#: end. Neither is counted as a reader, in the panel, the daily review or /api/stats.
+REAL_SOURCES = ("web", "telegram", "agent")
+
+#: Ready to append to a WHERE. Written out rather than built from REAL_SOURCES with placeholders
+#: because every caller pastes it into a query that already carries its own parameters.
+REAL_ONLY = " AND source IN ('web','telegram','agent')"
+
+#: its complement, for the one number that counts what was ours
+NOT_REAL = " AND source NOT IN ('web','telegram','agent')"
+
 
 @dataclass
 class AnswerRecord:
@@ -83,6 +97,8 @@ class AnswerRecord:
     tokens_out: int
     cost_usd: float
     latency_ms: int
+    #: no default on purpose — a new way of asking must say what it is, not inherit 'web'
+    source: str
 
 
 def _now() -> str:
@@ -94,14 +110,21 @@ class OpsStore:
         path.parent.mkdir(parents=True, exist_ok=True)
         self.con = sqlite3.connect(path, check_same_thread=False)
         self.con.executescript(_SCHEMA)
+        # the live database predates the column; its rows are labelled by ops/label_old_rows.py
+        if "source" not in {r[1] for r in self.con.execute("PRAGMA table_info(answers)")}:
+            self.con.execute(
+                "ALTER TABLE answers ADD COLUMN source TEXT NOT NULL DEFAULT 'unknown'"
+            )
+            self.con.commit()
         self.salt = salt
 
     # ---- answers ----
     def log_answer(self, r: AnswerRecord) -> int:
         cur = self.con.execute(
             "INSERT INTO answers (ts, session, lang, country, question, answer, level, verification,"
-            " chunk_ids, prompt_version, model, tokens_in, tokens_out, cost_usd, latency_ms)"
-            " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            " chunk_ids, prompt_version, model, tokens_in, tokens_out, cost_usd, latency_ms,"
+            " source)"
+            " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
             (
                 _now(),
                 r.session,
@@ -118,6 +141,7 @@ class OpsStore:
                 r.tokens_out,
                 r.cost_usd,
                 r.latency_ms,
+                r.source,
             ),
         )
         self.con.commit()
@@ -154,22 +178,36 @@ class OpsStore:
         return float(row[0])
 
     def stats(self, days: int = 7) -> dict[str, object]:
+        """Readers only. This one is served publicly at /api/stats, so a count here that included
+        our own test traffic would not merely mislead the operator — it would be published.
+
+        `cost_usd` is the exception and counts everything: a test question is charged like any
+        other, and a spend figure that hides half of what was spent is worse than useless.
+        """
         since = (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).isoformat(timespec="seconds")
         q = self.con.execute
-        n = q("SELECT COUNT(*) FROM answers WHERE ts>=?", (since,)).fetchone()[0]
+        n = q("SELECT COUNT(*) FROM answers WHERE ts>=?" + REAL_ONLY, (since,)).fetchone()[0]
         cost = q("SELECT COALESCE(SUM(cost_usd),0) FROM answers WHERE ts>=?", (since,)).fetchone()[
             0
         ]
         by_ver = dict(
             q(
-                "SELECT verification, COUNT(*) FROM answers WHERE ts>=? GROUP BY 1", (since,)
+                "SELECT verification, COUNT(*) FROM answers WHERE ts>=?" + REAL_ONLY + " GROUP BY 1",
+                (since,),
             ).fetchall()
         )
         by_level = dict(
-            q("SELECT level, COUNT(*) FROM answers WHERE ts>=? GROUP BY 1", (since,)).fetchall()
+            q(
+                "SELECT level, COUNT(*) FROM answers WHERE ts>=?" + REAL_ONLY + " GROUP BY 1",
+                (since,),
+            ).fetchall()
         )
-        up = q("SELECT COUNT(*) FROM answers WHERE ts>=? AND feedback=1", (since,)).fetchone()[0]
-        down = q("SELECT COUNT(*) FROM answers WHERE ts>=? AND feedback=-1", (since,)).fetchone()[0]
+        up = q(
+            "SELECT COUNT(*) FROM answers WHERE ts>=?" + REAL_ONLY + " AND feedback=1", (since,)
+        ).fetchone()[0]
+        down = q(
+            "SELECT COUNT(*) FROM answers WHERE ts>=?" + REAL_ONLY + " AND feedback=-1", (since,)
+        ).fetchone()[0]
         return {
             "days": days,
             "answers": n,

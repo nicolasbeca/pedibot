@@ -234,16 +234,45 @@ _LEVEL_NAME = {
 }
 
 
-def render(con: sqlite3.Connection, days: int) -> str:
+def _tests_line(q: dict[str, Any], days: int, include_test: bool) -> str:
+    """Says out loud which questions are on screen, and links to the other set.
+
+    Never hidden silently: if one morning the panel says nothing was asked, the operator has to
+    be able to tell "nobody came" from "the header stopped being sent", and the only way is to
+    look at what was left out."""
+    n, other = int(q.get("test", 0)), ("" if include_test else "&tests=1")
+    href = f"/admin?days={days}{other}"
+    if include_test:
+        return (
+            f'<br><b>Se están contando también nuestras pruebas</b> ({n} en este período). '
+            f'<a href="{href}">Ver solo a los lectores</a>.'
+        )
+    if not n:
+        return ""
+    return (
+        f"<br>Fuera de la cuenta quedan <b>{n}</b> consultas nuestras de prueba: no son nadie "
+        f'preguntando por su hijo. <a href="{href}">Verlas igualmente</a>.'
+    )
+
+
+def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> str:
+    """`include_test` shows our own traffic too, and says on every card which is which.
+
+    By default it does not. The operator opened this page on the 6th of September and found 106
+    questions, 103 of them test strings sent from the build machine — a panel that reports our
+    own work back to us as readers is a panel that lies about the only thing it exists to say.
+    """
     w = report.web_visits(days)
-    q = report.questions(con, days)
+    q = report.questions(con, days, include_test=include_test)
     g = report.guides(days)
-    rows = report.recent_answers(con, 80)
+    rows = report.recent_answers(con, 80, include_test=include_test)
     flagged = set(load_flagged())
+
+    tail = "&tests=1" if include_test else ""
 
     def link(n: int, label: str | None = None) -> str:
         on = "on" if n == days else ""
-        return f'<a href="/admin?days={n}" class="{on}">{label or f"{n} días"}</a>'
+        return f'<a href="/admin?days={n}{tail}" class="{on}">{label or f"{n} días"}</a>'
 
     # what each block of numbers is counting, said out loud. The two are not the same period:
     # questions are every one ever asked; visits are what the journal still had.
@@ -271,7 +300,8 @@ def render(con: sqlite3.Connection, days: int) -> str:
         "guarda desde siempre.<br>Una dirección no es una persona: la mayoría pide una sola "
         "página y se va, que es lo que hace un rastreador aunque diga ser un navegador. "
         "La cifra de al lado, quien abrió una segunda página, se parece más a alguien leyendo."
-        "</p>"
+        + _tests_line(q, days, include_test)
+        + "</p>"
         '<div class="kpis">'
         + _kpi("direcciones", w["visitors"])
         + _kpi("vieron 2+ páginas", w.get("returning", 0))
@@ -380,9 +410,10 @@ def make_router(con_factory: Any) -> APIRouter:
     router = APIRouter()
 
     @router.get("/admin", response_class=HTMLResponse)
-    def admin(days: int = 0) -> str:
-        """`days=0` is the landing view: the totals. The windows are for the shape of a period."""
-        return render(con_factory(), max(0, min(days, 365)))
+    def admin(days: int = 0, tests: int = 0) -> str:
+        """`days=0` is the landing view: the totals. The windows are for the shape of a period.
+        `tests=1` adds our own traffic, which is off by default."""
+        return render(con_factory(), max(0, min(days, 365)), include_test=bool(tests))
 
     @router.post("/admin/flag")
     async def flag(request: Request) -> RedirectResponse:

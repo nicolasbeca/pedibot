@@ -22,7 +22,8 @@ def con() -> sqlite3.Connection:
     c = sqlite3.connect(":memory:")
     c.execute(
         "CREATE TABLE answers (id INTEGER PRIMARY KEY, ts TEXT, lang TEXT, level TEXT,"
-        " verification TEXT, feedback INTEGER, question TEXT, session TEXT)"
+        " verification TEXT, feedback INTEGER, question TEXT, session TEXT,"
+        " source TEXT NOT NULL DEFAULT 'web')"
     )
     return c
 

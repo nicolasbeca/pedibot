@@ -159,6 +159,7 @@ class TelegramFront:
             tokens_out=a.llm.tokens_out if a.llm else 0,
             cost_usd=a.llm.cost_usd if a.llm else 0.0,
             latency_ms=0,
+            source="telegram",
         )
         answer_id = self.ops.log_answer(rec)
         self.ops.add_turn(session, "user", text)

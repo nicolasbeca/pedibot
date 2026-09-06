@@ -159,8 +159,20 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         CORSMiddleware,
         allow_origins=cfg.allowed_origins,
         allow_methods=["POST", "GET"],
-        allow_headers=["content-type"],
+        allow_headers=["content-type", "x-pedibot-client"],
     )
+
+    def client_source(req: Request) -> str:
+        """Who is asking, for the panel — never for the answer, which is the same for everybody.
+
+        Our own chat sends `x-pedibot-client: web` and our scripts send `test`. Anything else
+        gets `unknown`, INCLUDING a request with no header at all: the front end always sends it,
+        so an anonymous POST is not the front end. That direction is deliberate — the panel would
+        rather miss a reader than show the operator his own tests as parents. Nothing here changes
+        what gets answered, so a wrong header costs nobody an answer.
+        """
+        v = (req.headers.get("x-pedibot-client") or "").strip().lower()
+        return v if v in ("web", "test") else "unknown"
 
     def client_ip(req: Request) -> str:
         fwd = req.headers.get("x-forwarded-for")
@@ -243,6 +255,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             tokens_out=a.llm.tokens_out if a.llm else 0,
             cost_usd=a.llm.cost_usd if a.llm else 0.0,
             latency_ms=latency,
+            source=client_source(request),
         )
         answer_id = ops.log_answer(rec)
         ops.add_turn(session, "user", body.question)
@@ -394,6 +407,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 tokens_out=0,
                 cost_usd=cost,
                 latency_ms=0,
+                source=client_source(request),
             )
         )
         return {"level": level, "text": text, "signs": d, "source": SOURCE, "session": session}
@@ -424,6 +438,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 tokens_out=a.llm.tokens_out if a.llm else 0,
                 cost_usd=a.llm.cost_usd if a.llm else 0.0,
                 latency_ms=0,
+                source="agent",
             )
         )
         return {
