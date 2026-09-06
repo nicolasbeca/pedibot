@@ -24,12 +24,14 @@ https://pedibot.xyz
 
 ## Primer comentario — publícalo tú mismo justo después de enviar el enlace
 
-> ⚠️ **La primera frase la tienes que escribir tú.** He dejado un hueco marcado para por qué lo
-> hiciste. No lo relleno yo: sería inventarme una anécdota personal tuya, y la publicarías con tu
-> nombre. Una línea verdadera vale más que un párrafo bonito.
+La primera frase es suya, del 6-sep: «lo construí porque acababa de ser padre primerizo y me di
+cuenta de que la información es contradictoria y poco fiable, necesitaba algún sitio donde
+acudir». Traducida y sin adornar — la queja *contradictoria* es exactamente el problema que
+resuelve la web, así que el resto del texto ya no tiene que argumentar: solo cuenta cómo.
 
 ```
-[UNA O DOS FRASES TUYAS: por qué lo construiste.]
+I built this when I became a father for the first time. What I found when I went looking for
+answers was contradictory and hard to trust, and I wanted one place I could go.
 
 It answers only from a corpus of 288 published documents from 18 bodies — NHS, WHO, CDC, RKI,
 SEUP, MedlinePlus, AAP and others. Three things make it different from asking a general chatbot:
