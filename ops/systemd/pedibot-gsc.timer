@@ -1,0 +1,12 @@
+[Unit]
+Description=PediBot Search Console: daily at 06:45 Europe/Madrid
+
+[Timer]
+# Google publishes with two or three days of lag, so the hour does not matter much; before the
+# daily review so the operator has both at breakfast
+OnCalendar=*-*-* 06:45:00 Europe/Madrid
+Persistent=true
+Unit=pedibot-gsc.service
+
+[Install]
+WantedBy=timers.target

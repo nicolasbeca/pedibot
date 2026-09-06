@@ -25,7 +25,7 @@ from typing import Any
 from fastapi import APIRouter, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 
-from pedibot.ops import report
+from pedibot.ops import report, search
 
 
 def flagged_path() -> pathlib.Path:
@@ -78,6 +78,11 @@ text-decoration:none;color:var(--ink2);margin-left:6px;background:var(--paper)}
 .range a.on{background:var(--sage);color:#fff;border-color:var(--sage)}
 .period{margin:0 0 12px;color:var(--ink3);font-size:.86rem}
 .period b{color:var(--ink2)}
+table.t{width:100%;border-collapse:collapse;margin-top:10px;font-size:.88rem}
+table.t th{text-align:left;color:var(--ink3);font-weight:600;padding:4px 8px 4px 0;
+border-bottom:1px solid var(--line)}
+table.t td{padding:4px 8px 4px 0;border-bottom:1px solid var(--line);vertical-align:top}
+table.t .mono{font-family:ui-monospace,monospace;color:var(--ink2);white-space:nowrap}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
 .k{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .k b{display:block;font-family:"JetBrains Mono",monospace;font-size:1.7rem;line-height:1.1;color:var(--sage)}
@@ -257,6 +262,62 @@ def _dwell_sentence(w: dict[str, Any]) -> str:
     )
 
 
+def _google_card(g: dict[str, Any] | None) -> str:
+    """Lo que Google enseña de nosotros. Del fichero que deja el timer, nunca de la red: una
+    llamada a Google dentro de un render convierte una página de 200 ms en una que a veces tarda
+    diez segundos, y una página que a veces tarda diez segundos deja de abrirse."""
+    if not g:
+        return (
+            '<div class="card"><h2>Google</h2><p class="empty">Todavía no hay datos. '
+            "Los deja <code>ops/gsc_refresh.py</code> cada mañana; si lleva días vacío, la clave "
+            "de <code>gsc_key.json</code> ha dejado de valer.</p></div>"
+        )
+    out = [
+        '<div class="card"><h2>Google '
+        f'<span class="bnum">({html.escape(str(g["from"]))} → {html.escape(str(g["to"]))})</span>'
+        "</h2>",
+        '<p class="period">Google publica con dos o tres días de retraso, así que esto nunca '
+        "llega hasta hoy. <b>Impresiones</b> son las veces que nos ha mostrado; los clics, las "
+        "que además nos pincharon.</p>",
+        '<div class="kpis">'
+        + _kpi("impresiones", g["impressions"])
+        + _kpi("clics", g["clicks"])
+        + _kpi("CTR", f"{g['ctr']}%")
+        + _kpi("posición media", g["position"], warn=float(g["position"]) > 20)
+        + "</div>",
+    ]
+
+    if g.get("close"):
+        out.append(
+            '<h2 style="margin-top:20px">Lo que se puede empujar</h2>'
+            '<p class="period">Consultas donde ya salimos entre el puesto 4 y el 30. Por debajo '
+            "del 30 no mueve una página lo que se le haga a la página.</p><table class=\"t\">"
+            "<tr><th>puesto</th><th>impr.</th><th>búsqueda</th><th>página</th></tr>"
+        )
+        for r in g["close"][:12]:
+            out.append(
+                f'<tr><td class="mono">{r["position"]}</td>'
+                f'<td class="mono">{r["impressions"]}</td>'
+                f"<td>{html.escape(str(r['query'])[:52])}</td>"
+                f"<td class=\"mono\">{html.escape(str(r['page'])[:44])}</td></tr>"
+            )
+        out.append("</table>")
+
+    if g.get("queries"):
+        out.append('<h2 style="margin-top:20px">Con qué nos buscan</h2><table class="t">')
+        out.append("<tr><th>impr.</th><th>clics</th><th>puesto</th><th>búsqueda</th></tr>")
+        for r in g["queries"][:15]:
+            out.append(
+                f'<tr><td class="mono">{r["impressions"]}</td>'
+                f'<td class="mono">{r["clicks"]}</td>'
+                f'<td class="mono">{r["position"]}</td>'
+                f"<td>{html.escape(str(r['key'])[:60])}</td></tr>"
+            )
+        out.append("</table>")
+    out.append("</div>")
+    return "".join(out)
+
+
 def _tests_line(q: dict[str, Any], days: int, include_test: bool) -> str:
     """Says out loud which questions are on screen, and links to the other set.
 
@@ -362,6 +423,8 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
         + _bars([(_LEVEL_NAME.get(k, k), n) for k, n in levels])
         + "</div></div>"
     )
+
+    h.append(_google_card(search.load()))
 
     h.append(
         f'<div class="card"><h2>Qué se preguntó y qué se respondió '
