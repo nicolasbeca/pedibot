@@ -51,6 +51,10 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   ))}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="alternate" type="application/rss+xml" title="PediBot guides" href={`${langPrefix(lang)}/rss.xml`} />
+  {/* The map written for the assistants that answer questions from the web. It was
+      orphaned — mentioned only in a robots.txt COMMENT, which no crawler reads — and in
+      thirty days not one of them had ever fetched it. */}
+  <link rel="alternate" type="text/plain" title="PediBot for language models" href="/llms.txt" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
@@ -110,7 +114,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <slot />
   <footer>
     <div class="wrap">
-      <b style="font-family:Nunito,sans-serif;color:var(--ink)">pedibot</b> · pedibot.ai@gmail.com · <a href="https://t.me/Pedichat_bot">Telegram</a> · <a href="https://x.com/pedibotai" rel="me">@pedibotai</a> · <a href="https://bsky.app/profile/pedibot.bsky.social" rel="me">Bluesky</a> ·
+      <b style="font-family:Nunito,sans-serif;color:var(--ink)">pedibot</b> · pedibot.ai@gmail.com · <a href="https://t.me/Pedichat_bot">Telegram</a> · <a href="https://x.com/pedibotai" rel="me">@pedibotai</a> · <a href="https://bsky.app/profile/pedibot.bsky.social" rel="me">Bluesky</a> · <a href="/llms.txt">llms.txt</a> ·
       <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a> · <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a> · <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a> · <a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a> · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}</a> · <a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a> · <a href={`${langPrefix(lang)}/support`}>{s.nav_support}</a> · <a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}</a><br />
       {s.footer_legal}
     </div>

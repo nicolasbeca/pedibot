@@ -127,3 +127,16 @@ def test_a_guide_never_sends_its_reader_to_another_language_chat() -> None:
         assert len(found) == 2, f"{tpl.name}: esperaba dos enlaces al chat, hay {len(found)}"
         bad += [f"[{lang}] apunta a {f}, debería ser {want}" for f in found if f != want]
     assert not bad, "\n".join(bad)
+
+
+def test_the_map_for_language_models_is_not_an_orphan() -> None:
+    """/llms.txt is written for the assistants that answer questions from the web, and in thirty
+    days not one of them had ever fetched it: it was mentioned only in a robots.txt COMMENT,
+    which no crawler reads, and nothing on the site linked to it.
+
+    The law measured on 4-sep is that crawling follows the link graph — 92% of pages one click
+    from the homepage, 0% of orphans — so it now hangs off every page, in the head and the foot.
+    """
+    base = (ROOT / "web" / "site" / "src" / "layouts" / "Base.astro").read_text(encoding="utf-8")
+    assert 'href="/llms.txt"' in base, "la cabecera ya no declara llms.txt"
+    assert ">llms.txt</a>" in base, "el pie ya no lo enlaza"
