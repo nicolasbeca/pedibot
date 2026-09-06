@@ -27,6 +27,14 @@ def send(text: str) -> bool:
 def main() -> int:
     con = sqlite3.connect(get_settings().ops_db_path)
     text = weekly_text(con)
+    # Un enlace de fuente que da 404 es la promesa de la web rota, y en septiembre el del
+    # Ministerio de Sanidad llevaba 404 sin que lo vigilara nadie.
+    from pedibot.ops.sources_alive import report_lines
+    from pedibot.settings import ROOT
+
+    extra = report_lines(ROOT / 'config')
+    if extra:
+        text += "\n" + "\n".join(extra)
     print(text)
     send(text)
     return 0
