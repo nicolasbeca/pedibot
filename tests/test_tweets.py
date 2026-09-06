@@ -38,6 +38,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 FACTS = {
     "guides": 483,
     "guides_per_language": {"en": 63, "es": 60},
+    "language_names": ["English", "Spanish"],
     "languages": 8,
     "documents": 288,
     "organisations": 18,
@@ -71,7 +72,7 @@ def test_the_measured_numbers_are_the_only_ones_allowed() -> None:
     ],
 )
 def test_a_draft_that_breaks_a_rule_is_not_sent(draft: str, why: str) -> None:
-    found = problems(draft, OK)
+    found = problems(draft, FACTS)
     assert found, f"debería haberse rechazado: {draft[:60]}"
     assert any(why in f for f in found), f"esperaba «{why}», salió {found}"
 
@@ -81,7 +82,7 @@ def test_a_true_and_measured_draft_passes() -> None:
         "483 guides in 8 languages, written only from 288 published documents. "
         "Every sentence carries the number of the document it came from."
     )
-    assert problems(good, OK) == []
+    assert problems(good, FACTS) == []
 
 
 def test_the_fact_sheet_carries_no_number_the_verifier_would_reject() -> None:
@@ -155,9 +156,9 @@ def test_it_will_not_say_that_an_answer_is_numbered() -> None:
         "Each question gets an answer from a published guideline, and every sentence is "
         "tagged with the number of the document it came from."
     )
-    assert any("numeradas" in p for p in problems(bad, OK))
+    assert any("numeradas" in p for p in problems(bad, FACTS))
     good = "Every statement in a guide carries the number of the document it came from."
-    assert problems(good, OK) == []
+    assert problems(good, FACTS) == []
 
 
 def test_a_quoted_title_keeps_its_opening_quotation_mark() -> None:
@@ -172,3 +173,31 @@ def test_a_quoted_title_keeps_its_opening_quotation_mark() -> None:
     assert _split('"483 guides, written from published documents only."') == [
         "483 guides, written from published documents only."
     ]
+
+
+def test_it_will_not_name_a_body_that_does_not_exist() -> None:
+    """Fourth batch, first draft: "built from 288 published documents by 18 bodies including WHO,
+    RKI, NHS, and Ecuchi". There is no Ecuchi — the corpus has an Ecimed and the model reached
+    for something shaped like it. Every number was right, so nothing fired.
+
+    A name is exactly as falsifiable as a number, and inventing a source on a site whose whole
+    argument is that it names its sources is the same failure as inventing a count."""
+    bad = "Built from 288 documents by 18 bodies including WHO, RKI, NHS and Ecuchi."
+    assert any("nombres" in p and "Ecuchi" in p for p in problems(bad, FACTS))
+    good = "Built from 288 documents by 18 bodies including WHO, NHS and RKI."
+    assert problems(good, FACTS) == []
+
+
+def test_a_capital_at_the_start_of_a_sentence_proves_nothing() -> None:
+    """English capitalises the first word of every sentence, and after an opening quote. Treating
+    those as names would reject almost everything."""
+    assert problems("Vaccination schedules cover 7 countries. Each cites its own source.", FACTS) == []
+
+
+def test_it_will_not_quote_a_guide_that_does_not_exist() -> None:
+    """Quoting a title is the strongest thing one of these can do — it is checkable in one click.
+    So it has to be checkable in one click."""
+    real = FACTS["guide_titles_english"][0]
+    assert problems(f'"{real}" is one of 483 guides.', FACTS) == []
+    made_up = '"What should I do if my child swallowed a magnet?" is one of 483 guides.'
+    assert any("título que no existe" in p for p in problems(made_up, FACTS))

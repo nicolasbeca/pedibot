@@ -60,6 +60,13 @@ ABOUT_A_GUIDE = re.compile(r"\bguides?\b", re.I)
 HAS_LINK = re.compile(r"https?://|\bwww\.|pedibot\.xyz", re.I)
 
 
+#: only a spelling table: the sheet counts languages by code and a tweet writes their names
+LANGUAGE_NAME = {
+    "en": "English", "es": "Spanish", "fr": "French", "de": "German",
+    "ru": "Russian", "ar": "Arabic", "pt": "Portuguese", "hi": "Hindi",
+}
+
+
 def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
     """Everything a tweet is allowed to assert, counted here and now.
 
@@ -101,6 +108,9 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
 
     return {
         "guides": sum(per_lang.values()),
+        # written out, because the sheet otherwise only has codes and a draft that says
+        # "Arabic, German…" would be rejected for naming things the facts never named
+        "language_names": [LANGUAGE_NAME.get(c, c) for c in sorted(per_lang)],
         "guides_per_language": dict(sorted(per_lang.items())),
         "languages": len(per_lang),
         "documents": len(docs),
@@ -144,7 +154,8 @@ def fact_sheet(f: dict[str, Any]) -> str:
     g = f["guides_per_language"]
     return "\n".join(
         [
-            f"- {f['guides']} guides, written in {f['languages']} languages",
+            f"- {f['guides']} guides, written in {f['languages']} languages:"
+            f" {', '.join(f['language_names'])}",
             "- guides per language: " + ", ".join(f"{k} {v}" for k, v in g.items()),
             f"- built from {f['documents']} published documents by {f['organisations']} bodies,"
             f" including {', '.join(f['organisation_names'][:6])}",
@@ -199,7 +210,30 @@ Return exactly the posts asked for, one per line, nothing else: no numbering, no
 marks, no commentary, no blank lines between them."""
 
 
-def problems(text: str, ok_numbers: set[str]) -> list[str]:
+#: A capitalised word mid-sentence is nearly always a name. English does not capitalise much
+#: else, which is what makes this cheap to check and worth checking.
+_CAPITALISED = re.compile(r"[A-Z][\w.\-']*[\w]", re.UNICODE)
+
+#: Sentence starts, and the character after an opening quote: a capital there means nothing.
+_SENTENCE_END = '.?!:;—–-"“”(\u00ab'
+
+#: Words that may be capitalised without appearing in the facts.
+FREE_CAPS = {"pedibot", "i", "it", "the", "a", "an", "x", "twitter", "internet", "google"}
+
+
+def allowed_words(f: dict[str, Any]) -> set[str]:
+    """Every name the facts contain, lowercased. A draft may use these and no others."""
+    out = set(FREE_CAPS)
+    for w in re.findall(r"[\w.\-']+", fact_sheet(f), re.UNICODE):
+        out.add(w.lower().strip(".-'"))
+    return out
+
+
+def real_titles(f: dict[str, Any]) -> set[str]:
+    return {t.strip().strip('"“”').rstrip(" .").lower() for t in f["guide_titles_english"]}
+
+
+def problems(text: str, f: dict[str, Any]) -> list[str]:
     """Why this draft cannot be sent. Empty means it can."""
     out: list[str] = []
     t = text.strip()
@@ -215,9 +249,28 @@ def problems(text: str, ok_numbers: set[str]) -> list[str]:
         out.append("menciona una cuenta")
     if NUMBERING.search(t) and not ABOUT_A_GUIDE.search(t):
         out.append("dice que las frases van numeradas sin hablar de una guía: las respuestas no")
+    ok_numbers = allowed_numbers(f)
     unknown = sorted({n for n in re.findall(r"\d+", t) if n not in ok_numbers})
     if unknown:
         out.append(f"números que no están en los datos medidos: {unknown}")
+
+    vocab = allowed_words(f)
+    invented: list[str] = []
+    for m in _CAPITALISED.finditer(t):
+        before = t[: m.start()].rstrip()
+        if not before or before[-1] in _SENTENCE_END:
+            continue  # a capital at the start of a sentence or a quotation says nothing
+        word = m.group(0).lower().strip(".-'")
+        if word and word not in vocab:
+            invented.append(m.group(0))
+    if invented:
+        out.append(f"nombres que no están en los datos medidos: {sorted(set(invented))}")
+
+    # a quoted title must be a title that exists, not one that sounds like one
+    titles = real_titles(f)
+    for q in re.findall(r"[\"“]([^\"“”]{16,120})[\"”]", t):
+        if q.strip().rstrip(" .").lower() not in titles:
+            out.append(f"cita un título que no existe: «{q[:60]}»")
     return out
 
 
@@ -248,7 +301,6 @@ def write_batch(
     twice at most: a model that has already failed the same rules twice is not going to be
     argued into it a third time, and this runs unattended.
     """
-    ok_numbers = allowed_numbers(f)
     sheet = fact_sheet(f)
     avoid = (
         "\n\nYou have already used these, so write different ones:\n"
@@ -277,7 +329,7 @@ def write_batch(
             if key in seen:
                 rejected.append(f"repetido: {draft[:60]}")
                 continue
-            if bad := problems(draft, ok_numbers):
+            if bad := problems(draft, f):
                 rejected.append(f"{'; '.join(bad)} → {draft[:60]}")
                 continue
             seen.add(key)
