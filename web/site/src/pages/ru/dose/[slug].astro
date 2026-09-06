@@ -3,6 +3,7 @@
 // pages; the measurement behind that is in src/dosepages.ts. Every word comes from i18n.ts, so
 // this file is identical in every language but the code and the URL prefix.
 import Base from '../../../layouts/Base.astro';
+import DoseCalc from '../../../components/DoseCalc.astro';
 import { medicines, weightTable, maxDoses, formLabel, type Medicine } from '../../../dosepages';
 import { t, langPrefix, LANGS } from '../../../i18n';
 
@@ -40,6 +41,10 @@ const jsonld = {
     <p class="eyebrow">{s.dose_eyebrow} · {generic}</p>
     <h1 style="margin-top:8px">{title}</h1>
     <p class="lede">{s.dosedrug_lede}</p>
+
+    {/* La calculadora de verdad, con este fármaco ya seleccionado. Estaba solo en
+        /dose, y quien busca «calculadora apiretal» aterrizaba en una tabla de 36 filas. */}
+    <DoseCalc lang={lang} drug={name} />
 
     <div class="card" style="margin-top:24px">
       <p set:html={s.dosedrug_every.replace('{h0}', d.interval_hours[0]).replace('{h1}', d.interval_hours[1])} />

@@ -140,3 +140,23 @@ def test_the_map_for_language_models_is_not_an_orphan() -> None:
     base = (ROOT / "web" / "site" / "src" / "layouts" / "Base.astro").read_text(encoding="utf-8")
     assert 'href="/llms.txt"' in base, "la cabecera ya no declara llms.txt"
     assert ">llms.txt</a>" in base, "el pie ya no lo enlaza"
+
+
+#: las ocho páginas por medicamento: idénticas salvo idioma y prefijo de URL
+_DOSE_TPLS = sorted((ROOT / "web" / "site" / "src" / "pages").glob("**/dose/[[]slug[]].astro"))
+
+
+def test_every_medicine_page_carries_the_calculator() -> None:
+    """Search Console, primera lectura real (6-sep): la única demanda no de marca que nos alcanza
+    son consultas de dosis por marca, y casi todas llevan la palabra «calculadora» — «calculadora
+    apiretal», «apirofeno 40 mg calculadora», «calcular dosis apiretal».
+
+    La página era una tabla de 36 filas. Meter la palabra en el título sin más habría sido una
+    afirmación falsa; ahora la página lleva la calculadora de verdad, con su fármaco puesto, y por
+    eso el título puede decirlo. El candado impide que se separen otra vez.
+    """
+    assert len(_DOSE_TPLS) == 8, f"esperaba 8 plantillas de medicamento, hay {len(_DOSE_TPLS)}"
+    for tpl in _DOSE_TPLS:
+        src = tpl.read_text(encoding="utf-8")
+        assert "<DoseCalc" in src, f"{tpl.name}: la página promete calculadora y no la lleva"
+        assert "drug={name}" in src, f"{tpl.name}: la calculadora no viene con su fármaco puesto"
