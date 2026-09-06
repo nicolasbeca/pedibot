@@ -48,6 +48,13 @@ FORBIDDEN = re.compile(
     re.I,
 )
 
+#: A guide numbers every statement; a chat answer does not — it names its sources and shows no
+#: numbers (operator decision 25-ago, and the site's own legal page was corrected for the same
+#: confusion on 5-sep). The prompt says so and the model wrote it anyway, twice, so it is checked:
+#: a draft that claims sentences carry numbers has to be talking about a guide.
+NUMBERING = re.compile(r"\bnumber(ed|s)?\b|\btagged with\b|\bfootnot", re.I)
+ABOUT_A_GUIDE = re.compile(r"\bguides?\b", re.I)
+
 #: The operator posts without links (6-sep). A draft that smuggles one back is not what he asked
 #: for, and on X it also costs the post its reach.
 HAS_LINK = re.compile(r"https?://|\bwww\.|pedibot\.xyz", re.I)
@@ -206,6 +213,8 @@ def problems(text: str, ok_numbers: set[str]) -> list[str]:
         out.append(f"afirmación prohibida: «{m.group(0)}»")
     if "@" in t:
         out.append("menciona una cuenta")
+    if NUMBERING.search(t) and not ABOUT_A_GUIDE.search(t):
+        out.append("dice que las frases van numeradas sin hablar de una guía: las respuestas no")
     unknown = sorted({n for n in re.findall(r"\d+", t) if n not in ok_numbers})
     if unknown:
         out.append(f"números que no están en los datos medidos: {unknown}")
@@ -217,7 +226,10 @@ def _split(raw: str) -> list[str]:
     out: list[str] = []
     for line in raw.splitlines():
         line = re.sub(r"^\s*(?:[-*•]|\d+[.)])\s*", "", line).strip()
-        line = line.strip('"“”')
+        # only when BOTH ends are quotes: the model wraps a whole draft in them, and stripping
+        # one end ate the opening quote of a guide title being quoted
+        if len(line) > 1 and line[0] in '"“' and line[-1] in '"”':
+            line = line[1:-1].strip()
         if len(line) > 25:
             out.append(line)
     return out

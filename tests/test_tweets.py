@@ -144,3 +144,31 @@ def test_what_went_out_is_remembered(tmp_path) -> None:
         json.dumps({"date": "2026-09-06", "text": "bueno"}) + "\n{roto\n", encoding="utf-8"
     )
     assert load_history(tmp_path) == ["bueno"]
+
+
+def test_it_will_not_say_that_an_answer_is_numbered() -> None:
+    """A guide numbers every statement. A chat answer names its sources and shows no numbers —
+    the same confusion the site's own legal page had to be corrected for on 5-sep. The prompt
+    forbids it and the model wrote it anyway in two batches out of three, so it is checked here
+    rather than asked for there."""
+    bad = (
+        "Each question gets an answer from a published guideline, and every sentence is "
+        "tagged with the number of the document it came from."
+    )
+    assert any("numeradas" in p for p in problems(bad, OK))
+    good = "Every statement in a guide carries the number of the document it came from."
+    assert problems(good, OK) == []
+
+
+def test_a_quoted_title_keeps_its_opening_quotation_mark() -> None:
+    """The unwrapper used to strip quotes from both ends, so a draft that opened with a quoted
+    guide title lost the opening mark and went out looking broken."""
+    from pedibot.ops.tweets import _split
+
+    assert _split('"What should I do if my child has a fever?" is one of the guides here.') == [
+        '"What should I do if my child has a fever?" is one of the guides here.'
+    ]
+    # a draft the model wrapped whole is still unwrapped
+    assert _split('"483 guides, written from published documents only."') == [
+        "483 guides, written from published documents only."
+    ]
