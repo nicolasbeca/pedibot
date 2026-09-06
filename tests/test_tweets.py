@@ -201,3 +201,23 @@ def test_it_will_not_quote_a_guide_that_does_not_exist() -> None:
     assert problems(f'"{real}" is one of 483 guides.', FACTS) == []
     made_up = '"What should I do if my child swallowed a magnet?" is one of 483 guides.'
     assert any("título que no existe" in p for p in problems(made_up, FACTS))
+
+
+@pytest.mark.parametrize(
+    "draft",
+    [
+        "PediBot now has a token, PDBT, live on four chains.",
+        "483 guides, 8 languages, and a coin to go with them.",
+        "Connect your wallet to support the project.",
+    ],
+)
+def test_the_health_account_never_posts_about_the_token(draft: str) -> None:
+    """These go out from @pedibotai, the account of a children's health site. A token launched
+    on 6-sep takes 1% of every trade, and one post that mixes the two turns a paediatric feed
+    into token promotion — for a parent who came for a fever question, that is the moment the
+    site stops being credible.
+
+    The operator already keeps them apart: the token is off the homepage by his own decision.
+    This is that separation held by the code instead of by somebody remembering.
+    """
+    assert any("token" in p for p in problems(draft, FACTS))

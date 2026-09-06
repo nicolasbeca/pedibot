@@ -55,6 +55,15 @@ FORBIDDEN = re.compile(
 NUMBERING = re.compile(r"\bnumber(ed|s)?\b|\btagged with\b|\bfootnot", re.I)
 ABOUT_A_GUIDE = re.compile(r"\bguides?\b", re.I)
 
+#: These go out from the account of a children's health site. The token is kept off the homepage
+#: by the operator's own decision, and it is kept out of here for the same reason: a reader who
+#: came for a fever question does not need to find out the answer has a coin attached.
+TOKEN_TALK = re.compile(
+    r"\b(PDBT|token|tokens|coin|crypto|ETH|airdrop|presale|holders?|market ?cap|ticker"
+    r"|blockchain|on-?chain|wallet|mint(ed|ing)?|listed?)\b",
+    re.I,
+)
+
 #: The operator posts without links (6-sep). A draft that smuggles one back is not what he asked
 #: for, and on X it also costs the post its reach.
 HAS_LINK = re.compile(r"https?://|\bwww\.|pedibot\.xyz", re.I)
@@ -200,6 +209,8 @@ anything. Nobody has. Saying so would be the one lie that matters.
   their own sources. If a sentence needs a link between two bullets that is not
   written in them, do not write it.
 - No links, no URLs, no @handles.
+- Never mention a token, a coin, crypto, a wallet or a chain. These are posted from the account
+  of a children's health site and have nothing to do with any of that.
 - At most 280 characters each, counted exactly.
 - Each post must stand alone. No threads, no numbering, no "1/7".
 
@@ -244,6 +255,8 @@ def problems(text: str, f: dict[str, Any]) -> list[str]:
         out.append(f"afirmación prohibida: «{m.group(0)}»")
     if "@" in t:
         out.append("menciona una cuenta")
+    if m := TOKEN_TALK.search(t):
+        out.append(f"habla del token desde la cuenta de la web sanitaria: «{m.group(0)}»")
     if NUMBERING.search(t) and not ABOUT_A_GUIDE.search(t):
         out.append("dice que las frases van numeradas sin hablar de una guía: las respuestas no")
     ok_numbers = allowed_numbers(f)
