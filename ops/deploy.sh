@@ -96,8 +96,16 @@ systemctl daemon-reload
 systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-acp.service pedibot-watchdog.timer pedibot-backup.timer pedibot-token.timer pedibot-token-alert.timer pedibot-weekly.timer pedibot-daily.timer pedibot-tweets.timer >/dev/null 2>&1 || true
 systemctl restart pedibot-api.service pedibot-telegram.service pedibot-acp.service
 caddy validate --config /etc/caddy/Caddyfile >/dev/null 2>&1 && systemctl reload caddy
-sleep 3
 systemctl is-active pedibot-api.service pedibot-telegram.service caddy | tr '\n' ' '; echo
-curl -s http://127.0.0.1:8601/api/health && echo
+# The API was restarted a moment ago and takes a few seconds to open its port. A single curl
+# after `sleep 3` raced it: the deploy did everything right and still exited 7 (curl: could not
+# connect), which reads exactly like a failed deploy. Wait for it before calling it broken.
+OUT=""
+for _ in $(seq 1 20); do
+  OUT=$(curl -s --max-time 3 http://127.0.0.1:8601/api/health || true)
+  if [ -n "$OUT" ]; then break; fi
+  sleep 1
+done
+if [ -n "$OUT" ]; then echo "$OUT"; else echo "!! el API no responde tras 20 s"; exit 1; fi
 REMOTE
 echo "== done: https://pedibot.xyz"
