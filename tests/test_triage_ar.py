@@ -29,7 +29,8 @@ def triage() -> Triage:
         ("ابني لا يستجيب", "emergency"),  # masculine
         ("ابني عمره شهران وعنده حرارة", "urgent"),  # the dual
         ("ابنتي عمرها شهرين وعندها حرارة", "urgent"),
-        ("ابتلع طفلي بطارية", "urgent"),
+        # una pila de botón quema el esófago en horas: pasó a emergencia el 6-sep-2026
+        ("ابتلع طفلي بطارية", "emergency"),
         ("طفلي يسعل منذ يومين", "routine"),
         ("ابنتي تسعل منذ يومين", "routine"),
     ],

@@ -75,6 +75,13 @@ rules:
   - convulsi
   - ataque epil
   - se ha puesto rígid
+  - se (ha )?(quedad|pus|pon)[oe].{0,20}r[ií]gid
+  - ojos en blanco
+  - (los )?ojos (se le )?(han )?(ido|puesto) (en blanco|hacia atr[aá]s)
+  - eyes (rolled|rolling) back
+  - (went|gone) (stiff|rigid)
+  - augen verdreht
+  - закатил.{0,12}глаза
   - seizure
   - convuls
   - fitting
@@ -133,6 +140,16 @@ rules:
   - le cuesta (mucho )?respirar
   - dificultad (grave |seria )?para respirar
   - se le marcan las costillas
+  - se le marcan.{0,15}las costillas
+  - se le hunden.{0,15}las costillas
+  - (se le )?(marcan|hunden|meten).{0,10}(las )?costillas
+  - lips (look|are|turn|turned|going|went) (blue|bluish|purple)
+  - blue (lips|around the (mouth|lips))
+  - lippen.{0,12}(blau|bläulich)
+  - (blau|bläulich).{0,12}lippen
+  - l[eè]vres.{0,12}(bleu|violac)
+  - l[aá]bios.{0,12}(azu|roxo)
+  - губы.{0,12}син
   - pausas? (en la|de) respiraci
   - deja de respirar
   - (labios|piel) (azul|morad)
@@ -478,6 +495,11 @@ rules:
   patterns:
   - manchas.{0,60}no (desaparecen|se van|se quitan|blanquean).{0,30}(presion|apret)
   - petequia
+  - (manchas|sarpullido|erupci[oó]n|ronchas|puntitos|granitos).{0,70}no (desaparec|se van|se quitan|blanquean|se borran)
+  - (no desaparec|no se van|no se quitan|no blanquean).{0,40}(vaso|presion|apret|cristal)
+  - (spots|rash|marks).{0,70}(don'?t|do not|does not|doesn'?t|won'?t|will not) (fade|disappear|go away|blanch)
+  - (glass|tumbler) test
+  - (rash|spots).{0,50}(press|glass|tumbler)
   - (spots|rash).{0,60}(don'?t|do not|doesn'?t) (fade|disappear|go away).{0,30}press
   - petechia
   - glass test
@@ -525,6 +547,13 @@ rules:
   reason_de: Säugling unter 3 Monaten mit Fieber (≥ 38 °C)
   patterns:
   - baby.{0,30}fieber
+  - ([1-9]|1[0-2]) semanas.{0,60}(fiebre|d[ée]cimas|calent|temperatura)
+  - (reci[eé]n nacido|beb[eé] de [1-2] meses?|lactante).{0,50}(fiebre|calent|temperatura)
+  - \b([1-9]|1[0-2]) weeks? old.{0,60}(fever|temperature|hot|warm)
+  - (newborn|\b[1-2] months? old).{0,50}(fever|temperature|feels hot)
+  - beb[ée] de ([1-9]|1[0-2]) semanas
+  - ([1-9]|1[0-2]) semaines.{0,60}(fi[eè]vre|chaud|temp[ée]rature)
+  - ([1-9]|1[0-2]) wochen.{0,60}(fieber|warm|temperatur)
   - säugling.{0,30}fieber
   - neugeboren.{0,40}fieber
   - младенц.{0,25}температур
@@ -831,6 +860,35 @@ rules:
   reason_ar: قيء بعد إصابة في الرأس
   reason_pt: "Vômitos depois de uma batida na cabeça"
   reason_hi: "सिर पर चोट के बाद उल्टी"
+- id: button_battery
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: Pila de botón tragada — quema el esófago en horas, urgencias inmediatas
+  reason_en: Button battery swallowed — it burns the oesophagus within hours, go now
+  reason_fr: Pile bouton avalée — elle brûle l'œsophage en quelques heures, urgences immédiates
+  reason_de: Knopfbatterie verschluckt — sie verätzt die Speiseröhre in Stunden, sofort in die Klinik
+  reason_ru: Проглочена батарейка-таблетка — она прожигает пищевод за часы, немедленно в больницу
+  reason_ar: ابتلع بطارية قرصية — تحرق المريء خلال ساعات، إلى الطوارئ فورًا
+  reason_pt: Pilha de botão engolida — queima o esôfago em horas, pronto-socorro já
+  reason_hi: बटन सेल निगल ली — यह घंटों में भोजन-नली जला देती है, तुरंत अस्पताल
+  patterns:
+  - (trag|comid|met).{0,30}(pila|bater[ií]a)( de bot[oó]n| de las redondas| redonda| plana)?
+  - pila de bot[oó]n
+  - (swallow|ate|put).{0,30}(button |coin |flat |round |disc )*batter(y|ies)
+  - button batter
+  - (aval|mis).{0,30}pile( bouton| plate| ronde)?
+  - pile bouton
+  - (verschluckt|geschluckt).{0,30}(knopf)?batterie
+  - knopfbatterie
+  - (проглот|съел).{0,30}батарейк
+  - батарейк.{0,20}таблетк
+  - (بلع|ابتلع).{0,30}بطاري
+  - بطارية قرصية
+  - (engol|comeu).{0,30}(pilha|bateria)
+  - pilha de bot[ãa]o
+  - (निगल|खा).{0,30}(बटन सेल|बैटरी)
+  - बटन सेल
+
 - id: foreign_body_ingestion
   level: urgent
   source: seup_acudir_urgencias
@@ -886,6 +944,9 @@ rules:
   patterns:
   - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado).{0,60}(lej[ií]a|detergente|amoniaco|producto de limpieza|pastillas|medicament|jarabe entero|alcohol|colonia|gasolina|pila|planta)
   - intoxica
+  - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado|ha chupado).{0,70}(armario|debajo del fregadero|bajo el fregadero|producto|l[ií]quido|bote|frasco)
+  - (drank|swallowed|ate|got into).{0,70}(under the sink|cupboard|cabinet|bottle of|something from)
+  - (getrunken|geschluckt).{0,60}(putzmittel|reiniger|unter der sp[üu]le|schrank)
   - sobredosis
   - (drank|swallowed|took|ate).{0,60}(bleach|detergent|cleaning|pills|medication|medicine|tablets|alcohol|perfume|petrol|gasoline|plant|dishwasher)
   - poison
@@ -1113,6 +1174,19 @@ rules:
   - quitarse la vida
   - no quiere vivir
   - quiere morir
+  - no quiere (seguir|estar) (aqu[ií]|viv|en este mundo)
+  - (estar[ií]ais|estar[ií]an|estar[ií]as) mejor sin m[ií]
+  - no merece la pena (seguir|vivir)
+  - desaparecer para siempre
+  - (better off|be better) (without me|if i (was|were) (gone|dead|not here))
+  - better off (gone|dead|not here|without)
+  - (would|wud) be better off
+  - (don'?t|do not) want to (be here|wake up|go on)
+  - no point (in )?(living|going on)
+  - nicht mehr (hier )?sein wollen
+  - besser dran ohne mich
+  - ne veut plus [êe]tre l[àa]
+  - не хочет больше жить
   - matarse
   - kill (him|her|them)self
   - wants? to die
@@ -1214,6 +1288,20 @@ context:
   - \b3[89][,\.]?\d?\s*degr[ée]s
   - \b4[0-2][,\.]?\d?\s*degr[ée]s
   - fiebre
+  - calent[ia]t[oa]
+  - est[aá] (muy )?calient
+  - est[aá] ardiendo
+  - d[ée]cimas
+  - feels? (very )?(hot|warm)
+  - burning up
+  - (is|was) (very )?hot to (the )?touch
+  - high temperature
+  - (tout|toute) chaud
+  - br[uû]lant
+  - f[üu]hlt sich (hei[sß]|warm)
+  - gl[üu]ht
+  - quentinh[oa]
+  - est[aá] quente
   - febr
   - \b3[89][,\.]?\d?\s*(°|º|grados)
   - \b4[0-2][,\.]?\d?\s*(°|º|grados)

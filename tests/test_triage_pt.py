@@ -36,7 +36,8 @@ def triage() -> Triage:
         ("Tem manchas que não somem quando aperto", "emergency"),
         ("O nariz dele está arroxeado", "emergency"),
         ("Bebê de 2 meses com febre", "urgent"),
-        ("Engoliu uma pilha", "urgent"),
+        # una pila de botón quema el esófago en horas: pasó a emergencia el 6-sep-2026
+        ("Engoliu uma pilha", "emergency"),
         ("Está com chiado no peito", "urgent"),
         ("Ele não faz xixi e tem olhos fundos", "urgent"),
         ("Meu filho disse que quer se matar", "mental_health"),
