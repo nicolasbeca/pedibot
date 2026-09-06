@@ -7,7 +7,7 @@ const countries = [['GB','UK'],['ES','ES'],['US','US'],['IE','IE'],['FR','FR'],[
 const ages = [['', s.not_set], ...s.chat_ages];
 ---
 <div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support` })}>
-  <div class="chat" id="thread">
+  <div class="chat" id="thread" aria-live="polite" aria-relevant="additions text">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo.svg" width="72" height="72" alt="" />
       <h1>{s.welcome_h1}</h1>
@@ -106,7 +106,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // Operator decision 25-ago: no source list, no [n] markers, no per-message disclaimer.
     // The organisation is named inside the text; the legal line lives under the composer.
     let h = '<div class="who">pedibot</div>';
-    if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
+    if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}" role="alert">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
     h += esc(String(j.text).replace(/\s*\[\d{1,2}\]/g, '')).replace(/\n/g, '<br>');
     // The guide built from the same sources this answer used. Its own title is the link text:
     // that is what tells the reader whether it is worth opening.
@@ -183,7 +183,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
       if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + (r.status === 503 ? S.err_server : S.err_server); return; }
       const j = await r.json(); session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
       let hh = '<div class="who">pedibot</div>';
-      if (j.level === 'emergency' || j.level === 'urgent') hh += `<div class="banner ${j.level}">🚨 ${esc(j.text.split('. ')[0])}.</div>`;
+      if (j.level === 'emergency' || j.level === 'urgent') hh += `<div class="banner ${j.level}" role="alert">🚨 ${esc(j.text.split('. ')[0])}.</div>`;
       hh += esc(j.text).replace(/\n/g, '<br>');
       t.innerHTML = hh;
     } catch (e) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_net; }
