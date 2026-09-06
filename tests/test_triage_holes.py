@@ -149,3 +149,65 @@ def test_the_everyday_version_of_those_same_rules_stays_quiet(
 ) -> None:
     nivel = str(triage.assess(pregunta).level)
     assert ORDEN.get(nivel, 9) < ORDEN["urgent"], f"[{lang}] falsa alarma en «{pregunta}»: {nivel}"
+
+
+#: Del barrido completo de los 161 trozos marcados como signos de alarma en el índice (6-sep-2026).
+#: Lo más grave: «pérdida de conciencia» y «perdió el conocimiento» NO figuraban en español, ni
+#: «lost consciousness» en inglés — solo «inconsciente», «unconscious» y el francés «perte de
+#: connaissance». Y no había ninguna regla de signos neurológicos, que la hoja de cefalea de la
+#: SEUP enumera: «ve mal, no mueve bien los brazos o las piernas, camina o habla con dificultad».
+DEL_BARRIDO = [
+    ("dice que ve mal y le cuesta hablar", "es", "emergency"),
+    ("no mueve bien un brazo desde esta mañana", "es", "emergency"),
+    ("camina con dificultad y arrastra una pierna", "es", "emergency"),
+    ("está desorientado y no sabe dónde está", "es", "emergency"),
+    ("he cannot move his arm properly and his speech is slurred", "en", "emergency"),
+    ("duerme mucho más de lo habitual y es difícil despertarle", "es", "urgent"),
+    ("el dolor de cabeza le despierta por la noche", "es", "urgent"),
+]
+
+#: Las trampas de las reglas neurológicas. Un bebé de doce meses que no camina bien y una niña que
+#: necesita gafas son lo normal; si esto salta, la regla sobra.
+NEURO_TRAMPAS = [
+    ("mi bebé de 12 meses todavía no camina bien", "es"),
+    ("mi hijo de 2 años habla poco todavía", "es"),
+    ("mi hija necesita gafas, ve mal de lejos", "es"),
+    ("mi hijo duerme mucho, es un dormilón", "es"),
+    ("le duele un poco la cabeza", "es"),
+]
+
+
+@pytest.mark.parametrize(("pregunta", "lang", "minimo"), DEL_BARRIDO)
+def test_the_warning_signs_the_sweep_found(
+    triage: Triage, pregunta: str, lang: str, minimo: str
+) -> None:
+    nivel = str(triage.assess(pregunta).level)
+    assert ORDEN.get(nivel, -1) >= ORDEN[minimo], f"[{lang}] «{pregunta}» sale {nivel}"
+
+
+@pytest.mark.parametrize(("pregunta", "lang"), NEURO_TRAMPAS)
+def test_normal_development_is_not_a_neurological_sign(
+    triage: Triage, pregunta: str, lang: str
+) -> None:
+    nivel = str(triage.assess(pregunta).level)
+    assert ORDEN.get(nivel, 9) < ORDEN["urgent"], f"[{lang}] falsa alarma en «{pregunta}»: {nivel}"
+
+
+@pytest.mark.parametrize(
+    "pregunta",
+    [
+        "se ha desmayado en el colegio, tiene 12 años",
+        "mi hija se desmayó al levantarse de golpe",
+        "he fainted during assembly at school",
+    ],
+)
+def test_a_plain_faint_is_not_an_emergency(triage: Triage, pregunta: str) -> None:
+    """Se probó meterlo en `not_responding` el 6-sep-2026 y la precisión de las alarmas cayó de
+    1.0 a 0.978. La hoja de síncope de la SEUP dice que «en general no se producen por problemas
+    médicos importantes» y define el síncope como «una pérdida de conocimiento de forma brusca y
+    de corta duración» — exactamente las palabras que se habían añadido.
+
+    `not_responding` es para quien NO responde AHORA. Un niño que se desmayó y se recuperó es
+    otra cosa, y tratarlo de emergencia manda a urgencias a quien no lo necesita."""
+    nivel = str(triage.assess(pregunta).level)
+    assert ORDEN.get(nivel, 9) < ORDEN["emergency"], f"«{pregunta}» sale {nivel}"

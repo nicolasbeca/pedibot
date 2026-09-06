@@ -1,4 +1,9 @@
 rules:
+# OJO: un DESMAYO no entra aquí. Se probó el 6-sep-2026 y bajó la precisión de las alarmas
+# de 1.0 a 0.978: «se ha desmayado en el colegio, tiene 12 años» pasaba a emergencia. La hoja
+# de síncope de la SEUP dice que «en general no se producen por problemas médicos
+# importantes», y define el síncope como «una pérdida de conocimiento de forma brusca y de
+# corta duración». Esta regla es para quien NO responde AHORA.
 - id: not_responding
   level: emergency
   source: seup_acudir_urgencias
@@ -677,6 +682,13 @@ rules:
   patterns:
   - (muy|demasiado) (adormilad|dormid|somnolient|decaíd|decaid|apagad)
   - no se le puede despertar
+  - (es|era) (muy )?dif[ií]cil despertar
+  - dif[ií]cil (de )?despertar
+  - no hay (manera|forma|quien) de despertar
+  - cuesta (mucho )?despertar
+  - (hard|difficult|impossible) to (wake|rouse)
+  - (schwer|kaum) zu wecken
+  - (трудно|не могу) разбудить
   - cuesta despertarl
   - irritab.{0,20}(mucho|extrem|incontrol)
   - llanto inconsolable
@@ -1266,6 +1278,61 @@ rules:
   - (магazин)?(пропускает|отказывается).{0,20}(еду|прием пищи|есть)
   - (يتخطى|ترفض|يرفض).{0,20}(الوجبات|الأكل)
   - (pula|pulando).{0,15}refei[çc][õo]es
+
+- id: neuro_deficit
+  level: emergency
+  source: seup_cefalea
+  reason_es: Signos neurológicos — la hoja de cefalea de la SEUP pide consultar si ve mal, no mueve bien un brazo o una pierna, o camina o habla con dificultad
+  reason_en: Neurological signs — trouble seeing, moving an arm or a leg, walking or speaking
+  reason_fr: Signes neurologiques — voit mal, bouge mal un bras ou une jambe, marche ou parle difficilement
+  reason_de: Neurologische Zeichen — sieht schlecht, bewegt Arm oder Bein schlecht, geht oder spricht schwer
+  reason_ru: Неврологические признаки — плохо видит, плохо двигает рукой или ногой, с трудом ходит или говорит
+  reason_ar: علامات عصبية — ضعف الرؤية أو حركة ذراع أو ساق أو صعوبة في المشي أو الكلام
+  reason_pt: Sinais neurológicos — enxerga mal, mexe mal um braço ou perna, anda ou fala com dificuldade
+  reason_hi: तंत्रिका-संबंधी संकेत — ठीक न दिखना, हाथ-पैर ठीक से न हिलना, चलने या बोलने में दिक्कत
+  patterns:
+  - no mueve (bien )?(un |el |la )?(brazo|pierna|mano|lado)
+  - (mueve mal|no puede mover).{0,20}(brazo|pierna|mano|un lado)
+  - (habla|hablar) (con dificultad|raro|arrastrando|mal de repente)
+  - (no puede|le cuesta) (hablar|articular)
+  - (de repente|de pronto).{0,25}(ve mal|no ve|ve doble|ve borroso)
+  - (ve doble|visi[oó]n doble|ve borroso de repente)
+  - (camina|anda).{0,20}(con dificultad|arrastrando|torcid|se cae)
+  - (desorientad|no sabe (d[oó]nde|qu[ié]en)|no reconoce)
+  - (p[ée]rdida de contacto con la realidad|alucina|delir)
+  - (boca|cara).{0,20}(torcid|desviad|ca[ií]da de un lado)
+  - (can'?t|cannot|unable to) move (his|her|their) (arm|leg|hand|side)
+  - (slurred|slurring) (speech|words)
+  - (suddenly|sudden).{0,25}(can'?t see|blurred vision|double vision|vision)
+  - (double vision|blurry vision) (suddenly|out of nowhere)
+  - (disorient|confused and|does not know where|doesn'?t know where)
+  - (face|mouth).{0,20}(droop|drooping|pulled to one side)
+  - (bewegt|kann).{0,25}(arm|bein).{0,20}nicht
+  - (undeutlich|verwaschen).{0,15}(sprechen|sprache)
+  - (не двигает|не может двигать).{0,20}(рук|ног)
+  - (невнятн).{0,15}(речь|говор)
+  - (لا يحرك|لا يستطيع تحريك).{0,20}(ذراع|ساق|يد)
+  - (كلام|نطق).{0,15}(غير واضح|متلعثم)
+  - (n[ãa]o (mexe|move)).{0,25}(bra[çc]o|perna|m[ãa]o)
+  - (fala).{0,20}(enrolada|arrastrada|com dificuldade)
+
+- id: headache_warning_signs
+  level: urgent
+  source: seup_cefalea
+  reason_es: Dolor de cabeza con signos de alarma — la hoja de cefalea de la SEUP pide consultar si le despierta por la noche, va a más o no cede al tratamiento habitual
+  reason_en: Headache with warning signs — waking at night, getting worse, or not responding to the usual treatment
+  reason_fr: Céphalée avec signes d'alerte — réveille la nuit, s'aggrave, ou ne cède pas au traitement habituel
+  reason_de: Kopfschmerz mit Warnzeichen — weckt nachts, wird stärker, spricht nicht auf die übliche Behandlung an
+  reason_ru: Головная боль с тревожными признаками — будит ночью, усиливается или не проходит от обычного лечения
+  reason_ar: صداع مع علامات تحذيرية — يوقظه ليلاً أو يزداد أو لا يستجيب للعلاج المعتاد
+  reason_pt: Dor de cabeça com sinais de alarme — acorda à noite, piora, ou não cede ao tratamento habitual
+  reason_hi: सिरदर्द के चेतावनी संकेत — रात में जगा देना, बढ़ते जाना, या सामान्य इलाज से न जाना
+  patterns:
+  - (dolor de cabeza|cefalea|le duele la cabeza).{0,60}(le despierta|se despierta) (por la noche|de noche|de madrugada)
+  - (dolor de cabeza|cefalea).{0,50}(cada vez (m[aá]s|peor)|va a m[aá]s|no (se le )?(pasa|calma|quita) con)
+  - (headache).{0,60}(wakes (him|her|them) (up )?at night|worse and worse|getting worse|not going away with)
+  - (mal de t[eê]te|c[ée]phal[ée]e).{0,60}(r[ée]veille la nuit|de pire en pire)
+  - (kopfschmerz|kopfweh).{0,60}(weckt (ihn|sie) nachts|immer schlimmer)
 
 - id: suicidal_ideation
   level: mental_health
