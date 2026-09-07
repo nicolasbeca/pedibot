@@ -52,12 +52,16 @@ def test_the_three_tables_carry_the_same_keys() -> None:
     per_lang = {lang: keys(block(lang)) for lang in langs()}
     common = set.intersection(*per_lang.values())
     missing = {lang: sorted(set.union(*per_lang.values()) - ks) for lang, ks in per_lang.items()}
-    assert not any(missing.values()), f"claves que faltan por idioma: { {k: v for k, v in missing.items() if v} }"
+    assert not any(missing.values()), (
+        f"claves que faltan por idioma: { {k: v for k, v in missing.items() if v} }"
+    )
     assert len(common) > 100
 
 
 def test_lang_names_covers_every_language() -> None:
-    m = re.search(r"LANG_NAMES: Record<Lang, string> = \{(.*?)\};", I18N.read_text(encoding="utf-8"))
+    m = re.search(
+        r"LANG_NAMES: Record<Lang, string> = \{(.*?)\};", I18N.read_text(encoding="utf-8")
+    )
     assert m
     assert set(re.findall(r"(\w+):", m.group(1))) == set(langs())
 
@@ -163,7 +167,10 @@ def test_slugs_survive_a_non_latin_script() -> None:
     overwrote the first — same filename, no error, one guide gone."""
     from pedibot.ingest.pipeline import slug
 
-    ru = [slug("Вши у детей: что действительно помогает"), slug("Что делать при простуде у ребёнка")]
+    ru = [
+        slug("Вши у детей: что действительно помогает"),
+        slug("Что делать при простуде у ребёнка"),
+    ]
     assert all(len(s) > 10 for s in ru), ru
     assert len(set(ru)) == 2, ru
     ar = slug("ما يجب فعله عند ارتفاع حرارة الطفل")
@@ -176,7 +183,7 @@ def test_every_language_names_the_dosage_forms() -> None:
     """The dose table headers are the strength printed on the bottle, and the first word of each
     is the form. A language missing from that map showed "gotas 100 mg/ml" on the Russian page."""
     text = (SITE / "dosepages.ts").read_text(encoding="utf-8")
-    block = text[text.index("const FORM_WORD"):]
+    block = text[text.index("const FORM_WORD") :]
     block = block[: block.index("};")]
     have = set(re.findall(r"^  (\w+):\s*\{", block, re.M))
     # Spanish needs no entry: the keys of the map are the Spanish words themselves, because the
@@ -261,8 +268,14 @@ def test_every_line_of_the_home_kit_names_its_source() -> None:
 #: column, and it shares that column with the logo, the support pill, the language menu and the
 #: theme toggle — so the labels have perhaps sixty characters between them before the last one
 #: gets cut in half.
-NAV_PILLS = ["nav_dose", "nav_guides", "nav_kit", "nav_sources", "nav_vaccines",
-             "nav_emergency_short"]
+NAV_PILLS = [
+    "nav_dose",
+    "nav_guides",
+    "nav_kit",
+    "nav_sources",
+    "nav_vaccines",
+    "nav_emergency_short",
+]
 NAV_BUDGET = 66
 
 
@@ -315,8 +328,14 @@ def test_no_edition_counts_the_languages_by_hand() -> None:
     It is `{langs}` now, counted at build time from the guides that exist. This refuses the
     hand-written version coming back.
     """
-    named = ("Spanish and French", "español y francés", "espagnol et en français",
-             "Spanisch, Französisch", "испанском, французском", "والإسبانية والفرنسية")
+    named = (
+        "Spanish and French",
+        "español y francés",
+        "espagnol et en français",
+        "Spanisch, Französisch",
+        "испанском, французском",
+        "والإسبانية والفرنسية",
+    )
     guilty = {}
     for lang in langs():
         body = block(lang)
@@ -350,9 +369,13 @@ def test_every_language_table_in_the_engine_holds_the_same_shape() -> None:
         ("ASK_AGE", ASK_AGE, str),
         ("CLARIFY_OPTIONS", CLARIFY_OPTIONS, list),
     ):
-        assert set(table) >= set(SUPPORTED_LANGS), f"{name}: faltan {set(SUPPORTED_LANGS) - set(table)}"
+        assert set(table) >= set(SUPPORTED_LANGS), (
+            f"{name}: faltan {set(SUPPORTED_LANGS) - set(table)}"
+        )
         for lang, value in table.items():
-            assert isinstance(value, kind), f"{name}[{lang}] es {type(value).__name__}, no {kind.__name__}"
+            assert isinstance(value, kind), (
+                f"{name}[{lang}] es {type(value).__name__}, no {kind.__name__}"
+            )
         if kind is list:
             sizes = {len(v) for v in table.values()}
             assert len(sizes) == 1, f"{name}: listas de distinta longitud {sizes}"
@@ -424,3 +447,70 @@ def test_the_path_check_catches_a_key_moved_out_of_its_object() -> None:
     assert "donate.on_network" in paths(good)
     assert "donate.on_network" not in paths(bad)
     assert "on_network" in paths(bad)
+
+
+# --- y los YAML de config, que hasta el 7-sep-2026 no miraba nadie ------------------------------
+#
+# Las comprobaciones de arriba cubren el i18n de la web y dos ficheros exportados. Los YAML de
+# `config/` —de donde sale todo lo demás— no los miraba ninguna. En un solo día aparecieron dos
+# huecos ahí: el catálogo de fármacos hablaba seis idiomas de ocho (a portugués e hindi les
+# llegaba en inglés el aviso «no en menores de 3 meses ni de 5 kg») y la frase por defecto del
+# número de emergencias en hindi era la única sin ninguna cifra.
+#
+# Esto los busca todos a la vez, con la misma regla que la de arriba: **un nodo que se traduce a
+# sí mismo tiene que traducirse entero**.
+
+
+def _huecos(nodo: object, quiere: set[str], ruta: str = "") -> list[str]:
+    fuera: list[str] = []
+    if isinstance(nodo, dict):
+        claves = set(nodo)
+        if quiere & claves and not quiere <= claves:
+            fuera.append(f"{ruta}: faltan {sorted(quiere - claves)}")
+        for k, v in nodo.items():
+            fuera += _huecos(v, quiere, f"{ruta}/{k}")
+    elif isinstance(nodo, list):
+        for i, v in enumerate(nodo):
+            fuera += _huecos(v, quiere, f"{ruta}[{i}]")
+    return fuera
+
+
+#: `synonyms.yaml` queda fuera del barrido, y no por comodidad: su nivel superior no es una cosa
+#: traducida a ocho idiomas, es un REGISTRO de tablas. `es`, `en`, `fr` y `de` son tablas
+#: coloquial→prospecto del propio idioma, y `ru_es`, `ar_en`, `pt_es`, `hi_en`… son las CRUZADAS,
+#: que es como se resuelven los cuatro idiomas cuyo corpus está en español e inglés. Lo que hay
+#: que comprobar ahí es otra cosa, y está justo debajo.
+FUERA_DEL_BARRIDO = {"synonyms.yaml"}
+
+
+def _configs() -> list[pathlib.Path]:
+    return sorted(f for f in (ROOT / "config").glob("*.yaml") if f.name not in FUERA_DEL_BARRIDO)
+
+
+def test_every_language_has_somewhere_to_expand_a_query_from() -> None:
+    """Lo que de verdad importa de synonyms.yaml.
+
+    El buscador expande la consulta con la tabla del idioma o con una cruzada hacia el español y
+    el inglés, que es donde está el corpus. Un idioma sin ninguna de las dos busca con las
+    palabras crudas del padre contra un corpus escrito en otra lengua — y no falla, simplemente
+    encuentra menos.
+    """
+    from pedibot.bot.retrieval import Synonyms
+
+    syn = Synonyms(ROOT / "config" / "synonyms.yaml", ROOT / "config" / "drugs.yaml")
+    sin_tabla = [lang for lang in langs() if not syn.knows(lang)]
+    assert not sin_tabla, f"idiomas sin ninguna tabla de sinónimos: {sin_tabla}"
+
+
+def test_there_are_configs_to_check() -> None:
+    """El candado del candado."""
+    assert len(_configs()) >= 5
+
+
+@pytest.mark.parametrize("fichero", _configs(), ids=lambda f: f.name)
+def test_every_config_translates_itself_completely(fichero: pathlib.Path) -> None:
+    import yaml
+
+    datos = yaml.safe_load(fichero.read_text(encoding="utf-8"))
+    faltan = _huecos(datos, set(langs()))
+    assert not faltan, f"{fichero.name} tiene traducciones a medias:\n  " + "\n  ".join(faltan[:8])
