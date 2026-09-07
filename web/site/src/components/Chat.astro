@@ -3,7 +3,12 @@ import { t, langPrefix, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
-const countries = [['GB','UK'],['ES','ES'],['US','US'],['IE','IE'],['FR','FR'],['DE','DE'],['IT','IT'],['PT','PT'],['MX','MX'],['AR','AR'],['CL','CL'],['CO','CO'],['BR','BR'],['AU','AU'],['CA','CA'],['NZ','NZ'],['RU','RU'],['KZ','KZ'],['BY','BY'],['UA','UA'],['SA','SA'],['AE','AE'],['EG','EG'],['MA','MA'],['DZ','DZ'],['TN','TN'],['JO','JO'],['QA','QA'],['KW','KW']];
+// La lista sale de config/emergency_numbers.yaml (via scripts/export_catalog.py). Era un
+// array a mano y se quedó corto: los números conocían 31 países y esto ofrecía 29, así que
+// un padre en Perú no podía elegir su país y siempre recibía la frase genérica, teniendo su
+// número puesto (7-sep-2026). Un país nuevo en la configuración aparece aquí solo.
+import countryCodes from '../data/countries.json';
+const countries: [string, string][] = countryCodes.map((c: string) => [c, c === 'GB' ? 'UK' : c]);
 const ages = [['', s.not_set], ...s.chat_ages];
 ---
 <div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support` })}>

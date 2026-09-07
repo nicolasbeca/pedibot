@@ -2,8 +2,14 @@
 
 import json
 import pathlib
+import sys
 
 import yaml
+
+# La consola de Windows es cp1252 y estos mensajes llevan flechas y acentos: sin esto el script
+# revienta al imprimir, y `make build` no se puede ejecutar en la máquina del operador (en el
+# servidor sí funciona, porque allí la salida es UTF-8 — por eso nadie lo había notado).
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 docs = yaml.safe_load((ROOT / "config" / "fuentes.yaml").read_text(encoding="utf-8"))["sources"]
@@ -95,3 +101,15 @@ vraw = yaml.safe_load((ROOT / "config" / "vaccines.yaml").read_text(encoding="ut
 target4 = ROOT / "web" / "site" / "src" / "data" / "vaccines.json"
 target4.write_text(json.dumps(vraw, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"{len(vraw)} vaccine schedules → {target4}")
+
+
+# países con número de emergencia → web/site/src/data/countries.json (el desplegable del chat)
+# El desplegable era un array escrito a mano dentro de Chat.astro, y se había quedado corto: los
+# números conocían 31 países y el selector ofrecía 29. Perú tenía su número puesto y ningún padre
+# peruano podía elegirlo, así que siempre recibía la frase genérica (7-sep-2026). Derivado, no
+# copiado: un país nuevo en la configuración aparece solo en la web.
+numeros = yaml.safe_load((ROOT / "config" / "emergency_numbers.yaml").read_text(encoding="utf-8"))
+paises = sorted(k for k in numeros if k != "default")
+target5 = ROOT / "web" / "site" / "src" / "data" / "countries.json"
+target5.write_text(json.dumps(paises, ensure_ascii=False) + "\n", encoding="utf-8")
+print(f"countries.json: {len(paises)} países con número de emergencia")

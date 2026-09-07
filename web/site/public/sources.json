@@ -672,7 +672,7 @@
   "topic": "fiebre",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/fever-in-children/",
+  "url": "https://www.nhs.uk/symptoms/fever-in-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -737,7 +737,7 @@
   "topic": "digestivo",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/diarrhoea-and-vomiting/",
+  "url": "https://www.nhs.uk/symptoms/diarrhoea-and-vomiting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -841,7 +841,7 @@
   "topic": "piel",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/rashes-babies-and-children/",
+  "url": "https://www.nhs.uk/symptoms/rashes-babies-and-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -880,7 +880,7 @@
   "topic": "lactante",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/",
+  "url": "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -919,7 +919,7 @@
   "topic": "orl",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/sore-throat/",
+  "url": "https://www.nhs.uk/symptoms/sore-throat/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1153,7 +1153,7 @@
   "topic": "vacunas",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/",
+  "url": "https://www.nhs.uk/vaccinations/nhs-vaccinations-and-when-to-have-them/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1166,7 +1166,7 @@
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/baby/weaning-and-feeding/babys-first-solid-foods/",
+  "url": "https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1179,7 +1179,7 @@
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/baby/caring-for-a-newborn/",
+  "url": "https://www.nhs.uk/baby/caring-for-a-newborn/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1335,7 +1335,7 @@
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/bedwetting/",
+  "url": "https://www.nhs.uk/symptoms/bedwetting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1634,7 +1634,7 @@
   "topic": "vacunas",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://medlineplus.gov/childhoodimmunization.html",
+  "url": "https://medlineplus.gov/childhoodvaccines.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-03"
  },
  {
@@ -2219,7 +2219,7 @@
   "topic": "vacunas",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://medlineplus.gov/spanish/childhoodimmunization.html",
+  "url": "https://medlineplus.gov/spanish/childhoodvaccines.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-03"
  },
  {
@@ -2414,7 +2414,7 @@
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.cdc.gov/flu/highrisk/children.htm",
+  "url": "https://www.cdc.gov/flu/highrisk/children.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-03"
  },
  {
@@ -2583,7 +2583,7 @@
   "topic": "orl",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.cdc.gov/antibiotic-use/ear-infection.html",
+  "url": "https://www.cdc.gov/ear-infection/about/",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-03"
  },
  {
@@ -2596,7 +2596,7 @@
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.cdc.gov/antibiotic-use/colds.html",
+  "url": "https://www.cdc.gov/common-cold/treatment/",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-03"
  },
  {

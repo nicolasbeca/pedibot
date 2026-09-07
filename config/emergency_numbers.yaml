@@ -13,11 +13,16 @@ default:
     ru: "по местному номеру экстренной службы (112 в ЕС, 911 в Америке)"
     ar: "رقم الطوارئ في بلدك (112 في الاتحاد الأوروبي، 911 في الأمريكتين)"
     pt: "o número de emergência da sua região (112 na UE, 911 nas Américas)"
-    hi: "अपने इलाक़े के आपातकालीन नंबर"
+    hi: "अपने इलाक़े के आपातकालीन नंबर (भारत में 112)"
   poison: null
   mental: null
 ES: {emergency: "112", poison: "91 562 04 20 (Instituto Nacional de Toxicología)", mental: "024 (línea de atención a la conducta suicida)"}
 PT: {emergency: "112", poison: "800 250 250 (CIAV)", mental: "SNS 24 — 808 24 24 24"}
+# India: 112 es el número único oficial (ERSS, Ministerio del Interior). Integra los antiguos
+# 100 (policía), 101 (bomberos) y 102/108 (ambulancia). Tele-MANAS 14416 es la línea nacional
+# de salud mental del Ministerio de Sanidad. El centro de intoxicaciones se deja vacío: no se
+# ha verificado en fuente oficial, y un número de urgencias inventado es peor que ninguno.
+IN: {emergency: "112", poison: null, mental: "Tele-MANAS 14416"}
 FR: {emergency: "15 / 112", poison: "Centre antipoison (regional)", mental: "3114"}
 IT: {emergency: "112", poison: "Centro Antiveleni (regional)", mental: "Telefono Amico 02 2327 2327"}
 DE: {emergency: "112", poison: "Giftnotruf (regional)", mental: "0800 111 0 111"}
