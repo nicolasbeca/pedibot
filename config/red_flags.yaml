@@ -1502,6 +1502,11 @@ context:
   - d[ée]cimas
   - feels? (very )?(hot|warm)
   - burning up
+  # «жар» es como se dice la fiebre en ruso corriente, y de este detector depende
+  # la regla del lactante de menos de tres meses (L36)
+  - \bжар\b
+  - жар у
+  - горячий лоб
   - (is|was) (very )?hot to (the )?touch
   - high temperature
   - (tout|toute) chaud

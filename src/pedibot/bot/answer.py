@@ -61,7 +61,19 @@ _DRUG_ALIAS = {
     "ibuprofene": "ibuprofen",
     "ibuprofeno": "ibuprofen",
 }
-_DOSE_NUM = re.compile(r"\b\d+([.,]\d+)?\s*(mg|ml)\b", re.I)
+#: Las unidades, en las tres escrituras además de la latina. Este patrón es la puerta del único
+#: guardia que hay contra una dosis inventada, y estaba escrito solo en latino: «дайте 250 мг» o
+#: «250 मिग्रा» no lo cruzaban, así que el guardia ni miraba (7-sep-2026). Las latinas llevan `\b`
+#: detrás; las otras no, por lo mismo de siempre — en árabe y devanagari los sufijos son
+#: caracteres de palabra y la frontera no existe.
+_DOSE_NUM = re.compile(
+    r"\b\d+([.,]\d+)?\s*"
+    r"(?:(mg|ml)\b"
+    r"|(мг|мл)"
+    r"|(ملغ|مغ|ملغم|مل)"
+    r"|(मिग्रा|मिलीग्राम|मिली|मिलीलीटर))",
+    re.I,
+)
 
 
 # A millilitre figure is a medication dose unless the words around it clearly say fluid: the
@@ -69,13 +81,22 @@ _DOSE_NUM = re.compile(r"\b\d+([.,]\d+)?\s*(mg|ml)\b", re.I)
 # an unexplained "5 ml" still counts as a dose. Milligrams are always a dose.
 _FLUID_WORDS = re.compile(
     r"(suero|rehidrataci|sales de rehidrat|rehydration|\bors\b|agua\b|water\b|leche|milk|"
-    r"pecho|breast|biber[oó]n|bottle|toma[s]?\b|feed|l[ií]quido|fluid|zumo|juice)",
+    r"pecho|breast|biber[oó]n|bottle|toma[s]?\b|feed|l[ií]quido|fluid|zumo|juice"
+    # los líquidos también en las otras tres: sin esto, los volúmenes de suero oral de las hojas
+    # del SEUP se tomarían por dosis y la respuesta se rechazaría sin motivo
+    r"|вод|молок|регидрат|жидкост|груд|бутылочк"
+    r"|ماء|حليب|محلول معالجة الجفاف|سوائل|رضاعة"
+    r"|पानी|दूध|ओआरएस|तरल|स्तनपान)",
     re.I,
 )
 _MEDICINE_WORDS = re.compile(
     r"(paracetamol|acetaminophen|ibuprofeno|ibuprofen|antibi[oó]tic|antibiotic|amoxicilin|"
     r"amoxicillin|jarabe|syrup|antihistam[ií]nic|antihistamine|medicamento|medicine|dosis|dose|"
-    r"calpol|dalsy|apiretal|junifen|tylenol|nurofen)",
+    r"calpol|dalsy|apiretal|junifen|tylenol|nurofen"
+    # y en las otras tres escrituras: el genérico, «dosis», «jarabe» y «medicamento»
+    r"|парацетамол|ибупрофен|доз|сироп|лекарств|антибиотик"
+    r"|باراسيتامول|إيبوبروفين|جرعة|شراب|دواء|مضاد حيوي"
+    r"|पैरासिटामोल|आइबुप्रोफेन|खुराक|सिरप|दवा|एंटीबायोटिक)",
     re.I,
 )
 _DOSE_WINDOW = 90
@@ -84,7 +105,9 @@ _DOSE_WINDOW = 90
 def looks_like_medication_dose(text: str) -> bool:
     """True if the text states a medication dose (mg always; ml unless clearly a fluid)."""
     for m in _DOSE_NUM.finditer(text):
-        if m.group(2).lower() == "mg":
+        unidad = (m.group(2) or m.group(3) or m.group(4) or m.group(5) or "").lower()
+        # Los miligramos son SIEMPRE una dosis, se escriban en el alfabeto que se escriban.
+        if unidad in {"mg", "мг", "ملغ", "مغ", "ملغم", "मिग्रा", "मिलीग्राम"}:
             return True
         around = text[max(0, m.start() - _DOSE_WINDOW) : m.end() + _DOSE_WINDOW]
         if _MEDICINE_WORDS.search(around):
