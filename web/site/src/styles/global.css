@@ -10,6 +10,11 @@
   --mint: #E3F4EF; --mint-2: #C8E9E0; --peach: #FFE8DC; --lavender: #EDEAF8; --sky: #E6F1FA;
   --sage: #2F6B57; --sage-deep: #1F4F40; --ink: #2B3A35; --ink-2: #5B6D66; --ink-3: #687770;
   --line: #EAE4DA; --coral: #CE432D; --coral-soft: #FBE3DD; --amber: #E7B85C; --amber-soft: #FBF0D8;
+  /* El contorno del foco. Tiene su propio token porque WCAG 2.2 le pide 3:1 contra los
+     colores de al lado (2.4.11/2.4.13) y el que había —--mint-2— daba 1,06:1 en el peor de
+     los nueve fondos: existía y no se veía. Este da 5,1:1 de día y 7,01:1 de noche, medido
+     contra todos ellos en tests/test_contrast.py. */
+  --focus: #2F6B57;
   --shadow: 0 10px 30px rgba(43, 58, 53, .07);
   --r: 20px;
 }
@@ -18,6 +23,7 @@
   --mint: #23413A; --mint-2: #2C5348; --peach: #3D302A; --lavender: #2E2D3F; --sky: #243542;
   --sage: #9FD9C8; --sage-deep: #C6ECE1; --ink: #EAF2EE; --ink-2: #B4C6BE; --ink-3: #859A91;
   --line: #33453F; --coral: #F0A497; --coral-soft: #45302C; --amber: #F1C97A; --amber-soft: #463A22;
+  --focus: #9FD9C8;
   --shadow: 0 10px 30px rgba(0, 0, 0, .35);
 }
 * { box-sizing: border-box; }
@@ -33,7 +39,7 @@ a { color: var(--sage); }
 .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
 .eyebrow { font-family: Nunito, sans-serif; font-weight: 700; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); }
 button, input, select, textarea { font: inherit; }
-:focus-visible { outline: 3px solid var(--mint-2); outline-offset: 2px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .wrap { max-width: 1040px; margin: 0 auto; padding: 0 18px; }
 .narrow { max-width: 760px; margin: 0 auto; padding: 0 18px; }
 .lede { color: var(--ink-2); max-width: 60ch; margin-top: 12px; font-size: 1.05rem; }

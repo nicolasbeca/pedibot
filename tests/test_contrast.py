@@ -108,3 +108,52 @@ def test_the_answer_is_announced_when_it_arrives() -> None:
     m = re.search(r'<div class="chat" id="thread"([^>]*)>', chat)
     assert m, "no encuentro el hilo de la conversación"
     assert "aria-live" in m.group(1), "la respuesta llega sin anunciarse"
+
+
+# --- el indicador de foco (7-sep-2026) ---------------------------------------------------------
+#
+# La web tiene `:focus-visible { outline: 3px solid var(--focus) }`, que ya es más de lo que hace
+# la mayoría de sitios. Pero el color no se había elegido mirando el contraste: con `--mint-2`
+# daba **1,06:1** en el peor de los nueve fondos, o sea que el contorno existía y no se veía.
+#
+# WCAG 2.2 pide **3:1** para el indicador de foco (2.4.11 y 2.4.13), no 4.5: no es texto, es una
+# forma. Y se comprueba contra TODOS los fondos, no contra uno: el foco puede caer sobre una
+# tarjeta menta, sobre el crema de un aviso o sobre el fondo de la página, y basta con que falle
+# en uno para que alguien se pierda justo ahí.
+
+#: WCAG 2.2 para elementos no textuales (2.4.11 «Focus Appearance», 2.4.13).
+MINIMO_FOCO = 3.0
+
+#: Todo lo que puede quedar detrás de un contorno de foco.
+FONDOS = [
+    "--ground",
+    "--paper",
+    "--cream",
+    "--mint",
+    "--peach",
+    "--lavender",
+    "--sky",
+    "--coral-soft",
+    "--amber-soft",
+]
+
+
+def test_the_focus_ring_uses_its_own_token() -> None:
+    """Si vuelve a colgar de un color de relleno, nadie recalculará su contraste."""
+    assert "--focus:" in CSS, "no hay token --focus"
+    assert "outline: 3px solid var(--focus)" in CSS, "el contorno de foco ya no usa --focus"
+
+
+@pytest.mark.parametrize("fondo", FONDOS)
+def test_light_focus_ring_is_visible(fondo: str) -> None:
+    r = contraste(CLARO["--focus"], CLARO[fondo])
+    assert r >= MINIMO_FOCO, (
+        f"el contorno de foco sobre {fondo}: {r:.2f}, por debajo de {MINIMO_FOCO}. "
+        "Quien navega con el teclado no vería dónde está."
+    )
+
+
+@pytest.mark.parametrize("fondo", FONDOS)
+def test_night_focus_ring_is_visible(fondo: str) -> None:
+    r = contraste(NOCHE["--focus"], NOCHE[fondo])
+    assert r >= MINIMO_FOCO, f"el contorno de foco sobre {fondo} (noche): {r:.2f}"
