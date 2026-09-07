@@ -211,3 +211,76 @@ def test_a_plain_faint_is_not_an_emergency(triage: Triage, pregunta: str) -> Non
     otra cosa, y tratarlo de emergencia manda a urgencias a quien no lo necesita."""
     nivel = str(triage.assess(pregunta).level)
     assert ORDEN.get(nivel, 9) < ORDEN["emergency"], f"«{pregunta}» sale {nivel}"
+
+
+#: La peor clase de fallo de esta capa. Encontrado cruzando la hoja /emergency con el triaje: uno
+#: de sus puntos de nivel «no urgente» es «Tos o mocos SIN dificultad para respirar», y el chat lo
+#: devolvía como EMERGENCIA. Un padre que dice explícitamente que su hijo respira bien recibía una
+#: alarma roja — no se pierde una urgencia, se enseña a ignorar la alarma.
+NEGADAS = [
+    ("tiene tos y mocos pero sin dificultad para respirar", "es"),
+    ("tose mucho pero no tiene dificultad para respirar", "es"),
+    ("está bien, no le cuesta respirar", "es"),
+    ("no tiene fiebre ni le cuesta respirar", "es"),
+    ("he has a cough but no difficulty breathing", "en"),
+    ("Husten aber keine Atemnot", "de"),
+]
+
+#: La otra mitad, y la que hace que la regla anterior sea segura: una negación que iba con OTRA
+#: cosa no puede apagar la señal. «sin fiebre PERO le cuesta respirar» afirma la segunda mitad.
+NEGADAS_PERO_NO = [
+    ("sin fiebre pero le cuesta mucho respirar", "es", "emergency"),
+    ("no tiene fiebre pero se le marcan las costillas", "es", "emergency"),
+    ("sin manchas pero no responde", "es", "emergency"),
+    ("kein Fieber aber die Lippen sind blau", "de", "emergency"),
+    # y los patrones que EMPIEZAN por una negación tienen que seguir saltando
+    ("no responde a estímulos", "es", "emergency"),
+    ("no deja de sangrar", "es", "emergency"),
+    ("no puede respirar", "es", "emergency"),
+    ("no se despierta", "es", "emergency"),
+]
+
+#: Variantes de forma que no casaban. «cannot» no aparecía en NINGUNA regla inglesa: todas
+#: escriben `can't`, que cubre «can't» y «cant» pero no «cannot» ni «can not». Sin respirar, sin
+#: dejar de sangrar, sin despertarse — las tres salían rutina por una apóstrofe.
+VARIANTES = [
+    ("he cannot breathe", "en", "emergency"),
+    ("she cannot stop bleeding", "en", "emergency"),
+    ("he cannot wake up", "en", "emergency"),
+    # la hoja de la SEUP dice «pérdida de conocimiento»; la regla pedía el verbo «perdió»
+    ("se cayó y tuvo una pérdida de conocimiento", "es", "emergency"),
+    ("se dio un golpe en la cabeza con pérdida de conocimiento", "es", "emergency"),
+    # también de la hoja, y sin regla
+    ("le noto pérdida de fuerza en un lado", "es", "emergency"),
+    ("tiene un sangrado abundante que no cede", "es", "emergency"),
+    ("está con una somnolencia excesiva", "es", "urgent"),
+    # la edad de un recién nacido se dice en semanas, y en letra
+    ("mi bebé de tres semanas tiene fiebre", "es", "urgent"),
+    ("my six week old has a fever", "en", "urgent"),
+]
+
+
+@pytest.mark.parametrize(("pregunta", "lang"), NEGADAS)
+def test_saying_the_child_is_fine_does_not_raise_an_alarm(
+    triage: Triage, pregunta: str, lang: str
+) -> None:
+    nivel = str(triage.assess(pregunta).level)
+    assert ORDEN.get(nivel, 9) < ORDEN["urgent"], (
+        f"[{lang}] «{pregunta}» sale {nivel}: el padre está diciendo que NO"
+    )
+
+
+@pytest.mark.parametrize(("pregunta", "lang", "minimo"), NEGADAS_PERO_NO)
+def test_a_negation_about_something_else_does_not_silence_the_alarm(
+    triage: Triage, pregunta: str, lang: str, minimo: str
+) -> None:
+    nivel = str(triage.assess(pregunta).level)
+    assert ORDEN.get(nivel, -1) >= ORDEN[minimo], f"[{lang}] «{pregunta}» sale {nivel}"
+
+
+@pytest.mark.parametrize(("pregunta", "lang", "minimo"), VARIANTES)
+def test_the_same_thing_said_another_way(
+    triage: Triage, pregunta: str, lang: str, minimo: str
+) -> None:
+    nivel = str(triage.assess(pregunta).level)
+    assert ORDEN.get(nivel, -1) >= ORDEN[minimo], f"[{lang}] «{pregunta}» sale {nivel}"

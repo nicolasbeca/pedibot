@@ -18,6 +18,8 @@ rules:
   - unresponsive
   - not responding
   - won'?t wake
+  - can(?:'?t| ?not) (wake|be woken|rouse)
+  - (impossible|unable) to wake
   - unconscious
   - passed out
   - ne r[ée]pond pas
@@ -159,7 +161,7 @@ rules:
   - deja de respirar
   - (labios|piel) (azul|morad)
   - azulad
-  - can'?t breathe
+  - can(?:'?t| ?not) breathe
   - struggling to breathe
   - difficulty breathing
   - ribs (are )?(pulling|sucking) in
@@ -388,7 +390,10 @@ rules:
   reason_en: Head injury with loss of consciousness
   reason_fr: Coup à la tête avec perte de connaissance
   patterns:
-  - (golpe|cabeza|ca[ií]d).{0,80}(perdi[oó] el conocimiento|inconsciente|desmay)
+  - (golpe|cabeza|ca[ií]d|cay[oó]).{0,80}(perdi[oó] el conocimiento|inconsciente|desmay)
+  - (golpe|cabeza|ca[ií]d|cay[oó]|traumatismo).{0,80}p[ée]rdida (de|del) (conocimiento|conciencia)
+  - p[ée]rdida (de|del) (conocimiento|conciencia).{0,80}(golpe|cabeza|ca[ií]d|cay[oó]|traumatismo)
+  - (head|fell|fall|hit|blow).{0,80}loss of consciousness
   - (head|fell|fall|hit).{0,80}(knocked out|unconscious|passed out|lost consciousness)
   - (t[eê]te|tomb[ée]|chute|cogn[ée]).{0,80}(perdu connaissance|inconscient|[ée]vanoui)
   - kopf gestoßen.{0,40}bewusstlos
@@ -424,8 +429,13 @@ rules:
   - sangra (mucho|sin parar|a chorro)
   - no (para|deja) de sangrar
   - hemorragia
+  - sangrado (abundante|profuso|importante|que no cede|que no para)
+  - (sangrado|sangre).{0,25}no (cede|para|se detiene)
+  - (heavy|profuse) bleeding
+  - (bleeding|blood).{0,25}(will not|won'?t|does ?n[o']?t) stop
   - bleeding (heavily|a lot|won'?t stop)
   - won'?t stop bleeding
+  - can(?:'?t| ?not) stop (the )?bleeding
   - saigne (beaucoup|sans arr[eê]t|abondamment)
   - n'arr[eê]te pas de saigner
   - h[ée]morragie
@@ -692,6 +702,8 @@ rules:
   - cuesta despertarl
   - irritab.{0,20}(mucho|extrem|incontrol)
   - llanto inconsolable
+  - (somnolencia|adormecimiento|decaimiento|irritabilidad).{0,15}(excesiv|extrem|much)
+  - (excessive|extreme) (drowsiness|sleepiness|irritability)
   - (very|extremely|unusually) (drowsy|sleepy|floppy|limp|lethargic)
   - hard to wake
   - inconsolable
@@ -846,7 +858,7 @@ rules:
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
   patterns:
-  - (golpe|cabeza|ca[ií]d).{0,100}v[oó]mit
+  - (golpe|cabeza|ca[ií]d|cay[oó]).{0,100}v[oó]mit
   - v[oó]mit.{0,100}(golpe en la cabeza|cabeza)
   - (head|fell|fall|hit).{0,100}vomit
   - vomit.{0,100}(head|fell|fall)
@@ -1292,6 +1304,11 @@ rules:
   reason_hi: तंत्रिका-संबंधी संकेत — ठीक न दिखना, हाथ-पैर ठीक से न हिलना, चलने या बोलने में दिक्कत
   patterns:
   - no mueve (bien )?(un |el |la )?(brazo|pierna|mano|lado)
+  - p[ée]rdida (de|del) fuerza
+  - (ha )?perdido fuerza
+  - (muy )?(flojo|d[ée]bil) de un lado
+  - (loss of|losing) (strength|power)
+  - (weakness|weak) (on|down) one side
   - (mueve mal|no puede mover).{0,20}(brazo|pierna|mano|un lado)
   - (habla|hablar) (con dificultad|raro|arrastrando|mal de repente)
   - (no puede|le cuesta) (hablar|articular)
@@ -1301,9 +1318,9 @@ rules:
   - (desorientad|no sabe (d[oó]nde|qu[ié]en)|no reconoce)
   - (p[ée]rdida de contacto con la realidad|alucina|delir)
   - (boca|cara).{0,20}(torcid|desviad|ca[ií]da de un lado)
-  - (can'?t|cannot|unable to) move (his|her|their) (arm|leg|hand|side)
+  - (can(?:'?t| ?not)|cannot|unable to) move (his|her|their) (arm|leg|hand|side)
   - (slurred|slurring) (speech|words)
-  - (suddenly|sudden).{0,25}(can'?t see|blurred vision|double vision|vision)
+  - (suddenly|sudden).{0,25}(can(?:'?t| ?not) see|blurred vision|double vision|vision)
   - (double vision|blurry vision) (suddenly|out of nowhere)
   - (disorient|confused and|does not know where|doesn'?t know where)
   - (face|mouth).{0,20}(droop|drooping|pulled to one side)

@@ -74,6 +74,27 @@ _NEWBORN = re.compile(
 )
 _WORD_AGES = {
     "un mes": 1,
+    # Las semanas en letra: es como se dice la edad de un recién nacido, y en cifra ya se
+    # entendían. «mi bebé de tres semanas» no llegaba a la regla del lactante (7-sep-2026).
+    "una semana": 0.23,
+    "dos semanas": 0.46,
+    "tres semanas": 0.69,
+    "cuatro semanas": 0.92,
+    "cinco semanas": 1.15,
+    "seis semanas": 1.38,
+    "siete semanas": 1.61,
+    "ocho semanas": 1.84,
+    "one week": 0.23,
+    "two weeks": 0.46,
+    "three weeks": 0.69,
+    "four weeks": 0.92,
+    "five weeks": 1.15,
+    "six weeks": 1.38,
+    "seven weeks": 1.61,
+    "eight weeks": 1.84,
+    "two week": 0.46,
+    "three week": 0.69,
+    "six week": 1.38,
     "1 mes": 1,
     "dos meses": 2,
     "tres meses": 3,
@@ -197,6 +218,56 @@ def parse_age_months(text: str) -> float | None:
     return None
 
 
+#: Lo que anula una señal si aparece justo antes de ella. Un padre que escribe «sin dificultad
+#: para respirar» está diciendo lo contrario de lo que la regla busca, y hasta el 7-sep-2026
+#: recibía una alarma de emergencia por decirlo.
+NEGADORES = re.compile(
+    r"(?:\bsin\b|\bno\b|\bni\b|\bnada de\b"
+    r"|\bwithout\b|\bno\b|\bnot\b|\bdoes ?n[o']?t\b|\bhas ?n[o']?t\b|\bisn[o']?t\b"
+    r"|\bsans\b|\bpas de\b|\baucun\w*\b"
+    r"|\bohne\b|\bkein\w*\b|\bnicht\b"
+    r"|\bsem\b|\bn[ãa]o\b"
+    r"|\bбез\b|\bне\b|\bнет\b"
+    r"|بدون|بلا|ليس|لا\s"
+    r"|बिना|नहीं)"
+    r"[\s\wáéíóúüñ,]{0,18}$",
+    re.I | re.U,
+)
+
+#: Cuánto se mira hacia atrás. Corto a propósito: «no tiene fiebre, pero sí le cuesta respirar»
+#: no puede quedar anulado por un «no» que iba con otra cosa.
+VENTANA_NEGACION = 26
+
+
+#: Lo que devuelve a la frase su valor afirmativo: el final de una oración, y las conjunciones
+#: adversativas. «sin fiebre pero le cuesta respirar» tiene que seguir saltando.
+CORTES = (
+    ".", ";", "!", "?", "\n",
+    " pero ", " aunque ", " but ", " aber ", " doch ", " jedoch ",
+    " mais ", " mas ", " porém ", " но ", " однако ", " لكن ", " लेकिन ",
+)
+
+
+def _negada(texto: str, inicio: int, fin: int) -> bool:
+    """¿Hay una negación pegada justo antes de esta coincidencia?
+
+    No entiende la frase: solo mira la ventana anterior. Y no cuenta la negación que forma parte
+    de la propia coincidencia — «no responde», «no deja de sangrar» y «no puede respirar» son
+    patrones que empiezan por una negación y tienen que seguir saltando.
+    """
+    antes = texto[max(0, inicio - VENTANA_NEGACION) : inicio]
+    # Una frase nueva corta el efecto de la negación anterior. Y una conjunción adversativa
+    # también: «sin fiebre PERO le cuesta respirar» afirma la segunda mitad, y sin este corte
+    # el «sin» de la fiebre anulaba la dificultad respiratoria (probado el 7-sep-2026).
+    for corte in CORTES:
+        if corte in antes:
+            antes = antes.rsplit(corte, 1)[1]
+    if NEGADORES.search(antes):
+        # salvo que la propia coincidencia ya empiece negada
+        return not NEGADORES.search(texto[inicio:fin][:14] + " ")
+    return False
+
+
 class Triage:
     def __init__(self, path: Path):
         raw = yaml.safe_load(path.read_text(encoding="utf-8"))
@@ -221,7 +292,14 @@ class Triage:
         self._fever = [re.compile(p, re.I) for p in ctx.get("fever", [])]
 
     def has_fever(self, text: str) -> bool:
-        return any(rx.search(text) for rx in self._fever)
+        """«Sin fiebre» no es fiebre: la misma regla de negación que para los patrones."""
+        return any(self._hits(rx, text) for rx in self._fever)
+
+    @staticmethod
+    def _hits(rx: re.Pattern[str], text: str) -> bool:
+        """Una coincidencia cuenta salvo que venga negada. Se recorren todas: «sin fiebre pero le
+        cuesta respirar» tiene que seguir saltando por la segunda mitad."""
+        return any(not _negada(text, m.start(), m.end()) for m in rx.finditer(text))
 
     def assess(self, text: str) -> TriageResult:
         age = parse_age_months(text)
@@ -236,7 +314,7 @@ class Triage:
                 if all(flags.get(k, False) for k in r.requires):
                     matched.append(r)
                 continue
-            if any(rx.search(text) for rx in r.patterns):
+            if any(self._hits(rx, text) for rx in r.patterns):
                 matched.append(r)
         level = "routine"
         for r in matched:
