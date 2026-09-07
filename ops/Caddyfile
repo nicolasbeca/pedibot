@@ -59,6 +59,24 @@ pedibot.xyz {
 	header @revalidate Cache-Control "no-cache"
 	header @hashed Cache-Control "public, max-age=31536000, immutable"
 
+	# Una sola dirección por página. Hasta el 7-sep-2026 cada una vivía en dos —con barra final y
+	# sin ella—, las dos con 200, y Google les daba puestos distintos: /dose en el 49 y /dose/ en
+	# el 70, /es/dose en el 81 y /es/dose/ en el 61. Eso no es un duplicado inofensivo: es la
+	# señal de una página repartida entre dos direcciones en vez de sumada.
+	#
+	# Viene de `disable_canonical_uris`, más abajo, que está ahí por un buen motivo (Astro
+	# construye con trailingSlash 'never' y sin él Caddy contestaba un 308 a cada URL del
+	# sitemap). El efecto colateral era que la forma con barra dejó de redirigir.
+	#
+	# El sitemap, las canónicas y todos los enlaces internos usan la forma SIN barra, así que esa
+	# es la buena. Fuera se quedan la raíz —no puede redirigir a la cadena vacía— y el API y el
+	# panel, porque un 301 sobre un POST lo rompe.
+	@trailingslash {
+		path_regexp tslash ^(/.+)/$
+		not path /api/* /a/* /admin /admin/*
+	}
+	redir @trailingslash {re.tslash.1} permanent
+
 	# Sacados del registro el 6-sep-2026: 31 peticiones a /sitemap.xml y 8 a /en/, todas 404.
 	# El sitemap se llama sitemap-index.xml, y muchos rastreadores solo prueban el nombre de
 	# siempre. Y el inglés vive en la raíz mientras los otros siete idiomas llevan prefijo, así

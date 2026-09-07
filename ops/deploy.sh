@@ -95,7 +95,15 @@ if [ -f /etc/caddy/admin.hash ]; then sed -i "s|__ADMIN_HASH__|$(cat /etc/caddy/
 systemctl daemon-reload
 systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-acp.service pedibot-watchdog.timer pedibot-backup.timer pedibot-token.timer pedibot-token-alert.timer pedibot-weekly.timer pedibot-daily.timer pedibot-tweets.timer pedibot-indexnow.timer pedibot-gsc.timer >/dev/null 2>&1 || true
 systemctl restart pedibot-api.service pedibot-telegram.service pedibot-acp.service
-caddy validate --config /etc/caddy/Caddyfile >/dev/null 2>&1 && systemctl reload caddy
+# Si la configuración no valida NO se recarga —eso dejaría el sitio caído— pero hay que decirlo:
+# hasta el 7-sep-2026 el error se iba a /dev/null y el despliegue seguía imprimiendo «done»,
+# así que un Caddyfile roto se quedaba sin aplicar sin que nadie lo notara (familia de la L33).
+if caddy validate --config /etc/caddy/Caddyfile 2>/tmp/caddy_validate.err; then
+  systemctl reload caddy
+else
+  echo "!! EL CADDYFILE NO VALIDA — no se ha recargado; el sitio sigue con la configuración anterior:"
+  sed 's/^/   /' /tmp/caddy_validate.err | tail -20
+fi
 systemctl is-active pedibot-api.service pedibot-telegram.service caddy | tr '\n' ' '; echo
 # The API was restarted a moment ago and takes a few seconds to open its port. A single curl
 # after `sleep 3` raced it: the deploy did everything right and still exited 7 (curl: could not
