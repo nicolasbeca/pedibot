@@ -56,10 +56,18 @@ PARACETAMOL = Drug(
     max_daily_mg=4000,
     min_age_months=0,
     min_weight_kg=0,
+    # Todas las del catálogo, de la más diluida a la más concentrada. Hasta el 7-sep-2026 el chat
+    # solo conocía tres de las siete: quien tuviera gotas de 200 mg/ml —la presentación brasileña,
+    # que está en el catálogo y tiene su página en la web— no veía su bote, y si cogía por error
+    # la línea de las de 100 mg/ml se pasaba al doble.
     presentations=(
-        Presentation("gotas 100 mg/ml", 100.0),
         Presentation("jarabe 120 mg/5 ml", 24.0),
+        Presentation("jarabe 150 mg/5 ml (3 %)", 30.0),
         Presentation("jarabe 160 mg/5 ml", 32.0),
+        Presentation("jarabe 200 mg/5 ml (4 %)", 40.0),
+        Presentation("jarabe 250 mg/5 ml", 50.0),
+        Presentation("gotas 100 mg/ml", 100.0),
+        Presentation("gotas 200 mg/ml", 200.0),
     ),
     source="AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos",
 )
@@ -80,6 +88,7 @@ IBUPROFENO = Drug(
     presentations=(
         Presentation("jarabe 2 % (100 mg/5 ml)", 20.0),
         Presentation("jarabe 4 % (200 mg/5 ml)", 40.0),
+        Presentation("gotas 50 mg/ml", 50.0),
     ),
     source="AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos",
 )

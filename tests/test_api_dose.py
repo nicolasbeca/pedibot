@@ -77,10 +77,21 @@ def test_dose_api_with_brand(client):
 
 
 def test_dose_api_generic_uses_default_presentations(client):
+    """Sin marca, la respuesta trae TODAS las presentaciones del medicamento.
+
+    Antes decía `== 2`, un número clavado a mano que se rompió el 7-sep-2026 al añadir las gotas
+    de 50 mg/ml — que el catálogo ya conocía y el chat no. Contar presentaciones no comprueba
+    nada: lo que importa es que estén todas las del medicamento y que cada una traiga su volumen,
+    porque un padre tiene que encontrar SU bote en la lista."""
+    from pedibot.bot.dose import DRUGS
+
     j = client.post(
         "/api/dose", json={"drug": "ibuprofeno", "weight_kg": 20, "age_months": 48, "lang": "es"}
     ).json()
-    assert j["brand"] is None and j["generic"] == "Ibuprofeno" and len(j["ml_by_form"]) == 2
+    assert j["brand"] is None and j["generic"] == "Ibuprofeno"
+    esperadas = {p.name for p in DRUGS["ibuprofeno"].presentations}
+    assert {f["form"] for f in j["ml_by_form"]} == esperadas
+    assert all(f["ml"] > 0 for f in j["ml_by_form"])
 
 
 def test_dose_api_refers_young_infant_and_rejects_unknown(client):
