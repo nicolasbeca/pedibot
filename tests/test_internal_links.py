@@ -297,3 +297,28 @@ def test_the_vaccine_calendars_are_linked_from_their_guide(have: set[str]) -> No
     assert len(con_enlaces) >= 8, (
         f"solo {len(con_enlaces)} guías enlazan un calendario; debería haber una por idioma"
     )
+
+
+def test_the_hashed_assets_are_cached_and_the_rest_revalidates() -> None:
+    """La regla de caché del Caddyfile, comprobada en el fichero porque es donde se rompe.
+
+    El 6-sep las tipografías pasaron a servirse desde aquí, y cayeron del lado que revalida en
+    cada carga: 23 idas y vueltas por página para quien ya las tenía, peor que como estaban en
+    gstatic. El nombre que Google les puso ya lleva su hash de contenido, así que se cachean igual
+    que /_astro/.
+
+    El HTML tiene que seguir revalidando: sin eso, un despliegue es invisible para quien ya había
+    visitado la web (pasó el 1-sep).
+    """
+    caddy = (ROOT / "ops" / "Caddyfile").read_text(encoding="utf-8")
+    m = re.search(r"@hashed path ([^\n]+)", caddy)
+    assert m, "no encuentro la regla de assets con hash"
+    con_hash = m.group(1).split()
+    assert "/_astro/*" in con_hash, "los assets construidos ya no se cachean"
+    assert "/fonts/*.woff2" in con_hash, "las tipografías revalidan en cada carga"
+
+    m2 = re.search(r"@revalidate not path ([^\n]+)", caddy)
+    assert m2, "no encuentro la regla de revalidación"
+    assert sorted(m2.group(1).split()) == sorted(con_hash), (
+        "las dos reglas de caché ya no son complementarias: alguna ruta se queda sin regla o con dos"
+    )

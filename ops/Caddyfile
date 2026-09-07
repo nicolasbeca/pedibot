@@ -50,8 +50,12 @@ pedibot.xyz {
 	# Matching by extension missed /support and every other clean URL (the file is
 	# /support/index.html but the request path has no .html), so the rule is inverted: everything
 	# revalidates EXCEPT the built assets, whose filename already carries a content hash.
-	@hashed path /_astro/*
-	@revalidate not path /_astro/*
+	# Las tipografías se sirven desde aquí desde el 6-sep-2026, y el nombre que les puso Google
+	# ya lleva su hash de contenido — igual que /_astro/, así que se cachean igual. Sin esta línea
+	# revalidaban en CADA carga (23 idas y vueltas por página para quien ya las tenía), que es peor
+	# que como estaban antes en gstatic. El fonts.css sí revalida: no lleva hash y son 2,4 KB.
+	@hashed path /_astro/* /fonts/*.woff2
+	@revalidate not path /_astro/* /fonts/*.woff2
 	header @revalidate Cache-Control "no-cache"
 	header @hashed Cache-Control "public, max-age=31536000, immutable"
 
