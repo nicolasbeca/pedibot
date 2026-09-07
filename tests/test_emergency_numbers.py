@@ -112,7 +112,7 @@ def test_a_country_entry_always_carries_an_emergency_number(code: str) -> None:
 # --------------------------------------------------------------------------------------------
 
 
-def test_every_country_with_a_number_can_actually_be_chosen() -> None:
+def test_the_country_list_is_derived_from_the_numbers() -> None:
     """Tener el número puesto no sirve de nada si el lector no puede seleccionar su país.
 
     El desplegable del chat era un array a mano dentro de `Chat.astro` y se había quedado corto:
@@ -120,18 +120,26 @@ def test_every_country_with_a_number_can_actually_be_chosen() -> None:
     **Perú llevaba así desde siempre** — su número estaba puesto y ningún padre peruano podía
     elegirlo, así que siempre recibía la frase genérica. Nada fallaba, como en todos los clones.
 
-    Ahora la lista se deriva del catálogo en `scripts/export_catalog.py`. Esto comprueba que el
-    fichero exportado sigue al día: si alguien añade un país y no reexporta, la web no lo ofrece.
+    Se comprueba la DERIVACIÓN, no el fichero: `web/site/src/data/` está en .gitignore y esos
+    JSON los genera el exportador en cada despliegue, así que un candado que leyera el fichero
+    estaría verde en la máquina de quien acaba de construir la web y rojo en un clon limpio.
     """
+    exportador = (RAIZ / "scripts" / "export_catalog.py").read_text(encoding="utf-8")
+    assert "emergency_numbers.yaml" in exportador, "el exportador ya no lee los números"
+    assert "countries.json" in exportador, "el exportador ya no genera la lista de países"
+
+
+def test_the_generated_list_is_up_to_date_when_it_exists() -> None:
+    """Y si la web se ha construido, lo generado tiene que coincidir con la configuración."""
     import json
 
-    exportado = json.loads(
-        (RAIZ / "web" / "site" / "src" / "data" / "countries.json").read_text(encoding="utf-8")
-    )
-    assert set(exportado) == PAISES, (
-        "countries.json no coincide con emergency_numbers.yaml: "
-        f"sobran {sorted(set(exportado) - PAISES)}, faltan {sorted(PAISES - set(exportado))}. "
-        "Ejecuta scripts/export_catalog.py."
+    f = RAIZ / "web" / "site" / "src" / "data" / "countries.json"
+    if not f.exists():
+        pytest.skip("countries.json se genera al construir la web; aquí no se ha construido")
+    exportado = set(json.loads(f.read_text(encoding="utf-8")))
+    assert exportado == PAISES, (
+        f"countries.json desfasado: sobran {sorted(exportado - PAISES)}, "
+        f"faltan {sorted(PAISES - exportado)}. Ejecuta scripts/export_catalog.py."
     )
 
 
