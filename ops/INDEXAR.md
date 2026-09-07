@@ -3,6 +3,8 @@
 Actualizado el 7-sep-2026. **No están elegidas a ojo**: se le preguntó a Google, una por una, con
 la API de inspección de URL, cuáles de las páginas de más valor NO tiene.
 
+**Todas van con la dirección completa, para copiar y pegar sin tocarlas.**
+
 ## Cómo se pide
 
 Search Console → la barra de arriba **«Inspeccionar las URL de…»** → pegas la dirección → esperas
@@ -13,90 +15,132 @@ en orden de valor medido, no de comodidad.
 
 ---
 
-## Prioridad 1 — los calendarios de vacunas
+## ✅ Hechas el 7-sep-2026
+
+```
+https://pedibot.xyz/de/vaccines/de
+https://pedibot.xyz/es/vaccines/es
+https://pedibot.xyz/vaccines/us
+https://pedibot.xyz/vaccines/de
+https://pedibot.xyz/es/vaccines/gb
+https://pedibot.xyz/es/vaccines/us
+https://pedibot.xyz/es/vaccines/br
+https://pedibot.xyz/vaccines/br
+https://pedibot.xyz/vaccines/pt
+https://pedibot.xyz/de/vaccines/br
+```
+
+Google tarda de días a un par de semanas en decidir. Se puede comprobar cuándo entran: la
+inspección de URL lo dice, y el panel las contará en cuanto empiecen a salir.
+
+---
+
+## Turno siguiente — el resto de calendarios (21)
 
 **Por qué esta categoría antes que nada:** es la que mejor posiciona de toda la web. Las dos únicas
 consultas no de marca donde salimos por encima del puesto 30 son suyas — «calendario vacunal
 alemania» en el **puesto 11** y «vacuna meningococo» en el **27** — frente al 88-95 de las guías.
-Google considera estas páginas competitivas.
-
-**Y de las 56 que hay (7 países × 8 idiomas), no conoce 31.** No es un problema de calidad: es que
-más de la mitad no existen para él.
-
-Ordenadas por el público que de verdad tenemos medido (Alemania se lleva 116 de las 235
-impresiones del mes; España, 51):
+De las 56 que hay (7 países × 8 idiomas), Google no conocía 31.
 
 ```
- 1  https://pedibot.xyz/de/vaccines/de     ← la más valiosa de toda la lista
- 2  https://pedibot.xyz/es/vaccines/es
- 3  https://pedibot.xyz/vaccines/us
- 4  https://pedibot.xyz/vaccines/de
- 5  https://pedibot.xyz/es/vaccines/gb
- 6  https://pedibot.xyz/es/vaccines/us
- 7  https://pedibot.xyz/es/vaccines/br
- 8  https://pedibot.xyz/vaccines/br
- 9  https://pedibot.xyz/vaccines/pt
-10  https://pedibot.xyz/de/vaccines/br
+https://pedibot.xyz/fr/vaccines/br
+https://pedibot.xyz/fr/vaccines/de
+https://pedibot.xyz/fr/vaccines/gb
+https://pedibot.xyz/fr/vaccines/pt
+https://pedibot.xyz/pt/vaccines/br
+https://pedibot.xyz/pt/vaccines/de
+https://pedibot.xyz/pt/vaccines/pt
+https://pedibot.xyz/pt/vaccines/us
+https://pedibot.xyz/ar/vaccines/de
+https://pedibot.xyz/ar/vaccines/fr
 ```
 
-La primera merece la explicación: **`/es/vaccines/de` está en el puesto 11 y `/de/vaccines/de` —la
-misma página, en alemán— Google ni la conoce.** Alemania es donde más nos muestra, y ahí no
-tenemos nada indexado sobre su propio calendario.
-
-### Día 2 — el resto de calendarios
+Y después:
 
 ```
-/fr/vaccines/br   /fr/vaccines/de   /fr/vaccines/gb   /fr/vaccines/pt
-/pt/vaccines/br   /pt/vaccines/de   /pt/vaccines/pt   /pt/vaccines/us
-/ar/vaccines/de   /ar/vaccines/fr   /ar/vaccines/gb   /ar/vaccines/us
+https://pedibot.xyz/ar/vaccines/gb
+https://pedibot.xyz/ar/vaccines/us
+https://pedibot.xyz/ru/vaccines/br
+https://pedibot.xyz/ru/vaccines/de
+https://pedibot.xyz/ru/vaccines/es
+https://pedibot.xyz/ru/vaccines/fr
+https://pedibot.xyz/ru/vaccines/gb
+https://pedibot.xyz/ru/vaccines/pt
+https://pedibot.xyz/ru/vaccines/us
+https://pedibot.xyz/hi/vaccines/de
+https://pedibot.xyz/hi/vaccines/us
 ```
-
-Y si quedan turnos: `/ru/vaccines/{br,de,es,fr,gb,pt,us}` y `/hi/vaccines/{de,us}`.
 
 ---
 
-## Prioridad 2 — dosis por marca en español
+## Después — dosis por marca en español
 
 La otra demanda medida y no de marca: «calculadora apiretal» (6 impresiones), «apiretal
 calculadora» (3), «calculadora ibuprofeno» (3), «calcular dosis apiretal» (2). Compiten contra
 blogs, no contra el NHS — es la única categoría donde una web nueva puede ganar de verdad.
 
+La primera es la más fácil de ganar de toda la lista: **«apirofeno» es *ibuprofeno* mal escrito**,
+la gente lo busca así (dos consultas medidas), tenemos la página, y nadie optimiza para una falta
+de ortografía.
+
 ```
-/es/dose/apirofeno      ← ibuprofeno mal escrito: la gente lo busca así, y nadie
-/es/dose/nurofen           optimiza para una falta de ortografía
-/es/dose/paracetamol
-/es/dose/termalgin
-/es/dose/efferalgan
-/es/dose/panadol
-/es/dose/advil
-/es/dose/motrin
-/es/dose/tylenol
-/es/dose/doliprane
+https://pedibot.xyz/es/dose/apirofeno
+https://pedibot.xyz/es/dose/nurofen
+https://pedibot.xyz/es/dose/paracetamol
+https://pedibot.xyz/es/dose/termalgin
+https://pedibot.xyz/es/dose/efferalgan
+https://pedibot.xyz/es/dose/panadol
+https://pedibot.xyz/es/dose/advil
+https://pedibot.xyz/es/dose/motrin
+https://pedibot.xyz/es/dose/tylenol
+https://pedibot.xyz/es/dose/doliprane
 ```
 
 Estas páginas **cambiaron el 6-sep**: llevan ya la calculadora de verdad con su medicamento
 puesto, y el título dice «Calculadora de dosis de X por peso». Pedir la indexación de algo recién
 cambiado vale más que de algo que lleva semanas igual.
 
----
-
-## Prioridad 3 — las guías de fiebre y dosis
+Y en inglés, las dos que faltan:
 
 ```
-/es/guides/fiebre_en_ninos_que_temperatura_es_preocupante
-/es/guides/que_hago_si_mi_hijo_tiene_fiebre
-/es/guides/puedo_alternar_paracetamol_e_ibuprofeno_para_la_fiebre
-/guides/can_i_give_my_child_paracetamol_and_ibuprofen_together
+https://pedibot.xyz/dose/paracetamol
+https://pedibot.xyz/dose/tylenol
+https://pedibot.xyz/es/dose/ben
 ```
 
 ---
 
-## No las pidas: ya están indexadas
+## Por último — las guías de fiebre y dosis
 
-`/es/dose/apiretal` · `/es/dose/dalsy` · `/es/dose/alivium` · `/es/dose/calpol` ·
-`/es/dose/gelocatil` · `/es/dose/junifen` · `/es/dose/tachipirina` · `/es/dose/tempra` ·
-`/dose/calpol` · `/dose/nurofen` · `/dose/panadol` · `/es/vaccines` · `/vaccines` ·
-`/es/vaccines/de` · y otros 23 calendarios.
+```
+https://pedibot.xyz/es/guides/fiebre_en_ninos_que_temperatura_es_preocupante
+https://pedibot.xyz/es/guides/que_hago_si_mi_hijo_tiene_fiebre
+https://pedibot.xyz/es/guides/puedo_alternar_paracetamol_e_ibuprofeno_para_la_fiebre
+https://pedibot.xyz/guides/can_i_give_my_child_paracetamol_and_ibuprofen_together
+```
+
+---
+
+## No las pidas: Google ya las tiene
+
+```
+https://pedibot.xyz/vaccines
+https://pedibot.xyz/es/vaccines
+https://pedibot.xyz/es/vaccines/de
+https://pedibot.xyz/es/dose/apiretal
+https://pedibot.xyz/es/dose/dalsy
+https://pedibot.xyz/es/dose/alivium
+https://pedibot.xyz/es/dose/calpol
+https://pedibot.xyz/es/dose/gelocatil
+https://pedibot.xyz/es/dose/junifen
+https://pedibot.xyz/es/dose/tachipirina
+https://pedibot.xyz/es/dose/tempra
+https://pedibot.xyz/dose/calpol
+https://pedibot.xyz/dose/nurofen
+https://pedibot.xyz/dose/panadol
+```
+
+(más otros 23 calendarios ya indexados)
 
 ## Lo que esto NO hace
 
