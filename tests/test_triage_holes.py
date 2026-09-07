@@ -284,3 +284,87 @@ def test_the_same_thing_said_another_way(
 ) -> None:
     nivel = str(triage.assess(pregunta).level)
     assert ORDEN.get(nivel, -1) >= ORDEN[minimo], f"[{lang}] «{pregunta}» sale {nivel}"
+
+
+# --- y las escrituras que este fichero no miraba (7-sep-2026) ----------------------------------
+#
+# Las 31 urgencias que dieron origen a este fichero se escribieron en español, inglés, francés y
+# alemán. **No había ni una línea en cirílico, árabe o devanagari** — y aquella vez se colaron
+# veinte de treinta y una en los idiomas que sí se miraron.
+#
+# Al medir la cobertura por alfabeto de las 32 reglas, 29 tenían patrones en las tres escrituras y
+# tres no: las tres últimas que se añadieron. Las nuevas no heredaron el trabajo de idiomas que
+# las viejas ya tenían.
+#
+#     headache_warning_signs  [urgente]     solo es/en/fr/de
+#     neuro_deficit           [EMERGENCIA]  sin francés y sin hindi
+#     eating_disorder_signs   [mental]      sin hindi
+#
+# La de en medio es la grave: quien escribiera «le bras ne bouge plus» o «हाथ नहीं हिला रहा» no
+# recibía ninguna alarma.
+
+FUERA_DEL_ALFABETO_LATINO = [
+    # (idioma, nivel esperado, cómo lo escribiría un padre)
+    ("hi", "emergency", "मेरे बच्चे का हाथ नहीं हिला रहा"),
+    ("hi", "emergency", "बच्चे का मुँह टेढ़ा हो गया है"),
+    ("fr", "emergency", "mon fils ne bouge plus le bras"),
+    ("fr", "emergency", "il a la bouche de travers"),
+    ("ru", "urgent", "головная боль будит его по ночам"),
+    ("ar", "urgent", "صداع يوقظه في الليل ويزداد"),
+    ("hi", "urgent", "सिरदर्द रात को जगा देता है और बढ़ता जा रहा है"),
+    ("pt", "urgent", "dor de cabeça que acorda à noite e cada vez pior"),
+    ("hi", "mental_health", "मेरी बेटी ने खाना छोड़ दिया है"),
+]
+
+#: Y la otra mitad, sin la cual esto sería una máquina de alarmas: lo corriente sigue siendo
+#: corriente. Una alarma que salta con unos mocos enseña a ignorarla (L35).
+CORRIENTE_FUERA_DEL_LATINO = [
+    ("es", "mi hijo tiene mocos y tos"),
+    ("fr", "mon enfant a le nez qui coule"),
+    ("hi", "मेरे बच्चे को हल्की खाँसी है"),
+    ("ru", "у ребёнка насморк"),
+    ("ar", "ابني عنده زكام خفيف"),
+]
+
+
+@pytest.mark.parametrize(("lang", "nivel", "pregunta"), FUERA_DEL_ALFABETO_LATINO)
+def test_the_alarm_fires_outside_the_latin_alphabet(
+    lang: str, nivel: str, pregunta: str, triage: Triage
+) -> None:
+    r = triage.assess(pregunta)
+    assert r.level == nivel, f"[{lang}] «{pregunta}» → {r.level}, se esperaba {nivel}"
+
+
+@pytest.mark.parametrize(("lang", "pregunta"), CORRIENTE_FUERA_DEL_LATINO)
+def test_an_ordinary_cold_stays_ordinary_in_every_script(
+    lang: str, pregunta: str, triage: Triage
+) -> None:
+    assert triage.assess(pregunta).level == "routine", f"[{lang}] «{pregunta}» da la alarma"
+
+
+def test_every_rule_can_fire_in_every_script() -> None:
+    """El candado estructural, que es el que impide que la próxima regla nazca con cuatro idiomas.
+
+    Una regla sin un solo patrón en devanagari **no puede saltar jamás** para un padre que escriba
+    en hindi, y eso se sabe sin probar ni un caso: basta con mirar si hay caracteres de esa
+    escritura entre sus patrones.
+    """
+    import yaml
+
+    reglas = yaml.safe_load((ROOT / "config" / "red_flags.yaml").read_text(encoding="utf-8"))
+    if isinstance(reglas, dict):
+        reglas = reglas.get("rules", reglas)
+    bloques = {
+        "cirílico": ("Ѐ", "ӿ"),
+        "árabe": ("؀", "ۿ"),
+        "devanagari": ("ऀ", "ॿ"),
+    }
+    huecos = {}
+    for r in reglas:
+        patrones = "".join(str(p) for p in (r.get("patterns") or []))
+        faltan = [n for n, (lo, hi) in bloques.items() if not any(lo <= c <= hi for c in patrones)]
+        if faltan:
+            huecos[r["id"]] = faltan
+    assert not huecos, "reglas que no pueden saltar en algunas escrituras:\n  " + "\n  ".join(
+        f"{k}: sin {v}" for k, v in huecos.items()
+    )

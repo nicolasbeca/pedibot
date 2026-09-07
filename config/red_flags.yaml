@@ -1287,9 +1287,12 @@ rules:
   - (anorexi|bulimi|binge eating)
   - (saute|sauté|saute des).{0,15}repas
   - (mahlzeiten|essen).{0,25}(auslass|verweiger)
-  - (магazин)?(пропускает|отказывается).{0,20}(еду|прием пищи|есть)
+  - (пропускает|отказывается).{0,20}(еду|прием пищи|есть)
   - (يتخطى|ترفض|يرفض).{0,20}(الوجبات|الأكل)
   - (pula|pulando).{0,15}refei[çc][õo]es
+  - (खाना).{0,25}(छोड़ दिया|नहीं खा रह)
+  - (वज़न|वजन|कैलोरी).{0,25}(जुनून|की चिंता|लेकर परेशान)
+  - (खाने के बाद).{0,20}(उल्टी|वमन)
 
 - id: neuro_deficit
   level: emergency
@@ -1332,6 +1335,17 @@ rules:
   - (كلام|نطق).{0,15}(غير واضح|متلعثم)
   - (n[ãa]o (mexe|move)).{0,25}(bra[çc]o|perna|m[ãa]o)
   - (fala).{0,20}(enrolada|arrastrada|com dificuldade)
+  # francés e hindi faltaban en una regla de EMERGENCIA: quien escribiera «le bras ne
+  # bouge plus» o «हाथ नहीं हिला रहा» no recibía ninguna alarma (7-sep-2026)
+  - (ne bouge (pas|plus)).{0,25}(bras|jambe|main|côté)
+  - (parle).{0,20}(bizarrement|difficilement|mal d'un coup)
+  - (bouche|visage).{0,20}(de travers|qui tombe|tombée d'un côté)
+  - (voit double|vision double|voit flou).{0,20}(d'un coup|soudain|tout à coup)?
+  - (faiblesse).{0,25}(d'un côté|d'un seul côté)
+  - (हाथ|पैर|बाँह).{0,25}(नहीं हिला|नहीं चल|हिला नहीं)
+  - (बोलने|बोलना).{0,15}(दिक्कत|मुश्किल|तकलीफ़|तकलीफ)
+  - (मुँह|मुंह|चेहरा).{0,20}(टेढ़ा|टेढ़ी|लटक)
+  - (एक तरफ|एक ओर).{0,20}(कमज़ोर|कमजोर|ताकत नहीं)
 
 - id: headache_warning_signs
   level: urgent
@@ -1350,6 +1364,12 @@ rules:
   - (headache).{0,60}(wakes (him|her|them) (up )?at night|worse and worse|getting worse|not going away with)
   - (mal de t[eê]te|c[ée]phal[ée]e).{0,60}(r[ée]veille la nuit|de pire en pire)
   - (kopfschmerz|kopfweh).{0,60}(weckt (ihn|sie) nachts|immer schlimmer)
+  # portugués, ruso, árabe e hindi: la regla se añadió con los cuatro idiomas latinos y
+  # sin los demás, así que no podía saltar para más de la mitad de la web (7-sep-2026)
+  - (dor de cabe[çc]a|cefaleia).{0,60}(acorda (à noite|de madrugada)|cada vez pior|piorando|não passa com)
+  - (головн\w* бол|голова болит).{0,60}(будит|по ночам|всё сильнее|сильнее и сильнее|не проходит)
+  - (صداع|ألم في الرأس).{0,60}(يوقظه|يوقظها|يزداد|يزيد|لا يزول)
+  - (सिरदर्द|सिर में दर्द|सिर दर्द).{0,60}(रात को जगा|नींद से जगा|बढ़ता जा|ठीक नहीं हो)
 
 - id: suicidal_ideation
   level: mental_health
