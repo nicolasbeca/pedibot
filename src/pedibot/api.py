@@ -147,6 +147,21 @@ class ApiConfig:
     max_daily_llm_usd: float = 2.0
 
 
+#: Lo que se dice cuando se ha agotado el tope de gasto del día y la respuesta sale sin modelo.
+#: Estaba en dos idiomas —inglés, y español para los otros seis—, así que un padre alemán recibía
+#: una frase en español (7-sep-2026).
+BUDGET_SPENT = {
+    "en": "Today's answer budget is used up, so here are the relevant guideline passages instead:",
+    "es": "El presupuesto de respuestas de hoy se ha agotado; aquí tienes los pasajes relevantes de las guías:",
+    "fr": "Le budget de réponses du jour est épuisé ; voici les passages pertinents des recommandations :",
+    "de": "Das Antwortbudget für heute ist aufgebraucht; hier sind stattdessen die passenden Stellen aus den Leitlinien:",
+    "ru": "Дневной лимит ответов исчерпан; вот подходящие фрагменты из рекомендаций:",
+    "ar": "انتهت حصة الإجابات لهذا اليوم؛ إليك المقاطع المتعلقة من الإرشادات:",
+    "pt": "O orçamento de respostas de hoje acabou; aqui estão os trechos relevantes das diretrizes:",
+    "hi": "आज का उत्तर बजट समाप्त हो गया है; यहाँ दिशानिर्देशों के प्रासंगिक अंश हैं:",
+}
+
+
 def _ml(mg: float, mg_per_ml: float) -> float:
     """Mililitros a partir de miligramos, SIEMPRE hacia abajo.
 
@@ -224,22 +239,22 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             # spending cap reached: retrieval-only answer (no LLM) — PRD §8 "tope de gasto"
             lang = body.lang or "en"
             hits, _ = engine.retriever.search(body.question, lang)
-            from pedibot.bot.answer import Answer
+            from pedibot.bot.answer import Answer, build_banner
 
-            text = (
-                NO_SOURCE[lang]
-                if not hits
-                else (
-                    "Today's answer budget is used up, so here are the relevant guideline passages instead:"
-                    if lang == "en"
-                    else "El presupuesto de respuestas de hoy se ha agotado; aquí tienes los pasajes relevantes de las guías:"
-                )
-            )
+            # El triaje SÍ se hace, aunque no haya modelo. Hasta el 7-sep-2026 este camino
+            # devolvía «routine» y banner None sin más: quien preguntara por un sarpullido que no
+            # blanquea el día que se agotó el presupuesto no veía ninguna alarma. Y el triaje es
+            # determinista y gratis — no usa el modelo, no cuesta nada, y es lo único de la
+            # respuesta que no se puede perder.
+            tr = engine.triage.assess(body.question)
+            banner = build_banner(tr, lang, engine.numbers.get(body.country, lang))
+
+            text = NO_SOURCE[lang] if not hits else BUDGET_SPENT.get(lang, BUDGET_SPENT["en"])
             sources = [f"[{i}] {h.chunk.citation()}" for i, h in enumerate(hits, 1)]
             a = Answer(
                 text,
-                "routine",
-                None,
+                tr.level,
+                banner,
                 sources,
                 lang,
                 None,
