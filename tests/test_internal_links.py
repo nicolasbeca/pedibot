@@ -204,3 +204,96 @@ def test_no_page_loads_anything_from_a_third_party(have: set[str]) -> None:
             if host and not host.endswith("pedibot.xyz"):
                 ajenos.append(f"{f.relative_to(DIST)} carga {host}")
     assert not ajenos, "\n".join(sorted(set(ajenos))[:15])
+
+
+def test_every_page_family_has_a_door_from_a_well_crawled_page(have: set[str]) -> None:
+    """Un grupo de páginas que solo se enlazan entre ellas no se rastrea, por muchos enlaces que
+    tenga: vienen de páginas igual de olvidadas.
+
+    Pasó dos veces. El 4-sep con las 120 páginas de marca de dosis, que se enlazaban entre ellas y
+    nada del sitio entraba. Y el 7-sep con los calendarios de vacunas: cada uno tenía CATORCE
+    enlaces entrantes y **trece venían de otro calendario**. Google no conocía 31 de las 56, siendo
+    la categoría que mejor posiciona de toda la web.
+
+    Lo que se comprueba no es el número de enlaces sino la ley medida contra 45 días de Googlebot:
+    se rastreó el 100% de lo que está a un clic de una portada, ~50% a dos o tres, y el 0% de lo
+    huérfano. Hace falta al menos una puerta desde una página que Google ya visita.
+    """
+    HREF = re.compile(r'<a\b[^>]*?href="([^"]+)"', re.I)
+    EXT = re.compile(r"^(https?:|mailto:|tel:|#|javascript:)", re.I)
+
+    def limpia(p: str) -> str:
+        p = p.split("#")[0].split("?")[0]
+        return ("/" + p.lstrip("/")).rstrip("/") or "/"
+
+    salidas: dict[str, set[str]] = {}
+    for f in DIST.rglob("*.html"):
+        rel = "/" + str(f.relative_to(DIST)).replace("\\", "/")
+        rel = limpia(
+            rel[: -len("index.html")] if rel.endswith("/index.html") else rel[: -len(".html")]
+        )
+        salidas[rel] = {
+            limpia(h)
+            for h in HREF.findall(f.read_text(encoding="utf-8", errors="ignore"))
+            if not EXT.match(h)
+        }
+
+    # anchura primero desde cada portada de idioma, que es como llega un rastreador
+    # el inglés vive en la raíz; los otros siete llevan prefijo
+    otros = ("es", "fr", "de", "ru", "ar", "pt", "hi")
+    raices = [r for r in ["/"] + [f"/{x}" for x in otros] if r in salidas]
+    profundidad = {r: 0 for r in raices}
+    cola = list(raices)
+    while cola:
+        cur = cola.pop(0)
+        for nxt in salidas.get(cur, ()):
+            if nxt in salidas and nxt not in profundidad:
+                profundidad[nxt] = profundidad[cur] + 1
+                cola.append(nxt)
+
+    entrantes: dict[str, set[str]] = {}
+    for src, outs in salidas.items():
+        for o in outs:
+            if o in salidas and o != src:
+                entrantes.setdefault(o, set()).add(src)
+
+    #: familias numerosas que tienden a enlazarse solo entre ellas
+    FAMILIAS = {
+        "calendarios de vacunas": re.compile(r"^(/[a-z]{2})?/vaccines/[a-z]{2}$"),
+        "dosis por medicamento": re.compile(r"^(/[a-z]{2})?/dose/[a-z0-9-]+$"),
+    }
+
+    sin_puerta: list[str] = []
+    for nombre, patron in FAMILIAS.items():
+        miembros = {p for p in salidas if patron.match(p)}
+        assert miembros, f"no encuentro ninguna página de «{nombre}»"
+        for pagina in sorted(miembros):
+            puertas = {
+                s
+                for s in entrantes.get(pagina, set())
+                if not patron.match(s) and profundidad.get(s, 99) <= 1
+            }
+            if not puertas:
+                sin_puerta.append(
+                    f"[{nombre}] {pagina}: {len(entrantes.get(pagina, set()))} enlaces entrantes "
+                    "y ninguno desde una página a un clic de la portada"
+                )
+    assert not sin_puerta, "\n".join(sin_puerta[:12])
+
+
+def test_the_vaccine_calendars_are_linked_from_their_guide(have: set[str]) -> None:
+    """El puente que se construyó el 7-sep. La guía de vacunas de cada idioma no enlazaba ningún
+    calendario —cero— así que la única puerta de los 56 era la herramienta por edades. Ahora hay
+    dos, y la segunda viene de otro grupo temático, que es lo que rompe la isla."""
+    HREF = re.compile(r'href="((?:/[a-z]{2})?/vaccines/[a-z]{2})"')
+    # se detecta por lo que hace, no por cómo se llama: el nombre del fichero cambia en cada
+    # idioma («cuales_son_las_vacunas…», «welche_impfungen…», «bachchon_ke_teeke…»)
+    con_enlaces = [
+        f
+        for f in DIST.rglob("*.html")
+        if "/guides/" in str(f).replace("\\", "/")
+        and HREF.search(f.read_text(encoding="utf-8", errors="ignore"))
+    ]
+    assert len(con_enlaces) >= 8, (
+        f"solo {len(con_enlaces)} guías enlazan un calendario; debería haber una por idioma"
+    )

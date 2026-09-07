@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
+import schedules from '../../../data/vaccines.json';
 import { t } from '../../../i18n';
 import { faqsFrom, relatedTo, topicKeys } from '../../../guides';
 export async function getStaticPaths() {
@@ -83,6 +84,23 @@ const jsonld = faqLd ? [page, faqLd] : page;
     <p class="ask-top"><a href={`/de?q=${encodeURIComponent(g.data.title)}`}>{s.ask_top} →</a></p>
     <Content />
     <p style="margin-top:32px"><a class="btn btn-primary" href={`/de?q=${encodeURIComponent(g.data.title)}`}>{s.ask_about} →</a></p>
+    {['vacunas', 'vaccines_en'].includes(g.data.topic) && (
+      /* El puente que rompe la isla de los calendarios (7-sep-2026): cada uno tenía 14 enlaces
+         entrantes y trece venían de otros calendarios, igual de poco rastreados — Google no
+         conocía 31 de las 56. Y es lo que el lector quiere de todas formas: acaba de leer sobre
+         vacunas y lo siguiente que necesita es el calendario de su país. */
+      <nav class="related">
+        <h2>{s.vax_by_country_h}</h2>
+        <ul>
+          {Object.entries(schedules as any).map(([c, d]: any) => (
+            <li>
+              <a href={`/de/vaccines/${c.toLowerCase()}`}>{d.name?.[lang] ?? d.name?.en ?? c}</a>
+              <span>{String(d.source ?? '').split('—')[0].trim()}</span>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
     {related.length > 0 && (
       <nav class="related">
         <h2>{s.related_h}</h2>
