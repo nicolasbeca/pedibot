@@ -98,3 +98,34 @@ def test_the_volume_never_sits_above_the_milligrams_it_came_from(clave: str, en_
                 f"{clave} {kg} kg {p.name}: {r.ml[p.name]} ml son "
                 f"{r.ml[p.name] * p.mg_per_ml} mg, por encima de los {r.mg} mg calculados"
             )
+
+
+def test_the_typescript_formula_is_still_the_one_mirrored_here() -> None:
+    """El candado del candado, y el punto flojo de todo este fichero dicho en voz alta.
+
+    Las comprobaciones de arriba **reproducen** la aritmética de `weightTable()` en Python: no
+    ejecutan el TypeScript. Si alguien cambia la fórmula de la web, esta copia no se entera y el
+    resto del fichero seguiría en verde comparando el motor contra una fórmula que ya no es la
+    que corre en el navegador de nadie.
+
+    Así que se ancla el texto. No es elegante, pero es honesto: si la fórmula cambia, esto falla
+    y quien la cambie tiene que venir aquí y actualizar el espejo. Meter node en la suite para
+    ejecutar el TypeScript de verdad sería más fuerte y también más frágil — la suite dejaría de
+    correr sin `node_modules`.
+    """
+    ts = (RAIZ / "web" / "site" / "src" / "dosepages.ts").read_text(encoding="utf-8")
+    espejadas = [
+        # el miligramo del que sale todo: el techo de la banda, con el tope de dosis única
+        "const mgMax = Math.min(hi * kg, m.d.max_single_mg);",
+        "const mg = mgMax;",
+        # hacia abajo, a la décima de mililitro
+        "ml: m.forms.map((f) => String(Math.floor((mg / f.mg_per_ml) * 10) / 10)),",
+        # el rango de pesos que la tabla cubre
+        "for (let kg = 5; kg <= 40; kg++) {",
+    ]
+    faltan = [linea for linea in espejadas if linea not in ts]
+    assert not faltan, (
+        "la aritmética de dosepages.ts ha cambiado y el espejo de este fichero no:\n  "
+        + "\n  ".join(faltan)
+        + "\nActualiza test_two_calculators_agree.py antes de dar por buena la comparación."
+    )
