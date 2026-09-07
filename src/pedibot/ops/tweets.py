@@ -85,17 +85,26 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
     # new language quietly fell back to English (tests/test_i18n_parity.py)
     from pedibot.bot.strings import LANGUAGE_NAME
 
-    per_lang = collections.Counter(
-        p.parent.name for p in (root / "web" / "content").rglob("*.md")
-    )
+    per_lang = collections.Counter(p.parent.name for p in (root / "web" / "content").rglob("*.md"))
     con = sqlite3.connect(index_db)
-    orgs: collections.Counter[str] = collections.Counter()
+    #: Documentos DISTINTOS por organismo, no trozos del índice. Contar trozos ordenaba por
+    #: grosor: un manual de 400 páginas se parte en miles de pedazos, así que Ecimed (2.056
+    #: trozos, UN documento) y el College of the Canyons (658 trozos, UN documento) adelantaban
+    #: al NHS entero. El tuit del 7-sep-2026 salió diciendo «288 documentos de 18 organismos,
+    #: incluidos Ecimed, PUC Chile y el College of the Canyons» — verdad, y la peor foto posible
+    #: del proyecto, con el NHS, la OMS, MedlinePlus y los CDC fuera de la frase.
+    #: La lista se ordena por la misma unidad que nombra la frase: documentos.
+    orgs: dict[str, set[str]] = {}
     docs: set[str] = set()
     for (raw,) in con.execute("SELECT data FROM chunks"):
         d = json.loads(raw)
-        orgs[d.get("org")] += 1
+        # un documento sin firmar no es un organismo llamado «None»: hoy no hay ninguno, pero si
+        # lo hubiera subiría el «18 organismos» del tuit sin que nadie hubiera añadido nada
+        if d.get("org"):
+            orgs.setdefault(str(d["org"]), set()).add(str(d.get("doc_id")))
         docs.add(d.get("doc_id"))
     con.close()
+    por_documentos = sorted(orgs.items(), key=lambda kv: (-len(kv[1]), kv[0]))
 
     vax = yaml.safe_load((root / "config" / "vaccines.yaml").read_text(encoding="utf-8"))
     # the body before the dash in each calendar's source line. Named rather than described,
@@ -123,7 +132,7 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
         "languages": len(per_lang),
         "documents": len(docs),
         "organisations": len(orgs),
-        "organisation_names": [o for o, _ in orgs.most_common(10) if o],
+        "organisation_names": [o for o, _ in por_documentos[:10]],
         "vaccine_countries": len(vax["countries"]),
         "vaccine_country_codes": sorted(vax["countries"]),
         "vaccine_authorities": authorities,

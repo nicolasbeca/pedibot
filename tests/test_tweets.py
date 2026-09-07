@@ -191,7 +191,9 @@ def test_it_will_not_name_a_body_that_does_not_exist() -> None:
 def test_a_capital_at_the_start_of_a_sentence_proves_nothing() -> None:
     """English capitalises the first word of every sentence, and after an opening quote. Treating
     those as names would reject almost everything."""
-    assert problems("Vaccination schedules cover 7 countries. Each cites its own source.", FACTS) == []
+    assert (
+        problems("Vaccination schedules cover 7 countries. Each cites its own source.", FACTS) == []
+    )
 
 
 def test_it_will_not_quote_a_guide_that_does_not_exist() -> None:
@@ -224,10 +226,90 @@ def test_the_health_account_never_posts_about_the_token(draft: str) -> None:
 
 
 def test_the_token_check_does_not_eat_ordinary_english() -> None:
-    """"listed" threw away a good draft on the first real run: the documents of a guide are
+    """ "listed" threw away a good draft on the first real run: the documents of a guide are
     listed at the foot. A guard that rejects true sentences costs drafts every week."""
     fine = (
         "Every sentence in a guide carries the number of its document, and the documents "
         "are listed at the foot."
     )
     assert problems(fine, FACTS) == []
+
+
+# --- los organismos se ordenaban por grosor, no por número de documentos (7-sep-2026) ---------
+#
+# La frase que sale del generador es «built from 288 published documents by 18 bodies, including
+# ...», pero la lista de nombres venía de contar TROZOS del índice. Un manual de 400 páginas se
+# parte en miles de pedazos, así que un solo libro adelantaba a un organismo entero:
+#
+#   por trozos:      Ecimed 2056, PUC Chile 926, WHO 703, College of the Canyons 658, NHS 361
+#   por documentos:  MedlinePlus 74, NHS 56, WHO 54, RKI 30, SEUP 29, CDC 19
+#
+# Ecimed y el College of the Canyons son UN documento cada uno. El ensayo del 7-sep escribió
+# «including Ecimed, PUC Chile, the College of the Canyons and Santé publique France»: cada
+# palabra verdad, y a la vez la peor foto posible del proyecto —el NHS, la OMS, los CDC y
+# MedlinePlus fuera de la frase— en el único texto que existe para darlo a conocer.
+
+
+def _indice_de_prueba(tmp_path):
+    """Un índice con un libro gordo de un organismo pequeño y muchas hojas de uno grande."""
+    import json
+    import sqlite3
+
+    db = tmp_path / "i.db"
+    con = sqlite3.connect(db)
+    con.execute("CREATE TABLE chunks (data TEXT)")
+    filas = []
+    # un solo documento troceado en 500 pedazos
+    filas += [json.dumps({"org": "Editorial Gorda", "doc_id": "libro"}) for _ in range(500)]
+    # veinte documentos de tres pedazos cada uno
+    for i in range(20):
+        filas += [json.dumps({"org": "NHS", "doc_id": f"nhs_{i}"}) for _ in range(3)]
+    con.executemany("INSERT INTO chunks VALUES (?)", [(f,) for f in filas])
+    con.commit()
+    con.close()
+    return db
+
+
+def test_the_bodies_are_ranked_by_documents_not_by_how_fat_their_pdfs_are(tmp_path):
+    from pedibot.ops.tweets import facts
+
+    f = facts(ROOT, _indice_de_prueba(tmp_path))
+    nombres = f["organisation_names"]
+    assert nombres[0] == "NHS", (
+        f"se ordena por grosor otra vez: {nombres}. Un libro de 500 trozos no representa al "
+        "proyecto mejor que veinte hojas de un organismo de referencia."
+    )
+    assert f["organisations"] == 2
+
+
+def test_an_unsigned_document_is_not_a_body_called_none(tmp_path):
+    """Al pasar el campo por str(), un documento sin organismo se convertiría en uno llamado
+    «None» y subiría el «18 organismos» del tuit sin que nadie hubiera añadido nada."""
+    import json
+    import sqlite3
+
+    from pedibot.ops.tweets import facts
+
+    db = tmp_path / "i.db"
+    con = sqlite3.connect(db)
+    con.execute("CREATE TABLE chunks (data TEXT)")
+    con.executemany(
+        "INSERT INTO chunks VALUES (?)",
+        [(json.dumps({"org": "NHS", "doc_id": "a"}),), (json.dumps({"doc_id": "b"}),)],
+    )
+    con.commit()
+    con.close()
+    f = facts(ROOT, db)
+    assert f["organisations"] == 1
+    assert "None" not in f["organisation_names"]
+
+
+def test_the_real_sheet_leads_with_the_bodies_a_reader_would_recognise():
+    """Sobre el corpus de verdad: el candado del arreglo. No se pide un orden exacto —cambiará al
+    ingerir— sino que los que aportan más documentos estén, que es lo que dice la frase."""
+    from pedibot.ops.tweets import facts
+
+    f = facts(ROOT, ROOT / "index" / "pedibot.db")
+    nombres = set(f["organisation_names"])
+    for esperado in ("NHS", "WHO", "MedlinePlus", "CDC"):
+        assert esperado in nombres, f"{esperado} no llega a la hoja de datos: {sorted(nombres)}"
