@@ -25,8 +25,12 @@ class Presentation:
 @dataclass(frozen=True)
 class Drug:
     key: str
-    name_es: str
-    name_en: str
+    #: El nombre genérico en los ocho idiomas. Eran dos campos, `name_es` y `name_en`, y el
+    #: formateador elegía con `d.name_es if lang == "es" else d.name_en`: la forma que el
+    #: candado del i18n prohíbe en la web —entrega la rama inglesa a los otros seis— viviendo
+    #: en el Python, donde ese candado no miraba. Un padre ruso leía «Paracetamol
+    #: (acetaminophen) для 12 кг» (7-sep-2026).
+    names: dict[str, str]
     mg_per_kg_min: float
     mg_per_kg_max: float
     #: The single figure to act on. The band is what the guide publishes; this is the
@@ -45,8 +49,16 @@ class Drug:
 
 PARACETAMOL = Drug(
     key="paracetamol",
-    name_es="Paracetamol",
-    name_en="Paracetamol (acetaminophen)",
+    names={
+        "en": "Paracetamol (acetaminophen)",
+        "es": "Paracetamol",
+        "fr": "Paracétamol",
+        "de": "Paracetamol",
+        "ru": "Парацетамол",
+        "ar": "باراسيتامول",
+        "pt": "Paracetamol",
+        "hi": "पैरासिटामोल",
+    },
     mg_per_kg_min=10,
     mg_per_kg_max=15,
     usual_mg_per_kg=15,
@@ -74,8 +86,16 @@ PARACETAMOL = Drug(
 
 IBUPROFENO = Drug(
     key="ibuprofeno",
-    name_es="Ibuprofeno",
-    name_en="Ibuprofen",
+    names={
+        "en": "Ibuprofen",
+        "es": "Ibuprofeno",
+        "fr": "Ibuprofène",
+        "de": "Ibuprofen",
+        "ru": "Ибупрофен",
+        "ar": "إيبوبروفين",
+        "pt": "Ibuprofeno",
+        "hi": "आइबुप्रोफेन",
+    },
     mg_per_kg_min=5,
     mg_per_kg_max=10,
     usual_mg_per_kg=10,
@@ -190,7 +210,7 @@ def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) 
 def format_result(r: DoseResult, lang: str = "en") -> str:
     d = r.drug
     T = tool_strings(lang)
-    name = d.name_es if lang == "es" else d.name_en
+    name = d.names.get(lang, d.names["en"])
     lines = [T["dose_for"].format(name=name, kg=r.weight_kg)]
     if r.refer:
         lines.append(

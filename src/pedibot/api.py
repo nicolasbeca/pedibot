@@ -333,7 +333,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         info = cat.drugs[key] if cat else None
         return {
             "drug": key,
-            "generic": info.generic.get(body.lang, info.generic["en"]) if info else r.drug.name_en,
+            "generic": info.generic.get(body.lang, info.generic["en"]) if info else r.drug.names.get(body.lang, r.drug.names["en"]),
             "brand": brand.name if brand else None,
             "weight_kg": r.weight_kg,
             "mg": r.mg,

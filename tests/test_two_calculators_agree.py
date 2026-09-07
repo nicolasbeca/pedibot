@@ -129,3 +129,44 @@ def test_the_typescript_formula_is_still_the_one_mirrored_here() -> None:
         + "\n  ".join(faltan)
         + "\nActualiza test_two_calculators_agree.py antes de dar por buena la comparación."
     )
+
+
+@pytest.mark.parametrize(("clave", "en_catalogo"), PAREJAS)
+def test_the_drug_name_is_written_in_every_language(clave: str, en_catalogo: str) -> None:
+    """El nombre salía en inglés en cinco de los ocho idiomas.
+
+    Visto en producción justo después de arreglar el enrutado: un padre ruso que preguntaba la
+    dosis leía «Paracetamol (acetaminophen) для 12 кг» — la frase en ruso y el nombre en inglés.
+    El formateador elegía con `d.name_es if lang == "es" else d.name_en`, que es **la forma que
+    `tests/test_i18n_parity.py` prohíbe en los componentes de la web** («entrega la rama inglesa a
+    todos los demás»), viviendo en el Python, donde ese candado no miraba.
+
+    Y como todo lo de este fichero: el nombre tiene que coincidir con el del catálogo, o la web y
+    el chat volverían a llamar de dos maneras distintas a la misma cosa.
+    """
+    from pedibot.bot.answer import SUPPORTED_LANGS
+
+    d, y = DRUGS[clave], CATALOGO[en_catalogo]
+    faltan = sorted(set(SUPPORTED_LANGS) - set(d.names))
+    assert not faltan, f"{clave}: el motor no sabe llamarlo en {faltan}"
+    distintos = {
+        lang: (d.names[lang], y["generic"][lang])
+        for lang in SUPPORTED_LANGS
+        if d.names[lang] != y["generic"][lang]
+    }
+    assert not distintos, f"{clave}: el motor y el catálogo lo llaman distinto: {distintos}"
+
+
+def test_nobody_picks_the_language_with_a_ternary_in_the_dose_code() -> None:
+    """La causa, anclada. `lang == "es" ? a : b` es la forma del fallo: el segundo idioma se lleva
+    la rama de los otros seis. La web lo tiene prohibido por candado desde el 3-sep; el Python no,
+    y por eso duró hasta el 7."""
+    import re
+
+    fuente = (RAIZ / "src" / "pedibot" / "bot" / "dose.py").read_text(encoding="utf-8")
+    malas = [
+        linea.strip()
+        for linea in fuente.splitlines()
+        if re.search(r'if lang == [\'"]\w+[\'"] else', linea.split("#")[0])
+    ]
+    assert not malas, "vuelve a decidirse el idioma con un ternario:\n  " + "\n  ".join(malas)
