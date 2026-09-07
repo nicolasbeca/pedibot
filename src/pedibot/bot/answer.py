@@ -32,7 +32,22 @@ CHILD_MODE = (
     "with one thing the child can do (drink, rest, tell mum or dad if…). Keep the citations.\n"
 )
 _CIT = re.compile(r"\[(\d{1,2})\]")
-_WEIGHT = re.compile(r"(\d{1,3}(?:[.,]\d)?)\s*(?:kg|kilos?|kilogramos?|kgs)\b", re.I)
+#: Los kilos, en las ocho lenguas. Las unidades latinas llevan `\b` detrás; las de las otras
+#: escrituras NO, por lo mismo que en el detector de vacunas: `\b` se define sobre `\w` y en
+#: árabe y devanagari los sufijos son caracteres de palabra, así que la frontera no existe.
+#: Hasta el 7-sep-2026 solo conocía «kg», y con eso el ruso, el árabe y el hindi no llegaban
+#: nunca a la calculadora — que es la única herramienta que da un mililitro exacto sin modelo.
+_WEIGHT = re.compile(
+    r"(\d{1,3}(?:[.,]\d)?)\s*"
+    r"(?:(?:kg|kilos?|kilogramos?|kgs|quilos?)\b"
+    r"|кг|килограмм\w*|кило\w*"
+    r"|كيلوغرام|كيلوجرام|كيلو|كجم|كغ"
+    r"|किलोग्राम|किलो|किग्रा)",
+    re.I,
+)
+
+#: Las cifras arábigo-índicas y devanagari, que es lo que sale de un teclado árabe o hindi.
+_DIGITOS = str.maketrans("٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹०१२३४५६७८९", "01234567890123456789" + "0123456789")
 _DRUG = re.compile(
     r"\b(paracetamol|acetaminophen|tylenol|apiretal|ibuprofen[oe]?|dalsy|advil|nurofen)\w*", re.I
 )
@@ -407,6 +422,7 @@ def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, floa
     """(drug_key, weight_kg) when the message is a dose question with an explicit weight.
 
     Brand names (Calpol, Tylenol, Dalsy, Nurofen…) resolve through the catalogue when given."""
+    query = query.translate(_DIGITOS)
     w = _WEIGHT.search(query)
     if not w:
         return None
@@ -416,7 +432,14 @@ def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, floa
     if d:
         key = _DRUG_ALIAS.get(d.group(1).lower(), d.group(1).lower())
     elif drugs is not None:
-        for tok in re.findall(r"[a-záéíóúñ][a-záéíóúñ'\-]{3,}", query.lower()):
+        # Las palabras, en cualquier escritura. Se parte por espacios y puntuación en vez de
+        # preguntar «¿esto es una letra?»: `\w` son los caracteres alfanuméricos, y las vocales
+        # del devanagari (las matras: ा ि ो ै) son marcas combinantes, así que una versión basada
+        # en `\w` rompe «पैरासिटामोल» en trozos de una letra y no encuentra nada. Es el primo
+        # hermano del `\b` que tampoco funciona en esa escritura (ver triage.py).
+        for tok in re.split(r"[\s,.;:!?¿¡()\[\]«»\"'/\\-]+", query.lower()):
+            if len(tok) < 4:
+                continue
             r = drugs.resolve(tok)
             if r:
                 key = r[0]

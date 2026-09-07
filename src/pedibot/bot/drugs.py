@@ -64,12 +64,20 @@ class DrugCatalog:
     def resolve(self, name: str) -> tuple[str, Brand | None] | None:
         """'calpol' → ('paracetamol', Brand Calpol); 'ibuprofeno' → ('ibuprofen', None)."""
         n = name.strip().lower()
+        # El árabe pega el artículo a la palabra: «الباراسيتامول» es «باراسيتامول» con ال delante.
+        candidatos = {n, n[2:]} if n.startswith("ال") and len(n) > 4 else {n}
         for key, d in self.drugs.items():
-            if (
-                n == key
-                or n in d.aliases
-                or n == d.generic["en"].lower()
-                or n == d.generic["es"].lower()
+            # TODOS los idiomas del catálogo, no solo el inglés y el español: hasta el
+            # 7-sep-2026 comparaba con dos de los ocho, así que «парацетамол» o «पैरासिटामोल»
+            # no resolvían aunque el nombre estuviera escrito en la ficha.
+            genericos = {str(v).lower() for v in d.generic.values()}
+            exactos = {key} | set(d.aliases) | genericos
+            if candidatos & exactos:
+                return key, None
+            # El ruso declina: un padre escribe «сколько парацетамолА», no el nominativo suelto.
+            # Por raíz, y solo contra nombres largos, que no pescan de más.
+            if any(
+                c.startswith(g) for c in candidatos for g in genericos if len(g) >= 8
             ):
                 return key, None
         for key, d in self.drugs.items():
