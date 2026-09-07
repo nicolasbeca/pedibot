@@ -1,4 +1,5 @@
-"""PediBot watchdog: API health, DeepSeek balance, disk, daily LLM cost → Telegram (push only on problems).
+"""PediBot watchdog: API health, DeepSeek balance, disk, daily LLM cost, averías del modelo
+→ Telegram (push only on problems).
 
 Runs every 10 min from pedibot-watchdog.timer. State in data/watchdog_state.json avoids repeating
 the same alert more than once every 6 hours; a recovery message is sent when a problem clears.
@@ -23,6 +24,10 @@ BALANCE_WARN_PCT = float(os.environ.get("BALANCE_WARN_PCT", "20"))
 BALANCE_INITIAL_USD = float(os.environ.get("BALANCE_INITIAL_USD", "10"))
 DAILY_COST_WARN_USD = float(os.environ.get("MAX_DAILY_LLM_USD", "2"))
 DISK_WARN_PCT = 85
+#: Respuestas dadas sin modelo por avería en la última hora antes de avisar. Una suelta puede ser
+#: un hipo de red; varias seguidas es DeepSeek caído, y ahí hay que enterarse sin abrir el panel.
+NO_MODEL_WARN = int(os.environ.get("NO_MODEL_WARN", "3"))
+OPS_DB = ROOT / "data" / "pedibot_ops.db"
 UNITS = ("pedibot-api", "pedibot-telegram", "pedibot-acp", "caddy")
 
 
@@ -55,6 +60,27 @@ def telegram(text: str) -> None:
         )
     except Exception as e:  # noqa: BLE001
         print("telegram failed:", e, file=sys.stderr)
+
+
+def outages_last_hour(db: pathlib.Path, now: dt.datetime | None = None) -> int:
+    """Respuestas de la última hora dadas sin modelo **por avería** (`no_model`).
+
+    No cuenta las `degraded`: esas son el tope de gasto, que decidimos nosotros y ya tiene su
+    propio aviso. Se abre en solo lectura para no tocar nunca la base que usa el API.
+    """
+    import sqlite3
+
+    ahora = now or dt.datetime.now(dt.UTC)
+    desde = (ahora - dt.timedelta(hours=1)).isoformat(timespec="seconds")
+    con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
+    try:
+        return int(
+            con.execute(
+                "SELECT COUNT(*) FROM answers WHERE ts>=? AND verification='no_model'", (desde,)
+            ).fetchone()[0]
+        )
+    finally:
+        con.close()
 
 
 def main() -> int:
@@ -92,7 +118,23 @@ def main() -> int:
         problems["units"] = (
             f"🚨 Servicios parados: {', '.join(dead)}. Arranca con: systemctl restart {dead[0]}"
         )
-    # 4. disk
+    # 4. el modelo falló y contestamos sin él
+    #
+    # Desde el 7-sep-2026 una avería de DeepSeek ya no tumba la respuesta: se contesta con los
+    # pasajes de las guías y el triaje entero. Eso es bueno para el que pregunta y peligroso para
+    # nosotros — un fallo que no se nota es un fallo que dura semanas. Por eso se cuenta aquí.
+    try:
+        n = outages_last_hour(OPS_DB)
+        if n >= NO_MODEL_WARN:
+            problems["no_model"] = (
+                f"🚨 El modelo no contesta: {n} respuestas en la última hora se han dado sin él "
+                "(llevan las guías y la alarma, pero sin redactar). Mira el saldo y el estado de "
+                "DeepSeek."
+            )
+    except Exception as e:  # noqa: BLE001
+        problems["no_model_check"] = f"⚠️ No se pudieron contar las averías del modelo: {e}"
+
+    # 5. disk
     du = shutil.disk_usage("/")
     used_pct = 100 * (du.total - du.free) / du.total
     if used_pct > DISK_WARN_PCT:

@@ -58,9 +58,7 @@ def load_flagged() -> dict[int, dict[str, object]]:
 def save_flagged(items: dict[int, dict[str, object]]) -> None:
     path = flagged_path()
     path.parent.mkdir(parents=True, exist_ok=True)
-    body = "".join(
-        json.dumps(items[k], ensure_ascii=False) + "\n" for k in sorted(items)
-    )
+    body = "".join(json.dumps(items[k], ensure_ascii=False) + "\n" for k in sorted(items))
     path.write_text(body, encoding="utf-8", newline="\n")
 
 
@@ -78,6 +76,7 @@ text-decoration:none;color:var(--ink2);margin-left:6px;background:var(--paper)}
 .range a.on{background:var(--sage);color:#fff;border-color:var(--sage)}
 .period{margin:0 0 12px;color:var(--ink3);font-size:.86rem}
 .period b{color:var(--ink2)}
+.period .warn,.period .warn b{color:var(--coral)}
 table.t{width:100%;border-collapse:collapse;margin-top:10px;font-size:.88rem}
 table.t th{text-align:left;color:var(--ink3);font-weight:600;padding:4px 8px 4px 0;
 border-bottom:1px solid var(--line)}
@@ -160,9 +159,7 @@ def _chart(visits: dict[str, int], questions: dict[str, int], days: int) -> str:
         if not seen:
             return '<p class="empty">Todavía no hay nada que dibujar.</p>'
         start = dt.date.fromisoformat(seen[0])
-        span = [
-            (start + dt.timedelta(days=i)).isoformat() for i in range((end - start).days + 1)
-        ]
+        span = [(start + dt.timedelta(days=i)).isoformat() for i in range((end - start).days + 1)]
     v = [visits.get(d, 0) for d in span]
     q = [questions.get(d, 0) for d in span]
     if not any(v) and not any(q):
@@ -225,8 +222,14 @@ def _bars(items: list[tuple[str, int]], limit: int = 10) -> str:
 #: against SUPPORTED_LANGS by a test: Hindi shipped as a bare "hi" here because this list was
 #: seven long and nothing said so.
 _LANG_NAME = {
-    "en": "English", "es": "Español", "fr": "Français", "de": "Deutsch",
-    "ru": "Русский", "ar": "العربية", "pt": "Português", "hi": "हिन्दी",
+    "en": "English",
+    "es": "Español",
+    "fr": "Français",
+    "de": "Deutsch",
+    "ru": "Русский",
+    "ar": "العربية",
+    "pt": "Português",
+    "hi": "हिन्दी",
 }
 
 #: The triage levels are internal words and they decide whether a red banner sits above a
@@ -291,7 +294,7 @@ def _google_card(g: dict[str, Any] | None) -> str:
         out.append(
             '<h2 style="margin-top:20px">Lo que se puede empujar</h2>'
             '<p class="period">Consultas donde ya salimos entre el puesto 4 y el 30. Por debajo '
-            "del 30 no mueve una página lo que se le haga a la página.</p><table class=\"t\">"
+            'del 30 no mueve una página lo que se le haga a la página.</p><table class="t">'
             "<tr><th>puesto</th><th>impr.</th><th>búsqueda</th><th>página</th></tr>"
         )
         for r in g["close"][:12]:
@@ -299,7 +302,7 @@ def _google_card(g: dict[str, Any] | None) -> str:
                 f'<tr><td class="mono">{r["position"]}</td>'
                 f'<td class="mono">{r["impressions"]}</td>'
                 f"<td>{html.escape(str(r['query'])[:52])}</td>"
-                f"<td class=\"mono\">{html.escape(str(r['page'])[:44])}</td></tr>"
+                f'<td class="mono">{html.escape(str(r["page"])[:44])}</td></tr>'
             )
         out.append("</table>")
 
@@ -328,7 +331,7 @@ def _tests_line(q: dict[str, Any], days: int, include_test: bool) -> str:
     href = f"/admin?days={days}{other}"
     if include_test:
         return (
-            f'<br><b>Se están contando también nuestras pruebas</b> ({n} en este período). '
+            f"<br><b>Se están contando también nuestras pruebas</b> ({n} en este período). "
             f'<a href="{href}">Ver solo a los lectores</a>.'
         )
     if not n:
@@ -336,6 +339,29 @@ def _tests_line(q: dict[str, Any], days: int, include_test: bool) -> str:
     return (
         f"<br>Fuera de la cuenta quedan <b>{n}</b> consultas nuestras de prueba: no son nadie "
         f'preguntando por su hijo. <a href="{href}">Verlas igualmente</a>.'
+    )
+
+
+def _sin_modelo_line(q: dict[str, Any]) -> str:
+    """Callado cuando todo va bien; a gritos cuando el modelo ha fallado.
+
+    Una avería del proveedor no se puede quedar en una fila de la lista de abajo, que hay que
+    bajar a leer. Y se dicen por separado sus dos causas: el tope de gasto lo ponemos nosotros y
+    es una decisión; que DeepSeek no conteste es otra cosa y quizá haya que mirarla.
+    """
+    averias, tope = int(q.get("no_model", 0)), int(q.get("degraded", 0))
+    if not averias and not tope:
+        return ""
+    partes = []
+    if averias:
+        partes.append(f"<b>{averias}</b> porque el modelo no contestó (caído, lento o sin saldo)")
+    if tope:
+        partes.append(f"<b>{tope}</b> porque se había alcanzado el tope de gasto del día")
+    return (
+        '<br><span class="warn">Respuestas dadas sin modelo: '
+        + " y ".join(partes)
+        + ".</span> Llevan las guías y el aviso de urgencia igual que las demás; lo que les falta "
+        "es la redacción."
     )
 
 
@@ -364,7 +390,9 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
         period = f"últimos {days} días"
         covered = period
     else:
-        period = f"desde el principio ({_day(q['first_day'])})" if q["first_day"] else "todavía nada"
+        period = (
+            f"desde el principio ({_day(q['first_day'])})" if q["first_day"] else "todavía nada"
+        )
         covers = w.get("covers") or ()
         covered = f"desde el {_day(covers[0])}" if covers else "sin registro"
 
@@ -380,11 +408,12 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     down = q["down"]
     h.append(
         f'<p class="period">Consultas y guías: <b>{html.escape(period)}</b>. '
-        f'Visitas: <b>{html.escape(covered)}</b> — salen del registro del servidor, que no '
+        f"Visitas: <b>{html.escape(covered)}</b> — salen del registro del servidor, que no "
         "guarda desde siempre.<br>Una dirección no es una persona: la mayoría pide una sola "
         "página y se va, que es lo que hace un rastreador aunque diga ser un navegador. "
         "La cifra de al lado, quien abrió una segunda página, se parece más a alguien leyendo."
         + _dwell_sentence(w)
+        + _sin_modelo_line(q)
         + _tests_line(q, days, include_test)
         + "</p>"
         '<div class="kpis">'
@@ -414,9 +443,7 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     levels = sorted(q["levels"].items(), key=lambda kv: -kv[1])
     h.append(
         '<div class="two">'
-        '<div class="card"><h2>Páginas más vistas</h2>'
-        + _bars(list(w["top"]))
-        + "</div>"
+        '<div class="card"><h2>Páginas más vistas</h2>' + _bars(list(w["top"])) + "</div>"
         '<div class="card"><h2>Consultas por idioma</h2>'
         + _bars([(_LANG_NAME.get(k, k), n) for k, n in langs])
         + '<h2 style="margin-top:18px">Por nivel</h2>'
@@ -453,15 +480,15 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
             f'<span class="tag">{html.escape(_LANG_NAME.get(str(r["lang"]), str(r["lang"])))}</span>'
             f'<span class="tag">{html.escape(str(r["channel"]))}</span>'
             f'<span class="tag lvl-{html.escape(str(r["level"]))}">'
-            f'{html.escape(_LEVEL_NAME.get(str(r["level"]), str(r["level"])))}</span>'
+            f"{html.escape(_LEVEL_NAME.get(str(r['level']), str(r['level'])))}</span>"
             + (f'<span class="tag bad">{html.escape(ver)}</span>' if not good else "")
             + (f"<span>{fb}</span>" if fb else "")
-            + f"<span style=\"margin-left:auto\">{flag}</span></div>"
+            + f'<span style="margin-left:auto">{flag}</span></div>'
             f'<p class="q"><b>{html.escape(str(r["question"]))}</b></p>'
             f"<details><summary>ver la respuesta</summary>"
             f"<pre>{html.escape(_split_answer(str(r['answer']))[0])}</pre>"
             + (
-                f"<details class=\"src\"><summary>{len(_split_answer(str(r['answer']))[1])}"
+                f'<details class="src"><summary>{len(_split_answer(str(r["answer"]))[1])}'
                 " fuentes</summary><pre>"
                 + html.escape("\n".join(_split_answer(str(r["answer"]))[1]))
                 + "</pre></details>"

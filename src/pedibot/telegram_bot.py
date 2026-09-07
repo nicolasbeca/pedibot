@@ -12,6 +12,7 @@ import re
 from dataclasses import dataclass
 
 from pedibot.bot.answer import SUPPORTED_LANGS, Engine
+from pedibot.bot.llm import LLMUnavailable
 from pedibot.ops.store import AnswerRecord, OpsStore
 
 _CIT = re.compile(r"\[(\d{1,2})\]")
@@ -98,10 +99,20 @@ class ChatPrefs:
 class TelegramFront:
     """Transport-agnostic core so it can be unit-tested without Telegram."""
 
-    def __init__(self, engine: Engine, ops: OpsStore, salt: str = "pedibot-tg"):
+    def __init__(
+        self,
+        engine: Engine,
+        ops: OpsStore,
+        salt: str = "pedibot-tg",
+        max_daily_usd: float | None = None,
+    ):
         self.engine = engine
         self.ops = ops
         self.salt = salt
+        # El tope de gasto del día. Hasta el 7-sep-2026 **solo existía en el API**: por Telegram
+        # se seguía llamando al modelo con el presupuesto agotado, así que el freno de gasto tenía
+        # una puerta abierta al lado. Es el mismo número, leído de la misma configuración.
+        self.max_daily_usd = max_daily_usd
         self.prefs: dict[int, ChatPrefs] = {}
 
     def session_for(self, chat_id: int) -> str:
@@ -143,7 +154,16 @@ class TelegramFront:
         session = self.session_for(chat_id)
         self.ops.touch_tg_user(chat_id, p.lang, p.country)
         hist = self.ops.history(session)
-        a = self.engine.ask(text, country=p.country, lang=p.lang, history=hist)
+        if self.max_daily_usd is not None and self.ops.cost_today_usd() >= self.max_daily_usd:
+            a = self.engine.answer_without_model(text, p.country, p.lang, "degraded")
+        else:
+            try:
+                a = self.engine.ask(text, country=p.country, lang=p.lang, history=hist)
+            except LLMUnavailable:
+                # El modelo no contesta. Antes esto subía hasta `run_polling`, que respondía
+                # «Something went wrong on our side» —en inglés, dijera el chat lo que dijera— y
+                # tiraba el triaje ya hecho. Se contesta con las guías y la alarma, como la web.
+                a = self.engine.answer_without_model(text, p.country, p.lang, "no_model")
         rec = AnswerRecord(
             session=session,
             lang=a.lang,
@@ -260,4 +280,4 @@ def front_from_settings() -> TelegramFront:
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
         vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
     )
-    return TelegramFront(engine, OpsStore(s.ops_db_path))
+    return TelegramFront(engine, OpsStore(s.ops_db_path), max_daily_usd=s.max_daily_llm_usd)

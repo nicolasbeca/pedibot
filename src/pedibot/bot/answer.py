@@ -103,6 +103,35 @@ NO_SOURCE = {
     "hi": "मेरे स्रोतों में इसके बारे में भरोसेमंद जानकारी नहीं है, और मैं अंदाज़ा नहीं लगाना चाहता। कृपया अपने डॉक्टर से बात करें। अगर बच्चा बहुत बीमार लग रहा है, तो इमरजेंसी में जाएँ।",
     "pt": "Não tenho informação confiável sobre isso nas minhas fontes e prefiro não adivinhar. Procure o seu pediatra. Se a criança parecer estar mal, vá ao pronto-socorro.",
 }
+#: Lo que se dice cuando se ha agotado el tope de gasto del día y la respuesta sale sin modelo.
+#: Estaba en dos idiomas —inglés, y español para los otros seis—, así que un padre alemán recibía
+#: una frase en español (7-sep-2026).
+BUDGET_SPENT = {
+    "en": "Today's answer budget is used up, so here are the relevant guideline passages instead:",
+    "es": "El presupuesto de respuestas de hoy se ha agotado; aquí tienes los pasajes relevantes de las guías:",
+    "fr": "Le budget de réponses du jour est épuisé ; voici les passages pertinents des recommandations :",
+    "de": "Das Antwortbudget für heute ist aufgebraucht; hier sind stattdessen die passenden Stellen aus den Leitlinien:",
+    "ru": "Дневной лимит ответов исчерпан; вот подходящие фрагменты из рекомендаций:",
+    "ar": "انتهت حصة الإجابات لهذا اليوم؛ إليك المقاطع المتعلقة من الإرشادات:",
+    "pt": "O orçamento de respostas de hoje acabou; aqui estão os trechos relevantes das diretrizes:",
+    "hi": "आज का उत्तर बजट समाप्त हो गया है; यहाँ दिशानिर्देशों के प्रासंगिक अंश हैं:",
+}
+
+
+#: Lo que se dice cuando el modelo no contesta (caído, lento o sin saldo). Distinto del aviso de
+#: presupuesto: aquello es una decisión nuestra y esto una avería, y el lector merece saber cuál.
+NO_MODEL = {
+    "en": "I cannot write an answer right now, so here are the relevant guideline passages instead:",
+    "es": "Ahora mismo no puedo redactar una respuesta; aquí tienes los pasajes relevantes de las guías:",
+    "fr": "Je ne peux pas rédiger de réponse pour le moment ; voici les passages pertinents des recommandations :",
+    "de": "Ich kann gerade keine Antwort formulieren; hier sind stattdessen die passenden Stellen aus den Leitlinien:",
+    "ru": "Сейчас я не могу составить ответ; вот подходящие фрагменты из рекомендаций:",
+    "ar": "لا أستطيع صياغة إجابة الآن؛ إليك المقاطع المتعلقة من الإرشادات:",
+    "pt": "Não consigo redigir uma resposta agora; aqui estão os trechos relevantes das diretrizes:",
+    "hi": "मैं अभी उत्तर नहीं लिख सकता; यहाँ दिशानिर्देशों के प्रासंगिक अंश हैं:",
+}
+
+
 CLARIFY = {
     "en": "I want to get this right. What's the main thing going on?",
     "es": "Quiero acertar. ¿Qué es lo principal que le pasa?",
@@ -363,12 +392,14 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
         }
     head = heads.get(lang, heads["en"])
     why = {
-        "es": "Motivo", "fr": "Raison", "de": "Grund", "ru": "Причина", "ar": "السبب",
+        "es": "Motivo",
+        "fr": "Raison",
+        "de": "Grund",
+        "ru": "Причина",
+        "ar": "السبب",
         "pt": "Motivo",
         "hi": "कारण",
-    }.get(
-        lang, "Reason"
-    ) + f": {reasons}"
+    }.get(lang, "Reason") + f": {reasons}"
     return head + "\n" + why
 
 
@@ -486,13 +517,24 @@ def foreign_service_problem(text: str) -> str | None:
 #: The few organisations whose name is not the same word in every language. The rest are acronyms
 #: (SEUP, NHS, CDC, RKI, AEP, AEMPS) or a product name (MedlinePlus) and travel unchanged.
 ORG_ALIASES: dict[str, tuple[str, ...]] = {
-    "WHO": ("OMS", "ВОЗ", "منظمة الصحة العالمية", "Weltgesundheitsorganisation",
-            "विश्व स्वास्थ्य संगठन"),
+    "WHO": (
+        "OMS",
+        "ВОЗ",
+        "منظمة الصحة العالمية",
+        "Weltgesundheitsorganisation",
+        "विश्व स्वास्थ्य संगठन",
+    ),
     "Gouvernement du Canada": ("Canada", "Canadá", "Kanada", "Канада", "كندا", "कनाडा"),
     "Junta de Andalucía": ("Andalucía", "Andalusia", "Andalusien", "Andaluzia"),
-    "Ministerio de Sanidad": ("Ministerio de Sanidad", "Ministry of Health", "ministère",
-                              "Gesundheitsministerium", "Минздрав", "وزارة الصحة",
-                              "स्वास्थ्य मंत्रालय"),
+    "Ministerio de Sanidad": (
+        "Ministerio de Sanidad",
+        "Ministry of Health",
+        "ministère",
+        "Gesundheitsministerium",
+        "Минздрав",
+        "وزارة الصحة",
+        "स्वास्थ्य मंत्रालय",
+    ),
 }
 
 
@@ -603,6 +645,38 @@ class Engine:
                 present.add(rule.source)
         return (injected + hits)[: max(len(hits), 6) + len(injected)]
 
+    def answer_without_model(
+        self, query: str, country: str | None = None, lang: str | None = None, why: str = "no_model"
+    ) -> Answer:
+        """La respuesta cuando no hay modelo: los pasajes recuperados, y el triaje entero.
+
+        Vive aquí y no en el API porque los dos frentes la necesitan — la web y Telegram— y hasta
+        el 7-sep-2026 solo el API tenía algo parecido. `why` viaja hasta la base y distingue las
+        dos causas: `degraded` es el tope de gasto del día, que decidimos nosotros, y `no_model`
+        una avería del proveedor. Mezclarlas escondería la avería dentro de algo que parece normal.
+
+        Lo que NO se pierde por no haber modelo: el nivel de triaje y el banner de urgencia. Son
+        deterministas y gratis —no llaman al modelo, no cuestan un céntimo— y son lo único de la
+        respuesta que no se puede permitir desaparecer justo el día que el sistema va mal.
+        """
+        lang = lang or "en"
+        hits, _ = self.retriever.search(query, lang)
+        tr = self.triage.assess(query)
+        banner = build_banner(tr, lang, self.numbers.get(country, lang))
+        aviso = BUDGET_SPENT if why == "degraded" else NO_MODEL
+        text = NO_SOURCE[lang] if not hits else aviso.get(lang, aviso["en"])
+        return Answer(
+            text,
+            tr.level,
+            banner,
+            [f"[{i}] {h.chunk.citation()}" for i, h in enumerate(hits, 1)],
+            lang,
+            None,
+            None,
+            [h.chunk.chunk_id for h in hits],
+            why,
+        )
+
     def ask(
         self,
         query: str,
@@ -650,7 +724,15 @@ class Engine:
             drug, kg = intent
             text = format_result(calculate(drug, kg, tr.age_months), lang)
             return Answer(
-                text, tr.level, None, [], lang, None, None, [], "dose_calculator",
+                text,
+                tr.level,
+                None,
+                [],
+                lang,
+                None,
+                None,
+                [],
+                "dose_calculator",
                 tool=tool_link("dose", lang),
             )
 
@@ -665,7 +747,15 @@ class Engine:
             if c is not None:
                 text = format_answer(self.vaccines, c, tr.age_months, lang)
                 return Answer(
-                    text, tr.level, None, [], lang, None, None, [], "vaccine_schedule",
+                    text,
+                    tr.level,
+                    None,
+                    [],
+                    lang,
+                    None,
+                    None,
+                    [],
+                    "vaccine_schedule",
                     tool=tool_link("vaccines", lang, c),
                 )
             # no tabulated schedule for this country → fall through to the sources

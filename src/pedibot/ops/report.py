@@ -103,9 +103,17 @@ def web_visits(days: int = 7) -> dict[str, Any]:
     except Exception as e:  # noqa: BLE001
         print("journalctl failed:", e, file=sys.stderr)
         return {
-            "views": 0, "visitors": 0, "returning": 0, "chat_pageviews": 0,
-            "visits": 0, "timed": 0, "median_seconds": None, "over_a_minute": 0,
-            "top": [], "per_day": {}, "covers": (),
+            "views": 0,
+            "visitors": 0,
+            "returning": 0,
+            "chat_pageviews": 0,
+            "visits": 0,
+            "timed": 0,
+            "median_seconds": None,
+            "over_a_minute": 0,
+            "top": [],
+            "per_day": {},
+            "covers": (),
         }
     lines = out.splitlines()
     # who the operator is, before counting anybody: the panel is password-protected, so a browser
@@ -184,9 +192,7 @@ def questions(con: sqlite3.Connection, days: int = 7, include_test: bool = False
     tg = q(
         "SELECT COUNT(*) FROM answers WHERE ts>=?" + only + " AND source='telegram'", (since,)
     ).fetchone()[0]
-    ours = q(
-        "SELECT COUNT(*) FROM answers WHERE ts>=?" + NOT_REAL, (since,)
-    ).fetchone()[0]
+    ours = q("SELECT COUNT(*) FROM answers WHERE ts>=?" + NOT_REAL, (since,)).fetchone()[0]
     alarms = q(
         "SELECT COUNT(*) FROM answers WHERE ts>=?" + only + " AND level<>'routine'", (since,)
     ).fetchone()[0]
@@ -196,6 +202,17 @@ def questions(con: sqlite3.Connection, days: int = 7, include_test: bool = False
         + " AND verification IN ('no_source','fallback')",
         (since,),
     ).fetchone()[0]
+    # Las respuestas dadas SIN modelo, separadas por causa. `degraded` es el tope de gasto, que
+    # decidimos nosotros; `no_model` es una avería del proveedor. Antes del 7-sep-2026 la avería
+    # ni siquiera llegaba a la base —salía como un 500—, así que era invisible por definición.
+    sin_modelo = dict(
+        q(
+            "SELECT verification, COUNT(*) FROM answers WHERE ts>=?"
+            + only
+            + " AND verification IN ('degraded','no_model') GROUP BY 1",
+            (since,),
+        ).fetchall()
+    )
     up = q(
         "SELECT COUNT(*) FROM answers WHERE ts>=?" + only + " AND feedback=1", (since,)
     ).fetchone()[0]
@@ -222,9 +239,7 @@ def questions(con: sqlite3.Connection, days: int = 7, include_test: bool = False
             (since,),
         ).fetchall()
     )
-    first = q(
-        "SELECT MIN(substr(ts,1,10)) FROM answers WHERE ts>=?" + only, (since,)
-    ).fetchone()[0]
+    first = q("SELECT MIN(substr(ts,1,10)) FROM answers WHERE ts>=?" + only, (since,)).fetchone()[0]
     return {
         "first_day": first,
         "total": total,
@@ -233,6 +248,8 @@ def questions(con: sqlite3.Connection, days: int = 7, include_test: bool = False
         "test": ours,
         "alarms": alarms,
         "no_source": nosrc,
+        "no_model": int(sin_modelo.get("no_model", 0)),
+        "degraded": int(sin_modelo.get("degraded", 0)),
         "up": up,
         "down": down,
         "cost": float(cost),
@@ -296,7 +313,9 @@ def recent_answers(
     are, the card says so — a test answer read as a parent's is how a fake problem gets chased."""
     rows = con.execute(
         "SELECT id, ts, lang, country, level, verification, feedback, cost_usd, latency_ms, question, answer, source"
-        " FROM answers WHERE 1=1" + ("" if include_test else REAL_ONLY) + " ORDER BY id DESC LIMIT ?",
+        " FROM answers WHERE 1=1"
+        + ("" if include_test else REAL_ONLY)
+        + " ORDER BY id DESC LIMIT ?",
         (limit,),
     ).fetchall()
     keys = (

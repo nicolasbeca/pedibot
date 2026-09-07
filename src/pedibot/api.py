@@ -16,8 +16,9 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from pedibot import __version__
-from pedibot.bot.answer import NO_SOURCE, SUPPORTED_LANGS, Engine
+from pedibot.bot.answer import SUPPORTED_LANGS, Engine
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.llm import LLMUnavailable
 from pedibot.bot.strings import data_lang
 from pedibot.bot.vaccines import Vaccines
 from pedibot.ops.store import AnswerRecord, OpsStore
@@ -147,21 +148,6 @@ class ApiConfig:
     max_daily_llm_usd: float = 2.0
 
 
-#: Lo que se dice cuando se ha agotado el tope de gasto del día y la respuesta sale sin modelo.
-#: Estaba en dos idiomas —inglés, y español para los otros seis—, así que un padre alemán recibía
-#: una frase en español (7-sep-2026).
-BUDGET_SPENT = {
-    "en": "Today's answer budget is used up, so here are the relevant guideline passages instead:",
-    "es": "El presupuesto de respuestas de hoy se ha agotado; aquí tienes los pasajes relevantes de las guías:",
-    "fr": "Le budget de réponses du jour est épuisé ; voici les passages pertinents des recommandations :",
-    "de": "Das Antwortbudget für heute ist aufgebraucht; hier sind stattdessen die passenden Stellen aus den Leitlinien:",
-    "ru": "Дневной лимит ответов исчерпан; вот подходящие фрагменты из рекомендаций:",
-    "ar": "انتهت حصة الإجابات لهذا اليوم؛ إليك المقاطع المتعلقة من الإرشادات:",
-    "pt": "O orçamento de respostas de hoje acabou; aqui estão os trechos relevantes das diretrizes:",
-    "hi": "आज का उत्तर बजट समाप्त हो गया है; यहाँ दिशानिर्देशों के प्रासंगिक अंश हैं:",
-}
-
-
 def _ml(mg: float, mg_per_ml: float) -> float:
     """Mililitros a partir de miligramos, SIEMPRE hacia abajo.
 
@@ -237,36 +223,25 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         t0 = time.perf_counter()
         if degraded:
             # spending cap reached: retrieval-only answer (no LLM) — PRD §8 "tope de gasto"
-            lang = body.lang or "en"
-            hits, _ = engine.retriever.search(body.question, lang)
-            from pedibot.bot.answer import Answer, build_banner
-
-            # El triaje SÍ se hace, aunque no haya modelo. Hasta el 7-sep-2026 este camino
-            # devolvía «routine» y banner None sin más: quien preguntara por un sarpullido que no
-            # blanquea el día que se agotó el presupuesto no veía ninguna alarma. Y el triaje es
-            # determinista y gratis — no usa el modelo, no cuesta nada, y es lo único de la
-            # respuesta que no se puede perder.
-            tr = engine.triage.assess(body.question)
-            banner = build_banner(tr, lang, engine.numbers.get(body.country, lang))
-
-            text = NO_SOURCE[lang] if not hits else BUDGET_SPENT.get(lang, BUDGET_SPENT["en"])
-            sources = [f"[{i}] {h.chunk.citation()}" for i, h in enumerate(hits, 1)]
-            a = Answer(
-                text,
-                tr.level,
-                banner,
-                sources,
-                lang,
-                None,
-                None,
-                [h.chunk.chunk_id for h in hits],
-                "degraded",
-            )
+            a = engine.answer_without_model(body.question, body.country, body.lang, "degraded")
         else:
             hist = ops.history(session) if body.session else []
-            a = engine.ask(
-                body.question, country=body.country, lang=body.lang, history=hist, mode=body.mode
-            )
+            try:
+                a = engine.ask(
+                    body.question,
+                    country=body.country,
+                    lang=body.lang,
+                    history=hist,
+                    mode=body.mode,
+                )
+            except LLMUnavailable:
+                # DeepSeek caído, lento o sin saldo. Hasta el 7-sep-2026 esto salía como un 500 y
+                # el padre veía «algo ha fallado por nuestra parte»: se tiraba a la basura un
+                # triaje ya hecho y unos pasajes ya recuperados, y ni siquiera quedaba registrado,
+                # así que no había forma de saber cuántas veces pasaba. Se contesta como sin
+                # presupuesto, pero con OTRA etiqueta: aquello lo decidimos nosotros, esto es una
+                # avería y tiene que poder contarse aparte.
+                a = engine.answer_without_model(body.question, body.country, body.lang, "no_model")
         latency = int((time.perf_counter() - t0) * 1000)
         rec = AnswerRecord(
             session=session,

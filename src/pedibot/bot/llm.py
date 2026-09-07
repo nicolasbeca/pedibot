@@ -7,6 +7,15 @@ from dataclasses import dataclass
 from typing import Protocol
 
 
+class LLMUnavailable(RuntimeError):
+    """El modelo no ha contestado: caído, agotado, con rate limit o fuera de tiempo.
+
+    Existe para poder distinguirlo de un fallo NUESTRO. El API la recoge y contesta con las guías
+    y el triaje (que no necesitan modelo); cualquier otra excepción sigue saliendo a gritos, que es
+    lo que debe hacer un bug propio.
+    """
+
+
 @dataclass
 class LLMResult:
     text: str
@@ -49,7 +58,17 @@ class OpenAICompatibleProvider:
     ):
         from openai import OpenAI  # imported lazily: tests never need it
 
-        self._client = OpenAI(api_key=api_key, base_url=base_url)
+        # El cliente de OpenAI espera 600 s por defecto y reintenta 2 veces: hasta media hora
+        # de reloj girando para un padre asustado. Medido sobre las respuestas reales (n=108):
+        # mediana 3,2 s, p99 5,8 s, la más lenta de la historia 8,3 s. Con 20 s ya han pasado más
+        # del doble de la peor, y esperar más no compra nada: si el modelo no está, la respuesta
+        # de reserva —los pasajes de las guías con su triaje— es instantánea y gratis.
+        self._client = OpenAI(
+            api_key=api_key,
+            base_url=base_url,
+            timeout=20.0,
+            max_retries=1,
+        )
         self.model = model
         self._pin = price_in_per_m
         self._pout = price_out_per_m
@@ -57,15 +76,22 @@ class OpenAICompatibleProvider:
     def complete(
         self, system: str, user: str, temperature: float = 0.2, max_tokens: int = 1500
     ) -> LLMResult:
-        resp = self._client.chat.completions.create(
-            model=self.model,
-            messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
-            temperature=temperature,
-            max_tokens=max_tokens,
-            # DeepSeek V4 reasons by default; reasoning tokens are billed as output and count
-            # against max_tokens (first real call: 900 tokens, answer cut mid-sentence). Off.
-            extra_body={"thinking": {"type": "disabled"}},
-        )
+        from openai import APIError
+
+        try:
+            resp = self._client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
+                temperature=temperature,
+                max_tokens=max_tokens,
+                # DeepSeek V4 reasons by default; reasoning tokens are billed as output and count
+                # against max_tokens (first real call: 900 tokens, answer cut mid-sentence). Off.
+                extra_body={"thinking": {"type": "disabled"}},
+            )
+        # APIError es la base de TODAS las averías de openai: tiempo agotado, conexión, rate
+        # limit y respuestas de error del servidor. Comprobado, no supuesto.
+        except APIError as e:
+            raise LLMUnavailable(f"{type(e).__name__}: {e}") from e
         text = resp.choices[0].message.content or ""
         usage = resp.usage
         tin = usage.prompt_tokens if usage else 0
