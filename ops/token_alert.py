@@ -1,9 +1,13 @@
 """Push a Telegram message when somebody buys or sells $PDBT — and stay silent otherwise.
 
-Three chains, read two different ways. Base (Uniswap) and Solana (a Meteora bonding curve out
-of Jupiter Studio) are both indexed by GeckoTerminal and answer with the same payload, so they
-share a reader. HyperEVM trades in a LiquidLaunch bonding curve that nothing indexes, so that
-one is read from the chain's own Transfer logs (curve → wallet is a buy, wallet → curve is a sell).
+Four chains, read two different ways. Base (Uniswap), Solana (a Meteora bonding curve out of
+Jupiter Studio) and Robinhood (a PDBT/WETH pool on Robinhood's Arbitrum Orbit L2) are all three
+indexed by GeckoTerminal and answer with the same payload, so they share a reader. HyperEVM trades
+in a LiquidLaunch bonding curve that nothing indexes, so that one is read from the chain's own
+Transfer logs (curve → wallet is a buy, wallet → curve is a sell).
+
+La cadena de Robinhood vive AQUI y en ningun otro sitio, por decision del operador (7-sep-2026):
+ni en la web, ni en /support, ni en el informe semanal. Solo estas alertas.
 
 The daily snapshot (`token_snapshot.py`) only counts trades for the Sunday report, so a purchase
 on a Tuesday was not known until the weekend. This reads the pool's actual trades from the free
@@ -39,6 +43,17 @@ TRADES_URL = f"{GECKO}/base/pools/{POOL}/trades"
 # base token too, so `kind` is already from our point of view and needs no flipping.
 SOLANA_POOL = "9TYrAWquKToiwJj4yX46rqhSjYSBHMWFQFLpndexoQCR"
 SOLANA_TRADES_URL = f"{GECKO}/solana/pools/{SOLANA_POOL}/trades"
+
+# --- Robinhood: la misma historia, un tercer pool indexado ------------------------------
+# El token vive en 0xaac715d4d8555337e8dec34f174ecb8fb47c21eb (18 decimales) y su unico pool es
+# PDBT / WETH. PDBT es el token BASE del pool, asi que el `kind` ya viene desde nuestro punto de
+# vista, igual que en Base y Solana: comprobado en la API antes de cablearlo, porque tomarlo al
+# reves anunciaria cada compra como una venta.
+#
+# Decision del operador (7-sep-2026): esta cadena esta AQUI y en ningun otro sitio. Ni en la web,
+# ni en /support, ni en el informe semanal — solo las alertas de compra y venta.
+ROBINHOOD_POOL = "0xb243072eeef3928537c4dfb32714d7990f5cbc99"
+ROBINHOOD_TRADES_URL = f"{GECKO}/robinhood/pools/{ROBINHOOD_POOL}/trades"
 HEADERS = {"Accept": "application/json;version=20230302", "User-Agent": "PediBot-ops/1.0"}
 MAX_LINES = 5  # a burst is summarised instead of flooding the chat
 
@@ -66,11 +81,21 @@ EXPLORER = {
     # datacenter IPs, so this is the only link that was actually verified to load.
     "hyperevm": "https://liquidlaunch.app/token/" + PDBT_HYPEREVM + "?tx=",
     "solana": "https://solscan.io/tx/",
+    # Etherscan no indexa la cadena 4663; Blockscout es la fuente. Comprobado que carga de
+    # verdad (90 KB de pagina) antes de ponerlo, que es la leccion del enlace de HyperEVM.
+    "robinhood": "https://robinhoodchain.blockscout.com/tx/",
 }
-CHAIN_LABEL = {"base": "Base", "hyperevm": "HyperEVM", "solana": "Solana"}
+CHAIN_LABEL = {
+    "base": "Base",
+    "hyperevm": "HyperEVM",
+    "solana": "Solana",
+    "robinhood": "Robinhood",
+}
 #: Chains whose trades arrive with a dollar value already attached. The HyperEVM curve
 #: does not, and printing 0,00 USD there would be inventing a number.
-PRICED_CHAINS = ("base", "solana")
+PRICED_CHAINS = ("base", "solana", "robinhood")
+#: Las cadenas que este vigilante mira. Se cuenta, no se escribe a mano: ver el final de main().
+WATCHED_CHAINS = ("base", "solana", "robinhood", "hyperevm")
 
 
 @dataclass(frozen=True)
@@ -197,9 +222,7 @@ def hyperevm_trades(from_block: int) -> tuple[list[Trade], int]:
             if block not in stamps:
                 blk = _rpc("eth_getBlockByNumber", [hex(block), False])
                 ts = int(blk["timestamp"], 16)
-                stamps[block] = (
-                    dt.datetime.fromtimestamp(ts, dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
-                )
+                stamps[block] = dt.datetime.fromtimestamp(ts, dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
             native = None
             if kind == "buy":
                 try:
@@ -405,8 +428,14 @@ def pending_trades(db_path: Path) -> list[Trade]:
         con.close()
     return [
         Trade(
-            tx_hash=r[0], ts=r[1], kind=r[2], usd=r[3], tokens=r[4],
-            wallet=r[5], chain=r[6] or "base", native=r[7],
+            tx_hash=r[0],
+            ts=r[1],
+            kind=r[2],
+            usd=r[3],
+            tokens=r[4],
+            wallet=r[5],
+            chain=r[6] or "base",
+            native=r[7],
         )
         for r in rows
     ]
@@ -507,6 +536,22 @@ def main() -> int:
         failures += 1
         notes.append(note_scan_health(db, "solana", ok=False))
 
+    # Robinhood, el mismo agregador otra vez. Como Solana: la primera vez que se mira es una
+    # linea de partida, no un anuncio — en el pool ya habia doce operaciones de las ultimas 24 h
+    # cuando se cableo, y soltarlas todas de golpe diria que acaban de pasar.
+    try:
+        if not scan_state(db, "robinhood"):
+            baseline.add("robinhood")
+        r = httpx.get(ROBINHOOD_TRADES_URL, headers=HEADERS, timeout=30)
+        r.raise_for_status()
+        trades += parse_trades(r.json(), chain="robinhood")
+        save_scan_state(db, "robinhood", int(time.time()))
+        notes.append(note_scan_health(db, "robinhood", ok=True))
+    except Exception as e:  # noqa: BLE001
+        print("robinhood trades failed:", e, file=sys.stderr)
+        failures += 1
+        notes.append(note_scan_health(db, "robinhood", ok=False))
+
     # HyperEVM, straight off the chain. One chain failing must not silence the others.
     try:
         last = scan_state(db, "hyperevm")
@@ -544,8 +589,10 @@ def main() -> int:
         if note:
             telegram(note)
             print(note)
-    # only a total blackout is worth a non-zero exit; one flaky source is not an incident
-    return 1 if failures == 3 else 0
+    # only a total blackout is worth a non-zero exit; one flaky source is not an incident.
+    # El numero de fuentes se cuenta, no se escribe: estaba a mano como `== 3` y al anadir la
+    # cuarta cadena un apagon completo habria salido con codigo 0, o sea "todo bien".
+    return 1 if failures == len(WATCHED_CHAINS) else 0
 
 
 if __name__ == "__main__":

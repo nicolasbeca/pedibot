@@ -196,7 +196,9 @@ def test_one_chain_failing_does_not_silence_the_other(monkeypatch, tmp_path) -> 
 
     # setitem, not setdefault: monkeypatch puts the real module back afterwards. Replacing it
     # outright leaked a stub into every test that ran later.
-    fake = type("M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())})
+    fake = type(
+        "M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())}
+    )
     monkeypatch.setitem(_sys.modules, "pedibot.settings", fake)
     assert m.main() == 1
     assert "text" not in msg
@@ -221,7 +223,9 @@ def test_the_message_never_invents_a_price() -> None:
     assert "HyperEVM" in text
 
 
-def test_the_first_hyperevm_run_takes_a_baseline_instead_of_announcing_history(monkeypatch, tmp_path) -> None:
+def test_the_first_hyperevm_run_takes_a_baseline_instead_of_announcing_history(
+    monkeypatch, tmp_path
+) -> None:
     """Without a watermark the first scan sees the curve's whole history. Announcing it would
     push last week's purchases as if they had just happened."""
     m = _mod()
@@ -229,8 +233,14 @@ def test_the_first_hyperevm_run_takes_a_baseline_instead_of_announcing_history(m
     sent = []
     monkeypatch.setattr(m, "telegram", lambda t: sent.append(t) or True)
     old = m.Trade(
-        tx_hash="0x" + "ee" * 32, ts="2026-09-01T10:00:00Z", kind="buy", usd=0.0,
-        tokens=368.0, wallet="0x" + "11" * 20, chain="hyperevm", native=0.05,
+        tx_hash="0x" + "ee" * 32,
+        ts="2026-09-01T10:00:00Z",
+        kind="buy",
+        usd=0.0,
+        tokens=368.0,
+        wallet="0x" + "11" * 20,
+        chain="hyperevm",
+        native=0.05,
     )
     monkeypatch.setattr(m, "hyperevm_trades", lambda frm: ([old], 44902000))
     monkeypatch.setattr(m, "_rpc", lambda method, params, tries=5: hex(44902000))
@@ -255,8 +265,14 @@ def test_the_first_hyperevm_run_takes_a_baseline_instead_of_announcing_history(m
 
     # a genuinely new trade after the baseline IS announced
     fresh = m.Trade(
-        tx_hash="0x" + "ff" * 32, ts="2026-09-03T10:00:00Z", kind="sell", usd=0.0,
-        tokens=10.0, wallet="0x" + "22" * 20, chain="hyperevm", native=None,
+        tx_hash="0x" + "ff" * 32,
+        ts="2026-09-03T10:00:00Z",
+        kind="sell",
+        usd=0.0,
+        tokens=10.0,
+        wallet="0x" + "22" * 20,
+        chain="hyperevm",
+        native=None,
     )
     monkeypatch.setattr(m, "hyperevm_trades", lambda frm: ([fresh], 44903000))
     m.main()
@@ -538,3 +554,141 @@ def test_a_refused_send_is_retried_on_the_next_run(monkeypatch, tmp_path) -> Non
     assert len(trade_msgs) == 1, accepted
     assert "COMPRA" in trade_msgs[0]
     assert m.pending_trades(db) == []
+
+
+# --- la cadena de Robinhood (7-sep-2026) -------------------------------------------------------
+# El operador lanzo PDBT en la L2 de Robinhood y pidio que entrara en las alertas de compra y
+# venta "pero ni en la web ni nada". Las dos mitades de esa frase son requisitos, y las dos tienen
+# su candado aqui: que las operaciones se lean y se anuncien, y que el contrato NO aparezca en
+# ninguna parte publica.
+
+ROBINHOOD_PAYLOAD = {
+    "data": [
+        {
+            "attributes": {
+                "tx_hash": "0xe29bdb2bb379c93d20e70a87398ef8e7bd1b0ed5584b4e4e972dc751f0e7b23b",
+                "block_timestamp": "2026-09-07T08:27:42Z",
+                "kind": "buy",
+                "volume_in_usd": "22.42",
+                "from_token_amount": "22.42",
+                "to_token_amount": "5078920.51",
+                "tx_from_address": "0x1111111111111111111111111111111111111111",
+            }
+        }
+    ]
+}
+
+
+def test_a_robinhood_trade_is_tagged_and_not_filed_under_base():
+    """Igual que Solana: sin pasar su cadena, el enlace apuntaria a Basescan, a un hash que no
+    esta en Base."""
+    m = _mod()
+    (t,) = m.parse_trades(ROBINHOOD_PAYLOAD, chain="robinhood")
+    assert t.chain == "robinhood"
+    # PDBT es el token BASE del pool, asi que el `kind` ya viene desde nuestro punto de vista:
+    # una compra es una compra y los PDBT son los que se RECIBEN. Comprobado en la API antes de
+    # cablearlo, porque tomarlo al reves anunciaria cada compra como una venta.
+    assert (t.kind, t.usd, t.tokens) == ("buy", 22.42, 5078920.51)
+
+
+def test_the_robinhood_message_prices_the_trade_and_links_to_blockscout():
+    m = _mod()
+    text = m.format_message(m.parse_trades(ROBINHOOD_PAYLOAD, chain="robinhood"))
+    assert "Robinhood" in text
+    assert "22,42 USD" in text  # el agregador si conoce el precio aqui
+    # Etherscan no indexa la cadena 4663. Blockscout es la fuente, y se comprobo que su pagina
+    # carga de verdad (90 KB) antes de ponerla: HoodScan contesta 200 con el armazon vacio.
+    assert "robinhoodchain.blockscout.com/tx/0xe29bdb2b" in text
+    assert "basescan" not in text and "solscan" not in text
+
+
+def test_the_first_robinhood_run_takes_a_baseline_instead_of_announcing_the_launch(
+    monkeypatch, tmp_path
+) -> None:
+    """Cuando se cableo ya habia doce operaciones de las ultimas 24 h en el pool. Soltarlas todas
+    en el primer sondeo diria que acaban de pasar."""
+    m = _mod()
+    db = tmp_path / "ops.db"
+    sent: list[str] = []
+    monkeypatch.setattr(m, "telegram", lambda t: sent.append(t) or True)
+    payload = {"data": list(ROBINHOOD_PAYLOAD["data"])}
+
+    class SoloRobinhood:
+        def get(self, url, **k):
+            if "robinhood" not in url:
+                raise RuntimeError("las otras cadenas no se prueban aqui")
+            return type("R", (), {"raise_for_status": lambda s: None, "json": lambda s: payload})()
+
+        def post(self, *a, **k):
+            raise RuntimeError("hyperevm no se prueba aqui")
+
+    monkeypatch.setattr(m, "httpx", SoloRobinhood())
+    import sys as _sys
+
+    monkeypatch.setitem(
+        _sys.modules,
+        "pedibot.settings",
+        type("M", (), {"get_settings": staticmethod(lambda: type("S", (), {"ops_db_path": db})())}),
+    )
+    m.main()
+    assert sent == [], sent
+    assert m.scan_state(db, "robinhood") > 0  # visto una vez: la siguiente de verdad no se pierde
+
+    payload["data"] = [
+        {
+            "attributes": {
+                "tx_hash": "0xdeadbeefcafe0001",
+                "block_timestamp": "2026-09-07T09:00:00Z",
+                "kind": "sell",
+                "volume_in_usd": "66.72",
+                "from_token_amount": "15427613.37",
+                "to_token_amount": "66.72",
+                "tx_from_address": "0x2222222222222222222222222222222222222222",
+            }
+        }
+    ]
+    m.main()
+    assert len(sent) == 1 and "VENTA" in sent[0] and "Robinhood" in sent[0]
+
+
+def test_a_total_blackout_is_counted_not_hardcoded():
+    """El codigo de salida decia `failures == 3` a mano. Con la cuarta cadena, un apagon completo
+    habria salido con 0 — o sea, "todo bien" — y el vigilante lo habria dado por bueno."""
+    m = _mod()
+    fuente = (ROOT / "ops" / "token_alert.py").read_text(encoding="utf-8")
+    assert "failures == len(WATCHED_CHAINS)" in fuente, "el numero de fuentes vuelve a estar a mano"
+    assert len(m.WATCHED_CHAINS) == 4
+    # y cada cadena que se mira tiene que saber decir de donde viene y adonde enlaza
+    for c in m.WATCHED_CHAINS:
+        assert c in m.CHAIN_LABEL, f"{c} sin nombre para el mensaje"
+        assert c in m.EXPLORER, f"{c} sin enlace de explorador"
+
+
+def test_the_robinhood_contract_stays_out_of_everything_public():
+    """La otra mitad de lo que pidio el operador, y la que se olvida: "ni en la web ni nada".
+
+    El token se retiro de la web por decision suya y no se vuelve a poner. Este candado recorre
+    todo lo que se publica —la web, sus textos, las guias, la configuracion— y falla si el
+    contrato de la cadena de Robinhood aparece en cualquiera de esos sitios. Vive en las alertas
+    de operaciones y en ningun otro lugar.
+    """
+    contrato = "0xaac715d4d8555337e8dec34f174ecb8fb47c21eb"
+    publico = [
+        ROOT / "web" / "site" / "src",
+        ROOT / "web" / "content",
+        ROOT / "config",
+    ]
+    culpables = []
+    for raiz in publico:
+        if not raiz.exists():
+            continue
+        for f in raiz.rglob("*"):
+            if not f.is_file() or f.suffix in (".png", ".jpg", ".woff2", ".ico", ".webp"):
+                continue
+            try:
+                t = f.read_text(encoding="utf-8", errors="ignore").lower()
+            except OSError:
+                continue
+            if contrato in t:
+                culpables.append(str(f.relative_to(ROOT)))
+    assert not culpables, f"el contrato de Robinhood no puede salir en la web: {culpables}"
