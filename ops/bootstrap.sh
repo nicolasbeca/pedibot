@@ -10,6 +10,18 @@ set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -q && apt-get install -y -q curl git rsync ufw tesseract-ocr tesseract-ocr-spa ocrmypdf logrotate debian-keyring debian-archive-keyring apt-transport-https
 
+# --- journal size cap ---
+# journald corre sin límite por defecto y logrotate NO lo toca: el journal binario tiene su propio
+# tope y hay que ponérselo. En el VPS de MultiBot había crecido hasta 4 GB antes de que nadie
+# mirara. Un disco lleno no avisa: se lleva por delante la base de datos, el despliegue y el API.
+mkdir -p /etc/systemd/journald.conf.d
+cat > /etc/systemd/journald.conf.d/pedibot-size.conf <<'CONF'
+[Journal]
+SystemMaxUse=300M
+MaxRetentionSec=1month
+CONF
+systemctl restart systemd-journald || true
+
 # --- caddy (official repo) ---
 if ! command -v caddy >/dev/null; then
   curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
