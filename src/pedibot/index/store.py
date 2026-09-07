@@ -30,7 +30,12 @@ CREATE VIRTUAL TABLE IF NOT EXISTS chunks_fts USING fts5(
 CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT);
 """
 
-_TOKEN = re.compile(r"[\wáéíóúñü]+", re.I)
+#: El bloque devanagari va explicito: `\\w` son los caracteres alfanuméricos y las vocales
+#: del devanagari (las matras: ा ि ो ै) son marcas combinantes, así que sin esto «बुखार» se
+#: parte en «ब»+«ख»+«र» y, con el filtro de tres caracteres de más abajo, una consulta en
+#: hindi produce CERO términos (7-sep-2026). Encontraba igual gracias a las tablas cruzadas
+#: de sinónimos, pero eso hacía que toda la búsqueda en hindi colgara de esas 176 entradas.
+_TOKEN = re.compile(r"[\wáéíóúñü\u0900-\u097f]+", re.I)
 STOP = {
     "de",
     "la",
@@ -123,7 +128,13 @@ STOP = {
     "darle",
 }
 _DOSE_QUERY = re.compile(
-    r"\b(dosis|dose|dosage|mg|ml|kilos?|kg|paracetamol|ibuprofen\w*|acetaminophen|cu[aá]nt[oa]|how much)\b",
+    r"\b(dosis|dose|dosage|mg|ml|kilos?|kg|paracetamol|ibuprofen\w*|acetaminophen|"
+    r"cu[aá]nt[oa]|how much)\b"
+    # y en las otras tres escrituras, donde `\\b` no sirve: sin esto, una pregunta de dosis
+    # en ruso, árabe o hindi no recibía el impulso que sube la tabla de dosificación
+    r"|мг|мл|доз|сколько|парацетамол|ибупрофен"
+    r"|ملغ|جرعة|كم|باراسيتامول|إيبوبروفين"
+    r"|मिग्रा|खुराक|कितना|कितनी|पैरासिटामोल|आइबुप्रोफेन",
     re.I,
 )
 

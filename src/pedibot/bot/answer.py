@@ -761,7 +761,12 @@ class Engine:
             or (
                 self.drugs
                 and any(
-                    self.drugs.resolve(t) for t in re.findall(r"[a-záéíóúñ]{4,}", query.lower())
+                    # mismo barrido por espacios que en `dose_intent`: la versión latina no
+                    # encontraba una sola palabra en cirílico, árabe ni devanagari, así que
+                    # el enlace a la calculadora no se ofrecía en tres de los ocho idiomas
+                    self.drugs.resolve(t)
+                    for t in re.split(r"[\s,.;:!?¿¡()\[\]«»\"'/\\-]+", query.lower())
+                    if len(t) >= 4
                 )
             )
             else None
