@@ -170,3 +170,52 @@ def test_french_and_german_schedules_lock_the_2026_facts(vax):
     assert not any("ACWY" in v for s in due_de12m for v in s.vaccines)
     due_de13y, _ = vax.at_age("DE", 150, "en")
     assert any("ACWY" in v for s in due_de13y for v in s.vaccines)
+
+
+def test_the_portuguese_schedule_is_the_pnv_2025_not_the_2020(vax):
+    """Publicábamos un calendario derogado (7-sep-2026).
+
+    La ficha citaba el «PNV 2020, Norma 18/2020». La DGS lo sustituyó **en octubre de 2025** por
+    el PNV 2025 (Livro Azul de Vacinas, Parte 1), que dice literalmente: *"O presente PNV
+    substitui, a partir de outubro de 2025, o PNV 2020"*. Sus dos cambios principales, tal y como
+    los enumera el propio documento:
+
+      · Substituição da vacina MenC pela vacina MenACWY aos 12 meses de idade.
+      · Substituição da vacina Pn13 pela vacina Pn20 aos 2, 4 e 12 meses de idade.
+
+    Transcrito del Quadro n.º 1 leyendo las coordenadas del PDF, no la mancha de texto: la tabla
+    es un gráfico y `pdftotext -layout` mezcla las columnas. Al hacerlo apareció además una
+    ausencia que venía de antes: **faltaba la Td de los 10 años**.
+
+    Estos asertos existen para que una futura re-transcripción no lo deshaga en silencio.
+    """
+    doce, _ = vax.at_age("PT", 12, "en")
+    puestas = [v for s in doce for v in s.vaccines]
+    assert any("MenACWY" in v for v in puestas), "a los 12 meses el PNV 2025 pone MenACWY"
+    assert not any("MenC)" in v for v in puestas), "el MenC de los 12 meses ya no está"
+    assert any("Pn20" in v for v in puestas)
+    for edad in (2, 4):
+        due, _ = vax.at_age("PT", edad, "en")
+        assert any("Pn20" in v for s in due for v in s.vaccines), f"Pn20 a los {edad} meses"
+    diez, _ = vax.at_age("PT", 120, "en")
+    assert any("Td" in v for s in diez for v in s.vaccines), "la Td de los 10 años faltaba"
+
+
+def test_every_schedule_says_which_edition_it_transcribes(vax):
+    """Un calendario sin año no se puede comprobar, y el de Portugal llevaba cinco años caducado
+    sin que nada lo notara.
+
+    La cita tiene que decir **qué edición se transcribió**: el año del documento cuando lo lleva,
+    y la fecha de consulta cuando la fuente es una página viva que no imprime edición (el caso de
+    Brasil, que este candado cazó al escribirse)."""
+    import re
+
+    import yaml
+
+    raiz = Path(__file__).resolve().parents[1]
+    raw = yaml.safe_load((raiz / "config" / "vaccines.yaml").read_text(encoding="utf-8"))
+    sin_año = [
+        code for code, c in raw["countries"].items()
+        if not re.search(r"\b20\d\d\b", c["source"])
+    ]
+    assert not sin_año, f"calendarios sin año en la cita: {sin_año}"
