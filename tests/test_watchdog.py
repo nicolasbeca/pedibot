@@ -98,3 +98,43 @@ def test_the_spending_cap_is_not_reported_as_an_outage(tmp_path):
     r = (ahora - dt.timedelta(minutes=5)).isoformat(timespec="seconds")
     db = _base(tmp_path, [(r, "degraded")] * 9)
     assert outages_last_hour(db, ahora) == 0
+
+
+# --------------------------------------------------------------------------------------------
+# El registro del que vive el panel (7-sep-2026)
+#
+# Las visitas, las páginas vistas y el tiempo de permanencia salen de `journalctl -u caddy`. Si
+# Caddy dejara de escribir ahí, el panel enseñaría CERO visitas — y cero visitas no parece una
+# avería, parece que no vino nadie. Es la L31 otra vez: el silencio que no se distingue de la
+# ausencia, y en el único sitio con el que el operador decide si esto funciona.
+# --------------------------------------------------------------------------------------------
+
+
+def _respuesta(texto: str):
+    class R:
+        stdout = texto
+
+    def correr(*a, **k):
+        return R()
+
+    return correr
+
+
+def test_a_busy_hour_counts_its_lines():
+    wd = _watchdog()
+    n = wd.access_log_lines(correr=_respuesta("una\ndos\ntres\n\ncuatro\n"))
+    assert n == 4  # la línea en blanco no cuenta
+
+
+def test_a_silent_access_log_is_below_the_floor():
+    wd = _watchdog()
+    assert wd.access_log_lines(correr=_respuesta("")) < wd.ACCESS_LOG_MIN
+    assert wd.access_log_lines(correr=_respuesta("solo una\n")) < wd.ACCESS_LOG_MIN
+
+
+def test_the_floor_is_far_below_a_real_quiet_hour():
+    """Medido en el servidor en un rato tranquilo: 403 líneas en dos horas. El suelo tiene que
+    quedar muy por debajo, para que el aviso signifique «esto está mudo» y nunca «hoy hubo poca
+    gente» — un vigilante que grita por poco tráfico se deja de leer."""
+    wd = _watchdog()
+    assert wd.ACCESS_LOG_MIN <= 10

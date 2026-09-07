@@ -14,6 +14,7 @@ import pathlib
 import shutil
 import subprocess
 import sys
+from typing import Any
 
 import httpx
 
@@ -83,6 +84,24 @@ def outages_last_hour(db: pathlib.Path, now: dt.datetime | None = None) -> int:
         con.close()
 
 
+#: Cuántas líneas de Caddy hay que ver en dos horas para dar el registro por vivo. Medido el
+#: 7-sep-2026 en un rato tranquilo: 403. Cinco es un suelo muy por debajo de cualquier hora real,
+#: para que el aviso signifique «esto está mudo» y no «hoy hubo poca gente».
+ACCESS_LOG_MIN = 5
+
+
+def access_log_lines(desde: str = "-2 hours", correr: Any = None) -> int:
+    """Líneas que Caddy ha escrito en el journal. Es de donde el panel saca las visitas."""
+    ejecutar = correr or subprocess.run
+    r = ejecutar(
+        ["journalctl", "-u", "caddy", "--since", desde, "-o", "cat", "--no-pager"],
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    return len([x for x in (r.stdout or "").splitlines() if x.strip()])
+
+
 def main() -> int:
     problems: dict[str, str] = {}
     # 1. API health
@@ -134,7 +153,25 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         problems["no_model_check"] = f"⚠️ No se pudieron contar las averías del modelo: {e}"
 
-    # 5. disk
+    # 5. el registro del que vive el panel
+    #
+    # Las visitas del panel salen de `journalctl -u caddy`. Si Caddy dejara de escribir ahí, el
+    # panel enseñaría CERO visitas — y cero visitas no parece una avería, parece que no vino
+    # nadie. Es la L31 otra vez: el silencio que no se distingue de la ausencia, y en el único
+    # sitio con el que se decide si esto funciona.
+    try:
+        lineas = access_log_lines()
+        if lineas < ACCESS_LOG_MIN:
+            problems["access_log"] = (
+                "🚨 El registro de accesos está mudo: "
+                f"{lineas} líneas de Caddy en dos horas. El panel cuenta las visitas desde "
+                "ahí, así que estaría enseñando cero sin que nadie viera un error. "
+                "Comprueba el bloque `log` del Caddyfile y `systemctl status systemd-journald`."
+            )
+    except Exception as e:  # noqa: BLE001
+        problems["access_log_check"] = f"⚠️ No se pudo comprobar el registro de accesos: {e}"
+
+    # 6. disk
     du = shutil.disk_usage("/")
     used_pct = 100 * (du.total - du.free) / du.total
     if used_pct > DISK_WARN_PCT:

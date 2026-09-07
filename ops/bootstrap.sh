@@ -14,11 +14,20 @@ apt-get update -q && apt-get install -y -q curl git rsync ufw tesseract-ocr tess
 # journald corre sin límite por defecto y logrotate NO lo toca: el journal binario tiene su propio
 # tope y hay que ponérselo. En el VPS de MultiBot había crecido hasta 4 GB antes de que nadie
 # mirara. Un disco lleno no avisa: se lleva por delante la base de datos, el despliegue y el API.
+#
+# El tamaño NO es arbitrario: **el panel vive de este journal**. Las visitas, las páginas vistas y
+# el tiempo de permanencia salen de `journalctl -u caddy`, y el panel ofrece vistas de 7, 30 y 90
+# días. Medido el 7-sep-2026: 13 días ocupan 215 MB, o sea ~16,5 MB al día. Un primer intento con
+# 300 MB habría dejado al panel viendo 18 días — sin mentir, porque siempre dice desde cuándo
+# tiene registro, pero perdiendo el mes y el trimestre en silencio.
+#
+# 2 GB dan ~120 días, que cubre la vista más larga con margen. Sigue siendo un límite: lo que
+# había que evitar era que no hubiera ninguno, no que fuera generoso.
 mkdir -p /etc/systemd/journald.conf.d
 cat > /etc/systemd/journald.conf.d/pedibot-size.conf <<'CONF'
 [Journal]
-SystemMaxUse=300M
-MaxRetentionSec=1month
+SystemMaxUse=2G
+MaxRetentionSec=120day
 CONF
 systemctl restart systemd-journald || true
 
