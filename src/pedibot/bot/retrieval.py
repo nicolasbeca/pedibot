@@ -23,10 +23,36 @@ TRANSLATE_SYSTEM = (
 )
 
 
+def _brand_terms(drugs_path: Path) -> dict[str, dict[str, str]]:
+    """marca o alias → {idioma: nombre genérico}, sacado del catálogo.
+
+    Derivado, no copiado. La lista de marcas ya existe en `config/drugs.yaml` para la calculadora;
+    tenerla otra vez a mano en `synonyms.yaml` es el patrón del clon podrido — se añade una marca
+    en un sitio, el otro no se entera y nada falla. Medido el 7-sep-2026: de 44 nombres, 39 no
+    estaban en los sinónimos.
+    """
+    raw = yaml.safe_load(drugs_path.read_text(encoding="utf-8")) or {}
+    fuera: dict[str, dict[str, str]] = {}
+    for ficha in (raw.get("drugs") or {}).values():
+        genericos = {k: str(v).lower() for k, v in (ficha.get("generic") or {}).items()}
+        nombres = [
+            str(b.get("name", "")) for b in (ficha.get("brands") or []) if isinstance(b, dict)
+        ]
+        nombres += [str(a) for a in (ficha.get("aliases") or [])]
+        for n in nombres:
+            # «Tempra / Tylenol» y «Advil Children's / Infants'» son dos marcas en una casilla
+            for parte in str(n).split("/"):
+                clave = parte.strip().lower()
+                if len(clave) >= 3:
+                    fuera.setdefault(clave, genericos)
+    return fuera
+
+
 class Synonyms:
-    def __init__(self, path: Path):
+    def __init__(self, path: Path, drugs: Path | None = None):
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
         self._maps: dict[str, dict[str, list[str]]] = {k: v or {} for k, v in raw.items()}
+        self._marcas = _brand_terms(drugs) if drugs and drugs.exists() else {}
 
     def knows(self, lang: str) -> bool:
         """Whether this language has any local table, so retrieval works without a model."""
@@ -59,6 +85,20 @@ class Synonyms:
         low = query.lower()
         tokens = [c for t in _TOKEN.findall(low) for c in self._candidates(t)]
         extra: list[str] = []
+        # Las marcas, antes que nada. Un padre escribe lo que pone en el
+        # bote —«Dalsy», «Apiretal», «Alivium»— y el corpus habla de «ibuprofeno» y
+        # «paracetamol». Hasta el 7-sep-2026 el buscador no sabía que eran lo mismo y una
+        # consulta real por Dalsy recibió «no tengo información fiable sobre esto».
+        for marca, genericos in self._marcas.items():
+            hit = marca in low if " " in marca else any(t == marca for t in tokens)
+            if not hit:
+                continue
+            # solo el genérico del idioma de la pregunta y el inglés: meter los ocho
+            # añadiría cirílico y árabe a una consulta española, términos que no casan
+            # con nada y que le quitan peso a los que sí
+            for g in (genericos.get(lang), genericos.get("en")):
+                if g and g not in extra:
+                    extra.append(g)
         for table in self._tables(lang):
             for trigger, terms in table.items():
                 # a trigger with a space is a phrase ("stomach bug"), matched on the whole query;

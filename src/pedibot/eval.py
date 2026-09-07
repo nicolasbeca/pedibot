@@ -122,9 +122,9 @@ def run_eval(engine: Engine, golden: list[dict], k: int = 3) -> Report:
         # Not "this query expanded to nothing" — a question already written in the words of the
         # leaflet needs no expansion and searches fine. Marked None rather than False, so the
         # ratio stays a fact about the system.
-        measurable = engine.retriever.synonyms.knows(
-            g.get("lang") or "en"
-        ) or not isinstance(engine.llm, FakeProvider)
+        measurable = engine.retriever.synonyms.knows(g.get("lang") or "en") or not isinstance(
+            engine.llm, FakeProvider
+        )
         source_hit = (
             (any(d in docs_pred[:k] for d in docs_expected) if docs_expected else None)
             if measurable
@@ -167,7 +167,7 @@ def fake_engine_from_settings() -> Engine:
     return Engine(
         Retriever(
             Index(s.index_db_path),
-            Synonyms(s.config_dir / "synonyms.yaml"),
+            Synonyms(s.config_dir / "synonyms.yaml", s.config_dir / "drugs.yaml"),
             top_k=s.retrieval_top_k,
             taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
         ),

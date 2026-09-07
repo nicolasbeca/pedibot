@@ -6,7 +6,7 @@
 
 drugs:
   paracetamol:
-    generic: {en: "Paracetamol (acetaminophen)", es: "Paracetamol", fr: "Paracétamol", de: "Paracetamol", ru: "Парацетамол", ar: "باراسيتامول"}
+    generic: {en: "Paracetamol (acetaminophen)", es: "Paracetamol", fr: "Paracétamol", de: "Paracetamol", ru: "Парацетамол", ar: "باراسيتامول", pt: "Paracetamol", hi: "पैरासिटामोल"}
     aliases: [acetaminophen, acetaminofen, acetaminofén, apap, "ben-u-ron", "ben u ron", "benuron", "paracetamol-ratiopharm", "tylenol bebe", "tylenol bebê", "tylenol criança", "tylenol crianca", "panadol baby"]
     brands:
       - {name: "Apiretal", countries: [ES], forms: ["gotas 100 mg/ml"]}
@@ -35,12 +35,14 @@ drugs:
       es: "Menores de 3 meses: solo si lo ha indicado el pediatra. No combinar con otros productos que también lleven paracetamol (anticatarrales)."
       fr: "Avant 3 mois, uniquement sur avis médical. Ne pas associer à d'autres produits contenant du paracétamol (médicaments contre le rhume)."
       de: "Unter 3 Monaten nur, wenn eine Ärztin es angeordnet hat. Nicht mit anderen Mitteln kombinieren, die ebenfalls Paracetamol enthalten (Erkältungsmittel)."
+      pt: "Menores de 3 meses: apenas se o pediatra tiver indicado. Não combinar com outros produtos que também levem paracetamol (medicamentos para a constipação)."
+      hi: "3 महीने से कम उम्र में सिर्फ़ तभी जब डॉक्टर ने कहा हो। ऐसी दूसरी दवाओं के साथ न दें जिनमें भी पैरासिटामोल हो (सर्दी-ज़ुकाम की दवाएँ)।"
       ru: "До 3 месяцев — только если назначил врач. Не сочетать с другими средствами, которые тоже содержат парацетамол (препараты от простуды)."
       ar: "قبل 3 أشهر لا يُعطى إلا بوصفة طبيب. ولا يُجمع مع مستحضرات أخرى تحتوي أيضا على الباراسيتامول (أدوية الزكام)."
     source: "AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos"
 
   ibuprofen:
-    generic: {en: "Ibuprofen", es: "Ibuprofeno", fr: "Ibuprofène", de: "Ibuprofen", ru: "Ибупрофен", ar: "إيبوبروفين"}
+    generic: {en: "Ibuprofen", es: "Ibuprofeno", fr: "Ibuprofène", de: "Ibuprofen", ru: "Ибупрофен", ar: "إيبوبروفين", pt: "Ibuprofeno", hi: "आइबुप्रोफेन"}
     aliases: [ibuprofeno, ibuprofène, ibuprofene, "nureflex", "nurofen junior", "advil infantil", "ibuprofeno pediatrico", "ibuprofeno pediátrico", "brufen", "ibufen", "algifor"]
     brands:
       - {name: "Dalsy", countries: [ES], forms: ["suspensión 2 % (100 mg/5 ml)", "suspensión 4 % (200 mg/5 ml)"]}
@@ -64,6 +66,8 @@ drugs:
       es: "No en menores de 3 meses ni de 5 kg. Con comida. Evitar si está deshidratado (vómitos/diarrea), con varicela o con problemas renales."
       fr: "Pas avant 3 mois ni en dessous de 5 kg. À prendre avec de la nourriture. À éviter en cas de déshydratation (vomissements/diarrhée), de varicelle ou de problèmes rénaux."
       de: "Nicht unter 3 Monaten und nicht unter 5 kg. Mit einer Mahlzeit geben. Vermeiden bei Austrocknung (Erbrechen/Durchfall), bei Windpocken oder bei Nierenproblemen."
+      pt: "Não em menores de 3 meses nem de 5 kg. Com comida. Evitar se estiver desidratado (vómitos/diarreia), com varicela ou com problemas renais."
+      hi: "3 महीने से कम या 5 किलो से कम वज़न में नहीं। खाने के साथ दें। अगर बच्चा निर्जलित हो (उल्टी/दस्त), चिकनपॉक्स हो या गुर्दे की समस्या हो तो न दें।"
       ru: "Не давать до 3 месяцев и при весе меньше 5 кг. Давать во время еды. Не давать при обезвоживании (рвота, понос), при ветрянке и при болезнях почек."
       ar: "لا يُعطى قبل 3 أشهر ولا لوزن أقل من 5 كغ. يُعطى مع الطعام. ويُتجنب عند الجفاف (قيء أو إسهال) وعند الجدري المائي وعند مشاكل الكلى."
     source: "AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos"

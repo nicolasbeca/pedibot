@@ -120,11 +120,11 @@ class GuideIndex:
             if not shared:
                 continue
             key = (
-                sum(weight[d] for d in shared),                 # how much material in common
+                sum(weight[d] for d in shared),  # how much material in common
                 # words of the question that appear in the guide's own title
                 len(asked & set(_WORD.findall(g.title.lower()))),
-                len(shared) / len(docs),                        # how much of the guide it covers
-                -len(docs),                                     # the more specific guide
+                len(shared) / len(docs),  # how much of the guide it covers
+                -len(docs),  # the more specific guide
             )
             if best is None or key > best:
                 best, pick = key, g

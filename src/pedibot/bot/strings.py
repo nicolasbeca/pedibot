@@ -281,8 +281,14 @@ STRINGS: dict[str, Table] = {
 
 
 LANGUAGE_NAME = {
-    "en": "English", "es": "Spanish", "fr": "French", "de": "German",
-    "ru": "Russian", "ar": "Arabic", "pt": "Brazilian Portuguese", "hi": "Hindi",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "ru": "Russian",
+    "ar": "Arabic",
+    "pt": "Brazilian Portuguese",
+    "hi": "Hindi",
 }
 """What the model is told to write in. Kept here, in one place, because this exact mapping was
 written inline twice — in the answer prompt and in the article prompt — and both times a new

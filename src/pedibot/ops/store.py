@@ -224,7 +224,9 @@ class OpsStore:
         ]
         by_ver = dict(
             q(
-                "SELECT verification, COUNT(*) FROM answers WHERE ts>=?" + REAL_ONLY + " GROUP BY 1",
+                "SELECT verification, COUNT(*) FROM answers WHERE ts>=?"
+                + REAL_ONLY
+                + " GROUP BY 1",
                 (since,),
             ).fetchall()
         )
@@ -262,9 +264,9 @@ class OpsStore:
             "INSERT INTO turns (session, ts, role, text) VALUES (?,?,?,?)",
             (session, _now(), role, text),
         )
-        vencidas = (
-            dt.datetime.now(dt.UTC) - dt.timedelta(hours=self.TURN_TTL_HOURS)
-        ).isoformat(timespec="seconds")
+        vencidas = (dt.datetime.now(dt.UTC) - dt.timedelta(hours=self.TURN_TTL_HOURS)).isoformat(
+            timespec="seconds"
+        )
         self.con.execute("DELETE FROM turns WHERE ts < ?", (vencidas,))
         self.con.commit()
 

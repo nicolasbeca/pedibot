@@ -184,7 +184,9 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
     name = d.name_es if lang == "es" else d.name_en
     lines = [T["dose_for"].format(name=name, kg=r.weight_kg)]
     if r.refer:
-        lines.append(T["dose_refer"] + ", ".join(T["dose_warn"].get(w, w) for w in r.warnings) + ".")
+        lines.append(
+            T["dose_refer"] + ", ".join(T["dose_warn"].get(w, w) for w in r.warnings) + "."
+        )
     lines.append(
         T["dose_line"].format(
             mg=r.mg,

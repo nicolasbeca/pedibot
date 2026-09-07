@@ -88,7 +88,7 @@ def search(query: str, k: int = 6, red_flag: bool = False) -> None:
     s = get_settings()
     r = Retriever(
         Index(s.index_db_path),
-        Synonyms(s.config_dir / "synonyms.yaml"),
+        Synonyms(s.config_dir / "synonyms.yaml", s.config_dir / "drugs.yaml"),
         top_k=k,
         taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
     )
@@ -154,7 +154,7 @@ def ask(
     eng = Engine(
         Retriever(
             Index(s.index_db_path),
-            Synonyms(s.config_dir / "synonyms.yaml"),
+            Synonyms(s.config_dir / "synonyms.yaml", s.config_dir / "drugs.yaml"),
             llm=None if fake else llm,
             top_k=s.retrieval_top_k,
             taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
@@ -265,7 +265,7 @@ def publish(
     # cannot see what the batch itself just wrote, and a run of 90 topics happily publishes both
     # `hives` and `urticaria` (2-sep-2026).
     written, failed = 0, set()  # `failed` matters: nothing is written, so the topic would be
-    while written < n:            # picked again for ever on the next round
+    while written < n:  # picked again for ever on the next round
         if topic:
             t = topic if written == 0 and topic not in failed else None
         else:
@@ -310,7 +310,7 @@ def _llm_eval(golden: Path, report_dir: Path, use_judge: bool = False) -> None:
     eng = Engine(
         Retriever(
             Index(s.index_db_path),
-            Synonyms(s.config_dir / "synonyms.yaml"),
+            Synonyms(s.config_dir / "synonyms.yaml", s.config_dir / "drugs.yaml"),
             llm=prov,
             top_k=s.retrieval_top_k,
             taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
@@ -338,7 +338,6 @@ def _llm_eval(golden: Path, report_dir: Path, use_judge: bool = False) -> None:
         encoding="utf-8",
     )
     typer.echo(f"→ {out}")
-
 
 
 @app.command()
@@ -372,6 +371,7 @@ def flagged(clear: bool = False) -> None:
     if clear:
         save_flagged({})
         typer.echo("Lista vaciada.")
+
 
 @app.command()
 def balance(warn_below_pct: float = 20.0, initial_usd: float = 0.0) -> None:

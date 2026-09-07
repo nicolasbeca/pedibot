@@ -204,15 +204,31 @@ class TriageResult:
         return self.level != "routine"
 
 
+#: Guiones de todas las formas: el corto, el largo, el de las cifras y los que mete un procesador
+#: de texto. Todos separan el número de la unidad exactamente igual que un espacio.
+_GUIONES = re.compile(r"[-\u2010\u2011\u2012\u2013\u2014\u2015\u2212]+")
+
+
 def parse_age_months(text: str) -> float | None:
-    low = text.lower()
+    """La edad en meses, si la pregunta la dice.
+
+    Los guiones se convierten en espacios antes de mirar nada. Los patrones de abajo separan el
+    número de la unidad con `\\s*`, y un guion no es un espacio: hasta el 7-sep-2026
+    «My 2-month-old has a fever» devolvía None y se quedaba en «rutina», mientras que
+    «My 2 month old has a fever» daba 2 meses y **urgente**. La fiebre en un lactante de menos de
+    tres meses es de las reglas más importantes que hay, y un guion la apagaba en silencio.
+
+    Se arregla aquí, en un sitio, y no en cada expresión: así lo heredan los ocho idiomas, las
+    edades en cifra y las escritas en letra («six-week-old»).
+    """
+    low = _GUIONES.sub(" ", text.lower())
     if _NEWBORN.search(low):
         return 0.5
     for phrase, months in _WORD_AGES.items():
         if re.search(rf"{NOT_BEFORE}{re.escape(phrase)}{NOT_AFTER}", low):
             return float(months)
     for rx, mult in _AGE_PATTERNS:
-        m = rx.search(text)
+        m = rx.search(low)
         if m:
             return float(m.group(1)) * mult
     return None
@@ -242,9 +258,24 @@ VENTANA_NEGACION = 26
 #: Lo que devuelve a la frase su valor afirmativo: el final de una oración, y las conjunciones
 #: adversativas. «sin fiebre pero le cuesta respirar» tiene que seguir saltando.
 CORTES = (
-    ".", ";", "!", "?", "\n",
-    " pero ", " aunque ", " but ", " aber ", " doch ", " jedoch ",
-    " mais ", " mas ", " porém ", " но ", " однако ", " لكن ", " लेकिन ",
+    ".",
+    ";",
+    "!",
+    "?",
+    "\n",
+    " pero ",
+    " aunque ",
+    " but ",
+    " aber ",
+    " doch ",
+    " jedoch ",
+    " mais ",
+    " mas ",
+    " porém ",
+    " но ",
+    " однако ",
+    " لكن ",
+    " लेकिन ",
 )
 
 
@@ -281,7 +312,8 @@ class Triage:
                     reason_es=r["reason_es"],
                     reason_en=r["reason_en"],
                     reasons_by_lang={
-                        k[7:]: v for k, v in r.items()
+                        k[7:]: v
+                        for k, v in r.items()
                         if k.startswith("reason_") and k not in ("reason_es", "reason_en")
                     },
                     patterns=[re.compile(p, re.I) for p in r.get("patterns", [])],

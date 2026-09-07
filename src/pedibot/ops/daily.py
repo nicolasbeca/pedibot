@@ -25,8 +25,14 @@ from pedibot.ops.store import REAL_ONLY
 
 LEVEL_MARK = {"emergency": "🚨", "urgent": "🚨", "mental_health": "💛"}
 LANG_NAME = {
-    "en": "inglés", "es": "español", "fr": "francés", "de": "alemán",
-    "ru": "ruso", "ar": "árabe", "pt": "portugués", "hi": "hindi",
+    "en": "inglés",
+    "es": "español",
+    "fr": "francés",
+    "de": "alemán",
+    "ru": "ruso",
+    "ar": "árabe",
+    "pt": "portugués",
+    "hi": "hindi",
 }
 
 

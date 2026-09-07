@@ -269,7 +269,7 @@ def front_from_settings() -> TelegramFront:
     engine = Engine(
         Retriever(
             Index(s.index_db_path),
-            Synonyms(s.config_dir / "synonyms.yaml"),
+            Synonyms(s.config_dir / "synonyms.yaml", s.config_dir / "drugs.yaml"),
             llm=llm,
             top_k=s.retrieval_top_k,
             taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),

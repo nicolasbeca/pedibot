@@ -408,24 +408,30 @@ def parse_output(text: str) -> tuple[str, str, str]:
     return m_t.group(1).strip(), m_s.group(1).strip(), m_b.group(1).strip()
 
 
-
-
 # The "common questions" heading of each language, exactly as the article prompt asks for it and
 # as web/site/src/guides.ts looks for it. A guide whose FAQ heading drifts loses its structured
 # data with no error; a language missing from here would silently stop being checked, which is
 # why a test walks SUPPORTED_LANGS against it.
 FAQ_HEADING = {
-    "en": "Common questions", "es": "Preguntas frecuentes", "fr": "Questions fréquentes",
-    "de": "Häufige Fragen", "ru": "Частые вопросы", "ar": "أسئلة شائعة",
-    "pt": "Perguntas frequentes", "hi": "आम सवाल",
+    "en": "Common questions",
+    "es": "Preguntas frecuentes",
+    "fr": "Questions fréquentes",
+    "de": "Häufige Fragen",
+    "ru": "Частые вопросы",
+    "ar": "أسئلة شائعة",
+    "pt": "Perguntas frequentes",
+    "hi": "आम सवाल",
 }
 
 # Deliberately loose: the question is whether the section EXISTS, not how it is worded. German
 # alone writes that heading three ways across the published guides and all three are fine.
 DOCTOR_WORDS = {
-    "en": ("doctor", "emergency"), "es": ("médico", "urgencias"),
-    "fr": ("médecin", "urgences"), "de": ("arzt", "ärztin", "notaufnahme"),
-    "ru": ("врач", "отделение"), "ar": ("الطبيب", "الطوارئ"),
+    "en": ("doctor", "emergency"),
+    "es": ("médico", "urgencias"),
+    "fr": ("médecin", "urgences"),
+    "de": ("arzt", "ärztin", "notaufnahme"),
+    "ru": ("врач", "отделение"),
+    "ar": ("الطبيب", "الطوارئ"),
     "pt": ("médico", "pronto-socorro", "emergência"),
     "hi": ("डॉक्टर", "इमरजेंसी", "अस्पताल"),
 }
@@ -433,7 +439,9 @@ DOCTOR_WORDS = {
 # Languages with an alphabet of their own: a heading with none of it is a heading in another
 # language. Two Hindi guides shipped with "En qué coinciden" over an article of Devanagari.
 OWN_SCRIPT = {
-    "ru": ("\u0400", "\u04ff"), "ar": ("\u0600", "\u06ff"), "hi": ("\u0900", "\u097f"),
+    "ru": ("\u0400", "\u04ff"),
+    "ar": ("\u0600", "\u06ff"),
+    "hi": ("\u0900", "\u097f"),
 }
 
 # German addresses the reader as "Sie" everywhere else on the site (prompt rule 9). A guide that
@@ -488,8 +496,7 @@ def _problems(
         problems.append(f"wrong_language (write the WHOLE article in {want})")
     # the sources block quotes documents verbatim, so only the prose is checked
     prose = "\n".join(
-        line for line in body.splitlines()
-        if not line.strip().startswith(('- "[', '*', '['))
+        line for line in body.splitlines() if not line.strip().startswith(('- "[', "*", "["))
     )
     found = foreign_service_problem(prose)
     if found:
@@ -629,8 +636,14 @@ from pedibot.bot.strings import (  # noqa: E402 — one mapping, not two
 )
 
 SOURCES_HEADING = {
-    "en": "Sources", "es": "Fuentes", "fr": "Sources", "de": "Quellen",
-    "ru": "Источники", "ar": "المصادر", "pt": "Fontes", "hi": "स्रोत",
+    "en": "Sources",
+    "es": "Fuentes",
+    "fr": "Sources",
+    "de": "Quellen",
+    "ru": "Источники",
+    "ar": "المصادر",
+    "pt": "Fontes",
+    "hi": "स्रोत",
 }
 ARTICLE_DISCLAIMER = {
     "en": "*This guide summarises published paediatric guidelines. It is not medical advice and does not replace your paediatrician. In an emergency, call your local emergency number.*",
