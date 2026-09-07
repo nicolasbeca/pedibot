@@ -21,11 +21,22 @@ _VACC = re.compile(
     r"vacun\w*|vacin\w*|vaccin\w*|inmuniz\w*|immuniz\w*|imuniz\w*"
     r"|impf\w*|geimpft"
     r"|привив\w*|вакцин\w*"
-    r"|تطعيم\w*|التطعيم\w*|تلقيح|لقاح|اللقاح"
     r"|teeka|teeke|teekaakaran"
     r"|shots?|jabs?|mmr|dtap|dtpa|menb|hpv|vph|triple v[ií]rica"
     r")\b"
-    r"|टीक|वैक्सीन",
+    # Devanagari y árabe van FUERA del grupo con `\b`, y no por descuido: `\b` se define
+    # sobre `\w`, y en estas escrituras el artículo y el plural son caracteres de palabra.
+    # En «اللقاحات» la raíz لقاح lleva ال delante y ات detrás, así que no hay ninguna frontera
+    # y `\bاللقاح\b` no casa nunca. El devanagari ya estaba fuera por esta misma razón; el
+    # árabe seguía dentro y no detectaba media pregunta (7-sep-2026).
+    r"|टीक|वैक्सीन"
+    r"|تطعيم|تلقيح"
+    # «حبوب اللقاح» es el POLEN, no una vacuna: una pregunta por la alergia al polen no puede
+    # acabar en el calendario de vacunación.
+    # Dos lookbehind encadenados y no una alternancia: `re` exige anchura fija en cada uno,
+    # y «حبوب » (5) y «حبوب ال» (7) no la comparten. El primero cubre la forma desnuda y el
+    # segundo la del artículo, que era la que se colaba.
+    r"|(?<!حبوب )(?<!حبوب ال)لقاح",
     re.I,
 )
 COUNTRY_ALIASES = {"UK": "GB", "EN": "GB", "USA": "US", "SPAIN": "ES", "ESPAÑA": "ES"}
