@@ -10,8 +10,16 @@ la API de inspección de URL, cuáles de las páginas de más valor NO tiene.
 Search Console → la barra de arriba **«Inspeccionar las URL de…»** → pegas la dirección → esperas
 a que responda → **Solicitar indexación**.
 
-Va de una en una y el límite ronda las **10-12 al día por propiedad**. Empieza por arriba: están
-en orden de valor medido, no de comodidad.
+### ⚠️ Hay un límite diario, y es de verdad
+
+**Medido el 7-sep-2026: a la décima, Search Console dejó de aceptar.** No avisa antes; simplemente
+la opción deja de estar disponible. La cuota se repone sola al día siguiente.
+
+Por eso **los bloques de abajo van de diez en diez**: cada uno es una sesión. No intentes hacer
+dos seguidos.
+
+Va de una en una, y están en orden de valor medido, no de comodidad: empieza siempre por arriba
+del primer bloque que te quede.
 
 ---
 
@@ -35,7 +43,7 @@ inspección de URL lo dice, y el panel las contará en cuanto empiecen a salir.
 
 ---
 
-## Turno siguiente — el resto de calendarios (21)
+## Tanda 2 — el resto de calendarios (mañana)
 
 **Por qué esta categoría antes que nada:** es la que mejor posiciona de toda la web. Las dos únicas
 consultas no de marca donde salimos por encima del puesto 30 son suyas — «calendario vacunal
@@ -55,7 +63,7 @@ https://pedibot.xyz/ar/vaccines/de
 https://pedibot.xyz/ar/vaccines/fr
 ```
 
-Y después:
+### Tanda 3 — diez más
 
 ```
 https://pedibot.xyz/ar/vaccines/gb
@@ -68,22 +76,24 @@ https://pedibot.xyz/ru/vaccines/gb
 https://pedibot.xyz/ru/vaccines/pt
 https://pedibot.xyz/ru/vaccines/us
 https://pedibot.xyz/hi/vaccines/de
-https://pedibot.xyz/hi/vaccines/us
 ```
 
----
-
-## Después — dosis por marca en español
+### Tanda 4 — el último calendario, y las dosis en español
 
 La otra demanda medida y no de marca: «calculadora apiretal» (6 impresiones), «apiretal
 calculadora» (3), «calculadora ibuprofeno» (3), «calcular dosis apiretal» (2). Compiten contra
 blogs, no contra el NHS — es la única categoría donde una web nueva puede ganar de verdad.
 
-La primera es la más fácil de ganar de toda la lista: **«apirofeno» es *ibuprofeno* mal escrito**,
-la gente lo busca así (dos consultas medidas), tenemos la página, y nadie optimiza para una falta
-de ortografía.
+**`apirofeno` es la más fácil de ganar de toda la lista**: es *ibuprofeno* mal escrito, la gente
+lo busca así (dos consultas medidas), tenemos la página, y nadie optimiza para una falta de
+ortografía.
+
+Y todas estas cambiaron el 6-sep: llevan ya la calculadora de verdad con su medicamento puesto, y
+el título dice «Calculadora de dosis de X por peso». Pedir la indexación de algo recién cambiado
+vale más que de algo que lleva semanas igual.
 
 ```
+https://pedibot.xyz/hi/vaccines/us
 https://pedibot.xyz/es/dose/apirofeno
 https://pedibot.xyz/es/dose/nurofen
 https://pedibot.xyz/es/dose/paracetamol
@@ -93,26 +103,15 @@ https://pedibot.xyz/es/dose/panadol
 https://pedibot.xyz/es/dose/advil
 https://pedibot.xyz/es/dose/motrin
 https://pedibot.xyz/es/dose/tylenol
+```
+
+### Tanda 5 — lo que queda
+
+```
 https://pedibot.xyz/es/dose/doliprane
-```
-
-Estas páginas **cambiaron el 6-sep**: llevan ya la calculadora de verdad con su medicamento
-puesto, y el título dice «Calculadora de dosis de X por peso». Pedir la indexación de algo recién
-cambiado vale más que de algo que lleva semanas igual.
-
-Y en inglés, las dos que faltan:
-
-```
+https://pedibot.xyz/es/dose/ben
 https://pedibot.xyz/dose/paracetamol
 https://pedibot.xyz/dose/tylenol
-https://pedibot.xyz/es/dose/ben
-```
-
----
-
-## Por último — las guías de fiebre y dosis
-
-```
 https://pedibot.xyz/es/guides/fiebre_en_ninos_que_temperatura_es_preocupante
 https://pedibot.xyz/es/guides/que_hago_si_mi_hijo_tiene_fiebre
 https://pedibot.xyz/es/guides/puedo_alternar_paracetamol_e_ibuprofeno_para_la_fiebre
