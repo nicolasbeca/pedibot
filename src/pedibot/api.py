@@ -381,14 +381,20 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             raise HTTPException(429, "Too many requests")
         if ops.cost_today_usd() >= cfg.max_daily_llm_usd:
             raise HTTPException(503, "daily budget reached")
-        raw, cost = vision_fn(
-            s.deepseek_api_key,
-            s.deepseek_base_url,
-            s.deepseek_vision_model,
-            VISION_SYSTEM,
-            body.image_b64,
-            body.mime,
-        )
+        try:
+            raw, cost = vision_fn(
+                s.deepseek_api_key,
+                s.deepseek_base_url,
+                s.deepseek_vision_model,
+                VISION_SYSTEM,
+                body.image_b64,
+                body.mime,
+            )
+        except LLMUnavailable:
+            # Aquí no hay respuesta de reserva que dar: sin modelo de visión no hay lectura de la
+            # foto, y no vamos a inventarla. Pero es un 503 («ahora no puedo, inténtalo luego»),
+            # no un 500 («se nos ha roto algo»), que es lo que salía hasta el 7-sep-2026.
+            raise HTTPException(503, "photo check unavailable right now") from None
         d = parse(raw)
         nums = engine.numbers.get(body.country)
         level, text = interpret(d, body.lang, str(nums["emergency"]))
@@ -417,13 +423,28 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
     @app.post("/api/agent/ask")
     def agent_ask(body: AskIn, request: Request) -> dict[str, object]:
         """Machine-to-machine endpoint for Virtuals ACP jobs (idea 10). Same engine, same safety
-        checks; returns structured JSON with sources. Auth: X-Api-Key in AGENT_API_KEYS."""
+        checks; returns structured JSON with sources. Auth: X-Api-Key in AGENT_API_KEYS.
+
+        Lo de «same safety checks» era falso hasta el 7-sep-2026: este camino ni miraba el tope de
+        gasto del día ni sobrevivía a una avería del modelo. Es el TERCER frente con el mismo
+        agujero (L38) y el más fácil de olvidar, porque no lo usa una persona.
+
+        El tope se aplica aquí también, y no es obvio: el comprador paga el trabajo, así que se
+        podría argumentar que su gasto no debería contar. Se aplica porque el saldo de DeepSeek es
+        uno solo — si un comprador (o un fallo suyo) lo agota, quien se queda sin respuesta es un
+        padre. Primero el padre."""
         import os
 
         keys = {k.strip() for k in os.environ.get("AGENT_API_KEYS", "").split(",") if k.strip()}
         if not keys or request.headers.get("x-api-key") not in keys:
             raise HTTPException(401, "invalid api key")
-        a = engine.ask(body.question, country=body.country, lang=body.lang)
+        if ops.cost_today_usd() >= cfg.max_daily_llm_usd:
+            a = engine.answer_without_model(body.question, body.country, body.lang, "degraded")
+        else:
+            try:
+                a = engine.ask(body.question, country=body.country, lang=body.lang)
+            except LLMUnavailable:
+                a = engine.answer_without_model(body.question, body.country, body.lang, "no_model")
         ops.log_answer(
             AnswerRecord(
                 session="agent_" + secrets.token_urlsafe(8),

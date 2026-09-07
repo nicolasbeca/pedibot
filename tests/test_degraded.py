@@ -331,3 +331,46 @@ def test_telegram_answers_an_outage_in_the_chats_language(telegram, monkeypatch)
 
     assert "Something went wrong" not in texto
     assert NM["de"] in texto, "la avería se le cuenta al padre en su idioma, no en inglés"
+
+
+# --------------------------------------------------------------------------------------------
+# El tercer frente: el endpoint del agente (trabajos de ACP, que se cobran).
+#
+# Su docstring decía «same safety checks» y no era verdad: ni miraba el tope de gasto ni recogía
+# la avería. Es el frente más fácil de olvidar porque no lo usa una persona — y por eso el
+# candado de verdad es el estructural de tests/test_fronts.py, que lee el código.
+#
+# El tope se le aplica, y no es obvio: el comprador paga el trabajo, así que se podría argumentar
+# que su gasto no debería contar contra el nuestro. Se aplica porque el saldo de DeepSeek es uno
+# solo — si un comprador lo agota, quien se queda sin respuesta es un padre.
+# --------------------------------------------------------------------------------------------
+
+
+def _agente(c, monkeypatch, pregunta="mi hijo de 4 años tiene fiebre"):
+    monkeypatch.setenv("AGENT_API_KEYS", "k1")
+    return c.post(
+        "/api/agent/ask",
+        json={"question": pregunta, "lang": "es", "country": "ES"},
+        headers={"x-api-key": "k1"},
+    )
+
+
+def test_the_agent_endpoint_respects_the_daily_cap(client, monkeypatch) -> None:  # noqa: F811
+    c, ops = client
+    monkeypatch.setattr(ops, "cost_today_usd", lambda: 99.0)
+    j = _agente(c, monkeypatch).json()
+    assert j["verification"] == "degraded"
+
+
+def test_the_agent_endpoint_survives_a_dead_model(client, monkeypatch) -> None:  # noqa: F811
+    c, _ = client
+
+    def boom(self, system, user, temperature=0.2, max_tokens=1500):
+        raise LLMUnavailable("APITimeoutError: no contesta")
+
+    monkeypatch.setattr(FakeProvider, "complete", boom)
+    r = _agente(c, monkeypatch, "mi hijo de 4 años tiene fiebre y está teniendo una convulsión")
+    assert r.status_code == 200, "un trabajo pagado no puede acabar en un 500"
+    j = r.json()
+    assert j["level"] == "emergency" and j["banner"], "el comprador tiene que recibir la alarma"
+    assert j["verification"] == "no_model", "y tiene que poder saber que no la redactó el modelo"

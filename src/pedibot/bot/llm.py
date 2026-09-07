@@ -123,25 +123,34 @@ def vision_json(
     api_key: str, base_url: str, model: str, system: str, image_b64: str, mime: str = "image/jpeg"
 ) -> tuple[str, float]:
     """One image + system prompt → raw text (expected JSON) and cost. DeepSeek vision-exp model."""
-    from openai import OpenAI
+    from openai import APIError, OpenAI
 
-    client = OpenAI(api_key=api_key, base_url=base_url)
-    resp = client.chat.completions.create(
-        model=model,
-        temperature=0,
-        max_tokens=200,
-        messages=[
-            {"role": "system", "content": system},
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": "Photo:"},
-                    {"type": "image_url", "image_url": {"url": f"data:{mime};base64,{image_b64}"}},
-                ],
-            },
-        ],
-        extra_body={"thinking": {"type": "disabled"}},
-    )
+    # Mismo motivo que en `OpenAICompatibleProvider`: 600 s y dos reintentos por defecto son media
+    # hora de espera. Una foto lleva bastantes más tokens de entrada, así que se le da algo más de
+    # margen que a una pregunta de texto, pero acotado.
+    client = OpenAI(api_key=api_key, base_url=base_url, timeout=30.0, max_retries=1)
+    try:
+        resp = client.chat.completions.create(
+            model=model,
+            temperature=0,
+            max_tokens=200,
+            messages=[
+                {"role": "system", "content": system},
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": "Photo:"},
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": f"data:{mime};base64,{image_b64}"},
+                        },
+                    ],
+                },
+            ],
+            extra_body={"thinking": {"type": "disabled"}},
+        )
+    except APIError as e:
+        raise LLMUnavailable(f"{type(e).__name__}: {e}") from e
     usage = resp.usage
     cost = ((usage.prompt_tokens if usage else 0) / 1e6 * 0.14) + (
         (usage.completion_tokens if usage else 0) / 1e6 * 0.28
