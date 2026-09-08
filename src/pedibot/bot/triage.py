@@ -383,8 +383,16 @@ class Triage:
         return "age_under_3_months" in requires and age is not None and age >= 3
 
     def assess(self, text: str) -> TriageResult:
-        age = parse_age_months(text)
-        fever = self.has_fever(text)
+        # Los guiones se vuelven espacios ANTES de mirar nada, igual que en `parse_age_months`.
+        # Aquello se arregló el 7-sep-2026 «en un sitio, y no en cada expresión, para que lo
+        # hereden los ocho idiomas» — y se arregló en la lectura de la edad y no en las reglas,
+        # que es la otra mitad de la misma casa. Medido el 8-sep: «my 5 days old refuses to
+        # feed» daba urgente y «my 5-day-old refuses to feed» —la forma normal en inglés— daba
+        # rutina, con la misma regla y la misma frase. Ningún patrón del fichero necesita un
+        # guion literal, así que la conversión no puede quitarle una coincidencia a nadie.
+        texto = _GUIONES.sub(" ", text)
+        age = parse_age_months(texto)
+        fever = self.has_fever(texto)
         flags = {
             "fever": fever,
             "age_under_3_months": age is not None and age < 3,
@@ -405,7 +413,7 @@ class Triage:
             if r.requires and all(flags.get(k, False) for k in r.requires):
                 matched.append(r)
                 continue
-            if not any(self._hits(rx, text) for rx in r.patterns):
+            if not any(self._hits(rx, texto) for rx in r.patterns):
                 continue
             if r.requires and self._contradicted(r.requires, age):
                 continue
