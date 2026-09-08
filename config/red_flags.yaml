@@ -61,6 +61,9 @@ rules:
   - apagou
   - बेहोश
   - जवाब नहीं दे
+  - प्रतिक्रिया नहीं दे
+  - हिल नहीं रहा
+  - pratikriya nahi de
   - होश नहीं
   - जाग नहीं
   - behosh
@@ -257,6 +260,8 @@ rules:
   - anafila
   - hinchaz[oó]n de (labios|lengua|p[aá]rpados|cara|garganta)
   - (labios|lengua|cara) hinchad
+  - se le (est[áa]n? )?hinch(a|an|ando).{0,25}(labio|lengua|cara|p[áa]rpado|garganta)
+  - (hinch|inflam)(a|an|ando|ándose).{0,20}(labio|lengua|cara|garganta)
   - anaphyla
   - (lips|tongue|face|throat) (is |are )?swell
   - swollen (lips|tongue|face|throat)
@@ -266,6 +271,9 @@ rules:
   - lippen geschwollen
   - geschwollene lippen
   - gesicht geschwollen
+  - (lippen|gesicht|zunge|hals).{0,20}schwell(en|t) an
+  - (schwillt|schwellen) an
+  - anschwellen
   - zunge geschwollen
   - quaddeln
   - анафилак
@@ -273,6 +281,8 @@ rules:
   - отёк губ
   - отек губ
   - распухл.{0,15}губ
+  - отека(ют|ет).{0,20}(губ|лиц|язык)
+  - опуха(ют|ет).{0,20}(губ|лиц)
   - отёк квинке
   - отек квинке
   - крапивниц.{0,30}дыш
@@ -280,11 +290,18 @@ rules:
   - تورم الشفت
   - انتفاخ الشفت
   - تورم الوجه
+  - ينتفخ
+  - تنتفخ
+  - يتورم
+  - تتورم
   - تورم اللسان
   - صدمة تحسسية
   - anafilaxia
   - rea[cç][aã]o al[eé]rgica grave
   - l[aá]bios inchados
+  - (l[aá]bios|rosto|l[ií]ngua|cara).{0,25}inchando
+  - inchando.{0,25}(l[aá]bios|rosto|l[ií]ngua|cara)
+  - est[aá]? inchando
   - in(chou|chado) (o )?rosto
   - l[ií]ngua inchada
   - garganta fechando
@@ -532,6 +549,9 @@ rules:
   - taches.{0,60}ne (disparaissent|partent|s'effacent) pas.{0,40}(appuie|pression|presse)
   - p[ée]t[ée]chie
   - flecken.{0,40}nicht weg
+  - flecken.{0,40}nicht verschwind
+  - (flecken|punkte|ausschlag).{0,40}(bleiben|gehen nicht)
+  - (dr[üu]ck|glas).{0,30}nicht verschwind
   - punkte.{0,40}nicht weg
   - glastest
   - petechien
@@ -552,6 +572,8 @@ rules:
   - manchinhas vermelhas e febre
   - teste do copo
   - दबाने पर नहीं मिट
+  - दबाने पर न मिट
+  - दबाने से नहीं मिट
   - दाने नहीं जा रहे
   - गिलास.{0,15}दाने
   - dabane par nahi mit
@@ -770,23 +792,33 @@ rules:
   - no (hace|ha hecho) pis
   - orina (muy )?poco
   - pañal seco
+  - sin mojar el pañal
+  - no (ha )?mojado el pañal
+  - \d{1,2} horas sin (hacer pis|mojar)
   - sin l[aá]grimas
   - deshidrat
   - sunken eyes
   - (no|hasn'?t|not) (peed|urinated|wet)
   - dry (nappy|diaper)
+  - (hasn'?t|has not|not) had a wet (nappy|diaper)
+  - no wet (nappy|diaper|nappies|diapers)
+  - \d{1,2} hours without (a wet|peeing|weeing|urinating)
   - no tears
   - dehydrat
   - yeux enfonc[ée]s
   - ne fait plus pipi
   - n'a pas urin[ée]
   - couche s[eè]che
+  - pas mouill[eé] sa couche
+  - n'a pas fait pipi depuis
   - sans larmes
   - d[ée]shydrat
   - eingesunkene augen
   - wenig pipi
   - kaum urin
   - windel bleibt trocken
+  - keine nasse windel
+  - seit \d{1,2} stunden .{0,20}(trocken|kein pipi)
   - trinkt nichts
   - trockener mund
   - erbricht seit
@@ -794,6 +826,8 @@ rules:
   - запавшие глаза
   - мало писает
   - сухой памперс
+  - подгузник сухой
+  - часов подгузник сух
   - не писает
   - сухо во рту
   - рвота.{0,25}сутки
@@ -804,6 +838,8 @@ rules:
   - لا يتبول
   - بول قليل
   - الحفاض جاف
+  - لم تبلل الحفاض
+  - لم يبلل الحفاض
   - جفاف
   - قيء مستمر
   - إسهال.{0,20}يوم
@@ -813,6 +849,9 @@ rules:
   - olhos fundos
   - n[aã]o faz xixi
   - sem fralda molhada
+  - n[aã]o molha a fralda
+  - n[aã]o molhou a fralda
+  - horas sem (fazer xixi|molhar)
   - boca seca
   - desidratad
   - n[aã]o consegue beber
@@ -820,6 +859,8 @@ rules:
   - आँखें धँस
   - आंखें धंस
   - पेशाब नहीं
+  - डायपर गीला नहीं
+  - घंटे से डायपर
   - मुँह सूख
   - पानी की कमी
   - aankhen dhas
@@ -991,6 +1032,8 @@ rules:
   - surdose
   - vergiftung
   - putzmittel getrunken
+  - (bleichmittel|chlorreiniger|rohrreiniger|sp[üu]lmaschinentab|wc.reiniger|lauge|putzmittel|reiniger|waschmittel).{0,25}(getrunken|geschluckt|gegessen)
+  - (getrunken|geschluckt).{0,25}(bleichmittel|chlor|lauge)
   - hat medikamente genommen
   - tabletten genommen
   - zu viel.{0,20}(paracetamol|ibuprofen)
@@ -998,16 +1041,21 @@ rules:
   - выпил.{0,25}(химию|моющее|бытов)
   - съел таблетк
   - выпил таблетк
+  - выпил.{0,25}(отбеливател|белизн|кислот|щелоч|щёлоч)
+  - выпила.{0,25}(отбеливател|белизн|хим|моющ)
   - слишком много.{0,20}(парацетамол|ибупрофен)
   - تسمم
   - شرب.{0,20}منظف
   - شرب مبيد
+  - شرب.{0,20}(مبيّض|مبيض|كلور|مادة كاوية)
+  - شربت.{0,20}(مبيّض|مبيض|كلور)
   - أخذ حبوب
   - جرعة زائدة
   - شربت.{0,20}منظف
   - أخذت حبوب
   - tomou (um )?veneno
   - bebeu (um )?produto de limpeza
+  - (bebeu|tomou|engoliu).{0,25}([aá]gua sanit[aá]ria|[aá]lcool de limpeza|cloro|desinfetante|soda c[aá]ustica|detergente|amon[ií]aco)
   - intoxica[cç][aã]o
   - tomou rem[eé]dio demais
   - engoliu (um )?rem[eé]dio
@@ -1015,6 +1063,10 @@ rules:
   - ज़हर
   - जहर खा
   - फिनाइल पी
+  - ब्लीच.{0,12}(पी|खा)
+  - (पी|खा).{0,12}ब्लीच
+  - तेज़ाब पी
+  - bleach pi
   - ज़्यादा दवा खा
   - zeher
   - jahar pi
@@ -1127,11 +1179,16 @@ rules:
   - verweigert die brust
   - verweigert die flasche
   - will nicht trinken
+  - (neugeboren\w*|\b[1-4] wochen alt|\b\d{1,2} tage alt).{0,80}(trinkt nicht|will nicht trinken|verweigert|nimmt nichts)
+  - trinkt gar nichts
+  - verweigert das trinken
   - отказывается от груди
   - отказывается от бутылочки
   - не берёт грудь
   - не берет грудь
   - перестал[а]? есть
+  - отказывается от (еды|кормлен|смеси|молок)
+  - не ест совсем
   - يرفض الرضاعة
   - لا يرضع
   - رفض الحليب
@@ -1141,6 +1198,9 @@ rules:
   - rec[eé]m.nascido n[aã]o mama
   - n[aã]o quer mamar
   - recusa (a )?mamada
+  - recusa (a )?mamar
+  - n[aã]o quer (mais )?mamar
+  - parou de mamar
   - n[aã]o pega o peito
   - दूध नहीं पी
   - फ़ीड नहीं ले
@@ -1381,6 +1441,14 @@ rules:
   - (головн\w* бол|голова болит).{0,60}(будит|по ночам|всё сильнее|сильнее и сильнее|не проходит)
   - (صداع|ألم في الرأس).{0,60}(يوقظه|يوقظها|يزداد|يزيد|لا يزول)
   - (सिरदर्द|सिर में दर्द|सिर दर्द).{0,60}(रात को जगा|नींद से जगा|बढ़ता जा|ठीक नहीं हो)
+  - (dolor de cabeza|cefalea).{0,40}(muy (fuerte|intenso)|intens[oa]).{0,60}no (se le )?(pasa|calma|quita)
+  - (headache).{0,40}(very (bad|severe)|severe).{0,60}(not|isn'?t|won'?t) (going away|helped|responding)
+  - (mal de t[eê]te|c[ée]phal[ée]e).{0,40}(tr[eè]s fort|intense).{0,60}ne passe pas
+  - (kopfschmerz|kopfweh).{0,40}(sehr stark|stark).{0,60}(geht nicht weg|hilft nichts)
+  - (dor de cabe[çc]a|cefaleia).{0,40}(muito forte|intensa).{0,60}n[aã]o passa
+  - (головн\w* бол|голова болит).{0,40}(очень сильн|сильн).{0,60}не проходит
+  - (صداع|ألم في الرأس).{0,40}(شديد|قوي).{0,60}(لا يزول|لا يخف)
+  - (सिरदर्द|सिर में दर्द|सिर दर्द).{0,40}(बहुत तेज़|बहुत तेज|तेज़).{0,60}(ठीक नहीं|कम नहीं)
 
 - id: suicidal_ideation
   level: mental_health
@@ -1416,6 +1484,10 @@ rules:
   - se tuer
   - mettre fin [aà] ses jours
   - will nicht mehr leben
+  - (will|m[öo]chte) sterben
+  - wollte sterben
+  - sterben wollen
+  - hat keinen sinn mehr
   - sich umbringen
   - (sich )?das leben nehmen
   - suizid
@@ -1442,6 +1514,10 @@ rules:
   - n[aã]o quer mais viver
   - tirar a pr[oó]pria vida
   - मरना चाहता
+  - मरना चाहती
+  - जीना नहीं चाहती
+  - ज़िंदगी खत्म
+  - marna chahti
   - जान देना
   - आत्महत्या
   - जीना नहीं चाहता
@@ -1500,6 +1576,56 @@ rules:
   reason_ar: إيذاء النفس
   reason_pt: "Conduta autolesiva"
   reason_hi: "खुद को नुकसान पहुँचाना"
+- id: meningitis_signs
+  level: urgent
+  source: mlp_en_meningitis
+  reason_es: "Rigidez de nuca o dolor de cabeza intenso con fiebre y vómitos: hay que descartar una meningitis hoy"
+  reason_en: "Stiff neck, or severe headache with fever and vomiting: meningitis has to be ruled out today"
+  reason_fr: "Nuque raide, ou mal de tête intense avec fièvre et vomissements : il faut écarter une méningite aujourd'hui"
+  reason_de: "Steifer Nacken oder starke Kopfschmerzen mit Fieber und Erbrechen: eine Hirnhautentzündung muss heute ausgeschlossen werden"
+  reason_ru: "Ригидность затылка или сильная головная боль с температурой и рвотой: сегодня нужно исключить менингит"
+  reason_ar: "تيبّس الرقبة، أو صداع شديد مع حمى وقيء: يجب استبعاد التهاب السحايا اليوم"
+  reason_pt: "Pescoço rígido, ou dor de cabeça intensa com febre e vômitos: é preciso descartar uma meningite hoje"
+  reason_hi: "गर्दन में अकड़न, या बुखार और उल्टी के साथ तेज़ सिरदर्द: आज ही मेनिनजाइटिस की जाँच ज़रूरी है"
+  patterns:
+  - rigidez (de |en la )?(nuca|cuello)
+  - (nuca|cuello) (r[ií]gid|t[ie]s[oa]|agarrotad)
+  - no puede (bajar|doblar) la (cabeza|barbilla)
+  - le molesta (mucho )?la luz
+  - fotofobia
+  - stiff neck
+  - (neck is|neck's) stiff
+  - can(?:'?t| ?not) (bend|lower) (his|her|their) (neck|head|chin)
+  - (bothered|hurt) by (the )?light
+  - photophobi
+  - sensitive to light
+  - nuque raide
+  - raideur de (la )?nuque
+  - la lumi[eè]re (le|la) g[eê]ne
+  - photophobie
+  - steifer nacken
+  - nackensteif
+  - nacken.{0,15}steif
+  - licht st[öo]rt
+  - lichtempfindlich
+  - pesco[çc]o (r[ií]gido|duro|enrijecido)
+  - rigidez (de |na )?nuca
+  - (a )?luz (o |a )?incomoda
+  - fotofobia
+  - ригидность затылка
+  - (шея|затылок).{0,15}(не гнётся|не гнется|напряж)
+  - светобоязн
+  - свет режет глаза
+  - تيبس (في )?الرقبة
+  - تصلب الرقبة
+  - حساسية للضوء
+  - الضوء يزعج
+  - गर्दन (में )?अकड़
+  - गर्दन अकड़ी
+  - रोशनी (चुभ|से तकलीफ)
+  - रोशनी बर्दाश्त नहीं
+  - gardan akad
+  - roshni chubh
 context:
   fever:
   - fi[eè]vre
