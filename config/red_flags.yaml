@@ -344,6 +344,9 @@ rules:
   - не может продохнуть
   - задыхается.{0,20}едой
   - اختناق
+  - يختنق
+  - تختنق
+  - لا يستطيع التنفس بعد
   - شرق
   - علق في حلق
   - غصة
@@ -353,6 +356,9 @@ rules:
   - engoliu e n[aã]o consegue respirar
   - entalou na garganta
   - गला घुट
+  - दम घुट
+  - सांस रुक गई
+  - dam ghut
   - फँस गया गले
   - निगल लिया और साँस
   - gala ghut
@@ -396,6 +402,9 @@ rules:
   - شاحب جدا
   - بشرة رمادية
   - تبقع الجلد
+  - جلده مرقّ?ط
+  - مرقّ?ط ورمادي
+  - جلده.{0,15}رمادي
   - muito p[aá]lido
   - pele mosqueada
   - manchada de frio
@@ -418,7 +427,7 @@ rules:
   reason_en: Head injury with loss of consciousness
   reason_fr: Coup à la tête avec perte de connaissance
   patterns:
-  - (golpe|cabeza|ca[ií]d|cay[oó]).{0,80}(perdi[oó] el conocimiento|inconsciente|desmay)
+  - (golpe|cabeza|ca[ií]d|cay[oó]).{0,80}(perdi[oó] el conocimiento|(ha )?perdido el conocimiento|(ha )?perdido la conciencia|inconsciente|desmay)
   - (golpe|cabeza|ca[ií]d|cay[oó]|traumatismo).{0,80}p[ée]rdida (de|del) (conocimiento|conciencia)
   - p[ée]rdida (de|del) (conocimiento|conciencia).{0,80}(golpe|cabeza|ca[ií]d|cay[oó]|traumatismo)
   - (head|fell|fall|hit|blow).{0,80}loss of consciousness
@@ -434,9 +443,13 @@ rules:
   - ضرب.{0,20}رأس.{0,35}وعي
   - سقط.{0,25}رأس.{0,35}وعي
   - فقد الوعي بعد
+  - (سقط|وقع|ارتطم).{0,30}(فقد|فقدت) الوعي
+  - فقدت الوعي بعد
   - bateu a cabe[cç]a e desmaiou
   - bateu a cabe[cç]a e apagou
   - bateu a cabe[cç]a e perdeu a consci[eê]ncia
+  - (caiu|tombou|bateu).{0,40}perdeu (a consci[eê]ncia|os sentidos)
+  - (caiu|bateu).{0,30}desmaiou
   - सिर.{0,15}चोट.{0,20}बेहोश
   - सिर.{0,15}लगी.{0,20}होश नहीं
   - सिर के बल गिर.{0,25}बेहोश
@@ -473,11 +486,16 @@ rules:
   - hört nicht auf zu bluten
   - сильно кровоточит
   - кровь не останавлива
+  - не перестаёт кровоточить
+  - не перестает кровоточить
+  - кровь идёт и идёт
   - не могу остановить кровь
   - сильное кровотечение
   - نزيف شديد
   - ينزف بغزارة
   - النزيف لا يتوقف
+  - لا يتوقف عن النزيف
+  - لا يتوقف الدم
   - لا أستطيع إيقاف الدم
   - تنزف بغزارة
   - sangrando muito
@@ -542,7 +560,7 @@ rules:
   - (no desaparec|no se van|no se quitan|no blanquean).{0,40}(vaso|presion|apret|cristal)
   - (spots|rash|marks).{0,70}(don'?t|do not|does not|doesn'?t|won'?t|will not) (fade|disappear|go away|blanch)
   - (glass|tumbler) test
-  - (rash|spots).{0,50}(press|glass|tumbler)
+  - (rash|spots).{0,50}(press|glass|tumbler).{0,35}(still|remain|do(es)? not|don'?t|doesn'?t|won'?t|not gone)
   - (spots|rash).{0,60}(don'?t|do not|doesn'?t) (fade|disappear|go away).{0,30}press
   - petechia
   - glass test
@@ -925,10 +943,13 @@ rules:
   - ضرب.{0,25}رأس.{0,35}تقيأ
   - سقط.{0,30}رأس.{0,35}قيء
   - ارتطم.{0,25}رأس.{0,30}قيء
+  - (ارتطم|ضرب|سقط).{0,30}رأس.{0,35}(تقيأ|تقيأت|يتقيأ)
   - bateu a cabe[cç]a.{0,30}vomit
   - vomit.{0,30}bateu a cabe[cç]a
   - caiu.{0,20}cabe[cç]a.{0,20}vomit
   - सिर.{0,15}चोट.{0,25}उल्टी
+  - सिर.{0,20}(टकरा|लग|पटक).{0,30}उल्टी
+  - उल्टी.{0,30}सिर.{0,20}(टकरा|चोट)
   - उल्टी.{0,25}सिर.{0,15}चोट
   - sir.{0,12}chot.{0,20}ulti
   reason_de: Erbrechen nach einer Kopfverletzung
@@ -1300,11 +1321,17 @@ rules:
   - (stool|poo|poop|nappy|diaper|bowel motion).{0,30}(black|tarry|blood|bloody|red blood)
   - (black|tarry|bloody|blood).{0,25}(stool|poo|poop|motion|nappy|diaper)
   - (selles).{0,30}(noires|goudron|sang)
+  - (sang|noir).{0,30}(dans (les|ses) selles|selles)
   - (stuhl|windel|kot).{0,30}(schwarz|teer|blut)
+  - (blut|schwarz|teer).{0,30}(im stuhl|in der windel|stuhl|windel)
   - (стул|кал|подгузник).{0,30}(чёрн|черн|кров|дёгт|дегт)
+  - (кров|чёрн|черн).{0,30}(в стуле|в кале|в подгузник|стул|кал)
   - (براز|بُراز).{0,30}(أسود|دم)
+  - (دم|أسود).{0,30}(في البراز|البراز|الحفاض)
   - (fezes|coc[oô]|fralda).{0,30}(preta|pretas|sangue|piche)
+  - (sangue|preto|piche).{0,30}(nas fezes|no coc[oô]|na fralda|fezes)
   - (मल|पॉटी).{0,25}(काला|काली|ख़ून|खून)
+  - (ख़ून|ख़ून|खून|काला).{0,25}(मल में|पॉटी में|मल|पॉटी)
 
 - id: abdominal_pain_localised_or_worsening
   level: urgent
@@ -1357,10 +1384,25 @@ rules:
   - (vomits?|throws up|purg\w*).{0,35}(after (eating|meals)|to lose weight|on purpose)
   - (anorexi|bulimi|binge eating)
   - (saute|sauté|saute des).{0,15}repas
+  - ne mange (plus|presque plus|rien)
+  - (vomit|vomissements?).{0,30}apr[eè]s (les repas|(avoir )?mang[eé])
+  - (obs[eé]dée?|fixation).{0,25}(poids|calories|son corps)
+  - (anorexi|boulimi)
   - (mahlzeiten|essen).{0,25}(auslass|verweiger)
+  - isst (nichts mehr|nicht mehr|kaum noch)
+  - erbricht.{0,30}nach dem essen
+  - (besessen|fixiert).{0,25}(gewicht|kalorien|k[oö]rper)
+  - (magersucht|bulimie|essst[oö]rung)
   - (пропускает|отказывается).{0,20}(еду|прием пищи|есть)
   - (يتخطى|ترفض|يرفض).{0,20}(الوجبات|الأكل)
+  - (توقفت|توقف) عن الأكل
+  - (تتقيأ|يتقيأ).{0,25}بعد الطعام
+  - (فقدان الشهية العصبي|الشره العصبي)
   - (pula|pulando).{0,15}refei[çc][õo]es
+  - parou de comer
+  - n[aã]o come (mais|nada|quase nada)
+  - vomita.{0,30}(depois d(as|e) (refei[çc][õo]es|comer)|para n[aã]o engordar)
+  - (anorexi|bulimi)
   - (खाना).{0,25}(छोड़ दिया|नहीं खा रह)
   - (वज़न|वजन|कैलोरी).{0,25}(जुनून|की चिंता|लेकर परेशान)
   - (खाने के बाद).{0,20}(उल्टी|वमन)
