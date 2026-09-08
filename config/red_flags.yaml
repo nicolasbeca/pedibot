@@ -236,6 +236,18 @@ rules:
   - सांस नहीं ले
   - पसलियाँ धँस
   - नीला पड़
+  - (होंठ|होठ).{0,15}(नीले|नीला|काले)
+  - (चेहरा|शरीर|त्वचा).{0,15}(नीला|नीली|भूरा)
+  - (छाती|पसली|पसलियाँ|पसलियां).{0,20}(धँस|धंस|अंदर)
+  - (नाक).{0,15}(फड़क|फूल)
+  - (हाँफ|हांफ|हाँफ रहा|हांफ रहा)
+  - (साँस|सांस).{0,15}(फूल|उखड़|तेज़ी से)
+  - (साँस|सांस).{0,15}(बंद|रुक गई|थम)
+  - (दम|जान).{0,10}निकल
+  - honth neele
+  - chhati dhas
+  - haanf raha
+  - saans band
   - साँस रुक
   - saans nahi le
   - साँस लेने में (दिक्कत|तकलीफ|तकलीफ़|परेशानी|मुश्किल)
@@ -745,12 +757,18 @@ rules:
   - no se le puede despertar
   - (es|era) (muy )?dif[ií]cil despertar
   - dif[ií]cil (de )?despertar
+  - (muito )?dif[ií]cil (de )?acord[áa]?(r|[ -]l[oa])
+  - n[aã]o consigo acordar
+  - (\bmolinho\b|\bmole\b|sem for[çc]as|\babatid)
   - no hay (manera|forma|quien) de despertar
-  - cuesta (mucho )?despertar
+  - cuesta (mucho|much[ií]simo|un mont[oó]n|horrores)? ?despertar
   - (hard|difficult|impossible) to (wake|rouse)
   - (schwer|kaum) zu wecken
   - (трудно|не могу) разбудить
   - cuesta despertarl
+  - (muy |está |estaba )?(\bflojo\b|\bflojito\b|\bfl[aá]cid|sin fuerzas|como un trapo)
+  - (\bschlaff\b|\bkraftlos\b|ganz matt|wie ein n?asser sack)
+  - (\bвял|\bобмякш|как тряпочка|без сил)
   - irritab.{0,20}(mucho|extrem|incontrol)
   - llanto inconsolable
   - (somnolencia|adormecimiento|decaimiento|irritabilidad).{0,15}(excesiv|extrem|much)
@@ -776,6 +794,9 @@ rules:
   - плачет без остановки
   - постоянно спит
   - نعسان جدا
+  - من الصعب.{0,15}إيقاظ
+  - لا (أستطيع|نستطيع) إيقاظ
+  - (رخو|مرتخي)
   - خامل
   - لا يهدأ
   - يبكي بلا توقف
@@ -790,6 +811,8 @@ rules:
   - abatid
   - moleza
   - बहुत सुस्त
+  - (जगाना|उठाना).{0,20}(मुश्किल|कठिन)
+  - (ढीला|निढाल|सुस्त पड़)
   - रो.{0,10}चुप नहीं
   - लगातार रो
   - bahut sust
@@ -1358,6 +1381,12 @@ rules:
   - (живот).{0,40}(справа|правой стороне)
   - (ألم).{0,30}(البطن).{0,30}(الجهة اليمنى|اليمين)
   - (dor).{0,30}(barriga|abdome).{0,30}(lado direito|direita)
+  - (dor de barriga|dor abdominal).{0,45}(piorando|cada vez pior|n[aã]o (o |a )?deixa dormir)
+  - (mal|douleur).{0,20}(de |au )?ventre.{0,45}(empire|de pire en pire|emp[eê]che de dormir)
+  - (bauchschmerz|bauchweh).{0,45}(immer schlimmer|schlimmer|kann nicht schlafen)
+  - (боль|болит).{0,20}(в )?живот.{0,45}(всё сильнее|все сильнее|не даёт (ему |ей )?спать|не дает спать)
+  - (ألم).{0,20}(البطن|بطنه|بطنها).{0,45}(يزداد|يزيد|لا (يدعه|يدعها|يتركه) ينام)
+  - (पेट).{0,20}(दर्द|द्रद).{0,45}(बढ़ता जा|बढ़ रहा|सोने नहीं)
   - (पेट).{0,30}(दाहिन|दाईं|दायीं).{0,20}(दर्द)
 
 - id: eating_disorder_signs
@@ -1394,10 +1423,16 @@ rules:
   - (besessen|fixiert).{0,25}(gewicht|kalorien|k[oö]rper)
   - (magersucht|bulimie|essst[oö]rung)
   - (пропускает|отказывается).{0,20}(еду|прием пищи|есть)
+  - (перестал[а]?) есть
+  - (рвота|рвёт|рвет).{0,25}после еды
+  - (одержим[а]?|зациклен).{0,25}(весом|весе|калори)
+  - (анорекси|булими)
   - (يتخطى|ترفض|يرفض).{0,20}(الوجبات|الأكل)
   - (توقفت|توقف) عن الأكل
   - (تتقيأ|يتقيأ).{0,25}بعد الطعام
   - (فقدان الشهية العصبي|الشره العصبي)
+  - (تتخطى|يتخطى|تفوت).{0,20}(الوجبات|وجبات)
+  - (مهووس|مهووسة).{0,20}(بوزن|بالوزن|بالسعرات)
   - (pula|pulando).{0,15}refei[çc][õo]es
   - parou de comer
   - n[aã]o come (mais|nada|quase nada)
@@ -1427,10 +1462,49 @@ rules:
   - (weakness|weak) (on|down) one side
   - (mueve mal|no puede mover).{0,20}(brazo|pierna|mano|un lado)
   - (habla|hablar) (con dificultad|raro|arrastrando|mal de repente)
+  - (bouche|visage).{0,20}(tordu|de travers|tombe d'un c[oô]t[ée])
+  - (mund|gesicht).{0,20}(h[äa]ngt|schief|herunter)
+  - (перекосило|перекошен).{0,15}(рот|лицо)
+  - (рот|лицо).{0,15}(перекос|скривил)
+  - (فمه|وجهه|فمها|وجهها).{0,20}(ملتو|مائل|معوج)
+  - (boca|rosto).{0,20}(torta|torto|ca[ií]da de um lado)
+  - unsteady.{0,25}(walk|feet|gait)
+  - (staggering|wobbly|stumbling).{0,20}(walk|when walking)
+  - (marche|d[ée]marche).{0,25}(de travers|instable|titube)
+  - (geht|l[äa]uft).{0,25}(unsicher|schwankend|torkelt)
+  - (шатается|пошатывается).{0,20}(при ходьбе|когда идёт|когда идет)
+  - (يمشي|تمشي).{0,20}(بترنح|بتمايل|غير متزن)
+  - (anda|caminha).{0,25}(cambaleando|desequilibrad|torto)
+  - (लड़खड़ा|डगमगा).{0,20}(चल|चलत)
+  - (soudain|tout [àa] coup).{0,30}(voit|ne voit plus|vision)
+  - voit soudain (flou|double|mal)
+  - (voit|vision).{0,20}(flou|double).{0,25}(soudain|d'un coup)
+  - (pl[öo]tzlich).{0,30}(verschwommen|doppelt|sieht nichts)
+  - (внезапно|вдруг).{0,35}(плохо видит|стал плохо видеть|двоится)
+  - двоится в глазах
+  - (فجأة).{0,35}(لا يرى|يرى مزدوج|ضبابي)
+  - (de repente|de s[úu]bito).{0,30}((est[aá] )?vendo|v[êe]|enxerga).{0,20}(emba[çc]ad|dobrad|duplo|mal)
+  - (de repente|de s[úu]bito).{0,30}n[aã]o (est[aá] )?enxerg
+  - (अचानक).{0,30}(धुंधला|दोहरा|दिख नहीं)
+  - (does ?n[o']?t|did ?n[o']?t) recognise me
+  - (does ?n[o']?t|did ?n[o']?t) recognize me
+  - seems? (confused|disorient)
+  - ne (me )?reconna[îi]t (pas|plus)
+  - (semble|para[îi]t) (confus|d[ée]sorient)
+  - erkennt mich nicht
+  - (wirkt|scheint) (verwirrt|desorientiert)
+  - не узнаёт меня
+  - не узнает меня
+  - дезориентирован
+  - لا (يتعرف|تتعرف) عل
+  - (مشوش|مشوشة|تائه)
+  - (पहचान नहीं|भ्रमित)
   - (no puede|le cuesta) (hablar|articular)
   - (de repente|de pronto).{0,25}(ve mal|no ve|ve doble|ve borroso)
   - (ve doble|visi[oó]n doble|ve borroso de repente)
-  - (camina|anda).{0,20}(con dificultad|arrastrando|torcid|se cae)
+  - (camina|anda).{0,25}(con dificultad|arrastrando|torcid|se tambalea|inestable|como (un )?borrach)
+  - (de repente|de pronto|ya no).{0,30}(no (puede |sabe )?(andar|caminar|mantenerse)|se cae|se tambalea)
+  - (se tambalea|va dando tumbos|no se (sostiene|mantiene) de pie)
   - (desorientad|no sabe (d[oó]nde|qu[ié]en)|no reconoce)
   - (p[ée]rdida de contacto con la realidad|alucina|delir)
   - (boca|cara).{0,20}(torcid|desviad|ca[ií]da de un lado)
