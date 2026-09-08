@@ -1368,26 +1368,26 @@ rules:
   reason_pt: Dor de barriga do lado direito, ou contínua e piorando — motivo para procurar ajuda
   reason_hi: पेट में दाहिनी ओर दर्द, या लगातार और बढ़ता दर्द — दिखाने का दर्ज कारण
   patterns:
-  - (dolor|duele).{0,40}(barriga|tripa|abdomen|abdominal).{0,40}(lado derecho|derecha|derecho)
-  - (barriga|tripa|abdomen).{0,30}(lado derecho|parte derecha)
+  - (dolor|duele).{0,40}(barriga|tripa|abdomen|abdominal).{0,90}(lado derecho|parte derecha|zona derecha|fosa il[ií]aca)
+  - (barriga|tripa|abdomen).{0,90}(lado derecho|parte derecha|zona derecha)
   - (dolor|duele).{0,30}(lado derecho|parte derecha).{0,30}(barriga|tripa|abdomen)
   - (dolor de (barriga|tripa)|dolor abdominal).{0,50}(cada vez (m[aá]s|peor)|va a m[aá]s|no le deja dormir|no puede dormir|no para de dolerle)
   - (le duele|duele).{0,25}(la )?(barriga|tripa|abdomen).{0,50}(cada vez (m[aá]s|peor)|va a m[aá]s|no le deja dormir|no puede dormir|no para)
-  - (abdominal|stomach|belly|tummy) pain.{0,40}(right side|lower right|right hand side)
-  - (right side|lower right).{0,30}(abdominal|stomach|belly|tummy) pain
+  - (abdominal|stomach|belly|tummy).{0,90}(right side|lower right|right hand side|right lower)
+  - (right side|lower right).{0,90}(abdominal|stomach|belly|tummy)
   - (stomach|belly|tummy).{0,40}(getting worse|worse and worse|keeps him awake|keeps her awake)
-  - (douleur|mal).{0,40}(ventre|abdomen).{0,40}(c[oô]t[ée] droit|[aà] droite)
-  - (bauchschmerz|bauchweh).{0,40}(rechts|rechte seite)
-  - (живот).{0,40}(справа|правой стороне)
-  - (ألم).{0,30}(البطن).{0,30}(الجهة اليمنى|اليمين)
-  - (dor).{0,30}(barriga|abdome).{0,30}(lado direito|direita)
+  - (douleur|mal).{0,40}(ventre|abdomen).{0,90}(c[oô]t[ée] droit|[aà] droite)
+  - (bauchschmerz|bauchweh|bauch).{0,90}(rechten seite|rechte seite|rechts unten)
+  - (живот).{0,90}(справа|правой стороне|с правой)
+  - (ألم).{0,30}(البطن).{0,90}(الجهة اليمنى|الجانب الأيمن)
+  - (dor).{0,30}(barriga|abdome).{0,90}(lado direito|parte direita)
   - (dor de barriga|dor abdominal).{0,45}(piorando|cada vez pior|n[aã]o (o |a )?deixa dormir)
   - (mal|douleur).{0,20}(de |au )?ventre.{0,45}(empire|de pire en pire|emp[eê]che de dormir)
   - (bauchschmerz|bauchweh).{0,45}(immer schlimmer|schlimmer|kann nicht schlafen)
   - (боль|болит).{0,20}(в )?живот.{0,45}(всё сильнее|все сильнее|не даёт (ему |ей )?спать|не дает спать)
   - (ألم).{0,20}(البطن|بطنه|بطنها).{0,45}(يزداد|يزيد|لا (يدعه|يدعها|يتركه) ينام)
   - (पेट).{0,20}(दर्द|द्रद).{0,45}(बढ़ता जा|बढ़ रहा|सोने नहीं)
-  - (पेट).{0,30}(दाहिन|दाईं|दायीं).{0,20}(दर्द)
+  - (पेट).{0,90}(दाहिनी ओर|दाईं ओर|दायीं ओर|दाहिने)
 
 - id: eating_disorder_signs
   level: mental_health

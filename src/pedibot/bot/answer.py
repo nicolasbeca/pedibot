@@ -756,13 +756,35 @@ class Engine:
             lang = "en"
         tr = self.triage.assess(context_text)
         tr_now = self.triage.assess(query)
-        # rules that fired only because of OLD messages must not re-trigger a banner every turn,
-        # except the age-based ones (age is context, not a symptom)
+        # Una regla que ya saltaba con lo de ANTES no vuelve a dar el aviso cada turno: al padre
+        # ya se lo dijimos y repetirlo enseña a ignorarlo. Pero una regla que salta al juntar lo
+        # de antes con lo de ahora **es información nueva**, y esa es la que hay que avisar.
+        #
+        # El filtro miraba solo el mensaje actual, y con eso se perdían justo las reglas que
+        # existen para una combinación —que son las que un padre cuenta en dos frases. Medido el
+        # 8-sep-2026 sobre conversaciones de dos turnos:
+        #
+        #     «se ha dado un golpe en la cabeza» → «ahora ha vomitado dos veces»   se perdía
+        #     «le duele la barriga»              → «ahora más en el lado derecho»  se perdía
+        #     «le han salido unas manchas»       → «no desaparecen al apretar»     se perdía
+        #
+        # La tercera es el signo del meningococo, contado exactamente como lo cuenta alguien que
+        # acaba de hacer la prueba del vaso: describe la mancha, y en el mensaje siguiente el
+        # resultado. La regla estaba, saltaba con las dos frases juntas, y el filtro la tiraba.
         if history:
-            keep = {r.id for r in tr_now.matched} | {
-                "infant_fever_under_3_months",
-                "newborn_refusing_feeds",
-            }
+            # lo que ya saltaba SIN el mensaje de ahora
+            antes = {r.id for r in self.triage.assess(prior_user).matched} if prior_user else set()
+            # lo que salta al juntarlo todo y no saltaba antes: lo ha traído este mensaje
+            completadas = {r.id for r in tr.matched} - antes
+            keep = (
+                {r.id for r in tr_now.matched}
+                | completadas
+                | {
+                    # la edad es contexto, no un síntoma: sigue valiendo turno tras turno
+                    "infant_fever_under_3_months",
+                    "newborn_refusing_feeds",
+                }
+            )
             tr.matched = [r for r in tr.matched if r.id in keep]
             tr.level = max(
                 (r.level for r in tr.matched), key=lambda lv: LEVEL_ORDER[lv], default="routine"
