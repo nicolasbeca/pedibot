@@ -141,8 +141,52 @@ class DoseError(ValueError):
     pass
 
 
-def _round_ml(x: float) -> float:
-    return round(x * 10) / 10
+#: Las dos palabras con las que nombramos NOSOTROS una presentación genérica, en los ocho
+#: idiomas. La concentración no se traduce —«120 mg/5 ml» se lee igual en todas partes— y el
+#: nombre de una marca tampoco: «infant», «six plus» o «baby drops» es lo que pone en la caja,
+#: y un padre busca en la lista lo que tiene en la mano.
+#:
+#: Hasta el 8-sep-2026 la lista de botes salía en castellano en los ocho idiomas: un padre
+#: alemán leía «jarabe 120 mg/5 ml» y uno hindi «gotas 100 mg/ml», en la herramienta
+#: determinista insignia y en la única línea de la respuesta que es una instrucción. El
+#: comprobador de fugas de idioma no lo veía porque mira las páginas construidas, y esta lista
+#: la pinta el navegador con lo que responde el API.
+_FORMA = {
+    "jarabe": {
+        "en": "syrup",
+        "es": "jarabe",
+        "fr": "sirop",
+        "de": "Saft",
+        "ru": "сироп",
+        "ar": "شراب",
+        "pt": "xarope",
+        "hi": "सिरप",
+    },
+    "gotas": {
+        "en": "drops",
+        "es": "gotas",
+        "fr": "gouttes",
+        "de": "Tropfen",
+        "ru": "капли",
+        "ar": "قطرات",
+        "pt": "gotas",
+        "hi": "ड्रॉप्स",
+    },
+}
+
+
+def presentation_label(name: str, lang: str) -> str:
+    """La etiqueta de una presentación genérica en el idioma del lector.
+
+    Solo toca la primera palabra, que es la nuestra; la concentración y los porcentajes se
+    quedan como están. Una etiqueta que no empiece por una de las nuestras —las de las marcas—
+    se devuelve intacta a propósito.
+    """
+    primera, _, resto = name.partition(" ")
+    traducciones = _FORMA.get(primera.lower())
+    if not traducciones:
+        return name
+    return f"{traducciones.get(lang, traducciones['en'])} {resto}".strip()
 
 
 def _floor_ml(x: float) -> float:
@@ -187,8 +231,12 @@ def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) 
     max_doses = int(daily_cap // mg_max) if mg_max > 0 else 0
     max_doses = max(1, min(max_doses, 24 // drug.interval_hours[0]))
 
+    # También hacia abajo, por la misma razón que `ml`: el extremo alto de la banda es un
+    # volumen, y un volumen nunca puede quedar por encima de los miligramos que lo justifican.
+    # Era el único sitio que quedaba con `round()` después de arreglar la web y el API el
+    # 6-sep-2026 — la misma lección aplicada a un lado y no al otro.
     ml_band = {
-        p.name: (_round_ml(mg_min / p.mg_per_ml), _round_ml(mg_max / p.mg_per_ml))
+        p.name: (_floor_ml(mg_min / p.mg_per_ml), _floor_ml(mg_max / p.mg_per_ml))
         for p in drug.presentations
     }
     ml = {p.name: _floor_ml(mg / p.mg_per_ml) for p in drug.presentations}
@@ -208,6 +256,16 @@ def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) 
 
 
 def format_result(r: DoseResult, lang: str = "en") -> str:
+    """La dosis para un padre. Cuando `refer` está puesto, SIN los números.
+
+    Decisión del operador (8-sep-2026). Hasta hoy esta función escribía «no dar sin consultar:
+    menor de 3 meses» y a renglón seguido los miligramos y los mililitros de cada bote — para el
+    ibuprofeno, que su propia ficha dice que no se da por debajo de tres meses ni de cinco kilos.
+    A las tres de la madrugada se leen los números, no el renglón de arriba.
+
+    Se conserva todo lo que ayuda a decidir: qué fármaco es, por qué no se le da, y de dónde sale
+    la norma. Lo único que desaparece es la cifra que se podría echar en la jeringa.
+    """
     d = r.drug
     T = tool_strings(lang)
     name = d.names.get(lang, d.names["en"])
@@ -216,6 +274,9 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
         lines.append(
             T["dose_refer"] + ", ".join(T["dose_warn"].get(w, w) for w in r.warnings) + "."
         )
+        lines.append(T["dose_source"].format(source=d.source))
+        lines.append(T["dose_check"])
+        return "\n".join(lines)
     lines.append(
         T["dose_line"].format(
             mg=r.mg,
@@ -225,7 +286,7 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
         )
     )
     for pname, millilitres in r.ml.items():
-        lines.append(f"  – {pname}: {millilitres:g} ml")
+        lines.append(f"  – {presentation_label(pname, lang)}: {millilitres:g} ml")
     # the band the guide publishes, so a different figure from a paediatrician is
     # visibly inside it rather than looking like a contradiction
     lines.append(T["dose_band"].format(mg_min=r.mg_min, mg_max=r.mg_max))
@@ -233,20 +294,3 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
     lines.append(T["dose_check"])
     return "\n".join(lines)
 
-
-def _warn_es(w: str) -> str:
-    return {
-        "under_3_months_refer": "menor de 3 meses",
-        "below_min_age": "por debajo de la edad mínima del fármaco",
-        "below_min_weight": "por debajo del peso mínimo del fármaco",
-        "capped_single_dose": "dosis limitada al máximo por toma",
-    }.get(w, w)
-
-
-def _warn_en(w: str) -> str:
-    return {
-        "under_3_months_refer": "under 3 months old",
-        "below_min_age": "below the minimum age for this drug",
-        "below_min_weight": "below the minimum weight for this drug",
-        "capped_single_dose": "dose capped at the maximum per dose",
-    }.get(w, w)

@@ -308,7 +308,8 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
 
     @app.post("/api/dose")
     def dose(body: DoseIn) -> dict[str, object]:
-        from pedibot.bot.dose import DoseError, calculate
+        from pedibot.bot.dose import DoseError, calculate, presentation_label
+        from pedibot.bot.strings import tool_strings
 
         cat = engine.drugs
         resolved = cat.resolve(body.drug) if cat else None
@@ -323,7 +324,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             forms = [(p.name, p.mg_per_ml) for p in r.drug.presentations]
         ml_by_form = [
             {
-                "form": label,
+                "form": presentation_label(label, body.lang),
                 "ml": _ml(r.mg, mg_ml),
                 "ml_min": _ml(r.mg_min, mg_ml),
                 "ml_max": _ml(r.mg_max, mg_ml),
@@ -331,19 +332,33 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             for label, mg_ml in forms
         ]
         info = cat.drugs[key] if cat else None
+        # Cuando el fármaco no es para este niño, la respuesta no lleva la cifra. Decisión del
+        # operador (8-sep-2026): la web enseñaba «50 mg» en grande y la tabla de mililitros, y
+        # DEBAJO el «no dar sin consultar» — para el ibuprofeno en un bebé de dos meses, que su
+        # propia ficha excluye. Se dice por qué no, y de dónde sale; no se dice cuánto.
+        #
+        # Las claves siguen ahí, en nulo: quien ya leía `mg` no se encuentra un KeyError, se
+        # encuentra un «no hay cifra», que es la verdad.
+        T = tool_strings(body.lang)
         return {
             "drug": key,
-            "generic": info.generic.get(body.lang, info.generic["en"]) if info else r.drug.names.get(body.lang, r.drug.names["en"]),
+            "generic": info.generic.get(body.lang, info.generic["en"])
+            if info
+            else r.drug.names.get(body.lang, r.drug.names["en"]),
             "brand": brand.name if brand else None,
             "weight_kg": r.weight_kg,
-            "mg": r.mg,
-            "mg_min": r.mg_min,
-            "mg_max": r.mg_max,
+            "mg": None if r.refer else r.mg,
+            "mg_min": None if r.refer else r.mg_min,
+            "mg_max": None if r.refer else r.mg_max,
             "interval_hours": list(r.interval_hours),
             "max_doses_per_day": r.max_doses_per_day,
-            "ml_by_form": ml_by_form,
+            "ml_by_form": [] if r.refer else ml_by_form,
             "refer": r.refer,
             "warnings": r.warnings,
+            # los mismos avisos en el idioma del lector. La web enseñaba los identificadores
+            # internos tal cual — «⚠️ Do not give without medical advice: under_3_months_refer,
+            # below_min_age» — en los ocho idiomas, teniendo las ocho traducciones a mano.
+            "warnings_text": [T["dose_warn"].get(w, w) for w in r.warnings],
             "notes": info.notes.get(body.lang, "") if info else "",
             "source": r.drug.source,
         }
@@ -396,7 +411,11 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             # no un 500 («se nos ha roto algo»), que es lo que salía hasta el 7-sep-2026.
             raise HTTPException(503, "photo check unavailable right now") from None
         d = parse(raw)
-        nums = engine.numbers.get(body.country)
+        # con el idioma: sin país elegido la "cifra" es una frase, y una frase tiene idioma.
+        # Hasta el 8-sep-2026 esta llamada era la única de las cuatro que no lo pasaba, así
+        # que la lectura de una foto en alemán terminaba en «...rufen Sie your local
+        # emergency number an» — el fallo que EmergencyNumbers.get documenta como arreglado.
+        nums = engine.numbers.get(body.country, body.lang)
         level, text = interpret(d, body.lang, str(nums["emergency"]))
         session = body.session or secrets.token_urlsafe(16)
         ops.log_answer(
@@ -503,6 +522,21 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             raise HTTPException(404, "answer not found for this session")
         return {"token": token, "path": f"/a/{token}"}
 
+    #: El envoltorio de una respuesta compartida, en los ocho idiomas. Estaba escrito
+    #: `"…" if lang != "es" else "…"`, la forma exacta que el candado del i18n prohíbe en la web:
+    #: seis de los ocho idiomas recibían la rama inglesa. Un padre alemán compartía su respuesta
+    #: en alemán envuelta en un título y una nota legal en inglés (8-sep-2026).
+    SHARED = {
+        "en": ("PediBot — shared answer", "Shared from PediBot. Information from official paediatric guidelines — not medical advice."),
+        "es": ("PediBot — respuesta compartida", "Compartido desde PediBot. Información de guías pediátricas oficiales — no es consejo médico."),
+        "fr": ("PediBot — réponse partagée", "Partagé depuis PediBot. Information issue de recommandations pédiatriques officielles — ce n'est pas un avis médical."),
+        "de": ("PediBot — geteilte Antwort", "Geteilt über PediBot. Information aus offiziellen kinderärztlichen Leitlinien — keine medizinische Beratung."),
+        "ru": ("PediBot — ответ, которым поделились", "Отправлено из PediBot. Информация из опубликованных педиатрических рекомендаций — не медицинская консультация."),
+        "ar": ("PediBot — إجابة تمت مشاركتها", "تمت المشاركة من PediBot. معلومات مأخوذة من إرشادات طب الأطفال المنشورة — وليست استشارة طبية."),
+        "pt": ("PediBot — resposta partilhada", "Partilhado a partir do PediBot. Informação de diretrizes pediátricas oficiais — não é aconselhamento médico."),
+        "hi": ("PediBot — साझा किया गया उत्तर", "PediBot से साझा किया गया। प्रकाशित बाल रोग दिशानिर्देशों से जानकारी — यह चिकित्सकीय सलाह नहीं है।"),
+    }
+
     @app.get("/a/{token}", response_class=HTMLResponse)
     def shared_answer(token: str) -> str:
         d = ops.get_share(token)
@@ -511,15 +545,14 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         import html
 
         lang = str(d["lang"])
-        title = "PediBot — shared answer" if lang != "es" else "PediBot — respuesta compartida"
+        title, note = SHARED.get(lang, SHARED["en"])
+        # El árabe se lee de derecha a izquierda. La web lo sabe desde el primer día
+        # (`dirFor(lang)` en Base.astro) y esta página, que es HTML escrito a mano aparte, no:
+        # una respuesta árabe compartida salía maquetada al revés.
+        direction = "rtl" if lang == "ar" else "ltr"
         body_html = html.escape(str(d["answer"])).replace("\n", "<br>")
         q = html.escape(str(d["question"]))
-        note = (
-            "Shared from PediBot. Information from official paediatric guidelines — not medical advice."
-            if lang != "es"
-            else "Compartido desde PediBot. Información de guías pediátricas oficiales — no es consejo médico."
-        )
-        return f"""<!doctype html><html lang="{lang}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>{title}</title>
+        return f"""<!doctype html><html lang="{lang}" dir="{direction}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>{title}</title>
 <style>body{{margin:0;background:#FFFDF9;color:#2B3A35;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.6}}main{{max-width:720px;margin:0 auto;padding:32px 18px}}.q{{background:#E3F4EF;border-radius:18px;padding:14px 18px;margin-bottom:14px}}.a{{background:#fff;border:1px solid #EAE4DA;border-radius:18px;padding:16px 20px;box-shadow:0 10px 30px rgba(43,58,53,.07)}}.n{{color:#8A9992;font-size:.85rem;margin-top:14px}}a{{color:#2F6B57}}</style></head>
 <body><main><p><a href="/">← pedibot.xyz</a></p><div class="q">{q}</div><div class="a">{body_html}</div><p class="n">{note}</p></main></body></html>"""
 

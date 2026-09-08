@@ -46,10 +46,22 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
     if (!r.ok) { out.innerHTML = '<p>' + S.only_known + '</p>'; return; }
     const j = await r.json();
     let h = `<div class="who">${esc(j.generic)}${j.brand ? ' (' + esc(j.brand) + ')' : ''} · ${j.weight_kg} kg</div>`;
+    // Cuando el fármaco no es para este niño: el aviso PRIMERO y sin ninguna cifra detrás.
+    // Hasta el 8-sep-2026 esto pintaba «50 mg» en grande, la tabla de mililitros, y sólo debajo
+    // el «no dar sin consultar» — para un bebé de dos meses e ibuprofeno, que su propia ficha
+    // excluye. A las tres de la madrugada se leen los números, no el renglón de abajo. Y los
+    // avisos salían como identificadores internos: «under_3_months_refer, below_min_age».
+    const avisos = (j.warnings_text && j.warnings_text.length ? j.warnings_text : j.warnings) || [];
+    if (j.refer) {
+      h += `<div class="warn">⚠️ ${S.refer} ${esc(avisos.join(', '))}</div>`;
+      if (j.notes) h += `<div class="note">${esc(j.notes)}</div>`;
+      h += `<p class="src">${esc(j.source)}. ${S.check}</p>`;
+      out.innerHTML = h;
+      return;
+    }
     h += `<div class="big">${j.mg} mg</div><p>${S.every} ${j.interval_hours[0]}–${j.interval_hours[1]} ${S.hours} · ${S.max} ${j.max_doses_per_day} ${S.perday}</p><table>`;
     for (const f of j.ml_by_form) h += `<tr><td>${esc(f.form)}</td><td><b>${f.ml} ml</b></td></tr>`;
     h += '</table>';
-    if (j.refer) h += `<div class="warn">⚠️ ${S.refer} ${j.warnings.join(', ')}</div>`;
     if (j.notes) h += `<div class="note">${esc(j.notes)}</div>`;
     h += `<p class="src">${esc(j.source)}. ${S.check}</p>`;
     out.innerHTML = h;
