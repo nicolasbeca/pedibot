@@ -95,3 +95,51 @@ def test_a_rehydration_volume_is_not_a_dose_in_any_script(lang: str, texto: str)
     escrituras hubo que ensanchar también las palabras de líquido, o el ruso habría empezado a
     perder las respuestas de gastroenteritis."""
     assert not dose(texto), f"[{lang}] toma un líquido por dosis: «{texto}»"
+
+
+# ---------------------------------------------------------------------------------------------
+# La otra mitad del guardia: lo que NO puede tomar por una dosis (8-sep-2026)
+#
+# Auditando las 483 guías publicadas contra las reglas clínicas del propio proyecto, dos saltaron
+# como si dieran una dosis. Ninguna la daba:
+#
+#     árabe:  «2.6 مليون وفاة»        → la unidad «مل» vive dentro de «مليون» (millones)
+#     ruso:   «2–3 из 100 младенцев»  → la unidad «мл» vive dentro de «младенцев» (lactantes)
+#
+# La unidad se había escrito sin frontera a propósito, porque `\b` no funciona en devanagari. El
+# efecto colateral fue que casaba dentro de otras palabras. Y un falso positivo aquí no da una
+# dosis mala: **tira la respuesta** —`verify` la manda a regenerar y de ahí al «no tengo
+# información fiable»—, así que el guardia estaba costando respuestas en ruso y en árabe cada vez
+# que un texto citaba una cifra grande.
+
+DOSIS_DE_VERDAD = [
+    ("ru", "дайте 250 мг парацетамола"),
+    ("ru", "5 мл сиропа, каждые 8 часов"),
+    ("ar", "أعطه 250 ملغ"),
+    ("ar", "5 مل من الشراب"),
+    ("hi", "250 मिग्रा पैरासिटामोल"),
+    ("hi", "5 मिली सिरप"),
+    ("hi", "30 मिलीग्राम"),
+    ("en", "give 250 mg"),
+    ("es", "dale 5 ml cada 8 horas"),
+]
+
+CIFRAS_QUE_NO_SON_DOSIS = [
+    ("ar", "2.6 مليون وفاة سنوياً"),
+    ("ar", "ملايين الأطفال حول العالم"),
+    ("ru", "2 из 100 младенцев попадают в больницу"),
+    ("ru", "около 5 миллионов детей"),
+    ("ru", "100 младенцев"),
+]
+
+
+@pytest.mark.parametrize(("lang", "texto"), DOSIS_DE_VERDAD)
+def test_a_real_dose_is_still_caught(lang: str, texto: str) -> None:
+    assert dose(texto), f"[{lang}] el guardia se ha quedado ciego a «{texto}»"
+
+
+@pytest.mark.parametrize(("lang", "texto"), CIFRAS_QUE_NO_SON_DOSIS)
+def test_a_big_number_is_not_a_dose(lang: str, texto: str) -> None:
+    """Una cifra grande dentro de una palabra no es una dosis, y confundirla cuesta la
+    respuesta entera."""
+    assert not dose(texto), f"[{lang}] «{texto}» se toma por una dosis"

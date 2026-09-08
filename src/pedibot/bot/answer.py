@@ -66,12 +66,27 @@ _DRUG_ALIAS = {
 #: «250 मिग्रा» no lo cruzaban, así que el guardia ni miraba (7-sep-2026). Las latinas llevan `\b`
 #: detrás; las otras no, por lo mismo de siempre — en árabe y devanagari los sufijos son
 #: caracteres de palabra y la frontera no existe.
+#: Detrás de la unidad NO puede venir una letra. Se escribió sin esa condición porque en
+#: árabe y devanagari los sufijos son caracteres de palabra y `\b` no sirve; el efecto fue
+#: que la unidad casaba DENTRO de otras palabras y el guardia se disparaba solo. Auditando
+#: las 483 guías publicadas (8-sep-2026) salieron las dos que lo demuestran:
+#:
+#:     «2.6 مليون وفاة»        → «مل» dentro de «مليون» (millones)
+#:     «2–3 из 100 младенцев»  → «мл» dentro de «младенцев» (lactantes)
+#:
+#: Un falso positivo aquí no da una dosis mala: **tira la respuesta**, porque `verify` la
+#: manda a regenerar y de ahí al «no tengo información fiable». O sea que el guardia estaba
+#: costando respuestas en ruso y en árabe cada vez que un texto citaba una cifra grande.
+#:
+#: Se escribe como «no seguido de letra» y no como `\b`, que es lo que funciona en las
+#: cuatro escrituras a la vez: una dosis de verdad va seguida de espacio, coma o punto.
+_NO_LETRA = r"(?![\w\u0600-\u06ff\u0900-\u097f])"
 _DOSE_NUM = re.compile(
     r"\b\d+([.,]\d+)?\s*"
     r"(?:(mg|ml)\b"
-    r"|(мг|мл)"
-    r"|(ملغ|مغ|ملغم|مل)"
-    r"|(मिग्रा|मिलीग्राम|मिली|मिलीलीटर))",
+    rf"|(мг|мл){_NO_LETRA}"
+    rf"|(ملغ|مغ|ملغم|مل){_NO_LETRA}"
+    rf"|(मिग्रा|मिलीग्राम|मिली|मिलीलीटर){_NO_LETRA})",
     re.I,
 )
 
