@@ -153,6 +153,26 @@ def main() -> int:
     except Exception as e:  # noqa: BLE001
         problems["no_model_check"] = f"⚠️ No se pudieron contar las averías del modelo: {e}"
 
+    # 4b. una consulta de verdad, por el camino de verdad
+    #
+    # Todo lo de arriba vigila NUESTRA infraestructura: el proceso, el saldo, las unidades, el
+    # disco. Ninguna de esas preguntas es la que importa —si una consulta funciona— y la
+    # diferencia costó cara el 8-sep-2026: un «112» sin comillas en synonyms.yaml tuvo el
+    # buscador devolviendo un 500 en inglés con /api/health en verde todo el tiempo, porque el
+    # proceso estaba perfectamente en pie.
+    #
+    # Va con el modelo desconectado, así que no cuesta nada y puede correr cada diez minutos.
+    try:
+        from pedibot.ops.selfcheck import revisa
+        from pedibot.settings import get_settings
+
+        s_ = get_settings()
+        fallos = revisa(s_.index_db_path, s_.config_dir)
+        if fallos:
+            problems["buscador"] = chr(10).join(fallos[:4])
+    except Exception as e:  # noqa: BLE001
+        problems["buscador_check"] = f"⚠️ No se pudo revisar el buscador: {e}"
+
     # 5. el registro del que vive el panel
     #
     # Las visitas del panel salen de `journalctl -u caddy`. Si Caddy dejara de escribir ahí, el
