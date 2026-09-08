@@ -317,6 +317,19 @@ class OpsStore:
         )
         self.con.commit()
 
+    def tg_prefs(self, chat_id: int) -> tuple[str | None, str | None]:
+        """(idioma, país) que este chat eligió alguna vez, o (None, None).
+
+        La tabla los guardaba desde el primer día y nadie los leía nunca: las preferencias vivían
+        en un diccionario en memoria, así que **cada reinicio del bot las borraba** — y el
+        despliegue reinicia `pedibot-telegram` siempre. Un padre que había escrito `/lang de`
+        volvía al idioma adivinado sin que nada se lo dijera.
+        """
+        row = self.con.execute(
+            "SELECT lang, country FROM tg_users WHERE chat_id=?", (chat_id,)
+        ).fetchone()
+        return (row[0], row[1]) if row else (None, None)
+
     def set_tg_opt_out(self, chat_id: int, opted_out: bool) -> None:
         self.con.execute(
             "UPDATE tg_users SET opted_out=? WHERE chat_id=?", (int(opted_out), chat_id)

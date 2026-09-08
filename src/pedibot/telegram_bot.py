@@ -90,6 +90,31 @@ LANG_SET = {
 }
 
 
+# Las dos respuestas que quedaban escritas `if lang == "es"`, la forma que este proyecto persigue
+# desde el 3-sep: un padre alemán que escribía /country recibía «País: DE» en castellano, y con
+# /stop una frase en inglés. Son las dos únicas cosas que el bot dice sin pasar por el motor.
+STOPPED = {
+    "en": "Done: you will not receive notices. You can still ask questions any time.",
+    "es": "Listo: no recibirás avisos. Puedes seguir preguntando cuando quieras.",
+    "fr": "C'est fait : vous ne recevrez plus d'avis. Vous pouvez continuer à poser des questions.",
+    "de": "Erledigt: Sie erhalten keine Hinweise mehr. Fragen können Sie jederzeit weiter stellen.",
+    "ru": "Готово: уведомлений больше не будет. Вопросы можно задавать по-прежнему.",
+    "ar": "تم: لن تصلك إشعارات. ويمكنك الاستمرار في طرح الأسئلة في أي وقت.",
+    "pt": "Pronto: você não receberá avisos. Pode continuar perguntando quando quiser.",
+    "hi": "हो गया: अब सूचनाएँ नहीं आएँगी। आप कभी भी सवाल पूछ सकते हैं।",
+}
+COUNTRY_SET = {
+    "en": "Country set to {c}.",
+    "es": "País: {c}.",
+    "fr": "Pays : {c}.",
+    "de": "Land: {c}.",
+    "ru": "Страна: {c}.",
+    "ar": "البلد: {c}.",
+    "pt": "País: {c}.",
+    "hi": "देश: {c}।",
+}
+
+
 @dataclass
 class ChatPrefs:
     country: str | None = None
@@ -118,8 +143,22 @@ class TelegramFront:
     def session_for(self, chat_id: int) -> str:
         return "tg_" + hashlib.sha256(f"{self.salt}:{chat_id}".encode()).hexdigest()[:20]
 
+    def prefs_for(self, chat_id: int) -> ChatPrefs:
+        """Las preferencias de este chat, leídas de la base la primera vez que se necesitan.
+
+        `self.prefs` es una caché de proceso, no el sitio donde viven: guardarlas solo ahí hacía
+        que cada reinicio del bot —uno por despliegue— borrase en silencio el idioma y el país
+        que el padre había elegido, teniéndolos escritos en `tg_users` desde el principio.
+        """
+        p = self.prefs.get(chat_id)
+        if p is None:
+            lang, country = self.ops.tg_prefs(chat_id)
+            p = ChatPrefs(country=country, lang=lang if lang in SUPPORTED_LANGS else None)
+            self.prefs[chat_id] = p
+        return p
+
     def handle_command(self, chat_id: int, text: str) -> str | None:
-        p = self.prefs.setdefault(chat_id, ChatPrefs())
+        p = self.prefs_for(chat_id)
         cmd, _, arg = text.strip().partition(" ")
         cmd = cmd.lower().split("@")[0]
         if cmd in ("/start", "/help"):
@@ -129,16 +168,13 @@ class TelegramFront:
             return HELP.get(p.lang or "en", HELP["en"])
         if cmd == "/stop":
             self.ops.set_tg_opt_out(chat_id, True)
-            return (
-                "Listo: no recibirás avisos. Puedes seguir preguntando cuando quieras."
-                if (p.lang or "en") == "es"
-                else "Done: you will not receive notices. You can still ask questions any time."
-            )
+            return STOPPED.get(p.lang or "en", STOPPED["en"])
         if cmd == "/country":
             arg = arg.strip().upper()[:2]
             if len(arg) == 2:
                 p.country = arg
-                return f"Country set to {arg}." if (p.lang or "en") == "en" else f"País: {arg}."
+                plantilla = COUNTRY_SET.get(p.lang or "en", COUNTRY_SET["en"])
+                return plantilla.format(c=arg)
             return "Usage: /country ES"
         if cmd == "/lang":
             arg = arg.strip().lower()[:2]
@@ -150,7 +186,7 @@ class TelegramFront:
 
     def handle_message(self, chat_id: int, text: str) -> tuple[str, int]:
         """Returns (rendered answer, answer_id)."""
-        p = self.prefs.setdefault(chat_id, ChatPrefs())
+        p = self.prefs_for(chat_id)
         session = self.session_for(chat_id)
         self.ops.touch_tg_user(chat_id, p.lang, p.country)
         hist = self.ops.history(session)
