@@ -514,3 +514,25 @@ def test_every_config_translates_itself_completely(fichero: pathlib.Path) -> Non
     datos = yaml.safe_load(fichero.read_text(encoding="utf-8"))
     faltan = _huecos(datos, set(langs()))
     assert not faltan, f"{fichero.name} tiene traducciones a medias:\n  " + "\n  ".join(faltan[:8])
+
+
+def test_the_shared_answer_page_is_written_in_every_language() -> None:
+    """La página de `/a/{token}` es HTML escrito a mano dentro de `api.py`, fuera de Astro y
+    fuera del alcance de los candados de arriba.
+
+    Estaba en dos idiomas —`"…" if lang != "es" else "…"`, la forma exacta que este fichero
+    prohíbe en la web— así que seis de los ocho recibían la rama inglesa: un padre alemán
+    compartía su respuesta en alemán envuelta en un título y una nota legal en inglés. Y el
+    árabe salía maquetado de izquierda a derecha, que la web sí sabe hacer desde el primer día.
+    """
+    import re as _re
+
+    from pedibot.bot.answer import SUPPORTED_LANGS
+
+    fuente = (ROOT / "src" / "pedibot" / "api.py").read_text(encoding="utf-8")
+    bloque = _re.search(r"SHARED = \{(.*?)\n    \}", fuente, _re.S)
+    assert bloque, "no encuentro la tabla SHARED en api.py"
+    escritos = set(_re.findall(r'"(\w{2})": \(', bloque.group(1)))
+    faltan = sorted(set(SUPPORTED_LANGS) - escritos)
+    assert not faltan, f"la página compartida no está escrita en: {faltan}"
+    assert 'dir="{direction}"' in fuente, "la página compartida no declara dirección de escritura"

@@ -287,7 +287,10 @@ def publish(
         if social and not fake:
             from pedibot.publish.social import Post, providers_from_env, syndicate
 
-            prefix = "/es" if lang == "es" else ""
+            # el inglés va en la raíz y TODO lo demás lleva su prefijo, como en el resto
+            # del código. Escrito al revés, el enlace del post de una guía francesa,
+            # alemana, rusa, árabe, portuguesa o hindi apuntaba a la versión inglesa.
+            prefix = "" if lang == "en" else f"/{lang}"
             post = Post(a.title, a.summary, f"{site_url}{prefix}/guides/{a.slug}", lang)
             res = syndicate(post, providers_from_env())
             typer.echo(f"    social: {res or 'no providers configured'}")
