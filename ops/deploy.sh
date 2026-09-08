@@ -116,4 +116,11 @@ for _ in $(seq 1 20); do
 done
 if [ -n "$OUT" ]; then echo "$OUT"; else echo "!! el API no responde tras 20 s"; exit 1; fi
 REMOTE
+# La comprobación del sitio vivo, no solo del proceso. El health del final dice que el API está
+# en pie; esto dice si cada cosa que un padre puede tocar responde, en los ocho idiomas. Son dos
+# preguntas distintas: un «112» sin comillas en un fichero de datos tuvo el buscador devolviendo
+# un 500 en inglés con el health en verde todo el tiempo (8-sep-2026). No tumba el despliegue si
+# falla —ya está hecho—; lo que hace falta es enterarse.
+echo "== comprobación del sitio"
+python3 ops/smoke.py --base "https://pedibot.xyz" || echo "!! el sitio responde mal a algo, mira arriba"
 echo "== done: https://pedibot.xyz"
