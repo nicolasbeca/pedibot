@@ -7,7 +7,13 @@ topics:
   accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
-  piel: [urticaria, exantema, sarpullido, eccema, dermatitis, ronchas, habones, manchas, rash, eczema, skin]
+  piel: [urticaria, exantema, sarpullido, eccema, dermatitis, ronchas, habones, manchas, rash, eczema, skin,
+         sarampión, sarampion, measles, rougeole, masern, корь, кори, корью, حصبة, الحصبة, खसरा,
+         varicela, chickenpox, varicelle, windpocken, ветрян, ветряной, ветрянка, جدري الماء, الجديري, جدري, चिकनपॉक्स,
+         escarlatina, scarlet fever, scarlatine, scharlach, скарлатин, حمى قرمزية, الحمى القرمزية, स्कार्लेट,
+         rubéola, rubeola, rubella, rubéole, röteln, краснух, краснухи, حصبة ألمانية, الحصبة الألمانية, रूबेला,
+         paperas, mumps, oreillons, ورم الغدة النكفية, свинк, свинка, свинки, кашка, गलसुआ,
+         "mano-pie-boca", "pieds-mains-bouche", "hand foot and mouth", impétigo, impetigo, molusco, molluscum]
   orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear, throat, tonsil]
   salud_mental: [ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids]

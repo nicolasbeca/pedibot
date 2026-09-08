@@ -126,6 +126,64 @@ STOP = {
     "give",
     "dar",
     "darle",
+    # ------------------------------------------------------------------------------
+    # Las palabras funcionales de las otras seis lenguas (8-sep-2026). La lista estaba
+    # escrita en castellano y algo de inglés, así que la MISMA pregunta daba un término
+    # en castellano y doce en alemán:
+    #
+    #   es  «mi hijo tiene fiebre y no sé qué hacer»           -> [fiebre]
+    #   de  «mein Kind hat Fieber und ich weiß nicht was...»   -> [mein, kind, hat,
+    #        fieber, und, ich, weiß, nicht, was, ich, tun, soll]
+    #
+    # Y eso no es solo ruido: esos términos entran en la consulta FTS, así que una
+    # pregunta alemana sobre fiebre casaba con las fichas del RKI que contienen «ich» y
+    # «und» —poliomielitis, estreptococo— por delante de las hojas de la fiebre.
+    # Solo palabras funcionales: ni un síntoma, ni una parte del cuerpo, ni un fármaco.
+    # en
+    "am", "are", "was", "were", "be", "been", "being", "does", "did", "doing", "have", "had",
+    "having", "will", "would", "could", "shall", "may", "might", "must", "at", "by", "from",
+    "into", "about", "there", "this", "that", "these", "those", "you", "your", "we", "our",
+    "us", "me", "him", "them", "they", "their", "it's", "im", "just", "very", "really",
+    "please", "help", "know", "think", "tell", "want", "need", "when", "where", "why", "who",
+    "which", "if", "so", "but", "not", "no", "yes",
+    # fr
+    "mon", "ma", "les", "une", "des", "du", "et", "ou", "je",
+    "tu", "il", "elle", "nous", "vous", "ils", "elles", "qui", "quoi", "quand",
+    "où", "pourquoi", "comment", "est", "sont", "ai", "as", "avons", "avez", "ont", "fait",
+    "faire", "dois", "doit", "peut", "peux", "pouvez", "sais", "savoir", "pas", "plus", "très",
+    "aussi", "avec", "sans", "pour", "dans", "sur", "au", "aux", "ce", "cette", "ces", "sa", "ses", "lui", "leur", "mais", "donc", "alors", "svp", "aide", "aider", "merci",
+    # de
+    "mein", "meine", "meinen", "meinem", "der", "die", "das", "den", "dem", "ein", "eine",
+    "einen", "einem", "einer", "und", "oder", "ich", "er", "sie", "wir", "ihr",
+    "hat", "habe", "haben", "hatte", "ist", "sind", "war", "waren", "bin", "wird", "werden",
+    "kann", "können", "soll", "sollen", "muss", "müssen", "darf", "wer", "wo", "wann",
+    "warum", "wie", "nicht", "kein", "keine", "auch", "sehr", "aber", "wenn", "dass", "mit",
+    "ohne", "für", "von", "zu", "zum", "zur", "auf", "bei", "nach", "tun",
+    "machen", "weiß", "denke", "bitte", "hilfe", "danke", "mal", "schon", "noch",
+    # pt
+    "meu", "minha", "meus", "minhas", "os", "um", "uma", "uns", "umas", "da", "dos", "e", "eu", "ele", "ela", "nós", "você", "vocês", "quem", "quando", "onde", "porque", "é", "são", "está", "estão", "estou", "tem",
+    "tenho", "têm", "foi", "ser", "estar", "pode", "posso", "podem", "deve", "devo", "não",
+    "sim", "muito", "também", "com", "sem", "em", "na", "nos", "nas",
+    "ao", "aos", "à", "às", "mas", "então", "fazer", "faço", "sei", "saber", "ajuda",
+    "obrigado", "obrigada",
+    # ru
+    "мой", "моя", "мои", "моего", "моей", "и", "или", "я", "ты", "он", "она", "оно", "мы",
+    "вы", "они", "что", "кто", "где", "когда", "почему", "как", "не", "нет", "да", "очень",
+    "тоже", "но", "если", "с", "со", "без", "для", "по", "в", "во", "на", "к", "ко", "от",
+    "до", "у", "за", "это", "этот", "эта", "быть", "есть", "был", "была", "было", "были",
+    "делать", "делаю", "надо", "нужно", "можно", "могу", "может", "должен", "пожалуйста",
+    "помогите", "спасибо",
+    # ar
+    "ما", "ماذا", "من", "متى", "أين", "لماذا", "كيف", "هل", "في", "على", "إلى", "عن", "مع",
+    "بدون", "أن", "أنا", "هو", "هي", "نحن", "هم", "هذا", "هذه", "ذلك", "التي", "الذي", "قد",
+    "كان", "كانت", "يكون", "أفعل", "افعل", "عندي", "لدي", "لدى", "جدا", "أيضا", "لكن", "إذا",
+    "لا", "نعم", "من فضلك", "أرجو", "شكرا", "أعرف", "يجب",
+    # hi
+    "मेरा", "मेरी", "मेरे", "मुझे", "मैं", "हम", "आप", "वह", "वे", "यह", "ये", "है", "हैं",
+    "था", "थी", "थे", "हो", "होता", "होती", "करना", "करूँ", "करूं", "क्या", "कौन", "कहाँ",
+    "कब", "क्यों", "कैसे", "नहीं", "हाँ", "बहुत", "भी", "लेकिन", "अगर", "के", "का", "की", "को",
+    "से", "में", "पर", "और", "या", "कृपया", "मदद", "धन्यवाद", "रहा", "रही", "रहे", "गया",
+    "गयी", "जाता", "लिए",
 }
 _DOSE_QUERY = re.compile(
     r"\b(dosis|dose|dosage|mg|ml|kilos?|kg|paracetamol|ibuprofen\w*|acetaminophen|"
@@ -275,7 +333,18 @@ class Index:
             ch = Chunk.model_validate_json(data)
             score = -float(r)
             low = (ch.text + " " + ch.section).lower()
-            matched = sum(1 for t in terms if t in low)
+            # Por PALABRA, no por subcadena. `t in low` contaba «tos» dentro de «esTOS» y de
+            # «toDOS», «pis» dentro de «ePISodio», «sed» dentro de «cauSED», «asma» dentro de
+            # «plASMA» y de «espASMo». Medido sobre los 6.548 fragmentos del índice el
+            # 8-sep-2026: «tos» aparecía en 2.558 como subcadena y en 259 como palabra, diez
+            # veces más. Y esta cuenta no es decorativa: es la puerta del «fuente o silencio»
+            # —`matched_terms >= min_matched` en retrieval.py— así que estaba abierta de par en
+            # par justo para los síntomas que más se preguntan en castellano.
+            #
+            # Por prefijo, como en el resto del proyecto: «tos» tiene que seguir encontrando
+            # «toses» y «fiebre», «fiebres».
+            palabras = _TOKEN.findall(low)
+            matched = sum(1 for t in terms if any(w.startswith(t) for w in palabras))
             if prefer_parent_leaflets:
                 score *= DOC_TYPE_WEIGHT.get(ch.doc_type, 1.0)
             if thin_lang and ch.lang == thin_lang:
