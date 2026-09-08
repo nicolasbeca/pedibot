@@ -65,7 +65,19 @@ _AGE_PATTERNS = [
         re.compile(rf"(\d{{1,2}})\s*(?:हफ़्ते|हफ्ते|हफ़्ता|हफ्ता|सप्ताह|haft[ae]|saptah){NOT_AFTER}", re.I),
         1 / 4.345,
     ),
-    (re.compile(rf"(\d{{1,2}})\s*(?:दिन|din)\s*(?:का|के|की|ka|ke){NOT_AFTER}", re.I), 1 / 30.4),
+    # «10 दिन का» solo es una edad cuando detrás va el niño: «10 दिन का बच्चा» es un bebé de
+    # diez días y «10 दिन का बुखार» son diez días DE fiebre, que es un niño de cualquier edad.
+    # Sin el sustantivo, un niño de cinco años con fiebre desde hace diez días recibía el
+    # aviso del lactante menor de tres meses, con ese motivo escrito en el banner.
+    (
+        re.compile(
+            rf"(\d{{1,2}})\s*(?:दिन|din)\s*(?:का|के|की|ka|ke)\s*"
+            rf"(?:बच्चा|बच्ची|बच्चे|शिशु|नवजात|बेटा|बेटी|bachch[aei]|shishu|navjat|bet[ai]|baby)"
+            rf"{NOT_AFTER}",
+            re.I,
+        ),
+        1 / 30.4,
+    ),
 ]
 _NEWBORN = re.compile(
     r"reci[eé]n nacid|rec[eé]m[- ]?nascid|newborn|neonat|nouveau[- ]n[eé]|neugeboren|новорожд"
@@ -333,6 +345,16 @@ class Triage:
         cuesta respirar» tiene que seguir saltando por la segunda mitad."""
         return any(not _negada(text, m.start(), m.end()) for m in rx.finditer(text))
 
+    def _contradicted(self, requires: list[str], age: float | None) -> bool:
+        """¿Sabemos ya, con certeza, que esta regla NO es la que toca?
+
+        Solo la edad puede contradecir: si la pregunta dice que el niño tiene ocho meses, la
+        regla del lactante no es suya, por muy bien que casen sus palabras. Que no se haya
+        detectado fiebre NO contradice nada — un padre escribe «está ardiendo» de mil maneras y
+        el detector no las conoce todas; ahí el patrón es precisamente lo que salva la situación.
+        """
+        return "age_under_3_months" in requires and age is not None and age >= 3
+
     def assess(self, text: str) -> TriageResult:
         age = parse_age_months(text)
         fever = self.has_fever(text)
@@ -342,12 +364,25 @@ class Triage:
         }
         matched: list[Rule] = []
         for r in self.rules:
-            if r.requires:
-                if all(flags.get(k, False) for k in r.requires):
-                    matched.append(r)
-                continue
-            if any(self._hits(rx, text) for rx in r.patterns):
+            # Dos caminos independientes hacia la misma alarma, y hasta el 8-sep-2026 el segundo
+            # no existía: en cuanto una regla tenía `requires`, sus patrones no se miraban NUNCA.
+            # La regla del lactante con fiebre —la más importante que hay, la 5 de CLAUDE.md—
+            # tenía 28 patrones escritos en las ocho lenguas y ninguno podía saltar. El candado
+            # estructural que exige patrones en los tres alfabetos los contaba tan contento:
+            # comprobaba que estuvieran escritos, no que sirvieran (L47 otra vez).
+            #
+            # Lo que se perdía era justo lo que el `requires` no sabe leer: «mi lactante tiene
+            # fiebre», «Säugling hat Fieber», «у младенца температура», «رضيعي عنده حرارة». Ahí
+            # no hay ninguna cifra de edad que interpretar, y la palabra con la que un padre dice
+            # «es muy pequeño» sí estaba en los patrones.
+            if r.requires and all(flags.get(k, False) for k in r.requires):
                 matched.append(r)
+                continue
+            if not any(self._hits(rx, text) for rx in r.patterns):
+                continue
+            if r.requires and self._contradicted(r.requires, age):
+                continue
+            matched.append(r)
         level = "routine"
         for r in matched:
             if LEVEL_ORDER[r.level] > LEVEL_ORDER[level]:
