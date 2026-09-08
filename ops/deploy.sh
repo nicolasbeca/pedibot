@@ -122,5 +122,5 @@ REMOTE
 # un 500 en inglés con el health en verde todo el tiempo (8-sep-2026). No tumba el despliegue si
 # falla —ya está hecho—; lo que hace falta es enterarse.
 echo "== comprobación del sitio"
-python3 ops/smoke.py --base "https://pedibot.xyz" || echo "!! el sitio responde mal a algo, mira arriba"
+uv run python ops/smoke.py --base "https://pedibot.xyz" || echo "!! el sitio responde mal a algo, mira arriba"
 echo "== done: https://pedibot.xyz"
