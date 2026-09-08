@@ -1,6 +1,10 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-08-25, 16:30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-09-08** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+> Nota de la revisión del 8-sep: la cabecera de este fichero decía «25-ago» mientras el código
+> iba por el 7-sep, con 234 commits y catorce días de trabajo sin recoger. Un estado vivo que
+> se queda quieto miente con más eficacia que no tener ninguno.
 
 ## Fase actual
 
@@ -182,14 +186,31 @@ Lo retirado es la insignia de las dos portadas, por dos motivos: pone una marca 
 | D3 | Confirmar año de las hojas SEUP. | F1 tail |
 | D4 | Instalar Node/Astro para la web real. | F3 |
 | D5 | ~~Dominio~~ pedibot.xyz comprado; DNS Cloudflare → apuntar al VPS en F4. | F4 |
+| D6 | Sin remoto git: 234 commits en un solo disco, sin copia del historial fuera de él. | alta |
+| D7 | El juez de fidelidad (`eval --llm --judge`) nunca se ha ejecutado: `judged: 0`. | alta |
+| D8 | Producción corre el código del 7-sep; los arreglos del 8-sep están sin desplegar. | alta |
+| D9 | Las etiquetas de forma de las MARCAS siguen como las escribe el fabricante (decidido: no se traducen); las genéricas ya van en los ocho idiomas. | cerrada por decisión |
 
 ## Próximos pasos (orden propuesto)
 
-1. Operador: clave de DeepSeek en `.env` → primera respuesta real con `uv run pedibot ask "..."` y ampliar `pedibot eval` con `citation_validity` + juez de fidelidad.
-2. API FastAPI (`/api/ask`, SSE) + persistencia anonimizada + coste por consulta + rate limit.
-3. Embeddings opcionales (e5-small + sqlite-vec) y RRF, solo si el golden set con LLM lo pide.
-4. Astro + widget a partir del boceto (requiere Node).
+Los cuatro que había aquí están **hechos** desde hace semanas (clave de DeepSeek, API con SSE y
+persistencia, embeddings, Astro con widget). Se sustituyen por lo que la revisión del 8-sep dejó
+abierto, en orden de consecuencia:
+
+1. **Desplegar.** Los arreglos del 8-sep (triaje del lactante, calculadora, página compartida)
+   están en el PC y **no en el VPS**: `make web-build && bash ops/deploy.sh 46.225.74.13`.
+2. **Un remoto privado.** 234 commits viven en un solo disco y no hay copia del historial fuera
+   de él (D-02 sigue sin decidir desde el 24-ago). Es lo único irreversible de esta lista.
+3. **`pedibot eval --llm --judge`.** El último informe con modelo real es del 26-ago y trae
+   `"judged": 0, "faithful_rate": null`: el juez de fidelidad **no ha llegado a ejecutarse nunca**.
+   Desde entonces se han tocado prompts, cinco enrutadores, el guardia de dosis y el triaje.
+   Cuesta unos 0,05 $.
+4. **Diez padres.** De las 128 respuestas de la base, 121 son `test` del operador: web 1,
+   Telegram 2, agente 2. El cuello de botella no es el código.
+5. Las tres guías que solo existen en inglés (asma, ibuprofeno, paracetamol): o se traducen a los
+   siete idiomas o se retiran, porque en ellas el selector de idioma no ofrece nada.
 
 ## Calendario
 
 - 2026-08-24 — Arranque v2: docs, catálogo, ingesta completa, triaje, calculadora, motor con verificador, CLI, 80 tests, boceto web v1.
+- 2026-09-08 — **Revisión completa y depuración.** Seis fallos arreglados, tres de ellos de seguridad clínica: los 28 patrones de la regla del lactante con fiebre no se evaluaban nunca (cinco de ocho idiomas se quedaban en rutina al decir «lactante», «Säugling», «младенец», «رضيع»); la calculadora daba la dosis completa de ibuprofeno a un bebé de dos meses con el aviso debajo; los avisos salían como identificadores internos del código; la lista de botes salía en castellano en los ocho idiomas; `/api/photo` no pasaba el idioma y devolvía la frase de emergencia en inglés; la página de respuesta compartida estaba en dos idiomas y sin dirección de escritura para el árabe. Tres candados nuevos (`test_infant_words.py`, `test_dose_refer.py`, y la página compartida en `test_i18n_parity.py`). 1.302 → 1.357 tests. Golden set intacto: 111/111 en las seis métricas.
