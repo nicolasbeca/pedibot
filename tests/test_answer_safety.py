@@ -159,8 +159,21 @@ def test_the_brevity_rule_does_not_contradict_the_sourcing_rule() -> None:
     according to the SEUP".
     """
     _, prompt = load_prompt()
-    rule8 = next(line for line in prompt.splitlines() if line.startswith("8."))
-    assert "two sentences" in rule8, "la regla 8 dejó de pedir brevedad"
+    # La regla entera, no su primera línea: desde `8.` hasta la siguiente regla numerada. En v6
+    # la regla 8 ocupa dos líneas —la orden de urgencia deja de escribirse y la brevedad pasa a
+    # la continuación— y leer solo la primera daba este test en rojo con la exigencia intacta.
+    lineas = prompt.splitlines()
+    i = next(n for n, x in enumerate(lineas) if x.startswith("8."))
+    fin = next(
+        (n for n, x in enumerate(lineas[i + 1 :], i + 1) if x[:3].rstrip(".").isdigit()),
+        len(lineas),
+    )
+    rule8 = " ".join(lineas[i:fin])
+    import re as _re
+
+    # el límite, no su redacción exacta: v6 dice «two short sentences» y la exigencia
+    # —que la respuesta de emergencia sea telegráfica— es la misma
+    assert _re.search(r"two (short )?sentences", rule8), "la regla 8 dejó de pedir brevedad"
     assert "name the organisation" in rule8, (
         "la regla 8 vuelve a contradecir a la 3: pide brevedad sin decir que la fuente se nombra"
     )

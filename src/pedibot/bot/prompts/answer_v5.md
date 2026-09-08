@@ -1,4 +1,10 @@
-# answer_v5 — MEDIDO Y DESCARTADO el 8-sep-2026. NO se usa. Se guarda porque el resultado
+# NOTA del 8-sep-2026, después de medir el RUIDO del método: el 0,747 que se lee más abajo NO
+# era una regresión. El mismo prompt v4, medido dos veces sin cambiar nada, da 0,788 y 0,663 —
+# amplitud 0,125— porque el modelo redacta distinto cada vez (parecido medio entre dos
+# redacciones del mismo caso: 0,48; a temperatura 0 sigue en 0,68). Así que v5 se descartó por
+# una diferencia que cabía entera dentro del azar. Se queda descartado igualmente, porque
+# tampoco había razón para adoptarlo, pero el motivo escrito era falso.
+## answer_v5 — MEDIDO Y DESCARTADO el 8-sep-2026. NO se usa. Se guarda porque el resultado
 # negativo vale: dice por dónde NO está la solución de la fidelidad, y cuesta 0,07 $ y media hora
 # volver a averiguarlo.
 #

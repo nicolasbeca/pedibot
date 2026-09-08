@@ -22,12 +22,12 @@ topics:
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz]
   desarrollo: [desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen]
   medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
-  urgencias: [urgencias, 112, emergencia, sedoanalgesia, emergency, "911", "999"]
+  urgencias: [urgencias, "112", emergencia, sedoanalgesia, emergency, "911", "999"]
   crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]
   general: []
 
 subtopics:
-  signos_alarma: [alarma, urgencias, 112, inmediat, gravedad, warning, emergency, immediately]
+  signos_alarma: [alarma, urgencias, "112", inmediat, gravedad, warning, emergency, immediately]
   tratamiento_casa: [en casa, tratamiento, qué hacer, que hacer, cuidados, at home, treatment, what to do]
   prevencion: [prevención, prevencion, evitar, prevent, avoid]
   cuando_consultar: [cuándo consultar, cuando consultar, cuándo acudir, cuando acudir, pediatra, when to]
