@@ -156,14 +156,24 @@ def run_eval(engine: Engine, golden: list[dict], k: int = 3) -> Report:
 
 def fake_engine_from_settings() -> Engine:
     from pedibot.bot.answer import EmergencyNumbers
+    from pedibot.bot.drugs import DrugCatalog
+    from pedibot.bot.guides import GuideIndex
     from pedibot.bot.retrieval import Retriever, Synonyms
     from pedibot.bot.triage import Triage
+    from pedibot.bot.vaccines import Vaccines
     from pedibot.index.store import Index
     from pedibot.ingest.classify import Taxonomy
     from pedibot.settings import get_settings
 
     s = get_settings()
     llm = FakeProvider("Grounded draft [1].")
+    # El MISMO motor que en producción, catálogos incluidos. Hasta el 8-sep-2026 este se
+    # construía sin `drugs`, sin `vaccines` y sin `guides`, o sea sin tres de los cinco
+    # enrutadores deterministas: el de vacunas **no podía dispararse nunca** durante la
+    # evaluación, y el de dosis no sabía resolver una marca. La puerta de calidad del proyecto
+    # —la que marcaba `routing: 1.0`— no estaba midiendo el producto, sino una versión más
+    # pobre de él, y por eso «Quels vaccins pour un bébé de 3 mois en France ?» aparecía como
+    # una respuesta imposible de fundamentar cuando en producción la contesta una tabla.
     return Engine(
         Retriever(
             Index(s.index_db_path),
@@ -174,6 +184,9 @@ def fake_engine_from_settings() -> Engine:
         Triage(s.config_dir / "red_flags.yaml"),
         llm,
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
+        drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
+        vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
+        guides=GuideIndex(s.content_dir),
     )
 
 

@@ -109,3 +109,10 @@
 {"id": "g109", "q": "कल से उल्टी और दस्त हैं, आँखें धँसी हैं और पेशाब नहीं कर रहा", "lang": "hi", "level": "urgent", "docs": ["seup_gastroenteritis", "seup_vomitos", "nhs_en_diarrhoea_and_vomiting", "mlp_en_gastroenteritis", "rki_de_ratgeber_noroviren", "rki_de_ratgeber_rotaviren"], "rules": ["dehydration"]}
 {"id": "g110", "q": "मेरा बेटा कहता है कि वह मरना चाहता है", "lang": "hi", "level": "mental_health", "docs": ["seup_conducta_suicida", "seup_autolesion"], "rules": ["suicidal_ideation"]}
 {"id": "g111", "q": "मेरे बच्चे को बुखार है", "lang": "hi", "level": "routine", "docs": ["seup_fiebre", "nhs_en_fever_in_children", "mlp_en_fever", "mlp_es_fever"], "expect": "asked_age"}
+{"id": "g112", "q": "Quels vaccins pour un bébé de 3 mois en France ?", "lang": "fr", "level": "routine", "expect": "vaccine_schedule", "note": "ruta de vacunas; salio como fallback en la eval con modelo del 8-sep"}
+{"id": "g113", "q": "¿Qué vacunas le tocan a los 3 meses en España?", "lang": "es", "level": "routine", "expect": "vaccine_schedule"}
+{"id": "g114", "q": "What vaccines are due at 12 months in the UK?", "lang": "en", "level": "routine", "expect": "vaccine_schedule"}
+{"id": "g115", "q": "Welche Impfungen mit 2 Monaten in Deutschland?", "lang": "de", "level": "routine", "expect": "vaccine_schedule"}
+{"id": "g116", "q": "Quais vacinas aos 4 meses no Brasil?", "lang": "pt", "level": "routine", "expect": "vaccine_schedule"}
+{"id": "g117", "q": "how much Calpol for my 3 year old, she weighs 14 kg", "lang": "en", "level": "routine", "expect": "dose_calculator", "note": "marca; necesita DrugCatalog"}
+{"id": "g118", "q": "quantos ml de Alivium para 12 kg?", "lang": "pt", "level": "routine", "expect": "dose_calculator", "note": "marca brasilena"}

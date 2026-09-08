@@ -107,6 +107,23 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
 }
 
 
+#: Las formas cortas, que son como un padre nombra de verdad su país en inglés: «in the UK»,
+#: «in the US». Faltaban las dos —y el mercado primero del producto es el inglés—, así que
+#: «What vaccines are due at 12 months in the UK?» no llegaba a la tabla y se iba al corpus.
+#:
+#: Van aparte y con frontera de palabra porque la búsqueda de arriba es por subcadena, y con dos
+#: letras eso es una trampa: «us» vive dentro de *because*, *must* y hasta de *bukhar*, y «uk»
+#: dentro de *Ukraine*. Con «us» no basta la frontera —es un pronombre inglés corriente: «tell us
+#: what vaccines»— así que se exige el artículo delante, que es como se escribe el país.
+#:
+#: «America» se queda fuera a propósito: en castellano y en portugués nombra el continente, y
+#: leerlo como Estados Unidos le enseñaría a un padre colombiano el calendario que no es.
+COUNTRY_SHORT: dict[str, re.Pattern[str]] = {
+    "GB": re.compile(r"\b(?:uk|u\.k\.|great britain|britain|gro(?:ß|ss)britannien)\b", re.I),
+    "US": re.compile(r"\b(?:the u\.?s\.?|u\.?s\.?a\.?)\b", re.I),
+}
+
+
 def country_in_question(text: str) -> str | None:
     """The country the question names out loud, or None.
 
@@ -120,7 +137,12 @@ def country_in_question(text: str) -> str | None:
         for name in names:
             if name in low and (best is None or len(name) > best[0]):
                 best = (len(name), code)
-    return best[1] if best else None
+    if best is not None:
+        return best[1]
+    for code, rx in COUNTRY_SHORT.items():
+        if rx.search(low):
+            return code
+    return None
 
 
 @dataclass(frozen=True)
