@@ -25,7 +25,7 @@ _AGE_PATTERNS = [
     # (regex, unit multiplier to months)
     (
         re.compile(
-            r"(\d{1,2})\s*(?:meses|m[eê]s|months?|mois|monate[n]?|monat|mo|месяц\w*|мес"
+            r"(\d{1,2})\s*(?:meses|m[eê]s|months?|mois|monate[n]?|monat|monatig\w*|mo|месяц\w*|мес"
             r"|شهر|أشهر|شهور)\b",
             re.I,
         ),
@@ -33,14 +33,14 @@ _AGE_PATTERNS = [
     ),
     (
         re.compile(
-            r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|ans?|jahre[n]?|jahr|год\w*|лет|سنة|سنوات|سنين|y\.?o\.?)\b",
+            r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|ans?|jahre[n]?|jahr|j[äa]hrig\w*|год\w*|лет|سنة|سنوات|سنين|y\.?o\.?)\b",
             re.I,
         ),
         12.0,
     ),
     (
         re.compile(
-            r"(\d{1,2})\s*(?:semanas|semana|weeks?|semaines?|wochen|woche|недел\w*|нед|أسبوع|أسابيع|wks?)\b",
+            r"(\d{1,2})\s*(?:semanas|semana|weeks?|semaines?|wochen|woche|w[öo]chig\w*|недел\w*|нед|أسبوع|أسابيع|wks?)\b",
             re.I,
         ),
         1 / 4.345,
@@ -216,6 +216,30 @@ class TriageResult:
         return self.level != "routine"
 
 
+#: El alemán pega el número a la unidad y le añade la terminación del adjetivo: «zweimonatiges
+#: Baby», «dreijährige Tochter», «achtwöchiges Kind». Era el único de los ocho idiomas que no
+#: sabía leer su propia forma natural de decir la edad —«meine 3-jährige Tochter hat Fieber»
+#: devolvía None y la respuesta salía preguntando la edad que estaba escrita en la frase— y con
+#: ella se caía también «mein 2-monatiges Baby hat Fieber», que es la regla del lactante.
+_DE_NUM = {
+    "ein": 1, "eine": 1, "einem": 1, "zwei": 2, "drei": 3, "vier": 4, "fünf": 5, "funf": 5,
+    "sechs": 6, "sieben": 7, "acht": 8, "neun": 9, "zehn": 10, "elf": 11, "zwölf": 12,
+    "zwolf": 12,
+}
+_DE_UNIDAD = {
+    "jährig": 12.0,
+    "jahrig": 12.0,
+    "monatig": 1.0,
+    "wöchig": 1 / 4.345,
+    "wochig": 1 / 4.345,
+}
+_DE_COMPUESTO = re.compile(
+    r"(?<![\w])(ein|eine|einem|zwei|drei|vier|fünf|funf|sechs|sieben|acht|neun|zehn|elf"
+    r"|zwölf|zwolf)(jährig|jahrig|monatig|wöchig|wochig)\w*",
+    re.I,
+)
+
+
 #: Guiones de todas las formas: el corto, el largo, el de las cifras y los que mete un procesador
 #: de texto. Todos separan el número de la unidad exactamente igual que un espacio.
 _GUIONES = re.compile(r"[-\u2010\u2011\u2012\u2013\u2014\u2015\u2212]+")
@@ -239,6 +263,9 @@ def parse_age_months(text: str) -> float | None:
     for phrase, months in _WORD_AGES.items():
         if re.search(rf"{NOT_BEFORE}{re.escape(phrase)}{NOT_AFTER}", low):
             return float(months)
+    compuesto = _DE_COMPUESTO.search(low)
+    if compuesto:
+        return _DE_NUM[compuesto.group(1)] * _DE_UNIDAD[compuesto.group(2)]
     for rx, mult in _AGE_PATTERNS:
         m = rx.search(low)
         if m:

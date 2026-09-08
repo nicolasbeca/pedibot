@@ -39,6 +39,11 @@ DECLARADOS = {
     "_TOKEN": "cubre las tres por otra vía: `\\w` casa cirílico y árabe, y el rango "
     "\\u0900-\\u097f añade el devanagari con sus matras, que `\\w` no reconoce",
     "_GUIONES": "son los guiones Unicode, que no son letras de ningún alfabeto",
+    "_DE_COMPUESTO": "es la forma adjetiva alemana de decir la edad —«zweimonatiges», "
+    "«dreijährige»— y el alemán se escribe en alfabeto latino y solo en él. Las otras siete "
+    "lenguas dicen la edad separando el número de la unidad y las lee `_AGE_PATTERNS`, "
+    "que sí cubre las tres escrituras: este detector no es una traducción a medias sino "
+    "una gramática que solo existe en una lengua",
 }
 
 BLOQUES = {"cirílico": ("Ѐ", "ӿ"), "árabe": ("؀", "ۿ"), "devanagari": ("ऀ", "ॿ")}
