@@ -580,6 +580,9 @@ rules:
   - p[ée]t[ée]chie
   - flecken.{0,40}nicht weg
   - flecken.{0,40}nicht verschwind
+  - (flecken|punkte|ausschlag|pünktchen).{0,80}verschwinden nicht
+  - (flecken|punkte|ausschlag).{0,80}(gehen|bleiben).{0,15}nicht (weg|verschwind)
+  - verschwinden nicht.{0,25}(druck|dr[üu]ck|glas)
   - (flecken|punkte|ausschlag).{0,40}(bleiben|gehen nicht)
   - (dr[üu]ck|glas).{0,30}nicht verschwind
   - punkte.{0,40}nicht weg
@@ -589,6 +592,9 @@ rules:
   - пятна.{0,30}не исчеза
   - сыпь.{0,30}не бледне
   - не бледнеет при надавлив
+  - (пятна|сыпь|точки).{0,80}не бледне
+  - (пятна|сыпь|точки).{0,80}не исчеза
+  - не бледне.{0,25}(при надавлив|если наж|под стакан)
   - петехи
   - проба стаканом
   - بقع.{0,25}لا تختفي
@@ -596,6 +602,8 @@ rules:
   - لا تختفي عند الضغط
   - اختبار الكوب
   - manchas que n[aã]o somem
+  - (manchas|manchinhas|pintas).{0,80}n[aã]o (somem|desaparecem|saem)
+  - n[aã]o (somem|desaparecem).{0,30}(quando aperto|ao apertar|com o copo)
   - manchas que n[aã]o desaparecem
   - petéquias
   - peteq
@@ -958,6 +966,8 @@ rules:
   - (t[eê]te|tomb[ée]|chute|cogn[ée]).{0,100}vomi
   - vomi.{0,100}(t[eê]te|chute)
   - kopf gestoßen.{0,50}erbroch
+  - kopf.{0,25}(gestoßen|gestossen|angeschlagen|aufgeschlagen).{0,80}(erbroch|übergeben|gebrochen)
+  - (erbroch|übergeben).{0,80}kopf.{0,25}(gestoßen|gestossen)
   - sturz.{0,40}kopf.{0,40}erbroch
   - gegen den kopf.{0,50}übergeben
   - удар.{0,30}голов.{0,40}рв
@@ -1380,7 +1390,11 @@ rules:
   - (bauchschmerz|bauchweh|bauch).{0,90}(rechten seite|rechte seite|rechts unten)
   - (живот).{0,90}(справа|правой стороне|с правой)
   - (ألم).{0,30}(البطن).{0,90}(الجهة اليمنى|الجانب الأيمن)
+  - (ألم|يؤلم|تؤلم|وجع).{0,40}(البطن|بطنه|بطنها|المعدة).{0,90}(الجهة اليمنى|الجانب الأيمن|الناحية اليمنى)
+  - (البطن|بطنه|بطنها).{0,90}(الجهة اليمنى|الجانب الأيمن|الناحية اليمنى)
   - (dor).{0,30}(barriga|abdome).{0,90}(lado direito|parte direita)
+  - (dor|d[oó]i|doendo).{0,40}(barriga|abdome|abd[oô]men).{0,90}(lado direito|parte direita)
+  - (barriga|abdome).{0,90}(lado direito|parte direita)
   - (dor de barriga|dor abdominal).{0,45}(piorando|cada vez pior|n[aã]o (o |a )?deixa dormir)
   - (mal|douleur).{0,20}(de |au )?ventre.{0,45}(empire|de pire en pire|emp[eê]che de dormir)
   - (bauchschmerz|bauchweh).{0,45}(immer schlimmer|schlimmer|kann nicht schlafen)
