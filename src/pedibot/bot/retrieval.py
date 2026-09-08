@@ -8,6 +8,10 @@ from pathlib import Path
 import yaml
 
 from pedibot.bot.llm import LLMProvider
+
+# El MISMO conversor de guiones que usa el triaje, no una copia: son los dos sitios
+# que leen lo que escribe el padre, y la L65 salió justo de arreglarlo en uno solo.
+from pedibot.bot.triage import _GUIONES
 from pedibot.index.store import Hit, Index, query_terms
 from pedibot.ingest.classify import Taxonomy
 
@@ -51,7 +55,16 @@ def _brand_terms(drugs_path: Path) -> dict[str, dict[str, str]]:
 class Synonyms:
     def __init__(self, path: Path, drugs: Path | None = None):
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
-        self._maps: dict[str, dict[str, list[str]]] = {k: v or {} for k, v in raw.items()}
+        # Todo se fuerza a texto al cargar. Un «112» sin comillas en el YAML lo lee el cargador
+        # como entero, y `" ".join(...)` revienta con un TypeError que le llega al padre como un
+        # 500: estaba vivo en producción para cualquier pregunta en inglés con la palabra
+        # «emergency», que es de las más naturales que hay en el idioma principal del producto
+        # (8-sep-2026). El dato está arreglado; esto es para que el siguiente descuido de
+        # comillas cueste una recuperación peor y no una respuesta perdida.
+        self._maps: dict[str, dict[str, list[str]]] = {
+            str(k): {str(t): [str(x) for x in (terms or [])] for t, terms in (v or {}).items()}
+            for k, v in raw.items()
+        }
         self._marcas = _brand_terms(drugs) if drugs and drugs.exists() else {}
 
     def knows(self, lang: str) -> bool:
@@ -82,7 +95,12 @@ class Synonyms:
         return out
 
     def expand(self, query: str, lang: str = "en") -> list[str]:
-        low = query.lower()
+        # Los guiones se vuelven espacios antes de mirar, aquí también. Un disparador con guion
+        # dentro —«nouveau-né», «recém-nascido», «pronto-socorro», «magen-darm»— no es una frase
+        # (no lleva espacio) y se busca por prefijo contra los tokens… que el tokenizador parte
+        # justo por el guion. Eran doce disparadores que NO PODÍAN casar nunca, y entre ellos el
+        # recién nacido en francés y en portugués (8-sep-2026).
+        low = _GUIONES.sub(" ", query.lower())
         tokens = [c for t in _TOKEN.findall(low) for c in self._candidates(t)]
         extra: list[str] = []
         # Las marcas, antes que nada. Un padre escribe lo que pone en el
@@ -103,10 +121,13 @@ class Synonyms:
             for trigger, terms in table.items():
                 # a trigger with a space is a phrase ("stomach bug"), matched on the whole query;
                 # a single word is matched by prefix on each token ("vomit" → "vomiting")
-                if " " in trigger:
-                    hit = trigger in low
+                # el disparador se normaliza igual que la consulta: con eso, uno que
+                # llevaba guion pasa a ser una frase de varias palabras y se busca entera
+                disp = _GUIONES.sub(" ", trigger)
+                if " " in disp:
+                    hit = disp in low
                 else:
-                    hit = any(t.startswith(trigger) for t in tokens)
+                    hit = any(t.startswith(disp) for t in tokens)
                 if hit:
                     for t in terms:
                         if t not in extra:

@@ -277,7 +277,7 @@ en:
   - peso
   emergency:
   - urgencias
-  - 112
+  - "112"
   die:
   - suicida
   - conducta suicida
@@ -5656,3 +5656,137 @@ de:
   notfall:
   - notaufnahme
   - notfall
+
+# Francés → castellano. Era la ÚNICA de las ocho lenguas sin tabla hacia el
+# castellano, y el corpus es mayoritariamente español: una pregunta francesa sobre
+# fiebre no alcanzaba ni una hoja del SEUP y se iba a documentos ingleses sobre
+# norovirus (medido el 8-sep-2026). No es vocabulario inventado: cada entrada sale
+# de buscar el concepto —su lista de términos ingleses en fr_en— en las tablas de
+# las otras cinco lenguas y copiar la lista española que ya estaba escrita.
+fr_es:
+  allaitement: ["lactancia materna"]
+  allergie: [alergia, anafilaxia]
+  asthme: [asma, "crisis asmática"]
+  "avalé une pile": [ingesta, tragado, intoxicación]
+  boutons: [exantema, manchas, urticaria, piel]
+  bronchiolite: [bronquiolitis]
+  brûlure: [quemadura]
+  brûlé: [quemadura]
+  "cogné la tête": [cabeza, "traumatismo craneal", golpe]
+  colique: ["cólico del lactante", llanto]
+  constipation: [estreñimiento]
+  convulsion: [convulsión, "convulsión febril"]
+  "coup à la tête": [cabeza, "traumatismo craneal", golpe]
+  dents: [dentición, diente, dientes]
+  diarrhée: [diarrea, gastroenteritis]
+  diversification: ["alimentación complementaria", sólidos]
+  démange: [picor, urticaria]
+  déshydrat: [deshidratación, suero, rehidratación]
+  fievre: [fiebre, febril, temperatura]
+  fièvre: [fiebre, febril, temperatura]
+  gorge: [garganta, faringitis]
+  inconscient: [urgencias, "112"]
+  javel: [intoxicación, tóxico]
+  "mal de tête": [cefalea, "dolor de cabeza"]
+  "mal à la tête": [cefalea, "dolor de cabeza"]
+  "ne répond pas": [urgencias, "112"]
+  "ne se réveille pas": [somnoliento, decaído, adormilado]
+  nouveau-né: ["recién nacido"]
+  oreille: [oído, otitis]
+  "pile bouton": [pila, "cuerpo extraño", intoxicación]
+  pneumonie: [neumonía]
+  respir: [respirar, respiración, "dificultad respiratoria"]
+  rhume: [catarro, resfriado, mocos]
+  saigne: [sangrado, herida]
+  siffle: [sibilancias, pitos, asma, bronquiolitis]
+  sommeil: [sueño, dormir]
+  taches: [exantema, manchas, urticaria, piel]
+  "tombé sur la tête": [cabeza, "traumatismo craneal", golpe]
+  toux: [tos]
+  urticaire: [urticaria, ronchas, habones]
+  vaccin: [vacuna, "calendario de vacunación"]
+  ventre: ["dolor abdominal", barriga]
+  vomi: [vómitos, vomita]
+  écran: [pantallas, sedentarismo, "actividad física"]
+  éruption: [exantema, manchas, urticaria, piel]
+  étouffe: [atragantamiento]
+  # las que ningún otro idioma tenía en su tabla: comprobadas una a una contra el
+  # índice, y solo entra el término que aparece de verdad en algún documento.
+  biberon: [biberón, fórmula, "lactancia artificial"]
+  chute: [caída, golpe, traumatismo]
+  coqueluche: [tosferina, "tos ferina"]
+  grippe: [gripe, influenza]
+  méningite: [meningitis, meningocócica]
+  "ne disparaissent pas": ["no desaparecen", petequias, manchas]
+  pipi: [orina, pis]
+  piqûre: [picadura, insecto, avispa]
+  poux: [piojos, pediculosis, liendres]
+  pétéchie: [petequias, manchas, meningitis]
+  rougeole: [sarampión]
+  varicelle: [varicela]
+  vers: [oxiuros]
+  yeux: [conjuntivitis, ojo, ojos, legañas]
+  # los 19 conceptos que las otras cinco lenguas tenían y el francés no. La lista
+  # española está copiada de sus tablas, no escrita; el disparador francés se ha
+  # comprobado contra las 60 guías francesas del sitio: si la palabra no aparece en
+  # lo que publicamos en francés, no es la que usa un lector francés.
+  "112": [urgencias, "112"]
+  adolescent: [adolescente]
+  advil: [ibuprofeno]
+  alimentation: [alimentación, lactancia, tomas]
+  anaphyla: [anafilaxia]
+  antibiotique: [antibiótico]
+  anxieux: [ansiedad]
+  anxiété: [ansiedad]
+  automutil: [autolesión]
+  blessure: [herida]
+  bébé: [bebé, lactante]
+  "coup de chaleur": ["golpe de calor"]
+  coupure: [herida]
+  croissance: [crecimiento, percentil]
+  croup: [laringitis, crup]
+  doliprane: [paracetamol]
+  dosage: [dosis, dosificación]
+  dose: [dosis, dosificación]
+  ibuprofène: [ibuprofeno]
+  laryngite: [laringitis, crup]
+  "nez bouché": [mocos, nariz]
+  "nez qui coule": [mocos, nariz]
+  nourrisson: [bebé, lactante]
+  nurofen: [ibuprofeno]
+  paracétamol: [paracetamol]
+  plaie: [herida]
+  posologie: [dosis, dosificación]
+  reflux: [reflujo]
+  régurgit: [reflujo]
+  "se fait du mal": [autolesión]
+  suicidaire: [suicida, "conducta suicida"]
+  suicide: [suicida, "conducta suicida"]
+  syncope: [síncope, desmayo]
+  "toux aboyante": [laringitis, crup]
+  tétée: [alimentación, lactancia, tomas]
+  urgences: [urgencias, "112"]
+  évanoui: [síncope, desmayo]
+  évanouissement: [síncope, desmayo]
+  # los 16 asuntos que el sitio publica en francés y el buscador no sabía
+  # expandir: el disparador sale del TÍTULO de la guía —cómo nombramos nosotros ese
+  # asunto en francés— y el término español está comprobado contra el índice.
+  acquisition: [desarrollo, psicomotor, hitos]
+  "choc a la tete": ["traumatismo craneal", "golpe en la cabeza"]
+  "choc à la tête": ["traumatismo craneal", "golpe en la cabeza"]
+  conjonctivite: [conjuntivitis, ojos, legañas]
+  constip: [estreñimiento]
+  "coup de soleil": [quemadura, sol]
+  "croutes de lait": ["costra láctea", "dermatitis seborreica"]
+  "croûtes de lait": ["costra láctea", "dermatitis seborreica"]
+  gastro: [gastroenteritis, diarrea, vómitos]
+  "infection urinaire": ["infección urinaria", orina, itu]
+  "mon ado": [adolescente]
+  otite: [otitis, oído, "dolor de oído"]
+  oxyure: [oxiuros]
+  "pieds mains bouche": ["boca-mano-pie", enterovirus]
+  pieds-mains-bouche: ["boca-mano-pie", enterovirus]
+  "produit toxique": [intoxicación, tóxico]
+  scarlatine: [escarlatina, estreptococo]
+  "spasme du sanglot": ["espasmo del sollozo"]
+  "trouble alimentaire": [anorexia, bulimia]
