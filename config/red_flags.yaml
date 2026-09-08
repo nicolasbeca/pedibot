@@ -1692,56 +1692,80 @@ rules:
   reason_ar: إيذاء النفس
   reason_pt: "Conduta autolesiva"
   reason_hi: "खुद को नुकसान पहुँचाना"
+- id: neck_stiffness
+  level: emergency
+  source: mlp_en_meningitis
+  reason_es: "Rigidez de nuca: hay que descartar una meningitis ahora mismo"
+  reason_en: "Neck stiffness: meningitis has to be ruled out right now"
+  reason_fr: "Nuque raide : il faut écarter une méningite tout de suite"
+  reason_de: "Steifer Nacken: eine Hirnhautentzündung muss sofort ausgeschlossen werden"
+  reason_ru: "Ригидность затылка: менингит нужно исключить немедленно"
+  reason_ar: "تيبّس الرقبة: يجب استبعاد التهاب السحايا فورا"
+  reason_pt: "Pescoço rígido: é preciso descartar uma meningite agora"
+  reason_hi: "गर्दन में अकड़न: मेनिनजाइटिस की जाँच अभी ज़रूरी है"
+  patterns:
+  - rigidez (de |en )?(la )?(nuca|cuello)
+  - (nuca|cuello) (r[ií]gid|t[ie]s[oa]|agarrotad|duro)
+  - no puede (bajar|doblar|mover) (la |el )?(cabeza|barbilla|cuello|nuca)
+  - no consigue (bajar|doblar) (la |el )?(barbilla|cuello)
+  - le duele (al |cuando )?(bajar|doblar) (la |el )?(cabeza|cuello)
+  - stiff neck
+  - (neck is|neck's|neck) stiff
+  - neck stiffness
+  - can(?:'?t| ?not) (bend|lower|move|touch) (his|her|their|the) (neck|head|chin)
+  - can(?:'?t| ?not) put (his|her|their) chin
+  - nuque raide
+  - raideur de (la )?nuque
+  - (cou|nuque) (est )?raide
+  - ne peut pas (baisser|pencher) (la )?t[eê]te
+  - steif\w* nacken
+  - nacken.{0,10}steif\w*
+  - nackensteif
+  - (nacken|hals).{0,12}steif
+  - kann den kopf nicht.{0,15}(beugen|senken|bewegen)
+  - pesco[çc]o (r[ií]gido|duro|enrijecido|endurecido)
+  - rigidez (de |na )?(nuca|pesco[çc]o)
+  - n[aã]o consegue (abaixar|dobrar|mexer) (a |o )?(cabe[çc]a|pesco[çc]o|queixo)
+  - ригидность затылка
+  - (шея|затылок).{0,18}(не гнётся|не гнется|напряж|тверд)
+  - не может (наклонить|нагнуть|повернуть) голов
+  - تيبس (في )?(الرقبة|الرأس)
+  - تصلب (الرقبة|في الرقبة)
+  - لا (يستطيع|تستطيع) (ثني|تحريك) (رقبته|رقبتها|الرقبة)
+  - رقبته (متيبسة|متصلبة)
+  - गर्दन (में )?(अकड़|जकड़)
+  - गर्दन अकड़ी
+  - गर्दन (नहीं )?(मुड़|हिल)
+  - ठुड्डी.{0,15}छाती.{0,15}नहीं
+  - gardan akad
 - id: meningitis_signs
   level: urgent
   source: mlp_en_meningitis
-  reason_es: "Rigidez de nuca o dolor de cabeza intenso con fiebre y vómitos: hay que descartar una meningitis hoy"
-  reason_en: "Stiff neck, or severe headache with fever and vomiting: meningitis has to be ruled out today"
-  reason_fr: "Nuque raide, ou mal de tête intense avec fièvre et vomissements : il faut écarter une méningite aujourd'hui"
-  reason_de: "Steifer Nacken oder starke Kopfschmerzen mit Fieber und Erbrechen: eine Hirnhautentzündung muss heute ausgeschlossen werden"
-  reason_ru: "Ригидность затылка или сильная головная боль с температурой и рвотой: сегодня нужно исключить менингит"
-  reason_ar: "تيبّس الرقبة، أو صداع شديد مع حمى وقيء: يجب استبعاد التهاب السحايا اليوم"
-  reason_pt: "Pescoço rígido, ou dor de cabeça intensa com febre e vômitos: é preciso descartar uma meningite hoje"
-  reason_hi: "गर्दन में अकड़न, या बुखार और उल्टी के साथ तेज़ सिरदर्द: आज ही मेनिनजाइटिस की जाँच ज़रूरी है"
+  reason_es: "Le molesta la luz junto con fiebre o dolor de cabeza: hay que valorarlo hoy"
+  reason_en: "Light hurts along with fever or headache: this needs to be seen today"
+  reason_fr: "La lumière le gêne avec de la fièvre ou un mal de tête : à voir aujourd'hui"
+  reason_de: "Lichtempfindlichkeit mit Fieber oder Kopfschmerzen: heute abklären lassen"
+  reason_ru: "Светобоязнь вместе с температурой или головной болью: показать врачу сегодня"
+  reason_ar: "حساسية للضوء مع حمى أو صداع: يجب الفحص اليوم"
+  reason_pt: "A luz incomoda junto com febre ou dor de cabeça: precisa ser visto hoje"
+  reason_hi: "बुखार या सिरदर्द के साथ रोशनी चुभना: आज ही दिखाना चाहिए"
   patterns:
-  - rigidez (de |en la )?(nuca|cuello)
-  - (nuca|cuello) (r[ií]gid|t[ie]s[oa]|agarrotad)
-  - no puede (bajar|doblar) la (cabeza|barbilla)
-  - le molesta (mucho )?la luz
-  - fotofobia
-  - stiff neck
-  - (neck is|neck's) stiff
-  - can(?:'?t| ?not) (bend|lower) (his|her|their) (neck|head|chin)
-  - (bothered|hurt) by (the )?light
-  - photophobi
-  - sensitive to light
-  - nuque raide
-  - raideur de (la )?nuque
-  - la lumi[eè]re (le|la) g[eê]ne
-  - photophobie
-  - steifer nacken
-  - nackensteif
-  - nacken.{0,15}steif
-  - licht st[öo]rt
-  - lichtempfindlich
-  - pesco[çc]o (r[ií]gido|duro|enrijecido)
-  - rigidez (de |na )?nuca
-  - (a )?luz (o |a )?incomoda
-  - fotofobia
-  - ригидность затылка
-  - (шея|затылок).{0,15}(не гнётся|не гнется|напряж)
-  - светобоязн
-  - свет режет глаза
-  - تيبس (في )?الرقبة
-  - تصلب الرقبة
-  - حساسية للضوء
-  - الضوء يزعج
-  - गर्दन (में )?अकड़
-  - गर्दन अकड़ी
-  - रोशनी (चुभ|से तकलीफ)
-  - रोशनी बर्दाश्त नहीं
-  - gardan akad
-  - roshni chubh
+  - (le molesta (mucho )?la luz|fotofobia|molesta la luz).{0,60}(fiebre|d[ée]cimas|dolor de cabeza|cefalea)
+  - (fiebre|dolor de cabeza|cefalea).{0,60}(le molesta (mucho )?la luz|fotofobia|molesta la luz)
+  - (photophobi|bothered by (the )?light|hurts to look at (the )?light|sensitive to light).{0,60}(fever|temperature|headache)
+  - (fever|temperature|headache).{0,60}(photophobi|bothered by (the )?light|sensitive to light)
+  - (photophobie|la lumi[eè]re (le|la) g[eê]ne|g[eê]n[ée] par la lumi[eè]re).{0,60}(fi[eè]vre|mal de t[eê]te|c[ée]phal[ée]e)
+  - (fi[eè]vre|mal de t[eê]te).{0,60}(photophobie|la lumi[eè]re (le|la) g[eê]ne)
+  - (lichtempfindlich|licht st[öo]rt).{0,60}(fieber|kopfschmerz)
+  - (fieber|kopfschmerz).{0,60}(lichtempfindlich|licht st[öo]rt)
+  - (fotofobia|(a )?luz (o |a )?incomoda).{0,60}(febre|dor de cabe[çc]a)
+  - (febre|dor de cabe[çc]a).{0,60}(fotofobia|(a )?luz (o |a )?incomoda)
+  - (светобоязн|свет режет глаза).{0,60}(температур|головн\w* бол)
+  - (температур|головн\w* бол).{0,60}(светобоязн|свет режет глаза)
+  - (حساسية للضوء|الضوء يزعج).{0,60}(حمى|حرارة|صداع)
+  - (حمى|حرارة|صداع).{0,60}(حساسية للضوء|الضوء يزعج)
+  - (रोशनी (चुभ|से तकलीफ)|रोशनी बर्दाश्त नहीं).{0,60}(बुखार|सिरदर्द)
+  - (बुखार|सिरदर्द).{0,60}(रोशनी (चुभ|से तकलीफ)|रोशनी बर्दाश्त नहीं)
 context:
   fever:
   - fi[eè]vre

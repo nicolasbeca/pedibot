@@ -187,3 +187,69 @@ def test_an_ordinary_situation_stays_ordinary_in_every_language(
     assert triage.assess(pregunta).level == "routine", (
         f"[{lang}] {etiqueta}: «{pregunta}» da la alarma"
     )
+
+
+#: La fotofobia SOLA no es una alarma: la produce una conjuntivitis, una migraña o leer con mala
+#: luz. Con fiebre o con dolor de cabeza sí lo es. Decisión del operador del 8-sep-2026 al pedir
+#: «lo más seguro»: aplicado en serio, eso son dos cosas — subir la rigidez de nuca a emergencia
+#: y bajar la fotofobia suelta a rutina, porque una alarma que salta con leer con mala luz enseña
+#: a ignorar las alarmas, que es el otro lado de la seguridad.
+FOTOFOBIA_SOLA = [
+    ("es", "le molesta la luz cuando lee"),
+    ("es", "tiene fotofobia desde ayer"),
+    ("es", "le molesta el sol fuerte de la playa en los ojos"),
+    ("en", "the bright light bothers his eyes"),
+    ("fr", "la lumière le gêne un peu"),
+    ("pt", "a luz incomoda os olhos dele"),
+]
+
+FOTOFOBIA_CON_FIEBRE = [
+    ("es", "le molesta la luz y tiene fiebre"),
+    ("es", "fiebre alta y le molesta mucho la luz"),
+    ("en", "headache and sensitive to light"),
+    ("fr", "la lumière le gêne et il a de la fièvre"),
+    ("de", "Fieber und lichtempfindlich"),
+    ("pt", "febre e a luz incomoda"),
+]
+
+CUELLO_NO_RIGIDO = [
+    ("es", "tiene tortícolis"),
+    ("es", "le duele el cuello de dormir mal"),
+    ("en", "my child has neck pain after sports"),
+    ("de", "mein Kind hat Nackenschmerzen vom Schlafen"),
+    ("de", "er hat einen steifen Arm"),
+    ("pt", "tem dor no pescoço"),
+    ("hi", "सोने से गर्दन में दर्द है"),
+]
+
+RIGIDEZ_DE_NUCA = [
+    ("es", "tiene el cuello rígido y fiebre alta"),
+    ("es", "no puede doblar el cuello"),
+    ("en", "stiff neck and fever"),
+    ("fr", "il a la nuque raide"),
+    ("de", "er hat einen steifen Nacken"),
+    ("de", "mit steifem Nacken"),
+    ("ru", "у ребёнка ригидность затылка"),
+    ("ar", "رقبته متيبسة"),
+    ("hi", "गर्दन में अकड़न है"),
+]
+
+
+@pytest.mark.parametrize(("lang", "pregunta"), RIGIDEZ_DE_NUCA)
+def test_a_stiff_neck_is_an_emergency(triage: Triage, lang: str, pregunta: str) -> None:
+    """Una meningitis se mide en horas, y ninguna causa banal hace que un padre escriba esto."""
+    assert triage.assess(pregunta).level == "emergency", f"[{lang}] «{pregunta}»"
+
+
+@pytest.mark.parametrize(("lang", "pregunta"), FOTOFOBIA_CON_FIEBRE)
+def test_light_hurting_with_fever_or_headache_is_urgent(
+    triage: Triage, lang: str, pregunta: str
+) -> None:
+    assert triage.assess(pregunta).level == "urgent", f"[{lang}] «{pregunta}»"
+
+
+@pytest.mark.parametrize(("lang", "pregunta"), FOTOFOBIA_SOLA + CUELLO_NO_RIGIDO)
+def test_neither_a_sore_neck_nor_light_alone_raises_the_alarm(
+    triage: Triage, lang: str, pregunta: str
+) -> None:
+    assert triage.assess(pregunta).level == "routine", f"[{lang}] «{pregunta}» da la alarma"

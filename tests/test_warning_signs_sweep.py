@@ -78,7 +78,7 @@ SITUACIONES = [
   "fr":"elle n'a pas mouillé sa couche depuis 12 heures","de":"sie hat seit 12 Stunden keine nasse Windel",
   "ru":"12 часов подгузник сухой","ar":"لم تبلل الحفاض منذ 12 ساعة",
   "pt":"faz 12 horas que não molha a fralda","hi":"12 घंटे से डायपर गीला नहीं हुआ"}),
- ("cuello rígido", "urgent", {
+ ("cuello rígido", "emergency", {
   "en":"stiff neck and he can't stand the light","es":"tiene el cuello rígido y le molesta la luz",
   "fr":"la nuque raide et la lumière le gêne","de":"steifer Nacken und Licht stört ihn",
   "ru":"ригидность затылка и светобоязнь","ar":"تيبس في الرقبة وحساسية للضوء",
