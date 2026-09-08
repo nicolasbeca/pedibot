@@ -182,6 +182,12 @@ rules:
   - bekommt kaum luft
   - kriegt kaum luft
   - kriegt keine luft
+  - (bekommt|kriegt) (nur )?schlecht luft
+  - (bekommt|kriegt) schwer luft
+  - schnappt nach luft
+  - atembeschwerden
+  - probleme beim atmen
+  - schwierigkeiten beim atmen
   - atmet schwer
   - schwer am atmen
   - einziehungen
@@ -213,7 +219,8 @@ rules:
   - تلهث
   - تشهق
   - n[aã]o consegue respirar
-  - dificuldade grave para respirar
+  - dificuldade (grave |s[ée]ria )?(para |de |em )?respirar
+  - n[aã]o (est[aá] )?conseguindo respirar
   - puxando as costelas
   - afundando as costelas
   - para de respirar
@@ -228,6 +235,10 @@ rules:
   - नीला पड़
   - साँस रुक
   - saans nahi le
+  - साँस लेने में (दिक्कत|तकलीफ|तकलीफ़|परेशानी|मुश्किल)
+  - सांस लेने में (दिक्कत|तकलीफ|तकलीफ़|परेशानी|मुश्किल)
+  - saans lene mein (dikkat|takleef|pareshani|mushkil)
+  - sans lene mein (dikkat|takleef|pareshani|mushkil)
   - sans nahi le
   - neela pad
   - pasliyan dhas
