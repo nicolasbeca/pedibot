@@ -187,7 +187,8 @@ Lo retirado es la insignia de las dos portadas, por dos motivos: pone una marca 
 | D4 | Instalar Node/Astro para la web real. | F3 |
 | D5 | ~~Dominio~~ pedibot.xyz comprado; DNS Cloudflare → apuntar al VPS en F4. | F4 |
 | D6 | Sin remoto git: 234 commits en un solo disco, sin copia del historial fuera de él. | alta |
-| D7 | El juez de fidelidad (`eval --llm --judge`) nunca se ha ejecutado: `judged: 0`. | alta |
+| ~~D7~~ | ~~El juez de fidelidad nunca se ha ejecutado~~ — **ejecutado el 8-sep-2026**: 99 juzgadas, **fidelidad 0,788**, `citation_validity` 0,99, coste 0,06 $. Ya hay línea base. | ✅ medida |
+| D10 | **Fidelidad 0,788, y 17 de los 21 fallos son alarmas.** Las reglas 2/3 del prompt (cita y organismo obligatorios, con el verificador tirando la respuesta) contradicen la 10 (sin cita si nada lo respalda), y el modelo resuelve inventando la atribución de NUESTRA orden de urgencia. Decisión pendiente: ver L59. | **la más alta** |
 | D8 | Producción corre el código del 7-sep; los arreglos del 8-sep están sin desplegar. | alta |
 | D9 | Las etiquetas de forma de las MARCAS siguen como las escribe el fabricante (decidido: no se traducen); las genéricas ya van en los ocho idiomas. | cerrada por decisión |
 
@@ -201,10 +202,9 @@ abierto, en orden de consecuencia:
    están en el PC y **no en el VPS**: `make web-build && bash ops/deploy.sh 46.225.74.13`.
 2. **Un remoto privado.** 234 commits viven en un solo disco y no hay copia del historial fuera
    de él (D-02 sigue sin decidir desde el 24-ago). Es lo único irreversible de esta lista.
-3. **`pedibot eval --llm --judge`.** El último informe con modelo real es del 26-ago y trae
-   `"judged": 0, "faithful_rate": null`: el juez de fidelidad **no ha llegado a ejecutarse nunca**.
-   Desde entonces se han tocado prompts, cinco enrutadores, el guardia de dosis y el triaje.
-   Cuesta unos 0,05 $.
+3. **Decidir de quién es la orden de urgencia** (D10 / L59). Es el número que mide la promesa
+   central del producto —«cada afirmación lleva referencia»— y está en 0,788. Re-medir cuesta
+   0,06 $ y unos 35 min.
 4. **Diez padres.** De las 128 respuestas de la base, 121 son `test` del operador: web 1,
    Telegram 2, agente 2. El cuello de botella no es el código.
 5. Las tres guías que solo existen en inglés (asma, ibuprofeno, paracetamol): o se traducen a los
@@ -214,3 +214,4 @@ abierto, en orden de consecuencia:
 
 - 2026-08-24 — Arranque v2: docs, catálogo, ingesta completa, triaje, calculadora, motor con verificador, CLI, 80 tests, boceto web v1.
 - 2026-09-08 — **Revisión completa y depuración.** Seis fallos arreglados, tres de ellos de seguridad clínica: los 28 patrones de la regla del lactante con fiebre no se evaluaban nunca (cinco de ocho idiomas se quedaban en rutina al decir «lactante», «Säugling», «младенец», «رضيع»); la calculadora daba la dosis completa de ibuprofeno a un bebé de dos meses con el aviso debajo; los avisos salían como identificadores internos del código; la lista de botes salía en castellano en los ocho idiomas; `/api/photo` no pasaba el idioma y devolvía la frase de emergencia en inglés; la página de respuesta compartida estaba en dos idiomas y sin dirección de escritura para el árabe. Tres candados nuevos (`test_infant_words.py`, `test_dose_refer.py`, y la página compartida en `test_i18n_parity.py`). 1.302 → 1.357 tests. Golden set intacto: 111/111 en las seis métricas.
+- 2026-09-08 (tarde) — **Segunda pasada.** Telegram perdía el idioma elegido en cada reinicio; `/stop` y `/country` contestaban en dos idiomas. Y el hallazgo de fondo: el evaluador construía un motor sin tres de los cinco enrutadores, y el conjunto dorado no tenía ni un caso de vacunas, así que `routing: 1.0` medía diez casos de 111 — al arreglarlo saltó que «in the UK» y «in the US» no se leían como país. 118 casos, 1.396 tests. Primera medición del juez de fidelidad: **0,788** (D10).
