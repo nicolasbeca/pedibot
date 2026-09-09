@@ -385,7 +385,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
 
     @app.post("/api/photo")
     def photo(body: PhotoIn, request: Request) -> dict[str, object]:
-        from pedibot.bot.photo import SOURCE, VISION_SYSTEM, interpret, parse
+        from pedibot.bot.photo import SOURCE, VISION_SYSTEM, interpret, parse, signs_seen
         from pedibot.settings import get_settings
 
         s = get_settings()
@@ -437,6 +437,12 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 source=client_source(request),
             )
         )
+        # La foto queda escrita en la conversación, con lo que se vio. Sin esto, el mensaje
+        # siguiente del padre —«no desaparecen cuando aprieto», que es la respuesta a lo que le
+        # acabamos de pedir— llegaba sin contexto, y solo es rutina.
+        vistos = signs_seen(d, body.lang)
+        ops.add_turn(session, "user", "[foto] " + vistos if vistos else "[foto]")
+        ops.add_turn(session, "assistant", text)
         return {"level": level, "text": text, "signs": d, "source": SOURCE, "session": session}
 
     @app.post("/api/agent/ask")

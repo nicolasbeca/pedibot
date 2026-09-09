@@ -55,6 +55,33 @@ def parse(raw: str) -> dict[str, str]:
     }
 
 
+def signs_seen(d: dict[str, str], lang: str) -> str:
+    """Lo que la foto vio, en palabras y en el idioma del lector.
+
+    Se usa para dejar la foto escrita en la conversación. Hasta el 9-sep-2026 la foto no entraba
+    en el historial, y eso rompía justo el caso para el que existe: el bot ve unas manchas, le
+    pide al padre que haga la prueba del vaso —que es lo correcto, porque una imagen no puede
+    saber si la mancha desaparece al apretar— y cuando el padre contesta «no desaparecen cuando
+    aprieto», ese mensaje llega solo. Solo, es rutina.
+
+    El producto pedía hacer la prueba del meningococo y luego no escuchaba la respuesta.
+
+    No se inventa nada: se escribe el signo que el modelo de visión dijo haber visto, con las
+    mismas palabras que ya se le enseñan al padre en la respuesta.
+    """
+    T = tool_strings(lang)
+    vistos = [
+        T[clave]
+        for campo, clave in (
+            ("petechiae", "photo_sign_petechiae"),
+            ("cyanosis", "photo_sign_cyanosis"),
+            ("swelling", "photo_sign_swelling"),
+        )
+        if d.get(campo) == "yes"
+    ]
+    return ", ".join(vistos)
+
+
 def interpret(d: dict[str, str], lang: str, emergency_number: str) -> tuple[str, str]:
     T = tool_strings(lang)
     if not d or d.get("quality") == "poor":
