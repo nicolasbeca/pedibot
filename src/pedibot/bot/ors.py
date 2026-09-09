@@ -22,7 +22,7 @@ SOURCES = {
 
 @dataclass(frozen=True)
 class OrsAdvice:
-    age_band: str  # under_1_month | infant | child | vomiting
+    age_band: str  # under_1_month | infant | child | vomiting | unknown
     lines: list[str]
     warnings: list[str]
     sources: list[str]
@@ -41,7 +41,21 @@ def advise(age_months: float | None, vomiting: bool = False, lang: str = "en") -
     lines: list[str] = []
     if vomiting:
         lines.append(T["ors_after_vomit"])
-    if age_months is not None and age_months < 12:
+    if age_months is None:
+        # Sin edad NO se elige banda. Hasta el 9-sep-2026 se caía en la del niño mayor —«unos
+        # 200 ml de suero por cada deposición»— que es la cantidad de un niño de más de un año,
+        # dicha a alguien que no ha contado la edad y podría tener un bebé de dos meses. Y de
+        # paso se perdía el aviso de los menores de dos años, justo con los más vulnerables.
+        #
+        # Se dan las dos indicaciones: las dos se nombran solas («Lactante mayor de 1 mes…»,
+        # «Niño a partir de 1 año…»), así que el padre, que sí sabe la edad, coge la suya. Es
+        # más texto y es el único reparto que no puede dar de más a un lactante.
+        band = "unknown"
+        lines.append(T["ors_infant"])
+        lines.append(T["ors_child"])
+        if T["ors_under_2y"] not in warnings:
+            warnings.append(T["ors_under_2y"])
+    elif age_months < 12:
         band = "infant"
         lines.append(T["ors_infant"])
     else:

@@ -87,3 +87,59 @@ def test_message_flow_and_feedback(front):
     assert text2
     assert len(front.ops.history(front.session_for(7))) == 4
     assert front.session_for(7) != front.session_for(8)
+
+
+# ---------------------------------------------------------------------------------------------
+# Sin edad no se elige banda (9-sep-2026)
+#
+# `age_months` es opcional en `/api/ors`, y sin él se caía en la rama del niño mayor: «unos
+# 200 ml de suero por cada deposición diarreica», que es la cantidad de un niño de más de un año,
+# dicha a alguien que no ha contado la edad y podría tener un bebé de dos meses.
+#
+# Y de paso se perdía el aviso de los menores de dos años — justo con los más vulnerables, el
+# único grupo al que ese aviso va dirigido.
+#
+# Ahora se dan las DOS indicaciones. Las dos se nombran solas («Lactante mayor de 1 mes…», «Niño
+# a partir de 1 año…»), así que el padre, que sí sabe la edad, coge la suya. Es más texto, y es
+# el único reparto que no puede darle de más a un lactante.
+
+
+def test_without_an_age_both_amounts_are_given() -> None:
+    from pedibot.bot.ors import advise
+
+    a = advise(None, False, "es")
+    assert a.age_band == "unknown"
+    texto = " ".join(a.lines)
+    assert "Lactante" in texto, "falta la indicación del lactante"
+    assert "200 ml" in texto, "falta la indicación del niño mayor"
+
+
+def test_without_an_age_the_under_two_warning_is_kept() -> None:
+    from pedibot.bot.ors import advise
+
+    a = advise(None, False, "es")
+    assert any("2 años" in w for w in a.warnings), (
+        "sin edad se perdía el aviso de los menores de dos años, que son a quienes va dirigido"
+    )
+
+
+def test_an_age_that_is_known_still_picks_one_band() -> None:
+    """La otra mitad: cuando la edad SÍ está, se da una sola indicación y es la suya."""
+    from pedibot.bot.ors import advise
+
+    lactante = advise(3, False, "es")
+    assert lactante.age_band == "infant"
+    assert "200 ml" not in " ".join(lactante.lines), "a un lactante se le da la cantidad del niño"
+
+    mayor = advise(18, False, "es")
+    assert mayor.age_band == "child"
+    assert "Lactante" not in " ".join(mayor.lines)
+
+
+def test_a_newborn_gets_no_amount_at_all() -> None:
+    """Menos de un mes: no hay cantidad que dar, hay que verlo un médico hoy."""
+    from pedibot.bot.ors import advise
+
+    a = advise(0.5, True, "es")
+    assert a.refer is True and a.age_band == "under_1_month"
+    assert "200 ml" not in " ".join(a.lines) and "5–10 ml" not in " ".join(a.lines)
