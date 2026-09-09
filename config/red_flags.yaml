@@ -166,6 +166,9 @@ rules:
   - respira con dificultad
   - problemas? para respirar
   - respira cada vez (peor|m[aá]s deprisa|m[aá]s r[aá]pido)
+  - (respira|respirando|respiraci[oó]n).{0,25}cada vez (peor|m[aá]s deprisa|m[aá]s r[aá]pid)
+  - cada vez (respira|respirando).{0,12}(peor|m[aá]s deprisa|m[aá]s r[aá]pid)
+  - le cuesta cada vez m[aá]s respirar
   - cada vez le cuesta m[aá]s respirar
   - se le marcan las costillas
   - se le marcan.{0,15}las costillas
@@ -215,6 +218,7 @@ rules:
   - difficult[ée]s [aà] respirer
   - respire de plus en plus (mal|vite)
   - respiration devient plus rapide
+  - respiration.{0,25}de plus en plus (mal|difficile|rapide)
   - ne peut pas (tousser, )?(parler|respirer)
   - ne peut ni .{0,20}ni respirer
   - probl[eè]mes? (pour|[aà]) respirer
@@ -243,6 +247,9 @@ rules:
   - atemprobleme
   - atemstörung
   - immer schneller atmet
+  - atmet immer (schlechter|schwerer|schwieriger)
+  - atmung wird immer (schlechter|schwerer)
+  - immer (schlechter|schwerer) atmet
   - atmet immer schneller
   - schwierigkeiten beim atmen
   - atmet schwer
@@ -265,6 +272,8 @@ rules:
   - затрудн\w+ дыхан
   - дыхание затрудн
   - дыхание становится (хуже|тяжелее|чаще)
+  - дыш\w* (всё |все )?хуже
+  - (всё|все) хуже дыш
   - всё более част
   - пауз\w* в дыхании
   - проблем\w* с дыхан
@@ -299,6 +308,8 @@ rules:
   - dificuldade (grave |s[ée]ria )?(para |de |em )?respirar
   - n[aã]o (est[aá] )?conseguindo respirar
   - respirar cada vez (pior|mais r[aá]pido)
+  - (respira|respirando|respira[cç][aã]o).{0,25}cada vez (pior|mais r[aá]pid)
+  - cada vez (respira|respirando).{0,12}(pior|mais r[aá]pid)
   - respira[cç][aã]o cada vez (pior|mais r[aá]pida)
   - respira com dificuldade
   - pausas? na respira[cç][aã]o

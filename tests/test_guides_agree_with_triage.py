@@ -167,6 +167,43 @@ _PRISA_ES_URGENTE = [
 ]
 
 
+#: El empeoramiento progresivo, que es lo que separa la urgencia de la emergencia: no es que
+#: respire deprisa, es que respire cada vez peor. Los patrones de esta tarde salieron de las
+#: guías, y una guía escribe en infinitivo —«Respirar cada vez pior»— mientras que un padre
+#: escribe en gerundio y cambia el orden. Verificando en producción, «meu filho está respirando
+#: cada vez pior» salió rutina, y al barrer las ocho lenguas fallaban siete de dieciséis.
+#:
+#: Las dos gramáticas van juntas en la lista a propósito: la guía y el padre dicen lo mismo, y
+#: escribir los patrones leyendo sólo a una de las dos es cómo se llegó hasta aquí.
+_VA_A_PEOR = [
+    ("es", "respira cada vez peor"),
+    ("es", "está respirando cada vez peor"),
+    ("es", "cada vez respira peor"),
+    ("es", "le cuesta cada vez más respirar"),
+    ("pt", "está respirando cada vez pior"),
+    ("pt", "respira cada vez pior"),
+    ("pt", "cada vez respira pior"),
+    ("en", "he is breathing worse and worse"),
+    ("en", "his breathing is getting worse"),
+    ("fr", "il respire de plus en plus mal"),
+    ("fr", "sa respiration est de plus en plus difficile"),
+    ("de", "es atmet immer schlechter"),
+    ("de", "die Atmung wird immer schlechter"),
+    ("ru", "дышит всё хуже"),
+    ("ru", "дыхание становится хуже"),
+    ("ar", "يتنفس بشكل أسوأ"),
+    ("hi", "सांस की तकलीफ बढ़ रही है"),
+]
+
+
+@pytest.mark.parametrize(("lang", "texto"), _VA_A_PEOR)
+def test_respirar_cada_vez_peor_es_emergencia_en_las_ocho_lenguas(
+    triage: Triage, lang: str, texto: str
+) -> None:
+    nivel = triage.assess(texto).level
+    assert nivel == "emergency", f"[{lang}] «{texto}» → {nivel}"
+
+
 @pytest.mark.parametrize(("lang", "glosa", "texto"), _NO_ES_ALARMA)
 def test_ensanchar_el_color_no_convierte_un_moraton_en_emergencia(
     triage: Triage, lang: str, glosa: str, texto: str
