@@ -15,6 +15,19 @@ rules:
   - no reacciona
   - inconsciente
   - no se despierta
+  - (ausencia|falta) de (respuesta|reacci[oó]n)(?!.{0,30}(tratamiento|antibi[oó]tic|medicaci|f[aá]rmac|jarabe))
+  - (lack|absence) of (response|responsiveness|reaction)(?!.{0,30}(treatment|antibiotic|medicine|medication))
+  - (no|not) respons(ive|e) (as usual|to)
+  - unresponsiveness
+  - absence de r[ée]action
+  - aucune r[ée]action
+  - keine reaktion
+  - bewusstlosigkeit
+  - (отсутствие|нет) (реакции|отклика|сознания)
+  - عدم (الاستجابة|استجاب)
+  - aus[êe]ncia de (resposta|rea[cç][aã]o)
+  - n[aã]o h[aá] (resposta|rea[cç][aã]o)
+  - (प्रतिक्रिया|होश).{0,15}(का अभाव|नहीं)
   - p[ée]rdida (de|del) (conocimiento|conciencia)
   - (ha )?perdi[oó] (el conocimiento|la conciencia)
   - (ha )?perdido (el conocimiento|la conciencia)
@@ -2045,6 +2058,15 @@ rules:
   reason_hi: "निगल नहीं पा रहा और लार बह रही है: साँस का रास्ता ख़तरे में हो सकता है"
   patterns:
   - no (puede|consigue) tragar
+  - incapacidad (para|de) tragar
+  - imposibilidad de tragar
+  - inability to swallow
+  - incapacit[ée] [aà] avaler
+  - unf[äa]higkeit zu schlucken
+  - (невозможность|неспособность) глота
+  - عدم القدرة على البلع
+  - incapacidade (de|para) engolir
+  - निगलने में असमर्थ
   - (no puede|no consigue|le cuesta|dificultad para) trag\w*.{0,50}(babe|saliva|lengua fuera)
   - (babe|saliva)\w*.{0,50}(no puede tragar|no traga|dificultad para tragar)
   - babea much[oi]sim[oa].{0,40}(no traga|no puede tragar)
@@ -2189,6 +2211,35 @@ rules:
   - sangramento come[cç]ou.{0,35}(pancada|batida).{0,20}cabe[cç]a
   - (नाक|कान).{0,35}(से|मे[ंँ]).{0,20}(ख़ून|खून|साफ़ तरल|साफ तरल)
   - सिर (पर|में) चोट.{0,45}(ख़ून|खून).{0,20}(नाक|कान)
+
+- id: cold_extremities_with_fever
+  level: urgent
+  source: seup_fiebre
+  reason_es: "Manos y pies fríos en un niño con fiebre: puede ser mala circulación, hay que verlo"
+  reason_en: "Cold hands and feet in a child with fever: it may be poor circulation, get it checked"
+  reason_fr: "Mains et pieds froids chez un enfant fiévreux : circulation possiblement mauvaise, à faire voir"
+  reason_de: "Kalte Hände und Füße bei Fieber: kann schlechte Durchblutung sein, ansehen lassen"
+  reason_ru: "Холодные руки и ноги при температуре: возможно плохое кровообращение, нужен осмотр"
+  reason_ar: "برودة اليدين والقدمين مع الحمى: قد تكون دورة دموية سيئة، يحتاج فحصا"
+  reason_pt: "Mãos e pés frios em criança com febre: pode ser má circulação, precisa ser visto"
+  reason_hi: "बुखार में हाथ-पैर ठंडे: ख़ून का दौरा ठीक न होने का संकेत, दिखाना चाहिए"
+  patterns:
+  - ((manos|pies|manitas|extremidades)[^.]{0,25}(muy )?fr[ií](os|as))[^.]{0,70}(fiebre|d[ée]cimas|temperatura|3[89] ?°?)
+  - (fiebre|d[ée]cimas|temperatura|3[89] ?°?)[^.]{0,70}((manos|pies|manitas|extremidades)[^.]{0,25}(muy )?fr[ií](os|as))
+  - ((hands|feet|extremities)[^.]{0,25}(are )?(very |ice )?cold|(very |ice )?cold (hands|feet|extremities))[^.]{0,70}(fever|temperature|3[89] ?°?|10[0-4] ?°?)
+  - (fever|temperature|3[89] ?°?|10[0-4] ?°?)[^.]{0,70}((hands|feet|extremities)[^.]{0,25}(are )?(very |ice )?cold|(very |ice )?cold (hands|feet|extremities))
+  - ((mains|pieds|extr[ée]mit[ée]s)[^.]{0,25}(tr[eè]s )?froid)[^.]{0,70}(fi[eè]vre|temp[ée]rature|3[89] ?°?)
+  - (fi[eè]vre|temp[ée]rature|3[89] ?°?)[^.]{0,70}((mains|pieds|extr[ée]mit[ée]s)[^.]{0,25}(tr[eè]s )?froid)
+  - ((h[äa]nde|f[üu][sß]e)[^.]{0,25}(sehr )?kalt|(sehr )?kalte (h[äa]nde|f[üu][sß]e))[^.]{0,70}(fieber|temperatur|3[89] ?°?)
+  - (fieber|temperatur|3[89] ?°?)[^.]{0,70}((h[äa]nde|f[üu][sß]e)[^.]{0,25}(sehr )?kalt|(sehr )?kalte (h[äa]nde|f[üu][sß]e))
+  - ((руки|ноги|ручки|ножки|конечност)\w*[^.]{0,25}холодн|холодн\w*[^.]{0,20}(руки|ноги))[^.]{0,70}(температур|жар|лихорад|3[89])
+  - (температур|жар|лихорад|3[89])[^.]{0,70}((руки|ноги|ручки|ножки|конечност)\w*[^.]{0,25}холодн|холодн\w*[^.]{0,20}(руки|ноги))
+  - (برودة[^.]{0,25}(اليدين|القدمين|الأطراف)|(اليدين|القدمين)[^.]{0,20}بارد)[^.]{0,70}(حمى|حرار|سخون|3[89])
+  - (حمى|حرار|سخون|3[89])[^.]{0,70}(برودة[^.]{0,25}(اليدين|القدمين|الأطراف)|(اليدين|القدمين)[^.]{0,20}بارد)
+  - ((m[aã]os|p[ée]s|extremidades)[^.]{0,25}(muito )?fri(o|a)s|fri(o|a)s[^.]{0,20}(m[aã]os|p[ée]s))[^.]{0,70}(febre|temperatura|3[89] ?°?)
+  - (febre|temperatura|3[89] ?°?)[^.]{0,70}((m[aã]os|p[ée]s|extremidades)[^.]{0,25}(muito )?fri(o|a)s|fri(o|a)s[^.]{0,20}(m[aã]os|p[ée]s))
+  - ((हाथ|पैर)[^.]{0,25}ठंडे|ठंडे (हाथ|पैर))[^.]{0,70}(बुख|तापमान|3[89])
+  - (बुख|तापमान|3[89])[^.]{0,70}((हाथ|पैर)[^.]{0,25}ठंडे|ठंडे (हाथ|पैर))
 
 context:
   fever:
