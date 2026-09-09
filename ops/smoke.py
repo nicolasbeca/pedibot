@@ -15,6 +15,7 @@ Sale con código 1 si algo falla, para poder encadenarlo detrás de `deploy.sh`.
 from __future__ import annotations
 
 import argparse
+import time
 
 import httpx
 
@@ -49,14 +50,25 @@ def main() -> int:
     base, fallos = a.base.rstrip("/"), []
 
     def pide(metodo: str, ruta: str, **kw: object) -> tuple[bool, object, object]:
-        try:
-            r = httpx.request(metodo, base + ruta, headers=CABECERAS, timeout=90, **kw)  # type: ignore[arg-type]
-            if r.status_code != 200:
-                return False, r.status_code, None
-            tipo = r.headers.get("content-type", "")
-            return True, 200, r.json() if tipo.startswith("application/json") else r.text
-        except Exception as e:  # noqa: BLE001 — cualquier fallo de red es un fallo del sitio
-            return False, type(e).__name__, None
+        # Un reintento para los fallos de RED, no para los códigos de error. Esto se lanza
+        # inmediatamente después de reiniciar el API, y la primera petición se cruza a veces con
+        # el arranque: el 9-sep-2026 dio un `RemoteProtocolError` en un idioma suelto que a la
+        # segunda estaba perfecto. Un comprobador que avisa en falso se acaba ignorando, que es
+        # justo lo que no puede pasarle a éste. Un 500 o un 404 NO se reintentan: eso no es un
+        # hipo, es el fallo que se busca.
+        ultimo: object = "?"
+        for intento in (1, 2):
+            try:
+                r = httpx.request(metodo, base + ruta, headers=CABECERAS, timeout=90, **kw)  # type: ignore[arg-type]
+                if r.status_code != 200:
+                    return False, r.status_code, None
+                tipo = r.headers.get("content-type", "")
+                return True, 200, r.json() if tipo.startswith("application/json") else r.text
+            except Exception as e:  # noqa: BLE001 — un fallo de red es un fallo del sitio
+                ultimo = type(e).__name__
+                if intento == 1:
+                    time.sleep(2)
+        return False, ultimo, None
 
     ok, code, salud = pide("GET", "/api/health")
     print(f"salud: {salud if ok else code}")
