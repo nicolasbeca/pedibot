@@ -115,6 +115,49 @@ COUNTRY_SET = {
 }
 
 
+#: Los tres textos que vivían dentro de `run_polling`, en inglés y solo en inglés. Están
+#: fuera de `handle_command`, que es donde se miró al traducir `/stop` y `/country`: un
+#: texto suelto en la función del transporte no se parece a un texto de producto, y por eso
+#: no se revisa. El de la avería es el que más duele — le dice al padre que llame a
+#: urgencias, y se lo decía en inglés a quien había puesto `/lang de` (9-sep-2026).
+THANKS = {
+    "en": "Thanks!",
+    "es": "¡Gracias!",
+    "fr": "Merci !",
+    "de": "Danke!",
+    "ru": "Спасибо!",
+    "ar": "شكرا!",
+    "pt": "Obrigado!",
+    "hi": "धन्यवाद!",
+}
+
+
+#: El acuse cuando el 👍 no encuentra su respuesta.
+NOT_FOUND = {
+    "en": "Not found",
+    "es": "No encontrado",
+    "fr": "Introuvable",
+    "de": "Nicht gefunden",
+    "ru": "Не найдено",
+    "ar": "غير موجود",
+    "pt": "Não encontrado",
+    "hi": "नहीं मिला",
+}
+
+
+#: La avería nuestra, con el número de emergencias al lado.
+BROKEN = {
+    "en": "Something went wrong on our side. If this is urgent, call your local emergency number.",
+    "es": "Algo ha fallado por nuestra parte. Si es urgente, llama al número de emergencias de tu país.",
+    "fr": "Quelque chose a échoué de notre côté. Si c'est urgent, appelez le numéro d'urgence de votre pays.",
+    "de": "Bei uns ist etwas schiefgelaufen. Wenn es dringend ist, rufen Sie Ihre örtliche Notrufnummer an.",
+    "ru": "У нас что-то сломалось. Если это срочно, звоните по номеру экстренной службы вашей страны.",
+    "ar": "حدث خطأ من جانبنا. إذا كان الأمر عاجلا، فاتصل برقم الطوارئ في بلدك.",
+    "pt": "Algo falhou do nosso lado. Se for urgente, ligue para o número de emergência do seu país.",
+    "hi": "हमारी तरफ़ से कुछ गड़बड़ हुई है। अगर यह ज़रूरी है, तो अपने देश के आपातकालीन नंबर पर कॉल करें।",
+}
+
+
 @dataclass
 class ChatPrefs:
     country: str | None = None
@@ -255,9 +298,8 @@ def run_polling(front: TelegramFront, token: str) -> None:
         try:
             text, answer_id = front.handle_message(chat_id, update.message.text)
         except Exception:  # noqa: BLE001
-            await update.message.reply_text(
-                "Something went wrong on our side. If this is urgent, call your local emergency number."
-            )
+            lg = front.prefs_for(chat_id).lang or "en"
+            await update.message.reply_text(BROKEN.get(lg, BROKEN["en"]))
             return
         kb = InlineKeyboardMarkup(
             [
@@ -280,7 +322,8 @@ def run_polling(front: TelegramFront, token: str) -> None:
             return
         _, aid, val = q.data.split(":")
         ok = front.feedback(update.effective_chat.id, int(aid), int(val))
-        await q.answer("Thanks!" if ok else "Not found")
+        lg = front.prefs_for(update.effective_chat.id).lang or "en"
+        await q.answer(THANKS.get(lg, THANKS["en"]) if ok else NOT_FOUND.get(lg, NOT_FOUND["en"]))
 
     app = Application.builder().token(token).build()
     app.add_handler(CommandHandler(["start", "help", "country", "lang", "stop"], on_command))

@@ -108,3 +108,21 @@ def test_everything_the_bot_says_on_its_own_is_written_in_every_language(lang: s
 @pytest.mark.parametrize("lang", IDIOMAS)
 def test_the_country_reply_names_the_country(lang: str) -> None:
     assert "PT" in COUNTRY_SET[lang].format(c="PT")
+
+
+def test_everything_the_transport_says_is_also_written_in_every_language() -> None:
+    """Los textos que viven dentro de `run_polling` en vez de en `handle_command` (9-sep-2026).
+
+    Un texto suelto en la función del transporte no se parece a un texto de producto, y por eso
+    no se revisó cuando se tradujeron `/stop` y `/country`. Eran tres, y el que más duele es el
+    de la avería: le dice al padre que llame a urgencias, y se lo decía en inglés a quien había
+    puesto `/lang de`.
+    """
+    from pedibot.telegram_bot import BROKEN, NOT_FOUND, THANKS
+
+    for nombre, tabla in (("THANKS", THANKS), ("NOT_FOUND", NOT_FOUND), ("BROKEN", BROKEN)):
+        for lang in IDIOMAS:
+            assert str(tabla.get(lang, "")).strip(), f"{nombre} no está escrito en {lang}"
+    # el de la avería lleva el número de emergencias al lado, en todos
+    for lang in IDIOMAS:
+        assert len(BROKEN[lang]) > 40, f"BROKEN[{lang}] parece recortado"
