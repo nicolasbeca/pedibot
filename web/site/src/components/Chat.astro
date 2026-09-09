@@ -144,7 +144,10 @@ const ages = [['', s.not_set], ...s.chat_ages];
     try {
       const r = await fetch('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ question: context(q), country: countrySel.value || null, lang, session, mode }) });
       if (r.status === 429) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_rate; return; }
-      if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_server; return; }
+      // «espera un poco», «ahora no puedo» y «se nos ha roto algo» piden cosas distintas del
+      // padre, y las tres se contestaban con la tercera. Un 429 es un límite nuestro, no una
+      // avería: decirle «hemos fallado» lo deja reintentando, que es lo que alarga el bloqueo.
+      if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + (r.status === 429 ? S.err_busy : r.status === 503 ? S.err_unavailable : S.err_server); return; }
       const j = await r.json(); j.question = q; session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
       t.innerHTML = render(j);
     } catch (e) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_net; }
@@ -185,7 +188,10 @@ const ages = [['', s.not_set], ...s.chat_ages];
     const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
     try {
       const r = await fetch('/api/photo', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ image_b64: b64, mime: 'image/jpeg', lang, country: countrySel.value || null, session }) });
-      if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + (r.status === 503 ? S.err_server : S.err_server); return; }
+      // el ternario que había aquí tenía las DOS ramas iguales: alguien quiso distinguir el
+      // 503 y no terminó. La lectura de fotos se apaga sola sin saldo, así que ese caso es el
+      // más probable de los tres.
+      if (!r.ok) { t.innerHTML = '<div class="who">pedibot</div>' + (r.status === 429 ? S.err_busy : r.status === 503 ? S.err_unavailable : S.err_server); return; }
       const j = await r.json(); session = j.session; try { localStorage.setItem('pedibot_session', session!); } catch (e) {}
       let hh = '<div class="who">pedibot</div>';
       if (j.level === 'emergency' || j.level === 'urgent') hh += `<div class="banner ${j.level}" role="alert">🚨 ${esc(j.text.split('. ')[0])}.</div>`;

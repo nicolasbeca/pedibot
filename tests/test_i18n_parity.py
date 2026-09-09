@@ -536,3 +536,32 @@ def test_the_shared_answer_page_is_written_in_every_language() -> None:
     faltan = sorted(set(SUPPORTED_LANGS) - escritos)
     assert not faltan, f"la página compartida no está escrita en: {faltan}"
     assert 'dir="{direction}"' in fuente, "la página compartida no declara dirección de escritura"
+
+
+def test_the_chat_tells_the_three_failures_apart() -> None:
+    """«Espera un poco», «ahora no puedo» y «se nos ha roto algo» piden cosas distintas del
+    padre, y las tres se contestaban con la tercera (9-sep-2026).
+
+    Un 429 es un límite que ponemos nosotros, no una avería: decirle «hemos fallado» lo deja
+    reintentando, que es justo lo que alarga el bloqueo. Y en la rama de la foto había un
+    ternario con las DOS ramas iguales —`r.status === 503 ? S.err_server : S.err_server`—,
+    señal de que alguien quiso distinguir el 503 y no terminó.
+    """
+    chat = (ROOT / "web" / "site" / "src" / "components" / "Chat.astro").read_text(
+        encoding="utf-8"
+    )
+    assert "S.err_server : S.err_server" not in chat, "vuelve a haber un ternario con dos ramas iguales"
+    assert chat.count("S.err_busy") >= 2, "el límite de peticiones no se distingue"
+    assert chat.count("S.err_unavailable") >= 2, "el «ahora no puedo» no se distingue"
+
+
+def test_every_error_message_is_written_in_every_language() -> None:
+    """Los cuatro estados de fallo, en los ocho. Son los textos que menos se releen y los que
+    más falta hacen: los tres llevan al lado el «si es urgente, llama a urgencias»."""
+    import re as _re
+
+    texto = I18N.read_text(encoding="utf-8")
+    n = len(langs())
+    for clave in ("err_server", "err_net", "err_busy", "err_unavailable"):
+        encontrados = _re.findall(rf"^\s*{clave}: ", texto, _re.M)
+        assert len(encontrados) == n, f"{clave} está en {len(encontrados)} idiomas de {n}"
