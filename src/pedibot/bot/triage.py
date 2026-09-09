@@ -367,6 +367,20 @@ CORTES = (
 )
 
 
+#: Las comas cierran la oración a la que pertenece la negación, igual que un punto. «síntomas que
+#: antes no tenía, como problemas para respirar» afirma la segunda mitad (9-sep-2026).
+COMAS = (",", "،", "؛", "、")
+
+#: La salvedad que hace segura la regla de arriba: una enumeración negada reparte UNA negación
+#: entre varios elementos —«no tiene fiebre, tos ni dificultad para respirar»— y ahí la coma no
+#: cierra nada. Se reconoce porque el trozo que sigue a la coma lleva una conjunción.
+CONJUNCIONES = re.compile(
+    r"\b(?:y|e|o|u|ni|and|or|nor|et|ou|und|oder|noch|nem|"
+    r"и|или|ни|أو|و|और|या)\b",
+    re.I | re.U,
+)
+
+
 def _negada(texto: str, inicio: int, fin: int) -> bool:
     """¿Hay una negación pegada justo antes de esta coincidencia?
 
@@ -381,6 +395,13 @@ def _negada(texto: str, inicio: int, fin: int) -> bool:
     for corte in CORTES:
         if corte in antes:
             antes = antes.rsplit(corte, 1)[1]
+    # La coma cierra la oración salvo que lo que siga sea otro elemento de la misma enumeración
+    # negada, y eso lo delata una conjunción: «no tiene fiebre, tos NI dificultad para respirar».
+    for coma in COMAS:
+        if coma in antes:
+            cola = antes.rsplit(coma, 1)[1]
+            if not CONJUNCIONES.search(cola):
+                antes = cola
     if NEGADORES.search(antes):
         # salvo que la propia coincidencia ya empiece negada
         return not NEGADORES.search(texto[inicio:fin][:14] + " ")

@@ -15,6 +15,11 @@ rules:
   - no reacciona
   - inconsciente
   - no se despierta
+  - p[ée]rdida (de|del) (conocimiento|conciencia)
+  - (ha )?perdi[oó] (el conocimiento|la conciencia)
+  - (ha )?perdido (el conocimiento|la conciencia)
+  - tarda en recuperar (el conocimiento|la conciencia)
+  - no (recupera|recobra) el conocimiento
   - unresponsive
   - not responding
   - won'?t wake
@@ -27,6 +32,9 @@ rules:
   - inconscient
   - ne se r[ée]veille pas
   - perte de connaissance
+  - perd (connaissance|conscience)
+  - a perdu connaissance
+  - ne reprend pas connaissance
   - '[ée]vanoui'
   - reagiert nicht
   - nicht ansprechbar
@@ -52,12 +60,16 @@ rules:
   - لا تفيق
   - لا تتجاوب
   - غائبة عن الوعي
+  - فقد.{0,15}وعي
+  - فقدت.{0,15}وعي
   - مغمى عليها
   - n[aã]o responde
   - n[aã]o reage
   - inconsciente
   - n[aã]o acorda
   - desmaiou
+  - perda (de|da) (consci[êe]ncia|sentidos)
+  - perdeu (a consci[êe]ncia|os sentidos)
   - apagou
   - बेहोश
   - जवाब नहीं दे
@@ -65,6 +77,7 @@ rules:
   - हिल नहीं रहा
   - pratikriya nahi de
   - होश नहीं
+  - होश खो
   - जाग नहीं
   - behosh
   - hosh nahi
@@ -149,24 +162,48 @@ rules:
   - no puede respirar
   - le cuesta (mucho )?respirar
   - dificultad (grave |seria )?para respirar
+  - dificultades para respirar
+  - respira con dificultad
+  - problemas? para respirar
+  - respira cada vez (peor|m[aá]s deprisa|m[aá]s r[aá]pido)
+  - cada vez le cuesta m[aá]s respirar
   - se le marcan las costillas
   - se le marcan.{0,15}las costillas
   - se le hunden.{0,15}las costillas
   - (se le )?(marcan|hunden|meten).{0,10}(las )?costillas
   - lips (look|are|turn|turned|going|went) (blue|bluish|purple)
   - blue (lips|around the (mouth|lips))
+  - blue[a-z -]{0,12}lips
+  - (lips|skin|tongue|face).{0,40}(blue|purple|grey|gray)
+  - (blue|purple|grey|gray).{0,25}(lips|skin|tongue)
   - lippen.{0,12}(blau|bläulich)
   - (blau|bläulich).{0,12}lippen
   - l[eè]vres.{0,12}(bleu|violac)
   - l[aá]bios.{0,12}(azu|roxo)
   - губы.{0,12}син
+  - (синеет|посинел|посинен|синюшн)
+  - (сереет|посерел)
+  - (кожа|губы|язык).{0,30}(син|сер|бледн).{0,12}(или|,)
   - pausas? (en la|de) respiraci
   - deja de respirar
   - (labios|piel) (azul|morad)
+  - (labios|piel|lengua|cara|u[ñn]as).{0,30}(azul(es)?|morad|amoratad|c[aá]rdeno)
+  - (azul(es)?|morad|amoratad).{0,30}(labios|piel|lengua|cara)
+  - se (pone|puso|est[aá] poniendo) (azul|morado|gris)
   - azulad
   - can(?:'?t| ?not) breathe
   - struggling to breathe
   - difficulty breathing
+  - trouble breathing
+  - breathing (is )?getting (worse|harder|faster)
+  - breathing (is )?(much )?worse
+  - is breathing worse
+  - breathing worse or faster
+  - stops? breathing for
+  - breathing (trouble|problems?|difficult)
+  - shortness of breath
+  - lab(ou)?red breathing
+  - gasping for (air|breath)
   - ribs (are )?(pulling|sucking) in
   - stopp?ed breathing
   - (lips|skin) (are |is )?(blue|purple|grey|gray)
@@ -175,13 +212,26 @@ rules:
   - n'arrive pas [aà] respirer
   - du mal [aà] respirer
   - difficult[ée] [aà] respirer
+  - difficult[ée]s [aà] respirer
+  - respire de plus en plus (mal|vite)
+  - respiration devient plus rapide
+  - ne peut pas (tousser, )?(parler|respirer)
+  - ne peut ni .{0,20}ni respirer
+  - probl[eè]mes? (pour|[aà]) respirer
+  - difficult[ée]s? respiratoires?
+  - g[êe]ne respiratoire
+  - d[ée]tresse respiratoire
   - arr[eê]t[ée]? de respirer
   - pauses? respiratoires?
   - (l[eè]vres|peau) bleu
+  - (peau|l[eè]vres|langue).{0,45}(bleue|bleues|gris|marbr)
+  - visage.{0,30}(bleu|gris|marbr)
+  - devient (bleu|bleue|gris|grise)
   - bleut[ée]
   - cyanos
   - atemnot
   - bekommt keine luft
+  - atemwege .{0,20}blockiert
   - bekommt kaum luft
   - kriegt kaum luft
   - kriegt keine luft
@@ -190,6 +240,10 @@ rules:
   - schnappt nach luft
   - atembeschwerden
   - probleme beim atmen
+  - atemprobleme
+  - atemstörung
+  - immer schneller atmet
+  - atmet immer schneller
   - schwierigkeiten beim atmen
   - atmet schwer
   - schwer am atmen
@@ -198,20 +252,32 @@ rules:
   - zieht die rippen ein
   - atempausen
   - blau anlaufen
+  - (blaue|graue|bläuliche).{0,35}(haut|lippen|zunge)
+  - (haut|lippen|zunge).{0,35}(blau|bläulich|grau)
+  - lange pausen zwischen den atemz[üu]gen
   - läuft blau an
   - keucht
   - ringt nach luft
   - не дыш
   - тяжело дыш
   - трудно дыш
+  - трудност\w* с дыхан
+  - затрудн\w+ дыхан
+  - дыхание затрудн
+  - дыхание становится (хуже|тяжелее|чаще)
+  - всё более част
+  - пауз\w* в дыхании
+  - проблем\w* с дыхан
   - задыха
   - втяжени
   - втягива.{0,20}рёбр
+  - (рёбр|ребр|ключиц)\w*.{0,30}втягива
   - остановк.{0,15}дыхан
   - перестал[а]? дышать
   - хрип
   - لا يتنفس
   - صعوبة في التنفس
+  - صعوب(ة|ات) (في )?التنفس
   - ضيق تنفس
   - يلهث
   - انسحاب.{0,20}ضلوع
@@ -219,16 +285,32 @@ rules:
   - يشهق
   - صفير في التنفس
   - لا تتنفس
+  - لا يستطيع (التنفس|الكلام)
+  - يتنفس بشكل (أسوأ|أسرع)
+  - (أسوأ|أسرع) بشكل متزايد
+  - تزداد صعوبة التنفس
+  - (ساءت|تفاقمت).{0,12}(صعوبة )?التنفس
+  - لا تستطيع (التنفس|الكلام)
+  - (الشفاه|شفتاه|شفتيه|شفتيها|بشرته|بشرتها|الجلد|اللسان).{0,40}(الأزرق|أزرق|زرقاء|الرمادي)
+  - (الأزرق|أزرق|ازرقاق).{0,30}(الشفاه|شفتاه|الجلد|اللسان)
   - تلهث
   - تشهق
   - n[aã]o consegue respirar
   - dificuldade (grave |s[ée]ria )?(para |de |em )?respirar
   - n[aã]o (est[aá] )?conseguindo respirar
+  - respirar cada vez (pior|mais r[aá]pido)
+  - respira[cç][aã]o cada vez (pior|mais r[aá]pida)
+  - respira com dificuldade
+  - pausas? na respira[cç][aã]o
+  - apneia
   - puxando as costelas
   - afundando as costelas
   - para de respirar
   - arroxead
   - roxo
+  - (l[aá]bios|pele|l[ií]ngua|cara).{0,30}(azu(l|is)|roxo|arroxead)
+  - fica (azul|roxo|cinzent)
+  - ficou (azul|roxo|cinzent)
   - cianose
   - respira muito r[aá]pido
   - batendo asa do nariz
@@ -238,6 +320,7 @@ rules:
   - नीला पड़
   - (होंठ|होठ).{0,15}(नीले|नीला|काले)
   - (चेहरा|शरीर|त्वचा).{0,15}(नीला|नीली|भूरा)
+  - (चेहरा|शरीर|त्वचा|होंठ|होठ|जीभ).{0,40}(नीला|नीली|नीले|भूरा|भूरी)
   - (छाती|पसली|पसलियाँ|पसलियां).{0,20}(धँस|धंस|अंदर)
   - (नाक).{0,15}(फड़क|फूल)
   - (हाँफ|हांफ|हाँफ रहा|हांफ रहा)
@@ -250,8 +333,10 @@ rules:
   - saans band
   - साँस रुक
   - saans nahi le
-  - साँस लेने में (दिक्कत|तकलीफ|तकलीफ़|परेशानी|मुश्किल)
-  - सांस लेने में (दिक्कत|तकलीफ|तकलीफ़|परेशानी|मुश्किल)
+  - (साँस|सांस) की (तकलीफ|दिक्कत|कठिनाई|परेशानी)
+  - (साँस|सांस) लेने में .{0,20}(दिक्कत|कठिनाई|परेशानी|मुश्किल)
+  - साँस लेने में (दिक्कत|तकलीफ|तकलीफ़|परेशानी|मुश्किल|कठिनाई)
+  - सांस लेने में (दिक्कत|तकलीफ|तकलीफ़|परेशानी|मुश्किल|कठिनाई)
   - saans lene mein (dikkat|takleef|pareshani|mushkil)
   - sans lene mein (dikkat|takleef|pareshani|mushkil)
   - sans nahi le
@@ -706,6 +791,7 @@ rules:
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
   - respira (r[aá]pido|muy r[aá]pido|agitad)
+  - respiraci[oó]n m[aá]s r[aá]pida de lo normal
   - pitos? al respirar
   - respira con pitos
   - (con|hace) pitos
@@ -713,10 +799,13 @@ rules:
   - silbido
   - breathing fast
   - fast breathing
+  - breathing (is )?faster than (normal|usual)
+  - breathes faster than (normal|usual)
   - wheez
   - whistling
   - respire (vite|tr[eè]s vite|rapidement)
   - respiration sifflante
+  - respiration rapide
   - siffle (en respirant)?
   - sifflements?
   - tirage
@@ -728,18 +817,25 @@ rules:
   - часто дышит
   - свистящ
   - одышк
+  - затруднённ\w* дыхан
+  - затрудненн\w* дыхан
   - со свистом
   - учащённое дыхание
   - учащенное дыхание
   - تنفس سريع
   - يتنفس بسرعة
   - أزيز
+  - صرير
+  - صوت عند (أخذ )?الهواء
+  - صفير عند
   - ضيق في النفس
   - تتنفس بسرعة
   - chiado no peito
   - chiando
   - cansa[cç]o para respirar
   - respira[cç][aã]o r[aá]pida
+  - respira[cç][aã]o (muito |fica mais |mais )r[aá]pida
+  - chiado ao respirar
   - falta de ar
   - puxando o peito
   - सीटी जैसी
@@ -772,6 +868,10 @@ rules:
   - cuesta (mucho|much[ií]simo|un mont[oó]n|horrores)? ?despertar
   - (hard|difficult|impossible) to (wake|rouse)
   - (schwer|kaum) zu wecken
+  - (schwer|kaum) aufweckbar
+  - schweres aufwecken
+  - schwierigkeiten.{0,20}aufwecken
+  - schwer zu erwecken
   - (трудно|не могу) разбудить
   - cuesta despertarl
   - (muy |está |estaba )?(\bflojo\b|\bflojito\b|\bfl[aá]cid|sin fuerzas|como un trapo)
@@ -785,6 +885,8 @@ rules:
   - hard to wake
   - inconsolable
   - lethargic
+  - less responsive than
+  - not responding as usual
   - (tr[eè]s|trop) (somnolent|endormi|mou|apathique|abattu)
   - difficile [aà] r[ée]veiller
   - pleurs inconsolables
@@ -803,6 +905,12 @@ rules:
   - постоянно спит
   - نعسان جدا
   - من الصعب.{0,15}إيقاظ
+  - صعوبة.{0,12}إيقاظ
+  - يصعب إيقاظ
+  - استحالة إيقاظ
+  - لا يمكن إيقاظ
+  - لاستعادة وعي
+  - استعادة وعيه
   - لا (أستطيع|نستطيع) إيقاظ
   - (رخو|مرتخي)
   - خامل
@@ -819,6 +927,8 @@ rules:
   - abatid
   - moleza
   - बहुत सुस्त
+  - कम प्रतिक्रियाशील
+  - सुस्त.{0,30}(प्रतिक्रिया|चिड़चिड़)
   - (जगाना|उठाना).{0,20}(मुश्किल|कठिन)
   - (ढीला|निढाल|सुस्त पड़)
   - रो.{0,10}चुप नहीं
