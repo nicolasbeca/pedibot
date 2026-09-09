@@ -622,6 +622,22 @@ rules:
   patterns:
   - sangra (mucho|sin parar|a chorro)
   - no (para|deja) de sangrar
+  - (sangra|sangrado|hemorragia).{0,40}(m[aá]s de|lleva).{0,15}(10|15|20|diez|quince|veinte)
+  - sangrado (parece |es )?(excesiv|abundante|muy fuerte)
+  - (no para|no cesa|sigue sangrando).{0,30}(desde hace|m[aá]s de).{0,15}(minut|hora)
+  - (bleeding|nosebleed).{0,40}(lasts?|longer than|more than).{0,15}(10|15|20|ten|fifteen)
+  - bleeding (seems |is )?(excessive|very heavy|heavy)
+  - (saignement).{0,40}(dure|plus de).{0,15}(10|15|20|dix|quinze)
+  - saignement (semble |est )?(excessif|abondant|tr[eè]s fort)
+  - blutung.{0,40}(l[äa]nger als|mehr als).{0,15}(10|15|20|zehn)
+  - blutung.{0,25}(sehr stark|stark ist|nicht auf)
+  - кровотечение.{0,40}(дольше|более|больше).{0,15}(10|15|20)
+  - кровотечение.{0,25}(очень сильн|обильн|не останавлив)
+  - (نزيف|النزيف).{0,40}(أكثر من|يستمر).{0,15}(10|15|20)
+  - (نزيف|النزيف).{0,25}(غزير|شديد|لا يتوقف)
+  - sangramento.{0,40}(mais de|dura).{0,15}(10|15|20)
+  - sangramento (parece |é )?(excessivo|abundante|muito forte)
+  - (खून बहना|रक्तस्राव).{0,45}(10|15|20).{0,20}मिनट
   - hemorragia
   - sangrado (abundante|profuso|importante|que no cede|que no para)
   - (sangrado|sangre).{0,25}no (cede|para|se detiene)
@@ -1553,7 +1569,7 @@ rules:
   reason_pt: Fezes pretas como piche ou com sangue vermelho — motivo para procurar ajuda
   reason_hi: कालेे लुक जैसे या लाल ख़ून वाले मल — डॉक्टर को दिखाने का दर्ज कारण
   patterns:
-  - (caca|heces|deposicion\w*|pañal|popo).{0,30}(negra|negras|con sangre|sanguinolent|alquitr)
+  - (caca|heces|deposicion\w*|pañal|popo).{0,30}(negra|negras|sangre|sanguinolent|alquitr)
   - (sangre|negra como alquitr).{0,30}(caca|heces|deposicion|pañal)
   - melena[s]?\b
   - (stool|poo|poop|nappy|diaper|bowel motion).{0,30}(black|tarry|blood|bloody|red blood)
@@ -2099,6 +2115,80 @@ rules:
   - (सूजन|लालिमा|दर्द|गांठ).{0,45}कान के पीछे
   - कान के पीछे.{0,45}(सूजन|लालिमा|दर्द)
   - कान आगे की ओर (खिसका|निकला)
+
+- id: blood_in_urine
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: "Sangre en el pis: hay que verlo, no es normal a ninguna edad"
+  reason_en: "Blood in the pee: it needs looking at, it is not normal at any age"
+  reason_fr: "Du sang dans les urines : à faire voir, ce n'est normal à aucun âge"
+  reason_de: "Blut im Urin: muss angesehen werden, in keinem Alter normal"
+  reason_ru: "Кровь в моче: нужно показать врачу, это не норма ни в каком возрасте"
+  reason_ar: "دم في البول: يحتاج فحصا، وليس طبيعيا في أي عمر"
+  reason_pt: "Sangue no xixi: precisa ser visto, não é normal em nenhuma idade"
+  reason_hi: "पेशाब में ख़ून: दिखाना ज़रूरी है, किसी भी उम्र में सामान्य नहीं"
+  patterns:
+  - sangre (en|con) (el |la )?(pis|orina|pip[ií])
+  - (pis|orina|pip[ií]).{0,25}(con sangre|sanguinolent|rojiz[oa]|marr[oó]n oscur)
+  - hematuria
+  - blood in (the |his |her |their )?(pee|urine|wee)
+  - (pee|urine|wee).{0,25}(is |looks )?(bloody|pink|red|dark brown)
+  - haematuria
+  - hematuria
+  - sang dans (les |l')?(urines|pipi)
+  - (urines|pipi).{0,25}(avec du sang|rouge|ros[ée]|brun fonc)
+  - h[ée]maturie
+  - blut im (urin|pipi)
+  - (urin|pipi).{0,25}(blutig|rot|rosa|dunkelbraun)
+  - h[äa]maturie
+  - кровь в моче
+  - моча.{0,25}(с кровью|красн|розов|тёмно-коричнев)
+  - гематури
+  - دم في البول
+  - البول.{0,25}(به دم|أحمر|وردي|بني داكن)
+  - sangue (na|no) (urina|xixi)
+  - (urina|xixi).{0,25}(com sangue|vermelh|rosad|marrom escur)
+  - hematúria
+  - (पेशाब|मूत्र).{0,25}(में ख़ून|में खून|लाल|गुलाबी)
+  - (ख़ून|खून).{0,20}(पेशाब|मूत्र)
+
+- id: fluid_from_ear_or_nose
+  level: emergency
+  source: seup_tce
+  reason_es: "Sangre o líquido claro por la nariz o los oídos después de un golpe en la cabeza"
+  reason_en: "Blood or clear fluid from the nose or ears after a blow to the head"
+  reason_fr: "Du sang ou un liquide clair par le nez ou les oreilles après un coup à la tête"
+  reason_de: "Blut oder klare Flüssigkeit aus Nase oder Ohren nach einem Schlag auf den Kopf"
+  reason_ru: "Кровь или прозрачная жидкость из носа или ушей после удара по голове"
+  reason_ar: "دم أو سائل صاف من الأنف أو الأذنين بعد ضربة على الرأس"
+  reason_pt: "Sangue ou líquido claro pelo nariz ou pelos ouvidos após uma pancada na cabeça"
+  reason_hi: "सिर पर चोट के बाद नाक या कान से ख़ून या साफ़ तरल आना"
+  patterns:
+  - (sangre|l[ií]quido (claro|transparente)).{0,45}(por|de|del|de los).{0,10}(o[ií]do|nariz|orejas?)
+  - (o[ií]do|nariz|oreja).{0,45}(sale|sangra|supura).{0,25}(sangre|l[ií]quido claro)
+  - le sale (sangre|l[ií]quido).{0,30}(del o[ií]do|de la nariz|de los o[ií]dos)
+  - sangrado (comenz[oó]|empez[oó]|apareci[oó]).{0,40}(golpe|ca[ií]d|traumatismo).{0,25}cabeza
+  - (blood|clear fluid).{0,45}(from|out of).{0,12}(the )?(nose|ears?)
+  - (nose|ear).{0,35}(leaking|discharging|dripping).{0,20}(blood|clear fluid)
+  - bleeding started after a (blow|knock|bang) to the head
+  - (sang|liquide (clair|transparent)).{0,45}(par|du|des).{0,10}(nez|oreilles?)
+  - saignement a commenc[ée].{0,35}(coup|choc).{0,20}t[êe]te
+  - (blut|klare fl[üu]ssigkeit).{0,45}aus (der )?(nase|ohren|dem ohr)
+  - austritt von blut.{0,40}(nase|ohren)
+  - blutung.{0,30}nach einem schlag auf den kopf
+  - (кровь|прозрачная жидкость).{0,45}из (носа|ушей|уха)
+  - из (носа|ушей|уха).{0,45}(кровь|прозрачн)
+  - (нос|ух|уш)\w*.{0,35}(выходит|течёт|идёт|сочится).{0,30}(кровь|жидкост)
+  - кровотечение началось после удара по голове
+  - (دم|سائل صاف).{0,45}من (الأنف|الأذن|الأذنين)
+  - (الأنف|الأذن).{0,40}(يخرج|يسيل|ينزف).{0,25}(دم|سائل)
+  - يخرج (دم|سائل).{0,35}(الأنف|الأذن)
+  - نزيف.{0,35}بعد (ضربة|سقوط).{0,20}الرأس
+  - سائل صاف من الأذن
+  - (sangue|l[ií]quido (claro|transparente)).{0,45}(pelo|do|dos).{0,10}(nariz|ouvidos?)
+  - sangramento come[cç]ou.{0,35}(pancada|batida).{0,20}cabe[cç]a
+  - (नाक|कान).{0,35}(से|मे[ंँ]).{0,20}(ख़ून|खून|साफ़ तरल|साफ तरल)
+  - सिर (पर|में) चोट.{0,45}(ख़ून|खून).{0,20}(नाक|कान)
 
 context:
   fever:
