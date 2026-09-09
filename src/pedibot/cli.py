@@ -187,6 +187,11 @@ def eval_cmd(
     judge: bool = typer.Option(
         False, "--judge", help="with --llm: second call judging faithfulness (costs money)"
     ),
+    repeat: int = typer.Option(
+        1,
+        "--repeat",
+        help="with --llm: run it N times and average (the single-run noise is ±0.13)",
+    ),
 ) -> None:
     """Golden-set evaluation of triage + retrieval + routing (no LLM needed)."""
     import datetime as dt
@@ -194,7 +199,7 @@ def eval_cmd(
     from pedibot.eval import fake_engine_from_settings, load_golden, run_eval
 
     if llm:
-        _llm_eval(golden, report_dir, judge)
+        _llm_eval(golden, report_dir, judge, repeat)
         return
     rep = run_eval(fake_engine_from_settings(), load_golden(golden), k=k)
     summ = rep.summary()
@@ -296,7 +301,23 @@ def publish(
             typer.echo(f"    social: {res or 'no providers configured'}")
 
 
-def _llm_eval(golden: Path, report_dir: Path, use_judge: bool = False) -> None:
+def _llm_eval(
+    golden: Path, report_dir: Path, use_judge: bool = False, repeat: int = 1
+) -> None:
+    """Con `repeat > 1` se ejecuta N veces y se promedia.
+
+    Hace falta porque la medición NO es reproducible: el mismo prompt, medido dos veces sin
+    cambiar nada, dio 0,788 y 0,663 —amplitud 0,125— porque el modelo redacta distinto cada vez
+    (parecido medio entre dos redacciones del mismo caso: 0,48; a temperatura 0 sigue en 0,68,
+    o sea que no es cosa del parámetro sino del proveedor). Medido el 8-sep-2026.
+
+    Con eso, una tirada suelta no puede distinguir dos prompts que se lleven menos de ~0,13, y
+    esa es exactamente la magnitud de los cambios que se intentan. Promediando N tiradas el
+    ruido baja con la raíz de N: tres tiradas lo dejan en ~0,07, cinco en ~0,06.
+
+    No es gratis: cada tirada cuesta unos 0,07 $ y media hora. Por eso el valor por defecto
+    sigue siendo 1 — pero cuando se compare un prompt con otro, una sola tirada no vale.
+    """
     import datetime as dt
 
     from pedibot.api import app_from_settings  # noqa: F401  (validates settings/provider)
@@ -322,9 +343,33 @@ def _llm_eval(golden: Path, report_dir: Path, use_judge: bool = False) -> None:
         prov,
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
     )
-    rep = run_llm_eval(eng, load_golden(golden), use_judge=use_judge)
+    casos = load_golden(golden)
+    tiradas = []
+    for n in range(max(1, repeat)):
+        if repeat > 1:
+            typer.echo(f"— tirada {n + 1} de {repeat}")
+        rep = run_llm_eval(eng, casos, use_judge=use_judge)
+        tiradas.append(rep)
     summ = rep.summary()
-    typer.echo(json.dumps(summ, indent=2))
+    if repeat > 1:
+        # el promedio de lo que varía, y el RANGO, que es lo que dice si una diferencia existe
+        medias: dict[str, object] = {}
+        for clave in ("faithful_rate", "citation_validity", "regenerated_rate"):
+            crudos = [t.summary().get(clave) for t in tiradas]
+            vals: list[float] = [
+                float(v) for v in crudos if isinstance(v, (int, float)) and not isinstance(v, bool)
+            ]
+            if vals:
+                medias[clave] = round(sum(vals) / len(vals), 4)
+                medias[f"{clave}_rango"] = [round(min(vals), 4), round(max(vals), 4)]
+        medias["tiradas"] = len(tiradas)
+        summ = {**summ, "promedio": medias}
+        typer.echo(json.dumps(medias, indent=2, ensure_ascii=False))
+        typer.echo(
+            "  ↑ el rango es lo que importa: una diferencia menor que él no se distingue"
+            " del azar (ver L59/L61 y la nota de answer_v5.md)."
+        )
+    typer.echo(json.dumps(rep.summary(), indent=2))
     for c in rep.cases:
         if c.verification == "fallback":
             typer.echo(f"  ! {c.id} «{c.q}» → fallback (draft failed verification twice)")
