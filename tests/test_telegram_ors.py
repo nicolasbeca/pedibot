@@ -110,6 +110,9 @@ def test_without_an_age_both_amounts_are_given() -> None:
     a = advise(None, False, "es")
     assert a.age_band == "unknown"
     texto = " ".join(a.lines)
+    # las TRES franjas, que se nombran solas: la primera versión de este arreglo daba solo dos y
+    # un recién nacido de tres semanas se quedaba sin la única línea que le toca
+    assert "menos de un mes" in texto, "falta la indicación del recién nacido"
     assert "Lactante" in texto, "falta la indicación del lactante"
     assert "200 ml" in texto, "falta la indicación del niño mayor"
 

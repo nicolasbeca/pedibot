@@ -376,6 +376,12 @@ def weekly_text(con: sqlite3.Connection) -> str:
     else:
         lines.append("🪙 PDBT: sin datos aún")
     lines.append(f"📝 Guías publicadas: {g}")
-    if bal is not None and bal < 2:
+    if bal is None:
+        # No decir nada es peor que decir que no se sabe: un informe semanal sin la línea del
+        # saldo se lee como un informe normal, y si la consulta lleva meses fallando nadie se
+        # entera hasta que el bot deja de contestar. Es la L31 —el silencio que no se distingue
+        # de la ausencia— en el único aviso que anticipa quedarse sin servicio.
+        lines.append("⚠️ No se ha podido leer el saldo de DeepSeek esta semana")
+    elif bal < 2:
         lines.append("⚠️ Saldo DeepSeek bajo: recarga en platform.deepseek.com")
     return "\n".join(lines)

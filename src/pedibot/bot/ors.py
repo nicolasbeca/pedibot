@@ -51,6 +51,12 @@ def advise(age_months: float | None, vomiting: bool = False, lang: str = "en") -
         # «Niño a partir de 1 año…»), así que el padre, que sí sabe la edad, coge la suya. Es
         # más texto y es el único reparto que no puede dar de más a un lactante.
         band = "unknown"
+        # Las TRES franjas, de la más restrictiva a la menos, porque las tres se nombran solas y
+        # el padre coge la suya. La primera versión de este arreglo (9-sep-2026, esta misma
+        # mañana) daba solo las dos de abajo, así que un recién nacido de tres semanas seguía
+        # sin la única línea que le toca — la que dice que a esa edad no se dan sueros y hay que
+        # verlo un médico hoy. El mismo agujero que se acababa de tapar, un escalón más abajo.
+        lines.append(T["ors_under_1_month"])
         lines.append(T["ors_infant"])
         lines.append(T["ors_child"])
         if T["ors_under_2y"] not in warnings:
