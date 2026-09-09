@@ -1074,10 +1074,18 @@ rules:
   patterns:
   - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado).{0,60}(lej[ií]a|detergente|amoniaco|producto de limpieza|pastillas|medicament|jarabe entero|alcohol|colonia|gasolina|pila|planta)
   - intoxica
+  - (ha ingerido|ingiri[oó]|ingesta de).{0,40}(im[aá]n|imanes|pila|bater[ií]a|objeto|producto|t[oó]xic|medicament|pastilla)
   - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado|ha chupado).{0,70}(armario|debajo del fregadero|bajo el fregadero|producto|l[ií]quido|bote|frasco)
   - (drank|swallowed|ate|got into).{0,70}(under the sink|cupboard|cabinet|bottle of|something from)
   - (getrunken|geschluckt).{0,60}(putzmittel|reiniger|unter der sp[üu]le|schrank)
   - sobredosis
+  - (demasiado|de m[aá]s|doble dosis|dos dosis|el doble).{0,30}(paracetamol|ibuprofeno|apiretal|dalsy|jarabe)
+  - (le he dado|le di|ha tomado|se ha tomado).{0,30}(dos dosis|el doble|de m[aá]s)
+  - (too much|double dose|twice the dose|two doses).{0,30}(paracetamol|ibuprofen|calpol|nurofen)
+  - (trop de|double dose|deux doses).{0,30}(parac[ée]tamol|ibuprof[eè]ne|doliprane)
+  - (demais|dose dobrada|dobro da dose|duas doses).{0,30}(paracetamol|ibuprofeno|dipirona)
+  - (جرعتين|ضعف الجرعة|كمية زائدة).{0,30}(باراسيتامول|إيبوبروفين)
+  - (ज़्यादा|दोगुनी खुराक|दो खुराक).{0,30}(पैरासिटामोल|आइबुप्रोफेन)
   - (drank|swallowed|took|ate).{0,60}(bleach|detergent|cleaning|pills|medication|medicine|tablets|alcohol|perfume|petrol|gasoline|plant|dishwasher)
   - poison
   - overdose
@@ -1235,6 +1243,14 @@ rules:
   - will nicht trinken
   - (neugeboren\w*|\b[1-4] wochen alt|\b\d{1,2} tage alt).{0,80}(trinkt nicht|will nicht trinken|verweigert|nimmt nichts)
   - trinkt gar nichts
+  - (men(os|or) de (un|1) mes|de pocos d[ií]as|reci[eé]n nacid).{0,70}(no (quiere )?(come|mama|toma)|rechaz|no se agarra)
+  - under (one|1) month.{0,70}(refus|won'?t (feed|eat)|not feeding|not eating)
+  - moins d'un mois.{0,70}(refuse|ne (veut pas )?(t[ée]ter|boire))
+  - unter (einem|1) monat.{0,70}(trinkt nicht|verweigert|will nicht)
+  - (меньше|младше) месяца.{0,70}(не ест|отказыва|не бер[ёе]т)
+  - (أقل من|دون) شهر.{0,70}(يرفض|لا يرضع|ترفض)
+  - menos de um m[eê]s.{0,70}(n[aã]o (quer )?mama|recusa)
+  - एक महीने से (कम|छोटा).{0,70}(दूध नहीं|नहीं पी)
   - verweigert das trinken
   - отказывается от груди
   - отказывается от бутылочки
@@ -1780,6 +1796,37 @@ rules:
   - (حمى|حرارة|صداع).{0,60}(حساسية للضوء|الضوء يزعج)
   - (रोशनी (चुभ|से तकलीफ)|रोशनी बर्दाश्त नहीं).{0,60}(बुखार|सिरदर्द)
   - (बुखार|सिरदर्द).{0,60}(रोशनी (चुभ|से तकलीफ)|रोशनी बर्दाश्त नहीं)
+- id: deep_wound
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: "Herida profunda o que puede necesitar puntos: hay que verla hoy"
+  reason_en: "A deep wound, or one that may need stitches: it should be seen today"
+  reason_fr: "Plaie profonde ou qui peut nécessiter des points : à voir aujourd'hui"
+  reason_de: "Tiefe Wunde, oder eine, die genäht werden muss: heute ansehen lassen"
+  reason_ru: "Глубокая рана или такая, которую может понадобиться зашить: показать сегодня"
+  reason_ar: "جرح عميق أو قد يحتاج غرزا: يجب أن يُفحص اليوم"
+  reason_pt: "Ferida profunda ou que pode precisar de pontos: precisa ser vista hoje"
+  reason_hi: "गहरा घाव, या जिसमें टांके लग सकते हैं: आज ही दिखाना चाहिए"
+  patterns:
+  - (herida|corte|brecha).{0,45}(profund|hay que coser|se ve el hueso|no cierra)
+  - (necesita|precisa|hay que dar).{0,15}(puntos|sutura|grapas)
+  - brecha en (la cabeza|la ceja|la frente)
+  - (deep|gaping) (cut|wound|gash)
+  - needs? stitches
+  - (plaie|coupure) profonde
+  - points de suture
+  - (tiefe|klaffende) (wunde|schnittwunde)
+  - muss gen[äa]ht werden
+  - глубок\w* (рана|порез)
+  - (нужно|надо) зашивать
+  - наложить швы
+  - جرح عميق
+  - يحتاج (غرز|قطب|خياطة)
+  - (ferida|corte) profund
+  - precisa de pontos
+  - गहरा (घाव|कट|ज़ख़्म)
+  - टांके (लगेंगे|चाहिए|लगाने)
+
 context:
   fever:
   - fi[eè]vre

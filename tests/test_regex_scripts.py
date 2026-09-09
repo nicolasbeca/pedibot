@@ -39,6 +39,12 @@ DECLARADOS = {
     "_TOKEN": "cubre las tres por otra vía: `\\w` casa cirílico y árabe, y el rango "
     "\\u0900-\\u097f añade el devanagari con sus matras, que `\\w` no reconoce",
     "_GUIONES": "son los guiones Unicode, que no son letras de ningún alfabeto",
+    "_MENOS_DE": "el cualificador que va DELANTE de la edad («menos de 3 meses»). El "
+    "hindi lo pone detrás («3 महीने से कम») y por eso vive en `_MENOS_DE_DETRAS`: las dos "
+    "mitades juntas cubren las cuatro escrituras, y separarlas es lo que hace que cada "
+    "una funcione",
+    "_MENOS_DE_DETRAS": "la otra mitad: el cualificador POSPUESTO, que es como lo dice el "
+    "hindi. Las lenguas que lo anteponen están en `_MENOS_DE`",
     "_DE_COMPUESTO": "es la forma adjetiva alemana de decir la edad —«zweimonatiges», "
     "«dreijährige»— y el alemán se escribe en alfabeto latino y solo en él. Las otras siete "
     "lenguas dicen la edad separando el número de la unidad y las lee `_AGE_PATTERNS`, "

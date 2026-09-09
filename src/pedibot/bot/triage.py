@@ -245,6 +245,40 @@ _DE_COMPUESTO = re.compile(
 _GUIONES = re.compile(r"[-\u2010\u2011\u2012\u2013\u2014\u2015\u2212]+")
 
 
+#: «Menos de», delante de una edad, la invierte. En las ocho lenguas.
+#:
+#: El lector sacaba el número y perdía el cualificador, así que «bebé menor de 3 meses con
+#: fiebre» daba exactamente 3,0 meses — y la regla del lactante se dispara con `< 3`. La frase
+#: con la que la propia regla está escrita, y con la que la lista de urgencias del SEUP la
+#: enuncia, no la disparaba (9-sep-2026).
+_MENOS_DE = re.compile(
+    r"(menor(es)? de|menos de|de menos de|no llega a"
+    r"|under|less than|younger than|below"
+    r"|moins de|de moins de"
+    r"|unter|weniger als|j[üu]nger als"
+    r"|abaixo de|menos de|com menos de"
+    r"|меньше"
+    r"|до "
+    r"|أقل من"
+    r"|سن من)"
+    r"[\s]{0,3}$",
+    re.I,
+)
+
+#: Cuánto se mira hacia atrás para encontrarlo. Corto: el cualificador va pegado al número.
+_VENTANA_MENOS = 14
+
+
+#: El hindi lo pospone: «3 महीने से कम» es «menos de 3 meses» con el cualificador DETRÁS del
+#: número. Mirar solo hacia atrás no podía verlo — lo cazó el candado que exige que todo detector
+#: cubra las cuatro escrituras, que es justo para lo que está.
+_MENOS_DE_DETRAS = re.compile(
+    r"^[\s]{0,3}(से कम|से छोट|"
+    r"से नीचे|or less|or younger|o menos)",
+    re.I,
+)
+
+
 def parse_age_months(text: str) -> float | None:
     """La edad en meses, si la pregunta la dice.
 
@@ -261,15 +295,30 @@ def parse_age_months(text: str) -> float | None:
     if _NEWBORN.search(low):
         return 0.5
     for phrase, months in _WORD_AGES.items():
-        if re.search(rf"{NOT_BEFORE}{re.escape(phrase)}{NOT_AFTER}", low):
-            return float(months)
+        m = re.search(rf"{NOT_BEFORE}{re.escape(phrase)}{NOT_AFTER}", low)
+        if m:
+            edad = float(months)
+            # el mismo cualificador que abajo: «de menos de un mes» es otra cosa que «un mes»,
+            # y la edad en letra se resuelve en este bucle, antes de llegar al otro
+            antes = low[max(0, m.start() - _VENTANA_MENOS) : m.start()]
+            detras = low[m.end() : m.end() + _VENTANA_MENOS]
+            if _MENOS_DE.search(antes) or _MENOS_DE_DETRAS.search(detras):
+                edad = max(0.0, edad - 0.5)
+            return edad
     compuesto = _DE_COMPUESTO.search(low)
     if compuesto:
         return _DE_NUM[compuesto.group(1)] * _DE_UNIDAD[compuesto.group(2)]
     for rx, mult in _AGE_PATTERNS:
         m = rx.search(low)
         if m:
-            return float(m.group(1)) * mult
+            edad = float(m.group(1)) * mult
+            antes = low[max(0, m.start() - _VENTANA_MENOS) : m.start()]
+            detras = low[m.end() : m.end() + _VENTANA_MENOS]
+            if _MENOS_DE.search(antes) or _MENOS_DE_DETRAS.search(detras):
+                # medio escalón por debajo: no se busca una edad exacta, se busca que la
+                # comparación con los cortes de 1 y 3 meses caiga del lado correcto
+                edad = max(0.0, edad - 0.5 * mult)
+            return edad
     return None
 
 
