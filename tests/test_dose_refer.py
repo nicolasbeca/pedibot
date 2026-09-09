@@ -134,3 +134,46 @@ def test_a_brand_keeps_the_words_printed_on_its_box() -> None:
     mano, y traducirlo le quitaría la forma de encontrarlo en la lista."""
     assert presentation_label("infant 120 mg/5 ml", "de") == "infant 120 mg/5 ml"
     assert presentation_label("six plus 250 mg/5 ml", "ru") == "six plus 250 mg/5 ml"
+
+
+# ---------------------------------------------------------------------------------------------
+# Sin edad, un fármaco con edad mínima tampoco da la cifra (9-sep-2026)
+#
+# El desplegable de la web tiene una opción que dice literalmente «no lo sé». Con ella, el
+# ibuprofeno a 5 kg devolvía la dosis entera y sin un solo aviso — y 5 kg es un peso de lactante.
+# El ibuprofeno no se da por debajo de tres meses ni de cinco kilos.
+#
+# Sin la edad no se puede descartar la contraindicación, así que se trata igual que cuando SÍ
+# sabemos que no toca: se dice por qué y no se dice cuánto. El paracetamol no tiene edad mínima,
+# así que el caso corriente sigue funcionando sin indicarla.
+
+
+@pytest.mark.parametrize("lang", IDIOMAS)
+def test_without_an_age_a_drug_with_a_minimum_age_gives_no_figure(lang: str) -> None:
+    r = calculate("ibuprofeno", 5.0, None)
+    assert r.refer is True, "sin edad, el ibuprofeno daba la dosis entera"
+    assert "age_unknown" in r.warnings
+    texto = format_result(r, lang)
+    assert "50 mg" not in texto and " ml" not in texto, f"[{lang}] sigue diciendo la cifra"
+
+
+@pytest.mark.parametrize("lang", IDIOMAS)
+def test_the_reason_names_the_missing_age(lang: str) -> None:
+    """El aviso tiene que decir qué falta, no solo que no se da: el padre sabe la edad y con eso
+    puede volver a preguntar."""
+    from pedibot.bot.strings import tool_strings
+
+    texto = tool_strings(lang)["dose_warn"]["age_unknown"]
+    assert texto.strip() and "_" not in texto, f"[{lang}] aviso vacío o sin traducir"
+
+
+def test_a_drug_without_a_minimum_age_still_works_without_one() -> None:
+    """La otra mitad: el paracetamol no tiene edad mínima, y exigirla habría roto el caso
+    corriente para no ganar nada."""
+    r = calculate("paracetamol", 14.0, None)
+    assert r.refer is False and r.mg == 210.0
+
+
+def test_a_valid_age_is_unaffected() -> None:
+    r = calculate("ibuprofeno", 20.0, 48)
+    assert r.refer is False and r.mg == 200.0

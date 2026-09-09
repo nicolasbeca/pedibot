@@ -78,6 +78,9 @@ def test_refer_is_set_exactly_when_it_should_be(clave: str) -> None:
                 (edad is not None and edad < 3)
                 or (edad is not None and edad < d.min_age_months)
                 or kg < d.min_weight_kg
+                # sin edad y con edad mínima no se puede descartar la contraindicación
+                # (9-sep-2026): se avisa y no se da la cifra
+                or (edad is None and d.min_age_months > 0)
             )
             assert bool(r.refer) is debe, f"{kg} kg / {edad} m: refer={r.refer}, esperado {debe}"
 

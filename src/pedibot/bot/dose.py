@@ -213,6 +213,17 @@ def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) 
     if age_months is not None and age_months < drug.min_age_months:
         warnings.append("below_min_age")
         refer = True
+    if age_months is None and drug.min_age_months > 0:
+        # Sin edad no se puede descartar la contraindicación, y el desplegable de la web tiene
+        # una opción que dice literalmente «no lo sé». Medido el 9-sep-2026: con esa opción, el
+        # ibuprofeno a 5 kg devolvía la dosis entera, sin un solo aviso — y 5 kg es un peso de
+        # lactante. El fármaco no se da por debajo de tres meses.
+        #
+        # Se trata igual que cuando SÍ sabemos que no toca: se dice por qué y no se dice cuánto
+        # (decisión del operador del 8-sep). El paracetamol no tiene edad mínima, así que el
+        # caso corriente sigue funcionando sin indicar la edad.
+        warnings.append("age_unknown")
+        refer = True
     if weight_kg < drug.min_weight_kg:
         warnings.append("below_min_weight")
         refer = True

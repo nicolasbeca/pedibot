@@ -267,7 +267,11 @@ def test_the_dose_endpoint_hands_the_page_a_figure_not_a_band(client):
     parent at three in the morning cannot measure "3–6 ml". The endpoint carries `mg` and a
     per-form `ml` now; the band stays alongside so the page can show it as context."""
     c, _ = client
-    j = c.post("/api/dose", json={"drug": "dalsy", "weight_kg": 12}).json()
+    # con edad: Dalsy es ibuprofeno, y desde el 9-sep-2026 un fármaco con edad mínima no da la
+    # cifra si no se indica la edad — no se puede descartar que el niño esté por debajo. Lo que
+    # este test comprueba es otra cosa (que la cifra sea una cifra y no una banda), así que se
+    # le da la edad en vez de aflojar aquello.
+    j = c.post("/api/dose", json={"drug": "dalsy", "weight_kg": 12, "age_months": 36}).json()
     assert j["mg"] == 120, j
     two_percent = next(f for f in j["ml_by_form"] if "2 %" in f["form"] or "100 mg/5 ml" in f["form"])
     assert two_percent["ml"] == 6.0, two_percent  # what the Dalsy leaflet gives for 12 kg
