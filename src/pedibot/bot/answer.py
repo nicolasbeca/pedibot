@@ -269,6 +269,24 @@ CLARIFY_OPTIONS = {
         "कुछ और",
     ],
 }
+#: Lo que se responde a la última opción de CLARIFY_OPTIONS, la de «otra cosa». No es un
+#: síntoma: es el botón que dice «nada de lo de arriba», y buscarlo en el corpus devuelve cero
+#: fragmentos y por tanto «no tengo información fiable sobre esto». Medido el 9-sep-2026 sobre
+#: las 56 combinaciones de opción × idioma: las ocho de esa columna acababan igual.
+#:
+#: Ofrecer un botón y contestar «no sé» a quien lo pulsa es peor que no ofrecerlo.
+DESCRIBE_IT = {
+    "en": "Of course. Tell me in your own words what is happening, and how old your child is.",
+    "es": "Claro. Cuéntame con tus palabras qué le pasa y qué edad tiene.",
+    "fr": "Bien sûr. Dites-moi avec vos mots ce qui se passe et l'âge de votre enfant.",
+    "de": "Natürlich. Erzählen Sie mir mit Ihren Worten, was los ist, und wie alt Ihr Kind ist.",
+    "ru": "Конечно. Расскажите своими словами, что происходит и сколько лет ребёнку.",
+    "ar": "بالطبع. احكِ لي بكلماتك ما الذي يحدث وكم عمر طفلك.",
+    "pt": "Claro. Conte com as suas palavras o que está acontecendo e a idade da criança.",
+    "hi": "ज़रूर। अपने शब्दों में बताइए क्या हो रहा है और बच्चे की उम्र क्या है।",
+}
+
+
 ASK_AGE = {
     "en": "To answer safely I need to know how old your child is (months or years). Could you tell me?",
     "es": "Para responder con seguridad necesito saber la edad (meses o años). ¿Me la dices?",
@@ -847,6 +865,14 @@ class Engine:
                     tool=tool_link("vaccines", lang, c),
                 )
             # no tabulated schedule for this country → fall through to the sources
+
+        # el botón «otra cosa», que ofrecemos nosotros y no es un síntoma. Se compara con la
+        # lista que le acabamos de enseñar, en su idioma, para no confundirlo con una pregunta
+        # de verdad que empiece igual.
+        if query.strip().lower() == CLARIFY_OPTIONS[lang][-1].strip().lower():
+            return Answer(
+                DESCRIBE_IT[lang], tr.level, banner, [], lang, None, None, [], "clarify"
+            )
 
         # vague first message -> offer options. The topic is read from the query PLUS its synonym
         # expansion, the same as retrieval does: "se ha desmayado" or "llora sin parar" are clear

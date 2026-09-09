@@ -1671,6 +1671,12 @@ de_en:
   - emergency department
   - emergency
 ru_es:
+  # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
+  # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
+  # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
+  падени: [cabeza, "traumatismo craneal", golpe]
+  травм: [cabeza, "traumatismo craneal", golpe]
+  ушиб: [cabeza, "traumatismo craneal", golpe]
   температур:
   - fiebre
   - febril
@@ -2067,6 +2073,12 @@ ru_es:
   - respiración
   - dificultad respiratoria
 ru_en:
+  # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
+  # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
+  # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
+  падени: ["head injury", "bump on the head", concussion]
+  травм: ["head injury", "bump on the head", concussion]
+  ушиб: ["head injury", "bump on the head", concussion]
   температур:
   - fever
   - temperature
@@ -2433,6 +2445,12 @@ ru_en:
   - breathing
   - difficulty breathing
 ar_es:
+  # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
+  # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
+  # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
+  سقوط: [cabeza, "traumatismo craneal", golpe]
+  إصابة: [cabeza, "traumatismo craneal", golpe]
+  ارتطام: [cabeza, "traumatismo craneal", golpe]
   حمى:
   - fiebre
   - febril
@@ -2956,6 +2974,12 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
+  # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
+  # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
+  سقوط: ["head injury", "bump on the head", concussion]
+  إصابة: ["head injury", "bump on the head", concussion]
+  ارتطام: ["head injury", "bump on the head", concussion]
   حمى:
   - fever
   - temperature
@@ -3434,6 +3458,12 @@ ar_en:
   وقت الشاش:
   - screen time
 pt_es:
+  # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
+  # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
+  # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
+  queda: [cabeza, "traumatismo craneal", golpe]
+  batida: [cabeza, "traumatismo craneal", golpe]
+  pancada: [cabeza, "traumatismo craneal", golpe]
   febre:
   - fiebre
   - febril
@@ -3829,6 +3859,12 @@ pt_es:
   - urgencias
   - '112'
 pt_en:
+  # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
+  # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
+  # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
+  queda: ["head injury", "bump on the head", concussion]
+  batida: ["head injury", "bump on the head", concussion]
+  pancada: ["head injury", "bump on the head", concussion]
   febre:
   - fever
   - temperature
