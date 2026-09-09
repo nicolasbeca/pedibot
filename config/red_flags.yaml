@@ -372,6 +372,33 @@ rules:
   - (labios|lengua|cara) hinchad
   - se le (est[áa]n? )?hinch(a|an|ando).{0,25}(labio|lengua|cara|p[áa]rpado|garganta)
   - (hinch|inflam)(a|an|ando|ándose).{0,20}(labio|lengua|cara|garganta)
+  - hinchaz[oó]n (de|dentro de|en) (la )?(boca|garganta|lengua|cara)
+  - hinchaz[oó]n.{0,30}(labios|boca|garganta|lengua|cara)
+  - swelling.{0,30}(lips|mouth|throat|tongue|face)
+  - gonflement.{0,30}(l[eè]vres|bouche|gorge|langue|visage)
+  - schwellung.{0,30}(lippen|mund|hals|rachen|zunge|gesicht)
+  - от[ёе]к.{0,30}(губ|рот|рта|горл|язык|лиц)
+  - تورم.{0,30}(الشفت|الفم|الحلق|اللسان|الوجه)
+  - incha[cç]o.{0,30}(l[aá]bios|boca|garganta|l[ií]ngua|rosto)
+  - सूजन.{0,35}(होंठ|मुँह|मुंह|गले|जीभ|चेहर)
+  - (labios?|boca|garganta|lengua).{0,45}se (le )?hinch
+  - (labios?|boca|garganta|lengua).{0,45}(hinchad|inflamad)
+  - swelling (in|inside|around) (the )?(mouth|throat|lips|face)
+  - (lips|mouth|throat|tongue).{0,45}(become|becomes|are|is|get|gets|suddenly) swollen
+  - (lips|mouth|throat|tongue).{0,45}swell
+  - gonflement (dans|autour de) (la |le )?(bouche|gorge)
+  - (l[eè]vres|bouche|gorge|langue).{0,45}gonfl
+  - schwellung (im|in|um) (den |die |dem )?(mund|rachen|hals)
+  - (lippen|mund|hals|rachen|zunge).{0,45}(geschwollen|schwellen an)
+  - от[её]к (внутри |в )?(рта|рот|горл)
+  - (губы|рот|горло|язык).{0,45}(опухл|отекл|распухл)
+  - (опухл|отекл|распухл)\w*.{0,45}(губ|рот|горл|язык)
+  - تورم (داخل|حول) (الفم|الحلق|فم)
+  - (الشفتين|الفم|الحلق|اللسان).{0,45}(تورم|منتفخ|متورم)
+  - incha[cç]o (dentro d|n)(a|o) (boca|garganta)
+  - (l[aá]bios|boca|garganta|l[ií]ngua).{0,45}inch
+  - (मुँह|मुंह|गले|होंठ|जीभ).{0,45}सूजन
+  - सूजन.{0,25}(मुँह|मुंह|गले|होंठ)
   - anaphyla
   - (lips|tongue|face|throat) (is |are )?swell
   - swollen (lips|tongue|face|throat)
@@ -1297,6 +1324,17 @@ rules:
   reason_fr: Mal de ventre fort, continu, qui empire
   patterns:
   - dolor (de barriga|abdominal|de tripa).{0,60}(muy fuerte|insoportable|no para|empeora|continuo)
+  - (abdomen|barriga|tripa|vientre).{0,30}(tenso|duro|hinchad|distendid)
+  - (tummy|abdomen|belly).{0,30}(tense|hard|swollen|distended)
+  - (swollen|hard|tense|distended|rigid)[a-z ,]{0,18}(tummy|abdomen|belly)
+  - (harter|gespannter|aufgeblähter|geschwollener) bauch
+  - (hinchad|duro|tenso|distendid)\w* (el )?(abdomen|vientre|barriga)
+  - (ventre|abdomen).{0,30}(tendu|dur|gonfl[ée]|ballonn)
+  - (bauch).{0,30}(hart|gespannt|geschwollen|aufgebl[äa]ht)
+  - живот.{0,30}(тв[ёе]рд|напряж|вздут|опух)
+  - البطن.{0,30}(منتفخ|متوتر|قاس)
+  - (abd[oô]men|barriga|ventre).{0,30}(tenso|duro|inchad|distendid)
+  - पेट.{0,30}(सख्त|तना|सूज|फूला)
   - (muy fuerte|insoportable).{0,30}(barriga|tripa|abdom)
   - (severe|terrible|unbearable|worsening).{0,30}(stomach|belly|abdominal|tummy)
   - (stomach|belly|tummy).{0,40}(severe|unbearable|getting worse)
@@ -2015,6 +2053,52 @@ rules:
   - निगल नहीं (सकता|सकती|पा)
   - निगलने में .{0,25}(दिक्कत|कठिनाई|परेशानी).{0,50}(लार|थूक)
   - (लार|थूक).{0,50}निगल
+
+- id: mastoiditis
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: "Hinchazón o enrojecimiento detrás de la oreja, u oreja desplazada hacia delante: hay que verlo hoy"
+  reason_en: "Swelling or redness behind the ear, or the ear pushed forward: it should be seen today"
+  reason_fr: "Gonflement ou rougeur derrière l'oreille, ou oreille poussée vers l'avant : à voir aujourd'hui"
+  reason_de: "Schwellung oder Rötung hinter dem Ohr, oder abstehendes Ohr: heute ansehen lassen"
+  reason_ru: "Отёк или покраснение за ухом, либо ухо оттопырено вперёд: показать сегодня"
+  reason_ar: "تورم أو احمرار خلف الأذن، أو الأذن مدفوعة إلى الأمام: يجب أن يُفحص اليوم"
+  reason_pt: "Inchaço ou vermelhidão atrás da orelha, ou orelha empurrada para frente: precisa ser visto hoje"
+  reason_hi: "कान के पीछे सूजन या लालिमा, या कान आगे की ओर खिसका हुआ: आज ही दिखाना चाहिए"
+  patterns:
+  - (hinchaz[oó]n|hinchad|rojez|enrojecimiento|bulto|dolor).{0,40}detr[aá]s de la oreja
+  - detr[aá]s de la oreja.{0,40}(hinchad|roj|inflamad|bulto)
+  - oreja (despegad|desplazada|hacia delante|separada)
+  - mastoiditis
+  - (swelling|swollen|redness|red|lump|pain).{0,40}behind the ear
+  - behind the ear.{0,40}(swollen|red|tender|lump)
+  - (swelling|swollen|redness|lump).{0,25}(around|behind) the ear
+  - ear (is )?(pushed|sticking) (forward|out)
+  - mastoiditis
+  - (gonflement|rougeur|douleur|bosse).{0,40}derri[eè]re l'oreille
+  - derri[eè]re l'oreille.{0,40}(gonfl|rouge|douloureu)
+  - oreille (pouss[ée]e|d[ée]coll[ée]e) (vers l'avant)?
+  - masto[iï]dite
+  - (schwellung|r[öo]tung|schmerz|beule).{0,40}hinter dem ohr
+  - hinter dem ohr.{0,40}(geschwollen|rot|schmerz)
+  - ohr steht (ab|nach vorne)
+  - abstehendes ohr
+  - mastoiditis
+  - (от[её]к|покраснени|припухл|боль|шишк)\w*.{0,40}за ухом
+  - за ухом.{0,40}(от[её]к|покрасне|припухл|болит)
+  - ухо оттопыр
+  - мастоидит
+  - (تورم|احمرار|ألم|انتفاخ).{0,40}خلف الأذن
+  - خلف الأذن.{0,40}(تورم|احمرار|ألم)
+  - الأذن مدفوعة إلى الأمام
+  - التهاب الخشاء
+  - (incha[cç]o|vermelhid[aã]o|dor|caro[cç]o).{0,40}atr[aá]s da orelha
+  - atr[aá]s da orelha.{0,40}(inchad|vermelh|dor)
+  - orelha (empurrada|deslocada) para (a )?frente
+  - mastoidite
+  - (सूजन|लालिमा|दर्द|गांठ).{0,45}कान के पीछे
+  - कान के पीछे.{0,45}(सूजन|लालिमा|दर्द)
+  - कान आगे की ओर (खिसका|निकला)
 
 context:
   fever:
