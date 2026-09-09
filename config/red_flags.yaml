@@ -31,6 +31,16 @@ rules:
   - p[ée]rdida (de|del) (conocimiento|conciencia)
   - (ha )?perdi[oó] (el conocimiento|la conciencia)
   - (ha )?perdido (el conocimiento|la conciencia)
+  - pierde (el conocimiento|la conciencia)
+  - está perdiendo (el conocimiento|la conciencia)
+  - loses? consciousness
+  - losing consciousness
+  - verliert das bewusstsein
+  - wird bewusstlos
+  - теряет сознание
+  - (يفقد|تفقد) الوعي
+  - perde a consci[êe]ncia
+  - (होश|चेतना) खो (रहा|रही|देता|देती)
   - tarda en recuperar (el conocimiento|la conciencia)
   - no (recupera|recobra) el conocimiento
   - unresponsive
@@ -456,6 +466,9 @@ rules:
   - l[ií]ngua inchada
   - garganta fechando
   - garganta (cerrada|apretada|se (me |le )?cierra)
+  - garganta apertada
+  - गला (तंग|कसा|जकड़|बंद)
+  - gorge.{0,15}(semble |paraît )?serr[ée]e
   - se le cierra la garganta
   - throat (feels |is )?(tight|closing|closes|swelling shut)
   - tightness in (the |his |her |their )?throat
@@ -1711,6 +1724,21 @@ rules:
   - (mueve mal|no puede mover).{0,20}(brazo|pierna|mano|un lado)
   - (habla|hablar) (con dificultad|raro|arrastrando|mal de repente)
   - (bouche|visage).{0,20}(tordu|de travers|tombe d'un c[oô]t[ée])
+  - d[ée]sorient
+  - ne sait plus o[uù] il est
+  - verwirrtheit
+  - desorientier
+  - wei[sß] nicht (mehr )?wo er ist
+  - спутанност\w* сознания
+  - спутанное сознание
+  - дезориент
+  - не понимает где (он|она)
+  - تشوش
+  - ارتباك ذهني
+  - لا يعرف أين هو
+  - भ्रमित
+  - भ्रम की स्थिति
+  - समझ नहीं (आ रहा|पा रहा)
   - (mund|gesicht).{0,20}(h[äa]ngt|schief|herunter)
   - (перекосило|перекошен).{0,15}(рот|лицо)
   - (рот|лицо).{0,15}(перекос|скривил)
@@ -2062,11 +2090,16 @@ rules:
   - imposibilidad de tragar
   - inability to swallow
   - incapacit[ée] [aà] avaler
+  - impossibilit[ée] [aà] avaler
+  - ne (peut|parvient|arrive) plus [aà] avaler
   - unf[äa]higkeit zu schlucken
   - (невозможность|неспособность) глота
   - عدم القدرة على البلع
   - incapacidade (de|para) engolir
+  - n[aã]o conseguir engolir
+  - impossibilidade de engolir
   - निगलने में असमर्थ
+  - निगल (न|नहीं) (पाना|पा रहा|पा रही|सकता|सकती)
   - (no puede|no consigue|le cuesta|dificultad para) trag\w*.{0,50}(babe|saliva|lengua fuera)
   - (babe|saliva)\w*.{0,50}(no puede tragar|no traga|dificultad para tragar)
   - babea much[oi]sim[oa].{0,40}(no traga|no puede tragar)
@@ -2077,6 +2110,8 @@ rules:
   - (du mal|difficult[ée]s?) [aà] avaler.{0,50}bave
   - bave.{0,50}(avaler|mal [aà] avaler)
   - kann nicht schlucken
+  - nicht schlucken (kann|k[öo]nnen|kannst)
+  - schlucken kann.{0,10}nicht
   - schluckbeschwerden.{0,50}(speichel|sabber)
   - (speichel|sabber)\w*.{0,50}schluck
   - не может глотать
