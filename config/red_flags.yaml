@@ -140,6 +140,8 @@ rules:
   - revirando os olhos
   - espasmos
   - दौरा
+  - दौरे
+  - दौरों
   - मिर्गी
   - झटके आ रहे
   - अकड़ गया
@@ -413,6 +415,22 @@ rules:
   - in(chou|chado) (o )?rosto
   - l[ií]ngua inchada
   - garganta fechando
+  - garganta (cerrada|apretada|se (me |le )?cierra)
+  - se le cierra la garganta
+  - throat (feels |is )?(tight|closing|closes|swelling shut)
+  - tightness in (the |his |her |their )?throat
+  - gorge (serr[ée]e|qui se serre)
+  - la gorge (est|se) serr
+  - hals (wird|ist) eng
+  - hals eng (wird|ist)
+  - (hals|kehle).{0,12}(eng|zu)(er)? (wird|ist|fühlt)
+  - engegef[üu]hl im hals
+  - hals.{0,15}zugeschn[üu]rt
+  - горло (сжима|сдавли|перехват)
+  - сдавливает горло
+  - ضيق في الحلق
+  - الحلق (ينغلق|يضيق)
+  - गला (कसा|जकड़)
   - होंठ सूज
   - चेहरा सूज
   - गला बंद
@@ -674,6 +692,9 @@ rules:
   - glass test
   - taches.{0,60}ne (disparaissent|partent|s'effacent) pas.{0,40}(appuie|pression|presse)
   - p[ée]t[ée]chie
+  - (taches|[ée]ruption|boutons|rougeurs|plaques).{0,70}ne s'(estompe|estompent|att[ée]nue|att[ée]nuent) pas
+  - ne s'(estompe|estompent) pas
+  - ne s'(effacent?|estompent?).{0,10}pas.{0,40}(verre|appui|pression|presse)
   - flecken.{0,40}nicht weg
   - flecken.{0,40}nicht verschwind
   - (flecken|punkte|ausschlag|pünktchen).{0,80}verschwinden nicht
@@ -685,6 +706,10 @@ rules:
   - glastest
   - petechien
   - verschwinden nicht.{0,20}druck
+  - (flecken|punkte|ausschlag|pünktchen|hautausschlag|blutergüsse).{0,80}(nicht|kaum) verblass
+  - verblass\w* nicht
+  - (nicht|kaum) verblass\w*.{0,40}(druck|dr[üu]ck|glas)
+  - (dr[üu]ck|glas).{0,40}(nicht|kaum) verblass
   - пятна.{0,30}не исчеза
   - сыпь.{0,30}не бледне
   - не бледнеет при надавлив
@@ -707,6 +732,11 @@ rules:
   - teste do copo
   - दबाने पर नहीं मिट
   - दबाने पर न मिट
+  - दबाने पर (गायब न|गायब नहीं)
+  - दबाने (पर|से).{0,30}(नहीं मिट|न मिट|गायब न|गायब नहीं)
+  - (धब्बे|दाने|चकत्ते|निशान).{0,50}(गायब न|गायब नहीं)
+  - दबाने से (गायब न|गायब नहीं)
+  - (गिलास|ग्लास).{0,30}(दबा|गायब)
   - दबाने से नहीं मिट
   - दाने नहीं जा रहे
   - गिलास.{0,15}दाने
@@ -1947,6 +1977,44 @@ rules:
   - precisa de pontos
   - गहरा (घाव|कट|ज़ख़्म)
   - टांके (लगेंगे|चाहिए|लगाने)
+
+- id: cannot_swallow_drooling
+  level: emergency
+  source: seup_acudir_urgencias
+  reason_es: "No puede tragar y la saliva le cae: la vía aérea puede estar comprometida"
+  reason_en: "Cannot swallow and is drooling: the airway may be compromised"
+  reason_fr: "Ne peut pas avaler et bave : les voies respiratoires peuvent être menacées"
+  reason_de: "Kann nicht schlucken und speichelt: die Atemwege können bedroht sein"
+  reason_ru: "Не может глотать, слюна течёт: дыхательные пути могут быть под угрозой"
+  reason_ar: "لا يستطيع البلع واللعاب يسيل: قد يكون مجرى الهواء مهددا"
+  reason_pt: "Não consegue engolir e baba: a via aérea pode estar comprometida"
+  reason_hi: "निगल नहीं पा रहा और लार बह रही है: साँस का रास्ता ख़तरे में हो सकता है"
+  patterns:
+  - no (puede|consigue) tragar
+  - (no puede|no consigue|le cuesta|dificultad para) trag\w*.{0,50}(babe|saliva|lengua fuera)
+  - (babe|saliva)\w*.{0,50}(no puede tragar|no traga|dificultad para tragar)
+  - babea much[oi]sim[oa].{0,40}(no traga|no puede tragar)
+  - can(?:'?t| ?not) swallow
+  - (trouble|difficulty|struggling|struggles) swallow\w*.{0,50}drool
+  - drool\w*.{0,50}(cannot swallow|can'?t swallow|trouble swallowing)
+  - ne (peut|parvient|arrive) pas ([aà] )?avaler
+  - (du mal|difficult[ée]s?) [aà] avaler.{0,50}bave
+  - bave.{0,50}(avaler|mal [aà] avaler)
+  - kann nicht schlucken
+  - schluckbeschwerden.{0,50}(speichel|sabber)
+  - (speichel|sabber)\w*.{0,50}schluck
+  - не может глотать
+  - (трудно|тяжело|не может) глота\w*.{0,50}слюн
+  - слюн\w*.{0,50}(глота|не может глотать)
+  - لا (يستطيع|تستطيع) البلع
+  - صعوبة (في )?البلع.{0,60}(لعاب|سيلان)
+  - (سيلان اللعاب|اللعاب).{0,60}البلع
+  - n[aã]o (consegue|pode) engolir
+  - dificuldade (para|de) engolir.{0,60}(baba|saliva)
+  - (baba|saliva)\w*.{0,60}engolir
+  - निगल नहीं (सकता|सकती|पा)
+  - निगलने में .{0,25}(दिक्कत|कठिनाई|परेशानी).{0,50}(लार|थूक)
+  - (लार|थूक).{0,50}निगल
 
 context:
   fever:
