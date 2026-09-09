@@ -322,3 +322,47 @@ def test_the_hashed_assets_are_cached_and_the_rest_revalidates() -> None:
     assert sorted(m2.group(1).split()) == sorted(con_hash), (
         "las dos reglas de caché ya no son complementarias: alguna ruta se queda sin regla o con dos"
     )
+
+
+def test_el_sitemap_no_contradice_al_html_sobre_los_idiomas() -> None:
+    """El sitemap no declara hreflang: lo declara el HTML, que es el que acierta (9-sep-2026).
+
+    Este mismo fichero cuenta arriba cómo el conmutador de idiomas ofrecía /pt/dose/ibuprofen
+    cuando el portugués había construido /pt/dose/ibuprofeno. Aquello se arregló el 5-sep en el
+    HTML, y **el sitemap se quedó con el fallo cuatro días más**, porque nadie miró la segunda
+    superficie: `@astrojs/sitemap` con la opción `i18n` empareja las URLs por su prefijo de
+    idioma, y en este sitio la rebanada cambia con la lengua.
+
+    Medido antes de quitarlo: el HTML de /dose/ibuprofen declaraba las ocho ediciones más la
+    x-default, y el sitemap declaraba **cinco** — ar, de, en, hi, ru, las que casualmente
+    comparten rebanada— dejando el castellano y el portugués en un grupo aparte y el francés
+    huérfano. Las 483 guías, cuya rebanada también cambia por idioma, se quedaban con cero.
+
+    Google lee las dos fuentes. Una que a veces miente no aporta una señal de más: quita la buena.
+    """
+    sitemap = (DIST / "sitemap-0.xml").read_text(encoding="utf-8")
+    assert "xhtml:link" not in sitemap, (
+        "el sitemap ha vuelto a declarar hreflang; si vuelve la opción `i18n` de @astrojs/sitemap, "
+        "volverá a agrupar por prefijo de URL y a contradecir al HTML en las páginas cuya "
+        "rebanada cambia con el idioma (los fármacos y las 483 guías)"
+    )
+    # lo que sí tiene que seguir estando
+    assert sitemap.count("<loc>") == sitemap.count("<lastmod>") > 700, (
+        "el sitemap ha perdido URLs o fechas al quitarle el hreflang"
+    )
+
+
+def test_cada_farmaco_declara_sus_ocho_ediciones_en_el_html() -> None:
+    """Y la otra mitad: si el sitemap ya no lo dice, el HTML tiene que decirlo entero.
+
+    Se comprueba justo en las páginas donde la rebanada cambia con la lengua, que son las que
+    rompieron las dos veces.
+    """
+    faltan = []
+    for f in sorted((DIST / "dose").glob("*/index.html")):
+        html = f.read_text(encoding="utf-8")
+        idiomas = set(re.findall(r'rel="alternate" hreflang="([a-z-]+)"', html))
+        esperadas = {"en", "es", "fr", "de", "ru", "ar", "pt", "hi", "x-default"}
+        if not esperadas <= idiomas:
+            faltan.append(f"{f.parent.name}: sin {sorted(esperadas - idiomas)}")
+    assert not faltan, "páginas de fármaco con el grupo de idiomas incompleto:\n" + "\n".join(faltan)

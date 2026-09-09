@@ -42,8 +42,15 @@ export default defineConfig({
     routing: { prefixDefaultLocale: false },
   },
   integrations: [
+    // Sin `i18n`, y a propósito (9-sep-2026). Esa opción hace que el sitemap calcule el hreflang
+    // emparejando URLs por su prefijo de idioma, y en este sitio la rebanada cambia con la lengua:
+    // /dose/ibuprofen, /es/dose/ibuprofeno, /fr/dose/ibuprofene. El resultado era un sitemap que
+    // contradecía al HTML — al ibuprofeno le daba cinco alternativas de ocho, y a las 483 guías
+    // ninguna, mientras que cada página declara en su `<head>` las ocho y la x-default, bien.
+    //
+    // Dos fuentes para la misma decisión y una equivocada. Google lee las dos, así que la de más
+    // no suma: resta. Las etiquetas del HTML bastan y son las que aciertan.
     sitemap({
-      i18n: { defaultLocale: 'en', locales: { en: 'en', es: 'es', fr: 'fr', de: 'de', ru: 'ru', ar: 'ar', pt: 'pt', hi: 'hi' } },
       serialize(item) {
         const p = new URL(item.url).pathname.replace(/\/$/, '');
         item.lastmod = (guideDates.get(p) ?? BUILD_DATE).toISOString();
