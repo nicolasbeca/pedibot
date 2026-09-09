@@ -2,8 +2,12 @@
 topics:
   fiebre: [fiebre, febril, antitérmico, antitermico, temperatura, fever, febrile]
   respiratorio: [tos, bronquiolitis, laringitis, crup, asma, neumonía, neumonia, catarro, mocos, sibilancia, pitos, respirar, respiración, disnea, cough, wheez, breath, pneumonia, croup, asthma, cold]
-  digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat, vomit, diarrh, constipat, stomach, dehydrat]
-  neurologia: [convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding]
+  digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat,
+             lombrices, oxiuros, lombriz, threadworm, pinworm, oxyures, madenwürmer, madenwurmer,
+             острицы, острица, ديدان, कीड़े, vomit, diarrh, constipat, stomach, dehydrat]
+  neurologia: [meningitis, meningite, meningitis, hirnhautentzündung, hirnhautentzundung,
+               менингит, менингита, التهاب السحايا, سحايا, मेनिन्जाइटिस,
+               convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding]
   accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
@@ -13,15 +17,30 @@ topics:
          escarlatina, scarlet fever, scarlatine, scharlach, скарлатин, حمى قرمزية, الحمى القرمزية, स्कार्लेट,
          rubéola, rubeola, rubella, rubéole, röteln, краснух, краснухи, حصبة ألمانية, الحصبة الألمانية, रूबेला,
          paperas, mumps, oreillons, ورم الغدة النكفية, свинк, свинка, свинки, кашка, गलसुआ,
-         "mano-pie-boca", "pieds-mains-bouche", "hand foot and mouth", impétigo, impetigo, molusco, molluscum]
+         "mano-pie-boca", "pieds-mains-bouche", "hand foot and mouth", impétigo, impetigo, molusco, molluscum,
+         piojo, piojos, liendre, head lice, lice, poux, kopfläuse, kopflause, вши, вшей, قمل, जूं,
+         picadura, picaduras, mosquito, insect bite, piqûre, piqure, insektenstich, укус, لدغة, काटने]
   orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear, throat, tonsil]
-  salud_mental: [ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]
+  salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
+                 "psychische gesundheit", "психическое здоровье", "الصحة النفسية",
+                 "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant, crying, reflux]
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz]
-  desarrollo: [desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen]
+  desarrollo: ["dolores de crecimiento", "growing pains", "douleurs de croissance",
+               wachstumsschmerzen, "боли роста", "آلام النمو", desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen]
   medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
+  urinario: [orina, urinaria, urinario, infección de orina, infeccion de orina, cistitis, pis,
+             pipí, pipi, enuresis, mojar la cama, urine, urinary, uti, wee, bedwetting,
+             urinaire, pipi au lit, harnwege, blasenentzündung, blasenentzundung, bettnässen,
+             моча, мочевой, недержание, بول, التبول, पेशाब, मूत्र]
+  ojos: [conjuntivitis, ojo, ojos, legañas, lagrimeo, conjunctivitis, pink eye, eye,
+         conjonctivite, œil, oeil, bindehautentzündung, bindehautentzundung, auge,
+         конъюнктивит, глаз, التهاب الملتحمة, عين, आँख, कंजंक्टिवाइटिस]
+  dental: [dentición, denticion, diente, dientes, muela, teething, tooth, teeth,
+           poussée dentaire, dent, zahnen, zahn, прорезывание зубов, зуб, تسنين, أسنان,
+           दांत, दाँत]
   urgencias: [urgencias, "112", emergencia, sedoanalgesia, emergency, "911", "999"]
   crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]
   general: []

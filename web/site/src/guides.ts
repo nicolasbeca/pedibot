@@ -23,6 +23,7 @@ export interface Faq {
  * simply yields nothing instead of guessing.
  */
 import samePairs from './data/same_subject.json';
+import topicCategory from './data/topic_category.json';
 
 /** Every topic key naming the same subject as this one, itself included.
  *
@@ -85,18 +86,66 @@ export function faqsFrom(markdown: string): Faq[] {
 }
 
 /**
- * Up to `n` other guides to link to, same language, nearest first: the ones sharing this guide's
- * topic, then the most recent. Never the guide itself.
+ * Hasta `n` guías a las que enlazar, del mismo idioma: primero las de su misma categoría, y
+ * SIEMPRE dos vecinas del anillo. Nunca ella misma.
+ *
+ * Lo que había agrupaba por `topic` exacto, y cada tema tiene UNA sola guía por idioma: el grupo
+ * salía siempre vacío y el sustituto eran «las tres más recientes», que son las mismas para las
+ * sesenta guías de la lengua. Medido el 9-sep-2026 sobre el build: **390 de las 483 guías
+ * recibían un único enlace interno** —el índice de su idioma— y 24 recibían más de sesenta.
+ * Search Console lo decía de la guía portuguesa de la meningitis: «Página de referencia: no se
+ * ha detectado ninguna». Para un dominio nuevo, una página que cuelga de un solo enlace en un
+ * índice de sesenta es una página que el rastreador no llega a visitar.
+ *
+ * Las dos mitades hacen falta y hacen cosas distintas:
+ *
+ *  - **la categoría** da relevancia: quien acaba de leer sobre fiebre quiere la convulsión
+ *    febril, no la última guía que se publicó;
+ *  - **el anillo** da el suelo: cada guía es sucesora de exactamente dos, así que ninguna puede
+ *    quedarse otra vez con un solo enlace, ni siquiera si su categoría tiene un único miembro o
+ *    la taxonomía no la clasifica. El orden es por `topic`, que no cambia entre compilaciones —
+ *    con la fecha, publicar una guía barajaría los enlaces de todas.
+ *
+ * El anillo va al final de la lista porque para el lector es lo menos relevante; para el
+ * rastreador vale igual, que es de lo que se trata.
  */
 export function relatedTo<T extends { id: string; data: { topic: string; date: Date } }>(
   current: T,
   all: T[],
-  n = 3,
+  n = 6,
 ): T[] {
-  const others = all.filter((g) => g.id !== current.id);
-  const sameTopic = others.filter((g) => g.data.topic === current.data.topic);
-  const rest = others
-    .filter((g) => g.data.topic !== current.data.topic)
-    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-  return [...sameTopic, ...rest].slice(0, n);
+  const cats = topicCategory as Record<string, string>;
+  const orden = [...all].sort((a, b) => a.data.topic.localeCompare(b.data.topic));
+  const i = orden.findIndex((g) => g.id === current.id);
+  const anillo =
+    i < 0 || orden.length < 2
+      ? []
+      : [orden[(i + 1) % orden.length], orden[(i + 2) % orden.length]];
+
+  const mia = cats[current.data.topic];
+  const afines = mia
+    ? all
+        .filter((g) => g.id !== current.id && cats[g.data.topic] === mia)
+        .sort((a, b) => a.data.topic.localeCompare(b.data.topic))
+    : [];
+
+  const salida: T[] = [];
+  const visto = new Set<string>([current.id]);
+  for (const g of afines) {
+    if (salida.length >= Math.max(0, n - anillo.length)) break;
+    if (visto.has(g.id)) continue;
+    visto.add(g.id);
+    salida.push(g);
+  }
+  // Lo que falte se completa dando la vuelta al anillo, no con «las más recientes». Para el
+  // lector una y otra son igual de arbitrarias; para el reparto no se parecen en nada: rellenar
+  // con las recientes se lo daba todo a las mismas veinte guías —de ahí los 60 enlaces de unas y
+  // el 1 de las otras—, y el anillo lo reparte por construcción.
+  for (let k = 1; k <= orden.length && salida.length < n; k++) {
+    const g = orden[(i + k) % orden.length];
+    if (!g || visto.has(g.id)) continue;
+    visto.add(g.id);
+    salida.push(g);
+  }
+  return salida.slice(0, n);
 }

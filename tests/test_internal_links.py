@@ -366,3 +366,75 @@ def test_cada_farmaco_declara_sus_ocho_ediciones_en_el_html() -> None:
         if not esperadas <= idiomas:
             faltan.append(f"{f.parent.name}: sin {sorted(esperadas - idiomas)}")
     assert not faltan, "páginas de fármaco con el grupo de idiomas incompleto:\n" + "\n".join(faltan)
+
+
+def test_ninguna_guia_cuelga_de_un_solo_enlace() -> None:
+    """El reparto de enlaces internos, que nadie había contado (9-sep-2026).
+
+    Search Console lo dijo de la guía portuguesa de la meningitis: «Página de referencia: no se
+    ha detectado ninguna». Al contarlo salió que **390 de las 483 guías recibían un único enlace
+    interno** —el índice de su idioma, que lista sesenta— y 24 recibían más de sesenta.
+
+    La causa estaba en `relatedTo`: agrupaba por `topic` exacto, y cada tema tiene UNA sola guía
+    por idioma, así que el grupo salía siempre vacío y el sustituto eran «las tres más recientes»
+    —las mismas para las sesenta guías de la lengua—. Para un dominio nuevo, una página que
+    cuelga de un solo enlace dentro de un índice de sesenta es una página que el rastreador no
+    llega a visitar, y Google decía exactamente eso: «no reconozco esta URL».
+
+    Los hreflang NO cuentan aquí. Son una señal de idioma entre versiones de la misma página, no
+    un camino por el que se descubre contenido nuevo, y contarlos escondía el problema: la guía
+    de la meningitis parecía tener ocho enlaces y tenía uno.
+
+    Medido después del arreglo: mínimo 3, máximo 13, media 7,1.
+    """
+    paginas = {}
+    for f in DIST.rglob("index.html"):
+        rel = "/" + f.relative_to(DIST).as_posix()
+        paginas[rel[: -len("index.html")].rstrip("/") or "/"] = f
+
+    alterna = re.compile(r'rel="alternate" hreflang="[a-z-]+" href="https://pedibot\.xyz(/[^"]*)"')
+    entrantes: dict[str, set[str]] = collections.defaultdict(set)
+    for u, f in paginas.items():
+        html = f.read_text(encoding="utf-8", errors="ignore")
+        idiomas = set(alterna.findall(html))
+        for destino in set(HREF.findall(html)):
+            d = destino.rstrip("/") or "/"
+            if d != u and d not in idiomas and d in paginas:
+                entrantes[d].add(u)
+
+    guias = [u for u in paginas if "/guides/" in u]
+    pobres = sorted(u for u in guias if len(entrantes[u]) < 3)
+    assert not pobres, (
+        f"{len(pobres)} guías con menos de 3 enlaces internos entrantes (sin contar hreflang); "
+        f"el anillo de `relatedTo` debería garantizar el suelo:\n" + "\n".join(pobres[:15])
+    )
+
+
+def test_cada_tema_publicado_tiene_categoria_en_la_taxonomia() -> None:
+    """Un tema sin categoría enlaza mal y, sobre todo, se busca peor.
+
+    Al clasificar los temas para enlazar las guías, diez de los 69 no casaban con ninguna
+    categoría: meningitis, infección de orina, conjuntivitis, dentición, piojos, lombrices,
+    picaduras, enuresis, dolores de crecimiento y salud mental del adolescente.
+
+    Lo que lo hace importante no son los enlaces: la taxonomía es la que le pone tema a la
+    pregunta del padre, y **sin tema la puerta del «fuente o silencio» pasa de exigir un término
+    a exigir tres** (L76, escrita por esto mismo con las enfermedades exantemáticas). Había guías
+    publicadas de los diez temas y el chat las alcanzaba peor que las de fiebre, sin ninguna
+    razón clínica.
+    """
+    import json
+
+    mapa = json.loads(
+        (ROOT / "web" / "site" / "src" / "data" / "topic_category.json").read_text(encoding="utf-8")
+    )
+    temas = set()
+    for md in (ROOT / "web" / "content").rglob("*.md"):
+        m = re.search(r"^topic:\s*(.+)$", md.read_text(encoding="utf-8")[:2000], re.M)
+        if m:
+            temas.add(m.group(1).strip())
+    sin = sorted(t for t in temas if t not in mapa)
+    assert not sin, (
+        "temas publicados que la taxonomía no clasifica (enlazan mal y se buscan peor):\n"
+        + "\n".join(sin)
+    )

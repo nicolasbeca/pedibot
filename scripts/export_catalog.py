@@ -2,6 +2,7 @@
 
 import json
 import pathlib
+import re
 import sys
 
 import yaml
@@ -113,3 +114,46 @@ paises = sorted(k for k in numeros if k != "default")
 target5 = ROOT / "web" / "site" / "src" / "data" / "countries.json"
 target5.write_text(json.dumps(paises, ensure_ascii=False) + "\n", encoding="utf-8")
 print(f"countries.json: {len(paises)} países con número de emergencia")
+
+
+# tema → categoría de la taxonomía → web/site/src/data/topic_category.json
+#
+# Para los enlaces entre guías (9-sep-2026). `relatedTo` agrupaba por `topic` exacto, y cada tema
+# tiene UNA sola guía por idioma, así que el grupo salía siempre vacío y el sustituto eran «las
+# tres más recientes» — las mismas para las sesenta guías de la lengua. Medido: 390 de las 483
+# guías recibían un único enlace interno (el índice de su idioma) y 24 recibían más de sesenta.
+# Search Console lo decía de la guía portuguesa de la meningitis: «no se ha detectado ninguna
+# página de referencia».
+#
+# La categoría sale del mismo clasificador que usa la ingesta, no de una lista nueva: se le pasa
+# el tema junto con los títulos que ese tema tiene en castellano e inglés, que es bastante texto
+# para que las palabras clave de la taxonomía enganchen.
+from pedibot.ingest.classify import Taxonomy  # noqa: E402
+
+tax = Taxonomy(ROOT / "config" / "taxonomia.yaml")
+textos: dict[str, list[str]] = {}
+for md in sorted((ROOT / "web" / "content").rglob("*.md")):
+    cab = md.read_text(encoding="utf-8")[:2000]
+    mt = re.search(r"^topic:\s*(.+)$", cab, re.M)
+    if not mt:
+        continue
+    tema = mt.group(1).strip()
+    trozos = [tema.replace("_", " ")]
+    if md.parent.name in ("es", "en"):
+        for campo in ("title", "description"):
+            mv = re.search(rf'^{campo}:\s*"?(.+?)"?\s*$', cab, re.M)
+            if mv:
+                trozos.append(mv.group(1))
+    textos.setdefault(tema, []).extend(trozos)
+
+categorias = {}
+for tema, trozos in sorted(textos.items()):
+    cat = tax.topic_for(" ".join(trozos))
+    if cat:
+        categorias[tema] = cat
+target6 = ROOT / "web" / "site" / "src" / "data" / "topic_category.json"
+target6.write_text(json.dumps(categorias, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+sin = sorted(t for t in textos if t not in categorias)
+print(f"topic_category.json: {len(categorias)} temas clasificados, {len(sin)} sin categoría")
+if sin:
+    print("  sin categoría:", ", ".join(sin[:12]))
