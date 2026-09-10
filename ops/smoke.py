@@ -136,10 +136,35 @@ def main() -> int:
         print(f"FALLOS: {len(fallos)}")
         for f in fallos:
             print("   ", f)
-        return 1
-    print("todo en pie")
-    return 0
+    else:
+        print("todo en pie")
+    # La firma del final. Un código de salida no distingue «he mirado y está mal» de «me he
+    # muerto por el camino»: el 10-sep-2026 un choque de OpenSSL en Windows mató el proceso antes
+    # de que corriera ningún `except`, el sistema devolvió 1, y el despliegue lo contó como que el
+    # sitio respondía mal — estando perfecto. Un proceso que se muere no deja escrito por qué, así
+    # que la señal tiene que ser algo que sólo se escribe al llegar hasta aquí.
+    print(f"{FIRMA} fallos={len(fallos)}")
+    return 1 if fallos else 0
+
+
+#: La firma que `deploy.sh` busca para saber que la comprobación llegó al final. Si no está, no
+#: se ha comprobado nada, diga lo que diga el código de salida.
+FIRMA = "SMOKE-FIN"
+
+#: Lo que significa cada código de salida. `deploy.sh` los distingue, y tiene que hacerlo:
+#: «he mirado y está mal» pide arreglar el sitio, «no he podido mirar» pide arreglar esto —y
+#: saber que el despliegue ha ido a ciegas.
+OK, SITIO_MAL, NO_PUDE = 0, 1, 2
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except SystemExit:
+        raise
+    except BaseException as e:  # noqa: BLE001 — cualquier cosa que impida comprobar
+        # Incluye lo que no es un fallo del sitio: sin red, sin certificados, una biblioteca que
+        # no carga. El 10-sep-2026 fue un choque de OpenSSL en Windows y el despliegue lo contó
+        # como que el sitio respondía mal.
+        print(f"NO HE PODIDO COMPROBAR: {type(e).__name__}: {e}")
+        raise SystemExit(NO_PUDE) from e

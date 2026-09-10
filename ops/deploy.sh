@@ -122,5 +122,17 @@ REMOTE
 # un 500 en inglés con el health en verde todo el tiempo (8-sep-2026). No tumba el despliegue si
 # falla —ya está hecho—; lo que hace falta es enterarse.
 echo "== comprobación del sitio"
-uv run python ops/smoke.py --base "https://pedibot.xyz" || echo "!! el sitio responde mal a algo, mira arriba"
+# `||` a secas no distingue «he mirado y está mal» de «no he podido mirar», y el 10-sep-2026
+# contó un choque de OpenSSL de la máquina local como que el sitio respondía mal, estando bien.
+# Un aviso que a veces miente se acaba ignorando; entonces no sirve la vez que acierta.
+salida=$(uv run python ops/smoke.py --base "https://pedibot.xyz" 2>&1); codigo=$?
+echo "$salida"
+if ! grep -q "SMOKE-FIN" <<<"$salida"; then
+	# Sin la firma, la comprobación no llegó al final: no sabemos nada del sitio. Un proceso que
+	# se muere devuelve 1 igual que uno que ha encontrado fallos, así que el código no vale.
+	echo "!! NO he podido comprobar el sitio: la comprobación no llegó al final (código $codigo)."
+	echo "   El despliegue ha ido a ciegas — mira el sitio a mano y arregla ops/smoke.py"
+elif [ "$codigo" -ne 0 ]; then
+	echo "!! el sitio responde mal a algo, mira arriba"
+fi
 echo "== done: https://pedibot.xyz"
