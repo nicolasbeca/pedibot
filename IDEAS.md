@@ -128,3 +128,26 @@ Virtuals tiene el **Agent Commerce Protocol (ACP)**: un mercado on-chain donde a
 | 8 | Foto solo para signos de alarma (I-10b) | **HECHA** (`/api/photo`, botón 📷; vision-exp; nunca nombra enfermedades) |
 | 9 | Panel privado `/admin` | **HECHA** (basic auth Caddy; métricas, PDBT, conversaciones, flag → golden set) |
 | 10 | Virtuals ACP | **endpoint hecho** (`/api/agent/ask` con clave); registro como proveedor = operador, pasos en `ops/ACP.md` |
+
+## Lote SEO del 10-sep-2026 — medido, en orden de prioridad
+
+> Salen del primer diagnóstico con datos (Search Console + registro del servidor + auditoría del
+> sitio construido). Lo que había que arreglar ya está arreglado (el sitemap que declaraba 296
+> páginas cambiadas cada día, L121-L122); esto es lo que queda y **pide una decisión**.
+>
+> **El aviso honesto que va delante de la lista**: a ojos de Google el sitio tiene catorce días
+> —primera impresión el 26-ago-2026, posición media 69— y en ese punto casi nada de lo de abajo
+> mueve tanto como el simple paso del tiempo y que termine de rastrear. Las dos primeras sí son
+> tapones de verdad: un motor entero al que no llegamos, y la señal que Google mira en salud.
+
+| Id | Prioridad | Idea | Por qué | Coste | Estado |
+|---|---|---|---|---|---|
+| S-01 | **1** | **Verificar el sitio en Bing Webmaster Tools** (se importa desde Search Console en un clic) | **Bing no ha rastreado nunca una página**: 13 peticiones en 7 días, todas a `robots.txt` y al sitemap. `ops/indexnow.py` le avisa a diario y responde 200, así que lo único que falta es la verificación. Es un motor entero —y detrás van DuckDuckGo, Yahoo y Ecosia— al que hoy no llegamos | 0 €, 10 min | nueva — **solo la puede hacer el operador** (necesita cuenta) |
+| S-02 | **2** | **Página de «quién está detrás» + revisor médico**, y sólo entonces `reviewedBy` y `lastReviewed` en el JSON-LD | En salud (YMYL) es la señal de fondo, y hoy no existe: no hay página que explique quién hace esto ni con qué método, y las guías llevan `citation`, `datePublished` y `dateModified` pero ningún revisor. **La página se puede escribir ya y es honesta** (sólo fuentes, verificador de citas, sin anuncios, sin cuentas, sin rastreadores). Las dos propiedades del marcado **no**: ponerlas sin que un pediatra haya revisado sería mentir, y esa es la línea del proyecto | Bajo la página; el revisor depende de V-05 / W-06 | nueva |
+| S-03 | 3 | **Deshacer los 11 pares de páginas de marca casi idénticas** (por idioma): o se diferencian por presentación y concentración, o se consolidan con canónica | Máximo medido: **97 % de solapamiento de 5-gramas entre apirofeno y junifen** (mismo principio activo y mismas presentaciones); 11 pares por encima del 70 %. Es la forma clásica de acabar en «rastreada y descartada», que es exactamente donde están 28 páginas | Medio | nueva |
+| S-04 | 4 | **Acortar los 157 títulos de más de 60 caracteres** | Se cortan en el resultado y se llevan por delante la parte que convence. Afecta al CTR, que hoy es 0,29 % | Bajo | nueva |
+| S-05 | 5 | **Bloquear AhrefsBot y SemrushBot en `robots.txt`** | 1.715 peticiones en 7 días que no traen a nadie. A cambio, dejaríamos de aparecer en las herramientas con las que otros analizan la competencia — que puede interesar o no | Bajo | nueva — decisión del operador |
+
+**Lo que este lote NO incluye, a propósito**: nada de comprar enlaces, granjas de contenido ni
+directorios de pago. La lista «nunca hacer esto» de `CLAUDE.md` ya lo cubre para el token y vale
+igual aquí.
