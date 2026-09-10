@@ -15,9 +15,17 @@ Sale con código 1 si algo falla, para poder encadenarlo detrás de `deploy.sh`.
 from __future__ import annotations
 
 import argparse
+import os
 import time
 
-import httpx
+# `SSLKEYLOGFILE` escribe las claves de sesión TLS en un fichero, y no pinta nada en una
+# comprobación de salud: sirve para depurar TLS y filtra el tráfico de quien la tenga puesta.
+# En Windows, además, algunos antivirus la apuntan a una tubería suya (AVG, 10-sep-2026) y
+# OpenSSL revienta el proceso entero al abrirla — cualquier conexión HTTPS de Python muere sin
+# traza. El despliegue se quedó sin su última comprobación durante horas por esto.
+os.environ.pop("SSLKEYLOGFILE", None)
+
+import httpx  # noqa: E402 — después de limpiar el entorno, que OpenSSL lo lee al conectar
 
 IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 CABECERAS = {"x-pedibot-client": "test", "content-type": "application/json"}

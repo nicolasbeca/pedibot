@@ -125,6 +125,9 @@ echo "== comprobación del sitio"
 # `||` a secas no distingue «he mirado y está mal» de «no he podido mirar», y el 10-sep-2026
 # contó un choque de OpenSSL de la máquina local como que el sitio respondía mal, estando bien.
 # Un aviso que a veces miente se acaba ignorando; entonces no sirve la vez que acierta.
+# Ver el comentario de ops/smoke.py: un antivirus puede apuntar SSLKEYLOGFILE a una tubería
+# y hacer que OpenSSL mate cualquier proceso Python que abra una conexión HTTPS.
+unset SSLKEYLOGFILE
 salida=$(uv run python ops/smoke.py --base "https://pedibot.xyz" 2>&1); codigo=$?
 echo "$salida"
 if ! grep -q "SMOKE-FIN" <<<"$salida"; then
