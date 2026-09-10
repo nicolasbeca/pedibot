@@ -70,6 +70,16 @@ const GENERIC_SLUG: Partial<Record<Lang, Record<string, string>>> = {
   de: { ibuprofen: 'ibuprofen', paracetamol: 'paracetamol' },
 };
 
+/** The two molecules as THIS language spells them, in catalogue order.
+ *
+ * The dose index page's structured data used to say `"Paracetamol, ibuprofen"`: one entity
+ * claiming to be two medicines, hardcoded in English on all eight sites (10-sep-2026). The
+ * spelling already lives in drugs.yaml, per language, and it is the same source the visible
+ * page uses. */
+export function genericNames(lang: Lang): string[] {
+  return Object.values(drugs as any).map((d: any) => d.generic[lang] ?? d.generic.en);
+}
+
 /** Every generic and every brand that has at least one presentation, deduplicated by slug. */
 export function medicines(): Medicine[] {
   const out: Medicine[] = [];

@@ -4,8 +4,12 @@ import DoseCalc from '../../components/DoseCalc.astro';
 import Ors from '../../components/Ors.astro';
 import DoseBrands from '../../components/DoseBrands.astro';
 import { t } from '../../i18n';
+import { genericNames } from '../../dosepages';
 const lang = 'hi'; const s = t(lang);
-const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: s.dosepage_name, about: { '@type': 'Drug', name: 'Paracetamol, ibuprofen' }, audience: { '@type': 'Patient' } };
+// `Drug` hereda de Product en schema.org, así que Google lo trataba como mercancía y
+// exigía offers/review/aggregateRating de un jarabe infantil. `Substance` dice lo mismo
+// sin pasar por Product. Y son dos medicamentos, no uno con el nombre en inglés.
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: s.dosepage_name, about: genericNames(lang).map((n) => ({ '@type': 'Substance', name: n })), audience: { '@type': 'Patient' } };
 ---
 <Base lang={lang} title={s.dosepage_title} description={s.dosepage_desc} path="/hi/dose" jsonld={jsonld}>
   <div class="wrap" style="padding-top:40px">
