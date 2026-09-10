@@ -1,6 +1,6 @@
 # Las URLs que pedir a mano en Search Console
 
-Actualizado el 7-sep-2026. **No están elegidas a ojo**: se le preguntó a Google, una por una, con
+Actualizado el **10-sep-2026**. **No están elegidas a ojo**: se le preguntó a Google, una por una, con
 la API de inspección de URL, cuáles de las páginas de más valor NO tiene.
 
 **Todas van con la dirección completa, para copiar y pegar sin tocarlas.**
@@ -43,82 +43,49 @@ inspección de URL lo dice, y el panel las contará en cuanto empiecen a salir.
 
 ---
 
-## Tanda 2 — el resto de calendarios (mañana)
+## 🔄 Vuelto a medir el 10-sep-2026
 
-**Por qué esta categoría antes que nada:** es la que mejor posiciona de toda la web. Las dos únicas
-consultas no de marca donde salimos por encima del puesto 30 son suyas — «calendario vacunal
-alemania» en el **puesto 11** y «vacuna meningococo» en el **27** — frente al 88-95 de las guías.
-De las 56 que hay (7 países × 8 idiomas), Google no conocía 31.
+Preguntadas las 779 una por una otra vez. **Ha mejorado solo**: de las tandas del 7-sep, Google ya
+tiene la mayoría sin que hiciera falta pedirlas — el anillo de enlaces internos del 9-sep hizo su
+trabajo.
+
+| Estado | URLs |
+|---|---|
+| Enviada e indexada | **557** |
+| Google no reconoce la URL | 194 |
+| Rastreada y descartada | 28 |
+
+Las 194 desconocidas se concentran en los tres idiomas más nuevos (ru 44, pt 43, hi 41) y **no se
+piden a mano**: son 194 días de cupo, y el anillo de enlaces las va metiendo solo. Las 28
+rastreadas y descartadas tampoco: Google las vio y dijo que no, y volver a pedirlas casi nunca
+cambia eso.
+
+### Tanda de hoy — las 12 que sí valen el cupo
+
+Elegidas cruzando con `config/drugs.yaml`: la mitad de las páginas de dosis sin indexar son
+combinaciones idioma × marca sin público (`/hi/dose/doliprane`, `/ru/dose/dalsy`), y pedirlas es
+gastar el cupo. Éstas son marcas que se venden donde se habla ese idioma, y páginas sueltas que
+faltan enteras.
 
 ```
-https://pedibot.xyz/fr/vaccines/br
-https://pedibot.xyz/fr/vaccines/de
-https://pedibot.xyz/fr/vaccines/gb
-https://pedibot.xyz/fr/vaccines/pt
 https://pedibot.xyz/pt/vaccines/br
-https://pedibot.xyz/pt/vaccines/de
 https://pedibot.xyz/pt/vaccines/pt
-https://pedibot.xyz/pt/vaccines/us
-https://pedibot.xyz/ar/vaccines/de
-https://pedibot.xyz/ar/vaccines/fr
-```
-
-### Tanda 3 — diez más
-
-```
-https://pedibot.xyz/ar/vaccines/gb
-https://pedibot.xyz/ar/vaccines/us
-https://pedibot.xyz/ru/vaccines/br
-https://pedibot.xyz/ru/vaccines/de
-https://pedibot.xyz/ru/vaccines/es
-https://pedibot.xyz/ru/vaccines/fr
-https://pedibot.xyz/ru/vaccines/gb
-https://pedibot.xyz/ru/vaccines/pt
-https://pedibot.xyz/ru/vaccines/us
-https://pedibot.xyz/hi/vaccines/de
-```
-
-### Tanda 4 — el último calendario, y las dosis en español
-
-La otra demanda medida y no de marca: «calculadora apiretal» (6 impresiones), «apiretal
-calculadora» (3), «calculadora ibuprofeno» (3), «calcular dosis apiretal» (2). Compiten contra
-blogs, no contra el NHS — es la única categoría donde una web nueva puede ganar de verdad.
-
-**`apirofeno` es la más fácil de ganar de toda la lista**: es *ibuprofeno* mal escrito, la gente
-lo busca así (dos consultas medidas), tenemos la página, y nadie optimiza para una falta de
-ortografía.
-
-Y todas estas cambiaron el 6-sep: llevan ya la calculadora de verdad con su medicamento puesto, y
-el título dice «Calculadora de dosis de X por peso». Pedir la indexación de algo recién cambiado
-vale más que de algo que lleva semanas igual.
-
-```
-https://pedibot.xyz/hi/vaccines/us
-https://pedibot.xyz/es/dose/apirofeno
-https://pedibot.xyz/es/dose/nurofen
-https://pedibot.xyz/es/dose/paracetamol
-https://pedibot.xyz/es/dose/termalgin
-https://pedibot.xyz/es/dose/efferalgan
-https://pedibot.xyz/es/dose/panadol
-https://pedibot.xyz/es/dose/advil
-https://pedibot.xyz/es/dose/motrin
-https://pedibot.xyz/es/dose/tylenol
-```
-
-### Tanda 5 — lo que queda
-
-```
-https://pedibot.xyz/es/dose/doliprane
-https://pedibot.xyz/es/dose/ben
-https://pedibot.xyz/dose/paracetamol
 https://pedibot.xyz/dose/tylenol
-https://pedibot.xyz/es/guides/fiebre_en_ninos_que_temperatura_es_preocupante
-https://pedibot.xyz/es/guides/que_hago_si_mi_hijo_tiene_fiebre
-https://pedibot.xyz/es/guides/puedo_alternar_paracetamol_e_ibuprofeno_para_la_fiebre
-https://pedibot.xyz/guides/can_i_give_my_child_paracetamol_and_ibuprofen_together
+https://pedibot.xyz/pt/dose/tylenol
+https://pedibot.xyz/es/dose/efferalgan
+https://pedibot.xyz/es/dose/apirofeno
+https://pedibot.xyz/es/dose/termalgin
+https://pedibot.xyz/es/dose/motrin
+https://pedibot.xyz/pt/emergency
+https://pedibot.xyz/de/support
+https://pedibot.xyz/de/diary
+https://pedibot.xyz/ar/sources
 ```
 
----
+**Por qué esas y no otras**: las páginas de marca son lo que más rinde del sitio —`/dose/nurofen`
+158 impresiones en 90 días, `/es/dose/apiretal` 139, `/es/dose/dalsy` 107— y **Tylenol, que es la
+marca de paracetamol infantil de Estados Unidos y de Brasil, no está indexada en ninguno de los
+dos idiomas**. El calendario brasileño en portugués tampoco.
 
 ## No las pidas: Google ya las tiene
 
