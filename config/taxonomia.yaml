@@ -20,26 +20,27 @@ topics:
          "mano-pie-boca", "pieds-mains-bouche", "hand foot and mouth", impétigo, impetigo, molusco, molluscum,
          piojo, piojos, liendre, head lice, lice, poux, kopfläuse, kopflause, вши, вшей, قمل, जूं,
          picadura, picaduras, mosquito, insect bite, piqûre, piqure, insektenstich, укус, لدغة, काटने]
-  orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear, throat, tonsil]
+  orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear$, ears$, earache, earwax,
+        throat, tonsil]
   salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
                  "psychische gesundheit", "психическое здоровье", "الصحة النفسية",
                  "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice]
-  lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant, crying, reflux]
+  lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz]
   desarrollo: ["dolores de crecimiento", "growing pains", "douleurs de croissance",
                wachstumsschmerzen, "боли роста", "آلام النمو", desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen]
   medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
-  urinario: [orina, urinaria, urinario, infección de orina, infeccion de orina, cistitis, pis,
-             pipí, pipi, enuresis, mojar la cama, urine, urinary, uti, wee, bedwetting,
+  urinario: [orina, urinaria, urinario, infección de orina, infeccion de orina, cistitis, pis$,
+             pipí, pipi, enuresis, mojar la cama, urine, urinary, uti$, utis$, wee$, bedwetting,
              urinaire, pipi au lit, harnwege, blasenentzündung, blasenentzundung, bettnässen,
              моча, мочевой, недержание, بول, التبول, पेशाब, मूत्र]
   ojos: [conjuntivitis, ojo, ojos, legañas, lagrimeo, conjunctivitis, pink eye, eye,
          conjonctivite, œil, oeil, bindehautentzündung, bindehautentzundung, auge,
          конъюнктивит, глаз, التهاب الملتحمة, عين, आँख, कंजंक्टिवाइटिस]
   dental: [dentición, denticion, diente, dientes, muela, teething, tooth, teeth,
-           poussée dentaire, dent, zahnen, zahn, прорезывание зубов, зуб, تسنين, أسنان,
+           poussée dentaire, dent$, dents$, zahnen, zahn, прорезывание зубов, зуб, تسنين, أسنان,
            दांत, दाँत]
   urgencias: [urgencias, "112", emergencia, sedoanalgesia, emergency, "911", "999"]
   crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]

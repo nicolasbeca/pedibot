@@ -35,7 +35,25 @@ class Taxonomy:
 
 
 def _compile(kws: list[str]) -> re.Pattern[str]:
-    parts = [re.escape(str(k)) for k in kws if str(k).strip()]
-    if not parts:
+    """Las claves casan por prefijo; una acabada en `$` casa la palabra entera y nada más.
+
+    El prefijo es lo que se quiere casi siempre —«vomit» tiene que coger «vomiting» y «vacuna»
+    tiene que coger «vacunación»— pero con ocho idiomas en la misma lista produce falsos amigos.
+    Medido contra el vocabulario de las 483 guías (10-sep-2026): «ear» cogía «early» 85 veces,
+    «infant» cogía «infantil» 62, y de las claves añadidas la víspera, «uti» cogía «utilizar» y
+    «utiliser», «wee» cogía «week» y «weeks», y «dent» cogía «dentro».
+
+    Un tema equivocado no sólo etiqueta mal: multiplica por 1,5 los fragmentos que coinciden con
+    él y por 0,7 todos los demás, y además baja la puerta del «fuente o silencio» de tres
+    términos a uno.
+    """
+    prefijos = [re.escape(str(k)) for k in kws if str(k).strip() and not str(k).endswith("$")]
+    exactas = [re.escape(str(k)[:-1]) for k in kws if str(k).strip().endswith("$")]
+    trozos = []
+    if prefijos:
+        trozos.append(r"(?:" + "|".join(prefijos) + r")\w*")
+    if exactas:
+        trozos.append(r"(?:" + "|".join(exactas) + r")\b")
+    if not trozos:
         return re.compile(r"(?!x)x")  # never matches (empty keyword list, e.g. "general")
-    return re.compile(r"\b(" + "|".join(parts) + r")\w*", re.I)
+    return re.compile(r"\b(" + "|".join(trozos) + r")", re.I)

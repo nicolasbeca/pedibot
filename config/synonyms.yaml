@@ -301,6 +301,18 @@ en:
   - pantallas
   - sedentarismo
   - actividad física
+  on the tablet:
+  - pantallas
+  - sedentarismo
+  on a tablet:
+  - pantallas
+  - sedentarismo
+  tablet time:
+  - pantallas
+  - sedentarismo
+  ipad:
+  - pantallas
+  - sedentarismo
   cord:
   - cordón umbilical
   - recién nacido
@@ -597,7 +609,9 @@ es_en:
   pantalla:
   - screen time
   - sedentary
-  tablet:
+  tablet$:
+  - screen time
+  tablets$:
   - screen time
   móvil:
   - screen time

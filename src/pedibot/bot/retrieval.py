@@ -126,6 +126,12 @@ class Synonyms:
                 disp = _GUIONES.sub(" ", trigger)
                 if " " in disp:
                     hit = disp in low
+                elif disp.endswith("$"):
+                    # palabra entera: «tablet$» es el aparato y «tableta» es de chocolate — o una
+                    # pastilla, que es peor. Por prefijo, «se ha tomado una tableta de
+                    # paracetamol» expandía a «screen time» y le daba tema de pantallas a una
+                    # pregunta de dosis (10-sep-2026). Misma marca que en la taxonomía.
+                    hit = any(t == disp[:-1] for t in tokens)
                 else:
                     hit = any(t.startswith(disp) for t in tokens)
                 if hit:
