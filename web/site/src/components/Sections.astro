@@ -1,4 +1,5 @@
 ---
+import DosePeek from './DosePeek.astro';
 import { t, langPrefix, type Lang } from '../i18n';
 import sources from '../data/sources.json';
 interface Props { lang: Lang }
@@ -47,7 +48,7 @@ const fill = (text: string) => text.replace(/\{docs\}/g, String(n));
     <p class="eyebrow">{s.dose_eyebrow}</p>
     <h2 style="margin-top:8px">{s.dose_h2}</h2>
     <p class="lede">{s.dose_lede}</p>
-    <p style="margin-top:18px"><a class="btn btn-primary" href={`${langPrefix(lang)}/dose`}>{s.nav_dose} →</a></p>
+    <DosePeek lang={lang} />
   </section>
 
   <section class="block" id="sources">

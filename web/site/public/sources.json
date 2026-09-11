@@ -663,6 +663,45 @@
   "notes": "posología del suero oral por edad; documento regulatorio público"
  },
  {
+  "doc_id": "nhm_in_imnci_chart_booklet",
+  "org": "NHM",
+  "org_full": "National Health Mission, Ministry of Health & Family Welfare, Government of India",
+  "title": "IMNCI chart booklet — Integrated Management of Neonatal and Childhood Illness",
+  "year": 2023,
+  "lang": "en",
+  "topic": "urgencias",
+  "doc_type": "guia_clinica",
+  "usage": "publico",
+  "url": null,
+  "notes": null
+ },
+ {
+  "doc_id": "nhm_in_hbnc_guidelines",
+  "org": "NHM",
+  "org_full": "National Health Mission, Ministry of Health & Family Welfare, Government of India",
+  "title": "Home-Based Newborn Care — operational guidelines (revised 2014)",
+  "year": 2014,
+  "lang": "en",
+  "topic": "recien_nacido",
+  "doc_type": "guia_clinica",
+  "usage": "publico",
+  "url": null,
+  "notes": null
+ },
+ {
+  "doc_id": "nhsrc_in_asha_young_child_care",
+  "org": "NHSRC",
+  "org_full": "National Health Systems Resource Centre, Ministry of Health & Family Welfare, Government of India",
+  "title": "Handbook for ASHA on Home Based Care for Young Child",
+  "year": 2021,
+  "lang": "en",
+  "topic": "auto",
+  "doc_type": "manual",
+  "usage": "publico",
+  "url": null,
+  "notes": null
+ },
+ {
   "doc_id": "nhs_en_fever_in_children",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",

@@ -1,0 +1,134 @@
+---
+/**
+ * Los ocho idiomas, demostrados en vez de contados (11-sep-2026).
+ *
+ * La portada decía «internacional» en una frase y no se veía por ninguna parte. Esto pone la
+ * MISMA pregunta de un padre en los ocho alfabetos: al pasar el ratón por una lengua se lee su
+ * versión, y al pulsarla se va a esa web. No es un adorno — **es el selector de idioma**, que
+ * hasta hoy sólo existía en el menú.
+ *
+ * Las ocho frases son constantes compartidas, no cadenas de `i18n`: el objetivo es que se vean
+ * las ocho a la vez, en cualquier idioma en el que estés. Sólo la etiqueta se traduce.
+ *
+ * Tipografía: el árabe y el devanagari salen de la fuente del sistema, que es exactamente lo que
+ * el sitio ya hace desde septiembre (`Noto Sans Arabic` se nombra pero no se sirve). Cero bytes
+ * añadidos, a cambio de que esas dos líneas no lleven nuestra tipografía. Para una prueba de que
+ * hablamos esas lenguas, es un buen cambio.
+ */
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+
+//: código, etiqueta corta, ruta, dirección y la misma pregunta en esa lengua
+const TONGUES: [Lang, string, string, 'ltr' | 'rtl', string][] = [
+  ['en', 'English', '/', 'ltr', 'Is this fever normal?'],
+  ['es', 'Español', '/es', 'ltr', '¿Esta fiebre es normal?'],
+  ['fr', 'Français', '/fr', 'ltr', 'Cette fièvre est-elle normale ?'],
+  ['de', 'Deutsch', '/de', 'ltr', 'Ist dieses Fieber normal?'],
+  ['ru', 'Русский', '/ru', 'ltr', 'Это нормальная температура?'],
+  ['ar', 'العربية', '/ar', 'rtl', 'هل هذه الحمى طبيعية؟'],
+  ['pt', 'Português', '/pt', 'ltr', 'Esta febre é normal?'],
+  ['hi', 'हिन्दी', '/hi', 'ltr', 'क्या यह बुखार सामान्य है?'],
+];
+---
+
+<section class="tongues" aria-labelledby="tongues-h">
+  <p class="lbl" id="tongues-h">{s.tongues_label}</p>
+
+  <ul class="chips">
+    {TONGUES.map(([code, label, href], i) => (
+      <li>
+        <a
+          href={href}
+          class={`chip${code === lang ? ' here' : ''}`}
+          data-i={i}
+          lang={code}
+          aria-current={code === lang ? 'page' : undefined}
+        >{label}</a>
+      </li>
+    ))}
+  </ul>
+
+  {/* altura fija: la frase cambia de longitud y de alfabeto, y nada de lo que hay debajo
+      puede moverse por eso */}
+  <p class="say" aria-live="off">
+    {TONGUES.map(([code, , , dir, q], i) => (
+      <span class={`q${i === 0 ? ' on' : ''}`} data-i={i} lang={code} dir={dir}>{q}</span>
+    ))}
+  </p>
+</section>
+
+<style>
+  .tongues { margin: 26px auto 0; max-width: 680px; text-align: center; }
+  .lbl {
+    margin: 0 0 12px; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 7px; justify-content: center; }
+  .chips li { margin: 0; }
+  .chip {
+    display: inline-block; padding: 5px 12px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink-2);
+    font-size: .86rem; text-decoration: none; line-height: 1.5;
+    transition: transform .16s ease, background-color .16s ease, border-color .16s ease, color .16s ease;
+  }
+  .chip:hover, .chip:focus-visible { background: var(--mint); border-color: var(--mint-2); color: var(--ink); transform: translateY(-2px); }
+  .chip.here { background: var(--mint-2); border-color: var(--mint-2); color: var(--sage-deep); font-weight: 600; }
+  .chip.lit { background: var(--mint); border-color: var(--mint-2); color: var(--ink); }
+
+  .say {
+    position: relative; margin: 16px 0 0; min-height: 2.6em;
+    display: grid; place-items: center;
+  }
+  .q {
+    grid-area: 1 / 1; margin: 0; font-size: 1.18rem; color: var(--ink);
+    opacity: 0; transform: translateY(5px); transition: opacity .32s ease, transform .32s ease;
+  }
+  .q.on { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chip, .q { transition: none; }
+    .chip:hover, .chip:focus-visible { transform: none; }
+  }
+  @media (max-width: 520px) { .say .q { font-size: 1.04rem; } }
+</style>
+
+<script>
+  // Rueda sola para que se vean los ocho alfabetos sin tocar nada; el ratón o el teclado la
+  // paran en la lengua que se esté mirando. Con `prefers-reduced-motion` no rueda: se queda
+  // en la primera y sólo responde al ratón, que es lo que esa preferencia pide.
+  const zona = document.querySelector('.tongues');
+  if (zona) {
+    const chips = [...zona.querySelectorAll<HTMLElement>('.chip')];
+    const frases = [...zona.querySelectorAll<HTMLElement>('.q')];
+    const quieto = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let i = 0;
+    let reloj: number | undefined;
+
+    const pon = (n: number) => {
+      i = (n + frases.length) % frases.length;
+      frases.forEach((f, k) => f.classList.toggle('on', k === i));
+      chips.forEach((c, k) => c.classList.toggle('lit', k === i));
+    };
+    const anda = () => {
+      if (quieto.matches) return;
+      clearInterval(reloj);
+      reloj = setInterval(() => pon(i + 1), 2600) as unknown as number;
+    };
+    const para = () => clearInterval(reloj);
+
+    chips.forEach((c, k) => {
+      const fija = () => { para(); pon(k); };
+      c.addEventListener('mouseenter', fija);
+      c.addEventListener('focus', fija);
+      c.addEventListener('mouseleave', anda);
+      c.addEventListener('blur', anda);
+    });
+    // fuera de la pestaña no tiene sentido gastar nada
+    document.addEventListener('visibilitychange', () => (document.hidden ? para() : anda()));
+    quieto.addEventListener('change', () => (quieto.matches ? para() : anda()));
+    pon(0);
+    anda();
+  }
+</script>

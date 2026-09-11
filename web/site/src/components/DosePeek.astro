@@ -1,0 +1,119 @@
+---
+/**
+ * La dosis, moviéndose (11-sep-2026).
+ *
+ * La sección de dosis de la portada era volanta, titular, entradilla y un botón, igual que las
+ * otras cuatro. Y resulta que las páginas de dosis son **las más visitadas de todo el sitio**
+ * (`/dose/nurofen`, `/es/dose/apiretal`, `/es/dose/dalsy`), así que era lo que más merecía verse.
+ *
+ * Mueves el peso y cambian los miligramos. **Ninguna cifra se calcula aquí**: la tabla la genera
+ * `scripts/export_catalog.py` llamando al módulo clínico de verdad, y este componente sólo la
+ * consulta. Ni una petición a la API —el límite es de 20 por IP cada diez minutos y un deslizador
+ * se lo comería— ni una segunda implementación del cálculo, que es lo que el proyecto lleva
+ * prohibiendo desde el primer día. `tests/test_dose_table_export.py` vigila que la tabla
+ * publicada siga diciendo lo mismo que la calculadora.
+ *
+ * Sólo paracetamol, y a propósito: sin edad, el ibuprofeno se niega a dar cifra, y un deslizador
+ * de peso no sabe la edad. Para eso está la calculadora entera, enlazada debajo.
+ */
+import { t, langPrefix, type Lang } from '../i18n';
+import { formLabel } from '../dosepages';
+import tabla from '../data/dose_table.json';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+
+const pesos = Object.keys(tabla.rows).map(Number).sort((a, b) => a - b);
+const inicio = 14; // un niño de unos tres años: el caso del que más se pregunta
+// pintado ya desde el servidor: sin esto, la primera pintada enseña «—» hasta que corre el
+// script, y quien navegue sin JavaScript no vería ninguna cifra nunca
+const fila0 = (tabla.rows as Record<string, { mg: number; ml: Record<string, number> }>)[inicio.toFixed(1)];
+---
+
+<div class="peek">
+  <p class="peek-h">{s.peek_h}</p>
+
+  <div class="read">
+    <output class="mg" id="peek-mg" for="peek-kg">{fila0.mg} mg</output>
+    <span class="per">{s.peek_per_dose}</span>
+    <span class="every">· {s.dose_every} 4–6 h</span>
+  </div>
+
+  <label class="slide">
+    <span class="kglabel">{s.weight}: <b id="peek-kglab">{inicio} kg</b></span>
+    <input
+      id="peek-kg" type="range" min={pesos[0]} max={pesos[pesos.length - 1]} step="0.5"
+      value={inicio} aria-label={s.weight}
+    />
+  </label>
+
+  <ul class="ml" id="peek-ml">
+    {tabla.presentations.map((p: string) => (
+      <li><b data-pres={p}>{fila0.ml[p]} ml</b> <span>{formLabel(p, lang)}</span></li>
+    ))}
+  </ul>
+
+  <p class="fine">{s.dose_check}</p>
+  <p class="more"><a class="btn btn-primary" href={`${langPrefix(lang)}/dose`}>{s.nav_dose} →</a></p>
+</div>
+
+<script define:vars={{ FILAS: tabla.rows, INICIO: inicio }}>
+  const campo = document.getElementById('peek-kg');
+  if (campo) {
+    const mg = document.getElementById('peek-mg');
+    const kglab = document.getElementById('peek-kglab');
+    const celdas = [...document.querySelectorAll('#peek-ml b')];
+    const pinta = () => {
+      const kg = Number(campo.value).toFixed(1);
+      const fila = FILAS[kg];
+      kglab.textContent = `${Number(kg)} kg`;
+      if (!fila) return;
+      mg.textContent = `${fila.mg} mg`;
+      celdas.forEach((c) => {
+        const v = fila.ml[c.dataset.pres];
+        c.textContent = v === undefined ? '—' : `${v} ml`;
+      });
+    };
+    campo.addEventListener('input', pinta);
+    pinta();
+  }
+</script>
+
+<style>
+  .peek { margin-top: 18px; }
+  .peek-h { margin: 0 0 14px; font-size: .95rem; color: var(--ink-2); }
+
+  .read { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .mg {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: clamp(2.2rem, 7vw, 3.2rem); font-weight: 700; color: var(--sage-deep);
+    line-height: 1.05; font-variant-numeric: tabular-nums;
+  }
+  .per { font-size: 1rem; color: var(--ink-2); }
+  .every { font-size: .9rem; color: var(--ink-3); }
+
+  .slide { display: block; margin-top: 14px; max-width: 460px; }
+  .kglabel { display: block; font-size: .88rem; color: var(--ink-2); margin-bottom: 6px; }
+  .kglabel b { font-family: 'JetBrains Mono', ui-monospace, monospace; color: var(--ink); }
+  .slide input {
+    width: 100%; accent-color: var(--sage); height: 28px; cursor: grab;
+  }
+  .slide input:active { cursor: grabbing; }
+
+  .ml { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .ml li {
+    margin: 0; padding: 9px 14px; border-radius: 14px; background: var(--mint);
+    border: 1px solid var(--mint-2); transition: transform .16s ease;
+  }
+  .ml li:hover { transform: translateY(-2px); }
+  .ml b {
+    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 1.05rem;
+    color: var(--sage-deep); font-variant-numeric: tabular-nums;
+  }
+  .ml span { display: block; font-size: .78rem; color: var(--ink-2); }
+
+  .fine { margin: 14px 0 0; font-size: .82rem; color: var(--ink-3); }
+  .more { margin-top: 16px; }
+
+  @media (prefers-reduced-motion: reduce) { .ml li { transition: none; } .ml li:hover { transform: none; } }
+</style>

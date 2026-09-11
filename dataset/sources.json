@@ -212,7 +212,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
-  "url": "https://www.cdc.gov/antibiotic-use/ear-infection.html",
+  "url": "https://www.cdc.gov/ear-infection/about/",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-03"
  },
  {
@@ -224,7 +224,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
-  "url": "https://www.cdc.gov/flu/highrisk/children.htm",
+  "url": "https://www.cdc.gov/flu/highrisk/children.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-03"
  },
  {
@@ -248,7 +248,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
-  "url": "https://www.cdc.gov/antibiotic-use/colds.html",
+  "url": "https://www.cdc.gov/common-cold/treatment/",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-03"
  },
  {
@@ -656,7 +656,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
-  "url": "https://medlineplus.gov/childhoodimmunization.html",
+  "url": "https://medlineplus.gov/childhoodvaccines.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-03"
  },
  {
@@ -1376,7 +1376,7 @@
   "lang": "es",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
-  "url": "https://medlineplus.gov/spanish/childhoodimmunization.html",
+  "url": "https://medlineplus.gov/spanish/childhoodvaccines.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-03"
  },
  {
@@ -1416,6 +1416,30 @@
   "notes": ""
  },
  {
+  "doc_id": "nhm_in_hbnc_guidelines",
+  "org": "NHM",
+  "org_full": "National Health Mission, Ministry of Health & Family Welfare, Government of India",
+  "title": "Home-Based Newborn Care — operational guidelines (revised 2014)",
+  "year": 2014,
+  "lang": "en",
+  "topic": "recien_nacido",
+  "doc_type": "guia_clinica",
+  "url": "",
+  "notes": ""
+ },
+ {
+  "doc_id": "nhm_in_imnci_chart_booklet",
+  "org": "NHM",
+  "org_full": "National Health Mission, Ministry of Health & Family Welfare, Government of India",
+  "title": "IMNCI chart booklet — Integrated Management of Neonatal and Childhood Illness",
+  "year": 2023,
+  "lang": "en",
+  "topic": "urgencias",
+  "doc_type": "guia_clinica",
+  "url": "",
+  "notes": ""
+ },
+ {
   "doc_id": "nhs_en_anaphylaxis",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -1448,7 +1472,7 @@
   "lang": "en",
   "topic": "lactante",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/baby/babys-development/teething/baby-teething-symptoms/",
+  "url": "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1460,7 +1484,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/bedwetting/",
+  "url": "https://www.nhs.uk/symptoms/bedwetting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1496,7 +1520,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/baby/caring-for-a-newborn/",
+  "url": "https://www.nhs.uk/baby/caring-for-a-newborn/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1592,7 +1616,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/diarrhoea-and-vomiting/",
+  "url": "https://www.nhs.uk/symptoms/diarrhoea-and-vomiting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1736,7 +1760,7 @@
   "lang": "en",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/fever-in-children/",
+  "url": "https://www.nhs.uk/symptoms/fever-in-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1844,7 +1868,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/vaccinations/nhs-vaccinations-and-when-to-have-them/",
+  "url": "https://www.nhs.uk/vaccinations/nhs-vaccinations-and-when-to-have-them/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -1916,7 +1940,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/rashes-babies-and-children/",
+  "url": "https://www.nhs.uk/symptoms/rashes-babies-and-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -2000,7 +2024,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/sore-throat/",
+  "url": "https://www.nhs.uk/symptoms/sore-throat/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
  },
  {
@@ -2084,8 +2108,20 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
-  "url": "https://www.nhs.uk/conditions/baby/weaning-and-feeding/babys-first-solid-foods/",
+  "url": "https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-03"
+ },
+ {
+  "doc_id": "nhsrc_in_asha_young_child_care",
+  "org": "NHSRC",
+  "org_full": "National Health Systems Resource Centre, Ministry of Health & Family Welfare, Government of India",
+  "title": "Handbook for ASHA on Home Based Care for Young Child",
+  "year": 2021,
+  "lang": "en",
+  "topic": "auto",
+  "doc_type": "manual",
+  "url": "",
+  "notes": ""
  },
  {
   "doc_id": "puc_manual_pediatria",

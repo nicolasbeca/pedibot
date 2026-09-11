@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**288 documents from 18 organisations**, in 6 languages, each classified by topic and linked to its original.
+**291 documents from 20 organisations**, in 6 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,11 +30,11 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (142 of 288 do) |
+| `year` | where the document states one (145 of 291 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (243 of 288 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (243 of 291 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -51,6 +51,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | AAP — American Academy of Pediatrics | 4 |
 | AEP — Asociación Española de Pediatría — Protocolos de Neonatología (Doménech, González, Rodríguez-Alarcón) | 2 |
 | Junta de Andalucía — Consejería de Salud de la Junta de Andalucía | 2 |
+| NHM — National Health Mission, Ministry of Health & Family Welfare, Government of India | 2 |
 | AEMPS — Agencia Española de Medicamentos y Productos Sanitarios — CIMA (prospecto autorizado) | 1 |
 | AEPap — Asociación Española de Pediatría de Atención Primaria | 1 |
 | College of the Canyons — College of the Canyons — Open Educational Resource (Paris, Ricardo, Rymond) | 1 |
@@ -58,13 +59,14 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | H. Niño Jesús — Hospital Infantil Universitario Niño Jesús (Casado Flores, Jiménez García) | 1 |
 | H. U. Donostia — Hospital Universitario Donostia — Comité de Política Antibiótica | 1 |
 | Ministerio de Sanidad — Ministerio de Sanidad (España) — Consejo Interterritorial del SNS | 1 |
+| NHSRC — National Health Systems Resource Centre, Ministry of Health & Family Welfare, Government of India | 1 |
 | PUC Chile — Pontificia Universidad Católica de Chile — Escuela de Medicina | 1 |
 
 ## By language
 
 | language | documents |
 |---|---|
-| English (`en`) | 141 |
+| English (`en`) | 144 |
 | Spanish (`es`) | 70 |
 | German (`de`) | 30 |
 | French (`fr`) | 17 |
@@ -86,15 +88,15 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `desarrollo` | 10 |
 | `neurologia` | 10 |
 | `orl` | 9 |
-| `recien_nacido` | 6 |
+| `recien_nacido` | 7 |
+| `urgencias` | 7 |
 | `crianza` | 6 |
-| `urgencias` | 6 |
 | `alergia` | 5 |
 | `intoxicacion` | 5 |
 | `medicamentos` | 4 |
 | `fiebre` | 4 |
 | `lactante` | 4 |
-| `auto` | 2 |
+| `auto` | 3 |
 
 ## How it was put together
 

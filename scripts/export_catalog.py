@@ -157,3 +157,45 @@ sin = sorted(t for t in textos if t not in categorias)
 print(f"topic_category.json: {len(categorias)} temas clasificados, {len(sin)} sin categoría")
 if sin:
     print("  sin categoría:", ", ".join(sin[:12]))
+
+# ---------------------------------------------------------------------------------------------
+# dose_table.json — la dosis de paracetamol por peso, PRECALCULADA con el módulo de verdad.
+#
+# La portada lleva un deslizador de peso (11-sep-2026). Había tres formas de hacerlo y dos eran
+# malas: llamar a `/api/dose` en cada movimiento gasta el límite de 20 peticiones por IP y deja
+# al padre sin poder preguntar después; y calcularlo en JavaScript sería una **segunda
+# implementación de un cálculo clínico**, que puede desviarse de la primera sin que nadie lo vea.
+# Así que la calcula Python con `bot.dose.calculate` y el navegador sólo consulta la tabla.
+#
+# Sólo paracetamol: sin edad, el ibuprofeno se niega a dar cifra (`refer=True`, `age_unknown`),
+# y un deslizador de peso no sabe la edad. Para eso está la calculadora entera, enlazada al lado.
+from pedibot.bot.dose import calculate  # noqa: E402
+
+PESOS = [round(4 + 0.5 * i, 1) for i in range(int((40 - 4) / 0.5) + 1)]
+PRESENTACIONES = ["jarabe 120 mg/5 ml", "gotas 100 mg/ml"]
+
+filas = {}
+for kg in PESOS:
+    r = calculate("paracetamol", float(kg), None)
+    filas[str(kg)] = {
+        "mg": r.mg,
+        "ml": {p: r.ml[p] for p in PRESENTACIONES if p in r.ml},
+        "refer": r.refer,
+    }
+target7 = ROOT / "web" / "site" / "src" / "data" / "dose_table.json"
+target7.write_text(
+    json.dumps(
+        {
+            "drug": "paracetamol",
+            "source": calculate("paracetamol", 10.0, None).drug.source,
+            "interval_hours": list(calculate("paracetamol", 10.0, None).interval_hours),
+            "presentations": PRESENTACIONES,
+            "rows": filas,
+        },
+        ensure_ascii=False,
+        indent=1,
+    )
+    + "\n",
+    encoding="utf-8",
+)
+print(f"dose_table.json: {len(filas)} pesos de paracetamol, {len(PRESENTACIONES)} presentaciones")
