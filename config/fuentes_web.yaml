@@ -5336,3 +5336,213 @@ sources:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/oral-health
   notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11'
+- doc_id: govbr_pt_dengue
+  file: web/govbr_pt_dengue.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Dengue
+  year: null
+  lang: pt
+  topic: fiebre
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/dengue
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_sarampo
+  file: web/govbr_pt_sarampo.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Sarampo
+  year: null
+  lang: pt
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/sarampo
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_coqueluche
+  file: web/govbr_pt_coqueluche.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Coqueluche
+  year: null
+  lang: pt
+  topic: respiratorio
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/coqueluche
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_caxumba
+  file: web/govbr_pt_caxumba.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Caxumba
+  year: null
+  lang: pt
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/caxumba
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_rubeola
+  file: web/govbr_pt_rubeola.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Rubéola
+  year: null
+  lang: pt
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/rubeola
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_tuberculose
+  file: web/govbr_pt_tuberculose.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Tuberculose
+  year: null
+  lang: pt
+  topic: respiratorio
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/tuberculose
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_hepatites_virais
+  file: web/govbr_pt_hepatites_virais.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Hepatites Virais
+  year: null
+  lang: pt
+  topic: digestivo
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/hepatites-virais
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_raiva
+  file: web/govbr_pt_raiva.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Raiva
+  year: null
+  lang: pt
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/raiva
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_aedes_aegypti
+  file: web/govbr_pt_aedes_aegypti.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Aedes aegypti
+  year: null
+  lang: pt
+  topic: fiebre
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/aedes-aegypti
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_chikungunya
+  file: web/govbr_pt_chikungunya.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Chikungunya
+  year: null
+  lang: pt
+  topic: fiebre
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/chikungunya
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_febre_amarela
+  file: web/govbr_pt_febre_amarela.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Febre amarela
+  year: null
+  lang: pt
+  topic: fiebre
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/febre-amarela
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_meningite
+  file: web/govbr_pt_meningite.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Meningite
+  year: null
+  lang: pt
+  topic: neurologia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/meningite
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_poliomielite
+  file: web/govbr_pt_poliomielite.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Poliomielite
+  year: null
+  lang: pt
+  topic: vacunas
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/poliomielite
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
+- doc_id: govbr_pt_vacinacao
+  file: web/govbr_pt_vacinacao.html
+  org: Ministério da Saúde
+  org_full: Ministério da Saúde (Brasil)
+  title: Vacinação
+  year: null
+  lang: pt
+  topic: vacunas
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: citar_solo
+  age_groups:
+  - todas
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/vacinacao
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'

@@ -31,6 +31,18 @@ ORGS = {
         "evidence": "organismo_publico",
         "usage": "publico",
     },
+    # Brasil. Licencia leída en el pie de sus propias fichas: «Todo o conteúdo deste site está
+    # publicado sob a licença Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada».
+    # SemDerivações = citar sí, reelaborar no, así que entra como `citar_solo`: el bot lo cita
+    # y el generador de guías NO puede reproducirlo. Es la primera fuente en portugués del
+    # corpus, que hasta hoy tenía CERO documentos en esa lengua (11-sep-2026).
+    "govbr": {
+        "org": "Ministério da Saúde",
+        "org_full": "Ministério da Saúde (Brasil)",
+        "license": "CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada)",
+        "evidence": "organismo_publico",
+        "usage": "citar_solo",
+    },
     "mlp": {
         "org": "MedlinePlus",
         "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -760,6 +772,24 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/hiv-aids", "general", "ru", ["todas"]),
     ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/diphtheria", "vacunas", "ru", ["todas"]),
     ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/oral-health", "dental", "ru", ["todas"]),
+    # ---------------- Ministério da Saúde (Brasil), 11-sep-2026 ----------------
+    # Las catorce que respondieron 200 con texto servido (11.000-17.500 caracteres). Las
+    # otras doce que probé dan 404: su «Saúde de A a Z» no cubre desnutrición, anemia,
+    # lactancia ni verminosis, que hay que buscar por otra vía.
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/dengue", "fiebre", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/sarampo", "piel", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/coqueluche", "respiratorio", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/caxumba", "general", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/rubeola", "piel", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/tuberculose", "respiratorio", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/hepatites-virais", "digestivo", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/raiva", "accidentes", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/aedes-aegypti", "fiebre", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/chikungunya", "fiebre", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/febre-amarela", "fiebre", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/meningite", "neurologia", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/poliomielite", "vacunas", "pt", ["todas"]),
+    ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/vacinacao", "vacunas", "pt", ["todas"]),
 ]
 
 _DATE_PATTERNS = [
