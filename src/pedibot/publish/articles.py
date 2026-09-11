@@ -301,6 +301,52 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         ],
         "query": "head injury what to watch for 48 hours",
     },
+    # ── Lote del 11-sep-2026: los temas que el corpus ya sostenía y el plan no tenía ──────────
+    # El plan estaba hecho desde la pediatría española y británica: fiebre, otitis, dentición,
+    # piojos, pantallas. Faltaba entero lo que mata y preocupa donde el proyecto quiere llegar,
+    # y que las fichas de la OMS llevan indexadas en cinco lenguas desde el 3 de septiembre.
+    "desnutricion": {
+        # no hay ficha de la OMS en castellano para esto; la recuperación cruza igual
+        "docs": ["who_en_malnutrition", "who_fr_malnutrition",
+                 "who_ar_malnutrition", "who_ru_malnutrition"],
+        "query": "desnutrición infantil signos peso talla cuándo consultar malnutrition child",
+    },
+    "ahogamiento": {
+        "docs": ["cdc_en_drowning_prevention_index", "who_ar_drowning", "who_ru_drowning"],
+        "query": "prevenir ahogamiento niños agua piscina supervisión drowning prevention",
+    },
+    "tuberculosis": {
+        "docs": ["who_ar_tuberculosis", "who_ru_tuberculosis"],
+        "query": "tuberculosis en niños síntomas tos prolongada contacto tuberculosis children",
+    },
+    "malaria": {
+        "docs": ["who_en_malaria"],
+        "query": "malaria niño fiebre zona endémica mosquitera urgente malaria child fever",
+    },
+    "hepatitis_b": {
+        "docs": ["who_ar_hepatitis_b", "who_ru_hepatitis_b"],
+        "query": "hepatitis B niños transmisión vacuna hepatitis B children vaccine",
+    },
+    "poliomielitis": {
+        "docs": ["rki_de_ratgeber_poliomyelitis", "who_ar_poliomyelitis", "who_ru_poliomyelitis"],
+        "query": "poliomielitis vacuna parálisis niños polio vaccine paralysis",
+    },
+    "vacunas_atrasadas": {
+        "docs": ["who_en_immunization_coverage", "who_es_immunization_coverage",
+                 "who_fr_immunization_coverage", "who_ar_immunization_coverage",
+                 "who_ru_immunization_coverage"],
+        "query": "vacunas atrasadas ponerse al día calendario incompleto catch up immunization",
+    },
+    "hepatitis_a": {
+        "docs": ["rki_de_ratgeber_hepatitisa"],
+        "query": "hepatitis A niños agua alimentos higiene vacuna hepatitis A children",
+    },
+    "senales_autismo": {
+        # el informe de la OMS es `citar_solo`: el bot puede citarlo, un artículo no puede
+        # reproducirlo. MedlinePlus es dominio público (lo cazó test_publish_licences)
+        "docs": ["mlp_en_autismspectrumdisorder"],
+        "query": "señales de autismo en niños desarrollo comunicación autism signs children",
+    },
     "teen_mental_health": {
         "docs": ["mlp_en_teenmentalhealth", "who_en_adolescent_mental_health"],
         "query": "teen mental health anxiety depression signs",

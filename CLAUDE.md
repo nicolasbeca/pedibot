@@ -104,6 +104,7 @@ make deploy      # rsync + restart units en el VPS
 - **[STATE.md](STATE.md)** — estado vivo: fase actual, qué hay desplegado, deudas, calendario.
 - **[LESSONS.md](LESSONS.md)** — lecciones aprendidas (arranca con las heredadas de la v1 y de MultiBot que aplican aquí).
 - **[IDEAS.md](IDEAS.md)** — cuaderno de ideas y mejoras sin decidir.
+- **[WEB.md](WEB.md)** — la web: decisiones tomadas, lo que corre solo, y lo que queda.
 - **[FUENTES/CATALOGO.md](FUENTES/CATALOGO.md)** — inventario de las 50 fuentes: organismo, año, tema, estado de texto/OCR, licencia de uso.
 
 ## Lista "Nunca hacer esto"

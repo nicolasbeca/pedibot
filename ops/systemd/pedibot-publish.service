@@ -1,0 +1,12 @@
+[Unit]
+Description=PediBot: guias nuevas, repartidas entre los ocho idiomas
+
+[Service]
+Type=oneshot
+User=pedibot
+WorkingDirectory=/opt/pedibot
+EnvironmentFile=/opt/pedibot/.env
+Environment=PYTHONIOENCODING=utf-8
+# elige las dos lenguas cuya guia mas reciente sea mas antigua, y solo entre las que tienen cola.
+# No sindica: lo que sale a Bluesky lo deciden pedibot-social-*, que saben en que lengua hablan
+ExecStart=/opt/pedibot/.local/bin/uv run --no-dev python ops/publish_daily.py --n 2

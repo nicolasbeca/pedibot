@@ -1,0 +1,11 @@
+[Unit]
+Description=PediBot, guias nuevas: todos los dias a las 06:30 Europe/Madrid
+
+[Timer]
+# antes que IndexNow (07:15), para que lo escrito esta noche se avise el mismo dia
+OnCalendar=*-*-* 06:30:00 Europe/Madrid
+Persistent=true
+Unit=pedibot-publish.service
+
+[Install]
+WantedBy=timers.target
