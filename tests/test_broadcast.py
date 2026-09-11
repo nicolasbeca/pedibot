@@ -65,7 +65,7 @@ def test_no_repite_guia_hasta_agotar_las_de_su_idioma(tmp_path):
     assert not repetidas, f"repite la misma guía la semana siguiente en {repetidas}"
 
 
-@pytest.mark.parametrize("lang", ["en", "es"])
+@pytest.mark.parametrize("lang", ["en"])
 def test_todo_cabe_en_bluesky(lang, tmp_path):
     p = broadcast.project_post(lang=lang, state_path=tmp_path / f"{lang}.json")
     assert len(p.text()) <= 300

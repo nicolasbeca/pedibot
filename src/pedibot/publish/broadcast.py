@@ -26,9 +26,11 @@ from pedibot.settings import ROOT
 LANGS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
 #: Cada mensaje dice UNA cosa verdadera y lleva a la página donde se comprueba. Sin superlativos,
-#: sin etiquetas y sin hablar de dinero. Sólo inglés y castellano: son los dos públicos que el
-#: registro de búsqueda enseña de verdad (España 365 impresiones, EE. UU. 191 en 90 días), y las
-#: ocho lenguas ya salen cada semana en la publicación de guías.
+#: sin etiquetas y sin hablar de dinero.
+#:
+#: **La cuenta de Bluesky habla inglés** (decisión del operador, 11-sep-2026). Se deja indexado
+#: por idioma y no como una lista suelta porque añadir otro es entonces añadir una clave, y
+#: porque `project_post` ya sabe alternar si algún día hay dos.
 PROJECT_POSTS: dict[str, list[dict[str, str]]] = {
     "en": [
         {
@@ -61,39 +63,6 @@ PROJECT_POSTS: dict[str, list[dict[str, str]]] = {
             "text": "Ask in any of {languages} languages. The warning-sign rules are written in "
             "all of them, not translated from one — that difference is the safety layer.",
             "path": "/",
-        },
-    ],
-    "es": [
-        {
-            "text": "PediBot responde sobre tu hijo a partir de {documents} documentos "
-            "pediátricos verificados: AEP, SEUP, AEPap, OMS, NHS y más. Si las fuentes no lo "
-            "dicen, PediBot no lo dice.",
-            "path": "/es",
-        },
-        {
-            "text": "Paracetamol e ibuprofeno por peso, leídos de tablas fijas de la guía de "
-            "dosificación. El modelo no multiplica nunca.",
-            "path": "/es/dose",
-        },
-        {
-            "text": "Calendarios de vacunación infantil de {schedules} países, cada uno "
-            "transcrito de su fuente oficial y con su fecha.",
-            "path": "/es/vaccines",
-        },
-        {
-            "text": "¿Cuándo hay que ir a urgencias? Una lista hecha con los signos de alarma de "
-            "las hojas de urgencias pediátricas, y el teléfono de {countries} países.",
-            "path": "/es/emergency",
-        },
-        {
-            "text": "{guides} guías para padres, con el organismo del que sale cada frase al pie "
-            "de la página. Gratis, sin cuenta y sin rastreadores.",
-            "path": "/es/guides",
-        },
-        {
-            "text": "Pregunta en {languages} idiomas. Las reglas de los signos de alarma están "
-            "escritas en todos, no traducidas de uno — esa diferencia es la capa de seguridad.",
-            "path": "/es",
         },
     ],
 }
