@@ -14,6 +14,7 @@
 | | |
 |---|---|
 | Páginas | **792** en el sitemap, 8 idiomas (en, es, fr, de, ru, ar, pt, hi) |
+| Corpus | **405 documentos, 7.850 pasajes**. Por idioma: en 169, es 94, fr 40, ar 38, ru 38, de 30, **pt 0, hi 0** |
 | Guías | 485 y subiendo: se publican solas, 2 al día |
 | Indexadas en Google | **557 de 779**; 194 que no conoce, 28 rastreadas y descartadas |
 | Bing | Verificado, sitemap entregado sin errores, IndexNow recibiendo — **y sin rastrear páginas** |
@@ -80,11 +81,19 @@ sin que nadie se enterara.
      transcrito del PDF oficial, con candado para las siete diferencias que un europeo
      corregiría por instinto (MR y no MMR, pentavalente, OPV oral, fIPV, semanas en vez de
      meses, PCV y JE no nacionales, Td a los 10 y 16 años).
-   - ⬜ **Hindi sigue con cero documentos indexados.** La licencia ya está abierta: falta elegir
-     qué páginas de la NHM se indexan y comprobar que el texto se extrae.
-   - ⬜ **Países árabes**: 15 documentos, todos fichas de la OMS, y ningún calendario propio.
-     Siguiente: OMS EMRO en árabe (misma licencia ya aceptada) y el calendario de Arabia Saudí
-     o Emiratos.
+   - ✅ **Árabe: de 15 a 38 documentos** (11-sep). 23 fichas de la OMS en cinco idiomas —malaria,
+     dengue, tifoidea, hepatitis A, anemia, sepsis, mordedura de serpiente, lombrices, sarna,
+     agua potable, rabia, difteria, tétanos— porque el corpus era pediatría europea y no tenía
+     nada de lo que mata fuera de ella.
+   - ✅ **Y se pueden alcanzar**: 20 de 35 preguntas no llegaban a su documento (taxonomía y
+     puentes de sinónimos). Ahora 35 de 35, con candado.
+   - ⬜ **Hindi sigue con cero documentos propios.** No existe corpus pediátrico en hindi con
+     licencia abierta y texto utilizable: el único candidato serio está en codificación Krutidev
+     (L128). Las preguntas hindi se responden puenteando al inglés, que ya funciona.
+   - ⬜ **EMRO y el ministerio saudí se pintan con JavaScript**: EMRO devuelve la misma página
+     para cualquier URL (4.413 caracteres idénticos) y `moh.gov.sa` devuelve 170. Leerlos
+     necesitaría un navegador de verdad; es una decisión aparte.
+   - ⬜ **Ningún calendario vacunal de país árabe.** India ya está.
 2. **Diez padres.** De 278 consultas en la base, 273 son pruebas. Sin lectores, nada de lo demás
    importa.
 3. **Nadie enlaza al sitio.** Bluesky es el único enlace vivo, y LaunchLeague nunca llegó a
