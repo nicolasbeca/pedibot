@@ -14,7 +14,8 @@
 | | |
 |---|---|
 | Páginas | **792** en el sitemap, 8 idiomas (en, es, fr, de, ru, ar, pt, hi) |
-| Corpus | **405 documentos, 7.850 pasajes**. Por idioma: en 169, es 94, fr 40, ar 38, ru 38, de 30, **pt 0, hi 0** |
+| Corpus | **419 documentos, 7.934 pasajes**. Por idioma: en 166, es 93, fr 40, ar 38, ru 38, de 30, pt 14, **hi 0** |
+| Capa de seguridad | **44 reglas de alarma** en 8 lenguas, todas con documento que las respalda (auditado). Fuera de Europa: 25 de 25 |
 | Guías | 485 y subiendo: se publican solas, 2 al día |
 | Indexadas en Google | **557 de 779**; 194 que no conoce, 28 rastreadas y descartadas |
 | Bing | Verificado, sitemap entregado sin errores, IndexNow recibiendo — **y sin rastrear páginas** |

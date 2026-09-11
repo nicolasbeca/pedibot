@@ -1366,6 +1366,11 @@ rules:
   reason_fr: Mal de ventre fort, continu, qui empire
   patterns:
   - dolor (de barriga|abdominal|de tripa).{0,60}(muy fuerte|insoportable|no para|empeora|continuo)
+  - dolor (de barriga|abdominal|de tripa|de vientre).{0,30}(intens|agud|terrible)
+  - le duele (mucho|much[ií]simo) (la barriga|la tripa|el abdomen|el vientre)
+  - douleur abdominale.{0,40}(intense|aigu)
+  - tr[eè]s mal au ventre
+  - сильн\w{0,4} бол\w{0,3} в живот
   - (abdomen|barriga|tripa|vientre).{0,30}(tenso|duro|hinchad|distendid)
   - (tummy|abdomen|belly).{0,30}(tense|hard|swollen|distended)
   - (swollen|hard|tense|distended|rigid)[a-z ,]{0,18}(tummy|abdomen|belly)
@@ -2276,6 +2281,122 @@ rules:
   - ((हाथ|पैर)[^.]{0,25}ठंडे|ठंडे (हाथ|पैर))[^.]{0,70}(बुख|तापमान|3[89])
   - (बुख|तापमान|3[89])[^.]{0,70}((हाथ|पैर)[^.]{0,25}ठंडे|ठंडे (हाथ|पैर))
 
+# ── Lote del 11-sep-2026: lo que mata fuera de Europa ──────────────────────────────────────
+# Las reglas se escribieron desde la pediatría europea. Al indexar las fichas de la OMS de
+# malaria, dengue, rabia y tétanos se midió si el triaje conocía SUS urgencias: 17 de 25
+# preguntas salían como rutina y tres categorías no tenían ninguna regla.
+- id: snakebite
+  level: emergency
+  source: who_en_snakebite_envenoming
+  reason_es: "Mordedura de serpiente: hay que ir a urgencias ahora, sin torniquete y sin cortar la herida"
+  reason_en: "Snake bite: go to emergency now — no tourniquet, no cutting the wound"
+  reason_fr: "Morsure de serpent : urgences tout de suite, sans garrot et sans inciser"
+  reason_de: "Schlangenbiss: sofort in die Notaufnahme — keine Abbindung, nicht einschneiden"
+  reason_ru: "Укус змеи: немедленно в неотложную помощь — без жгута и без надрезов"
+  reason_ar: "لدغة أفعى: إلى الطوارئ الآن — بلا رباط ضاغط وبلا شق الجرح"
+  reason_pt: "Mordedura de cobra: urgência agora — sem garrote e sem cortar a ferida"
+  reason_hi: "साँप का काटना: अभी आपातकाल में जाएँ — पट्टी न बाँधें, घाव न काटें"
+  patterns:
+  - "(serpiente|v[íi]bora|culebra).{0,40}(mordi|pic[óo]|pica)"
+  - "(mordi|pic[óo]|picad).{0,40}(serpiente|v[íi]bora|culebra)"
+  - "(snake|viper|adder|cobra).{0,40}(bit|bite|bitten)"
+  - "(bit|bitten|bite).{0,40}(snake|viper|adder)"
+  - "(serpent|vip[èe]re).{0,40}(mord|piqu)"
+  - "(mord|piqu).{0,40}(serpent|vip[èe]re)"
+  - "(schlange|viper|kreuzotter).{0,40}(gebissen|biss)"
+  - "(gebissen|biss).{0,40}(schlange|viper|kreuzotter)"
+  - "(зме|гадюк|кобр).{0,40}(укус|ужалил)"
+  - "(укус|ужалил).{0,40}(зме|гадюк|кобр)"
+  - "(أفعى|ثعبان|حية|أفاعي).{0,40}(لدغ|عض)"
+  - "(لدغ|عض).{0,40}(أفعى|ثعبان|حية)"
+  - "(cobra|serpente|v[íi]bora).{0,40}(picad|picou|mordeu|morde)"
+  - "(picad|picou|mordeu).{0,40}(cobra|serpente|v[íi]bora)"
+  - "(साँप|सांप|नाग|सर्प).{0,40}(काट|डस)"
+  - "(काट|डस).{0,40}(साँप|सांप|नाग|सर्प)"
+- id: mammal_bite
+  level: urgent
+  source: who_en_rabies
+  reason_es: "Mordedura de un animal: hay que lavarla y que la vea un médico HOY, por la rabia y el tétanos"
+  reason_en: "Animal bite: wash it and have a doctor see it TODAY — rabies and tetanus"
+  reason_fr: "Morsure d'animal : laver et faire voir par un médecin AUJOURD'HUI — rage et tétanos"
+  reason_de: "Tierbiss: auswaschen und HEUTE ärztlich ansehen lassen — Tollwut und Tetanus"
+  reason_ru: "Укус животного: промыть и показать врачу СЕГОДНЯ — бешенство и столбняк"
+  reason_ar: "عضة حيوان: اغسلها واعرضها على طبيب اليوم — داء الكلب والكزاز"
+  reason_pt: "Mordedura de animal: lavar e ser visto por um médico HOJE — raiva e tétano"
+  reason_hi: "जानवर का काटना: धोएँ और आज ही डॉक्टर को दिखाएँ — रेबीज़ और टिटनेस"
+  patterns:
+  - "(perro|gato|murci[ée]lago|mono|zorro|rata).{0,40}(mordi|ha mordido)"
+  - "(mordi|ha mordido).{0,40}(perro|gato|murci[ée]lago|mono|zorro|rata)"
+  - "(dog|cat|bat|monkey|fox|rat).{0,40}(bit|bitten)"
+  - "(bit|bitten|bite from).{0,40}(dog|cat|bat|monkey|fox|rat)"
+  - "(chien|chat|chauve-souris|singe|renard).{0,40}(mordu|mord)"
+  - "(mordu|mord).{0,40}(chien|chat|chauve-souris|singe|renard)"
+  - "(hund|katze|fledermaus|affe|fuchs|ratte).{0,40}(gebissen|biss)"
+  - "(gebissen|biss).{0,40}(hund|katze|fledermaus|affe|fuchs)"
+  - "(собак|кошк|летуч|обезьян|лис).{0,40}(укус)"
+  - "(укус).{0,40}(собак|кошк|летуч|обезьян|лис)"
+  - "(كلب|قطة|خفاش|قرد|ثعلب).{0,40}(عض|لدغ)"
+  - "(عض|عضة|لدغ).{0,40}(كلب|قطة|خفاش|قرد|ثعلب)"
+  - "(c[ãa]o|cachorro|gato|morcego|macaco|raposa).{0,40}(mordeu|morde)"
+  - "(mordeu|mordida de).{0,40}(c[ãa]o|cachorro|gato|morcego|macaco)"
+  - "(कुत्ते|कुत्ता|बिल्ली|चमगादड़|बंदर|लोमड़ी).{0,40}(काट)"
+  - "(काट).{0,40}(कुत्ते|कुत्ता|बिल्ली|चमगादड़|बंदर)"
+- id: bleeding_with_fever
+  level: urgent
+  source: who_en_dengue_and_severe_dengue
+  reason_es: "Sangrado junto con fiebre: hay que valorarlo hoy, es uno de los signos de alarma del dengue"
+  reason_en: "Bleeding together with fever needs to be seen today — it is one of the dengue warning signs"
+  reason_fr: "Saignement avec fièvre : à voir aujourd'hui, c'est un signe d'alerte de la dengue"
+  reason_de: "Blutung zusammen mit Fieber: heute abklären — eines der Dengue-Warnzeichen"
+  reason_ru: "Кровотечение вместе с температурой: показать врачу сегодня — признак тяжёлой денге"
+  reason_ar: "نزيف مع حمى: يجب الفحص اليوم — من علامات إنذار حمى الضنك"
+  reason_pt: "Sangramento junto com febre: precisa ser visto hoje — é um sinal de alarme da dengue"
+  reason_hi: "बुखार के साथ खून आना: आज ही दिखाएँ — यह डेंगू का चेतावनी संकेत है"
+  patterns:
+  - "(fiebre|d[ée]cimas).{0,70}(le sangran|sangrado|sangra la nar|sangra las enc|vomita sangre)"
+  - "(le sangran|sangrado|sangra la nar|sangra las enc|vomita sangre).{0,70}(fiebre|d[ée]cimas)"
+  - "(fever|temperature).{0,70}(gums are bleeding|bleeding gums|nose is bleeding|vomiting blood|blood in his vomit)"
+  - "(gums are bleeding|bleeding gums|vomiting blood).{0,70}(fever|temperature)"
+  - "(fi[èe]vre).{0,70}(gencives saignent|saignement|vomit du sang)"
+  - "(gencives saignent|saignement de nez|vomit du sang).{0,70}(fi[èe]vre)"
+  - "(fieber).{0,70}(zahnfleisch blutet|blutung|blut erbrochen)"
+  - "(zahnfleisch blutet|blutung|blut erbrochen).{0,70}(fieber)"
+  - "(температур|жар).{0,70}(кровоточ|кровотеч|рвота с кровью)"
+  - "(кровоточ|кровотеч|рвота с кровью).{0,70}(температур|жар)"
+  - "(حمى|حرارة).{0,70}(نزيف|تنزف|ينزف)"
+  - "(نزيف|تنزف|ينزف).{0,70}(حمى|حرارة)"
+  - "(febre).{0,70}(gengivas.{0,20}sangr|sangramento|vomita sangue)"
+  - "(gengivas.{0,20}sangr|sangramento|vomita sangue).{0,70}(febre)"
+  - "(बुखार|बुख़ार).{0,70}(खून आ|खून बह|रक्तस्राव)"
+  - "(खून आ|खून बह|रक्तस्राव).{0,70}(बुखार|बुख़ार)"
+- id: lockjaw_spasms
+  level: emergency
+  source: who_en_tetanus
+  reason_es: "No puede abrir la boca o tiene espasmos musculares: hay que ir a urgencias ahora"
+  reason_en: "Cannot open the mouth, or muscle spasms: go to emergency now"
+  reason_fr: "Ne peut pas ouvrir la bouche, ou spasmes musculaires : urgences tout de suite"
+  reason_de: "Kann den Mund nicht öffnen oder hat Muskelkrämpfe: sofort in die Notaufnahme"
+  reason_ru: "Не может открыть рот или мышечные спазмы: немедленно в неотложную помощь"
+  reason_ar: "لا يستطيع فتح فمه أو لديه تشنجات عضلية: إلى الطوارئ الآن"
+  reason_pt: "Não consegue abrir a boca, ou espasmos musculares: urgência agora"
+  reason_hi: "मुँह नहीं खोल पा रहा या मांसपेशियों में ऐंठन: अभी आपातकाल में जाएँ"
+  patterns:
+  - "no puede abrir la boca"
+  - "(trismo|mand[íi]bula (r[íi]gida|bloqueada))"
+  - "(cannot|can not|cant|unable to) open (his |her |their )?mouth"
+  - "(lockjaw|trismus|jaw is (locked|stiff))"
+  - "(ne peut pas|n.arrive pas [àa]) ouvrir (la |sa )?bouche"
+  - "(m[âa]choire (bloqu[ée]e|raide))"
+  - "kann (den |ihren |seinen )?mund nicht [öo]ffnen"
+  - "(kiefersperre|kiefer (ist )?steif)"
+  - "не может открыть рот"
+  - "(тризм|челюсть (свело|не открыва))"
+  - "لا يستطيع فتح (فمه|فمها)"
+  - "(تشنج الفك|الفك مغلق)"
+  - "n[ãa]o (consegue|pode) abrir a boca"
+  - "(maxilar (travado|r[íi]gido)|trismo)"
+  - "मुँह नहीं खोल"
+  - "(जबड़ा (जकड़|बंद)|मुंह नहीं खोल)"
 context:
   fever:
   - fi[eè]vre
