@@ -138,4 +138,18 @@ if ! grep -q "SMOKE-FIN" <<<"$salida"; then
 elif [ "$codigo" -ne 0 ]; then
 	echo "!! el sitio responde mal a algo, mira arriba"
 fi
+
+# `smoke.py` pregunta si el sitio responde. Esto pregunta lo otro: si las piezas de DENTRO
+# casan entre sí en la máquina donde vive el producto — índice contra catálogo, reglas de
+# alarma contra fichas, concentraciones contra calculadora, países servidos contra números de
+# emergencia, y si queda materia que publicar. Todo eso tiene candado en tests/, y los
+# candados corren en el PC; esto corre aquí (11-sep-2026).
+echo "== revisión de la instalación en el servidor"
+rev=$($SSH "cd /opt/pedibot && ./.venv/bin/python -m pedibot.cli doctor" 2>&1); codigo_rev=$?
+echo "$rev"
+if ! grep -q "DOCTOR-FIN" <<<"$rev"; then
+	echo "!! la revisión no llegó al final (código $codigo_rev): no sabemos si está sana"
+elif [ "$codigo_rev" -ne 0 ]; then
+	echo "!! la instalación del servidor tiene problemas, mira arriba"
+fi
 echo "== done: https://pedibot.xyz"

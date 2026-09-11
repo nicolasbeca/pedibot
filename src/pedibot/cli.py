@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import csv
 import json
+import os
+from importlib.metadata import version
 from pathlib import Path
 
 import typer
@@ -13,7 +15,36 @@ from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.vaccines import Vaccines
 from pedibot.settings import ROOT, get_settings
 
+#: Las lenguas en las que se publican guías. `doctor` mira que a ninguna se le acabe la
+#: materia: una cola vacía y un proceso roto se leen igual desde fuera (L126).
+LANGS_PUBLICADAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
+
 app = typer.Typer(help="PediBot v2 — pediatric assistant grounded in verified guidelines.")
+
+#: Errores que son del USUARIO, no del programa: se dicen en una línea y se sale con 2, que es
+#: lo que usa `typer` para «me has pedido algo imposible». Una traza de Python de veinte líneas
+#: dice «esto está roto», y no lo está: le han pedido un fármaco que no existe (11-sep-2026).
+def _falla(mensaje: str, pista: str = "") -> typer.Exit:
+    typer.secho(f"error: {mensaje}", fg=typer.colors.RED, err=True)
+    if pista:
+        typer.secho(pista, err=True)
+    return typer.Exit(code=2)
+
+
+def _version_callback(valor: bool) -> None:
+    if valor:
+        typer.echo(f"pedibot {version('pedibot')}")
+        raise typer.Exit()
+
+
+@app.callback()
+def _raiz(
+    version_: bool = typer.Option(
+        None, "--version", "-V", callback=_version_callback, is_eager=True,
+        help="Qué código está corriendo de verdad.",
+    ),
+) -> None:
+    """PediBot v2 — pediatric assistant grounded in verified guidelines."""
 
 
 @app.command()
@@ -77,10 +108,28 @@ def ingest(
         n = build_index(chunks, s.index_db_path)
         typer.echo(f"index: {n} chunks → {s.index_db_path}  {dump_index_stats(s.index_db_path)}")
 
+    # El código de salida cuenta el RESULTADO, no el hecho de haber llegado al final. Con una
+    # ruta equivocada esto fallaba los 422 documentos, reconstruía el índice con los JSONL
+    # viejos y devolvía 0: doce timers miran `$?` y habrían dado la ingesta por buena
+    # (11-sep-2026). Es la L127 por el otro lado — allí conté un código de salida como si
+    # fuera un resultado; aquí el código de salida no contaba el resultado.
+    fallidos = by_status.get('error', 0) + by_status.get('no_text', 0)
+    if fallidos:
+        typer.secho(
+            f"ingesta incompleta: {fallidos} de {len(reports)} documentos sin procesar",
+            fg=typer.colors.RED,
+            err=True,
+        )
+        raise typer.Exit(code=1)
+
 
 @app.command()
 def search(query: str, k: int = 6, red_flag: bool = False) -> None:
     """Lexical search in the index (with cross-lingual expansion)."""
+    # Un `--k` de cero o negativo llegaba tal cual al LIMIT del FTS y volcaba el índice
+    # entero: 1.091 líneas por una errata (11-sep-2026).
+    if k < 1:
+        raise _falla(f"--k tiene que ser 1 o más, no {k}")
     from pedibot.bot.retrieval import Retriever, Synonyms, detect_lang
     from pedibot.index.store import Index
     from pedibot.ingest.classify import Taxonomy
@@ -128,10 +177,12 @@ def triage(text: str, lang: str = "en") -> None:
 @app.command()
 def dose(drug: str, kg: float, months: float | None = None, lang: str = "en") -> None:
     """Deterministic dose calculator (paracetamol / ibuprofen)."""
-    from pedibot.bot.dose import calculate, format_result
+    from pedibot.bot.dose import DRUGS, DoseError, calculate, format_result
 
-    typer.echo(format_result(calculate(drug, kg, months), lang))
-
+    try:
+        typer.echo(format_result(calculate(drug, kg, months), lang))
+    except DoseError as e:
+        raise _falla(str(e), "fármacos: " + ", ".join(sorted(DRUGS))) from None
 
 @app.command()
 def ask(
@@ -512,6 +563,163 @@ def broadcast(
         typer.echo(f"[{p.lang}] {'ok ' + ','.join(ok) if ok else 'sin salida'}: {p.url}")
     # la firma va al final a propósito: si el proceso muere antes, su ausencia es la prueba (L117)
     typer.echo(f"BROADCAST-FIN {what} publicadas={len(posts)}")
+
+@app.command()
+def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
+    """Revisión de la instalación: ¿casa cada pieza con las demás?
+
+    Todo lo que se rompió en este proyecto es de la misma familia — una pieza deja de casar con
+    otra y **nada falla**: documentos indexados sin entrada de catálogo y por tanto sin licencia
+    registrada (L131), reglas de alarma citando una ficha inexistente (L137), las concentraciones
+    del catálogo y las de la calculadora separadas (L142), países servidos sin número de
+    emergencias, la cola de publicación vacía con el timer corriendo cada mañana (L126).
+
+    Los candados de `tests/` ven todo eso, pero corren en el PC. Esto corre donde está el
+    producto, y **sale con código 1 si algo está mal**, que es lo que permite colgarlo de un
+    timer.
+    """
+    import sqlite3
+
+    import yaml
+
+    s = get_settings()
+    malas = 0
+
+    def ok(titulo: str, detalle: str) -> None:
+        typer.secho(f"✓ {titulo}: ", fg=typer.colors.GREEN, nl=False)
+        typer.echo(detalle)
+
+    def mal(titulo: str, detalle: str) -> None:
+        nonlocal malas
+        malas += 1
+        typer.secho(f"✗ {titulo}: ", fg=typer.colors.RED, nl=False, err=True)
+        typer.echo(detalle, err=True)
+
+    typer.echo(f"pedibot {version('pedibot')}  ·  {ROOT}")
+
+    # ── catálogo ──────────────────────────────────────────────────────────────────────────
+    catalogo: dict[str, dict] = {}
+    try:
+        for f in ("fuentes.yaml", "fuentes_web.yaml"):
+            for d in yaml.safe_load((s.config_dir / f).read_text(encoding="utf-8"))["sources"]:
+                catalogo[d["doc_id"]] = d
+        ok("catálogo", f"{len(catalogo)} documentos")
+    except Exception as e:  # noqa: BLE001 — aquí cualquier fallo es el hallazgo
+        mal("catálogo", f"no se puede leer: {e}")
+
+    # ── índice ────────────────────────────────────────────────────────────────────────────
+    indexados: set[str] = set()
+    if not s.index_db_path.exists():
+        mal("índice", f"no existe: {s.index_db_path}")
+    else:
+        con = sqlite3.connect(f"file:{s.index_db_path}?mode=ro", uri=True)
+        try:
+            indexados = {r[0] for r in con.execute("SELECT DISTINCT doc_id FROM chunks")}
+            pasajes = con.execute("SELECT COUNT(*) FROM chunks").fetchone()[0]
+            ok("índice", f"{len(indexados)} documentos, {pasajes} pasajes")
+        finally:
+            con.close()
+
+    if catalogo and indexados:
+        huerfanos = sorted(indexados - set(catalogo))
+        if huerfanos:
+            mal("huérfanos", f"{len(huerfanos)} indexados sin catálogo (sin licencia): {huerfanos[:4]}")
+        else:
+            ok("huérfanos", "ninguno; todo lo indexado tiene licencia registrada")
+
+    # ── capa de seguridad ─────────────────────────────────────────────────────────────────
+    try:
+        reglas = yaml.safe_load((s.config_dir / "red_flags.yaml").read_text(encoding="utf-8"))["rules"]
+        sin_fuente = [r["id"] for r in reglas if not r.get("source")]
+        rotas = [
+            (r["id"], r["source"])
+            for r in reglas
+            if r.get("source") and catalogo and r["source"] not in catalogo
+        ]
+        if sin_fuente or rotas:
+            mal("alarmas", f"{len(reglas)} reglas; sin fuente {sin_fuente}, fuente inexistente {rotas}")
+        else:
+            ok("alarmas", f"{len(reglas)} reglas, todas con una ficha que existe detrás")
+    except Exception as e:  # noqa: BLE001
+        mal("alarmas", f"no se pueden leer: {e}")
+
+    # ── dosis: las dos listas de concentraciones ──────────────────────────────────────────
+    try:
+        from pedibot.bot.dose import DRUGS
+
+        drugs_yaml = yaml.safe_load((s.config_dir / "drugs.yaml").read_text(encoding="utf-8"))["drugs"]
+        parejas = {"paracetamol": "paracetamol", "ibuprofen": "ibuprofeno"}
+        desajuste = []
+        for clave_y, clave_c in parejas.items():
+            del_cat = {float(x) for x in drugs_yaml[clave_y]["strengths_mg_per_ml"]}
+            de_calc = {p.mg_per_ml for p in DRUGS[clave_c].presentations}
+            if del_cat != de_calc:
+                desajuste.append(f"{clave_y}: catálogo {sorted(del_cat)} ≠ calculadora {sorted(de_calc)}")
+        marcas = sum(len(v.get("brands") or []) for v in drugs_yaml.values())
+        if desajuste:
+            mal("dosis", "; ".join(desajuste))
+        else:
+            ok("dosis", f"{marcas} marcas, y las concentraciones del catálogo son las que se ofrecen")
+    except Exception as e:  # noqa: BLE001
+        mal("dosis", f"no se pueden comprobar: {e}")
+
+    # ── emergencias ───────────────────────────────────────────────────────────────────────
+    try:
+        numeros = yaml.safe_load((s.config_dir / "emergency_numbers.yaml").read_text(encoding="utf-8"))
+        paises = {k for k in numeros if k != "default"}
+        drugs_yaml = yaml.safe_load((s.config_dir / "drugs.yaml").read_text(encoding="utf-8"))["drugs"]
+        servidos = {
+            c
+            for v in drugs_yaml.values()
+            for b in (v.get("brands") or [])
+            for c in (b.get("countries") or [])
+        }
+        vacunas = set(yaml.safe_load((s.config_dir / "vaccines.yaml").read_text(encoding="utf-8")))
+        faltan = sorted((servidos | {v for v in vacunas if len(v) == 2}) - paises)
+        if faltan:
+            mal("emergencias", f"países servidos sin número: {faltan}")
+        else:
+            ok("emergencias", f"{len(paises)} países, y todos los que servimos están")
+    except Exception as e:  # noqa: BLE001
+        mal("emergencias", f"no se pueden comprobar: {e}")
+
+    # ── cola de publicación ───────────────────────────────────────────────────────────────
+    try:
+        from pedibot.publish.articles import pending_topics
+
+        contenido = ROOT / "web" / "content"
+        cola = {lg: len(pending_topics(contenido, lg)) for lg in LANGS_PUBLICADAS}
+        vacias = sorted(lg for lg, n in cola.items() if n == 0)
+        if vacias:
+            mal("cola", f"sin temas que publicar en {vacias}: el timer correría sin escribir nada")
+        else:
+            ok("cola", f"{min(cola.values())}–{max(cola.values())} temas por lengua")
+        if verbose:
+            typer.echo("    " + "  ".join(f"{lg}:{n}" for lg, n in cola.items()))
+    except Exception as e:  # noqa: BLE001
+        mal("cola", f"no se puede calcular: {e}")
+
+    # ── sitio construido ──────────────────────────────────────────────────────────────────
+    dist = ROOT / "web" / "site" / "dist"
+    paginas = list(dist.rglob("index.html")) if dist.exists() else []
+    if not paginas:
+        mal("sitio", "no está construido en esta copia")
+    else:
+        import datetime as _dt
+
+        cuando = _dt.datetime.fromtimestamp(max(p.stat().st_mtime for p in paginas))
+        ok("sitio", f"{len(paginas)} páginas, rehecho {cuando:%Y-%m-%d %H:%M}")
+
+    # ── clave del modelo (si la hay, nunca cuál) ──────────────────────────────────────────
+    tiene = bool(getattr(s, "deepseek_api_key", None) or os.environ.get("DEEPSEEK_API_KEY"))
+    ok("modelo", "clave presente" if tiene else "sin clave: sólo responden las herramientas")
+
+    typer.echo("")
+    if malas:
+        typer.secho(f"DOCTOR-FIN problemas={malas}", fg=typer.colors.RED, err=True)
+        raise typer.Exit(code=1)
+    typer.secho("DOCTOR-FIN problemas=0", fg=typer.colors.GREEN)
+
 
 if __name__ == "__main__":
     logger.disable("pedibot")

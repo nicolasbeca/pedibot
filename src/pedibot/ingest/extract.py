@@ -7,7 +7,11 @@ from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 
-import fitz  # pymupdf
+# `import fitz` está deprecado desde PyMuPDF 1.24 y la librería lo avisa **imprimiendo en
+# stderr**, no con un `warnings.warn` — por eso no hay filtro que lo calle, y por eso ese
+# aviso era la PRIMERA línea de `pedibot search` y de `pedibot ingest`, tapando la que
+# importa. El nombre nuevo es el mismo módulo (11-sep-2026).
+import pymupdf as fitz
 
 
 @dataclass
@@ -48,7 +52,11 @@ def extract_pdf(path: Path) -> Extracted:
     doc = fitz.open(path)
     pages: list[PageText] = []
     size_counter: Counter[float] = Counter()
-    for pno, page in enumerate(doc, start=1):
+    # `Document` es iterable de páginas, pero su `__iter__` no lo declara y mypy sólo lo ve
+    # ahora que el módulo se importa por su nombre nuevo y trae tipos: se recorre por índice,
+    # que además es lo que documenta PyMuPDF (11-sep-2026).
+    for pno in range(1, doc.page_count + 1):
+        page = doc.load_page(pno - 1)
         pt = PageText(number=pno)
         blocks = page.get_text("dict")["blocks"]
         for block in blocks:
