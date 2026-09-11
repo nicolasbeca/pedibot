@@ -601,6 +601,17 @@ es:
   - estreñimiento
   - deposiciones
 es_en:
+  # «le sangro la nariz un momento y ya ha parado» — pregunta real del registro (9-sep-2026)
+  # que se quedó sin respuesta. El corpus tiene `nhs_en_nosebleed`, pero «sangro» no casa con
+  # nada por prefijo y «nariz» sola lleva a las hojas del catarro. Van las formas reales.
+  sangra la nariz: [nosebleed, epistaxis]
+  sangro la nariz: [nosebleed, epistaxis]
+  sangrando la nariz: [nosebleed, epistaxis]
+  sangra por la nariz: [nosebleed, epistaxis]
+  sangrado de nariz: [nosebleed, epistaxis]
+  sangrado nasal: [nosebleed, epistaxis]
+  sangre por la nariz: [nosebleed, epistaxis]
+  hemorragia nasal: [nosebleed, epistaxis]
   dormir:
   - sleep
   - sleep duration

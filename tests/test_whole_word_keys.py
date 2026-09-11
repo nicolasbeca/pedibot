@@ -159,6 +159,10 @@ _REVISADAS = {
     "auge", "throat", "asthma", "emergencia", "intoxicacion", "traumatismo", "cough",
     "quemadura", "toxic", "depress",
     "ibuprofen", "antibiotic", "antibiótico", "dose", "ansiedad", "глаз",
+    # «nosebleed» coge «nosebleeds» (22 veces): es su propio plural, no una palabra ajena.
+    # Entró el 11-sep-2026 con la nariz, que no estaba en ninguna categoría y dejaba sin
+    # respuesta «le sangro la nariz un momento y ya ha parado», del registro de producción.
+    "nosebleed",
 }
 
 

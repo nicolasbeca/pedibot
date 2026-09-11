@@ -26,7 +26,12 @@ topics:
          picadura, picaduras, mosquito, insect bite, piqûre, piqure, insektenstich, укус, لدغة, काटने,
                  sarna, scabies, gale$, krätze, الجرب, खुजली, чесотка, escabiosis]
   orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear$, ears$, earache, earwax,
-        throat, tonsil]
+        throat, tonsil,
+        # La nariz no estaba en ninguna categoría, y «le sangro la nariz un momento y ya
+        # ha parado» es una pregunta real del registro que se quedó sin respuesta: sin
+        # tema, la puerta del «fuente o silencio» exige tres términos en vez de uno.
+        nariz, epistaxis, "sangrado nasal", nosebleed, "nose bleed", nez, saignement de nez,
+        nase, nasenbluten, нос, носовое кровотечение, أنف, نزيف الأنف, नाक, नकसीर, nariz, sangramento nasal]
   salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
                  "psychische gesundheit", "психическое здоровье", "الصحة النفسية",
                  "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]

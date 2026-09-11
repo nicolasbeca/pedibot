@@ -12,7 +12,7 @@ from pedibot.bot.llm import LLMProvider
 # El MISMO conversor de guiones que usa el triaje, no una copia: son los dos sitios
 # que leen lo que escribe el padre, y la L65 salió justo de arreglarlo en uno solo.
 from pedibot.bot.triage import _GUIONES
-from pedibot.index.store import READABLE_FALLBACK, Hit, Index, query_terms
+from pedibot.index.store import READABLE_FALLBACK, Hit, Index, fold, query_terms
 from pedibot.ingest.classify import Taxonomy
 
 # The Devanagari range is spelled out because Python's `\w` excludes combining vowel signs:
@@ -100,7 +100,7 @@ class Synonyms:
         combination would be four entries per trigger and still miss the fifth.
         """
         if not ("\u0600" <= token[0] <= "\u06ff"):
-            return [token]
+            return [token, fold(token)] if fold(token) != token else [token]
         out = [token]
         for clitic in ("ال", "و", "ف", "ب", "ك", "ل"):
             if token.startswith(clitic) and len(token) > len(clitic) + 1:
@@ -116,7 +116,7 @@ class Synonyms:
         # (no lleva espacio) y se busca por prefijo contra los tokens… que el tokenizador parte
         # justo por el guion. Eran doce disparadores que NO PODÍAN casar nunca, y entre ellos el
         # recién nacido en francés y en portugués (8-sep-2026).
-        low = _GUIONES.sub(" ", query.lower())
+        low = fold(_GUIONES.sub(" ", query.lower()))
         tokens = [c for t in _TOKEN.findall(low) for c in self._candidates(t)]
         extra: list[str] = []
         # Las marcas, antes que nada. Un padre escribe lo que pone en el
@@ -139,7 +139,7 @@ class Synonyms:
                 # a single word is matched by prefix on each token ("vomit" → "vomiting")
                 # el disparador se normaliza igual que la consulta: con eso, uno que
                 # llevaba guion pasa a ser una frase de varias palabras y se busca entera
-                disp = _GUIONES.sub(" ", trigger)
+                disp = fold(_GUIONES.sub(" ", trigger))
                 if " " in disp:
                     hit = disp in low
                 elif disp.endswith("$"):

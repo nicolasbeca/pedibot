@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import sqlite3
+import unicodedata
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -50,6 +51,42 @@ CREATE TABLE IF NOT EXISTS meta (k TEXT PRIMARY KEY, v TEXT);
 #: de sinónimos, pero eso hacía que toda la búsqueda en hindi colgara de esas 176 entradas.
 _TOKEN = re.compile(r"[\wáéíóúñü\u0900-\u097f]+", re.I)
 STOP = {
+    # ── Cuándo empezó. No es un síntoma (11-sep-2026) ──────────────────────────────
+    # Sale del registro: de 345 respuestas, seis acabaron en «no tengo información
+    # fiable», las seis en castellano, y tres eran fallos de verdad — «le duele el oido
+    # desde ayer» con cinco fichas de oído en el corpus. La causa: «desde» aparece en
+    # **497 pasajes** y «momento» en 275, casi todos de los dos libros de mil páginas,
+    # así que dos palabras que sólo dicen CUÁNDO arrastraban los libros por encima de la
+    # hoja que responde. Es la L133 otra vez, con el tiempo en vez de la edad.
+    #
+    # Se quedan FUERA a propósito las que sí dicen algo del cuadro: «noche» (tos
+    # nocturna), «días» y «semana» (más de tres días de fiebre es un criterio).
+    # «por la mañana» tampoco dice qué le pasa. Ojo con el inglés: «right» NO entra, porque
+    # «right side» es el criterio de dolor abdominal derecho — apendicitis.
+    "morning", "matin", "manhã", "manha", "morgen", "утром", "صباح", "सुबह",
+    # es
+    "desde", "ayer", "anoche", "hoy", "mañana", "manana", "ahora", "mismo", "misma", "esta",
+    "este", "esto", "hace", "luego", "entonces", "todavía", "todavia", "aún", "sigue",
+    "siguen", "lleva", "llevamos", "empezó", "empezo", "comenzó", "comenzo",
+    # en
+    "since", "yesterday", "today", "tonight", "now", "still", "already", "again", "started",
+    "begun", "began", "lately", "recently",
+    # fr
+    "depuis", "hier", "aujourd", "maintenant", "encore", "déjà", "deja", "toujours",
+    "commencé", "commence", "récemment", "recemment",
+    # de
+    "seit", "gestern", "heute", "jetzt", "immer", "diese", "dieser", "angefangen", "begonnen",
+    "neulich",
+    # ru
+    "вчера", "вчерашнего", "сегодня", "сейчас", "уже", "ещё", "еще", "всегда", "началось",
+    "начал", "давно", "недавно",
+    # pt
+    "ontem", "hoje", "agora", "ainda", "sempre", "começou", "comecou",
+    "recentemente",
+    # ar
+    "منذ", "أمس", "امس", "اليوم", "الآن", "الان", "بالفعل", "دائما", "مؤخرا", "بدأ",
+    # hi
+    "कल", "आज", "अभी", "अब", "तब", "पहले", "शुरू", "हाल",
     "de",
     "la",
     "el",
@@ -362,12 +399,46 @@ def term_matches(term: str, palabras: list[str]) -> bool:
     return any(ar_stem(w).startswith(raiz) or ar_root(w).startswith(raiz) for w in palabras)
 
 
+#: El índice FTS está creado con `remove_diacritics 2`: guarda «oído» como «oido» y «ребёнок»
+#: como «ребенок». El recuento de términos que decide si un pasaje vale —la puerta del «fuente o
+#: silencio»— se hacía en Python sobre el texto CRUDO, con la tilde puesta, así que
+#: `"oído".startswith("oido")` era falso y **tiraba los documentos que el índice acababa de
+#: encontrar**. Medido el 11-sep-2026 sobre «le duele el oido desde ayer», una pregunta real del
+#: registro que se quedó sin respuesta: salían `mlp_es_earinfections` y cuatro trozos de
+#: `seup_otitis`, todos con `matched=0`.
+#:
+#: Se funde igual que el índice y **sólo donde el índice funde**, que se comprobó preguntándoselo:
+#: «oído»=«oido» (47 pasajes las dos), «ребёнок»=0 contra «ребенок»=8 — o sea que también funde la
+#: ё—, y «الحمى»=20 contra «الحمي»=1 — o sea que NO funde la ى—. Tocar el árabe o el devanagari
+#: rompería las dos lenguas del mercado que el proyecto ataca: las matras de «बुखार» no son
+#:
+#: Y el cirílico se funde **a mano y sólo la ё**, no por marcas combinantes: la й lleva un
+#: breve combinante pero **es una letra del alfabeto**, y quitárselo rompe media lengua —
+#: medido: «детей» casa 125 pasajes y «детеи» cero. La ё sí, porque el corpus ruso apenas la
+#: escribe (3 pasajes de 340) y un padre que la teclea no encontraba nada.
+#: adorno, sin ellas es otra palabra.
+_LATINA = re.compile(r"[a-zA-Z]")
+
+
+def fold(texto: str) -> str:
+    """El texto sin las marcas que el índice tampoco guarda."""
+    fuera: list[str] = []
+    for c in unicodedata.normalize("NFD", texto):
+        if unicodedata.combining(c):
+            if fuera and _LATINA.match(fuera[-1]):
+                continue  # tilde sobre letra latina: el índice no la guarda
+            fuera.append(c)  # harakat árabe, matra devanagari, breve de la й: son la palabra
+        else:
+            fuera.append(c)
+    return unicodedata.normalize("NFC", "".join(fuera)).replace("ё", "е").replace("Ё", "Е")
+
 def query_terms(query: str, extra: list[str] | None = None) -> list[str]:
-    terms = [t.lower() for t in _TOKEN.findall(query)]
+    terms = [fold(t.lower()) for t in _TOKEN.findall(query)]
     terms = [t for t in terms if len(t) >= 3 and t not in STOP]
     terms = [ar_stem(t) if _AR.search(t) else t for t in terms]
     for e in extra or []:
         for t in _TOKEN.findall(e.lower()):
+            t = fold(t)
             if len(t) >= 3 and t not in terms:
                 terms.append(t)
     return terms
@@ -460,7 +531,7 @@ class Index:
             #
             # Por prefijo, como en el resto del proyecto: «tos» tiene que seguir encontrando
             # «toses» y «fiebre», «fiebres».
-            palabras = _TOKEN.findall(low)
+            palabras = [fold(w) for w in _TOKEN.findall(low)]
             matched = sum(1 for t in terms if term_matches(t, palabras))
             if prefer_parent_leaflets:
                 score *= DOC_TYPE_WEIGHT.get(ch.doc_type, 1.0)

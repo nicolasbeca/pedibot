@@ -72,8 +72,14 @@ def test_spanish_question_reaches_the_english_only_material(syn: Synonyms):
 def test_the_spanish_to_english_bridge_stays_tiny(syn: Synonyms):
     """Lock (26-ago): a full es→en table made the English sheets outrank the Spanish ones and
     dropped source@3 from 0.964 to 0.891. The bridge is only for what has NO Spanish source.
-    Before adding an entry here, check the corpus and re-run `pedibot eval`."""
+    Before adding an entry here, check the corpus and re-run `pedibot eval`.
+
+    Subido de 15 a 23 el 11-sep-2026, y con la medición que el propio candado pide: las ocho
+    entradas nuevas son las formas de «le sangro la nariz» —una pregunta real del registro que se
+    quedó sin respuesta—, y el corpus **no tiene ninguna hoja española de epistaxis**, que es
+    justo el caso para el que existe el puente. Medido después: `source_hit` **0,972**, por
+    encima del 0,964 que este candado toma como bueno."""
     bridge = syn._maps.get("es_en", {})
-    assert len(bridge) <= 15, "the bridge grew: re-measure the golden set before widening it"
+    assert len(bridge) <= 23, "the bridge grew: re-measure the golden set before widening it"
     for covered in ("fiebre", "tos", "vómit", "diarrea", "convuls", "quemadura", "vacun"):
         assert covered not in bridge, f"{covered} has Spanish leaflets: bridging it hurts retrieval"

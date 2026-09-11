@@ -39,6 +39,9 @@ DECLARADOS = {
     "_TOKEN": "cubre las tres por otra vía: `\\w` casa cirílico y árabe, y el rango "
     "\\u0900-\\u097f añade el devanagari con sus matras, que `\\w` no reconoce",
     "_GUIONES": "son los guiones Unicode, que no son letras de ningún alfabeto",
+    "_LATINA": "es latino A PROPÓSITO: marca dónde se quita la tilde, y el árabe y el "
+    "devanagari no llevan tildes sino letras — quitarles la marca combinante rompe la "
+    "palabra (las matras de «बुखार»). El cirílico se trata aparte, fundiendo sólo la ё",
     "_MENOS_DE": "el cualificador que va DELANTE de la edad («menos de 3 meses»). El "
     "hindi lo pone detrás («3 महीने से कम») y por eso vive en `_MENOS_DE_DETRAS`: las dos "
     "mitades juntas cubren las cuatro escrituras, y separarlas es lo que hace que cada "
