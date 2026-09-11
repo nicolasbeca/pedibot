@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**291 documents from 20 organisations**, in 6 languages, each classified by topic and linked to its original.
+**405 documents from 20 organisations**, in 6 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,20 +30,20 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (145 of 291 do) |
+| `year` | where the document states one (145 of 405 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (243 of 291 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (357 of 405 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
 
 | organisation | documents |
 |---|---|
+| WHO — World Health Organization | 168 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 74 |
 | NHS — NHS (National Health Service, England) | 56 |
-| WHO — World Health Organization | 54 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
 | SEUP — Sociedad Española de Urgencias de Pediatría | 29 |
 | CDC — Centers for Disease Control and Prevention (USA) | 19 |
@@ -66,35 +66,36 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 144 |
-| Spanish (`es`) | 70 |
+| English (`en`) | 166 |
+| Spanish (`es`) | 93 |
+| French (`fr`) | 40 |
+| Russian (`ru`) | 38 |
+| Arabic (`ar`) | 38 |
 | German (`de`) | 30 |
-| French (`fr`) | 17 |
-| Russian (`ru`) | 15 |
-| Arabic (`ar`) | 15 |
 
-## By topic (20 topics)
+## By topic (21 topics)
 
 | topic | documents |
 |---|---|
-| `piel` | 46 |
-| `respiratorio` | 44 |
-| `digestivo` | 31 |
-| `accidentes` | 30 |
-| `general` | 22 |
-| `alimentacion` | 18 |
+| `digestivo` | 56 |
+| `respiratorio` | 54 |
+| `piel` | 51 |
+| `accidentes` | 45 |
+| `alimentacion` | 28 |
+| `general` | 27 |
+| `vacunas` | 21 |
+| `desarrollo` | 15 |
 | `salud_mental` | 15 |
-| `vacunas` | 11 |
-| `desarrollo` | 10 |
-| `neurologia` | 10 |
+| `neurologia` | 15 |
+| `fiebre` | 13 |
+| `recien_nacido` | 12 |
+| `urgencias` | 12 |
 | `orl` | 9 |
-| `recien_nacido` | 7 |
-| `urgencias` | 7 |
 | `crianza` | 6 |
 | `alergia` | 5 |
 | `intoxicacion` | 5 |
+| `dental` | 5 |
 | `medicamentos` | 4 |
-| `fiebre` | 4 |
 | `lactante` | 4 |
 | `auto` | 3 |
 

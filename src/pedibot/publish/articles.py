@@ -115,7 +115,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "constipation children hard stools",
     },
     "ear_infection": {
-        "docs": ["nhs_en_ear_infections", "mlp_en_earinfections", "cdc_en_ear_infection"],
+        "docs": ["nhs_en_ear_infections", "mlp_en_earinfections", "cdc_en_ear_infection_about"],
         "query": "ear infection children earache antibiotics",
     },
     "sore_throat": {
@@ -123,7 +123,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "sore throat tonsillitis children",
     },
     "common_cold": {
-        "docs": ["mlp_en_commoncold", "cdc_en_colds", "seup_catarro"],
+        "docs": ["mlp_en_commoncold", "seup_catarro"],
         "query": "common cold children runny nose antibiotics",
     },
     "flu": {
@@ -239,7 +239,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "docs": [
             "nhs_en_nhs_vaccinations_and_when_to_have_them",
             "cdc_en_child_easyread",
-            "mlp_en_childhoodimmunization",
+            "mlp_en_childhoodvaccines",
         ],
         "query": "childhood vaccination schedule when",
     },
@@ -284,7 +284,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
     },
     "compare_cough_medicines": {
         "compare": True,
-        "docs": ["seup_catarro", "mlp_en_commoncold", "cdc_en_colds", "nhs_en_croup"],
+        "docs": ["seup_catarro", "mlp_en_commoncold", "nhs_en_croup"],
         "query": "cough medicines children not recommended honey",
     },
     "compare_fever_medicine": {
