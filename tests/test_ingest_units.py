@@ -110,9 +110,11 @@ def test_long_section_split_with_overlap():
 def test_catalog_loads_and_covers_all_pdfs(config_dir):
     docs = load_catalog(config_dir / "fuentes.yaml")
     pdf_docs = [d for d in docs if d.file.endswith(".pdf") and not d.file.startswith("web/")]
-    # 50: the 49 original PDFs (the 2 pitch decks live at the repo root) plus the OCR'd copy of
-    # "las 50 principales consultas", whose scanned original stays catalogued as `excluido`
-    assert len(pdf_docs) == 50
+    # 53: the 49 original PDFs (the 2 pitch decks live at the repo root), plus the OCR'd copy of
+    # "las 50 principales consultas" — whose scanned original stays catalogued as `excluido` —
+    # plus the three Indian documents added on 11-sep-2026 (IMNCI chart booklet, Home-Based
+    # Newborn Care guidelines and the ASHA young-child handbook), all under the NHM licence
+    assert len(pdf_docs) == 53
     assert len(docs) >= 49 + 150  # + curated web pages (config/fuentes_web.yaml)
     by_file = catalog_by_file(docs)
     assert len(by_file) == len(docs)

@@ -68,3 +68,46 @@ sources:
   # ---------- Prospectos oficiales (suero de rehidratación oral, I-30) ----------
   - {doc_id: aemps_es_sueroral_hiposodico_prospecto, file: web/aemps_es_sueroral_hiposodico_prospecto.pdf, org: AEMPS, org_full: Agencia Española de Medicamentos y Productos Sanitarios — CIMA (prospecto autorizado), title: "Prospecto: Sueroral Hiposódico polvo para solución oral (CIMA 59877)", year: null, lang: es, topic: digestivo, doc_type: hoja_padres, evidence: organismo_publico, usage: publico, age_groups: [todas], url: "https://cima.aemps.es/cima/pdfs/es/p/59877/59877_p.pdf", notes: "posología del suero oral por edad; documento regulatorio público"}
 
+
+  # India — añadidas el 11-sep-2026. Licencia leída en nhm.gov.in: «may not be reproduced …
+  # without duly & prominently acknowledging the source», excluido lo de terceros (FUENTES/INDIA.md).
+  # Van en inglés a propósito: el manual equivalente EN HINDI existe y son 116 páginas, pero su
+  # capa de texto está en una codificación antigua tipo Krutidev — extrae 196.056 caracteres y
+  # CERO devanagari, así que indexarlo metería basura que parecería hindi. El motor responde en
+  # hindi a partir de estas, nombrando al organismo, igual que ya hace con el árabe.
+  - doc_id: nhm_in_imnci_chart_booklet
+    file: india/imnci_chart_booklet.pdf
+    org: NHM
+    org_full: "National Health Mission, Ministry of Health & Family Welfare, Government of India"
+    title: "IMNCI chart booklet — Integrated Management of Neonatal and Childhood Illness"
+    year: 2023
+    lang: en
+    topic: urgencias
+    doc_type: guia_clinica
+    evidence: organismo_publico
+    usage: publico
+    age_groups: [lactante, preescolar]
+  - doc_id: nhm_in_hbnc_guidelines
+    file: india/hbnc_operational_guidelines_2014.pdf
+    org: NHM
+    org_full: "National Health Mission, Ministry of Health & Family Welfare, Government of India"
+    title: "Home-Based Newborn Care — operational guidelines (revised 2014)"
+    year: 2014
+    lang: en
+    topic: recien_nacido
+    doc_type: guia_clinica
+    evidence: organismo_publico
+    usage: publico
+    age_groups: [neonato, lactante]
+  - doc_id: nhsrc_in_asha_young_child_care
+    file: india/asha_home_based_care_young_child_en.pdf
+    org: NHSRC
+    org_full: "National Health Systems Resource Centre, Ministry of Health & Family Welfare, Government of India"
+    title: "Handbook for ASHA on Home Based Care for Young Child"
+    year: 2021
+    lang: en
+    topic: auto
+    doc_type: manual
+    evidence: organismo_publico
+    usage: publico
+    age_groups: [lactante, preescolar]

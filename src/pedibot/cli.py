@@ -477,9 +477,6 @@ def announce(
     typer.echo(json.dumps(res))
 
 
-    app()
-
-
 @app.command()
 def broadcast(
     what: str = typer.Argument(..., help="project | guides"),
@@ -518,3 +515,4 @@ def broadcast(
 
 if __name__ == "__main__":
     logger.disable("pedibot")
+    app()
