@@ -1,0 +1,75 @@
+---
+/**
+ * «El mismo medicamento con otros nombres», por país.
+ *
+ * Medido el 11-sep-2026 con 5-gramas sobre el texto visible: 28 parejas de páginas de marca
+ * pasaban del 70 % de solapamiento, y las de arriba —Cetal ↔ Metacin, 96 %— **son literalmente
+ * el mismo medicamento con las mismas concentraciones**. Rellenar esas páginas con texto
+ * distinto para que no se parezcan sería paja, y este proyecto no hace eso.
+ *
+ * Lo que sí es verdad y sí cambia entre una y otra es **dónde se vende cada nombre**. Y resulta
+ * que es justo la pregunta del padre que tiene otra caja en la mano: «me han dado Dolo y en
+ * casa tengo Crocin, ¿es lo mismo?». Se responde con el dato que ya está en el catálogo.
+ */
+import { medicines, type Medicine } from '../dosepages';
+import { t, type Lang } from '../i18n';
+
+interface Props { m: Medicine; lang: Lang }
+const { m, lang } = Astro.props;
+const s = t(lang);
+const T = s.samemed;
+
+/** El nombre del país en el idioma de la página; si el entorno no sabe, el código. */
+const nombrePais = (code: string) => {
+  try {
+    return new Intl.DisplayNames([lang], { type: 'region' }).of(code) ?? code;
+  } catch {
+    return code;
+  }
+};
+
+const lista = (xs: string[]) => {
+  try {
+    return new Intl.ListFormat(lang, { style: 'long', type: 'conjunction' }).format(xs);
+  } catch {
+    return xs.join(', ');
+  }
+};
+
+/** Hermanas: misma molécula, otro nombre, y vendidas en alguno de los países de ésta. */
+const hermanas = medicines().filter(
+  (o) => o.isBrand && o.key === m.key && o.slug !== m.slug && o.countries.some((c) => m.countries.includes(c)),
+);
+
+/** Un bloque por país compartido, para no mezclar India con Egipto en la misma frase. */
+const porPais = m.countries
+  .map((c) => ({
+    code: c,
+    otras: hermanas.filter((o) => o.countries.includes(c)),
+  }))
+  .filter((x) => x.otras.length);
+
+const otrosPaises = m.countries.filter((c) => !porPais.some((x) => x.code === c));
+---
+{m.isBrand && (porPais.length > 0 || m.countries.length > 0) && (
+  <section class="samemed">
+    {porPais.length > 0 && <h2>{T.h}</h2>}
+    {porPais.map((x) => (
+      <p>
+        {T.p
+          .replace('{country}', nombrePais(x.code))
+          .replace('{list}', lista(x.otras.map((o) => o.name_by[lang])))}
+      </p>
+    ))}
+    {m.countries.length > 0 && (
+      <p class="donde">{T.elsewhere.replace('{countries}', lista(m.countries.map(nombrePais)))}</p>
+    )}
+  </section>
+)}
+
+<style>
+  .samemed { margin-top: 28px; }
+  .samemed h2 { font-size: 1.25rem; margin-bottom: 8px; }
+  .samemed p { margin: 0 0 8px; color: var(--ink-2); }
+  .donde { color: var(--ink-3); font-size: .88rem; }
+</style>

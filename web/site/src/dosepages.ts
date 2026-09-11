@@ -27,6 +27,10 @@ export interface Medicine {
   slug_by: Record<Lang, string>;
   name_by: Record<Lang, string>;
   isBrand: boolean;
+  /** Dónde se vende esa marca. Es lo único que distingue de verdad dos marcas de la misma
+   *  molécula con las mismas concentraciones, y responde la pregunta del padre que tiene
+   *  otra caja en la mano: «¿es lo mismo que lo que me han dado a mí?». */
+  countries: string[];
   forms: Form[];
   d: any;
 }
@@ -97,6 +101,7 @@ export function medicines(): Medicine[] {
           LANGS.map((l) => [l, drug.generic[l] ?? drug.generic.en])
         ) as Record<Lang, string>,
         isBrand: false,
+        countries: [],
         forms: drug.presentations.map((p: any) => ({ label: p.name, mg_per_ml: p.mg_per_ml })),
         d: drug,
       },
@@ -108,6 +113,7 @@ export function medicines(): Medicine[] {
           slug_by: Object.fromEntries(LANGS.map((l) => [l, b.slug])) as Record<Lang, string>,
           name_by: Object.fromEntries(LANGS.map((l) => [l, b.name])) as Record<Lang, string>,
           isBrand: true,
+          countries: b.countries ?? [],
           forms: b.forms,
           d: drug,
         })),

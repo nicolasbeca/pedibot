@@ -4,6 +4,8 @@
 // this file is identical in every language but the code and the URL prefix.
 import Base from '../../../layouts/Base.astro';
 import DoseCalc from '../../../components/DoseCalc.astro';
+import DoseFaq from '../../../components/DoseFaq.astro';
+import SameMedicine from '../../../components/SameMedicine.astro';
 import { medicines, weightTable, maxDoses, formLabel, type Medicine } from '../../../dosepages';
 import { t, langPrefix, LANGS } from '../../../i18n';
 
@@ -75,6 +77,9 @@ const jsonld = {
       <p class="note">{d.notes[lang] ?? d.notes.en}</p>
       <p class="src">{d.source}.</p>
     </div>
+
+    <DoseFaq m={m} lang={lang} />
+    <SameMedicine m={m} lang={lang} />
 
     <p style="margin-top:22px">
       <a class="btn btn-primary" href="/hi/dose">{s.dosedrug_open_calc}</a>

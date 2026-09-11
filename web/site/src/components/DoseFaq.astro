@@ -1,0 +1,98 @@
+---
+/**
+ * Las preguntas que la gente escribe de verdad, respondidas con los números de la propia tabla.
+ *
+ * Search Console, 28 días (leído el 11-sep-2026): de las veinte consultas que traen impresiones,
+ * **nueve son de marca con dosis** —«calculadora apiretal», «apiretal bebe 10 kilos», «dosis
+ * dalsy 40 calculadora», «calculo apiretal»—. Es, con diferencia, lo que más se busca del sitio.
+ * Y las páginas de marca no tenían **ni un solo `<h2>`**: título, calculadora y una tabla de 36
+ * filas. Los números estaban; la pregunta, tal y como se escribe, no aparecía en ninguna parte.
+ *
+ * Ni una cifra de aquí se escribe a mano: todas salen de `weightTable` y `maxDoses`, las mismas
+ * que pinta la tabla. Si la tabla cambia, esto cambia con ella o no cambia nada.
+ *
+ * Sin marcado `FAQPage` a propósito: Google lo reserva desde 2023 a sitios oficiales de salud y
+ * administración, y este no lo es. Ponerlo no daría resultado enriquecido y sí un motivo más
+ * para que Search Console se queje, como ya pasó con `Drug` (10-sep-2026).
+ */
+import { weightTable, maxDoses, formLabel, type Medicine } from '../dosepages';
+import { t, type Lang } from '../i18n';
+
+interface Props { m: Medicine; lang: Lang }
+const { m, lang } = Astro.props;
+const s = t(lang);
+const T = s.dosefaq;
+const name = m.name_by[lang];
+const d = m.d;
+
+/** Los tres pesos que aparecen en las consultas reales, no una media inventada. */
+const ANCLAS = [10, 15, 20];
+const tabla = weightTable(m);
+const filas = ANCLAS.map((kg) => {
+  const r = tabla.find((x) => x.kg === kg)!;
+  return {
+    kg,
+    mg: r.mg,
+    porBote: m.forms.map((f, i) => ({ label: formLabel(f.label, lang), ml: r.ml[i] })),
+  };
+});
+
+/** Para «cada cuánto» se usa un peso de referencia: el de en medio de los tres. */
+const kgRef = 15;
+const tope = maxDoses(m, kgRef);
+
+const min_m = Number(d.min_age_months ?? 0);
+const min_kg = Number(d.min_weight_kg ?? 0);
+const hayMinimo = min_m > 0 || min_kg > 0;
+const nota = d.notes?.[lang] ?? d.notes?.en ?? '';
+
+const con = (txt: string, vals: Record<string, string | number>) =>
+  Object.entries(vals).reduce((t, [k, v]) => t.replaceAll(`{${k}}`, String(v)), txt);
+---
+<section class="faq" aria-labelledby="faq-h">
+  <h2 id="faq-h">{con(T.h, { name })}</h2>
+
+  <h3>{con(T.q1, { name })}</h3>
+  <p>{con(T.a1, { name })}</p>
+  <ul class="pesos">
+    {filas.map((f) => (
+      <li>
+        <b>{f.kg} kg</b> <span class="mono">{f.mg} mg</span>
+        {f.porBote.map((b) => (
+          <span class="bote">{b.label}: <span class="mono">{b.ml} ml</span></span>
+        ))}
+      </li>
+    ))}
+  </ul>
+
+  <h3>{T.q2}</h3>
+  <p>{con(T.a2, { h0: d.interval_hours[0], h1: d.interval_hours[1], kg: kgRef, n: tope })}</p>
+
+  <h3>{T.q3}</h3>
+  <p>{T.a3}</p>
+
+  <h3>{con(T.q4, { name })}</h3>
+  <p>
+    {hayMinimo && <b>{con(T.a4_min, { months: min_m, kg: min_kg })} </b>}
+    {nota}
+  </p>
+</section>
+
+<style>
+  .faq { margin-top: 30px; }
+  .faq h2 { font-size: 1.25rem; margin-bottom: 4px; }
+  .faq h3 { font-size: 1rem; margin: 20px 0 4px; }
+  .faq p { margin: 0; color: var(--ink-2); }
+  .pesos { list-style: none; padding-left: 0; margin: 10px 0 0; }
+  .pesos li {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    align-items: baseline;
+    padding: 9px 0;
+    border-top: 1px solid var(--line);
+  }
+  .pesos li b { min-width: 58px; }
+  .bote { color: var(--ink-3); font-size: .88rem; }
+  .mono { font-variant-numeric: tabular-nums; }
+</style>

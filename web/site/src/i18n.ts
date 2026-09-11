@@ -2,6 +2,22 @@ export type Lang = 'en' | 'es' | 'fr' | 'de' | 'ru' | 'ar' | 'pt' | 'hi';
 
 const strings = {
   en: {
+    samemed: {
+      h: "The same medicine under other names",
+      p: "In {country}, this is also sold as {list}. Different box, same molecule and the same dose per kilo — what changes is the strength printed on the bottle, so always read it.",
+      elsewhere: "Sold in {countries}.",
+    },
+    dosefaq: {
+      h: "What parents ask about {name}",
+      q1: "How much {name} for a child of 10, 15 or 20 kg?",
+      a1: "The dose goes by weight, never by age alone. For {name}:",
+      q2: "How often, and how many times a day?",
+      a2: "Every {h0}–{h1} hours. For a child of {kg} kg that is at most {n} doses in 24 hours.",
+      q3: "What if I don't know what the child weighs?",
+      a3: "Age is not enough: two children of the same age can be several kilos apart, and this dose is calculated per kilo. Weigh the child, or ask at the pharmacy. PediBot will not give a figure from age alone.",
+      q4: "From what age can {name} be given?",
+      a4_min: "Not before {months} months, and not under {kg} kg.",
+    },
     about: {
       meta_t: "How PediBot works, and who is behind it",
       meta_d: "One person, no ads, no account. The whole method: warning signs first, numbers from published tables, and no sentence without the source it came from.",
@@ -220,6 +236,22 @@ const strings = {
     sug_winter: ['My 5-month-old has a cold and is breathing with a whistle', 'bronchiolitis · winter'], sug_summer: ['He has been in the sun all day and now feels dizzy with a fever', 'heat stroke · summer'],
   },
   es: {
+    samemed: {
+      h: "El mismo medicamento con otros nombres",
+      p: "En {country} esto mismo se vende también como {list}. Otra caja, la misma molécula y la misma dosis por kilo — lo que cambia es la concentración que pone el bote, así que léela siempre.",
+      elsewhere: "Se vende en {countries}.",
+    },
+    dosefaq: {
+      h: "Lo que preguntan los padres sobre {name}",
+      q1: "¿Cuánto {name} para un niño de 10, 15 o 20 kg?",
+      a1: "La dosis va por peso, nunca solo por edad. Para {name}:",
+      q2: "¿Cada cuánto y cuántas veces al día?",
+      a2: "Cada {h0}–{h1} horas. Para un niño de {kg} kg eso son como mucho {n} dosis en 24 horas.",
+      q3: "¿Y si no sé cuánto pesa?",
+      a3: "La edad no basta: dos niños de la misma edad pueden llevarse varios kilos, y esta dosis se calcula por kilo. Pésalo, o pregunta en la farmacia. PediBot no da una cifra a partir de la edad sola.",
+      q4: "¿Desde qué edad se puede dar {name}?",
+      a4_min: "No antes de los {months} meses, ni por debajo de {kg} kg.",
+    },
     about: {
       meta_t: "Cómo funciona PediBot y quién hay detrás",
       meta_d: "Una persona, sin anuncios y sin cuenta. El método entero: primero los signos de alarma, las cifras de tablas publicadas y ninguna frase sin su fuente.",
@@ -438,6 +470,22 @@ const strings = {
     sug_winter: ['Mi bebé de 5 meses tiene mocos y respira con pitos', 'bronquiolitis · invierno'], sug_summer: ['Ha estado todo el día al sol y ahora está mareado y con fiebre', 'golpe de calor · verano'],
   },
   fr: {
+    samemed: {
+      h: "Le même médicament sous d'autres noms",
+      p: "En {country}, la même chose se vend aussi sous le nom de {list}. Autre boîte, même molécule et même dose au kilo — ce qui change, c'est la concentration inscrite sur le flacon : lisez-la toujours.",
+      elsewhere: "Vendu en {countries}.",
+    },
+    dosefaq: {
+      h: "Ce que les parents demandent sur {name}",
+      q1: "Combien de {name} pour un enfant de 10, 15 ou 20 kg ?",
+      a1: "La dose se calcule au poids, jamais à l'âge seul. Pour {name} :",
+      q2: "Toutes les combien, et combien de fois par jour ?",
+      a2: "Toutes les {h0}–{h1} heures. Pour un enfant de {kg} kg, cela fait au maximum {n} doses en 24 heures.",
+      q3: "Et si je ne connais pas son poids ?",
+      a3: "L'âge ne suffit pas : deux enfants du même âge peuvent différer de plusieurs kilos, et cette dose se calcule au kilo. Pesez-le, ou demandez à la pharmacie. PediBot ne donne pas de chiffre à partir du seul âge.",
+      q4: "À partir de quel âge peut-on donner {name} ?",
+      a4_min: "Pas avant {months} mois, ni en dessous de {kg} kg.",
+    },
     about: {
       meta_t: "Comment fonctionne PediBot, et qui est derrière",
       meta_d: "Une personne, sans publicité ni compte. La méthode entière : les signes d'alerte d'abord, les chiffres pris dans des tableaux publiés, aucune phrase sans sa source.",
@@ -656,6 +704,22 @@ const strings = {
     sug_winter: ['Mon bébé de 5 mois est enrhumé et respire en sifflant', 'bronchiolite · hiver'], sug_summer: ["Il est resté au soleil toute la journée et il a la tête qui tourne avec de la fièvre", 'coup de chaleur · été'],
   },
   de: {
+    samemed: {
+      h: "Dasselbe Medikament unter anderen Namen",
+      p: "In {country} wird dasselbe auch als {list} verkauft. Andere Schachtel, gleicher Wirkstoff und gleiche Dosis pro Kilo — was sich ändert, ist die Konzentration auf der Flasche: lesen Sie sie immer.",
+      elsewhere: "Erhältlich in {countries}.",
+    },
+    dosefaq: {
+      h: "Was Eltern zu {name} fragen",
+      q1: "Wie viel {name} für ein Kind von 10, 15 oder 20 kg?",
+      a1: "Die Dosis richtet sich nach dem Gewicht, nie nach dem Alter allein. Für {name}:",
+      q2: "Wie oft, und wie viele Male am Tag?",
+      a2: "Alle {h0}–{h1} Stunden. Für ein Kind von {kg} kg sind das höchstens {n} Gaben in 24 Stunden.",
+      q3: "Und wenn ich das Gewicht nicht kenne?",
+      a3: "Das Alter reicht nicht: zwei gleich alte Kinder können mehrere Kilo auseinanderliegen, und diese Dosis wird pro Kilo berechnet. Wiegen Sie das Kind oder fragen Sie in der Apotheke. PediBot nennt keine Zahl allein aufgrund des Alters.",
+      q4: "Ab welchem Alter darf {name} gegeben werden?",
+      a4_min: "Nicht vor {months} Monaten und nicht unter {kg} kg.",
+    },
     about: {
       meta_t: "Wie PediBot funktioniert und wer dahintersteht",
       meta_d: "Eine Person, keine Werbung, kein Konto. Die ganze Methode: zuerst die Warnzeichen, Zahlen aus veröffentlichten Tabellen und kein Satz ohne seine Quelle.",
@@ -874,6 +938,22 @@ const strings = {
     sug_winter: ['Mein 5 Monate altes Baby ist erkältet und atmet pfeifend', 'Bronchiolitis · Winter'], sug_summer: ['Er war den ganzen Tag in der Sonne und ist jetzt schwindelig und hat Fieber', 'Hitzschlag · Sommer'],
   },
   ru: {
+    samemed: {
+      h: "То же лекарство под другими названиями",
+      p: "В {country} это же продаётся и как {list}. Другая коробка, то же вещество и та же доза на килограмм — меняется концентрация, указанная на флаконе, поэтому читайте её всегда.",
+      elsewhere: "Продаётся в {countries}.",
+    },
+    dosefaq: {
+      h: "О чём родители спрашивают про {name}",
+      q1: "Сколько {name} ребёнку в 10, 15 или 20 кг?",
+      a1: "Доза считается по весу, никогда по одному возрасту. Для {name}:",
+      q2: "Как часто и сколько раз в сутки?",
+      a2: "Каждые {h0}–{h1} часов. Ребёнку в {kg} кг — не более {n} доз за 24 часа.",
+      q3: "А если я не знаю, сколько он весит?",
+      a3: "Возраста недостаточно: два ребёнка одного возраста могут отличаться на несколько килограммов, а доза считается на килограмм. Взвесьте ребёнка или спросите в аптеке. PediBot не назовёт цифру по одному возрасту.",
+      q4: "С какого возраста можно давать {name}?",
+      a4_min: "Не раньше {months} месяцев и не легче {kg} кг.",
+    },
     about: {
       meta_t: "Как устроен PediBot и кто за ним стоит",
       meta_d: "Один человек, без рекламы и регистрации. Весь метод: сначала тревожные признаки, числа из опубликованных таблиц и ни одной фразы без источника.",
@@ -1091,6 +1171,22 @@ const strings = {
     sug_winter: ['Моему пятимесячному ребёнку 5 месяцев, он простужен и дышит со свистом', 'бронхиолит · зима'], sug_summer: ['Он весь день был на солнце, теперь кружится голова и температура', 'тепловой удар · лето'],
   },
   ar: {
+    samemed: {
+      h: "الدواء نفسه بأسماء أخرى",
+      p: "في {country} يُباع الشيء نفسه أيضا باسم {list}. علبة مختلفة، والمادة نفسها والجرعة نفسها لكل كيلوغرام — ما يتغيّر هو التركيز المكتوب على العبوة، فاقرأه دائما.",
+      elsewhere: "يُباع في {countries}.",
+    },
+    dosefaq: {
+      h: "ما يسأله الآباء عن {name}",
+      q1: "كم {name} لطفل وزنه 10 أو 15 أو 20 كغ؟",
+      a1: "الجرعة تُحسب بالوزن، لا بالعمر وحده أبدا. بالنسبة إلى {name}:",
+      q2: "كل كم ساعة، وكم مرة في اليوم؟",
+      a2: "كل {h0}–{h1} ساعة. ولطفل وزنه {kg} كغ، بحد أقصى {n} جرعات في 24 ساعة.",
+      q3: "وإذا كنت لا أعرف وزنه؟",
+      a3: "العمر لا يكفي: طفلان في العمر نفسه قد يفصل بينهما عدة كيلوغرامات، وهذه الجرعة تُحسب لكل كيلوغرام. زِن الطفل، أو اسأل في الصيدلية. ولا يعطي PediBot رقما اعتمادا على العمر وحده.",
+      q4: "من أي عمر يمكن إعطاء {name}؟",
+      a4_min: "ليس قبل {months} أشهر، ولا تحت {kg} كغ.",
+    },
     about: {
       meta_t: "كيف يعمل PediBot ومن وراءه",
       meta_d: "شخص واحد، بلا إعلانات وبلا حساب. المنهج كاملا: علامات الخطر أولا، والأرقام من جداول منشورة، ولا جملة بلا مصدرها.",
@@ -1308,6 +1404,22 @@ const strings = {
     sug_winter: ['ابني عمره 5 أشهر ومصاب بالزكام ويتنفس بأزيز', 'التهاب القصيبات · الشتاء'], sug_summer: ['بقي في الشمس طوال اليوم والآن يشعر بدوار مع حرارة', 'ضربة شمس · الصيف'],
   },
   pt: {
+    samemed: {
+      h: "O mesmo medicamento com outros nomes",
+      p: "Em {country} isto também se vende como {list}. Outra caixa, a mesma molécula e a mesma dose por quilo — o que muda é a concentração que vem no frasco, por isso leia-a sempre.",
+      elsewhere: "Vende-se em {countries}.",
+    },
+    dosefaq: {
+      h: "O que os pais perguntam sobre {name}",
+      q1: "Quanto {name} para uma criança de 10, 15 ou 20 kg?",
+      a1: "A dose vai pelo peso, nunca só pela idade. Para {name}:",
+      q2: "De quanto em quanto tempo, e quantas vezes por dia?",
+      a2: "A cada {h0}–{h1} horas. Para uma criança de {kg} kg são no máximo {n} doses em 24 horas.",
+      q3: "E se eu não souber quanto pesa?",
+      a3: "A idade não chega: duas crianças da mesma idade podem diferir vários quilos, e esta dose calcula-se por quilo. Pese a criança, ou pergunte na farmácia. O PediBot não dá um número só a partir da idade.",
+      q4: "A partir de que idade se pode dar {name}?",
+      a4_min: "Não antes dos {months} meses, nem abaixo de {kg} kg.",
+    },
     about: {
       meta_t: "Como funciona o PediBot e quem está por trás",
       meta_d: "Uma pessoa, sem publicidade e sem conta. O método inteiro: primeiro os sinais de alarme, os números de tabelas publicadas e nenhuma frase sem a sua fonte.",
@@ -1526,6 +1638,22 @@ const strings = {
     sug_winter: ["Meu bebê de 5 meses está com coriza e chiado no peito", "bronquiolite · inverno"], sug_summer: ["Ficou o dia todo no sol e agora está tonto e com febre", "insolação · verão"],
   },
   hi: {
+    samemed: {
+      h: "वही दवा, दूसरे नामों से",
+      p: "{country} में यही दवा {list} के नाम से भी मिलती है। डिब्बा अलग, दवा वही और प्रति किलो खुराक भी वही — बदलती है सिर्फ़ बोतल पर लिखी सांद्रता, इसलिए उसे हमेशा पढ़िए।",
+      elsewhere: "{countries} में मिलती है।",
+    },
+    dosefaq: {
+      h: "{name} के बारे में माता-पिता क्या पूछते हैं",
+      q1: "10, 15 या 20 किलो के बच्चे को कितना {name} दें?",
+      a1: "खुराक वज़न से तय होती है, कभी सिर्फ़ उम्र से नहीं। {name} के लिए:",
+      q2: "कितने-कितने घंटे पर, और दिन में कितनी बार?",
+      a2: "हर {h0}–{h1} घंटे में। {kg} किलो के बच्चे के लिए 24 घंटे में ज़्यादा से ज़्यादा {n} खुराक।",
+      q3: "अगर मुझे बच्चे का वज़न पता न हो तो?",
+      a3: "उम्र काफ़ी नहीं है: एक ही उम्र के दो बच्चों के वज़न में कई किलो का फ़र्क़ हो सकता है, और यह खुराक प्रति किलो निकाली जाती है। बच्चे को तौलिए, या दवा की दुकान पर पूछिए। PediBot सिर्फ़ उम्र से कोई आँकड़ा नहीं देता।",
+      q4: "{name} किस उम्र से दी जा सकती है?",
+      a4_min: "{months} महीने से पहले नहीं, और {kg} किलो से कम वज़न पर नहीं।",
+    },
     about: {
       meta_t: "PediBot कैसे काम करता है और इसके पीछे कौन है",
       meta_d: "एक व्यक्ति, न विज्ञापन, न खाता। पूरा तरीक़ा: पहले ख़तरे के निशान, आँकड़े छपी तालिकाओं से, और कोई वाक्य अपने स्रोत के बिना नहीं।",
