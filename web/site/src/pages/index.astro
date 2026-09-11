@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Chat from '../components/Chat.astro';
 import Tongues from '../components/Tongues.astro';
+import MyCountry from '../components/MyCountry.astro';
 import Alerts from '../components/Alerts.astro';
 import PopularGuides from '../components/PopularGuides.astro';
 import Sections from '../components/Sections.astro';
@@ -15,5 +16,6 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebApplication', na
   <Tongues lang={lang} />
   <Alerts lang={lang} />
   <PopularGuides lang={lang} />
+  <MyCountry lang={lang} />
   <Sections lang={lang} />
 </Base>

@@ -45,6 +45,9 @@ La última fila es la que manda sobre todas las demás: **el cuello de botella n
 | 11-sep | El generador de guías **no sindica** | Escribe un día en hindi y otro en árabe; Bluesky lo deciden sus propios timers |
 | 11-sep | **Atacar India y países árabes** es la baza principal | Y el token, si va a MetaDAO, se vende como altruismo, no como múltiplo |
 | 11-sep | **Una frase de apoyo** al pie de las guías y de las páginas de marca | Son las dos familias de páginas con visitas reales. La portada ya tenía su bloque y repetirlo sería pesado |
+| 11-sep | **La portada demuestra en vez de contar**: ocho alfabetos, dosis que se mueve, tarjetas que enseñan lo real, organismos con cifra y «tu país» | Un padre asustado a las 3 de la mañana no necesita un *landing* de startup: necesita ver que el sitio sabe lo que dice |
+| 11-sep | **Ninguna cifra clínica se calcula en el navegador** | La tabla del deslizador la genera Python con el módulo real; JavaScript sólo consulta. Una segunda implementación de un cálculo clínico puede desviarse sin que nadie lo vea |
+| 11-sep | **Los organismos se muestran por número de documentos, sin barajar** | Al hacer la cifra visible, el azar sacaba casillas de «1» junto a una de «74». Sólo siete organismos llegan a diez documentos |
 
 ---
 

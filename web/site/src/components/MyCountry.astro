@@ -1,0 +1,104 @@
+---
+/**
+ * Tu país, en la portada (11-sep-2026).
+ *
+ * PediBot conoce el teléfono de emergencias de 31 países y el calendario vacunal de ocho, y
+ * **nada de eso se veía en la portada**. Para un padre en Delhi o en El Cairo —que es a donde el
+ * proyecto quiere llegar— eso era justo lo único que hacía falta a las tres de la mañana.
+ *
+ * Eliges país y sale su número, grande, y el enlace a su calendario si lo tenemos. El país se
+ * adivina del idioma del navegador y se guarda en la MISMA clave que usa el chat
+ * (`pedibot_country`), así que elegirlo aquí lo deja elegido allí y al revés.
+ *
+ * Los nombres de país salen de `Intl.DisplayNames`, que trae el navegador: en el idioma de la
+ * página, sin un solo byte de datos y sin pedirle nada a nadie. Si no existe, se queda el código.
+ */
+import { t, langPrefix, type Lang } from '../i18n';
+import emergency from '../data/emergency.json';
+import vaccines from '../data/vaccines.json';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+
+const paises = Object.keys(emergency).sort();
+const conCalendario = Object.keys(vaccines);
+const defecto = paises.includes('GB') ? 'GB' : paises[0];
+---
+
+<section class="block mine" id="mine">
+  <p class="eyebrow">{s.mine_eyebrow}</p>
+  <h2 style="margin-top:8px">{s.mine_h2}</h2>
+
+  <div class="row">
+    <label class="pick">
+      <span>{s.mine_pick}</span>
+      <select id="mine-cc" aria-label={s.mine_pick}>
+        {paises.map((cc) => <option value={cc} selected={cc === defecto}>{cc}</option>)}
+      </select>
+    </label>
+
+    <div class="num">
+      <span class="lbl">{s.mine_call}</span>
+      <b id="mine-num">{emergency[defecto as keyof typeof emergency]?.emergency ?? '—'}</b>
+    </div>
+  </div>
+
+  <p class="cal">
+    <a id="mine-cal" class="btn btn-ghost" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines} →</a>
+    <span class="hint" id="mine-hint"></span>
+  </p>
+</section>
+
+<script define:vars={{ NUM: emergency, CAL: conCalendario, PREF: langPrefix(lang), FALTA: s.mine_no_cal }}>
+  const sel = document.getElementById('mine-cc');
+  if (sel) {
+    const num = document.getElementById('mine-num');
+    const cal = document.getElementById('mine-cal');
+    const hint = document.getElementById('mine-hint');
+    const idioma = document.documentElement.lang || 'en';
+
+    // el nombre del país en el idioma de la página, de la biblioteca del navegador
+    try {
+      const nombres = new Intl.DisplayNames([idioma], { type: 'region' });
+      for (const o of sel.options) o.textContent = nombres.of(o.value) || o.value;
+    } catch (e) { /* navegador sin Intl.DisplayNames: se quedan los códigos, que se entienden */ }
+
+    const pinta = () => {
+      const cc = sel.value;
+      num.textContent = (NUM[cc] && NUM[cc].emergency) || '—';
+      const tiene = CAL.includes(cc);
+      cal.href = tiene ? `${PREF}/vaccines/${cc.toLowerCase()}` : `${PREF}/vaccines`;
+      // decirlo cuando NO lo tenemos es más honesto que llevar a una lista y que lo descubra solo
+      hint.textContent = tiene ? '' : FALTA;
+    };
+    sel.addEventListener('change', () => {
+      try { localStorage.setItem('pedibot_country', sel.value); } catch (e) {}
+      pinta();
+    });
+    try {
+      const guardado = localStorage.getItem('pedibot_country');
+      const delIdioma = (navigator.language || '').split('-')[1];
+      const elegido = guardado || delIdioma;
+      if (elegido && [...sel.options].some((o) => o.value === elegido)) sel.value = elegido;
+    } catch (e) {}
+    pinta();
+  }
+</script>
+
+<style>
+  .row { display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap; margin-top: 18px; }
+  .pick span { display: block; font-size: .84rem; color: var(--ink-3); margin-bottom: 6px; }
+  .pick select {
+    font: inherit; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line);
+    background: var(--paper); color: var(--ink); min-width: 210px;
+  }
+  .num { display: flex; flex-direction: column; }
+  .num .lbl { font-size: .84rem; color: var(--ink-3); margin-bottom: 2px; }
+  .num b {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: clamp(1.8rem, 6vw, 2.6rem); line-height: 1.05; color: var(--coral);
+    font-variant-numeric: tabular-nums;
+  }
+  .cal { margin-top: 20px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .hint { font-size: .84rem; color: var(--ink-3); }
+</style>

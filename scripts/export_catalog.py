@@ -115,6 +115,23 @@ target5 = ROOT / "web" / "site" / "src" / "data" / "countries.json"
 target5.write_text(json.dumps(paises, ensure_ascii=False) + "\n", encoding="utf-8")
 print(f"countries.json: {len(paises)} países con número de emergencia")
 
+# El número, no sólo el código → web/site/src/data/emergency.json (la tira «tu país» de la
+# portada, 11-sep-2026). Hasta hoy la web sabía QUÉ países conocemos pero no su número, así que
+# la portada no podía decirle a un padre en Delhi ni en El Cairo lo único que de verdad hace
+# falta a las tres de la mañana. Mismo fichero de origen, así que no pueden desviarse.
+emergencias = {
+    k: {
+        "emergency": v.get("emergency"),
+        "poison": v.get("poison"),
+        "mental": v.get("mental"),
+    }
+    for k, v in numeros.items()
+    if k != "default"
+}
+target8 = ROOT / "web" / "site" / "src" / "data" / "emergency.json"
+target8.write_text(json.dumps(emergencias, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
+print(f"emergency.json: {len(emergencias)} países con su número")
+
 
 # tema → categoría de la taxonomía → web/site/src/data/topic_category.json
 #
