@@ -7,7 +7,7 @@
 drugs:
   paracetamol:
     generic: {en: "Paracetamol (acetaminophen)", es: "Paracetamol", fr: "Paracétamol", de: "Paracetamol", ru: "Парацетамол", ar: "باراسيتامول", pt: "Paracetamol", hi: "पैरासिटामोल"}
-    aliases: [acetaminophen, acetaminofen, acetaminofén, apap, "ben-u-ron", "ben u ron", "benuron", "paracetamol-ratiopharm", "tylenol bebe", "tylenol bebê", "tylenol criança", "tylenol crianca", "panadol baby"]
+    aliases: [acetaminophen, acetaminofen, acetaminofén, apap, "ben-u-ron", "ben u ron", "benuron", "paracetamol-ratiopharm", "tylenol bebe", "tylenol bebê", "tylenol criança", "tylenol crianca", "panadol baby", "بنادول", "أدول", "ادول", "فيفادول", "سيتال", "تايلول", "بانادول", "क्रोसिन", "डोलो", "कालपोल", "मेटासिन", "पैरासिटामोल सिरप"]
     brands:
       - {name: "Apiretal", countries: [ES], forms: ["gotas 100 mg/ml"]}
       # ojo: Dalsy NO es paracetamol, es ibuprofeno. Está en su lista, más abajo.
@@ -22,7 +22,19 @@ drugs:
       - {name: "Tachipirina", countries: [IT], forms: ["jarabe 120 mg/5 ml", "gotas 100 mg/ml"]}
       - {name: "Ben-u-ron", countries: [DE, PT], forms: ["jarabe 200 mg/5 ml (4 %)"]}
       - {name: "Tylenol / Paracetamol genérico", countries: [BR], forms: ["gotas 200 mg/ml", "suspensão 160 mg/5 ml"]}
-    strengths_mg_per_ml: [100, 24, 30, 32, 40, 50, 200]
+      # ── India y mundo árabe (11-sep-2026). Son los dos mercados que el proyecto
+      # ataca y no había una sola marca de ninguno: un padre en Delhi o en El Cairo
+      # escribía el nombre del bote y no se reconocía. Misma molécula, otra caja.
+      - {name: "Crocin", countries: [IN], forms: ["gotas 100 mg/ml", "jarabe 125 mg/5 ml", "DS 250 mg/5 ml"]}
+      - {name: "Dolo", countries: [IN], forms: ["gotas 100 mg/ml", "suspensión 125 mg/5 ml", "250 mg/5 ml"]}
+      - {name: "Metacin", countries: [IN], forms: ["gotas 100 mg/ml", "jarabe 125 mg/5 ml"]}
+      - {name: "Pyrigesic", countries: [IN], forms: ["jarabe 125 mg/5 ml"]}
+      - {name: "Adol", countries: [AE, SA, QA, KW, OM, BH], forms: ["gotas 100 mg/ml", "suspensión 120 mg/5 ml", "250 mg/5 ml"]}
+      - {name: "Fevadol", countries: [SA], forms: ["suspensión 120 mg/5 ml", "forte 250 mg/5 ml"]}
+      - {name: "Cetal", countries: [EG], forms: ["gotas 100 mg/ml", "jarabe 125 mg/5 ml"]}
+      - {name: "Abimol", countries: [EG], forms: ["jarabe 120 mg/5 ml"]}
+      - {name: "Tylol", countries: [TR, JO, LB], forms: ["suspensión 120 mg/5 ml"]}
+    strengths_mg_per_ml: [100, 24, 25, 30, 32, 40, 50, 200]
     per_dose_mg_per_kg: [10, 15]
     interval_hours: [4, 6]
     max_mg_per_kg_day: 60
@@ -43,7 +55,7 @@ drugs:
 
   ibuprofen:
     generic: {en: "Ibuprofen", es: "Ibuprofeno", fr: "Ibuprofène", de: "Ibuprofen", ru: "Ибупрофен", ar: "إيبوبروفين", pt: "Ibuprofeno", hi: "आइबुप्रोफेन"}
-    aliases: [ibuprofeno, ibuprofène, ibuprofene, "nureflex", "nurofen junior", "advil infantil", "ibuprofeno pediatrico", "ibuprofeno pediátrico", "brufen", "ibufen", "algifor"]
+    aliases: [ibuprofeno, ibuprofène, ibuprofene, "nureflex", "nurofen junior", "advil infantil", "ibuprofeno pediatrico", "ibuprofeno pediátrico", "brufen", "ibufen", "algifor", "بروفين", "بروفينال", "نيوروفين", "ब्रूफेन", "आइबुप्रोफेन सिरप"]
     brands:
       - {name: "Dalsy", countries: [ES], forms: ["suspensión 2 % (100 mg/5 ml)", "suspensión 4 % (200 mg/5 ml)"]}
       - {name: "Junifen", countries: [ES], forms: ["2 % (100 mg/5 ml)", "4 % (200 mg/5 ml)"]}
@@ -53,6 +65,9 @@ drugs:
       - {name: "Motrin Children's / Infants'", countries: [US, CA, MX], forms: ["children 100 mg/5 ml", "infant drops 40 mg/ml"]}
       - {name: "Advil Pediátrico / Ibupirac", countries: [AR, CL, CO, MX], forms: ["2 % (100 mg/5 ml)", "4 % (200 mg/5 ml)"]}
       - {name: "Alivium", countries: [BR], forms: ["gotas 50 mg/ml", "suspensão 100 mg/5 ml"]}
+      - {name: "Brufen", countries: [IN, AE, SA, EG], forms: ["jarabe 100 mg/5 ml"]}
+      - {name: "Ibugesic", countries: [IN], forms: ["suspensión 100 mg/5 ml"]}
+      - {name: "Profinal", countries: [AE, SA, QA, KW], forms: ["suspensión 100 mg/5 ml", "forte 200 mg/5 ml"]}
     strengths_mg_per_ml: [20, 40, 50]
     per_dose_mg_per_kg: [5, 10]
     interval_hours: [6, 8]

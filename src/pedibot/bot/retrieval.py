@@ -27,6 +27,12 @@ TRANSLATE_SYSTEM = (
 )
 
 
+#: Palabras que acompañan a una marca y no son la marca. Sin esto, una casilla futura del
+#: tipo «Children's Panadol» convertiría «children» en disparador de paracetamol.
+_COLETILLAS = frozenset({"children", "children's", "infant", "infants", "infants'", "junior",
+                         "baby", "kids", "for", "pediátrico", "pediatrico", "pédiatrique"})
+
+
 def _brand_terms(drugs_path: Path) -> dict[str, dict[str, str]]:
     """marca o alias → {idioma: nombre genérico}, sacado del catálogo.
 
@@ -49,6 +55,16 @@ def _brand_terms(drugs_path: Path) -> dict[str, dict[str, str]]:
                 clave = parte.strip().lower()
                 if len(clave) >= 3:
                     fuera.setdefault(clave, genericos)
+                # Y la primera palabra a secas, que es como se escribe. En el catálogo la
+                # marca lleva su coletilla —«Panadol Children», «Nurofen for Children»— y el
+                # emparejador trata un nombre con espacios como una frase, así que tenía que
+                # aparecer entera: nadie escribe eso. Resultado medido el 11-sep-2026: el
+                # sitio publicaba /dose/panadol y el asistente no sabía qué era «panadol»,
+                # que es EL antitérmico infantil del Golfo. Mismo corte que hace
+                # `export_catalog.py` para la URL, para que las dos cosas no se separen.
+                cabeza = clave.split(" ")[0]
+                if cabeza != clave and len(cabeza) >= 4 and cabeza not in _COLETILLAS:
+                    fuera.setdefault(cabeza, genericos)
     return fuera
 
 

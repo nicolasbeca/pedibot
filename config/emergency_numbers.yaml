@@ -40,6 +40,14 @@ TN: {emergency: "190", poison: "مركز السموم (إقليمي)", mental: n
 JO: {emergency: "911", poison: "مركز السموم (إقليمي)", mental: null}
 QA: {emergency: "999", poison: "مركز السموم (إقليمي)", mental: null}
 KW: {emergency: "112", poison: "مركز السموم (إقليمي)", mental: null}
+# 11-sep-2026: al meter las marcas del Golfo y del Levante en la calculadora, el proyecto
+# pasó a servir cuatro países más y el candado los pilló sin número. Bahréin y Omán tienen
+# número único; en Líbano el 140 es la ambulancia de la Cruz Roja Libanesa, que es quien
+# hace el transporte sanitario; Turquía usa el 112 europeo.
+BH: {emergency: "999", poison: "مركز السموم (إقليمي)", mental: null}
+OM: {emergency: "9999", poison: "مركز السموم (إقليمي)", mental: null}
+LB: {emergency: "140 (الصليب الأحمر اللبناني) / 112", poison: "مركز السموم (إقليمي)", mental: null}
+TR: {emergency: "112", poison: "Ulusal Zehir Danışma Merkezi 114", mental: null}
 IE: {emergency: "112 / 999", poison: "01 809 2166 (NPIC)", mental: "Samaritans 116 123"}
 US: {emergency: "911", poison: "1-800-222-1222 (Poison Control)", mental: "988"}
 CA: {emergency: "911", poison: "1-844-764-7669", mental: "988"}

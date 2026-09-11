@@ -40,7 +40,7 @@ Muitos países de renda baixa e média enfrentam a chamada dupla carga da desnut
 - Leve a criança para pesar e medir com regularidade, para identificar cedo o risco de desnutrição ou de sobrepeso e obesidade [10].
 - Fique atento à qualidade dos alimentos: produtos muito calóricos, ricos em gordura, açúcar e sal e pobres em micronutrientes costumam custar menos, mas têm pior qualidade nutricional [8].
 
-## Quando acudir al médico ou a urgencias
+## Quando consultar um médico ou ir ao pronto-socorro
 
 - Se você percebe que a criança está muito magra para a altura, muito baixa para a idade ou com peso muito baixo para a idade [3].
 - Se a criança não está crescendo ou não ganha peso como esperado [10].

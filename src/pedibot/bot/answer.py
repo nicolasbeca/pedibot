@@ -474,6 +474,21 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
     return head + "\n" + why
 
 
+#: Los signos que separan palabras, en las escrituras que el producto habla. El árabe tiene
+#: su propia coma (،), su punto y coma (؛) y su interrogación (؟); el urdu su punto (۔); y el
+#: hindi termina las frases con danda (। ॥). Son caracteres distintos de los latinos y no
+#: estaban en la lista, así que «بنادول؟» no era «بنادول» y la pregunta árabe más natural
+#: —«mi hijo pesa 14 kilos, ¿cuánto Panadol le doy?»— se quedaba sin dosis (11-sep-2026).
+#: Misma familia que el borde de palabra que no funciona en devanagari y que el artículo
+#: pegado en árabe: el código da por hecha la forma de una lengua que no es la suya, no
+#: falla, y sólo deja de encontrar.
+#:
+#: Se traducen a espacio y se parte con `split()`, que ya sabe de todos los blancos: así la
+#: lista es literalmente la lista de signos, sin una sola barra invertida que escapar.
+_SIGNOS = ",.;:!?¿¡()[]«»\"'/\\-" + "،؛؟۔।॥" + "\u2013\u2014"
+_A_ESPACIO = str.maketrans({c: " " for c in _SIGNOS})
+
+
 def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, float] | None:
     """(drug_key, weight_kg) when the message is a dose question with an explicit weight.
 
@@ -493,7 +508,7 @@ def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, floa
         # del devanagari (las matras: ा ि ो ै) son marcas combinantes, así que una versión basada
         # en `\w` rompe «पैरासिटामोल» en trozos de una letra y no encuentra nada. Es el primo
         # hermano del `\b` que tampoco funciona en esa escritura (ver triage.py).
-        for tok in re.split(r"[\s,.;:!?¿¡()\[\]«»\"'/\\-]+", query.lower()):
+        for tok in query.lower().translate(_A_ESPACIO).split():
             if len(tok) < 4:
                 continue
             r = drugs.resolve(tok)
@@ -820,7 +835,7 @@ class Engine:
                     # encontraba una sola palabra en cirílico, árabe ni devanagari, así que
                     # el enlace a la calculadora no se ofrecía en tres de los ocho idiomas
                     self.drugs.resolve(t)
-                    for t in re.split(r"[\s,.;:!?¿¡()\[\]«»\"'/\\-]+", query.lower())
+                    for t in query.lower().translate(_A_ESPACIO).split()
                     if len(t) >= 4
                 )
             )

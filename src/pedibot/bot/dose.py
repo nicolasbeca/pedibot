@@ -74,6 +74,10 @@ PARACETAMOL = Drug(
     # la línea de las de 100 mg/ml se pasaba al doble.
     presentations=(
         Presentation("jarabe 120 mg/5 ml", 24.0),
+        # 125 mg/5 ml es el jarabe infantil estándar de India (Crocin, Dolo, Metacin,
+        # Pyrigesic) y de Egipto (Cetal). Faltaba: un padre indio no podía elegir su bote,
+        # y el de al lado —120 mg/5 ml— se le parece lo justo para cogerlo por error.
+        Presentation("jarabe 125 mg/5 ml", 25.0),
         Presentation("jarabe 150 mg/5 ml (3 %)", 30.0),
         Presentation("jarabe 160 mg/5 ml", 32.0),
         Presentation("jarabe 200 mg/5 ml (4 %)", 40.0),
