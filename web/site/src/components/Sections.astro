@@ -26,9 +26,24 @@ const blurb: Record<string, Partial<Record<Lang, string>>> = {
   'H. Niño Jesús': { en: "Children's hospital, Madrid", es: 'Hospital infantil, Madrid', fr: 'Hôpital pédiatrique, Madrid' },
   AEMPS: { en: 'Spanish medicines agency', es: 'Agencia Española de Medicamentos', fr: 'Agence espagnole du médicament' },
 };
-const seed = new Date().getUTCDate() + new Date().getUTCMonth() * 31;
-const shuffled = [...byOrg.entries()].sort((a, b) => ((a[0].charCodeAt(0) * 7 + seed) % 13) - ((b[0].charCodeAt(0) * 7 + seed) % 13) || b[1].n - a[1].n);
-const orgs = shuffled.slice(0, 8).map(([org, e]) => [org, `${blurb[org]?.[lang] ?? blurb[org]?.en ?? e.full} · ${e.n} ${s.documents}`]);
+// Ocho organismos, los que más documentos aportan, en orden y sin barajar.
+//
+// Antes se barajaba el catálogo entero con la fecha como semilla, «para que la mezcla sea
+// internacional». Funcionaba mientras la cifra iba escondida dentro de una frase. Desde que la
+// cifra es lo primero que se ve (11-sep-2026) el barajado sacaba casillas de «1 documento» al
+// lado de una de «74», que queda mal y vende de menos: sólo siete organismos llegan a diez
+// documentos y hay veinte en total, así que barajando el «1» era cuestión de tiempo.
+//
+// Por orden tampoco se pierde la mezcla: salen Estados Unidos, Reino Unido, la OMS, Alemania,
+// España y Canadá. Y una lista estable se reconoce al volver, que es más de lo que daba el azar.
+const orgs = [...byOrg.entries()]
+  .sort((a, b) => b[1].n - a[1].n)
+  .slice(0, 8)
+  .map(([org, e]) => [org, blurb[org]?.[lang] ?? blurb[org]?.en ?? e.full, e.n] as [string, string, number]);
+// una cita de verdad, tal y como el producto las emite, para la tarjeta 2. Sale del
+// catálogo y va en el idioma de su fuente, que es exactamente lo que ve un padre
+const citada = (sources as any[]).find((d) => d.org === 'NHS' && d.usage !== 'excluido')
+  ?? (sources as any[]).find((d) => d.usage !== 'excluido');
 const n = (sources as any[]).filter(d => d.usage !== 'excluido').length;
 const fill = (text: string) => text.replace(/\{docs\}/g, String(n));
 ---
@@ -38,9 +53,18 @@ const fill = (text: string) => text.replace(/\{docs\}/g, String(n));
     <h2 style="margin-top:8px">{s.how_h2}</h2>
     <p class="lede">{s.how_lede}</p>
     <div class="trio">
-      <div class="card tint-a"><span class="n">1</span><h3>{s.how_1t}</h3><p>{s.how_1}</p></div>
-      <div class="card tint-b"><span class="n">2</span><h3>{s.how_2t}</h3><p>{s.how_2.replace('49', String(n))}</p></div>
-      <div class="card tint-c"><span class="n">3</span><h3>{s.how_3t}</h3><p>{s.how_3}</p></div>
+      <div class="card tint-a" tabindex="0"><span class="n">1</span><h3>{s.how_1t}</h3><p>{s.how_1}</p>
+        {/* el semáforo del triaje, sin una palabra: rutina, urgente, emergencia */}
+        <div class="show luces" aria-hidden="true"><i class="l1"></i><i class="l2"></i><i class="l3"></i></div>
+      </div>
+      <div class="card tint-b" tabindex="0"><span class="n">2</span><h3>{s.how_2t}</h3><p>{s.how_2.replace('49', String(n))}</p>
+        {/* una cita del catálogo de verdad, en el idioma de su fuente */}
+        <div class="show cita"><span class="marca">[1]</span> {citada?.org_full ?? citada?.org} — “{citada?.title}”</div>
+      </div>
+      <div class="card tint-c" tabindex="0"><span class="n">3</span><h3>{s.how_3t}</h3><p>{s.how_3}</p>
+        {/* el corchete es literalmente lo que el motor emite cuando tiene fuente */}
+        <div class="show marcas" aria-hidden="true"><span>[1]</span><span>[2]</span><span>[3]</span></div>
+      </div>
     </div>
   </section>
 
@@ -55,7 +79,13 @@ const fill = (text: string) => text.replace(/\{docs\}/g, String(n));
     <p class="eyebrow">{s.src_eyebrow}</p>
     <h2 style="margin-top:8px">{s.src_h2}</h2>
     <p class="lede">{s.src_lede}</p>
-    <div class="orgs">{orgs.map(([b, d]) => <div class="org"><b>{b}</b><span>{d}</span></div>)}</div>
+    <div class="orgs">{orgs.map(([nombre, que, cuantos]) => (
+      <div class="org" tabindex="0">
+        <span class="cuenta">{cuantos}</span>
+        <b>{nombre}</b>
+        <span class="que">{que}</span>
+      </div>
+    ))}</div>
     <p style="margin-top:18px"><a class="btn btn-ghost" href={`${langPrefix(lang)}/sources`}>{s.src_all} ({n})</a></p>
   </section>
 
@@ -119,7 +149,56 @@ const fill = (text: string) => text.replace(/\{docs\}/g, String(n));
   @media (prefers-reduced-motion: reduce) { .ch { transition: none; } }
   .orgs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 26px; }
   @media (max-width: 900px) { .orgs { grid-template-columns: repeat(2, 1fr); } }
-  .org { background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
-  .org b { display: block; font-family: Nunito, sans-serif; }
-  .org span { font-size: .84rem; color: var(--ink-3); }
+  /* la cifra delante y el nombre debajo: lo que se ve de lejos es cuántos documentos aporta
+     cada organismo, que es el dato que sostiene todo lo demás */
+  .org {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
+    transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+  }
+  .org:hover, .org:focus-visible { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--mint-2); outline: none; }
+  .org:focus-visible { border-color: var(--focus); }
+  .cuenta {
+    display: block; font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 1.9rem; line-height: 1; font-weight: 700; color: var(--sage);
+    font-variant-numeric: tabular-nums;
+  }
+  .org b { display: block; font-family: Nunito, sans-serif; margin-top: 4px; }
+  /* la descripción sólo al acercarse: de lejos estorba y de cerca es justo lo que se busca */
+  .que {
+    display: block; font-size: .84rem; color: var(--ink-3);
+    max-height: 0; opacity: 0; overflow: hidden;
+    transition: max-height .2s ease, opacity .2s ease;
+  }
+  .org:hover .que, .org:focus-visible .que { max-height: 4em; opacity: 1; }
+
+  /* las tres tarjetas demuestran en vez de contar */
+  .card { transition: transform .16s ease, box-shadow .16s ease; }
+  .card:hover, .card:focus-visible { transform: translateY(-3px); box-shadow: var(--shadow); outline: none; }
+  .show { margin-top: 14px; opacity: .45; transition: opacity .2s ease, transform .2s ease; }
+  .card:hover .show, .card:focus-visible .show { opacity: 1; }
+  .luces { display: flex; gap: 9px; }
+  .luces i { width: 13px; height: 13px; border-radius: 50%; display: block; transition: transform .2s ease; }
+  .luces .l1 { background: var(--sage); }
+  .luces .l2 { background: var(--amber); }
+  .luces .l3 { background: var(--coral); }
+  .card:hover .luces .l1 { transform: scale(1.35); }
+  .card:hover .luces .l2 { transform: scale(1.35); transition-delay: .07s; }
+  .card:hover .luces .l3 { transform: scale(1.35); transition-delay: .14s; }
+  .cita {
+    font-size: .82rem; color: var(--ink-2); line-height: 1.45;
+    border-inline-start: 3px solid var(--amber); padding-inline-start: 10px;
+  }
+  .cita .marca, .marcas span {
+    font-family: 'JetBrains Mono', ui-monospace, monospace; color: var(--sage-deep); font-weight: 700;
+  }
+  .marcas { display: flex; gap: 10px; font-size: 1.05rem; }
+  .card:hover .marcas span:nth-child(2) { transition-delay: .07s; }
+  .card:hover .marcas span:nth-child(3) { transition-delay: .14s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .org, .card, .show, .luces i { transition: none; }
+    .org:hover, .org:focus-visible, .card:hover, .card:focus-visible { transform: none; }
+    .card:hover .luces i { transform: none; }
+    .que { max-height: 4em; opacity: 1; }
+  }
 </style>
