@@ -11,6 +11,14 @@
 # Arabic triggers appear bare and with the article: the match is a prefix on the token, and
 # "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
+  # los temas del lote de la OMS del 11-sep: la pregunta de un padre y el título del
+  # documento no usan la misma palabra («anaemic» / «anaemia», «worms» / «helminth»,
+  # «bitten by a snake» / «snakebite envenoming»)
+  anaemic: [anaemia, anemia, "iron deficiency"]
+  worms: [helminth, deworming, "intestinal worms"]
+  deworm: [helminth, "soil-transmitted"]
+  snake: [snakebite, envenoming]
+  bitten: [snakebite, envenoming, rabies]
   fever:
   - fiebre
   - febril
@@ -676,6 +684,8 @@ fr:
   - bronchiolite
   - virus respiratoire syncytial
 fr_en:
+  anémique: [anaemia, anemia]
+  anémie: [anaemia, anemia]
   fièvre:
   - fever
   - temperature
@@ -2988,6 +2998,13 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # árabe: faltaban la serpiente y la sarna, que sí tienen ficha en árabe pero cuya
+  # consulta no casaba con el título
+  أفعى: [snakebite, envenoming]
+  ثعبان: [snakebite, envenoming]
+  لدغ: [snakebite, envenoming, bite]
+  الجرب: [scabies]
+  جرب: [scabies]
   # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
   # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
   # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
@@ -4783,6 +4800,23 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # hindi: el índice no tiene NI UN documento en hindi, así que toda pregunta hindi
+  # tiene que puentear. Sin esto, los temas nuevos eran inalcanzables desde el hindi.
+  मलेरिया: [malaria, mosquito, fever]
+  डेंगू: [dengue, mosquito, fever]
+  टाइफाइड: [typhoid, fever]
+  एनीमिया: [anaemia, anemia, iron]
+  खून की कमी: [anaemia, anemia, iron]
+  साँप: [snakebite, envenoming, snake]
+  सांप: [snakebite, envenoming, snake]
+  कीड़े: [helminth, worms, deworming]
+  सेप्सिस: [sepsis]
+  टिटनेस: [tetanus]
+  डिप्थीरिया: [diphtheria]
+  मिर्गी: [epilepsy, seizure]
+  ऑटिज़्म: [autism]
+  हेपेटाइटिस: [hepatitis]
+  रेबीज: [rabies]
   बुखार:
   - fever
   - temperature
@@ -5075,6 +5109,7 @@ hi_en:
   - rash
   - spots
   खुजली:
+  - scabies
   - itching
   khujli:
   - itching

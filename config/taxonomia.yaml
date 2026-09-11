@@ -1,14 +1,18 @@
 # Taxonomía cerrada de temas (es + en). Palabras clave = prefijos (regex \b(kw)\w*).
 topics:
-  fiebre: [fiebre, febril, antitérmico, antitermico, temperatura, fever, febrile]
+  fiebre: [fiebre, febril, antitérmico, antitermico, temperatura, fever, febrile,
+                 malaria, paludisme, ملاريا, मलेरिया, малярия, malária, dengue, الضنك, डेंगू, денге, tifoidea, typhoid, typhoïde, تيفوئيد, टाइफाइड, тиф, tifoide]
   respiratorio: [tos, bronquiolitis, laringitis, crup, asma, neumonía, neumonia, catarro, mocos, sibilancia, pitos, respirar, respiración, disnea, cough, wheez, breath, pneumonia, croup, asthma, cold]
   digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat,
              lombrices, oxiuros, lombriz, threadworm, pinworm, oxyures, madenwürmer, madenwurmer,
-             острицы, острица, ديدان, कीड़े, vomit, diarrh, constipat, stomach, dehydrat]
+             острицы, острица, ديدان, कीड़े, vomit, diarrh, constipat, stomach, dehydrat,
+                 lombrices, helminth, oxiuros, desparasit, vers intestinaux, ديدان, कीड़े, гельминт, глист, "agua potable", "drinking water", "eau potable", "مياه الشرب", "पीने का पानी", "питьевая вода", "seguridad alimentaria", "food safety", "sécurité sanitaire des aliments", "سلامة الأغذية", hepatitis, التهاب الكبد, हेपेटाइटिस, гепатит]
   neurologia: [meningitis, meningite, meningitis, hirnhautentzündung, hirnhautentzundung,
                менингит, менингита, التهاب السحايا, سحايا, मेनिन्जाइटिस,
-               convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding]
-  accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke]
+               convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding,
+                 epilepsia, epilepsy, épilepsie, epilepsie, الصرع, मिर्गी, эпилепсия]
+  accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke,
+                 serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
   piel: [urticaria, exantema, sarpullido, eccema, dermatitis, ronchas, habones, manchas, rash, eczema, skin,
@@ -19,7 +23,8 @@ topics:
          paperas, mumps, oreillons, ورم الغدة النكفية, свинк, свинка, свинки, кашка, गलसुआ,
          "mano-pie-boca", "pieds-mains-bouche", "hand foot and mouth", impétigo, impetigo, molusco, molluscum,
          piojo, piojos, liendre, head lice, lice, poux, kopfläuse, kopflause, вши, вшей, قمل, जूं,
-         picadura, picaduras, mosquito, insect bite, piqûre, piqure, insektenstich, укус, لدغة, काटने]
+         picadura, picaduras, mosquito, insect bite, piqûre, piqure, insektenstich, укус, لدغة, काटने,
+                 sarna, scabies, gale$, krätze, الجرب, खुजली, чесотка, escabiosis]
   orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear$, ears$, earache, earwax,
         throat, tonsil]
   salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
@@ -27,12 +32,16 @@ topics:
                  "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids,
                  desnutrición, desnutricion, malnutrición, malnutricion, malnutrition, dénutri, denutri, mangelernährung, mangelernahrung,
-                 недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao]
-  recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice]
+                 недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao,
+                 anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение]
+  recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice,
+                 prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]
-  vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz]
+  vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz,
+                 difteria, diphtheria, diphtérie, diphtherie, الخناق, डिप्थीरिया, дифтерия, tétanos, tetanus, كزاز, टिटनेस, столбняк]
   desarrollo: ["dolores de crecimiento", "growing pains", "douleurs de croissance",
-               wachstumsschmerzen, "боли роста", "آلام النمو", desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen]
+               wachstumsschmerzen, "боли роста", "آلام النمو", desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen,
+                 autismo, autism, autisme, التوحد, ऑटिज़्म, аутизм]
   medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
   urinario: [orina, urinaria, urinario, infección de orina, infeccion de orina, cistitis, pis$,
              pipí, pipi, enuresis, mojar la cama, urine, urinary, uti$, utis$, wee$, bedwetting,
@@ -44,7 +53,8 @@ topics:
   dental: [dentición, denticion, diente, dientes, muela, teething, tooth, teeth,
            poussée dentaire, dent$, dents$, zahnen, zahn, прорезывание зубов, зуб, تسنين, أسنان,
            दांत, दाँत]
-  urgencias: [urgencias, "112", emergencia, sedoanalgesia, emergency, "911", "999"]
+  urgencias: [urgencias, "112", emergencia, sedoanalgesia, emergency, "911", "999",
+                 sepsis, septicemia, septicémie, "تعفن الدم", सेप्सिस, сепсис]
   crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]
   general: []
 
