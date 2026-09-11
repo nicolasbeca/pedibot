@@ -99,6 +99,18 @@ def main() -> int:
     if escritas and not a.dry_run:
         import subprocess
 
+        # Antes de rehacer, volver a exportar los datos del catálogo. Un tema NUEVO llega
+        # al sitio sin categoría de taxonomía hasta que alguien corre `export_catalog.py` a
+        # mano, y sin categoría la guía enlaza mal y se busca peor — en silencio, porque la
+        # página se construye igual. Pasó el 11-sep-2026 con «ahogamiento», el primer tema
+        # publicado por el timer: lo destapó un candado, no el proceso que lo causó.
+        subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "export_catalog.py")],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            timeout=600,
+        )
         r = subprocess.run(
             "npm run build",
             cwd=ROOT / "web" / "site",

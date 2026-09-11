@@ -8,6 +8,42 @@ interface Props { lang: Lang; title: string; description: string; path: string; 
   others?: Partial<Record<Lang, string | null>> }
 const { lang, title, description, path, jsonld, others } = Astro.props;
 const s = t(lang);
+/**
+ * Lo que enseña un resultado de búsqueda son unos 60 caracteres de título. Medido el
+ * 11-sep-2026 sobre el sitio construido: 166 de 800 páginas pasaban de ahí, y casi todas por
+ * dos motivos evitables. Uno, el sufijo de marca: diez caracteres que no dicen nada que el
+ * lector no vea ya en el dominio, empujando fuera del corte la parte que convence. Dos, los
+ * calendarios vacunales, de hasta 86 caracteres.
+ *
+ * Así que si no cabe: primero se cae la marca, y si aún no cabe se corta por una pausa DEL
+ * PROPIO título —dos puntos, raya, interrogación, coma—, que casi siempre deja un título mejor
+ * que el original («Portugal — Programa Nacional de Vacinação (PNV 2025)»). Sólo si no hay
+ * ninguna pausa utilizable se corta por el último espacio, nunca dentro de una palabra.
+ *
+ * Se acorta SÓLO lo que enseña el buscador. El <h1>, la tarjeta social y el marcado siguen
+ * llevando el título entero.
+ */
+const MARCA = ' — PediBot';
+const CORTE = 60;
+const SUELO = 24; // por debajo de esto el recorte deja de decir nada y no compensa
+function tituloBreve(t: string): string {
+  if (t.length <= CORTE) return t;
+  const x = t.endsWith(MARCA) ? t.slice(0, -MARCA.length) : t;
+  if (x.length <= CORTE) return x;
+  let mejor = '';
+  for (const pausa of [': ', ' — ', ' – ', ' - ', '? ', ', ', ' : ']) {
+    for (let i = x.indexOf(pausa); i !== -1; i = x.indexOf(pausa, i + 1)) {
+      const trozo = (pausa === '? ' ? x.slice(0, i + 1) : x.slice(0, i)).trim();
+      if (trozo.length >= SUELO && trozo.length <= CORTE && trozo.length > mejor.length) {
+        mejor = trozo;
+      }
+    }
+  }
+  if (mejor) return mejor;
+  const espacio = x.lastIndexOf(' ', CORTE - 3);
+  return (espacio >= SUELO ? x.slice(0, espacio) : x.slice(0, CORTE - 3)) + '…';
+}
+const tituloDoc = tituloBreve(title);
 const site = Astro.site?.toString().replace(/\/$/, '') ?? '';
 const otherLangs: Lang[] = LANGS.filter((l) => l !== lang);
 // built from LANGS so a new language cannot be forgotten here — /de was, and the language
@@ -39,7 +75,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="light" />
-  <title>{title}</title>
+  <title>{tituloDoc}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   <link rel="alternate" hreflang={lang} href={canonical} />
