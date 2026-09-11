@@ -351,6 +351,77 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "docs": ["mlp_en_teenmentalhealth", "who_en_adolescent_mental_health"],
         "query": "teen mental health anxiety depression signs",
     },
+    # ── 11-sep-2026 ──────────────────────────────────────────────────────────────────────
+    # El corpus tenía 24 asuntos de la OMS en cinco lenguas cada uno y NINGUNA guía los
+    # escribía: documentos indexados que no lee nadie. Éstos son los que pesan en la India y
+    # en los países árabes —la rabia de una mordedura de perro y la mordedura de serpiente
+    # son urgencias de horas; el dengue, la tifoidea, la sarna y las lombrices, pediatría
+    # diaria; y la anemia afecta a más de la mitad de los niños indios menores de cinco años.
+    # Dieciséis temas × ocho lenguas = 128 guías, dos meses de cola para los timers.
+    "dengue": {
+        "docs": ["who_en_dengue_and_severe_dengue", "who_ar_dengue_and_severe_dengue", "who_es_dengue_and_severe_dengue"],
+        "query": "dengue niño fiebre signos de alarma sangrado dolor abdominal dengue child warning signs",
+    },
+    "mordedura_perro_rabia": {
+        "docs": ["who_en_rabies", "who_ar_rabies", "who_es_rabies"],
+        "query": "mordedura de perro niño rabia lavar la herida profilaxis dog bite child rabies wound washing",
+    },
+    "mordedura_serpiente": {
+        "docs": ["who_en_snakebite_envenoming", "who_ar_snakebite_envenoming", "who_es_snakebite_envenoming"],
+        "query": "mordedura de serpiente niño qué hacer no torniquete snake bite child what to do",
+    },
+    "tetanos": {
+        "docs": ["who_en_tetanus", "who_ar_tetanus", "who_es_tetanus"],
+        "query": "tétanos niño herida sucia vacuna espasmos tetanus child wound vaccine",
+    },
+    "tifoidea": {
+        "docs": ["who_en_typhoid", "who_ar_typhoid", "who_es_typhoid"],
+        "query": "fiebre tifoidea niño agua contaminada vacuna typhoid fever child water vaccine",
+    },
+    "sarna": {
+        "docs": ["who_en_scabies", "who_ar_scabies", "who_es_scabies"],
+        "query": "sarna niño picor por la noche tratamiento familia scabies child itching treatment",
+    },
+    "lombrices_intestinales": {
+        "docs": ["who_en_soil_transmitted_helminth_infections", "who_ar_soil_transmitted_helminth_infections", "who_es_soil_transmitted_helminth_infections"],
+        "query": "lombrices intestinales niño desparasitación higiene deworming child intestinal worms",
+    },
+    "anemia": {
+        "docs": ["who_en_anaemia", "who_ar_anaemia", "who_es_anaemia"],
+        "query": "anemia niño hierro cansancio palidez anaemia child iron deficiency",
+    },
+    "diarrea_sro_zinc": {
+        "docs": ["who_en_diarrhoeal_disease", "who_ar_diarrhoeal_disease", "who_es_diarrhoeal_disease"],
+        "query": "diarrea niño sales de rehidratación oral zinc deshidratación ORS zinc child diarrhoea",
+    },
+    "agua_segura_bebe": {
+        "docs": ["who_en_drinking_water", "who_ar_drinking_water", "who_es_drinking_water"],
+        "query": "agua potable segura para el bebé hervir biberón safe drinking water baby boiling",
+    },
+    "seguridad_alimentaria": {
+        "docs": ["who_en_food_safety", "who_ar_food_safety", "who_es_food_safety"],
+        "query": "seguridad alimentaria niño preparar la comida higiene food safety child preparing food",
+    },
+    "difteria": {
+        "docs": ["who_en_diphtheria", "who_ar_diphtheria", "who_es_diphtheria"],
+        "query": "difteria niño garganta membrana vacuna diphtheria child throat vaccine",
+    },
+    "sepsis_signos": {
+        "docs": ["who_en_sepsis", "who_ar_sepsis", "nhs_en_sepsis"],
+        "query": "sepsis niño signos de alarma actuar rápido sepsis child warning signs",
+    },
+    "prematuro_cuidados": {
+        "docs": ["who_en_preterm_birth", "who_ar_preterm_birth", "who_es_preterm_birth"],
+        "query": "bebé prematuro cuidados piel con piel método canguro preterm baby kangaroo mother care",
+    },
+    "epilepsia_infantil": {
+        "docs": ["who_en_epilepsy", "who_ar_epilepsy", "who_es_epilepsy"],
+        "query": "epilepsia niño crisis qué hacer tratamiento epilepsy child seizure what to do",
+    },
+    "salud_bucodental": {
+        "docs": ["who_en_oral_health", "who_ar_oral_health", "who_es_oral_health"],
+        "query": "salud bucodental niño caries flúor cepillado oral health child caries fluoride",
+    },
 }
 
 

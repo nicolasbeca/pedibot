@@ -79,7 +79,35 @@ def test_siempre_queda_algo_que_publicar(lang: str):
 
 #: Asuntos que el corpus sostiene en varias lenguas y que pesan donde el proyecto quiere llegar.
 #: La clave es un trozo del identificador del documento; el valor, en cuántas lenguas está.
-ASUNTOS_DEL_CORPUS = ("malnutrition", "drowning", "tuberculosis", "malaria", "hepatitis", "polio")
+ASUNTOS_DEL_CORPUS = (
+    "malnutrition",
+    "drowning",
+    "tuberculosis",
+    "malaria",
+    "hepatitis",
+    "polio",
+    # 11-sep-2026: el corpus tenía 24 asuntos de la OMS en cinco lenguas cada uno y NINGUNA
+    # guía los escribía. Éstos son los que pesan donde el proyecto quiere llegar: la rabia
+    # de una mordedura de perro y la mordedura de serpiente son las urgencias de la India
+    # rural; el dengue, la tifoidea, la sarna y las lombrices son su pediatría diaria; y la
+    # anemia afecta a más de la mitad de los niños indios menores de cinco años.
+    "dengue",
+    "rabies",
+    "snakebite",
+    "tetanus",
+    "typhoid",
+    "scabies",
+    "helminth",
+    "anaemia",
+    "diarrhoeal_disease",
+    "drinking_water",
+    "food_safety",
+    "diphtheria",
+    "sepsis",
+    "preterm",
+    "epilepsy",
+    "oral_health",
+)
 
 
 def test_el_plan_cubre_lo_que_el_corpus_sostiene_en_varias_lenguas():
