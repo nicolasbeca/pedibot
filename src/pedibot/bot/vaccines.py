@@ -57,6 +57,9 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "espanha",
         "स्पेन",
     ),
+    # India: «Hindustan» va porque es como mucha gente escribe su país, y «भारत» es el
+    # nombre oficial en hindi, que no se parece en nada a «India» y no casaría solo
+    "IN": ("india", "inde", "indien", "индия", "инди", "الهند", "índia", "भारत", "hindustan"),
     "FR": ("francia", "france", "frankreich", "франци", "فرنسا", "frança", "फ़्रांस", "फ्रांस"),
     "DE": (
         "alemania",

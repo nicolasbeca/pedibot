@@ -113,3 +113,41 @@ countries:
       - {age: 66, label: {en: "5–6 years", es: "5-6 años", fr: "5-6 ans", de: "5-6 Jahre", ru: "5-6 лет", ar: "5-6 سنوات", pt: "5-6 anos", hi: "5–6 साल"}, vaccines: ["Tdap booster (A1)"]}
       - {age: 108, label: {en: "9–14 years", es: "9-14 años", fr: "9-14 ans", de: "9-14 Jahre", ru: "9-14 лет", ar: "9-14 سنة", pt: "9-14 anos", hi: "9–14 साल"}, vaccines: ["HPV (G1+G2, ≥5 months apart; 3 doses if started at ≥15 years)", "Tdap booster (A2)", "Polio booster (A1)"]}
       - {age: 144, label: {en: "12–14 years", es: "12-14 años", fr: "12-14 ans", de: "12-14 Jahre", ru: "12-14 лет", ar: "12-14 سنة", pt: "12-14 anos", hi: "12–14 साल"}, vaccines: ["Meningococcal ACWY (G1) — new in the 2026 calendar, replacing the old MenC dose at 12 months"]}
+
+  # India — transcrito el 11-sep-2026 del PDF oficial de la National Health Mission
+  # (nhm.gov.in/.../National_%20Immunization_Schedule.pdf, 3 páginas, leído entero).
+  # Licencia comprobada en su propia página: reproducible citando la fuente de forma prominente.
+  # OJO a lo que un europeo "corregiría" y estropearía: es MR y no MMR (India no vacuna de
+  # paperas en el programa público), pentavalente y no hexavalente, polio ORAL con dosis 0 al
+  # nacer, y fIPV, que es dosis fraccionada y no existe en ningún otro calendario del sitio.
+  IN:
+    name:
+      en: "India — National Immunization Schedule"
+      es: "India — calendario nacional de vacunación"
+      fr: "Inde — calendrier national de vaccination"
+      de: "Indien — nationaler Impfkalender"
+      ru: "Индия — национальный календарь прививок"
+      ar: "الهند — جدول التطعيم الوطني"
+      pt: "Índia — calendário nacional de vacinação"
+      hi: "भारत — राष्ट्रीय टीकाकरण अनुसूची"
+    source: "National Health Mission (NHM), Ministry of Health & Family Welfare, Government of India — National Immunization Schedule (Universal Immunization Programme), 2018 edition — the document itself prints no year; 2018 is the folder NHM publishes it in. Read 11 Sep 2026"
+    source_url: "https://nhm.gov.in/New_Updates_2018/NHM_Components/Immunization/report/National_%20Immunization_Schedule.pdf"
+    note:
+      en: "All these vaccines are free of charge under the Universal Immunization Programme. Two are NOT nationwide: PCV is given only in selected states (Bihar, Himachal Pradesh, Madhya Pradesh, parts of Uttar Pradesh, Rajasthan, and Haryana as a state initiative) and JE only in endemic districts — ask at your centre. BCG can be given up to one year of age; the hepatitis B birth dose should be within 24 hours."
+      es: "Todas estas vacunas son gratuitas dentro del Programa Universal de Inmunización. Dos NO son de todo el país: la neumocócica (PCV) solo se pone en algunos estados (Bihar, Himachal Pradesh, Madhya Pradesh, parte de Uttar Pradesh, Rajastán y Haryana por iniciativa estatal) y la encefalitis japonesa (JE) solo en distritos endémicos; pregunta en tu centro. La BCG puede ponerse hasta el año; la dosis de hepatitis B del nacimiento, en las primeras 24 horas."
+      fr: "Tous ces vaccins sont gratuits dans le cadre du Programme universel de vaccination. Deux ne sont PAS nationaux : le PCV n'est administré que dans certains États (Bihar, Himachal Pradesh, Madhya Pradesh, une partie de l'Uttar Pradesh, Rajasthan, et Haryana à l'initiative de l'État) et le JE seulement dans les districts endémiques ; renseignez-vous à votre centre. Le BCG peut être fait jusqu'à un an ; la dose d'hépatite B à la naissance, dans les 24 heures."
+      de: "Alle diese Impfungen sind im Universal Immunization Programme kostenlos. Zwei gelten NICHT landesweit: PCV wird nur in bestimmten Bundesstaaten gegeben (Bihar, Himachal Pradesh, Madhya Pradesh, Teile von Uttar Pradesh, Rajasthan und Haryana als Landesinitiative) und JE nur in endemischen Distrikten — fragen Sie in Ihrem Zentrum nach. BCG kann bis zum ersten Geburtstag gegeben werden; die Hepatitis-B-Geburtsdosis innerhalb von 24 Stunden."
+      ru: "Все эти прививки бесплатны в рамках Всеобщей программы иммунизации. Две действуют НЕ по всей стране: PCV ставят только в отдельных штатах (Бихар, Химачал-Прадеш, Мадхья-Прадеш, часть Уттар-Прадеша, Раджастхан и Харьяна по инициативе штата), а JE — только в эндемичных округах; уточните в своём центре. БЦЖ можно поставить до года; дозу гепатита B при рождении — в первые 24 часа."
+      ar: "جميع هذه اللقاحات مجانية ضمن برنامج التطعيم الشامل. اثنان منها ليسا على مستوى البلاد كلها: لقاح المكورات الرئوية (PCV) يُعطى في ولايات محددة فقط (بيهار، هيماتشال براديش، مادهيا براديش، أجزاء من أوتار براديش، راجستان، وهاريانا بمبادرة من الولاية)، والتهاب الدماغ الياباني (JE) في المناطق الموبوءة فقط — اسأل في مركزك. يمكن إعطاء BCG حتى عمر سنة؛ وجرعة التهاب الكبد B عند الولادة خلال 24 ساعة."
+      pt: "Todas estas vacinas são gratuitas no Programa Universal de Imunização. Duas NÃO são de todo o país: a PCV só é dada em alguns estados (Bihar, Himachal Pradesh, Madhya Pradesh, parte de Uttar Pradesh, Rajastão e Haryana por iniciativa estadual) e a JE só em distritos endémicos — pergunte no seu centro. A BCG pode ser dada até ao primeiro ano; a dose de hepatite B do nascimento, nas primeiras 24 horas."
+      hi: "ये सभी टीके सार्वभौमिक टीकाकरण कार्यक्रम के तहत मुफ़्त हैं। इनमें से दो पूरे देश में नहीं लगते: PCV केवल कुछ राज्यों में (बिहार, हिमाचल प्रदेश, मध्य प्रदेश, उत्तर प्रदेश के कुछ ज़िले, राजस्थान, और हरियाणा में राज्य पहल के रूप में) और JE केवल स्थानिक ज़िलों में — अपने केंद्र पर पूछें। BCG एक साल की उम्र तक लगाया जा सकता है; हेपेटाइटिस B की जन्म खुराक 24 घंटे के भीतर।"
+    schedule:
+      - {age: 0, label: {en: "At birth", es: "Al nacer", fr: "À la naissance", de: "Bei der Geburt", ru: "При рождении", ar: "عند الولادة", pt: "Ao nascer", hi: "जन्म के समय"}, vaccines: ["BCG", "Oral Polio Vaccine (OPV)-0", "Hepatitis B birth dose (within 24 hours)"]}
+      - {age: 1.5, label: {en: "6 weeks", es: "6 semanas", fr: "6 semaines", de: "6 Wochen", ru: "6 недель", ar: "6 أسابيع", pt: "6 semanas", hi: "6 सप्ताह"}, vaccines: ["OPV-1", "Pentavalent-1 (DTP + hepatitis B + Hib)", "Rotavirus (RVV)-1", "Fractional IPV (fIPV)-1", "PCV-1 (selected states only)"]}
+      - {age: 2.5, label: {en: "10 weeks", es: "10 semanas", fr: "10 semaines", de: "10 Wochen", ru: "10 недель", ar: "10 أسابيع", pt: "10 semanas", hi: "10 सप्ताह"}, vaccines: ["OPV-2", "Pentavalent-2", "Rotavirus (RVV)-2"]}
+      - {age: 3.5, label: {en: "14 weeks", es: "14 semanas", fr: "14 semaines", de: "14 Wochen", ru: "14 недель", ar: "14 أسبوعا", pt: "14 semanas", hi: "14 सप्ताह"}, vaccines: ["OPV-3", "Pentavalent-3", "Fractional IPV (fIPV)-2", "Rotavirus (RVV)-3", "PCV-2 (selected states only)"]}
+      - {age: 9, label: {en: "9–12 months", es: "9-12 meses", fr: "9-12 mois", de: "9-12 Monate", ru: "9-12 месяцев", ar: "9-12 شهرا", pt: "9-12 meses", hi: "9–12 महीने"}, vaccines: ["Measles & Rubella (MR)-1", "JE-1 (endemic districts only)", "PCV booster (selected states only)"]}
+      - {age: 16, label: {en: "16–24 months", es: "16-24 meses", fr: "16-24 mois", de: "16-24 Monate", ru: "16-24 месяца", ar: "16-24 شهرا", pt: "16-24 meses", hi: "16–24 महीने"}, vaccines: ["Measles & Rubella (MR)-2", "JE-2 (endemic districts only)", "DPT booster-1", "OPV booster"]}
+      - {age: 60, label: {en: "5–6 years", es: "5-6 años", fr: "5-6 ans", de: "5-6 Jahre", ru: "5-6 лет", ar: "5-6 سنوات", pt: "5-6 anos", hi: "5–6 साल"}, vaccines: ["DPT booster-2"]}
+      - {age: 120, label: {en: "10 years", es: "10 años", fr: "10 ans", de: "10 Jahre", ru: "10 лет", ar: "10 سنوات", pt: "10 anos", hi: "10 साल"}, vaccines: ["Tetanus & adult Diphtheria (Td)"]}
+      - {age: 192, label: {en: "16 years", es: "16 años", fr: "16 ans", de: "16 Jahre", ru: "16 лет", ar: "16 سنة", pt: "16 anos", hi: "16 साल"}, vaccines: ["Tetanus & adult Diphtheria (Td)"]}

@@ -25,7 +25,9 @@ topics:
   salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
                  "psychische gesundheit", "психическое здоровье", "الصحة النفسية",
                  "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]
-  alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids]
+  alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids,
+                 desnutrición, desnutricion, malnutrición, malnutricion, malnutrition, dénutri, denutri, mangelernährung, mangelernahrung,
+                 недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz]

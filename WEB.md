@@ -13,7 +13,7 @@
 
 | | |
 |---|---|
-| Páginas | **779** en el sitemap, 8 idiomas (en, es, fr, de, ru, ar, pt, hi) |
+| Páginas | **792** en el sitemap, 8 idiomas (en, es, fr, de, ru, ar, pt, hi) |
 | Guías | 485 y subiendo: se publican solas, 2 al día |
 | Indexadas en Google | **557 de 779**; 194 que no conoce, 28 rastreadas y descartadas |
 | Bing | Verificado, sitemap entregado sin errores, IndexNow recibiendo — **y sin rastrear páginas** |
@@ -68,15 +68,19 @@ sin que nadie se enterara.
 
 ### 4.1 · Bloqueantes de verdad
 
-1. **India y países árabes: el corpus todavía no los sostiene.** Hindi **0 documentos**, árabe
-   **15** (todos fichas de la OMS), y **ningún calendario vacunal** de ningún país de esas
-   regiones. Los teléfonos de emergencia sí están (India y 9 países árabes). Es la baza
-   principal del proyecto y hoy la promesa no se sostiene.
-   - Verificar desde el VPS la política del ministerio indio (da 403 desde el PC; sus webs
-     satélite llevan la fórmula «reproducible gratis citando la fuente»).
-   - Calendario de India (NIS) y de Arabia Saudí / Emiratos, transcritos de la fuente oficial
-     con candado, como se hizo con Francia y Alemania.
-   - OMS EMRO en árabe: misma licencia ya aceptada, más documentos que las 15 fichas.
+1. **India y países árabes: la baza principal, a medio hacer.**
+   - ✅ **Licencia de India resuelta** (11-sep): la NHM permite reproducir citando la fuente de
+     forma prominente (`FUENTES/INDIA.md`). El portal del ministerio da 403 desde España y una
+     cáscara de JavaScript desde el VPS; la política se leyó en `nhm.gov.in`, mismo ministerio.
+   - ✅ **Calendario vacunal de India publicado** en `/vaccines/in`, en los ocho idiomas,
+     transcrito del PDF oficial, con candado para las siete diferencias que un europeo
+     corregiría por instinto (MR y no MMR, pentavalente, OPV oral, fIPV, semanas en vez de
+     meses, PCV y JE no nacionales, Td a los 10 y 16 años).
+   - ⬜ **Hindi sigue con cero documentos indexados.** La licencia ya está abierta: falta elegir
+     qué páginas de la NHM se indexan y comprobar que el texto se extrae.
+   - ⬜ **Países árabes**: 15 documentos, todos fichas de la OMS, y ningún calendario propio.
+     Siguiente: OMS EMRO en árabe (misma licencia ya aceptada) y el calendario de Arabia Saudí
+     o Emiratos.
 2. **Diez padres.** De 278 consultas en la base, 273 son pruebas. Sin lectores, nada de lo demás
    importa.
 3. **Nadie enlaza al sitio.** Bluesky es el único enlace vivo, y LaunchLeague nunca llegó a
