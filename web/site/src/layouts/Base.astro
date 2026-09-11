@@ -103,15 +103,23 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
         <a class="pill pill-support" href={`${langPrefix(lang)}/support`}>♥ <span class="hide-xs">{s.nav_support}</span></a>
         {/* a menu, not one pill per language: its width no longer grows with the language
             list, and <details> means it opens with no JavaScript and answers the keyboard */}
-        <details class="langsel">
-          <summary class="pill" aria-label={s.lang_label}>{lang.toUpperCase()}<span class="caret" aria-hidden="true">▾</span></summary>
-          <ul>
-            <li><span class="cur" aria-current="true">{LANG_NAMES[lang]}</span></li>
-            {alternates.map((a) => (
-              <li><a href={a.href} hreflang={a.lang}>{LANG_NAMES[a.lang]}</a></li>
-            ))}
-          </ul>
-        </details>
+        {/* Sin hermanas no hay menú, sólo la etiqueta. Tres guías del sitio existen únicamente
+            en inglés a propósito —en castellano serían un duplicado de otra que ya hay— y en
+            ellas el desplegable se abría para ofrecerse a sí mismo: el lector pulsa y no hay
+            nada. Un menú que se abre vacío es peor que no tener menú (11-sep-2026). */}
+        {alternates.length === 0 ? (
+          <span class="pill langsel-solo" aria-label={s.lang_label}>{lang.toUpperCase()}</span>
+        ) : (
+          <details class="langsel">
+            <summary class="pill" aria-label={s.lang_label}>{lang.toUpperCase()}<span class="caret" aria-hidden="true">▾</span></summary>
+            <ul>
+              <li><span class="cur" aria-current="true">{LANG_NAMES[lang]}</span></li>
+              {alternates.map((a) => (
+                <li><a href={a.href} hreflang={a.lang}>{LANG_NAMES[a.lang]}</a></li>
+              ))}
+            </ul>
+          </details>
+        )}
         <button class="pill" id="theme" type="button" aria-label="Night mode">🌙</button>
       </div>
     </div>
