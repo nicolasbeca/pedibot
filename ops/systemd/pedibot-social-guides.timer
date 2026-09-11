@@ -1,0 +1,11 @@
+[Unit]
+Description=PediBot, una guia por idioma: los martes a las 09:00 Europe/Madrid
+
+[Timer]
+# martes, lejos del envio del proyecto de las 10:00 para no soltar nueve cosas seguidas
+OnCalendar=Tue *-*-* 09:00:00 Europe/Madrid
+Persistent=true
+Unit=pedibot-social-guides.service
+
+[Install]
+WantedBy=timers.target

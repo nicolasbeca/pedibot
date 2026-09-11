@@ -477,6 +477,44 @@ def announce(
     typer.echo(json.dumps(res))
 
 
+    app()
+
+
+@app.command()
+def broadcast(
+    what: str = typer.Argument(..., help="project | guides"),
+    dry_run: bool = typer.Option(False, "--dry-run", help="enseña qué publicaría y no publica"),
+) -> None:
+    """Las dos publicaciones periódicas de Bluesky (11-sep-2026).
+
+    `project` cada dos días y `guides` una vez a la semana, una por idioma. Hasta hoy Bluesky
+    sólo recibía algo al generarse una guía, y como nada lanzaba esa generación llevaba una
+    semana en silencio.
+    """
+    from pedibot.publish import broadcast as b
+    from pedibot.publish.social import providers_from_env, syndicate
+
+    if what not in ("project", "guides"):
+        raise typer.BadParameter("solo 'project' o 'guides'")
+    # un ensayo no gasta el turno de la rotación: enseña lo siguiente sin consumirlo
+    posts = (
+        [b.project_post(advance=not dry_run)]
+        if what == "project"
+        else b.weekly_guides(advance=not dry_run)
+    )
+    providers = providers_from_env()
+    if not providers and not dry_run:
+        typer.echo("sin credenciales de ningún canal: no se publica nada")
+        raise typer.Exit(0)
+    for p in posts:
+        if dry_run:
+            typer.echo(f"[{p.lang}] {p.text()}\n---")
+            continue
+        res = syndicate(p, providers)
+        ok = [k for k, v in res.items() if v]
+        typer.echo(f"[{p.lang}] {'ok ' + ','.join(ok) if ok else 'sin salida'}: {p.url}")
+    # la firma va al final a propósito: si el proceso muere antes, su ausencia es la prueba (L117)
+    typer.echo(f"BROADCAST-FIN {what} publicadas={len(posts)}")
+
 if __name__ == "__main__":
     logger.disable("pedibot")
-    app()

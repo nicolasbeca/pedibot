@@ -176,13 +176,16 @@ def test_the_operator_is_not_one_of_his_own_visitors(monkeypatch) -> None:
         [
             _caddy("10.0.0.1", "/admin?days=7"),  # the operator, identifying himself
             _caddy("10.0.0.1", "/"),
+            _caddy("10.0.0.1", "/_astro/app.js"),  # con navegador de verdad, y aun así fuera
             _caddy("10.0.0.1", "/es/guias/fiebre"),
             _caddy("203.0.113.9", "/"),  # somebody else
+            _caddy("203.0.113.9", "/_astro/app.js"),
             _caddy("203.0.113.9", "/es/guias/fiebre"),
             _caddy("198.51.100.4", "/", ua="curl/8.5.0"),  # our scripts, already excluded
             # a scanner hunting for an admin panel: Caddy answers 401, so it is NOT the operator
             _caddy("192.0.2.7", "/admin", status=401),
             _caddy("192.0.2.7", "/"),
+            _caddy("192.0.2.7", "/favicon.ico"),
         ]
     )
     monkeypatch.setattr(
@@ -192,6 +195,7 @@ def test_the_operator_is_not_one_of_his_own_visitors(monkeypatch) -> None:
     # the reader, and the scanner that failed the password: two, not one. Guessing the scanner
     # away would shrink the number in the flattering direction, which is the failure this whole
     # change exists to stop.
+    # los tres cargaron la página entera, así que el 2 sólo sale si el operador queda fuera
     assert w["visitors"] == 2
     assert w["views"] == 3
     assert w["returning"] == 1, "solo uno de los dos abrió una segunda página"

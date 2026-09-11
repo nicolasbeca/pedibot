@@ -1,0 +1,12 @@
+[Unit]
+Description=PediBot, publicacion del proyecto: cada dos dias a las 10:00 Europe/Madrid
+
+[Timer]
+# cada dos dias, a media manana, que es cuando hay gente leyendo. Persistent para que un
+# servidor apagado no se salte el turno en silencio
+OnCalendar=*-*-01/2 10:00:00 Europe/Madrid
+Persistent=true
+Unit=pedibot-social-project.service
+
+[Install]
+WantedBy=timers.target

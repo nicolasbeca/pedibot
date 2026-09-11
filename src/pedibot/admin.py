@@ -409,17 +409,22 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     h.append(
         f'<p class="period">Consultas y guías: <b>{html.escape(period)}</b>. '
         f"Visitas: <b>{html.escape(covered)}</b> — salen del registro del servidor, que no "
-        "guarda desde siempre.<br>Una dirección no es una persona: la mayoría pide una sola "
-        "página y se va, que es lo que hace un rastreador aunque diga ser un navegador. "
-        "La cifra de al lado, quien abrió una segunda página, se parece más a alguien leyendo."
+        "guarda desde siempre.<br><b>Una visita es alguien que cargó la página entera</b>: "
+        "además del texto pidió su hoja de estilo, su JavaScript o un tipo de letra, que es lo "
+        "que hace un navegador solo y lo que un rastreador no hace nunca. "
+        f"Se descartan además las direcciones de rastreo que Google publica como suyas. "
+        f"Hubo <b>{w.get('page_requests', 0)}</b> peticiones de página que no se identificaron "
+        "como robot pero tampoco probaron ser un navegador, y no se cuentan aquí: "
+        "el panel decía 3.227 visitantes donde había 201."
         + _dwell_sentence(w)
         + _sin_modelo_line(q)
         + _tests_line(q, days, include_test)
         + "</p>"
         '<div class="kpis">'
-        + _kpi("direcciones", w["visitors"])
+        + _kpi("visitas con navegador", w["visitors"])
         + _kpi("vieron 2+ páginas", w.get("returning", 0))
         + _kpi("páginas vistas", w["views"])
+        + _kpi("peticiones sin probar navegador", w.get("page_requests", 0))
         + _kpi("cuánto se quedan", _dwell_label(w))
         + _kpi("consultas", q["total"])
         + _kpi("por Telegram", q["telegram"])

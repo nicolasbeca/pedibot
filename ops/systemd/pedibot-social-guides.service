@@ -1,0 +1,12 @@
+[Unit]
+Description=PediBot: una guia por idioma en Bluesky (ocho publicaciones)
+
+[Service]
+Type=oneshot
+User=pedibot
+WorkingDirectory=/opt/pedibot
+EnvironmentFile=/opt/pedibot/.env
+Environment=PYTHONIOENCODING=utf-8
+# ocho publicaciones, una por lengua, la que lleve mas tiempo sin salir en cada una; cuando se
+# agota un idioma vuelve a empezar por el principio en vez de quedarse callado
+ExecStart=/opt/pedibot/.local/bin/uv run --no-dev pedibot broadcast guides

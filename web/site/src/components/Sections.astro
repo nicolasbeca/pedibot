@@ -68,12 +68,6 @@ const fill = (text: string) => text.replace(/\{docs\}/g, String(n));
       <a class="ch" href="https://bsky.app/profile/pedibot.bsky.social" target="_blank" rel="noopener"><span class="ic">🦋</span><b>{s.channels_bs}</b><span>{s.channels_bs_d}</span></a>
       <a class="ch" href={`${langPrefix(lang)}/rss.xml`}><span class="ic">📡</span><b>{s.channels_rss}</b><span>{s.channels_rss_d}</span></a>
     </div>
-    <!-- LaunchLeague badge retired 2-sep-2026, measured: in seven days it brought 20 distinct
-         visitors and NOT ONE of them asked the bot a single question — they looked at the home
-         page, a few opened /dose or /guides, and left. The listing itself is free and stays; what
-         goes is the badge, which put a startup-competition mark on a paediatric health page and
-         sent an outbound link from both home pages, our most valuable ones. The block is in git
-         (commit 2577b0d) and the two SVGs are still in public/ if it ever goes back. -->
   </section>
 
   <section class="block" id="support">

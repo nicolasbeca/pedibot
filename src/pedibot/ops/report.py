@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import datetime as dt
 import hashlib
+import ipaddress
 import json
 import re
 import sqlite3
@@ -17,7 +18,26 @@ from pedibot.settings import ROOT
 _STATIC = re.compile(
     r"\.(xml|svg|png|ico|css|js|txt|woff2?|webmanifest)$|^/_astro/|^/api/|^/a/|^/admin", re.I
 )
-_BOT_UA = re.compile(r"bot|crawl|spider|curl|python|monitor|wget|httpx", re.I)
+# Nombres que se identifican solos. Los cuatro últimos salieron de mirar quién pedía más en
+# el registro: un raspador y un navegador headless que no llevan «bot» en ninguna parte.
+_BOT_UA = re.compile(
+    r"bot|crawl|spider|curl|python|monitor|wget|httpx|scraper|domainworkers|lightpanda"
+    r"|headless|puppeteer|playwright|phantomjs|go-http|okhttp|node-fetch|axios|java/|slurp",
+    re.I,
+)
+
+#: Redes de rastreo que Google **publica** como suyas. Su renderizador pide la página entera con
+#: un agente de Chrome corriente, sin «bot» por ningún lado: por agente es indistinguible de un
+#: padre, y por dirección es evidente. 897 vistas en catorce días venían de aquí.
+_CRAWLER_NETS = (ipaddress.ip_network("66.249.64.0/19"),)
+
+
+def _de_rastreador(ip: object) -> bool:
+    try:
+        addr = ipaddress.ip_address(str(ip))
+    except ValueError:
+        return False
+    return any(addr in net for net in _CRAWLER_NETS)
 
 
 def _who(ip: object, ua: str) -> str:
@@ -105,6 +125,7 @@ def web_visits(days: int = 7) -> dict[str, Any]:
         return {
             "views": 0,
             "visitors": 0,
+            "page_requests": 0,
             "returning": 0,
             "chat_pageviews": 0,
             "visits": 0,
@@ -115,20 +136,32 @@ def web_visits(days: int = 7) -> dict[str, Any]:
             "per_day": {},
             "covers": (),
         }
-    lines = out.splitlines()
-    # who the operator is, before counting anybody: the panel is password-protected, so a browser
-    # that asked for /admin is his. Costs one extra pass over the journal and no configuration.
+    return count_visits(out.splitlines())
+
+
+def count_visits(lines: list[str]) -> dict[str, Any]:
+    """Cuenta visitas de verdad, y dice aparte cuántas peticiones hubo en bruto.
+
+    El operador lo notó antes que nadie: demasiadas visitas para tan pocas consultas. Sobre
+    catorce días, esto contaba **6.258 vistas y 3.227 visitantes**, y de esos 3.227 sólo 211
+    habían llegado a pedir un fichero de la propia página. La sospecha estaba escrita aquí
+    mismo desde el principio —«uno que pide una página y se va es un rastreador, diga lo que
+    diga su agente»— y nunca se había aplicado.
+
+    Ahora **una visita exige la prueba del navegador**: haber pedido, además del HTML, alguno de
+    los ficheros que la página carga sola (su CSS, su JavaScript, un tipo de letra, el icono).
+    Un rastreador que sólo quiere el texto no los pide nunca. Los que se descartan no
+    desaparecen: `page_requests` los sigue diciendo, con su nombre.
+
+    No es perfecto y no pretende serlo — un rastreador que renderice de verdad sigue pareciendo
+    un navegador. Es defendible, que es lo que se le pide a un número que se mira para decidir.
+    """
+    # quién es el operador, antes de contar a nadie: el panel va con contraseña, así que un
+    # navegador que pidió /admin es suyo. Cuesta una pasada más y ninguna configuración.
     ours = _operator_hashes(lines)
-    views, chat = 0, 0
-    visitors: set[str] = set()
-    # how many pages each one asked for: one page and gone is a crawler, whatever its user agent
-    # says. 600 of 919 browser-labelled addresses did exactly that, and 1.505 of their hits were
-    # the home page.
-    pages_each: dict[str, int] = {}
-    # when each browser asked for something, for the dwell time below
-    seen_at: dict[str, list[float]] = {}
-    top: dict[str, int] = {}
-    per_day: dict[str, int] = {}
+    brutas = 0
+    paginas: dict[str, list[tuple[str, float]]] = {}
+    estaticos: set[str] = set()
     for line in lines:
         if '"handled request"' not in line:
             continue
@@ -138,35 +171,49 @@ def web_visits(days: int = 7) -> dict[str, Any]:
             continue
         req = j.get("request", {})
         uri, status = req.get("uri", ""), j.get("status", 0)
-        if status != 200 or _STATIC.search(uri) or req.get("method") != "GET":
+        if status != 200 or req.get("method") != "GET":
             continue
         ua = (req.get("headers", {}).get("User-Agent") or [""])[0]
-        if _BOT_UA.search(ua):
+        ip = req.get("remote_ip")
+        if _BOT_UA.search(ua) or _de_rastreador(ip):
             continue
-        who = _who(req.get("remote_ip"), ua)
+        who = _who(ip, ua)
         if who in ours:
-            # the operator looking at his own site is not a visit, and at this traffic one person
-            # opening it twice a day would be most of the number he is looking at
+            # el operador mirando su propio sitio no es una visita, y con este tráfico una
+            # persona abriéndolo dos veces al día sería casi todo el número que está mirando
             continue
-        views += 1
-        uri = uri.split("?")[0]
-        if uri in ("/", "/es", "/es/"):
-            chat += 1
-        top[uri] = top.get(uri, 0) + 1
-        day = dt.datetime.fromtimestamp(float(j.get("ts", 0)), dt.UTC).date().isoformat()
-        per_day[day] = per_day.get(day, 0) + 1
-        visitors.add(who)
-        pages_each[who] = pages_each.get(who, 0) + 1
-        seen_at.setdefault(who, []).append(float(j.get("ts", 0)))
+        if _STATIC.search(uri):
+            estaticos.add(who)
+            continue
+        brutas += 1
+        paginas.setdefault(who, []).append((uri.split("?")[0], float(j.get("ts", 0))))
+
+    reales = {w: v for w, v in paginas.items() if w in estaticos}
+    views, chat = 0, 0
+    top: dict[str, int] = {}
+    per_day: dict[str, int] = {}
+    seen_at: dict[str, list[float]] = {}
+    for who, vistas in reales.items():
+        for uri, ts in vistas:
+            views += 1
+            if uri in ("/", "/es", "/es/"):
+                chat += 1
+            top[uri] = top.get(uri, 0) + 1
+            day = dt.datetime.fromtimestamp(ts, dt.UTC).date().isoformat()
+            per_day[day] = per_day.get(day, 0) + 1
+            seen_at.setdefault(who, []).append(ts)
     return {
         "views": views,
-        "visitors": len(visitors),
+        "visitors": len(reales),
+        # lo que se descarta no se esconde: peticiones de página que no se identificaron como
+        # robot pero tampoco probaron ser un navegador
+        "page_requests": brutas,
         **_dwell(seen_at),
-        "returning": sum(1 for n in pages_each.values() if n > 1),
+        "returning": sum(1 for v in reales.values() if len(v) > 1),
         "chat_pageviews": chat,
         "top": sorted(top.items(), key=lambda kv: -kv[1])[:10],
         "per_day": dict(sorted(per_day.items())),
-        # what the journal actually held, so the panel never calls a rotated log a total
+        # lo que el registro tenía de verdad, para que el panel no llame total a un log rotado
         "covers": (min(per_day), max(per_day)) if per_day else (),
     }
 

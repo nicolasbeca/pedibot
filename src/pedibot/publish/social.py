@@ -22,7 +22,9 @@ class Post:
     lang: str
 
     def text(self, max_len: int = 290) -> str:
-        body = f"{self.title}\n\n{self.summary}\n\n{self.url}"
+        # el filtro es por los mensajes del proyecto, que no llevan resumen: sin él quedaban
+        # tres líneas en blanco entre el texto y el enlace
+        body = "\n\n".join(x for x in (self.title, self.summary, self.url) if x)
         if len(body) <= max_len:
             return body
         room = max_len - len(self.title) - len(self.url) - 6

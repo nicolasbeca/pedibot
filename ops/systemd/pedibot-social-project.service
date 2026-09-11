@@ -1,0 +1,12 @@
+[Unit]
+Description=PediBot: una publicacion sobre el proyecto en Bluesky
+
+[Service]
+Type=oneshot
+User=pedibot
+WorkingDirectory=/opt/pedibot
+EnvironmentFile=/opt/pedibot/.env
+Environment=PYTHONIOENCODING=utf-8
+# alterna ingles y castellano y no repite mensaje hasta agotarlos; los numeros del texto se leen
+# del indice y de config/ al publicar, nunca escritos a mano (CLAUDE.md: no inventar metricas)
+ExecStart=/opt/pedibot/.local/bin/uv run --no-dev pedibot broadcast project
