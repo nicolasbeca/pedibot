@@ -68,18 +68,44 @@ def test_rebuilding_without_changes_does_not_move_a_single_date():
         shutil.rmtree(salida, ignore_errors=True)
 
 
-def test_no_single_date_covers_a_third_of_the_sitemap():
-    """Una fecha compartida por cientos de páginas es la marca de la construcción, no un cambio."""
+def test_every_date_comes_from_a_file_and_not_from_the_clock():
+    """La primera versión de este candado decía «ninguna fecha puede cubrir un tercio del
+    sitemap», y se cayó en cuanto hubo un cambio legítimo en todas las páginas: tocar `i18n.ts`
+    —donde vive el texto visible— cambia de verdad las 792. La heurística prohibía justo eso.
+
+    Lo que hay que exigir es lo que se quería decir: **cada fecha sale de un fichero**. O es la
+    del frontmatter de una guía (medianoche) o es la hora de modificación de algún fuente que
+    alimenta la página. Si alguna vez vuelve a salir del reloj de la construcción, no casará con
+    ninguna de las dos y esto lo dirá.
+    """
     p = DIST / "sitemap-0.xml"
     if not p.exists():
         pytest.skip("el sitio no está construido en esta copia")
-    fechas = list(_lastmods(p.read_text(encoding="utf-8")).values())
+    fechas = set(_lastmods(p.read_text(encoding="utf-8")).values())
     if not fechas:
         pytest.skip("sitemap sin fechas")
-    from collections import Counter
 
-    fecha, n = Counter(fechas).most_common(1)[0]
-    assert n < len(fechas) / 3, (
-        f"{n} de {len(fechas)} URLs comparten la fecha {fecha}: eso es la hora de la "
-        f"construcción, no la de un cambio"
+    import datetime as dt
+
+    mtimes = set()
+    for base in (ROOT / "web" / "site" / "src", ROOT / "config"):
+        for f in base.rglob("*"):
+            if f.is_file():
+                # al segundo, no al milisegundo: JavaScript y Python redondean distinto el
+                # mismo mtime y se llevaban 1 ms de diferencia. Una fecha sacada del reloj de la
+                # construcción no coincide con ningún fichero ni al segundo, que es lo que importa
+                mtimes.add(
+                    dt.datetime.fromtimestamp(f.stat().st_mtime, dt.UTC)
+                    .isoformat(timespec="seconds")
+                )
+
+    huerfanas = sorted(
+        f
+        for f in fechas
+        if not f.endswith("T00:00:00.000Z")
+        and f[:19] + "+00:00" not in mtimes
+    )
+    assert not huerfanas, (
+        "estas fechas del sitemap no son ni la de una guía ni la de ningún fichero fuente, "
+        f"así que salen del reloj: {huerfanas}"
     )

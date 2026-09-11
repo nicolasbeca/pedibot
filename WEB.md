@@ -44,6 +44,7 @@ La última fila es la que manda sobre todas las demás: **el cuello de botella n
 | 11-sep | **La cuenta de Bluesky habla inglés** | Los mensajes del proyecto ya no alternan con castellano |
 | 11-sep | El generador de guías **no sindica** | Escribe un día en hindi y otro en árabe; Bluesky lo deciden sus propios timers |
 | 11-sep | **Atacar India y países árabes** es la baza principal | Y el token, si va a MetaDAO, se vende como altruismo, no como múltiplo |
+| 11-sep | **Una frase de apoyo** al pie de las guías y de las páginas de marca | Son las dos familias de páginas con visitas reales. La portada ya tenía su bloque y repetirlo sería pesado |
 
 ---
 
