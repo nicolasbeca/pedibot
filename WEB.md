@@ -17,6 +17,8 @@
 | Corpus | **419 documentos, 7.934 pasajes**. Por idioma: en 166, es 93, fr 40, ar 38, ru 38, de 30, pt 14, **hi 0** |
 | Capa de seguridad | **44 reglas de alarma** en 8 lenguas, todas con documento que las respalda (auditado). Fuera de Europa: 25 de 25 |
 | Alcance árabe / hindi | Diez preguntas por mercado: árabe **9 de 10** (era 2), hindi **10 de 10** (era 7) |
+| Marcas reconocidas | **32** (eran 20): añadidas India, Golfo, Egipto y Levante. 18 de 20 preguntas por marca del mercado objetivo dan dosis |
+| Páginas | **900** (eran 792 esta mañana) |
 | Guías | 485 y subiendo: se publican solas, 2 al día |
 | Indexadas en Google | **557 de 779**; 194 que no conoce, 28 rastreadas y descartadas |
 | Bing | Verificado, sitemap entregado sin errores, IndexNow recibiendo — **y sin rastrear páginas** |
