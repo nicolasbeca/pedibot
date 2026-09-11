@@ -12,7 +12,7 @@ from pedibot.bot.llm import LLMProvider
 # El MISMO conversor de guiones que usa el triaje, no una copia: son los dos sitios
 # que leen lo que escribe el padre, y la L65 salió justo de arreglarlo en uno solo.
 from pedibot.bot.triage import _GUIONES
-from pedibot.index.store import Hit, Index, query_terms
+from pedibot.index.store import READABLE_FALLBACK, Hit, Index, query_terms
 from pedibot.ingest.classify import Taxonomy
 
 # The Devanagari range is spelled out because Python's `\w` excludes combining vowel signs:
@@ -495,6 +495,9 @@ class Retriever:
             red_flag_boost=red_flag_boost,
             boost_topic=topic,
             thin_lang=lang if lang in self.thin_langs else None,
+            # Y la lengua que ese lector puede abrir si la suya no tiene el documento: un
+            # padre indio lee inglés y no lee castellano (ver READABLE_FALLBACK).
+            fallback_lang=READABLE_FALLBACK.get(lang),
         )
         # "source or silence": a hit must match a query term in its own text, and the question must
         # look paediatric (a taxonomy topic) unless it matches >= 3 terms; "my dog ate chocolate"

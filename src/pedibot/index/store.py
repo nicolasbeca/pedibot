@@ -12,6 +12,19 @@ from pedibot.ingest.schema import Chunk
 
 THIN_LANG_BOOST = 1.6  # see `thin_lang` in Index.search
 
+#: Lo que un lector puede leer cuando en SU idioma no hay documento. No es una opinión sobre
+#: las lenguas: es dónde vive el lector. En la India el inglés es lengua oficial y el segundo
+#: idioma de casi cualquier padre alfabetizado; en el Golfo se lee de corrido. El castellano
+#: no se lee en ninguno de los dos, y medido el 11-sep-2026 sobre quince preguntas hindi el
+#: **47 % de los pasajes citados estaba en castellano** y cinco preguntas se respondían
+#: enteras con hojas de la SEUP. Una fuente que el padre no puede abrir no es una fuente: la
+#: comprobación es lo único que este producto ofrece por encima de un buscador.
+#:
+#: Es un empujón a la lengua puente, nunca un castigo a las demás — castigar al otro lado se
+#: midió en agosto y rompió la dirección inglés→castellano de la que vive el corpus.
+READABLE_FALLBACK = {"hi": "en", "ar": "en", "ru": "en", "de": "en", "fr": "en", "pt": "es"}
+FALLBACK_BOOST = 1.4
+
 _SCHEMA = """
 CREATE TABLE IF NOT EXISTS chunks (
     chunk_id TEXT PRIMARY KEY,
@@ -414,6 +427,7 @@ class Index:
         topic: str | None = None,
         boost_topic: str | None = None,
         thin_lang: str | None = None,
+        fallback_lang: str | None = None,
     ) -> list[Hit]:
         terms = query_terms(query, extra_terms)
         if not terms:
@@ -457,6 +471,9 @@ class Index:
                 # language, never a penalty to the others — penalising the other side was measured
                 # in August and broke the English→Spanish direction the corpus depends on.
                 score *= THIN_LANG_BOOST
+            elif fallback_lang and ch.lang == fallback_lang:
+                # La lengua que ese lector SÍ puede abrir cuando la suya no tiene nada.
+                score *= FALLBACK_BOOST
             if boost_topic and ch.topic == boost_topic:
                 score *= 1.5
             elif boost_topic and ch.topic not in (boost_topic, "general"):
