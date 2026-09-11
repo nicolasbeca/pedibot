@@ -1,7 +1,7 @@
 # Taxonomía cerrada de temas (es + en). Palabras clave = prefijos (regex \b(kw)\w*).
 topics:
   fiebre: [fiebre, febril, antitérmico, antitermico, temperatura, fever, febrile,
-                 malaria, paludisme, ملاريا, मलेरिया, малярия, malária, dengue, الضنك, डेंगू, денге, tifoidea, typhoid, typhoïde, تيفوئيد, टाइफाइड, тиф, tifoide]
+                 malaria, paludisme, ملاريا, मलेरिया, малярия, malária, dengue, الضنك, डेंगू, денге, tifoidea, typhoid, typhoïde, تيفوئيد, टाइफाइड, тиф, tifoide, تيفود, تيفية]
   respiratorio: [tos, bronquiolitis, laringitis, crup, asma, neumonía, neumonia, catarro, mocos, sibilancia, pitos, respirar, respiración, disnea, cough, wheez, breath, pneumonia, croup, asthma, cold]
   digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat,
              lombrices, oxiuros, lombriz, threadworm, pinworm, oxyures, madenwürmer, madenwurmer,
@@ -12,7 +12,7 @@ topics:
                convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding,
                  epilepsia, epilepsy, épilepsie, epilepsie, الصرع, मिर्गी, эпилепсия]
   accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke,
-                 serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство]
+                 serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство, كلب, عضة, "عضّ"]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
   piel: [urticaria, exantema, sarpullido, eccema, dermatitis, ronchas, habones, manchas, rash, eczema, skin,
@@ -33,11 +33,12 @@ topics:
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids,
                  desnutrición, desnutricion, malnutrición, malnutricion, malnutrition, dénutri, denutri, mangelernährung, mangelernahrung,
                  недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao,
-                 anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение]
+                 anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение, رضاع, أرضع, هزال, نحيف]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice,
                  prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz,
+                 تطعيم, لقاح, تحصين, टीका, टीकाकरण, вакцин, прививк,
                  difteria, diphtheria, diphtérie, diphtherie, الخناق, डिप्थीरिया, дифтерия, tétanos, tetanus, كزاز, टिटनेस, столбняк]
   desarrollo: ["dolores de crecimiento", "growing pains", "douleurs de croissance",
                wachstumsschmerzen, "боли роста", "آلام النمو", desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen,

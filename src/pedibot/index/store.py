@@ -121,6 +121,13 @@ STOP = {
     "месяцев",
     "возраст",
     "عمره",
+    # «mi hijo» en árabe y en hindi: ruido puro en la búsqueda, como `hijo` y `child`, que
+    # llevaban ahí desde el principio. La lista se escribió en dos idiomas (L133).
+    "طفلي",
+    "طفلتي",
+    "ابني",
+    "ابنتي",
+    "ولدي",
     "عمرها",
     "العمر",
     "سنوات",
@@ -217,6 +224,7 @@ STOP = {
     "كان", "كانت", "يكون", "أفعل", "افعل", "عندي", "لدي", "لدى", "جدا", "أيضا", "لكن", "إذا",
     "لا", "نعم", "من فضلك", "أرجو", "شكرا", "أعرف", "يجب",
     # hi
+    "बच्चे", "बच्चा", "बच्चों", "बच्ची",  # «mi hijo»: ruido, igual que `hijo` y `child`
     "मेरा", "मेरी", "मेरे", "मुझे", "मैं", "हम", "आप", "वह", "वे", "यह", "ये", "है", "हैं",
     "था", "थी", "थे", "हो", "होता", "होती", "करना", "करूँ", "करूं", "क्या", "कौन", "कहाँ",
     "कब", "क्यों", "कैसे", "नहीं", "हाँ", "बहुत", "भी", "लेकिन", "अगर", "के", "का", "की", "को",
@@ -288,9 +296,63 @@ def build_index(
     return n
 
 
+#: En árabe el artículo y las preposiciones se PEGAN a la palabra, y el índice casa por
+#: prefijo. Medido sobre la ficha de malaria de la OMS: «الملاريا» aparece 55 veces,
+#: «بالملاريا» 19 y «للملاريا» 16 — y la forma desnuda «ملاريا», que es como la escribe un
+#: padre, **una sola vez**. El 32 % de las palabras árabes del corpus empiezan por «ال».
+#: Resultado medido el 11-sep-2026: de diez preguntas árabes, **dos** llegaban a un documento
+#: en árabe y **cuatro no devolvían nada** teniendo su ficha indexada.
+#:
+#: Se quita el clítico para obtener la raíz, y a la consulta se mandan la raíz Y las formas
+#: pegadas: así la pregunta desnuda alcanza al documento con artículo y al revés. Sobra-stemar
+#: («التهاب» → «تهاب», que no es una palabra) no rompe nada porque las formas van todas.
+_AR = re.compile(r"[؀-ۿ]")
+_AR_CLITICS = ("وال", "فال", "بال", "كال", "لل", "ال")
+
+
+def ar_stem(word: str) -> str:
+    """La palabra árabe sin el artículo ni la preposición pegados delante."""
+    for c in _AR_CLITICS:
+        if word.startswith(c) and len(word) - len(c) >= 3:
+            return word[len(c) :]
+    return word
+
+
+#: Y por detrás se pega el pronombre posesivo: la ficha de la OMS dice «الوزن» (el peso) y el
+#: padre escribe «وزنه» (su peso). Como el índice casa por prefijo, la forma corta es la que
+#: alcanza a las dos, así que se manda también. Sólo se quita si queda una raíz de tres letras.
+_AR_SUFFIXES = ("هما", "هم", "هن", "ها", "كم", "نا", "ه", "ك", "ي")
+
+
+def ar_root(word: str) -> str:
+    """La raíz sin artículo ni preposición delante y sin el posesivo detrás."""
+    w = ar_stem(word)
+    for s in _AR_SUFFIXES:
+        if w.endswith(s) and len(w) - len(s) >= 3:
+            return w[: -len(s)]
+    return w
+
+
+def ar_forms(term: str) -> list[str]:
+    """La raíz y todas las formas con clítico, para que el prefijo alcance las dos direcciones."""
+    raices = dict.fromkeys((term, ar_root(term)))
+    return [f for r in raices for f in (r, *(c + r for c in _AR_CLITICS))]
+
+
+def term_matches(term: str, palabras: list[str]) -> bool:
+    """Si el término alcanza alguna palabra del texto, por prefijo y sin los clíticos árabes."""
+    if any(w.startswith(term) for w in palabras):
+        return True
+    if not _AR.search(term):
+        return False
+    raiz = ar_root(term)
+    return any(ar_stem(w).startswith(raiz) or ar_root(w).startswith(raiz) for w in palabras)
+
+
 def query_terms(query: str, extra: list[str] | None = None) -> list[str]:
     terms = [t.lower() for t in _TOKEN.findall(query)]
     terms = [t for t in terms if len(t) >= 3 and t not in STOP]
+    terms = [ar_stem(t) if _AR.search(t) else t for t in terms]
     for e in extra or []:
         for t in _TOKEN.findall(e.lower()):
             if len(t) >= 3 and t not in terms:
@@ -300,7 +362,10 @@ def query_terms(query: str, extra: list[str] | None = None) -> list[str]:
 
 def _fts_expr(terms: list[str]) -> str:
     # prefix match on each term, OR-ed; FTS5 needs quoting
-    return " OR ".join(f'"{t}"*' for t in terms)
+    formas: list[str] = []
+    for t in terms:
+        formas.extend(ar_forms(t) if _AR.search(t) else [t])
+    return " OR ".join(f'"{t}"*' for t in dict.fromkeys(formas))
 
 
 class Index:
@@ -382,7 +447,7 @@ class Index:
             # Por prefijo, como en el resto del proyecto: «tos» tiene que seguir encontrando
             # «toses» y «fiebre», «fiebres».
             palabras = _TOKEN.findall(low)
-            matched = sum(1 for t in terms if any(w.startswith(t) for w in palabras))
+            matched = sum(1 for t in terms if term_matches(t, palabras))
             if prefer_parent_leaflets:
                 score *= DOC_TYPE_WEIGHT.get(ch.doc_type, 1.0)
             if thin_lang and ch.lang == thin_lang:

@@ -56,4 +56,12 @@ def _compile(kws: list[str]) -> re.Pattern[str]:
         trozos.append(r"(?:" + "|".join(exactas) + r")\b")
     if not trozos:
         return re.compile(r"(?!x)x")  # never matches (empty keyword list, e.g. "general")
-    return re.compile(r"\b(" + "|".join(trozos) + r")", re.I)
+    # En árabe el artículo y las preposiciones se pegan delante de la palabra, así que el
+    # borde de palabra cae antes del clítico y no antes de la clave: «بالتيفوئيد» no casaba
+    # con `تيفوئيد` ni «الملاريا» con `ملاريا`. Sin tema, la puerta del «fuente o silencio»
+    # pasa de un término a tres, así que esto decidía si una pregunta árabe llegaba a su
+    # ficha o a nada. Un clítico opcional delante (ver `_AR_CLITICS` en index/store.py);
+    # delante de una clave latina no puede aparecer, porque son letras árabes.
+    return re.compile(
+        r"\b(?:وال|فال|بال|كال|لل|ال|و|ب|ل|ف|ك)?(" + "|".join(trozos) + r")", re.I
+    )

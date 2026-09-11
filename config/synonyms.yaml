@@ -4800,6 +4800,18 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 11-sep-2026: medidas diez preguntas por las enfermedades que pesan en la India, tres no
+  # llegaban. «कुत्ते ने काट लिया» —«le ha mordido un perro»— devolvía CERO teniendo la
+  # ficha de rabia indexada, y la desnutrición devolvía la guía de obesidad de la AAP.
+  कुत्ते: [rabies, "dog bite", "animal bite", "post-exposure prophylaxis"]
+  कुत्ता: [rabies, "dog bite", "animal bite"]
+  कुत्तों: [rabies, "dog bite"]
+  काटने: [bite, "animal bite"]
+  दुबला: [malnutrition, wasting, underweight]
+  दुबली: [malnutrition, wasting, underweight]
+  दुबले: [malnutrition, wasting, underweight]
+  कुपोषण: [malnutrition, wasting, stunting]
+  खसरा: [measles]
   # hindi: el índice no tiene NI UN documento en hindi, así que toda pregunta hindi
   # tiene que puentear. Sin esto, los temas nuevos eran inalcanzables desde el hindi.
   मलेरिया: [malaria, mosquito, fever]
@@ -4929,6 +4941,8 @@ hi_en:
   - diarrhoea
   - diarrhea
   - gastroenteritis
+  - diarrhoeal disease
+  - oral rehydration
   डायरिया:
   - diarrhoea
   - diarrhea
@@ -5875,3 +5889,17 @@ fr_es:
   scarlatine: [escarlatina, estreptococo]
   "spasme du sanglot": ["espasmo del sollozo"]
   "trouble alimentaire": [anorexia, bulimia]
+
+# árabe → árabe. El padre y la OMS no siempre usan la misma palabra para la misma
+# enfermedad: la ficha de tifoidea dice «التيفود» 21 veces y «التيفية» 6, y la palabra que
+# escribe un padre —«التيفوئيد»— no aparece NI UNA. Sin este puente la pregunta no llegaba
+# a su ficha aunque estuviera indexada (11-sep-2026).
+ar:
+  تيفوئيد: [التيفود, التيفية, حمى التيفية]
+  تيفود: [التيفية]
+  نحيف: [سوء التغذية, الهزال, نقص الوزن]
+  هزال: [سوء التغذية]
+  أرضع: [الرضاعة الطبيعية, الرضاعة]
+  رضاعة: [الرضاعة الطبيعية]
+  كلب: [داء الكلب, الكلاب, السعار]
+  عضة: [داء الكلب, العضة]
