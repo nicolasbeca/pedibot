@@ -1,0 +1,125 @@
+---
+/**
+ * Quién hay detrás y cómo se construye una respuesta — en las ocho lenguas desde un fichero.
+ *
+ * En salud, la señal de fondo que busca un lector (y que Google llama YMYL) es la misma: quién
+ * hace esto y con qué método. El sitio no la tenía. Las guías llevan cita, fecha de publicación
+ * y fecha de modificación, y **ningún revisor** — y ponerlo sin que un pediatra haya revisado
+ * nada sería mentir, que es la línea que este proyecto no cruza. Así que la página dice lo que
+ * es verdad hoy, incluida la frase incómoda: ningún pediatra ha revisado estos textos.
+ *
+ * Las cifras se cuentan aquí, nunca se escriben: el mismo par de números se tecleó una vez en
+ * seis traducciones y las seis envejecieron en momentos distintos, así que el sitio llegó a
+ * afirmar tres tamaños de corpus a la vez.
+ */
+import sources from '../data/sources.json';
+import { getCollection } from 'astro:content';
+import { t, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const T = s.about;
+const MAIL = 'pedibot.ai@gmail.com';
+
+const publicos = (sources as any[]).filter((d) => d.usage !== 'excluido');
+const guias = await getCollection('guides', (g) => !g.data.draft);
+const counts = {
+  docs: String(publicos.length),
+  orgs: String(new Set(publicos.map((d) => d.org)).size),
+  guides: String(guias.length),
+  langs: String(new Set(guias.map((g) => g.data.lang)).size),
+};
+const fill = (text: string) =>
+  text
+    .replace(/\{docs\}/g, counts.docs)
+    .replace(/\{orgs\}/g, counts.orgs)
+    .replace(/\{guides\}/g, counts.guides)
+    .replace(/\{langs\}/g, counts.langs)
+    .replace(/\{email\}/g, MAIL);
+
+const cifras: [string, string][] = [
+  [counts.docs, T.n_docs],
+  [counts.orgs, T.n_orgs],
+  [counts.langs, T.n_langs],
+  [counts.guides, T.n_guides],
+];
+---
+<div class="narrow prose" style="padding:40px 18px">
+  <p class="eyebrow">{T.eyebrow}</p>
+  <h1 style="margin-top:8px">{T.h1}</h1>
+  <p class="lead">{T.intro}</p>
+
+  <h2>{T.who_h}</h2>
+  <p>{T.who_p}</p>
+
+  <h2>{T.how_h}</h2>
+  <ol class="pasos">
+    {T.how_steps.map(([titulo, cuerpo]: [string, string]) => (
+      <li>
+        <b>{titulo}.</b> {fill(cuerpo)}
+      </li>
+    ))}
+  </ol>
+
+  <h2>{T.numbers_h}</h2>
+  <div class="cifras">
+    {cifras.map(([n, que]) => (
+      <div class="cifra"><b>{n}</b><span>{que}</span></div>
+    ))}
+  </div>
+
+  <h2>{T.not_h}</h2>
+  <ul class="no">
+    {T.not_points.map((line: string) => <li>{line}</li>)}
+  </ul>
+
+  <h2>{T.mistakes_h}</h2>
+  <p set:html={fill(T.mistakes_p).replace(MAIL, `<a href="mailto:${MAIL}">${MAIL}</a>`)} />
+</div>
+
+<style>
+  .lead { font-size: 1.08rem; color: var(--ink-2); }
+  .pasos { padding-left: 0; list-style: none; counter-reset: paso; }
+  .pasos li {
+    counter-increment: paso;
+    position: relative;
+    padding: 14px 0 14px 46px;
+    border-top: 1px solid var(--line);
+  }
+  .pasos li::before {
+    content: counter(paso);
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--paper-2, #f3f1ec);
+    color: var(--ink-2);
+    font-weight: 700;
+    font-size: .9rem;
+  }
+  .cifras { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 18px 0 6px; }
+  @media (max-width: 620px) { .cifras { grid-template-columns: repeat(2, 1fr); } }
+  .cifra {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 12px;
+    text-align: center;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .cifra:hover { border-color: var(--ink-3); transform: translateY(-2px); }
+  .cifra b { display: block; font-size: 1.5rem; line-height: 1.1; }
+  .cifra span { display: block; margin-top: 4px; font-size: .82rem; color: var(--ink-3); }
+  .no { padding-left: 0; list-style: none; }
+  .no li { padding: 10px 0 10px 26px; position: relative; border-top: 1px solid var(--line); }
+  .no li::before { content: '·'; position: absolute; left: 8px; font-weight: 700; color: var(--ink-3); }
+  /* El árabe y el hebreo leen al revés: la viñeta y el número van al otro lado. */
+  :global([dir='rtl']) .pasos li { padding: 14px 46px 14px 0; }
+  :global([dir='rtl']) .pasos li::before { left: auto; right: 0; }
+  :global([dir='rtl']) .no li { padding: 10px 26px 10px 0; }
+  :global([dir='rtl']) .no li::before { left: auto; right: 8px; }
+</style>

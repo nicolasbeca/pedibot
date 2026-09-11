@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import AboutBody from '../../components/AboutBody.astro';
+import { t } from '../../i18n';
+const lang = 'hi'; const s = t(lang);
+---
+<Base lang={lang} title={s.about.meta_t} description={s.about.meta_d} path="/hi/about">
+  <AboutBody lang={lang} />
+</Base>
