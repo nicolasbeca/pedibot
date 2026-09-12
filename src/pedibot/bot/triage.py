@@ -26,14 +26,14 @@ _AGE_PATTERNS = [
     (
         re.compile(
             r"(\d{1,2})\s*(?:meses|m[eê]s|months?|mois|monate[n]?|monat|monatig\w*|mo|месяц\w*|мес"
-            r"|شهر|أشهر|شهور)\b",
+            r"|شهرا?|أشهر|شهور)\b",
             re.I,
         ),
         1.0,
     ),
     (
         re.compile(
-            r"(\d{1,2})\s*(?:años|año|anos|years?|yrs?|ans?|jahre[n]?|jahr|j[äa]hrig\w*|год\w*|лет|سنة|سنوات|سنين|y\.?o\.?)\b",
+            r"(\d{1,2}(?:[.,]\d)?)\s*(?:años|año|anos|years?|yrs?|ans?|jahre[n]?|jahr|j[äa]hrig\w*|год\w*|лет|سنة|سنوات|سنين|y\.?o\.?)\b",
             re.I,
         ),
         12.0,
@@ -85,6 +85,19 @@ _NEWBORN = re.compile(
     re.I,
 )
 _WORD_AGES = {
+    # «Año y medio» en las ocho lenguas, y ANTES de «un año»: el diccionario se recorre en orden
+    # y «un año» ganaba a «un año y medio». 6 de 39 formas naturales fallaban, y las seis eran
+    # un niño de 18 meses, justo donde cambian la dosis y las reglas (12-sep-2026).
+    "año y medio": 18,
+    "a year and a half": 18,
+    "one and a half years": 18,
+    "un an et demi": 18,
+    "anderthalb jahre": 18,
+    "eineinhalb jahre": 18,
+    "полтора года": 18,
+    "سنة ونصف": 18,
+    "डेढ़ साल": 18,
+    "ano e meio": 18,
     "un mes": 1,
     # Las semanas en letra: es como se dice la edad de un recién nacido, y en cifra ya se
     # entendían. «mi bebé de tres semanas» no llegaba a la regla del lactante (7-sep-2026).
@@ -222,8 +235,21 @@ class TriageResult:
 #: devolvía None y la respuesta salía preguntando la edad que estaba escrita en la frase— y con
 #: ella se caía también «mein 2-monatiges Baby hat Fieber», que es la regla del lactante.
 _DE_NUM = {
-    "ein": 1, "eine": 1, "einem": 1, "zwei": 2, "drei": 3, "vier": 4, "fünf": 5, "funf": 5,
-    "sechs": 6, "sieben": 7, "acht": 8, "neun": 9, "zehn": 10, "elf": 11, "zwölf": 12,
+    "ein": 1,
+    "eine": 1,
+    "einem": 1,
+    "zwei": 2,
+    "drei": 3,
+    "vier": 4,
+    "fünf": 5,
+    "funf": 5,
+    "sechs": 6,
+    "sieben": 7,
+    "acht": 8,
+    "neun": 9,
+    "zehn": 10,
+    "elf": 11,
+    "zwölf": 12,
     "zwolf": 12,
 }
 _DE_UNIDAD = {
@@ -311,7 +337,7 @@ def parse_age_months(text: str) -> float | None:
     for rx, mult in _AGE_PATTERNS:
         m = rx.search(low)
         if m:
-            edad = float(m.group(1)) * mult
+            edad = float(m.group(1).replace(",", ".")) * mult
             antes = low[max(0, m.start() - _VENTANA_MENOS) : m.start()]
             detras = low[m.end() : m.end() + _VENTANA_MENOS]
             if _MENOS_DE.search(antes) or _MENOS_DE_DETRAS.search(detras):

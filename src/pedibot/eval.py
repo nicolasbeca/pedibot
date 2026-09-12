@@ -134,7 +134,12 @@ def run_eval(engine: Engine, golden: list[dict], k: int = 3) -> Report:
             rep.unmeasured_sources.append(g["id"])
         expect = g.get("expect")
         a = engine.ask(q, lang=g.get("lang"))
-        routing_ok = (a.verification == expect) if expect else None
+        # «asked_age» significa «el motor pidió la edad». Desde el 12-sep-2026 la pide DESPUÉS de
+        # responder (ask_age), no en vez de responder: el caso sigue midiendo lo mismo.
+        asked = a.verification == "asked_age" or a.ask_age
+        routing_ok = None
+        if expect:
+            routing_ok = asked if expect == "asked_age" else a.verification == expect
         rep.cases.append(
             CaseResult(
                 id=g["id"],

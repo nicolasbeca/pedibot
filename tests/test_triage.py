@@ -22,7 +22,8 @@ def triage(config_dir) -> Triage:
         ("tiene 6 semanas", pytest.approx(1.38, abs=0.05)),
         ("3 days old", pytest.approx(0.1, abs=0.05)),
         ("le duele la tripa", None),
-        ("un año y medio", 12),
+        # hasta el 12-sep-2026 esta línea decía 12: la prueba tenía el fallo por bueno
+        ("un año y medio", 18),
     ],
 )
 def test_parse_age(text, months):

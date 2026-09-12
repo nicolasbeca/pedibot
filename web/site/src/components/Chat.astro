@@ -138,6 +138,8 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // edades del chip, ya traducidas. El servidor recuerda la pregunta (medido en las ocho).
     if (j.verification === 'asked_age' && Array.isArray(S.ages)) { h += '<div class="opts">' + S.ages.map((a: [string, string]) => `<button class="fb opt" type="button" data-age="${esc(a[0])}" data-q="${esc(a[1])}">${esc(a[1])}</button>`).join(' ') + '</div>'; return h; }
     if (j.verification === 'clarify' && j.options?.length) { h += '<div class="opts">' + j.options.map((o: string) => `<button class="fb opt" type="button" data-q="${esc(o)}">${esc(o)}</button>`).join(' ') + '</div>'; return h; }
+    // Fiebre sin edad: la respuesta ya está dada; los botones de edad van DEBAJO, para afinar.
+    if (j.ask_age && Array.isArray(S.ages)) h += '<div class="opts">' + S.ages.map((a: [string, string]) => `<button class="fb opt" type="button" data-age="${esc(a[0])}" data-q="${esc(a[1])}">${esc(a[1])}</button>`).join(' ') + '</div>';
     // Las preguntas que vienen después: la API las manda según el asunto de la respuesta, en la
     // lengua del padre, y cada una tiene fuente (config/followups.yaml). Van por `.opt` → ask().
     if (Array.isArray(j.followups) && j.followups.length) h += '<div class="opts next">' + j.followups.map((o: string) => `<button class="fb opt" type="button" data-q="${esc(o)}">${esc(o)}</button>`).join(' ') + '</div>';

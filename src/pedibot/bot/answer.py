@@ -287,6 +287,19 @@ DESCRIBE_IT = {
 }
 
 
+#: Cierra la respuesta dada sin edad: se ha contestado, y con la edad se afina. Medido en
+#: producción: pedirla ANTES de responder perdía a 10 de cada 11 padres (12-sep-2026).
+AGE_REFINES = {
+    "en": "How old is your child? With the age I can make this more precise.",
+    "es": "¿Qué edad tiene? Con la edad afino la respuesta.",
+    "fr": "Quel âge a votre enfant ? Avec l'âge, je peux préciser la réponse.",
+    "de": "Wie alt ist Ihr Kind? Mit dem Alter kann ich die Antwort genauer machen.",
+    "ru": "Сколько лет ребёнку? Зная возраст, я отвечу точнее.",
+    "ar": "كم عمر طفلك؟ بمعرفة العمر أستطيع أن أجيب بدقة أكبر.",
+    "pt": "Que idade tem? Com a idade afino a resposta.",
+    "hi": "बच्चे की उम्र कितनी है? उम्र जानकर मैं जवाब और सटीक कर सकता हूँ।",
+}
+
 ASK_AGE = {
     "en": "To answer safely I need to know how old your child is (months or years). Could you tell me?",
     "es": "Para responder con seguridad necesito saber la edad (meses o años). ¿Me la dices?",
@@ -321,6 +334,9 @@ class Answer:
     # The page of this site that answers the same question better than prose: the vaccination
     # table, the dose calculator. None when there is not one.
     tool: ToolLink | None = None
+    # Fiebre sin edad: se ha respondido con la regla del lactante por delante, y se pide la
+    # edad para afinar. El chat pinta los botones de edad DEBAJO de la respuesta.
+    ask_age: bool = False
 
     @property
     def clean_text(self) -> str:
@@ -538,7 +554,12 @@ def _mentions_child(text: str) -> bool:
 def _age_context(tr: TriageResult) -> str:
     """Age line for the prompt. Under 3 months: home medication advice is never appropriate."""
     if tr.age_months is None:
-        return "CHILD AGE: unknown\n"
+        return (
+            "CHILD AGE: unknown. Open with ONE sentence: if the child is under 3 months old, a "
+            "fever needs a doctor the same day. Then answer for an older child. Give NO specific "
+            "medication dose (no mg, no ml): the dose depends on the age and weight you do not "
+            "have.\n"
+        )
     if tr.age_months < 3:
         return (
             f"CHILD AGE: {tr.age_months:g} months — UNDER 3 MONTHS. Do NOT suggest giving any "
@@ -569,7 +590,7 @@ def _history_block(history: list[dict[str, str]]) -> str:
 
 
 def _needs_age(query: str, tr: TriageResult) -> bool:
-    """Fever without age → ask (rule: <3 months with fever is urgent, we cannot know)."""
+    """Fever without age: answer with the under-3-months rule first, then ask the age to refine."""
     return tr.has_fever and tr.age_months is None
 
 
@@ -885,9 +906,7 @@ class Engine:
         # lista que le acabamos de enseñar, en su idioma, para no confundirlo con una pregunta
         # de verdad que empiece igual.
         if query.strip().lower() == CLARIFY_OPTIONS[lang][-1].strip().lower():
-            return Answer(
-                DESCRIBE_IT[lang], tr.level, banner, [], lang, None, None, [], "clarify"
-            )
+            return Answer(DESCRIBE_IT[lang], tr.level, banner, [], lang, None, None, [], "clarify")
 
         # vague first message -> offer options. The topic is read from the query PLUS its synonym
         # expansion, the same as retrieval does: "se ha desmayado" or "llora sin parar" are clear
@@ -915,8 +934,10 @@ class Engine:
                 options=CLARIFY_OPTIONS[lang],
             )
 
-        if tr.level == "routine" and _needs_age(context_text, tr):
-            return Answer(ASK_AGE[lang], tr.level, None, [], lang, None, None, [], "asked_age")
+        # Fiebre sin edad: hasta el 12-sep-2026 aquí se devolvía ASK_AGE sin responder, y el
+        # registro dice que 10 de 11 padres no volvieron. Ahora se responde con la regla del
+        # lactante por delante (ver _age_context) y se pide la edad al final, para afinar.
+        ask_age = tr.level == "routine" and _needs_age(context_text, tr)
 
         prev_user = next((t["text"] for t in reversed(history) if t.get("role") == "user"), "")
         search_q = f"{prev_user} {query}" if prev_user and len(query.split()) <= 8 else query
@@ -996,8 +1017,11 @@ class Engine:
             )
         elif intent or _DRUG.search(context_text):
             tool = tool_link("dose", lang)
+        text = result.text.strip()
+        if ask_age:
+            text += "\n\n" + AGE_REFINES[lang]
         return Answer(
-            result.text.strip(),
+            text,
             tr.level,
             banner,
             sources,
@@ -1010,4 +1034,5 @@ class Engine:
             guide=guide,
             problems=problems,
             tool=tool,
+            ask_age=ask_age,
         )

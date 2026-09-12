@@ -96,7 +96,9 @@ def test_verify_rules():
 
 
 def test_routine_answer_with_sources(engine_factory):
-    eng, llm = engine_factory("La fiebre no es peligrosa por sí misma, según la SEUP [1]. Ofrece líquidos [1].")
+    eng, llm = engine_factory(
+        "La fiebre no es peligrosa por sí misma, según la SEUP [1]. Ofrece líquidos [1]."
+    )
     a = eng.ask("mi hijo de 4 años tiene fiebre, ¿qué hago?", country="ES")
     assert a.level == "routine" and a.banner is None and a.verification == "ok"
     assert a.sources and a.sources[0].startswith("[1] SEUP") and "seup.org" in a.sources[0]
@@ -106,10 +108,13 @@ def test_routine_answer_with_sources(engine_factory):
     assert "SOURCES:" in llm.calls[0][1] and "[1] SEUP" in llm.calls[0][1]
 
 
-def test_fever_without_age_asks(engine_factory):
-    eng, llm = engine_factory("irrelevant")
+def test_fever_without_age_answers_and_then_asks(engine_factory):
+    """Hasta el 12-sep-2026 devolvía asked_age sin responder; 10 de 11 padres no volvían."""
+    eng, llm = engine_factory(
+        "Si tiene menos de tres meses, al médico hoy. Si no, la fiebre no es peligrosa, según la SEUP [1]."
+    )
     a = eng.ask("mi hijo tiene fiebre")
-    assert a.verification == "asked_age" and llm.calls == []
+    assert a.verification == "ok" and llm.calls and a.ask_age
 
 
 def test_emergency_banner_first_with_country_numbers(engine_factory):

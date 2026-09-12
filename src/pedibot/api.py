@@ -119,6 +119,8 @@ class AskOut(BaseModel):
     #: respuesta. Cada una tiene fuente en el corpus (config/followups.yaml y su prueba).
     #: Vacío sin fuente o con nivel emergencia: ahí el padre tiene que estar llamando.
     followups: list[str] = []
+    #: Fiebre sin edad: se ha respondido, y el chat ofrece los botones de edad debajo.
+    ask_age: bool = False
     #: True exactly once, on a calm fifth question of the day: an invitation to the support page.
     #: Never on an answer with a warning sign — see `_should_invite`.
     invite: bool = False
@@ -330,6 +332,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 else None
             ),
             followups=next_questions(engine, followups, body.question, a),
+            ask_age=a.ask_age,
         )
 
     @app.get("/api/drugs")

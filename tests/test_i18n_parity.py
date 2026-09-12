@@ -354,6 +354,7 @@ def test_every_language_table_in_the_engine_holds_the_same_shape() -> None:
     worth refusing here too, where the message says which table.
     """
     from pedibot.bot.answer import (
+        AGE_REFINES,
         ASK_AGE,
         CLARIFY,
         CLARIFY_OPTIONS,
@@ -367,6 +368,7 @@ def test_every_language_table_in_the_engine_holds_the_same_shape() -> None:
         ("NO_SOURCE", NO_SOURCE, str),
         ("CLARIFY", CLARIFY, str),
         ("ASK_AGE", ASK_AGE, str),
+        ("AGE_REFINES", AGE_REFINES, str),
         ("CLARIFY_OPTIONS", CLARIFY_OPTIONS, list),
     ):
         assert set(table) >= set(SUPPORTED_LANGS), (
