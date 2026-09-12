@@ -710,6 +710,34 @@ def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
         cuando = _dt.datetime.fromtimestamp(max(p.stat().st_mtime for p in paginas))
         ok("sitio", f"{len(paginas)} páginas, rehecho {cuando:%Y-%m-%d %H:%M}")
 
+    # ── cómo va respondiendo ────────────────────────────────────────────────────────────
+    # No es una comprobación de que algo case: es el pulso. «regenerada» significa que el
+    # verificador de citas tiró el primer borrador porque la fuente no lo sostenía, así que
+    # es la tasa a la que el modelo se va de la fuente. Medido el 11-sep-2026 sobre 345
+    # respuestas: 3 % en castellano y 0 % en francés, contra 17 % en ruso y 12 % en árabe —
+    # el verificador trabaja más cuando la respuesta se escribe en un idioma distinto del de
+    # la fuente, que es justo lo que pasa siempre en hindi (sin corpus propio).
+    try:
+        con = sqlite3.connect(f"file:{s.ops_db_path}?mode=ro", uri=True)
+        try:
+            total = con.execute("SELECT COUNT(*) FROM answers").fetchone()[0]
+            veredictos = dict(con.execute("SELECT verification, COUNT(*) FROM answers GROUP BY 1"))
+        finally:
+            con.close()
+        if total:
+            def pct(k: str) -> str:
+                return f"{100 * veredictos.get(k, 0) / total:.0f} %"
+
+            ok(
+                "respuestas",
+                f"{total} dadas · con fuente {pct('ok')} · regeneradas {pct('regenerated')} "
+                f"· sin fuente {pct('no_source')}",
+            )
+        else:
+            ok("respuestas", "ninguna todavía")
+    except Exception as e:  # noqa: BLE001
+        ok("respuestas", f"no se pueden leer ({e})")
+
     # ── clave del modelo (si la hay, nunca cuál) ──────────────────────────────────────────
     tiene = bool(getattr(s, "deepseek_api_key", None) or os.environ.get("DEEPSEEK_API_KEY"))
     ok("modelo", "clave presente" if tiene else "sin clave: sólo responden las herramientas")
