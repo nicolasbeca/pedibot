@@ -3009,6 +3009,17 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # 12-sep-2026: siete fichas nuevas de la OMS (humo dentro de casa, sordera, plomo,
+  # ceguera, drepanocitosis, tabaco, maltrato) entraron al índice y NINGUNA pregunta
+  # llegaba a ellas. Indexar no es alcanzar (L132).
+  حطب: [household air pollution, biomass, wood smoke]
+  دخان: [smoke, air pollution]
+  يسمع: [hearing, deafness]
+  صمم: [deafness, hearing loss]
+  رصاص: [lead, lead poisoning]
+  عمى: [blindness, visual impairment]
+  تدخين: [tobacco, smoking, second-hand smoke]
+  منجلي: [sickle cell]
   # árabe: faltaban la serpiente y la sarna, que sí tienen ficha en árabe pero cuya
   # consulta no casaba con el título
   أفعى: [snakebite, envenoming]
@@ -4811,6 +4822,20 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 12-sep-2026: siete fichas nuevas de la OMS (humo dentro de casa, sordera, plomo,
+  # ceguera, drepanocitosis, tabaco, maltrato) entraron al índice y NINGUNA pregunta
+  # llegaba a ellas. Indexar no es alcanzar (L132).
+  धुआं: [air pollution, smoke, household air pollution]
+  धुएं: [air pollution, smoke]
+  चूल्हा: [household air pollution, cookstove, biomass]
+  लकड़ी: [wood, biomass, household air pollution]
+  सुनाई: [hearing, deafness, hearing loss]
+  बहरापन: [deafness, hearing loss]
+  सीसा: [lead, lead poisoning]
+  अंधापन: [blindness, visual impairment]
+  दृष्टि: [vision, visual impairment]
+  धूम्रपान: [tobacco, smoking, second-hand smoke]
+  तंबाकू: [tobacco]
   # 11-sep-2026: medidas diez preguntas por las enfermedades que pesan en la India, tres no
   # llegaban. «कुत्ते ने काट लिया» —«le ha mordido un perro»— devolvía CERO teniendo la
   # ficha de rabia indexada, y la desnutrición devolvía la guía de obesidad de la AAP.

@@ -23,6 +23,18 @@ OUT = ROOT / "FUENTES" / "web"
 CATALOG = ROOT / "config" / "fuentes_web.yaml"
 UA = "Mozilla/5.0 (compatible; PediBot-source-fetch/1.0; +https://pedibot.xyz)"
 
+#: Títulos que la página da mal y hay que corregir a mano. Van AQUÍ y no en el YAML porque
+#: `config/fuentes_web.yaml` se **regenera entero** cada vez que corre este guion: el
+#: 12-sep-2026 corregí a mano «This page has been removed» —el aviso de redirección que el
+#: recolector se trajo por título de una página del NHS con 578 palabras de contenido bueno—
+#: y unas horas después, al traerme siete fichas nuevas, el guion lo revirtió sin decir nada.
+#: El título es la mitad visible de la cita (L151): un arreglo a mano en un fichero generado
+#: no es un arreglo, es una cuenta atrás.
+TITULOS_CORREGIDOS = {
+    "nhs_en_breath_holding_in_babies_and_children": "Breath-holding in babies and children",
+}
+
+
 ORGS = {
     "nhs": {
         "org": "NHS",
@@ -790,6 +802,50 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/meningite", "neurologia", "pt", ["todas"]),
     ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/poliomielite", "vacunas", "pt", ["todas"]),
     ("govbr", "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/vacinacao", "vacunas", "pt", ["todas"]),
+    # ---------------- OMS: lote del 12-sep-2026 ----------------
+    # Siete fichas en cinco idiomas (35 documentos), elegidas por lo que pesa en India y en
+    # el Golfo y no por completar una lista. La contaminación del aire DENTRO de casa es la
+    # que la OMS señala como causa principal de neumonía infantil donde se cocina con
+    # biomasa, y la neumonía es lo que más mata a menores de cinco años en la India; no
+    # teníamos nada. La drepanocitosis y el plomo tienen prevalencia alta allí —y el plomo
+    # no da síntomas hasta que el daño está hecho—; la sordera y la ceguera son cribado del
+    # recién nacido y déficit de vitamina A; del tabaco, lo que le toca al niño es el humo de
+    # segunda mano. Misma licencia CC BY-NC-SA 3.0 IGO. Las 35 direcciones, comprobadas.
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/household-air-pollution-and-health", "respiratorio", "ar", ["todas"]),
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health", "respiratorio", "en", ["todas"]),
+    ("who", "https://www.who.int/es/news-room/fact-sheets/detail/household-air-pollution-and-health", "respiratorio", "es", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/household-air-pollution-and-health", "respiratorio", "fr", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/household-air-pollution-and-health", "respiratorio", "ru", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/sickle-cell-disease", "general", "ar", ["todas"]),
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/sickle-cell-disease", "general", "en", ["todas"]),
+    ("who", "https://www.who.int/es/news-room/fact-sheets/detail/sickle-cell-disease", "general", "es", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/sickle-cell-disease", "general", "fr", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/sickle-cell-disease", "general", "ru", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/lead-poisoning-and-health", "intoxicacion", "ar", ["todas"]),
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/lead-poisoning-and-health", "intoxicacion", "en", ["todas"]),
+    ("who", "https://www.who.int/es/news-room/fact-sheets/detail/lead-poisoning-and-health", "intoxicacion", "es", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/lead-poisoning-and-health", "intoxicacion", "fr", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/lead-poisoning-and-health", "intoxicacion", "ru", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/deafness-and-hearing-loss", "orl", "ar", ["todas"]),
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/deafness-and-hearing-loss", "orl", "en", ["todas"]),
+    ("who", "https://www.who.int/es/news-room/fact-sheets/detail/deafness-and-hearing-loss", "orl", "es", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/deafness-and-hearing-loss", "orl", "fr", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/deafness-and-hearing-loss", "orl", "ru", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/blindness-and-visual-impairment", "ojos", "ar", ["todas"]),
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment", "ojos", "en", ["todas"]),
+    ("who", "https://www.who.int/es/news-room/fact-sheets/detail/blindness-and-visual-impairment", "ojos", "es", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/blindness-and-visual-impairment", "ojos", "fr", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/blindness-and-visual-impairment", "ojos", "ru", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/tobacco", "respiratorio", "ar", ["todas"]),
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/tobacco", "respiratorio", "en", ["todas"]),
+    ("who", "https://www.who.int/es/news-room/fact-sheets/detail/tobacco", "respiratorio", "es", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/tobacco", "respiratorio", "fr", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/tobacco", "respiratorio", "ru", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/child-maltreatment", "salud_mental", "ar", ["todas"]),
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/child-maltreatment", "salud_mental", "en", ["todas"]),
+    ("who", "https://www.who.int/es/news-room/fact-sheets/detail/child-maltreatment", "salud_mental", "es", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/child-maltreatment", "salud_mental", "fr", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/child-maltreatment", "salud_mental", "ru", ["todas"]),
 ]
 
 _DATE_PATTERNS = [
@@ -877,6 +933,7 @@ def main() -> int:
                     failed += 1
                     continue
             title, year = page_meta(html)
+            title = TITULOS_CORREGIDOS.get(did, title)
             entries.append(
                 {
                     "doc_id": did,

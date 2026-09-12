@@ -2,7 +2,8 @@
 topics:
   fiebre: [fiebre, febril, antitérmico, antitermico, temperatura, fever, febrile,
                  malaria, paludisme, ملاريا, मलेरिया, малярия, malária, dengue, الضنك, डेंगू, денге, tifoidea, typhoid, typhoïde, تيفوئيد, टाइफाइड, тиф, tifoide, تيفود, تيفية]
-  respiratorio: [tos, bronquiolitis, laringitis, crup, asma, neumonía, neumonia, catarro, mocos, sibilancia, pitos, respirar, respiración, disnea, cough, wheez, breath, pneumonia, croup, asthma, cold]
+  respiratorio: [tos, bronquiolitis, laringitis, crup, asma, neumonía, neumonia, catarro, mocos, sibilancia, pitos, respirar, respiración, disnea, cough, wheez, breath, pneumonia, croup, asthma, cold,
+        humo, leña, biomasa, carbón, estufa, cocina de leña, contaminación del aire, "air pollution", "wood smoke", "indoor smoke", fumée, rauch, дым, дровах, دخان, حطب, تلوث الهواء, धुआं, धुएं, लकड़ी, चूल्हा, वायु प्रदूषण, tabaco, tabaquismo, fumar, tobacco, smoking, tabac, tabak, табак, курени, تدخين, تبغ, يدخن, يدخّن, تدخن, مدخن, धूम्रपान, तंबाकू]
   digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat,
              lombrices, oxiuros, lombriz, threadworm, pinworm, oxyures, madenwürmer, madenwurmer,
              острицы, острица, ديدان, कीड़े, vomit, diarrh, constipat, stomach, dehydrat,
@@ -13,7 +14,8 @@ topics:
                  epilepsia, epilepsy, épilepsie, epilepsie, الصرع, मिर्गी, эпилепсия]
   accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke,
                  serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство, كلب, عضة, "عضّ"]
-  intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic]
+  intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic,
+        plomo, saturnismo, lead, plomb, blei$, свинец, свинца, رصاص, التسمم بالرصاص, सीसा, सीसे]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
   piel: [urticaria, exantema, sarpullido, eccema, dermatitis, ronchas, habones, manchas, rash, eczema, skin,
          sarampión, sarampion, measles, rougeole, masern, корь, кори, корью, حصبة, الحصبة, खसरा,
@@ -31,10 +33,12 @@ topics:
         # ha parado» es una pregunta real del registro que se quedó sin respuesta: sin
         # tema, la puerta del «fuente o silencio» exige tres términos en vez de uno.
         nariz, epistaxis, "sangrado nasal", nosebleed, "nose bleed", nez, saignement de nez,
-        nase, nasenbluten, нос, носовое кровотечение, أنف, نزيف الأنف, नाक, नकसीर, nariz, sangramento nasal]
+        nase, nasenbluten, нос, носовое кровотечение, أنف, نزيف الأنف, नाक, नकसीर, nariz, sangramento nasal,
+        sordera, sordo, audición, oír, oye, hipoacusia, deafness, hearing, surdité, audition, schwerhörig, gehör, глухот, слух, صمم, سمع, يسمع, ضعف السمع, बहरापन, सुनाई, श्रवण, सुनने]
   salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
                  "psychische gesundheit", "психическое здоровье", "الصحة النفسية",
-                 "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress]
+                 "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress,
+        maltrato infantil, malos tratos, abuso, child maltreatment, child abuse, maltraitance, kindesmisshandlung, жестокое обращение, إساءة معاملة الأطفال, سوء معاملة, बाल दुर्व्यवहार, बच्चों से दुर्व्यवहार]
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids,
                  desnutrición, desnutricion, malnutrición, malnutricion, malnutrition, dénutri, denutri, mangelernährung, mangelernahrung,
                  недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao,
@@ -55,14 +59,16 @@ topics:
              моча, мочевой, недержание, بول, التبول, पेशाब, मूत्र]
   ojos: [conjuntivitis, ojo, ojos, legañas, lagrimeo, conjunctivitis, pink eye, eye,
          conjonctivite, œil, oeil, bindehautentzündung, bindehautentzundung, auge,
-         конъюнктивит, глаз, التهاب الملتحمة, عين, आँख, कंजंक्टिवाइटिस]
+         конъюнктивит, глаз, التهاب الملتحمة, عين, आँख, कंजंक्टिवाइटिस,
+        ceguera, ciego, visión, vista, discapacidad visual, blindness, "visual impairment", cécité, malvoyance, blindheit, sehbehinderung, слепот, зрени, عمى, إعاقة بصرية, ضعف البصر, अंधापन, दृष्टि, नज़र]
   dental: [dentición, denticion, diente, dientes, muela, teething, tooth, teeth,
            poussée dentaire, dent$, dents$, zahnen, zahn, прорезывание зубов, зуб, تسنين, أسنان,
            दांत, दाँत]
   urgencias: [urgencias, "112", emergencia, sedoanalgesia, emergency, "911", "999",
                  sepsis, septicemia, septicémie, "تعفن الدم", सेप्सिस, сепсис]
   crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]
-  general: []
+  general: [
+        drepanocitosis, anemia falciforme, células falciformes, sickle cell, drépanocytose, sichelzell, серповидно, فقر الدم المنجلي, منجلي, सिकल सेल]
 
 subtopics:
   signos_alarma: [alarma, urgencias, "112", inmediat, gravedad, warning, emergency, immediately]
