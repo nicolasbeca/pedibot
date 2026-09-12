@@ -749,7 +749,10 @@ sources:
   file: web/nhs_en_breath_holding_in_babies_and_children.html
   org: NHS
   org_full: NHS (National Health Service, England)
-  title: This page has been removed
+  # El recolector se trajo el título de un aviso de redirección; el contenido está
+  # bien (578 palabras sobre espasmos del sollozo). Corregido a mano el 12-sep-2026:
+  # el título es lo que el padre lee en la cita, debajo de una respuesta sobre su hijo.
+  title: Breath-holding in babies and children
   year: null
   lang: en
   topic: neurologia
