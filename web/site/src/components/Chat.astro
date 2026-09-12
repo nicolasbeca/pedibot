@@ -11,7 +11,7 @@ import countryCodes from '../data/countries.json';
 const countries: [string, string][] = countryCodes.map((c: string) => [c, c === 'GB' ? 'UK' : c]);
 const ages = [['', s.not_set], ...s.chat_ages];
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support` })}>
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support`, err_busy: s.err_busy, err_unavailable: s.err_unavailable, chat_call: s.chat_call, ages: s.chat_ages })}>
   <div class="chat" id="thread" aria-live="polite" aria-relevant="additions text">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo.svg" width="72" height="72" alt="" />
@@ -86,6 +86,8 @@ const ages = [['', s.not_set], ...s.chat_ages];
   .composer textarea { flex: 1; border: 0; background: transparent; color: var(--ink); resize: none; max-height: 140px; padding: 8px 0; line-height: 1.5; }
   .mic { width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--cream); cursor: pointer; font-size: 1rem; }
   .mic.on { background: var(--coral-soft); }
+  .chat :global(.call) { display: inline-block; margin: 10px 0 4px; padding: 12px 18px; border-radius: 999px; background: var(--coral); color: #fff; font-weight: 700; font-size: 1.05rem; text-decoration: none; }
+  .chat :global(.call:active) { transform: scale(.98); }
   .send { width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--sage); color: #fff; cursor: pointer; font-size: 1.1rem; display: grid; place-items: center; }
   :global(:root.night) .send { color: var(--ground); }
   .legal { text-align: center; font-size: .74rem; color: var(--ink-3); margin-top: 8px; }
@@ -112,6 +114,9 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // The organisation is named inside the text; the legal line lives under the composer.
     let h = '<div class="who">pedibot</div>';
     if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}" role="alert">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
+    // Con el niño en brazos, marcar tiene que ser un toque: la API manda el número sólo con
+    // nivel emergencia y país conocido, y aquí se pinta como tel:.
+    if (j.call) h += `<a class="call" href="tel:${esc(String(j.call))}">📞 ${esc(S.chat_call)} ${esc(String(j.call))}</a>`;
     h += esc(String(j.text).replace(/\s*\[\d{1,2}\]/g, '')).replace(/\n/g, '<br>');
     // The guide built from the same sources this answer used. Its own title is the link text:
     // that is what tells the reader whether it is worth opening.
@@ -127,6 +132,9 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // Once, on a calm fifth question of the day. Never over an answer with a warning sign: a
     // parent whose child has just had a seizure is not asked for money.
     if (j.invite) h += `<p class="invite">${esc(S.invite_support)} <a href="${esc(S.support_href)}">${esc(S.nav_support)} →</a></p>`;
+    // Cuando pide la edad (6 % de las respuestas), un toque en vez de teclear: las mismas
+    // edades del chip, ya traducidas. El servidor recuerda la pregunta (medido en las ocho).
+    if (j.verification === 'asked_age' && Array.isArray(S.ages)) { h += '<div class="opts">' + S.ages.map((a: [string, string]) => `<button class="fb opt" type="button" data-q="${esc(a[1])}">${esc(a[1])}</button>`).join(' ') + '</div>'; return h; }
     if (j.verification === 'clarify' && j.options?.length) { h += '<div class="opts">' + j.options.map((o: string) => `<button class="fb opt" type="button" data-q="${esc(o)}">${esc(o)}</button>`).join(' ') + '</div>'; return h; }
     h += `<div class="foot"><span></span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button> <button class="fb share" data-id="${j.answer_id}" type="button">🔗 ${S.share}</button>${j.verification === 'ok' || j.verification === 'regenerated' ? ` <button class="fb child" data-q="${esc(j.question || '')}" type="button">🧸 ${S.child}</button> <button class="fb listen" type="button">🔊 ${S.listen}</button>` : ''}</span></div>`;
     return h;
@@ -160,6 +168,9 @@ const ages = [['', s.not_set], ...s.chat_ages];
       if (r.ok) { const j = await r.json(); const url = location.origin + j.path; try { await navigator.clipboard.writeText(url); b.textContent = '✓ ' + S.copied; } catch (err) { prompt(S.share, url); } }
       return;
     }
+    // Una respuesta rápida es una PREGUNTA. Sin esta línea caía al voto de abajo con
+    // answer_id=NaN y los botones se desactivaban: las opciones nunca habían funcionado.
+    if (b.classList.contains('opt')) { ask(b.dataset.q || ''); return; }
     if (b.classList.contains('child')) { ask(b.dataset.q || '', 'child'); return; }
     if (b.classList.contains('listen')) {
       const msg = b.closest('.msg') as HTMLElement; const text = msg.innerText.replace(/^pedibot/, '').replace(/👍.*$/s, '');

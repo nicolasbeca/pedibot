@@ -5,8 +5,10 @@ Bind to 127.0.0.1 behind Caddy (PRD §8). The engine is injected so tests can us
 
 from __future__ import annotations
 
+import re
 import secrets
 import time
+from collections.abc import Mapping
 from dataclasses import dataclass
 
 from fastapi import FastAPI, HTTPException, Request
@@ -108,6 +110,10 @@ class AskOut(BaseModel):
     options: list[str] = []
     guide: GuideOut | None = None
     tool: ToolOut | None = None
+    #: El número que marcar, sólo con nivel emergencia y país conocido: el cliente lo pinta
+    #: como un botón `tel:`. Con la frase de respaldo sin país («112 en la UE, 911 en
+    #: América») no se manda nada — sacarle un número sería marcar el equivocado.
+    call: str | None = None
     #: True exactly once, on a calm fifth question of the day: an invitation to the support page.
     #: Never on an answer with a warning sign — see `_should_invite`.
     invite: bool = False
@@ -159,6 +165,17 @@ def _ml(mg: float, mg_per_ml: float) -> float:
     Hacia abajo se queda corto por centésimas, y quedarse corto con un antitérmico no hace daño.
     """
     return int(mg / mg_per_ml * 10) / 10
+
+
+_MARCABLE = re.compile(r"\d{2,6}")
+
+
+def dialable(numbers: Mapping[str, object], country: str | None, known: set[str]) -> str | None:
+    """El primer número marcable del país, o nada si no hay país o el país no está."""
+    if not country or country.upper() not in known:
+        return None
+    m = _MARCABLE.search(str(numbers.get("emergency") or ""))
+    return m.group(0) if m else None
 
 
 def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) -> FastAPI:  # type: ignore[no-untyped-def]
@@ -286,6 +303,15 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             options=list(getattr(a, "options", [])),
             guide=GuideOut(title=a.guide.title, url=a.guide.url) if a.guide else None,
             tool=ToolOut(kind=a.tool.kind, url=a.tool.url) if a.tool else None,
+            call=(
+                dialable(
+                    engine.numbers.get(body.country, a.lang),
+                    body.country,
+                    {c for c in engine.numbers.raw if c != "default"},
+                )
+                if a.level == "emergency"
+                else None
+            ),
         )
 
     @app.get("/api/drugs")
