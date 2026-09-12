@@ -1,0 +1,341 @@
+# Las preguntas que vienen después (12-sep-2026).
+#
+# Tras «tiene fiebre» viene «¿cuánto paracetamol?» o «¿cuándo voy a urgencias?». El chat las
+# ofrece como botones debajo de la respuesta, según el asunto de la taxonomía que la respuesta
+# tocó, en la lengua del padre. Cada pregunta de esta tabla TIENE FUENTE en el corpus: hay una
+# prueba que la busca en su lengua (tests/test_the_chat_keeps_the_thread.py), porque una pregunta
+# que ofrecemos nosotros y acaba en «no tengo fuente» es peor que ninguna. Nunca se ofrecen
+# sobre una respuesta con nivel emergencia: ahí el padre tiene que estar llamando.
+#
+# Dos o tres por asunto y lengua: caben en la pantalla de un móvil sin desplazar.
+followups:
+  fiebre:
+    en:
+      - When should I take my child to A&E with a fever?
+      - How much paracetamol can I give for the fever?
+      - Can I bathe my child to bring the fever down?
+    es:
+      - ¿Cuándo tengo que ir a urgencias por la fiebre?
+      - ¿Cuánto paracetamol le puedo dar para la fiebre?
+      - ¿Le puedo bañar para bajarle la fiebre?
+    fr:
+      - Quand faut-il aller aux urgences pour la fièvre ?
+      - Quelle dose de paracétamol donner pour la fièvre ?
+      - Puis-je donner un bain pour faire baisser la fièvre ?
+    de:
+      - Wann muss ich mit Fieber in die Notaufnahme?
+      - Wie viel Paracetamol darf ich bei Fieber geben?
+      - Darf ich mein Kind baden, um das Fieber zu senken?
+    ru:
+      - Когда с температурой нужно ехать в скорую помощь?
+      - Сколько парацетамола можно дать при температуре?
+      - Можно ли купать ребёнка, чтобы сбить температуру?
+    ar:
+      - متى يجب أن أذهب إلى الطوارئ بسبب الحمى؟
+      - ما جرعة الباراسيتامول التي أعطيها لخفض الحمى؟
+      - هل يمكنني تحميم طفلي لخفض الحرارة؟
+    pt:
+      - Quando devo ir à urgência por causa da febre?
+      - Quanto paracetamol posso dar para a febre?
+      - Posso dar banho para baixar a febre?
+    hi:
+      - बुखार में बच्चे को अस्पताल की इमरजेंसी में कब ले जाना चाहिए?
+      - बुखार के लिए कितना पैरासिटामोल दे सकती हूँ?
+      - क्या बुखार उतारने के लिए बच्चे को नहला सकती हूँ?
+  respiratorio:
+    en:
+      - How do I know if my child is struggling to breathe?
+      - Does a cough need any medicine?
+      - How do I do saline nose washes?
+    es:
+      - ¿Cómo sé si le cuesta respirar?
+      - ¿La tos necesita algún jarabe?
+      - ¿Cómo le hago los lavados nasales con suero?
+    fr:
+      - Comment savoir si mon enfant a du mal à respirer ?
+      - La toux a-t-elle besoin d'un sirop ?
+      - Comment faire un lavage de nez au sérum physiologique ?
+    de:
+      - Woran erkenne ich, dass mein Kind schwer atmet?
+      - Braucht der Husten ein Medikament?
+      - Wie mache ich eine Nasenspülung mit Kochsalzlösung?
+    ru:
+      - Как понять, что ребёнку трудно дышать?
+      - Нужно ли лекарство от кашля?
+      - Как промывать нос физраствором?
+    ar:
+      - كيف أعرف أن طفلي يعاني من صعوبة في التنفس؟
+      - هل يحتاج السعال إلى دواء؟
+      - كيف أغسل أنف طفلي بالمحلول الملحي؟
+    pt:
+      - Como sei se o meu filho tem dificuldade em respirar?
+      - A tosse precisa de algum xarope?
+      - Como faço a lavagem nasal com soro?
+    hi:
+      - कैसे पता चलेगा कि बच्चे को सांस लेने में तकलीफ है?
+      - क्या खांसी के लिए कोई दवा देनी चाहिए?
+      - बच्चे की नाक नमक के पानी से कैसे साफ करूँ?
+  digestivo:
+    en:
+      - How do I give oral rehydration solution?
+      - What can my child eat after vomiting?
+      - When is diarrhoea dangerous?
+    es:
+      - ¿Cómo le doy el suero de rehidratación oral?
+      - ¿Qué puede comer después de vomitar?
+      - ¿Cuándo es peligrosa la diarrea?
+    fr:
+      - Comment donner la solution de réhydratation orale ?
+      - Que peut-il manger après avoir vomi ?
+      - Quand la diarrhée devient-elle dangereuse ?
+    de:
+      - Wie gebe ich die orale Rehydratationslösung?
+      - Was darf mein Kind nach dem Erbrechen essen?
+      - Wann ist Durchfall gefährlich?
+    ru:
+      - Как давать раствор для пероральной регидратации?
+      - Что можно есть ребёнку после рвоты?
+      - Когда понос опасен?
+    ar:
+      - كيف أعطي محلول الإماهة الفموية؟
+      - ماذا يمكن أن يأكل طفلي بعد القيء؟
+      - متى يكون الإسهال خطيراً؟
+    pt:
+      - Como dou o soro de reidratação oral?
+      - O que pode comer depois de vomitar?
+      - Quando é que a diarreia é perigosa?
+    hi:
+      - ओआरएस का घोल कैसे दूँ?
+      - उल्टी के बाद बच्चा क्या खा सकता है?
+      - दस्त कब खतरनाक होते हैं?
+  piel:
+    en:
+      - How do I check a rash with a glass?
+      - Can my child go to school with this rash?
+      - What can I put on the skin to stop the itching?
+    es:
+      - ¿Cómo hago la prueba del vaso con las manchas?
+      - ¿Puede ir al colegio con estas manchas?
+      - ¿Qué le puedo poner en la piel para el picor?
+    fr:
+      - Comment faire le test du verre sur les boutons ?
+      - Peut-il aller à l'école avec ces boutons ?
+      - Que mettre sur la peau contre les démangeaisons ?
+    de:
+      - Wie mache ich den Glastest bei einem Ausschlag?
+      - Darf mein Kind mit dem Ausschlag in die Schule?
+      - Was kann ich gegen den Juckreiz auf die Haut geben?
+    ru:
+      - Как проверить сыпь стаканом?
+      - Можно ли с этой сыпью идти в школу?
+      - Чем мазать кожу, чтобы не чесалась?
+    ar:
+      - كيف أفحص الطفح الجلدي باختبار الكوب؟
+      - هل يمكن لطفلي الذهاب إلى المدرسة مع هذا الطفح؟
+      - ماذا أضع على الجلد لتخفيف الحكة؟
+    pt:
+      - Como faço o teste do copo nas manchas?
+      - Pode ir à escola com estas manchas?
+      - O que posso pôr na pele para a comichão?
+    hi:
+      - दानों पर गिलास वाला टेस्ट कैसे करूँ?
+      - क्या बच्चा इन दानों के साथ स्कूल जा सकता है?
+      - खुजली के लिए त्वचा पर क्या लगाऊँ?
+  medicamentos:
+    en:
+      - What is the ibuprofen dose for my child's weight?
+      - Can I alternate paracetamol and ibuprofen?
+      - How many hours between doses?
+    es:
+      - ¿Qué dosis de ibuprofeno le toca por su peso?
+      - ¿Puedo alternar paracetamol e ibuprofeno?
+      - ¿Cuántas horas tienen que pasar entre dosis?
+    fr:
+      - Quelle dose d'ibuprofène selon son poids ?
+      - Puis-je alterner paracétamol et ibuprofène ?
+      - Combien d'heures entre deux doses ?
+    de:
+      - Welche Ibuprofen-Dosis passt zu seinem Gewicht?
+      - Darf ich Paracetamol und Ibuprofen abwechseln?
+      - Wie viele Stunden Abstand zwischen den Dosen?
+    ru:
+      - Какая доза ибупрофена по весу ребёнка?
+      - Можно ли чередовать парацетамол и ибупрофен?
+      - Сколько часов между дозами?
+    ar:
+      - ما جرعة الإيبوبروفين حسب وزن طفلي؟
+      - هل يمكنني التناوب بين الباراسيتامول والإيبوبروفين؟
+      - كم ساعة بين الجرعات؟
+    pt:
+      - Qual é a dose de ibuprofeno para o peso dele?
+      - Posso alternar paracetamol e ibuprofeno?
+      - Quantas horas entre as doses?
+    hi:
+      - बच्चे के वज़न के हिसाब से इबुप्रोफेन की कितनी खुराक दूँ?
+      - क्या पैरासिटामोल और इबुप्रोफेन बारी-बारी से दे सकती हूँ?
+      - दो खुराकों के बीच कितने घंटे का अंतर रखूँ?
+  vacunas:
+    en:
+      - Which vaccines are due at this age?
+      - Is fever after a vaccine normal?
+      - Can my child be vaccinated with a cold?
+    es:
+      - ¿Qué vacunas le tocan a esta edad?
+      - ¿Es normal la fiebre después de la vacuna?
+      - ¿Se puede vacunar con un resfriado?
+    fr:
+      - Quels vaccins sont prévus à cet âge ?
+      - La fièvre après le vaccin est-elle normale ?
+      - Peut-on vacciner un enfant enrhumé ?
+    de:
+      - Welche Impfungen stehen in diesem Alter an?
+      - Ist Fieber nach der Impfung normal?
+      - Darf mein Kind mit einer Erkältung geimpft werden?
+    ru:
+      - Какие прививки положены в этом возрасте?
+      - Нормальна ли температура после прививки?
+      - Можно ли делать прививку при простуде?
+    ar:
+      - ما اللقاحات المطلوبة في هذا العمر؟
+      - هل الحمى بعد اللقاح طبيعية؟
+      - هل يمكن تطعيم طفلي وهو مصاب بالزكام؟
+    pt:
+      - Que vacinas tocam nesta idade?
+      - A febre depois da vacina é normal?
+      - Pode ser vacinado com uma constipação?
+    hi:
+      - इस उम्र में कौन से टीके लगने चाहिए?
+      - क्या टीके के बाद बुखार आना सामान्य है?
+      - क्या सर्दी-जुकाम में टीका लगवा सकते हैं?
+  accidentes:
+    en:
+      - What do I do if my child hits their head?
+      - How do I treat a burn at home?
+      - When does a cut need stitches?
+    es:
+      - ¿Qué hago si se ha dado un golpe en la cabeza?
+      - ¿Cómo curo una quemadura en casa?
+      - ¿Cuándo necesita puntos una herida?
+    fr:
+      - Que faire s'il s'est cogné la tête ?
+      - Comment soigner une brûlure à la maison ?
+      - Quand une plaie a-t-elle besoin de points de suture ?
+    de:
+      - Was tun, wenn sich mein Kind den Kopf gestoßen hat?
+      - Wie behandle ich eine Verbrennung zu Hause?
+      - Wann muss eine Wunde genäht werden?
+    ru:
+      - Что делать, если ребёнок ударился головой?
+      - Как обработать ожог дома?
+      - Когда рану нужно зашивать?
+    ar:
+      - ماذا أفعل إذا ضرب طفلي رأسه؟
+      - كيف أعالج الحرق في المنزل؟
+      - متى يحتاج الجرح إلى خياطة؟
+    pt:
+      - O que faço se ele bateu com a cabeça?
+      - Como trato uma queimadura em casa?
+      - Quando é que um corte precisa de pontos?
+    hi:
+      - अगर बच्चे के सिर पर चोट लगी है तो क्या करूँ?
+      - जलने पर घर पर क्या इलाज करूँ?
+      - कटने पर टांके कब लगवाने पड़ते हैं?
+  orl:
+    en:
+      - How do I know if it is an ear infection?
+      - Does a sore throat need antibiotics?
+      - How do I stop a nosebleed?
+    es:
+      - ¿Cómo sé si es una otitis?
+      - ¿El dolor de garganta necesita antibiótico?
+      - ¿Cómo le corto una hemorragia nasal?
+    fr:
+      - Comment savoir si c'est une otite ?
+      - Un mal de gorge a-t-il besoin d'antibiotiques ?
+      - Comment arrêter un saignement de nez ?
+    de:
+      - Woran erkenne ich eine Mittelohrentzündung?
+      - Braucht Halsschmerzen ein Antibiotikum?
+      - Wie stoppe ich Nasenbluten?
+    ru:
+      - Как понять, что это отит?
+      - Нужен ли антибиотик при боли в горле?
+      - Как остановить кровотечение из носа?
+    ar:
+      - كيف أعرف أنها التهاب في الأذن؟
+      - هل يحتاج التهاب الحلق إلى مضاد حيوي؟
+      - كيف أوقف نزيف الأنف؟
+    pt:
+      - Como sei se é uma otite?
+      - A dor de garganta precisa de antibiótico?
+      - Como paro uma hemorragia do nariz?
+    hi:
+      - कैसे पता चलेगा कि कान में इन्फेक्शन है?
+      - क्या गले के दर्द के लिए एंटीबायोटिक चाहिए?
+      - नाक से खून आना कैसे रोकूँ?
+  alimentacion:
+    en:
+      - When do I start solid foods?
+      - How much milk does my baby need?
+      - Until what age should I breastfeed?
+    es:
+      - ¿Cuándo empiezo con la alimentación complementaria?
+      - ¿Cuánta leche necesita mi bebé?
+      - ¿Hasta qué edad es recomendable la lactancia materna?
+    fr:
+      - Quand commencer la diversification alimentaire ?
+      - De combien de lait mon bébé a-t-il besoin ?
+      - Jusqu'à quel âge faut-il allaiter ?
+    de:
+      - Wann fange ich mit der Beikost an?
+      - Wie viel Milch braucht mein Baby?
+      - Bis zu welchem Alter sollte ich stillen?
+    ru:
+      - Когда вводить прикорм?
+      - Сколько молока нужно моему малышу?
+      - До какого возраста нужно грудное вскармливание?
+    ar:
+      - متى أبدأ بإدخال الطعام الصلب؟
+      - كم يحتاج رضيعي من الحليب؟
+      - حتى أي عمر يُنصح بالرضاعة الطبيعية؟
+    pt:
+      - Quando começo a diversificação alimentar?
+      - Quanto leite precisa o meu bebé?
+      - Até que idade é recomendado amamentar?
+    hi:
+      - बच्चे को ठोस आहार कब शुरू करूँ?
+      - मेरे शिशु को कितना दूध चाहिए?
+      - किस उम्र तक स्तनपान कराना चाहिए?
+  lactante:
+    en:
+      - How much should my baby sleep?
+      - What can I do about colic?
+      - Is it normal for my baby to bring up milk?
+    es:
+      - ¿Cuánto tiene que dormir mi bebé?
+      - ¿Qué hago con los cólicos del lactante?
+      - ¿Es normal que mi bebé regurgite leche?
+    fr:
+      - Combien mon bébé doit-il dormir ?
+      - Que faire contre les coliques du nourrisson ?
+      - Est-ce normal que mon bébé régurgite du lait ?
+    de:
+      - Wie viel sollte mein Baby schlafen?
+      - Was kann ich gegen Koliken tun?
+      - Ist es normal, dass mein Baby Milch spuckt?
+    ru:
+      - Сколько должен спать мой малыш?
+      - Что делать при коликах у грудничка?
+      - Нормально ли, что малыш срыгивает молоко?
+    ar:
+      - كم يجب أن ينام رضيعي؟
+      - ماذا أفعل مع مغص الرضيع؟
+      - هل من الطبيعي أن يتقيأ رضيعي الحليب؟
+    pt:
+      - Quanto deve dormir o meu bebé?
+      - O que faço com as cólicas do bebé?
+      - É normal o meu bebé bolsar leite?
+    hi:
+      - मेरे शिशु को कितना सोना चाहिए?
+      - शिशु के पेट दर्द (कोलिक) में क्या करूँ?
+      - क्या शिशु का दूध उगलना सामान्य है?

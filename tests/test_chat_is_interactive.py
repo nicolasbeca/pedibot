@@ -76,7 +76,7 @@ def test_una_respuesta_rapida_pregunta_en_vez_de_votar(chat: str):
     pos_voto = manejador.find("/api/feedback")
     assert pos_opt != -1, "los botones `.opt` no se atienden: caen al voto con answer_id=NaN"
     assert pos_opt < pos_voto, "`.opt` se comprueba después del voto, así que nunca llega"
-    assert re.search(r"contains\('opt'\)\)\s*\{\s*ask\(", manejador), "un `.opt` tiene que llamar a ask()"
+    assert re.search(r"contains\('opt'\)\)\s*\{[^}]*\bask\(", manejador), "un `.opt` tiene que llamar a ask()"
 
 
 def test_las_cadenas_de_error_viajan_al_cliente(chat: str):

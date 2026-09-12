@@ -1302,6 +1302,12 @@ de_es:
   - urgencias
   - '112'
 de_en:
+  # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
+  # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
+  atmet: [breathing, difficulty breathing]
+  rehydratationslösung: [oral rehydration solution]
+  glastest: [glass test, rash]
+  genäht: [stitches, wound]
   fieber:
   - fever
   - temperature
@@ -2108,6 +2114,16 @@ ru_es:
   - respiración
   - dificultad respiratoria
 ru_en:
+  # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
+  # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
+  ударился: [head injury, hit]
+  головой: [head]
+  рану: [wound, cut]
+  зашивать: [stitches, wound]
+  стаканом: [glass test, rash]
+  чесалась: [itching, itchy]
+  мазать: [cream, itching]
+  грудью: [breastfeeding]
   # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
   # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
   # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
@@ -3009,6 +3025,12 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
+  # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
+  إماهة: [oral rehydration solution, rehydration]
+  صلب: [solid foods, complementary feeding]
+  شهية: [appetite]
+  الكوب: [glass test, rash]
   # 12-sep-2026: siete fichas nuevas de la OMS (humo dentro de casa, sordera, plomo,
   # ceguera, drepanocitosis, tabaco, maltrato) entraron al índice y NINGUNA pregunta
   # llegaba a ellas. Indexar no es alcanzar (L132).
@@ -3912,6 +3934,10 @@ pt_es:
   - urgencias
   - '112'
 pt_en:
+  # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
+  # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
+  comichão: [itching, itchy]
+  diversificação: [complementary feeding, solid foods]
   # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
   # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
   # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
@@ -4822,6 +4848,14 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
+  # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
+  दानों: [rash, spots]
+  गिलास: [glass test, rash]
+  ओआरएस: [ORS, oral rehydration solution]
+  घोल: [oral rehydration solution, solution]
+  दूध पिलाना: [breastfeeding, milk]
+  भूख: [appetite]
   # 12-sep-2026: siete fichas nuevas de la OMS (humo dentro de casa, sordera, plomo,
   # ceguera, drepanocitosis, tabaco, maltrato) entraron al índice y NINGUNA pregunta
   # llegaba a ellas. Indexar no es alcanzar (L132).

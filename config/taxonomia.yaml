@@ -3,17 +3,20 @@ topics:
   fiebre: [fiebre, febril, antitérmico, antitermico, temperatura, fever, febrile,
                  malaria, paludisme, ملاريا, मलेरिया, малярия, malária, dengue, الضنك, डेंगू, денге, tifoidea, typhoid, typhoïde, تيفوئيد, टाइफाइड, тиф, tifoide, تيفود, تيفية]
   respiratorio: [tos, bronquiolitis, laringitis, crup, asma, neumonía, neumonia, catarro, mocos, sibilancia, pitos, respirar, respiración, disnea, cough, wheez, breath, pneumonia, croup, asthma, cold,
-        humo, leña, biomasa, carbón, estufa, cocina de leña, contaminación del aire, "air pollution", "wood smoke", "indoor smoke", fumée, rauch, дым, дровах, دخان, حطب, تلوث الهواء, धुआं, धुएं, लकड़ी, चूल्हा, वायु प्रदूषण, tabaco, tabaquismo, fumar, tobacco, smoking, tabac, tabak, табак, курени, تدخين, تبغ, يدخن, يدخّن, تدخن, مدخن, धूम्रपान, तंबाकू]
+        humo, leña, biomasa, carbón, estufa, cocina de leña, contaminación del aire, "air pollution", "wood smoke", "indoor smoke", fumée, rauch, дым, дровах, دخان, حطب, تلوث الهواء, धुआं, धुएं, लकड़ी, चूल्हा, वायु प्रदूषण, tabaco, tabaquismo, fumar, tobacco, smoking, tabac, tabak, табак, курени, تدخين, تبغ, يدخن, يدخّن, تدخن, مدخن, धूम्रपान, तंबाकू,
+        atme, atmung, "schwer luft", "respire mal", "respira mal"]
   digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat,
              lombrices, oxiuros, lombriz, threadworm, pinworm, oxyures, madenwürmer, madenwurmer,
              острицы, острица, ديدان, कीड़े, vomit, diarrh, constipat, stomach, dehydrat,
-                 lombrices, helminth, oxiuros, desparasit, vers intestinaux, ديدان, कीड़े, гельминт, глист, "agua potable", "drinking water", "eau potable", "مياه الشرب", "पीने का पानी", "питьевая вода", "seguridad alimentaria", "food safety", "sécurité sanitaire des aliments", "سلامة الأغذية", hepatitis, التهاب الكبد, हेपेटाइटिस, гепатит]
+                 lombrices, helminth, oxiuros, desparasit, vers intestinaux, ديدان, कीड़े, гельминт, глист, "agua potable", "drinking water", "eau potable", "مياه الشرب", "पीने का पानी", "питьевая вода", "seguridad alimentaria", "food safety", "sécurité sanitaire des aliments", "سلامة الأغذية", hepatitis, التهاب الكبد, हेपेटाइटिस, гепатит,
+        rehydrat, réhydrat, إماهة, ओआरएस, "ors$", "sro$", oralpädon]
   neurologia: [meningitis, meningite, meningitis, hirnhautentzündung, hirnhautentzundung,
                менингит, менингита, التهاب السحايا, سحايا, मेनिन्जाइटिस,
                convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding,
                  epilepsia, epilepsy, épilepsie, epilepsie, الصرع, मिर्गी, эпилепсия]
   accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke,
-                 serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство, كلب, عضة, "عضّ"]
+                 serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство, كلب, عضة, "عضّ",
+        ударил, ушиб, рану, "рана$", раны, зашив, швы, stitch, sutur, "puntos de sutura", genäht, nähen, verbrennung, verbrüh, "kopf gestoßen", gestoßen]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic,
         plomo, saturnismo, lead, plomb, blei$, свинец, свинца, رصاص, التسمم بالرصاص, सीसा, सीसे]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
@@ -26,7 +29,8 @@ topics:
          "mano-pie-boca", "pieds-mains-bouche", "hand foot and mouth", impétigo, impetigo, molusco, molluscum,
          piojo, piojos, liendre, head lice, lice, poux, kopfläuse, kopflause, вши, вшей, قمل, जूं,
          picadura, picaduras, mosquito, insect bite, piqûre, piqure, insektenstich, укус, لدغة, काटने,
-                 sarna, scabies, gale$, krätze, الجرب, खुजली, чесотка, escabiosis]
+                 sarna, scabies, gale$, krätze, الجرب, खुजली, чесотка, escabiosis,
+        picor, picazón, picazon, itch, juck, prurit, démangeaison, demangeaison, зуд, чеш, чесал, comich, coceira, حكة, दाने, दानों, चकत्त, "glass test", "prueba del vaso", "test du verre", glastest, стакан, गिलास]
   orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear$, ears$, earache, earwax,
         throat, tonsil,
         # La nariz no estaba en ninguna categoría, y «le sangro la nariz un momento y ya
@@ -42,7 +46,8 @@ topics:
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids,
                  desnutrición, desnutricion, malnutrición, malnutricion, malnutrition, dénutri, denutri, mangelernährung, mangelernahrung,
                  недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao,
-                 anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение, رضاع, أرضع, هزال, نحيف]
+                 anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение, رضاع, أرضع, هزال, نحيف,
+        appetite, apetito, appétit, appetit, аппетит, شهية, भूख, صلب, diversifica, beikost, stillen, allaite, allaitement, amamentar, amamentação, aleitamento, "грудное вскармливание", прикорм, स्तनपान, "ठोस आहार", "पूरक आहार", "الطعام الصلب", الفطام, फार्मूला, "दूध पिलाना"]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice,
                  prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]

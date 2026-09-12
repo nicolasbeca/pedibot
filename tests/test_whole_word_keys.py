@@ -163,6 +163,9 @@ _REVISADAS = {
     # Entró el 11-sep-2026 con la nariz, que no estaba en ninguna categoría y dejaba sin
     # respuesta «le sangro la nariz un momento y ya ha parado», del registro de producción.
     "nosebleed",
+    # 12-sep-2026, con las preguntas siguientes del chat: «atme» coge «atmen/atmet» (respirar),
+    # «itch» coge «itching/itchy» y «allaite» coge «allaitement». Flexiones de su propia raíz.
+    "atme", "itch", "allaite",
 }
 
 

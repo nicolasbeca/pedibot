@@ -18,8 +18,9 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from pedibot import __version__
-from pedibot.bot.answer import SUPPORTED_LANGS, Engine
+from pedibot.bot.answer import SUPPORTED_LANGS, Answer, Engine
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.followups import Followups
 from pedibot.bot.llm import LLMUnavailable
 from pedibot.bot.strings import data_lang
 from pedibot.bot.vaccines import Vaccines
@@ -114,6 +115,10 @@ class AskOut(BaseModel):
     #: como un botón `tel:`. Con la frase de respaldo sin país («112 en la UE, 911 en
     #: América») no se manda nada — sacarle un número sería marcar el equivocado.
     call: str | None = None
+    #: Las preguntas que vienen después, en la lengua del padre y según el asunto de la
+    #: respuesta. Cada una tiene fuente en el corpus (config/followups.yaml y su prueba).
+    #: Vacío sin fuente o con nivel emergencia: ahí el padre tiene que estar llamando.
+    followups: list[str] = []
     #: True exactly once, on a calm fifth question of the day: an invitation to the support page.
     #: Never on an answer with a warning sign — see `_should_invite`.
     invite: bool = False
@@ -178,11 +183,23 @@ def dialable(numbers: Mapping[str, object], country: str | None, known: set[str]
     return m.group(0) if m else None
 
 
+def next_questions(engine: Engine, table: Followups, question: str, a: Answer) -> list[str]:
+    """Sólo bajo una respuesta con fuente y sin alarma, y nunca la que el padre acaba de hacer."""
+    if a.verification not in ("ok", "regenerated") or a.level == "emergency":
+        return []
+    tax = getattr(engine.retriever, "taxonomy", None)
+    if tax is None:
+        return []
+    topic = tax.topic_for(question + " " + " ".join(a.expansion))
+    return table.for_topic(topic, a.lang, asked=question)
+
+
 def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) -> FastAPI:  # type: ignore[no-untyped-def]
     from pedibot.bot.llm import vision_json
     from pedibot.bot.vaccines import format_answer
 
     vision_fn = vision_fn or vision_json
+    followups = Followups(ROOT / "config" / "followups.yaml")
     from pedibot.bot.answer import DISCLAIMER
 
     app = FastAPI(title="PediBot API", version=__version__, docs_url=None, redoc_url=None)
@@ -312,6 +329,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 if a.level == "emergency"
                 else None
             ),
+            followups=next_questions(engine, followups, body.question, a),
         )
 
     @app.get("/api/drugs")
