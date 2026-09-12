@@ -364,6 +364,33 @@ def _sin_modelo_line(q: dict[str, Any]) -> str:
         "es la redacción."
     )
 
+def _unanswered_card(items: list[dict[str, Any]]) -> str:
+    """Un número no se puede arreglar; una pregunta sí.
+
+    Cada fila es un hueco del corpus o un fallo del buscador, y hasta hoy había que sacarlas con
+    SQL para saber de cuál se trataba (11-sep-2026: de seis, tres eran arreglables).
+    """
+    if not items:
+        return (
+            '<div class="card"><h2>Preguntas sin respuesta</h2>'
+            '<p class="empty">Ninguna: a todas se les encontró fuente.</p></div>'
+        )
+    filas = "".join(
+        '<tr><td class="dim">{fecha}</td><td class="dim">{lang}</td>'
+        '<td>{pregunta}</td></tr>'.format(
+            fecha=html.escape(_day(str(it.get("ts") or ""))),
+            lang=html.escape(str(it.get("lang") or "?")),
+            pregunta=html.escape(str(it.get("question") or ""))[:160],
+        )
+        for it in items
+    )
+    return (
+        f'<div class="card"><h2>Preguntas sin respuesta ({len(items)})</h2>'
+        '<p class="dim">Cada una es un hueco del corpus o un fallo del buscador. '
+        'Las dos se arreglan; el número solo no dice cuál.</p>'
+        f'<table class="t">{filas}</table></div>'
+    )
+
 
 def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> str:
     """`include_test` shows our own traffic too, and says on every card which is which.
@@ -377,6 +404,7 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     g = report.guides(days)
     rows = report.recent_answers(con, 80, include_test=include_test)
     flagged = set(load_flagged())
+    sin_respuesta = report.unanswered(con, days, include_test=include_test)
 
     tail = "&tests=1" if include_test else ""
 
@@ -455,6 +483,9 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
         + _bars([(_LEVEL_NAME.get(k, k), n) for k, n in levels])
         + "</div></div>"
     )
+    # Una tarjeta entera para ella: cada fila es un hueco del corpus o un fallo del buscador,
+    # y el contador de arriba («sin fuente: N») nunca dijo cuál de las dos.
+    h.append(_unanswered_card(sin_respuesta))
 
     h.append(_google_card(search.load()))
 

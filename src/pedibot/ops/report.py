@@ -352,6 +352,35 @@ def balance() -> float | None:
     except Exception:  # noqa: BLE001
         return None
 
+def unanswered(
+    con: sqlite3.Connection, days: int = 0, include_test: bool = False, limit: int = 25
+) -> list[dict[str, Any]]:
+    """Las preguntas que se quedaron sin respuesta, una por una.
+
+    El panel llevaba desde el principio un contador —«sin fuente: 6»— y nada más, así que para
+    saber cuáles eran había que abrir la base a mano. Se hizo el 11-sep-2026 y de las seis, tres
+    eran **fallos arreglables**: «le duele el oido desde ayer» con cinco fichas de oído en el
+    corpus, «le sangro la nariz un momento y ya ha parado» con la del NHS indexada, y una de
+    marca. Las otras tres eran negativas correctas.
+
+    O sea que cada línea de esta lista es una de dos cosas, y las dos valen: un hueco del corpus
+    que llenar o un fallo del buscador que arreglar. Un número no dice cuál de las dos.
+    """
+    since = (
+        (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).isoformat(timespec="seconds")
+        if days > 0
+        else ""
+    )
+    rows = con.execute(
+        "SELECT id, ts, lang, source, verification, question FROM answers WHERE ts>=?"
+        + ("" if include_test else REAL_ONLY)
+        + " AND verification IN ('no_source','fallback')"
+        " ORDER BY id DESC LIMIT ?",
+        (since, limit),
+    ).fetchall()
+    keys = ("id", "ts", "lang", "source", "verification", "question")
+    return [dict(zip(keys, r, strict=True)) for r in rows]
+
 
 def recent_answers(
     con: sqlite3.Connection, limit: int = 50, include_test: bool = False
