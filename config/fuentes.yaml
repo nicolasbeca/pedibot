@@ -111,3 +111,375 @@ sources:
     evidence: organismo_publico
     usage: publico
     age_groups: [lactante, preescolar]
+
+# ── VIS del CDC en hindi y en árabe (12-sep-2026) ─────────────────────────────────
+# El primer material NATIVO en hindi del corpus. Hasta hoy el hindi tenía CERO documentos
+# propios y toda respuesta cruzaba a otra lengua; el único candidato con licencia abierta
+# —el manual de ASHA— resultó estar compuesto en Krutidev y no traía un solo carácter
+# devanagari (L128). Comprobado antes de catalogar, uno por uno: entre 77 y 89 % del texto
+# está en su escritura, de 3.270 a 5.120 caracteres por ficha.
+#
+# `citar_solo`: el contenido de base es obra del gobierno de EE. UU. y está en dominio
+# público, pero la traducción la produce y aloja Immunize.org sin publicar un permiso
+# explícito de redistribución. Se cita y se enlaza; el generador de guías no la reproduce.
+  - doc_id: cdcvis_ar_dtap
+    file: vis/vis_arabic_dtap.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — DTaP
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_dtap.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. difteria, tétanos y tosferina.
+  - doc_id: cdcvis_ar_flu_inactive
+    file: vis/vis_arabic_flu_inactive.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — Gripe
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_flu_inactive.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. gripe estacional.
+  - doc_id: cdcvis_ar_hepatitis_a
+    file: vis/vis_arabic_hepatitis_a.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — Hepatitis A
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_hepatitis_a.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. hepatitis A.
+  - doc_id: cdcvis_ar_hepatitis_b
+    file: vis/vis_arabic_hepatitis_b.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — Hepatitis B
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_hepatitis_b.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. hepatitis B.
+  - doc_id: cdcvis_ar_hib
+    file: vis/vis_arabic_hib.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — Hib
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_hib.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. Haemophilus influenzae tipo b.
+  - doc_id: cdcvis_ar_meningococcal
+    file: vis/vis_arabic_meningococcal.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — Meningococo
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_meningococcal.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. enfermedad meningocócica.
+  - doc_id: cdcvis_ar_mmr
+    file: vis/vis_arabic_mmr.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — MMR
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_mmr.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. sarampión, paperas y rubéola.
+  - doc_id: cdcvis_ar_rotavirus
+    file: vis/vis_arabic_rotavirus.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — Rotavirus
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_rotavirus.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. rotavirus.
+  - doc_id: cdcvis_ar_varicella
+    file: vis/vis_arabic_varicella.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: بيان معلومات اللقاح — Varicela
+    year: 2025
+    lang: ar
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/arabic_varicella.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. varicela.
+  - doc_id: cdcvis_hi_dtap
+    file: vis/vis_hindi_dtap.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — DTaP
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_dtap.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. difteria, tétanos y tosferina.
+  - doc_id: cdcvis_hi_flu_inactive
+    file: vis/vis_hindi_flu_inactive.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — Gripe
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_flu_inactive.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. gripe estacional.
+  - doc_id: cdcvis_hi_hepatitis_a
+    file: vis/vis_hindi_hepatitis_a.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — Hepatitis A
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_hepatitis_a.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. hepatitis A.
+  - doc_id: cdcvis_hi_hepatitis_b
+    file: vis/vis_hindi_hepatitis_b.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — Hepatitis B
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_hepatitis_b.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. hepatitis B.
+  - doc_id: cdcvis_hi_hib
+    file: vis/vis_hindi_hib.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — Hib
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_hib.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. Haemophilus influenzae tipo b.
+  - doc_id: cdcvis_hi_meningococcal
+    file: vis/vis_hindi_meningococcal.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — Meningococo
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_meningococcal.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. enfermedad meningocócica.
+  - doc_id: cdcvis_hi_mmr
+    file: vis/vis_hindi_mmr.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — MMR
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_mmr.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. sarampión, paperas y rubéola.
+  - doc_id: cdcvis_hi_pcv13
+    file: vis/vis_hindi_pcv13.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — Neumococo
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_pcv13.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. enfermedad neumocócica.
+  - doc_id: cdcvis_hi_rotavirus
+    file: vis/vis_hindi_rotavirus.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — Rotavirus
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_rotavirus.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. rotavirus.
+  - doc_id: cdcvis_hi_varicella
+    file: vis/vis_hindi_varicella.pdf
+    org: CDC
+    org_full: Centers for Disease Control and Prevention (USA)
+    title: टीके की जानकारी का वक्तव्य — Varicela
+    year: 2025
+    lang: hi
+    topic: vacunas
+    doc_type: hoja_padres
+    evidence: organismo_publico
+    usage: citar_solo
+    age_groups:
+    - lactante
+    - preescolar
+    - escolar
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_varicella.pdf
+    notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
+      la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
+      como citar_solo. varicela.

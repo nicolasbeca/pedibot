@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**419 documents from 21 organisations**, in 7 languages, each classified by topic and linked to its original.
+**438 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,11 +30,11 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (145 of 419 do) |
+| `year` | where the document states one (164 of 438 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (371 of 419 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (390 of 438 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -44,9 +44,9 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | WHO — World Health Organization | 168 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 74 |
 | NHS — NHS (National Health Service, England) | 56 |
+| CDC — Centers for Disease Control and Prevention (USA) | 38 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
 | SEUP — Sociedad Española de Urgencias de Pediatría | 29 |
-| CDC — Centers for Disease Control and Prevention (USA) | 19 |
 | Ministério da Saúde — Ministério da Saúde (Brasil) | 14 |
 | Gouvernement du Canada — Gouvernement du Canada / Government of Canada (santé publique) | 10 |
 | AAP — American Academy of Pediatrics | 4 |
@@ -69,11 +69,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 |---|---|
 | English (`en`) | 166 |
 | Spanish (`es`) | 93 |
+| Arabic (`ar`) | 47 |
 | French (`fr`) | 40 |
 | Russian (`ru`) | 38 |
-| Arabic (`ar`) | 38 |
 | German (`de`) | 30 |
 | Portuguese (`pt`) | 14 |
+| hi (`hi`) | 10 |
 
 ## By topic (21 topics)
 
@@ -83,9 +84,9 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `respiratorio` | 56 |
 | `piel` | 53 |
 | `accidentes` | 46 |
+| `vacunas` | 42 |
 | `alimentacion` | 28 |
 | `general` | 28 |
-| `vacunas` | 23 |
 | `fiebre` | 17 |
 | `neurologia` | 16 |
 | `desarrollo` | 15 |

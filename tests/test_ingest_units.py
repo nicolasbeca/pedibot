@@ -114,7 +114,13 @@ def test_catalog_loads_and_covers_all_pdfs(config_dir):
     # "las 50 principales consultas" — whose scanned original stays catalogued as `excluido` —
     # plus the three Indian documents added on 11-sep-2026 (IMNCI chart booklet, Home-Based
     # Newborn Care guidelines and the ASHA young-child handbook), all under the NHM licence
-    assert len(pdf_docs) == 53
+    # 72 desde el 12-sep-2026: +19 Vaccine Information Statements del CDC en hindi y en árabe
+    # (alojados por immunize.org), que son el PRIMER material nativo en hindi del corpus —
+    # hasta ese día el hindi tenía CERO documentos propios y toda respuesta cruzaba a otra
+    # lengua. Verificados uno por uno antes de catalogarlos, como manda la L128: entre 77 y
+    # 89 % del texto está en su escritura. Van como `citar_solo`: el contenido de base es
+    # dominio público (obra del gobierno de EE. UU.) pero la traducción no publica permiso.
+    assert len(pdf_docs) == 72
     assert len(docs) >= 49 + 150  # + curated web pages (config/fuentes_web.yaml)
     by_file = catalog_by_file(docs)
     assert len(by_file) == len(docs)
