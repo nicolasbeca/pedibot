@@ -224,7 +224,9 @@ class Growth:
 
 #: Lo que un padre escribe cuando lo que le preocupa es el peso o la talla, no un síntoma.
 _GROWTH = re.compile(
-    r"percentil|percentile|perzentil|перцентил|процентил|المئوي|प्रतिशत"
+    # «المئين» y «पर्सेंटाइल» faltaban: en vivo, el árabe y el hindi no enlazaban la calculadora
+    r"percentil|percentile|centile|perzentil|перцентил|процентил|المئوي|مئين|المئين|प्रतिशत"
+    r"|पर्सेंटाइल|ग्रोथ चार्ट|منحنى النمو|кривая роста"
     r"|curva de crecimiento|growth chart|courbe de croissance|wachstumskurve"
     # «no gana peso», en las ocho: la negación delante del verbo…
     r"|(?:not|isn'?t|n[aã]o|ne|no|nicht|не|لا|नहीं)\s*(?:\w+\s){0,2}"

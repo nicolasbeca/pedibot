@@ -127,7 +127,9 @@ def test_cada_pais_dice_que_tabla_usa_y_de_donde_sale(paises: dict):
         for c in p["charts"]:
             assert c["name"].strip() and 0 <= c["from_months"] < c["to_months"] <= 240, (code, c)
         nacional = any(not c.get("who_based") for c in p["charts"])
-        hasta = max(c["to_months"] for c in p["charts"] if c.get("who_based")) if not nacional else 0
+        hasta = (
+            max(c["to_months"] for c in p["charts"] if c.get("who_based")) if not nacional else 0
+        )
         if p["match"] == "national":
             assert nacional and all(not c.get("who_based") for c in p["charts"]), code
         elif p["match"] == "partial":
@@ -269,6 +271,45 @@ def test_una_pregunta_de_percentiles_encuentra_su_fuente(lang: str, q: str):
         lang,
         docs,
     )
+
+
+QS_PERCENTIL = [
+    ("es", "¿qué significa que mi hijo esté en el percentil 10?"),
+    ("en", "what does the 25th centile on my baby's growth chart mean?"),
+    ("fr", "que veut dire le percentile de mon bébé sur la courbe de croissance ?"),
+    ("ru", "что значит перцентиль роста у ребёнка?"),
+    ("ar", "ماذا يعني المئين في منحنى نمو طفلي؟"),
+    ("hi", "मेरे बच्चे का ग्रोथ चार्ट पर्सेंटाइल क्या बताता है?"),
+    ("de", "was bedeutet die Perzentile auf der Wachstumskurve?"),
+    ("pt", "o que significa o percentil do meu bebé na curva de crescimento?"),
+]
+
+
+@pytest.mark.parametrize(("lang", "q"), QS_PERCENTIL)
+def test_una_pregunta_de_percentiles_lleva_a_la_calculadora(lang: str, q: str):
+    """Visto en vivo: en árabe y en hindi el chat no enlazaba la calculadora."""
+    from pedibot.bot.growth import is_growth_question
+
+    assert is_growth_question(q), (lang, q)
+
+
+@pytest.mark.parametrize(("lang", "q"), QS_PERCENTIL)
+def test_la_explicacion_de_los_centiles_llega_en_cada_lengua(lang: str, q: str):
+    """La OMS explica sus patrones; lo que es un centil lo explica la página del NHS. Visto en vivo:
+    en árabe la respuesta decía «mis fuentes no definen el percentil», porque las seis plazas se las
+    llevaba la página de la OMS en árabe y la del NHS no entraba."""
+    from pedibot.bot.retrieval import Retriever, Synonyms
+    from pedibot.index.store import Index
+    from pedibot.ingest.classify import Taxonomy
+
+    r = Retriever(
+        Index(ROOT / "index/pedibot.db"),
+        Synonyms(ROOT / "config/synonyms.yaml", ROOT / "config/drugs.yaml"),
+        top_k=6,
+        taxonomy=Taxonomy(ROOT / "config/taxonomia.yaml"),
+    )
+    hits, _ = r.search(q, lang)
+    assert "nhs_en_baby_height_and_weight" in [h.chunk.doc_id for h in hits], lang
 
 
 def test_hay_guia_de_percentiles_en_el_plan():

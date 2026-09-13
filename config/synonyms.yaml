@@ -2472,6 +2472,9 @@ ru_en:
   перцентил:
   - growth
   - percentile
+  - centile
+  - centile lines
+  - weight chart
   экранное время:
   - screen time
   экран:
@@ -3040,8 +3043,8 @@ ar_es:
   - actividad física
 ar_en:
   # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
-  مئين: [percentile, centile, growth standards]
-  المئين: [percentile, centile, growth standards]
+  مئين: [percentile, centile, growth standards, centile lines, weight chart]
+  المئين: [percentile, centile, growth standards, centile lines, weight chart]
   منحنى النمو: [growth chart, growth standards]
   # «احترقت يد ابني» (se quemó): el verbo en pasado no llegaba a ninguna ficha
   احترق: [burn, burns, scald]
