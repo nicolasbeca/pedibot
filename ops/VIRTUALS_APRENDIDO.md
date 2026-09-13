@@ -176,3 +176,4 @@ Resumen de lo nuevo:
 20. **Pendiente de comprobar**: `chains[].active` sigue en `false` para PDBT y para REGIME. La búsqueda filtra por `chainIds`; si el índice sólo incluye agentes activos en la cadena, eso también los dejaría fuera. No verificado.
 21. **Catálogo versionado**: `ops/acp_catalogue.json` es el estado deseado (8 trabajos, 7 recursos) y `ops/acp_sync.py` lo aplica (sin `--apply` sólo enseña el plan). Las cifras de las descripciones las comprueba una prueba contra la configuración.
 
+22. **Verificado desde el panel web (13-sep, 18:20)**: con el oyente de presencia en marcha, buscar «pediatric» en app.virtuals.io devuelve a PediBot en la tercera posición. Para comprobar la visibilidad de un agente propio, el panel web es la prueba; la CLI no, porque se excluye a sí mismo.
