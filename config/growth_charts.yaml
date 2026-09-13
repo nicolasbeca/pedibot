@@ -1,0 +1,99 @@
+# Qué tabla de crecimiento usa la cartilla de cada país (13-sep-2026).
+#
+# Cada entrada está leída en una fuente oficial o en la sociedad científica del país; el enlace
+# es el que se enseña al padre. No se añade un país por suposición: el percentil que PediBot
+# calcula tiene que poder compararse con el de su cartilla, o la página tiene que decir que no.
+#
+#   calculator  who | cdc   — con qué calcula PediBot en ese país
+#   match       full        — PediBot calcula con las mismas tablas que la cartilla
+#               partial     — coinciden en parte del rango (o sólo esa parte está confirmada)
+#               national    — el país usa tablas propias, que PediBot no reproduce (derechos)
+#   who_based   la tabla es la de la OMS o está construida sobre ella
+#
+# Las tablas nacionales con derechos (UK90, IAP 2015, Saudí 2005, AFPA-CRESS/Inserm 2018,
+# Kromeyer-Hauschild 2001, Fundación Orbegozo 2011) se nombran y se enlazan, nunca se copian.
+countries:
+  US:
+    calculator: cdc
+    match: full
+    body: "CDC — Centers for Disease Control and Prevention"
+    source: "https://www.cdc.gov/growthcharts/who-growth-charts.htm"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 24, who_based: true}
+      - {name: "CDC Growth Charts (2000)", from_months: 24, to_months: 240, who_based: false}
+  BR:
+    calculator: who
+    match: full
+    body: "Ministério da Saúde — Caderneta da Criança"
+    source: "https://www.gov.br/saude/pt-br/composicao/saps/vigilancia-alimentar-e-nutricional/arquivos/incorporacao-das-curvas-de-crescimento-da-oms.pdf/@@download/file"
+    charts:
+      - {name: "OMS / WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+      - {name: "OMS / WHO Growth Reference (2007)", from_months: 60, to_months: 228, who_based: true}
+  PT:
+    calculator: who
+    match: full
+    body: "DGS — Programa Nacional de Saúde Infantil e Juvenil (2013)"
+    source: "https://www.dgs.pt/pns-e-programas/programas-de-saude/saude-infantil-e-juvenil.aspx"
+    charts:
+      - {name: "OMS / WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+      - {name: "OMS / WHO Growth Reference (2007)", from_months: 60, to_months: 228, who_based: true}
+  RU:
+    calculator: who
+    match: full
+    body: "Минздрав России (2017)"
+    source: "https://pubmed.ncbi.nlm.nih.gov/31710782/"
+    charts:
+      - {name: "ВОЗ / WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+      - {name: "ВОЗ / WHO Growth Reference (2007)", from_months: 60, to_months: 228, who_based: true}
+  MX:
+    calculator: who
+    match: partial
+    body: "Secretaría de Salud — NOM-031-SSA2"
+    source: "https://www.dof.gob.mx/nota_detalle.php?codigo=5417151&fecha=25%2F11%2F2015"
+    charts:
+      - {name: "OMS / WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  GB:
+    calculator: who
+    match: partial
+    body: "RCPCH — Personal Child Health Record (Red Book)"
+    source: "https://www.rcpch.ac.uk/resources/uk-who-growth-charts-0-4-years"
+    charts:
+      - {name: "UK-WHO growth charts, 0–4 years (based on WHO)", from_months: 0, to_months: 48, who_based: true}
+      - {name: "UK-WHO 2–18 years (UK90 data from 4 years)", from_months: 48, to_months: 216, who_based: false}
+  IN:
+    calculator: who
+    match: partial
+    body: "Indian Academy of Pediatrics (IAP)"
+    source: "https://iapindia.org/pdf/4422_Pediatrician-friendly-growth-charts-for-0-18-year-old-Indian-children-Dr-Bakul-Parekh-and-Dr-Vaman-khadilkar.pdf"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+      - {name: "IAP 2015 growth charts", from_months: 60, to_months: 216, who_based: false}
+  ES:
+    calculator: who
+    match: partial
+    body: "AEPap — Programa de Salud Infantil (cada comunidad autónoma elige)"
+    source: "https://www.analesdepediatria.org/es-tablas-crecimiento-impacto-sobre-prevalencia-articulo-S1695403314003178"
+    charts:
+      - {name: "OMS / WHO (2006, 2007)", from_months: 0, to_months: 228, who_based: true}
+      - {name: "Fundación Orbegozo (2011)", from_months: 0, to_months: 216, who_based: false}
+  SA:
+    calculator: who
+    match: national
+    body: "وزارة الصحة — Ministry of Health (Health Services Council)"
+    source: "https://www.moh.gov.sa/HealthAwareness/EducationalContent/BabyHealth/Documents/Intermediate%201%20Compatibility%20Mode.pdf"
+    charts:
+      - {name: "Growth Charts for Saudi Children and Adolescents (2005)", from_months: 0, to_months: 228, who_based: false}
+  FR:
+    calculator: who
+    match: national
+    body: "Carnet de santé (depuis avril 2018)"
+    source: "https://cress-umr1153.fr/fr/courbes-de-croissance-de-reference-du-carnet-de-sante/"
+    charts:
+      - {name: "AFPA-CRESS/Inserm-CGM (2018)", from_months: 0, to_months: 216, who_based: false}
+  DE:
+    calculator: who
+    match: national
+    body: "Kinderuntersuchungsheft (U-Heft) — KBV"
+    source: "https://hub.kbv.de/display/UH1X0/7.+Perzentilkurven"
+    charts:
+      - {name: "Kromeyer-Hauschild (2001)", from_months: 0, to_months: 216, who_based: false}

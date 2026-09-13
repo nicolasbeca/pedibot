@@ -62,11 +62,33 @@ def main(carpeta: pathlib.Path) -> None:
         rows.sort()
         tablas[nombre] = {"x": clave, "rows": rows}
         print(f"  {nombre}: {len(rows)} filas, {rows[0][0]:g}–{rows[-1][0]:g} {clave}")
+    # CDC 2000, 2–20 años (dominio público): la carpeta `cdc/` junto a la de la OMS, con los CSV
+    # tal como los publica cdc.gov/growthcharts/cdc-data-files.htm. Sexo 1 = niño, 2 = niña;
+    # la edad va en meses con el medio mes (24,5 = de 24 a 24,99), salvo el 24 exacto.
+    cdc = carpeta.parent / "cdc"
+    if cdc.exists():
+        import csv
+
+        for fichero, nombre in (("wtage.csv", "cdc_wfa"), ("statage.csv", "cdc_hfa"), ("bmiagerev.csv", "cdc_bmi")):
+            filas: dict[str, list[list[float]]] = {"m": [], "f": []}
+            for r in csv.DictReader((cdc / fichero).open(encoding="utf-8")):
+                if not r.get("Sex") or not r["Sex"].strip().isdigit():
+                    continue
+                s = "m" if r["Sex"].strip() == "1" else "f"
+                filas[s].append([float(r["Agemos"]), float(r["L"]), float(r["M"]), float(r["S"])])
+            for s, rows in filas.items():
+                rows.sort()
+                tablas[f"{nombre}_{s}"] = {"x": "month", "rows": rows}
+                print(f"  {nombre}_{s}: {len(rows)} filas, {rows[0][0]:g}–{rows[-1][0]:g} month")
+        META["source"].append(
+            "CDC Growth Charts (2000), 2–20 years: weight-for-age, stature-for-age, BMI-for-age "
+            "— https://www.cdc.gov/growthcharts/cdc-data-files.htm (public domain)"
+        )
     out = pathlib.Path(__file__).resolve().parents[1] / "config" / "who_growth.json"
     out.write_text(
         json.dumps({"meta": META, "tables": tablas}, separators=(",", ":")), encoding="utf-8"
     )
-    print(f"→ {out} ({out.stat().st_size // 1024} KB)")
+    print(f"-> {out} ({out.stat().st_size // 1024} KB)")
 
 
 if __name__ == "__main__":

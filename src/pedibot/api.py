@@ -21,7 +21,7 @@ from pedibot import __version__
 from pedibot.bot.answer import SUPPORTED_LANGS, Answer, Engine
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.followups import Followups
-from pedibot.bot.growth import Growth
+from pedibot.bot.growth import Growth, load_countries
 from pedibot.bot.llm import LLMUnavailable
 from pedibot.bot.strings import data_lang
 from pedibot.bot.vaccines import Vaccines
@@ -204,6 +204,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
     vision_fn = vision_fn or vision_json
     followups = Followups(ROOT / "config" / "followups.yaml")
     _growth = Growth(ROOT / "config" / "who_growth.json")
+    _growth_countries = load_countries(ROOT / "config" / "growth_charts.yaml")
     from pedibot.bot.answer import DISCLAIMER
 
     app = FastAPI(title="PediBot API", version=__version__, docs_url=None, redoc_url=None)
@@ -656,19 +657,37 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
     @app.get("/api/growth")
     def growth(
         sex: str = Query(pattern="^[mfMF]$"),
-        age_months: float = Query(ge=0, le=228),
+        age_months: float = Query(ge=0, le=240),
         weight_kg: float | None = Query(default=None, gt=0.5, lt=200),
         height_cm: float | None = Query(default=None, gt=30, lt=220),
         lang: str = Query(default="en", pattern=_LANG_PATTERN),
+        country: str | None = Query(default=None, min_length=2, max_length=2),
     ) -> dict[str, object]:
-        """La curva de la OMS, calculada: sin modelo y sin guardar nada (13-sep-2026)."""
+        """La curva de crecimiento, calculada: sin modelo y sin guardar nada (13-sep-2026).
+
+        Con país, la tabla es la que usa su cartilla cuando PediBot la tiene (Estados Unidos: el
+        CDC desde los 2 años) y la respuesta dice cuál usa el país, para que el padre sepa si el
+        percentil es comparable con el de su cartilla.
+        """
         from pedibot.bot.growth import describe
 
+        pais = _growth_countries.get((country or "").upper())
+        reference = str(pais["calculator"]) if pais else "who"
         try:
-            a = _growth.assess(sex, age_months, weight_kg, height_cm)
+            a = _growth.assess(sex, age_months, weight_kg, height_cm, reference=reference)
         except ValueError as e:
             raise HTTPException(422, str(e)) from e
-        return describe(a, lang)
+        out = describe(a, lang)
+        out["reference"] = reference
+        if pais:
+            out["country"] = {
+                "code": (country or "").upper(),
+                "match": pais["match"],
+                "body": pais["body"],
+                "source": pais["source"],
+                "charts": pais["charts"],
+            }
+        return out
 
     @app.get("/api/ors")
     def ors(

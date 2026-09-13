@@ -407,12 +407,31 @@ class ToolLink:
     url: str
 
 
+def _growth_pages() -> set[str]:
+    from pedibot.bot.growth import load_countries
+
+    global _GROWTH_PAGES
+    if _GROWTH_PAGES is None:
+        _GROWTH_PAGES = set(
+            load_countries(Path(__file__).resolve().parents[3] / "config" / "growth_charts.yaml")
+        )
+    return _GROWTH_PAGES
+
+
+_GROWTH_PAGES: set[str] | None = None
+
+
 def tool_link(kind: str, lang: str, country: str | None = None) -> ToolLink:
     prefix = "" if lang == "en" else f"/{lang}"
     if kind == "vaccines":
         tail = f"/vaccines/{country.lower()}" if country else "/vaccines"
     elif kind == "growth":
-        tail = "/growth"
+        # la página del país sólo si el país tiene página: un 404 bajo una respuesta de salud no
+        tail = (
+            f"/growth/{country.lower()}"
+            if country and country.upper() in _growth_pages()
+            else "/growth"
+        )
     else:
         tail = "/dose"
     return ToolLink(kind, f"{prefix}{tail}")
@@ -1027,7 +1046,7 @@ class Engine:
         # «está muy delgado y no gana peso», «¿qué percentil tiene?»: la curva de la OMS,
         # calculada, contesta mejor que la prosa (13-sep-2026)
         elif is_growth_question(context_text):
-            tool = tool_link("growth", lang)
+            tool = tool_link("growth", lang, country or country_in_question(context_text))
         text = result.text.strip()
         if ask_age:
             text += "\n\n" + AGE_REFINES[lang]

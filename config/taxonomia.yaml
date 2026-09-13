@@ -64,7 +64,8 @@ topics:
   desarrollo: ["dolores de crecimiento", "growing pains", "douleurs de croissance",
                wachstumsschmerzen, "боли роста", "آلام النمو", desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen,
                  autismo, autism, autisme, التوحد, ऑटिज़्म, аутизм,
-        मोबाइल, स्क्रीन, "बोलता नहीं", "बोल नहीं", "बोलना नहीं", الشاشة, الشاشات, "لا يتكلم", "لا تتكلم", "تأخر الكلام", "تأخر النطق"]
+        मोबाइल, स्क्रीन, "बोलता नहीं", "बोल नहीं", "बोलना नहीं", الشاشة, الشاشات, "لا يتكلم", "لا تتكلم", "تأخر الكلام", "تأخر النطق",
+        percentil, percentile, centile, perzentil, перцентил, процентил, مئين, المئين, المئوي, पर्सेंटाइल, प्रतिशतक, "growth chart", "curva de crecimiento", "curvas de crecimiento", "courbe de croissance", wachstumskurve, "кривая роста", "منحنى النمو", "ग्रोथ चार्ट", "curva de crescimento"]
   medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
   urinario: [orina, urinaria, urinario, infección de orina, infeccion de orina, cistitis, pis$,
              pipí, pipi, enuresis, mojar la cama, urine, urinary, uti$, utis$, wee$, bedwetting,

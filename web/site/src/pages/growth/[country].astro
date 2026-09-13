@@ -1,0 +1,40 @@
+---
+/**
+ * Una página por país: qué tabla de crecimiento usa su cartilla, con la fuente oficial, y la
+ * calculadora con la tabla que PediBot tiene para ese país (13-sep-2026). Ver
+ * config/growth_charts.yaml y tests/test_percentiles_by_country.py.
+ */
+import Base from '../../layouts/Base.astro';
+import Growth from '../../components/Growth.astro';
+import charts from '../../data/growth_charts.json';
+import { t, langPrefix } from '../../i18n';
+
+const lang = 'en'; const s = t(lang);
+
+export async function getStaticPaths() {
+  return Object.entries(charts as any).map(([code, data]) => ({ params: { country: code.toLowerCase() }, props: { code, data } }));
+}
+
+const { code, data } = Astro.props as any;
+let name = code;
+try { name = new Intl.DisplayNames([lang], { type: 'region' }).of(code) || code; } catch (e) {}
+const fill = (x: string) => x.replace(/\{country\}/g, name);
+const years = (c: any) => s.growthc_years.replace('{from}', String(Math.round(c.from_months / 12))).replace('{to}', String(Math.round(c.to_months / 12)));
+const sentence = data.match === 'full' ? s.growthc_full : data.match === 'national' ? s.growthc_national : s.growthc_partial;
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: fill(s.growthc_title), about: { '@type': 'MedicalTest', name: 'Growth chart percentiles' }, audience: { '@type': 'Patient' }, spatialCoverage: { '@type': 'Country', name } };
+---
+<Base lang={lang} title={fill(s.growthc_title)} description={fill(s.growthc_desc)} path={`${langPrefix(lang)}/growth/${code.toLowerCase()}`} jsonld={jsonld}>
+  <div class="wrap" style="padding-top:40px">
+    <p class="eyebrow">{s.nav_growth} · {name}</p>
+    <Growth lang={lang} country={code} />
+    <section class="block" style="padding-top:32px">
+      <h2>{fill(s.growthc_charts)}</h2>
+      <p class="lede">{fill(sentence)}</p>
+      <ul>
+        {data.charts.map((c: any) => <li><b>{c.name}</b> — {years(c)}</li>)}
+      </ul>
+      <p>{data.body} · <a href={data.source} rel="noopener" target="_blank">{s.growthc_source}</a></p>
+    </section>
+    <p class="n" style="margin-top:22px">{s.growthc_by_country}: {Object.keys(charts as any).map((c) => <a href={`${langPrefix(lang)}/growth/${c.toLowerCase()}`} style="margin-inline-end:10px">{c}</a>)}</p>
+  </div>
+</Base>

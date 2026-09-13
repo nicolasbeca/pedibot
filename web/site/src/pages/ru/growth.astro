@@ -1,7 +1,8 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Growth from '../../components/Growth.astro';
-import { t } from '../../i18n';
+import { t, langPrefix } from '../../i18n';
+import charts from '../../data/growth_charts.json';
 const lang = 'ru'; const s = t(lang);
 const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: s.growthpage_name, about: { '@type': 'MedicalTest', name: 'WHO child growth standards' }, audience: { '@type': 'Patient' } };
 ---
@@ -9,5 +10,6 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
   <div class="wrap" style="padding-top:40px">
     <p class="eyebrow">{s.nav_growth}</p>
     <Growth lang={lang} />
+    <p class="n" style="margin-top:22px">{s.growthc_by_country}: {Object.keys(charts as any).map((c) => { let n = c; try { n = new Intl.DisplayNames([lang], { type: 'region' }).of(c) || c; } catch (e) {} return <a href={`${langPrefix(lang)}/growth/${c.toLowerCase()}`} style="margin-inline-end:12px">{n}</a>; })}</p>
   </div>
 </Base>

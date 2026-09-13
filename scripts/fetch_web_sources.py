@@ -846,6 +846,18 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("who", "https://www.who.int/es/news-room/fact-sheets/detail/child-maltreatment", "salud_mental", "es", ["todas"]),
     ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/child-maltreatment", "salud_mental", "fr", ["todas"]),
     ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/child-maltreatment", "salud_mental", "ru", ["todas"]),
+    # ---------------- Percentiles: qué significan y qué tabla se usa (13-sep-2026) ----------------
+    # El operador pidió el tema de los percentiles en todas las lenguas y países posibles. Las
+    # preguntas y respuestas de la OMS sobre sus patrones de crecimiento existen en inglés,
+    # castellano, francés, ruso y árabe (la portuguesa da 404), con la misma licencia que sus
+    # fichas; la del NHS explica los centiles del Red Book para padres. La de MedlinePlus en
+    # castellano NO entra: es un artículo de A.D.A.M. con derechos, no del NLM.
+    ("who", "https://www.who.int/news-room/questions-and-answers/item/child-growth-standards", "desarrollo", "en", ["lactante", "preescolar"]),
+    ("who", "https://www.who.int/es/news-room/questions-and-answers/item/child-growth-standards", "desarrollo", "es", ["lactante", "preescolar"]),
+    ("who", "https://www.who.int/fr/news-room/questions-and-answers/item/child-growth-standards", "desarrollo", "fr", ["lactante", "preescolar"]),
+    ("who", "https://www.who.int/ru/news-room/questions-and-answers/item/child-growth-standards", "desarrollo", "ru", ["lactante", "preescolar"]),
+    ("who", "https://www.who.int/ar/news-room/questions-and-answers/item/child-growth-standards", "desarrollo", "ar", ["lactante", "preescolar"]),
+    ("nhs", "https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/", "desarrollo", "en", ["lactante", "preescolar"]),
 ]
 
 _DATE_PATTERNS = [

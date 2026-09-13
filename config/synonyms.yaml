@@ -605,6 +605,9 @@ es:
   - estreñimiento
   - deposiciones
 es_en:
+  # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
+  percentil: [percentile, centile, growth standards]
+  curva de crecimiento: [growth chart, growth standards]
   # «le sangro la nariz un momento y ya ha parado» — pregunta real del registro (9-sep-2026)
   # que se quedó sin respuesta. El corpus tiene `nhs_en_nosebleed`, pero «sangro» no casa con
   # nada por prefijo y «nariz» sola lleva a las hojas del catarro. Van las formas reales.
@@ -699,6 +702,9 @@ fr:
   - bronchiolite
   - virus respiratoire syncytial
 fr_en:
+  # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
+  percentile: [centile, growth standards]
+  courbe de croissance: [growth chart, growth standards]
   anémique: [anaemia, anemia]
   anémie: [anaemia, anemia]
   fièvre:
@@ -1306,6 +1312,8 @@ de_es:
   - urgencias
   - '112'
 de_en:
+  # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
+  wachstumskurve: [growth chart, growth standards, centile]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
   # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
   atmet: [breathing, difficulty breathing]
@@ -2118,6 +2126,8 @@ ru_es:
   - respiración
   - dificultad respiratoria
 ru_en:
+  # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
+  кривая роста: [growth chart, growth standards]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
   # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
   ударился: [head injury, hit]
@@ -3029,6 +3039,10 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
+  مئين: [percentile, centile, growth standards]
+  المئين: [percentile, centile, growth standards]
+  منحنى النمو: [growth chart, growth standards]
   # «احترقت يد ابني» (se quemó): el verbo en pasado no llegaba a ninguna ficha
   احترق: [burn, burns, scald]
   انحرق: [burn, burns, scald]
@@ -3958,6 +3972,8 @@ pt_es:
   - urgencias
   - '112'
 pt_en:
+  # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
+  curva de crescimento: [growth chart, growth standards]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
   # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
   comichão: [itching, itchy]
@@ -4872,6 +4888,9 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
+  पर्सेंटाइल: [percentile, centile, growth chart]
+  ग्रोथ चार्ट: [growth chart, growth standards]
   # 13-sep-2026: escozor y dolor al orinar → las fichas de infección de orina
   पेशाब: [urinary tract infection, UTI, pee]
   जलन: [burning, pain when peeing]

@@ -104,6 +104,13 @@ target4.write_text(json.dumps(vraw, ensure_ascii=False, indent=1), encoding="utf
 print(f"{len(vraw)} vaccine schedules → {target4}")
 
 
+# tablas de crecimiento por país → web/site/src/data/growth_charts.json (páginas /growth/{país})
+graw = yaml.safe_load((ROOT / "config" / "growth_charts.yaml").read_text(encoding="utf-8"))["countries"]
+target_g = ROOT / "web" / "site" / "src" / "data" / "growth_charts.json"
+target_g.write_text(json.dumps(graw, ensure_ascii=False, indent=1), encoding="utf-8")
+print(f"{len(graw)} growth-chart countries → {target_g}")
+
+
 # países con número de emergencia → web/site/src/data/countries.json (el desplegable del chat)
 # El desplegable era un array escrito a mano dentro de Chat.astro, y se había quedado corto: los
 # números conocían 31 países y el selector ofrecía 29. Perú tenía su número puesto y ningún padre

@@ -27,7 +27,18 @@ _RED_FLAG_TEXT = re.compile(
     re.I,
 )
 _BIBLIO = re.compile(r"\bet al\b|\bdoi:|https?://|PMID", re.I)
-_SENT = re.compile(r"(?<=[\.\?\!])\s+(?=[A-ZÁÉÍÓÚÑ¿¡•\-])")
+#: Dónde acaba una frase, en las cuatro escrituras del corpus. Hasta el 13-sep-2026 sólo se
+#: cortaba delante de una mayúscula LATINA: el cirílico no la tenía en la lista, el árabe no tiene
+#: mayúsculas y el devanagari cierra con «।». Sin frases, una sección larga en ruso, árabe o hindi
+#: se quedaba entera — la ficha de dengue de la OMS en árabe eran seis pasajes de 1.900 palabras.
+_SENT = re.compile(
+    r"(?<=[.?!؟।॥])\s+"  # . ? ! y el ؟ árabe, el । y el ॥ devanagari
+    r"(?=[A-ZÁÉÍÓÚÑ¿¡•\-"  # mayúscula latina y lo que ya se admitía
+    r"А-ЯЁ"  # mayúscula cirílica (А–Я, Ё)
+    r"؀-ۿ"  # árabe, que no tiene mayúsculas
+    r"ऀ-ॿ"  # devanagari, tampoco
+    r"«\"(])"
+)
 
 
 @dataclass
@@ -83,6 +94,22 @@ def _sentences(text: str) -> list[str]:
     return [p.strip() for p in parts if p.strip()]
 
 
+def _piezas(text: str) -> list[str]:
+    """Las frases, y una frase más larga que un pasaje partida por palabras.
+
+    Una lista pegada sin un solo punto, o una frase que el separador no ve, no puede volver a
+    colarse entera: se corta en ventanas de TARGET_WORDS palabras.
+    """
+    out: list[str] = []
+    for s in _sentences(text):
+        w = s.split()
+        if len(w) <= TARGET_WORDS:
+            out.append(s)
+            continue
+        out.extend(" ".join(w[i : i + TARGET_WORDS]) for i in range(0, len(w), TARGET_WORDS))
+    return out
+
+
 def is_bibliography(text: str) -> bool:
     """Reference lists: many 'et al.'/DOI/URL markers per 100 words."""
     n = len(_BIBLIO.findall(text))
@@ -103,7 +130,7 @@ def chunk_section(sec: Section) -> list[RawChunk]:
     out: list[RawChunk] = []
     buf: list[str] = []
     buf_words = 0
-    for sent in _sentences(text):
+    for sent in _piezas(text):
         n = len(sent.split())
         if buf_words + n > TARGET_WORDS and buf:
             out.append(RawChunk(sec.title, sec.pages, " ".join(buf), red, dose))
@@ -115,6 +142,10 @@ def chunk_section(sec: Section) -> list[RawChunk]:
                 tail.insert(0, s)
                 if tw >= OVERLAP_WORDS:
                     break
+            if tw > TARGET_WORDS // 2:
+                # la cola es una pieza cortada por palabras, no una frase: sólo su final
+                resto = " ".join(tail).split()[-OVERLAP_WORDS:]
+                tail, tw = [" ".join(resto)], len(resto)
             buf, buf_words = tail, tw
         buf.append(sent)
         buf_words += n

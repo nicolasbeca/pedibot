@@ -1,17 +1,17 @@
 ---
 import { t, type Lang } from '../i18n';
-interface Props { lang: Lang }
-const { lang } = Astro.props;
+interface Props { lang: Lang; country?: string }
+const { lang, country = '' } = Astro.props;
 const T = t(lang).growth;
 ---
-<section class="block" id="growth" data-lang={lang} data-t={JSON.stringify(T)}>
+<section class="block" id="growth" data-lang={lang} data-country={country} data-t={JSON.stringify(T)}>
   <h1 style="margin-top:8px">{T.h}</h1>
   <p class="lede">{T.p}</p>
   <div class="calc">
     <div>
       <div class="field"><label for="g-sex">{T.sex}</label><select id="g-sex"><option value="m">{T.boy}</option><option value="f">{T.girl}</option></select></div>
       <div class="row">
-        <div class="field"><label for="g-y">{T.years}</label><input id="g-y" type="number" min="0" max="19" step="1" value="2" /></div>
+        <div class="field"><label for="g-y">{T.years}</label><input id="g-y" type="number" min="0" max="20" step="1" value="2" /></div>
         <div class="field"><label for="g-m">{T.months}</label><input id="g-m" type="number" min="0" max="11" step="1" value="0" /></div>
       </div>
       <div class="field"><label for="g-w">{T.weight}</label><input id="g-w" type="number" min="1" max="150" step="0.1" placeholder="12.2" /></div>
@@ -43,18 +43,20 @@ const T = t(lang).growth;
   .result :global(.src) { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
 </style>
 <script>
-  const sec = document.getElementById('growth') as HTMLElement; const T = JSON.parse(sec.dataset.t || '{}'); const lang = sec.dataset.lang || 'en';
+  const sec = document.getElementById('growth') as HTMLElement; const T = JSON.parse(sec.dataset.t || '{}'); const lang = sec.dataset.lang || 'en'; const country = sec.dataset.country || '';
   const out = document.getElementById('g-out')!;
   const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
   const esc = (s: string) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
-  const LOW = new Set(['underweight', 'stunted', 'wasted', 'thin']);
-  const HIGH = new Set(['overweight', 'obese']);
+  const LOW = new Set(['underweight', 'stunted', 'wasted', 'thin', 'cdc_underweight', 'below_p3']);
+  const HIGH = new Set(['overweight', 'obese', 'cdc_overweight', 'cdc_obese', 'above_p97']);
   async function go() {
     const months = Number($('g-y').value || 0) * 12 + Number($('g-m').value || 0);
     const w = $('g-w').value, h = $('g-h').value;
     if (!w && !h) return;
     const q = new URLSearchParams({ sex: $('g-sex').value, age_months: String(months), lang });
     if (w) q.set('weight_kg', w); if (h) q.set('height_cm', h);
+    // con país, la tabla que usa su cartilla cuando PediBot la tiene (EE. UU.: el CDC desde los 2 años)
+    if (country) q.set('country', country);
     const r = await fetch(`/api/growth?${q}`);
     if (!r.ok) { out.innerHTML = `<div class="warn">${esc(T.out)}</div>`; return; }
     const j = await r.json();

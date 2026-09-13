@@ -50,6 +50,38 @@ _URGENT = {"severely_wasted", "severely_underweight", "severely_thin"}
 
 SOURCE_2006 = "WHO Child Growth Standards (2006)"
 SOURCE_2007 = "WHO Growth Reference (2007)"
+SOURCE_CDC = "CDC Growth Charts (2000)"
+
+#: Con qué se calcula: la OMS en todo el mundo, o como en Estados Unidos, donde el CDC recomienda
+#: la OMS hasta los 2 años y sus propias tablas de 2000 desde los 2 hasta los 20.
+REFERENCES = ("who", "cdc")
+
+
+def _cdc_flag(name: str, pct: float, z: float) -> str:
+    """Las categorías del CDC van por percentil, no por desviaciones.
+
+    IMC: bajo peso por debajo del 5, sobrepeso del 85 al 95, obesidad desde el 95. Peso y talla no
+    tienen categorías en el CDC; se señala lo que queda fuera del 3–97, que es lo que marca la
+    propia gráfica. Por debajo de −3 DE se sigue avisando como en la OMS: eso no es una cuestión
+    de tablas.
+    """
+    if name == "bmi":
+        if z < -3:
+            return "severely_thin"
+        if pct < 5:
+            return "cdc_underweight"
+        if pct >= 95:
+            return "cdc_obese"
+        if pct >= 85:
+            return "cdc_overweight"
+        return "normal"
+    if z < -3 and name == "wfa":
+        return "severely_underweight"
+    if pct < 3:
+        return "below_p3"
+    if pct > 97:
+        return "above_p97"
+    return "normal"
 
 
 def lms_z(x: float, L: float, M: float, S: float, restricted: bool = False) -> float:
@@ -116,9 +148,16 @@ class Growth:
 
     def _one(self, name: str, table: str, key: float, value: float) -> Indicator:
         L, M, S = self.lms(table, key)
-        z = lms_z(value, L, M, S, restricted=name in _RESTRICTED)
-        flag = next(label for top, label in _CUTS[name] if z < top)
-        return Indicator(name, table, value, round(z, 2), round(percentile(z), 1), flag)
+        if table.startswith("cdc_"):
+            # el CDC no aplica la corrección de la OMS más allá de ±3
+            z = lms_z(value, L, M, S)
+            pct = percentile(z)
+            flag = _cdc_flag(name, pct, z)
+        else:
+            z = lms_z(value, L, M, S, restricted=name in _RESTRICTED)
+            pct = percentile(z)
+            flag = next(label for top, label in _CUTS[name] if z < top)
+        return Indicator(name, table, value, round(z, 2), round(pct, 1), flag)
 
     def assess(
         self,
@@ -126,12 +165,16 @@ class Growth:
         age_months: float,
         weight_kg: float | None = None,
         height_cm: float | None = None,
+        reference: str = "who",
     ) -> Assessment:
         s = sex.lower()[0]
         if s not in ("m", "f"):
             raise ValueError("sex: m | f")
-        if not 0 <= age_months <= 228:
-            raise ValueError("age: 0–228 months (0–19 years)")
+        if reference not in REFERENCES:
+            raise ValueError(f"reference: {' | '.join(REFERENCES)}")
+        tope = 240 if reference == "cdc" else 228
+        if not 0 <= age_months <= tope:
+            raise ValueError(f"age: 0–{tope} months")
         if weight_kg is not None and not 0.5 <= weight_kg <= 200:
             raise ValueError("weight_kg: 0.5–200")
         if height_cm is not None and not 30 <= height_cm <= 220:
@@ -148,7 +191,15 @@ class Growth:
             except ValueError:
                 notes.append(f"{name}: {key:g} fuera de la tabla {table}")
 
-        if pequeño:
+        if reference == "cdc" and age_months >= 24:
+            sources.append(SOURCE_CDC)
+            if weight_kg is not None:
+                intenta("wfa", f"cdc_wfa_{s}", age_months, weight_kg)
+            if height_cm is not None:
+                intenta("hfa", f"cdc_hfa_{s}", age_months, height_cm)
+            if weight_kg is not None and height_cm is not None:
+                intenta("bmi", f"cdc_bmi_{s}", age_months, weight_kg / (height_cm / 100) ** 2)
+        elif pequeño:
             sources.append(SOURCE_2006)
             if weight_kg is not None:
                 intenta("wfa", f"wfa_{s}", days, weight_kg)
@@ -221,6 +272,11 @@ LABELS: dict[str, dict[str, str]] = {
         "obese": "obesity",
         "thin": "thinness (below −2 SD)",
         "severely_thin": "severe thinness (below −3 SD)",
+        "below_p3": "below the 3rd percentile",
+        "above_p97": "above the 97th percentile",
+        "cdc_underweight": "underweight (below the 5th percentile)",
+        "cdc_overweight": "overweight (85th–95th percentile)",
+        "cdc_obese": "obesity (95th percentile or above)",
         "urgent": "The weight is far below what WHO expects for this height or age.",
     },
     "es": {
@@ -240,6 +296,11 @@ LABELS: dict[str, dict[str, str]] = {
         "obese": "obesidad",
         "thin": "delgadez (por debajo de −2 DE)",
         "severely_thin": "delgadez grave (por debajo de −3 DE)",
+        "below_p3": "por debajo del percentil 3",
+        "above_p97": "por encima del percentil 97",
+        "cdc_underweight": "bajo peso (por debajo del percentil 5)",
+        "cdc_overweight": "sobrepeso (percentil 85 a 95)",
+        "cdc_obese": "obesidad (percentil 95 o más)",
         "urgent": "El peso está muy por debajo de lo que la OMS espera para esta talla o edad.",
     },
     "fr": {
@@ -259,6 +320,11 @@ LABELS: dict[str, dict[str, str]] = {
         "obese": "obésité",
         "thin": "maigreur (sous −2 ET)",
         "severely_thin": "maigreur sévère (sous −3 ET)",
+        "below_p3": "sous le 3e percentile",
+        "above_p97": "au-dessus du 97e percentile",
+        "cdc_underweight": "insuffisance pondérale (sous le 5e percentile)",
+        "cdc_overweight": "surpoids (85e à 95e percentile)",
+        "cdc_obese": "obésité (95e percentile ou plus)",
         "urgent": (
             "Le poids est très en dessous de ce que l'OMS attend pour cette taille ou cet âge."
         ),
@@ -280,6 +346,11 @@ LABELS: dict[str, dict[str, str]] = {
         "obese": "Adipositas",
         "thin": "Untergewicht (unter −2 SD)",
         "severely_thin": "schweres Untergewicht (unter −3 SD)",
+        "below_p3": "unter der 3. Perzentile",
+        "above_p97": "über der 97. Perzentile",
+        "cdc_underweight": "Untergewicht (unter der 5. Perzentile)",
+        "cdc_overweight": "Übergewicht (85.–95. Perzentile)",
+        "cdc_obese": "Adipositas (ab der 95. Perzentile)",
         "urgent": (
             "Das Gewicht liegt weit unter dem, was die WHO für diese Größe oder dieses Alter "
             "erwartet."
@@ -302,6 +373,11 @@ LABELS: dict[str, dict[str, str]] = {
         "obese": "ожирение",
         "thin": "худоба (ниже −2 SD)",
         "severely_thin": "выраженная худоба (ниже −3 SD)",
+        "below_p3": "ниже 3-го перцентиля",
+        "above_p97": "выше 97-го перцентиля",
+        "cdc_underweight": "недостаточный вес (ниже 5-го перцентиля)",
+        "cdc_overweight": "избыточный вес (85–95-й перцентиль)",
+        "cdc_obese": "ожирение (95-й перцентиль и выше)",
         "urgent": "Вес намного ниже того, что ВОЗ ожидает для этого роста или возраста.",
     },
     "ar": {
@@ -321,6 +397,11 @@ LABELS: dict[str, dict[str, str]] = {
         "obese": "سمنة",
         "thin": "نحافة (أقل من −2 انحراف معياري)",
         "severely_thin": "نحافة شديدة (أقل من −3 انحراف معياري)",
+        "below_p3": "أقل من المئين الثالث",
+        "above_p97": "أعلى من المئين 97",
+        "cdc_underweight": "نقص الوزن (أقل من المئين الخامس)",
+        "cdc_overweight": "زيادة الوزن (المئين 85 إلى 95)",
+        "cdc_obese": "سمنة (المئين 95 فأكثر)",
         "urgent": "الوزن أقل بكثير مما تتوقعه منظمة الصحة العالمية لهذا الطول أو العمر.",
     },
     "pt": {
@@ -340,6 +421,11 @@ LABELS: dict[str, dict[str, str]] = {
         "obese": "obesidade",
         "thin": "magreza (abaixo de −2 DP)",
         "severely_thin": "magreza grave (abaixo de −3 DP)",
+        "below_p3": "abaixo do percentil 3",
+        "above_p97": "acima do percentil 97",
+        "cdc_underweight": "baixo peso (abaixo do percentil 5)",
+        "cdc_overweight": "excesso de peso (percentil 85 a 95)",
+        "cdc_obese": "obesidade (percentil 95 ou mais)",
         "urgent": "O peso está muito abaixo do que a OMS espera para esta altura ou idade.",
     },
     "hi": {
@@ -359,9 +445,24 @@ LABELS: dict[str, dict[str, str]] = {
         "obese": "मोटापा",
         "thin": "दुबलापन (−2 SD से नीचे)",
         "severely_thin": "गंभीर दुबलापन (−3 SD से नीचे)",
+        "below_p3": "तीसरे पर्सेंटाइल से नीचे",
+        "above_p97": "97वें पर्सेंटाइल से ऊपर",
+        "cdc_underweight": "कम वज़न (5वें पर्सेंटाइल से नीचे)",
+        "cdc_overweight": "अधिक वज़न (85वें से 95वें पर्सेंटाइल)",
+        "cdc_obese": "मोटापा (95वाँ पर्सेंटाइल या उससे ऊपर)",
         "urgent": "वज़न इस लंबाई या उम्र के लिए WHO की अपेक्षा से बहुत कम है।",
     },
 }
+
+
+def load_countries(path: Path) -> dict[str, dict[str, object]]:
+    """Qué tabla usa la cartilla de cada país (config/growth_charts.yaml), clave en mayúsculas."""
+    import yaml
+
+    if not path.exists():
+        return {}
+    datos = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    return {str(k).upper(): v for k, v in (datos.get("countries") or {}).items()}
 
 
 def describe(a: Assessment, lang: str) -> dict[str, object]:

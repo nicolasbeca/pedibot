@@ -243,6 +243,16 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         ],
         "query": "childhood vaccination schedule when",
     },
+    # 13-sep-2026: qué es un percentil y qué tabla usa la cartilla. Las preguntas de la OMS sobre sus
+    # patrones de crecimiento y la página del NHS sobre los centiles del Red Book.
+    "percentiles_crecimiento": {
+        "docs": [
+            "who_en_child_growth_standards",
+            "nhs_en_baby_height_and_weight",
+            "who_es_child_growth_standards",
+        ],
+        "query": "percentil curva de crecimiento peso talla bebé qué significa",
+    },
     "milestones": {
         "docs": ["cdc_en_act_early_milestones_index", "mlp_en_childdevelopment"],
         "query": "developmental milestones baby toddler",
