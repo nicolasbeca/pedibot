@@ -1,10 +1,14 @@
 """La edad no puede ser un muro (12-sep-2026).
 
-Medido en el registro de producción (137 respuestas reales): el bot pidió la edad **11 veces, y
-10 de esos padres no volvieron a escribir**. La sesión media tiene 1,01 preguntas. Un padre
-árabe preguntó tres veces si era malaria y las tres veces se le pidió la edad. La regla que lo
-motivaba es buena —fiebre en un lactante de menos de tres meses es urgente y sin edad no se
-sabe—, pero pedirla ANTES de responder la convertía en un muro que el padre no cruzaba.
+Con fiebre y sin edad, el bot contestaba SÓLO «necesito saber la edad» y no daba nada. La
+regla que lo motivaba es buena —fiebre en un lactante de menos de tres meses es urgente y sin
+edad no se sabe—, pero pedirla ANTES de responder deja al padre sin nada si no contesta.
+
+CORRECCIÓN (13-sep-2026): la primera versión de este texto decía que en producción «11 padres
+recibieron la pregunta y 10 no volvieron». Falso: esas 11 filas eran sondas mías, que mandan una
+pregunta y se van (el log de la API las sitúa en las dos IPs de mi máquina). Se midió con
+`source != 'test'` en vez de con `REAL_ONLY`, que es el filtro que usa el panel. El cambio se
+sostiene por el razonamiento de arriba, no por un dato de tráfico: tráfico real todavía no hay.
 
 Ahora, con fiebre y sin edad, se **responde**: la respuesta abre con la regla del lactante
 («si tiene menos de tres meses, al médico hoy»), evita dosis concretas, y cierra pidiendo la

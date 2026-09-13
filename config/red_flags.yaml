@@ -315,6 +315,11 @@ rules:
   - ضيق تنفس
   - يلهث
   - انسحاب.{0,20}ضلوع
+  # 13-sep-2026: «يتنفس بصعوبة والأضلاع تنسحب للداخل» salía como RUTINA. Estaban el
+  # sustantivo («صعوبة في التنفس») y «انسحاب… ضلوع»; no el verbo ni este orden.
+  - "(يتنفس|تتنفس) بصعوبة"
+  - "(الأضلاع|أضلاعه|أضلاعها|أضلاع|ضلوعه|ضلوعها|الضلوع).{0,25}(تنسحب|تدخل|للداخل|تغوص)"
+  - "(تنسحب|تدخل).{0,15}(الأضلاع|أضلاعه|أضلاعها|ضلوعه|الضلوع)"
   - توقف.{0,15}تنفس
   - يشهق
   - صفير في التنفس
@@ -1329,6 +1334,22 @@ rules:
   - تسمم
   - شرب.{0,20}منظف
   - شرب مبيد
+  # 13-sep-2026: el queroseno salía como rutina en las ocho lenguas. Es el combustible de
+  # lámpara y de cocina de la India rural y del Golfo; con el pesticida y el veneno de ratas
+  # (sin nada en hindi) son las ingestas de una casa de allí, no de una de aquí. Siempre con el
+  # verbo de beber o tragar: «cocinamos con queroseno» no es una intoxicación.
+  - "(drank|swallowed|ate|took|drinking).{0,30}(kerosene|kerosine|paraffin|lamp oil|white spirit|turpentine|rat poison|pesticide|insecticide)"
+  - "(rat poison|pesticide|insecticide).{0,30}(drank|swallowed|ate)"
+  - "(bebido|bebi[oó]|tragado|trag[oó]).{0,30}(queroseno|keroseno|parafina|aguarr[aá]s|matarratas|veneno para ratas|pesticida|insecticida)"
+  - "(bu|aval[ée]).{0,30}(p[ée]trole lampant|k[ée]ros[eè]ne|white.spirit|t[ée]r[ée]benthine|mort.aux.rats|pesticide|insecticide)"
+  - "(petroleum|lampen[öo]l|terpentin|rattengift|pestizid|insektizid).{0,30}(getrunken|geschluckt|gegessen)"
+  - "(выпил|выпила|проглотил|проглотила).{0,30}(керосин|бензин|растворител|скипидар|крысин|яд для крыс|пестицид|инсектицид)"
+  - "(شرب|شربت|ابتلع|ابتلعت).{0,25}(الكاز|كاز|الكيروسين|كيروسين|الجاز|جاز|البنزين|بنزين|التنر|تنر)"
+  - "(أكل|أكلت|شرب|شربت|ابتلع).{0,25}(سم الفئران|سم فئران|مبيد)"
+  - "(bebeu|tomou|engoliu).{0,30}(querosene|aguarr[aá]s|thinner|veneno de rato|chumbinho|pesticida|inseticida)"
+  - "(मिट्टी का तेल|मिट्टी तेल|केरोसिन|किरासन|पेट्रोल|थिनर).{0,20}(पी|निगल|खा)"
+  - "(कीटनाशक|कीड़े मारने की दवा|चूहे मारने की दवा|चूहे की दवा|चूहा मार).{0,20}(पी|निगल|खा)"
+  - "(mitti ka tel|kerosene|keetnashak|chuhe marne ki dawa).{0,20}(pi|nigal|kha)"
   - شرب.{0,20}(مبيّض|مبيض|كلور|مادة كاوية)
   - شربت.{0,20}(مبيّض|مبيض|كلور)
   - أخذ حبوب
@@ -1543,9 +1564,15 @@ rules:
   - ошпарил
   - кипятк
   - волдыр.{0,20}ожог
-  - حرق
+  # 13-sep-2026: «حرق» casaba como prefijo de «حرقة» (escozor): «حرقة عند التبول», una
+  # infección de orina, sacaba la alarma de quemadura y la ficha de quemaduras del NHS.
+  # Lo mismo «حرقان» (ardor). «حروق» (quemaduras, plural) no casaba y ahora sí.
+  - "حرق(?!ة|ان)|حروق"
   - احترق
   - ماء ساخن
+  # y el agua hirviendo, que no llegaba
+  - "(ماء|شاي|حليب|زيت) (مغلي|يغلي)"
+  - "انسكب.{0,25}(مغلي|يغلي)"
   - انسكب.{0,20}ساخن
   - فقاعات.{0,15}حرق
   - احترقت
@@ -2397,6 +2424,31 @@ rules:
   - "(maxilar (travado|r[íi]gido)|trismo)"
   - "मुँह नहीं खोल"
   - "(जबड़ा (जकड़|बंद)|मुंह नहीं खोल)"
+- id: heatstroke
+  level: urgent
+  source: nhs_en_heat_exhaustion_heatstroke
+  reason_es: "Golpe de calor: enfríalo ya (sombra, agua, aire). Si está confuso, no suda, tiene mucha fiebre o está adormilado, llama a emergencias ahora"
+  reason_en: "Heatstroke: cool them now (shade, water, air). If confused, not sweating, very hot or drowsy, call emergency services now"
+  reason_fr: "Coup de chaleur : refroidissez-le tout de suite (ombre, eau, air). S'il est confus, ne transpire plus, très chaud ou somnolent, appelez les urgences"
+  reason_de: "Hitzschlag: sofort abkühlen (Schatten, Wasser, Luft). Wenn verwirrt, schwitzt nicht mehr, sehr heiß oder schläfrig: jetzt den Notruf wählen"
+  reason_ru: "Тепловой удар: охладите сейчас (тень, вода, воздух). Если спутанность, не потеет, очень горячий или сонливый — сразу звоните в скорую"
+  reason_ar: "ضربة شمس: برّد الطفل الآن (ظل، ماء، هواء). إذا كان مشوشاً أو لا يتعرق أو حرارته عالية جداً أو نعساناً، اتصل بالطوارئ الآن"
+  reason_pt: "Insolação: arrefeça-o já (sombra, água, ar). Se estiver confuso, sem suar, muito quente ou sonolento, ligue para a emergência agora"
+  reason_hi: "लू लगना: अभी ठंडा करें (छाँव, पानी, हवा)। अगर बच्चा उलझन में है, पसीना नहीं आ रहा, बहुत गरम है या सुस्त है, तो अभी आपातकालीन नंबर पर कॉल करें"
+  # 13-sep-2026. Rutina en las ocho lenguas, y la ficha del NHS lo dice literal: «Heatstroke is
+  # a medical emergency». Urgente y no emergencia porque la palabra se usa también para el
+  # agotamiento por calor; el motivo dice cuándo es emergencia. Siempre con el verbo de
+  # padecerlo: «¿cómo prevengo un golpe de calor?» no puede sacar el aviso.
+  patterns:
+  - "(le ha dado|le dio|ha tenido|tiene|tuvo|ha sufrido|sufre|con) (un )?golpe de calor"
+  - "(has|had|got|getting|having|with) (a )?(heat ?stroke|sun ?stroke)"
+  - "(a fait|a eu|fait|a) (un )?coup de chaleur"
+  - "(hat|hatte) (einen )?hitzschlag|hitzschlag (bekommen|erlitten)|sonnenstich (bekommen|hat)"
+  - "(у (него|неё|ребёнка|ребенка|сына|дочки?)|получил|получила|случился).{0,12}(тепловой|солнечный) удар"
+  - "(أصيب|أصيبت|عنده|عندها|جاته|جاءته|صابته|أخذ) (ب)?ضربة (شمس|الشمس|حرارة|الحر)"
+  - "(teve|tem|est[aá] com|pegou|apanhou) (uma )?insola[cç][aã]o"
+  - "लू (लग गई|लग गया|लगी है|लगी|लग गयी)|हीट ?स्ट्रोक (हो गया|हुआ|है)"
+  - "(lu|loo) lag (gayi|gai|gaya)"
 context:
   fever:
   - fi[eè]vre

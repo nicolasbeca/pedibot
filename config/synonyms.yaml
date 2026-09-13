@@ -3025,6 +3025,18 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # 13-sep-2026: batería de preguntas de padre en árabe e hindi; 17 no llegaban a su ficha,
+  # que existía en inglés o en su lengua. Faltaba la palabra con que lo dice un padre.
+  يسنن: [teething]
+  حمراء: [red eye, conjunctivitis]
+  إفرازات: [discharge, conjunctivitis]
+  يبلل: [bedwetting]
+  الفراش: [bedwetting]
+  مغلي: [scald, burns]
+  الكاز: [kerosene, poisoning]
+  فقد الوعي: [fainting, unconscious]
+  يتكلم: [speech, language development, milestones]
+  الشاشة: [screen time, sedentary screen time]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
   # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
   إماهة: [oral rehydration solution, rehydration]
@@ -4686,9 +4698,9 @@ hi_es:
   शिशु:
   - bebé
   - lactante
-  बच्चा:
-  - bebé
-  - lactante
+  # 13-sep-2026: «बच्चा» es «niño» a cualquier edad —la palabra con que un padre dice
+  # «mi hijo»— y se expandía a bebé/lactante: toda pregunta se inclinaba a las fichas del
+  # lactante («mira mucho el móvil» acababa en cólicos). «शिशु» sí es bebé y se queda.
   shishu:
   - bebé
   - lactante
@@ -4848,6 +4860,19 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  बिस्तर गीला: [bedwetting]
+  बिस्तर पर पेशाब: [bedwetting]
+  # 13-sep-2026: batería de preguntas de padre en árabe e hindi; 17 no llegaban a su ficha,
+  # que existía en inglés o en su lengua. Faltaba la palabra con que lo dice un padre.
+  नाक बंद: [blocked nose, stuffy nose, common cold]
+  जूँ: [head lice, nits]
+  जूं: [head lice, nits]
+  खिलाना: [solid foods, complementary feeding]
+  मिट्टी का तेल: [kerosene, poisoning]
+  केरोसिन: [kerosene, poisoning]
+  कीटनाशक: [pesticide, poisoning]
+  मोबाइल: [screen time, sedentary screen time]
+  बोलता नहीं: [speech, language development, milestones]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
   # que encontrar fuente en la lengua del padre; 19 de 244 no la encontraban.
   दानों: [rash, spots]
@@ -5077,6 +5102,7 @@ hi_en:
   बेहोश:
   - fainting
   - syncope
+  - passed out
   चक्कर:
   - fainting
   - syncope
@@ -5230,8 +5256,12 @@ hi_en:
   - reflux
   दाँत निकल:
   - teething
+  - teeth
+  - baby teeth
   daant nikal:
   - teething
+  - teeth
+  - baby teeth
   नवजात:
   - newborn
   navjat:
@@ -5239,9 +5269,9 @@ hi_en:
   शिशु:
   - baby
   - infant
-  बच्चा:
-  - baby
-  - infant
+  # 13-sep-2026: «बच्चा» es «niño» a cualquier edad —la palabra con que un padre dice
+  # «mi hijo»— y se expandía a bebé/lactante: toda pregunta se inclinaba a las fichas del
+  # lactante («mira mucho el móvil» acababa en cólicos). «शिशु» sí es bebé y se queda.
   shishu:
   - baby
   - infant

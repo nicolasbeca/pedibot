@@ -13,12 +13,15 @@ topics:
   neurologia: [meningitis, meningite, meningitis, hirnhautentzündung, hirnhautentzundung,
                менингит, менингита, التهاب السحايا, سحايا, मेनिन्जाइटिस,
                convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding,
-                 epilepsia, epilepsy, épilepsie, epilepsie, الصرع, मिर्गी, эпилепсия]
+                 epilepsia, epilepsy, épilepsie, epilepsie, الصرع, मिर्गी, эпилепсия,
+        बेहोश, "فقد الوعي", إغماء, "أغمي عليه", "مغمى عليه"]
   accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke,
                  serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство, كلب, عضة, "عضّ",
-        ударил, ушиб, рану, "рана$", раны, зашив, швы, stitch, sutur, "puntos de sutura", genäht, nähen, verbrennung, verbrüh, "kopf gestoßen", gestoßen]
+        ударил, ушиб, рану, "рана$", раны, зашив, швы, stitch, sutur, "puntos de sutura", genäht, nähen, verbrennung, verbrüh, "kopf gestoßen", gestoßen,
+        "ماء مغلي", مغلي]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic,
-        plomo, saturnismo, lead, plomb, blei$, свинец, свинца, رصاص, التسمم بالرصاص, सीसा, सीसे]
+        plomo, saturnismo, lead, plomb, blei$, свинец, свинца, رصاص, التسمم بالرصاص, सीसा, सीसे,
+        "मिट्टी का तेल", केरोसिन, कीटनाशक, "चूहे मारने", الكاز, كيروسين, "سم الفئران"]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
   piel: [urticaria, exantema, sarpullido, eccema, dermatitis, ronchas, habones, manchas, rash, eczema, skin,
          sarampión, sarampion, measles, rougeole, masern, корь, кори, корью, حصبة, الحصبة, खसरा,
@@ -30,7 +33,8 @@ topics:
          piojo, piojos, liendre, head lice, lice, poux, kopfläuse, kopflause, вши, вшей, قمل, जूं,
          picadura, picaduras, mosquito, insect bite, piqûre, piqure, insektenstich, укус, لدغة, काटने,
                  sarna, scabies, gale$, krätze, الجرب, खुजली, чесотка, escabiosis,
-        picor, picazón, picazon, itch, juck, prurit, démangeaison, demangeaison, зуд, чеш, чесал, comich, coceira, حكة, दाने, दानों, चकत्त, "glass test", "prueba del vaso", "test du verre", glastest, стакан, गिलास]
+        picor, picazón, picazon, itch, juck, prurit, démangeaison, demangeaison, зуд, чеш, чесал, comich, coceira, حكة, दाने, दानों, चकत्त, "glass test", "prueba del vaso", "test du verre", glastest, стакан, गिलास,
+        जूँ, जुएँ, लीख]
   orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear$, ears$, earache, earwax,
         throat, tonsil,
         # La nariz no estaba en ninguna categoría, y «le sangro la nariz un momento y ya
@@ -38,7 +42,8 @@ topics:
         # tema, la puerta del «fuente o silencio» exige tres términos en vez de uno.
         nariz, epistaxis, "sangrado nasal", nosebleed, "nose bleed", nez, saignement de nez,
         nase, nasenbluten, нос, носовое кровотечение, أنف, نزيف الأنف, नाक, नकसीर, nariz, sangramento nasal,
-        sordera, sordo, audición, oír, oye, hipoacusia, deafness, hearing, surdité, audition, schwerhörig, gehör, глухот, слух, صمم, سمع, يسمع, ضعف السمع, बहरापन, सुनाई, श्रवण, सुनने]
+        sordera, sordo, audición, oír, oye, hipoacusia, deafness, hearing, surdité, audition, schwerhörig, gehör, глухот, слух, صمم, سمع, يسمع, ضعف السمع, बहरापन, सुनाई, श्रवण, सुनने,
+        "नाक बंद", "बंद नाक"]
   salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
                  "psychische gesundheit", "психическое здоровье", "الصحة النفسية",
                  "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress,
@@ -47,7 +52,8 @@ topics:
                  desnutrición, desnutricion, malnutrición, malnutricion, malnutrition, dénutri, denutri, mangelernährung, mangelernahrung,
                  недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao,
                  anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение, رضاع, أرضع, هزال, نحيف,
-        appetite, apetito, appétit, appetit, аппетит, شهية, भूख, صلب, diversifica, beikost, stillen, allaite, allaitement, amamentar, amamentação, aleitamento, "грудное вскармливание", прикорм, स्तनपान, "ठोस आहार", "पूरक आहार", "الطعام الصلب", الفطام, फार्मूला, "दूध पिलाना"]
+        appetite, apetito, appétit, appetit, аппетит, شهية, भूख, صلب, diversifica, beikost, stillen, allaite, allaitement, amamentar, amamentação, aleitamento, "грудное вскармливание", прикорм, स्तनपान, "ठोस आहार", "पूरक आहार", "الطعام الصلب", الفطام, फार्मूला, "दूध पिलाना",
+        "क्या खिलाना", "खिलाना शुरू", "क्या खिलाऊँ", "ठोस खाना", "فقر دم"]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice,
                  prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]
@@ -56,19 +62,24 @@ topics:
                  difteria, diphtheria, diphtérie, diphtherie, الخناق, डिप्थीरिया, дифтерия, tétanos, tetanus, كزاز, टिटनेस, столбняк]
   desarrollo: ["dolores de crecimiento", "growing pains", "douleurs de croissance",
                wachstumsschmerzen, "боли роста", "آلام النمو", desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen,
-                 autismo, autism, autisme, التوحد, ऑटिज़्म, аутизм]
+                 autismo, autism, autisme, التوحد, ऑटिज़्म, аутизм,
+        मोबाइल, स्क्रीन, "बोलता नहीं", "बोल नहीं", "बोलना नहीं", الشاشة, الشاشات, "لا يتكلم", "لا تتكلم", "تأخر الكلام", "تأخر النطق"]
   medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
   urinario: [orina, urinaria, urinario, infección de orina, infeccion de orina, cistitis, pis$,
              pipí, pipi, enuresis, mojar la cama, urine, urinary, uti$, utis$, wee$, bedwetting,
              urinaire, pipi au lit, harnwege, blasenentzündung, blasenentzundung, bettnässen,
-             моча, мочевой, недержание, بول, التبول, पेशाब, मूत्र]
+             моча, мочевой, недержание, بول, التبول, पेशाब, मूत्र,
+        "يبلل الفراش", "تبلل الفراش", "التبول اللاإرادي", "التبول الليلي", "يبول في الفراش",
+        "बिस्तर गीला", "बिस्तर पर पेशाब", "bistar geela"]
   ojos: [conjuntivitis, ojo, ojos, legañas, lagrimeo, conjunctivitis, pink eye, eye,
          conjonctivite, œil, oeil, bindehautentzündung, bindehautentzundung, auge,
          конъюнктивит, глаз, التهاب الملتحمة, عين, आँख, कंजंक्टिवाइटिस,
-        ceguera, ciego, visión, vista, discapacidad visual, blindness, "visual impairment", cécité, malvoyance, blindheit, sehbehinderung, слепот, зрени, عمى, إعاقة بصرية, ضعف البصر, अंधापन, दृष्टि, नज़र]
+        ceguera, ciego, visión, vista, discapacidad visual, blindness, "visual impairment", cécité, malvoyance, blindheit, sehbehinderung, слепот, зрени, عمى, إعاقة بصرية, ضعف البصر, अंधापन, दृष्टि, नज़र,
+        "عيون حمراء", "عينه حمراء", "عينها حمراء", "عين حمراء", "احمرار العين", رمد]
   dental: [dentición, denticion, diente, dientes, muela, teething, tooth, teeth,
            poussée dentaire, dent$, dents$, zahnen, zahn, прорезывание зубов, зуб, تسنين, أسنان,
-           दांत, दाँत]
+           दांत, दाँत,
+        "दाँत निकल", "दांत निकल", يسنن, التسنين, "ظهور الأسنان"]
   urgencias: [urgencias, "112", emergencia, sedoanalgesia, emergency, "911", "999",
                  sepsis, septicemia, septicémie, "تعفن الدم", सेप्सिस, сепсис]
   crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]
