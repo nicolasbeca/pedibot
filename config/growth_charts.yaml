@@ -97,3 +97,79 @@ countries:
     source: "https://hub.kbv.de/display/UH1X0/7.+Perzentilkurven"
     charts:
       - {name: "Kromeyer-Hauschild (2001)", from_months: 0, to_months: 216, who_based: false}
+  # ---------------- segunda ronda, 13-sep-2026 ----------------
+  CA:
+    calculator: who
+    match: full
+    body: "Canadian Paediatric Society, Dietitians of Canada, College of Family Physicians, Community Health Nurses"
+    source: "https://cps.ca/en/tools-outils/who-growth-charts"
+    charts:
+      - {name: "WHO Growth Charts for Canada (WHO 2006)", from_months: 0, to_months: 60, who_based: true}
+      - {name: "WHO Growth Charts for Canada (WHO 2007)", from_months: 60, to_months: 228, who_based: true}
+  CO:
+    calculator: who
+    match: full
+    body: "Ministerio de Salud y Protección Social — Resolución 2465 de 2016"
+    source: "https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/resolucion-2465-2016.pdf"
+    charts:
+      - {name: "OMS / WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+      - {name: "OMS / WHO Growth Reference (2007)", from_months: 60, to_months: 216, who_based: true}
+  CL:
+    calculator: who
+    match: full
+    body: "MINSAL — Norma para la evaluación nutricional de niños, niñas y adolescentes"
+    source: "https://platform.who.int/docs/default-source/mca-documents/policy-documents/guideline/CHL-CH-38-02-GUIDELINE-2010-esp-NORMA-EVALUACION-NUTRICIONAL-NI%C3%91OS.pdf"
+    charts:
+      - {name: "OMS / WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+      - {name: "OMS / WHO Growth Reference (2007)", from_months: 60, to_months: 228, who_based: true}
+  AU:
+    calculator: cdc
+    match: full
+    body: "Australian Government Department of Health (2013); NHMRC"
+    source: "https://www.rch.org.au/uploadedFiles/Main/Content/childgrowth/DoHA_backgroundreading_April2013(2)(1).pdf"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 24, who_based: true}
+      - {name: "CDC Growth Charts (2000)", from_months: 24, to_months: 216, who_based: false}
+  IE:
+    calculator: who
+    match: partial
+    body: "HSE — National Child Health Record"
+    source: "https://www.hse.ie/eng/health/child/growthmonitoring/"
+    charts:
+      - {name: "UK-WHO (Ireland) growth charts, 0–4 years (based on WHO)", from_months: 0, to_months: 48, who_based: true}
+      - {name: "UK-WHO 2–18 years (UK90 data from 4 years)", from_months: 48, to_months: 216, who_based: false}
+  NZ:
+    calculator: who
+    match: partial
+    body: "Health New Zealand | Te Whatu Ora — Well Child Tamariki Ora"
+    source: "https://www.tewhatuora.govt.nz/for-the-health-sector/specific-life-stage-health-information/child-health/well-child-tamariki-programme/growth-charts"
+    charts:
+      - {name: "NZ-WHO growth charts (WHO 2006)", from_months: 0, to_months: 60, who_based: true}
+  EG:
+    calculator: who
+    match: partial
+    body: "وزارة الصحة والسكان — Ministry of Health and Population (Child Health Card, 2018)"
+    source: "https://www.unicef.org/egypt/press-releases/launch-new-child-health-cards"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  AR:
+    calculator: who
+    match: partial
+    body: "Ministerio de Salud de la Nación y Sociedad Argentina de Pediatría (2007)"
+    source: "https://www.scielo.org.ar/scielo.php?script=sci_arttext&pid=S0325-00752008000500017"
+    charts:
+      - {name: "OMS / WHO Child Growth Standards (2006)", from_months: 0, to_months: 72, who_based: true}
+  PE:
+    calculator: who
+    match: partial
+    body: "MINSA — Norma Técnica de Salud para el Control de Crecimiento y Desarrollo"
+    source: "https://www.gob.pe/institucion/minsa/informes-publicaciones/7857089-norma-tecnica-de-salud-para-el-control-de-crecimiento-y-desarrollo-del-nino-nts-n-238-minsa-dgiesp-2025"
+    charts:
+      - {name: "OMS / WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  JO:
+    calculator: who
+    match: partial
+    body: "وزارة الصحة — Ministry of Health, maternal and child health centres"
+    source: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12378259/"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}

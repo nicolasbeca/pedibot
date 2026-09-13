@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**473 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**480 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,20 +30,20 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (164 of 473 do) |
+| `year` | where the document states one (166 of 480 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (425 of 473 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (432 of 480 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
 
 | organisation | documents |
 |---|---|
-| WHO — World Health Organization | 203 |
+| WHO — World Health Organization | 208 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 74 |
-| NHS — NHS (National Health Service, England) | 56 |
+| NHS — NHS (National Health Service, England) | 58 |
 | CDC — Centers for Disease Control and Prevention (USA) | 38 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
 | SEUP — Sociedad Española de Urgencias de Pediatría | 29 |
@@ -67,11 +67,11 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 173 |
-| Spanish (`es`) | 100 |
-| Arabic (`ar`) | 54 |
-| French (`fr`) | 47 |
-| Russian (`ru`) | 45 |
+| English (`en`) | 176 |
+| Spanish (`es`) | 101 |
+| Arabic (`ar`) | 55 |
+| French (`fr`) | 48 |
+| Russian (`ru`) | 46 |
 | German (`de`) | 30 |
 | Portuguese (`pt`) | 14 |
 | hi (`hi`) | 10 |
@@ -87,12 +87,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `vacunas` | 42 |
 | `general` | 33 |
 | `alimentacion` | 28 |
+| `desarrollo` | 21 |
 | `salud_mental` | 20 |
 | `fiebre` | 17 |
 | `neurologia` | 16 |
-| `desarrollo` | 15 |
 | `orl` | 14 |
-| `recien_nacido` | 12 |
+| `recien_nacido` | 13 |
 | `urgencias` | 12 |
 | `intoxicacion` | 10 |
 | `crianza` | 6 |

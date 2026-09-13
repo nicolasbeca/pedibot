@@ -117,6 +117,29 @@ def test_estan_los_paises_verificados(paises: dict):
     assert {"US", "BR", "RU", "PT", "MX", "GB", "IN", "ES", "SA", "FR", "DE"} <= set(paises)
 
 
+def test_la_segunda_ronda_de_paises(paises: dict):
+    """13-sep-2026, segunda ronda, cada uno con su fuente leída:
+
+    - Canadá (CPS, Dietitians of Canada y otras dos asociaciones), Colombia (Resolución 2465 de
+      2016) y Chile (MINSAL): OMS 2006 y 2007 enteras.
+    - Australia (Department of Health, 2013; NHMRC): OMS <2 y CDC de 2 a 18, como Estados Unidos.
+    - Irlanda (HSE): UK-WHO en el National Child Health Record, como el Reino Unido.
+    - Nueva Zelanda (Te Whatu Ora: NZ-WHO hasta 5), Egipto (tarjeta de salud infantil de 2018 con
+      UNICEF), Argentina (Ministerio de Salud 2007: OMS hasta 6), Perú (NTS del MINSA) y Jordania
+      (centros públicos materno-infantiles, Frontiers in Pediatrics 2025): OMS confirmada sólo en
+      la primera infancia.
+
+    Fuera, por no haber leído un documento oficial: Turquía, Italia, Marruecos, Túnez, Argelia,
+    Líbano y los países del Golfo salvo Arabia Saudí.
+    """
+    assert {"CA", "CO", "CL", "AU", "IE", "NZ", "EG", "AR", "PE", "JO"} <= set(paises)
+    assert all(paises[c]["match"] == "full" for c in ("CA", "CO", "CL", "AU"))
+    assert paises["AU"]["calculator"] == "cdc"
+    assert all(paises[c]["match"] == "partial" for c in ("IE", "NZ", "EG", "AR", "PE", "JO"))
+    for fuera in ("TR", "IT", "MA", "TN", "DZ", "LB", "AE", "QA", "KW", "BH", "OM"):
+        assert fuera not in paises, f"{fuera} sin fuente oficial leída"
+
+
 def test_cada_pais_dice_que_tabla_usa_y_de_donde_sale(paises: dict):
     for code, p in paises.items():
         assert p["calculator"] in ("who", "cdc"), code
