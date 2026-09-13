@@ -18,7 +18,8 @@ topics:
   accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke,
                  serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство, كلب, عضة, "عضّ",
         ударил, ушиб, рану, "рана$", раны, зашив, швы, stitch, sutur, "puntos de sutura", genäht, nähen, verbrennung, verbrüh, "kopf gestoßen", gestoßen,
-        "ماء مغلي", مغلي]
+        "ماء مغلي", مغلي,
+        احترق, انحرق, حروق]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic,
         plomo, saturnismo, lead, plomb, blei$, свинец, свинца, رصاص, التسمم بالرصاص, सीसा, सीसे,
         "मिट्टी का तेल", केरोसिन, कीटनाशक, "चूहे मारने", الكاز, كيروسين, "سم الفئران"]
@@ -70,7 +71,8 @@ topics:
              urinaire, pipi au lit, harnwege, blasenentzündung, blasenentzundung, bettnässen,
              моча, мочевой, недержание, بول, التبول, पेशाब, मूत्र,
         "يبلل الفراش", "تبلل الفراش", "التبول اللاإرادي", "التبول الليلي", "يبول في الفراش",
-        "बिस्तर गीला", "बिस्तर पर पेशाब", "bistar geela"]
+        "बिस्तर गीला", "बिस्तर पर पेशाब", "bistar geela",
+        "حرقة عند التبول", "حرقة البول", "عند التبول", "पेशाब में जलन", "पेशाब करते", "pees", "peeing", "burns when"]
   ojos: [conjuntivitis, ojo, ojos, legañas, lagrimeo, conjunctivitis, pink eye, eye,
          conjonctivite, œil, oeil, bindehautentzündung, bindehautentzundung, auge,
          конъюнктивит, глаз, التهاب الملتحمة, عين, आँख, कंजंक्टिवाइटिस,

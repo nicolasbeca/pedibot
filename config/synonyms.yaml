@@ -11,6 +11,10 @@
 # Arabic triggers appear bare and with the article: the match is a prefix on the token, and
 # "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
+  # 13-sep-2026: «it burns when he pees» iba a quemaduras
+  pees: [urinary tract infection, UTI]
+  peeing: [urinary tract infection, UTI]
+  burns when: [urinary tract infection]
   # los temas del lote de la OMS del 11-sep: la pregunta de un padre y el título del
   # documento no usan la misma palabra («anaemic» / «anaemia», «worms» / «helminth»,
   # «bitten by a snake» / «snakebite envenoming»)
@@ -2688,7 +2692,7 @@ ar_es:
   - cabeza
   - traumatismo craneal
   - golpe
-  حرق:
+  "حرق$":
   - quemadura
   الحرق:
   - quemadura
@@ -3025,6 +3029,14 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # «احترقت يد ابني» (se quemó): el verbo en pasado no llegaba a ninguna ficha
+  احترق: [burn, burns, scald]
+  انحرق: [burn, burns, scald]
+  # 13-sep-2026: «حرق» casaba por prefijo «حرقة» (ardor): el escozor al orinar iba a quemaduras.
+  # escozor y dolor al orinar → las fichas de infección de orina
+  التبول: [urinary tract infection, UTI, pee]
+  حرقة: [burning, pain when peeing]
+  بول: [urine, pee]
   # 13-sep-2026: batería de preguntas de padre en árabe e hindi; 17 no llegaban a su ficha,
   # que existía en inglés o en su lengua. Faltaba la palabra con que lo dice un padre.
   يسنن: [teething]
@@ -3237,7 +3249,7 @@ ar_en:
   - head injury
   - bump on the head
   - concussion
-  حرق:
+  "حرق$":
   - burn
   - scald
   الحرق:
@@ -4544,8 +4556,8 @@ hi_es:
   - golpe
   जल गया:
   - quemadura
-  जलन:
-  - quemadura
+  # 13-sep-2026: «जलन» es ARDOR («पेशाब में जलन», escozor al orinar), no quemadura; mandaba
+  # la infección de orina a la ficha de quemaduras. La quemadura es «जल गया», que se queda.
   jal gaya:
   - quemadura
   घाव:
@@ -4860,6 +4872,9 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 13-sep-2026: escozor y dolor al orinar → las fichas de infección de orina
+  पेशाब: [urinary tract infection, UTI, pee]
+  जलन: [burning, pain when peeing]
   बिस्तर गीला: [bedwetting]
   बिस्तर पर पेशाब: [bedwetting]
   # 13-sep-2026: batería de preguntas de padre en árabe e hindi; 17 no llegaban a su ficha,
@@ -5127,9 +5142,8 @@ hi_en:
   जल गया:
   - burn
   - scald
-  जलन:
-  - burn
-  - scald
+  # 13-sep-2026: «जलन» es ARDOR («पेशाब में जलन», escozor al orinar), no quemadura; mandaba
+  # la infección de orina a la ficha de quemaduras. La quemadura es «जल गया», que se queda.
   jal gaya:
   - burn
   - scald
