@@ -76,6 +76,10 @@ def offering_args(o: dict[str, Any]) -> list[str]:
 
 def acp(*args: str) -> Any:
     out = subprocess.run(["acp", *args, "--json"], capture_output=True, text=True, timeout=120)
+    if out.returncode != 0:  # --json errors also come on stdout, as {"error": ...}
+        raise RuntimeError(
+            f"acp {' '.join(args[:2])} failed: {out.stdout[-400:] or out.stderr[-400:]}"
+        )
     for line in reversed(out.stdout.splitlines()):
         if line.strip()[:1] in "[{":
             try:

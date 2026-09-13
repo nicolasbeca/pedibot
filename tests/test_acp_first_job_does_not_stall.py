@@ -200,3 +200,29 @@ def test_the_v1_words_still_work(monkeypatch):
     assert m.status_of({"phase": "TRANSACTION"}) == "funded"
     assert m.status_of({"jobStatus": "budget_set"}) == "budget_set"
     assert m.status_of({}) == ""
+
+
+def test_a_cli_error_is_not_a_result(monkeypatch):
+    """With --json the CLI prints its errors on STDOUT as {"error": ...} and exits with 1
+    (outputError in dist/bin/acp.js). Parsing the last JSON line took that for an answer, so a
+    failed `provider submit` would have been recorded as delivered: the buyer pays and gets
+    nothing, and we believe we served them. Regime's worker learnt this on 11-sep."""
+    import subprocess as sp
+
+    m = _mod()
+
+    class Failed:
+        returncode = 1
+        stdout = '{"error": "No session found for job 812.", "code": "SESSION_NOT_FOUND"}\n'
+        stderr = ""
+
+    monkeypatch.setattr(sp, "run", lambda *a, **k: Failed())
+    assert m.acp("provider", "submit", "--job-id", "812") is None
+
+    class Ok:
+        returncode = 0
+        stdout = '{"success": true, "action": "submit"}\n'
+        stderr = ""
+
+    monkeypatch.setattr(sp, "run", lambda *a, **k: Ok())
+    assert m.acp("provider", "submit", "--job-id", "812") == {"success": True, "action": "submit"}

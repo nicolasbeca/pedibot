@@ -52,9 +52,20 @@ def acp(*args: str) -> dict[str, Any] | list[Any] | None:
     """Run the acp CLI with --json and parse the last JSON line (it also prints human text)."""
     cmd = ["acp", *args, "--json"]
     try:
-        out = subprocess.run(cmd, capture_output=True, text=True, timeout=CLI_TIMEOUT).stdout
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=CLI_TIMEOUT)
     except subprocess.TimeoutExpired:
         logger.warning("acp {} timed out", " ".join(args))
+        return None
+    out = r.stdout
+    # With --json the CLI prints its ERRORS on stdout too, as {"error": ...}, and exits with 1.
+    # Taken as a result, a failed `provider submit` was recorded as delivered (13-sep-2026).
+    if r.returncode != 0:
+        logger.warning(
+            "acp {} exited {}: {}",
+            " ".join(args[:2]),
+            r.returncode,
+            (out or r.stderr or "").strip()[-300:],
+        )
         return None
     for line in reversed(out.splitlines()):
         line = line.strip()
