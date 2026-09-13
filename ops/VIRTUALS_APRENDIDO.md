@@ -164,3 +164,15 @@ Resumen de lo nuevo:
 13. **El precio no puede vivir en una constante del trabajador.** Si bajas el precio en el mercado y el worker sigue proponiendo el viejo, le pides al primer comprador más de lo anunciado. Léelo de `acp offering list` y, si no identificas la oferta, cobra la más barata.
 14. **Una oferta genérica no aparece en las búsquedas.** Una ficha por producto, en `snake_case`, con su propio formulario. El worker enruta cada formulario a su endpoint.
 15. **Suscripciones**: paquetes reutilizables de 7/15/30/90 días. El primer trabajo con `--package-id` se cobra al precio del paquete y abre la ventana; los siguientes contra cualquier oferta enganchada son gratis hasta que expire. Se enganchan con `acp offering update --subscription-ids`.
+
+---
+
+## Actualizado el 13-sep-2026 (PediBot): por qué no llegaba ningún trabajo
+
+16. **La presencia es un socket con latido, no las llamadas REST.** El SDK (`acp-node-v2/dist/events/socketTransport.js`) abre un socket y emite `heartbeat` con `setInterval`; eso es lo que hace `acp events listen`. Un proveedor que sólo sondea `acp job list` **nunca** sale como activo: `acp agent list` lo enseña con `lastActiveAt: None` durante semanas. Con `events listen` conectado pasa a `2999-12-31T00:00:00.000Z`, que es la marca de «en línea» (todos los agentes que devuelve la búsqueda tienen fecha). PediBot estuvo del 26-ago al 13-sep sin ella y con **cero trabajos**. Ahora el trabajador mantiene `acp events listen --output data/acp_events.jsonl` como proceso hijo y lo relanza si cae.
+17. **`acp browse` NUNCA te devuelve a ti mismo.** `browseAgents` manda `walletAddressToExclude` con la cartera del agente activo. «Me busco y no salgo» no prueba nada: hay que buscar desde OTRO agente con su propio firmante, o desde el panel web. Lo aprendí después de haberlo dado por prueba.
+18. **Buscar como otro agente exige su firmante en ese llavero.** `acp agent use --agent-id <otro>` funciona, pero `browse` responde `NO_SIGNER` si el firmante de ese agente no está en `~/.config/acp-cli/signer-keys.json`. Y si se copia el llavero a un directorio temporal para probar, la limpieza va en un `trap ... EXIT`, no al final del script: con `set -e`, un fallo a mitad deja la clave copiada en `/tmp`.
+19. **`acp resource update` y `delete` siguen sin opciones en 1.0.34** (la 1.0.35 existe; no probada). Un recurso con descripción vieja no se corrige por CLI: se crea uno nuevo con otro nombre y el viejo se oculta desde el panel. `acp offering update` sí actualiza nombre, descripción, precio, SLA y los dos esquemas.
+20. **Pendiente de comprobar**: `chains[].active` sigue en `false` para PDBT y para REGIME. La búsqueda filtra por `chainIds`; si el índice sólo incluye agentes activos en la cadena, eso también los dejaría fuera. No verificado.
+21. **Catálogo versionado**: `ops/acp_catalogue.json` es el estado deseado (8 trabajos, 7 recursos) y `ops/acp_sync.py` lo aplica (sin `--apply` sólo enseña el plan). Las cifras de las descripciones las comprueba una prueba contra la configuración.
+
