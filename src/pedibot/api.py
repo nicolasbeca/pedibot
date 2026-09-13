@@ -11,7 +11,7 @@ import time
 from collections.abc import Mapping
 from dataclasses import dataclass
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
@@ -21,6 +21,7 @@ from pedibot import __version__
 from pedibot.bot.answer import SUPPORTED_LANGS, Answer, Engine
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.followups import Followups
+from pedibot.bot.growth import Growth
 from pedibot.bot.llm import LLMUnavailable
 from pedibot.bot.strings import data_lang
 from pedibot.bot.vaccines import Vaccines
@@ -202,6 +203,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
 
     vision_fn = vision_fn or vision_json
     followups = Followups(ROOT / "config" / "followups.yaml")
+    _growth = Growth(ROOT / "config" / "who_growth.json")
     from pedibot.bot.answer import DISCLAIMER
 
     app = FastAPI(title="PediBot API", version=__version__, docs_url=None, redoc_url=None)
@@ -650,6 +652,23 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         return f"""<!doctype html><html lang="{lang}" dir="{direction}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>{title}</title>
 <style>body{{margin:0;background:#FFFDF9;color:#2B3A35;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.6}}main{{max-width:720px;margin:0 auto;padding:32px 18px}}.q{{background:#E3F4EF;border-radius:18px;padding:14px 18px;margin-bottom:14px}}.a{{background:#fff;border:1px solid #EAE4DA;border-radius:18px;padding:16px 20px;box-shadow:0 10px 30px rgba(43,58,53,.07)}}.n{{color:#8A9992;font-size:.85rem;margin-top:14px}}a{{color:#2F6B57}}</style></head>
 <body><main><p><a href="/">← pedibot.xyz</a></p><div class="q">{q}</div><div class="a">{body_html}</div><p class="n">{note}</p></main></body></html>"""
+
+    @app.get("/api/growth")
+    def growth(
+        sex: str = Query(pattern="^[mfMF]$"),
+        age_months: float = Query(ge=0, le=228),
+        weight_kg: float | None = Query(default=None, gt=0.5, lt=200),
+        height_cm: float | None = Query(default=None, gt=30, lt=220),
+        lang: str = Query(default="en", pattern=_LANG_PATTERN),
+    ) -> dict[str, object]:
+        """La curva de la OMS, calculada: sin modelo y sin guardar nada (13-sep-2026)."""
+        from pedibot.bot.growth import describe
+
+        try:
+            a = _growth.assess(sex, age_months, weight_kg, height_cm)
+        except ValueError as e:
+            raise HTTPException(422, str(e)) from e
+        return describe(a, lang)
 
     @app.get("/api/ors")
     def ors(

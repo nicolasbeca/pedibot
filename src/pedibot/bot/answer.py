@@ -10,6 +10,7 @@ import yaml
 
 from pedibot.bot.dose import DRUGS, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.growth import is_growth_question
 from pedibot.bot.guides import GuideIndex, GuideLink
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
@@ -410,6 +411,8 @@ def tool_link(kind: str, lang: str, country: str | None = None) -> ToolLink:
     prefix = "" if lang == "en" else f"/{lang}"
     if kind == "vaccines":
         tail = f"/vaccines/{country.lower()}" if country else "/vaccines"
+    elif kind == "growth":
+        tail = "/growth"
     else:
         tail = "/dose"
     return ToolLink(kind, f"{prefix}{tail}")
@@ -1021,6 +1024,10 @@ class Engine:
             )
         elif intent or _DRUG.search(context_text):
             tool = tool_link("dose", lang)
+        # «está muy delgado y no gana peso», «¿qué percentil tiene?»: la curva de la OMS,
+        # calculada, contesta mejor que la prosa (13-sep-2026)
+        elif is_growth_question(context_text):
+            tool = tool_link("growth", lang)
         text = result.text.strip()
         if ask_age:
             text += "\n\n" + AGE_REFINES[lang]

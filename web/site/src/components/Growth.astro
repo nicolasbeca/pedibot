@@ -1,0 +1,74 @@
+---
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = t(lang).growth;
+---
+<section class="block" id="growth" data-lang={lang} data-t={JSON.stringify(T)}>
+  <h1 style="margin-top:8px">{T.h}</h1>
+  <p class="lede">{T.p}</p>
+  <div class="calc">
+    <div>
+      <div class="field"><label for="g-sex">{T.sex}</label><select id="g-sex"><option value="m">{T.boy}</option><option value="f">{T.girl}</option></select></div>
+      <div class="row">
+        <div class="field"><label for="g-y">{T.years}</label><input id="g-y" type="number" min="0" max="19" step="1" value="2" /></div>
+        <div class="field"><label for="g-m">{T.months}</label><input id="g-m" type="number" min="0" max="11" step="1" value="0" /></div>
+      </div>
+      <div class="field"><label for="g-w">{T.weight}</label><input id="g-w" type="number" min="1" max="150" step="0.1" placeholder="12.2" /></div>
+      <div class="field"><label for="g-h">{T.height}</label><input id="g-h" type="number" min="40" max="200" step="0.5" placeholder="87" /></div>
+      <p class="n">{T.note}</p>
+      <button class="btn btn-primary" id="g-go" type="button">{T.calc}</button>
+    </div>
+    <div class="result" id="g-out" aria-live="polite"></div>
+  </div>
+</section>
+<style>
+  .calc { display: grid; grid-template-columns: 1fr 1.2fr; gap: 24px; margin-top: 28px; }
+  @media (max-width: 800px) { .calc { grid-template-columns: 1fr; } }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .field { display: grid; gap: 6px; margin-bottom: 14px; }
+  .field label { font-family: Nunito, sans-serif; font-weight: 700; font-size: .9rem; }
+  .field input, .field select { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 12px; padding: 11px 14px; }
+  .n { font-size: .85rem; color: var(--ink-3); margin: 0 0 14px; }
+  .result { background: var(--cream); border-radius: var(--r); padding: 22px; min-height: 200px; }
+  .result :global(.ind) { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .result :global(.ind b) { display: block; font-family: Nunito, sans-serif; }
+  .result :global(.big) { font-family: "JetBrains Mono", monospace; font-size: 1.5rem; color: var(--sage-deep); }
+  :global(:root.night) .result :global(.big) { color: var(--sage); }
+  .result :global(.flag) { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: .85rem; margin-top: 4px; background: var(--mint); }
+  .result :global(.flag.low), .result :global(.flag.high) { background: var(--amber-soft); }
+  .result :global(.flag.urgent) { background: var(--coral); color: #fff; }
+  .result :global(.warn) { background: var(--amber-soft); border-inline-start: 4px solid var(--amber); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
+  .result :global(.warn.urgent) { border-color: var(--coral); }
+  .result :global(.src) { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+</style>
+<script>
+  const sec = document.getElementById('growth') as HTMLElement; const T = JSON.parse(sec.dataset.t || '{}'); const lang = sec.dataset.lang || 'en';
+  const out = document.getElementById('g-out')!;
+  const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+  const esc = (s: string) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+  const LOW = new Set(['underweight', 'stunted', 'wasted', 'thin']);
+  const HIGH = new Set(['overweight', 'obese']);
+  async function go() {
+    const months = Number($('g-y').value || 0) * 12 + Number($('g-m').value || 0);
+    const w = $('g-w').value, h = $('g-h').value;
+    if (!w && !h) return;
+    const q = new URLSearchParams({ sex: $('g-sex').value, age_months: String(months), lang });
+    if (w) q.set('weight_kg', w); if (h) q.set('height_cm', h);
+    const r = await fetch(`/api/growth?${q}`);
+    if (!r.ok) { out.innerHTML = `<div class="warn">${esc(T.out)}</div>`; return; }
+    const j = await r.json();
+    let html = j.indicators.map((i: any) => {
+      const cls = i.flag.startsWith('severely') ? 'urgent' : LOW.has(i.flag) ? 'low' : HIGH.has(i.flag) ? 'high' : '';
+      const p = Math.round(i.percentile);
+      return `<div class="ind"><b>${esc(i.label)}</b><span class="big">${esc(T.pct)} ${p}</span> <small>(${esc(T.z)} ${i.z > 0 ? '+' : ''}${i.z})</small><br><span class="flag ${cls}">${esc(i.flag_label)}</span><br><small>${esc(T.pct_text.replace('{p}', String(p)))}</small></div>`;
+    }).join('');
+    if (!w || !h) html += `<div class="warn">${esc(T.missing_height)}</div>`;
+    html += (j.warnings || []).map((x: string) => `<div class="warn urgent">⚠️ ${esc(x)} ${esc(T.urgent)}</div>`).join('');
+    html += (j.notes || []).map(() => `<div class="warn">${esc(T.out)}</div>`).join('');
+    html += `<p class="src">${esc(T.src)}: ${j.sources.map(esc).join(' · ')}</p>`;
+    out.innerHTML = html;
+  }
+  document.getElementById('g-go')!.addEventListener('click', go);
+  ['g-sex', 'g-y', 'g-m', 'g-w', 'g-h'].forEach(id => $(id).addEventListener('change', go));
+</script>

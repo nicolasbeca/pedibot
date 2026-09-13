@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import Growth from '../../components/Growth.astro';
+import { t } from '../../i18n';
+const lang = 'fr'; const s = t(lang);
+const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: s.growthpage_name, about: { '@type': 'MedicalTest', name: 'WHO child growth standards' }, audience: { '@type': 'Patient' } };
+---
+<Base lang={lang} title={s.growthpage_title} description={s.growthpage_desc} path="/fr/growth" jsonld={jsonld}>
+  <div class="wrap" style="padding-top:40px">
+    <p class="eyebrow">{s.nav_growth}</p>
+    <Growth lang={lang} />
+  </div>
+</Base>

@@ -11,7 +11,7 @@ import countryCodes from '../data/countries.json';
 const countries: [string, string][] = countryCodes.map((c: string) => [c, c === 'GB' ? 'UK' : c]);
 const ages = [['', s.not_set], ...s.chat_ages];
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support`, err_busy: s.err_busy, err_unavailable: s.err_unavailable, chat_call: s.chat_call, chat_retry: s.chat_retry, ages: s.chat_ages })}>
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, tool_growth: s.tool_growth, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support`, err_busy: s.err_busy, err_unavailable: s.err_unavailable, chat_call: s.chat_call, chat_retry: s.chat_retry, ages: s.chat_ages })}>
   <div class="chat" id="thread" aria-live="polite" aria-relevant="additions text">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo.svg" width="72" height="72" alt="" />
@@ -129,8 +129,8 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // table for the country, or the dose calculator. The engine sends the KIND, the words live
     // here — in i18n.ts, in eight languages, where every other word on the site lives.
     if (j.tool?.url) {
-      const label = j.tool.kind === 'vaccines' ? S.tool_vaccines : S.tool_dose;
-      const icon = j.tool.kind === 'vaccines' ? '💉' : '💊';
+      const label = j.tool.kind === 'vaccines' ? S.tool_vaccines : j.tool.kind === 'growth' ? S.tool_growth : S.tool_dose;
+      const icon = j.tool.kind === 'vaccines' ? '💉' : j.tool.kind === 'growth' ? '📏' : '💊';
       h += `<p class="guide">${icon} <a href="${esc(j.tool.url)}">${esc(label)}</a></p>`;
     }
     // Once, on a calm fifth question of the day. Never over an answer with a warning sign: a
