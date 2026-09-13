@@ -858,6 +858,9 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("who", "https://www.who.int/ru/news-room/questions-and-answers/item/child-growth-standards", "desarrollo", "ru", ["lactante", "preescolar"]),
     ("who", "https://www.who.int/ar/news-room/questions-and-answers/item/child-growth-standards", "desarrollo", "ar", ["lactante", "preescolar"]),
     ("nhs", "https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/", "desarrollo", "en", ["lactante", "preescolar"]),
+    # 13-sep-2026: la ictericia del recién nacido, para la regla `neonatal_jaundice`: sin ficha para
+    # padres, el bebé amarillo salía como rutina en las ocho lenguas.
+    ("nhs", "https://www.nhs.uk/conditions/jaundice-in-babies/", "recien_nacido", "en", ["recien_nacido"]),
 ]
 
 _DATE_PATTERNS = [

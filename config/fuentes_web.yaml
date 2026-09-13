@@ -6167,3 +6167,18 @@ sources:
   - preescolar
   url: https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+- doc_id: nhs_en_jaundice_in_babies
+  file: web/nhs_en_jaundice_in_babies.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Jaundice in babies
+  year: 2026
+  lang: en
+  topic: recien_nacido
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - recien_nacido
+  url: https://www.nhs.uk/conditions/jaundice-in-babies/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'

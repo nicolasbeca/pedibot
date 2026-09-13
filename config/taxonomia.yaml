@@ -54,7 +54,8 @@ topics:
                  недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao,
                  anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение, رضاع, أرضع, هزال, نحيف,
         appetite, apetito, appétit, appetit, аппетит, شهية, भूख, صلب, diversifica, beikost, stillen, allaite, allaitement, amamentar, amamentação, aleitamento, "грудное вскармливание", прикорм, स्तनपान, "ठोस आहार", "पूरक आहार", "الطعام الصلب", الفطام, फार्मूला, "दूध पिलाना",
-        "क्या खिलाना", "खिलाना शुरू", "क्या खिलाऊँ", "ठोस खाना", "فقر دم"]
+        "क्या खिलाना", "खिलाना शुरू", "क्या खिलाऊँ", "ठोस खाना", "فقر دم",
+        "no gana peso", "no engorda", "no sube de peso", "weight gain", "gaining weight", skinny, underweight, "prise de poids", "prend pas de poids", "nimmt nicht zu", gewichtszunahme, "набирает вес", "набор веса", "يزداد وزنه", "يزيد وزنه", "वजन नहीं बढ़", "वज़न नहीं बढ़", "ganha peso", "ganho de peso"]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice,
                  prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]

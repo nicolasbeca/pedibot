@@ -11,6 +11,12 @@
 # Arabic triggers appear bare and with the article: the match is a prefix on the token, and
 # "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
+  # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
+  not gaining weight: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  isn't gaining weight: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  gaining weight: [weight gain, centile lines]
+  skinny: [underweight, weight gain, malnutrition]
+  not putting on weight: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   # 13-sep-2026: «it burns when he pees» iba a quemaduras
   pees: [urinary tract infection, UTI]
   peeing: [urinary tract infection, UTI]
@@ -365,6 +371,14 @@ en:
   - colegio
   - contagio
 es:
+  # 13-sep-2026: «no gana peso» iba a los trastornos de la conducta alimentaria (la clave «peso»
+  # arrastra «conducta alimentaria»). Hay ficha en castellano —la de la OMS sobre malnutrición y
+  # la de sus patrones de crecimiento—, así que va aquí y no al puente al inglés.
+  no gana peso: [desnutrición, emaciación, insuficiencia ponderal, patrones de crecimiento, bajo peso]
+  no engorda: [desnutrición, emaciación, insuficiencia ponderal, patrones de crecimiento, bajo peso]
+  no sube de peso: [desnutrición, emaciación, insuficiencia ponderal, patrones de crecimiento, bajo peso]
+  muy delgado: [desnutrición, emaciación, bajo peso, patrones de crecimiento]
+  muy delgada: [desnutrición, emaciación, bajo peso, patrones de crecimiento]
   desmay:
   - síncope
   - desmayo
@@ -539,10 +553,22 @@ es:
   - suicida
   suicid:
   - conducta suicida
+  # 13-sep-2026: «peso» a secas arrastraba «conducta alimentaria» y «obesidad» a CUALQUIER pregunta
+  # de peso, y «mi hijo de 3 años no gana peso» acababa en los trastornos alimentarios. Partido por
+  # lo que dice el padre: perder peso → conducta alimentaria (g26, la adolescente que apenas come);
+  # sobrepeso → obesidad; «peso» solo, «peso».
   peso:
   - peso
-  - conducta alimentaria
-  - obesidad
+  perdido mucho peso: [conducta alimentaria, desnutrición]
+  perdido peso: [conducta alimentaria, desnutrición]
+  pierde peso: [conducta alimentaria, desnutrición]
+  perdiendo peso: [conducta alimentaria, desnutrición]
+  bajado de peso: [conducta alimentaria, desnutrición]
+  adelgaz: [conducta alimentaria, desnutrición]
+  sobrepeso: [obesidad, sobrepeso]
+  gordo: [obesidad, sobrepeso]
+  gordita: [obesidad, sobrepeso]
+  kilos de más: [obesidad, sobrepeso]
   papilla:
   - alimentación complementaria
   sólidos:
@@ -702,6 +728,11 @@ fr:
   - bronchiolite
   - virus respiratoire syncytial
 fr_en:
+  # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
+  prend pas de poids: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  prise de poids: [weight gain, centile lines]
+  grossit pas: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  trop maigre: [underweight, malnutrition]
   # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
   percentile: [centile, growth standards]
   courbe de croissance: [growth chart, growth standards]
@@ -1312,6 +1343,11 @@ de_es:
   - urgencias
   - '112'
 de_en:
+  # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
+  nimmt nicht zu: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  gewichtszunahme: [weight gain, centile lines]
+  zu dünn: [underweight, malnutrition]
+  sehr dünn: [underweight, malnutrition]
   # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
   wachstumskurve: [growth chart, growth standards, centile]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
@@ -2126,6 +2162,9 @@ ru_es:
   - respiración
   - dificultad respiratoria
 ru_en:
+  # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
+  набирает вес: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  набор веса: [weight gain, centile lines]
   # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
   кривая роста: [growth chart, growth standards]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
@@ -3042,6 +3081,9 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
+  يزداد وزنه: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  يزيد وزنه: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
   مئين: [percentile, centile, growth standards, centile lines, weight chart]
   المئين: [percentile, centile, growth standards, centile lines, weight chart]
@@ -3975,6 +4017,12 @@ pt_es:
   - urgencias
   - '112'
 pt_en:
+  # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
+  não ganha peso: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  nao ganha peso: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  ganho de peso: [weight gain, centile lines]
+  não engorda: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  muito magro: [underweight, malnutrition]
   # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
   curva de crescimento: [growth chart, growth standards]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen
@@ -4891,6 +4939,9 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
+  वजन नहीं बढ़: [weight gain, gaining weight, centile lines, underweight, malnutrition]
+  वज़न नहीं बढ़: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   # 13-sep-2026: percentiles y curvas de crecimiento → las preguntas de la OMS y el NHS
   पर्सेंटाइल: [percentile, centile, growth chart]
   ग्रोथ चार्ट: [growth chart, growth standards]

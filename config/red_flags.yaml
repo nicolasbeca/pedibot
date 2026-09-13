@@ -2449,6 +2449,32 @@ rules:
   - "(teve|tem|est[aá] com|pegou|apanhou) (uma )?insola[cç][aã]o"
   - "लू (लग गई|लग गया|लगी है|लगी|लग गयी)|हीट ?स्ट्रोक (हो गया|हुआ|है)"
   - "(lu|loo) lag (gayi|gai|gaya)"
+- id: neonatal_jaundice
+  level: urgent
+  source: nhs_en_jaundice_in_babies
+  reason_es: "Bebé con la piel o los ojos amarillos: cita urgente hoy. Si tiene menos de 24 horas, está adormilado, no come, tiene fiebre o no moja pañales, a urgencias ya"
+  reason_en: "Baby with yellow skin or eyes: urgent appointment today. If under 24 hours old, very sleepy, not feeding, feverish or no wet nappies, go to emergency now"
+  reason_fr: "Bébé à la peau ou aux yeux jaunes : consultation en urgence aujourd'hui. S'il a moins de 24 heures, est très somnolent, ne tète pas, a de la fièvre ou ne mouille plus ses couches, urgences tout de suite"
+  reason_de: "Baby mit gelber Haut oder gelben Augen: heute dringend zum Arzt. Unter 24 Stunden alt, sehr schläfrig, trinkt nicht, Fieber oder keine nassen Windeln: sofort in die Notaufnahme"
+  reason_ru: "Малыш с жёлтой кожей или глазами: срочно к врачу сегодня. Если ему меньше 24 часов, он очень сонный, не ест, у него температура или нет мокрых подгузников — сразу в неотложную помощь"
+  reason_ar: "رضيع بجلد أو عينين صفراوين: موعد عاجل اليوم. إذا كان عمره أقل من 24 ساعة أو نعساناً جداً أو لا يرضع أو لديه حرارة أو لا يبلل الحفاض، إلى الطوارئ الآن"
+  reason_pt: "Bebé com a pele ou os olhos amarelos: consulta urgente hoje. Se tiver menos de 24 horas, estiver muito sonolento, não mamar, tiver febre ou não molhar fraldas, urgência já"
+  reason_hi: "शिशु की त्वचा या आँखें पीली: आज ही डॉक्टर को दिखाएँ। अगर 24 घंटे से छोटा है, बहुत सुस्त है, दूध नहीं पी रहा, बुखार है या डायपर गीला नहीं हो रहा, तो अभी इमरजेंसी जाएँ"
+  # 13-sep-2026. Rutina en las ocho lenguas hasta hoy; la ficha del NHS pide cita urgente tras
+  # las 24 horas y emergencia antes o con signos. Piel, ojos, o la palabra ictericia: nunca
+  # «amarillo» a secas, porque la caca amarilla es lo normal en un bebé de pecho y los mocos
+  # amarillos son mocos (ver tests/test_newborn_jaundice.py).
+  patterns:
+  - 'ictericia|icter[ií]cia|jaundice|jaunisse|ict[èe]re|gelbsucht|ikterus|желтух|يرقان|أبو صفار|صفار الولادة|पीलिया'
+  - '(piel|ojos|cara|carita|skin|eyes|whites of|face|peau|yeux|visage|haut|augen|gesicht|pele|olhos|rosto|кож|глаз|белк|лиц).{0,25}(amarill|yellow|jaune|gelb|amarel|желт|жёлт)'
+  - '(amarill|yellow|jaune|gelb|amarel|желт|жёлт)\w*.{0,12}(piel|ojos|skin|eyes|peau|yeux|haut|augen|pele|olhos|кож|глаз)'
+  # sin «do/de/del/da/of» delante: «o cocô do bebê está amarelo» es el pañal, no el bebé
+  - '(?<!do )(?<!de )(?<!da )(?<!del )(?<!of )(?<!du )(reci[eé]n nacido|beb[eéê]|neonato|nouveau.n[eé]|b[eé]b[eé]|rec[eé]m.nascido|newborn|baby|infant)\w*\s+(est[aá]|se ve|se ha puesto|se puso|looks?|looking|turned|turning|is (so |very )?|a l.air|est|ficou|ficando)\s*(muy |tout |bem |muito )?(amarill|yellow|jaune|amarel)'
+  - '(neugeboren\w*|baby|s[äa]ugling)\s+(ist|wird|sieht)\s+(ganz |sehr )?gelb'
+  - 'пожелтел|желтеет'
+  - '(الجلد|جلده|جلدها|عيون|عينا|عينيه|عيناه|بشرته|بشرتها|وجهه|بياض).{0,25}(أصفر|صفراء|مصفر|اصفرار)'
+  - '(رضيع|مولود|حديث الولادة)\w*.{0,25}(لونه|لونها) (أصفر|اصفر)|اصفرار (الجلد|العين|العينين|البشرة)'
+  - '(त्वचा|आँखें|आंखें|आँखों|आंखों|चेहरा|शरीर).{0,25}पील|(नवजात|शिशु).{0,25}पीला पड़|पीली पड़'
 context:
   fever:
   - fi[eè]vre
