@@ -9,27 +9,77 @@
       "description": "A parent's paediatric question answered only from published guidelines (WHO, NHS, CDC, SEUP, AEP, MedlinePlus, national health ministries), in English, Spanish, French, German, Russian, Arabic, Portuguese or Hindi. A rule-based triage runs before the model and flags emergencies with the country's number; doses come from fixed tables, never from the model; an answer that the sources do not support is refused instead of guessed.",
       "requirements": {
         "type": "object",
-        "required": ["question"],
+        "required": [
+          "question"
+        ],
         "description": "The question as a parent would write it, and where they are.",
         "properties": {
-          "question": {"type": "string", "description": "The question in plain words, e.g. 'my 2 year old has had a fever of 39 for two days'"},
-          "lang": {"type": "string", "enum": ["en", "es", "fr", "de", "ru", "ar", "pt", "hi"], "default": "en", "description": "Language of the answer. Sources are quoted whatever language they were written in."},
-          "country": {"type": "string", "description": "ISO 3166-1 alpha-2 of the parent's country, so the emergency number is the right one"}
+          "question": {
+            "type": "string",
+            "description": "The question in plain words, e.g. 'my 2 year old has had a fever of 39 for two days'"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "en",
+              "es",
+              "fr",
+              "de",
+              "ru",
+              "ar",
+              "pt",
+              "hi"
+            ],
+            "default": "en",
+            "description": "Language of the answer. Sources are quoted whatever language they were written in."
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 of the parent's country, so the emergency number is the right one"
+          }
         }
       },
       "deliverable": {
         "type": "object",
         "description": "The answer with its triage level and the documents behind it.",
         "properties": {
-          "level": {"type": "string", "description": "routine, urgent, emergency or mental_health, from the rule-based triage"},
-          "banner": {"type": ["string", "null"], "description": "The warning to show first when the level is not routine, with the country's number"},
-          "answer": {"type": "string", "description": "The answer, naming the organisation behind each clinical sentence"},
-          "sources": {"type": "array", "items": {"type": "string"}, "description": "The documents cited, with organisation, title and URL"},
-          "verification": {"type": "string", "description": "ok, regenerated, no_source or asked_age: how the answer passed the citation check"},
-          "disclaimer": {"type": "string", "description": "Information from published guidelines, not medical advice"}
+          "level": {
+            "type": "string",
+            "description": "routine, urgent, emergency or mental_health, from the rule-based triage"
+          },
+          "banner": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The warning to show first when the level is not routine, with the country's number"
+          },
+          "answer": {
+            "type": "string",
+            "description": "The answer, naming the organisation behind each clinical sentence"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The documents cited, with organisation, title and URL"
+          },
+          "verification": {
+            "type": "string",
+            "description": "ok, regenerated, no_source or asked_age: how the answer passed the citation check"
+          },
+          "disclaimer": {
+            "type": "string",
+            "description": "Information from published guidelines, not medical advice"
+          }
         }
       },
-      "example": {"question": "my 2 year old has had a fever of 39 for two days", "lang": "en", "country": "GB"}
+      "example": {
+        "question": "my 2 year old has had a fever of 39 for two days",
+        "lang": "en",
+        "country": "GB"
+      }
     },
     {
       "name": "child_friendly_health_explanation",
@@ -38,27 +88,81 @@
       "description": "The same sourced answer, rewritten to be read aloud to a child aged 5 to 10: three to five short, warm sentences, no frightening words, one simple comparison and one thing the child can do. The medical content still comes only from published guidelines and the triage still runs first. For parent apps, school nurses and companion agents, in eight languages.",
       "requirements": {
         "type": "object",
-        "required": ["question", "mode"],
+        "required": [
+          "question",
+          "mode"
+        ],
         "description": "What the child should understand, and that the answer is for the child.",
         "properties": {
-          "question": {"type": "string", "description": "What to explain, e.g. 'why do I have a fever?' or 'what is a vaccine?'"},
-          "mode": {"type": "string", "enum": ["child"], "description": "Always 'child': the answer is written for a 5 to 10 year old"},
-          "lang": {"type": "string", "enum": ["en", "es", "fr", "de", "ru", "ar", "pt", "hi"], "default": "en", "description": "Language of the explanation"},
-          "country": {"type": "string", "description": "ISO 3166-1 alpha-2, used if the triage finds a warning sign"}
+          "question": {
+            "type": "string",
+            "description": "What to explain, e.g. 'why do I have a fever?' or 'what is a vaccine?'"
+          },
+          "mode": {
+            "type": "string",
+            "enum": [
+              "child"
+            ],
+            "description": "Always 'child': the answer is written for a 5 to 10 year old"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "en",
+              "es",
+              "fr",
+              "de",
+              "ru",
+              "ar",
+              "pt",
+              "hi"
+            ],
+            "default": "en",
+            "description": "Language of the explanation"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2, used if the triage finds a warning sign"
+          }
         }
       },
       "deliverable": {
         "type": "object",
         "description": "A short explanation for a child, with the triage result kept for the adult.",
         "properties": {
-          "answer": {"type": "string", "description": "The explanation, in child-friendly language"},
-          "level": {"type": "string", "description": "Triage level; if not routine, an adult must read the banner"},
-          "banner": {"type": ["string", "null"], "description": "Warning for the adult when a warning sign was found"},
-          "sources": {"type": "array", "items": {"type": "string"}, "description": "The documents the content comes from"},
-          "disclaimer": {"type": "string", "description": "Information from published guidelines, not medical advice"}
+          "answer": {
+            "type": "string",
+            "description": "The explanation, in child-friendly language"
+          },
+          "level": {
+            "type": "string",
+            "description": "Triage level; if not routine, an adult must read the banner"
+          },
+          "banner": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Warning for the adult when a warning sign was found"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The documents the content comes from"
+          },
+          "disclaimer": {
+            "type": "string",
+            "description": "Information from published guidelines, not medical advice"
+          }
         }
       },
-      "example": {"question": "why do I have a fever?", "mode": "child", "lang": "en"}
+      "example": {
+        "question": "why do I have a fever?",
+        "mode": "child",
+        "lang": "en"
+      }
     },
     {
       "name": "paediatric_warning_sign_check",
@@ -67,28 +171,87 @@
       "description": "Checks a description of a child's symptoms against 46 fixed warning-sign rules, each tied to a published parent sheet, in eight languages and four scripts: breathing difficulty, seizures, meningitis signs, dehydration, poisoning including kerosene, snake and dog bites, heatstroke, newborn jaundice and more. Returns the level, the rules that fired with their source, the warning text and the country's emergency number. No model involved: the same result every time.",
       "requirements": {
         "type": "object",
-        "required": ["symptoms"],
+        "required": [
+          "symptoms"
+        ],
         "description": "What is happening to the child, in the parent's own words.",
         "properties": {
-          "symptoms": {"type": "string", "description": "The description, e.g. 'my baby is breathing fast and his lips look blue'"},
-          "lang": {"type": "string", "enum": ["en", "es", "fr", "de", "ru", "ar", "pt", "hi"], "default": "en", "description": "Language of the warning and the reasons"},
-          "country": {"type": "string", "description": "ISO 3166-1 alpha-2, to return the right emergency number"}
+          "symptoms": {
+            "type": "string",
+            "description": "The description, e.g. 'my baby is breathing fast and his lips look blue'"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "en",
+              "es",
+              "fr",
+              "de",
+              "ru",
+              "ar",
+              "pt",
+              "hi"
+            ],
+            "default": "en",
+            "description": "Language of the warning and the reasons"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2, to return the right emergency number"
+          }
         }
       },
       "deliverable": {
         "type": "object",
         "description": "The triage result from the fixed rules.",
         "properties": {
-          "level": {"type": "string", "description": "routine, urgent, emergency or mental_health"},
-          "rules": {"type": "array", "items": {"type": "object"}, "description": "Each rule that fired: id, level, reason in the requested language and the document it comes from"},
-          "banner": {"type": ["string", "null"], "description": "The warning to show, or null when routine"},
-          "call": {"type": ["string", "null"], "description": "The number to dial, only for an emergency in a known country"},
-          "numbers": {"type": "object", "description": "The country's emergency and poison numbers"},
-          "age_months": {"type": ["number", "null"], "description": "The age read from the text, if any"},
-          "disclaimer": {"type": "string", "description": "Not a diagnosis"}
+          "level": {
+            "type": "string",
+            "description": "routine, urgent, emergency or mental_health"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Each rule that fired: id, level, reason in the requested language and the document it comes from"
+          },
+          "banner": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The warning to show, or null when routine"
+          },
+          "call": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "The number to dial, only for an emergency in a known country"
+          },
+          "numbers": {
+            "type": "object",
+            "description": "The country's emergency and poison numbers"
+          },
+          "age_months": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "description": "The age read from the text, if any"
+          },
+          "disclaimer": {
+            "type": "string",
+            "description": "Not a diagnosis"
+          }
         }
       },
-      "example": {"symptoms": "my baby is breathing fast and his lips look blue", "lang": "en", "country": "US"}
+      "example": {
+        "symptoms": "my baby is breathing fast and his lips look blue",
+        "lang": "en",
+        "country": "US"
+      }
     },
     {
       "name": "child_growth_percentile",
@@ -97,30 +260,100 @@
       "description": "Where a child sits on the growth charts, calculated exactly from the WHO LMS tables (Child Growth Standards 2006, Growth Reference 2007) and, for the United States and Australia after age 2, the CDC 2000 charts: weight, height, weight-for-height and BMI percentiles and z-scores, with the WHO cut-offs (wasting, stunting, overweight, thinness). Severe acute malnutrition is flagged as urgent. With a country, it says which chart that country's health record uses; 21 countries covered.",
       "requirements": {
         "type": "object",
-        "required": ["sex", "age_months"],
+        "required": [
+          "sex",
+          "age_months"
+        ],
         "description": "The child's sex, age and at least one measurement.",
         "properties": {
-          "sex": {"type": "string", "enum": ["m", "f"], "description": "m for a boy, f for a girl"},
-          "age_months": {"type": "number", "description": "Age in months, 0 to 228 (240 with the CDC charts)"},
-          "weight_kg": {"type": "number", "description": "Weight in kilograms"},
-          "height_cm": {"type": "number", "description": "Length (under 2, lying down) or height in centimetres"},
-          "country": {"type": "string", "description": "ISO 3166-1 alpha-2: picks the chart the country uses when PediBot has it, and reports which one it uses"},
-          "lang": {"type": "string", "enum": ["en", "es", "fr", "de", "ru", "ar", "pt", "hi"], "default": "en", "description": "Language of the labels"}
+          "sex": {
+            "type": "string",
+            "enum": [
+              "m",
+              "f"
+            ],
+            "description": "m for a boy, f for a girl"
+          },
+          "age_months": {
+            "type": "number",
+            "description": "Age in months, 0 to 228 (240 with the CDC charts)"
+          },
+          "weight_kg": {
+            "type": "number",
+            "description": "Weight in kilograms"
+          },
+          "height_cm": {
+            "type": "number",
+            "description": "Length (under 2, lying down) or height in centimetres"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2: picks the chart the country uses when PediBot has it, and reports which one it uses"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "en",
+              "es",
+              "fr",
+              "de",
+              "ru",
+              "ar",
+              "pt",
+              "hi"
+            ],
+            "default": "en",
+            "description": "Language of the labels"
+          }
         }
       },
       "deliverable": {
         "type": "object",
         "description": "Each indicator with its percentile, and the chart it came from.",
         "properties": {
-          "level": {"type": "string", "description": "routine, or urgent for severe acute malnutrition"},
-          "reference": {"type": "string", "description": "who or cdc: the tables used"},
-          "indicators": {"type": "array", "items": {"type": "object"}, "description": "name, label, value, z, percentile, flag and flag_label for each indicator"},
-          "warnings": {"type": "array", "items": {"type": "string"}, "description": "What to do when the result is urgent"},
-          "country": {"type": "object", "description": "The charts the country's health record uses, how well PediBot's calculation matches them, and the official source"},
-          "sources": {"type": "array", "items": {"type": "string"}, "description": "The WHO or CDC reference used"}
+          "level": {
+            "type": "string",
+            "description": "routine, or urgent for severe acute malnutrition"
+          },
+          "reference": {
+            "type": "string",
+            "description": "who or cdc: the tables used"
+          },
+          "indicators": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "name, label, value, z, percentile, flag and flag_label for each indicator"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "What to do when the result is urgent"
+          },
+          "country": {
+            "type": "object",
+            "description": "The charts the country's health record uses, how well PediBot's calculation matches them, and the official source"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The WHO or CDC reference used"
+          }
         }
       },
-      "example": {"sex": "f", "age_months": 30, "weight_kg": 12.1, "height_cm": 89, "country": "IN", "lang": "en"}
+      "example": {
+        "sex": "f",
+        "age_months": 30,
+        "weight_kg": 12.1,
+        "height_cm": 89,
+        "country": "IN",
+        "lang": "en"
+      }
     },
     {
       "name": "child_medicine_dose",
@@ -129,31 +362,98 @@
       "description": "Paracetamol or ibuprofen dose for a child by weight, read from fixed tables: the model is never involved in a number. Takes the brand printed on the bottle (32 brands across 27 countries: Calpol, Tylenol, Crocin, Dolo, Adol, Panadol, Apiretal, Dalsy, Nurofen, Advil and more) or the generic name, and returns the mg range, the millilitres for each strength sold, the interval, the daily maximum and the age warnings. Refuses and refers when the child is too young to be medicated at home.",
       "requirements": {
         "type": "object",
-        "required": ["drug", "weight_kg"],
+        "required": [
+          "drug",
+          "weight_kg"
+        ],
         "description": "Which medicine, for a child of what weight and age.",
         "properties": {
-          "drug": {"type": "string", "description": "Brand printed on the bottle or the generic name"},
-          "weight_kg": {"type": "number", "description": "The child's weight in kilograms; the dose is calculated from it"},
-          "age_months": {"type": "integer", "description": "Age in months, if known: it changes the warnings and can refuse the dose"},
-          "lang": {"type": "string", "enum": ["en", "es", "fr", "de", "ru", "ar", "pt", "hi"], "default": "en", "description": "Language of the warnings"}
+          "drug": {
+            "type": "string",
+            "description": "Brand printed on the bottle or the generic name"
+          },
+          "weight_kg": {
+            "type": "number",
+            "description": "The child's weight in kilograms; the dose is calculated from it"
+          },
+          "age_months": {
+            "type": "integer",
+            "description": "Age in months, if known: it changes the warnings and can refuse the dose"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "en",
+              "es",
+              "fr",
+              "de",
+              "ru",
+              "ar",
+              "pt",
+              "hi"
+            ],
+            "default": "en",
+            "description": "Language of the warnings"
+          }
         }
       },
       "deliverable": {
         "type": "object",
         "description": "The dose read from a fixed table, with the millilitres for each presentation sold and its limits.",
         "properties": {
-          "generic": {"type": "string", "description": "The active substance the brand resolves to"},
-          "mg_min": {"type": "number", "description": "Lower end of the dose in milligrams for this weight"},
-          "mg_max": {"type": "number", "description": "Upper end of the dose in milligrams for this weight"},
-          "ml_by_form": {"type": "array", "items": {"type": "object"}, "description": "Millilitres for each strength sold"},
-          "interval_hours": {"type": "array", "items": {"type": "number"}, "description": "Minimum and maximum hours between doses"},
-          "max_doses_per_day": {"type": "integer", "description": "Hard ceiling of doses in 24 hours"},
-          "warnings": {"type": "array", "items": {"type": "string"}, "description": "Age limits and combinations to avoid"},
-          "refer": {"type": "boolean", "description": "true when the child must be seen instead of medicated at home"},
-          "disclaimer": {"type": "string", "description": "Information from published guidelines, not a prescription"}
+          "generic": {
+            "type": "string",
+            "description": "The active substance the brand resolves to"
+          },
+          "mg_min": {
+            "type": "number",
+            "description": "Lower end of the dose in milligrams for this weight"
+          },
+          "mg_max": {
+            "type": "number",
+            "description": "Upper end of the dose in milligrams for this weight"
+          },
+          "ml_by_form": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Millilitres for each strength sold"
+          },
+          "interval_hours": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "description": "Minimum and maximum hours between doses"
+          },
+          "max_doses_per_day": {
+            "type": "integer",
+            "description": "Hard ceiling of doses in 24 hours"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Age limits and combinations to avoid"
+          },
+          "refer": {
+            "type": "boolean",
+            "description": "true when the child must be seen instead of medicated at home"
+          },
+          "disclaimer": {
+            "type": "string",
+            "description": "Information from published guidelines, not a prescription"
+          }
         }
       },
-      "example": {"drug": "Calpol", "weight_kg": 14, "age_months": 36, "lang": "en"}
+      "example": {
+        "drug": "Calpol",
+        "weight_kg": 14,
+        "age_months": 36,
+        "lang": "en"
+      }
     },
     {
       "name": "childhood_vaccination_schedule",
@@ -162,27 +462,80 @@
       "description": "The official childhood vaccination schedule of a country, transcribed from its health authority, for 8 countries: Brazil, Portugal, Spain, the United Kingdom, the United States, France, Germany and India. Returns every age with the vaccines due and what each protects against, the issuing body, the source URL and the review date. With the child's age it also returns what is due now and what comes next. A transcribed table, not a recollection of one.",
       "requirements": {
         "type": "object",
-        "required": ["country"],
+        "required": [
+          "country"
+        ],
         "description": "Which country, and optionally the child's age.",
         "properties": {
-          "country": {"type": "string", "description": "ISO 3166-1 alpha-2: BR, PT, ES, GB, US, FR, DE or IN"},
-          "age_months": {"type": "number", "description": "The child's age in months, to return what is due now and next"},
-          "lang": {"type": "string", "enum": ["en", "es", "fr", "de", "ru", "ar", "pt", "hi"], "default": "en", "description": "Language of the labels"}
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2: BR, PT, ES, GB, US, FR, DE or IN"
+          },
+          "age_months": {
+            "type": "number",
+            "description": "The child's age in months, to return what is due now and next"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "en",
+              "es",
+              "fr",
+              "de",
+              "ru",
+              "ar",
+              "pt",
+              "hi"
+            ],
+            "default": "en",
+            "description": "Language of the labels"
+          }
         }
       },
       "deliverable": {
         "type": "object",
         "description": "The schedule, and what is due at the given age.",
         "properties": {
-          "country": {"type": "string", "description": "The country code resolved"},
-          "meta": {"type": "object", "description": "Name of the schedule, issuing body, source URL and review date"},
-          "schedule": {"type": "array", "items": {"type": "object"}, "description": "Each age with the vaccines due"},
-          "due": {"type": "array", "items": {"type": "object"}, "description": "What is due at the given age"},
-          "next": {"type": ["object", "null"], "description": "The next appointment after that age"},
-          "text": {"type": "string", "description": "The same, as a readable text"}
+          "country": {
+            "type": "string",
+            "description": "The country code resolved"
+          },
+          "meta": {
+            "type": "object",
+            "description": "Name of the schedule, issuing body, source URL and review date"
+          },
+          "schedule": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "Each age with the vaccines due"
+          },
+          "due": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "What is due at the given age"
+          },
+          "next": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "description": "The next appointment after that age"
+          },
+          "text": {
+            "type": "string",
+            "description": "The same, as a readable text"
+          }
         }
       },
-      "example": {"country": "IN", "age_months": 9, "lang": "en"}
+      "example": {
+        "country": "IN",
+        "age_months": 9,
+        "lang": "en"
+      }
     },
     {
       "name": "oral_rehydration_plan",
@@ -191,25 +544,72 @@
       "description": "How much oral rehydration solution to offer a child who is vomiting or has diarrhoea: volume per intake, how often, and what to do when the child brings it back up. By weight and age, from the AEMPS leaflet for the solution, the SEUP parent sheet on vomiting and the UK Dioralyte leaflet. These are fluids, not medicine, and the figures come from the leaflets, never from a model.",
       "requirements": {
         "type": "object",
-        "required": ["weight_kg"],
+        "required": [
+          "weight_kg"
+        ],
         "description": "The child's weight and, if known, age.",
         "properties": {
-          "weight_kg": {"type": "number", "description": "The child's weight in kilograms"},
-          "age_months": {"type": "integer", "description": "Age in months: under and over one year get different volumes"},
-          "lang": {"type": "string", "enum": ["en", "es", "fr", "de", "ru", "ar", "pt", "hi"], "default": "en", "description": "Language of the guidance"}
+          "weight_kg": {
+            "type": "number",
+            "description": "The child's weight in kilograms"
+          },
+          "age_months": {
+            "type": "integer",
+            "description": "Age in months: under and over one year get different volumes"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "en",
+              "es",
+              "fr",
+              "de",
+              "ru",
+              "ar",
+              "pt",
+              "hi"
+            ],
+            "default": "en",
+            "description": "Language of the guidance"
+          }
         }
       },
       "deliverable": {
         "type": "object",
         "description": "The rehydration plan from the leaflets.",
         "properties": {
-          "lines": {"type": "array", "items": {"type": "string"}, "description": "The guidance, step by step"},
-          "warnings": {"type": "array", "items": {"type": "string"}, "description": "When to stop and seek care"},
-          "sources": {"type": "array", "items": {"type": "string"}, "description": "The leaflets the figures come from"},
-          "refer": {"type": "boolean", "description": "true when the child must be seen"}
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The guidance, step by step"
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "When to stop and seek care"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The leaflets the figures come from"
+          },
+          "refer": {
+            "type": "boolean",
+            "description": "true when the child must be seen"
+          }
         }
       },
-      "example": {"weight_kg": 12, "age_months": 24, "lang": "en"}
+      "example": {
+        "weight_kg": 12,
+        "age_months": 24,
+        "lang": "en"
+      }
     },
     {
       "name": "paediatric_guide_finder",
@@ -218,21 +618,49 @@
       "description": "Finds PediBot's published parent guides on a topic, in the requested language: title, topic and link. Each guide is written only from published guidelines and names the organisation behind every clinical sentence. Useful for agents that want to hand a parent something to read rather than a paragraph: fever, cough, vomiting, rashes, head injury, vaccines, first foods, screens and sleep, development milestones and more, in eight languages.",
       "requirements": {
         "type": "object",
-        "required": ["topic"],
+        "required": [
+          "topic"
+        ],
         "description": "The subject, and the language the parent reads.",
         "properties": {
-          "topic": {"type": "string", "description": "A few words about the subject, e.g. 'fever', 'head lice', 'first solid foods'"},
-          "lang": {"type": "string", "enum": ["en", "es", "fr", "de", "ru", "ar", "pt", "hi"], "default": "en", "description": "Language of the guides"}
+          "topic": {
+            "type": "string",
+            "description": "A few words about the subject, e.g. 'fever', 'head lice', 'first solid foods'"
+          },
+          "lang": {
+            "type": "string",
+            "enum": [
+              "en",
+              "es",
+              "fr",
+              "de",
+              "ru",
+              "ar",
+              "pt",
+              "hi"
+            ],
+            "default": "en",
+            "description": "Language of the guides"
+          }
         }
       },
       "deliverable": {
         "type": "object",
         "description": "Up to five guides, best match first.",
         "properties": {
-          "guides": {"type": "array", "items": {"type": "object"}, "description": "title, topic and url of each guide"}
+          "guides": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            },
+            "description": "title, topic and url of each guide"
+          }
         }
       },
-      "example": {"topic": "fever", "lang": "es"}
+      "example": {
+        "topic": "fever",
+        "lang": "es"
+      }
     }
   ],
   "resources": [
@@ -244,8 +672,14 @@
         "type": "object",
         "description": "Optional country and language.",
         "properties": {
-          "country": {"type": "string", "description": "ISO 3166-1 alpha-2; omit it to list the countries covered"},
-          "lang": {"type": "string", "description": "Language of the fallback phrasing when a number has a note"}
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2; omit it to list the countries covered"
+          },
+          "lang": {
+            "type": "string",
+            "description": "Language of the fallback phrasing when a number has a note"
+          }
         }
       }
     },
@@ -253,13 +687,21 @@
       "name": "growth_chart_by_country",
       "url": "https://pedibot.xyz/api/growth/countries",
       "description": "Which growth chart each country's child health record uses, read from official sources, for 21 countries: WHO, CDC, UK-WHO, IAP 2015, the Saudi, French and German national charts and more, with the age range of each chart and the link to the ministry or society that sets it.",
-      "params": {"type": "object", "properties": {}, "description": "No parameters: plain GET."}
+      "params": {
+        "type": "object",
+        "properties": {},
+        "description": "No parameters: plain GET."
+      }
     },
     {
       "name": "paediatric_source_catalogue_2026",
       "url": "https://pedibot.xyz/sources.json",
       "description": "Every document PediBot is allowed to quote, about 480 today: organisation, title, year, topic, language, licence and the URL of the original. The provenance behind every answer, published so it can be checked instead of trusted.",
-      "params": {"type": "object", "properties": {}, "description": "No parameters: plain GET."}
+      "params": {
+        "type": "object",
+        "properties": {},
+        "description": "No parameters: plain GET."
+      }
     },
     {
       "name": "childhood_vaccination_schedules_8_countries",
@@ -269,9 +711,18 @@
         "type": "object",
         "description": "One country per call.",
         "properties": {
-          "country": {"type": "string", "description": "BR, PT, ES, GB, US, FR, DE or IN"},
-          "age_months": {"type": "number", "description": "Optional age in months, to get what is due now"},
-          "lang": {"type": "string", "description": "Language of the labels: en, es, fr, de, ru, ar, pt or hi"}
+          "country": {
+            "type": "string",
+            "description": "BR, PT, ES, GB, US, FR, DE or IN"
+          },
+          "age_months": {
+            "type": "number",
+            "description": "Optional age in months, to get what is due now"
+          },
+          "lang": {
+            "type": "string",
+            "description": "Language of the labels: en, es, fr, de, ru, ar, pt or hi"
+          }
         }
       }
     },
@@ -283,7 +734,35 @@
         "type": "object",
         "description": "Optional language.",
         "properties": {
-          "lang": {"type": "string", "description": "en, es, fr, de, ru, ar, pt or hi"}
+          "lang": {
+            "type": "string",
+            "description": "en, es, fr, de, ru, ar, pt or hi"
+          }
+        }
+      }
+    },
+    {
+      "name": "paediatric_guides_feed",
+      "url": "https://pedibot.xyz/rss.xml",
+      "description": "The feed of PediBot parent-facing guides. Each one is written only from published guidelines and names the organisation behind every clinical sentence.",
+      "params": {
+        "type": "object",
+        "properties": {},
+        "description": "No parameters: plain GET."
+      }
+    },
+    {
+      "name": "child_medicine_brand_table_27_countries",
+      "url": "https://pedibot.xyz/api/drugs",
+      "description": "Which brand is which children's medicine, and at what concentration: 32 brands across 27 countries (Calpol, Tylenol, Crocin, Dolo, Adol, Panadol, Apiretal, Dalsy, Nurofen, Advil and more), mapped to paracetamol or ibuprofen with the mg per ml of every presentation sold.",
+      "params": {
+        "type": "object",
+        "description": "Optional country filter.",
+        "properties": {
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2, to list only the brands sold there"
+          }
         }
       }
     }
