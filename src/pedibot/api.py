@@ -535,7 +535,8 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             a = engine.answer_without_model(body.question, body.country, body.lang, "degraded")
         else:
             try:
-                a = engine.ask(body.question, country=body.country, lang=body.lang)
+                # el modo niño viaja también desde un agente: «child_friendly_health_explanation»
+                a = engine.ask(body.question, country=body.country, lang=body.lang, mode=body.mode)
             except LLMUnavailable:
                 a = engine.answer_without_model(body.question, body.country, body.lang, "no_model")
         ops.log_answer(
@@ -688,6 +689,76 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 "charts": pais["charts"],
             }
         return out
+
+    # ── para agentes (y para quien quiera): lo que PediBot ya hace sin modelo (13-sep-2026) ──
+    @app.get("/api/growth/countries")
+    def growth_countries() -> dict[str, object]:
+        """Qué tabla de crecimiento usa la cartilla de cada país, con su fuente oficial."""
+        return {"countries": _growth_countries}
+
+    @app.get("/api/triage")
+    def triage_check(
+        text: str = Query(min_length=2, max_length=1500),
+        lang: str = Query(default="en", pattern=_LANG_PATTERN),
+        country: str | None = Query(default=None, min_length=2, max_length=2),
+    ) -> dict[str, object]:
+        """Los signos de alarma de un texto, con las reglas fijas del triaje: sin modelo.
+
+        Lo mismo que corre antes de cada respuesta del chat, expuesto solo: el nivel, qué regla saltó
+        y con qué ficha, el aviso en la lengua pedida y el número que marcar si el país se conoce.
+        """
+        from pedibot.bot.answer import build_banner
+
+        tr = engine.triage.assess(text)
+        nums = engine.numbers.get(country, lang)
+        motivos = tr.reasons(lang)
+        return {
+            "level": tr.level,
+            "rules": [
+                {"id": r.id, "level": r.level, "reason": motivos[i], "source": r.source}
+                for i, r in enumerate(tr.matched)
+            ],
+            "banner": build_banner(tr, lang, nums),
+            "call": (
+                dialable(nums, country, {c for c in engine.numbers.raw if c != "default"})
+                if tr.level == "emergency"
+                else None
+            ),
+            "numbers": nums,
+            "age_months": tr.age_months,
+            "disclaimer": DISCLAIMER.get(lang, DISCLAIMER["en"]),
+        }
+
+    @app.get("/api/emergency-numbers")
+    def emergency_numbers(
+        country: str | None = Query(default=None, min_length=2, max_length=2),
+        lang: str = Query(default="en", pattern=_LANG_PATTERN),
+    ) -> dict[str, object]:
+        """El número de emergencias de un país; sin país, la lista de países que se conocen."""
+        conocidos = sorted(c for c in engine.numbers.raw if c != "default")
+        if not country:
+            return {"countries": conocidos}
+        c = country.upper()
+        if c not in conocidos:
+            raise HTTPException(404, f"no numbers for {c}; known: {conocidos}")
+        return {"country": c, "numbers": engine.numbers.get(c, lang)}
+
+    @app.get("/api/guides")
+    def guides_search(
+        q: str = Query(min_length=2, max_length=200),
+        lang: str = Query(default="en", pattern=_LANG_PATTERN),
+        limit: int = Query(default=5, ge=1, le=10),
+    ) -> dict[str, object]:
+        """Las guías publicadas de un tema, en la lengua pedida, con su dirección."""
+        idx = engine.guides
+        if idx is None:
+            raise HTTPException(503, "guides not loaded")
+        return {
+            "guides": [
+                {"title": g.title, "topic": g.topic, "url": f"https://pedibot.xyz{g.url}"}
+                for g in idx.search(q, lang, limit)
+            ]
+        }
 
     @app.get("/api/ors")
     def ors(

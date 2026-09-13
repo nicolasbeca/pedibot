@@ -89,6 +89,9 @@ def main() -> int:
         ("checklist", "/api/checklist?lang={lg}"),
         ("ors", "/api/ors?age_months=24&vomiting=true&lang={lg}"),
         ("growth", "/api/growth?sex=m&age_months=24&weight_kg=12.2&height_cm=87&lang={lg}"),
+        ("triage", "/api/triage?text=fever+and+rash&lang={lg}"),
+        ("growth countries", "/api/growth/countries"),
+        ("emergency numbers", "/api/emergency-numbers?country=IN&lang={lg}"),
     ):
         linea = []
         for lg in IDIOMAS:

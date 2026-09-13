@@ -4,8 +4,10 @@ Design notes (26-ago-2026):
 - The signer key lives in the `acp` CLI keystore on this server (P256, added with
   `acp agent add-signer --policy restricted`), so we drive ACP through the **CLI**, not the
   Python SDK (the SDK expects a raw EVM private key, which we deliberately do not have).
-- Polling instead of `acp events listen`: one process, no socket to babysit, and `acp job list`
-  is REST. Every POLL_SECONDS we list active jobs and act on the ones that need us.
+- Polling `acp job list` (REST) is how we learn about jobs: every POLL_SECONDS we list active
+  jobs and act on the ones that need us. BUT since 13-sep-2026 `acp events listen` also runs, as
+  a child process, only to keep the agent online: without that socket and its heartbeat the
+  marketplace never listed PediBot and it got zero jobs in eighteen days (see "presence").
 - NEVER pass `--all` (or `--legacy`) to `acp job list`: legacy jobs are read on-chain, the
   `restricted` signer policy denies that RPC call, and the CLI then blocks waiting for a manual
   approval that never comes (verified 26-ago: 3 s with plain `job list`, full timeout with
@@ -23,9 +25,11 @@ import os
 import subprocess
 import sys
 import time
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlencode
 
 import httpx
 from loguru import logger
@@ -163,19 +167,46 @@ def route(req: dict[str, Any]) -> Route | None:
     lang = asked if asked in SUPPORTED_LANGS else "en"
     age = _num(req.get("age_months"))
 
+    sex = str(req.get("sex") or "").strip().lower()[:1]
+    height = _num(req.get("height_cm") or req.get("height") or req.get("length_cm"))
+    symptoms = str(req.get("symptoms") or req.get("text") or req.get("description") or "").strip()
+    topic = str(req.get("topic") or req.get("subject") or "").strip()
+    mode = "child" if str(req.get("mode") or "").lower() == "child" else "parent"
+
     if question:
         return Route(
             "/api/agent/ask",
             "POST",
-            {"question": question, "lang": lang, "country": country[:2] or "GB"},
+            {"question": question, "lang": lang, "country": country[:2] or "GB", "mode": mode},
         )
+    # la comprobación de signos de alarma: reglas fijas, sin modelo (13-sep-2026)
+    if symptoms:
+        q = urlencode(
+            {"text": symptoms[:1500], "lang": lang, **({"country": country[:2]} if country else {})}
+        )
+        return Route(f"/api/triage?{q}", "GET", {})
+    # la curva de crecimiento: con sexo y edad, y peso o talla. Sin sexo, un peso solo sigue
+    # siendo el suero oral de siempre (13-sep-2026)
+    if sex in ("m", "f") and age is not None and (weight is not None or height is not None):
+        params: dict[str, Any] = {"sex": sex, "age_months": age, "lang": lang}
+        if weight is not None:
+            params["weight_kg"] = weight
+        if height is not None:
+            params["height_cm"] = height
+        if country:
+            params["country"] = country[:2]
+        return Route(f"/api/growth?{urlencode(params)}", "GET", {})
+    if topic:
+        return Route(f"/api/guides?{urlencode({'q': topic[:200], 'lang': lang})}", "GET", {})
     if drug and weight is not None:
         payload: dict[str, Any] = {"drug": drug, "weight_kg": weight, "lang": lang}
         if age is not None:
             payload["age_months"] = age
         return Route("/api/dose", "POST", payload)
     if country:
-        return Route(f"/api/vaccines?country={country[:2]}&lang={lang}", "GET", {})
+        # con edad, las vacunas que tocan a esa edad; sin ella, el calendario entero
+        tail = f"&age_months={age:g}" if age is not None else ""
+        return Route(f"/api/vaccines?country={country[:2]}{tail}&lang={lang}", "GET", {})
     if weight is not None:
         tail = f"&age_months={int(age)}" if age is not None else ""
         return Route(f"/api/ors?weight_kg={weight}{tail}&lang={lang}", "GET", {})
@@ -289,9 +320,57 @@ def handle(
         st["served"] = r.path
 
 
+# ── presence ─────────────────────────────────────────────────────────────────
+# 13-sep-2026: from the 26th of August to this day the worker saw ZERO jobs, and the marketplace
+# search did not list PediBot for "pediatric", "health" or even "PediBot". An agent's presence is
+# a socket with a heartbeat (acp-node-v2 socketTransport); polling `acp job list` over REST never
+# opens it, so the agent stayed at `lastActiveAt: None` and browse left it out. With
+# `acp events listen` connected it went to 2999-12-31, the "online" marker. The listener runs
+# beside the poll loop (which stays: REST is still the complete picture of our jobs).
+
+EVENTS_FILE = ROOT / "data" / "acp_events.jsonl"
+
+
+def listener_command() -> list[str]:
+    # never --all / --legacy: legacy events are read on-chain and the restricted policy hangs
+    return ["acp", "events", "listen", "--output", str(EVENTS_FILE)]
+
+
+def start_listener() -> subprocess.Popen[bytes]:
+    EVENTS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    logger.info("starting presence listener: {}", " ".join(listener_command()))
+    return subprocess.Popen(
+        listener_command(), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+    )
+
+
+def ensure_listener(proc: Any, start: Callable[[], Any]) -> Any:
+    """The listener, alive: started if there is none, restarted if it died."""
+    if proc is not None and proc.poll() is None:
+        return proc
+    if proc is not None:
+        logger.warning("presence listener exited ({}); restarting", proc.poll())
+    return start()
+
+
 def main() -> int:
     logger.remove()
     logger.add(sys.stderr, level="INFO", format="{time:HH:mm:ss} {level} {message}")
+    box: dict[str, Any] = {"listener": None}
+    try:
+        return _run(box)
+    except KeyboardInterrupt:
+        # systemd stops the unit with SIGINT (KillSignal=SIGINT): a normal stop, not a failure
+        logger.info("acp worker stopping")
+        return 0
+    finally:
+        proc = box["listener"]
+        if proc is not None and proc.poll() is None:
+            proc.terminate()
+
+
+def _run(box: dict[str, Any]) -> int:
+    box["listener"] = ensure_listener(box["listener"], start_listener)
     prices = fetch_prices()
     tariff = ", ".join(sorted(set(prices.values()), key=float)) or f"{PRICE_USDC} (fallback)"
     logger.info(
@@ -303,6 +382,7 @@ def main() -> int:
     state = load_state()
     rounds = 0
     while True:
+        box["listener"] = ensure_listener(box["listener"], start_listener)
         listed = acp("job", "list")
         jobs = listed.get("jobs", []) if isinstance(listed, dict) else (listed or [])
         if jobs:

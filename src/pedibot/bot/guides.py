@@ -97,6 +97,26 @@ class GuideIndex:
     def __len__(self) -> int:
         return sum(len(v) for v in self.by_lang.values())
 
+    def search(self, query: str, lang: str, limit: int = 5) -> list[GuideLink]:
+        """Las guías cuyo título o tema comparten palabras con la consulta, las que más primero.
+
+        Sin modelo y sin índice: palabras de tres letras o más, con la tilde doblada. Basta para
+        «fiebre», «fever» o «حمى» contra títulos escritos para ser leídos (13-sep-2026, para el
+        trabajo ACP `paediatric_guide_finder`).
+        """
+        from pedibot.index.store import fold
+
+        pedidas = {fold(w) for w in re.findall(r"\w{3,}", query.lower())}
+        puntuadas: list[tuple[int, GuideLink]] = []
+        for g in self.by_lang.get(lang, []):
+            titulo = {fold(w) for w in re.findall(r"\w{3,}", g.title.lower())}
+            tema = {fold(w) for w in g.topic.lower().split("_")}
+            n = 2 * len(pedidas & titulo) + len(pedidas & tema)
+            if n:
+                puntuadas.append((n, g))
+        puntuadas.sort(key=lambda x: -x[0])
+        return [g for _, g in puntuadas[:limit]]
+
     def best_for(self, chunk_ids: list[str], lang: str, query: str = "") -> GuideLink | None:
         """The guide written from the documents this answer cited, or nothing."""
         guides = self.by_lang.get(lang)
