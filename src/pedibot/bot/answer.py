@@ -553,7 +553,11 @@ def _mentions_child(text: str) -> bool:
 
 def _age_context(tr: TriageResult) -> str:
     """Age line for the prompt. Under 3 months: home medication advice is never appropriate."""
+    if tr.age_months is None and not tr.has_fever:
+        return "CHILD AGE: unknown\n"
     if tr.age_months is None:
+        # Sólo con fiebre. Del 12 al 13-sep-2026 esta orden iba en toda respuesta sin edad y el
+        # modelo la obedecía: el queroseno o el escozor al orinar abrían hablando de fiebre.
         return (
             "CHILD AGE: unknown. Open with ONE sentence: if the child is under 3 months old, a "
             "fever needs a doctor the same day. Then answer for an older child. Give NO specific "

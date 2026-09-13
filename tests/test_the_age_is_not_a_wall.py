@@ -175,6 +175,15 @@ def test_el_modelo_recibe_la_regla_del_lactante_cuando_no_hay_edad():
     )
 
 
+def test_sin_fiebre_el_modelo_no_recibe_la_regla_de_la_fiebre():
+    """Desplegado el 12-sep, visto en vivo el 13: la orden de abrir con «si tiene menos de tres
+    meses, la fiebre…» iba en TODA respuesta sin edad, y el modelo la obedecía. Un niño que ha
+    bebido queroseno, uno con escozor al orinar y uno que mira mucho el móvil recibían, como
+    primera frase, un aviso sobre una fiebre que nadie había mencionado."""
+    ctx = _age_context(TriageResult(level="routine", matched=[], age_months=None, has_fever=False))
+    assert "3 months" not in ctx and "fever" not in ctx.lower(), ctx
+
+
 @pytest.mark.parametrize("lang", LANGS)
 def test_la_pregunta_final_esta_en_cada_lengua(lang: str):
     assert AGE_REFINES[lang].strip()
