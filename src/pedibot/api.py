@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -243,6 +243,24 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
     @app.get("/api/stats")
     def stats(days: int = 7) -> dict[str, object]:
         return ops.stats(days=days)
+
+    @app.post("/api/team", status_code=204)
+    async def team(request: Request) -> Response:
+        """Un navegador que abrió /admin avisa desde cada página: lo suyo no es de un lector.
+
+        Reetiqueta su sesión (ver `OpsStore.mark_team_session`) y, al llegar con la cabecera
+        `test`, deja su IP marcada en el registro del servidor para el contador de visitas. Un
+        desconocido que lo llame sólo consigue esconderse a sí mismo: las sesiones son aleatorias
+        y no se pueden adivinar las de otro.
+        """
+        try:
+            body = await request.json()
+        except Exception:  # noqa: BLE001 — cuerpo vacío o no JSON: nada que reetiquetar
+            body = {}
+        session = body.get("session") if isinstance(body, dict) else None
+        if isinstance(session, str) and 0 < len(session) <= 64:
+            ops.mark_team_session(session)
+        return Response(status_code=204)
 
     @app.post("/api/ask", response_model=AskOut)
     def ask(body: AskIn, request: Request) -> AskOut:
@@ -580,14 +598,38 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
     #: seis de los ocho idiomas recibían la rama inglesa. Un padre alemán compartía su respuesta
     #: en alemán envuelta en un título y una nota legal en inglés (8-sep-2026).
     SHARED = {
-        "en": ("PediBot — shared answer", "Shared from PediBot. Information from official paediatric guidelines — not medical advice."),
-        "es": ("PediBot — respuesta compartida", "Compartido desde PediBot. Información de guías pediátricas oficiales — no es consejo médico."),
-        "fr": ("PediBot — réponse partagée", "Partagé depuis PediBot. Information issue de recommandations pédiatriques officielles — ce n'est pas un avis médical."),
-        "de": ("PediBot — geteilte Antwort", "Geteilt über PediBot. Information aus offiziellen kinderärztlichen Leitlinien — keine medizinische Beratung."),
-        "ru": ("PediBot — ответ, которым поделились", "Отправлено из PediBot. Информация из опубликованных педиатрических рекомендаций — не медицинская консультация."),
-        "ar": ("PediBot — إجابة تمت مشاركتها", "تمت المشاركة من PediBot. معلومات مأخوذة من إرشادات طب الأطفال المنشورة — وليست استشارة طبية."),
-        "pt": ("PediBot — resposta partilhada", "Partilhado a partir do PediBot. Informação de diretrizes pediátricas oficiais — não é aconselhamento médico."),
-        "hi": ("PediBot — साझा किया गया उत्तर", "PediBot से साझा किया गया। प्रकाशित बाल रोग दिशानिर्देशों से जानकारी — यह चिकित्सकीय सलाह नहीं है।"),
+        "en": (
+            "PediBot — shared answer",
+            "Shared from PediBot. Information from official paediatric guidelines — not medical advice.",
+        ),
+        "es": (
+            "PediBot — respuesta compartida",
+            "Compartido desde PediBot. Información de guías pediátricas oficiales — no es consejo médico.",
+        ),
+        "fr": (
+            "PediBot — réponse partagée",
+            "Partagé depuis PediBot. Information issue de recommandations pédiatriques officielles — ce n'est pas un avis médical.",
+        ),
+        "de": (
+            "PediBot — geteilte Antwort",
+            "Geteilt über PediBot. Information aus offiziellen kinderärztlichen Leitlinien — keine medizinische Beratung.",
+        ),
+        "ru": (
+            "PediBot — ответ, которым поделились",
+            "Отправлено из PediBot. Информация из опубликованных педиатрических рекомендаций — не медицинская консультация.",
+        ),
+        "ar": (
+            "PediBot — إجابة تمت مشاركتها",
+            "تمت المشاركة من PediBot. معلومات مأخوذة من إرشادات طب الأطفال المنشورة — وليست استشارة طبية.",
+        ),
+        "pt": (
+            "PediBot — resposta partilhada",
+            "Partilhado a partir do PediBot. Informação de diretrizes pediátricas oficiais — não é aconselhamento médico.",
+        ),
+        "hi": (
+            "PediBot — साझा किया गया उत्तर",
+            "PediBot से साझा किया गया। प्रकाशित बाल रोग दिशानिर्देशों से जानकारी — यह चिकित्सकीय सलाह नहीं है।",
+        ),
     }
 
     @app.get("/a/{token}", response_class=HTMLResponse)

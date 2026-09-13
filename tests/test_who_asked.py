@@ -67,8 +67,26 @@ def test_the_record_has_no_default_source() -> None:
 
 def test_the_two_filters_are_complements() -> None:
     """Every row is either counted as a reader or counted as ours. A source that fell through
-    both would be invisible in every view at once."""
-    assert REAL_ONLY.replace(" IN ", " NOT IN ") == NOT_REAL
+    both would be invisible in every view at once.
+
+    Checked on rows, not on the text of the two clauses: since 13-sep-2026 they also carry the
+    ids declared in config/team.yaml, and a textual `IN` → `NOT IN` no longer describes them."""
+    import sqlite3
+
+    from pedibot.ops.store import _OURS
+
+    con = sqlite3.connect(":memory:")
+    con.execute("CREATE TABLE answers (id INTEGER, source TEXT)")
+    ids = [1, 2, *sorted(_OURS)]
+    fuentes = ["web", "telegram", "agent", "test", "unknown"]
+    con.executemany("INSERT INTO answers VALUES (?,?)", [(i, s) for i in ids for s in fuentes])
+    total = con.execute("SELECT COUNT(*) FROM answers").fetchone()[0]
+    lectores = con.execute("SELECT COUNT(*) FROM answers WHERE 1=1" + REAL_ONLY).fetchone()[0]
+    nuestras = con.execute("SELECT COUNT(*) FROM answers WHERE 1=1" + NOT_REAL).fetchone()[0]
+    ambas = con.execute("SELECT COUNT(*) FROM answers WHERE 1=1" + REAL_ONLY + NOT_REAL).fetchone()[
+        0
+    ]
+    assert lectores + nuestras == total and ambas == 0
 
 
 @pytest.mark.parametrize(
@@ -188,9 +206,7 @@ def test_the_operator_is_not_one_of_his_own_visitors(monkeypatch) -> None:
             _caddy("192.0.2.7", "/favicon.ico"),
         ]
     )
-    monkeypatch.setattr(
-        subprocess, "run", lambda *a, **k: type("R", (), {"stdout": log})()
-    )
+    monkeypatch.setattr(subprocess, "run", lambda *a, **k: type("R", (), {"stdout": log})())
     w = report.web_visits(7)
     # the reader, and the scanner that failed the password: two, not one. Guessing the scanner
     # away would shrink the number in the flattering direction, which is the failure this whole

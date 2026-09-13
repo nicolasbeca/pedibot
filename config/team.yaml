@@ -1,0 +1,12 @@
+# Lo nuestro que no puede salir en el panel como si fuera un lector (13-sep-2026).
+#
+# Casi todo se reconoce solo (ver tests/test_panel_is_only_readers.py): las visitas por la IP que
+# abrió /admin o mandó tráfico `test`, y las consultas por el navegador que abrió /admin. Esto es
+# para lo que quedó antes de eso, y se declara aquí en vez de reescribir la base.
+answer_ids:
+  # 12-sep-2026 17:30, verificación en vivo del botón `tel:`: tres preguntas mías mandadas con la
+  # cabecera del chat (`web`) desde 62.174.211.153, la máquina de desarrollo. Lo confirma el log
+  # de uvicorn a la misma hora. El control de permisos no dejó reetiquetarlas en la base viva.
+  - 356
+  - 357
+  - 358

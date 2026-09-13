@@ -113,6 +113,8 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <script type="application/ld+json" set:html={JSON.stringify(org)} />
   {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   <script is:inline>try{if(localStorage.getItem('pedibot_theme')==='night')document.documentElement.classList.add('night')}catch(e){}</script>
+  <!-- del equipo (abrió /admin): se avisa, y ni su sesión ni su IP salen en el panel como lector -->
+  <script is:inline>try{if(localStorage.getItem('pedibot_team'))fetch('/api/team',{method:'POST',keepalive:true,headers:{'content-type':'application/json','x-pedibot-client':'test'},body:JSON.stringify({session:localStorage.getItem('pedibot_session')})})}catch(e){}</script>
 </head>
 <body>
   <header class="bar">

@@ -73,12 +73,41 @@ CREATE TABLE IF NOT EXISTS shares (
 #: end. Neither is counted as a reader, in the panel, the daily review or /api/stats.
 REAL_SOURCES = ("web", "telegram", "agent")
 
-#: Ready to append to a WHERE. Written out rather than built from REAL_SOURCES with placeholders
-#: because every caller pastes it into a query that already carries its own parameters.
-REAL_ONLY = " AND source IN ('web','telegram','agent')"
 
-#: its complement, for the one number that counts what was ours
-NOT_REAL = " AND source NOT IN ('web','telegram','agent')"
+def team_answer_ids(path: Path | None = None) -> frozenset[int]:
+    """Filas nuestras que quedaron etiquetadas como lector antes de que se reconocieran solas.
+
+    Viven en `config/team.yaml` y no en un UPDATE a la base: se leen, se revisan en el
+    repositorio y se deshacen borrando una línea (13-sep-2026).
+    """
+    import yaml
+
+    from pedibot.settings import ROOT
+
+    f = path or ROOT / "config" / "team.yaml"
+    if not f.exists():
+        return frozenset()
+    datos = yaml.safe_load(f.read_text(encoding="utf-8")) or {}
+    return frozenset(int(i) for i in datos.get("answer_ids") or ())
+
+
+def real_only(ours: frozenset[int] | set[int]) -> str:
+    """Ready to append to a WHERE. Written out rather than built with placeholders because every
+    caller pastes it into a query that already carries its own parameters; the ids are ints read
+    from our own config, never from a request."""
+    fuera = f" AND id NOT IN ({','.join(str(int(i)) for i in sorted(ours))})" if ours else ""
+    return " AND source IN ('web','telegram','agent')" + fuera
+
+
+def not_real(ours: frozenset[int] | set[int]) -> str:
+    """Its complement, for the one number that counts what was ours."""
+    dentro = f" OR id IN ({','.join(str(int(i)) for i in sorted(ours))})" if ours else ""
+    return " AND (source NOT IN ('web','telegram','agent')" + dentro + ")"
+
+
+_OURS = team_answer_ids()
+REAL_ONLY = real_only(_OURS)
+NOT_REAL = not_real(_OURS)
 
 
 @dataclass
@@ -201,6 +230,21 @@ class OpsStore:
         )
         self.con.commit()
         return cur.rowcount == 1
+
+    def mark_team_session(self, session: str) -> int:
+        """Lo que un navegador del equipo preguntó pasa a ser nuestro (13-sep-2026).
+
+        Por sesión y no por IP: /legal promete que las respuestas se guardan sin dirección. Sólo
+        toca `web` y `unknown` —Telegram y el agente no pasan por un navegador— y nunca borra.
+        """
+        if not session:
+            return 0
+        cur = self.con.execute(
+            "UPDATE answers SET source='test' WHERE session=? AND source IN ('web','unknown')",
+            (session,),
+        )
+        self.con.commit()
+        return cur.rowcount
 
     def cost_today_usd(self) -> float:
         day = _now()[:10]

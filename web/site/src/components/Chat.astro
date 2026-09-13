@@ -104,6 +104,8 @@ const ages = [['', s.not_set], ...s.chat_ages];
   const form = document.getElementById('composer') as HTMLFormElement, input = document.getElementById('input') as HTMLTextAreaElement;
   const countrySel = document.getElementById('country') as HTMLSelectElement, ageSel = document.getElementById('age') as HTMLSelectElement, kgIn = document.getElementById('kg') as HTMLInputElement;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Un navegador que abrió /admin es del equipo: pregunta como `test` y no sale en el panel.
+  const CLIENT = (() => { try { return localStorage.getItem('pedibot_team') ? 'test' : 'web'; } catch (e) { return 'web'; } })();
   let session: string | null = null;
   try { session = localStorage.getItem('pedibot_session'); const c = localStorage.getItem('pedibot_country'); if (c) countrySel.value = c; } catch (e) {}
   try { const loc = (navigator.language || '').split('-')[1]; if (loc && !localStorage.getItem('pedibot_country') && [...countrySel.options].some(o => o.value === loc)) countrySel.value = loc; } catch (e) {}
@@ -157,7 +159,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
     bubble('user', esc(mode === 'child' ? '🧸 ' + q : q));
     const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
     try {
-      const r = await fetch('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ question: context(q), country: countrySel.value || null, lang, session, mode }) });
+      const r = await fetch('/api/ask', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': CLIENT }, body: JSON.stringify({ question: context(q), country: countrySel.value || null, lang, session, mode }) });
       if (r.status === 429) { t.innerHTML = '<div class="who">pedibot</div>' + S.err_rate; return; }
       // «espera un poco», «ahora no puedo» y «se nos ha roto algo» piden cosas distintas del
       // padre, y las tres se contestaban con la tercera. Un 429 es un límite nuestro, no una
@@ -172,7 +174,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
   thread.addEventListener('click', async e => {
     const b = (e.target as HTMLElement).closest('.fb') as HTMLButtonElement | null; if (!b) return;
     if (b.classList.contains('share')) {
-      const r = await fetch('/api/share', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session }) });
+      const r = await fetch('/api/share', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': CLIENT }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session }) });
       if (r.ok) { const j = await r.json(); const url = location.origin + j.path; try { await navigator.clipboard.writeText(url); b.textContent = '✓ ' + S.copied; } catch (err) { prompt(S.share, url); } }
       return;
     }
@@ -188,7 +190,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
       const msg = b.closest('.msg') as HTMLElement; const txt = msg.querySelector('.txt') as HTMLElement | null; const text = txt ? txt.innerText : msg.innerText.replace(/^pedibot/, '').replace(/👍.*$/s, '');
       const u = new SpeechSynthesisUtterance(text); u.lang = S.speech_locale; speechSynthesis.speak(u); return;
     }
-    await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session, value: Number(b.dataset.v) }) });
+    await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': CLIENT }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session, value: Number(b.dataset.v) }) });
     b.parentElement!.querySelectorAll('.fb').forEach(x => (x as HTMLButtonElement).disabled = true); b.textContent += ' ✓';
   });
   document.addEventListener('click', e => { const b = (e.target as HTMLElement).closest('.sug') as HTMLElement | null; if (b?.dataset.q) ask(b.dataset.q); });
@@ -210,7 +212,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
     bubble('user', '📷 ' + esc(file.name));
     const t = bubble('bot', '<div class="who">pedibot</div><span class="typing"><i></i><i></i><i></i></span>');
     try {
-      const r = await fetch('/api/photo', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': 'web' }, body: JSON.stringify({ image_b64: b64, mime: 'image/jpeg', lang, country: countrySel.value || null, session }) });
+      const r = await fetch('/api/photo', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': CLIENT }, body: JSON.stringify({ image_b64: b64, mime: 'image/jpeg', lang, country: countrySel.value || null, session }) });
       // el ternario que había aquí tenía las DOS ramas iguales: alguien quiso distinguir el
       // 503 y no terminó. La lectura de fotos se apaga sola sin saldo, así que ese caso es el
       // más probable de los tres.

@@ -67,14 +67,23 @@ def test_the_answers_table_has_no_column_for_an_ip() -> None:
 def test_the_browser_keeps_only_the_three_things_the_page_names() -> None:
     """«el identificador de sesión, el país elegido y el modo noche». Ni una clave más: cada una
     que se añada sin tocar el texto convierte la frase en mentira."""
-    claves: set[str] = set()
+    escritas: set[str] = set()
+    leidas: set[str] = set()
     for f in (ROOT / "web" / "site" / "src").rglob("*.astro"):
-        claves.update(
-            re.findall(r"localStorage\.[gs]etItem\(\s*['\"]([^'\"]+)", f.read_text(encoding="utf-8"))
-        )
-    assert claves == {"pedibot_session", "pedibot_country", "pedibot_theme"}, (
-        f"el navegador guarda {sorted(claves)}, y la página nombra tres cosas"
+        texto = f.read_text(encoding="utf-8")
+        escritas.update(re.findall(r"localStorage\.setItem\(\s*['\"]([^'\"]+)", texto))
+        leidas.update(re.findall(r"localStorage\.getItem\(\s*['\"]([^'\"]+)", texto))
+    assert escritas == {"pedibot_session", "pedibot_country", "pedibot_theme"}, (
+        f"el sitio guarda {sorted(escritas)} en el navegador, y la página nombra tres cosas"
     )
+    # 13-sep-2026: el sitio LEE además una marca que sólo escribe el panel con contraseña, para
+    # que el operador no salga como lector. En el navegador de un lector no existe nunca, así que
+    # la frase sigue siendo verdad para él; lo que no puede pasar es que la escriba el sitio.
+    panel = (ROOT / "src" / "pedibot" / "admin.py").read_text(encoding="utf-8")
+    for clave in leidas - escritas:
+        assert f"localStorage.setItem('{clave}'" in panel, (
+            f"el sitio lee «{clave}» y no la escribe el panel: ¿quién la guarda en el navegador?"
+        )
 
 
 def test_a_shared_answer_carries_nothing_but_the_question_and_the_answer() -> None:

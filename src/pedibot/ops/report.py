@@ -46,27 +46,48 @@ def _who(ip: object, ua: str) -> str:
     return hashlib.sha256(f"{ip}|{ua}".encode()).hexdigest()[:16]
 
 
-def _operator_hashes(lines: list[str]) -> set[str]:
-    """Whoever OPENED /admin. Caddy guards it with a password, so that is the operator.
+#: Cuánto dura la marca de una IP nuestra, hacia atrás y hacia delante. Las IP domésticas cambian
+#: de manos: marcarla para siempre acabaría escondiendo al vecino que la herede. Un día se quedaba
+#: corto, medido sobre el registro real (13-sep-2026): 80 páginas del Chrome de casa del operador
+#: se colaban el 27-ago y el 2-3-sep, días sin panel abierto cerca. Esa IP fue nuestra dos semanas
+#: seguidas; con siete días se tapa, y el riesgo es esconder una semana a quien la herede.
+TEAM_WINDOW = 7 * 86_400.0
 
-    Opened, not asked for: 65 different browsers have requested /admin on this server and 64 of
-    them are scanners hunting for an admin panel, which Caddy answered with a 401. Taking the
-    request alone as proof would have quietly deleted them from the visit count — flattering,
-    and false in the same direction the rest of this change exists to prevent.
+
+def _team_marks(lines: list[str]) -> dict[str, list[float]]:
+    """Las IP que son nuestras, con los momentos en que lo demostraron (13-sep-2026).
+
+    Dos pruebas, y las dos son de nosotros por construcción:
+
+    - **abrió /admin** con contraseña (200). Sólo abierto, no pedido: 65 navegadores han pedido
+      /admin a este servidor y 64 eran escáneres que se llevaron un 401;
+    - **mandó tráfico `x-pedibot-client: test`**: mis scripts, el smoke del despliegue y los
+      navegadores que abrieron el panel, que desde entonces avisan desde cada página.
+
+    Antes se descartaba el navegador exacto (IP + agente) que abrió el panel. El operador en su
+    móvil, en la misma wifi, contaba como visita; ahora cuenta la IP entera.
     """
-    out: set[str] = set()
+    out: dict[str, list[float]] = {}
     for line in lines:
-        if "/admin" not in line or '"handled request"' not in line:
+        if '"handled request"' not in line or (
+            "/admin" not in line and "pedibot-client" not in line.lower()
+        ):
             continue
         try:
             j = json.loads(line)
         except json.JSONDecodeError:
             continue
         req = j.get("request", {})
-        if j.get("status") != 200 or not str(req.get("uri", "")).startswith("/admin"):
-            continue
-        out.add(_who(req.get("remote_ip"), (req.get("headers", {}).get("User-Agent") or [""])[0]))
+        headers = {str(k).lower(): v for k, v in (req.get("headers") or {}).items()}
+        panel = j.get("status") == 200 and str(req.get("uri", "")).startswith("/admin")
+        prueba = "test" in [str(v).lower() for v in headers.get("x-pedibot-client") or []]
+        if panel or prueba:
+            out.setdefault(str(req.get("remote_ip")), []).append(float(j.get("ts", 0)))
     return out
+
+
+def _es_nuestra(marks: dict[str, list[float]], ip: object, ts: float) -> bool:
+    return any(abs(ts - m) <= TEAM_WINDOW for m in marks.get(str(ip), ()))
 
 
 #: a visit ends after half an hour with no page. The usual convention, and a convention.
@@ -156,9 +177,9 @@ def count_visits(lines: list[str]) -> dict[str, Any]:
     No es perfecto y no pretende serlo — un rastreador que renderice de verdad sigue pareciendo
     un navegador. Es defendible, que es lo que se le pide a un número que se mira para decidir.
     """
-    # quién es el operador, antes de contar a nadie: el panel va con contraseña, así que un
-    # navegador que pidió /admin es suyo. Cuesta una pasada más y ninguna configuración.
-    ours = _operator_hashes(lines)
+    # quiénes somos, antes de contar a nadie (ver _team_marks). Cuesta una pasada más y ninguna
+    # configuración.
+    ours = _team_marks(lines)
     brutas = 0
     paginas: dict[str, list[tuple[str, float]]] = {}
     estaticos: set[str] = set()
@@ -178,7 +199,7 @@ def count_visits(lines: list[str]) -> dict[str, Any]:
         if _BOT_UA.search(ua) or _de_rastreador(ip):
             continue
         who = _who(ip, ua)
-        if who in ours:
+        if _es_nuestra(ours, ip, float(j.get("ts", 0))):
             # el operador mirando su propio sitio no es una visita, y con este tráfico una
             # persona abriéndolo dos veces al día sería casi todo el número que está mirando
             continue
@@ -351,6 +372,7 @@ def balance() -> float | None:
         return float(t) if isinstance(t, (int, float)) else None
     except Exception:  # noqa: BLE001
         return None
+
 
 def unanswered(
     con: sqlite3.Connection, days: int = 0, include_test: bool = False, limit: int = 25

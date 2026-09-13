@@ -428,6 +428,9 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
         "<!doctype html><html lang=es><head><meta charset=utf-8>"
         '<meta name=viewport content="width=device-width,initial-scale=1">'
         "<meta name=robots content=noindex><title>PediBot · panel</title>"
+        # Este navegador es del equipo: desde ahora el chat pregunta como `test` y cada página
+        # del sitio lo avisa a /api/team, así que nada de lo que haga sale aquí como un lector.
+        "<script>try{localStorage.setItem('pedibot_team','1')}catch(e){}</script>"
         f"<style>{_CSS}</style></head><body><main>",
         '<div class="top"><h1>PediBot · panel</h1>'
         f'<div class="range">{link(0, "total")}{link(7)}{link(30)}{link(90)}</div></div>',
