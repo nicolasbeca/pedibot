@@ -114,6 +114,9 @@ def prices_from(offerings: list[dict[str, Any]]) -> dict[str, str]:
 def price_for(job: dict[str, Any], table: dict[str, str], *, fallback: str) -> str:
     if not table:
         return fallback
+    # ACP v2: the job's `description` IS the offering name (createJobFromOffering)
+    if str(job.get("description") or "") in table:
+        return table[str(job["description"])]
     for keys in (OFFER_KEYS, NAME_KEYS):
         value = find_first(job, keys)
         if isinstance(value, dict):
@@ -227,6 +230,16 @@ def save_state(state: dict[str, dict[str, Any]]) -> None:
     STATE_FILE.write_text(json.dumps(state, indent=1), encoding="utf-8")
 
 
+def requirement_message(hist: Any) -> Any:
+    """ACP v2: the form is the LAST message whose contentType is "requirement", its JSON as text
+    in `content` (acp-node-v2 createJobFromOffering). The last one, because a buyer may resend."""
+    entries = hist.get("entries") if isinstance(hist, dict) else None
+    for e in reversed(entries or []):
+        if isinstance(e, dict) and str(e.get("contentType") or "").lower() == "requirement":
+            return e.get("content")
+    return None
+
+
 def job_requirement(job: dict[str, Any], job_id: str) -> dict[str, Any]:
     """The buyer's form, as it comes. Looks in the job and, if needed, in its history.
 
@@ -234,12 +247,11 @@ def job_requirement(job: dict[str, Any], job_id: str) -> dict[str, Any]:
     medicine, a country) and `route` is what decides which endpoint serves it."""
     req = find_first(job, ("requirement", "requirements", "servicerequirement"))
     if req is None:
-        hist = acp("job", "history", "--job-id", job_id)
-        req = (
-            find_first(hist, ("requirement", "requirements", "servicerequirement"))
-            if hist
-            else None
-        )
+        # --chain-id is a required option of `job history`: without it the CLI prints an error
+        hist = acp("job", "history", "--job-id", job_id, "--chain-id", chain_of(job))
+        req = requirement_message(hist)
+        if req is None and hist:
+            req = find_first(hist, ("requirement", "requirements", "servicerequirement"))
     if isinstance(req, str):
         try:
             req = json.loads(req)
@@ -268,8 +280,34 @@ def serve(r: Route) -> dict[str, Any] | None:
         return None
 
 
-def phase_of(job: dict[str, Any]) -> str:
-    return str(find_first(job, ("phase", "status", "state")) or "").upper()
+# ── the job's life ───────────────────────────────────────────────────────────
+# 13-sep-2026, read from acp-cli 1.0.34 before the first real job: `acp job list` gives the state
+# as `jobStatus` with the v2 words below (acp-node-v2 jobSession.js EVENT_TO_STATUS). The first
+# version of this worker looked for `phase`/`status` and for v1 words, and against a real v2 job
+# it would have done nothing at all. v1 phases are still mapped, the way the CLI maps legacy jobs.
+
+_V1_TO_V2 = {
+    "REQUEST": "open",
+    "NEGOTIATION": "budget_set",
+    "TRANSACTION": "funded",
+    "EVALUATION": "submitted",
+    "COMPLETED": "completed",
+    "REJECTED": "rejected",
+    "EXPIRED": "expired",
+}
+
+
+def status_of(job: dict[str, Any]) -> str:
+    """The job's state in v2 words: open, budget_set, funded, submitted, completed, rejected…"""
+    raw = find_first(job, ("jobstatus", "status", "phase", "state"))
+    if raw is None:
+        return ""
+    text = str(raw).strip()
+    return _V1_TO_V2.get(text.upper(), text.lower())
+
+
+def chain_of(job: dict[str, Any]) -> str:
+    return str(find_first(job, ("chainid",)) or "8453")  # Base, the CLI's own default
 
 
 def handle(
@@ -282,26 +320,28 @@ def handle(
     if "raw_logged" not in st:
         logger.info("ACP job {} seen. Raw: {}", job_id, json.dumps(job)[:800])
         st["raw_logged"] = True
-    phase = phase_of(job)
+    status = status_of(job)
+    chain = chain_of(job)
 
-    # 1. new request → propose the price its own offering advertises
-    if not st.get("budget_set") and any(
-        k in phase for k in ("REQUEST", "NEGOTIAT", "PENDING", "CREATED")
-    ):
+    # 1. new job → propose the price its own offering advertises. Marked only when the CLI
+    # answered: a timeout marked as done would leave the buyer waiting for a price until expiry.
+    if status == "open" and not st.get("budget_set"):
         price = price_for(job, prices or {}, fallback=PRICE_USDC)
-        logger.info("job {} phase={} → set-budget {} USDC", job_id, phase, price)
-        if not DRY_RUN:
-            res = acp("provider", "set-budget", "--job-id", job_id, "--amount", price)
-            logger.info("set-budget result: {}", json.dumps(res)[:300] if res else "none")
-        st["budget_set"] = time.time()
+        logger.info("job {} status={} → set-budget {} USDC", job_id, status, price)
+        if DRY_RUN:
+            st["budget_set"] = time.time()
+            return
+        res = acp(
+            "provider", "set-budget", "--job-id", job_id, "--amount", price, "--chain-id", chain
+        )
+        logger.info("set-budget result: {}", json.dumps(res)[:300] if res else "none")
+        if res is not None:
+            st["budget_set"] = time.time()
         return
 
-    # 2. funded / in transaction → answer and deliver
-    if (
-        st.get("budget_set")
-        and not st.get("submitted")
-        and any(k in phase for k in ("TRANSACTION", "FUNDED", "PAID", "IN_PROGRESS", "ACCEPTED"))
-    ):
+    # 2. paid → answer and deliver. What the market says the job is decides, not our notes: the
+    # state file can be lost with a redeploy, and a subscription job can arrive already paid.
+    if status == "funded" and not st.get("submitted"):
         req = job_requirement(job, job_id)
         r = route(req)
         if r is None:
@@ -312,10 +352,21 @@ def handle(
             return
         a.setdefault("disclaimer", DISCLAIMER)
         deliverable = json.dumps(a, ensure_ascii=False)
-        logger.info("job {} phase={} → submit ({} chars)", job_id, phase, len(deliverable))
+        logger.info("job {} status={} → submit ({} chars)", job_id, status, len(deliverable))
         if not DRY_RUN:
-            res = acp("provider", "submit", "--job-id", job_id, "--deliverable", deliverable)
+            res = acp(
+                "provider",
+                "submit",
+                "--job-id",
+                job_id,
+                "--deliverable",
+                deliverable,
+                "--chain-id",
+                chain,
+            )
             logger.info("submit result: {}", json.dumps(res)[:300] if res else "none")
+            if res is None:
+                return
         st["submitted"] = time.time()
         st["served"] = r.path
 
