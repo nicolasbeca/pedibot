@@ -491,7 +491,11 @@ es:
   vomit:
   - vómitos
   - gastroenteritis
-  caca:
+  # palabra entera: por prefijo cogía «cacahuete» (14-sep-2026)
+  caca$:
+  - deposiciones
+  - heces
+  cacas$:
   - deposiciones
   - heces
   poco pis:

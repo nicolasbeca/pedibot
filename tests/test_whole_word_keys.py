@@ -200,3 +200,19 @@ def test_ninguna_clave_nueva_casa_una_palabra_ajena() -> None:
         "flexiones de su propia raíz, ponles «$» para que casen la palabra entera:\n"
         + "\n".join(sorted(sospechosas))
     )
+
+
+#: «caca» por prefijo cogía «cacahuete»: una pregunta de ALERGIA al cacahuete se expandía a
+#: «deposiciones» y «heces» y el buscador le daba fichas de estreñimiento (14-sep-2026).
+@pytest.mark.parametrize(
+    ("pregunta", "es_caca"),
+    [
+        ("mi hijo es alérgico al cacahuete", False),
+        ("le he dado crema de cacahuete", False),
+        ("la caca de mi bebé es amarilla", True),
+        ("hace cacas verdes", True),
+    ],
+)
+def test_cacahuete_no_es_caca(syn: Synonyms, pregunta: str, es_caca: bool) -> None:
+    hay = "deposiciones" in syn.expand(pregunta, "es")
+    assert hay == es_caca, f"«{pregunta}»: {syn.expand(pregunta, 'es')}"
