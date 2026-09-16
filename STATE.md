@@ -358,3 +358,11 @@ abierto, en orden de consecuencia:
 - Arreglado en el emparejador y sólo para el hindi: las vocales dobladas se pliegan (kaan ≡ kan) y una clave de dos palabras admite una palabra corta en medio. Más tres palabras que faltaban (vajan, rota, khilaye). Las 18 preguntas pasan. Prueba: tests/test_hindi_written_in_latin_letters.py.
 - Y el rastreo de fuentes en hindi queda cerrado con su medida en FUENTES/INDIA.md: el muro no es la licencia, es la codificación de sus PDF (cuatro documentos, cuatro resultados, el mejor corrompe palabras). Vikaspedia es la puerta buena y exige permiso por correo: decisión del operador.
 - Suite: 4.081.
+
+## 16-sep-2026 (noche) · el árabe como lo escribe un padre
+- **Dialecto**: ocho frases corrientes del Golfo, Egipto y el Levante; **seis no encontraban nada** y una era de seguridad —«ابني وقع على راسه» salía rutina—. El triaje sólo conocía el árabe estándar («سقط», «رأسه»). Añadidos patrones dialectales y puentes de vocabulario: 8 de 8 encuentran su ficha.
+- **Ortografía**: la clave estaba escrita «إسهال» con hamza y el padre teclea «اسهال». Se normaliza (hamza, ة→ه, ى→ي, sin tashkeel) en vez de duplicar claves.
+- **Franco-árabe** (el árabe tecleado en letras latinas, lo normal en el Golfo y Egipto): **10 de 10 preguntas no encontraban NADA**. Normalizador de las cifras (3, 7, 5…) más 33 claves romanizadas: las ocho de la prueba encuentran su ficha.
+- Y un aviso de más corregido: «se cayó de cabeza», sin más, me salía como emergencia; la regla inglesa exige además perder el conocimiento, y un aviso que salta siempre deja de leerse.
+- Prueba: tests/test_arabic_as_parents_write_it.py (24 casos). Suite 4.111.
+- **Tuits**: a petición del operador, la mitad de cada tanda lleva ahora un enlace al final, y sólo a una página que existe (la lista sale de lo publicado). El verificador tira el que enlace otra cosa, lleve dos o nombre el dominio sin dirección.

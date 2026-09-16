@@ -11,6 +11,9 @@ rules:
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
   patterns:
+  # 16-sep-2026, dialecto del Golfo: «مو صاحي» es «no está despierto».
+  - "(مو|مب|مش) (صاحي|صاحية|واعي|فايق)"
+  - "(ما|مو) (يصحى|يفيق|بيفيق)"
   # 16-sep-2026: «tarda en recuperar la consciencia más de 3 minutos» lo advierte nuestra
   # guía árabe del desmayo y el triaje lo veía como rutina.
   - "تأخر.{0,30}استعاد(ة|ته).{0,15}الوعي"
@@ -192,6 +195,8 @@ rules:
   reason_en: Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)
   reason_fr: Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)
   patterns:
+  # 16-sep-2026, dialecto: «شفايفه زرقا» son los labios azules del Golfo y Egipto.
+  - "(شفايف|شفايفه|شفايفها|شفتيه).{0,20}(زرق|زرقا|زرقاء|زرقه)"
   - no puede respirar
   - le cuesta (mucho )?respirar
   - dificultad (grave |seria )?para respirar
@@ -633,6 +638,12 @@ rules:
   reason_en: Head injury with loss of consciousness
   reason_fr: Coup à la tête avec perte de connaissance
   patterns:
+  # 16-sep-2026, dialecto: un padre no escribe «سقط» ni «رأسه». En el Golfo «طاح» y en
+  # todas partes «راسه» sin hamza. Y el golpe SOLO no es urgencia —como en la regla
+  # inglesa, hace falta además perder el conocimiento—: caerse de cabeza es de todos los
+  # días y un aviso que salta siempre deja de leerse.
+  - "(وقع|طاح|انضرب).{0,25}(راسه|راسها|رأسه|الراس).{0,45}(مو صاحي|ما يصحى|فقد الوعي|اغمي|أغمي|مغمى|ما يرد)"
+  - "(مو صاحي|ما يصحى|فقد الوعي|اغمي|أغمي|مغمى).{0,45}(وقع|طاح|انضرب).{0,25}(راسه|راسها|رأسه)"
   - (golpe|cabeza|ca[ií]d|cay[oó]).{0,80}(perdi[oó] el conocimiento|(ha )?perdido el conocimiento|(ha )?perdido la conciencia|inconsciente|desmay)
   - (golpe|cabeza|ca[ií]d|cay[oó]|traumatismo).{0,80}p[ée]rdida (de|del) (conocimiento|conciencia)
   - p[ée]rdida (de|del) (conocimiento|conciencia).{0,80}(golpe|cabeza|ca[ií]d|cay[oó]|traumatismo)
@@ -1207,6 +1218,10 @@ rules:
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
   patterns:
+  # 16-sep-2026, dialecto: un padre no escribe «سقط» ni «رأسه». En el Golfo «طاح» y en
+  # todas partes «راسه» sin hamza. «ابني وقع على راسه» salía RUTINA y sin fuentes.
+  - "(وقع|طاح).{0,30}(راسه|رأسه).{0,40}(يستفرغ|استفرغ|يرجع|بيرجع|تقيأ|يتقيأ)"
+  - "(يستفرغ|بيرجع|رجع).{0,40}(بعد|من).{0,20}(وقع|طاح).{0,20}(راسه|رأسه)"
   - (golpe|cabeza|ca[ií]d|cay[oó]).{0,100}v[oó]mit
   - v[oó]mit.{0,100}(golpe en la cabeza|cabeza)
   - (head|fell|fall|hit).{0,100}vomit

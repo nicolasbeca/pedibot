@@ -35,6 +35,9 @@ if TYPE_CHECKING:
 #: X's limit. A draft longer than this is not a tweet, whatever else it is.
 MAX_CHARS = 280
 
+#: La casa. Los enlaces de un tuit sólo pueden apuntar aquí, y sólo a una página que exista.
+SITE = "https://pedibot.xyz"
+
 #: What the site is not, and must never be said to be. No clinician has reviewed the guides —
 #: that is a standing rule of this project, and it is the one lie that would matter.
 FORBIDDEN = re.compile(
@@ -69,6 +72,9 @@ TOKEN_TALK = re.compile(
 #: The operator posts without links (6-sep). A draft that smuggles one back is not what he asked
 #: for, and on X it also costs the post its reach.
 HAS_LINK = re.compile(r"https?://|\bwww\.|pedibot\.xyz", re.I)
+
+#: La dirección entera, para comprobarla contra la lista de páginas (16-sep-2026).
+URL = re.compile(r"https?://[^\s]+", re.I)
 
 
 def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
@@ -118,10 +124,15 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
     # real headlines, so a tweet can quote a question the site actually answers instead of
     # inventing a plausible-sounding one
     titles: list[str] = []
+    #: Y su dirección, porque desde el 16-sep-2026 algunos tuits llevan enlace y el operador no
+    #: tiene por qué buscarlo: la lista sale de los ficheros publicados, así que una dirección
+    #: inventada no puede colarse — el verificador sólo acepta las de aquí.
+    links: list[str] = []
     for p in sorted((root / "web" / "content" / "en").glob("*.md")):
         m = re.search(r'^title:\s*"?(.+?)"?\s*$', p.read_text(encoding="utf-8"), re.M)
         if m:
             titles.append(m.group(1))
+            links.append(f"{SITE}/guides/{p.stem} — {m.group(1)}")
 
     return {
         "guides": sum(per_lang.values()),
@@ -138,6 +149,13 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
         "vaccine_authorities": authorities,
         "medicines_in_the_dose_calculator": len(drugs),
         "guide_titles_english": titles,
+        "links": [
+            f"{SITE}/dose — the weight-based dose calculator",
+            f"{SITE}/vaccines — the vaccination schedules",
+            f"{SITE}/growth — the WHO growth chart",
+            f"{SITE}/guides — every guide",
+            *links,
+        ],
     }
 
 
@@ -192,6 +210,8 @@ def fact_sheet(f: dict[str, Any]) -> str:
             "  and seek care",
             "- real guide titles you may quote verbatim:",
             *(f"  · {t}" for t in f["guide_titles_english"][:40]),
+            "- pages you may link, copied EXACTLY as written (the part before the dash):",
+            *(f"  · {x}" for x in f.get("links", [])[:40]),
         ]
     )
 
@@ -219,7 +239,12 @@ anything. Nobody has. Saying so would be the one lie that matters.
   same source documents. That is false, and nothing in the facts said it: those have
   their own sources. If a sentence needs a link between two bullets that is not
   written in them, do not write it.
-- No links, no URLs, no @handles.
+- ABOUT HALF of the posts end with exactly one link, and the other half carry none: a post
+  that needs a click to be worth reading is a bad post, and X buries posts that send people
+  away. When you use one, copy it EXACTLY from the list of pages below — never invent a
+  URL, never link a page that is not listed, never put a link in the middle of a sentence,
+  and never use a shortener. Link the page that is actually about what the post says.
+- No @handles.
 - Never mention a token, a coin, crypto, a wallet or a chain. These are posted from the account
   of a children's health site and have nothing to do with any of that.
 - At most 280 characters each, counted exactly.
@@ -260,8 +285,22 @@ def problems(text: str, f: dict[str, Any]) -> list[str]:
         return ["vacío"]
     if len(t) > MAX_CHARS:
         out.append(f"{len(t)} caracteres, el límite es {MAX_CHARS}")
-    if HAS_LINK.search(t):
-        out.append("lleva enlace y se pidió sin enlaces")
+    # 16-sep-2026, a petición del operador: algunos tuits llevan enlace a la página del tema.
+    # Uno como mucho, del sitio, a una página que EXISTE y al final del texto: un enlace
+    # inventado desde la cuenta de una web sanitaria es de las pocas cosas que no se pueden
+    # retirar después.
+    enlaces = URL.findall(t)
+    permitidos = {x.split(" — ")[0].strip() for x in f.get("links", [])}
+    if len(enlaces) > 1:
+        out.append(f"{len(enlaces)} enlaces; como mucho uno")
+    if not enlaces and HAS_LINK.search(t):
+        out.append("nombra el sitio sin ser un enlace entero: o va la dirección o no va nada")
+    for u in enlaces:
+        limpio = u.rstrip(".,;)")
+        if limpio not in permitidos:
+            out.append(f"enlace que no está en la lista de páginas: «{limpio}»")
+        elif not t.rstrip().endswith(limpio):
+            out.append("el enlace va al final, no en medio de la frase")
     if m := FORBIDDEN.search(t):
         out.append(f"afirmación prohibida: «{m.group(0)}»")
     if "@" in t:

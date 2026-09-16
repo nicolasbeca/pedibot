@@ -22,6 +22,81 @@ from pedibot.ingest.classify import Taxonomy
 #: La vocal larga del hindi transliterado se escribe doblada o no, según quien teclee:
 #: «kaan»/«kan», «daant»/«dant», «bukhaar»/«bukhar», «ultee»/«ulti». Se pliega para comparar.
 _VOCAL_DOBLE = re.compile(r"([aeiou])\1+", re.I)
+#: La hamza del árabe se escribe o no según el teclado y las prisas: «إسهال» en la ficha de la
+#: OMS, «اسهال» en el móvil del padre. Y la ة final se teclea «ه», y la ى se teclea «ي». Esto
+#: no cambia el significado de ninguna palabra del vocabulario médico: sólo su ortografía.
+_ARABE = str.maketrans(
+    {
+        "أ": "ا",
+        "إ": "ا",
+        "آ": "ا",
+        "ٱ": "ا",
+        "ة": "ه",
+        "ى": "ي",
+        "ؤ": "و",
+        "ئ": "ي",
+        "\u064b": "",
+        "\u064c": "",
+        "\u064d": "",
+        "\u064e": "",
+        "\u064f": "",
+        "\u0650": "",
+        "\u0651": "",
+        "\u0652": "",
+        "\u0640": "",
+    }
+)
+
+
+def _pliega_vocales(s: str) -> str:
+    """kaan → kan, daant → dant: la vocal larga del hindi transliterado."""
+    return _VOCAL_DOBLE.sub(r"\1", s)
+
+
+def _normaliza_arabe(s: str) -> str:
+    return s.translate(_ARABE)
+
+
+#: El «franco-árabe»: el móvil está en inglés y las letras que el alfabeto latino no tiene se
+#: escriben con cifras — 3 es ع, 7 es ح, 5 es خ, 2 es la hamza. Y lo demás lo escribe cada uno
+#: como le suena: «sokhouna» / «sukhuna» / «sokhona». Se pliega todo a una forma: fuera las
+#: cifras, las letras repetidas a una, y o→u, e→i, que es donde está la mitad de la variación.
+_CIFRAS_ARABIZI = str.maketrans(
+    {
+        "2": "",
+        "3": "",
+        "'": "",
+        "`": "",
+        "7": "h",
+        "5": "kh",
+        "8": "gh",
+        "9": "s",
+        "6": "t",
+        "4": "th",
+    }
+)
+_REPETIDA = re.compile(r"([a-z])\1+")
+_VOCAL_ARABIZI = str.maketrans({"o": "u", "e": "i"})
+
+
+def _normaliza_arabizi(s: str) -> str:
+    # las repeticiones se pliegan AL FINAL: «sokhouna» sólo dobla la u después de o→u
+    return _REPETIDA.sub(r"\1", s.translate(_CIFRAS_ARABIZI).translate(_VOCAL_ARABIZI))
+
+
+def _normaliza_ar(s: str) -> str:
+    """El árabe, se escriba en su alfabeto o en el latino. No se mezclan: si hay una sola letra
+    árabe, el texto es árabe y las cifras son cifras (los números de emergencia, las edades)."""
+    if any("\u0600" <= c <= "\u06ff" for c in s):
+        return _normaliza_arabe(s)
+    return _normaliza_arabizi(s)
+
+
+#: Qué se normaliza en cada lengua antes de comparar. Las demás, nada: en castellano «masa» y
+#: «maasa» no son la misma palabra, y plegar de más rompió en agosto la dirección inglés→castellano.
+_NORMALIZA = {"hi": _pliega_vocales, "ar": _normaliza_ar}
+
+
 _TOKEN = re.compile(r"[\wáéíóúñüऀ-ॿ]+", re.I)
 TRANSLATE_SYSTEM = (
     "You translate a parent's question about a child's health into 5-10 Spanish medical search "
@@ -156,9 +231,14 @@ class Synonyms:
         # quince preguntas corrientes: SEIS no encontraban nada, y las claves romanizadas
         # estaban puestas desde agosto. Sólo para el hindi: en castellano «masa» y «maasa» no
         # son la misma palabra (23-ago: plegar de más rompió la dirección inglés→castellano).
+        #
+        # Y el árabe tiene lo suyo: la hamza se escribe o no —«إسهال» en la ficha, «اسهال» en el
+        # teclado— y con eso «عيالي عندهم اسهال» no encontraba NADA. Misma solución: se comparan
+        # las formas normalizadas, y la normalización es de la lengua, no general.
         romanizado = lang == "hi"
-        low_hi = _VOCAL_DOBLE.sub(r"\1", low) if romanizado else low
-        tokens_hi = [_VOCAL_DOBLE.sub(r"\1", t) for t in tokens] if romanizado else tokens
+        norm = _NORMALIZA.get(lang)
+        low_n = norm(low) if norm else low
+        tokens_n = [norm(t) for t in tokens] if norm else tokens
         for table in self._tables(lang):
             for trigger, terms in table.items():
                 # a trigger with a space is a phrase ("stomach bug"), matched on the whole query;
@@ -168,11 +248,13 @@ class Synonyms:
                 disp = fold(_GUIONES.sub(" ", trigger))
                 if " " in disp:
                     hit = disp in low
+                    if not hit and norm:
+                        hit = norm(disp) in low_n
                     if not hit and romanizado:
-                        partes = _VOCAL_DOBLE.sub(r"\1", disp).split(" ")
+                        partes = norm(disp).split(" ") if norm else disp.split(" ")
                         # una palabra corta en medio —«kaan me dard»— no rompe la frase
                         hueco = r"\s+(?:\w{1,3}\s+)?".join(re.escape(p) for p in partes)
-                        hit = re.search(hueco, low_hi) is not None
+                        hit = re.search(hueco, low_n) is not None
                 elif disp.endswith("$"):
                     # palabra entera: «tablet$» es el aparato y «tableta» es de chocolate — o una
                     # pastilla, que es peor. Por prefijo, «se ha tomado una tableta de
@@ -180,14 +262,14 @@ class Synonyms:
                     # pregunta de dosis (10-sep-2026). Misma marca que en la taxonomía.
                     entera = disp[:-1]
                     hit = any(t == entera for t in tokens)
-                    if not hit and romanizado:
-                        plegada = _VOCAL_DOBLE.sub(r"\1", entera)
-                        hit = any(t == plegada for t in tokens_hi)
+                    if not hit and norm:
+                        plegada = norm(entera)
+                        hit = any(t == plegada for t in tokens_n)
                 else:
                     hit = any(t.startswith(disp) for t in tokens)
-                    if not hit and romanizado:
-                        plegado = _VOCAL_DOBLE.sub(r"\1", disp)
-                        hit = any(t.startswith(plegado) for t in tokens_hi)
+                    if not hit and norm:
+                        plegado = norm(disp)
+                        hit = any(t.startswith(plegado) for t in tokens_n)
                 if hit:
                     for t in terms:
                         if t not in extra:

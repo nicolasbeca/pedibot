@@ -48,6 +48,12 @@ FACTS = {
     "vaccine_authorities": ["Ministerio de Sanidad", "NHS"],
     "medicines_in_the_dose_calculator": 4,
     "guide_titles_english": ["What should I do if my child has a fever?"],
+    # 16-sep-2026: el operador pidió que algunos tuits lleven enlace al tema del que hablan.
+    # La lista sale de lo publicado, así que una dirección inventada no puede colarse.
+    "links": [
+        "https://pedibot.xyz/dose — the weight-based dose calculator",
+        "https://pedibot.xyz/guides/fever — What should I do if my child has a fever?",
+    ],
 }
 OK = allowed_numbers(FACTS)
 
@@ -331,3 +337,54 @@ def test_se_puede_pedir_una_tanda_mayor() -> None:
     assert m.how_many(["--n", "0"]) == 1
     assert m.how_many(["--n", "99"]) == 20
     assert m.how_many(["--dry-run"]) == 7
+
+
+# ── enlaces (petición del operador, 16-sep-2026) ─────────────────────────────
+def _hechos_con_enlaces():
+    from pedibot.ops.tweets import facts
+    from pedibot.settings import ROOT
+
+    return facts(ROOT, ROOT / "index" / "pedibot.db")
+
+
+def test_un_enlace_de_la_lista_pasa():
+    """El operador pidió que algunos tuits lleven enlace al tema del que hablan."""
+    from pedibot.ops.tweets import problems
+
+    f = _hechos_con_enlaces()
+    assert f["links"], "la hoja de datos no ofrece ninguna página que enlazar"
+    url = f["links"][0].split(" — ")[0]
+    assert problems(f"Every statement in a guide names the document it came from. {url}", f) == []
+
+
+def test_un_enlace_inventado_se_tira():
+    """Una dirección inventada desde la cuenta de una web sanitaria no se puede retirar después."""
+    from pedibot.ops.tweets import problems
+
+    f = _hechos_con_enlaces()
+    malos = problems("Read more at https://pedibot.xyz/guides/this-does-not-exist", f)
+    assert any("no está en la lista" in x for x in malos), malos
+
+
+def test_dos_enlaces_no():
+    from pedibot.ops.tweets import problems
+
+    f = _hechos_con_enlaces()
+    a, b = (x.split(" — ")[0] for x in f["links"][:2])
+    assert any("enlaces" in x for x in problems(f"Mira {a} y {b}", f))
+
+
+def test_el_enlace_va_al_final():
+    from pedibot.ops.tweets import problems
+
+    f = _hechos_con_enlaces()
+    url = f["links"][0].split(" — ")[0]
+    fallos = problems(f"En {url} lo explicamos con sus fuentes.", f)
+    assert any("al final" in x for x in fallos), fallos
+
+
+def test_nombrar_el_sitio_sin_enlace_tampoco():
+    from pedibot.ops.tweets import problems
+
+    f = _hechos_con_enlaces()
+    assert problems("Everything is on pedibot.xyz", f)

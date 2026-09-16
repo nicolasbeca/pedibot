@@ -2646,6 +2646,64 @@ ru_en:
   - breathing
   - difficulty breathing
 ar_es:
+  # 16-sep-2026, franco-árabe (el árabe tecleado en letras latinas, lo normal en el Golfo
+  # y en Egipto): las diez preguntas de prueba no encontraban NADA. Las claves van en la
+  # forma que deja el normalizador: sin cifras, sin letras repetidas y con o→u, e→i.
+  sukhuna:
+  - fiebre
+  harara:
+  - fiebre
+  ishal:
+  - diarrea
+  - gastroenteritis
+  koha:
+  - tos
+  - catarro
+  tarja:
+  - vómitos
+  waga batn:
+  - dolor abdominal
+  tafh:
+  - exantema
+  - urticaria
+  bibki:
+  - llanto
+  - cólico del lactante
+  wazn:
+  - peso
+  - crecimiento
+  tatim:
+  - vacuna
+  # 16-sep-2026, dialecto: seis de ocho preguntas corrientes del Golfo, Egipto y el
+  # Levante no encontraban NADA. La palabra del padre no es la de la ficha.
+  سخن:
+  - fiebre
+  سخنان:
+  - fiebre
+  حرارته:
+  - fiebre
+  عيال:
+  - niño pequeño
+  يستفرغ:
+  - vómitos
+  - gastroenteritis
+  بيرجع:
+  - vómitos
+  بيعيط:
+  - llanto
+  - cólico del lactante
+  بيكح:
+  - tos
+  - catarro
+  حبوب:
+  - exantema
+  - urticaria
+  راسه:
+  - traumatismo craneal
+  - cabeza
+  طاح:
+  - caída
+  - traumatismo craneal
   # 16-sep-2026, batería de casa (India y Golfo): la ficha existía y el padre no llegaba.
   يبكي:
   - llanto
@@ -3193,6 +3251,129 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # 16-sep-2026, franco-árabe (el árabe tecleado en letras latinas, lo normal en el Golfo
+  # y en Egipto): las diez preguntas de prueba no encontraban NADA. Las claves van en la
+  # forma que deja el normalizador: sin cifras, sin letras repetidas y con o→u, e→i.
+  sukhuna:
+  - fever
+  - high temperature
+  harara:
+  - fever
+  - high temperature
+  skhuna:
+  - fever
+  ishal:
+  - diarrhoea
+  - diarrhoea and vomiting
+  is hal:
+  - diarrhoea
+  - diarrhoea and vomiting
+  koha:
+  - cough
+  - croup
+  - cold
+  sual:
+  - cough
+  tarja:
+  - vomiting
+  - being sick
+  btrja:
+  - vomiting
+  - being sick
+  yistafrigh:
+  - vomiting
+  - being sick
+  waga batn:
+  - stomach ache
+  - abdominal pain
+  waja batn:
+  - stomach ache
+  - abdominal pain
+  batnu:
+  - stomach ache
+  - abdominal pain
+  tafh:
+  - rash
+  - spots
+  jildi:
+  - rash
+  - skin
+  bibki:
+  - crying
+  - colic
+  - soothing a crying baby
+  byibki:
+  - crying
+  - colic
+  wazn:
+  - weight
+  - weight gain
+  - growth chart
+  waznu:
+  - weight
+  - weight gain
+  - growth chart
+  ma yakul:
+  - not eating
+  - appetite
+  - feeding
+  ma bykul:
+  - not eating
+  - appetite
+  - feeding
+  tatim:
+  - vaccination
+  - immunisation
+  rasu:
+  - head injury
+  - concussion
+  # 16-sep-2026, dialecto: seis de ocho preguntas corrientes del Golfo, Egipto y el
+  # Levante no encontraban NADA. La palabra del padre no es la de la ficha.
+  سخن:
+  - fever
+  - high temperature
+  سخنان:
+  - fever
+  - high temperature
+  حرارته:
+  - fever
+  - high temperature
+  عيال:
+  - children
+  - child
+  يستفرغ:
+  - vomiting
+  - being sick
+  - diarrhoea and vomiting
+  بيرجع:
+  - vomiting
+  - being sick
+  بيعيط:
+  - crying
+  - colic
+  - soothing a crying baby
+  بيكح:
+  - cough
+  - croup
+  - cold
+  حبوب:
+  - rash
+  - spots
+  - chickenpox
+  راسه:
+  - head injury
+  - concussion
+  طاح:
+  - fell
+  - head injury
+  ما ياكل:
+  - not eating
+  - feeding
+  - appetite
+  مش بياكل:
+  - not eating
+  - feeding
+  - appetite
   # 16-sep-2026, batería de casa (India y Golfo): la ficha existía y el padre no llegaba.
   يبكي:
   - crying
