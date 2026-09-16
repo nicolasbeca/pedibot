@@ -186,8 +186,11 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
        alemana —«Dosisrechner», «Wachstumskurve», «Impfungen»— enseñaba la última pastilla
        partida por la mitad, que es peor que no enseñarla (visto por el operador, 16-sep-2026).
        Envolviendo y recortando a la altura de una fila, la pastilla que no entra se va a una
-       segunda fila que no se ve. Todo lo que cae aquí sigue en el pie. */
-    .bar nav { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; max-height: 34px; overflow: hidden; }
+       segunda fila que no se ve. Todo lo que cae aquí sigue en el pie.
+       El recorte va en `em` y no en píxeles: con 34 px cortaba las pastillas POR ABAJO,
+       porque una pastilla mide más que eso en cuanto el lector agranda la letra. */
+    .bar nav { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 8px;
+               min-width: 0; max-height: 2.2em; overflow: hidden; }
     .bar nav > a { flex: 0 0 auto; }
     .bar-end { display: flex; gap: 8px; flex: 0 0 auto; }
     /* Shed links as the window narrows. Everything dropped here is still in the footer, and the

@@ -25,28 +25,32 @@ const conCalendario = Object.keys(vaccines);
 const defecto = paises.includes('GB') ? 'GB' : paises[0];
 ---
 
+<!-- 16-sep-2026: esta sección era la única que NO metía su contenido en `.wrap`, así que en
+     una pantalla ancha aparecía pegada al borde izquierdo mientras el resto de la página
+     estaba centrado en la columna de 1040 px. Lo vio el operador en una captura. -->
 <section class="block mine" id="mine">
-  <p class="eyebrow">{s.mine_eyebrow}</p>
-  <h2 style="margin-top:8px">{s.mine_h2}</h2>
+  <div class="wrap">
+    <p class="eyebrow">{s.mine_eyebrow}</p>
+    <h2 style="margin-top:8px">{s.mine_h2}</h2>
 
-  <div class="row">
-    <label class="pick">
-      <span>{s.mine_pick}</span>
-      <select id="mine-cc" aria-label={s.mine_pick}>
-        {paises.map((cc) => <option value={cc} selected={cc === defecto}>{cc}</option>)}
-      </select>
-    </label>
+    <div class="row">
+      <label class="pick">
+        <span>{s.mine_pick}</span>
+        <select id="mine-cc" aria-label={s.mine_pick}>
+          {paises.map((cc) => <option value={cc} selected={cc === defecto}>{cc}</option>)}
+        </select>
+      </label>
 
-    <div class="num">
-      <span class="lbl">{s.mine_call}</span>
-      <b id="mine-num">{emergency[defecto as keyof typeof emergency]?.emergency ?? '—'}</b>
+      <div class="num">
+        <span class="lbl">{s.mine_call}</span>
+        <b id="mine-num">{emergency[defecto as keyof typeof emergency]?.emergency ?? '—'}</b>
+      </div>
     </div>
-  </div>
 
-  <p class="cal">
-    <a id="mine-cal" class="btn btn-ghost" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines} →</a>
-    <span class="hint" id="mine-hint"></span>
-  </p>
+    <p class="cal">
+      <a id="mine-cal" class="btn btn-ghost" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines} →</a>
+      <span class="hint" id="mine-hint"></span>
+    </p>  </div>
 </section>
 
 <script define:vars={{ NUM: emergency, CAL: conCalendario, PREF: langPrefix(lang), FALTA: s.mine_no_cal }}>
