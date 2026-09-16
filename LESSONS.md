@@ -179,3 +179,20 @@
 - **L163 — «Excluir al operador» no es excluir un navegador: es excluir a una persona que usa varios aparatos, varias redes y días distintos.** El filtro que había era correcto y estrecho: el navegador exacto que abrió /admin. Medido contra el registro real, dejaba pasar el móvil del operador en su wifi, su Chrome de casa los días que no abrió el panel, y todo lo que preguntaba desde el chat, que se presenta como lector por construcción. Y cada filtro tiene su límite legal propio: las visitas pueden ir por IP porque el registro del servidor ya la tiene, las consultas no, porque /legal promete guardarlas sin ella — ahí la identidad tiene que viajar en el navegador. → **Un filtro de «lo nuestro» se valida sobre los datos reales contando lo que se cuela, no sobre casos inventados**: la primera ventana (un día) pasaba todas las pruebas y dejaba 80 páginas fuera. Y cuando una prueba de privacidad choca con un cambio, se precisa lo que protege (lo que el sitio escribe en el navegador de un lector), no se afloja.
 - **L164 — Una expresión regular escrita para una escritura se rompe en silencio en las otras, y el troceador era la más escondida.** El separador de frases cortaba delante de `[A-ZÁÉÍÓÚÑ¿¡•-]`: en cirílico no reconocía la mayúscula, el árabe no tiene y el devanagari termina con «।». Nadie lo vio desde que se escribió el troceador (24-ago) porque nada fallaba: la búsqueda devolvía algo, el modelo respondía, el golden (casi todo latino) no cambiaba. Salió al meter una página de la OMS en cinco lenguas y ver que la francesa daba siete pasajes y la rusa uno. → **Cuando la misma fuente existe en varias lenguas, se compara cómo queda en cada una**: es la prueba más barata de que un paso del proceso no depende de la escritura. Y la segunda, del mismo lote: antes de decir qué tabla usa un país, leer la fuente oficial — tres de los once no usan la de la OMS y una página que lo diera por hecho mentiría justo en el número que el padre compara con su cartilla.
 - **L165 — «No aparezco en la búsqueda» no prueba nada si la búsqueda te excluye a ti mismo, y la di por prueba.** Revisando por qué el agente ACP llevaba dieciocho días sin trabajos, busqué «PediBot» con su propia CLI, no salió, y lo conté como síntoma. Luego leí el SDK: `browseAgents` manda `walletAddressToExclude` con la cartera de quien busca. El hallazgo real era otro y sí estaba medido —`lastActiveAt: None` hasta abrir el socket de `events listen`—, pero la frase «no lo encuentra nadie» era una inferencia sobre una prueba inválida. → **Antes de usar una ausencia como evidencia, comprobar que el instrumento podía ver la presencia**: buscar algo que sé que existe con la misma herramienta, o buscar desde otro lado. Y del mismo lote, una de seguridad: una copia temporal de un llavero se limpia con `trap ... EXIT`, nunca con un `rm` al final de un script con `set -e`, porque el primer fallo la deja en `/tmp` — me pasó, y se borró al minuto.
+
+## L166 · Una guía arreglada a mano vuelve sola si se despliega como siempre (16-sep-2026)
+
+`ops/deploy.sh` **se trae `web/content` del servidor antes de subir nada**, porque el servidor
+publica guías solo y su copia manda. Consecuencia que costó dos veces el mismo arreglo: corregí
+a mano el encabezado castellano de una guía portuguesa, desplegué —y el despliegue restauró la
+versión del servidor encima—; el `git add -A` siguiente committeó la reversión, y la prueba de
+idiomas volvió a fallar en la tanda siguiente como si no hubiera hecho nada.
+
+Dos reglas de esto:
+
+1. Un arreglo a mano en `web/content` se despliega con **`--no-pull`**, que existe justo para eso,
+   y se comprueba en vivo después.
+2. Lo que se arregla a mano vuelve porque lo escribe una máquina: el arreglo de verdad es la
+   comprobación en el publicador. `detect_lang` sobre el artículo entero no ve una línea en otra
+   lengua, así que ahora el título y los encabezados pasan por los mismos marcadores que revisan
+   el sitio construido (`pedibot.lang_markers`), y una guía mezclada no se escribe.

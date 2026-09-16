@@ -17,6 +17,7 @@ from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import detect_lang
 from pedibot.index.store import Hit, Index
 from pedibot.ingest.pipeline import slug as make_slug
+from pedibot.lang_markers import foreign_markers
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 _CIT = re.compile(r"\[(\d{1,2})\]")
@@ -317,8 +318,12 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
     # y que las fichas de la OMS llevan indexadas en cinco lenguas desde el 3 de septiembre.
     "desnutricion": {
         # no hay ficha de la OMS en castellano para esto; la recuperación cruza igual
-        "docs": ["who_en_malnutrition", "who_fr_malnutrition",
-                 "who_ar_malnutrition", "who_ru_malnutrition"],
+        "docs": [
+            "who_en_malnutrition",
+            "who_fr_malnutrition",
+            "who_ar_malnutrition",
+            "who_ru_malnutrition",
+        ],
         "query": "desnutrición infantil signos peso talla cuándo consultar malnutrition child",
     },
     "ahogamiento": {
@@ -342,9 +347,13 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "poliomielitis vacuna parálisis niños polio vaccine paralysis",
     },
     "vacunas_atrasadas": {
-        "docs": ["who_en_immunization_coverage", "who_es_immunization_coverage",
-                 "who_fr_immunization_coverage", "who_ar_immunization_coverage",
-                 "who_ru_immunization_coverage"],
+        "docs": [
+            "who_en_immunization_coverage",
+            "who_es_immunization_coverage",
+            "who_fr_immunization_coverage",
+            "who_ar_immunization_coverage",
+            "who_ru_immunization_coverage",
+        ],
         "query": "vacunas atrasadas ponerse al día calendario incompleto catch up immunization",
     },
     "hepatitis_a": {
@@ -369,7 +378,11 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
     # diaria; y la anemia afecta a más de la mitad de los niños indios menores de cinco años.
     # Dieciséis temas × ocho lenguas = 128 guías, dos meses de cola para los timers.
     "dengue": {
-        "docs": ["who_en_dengue_and_severe_dengue", "who_ar_dengue_and_severe_dengue", "who_es_dengue_and_severe_dengue"],
+        "docs": [
+            "who_en_dengue_and_severe_dengue",
+            "who_ar_dengue_and_severe_dengue",
+            "who_es_dengue_and_severe_dengue",
+        ],
         "query": "dengue niño fiebre signos de alarma sangrado dolor abdominal dengue child warning signs",
     },
     "mordedura_perro_rabia": {
@@ -377,7 +390,11 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "mordedura de perro niño rabia lavar la herida profilaxis dog bite child rabies wound washing",
     },
     "mordedura_serpiente": {
-        "docs": ["who_en_snakebite_envenoming", "who_ar_snakebite_envenoming", "who_es_snakebite_envenoming"],
+        "docs": [
+            "who_en_snakebite_envenoming",
+            "who_ar_snakebite_envenoming",
+            "who_es_snakebite_envenoming",
+        ],
         "query": "mordedura de serpiente niño qué hacer no torniquete snake bite child what to do",
     },
     "tetanos": {
@@ -393,7 +410,11 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "sarna niño picor por la noche tratamiento familia scabies child itching treatment",
     },
     "lombrices_intestinales": {
-        "docs": ["who_en_soil_transmitted_helminth_infections", "who_ar_soil_transmitted_helminth_infections", "who_es_soil_transmitted_helminth_infections"],
+        "docs": [
+            "who_en_soil_transmitted_helminth_infections",
+            "who_ar_soil_transmitted_helminth_infections",
+            "who_es_soil_transmitted_helminth_infections",
+        ],
         "query": "lombrices intestinales niño desparasitación higiene deworming child intestinal worms",
     },
     "anemia": {
@@ -401,7 +422,11 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "anemia niño hierro cansancio palidez anaemia child iron deficiency",
     },
     "diarrea_sro_zinc": {
-        "docs": ["who_en_diarrhoeal_disease", "who_ar_diarrhoeal_disease", "who_es_diarrhoeal_disease"],
+        "docs": [
+            "who_en_diarrhoeal_disease",
+            "who_ar_diarrhoeal_disease",
+            "who_es_diarrhoeal_disease",
+        ],
         "query": "diarrea niño sales de rehidratación oral zinc deshidratación ORS zinc child diarrhoea",
     },
     "agua_segura_bebe": {
@@ -628,6 +653,20 @@ def _problems(
     found = foreign_service_problem(prose)
     if found:
         problems.append(found)
+    # El idioma, línea a línea y no sólo en conjunto. `detect_lang` mira el artículo entero y da
+    # portugués a un artículo portugués con un encabezado en castellano: así se publicó «Quando
+    # acudir al médico ou a urgencias», y estuvo vivo (16-sep-2026). Se miran el título y los
+    # encabezados, que es donde se cuela, con la misma lista que revisa el sitio construido.
+    for linea in [title, *re.findall(r"^#+ (.+)$", body, re.M)]:
+        fuga = foreign_markers(linea, lang)
+        if fuga:
+            otra, palabra = fuga[0]
+            problems.append(
+                f"language_leak ({palabra!r} is {otra}, in {linea.strip()[:60]!r}): every"
+                f" heading and the title in {LANGUAGE_NAME.get(lang, 'English')}, not only"
+                " the body"
+            )
+            break
     problems.extend(_structure_problems(body, lang, compare))
     return problems
 

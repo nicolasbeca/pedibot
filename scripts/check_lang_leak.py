@@ -24,35 +24,10 @@ from html import unescape
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 DIST = ROOT / "web" / "site" / "dist"
 
-# Words that belong to exactly one of the site's languages. Deliberately short and unambiguous:
-# 'sources'/'guides'/'documents' are shared between English and French and are not markers.
-MARKERS: dict[str, tuple[str, ...]] = {
-    "es": ("¿", "años", "niño", "hijo", "qué ", "cómo", "vacunas", "urgencias", "guías",
-           # "dosis" was a marker until German arrived and spells it the same way
-           "síntomas", "medicación", "cuándo", "preguntas frecuentes"),
-    "en": ("child", "should", "what ", "when ", "vaccination schedule", "symptom diary",
-           "dose calculator", "guidelines", "warning signs", "how it works", "common questions",
-           "where they agree", "where they differ"),
-    # the last four were added on 4-sep: the German, Russian and Arabic home pages carried the
-    # French title for weeks and none of the words above appear in it
-    "fr": ("enfant", "urgences", "vaccinal", "posologie", "dois-je", "médicaments",
-           "quels ", "âge", "santé", "questions fréquentes",
-           "gratuit ", "réponses", "sourcé", "pour les parents", "toutes les"),
-    "de": ("kind", "notaufnahme", "impfkalender", "dosisrechner", "warnzeichen", "soll ich",
-           "ratgeber", "häufige fragen", "quellen", "symptomtagebuch"),
-    # Russian is in its own script, so any Cyrillic at all on a non-Russian page is a leak
-    "ru": ("ребён", "ребен", "температур", "прививк", "источник", "калькулятор доз",
-           "тревожн", "статьи для родителей", "дневник симптомов"),
-    "ar": ("طفل", "الطوارئ", "التطعيمات", "حاسبة الجرعات", "المصادر", "علامات التحذير",
-           "أدلة للوالدين", "مفكرة الأعراض"),
-    # Portuguese words that Spanish does not spell the same way, which is the only real risk here
-    "pt": ("criança", "você", "vômitos", "diretrizes", "pronto-socorro", "não ",
-           "guias para pais", "sinais de alarme"),
-    # Devanagari is its own script, so any of it on a non-Hindi page is a leak by itself;
-    # these are the words the Hindi pages actually print, for the reverse direction
-    "hi": ("बच्चे", "बुखार", "टीक", "इमरजेंसी", "खुराक", "स्रोत", "गाइड",
-           "चेतावनी के निशान", "आम सवाल"),
-}
+# La lista vive en el paquete desde el 16-sep-2026: la usan este guardián (sobre el sitio
+# construido) y el publicador (antes de escribir la guía), y una lista en dos sitios se
+# queda coja en uno de los dos.
+from pedibot.lang_markers import MARKERS, foreign_markers  # noqa: E402
 
 
 def proper_names() -> list[str]:
@@ -70,6 +45,7 @@ def proper_names() -> list[str]:
         names.update(x for x in (d.get("org"), d.get("org_full")) if x)
     for c in json.loads((data / "vaccines.json").read_text(encoding="utf-8")).values():
         names.update((c.get("name") or {}).values())
+
     def every_name(node: object) -> None:
         """Brand names sit at several depths in drugs.json; collect every "name" there is."""
         if isinstance(node, dict):
@@ -124,16 +100,8 @@ def leaks(html: str, lang: str) -> list[tuple[str, str, str]]:
     """(foreign language, the word found, the headline it was found in)."""
     found = []
     for line in headlines(html):
-        low = line.lower()
-        for name in NAMES:  # a quoted organisation or brand is not the page's language
-            low = low.replace(name.lower(), " ")
-        for other, words in MARKERS.items():
-            if other == lang:
-                continue
-            for w in words:
-                if w in low:
-                    found.append((other, w.strip(), line[:90]))
-                    break
+        # NAMES: una organización o una marca citada no es la lengua de la página
+        found += [(otra, w, line[:90]) for otra, w in foreign_markers(line, lang, NAMES)]
     return found
 
 

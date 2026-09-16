@@ -31,7 +31,7 @@ Com esses instrumentos, os profissionais de saúde conseguem diagnosticar desnut
 - Não interprete um percentil isolado por conta própria: as estimativas variam conforme a idade, o sexo, o indicador de crescimento e o estado nutricional da população avaliada [1].
 - Anote as dúvidas sobre a curva do seu filho e leve-as ao profissional de saúde [1].
 
-## Quando acudir al médico ou a urgencias
+## Quando procurar o médico ou o pronto-socorro
 
 Procure seu médico ou o pronto-socorro se você notar sinais de que o crescimento ou o estado nutricional do seu filho podem estar fora do esperado [1]:
 

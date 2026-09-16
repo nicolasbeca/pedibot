@@ -323,3 +323,8 @@ abierto, en orden de consecuencia:
 - **Fallo encontrado probando en vivo (dos veces) y que ninguna prueba veía:** los datos se leían del texto de toda la conversación, y ahí el mensaje viejo va primero. «Mi niña de 8 meses que pesa 7 kg» seguido de «mi niño de 3 años que pesa 13 kg y mide 92 cm» daba 7 kg para 92 cm: aviso de desnutrición aguda grave a un niño sano. Ahora manda el mensaje de ahora y lo anterior sólo rellena lo que falte (dos pruebas nuevas).
 - Y el guardián de idiomas cazó una guía portuguesa publicada por el servidor con un encabezado medio en castellano («Quando acudir al médico ou a urgencias»), corregida. **Pendiente:** el publicador del servidor no pasa esa comprobación antes de publicar; debería.
 - Regla final, tras verlo otra vez en vivo en inglés, árabe e hindi: **el peso y la talla salen de UN SOLO mensaje** (el de ahora; si hoy no trae medidas, el último que trajera alguna, con las dos de ese mismo mensaje). El sexo y la edad sí son contexto. Cuatro pruebas de conversación.
+
+## 16-sep-2026 (tarde) · el publicador ya no puede sacar una guía con el idioma mezclado
+- `src/pedibot/lang_markers.py`: la lista de marcadores sale de `scripts/check_lang_leak.py` y la usan los dos, el guardián del sitio construido y el publicador. `_problems()` revisa ahora el título y cada encabezado; una guía mezclada se reintenta una vez y, si vuelve, no se escribe.
+- Prueba nueva que vigila las guías ya publicadas (título y encabezados), además de las del publicador: tests/test_the_publisher_checks_the_language.py.
+- L166: el despliegue se trae `web/content` del servidor antes de subir, así que un arreglo a mano se pierde si no se despliega con `--no-pull`. Me pasó con esta misma guía y la reversión entró en un commit.
