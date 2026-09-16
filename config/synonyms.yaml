@@ -2646,6 +2646,16 @@ ru_en:
   - breathing
   - difficulty breathing
 ar_es:
+  # 16-sep-2026, batería de casa (India y Golfo): la ficha existía y el padre no llegaba.
+  يبكي:
+  - llanto
+  - cólico del lactante
+  وزن:
+  - peso
+  - crecimiento
+  أطعم:
+  - alimentación complementaria
+  - sólidos
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   براز:
@@ -3183,6 +3193,18 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # 16-sep-2026, batería de casa (India y Golfo): la ficha existía y el padre no llegaba.
+  يبكي:
+  - crying
+  - colic
+  - soothing a crying baby
+  وزن:
+  - weight
+  - weight gain
+  أطعم:
+  - first solid foods
+  - solid foods
+  - complementary feeding
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   براز:
@@ -3343,6 +3365,8 @@ ar_en:
   يتقيأ:
   - vomiting
   - throwing up
+  - diarrhoea and vomiting
+  - being sick
   استفراغ:
   - vomiting
   - throwing up
@@ -3539,6 +3563,7 @@ ar_en:
   بكاء:
   - colic
   - crying
+  - soothing a crying baby
   ارتجاع:
   - reflux
   الارتجاع:
@@ -4543,6 +4568,16 @@ pt_en:
   - emergency department
   - emergency
 hi_es:
+  # 16-sep-2026, batería de casa (India y Golfo): la ficha existía y el padre no llegaba.
+  रोना:
+  - llanto
+  - cólico del lactante
+  खिलाएं:
+  - alimentación complementaria
+  - sólidos
+  चोट:
+  - traumatismo
+  - golpe
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   मल$:
@@ -5087,6 +5122,22 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 16-sep-2026, batería de casa (India y Golfo): la ficha existía y el padre no llegaba.
+  रोना:
+  - crying
+  - colic
+  - soothing a crying baby
+  खिलाएं:
+  - first solid foods
+  - solid foods
+  - complementary feeding
+  खिलाऊं:
+  - first solid foods
+  - solid foods
+  - complementary feeding
+  चोट:
+  - head injury
+  - concussion
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   मल$:
@@ -5117,7 +5168,7 @@ hi_en:
   नाक बंद: [blocked nose, stuffy nose, common cold]
   जूँ: [head lice, nits]
   जूं: [head lice, nits]
-  खिलाना: [solid foods, complementary feeding]
+  खिलाना: [solid foods, complementary feeding, first solid foods, weaning]
   मिट्टी का तेल: [kerosene, poisoning]
   केरोसिन: [kerosene, poisoning]
   कीटनाशक: [pesticide, poisoning]
@@ -5283,6 +5334,8 @@ hi_en:
   उल्टी:
   - vomiting
   - throwing up
+  - diarrhoea and vomiting
+  - being sick
   उलटी:
   - vomiting
   - throwing up
@@ -5506,6 +5559,7 @@ hi_en:
   रोता:
   - colic
   - crying
+  - soothing a crying baby
   rota rehta:
   - colic
   - crying

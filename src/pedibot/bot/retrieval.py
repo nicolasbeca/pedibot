@@ -29,8 +29,22 @@ TRANSLATE_SYSTEM = (
 
 #: Palabras que acompañan a una marca y no son la marca. Sin esto, una casilla futura del
 #: tipo «Children's Panadol» convertiría «children» en disparador de paracetamol.
-_COLETILLAS = frozenset({"children", "children's", "infant", "infants", "infants'", "junior",
-                         "baby", "kids", "for", "pediátrico", "pediatrico", "pédiatrique"})
+_COLETILLAS = frozenset(
+    {
+        "children",
+        "children's",
+        "infant",
+        "infants",
+        "infants'",
+        "junior",
+        "baby",
+        "kids",
+        "for",
+        "pediátrico",
+        "pediatrico",
+        "pédiatrique",
+    }
+)
 
 
 def _brand_terms(drugs_path: Path) -> dict[str, dict[str, str]]:
@@ -450,6 +464,27 @@ def detect_lang(text: str) -> str:
     return "en"
 
 
+def _one_readable_up_front(hits: list[Hit], lang: str) -> list[Hit]:
+    """Entre las TRES primeras tiene que haber una que el padre pueda abrir, si existe alguna.
+
+    16-sep-2026, batería de cuarenta preguntas de casa en hindi y árabe. «बच्चा उल्टी कर रहा
+    है» y «طفلي يتقيأ» devolvían tres hojas de la SEUP, en castellano, y la página del NHS sobre
+    vómitos justo detrás, a seis puntos. El padre recibe una respuesta con fuentes que no puede
+    abrir, y comprobar es lo único que este producto ofrece por encima de un buscador.
+
+    No se toca la puntuación —subir el empujón de la lengua puente movería las ocho lenguas por
+    un caso de tres—: se sube UNA sola ficha legible al tercer puesto, y el orden de las demás
+    se queda como estaba. Si no hay ninguna legible, no se inventa: se devuelve lo que hay.
+    """
+    legibles = {lang, READABLE_FALLBACK.get(lang, "")}
+    if len(hits) < 4 or any(h.chunk.lang in legibles for h in hits[:3]):
+        return hits
+    for i, h in enumerate(hits[3:], start=3):
+        if h.chunk.lang in legibles:
+            return [*hits[:2], h, *hits[2:i], *hits[i + 1 :]]
+    return hits
+
+
 class Retriever:
     def __init__(
         self,
@@ -513,4 +548,4 @@ class Retriever:
         # "se hace pis en la cama" — covered by nothing — scores 10 and matches 1 of 3. The ranges
         # overlap, and an absolute score is not even comparable between corpora (it silenced every
         # test fixture). Separating them needs semantic similarity, not another threshold.
-        return good, extra
+        return _one_readable_up_front(good, lang), extra
