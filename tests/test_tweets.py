@@ -313,3 +313,21 @@ def test_the_real_sheet_leads_with_the_bodies_a_reader_would_recognise():
     nombres = set(f["organisation_names"])
     for esperado in ("NHS", "WHO", "MedlinePlus", "CDC"):
         assert esperado in nombres, f"{esperado} no llega a la hoja de datos: {sorted(nombres)}"
+
+
+def test_se_puede_pedir_una_tanda_mayor() -> None:
+    """El semanal son siete; el operador pidió diez el 16-sep y la cifra no puede ser un
+    constante escondido. Con tope, que veinte mensajes seguidos a Telegram son un castigo."""
+    import importlib.util
+    import pathlib
+
+    ruta = pathlib.Path(__file__).resolve().parents[1] / "ops" / "weekly_tweets.py"
+    spec = importlib.util.spec_from_file_location("weekly_tweets", ruta)
+    assert spec and spec.loader
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    assert m.how_many([]) == 7
+    assert m.how_many(["--n", "10"]) == 10
+    assert m.how_many(["--n", "0"]) == 1
+    assert m.how_many(["--n", "99"]) == 20
+    assert m.how_many(["--dry-run"]) == 7

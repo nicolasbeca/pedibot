@@ -8,7 +8,8 @@ will not paste. Anything that needs saying (how many were thrown away and why) g
 journal, where it belongs, not on top of the text he is about to post.
 
 Usage:
-    python3 ops/weekly_tweets.py            # write and send
+    python3 ops/weekly_tweets.py            # write and send (seven)
+    python3 ops/weekly_tweets.py --n 10     # a bigger batch, when he asks for one
     python3 ops/weekly_tweets.py --dry-run  # write and print, send nothing
 """
 
@@ -24,6 +25,15 @@ from pedibot.ops.tweets import facts, load_history, remember, write_batch
 from pedibot.settings import ROOT, get_settings
 
 HOW_MANY = 7
+
+
+def how_many(argv: list[str]) -> int:
+    """`--n 10` cuando el operador pide una tanda mayor; siete es lo semanal (16-sep-2026)."""
+    if "--n" in argv:
+        i = argv.index("--n")
+        if i + 1 < len(argv) and argv[i + 1].isdigit():
+            return max(1, min(20, int(argv[i + 1])))
+    return HOW_MANY
 
 
 def send(text: str) -> bool:
@@ -56,7 +66,7 @@ def main() -> int:
     from pedibot.bot.llm import provider_from_settings
 
     drafts, rejected = write_batch(
-        provider_from_settings(), f, HOW_MANY, tuple(load_history(ROOT))
+        provider_from_settings(), f, how_many(sys.argv[1:]), tuple(load_history(ROOT))
     )
     for why in rejected:
         print(f"  descartado — {why}", file=sys.stderr)
