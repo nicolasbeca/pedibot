@@ -42,7 +42,11 @@ const ages = [['', s.not_set], ...s.chat_ages];
 </div>
 
 <style>
-  .stage { min-height: calc(100vh - 60px); display: flex; flex-direction: column; }
+  /* Sin alto mínimo desde el 16-sep-2026. Reservaba una PANTALLA ENTERA y el compositor
+     va fijo abajo de todas formas, así que en la portada —donde debajo hay más secciones—
+     lo único que hacía era un agujero en blanco entre las tarjetas y lo siguiente. El hueco
+     que hace falta para que el compositor no tape nada lo pone el padding de `.chat`. */
+  .stage { display: flex; flex-direction: column; }
   .chat { flex: 1; max-width: 760px; width: 100%; margin: 0 auto; padding: 28px 18px 160px; display: flex; flex-direction: column; gap: 18px; }
   .welcome { text-align: center; padding: 6vh 0 8px; }
   .welcome .face { display: block; margin: 0 auto 18px; }
@@ -51,7 +55,11 @@ const ages = [['', s.not_set], ...s.chat_ages];
   @media (max-width: 560px) { .suggest { grid-template-columns: 1fr; } }
   .sug { text-align: start; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; cursor: pointer; color: var(--ink); transition: transform .15s, box-shadow .15s; }
   .sug:hover { transform: translateY(-1px); box-shadow: var(--shadow); border-color: var(--mint-2); }
-  .sug small { display: block; color: var(--ink-3); font-size: .8rem; margin-top: 2px; }
+  /* `:global` a propósito: la tarjeta de temporada se reconstruye por JavaScript con
+     innerHTML, y ese <small> nace SIN el atributo con el que Astro limita el estilo al
+     componente. Resultado en vivo: «…feels dizzy with a feverheat stroke · summer», la
+     etiqueta pegada a la frase, sólo en esa tarjeta y sólo en invierno o verano. */
+  .sug :global(small) { display: block; color: var(--ink-3); font-size: .8rem; margin-top: 2px; }
   .sug.a { background: var(--mint); } .sug.b { background: var(--peach); } .sug.c { background: var(--lavender); } .sug.d { background: var(--sky); }
   .chat :global(.msg) { max-width: 92%; padding: 14px 18px; border-radius: 20px; line-height: 1.6; }
   .chat :global(.msg.user) { align-self: flex-end; background: var(--mint); border-bottom-right-radius: 6px; }

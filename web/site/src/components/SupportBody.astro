@@ -14,7 +14,6 @@ import Donate from './Donate.astro';
 import sources from '../data/sources.json';
 import { getCollection } from 'astro:content';
 import { t, langPrefix, type Lang } from '../i18n';
-import { TOKENS } from '../tokens';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -67,21 +66,6 @@ const target = (href: string) =>
   </div>
 
   <div id="donar"><Donate lang={lang} /></div>
-
-  <h2>{T.token_h}</h2>
-  <p>{T.token_p}</p>
-  <h3 class="wh">{s.token_where}</h3>
-  <ul class="deploys">
-    {TOKENS.map((tk) => (
-      <li>
-        <b>{tk.network}</b> <span class="n">· {tk.platform}</span><br />
-        {tk.address
-          ? <a class="mono contract" href={tk.explorer} target="_blank" rel="noopener">{tk.address}</a>
-          : <span class="n">{s.token_soon}</span>}
-      </li>
-    ))}
-  </ul>
-  <p class="n scam">{s.token_scam_note}</p>
 
   <h2>{T.never_h}</h2>
   <ul>

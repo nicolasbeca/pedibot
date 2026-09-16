@@ -1,4 +1,8 @@
 ---
+// Lenguas cuyas etiquetas de menú son notablemente más largas que las inglesas: el alemán
+// compone palabras y el francés y el ruso son de suyo largos. Sólo cambia cuándo se
+// esconden las pastillas, nunca cuáles existen (16-sep-2026).
+const LABEL_LARGO = new Set(['de', 'fr', 'ru', 'pt']);
 import '../styles/global.css';
 import { t, langPrefix, dirFor, LANGS, LANG_NAMES, type Lang } from '../i18n';
 interface Props { lang: Lang; title: string; description: string; path: string; jsonld?: object;
@@ -117,7 +121,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <script is:inline>try{if(localStorage.getItem('pedibot_team'))fetch('/api/team',{method:'POST',keepalive:true,headers:{'content-type':'application/json','x-pedibot-client':'test'},body:JSON.stringify({session:localStorage.getItem('pedibot_session')})})}catch(e){}</script>
 </head>
 <body>
-  <header class="bar">
+  <header class={`bar${LABEL_LARGO.has(lang) ? " larga" : ""}`}>
     <div class="wrap bar-in">
       <a class="brand" href={langPrefix(lang) || '/'}>
         <img src="/logo.svg" width="34" height="34" alt="" />
@@ -178,8 +182,12 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     .bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
     .bar-in { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
     .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--ink); font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.2rem; }
-    .bar nav { display: flex; gap: 8px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
-    .bar nav::-webkit-scrollbar { display: none; }
+    /* Lo que no cabe DESAPARECE; no se corta ni se arrastra. Con `overflow-x: auto` la barra
+       alemana —«Dosisrechner», «Wachstumskurve», «Impfungen»— enseñaba la última pastilla
+       partida por la mitad, que es peor que no enseñarla (visto por el operador, 16-sep-2026).
+       Envolviendo y recortando a la altura de una fila, la pastilla que no entra se va a una
+       segunda fila que no se ve. Todo lo que cae aquí sigue en el pie. */
+    .bar nav { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; max-height: 34px; overflow: hidden; }
     .bar nav > a { flex: 0 0 auto; }
     .bar-end { display: flex; gap: 8px; flex: 0 0 auto; }
     /* Shed links as the window narrows. Everything dropped here is still in the footer, and the
@@ -187,6 +195,10 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     @media (max-width: 1020px) { .bar .lg-only { display: none; } }
     @media (max-width: 900px) { .bar .md-only { display: none; } }
     @media (max-width: 800px) { .bar .sm-only { display: none; } }
+    /* Y con etiquetas largas, antes: «Wachstumskurve» ocupa el doble que «Growth». La lengua
+       se sabe al construir la página, así que no hace falta medir nada en el navegador. */
+    @media (max-width: 1180px) { .bar.larga .md-only { display: none; } }
+    @media (max-width: 1040px) { .bar.larga .sm-only { display: none; } }
     @media (max-width: 720px) { .bar .hide-sm { display: none; } }
     .langsel { position: relative; }
     .langsel > summary { list-style: none; user-select: none; }

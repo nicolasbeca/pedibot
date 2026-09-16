@@ -366,3 +366,9 @@ abierto, en orden de consecuencia:
 - Y un aviso de más corregido: «se cayó de cabeza», sin más, me salía como emergencia; la regla inglesa exige además perder el conocimiento, y un aviso que salta siempre deja de leerse.
 - Prueba: tests/test_arabic_as_parents_write_it.py (24 casos). Suite 4.111.
 - **Tuits**: a petición del operador, la mitad de cada tanda lleva ahora un enlace al final, y sólo a una página que existe (la lista sale de lo publicado). El verificador tira el que enlace otra cosa, lleve dos o nombre el dominio sin dirección.
+
+## 16-sep-2026 (noche) · fuera el token de la web, y tres defectos que vio el operador
+- **Token**: retirado del sitio entero (bloque de /support, `tokens.ts`, las cadenas en las ocho lenguas y las dos promesas que hablaban de «quien tenga tokens», reescritas sin él). Cero menciones en las 1.086 páginas construidas. Las alertas de compra/venta son de dentro y siguen. Prueba nueva que vigila que no vuelva: test_promises.py.
+- **El agujero de la portada**: `.stage` reservaba `calc(100vh - 60px)` — una pantalla entera— y como el compositor va fijo abajo, lo único que hacía era dejar un hueco en blanco entre las tarjetas y la sección siguiente. Fuera.
+- **La etiqueta pegada** en la tarjeta de temporada («…feverheat stroke · summer»): esa tarjeta se reconstruye por JavaScript y su `<small>` nace sin el atributo con el que Astro limita el estilo al componente, así que perdía el `display:block`. Ahora la regla es `:global`.
+- **El menú que se cortaba a media palabra**: la barra hacía scroll horizontal y en alemán enseñaba la última pastilla partida. Ahora lo que no cabe se va a una segunda fila oculta (nunca cortado), y con etiquetas largas —de, fr, ru, pt— las pastillas se esconden antes (1180 px y 1040 px).

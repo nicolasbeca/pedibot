@@ -38,7 +38,9 @@ NO_ADS = {
 
 #: Affiliate links, as they actually look. Amazon tags, shortened Amazon links, and any bare
 #: product page — a /dp/ URL with no tag today is a /dp/ URL with a tag tomorrow.
-AFFILIATE = re.compile(r"amazon\.[a-z.]{2,6}/[^\"']*\btag=|amzn\.to/|/dp/[A-Z0-9]{10}|[?&]tag=[\w-]+-\d\d", re.I)
+AFFILIATE = re.compile(
+    r"amazon\.[a-z.]{2,6}/[^\"']*\btag=|amzn\.to/|/dp/[A-Z0-9]{10}|[?&]tag=[\w-]+-\d\d", re.I
+)
 
 
 @pytest.mark.skipif(not DIST.exists(), reason="no hay build en web/site/dist")
@@ -62,20 +64,30 @@ def test_the_no_ads_promise_survives_in_every_language(lang: str, word: str) -> 
     )
 
 
-def test_no_network_is_announced_without_being_deployed() -> None:
-    """Checked against the data, not the type: `address: string | null` is the declaration and
-    will always be there; what must not exist is an entry whose address is actually null."""
-    text = (SITE / "src" / "tokens.ts").read_text(encoding="utf-8")
-    start = text.index("export const TOKENS")
-    # only the array: `shortAddress(address: string)` further down matches otherwise
-    body = text[start : text.index(chr(93) + chr(59), start)]  # up to the closing ];
-    entries = re.findall(r"address:\s*([^,\n]+)", body)
-    assert entries, "no encuentro ninguna dirección en TOKENS"
-    pending = [e for e in entries if e.strip() == "null"]
-    assert not pending, f"{len(pending)} red(es) anunciadas sin desplegar"
-    # trimmed to Base on 5-sep: the other two deployments still exist on their chains,
-    # but three addresses on one page is three chances to send to the wrong one
-    assert len(entries) == 1, f"se esperaba una sola red, hay {len(entries)}"
+@pytest.mark.skipif(not DIST.exists(), reason="no hay build en web/site/dist")
+def test_el_sitio_no_menciona_el_token() -> None:
+    """16-sep-2026, decisión del operador: fuera del sitio toda mención al token de Base/Virtuals.
+
+    La regla de antes vigilaba que no se anunciara una red sin desplegar; ésta vigila que no
+    vuelva ninguna. Lo de dentro —las alertas de compra y venta— no es el sitio y sigue.
+    """
+    sospechosas = []
+    for f in DIST.rglob("*.html"):
+        texto = f.read_text(encoding="utf-8", errors="replace")
+        for palabra in ("PDBT", "Virtuals", "basescan"):
+            if palabra.lower() in texto.lower():
+                sospechosas.append(f"{f.relative_to(DIST)}: {palabra}")
+    assert not sospechosas, f"el token ha vuelto a la web: {sospechosas[:5]}"
+
+
+def test_y_tampoco_en_las_traducciones() -> None:
+    """El HTML se construye; las cadenas son la fuente."""
+    i18n = (SITE / "src" / "i18n.ts").read_text(encoding="utf-8")
+    assert "PDBT" not in i18n and "Virtuals" not in i18n
+    # «session token» es el identificador de sesión y no tiene nada que ver
+    for linea in i18n.splitlines():
+        if "token" in linea.lower():
+            assert "session token" in linea, f"mención al token: {linea.strip()[:90]}"
 
 
 def test_the_catalogue_is_the_same_in_every_place_it_is_published() -> None:
@@ -89,7 +101,8 @@ def test_the_catalogue_is_the_same_in_every_place_it_is_published() -> None:
     if dataset.exists():
         assert len(json.loads(dataset.read_text(encoding="utf-8"))) == len(live)
     unbalanced = [
-        d.get("title") for d in pub
+        d.get("title")
+        for d in pub
         if (d.get("org_full") or "").count("(") != (d.get("org_full") or "").count(")")
     ]
     assert not unbalanced, f"nombres de organismo truncados: {unbalanced[:3]}"
