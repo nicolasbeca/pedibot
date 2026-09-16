@@ -19,6 +19,9 @@ from pedibot.ingest.classify import Taxonomy
 # without it "बुखार" tokenises as ब, ख, र and every single-word Hindi trigger below is
 # unmatchable. Same property of `\w` that made a word boundary useless in the triage
 # patterns (see NOT_AFTER in bot/triage.py): the third thing it broke quietly today.
+#: La vocal larga del hindi transliterado se escribe doblada o no, según quien teclee:
+#: «kaan»/«kan», «daant»/«dant», «bukhaar»/«bukhar», «ultee»/«ulti». Se pliega para comparar.
+_VOCAL_DOBLE = re.compile(r"([aeiou])\1+", re.I)
 _TOKEN = re.compile(r"[\wáéíóúñüऀ-ॿ]+", re.I)
 TRANSLATE_SYSTEM = (
     "You translate a parent's question about a child's health into 5-10 Spanish medical search "
@@ -147,6 +150,15 @@ class Synonyms:
             for g in (genericos.get(lang), genericos.get("en")):
                 if g and g not in extra:
                     extra.append(g)
+        # El hindi se teclea mucho en letras latinas, y ahí la ortografía la pone cada uno: la
+        # vocal larga se dobla o no («kaan» / «kan», «daant» / «dant», «daane» / «dane»), y entre
+        # las dos palabras de una frase se cuela «me», «par» o «ka». Medido el 16-sep-2026 sobre
+        # quince preguntas corrientes: SEIS no encontraban nada, y las claves romanizadas
+        # estaban puestas desde agosto. Sólo para el hindi: en castellano «masa» y «maasa» no
+        # son la misma palabra (23-ago: plegar de más rompió la dirección inglés→castellano).
+        romanizado = lang == "hi"
+        low_hi = _VOCAL_DOBLE.sub(r"\1", low) if romanizado else low
+        tokens_hi = [_VOCAL_DOBLE.sub(r"\1", t) for t in tokens] if romanizado else tokens
         for table in self._tables(lang):
             for trigger, terms in table.items():
                 # a trigger with a space is a phrase ("stomach bug"), matched on the whole query;
@@ -156,14 +168,26 @@ class Synonyms:
                 disp = fold(_GUIONES.sub(" ", trigger))
                 if " " in disp:
                     hit = disp in low
+                    if not hit and romanizado:
+                        partes = _VOCAL_DOBLE.sub(r"\1", disp).split(" ")
+                        # una palabra corta en medio —«kaan me dard»— no rompe la frase
+                        hueco = r"\s+(?:\w{1,3}\s+)?".join(re.escape(p) for p in partes)
+                        hit = re.search(hueco, low_hi) is not None
                 elif disp.endswith("$"):
                     # palabra entera: «tablet$» es el aparato y «tableta» es de chocolate — o una
                     # pastilla, que es peor. Por prefijo, «se ha tomado una tableta de
                     # paracetamol» expandía a «screen time» y le daba tema de pantallas a una
                     # pregunta de dosis (10-sep-2026). Misma marca que en la taxonomía.
-                    hit = any(t == disp[:-1] for t in tokens)
+                    entera = disp[:-1]
+                    hit = any(t == entera for t in tokens)
+                    if not hit and romanizado:
+                        plegada = _VOCAL_DOBLE.sub(r"\1", entera)
+                        hit = any(t == plegada for t in tokens_hi)
                 else:
                     hit = any(t.startswith(disp) for t in tokens)
+                    if not hit and romanizado:
+                        plegado = _VOCAL_DOBLE.sub(r"\1", disp)
+                        hit = any(t.startswith(plegado) for t in tokens_hi)
                 if hit:
                     for t in terms:
                         if t not in extra:

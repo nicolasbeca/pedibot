@@ -4568,6 +4568,26 @@ pt_en:
   - emergency department
   - emergency
 hi_es:
+  # 16-sep-2026: hindi en letras latinas, que es como teclea media India. Estas tres
+  # faltaban y sus preguntas no encontraban nada.
+  vajan:
+  - peso
+  - crecimiento
+  wajan:
+  - peso
+  - crecimiento
+  rota:
+  - llanto
+  - cólico del lactante
+  rone:
+  - llanto
+  - cólico del lactante
+  khilaye:
+  - alimentación complementaria
+  - sólidos
+  khilana:
+  - alimentación complementaria
+  - sólidos
   # 16-sep-2026, batería de casa (India y Golfo): la ficha existía y el padre no llegaba.
   रोना:
   - llanto
@@ -5122,6 +5142,31 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 16-sep-2026: hindi en letras latinas, que es como teclea media India. Estas tres
+  # faltaban y sus preguntas no encontraban nada.
+  vajan:
+  - weight
+  - weight gain
+  - growth chart
+  wajan:
+  - weight
+  - weight gain
+  - growth chart
+  rota:
+  - crying
+  - colic
+  - soothing a crying baby
+  rone:
+  - crying
+  - colic
+  khilaye:
+  - first solid foods
+  - solid foods
+  - complementary feeding
+  khilana:
+  - first solid foods
+  - solid foods
+  - complementary feeding
   # 16-sep-2026, batería de casa (India y Golfo): la ficha existía y el padre no llegaba.
   रोना:
   - crying
