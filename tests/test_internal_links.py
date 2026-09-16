@@ -390,6 +390,10 @@ def test_ninguna_guia_cuelga_de_un_solo_enlace() -> None:
     paginas = {}
     for f in DIST.rglob("index.html"):
         rel = "/" + f.relative_to(DIST).as_posix()
+        # una redirección no es una guía: es la dirección vieja de una que se volvió a generar
+        # con otro título, lleva `noindex` y nadie la enlaza a propósito (16-sep-2026)
+        if '<meta http-equiv="refresh"' in f.read_text(encoding="utf-8", errors="ignore")[:600]:
+            continue
         paginas[rel[: -len("index.html")].rstrip("/") or "/"] = f
 
     alterna = re.compile(r'rel="alternate" hreflang="[a-z-]+" href="https://pedibot\.xyz(/[^"]*)"')

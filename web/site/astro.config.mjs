@@ -62,6 +62,13 @@ export default defineConfig({
   site,
   trailingSlash: 'never',
   build: { format: 'directory' },
+  // Una guía que se regenera cambia de título y, con él, de dirección. La vieja no se borra sin
+  // más: alguien la tiene enlazada y Google la tiene indexada. 16-sep-2026: la guía inglesa de la
+  // cefalea citaba una página que el NHS ha retirado, así que se volvió a generar sin ella.
+  redirects: {
+    '/guides/my_child_has_a_headache_what_should_i_do':
+      '/guides/headache_in_children_and_adults_what_can_i_do_and_when_is_it_serious',
+  },
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es', 'fr', 'de', 'ru', 'ar', 'pt', 'hi'],

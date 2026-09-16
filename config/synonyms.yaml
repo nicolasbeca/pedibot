@@ -110,6 +110,15 @@ en:
   - deposiciones
   - heces
   - estreñimiento
+  not pooed:
+  - estreñimiento
+  - deposiciones
+  not pooped:
+  - estreñimiento
+  - deposiciones
+  hasn't pooed:
+  - estreñimiento
+  - deposiciones
   dehydrat:
   - deshidratación
   - suero
@@ -495,6 +504,20 @@ es:
   caca$:
   - deposiciones
   - heces
+  # 16-sep-2026: sin esto, «lleva 4 días sin hacer caca» se iba al recién nacido (sólo
+  # casaba «caca») en vez de al estreñimiento, que es lo que pregunta.
+  sin hacer caca:
+  - estreñimiento
+  - deposiciones
+  no hace caca:
+  - estreñimiento
+  - deposiciones
+  sin hacer de vientre:
+  - estreñimiento
+  - deposiciones
+  le cuesta hacer caca:
+  - estreñimiento
+  - deposiciones
   cacas$:
   - deposiciones
   - heces
@@ -732,6 +755,16 @@ fr:
   - bronchiolite
   - virus respiratoire syncytial
 fr_en:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  selles:
+  - poo
+  - nappy
+  - stool
+  méconium:
+  - poo
+  - nappy
+  - stool
   # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
   prend pas de poids: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   prise de poids: [weight gain, centile lines]
@@ -912,6 +945,20 @@ fr_en:
   - burn
   - scald
 de_es:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  stuhlgang:
+  - deposiciones
+  - heces
+  stuhl$:
+  - deposiciones
+  - heces
+  kot$:
+  - deposiciones
+  - heces
+  mekonium:
+  - deposiciones
+  - heces
   fieber:
   - fiebre
   - febril
@@ -1347,6 +1394,24 @@ de_es:
   - urgencias
   - '112'
 de_en:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  stuhlgang:
+  - poo
+  - nappy
+  - stool
+  stuhl$:
+  - poo
+  - nappy
+  - stool
+  kot$:
+  - poo
+  - nappy
+  - stool
+  mekonium:
+  - poo
+  - nappy
+  - stool
   # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
   nimmt nicht zu: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   gewichtszunahme: [weight gain, centile lines]
@@ -1764,6 +1829,17 @@ de_en:
   - emergency department
   - emergency
 ru_es:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  стул$:
+  - deposiciones
+  - heces
+  кал$:
+  - deposiciones
+  - heces
+  меконий:
+  - deposiciones
+  - heces
   # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
   # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
   # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
@@ -2166,6 +2242,20 @@ ru_es:
   - respiración
   - dificultad respiratoria
 ru_en:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  стул$:
+  - poo
+  - nappy
+  - stool
+  кал$:
+  - poo
+  - nappy
+  - stool
+  меконий:
+  - poo
+  - nappy
+  - stool
   # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
   набирает вес: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   набор веса: [weight gain, centile lines]
@@ -2556,6 +2646,14 @@ ru_en:
   - breathing
   - difficulty breathing
 ar_es:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  براز:
+  - deposiciones
+  - heces
+  العقي:
+  - deposiciones
+  - heces
   # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
   # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
   # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
@@ -3085,6 +3183,16 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  براز:
+  - poo
+  - nappy
+  - stool
+  العقي:
+  - poo
+  - nappy
+  - stool
   # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
   يزداد وزنه: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   يزيد وزنه: [weight gain, gaining weight, centile lines, underweight, malnutrition]
@@ -3620,6 +3728,17 @@ ar_en:
   وقت الشاش:
   - screen time
 pt_es:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  cocô:
+  - deposiciones
+  - heces
+  fezes:
+  - deposiciones
+  - heces
+  mecônio:
+  - deposiciones
+  - heces
   # el SUSTANTIVO de la caída: la tabla tenía solo el verbo («упал», «سقط»,
   # «caiu») y el buscador casa por prefijo, así que «падение» no lo encontraba.
   # Lo destapó pulsar la opción «Golpe o caída» que ofrece el propio bot.
@@ -4021,6 +4140,20 @@ pt_es:
   - urgencias
   - '112'
 pt_en:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  cocô:
+  - poo
+  - nappy
+  - stool
+  fezes:
+  - poo
+  - nappy
+  - stool
+  mecônio:
+  - poo
+  - nappy
+  - stool
   # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
   não ganha peso: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   nao ganha peso: [weight gain, gaining weight, centile lines, underweight, malnutrition]
@@ -4410,6 +4543,17 @@ pt_en:
   - emergency department
   - emergency
 hi_es:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  मल$:
+  - deposiciones
+  - heces
+  टट्टी:
+  - deposiciones
+  - heces
+  पॉटी:
+  - deposiciones
+  - heces
   बुखार:
   - fiebre
   - febril
@@ -4943,6 +5087,20 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  मल$:
+  - poo
+  - nappy
+  - stool
+  टट्टी:
+  - poo
+  - nappy
+  - stool
+  पॉटी:
+  - poo
+  - nappy
+  - stool
   # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
   वजन नहीं बढ़: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   वज़न नहीं बढ़: [weight gain, gaining weight, centile lines, underweight, malnutrition]
@@ -5072,15 +5230,25 @@ hi_en:
   gharghar:
   - wheezing
   - wheeze
+  # 16-sep-2026: con «breathing» sola, las seis fuentes que salían eran españolas y un padre
+  # indio no podía comprobar ninguna. Los términos que usan de verdad las fichas inglesas.
   साँस:
   - breathing
   - difficulty breathing
+  - breathing problems
+  - wheezing
+  - croup
   सांस:
   - breathing
   - difficulty breathing
+  - breathing problems
+  - wheezing
+  - croup
   saans:
   - breathing
   - difficulty breathing
+  - breathing problems
+  - wheezing
   sans:
   - breathing
   - difficulty breathing
@@ -5954,6 +6122,14 @@ de:
 # de buscar el concepto —su lista de términos ingleses en fr_en— en las tablas de
 # las otras cinco lenguas y copiar la lista española que ya estaba escrita.
 fr_es:
+  # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
+  # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
+  selles:
+  - deposiciones
+  - heces
+  méconium:
+  - deposiciones
+  - heces
   allaitement: ["lactancia materna"]
   allergie: [alergia, anafilaxia]
   asthme: [asma, "crisis asmática"]

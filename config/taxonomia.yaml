@@ -57,6 +57,18 @@ topics:
         "क्या खिलाना", "खिलाना शुरू", "क्या खिलाऊँ", "ठोस खाना", "فقر دم",
         "no gana peso", "no engorda", "no sube de peso", "weight gain", "gaining weight", skinny, underweight, "prise de poids", "prend pas de poids", "nimmt nicht zu", gewichtszunahme, "набирает вес", "набор веса", "يزداد وزنه", "يزيد وزنه", "वजन नहीं बढ़", "वज़न नहीं बढ़", "ganha peso", "ganho de peso"]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice,
+                 # 16-sep-2026: el color de la caca del bebé es de las preguntas más frecuentes de
+                 # los primeros meses, y la frase no tenía NINGUNA palabra de la taxonomía: sin
+                 # tema, el chat pedía aclaración en vez de contestar. Va en `recien_nacido` y no
+                 # en `digestivo` porque las fichas que lo explican son las del bebé —el pañal del
+                 # NHS, el «Cuídame» de Andalucía—: con el tema digestivo salían gastroenteritis y
+                 # estreñimiento, que es otra pregunta. Palabras enteras («caca» por prefijo coge
+                 # «cacahuete») y sin «deposiciones» ni «heces», que vienen de expandir «diarrea»
+                 # y le robarían el tema a media categoría.
+                 "caca$", "cacas$", "popó$", "poo$", "poos$", "poop$", "stool$", "stools$",
+                 "selles$", stuhlgang, "stuhl$", "kot$", "кал$", "стул$", براز, "मल$", "टट्टी",
+                 "पॉटी", "cocô", "cocó", "fezes$", meconio, meconium, méconium, mekonium,
+                 меконий, العقي, मेकोनियम,
                  prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz,

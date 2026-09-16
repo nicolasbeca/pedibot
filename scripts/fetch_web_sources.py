@@ -31,7 +31,6 @@ UA = "Mozilla/5.0 (compatible; PediBot-source-fetch/1.0; +https://pedibot.xyz)"
 #: El título es la mitad visible de la cita (L151): un arreglo a mano en un fichero generado
 #: no es un arreglo, es una cuenta atrás.
 TITULOS_CORREGIDOS = {
-    "nhs_en_breath_holding_in_babies_and_children": "Breath-holding in babies and children",
 }
 
 
@@ -98,7 +97,7 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     # Direcciones revisadas el 6-sep-2026 contra el sitio real: ninguna de las 243 del corpus
     # estaba rota, pero 17 respondían por una redirección y la redirección de hoy es el 404 de
     # mañana. Catorce se actualizaron aquí. Las tres que NO se tocaron cambiaron de TEMA, no de
-    # sitio, y eso es una decisión de contenido: breath-holding (el NHS retiró la página),
+    # sitio, y eso es una decisión de contenido:
     # mlp bedwetting (lleva a desarrollo infantil) y headaches-in-children (ahora es la general).
     ("nhs", "https://www.nhs.uk/symptoms/fever-in-children/", "fiebre", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/bronchiolitis/", "respiratorio", "en", ["lactante"]),
@@ -224,6 +223,94 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "en",
         ["lactante"],
     ),
+    # 16-sep-2026: «caring for a newborn» y «ibuprofen for children» son PÁGINAS ÍNDICE. Se
+    # indexaron enteras y dieron 289 y 633 caracteres: sólo los títulos de sus subpáginas. El
+    # contenido —incluido lo único del corpus que explica el color de la caca de un bebé, que
+    # es una pregunta real y hasta hoy se contestaba pidiendo aclaración— está en las subpáginas.
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/caring-for-a-newborn/how-to-change-your-babys-nappy/",
+        "recien_nacido",
+        "en",
+        ["lactante"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/caring-for-a-newborn/soothing-a-crying-baby/",
+        "lactante",
+        "en",
+        ["lactante"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/caring-for-a-newborn/helping-your-baby-to-sleep/",
+        "desarrollo",
+        "en",
+        ["lactante"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/caring-for-a-newborn/nappy-rash/",
+        "piel",
+        "en",
+        ["lactante"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/caring-for-a-newborn/washing-and-bathing-your-baby/",
+        "crianza",
+        "en",
+        ["lactante"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/caring-for-a-newborn/sudden-infant-death-syndrome-sids/",
+        "recien_nacido",
+        "en",
+        ["lactante"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/ibuprofen-for-children/about-ibuprofen-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/ibuprofen-for-children/who-can-and-cannot-take-ibuprofen-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/ibuprofen-for-children/how-and-when-to-give-ibuprofen-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/ibuprofen-for-children/side-effects-of-ibuprofen-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/ibuprofen-for-children/taking-ibuprofen-for-children-with-other-medicines-and-herbal-supplements/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/ibuprofen-for-children/common-questions-about-ibuprofen-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
     ("nhs", "https://www.nhs.uk/conditions/anaphylaxis/", "alergia", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/food-allergy/", "alergia", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/hives/", "piel", "en", ["todas"]),
@@ -244,13 +331,6 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "neurologia",
         "en",
         ["escolar", "adolescente"],
-    ),
-    (
-        "nhs",
-        "https://www.nhs.uk/conditions/breath-holding-in-babies-and-children/",
-        "neurologia",
-        "en",
-        ["lactante", "preescolar"],
     ),
     ("nhs", "https://www.nhs.uk/conditions/head-lice-and-nits/", "piel", "en", ["escolar"]),
     (

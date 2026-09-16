@@ -31,10 +31,18 @@ def canon(path: str) -> str:
     return ("/" + path.split("#")[0].split("?")[0].strip("/")) or "/"
 
 
+#: Una redirección no es una página: es la dirección vieja de una guía que se volvió a generar
+#: con otro título (16-sep-2026). No la enlaza nadie a propósito —el enlace vive fuera del sitio,
+#: en Google o en el marcador de alguien— y lleva `noindex`, así que no cuenta en el grafo.
+REDIRECCION = re.compile(r'<meta http-equiv="refresh"', re.I)
+
+
 def graph() -> tuple[dict[str, set[str]], collections.Counter]:
     pages: dict[str, pathlib.Path] = {}
     for f in DIST.rglob("index.html"):
         rel = f.relative_to(DIST).parent.as_posix()
+        if REDIRECCION.search(f.read_text(encoding="utf-8", errors="replace")[:600]):
+            continue
         pages[canon("" if rel == "." else rel)] = f
     out: dict[str, set[str]] = {}
     inbound: collections.Counter = collections.Counter()

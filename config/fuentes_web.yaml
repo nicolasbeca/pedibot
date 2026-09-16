@@ -14,7 +14,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/symptoms/fever-in-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_bronchiolitis
   file: web/nhs_en_bronchiolitis.html
   org: NHS
@@ -29,7 +29,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.nhs.uk/conditions/bronchiolitis/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_croup
   file: web/nhs_en_croup.html
   org: NHS
@@ -45,7 +45,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.nhs.uk/conditions/croup/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_febrile_seizures
   file: web/nhs_en_febrile_seizures.html
   org: NHS
@@ -61,7 +61,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.nhs.uk/conditions/febrile-seizures/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_head_injury_and_concussion
   file: web/nhs_en_head_injury_and_concussion.html
   org: NHS
@@ -76,7 +76,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/head-injury-and-concussion/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_diarrhoea_and_vomiting
   file: web/nhs_en_diarrhoea_and_vomiting.html
   org: NHS
@@ -91,7 +91,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/symptoms/diarrhoea-and-vomiting/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_constipation
   file: web/nhs_en_constipation.html
   org: NHS
@@ -106,7 +106,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/constipation/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_dehydration
   file: web/nhs_en_dehydration.html
   org: NHS
@@ -121,7 +121,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/dehydration/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_norovirus
   file: web/nhs_en_norovirus.html
   org: NHS
@@ -136,7 +136,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/norovirus/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_chickenpox
   file: web/nhs_en_chickenpox.html
   org: NHS
@@ -151,7 +151,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/chickenpox/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_hand_foot_mouth_disease
   file: web/nhs_en_hand_foot_mouth_disease.html
   org: NHS
@@ -167,7 +167,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.nhs.uk/conditions/hand-foot-mouth-disease/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_meningitis
   file: web/nhs_en_meningitis.html
   org: NHS
@@ -182,7 +182,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/meningitis/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_sepsis
   file: web/nhs_en_sepsis.html
   org: NHS
@@ -197,7 +197,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/sepsis/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_rashes_babies_and_children
   file: web/nhs_en_rashes_babies_and_children.html
   org: NHS
@@ -213,7 +213,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.nhs.uk/symptoms/rashes-babies-and-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_colic
   file: web/nhs_en_colic.html
   org: NHS
@@ -228,7 +228,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.nhs.uk/conditions/colic/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_reflux_in_babies
   file: web/nhs_en_reflux_in_babies.html
   org: NHS
@@ -243,7 +243,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.nhs.uk/conditions/reflux-in-babies/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_baby_teething_symptoms
   file: web/nhs_en_baby_teething_symptoms.html
   org: NHS
@@ -258,7 +258,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_ear_infections
   file: web/nhs_en_ear_infections.html
   org: NHS
@@ -273,7 +273,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/ear-infections/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_glue_ear
   file: web/nhs_en_glue_ear.html
   org: NHS
@@ -289,7 +289,7 @@ sources:
   - preescolar
   - escolar
   url: https://www.nhs.uk/conditions/glue-ear/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_sore_throat
   file: web/nhs_en_sore_throat.html
   org: NHS
@@ -304,7 +304,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/symptoms/sore-throat/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_tonsillitis
   file: web/nhs_en_tonsillitis.html
   org: NHS
@@ -319,7 +319,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/tonsillitis/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_scarlet_fever
   file: web/nhs_en_scarlet_fever.html
   org: NHS
@@ -335,7 +335,7 @@ sources:
   - preescolar
   - escolar
   url: https://www.nhs.uk/conditions/scarlet-fever/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_slapped_cheek_syndrome
   file: web/nhs_en_slapped_cheek_syndrome.html
   org: NHS
@@ -351,7 +351,7 @@ sources:
   - preescolar
   - escolar
   url: https://www.nhs.uk/conditions/slapped-cheek-syndrome/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_impetigo
   file: web/nhs_en_impetigo.html
   org: NHS
@@ -366,7 +366,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/impetigo/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_molluscum_contagiosum
   file: web/nhs_en_molluscum_contagiosum.html
   org: NHS
@@ -381,7 +381,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/molluscum-contagiosum/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_roseola
   file: web/nhs_en_roseola.html
   org: NHS
@@ -397,7 +397,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.nhs.uk/conditions/roseola/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_threadworms
   file: web/nhs_en_threadworms.html
   org: NHS
@@ -413,7 +413,7 @@ sources:
   - preescolar
   - escolar
   url: https://www.nhs.uk/conditions/threadworms/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_urinary_tract_infections_utis
   file: web/nhs_en_urinary_tract_infections_utis.html
   org: NHS
@@ -428,7 +428,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/urinary-tract-infections-utis/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_burns_and_scalds
   file: web/nhs_en_burns_and_scalds.html
   org: NHS
@@ -443,7 +443,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/burns-and-scalds/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_poisoning
   file: web/nhs_en_poisoning.html
   org: NHS
@@ -458,7 +458,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/poisoning/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_asthma
   file: web/nhs_en_asthma.html
   org: NHS
@@ -473,7 +473,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/asthma/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_respiratory_syncytial_virus_rsv
   file: web/nhs_en_respiratory_syncytial_virus_rsv.html
   org: NHS
@@ -488,7 +488,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_pneumonia
   file: web/nhs_en_pneumonia.html
   org: NHS
@@ -503,7 +503,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/pneumonia/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_flu
   file: web/nhs_en_flu.html
   org: NHS
@@ -518,7 +518,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/flu/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_whooping_cough
   file: web/nhs_en_whooping_cough.html
   org: NHS
@@ -533,7 +533,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/whooping-cough/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_measles
   file: web/nhs_en_measles.html
   org: NHS
@@ -548,7 +548,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/measles/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_mumps
   file: web/nhs_en_mumps.html
   org: NHS
@@ -563,7 +563,7 @@ sources:
   age_groups:
   - escolar
   url: https://www.nhs.uk/conditions/mumps/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_nhs_vaccinations_and_when_to_have_them
   file: web/nhs_en_nhs_vaccinations_and_when_to_have_them.html
   org: NHS
@@ -578,7 +578,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/vaccinations/nhs-vaccinations-and-when-to-have-them/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_babys_first_solid_foods
   file: web/nhs_en_babys_first_solid_foods.html
   org: NHS
@@ -593,7 +593,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_caring_for_a_newborn
   file: web/nhs_en_caring_for_a_newborn.html
   org: NHS
@@ -608,7 +608,187 @@ sources:
   age_groups:
   - lactante
   url: https://www.nhs.uk/baby/caring-for-a-newborn/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_how_to_change_your_babys_nappy
+  file: web/nhs_en_how_to_change_your_babys_nappy.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: How to change your baby's nappy
+  year: 2025
+  lang: en
+  topic: recien_nacido
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/baby/caring-for-a-newborn/how-to-change-your-babys-nappy/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_soothing_a_crying_baby
+  file: web/nhs_en_soothing_a_crying_baby.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Soothing a crying baby
+  year: 2026
+  lang: en
+  topic: lactante
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/baby/caring-for-a-newborn/soothing-a-crying-baby/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_helping_your_baby_to_sleep
+  file: web/nhs_en_helping_your_baby_to_sleep.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Helping your baby to sleep
+  year: 2025
+  lang: en
+  topic: desarrollo
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/baby/caring-for-a-newborn/helping-your-baby-to-sleep/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_nappy_rash
+  file: web/nhs_en_nappy_rash.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Nappy rash
+  year: 2026
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/baby/caring-for-a-newborn/nappy-rash/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_washing_and_bathing_your_baby
+  file: web/nhs_en_washing_and_bathing_your_baby.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Washing and bathing your baby
+  year: 2025
+  lang: en
+  topic: crianza
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/baby/caring-for-a-newborn/washing-and-bathing-your-baby/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_sudden_infant_death_syndrome_sids
+  file: web/nhs_en_sudden_infant_death_syndrome_sids.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Sudden infant death syndrome (SIDS)
+  year: 2025
+  lang: en
+  topic: recien_nacido
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/baby/caring-for-a-newborn/sudden-infant-death-syndrome-sids/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_about_ibuprofen_for_children
+  file: web/nhs_en_about_ibuprofen_for_children.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: 'Ibuprofen for children - Common brand: Nurofen for children'
+  year: 2025
+  lang: en
+  topic: medicamentos
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/medicines/ibuprofen-for-children/about-ibuprofen-for-children/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_who_can_and_cannot_take_ibuprofen_for_children
+  file: web/nhs_en_who_can_and_cannot_take_ibuprofen_for_children.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: 'Ibuprofen for children - Common brand: Nurofen for children'
+  year: 2025
+  lang: en
+  topic: medicamentos
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/medicines/ibuprofen-for-children/who-can-and-cannot-take-ibuprofen-for-children/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_how_and_when_to_give_ibuprofen_for_children
+  file: web/nhs_en_how_and_when_to_give_ibuprofen_for_children.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: 'Ibuprofen for children - Common brand: Nurofen for children'
+  year: 2025
+  lang: en
+  topic: medicamentos
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/medicines/ibuprofen-for-children/how-and-when-to-give-ibuprofen-for-children/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_side_effects_of_ibuprofen_for_children
+  file: web/nhs_en_side_effects_of_ibuprofen_for_children.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: 'Ibuprofen for children - Common brand: Nurofen for children'
+  year: 2025
+  lang: en
+  topic: medicamentos
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/medicines/ibuprofen-for-children/side-effects-of-ibuprofen-for-children/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_taking_ibuprofen_for_children_with_other_medicines_and_herbal_s
+  file: web/nhs_en_taking_ibuprofen_for_children_with_other_medicines_and_herbal_s.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: 'Ibuprofen for children - Common brand: Nurofen for children'
+  year: 2025
+  lang: en
+  topic: medicamentos
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/medicines/ibuprofen-for-children/taking-ibuprofen-for-children-with-other-medicines-and-herbal-supplements/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
+- doc_id: nhs_en_common_questions_about_ibuprofen_for_children
+  file: web/nhs_en_common_questions_about_ibuprofen_for_children.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: 'Ibuprofen for children - Common brand: Nurofen for children'
+  year: 2025
+  lang: en
+  topic: medicamentos
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/medicines/ibuprofen-for-children/common-questions-about-ibuprofen-for-children/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_anaphylaxis
   file: web/nhs_en_anaphylaxis.html
   org: NHS
@@ -623,7 +803,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/anaphylaxis/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_food_allergy
   file: web/nhs_en_food_allergy.html
   org: NHS
@@ -638,7 +818,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/food-allergy/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_hives
   file: web/nhs_en_hives.html
   org: NHS
@@ -653,7 +833,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/hives/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_conjunctivitis
   file: web/nhs_en_conjunctivitis.html
   org: NHS
@@ -668,7 +848,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/conjunctivitis/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_nosebleed
   file: web/nhs_en_nosebleed.html
   org: NHS
@@ -683,7 +863,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/nosebleed/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_heat_exhaustion_heatstroke
   file: web/nhs_en_heat_exhaustion_heatstroke.html
   org: NHS
@@ -698,7 +878,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_sunburn
   file: web/nhs_en_sunburn.html
   org: NHS
@@ -713,7 +893,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/sunburn/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_insect_bites_and_stings
   file: web/nhs_en_insect_bites_and_stings.html
   org: NHS
@@ -728,7 +908,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/conditions/insect-bites-and-stings/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_headaches_in_children
   file: web/nhs_en_headaches_in_children.html
   org: NHS
@@ -744,23 +924,7 @@ sources:
   - escolar
   - adolescente
   url: https://www.nhs.uk/conditions/headaches-in-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
-- doc_id: nhs_en_breath_holding_in_babies_and_children
-  file: web/nhs_en_breath_holding_in_babies_and_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: Breath-holding in babies and children
-  year: null
-  lang: en
-  topic: neurologia
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - lactante
-  - preescolar
-  url: https://www.nhs.uk/conditions/breath-holding-in-babies-and-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_head_lice_and_nits
   file: web/nhs_en_head_lice_and_nits.html
   org: NHS
@@ -775,7 +939,7 @@ sources:
   age_groups:
   - escolar
   url: https://www.nhs.uk/conditions/head-lice-and-nits/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_bedwetting
   file: web/nhs_en_bedwetting.html
   org: NHS
@@ -791,7 +955,7 @@ sources:
   - preescolar
   - escolar
   url: https://www.nhs.uk/symptoms/bedwetting/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_growing_pains
   file: web/nhs_en_growing_pains.html
   org: NHS
@@ -806,7 +970,7 @@ sources:
   age_groups:
   - escolar
   url: https://www.nhs.uk/conditions/growing-pains/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_cradle_cap
   file: web/nhs_en_cradle_cap.html
   org: NHS
@@ -821,7 +985,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.nhs.uk/conditions/cradle-cap/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_paracetamol_for_children
   file: web/nhs_en_paracetamol_for_children.html
   org: NHS
@@ -836,7 +1000,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/medicines/paracetamol-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_ibuprofen_for_children
   file: web/nhs_en_ibuprofen_for_children.html
   org: NHS
@@ -851,7 +1015,7 @@ sources:
   age_groups:
   - todas
   url: https://www.nhs.uk/medicines/ibuprofen-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: mlp_en_fever
   file: web/mlp_en_fever.html
   org: MedlinePlus
@@ -866,7 +1030,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/fever.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_commoncold
   file: web/mlp_en_commoncold.html
   org: MedlinePlus
@@ -881,7 +1045,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/commoncold.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_cough
   file: web/mlp_en_cough.html
   org: MedlinePlus
@@ -896,7 +1060,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/cough.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_croup
   file: web/mlp_en_croup.html
   org: MedlinePlus
@@ -912,7 +1076,7 @@ sources:
   - lactante
   - preescolar
   url: https://medlineplus.gov/croup.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_gastroenteritis
   file: web/mlp_en_gastroenteritis.html
   org: MedlinePlus
@@ -927,7 +1091,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/gastroenteritis.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_diarrhea
   file: web/mlp_en_diarrhea.html
   org: MedlinePlus
@@ -942,7 +1106,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/diarrhea.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_dehydration
   file: web/mlp_en_dehydration.html
   org: MedlinePlus
@@ -957,7 +1121,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/dehydration.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_constipation
   file: web/mlp_en_constipation.html
   org: MedlinePlus
@@ -972,7 +1136,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/constipation.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_seizures
   file: web/mlp_en_seizures.html
   org: MedlinePlus
@@ -987,7 +1151,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/seizures.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_headinjuries
   file: web/mlp_en_headinjuries.html
   org: MedlinePlus
@@ -1002,7 +1166,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/headinjuries.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_concussion
   file: web/mlp_en_concussion.html
   org: MedlinePlus
@@ -1018,7 +1182,7 @@ sources:
   - escolar
   - adolescente
   url: https://medlineplus.gov/concussion.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_choking
   file: web/mlp_en_choking.html
   org: MedlinePlus
@@ -1033,7 +1197,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/choking.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_burns
   file: web/mlp_en_burns.html
   org: MedlinePlus
@@ -1048,7 +1212,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/burns.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_poisoning
   file: web/mlp_en_poisoning.html
   org: MedlinePlus
@@ -1063,7 +1227,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/poisoning.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_infantandnewborncare
   file: web/mlp_en_infantandnewborncare.html
   org: MedlinePlus
@@ -1078,7 +1242,7 @@ sources:
   age_groups:
   - lactante
   url: https://medlineplus.gov/infantandnewborncare.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_infantandnewbornnutrition
   file: web/mlp_en_infantandnewbornnutrition.html
   org: MedlinePlus
@@ -1093,7 +1257,7 @@ sources:
   age_groups:
   - lactante
   url: https://medlineplus.gov/infantandnewbornnutrition.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_breastfeeding
   file: web/mlp_en_breastfeeding.html
   org: MedlinePlus
@@ -1108,7 +1272,7 @@ sources:
   age_groups:
   - lactante
   url: https://medlineplus.gov/breastfeeding.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_childdevelopment
   file: web/mlp_en_childdevelopment.html
   org: MedlinePlus
@@ -1123,7 +1287,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/childdevelopment.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_childhoodvaccines
   file: web/mlp_en_childhoodvaccines.html
   org: MedlinePlus
@@ -1138,7 +1302,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/childhoodvaccines.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_earinfections
   file: web/mlp_en_earinfections.html
   org: MedlinePlus
@@ -1153,7 +1317,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/earinfections.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_sorethroat
   file: web/mlp_en_sorethroat.html
   org: MedlinePlus
@@ -1168,7 +1332,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/sorethroat.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_chickenpox
   file: web/mlp_en_chickenpox.html
   org: MedlinePlus
@@ -1183,7 +1347,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/chickenpox.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_rashes
   file: web/mlp_en_rashes.html
   org: MedlinePlus
@@ -1198,7 +1362,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/rashes.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_asthmainchildren
   file: web/mlp_en_asthmainchildren.html
   org: MedlinePlus
@@ -1213,7 +1377,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/asthmainchildren.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_toddlerhealth
   file: web/mlp_en_toddlerhealth.html
   org: MedlinePlus
@@ -1228,7 +1392,7 @@ sources:
   age_groups:
   - preescolar
   url: https://medlineplus.gov/toddlerhealth.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_childsafety
   file: web/mlp_en_childsafety.html
   org: MedlinePlus
@@ -1243,7 +1407,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/childsafety.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_heatillness
   file: web/mlp_en_heatillness.html
   org: MedlinePlus
@@ -1258,7 +1422,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/heatillness.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_foodallergy
   file: web/mlp_en_foodallergy.html
   org: MedlinePlus
@@ -1273,7 +1437,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/foodallergy.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_allergy
   file: web/mlp_en_allergy.html
   org: MedlinePlus
@@ -1288,7 +1452,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/allergy.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_pneumonia
   file: web/mlp_en_pneumonia.html
   org: MedlinePlus
@@ -1303,7 +1467,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/pneumonia.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_whoopingcough
   file: web/mlp_en_whoopingcough.html
   org: MedlinePlus
@@ -1318,7 +1482,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/whoopingcough.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_measles
   file: web/mlp_en_measles.html
   org: MedlinePlus
@@ -1333,7 +1497,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/measles.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_meningitis
   file: web/mlp_en_meningitis.html
   org: MedlinePlus
@@ -1348,7 +1512,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/meningitis.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_urinarytractinfections
   file: web/mlp_en_urinarytractinfections.html
   org: MedlinePlus
@@ -1363,7 +1527,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/urinarytractinfections.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_eczema
   file: web/mlp_en_eczema.html
   org: MedlinePlus
@@ -1378,7 +1542,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/eczema.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_pinkeye
   file: web/mlp_en_pinkeye.html
   org: MedlinePlus
@@ -1393,7 +1557,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/pinkeye.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_headlice
   file: web/mlp_en_headlice.html
   org: MedlinePlus
@@ -1408,7 +1572,7 @@ sources:
   age_groups:
   - escolar
   url: https://medlineplus.gov/headlice.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_sunexposure
   file: web/mlp_en_sunexposure.html
   org: MedlinePlus
@@ -1423,7 +1587,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/sunexposure.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_insectbitesandstings
   file: web/mlp_en_insectbitesandstings.html
   org: MedlinePlus
@@ -1438,7 +1602,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/insectbitesandstings.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_autismspectrumdisorder
   file: web/mlp_en_autismspectrumdisorder.html
   org: MedlinePlus
@@ -1453,7 +1617,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/autismspectrumdisorder.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_teenmentalhealth
   file: web/mlp_en_teenmentalhealth.html
   org: MedlinePlus
@@ -1468,7 +1632,7 @@ sources:
   age_groups:
   - adolescente
   url: https://medlineplus.gov/teenmentalhealth.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_suicide
   file: web/mlp_en_suicide.html
   org: MedlinePlus
@@ -1483,7 +1647,7 @@ sources:
   age_groups:
   - adolescente
   url: https://medlineplus.gov/suicide.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_selfharm
   file: web/mlp_en_selfharm.html
   org: MedlinePlus
@@ -1498,7 +1662,7 @@ sources:
   age_groups:
   - adolescente
   url: https://medlineplus.gov/selfharm.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_eatingdisorders
   file: web/mlp_en_eatingdisorders.html
   org: MedlinePlus
@@ -1513,7 +1677,7 @@ sources:
   age_groups:
   - adolescente
   url: https://medlineplus.gov/eatingdisorders.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_childrenshealth
   file: web/mlp_en_childrenshealth.html
   org: MedlinePlus
@@ -1528,7 +1692,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/childrenshealth.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_headache
   file: web/mlp_en_headache.html
   org: MedlinePlus
@@ -1543,7 +1707,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/headache.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_fainting
   file: web/mlp_en_fainting.html
   org: MedlinePlus
@@ -1559,7 +1723,7 @@ sources:
   - escolar
   - adolescente
   url: https://medlineplus.gov/fainting.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_impetigo
   file: web/mlp_en_impetigo.html
   org: MedlinePlus
@@ -1574,7 +1738,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/impetigo.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_pinworms
   file: web/mlp_en_pinworms.html
   org: MedlinePlus
@@ -1590,7 +1754,7 @@ sources:
   - preescolar
   - escolar
   url: https://medlineplus.gov/pinworms.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_en_bedwetting
   file: web/mlp_en_bedwetting.html
   org: MedlinePlus
@@ -1606,7 +1770,7 @@ sources:
   - preescolar
   - escolar
   url: https://medlineplus.gov/bedwetting.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_fever
   file: web/mlp_es_fever.html
   org: MedlinePlus
@@ -1621,7 +1785,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/fever.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_commoncold
   file: web/mlp_es_commoncold.html
   org: MedlinePlus
@@ -1636,7 +1800,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/commoncold.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_croup
   file: web/mlp_es_croup.html
   org: MedlinePlus
@@ -1652,7 +1816,7 @@ sources:
   - lactante
   - preescolar
   url: https://medlineplus.gov/spanish/croup.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_gastroenteritis
   file: web/mlp_es_gastroenteritis.html
   org: MedlinePlus
@@ -1667,7 +1831,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/gastroenteritis.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_diarrhea
   file: web/mlp_es_diarrhea.html
   org: MedlinePlus
@@ -1682,7 +1846,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/diarrhea.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_dehydration
   file: web/mlp_es_dehydration.html
   org: MedlinePlus
@@ -1697,7 +1861,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/dehydration.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_headinjuries
   file: web/mlp_es_headinjuries.html
   org: MedlinePlus
@@ -1712,7 +1876,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/headinjuries.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_choking
   file: web/mlp_es_choking.html
   org: MedlinePlus
@@ -1727,7 +1891,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/choking.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_burns
   file: web/mlp_es_burns.html
   org: MedlinePlus
@@ -1742,7 +1906,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/burns.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_poisoning
   file: web/mlp_es_poisoning.html
   org: MedlinePlus
@@ -1757,7 +1921,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/poisoning.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_infantandnewborncare
   file: web/mlp_es_infantandnewborncare.html
   org: MedlinePlus
@@ -1772,7 +1936,7 @@ sources:
   age_groups:
   - lactante
   url: https://medlineplus.gov/spanish/infantandnewborncare.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_infantandnewbornnutrition
   file: web/mlp_es_infantandnewbornnutrition.html
   org: MedlinePlus
@@ -1787,7 +1951,7 @@ sources:
   age_groups:
   - lactante
   url: https://medlineplus.gov/spanish/infantandnewbornnutrition.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_breastfeeding
   file: web/mlp_es_breastfeeding.html
   org: MedlinePlus
@@ -1802,7 +1966,7 @@ sources:
   age_groups:
   - lactante
   url: https://medlineplus.gov/spanish/breastfeeding.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_childhoodvaccines
   file: web/mlp_es_childhoodvaccines.html
   org: MedlinePlus
@@ -1817,7 +1981,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/childhoodvaccines.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_earinfections
   file: web/mlp_es_earinfections.html
   org: MedlinePlus
@@ -1832,7 +1996,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/earinfections.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_chickenpox
   file: web/mlp_es_chickenpox.html
   org: MedlinePlus
@@ -1847,7 +2011,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/chickenpox.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_asthmainchildren
   file: web/mlp_es_asthmainchildren.html
   org: MedlinePlus
@@ -1862,7 +2026,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/asthmainchildren.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_toddlerhealth
   file: web/mlp_es_toddlerhealth.html
   org: MedlinePlus
@@ -1877,7 +2041,7 @@ sources:
   age_groups:
   - preescolar
   url: https://medlineplus.gov/spanish/toddlerhealth.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_childsafety
   file: web/mlp_es_childsafety.html
   org: MedlinePlus
@@ -1892,7 +2056,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/childsafety.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_heatillness
   file: web/mlp_es_heatillness.html
   org: MedlinePlus
@@ -1907,7 +2071,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/heatillness.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_measles
   file: web/mlp_es_measles.html
   org: MedlinePlus
@@ -1922,7 +2086,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/measles.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_meningitis
   file: web/mlp_es_meningitis.html
   org: MedlinePlus
@@ -1937,7 +2101,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/meningitis.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_teenmentalhealth
   file: web/mlp_es_teenmentalhealth.html
   org: MedlinePlus
@@ -1952,7 +2116,7 @@ sources:
   age_groups:
   - adolescente
   url: https://medlineplus.gov/spanish/teenmentalhealth.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: mlp_es_childrenshealth
   file: web/mlp_es_childrenshealth.html
   org: MedlinePlus
@@ -1967,7 +2131,7 @@ sources:
   age_groups:
   - todas
   url: https://medlineplus.gov/spanish/childrenshealth.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-16'
 - doc_id: cdc_en_child_easyread
   file: web/cdc_en_child_easyread.html
   org: CDC
@@ -1982,7 +2146,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/vaccines/imz-schedules/child-easyread.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_rsv_about_index
   file: web/cdc_en_rsv_about_index.html
   org: CDC
@@ -1997,7 +2161,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.cdc.gov/rsv/about/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_rsv_infants_young_children_index
   file: web/cdc_en_rsv_infants_young_children_index.html
   org: CDC
@@ -2012,7 +2176,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.cdc.gov/rsv/infants-young-children/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_hand_foot_mouth_about_index
   file: web/cdc_en_hand_foot_mouth_about_index.html
   org: CDC
@@ -2028,7 +2192,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.cdc.gov/hand-foot-mouth/about/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_children
   file: web/cdc_en_children.html
   org: CDC
@@ -2043,7 +2207,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/flu/highrisk/children.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_heads_up_about_index
   file: web/cdc_en_heads_up_about_index.html
   org: CDC
@@ -2059,7 +2223,7 @@ sources:
   - escolar
   - adolescente
   url: https://www.cdc.gov/heads-up/about/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_heads_up_signs_symptoms_index
   file: web/cdc_en_heads_up_signs_symptoms_index.html
   org: CDC
@@ -2075,7 +2239,7 @@ sources:
   - escolar
   - adolescente
   url: https://www.cdc.gov/heads-up/signs-symptoms/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_act_early_milestones_index
   file: web/cdc_en_act_early_milestones_index.html
   org: CDC
@@ -2091,7 +2255,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.cdc.gov/act-early/milestones/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_drowning_prevention_index
   file: web/cdc_en_drowning_prevention_index.html
   org: CDC
@@ -2106,7 +2270,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/drowning/prevention/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_infant_toddler_nutrition_index
   file: web/cdc_en_infant_toddler_nutrition_index.html
   org: CDC
@@ -2122,7 +2286,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.cdc.gov/infant-toddler-nutrition/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_child_development_positive_parenting_tips_index
   file: web/cdc_en_child_development_positive_parenting_tips_index.html
   org: CDC
@@ -2137,7 +2301,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/child-development/positive-parenting-tips/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_rotavirus_about_index
   file: web/cdc_en_rotavirus_about_index.html
   org: CDC
@@ -2152,7 +2316,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.cdc.gov/rotavirus/about/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_norovirus_about_index
   file: web/cdc_en_norovirus_about_index.html
   org: CDC
@@ -2167,7 +2331,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/norovirus/about/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_pertussis_about_index
   file: web/cdc_en_pertussis_about_index.html
   org: CDC
@@ -2182,7 +2346,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/pertussis/about/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_measles_signs_symptoms_index
   file: web/cdc_en_measles_signs_symptoms_index.html
   org: CDC
@@ -2197,7 +2361,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/measles/signs-symptoms/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_chickenpox_about_index
   file: web/cdc_en_chickenpox_about_index.html
   org: CDC
@@ -2212,7 +2376,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/chickenpox/about/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_lice_about_index
   file: web/cdc_en_lice_about_index.html
   org: CDC
@@ -2227,7 +2391,7 @@ sources:
   age_groups:
   - escolar
   url: https://www.cdc.gov/lice/about/index.html
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_ear_infection_about
   file: web/cdc_en_ear_infection_about.html
   org: CDC
@@ -2242,7 +2406,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/ear-infection/about/
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: cdc_en_treatment
   file: web/cdc_en_treatment.html
   org: CDC
@@ -2257,7 +2421,7 @@ sources:
   age_groups:
   - todas
   url: https://www.cdc.gov/common-cold/treatment/
-  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-13'
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-16'
 - doc_id: who_en_infant_and_young_child_feeding
   file: web/who_en_infant_and_young_child_feeding.html
   org: WHO
@@ -2272,7 +2436,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_infant_and_young_child_feeding
   file: web/who_es_infant_and_young_child_feeding.html
   org: WHO
@@ -2287,7 +2451,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.who.int/es/news-room/fact-sheets/detail/infant-and-young-child-feeding
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_diarrhoeal_disease
   file: web/who_en_diarrhoeal_disease.html
   org: WHO
@@ -2302,7 +2466,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_diarrhoeal_disease
   file: web/who_es_diarrhoeal_disease.html
   org: WHO
@@ -2317,7 +2481,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/diarrhoeal-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_pneumonia
   file: web/who_en_pneumonia.html
   org: WHO
@@ -2332,7 +2496,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/pneumonia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_pneumonia
   file: web/who_es_pneumonia.html
   org: WHO
@@ -2347,7 +2511,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/pneumonia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_measles
   file: web/who_en_measles.html
   org: WHO
@@ -2362,7 +2526,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/measles
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_measles
   file: web/who_es_measles.html
   org: WHO
@@ -2377,7 +2541,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/measles
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_immunization_coverage
   file: web/who_en_immunization_coverage.html
   org: WHO
@@ -2392,7 +2556,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/immunization-coverage
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_immunization_coverage
   file: web/who_es_immunization_coverage.html
   org: WHO
@@ -2407,7 +2571,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/immunization-coverage
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_malnutrition
   file: web/who_en_malnutrition.html
   org: WHO
@@ -2422,7 +2586,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/malnutrition
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_adolescent_mental_health
   file: web/who_en_adolescent_mental_health.html
   org: WHO
@@ -2437,7 +2601,7 @@ sources:
   age_groups:
   - adolescente
   url: https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_adolescent_mental_health
   file: web/who_es_adolescent_mental_health.html
   org: WHO
@@ -2452,7 +2616,7 @@ sources:
   age_groups:
   - adolescente
   url: https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_malaria
   file: web/who_en_malaria.html
   org: WHO
@@ -2467,7 +2631,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/malaria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_measles
   file: web/who_ar_measles.html
   org: WHO
@@ -2482,7 +2646,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/measles
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_rubella
   file: web/who_ar_rubella.html
   org: WHO
@@ -2497,7 +2661,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/rubella
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_pneumonia
   file: web/who_ar_pneumonia.html
   org: WHO
@@ -2512,7 +2676,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/pneumonia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_diarrhoeal_disease
   file: web/who_ar_diarrhoeal_disease.html
   org: WHO
@@ -2527,7 +2691,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/diarrhoeal-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_infant_and_young_child_feeding
   file: web/who_ar_infant_and_young_child_feeding.html
   org: WHO
@@ -2542,7 +2706,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.who.int/ar/news-room/fact-sheets/detail/infant-and-young-child-feeding
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_malnutrition
   file: web/who_ar_malnutrition.html
   org: WHO
@@ -2557,7 +2721,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/malnutrition
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_adolescent_mental_health
   file: web/who_ar_adolescent_mental_health.html
   org: WHO
@@ -2572,7 +2736,7 @@ sources:
   age_groups:
   - adolescente
   url: https://www.who.int/ar/news-room/fact-sheets/detail/adolescent-mental-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_immunization_coverage
   file: web/who_ar_immunization_coverage.html
   org: WHO
@@ -2587,7 +2751,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/immunization-coverage
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_meningitis
   file: web/who_ar_meningitis.html
   org: WHO
@@ -2602,7 +2766,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/meningitis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_poliomyelitis
   file: web/who_ar_poliomyelitis.html
   org: WHO
@@ -2617,7 +2781,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/poliomyelitis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_hepatitis_b
   file: web/who_ar_hepatitis_b.html
   org: WHO
@@ -2632,7 +2796,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/hepatitis-b
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_tuberculosis
   file: web/who_ar_tuberculosis.html
   org: WHO
@@ -2647,7 +2811,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/tuberculosis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_drowning
   file: web/who_ar_drowning.html
   org: WHO
@@ -2662,7 +2826,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/drowning
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_burns
   file: web/who_ar_burns.html
   org: WHO
@@ -2677,7 +2841,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/burns
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_falls
   file: web/who_ar_falls.html
   org: WHO
@@ -2692,7 +2856,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/falls
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_measles
   file: web/who_ru_measles.html
   org: WHO
@@ -2707,7 +2871,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/measles
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_rubella
   file: web/who_ru_rubella.html
   org: WHO
@@ -2722,7 +2886,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/rubella
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_pneumonia
   file: web/who_ru_pneumonia.html
   org: WHO
@@ -2737,7 +2901,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/pneumonia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_diarrhoeal_disease
   file: web/who_ru_diarrhoeal_disease.html
   org: WHO
@@ -2752,7 +2916,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/diarrhoeal-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_infant_and_young_child_feeding
   file: web/who_ru_infant_and_young_child_feeding.html
   org: WHO
@@ -2767,7 +2931,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.who.int/ru/news-room/fact-sheets/detail/infant-and-young-child-feeding
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_malnutrition
   file: web/who_ru_malnutrition.html
   org: WHO
@@ -2782,7 +2946,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/malnutrition
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_adolescent_mental_health
   file: web/who_ru_adolescent_mental_health.html
   org: WHO
@@ -2797,7 +2961,7 @@ sources:
   age_groups:
   - adolescente
   url: https://www.who.int/ru/news-room/fact-sheets/detail/adolescent-mental-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_immunization_coverage
   file: web/who_ru_immunization_coverage.html
   org: WHO
@@ -2812,7 +2976,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/immunization-coverage
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_meningitis
   file: web/who_ru_meningitis.html
   org: WHO
@@ -2827,7 +2991,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/meningitis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_poliomyelitis
   file: web/who_ru_poliomyelitis.html
   org: WHO
@@ -2842,7 +3006,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/poliomyelitis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_hepatitis_b
   file: web/who_ru_hepatitis_b.html
   org: WHO
@@ -2857,7 +3021,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/hepatitis-b
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_tuberculosis
   file: web/who_ru_tuberculosis.html
   org: WHO
@@ -2872,7 +3036,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/tuberculosis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_drowning
   file: web/who_ru_drowning.html
   org: WHO
@@ -2887,7 +3051,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/drowning
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_burns
   file: web/who_ru_burns.html
   org: WHO
@@ -2902,7 +3066,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/burns
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_falls
   file: web/who_ru_falls.html
   org: WHO
@@ -2917,7 +3081,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/falls
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_masern
   file: web/rki_de_ratgeber_masern.html
   org: RKI
@@ -2932,7 +3096,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Masern.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_varizellen
   file: web/rki_de_ratgeber_varizellen.html
   org: RKI
@@ -2947,7 +3111,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Varizellen.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_roeteln
   file: web/rki_de_ratgeber_roeteln.html
   org: RKI
@@ -2962,7 +3126,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Roeteln.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_mumps
   file: web/rki_de_ratgeber_mumps.html
   org: RKI
@@ -2977,7 +3141,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Mumps.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_pertussis
   file: web/rki_de_ratgeber_pertussis.html
   org: RKI
@@ -2993,7 +3157,7 @@ sources:
   - lactante
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Pertussis.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_streptococcus_pyogenes
   file: web/rki_de_ratgeber_streptococcus_pyogenes.html
   org: RKI
@@ -3008,7 +3172,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Streptococcus_pyogenes.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_rsv
   file: web/rki_de_ratgeber_rsv.html
   org: RKI
@@ -3023,7 +3187,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_RSV.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_influenza_saisonal
   file: web/rki_de_ratgeber_influenza_saisonal.html
   org: RKI
@@ -3038,7 +3202,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Influenza_saisonal.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_noroviren
   file: web/rki_de_ratgeber_noroviren.html
   org: RKI
@@ -3053,7 +3217,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Noroviren.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_rotaviren
   file: web/rki_de_ratgeber_rotaviren.html
   org: RKI
@@ -3069,7 +3233,7 @@ sources:
   - lactante
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Rotaviren.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_hfmk
   file: web/rki_de_ratgeber_hfmk.html
   org: RKI
@@ -3084,7 +3248,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HFMK.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_meningokokken
   file: web/rki_de_ratgeber_meningokokken.html
   org: RKI
@@ -3099,7 +3263,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Meningokokken.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_pneumokokken
   file: web/rki_de_ratgeber_pneumokokken.html
   org: RKI
@@ -3114,7 +3278,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Pneumokokken.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_kopflausbefall
   file: web/rki_de_ratgeber_kopflausbefall.html
   org: RKI
@@ -3129,7 +3293,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Kopflausbefall.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_skabies
   file: web/rki_de_ratgeber_skabies.html
   org: RKI
@@ -3144,7 +3308,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Skabies.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_salmonellose
   file: web/rki_de_ratgeber_salmonellose.html
   org: RKI
@@ -3159,7 +3323,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Salmonellose.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_campylobacter
   file: web/rki_de_ratgeber_campylobacter.html
   org: RKI
@@ -3174,7 +3338,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Campylobacter.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_ehec
   file: web/rki_de_ratgeber_ehec.html
   org: RKI
@@ -3189,7 +3353,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_EHEC.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_hepatitisa
   file: web/rki_de_ratgeber_hepatitisa.html
   org: RKI
@@ -3204,7 +3368,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HepatitisA.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_lymeborreliose
   file: web/rki_de_ratgeber_lymeborreliose.html
   org: RKI
@@ -3219,7 +3383,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_LymeBorreliose.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_fsme
   file: web/rki_de_ratgeber_fsme.html
   org: RKI
@@ -3234,7 +3398,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_FSME.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_adenovirus_konjunktivitis
   file: web/rki_de_ratgeber_adenovirus_konjunktivitis.html
   org: RKI
@@ -3249,7 +3413,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Adenovirus_Konjunktivitis.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_tuberkulose
   file: web/rki_de_ratgeber_tuberkulose.html
   org: RKI
@@ -3264,7 +3428,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Tuberkulose.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_covid_19
   file: web/rki_de_ratgeber_covid_19.html
   org: RKI
@@ -3279,7 +3443,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_COVID-19.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_poliomyelitis
   file: web/rki_de_ratgeber_poliomyelitis.html
   org: RKI
@@ -3294,7 +3458,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Poliomyelitis.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_tetanus
   file: web/rki_de_ratgeber_tetanus.html
   org: RKI
@@ -3309,7 +3473,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Tetanus.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_diphtherie
   file: web/rki_de_ratgeber_diphtherie.html
   org: RKI
@@ -3324,7 +3488,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Diphtherie.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_haemophilusinfluenzae
   file: web/rki_de_ratgeber_haemophilusinfluenzae.html
   org: RKI
@@ -3339,7 +3503,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HaemophilusInfluenzae.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_toxoplasmose
   file: web/rki_de_ratgeber_toxoplasmose.html
   org: RKI
@@ -3354,7 +3518,7 @@ sources:
   age_groups:
   - todas
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Toxoplasmose.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: rki_de_ratgeber_zytomegalievirus
   file: web/rki_de_ratgeber_zytomegalievirus.html
   org: RKI
@@ -3369,7 +3533,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Zytomegalievirus.html
-  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-13'
+  notes: 'licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-16'
 - doc_id: who_fr_measles
   file: web/who_fr_measles.html
   org: WHO
@@ -3384,7 +3548,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/measles
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_pneumonia
   file: web/who_fr_pneumonia.html
   org: WHO
@@ -3399,7 +3563,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/pneumonia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_diarrhoeal_disease
   file: web/who_fr_diarrhoeal_disease.html
   org: WHO
@@ -3414,7 +3578,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/diarrhoeal-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_infant_and_young_child_feeding
   file: web/who_fr_infant_and_young_child_feeding.html
   org: WHO
@@ -3429,7 +3593,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.who.int/fr/news-room/fact-sheets/detail/infant-and-young-child-feeding
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_adolescent_mental_health
   file: web/who_fr_adolescent_mental_health.html
   org: WHO
@@ -3444,7 +3608,7 @@ sources:
   age_groups:
   - adolescente
   url: https://www.who.int/fr/news-room/fact-sheets/detail/adolescent-mental-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_immunization_coverage
   file: web/who_fr_immunization_coverage.html
   org: WHO
@@ -3459,7 +3623,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/immunization-coverage
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_malnutrition
   file: web/who_fr_malnutrition.html
   org: WHO
@@ -3474,7 +3638,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/malnutrition
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: canada_fr_virus_respiratoire_syncytial_vrs
   file: web/canada_fr_virus_respiratoire_syncytial_vrs.html
   org: Gouvernement du Canada
@@ -3489,7 +3653,7 @@ sources:
   age_groups:
   - lactante
   url: https://www.canada.ca/fr/sante-publique/services/maladies/virus-respiratoire-syncytial-vrs.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_rougeole
   file: web/canada_fr_rougeole.html
   org: Gouvernement du Canada
@@ -3504,7 +3668,7 @@ sources:
   age_groups:
   - todas
   url: https://www.canada.ca/fr/sante-publique/services/maladies/rougeole.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_coqueluche_toux_coquelucheuse
   file: web/canada_fr_coqueluche_toux_coquelucheuse.html
   org: Gouvernement du Canada
@@ -3520,7 +3684,7 @@ sources:
   - lactante
   - todas
   url: https://www.canada.ca/fr/sante-publique/services/maladies/coqueluche-toux-coquelucheuse.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_grippe_influenza
   file: web/canada_fr_grippe_influenza.html
   org: Gouvernement du Canada
@@ -3535,7 +3699,7 @@ sources:
   age_groups:
   - todas
   url: https://www.canada.ca/fr/sante-publique/services/maladies/grippe-influenza.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_oreillons
   file: web/canada_fr_oreillons.html
   org: Gouvernement du Canada
@@ -3550,7 +3714,7 @@ sources:
   age_groups:
   - todas
   url: https://www.canada.ca/fr/sante-publique/services/maladies/oreillons.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_rubeole
   file: web/canada_fr_rubeole.html
   org: Gouvernement du Canada
@@ -3565,7 +3729,7 @@ sources:
   age_groups:
   - todas
   url: https://www.canada.ca/fr/sante-publique/services/maladies/rubeole.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_maladie_lyme
   file: web/canada_fr_maladie_lyme.html
   org: Gouvernement du Canada
@@ -3580,7 +3744,7 @@ sources:
   age_groups:
   - todas
   url: https://www.canada.ca/fr/sante-publique/services/maladies/maladie-lyme.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_commotions_cerebrales_signes_symptomes
   file: web/canada_fr_commotions_cerebrales_signes_symptomes.html
   org: Gouvernement du Canada
@@ -3595,7 +3759,7 @@ sources:
   age_groups:
   - todas
   url: https://www.canada.ca/fr/sante-publique/services/maladies/commotions-cerebrales-signes-symptomes.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_securite_soleil
   file: web/canada_fr_securite_soleil.html
   org: Gouvernement du Canada
@@ -3610,7 +3774,7 @@ sources:
   age_groups:
   - todas
   url: https://www.canada.ca/fr/sante-canada/services/securite-soleil.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: canada_fr_vaccinations_pour_enfants
   file: web/canada_fr_vaccinations_pour_enfants.html
   org: Gouvernement du Canada
@@ -3625,7 +3789,7 @@ sources:
   age_groups:
   - todas
   url: https://www.canada.ca/fr/sante-publique/services/vaccinations-pour-enfants.html
-  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-13'
+  notes: 'licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d''origine (Avis, canada.ca); fetched 2026-09-16'
 - doc_id: who_ar_malaria
   file: web/who_ar_malaria.html
   org: WHO
@@ -3640,7 +3804,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/malaria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_dengue_and_severe_dengue
   file: web/who_ar_dengue_and_severe_dengue.html
   org: WHO
@@ -3655,7 +3819,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/dengue-and-severe-dengue
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_typhoid
   file: web/who_ar_typhoid.html
   org: WHO
@@ -3670,7 +3834,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/typhoid
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_hepatitis_a
   file: web/who_ar_hepatitis_a.html
   org: WHO
@@ -3685,7 +3849,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/hepatitis-a
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_preterm_birth
   file: web/who_ar_preterm_birth.html
   org: WHO
@@ -3700,7 +3864,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/preterm-birth
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_anaemia
   file: web/who_ar_anaemia.html
   org: WHO
@@ -3715,7 +3879,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/anaemia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_asthma
   file: web/who_ar_asthma.html
   org: WHO
@@ -3730,7 +3894,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/asthma
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_epilepsy
   file: web/who_ar_epilepsy.html
   org: WHO
@@ -3745,7 +3909,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/epilepsy
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_autism_spectrum_disorders
   file: web/who_ar_autism_spectrum_disorders.html
   org: WHO
@@ -3760,7 +3924,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/autism-spectrum-disorders
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_sepsis
   file: web/who_ar_sepsis.html
   org: WHO
@@ -3775,7 +3939,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/sepsis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_snakebite_envenoming
   file: web/who_ar_snakebite_envenoming.html
   org: WHO
@@ -3790,7 +3954,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/snakebite-envenoming
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_road_traffic_injuries
   file: web/who_ar_road_traffic_injuries.html
   org: WHO
@@ -3805,7 +3969,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/road-traffic-injuries
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_food_safety
   file: web/who_ar_food_safety.html
   org: WHO
@@ -3820,7 +3984,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/food-safety
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_drinking_water
   file: web/who_ar_drinking_water.html
   org: WHO
@@ -3835,7 +3999,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/drinking-water
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_soil_transmitted_helminth_infections
   file: web/who_ar_soil_transmitted_helminth_infections.html
   org: WHO
@@ -3850,7 +4014,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/soil-transmitted-helminth-infections
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_scabies
   file: web/who_ar_scabies.html
   org: WHO
@@ -3865,7 +4029,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/scabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_obesity_and_overweight
   file: web/who_ar_obesity_and_overweight.html
   org: WHO
@@ -3880,7 +4044,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/obesity-and-overweight
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_influenza_seasonal
   file: web/who_ar_influenza_seasonal.html
   org: WHO
@@ -3895,7 +4059,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/influenza-(seasonal)
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_rabies
   file: web/who_ar_rabies.html
   org: WHO
@@ -3910,7 +4074,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/rabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_tetanus
   file: web/who_ar_tetanus.html
   org: WHO
@@ -3925,7 +4089,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/tetanus
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_hiv_aids
   file: web/who_ar_hiv_aids.html
   org: WHO
@@ -3940,7 +4104,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/hiv-aids
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_diphtheria
   file: web/who_ar_diphtheria.html
   org: WHO
@@ -3955,7 +4119,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/diphtheria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_oral_health
   file: web/who_ar_oral_health.html
   org: WHO
@@ -3970,7 +4134,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/oral-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_dengue_and_severe_dengue
   file: web/who_en_dengue_and_severe_dengue.html
   org: WHO
@@ -3985,7 +4149,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_typhoid
   file: web/who_en_typhoid.html
   org: WHO
@@ -4000,7 +4164,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/typhoid
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_hepatitis_a
   file: web/who_en_hepatitis_a.html
   org: WHO
@@ -4015,7 +4179,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/hepatitis-a
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_preterm_birth
   file: web/who_en_preterm_birth.html
   org: WHO
@@ -4030,7 +4194,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/preterm-birth
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_anaemia
   file: web/who_en_anaemia.html
   org: WHO
@@ -4045,7 +4209,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/anaemia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_asthma
   file: web/who_en_asthma.html
   org: WHO
@@ -4060,7 +4224,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/asthma
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_epilepsy
   file: web/who_en_epilepsy.html
   org: WHO
@@ -4075,7 +4239,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/epilepsy
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_autism_spectrum_disorders
   file: web/who_en_autism_spectrum_disorders.html
   org: WHO
@@ -4090,7 +4254,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_sepsis
   file: web/who_en_sepsis.html
   org: WHO
@@ -4105,7 +4269,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/sepsis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_snakebite_envenoming
   file: web/who_en_snakebite_envenoming.html
   org: WHO
@@ -4120,7 +4284,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/snakebite-envenoming
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_road_traffic_injuries
   file: web/who_en_road_traffic_injuries.html
   org: WHO
@@ -4135,7 +4299,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_food_safety
   file: web/who_en_food_safety.html
   org: WHO
@@ -4150,7 +4314,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/food-safety
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_drinking_water
   file: web/who_en_drinking_water.html
   org: WHO
@@ -4165,7 +4329,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/drinking-water
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_soil_transmitted_helminth_infections
   file: web/who_en_soil_transmitted_helminth_infections.html
   org: WHO
@@ -4180,7 +4344,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_scabies
   file: web/who_en_scabies.html
   org: WHO
@@ -4195,7 +4359,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/scabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_obesity_and_overweight
   file: web/who_en_obesity_and_overweight.html
   org: WHO
@@ -4210,7 +4374,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_influenza_seasonal
   file: web/who_en_influenza_seasonal.html
   org: WHO
@@ -4225,7 +4389,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/influenza-(seasonal)
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_rabies
   file: web/who_en_rabies.html
   org: WHO
@@ -4240,7 +4404,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/rabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_tetanus
   file: web/who_en_tetanus.html
   org: WHO
@@ -4255,7 +4419,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/tetanus
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_hiv_aids
   file: web/who_en_hiv_aids.html
   org: WHO
@@ -4270,7 +4434,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/hiv-aids
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_diphtheria
   file: web/who_en_diphtheria.html
   org: WHO
@@ -4285,7 +4449,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/diphtheria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_oral_health
   file: web/who_en_oral_health.html
   org: WHO
@@ -4300,7 +4464,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/oral-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_malaria
   file: web/who_es_malaria.html
   org: WHO
@@ -4315,7 +4479,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/malaria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_dengue_and_severe_dengue
   file: web/who_es_dengue_and_severe_dengue.html
   org: WHO
@@ -4330,7 +4494,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/dengue-and-severe-dengue
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_typhoid
   file: web/who_es_typhoid.html
   org: WHO
@@ -4345,7 +4509,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/typhoid
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_hepatitis_a
   file: web/who_es_hepatitis_a.html
   org: WHO
@@ -4360,7 +4524,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/hepatitis-a
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_preterm_birth
   file: web/who_es_preterm_birth.html
   org: WHO
@@ -4375,7 +4539,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/preterm-birth
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_anaemia
   file: web/who_es_anaemia.html
   org: WHO
@@ -4390,7 +4554,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/anaemia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_asthma
   file: web/who_es_asthma.html
   org: WHO
@@ -4405,7 +4569,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/asthma
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_epilepsy
   file: web/who_es_epilepsy.html
   org: WHO
@@ -4420,7 +4584,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/epilepsy
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_autism_spectrum_disorders
   file: web/who_es_autism_spectrum_disorders.html
   org: WHO
@@ -4435,7 +4599,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/autism-spectrum-disorders
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_sepsis
   file: web/who_es_sepsis.html
   org: WHO
@@ -4450,7 +4614,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/sepsis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_snakebite_envenoming
   file: web/who_es_snakebite_envenoming.html
   org: WHO
@@ -4465,7 +4629,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/snakebite-envenoming
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_road_traffic_injuries
   file: web/who_es_road_traffic_injuries.html
   org: WHO
@@ -4480,7 +4644,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_food_safety
   file: web/who_es_food_safety.html
   org: WHO
@@ -4495,7 +4659,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/food-safety
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_drinking_water
   file: web/who_es_drinking_water.html
   org: WHO
@@ -4510,7 +4674,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/drinking-water
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_soil_transmitted_helminth_infections
   file: web/who_es_soil_transmitted_helminth_infections.html
   org: WHO
@@ -4525,7 +4689,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/soil-transmitted-helminth-infections
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_scabies
   file: web/who_es_scabies.html
   org: WHO
@@ -4540,7 +4704,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/scabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_obesity_and_overweight
   file: web/who_es_obesity_and_overweight.html
   org: WHO
@@ -4555,7 +4719,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/obesity-and-overweight
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_influenza_seasonal
   file: web/who_es_influenza_seasonal.html
   org: WHO
@@ -4570,7 +4734,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/influenza-(seasonal)
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_rabies
   file: web/who_es_rabies.html
   org: WHO
@@ -4585,7 +4749,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/rabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_tetanus
   file: web/who_es_tetanus.html
   org: WHO
@@ -4600,7 +4764,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/tetanus
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_hiv_aids
   file: web/who_es_hiv_aids.html
   org: WHO
@@ -4615,7 +4779,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/hiv-aids
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_diphtheria
   file: web/who_es_diphtheria.html
   org: WHO
@@ -4630,7 +4794,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/diphtheria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_oral_health
   file: web/who_es_oral_health.html
   org: WHO
@@ -4645,7 +4809,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/oral-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_malaria
   file: web/who_fr_malaria.html
   org: WHO
@@ -4660,7 +4824,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/malaria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_dengue_and_severe_dengue
   file: web/who_fr_dengue_and_severe_dengue.html
   org: WHO
@@ -4675,7 +4839,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/dengue-and-severe-dengue
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_typhoid
   file: web/who_fr_typhoid.html
   org: WHO
@@ -4690,7 +4854,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/typhoid
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_hepatitis_a
   file: web/who_fr_hepatitis_a.html
   org: WHO
@@ -4705,7 +4869,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/hepatitis-a
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_preterm_birth
   file: web/who_fr_preterm_birth.html
   org: WHO
@@ -4720,7 +4884,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/preterm-birth
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_anaemia
   file: web/who_fr_anaemia.html
   org: WHO
@@ -4735,7 +4899,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/anaemia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_asthma
   file: web/who_fr_asthma.html
   org: WHO
@@ -4750,7 +4914,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/asthma
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_epilepsy
   file: web/who_fr_epilepsy.html
   org: WHO
@@ -4765,7 +4929,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/epilepsy
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_autism_spectrum_disorders
   file: web/who_fr_autism_spectrum_disorders.html
   org: WHO
@@ -4780,7 +4944,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/autism-spectrum-disorders
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_sepsis
   file: web/who_fr_sepsis.html
   org: WHO
@@ -4795,7 +4959,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/sepsis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_snakebite_envenoming
   file: web/who_fr_snakebite_envenoming.html
   org: WHO
@@ -4810,7 +4974,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/snakebite-envenoming
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_road_traffic_injuries
   file: web/who_fr_road_traffic_injuries.html
   org: WHO
@@ -4825,7 +4989,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/road-traffic-injuries
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_food_safety
   file: web/who_fr_food_safety.html
   org: WHO
@@ -4840,7 +5004,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/food-safety
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_drinking_water
   file: web/who_fr_drinking_water.html
   org: WHO
@@ -4855,7 +5019,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/drinking-water
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_soil_transmitted_helminth_infections
   file: web/who_fr_soil_transmitted_helminth_infections.html
   org: WHO
@@ -4870,7 +5034,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/soil-transmitted-helminth-infections
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_scabies
   file: web/who_fr_scabies.html
   org: WHO
@@ -4885,7 +5049,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/scabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_obesity_and_overweight
   file: web/who_fr_obesity_and_overweight.html
   org: WHO
@@ -4900,7 +5064,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/obesity-and-overweight
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_influenza_seasonal
   file: web/who_fr_influenza_seasonal.html
   org: WHO
@@ -4915,7 +5079,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/influenza-(seasonal)
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_rabies
   file: web/who_fr_rabies.html
   org: WHO
@@ -4930,7 +5094,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/rabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_tetanus
   file: web/who_fr_tetanus.html
   org: WHO
@@ -4945,7 +5109,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/tetanus
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_hiv_aids
   file: web/who_fr_hiv_aids.html
   org: WHO
@@ -4960,7 +5124,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/hiv-aids
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_diphtheria
   file: web/who_fr_diphtheria.html
   org: WHO
@@ -4975,7 +5139,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/diphtheria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_oral_health
   file: web/who_fr_oral_health.html
   org: WHO
@@ -4990,7 +5154,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/oral-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_malaria
   file: web/who_ru_malaria.html
   org: WHO
@@ -5005,7 +5169,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/malaria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_dengue_and_severe_dengue
   file: web/who_ru_dengue_and_severe_dengue.html
   org: WHO
@@ -5020,7 +5184,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/dengue-and-severe-dengue
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_typhoid
   file: web/who_ru_typhoid.html
   org: WHO
@@ -5035,7 +5199,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/typhoid
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_hepatitis_a
   file: web/who_ru_hepatitis_a.html
   org: WHO
@@ -5050,7 +5214,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/hepatitis-a
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_preterm_birth
   file: web/who_ru_preterm_birth.html
   org: WHO
@@ -5065,7 +5229,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/preterm-birth
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_anaemia
   file: web/who_ru_anaemia.html
   org: WHO
@@ -5080,7 +5244,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/anaemia
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_asthma
   file: web/who_ru_asthma.html
   org: WHO
@@ -5095,7 +5259,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/asthma
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_epilepsy
   file: web/who_ru_epilepsy.html
   org: WHO
@@ -5110,7 +5274,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/epilepsy
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_autism_spectrum_disorders
   file: web/who_ru_autism_spectrum_disorders.html
   org: WHO
@@ -5125,7 +5289,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/autism-spectrum-disorders
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_sepsis
   file: web/who_ru_sepsis.html
   org: WHO
@@ -5140,7 +5304,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/sepsis
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_snakebite_envenoming
   file: web/who_ru_snakebite_envenoming.html
   org: WHO
@@ -5155,7 +5319,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/snakebite-envenoming
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_road_traffic_injuries
   file: web/who_ru_road_traffic_injuries.html
   org: WHO
@@ -5170,7 +5334,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/road-traffic-injuries
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_food_safety
   file: web/who_ru_food_safety.html
   org: WHO
@@ -5185,7 +5349,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/food-safety
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_drinking_water
   file: web/who_ru_drinking_water.html
   org: WHO
@@ -5200,7 +5364,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/drinking-water
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_soil_transmitted_helminth_infections
   file: web/who_ru_soil_transmitted_helminth_infections.html
   org: WHO
@@ -5215,7 +5379,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/soil-transmitted-helminth-infections
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_scabies
   file: web/who_ru_scabies.html
   org: WHO
@@ -5230,7 +5394,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/scabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_obesity_and_overweight
   file: web/who_ru_obesity_and_overweight.html
   org: WHO
@@ -5245,7 +5409,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/obesity-and-overweight
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_influenza_seasonal
   file: web/who_ru_influenza_seasonal.html
   org: WHO
@@ -5260,7 +5424,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/influenza-(seasonal)
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_rabies
   file: web/who_ru_rabies.html
   org: WHO
@@ -5275,7 +5439,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/rabies
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_tetanus
   file: web/who_ru_tetanus.html
   org: WHO
@@ -5290,7 +5454,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/tetanus
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_hiv_aids
   file: web/who_ru_hiv_aids.html
   org: WHO
@@ -5305,7 +5469,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/hiv-aids
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_diphtheria
   file: web/who_ru_diphtheria.html
   org: WHO
@@ -5320,7 +5484,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/diphtheria
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_oral_health
   file: web/who_ru_oral_health.html
   org: WHO
@@ -5335,7 +5499,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/oral-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: govbr_pt_dengue
   file: web/govbr_pt_dengue.html
   org: Ministério da Saúde
@@ -5350,7 +5514,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/dengue
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_sarampo
   file: web/govbr_pt_sarampo.html
   org: Ministério da Saúde
@@ -5365,7 +5529,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/sarampo
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_coqueluche
   file: web/govbr_pt_coqueluche.html
   org: Ministério da Saúde
@@ -5380,7 +5544,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/coqueluche
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_caxumba
   file: web/govbr_pt_caxumba.html
   org: Ministério da Saúde
@@ -5395,7 +5559,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/caxumba
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_rubeola
   file: web/govbr_pt_rubeola.html
   org: Ministério da Saúde
@@ -5410,7 +5574,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/rubeola
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_tuberculose
   file: web/govbr_pt_tuberculose.html
   org: Ministério da Saúde
@@ -5425,7 +5589,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/tuberculose
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_hepatites_virais
   file: web/govbr_pt_hepatites_virais.html
   org: Ministério da Saúde
@@ -5440,7 +5604,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/hepatites-virais
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_raiva
   file: web/govbr_pt_raiva.html
   org: Ministério da Saúde
@@ -5455,7 +5619,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/raiva
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_aedes_aegypti
   file: web/govbr_pt_aedes_aegypti.html
   org: Ministério da Saúde
@@ -5470,7 +5634,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/aedes-aegypti
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_chikungunya
   file: web/govbr_pt_chikungunya.html
   org: Ministério da Saúde
@@ -5485,7 +5649,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/chikungunya
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_febre_amarela
   file: web/govbr_pt_febre_amarela.html
   org: Ministério da Saúde
@@ -5500,7 +5664,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/febre-amarela
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_meningite
   file: web/govbr_pt_meningite.html
   org: Ministério da Saúde
@@ -5515,7 +5679,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/meningite
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_poliomielite
   file: web/govbr_pt_poliomielite.html
   org: Ministério da Saúde
@@ -5530,7 +5694,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/poliomielite
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: govbr_pt_vacinacao
   file: web/govbr_pt_vacinacao.html
   org: Ministério da Saúde
@@ -5545,7 +5709,7 @@ sources:
   age_groups:
   - todas
   url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/vacinacao
-  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-13'
+  notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-16'
 - doc_id: who_ar_household_air_pollution_and_health
   file: web/who_ar_household_air_pollution_and_health.html
   org: WHO
@@ -5560,7 +5724,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/household-air-pollution-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_household_air_pollution_and_health
   file: web/who_en_household_air_pollution_and_health.html
   org: WHO
@@ -5575,7 +5739,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_household_air_pollution_and_health
   file: web/who_es_household_air_pollution_and_health.html
   org: WHO
@@ -5590,7 +5754,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/household-air-pollution-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_household_air_pollution_and_health
   file: web/who_fr_household_air_pollution_and_health.html
   org: WHO
@@ -5605,7 +5769,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/household-air-pollution-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_household_air_pollution_and_health
   file: web/who_ru_household_air_pollution_and_health.html
   org: WHO
@@ -5620,7 +5784,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/household-air-pollution-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_sickle_cell_disease
   file: web/who_ar_sickle_cell_disease.html
   org: WHO
@@ -5635,7 +5799,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/sickle-cell-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_sickle_cell_disease
   file: web/who_en_sickle_cell_disease.html
   org: WHO
@@ -5650,7 +5814,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/sickle-cell-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_sickle_cell_disease
   file: web/who_es_sickle_cell_disease.html
   org: WHO
@@ -5665,7 +5829,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/sickle-cell-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_sickle_cell_disease
   file: web/who_fr_sickle_cell_disease.html
   org: WHO
@@ -5680,7 +5844,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/sickle-cell-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_sickle_cell_disease
   file: web/who_ru_sickle_cell_disease.html
   org: WHO
@@ -5695,7 +5859,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/sickle-cell-disease
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_lead_poisoning_and_health
   file: web/who_ar_lead_poisoning_and_health.html
   org: WHO
@@ -5710,7 +5874,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/lead-poisoning-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_lead_poisoning_and_health
   file: web/who_en_lead_poisoning_and_health.html
   org: WHO
@@ -5725,7 +5889,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/lead-poisoning-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_lead_poisoning_and_health
   file: web/who_es_lead_poisoning_and_health.html
   org: WHO
@@ -5740,7 +5904,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/lead-poisoning-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_lead_poisoning_and_health
   file: web/who_fr_lead_poisoning_and_health.html
   org: WHO
@@ -5755,7 +5919,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/lead-poisoning-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_lead_poisoning_and_health
   file: web/who_ru_lead_poisoning_and_health.html
   org: WHO
@@ -5770,7 +5934,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/lead-poisoning-and-health
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_deafness_and_hearing_loss
   file: web/who_ar_deafness_and_hearing_loss.html
   org: WHO
@@ -5785,7 +5949,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/deafness-and-hearing-loss
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_deafness_and_hearing_loss
   file: web/who_en_deafness_and_hearing_loss.html
   org: WHO
@@ -5800,7 +5964,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/deafness-and-hearing-loss
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_deafness_and_hearing_loss
   file: web/who_es_deafness_and_hearing_loss.html
   org: WHO
@@ -5815,7 +5979,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/deafness-and-hearing-loss
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_deafness_and_hearing_loss
   file: web/who_fr_deafness_and_hearing_loss.html
   org: WHO
@@ -5830,7 +5994,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/deafness-and-hearing-loss
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_deafness_and_hearing_loss
   file: web/who_ru_deafness_and_hearing_loss.html
   org: WHO
@@ -5845,7 +6009,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/deafness-and-hearing-loss
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_blindness_and_visual_impairment
   file: web/who_ar_blindness_and_visual_impairment.html
   org: WHO
@@ -5860,7 +6024,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/blindness-and-visual-impairment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_blindness_and_visual_impairment
   file: web/who_en_blindness_and_visual_impairment.html
   org: WHO
@@ -5875,7 +6039,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_blindness_and_visual_impairment
   file: web/who_es_blindness_and_visual_impairment.html
   org: WHO
@@ -5890,7 +6054,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/blindness-and-visual-impairment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_blindness_and_visual_impairment
   file: web/who_fr_blindness_and_visual_impairment.html
   org: WHO
@@ -5905,7 +6069,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/blindness-and-visual-impairment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_blindness_and_visual_impairment
   file: web/who_ru_blindness_and_visual_impairment.html
   org: WHO
@@ -5920,7 +6084,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/blindness-and-visual-impairment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_tobacco
   file: web/who_ar_tobacco.html
   org: WHO
@@ -5935,7 +6099,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/tobacco
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_tobacco
   file: web/who_en_tobacco.html
   org: WHO
@@ -5950,7 +6114,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/tobacco
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_tobacco
   file: web/who_es_tobacco.html
   org: WHO
@@ -5965,7 +6129,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/tobacco
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_tobacco
   file: web/who_fr_tobacco.html
   org: WHO
@@ -5980,7 +6144,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/tobacco
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_tobacco
   file: web/who_ru_tobacco.html
   org: WHO
@@ -5995,7 +6159,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/tobacco
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_child_maltreatment
   file: web/who_ar_child_maltreatment.html
   org: WHO
@@ -6010,7 +6174,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ar/news-room/fact-sheets/detail/child-maltreatment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_child_maltreatment
   file: web/who_en_child_maltreatment.html
   org: WHO
@@ -6025,7 +6189,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/child-maltreatment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_child_maltreatment
   file: web/who_es_child_maltreatment.html
   org: WHO
@@ -6040,7 +6204,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/es/news-room/fact-sheets/detail/child-maltreatment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_child_maltreatment
   file: web/who_fr_child_maltreatment.html
   org: WHO
@@ -6055,7 +6219,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/fr/news-room/fact-sheets/detail/child-maltreatment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_child_maltreatment
   file: web/who_ru_child_maltreatment.html
   org: WHO
@@ -6070,7 +6234,7 @@ sources:
   age_groups:
   - todas
   url: https://www.who.int/ru/news-room/fact-sheets/detail/child-maltreatment
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_en_child_growth_standards
   file: web/who_en_child_growth_standards.html
   org: WHO
@@ -6086,7 +6250,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.who.int/news-room/questions-and-answers/item/child-growth-standards
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_es_child_growth_standards
   file: web/who_es_child_growth_standards.html
   org: WHO
@@ -6102,7 +6266,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.who.int/es/news-room/questions-and-answers/item/child-growth-standards
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_fr_child_growth_standards
   file: web/who_fr_child_growth_standards.html
   org: WHO
@@ -6118,7 +6282,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.who.int/fr/news-room/questions-and-answers/item/child-growth-standards
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ru_child_growth_standards
   file: web/who_ru_child_growth_standards.html
   org: WHO
@@ -6134,7 +6298,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.who.int/ru/news-room/questions-and-answers/item/child-growth-standards
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: who_ar_child_growth_standards
   file: web/who_ar_child_growth_standards.html
   org: WHO
@@ -6150,7 +6314,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.who.int/ar/news-room/questions-and-answers/item/child-growth-standards
-  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13'
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-16'
 - doc_id: nhs_en_baby_height_and_weight
   file: web/nhs_en_baby_height_and_weight.html
   org: NHS
@@ -6166,7 +6330,7 @@ sources:
   - lactante
   - preescolar
   url: https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
 - doc_id: nhs_en_jaundice_in_babies
   file: web/nhs_en_jaundice_in_babies.html
   org: NHS
@@ -6181,4 +6345,4 @@ sources:
   age_groups:
   - recien_nacido
   url: https://www.nhs.uk/conditions/jaundice-in-babies/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-13'
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
