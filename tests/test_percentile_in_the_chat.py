@@ -194,3 +194,40 @@ def test_en_ingles_tambien(engine) -> None:
     assert a.verification == "growth_chart"
     assert "percentile" in a.text.lower() and "Weight for age" in a.text
     assert a.tool is not None and a.tool.url == "/growth"
+
+
+# ── dos turnos: lo de ahora manda ────────────────────────────────────────────
+# Encontrado probando contra lo vivo el 16-sep, y NO lo veía ninguna prueba: los datos se leían
+# del texto de toda la conversación, donde el mensaje viejo va primero. Preguntando por «mi niña
+# de 8 meses que pesa 7 kg» y después por «mi niño de 3 años que pesa 13 kg y mide 92 cm», la
+# segunda respuesta salió con el sexo, la edad y el peso de la PRIMERA y la talla de la segunda:
+# 7 kg para 92 cm, o sea un aviso de desnutrición aguda grave a un niño que está bien.
+
+
+def test_los_datos_del_mensaje_de_ahora_ganan_a_los_de_antes(engine) -> None:
+    historia = [
+        {"role": "user", "text": "¿qué percentil tiene mi niña de 8 meses que pesa 7 kg?"},
+        {"role": "assistant", "text": "Peso para la edad: percentil 14,6."},
+    ]
+    a = engine.ask(
+        "y mi niño de 3 años que pesa 13 kg y mide 92 cm, ¿qué percentil tiene?",
+        lang="es",
+        history=historia,
+    )
+    assert a.verification == "growth_chart"
+    assert "13 kg" in a.text and "92 cm" in a.text
+    assert "7 kg" not in a.text
+    assert "niño" in a.text and "niña" not in a.text
+    assert "3 años" in a.text
+    assert a.level == "routine"  # no es una desnutrición: era el peso del otro niño
+
+
+def test_lo_que_falta_hoy_se_toma_de_la_conversacion(engine) -> None:
+    """Un padre cuenta en dos frases: «mi niña tiene 8 meses» y luego «pesa 7 kg»."""
+    historia = [
+        {"role": "user", "text": "mi niña tiene 8 meses"},
+        {"role": "assistant", "text": "¿Qué te preocupa?"},
+    ]
+    a = engine.ask("pesa 7 kg, ¿qué percentil es?", lang="es", history=historia)
+    assert a.verification == "growth_chart"
+    assert "niña" in a.text and "7 kg" in a.text

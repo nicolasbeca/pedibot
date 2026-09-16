@@ -936,17 +936,27 @@ class Engine:
         # (la de una niña no es la de un niño) y sin edad no hay fila que mirar. Y la pregunta
         # tiene que ser de crecimiento: «pesa 7 kg y tiene fiebre» no es un percentil.
         if self.growth is not None and tr.level == "routine" and is_growth_question(context_text):
-            sexo, peso, talla = measurements(context_text)
-            if sexo and tr.age_months is not None and (peso is not None or talla is not None):
+            # Lo de AHORA manda, y lo de antes sólo rellena lo que falte. Leerlo todo junto
+            # cruzaba los datos de dos niños: probando contra lo vivo, «mi niña de 8 meses que
+            # pesa 7 kg» seguido de «mi niño de 3 años que pesa 13 kg y mide 92 cm» daba 7 kg
+            # para 92 cm — un aviso de desnutrición aguda grave a un niño que estaba bien.
+            sexo, peso, talla = measurements(query)
+            edad = tr_now.age_months
+            if prior_user:
+                antes_sexo, antes_peso, antes_talla = measurements(prior_user)
+                sexo = sexo or antes_sexo
+                peso = peso if peso is not None else antes_peso
+                talla = talla if talla is not None else antes_talla
+            if edad is None:
+                edad = tr.age_months
+            if sexo and edad is not None and (peso is not None or talla is not None):
                 try:
-                    valoracion = self.growth.assess(
-                        sexo, tr.age_months, weight_kg=peso, height_cm=talla
-                    )
+                    valoracion = self.growth.assess(sexo, edad, weight_kg=peso, height_cm=talla)
                 except ValueError:
                     valoracion = None  # fuera de rango: lo dicen las fichas, no una excepción
                 if valoracion is not None and valoracion.indicators:
                     return Answer(
-                        explain(valoracion, lang, sexo, tr.age_months),
+                        explain(valoracion, lang, sexo, edad),
                         valoracion.level,
                         None,
                         [],
