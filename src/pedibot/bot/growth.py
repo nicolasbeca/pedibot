@@ -489,3 +489,217 @@ def describe(a: Assessment, lang: str) -> dict[str, object]:
         "notes": a.notes,
         "sources": a.sources,
     }
+
+
+# ── leer el mensaje del padre ────────────────────────────────────────────────────────────
+# 16-sep-2026. Hasta hoy la curva sólo se calculaba en la página: en el chat, «¿qué percentil
+# tiene mi niña de 8 meses que pesa 7 kg?» contestaba «no puedo decirte el percentil exacto»
+# teniendo delante el sexo, la edad y el peso. Las dosis y las vacunas ya leen el mensaje y
+# contestan de su tabla; esto hace lo mismo con la de la OMS.
+
+#: Las cifras arábigo-índicas y devanagari, que es lo que sale de un teclado árabe o hindi.
+DIGITS = str.maketrans("٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹०१२३४५६७८९", "01234567890123456789" + "0123456789")
+
+WEIGHT = re.compile(
+    r"(\d{1,3}(?:[.,]\d)?)\s*"
+    r"(?:(?:kg|kilos?|kilogramos?|kgs|quilos?)\b"
+    r"|кг|килограмм\w*|кило\w*"
+    r"|كيلوغرام|كيلوجرام|كيلو|كجم|كغ"
+    r"|किलोग्राम|किलो|किग्रा)",
+    re.I,
+)
+
+#: La talla en centímetros, y también en metros («mide 1,05 m»), que es como se dice a partir
+#: del año en castellano, francés y portugués.
+HEIGHT_CM = re.compile(
+    r"(\d{2,3}(?:[.,]\d)?)\s*"
+    r"(?:cm\b|cms\b|cent[íi]metros?|centim[eè]tres?|zentimeter|см|سم|سنتيمتر|सेमी|सेंटीमीटर)",
+    re.I,
+)
+HEIGHT_M = re.compile(
+    r"\b([01][.,]\d{1,2})\s*(?:m\b|metros?|m[èe]tres?|meter\b|м\b|متر|मीटर)",
+    re.I,
+)
+
+#: El sexo, que es lo único sin lo que no hay percentil: la curva de una niña no es la de un
+#: niño. Palabras enteras, con prefijo donde la lengua declina («дочь/дочка», «बेटी/बेटे»).
+_FEMALE = re.compile(
+    r"\b(?:ni[ñn]a|nena|hija|chica|muchacha|girl|daughter|fille|m[äa]dchen|tochter"
+    r"|menina|filha|garota)\b|дочь|доч[кеи]\w*|девочк\w*|بنتي|ابنتي|طفلتي|بنت"
+    r"|बेटी|लड़की|बच्ची",
+    re.I,
+)
+_MALE = re.compile(
+    r"\b(?:ni[ñn]o|nene|hijo|chico|muchacho|var[óo]n|boy|son|gar[çc]on|junge|sohn"
+    r"|menino|filho|garoto)\b|сын\w*|мальчик\w*|ابني|ولدي|طفلي|ولد"
+    r"|बेटा|बेटे|लड़का|बच्चा",
+    re.I,
+)
+
+
+def _number(m: re.Match[str] | None, factor: float = 1.0) -> float | None:
+    return round(float(m.group(1).replace(",", ".")) * factor, 1) if m else None
+
+
+def measurements(text: str) -> tuple[str | None, float | None, float | None]:
+    """(sexo, peso en kg, talla en cm) tal y como vienen escritos en el mensaje.
+
+    La edad NO se lee aquí: la saca el triaje, que ya la entiende en ocho lenguas y en meses,
+    semanas y años, y es la misma que usan las dosis."""
+    t = text.translate(DIGITS)
+    female, male = _FEMALE.search(t), _MALE.search(t)
+    sex = None
+    if female and not male:
+        sex = "f"
+    elif male and not female:
+        sex = "m"
+    elif female and male:  # las dos palabras en la misma frase: manda la primera
+        sex = "f" if female.start() < male.start() else "m"
+    cm = _number(HEIGHT_CM.search(t))
+    if cm is None:
+        cm = _number(HEIGHT_M.search(t), 100)
+    return sex, _number(WEIGHT.search(t)), cm
+
+
+# ── la respuesta escrita, sin modelo ─────────────────────────────────────────────────────
+#: Las frases que rodean a los números. Viven aquí, con LABELS, porque las usan el chat,
+#: Telegram y el agente de ACP, y ninguno de los tres pasa por el sitio.
+SENTENCES: dict[str, dict[str, str]] = {
+    "en": {
+        "head": "According to the WHO growth standards ({who}, {age}):",
+        "line": "• {label}: {value} → {percentile}th percentile (z {z}), {flag}.",
+        "girl": "girl",
+        "boy": "boy",
+        "ask_height": "Tell me the height too and I can also work out weight for height.",
+        "curve": "One measurement says little on its own: what matters is the curve over time, "
+        "and your paediatrician has it.",
+        "source": "Source: {sources}.",
+        "see": "⚠️ {warning} See a doctor soon.",
+    },
+    "es": {
+        "head": "Según los patrones de crecimiento de la OMS ({who}, {age}):",
+        "line": "• {label}: {value} → percentil {percentile} (z {z}), {flag}.",
+        "girl": "niña",
+        "boy": "niño",
+        "ask_height": "Dime también la talla y calculo el peso para la talla.",
+        "curve": "Un solo dato dice poco: lo que importa es la curva a lo largo del tiempo, y esa "
+        "la tiene tu pediatra.",
+        "source": "Fuente: {sources}.",
+        "see": "⚠️ {warning} Consulta con un médico pronto.",
+    },
+    "fr": {
+        "head": "D'après les standards de croissance de l'OMS ({who}, {age}) :",
+        "line": "• {label} : {value} → {percentile}e percentile (z {z}), {flag}.",
+        "girl": "fille",
+        "boy": "garçon",
+        "ask_height": "Donnez-moi aussi la taille et je calcule le poids pour la taille.",
+        "curve": "Une seule mesure dit peu de chose : ce qui compte est la courbe dans le temps, "
+        "et votre pédiatre l'a.",
+        "source": "Source : {sources}.",
+        "see": "⚠️ {warning} Consultez un médecin rapidement.",
+    },
+    "de": {
+        "head": "Nach den WHO-Wachstumsstandards ({who}, {age}):",
+        "line": "• {label}: {value} → {percentile}. Perzentile (z {z}), {flag}.",
+        "girl": "Mädchen",
+        "boy": "Junge",
+        "ask_height": "Nennen Sie mir auch die Größe, dann berechne ich Gewicht für Größe.",
+        "curve": "Ein einzelner Wert sagt wenig: Es zählt die Kurve über die Zeit, und die hat "
+        "Ihre Kinderärztin oder Ihr Kinderarzt.",
+        "source": "Quelle: {sources}.",
+        "see": "⚠️ {warning} Suchen Sie bald ärztlichen Rat.",
+    },
+    "ru": {
+        "head": "По стандартам роста ВОЗ ({who}, {age}):",
+        "line": "• {label}: {value} → {percentile}-й перцентиль (z {z}), {flag}.",
+        "girl": "девочка",
+        "boy": "мальчик",
+        "ask_height": "Скажите ещё рост, и я посчитаю вес по росту.",
+        "curve": "Одно измерение говорит мало: важна кривая во времени, и она есть у вашего "
+        "педиатра.",
+        "source": "Источник: {sources}.",
+        "see": "⚠️ {warning} Покажите ребёнка врачу в ближайшее время.",
+    },
+    "ar": {
+        "head": "وفق معايير النمو لمنظمة الصحة العالمية ({who}، {age}):",
+        "line": "• {label}: {value} ← المئين {percentile} (z {z})، {flag}.",
+        "girl": "بنت",
+        "boy": "ولد",
+        "ask_height": "أخبرني بالطول أيضا وأحسب الوزن حسب الطول.",
+        "curve": "قياس واحد لا يكفي: المهم هو المنحنى عبر الوقت، وهو موجود عند طبيب الأطفال.",
+        "source": "المصدر: {sources}.",
+        "see": "⚠️ {warning} راجع طبيبا قريبا.",
+    },
+    "pt": {
+        "head": "Segundo os padrões de crescimento da OMS ({who}, {age}):",
+        "line": "• {label}: {value} → percentil {percentile} (z {z}), {flag}.",
+        "girl": "menina",
+        "boy": "menino",
+        "ask_height": "Diga-me também a altura e calculo o peso para a altura.",
+        "curve": "Uma única medida diz pouco: o que importa é a curva ao longo do tempo, e o seu "
+        "pediatra tem-na.",
+        "source": "Fonte: {sources}.",
+        "see": "⚠️ {warning} Consulte um médico em breve.",
+    },
+    "hi": {
+        "head": "डब्ल्यूएचओ के ग्रोथ स्टैंडर्ड के अनुसार ({who}, {age}):",
+        "line": "• {label}: {value} → {percentile}वाँ पर्सेंटाइल (z {z}), {flag}।",
+        "girl": "बच्ची",
+        "boy": "बच्चा",
+        "ask_height": "लंबाई भी बताइए तो मैं लंबाई के हिसाब से वजन भी निकाल दूँगा।",
+        "curve": "एक बार का माप बहुत कुछ नहीं कहता: मायने रखता है समय के साथ का वक्र, जो आपके "
+        "बाल रोग विशेषज्ञ के पास होता है।",
+        "source": "स्रोत: {sources}।",
+        "see": "⚠️ {warning} जल्द किसी डॉक्टर को दिखाएँ।",
+    },
+}
+
+#: Cómo se dice la edad en cada lengua: sólo meses y años, que es lo que hace falta aquí.
+_AGE_WORDS: dict[str, tuple[str, str]] = {
+    "en": ("months", "years"),
+    "es": ("meses", "años"),
+    "fr": ("mois", "ans"),
+    "de": ("Monate", "Jahre"),
+    "ru": ("мес.", "лет"),
+    "ar": ("شهرا", "سنوات"),
+    "pt": ("meses", "anos"),
+    "hi": ("महीने", "साल"),
+}
+
+
+def _age_text(age_months: float, lang: str) -> str:
+    meses, anios = _AGE_WORDS.get(lang, _AGE_WORDS["en"])
+    if age_months < 24:
+        return f"{age_months:g} {meses}"
+    return f"{age_months / 12:g} {anios}"
+
+
+def _value_text(i: Indicator) -> str:
+    """Lo medido, con su unidad: kg para el peso, cm para la talla, nada para el IMC."""
+    unit = {"wfa": "kg", "wfh": "kg", "lhfa": "cm", "hfa": "cm", "bmi": ""}.get(i.name, "")
+    return f"{i.value:g} {unit}".strip()
+
+
+def explain(a: Assessment, lang: str, sex: str, age_months: float) -> str:
+    """La valoración escrita para un padre, sin pasar por el modelo."""
+    t = LABELS.get(lang, LABELS["en"])
+    s = SENTENCES.get(lang, SENTENCES["en"])
+    who = s["girl"] if sex.lower().startswith("f") else s["boy"]
+    partes = [s["head"].format(who=who, age=_age_text(age_months, lang))]
+    for i in a.indicators:
+        partes.append(
+            s["line"].format(
+                label=t[i.name],
+                value=_value_text(i),
+                percentile=f"{i.percentile:g}",
+                z=f"{i.z:g}".replace("-", "−"),
+                flag=t[i.flag],
+            )
+        )
+    if a.level == "urgent":
+        partes.append(s["see"].format(warning=t["urgent"]))
+    if "height" in a.missing:
+        partes.append(s["ask_height"])
+    partes.append(s["curve"])
+    partes.append(s["source"].format(sources="; ".join(a.sources)))
+    return "\n".join(partes)

@@ -12,6 +12,7 @@ import typer
 from loguru import logger
 
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.growth import Growth
 from pedibot.bot.vaccines import Vaccines
 from pedibot.settings import ROOT, get_settings
 
@@ -215,6 +216,7 @@ def ask(
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
         vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
+        growth=Growth(s.config_dir / "who_growth.json"),
     )
     a = eng.ask(query, country=country)
     typer.echo(a.render())

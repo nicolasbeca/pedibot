@@ -335,6 +335,7 @@ def run_polling(front: TelegramFront, token: str) -> None:
 def front_from_settings() -> TelegramFront:
     from pedibot.bot.answer import EmergencyNumbers
     from pedibot.bot.drugs import DrugCatalog
+    from pedibot.bot.growth import Growth
     from pedibot.bot.llm import provider_from_settings
     from pedibot.bot.retrieval import Retriever, Synonyms
     from pedibot.bot.triage import Triage
@@ -358,5 +359,6 @@ def front_from_settings() -> TelegramFront:
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
         vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
+        growth=Growth(s.config_dir / "who_growth.json"),
     )
     return TelegramFront(engine, OpsStore(s.ops_db_path), max_daily_usd=s.max_daily_llm_usd)

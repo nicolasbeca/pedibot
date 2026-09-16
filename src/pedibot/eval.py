@@ -162,6 +162,7 @@ def run_eval(engine: Engine, golden: list[dict], k: int = 3) -> Report:
 def fake_engine_from_settings() -> Engine:
     from pedibot.bot.answer import EmergencyNumbers
     from pedibot.bot.drugs import DrugCatalog
+    from pedibot.bot.growth import Growth
     from pedibot.bot.guides import GuideIndex
     from pedibot.bot.retrieval import Retriever, Synonyms
     from pedibot.bot.triage import Triage
@@ -191,6 +192,7 @@ def fake_engine_from_settings() -> Engine:
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
         vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
+        growth=Growth(s.config_dir / "who_growth.json"),
         guides=GuideIndex(s.content_dir),
     )
 

@@ -501,7 +501,13 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     for r in rows:
         fb = "👍" if r["feedback"] == 1 else ("👎" if r["feedback"] == -1 else "")
         ver = str(r["verification"])
-        good = ver in ("ok", "regenerated", "dose_calculator")
+        good = ver in (
+            "ok",
+            "regenerated",
+            "dose_calculator",
+            "vaccine_schedule",
+            "growth_chart",
+        )
         flag = (
             '<form method=post action="/admin/flag" style="display:inline">'
             f'<input type=hidden name=id value="{r["id"]}">'

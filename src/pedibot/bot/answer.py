@@ -10,7 +10,7 @@ import yaml
 
 from pedibot.bot.dose import DRUGS, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
-from pedibot.bot.growth import is_growth_question
+from pedibot.bot.growth import Growth, explain, is_growth_question, measurements
 from pedibot.bot.guides import GuideIndex, GuideLink
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
@@ -759,6 +759,7 @@ class Engine:
         drugs: DrugCatalog | None = None,
         vaccines: Vaccines | None = None,
         guides: GuideIndex | None = None,
+        growth: Growth | None = None,
     ):
         self.retriever = retriever
         self.triage = triage
@@ -768,6 +769,7 @@ class Engine:
         self.drugs = drugs
         self.vaccines = vaccines
         self.guides = guides
+        self.growth = growth
 
     def _inject_rule_sources(self, tr: TriageResult, hits: list[Hit]) -> list[Hit]:
         """When a triage rule fired, put the warning-signs chunk of the rule's own source first,
@@ -927,6 +929,36 @@ class Engine:
                     tool=tool_link("vaccines", lang, c),
                 )
             # no tabulated schedule for this country → fall through to the sources
+
+        # La curva de la OMS, calculada aquí y no descrita (16-sep-2026). Hasta hoy el chat
+        # contestaba «no puedo decirte el percentil exacto» teniendo delante el sexo, la edad y el
+        # peso, y la tabla en el mismo servidor. Hacen falta las tres cosas: sin SEXO no hay curva
+        # (la de una niña no es la de un niño) y sin edad no hay fila que mirar. Y la pregunta
+        # tiene que ser de crecimiento: «pesa 7 kg y tiene fiebre» no es un percentil.
+        if self.growth is not None and tr.level == "routine" and is_growth_question(context_text):
+            sexo, peso, talla = measurements(context_text)
+            if sexo and tr.age_months is not None and (peso is not None or talla is not None):
+                try:
+                    valoracion = self.growth.assess(
+                        sexo, tr.age_months, weight_kg=peso, height_cm=talla
+                    )
+                except ValueError:
+                    valoracion = None  # fuera de rango: lo dicen las fichas, no una excepción
+                if valoracion is not None and valoracion.indicators:
+                    return Answer(
+                        explain(valoracion, lang, sexo, tr.age_months),
+                        valoracion.level,
+                        None,
+                        [],
+                        lang,
+                        None,
+                        None,
+                        [],
+                        "growth_chart",
+                        tool=tool_link(
+                            "growth", lang, country or country_in_question(context_text)
+                        ),
+                    )
 
         # el botón «otra cosa», que ofrecemos nosotros y no es un síntoma. Se compara con la
         # lista que le acabamos de enseñar, en su idioma, para no confundirlo con una pregunta

@@ -82,6 +82,7 @@ def _should_invite(answer: object, ops: object, session: str) -> bool:
         "regenerated",
         "dose_calculator",
         "vaccine_schedule",
+        "growth_chart",
     ):
         return False
     try:
@@ -818,6 +819,7 @@ def app_from_settings() -> FastAPI:
         EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
         vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
+        growth=Growth(s.config_dir / "who_growth.json"),
         guides=GuideIndex(s.content_dir),
     )
     cfg = ApiConfig(
