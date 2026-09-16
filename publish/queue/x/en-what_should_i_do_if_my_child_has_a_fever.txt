@@ -1,7 +1,7 @@
 What should I do if my child has a fever?
 
-Fever is common and usually harmless. Focus on comfort, hydration, and watching for warning signs.
+A fever is usually the body fighting an infection. Most children get better with fluids, rest and comfort.
 
-https://pedibot.example/en/guides/what_should_i_do_if_my_child_has_a_fever
+https://pedibot.xyz/guides/what_should_i_do_if_my_child_has_a_fever
 
-Sources: SEUP
+Sources: MedlinePlus, NHS, SEUP, WHO

@@ -90,9 +90,7 @@ def test_una_palabra_que_solo_empieza_igual_no_da_tema(
 
 
 @pytest.mark.parametrize(("pregunta", "tema"), SI_ES_ESE_TEMA)
-def test_y_la_palabra_de_verdad_sigue_dando_tema(
-    tax: Taxonomy, pregunta: str, tema: str
-) -> None:
+def test_y_la_palabra_de_verdad_sigue_dando_tema(tax: Taxonomy, pregunta: str, tema: str) -> None:
     assert tax.topic_for(pregunta) == tema, f"«{pregunta}» ya no se clasifica como {tema}"
 
 
@@ -150,22 +148,73 @@ _PALABRA = re.compile(r"\w{3,}", re.U)
 #: casa flexiones de su propia raíz, no palabras ajenas. Se listan para que el candado de abajo
 #: señale sólo lo que nadie ha mirado todavía.
 _REVISADAS = {
-    "tos",      # tosse, toser, tosferina — todo es tos
-    "vacuna", "vaccin", "vomit", "vómito", "burn", "rash", "seizure", "cold", "ear$",
-    "breath", "breastfeed", "constipat", "dehydrat", "deshidrat", "allerg", "alérgic",
-    "milestone", "development", "adolescent", "adolescente", "suicid", "autolesi",
-    "tonsil", "teeth", "threadworm", "pinworm", "febril", "faint", "poison", "ingest",
-    "headache", "convulsion", "diarrh", "cólico", "lactante", "piojo", "ojo", "eye",
-    "auge", "throat", "asthma", "emergencia", "intoxicacion", "traumatismo", "cough",
-    "quemadura", "toxic", "depress",
-    "ibuprofen", "antibiotic", "antibiótico", "dose", "ansiedad", "глаз",
+    "tos",  # tosse, toser, tosferina — todo es tos
+    "vacuna",
+    "vaccin",
+    "vomit",
+    "vómito",
+    "burn",
+    "rash",
+    "seizure",
+    "cold",
+    "ear$",
+    "breath",
+    "breastfeed",
+    "constipat",
+    "dehydrat",
+    "deshidrat",
+    "allerg",
+    "alérgic",
+    "milestone",
+    "development",
+    "adolescent",
+    "adolescente",
+    "suicid",
+    "autolesi",
+    "tonsil",
+    "teeth",
+    "threadworm",
+    "pinworm",
+    "febril",
+    "faint",
+    "poison",
+    "ingest",
+    "headache",
+    "convulsion",
+    "diarrh",
+    "cólico",
+    "lactante",
+    "piojo",
+    "ojo",
+    "eye",
+    "auge",
+    "throat",
+    "asthma",
+    "emergencia",
+    "intoxicacion",
+    "traumatismo",
+    "cough",
+    "quemadura",
+    "toxic",
+    "depress",
+    "ibuprofen",
+    "antibiotic",
+    "antibiótico",
+    "dose",
+    "ansiedad",
+    "глаз",
     # «nosebleed» coge «nosebleeds» (22 veces): es su propio plural, no una palabra ajena.
     # Entró el 11-sep-2026 con la nariz, que no estaba en ninguna categoría y dejaba sin
     # respuesta «le sangro la nariz un momento y ya ha parado», del registro de producción.
     "nosebleed",
     # 12-sep-2026, con las preguntas siguientes del chat: «atme» coge «atmen/atmet» (respirar),
     # «itch» coge «itching/itchy» y «allaite» coge «allaitement». Flexiones de su propia raíz.
-    "atme", "itch", "allaite",
+    "atme",
+    "itch",
+    "allaite",
+    # 16-sep-2026, con las guías regeneradas: «нос» coge «носа», que es su propio genitivo
+    # («de la nariz»). «gehör» NO se queda: cogía «gehören», que es pertenecer.
+    "нос",
 }
 
 

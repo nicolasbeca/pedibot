@@ -27,23 +27,32 @@ _CIT = re.compile(r"\[(\d{1,2})\]")
 TOPIC_PLAN: dict[str, dict[str, object]] = {
     "fiebre": {
         "docs": ["seup_fiebre", "seup_acudir_urgencias"],
-        "query": "fiebre niño qué hacer cuándo consultar",
+        "query": "fiebre niño qué hacer cuándo consultar fever child what to do when to see a doctor",
     },
-    "laringitis": {"docs": ["seup_laringitis"], "query": "laringitis crup tos perruna"},
+    "laringitis": {
+        "docs": ["seup_laringitis"],
+        "query": "laringitis crup tos perruna croup barking cough child",
+    },
     "bronquiolitis": {
         "docs": ["seup_bronquiolitis"],
-        "query": "bronquiolitis lactante dificultad respiratoria",
+        "query": "bronquiolitis lactante dificultad respiratoria bronchiolitis baby breathing difficulty",
     },
     "gastroenteritis": {
         "docs": ["seup_gastroenteritis", "seup_vomitos"],
         "query": "gastroenteritis diarrea vómitos rehidratación",
     },
-    "vomitos": {"docs": ["seup_vomitos"], "query": "vómitos niño qué hacer"},
+    "vomitos": {
+        "docs": ["seup_vomitos"],
+        "query": "vómitos niño qué hacer vomiting child what to do being sick",
+    },
     "otitis": {"docs": ["seup_otitis"], "query": "otitis media dolor de oído"},
-    "catarro": {"docs": ["seup_catarro"], "query": "catarro vías altas mocos tos"},
+    "catarro": {
+        "docs": ["seup_catarro"],
+        "query": "catarro vías altas mocos tos common cold child runny nose cough",
+    },
     "traumatismo_craneal": {
         "docs": ["seup_tce"],
-        "query": "traumatismo craneal golpe cabeza vigilar",
+        "query": "traumatismo craneal golpe cabeza vigilar head injury concussion child what to watch for",
     },
     "convulsion_febril": {
         "docs": ["seup_convulsion_febril"],
@@ -51,47 +60,71 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
     },
     "intoxicaciones": {
         "docs": ["seup_intoxicaciones", "seup_toxicos_8_no"],
-        "query": "intoxicación ingesta tóxico qué no hacer",
+        "query": "intoxicación ingesta tóxico qué no hacer poisoning child swallowed what to do",
     },
     "anafilaxia": {
         "docs": ["seup_anafilaxia"],
-        "query": "anafilaxia reacción alérgica grave adrenalina",
+        "query": "anafilaxia reacción alérgica grave adrenalina anaphylaxis severe allergic reaction adrenaline",
     },
     "urticaria": {"docs": ["seup_urticaria"], "query": "urticaria ronchas habones"},
     "dolor_abdominal": {
         "docs": ["seup_dolor_abdominal"],
-        "query": "dolor abdominal barriga cuándo consultar",
+        "query": "dolor abdominal barriga cuándo consultar stomach ache abdominal pain child when to see a doctor",
     },
-    "estrenimiento": {"docs": ["seup_estrenimiento"], "query": "estreñimiento niño"},
-    "colico_lactante": {"docs": ["seup_colico"], "query": "cólico del lactante llanto"},
-    "golpe_calor": {"docs": ["seup_golpe_calor"], "query": "golpe de calor niño prevención"},
-    "cefalea": {"docs": ["seup_cefalea"], "query": "cefalea dolor de cabeza niño"},
-    "sincope": {"docs": ["seup_sincope"], "query": "síncope desmayo"},
-    "espasmos_sollozo": {"docs": ["seup_espasmos_sollozo"], "query": "espasmos del sollozo"},
-    "crisis_asma": {"docs": ["seup_crisis_asma"], "query": "crisis asmática inhalador"},
-    "neumonia": {"docs": ["seup_neumonia"], "query": "neumonía niño síntomas"},
+    "estrenimiento": {
+        "docs": ["seup_estrenimiento"],
+        "query": "estreñimiento niño constipation child hard stools",
+    },
+    "colico_lactante": {
+        "docs": ["seup_colico"],
+        "query": "cólico del lactante llanto colic crying baby soothing",
+    },
+    "golpe_calor": {
+        "docs": ["seup_golpe_calor"],
+        "query": "golpe de calor niño prevención heat exhaustion heatstroke child prevention",
+    },
+    "cefalea": {"docs": ["seup_cefalea"], "query": "cefalea dolor de cabeza niño headache child"},
+    "sincope": {"docs": ["seup_sincope"], "query": "síncope desmayo fainting child"},
+    "espasmos_sollozo": {
+        "docs": ["seup_espasmos_sollozo"],
+        "query": "espasmos del sollozo breath-holding child crying",
+    },
+    "crisis_asma": {
+        "docs": ["seup_crisis_asma"],
+        "query": "crisis asmática inhalador asthma attack child inhaler",
+    },
+    "neumonia": {
+        "docs": ["seup_neumonia"],
+        "query": "neumonía niño síntomas pneumonia child symptoms",
+    },
     "alimentacion_complementaria": {
         "docs": ["aep_alimentacion_complementaria", "who_complementary_feeding"],
-        "query": "alimentación complementaria cuándo empezar",
+        "query": "alimentación complementaria cuándo empezar first solid foods weaning when to start baby",
     },
     "vacunas": {
         "docs": ["msan_calendario_vacunacion_2025"],
-        "query": "calendario vacunación infantil",
+        "query": "calendario vacunación infantil vaccination schedule children immunisation",
     },
     "recien_nacido": {
         "docs": ["aep_cuidados_recien_nacido", "andalucia_cuidame_comienzo_vida"],
-        "query": "cuidados recién nacido cordón baño",
+        "query": "cuidados recién nacido cordón baño caring for a newborn baby umbilical cord bathing",
     },
     "sueno_pantallas": {
         "docs": ["who_physical_activity_under5"],
         "query": "sleep screen time physical activity under 5",
     },
-    "ansiedad": {"docs": ["seup_ansiedad"], "query": "ansiedad niños adolescentes"},
+    "ansiedad": {
+        "docs": ["seup_ansiedad"],
+        "query": "ansiedad niños adolescentes anxiety children adolescents",
+    },
     "autolesion": {
         "docs": ["seup_autolesion", "seup_conducta_suicida"],
-        "query": "conducta autolesiva adolescente",
+        "query": "conducta autolesiva adolescente self-harm adolescent",
     },
-    "tca": {"docs": ["seup_tca"], "query": "trastorno conducta alimentaria adolescente"},
+    "tca": {
+        "docs": ["seup_tca"],
+        "query": "trastorno conducta alimentaria adolescente eating disorder adolescent",
+    },
     # ---- added 25-ago with the international public sources ----
     "chickenpox": {
         "docs": ["nhs_en_chickenpox", "mlp_en_chickenpox", "cdc_en_chickenpox_about_index"],
@@ -252,7 +285,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
             "nhs_en_baby_height_and_weight",
             "who_es_child_growth_standards",
         ],
-        "query": "percentil curva de crecimiento peso talla bebé qué significa",
+        "query": "percentil curva de crecimiento peso talla bebé qué significa percentile growth chart weight height baby",
     },
     "milestones": {
         "docs": ["cdc_en_act_early_milestones_index", "mlp_en_childdevelopment"],
@@ -332,7 +365,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
     },
     "tuberculosis": {
         "docs": ["who_ar_tuberculosis", "who_ru_tuberculosis"],
-        "query": "tuberculosis en niños síntomas tos prolongada contacto tuberculosis children",
+        "query": "tuberculosis en niños síntomas tos prolongada contacto tuberculosis children symptoms cough",
     },
     "malaria": {
         "docs": ["who_en_malaria"],
@@ -358,7 +391,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
     },
     "hepatitis_a": {
         "docs": ["rki_de_ratgeber_hepatitisa"],
-        "query": "hepatitis A niños agua alimentos higiene vacuna hepatitis A children",
+        "query": "hepatitis A niños agua alimentos higiene vacuna hepatitis A children water food hygiene vaccine",
     },
     "senales_autismo": {
         # el informe de la OMS es `citar_solo`: el bot puede citarlo, un artículo no puede
@@ -512,9 +545,41 @@ def load_prompt(version: str = "article_v1") -> str:
     return (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
 
 
-def gather_hits(index: Index, topic: str, max_chunks: int = 10) -> list[Hit]:
+#: Cuántas fuentes legibles hacen falta para poner las legibles delante. Por debajo de esto se
+#: prefiere una guía bien fundada con fuentes que el lector no puede abrir a una guía floja: el
+#: material manda sobre la comodidad de comprobarlo. Con tres, la fiebre en hindi pasa de citar
+#: cinco hojas del SEUP a abrir con la del NHS.
+MIN_LEGIBLES = 3
+
+
+def _readable_first(hits: list[Hit], lang: str) -> list[Hit]:
+    """Las fuentes que ese lector puede abrir, delante — si hay bastantes (16-sep-2026).
+
+    Medido sobre lo publicado: 20 de las 62 guías en hindi y 20 de las 62 en árabe citaban
+    ÚNICAMENTE organismos que publican en castellano, porque las anclas de cada tema son
+    españolas (el corpus empezó así) y `gather_hits` no sabía en qué lengua se iba a escribir.
+    La de la fiebre en hindi llevaba cinco fuentes y las cinco eran la misma hoja del SEUP.
+
+    No se filtra: se reordena. Si no hay material legible suficiente, se escribe con lo que hay,
+    que es mejor que una guía pobre — pero el orden decide qué cita el modelo.
+    """
+    from pedibot.index.store import READABLE_FALLBACK
+
+    legibles_langs = {lang, READABLE_FALLBACK.get(lang, "")}
+    if lang == "es" or not legibles_langs:
+        return hits
+    legibles = [h for h in hits if h.chunk.lang in legibles_langs]
+    if len(legibles) < MIN_LEGIBLES:
+        return hits
+    return legibles + [h for h in hits if h.chunk.lang not in legibles_langs]
+
+
+def gather_hits(index: Index, topic: str, max_chunks: int = 10, lang: str = "es") -> list[Hit]:
     plan = TOPIC_PLAN[topic]
-    hits = index.search(str(plan["query"]), top_k=40, prefer_parent_leaflets=True)
+    # Se mira el doble de hondo cuando hay que encontrar material que ese lector pueda abrir: con
+    # 40, del NHS sobre la fiebre casaba UN pasaje y la guía hindi salía entera del SEUP.
+    hondo = 40 if lang == "es" else 90
+    hits = index.search(str(plan["query"]), top_k=hondo, prefer_parent_leaflets=True)
     wanted: list[str] = list(plan["docs"])  # type: ignore[call-overload]
     anchored = [h for h in hits if h.chunk.doc_id in wanted and h.chunk.usage == "publico"]
     topics = {h.chunk.topic for h in anchored}
@@ -529,7 +594,7 @@ def gather_hits(index: Index, topic: str, max_chunks: int = 10) -> list[Hit]:
         for h in anchored:
             per_org.setdefault(h.chunk.org, []).append(h)
         anchored = [h for hs in per_org.values() for h in hs[:2]]
-    return (anchored + others)[:max_chunks]
+    return _readable_first(anchored + others, lang)[:max_chunks]
 
 
 def _format_sources(hits: list[Hit]) -> str:
@@ -681,7 +746,7 @@ DRAFT_TOKENS_DEFAULT = 1800
 
 
 def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en") -> Article:
-    hits = gather_hits(index, topic)
+    hits = gather_hits(index, topic, lang=lang)
     if not hits:
         raise ValueError(f"no sources for topic {topic}")
     compare = bool(TOPIC_PLAN[topic].get("compare"))
@@ -735,6 +800,44 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
     )
 
 
+def redirects_path(content_dir: Path) -> Path:
+    return content_dir / "_redirects.json"
+
+
+def remember_redirect(content_dir: Path, lang: str, viejo: str, nuevo: str) -> None:
+    """La dirección vieja de una guía renombrada, para que el sitio la redirija (16-sep-2026).
+
+    Regenerar una guía le cambia el título y, con él, el nombre del fichero — y eso es a
+    propósito: así se arreglaron slugs mal transliterados como «was_tun_bei_einer_erk_ltung».
+    Lo que no puede pasar es que la dirección vieja muera: es lo único de una guía que no se
+    puede rehacer, y es exactamente lo que Google tiene indexado. Al regenerar la guía inglesa
+    de la cefalea su dirección se quedó en nada y hubo que escribir la redirección a mano.
+
+    El sitio lee este fichero al construirse (`web/site/astro.config.mjs`).
+    """
+    import json as _json
+
+    prefijo = "" if lang == "en" else f"/{lang}"
+    destino = f"{prefijo}/guides/{nuevo}"
+    ruta = redirects_path(content_dir)
+    datos: dict[str, str] = {}
+    if ruta.exists():
+        try:
+            datos = _json.loads(ruta.read_text(encoding="utf-8"))
+        except _json.JSONDecodeError:
+            datos = {}
+    datos[f"{prefijo}/guides/{viejo}"] = destino
+    # una cadena vieja→media→nueva se aplana: nadie quiere dos saltos
+    for origen, actual in list(datos.items()):
+        if actual == f"{prefijo}/guides/{viejo}":
+            datos[origen] = destino
+    datos.pop(destino, None)  # la dirección viva nunca se redirige a sí misma
+    ruta.parent.mkdir(parents=True, exist_ok=True)
+    ruta.write_text(
+        _json.dumps(datos, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8"
+    )
+
+
 def write_article(
     a: Article, content_dir: Path, queue_dir: Path, site_url: str
 ) -> tuple[Path, Path]:
@@ -762,6 +865,8 @@ def write_article(
         for line in other.read_text(encoding="utf-8").splitlines()[:12]:
             if line.startswith("topic: "):
                 if line[7:].strip() == a.topic:
+                    # la dirección vieja no muere: queda redirigida a la nueva
+                    remember_redirect(content_dir, a.lang, other.stem, a.slug)
                     other.unlink()
                 break
     q = queue_dir / "x" / f"{a.lang}-{a.slug}.txt"

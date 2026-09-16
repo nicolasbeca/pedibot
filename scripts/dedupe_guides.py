@@ -101,14 +101,20 @@ def main() -> int:
                 q.unlink()
             print("removed", drop.relative_to(ROOT))
 
-    text = CADDY.read_text(encoding="utf-8")
-    block = redirect_block(moves)
-    if START in text:
-        text = re.sub(re.escape(START) + r".*?" + re.escape(END), block, text, flags=re.S)
-    else:
-        text = text.replace("\t# Static site (Astro build)", block + "\n\n\t# Static site (Astro build)", 1)
-    CADDY.write_text(text, encoding="utf-8")
-    print(f"\n{total} redirect(s) written into ops/Caddyfile")
+    # Las redirecciones ya no se escriben aquí: van al fichero común, que es el que alimenta
+    # tanto al Caddyfile (301 de verdad) como al sitio. Antes este bloque se reescribía entero
+    # cada vez y se llevaba por delante lo que no conociera (16-sep-2026).
+    from pedibot.publish.articles import remember_redirect
+
+    for lang, items in moves.items():
+        for gone, stays in items:
+            remember_redirect(CONTENT, lang, gone, stays)
+    import subprocess
+
+    subprocess.run(  # noqa: S603
+        [sys.executable, str(ROOT / "scripts" / "sync_redirects.py"), "--apply"], check=True
+    )
+    print(f"{total} redirección(es) anotadas en web/content/_redirects.json")
     return 0
 
 

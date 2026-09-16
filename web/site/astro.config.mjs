@@ -23,6 +23,15 @@ import sitemap from '@astrojs/sitemap';
  * another shape.
  */
 const rutaDe = (rel) => fileURLToPath(new URL(rel, import.meta.url));
+
+const leerRedirecciones = () => {
+  try {
+    const crudo = fs.readFileSync(rutaDe('../content/_redirects.json'), 'utf-8');
+    return JSON.parse(crudo);
+  } catch {
+    return {};
+  }
+};
 const cuando = (rel) => {
   try {
     return fs.statSync(rutaDe(rel)).mtime;
@@ -62,13 +71,11 @@ export default defineConfig({
   site,
   trailingSlash: 'never',
   build: { format: 'directory' },
-  // Una guía que se regenera cambia de título y, con él, de dirección. La vieja no se borra sin
-  // más: alguien la tiene enlazada y Google la tiene indexada. 16-sep-2026: la guía inglesa de la
-  // cefalea citaba una página que el NHS ha retirado, así que se volvió a generar sin ella.
-  redirects: {
-    '/guides/my_child_has_a_headache_what_should_i_do':
-      '/guides/headache_in_children_and_adults_what_can_i_do_and_when_is_it_serious',
-  },
+  // Una guía que se regenera cambia de título y, con él, de dirección — y eso es a propósito:
+  // así se arreglan los slugs mal transliterados. Lo que no puede morir es la dirección vieja,
+  // que es lo que Google tiene indexado, así que el publicador la anota en `_redirects.json`
+  // cada vez que renombra una guía y el sitio las sirve desde ahí (16-sep-2026).
+  redirects: leerRedirecciones(),
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'es', 'fr', 'de', 'ru', 'ar', 'pt', 'hi'],

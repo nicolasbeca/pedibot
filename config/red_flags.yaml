@@ -11,6 +11,14 @@ rules:
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
   patterns:
+  # 16-sep-2026: «tarda en recuperar la consciencia más de 3 minutos» lo advierte nuestra
+  # guía árabe del desmayo y el triaje lo veía como rutina.
+  - "تأخر.{0,30}استعاد(ة|ته).{0,15}الوعي"
+  - "لم (يستعد|تستعد).{0,15}الوعي"
+  - "(لا|لم) (يفيق|تفيق)"
+  - ne reprend pas connaissance
+  - (has not|hasn'?t|did not|didn'?t) (come round|come to|regained? consciousness)
+  - tarda en (recuperar|volver en s[ií])
   - no responde
   - no reacciona
   - inconsciente
@@ -213,6 +221,20 @@ rules:
   - (сереет|посерел)
   - (кожа|губы|язык).{0,30}(син|сер|бледн).{0,12}(или|,)
   - pausas? (en la|de) respiraci
+  # 16-sep-2026, salidas de las guías regeneradas: la apnea sólo estaba en castellano y en
+  # alemán, y el francés tenía «pauses respiratoires» pero no «pauses dans sa respiration».
+  - pauses? (when|while|in).{0,25}breath
+  - pauses? in (his|her|their|the baby'?s?|your child'?s?) breathing
+  - pauses? .{0,15}respiration
+  - beaucoup de mal [aà] respirer
+  - respire vite et court
+  - нехватка дыхания
+  - (частое )?поверхностное дыхание
+  - не хватает (воздуха|дыхания)
+  - "مشاكل (في )?(ال)?تنفس"
+  - "مشكلة (في )?(ال)?تنفس"
+  - "تحول.{0,30}(ال)?(شفاه|وجه|أظافر)"
+  - "(ال)?(شفاه|وجه|أظافر|جلد).{0,30}(أزرق|زرقاء|الأزرق|زرقة|يزرق)"
   - deja de respirar
   - (labios|piel) (azul|morad)
   - (labios|piel|lengua|cara|u[ñn]as).{0,30}(azul(es)?|morad|amoratad|c[aá]rdeno)
@@ -1018,7 +1040,8 @@ rules:
   - не успокаива
   - плачет без остановки
   - постоянно спит
-  - نعسان جدا
+  - "نعسان.{0,4}جد"
+  - "(نعاس|خمول).{0,12}(شديد|زائد)"
   - من الصعب.{0,15}إيقاظ
   - صعوبة.{0,12}إيقاظ
   - يصعب إيقاظ
@@ -1302,6 +1325,9 @@ rules:
   - (ha ingerido|ingiri[oó]|ingesta de).{0,40}(im[aá]n|imanes|pila|bater[ií]a|objeto|producto|t[oó]xic|medicament|pastilla)
   - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado|ha chupado).{0,70}(armario|debajo del fregadero|bajo el fregadero|producto|l[ií]quido|bote|frasco)
   - (drank|swallowed|ate|got into).{0,70}(under the sink|cupboard|cabinet|bottle of|something from)
+  # el tóxico no siempre se nombra: así lo dice el NHS y así lo repite nuestra guía
+  - (swallowed|touched|breathed in|eaten|drunk).{0,40}something (harmful|poisonous|toxic)
+  - (ha tragado|ha tocado|ha respirado).{0,30}algo (da[ñn]ino|t[oó]xico|peligroso)
   - (getrunken|geschluckt).{0,60}(putzmittel|reiniger|unter der sp[üu]le|schrank)
   - sobredosis
   - (demasiado|de m[aá]s|doble dosis|dos dosis|el doble).{0,30}(paracetamol|ibuprofeno|apiretal|dalsy|jarabe)

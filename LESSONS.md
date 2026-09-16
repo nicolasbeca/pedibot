@@ -196,3 +196,24 @@ Dos reglas de esto:
    comprobación en el publicador. `detect_lang` sobre el artículo entero no ve una línea en otra
    lengua, así que ahora el título y los encabezados pasan por los mismos marcadores que revisan
    el sitio construido (`pedibot.lang_markers`), y una guía mezclada no se escribe.
+
+## L167 · Una guía escrita para un lector que no puede abrir sus fuentes (16-sep-2026)
+
+`gather_hits(index, topic)` elegía las fuentes **sin saber en qué lengua se iba a escribir**. Las
+anclas de cada tema son españolas porque el corpus empezó en castellano, así que la guía hindi de
+la fiebre salía con cinco fuentes y las cinco eran la misma hoja del SEUP. Medido sobre lo
+publicado: **20 de 62 guías en hindi, 20 de 62 en árabe, y 19-20 en ruso, alemán y francés**
+citaban únicamente material que ese lector no puede abrir.
+
+Tres cosas que salieron de arreglarlo:
+
+1. **La consulta manda sobre el reparto.** Veintiséis temas buscaban sus fuentes con una frase
+   sólo en castellano («fiebre niño qué hacer cuándo consultar»), así que en el saco de candidatos
+   no entraba **ni un pasaje inglés**: reordenar no podía arreglar nada. Los temas nuevos ya
+   escribían la consulta en los dos idiomas; ahora lo hacen los veintiséis viejos.
+2. **Buscar más hondo cuando hace falta material legible.** Con `top_k=40`, de la ficha del NHS
+   sobre la fiebre casaba UN pasaje. Con 90, tres. El corpus los tenía; la ventana no.
+3. **Renombrar una guía está bien; matar su dirección, no.** El publicador renombra al regenerar
+   (así se arreglaron slugs mal transliterados), y eso se conserva — pero ahora cada renombrado
+   deja su redirección en `web/content/_redirects.json`, que el sitio lee al construirse. La
+   dirección es lo único de una guía que no se puede rehacer.

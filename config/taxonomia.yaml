@@ -43,7 +43,7 @@ topics:
         # tema, la puerta del «fuente o silencio» exige tres términos en vez de uno.
         nariz, epistaxis, "sangrado nasal", nosebleed, "nose bleed", nez, saignement de nez,
         nase, nasenbluten, нос, носовое кровотечение, أنف, نزيف الأنف, नाक, नकसीर, nariz, sangramento nasal,
-        sordera, sordo, audición, oír, oye, hipoacusia, deafness, hearing, surdité, audition, schwerhörig, gehör, глухот, слух, صمم, سمع, يسمع, ضعف السمع, बहरापन, सुनाई, श्रवण, सुनने,
+        sordera, sordo, audición, oír, oye, hipoacusia, deafness, hearing, surdité, audition, schwerhörig, "gehör$", gehörlos, gehörgang, gehörverlust, глухот, слух, صمم, سمع, يسمع, ضعف السمع, बहरापन, सुनाई, श्रवण, सुनने,
         "नाक बंद", "बंद नाक"]
   salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
                  "psychische gesundheit", "психическое здоровье", "الصحة النفسية",
