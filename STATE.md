@@ -335,3 +335,4 @@ abierto, en orden de consecuencia:
 - **«La caca de mi bebé es amarilla» ya se contesta** en las ocho lenguas: vocabulario de heces en la taxonomía (`recien_nacido`, palabras enteras, sin «deposiciones»/«heces» para no robarle el tema a digestivo) y puentes de sinónimos en las doce tablas cruzadas. Prueba: tests/test_the_colour_of_the_nappy.py.
 - De paso, dos que destaparon esas pruebas: «lleva 4 días sin hacer caca» se iba al recién nacido en vez de al estreñimiento, y la pregunta hindi por la dificultad para respirar se quedó sin ninguna fuente que el padre pudiera leer al retirar la ficha inglesa (reforzado el puente hi→en).
 - Suite: 3.936.
+- Panel: el operador («demasiado texto explicativo al principio») — arriba quedan las cifras y lo que exige decidir (avería del modelo, pruebas contándose); cómo se cuenta una visita pasa a un desplegable. Dos pruebas nuevas en test_panel_is_only_readers.py.

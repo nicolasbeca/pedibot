@@ -109,6 +109,7 @@ table.t .mono{font-family:ui-monospace,monospace;color:var(--ink2);white-space:n
 details summary{cursor:pointer;color:var(--sage);font-size:.88rem}
 /* the sources are a second fold on purpose: which documents it used is a fair question,
    and on a five-sentence answer they are longer than the answer itself */
+details.howto{margin:-4px 0 14px}details.howto p{margin:6px 0 0;color:var(--ink3);font-size:.86rem;line-height:1.5}
 details.src{margin-top:8px}
 details.src summary{color:var(--ink3);font-size:.8rem}
 details.src pre{font-size:.78rem;color:var(--ink3)}
@@ -364,6 +365,7 @@ def _sin_modelo_line(q: dict[str, Any]) -> str:
         "es la redacción."
     )
 
+
 def _unanswered_card(items: list[dict[str, Any]]) -> str:
     """Un número no se puede arreglar; una pregunta sí.
 
@@ -377,7 +379,7 @@ def _unanswered_card(items: list[dict[str, Any]]) -> str:
         )
     filas = "".join(
         '<tr><td class="dim">{fecha}</td><td class="dim">{lang}</td>'
-        '<td>{pregunta}</td></tr>'.format(
+        "<td>{pregunta}</td></tr>".format(
             fecha=html.escape(_day(str(it.get("ts") or ""))),
             lang=html.escape(str(it.get("lang") or "?")),
             pregunta=html.escape(str(it.get("question") or ""))[:160],
@@ -387,7 +389,7 @@ def _unanswered_card(items: list[dict[str, Any]]) -> str:
     return (
         f'<div class="card"><h2>Preguntas sin respuesta ({len(items)})</h2>'
         '<p class="dim">Cada una es un hueco del corpus o un fallo del buscador. '
-        'Las dos se arreglan; el número solo no dice cuál.</p>'
+        "Las dos se arreglan; el número solo no dice cuál.</p>"
         f'<table class="t">{filas}</table></div>'
     )
 
@@ -437,20 +439,26 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     ]
 
     down = q["down"]
+    # 16-sep-2026, el operador: «está bien pero demasiado texto explicativo al principio». Cómo
+    # se cuenta una visita y qué se descarta es la mitad del valor de este panel —sin eso las
+    # cifras no se pueden auditar— pero no es a lo que se entra. Arriba, las cifras y lo que
+    # exige una decisión (una avería del modelo, que las pruebas estén contando); el resto,
+    # debajo y plegado.
     h.append(
-        f'<p class="period">Consultas y guías: <b>{html.escape(period)}</b>. '
-        f"Visitas: <b>{html.escape(covered)}</b> — salen del registro del servidor, que no "
-        "guarda desde siempre.<br><b>Una visita es alguien que cargó la página entera</b>: "
-        "además del texto pidió su hoja de estilo, su JavaScript o un tipo de letra, que es lo "
-        "que hace un navegador solo y lo que un rastreador no hace nunca. "
-        f"Se descartan además las direcciones de rastreo que Google publica como suyas. "
-        f"Hubo <b>{w.get('page_requests', 0)}</b> peticiones de página que no se identificaron "
-        "como robot pero tampoco probaron ser un navegador, y no se cuentan aquí: "
-        "el panel decía 3.227 visitantes donde había 201."
-        + _dwell_sentence(w)
+        f'<p class="period">Consultas y guías: <b>{html.escape(period)}</b> · '
+        f"Visitas: <b>{html.escape(covered)}</b>."
         + _sin_modelo_line(q)
         + _tests_line(q, days, include_test)
         + "</p>"
+        '<details class="howto"><summary>Cómo se cuentan estas cifras</summary><p>'
+        "Las visitas salen del registro del servidor, que no guarda desde siempre. "
+        "<b>Una visita es alguien que cargó la página entera</b>: además del texto pidió su "
+        "hoja de estilo, su JavaScript o un tipo de letra, que es lo que hace un navegador solo "
+        "y lo que un rastreador no hace nunca. Se descartan además las direcciones de rastreo "
+        "que Google publica como suyas. "
+        f"Hubo <b>{w.get('page_requests', 0)}</b> peticiones de página que no se identificaron "
+        "como robot pero tampoco probaron ser un navegador, y no se cuentan aquí: "
+        "el panel decía 3.227 visitantes donde había 201." + _dwell_sentence(w) + "</p></details>"
         '<div class="kpis">'
         + _kpi("visitas con navegador", w["visitors"])
         + _kpi("vieron 2+ páginas", w.get("returning", 0))

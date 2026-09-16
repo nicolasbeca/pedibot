@@ -26,6 +26,7 @@ identificador de sesión aleatorio, sin dirección IP»—:
 
 from __future__ import annotations
 
+import re
 import json
 import sqlite3
 from pathlib import Path
@@ -207,3 +208,45 @@ def test_con_la_marca_el_chat_pregunta_como_prueba():
 def test_cada_pagina_avisa_con_la_marca():
     base = (ROOT / "web/site/src/layouts/Base.astro").read_text(encoding="utf-8")
     assert "pedibot_team" in base and "/api/team" in base
+
+
+# ── el panel se lee de un vistazo ─────────────────────────────────────────────────────────
+def _panel(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, **visitas) -> str:
+    from pedibot import admin
+    from pedibot.ops.store import OpsStore
+
+    base = report.count_visits([])
+    base.update(visitas)
+    monkeypatch.setattr(report, "web_visits", lambda days: base)
+    return admin.render(OpsStore(tmp_path / "ops.db", salt="s").con, 0)
+
+
+def test_el_panel_abre_con_las_cifras_no_con_una_explicacion(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+):
+    """16-sep-2026, el operador: «está bien pero demasiado texto explicativo al principio».
+
+    Cómo se cuenta una visita, qué se descarta y por qué el tiempo sale de pocas visitas es
+    información que hay que poder auditar —es la mitad del valor de este panel— pero no es lo
+    que se viene a ver. Se queda, dentro de un desplegable."""
+    html = _panel(tmp_path, monkeypatch, page_requests=51, visits=4, timed=2)
+    encabezado, _, resto = html.partition('<div class="kpis">')
+    assert "<details" in encabezado, "la explicación larga tiene que ir en un desplegable"
+    explicacion = encabezado[encabezado.index("<details") :]
+    for frase in ("Una visita es alguien", "no se identificaron", "El tiempo solo se puede medir"):
+        assert frase in explicacion, f"«{frase}» debería estar dentro del desplegable"
+    visible = encabezado[: encabezado.index("<details")]
+    assert len(re.sub(r"<[^>]+>", " ", visible.partition("<body>")[2])) < 220, (
+        "lo que se ve antes de las cifras sigue siendo un párrafo largo"
+    )
+    assert resto, "las cifras siguen ahí"
+
+
+def test_pero_una_averia_del_modelo_no_se_esconde(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
+    """Un aviso dentro de un desplegable es un aviso que nadie lee."""
+    from pedibot import admin
+
+    linea = admin._sin_modelo_line({"no_model": 3, "degraded": 1})
+    assert "3" in linea and "tope de gasto" in linea
+    html = _panel(tmp_path, monkeypatch)
+    assert "<details" in html
