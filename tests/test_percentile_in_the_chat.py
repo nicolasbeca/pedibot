@@ -231,3 +231,28 @@ def test_lo_que_falta_hoy_se_toma_de_la_conversacion(engine) -> None:
     a = engine.ask("pesa 7 kg, ¿qué percentil es?", lang="es", history=historia)
     assert a.verification == "growth_chart"
     assert "niña" in a.text and "7 kg" in a.text
+
+
+def test_una_talla_vieja_no_se_pega_a_un_peso_nuevo(engine) -> None:
+    """El mismo fallo, visto en vivo una segunda vez: con la talla de OTRO mensaje, 7 kg para
+    92 cm vuelve a dar «desnutrición aguda grave». Las medidas salen de un solo mensaje."""
+    historia = [
+        {"role": "user", "text": "mi niño de 3 años pesa 13 kg y mide 92 cm"},
+        {"role": "assistant", "text": "Peso para la edad: percentil 20,8."},
+    ]
+    a = engine.ask(
+        "what percentile is my 8 month old girl who weighs 7 kg?", lang="en", history=historia
+    )
+    assert a.verification == "growth_chart"
+    assert "92 cm" not in a.text
+    assert a.level == "routine"
+
+
+def test_las_dos_medidas_del_mismo_mensaje_anterior_si_valen(engine) -> None:
+    historia = [
+        {"role": "user", "text": "mi niña de 8 meses pesa 7 kg y mide 68 cm"},
+        {"role": "assistant", "text": "¿Quieres el percentil?"},
+    ]
+    a = engine.ask("¿y qué percentil tiene?", lang="es", history=historia)
+    assert a.verification == "growth_chart"
+    assert "7 kg" in a.text and "68 cm" in a.text

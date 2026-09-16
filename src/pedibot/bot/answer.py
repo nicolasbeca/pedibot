@@ -936,17 +936,25 @@ class Engine:
         # (la de una niña no es la de un niño) y sin edad no hay fila que mirar. Y la pregunta
         # tiene que ser de crecimiento: «pesa 7 kg y tiene fiebre» no es un percentil.
         if self.growth is not None and tr.level == "routine" and is_growth_question(context_text):
-            # Lo de AHORA manda, y lo de antes sólo rellena lo que falte. Leerlo todo junto
-            # cruzaba los datos de dos niños: probando contra lo vivo, «mi niña de 8 meses que
-            # pesa 7 kg» seguido de «mi niño de 3 años que pesa 13 kg y mide 92 cm» daba 7 kg
-            # para 92 cm — un aviso de desnutrición aguda grave a un niño que estaba bien.
+            # **El peso y la talla salen de UN SOLO mensaje.** Leyendo la conversación entera se
+            # cruzaban los datos de dos niños, y eso lo vi dos veces probando contra lo vivo: «mi
+            # niña de 8 meses que pesa 7 kg» seguido de «mi niño de 3 años que pesa 13 kg y mide
+            # 92 cm» daba 7 kg para 92 cm, o sea un aviso de desnutrición aguda grave a un niño
+            # sano. Vale el mensaje de ahora; si hoy no trae ninguna medida, el último que trajera
+            # alguna, con las dos de ese mismo mensaje. El sexo y la edad sí son contexto: no
+            # cambian de un turno a otro, y son justo lo que el padre cuenta en la frase anterior.
             sexo, peso, talla = measurements(query)
             edad = tr_now.age_months
-            if prior_user:
-                antes_sexo, antes_peso, antes_talla = measurements(prior_user)
-                sexo = sexo or antes_sexo
-                peso = peso if peso is not None else antes_peso
-                talla = talla if talla is not None else antes_talla
+            previos = [t["text"] for t in history if t.get("role") == "user"]
+            if peso is None and talla is None:
+                for texto in reversed(previos):
+                    s_ant, p_ant, t_ant = measurements(texto)
+                    if p_ant is not None or t_ant is not None:
+                        peso, talla = p_ant, t_ant
+                        sexo = sexo or s_ant
+                        break
+            if sexo is None:
+                sexo = next((s for s in (measurements(t)[0] for t in reversed(previos)) if s), None)
             if edad is None:
                 edad = tr.age_months
             if sexo and edad is not None and (peso is not None or talla is not None):
