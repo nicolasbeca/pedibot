@@ -352,3 +352,9 @@ abierto, en orden de consecuencia:
 - **Las direcciones viejas no mueren**: el publicador anota cada renombrado en `web/content/_redirects.json` (120 hoy) y de ahí salen las 301 del Caddyfile y las páginas del sitio. Antes había dos listas y `dedupe_guides.py` borraba lo que no conocía. Regla nueva: manda el fichero vivo (una guía puede volver a su nombre de antes, y pasó con la anafilaxia inglesa).
 - **Y el triaje aprendió ocho frases** que sus propias guías usan para avisar y él veía como rutina: pausas al respirar en inglés y francés, «beaucoup de mal à respirer», «нехватка дыхания» y «поверхностное дыхание», «مشاكل تنفس خطيرة» y los labios azules sin artículo, tardar en recuperar la consciencia, quedarse muy somnoliento (otra vez la tanwin) y «swallowed something harmful» sin nombrar el tóxico. Prueba: tests/test_what_the_guides_warn_the_triage_sees.py.
 - Suite: 4.062. L167.
+
+## 16-sep-2026 (noche) · hindi escrito en letras latinas
+- Medido: de 15 preguntas corrientes tecleadas como las teclea media India («bachche ko bukhar hai»), **6 no encontraban nada**. No era vocabulario —había 76 claves romanizadas desde agosto—: era la ortografía («kaan dard» contra «kan me dard») y que una frase de dos palabras se parte cuando se cuela «me» o «par».
+- Arreglado en el emparejador y sólo para el hindi: las vocales dobladas se pliegan (kaan ≡ kan) y una clave de dos palabras admite una palabra corta en medio. Más tres palabras que faltaban (vajan, rota, khilaye). Las 18 preguntas pasan. Prueba: tests/test_hindi_written_in_latin_letters.py.
+- Y el rastreo de fuentes en hindi queda cerrado con su medida en FUENTES/INDIA.md: el muro no es la licencia, es la codificación de sus PDF (cuatro documentos, cuatro resultados, el mejor corrompe palabras). Vikaspedia es la puerta buena y exige permiso por correo: decisión del operador.
+- Suite: 4.081.
