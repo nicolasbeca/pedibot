@@ -6,6 +6,7 @@ Levels: emergency > urgent > mental_health > routine.
 from __future__ import annotations
 
 import re
+import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -20,6 +21,52 @@ LEVEL_ORDER = {"routine": 0, "mental_health": 1, "urgent": 2, "emergency": 3}
 DEV = "\u0900-\u097f"
 NOT_BEFORE = rf"(?<![\w{DEV}])"
 NOT_AFTER = rf"(?![\w{DEV}])"
+
+#: La misma frase escrita deprisa (17-sep-2026).
+#:
+#: Medido cogiendo las 408 frases de la batería y quitándoles lo que un padre se salta: **23
+#: dejaban de saltar, y 17 eran árabes**. Un padre que escribe «حمي» en vez de «حمى», «انفه» en
+#: vez de «أنفه» o «بشده» en vez de «بشدة» no recibía ningún aviso — y así es como se teclea en
+#: un móvil, sin teclado con hamza y sin ganas a las tres de la mañana.
+#:
+#: La búsqueda ya normalizaba el árabe desde el 16-sep; el triaje, no. Se arregla en un sitio y
+#: no en mil patrones, y se aplica a LAS DOS PARTES: al texto del padre y a los patrones al
+#: cargarlos. Si sólo se aplanara el texto, los patrones escritos con hamza dejarían de casar.
+#:
+#: Qué se aplana y qué no, que es lo delicado:
+#:
+#: - latinas: las tildes, **y sólo sobre letra latina**. Es la misma regla que el índice (`fold`);
+#: - cirílico: sólo la ё, a mano. La й lleva un breve combinante pero es una LETRA, y quitárselo
+#:   rompe media lengua («детей» → «детеи»);
+#: - árabe: hamza (أ إ آ ٱ ؤ ئ), ة→ه, ى→ي y fuera los harakat. Es lo que hace `_normaliza_ar` en
+#:   la búsqueda desde el 16-sep;
+#: - devanagari: **sólo el nuqta** (क़→क, ज़→ज, ड़→ड, फ़→फ), que es lo que se pierde al teclear.
+#:   Las matras NO se tocan: son la palabra, no un adorno («बुखार» sin matras no es nada).
+_LATINA_BASE = re.compile(r"[a-zA-Z]")
+_ARABE_ORTO = str.maketrans(
+    {"أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ؤ": "و", "ئ": "ي", "ة": "ه", "ى": "ي"}
+)
+_HARAKAT = dict.fromkeys(range(0x064B, 0x0653))
+_NUQTA = "\u093c"
+
+
+def aplana(texto: str) -> str:
+    """El texto sin lo que se cae al escribir deprisa. Se aplica al padre y a los patrones."""
+    fuera: list[str] = []
+    for c in unicodedata.normalize("NFD", texto):
+        if c == _NUQTA:
+            continue
+        if unicodedata.combining(c):
+            if fuera and _LATINA_BASE.match(fuera[-1]):
+                continue  # tilde sobre letra latina
+            if 0x064B <= ord(c) <= 0x0652:
+                continue  # harakat árabe
+            fuera.append(c)  # matra devanagari, breve de la й: son la palabra
+        else:
+            fuera.append(c)
+    unido = unicodedata.normalize("NFC", "".join(fuera))
+    return unido.translate(_ARABE_ORTO).translate(_HARAKAT).replace("ё", "е").replace("Ё", "Е")
+
 
 _AGE_PATTERNS = [
     # (regex, unit multiplier to months)
@@ -84,7 +131,10 @@ _NEWBORN = re.compile(
     r"|حديث الولادة|مولود جديد|नवजात|navjat|naujaat",
     re.I,
 )
-_WORD_AGES = {
+_NEWBORN = re.compile(aplana(_NEWBORN.pattern), _NEWBORN.flags)
+_AGE_PATTERNS = [(re.compile(aplana(rx.pattern), rx.flags), m) for rx, m in _AGE_PATTERNS]
+
+_WORD_AGES_CRUDO = {
     # «Año y medio» en las ocho lenguas, y ANTES de «un año»: el diccionario se recorre en orden
     # y «un año» ganaba a «un año y medio». 6 de 39 formas naturales fallaban, y las seis eran
     # un niño de 18 meses, justo donde cambian la dosis y las reglas (12-sep-2026).
@@ -202,6 +252,10 @@ _WORD_AGES = {
     "do saal": 24,
 }
 
+#: Aplanadas al construirse: el texto llega sin tildes ni hamza, y una clave con ellas no
+#: casaría nunca («año y medio» contra «ano y medio»).
+_WORD_AGES = {aplana(k): v for k, v in _WORD_AGES_CRUDO.items()}
+
 
 @dataclass
 class Rule:
@@ -275,6 +329,7 @@ _DE_COMPUESTO = re.compile(
     r"|zwölf|zwolf)(jährig|jahrig|monatig|wöchig|wochig)\w*",
     re.I,
 )
+_DE_COMPUESTO = re.compile(aplana(_DE_COMPUESTO.pattern), _DE_COMPUESTO.flags)
 
 #: Y lo mismo en ruso, que es donde más falta hacía (17-sep-2026).
 #:
@@ -295,6 +350,7 @@ _RU_COMPUESTO = re.compile(
     rf"(?<![\w])({_RU_PREFIJOS})?(месячн|недельн|годовал)\w*|(?<![\w])({_RU_PREFIJOS})(летн)\w*",
     re.I,
 )
+_RU_COMPUESTO = re.compile(aplana(_RU_COMPUESTO.pattern), _RU_COMPUESTO.flags)
 
 
 #: Guiones de todas las formas: el corto, el largo, el de las cifras y los que mete un procesador
@@ -321,6 +377,7 @@ _MENOS_DE = re.compile(
     r"[\s]{0,3}$",
     re.I,
 )
+_MENOS_DE = re.compile(aplana(_MENOS_DE.pattern), _MENOS_DE.flags)
 
 #: Cuánto se mira hacia atrás para encontrarlo. Corto: el cualificador va pegado al número.
 _VENTANA_MENOS = 14
@@ -334,6 +391,7 @@ _MENOS_DE_DETRAS = re.compile(
     r"से नीचे|or less|or younger|o menos)",
     re.I,
 )
+_MENOS_DE_DETRAS = re.compile(aplana(_MENOS_DE_DETRAS.pattern), _MENOS_DE_DETRAS.flags)
 
 
 def parse_age_months(text: str) -> float | None:
@@ -348,7 +406,9 @@ def parse_age_months(text: str) -> float | None:
     Se arregla aquí, en un sitio, y no en cada expresión: así lo heredan los ocho idiomas, las
     edades en cifra y las escritas en letra («six-week-old»).
     """
-    low = _GUIONES.sub(" ", text.lower())
+    # se aplana aquí también: `assess` ya le pasa el texto aplanado, pero esta función se
+    # llama sola desde la API, desde Telegram y desde las pruebas (17-sep-2026)
+    low = aplana(_GUIONES.sub(" ", text.lower()))
     if _NEWBORN.search(low):
         return 0.5
     for phrase, months in _WORD_AGES.items():
@@ -400,6 +460,44 @@ NEGADORES = re.compile(
     re.I | re.U,
 )
 
+#: Preguntar CÓMO EVITAR algo no es que ese algo esté pasando (17-sep-2026).
+#:
+#: Salió al escribir el nombre de las cosas —«golpe de calor», «Hitzschlag»— como patrón suelto:
+#: «¿cómo prevenir un golpe de calor en verano?» pasó a urgente. Lo cazó una prueba que ya estaba.
+#:
+#: Va aparte de `NEGADORES` porque es otra cosa: no niega el hecho, lo pone en hipotético. Y se
+#: exige el INTERROGATIVO delante («cómo», «how to», «كيف») a propósito: «no pude evitar que se
+#: tragara una pila» lleva «evitar» y tiene que seguir saltando, porque ahí la pila ya está dentro.
+HIPOTETICA = re.compile(
+    r"(?:c[óo]mo|como|how (?:to|do i|can i)|comment|wie (?:kann|man)|как|كيف|कैसे)"
+    r"[^.]{0,25}"
+    r"(?:preven\w*|evit\w*|prevent\w*|avoid\w*|protect\w*|prot[ée]g\w*|[ée]vit\w*|vorbeug\w*|verhinder\w*|vermeid\w*|sch[üu]tz\w*|предотврат\w*|избеж\w*|уберечь|الوقاية|أتجنب|تجنب|أحمي|رोक\w*|बचा\w*)"
+    r"[^.]{0,40}$",
+    re.I | re.U,
+)
+#: Y la palabra sola cuando encabeza: «prevención del golpe de calor», «Vorbeugung», «रोकथाम».
+PREVENCION = re.compile(
+    r"\b(?:prevenci[óo]n|prevention|pr[ée]vention|vorbeugung|pr[äa]vention|профилактик\w*|"
+    r"الوقاية من|रोकथाम)\b[^.]{0,40}$",
+    re.I | re.U,
+)
+#: El interrogativo suelto y el verbo suelto, para las lenguas que los separan (el alemán manda
+#: el verbo al final de la frase, y el ruso y el árabe lo ponen antes del complemento).
+INTERROGATIVO = re.compile(
+    r"(?:\bc[óo]mo\b|\bcomo\b|\bhow\b|\bcomment\b|\bwie\b|\bкак\b|كيف|कैसे"
+    r"|\bqu[ée] (?:puedo|debo) hacer\b)",
+    re.I | re.U,
+)
+EVITAR = re.compile(
+    r"(?:preven\w*|evit\w*|prevent\w*|avoid\w*|protect\w*|prot[ée]g\w*|[ée]vit\w*|vorbeug\w*|verhinder\w*|vermeid\w*|sch[üu]tz\w*|предотврат\w*|избеж\w*|уберечь|الوقاية|أتجنب|تجنب|أحمي|رोक\w*|बचा\w*)",
+    re.I | re.U,
+)
+
+#: Cuánto se mira hacia atrás para lo hipotético: más que para la negación, porque la pregunta
+#: entera cabe ahí («¿cómo puedo evitar que a mi hijo le dé un …»).
+VENTANA_HIPOTETICA = 60
+
+
 #: Cuánto se mira hacia atrás. Corto a propósito: «no tiene fiebre, pero sí le cuesta respirar»
 #: no puede quedar anulado por un «no» que iba con otra cosa.
 VENTANA_NEGACION = 26
@@ -441,6 +539,28 @@ CONJUNCIONES = re.compile(
     r"и|или|ни|أو|و|और|या)\b",
     re.I | re.U,
 )
+
+
+def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
+    """¿La frase pregunta cómo EVITAR esto, en vez de contarlo?
+
+    Se mira delante y DETRÁS porque el alemán manda el verbo al final —«wie kann ich einen
+    Hitzschlag verhindern?»— y cuando la regla casa «Hitzschlag» el «verhindern» aún no ha
+    llegado. Hace falta el interrogativo en los dos casos: sin él, «no pude evitar que se
+    tragara una pila» quedaría anulado, y ahí la pila ya está dentro.
+    """
+    antes = texto[max(0, inicio - VENTANA_HIPOTETICA) : inicio]
+    # Una oración nueva cierra la hipótesis, igual que cierra la negación: «cómo evitar que se
+    # atragante, SE HA ATRAGANTADO con una uva» son dos frases y la segunda es de verdad.
+    for corte in (*CORTES, *COMAS):
+        if corte in antes:
+            antes = antes.rsplit(corte, 1)[1]
+    if PREVENCION.search(antes) or HIPOTETICA.search(antes):
+        return True
+    if not INTERROGATIVO.search(antes):
+        return False
+    detras = texto[fin or inicio : (fin or inicio) + VENTANA_HIPOTETICA]
+    return bool(EVITAR.search(detras))
 
 
 def _negada(texto: str, inicio: int, fin: int) -> bool:
@@ -487,22 +607,25 @@ class Triage:
                         for k, v in r.items()
                         if k.startswith("reason_") and k not in ("reason_es", "reason_en")
                     },
-                    patterns=[re.compile(p, re.I) for p in r.get("patterns", [])],
+                    patterns=[re.compile(aplana(p), re.I) for p in r.get("patterns", [])],
                     requires=list(r.get("requires", [])),
                 )
             )
         ctx = raw.get("context", {})
-        self._fever = [re.compile(p, re.I) for p in ctx.get("fever", [])]
+        self._fever = [re.compile(aplana(p), re.I) for p in ctx.get("fever", [])]
 
     def has_fever(self, text: str) -> bool:
         """«Sin fiebre» no es fiebre: la misma regla de negación que para los patrones."""
-        return any(self._hits(rx, text) for rx in self._fever)
+        return any(self._hits(rx, aplana(text)) for rx in self._fever)
 
     @staticmethod
     def _hits(rx: re.Pattern[str], text: str) -> bool:
         """Una coincidencia cuenta salvo que venga negada. Se recorren todas: «sin fiebre pero le
         cuesta respirar» tiene que seguir saltando por la segunda mitad."""
-        return any(not _negada(text, m.start(), m.end()) for m in rx.finditer(text))
+        return any(
+            not _negada(text, m.start(), m.end()) and not _hipotetica(text, m.start(), m.end())
+            for m in rx.finditer(text)
+        )
 
     def _contradicted(self, requires: list[str], age: float | None) -> bool:
         """¿Sabemos ya, con certeza, que esta regla NO es la que toca?
@@ -522,7 +645,7 @@ class Triage:
         # feed» daba urgente y «my 5-day-old refuses to feed» —la forma normal en inglés— daba
         # rutina, con la misma regla y la misma frase. Ningún patrón del fichero necesita un
         # guion literal, así que la conversión no puede quitarle una coincidencia a nadie.
-        texto = _GUIONES.sub(" ", text)
+        texto = aplana(_GUIONES.sub(" ", text))
         age = parse_age_months(texto)
         fever = self.has_fever(texto)
         flags = {

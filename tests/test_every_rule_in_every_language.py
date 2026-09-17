@@ -31,6 +31,8 @@ están escritas como se habla.
 
 from __future__ import annotations
 
+import unicodedata
+
 import pytest
 
 from pedibot.bot.triage import Triage
@@ -609,3 +611,627 @@ CORRIENTE = [
 def test_an_ordinary_day_stays_ordinary(triaje: Triage, lang: str, texto: str) -> None:
     r = triaje.assess(texto)
     assert r.level == "routine", f"[{lang}] «{texto}» sale como {r.level}: {[m.id for m in r.matched]}"
+
+
+# ── y las mismas frases, tecleadas deprisa ───────────────────────────────────────────────────
+#
+# Nadie pone las tildes a las tres de la mañana con un niño en brazos. Se cogieron las 408 frases
+# y se les quitó lo que un padre se salta: las tildes, la ё rusa, la hamza y los harakat árabes,
+# el nuqta devanagari. **23 dejaban de saltar, y 17 eran árabes.**
+#
+# No se arregló con patrones: el triaje ahora aplana la ortografía antes de mirar, igual que la
+# búsqueda desde el 16-sep, y lo aplana en las DOS partes —el texto del padre y los patrones—.
+# Esta prueba es la que vigila que siga siendo así; las variantes se generan, no se escriben.
+
+
+def _descuidada(texto: str, lang: str) -> str:
+    if lang == "ru":
+        return texto.replace("ё", "е").lower()
+    if lang == "ar":
+        tabla = str.maketrans({"أ": "ا", "إ": "ا", "آ": "ا", "ؤ": "و", "ئ": "ي", "ة": "ه", "ى": "ي"})
+        return texto.translate(tabla).translate(dict.fromkeys(range(0x064B, 0x0653)))
+    if lang == "hi":
+        return "".join(c for c in unicodedata.normalize("NFD", texto) if c != "़")
+    sin = unicodedata.normalize("NFD", texto)
+    return "".join(c for c in sin if unicodedata.category(c) != "Mn").lower()
+
+
+def _descuidadas() -> list[tuple[str, str, str]]:
+    fuera = []
+    for regla, frases in CASOS.items():
+        for lg in IDIOMAS:
+            floja = _descuidada(frases[lg], lg)
+            if floja != frases[lg]:
+                fuera.append((regla, lg, floja))
+    return fuera
+
+
+@pytest.mark.parametrize("regla,lang,texto", _descuidadas(), ids=lambda x: str(x)[:40])
+def test_it_still_fires_when_typed_in_a_hurry(triaje: Triage, regla: str, lang: str, texto: str):
+    r = triaje.assess(texto)
+    assert regla in [m.id for m in r.matched], f"[{lang}] «{texto}» → {r.level}"
+
+
+# ── y ahora dicho de OTRA manera ─────────────────────────────────────────────────────────────
+#
+# «Sigue depurando el triaje, no me puedo fiar de ti», 17-sep-2026. Con razón: la batería de
+# arriba prueba UNA forma de decir cada cosa, y un padre no dice las cosas de una sola forma.
+#
+# Esta segunda batería dice lo mismo con otras palabras —más corto, más coloquial, con el orden
+# cambiado— y al escribirla fallaban **121 de 408 casos**. Casi un tercio, con las reglas ya
+# «cubiertas» en los ocho idiomas. Lo que faltaba no eran lenguas sino MANERAS:
+#
+#     severe_abdominal_pain   «está doblado del dolor» —la postura— no estaba en NINGUNA lengua
+#     drowsy_irritable        la irritabilidad que no se calma con nada faltaba en siete
+#     heatstroke              el NOMBRE de la cosa fallaba en siete: la regla lo pedía siempre
+#                             acompañado de otra señal
+#     mottled_skin            «se le han puesto los labios morados» —con verbo— en seis
+#     choking                 «se atragantó CON una uva» pedía además que se dijera «no respira»
+#     bilious_or_bloody_vomit «hay sangre EN el vómito», al revés, en tres
+#
+# Y al taparlas apareció lo contrario: «¿cómo prevenir un golpe de calor?» pasó a ser urgente.
+# Eso lo arregló un guardián nuevo —lo hipotético— que mira si la frase pregunta cómo EVITAR algo
+# en vez de contarlo, y que exige el interrogativo delante para que «no pude evitar que se
+# tragara una pila» siga saltando.
+SEGUNDA: dict[str, dict[str, str]] = {
+    "not_responding": {
+        "es": 'está inconsciente, no se despierta',
+        "en": "he is unconscious and won't wake up",
+        "fr": 'il est inconscient, il ne se réveille pas',
+        "de": 'er ist bewusstlos und wacht nicht auf',
+        "ru": 'он без сознания и не просыпается',
+        "ar": 'فاقد الوعي ولا يستيقظ',
+        "pt": 'está inconsciente e não acorda',
+        "hi": 'वह बेहोश है और जाग नहीं रहा',
+    },
+    "seizure": {
+        "es": 'está convulsionando ahora mismo',
+        "en": 'she is having a fit right now',
+        "fr": 'elle fait une crise convulsive en ce moment',
+        "de": 'sie hat gerade einen anfall',
+        "ru": 'у неё сейчас припадок',
+        "ar": 'عندها تشنج الآن',
+        "pt": 'está a ter uma convulsão agora',
+        "hi": 'उसे अभी दौरा पड़ रहा है',
+    },
+    "severe_breathing": {
+        "es": 'le cuesta mucho respirar, se ahoga',
+        "en": 'he is really struggling to breathe',
+        "fr": 'il a beaucoup de mal à respirer',
+        "de": 'er bekommt kaum luft',
+        "ru": 'ему очень трудно дышать',
+        "ar": 'يعاني من صعوبة شديدة في التنفس',
+        "pt": 'tem muita dificuldade em respirar',
+        "hi": 'उसे साँस लेने में बहुत तकलीफ़ हो रही है',
+    },
+    "anaphylaxis": {
+        "es": 'reacción alérgica con la cara hinchada y no respira bien',
+        "en": "allergic reaction, his face is swollen and he can't breathe well",
+        "fr": 'réaction allergique, le visage gonflé et il respire mal',
+        "de": 'allergische reaktion, das gesicht ist geschwollen und er atmet schlecht',
+        "ru": 'аллергическая реакция, лицо опухло и трудно дышать',
+        "ar": 'رد فعل تحسسي، وجهه منتفخ ويتنفس بصعوبة',
+        "pt": 'reação alérgica, a cara inchada e respira mal',
+        "hi": 'एलर्जी की प्रतिक्रिया, चेहरा सूजा है और साँस ठीक से नहीं आ रही',
+    },
+    "choking": {
+        "es": 'se ha atragantado con un trozo de manzana',
+        "en": 'he choked on a piece of apple',
+        "fr": "il s'est étouffé avec un morceau de pomme",
+        "de": 'er hat sich an einem apfelstück verschluckt',
+        "ru": 'он подавился куском яблока',
+        "ar": 'اختنق بقطعة تفاح',
+        "pt": 'engasgou-se com um pedaço de maçã',
+        "hi": 'सेब का टुकड़ा गले में अटक गया और दम घुट रहा है',
+    },
+    "mottled_skin": {
+        "es": 'se le han puesto los labios morados',
+        "en": 'his lips have turned blue',
+        "fr": 'ses lèvres sont devenues bleues',
+        "de": 'seine lippen sind blau geworden',
+        "ru": 'у него посинели губы',
+        "ar": 'صارت شفتاه زرقاء',
+        "pt": 'os lábios ficaram roxos',
+        "hi": 'उसके होंठ नीले पड़ गए हैं',
+    },
+    "head_injury_loss_consciousness": {
+        "es": 'se cayó de la cama y se quedó inconsciente un momento',
+        "en": 'she fell off the bed and was knocked out for a moment',
+        "fr": 'elle est tombée du lit et a perdu connaissance un instant',
+        "de": 'sie ist aus dem bett gefallen und war kurz bewusstlos',
+        "ru": 'она упала с кровати и на миг потеряла сознание',
+        "ar": 'سقطت من السرير وفقدت الوعي لحظة',
+        "pt": 'caiu da cama e ficou inconsciente um momento',
+        "hi": 'वह बिस्तर से गिरी और एक पल के लिए बेहोश हो गई',
+    },
+    "severe_bleeding": {
+        "es": 'sangra mucho y no para con presión',
+        "en": 'it is bleeding heavily and pressure is not stopping it',
+        "fr": "ça saigne beaucoup et la pression n'arrête rien",
+        "de": 'es blutet stark und mit druck hört es nicht auf',
+        "ru": 'сильно кровит и давление не помогает',
+        "ar": 'ينزف بغزارة والضغط لا يوقفه',
+        "pt": 'sangra muito e a pressão não para',
+        "hi": 'बहुत ख़ून बह रहा है और दबाने से भी बंद नहीं हो रहा',
+    },
+    "open_fracture": {
+        "es": 'fractura abierta en la pierna',
+        "en": 'open fracture in his leg',
+        "fr": 'fracture ouverte à la jambe',
+        "de": 'offener bruch am bein',
+        "ru": 'открытый перелом ноги',
+        "ar": 'كسر مفتوح في الساق',
+        "pt": 'fratura exposta na perna',
+        "hi": 'पैर में खुला फ़्रैक्चर है',
+    },
+    "petechiae_fever": {
+        "es": 'le han salido petequias con fiebre',
+        "en": 'he has petechiae and a fever',
+        "fr": 'il a des pétéchies avec de la fièvre',
+        "de": 'er hat petechien und fieber',
+        "ru": 'у него петехии и температура',
+        "ar": 'ظهرت نمشات مع الحمى',
+        "pt": 'apareceram petéquias com febre',
+        "hi": 'बुखार के साथ पेटीकिया निकले हैं',
+    },
+    "button_battery": {
+        "es": 'creo que se tragó la pila del mando',
+        "en": 'I think he swallowed the battery from the remote',
+        "fr": "je crois qu'il a avalé la pile de la télécommande",
+        "de": 'ich glaube, er hat die batterie der fernbedienung verschluckt',
+        "ru": 'кажется, он проглотил батарейку от пульта',
+        "ar": 'أظنه ابتلع بطارية الريموت',
+        "pt": 'acho que engoliu a pilha do comando',
+        "hi": 'लगता है उसने रिमोट की बैटरी निगल ली',
+    },
+    "neck_stiffness": {
+        "es": 'tiene la nuca rígida',
+        "en": 'he has a stiff neck',
+        "fr": 'il a la nuque raide',
+        "de": 'er hat einen steifen nacken',
+        "ru": 'у него ригидность затылочных мышц',
+        "ar": 'رقبته متيبسة',
+        "pt": 'tem o pescoço rígido',
+        "hi": 'उसकी गर्दन अकड़ी हुई है',
+    },
+    "cannot_swallow_drooling": {
+        "es": 'le cuesta mucho tragar y se le cae la baba',
+        "en": 'he is dribbling and struggling to swallow',
+        "fr": "il bave et n'arrive pas à avaler",
+        "de": 'er sabbert und kann nicht schlucken',
+        "ru": 'слюна течёт, он не может глотать',
+        "ar": 'لعابه يسيل ولا يستطيع البلع',
+        "pt": 'baba-se e não consegue engolir',
+        "hi": 'लार गिर रही है और वह निगल नहीं पा रहा',
+    },
+    "infant_fever_under_3_months": {
+        "es": 'mi recién nacido de 6 semanas tiene fiebre',
+        "en": 'my 6 week old has a temperature',
+        "fr": 'mon bébé de 6 semaines a de la fièvre',
+        "de": 'mein 6 wochen altes baby hat fieber',
+        "ru": 'у моего малыша 6 недель температура',
+        "ar": 'طفلي عمره 6 أسابيع وعنده حمى',
+        "pt": 'o meu bebé de 6 semanas tem febre',
+        "hi": 'मेरे 6 हफ़्ते के बच्चे को बुखार है',
+    },
+    "very_high_fever": {
+        "es": 'la fiebre le ha subido a 40,8',
+        "en": 'his fever went up to 40.8',
+        "fr": 'la fièvre est montée à 40,8',
+        "de": 'das fieber ist auf 40,8 gestiegen',
+        "ru": 'температура поднялась до 40,8',
+        "ar": 'ارتفعت حرارته إلى 40.8',
+        "pt": 'a febre subiu para 40,8',
+        "hi": 'बुखार 40.8 तक चला गया',
+    },
+    "moderate_breathing": {
+        "es": 'respira muy rápido desde hace un rato',
+        "en": 'she has been breathing fast for a while',
+        "fr": 'elle respire vite depuis un moment',
+        "de": 'sie atmet seit einer weile schnell',
+        "ru": 'она уже давно часто дышит',
+        "ar": 'تتنفس بسرعة منذ فترة',
+        "pt": 'respira depressa há algum tempo',
+        "hi": 'वह कुछ देर से तेज़ साँस ले रही है',
+    },
+    "drowsy_irritable": {
+        "es": 'está muy irritable y no se calma con nada',
+        "en": 'he is extremely irritable and nothing settles him',
+        "fr": 'il est très irritable et rien ne le calme',
+        "de": 'er ist sehr reizbar und nichts beruhigt ihn',
+        "ru": 'он очень раздражителен, ничто не успокаивает',
+        "ar": 'هو عصبي جدا ولا شيء يهدئه',
+        "pt": 'está muito irritável e nada o acalma',
+        "hi": 'वह बहुत चिड़चिड़ा है और किसी से शांत नहीं हो रहा',
+    },
+    "dehydration": {
+        "es": 'tiene los ojos hundidos y no llora con lágrimas',
+        "en": 'her eyes look sunken and she cries without tears',
+        "fr": 'ses yeux sont creusés et elle pleure sans larmes',
+        "de": 'ihre augen sind eingesunken und sie weint ohne tränen',
+        "ru": 'глаза запали и плачет без слёз',
+        "ar": 'عيناها غائرتان وتبكي بلا دموع',
+        "pt": 'tem os olhos encovados e chora sem lágrimas',
+        "hi": 'उसकी आँखें धँसी हैं और बिना आँसू के रो रही है',
+    },
+    "vomiting_headache": {
+        "es": 'le duele la cabeza y ha vomitado tres veces',
+        "en": 'she has a bad headache and has vomited three times',
+        "fr": 'elle a mal à la tête et a vomi trois fois',
+        "de": 'sie hat kopfschmerzen und dreimal erbrochen',
+        "ru": 'болит голова и три раза рвало',
+        "ar": 'عندها صداع وتقيأت ثلاث مرات',
+        "pt": 'tem dor de cabeça e vomitou três vezes',
+        "hi": 'सिर में दर्द है और तीन बार उल्टी हुई',
+    },
+    "vomiting_after_head_injury": {
+        "es": 'vomitó después del golpe en la cabeza',
+        "en": 'he vomited after the bump on his head',
+        "fr": 'il a vomi après le coup à la tête',
+        "de": 'er hat nach dem schlag auf den kopf erbrochen',
+        "ru": 'после удара по голове его вырвало',
+        "ar": 'تقيأ بعد الضربة على رأسه',
+        "pt": 'vomitou depois da pancada na cabeça',
+        "hi": 'सिर पर चोट के बाद उल्टी हुई',
+    },
+    "foreign_body_ingestion": {
+        "es": 'se ha tragado una moneda',
+        "en": 'she swallowed a coin',
+        "fr": 'elle a avalé une pièce de monnaie',
+        "de": 'sie hat eine münze verschluckt',
+        "ru": 'она проглотила монету',
+        "ar": 'ابتلعت عملة معدنية',
+        "pt": 'engoliu uma moeda',
+        "hi": 'उसने सिक्का निगल लिया',
+    },
+    "poisoning": {
+        "es": 'se ha tomado pastillas mías por error',
+        "en": 'he took some of my pills by mistake',
+        "fr": 'il a pris mes médicaments par erreur',
+        "de": 'er hat aus versehen meine tabletten genommen',
+        "ru": 'он по ошибке выпил мои таблетки',
+        "ar": 'تناول حبوبي بالخطأ',
+        "pt": 'tomou os meus comprimidos por engano',
+        "hi": 'उसने ग़लती से मेरी गोलियाँ खा लीं',
+    },
+    "severe_abdominal_pain": {
+        "es": 'está doblado del dolor de barriga',
+        "en": 'he is doubled over with stomach pain',
+        "fr": 'il est plié en deux par le mal de ventre',
+        "de": 'er krümmt sich vor bauchschmerzen',
+        "ru": 'он согнулся от боли в животе',
+        "ar": 'ينحني من شدة ألم البطن',
+        "pt": 'está dobrado com dor de barriga',
+        "hi": 'पेट दर्द से वह दोहरा हुआ जा रहा है',
+    },
+    "newborn_refusing_feeds": {
+        "es": 'mi bebé de 10 días no quiere mamar',
+        "en": 'my 10 day old will not feed',
+        "fr": 'mon bébé de 10 jours ne veut pas téter',
+        "de": 'mein 10 tage altes baby will nicht trinken',
+        "ru": 'мой ребёнок 10 дней не берёт грудь',
+        "ar": 'طفلي عمره 10 أيام ويرفض الرضاعة',
+        "pt": 'o meu bebé de 10 dias não quer mamar',
+        "hi": 'मेरा 10 दिन का बच्चा दूध नहीं पी रहा',
+    },
+    "burn": {
+        "es": 'se ha escaldado el brazo con la sopa',
+        "en": 'he scalded his arm with soup',
+        "fr": "il s'est ébouillanté le bras avec la soupe",
+        "de": 'er hat sich den arm mit suppe verbrüht',
+        "ru": 'он обварил руку супом',
+        "ar": 'احترق ذراعه بالشوربة',
+        "pt": 'escaldou o braço com a sopa',
+        "hi": 'सूप से उसका हाथ जल गया',
+    },
+    "bilious_or_bloody_vomit": {
+        "es": 'el vómito tiene sangre',
+        "en": 'there is blood in his vomit',
+        "fr": 'il y a du sang dans son vomi',
+        "de": 'im erbrochenen ist blut',
+        "ru": 'в рвоте кровь',
+        "ar": 'في القيء دم',
+        "pt": 'há sangue no vómito',
+        "hi": 'उल्टी में ख़ून है',
+    },
+    "blood_in_stool": {
+        "es": 'la caca es negra como alquitrán',
+        "en": 'his poo is black and tarry',
+        "fr": 'ses selles sont noires comme du goudron',
+        "de": 'sein stuhl ist schwarz wie teer',
+        "ru": 'стул чёрный, как дёготь',
+        "ar": 'برازه أسود كالقطران',
+        "pt": 'as fezes estão pretas como alcatrão',
+        "hi": 'उसका मल काला और लसदार है',
+    },
+    "abdominal_pain_localised_or_worsening": {
+        "es": 'el dolor se le ha ido al lado derecho de la tripa',
+        "en": 'the pain has moved to the right side of his belly',
+        "fr": 'la douleur est passée du côté droit du ventre',
+        "de": 'der schmerz ist auf die rechte bauchseite gewandert',
+        "ru": 'боль переместилась в правую сторону живота',
+        "ar": 'انتقل الألم إلى الجهة اليمنى من البطن',
+        "pt": 'a dor passou para o lado direito da barriga',
+        "hi": 'दर्द पेट के दाहिनी ओर चला गया है',
+    },
+    "deformity_fracture": {
+        "es": 'la muñeca le ha quedado deformada',
+        "en": 'his wrist looks deformed',
+        "fr": 'son poignet est déformé',
+        "de": 'sein handgelenk ist verformt',
+        "ru": 'запястье деформировано',
+        "ar": 'معصمه مشوه',
+        "pt": 'o pulso ficou deformado',
+        "hi": 'उसकी कलाई टेढ़ी हो गई है',
+    },
+    "deep_wound": {
+        "es": 'la herida es honda y creo que hay que coserla',
+        "en": 'the wound is deep and I think it needs stitches',
+        "fr": 'la plaie est profonde et il faut sans doute des points',
+        "de": 'die wunde ist tief und muss wohl genäht werden',
+        "ru": 'рана глубокая, наверное нужны швы',
+        "ar": 'الجرح عميق وأظنه يحتاج غرزا',
+        "pt": 'a ferida é funda e acho que precisa de pontos',
+        "hi": 'घाव गहरा है और शायद टाँके लगेंगे',
+    },
+    "neuro_deficit": {
+        "es": 'tiene la boca torcida y no ve bien',
+        "en": 'his mouth is drooping and his vision is blurred',
+        "fr": 'sa bouche est tordue et il voit flou',
+        "de": 'sein mund hängt und er sieht verschwommen',
+        "ru": 'рот перекошен и он плохо видит',
+        "ar": 'فمه مائل ورؤيته ضبابية',
+        "pt": 'a boca está torta e vê turvo',
+        "hi": 'उसका मुँह टेढ़ा है और धुंधला दिख रहा है',
+    },
+    "headache_warning_signs": {
+        "es": 'el dolor de cabeza va a peor cada día',
+        "en": 'his headache is getting worse every day',
+        "fr": 'son mal de tête empire chaque jour',
+        "de": 'die kopfschmerzen werden jeden tag schlimmer',
+        "ru": 'головная боль с каждым днём сильнее',
+        "ar": 'الصداع يزداد سوءا كل يوم',
+        "pt": 'a dor de cabeça piora todos os dias',
+        "hi": 'सिरदर्द हर दिन बढ़ता जा रहा है',
+    },
+    "meningitis_signs": {
+        "es": 'con fiebre, no aguanta la luz y le duele la cabeza',
+        "en": 'with a fever, she cannot stand the light and her head hurts',
+        "fr": 'avec de la fièvre, elle ne supporte pas la lumière et a mal à la tête',
+        "de": 'mit fieber verträgt sie kein licht und hat kopfschmerzen',
+        "ru": 'с температурой не переносит свет и болит голова',
+        "ar": 'مع الحمى لا تحتمل الضوء ورأسها يؤلمها',
+        "pt": 'com febre, não suporta a luz e dói-lhe a cabeça',
+        "hi": 'बुखार के साथ रोशनी बर्दाश्त नहीं और सिर दर्द है',
+    },
+    "mastoiditis": {
+        "es": 'detrás de la oreja lo tiene rojo e hinchado',
+        "en": 'behind his ear is red and swollen',
+        "fr": "derrière l'oreille c'est rouge et gonflé",
+        "de": 'hinter dem ohr ist es rot und geschwollen',
+        "ru": 'за ухом красное и припухшее',
+        "ar": 'خلف أذنه أحمر ومتورم',
+        "pt": 'atrás da orelha está vermelho e inchado',
+        "hi": 'कान के पीछे लाल और सूजा हुआ है',
+    },
+    "blood_in_urine": {
+        "es": 'el pis le sale rojo',
+        "en": 'his wee is red',
+        "fr": 'son pipi est rouge',
+        "de": 'sein urin ist rot',
+        "ru": 'моча красная',
+        "ar": 'بوله أحمر',
+        "pt": 'o xixi sai vermelho',
+        "hi": 'उसका पेशाब लाल आ रहा है',
+    },
+    "fluid_from_ear_or_nose": {
+        "es": 'le sale sangre del oído desde que se cayó',
+        "en": 'blood is coming from his ear since he fell',
+        "fr": 'du sang sort de son oreille depuis la chute',
+        "de": 'seit dem sturz kommt blut aus dem ohr',
+        "ru": 'после падения из уха идёт кровь',
+        "ar": 'يخرج دم من أذنه بعد السقوط',
+        "pt": 'sai sangue do ouvido desde a queda',
+        "hi": 'गिरने के बाद कान से ख़ून आ रहा है',
+    },
+    "cold_extremities_with_fever": {
+        "es": 'con 39 de fiebre y los pies helados',
+        "en": '39 fever and his feet are freezing',
+        "fr": '39 de fièvre et les pieds glacés',
+        "de": '39 fieber und eiskalte füße',
+        "ru": 'температура 39 и ледяные ноги',
+        "ar": 'حرارته 39 وقدماه باردتان كالثلج',
+        "pt": '39 de febre e os pés gelados',
+        "hi": '39 बुखार और पैर बर्फ़ जैसे ठंडे',
+    },
+    "snakebite": {
+        "es": 'una víbora le ha mordido en el pie',
+        "en": 'a viper bit him on the foot',
+        "fr": "une vipère l'a mordu au pied",
+        "de": 'eine viper hat ihn in den fuß gebissen',
+        "ru": 'гадюка укусила его в ногу',
+        "ar": 'لدغته حية في قدمه',
+        "pt": 'uma víbora mordeu-lhe o pé',
+        "hi": 'साँप ने उसके पैर में काटा',
+    },
+    "mammal_bite": {
+        "es": 'el gato del vecino le ha arañado y mordido',
+        "en": "the neighbour's cat scratched and bit him",
+        "fr": "le chat du voisin l'a griffé et mordu",
+        "de": 'die katze des nachbarn hat ihn gekratzt und gebissen',
+        "ru": 'соседская кошка поцарапала и укусила его',
+        "ar": 'خدشته وعضته قطة الجيران',
+        "pt": 'o gato do vizinho arranhou-o e mordeu-o',
+        "hi": 'पड़ोसी की बिल्ली ने खरोंचा और काटा',
+    },
+    "lockjaw_spasms": {
+        "es": 'tiene la mandíbula bloqueada',
+        "en": 'his jaw is locked',
+        "fr": 'sa mâchoire est bloquée',
+        "de": 'sein kiefer ist verkrampft',
+        "ru": 'челюсть свело',
+        "ar": 'فكه مقفل',
+        "pt": 'o maxilar está travado',
+        "hi": 'उसका जबड़ा जकड़ गया है',
+    },
+    "heatstroke": {
+        "es": 'golpe de calor después del partido',
+        "en": 'heatstroke after the match',
+        "fr": 'coup de chaleur après le match',
+        "de": 'hitzschlag nach dem spiel',
+        "ru": 'тепловой удар после матча',
+        "ar": 'ضربة شمس بعد المباراة',
+        "pt": 'golpe de calor depois do jogo',
+        "hi": 'मैच के बाद लू लग गई',
+    },
+    "neonatal_jaundice": {
+        "es": 'mi bebé de 5 días tiene los ojos amarillos',
+        "en": 'my 5 day old has yellow eyes',
+        "fr": 'mon bébé de 5 jours a les yeux jaunes',
+        "de": 'mein 5 tage altes baby hat gelbe augen',
+        "ru": 'у моего пятидневного малыша жёлтые глаза',
+        "ar": 'طفلي عمره 5 أيام وعيناه صفراوان',
+        "pt": 'o meu bebé de 5 dias tem os olhos amarelos',
+        "hi": 'मेरे 5 दिन के बच्चे की आँखें पीली हैं',
+    },
+    "bleeding_with_fever": {
+        "es": 'le sangran las encías y tiene fiebre',
+        "en": 'his gums are bleeding and he has a fever',
+        "fr": 'ses gencives saignent et il a de la fièvre',
+        "de": 'sein zahnfleisch blutet und er hat fieber',
+        "ru": 'дёсны кровоточат и температура',
+        "ar": 'لثته تنزف وعنده حمى',
+        "pt": 'as gengivas sangram e tem febre',
+        "hi": 'मसूड़ों से ख़ून आ रहा है और बुखार है',
+    },
+    "suicidal_ideation": {
+        "es": 'dice que quiere morirse',
+        "en": 'he says he wants to die',
+        "fr": "il dit qu'il veut mourir",
+        "de": 'er sagt, er will sterben',
+        "ru": 'он говорит, что хочет умереть',
+        "ar": 'يقول إنه يريد أن يموت',
+        "pt": 'diz que quer morrer',
+        "hi": 'वह कहता है कि वह मरना चाहता है',
+    },
+    "self_harm": {
+        "es": 'se corta con una cuchilla',
+        "en": 'he cuts himself with a blade',
+        "fr": 'il se coupe avec une lame',
+        "de": 'er schneidet sich mit einer klinge',
+        "ru": 'он режет себя лезвием',
+        "ar": 'يجرح نفسه بشفرة',
+        "pt": 'corta-se com uma lâmina',
+        "hi": 'वह ब्लेड से ख़ुद को काटता है',
+    },
+    "eating_disorder_signs": {
+        "es": 'ha dejado de comer y se salta todas las comidas',
+        "en": 'she has stopped eating and skips every meal',
+        "fr": 'elle a arrêté de manger et saute tous les repas',
+        "de": 'sie isst nicht mehr und lässt jede mahlzeit aus',
+        "ru": 'она перестала есть и пропускает все приёмы пищи',
+        "ar": 'توقفت عن الأكل وتتخطى كل الوجبات',
+        "pt": 'deixou de comer e salta todas as refeições',
+        "hi": 'उसने खाना छोड़ दिया है और हर भोजन टाल देती है',
+    },
+    "bulging_fontanelle": {
+        "es": 'la mollera la tiene hinchada y tensa',
+        "en": 'the soft spot on his head is swollen and tense',
+        "fr": 'la fontanelle est gonflée et tendue',
+        "de": 'die fontanelle ist geschwollen und gespannt',
+        "ru": 'родничок набух и напряжён',
+        "ar": 'اليافوخ متورم ومتوتر',
+        "pt": 'a fontanela está inchada e tensa',
+        "hi": 'तालू फूला और तना हुआ है',
+    },
+    "testicular_pain": {
+        "es": 'se queja de dolor fuerte en los testículos',
+        "en": 'he is complaining of severe pain in his testicles',
+        "fr": "il se plaint d'une forte douleur aux testicules",
+        "de": 'er klagt über starke schmerzen an den hoden',
+        "ru": 'жалуется на сильную боль в яичках',
+        "ar": 'يشكو من ألم شديد في الخصيتين',
+        "pt": 'queixa-se de dor forte nos testículos',
+        "hi": 'वह अंडकोष में तेज़ दर्द की शिकायत कर रहा है',
+    },
+    "sudden_pallor": {
+        "es": 'se quedó blanco como el papel de golpe',
+        "en": 'he went white as a sheet all of a sudden',
+        "fr": "il est devenu blanc comme un linge d'un coup",
+        "de": 'er wurde auf einmal kreidebleich',
+        "ru": 'он внезапно стал белым как бумага',
+        "ar": 'صار أبيض فجأة',
+        "pt": 'ficou branco como papel de repente',
+        "hi": 'वह अचानक काग़ज़ जैसा सफ़ेद पड़ गया',
+    },
+    "unusual_cry": {
+        "es": 'llora con un quejido muy débil, no es su llanto',
+        "en": 'her cry is weak and not like her usual cry',
+        "fr": "son cri est faible et ce n'est pas son cri habituel",
+        "de": 'ihr weinen ist schwach und anders als sonst',
+        "ru": 'плач слабый и не такой, как обычно',
+        "ar": 'بكاؤها ضعيف وغير معتاد',
+        "pt": 'o choro é fraco e diferente do habitual',
+        "hi": 'उसका रोना कमज़ोर और रोज़ से अलग है',
+    },
+    "limp_with_fever": {
+        "es": 'no quiere apoyar el pie y está con fiebre',
+        "en": 'she refuses to put weight on her foot and has a fever',
+        "fr": 'elle refuse de marcher sur son pied et a de la fièvre',
+        "de": 'sie will das bein nicht belasten und hat fieber',
+        "ru": 'она не наступает на ногу и у неё температура',
+        "ar": 'ترفض المشي على قدمها وعندها حرارة',
+        "pt": 'recusa apoiar o pé e tem febre',
+        "hi": 'वह पैर पर वज़न नहीं डाल रही और बुखार है',
+    },
+}
+
+
+def _pares_segunda() -> list[tuple[str, str, str]]:
+    return [(regla, lg, frases[lg]) for regla, frases in SEGUNDA.items() for lg in IDIOMAS]
+
+
+@pytest.mark.parametrize("regla,lang,texto", _pares_segunda(), ids=lambda x: str(x)[:40])
+def test_it_also_fires_when_said_another_way(triaje: Triage, regla: str, lang: str, texto: str):
+    r = triaje.assess(texto)
+    assert regla in [m.id for m in r.matched], f"[{lang}] «{texto}» → {r.level}"
+
+
+def test_the_second_battery_covers_the_same_rules(triaje: Triage) -> None:
+    assert set(SEGUNDA) == set(CASOS), "las dos baterías tienen que cubrir las mismas reglas"
+
+
+#: Preguntar cómo EVITAR algo no es que ese algo esté pasando. Salió al escribir «golpe de calor»
+#: como patrón suelto: una pregunta de prevención pasó a urgente.
+PREVENCION_NO_ES_URGENCIA = [
+    ("es", "¿cómo prevenir un golpe de calor en verano?"),
+    ("en", "how can I protect my child from heatstroke?"),
+    ("fr", "comment éviter un coup de chaleur ?"),
+    ("de", "wie kann ich einen hitzschlag verhindern?"),
+    ("ru", "как предотвратить тепловой удар?"),
+    ("ar", "كيف أحمي طفلي من ضربة الشمس؟"),
+    ("pt", "como evitar um golpe de calor?"),
+    ("hi", "गर्मी से कैसे बचाएँ?"),
+    ("es", "¿cómo evito que se atragante con la comida?"),
+    ("en", "how do I prevent choking with grapes?"),
+]
+
+
+@pytest.mark.parametrize("lang,texto", PREVENCION_NO_ES_URGENCIA)
+def test_asking_how_to_prevent_it_is_not_an_emergency(triaje: Triage, lang: str, texto: str):
+    r = triaje.assess(texto)
+    assert r.level == "routine", f"[{lang}] «{texto}» → {r.level} {[m.id for m in r.matched]}"
+
+
+#: Pero una hipótesis no puede tapar lo que ya ha pasado.
+YA_HA_PASADO = [
+    ("es", "no pude evitar que se tragara una pila"),
+    ("es", "cómo evitar que se atragante, se ha atragantado con una uva"),
+    ("es", "quería saber cómo prevenir. Ahora mismo está convulsionando"),
+]
+
+
+@pytest.mark.parametrize("lang,texto", YA_HA_PASADO)
+def test_a_hypothesis_does_not_silence_what_already_happened(triaje: Triage, lang: str, texto: str):
+    r = triaje.assess(texto)
+    assert r.level in ("urgent", "emergency"), f"[{lang}] «{texto}» → {r.level}"

@@ -48,6 +48,10 @@ DECLARADOS = {
     "una funcione",
     "_MENOS_DE_DETRAS": "la otra mitad: el cualificador POSPUESTO, que es como lo dice el "
     "hindi. Las lenguas que lo anteponen están en `_MENOS_DE`",
+    "_LATINA_BASE": "es latino a propósito, igual que `_LATINA` en el índice: marca dónde "
+    "una marca combinante es una TILDE y se puede quitar. Sobre árabe o devanagari esa "
+    "misma marca es la palabra —los harakat, las matras— y quitarla la rompe. El árabe y "
+    "el devanagari los trata `aplana` con sus propias tablas (17-sep-2026)",
     "_RU_COMPUESTO": "el gemelo ruso de `_DE_COMPUESTO`: «двухмесячный», «годовалый». Es una "
     "gramática que solo existe en ruso —el número y la unidad fundidos en una palabra— y el "
     "ruso solo se escribe en cirílico. Las demás lenguas separan número y unidad, y de eso se "
