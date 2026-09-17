@@ -106,3 +106,26 @@ def test_the_catalogue_is_the_same_in_every_place_it_is_published() -> None:
         if (d.get("org_full") or "").count("(") != (d.get("org_full") or "").count(")")
     ]
     assert not unbalanced, f"nombres de organismo truncados: {unbalanced[:3]}"
+
+
+@pytest.mark.skipif(not DIST.exists(), reason="no hay build en web/site/dist")
+def test_un_enlace_compartido_se_ve_como_una_tarjeta() -> None:
+    """17-sep-2026, visto por el operador comparando con los tuits del otro proyecto.
+
+    X no deduce la tarjeta grande: hay que pedírsela por su nombre con `twitter:card`. Sin esa
+    línea, un enlace a pedibot.xyz salía como un renglón azul. La imagen ya estaba y ya medía
+    1200×630 —que es lo que pide el formato—; lo que faltaba era decir cuál de las dos tarjetas
+    queremos. Se comprueba en lo CONSTRUIDO y en varias páginas, porque la etiqueta vive en el
+    layout y una página que no lo use se quedaría sin ella sin que nadie lo notara.
+    """
+    muestras = ["index.html", "es/emergency/qa/index.html", "ar/vaccines/sa/index.html"]
+    for rel in muestras:
+        f = DIST / rel
+        assert f.exists(), f"falta {rel} en el build"
+        html = f.read_text(encoding="utf-8")
+        assert 'content="summary_large_image"' in html, f"{rel}: sin tarjeta grande"
+        assert 'name="twitter:site" content="@pedibotai"' in html, f"{rel}: sin cuenta"
+        assert re.search(r'property="og:image" content="https://[^"]+/og\.png"', html), (
+            f"{rel}: la imagen de la tarjeta no es una dirección absoluta"
+        )
+    assert (SITE / "public" / "og.png").exists(), "la imagen de la tarjeta no existe"

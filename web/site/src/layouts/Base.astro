@@ -3,6 +3,12 @@
 // compone palabras y el francés y el ruso son de suyo largos. Sólo cambia cuándo se
 // esconden las pastillas, nunca cuáles existen (16-sep-2026).
 const LABEL_LARGO = new Set(['de', 'fr', 'ru', 'pt']);
+// El país que acompaña a cada lengua en las etiquetas sociales. Es lo que usa Facebook —y de
+// rebote WhatsApp y Telegram— para decidir en qué idioma enseña la tarjeta.
+const OG_LOCALE: Record<string, string> = {
+  en: 'en_GB', es: 'es_ES', fr: 'fr_FR', de: 'de_DE',
+  ru: 'ru_RU', ar: 'ar_SA', pt: 'pt_PT', hi: 'hi_IN',
+};
 import '../styles/global.css';
 import { t, langPrefix, dirFor, LANGS, LANG_NAMES, type Lang } from '../i18n';
 interface Props { lang: Lang; title: string; description: string; path: string; jsonld?: object;
@@ -100,6 +106,19 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={`${site}/og.png`} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={title} />
+  <meta property="og:site_name" content="PediBot" />
+  <meta property="og:locale" content={OG_LOCALE[lang] ?? 'en_GB'} />
+  {/* 17-sep-2026. X no pinta la tarjeta grande por deducción: hay que pedírsela por su nombre.
+      Sin esta línea, un enlace a pedibot.xyz salía como un renglón azul, mientras que el mismo
+      enlace en las cuentas que sí la declaran sale con imagen, título y descripción ocupando el
+      ancho del tuit. La imagen ya estaba y ya medía 1200×630, que es lo que pide el formato;
+      faltaba decir cuál de las dos tarjetas queremos. Lo vio el operador comparando con Regime. */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@pedibotai" />
+  <meta name="twitter:creator" content="@pedibotai" />
   <meta name="generator" content={Astro.generator} />
   <meta name="virtual-protocol-site-verification" content="2e15ae48f7b5e83eda0e6748181645d4" />
   {/* Las tipografías se sirven desde aquí desde el 6-sep-2026. Antes venían de
