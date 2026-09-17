@@ -11,6 +11,12 @@ rules:
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
   patterns:
+  # 17-sep-2026: en castellano el «no responde» cazaba la reanimación; en inglés, no.
+  - (doing|started|performing|giving)[^.]{0,15}(cpr|mouth to mouth|rescue breaths|chest compressions)
+  - (le estoy haciendo|haciendo)[^.]{0,15}(rcp|boca a boca|compresiones)
+  - (не дышит и не|делаю (сердечно.?л[ёе]гочную )?реанимацию|искусственное дыхание)
+  - (أقوم ب|أعمل)[^.]{0,15}(إنعاش|تنفس اصطناعي)
+  - (सीपीआर|कृत्रिम साँस)[^.]{0,15}(दे रहा|दे रही|कर रहा)
   # 17-sep-2026: «reagiert nicht» estaba, pero un padre alemán escribe «reagiert auf
   # nichts» o «antwortet nicht», y la negación va en otro sitio.
   - reagiert (auf )?(gar )?(nichts|nicht mehr|[üu]berhaupt nicht)
@@ -204,6 +210,13 @@ rules:
   reason_en: Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)
   reason_fr: Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)
   patterns:
+  # 17-sep-2026, segundo intento. Pedir «al respirar» dejaba fuera la forma normal de
+  # contarlo —«no tiene fiebre pero se le marcan las costillas»— y lo cazó una prueba vieja.
+  # Ahora el patrón es amplio otra vez y lo que se excluye es la DELGADEZ, que es la
+  # excepción y tiene su propia regla (`visible_severe_wasting`): «está muy delgado, se le
+  # marcan las costillas y no gana peso» no es un tiraje, es desnutrición.
+  - (se le )?(marcan|hunden|meten|retraen).{0,10}(las )?costillas(?![^.]{0,60}(delgad|flaqu|flac|no gana peso|perdido peso|adelgaz|piel y huesos))
+  - (delgad\w*|flaqu\w*)[^.]{0,40}costillas[^.]{0,40}(al respirar|cuando respira)
   # 17-sep-2026: «не может дышать» se apagaba solo: la negación va DENTRO de la señal, y
   # el patrón ruso no la incluía, así que el guardián de negaciones lo anulaba.
   - не (может|можешь|в силах) дышать
@@ -232,10 +245,9 @@ rules:
   - cada vez (respira|respirando).{0,12}(peor|m[aá]s deprisa|m[aá]s r[aá]pid)
   - le cuesta cada vez m[aá]s respirar
   - cada vez le cuesta m[aá]s respirar
-  - se le marcan las costillas
-  - se le marcan.{0,15}las costillas
+  # 17-sep-2026: sin «al respirar» esto cazaba la delgadez —«está muy delgado, se le
+  # marcan las costillas»— y la mandaba a urgencias como dificultad respiratoria grave.
   - se le hunden.{0,15}las costillas
-  - (se le )?(marcan|hunden|meten).{0,10}(las )?costillas
   - lips (look|are|turn|turned|going|went) (blue|bluish|purple)
   - blue (lips|around the (mouth|lips))
   - blue[a-z -]{0,12}lips
@@ -3437,6 +3449,420 @@ rules:
   - (quase se afogou)
   - (पानी में|तालाब में|पूल में)[^.]{0,20}(गिर)
   - (डूबते.?डूबते|डूबने से बचा)
+
+# ── Lote del 17-sep-2026 (madrugada): la lista publicada, no la mía ────────────────────────
+# El índice del capítulo 20 de Ecimed y los signos de peligro del IMNCI. 23 de 31 presentaciones
+# salían rutina.
+
+- id: electric_shock
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "Descarga eléctrica: aunque parezca estar bien, el corazón puede alterarse horas después — urgencias ahora"
+  reason_en: "Electric shock: even if he seems fine, the heart can go off rhythm hours later — emergency now"
+  reason_fr: "Choc électrique : même s'il a l'air bien, le cœur peut se dérégler des heures après — urgences"
+  reason_de: "Stromschlag: auch wenn es gut aussieht, kann das Herz Stunden später aus dem Takt geraten — Notaufnahme"
+  reason_ru: "Удар током: даже если выглядит хорошо, сердце может сбиться через часы — неотложно"
+  reason_ar: "صعقة كهربائية: حتى لو بدا بخير، قد يضطرب القلب بعد ساعات — الطوارئ الآن"
+  reason_pt: "Choque elétrico: mesmo que pareça bem, o coração pode alterar-se horas depois — urgência"
+  reason_hi: "बिजली का झटका: ठीक लगे तब भी घंटों बाद दिल की धड़कन बिगड़ सकती है — अभी आपातकाल"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (eletrocutou|electrocutou|levou (um )?choque)
+  - (le (ha )?dado (la )?corriente|descarga el[ée]ctrica|calambrazo|electrocut\w*)
+  - (enchufe|cable|corriente)[^.]{0,30}(descarga|calambr|chispa|le dio)
+  - (electric shock|electrocut\w*|got a shock from)
+  - (socket|plug|wire|cable)[^.]{0,30}(shock|electrocut)
+  - ((choc|d[ée]charge) [ée]lectrique|[ée]lectrocut\w*)
+  - (stromschlag|elektrischen schlag|stromunfall)
+  - (удар\w* током|электротравм\w*|током ударило)
+  - (صدمة كهربائية|صعقة كهربائية|كهربة)
+  - (choque el[ée]trico|levou um choque)
+  - (बिजली का झटका|करंट लग)
+
+- id: foreign_body_nose_or_ear
+  level: urgent
+  source: ecimed_pediatria_2016
+  reason_es: "Algo metido en la nariz o el oído: hay que sacarlo hoy, y no con pinzas en casa — puede irse más adentro"
+  reason_en: "Something pushed into the nose or ear: it has to come out today, and not with tweezers at home"
+  reason_fr: "Objet dans le nez ou l'oreille : à retirer aujourd'hui, pas avec une pince à la maison"
+  reason_de: "Gegenstand in Nase oder Ohr: muss heute raus, und nicht zu Hause mit der Pinzette"
+  reason_ru: "Предмет в носу или ухе: достать сегодня, и не пинцетом дома"
+  reason_ar: "شيء في الأنف أو الأذن: يُخرج اليوم، وليس بملقط في البيت"
+  reason_pt: "Objeto no nariz ou no ouvido: tirar hoje, e não com pinça em casa"
+  reason_hi: "नाक या कान में कुछ फँसा: आज निकलवाइए, घर पर चिमटी से नहीं"
+  patterns:
+  # 17-sep-2026: al escribir tantas formas latinas, las otras tres escrituras se quedaron con
+  # una red diez veces más floja. Las mismas señales, escritas en ellas.
+  - (засунул\w*|запихнул\w*|положил\w*|вставил\w*)[^.]{0,30}(в нос|в ухо|в носу|в ухе)
+  - (застряло|попало)[^.]{0,25}(в нос|в ухо|в носу|в ухе)
+  - (в (носу|ухе))[^.]{0,30}(инородн\w* тел\w*|бусин\w*|горошин\w*|батарейк\w*)
+  - (أدخل|وضع|حشر)[^.]{0,30}(في أنفه|في أذنه|بأنفه|بأذنه)
+  - (عالق|انحشر)[^.]{0,25}(في الأنف|في الأذن)
+  - (في (الأنف|الأذن))[^.]{0,30}(جسم غريب|خرزة|حبة|بطارية)
+  - (नाक|कान)[^.]{0,20}(में)[^.]{0,30}(डाल|घुसा|फँस|अटक)
+  - (नाक|कान)[^.]{0,20}(में)[^.]{0,30}(मोती|दाना|बैटरी|खिलौना|कागज़)
+  - (कुछ)[^.]{0,20}(नाक|कान)[^.]{0,20}(में)[^.]{0,20}(चला गया|फँस)
+  - (засунул\w*|запихнул\w*|вставил\w*)[^.]{0,25}(в (нос|ухо))
+  - (в (нос|ухо))[^.]{0,20}(бусин\w*|горошин\w*|игрушк\w*)
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (в (ухе|носу|ух[ео]|нос))[^.]{0,25}(горошин\w*|бусин\w*|предмет|что.?то)
+  - (горошин\w*|бусин\w*)[^.]{0,20}(в (ухе|носу))
+  - (في (أذنه|أذنها|أنفه|الأذن|الأنف))[^.]{0,25}(حبة|خرزة|شيء|قطعة)
+  - (حبة|خرزة)[^.]{0,20}(في (أذنه|الأذن|أنفه|الأنف))
+  - (no (ouvido|nariz))[^.]{0,25}(gr[ãa]o|bolinha|missanga|objeto|feij[ãa]o)
+  - (gr[ãa]o|bolinha)[^.]{0,20}(no (ouvido|nariz))
+  - (dans l'oreille|dans le nez)[^.]{0,25}(graine|perle|bille|objet)
+  - (graine|perle|bille)[^.]{0,20}(dans l'oreille|dans le nez)
+  - (im ohr|in der nase)[^.]{0,25}(erbse|perle|kn[öo]pfchen|etwas)
+  - (erbse|perle)[^.]{0,20}(im ohr|in der nase)
+  - (se (ha )?metido|tiene|se puso)[^.]{0,30}(en (la )?nariz|en el o[íi]do)
+  - (en (la )?nariz|en el o[íi]do)[^.]{0,25}(una |un )?(pipa|bolita|canica|garbanzo|cuenta|papel|juguete|pila|semilla)
+  - (pushed|put|stuck|shoved)[^.]{0,30}(up (his|her|the) nose|in (his|her|the) (ear|nose))
+  - (something|a bead|a pea|a battery|a toy)[^.]{0,25}(in|up)[^.]{0,12}(his|her|the)?[^.]{0,6}(nose|ear)
+  - (dans (le )?nez|dans l'oreille)[^.]{0,30}(perle|bille|graine|objet|papier)
+  - (a mis|a enfonc[ée])[^.]{0,25}(dans (le )?nez|dans l'oreille)
+  - (in (die|der) nase|ins ohr|im ohr)[^.]{0,30}(perle|erbse|kn[öo]pfchen|spielzeug|gesteckt)
+  - (в нос|в ухо|в носу|в ухе)[^.]{0,30}(бусин\w*|горошин\w*|игрушк\w*|засунул\w*)
+  - (في (أنفه|الأنف|أذنه|الأذن))[^.]{0,30}(خرزة|حبة|شيء|لعبة|أدخل)
+  - (no nariz|no ouvido)[^.]{0,30}(bolinha|missanga|gr[ãa]o|objeto|enfiou)
+  - (नाक में|कान में)[^.]{0,30}(मोती|दाना|कुछ|खिलौना|डाल)
+
+- id: spinal_injury
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "No mueve las piernas o los brazos tras un golpe: no lo muevas, llama a emergencias ahora"
+  reason_en: "Not moving legs or arms after a fall: do not move him, call emergency services now"
+  reason_fr: "Ne bouge plus les jambes ou les bras après une chute : ne le bougez pas, appelez maintenant"
+  reason_de: "Bewegt Beine oder Arme nach einem Sturz nicht: nicht bewegen, sofort Notruf"
+  reason_ru: "Не двигает ногами или руками после падения: не двигайте его, звоните сейчас"
+  reason_ar: "لا يحرك ساقيه أو ذراعيه بعد سقوط: لا تحركه واتصل بالطوارئ الآن"
+  reason_pt: "Não mexe as pernas ou os braços após uma queda: não o mova, ligue agora"
+  reason_hi: "गिरने के बाद पैर या हाथ नहीं हिला रहा: हिलाइए मत, अभी आपातकालीन सेवा को फ़ोन कीजिए"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (despu[ée]s de la ca[íi]da|tras la ca[íi]da|tras el golpe)[^.]{0,40}(le duele|dolor)[^.]{0,25}(el cuello|la nuca|la espalda)
+  - (بعد السقوط|بعد الضربة)[^.]{0,40}(لا يحرك|لا يستطيع تحريك)[^.]{0,25}(ذراعيه|ساقيه|رقبته)
+  - (se (cay[óo]|ha ca[íi]do)|golpe|ca[íi]da|accidente)[^.]{0,50}(no (mueve|siente)|no puede mover)[^.]{0,25}(las )?(piernas|brazos|pies|manos)
+  - (no (mueve|siente)|no puede mover)[^.]{0,25}(las )?(piernas|brazos)[^.]{0,50}(se cay[óo]|golpe|ca[íi]da)
+  - (dolor (fuerte )?(en )?(el cuello|la espalda|la nuca))[^.]{0,40}(tras|despu[ée]s de)[^.]{0,20}(el golpe|la ca[íi]da)
+  - (fell|fall|accident|crash)[^.]{0,50}(can'?t|cannot|not)[^.]{0,20}(move|feel)[^.]{0,20}(his|her|the)?[^.]{0,6}(legs|arms|feet)
+  - (est tomb[ée]|chute|accident)[^.]{0,50}(ne (bouge|sent) plus|ne peut pas bouger)[^.]{0,25}(les )?(jambes|bras)
+  - (sturz|gefallen|unfall)[^.]{0,50}(bewegt|sp[üu]rt)[^.]{0,25}(die )?(beine|arme)[^.]{0,15}nicht
+  - (упал\w*|падени\w*|авари\w*)[^.]{0,50}(не (двигает|чувствует))[^.]{0,25}(ног|рук)
+  - (سقط|وقع|حادث)[^.]{0,50}(لا يحرك|لا يشعر)[^.]{0,25}(ساقيه|رجليه|ذراعيه)
+  - (caiu|queda|acidente)[^.]{0,50}(n[aã]o (mexe|sente))[^.]{0,25}(as )?(pernas|bra[çc]os)
+  - (गिर\w*|हादसा|दुर्घटना)[^.]{0,50}(पैर|हाथ)[^.]{0,20}(नहीं हिला|महसूस नहीं)
+
+- id: blunt_abdominal_trauma
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "Golpe fuerte en la tripa con dolor o palidez: puede haber una hemorragia dentro — urgencias ahora"
+  reason_en: "Hard blow to the belly with pain or pallor: there may be bleeding inside — emergency now"
+  reason_fr: "Coup violent au ventre avec douleur ou pâleur : hémorragie interne possible — urgences"
+  reason_de: "Heftiger Schlag auf den Bauch mit Schmerz oder Blässe: innere Blutung möglich — Notaufnahme"
+  reason_ru: "Сильный удар в живот с болью или бледностью: возможно внутреннее кровотечение — сейчас"
+  reason_ar: "ضربة قوية في البطن مع ألم أو شحوب: قد يكون نزيف داخلي — الطوارئ الآن"
+  reason_pt: "Pancada forte na barriga com dor ou palidez: pode haver hemorragia interna — urgência"
+  reason_hi: "पेट पर तेज़ चोट के साथ दर्द या पीलापन: अंदर ख़ून बह सकता है — अभी आपातकाल"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - ((coup de pied|coup|choc))[^.]{0,30}(dans le ventre|au ventre)[^.]{0,60}(p[âa]le|douleur|mal)
+  - (a re[çc]u)[^.]{0,30}(dans le ventre)[^.]{0,60}(p[âa]le|mal)
+  - ((ركلة|ضربة))[^.]{0,30}(في البطن)[^.]{0,60}(شاحب|ألم|وجع)
+  - ((पेट))[^.]{0,20}(पर)[^.]{0,20}(लात|चोट|मुक्का)[^.]{0,60}(पीला|दर्द)
+  - (golpe|ca[íi]da|patada|manillar|balonazo)[^.]{0,40}(en (la )?(tripa|barriga|abdomen|est[óo]mago))[^.]{0,60}(dolor|le duele|p[áa]lid|v[oó]mit)
+  - (en (la )?(tripa|barriga|abdomen))[^.]{0,25}(golpe|manillar)[^.]{0,60}(dolor|p[áa]lid)
+  - ((blow|hit|kick|handlebar|punch))[^.]{0,35}(to|in)[^.]{0,15}(the )?(tummy|belly|stomach|abdomen)[^.]{0,60}(pain|pale|vomit)
+  - ((coup|choc|guidon))[^.]{0,35}(au|dans le)[^.]{0,15}(ventre|abdomen)[^.]{0,60}(douleur|p[âa]le)
+  - ((schlag|sto[sß]|lenker|tritt))[^.]{0,35}(in den|auf den)[^.]{0,12}(bauch)[^.]{0,60}(schmerz|blass)
+  - ((удар|руль))[^.]{0,35}(в живот)[^.]{0,60}(бол|бледн)
+  - ((ضربة|ركلة|المقود))[^.]{0,35}(في البطن)[^.]{0,60}(ألم|شحوب)
+  - ((pancada|golpe|guiador|pontap[ée]))[^.]{0,35}(na barriga|no abd[óo]men)[^.]{0,60}(dor|p[áa]lido)
+  - ((चोट|लात|हैंडल))[^.]{0,35}(पेट)[^.]{0,60}(दर्द|पीला)
+
+- id: smoke_inhalation
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "Ha respirado humo de un incendio: la vía aérea puede hincharse horas después — urgencias ahora"
+  reason_en: "Breathed in smoke from a fire: the airway can swell hours later — emergency now"
+  reason_fr: "A respiré de la fumée d'un incendie : les voies respiratoires peuvent gonfler — urgences"
+  reason_de: "Hat Rauch eingeatmet: die Atemwege können Stunden später anschwellen — Notaufnahme"
+  reason_ru: "Надышался дымом при пожаре: дыхательные пути могут отечь через часы — сейчас"
+  reason_ar: "استنشق دخان حريق: قد تتورم المجاري التنفسية بعد ساعات — الطوارئ الآن"
+  reason_pt: "Respirou fumo de um incêndio: a via aérea pode inchar horas depois — urgência"
+  reason_hi: "आग का धुआँ अंदर गया: कुछ घंटों में साँस की नली सूज सकती है — अभी आपातकाल"
+  patterns:
+  - (ha respirado|respir[óo]|trag[óo]|inhal[óo])[^.]{0,30}humo
+  - (humo)[^.]{0,30}(incendio|fuego|quemad)
+  - (breathed|inhaled|took)[^.]{0,25}(in )?smoke
+  - (smoke)[^.]{0,25}(from (a|the) fire|inhalation)
+  - (respir[ée]|inhal[ée])[^.]{0,25}(de la )?fum[ée]e
+  - (rauch)[^.]{0,25}(eingeatmet|einatmen)
+  - (надышал\w*|вдохнул\w*)[^.]{0,25}дым\w*
+  - (استنشق|شم)[^.]{0,25}(دخان)
+  - (respirou|inalou)[^.]{0,25}(fumo|fuma[çc]a)
+  - (धुआँ|धुआं)[^.]{0,25}(अंदर|साँस में|खींच)
+
+- id: bruising_and_pallor
+  level: urgent
+  source: puc_manual_pediatria
+  reason_es: "Moratones sin golpes con palidez o cansancio, o dolor de huesos que despierta de noche: hay que hacerle un análisis hoy"
+  reason_en: "Bruises without knocks plus pallor or tiredness, or bone pain that wakes at night: blood tests today"
+  reason_fr: "Bleus sans chocs avec pâleur ou fatigue, ou douleurs osseuses la nuit : bilan sanguin aujourd'hui"
+  reason_de: "Blaue Flecken ohne Sto[ss] mit Blässe oder Müdigkeit, oder nächtliche Knochenschmerzen: heute Blutbild"
+  reason_ru: "Синяки без ушибов с бледностью или усталостью, или ночные боли в костях: анализ крови сегодня"
+  reason_ar: "كدمات دون ارتطام مع شحوب أو تعب، أو ألم عظام يوقظه ليلا: تحليل دم اليوم"
+  reason_pt: "Nódoas negras sem pancadas com palidez ou cansaço, ou dor nos ossos à noite: análises hoje"
+  reason_hi: "बिना चोट के नील और पीलापन या थकान, या रात में हड्डी का दर्द: आज ख़ून की जाँच"
+  patterns:
+  - (nachts|in der nacht)[^.]{0,25}knochenschmerz\w*
+  - (ночью|по ночам)[^.]{0,25}(бол\w+ в костях|кости болят)
+  - (रात में)[^.]{0,25}(हड्डी|हड्डियों)[^.]{0,15}(में )?दर्द
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (नील|चोट के निशान|ख़ून के धब्बे)[^.]{0,50}(पीला|पीली|थकान|कमज़ोर)
+  - (हड्डी|हड्डियों)[^.]{0,20}(में)?[^.]{0,15}दर्द[^.]{0,35}(रात|जग)
+  - (синяк\w*)[^.]{0,50}(бледн\w*|уста[ёе]т|слабост)
+  - (blaue flecken|h[äa]matome)[^.]{0,50}(blass|m[üu]de|schlapp)
+  - (moratones|morados|hematomas|cardenales)[^.]{0,40}(sin (darse )?golpes|sin motivo|sin causa|sin haberse dado)
+  - (moratones|hematomas)[^.]{0,50}(p[áa]lid|cansad|sin fuerzas|decaíd)
+  - (dolor|le duelen)[^.]{0,20}(de )?(huesos|piernas)[^.]{0,40}(por la noche|de noche|le despierta)
+  - (bruis\w*)[^.]{0,40}(without|no)[^.]{0,20}(knock|bump|injury|reason|cause)
+  - (bruis\w*)[^.]{0,50}(pale|tired|exhausted|no energy)
+  - (bone pain|aching bones|leg pain)[^.]{0,40}(at night|wakes (him|her) up)
+  - (bleus|ecchymoses)[^.]{0,40}(sans (choc|raison|cause))
+  - (douleurs? (osseuse|aux jambes))[^.]{0,40}(la nuit|r[ée]veille)
+  - (blaue flecken|h[äa]matome)[^.]{0,40}(ohne (grund|sto[sß]|anlass))
+  - (knochenschmerz\w*)[^.]{0,35}(nachts|in der nacht)
+  - (синяк\w*|кровоподт[ёе]к\w*)[^.]{0,40}(без (причин|ушиб))
+  - (бол\w+ в костях)[^.]{0,35}(ночью)
+  - (كدمات|زرقة)[^.]{0,40}(بدون|دون)[^.]{0,20}(سبب|ارتطام|ضرب)
+  - (ألم)[^.]{0,20}(العظام|الساقين)[^.]{0,35}(ليلا|بالليل)
+  - (n[óo]doas negras|hematomas|roxos)[^.]{0,40}(sem (pancada|motivo|causa))
+  - (dor nos ossos)[^.]{0,35}([àa] noite)
+  - (नील|चोट के निशान)[^.]{0,40}(बिना|बग़ैर)[^.]{0,20}(चोट|कारण)
+  - (हड्डी\w*[^.]{0,15}दर्द)[^.]{0,35}(रात)
+
+- id: hypoglycaemia
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "Un diabético sudoroso, tembloroso o confuso: azúcar por boca ahora si está consciente, y llama"
+  reason_en: "A diabetic who is sweaty, shaky or confused: sugar by mouth now if awake, and call"
+  reason_fr: "Un diabétique en sueur, tremblant ou confus : du sucre par la bouche s'il est conscient, et appelez"
+  reason_de: "Ein Diabetiker, der schwitzt, zittert oder verwirrt ist: sofort Zucker oral, wenn wach, und anrufen"
+  reason_ru: "Диабетик в поту, с дрожью или спутанный: сахар в рот, если в сознании, и звоните"
+  reason_ar: "مريض سكري يتعرق أو يرتجف أو مشوش: سكر بالفم إن كان واعيا، واتصل"
+  reason_pt: "Um diabético suado, trémulo ou confuso: açúcar pela boca se estiver acordado, e ligue"
+  reason_hi: "मधुमेह वाला बच्चा पसीने में, काँपता या उलझन में: होश में हो तो चीनी दें, और फ़ोन करें"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (le ha bajado el az[úu]car|az[úu]car bajo|bajada de az[úu]car)
+  - (blood sugar|sugar)[^.]{0,20}(is )?(low|dropped|crashed)
+  - (diab[ée]tic\w*|diabetes|insulina)[^.]{0,60}(sudoroso|sudando|temblor\w*|tembloroso|confus\w*|mareado|p[áa]lido y frio)
+  - (sudoroso|temblor\w*|confus\w*)[^.]{0,60}(diab[ée]tic\w*|insulina)
+  - (bajada de az[úu]car|hipogluce\w*|azúcar bajo)
+  - (diabetic|diabetes|insulin)[^.]{0,60}(sweaty|shaky|shaking|trembl\w*|confus\w*|clammy)
+  - (hypo|hypoglyc\w*|low blood sugar|low sugar)
+  - (diab[ée]tique|insuline)[^.]{0,60}(sueur|tremble|confus)
+  - (hypoglyc[ée]mie)
+  - (diabetiker|diabetes|insulin)[^.]{0,60}(schwitzt|zittert|verwirrt)
+  - (unterzucker\w*|hypoglyk[äa]mie)
+  - (диабет\w*|инсулин)[^.]{0,60}(потеет|дрожит|спутан)
+  - (гипогликеми\w*|низкий сахар)
+  - (سكري|أنسولين)[^.]{0,60}(يتعرق|يرتجف|مشوش)
+  - (هبوط السكر|نقص السكر)
+  - (diab[ée]tic\w*|insulina)[^.]{0,60}(suado|trem|confus)
+  - (hipoglicemia|a[çc][úu]car baixo)
+  - (मधुमेह|डायबिटीज|इंसुलिन)[^.]{0,60}(पसीन|काँप|उलझन)
+  - (शुगर (कम|लो)|हाइपोग्लाइसीमिया)
+
+- id: sickle_cell_crisis
+  level: urgent
+  source: ecimed_pediatria_2016
+  reason_es: "Dolor fuerte en un niño con anemia falciforme: es una crisis, hay que tratarla hoy sin esperar"
+  reason_en: "Severe pain in a child with sickle cell disease: this is a crisis — treat today, do not wait"
+  reason_fr: "Douleur forte chez un enfant drépanocytaire : c'est une crise, à traiter aujourd'hui"
+  reason_de: "Starke Schmerzen bei einem Kind mit Sichelzellkrankheit: eine Krise — heute behandeln"
+  reason_ru: "Сильная боль у ребёнка с серповидноклеточной анемией: это криз — лечить сегодня"
+  reason_ar: "ألم شديد عند طفل بفقر الدم المنجلي: هذه نوبة — تعالج اليوم"
+  reason_pt: "Dor forte numa criança com anemia falciforme: é uma crise — tratar hoje"
+  reason_hi: "सिकल सेल वाले बच्चे में तेज़ दर्द: यह संकट है — आज इलाज"
+  patterns:
+  - (crise douloureuse)[^.]{0,40}(dr[ée]panocyt\w*)
+  - (dr[ée]panocyt\w*)[^.]{0,40}(crise)
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (crisis de dolor|crise de dor|crise douloureuse|schmerzkrise|болевой криз|نوبة ألم)[^.]{0,60}(falciforme|drepanocit|sickle|sichelzell|серповидно|المنجلي)
+  - (falciforme|drepanocit\w*|sickle cell|sichelzell\w*|серповидно\w*|المنجلي)[^.]{0,60}(crisis|crise|krise|криз|نوبة|أزمة)
+  - (anemia falciforme|drepanocit\w*|c[ée]lulas falciformes)[^.]{0,60}(dolor|duele|crisis)
+  - (dolor|crisis)[^.]{0,50}(anemia falciforme|drepanocit\w*)
+  - (sickle cell)[^.]{0,60}(pain|crisis|hurting)
+  - (pain|crisis)[^.]{0,50}(sickle cell)
+  - (dr[ée]panocytose|dr[ée]panocytaire)[^.]{0,60}(douleur|crise)
+  - (sichelzell\w*)[^.]{0,60}(schmerz|krise)
+  - (серповидно\w*|серповидн\w* анеми\w*)[^.]{0,60}(бол|криз)
+  - (فقر الدم المنجلي|المنجلية)[^.]{0,60}(ألم|نوبة|أزمة)
+  - (anemia falciforme|drepanocitose)[^.]{0,60}(dor|crise)
+  - (सिकल सेल)[^.]{0,60}(दर्द|संकट)
+
+- id: newborn_cold
+  level: urgent
+  source: nhm_in_imnci_chart_booklet
+  reason_es: "Un recién nacido frío que no entra en calor: puede ser una infección, hay que verlo hoy"
+  reason_en: "A newborn who is cold and will not warm up: it can be an infection — get seen today"
+  reason_fr: "Un nouveau-né froid qui ne se réchauffe pas : ce peut être une infection — aujourd'hui"
+  reason_de: "Ein Neugeborenes, das kalt ist und nicht warm wird: kann eine Infektion sein — heute"
+  reason_ru: "Новорождённый холодный и не согревается: может быть инфекция — сегодня"
+  reason_ar: "مولود بارد ولا يدفأ: قد تكون عدوى — يُعرض اليوم"
+  reason_pt: "Um recém-nascido frio que não aquece: pode ser uma infeção — ver hoje"
+  reason_hi: "नवजात ठंडा है और गर्म नहीं हो रहा: संक्रमण हो सकता है — आज दिखाइए"
+  patterns:
+  - (reci[ée]n nacid\w*|beb[ée] de (pocos )?d[íi]as|neonat\w*)[^.]{0,45}(est[áa] fr[íi]o|muy fr[íi]o|no entra en calor|no se calienta)
+  - (est[áa] fr[íi]o|no entra en calor)[^.]{0,45}(reci[ée]n nacid\w*|beb[ée])
+  - (newborn|baby)[^.]{0,40}(is )?(cold|chilly)[^.]{0,35}(won'?t warm|not warming|to touch)
+  - (nouveau.n[ée])[^.]{0,45}(est froid|ne se r[ée]chauffe pas)
+  - (neugeboren\w*)[^.]{0,45}(ist kalt|wird nicht warm)
+  - (новорожд\w*)[^.]{0,45}(холодн\w*|не согревается)
+  - (مولود\w*|رضيع\w*)[^.]{0,45}(بارد|لا يدفأ)
+  - (rec[ée]m.nascid\w*)[^.]{0,45}(est[áa] frio|n[aã]o aquece)
+  - (नवजात)[^.]{0,45}(ठंडा|गर्म नहीं)
+
+- id: unable_to_drink_or_feed
+  level: urgent
+  source: nhm_in_imnci_chart_booklet
+  reason_es: "No PUEDE beber ni agarrarse al pecho: es uno de los signos de peligro del IMNCI, hay que verlo hoy"
+  reason_en: "Unable to drink or breastfeed: it is one of the IMNCI danger signs — get seen today"
+  reason_fr: "Incapable de boire ou de téter : c'est un signe de danger de l'IMNCI — aujourd'hui"
+  reason_de: "Kann nicht trinken oder saugen: eines der IMNCI-Gefahrenzeichen — heute vorstellen"
+  reason_ru: "Не может пить или сосать грудь: один из опасных признаков IMNCI — сегодня"
+  reason_ar: "لا يستطيع الشرب أو الرضاعة: من علامات الخطر في IMNCI — يُعرض اليوم"
+  reason_pt: "Incapaz de beber ou mamar: é um sinal de perigo do IMNCI — ver hoje"
+  reason_hi: "पी या स्तनपान नहीं कर पा रहा: IMNCI का ख़तरे का संकेत — आज दिखाइए"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (no (consigue|puede|logra))[^.]{0,30}(agarrar\w*|coger)[^.]{0,15}(al |el )?pecho
+  - (n'arrive pas)[^.]{0,25}([àa] boire|[àa] t[ée]ter)
+  - (لا (تستطيع|يستطيع))[^.]{0,30}(الرضاعة|الشرب)
+  - no puede (beber|mamar|agarrar\w* (al|el) pecho|tragar l[íi]quidos)
+  - (no (consigue|logra))[^.]{0,20}(beber|mamar|agarrar\w* el pecho)
+  - (unable to|cannot|can'?t)[^.]{0,20}(drink|breastfeed|feed|suck)
+  - (ne (peut|arrive) (pas )?[àa]?)[^.]{0,20}(boire|t[ée]ter)
+  - (kann nicht)[^.]{0,20}(trinken|saugen|an die brust)
+  - (не может)[^.]{0,20}(пить|сосать|взять грудь)
+  - (لا يستطيع)[^.]{0,20}(الشرب|الرضاعة|الرضع)
+  - (n[aã]o (consegue|pode))[^.]{0,20}(beber|mamar)
+  - (पी नहीं|स्तनपान नहीं)[^.]{0,20}(पा रहा|कर पा)
+
+- id: vomits_everything
+  level: urgent
+  source: nhm_in_imnci_chart_booklet
+  reason_es: "Vomita TODO lo que toma y no retiene nada: es signo de peligro, hay que verlo hoy"
+  reason_en: "Vomits everything and keeps nothing down: it is a danger sign — get seen today"
+  reason_fr: "Vomit tout et ne garde rien : c'est un signe de danger — aujourd'hui"
+  reason_de: "Erbricht alles und behält nichts bei sich: ein Gefahrenzeichen — heute"
+  reason_ru: "Рвёт всем, что даёте, ничего не удерживает: опасный признак — сегодня"
+  reason_ar: "يتقيأ كل شيء ولا يحتفظ بشيء: علامة خطر — يُعرض اليوم"
+  reason_pt: "Vomita tudo e não retém nada: é sinal de perigo — ver hoje"
+  reason_hi: "जो भी देते हैं सब उल्टी कर देता है: ख़तरे का संकेत — आज दिखाइए"
+  patterns:
+  - (vomita|devuelve)[^.]{0,25}(todo|todo lo que)[^.]{0,40}(no retiene|no le queda|nada)?
+  - (no retiene nada|no le queda nada dentro)
+  - (vomits|throws up|brings up)[^.]{0,20}(everything|all of it)
+  - (keeps? nothing down|can'?t keep anything down)
+  - (vomit tout|rend tout)[^.]{0,30}(ne garde rien)?
+  - (erbricht alles|beh[äa]lt nichts)
+  - (рв[ёе]т всем|ничего не удерживает|вс[ёе] обратно)
+  - (يتقيأ كل شيء|يرجع كل شيء|لا يحتفظ)
+  - (vomita tudo|n[aã]o ret[ée]m nada)
+  - (सब उल्टी कर|कुछ भी नहीं टिक)
+
+- id: bilateral_oedema
+  level: urgent
+  source: nhm_in_imnci_chart_booklet
+  reason_es: "Los dos pies hinchados: es signo de peligro en un niño, hay que verlo hoy"
+  reason_en: "Both feet swollen: it is a danger sign in a child — get seen today"
+  reason_fr: "Les deux pieds gonflés : c'est un signe de danger chez l'enfant — aujourd'hui"
+  reason_de: "Beide Füße geschwollen: ein Gefahrenzeichen beim Kind — heute"
+  reason_ru: "Обе стопы отекли: опасный признак у ребёнка — сегодня"
+  reason_ar: "تورم القدمين معا: علامة خطر عند الطفل — يُعرض اليوم"
+  reason_pt: "Os dois pés inchados: é sinal de perigo numa criança — ver hoje"
+  reason_hi: "दोनों पैर सूजे हुए: बच्चे में ख़तरे का संकेत — आज दिखाइए"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (se le han hinchado|se le hincharon)[^.]{0,25}(los pies|los tobillos)[^.]{0,25}(los dos|ambos)?
+  - (les deux chevilles|les deux pieds)[^.]{0,25}(sont )?(gonfl[ée]s?)
+  - (los dos|ambos)[^.]{0,15}(pies|tobillos)[^.]{0,20}(hinchad|inflamad)
+  - ((pies|tobillos|piernas))[^.]{0,20}(hinchad|inflamad)[^.]{0,20}(los dos|ambos|las dos)
+  - (both)[^.]{0,12}(feet|ankles|legs)[^.]{0,20}(swollen|puffy)
+  - (les deux)[^.]{0,12}(pieds|chevilles)[^.]{0,20}(gonfl[ée]s)
+  - (beide)[^.]{0,12}(f[üu][sß]e|kn[öo]chel)[^.]{0,20}(geschwollen)
+  - (обе)[^.]{0,12}(стопы|ноги)[^.]{0,20}(отек|опухл)
+  - (القدمين|الرجلين)[^.]{0,20}(متورم|منتفخ)
+  - (os dois|ambos)[^.]{0,12}(p[ée]s|tornozelos)[^.]{0,20}(inchad)
+  - (दोनों)[^.]{0,12}(पैर|टख)[^.]{0,20}(सूज)
+
+- id: sudden_pelvic_pain_adolescent
+  level: urgent
+  source: ecimed_pediatria_2016
+  reason_es: "Dolor fuerte y repentino en el bajo vientre en una adolescente: hay que descartar una torsión hoy"
+  reason_en: "Sudden severe lower belly pain in an adolescent girl: a torsion has to be ruled out today"
+  reason_fr: "Douleur pelvienne brutale chez une adolescente : il faut écarter une torsion aujourd'hui"
+  reason_de: "Plötzlicher starker Unterbauchschmerz bei einer Jugendlichen: heute eine Torsion ausschließen"
+  reason_ru: "Внезапная сильная боль внизу живота у подростка: сегодня исключить перекрут"
+  reason_ar: "ألم مفاجئ شديد أسفل البطن عند مراهقة: يجب استبعاد التواء اليوم"
+  reason_pt: "Dor forte e repentina no baixo-ventre numa adolescente: descartar uma torção hoje"
+  reason_hi: "किशोरी के पेट के निचले हिस्से में अचानक तेज़ दर्द: आज मरोड़ की जाँच ज़रूरी"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (dolor)[^.]{0,20}(de )?(ovario|ovarios|regla)[^.]{0,30}(muy fuerte|fort[íi]simo|de repente|de golpe)
+  - (de repente|de golpe)[^.]{0,30}(dolor)[^.]{0,20}(de )?(ovario|ovarios)
+  - (douleur pelvienne)[^.]{0,30}(brutale|forte|soudaine)
+  - (dor p[ée]lvica)[^.]{0,30}(forte|repentina|s[úu]bita)
+  - (पेडू|पेट के निचले)[^.]{0,25}(में)?[^.]{0,15}(तेज़|अचानक)[^.]{0,15}दर्द
+  - (dolor)[^.]{0,30}(fuerte|intenso)[^.]{0,30}(bajo vientre|ovario|pelvis|bajo abdomen)[^.]{0,30}(de repente|s[úu]bito|de golpe)
+  - (de repente|de golpe)[^.]{0,30}(dolor)[^.]{0,25}(fuerte)?[^.]{0,20}(bajo vientre|ovario|pelvis)
+  - (sudden|severe)[^.]{0,25}(lower (belly|abdominal|tummy)|pelvic|ovarian)[^.]{0,20}pain
+  - (douleur)[^.]{0,25}(brutale|violente)[^.]{0,30}(bas.ventre|pelvienne|ovaire)
+  - (pl[öo]tzlich\w*)[^.]{0,25}(starke\w*)?[^.]{0,20}(unterbauchschmerz|unterleibsschmerz)
+  - (внезапн\w*)[^.]{0,25}(сильн\w*)?[^.]{0,20}(бол\w+ внизу живота)
+  - (ألم)[^.]{0,25}(مفاجئ|شديد)[^.]{0,30}(أسفل البطن|المبيض)
+  - (dor)[^.]{0,25}(forte|repentina)[^.]{0,30}(baixo.ventre|ov[áa]rio|p[ée]lvica)
+  - (अचानक)[^.]{0,25}(तेज़)?[^.]{0,20}(पेट के निचले|पेडू)[^.]{0,15}दर्द
+
+- id: visible_severe_wasting
+  level: urgent
+  source: nhm_in_imnci_chart_booklet
+  reason_es: "Adelgazamiento visible en un niño: es uno de los signos de peligro del IMNCI, hay que valorarlo hoy"
+  reason_en: "Visible severe thinness in a child: it is one of the IMNCI danger signs — assess today"
+  reason_fr: "Maigreur visible chez un enfant : c'est un signe de danger de l'IMNCI — à évaluer aujourd'hui"
+  reason_de: "Sichtbare starke Abmagerung bei einem Kind: ein IMNCI-Gefahrenzeichen — heute abklären"
+  reason_ru: "Видимое сильное истощение у ребёнка: опасный признак IMNCI — оценить сегодня"
+  reason_ar: "هزال شديد ظاهر عند طفل: من علامات الخطر في IMNCI — يُقيَّم اليوم"
+  reason_pt: "Emagrecimento visível numa criança: é um sinal de perigo do IMNCI — avaliar hoje"
+  reason_hi: "बच्चे में दिखने वाला भारी दुबलापन: IMNCI का ख़तरे का संकेत — आज जाँच"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
+  # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
+  - (ribs (are )?showing|ribs stick out|you can see his ribs|you can count his ribs)[^.]{0,60}(lost weight|losing weight|not gaining)
+  - (lost weight|losing weight)[^.]{0,60}(ribs (are )?showing|skin and bone)
+  - (muy delgad\w*|en los huesos|se le marcan (las )?costillas|piel y huesos)[^.]{0,60}(no gana peso|ha perdido peso|no engorda|est[áa] perdiendo peso)
+  - (no gana peso|ha perdido peso|no engorda)[^.]{0,60}(muy delgad\w*|se le marcan (las )?costillas|piel y huesos)
+  - (very thin|skin and bone|wasting away|ribs showing)[^.]{0,60}(not gaining weight|losing weight|lost weight)
+  - (not gaining weight|losing weight)[^.]{0,60}(very thin|skin and bone|ribs showing)
+  - (tr[èe]s maigre|que la peau et les os)[^.]{0,60}(ne prend pas de poids|perd du poids)
+  - (sehr d[üu]nn|nur haut und knochen)[^.]{0,60}(nimmt nicht zu|verliert gewicht)
+  - (очень худ\w*|кожа да кости)[^.]{0,60}(не набирает вес|теряет вес|худеет)
+  - (نحيف جدا|جلد وعظم|هزيل)[^.]{0,60}(لا يزيد وزنه|ينقص وزنه|لا يكتسب وزنا)
+  - (muito magr\w*|pele e osso)[^.]{0,60}(n[aã]o ganha peso|est[áa] a perder peso)
+  - (बहुत दुबल\w*|हड्डी दिख)[^.]{0,60}(वज़न नहीं बढ़|वजन घट)
 
 - id: bulging_fontanelle
   level: emergency

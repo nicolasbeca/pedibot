@@ -88,3 +88,69 @@ PARECIDOS = [
 def test_what_looks_like_it_but_is_not(triaje: Triage, lang: str, texto: str) -> None:
     r = triaje.assess(texto)
     assert r.level == "routine", f"[{lang}] «{texto}» → {r.level} {[m.id for m in r.matched]}"
+
+
+# ── y la segunda vuelta: la lista PUBLICADA, no la mía ───────────────────────────────────────
+#
+# Las de arriba las elegí yo. Éstas salen del índice del capítulo «Urgencias y emergencias» de
+# Pediatría. Diagnóstico y tratamiento —que está indexado entero— y de los signos de peligro del
+# cuadro IMNCI de la India, que es el que usan media Asia y media África.
+#
+# **23 de 31 salían rutina.** Entre ellas: la descarga eléctrica, el objeto metido en la nariz,
+# la lesión medular tras una caída, el golpe fuerte en el abdomen, el humo de un incendio, los
+# moratones sin golpes con palidez (leucemia), la hipoglucemia de un diabético, la crisis de
+# drepanocitosis, el recién nacido frío, y tres signos de peligro del IMNCI: no poder beber,
+# vomitar todo y los dos pies hinchados.
+#
+# Y una que se arregló al revés: «está muy delgado, se le marcan las costillas» salía como
+# dificultad respiratoria GRAVE, porque esa frase se parece al tiraje. Ahora entra por su puerta
+# —la desnutrición visible— y el tiraje sigue entrando por la suya.
+PUBLICADA = [
+    ('paro cardiorrespiratorio', 'es', 'no respira y no responde, le estoy haciendo boca a boca'),
+    ('paro cardiorrespiratorio', 'en', 'he is not breathing and I am doing cpr'),
+    ('electricidad', 'es', 'le ha dado la corriente con un enchufe'),
+    ('electricidad', 'en', 'he got an electric shock from a socket'),
+    ('cuerpo extraño nariz', 'es', 'se ha metido una pipa en la nariz'),
+    ('cuerpo extraño oído', 'es', 'se ha metido una bolita en el oído'),
+    ('cuerpo extraño nariz', 'en', 'he pushed a bead up his nose'),
+    ('traumatismo medular', 'es', 'se cayó de espaldas y no mueve las piernas'),
+    ('traumatismo medular', 'en', 'he fell on his back and cannot move his legs'),
+    ('traumatismo abdominal', 'es', 'le dio un golpe fuerte en la tripa con el manillar y está pálido'),
+    ('traumatismo torácico', 'es', 'recibió un golpe fuerte en el pecho y le cuesta respirar'),
+    ('inhalación de humo', 'es', 'ha respirado mucho humo en un incendio'),
+    ('inhalación de humo', 'en', 'he breathed in a lot of smoke from a fire'),
+    ('oncología', 'es', 'le salen moratones sin darse golpes y está muy pálido y cansado'),
+    ('oncología', 'en', 'she has bruises without any knocks and is very pale and tired'),
+    ('oncología', 'es', 'le duelen los huesos por la noche y se despierta llorando'),
+    ('hipoglucemia', 'es', 'es diabético y está sudoroso, tembloroso y confuso'),
+    ('hipoglucemia', 'en', 'he is diabetic and is sweaty, shaky and confused'),
+    ('drepanocitosis', 'es', 'tiene anemia falciforme y un dolor muy fuerte en las piernas'),
+    ('hipotermia neonatal', 'es', 'mi recién nacido está frío y no entra en calor'),
+    ('imnci: no puede beber', 'es', 'no puede beber ni agarrar el pecho'),
+    ('imnci: no puede beber', 'en', 'he is unable to drink or breastfeed'),
+    ('imnci: vomita todo', 'es', 'vomita todo lo que le doy, no retiene nada'),
+    ('imnci: vomita todo', 'en', 'he vomits everything, cannot keep anything down'),
+    ('imnci: edema de pies', 'es', 'tiene los dos pies hinchados'),
+    ('desnutrición grave', 'es', 'está muy delgado, se le marcan las costillas y no gana peso'),
+    ('torsión ovárica', 'es', 'mi hija de 14 años tiene un dolor muy fuerte en el bajo vientre de repente'),
+    ('CONTROL +', 'es', 'tiene fiebre y manchas que no desaparecen al presionar'),
+]
+
+
+@pytest.mark.parametrize("tema,lang,texto", PUBLICADA, ids=lambda x: str(x)[:36])
+def test_the_published_list_has_a_door_too(triaje: Triage, tema: str, lang: str, texto: str) -> None:
+    r = triaje.assess(texto)
+    assert r.level != "routine", f"[{lang}] {tema}: «{texto}» → rutina, sin ninguna regla"
+
+
+CONTROLES = [
+    ('es', 'se ha dado un golpe en la rodilla jugando y le ha salido un moratón'),
+    ('es', 'vomitó una vez después de merendar y ya está bien'),
+    ('es', 'mi hijo está delgado pero come bien y crece'),
+]
+
+
+@pytest.mark.parametrize("lang,texto", CONTROLES)
+def test_and_what_merely_resembles_them_stays_quiet(triaje: Triage, lang: str, texto: str) -> None:
+    r = triaje.assess(texto)
+    assert r.level == "routine", f"[{lang}] «{texto}» → {r.level} {[m.id for m in r.matched]}"
