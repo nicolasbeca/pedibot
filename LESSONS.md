@@ -241,3 +241,25 @@ dicho a un padre de un niño de cinco años que le toca la hexavalente.
 
 La comprobación se hace ahora dentro de cada grupo. **Una regla que obliga a falsear el dato para
 cumplirla está mal escrita, no mal el dato.**
+
+## L170 · Un hueco encontrado a mano quiere decir que hay más (17-sep-2026)
+El operador buscó «mi hijo cojea y tiene fiebre» y salía rutina. Lo arreglé, y ahí podía haber
+terminado. Lo que hice en su lugar fue preguntarme **cómo había entrado ese hueco** y buscar a los
+demás con el mismo método: sacar del índice los pasajes que ENUMERAN motivos de consulta, partir
+cada lista en frases y pasárselas al triaje como si las escribiera un padre. De 5.123 frases, 153
+sonaban graves y salían rutina; cinco eran huecos reales, uno de ellos a seis horas de perder un
+testículo.
+
+**La regla**: cuando alguien encuentra un fallo usando el producto, el fallo no es uno — es el
+primero de su clase que alguien vio. La pregunta no es «¿lo he arreglado?» sino «¿con qué medida
+habría salido solo, y qué más sale con esa misma medida?».
+
+## L171 · El aviso sin la explicación deja al padre a medias (17-sep-2026)
+Las reglas nuevas de la fontanela y del testículo saltaban perfectamente: banner rojo, «llama
+ahora». Y el texto debajo decía «no tengo información fiable sobre esto», teniendo el capítulo
+«Escroto agudo en la infancia» indexado desde agosto.
+
+El triaje y la búsqueda son dos sistemas distintos y se arreglan por separado: uno reconoce la
+frase del padre, el otro encuentra el documento. **Arreglar sólo el primero produce una alarma
+muda**, que asusta sin explicar y manda a urgencias sin decir a por qué. Desde hoy, cada regla
+nueva se prueba dos veces: que salte, y que la respuesta traiga algo detrás.
