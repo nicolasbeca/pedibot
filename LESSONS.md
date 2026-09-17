@@ -306,3 +306,21 @@ estaba en ninguna de las ocho, y es como se cuenta un abdomen agudo en cualquier
 **La regla**: una batería con una frase por caso mide que el camino existe, no que esté abierto.
 Para creerse una cobertura hacen falta varias maneras de decir lo mismo — y la caída del 30 % al
 9 % entre la tercera medida y la cuarta es la única señal fiable de que se está cerrando.
+
+## L175 · Después de ensanchar, medir por dónde se sale (17-sep-2026)
+En un día metí 863 patrones nuevos en el triaje, todos buscando avisos que faltaban. La medida
+que faltaba era la contraria, y encontró ocho falsos positivos en treinta y ocho frases escritas
+a propósito para engañar a las reglas nuevas. Seis eran mías de ese mismo día.
+
+Los dos más instructivos no eran de sentido sino de **frontera de palabra**: «a **bit** of shampoo
+in his eye» disparaba una mordedura de animal, y «the **bat**h» aportaba el murciélago; y al
+arreglarlo, «a bit of **the** biscuit fell in the bath» disparó un casi ahogamiento, porque «the»
+contiene «he» y eso bastaba para dar por hecho que quien se caía era el niño.
+
+**La regla**: un patrón nuevo se prueba dos veces, con la frase que debe cazar y con la frase que
+se le parece. Y en inglés, cualquier alternancia de palabras cortas —he, bit, bat, us, uk— sin
+`\b` es una trampa esperando: esas letras viven dentro de palabras corrientísimas.
+
+Y la segunda mitad de la lección: **un aviso que salta de más hace dos daños**. Manda a urgencias
+a quien no lo necesita, y enseña al padre a ignorar el rojo — que es el que algún día será de
+verdad. Por eso cada regla nueva entra con sus controles negativos escritos a la vez.

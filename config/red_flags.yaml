@@ -1185,7 +1185,12 @@ rules:
   # no sonríe, no le mira, está apagado— y la regla sólo conocía «somnoliento» e
   # «irritable», que son palabras de libro. La guía del Niño Jesús pone «adormilado,
   # decaído o muy irritable» entre los motivos de consulta.
-  - (no (quiere )?(juega|jugar)|no sonr[íi]e|no me mira|no responde a nada|est[áa] ido|est[áa] apagad[oa]|apátic[oa]|sin ganas de nada|ni se mueve del sof[áa])
+  # 17-sep-2026: «no juega con los otros niños, es tímido» y «no me mira cuando ve los
+  # dibujos» salían como decaimiento. La señal no es dejar de hacer UNA cosa: es el estado
+  # general —no juega a nada, no sonríe, está apagado—, y «no me mira» pide los ojos.
+  - (no (quiere )?(juega|jugar))[^.]{0,30}(a nada|con nada|ni quiere|est[áa] (apagad|decaíd|raro|ido))
+  - (no sonr[íi]e|no responde a nada|no reacciona a nada|est[áa] ido|est[áa] apagad[oa]|apátic[oa]|sin ganas de nada|ni se mueve del sof[áa])
+  - (no me mira)[^.]{0,25}(a los ojos|cuando le hablo|est[áa] ido)
   - (decaíd[oa]|abatid[oa]|flojit[oa])[^.]{0,25}(y|,)?
   - (not (playing|smiling|interested)|does ?n'?t want to play|wo?n'?t play|just lies there|listless|lethargic|not himself|not herself|no interest in anything)
   - (ne (joue|sourit) (plus|pas)|ne veut pas jouer|ne r[ée]agit plus|apathique|il est amorphe|elle est amorphe|sans r[ée]action)
@@ -1313,10 +1318,14 @@ rules:
   # 17-sep-2026: «no bebe nada desde ayer» salía RUTINA en seis lenguas —funcionaba en
   # ruso y árabe y en ninguna más—, porque la negación es la señal y el guardián la comía.
   # Se exige totalidad o tiempo: «no bebe suficiente agua» no es esto.
-  - no (bebe|toma|quiere beber|ha bebido)[^.]{0,20}(nada|l[íi]quidos?|agua)[^.]{0,30}(desde|en todo|todo el d[íi]a|ni)?
+  # 17-sep-2026: «no bebe mucha agua, prefiere la leche» salía como deshidratación. La
+  # señal es que no bebe NADA, no que beba poca agua o prefiera otra cosa.
+  - no (bebe|toma|quiere beber|ha bebido)[^.]{0,12}(nada|ni agua|l[íi]quidos?)(?![^.]{0,25}(much|suficiente|bastante|demasiad))
+  - no (bebe|toma)[^.]{0,15}(nada)[^.]{0,30}(desde|en todo el d[íi]a|ni una gota)
   - (lleva|llev[óo])[^.]{0,20}(sin (beber|tomar (nada|l[íi]quidos)))
   - (se niega|rechaza)[^.]{0,20}(a )?(beber|el agua|los l[íi]quidos|el biber[óo]n)
-  - (has ?n'?t|have ?n'?t|not|won'?t|refus\w*)[^.]{0,20}(drunk|drinking|drink)[^.]{0,25}(anything|any fluids|water|since|all day)
+  - (has ?n'?t|have ?n'?t|will not|won'?t|refus\w*)[^.]{0,20}(drunk|drinking|drink)[^.]{0,25}(anything|any fluids|at all|since yesterday|all day)
+  - (not drinking)[^.]{0,15}(anything|at all)
   - (ne (boit|veut boire)|n'a rien bu)[^.]{0,25}(rien|d'eau|depuis|de la journ[ée]e)?
   - (refuse)[^.]{0,15}de boire
   - (trinkt)[^.]{0,25}(nichts|nicht mehr|kaum etwas)[^.]{0,25}(seit|den ganzen tag)?
@@ -2622,12 +2631,18 @@ rules:
   - (не может|не мог)[^.]{0,20}(наклонить|повернуть|согнуть)[^.]{0,15}(шею|голову|голов)
   - (шея|затылочн\w+)[^.]{0,20}(не гнётся|не гнется|ригидн|напряжен)
   - (गर्दन)[^.]{0,25}(नहीं झुका|नहीं मोड़|अकड़|कड़ी|झुका नहीं)
-  - rigidez (de |en )?(la )?(nuca|cuello)
+  - rigidez (de |en )?(la )?(nuca|cuello)(?![^.]{0,45}(dormi|almohada|postura))
+  # 17-sep-2026: aquí había un patrón mío que hacía de «tiene tortícolis» una emergencia.
+  # La tortícolis no es meningitis: es de lo más común y se va sola. Lo cazó una prueba que
+  # ya existía, y la regla se queda sin ella — lo que sí vale es la rigidez que NO viene de
+  # haber dormido mal, y eso ya está escrito arriba.
   - (nuca|cuello) (r[ií]gid|t[ie]s[oa]|agarrotad|duro)
   - no puede (bajar|doblar|mover) (la |el )?(cabeza|barbilla|cuello|nuca)
   - no consigue (bajar|doblar) (la |el )?(barbilla|cuello)
   - le duele (al |cuando )?(bajar|doblar) (la |el )?(cabeza|cuello)
-  - stiff neck
+  # 17-sep-2026: «woke up with a stiff neck from sleeping badly» salía como meningitis.
+  # La tortícolis de dormir mal es de lo más común que hay, y se cuenta con esas palabras.
+  - stiff neck(?![^.]{0,45}(slept|sleeping|sleep|pillow|wrong position|awkward))
   - (neck is|neck's|neck) stiff
   - neck stiffness
   - can(?:'?t| ?not) (bend|lower|move|touch) (his|her|their|the) (neck|head|chin)
@@ -3082,7 +3097,10 @@ rules:
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
   - mordedura de (un )?(animal|perro|gato)
-  - animal bite|dog bite|cat bite
+  # 17-sep-2026: «a bit of shampoo in his eye» disparaba una mordedura de animal: el
+  # patrón cazaba «bit» suelto, y «a bit of» es media lengua inglesa.
+  - (animal|dog|cat|rat|monkey) bite
+  - (bitten|was bit) by[^.]{0,20}(a )?(dog|cat|animal|rat|monkey|fox|snake)
   - morsure (d'un )?(animal|chien|chat)
   - (tier|hunde|katzen)biss
   - укус (животного|собаки|кошки)
@@ -3092,7 +3110,11 @@ rules:
   - "(perro|gato|murci[ée]lago|mono|zorro|rata).{0,40}(mordi|ha mordido)"
   - "(mordi|ha mordido).{0,40}(perro|gato|murci[ée]lago|mono|zorro|rata)"
   - "(dog|cat|bat|monkey|fox|rat).{0,40}(bit|bitten)"
-  - "(bit|bitten|bite from).{0,40}(dog|cat|bat|monkey|fox|rat)"
+  # 17-sep-2026: dos trampas en una línea. «A BIT of shampoo» cazaba «bit» y «the BATh»
+  # cazaba «bat» (murciélago), así que un poco de champú en el ojo salía como mordedura con
+  # riesgo de rabia. Fronteras de palabra y la construcción entera de la mordedura.
+  - "(bitten|was bit|bite) (by|from)[^.]{0,30}\b(dog|cat|bat|monkey|fox|rat|ferret)\b"
+  - "\b(dog|cat|bat|monkey|fox|rat)\b[^.]{0,25}(bit|bites|bitten) (him|her|them|my|me)"
   - "(chien|chat|chauve-souris|singe|renard).{0,40}(mordu|mord)"
   - "(mordu|mord).{0,40}(chien|chat|chauve-souris|singe|renard)"
   - "(hund|katze|fledermaus|affe|fuchs|ratte).{0,40}(gebissen|biss)"
@@ -3433,9 +3455,16 @@ rules:
   reason_pt: "Caiu na água: mesmo que pareça bem, ver hoje"
   reason_hi: "पानी में गिर गया: ठीक लगे तब भी आज दिखाइए"
   patterns:
-  - (se (cay[óo]|ha ca[íi]do)|se metió)[^.]{0,30}(a|en) (la )?(piscina|agua|ba[ñn]era|mar|estanque)
+  # 17-sep-2026: «se metió en la bañera él solo y se rió» salía como casi ahogamiento.
+  # Meterse en la bañera es bañarse: lo que cuenta es CAERSE, o que lo saquen del agua.
+  - (se (cay[óo]|ha ca[íi]do)|cay[óo]|se hundi[óo])[^.]{0,30}(a|en) (la )?(piscina|agua|ba[ñn]era|mar|estanque|pozo)
   - (casi se ahoga|estuvo a punto de ahogarse|lo sacamos del agua|la sacamos del agua)
-  - (fell)[^.]{0,25}(in|into)[^.]{0,20}(the )?(pool|water|bath|sea|pond)
+  # 17-sep-2026: «a bit of the biscuit fell in the bath» salía como casi ahogamiento. El
+  # inglés no marca el sujeto con un reflexivo como el castellano («SE cayó»), así que hay
+  # que pedirlo: lo que importa es que se caiga el niño, no el juguete.
+  # y con frontera de palabra: «t-HE biscuit» contenía «he» y bastaba para dar el sujeto
+  - (\b(he|she|they)\b|the (baby|child|toddler|little one)|my (son|daughter|baby|child)|\btoddler\b)[^.]{0,25}(fell|has fallen|slipped)[^.]{0,20}(in|into)[^.]{0,15}(the )?(pool|water|bath|sea|pond)
+  - (fell|slipped) (in|into)[^.]{0,15}(the )?(pool|sea|pond)
   - (nearly drowned|almost drowned|pulled (him|her) out of the water)
   - (est tomb[ée])[^.]{0,25}(dans)[^.]{0,20}(la )?(piscine|eau|baignoire)
   - (a failli se noyer)
