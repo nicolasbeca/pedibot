@@ -2409,6 +2409,47 @@ rules:
   - "(mordeu|mordida de).{0,40}(c[ãa]o|cachorro|gato|morcego|macaco)"
   - "(कुत्ते|कुत्ता|बिल्ली|चमगादड़|बंदर|लोमड़ी).{0,40}(काट)"
   - "(काट).{0,40}(कुत्ते|कुत्ता|बिल्ली|चमगादड़|बंदर)"
+# 17-sep-2026, lo probó el operador en la web: «mi hijo cojea y tiene fiebre» salía RUTINA y
+# encima con un «la cojera no aparece en estas fuentes». No había ninguna regla: los `limp` que
+# había en este fichero eran «limp» de flojo y «limpieza» de producto de limpieza.
+#
+# Por qué urgente y no emergencia, con lo que dice el corpus: la sinovitis transitoria —la causa
+# más frecuente de cojera en un niño pequeño— cursa con temperatura POR DEBAJO de 38 ºC, y su
+# diagnóstico diferencial principal es la artritis séptica; el manual pide «siempre descartar
+# infecciones o fracturas ocultas, que son los cuadros más urgentes de diagnosticar». Cojera más
+# fiebre es la combinación que hay que ver el mismo día. Cojera sola, no: casi siempre es una
+# piedra en el zapato o un golpe que no contó, y un aviso que salta siempre deja de leerse.
+#
+# En inglés, ojo: «limp» a secas es FLOJO, y de eso se ocupa `drowsy_irritable`. Aquí se exige
+# «limping», «limps» o «a limp», que es andar cojeando y no otra cosa.
+- id: limp_with_fever
+  level: urgent
+  source: puc_manual_pediatria
+  reason_es: "Cojera con fiebre: hay que descartar una infección de la articulación o del hueso hoy mismo"
+  reason_en: "Limping with a fever: a joint or bone infection has to be ruled out today"
+  reason_fr: "Boiterie avec fièvre : il faut écarter aujourd'hui une infection articulaire ou osseuse"
+  reason_de: "Hinken mit Fieber: eine Gelenk- oder Knocheninfektion muss heute ausgeschlossen werden"
+  reason_ru: "Хромота с температурой: сегодня же нужно исключить инфекцию сустава или кости"
+  reason_ar: "العرج مع الحمى: يجب استبعاد التهاب المفصل أو العظم اليوم"
+  reason_pt: "Coxear com febre: é preciso descartar hoje uma infeção da articulação ou do osso"
+  reason_hi: "लंगड़ाना और बुखार: जोड़ या हड्डी का संक्रमण आज ही जाँचना ज़रूरी है"
+  patterns:
+  - (cojea|cojeando|cojera|renquea|no (apoya|quiere apoyar)[^.]{0,20}(pie|pierna|piern)|no quiere (andar|caminar|ponerse de pie))[^.]{0,80}(fiebre|d[ée]cimas|temperatura|3[89][.,]?\d? ?°?)
+  - (fiebre|d[ée]cimas|temperatura|3[89][.,]?\d? ?°?)[^.]{0,80}(cojea|cojeando|cojera|renquea|no (apoya|quiere apoyar)[^.]{0,20}(pie|pierna|piern)|no quiere (andar|caminar|ponerse de pie))
+  - (limping|limps|walking with a limp|a limp\b|(wo?n'?t|will not|refuses to|can'?t) (walk|stand|put weight|bear weight)|not (bearing|putting) weight)[^.]{0,80}(fever|temperature|3[89] ?°?|10[0-4] ?°?)
+  - (fever|temperature|3[89] ?°?|10[0-4] ?°?)[^.]{0,80}(limping|limps|walking with a limp|a limp\b|(wo?n'?t|will not|refuses to|can'?t) (walk|stand|put weight|bear weight)|not (bearing|putting) weight)
+  - (boite|boitement|boiterie|clopine|(ne veut pas|refuse de|n'arrive pas [àa]) (marcher|se lever)|n'appuie pas)[^.]{0,80}(fi[eè]vre|temp[ée]rature|3[89] ?°?)
+  - (fi[eè]vre|temp[ée]rature|3[89] ?°?)[^.]{0,80}(boite|boitement|boiterie|clopine|(ne veut pas|refuse de|n'arrive pas [àa]) (marcher|se lever)|n'appuie pas)
+  - (hinkt|humpelt|lahmt|will nicht (laufen|gehen|auftreten)|kann nicht (laufen|gehen|auftreten)|belastet das bein nicht)[^.]{0,80}(fieber|temperatur|3[89] ?°?)
+  - (fieber|temperatur|3[89] ?°?)[^.]{0,80}(hinkt|humpelt|lahmt|will nicht (laufen|gehen|auftreten)|kann nicht (laufen|gehen|auftreten)|belastet das bein nicht)
+  - (хромает|прихрамывает|хромота|не наступает на ногу|не (хочет|может) (ходить|вставать|наступать))[^.]{0,80}(температур|жар|лихорад|3[89])
+  - (температур|жар|лихорад|3[89])[^.]{0,80}(хромает|прихрамывает|хромота|не наступает на ногу|не (хочет|может) (ходить|вставать|наступать))
+  - (يعرج|تعرج|يعرح|العرج|يمشي بعرج|ما (يقدر|يبي|يريد|بده) (يمشي|يقف)|ما يدوس|لا (يستطيع|يريد) (المشي|الوقوف))[^.]{0,80}(حمى|حرار|سخون|حماه|3[89])
+  - (حمى|حرار|سخون|حماه|3[89])[^.]{0,80}(يعرج|تعرج|يعرح|العرج|يمشي بعرج|ما (يقدر|يبي|يريد|بده) (يمشي|يقف)|ما يدوس|لا (يستطيع|يريد) (المشي|الوقوف))
+  - (coxeia|coxeando|manca\b|mancando|claudica|n[aã]o (quer|consegue) (andar|caminhar|p[oô]r o p[ée])|n[aã]o apoia)[^.]{0,80}(febre|temperatura|3[89] ?°?)
+  - (febre|temperatura|3[89] ?°?)[^.]{0,80}(coxeia|coxeando|manca\b|mancando|claudica|n[aã]o (quer|consegue) (andar|caminhar|p[oô]r o p[ée])|n[aã]o apoia)
+  - (लंगड़ा|लँगड़ा|लगंड़ा|चल नहीं पा|चलने से मना|पैर (पर वज़न|नहीं रख|टेक नहीं))[^.]{0,80}(बुख|तापमान|3[89])
+  - (बुख|तापमान|3[89])[^.]{0,80}(लंगड़ा|लँगड़ा|लगंड़ा|चल नहीं पा|चलने से मना|पैर (पर वज़न|नहीं रख|टेक नहीं))
 - id: bleeding_with_fever
   level: urgent
   source: who_en_dengue_and_severe_dengue

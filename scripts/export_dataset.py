@@ -180,6 +180,17 @@ def main() -> int:
         newline="\n",
     )
 
+    # Y el mismo conjunto, servido por la web (17-sep-2026). Estaba sólo en el repositorio,
+    # así que la frase «cualquiera puede cogerlo» era verdad únicamente para quien supiera que
+    # existe un repositorio. Ahora se descarga desde la propia portada, que es donde se promete.
+    publico = ROOT / "web" / "site" / "public" / "dataset"
+    publico.mkdir(parents=True, exist_ok=True)
+    for nombre in ("sources.csv", "sources.json", "LICENSE", "README.md"):
+        origen = OUT / nombre
+        if origen.exists():
+            (publico / nombre).write_bytes(origen.read_bytes())
+    print(f"  publicado en la web: {publico.relative_to(ROOT)}")
+
     print(f"{len(rows)} documentos → {OUT}")
     print(f"  organismos: {len(by_org)} · idiomas: {len(by_lang)} · temas: {len(by_topic)}")
     print(f"  con enlace: {with_url}/{len(rows)} · con año: {with_year}/{len(rows)}")

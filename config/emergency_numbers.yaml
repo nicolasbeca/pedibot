@@ -26,6 +26,20 @@ IN: {emergency: "112", poison: null, mental: "Tele-MANAS 14416"}
 FR: {emergency: "15 / 112", poison: "Centre antipoison (regional)", mental: "3114"}
 IT: {emergency: "112", poison: "Centro Antiveleni (regional)", mental: "Telefono Amico 02 2327 2327"}
 DE: {emergency: "112", poison: "Giftnotruf (regional)", mental: "0800 111 0 111"}
+# 17-sep-2026. Lo vio el operador: «en alemán hay pocos números de emergencia, cuando el alemán
+# es idioma oficial en varios países». El fichero sólo conocía Alemania. Cada número de aquí abajo
+# se leyó en la página del organismo que lo publica, no de memoria:
+#   AT  Vergiftungsinformationszentrale (goeg.at) · Telefonseelsorge 142 · Rat auf Draht 147
+#   CH  Tox Info Suisse 145 (toxinfo.ch) · Die Dargebotene Hand 143 · Pro Juventute 147
+#   LU  Centre Antipoisons 8002 5500 (lo atiende el belga) · SOS Détresse 45 45 45 (454545.lu)
+#   BE  Antigifcentrum 070 245 245 · Zelfmoordlijn 1813 · Centre de Prévention du Suicide
+# Liechtenstein va sólo con el 112: no he encontrado publicado que Tox Info Suisse lo cubra, y
+# un teléfono de urgencias inventado es peor que un hueco.
+AT: {emergency: "144 / 112", poison: "01 406 43 43 (Vergiftungsinformationszentrale, 0-24 h)", mental: "142 (Telefonseelsorge) · 147 (Rat auf Draht, niños y adolescentes)"}
+CH: {emergency: "144 / 112", poison: "145 (Tox Info Suisse, 24/7)", mental: "143 (Die Dargebotene Hand) · 147 (Pro Juventute, niños y adolescentes)"}
+LI: {emergency: "112", poison: null, mental: null}
+LU: {emergency: "112", poison: "8002 5500 (Centre Antipoisons)", mental: "45 45 45 (SOS Détresse)"}
+BE: {emergency: "112", poison: "070 245 245 (Centre Antipoisons / Antigifcentrum)", mental: "1813 (Zelfmoordlijn) · 0800 32 123 (Centre de Prévention du Suicide)"}
 GB: {emergency: "999 / 112", poison: "NHS 111", mental: "Samaritans 116 123"}
 RU: {emergency: "103 / 112", poison: "токсикологический центр (региональный)", mental: null}
 KZ: {emergency: "103 / 112", poison: "токсикологический центр (региональный)", mental: null}

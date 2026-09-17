@@ -1,0 +1,49 @@
+---
+/**
+ * Por qué existe esto (17-sep-2026).
+ *
+ * El operador, después de leer la portada entera: *«tenemos que darle un enfoque un poco más
+ * altruista a la web; sigue pareciendo una empresa»*. Tenía razón, y la falta era de contenido y
+ * no de estilo: la portada explicaba muy bien **qué hace** y **cómo se paga**, y en ninguna parte
+ * decía **por qué existe ni para quién**. Una web que sólo explica su producto suena a producto.
+ *
+ * Esto no es un eslogan ni una declaración de intenciones: son tres hechos que el lector puede
+ * comprobar sin salir del sitio. Que es gratis y sin cuenta lo ve al usarlo; los ocho idiomas
+ * están en el menú, con los de menos material por delante; y el catálogo de fuentes está en
+ * dominio público (CC0), tal como dice `dataset/LICENSE`, con su enlace de descarga aquí mismo.
+ *
+ * Va DESPUÉS del chat y de las lenguas, no antes: quien entra a las tres de la mañana viene a
+ * preguntar, no a leer por qué existimos. Esto es para quien baja.
+ */
+import { t, langPrefix, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const pref = langPrefix(lang);
+---
+
+<section class="block why">
+  <div class="wrap">
+    <p class="eyebrow">{s.why_eyebrow}</p>
+    <h2 style="margin-top:8px">{s.why_h2}</h2>
+    <p class="lede">{s.why_p}</p>
+    <ul class="hechos">
+      <li>{s.why_f1}</li>
+      <li>{s.why_f2}</li>
+      <li>{s.why_f3} <a href="/dataset/sources.csv" download>CSV</a> · <a href={`${pref}/sources`}>{s.nav_sources}</a></li>
+    </ul>
+  </div>
+</section>
+
+<style>
+  .why .lede { max-width: 62ch; }
+  .hechos {
+    list-style: none; padding: 0; margin: 18px 0 0;
+    display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  .hechos li {
+    border-inline-start: 3px solid var(--coral); padding: 2px 0 2px 12px;
+    font-size: .94rem; color: var(--ink-2);
+  }
+  .hechos a { white-space: nowrap; }
+</style>

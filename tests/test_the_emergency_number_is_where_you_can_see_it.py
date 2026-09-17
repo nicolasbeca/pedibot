@@ -120,3 +120,34 @@ def test_the_site_data_matches_the_config() -> None:
     """La web lee un JSON exportado; si se queda viejo, la página miente con cara de verdad."""
     datos = json.loads((RAIZ / "web/site/src/data/lang_countries.json").read_text(encoding="utf-8"))
     assert datos == IDIOMA_PAISES, "lang_countries.json no es lo que dice config/lang_countries.yaml"
+
+
+# ── un idioma oficial en varios países no puede abrir con uno solo ───────────────────────────
+#: Lo vio el operador el 17-sep-2026: «en alemán hay pocos números de emergencia, cuando el
+#: alemán es idioma oficial en varios países». Tenía razón y la falta era del dato, no de la
+#: pantalla: el fichero sólo conocía Alemania. Al añadir Austria, Suiza, Liechtenstein,
+#: Luxemburgo y Bélgica se arregla también el francés, que se quedaba sin Bélgica, Suiza y
+#: Luxemburgo teniendo el francés de oficial en los tres.
+OFICIALES = {
+    "de": ("DE", "AT", "CH", "LI", "LU", "BE"),
+    "fr": ("FR", "BE", "CH", "LU", "CA"),
+    "es": ("ES", "MX", "AR"),
+    "pt": ("PT", "BR"),
+    "en": ("GB", "US", "IE"),
+    "ar": ("SA", "AE", "EG"),
+}
+
+
+@pytest.mark.parametrize("lang,paises", sorted(OFICIALES.items()))
+def test_a_language_opens_with_every_country_that_speaks_it(lang: str, paises: tuple[str, ...]):
+    faltan = [cc for cc in paises if cc not in IDIOMA_PAISES[lang]]
+    assert not faltan, f"{lang}: no abre con {faltan}, y ahí ese idioma es oficial"
+
+
+@pytest.mark.parametrize("cc", ["AT", "CH", "LI", "LU", "BE"])
+def test_the_new_countries_carry_a_number_that_was_read_from_its_own_source(cc: str):
+    """No se escriben de memoria: cada uno se leyó en la página del organismo que lo publica
+    (Tox Info Suisse, Rat auf Draht, Vergiftungsinformationszentrale, Antigifcentrum, SOS
+    Détresse, Zelfmoordlijn, Centre de Prévention du Suicide, Telefonseelsorge)."""
+    assert cc in NUMEROS, f"{cc} no está en emergency_numbers.yaml"
+    assert NUMEROS[cc].get("emergency"), f"{cc}: sin número de emergencias"

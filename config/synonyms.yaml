@@ -11,6 +11,14 @@
 # Arabic triggers appear bare and with the article: the match is a prefix on the token, and
 # "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
+  # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
+  # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
+  # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
+  limping: [claudicación, cojera, artritis séptica, sinovitis de cadera, osteomielitis]
+  limps: [claudicación, cojera, artritis séptica]
+  won't walk: [claudicación, cojera, artritis séptica]
+  refuses to walk: [claudicación, cojera, artritis séptica]
+  not bearing weight: [claudicación, cojera, artritis séptica]
   # 13-sep-2026: «no gana peso» iba a TCA, reflujo, cólicos, drepanocitosis o polio
   not gaining weight: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   isn't gaining weight: [weight gain, gaining weight, centile lines, underweight, malnutrition]
@@ -380,6 +388,17 @@ en:
   - colegio
   - contagio
 es:
+  # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
+  # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
+  # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
+  cojea: [claudicación, cojera, artritis séptica, sinovitis de cadera, osteomielitis]
+  cojear: [claudicación, cojera, artritis séptica]
+  cojeando: [claudicación, cojera, artritis séptica]
+  cojera: [claudicación, cojera, artritis séptica, sinovitis de cadera, osteomielitis]
+  renquea: [claudicación, cojera, artritis séptica]
+  no apoya: [claudicación, cojera, artritis séptica]
+  no quiere andar: [claudicación, cojera, artritis séptica]
+  no quiere caminar: [claudicación, cojera, artritis séptica]
   # 13-sep-2026: «no gana peso» iba a los trastornos de la conducta alimentaria (la clave «peso»
   # arrastra «conducta alimentaria»). Hay ficha en castellano —la de la OMS sobre malnutrición y
   # la de sus patrones de crecimiento—, así que va aquí y no al puente al inglés.
@@ -945,6 +964,12 @@ fr_en:
   - burn
   - scald
 de_es:
+  # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
+  # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
+  # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
+  hinkt: [claudicación, cojera, artritis séptica]
+  humpelt: [claudicación, cojera, artritis séptica]
+  will nicht laufen: [claudicación, cojera, artritis séptica]
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   stuhlgang:
@@ -1829,6 +1854,12 @@ de_en:
   - emergency department
   - emergency
 ru_es:
+  # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
+  # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
+  # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
+  хромает: [claudicación, cojera, artritis séptica]
+  хромота: [claudicación, cojera, artritis séptica]
+  не наступает: [claudicación, cojera, artritis séptica]
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   стул$:
@@ -2646,6 +2677,12 @@ ru_en:
   - breathing
   - difficulty breathing
 ar_es:
+  # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
+  # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
+  # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
+  يعرج: [claudicación, cojera, artritis séptica]
+  العرج: [claudicación, cojera, artritis séptica]
+  ما يمشي: [claudicación, cojera, artritis séptica]
   # 16-sep-2026, franco-árabe (el árabe tecleado en letras latinas, lo normal en el Golfo
   # y en Egipto): las diez preguntas de prueba no encontraban NADA. Las claves van en la
   # forma que deja el normalizador: sin cifras, sin letras repetidas y con o→u, e→i.
@@ -3934,6 +3971,12 @@ ar_en:
   وقت الشاش:
   - screen time
 pt_es:
+  # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
+  # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
+  # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
+  coxeia: [claudicación, cojera, artritis séptica]
+  manca: [claudicación, cojera, artritis séptica]
+  não quer andar: [claudicación, cojera, artritis séptica]
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   cocô:
@@ -4749,6 +4792,12 @@ pt_en:
   - emergency department
   - emergency
 hi_es:
+  # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
+  # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
+  # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
+  लंगड़ा: [claudicación, cojera, artritis séptica]
+  langda: [claudicación, cojera, artritis séptica]
+  chal nahi: [claudicación, cojera, artritis séptica]
   # 16-sep-2026: hindi en letras latinas, que es como teclea media India. Estas tres
   # faltaban y sus preguntas no encontraban nada.
   vajan:
@@ -6402,6 +6451,12 @@ de:
 # de buscar el concepto —su lista de términos ingleses en fr_en— en las tablas de
 # las otras cinco lenguas y copiar la lista española que ya estaba escrita.
 fr_es:
+  # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
+  # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
+  # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
+  boite: [claudicación, cojera, artritis séptica]
+  boiterie: [claudicación, cojera, artritis séptica]
+  ne veut pas marcher: [claudicación, cojera, artritis séptica]
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   selles:

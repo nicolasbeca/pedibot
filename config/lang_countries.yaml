@@ -23,8 +23,8 @@
 
 en: [GB, US, IE, CA, AU, NZ, IN]
 es: [ES, MX, AR, CO, CL, PE]
-fr: [FR, CA, MA, DZ, TN, LB]
-de: [DE]
+fr: [FR, BE, CH, LU, CA, MA, DZ, TN, LB]
+de: [DE, AT, CH, LI, LU, BE]
 ru: [RU, BY, KZ, UA]
 ar: [SA, AE, EG, QA, KW, BH, OM, JO, LB, MA, DZ, TN]
 pt: [PT, BR]

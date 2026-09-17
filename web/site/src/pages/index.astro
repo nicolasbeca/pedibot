@@ -5,6 +5,7 @@ import Tongues from '../components/Tongues.astro';
 import MyCountry from '../components/MyCountry.astro';
 import Alerts from '../components/Alerts.astro';
 import PopularGuides from '../components/PopularGuides.astro';
+import Why from '../components/Why.astro';
 import Sections from '../components/Sections.astro';
 import { t } from '../i18n';
 const lang = 'en';
@@ -17,5 +18,6 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebApplication', na
   <Alerts lang={lang} />
   <PopularGuides lang={lang} />
   <MyCountry lang={lang} />
+  <Why lang={lang} />
   <Sections lang={lang} />
 </Base>
