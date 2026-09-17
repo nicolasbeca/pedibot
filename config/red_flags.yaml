@@ -2158,6 +2158,26 @@ rules:
   reason_pt: "Não consegue engolir e baba: a via aérea pode estar comprometida"
   reason_hi: "निगल नहीं पा रहा और लार बह रही है: साँस का रास्ता ख़तरे में हो सकता है"
   patterns:
+  # 17-sep-2026. «Le cuesta mucho tragar y babea» salía RUTINA, y la combinación ya estaba
+  # escrita desde agosto al final de esta lista. El fallo era de una palabra: el patrón pedía
+  # «le cuesta tragar» pegados y un padre escribe «le cuesta MUCHO tragar». Ahora caben dos
+  # palabras en medio.
+  #
+  # Y no se añade la dificultad SOLA, en ningún idioma, aunque sea lo primero que uno escribiría:
+  # «le duele la garganta al tragar» y «tiene anginas y le cuesta tragar» son amigdalitis, que es
+  # rutina, y «le están saliendo los dientes y babea mucho» son los dientes. Lo que distingue a
+  # la epiglotitis no es tragar mal ni babear: es LAS DOS COSAS A LA VEZ. Lo cazaron dos pruebas
+  # que ya existían, y por eso están.
+  - no (puede|consigue) tragar (ni )?la saliva
+  - (drool\w*|dribbl\w*)[^.]{0,40}(can'?t|cannot|unable to|struggling to|difficulty)[^.]{0,15}swallow
+  - (can'?t|cannot|unable to|struggling to)[^.]{0,15}swallow[^.]{0,40}(drool|dribbl|saliva)
+  - (bave|salive)[^.]{0,40}(ne peut|n'arrive|du mal)[^.]{0,20}avaler
+  - (ne peut|n'arrive|du mal)[^.]{0,20}[àa] avaler[^.]{0,40}(bave|salive)
+  - (speichel|sabber)\w*[^.]{0,40}(nicht schlucken|schlucken kann|schluckbeschwerden)
+  - (слюн\w+)[^.]{0,40}(не может глотать|трудно глотать)
+  - (لعاب|يسيل)[^.]{0,40}(لا يستطيع البلع|صعوبة في البلع)
+  - (baba|saliva)[^.]{0,40}(n[aã]o consegue engolir|dificuldade em engolir)
+  - (लार)[^.]{0,40}(निगल नहीं|निगलने में)
   - no (puede|consigue) tragar
   - incapacidad (para|de) tragar
   - imposibilidad de tragar
@@ -2173,8 +2193,8 @@ rules:
   - impossibilidade de engolir
   - निगलने में असमर्थ
   - निगल (न|नहीं) (पाना|पा रहा|पा रही|सकता|सकती)
-  - (no puede|no consigue|le cuesta|dificultad para) trag\w*.{0,50}(babe|saliva|lengua fuera)
-  - (babe|saliva)\w*.{0,50}(no puede tragar|no traga|dificultad para tragar)
+  - (no puede|no consigue|le cuesta|dificultad para)( \w+){0,2} trag\w*.{0,50}(babe|saliva|lengua fuera)
+  - (babe|saliva)\w*.{0,50}(no puede( \w+){0,2} tragar|no traga|dificultad para tragar|le cuesta( \w+){0,2} tragar)
   - babea much[oi]sim[oa].{0,40}(no traga|no puede tragar)
   - can(?:'?t| ?not) swallow
   - (trouble|difficulty|struggling|struggles) swallow\w*.{0,50}drool
@@ -2422,6 +2442,140 @@ rules:
 #
 # En inglés, ojo: «limp» a secas es FLOJO, y de eso se ocupa `drowsy_irritable`. Aquí se exige
 # «limping», «limps» o «a limp», que es andar cojeando y no otra cosa.
+# ── Cinco huecos encontrados repasando el chat entero (17-sep-2026) ────────────────────────
+# El de la cojera lo encontró el operador usando la web. Estos salieron de buscar los demás por
+# el mismo método: sacar del índice los pasajes que enumeran motivos de consulta, partirlos en
+# frases y pasárselas al triaje como si las escribiera un padre. De 5.123 frases, 153 sonaban
+# graves y salían rutina; leídas a mano, cinco eran huecos de verdad.
+
+# La fontanela abombada es presión dentro de la cabeza. La ficha IMNCI de India —que ya está
+# indexada— la pone entre los signos de peligro que obligan a referir de inmediato, junto al
+# quejido y las convulsiones. «Mollera» va porque es como se dice en media América.
+- id: bulging_fontanelle
+  level: emergency
+  source: nhm_in_imnci_chart_booklet
+  reason_es: "Fontanela abombada: puede ser presión dentro de la cabeza, hay que verlo ahora"
+  reason_en: "Bulging fontanelle: it can mean pressure inside the head — get seen now"
+  reason_fr: "Fontanelle bombée : possible pression intracrânienne, à faire voir maintenant"
+  reason_de: "Vorgewölbte Fontanelle: möglicher Druck im Kopf — jetzt vorstellen"
+  reason_ru: "Выбухающий родничок: возможно давление внутри головы — показать сейчас же"
+  reason_ar: "اليافوخ المنتفخ: قد يعني ضغطا داخل الرأس — يُعرض الآن"
+  reason_pt: "Fontanela abaulada: pode ser pressão dentro da cabeça — ver agora"
+  reason_hi: "उभरा हुआ तालू: सिर के अंदर दबाव हो सकता है — अभी दिखाइए"
+  patterns:
+  - (fontanela|mollera)[^.]{0,30}(abombad|abultad|hinchad|salida|tensa|dura|abomba|sobresale)
+  - (abombad|abultad|hinchad|tensa)[^.]{0,20}(fontanela|mollera)
+  - (fontanelle|soft spot)[^.]{0,30}(bulg|swollen|tense|raised|sticking out)
+  - (bulging|swollen|tense)[^.]{0,20}(fontanelle|soft spot)
+  - fontanelle[^.]{0,30}(bomb[ée]e|gonfl[ée]e|tendue)
+  - fontanelle[^.]{0,30}(vorgew[öo]lbt|gew[öo]lbt|gespannt|geschwollen)
+  - родничок[^.]{0,30}(выбухает|выбухающий|выпирает|напряж|набух)
+  - (выбухает|выбухающий|выпирает|набух\w*)[^.]{0,20}родничок
+  - (اليافوخ|يافوخ)[^.]{0,25}(منتفخ|بارز|متوتر|منتفخة|ينتفخ)
+  - (منتفخ|بارز|متوتر)[^.]{0,20}(اليافوخ|يافوخ)
+  - fontanela[^.]{0,30}(abaulada|inchada|tensa|saliente)
+  - (तालू|कलौआ)[^.]{0,25}(उभरा|फूला|तना|उभर)
+
+# La torsión testicular se opera en horas: pasado ese rato el testículo se pierde. La guía de
+# primeros auxilios del Niño Jesús pone «testículo dolorido» entre los motivos de consulta, y el
+# capítulo «Escroto agudo en la infancia» de Pediatría. Diagnóstico y tratamiento la encabeza.
+# No se exige hinchazón: el dolor solo ya basta para que lo mire alguien hoy mismo.
+- id: testicular_pain
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "Dolor en un testículo: si es una torsión se opera en horas, hay que ir ahora"
+  reason_en: "Pain in a testicle: a torsion has to be operated within hours — go now"
+  reason_fr: "Douleur d'un testicule : une torsion s'opère en quelques heures — allez-y maintenant"
+  reason_de: "Schmerz im Hoden: eine Hodentorsion muss binnen Stunden operiert werden — sofort hin"
+  reason_ru: "Боль в яичке: при перекруте операция нужна в первые часы — ехать сейчас"
+  reason_ar: "ألم في الخصية: التواء الخصية يحتاج جراحة خلال ساعات — اذهب الآن"
+  reason_pt: "Dor num testículo: uma torção opera-se em horas — vá agora"
+  reason_hi: "अंडकोष में दर्द: मरोड़ हो तो कुछ घंटों में ऑपरेशन चाहिए — अभी जाइए"
+  patterns:
+  - (testículo|testiculo|escroto|huevo)[^.]{0,40}(duele|dolor|hinchad|inflamad|morado|duro)
+  - (duele|dolor|hinchaz[oó]n|inflamaci[oó]n)[^.]{0,30}(testículo|testiculo|escroto)
+  - (testicle|testicles|scrotum|ball)[^.]{0,40}(pain|painful|hurts|swollen|sore|tender)
+  - (pain|swelling|swollen)[^.]{0,30}(testicle|scrotum)
+  - (testicule|scrotum|bourses)[^.]{0,40}(mal|douleur|douloureux|gonfl[ée])
+  - (mal|douleur)[^.]{0,30}(testicule|scrotum|bourses)
+  - (hoden|hodensack)[^.]{0,40}(schmerz|weh|geschwollen|dick)
+  - (schmerz\w*|geschwollen)[^.]{0,30}(hoden|hodensack)
+  - (яичк\w+|мошонк\w+)[^.]{0,40}(болит|боль|опухл|отек|припух)
+  - (болит|боль|опух\w*)[^.]{0,30}(яичк\w+|мошонк\w+)
+  - (الخصية|الخصيتين|كيس الصفن)[^.]{0,40}(ألم|يؤلم|تؤلم|منتفخ|متورم|وجع)
+  - (ألم|وجع|تورم|انتفاخ)[^.]{0,30}(الخصية|الخصيتين|كيس الصفن)
+  - (test[íi]culo|escroto)[^.]{0,40}(dor|d[óo]i|inchad|inflamad)
+  - (dor|inchaço)[^.]{0,30}(test[íi]culo|escroto)
+  - (अंडकोष|अंडकोश)[^.]{0,35}(दर्द|सूज|तेज़ दर्द)
+  - दर्द[^.]{0,25}(अंडकोष|अंडकोश)
+
+# Palidez de golpe. El NHS la lista tal cual —«face or skin suddenly turn pale»— y la guía de
+# antibióticos de Donostia la pone entre los signos de shock junto al relleno capilar lento.
+# Se exige la SUBITEZ o un acompañante (flojera, frialdad): «está palidito» no es esto, y un
+# niño pálido después de vomitar tampoco.
+- id: sudden_pallor
+  level: urgent
+  source: nhs_en_sudden_infant_death_syndrome_sids
+  reason_es: "Palidez repentina: puede ser mala circulación, hay que verlo hoy"
+  reason_en: "Sudden pallor: it can mean poor circulation — get seen today"
+  reason_fr: "Pâleur soudaine : circulation possiblement mauvaise, à faire voir aujourd'hui"
+  reason_de: "Plötzliche Blässe: kann schlechte Durchblutung sein — heute ansehen lassen"
+  reason_ru: "Внезапная бледность: возможно плохое кровообращение — показать сегодня"
+  reason_ar: "شحوب مفاجئ: قد يدل على دورة دموية سيئة — يُعرض اليوم"
+  reason_pt: "Palidez repentina: pode ser má circulação — ver hoje"
+  reason_hi: "अचानक पीलापन: ख़ून का दौरा ठीक न होने का संकेत — आज दिखाइए"
+  patterns:
+  - (p[áa]lido|p[áa]lida|blanco|blanca)[^.]{0,25}(de repente|de golpe|de pronto|s[úu]bitamente|de un momento a otro)
+  - (de repente|de golpe|de pronto)[^.]{0,25}(p[áa]lido|p[áa]lida|blanco como|se puso blanc)
+  - (p[áa]lido|p[áa]lida)[^.]{0,30}(y (muy )?flojo|y (muy )?flojito|y (muy )?blandito|y fr[íi]o)
+  - (suddenly|all of a sudden)[^.]{0,30}(pale|grey|gray|white|ashen)
+  - (pale|grey|ashen)[^.]{0,30}(and (very )?floppy|and limp|all of a sudden|suddenly)
+  - (p[âa]le|blanc)[^.]{0,25}(d'un coup|tout [àa] coup|soudain)
+  - (d'un coup|tout [àa] coup|soudain\w*)[^.]{0,25}(p[âa]le|tout blanc)
+  - (bl[äa]ss|wei[sß])[^.]{0,25}(pl[öo]tzlich|auf einmal)
+  - pl[öo]tzlich[^.]{0,30}(bl[äa]ss|wei[sß]|grau)
+  - (побледнел|бледн\w+)[^.]{0,25}(вдруг|внезапно|резко)
+  - (вдруг|внезапно|резко)[^.]{0,25}(побледнел|бледн\w+)
+  - (شحب|شاحب|اصفر لونه)[^.]{0,25}(فجأة|فجاءة)
+  - فجأة[^.]{0,25}(شحب|شاحب|أصفر)
+  - (p[áa]lido|branco)[^.]{0,25}(de repente|de s[úu]bito|de um momento)
+  - (de repente|de s[úu]bito)[^.]{0,25}(p[áa]lido|branco)
+  - (अचानक|एकदम)[^.]{0,25}(पीला|सफ़ेद|पीलापन)
+  - (पीला|सफ़ेद)[^.]{0,20}(अचानक|पड़ गया)
+
+# El llanto que no es el suyo. El NHS lo pone en su página del cólico y en la de la roséola con
+# las mismas palabras: «a weak, high-pitched cry that's not like their normal cry». Llorar mucho
+# NO entra —el cólico es el motivo de consulta más común del lactante—: entra el llanto AGUDO,
+# DÉBIL o DISTINTO, que es otra cosa y el propio NHS la separa.
+- id: unusual_cry
+  level: urgent
+  source: nhs_en_colic
+  reason_es: "Un llanto agudo, débil o distinto del suyo no es llorar mucho: hay que verlo hoy"
+  reason_en: "A weak, high-pitched or unusual cry is not the same as crying a lot — get seen today"
+  reason_fr: "Un cri aigu, faible ou inhabituel n'est pas « pleurer beaucoup » : à faire voir aujourd'hui"
+  reason_de: "Ein schriller, schwacher oder ungewohnter Schrei ist nicht «viel weinen» — heute ansehen lassen"
+  reason_ru: "Пронзительный, слабый или непривычный крик — это не «много плачет»: показать сегодня"
+  reason_ar: "بكاء حاد أو ضعيف أو غير معتاد ليس مجرد بكاء كثير — يُعرض اليوم"
+  reason_pt: "Um choro agudo, fraco ou diferente do habitual não é «chorar muito» — ver hoje"
+  reason_hi: "तीखा, कमज़ोर या रोज़ से अलग रोना «बहुत रोना» नहीं है — आज दिखाइए"
+  patterns:
+  - (llanto|llora|llorando|grito)[^.]{0,30}(agudo|d[ée]bil|distinto|diferente|raro|quejido|quejumbroso|chillón)
+  - (agudo|d[ée]bil|distinto|diferente)[^.]{0,20}(llanto|llorando)
+  - cry[^.]{0,30}(high.?pitched|weak|unusual|different from|not like)
+  - (high.?pitched|weak|unusual)[^.]{0,20}cry
+  - (cri|pleurs?)[^.]{0,30}(aigu|faible|inhabituel|diff[ée]rent)
+  - (aigu|faible|inhabituel)[^.]{0,20}(cri|pleurs)
+  - (schrei|weinen)[^.]{0,30}(schrill|schwach|ungewohnt|anders als sonst)
+  - (schrill\w*|schwach\w*)[^.]{0,20}(schrei|weinen)
+  - (крик|плач)[^.]{0,30}(пронзительн|слаб|необычн|не такой)
+  - (пронзительн\w+|слаб\w+)[^.]{0,20}(крик|плач)
+  - (بكاء|بكاؤه|صراخ)[^.]{0,30}(حاد|ضعيف|غير معتاد|مختلف)
+  - (حاد|ضعيف|غير معتاد)[^.]{0,20}(بكاء|بكاؤه|صراخ)
+  - (choro|chora)[^.]{0,30}(agudo|fraco|diferente|estranho)
+  - (agudo|fraco|diferente)[^.]{0,20}(choro|chora)
+  - (रोना|रो रहा|रोने)[^.]{0,30}(तीख|कमज़ोर|अलग|असामान्य)
+  - (तीख\w*|कमज़ोर)[^.]{0,20}(रोना|रोने)
+
 - id: limp_with_fever
   level: urgent
   source: puc_manual_pediatria
