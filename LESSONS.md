@@ -280,3 +280,29 @@ en ruso porque «двухмесячный» es una palabra sola y el lector de e
 nadie se deje una lengua entera, y para nada más. Lo que decide si el aviso llega es si la frase
 que escribe un padre casa, y eso sólo se sabe escribiendo la frase. Vale igual fuera del triaje:
 presencia no es cobertura en ninguna parte.
+
+## L173 · La negación puede SER la señal (17-sep-2026)
+El triaje anula una alarma cuando ve una negación justo delante: «sin fiebre» no es fiebre, y esa
+regla arregló un fallo real en septiembre. Pero hay señales que **son** una negación: «sin pis
+desde ayer», «не может дышать», «no responde». Ahí el guardián apagaba justo lo que había que oír.
+
+El mecanismo ya tenía la salvedad —si la coincidencia empieza por una negación, cuenta— y por eso
+«no responde» funcionaba. Lo que fallaba era el otro lado: el patrón estaba escrito sin la
+negación («pis», «дышать»), así que la coincidencia empezaba después de ella y el guardián la
+comía. **Cuando la negación es parte de la señal, tiene que estar dentro del patrón.**
+
+## L174 · Una manera de decirlo no es cobertura; tres empiezan a serlo (17-sep-2026)
+Medido en el mismo día, con las mismas 51 reglas y las mismas ocho lenguas:
+
+    una frase por regla        72 huecos de 408   (18 %)
+    la misma, tecleada deprisa 23 de 174          (13 %) — 17 de ellos árabes
+    dicha de otra manera      121 de 408          (30 %)
+    el mensaje corto del móvil  7 de 80           ( 9 %)
+
+La tercera medida es la que más encontró, y se hizo cuando las reglas ya estaban «cubiertas en
+los ocho idiomas». Lo que faltaba no eran lenguas: eran MANERAS. «Está doblado del dolor» no
+estaba en ninguna de las ocho, y es como se cuenta un abdomen agudo en cualquier casa.
+
+**La regla**: una batería con una frase por caso mide que el camino existe, no que esté abierto.
+Para creerse una cobertura hacen falta varias maneras de decir lo mismo — y la caída del 30 % al
+9 % entre la tercera medida y la cuarta es la única señal fiable de que se está cerrando.

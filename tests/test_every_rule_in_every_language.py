@@ -1235,3 +1235,128 @@ YA_HA_PASADO = [
 def test_a_hypothesis_does_not_silence_what_already_happened(triaje: Triage, lang: str, texto: str):
     r = triaje.assess(texto)
     assert r.level in ("urgent", "emergency"), f"[{lang}] «{texto}» → {r.level}"
+
+
+# ── y el mensaje corto, que es como se escribe en el móvil ───────────────────────────────────
+#
+# Las dos baterías de arriba escriben frases completas. A las tres de la mañana nadie escribe
+# frases completas: se escribe «fiebre 39 y no se despierta», «sin pis desde ayer», «convulsión
+# ahora». Con las diez reglas más graves fallaban 7 de 80, y cuatro eran el mismo fallo fino:
+# **la negación ES la señal**. «Sin pis desde ayer» y «не может дышать» llevan la negación
+# dentro, y el guardián que anula «sin fiebre» los apagaba. El guardián ya tenía la salvedad
+# —si la coincidencia empieza por una negación, cuenta—, pero sólo sirve si el patrón se escribe
+# incluyendo esa negación, y no estaba escrito así.
+CORTO: dict[str, dict[str, str]] = {
+    "not_responding": {
+        "es": 'no responde',
+        "en": 'not responding',
+        "fr": 'ne répond pas',
+        "de": 'reagiert nicht',
+        "ru": 'не реагирует',
+        "ar": 'لا يستجيب',
+        "pt": 'não responde',
+        "hi": 'कोई प्रतिक्रिया नहीं',
+    },
+    "seizure": {
+        "es": 'convulsión ahora',
+        "en": 'seizure now',
+        "fr": 'convulsion maintenant',
+        "de": 'krampfanfall jetzt',
+        "ru": 'судороги сейчас',
+        "ar": 'تشنج الآن',
+        "pt": 'convulsão agora',
+        "hi": 'अभी दौरा',
+    },
+    "severe_breathing": {
+        "es": 'no puede respirar',
+        "en": "can't breathe",
+        "fr": "n'arrive pas à respirer",
+        "de": 'bekommt keine luft',
+        "ru": 'не может дышать',
+        "ar": 'لا يستطيع التنفس',
+        "pt": 'não consegue respirar',
+        "hi": 'साँस नहीं ले पा रहा',
+    },
+    "choking": {
+        "es": 'atragantado',
+        "en": 'choking',
+        "fr": "il s'étouffe",
+        "de": 'erstickt',
+        "ru": 'подавился',
+        "ar": 'يختنق',
+        "pt": 'engasgado',
+        "hi": 'दम घुट रहा है',
+    },
+    "petechiae_fever": {
+        "es": 'fiebre y manchas que no se van',
+        "en": "fever and spots that don't fade",
+        "fr": "fièvre et taches qui ne s'effacent pas",
+        "de": 'fieber und flecken die nicht verschwinden',
+        "ru": 'температура и пятна не исчезают',
+        "ar": 'حمى وبقع لا تختفي',
+        "pt": 'febre e manchas que não somem',
+        "hi": 'बुखार और दाने जो नहीं मिटते',
+    },
+    "button_battery": {
+        "es": 'pila de botón tragada',
+        "en": 'swallowed button battery',
+        "fr": 'pile bouton avalée',
+        "de": 'knopfzelle verschluckt',
+        "ru": 'проглотил батарейку',
+        "ar": 'ابتلع بطارية',
+        "pt": 'engoliu pilha de botão',
+        "hi": 'बटन सेल निगल ली',
+    },
+    "infant_fever_under_3_months": {
+        "es": '2 meses fiebre 38.5',
+        "en": '2 months old fever 38.5',
+        "fr": '2 mois fièvre 38,5',
+        "de": '2 monate fieber 38,5',
+        "ru": '2 месяца температура 38,5',
+        "ar": 'شهرين حرارة 38.5',
+        "pt": '2 meses febre 38,5',
+        "hi": '2 महीने बुखार 38.5',
+    },
+    "neck_stiffness": {
+        "es": 'nuca rígida y fiebre',
+        "en": 'stiff neck and fever',
+        "fr": 'nuque raide et fièvre',
+        "de": 'steifer nacken und fieber',
+        "ru": 'ригидность шеи и температура',
+        "ar": 'تيبس الرقبة وحمى',
+        "pt": 'pescoço rígido e febre',
+        "hi": 'गर्दन अकड़ी और बुखार',
+    },
+    "dehydration": {
+        "es": 'sin pis desde ayer',
+        "en": 'no wet nappy since yesterday',
+        "fr": 'pas de pipi depuis hier',
+        "de": 'keine nasse windel seit gestern',
+        "ru": 'не писает со вчера',
+        "ar": 'لم يتبول منذ أمس',
+        "pt": 'sem xixi desde ontem',
+        "hi": 'कल से पेशाब नहीं',
+    },
+    "limp_with_fever": {
+        "es": 'cojea y fiebre',
+        "en": 'limping and fever',
+        "fr": 'boite et fièvre',
+        "de": 'hinkt und fieber',
+        "ru": 'хромает и температура',
+        "ar": 'يعرج وحمى',
+        "pt": 'coxeia e febre',
+        "hi": 'लंगड़ा और बुखार',
+    },
+}
+
+
+def _pares_cortos() -> list[tuple[str, str, str]]:
+    return [(regla, lg, frases[lg]) for regla, frases in CORTO.items() for lg in IDIOMAS]
+
+
+@pytest.mark.parametrize("regla,lang,texto", _pares_cortos(), ids=lambda x: str(x)[:40])
+def test_the_shortest_message_a_parent_would_send_still_fires(
+    triaje: Triage, regla: str, lang: str, texto: str
+):
+    r = triaje.assess(texto)
+    assert regla in [m.id for m in r.matched], f"[{lang}] «{texto}» → {r.level}"

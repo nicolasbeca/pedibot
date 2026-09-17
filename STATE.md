@@ -398,3 +398,11 @@ abierto, en orden de consecuencia:
 - Queda `tests/test_every_rule_in_every_language.py`: 408 casos más 21 preguntas corrientes que tienen que seguir siendo rutina, y una prueba que falla si alguien añade una regla sin frases. ~230 patrones nuevos.
 - Los propios candados del repositorio cazaron tres efectos secundarios míos: una caca amarilla que pasaba por ictericia en ruso, un detector nuevo sin declarar y el desequilibrio de escrituras en `open_fracture`.
 - Suite: 4.754. Verificado en vivo en cinco idiomas.
+
+## 17-sep-2026 (noche, segunda pasada) · 144 huecos más del triaje
+- «Sigue depurando el triaje, no me puedo fiar de ti.» Tres medidas nuevas sobre las mismas 51 reglas y las mismas ocho lenguas.
+- **Tecleado deprisa** (sin tildes, sin ё, sin hamza, sin nuqta): 23 huecos de 174, y **17 eran árabes**. El triaje no aplanaba la ortografía y la búsqueda sí desde el 16-sep. Arreglado en un sitio —`aplana()`— y aplicado a las DOS partes: el texto del padre y los patrones al cargarlos. Hubo que aplanar también las tablas del lector de edades, que si no dejaban de leer el árabe con hamza.
+- **Dicho de otra manera** (otra frase por regla y lengua): **121 huecos de 408**, casi un tercio, con las reglas ya «cubiertas». Lo que faltaba no eran lenguas sino maneras: «está doblado del dolor» no estaba en ninguna de las ocho; la irritabilidad que no se calma, en siete; el nombre «golpe de calor», en siete.
+- **El mensaje corto del móvil** («sin pis desde ayer», «convulsión ahora»): 7 de 80, y cuatro eran el mismo fallo fino — la negación ES la señal y el guardián de negaciones la apagaba (L173).
+- Efecto secundario tapado a la vez: «¿cómo prevenir un golpe de calor?» pasó a urgente al escribir el nombre suelto. Guardián nuevo de lo hipotético, que exige interrogativo delante y se corta en la coma, para que «no pude evitar que se tragara una pila» siga saltando.
+- 2.407 patrones (eran 2.025 esta mañana). Prueba permanente: 1.106 casos en `tests/test_every_rule_in_every_language.py`. Suite 5.430.

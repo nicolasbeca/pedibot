@@ -204,6 +204,10 @@ rules:
   reason_en: Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)
   reason_fr: Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)
   patterns:
+  # 17-sep-2026: «не может дышать» se apagaba solo: la negación va DENTRO de la señal, y
+  # el patrón ruso no la incluía, así que el guardián de negaciones lo anulaba.
+  - не (может|можешь|в силах) дышать
+  - (не дышит|перестал\w* дышать|дышать не может)
   # 17-sep-2026: la dificultad dicha como sustantivo en árabe e hindi.
   - (صعوبة|ضيق)[^.]{0,15}(شديدة?|كبيرة?)?[^.]{0,12}(في )?(التنفس|النفس)
   - (يعاني|تعاني)[^.]{0,25}(التنفس|النفس)
@@ -871,6 +875,11 @@ rules:
   reason_en: Spots on the skin that do not fade when pressed (possible sepsis/meningitis)
   reason_fr: Taches sur la peau qui ne s'effacent pas à la pression (possible sepsis/méningite)
   patterns:
+  # 17-sep-2026: «taches qui ne s'effacent pas» y «दाने जो नहीं मिटते» — la prueba del
+  # vaso dicha con otro verbo.
+  - (taches|boutons|points|p[ée]t[ée]chies)[^.]{0,30}(ne )?s'effacent pas
+  - (taches|boutons)[^.]{0,30}(ne )?(part|partent|disparaissent) pas[^.]{0,25}(pression|appuie|verre)?
+  - (दाने|धब्बे|चकत्ते)[^.]{0,25}(जो )?(नहीं मिटते|नहीं जाते|दबाने पर नहीं)
   # 17-sep-2026: la palabra técnica —petequias— en árabe e hindi.
   - (نمش\w*|بقع نزفية|حبرات)[^.]{0,45}(حمى|حرار|سخون)
   - (حمى|حرار)[^.]{0,45}(نمش\w*|بقع نزفية)
@@ -1242,6 +1251,16 @@ rules:
   reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
   reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
   patterns:
+  # 17-sep-2026: «sin pis desde ayer» —la forma más corta y más común de contarlo— se
+  # apagaba en cuatro lenguas por lo mismo: la negación es la señal.
+  - sin (pis|pip[íi]|orina|pa[ñn]al mojado)[^.]{0,30}(desde|en) 
+  - no (ha hecho|hace|ha mojado)[^.]{0,20}(pis|pip[íi]|pa[ñn]al)
+  - (pas de|sans) (pipi|urine|couche mouill[ée]e)[^.]{0,30}(depuis|en) 
+  - (n'a pas|ne fait pas)[^.]{0,20}(pipi|uriner|mouill[ée] sa couche)
+  - (لم|ما) (يتبول|تتبول|بال|بالت)[^.]{0,30}(منذ|من)
+  - (بدون|بلا) (بول|تبول|حفاض مبلل)
+  - sem (xixi|urina|fralda molhada)[^.]{0,30}(desde|h[áa]) 
+  - (n[aã]o (fez|faz|urinou|molhou))[^.]{0,25}(xixi|fralda|urina)
   # 17-sep-2026: los ojos hundidos y el llanto SIN LÁGRIMAS —los dos signos que un padre
   # ve sin que nadie se los explique— faltaban en cinco lenguas.
   - (eyes)[^.]{0,20}(look |are |seem )?(sunken|hollow)
