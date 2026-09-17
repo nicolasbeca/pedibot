@@ -101,6 +101,17 @@ _WORD_AGES = {
     "un mes": 1,
     # Las semanas en letra: es como se dice la edad de un recién nacido, y en cifra ya se
     # entendían. «mi bebé de tres semanas» no llegaba a la regla del lactante (7-sep-2026).
+    # 17-sep-2026: en francés y portugués las semanas en letra no se leían, y es como se dice
+    # la edad de un recién nacido en los dos.
+    "une semaine": 0.23,
+    "deux semaines": 0.46,
+    "trois semaines": 0.69,
+    "quatre semaines": 0.92,
+    "six semaines": 1.38,
+    "uma semana": 0.23,
+    "duas semanas": 0.46,
+    "três semanas": 0.69,
+    "quatro semanas": 0.92,
     "una semana": 0.23,
     "dos semanas": 0.46,
     "tres semanas": 0.69,
@@ -265,6 +276,26 @@ _DE_COMPUESTO = re.compile(
     re.I,
 )
 
+#: Y lo mismo en ruso, que es donde más falta hacía (17-sep-2026).
+#:
+#: Medido: de seis formas naturales de decir la edad de un bebé en ruso, **las seis se perdían**.
+#: «Двухмесячный ребёнок» es como se dice de verdad —no «ребёнку 2 месяца»—, y el lector exigía
+#: una cifra delante de la unidad. Eso dejaba sin alcanzar la regla del lactante con fiebre, que
+#: es la más importante que hay, exactamente igual que le pasó al hindi el 5-sep y por lo mismo.
+#:
+#: «Летн» exige prefijo a propósito: sin él, «летний» es *de verano* y no *de un año*.
+_RU_NUM = {
+    "": 1.0, "одно": 1.0, "полу": 0.5, "полутора": 1.5, "двух": 2.0, "трёх": 3.0, "трех": 3.0,
+    "четырёх": 4.0, "четырех": 4.0, "пяти": 5.0, "шести": 6.0, "семи": 7.0, "восьми": 8.0,
+    "девяти": 9.0, "десяти": 10.0, "одиннадцати": 11.0, "двенадцати": 12.0,
+}
+_RU_UNIDAD = {"месячн": 1.0, "недельн": 1 / 4.345, "летн": 12.0, "годовал": 12.0}
+_RU_PREFIJOS = "|".join(sorted((k for k in _RU_NUM if k), key=len, reverse=True))
+_RU_COMPUESTO = re.compile(
+    rf"(?<![\w])({_RU_PREFIJOS})?(месячн|недельн|годовал)\w*|(?<![\w])({_RU_PREFIJOS})(летн)\w*",
+    re.I,
+)
+
 
 #: Guiones de todas las formas: el corto, el largo, el de las cifras y los que mete un procesador
 #: de texto. Todos separan el número de la unidad exactamente igual que un espacio.
@@ -334,6 +365,11 @@ def parse_age_months(text: str) -> float | None:
     compuesto = _DE_COMPUESTO.search(low)
     if compuesto:
         return _DE_NUM[compuesto.group(1)] * _DE_UNIDAD[compuesto.group(2)]
+    ruso = _RU_COMPUESTO.search(low)
+    if ruso:
+        prefijo = ruso.group(1) or ruso.group(3) or ""
+        unidad = ruso.group(2) or ruso.group(4)
+        return _RU_NUM[prefijo.lower()] * _RU_UNIDAD[unidad.lower()]
     for rx, mult in _AGE_PATTERNS:
         m = rx.search(low)
         if m:

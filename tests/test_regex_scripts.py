@@ -48,6 +48,10 @@ DECLARADOS = {
     "una funcione",
     "_MENOS_DE_DETRAS": "la otra mitad: el cualificador POSPUESTO, que es como lo dice el "
     "hindi. Las lenguas que lo anteponen están en `_MENOS_DE`",
+    "_RU_COMPUESTO": "el gemelo ruso de `_DE_COMPUESTO`: «двухмесячный», «годовалый». Es una "
+    "gramática que solo existe en ruso —el número y la unidad fundidos en una palabra— y el "
+    "ruso solo se escribe en cirílico. Las demás lenguas separan número y unidad, y de eso se "
+    "ocupa `_AGE_PATTERNS`, que sí cubre las tres escrituras (17-sep-2026)",
     "_DE_COMPUESTO": "es la forma adjetiva alemana de decir la edad —«zweimonatiges», "
     "«dreijährige»— y el alemán se escribe en alfabeto latino y solo en él. Las otras siete "
     "lenguas dicen la edad separando el número de la unidad y las lee `_AGE_PATTERNS`, "

@@ -11,6 +11,11 @@ rules:
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
   patterns:
+  # 17-sep-2026: «reagiert nicht» estaba, pero un padre alemán escribe «reagiert auf
+  # nichts» o «antwortet nicht», y la negación va en otro sitio.
+  - reagiert (auf )?(gar )?(nichts|nicht mehr|[üu]berhaupt nicht)
+  - antwortet (mir )?nicht
+  - nicht mehr ansprechbar
   # 16-sep-2026, dialecto del Golfo: «مو صاحي» es «no está despierto».
   - "(مو|مب|مش) (صاحي|صاحية|واعي|فايق)"
   - "(ما|مو) (يصحى|يفيق|بيفيق)"
@@ -195,6 +200,13 @@ rules:
   reason_en: Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)
   reason_fr: Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)
   patterns:
+  # 17-sep-2026: el tiraje costal es dificultad GRAVE, y en francés y portugués caía en la
+  # moderada o en nada. «Afundando as costelas» estaba escrito; «as costelas afundam», no.
+  - (c[ôo]tes)[^.]{0,25}(se creusent|se creuse|rentrent|se rentrent)
+  - creusement[^.]{0,20}(c[ôo]tes|sous.?costal|intercostal)
+  - (costelas)[^.]{0,25}(afundam|afundando|a afundar|marcadas|repuxam|puxam)
+  - (tiragem|adejo nasal|batimento das asas do nariz)
+  - respira muito (depressa|r[aá]pido|rapidamente)
   # 16-sep-2026, dialecto: «شفايفه زرقا» son los labios azules del Golfo y Egipto.
   - "(شفايف|شفايفه|شفايفها|شفتيه).{0,20}(زرق|زرقا|زرقاء|زرقه)"
   - no puede respirar
@@ -422,6 +434,10 @@ rules:
   reason_en: Suspected severe allergic reaction (swollen lips/eyelids with breathing difficulty, vomiting or dizziness)
   reason_fr: Suspicion de réaction allergique grave (gonflement des lèvres/paupières avec difficulté à respirer, vomissements ou malaise)
   patterns:
+  # 17-sep-2026: en árabe faltaba la forma verbal («انتفخت شفتاه») y sólo estaba el
+  # sustantivo. Labios hinchados más dificultad para respirar es anafilaxia.
+  - (انتفخت|تورمت|انتفخ)[^.]{0,25}(شفتاه|شفتيه|الشفاه|شفايفه|وجهه|لسانه)[^.]{0,60}(يصعب|صعوبة|لا يستطيع|ضيق)[^.]{0,20}(التنفس|تنفس|يتنفس)
+  - (تورم|انتفاخ)[^.]{0,20}(الشفاه|الوجه|اللسان|العين)[^.]{0,60}(يصعب|صعوبة|ضيق)[^.]{0,20}(التنفس|تنفس)
   - anafila
   - hinchaz[oó]n de (labios|lengua|p[aá]rpados|cara|garganta)
   - (labios|lengua|cara) hinchad
@@ -535,6 +551,8 @@ rules:
   reason_en: Choking with breathing difficulty
   reason_fr: Étouffement avec difficulté à respirer
   patterns:
+  # 17-sep-2026: el verbo en árabe («اختنق») no estaba; sólo el sustantivo.
+  - (اختنق|اختنقت|يختنق|تختنق|شرق|شرقت)[^.]{0,40}(لا (يستطيع|تستطيع)|ما يقدر|التنفس)
   - atragant
   - se est[aá] ahogando
   - choking
@@ -586,6 +604,11 @@ rules:
   reason_en: Poor colour (extreme pallor, mottled, blue or greyish skin)
   reason_fr: Mauvaise coloration (pâleur extrême, peau marbrée, bleue ou grise)
   patterns:
+  # 17-sep-2026: en árabe faltaba «مبقع» (moteada) y los labios azules dichos como
+  # adjetivo («شفتاها زرقاوان»); en portugués, «marmoreada» sin gerundio.
+  - (جلد\w*|بشرت\w*)[^.]{0,25}(مبقع|مرقط|مزرق|رخامي)
+  - (شفتاه|شفتاها|شفايفه|الشفاه)[^.]{0,20}(زرقاء|زرقاوان|زرقاوين|مزرق)
+  - (pele|p[eê])[^.]{0,20}(marmoreada|marmoreado|mosqueada|acinzentada)
   - piel moteada
   - (color|piel) gris
   - mottled
@@ -638,6 +661,11 @@ rules:
   reason_en: Head injury with loss of consciousness
   reason_fr: Coup à la tête avec perte de connaissance
   patterns:
+  # 17-sep-2026: en alemán la frase entera —golpe y pérdida de conocimiento— no casaba,
+  # y en hindi saltaba la regla de «no responde», que es otra cosa.
+  - (kopf|sturz)[^.]{0,45}(bewusstsein verloren|bewusstlos|ohnmächtig|nicht ansprechbar)
+  - (bewusstlos|ohnmächtig)[^.]{0,45}(kopf|sturz|gefallen)
+  - (सिर)[^.]{0,30}(चोट|टक्कर|लगी)[^.]{0,45}(होश|बेहोश)
   # 16-sep-2026, dialecto: un padre no escribe «سقط» ni «رأسه». En el Golfo «طاح» y en
   # todas partes «راسه» sin hamza. Y el golpe SOLO no es urgencia —como en la regla
   # inglesa, hace falta además perder el conocimiento—: caerse de cabeza es de todos los
@@ -684,6 +712,11 @@ rules:
   reason_en: Deep wound with heavy bleeding that does not stop after 10 minutes of pressure
   reason_fr: Plaie profonde qui saigne abondamment malgré 10 minutes de compression
   patterns:
+  # 17-sep-2026: «una herida profunda que no para de sangrar» caía en `deep_wound`, que es
+  # urgente y no emergencia. Lo que manda es que no pare, no que sea profunda.
+  - (deep|bad|big)[^.]{0,25}(cut|wound|gash)[^.]{0,45}(wo?n'?t|will not|does ?n'?t|not) stop(ping)? bleeding
+  - (tiefe|gro[sß]e)[^.]{0,25}wunde[^.]{0,45}(h[öo]rt nicht auf zu bluten|nicht aufh[öo]rt zu bluten|blutet weiter|nicht stillen)
+  - (गहर\w*)[^.]{0,20}(घाव|चोट)[^.]{0,45}(ख़ून|खून)[^.]{0,20}(बंद नहीं|रुक नहीं)
   - sangra (mucho|sin parar|a chorro)
   - no (para|deja) de sangrar
   - (sangra|sangrado|hemorragia).{0,40}(m[aá]s de|lleva).{0,15}(10|15|20|diez|quince|veinte)
@@ -752,6 +785,18 @@ rules:
   reason_en: Open fracture (bone is visible)
   reason_fr: Fracture ouverte (l'os est visible)
   patterns:
+  # 17-sep-2026: al escribir «se ve el hueso» en alemán y portugués, el hindi se quedó con
+  # dos patrones contra veintiuno latinos. La misma señal, dicha en hindi.
+  - (हड्डी|हड्डियाँ)[^.]{0,25}(बाहर|दिख|निकल|नज़र आ)
+  - (खुला|खुली)[^.]{0,12}(फ़्रैक्चर|फ्रैक्चर|हड्डी टूट)
+  - (हड्डी)[^.]{0,20}(टूट\w*)[^.]{0,25}(बाहर|दिख)
+  # 17-sep-2026: «se ve el hueso» no estaba escrito así ni en alemán ni en portugués.
+  - knochen[^.]{0,30}(schaut|steht|ragt|guckt)[^.]{0,15}(heraus|hervor|raus)
+  - (offener|offene)[^.]{0,10}(bruch|fraktur)
+  - (man sieht|sieht man)[^.]{0,20}knochen
+  - (v[êe].?se|vejo|vi)[^.]{0,15}o osso
+  - (osso)[^.]{0,20}(à mostra|a mostra|de fora|exposto)
+  - fratura exposta
   - se (le )?ve el hueso
   - fractura abierta
   - bone (is )?(sticking|showing|visible)
@@ -903,6 +948,26 @@ rules:
   reason_en: Fever above 40.5 °C (105 °F)
   reason_fr: Fièvre au-dessus de 40,5 °C
   patterns:
+  # 17-sep-2026: TODOS los patrones pedían el símbolo o la palabra «grados», y un padre
+  # escribe «tiene 41 de fiebre» a secas. Medido: la regla fallaba en SEIS idiomas de ocho,
+  # incluidos el castellano y el inglés. Aquí el número va suelto pero pegado a la palabra
+  # fiebre, que es lo que lo distingue de un peso o de una edad.
+  - (fiebre|temperatura|d[ée]cimas)[^.]{0,18}4[12]([.,]\d)?(?![\d%])
+  - 4[12]([.,]\d)?[^.]{0,18}(de fiebre|fiebre|de temperatura)
+  - (fever|temperature|temp)[^.]{0,18}(of |at )?4[12]([.,]\d)?(?![\d%])
+  - 4[12]([.,]\d)?[^.]{0,18}(fever|temperature)
+  - (fi[eè]vre|temp[ée]rature)[^.]{0,18}(de |[àa] )?4[12]([.,]\d)?(?![\d%])
+  - 4[12]([.,]\d)?[^.]{0,18}(de fi[eè]vre|fi[eè]vre)
+  - (fieber|temperatur)[^.]{0,18}(von )?4[12]([.,]\d)?(?![\d%])
+  - 4[12]([.,]\d)?[^.]{0,18}(fieber|temperatur)
+  - (температур\w*|жар)[^.]{0,18}4[12]([.,]\d)?(?![\d%])
+  - 4[12]([.,]\d)?[^.]{0,18}(температур\w*)
+  - (حرارت\w*|الحرارة|حمى)[^.]{0,18}4[12]([.,]\d)?(?![\d%])
+  - 4[12]([.,]\d)?[^.]{0,18}(حرارة|حمى)
+  - (febre|temperatura)[^.]{0,18}(de )?4[12]([.,]\d)?(?![\d%])
+  - 4[12]([.,]\d)?[^.]{0,18}(de febre|febre)
+  - (बुखार|तापमान)[^.]{0,18}4[12]([.,]\d)?(?![\d%])
+  - 4[12]([.,]\d)?[^.]{0,18}(बुखार|तापमान)
   - 4[1-2][,\.]?\d?\s*(°|º|grados|ºc|°c)
   - 40[,\.][5-9]\s*(°|º|grados|ºc|°c)?
   - 10[5-7](\.\d)?\s*(°|º)?\s*f\b
@@ -938,6 +1003,14 @@ rules:
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
+  # 17-sep-2026: las sibilancias dichas como las dice un padre —«le silba el pecho»,
+  # «pfeift beim atmen», «tem pieira»— no estaban en cuatro idiomas.
+  - (silba|silbid\w*|pit\w*)[^.]{0,25}(pecho|al respirar|cuando respira)
+  - (pecho|respirar)[^.]{0,20}(le )?(silba|pita)
+  - (pfeift|pfeifend\w*|giemen|brummen)[^.]{0,20}(beim atmen|atmung|atmet)
+  - (صدره|صدرها)[^.]{0,20}(يصفر|تصفر|صفير)
+  - صفير[^.]{0,25}(الصدر|التنفس)
+  - (pieira|chiado|chia)[^.]{0,25}(no peito|quando respira|ao respirar)?
   - respira (r[aá]pido|muy r[aá]pido|agitad)
   - respiraci[oó]n m[aá]s r[aá]pida de lo normal
   - pitos? al respirar
@@ -1096,6 +1169,12 @@ rules:
   reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
   reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
   patterns:
+  # 17-sep-2026: en ruso faltaban las dos señales con las que un padre lo cuenta: que no
+  # ha mojado el pañal en todo el día y que tiene la boca seca.
+  - (не писал\w*|не мочил\w*|без мочи|нет мочи|не мочится)[^.]{0,45}(весь день|сутки|давно|долго|с утра)
+  - (весь день|сутки|с утра)[^.]{0,45}(не писал\w*|не мочил\w*|не мочится)
+  - (во рту|рот|губы|язык)[^.]{0,20}(сух\w+|пересох\w*)
+  - сух\w+[^.]{0,15}(во рту|рот|губы|язык)
   - ojos hundidos
   - no (hace|ha hecho) pis
   - orina (muy )?poco
@@ -1186,6 +1265,21 @@ rules:
   reason_en: Repeated vomiting with severe headache
   reason_fr: Vomissements répétés avec fort mal de tête
   patterns:
+  # 17-sep-2026: vomitar con dolor de cabeza sólo saltaba en inglés y alemán, y en
+  # castellano y francés se lo llevaba la regla del golpe en la cabeza, que no es lo
+  # mismo: aquí no ha habido ningún golpe.
+  - (vomit\w*|devolv\w*)[^.]{0,60}(dolor de cabeza|le duele[^.]{0,15}la cabeza|cefalea)
+  - (dolor de cabeza|le duele[^.]{0,15}la cabeza|cefalea)[^.]{0,60}(vomit\w*|devolv\w*)
+  - (vomi\w*)[^.]{0,60}(mal [àa] la t[êe]te|c[ée]phal[ée]e|maux de t[êe]te)
+  - (mal [àa] la t[êe]te|c[ée]phal[ée]e|maux de t[êe]te)[^.]{0,60}(vomi\w*)
+  - (рв[ёе]т|рвота|вырвало|тошнит)[^.]{0,60}(болит голова|головн\w+ бол\w+)
+  - (болит голова|головн\w+ бол\w+)[^.]{0,60}(рв[ёе]т|рвота|вырвало)
+  - (تتقيأ|يتقيأ|قيء|استفراغ|ترجع|يرجع)[^.]{0,60}(صداع|ألم[^.]{0,10}الرأس|وجع راس)
+  - (صداع|ألم[^.]{0,10}الرأس|وجع راس)[^.]{0,60}(تتقيأ|يتقيأ|قيء|استفراغ)
+  - (vomit\w*)[^.]{0,60}(dor de cabe[çc]a|cefaleia)
+  - (dor de cabe[çc]a|cefaleia)[^.]{0,60}(vomit\w*)
+  - (उल्टी|वमन)[^.]{0,60}(सिर\w*[^.]{0,12}दर्द|सिरदर्द)
+  - (सिर\w*[^.]{0,12}दर्द|सिरदर्द)[^.]{0,60}(उल्टी|वमन)
   - v[oó]mit.{0,80}dolor de cabeza
   - dolor de cabeza.{0,80}v[oó]mit
   - vomit.{0,80}headache
@@ -1218,15 +1312,21 @@ rules:
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
   patterns:
+  # 17-sep-2026: en portugués faltaba la frase entera.
+  - (bateu|pancada|caiu|queda)[^.]{0,35}cabe[çc]a[^.]{0,60}vomit\w*
+  - vomit\w*[^.]{0,60}(bateu|pancada|caiu|queda)[^.]{0,25}cabe[çc]a
   # 16-sep-2026, dialecto: un padre no escribe «سقط» ni «رأسه». En el Golfo «طاح» y en
   # todas partes «راسه» sin hamza. «ابني وقع على راسه» salía RUTINA y sin fuentes.
   - "(وقع|طاح).{0,30}(راسه|رأسه).{0,40}(يستفرغ|استفرغ|يرجع|بيرجع|تقيأ|يتقيأ)"
   - "(يستفرغ|بيرجع|رجع).{0,40}(بعد|من).{0,20}(وقع|طاح).{0,20}(راسه|رأسه)"
-  - (golpe|cabeza|ca[ií]d|cay[oó]).{0,100}v[oó]mit
-  - v[oó]mit.{0,100}(golpe en la cabeza|cabeza)
-  - (head|fell|fall|hit).{0,100}vomit
-  - vomit.{0,100}(head|fell|fall)
-  - (t[eê]te|tomb[ée]|chute|cogn[ée]).{0,100}vomi
+  # 17-sep-2026: «cabeza» a secas disparaba esta regla, así que un dolor de cabeza con
+  # vómitos —que es otra cosa y tiene su propia regla— salía como traumatismo craneal.
+  # Ahora hace falta que alguien se haya dado un golpe.
+  - (golpe|ca[ií]d|cay[oó]|se dio|choc[oó]|porrazo|coscorr[oó]n).{0,100}v[oó]mit
+  - v[oó]mit.{0,100}(golpe en la cabeza|golpe|ca[ií]da|se cay[oó])
+  - (hit|bang\w*|knock\w*|fell|fall|blow)[^.]{0,30}(head|skull).{0,100}vomit
+  - vomit.{0,100}((hit|banged|knocked|bumped)[^.]{0,15}(his |her |the )?head|fell|fall)
+  - (cogn[ée]\w*|tomb[ée]\w*|chute|choc)[^.]{0,30}(t[eê]te)?.{0,80}vomi
   - vomi.{0,100}(t[eê]te|chute)
   - kopf gestoßen.{0,50}erbroch
   - kopf.{0,25}(gestoßen|gestossen|angeschlagen|aufgeschlagen).{0,80}(erbroch|übergeben|gebrochen)
@@ -1265,6 +1365,9 @@ rules:
   reason_pt: Pilha de botão engolida — queima o esôfago em horas, pronto-socorro já
   reason_hi: बटन सेल निगल ली — यह घंटों में भोजन-नली जला देती है, तुरंत अस्पताल
   patterns:
+  # 17-sep-2026: en alemán se llama «Knopfzelle» y no estaba; caía en cuerpo extraño, que
+  # es urgente, y una pila de botón quema el esófago en horas.
+  - (knopfzelle|knopfbatterie|kn[öo]pfchenbatterie)
   - (trag|comid|met).{0,30}(pila|bater[ií]a)( de bot[oó]n| de las redondas| redonda| plana)?
   - pila de bot[oó]n
   - (swallow|ate|put).{0,30}(button |coin |flat |round |disc )*batter(y|ies)
@@ -1335,6 +1438,9 @@ rules:
   reason_en: Ingestion of toxic products or medication overdose
   reason_fr: Ingestion de produits toxiques ou surdose de médicaments
   patterns:
+  # 17-sep-2026: «lixívia» es la lejía en portugués y no estaba con ese nombre.
+  - (bebeu|tomou|engoliu|ingeriu)[^.]{0,25}lix[íi]via
+  - bebeu[^.]{0,20}lix[íi]via
   - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado).{0,60}(lej[ií]a|detergente|amoniaco|producto de limpieza|pastillas|medicament|jarabe entero|alcohol|colonia|gasolina|pila|planta)
   - intoxica
   - (ha ingerido|ingiri[oó]|ingesta de).{0,40}(im[aá]n|imanes|pila|bater[ií]a|objeto|producto|t[oó]xic|medicament|pastilla)
@@ -1427,6 +1533,14 @@ rules:
   reason_en: Severe, continuous, worsening abdominal pain
   reason_fr: Mal de ventre fort, continu, qui empire
   patterns:
+  # 17-sep-2026: el dolor de barriga fuerte y que no se pasa no saltaba en inglés, árabe
+  # ni hindi dicho con las palabras de un padre.
+  - (tummy|belly|stomach|abdomen)[^.]{0,25}(hurts?|pain|ache)[^.]{0,35}(a lot|badly|really|so much|and (it )?(is ?n'?t|will not|won'?t|does ?n'?t) (going|go) away|not going away|keeps? getting worse)
+  - (hurts?|pain)[^.]{0,20}(tummy|belly|stomach)[^.]{0,35}(not going away|a lot|badly)
+  - (بطن\w*|معدت\w*)[^.]{0,30}(تؤلم\w*|يؤلم\w*|ألم|وجع)[^.]{0,35}(بشدة|شديد|قوي|لا يزول|ما يروح)
+  - (ألم|وجع)[^.]{0,20}(شديد|قوي)[^.]{0,20}(في )?(البطن|بطنه|بطنها|المعدة)
+  - (पेट)[^.]{0,25}(में)?[^.]{0,15}(तेज़|बहुत|ज़ोर)[^.]{0,12}दर्द
+  - पेट[^.]{0,20}दर्द[^.]{0,30}(जा नहीं रहा|बंद नहीं|कम नहीं)
   - dolor (de barriga|abdominal|de tripa).{0,60}(muy fuerte|insoportable|no para|empeora|continuo)
   - dolor (de barriga|abdominal|de tripa|de vientre).{0,30}(intens|agud|terrible)
   - le duele (mucho|much[ií]simo) (la barriga|la tripa|el abdomen|el vientre)
@@ -1485,6 +1599,16 @@ rules:
   reason_en: Injury with visible deformity / wound that needs stitches
   reason_fr: Traumatisme avec déformation visible / plaie qui nécessite des points
   patterns:
+  # 17-sep-2026: «el brazo torcido después de la caída» no se reconocía en alemán, ruso,
+  # árabe ni portugués.
+  - (arm|bein|hand|fu[sß]|finger|knochen)[^.]{0,40}(verformt|verdreht|schief|krumm|verbogen)
+  - (verformt|verdreht|schief|krumm)[^.]{0,25}(arm|bein|hand|fu[sß])
+  - (рука|нога|палец|кисть)[^.]{0,35}(деформирован\w*|искривлен\w*|вывернут\w*|кривая)
+  - (деформирован\w*|искривлен\w*)[^.]{0,25}(рука|нога|палец)
+  - (ذراع\w*|يد\w*|رجل\w*|ساق\w*)[^.]{0,35}(معوجة|ملتوية|منحرفة|مشوهة|معوج)
+  - (معوج\w*|ملتوي\w*|مشوه\w*)[^.]{0,25}(الذراع|اليد|الرجل|الساق)
+  - (bra[çc]o|perna|m[aã]o|p[ée]|dedo)[^.]{0,35}(torto|torta|entortado|deformado|virado)
+  - (torto|deformado)[^.]{0,25}(bra[çc]o|perna|m[aã]o)
   - deform
   - (brazo|pierna|mu[ñn]eca|dedo|tobillo).{0,40}(torcid|raro|doblad)
   - necesita puntos
@@ -1532,6 +1656,10 @@ rules:
   reason_en: Baby under 1 month refusing feeds
   reason_fr: Bébé de moins d'un mois qui refuse de téter
   patterns:
+  # 17-sep-2026: «lleva varias tomas sin querer comer» —que es como se cuenta— no casaba,
+  # y en hindi la regla no existía en la escritura del padre.
+  - (reci[eé]n nacid\w*|de pocos d[ií]as)[^.]{0,70}(sin querer (comer|mamar)|sin comer|no se engancha|no coge el pecho|no mama)
+  - (नवजात|नया.?जन्मा|कुछ दिन का)[^.]{0,60}(दूध|स्तनपान)[^.]{0,25}(मना|नहीं पी|नहीं ले|इनकार)
   - (reci[eé]n nacido|\b[1-4] semanas|\b\d{1,2} d[ií]as).{0,80}(no (quiere )?(come|mama|toma)|rechaz|rechac)
   - (newborn|\b[1-4] weeks? old|\b\d{1,2} days? old).{0,80}(refus|won'?t (feed|eat|nurse)|not feeding)
   - (nouveau[- ]n[ée]|\b[1-4] semaines|\b\d{1,2} jours).{0,80}(refuse|ne (veut pas )?(t[ée]ter|manger|boire))
@@ -1644,6 +1772,16 @@ rules:
   reason_pt: Vômito verde, marrom ou com sangue — motivo documentado para procurar ajuda
   reason_hi: हरी, भूरी या खून वाली उल्टी — डॉक्टर को दिखाने का दर्ज कारण
   patterns:
+  # 17-sep-2026: el vómito verde sólo se reconocía en castellano, inglés, francés y
+  # portugués. En alemán, ruso, árabe e hindi salía rutina.
+  - (gr[üu]n\w*)[^.]{0,25}(erbroch\w*|erbrechen|gespuckt|übergeben)
+  - (erbroch\w*|erbricht|spuckt)[^.]{0,25}(gr[üu]n\w*|gallig|blutig|braun\w*)
+  - (зелен\w+|зел[ёе]н\w+|коричнев\w+|с кровью)[^.]{0,25}(рвот\w*|вырвал\w*|рв[ёе]т)
+  - (рвот\w*|вырвал\w*|рв[ёе]т)[^.]{0,25}(зелен\w+|зел[ёе]н\w+|коричнев\w+|кровь\w*|с кровью)
+  - (تقيأ\w*|يتقيأ|قيء|استفرغ\w*)[^.]{0,25}(أخضر|أصفر داكن|بني|دم)
+  - (أخضر|بني|دم)[^.]{0,25}(قيء|تقيأ\w*|استفراغ)
+  - (हरी|हरा|भूरा|ख़ून|खून)[^.]{0,20}(उल्टी|वमन)
+  - (उल्टी|वमन)[^.]{0,20}(हरी|हरा|भूरी|ख़ून|खून के साथ)
   - v[oó]mit\w*.{0,25}(verde|verdos|marr[oó]n|marrones|con sangre|sanguinolent|bilis)
   - (verde|verdos|marr[oó]n|con sangre|bilis).{0,25}v[oó]mit
   - vomita\w*.{0,20}(verde|verdos|marr[oó]n|sangre|bilis)
@@ -1735,6 +1873,12 @@ rules:
   reason_pt: Sinais de um transtorno alimentar
   reason_hi: खानपान के विकार के संकेत
   patterns:
+  # 17-sep-2026: en ruso y árabe no se reconocía el patrón —vomitar después de comer y
+  # verse gorda— dicho con las palabras de una madre.
+  - (вызывает рвоту|рвота|тошнит|рв[ёе]т)[^.]{0,45}(после еды|после того как поест)
+  - (считает себя|говорит что она)[^.]{0,20}(толст\w+|жирн\w+|полн\w+)
+  - (تتقيأ|تستفرغ|ترجع)[^.]{0,35}(بعد )?(الأكل|الطعام|ما تاكل)
+  - (تقول)[^.]{0,25}(إنها |انها )?(سمينة|بدينة|تخينة)
   - (se salta|salta|se est[aá] saltando).{0,20}(las )?comidas
   - (deja|ha dejado|dejado) de comer.{0,40}(semana|mes|d[ií]as)
   - (obsesion|obsesionad|preocupad).{0,30}(peso|calor[ií]as|comida|figura|cuerpo)
@@ -1788,6 +1932,13 @@ rules:
   reason_pt: Sinais neurológicos — enxerga mal, mexe mal um braço ou perna, anda ou fala com dificuldade
   reason_hi: तंत्रिका-संबंधी संकेत — ठीक न दिखना, हाथ-पैर ठीक से न हिलना, चलने या बोलने में दिक्कत
   patterns:
+  # 17-sep-2026: «no mueve bien el brazo» —sin decir la palabra parálisis— no saltaba en
+  # inglés, ruso ni hindi.
+  - (can'?t|cannot|unable to|is ?n'?t able to)[^.]{0,20}move[^.]{0,25}(his|her|their|the)?[^.]{0,10}(arm|leg|hand|side|face)
+  - (not moving|won'?t move|barely moves?)[^.]{0,20}(his|her|the)?[^.]{0,10}(arm|leg|hand|face)
+  - (плохо|не|еле)[^.]{0,15}(двигает|шевелит|поднимает)[^.]{0,20}(рук\w*|ног\w*|кист\w*)
+  - (рук\w*|ног\w*)[^.]{0,20}(не двигается|не шевелится|обвисла)
+  - (हाथ|पैर|बाज़ू|बांह)[^.]{0,30}(नहीं हिल|हिला नहीं|नहीं उठा|कमज़ोर हो)
   - no mueve (bien )?(un |el |la )?(brazo|pierna|mano|lado)
   - p[ée]rdida (de|del) fuerza
   - (ha )?perdido fuerza
@@ -1895,6 +2046,16 @@ rules:
   reason_pt: Dor de cabeça com sinais de alarme — acorda à noite, piora, ou não cede ao tratamento habitual
   reason_hi: सिरदर्द के चेतावनी संकेत — रात में जगा देना, बढ़ते जाना, या सामान्य इलाज से न जाना
   patterns:
+  # 17-sep-2026: el dolor de cabeza que DESPIERTA por la noche es el signo de alarma, y
+  # sólo se reconocía en inglés, francés, ruso y árabe.
+  - (dolor de cabeza|le duele la cabeza|cefalea)[^.]{0,50}(por la noche|de noche|le despierta|se despierta|de madrugada)
+  - (por la noche|de noche|de madrugada)[^.]{0,40}(dolor de cabeza|le duele la cabeza)
+  - (kopfschmerz\w*)[^.]{0,50}(nachts|in der nacht|wecken|weckt|aufwacht)
+  - (nachts|in der nacht)[^.]{0,40}kopfschmerz\w*
+  - (dor de cabe[çc]a|cefaleia)[^.]{0,50}(à noite|de noite|acorda|de madrugada)
+  - (à noite|de noite)[^.]{0,40}(dor de cabe[çc]a|cefaleia)
+  - (सिरदर्द|सिर\w*[^.]{0,10}दर्द)[^.]{0,45}(रात|जगा|नींद)
+  - (रात)[^.]{0,35}(सिरदर्द|सिर में दर्द)
   - (dolor de cabeza|cefalea|le duele la cabeza).{0,60}(le despierta|se despierta) (por la noche|de noche|de madrugada)
   - (dolor de cabeza|cefalea).{0,50}(cada vez (m[aá]s|peor)|va a m[aá]s|no (se le )?(pasa|calma|quita) con)
   - (headache).{0,60}(wakes (him|her|them) (up )?at night|worse and worse|getting worse|not going away with)
@@ -1922,6 +2083,14 @@ rules:
   reason_en: Expressing suicidal thoughts
   reason_fr: Exprime des pensées suicidaires
   patterns:
+  # 17-sep-2026: «no quiere seguir viviendo» dicho en inglés, árabe y portugués no
+  # casaba. Es la forma más común de decirlo y la que menos puede fallar.
+  - ((does|do|did|would)\s*n(?:'|o)?t|no longer)[^.]{0,20}want[^.]{0,20}to (live|be here|go on)
+  - (want|wants)[^.]{0,15}to (die|disappear|not be here|not wake up)
+  - (لا (تريد|يريد)|ما (بدها|بده|تبي|يبي))[^.]{0,25}(تعيش|يعيش|الحياة|العيش)
+  - (تتمنى|يتمنى)[^.]{0,20}(الموت|لو تموت|لو يموت)
+  - (n[aã]o quer)[^.]{0,25}(continuar a )?(viver|vida|estar aqui)
+  - (quer|queria)[^.]{0,15}(morrer|desaparecer|n[aã]o acordar)
   - suicid
   - quitarse la vida
   - no quiere vivir
@@ -2001,6 +2170,22 @@ rules:
   reason_en: Self-harm
   reason_fr: Conduite auto-agressive
   patterns:
+  # 17-sep-2026: las autolesiones fallaban en SEIS idiomas de ocho. Cada lengua lo dice
+  # con un verbo distinto —cutting, entailles, режет, تجرح, cortar-se, कट लगाना— y sólo
+  # estaban los de dos.
+  - (cutting|cuts?|scratching|burning)[^.]{0,20}(her|him|them)?self
+  - (has been|is|keeps?)[^.]{0,15}cutting[^.]{0,20}(her|his|their)[^.]{0,10}(arms?|legs?|wrists?)
+  - (cut|cuts|marks|scars)[^.]{0,20}on (her|his|their)[^.]{0,10}(arms?|wrists?|legs?)
+  - (se (fait|faire))[^.]{0,20}(des )?(entailles|coupures|scarifications)
+  - (se scarifie|se coupe|s'automutile|se mutile)
+  - (режет|порезы|царапает|ранит)[^.]{0,20}(себе|себя)
+  - (себе|себя)[^.]{0,20}(режет|порезы|царапает|ранит)
+  - (تجرح|يجرح|تؤذي|يؤذي|تقطع|يقطع)[^.]{0,20}(نفسها|نفسه|ذراعيها|ذراعيه|يديها)
+  - (جروح|قطوع)[^.]{0,20}(في )?(ذراعيها|ذراعيه|يديها|يديه)
+  - (cortar.?se|corta.?se|magoar.?se|autoflagel\w*)[^.]{0,25}(nos? )?(bra[çc]os?|pulsos?|pernas?)?
+  - (anda a|est[áa] a)[^.]{0,15}cortar.?se
+  - (ख़ुद|खुद|अपने आप)[^.]{0,20}(को )?(काट|चोट|ज़ख़्म)
+  - (बाँह\w*|बांह\w*|कलाई|हाथ)[^.]{0,20}(पर )?(कट|काट)[^.]{0,15}(लगा|रही|रहा)
   - se (hace|ha hecho) cortes
   - se corta
   - autoles
@@ -2053,6 +2238,15 @@ rules:
   reason_pt: "Pescoço rígido: é preciso descartar uma meningite agora"
   reason_hi: "गर्दन में अकड़न: मेनिनजाइटिस की जाँच अभी ज़रूरी है"
   patterns:
+  # 17-sep-2026: la rigidez de nuca sólo sabía decirse en castellano, inglés, árabe y
+  # portugués. En francés, alemán, ruso e hindi —cuatro de ocho— salía RUTINA.
+  - (ne peut pas|n'arrive pas [àa]|refuse de)[^.]{0,20}(plier|bouger|tourner)[^.]{0,15}(le |son )?(cou|nuque)
+  - (nuque|cou)[^.]{0,20}(raide|rigide|bloqu[ée])
+  - (kann|will)[^.]{0,20}(den )?(nacken|hals|kopf)[^.]{0,20}nicht[^.]{0,15}(beugen|bewegen|drehen)
+  - (nackensteif|steifer nacken|nackenstarre|steifen nacken)
+  - (не может|не мог)[^.]{0,20}(наклонить|повернуть|согнуть)[^.]{0,15}(шею|голову|голов)
+  - (шея|затылочн\w+)[^.]{0,20}(не гнётся|не гнется|ригидн|напряжен)
+  - (गर्दन)[^.]{0,25}(नहीं झुका|नहीं मोड़|अकड़|कड़ी|झुका नहीं)
   - rigidez (de |en )?(la )?(nuca|cuello)
   - (nuca|cuello) (r[ií]gid|t[ie]s[oa]|agarrotad|duro)
   - no puede (bajar|doblar|mover) (la |el )?(cabeza|barbilla|cuello|nuca)
@@ -2099,6 +2293,14 @@ rules:
   reason_pt: "A luz incomoda junto com febre ou dor de cabeça: precisa ser visto hoje"
   reason_hi: "बुखार या सिरदर्द के साथ रोशनी चुभना: आज ही दिखाना चाहिए"
   patterns:
+  # 17-sep-2026: la fotofobia con fiebre, dicha como la dice un padre («la luz le hace
+  # daño»), faltaba en inglés, alemán e hindi.
+  - (light|lights|sunlight)[^.]{0,30}(hurts?|bothers?|painful|too bright)[^.]{0,60}(fever|temperature)
+  - (fever|temperature)[^.]{0,60}(light|lights)[^.]{0,25}(hurts?|bothers?|painful)
+  - (licht)[^.]{0,30}(tut[^.]{0,10}weh|schmerzt|st[öo]rt|blendet)[^.]{0,60}(fieber|temperatur)
+  - (fieber|temperatur)[^.]{0,60}(licht)[^.]{0,25}(tut[^.]{0,10}weh|schmerzt|st[öo]rt)
+  - (रोशनी|प्रकाश|उजाला)[^.]{0,30}(तकलीफ़|चुभ|बर्दाश्त नहीं|दर्द)[^.]{0,60}(बुख|तापमान)
+  - (बुख\w*)[^.]{0,60}(रोशनी|प्रकाश)[^.]{0,25}(तकलीफ़|चुभ|बर्दाश्त नहीं)
   - (le molesta (mucho )?la luz|fotofobia|molesta la luz).{0,60}(fiebre|d[ée]cimas|dolor de cabeza|cefalea)
   - (fiebre|dolor de cabeza|cefalea).{0,60}(le molesta (mucho )?la luz|fotofobia|molesta la luz)
   - (photophobi|bothered by (the )?light|hurts to look at (the )?light|sensitive to light).{0,60}(fever|temperature|headache)
@@ -2232,6 +2434,12 @@ rules:
   reason_pt: "Inchaço ou vermelhidão atrás da orelha, ou orelha empurrada para frente: precisa ser visto hoje"
   reason_hi: "कान के पीछे सूजन या लालिमा, या कान आगे की ओर खिसका हुआ: आज ही दिखाना चाहिए"
   patterns:
+  # 17-sep-2026: la mastoiditis en inglés y árabe no se reconocía descrita, sólo nombrada.
+  - (swelling|swollen|lump|red|redness)[^.]{0,30}behind[^.]{0,15}(his|her|the)?[^.]{0,8}ear
+  - (ear)[^.]{0,25}(sticks? out|pushed forward|pushed out)
+  - (خلف|وراء)[^.]{0,15}(أذن\w*)[^.]{0,25}(تورم|ورم|انتفاخ|احمرار)
+  - (تورم|ورم|انتفاخ)[^.]{0,20}(خلف|وراء)[^.]{0,15}(الأذن|أذنه|أذنها)
+  - (الأذن|أذنه|أذنها)[^.]{0,20}(بارزة|للأمام|مدفوعة)
   - (hinchaz[oó]n|hinchad|rojez|enrojecimiento|bulto|dolor).{0,40}detr[aá]s de la oreja
   - detr[aá]s de la oreja.{0,40}(hinchad|roj|inflamad|bulto)
   - oreja (despegad|desplazada|hacia delante|separada)
@@ -2278,6 +2486,12 @@ rules:
   reason_pt: "Sangue no xixi: precisa ser visto, não é normal em nenhuma idade"
   reason_hi: "पेशाब में ख़ून: दिखाना ज़रूरी है, किसी भी उम्र में सामान्य नहीं"
   patterns:
+  # 17-sep-2026: «du sang dans ses urines» y «في بولها دم» no casaban: el orden de las
+  # palabras era el contrario del escrito.
+  - (sang)[^.]{0,25}(dans)[^.]{0,20}(les |ses |son )?(urines?|pipi)
+  - (urines?|pipi)[^.]{0,25}(avec|plein de)[^.]{0,10}sang
+  - (في|ب)[^.]{0,10}(بول\w*)[^.]{0,20}(دم|دماء)
+  - (دم)[^.]{0,20}(في )?(البول|بوله|بولها)
   - sangre (en|con) (el |la )?(pis|orina|pip[ií])
   - (pis|orina|pip[ií]).{0,25}(con sangre|sanguinolent|rojiz[oa]|marr[oó]n oscur)
   - hematuria
@@ -2314,6 +2528,12 @@ rules:
   reason_pt: "Sangue ou líquido claro pelo nariz ou pelos ouvidos após uma pancada na cabeça"
   reason_hi: "सिर पर चोट के बाद नाक या कान से ख़ून या साफ़ तरल आना"
   patterns:
+  # 17-sep-2026: el líquido claro por la nariz tras un golpe no se reconocía en francés
+  # ni en árabe. Es una de las señales de fractura de base de cráneo.
+  - (liquide|l[íi]quide)[^.]{0,15}(clair|transparent)[^.]{0,30}(sort|coule|s'[ée]coule)[^.]{0,30}(nez|oreille)
+  - (nez|oreille)[^.]{0,30}(coule|sort)[^.]{0,25}(liquide clair|sang)[^.]{0,40}(choc|coup|chute)
+  - (سائل|سايل)[^.]{0,15}(صاف|شفاف)[^.]{0,30}(من)[^.]{0,15}(أنف\w*|أذن\w*)
+  - (يخرج|يسيل|ينزل)[^.]{0,25}(سائل|دم)[^.]{0,20}(من)[^.]{0,15}(أنف\w*|أذن\w*)
   - (sangre|l[ií]quido (claro|transparente)).{0,45}(por|de|del|de los).{0,10}(o[ií]do|nariz|orejas?)
   - (o[ií]do|nariz|oreja).{0,45}(sale|sangra|supura).{0,25}(sangre|l[ií]quido claro)
   - le sale (sangre|l[ií]quido).{0,30}(del o[ií]do|de la nariz|de los o[ií]dos)
@@ -2352,6 +2572,10 @@ rules:
   reason_pt: "Mãos e pés frios em criança com febre: pode ser má circulação, precisa ser visto"
   reason_hi: "बुखार में हाथ-पैर ठंडे: ख़ून का दौरा ठीक न होने का संकेत, दिखाना चाहिए"
   patterns:
+  # 17-sep-2026: el árabe tiene DUAL —«يداها وقدماها باردتان»— y los patrones estaban
+  # escritos en plural.
+  - (يداه|يداها|يديه|يديها|قدماه|قدماها|قدميه|أطرافه|أطرافها)[^.]{0,40}(بارد|باردة|باردتان|باردتين|ثلج)[^.]{0,70}(حمى|حرار|سخون)
+  - (حمى|حرار|سخون)[^.]{0,70}(يداه|يداها|قدماه|قدماها|أطرافه)[^.]{0,30}(بارد|باردة|باردتان|باردتين)
   - ((manos|pies|manitas|extremidades)[^.]{0,25}(muy )?fr[ií](os|as))[^.]{0,70}(fiebre|d[ée]cimas|temperatura|3[89] ?°?)
   - (fiebre|d[ée]cimas|temperatura|3[89] ?°?)[^.]{0,70}((manos|pies|manitas|extremidades)[^.]{0,25}(muy )?fr[ií](os|as))
   - ((hands|feet|extremities)[^.]{0,25}(are )?(very |ice )?cold|(very |ice )?cold (hands|feet|extremities))[^.]{0,70}(fever|temperature|3[89] ?°?|10[0-4] ?°?)
@@ -2385,6 +2609,9 @@ rules:
   reason_pt: "Mordedura de cobra: urgência agora — sem garrote e sem cortar a ferida"
   reason_hi: "साँप का काटना: अभी आपातकाल में जाएँ — पट्टी न बाँधें, घाव न काटें"
   patterns:
+  # 17-sep-2026: en portugués la serpiente se llama «cobra» y no estaba.
+  - (mordid\w*|picad\w*|atacad\w*)[^.]{0,25}(por )?(uma )?(cobra|serpente|v[íi]bora)
+  - (cobra|serpente|v[íi]bora)[^.]{0,25}(mordeu|picou|atacou)
   - "(serpiente|v[íi]bora|culebra).{0,40}(mordi|pic[óo]|pica)"
   - "(mordi|pic[óo]|picad).{0,40}(serpiente|v[íi]bora|culebra)"
   - "(snake|viper|adder|cobra).{0,40}(bit|bite|bitten)"
@@ -2492,6 +2719,11 @@ rules:
   reason_pt: "Dor num testículo: uma torção opera-se em horas — vá agora"
   reason_hi: "अंडकोष में दर्द: मरोड़ हो तो कुछ घंटों में ऑपरेशन चाहिए — अभी जाइए"
   patterns:
+  # 17-sep-2026: en árabe el posesivo va pegado («خصيته») y en portugués el verbo va
+  # delante con el clítico («dói-lhe um testículo»).
+  - (خصيت\w*|خصيتي\w*)[^.]{0,25}(تؤلم\w*|يؤلم\w*|ألم|وجع|منتفخ\w*|متورم\w*)
+  - (ألم|وجع|تورم)[^.]{0,20}(خصيت\w*|الخصيتين)
+  - (d[óo]i|doem|d[óo]i.?lhe|doeu)[^.]{0,25}(um |o |os )?(test[íi]culos?|escroto)
   - (testículo|testiculo|escroto|huevo)[^.]{0,40}(duele|dolor|hinchad|inflamad|morado|duro)
   - (duele|dolor|hinchaz[oó]n|inflamaci[oó]n)[^.]{0,30}(testículo|testiculo|escroto)
   - (testicle|testicles|scrotum|ball)[^.]{0,40}(pain|painful|hurts|swollen|sore|tender)
@@ -2616,6 +2848,19 @@ rules:
   reason_pt: "Sangramento junto com febre: precisa ser visto hoje — é um sinal de alarme da dengue"
   reason_hi: "बुखार के साथ खून आना: आज ही दिखाएँ — यह डेंगू का चेतावनी संकेत है"
   patterns:
+  # 17-sep-2026: sangrar con fiebre sólo se reconocía en castellano, inglés y árabe. En
+  # ruso e hindi se lo llevaba además la regla del líquido por la nariz, que es para
+  # después de un golpe y aquí no ha habido ninguno.
+  - (fi[eè]vre)[^.]{0,60}(saigne|saignement|sang)
+  - (saigne|saignement du nez|sang)[^.]{0,60}(fi[eè]vre)
+  - (fieber)[^.]{0,60}(blutet|nasenbluten|blutung|blut)
+  - (blutet|nasenbluten|blutung)[^.]{0,60}(fieber)
+  - (febre)[^.]{0,60}(sangra|sangramento|hemorragia|sangue)
+  - (sangra|sangramento|hemorragia)[^.]{0,60}(febre)
+  - (температур\w*|жар)[^.]{0,60}(кровь из носа|носов\w+ кровотеч|кровотеч\w*)
+  - (кровь из носа|кровотеч\w*)[^.]{0,60}(температур\w*|жар)
+  - (बुख\w*)[^.]{0,60}(ख़ून|खून|नकसीर)
+  - (नाक से (ख़ून|खून)|नकसीर)[^.]{0,60}(बुख\w*)
   - "(fiebre|d[ée]cimas).{0,70}(le sangran|sangrado|sangra la nar|sangra las enc|vomita sangre)"
   - "(le sangran|sangrado|sangra la nar|sangra las enc|vomita sangre).{0,70}(fiebre|d[ée]cimas)"
   - "(fever|temperature).{0,70}(gums are bleeding|bleeding gums|nose is bleeding|vomiting blood|blood in his vomit)"
@@ -2676,6 +2921,24 @@ rules:
   # agotamiento por calor; el motivo dice cuándo es emergencia. Siempre con el verbo de
   # padecerlo: «¿cómo prevengo un golpe de calor?» no puede sacar el aviso.
   patterns:
+  # 17-sep-2026: la regla exigía que el padre dijera «golpe de calor», y un padre describe
+  # la escena: ha estado al sol, está confuso y no suda. Fallaba en los OCHO idiomas.
+  - (al sol|en la playa|en el coche|calor)[^.]{0,60}(confus\w*|desorientad\w*|no suda|no responde bien|muy caliente)
+  - (confus\w*|desorientad\w*|no suda)[^.]{0,60}(al sol|con el calor|en el coche)
+  - (in the sun|in the heat|in the car)[^.]{0,60}(confus\w*|disorient\w*|not sweating|no sweat|burning hot)
+  - (confus\w*|not sweating)[^.]{0,60}(in the sun|in the heat)
+  - (au soleil|dans la voiture|la chaleur)[^.]{0,60}(confus\w*|d[ée]sorient\w*|ne transpire pas)
+  - (confus\w*|ne transpire pas)[^.]{0,60}(au soleil|la chaleur)
+  - (in der sonne|in der hitze|im auto)[^.]{0,60}(verwirrt|desorientiert|schwitzt nicht|gl[üu]hend hei[sß])
+  - (verwirrt|schwitzt nicht)[^.]{0,60}(in der sonne|in der hitze)
+  - (на солнце|в жару|в машине)[^.]{0,60}(спутан\w*|не потеет|дезориентир\w*)
+  - (спутан\w*|не потеет)[^.]{0,60}(на солнце|в жару)
+  - (في الشمس|في الحر|في السيارة)[^.]{0,60}(مشوش|مرتبك|لا يتعرق|ما يعرق)
+  - (مشوش|لا يتعرق)[^.]{0,60}(في الشمس|في الحر)
+  - (ao sol|no calor|no carro)[^.]{0,60}(confus\w*|desorientad\w*|n[aã]o transpira|n[aã]o sua)
+  - (confus\w*|n[aã]o transpira)[^.]{0,60}(ao sol|no calor)
+  - (धूप में|गर्मी में|गाड़ी में)[^.]{0,60}(उलझन|भ्रम|पसीना नहीं|बेहोश)
+  - (पसीना नहीं|उलझन)[^.]{0,60}(धूप|गर्मी)
   - "(le ha dado|le dio|ha tenido|tiene|tuvo|ha sufrido|sufre|con) (un )?golpe de calor"
   - "(has|had|got|getting|having|with) (a )?(heat ?stroke|sun ?stroke)"
   - "(a fait|a eu|fait|a) (un )?coup de chaleur"
@@ -2701,6 +2964,11 @@ rules:
   # «amarillo» a secas, porque la caca amarilla es lo normal en un bebé de pecho y los mocos
   # amarillos son mocos (ver tests/test_newborn_jaundice.py).
   patterns:
+  # 17-sep-2026: «мой новорождённый жёлтый» y «مولودي أصفر» no casaban.
+  - (новорожд\w*|младенц\w*|малыш\w*|ребенок|ребёнок)[^.]{0,35}(жёлт\w*|желт\w*|желтуш\w*|пожелтел\w*)(?![^.]{0,12}(стул|кал|сопл|моч|выделен))
+  - (жёлт\w*|желт\w*|пожелтел\w*)[^.]{0,30}(новорожд\w*|кожа|глаза|белки)
+  - (مولود\w*|رضيع\w*|طفل\w*)[^.]{0,30}(أصفر|صفار|اصفر|مصفر)
+  - (أصفر|صفار|اصفرار)[^.]{0,30}(لون\w*|جلد\w*|عين\w*|المولود)
   - 'ictericia|icter[ií]cia|jaundice|jaunisse|ict[èe]re|gelbsucht|ikterus|желтух|يرقان|أبو صفار|صفار الولادة|पीलिया'
   - '(piel|ojos|cara|carita|skin|eyes|whites of|face|peau|yeux|visage|haut|augen|gesicht|pele|olhos|rosto|кож|глаз|белк|лиц).{0,25}(amarill|yellow|jaune|gelb|amarel|желт|жёлт)'
   - '(amarill|yellow|jaune|gelb|amarel|желт|жёлт)\w*.{0,12}(piel|ojos|skin|eyes|peau|yeux|haut|augen|pele|olhos|кож|глаз)'
