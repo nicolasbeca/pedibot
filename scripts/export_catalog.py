@@ -139,6 +139,18 @@ target8 = ROOT / "web" / "site" / "src" / "data" / "emergency.json"
 target8.write_text(json.dumps(emergencias, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
 print(f"emergency.json: {len(emergencias)} países con su número")
 
+# idioma → países donde se habla → web/site/src/data/lang_countries.json (17-sep-2026).
+#
+# La portada enseñaba un desplegable de 35 códigos con «GB» puesto de antemano: quien entraba en
+# español tenía que buscarse España dentro de la lista para ver su número. Con esto, cada idioma
+# abre con los países en los que se habla, escritos y sin desplegar nada.
+idiomas = yaml.safe_load((ROOT / "config" / "lang_countries.yaml").read_text(encoding="utf-8"))
+desconocidos = sorted({c for cs in idiomas.values() for c in cs} - set(emergencias))
+assert not desconocidos, f"lang_countries.yaml nombra países sin número: {desconocidos}"
+target9 = ROOT / "web" / "site" / "src" / "data" / "lang_countries.json"
+target9.write_text(json.dumps(idiomas, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
+print(f"lang_countries.json: {sum(len(v) for v in idiomas.values())} países en {len(idiomas)} idiomas")
+
 
 # tema → categoría de la taxonomía → web/site/src/data/topic_category.json
 #

@@ -1,0 +1,31 @@
+# Dónde se habla cada idioma del sitio (17-sep-2026).
+#
+# Para qué: hasta hoy, la sección «tu país» de la portada era un desplegable de 35 códigos con el
+# Reino Unido puesto de antemano. Quien entraba en español veía «GB», y quien entraba en inglés
+# también, y para ver su número tenía que abrir la lista y buscarse. Un número de emergencias que
+# hay que buscar no es un número de emergencias.
+#
+# Ahora la página enseña, escritos y sin desplegar nada, los países donde se habla el idioma que
+# el lector ha elegido. El resto sigue a un clic.
+#
+# El criterio, dicho sin adornos, porque no es el mismo en todas las líneas:
+#
+# - donde el idioma es OFICIAL (España, México, Alemania, Rusia, Portugal, Brasil…);
+# - donde no lo es pero es la lengua en la que de hecho se hace la vida administrativa y
+#   sanitaria: el francés en Marruecos, Argelia, Túnez y Líbano; el ruso en Ucrania y Kazajistán.
+#   Meterlos es útil y no engaña a nadie, porque la tarjeta dice el país por su nombre.
+#
+# El orden manda: el primero es el que sale primero. Para el árabe van antes los del Golfo y
+# Egipto, que es a donde el proyecto quiere llegar. El país del propio lector, si lo sabemos, se
+# pone por delante de todos, esté o no en su lista.
+#
+# Cada código tiene que existir en config/emergency_numbers.yaml; hay una prueba que lo vigila.
+
+en: [GB, US, IE, CA, AU, NZ, IN]
+es: [ES, MX, AR, CO, CL, PE]
+fr: [FR, CA, MA, DZ, TN, LB]
+de: [DE]
+ru: [RU, BY, KZ, UA]
+ar: [SA, AE, EG, QA, KW, BH, OM, JO, LB, MA, DZ, TN]
+pt: [PT, BR]
+hi: [IN]

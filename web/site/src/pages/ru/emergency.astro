@@ -1,16 +1,56 @@
 ---
+/**
+ * La portada de los números de emergencia (17-sep-2026).
+ *
+ * Tenía la lista de signos de alarma y ni un solo teléfono, teniendo el sitio los de 35 países.
+ * Ahora los lleva todos, escritos, y cada uno enlaza a su página.
+ *
+ * ESTE FICHERO SE GENERA desde scripts/build_emergency_pages.py, junto con las páginas de cada
+ * país. Editar una copia a mano la deja desparejada de las otras siete.
+ */
 import Base from '../../layouts/Base.astro';
 import Checklist from '../../components/Checklist.astro';
-import { t } from '../../i18n';
-const lang = 'ru'; const s = t(lang);
+import emergency from '../../data/emergency.json';
+import langCountries from '../../data/lang_countries.json';
+import { t, langPrefix } from '../../i18n';
+
+const lang = 'ru'; const s = t(lang); const pref = langPrefix(lang);
+const numeros = emergency as Record<string, any>;
+
+let nombreDe = (cc: string) => cc;
+try {
+  const dn = new Intl.DisplayNames([lang], { type: 'region' });
+  nombreDe = (cc: string) => dn.of(cc) || cc;
+} catch (e) {}
+
+// primero los países donde se habla el idioma de la página: quien lee en árabe busca el suyo,
+// no el británico. El resto va detrás, por nombre.
+const mios: string[] = (langCountries as Record<string, string[]>)[lang] ?? [];
+const resto = Object.keys(numeros)
+  .filter((cc) => !mios.includes(cc))
+  .map((cc) => [cc, nombreDe(cc)] as [string, string])
+  .sort((a, b) => a[1].localeCompare(b[1], lang));
+const orden: [string, string][] = [...mios.map((cc) => [cc, nombreDe(cc)] as [string, string]), ...resto];
+
 const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: s.emg_name, about: s.emg_about };
 ---
-<Base lang={lang} title={s.emg_title} description={s.emg_desc} path="/ru/emergency" jsonld={jsonld}>
+<Base lang={lang} title={s.emg_title} description={s.emg_desc} path={`${pref}/emergency`} jsonld={jsonld}>
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.emg_eyebrow}</p>
     <h1 style="margin-top:8px">{s.emg_h1}</h1>
     <p class="lede">{s.emg_lede}</p>
     <p style="margin-top:14px"><button class="btn btn-ghost" id="near" type="button">📍 {s.emg_near}</button> <span id="near-hint" class="n"></span></p>
+
+    <h2 style="margin-top:34px">{s.emg_by_country}</h2>
+    <div class="nums">
+      {orden.map(([cc, nombre]) => (
+        <a class="ncard" href={`${pref}/emergency/${cc.toLowerCase()}`}>
+          <span class="pais">{nombre}</span>
+          <b>{numeros[cc]?.emergency ?? '—'}</b>
+        </a>
+      ))}
+    </div>
+
     <Checklist lang={lang} />
   </div>
   <script is:inline define:vars={{ query: s.emg_map_q }}>
@@ -26,3 +66,21 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
     });
   </script>
 </Base>
+
+<style>
+  .nums {
+    display: grid; gap: 10px; margin: 16px 0 6px;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  }
+  .ncard {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px;
+    text-decoration: none; color: inherit; background: var(--paper);
+  }
+  .ncard:hover { border-color: var(--coral); }
+  .ncard .pais { font-size: .92rem; }
+  .ncard b {
+    font-family: 'JetBrains Mono', ui-monospace, monospace; color: var(--coral);
+    font-variant-numeric: tabular-nums; font-size: .98rem; white-space: nowrap;
+  }
+</style>

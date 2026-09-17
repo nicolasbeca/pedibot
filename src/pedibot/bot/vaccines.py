@@ -96,6 +96,83 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "usa",
     ),
     "PT": ("portugal", "португали", "البرتغال", "पुर्तगाल"),
+    # El Golfo y Egipto (17-sep-2026). Van también las CIUDADES que la gente nombra en lugar del
+    # país —«en Dubái», «en Doha»—, porque es como se escribe de verdad cuando uno vive allí.
+    # «مصر» y «قطر» no están aquí sino abajo, con lupa: escritas así, sin más, se meten dentro de
+    # «قطرة» (una gota de jarabe) y de «مصرية», y una pregunta de dosis acabaría en un calendario.
+    "SA": (
+        "arabia saudí",
+        "arabia saudita",
+        "saudi arabia",
+        "arabie saoudite",
+        "saudi-arabien",
+        "саудовск",
+        "السعودية",
+        "السعوديه",
+        "arábia saudita",
+        "सऊदी अरब",
+        "riad",
+        "riyadh",
+        "الرياض",
+        "جدة",
+        "jeddah",
+    ),
+    "AE": (
+        "emiratos",
+        "united arab emirates",
+        "émirats",
+        "emirats",
+        "vereinigte arabische emirate",
+        "эмират",
+        "оаэ",
+        "الإمارات",
+        "الامارات",
+        "emirados",
+        "संयुक्त अरब अमीरात",
+        "dubai",
+        "dubái",
+        "dubaï",
+        "دبي",
+        "abu dhabi",
+        "abu dabi",
+        "أبوظبي",
+        "أبو ظبي",
+        "sharjah",
+        "الشارقة",
+    ),
+    "EG": (
+        "egipto",
+        "egypt",
+        "égypte",
+        "egypte",
+        "ägypten",
+        "египет",
+        "египт",
+        "egito",
+        "मिस्र",
+        "el cairo",
+        "cairo",
+        "القاهرة",
+        "الإسكندرية",
+    ),
+    "QA": (
+        "catar",
+        "qatar",
+        "katar",
+        "катар",
+        "क़तर",
+        "कतर",
+        "doha",
+        "الدوحة",
+    ),
+    "KW": (
+        "kuwait",
+        "koweït",
+        "koweit",
+        "кувейт",
+        "الكويت",
+        "कुवैत",
+    ),
     "BR": (
         "brasil",
         "brazil",
@@ -124,6 +201,12 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
 COUNTRY_SHORT: dict[str, re.Pattern[str]] = {
     "GB": re.compile(r"\b(?:uk|u\.k\.|great britain|britain|gro(?:ß|ss)britannien)\b", re.I),
     "US": re.compile(r"\b(?:the u\.?s\.?|u\.?s\.?a\.?)\b", re.I),
+    # «قطر» es Catar y también el principio de «قطرة», que es una GOTA: la palabra con la que un
+    # padre árabe cuenta el jarabe que le ha dado a su hijo. Sin el paréntesis de abajo, «كم قطرة
+    # أعطيه» —«¿cuántas gotas le doy?»— se leería como una pregunta sobre Catar. Igual «مصر»
+    # dentro de «مصري», «مصرية» y «مصرف».
+    "QA": re.compile(r"قطر(?![ةه])"),
+    "EG": re.compile(r"مصر(?![يةه])"),
 }
 
 

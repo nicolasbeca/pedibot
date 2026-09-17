@@ -459,7 +459,7 @@
       "name": "childhood_vaccination_schedule",
       "price": 0.01,
       "sla_minutes": 5,
-      "description": "The official childhood vaccination schedule of a country, transcribed from its health authority, for 8 countries: Brazil, Portugal, Spain, the United Kingdom, the United States, France, Germany and India. Returns every age with the vaccines due and what each protects against, the issuing body, the source URL and the review date. With the child's age it also returns what is due now and what comes next. A transcribed table, not a recollection of one.",
+      "description": "The official childhood vaccination schedule of a country, transcribed from its health authority, for 13 countries (BR, PT, ES, GB, US, FR, DE, IN, SA, AE, EG, QA, KW), Europe to the Gulf. Returns every age with the vaccines due and what each protects against, the issuing body, the source URL and the review date. With the child's age it also returns what is due now and what comes next. A transcribed table, not a recollection of one.",
       "requirements": {
         "type": "object",
         "required": [
@@ -704,16 +704,16 @@
       }
     },
     {
-      "name": "childhood_vaccination_schedules_8_countries",
+      "name": "childhood_vaccination_schedules_by_country",
       "url": "https://pedibot.xyz/api/vaccines?country=IN",
-      "description": "The transcribed childhood vaccination schedules for 8 countries (BR, PT, ES, GB, US, FR, DE, IN), with the issuing body, the source URL and the review date. The same data the paid job returns, as a plain call for whoever prefers to parse it.",
+      "description": "The transcribed childhood vaccination schedules for 13 countries (BR, PT, ES, GB, US, FR, DE, IN, SA, AE, EG, QA, KW), with the issuing body, the source URL and the review date. The same data the paid job returns, as a plain call for whoever prefers to parse it.",
       "params": {
         "type": "object",
         "description": "One country per call.",
         "properties": {
           "country": {
             "type": "string",
-            "description": "BR, PT, ES, GB, US, FR, DE or IN"
+            "description": "BR, PT, ES, GB, US, FR, DE, IN, SA, AE, EG, QA or KW"
           },
           "age_months": {
             "type": "number",

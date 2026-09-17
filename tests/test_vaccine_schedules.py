@@ -52,9 +52,20 @@ def test_no_appointment_is_empty_or_unlabelled(pais: str) -> None:
 
 @pytest.mark.parametrize("pais", PAISES)
 def test_no_age_is_repeated_or_impossible(pais: str) -> None:
+    """Una edad repetida es casi siempre un error: la misma visita escrita dos veces.
+
+    Casi siempre, no siempre. Una CAMPAÑA anual —la gripe— puede empezar justo a la edad de una
+    cita fija: en el Golfo, a los 6 meses tocan la hexavalente y empieza la gripe de temporada.
+    Son cosas distintas y la herramienta las trata distinto (`every_year` se arrastra a todas las
+    edades posteriores, y la cita fija no), así que la comprobación se hace dentro de cada grupo
+    y no sobre la mezcla, que es lo que hacía hasta el 17-sep-2026 (L169).
+    """
     edades = [float(s["age"]) for s in CRUDO[pais]["schedule"]]
-    repes = [e for e, n in Counter(edades).items() if n > 1]
-    assert not repes, f"{pais}: edades repetidas {repes}"
+    for anual in (False, True):
+        grupo = [float(s["age"]) for s in CRUDO[pais]["schedule"] if bool(s.get("every_year")) is anual]
+        repes = [e for e, n in Counter(grupo).items() if n > 1]
+        cual = "campañas anuales" if anual else "citas fijas"
+        assert not repes, f"{pais}: edades repetidas entre las {cual}: {repes}"
     fuera = [e for e in edades if e < 0 or e > 216]
     assert not fuera, f"{pais}: edades fuera de la infancia {fuera}"
 

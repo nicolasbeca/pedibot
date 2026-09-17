@@ -1,28 +1,51 @@
 ---
 /**
- * Tu país, en la portada (11-sep-2026).
+ * Tu país, en la portada (11-sep-2026; reescrita el 17-sep-2026).
  *
- * PediBot conoce el teléfono de emergencias de 31 países y el calendario vacunal de ocho, y
- * **nada de eso se veía en la portada**. Para un padre en Delhi o en El Cairo —que es a donde el
- * proyecto quiere llegar— eso era justo lo único que hacía falta a las tres de la mañana.
+ * PediBot conoce el teléfono de emergencias de 35 países y el calendario vacunal de trece, y nada
+ * de eso se veía en la portada. Para un padre en Delhi o en El Cairo —que es a donde el proyecto
+ * quiere llegar— eso era justo lo único que hacía falta a las tres de la mañana.
  *
- * Eliges país y sale su número, grande, y el enlace a su calendario si lo tenemos. El país se
- * adivina del idioma del navegador y se guarda en la MISMA clave que usa el chat
- * (`pedibot_country`), así que elegirlo aquí lo deja elegido allí y al revés.
+ * Lo que había hasta hoy y por qué no servía, dicho por el operador: era **un desplegable de 35
+ * códigos con el Reino Unido puesto de antemano**. Quien entraba en español veía «GB» y tenía que
+ * abrir la lista y buscarse; quien entraba en inglés, también. Un número de emergencias que hay
+ * que buscar no es un número de emergencias.
  *
- * Los nombres de país salen de `Intl.DisplayNames`, que trae el navegador: en el idioma de la
- * página, sin un solo byte de datos y sin pedirle nada a nadie. Si no existe, se queda el código.
+ * Ahora la sección abre con los países donde se habla el idioma de la página —los de
+ * `config/lang_countries.yaml`— y **cada número está escrito en el HTML**, no puesto por
+ * JavaScript. Eso segundo no es un detalle de estilo: un número que sólo existe después de
+ * ejecutar un script no lo indexa nadie, y «emergency number in Qatar» es justo la clase de
+ * búsqueda que este proyecto puede contestar mejor que casi nadie.
+ *
+ * Los nombres de país salen de `Intl.DisplayNames`, que también trae Node, así que se escriben al
+ * CONSTRUIR y en el idioma de la página. El país del propio lector, si lo sabemos, se pone el
+ * primero, y si no estaba se añade: eso sí lo hace JavaScript, porque depende de quién mire.
  */
 import { t, langPrefix, type Lang } from '../i18n';
 import emergency from '../data/emergency.json';
 import vaccines from '../data/vaccines.json';
+import langCountries from '../data/lang_countries.json';
+
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
+const pref = langPrefix(lang);
 
-const paises = Object.keys(emergency).sort();
+const numeros = emergency as Record<string, { emergency?: string; poison?: string; mental?: string }>;
 const conCalendario = Object.keys(vaccines);
-const defecto = paises.includes('GB') ? 'GB' : paises[0];
+const mios: string[] = (langCountries as Record<string, string[]>)[lang] ?? [];
+const resto = Object.keys(numeros).filter((cc) => !mios.includes(cc)).sort();
+
+let comoSeLlama = (cc: string) => cc;
+try {
+  const dn = new Intl.DisplayNames([lang], { type: 'region' });
+  comoSeLlama = (cc: string) => dn.of(cc) || cc;
+} catch { /* sin ICU completo se quedan los códigos, que se entienden */ }
+const nombres: Record<string, string> = Object.fromEntries(
+  Object.keys(numeros).map((cc) => [cc, comoSeLlama(cc)])
+);
+// el `tel:` se queda con el primer número cuando el país da dos («15 / 112»)
+const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0].trim();
 ---
 
 <!-- 16-sep-2026: esta sección era la única que NO metía su contenido en `.wrap`, así que en
@@ -33,76 +56,113 @@ const defecto = paises.includes('GB') ? 'GB' : paises[0];
     <p class="eyebrow">{s.mine_eyebrow}</p>
     <h2 style="margin-top:8px">{s.mine_h2}</h2>
 
-    <div class="row">
-      <label class="pick">
-        <span>{s.mine_pick}</span>
-        <select id="mine-cc" aria-label={s.mine_pick}>
-          {paises.map((cc) => <option value={cc} selected={cc === defecto}>{cc}</option>)}
-        </select>
-      </label>
-
-      <div class="num">
-        <span class="lbl">{s.mine_call}</span>
-        <b id="mine-num">{emergency[defecto as keyof typeof emergency]?.emergency ?? '—'}</b>
-      </div>
+    <div class="cards" id="mine-cards">
+      {mios.map((cc) => (
+        <article class="card" data-cc={cc}>
+          <h3>{nombres[cc]}</h3>
+          <p class="num">
+            <span class="lbl">{s.mine_call}</span>
+            <a href={`tel:${marcar(cc)}`}>{numeros[cc]?.emergency ?? '—'}</a>
+          </p>
+          {numeros[cc]?.poison && <p class="line"><b>{s.mine_poison}:</b> {numeros[cc].poison}</p>}
+          {numeros[cc]?.mental && <p class="line"><b>{s.mine_mental}:</b> {numeros[cc].mental}</p>}
+          <p class="links">
+            <a href={`${pref}/emergency/${cc.toLowerCase()}`}>{s.emg_eyebrow} →</a>
+            {conCalendario.includes(cc) && (
+              <a href={`${pref}/vaccines/${cc.toLowerCase()}`}>{s.nav_vaccines} →</a>
+            )}
+          </p>
+        </article>
+      ))}
     </div>
 
-    <p class="cal">
-      <a id="mine-cal" class="btn btn-ghost" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines} →</a>
-      <span class="hint" id="mine-hint"></span>
-    </p>  </div>
+    <p class="more">
+      <label for="mine-cc">{s.mine_more}</label>
+      <select id="mine-cc" aria-label={s.mine_more}>
+        <option value="">—</option>
+        {resto.map((cc) => <option value={cc}>{nombres[cc]}</option>)}
+      </select>
+      <a class="btn btn-ghost" href={`${pref}/emergency`}>{s.emg_by_country} →</a>
+    </p>
+  </div>
 </section>
 
-<script define:vars={{ NUM: emergency, CAL: conCalendario, PREF: langPrefix(lang), FALTA: s.mine_no_cal }}>
+<script define:vars={{ NUM: numeros, NOMBRES: nombres, CAL: conCalendario, PREF: pref, T: { call: s.mine_call, poison: s.mine_poison, mental: s.mine_mental, emg: s.emg_eyebrow, vax: s.nav_vaccines } }}>
+  const zona = document.getElementById('mine-cards');
   const sel = document.getElementById('mine-cc');
-  if (sel) {
-    const num = document.getElementById('mine-num');
-    const cal = document.getElementById('mine-cal');
-    const hint = document.getElementById('mine-hint');
-    const idioma = document.documentElement.lang || 'en';
 
-    // el nombre del país en el idioma de la página, de la biblioteca del navegador
-    try {
-      const nombres = new Intl.DisplayNames([idioma], { type: 'region' });
-      for (const o of sel.options) o.textContent = nombres.of(o.value) || o.value;
-    } catch (e) { /* navegador sin Intl.DisplayNames: se quedan los códigos, que se entienden */ }
-
-    const pinta = () => {
-      const cc = sel.value;
-      num.textContent = (NUM[cc] && NUM[cc].emergency) || '—';
-      const tiene = CAL.includes(cc);
-      cal.href = tiene ? `${PREF}/vaccines/${cc.toLowerCase()}` : `${PREF}/vaccines`;
-      // decirlo cuando NO lo tenemos es más honesto que llevar a una lista y que lo descubra solo
-      hint.textContent = tiene ? '' : FALTA;
-    };
-    sel.addEventListener('change', () => {
-      try { localStorage.setItem('pedibot_country', sel.value); } catch (e) {}
-      pinta();
-    });
+  const suyo = () => {
     try {
       const guardado = localStorage.getItem('pedibot_country');
-      const delIdioma = (navigator.language || '').split('-')[1];
-      const elegido = guardado || delIdioma;
-      if (elegido && [...sel.options].some((o) => o.value === elegido)) sel.value = elegido;
+      if (guardado && NUM[guardado]) return guardado;
     } catch (e) {}
-    pinta();
+    const delIdioma = (navigator.language || '').split('-')[1];
+    return delIdioma && NUM[delIdioma] ? delIdioma : null;
+  };
+
+  const tarjeta = (cc) => {
+    const n = NUM[cc] || {};
+    const el = document.createElement('article');
+    el.className = 'card';
+    el.dataset.cc = cc;
+    const tel = String(n.emergency || '').split('/')[0].trim();
+    const linea = (etiqueta, valor) => (valor ? `<p class="line"><b>${etiqueta}:</b> ${valor}</p>` : '');
+    el.innerHTML =
+      `<h3>${NOMBRES[cc] || cc}</h3>` +
+      `<p class="num"><span class="lbl">${T.call}</span><a href="tel:${tel}">${n.emergency || '—'}</a></p>` +
+      linea(T.poison, n.poison) +
+      linea(T.mental, n.mental) +
+      `<p class="links"><a href="${PREF}/emergency/${cc.toLowerCase()}">${T.emg} →</a>` +
+      (CAL.includes(cc) ? `<a href="${PREF}/vaccines/${cc.toLowerCase()}">${T.vax} →</a>` : '') +
+      `</p>`;
+    return el;
+  };
+
+  // el país del lector va delante: si ya estaba escrito, se mueve; si no, se añade
+  const delante = (cc) => {
+    if (!zona || !cc || !NUM[cc]) return;
+    const el = zona.querySelector(`[data-cc="${cc}"]`) || tarjeta(cc);
+    el.classList.add('tuyo');
+    zona.prepend(el);
+  };
+
+  delante(suyo());
+
+  if (sel) {
+    sel.addEventListener('change', () => {
+      const cc = sel.value;
+      if (!cc) return;
+      try { localStorage.setItem('pedibot_country', cc); } catch (e) {}
+      delante(cc);
+      sel.value = '';
+    });
   }
 </script>
 
 <style>
-  .row { display: flex; gap: 24px; align-items: flex-end; flex-wrap: wrap; margin-top: 18px; }
-  .pick span { display: block; font-size: .84rem; color: var(--ink-3); margin-bottom: 6px; }
-  .pick select {
-    font: inherit; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line);
-    background: var(--paper); color: var(--ink); min-width: 210px;
+  .cards {
+    display: grid; gap: 14px; margin-top: 18px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
   }
-  .num { display: flex; flex-direction: column; }
-  .num .lbl { font-size: .84rem; color: var(--ink-3); margin-bottom: 2px; }
-  .num b {
+  .card {
+    border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; background: var(--paper);
+  }
+  .card.tuyo { border-color: var(--coral); }
+  .card h3 { margin: 0; font-size: 1rem; }
+  .num { margin: 6px 0 4px; }
+  .num .lbl { display: block; font-size: .78rem; color: var(--ink-3); }
+  .num a {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: clamp(1.8rem, 6vw, 2.6rem); line-height: 1.05; color: var(--coral);
-    font-variant-numeric: tabular-nums;
+    font-size: clamp(1.5rem, 5vw, 2rem); line-height: 1.1; color: var(--coral);
+    font-variant-numeric: tabular-nums; text-decoration: none;
   }
-  .cal { margin-top: 20px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-  .hint { font-size: .84rem; color: var(--ink-3); }
+  .line { margin: 2px 0; font-size: .82rem; color: var(--ink-2); }
+  .line b { font-weight: 600; color: var(--ink-3); }
+  .links { margin: 10px 0 0; display: flex; gap: 12px; flex-wrap: wrap; font-size: .85rem; }
+  .more { margin-top: 20px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .more label { font-size: .84rem; color: var(--ink-3); }
+  .more select {
+    font: inherit; padding: 8px 12px; border-radius: 12px; border: 1px solid var(--line);
+    background: var(--paper); color: var(--ink); min-width: 180px;
+  }
 </style>

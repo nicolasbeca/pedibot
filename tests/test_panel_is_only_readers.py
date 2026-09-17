@@ -26,8 +26,8 @@ identificador de sesión aleatorio, sin dirección IP»—:
 
 from __future__ import annotations
 
-import re
 import json
+import re
 import sqlite3
 from pathlib import Path
 
