@@ -389,3 +389,12 @@ abierto, en orden de consecuencia:
 - **El percentil, sin saber la palabra**: «mi hija de 3 años pesa 13 kg y mide 95 cm» salía rutina. Ahora las dos medidas en el mismo mensaje bastan; con una sola no, que eso es una dosis.
 - **Tono**: bloque nuevo en la portada con por qué existe y para quién, y el catálogo de fuentes (CC0) descargable desde el sitio y no sólo desde el repositorio.
 - Suite: 4.323. Sitio: 1.569 páginas. Todo verificado contra lo vivo.
+
+## 17-sep-2026 (noche) · las 51 reglas, probadas en los ocho idiomas
+- Encargo del operador tras lo de la cojera: *«me preocupa que a la primera haya detectado algo tan grave; además, debe estar en todos los idiomas»*. Las dos cosas eran ciertas.
+- **Medido con frases de padre, una por regla y por lengua: 72 huecos de 408.** `very_high_fever` fallaba en seis idiomas (todos los patrones pedían el símbolo de grados), `self_harm` en seis, `heatstroke` en los ocho, `neck_stiffness` en cuatro —y es la meningitis—, la regla del lactante con fiebre en ruso (por no leer «двухмесячный» como edad) y la ideación suicida en inglés por una contracción.
+- **Y dos reglas que se disparaban de más**: la del golpe en la cabeza saltaba con la palabra «cabeza» a secas (un dolor de cabeza con vómitos salía como traumatismo) y la del líquido por la nariz, con cualquier sangrado nasal.
+- El lector de edades aprendió la forma rusa compuesta —«двухмесячный», «годовалый», «полугодовалый»— y las semanas en letra en francés y portugués.
+- Queda `tests/test_every_rule_in_every_language.py`: 408 casos más 21 preguntas corrientes que tienen que seguir siendo rutina, y una prueba que falla si alguien añade una regla sin frases. ~230 patrones nuevos.
+- Los propios candados del repositorio cazaron tres efectos secundarios míos: una caca amarilla que pasaba por ictericia en ruso, un detector nuevo sin declarar y el desequilibrio de escrituras en `open_fracture`.
+- Suite: 4.754. Verificado en vivo en cinco idiomas.

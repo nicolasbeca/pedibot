@@ -263,3 +263,20 @@ El triaje y la búsqueda son dos sistemas distintos y se arreglan por separado: 
 frase del padre, el otro encuentra el documento. **Arreglar sólo el primero produce una alarma
 muda**, que asusta sin explicar y manda a urgencias sin decir a por qué. Desde hoy, cada regla
 nueva se prueba dos veces: que salte, y que la respuesta traiga algo detrás.
+
+## L172 · Que el patrón esté escrito no quiere decir que salte (17-sep-2026)
+Ya había un candado que exigía a cada regla de alarma patrones en los tres alfabetos, y las 51 lo
+pasaban. Parecía cobertura y no lo era: mide que estén ESCRITOS. La medida buena es otra —**una
+frase por regla y por idioma, escrita como la teclea un padre**— y con ella fallaban **72 de 408**,
+uno de cada seis.
+
+No eran reglas menores. «Tiene 41 de fiebre» no saltaba en seis idiomas porque todos los patrones
+pedían el símbolo de grados. Las autolesiones fallaban en seis porque cada lengua usa otro verbo.
+El golpe de calor fallaba en los ocho porque la regla esperaba oír «golpe de calor» y un padre
+describe la escena. Y la regla del lactante con fiebre —la más importante que hay— no funcionaba
+en ruso porque «двухмесячный» es una palabra sola y el lector de edades esperaba una cifra.
+
+**La regla**: una comprobación estructural (¿hay patrones? ¿en los tres alfabetos?) vale para que
+nadie se deje una lengua entera, y para nada más. Lo que decide si el aviso llega es si la frase
+que escribe un padre casa, y eso sólo se sabe escribiendo la frase. Vale igual fuera del triaje:
+presencia no es cobertura en ninguna parte.
