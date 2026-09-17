@@ -567,6 +567,11 @@ rules:
   reason_en: Choking with breathing difficulty
   reason_fr: Étouffement avec difficulté à respirer
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - удушь\w*|поперхнул\w*
+  - engasgo
   # 17-sep-2026: «se atragantó CON algo» —con el objeto, que es como se cuenta— no casaba
   # en cuatro lenguas: los patrones pedían además que se dijera que no respira.
   - (choked|choking)[^.]{0,15}on[^.]{0,30}(a |the )?(piece|bit|grape|nut|toy|food|apple)
@@ -694,6 +699,13 @@ rules:
   reason_en: Head injury with loss of consciousness
   reason_fr: Coup à la tête avec perte de connaissance
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (coup|choc|traumatisme)[^.]{0,15}[àa]? ?la t[êe]te[^.]{0,25}perte de connaissance
+  - травм\w*[^.]{0,12}голов\w*[^.]{0,30}потер\w*[^.]{0,10}сознани
+  - (إصابة|ضربة)[^.]{0,15}(في )?الرأس[^.]{0,30}فقدان الوعي
+  - (batida|pancada|traumatismo)[^.]{0,15}(na )?cabe[çc]a[^.]{0,30}perda de consci[êe]ncia
   # 17-sep-2026: la caída y la pérdida de conocimiento, contadas seguidas, en ruso,
   # portugués e hindi.
   - (упал\w*|падени)[^.]{0,45}(потерял\w* сознание|без сознания|отключил\w*)
@@ -752,6 +764,10 @@ rules:
   reason_en: Deep wound with heavy bleeding that does not stop after 10 minutes of pressure
   reason_fr: Plaie profonde qui saigne abondamment malgré 10 minutes de compression
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (tiefe )?wunde[^.]{0,35}(weiterblutet|blutet weiter)
   # 17-sep-2026: «sangra mucho y la presión no lo para», en ruso y portugués.
   - (сильно кровит|сильное кровотеч\w*|много крови)[^.]{0,45}(не (помога|останавлива)\w*|давление не)
   - (sangra muito|sangramento forte)[^.]{0,45}(n[aã]o para|press[aã]o n[aã]o)
@@ -1055,6 +1071,17 @@ rules:
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - dificultad(es)? (para|al) respirar
+  - breathing difficult(y|ies)
+  - difficult[ée]s? [àa] respirer
+  - atembeschwerden|atemnot
+  - затрудн\w+ дыхани|одышка
+  - صعوبة (في )?التنفس
+  - dificuldade (para|em|a) respirar
+  - (साँस|सांस) (की )?(दिक्कत|तकलीफ़|तकलीफ|परेशानी)
   # 17-sep-2026: las mismas señales de la respiración rápida, en las tres escrituras
   - (дышит|дыхание)[^.]{0,20}(часто|быстро|учащ[ёе]нн\w*)
   - (учащённое|частое|шумное)[^.]{0,15}дыхание
@@ -1142,6 +1169,26 @@ rules:
   reason_en: Excessive irritability or drowsiness
   reason_fr: Irritabilité ou somnolence excessives
   patterns:
+  # 17-sep-2026: lo que un padre ve de verdad es que el niño DEJA de hacer cosas —no juega,
+  # no sonríe, no le mira, está apagado— y la regla sólo conocía «somnoliento» e
+  # «irritable», que son palabras de libro. La guía del Niño Jesús pone «adormilado,
+  # decaído o muy irritable» entre los motivos de consulta.
+  - (no (quiere )?(juega|jugar)|no sonr[íi]e|no me mira|no responde a nada|est[áa] ido|est[áa] apagad[oa]|apátic[oa]|sin ganas de nada|ni se mueve del sof[áa])
+  - (decaíd[oa]|abatid[oa]|flojit[oa])[^.]{0,25}(y|,)?
+  - (not (playing|smiling|interested)|does ?n'?t want to play|wo?n'?t play|just lies there|listless|lethargic|not himself|not herself|no interest in anything)
+  - (ne (joue|sourit) (plus|pas)|ne veut pas jouer|ne r[ée]agit plus|apathique|il est amorphe|elle est amorphe|sans r[ée]action)
+  - (spielt nicht( mehr)?|will nicht spielen|l[äa]chelt nicht( mehr)?|teilnahmslos|apathisch|liegt nur da|reagiert kaum)
+  - (не играет|не хочет играть|не улыбается|вялый|вялая|апатичн\w*|лежит пластом|ни на что не реагирует)
+  - (لا يلعب|ما يلعب|لا يبتسم|خامل|خاملة|فاتر|لا يتفاعل|ما عنده طاقة)
+  - (n[aã]o (brinca|sorri|quer brincar)|apático|apática|prostrad[oa]|sem rea[çc][ãa]o|s[óo] fica deitad[oa])
+  - (नहीं खेल रहा|नहीं खेल रही|खेलना नहीं चाहता|मुस्कुरा नहीं|सुस्त पड़ा|कोई प्रतिक्रिया नहीं दे रहा)
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (irritabilit[ée]|somnolence)[^.]{0,25}(excessive|inhabituelle)
+  - (unruhe|schl[äa]frigkeit)[^.]{0,25}(auff[äa]llig|[üu]berm[äa][sß]ig)
+  - (auff[äa]llige|[üu]berm[äa][sß]ige)[^.]{0,20}(unruhe|schl[äa]frigkeit)
+  - (irritabilidade|sonol[êe]ncia)[^.]{0,25}(excessiva|excessivas|incomum)
   # 17-sep-2026: la irritabilidad que NO se calma con nada faltaba en siete lenguas. Es la
   # mitad del par —somnolencia o irritabilidad— y sólo estaba la primera bien cubierta.
   - (muy |super |s[úu]per )?irritable[^.]{0,45}(no se calma|nada le calma|no hay quien)
@@ -1251,6 +1298,33 @@ rules:
   reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
   reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
   patterns:
+  # 17-sep-2026: «no bebe nada desde ayer» salía RUTINA en seis lenguas —funcionaba en
+  # ruso y árabe y en ninguna más—, porque la negación es la señal y el guardián la comía.
+  # Se exige totalidad o tiempo: «no bebe suficiente agua» no es esto.
+  - no (bebe|toma|quiere beber|ha bebido)[^.]{0,20}(nada|l[íi]quidos?|agua)[^.]{0,30}(desde|en todo|todo el d[íi]a|ni)?
+  - (lleva|llev[óo])[^.]{0,20}(sin (beber|tomar (nada|l[íi]quidos)))
+  - (se niega|rechaza)[^.]{0,20}(a )?(beber|el agua|los l[íi]quidos|el biber[óo]n)
+  - (has ?n'?t|have ?n'?t|not|won'?t|refus\w*)[^.]{0,20}(drunk|drinking|drink)[^.]{0,25}(anything|any fluids|water|since|all day)
+  - (ne (boit|veut boire)|n'a rien bu)[^.]{0,25}(rien|d'eau|depuis|de la journ[ée]e)?
+  - (refuse)[^.]{0,15}de boire
+  - (trinkt)[^.]{0,25}(nichts|nicht mehr|kaum etwas)[^.]{0,25}(seit|den ganzen tag)?
+  - (verweigert)[^.]{0,20}(das trinken|die flasche|jede fl[üu]ssigkeit)
+  - (не пь[ёе]т|ничего не пь[ёе]т|отказывается пить)[^.]{0,30}(со вчера|весь день|вообще)?
+  - (لا يشرب|لم يشرب|ما يشرب|يرفض الشرب)[^.]{0,30}(شيئا|منذ|طوال اليوم)?
+  - (n[aã]o (bebe|quer beber|bebeu))[^.]{0,20}(nada|l[íi]quidos|[áa]gua)[^.]{0,30}(desde|o dia todo)?
+  - (recusa)[^.]{0,20}(beber|l[íi]quidos|o biber[ãa]o)
+  - (कुछ नहीं पी|पानी नहीं पी|दूध नहीं पी|पीने से मना)[^.]{0,30}(रहा|रही|कल से)?
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (zeichen|anzeichen) von (austrocknung|dehydr\w*)
+  - (признаки|симптомы) обезвоживани
+  - sinais de desidrata[çc][ãa]o
+  - signos de deshidrataci[óo]n
+  - signs of dehydration
+  - signes de d[ée]shydratation
+  - علامات (الجفاف|جفاف)
+  - (निर्जलीकरण|पानी की कमी)[^.]{0,15}(के )?(लक्षण|संकेत)
   # 17-sep-2026: «sin pis desde ayer» —la forma más corta y más común de contarlo— se
   # apagaba en cuatro lenguas por lo mismo: la negación es la señal.
   - sin (pis|pip[íi]|orina|pa[ñn]al mojado)[^.]{0,30}(desde|en) 
@@ -1370,6 +1444,10 @@ rules:
   reason_en: Repeated vomiting with severe headache
   reason_fr: Vomissements répétés avec fort mal de tête
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (wiederholtes )?erbrechen[^.]{0,30}kopfschmerz
   # 17-sep-2026: el orden inverso —primero la cabeza, luego los vómitos— en alemán, ruso
   # y árabe.
   - (kopfschmerz\w*)[^.]{0,55}(erbroch\w*|erbricht|[üu]bergeben|gespuckt)
@@ -1423,6 +1501,14 @@ rules:
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - vomiting after[^.]{0,20}(a )?head (injury|bump|knock)
+  - erbrechen nach[^.]{0,25}(kopfverletzung|schlag auf den kopf|sturz)
+  - рвота после[^.]{0,25}(травмы головы|удара по голове)
+  - قيء بعد[^.]{0,25}(إصابة|ضربة)[^.]{0,15}الرأس
+  - v[óo]mitos? (depois|ap[óo]s) de[^.]{0,25}(batida|pancada)[^.]{0,12}cabe[çc]a
   # 17-sep-2026: «vomitó DESPUÉS del golpe», con el golpe detrás, en inglés, alemán y
   # árabe.
   - vomit\w*[^.]{0,35}after[^.]{0,30}(the )?(bump|blow|knock|hit|fall)
@@ -1515,6 +1601,14 @@ rules:
   reason_en: Swallowed an object (especially batteries or magnets)
   reason_fr: Ingestion d'un objet (surtout piles ou aimants)
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - ingesta de (un )?objeto
+  - ingestion d'un objet
+  - gegenstand verschluckt
+  - ingest[ãa]o de (um )?objeto
+  - (कोई )?चीज़ निगल
   - (se ha tragado|ha tragado|trag[oó]).{0,40}(pila|im[aá]n|moneda|objeto|bater[ií]a)
   - (pila|im[aá]n|moneda).{0,40}(trag|comid)
   - swallowed.{0,40}(battery|magnet|coin|object|toy)
@@ -1561,6 +1655,14 @@ rules:
   reason_en: Ingestion of toxic products or medication overdose
   reason_fr: Ingestion de produits toxiques ou surdose de médicaments
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (giftige stoffe|gift)[^.]{0,25}(eingenommen|geschluckt|getrunken)
+  - (при[ёе]м|приняли?)[^.]{0,25}(ядовит\w*|отрав\w*)
+  - передозировк\w*[^.]{0,20}лекарств
+  - ingest[ãa]o de produtos t[óo]xicos
+  - dose excessiva de medicamento
   # 17-sep-2026: las pastillas de un adulto tomadas POR ERROR, en cuatro lenguas. Es la
   # intoxicación más común de la casa.
   - (выпил\w*|принял\w*|съел\w*)[^.]{0,30}(мои |чужие )?(таблетк\w*|лекарств\w*)[^.]{0,25}(по ошибке|случайно)?
@@ -1662,6 +1764,14 @@ rules:
   reason_en: Severe, continuous, worsening abdominal pain
   reason_fr: Mal de ventre fort, continu, qui empire
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - mal de ventre[^.]{0,20}(fort|intense)[^.]{0,30}(continu|empire)?
+  - (starke|heftige)[^.]{0,20}bauchschmerzen[^.]{0,30}(anhaltend|zunehmend)?
+  - (сильн\w+|резк\w+)[^.]{0,20}боль в животе
+  - ألم (بطن|في البطن) شديد
+  - पेट में[^.]{0,15}(तेज़|तेज)[^.]{0,12}दर्द
   # 17-sep-2026: «está doblado del dolor» —la postura, que es como lo cuenta un padre y
   # como se ve en la consulta— no estaba en NINGUNA de las ocho lenguas.
   - (doblad\w*|encogid\w*|retorci[ée]ndose|hecho un ovillo)[^.]{0,40}(dolor|barriga|tripa|abdomen)
@@ -1746,6 +1856,10 @@ rules:
   reason_en: Injury with visible deformity / wound that needs stitches
   reason_fr: Traumatisme avec déformation visible / plaie qui nécessite des points
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (verletzung|bruch)[^.]{0,25}(sichtbare[rn]? )?fehlstellung
   # 17-sep-2026: «deformado» a secas, sin decir tras qué, en ruso, árabe e hindi.
   - (запясть\w*|рук\w*|ног\w*|палец|кист\w*)[^.]{0,20}(деформирован\w*|искривлен\w*)
   - (معصم\w*|ذراع\w*|يد\w*|ساق\w*|رجل\w*)[^.]{0,20}(مشوه\w*|معوج\w*|ملتوي\w*)
@@ -1807,6 +1921,10 @@ rules:
   reason_en: Baby under 1 month refusing feeds
   reason_fr: Bébé de moins d'un mois qui refuse de téter
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - beb[êe][^.]{0,30}menos de 1 m[êe]s[^.]{0,25}recusa
   # 17-sep-2026: «will not feed» a secas, con la edad delante en días.
   - \b\d{1,2} day old[^.]{0,40}(will not|won'?t|refus\w*)[^.]{0,15}(feed|eat|nurse)
   # 17-sep-2026: «lleva varias tomas sin querer comer» —que es como se cuenta— no casaba,
@@ -1868,6 +1986,11 @@ rules:
   reason_en: Burn (especially face, hands, genitals or large area)
   reason_fr: Brûlure (surtout au visage, aux mains, aux parties génitales ou étendue)
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - verbrennung|verbr[üu]hung
+  - (जलना|जल गया|जल गयी|झुलस)
   - quemad
   - escaldad
   - burn(ed|t)? (his|her|their|him|self)
@@ -1994,6 +2117,12 @@ rules:
   reason_pt: Dor de barriga do lado direito, ou contínua e piorando — motivo para procurar ajuda
   reason_hi: पेट में दाहिनी ओर दर्द, या लगातार और बढ़ता दर्द — दिखाने का दर्ज कारण
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - douleur abdominale[^.]{0,20}(à|a) droite
+  - bauchschmerz\w*[^.]{0,15}rechts
+  - ألم (بطن|في البطن)[^.]{0,20}(الجهة اليمنى|الجانب الأيمن)
   # 17-sep-2026: el lado derecho y el dolor que empeora, en las tres escrituras
   - (боль|болит)[^.]{0,30}(справа|в правой|правая сторона)[^.]{0,20}(живот\w*)
   - (живот\w*)[^.]{0,25}(болит|боль)[^.]{0,30}(сильнее|хуже|усиливается)
@@ -2051,9 +2180,25 @@ rules:
   reason_pt: Sinais de um transtorno alimentar
   reason_hi: खानपान के विकार के संकेत
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - trastorno de (la )?(conducta )?alimentaria|trastorno alimentario
+  - eating disorder
+  - trouble du comportement alimentaire
+  - essst[öo]rung
+  - расстройств\w*[^.]{0,20}пищевого поведения
+  - اضطراب[^.]{0,20}(الأكل|سلوك الأكل|الطعام)
+  - transtorno alimentar|dist[úu]rbio alimentar
+  - (खानपान|खाने)[^.]{0,15}(के )?विकार
   # 17-sep-2026: dejar de comer y saltarse las comidas, en inglés y portugués.
-  - (stopped eating|not eating|skips?[^.]{0,12}meals?|skipping meals)
-  - (deixou de comer|n[aã]o come|salta[^.]{0,15}refei[çc][õo]es)
+  # 17-sep-2026: «not eating» a secas era MÍO y estaba mal: un niño de dos años con catarro
+  # que no come en todo el día no tiene un trastorno de la conducta alimentaria. Hace falta
+  # el acompañante —saltarse comidas, esconderlas, vomitar después, verse gorda—.
+  - (stopped eating|not eating)[^.]{0,45}(skips?|skipping|meals|weight|fat|hides?|purg)
+  - (skips?|skipping)[^.]{0,15}(every |all )?meals?
+  - (deixou de comer|n[aã]o come)[^.]{0,45}(refei[çc][õo]es|peso|gorda|esconde|vomita)
+  - (salta|pula)[^.]{0,15}(todas as )?refei[çc][õo]es
   # 17-sep-2026: en ruso y árabe no se reconocía el patrón —vomitar después de comer y
   # verse gorda— dicho con las palabras de una madre.
   - (вызывает рвоту|рвота|тошнит|рв[ёе]т)[^.]{0,45}(после еды|после того как поест)
@@ -2072,7 +2217,10 @@ rules:
   - (vomits?|throws up|purg\w*).{0,35}(after (eating|meals)|to lose weight|on purpose)
   - (anorexi|bulimi|binge eating)
   - (saute|sauté|saute des).{0,15}repas
-  - ne mange (plus|presque plus|rien)
+  # 17-sep-2026: pedía sólo «ne mange plus rien», y así un niño pequeño con catarro que no
+  # come salía con un aviso de trastorno alimentario. Hace falta el acompañante o la edad.
+  - ne mange (plus|presque plus|rien)[^.]{0,50}(poids|grosse|miroir|repas|vomit|cache)
+  - (adolescent\w*|ado|fille de 1[0-9]|1[0-9] ans)[^.]{0,45}ne mange (plus|rien)
   - (vomit|vomissements?).{0,30}apr[eè]s (les repas|(avoir )?mang[eé])
   - (obs[eé]dée?|fixation).{0,25}(poids|calories|son corps)
   - (anorexi|boulimi)
@@ -2094,7 +2242,8 @@ rules:
   - (مهووس|مهووسة).{0,20}(بوزن|بالوزن|بالسعرات)
   - (pula|pulando).{0,15}refei[çc][õo]es
   - parou de comer
-  - n[aã]o come (mais|nada|quase nada)
+  - n[aã]o come (mais|nada|quase nada)[^.]{0,50}(peso|gorda|gordo|espelho|refei[çc][õo]es|vomita|esconde)
+  - (adolescente|filha de 1[0-9]|1[0-9] anos)[^.]{0,45}n[aã]o come (mais|nada)
   - vomita.{0,30}(depois d(as|e) (refei[çc][õo]es|comer)|para n[aã]o engordar)
   - (anorexi|bulimi)
   - (खाना).{0,25}(छोड़ दिया|नहीं खा रह)
@@ -2113,6 +2262,14 @@ rules:
   reason_pt: Sinais neurológicos — enxerga mal, mexe mal um braço ou perna, anda ou fala com dificuldade
   reason_hi: तंत्रिका-संबंधी संकेत — ठीक न दिखना, हाथ-पैर ठीक से न हिलना, चलने या बोलने में दिक्कत
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - neurological signs
+  - neurologische (zeichen|symptome|auff[äa]lligkeiten)
+  - علامات عصبية
+  - signos neurol[óo]gicos
+  - signes neurologiques
   # 17-sep-2026: la boca torcida, en ruso.
   - (рот|лицо)[^.]{0,20}(перекош\w*|перекосил\w*|искривил\w*|обвис\w*)
   # 17-sep-2026: «no mueve bien el brazo» —sin decir la palabra parálisis— no saltaba en
@@ -2368,6 +2525,10 @@ rules:
   reason_en: Self-harm
   reason_fr: Conduite auto-agressive
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - conduite auto.?agressive|automutilation
   # 17-sep-2026: el alemán con el instrumento («schneidet sich mit einer klinge»).
   - (schneidet|ritzt)[^.]{0,12}sich
   # 17-sep-2026: las autolesiones fallaban en SEIS idiomas de ocho. Cada lengua lo dice
@@ -2868,6 +3029,12 @@ rules:
   reason_pt: "Mordedura de cobra: urgência agora — sem garrote e sem cortar a ferida"
   reason_hi: "साँप का काटना: अभी आपातकाल में जाएँ — पट्टी न बाँधें, घाव न काटें"
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - mordedura de (serpiente|v[íi]bora|culebra)
+  - morsure de serpent
+  - mordedura de cobra|picada de cobra
   # 17-sep-2026: en portugués la serpiente se llama «cobra» y no estaba.
   - (mordid\w*|picad\w*|atacad\w*)[^.]{0,25}(por )?(uma )?(cobra|serpente|v[íi]bora)
   - (cobra|serpente|v[íi]bora)[^.]{0,25}(mordeu|picou|atacou)
@@ -2899,6 +3066,17 @@ rules:
   reason_pt: "Mordedura de animal: lavar e ser visto por um médico HOJE — raiva e tétano"
   reason_hi: "जानवर का काटना: धोएँ और आज ही डॉक्टर को दिखाएँ — रेबीज़ और टिटनेस"
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - mordedura de (un )?(animal|perro|gato)
+  - animal bite|dog bite|cat bite
+  - morsure (d'un )?(animal|chien|chat)
+  - (tier|hunde|katzen)biss
+  - укус (животного|собаки|кошки)
+  - (عضة|عضّة)[^.]{0,15}(حيوان|كلب|قطة)
+  - mordedura de (animal|c[ãa]o|gato)|mordida de (animal|cachorro)
+  - (जानवर|कुत्ते|बिल्ली)[^.]{0,12}(के )?(काटने|काट)
   - "(perro|gato|murci[ée]lago|mono|zorro|rata).{0,40}(mordi|ha mordido)"
   - "(mordi|ha mordido).{0,40}(perro|gato|murci[ée]lago|mono|zorro|rata)"
   - "(dog|cat|bat|monkey|fox|rat).{0,40}(bit|bitten)"
@@ -2937,6 +3115,329 @@ rules:
 # La fontanela abombada es presión dentro de la cabeza. La ficha IMNCI de India —que ya está
 # indexada— la pone entre los signos de peligro que obligan a referir de inmediato, junto al
 # quejido y las convulsiones. «Mollera» va porque es como se dice en media América.
+# ── Lote del 17-sep-2026: urgencias que no tenían puerta ───────────────────────────────────
+# Salieron de preguntar «¿QUÉ REGLAS FALTAN?» en vez de «¿funcionan las que hay?». Se le
+# presentaron al triaje 21 urgencias pediátricas clásicas contadas por un padre y 16 salieron
+# rutina. Dos de las diez preguntas REALES que ha recibido el bot eran de crup.
+
+# El crup leve es rutina y es lo más común; lo que lo convierte en urgencia es el ESTRIDOR —el
+# ruido al coger aire—, sobre todo en reposo. Ecimed lo describe así: «tos perruna, estridor
+# inspiratorio, afonía o ronquera y dificultad respiratoria».
+- id: stridor
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "Ruido al coger aire (estridor): la vía aérea está estrechada, hay que verlo ahora"
+  reason_en: "Noisy breathing on breathing in (stridor): the airway is narrowed — get seen now"
+  reason_fr: "Bruit à l'inspiration (stridor) : les voies respiratoires sont rétrécies — maintenant"
+  reason_de: "Geräusch beim Einatmen (Stridor): die Atemwege sind eng — jetzt vorstellen"
+  reason_ru: "Шум на вдохе (стридор): дыхательные пути сужены — показать сейчас"
+  reason_ar: "صوت عند الشهيق (صرير): مجرى الهواء ضيق — يُعرض الآن"
+  reason_pt: "Ruído ao inspirar (estridor): a via aérea está estreitada — ver agora"
+  reason_hi: "साँस लेते समय आवाज़ (स्ट्राइडर): साँस की नली सिकुड़ी है — अभी दिखाइए"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
+  # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
+  - (يصدر|يطلع)[^.]{0,20}(صوت\w*|أزيز)[^.]{0,25}(عند|أثناء)[^.]{0,15}(الشهيق|التنفس)
+  - estridor
+  - (ruido|pitido|silbido|chirrido)[^.]{0,30}(al |cuando )?(coger|tomar|coge|toma) (el )?aire
+  - (ruido|pitido)[^.]{0,25}(al inspirar|al respirar)[^.]{0,30}(en reposo|quieto|dormido)
+  - (tos perruna|tos de perro)[^.]{0,45}(ruido|estridor|pitido|le cuesta|silba)
+  - stridor
+  - (noisy|whistl\w*|harsh)[^.]{0,25}(breathing|breath)[^.]{0,30}(in|inwards|at rest|when he breathes in|when she breathes in)
+  - (barking cough)[^.]{0,45}(noisy|stridor|struggl\w*|whistl\w*)
+  - (bruit|sifflement)[^.]{0,25}(à l'inspiration|quand il inspire|en inspirant)
+  - (toux aboyante)[^.]{0,45}(bruit|stridor|siffle)
+  - (stridor|ger[äa]usch beim einatmen|pfeifen beim einatmen)
+  - (bellender husten)[^.]{0,45}(ger[äa]usch|stridor|pfeif)
+  - (стридор|шум на вдохе|свист на вдохе)
+  - (лающий кашель)[^.]{0,45}(шум|стридор|свист)
+  - (صرير|صوت عند الشهيق|أزيز عند الشهيق)
+  - (سعال نباحي|سعال كالنباح)[^.]{0,45}(صوت|صرير|أزيز)
+  - (estridor|ru[íi]do ao inspirar|assobio ao inspirar)
+  - (tosse de c[ãa]o|tosse ladrante)[^.]{0,45}(ru[íi]do|estridor|assobio)
+  - (स्ट्राइडर|साँस लेते समय आवाज़|खींचते समय आवाज़)
+  - (भौंकने जैसी खाँसी)[^.]{0,45}(आवाज़|सीटी|मुश्किल)
+
+# Invaginación intestinal: el llanto a ratos es un cólico y es lo más común; lo que lo sube es
+# que ENCOJA LAS PIERNAS con cada crisis o la caca en «jalea de grosella». Ecimed la lista entre
+# las urgencias quirúrgicas del lactante.
+- id: intussusception
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "Llanto a ratos encogiendo las piernas, o caca como jalea: puede ser una invaginación, urgencias ahora"
+  reason_en: "Crying in waves while drawing the legs up, or jelly-like stool: possible intussusception — go now"
+  reason_fr: "Pleurs par crises avec les jambes repliées, ou selles en gelée : invagination possible — maintenant"
+  reason_de: "Schreien in Wellen mit angezogenen Beinen, oder geleeartiger Stuhl: mögliche Invagination — sofort"
+  reason_ru: "Плач приступами с поджатыми ногами или стул как желе: возможна инвагинация — сейчас же"
+  reason_ar: "بكاء على نوبات مع ضم الساقين، أو براز كالهلام: قد يكون انغلافا معويا — الآن"
+  reason_pt: "Choro às crises encolhendo as pernas, ou fezes em geleia: possível invaginação — agora"
+  reason_hi: "रुक-रुक कर रोना और पैर सिकोड़ना, या जेली जैसा मल: आँत का घुसना हो सकता है — अभी"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
+  # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
+  - (poo|stool|nappy|diaper)[^.]{0,30}(look\w*|like)[^.]{0,20}(redcurrant|jelly)
+  - (रुक.?रुक कर रो|बार.?बार रो)[^.]{0,45}(पैर)[^.]{0,20}(सिकोड़|मोड़|ऊपर)
+  - (पैर)[^.]{0,15}(सिकोड़|मोड़)[^.]{0,45}(रो)
+  - (invaginaci[óo]n|intussusception|invagination|invagina[çc][ãa]o)
+  - (llora|llanto|grita)[^.]{0,35}(a ratos|por crisis|a rachas|cada rato)[^.]{0,45}(encoge|dobla|sube)[^.]{0,20}(las )?piernas
+  - (encoge|dobla)[^.]{0,20}(las )?piernas[^.]{0,45}(llora|grita|dolor)
+  - (jalea de grosella|mermelada de grosella|como jalea)
+  - (cr(ies|ying)|scream\w*)[^.]{0,35}(in waves|on and off|every few minutes)[^.]{0,45}(pull\w*|draw\w*)[^.]{0,15}(his |her |the )?legs
+  - (redcurrant jelly|jelly.?like)[^.]{0,20}(stool|poo)
+  - (pleure|crie)[^.]{0,35}(par crises|par vagues)[^.]{0,45}(replie|remonte)[^.]{0,15}(les )?jambes
+  - (selles?)[^.]{0,20}(en gel[ée]e|comme de la gel[ée]e)
+  - (schreit|weint)[^.]{0,35}(in wellen|schubweise|immer wieder)[^.]{0,45}(zieht)[^.]{0,20}(die )?beine
+  - (stuhl|windel)[^.]{0,20}(wie gelee|geleeartig|himbeergelee)
+  - (плачет|кричит)[^.]{0,35}(приступами|волнами)[^.]{0,45}(поджимает|подтягивает)[^.]{0,15}ног
+  - (стул|кал)[^.]{0,20}(как желе|малиновое желе)
+  - (يبكي|يصرخ)[^.]{0,35}(على نوبات|بنوبات)[^.]{0,45}(يضم|يثني)[^.]{0,15}(ساقيه|رجليه)
+  - (براز|بروز)[^.]{0,20}(كالهلام|هلامي)
+  - (chora|grita)[^.]{0,35}([àa]s crises|por crises|de vez em quando)[^.]{0,45}(encolhe|dobra)[^.]{0,20}(as )?pernas
+  - (fezes)[^.]{0,20}(em geleia|como geleia)
+  - (रोता|रोती|चिल्ला)[^.]{0,35}(रुक.?रुक|बार.?बार)[^.]{0,45}(पैर)[^.]{0,15}(सिकोड़|मोड़)
+  - (मल|पॉटी)[^.]{0,20}(जेली जैसा|जेली जैसी)
+
+# Vómito en proyectil tras cada toma en un lactante pequeño: estenosis del píloro. Ecimed la
+# lista entre las urgencias quirúrgicas. Se exige que sea A CHORRO y tras las tomas: un lactante
+# que regurgita es lo más normal del mundo.
+- id: projectile_vomiting_infant
+  level: urgent
+  source: ecimed_pediatria_2016
+  reason_es: "Vómito a chorro después de cada toma en un bebé: hay que verlo hoy, puede ser el píloro"
+  reason_en: "Projectile vomiting after every feed in a baby: needs to be seen today — it can be the pylorus"
+  reason_fr: "Vomissements en jet après chaque tétée : à faire voir aujourd'hui, ce peut être le pylore"
+  reason_de: "Schwallartiges Erbrechen nach jeder Mahlzeit: heute vorstellen, es kann der Pylorus sein"
+  reason_ru: "Рвота фонтаном после каждого кормления: показать сегодня — может быть пилоростеноз"
+  reason_ar: "قيء قذفي بعد كل رضعة: يُعرض اليوم — قد يكون تضيق البواب"
+  reason_pt: "Vómito em jato depois de cada mamada: ver hoje — pode ser o piloro"
+  reason_hi: "हर फ़ीड के बाद उछलकर उल्टी: आज दिखाइए — पाइलोरस हो सकता है"
+  patterns:
+  - (vomit\w*|devuelve)[^.]{0,25}(a chorro|en proyectil|proyectil|como una fuente|sale disparado)
+  - (a chorro|en proyectil)[^.]{0,25}(vomit\w*|despu[ée]s de (cada )?(toma|comer))
+  - (projectile vomit\w*|vomits? like a fountain|vomiting across the room)
+  - (vomit\w*)[^.]{0,30}(forceful\w*|shoots? out)[^.]{0,30}(after (every )?feed)?
+  - (vomissements? en jet|vomit en jet)
+  - (schwallartig\w*|im schwall)[^.]{0,25}(erbricht|erbrechen|spuckt)
+  - (erbricht|spuckt)[^.]{0,25}(schwallartig|im hohen bogen)
+  - (рвота фонтаном|рвет фонтаном|рвёт фонтаном)
+  - (قيء قذفي|يتقيأ بقوة|يقذف الحليب)
+  - (v[óo]mito em jato|vomita em jato)
+  - (उछलकर उल्टी|फ़व्वारे जैसी उल्टी|ज़ोर से उल्टी)
+
+# La diabetes que debuta: beber mucho, orinar mucho, adelgazar. Ecimed tiene el capítulo de
+# cetoacidosis. Se exigen DOS de la tríada: beber mucho en verano, solo, no es nada.
+- id: new_diabetes_signs
+  level: urgent
+  source: ecimed_pediatria_2016
+  reason_es: "Beber y orinar muchísimo, y perder peso: hay que descartar una diabetes hoy mismo"
+  reason_en: "Drinking and passing urine a great deal, with weight loss: diabetes has to be ruled out today"
+  reason_fr: "Boire et uriner énormément, avec perte de poids : il faut écarter un diabète aujourd'hui"
+  reason_de: "Sehr viel trinken und urinieren, mit Gewichtsverlust: heute einen Diabetes ausschließen"
+  reason_ru: "Много пьёт и много мочится, худеет: сегодня же исключить диабет"
+  reason_ar: "شرب وتبول كثيران مع نقص الوزن: يجب استبعاد السكري اليوم"
+  reason_pt: "Beber e urinar muitíssimo, com perda de peso: é preciso descartar diabetes hoje"
+  reason_hi: "बहुत पानी पीना और बार-बार पेशाब, वज़न घटना: आज ही मधुमेह जाँचना ज़रूरी है"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
+  # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
+  - (تشرب|يشرب)[^.]{0,25}(كثيرا|بكثرة)[^.]{0,60}(تتبول|يتبول)
+  - (bebe)[^.]{0,25}(muita [áa]gua|muito)[^.]{0,60}(urina|xixi)[^.]{0,25}(o tempo todo|muito)
+  - (बहुत|ज़्यादा)[^.]{0,20}(पानी|प्यास)[^.]{0,60}(पेशाब|बार.?बार)
+  - (प्यास)[^.]{0,45}(पेशाब)
+  - (bebe|toma)[^.]{0,25}(much[íi]sim[oa]|much[oa] (agua|l[íi]quido)|litros|sin parar|no para de beber)[^.]{0,60}(orina|pis|pip[íi])[^.]{0,25}(much|todo el rato|sin parar|constante)
+  - (orina|hace pis)[^.]{0,30}(much[íi]simo|todo el rato|sin parar)[^.]{0,60}(bebe|sed)[^.]{0,25}(much|sin parar)
+  - (mucha sed|sed constante)[^.]{0,60}(adelgaz|perdido peso|perdiendo peso)
+  - (drink\w*)[^.]{0,25}(a lot|lots|litres|constantly|all the time)[^.]{0,60}(wee\w*|pee\w*|urinat\w*)[^.]{0,25}(a lot|constantly|all the time)
+  - (thirsty|thirst)[^.]{0,60}(losing weight|lost weight|weight loss)
+  - (boit)[^.]{0,25}(beaucoup|[ée]norm[ée]ment|des litres)[^.]{0,60}(urine|fait pipi)[^.]{0,25}(beaucoup|tout le temps)
+  - (trinkt)[^.]{0,25}(sehr viel|st[äa]ndig|literweise)[^.]{0,60}(uriniert|muss st[äa]ndig|pinkelt)
+  - (пь[ёе]т)[^.]{0,25}(очень много|литрами|постоянно)[^.]{0,60}(мочится|писает|ходит в туалет)
+  - (يشرب)[^.]{0,25}(كثيرا|بكثرة|لترات)[^.]{0,60}(يتبول|يبول)[^.]{0,25}(كثيرا|باستمرار)
+  - (bebe)[^.]{0,25}(muito|muit[íi]ssimo|litros)[^.]{0,60}(urina|faz xixi)[^.]{0,25}(muito|o tempo todo)
+  - (बहुत|ज़्यादा)[^.]{0,15}(पानी )?(पी रहा|पीती|प्यास)[^.]{0,60}(पेशाब)[^.]{0,25}(बार.?बार|ज़्यादा)
+
+# Cuerpo extraño inhalado: la tos que empieza DE GOLPE comiendo algo pequeño. Aunque se pase, el
+# fruto seco puede seguir en el bronquio. La guía de Andalucía dedica un capítulo a los cuerpos
+# extraños.
+- id: inhaled_foreign_body
+  level: urgent
+  source: andalucia_cuidame_guia
+  reason_es: "Tos que empieza de golpe comiendo algo pequeño: puede haberse ido a la vía aérea, hay que verlo hoy"
+  reason_en: "Coughing that starts suddenly while eating something small: it may be in the airway — get seen today"
+  reason_fr: "Toux qui commence brutalement en mangeant quelque chose de petit : à faire voir aujourd'hui"
+  reason_de: "Husten, der beim Essen von etwas Kleinem plötzlich beginnt: heute vorstellen"
+  reason_ru: "Кашель, начавшийся внезапно во время еды мелким предметом: показать сегодня"
+  reason_ar: "سعال بدأ فجأة أثناء أكل شيء صغير: قد يكون في مجرى الهواء — يُعرض اليوم"
+  reason_pt: "Tosse que começa de repente a comer algo pequeno: pode estar na via aérea — ver hoje"
+  reason_hi: "कुछ छोटा खाते समय अचानक शुरू हुई खाँसी: साँस की नली में जा सकती है — आज दिखाइए"
+  patterns:
+  - (a comer|comia|comendo)[^.]{0,35}(amendoim|amendoins|nozes|uva|pipoca|cenoura)[^.]{0,45}(tossir|tosse|engasg)
+  - (come[çc]ou)[^.]{0,20}(a )?(tossir|tosse)[^.]{0,45}(amendoim|uva|nozes|pipoca)
+  # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
+  # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
+  - (tos|toux|husten|кашел\w*|سعال|tosse|खाँसी|खांसी)[^.]{0,25}(brutal\w*|de repente|de golpe|s[úu]bit\w*|pl[öo]tzlich\w*|внезапн\w*|مفاجئ|अचानक)[^.]{0,50}(uva|raisin|traube|виноград|عنب|amendoim|मूँगफली|अंगूर|nuez|nuts?)
+  - (mangeant|essen|ел|أكل|comer|खाते)[^.]{0,30}(raisin|traube|виноград|عنب|uva|अंगूर|मूँगफली)[^.]{0,45}(tousse|husten|кашл\w*|سعال|tossir|खाँस)
+  - (अचानक)[^.]{0,25}(खाँसी|खांसी|खाँसने)
+  - (внезапн\w*|вдруг)[^.]{0,25}(кашел\w*|закашля\w*)
+  - (سعال)[^.]{0,20}(مفاجئ|فجأة)
+  - (tosse)[^.]{0,25}(de repente|s[úu]bita)
+  - (pl[öo]tzlich\w*)[^.]{0,20}(husten)
+  - (toux)[^.]{0,20}(brutale|soudaine)
+  - (com(iendo|[íi]a)|masticando)[^.]{0,40}(frutos secos|cacahuete|almendra|pipa|palomita|uva|zanahoria|caramelo)[^.]{0,45}(tos|toser|se puso a toser|atragant)
+  - (tos|toser)[^.]{0,25}(de (repente|golpe)|s[úu]bita)[^.]{0,45}(comiendo|mientras com|con un fruto seco|con una uva)
+  - (eating|chewing)[^.]{0,40}(nuts?|peanut|almond|popcorn|grape|carrot|sweet)[^.]{0,45}(cough\w*|chok\w*|splutter)
+  - (sudden\w*)[^.]{0,20}(cough\w*)[^.]{0,45}(while eating|with a nut|with a peanut|with a grape)
+  - (mangeait|en mangeant)[^.]{0,40}(cacahu[èe]te|noix|amande|raisin|bonbon)[^.]{0,45}(tousse|toux|s'[ée]touffe)
+  - (a[sß])[^.]{0,35}(nuss|erdnuss|traube|popcorn)[^.]{0,45}(husten|hustet|verschluckt)
+  - (ел|ела|жевал\w*)[^.]{0,35}(орех\w*|арахис|виноград|попкорн)[^.]{0,45}(кашел|закашля)
+  - (كان يأكل|أثناء الأكل)[^.]{0,40}(مكسرات|فول سوداني|عنب|فشار)[^.]{0,45}(سعال|يسعل|اختنق)
+  - (comia|a comer)[^.]{0,40}(amendoim|nozes|uva|pipoca)[^.]{0,45}(tosse|tossir|engasg)
+  - (खाते समय|खाते.?खाते)[^.]{0,40}(मूँगफली|बादाम|अंगूर|पॉपकॉर्न)[^.]{0,45}(खाँसी|खांसी|अटक)
+
+# El asma que no responde al inhalador. El corpus tiene el salbutamol en 32 pasajes.
+- id: asthma_not_responding
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "El inhalador no le hace efecto: una crisis de asma que no responde es urgencia ahora"
+  reason_en: "The inhaler is not working: an asthma attack that does not respond is an emergency now"
+  reason_fr: "L'inhalateur ne fait pas effet : une crise d'asthme qui ne répond pas est une urgence"
+  reason_de: "Das Spray wirkt nicht: ein Asthmaanfall, der nicht anspricht, ist ein Notfall"
+  reason_ru: "Ингалятор не помогает: приступ астмы, который не отвечает на лечение — неотложно"
+  reason_ar: "البخاخ لا يفيد: نوبة ربو لا تستجيب هي حالة طارئة الآن"
+  reason_pt: "O inalador não faz efeito: uma crise de asma que não responde é urgência agora"
+  reason_hi: "इनहेलर असर नहीं कर रहा: दमे का दौरा जो जवाब न दे, अभी आपात स्थिति है"
+  patterns:
+  - (ventol[íi]n|inhalador|salbutamol|c[áa]mara)[^.]{0,45}(sigue igual|no le hace|no hace efecto|no mejora|no le alivia)
+  - (sigue igual|no mejora|no le hace nada)[^.]{0,45}(ventol[íi]n|inhalador|salbutamol)
+  - (inhaler|ventolin|salbutamol|puffer|blue inhaler)[^.]{0,45}(not working|no better|still struggling|has ?n'?t helped|no improvement)
+  - (still|not any better)[^.]{0,30}(after|despite)[^.]{0,20}(the )?(inhaler|ventolin|puffer)
+  - (ventoline|inhalateur|salbutamol)[^.]{0,45}(ne fait rien|n'am[ée]liore|toujours pareil|sans effet)
+  - (spray|inhalator|salbutamol)[^.]{0,45}(wirkt nicht|hilft nicht|keine besserung|unver[äa]ndert)
+  - (ингалятор|вентолин|сальбутамол)[^.]{0,45}(не помога|без эффекта|не легче)
+  - (بخاخ|فنتولين|سالبوتامول)[^.]{0,45}(لا يفيد|بلا فائدة|ما تحسن|لم يتحسن)
+  - (inalador|ventolin|salbutamol|bombinha)[^.]{0,45}(n[aã]o faz efeito|n[aã]o melhora|continua igual)
+  - (इनहेलर|पंप|सालबुटामोल)[^.]{0,45}(असर नहीं|फ़र्क़ नहीं|वैसा ही)
+
+# Un producto químico en el ojo: lavar YA con agua y ver a alguien. La guía de Andalucía trata
+# los cuerpos extraños en los ojos.
+- id: chemical_in_eye
+  level: emergency
+  source: andalucia_cuidame_guia
+  reason_es: "Producto químico en el ojo: lávalo con agua abundante 15 minutos y ve a urgencias ahora"
+  reason_en: "Chemical in the eye: rinse with plenty of water for 15 minutes and go to emergency now"
+  reason_fr: "Produit chimique dans l'œil : rincez à grande eau 15 minutes et allez aux urgences"
+  reason_de: "Chemikalie im Auge: 15 Minuten mit viel Wasser spülen und sofort in die Notaufnahme"
+  reason_ru: "Химическое вещество в глазу: промывайте водой 15 минут и сразу в больницу"
+  reason_ar: "مادة كيميائية في العين: اغسلها بماء غزير 15 دقيقة واذهب للطوارئ الآن"
+  reason_pt: "Produto químico no olho: lave com água abundante 15 minutos e vá à urgência agora"
+  reason_hi: "आँख में रसायन: 15 मिनट भरपूर पानी से धोइए और अभी आपातकालीन विभाग जाइए"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
+  # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
+  - (دخل|دخلت)[^.]{0,25}(مبيض|منظف|كلور|صابون)[^.]{0,20}(في )?(عينه|عينها|العين)
+  - (आँख|आंख)[^.]{0,20}(में)[^.]{0,30}(ब्लीच|साबुन|फिनाइल|तेज़ाब|घोल)
+  - (lej[íi]a|amoniaco|detergente|sosa|[áa]cido|producto de limpieza|gel hidroalcoh[óo]lico|pegamento)[^.]{0,35}(en|dentro de|le ha entrado en)[^.]{0,15}(el |un )?ojo
+  - (ojo)[^.]{0,30}(lej[íi]a|amoniaco|detergente|producto de limpieza|[áa]cido)
+  - (bleach|ammonia|detergent|acid|drain cleaner|sanitiser|glue)[^.]{0,30}(in|into)[^.]{0,12}(his |her |the )?eye
+  - (eye)[^.]{0,25}(splashed|squirted)[^.]{0,25}(bleach|chemical|detergent)
+  - ((javel|ammoniaque|d[ée]tergent|acide|produit m[ée]nager))[^.]{0,30}(dans|œil|oeil)
+  - ((bleichmittel|reiniger|lauge|s[äa]ure))[^.]{0,30}(ins auge|im auge)
+  - ((отбеливател\w*|хлорк\w*|моющее|кислот\w*))[^.]{0,30}(в глаз|глаза)
+  - ((مبيض|كلور|منظف|حمض))[^.]{0,30}(في العين|بالعين)
+  - ((lix[íi]via|amon[íi]aco|detergente|[áa]cido))[^.]{0,30}(no olho|nos olhos)
+  - ((ब्लीच|फिनाइल|तेज़ाब|साबुन का घोल))[^.]{0,30}(आँख|आंख)
+
+# Onfalitis: el ombligo rojo y maloliente en un recién nacido es puerta de entrada de una sepsis.
+- id: omphalitis
+  level: urgent
+  source: ecimed_pediatria_2016
+  reason_es: "Ombligo rojo, hinchado o maloliente en un recién nacido: hay que verlo hoy, puede infectarse la sangre"
+  reason_en: "Red, swollen or smelly navel in a newborn: needs to be seen today — it can seed the blood"
+  reason_fr: "Nombril rouge, gonflé ou malodorant chez un nouveau-né : à faire voir aujourd'hui"
+  reason_de: "Roter, geschwollener oder übel riechender Nabel beim Neugeborenen: heute vorstellen"
+  reason_ru: "Красный, отёчный или дурно пахнущий пупок у новорождённого: показать сегодня"
+  reason_ar: "سرة حمراء أو متورمة أو كريهة الرائحة عند المولود: يُعرض اليوم"
+  reason_pt: "Umbigo vermelho, inchado ou malcheiroso num recém-nascido: ver hoje"
+  reason_hi: "नवजात की नाभि लाल, सूजी या बदबूदार: आज दिखाइए"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
+  # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
+  - (pus|eiter|гной|قيح|صديد)[^.]{0,30}(navel|belly button|nombril|nabel|пупк\w*|السرة|umbigo|न(ा|ा)भि)
+  - ((navel|belly button|nombril|nabel|пупк\w*|السرة|umbigo))[^.]{0,30}(pus|eiter|гной|قيح|صديد)
+  - (sai|sale|sort|kommt)[^.]{0,15}(pus|eiter)[^.]{0,25}(do|del|du|aus)[^.]{0,15}(umbigo|ombligo|nombril|nabel)
+  - (из пупка)[^.]{0,15}(гной|выделен)
+  - (يخرج|ينزل)[^.]{0,20}(قيح|صديد)[^.]{0,20}(من )?(السرة|سرته)
+  - (नाभि|नाल)[^.]{0,25}(मवाद|पीप)
+  - (ombligo|cord[óo]n umbilical)[^.]{0,40}(rojo|hinchad|huele mal|mal olor|pus|supura|caliente)
+  - (rojo|pus|mal olor|huele mal)[^.]{0,30}(alrededor del )?(ombligo|cord[óo]n)
+  - ((navel|belly button|umbilical (cord|stump)))[^.]{0,40}(red|swollen|smell\w*|pus|oozing|discharge)
+  - ((nombril|cordon ombilical))[^.]{0,40}(rouge|gonfl[ée]|sent mauvais|pus)
+  - ((nabel|nabelschnur))[^.]{0,40}(rot|geschwollen|riecht|eiter)
+  - ((пупок|пуповин\w*))[^.]{0,40}(красн\w*|отеч\w*|пахнет|гной)
+  - ((السرة|سرة))[^.]{0,40}(حمراء|متورمة|رائحة|قيح|صديد)
+  - ((umbigo|cord[ãa]o umbilical))[^.]{0,40}(vermelho|inchado|cheira mal|pus)
+  - ((नाभि|नाल))[^.]{0,40}(लाल|सूज|बदबू|मवाद)
+
+# Monóxido de carbono: la pista es que le pasa A VARIOS de la casa y hay una estufa o un brasero.
+- id: carbon_monoxide
+  level: emergency
+  source: ecimed_pediatria_2016
+  reason_es: "Varios con dolor de cabeza y náuseas en la misma casa: salid al aire libre y llamad, puede ser monóxido"
+  reason_en: "Several people with headache and nausea in the same house: get outside and call — it may be carbon monoxide"
+  reason_fr: "Plusieurs personnes avec maux de tête et nausées dans la même maison : sortez et appelez"
+  reason_de: "Mehrere im Haus mit Kopfschmerzen und Übelkeit: ins Freie gehen und anrufen — Kohlenmonoxid"
+  reason_ru: "У нескольких в доме головная боль и тошнота: выйдите на воздух и звоните — угарный газ"
+  reason_ar: "عدة أشخاص في البيت بصداع وغثيان: اخرجوا إلى الهواء واتصلوا — قد يكون أول أكسيد الكربون"
+  reason_pt: "Várias pessoas com dor de cabeça e náuseas na mesma casa: saiam para o ar livre e liguem"
+  reason_hi: "घर में कई लोगों को सिरदर्द और मतली: बाहर खुली हवा में निकलें और फ़ोन करें"
+  patterns:
+  # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
+  # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
+  - (mon[óo]xido de carbono)
+  - (creo que es|puede ser|ser[áa])[^.]{0,20}(mon[óo]xido|el brasero|la estufa)
+  - (mon[óo]xido de carbono|intoxicaci[óo]n por humo)
+  - (nos duele la cabeza a todos|todos con dolor de cabeza|toda la familia)[^.]{0,60}(estufa|brasero|caldera|chimenea|calentador|gas)
+  - (estufa|brasero|caldera|calentador de gas)[^.]{0,60}(dolor de cabeza|mareo|n[áa]useas)[^.]{0,30}(todos|varios)?
+  - (carbon monoxide)
+  - (all of us|everyone at home|the whole family)[^.]{0,60}(headache|dizzy|sick)[^.]{0,40}(heater|boiler|stove|fire|gas)
+  - (monoxyde de carbone)
+  - (kohlenmonoxid|co.?vergiftung)
+  - (угарн\w* газ\w*)
+  - (أول أكسيد الكربون|تسمم بالغاز)
+  - (mon[óo]xido de carbono)
+  - (कार्बन मोनोऑक्साइड|गैस से ज़हर)
+
+# Casi ahogamiento: el niño sale del agua y parece bien, y hay que verlo igual. La guía de
+# Andalucía trata el ahogamiento en su capítulo de accidentes.
+- id: near_drowning
+  level: urgent
+  source: andalucia_cuidame_guia
+  reason_es: "Se ha caído al agua: aunque parezca estar bien, hay que verlo hoy — el pulmón puede resentirse horas después"
+  reason_en: "Fell into water: even if he seems fine, get seen today — the lungs can suffer hours later"
+  reason_fr: "Tombé dans l'eau : même s'il a l'air bien, à faire voir aujourd'hui"
+  reason_de: "Ins Wasser gefallen: auch wenn es gut aussieht, heute vorstellen"
+  reason_ru: "Упал в воду: даже если выглядит хорошо, показать сегодня"
+  reason_ar: "سقط في الماء: حتى لو بدا بخير، يُعرض اليوم"
+  reason_pt: "Caiu na água: mesmo que pareça bem, ver hoje"
+  reason_hi: "पानी में गिर गया: ठीक लगे तब भी आज दिखाइए"
+  patterns:
+  - (se (cay[óo]|ha ca[íi]do)|se metió)[^.]{0,30}(a|en) (la )?(piscina|agua|ba[ñn]era|mar|estanque)
+  - (casi se ahoga|estuvo a punto de ahogarse|lo sacamos del agua|la sacamos del agua)
+  - (fell)[^.]{0,25}(in|into)[^.]{0,20}(the )?(pool|water|bath|sea|pond)
+  - (nearly drowned|almost drowned|pulled (him|her) out of the water)
+  - (est tomb[ée])[^.]{0,25}(dans)[^.]{0,20}(la )?(piscine|eau|baignoire)
+  - (a failli se noyer)
+  - (ist)[^.]{0,20}(ins wasser|in den pool|in die badewanne)[^.]{0,15}gefallen
+  - (beinahe ertrunken|fast ertrunken)
+  - (упал\w*)[^.]{0,20}(в бассейн|в воду|в ванну)
+  - (чуть не утонул\w*)
+  - (سقط|وقع)[^.]{0,25}(في المسبح|في الماء|في البانيو)
+  - (كاد يغرق|كادت تغرق)
+  - (caiu)[^.]{0,25}(na piscina|na [áa]gua|na banheira)
+  - (quase se afogou)
+  - (पानी में|तालाब में|पूल में)[^.]{0,20}(गिर)
+  - (डूबते.?डूबते|डूबने से बचा)
+
 - id: bulging_fontanelle
   level: emergency
   source: nhm_in_imnci_chart_booklet
@@ -3016,6 +3517,17 @@ rules:
   reason_pt: "Palidez repentina: pode ser má circulação — ver hoje"
   reason_hi: "अचानक पीलापन: ख़ून का दौरा ठीक न होने का संकेत — आज दिखाइए"
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - palidez repentina|palidez s[úu]bita
+  - sudden pallor|sudden paleness
+  - p[âa]leur soudaine|p[âa]leur brutale
+  - pl[öo]tzliche bl[äa]sse
+  - внезапн\w+ бледност
+  - شحوب مفاجئ
+  - palidez repentina|palidez s[úu]bita
+  - अचानक पीलापन
   # 17-sep-2026: las comparaciones —blanco como el papel, kreidebleich— en cuatro lenguas.
   - (white as a sheet|white as a ghost|ashen|drained of colour)
   - (kreidebleich|leichenblass|wei[sß] wie die wand)
@@ -3119,6 +3631,11 @@ rules:
   reason_pt: "Sangramento junto com febre: precisa ser visto hoje — é um sinal de alarme da dengue"
   reason_hi: "बुखार के साथ खून आना: आज ही दिखाएँ — यह डेंगू का चेतावनी संकेत है"
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (sangrado|hemorragia)[^.]{0,20}con fiebre
+  - bleeding (together )?with (a )?fever
   # 17-sep-2026: sangrar con fiebre sólo se reconocía en castellano, inglés y árabe. En
   # ruso e hindi se lo llevaba además la regla del líquido por la nariz, que es para
   # después de un golpe y aquí no ha habido ninguno.
@@ -3160,6 +3677,11 @@ rules:
   reason_pt: "Não consegue abrir a boca, ou espasmos musculares: urgência agora"
   reason_hi: "मुँह नहीं खोल पा रहा या मांसपेशियों में ऐंठन: अभी आपातकाल में जाएँ"
   patterns:
+  # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
+  # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
+  # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
+  - (no puede|cannot|can'?t) (abrir|open)[^.]{0,20}(la )?(boca|mouth)
+  - (espasmos|spasms|kr[äa]mpfe|спазмы|تشنجات|ऐंठन)[^.]{0,20}(musculares|muscle|muskel)?
   # 17-sep-2026: la mandíbula «bloqueada» —con adjetivo— en cuatro lenguas.
   - (m[âa]choire)[^.]{0,20}(bloqu[ée]e?|serr[ée]e?|verrouill[ée]e?|crisp[ée]e?)
   - (kiefer)[^.]{0,20}(verkrampft|blockiert|klemmt|gesperrt)

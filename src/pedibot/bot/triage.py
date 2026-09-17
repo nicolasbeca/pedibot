@@ -493,6 +493,22 @@ EVITAR = re.compile(
     re.I | re.U,
 )
 
+#: La pregunta de biblioteca: qué ES, cuáles SON, cómo se sabe si. No es un niño enfermo, es
+#: alguien informándose — y desde el 17-sep-2026, con las etiquetas dentro de las reglas, una
+#: pregunta así casaba el nombre de la señal y saltaba la alarma.
+INFORMATIVA = re.compile(
+    r"(?:qu[ée] (?:es|son|significa)|cu[áa]les son|c[óo]mo se (?:sabe|reconoce|detecta)"
+    r"|en qu[ée] consiste"
+    r"|what (?:is|are|does)|which are|how (?:do (?:i|you) (?:know|tell)|can i tell)|signs? of what"
+    r"|qu'est.ce que|quels sont|quelles sont|comment (?:savoir|reconna[îi]tre)"
+    r"|was (?:ist|sind|bedeutet)|welche (?:sind|zeichen)|woran (?:erkenne|merke)"
+    r"|что такое|каковы|какие (?:признаки|симптомы)|как (?:понять|распознать)"
+    r"|ما (?:هي|هو|معنى)|كيف (?:أعرف|نعرف)"
+    r"|क्या (?:है|हैं|होता)|कौन.?से|कैसे (?:पता|जानें))"
+    r"[^.?!]{0,60}$",
+    re.I | re.U,
+)
+
 #: Cuánto se mira hacia atrás para lo hipotético: más que para la negación, porque la pregunta
 #: entera cabe ahí («¿cómo puedo evitar que a mi hijo le dé un …»).
 VENTANA_HIPOTETICA = 60
@@ -555,7 +571,7 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
     for corte in (*CORTES, *COMAS):
         if corte in antes:
             antes = antes.rsplit(corte, 1)[1]
-    if PREVENCION.search(antes) or HIPOTETICA.search(antes):
+    if PREVENCION.search(antes) or HIPOTETICA.search(antes) or INFORMATIVA.search(antes):
         return True
     if not INTERROGATIVO.search(antes):
         return False
