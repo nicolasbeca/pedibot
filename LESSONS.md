@@ -217,3 +217,27 @@ Tres cosas que salieron de arreglarlo:
    (así se arreglaron slugs mal transliterados), y eso se conserva — pero ahora cada renombrado
    deja su redirección en `web/content/_redirects.json`, que el sitio lee al construirse. La
    dirección es lo único de una guía que no se puede rehacer.
+
+## L168 · Un dato de un país no se corrige con el instinto de otro (17-sep-2026)
+Arabia Saudí reporta la BCG a los **6 meses** y Kuwait a los **3**. Cualquiera que conozca el
+calendario europeo lo lee y piensa «esto está mal, la BCG va al nacer». Estuve a punto de tirar
+esas dos filas por sospechosas.
+
+Lo que las salvó no fue una opinión sino una serie: la OMS publica todos los años desde 1995, y
+Arabia Saudí dice «al nacer» hasta 2018 y «6 meses» de 2019 en adelante, siete años seguidos.
+Kuwait lleva más de diez con los 3 meses. Un error de tecleo no se repite siete veces; un cambio
+de programa, sí.
+
+**La regla**: antes de corregir un dato raro de un país, mírale la historia en la propia fuente.
+Si es estable, es su política y va tal cual, con una nota que lo diga — que es lo que un padre
+saudí necesita leer, porque él tampoco se lo espera.
+
+## L169 · Una edad puede repetirse si una de las dos no es una cita (17-sep-2026)
+La prueba que vigila los calendarios prohibía edades repetidas, y con razón: una edad dos veces
+es casi siempre la misma visita escrita dos veces. Pero en el Golfo, a los 6 meses tocan la
+hexavalente **y** empieza la campaña anual de gripe, y son cosas distintas: la herramienta
+arrastra las casillas anuales a todas las edades posteriores y las fijas no. Fundirlas le habría
+dicho a un padre de un niño de cinco años que le toca la hexavalente.
+
+La comprobación se hace ahora dentro de cada grupo. **Una regla que obliga a falsear el dato para
+cumplirla está mal escrita, no mal el dato.**
