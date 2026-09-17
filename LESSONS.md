@@ -324,3 +324,25 @@ se le parece. Y en inglés, cualquier alternancia de palabras cortas —he, bit,
 Y la segunda mitad de la lección: **un aviso que salta de más hace dos daños**. Manda a urgencias
 a quien no lo necesita, y enseña al padre a ignorar el rojo — que es el que algún día será de
 verdad. Por eso cada regla nueva entra con sus controles negativos escritos a la vez.
+
+## L176 · La señal no basta: hay que leer el marco (17-sep-2026)
+Doce medidas del triaje preguntaban por la señal —¿reconoce «convulsión» en ocho lenguas, escrito
+de cuatro maneras?— y ninguna preguntaba por el marco. La misma señal significa cosas contrarias
+según el tiempo y el modo:
+
+    «está convulsionando»                 emergencia
+    «tuvo una convulsión hace dos años»   un antecedente que el padre cuenta de paso
+    «¿qué hago si le da una convulsión?»  una pregunta que se hace cuando NO está pasando
+
+De 31 frases de ese tipo, 20 salían mal. El condicional disparaba el aviso rojo en las nueve
+lenguas probadas: un padre que pregunta «¿qué hago si se atraganta?» y recibe un «llama al 112
+ahora» aprende en un segundo que el rojo de esta web no significa nada.
+
+**La regla**: un detector de palabras no entiende cuándo pasó algo ni quién lo cuenta, y hay que
+dárselo escrito. Los guardianes —negación, prevención, información, condicional, pasado— son tan
+parte del triaje como las reglas, y necesitan sus propias pruebas en los dos sentidos: que callen
+lo que no está pasando y que NO callen lo que sí.
+
+Y el corolario caro: **cuando falla un guardián, el fallo es un silencio**. Dos de los míos
+callaron avisos de verdad por una frontera de palabra —«il y a du sang dANS son vomi» parecía «il
+y a dos años», «no puede bEBEr» parecía «de bebé»— y un silencio no se ve en ninguna pantalla.

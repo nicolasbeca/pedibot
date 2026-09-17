@@ -427,3 +427,11 @@ abierto, en orden de consecuencia:
 - Y dos de frontera de palabra, que son las que enseñan: **«a bit of shampoo in his eye» daba mordedura de animal** —«bit» suelto, y «the BATh» aportaba el murciélago—, y al arreglarlo apareció **«a bit of THE biscuit fell in the bath» → casi ahogamiento**, porque «the» contiene «he». (L175)
 - Una prueba vieja cazó además un patrón mío que hacía de «tiene tortícolis» una emergencia. Retirado.
 - Las once baterías del día, en los dos sentidos, a cero. Suite 6.094. Prueba nueva: `test_an_ordinary_childhood_raises_no_alarm.py`, 103 casos.
+
+## 17-sep-2026 (noche) · el tiempo y el modo
+- Medida trece, la que faltaba: la misma señal en otro tiempo verbal. **20 de 31 mal.** «Tuvo una convulsión hace dos años» y «¿qué hago si le da una convulsión?» daban emergencia — el condicional, en las nueve lenguas probadas.
+- Dos guardianes nuevos, `PASADO_REMOTO` y `CONDICIONAL`, con el corte en semanas: lo de hace horas o días sigue saltando. Y los guardianes ahora se **aplanan** como las reglas, que si no el condicional árabe escrito con hamza no encontraba nunca el texto sin ella.
+- Tres regresiones que provocaron y que cazaron las baterías: «il y a du sang **dans** son vomi» dejó de avisar porque «dans» contiene «ans» (años); «no puede **bebe**r» porque contiene «de bebé»; y el alemán de prevención dejó de suprimirse porque me dejé un `return` en medio de la función. **Cuando falla un guardián, el fallo es un silencio** (L176).
+- Y tres cosas más: «lleva media hora sin responder» no saltaba; `has ?n'?t` no casa «has not» (tercera vez en el día que la contracción inglesa muerde); y «no quiere jugar ni levantarse del sofá» se perdió al acotar el falso positivo de la timidez.
+- Decisión escrita en la prueba: preguntar por el hijo de otra persona **sigue dando alarma**. La respuesta correcta es la misma y quien pregunta suele ser quien puede llamar.
+- Las trece baterías a cero en los dos sentidos. Suite 6.131.

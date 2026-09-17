@@ -11,6 +11,17 @@ rules:
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
   patterns:
+  # 17-sep-2026: «lleva media hora sin responder» salía RUTINA. La negación vuelve a ser la
+  # señal —«sin responder»— y encima con el tiempo delante, que es como se cuenta.
+  - (lleva|llevamos)[^.]{0,25}(sin (responder|reaccionar|despertarse|abrir los ojos))
+  - (sin (responder|reaccionar))[^.]{0,25}(desde hace|hace)[^.]{0,15}(minutos|media hora|una hora|horas)
+  - (has been|for)[^.]{0,20}(unresponsive|not responding)[^.]{0,20}(for|since)?
+  - (ne r[ée]pond plus depuis|sans r[ée]action depuis)
+  - (reagiert seit)[^.]{0,20}(nicht)
+  - (не реагирует уже|без сознания уже)
+  - (لا يستجيب منذ|فاقد الوعي منذ)
+  - (n[aã]o responde h[áa])
+  - (से कोई प्रतिक्रिया नहीं|से बेहोश)
   # 17-sep-2026: en castellano el «no responde» cazaba la reanimación; en inglés, no.
   - (doing|started|performing|giving)[^.]{0,15}(cpr|mouth to mouth|rescue breaths|chest compressions)
   - (le estoy haciendo|haciendo)[^.]{0,15}(rcp|boca a boca|compresiones)
@@ -1188,7 +1199,7 @@ rules:
   # 17-sep-2026: «no juega con los otros niños, es tímido» y «no me mira cuando ve los
   # dibujos» salían como decaimiento. La señal no es dejar de hacer UNA cosa: es el estado
   # general —no juega a nada, no sonríe, está apagado—, y «no me mira» pide los ojos.
-  - (no (quiere )?(juega|jugar))[^.]{0,30}(a nada|con nada|ni quiere|est[áa] (apagad|decaíd|raro|ido))
+  - (no (quiere )?(juega|jugar))[^.]{0,30}(a nada|con nada|ni quiere|ni (levantarse|moverse|salir|hablar)|est[áa] (apagad|decaíd|raro|ido))
   - (no sonr[íi]e|no responde a nada|no reacciona a nada|est[áa] ido|est[áa] apagad[oa]|apátic[oa]|sin ganas de nada|ni se mueve del sof[áa])
   - (no me mira)[^.]{0,25}(a los ojos|cuando le hablo|est[áa] ido)
   - (decaíd[oa]|abatid[oa]|flojit[oa])[^.]{0,25}(y|,)?
@@ -1324,7 +1335,9 @@ rules:
   - no (bebe|toma)[^.]{0,15}(nada)[^.]{0,30}(desde|en todo el d[íi]a|ni una gota)
   - (lleva|llev[óo])[^.]{0,20}(sin (beber|tomar (nada|l[íi]quidos)))
   - (se niega|rechaza)[^.]{0,20}(a )?(beber|el agua|los l[íi]quidos|el biber[óo]n)
-  - (has ?n'?t|have ?n'?t|will not|won'?t|refus\w*)[^.]{0,20}(drunk|drinking|drink)[^.]{0,25}(anything|any fluids|at all|since yesterday|all day)
+  # 17-sep-2026: «has ?n'?t» no casa «has not», que es como se escribe entero. Tercera vez
+  # que la contracción inglesa me muerde en un día (ver `suicidal_ideation`).
+  - ((has|have|had)\s*n(?:'|o)?t|will not|won'?t|refus\w*)[^.]{0,20}(drunk|drinking|drink)[^.]{0,25}(anything|any fluids|at all|since|all day)
   - (not drinking)[^.]{0,15}(anything|at all)
   - (ne (boit|veut boire)|n'a rien bu)[^.]{0,25}(rien|d'eau|depuis|de la journ[ée]e)?
   - (refuse)[^.]{0,15}de boire

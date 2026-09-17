@@ -509,9 +509,73 @@ INFORMATIVA = re.compile(
     re.I | re.U,
 )
 
+#: Lo que pasó hace AÑOS no es lo que está pasando (17-sep-2026).
+#:
+#: «Tuvo una convulsión hace dos años y nunca se repitió» abría el aviso rojo de llamar al 112.
+#: Es un antecedente, y contarlo es de las cosas más normales que hace un padre cuando pregunta
+#: otra cosa.
+#:
+#: El corte está en semanas: lo de hace horas o días SIGUE saltando, porque «tuvo una convulsión
+#: esta mañana» es de hoy y hay que verlo. Meses y años, no.
+PASADO_REMOTO = re.compile(
+    r"(?:hace|desde hace)[^.]{0,12}(?:\d+|un|una|dos|tres|cuatro|cinco|seis|varios|varias|muchos)"
+    r"[^.]{0,6}(?:a[ñn]os?|meses|semanas)"
+    r"|(?:el|los) a[ñn]os? pasad|la semana pasada|el mes pasado"
+    r"|\bde beb[ée]\b|cuando era (?:beb[ée]|peque|m[áa]s peque)"
+    r"|(?:\d+|a|one|two|three|four|five|six|several|many)[^.]{0,6}"
+    r"(?:years?|months?|weeks?) ago|last (?:year|month|week)"
+    r"|as a baby|when he was (?:a baby|little)|when she was (?:a baby|little)"
+    r"|il y a[^.]{0,12}\b(?:ans?|mois|semaines)\b|l'an dernier|le mois dernier"
+    r"|\bvor\b[^.]{0,12}\b(?:jahren?|monaten|wochen)\b|letztes jahr|letzten monat"
+    r"|(?:\d+|дв[ае]|три|несколько)[^.]{0,8}(?:лет|года|месяц\w*|недел\w*) назад"
+    r"|в прошлом году|на прошлой неделе"
+    r"|(?:قبل|منذ)[^.]{0,12}(?:سنة|سنوات|سنتين|شهر|أشهر|شهور)"
+    r"|\bh[áa]\b[^.]{0,12}\b(?:anos?|meses|semanas)\b|no ano passado"
+    r"|(?:साल|महीने|हफ़्ते|बरस)[^.]{0,8}पहले|पिछले साल",
+    re.I | re.U,
+)
+
+#: «¿Qué hago SI le da una convulsión?» es la pregunta que se hace cuando NO está pasando.
+#:
+#: Va aparte de `HIPOTETICA` —que es la de prevenir— porque ésta no habla de evitar nada: habla
+#: de estar preparado. Y es tan común que no filtrarla convierte el aviso rojo en ruido: de las
+#: nueve lenguas probadas, las nueve daban emergencia.
+CONDICIONAL = re.compile(
+    r"(?:qu[ée] (?:hago|hacer|debo hacer|tengo que hacer)|c[óo]mo act[úu]o)[^.?!]{0,40}"
+    r"\b(?:si|cuando)\b"
+    r"|\bsi\b[^.?!]{0,60}(?:qu[ée] (?:hago|hacer|debo))"
+    r"|what (?:should|do|would) i do[^.?!]{0,40}\bif\b"
+    r"|\bif\b[^.?!]{0,60}what (?:should|do) i do"
+    r"|que faire[^.?!]{0,40}\bs[i']|\bsi\b[^.?!]{0,60}que faire"
+    r"|was (?:mache|tue|soll) ich[^.?!]{0,40}\bwenn\b"
+    r"|\bwenn\b[^.?!]{0,60}was (?:mache|soll) ich"
+    r"|что делать[^.?!]{0,40}если|если[^.?!]{0,60}что делать"
+    r"|ماذا أفعل[^.?!]{0,40}(?:إذا|لو)|(?:إذا|لو)[^.?!]{0,60}ماذا أفعل"
+    r"|(?:अगर|यदि)[^.?!]{0,60}(?:क्या करूँ|क्या करूं|क्या करना)"
+    r"|क्या (?:करूँ|करूं)[^.?!]{0,40}(?:अगर|यदि)",
+    re.I | re.U,
+)
+
 #: Cuánto se mira hacia atrás para lo hipotético: más que para la negación, porque la pregunta
 #: entera cabe ahí («¿cómo puedo evitar que a mi hijo le dé un …»).
 VENTANA_HIPOTETICA = 60
+
+
+#: Los guardianes miran el MISMO texto aplanado que las reglas, así que se aplanan también.
+#: Sin esto, el condicional árabe —escrito con hamza, «إذا»— no encontraba nunca el «اذا» que
+#: le llegaba, y «ماذا أفعل إذا أصيب بتشنج؟» seguía dando emergencia (17-sep-2026).
+for _nombre in (
+    "HIPOTETICA",
+    "PREVENCION",
+    "INFORMATIVA",
+    "CONDICIONAL",
+    "PASADO_REMOTO",
+    "EVITAR",
+    "INTERROGATIVO",
+):
+    _rx = globals()[_nombre]
+    globals()[_nombre] = re.compile(aplana(_rx.pattern), _rx.flags)
+del _nombre, _rx
 
 
 #: Cuánto se mira hacia atrás. Corto a propósito: «no tiene fiebre, pero sí le cuesta respirar»
@@ -557,13 +621,38 @@ CONJUNCIONES = re.compile(
 )
 
 
-def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
-    """¿La frase pregunta cómo EVITAR esto, en vez de contarlo?
+def _frase_de(texto: str, inicio: int) -> str:
+    """La oración donde vive la coincidencia, cortada en el punto y en la coma."""
+    ini = 0
+    for corte in (".", "!", "?", "\n", ";"):
+        pos = texto.rfind(corte, 0, inicio)
+        ini = max(ini, pos + 1)
+    fin = len(texto)
+    for corte in (".", "!", "?", "\n", ";"):
+        pos = texto.find(corte, inicio)
+        if pos != -1:
+            fin = min(fin, pos)
+    return texto[ini:fin]
 
-    Se mira delante y DETRÁS porque el alemán manda el verbo al final —«wie kann ich einen
-    Hitzschlag verhindern?»— y cuando la regla casa «Hitzschlag» el «verhindern» aún no ha
-    llegado. Hace falta el interrogativo en los dos casos: sin él, «no pude evitar que se
-    tragara una pila» quedaría anulado, y ahí la pila ya está dentro.
+
+def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
+    """¿La frase habla de algo que NO está pasando?
+
+    Cuatro maneras de no estar pasando, y las cuatro son preguntas que un padre hace de verdad:
+
+        prevención   «¿cómo prevenir un golpe de calor?»
+        información  «¿cuáles son los signos de deshidratación?»
+        condicional  «¿qué hago si le da una convulsión?»
+        pasado       «tuvo una convulsión hace dos años»
+
+    Las dos primeras se miran sólo DELANTE de la señal y con ventana corta, para que «no pude
+    evitar que se tragara una pila» —donde la pila ya está dentro— siga saltando. Las dos últimas
+    se miran en la oración entera, porque el condicional puede ir detrás («si le da una
+    convulsión, ¿qué hago?») y el tiempo también («tuvo una convulsión hace dos años»).
+
+    Y el alemán necesita mirar hacia delante aunque no haya nada delante: manda el verbo al final
+    —«wie kann ich einen Hitzschlag verhindern?»— y cuando la regla casa «Hitzschlag», el
+    «verhindern» aún no ha llegado.
     """
     antes = texto[max(0, inicio - VENTANA_HIPOTETICA) : inicio]
     # Una oración nueva cierra la hipótesis, igual que cierra la negación: «cómo evitar que se
@@ -573,10 +662,12 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
             antes = antes.rsplit(corte, 1)[1]
     if PREVENCION.search(antes) or HIPOTETICA.search(antes) or INFORMATIVA.search(antes):
         return True
-    if not INTERROGATIVO.search(antes):
-        return False
-    detras = texto[fin or inicio : (fin or inicio) + VENTANA_HIPOTETICA]
-    return bool(EVITAR.search(detras))
+    if INTERROGATIVO.search(antes):
+        detras = texto[fin or inicio : (fin or inicio) + VENTANA_HIPOTETICA]
+        if EVITAR.search(detras):
+            return True
+    frase = _frase_de(texto, inicio)
+    return bool(CONDICIONAL.search(frase) or PASADO_REMOTO.search(frase))
 
 
 def _negada(texto: str, inicio: int, fin: int) -> bool:
