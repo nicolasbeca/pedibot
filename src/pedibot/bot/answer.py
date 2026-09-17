@@ -10,7 +10,13 @@ import yaml
 
 from pedibot.bot.dose import DRUGS, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
-from pedibot.bot.growth import Growth, explain, is_growth_question, measurements
+from pedibot.bot.growth import (
+    Growth,
+    explain,
+    gives_both_measurements,
+    is_growth_question,
+    measurements,
+)
 from pedibot.bot.guides import GuideIndex, GuideLink
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
@@ -935,7 +941,9 @@ class Engine:
         # peso, y la tabla en el mismo servidor. Hacen falta las tres cosas: sin SEXO no hay curva
         # (la de una niña no es la de un niño) y sin edad no hay fila que mirar. Y la pregunta
         # tiene que ser de crecimiento: «pesa 7 kg y tiene fiebre» no es un percentil.
-        if self.growth is not None and tr.level == "routine" and is_growth_question(context_text):
+        if self.growth is not None and tr.level == "routine" and (
+            is_growth_question(context_text) or gives_both_measurements(query)
+        ):
             # **El peso y la talla salen de UN SOLO mensaje.** Leyendo la conversación entera se
             # cruzaban los datos de dos niños, y eso lo vi dos veces probando contra lo vivo: «mi
             # niña de 8 meses que pesa 7 kg» seguido de «mi niño de 3 años que pesa 13 kg y mide
@@ -1095,7 +1103,7 @@ class Engine:
             tool = tool_link("dose", lang)
         # «está muy delgado y no gana peso», «¿qué percentil tiene?»: la curva de la OMS,
         # calculada, contesta mejor que la prosa (13-sep-2026)
-        elif is_growth_question(context_text):
+        elif is_growth_question(context_text) or gives_both_measurements(context_text):
             tool = tool_link("growth", lang, country or country_in_question(context_text))
         text = result.text.strip()
         if ask_age:

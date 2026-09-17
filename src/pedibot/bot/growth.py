@@ -253,6 +253,23 @@ def is_growth_question(text: str) -> bool:
     return bool(_GROWTH.search(text))
 
 
+def gives_both_measurements(text: str) -> bool:
+    """El peso Y la talla en el mismo mensaje: eso es una pregunta de crecimiento aunque no
+    lleve la palabra.
+
+    17-sep-2026, repasando el chat contra lo vivo: «mi hija de 3 años pesa 13 kg y mide 95 cm»
+    salía rutina, sin percentil y sin enlace a la curva. Estaban el sexo, la edad, el peso y la
+    talla —todo lo que la tabla necesita— y no se disparaba nada porque la frase no decía
+    «percentil». Un padre no tiene por qué saber esa palabra; si teclea las dos medidas está
+    preguntando justo eso.
+
+    Con UNA medida no basta, y es a propósito: «pesa 13 kg, ¿cuánto paracetamol?» es una dosis,
+    y «pesa 7 kg y tiene fiebre» no es un percentil. Las dos juntas casi no tienen otra lectura.
+    """
+    _, kg, cm = measurements(text)
+    return kg is not None and cm is not None
+
+
 # ── lo que la API devuelve en la lengua del padre ────────────────────────────────────────
 #: nombre de cada indicador, y de cada corte de la OMS, en las ocho lenguas. Vive aquí y no
 #: en i18n.ts porque lo usan también Telegram y el agente, que no pasan por el sitio.

@@ -256,3 +256,54 @@ def test_las_dos_medidas_del_mismo_mensaje_anterior_si_valen(engine) -> None:
     a = engine.ask("¿y qué percentil tiene?", lang="es", history=historia)
     assert a.verification == "growth_chart"
     assert "7 kg" in a.text and "68 cm" in a.text
+
+
+# ── el padre que da las dos medidas sin decir «percentil» (17-sep-2026) ──────
+#
+# Repasando el chat contra lo vivo: «mi hija de 3 años pesa 13 kg y mide 95 cm» salía RUTINA,
+# sin percentil y sin enlace a la curva. Tenía delante el sexo, la edad, el peso y la talla —todo
+# lo que la tabla necesita— y no se disparaba porque la frase no contenía la palabra «percentil».
+#
+# Un padre que teclea el peso Y la talla en la misma frase está preguntando exactamente eso,
+# aunque no sepa la palabra. Las dos medidas juntas son la señal: con el peso solo no vale, y a
+# propósito, porque «pesa 13 kg, ¿cuánto paracetamol?» es una dosis y «pesa 7 kg y tiene fiebre»
+# no es un percentil.
+
+
+@pytest.mark.parametrize(
+    "texto",
+    [
+        "mi hija de 3 años pesa 13 kg y mide 95 cm",
+        "mi niña de 8 meses pesa 7 kg y mide 68 cm",
+        "my 3 year old daughter weighs 13 kg and is 95 cm tall",
+        "ma fille de 3 ans pèse 13 kg et mesure 95 cm",
+        "ابنتي عمرها 3 سنوات ووزنها 13 كيلو وطولها 95 سم",
+    ],
+)
+def test_two_measurements_in_one_message_are_a_growth_question(texto: str) -> None:
+    from pedibot.bot.growth import gives_both_measurements
+
+    assert gives_both_measurements(texto), f"«{texto}» no se lee como pregunta de crecimiento"
+
+
+@pytest.mark.parametrize(
+    "texto",
+    [
+        "mi hijo pesa 13 kg, ¿cuánto paracetamol le doy?",
+        "pesa 7 kg y tiene fiebre",
+        "mi hija mide 95 cm",
+        "my son weighs 20 kg, how much ibuprofen",
+    ],
+)
+def test_one_measurement_alone_is_not_a_growth_question(texto: str) -> None:
+    from pedibot.bot.growth import gives_both_measurements
+
+    assert not gives_both_measurements(texto), f"«{texto}» se lee como crecimiento y no lo es"
+
+
+def test_the_engine_answers_the_percentile_without_the_word(engine) -> None:
+    """La prueba de verdad: la misma frase que el operador escribió en la web."""
+    a = engine.ask("mi hija de 3 años pesa 13 kg y mide 95 cm", lang="es")
+    assert a.verification == "growth_chart", f"contestó como {a.verification}"
+    assert "%" in a.text or "percentil" in a.text.lower()
+    assert a.tool is not None and a.tool.kind == "growth"
