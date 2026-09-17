@@ -11,6 +11,13 @@
 # Arabic triggers appear bare and with the article: the match is a prefix on the token, and
 # "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
+  # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
+  # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
+  # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
+  fontanelle: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  soft spot: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  testicle: [escroto agudo, torsión testicular, testículo, escroto]
+  scrotum: [escroto agudo, torsión testicular, testículo, escroto]
   # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
   # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
   # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
@@ -388,6 +395,14 @@ en:
   - colegio
   - contagio
 es:
+  # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
+  # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
+  # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
+  fontanela: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  mollera: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  testículo: [escroto agudo, torsión testicular, testículo, escroto]
+  testiculo: [escroto agudo, torsión testicular, testículo, escroto]
+  escroto: [escroto agudo, torsión testicular, testículo, escroto]
   # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
   # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
   # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
@@ -964,6 +979,12 @@ fr_en:
   - burn
   - scald
 de_es:
+  # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
+  # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
+  # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
+  fontanelle: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  hoden: [escroto agudo, torsión testicular, testículo, escroto]
+  hodensack: [escroto agudo, torsión testicular, testículo, escroto]
   # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
   # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
   # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
@@ -1854,6 +1875,12 @@ de_en:
   - emergency department
   - emergency
 ru_es:
+  # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
+  # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
+  # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
+  родничок: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  яичко: [escroto agudo, torsión testicular, testículo, escroto]
+  мошонка: [escroto agudo, torsión testicular, testículo, escroto]
   # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
   # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
   # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
@@ -2677,6 +2704,13 @@ ru_en:
   - breathing
   - difficulty breathing
 ar_es:
+  # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
+  # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
+  # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
+  اليافوخ: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  يافوخ: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  الخصية: [escroto agudo, torsión testicular, testículo, escroto]
+  الصفن: [escroto agudo, torsión testicular, testículo, escroto]
   # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
   # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
   # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
@@ -3971,6 +4005,12 @@ ar_en:
   وقت الشاش:
   - screen time
 pt_es:
+  # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
+  # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
+  # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
+  fontanela: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  testículo: [escroto agudo, torsión testicular, testículo, escroto]
+  escroto: [escroto agudo, torsión testicular, testículo, escroto]
   # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
   # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
   # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
@@ -4792,6 +4832,11 @@ pt_en:
   - emergency department
   - emergency
 hi_es:
+  # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
+  # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
+  # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
+  तालू: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  अंडकोष: [escroto agudo, torsión testicular, testículo, escroto]
   # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
   # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
   # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
@@ -6451,6 +6496,12 @@ de:
 # de buscar el concepto —su lista de términos ingleses en fr_en— en las tablas de
 # las otras cinco lenguas y copiar la lista española que ya estaba escrita.
 fr_es:
+  # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
+  # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
+  # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
+  fontanelle: [fontanela, fontanela abombada, hipertensión intracraneal, meningitis]
+  testicule: [escroto agudo, torsión testicular, testículo, escroto]
+  scrotum: [escroto agudo, torsión testicular, testículo, escroto]
   # 17-sep-2026: un padre escribe «cojea» y el capítulo se llama «Claudicación en niños».
   # Sin este puente la pregunta se iba entera a la fiebre y el chat contestaba que no sabía
   # nada de cojeras, teniendo el capítulo entero más los de artritis séptica y osteomielitis.
