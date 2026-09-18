@@ -1,10 +1,17 @@
 ---
 /**
- * Los números de emergencia de un país, uno por página (17-sep-2026).
+ * Los números de emergencia de un país, uno por página (17-sep-2026; África, 18-sep-2026).
  *
  * Idea del operador: quien busca «número de emergencias en Catar» merece una página que conteste
  * eso, y no una portada con un desplegable. El dato ya estaba en el sitio desde el 11-sep; lo que
  * no había era una dirección que enlazar.
+ *
+ * Desde el 18-sep-2026 hay un caso que en Europa no se daba: países donde la fuente dice que NO
+ * existe un número nacional (RD del Congo, Gambia, Liberia, Sudán del Sur, Congo, Comoras,
+ * Guinea) y uno donde no hemos podido verificarlo (Zambia). Esas páginas se publican igual: en
+ * lugar del número grande ponen la frase, y debajo, entrecomillada y en su idioma original, la
+ * letra pequeña de la fuente. Callar el país sería fingir que no existe; ponerle un 112 que nadie
+ * contesta sería mandar a un padre a esperar a una ambulancia que no va a venir.
  *
  * La página no es un número suelto: lleva también toxicología, salud mental, los signos de alarma
  * tal como los publican los pediatras de urgencias, y el calendario vacunal y las tablas de
@@ -64,12 +71,19 @@ const jsonld = {
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.emg_eyebrow}</p>
     <h1 style="margin-top:8px">{h1}</h1>
-    <p class="lede">{lede}</p>
+    {data.emergency && <p class="lede">{lede}</p>}
 
-    <div class="big">
-      <span class="lbl">{s.mine_call}</span>
-      <a class="tel" href={`tel:${tel}`}>{data.emergency || '—'}</a>
-    </div>
+    {data.emergency ? (
+      <div class="big">
+        <span class="lbl">{s.mine_call}</span>
+        <a class="tel" href={`tel:${tel}`}>{data.emergency}</a>
+      </div>
+    ) : (
+      <p class="nohay">{data.no_national ? s.emgc_none : s.emgc_unsure}</p>
+    )}
+    {data.note && (
+      <p class="letra"><b>{s.emgc_note}</b> <q lang="en" dir="ltr">{data.note}</q></p>
+    )}
     <ul class="otras">
       {data.poison && <li><b>{s.mine_poison}:</b> {data.poison}</li>}
       {data.mental && <li><b>{s.mine_mental}:</b> {data.mental}</li>}
@@ -113,6 +127,13 @@ const jsonld = {
     font-size: clamp(2.6rem, 12vw, 4.4rem); line-height: 1.05; color: var(--coral);
     font-variant-numeric: tabular-nums; text-decoration: none;
   }
+  .nohay {
+    margin: 22px 0 0; font-size: clamp(1.5rem, 5vw, 2.1rem); line-height: 1.15;
+    font-weight: 700; color: var(--ink-1); max-width: 22ch;
+  }
+  .letra { margin: 12px 0 0; max-width: 62ch; font-size: .94rem; color: var(--ink-2); }
+  .letra b { color: var(--ink-3); font-weight: 600; display: block; font-size: .84rem; }
+  .letra q { font-style: italic; }
   .otras { list-style: none; padding: 0; margin: 10px 0 0; display: grid; gap: 4px; }
   .otras b { color: var(--ink-3); font-weight: 600; }
   .sitio { margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }

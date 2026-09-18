@@ -16,7 +16,7 @@ from __future__ import annotations
 import pytest
 
 from pedibot.bot.answer import SUPPORTED_LANGS
-from pedibot.bot.vaccines import COUNTRY_IN_TEXT, country_in_question
+from pedibot.bot.vaccines import COUNTRY_IN_TEXT, COUNTRY_SHORT, country_in_question
 
 
 @pytest.mark.parametrize(
@@ -64,15 +64,40 @@ def test_a_language_is_never_a_country(lang: str) -> None:
 
 def test_every_country_with_a_schedule_can_be_named() -> None:
     """A country whose calendar we publish but whose name we cannot read is a page nobody
-    reaches by asking for it."""
+    reaches by asking for it.
+
+    Two tables, one question. Most names are safe to look for anywhere in the sentence; a few
+    are not, because they live inside another word — Mali inside *malignant*, Niger inside
+    *Nigeria*, Guinea in front of *pig* — and those are matched with a word boundary in
+    COUNTRY_SHORT. Either table counts: what must not happen is a country in neither.
+    """
     import pathlib
 
     import yaml
 
     root = pathlib.Path(__file__).resolve().parents[1]
     raw = yaml.safe_load((root / "config" / "vaccines.yaml").read_text(encoding="utf-8"))
-    missing = set(raw["countries"]) - set(COUNTRY_IN_TEXT)
+    missing = set(raw["countries"]) - set(COUNTRY_IN_TEXT) - set(COUNTRY_SHORT)
     assert not missing, f"calendarios que nadie puede pedir por su nombre: {sorted(missing)}"
+
+
+def test_every_country_with_a_schedule_answers_to_its_own_name() -> None:
+    """Being in the table is not the same as being found. This asks for each country by each of
+    its own names and checks that the answer is that country and not a longer one that contains
+    it: Guinea is not Equatorial Guinea, Niger is not Nigeria, and Congo is not the DRC."""
+    import pathlib
+
+    import yaml
+
+    root = pathlib.Path(__file__).resolve().parents[1]
+    raw = yaml.safe_load((root / "config" / "vaccines.yaml").read_text(encoding="utf-8"))
+    mal = []
+    for code in raw["countries"]:
+        for name in COUNTRY_IN_TEXT.get(code, ()):
+            leido = country_in_question(f"vacunas en {name}")
+            if leido != code:
+                mal.append(f"«{name}» ({code}) se lee como {leido}")
+    assert not mal, mal
 
 
 #: The same question in each language. Every one must reach the vaccination table.

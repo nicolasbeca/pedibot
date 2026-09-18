@@ -184,6 +184,124 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "ब्राज़ील",
         "ब्राजील",
     ),
+    # ── África, 18-sep-2026 ───────────────────────────────────────────────────────────
+    # 48 países de golpe. Los nombres salen del CLDR en los ocho idiomas y se les añade lo
+    # que un padre escribe de verdad y el CLDR no da: «RD Congo», «RDC», «Kinshasa», «Costa
+    # de Marfil», «ЮАР». Al ruso se le quita la vocal final —«Нигерия» → «нигери»— porque
+    # declina: un padre escribe «в Нигерии», no «Нигерия».
+    #
+    # Cuatro países no están aquí y están abajo, en COUNTRY_SHORT, por la misma razón por
+    # la que «us» y «uk» estaban ya allí: su nombre vive dentro de otra palabra. «Mali»
+    # dentro de «maligno», «niger» dentro de «Nigeria», «чад» dentro de «чадо» —que es
+    # «criatura»— y «togo» que en ruso es «того», el genitivo de «тот». Ghana en ruso es
+    # «гана», que vive dentro de «органа». Y Ghana en portugués es «Gana», que es el verbo
+    # español de «mi bebé no gana peso»: esa forma no se puede usar de ninguna manera.
+
+    "AO": ("angola", "ангол", "أنغولا", "अंगोला"),
+    "BF": (
+        "burkina", "burkina faso", "burquina", "burquina faso", "буркина", "буркина-фасо",
+        "بوركينا", "بوركينا فاسو", "बुर्किना फ़ासो",
+    ),
+    "BI": ("burundi", "бурунди", "بوروندي", "बुरुंडी"),
+    "BJ": ("benin", "benín", "bénin", "бенин", "بنين", "बेनिन"),
+    "BW": ("botsuana", "botswana", "ботсван", "بوتسوانا", "बोत्स्वाना"),
+    "CD": (
+        "congo kinshasa", "congo-kinshasa", "democratic republic of the congo",
+        "demokratische republik kongo", "dr congo", "kinshasa", "kongo-kinshasa", "rd congo",
+        "rd del congo", "republica democratica del congo", "republique democratique du congo",
+        "república democrática del congo", "république démocratique du congo", "конго-киншаса",
+        "الكونغو-كينشاسا", "كينشاسا", "कांगो-किंशासा",
+    ),
+    "CF": (
+        "central african republic", "republica centro-africana", "republica centroafricana",
+        "republique centrafricaine", "república centro-africana", "república centroafricana",
+        "république centrafricaine", "zentralafrikanische republik",
+        "центрально-африканская республика", "جمهورية أفريقيا الوسطى", "मध्य अफ़्रीकी गणराज्य",
+    ),
+    "CG": (
+        "brazzaville", "congo", "congo brazzaville", "congo-brazzaville", "kongo-brazzaville",
+        "republic of the congo", "republica do congo", "republique du congo", "república do congo",
+        "конго", "конго-браззавиль", "الكونغو", "الكونغو-برازافيل", "कांगो", "कांगो-ब्राज़ाविल",
+    ),
+    "CI": (
+        "costa de marfil", "costa do marfim", "cote d'ivoire", "cote divoire", "côte d'ivoire",
+        "elfenbeinkueste", "elfenbeinküste", "ivory coast", "кот-д'ивуар", "ساحل العاج",
+        "कोत दिवुआर",
+    ),
+    "CM": (
+        "camaroes", "camarões", "cameroon", "cameroun", "camerun", "camerún", "kamerun", "камерун",
+        "الكاميرون", "कैमरून",
+    ),
+    "CV": ("cabo verde", "cap-vert", "cape verde", "кабо-верде", "الرأس الأخضر", "केप वर्ड"),
+    "DJ": ("djibouti", "djibuti", "dschibuti", "yibuti", "джибути", "جيبوتي", "जिबूती"),
+    "ER": ("eritrea", "eritreia", "erythree", "érythrée", "эритре", "إريتريا", "इरिट्रिया"),
+    "ET": (
+        "aethiopien", "athiopien", "ethiopia", "ethiopie", "etiopia", "etiopía", "etiópia",
+        "äthiopien", "éthiopie", "эфиопи", "إثيوبيا", "इथियोपिया",
+    ),
+    "GA": ("gabao", "gabon", "gabun", "gabão", "gabón", "габон", "الغابون", "गैबॉन"),
+    "GH": ("ghana", "غانا", "घाना"),
+    "GM": ("gambia", "gambie", "gâmbia", "гамби", "غامبيا", "गाम्बिया"),
+    "GN": ("guinee", "guiné", "guinée", "гвине", "غينيا", "गिनी"),
+    "GQ": (
+        "aquatorialguinea", "equatorial guinea", "guine equatorial", "guinea ecuatorial",
+        "guinee equatoriale", "guiné equatorial", "guinée équatoriale", "äquatorialguinea",
+        "экваториальная гвинея", "غينيا الاستوائية", "इक्वेटोरियल गिनी",
+    ),
+    "GW": (
+        "guine-bissau", "guinea bisau", "guinea bissau", "guinea-bisau", "guinea-bissau",
+        "guinea-bisáu", "guinee-bissau", "guiné-bissau", "guinée-bissau", "гвинея-бисау",
+        "غينيا بيساو", "गिनी-बिसाउ",
+    ),
+    "KE": ("kenia", "kenya", "quenia", "quênia", "кени", "كينيا", "केन्या"),
+    "KM": ("comoras", "comores", "comoros", "komoren", "коморы", "جزر القمر", "कोमोरोस"),
+    "LR": ("liberia", "libéria", "либери", "ليبيريا", "लाइबेरिया"),
+    "LS": ("lesotho", "lesoto", "лесото", "ليسوتو", "लेसोथो"),
+    "MG": ("madagascar", "madagaskar", "мадагаскар", "مدغشقر", "मेडागास्कर"),
+    "MR": (
+        "mauretanien", "mauritania", "mauritanie", "mauritânia", "мавритани", "موريتانيا",
+        "मॉरिटानिया",
+    ),
+    "MU": (
+        "ile maurice", "isla mauricio", "mauritius", "île maurice", "маврики", "маврикий",
+        "موريشيوس", "मॉरीशस",
+    ),
+    "MW": ("malaui", "malawi", "малави", "ملاوي", "मलावी"),
+    "MZ": (
+        "mocambique", "mosambik", "mozambique", "moçambique", "мозамбик", "موزمبيق", "मोज़ांबिक",
+    ),
+    "NA": ("namibia", "namibie", "namíbia", "намиби", "ناميبيا", "नामीबिया"),
+    "NG": ("nigeria", "nigéria", "нигери", "نيجيريا", "नाइजीरिया"),
+    "RW": ("ruanda", "rwanda", "руанд", "رواندا", "रवांडा"),
+    "SC": (
+        "seicheles", "seychellen", "seychelles", "сейшел", "сейшельские о-ва", "سيشل", "सेशेल्स",
+    ),
+    "SL": (
+        "serra leoa", "sierra leona", "sierra leone", "сьерра-леоне", "سيراليون", "सिएरा लियोन",
+    ),
+    "SN": ("senegal", "sénégal", "сенегал", "السنغال", "सेनेगल"),
+    "SO": ("somalia", "somalie", "somália", "сомали", "الصومال", "सोमालिया"),
+    "SS": (
+        "soudan du sud", "south sudan", "sudan del sur", "sudao do sul", "sudsudan",
+        "sudán del sur", "sudão do sul", "südsudan", "южный судан", "جنوب السودان", "दक्षिण सूडान",
+    ),
+    "ST": (
+        "principe", "santo tome", "santo tome y principe", "santo tomé", "santo tomé y príncipe",
+        "sao tome", "sao tome e principe", "sao tome und principe", "sao tome y principe",
+        "sao tome-et-principe", "sao tomé-et-principe", "são tomé", "são tomé e príncipe",
+        "são tomé und príncipe", "são tomé y príncipe", "сан-томе и принсипи",
+        "ساو تومي وبرينسيبي", "साओ टोम और प्रिंसिपे",
+    ),
+    "SZ": ("essuatini", "essuatíni", "esuatini", "eswatini", "эсватини", "إسواتيني", "एस्वाटिनी"),
+    "TZ": ("tansania", "tanzania", "tanzanie", "tanzânia", "танзани", "تنزانيا", "तंज़ानिया"),
+    "UG": ("ouganda", "uganda", "уганд", "أوغندا", "युगांडा"),
+    "ZA": (
+        "africa do sul", "afrique du sud", "south africa", "sudafrica", "sudafrika", "sudáfrica",
+        "suedafrika", "südafrika", "áfrica do sul", "южно-африканская республика", "جنوب أفريقيا",
+        "दक्षिण अफ़्रीका",
+    ),
+    "ZM": ("sambia", "zambia", "zambie", "zâmbia", "замби", "زامبيا", "ज़ाम्बिया"),
+    "ZW": ("simbabwe", "zimbabue", "zimbabwe", "zimbábue", "зимбабве", "زيمبابوي", "ज़िम्बाब्वे"),
 }
 
 
@@ -207,6 +325,18 @@ COUNTRY_SHORT: dict[str, re.Pattern[str]] = {
     # dentro de «مصري», «مصرية» y «مصرف».
     "QA": re.compile(r"قطر(?![ةه])"),
     "EG": re.compile(r"مصر(?![يةه])"),
+    # ── África, 18-sep-2026: los nombres que viven dentro de otra palabra ─────────
+    # «Mali» está dentro de «maligno», «maligne» y «malignant». «Niger» está dentro de
+    # «Nigeria», y la frontera sí los distingue: después de «niger» viene una «i», que
+    # es letra. «Чад» está dentro de «чадо», que es «criatura». Y «guinea pig» es el
+    # conejillo de Indias, así que Guinea se lee sólo si detrás no viene «pig».
+    "CD": re.compile("\\b(?:rdc|drc)\\b", re.I),
+    "GH": re.compile("\\bгана\\b", re.I),
+    "GN": re.compile("\\bguinea\\b(?!\\s*(?:pig|fowl))", re.I),
+    "ML": re.compile("\\b(?:mal[ií]|мали|مالي|माली)\\b", re.I),
+    "NE": re.compile("\\b(?:n[ií]ger|нигер|النيجر|नाइजर)\\b", re.I),
+    "TD": re.compile("\\b(?:t?chad|tschad|chade|تشاد|चाड)\\b", re.I),
+    "TG": re.compile("\\b(?:togo|توغو|टोगो)\\b", re.I),
 }
 
 

@@ -62,10 +62,19 @@ def test_no_age_is_repeated_or_impossible(pais: str) -> None:
     """
     edades = [float(s["age"]) for s in CRUDO[pais]["schedule"]]
     for anual in (False, True):
-        grupo = [float(s["age"]) for s in CRUDO[pais]["schedule"] if bool(s.get("every_year")) is anual]
+        # Lo que se compara es la edad CON SU ETIQUETA, y no la edad sola (18-sep-2026, con los
+        # calendarios africanos). Somalia pone el sarampión «a los 15 meses» y la vitamina A «de
+        # 15 a 18»: empiezan el mismo día y son dos citas distintas, con dos etiquetas distintas.
+        # La avería que esta regla busca —la misma visita escrita dos veces— tiene las dos cosas
+        # iguales; una edad que arranca dos rangos no la tiene.
+        grupo = [
+            (float(s["age"]), s["label"]["en"])
+            for s in CRUDO[pais]["schedule"]
+            if bool(s.get("every_year")) is anual
+        ]
         repes = [e for e, n in Counter(grupo).items() if n > 1]
         cual = "campañas anuales" if anual else "citas fijas"
-        assert not repes, f"{pais}: edades repetidas entre las {cual}: {repes}"
+        assert not repes, f"{pais}: citas repetidas entre las {cual}: {repes}"
     fuera = [e for e in edades if e < 0 or e > 216]
     assert not fuera, f"{pais}: edades fuera de la infancia {fuera}"
 

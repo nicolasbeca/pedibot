@@ -21,11 +21,19 @@
 #
 # Cada código tiene que existir en config/emergency_numbers.yaml; hay una prueba que lo vigila.
 
-en: [GB, US, IE, CA, AU, NZ, IN]
+en: [NG, KE, GH, ZA, UG, TZ, GB, US, IE, CA, AU, NZ, IN]
 es: [ES, MX, AR, CO, CL, PE]
-fr: [FR, BE, CH, LU, CA, MA, DZ, TN, LB]
+fr: [CD, CI, CM, SN, ML, BF, NE, TD, MG, FR, BE, CH, LU, CA, MA, DZ, TN, LB]
 de: [DE, AT, CH, LI, LU, BE]
 ru: [RU, BY, KZ, UA]
-ar: [SA, AE, EG, QA, KW, BH, OM, JO, LB, MA, DZ, TN]
-pt: [PT, BR]
+ar: [EG, MA, DZ, TN, SO, DJ, KM, MR, SA, AE, QA, KW, BH, OM, JO, LB]
+pt: [AO, MZ, CV, GW, ST, PT, BR]
 hi: [IN]
+
+# 18-sep-2026. África entra en las listas: el inglés abre con Nigeria, Kenia, Ghana, Sudáfrica,
+# Uganda y Tanzania ANTES que con el Reino Unido, y el francés con la RD del Congo, Costa de
+# Marfil, Camerún, Senegal, Malí, Burkina, Níger, Chad y Madagascar antes que con Francia. No es
+# simetría: es que ahí hay más niños y menos pediatras, que es para quien se hizo esto.
+#
+# El árabe se reordena por lo mismo: Egipto, Marruecos, Argelia y Túnez primero —y Somalia,
+# Yibuti, Comoras y Mauritania, que son de la Liga Árabe y estaban fuera— y el Golfo detrás.

@@ -66,6 +66,63 @@ PAISES: dict[str, tuple[str, dict[str, str]]] = {
                    "ru": "Катар", "ar": "قطر", "pt": "Catar", "hi": "क़तर"}),
     "KWT": ("KW", {"en": "Kuwait", "es": "Kuwait", "fr": "Koweït", "de": "Kuwait",
                    "ru": "Кувейт", "ar": "الكويت", "pt": "Kuwait", "hi": "कुवैत"}),
+    # ── África, 18-sep-2026 ────────────────────────────────────────────────────────────
+    # El operador: «tenemos totalmente olvidado el mercado africano… estamos vendiendo que el
+    # proyecto es altruista y para países que no tienen acceso fácil a pediatría, y en cambio
+    # hemos dejado de lado a todo un continente». Medido: 4 países de 53, y los cuatro del
+    # norte. La OMS publica el calendario de 48 países africanos en el mismo almacén del que
+    # salieron los del Golfo, así que el coste de arreglarlo es ejecutar este script.
+    #
+    # Los nombres salen de `Intl.DisplayNames` (CLDR, vía Node), no escritos a mano: 48 países
+    # por ocho lenguas son 384 nombres y a mano se cuela una errata segura.
+    "AGO": ("AO", {"en": "Angola", "es": "Angola", "fr": "Angola", "de": "Angola", "ru": "Ангола", "ar": "أنغولا", "pt": "Angola", "hi": "अंगोला"}),
+    "BDI": ("BI", {"en": "Burundi", "es": "Burundi", "fr": "Burundi", "de": "Burundi", "ru": "Бурунди", "ar": "بوروندي", "pt": "Burundi", "hi": "बुरुंडी"}),
+    "BEN": ("BJ", {"en": "Benin", "es": "Benín", "fr": "Bénin", "de": "Benin", "ru": "Бенин", "ar": "بنين", "pt": "Benin", "hi": "बेनिन"}),
+    "BFA": ("BF", {"en": "Burkina Faso", "es": "Burkina Faso", "fr": "Burkina Faso", "de": "Burkina Faso", "ru": "Буркина-Фасо", "ar": "بوركينا فاسو", "pt": "Burquina Faso", "hi": "बुर्किना फ़ासो"}),
+    "BWA": ("BW", {"en": "Botswana", "es": "Botsuana", "fr": "Botswana", "de": "Botsuana", "ru": "Ботсвана", "ar": "بوتسوانا", "pt": "Botsuana", "hi": "बोत्स्वाना"}),
+    "CAF": ("CF", {"en": "Central African Republic", "es": "República Centroafricana", "fr": "République centrafricaine", "de": "Zentralafrikanische Republik", "ru": "Центрально-Африканская Республика", "ar": "جمهورية أفريقيا الوسطى", "pt": "República Centro-Africana", "hi": "मध्य अफ़्रीकी गणराज्य"}),
+    "CIV": ("CI", {"en": "Côte d’Ivoire", "es": "Côte d’Ivoire", "fr": "Côte d’Ivoire", "de": "Côte d’Ivoire", "ru": "Кот-д’Ивуар", "ar": "ساحل العاج", "pt": "Costa do Marfim", "hi": "कोत दिवुआर"}),
+    "CMR": ("CM", {"en": "Cameroon", "es": "Camerún", "fr": "Cameroun", "de": "Kamerun", "ru": "Камерун", "ar": "الكاميرون", "pt": "Camarões", "hi": "कैमरून"}),
+    "COD": ("CD", {"en": "Congo - Kinshasa", "es": "República Democrática del Congo", "fr": "Congo-Kinshasa", "de": "Kongo-Kinshasa", "ru": "Конго - Киншаса", "ar": "الكونغو - كينشاسا", "pt": "Congo - Kinshasa", "hi": "कांगो - किंशासा"}),
+    "COG": ("CG", {"en": "Congo - Brazzaville", "es": "Congo", "fr": "Congo-Brazzaville", "de": "Kongo-Brazzaville", "ru": "Конго - Браззавиль", "ar": "الكونغو - برازافيل", "pt": "República do Congo", "hi": "कांगो – ब्राज़ाविल"}),
+    "COM": ("KM", {"en": "Comoros", "es": "Comoras", "fr": "Comores", "de": "Komoren", "ru": "Коморы", "ar": "جزر القمر", "pt": "Comores", "hi": "कोमोरोस"}),
+    "CPV": ("CV", {"en": "Cape Verde", "es": "Cabo Verde", "fr": "Cap-Vert", "de": "Cabo Verde", "ru": "Кабо-Верде", "ar": "الرأس الأخضر", "pt": "Cabo Verde", "hi": "केप वर्ड"}),
+    "DJI": ("DJ", {"en": "Djibouti", "es": "Yibuti", "fr": "Djibouti", "de": "Dschibuti", "ru": "Джибути", "ar": "جيبوتي", "pt": "Djibuti", "hi": "जिबूती"}),
+    "ERI": ("ER", {"en": "Eritrea", "es": "Eritrea", "fr": "Érythrée", "de": "Eritrea", "ru": "Эритрея", "ar": "إريتريا", "pt": "Eritreia", "hi": "इरिट्रिया"}),
+    "ETH": ("ET", {"en": "Ethiopia", "es": "Etiopía", "fr": "Éthiopie", "de": "Äthiopien", "ru": "Эфиопия", "ar": "إثيوبيا", "pt": "Etiópia", "hi": "इथियोपिया"}),
+    "GAB": ("GA", {"en": "Gabon", "es": "Gabón", "fr": "Gabon", "de": "Gabun", "ru": "Габон", "ar": "الغابون", "pt": "Gabão", "hi": "गैबॉन"}),
+    "GHA": ("GH", {"en": "Ghana", "es": "Ghana", "fr": "Ghana", "de": "Ghana", "ru": "Гана", "ar": "غانا", "pt": "Gana", "hi": "घाना"}),
+    "GIN": ("GN", {"en": "Guinea", "es": "Guinea", "fr": "Guinée", "de": "Guinea", "ru": "Гвинея", "ar": "غينيا", "pt": "Guiné", "hi": "गिनी"}),
+    "GMB": ("GM", {"en": "Gambia", "es": "Gambia", "fr": "Gambie", "de": "Gambia", "ru": "Гамбия", "ar": "غامبيا", "pt": "Gâmbia", "hi": "गाम्बिया"}),
+    "GNB": ("GW", {"en": "Guinea-Bissau", "es": "Guinea-Bisáu", "fr": "Guinée-Bissau", "de": "Guinea-Bissau", "ru": "Гвинея-Бисау", "ar": "غينيا بيساو", "pt": "Guiné-Bissau", "hi": "गिनी-बिसाउ"}),
+    "GNQ": ("GQ", {"en": "Equatorial Guinea", "es": "Guinea Ecuatorial", "fr": "Guinée équatoriale", "de": "Äquatorialguinea", "ru": "Экваториальная Гвинея", "ar": "غينيا الاستوائية", "pt": "Guiné Equatorial", "hi": "इक्वेटोरियल गिनी"}),
+    "KEN": ("KE", {"en": "Kenya", "es": "Kenia", "fr": "Kenya", "de": "Kenia", "ru": "Кения", "ar": "كينيا", "pt": "Quênia", "hi": "केन्या"}),
+    "LBR": ("LR", {"en": "Liberia", "es": "Liberia", "fr": "Liberia", "de": "Liberia", "ru": "Либерия", "ar": "ليبيريا", "pt": "Libéria", "hi": "लाइबेरिया"}),
+    "LSO": ("LS", {"en": "Lesotho", "es": "Lesoto", "fr": "Lesotho", "de": "Lesotho", "ru": "Лесото", "ar": "ليسوتو", "pt": "Lesoto", "hi": "लेसोथो"}),
+    "MDG": ("MG", {"en": "Madagascar", "es": "Madagascar", "fr": "Madagascar", "de": "Madagaskar", "ru": "Мадагаскар", "ar": "مدغشقر", "pt": "Madagascar", "hi": "मेडागास्कर"}),
+    "MLI": ("ML", {"en": "Mali", "es": "Mali", "fr": "Mali", "de": "Mali", "ru": "Мали", "ar": "مالي", "pt": "Mali", "hi": "माली"}),
+    "MOZ": ("MZ", {"en": "Mozambique", "es": "Mozambique", "fr": "Mozambique", "de": "Mosambik", "ru": "Мозамбик", "ar": "موزمبيق", "pt": "Moçambique", "hi": "मोज़ांबिक"}),
+    "MRT": ("MR", {"en": "Mauritania", "es": "Mauritania", "fr": "Mauritanie", "de": "Mauretanien", "ru": "Мавритания", "ar": "موريتانيا", "pt": "Mauritânia", "hi": "मॉरिटानिया"}),
+    "MUS": ("MU", {"en": "Mauritius", "es": "Mauricio", "fr": "Maurice", "de": "Mauritius", "ru": "Маврикий", "ar": "موريشيوس", "pt": "Maurício", "hi": "मॉरीशस"}),
+    "MWI": ("MW", {"en": "Malawi", "es": "Malaui", "fr": "Malawi", "de": "Malawi", "ru": "Малави", "ar": "ملاوي", "pt": "Malaui", "hi": "मलावी"}),
+    "NAM": ("NA", {"en": "Namibia", "es": "Namibia", "fr": "Namibie", "de": "Namibia", "ru": "Намибия", "ar": "ناميبيا", "pt": "Namíbia", "hi": "नामीबिया"}),
+    "NER": ("NE", {"en": "Niger", "es": "Níger", "fr": "Niger", "de": "Niger", "ru": "Нигер", "ar": "النيجر", "pt": "Níger", "hi": "नाइजर"}),
+    "NGA": ("NG", {"en": "Nigeria", "es": "Nigeria", "fr": "Nigeria", "de": "Nigeria", "ru": "Нигерия", "ar": "نيجيريا", "pt": "Nigéria", "hi": "नाइजीरिया"}),
+    "RWA": ("RW", {"en": "Rwanda", "es": "Ruanda", "fr": "Rwanda", "de": "Ruanda", "ru": "Руанда", "ar": "رواندا", "pt": "Ruanda", "hi": "रवांडा"}),
+    "SEN": ("SN", {"en": "Senegal", "es": "Senegal", "fr": "Sénégal", "de": "Senegal", "ru": "Сенегал", "ar": "السنغال", "pt": "Senegal", "hi": "सेनेगल"}),
+    "SLE": ("SL", {"en": "Sierra Leone", "es": "Sierra Leona", "fr": "Sierra Leone", "de": "Sierra Leone", "ru": "Сьерра-Леоне", "ar": "سيراليون", "pt": "Serra Leoa", "hi": "सिएरा लियोन"}),
+    "SOM": ("SO", {"en": "Somalia", "es": "Somalia", "fr": "Somalie", "de": "Somalia", "ru": "Сомали", "ar": "الصومال", "pt": "Somália", "hi": "सोमालिया"}),
+    "SSD": ("SS", {"en": "South Sudan", "es": "Sudán del Sur", "fr": "Soudan du Sud", "de": "Südsudan", "ru": "Южный Судан", "ar": "جنوب السودان", "pt": "Sudão do Sul", "hi": "दक्षिण सूडान"}),
+    "STP": ("ST", {"en": "São Tomé & Príncipe", "es": "Santo Tomé y Príncipe", "fr": "Sao Tomé-et-Principe", "de": "São Tomé und Príncipe", "ru": "Сан-Томе и Принсипи", "ar": "ساو تومي وبرينسيبي", "pt": "São Tomé e Príncipe", "hi": "साओ टोम और प्रिंसिपे"}),
+    "SWZ": ("SZ", {"en": "Eswatini", "es": "Esuatini", "fr": "Eswatini", "de": "Eswatini", "ru": "Эсватини", "ar": "إسواتيني", "pt": "Essuatíni", "hi": "एस्वाटिनी"}),
+    "SYC": ("SC", {"en": "Seychelles", "es": "Seychelles", "fr": "Seychelles", "de": "Seychellen", "ru": "Сейшельские о-ва", "ar": "سيشل", "pt": "Seicheles", "hi": "सेशेल्स"}),
+    "TCD": ("TD", {"en": "Chad", "es": "Chad", "fr": "Tchad", "de": "Tschad", "ru": "Чад", "ar": "تشاد", "pt": "Chade", "hi": "चाड"}),
+    "TGO": ("TG", {"en": "Togo", "es": "Togo", "fr": "Togo", "de": "Togo", "ru": "Того", "ar": "توغو", "pt": "Togo", "hi": "टोगो"}),
+    "TZA": ("TZ", {"en": "Tanzania", "es": "Tanzania", "fr": "Tanzanie", "de": "Tansania", "ru": "Танзания", "ar": "تنزانيا", "pt": "Tanzânia", "hi": "तंज़ानिया"}),
+    "UGA": ("UG", {"en": "Uganda", "es": "Uganda", "fr": "Ouganda", "de": "Uganda", "ru": "Уганда", "ar": "أوغندا", "pt": "Uganda", "hi": "युगांडा"}),
+    "ZAF": ("ZA", {"en": "South Africa", "es": "Sudáfrica", "fr": "Afrique du Sud", "de": "Südafrika", "ru": "Южно-Африканская Республика", "ar": "جنوب أفريقيا", "pt": "África do Sul", "hi": "दक्षिण अफ़्रीका"}),
+    "ZMB": ("ZM", {"en": "Zambia", "es": "Zambia", "fr": "Zambie", "de": "Sambia", "ru": "Замбия", "ar": "زامبيا", "pt": "Zâmbia", "hi": "ज़ाम्बिया"}),
+    "ZWE": ("ZW", {"en": "Zimbabwe", "es": "Zimbabue", "fr": "Zimbabwe", "de": "Simbabwe", "ru": "Зимбабве", "ar": "زيمبابوي", "pt": "Zimbábue", "hi": "ज़िम्बाब्वे"}),
 }
 
 #: El código de la OMS → el nombre con el que la vacuna se conoce, y la familia a la que
@@ -113,6 +170,17 @@ NOMBRES: dict[str, tuple[str, str]] = {
     "RSV_MONO": ("RSV antibody (nirsevimab)", "rsv"),
     "VITAMINA": ("Vitamin A (a supplement, not a vaccine)", "vita"),
     "TYPHOID_CONJ": ("Typhoid, conjugate", "typhoid"),
+    # ── África, 18-sep-2026: lo que aquí no existe y allí es el calendario ───────────────
+    # La de la malaria salía 24 veces en 48 países y este script la estaba TIRANDO por no
+    # tener nombre. Es la vacuna nueva (RTS,S y R21) que la OMS recomendó para las zonas de
+    # transmisión alta, y es justo la que un padre de Ghana o Kenia quiere ver en su tabla.
+    # La meningocócica A es la del cinturón de la meningitis, del Sahel a Etiopía.
+    "MALARIA": ("Malaria (RTS,S / R21)", "malaria"),
+    "MEN_A_CONJ": ("Meningococcal A, conjugate", "men"),
+    "MEN_A_PS": ("Meningococcal A, polysaccharide", "men"),
+    "DTWPHIBHEPBIPV": ("DTwP-Hib-HepB-IPV (hexavalent)", "dtp"),
+    "TDAP_S_IPV": ("Tdap-IPV booster", "td"),
+    "DT": ("DT (diphtheria, tetanus, children's dose)", "dtp"),
 }
 
 #: Poblaciones que NO son «lo que le toca a un niño sano en el calendario».
@@ -373,7 +441,14 @@ def calendario(iso3: str) -> tuple[int, list[dict], list[str]]:
                 break
 
     salida = []
-    for (meses, _hasta_meses, es_gripe), casilla in sorted(casillas.items()):
+    # 18-sep-2026, con los datos africanos: dos casillas pueden compartir edad y diferir en el
+    # rango —una «a los 9 meses» y otra «de 9 a 12»— y entonces Python compara None con un
+    # número al ordenar. El orden lo da la edad; el rango ausente se trata como el más corto.
+    def _orden(par):
+        (meses, hasta, gripe), _ = par
+        return (meses, -1.0 if hasta is None else hasta, gripe)
+
+    for (meses, _hasta_meses, es_gripe), casilla in sorted(casillas.items(), key=_orden):
         vacunas = [" or ".join(v) for _, v in sorted(casilla["familias"].items())]
         fila: dict = {
             "meses": round(meses, 1),
@@ -441,6 +516,16 @@ def nota(iso3: str) -> dict[str, str]:
             "ar": " وتبلغ السعودية عن لقاح BCG في عمر ستة أشهر، لا عند الولادة، منذ عام 2019.",
             "pt": " A Arábia Saudita reporta a BCG aos 6 meses, não ao nascer, desde 2019.",
             "hi": " सऊदी अरब 2019 से हर साल BCG को जन्म पर नहीं, 6 महीने पर बताता है।",
+        },
+        "MUS": {
+            "en": " Mauritius has reported BCG at 1 month, not at birth, every year since at least 2018.",
+            "es": " Mauricio reporta la BCG al mes, no al nacer, todos los años desde 2018 por lo menos.",
+            "fr": " Maurice déclare le BCG à 1 mois, et non à la naissance, depuis 2018 au moins.",
+            "de": " Mauritius meldet BCG seit mindestens 2018 mit 1 Monat, nicht bei der Geburt.",
+            "ru": " Маврикий как минимум с 2018 года сообщает БЦЖ в 1 месяц, а не при рождении.",
+            "ar": " تبلغ موريشيوس عن لقاح BCG في عمر شهر، لا عند الولادة، منذ 2018 على الأقل.",
+            "pt": " As Maurícias reportam a BCG ao 1.º mês, não ao nascer, desde pelo menos 2018.",
+            "hi": " मॉरीशस कम से कम 2018 से BCG को जन्म पर नहीं, 1 महीने पर बताता है।",
         },
         "KWT": {
             "en": " Kuwait has reported BCG at 3 months, not at birth, for more than a decade, and it records the pre-school booster at «3.6 years» — between the third and fourth birthday. Both are copied here as reported.",

@@ -73,3 +73,73 @@ PE: {emergency: "116 / 106 (SAMU)", poison: null, mental: "113 opción 5"}
 BR: {emergency: "192 (SAMU) / 193", poison: "0800 722 6001", mental: "188 (CVV)"}
 AU: {emergency: "000", poison: "13 11 26", mental: "Lifeline 13 11 14"}
 NZ: {emergency: "111", poison: "0800 764 766", mental: "1737"}
+
+# ── África, 18-sep-2026 ──────────────────────────────────────────────────────────────────
+# El operador: «hemos dejado totalmente de lado a toda África». Medido: 4 países de 53, y los
+# cuatro del norte. Aquí entran 44 más.
+#
+# La fuente no es la nacional de cada país, y se dice: lo intenté —seis ministerios, cinco
+# 404 y un 502— y lo que sí está publicado, con dirección estable y licencia abierta, es el
+# aviso de viaje del FCDO británico, que trae la sección «Emergency medical number» de cada
+# país del mundo.
+#
+# Y trae algo que en Europa no hizo falta nunca: la letra pequeña. «No hay servicio nacional
+# de ambulancias» (Nigeria), «fuera de Uagadugú, el 112» (Burkina), «puede que no contesten»
+# (Mauritania). Un número que nadie coge no es un número; decirlo es la mitad del dato.
+#
+# En cuatro países la fuente dice que NO existe número nacional. Se publican igual, con
+# `no_national: true`: callarlos sería fingir que no existen, y ponerles un 112 sería mentir.
+# Fuente de todos: UK Foreign, Commonwealth & Development Office — travel advice, «Emergency medical number» (Open Government Licence v3.0; leído el 18-sep-2026)
+AO: {emergency: "112", poison: null, mental: null}
+BF: {emergency: "18 from Ouagadougou", poison: null, mental: null, note: "Outside Ouagadougou, call the universal emergency number 112. If you get no response, you will need to get local advice about the closest hospital and how to get to it."}
+BI: {emergency: "112", poison: null, mental: null, note: "You can also request help from the Red Cross by calling 109."}
+BJ: {emergency: "118", poison: null, mental: null, note: "Outside Cotonou, there may not be an emergency response. You are likely to have to get local advice and arrange transport to the nearest medical centre."}
+BW: {emergency: "997", poison: null, mental: null}
+CD: {emergency: null, no_national: true, poison: null, mental: null, note: "There is no general emergency medical number in the Democratic Republic of the Congo (DRC)."}
+CF: {emergency: "610600 / 117", poison: null, mental: null, note: "Emergency numbers are unreliable in the Central African Republic. The emergency services are unlikely to respond outside of Bangui."}
+CM: {emergency: "112", poison: null, mental: null}
+CV: {emergency: "130", poison: null, mental: null}
+DJ: {emergency: "21 35 09 62 / 21 35 27 12", poison: null, mental: null}
+ER: {emergency: "122244", poison: null, mental: null, note: "Please note that the call handler may not speak English."}
+ET: {emergency: "907", poison: null, mental: null}
+GA: {emergency: "117 / 1300 / 011760873 / 1333", poison: null, mental: null, note: "Operators may only speak French. These numbers are not always reliable."}
+GH: {emergency: "999 / 112", poison: null, mental: null}
+GM: {emergency: null, no_national: true, poison: null, mental: null, note: "There is no equivalent to the UK’s 999 emergency number in The Gambia, it is best to visit in-person to ask for emergency contact details at local stations."}
+GN: {emergency: null, no_national: true, poison: null, mental: null, note: "There is no national emergency number: in Conakry you call the clinics directly."}
+GQ: {emergency: "3101", poison: null, mental: null}
+GW: {emergency: "1313", poison: null, mental: null}
+KE: {emergency: "999", poison: null, mental: null}
+KM: {emergency: null, no_national: true, poison: null, mental: null, note: "There is no national emergency number: the source lists hospital numbers instead."}
+LR: {emergency: null, no_national: true, poison: null, mental: null, note: "There is no reliable ambulance service in Liberia."}
+LS: {emergency: "112", poison: null, mental: null, note: "If 112 is not operating, call locally on 80093030121. You can also access emergency treatment across the border in South Africa."}
+MG: {emergency: "117 from a mobile / 17 from a landline", poison: null, mental: null}
+ML: {emergency: "15", poison: null, mental: null, note: "Emergency response capacity is very limited. Take local advice and arrange your own transport to a medical centre or hospital."}
+MR: {emergency: "101", poison: null, mental: null, note: "The Mauritania authorities may not answer calls to this number."}
+MU: {emergency: "999 / 114", poison: null, mental: null}
+MW: {emergency: "998", poison: null, mental: null, note: "Emergency numbers are unreliable in Malawi. There may be other numbers for the areas you visit – ask your hotel or the local police."}
+MZ: {emergency: "848888 / 823388", poison: null, mental: null}
+NA: {emergency: "211111 (in Windhoek) / 10111 (everywhere else)", poison: null, mental: null}
+NE: {emergency: "15", poison: null, mental: null, note: "Public emergency services can be slow to respond. Some private medical clinics also have ambulance services."}
+NG: {emergency: "112", poison: null, mental: null, note: "There is no national ambulance service and hospital-owned services are extremely limited. You may need to get local advice or arrange local transport."}
+RW: {emergency: "112", poison: null, mental: null}
+SC: {emergency: "999", poison: null, mental: null}
+SL: {emergency: "117", poison: null, mental: null, note: "Ambulance services are unreliable in Freetown and unavailable throughout most of the country. Staff are not usually trained paramedics and often have little or no medical equipment."}
+SN: {emergency: "15", poison: null, mental: null}
+SO: {emergency: "999", poison: null, mental: null, note: "If that number does not work, call the Somali Red Crescent on 445 for emergency services."}
+SS: {emergency: null, no_national: true, poison: null, mental: null, note: "Sudan does not have an emergency medical public phone number."}
+ST: {emergency: "222 22 22", poison: null, mental: null}
+SZ: {emergency: "977 / 933", poison: null, mental: null}
+TD: {emergency: "1212", poison: null, mental: null}
+TG: {emergency: "8200", poison: null, mental: null}
+TZ: {emergency: "112", poison: null, mental: null}
+UG: {emergency: "999", poison: null, mental: null, note: "Medical help at the scene of an accident is likely to be limited, particularly outside Kampala."}
+ZA: {emergency: "112 (from a mobile) / 10177", poison: null, mental: null}
+ZW: {emergency: "112 from a mobile phone", poison: null, mental: null, note: "Zimbabwe’s emergency response capabilities are limited and, in many places, you will need to make local arrangements for transport. The Official Government of Zimbabwe web portal has a full list of emergency numbers."}
+
+# Los tres que faltaban, leídos con la dirección correcta de la fuente (su URL usa «cote-d-ivoire»
+# y «congo», no el nombre largo). Y Zambia estrena un tercer estado: la fuente NO publica número,
+# que no es lo mismo que decir que no existe. Poner «no hay» sería ponerle a la fuente palabras
+# que no dijo; poner un 112 sería peor. Se dice lo que hay: no lo tenemos verificado.
+CI: {emergency: "185", poison: null, mental: null}
+CG: {emergency: null, no_national: true, poison: null, mental: null, note: "There's no central number for emergency services. Check for local medical facilities and carry contact details with you."}
+ZM: {emergency: null, unverified: true, poison: null, mental: null, note: "We have not been able to verify a national emergency number for Zambia from a published source. The source we use says only that emergency services are limited."}

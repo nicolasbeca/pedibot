@@ -31,7 +31,8 @@ const { lang } = Astro.props;
 const s = t(lang);
 const pref = langPrefix(lang);
 
-const numeros = emergency as Record<string, { emergency?: string; poison?: string; mental?: string }>;
+const numeros = emergency as Record<string, { emergency?: string; poison?: string;
+  mental?: string; note?: string; no_national?: boolean; unverified?: boolean }>;
 const conCalendario = Object.keys(vaccines);
 const mios: string[] = (langCountries as Record<string, string[]>)[lang] ?? [];
 const resto = Object.keys(numeros).filter((cc) => !mios.includes(cc)).sort();
@@ -60,10 +61,14 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
       {mios.map((cc) => (
         <article class="card" data-cc={cc}>
           <h3>{nombres[cc]}</h3>
-          <p class="num">
-            <span class="lbl">{s.mine_call}</span>
-            <a href={`tel:${marcar(cc)}`}>{numeros[cc]?.emergency ?? '—'}</a>
-          </p>
+          {numeros[cc]?.emergency ? (
+            <p class="num">
+              <span class="lbl">{s.mine_call}</span>
+              <a href={`tel:${marcar(cc)}`}>{numeros[cc].emergency}</a>
+            </p>
+          ) : (
+            <p class="nohay">{numeros[cc]?.no_national ? s.emgc_none : s.emgc_unsure}</p>
+          )}
           {numeros[cc]?.poison && <p class="line"><b>{s.mine_poison}:</b> {numeros[cc].poison}</p>}
           {numeros[cc]?.mental && <p class="line"><b>{s.mine_mental}:</b> {numeros[cc].mental}</p>}
           <p class="links">
@@ -87,7 +92,7 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
   </div>
 </section>
 
-<script define:vars={{ NUM: numeros, NOMBRES: nombres, CAL: conCalendario, PREF: pref, T: { call: s.mine_call, poison: s.mine_poison, mental: s.mine_mental, emg: s.emg_eyebrow, vax: s.nav_vaccines } }}>
+<script define:vars={{ NUM: numeros, NOMBRES: nombres, CAL: conCalendario, PREF: pref, T: { call: s.mine_call, poison: s.mine_poison, mental: s.mine_mental, emg: s.emg_eyebrow, vax: s.nav_vaccines, none: s.emgc_none, unsure: s.emgc_unsure } }}>
   const zona = document.getElementById('mine-cards');
   const sel = document.getElementById('mine-cc');
 
@@ -107,9 +112,12 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
     el.dataset.cc = cc;
     const tel = String(n.emergency || '').split('/')[0].trim();
     const linea = (etiqueta, valor) => (valor ? `<p class="line"><b>${etiqueta}:</b> ${valor}</p>` : '');
+    // sin número no se escribe un guion: se escribe la frase, que es la respuesta de verdad
+    const cabeza = n.emergency
+      ? `<p class="num"><span class="lbl">${T.call}</span><a href="tel:${tel}">${n.emergency}</a></p>`
+      : `<p class="nohay">${n.no_national ? T.none : T.unsure}</p>`;
     el.innerHTML =
-      `<h3>${NOMBRES[cc] || cc}</h3>` +
-      `<p class="num"><span class="lbl">${T.call}</span><a href="tel:${tel}">${n.emergency || '—'}</a></p>` +
+      `<h3>${NOMBRES[cc] || cc}</h3>` + cabeza +
       linea(T.poison, n.poison) +
       linea(T.mental, n.mental) +
       `<p class="links"><a href="${PREF}/emergency/${cc.toLowerCase()}">${T.emg} →</a>` +
@@ -150,6 +158,9 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
   .card.tuyo { border-color: var(--coral); }
   .card h3 { margin: 0; font-size: 1rem; }
   .num { margin: 6px 0 4px; }
+  /* 18-sep-2026: hay países donde la fuente dice que no hay número nacional. En la tarjeta
+     ocupa el sitio del número, porque es la misma respuesta a la misma pregunta. */
+  .nohay { margin: 10px 0 4px; font-weight: 700; font-size: 1.02rem; line-height: 1.25; }
   .num .lbl { display: block; font-size: .78rem; color: var(--ink-3); }
   .num a {
     font-family: 'JetBrains Mono', ui-monospace, monospace;

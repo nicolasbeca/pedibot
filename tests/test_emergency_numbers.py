@@ -99,8 +99,24 @@ def test_the_fallback_phrase_names_at_least_one_number(lang: str) -> None:
 def test_a_country_entry_always_carries_an_emergency_number(code: str) -> None:
     """`poison` y `mental` pueden estar vacíos —India se añadió sin centro de intoxicaciones
     porque no se pudo verificar en fuente oficial, y un número inventado es peor que ninguno—,
-    pero el de emergencias no puede faltar: es el motivo de que exista la ficha."""
+    pero el de emergencias no puede faltar: es el motivo de que exista la ficha.
+
+    18-sep-2026, con África: hay un tercer caso que en Europa no se daba. En la RD del Congo, el
+    Congo, Gambia, Guinea, las Comoras, Liberia y Sudán del Sur la fuente dice con todas las
+    letras que NO existe un número nacional; en Zambia no hemos podido verificar ninguno. Esas
+    fichas se publican igual —callar el país sería fingir que no existe— pero entonces la regla
+    es más dura, no más blanda: hace falta decir POR QUÉ no hay número, y con la frase de la
+    fuente. Un hueco callado seguiría siendo un fallo.
+    """
     ficha = NUMEROS[code]
+    if ficha.get("no_national") or ficha.get("unverified"):
+        assert not ficha.get("emergency"), (
+            f"{code} dice que no hay número nacional y a la vez trae uno: no puede ser las dos"
+        )
+        assert (ficha.get("note") or "").strip(), (
+            f"{code} se queda sin número y sin explicación: eso es un hueco, no un dato"
+        )
+        return
     assert ficha.get("emergency"), f"{code} no tiene número de emergencias"
     assert any(c.isdigit() for c in str(ficha["emergency"])), (
         f"{code}: «{ficha['emergency']}» no contiene ninguna cifra"

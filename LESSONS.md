@@ -346,3 +346,49 @@ lo que no está pasando y que NO callen lo que sí.
 Y el corolario caro: **cuando falla un guardián, el fallo es un silencio**. Dos de los míos
 callaron avisos de verdad por una frontera de palabra —«il y a du sang dANS son vomi» parecía «il
 y a dos años», «no puede bEBEr» parecía «de bebé»— y un silencio no se ve en ninguna pantalla.
+
+## L177 · Un nombre de país es una palabra de otro idioma (18-sep-2026)
+Para que un padre pueda preguntar «¿qué vacunas le tocan en Nigeria?», el bot lee el nombre del
+país dentro de la frase. Con trece países eso era una lista de subcadenas y funcionaba. Con
+sesenta y uno —África entera— la lista se convirtió en una trampa, porque **el nombre de un país
+en un idioma es una palabra corriente en otro**:
+
+    «Gana»   es Ghana en portugués… y el verbo de «mi bebé no gana peso», que es la frase más
+             repetida de este proyecto. Un padre español preguntando por el peso de su hijo
+             habría recibido el calendario vacunal de Ghana.
+    «того»   es Togo en ruso y también el genitivo de «тот»: «вместо того чтобы…».
+    «чад»    es Chad en ruso y también el humo que se respira en un incendio: «ребёнок вдохнул
+             чад» es una consulta de urgencias de verdad.
+    «mali»   está dentro de «maligno», «maligne» y «malignant».
+    «niger»  está dentro de «Nigeria».
+    «guinea» está delante de «pig»: el conejillo de Indias.
+    «гана»   está dentro de «органа», genitivo de «орган».
+
+La lista de subcadenas no distingue nada de eso. Tres arreglos distintos para tres problemas
+distintos, y conviene no confundirlos: los que viven **dentro** de otra palabra se arreglan con
+frontera de palabra (`\bmali\b` no casa en «maligno»); los que son **la misma palabra** no se
+arreglan con nada y hay que quitarlos («gana», «того»); y los que dependen de lo que viene detrás
+se arreglan mirando detrás (`\bguinea\b(?!\s*pig)`).
+
+**La regla**: antes de meter un nombre propio en un buscador de subcadenas, pregúntate qué
+significa esa secuencia de letras en los otros siete idiomas del sitio. Y la prueba que lo sujeta
+no es «el país está en la tabla», que es lo que comprobaba la vieja, sino **«el país contesta a
+cada uno de sus nombres y no contesta al de otro»**: 61 países por todos sus nombres, y Guinea
+Ecuatorial no puede leerse como Guinea.
+
+## L178 · Publicar un hueco es publicar un dato (18-sep-2026)
+La prueba decía: todo país con calendario tiene que tener número de emergencias, porque publicar
+un calendario es una promesa de estar ahí. En Europa esa regla no tenía grietas. En África sí:
+en la RD del Congo, el Congo, Gambia, Guinea, las Comoras, Liberia y Sudán del Sur **la fuente
+dice con todas las letras que no existe un número nacional**, y en Zambia no hemos podido
+verificar ninguno.
+
+Tres salidas, y dos son malas. Callar esos ocho países sería fingir que no existen, justo los
+ocho donde un padre tiene menos a mano un pediatra. Ponerles un 112 de relleno sería mandarlo a
+esperar una ambulancia que no va a venir. La tercera es publicar el hueco **con su motivo y con
+la frase de la fuente**, y distinguir «no lo hay» de «no lo sabemos», que no son lo mismo: el
+padre que lee «no hay número» sale hacia el hospital, y el que lee «no lo hemos podido
+verificar» sabe que le toca preguntar.
+
+**La regla**: cuando el dato no existe, el dato es que no existe — y entonces la prueba se hace
+más dura, no más blanda. Un país sin número tiene que traer *por qué*, o sigue siendo un hueco.

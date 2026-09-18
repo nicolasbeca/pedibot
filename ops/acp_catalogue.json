@@ -257,7 +257,7 @@
       "name": "child_growth_percentile",
       "price": 0.01,
       "sla_minutes": 1,
-      "description": "Where a child sits on the growth charts, calculated exactly from the WHO LMS tables (Child Growth Standards 2006, Growth Reference 2007) and, for the United States and Australia after age 2, the CDC 2000 charts: weight, height, weight-for-height and BMI percentiles and z-scores, with the WHO cut-offs (wasting, stunting, overweight, thinness). Severe acute malnutrition is flagged as urgent. With a country, it says which chart that country's health record uses; 21 countries covered.",
+      "description": "Where a child sits on the growth charts, calculated exactly from the WHO LMS tables (Child Growth Standards 2006, Growth Reference 2007) and, for the United States and Australia after age 2, the CDC 2000 charts: weight, height, weight-for-height and BMI percentiles and z-scores, with the WHO cut-offs (wasting, stunting, overweight, thinness). Severe acute malnutrition is flagged as urgent. With a country, it says which chart that country's health record uses; 69 countries covered.",
       "requirements": {
         "type": "object",
         "required": [
@@ -459,7 +459,7 @@
       "name": "childhood_vaccination_schedule",
       "price": 0.01,
       "sla_minutes": 5,
-      "description": "The official childhood vaccination schedule of a country, transcribed from its health authority, for 13 countries (BR, PT, ES, GB, US, FR, DE, IN, SA, AE, EG, QA, KW), Europe to the Gulf. Returns every age with the vaccines due and what each protects against, the issuing body, the source URL and the review date. With the child's age it also returns what is due now and what comes next. A transcribed table, not a recollection of one.",
+      "description": "The official childhood vaccination schedule of a country, for 61 countries: 13 transcribed from the national ministry, from Brazil to the Gulf, and 48 African ones from the WHO's immunization schedule database. Returns every age with the vaccines due and what each protects against, the issuing body, the source URL and the review date. With the child's age it also returns what is due now and what comes next. A transcribed table, not a recollection of one.",
       "requirements": {
         "type": "object",
         "required": [
@@ -667,7 +667,7 @@
     {
       "name": "emergency_numbers_by_country",
       "url": "https://pedibot.xyz/api/emergency-numbers",
-      "description": "The emergency and poison-control numbers PediBot shows parents, for 35 countries. Without parameters it lists the countries; with a country code it returns that country's numbers. The same table the triage uses when a warning sign fires.",
+      "description": "The emergency and poison-control numbers PediBot shows parents, for 88 countries. Eight of them have no usable number and say so: where the source states there is no national emergency number, the record says that instead of inventing one. Without parameters it lists the countries; with a country code it returns that country's numbers. The same table the triage uses when a warning sign fires.",
       "params": {
         "type": "object",
         "description": "Optional country and language.",
@@ -686,7 +686,7 @@
     {
       "name": "growth_chart_by_country",
       "url": "https://pedibot.xyz/api/growth/countries",
-      "description": "Which growth chart each country's child health record uses, read from official sources, for 21 countries: WHO, CDC, UK-WHO, IAP 2015, the Saudi, French and German national charts and more, with the age range of each chart and the link to the ministry or society that sets it.",
+      "description": "Which growth chart each country's child health record uses, read from official sources, for 69 countries: WHO, CDC, UK-WHO, IAP 2015, the Saudi, French and German national charts, South Africa's Road to Health Book and the WHO/UNICEF IMCI booklet used across Africa, with the age range of each chart and the link to the ministry or society that sets it.",
       "params": {
         "type": "object",
         "properties": {},
@@ -706,7 +706,7 @@
     {
       "name": "childhood_vaccination_schedules_by_country",
       "url": "https://pedibot.xyz/api/vaccines?country=IN",
-      "description": "The transcribed childhood vaccination schedules for 13 countries (BR, PT, ES, GB, US, FR, DE, IN, SA, AE, EG, QA, KW), with the issuing body, the source URL and the review date. The same data the paid job returns, as a plain call for whoever prefers to parse it.",
+      "description": "The transcribed childhood vaccination schedules for 61 countries — 13 from the national ministry and 48 African ones from the WHO's immunization schedule database — with the issuing body, the source URL and the review date. The same data the paid job returns, as a plain call for whoever prefers to parse it.",
       "params": {
         "type": "object",
         "description": "One country per call.",

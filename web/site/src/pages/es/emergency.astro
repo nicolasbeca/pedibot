@@ -44,9 +44,10 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
     <h2 style="margin-top:34px">{s.emg_by_country}</h2>
     <div class="nums">
       {orden.map(([cc, nombre]) => (
-        <a class="ncard" href={`${pref}/emergency/${cc.toLowerCase()}`}>
+        <a class="ncard" href={`${pref}/emergency/${cc.toLowerCase()}`}
+           title={numeros[cc]?.emergency ? nombre : (numeros[cc]?.no_national ? s.emgc_none : s.emgc_unsure)}>
           <span class="pais">{nombre}</span>
-          <b>{numeros[cc]?.emergency ?? '—'}</b>
+          <b class={numeros[cc]?.emergency ? '' : 'sin'}>{numeros[cc]?.emergency ?? '—'}</b>
         </a>
       ))}
     </div>
@@ -80,6 +81,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
   .ncard:hover { border-color: var(--coral); }
   .ncard .pais { font-size: .92rem; }
   .ncard b {
+  .ncard b.sin { color: var(--ink-3); font-weight: 600; }
     font-family: 'JetBrains Mono', ui-monospace, monospace; color: var(--coral);
     font-variant-numeric: tabular-nums; font-size: .98rem; white-space: nowrap;
   }

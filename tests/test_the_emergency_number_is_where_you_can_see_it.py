@@ -40,6 +40,15 @@ def pagina(lang: str, resto: str) -> str:
     return f.read_text(encoding="utf-8")
 
 
+def _tarjeta(html: str, cc: str) -> str | None:
+    """El trozo de HTML de la tarjeta de un país en la portada."""
+    i = html.find(f'data-cc="{cc}"')
+    if i < 0:
+        return None
+    fin = html.find("</article>", i)
+    return html[i : fin if fin > 0 else i + 900]
+
+
 # ── el dato ──────────────────────────────────────────────────────────────────────────────────
 def test_every_language_of_the_site_says_where_it_is_spoken() -> None:
     faltan = [lg for lg in IDIOMAS if not IDIOMA_PAISES.get(lg)]
@@ -70,7 +79,16 @@ def test_the_number_is_written_not_drawn_by_a_script(lang: str) -> None:
     html = pagina(lang, "/")
     for cc in IDIOMA_PAISES[lang]:
         numero = NUMEROS[cc]["emergency"]
-        assert numero in html, f"{lang}: el número de {cc} ({numero}) no está en el HTML"
+        if numero:
+            assert numero in html, f"{lang}: el número de {cc} ({numero}) no está en el HTML"
+        else:
+            # 18-sep-2026: con África entran países donde la fuente dice que no hay número
+            # nacional. Su tarjeta tiene que decirlo —también escrito en el HTML— y no puede
+            # colar un «tel:» a ninguna parte, que es justo lo que haría un guion de relleno.
+            assert _tarjeta(html, cc) is not None, f"{lang}: {cc} no tiene tarjeta en la portada"
+            trozo = _tarjeta(html, cc)
+            assert "nohay" in trozo, f"{lang}: {cc} no dice que no hay número nacional"
+            assert "tel:" not in trozo, f"{lang}: {cc} no tiene número y aun así ofrece llamar"
 
 
 # ── una dirección por país ───────────────────────────────────────────────────────────────────

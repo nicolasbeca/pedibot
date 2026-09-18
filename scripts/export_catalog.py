@@ -131,6 +131,13 @@ emergencias = {
         "emergency": v.get("emergency"),
         "poison": v.get("poison"),
         "mental": v.get("mental"),
+        # 18-sep-2026, con África: la letra pequeña y los dos casos que en Europa no se daban.
+        # `no_national` es «la fuente dice que no existe número nacional» (RD del Congo, Gambia,
+        # Liberia, Sudán del Sur, Congo, Comoras, Guinea) y `unverified` es «no hemos podido
+        # verificarlo» (Zambia). No son lo mismo y la página no dice lo mismo en cada caso.
+        "note": v.get("note"),
+        "no_national": bool(v.get("no_national")),
+        "unverified": bool(v.get("unverified")),
     }
     for k, v in numeros.items()
     if k != "default"
