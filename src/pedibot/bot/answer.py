@@ -141,7 +141,23 @@ def looks_like_medication_dose(text: str) -> bool:
 
 # Every language the engine will answer in. Adding one here is not enough on its own: it needs
 # its triage patterns in red_flags.yaml and its texts below, or the safety layer goes silent.
+#: Los idiomas en los que este producto contesta ENTEROS: web, guías, fuentes y respuesta.
 SUPPORTED_LANGS = ("es", "en", "fr", "de", "ru", "ar", "pt", "hi")
+
+#: Y los que la capa de seguridad sabe leer y escribir, aunque la respuesta larga todavía no
+#: venga en ellos (18-sep-2026).
+#:
+#: El suajili está aquí y no arriba, y la diferencia es deliberada. El triaje entiende suajili en
+#: las 83 reglas, el detector lo reconoce y los tres avisos están escritos en suajili: un padre de
+#: Kisumu que escribe «mtoto wangu ana degedege» recibe el aviso rojo en su lengua, que es la
+#: parte que dice qué hacer y la que no se puede permitir llegar tarde.
+#:
+#: Lo que NO tiene todavía es corpus: no hay ni un documento en suajili con licencia abierta en el
+#: índice, así que la explicación larga y sus fuentes salen en inglés —lengua oficial en Kenia,
+#: Tanzania y Uganda— en vez de en un suajili sin nada detrás que citar. Prometer la respuesta
+#: entera en suajili hoy sería prometer fuentes que no existen, que es justo lo que este proyecto
+#: no hace (L147, L167). Sube a la lista de arriba el día que haya material que citar.
+TRIAGE_LANGS = (*SUPPORTED_LANGS, "sw")
 
 DISCLAIMER = {
     "en": "PediBot gives information from official paediatric guidelines. It is not medical advice and does not replace your paediatrician.",
@@ -457,6 +473,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "ar": f"🚨 اتصل الآن بـ {numbers['emergency']} أو توجّه فورا إلى قسم الطوارئ.",
             "pt": f"🚨 Ligue agora para {numbers['emergency']} ou vá ao pronto-socorro.",
             "hi": f"🚨 अभी {numbers['emergency']} पर कॉल करें या तुरंत इमरजेंसी ले जाएँ।",
+            "sw": f"🚨 Piga simu {numbers['emergency']} sasa hivi au nenda hospitali.",
         }
     elif tr.level == "urgent":
         heads = {
@@ -468,6 +485,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "ar": "🚨 مع هذه العلامات يجب أن يراه طبيب في قسم الطوارئ اليوم، دون تأخير.",
             "pt": "🚨 Com esses sintomas é preciso ir ao pronto-socorro hoje, sem esperar.",
             "hi": "🚨 इन लक्षणों के साथ बच्चे को आज ही इमरजेंसी में दिखाना चाहिए, देर न करें।",
+            "sw": "🚨 Kwa dalili hizi mtoto anapaswa kuonwa hospitali leo, bila kusubiri.",
         }
     else:  # mental_health
         # The bracket exists to tell two different numbers apart. Where the country has no
@@ -504,6 +522,9 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             "hi": f"💛 यह ज़रूरी है और आप अकेले नहीं हैं। {mental} पर कॉल करें"
             + (f" (या {also} पर अगर खतरा अभी है)" if also else "")
             + "। अगर बच्चे ने खुद को नुकसान पहुँचाया है, तो अभी इमरजेंसी ले जाएँ।",
+            "sw": f"💛 Hili ni jambo muhimu na hauko peke yako. Piga simu {mental}"
+            + (f" (au {also} kama kuna hatari ya papo hapo)" if also else "")
+            + ". Kama mtoto tayari amejidhuru, nenda hospitali sasa.",
         }
     # 18-sep-2026. Ocho países —siete donde la fuente dice que NO existe número nacional y
     # Zambia, donde no hemos podido verificarlo— tienen ficha pero no tienen número. Las
@@ -528,6 +549,7 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
         "ar": "السبب",
         "pt": "Motivo",
         "hi": "कारण",
+        "sw": "Sababu",
     }.get(lang, "Reason") + f": {reasons}"
     return head + "\n" + why
 
@@ -854,6 +876,11 @@ class Engine:
         prior_user = " ".join(t["text"] for t in history if t.get("role") == "user")
         context_text = f"{prior_user} {query}".strip() if prior_user else query
         lang = lang or detect_lang(query)
+        # El idioma del AVISO y el de la RESPUESTA pueden ser distintos, y con el suajili lo
+        # son: el triaje lo lee y lo escribe, el corpus todavía no. Al padre se le da el aviso
+        # rojo en su lengua —que es la parte que dice qué hacer— y la explicación en inglés,
+        # con fuentes que puede abrir, en vez de un suajili sin nada detrás que citar.
+        lang_aviso = lang if lang in TRIAGE_LANGS else "en"
         if lang not in SUPPORTED_LANGS:
             lang = "en"
         tr = self.triage.assess(context_text)
@@ -891,8 +918,8 @@ class Engine:
             tr.level = max(
                 (r.level for r in tr.matched), key=lambda lv: LEVEL_ORDER[lv], default="routine"
             )
-        nums = self.numbers.get(country, lang)
-        banner = build_banner(tr, lang, nums)
+        nums = self.numbers.get(country, lang_aviso)
+        banner = build_banner(tr, lang_aviso, nums)
 
         intent = dose_intent(query, self.drugs) or (
             dose_intent(context_text, self.drugs)

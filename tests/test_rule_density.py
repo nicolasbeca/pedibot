@@ -8,9 +8,11 @@ en ruso.
 
 Presencia no es cobertura. Esto mide la proporción.
 
-El alfabeto latino lo comparten cinco de las ocho lenguas (inglés, castellano, francés, alemán
-y portugués), así que la comparación justa es su cuenta **dividida entre cinco** frente a lo que
-tiene cada una de las otras tres. El umbral es holgado a propósito —la mitad— porque una lengua
+El alfabeto latino lo comparten SEIS de las nueve lenguas (inglés, castellano, francés, alemán,
+portugués y, desde el 18-sep-2026, el suajili), así que la comparación justa es su cuenta
+**dividida entre seis** frente a lo que tiene cada una de las otras tres. Al entrar el suajili
+esta cuenta se quedó vieja y el candado señaló siete reglas que no habían empeorado: lo que había
+subido era el numerador. El umbral es holgado a propósito —la mitad— porque una lengua
 puede necesitar menos patrones que otra para decir lo mismo, y un candado que salta por gusto se
 acaba silenciando. Lo que busca es el desierto, no el desnivel.
 
@@ -34,7 +36,7 @@ BLOQUES = {
 }
 
 #: Cuántas lenguas del producto escriben en alfabeto latino: en, es, fr, de, pt.
-LENGUAS_LATINAS = 5
+LENGUAS_LATINAS = 6
 
 #: Por debajo de esta fracción de la media latina, esa escritura está desatendida.
 SUELO = 0.5

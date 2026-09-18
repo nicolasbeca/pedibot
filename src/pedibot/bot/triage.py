@@ -551,7 +551,8 @@ CAUSAL = re.compile(
     r"|kann .{0,14}(?:verursachen|ausl[öo]sen)"
     r"|может ли .{0,14}(?:вызвать|дать)|вызывает ли"
     r"|هل (?:يسبب|تسبب|يؤدي)"
-    r"|क्या .{0,14}(?:हो सकता|कर सकता))",
+    r"|क्या .{0,14}(?:हो सकता|कर सकता)"
+    r"|inaweza ku(?:sababisha|leta))",
     re.I | re.U,
 )
 
@@ -721,7 +722,14 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
         return True
     # «¿El sarampión puede dar úlceras en la boca?»: el verbo de causa Y la pregunta, las dos
     # cosas, y en la oración entera porque el «puede dar» puede ir delante o detrás de la señal.
-    es_pregunta = "?" in frase or "؟" in frase or "¿" in texto[max(0, inicio - 60) : inicio]
+    # el suajili no escribe el signo: marca la pregunta con «je» delante, igual que el
+    # castellano la marca con «¿». Sin esto, «je surua inaweza kusababisha vidonda?» daba alarma.
+    es_pregunta = (
+        "?" in frase
+        or "؟" in frase
+        or "¿" in texto[max(0, inicio - 60) : inicio]
+        or re.match(r"\s*je\b", frase, re.I) is not None
+    )
     return bool(es_pregunta and CAUSAL.search(frase))
 
 
@@ -756,15 +764,16 @@ def _negada(texto: str, inicio: int, fin: int) -> bool:
 #: Las palabras con las que un padre dice «respira», en las ocho lenguas del producto.
 _RESPIRA = re.compile(
     r"(respira|respirac|respirando|respire|respirat|breath|breathing|atem|atmet|atmung"
-    r"|дыш|дыхан|вдох|تنفس|نفس|يتنفس|साँस|सांस)",
+    r"|дыш|дыхан|вдох|تنفس|نفس|يتنفس|साँस|सांस"
+    r"|pumzi|kupumua|anapumua|pumua)",
     re.I,
 )
 #: «por minuto», que es lo que convierte un número suelto en una frecuencia. Con el conector,
 #: porque un padre no siempre dice «por»: cuenta «55 EN UN minuto», «58 IN A minute», «60 EM UM
 #: minuto». Sin esa forma, la manera más natural de contarlo se quedaba fuera.
 _POR_MINUTO = re.compile(
-    r"(por|per|par|pro|in a|in einer|en un[ae]?|em um|num|a|в|في|प्रति|एक)\s*"
-    r"(minuto|minute|min\.?|minuten|минуту|мин|دقيقة|الدقيقة|मिनट)",
+    r"(por|per|par|pro|in a|in einer|en un[ae]?|em um|num|kwa|a|в|في|प्रति|एक)\s*"
+    r"(minuto|minute|min\.?|minuten|минуту|мин|دقيقة|الدقيقة|मिनट|dakika)",
     re.I,
 )
 _CIFRA_RESPIRA = re.compile(r"(?<![\d,.])(\d{2,3})(?![\d,.])")

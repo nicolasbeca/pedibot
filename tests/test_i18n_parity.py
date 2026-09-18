@@ -141,7 +141,23 @@ def test_the_tool_strings_carry_the_same_keys() -> None:
 
     shapes = {lang: set(table) for lang, table in STRINGS.items()}
     assert len(set(map(frozenset, shapes.values()))) == 1, shapes
-    assert set(STRINGS) == set(langs()), f"idiomas del motor {set(STRINGS)} vs web {set(langs())}"
+    # 18-sep-2026: hasta hoy el motor y la web hablaban exactamente los mismos idiomas. Con el
+    # suajili aparece una tercera categoría a propósito: una lengua que la CAPA DE SEGURIDAD lee
+    # y escribe —las 83 reglas del triaje y los tres avisos— pero que todavía no tiene web ni
+    # corpus que citar. La regla que sujeta eso no es «los dos conjuntos son iguales» sino «lo
+    # que el motor tiene de más es exactamente la lista de lenguas de triaje, y nada más»: así
+    # un bloque olvidado sigue saltando aquí, pero una decisión escrita no tiene que pelearse
+    # con el candado.
+    from pedibot.bot.answer import SUPPORTED_LANGS, TRIAGE_LANGS
+
+    assert set(langs()) == set(SUPPORTED_LANGS), (
+        f"la web habla {set(langs())} y el motor contesta en {set(SUPPORTED_LANGS)}"
+    )
+    de_mas = set(STRINGS) - set(langs())
+    assert de_mas == set(TRIAGE_LANGS) - set(SUPPORTED_LANGS), (
+        f"el motor trae cadenas en {de_mas} y las lenguas de sólo-triaje son "
+        f"{set(TRIAGE_LANGS) - set(SUPPORTED_LANGS)}"
+    )
     warn = {lang: set(table["dose_warn"]) for lang, table in STRINGS.items()}
     assert len(set(map(frozenset, warn.values()))) == 1, warn
 

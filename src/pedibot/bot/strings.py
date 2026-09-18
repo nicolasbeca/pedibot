@@ -317,6 +317,48 @@ STRINGS: dict[str, Table] = {
         "photo_clear": "तस्वीर में मुझे वे तीनों चेतावनी के निशान नहीं दिख रहे जो मैं जाँचता हूँ (दबाने पर न मिटने वाले दाने, नीलापन, होंठों की सूजन)। इसका मतलब यह नहीं कि मुझे पता है यह क्या है: तस्वीर जाँच की जगह नहीं लेती। दाने फैलें, तेज़ बुखार हो, या बच्चा सुस्त लगे, तो आज ही डॉक्टर को दिखाएँ।",
         "photo_unsure": "इस तस्वीर से मैं पक्का नहीं कह सकता। अगर गिलास से दबाने पर दाने न मिटें, या होंठ सूजे हों या नीलापन हो, तो इमरजेंसी जाएँ; वरना आज ही डॉक्टर को दिखाएँ।",
     },
+    # ── Kiswahili (18-sep-2026, fase 3 de África) ─────────────────────────────────
+    # Lo que el motor escribe por su cuenta: la dosis, la rehidratación, la foto y los
+    # avisos. Son las que llevan cifras dentro, así que no las escribe el modelo.
+    # «ORS» se deja en sigla porque es lo que está impreso en el sobre que compra la
+    # madre en Kenia y en Tanzania.
+    "sw": {
+        "ors_under_1_month": "Mtoto chini ya mwezi mmoja anayetapika au kuharisha lazima aonwe na daktari leo; usimpe maji ya ORS bila ushauri wa daktari.",
+        "ors_under_2y": "Chini ya miaka miwili: mwone daktari wa watoto kama kutapika au kuharisha kumezidi saa ishirini na nne, au kama mtoto anakataa kunywa.",
+        "ors_after_vomit": "Baada ya kutapika, mpe maji ya ORS kidogo sana: mililita 5 hadi 10 (kijiko kimoja au viwili, kwa kijiko au sindano bila sindano) kila dakika kumi, ukiongeza pole pole kama hatapiki tena.",
+        "ors_infant": "Mtoto zaidi ya mwezi mmoja mwenye kuharisha: takriban mara moja hadi mara moja na nusu ya kiasi anachokunywa kawaida, kidogo kidogo na pole pole; kunyonyesha hakuhitaji kusimama.",
+        "ors_child": "Mtoto wa mwaka mmoja au zaidi: takriban mililita 200 za ORS kwa kila choo cha maji, kwa mililita 25 hadi 30 kila dakika 10 hadi 15.",
+        "ors_sachet": "Changanya paketi kama ilivyoandikwa (paketi moja kwa kiasi cha maji kilichotajwa); usiiongezee wala kuipunguza. Usitumie vinywaji vya michezo, soda wala juisi.",
+        "ors_go_er": "Nenda hospitali kama hawezi kubakiza chochote tumboni, akikojoa kidogo sana, macho yakibonyea, akilala kupita kiasi au kukiwa na damu kwenye kinyesi.",
+        "dose_for": "{name} kwa kilo {kg:g}:",
+        "dose_refer": "⚠️ Usimpe bila ushauri wa daktari: ",
+        "dose_line": "• Kipimo: miligramu {mg:g} kila saa {h0}–{h1} (isizidi dozi {max_doses} kwa siku).",
+        "dose_band": "Mwongozo unaruhusu miligramu {mg_min:g}–{mg_max:g}; hiki ndicho kipimo cha kawaida cha homa.",
+        "dose_source": "Chanzo: {source}.",
+        "dose_check": "Angalia daima kiwango kilichoandikwa kwenye chupa. Chini ya miezi mitatu, muulize daktari kabla ya kumpa chochote.",
+        "dose_warn": {
+            "under_3_months_refer": "ana chini ya miezi mitatu",
+            "below_min_age": "umri wake ni chini ya unaoruhusiwa kwa dawa hii",
+            "below_min_weight": "uzito wake ni chini ya unaoruhusiwa kwa dawa hii",
+            "capped_single_dose": "kipimo kimepunguzwa hadi kiwango cha juu kinachoruhusiwa kwa dozi",
+            "age_unknown": "umri haukutajwa, na dawa hii si ya watoto chini ya miezi mitatu wala chini ya kilo 5",
+        },
+        "vax_source": "Chanzo: ",
+        "vax_due": "Katika umri huu ratiba rasmi inaonyesha:",
+        "vax_none": "Hakuna chanjo iliyopangwa kwa umri huu hasa katika ratiba rasmi.",
+        "vax_next": "Ifuatayo: {label} — ",
+        "photo_poor": "Siwezi kutathmini picha hii (ni giza, haiko wazi, au si ngozi). Kama una shaka, mwone daktari wa watoto leo; akiwa na shida ya kupumua, madoa yasiyopotea yakibonyezwa, au midomo iliyovimba, nenda hospitali.",
+        "photo_emergency": "Naona dalili ya hatari inayowezekana ({sign}). Kwa mujibu wa SEUP, hii inahitaji huduma ya haraka: piga simu {number} au nenda hospitali sasa, hasa kama kupumua ni kugumu.",
+        "banner_emergency_no_number": "🚨 Nenda sasa hivi hospitali au kituo cha afya kilicho karibu. Nchini kwako hakuna namba ya taifa ya dharura ya kupiga.",
+        "banner_mental_no_number": "💛 Hili ni jambo muhimu na hauko peke yako. Kama mtoto tayari amejidhuru, nenda sasa hospitali au kituo cha afya kilicho karibu.",
+        "photo_emergency_no_number": "Naona dalili ya hatari inayowezekana ({sign}). Kwa mujibu wa SEUP, hii inahitaji huduma ya haraka: nenda sasa hospitali au kituo cha afya kilicho karibu, hasa kama kupumua ni kugumu.",
+        "photo_sign_cyanosis": "midomo au ngozi ya bluu au kijivu",
+        "photo_sign_swelling": "midomo au kope zilizovimba",
+        "photo_sign_petechiae": "madoa kwenye ngozi",
+        "photo_petechiae": "Naona madoa ambayo yanaweza yasipotee yakibonyezwa. Fanya jaribio la glasi: bonyeza glasi safi juu ya madoa; kama yanaendelea kuonekana kupitia glasi, kwa mujibu wa SEUP unapaswa kwenda hospitali leo, bila kusubiri. Siwezi kukuambia yanasababishwa na nini.",
+        "photo_clear": "Sioni yoyote kati ya dalili tatu za hatari ninazoangalia (madoa yasiyopotea, rangi ya bluu, midomo iliyovimba). Hilo halikuambii ni nini — picha haiwezi kuchukua nafasi ya kumchunguza mtoto. Kama upele unaenea, kuna homa kali, au mtoto haonekani mzima, mwone daktari wa watoto leo.",
+        "photo_unsure": "Siwezi kujua kutokana na picha hii. Kama madoa hayapotei yakibonyezwa kwa glasi, au midomo imevimba au kuna rangi ya bluu, nenda hospitali; vinginevyo mwone daktari wa watoto leo.",
+    },
 }
 
 
@@ -329,6 +371,10 @@ LANGUAGE_NAME = {
     "ar": "Arabic",
     "pt": "Brazilian Portuguese",
     "hi": "Hindi",
+    # 18-sep-2026: el suajili sabe leerse y avisarse, aunque la respuesta larga todavía salga en
+    # inglés por no haber corpus. El nombre va aquí igual, para que el día que suba no dependa de
+    # que alguien se acuerde de escribirlo.
+    "sw": "Swahili",
 }
 """What the model is told to write in. Kept here, in one place, because this exact mapping was
 written inline twice — in the answer prompt and in the article prompt — and both times a new

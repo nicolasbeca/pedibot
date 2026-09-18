@@ -539,6 +539,90 @@ def detect_lang(text: str) -> str:
         " behosh",
         " nahi le raha",
     ]
+    sw_markers = [
+        " mtoto",
+        " mwanangu",
+        " wangu",
+        " ana ",
+        " hana ",
+        " hawezi",
+        " kwa ",
+        " homa",
+        " anatapika",
+        " kutapika",
+        " kuhara",
+        " kuharisha",
+        " degedege",
+        " mchanga",
+        " kunyonya",
+        " hanyonyi",
+        " nini",
+        " jana",
+        " usiku",
+        "yake",
+        " viganja",
+        " kiganja",
+        "vimepauka",
+        " inaweza",
+        " surua",
+        " vidonda",
+        " mwenye",
+        " kila ",
+        " tena",
+        " mtu ",
+        " mgongo",
+        " utosi",
+        "imevimba",
+        "umevimba",
+        "amevimba",
+        " puani",
+        " kooni",
+        " amekwama",
+        " ameingiza",
+        " amepigwa",
+        " amezimia",
+        " amevuta",
+        " moshi",
+        " jikoni",
+        " kitu ",
+        " shanga",
+        " tangu",
+        " daktari",
+        " dawa",
+        " kichwa",
+        " tumbo",
+        " miguu",
+        " mikono",
+        " macho",
+        " damu",
+        " analia",
+        " anakula",
+        " maji",
+        " amekuwa",
+        " nifanye",
+        " ninafanya",
+        " mgonjwa",
+        " chanjo",
+        " upele",
+        " mwili",
+        " siku ",
+        " miezi ",
+        " mwezi ",
+        " mwaka ",
+        " hospitali",
+        " amepauka",
+        " amelala",
+        " anapumua",
+        " hapumui",
+        " kinyesi",
+        " mkojo",
+        " sikio",
+        " shingo",
+        " jeraha",
+        " ameanguka",
+        " ameumwa",
+        " kunywa",
+    ]
     es = sum(m in low for m in es_markers) + sum(ch in "ñ¿¡" for ch in text.lower())
     en = sum(m in low for m in en_markers)
     # French shares most accents with Spanish, so only the ones Spanish never uses count. NOT ç:
@@ -551,11 +635,24 @@ def detect_lang(text: str) -> str:
     pt = sum(m in low for m in pt_markers) + sum(ch in "ãõ" for ch in text.lower())
     # Latin-script Hindi only; anything in Devanagari was decided by script above
     hi = sum(m in low for m in hi_markers)
-    best = max(es, en, fr, de, pt, hi)
+    # Kiswahili (18-sep-2026, fase 3 de África). Entra aquí porque ya tiene sus patrones de
+    # triaje en las 83 reglas, que es la condición que esta función lleva escrita desde que
+    # existe: adivinar el idioma de un mensaje que la capa de seguridad no sabe leer es peor
+    # que quedarse en inglés.
+    #
+    # Se quedan fuera a propósito tres marcas que serían buenas y no lo son: «je» es el
+    # interrogativo suajili y también el pronombre francés; «sana» es «mucho» y en castellano
+    # es el verbo de «la herida sana»; y «leo» es «hoy» y en castellano es «yo leo».
+    sw = sum(m in low for m in sw_markers)
+    best = max(es, en, fr, de, pt, hi, sw)
     if best == 0:
         return "en"
     # Portuguese first among the Latin ones when it wins outright: its markers are disjoint
     # from Spanish's, so a tie means the text is not really Portuguese and Spanish should win.
+    # el suajili primero cuando gana: sus marcas no se parecen a las de ninguna otra de las
+    # nueve, así que si gana es que el mensaje está en suajili y no hay empate que deshacer
+    if sw == best and sw > es and sw > en:
+        return "sw"
     if hi == best and hi > es and hi > en:
         return "hi"
     if pt == best and pt > es:

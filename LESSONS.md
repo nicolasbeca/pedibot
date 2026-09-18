@@ -486,3 +486,32 @@ de recibir su aviso — y eso no se ve en ninguna pantalla.
 ahora lo comprueba una prueba. Misma familia que L164 y que el `\b` que no existe en devanagari:
 el código da por hecha la forma de una lengua que no es la suya, no falla, y sólo deja de
 encontrar.
+
+## L183 · Una lengua entra por la capa de seguridad, no por la web (18-sep-2026)
+Fase 3 de África: el suajili, que hablan más de doscientos millones de personas en Kenia,
+Tanzania, Uganda y el este del Congo. La pregunta no era «¿lo traducimos?» sino **por dónde
+empieza una lengua nueva**, y la respuesta ya estaba escrita en el propio detector de idioma
+desde que existe:
+
+> «A language only joins here once it has its own triage patterns: guessing the language of a
+> message the safety layer cannot read is worse than defaulting to English.»
+
+Así que primero las 83 reglas del triaje, después el detector, y sólo entonces lo demás. Medido
+antes: de diez frases de urgencia en suajili, **cero** disparaban nada.
+
+Y al llegar arriba apareció la decisión de verdad. Poner el suajili en `SUPPORTED_LANGS` hizo
+saltar **45 candados**: la web en suajili, las guías en suajili, el golden, los nombres de los
+fármacos, las preguntas de arranque. El proyecto estaba diciendo, correctamente, lo que cuesta
+una lengua completa. Pero el corpus no tiene **ni un documento en suajili** con licencia abierta,
+así que una respuesta «completa» en suajili habría sido una respuesta sin fuentes que citar, que
+es justo lo que este proyecto no hace (L147, L167).
+
+La salida no fue ni traducirlo todo ni dejarlo fuera, sino **partir el idioma en dos**: el del
+aviso y el de la respuesta. El triaje lee suajili y el aviso rojo se escribe en suajili —que es
+la parte que dice qué hacer y la que no puede llegar tarde—, y la explicación larga sale en
+inglés, con fuentes que el lector puede abrir, hasta que haya material que citar.
+
+**La regla**: cuando una lengua nueva no cabe entera, lo que entra primero es lo que salva vidas
+y lo que se queda fuera se escribe en el código con su motivo. Y el candado que se interponga no
+se silencia: se le enseña la categoría nueva, para que siga cazando al que se olvide de un bloque
+sin pelearse con una decisión tomada a propósito.

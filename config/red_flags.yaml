@@ -11,6 +11,11 @@ rules:
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "hajitambui"
+  - "hajibu (anapo|akiitwa|kabisa)"
+  - "amepoteza fahamu"
+  - "hana fahamu"
   # 17-sep-2026: «lleva media hora sin responder» salía RUTINA. La negación vuelve a ser la
   # señal —«sin responder»— y encima con el tiempo delante, que es como se cuenta.
   - (lleva|llevamos)[^.]{0,25}(sin (responder|reaccionar|despertarse|abrir los ojos))
@@ -144,6 +149,7 @@ rules:
   reason_ar: لا يستجيب
   reason_pt: "Não responde a estímulos"
   reason_hi: "जवाब नहीं दे रहा"
+  reason_sw: "Hajibu anapoguswa au kuitwa"
 - id: seizure
   level: emergency
   source: seup_acudir_urgencias
@@ -151,6 +157,11 @@ rules:
   reason_en: Abnormal movements / seizure
   reason_fr: Mouvements anormaux / convulsion
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "degedege"
+  - "anatetemeka (mwili|sana)"
+  - "kifafa"
+  - "mwili unatetemeka"
   # 17-sep-2026: «having a fit» en inglés y «припадок» en ruso, que son las dos palabras
   # corrientes para una convulsión.
   - (having|had|has)[^.]{0,15}a fit\b
@@ -217,6 +228,7 @@ rules:
   reason_ar: حركات غير طبيعية / تشنجات
   reason_pt: "Movimentos anormais / convulsão"
   reason_hi: "असामान्य हरकतें / दौरा"
+  reason_sw: "Degedege au mitetemeko isiyo ya kawaida"
 - id: severe_breathing
   level: emergency
   source: seup_acudir_urgencias
@@ -224,6 +236,11 @@ rules:
   reason_en: Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)
   reason_fr: Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "hapumui (vizuri|kabisa)"
+  - "anapumua kwa (shida|tabu) (sana|kubwa)"
+  - "mbavu zin(a|ai)ingia ndani"
+  - "anashindwa kupumua"
   # 17-sep-2026, segundo intento. Pedir «al respirar» dejaba fuera la forma normal de
   # contarlo —«no tiene fiebre pero se le marcan las costillas»— y lo cazó una prueba vieja.
   # Ahora el patrón es amplio otra vez y lo que se excluye es la DELGADEZ, que es la
@@ -465,6 +482,7 @@ rules:
   reason_ar: صعوبة شديدة في التنفس (انسحاب الأضلاع، تنفس سريع جدا، انقطاع النفس، ازرقاق)
   reason_pt: "Dificuldade grave para respirar (costelas aparecem, respira muito rápido, pausas na respiração, coloração arroxeada)"
   reason_hi: "साँस लेने में गंभीर दिक्कत (पसलियाँ दिखना, बहुत तेज़ साँस, साँस रुकना, नीलापन)"
+  reason_sw: "Shida kubwa ya kupumua (mbavu zinaingia ndani, kupumua haraka sana, kubadilika rangi)"
 - id: anaphylaxis
   level: emergency
   source: seup_anafilaxia
@@ -472,6 +490,10 @@ rules:
   reason_en: Suspected severe allergic reaction (swollen lips/eyelids with breathing difficulty, vomiting or dizziness)
   reason_fr: Suspicion de réaction allergique grave (gonflement des lèvres/paupières avec difficulté à respirer, vomissements ou malaise)
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(midomo|kope|uso) (ime|zime)vimba"
+  - "mzio (mkali|mkubwa)"
+  - "amevimba uso na hapumui"
   # 17-sep-2026: «reacción alérgica» dicha por su nombre, con la cara hinchada.
   - allergic reaction[^.]{0,60}(swollen|swelling|can'?t breathe|struggling to breathe)
   - (رد فعل تحسسي|حساسية شديدة)[^.]{0,60}(منتفخ|تورم|صعوبة|يتنفس بصعوبة)
@@ -586,6 +608,7 @@ rules:
   reason_ar: اشتباه بتفاعل تحسسي شديد (تورم الشفتين أو الجفون مع صعوبة تنفس أو قيء أو دوخة)
   reason_pt: "Suspeita de reação alérgica grave (inchaço de lábios ou pálpebras com dificuldade para respirar, vômitos ou tontura)"
   reason_hi: "गंभीर एलर्जी का शक (होंठ या पलकों की सूजन के साथ साँस की दिक्कत, उल्टी या चक्कर)"
+  reason_sw: "Mzio mkali: midomo au kope kuvimba pamoja na shida ya kupumua"
 - id: choking
   level: emergency
   source: seup_acudir_urgencias
@@ -593,6 +616,10 @@ rules:
   reason_en: Choking with breathing difficulty
   reason_fr: Étouffement avec difficulté à respirer
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amekwama (kitu|chakula) kooni"
+  - "anasongwa"
+  - "kitu kimekwama kooni"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -651,6 +678,7 @@ rules:
   reason_ar: اختناق مع صعوبة في التنفس
   reason_pt: "Engasgo com dificuldade para respirar"
   reason_hi: "गला घुटना, साँस लेने में दिक्कत"
+  reason_sw: "Amekwama kitu kooni na anashindwa kupumua"
 - id: mottled_skin
   level: emergency
   source: seup_acudir_urgencias
@@ -658,6 +686,10 @@ rules:
   reason_en: Poor colour (extreme pallor, mottled, blue or greyish skin)
   reason_fr: Mauvaise coloration (pâleur extrême, peau marbrée, bleue ou grise)
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ngozi (yake )?(ina madoa|imebadilika rangi)"
+  - "amepauka sana"
+  - "ngozi ya bluu"
   # 17-sep-2026: los labios que SE PONEN azules —con verbo, que es como se cuenta— sólo
   # se reconocían en dos lenguas; estaba el adjetivo suelto.
   - (labios|boca|u[ñn]as)[^.]{0,25}(se (le )?han puesto|se (le )?pusieron|est[aá]n)[^.]{0,15}(morad|azul|violet|p[áa]lid)
@@ -718,6 +750,7 @@ rules:
   reason_ar: لون بشرة غير طبيعي (شحوب شديد، تبقع، ازرقاق أو لون رمادي)
   reason_pt: "Coloração ruim (palidez extrema, pele mosqueada, azulada ou acinzentada)"
   reason_hi: "त्वचा का रंग बिगड़ना (बहुत पीला, चितकबरा, नीला या भूरा)"
+  reason_sw: "Rangi ya ngozi si ya kawaida: amepauka sana, ngozi ina madoa au ni ya bluu"
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce
@@ -725,6 +758,9 @@ rules:
   reason_en: Head injury with loss of consciousness
   reason_fr: Coup à la tête avec perte de connaissance
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amegonga kichwa[^.]{0,30}(amezimia|kupoteza fahamu)"
+  - "amezimia baada ya kugonga kichwa"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -783,6 +819,7 @@ rules:
   reason_ar: إصابة في الرأس مع فقدان الوعي
   reason_pt: "Batida na cabeça com perda de consciência"
   reason_hi: "सिर पर चोट और बेहोशी"
+  reason_sw: "Amegongwa kichwa na kupoteza fahamu"
 - id: severe_bleeding
   level: emergency
   source: seup_acudir_urgencias
@@ -790,6 +827,9 @@ rules:
   reason_en: Deep wound with heavy bleeding that does not stop after 10 minutes of pressure
   reason_fr: Plaie profonde qui saigne abondamment malgré 10 minutes de compression
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "damu (haikomi|inatoka nyingi)"
+  - "jeraha linatoka damu nyingi"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -863,6 +903,7 @@ rules:
   reason_ar: جرح عميق مع نزيف غزير لا يتوقف بعد 10 دقائق من الضغط
   reason_pt: "Ferimento profundo com sangramento abundante que não para após 10 minutos de pressão"
   reason_hi: "गहरा घाव, बहुत खून, दस मिनट दबाने पर भी न रुके"
+  reason_sw: "Jeraha kubwa linalotoka damu nyingi isiyokoma"
 - id: open_fracture
   level: emergency
   source: seup_acudir_urgencias
@@ -870,6 +911,9 @@ rules:
   reason_en: Open fracture (bone is visible)
   reason_fr: Fracture ouverte (l'os est visible)
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "mfupa (umetoka nje|unaonekana)"
+  - "mfupa umevunjika na unaonekana"
   # 17-sep-2026: al escribir «se ve el hueso» en alemán y portugués, el hindi se quedó con
   # dos patrones contra veintiuno latinos. La misma señal, dicha en hindi.
   - (हड्डी|हड्डियाँ)[^.]{0,25}(बाहर|दिख|निकल|नज़र आ)
@@ -910,6 +954,7 @@ rules:
   reason_ar: كسر مفتوح (العظم ظاهر)
   reason_pt: "Fratura exposta (o osso aparece)"
   reason_hi: "खुला फ़्रैक्चर (हड्डी दिख रही है)"
+  reason_sw: "Mfupa umevunjika na unaonekana nje"
 - id: petechiae_fever
   level: emergency
   source: seup_fiebre
@@ -917,6 +962,9 @@ rules:
   reason_en: Spots on the skin that do not fade when pressed (possible sepsis/meningitis)
   reason_fr: Taches sur la peau qui ne s'effacent pas à la pression (possible sepsis/méningite)
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "madoa (hayapotei|hayaondoki) (nikibonyeza|yakibonyezwa)"
+  - "madoa mekundu hayapotei"
   # 17-sep-2026: «taches qui ne s'effacent pas» y «दाने जो नहीं मिटते» — la prueba del
   # vaso dicha con otro verbo.
   - (taches|boutons|points|p[ée]t[ée]chies)[^.]{0,30}(ne )?s'effacent pas
@@ -993,6 +1041,7 @@ rules:
   reason_ar: بقع على الجلد لا تختفي عند الضغط (احتمال إنتان أو التهاب سحايا)
   reason_pt: "Manchas na pele que não somem ao pressionar (possível sepse ou meningite)"
   reason_hi: "दबाने पर न मिटने वाले दाने (सेप्सिस या मेनिन्जाइटिस का शक)"
+  reason_sw: "Madoa ya ngozi yasiyopotea yakibonyezwa: inaweza kuwa homa ya uti wa mgongo"
 - id: infant_fever_under_3_months
   level: urgent
   source: seup_acudir_urgencias
@@ -1004,6 +1053,9 @@ rules:
   - fever
   reason_de: Säugling unter 3 Monaten mit Fieber (≥ 38 °C)
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "mtoto (mchanga|wa miezi (miwili|mmoja))[^.]{0,30}ana homa"
+  - "mchanga ana homa"
   - baby.{0,30}fieber
   - ([1-9]|1[0-2]) semanas.{0,60}(fiebre|d[ée]cimas|calent|temperatura)
   - (reci[eé]n nacido|beb[eé] de [1-2] meses?|lactante).{0,50}(fiebre|calent|temperatura)
@@ -1035,6 +1087,7 @@ rules:
   reason_ar: رضيع أقل من 3 أشهر لديه حمى (‏≥ 38 °م)
   reason_pt: "Bebê com menos de 3 meses com febre (≥38 °C)"
   reason_hi: "तीन महीने से छोटे शिशु को बुखार (38 °C या ज़्यादा)"
+  reason_sw: "Mtoto chini ya miezi mitatu mwenye homa"
 - id: very_high_fever
   level: urgent
   source: seup_acudir_urgencias
@@ -1042,6 +1095,9 @@ rules:
   reason_en: Fever above 40.5 °C (105 °F)
   reason_fr: Fièvre au-dessus de 40,5 °C
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "homa (kali sana|imezidi sana)"
+  - "joto limepanda sana"
   # 17-sep-2026: TODOS los patrones pedían el símbolo o la palabra «grados», y un padre
   # escribe «tiene 41 de fiebre» a secas. Medido: la regla fallaba en SEIS idiomas de ocho,
   # incluidos el castellano y el inglés. Aquí el número va suelto pero pegado a la palabra
@@ -1090,6 +1146,7 @@ rules:
   reason_ar: حرارة أعلى من 40٫5 °م
   reason_pt: "Febre acima de 40,5 °C"
   reason_hi: "40,5 °C से ज़्यादा बुखार"
+  reason_sw: "Homa iliyozidi sana"
 - id: moderate_breathing
   level: urgent
   source: seup_acudir_urgencias
@@ -1097,6 +1154,10 @@ rules:
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "anapumua (haraka|kwa shida)(?![^.]{0,60}(cuando (corre|juega|salta)|al (correr|jugar)|akikimbia|akicheza|when (he|she) runs|while running|quand il court|en courant|beim (laufen|spielen)|когда бегает|عندما يجري|दौड़)[^.]{0,40}(pero|se le pasa|luego|lakini|inaisha|but|then|mais|aber|но|لكن|फिर))"
+  - "kupumua kwa shida"
+  - "anakoroma kifuani"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -1119,7 +1180,7 @@ rules:
   # 17-sep-2026: respirar deprisa «desde hace un rato», en alemán y portugués.
   - atmet[^.]{0,25}(schnell|rasch|schneller)
   - (schnelle\w*|rasche\w*) atmung
-  - respira[^.]{0,20}(depressa|r[áa]pido|acelerado)
+  - respira[^.]{0,20}(depressa|r[áa]pido|acelerado)(?![^.]{0,60}(cuando (corre|juega|salta)|al (correr|jugar)|akikimbia|akicheza|when (he|she) runs|while running|quand il court|en courant|beim (laufen|spielen)|когда бегает|عندما يجري|दौड़)[^.]{0,40}(pero|se le pasa|luego|lakini|inaisha|but|then|mais|aber|но|لكن|फिर))
   # 17-sep-2026: las sibilancias dichas como las dice un padre —«le silba el pecho»,
   # «pfeift beim atmen», «tem pieira»— no estaban en cuatro idiomas.
   - (silba|silbid\w*|pit\w*)[^.]{0,25}(pecho|al respirar|cuando respira)
@@ -1128,7 +1189,7 @@ rules:
   - (صدره|صدرها)[^.]{0,20}(يصفر|تصفر|صفير)
   - صفير[^.]{0,25}(الصدر|التنفس)
   - (pieira|chiado|chia)[^.]{0,25}(no peito|quando respira|ao respirar)?
-  - respira (r[aá]pido|muy r[aá]pido|agitad)
+  - respira (r[aá]pido|muy r[aá]pido|agitad)(?![^.]{0,60}(cuando (corre|juega|salta)|al (correr|jugar)|akikimbia|akicheza|when (he|she) runs|while running|quand il court|en courant|beim (laufen|spielen)|когда бегает|عندما يجري|दौड़)[^.]{0,40}(pero|se le pasa|luego|lakini|inaisha|but|then|mais|aber|но|لكن|फिर))
   - respiraci[oó]n m[aá]s r[aá]pida de lo normal
   - pitos? al respirar
   - respira con pitos
@@ -1141,7 +1202,7 @@ rules:
   - breathes faster than (normal|usual)
   - wheez
   - whistling
-  - respire (vite|tr[eè]s vite|rapidement)
+  - respire (vite|tr[eè]s vite|rapidement)(?![^.]{0,60}(cuando (corre|juega|salta)|al (correr|jugar)|akikimbia|akicheza|when (he|she) runs|while running|quand il court|en courant|beim (laufen|spielen)|когда бегает|عندما يجري|दौड़)[^.]{0,40}(pero|se le pasa|luego|lakini|inaisha|but|then|mais|aber|но|لكن|फिर))
   - respiration sifflante
   - respiration rapide
   - siffle (en respirant)?
@@ -1188,6 +1249,7 @@ rules:
   reason_ar: 'صعوبة في التنفس: تنفس سريع، أزيز، انسحاب الأضلاع'
   reason_pt: "Dificuldade para respirar: respira rápido, chiado no peito, costelas aparecem"
   reason_hi: "साँस की दिक्कत: तेज़ साँस, सीटी जैसी आवाज़, पसलियाँ दिखना"
+  reason_sw: "Shida ya kupumua: kupumua haraka, kukoroma kifuani, mbavu kuingia ndani"
 - id: drowsy_irritable
   level: urgent
   source: seup_acudir_urgencias
@@ -1195,6 +1257,11 @@ rules:
   reason_en: Excessive irritability or drowsiness
   reason_fr: Irritabilité ou somnolence excessives
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amelala (sana|kupita kiasi)"
+  - "hataki kuamka"
+  - "analia bila kutulia"
+  - "hana nguvu kabisa"
   # 17-sep-2026: lo que un padre ve de verdad es que el niño DEJA de hacer cosas —no juega,
   # no sonríe, no le mira, está apagado— y la regla sólo conocía «somnoliento» e
   # «irritable», que son palabras de libro. La guía del Niño Jesús pone «adormilado,
@@ -1322,6 +1389,7 @@ rules:
   reason_ar: هياج أو نعاس شديد
   reason_pt: "Irritabilidade ou sonolência excessivas"
   reason_hi: "बहुत ज़्यादा सुस्ती या चिड़चिड़ापन"
+  reason_sw: "Amelala kupita kiasi au analia bila kutulia"
 - id: dehydration
   level: urgent
   source: seup_gastroenteritis
@@ -1329,6 +1397,11 @@ rules:
   reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
   reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "macho yamebonyea"
+  - "mkojo (kidogo|haupo)"
+  - "mdomo (mkavu|umekauka)"
+  - "hakojoi"
   # 17-sep-2026: «no bebe nada desde ayer» salía RUTINA en seis lenguas —funcionaba en
   # ruso y árabe y en ninguna más—, porque la negación es la señal y el guardián la comía.
   # Se exige totalidad o tiempo: «no bebe suficiente agua» no es esto.
@@ -1474,6 +1547,7 @@ rules:
   reason_ar: 'علامات جفاف: عيون غائرة، بول قليل، جفاف الفم، قيء مستمر أو إسهال شديد أكثر من 24 ساعة'
   reason_pt: "Sinais de desidratação: olhos fundos, urina pouco, boca seca, vômitos persistentes ou diarreia abundante por mais de 24 h"
   reason_hi: "पानी की कमी के लक्षण: आँखें धँसी, कम पेशाब, सूखा मुँह, लगातार उल्टी या 24 घंटे से ज़्यादा दस्त"
+  reason_sw: "Dalili za upungufu wa maji: macho kubonyea, mkojo kidogo, mdomo mkavu"
 - id: vomiting_headache
   level: urgent
   source: seup_acudir_urgencias
@@ -1481,6 +1555,9 @@ rules:
   reason_en: Repeated vomiting with severe headache
   reason_fr: Vomissements répétés avec fort mal de tête
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "anatapika[^.]{0,40}kichwa kinauma (sana|mno)"
+  - "kichwa kinauma sana na anatapika"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -1531,6 +1608,7 @@ rules:
   reason_ar: قيء متكرر مع صداع شديد
   reason_pt: "Vômitos repetidos com dor de cabeça forte"
   reason_hi: "बार-बार उल्टी और तेज़ सिरदर्द"
+  reason_sw: "Kutapika mara kwa mara pamoja na maumivu makali ya kichwa"
 - id: vomiting_after_head_injury
   level: urgent
   source: seup_tce
@@ -1538,6 +1616,9 @@ rules:
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amegonga kichwa[^.]{0,40}(anatapika|ametapika)"
+  - "ametapika baada ya kugonga kichwa"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -1593,6 +1674,7 @@ rules:
   reason_ar: قيء بعد إصابة في الرأس
   reason_pt: "Vômitos depois de uma batida na cabeça"
   reason_hi: "सिर पर चोट के बाद उल्टी"
+  reason_sw: "Kutapika baada ya kugonga kichwa"
 - id: button_battery
   level: emergency
   source: seup_acudir_urgencias
@@ -1604,7 +1686,11 @@ rules:
   reason_ar: ابتلع بطارية قرصية — تحرق المريء خلال ساعات، إلى الطوارئ فورًا
   reason_pt: Pilha de botão engolida — queima o esôfago em horas, pronto-socorro já
   reason_hi: बटन सेल निगल ली — यह घंटों में भोजन-नली जला देती है, तुरंत अस्पताल
+  reason_sw: "Amemeza betri ya kitufe: inaunguza umio ndani ya masaa machache, nenda sasa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amemeza betri"
+  - "betri (ndogo|ya saa|ya kitufe)"
   # 17-sep-2026: la pila SIN decir «de botón»: la del mando, la del reloj. Es la misma
   # pila y el mismo agujero en el esófago.
   - (batterie|knopfzelle)[^.]{0,25}(der |vom |aus (der|dem) )?(fernbedienung|uhr|waage|fernseher)[^.]{0,25}(verschluckt|geschluckt)
@@ -1638,6 +1724,9 @@ rules:
   reason_en: Swallowed an object (especially batteries or magnets)
   reason_fr: Ingestion d'un objet (surtout piles ou aimants)
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amemeza (sarafu|sumaku|kitu|kifungo)"
+  - "kameza kitu"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -1685,6 +1774,7 @@ rules:
   reason_ar: ابتلع جسما غريبا (خاصة بطارية أو مغناطيس)
   reason_pt: "Ingestão de um objeto (principalmente pilhas ou ímãs)"
   reason_hi: "कोई चीज़ निगल लेना (ख़ासकर बैटरी या चुंबक)"
+  reason_sw: "Amemeza kitu kigeni, hasa betri au sumaku"
 - id: poisoning
   level: urgent
   source: seup_intoxicaciones
@@ -1692,6 +1782,10 @@ rules:
   reason_en: Ingestion of toxic products or medication overdose
   reason_fr: Ingestion de produits toxiques ou surdose de médicaments
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amekunywa (sumu|dawa nyingi|kemikali)"
+  - "amemeza sumu"
+  - "amekunywa mafuta ya taa"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -1794,6 +1888,7 @@ rules:
   reason_ar: تناول مواد سامة أو جرعة زائدة من دواء
   reason_pt: "Ingestão de produtos tóxicos ou dose excessiva de medicamentos"
   reason_hi: "ज़हरीली चीज़ या ज़्यादा दवा खा लेना"
+  reason_sw: "Amekunywa sumu au dawa nyingi kupita kiasi"
 - id: severe_abdominal_pain
   level: urgent
   source: seup_dolor_abdominal
@@ -1801,6 +1896,9 @@ rules:
   reason_en: Severe, continuous, worsening abdominal pain
   reason_fr: Mal de ventre fort, continu, qui empire
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "tumbo linauma (sana|mno)"
+  - "maumivu makali ya tumbo"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -1886,6 +1984,7 @@ rules:
   reason_ar: ألم بطن شديد ومستمر ويزداد
   reason_pt: "Dor de barriga forte, contínua, que piora"
   reason_hi: "पेट में तेज़, लगातार, बढ़ता दर्द"
+  reason_sw: "Maumivu makali ya tumbo yanayoendelea au kuzidi"
 - id: deformity_fracture
   level: urgent
   source: seup_acudir_urgencias
@@ -1893,6 +1992,9 @@ rules:
   reason_en: Injury with visible deformity / wound that needs stitches
   reason_fr: Traumatisme avec déformation visible / plaie qui nécessite des points
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(mkono|mguu) (umepinda|umevunjika)"
+  - "jeraha linahitaji kushonwa"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -1951,6 +2053,7 @@ rules:
   reason_ar: إصابة مع تشوه واضح / جرح يحتاج غرزا
   reason_pt: "Trauma com deformidade aparente / ferimento que precisa de pontos"
   reason_hi: "चोट के बाद अंग टेढ़ा दिखना / टाँके लगने जैसा घाव"
+  reason_sw: "Kiungo kimepinda au jeraha linalohitaji kushonwa"
 - id: newborn_refusing_feeds
   level: urgent
   source: seup_acudir_urgencias
@@ -1958,6 +2061,9 @@ rules:
   reason_en: Baby under 1 month refusing feeds
   reason_fr: Bébé de moins d'un mois qui refuse de téter
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "mchanga (anakataa|amekataa) kunyonya"
+  - "hanyonyi tangu"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -2016,6 +2122,7 @@ rules:
   reason_ar: رضيع أقل من شهر يرفض الرضاعة
   reason_pt: "Bebê com menos de 1 mês que recusa as mamadas"
   reason_hi: "एक महीने से छोटा शिशु दूध नहीं पी रहा"
+  reason_sw: "Mtoto chini ya mwezi mmoja anakataa kunyonya"
 - id: burn
   level: urgent
   source: ninojesus_primeros_auxilios
@@ -2023,6 +2130,9 @@ rules:
   reason_en: Burn (especially face, hands, genitals or large area)
   reason_fr: Brûlure (surtout au visage, aux mains, aux parties génitales ou étendue)
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ameungua[^.]{0,25}(maji ya moto|moto|uso|mkono|mguu)"
+  - "kuungua kwa (maji ya moto|moto)"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -2073,6 +2183,7 @@ rules:
   reason_ar: حرق (خاصة الوجه أو اليدين أو المنطقة التناسلية أو مساحة كبيرة)
   reason_pt: "Queimadura (especialmente no rosto, mãos, genitais ou extensa)"
   reason_hi: "जलना (ख़ासकर चेहरा, हाथ, गुप्तांग या बड़ा हिस्सा)"
+  reason_sw: "Kuungua, hasa uso, mikono, sehemu za siri au eneo kubwa"
 - id: bilious_or_bloody_vomit
   level: urgent
   source: seup_dolor_abdominal
@@ -2084,7 +2195,12 @@ rules:
   reason_ar: قيء أخضر أو بني أو مصحوب بدم — سبب موثّق لطلب الرعاية
   reason_pt: Vômito verde, marrom ou com sangue — motivo documentado para procurar ajuda
   reason_hi: हरी, भूरी या खून वाली उल्टी — डॉक्टर को दिखाने का दर्ज कारण
+  reason_sw: "Matapishi ya kijani, kahawia au yenye damu"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "anatapika (damu|kijani)"
+  - "matapishi yana damu"
+  - "ametapika damu"
   # 17-sep-2026: «hay sangre EN el vómito» —el orden inverso— en inglés, francés y
   # portugués.
   - blood[^.]{0,20}in[^.]{0,15}(his |her |the )?vomit
@@ -2123,7 +2239,12 @@ rules:
   reason_ar: براز أسود كالقطران أو به دم أحمر — سبب موثّق لطلب الرعاية
   reason_pt: Fezes pretas como piche ou com sangue vermelho — motivo para procurar ajuda
   reason_hi: कालेे लुक जैसे या लाल ख़ून वाले मल — डॉक्टर को दिखाने का दर्ज कारण
+  reason_sw: "Kinyesi cheusi kama lami au chenye damu"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "damu (kwenye|katika) kinyesi"
+  - "kinyesi (cheusi|chenye damu)"
+  - "anaharisha damu"
   - (caca|heces|deposicion\w*|pañal|popo).{0,30}(negra|negras|sangre|sanguinolent|alquitr)
   - (sangre|negra como alquitr).{0,30}(caca|heces|deposicion|pañal)
   - melena[s]?\b
@@ -2153,7 +2274,11 @@ rules:
   reason_ar: ألم بطن في الجهة اليمنى، أو مستمر ويزداد — سبب موثّق لطلب الرعاية
   reason_pt: Dor de barriga do lado direito, ou contínua e piorando — motivo para procurar ajuda
   reason_hi: पेट में दाहिनी ओर दर्द, या लगातार और बढ़ता दर्द — दिखाने का दर्ज कारण
+  reason_sw: "Maumivu ya tumbo upande wa kulia au yanayozidi"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "tumbo linauma upande wa kulia"
+  - "maumivu ya tumbo yanazidi"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -2216,7 +2341,12 @@ rules:
   reason_ar: علامات اضطراب في سلوك الأكل
   reason_pt: Sinais de um transtorno alimentar
   reason_hi: खानपान के विकार के संकेत
+  reason_sw: "Dalili za tatizo la ulaji"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "anajitapisha (baada ya kula|makusudi)"
+  - "anaogopa kunenepa"
+  - "amekataa kula kabisa"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -2298,7 +2428,12 @@ rules:
   reason_ar: علامات عصبية — ضعف الرؤية أو حركة ذراع أو ساق أو صعوبة في المشي أو الكلام
   reason_pt: Sinais neurológicos — enxerga mal, mexe mal um braço ou perna, anda ou fala com dificuldade
   reason_hi: तंत्रिका-संबंधी संकेत — ठीक न दिखना, हाथ-पैर ठीक से न हिलना, चलने या बोलने में दिक्कत
+  reason_sw: "Dalili za mfumo wa fahamu: kushindwa kuona, kusogeza mkono au mguu, kutembea au kuongea"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "hawezi (kusogeza|kuinua) (mkono|mguu)"
+  - "hawezi (kuongea|kuona)"
+  - "upande mmoja (haufanyi kazi|umelegea)"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -2422,7 +2557,11 @@ rules:
   reason_ar: صداع مع علامات تحذيرية — يوقظه ليلاً أو يزداد أو لا يستجيب للعلاج المعتاد
   reason_pt: Dor de cabeça com sinais de alarme — acorda à noite, piora, ou não cede ao tratamento habitual
   reason_hi: सिरदर्द के चेतावनी संकेत — रात में जगा देना, बढ़ते जाना, या सामान्य इलाज से न जाना
+  reason_sw: "Maumivu ya kichwa yenye dalili za hatari: yanamwamsha usiku au yanazidi"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "kichwa kinauma[^.]{0,30}(usiku|kinazidi)"
+  - "maumivu ya kichwa yanazidi"
   # 17-sep-2026: el dolor de cabeza que empeora o despierta, en las tres escrituras
   - (головн\w+ бол\w+|болит голова)[^.]{0,45}(ночью|будит|просыпается)
   - (головн\w+ бол\w+)[^.]{0,45}(усиливается|сильнее с каждым|хуже)
@@ -2475,6 +2614,10 @@ rules:
   reason_en: Expressing suicidal thoughts
   reason_fr: Exprime des pensées suicidaires
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "anataka kujiua"
+  - "anasema atajiua"
+  - "hataki kuishi"
   # 17-sep-2026: «no quiere seguir viviendo» dicho en inglés, árabe y portugués no
   # casaba. Es la forma más común de decirlo y la que menos puede fallar.
   - ((does|do|did|would)\s*n(?:'|o)?t|no longer)[^.]{0,20}want[^.]{0,20}to (live|be here|go on)
@@ -2555,6 +2698,7 @@ rules:
   reason_ar: يعبر عن أفكار انتحارية
   reason_pt: "Expressa pensamentos suicidas"
   reason_hi: "आत्महत्या के विचार बताना"
+  reason_sw: "Anaonyesha mawazo ya kujiua"
 - id: self_harm
   level: mental_health
   source: seup_autolesion
@@ -2562,6 +2706,10 @@ rules:
   reason_en: Self-harm
   reason_fr: Conduite auto-agressive
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amejikata (mikono|mwili)"
+  - "anajidhuru"
+  - "amejiumiza makusudi"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -2624,6 +2772,7 @@ rules:
   reason_ar: إيذاء النفس
   reason_pt: "Conduta autolesiva"
   reason_hi: "खुद को नुकसान पहुँचाना"
+  reason_sw: "Kujidhuru"
 - id: neck_stiffness
   level: emergency
   source: mlp_en_meningitis
@@ -2635,7 +2784,11 @@ rules:
   reason_ar: "تيبّس الرقبة: يجب استبعاد التهاب السحايا فورا"
   reason_pt: "Pescoço rígido: é preciso descartar uma meningite agora"
   reason_hi: "गर्दन में अकड़न: मेनिनजाइटिस की जाँच अभी ज़रूरी है"
+  reason_sw: "Shingo ngumu: homa ya uti wa mgongo lazima iondolewe sasa hivi"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "shingo (ngumu|imekakamaa)"
+  - "hawezi kuinamisha shingo"
   # 17-sep-2026: el término médico ruso, que es el que usa quien ya ha ido a urgencias.
   - ригидност\w*[^.]{0,25}(затылочн\w*|мышц|шеи)
   # 17-sep-2026: la rigidez de nuca sólo sabía decirse en castellano, inglés, árabe y
@@ -2698,7 +2851,12 @@ rules:
   reason_ar: "حساسية للضوء مع حمى أو صداع: يجب الفحص اليوم"
   reason_pt: "A luz incomoda junto com febre ou dor de cabeça: precisa ser visto hoje"
   reason_hi: "बुखार या सिरदर्द के साथ रोशनी चुभना: आज ही दिखाना चाहिए"
+  reason_sw: "Mwanga unamuumiza pamoja na homa au maumivu ya kichwa: aonwe leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "mwanga unamuumiza"
+  - "hawezi kuangalia mwanga"
+  - "anaogopa mwanga"
   # 17-sep-2026: el alemán pone la fiebre delante y en una sola cláusula.
   - (mit fieber)[^.]{0,50}(vertr[äa]gt kein licht|licht|lichtscheu)
   # 17-sep-2026: «no aguanta la luz» —el verbo de aguantar, no el de doler— faltaba en
@@ -2750,7 +2908,11 @@ rules:
   reason_ar: "جرح عميق أو قد يحتاج غرزا: يجب أن يُفحص اليوم"
   reason_pt: "Ferida profunda ou que pode precisar de pontos: precisa ser vista hoje"
   reason_hi: "गहरा घाव, या जिसमें टांके लग सकते हैं: आज ही दिखाना चाहिए"
+  reason_sw: "Jeraha la kina au linalohitaji kushonwa: aonwe leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "jeraha (kubwa|la kina)"
+  - "jeraha limefunguka"
   # 17-sep-2026: «hay que coserla / necesita puntos» en francés, alemán, ruso e hindi.
   - (plaie|coupure)[^.]{0,35}(profonde)[^.]{0,45}(points|suture|recoudre)
   - (points de suture|faut recoudre)
@@ -2790,7 +2952,11 @@ rules:
   reason_ar: "لا يستطيع البلع واللعاب يسيل: قد يكون مجرى الهواء مهددا"
   reason_pt: "Não consegue engolir e baba: a via aérea pode estar comprometida"
   reason_hi: "निगल नहीं पा रहा और लार बह रही है: साँस का रास्ता ख़तरे में हो सकता है"
+  reason_sw: "Ashindwa kumeza na anadondosha mate: njia ya hewa inaweza kuwa hatarini"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "hawezi kumeza[^.]{0,30}mate"
+  - "anadondosha mate na hawezi kumeza"
   # 17-sep-2026: «se le cae la baba» como sujeto, no como verbo.
   - (le cuesta( \w+){0,2} tragar|no puede( \w+){0,2} tragar)[^.]{0,45}(se le cae la baba|babea|la baba)
   - (se le cae la baba|babea)[^.]{0,45}(le cuesta( \w+){0,2} tragar|no puede( \w+){0,2} tragar)
@@ -2867,7 +3033,11 @@ rules:
   reason_ar: "تورم أو احمرار خلف الأذن، أو الأذن مدفوعة إلى الأمام: يجب أن يُفحص اليوم"
   reason_pt: "Inchaço ou vermelhidão atrás da orelha, ou orelha empurrada para frente: precisa ser visto hoje"
   reason_hi: "कान के पीछे सूजन या लालिमा, या कान आगे की ओर खिसका हुआ: आज ही दिखाना चाहिए"
+  reason_sw: "Uvimbe au wekundu nyuma ya sikio: aonwe leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(uvimbe|imevimba) nyuma ya sikio"
+  - "sikio limesukumwa mbele"
   # 17-sep-2026: «detrás de la oreja, rojo e hinchado», sin decir la palabra mastoiditis.
   - behind[^.]{0,15}(his |her |the )?ear[^.]{0,25}(is |looks )?(red|swollen|puffy)
   - (за ухом)[^.]{0,30}(красн\w*|припух\w*|опух\w*)
@@ -2923,7 +3093,11 @@ rules:
   reason_ar: "دم في البول: يحتاج فحصا، وليس طبيعيا في أي عمر"
   reason_pt: "Sangue no xixi: precisa ser visto, não é normal em nenhuma idade"
   reason_hi: "पेशाब में ख़ून: दिखाना ज़रूरी है, किसी भी उम्र में सामान्य नहीं"
+  reason_sw: "Damu kwenye mkojo: si kawaida katika umri wowote"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "damu (kwenye|katika) mkojo"
+  - "mkojo (mwekundu|una damu)"
   # 17-sep-2026: «el pis le sale rojo» — el color, no la palabra sangre.
   - (pis|pip[íi]|orina)[^.]{0,25}(sale |es |est[áa] )?(roj[oa]|rosad[oa]|marr[óo]n|como coca)
   - (بول\w*)[^.]{0,20}(أحمر|حمراء|وردي|بلون الدم)
@@ -2968,7 +3142,11 @@ rules:
   reason_ar: "دم أو سائل صاف من الأنف أو الأذنين بعد ضربة على الرأس"
   reason_pt: "Sangue ou líquido claro pelo nariz ou pelos ouvidos após uma pancada na cabeça"
   reason_hi: "सिर पर चोट के बाद नाक या कान से ख़ून या साफ़ तरल आना"
+  reason_sw: "Damu au maji yanatoka puani au sikioni baada ya kugonga kichwa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(damu|maji)[^.]{0,20}(sikioni|puani)[^.]{0,40}kichwa"
+  - "amegonga kichwa[^.]{0,40}(damu|maji)[^.]{0,20}(sikioni|puani)"
   # 17-sep-2026: la sangre por el oído tras una caída, en francés.
   - (sang|liquide)[^.]{0,20}sort[^.]{0,25}(de (son |l')?)?(oreille|nez)[^.]{0,40}(chute|choc|coup|tomb[ée])
   - (chute|choc|coup)[^.]{0,40}(sang|liquide)[^.]{0,20}(sort|coule)[^.]{0,20}(oreille|nez)
@@ -3015,7 +3193,11 @@ rules:
   reason_ar: "برودة اليدين والقدمين مع الحمى: قد تكون دورة دموية سيئة، يحتاج فحصا"
   reason_pt: "Mãos e pés frios em criança com febre: pode ser má circulação, precisa ser visto"
   reason_hi: "बुखार में हाथ-पैर ठंडे: ख़ून का दौरा ठीक न होने का संकेत, दिखाना चाहिए"
+  reason_sw: "Mikono na miguu baridi kwa mtoto mwenye homa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(mikono|miguu) (ni )?baridi[^.]{0,40}homa"
+  - "ana homa[^.]{0,40}(mikono|miguu) baridi"
   # 17-sep-2026: en ruso el adjetivo va DELANTE («ледяные ноги»), y todos los patrones
   # estaban escritos al revés, como en castellano.
   - (температур\w*|3[89]|4[01])[^.]{0,45}(ледян\w*|холодн\w*|ледяны)[^.]{0,20}(ноги|руки|ножки|ручки)
@@ -3071,7 +3253,11 @@ rules:
   reason_ar: "لدغة أفعى: إلى الطوارئ الآن — بلا رباط ضاغط وبلا شق الجرح"
   reason_pt: "Mordedura de cobra: urgência agora — sem garrote e sem cortar a ferida"
   reason_hi: "साँप का काटना: अभी आपातकाल में जाएँ — पट्टी न बाँधें, घाव न काटें"
+  reason_sw: "Ameumwa na nyoka: nenda hospitali sasa, usifunge kamba wala kukata jeraha"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ameumwa na nyoka"
+  - "nyoka amemuuma"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -3108,7 +3294,11 @@ rules:
   reason_ar: "عضة حيوان: اغسلها واعرضها على طبيب اليوم — داء الكلب والكزاز"
   reason_pt: "Mordedura de animal: lavar e ser visto por um médico HOJE — raiva e tétano"
   reason_hi: "जानवर का काटना: धोएँ और आज ही डॉक्टर को दिखाएँ — रेबीज़ और टिटनेस"
+  reason_sw: "Ameumwa na mnyama: osha na aonwe LEO — kichaa cha mbwa na pepopunda"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ameumwa na (mbwa|paka|nyani|popo)"
+  - "mbwa amemuuma"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -3184,7 +3374,11 @@ rules:
   reason_ar: "صوت عند الشهيق (صرير): مجرى الهواء ضيق — يُعرض الآن"
   reason_pt: "Ruído ao inspirar (estridor): a via aérea está estreitada — ver agora"
   reason_hi: "साँस लेते समय आवाज़ (स्ट्राइडर): साँस की नली सिकुड़ी है — अभी दिखाइए"
+  reason_sw: "Sauti ya kukwaruza anapovuta pumzi: njia ya hewa imebana"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "sauti (ya kukwaruza|ngeni) anapopumua"
+  - "anapumua kwa sauti ya kukwaruza"
   # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
   # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
   - (يصدر|يطلع)[^.]{0,20}(صوت\w*|أزيز)[^.]{0,25}(عند|أثناء)[^.]{0,15}(الشهيق|التنفس)
@@ -3222,7 +3416,11 @@ rules:
   reason_ar: "بكاء على نوبات مع ضم الساقين، أو براز كالهلام: قد يكون انغلافا معويا — الآن"
   reason_pt: "Choro às crises encolhendo as pernas, ou fezes em geleia: possível invaginação — agora"
   reason_hi: "रुक-रुक कर रोना और पैर सिकोड़ना, या जेली जैसा मल: आँत का घुसना हो सकता है — अभी"
+  reason_sw: "Kulia kwa mawimbi huku akikunja miguu, au kinyesi kama jeli: nenda sasa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "analia (kwa mawimbi|na kukunja miguu)"
+  - "kinyesi kama (jeli|ute) na damu"
   # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
   # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
   - (poo|stool|nappy|diaper)[^.]{0,30}(look\w*|like)[^.]{0,20}(redcurrant|jelly)
@@ -3261,7 +3459,11 @@ rules:
   reason_ar: "قيء قذفي بعد كل رضعة: يُعرض اليوم — قد يكون تضيق البواب"
   reason_pt: "Vómito em jato depois de cada mamada: ver hoje — pode ser o piloro"
   reason_hi: "हर फ़ीड के बाद उछलकर उल्टी: आज दिखाइए — पाइलोरस हो सकता है"
+  reason_sw: "Mtoto mchanga anayetapika kwa nguvu baada ya kila kunyonya"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "anatapika kwa nguvu baada ya kunyonya"
+  - "matapishi yanaruka kwa nguvu"
   - (vomit\w*|devuelve)[^.]{0,25}(a chorro|en proyectil|proyectil|como una fuente|sale disparado)
   - (a chorro|en proyectil)[^.]{0,25}(vomit\w*|despu[ée]s de (cada )?(toma|comer))
   - (projectile vomit\w*|vomits? like a fountain|vomiting across the room)
@@ -3287,7 +3489,11 @@ rules:
   reason_ar: "شرب وتبول كثيران مع نقص الوزن: يجب استبعاد السكري اليوم"
   reason_pt: "Beber e urinar muitíssimo, com perda de peso: é preciso descartar diabetes hoje"
   reason_hi: "बहुत पानी पीना और बार-बार पेशाब, वज़न घटना: आज ही मधुमेह जाँचना ज़रूरी है"
+  reason_sw: "Kunywa maji sana na kukojoa sana huku akipungua uzito: kisukari kiondolewe leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ananywa maji sana[^.]{0,40}(anakojoa|amepungua uzito)"
+  - "anakojoa sana na amekonda"
   # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
   # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
   - (تشرب|يشرب)[^.]{0,25}(كثيرا|بكثرة)[^.]{0,60}(تتبول|يتبول)
@@ -3320,7 +3526,11 @@ rules:
   reason_ar: "سعال بدأ فجأة أثناء أكل شيء صغير: قد يكون في مجرى الهواء — يُعرض اليوم"
   reason_pt: "Tosse que começa de repente a comer algo pequeno: pode estar na via aérea — ver hoje"
   reason_hi: "कुछ छोटा खाते समय अचानक शुरू हुई खाँसी: साँस की नली में जा सकती है — आज दिखाइए"
+  reason_sw: "Kikohozi kilichoanza ghafla akila kitu kidogo: kinaweza kuwa njia ya hewa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amekohoa ghafla (akila|akicheza na)"
+  - "kikohozi kimeanza ghafla baada ya (karanga|kitu)"
   - (a comer|comia|comendo)[^.]{0,35}(amendoim|amendoins|nozes|uva|pipoca|cenoura)[^.]{0,45}(tossir|tosse|engasg)
   - (come[çc]ou)[^.]{0,20}(a )?(tossir|tosse)[^.]{0,45}(amendoim|uva|nozes|pipoca)
   # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
@@ -3356,7 +3566,12 @@ rules:
   reason_ar: "البخاخ لا يفيد: نوبة ربو لا تستجيب هي حالة طارئة الآن"
   reason_pt: "O inalador não faz efeito: uma crise de asma que não responde é urgência agora"
   reason_hi: "इनहेलर असर नहीं कर रहा: दमे का दौरा जो जवाब न दे, अभी आपात स्थिति है"
+  reason_sw: "Dawa ya pumzi haifanyi kazi: shambulio la pumu lisilojibu ni dharura"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "dawa ya pumzi haifanyi kazi"
+  - "inhaler haisaidii"
+  - "pumu haijatulia"
   - (ventol[íi]n|inhalador|salbutamol|c[áa]mara)[^.]{0,45}(sigue igual|no le hace|no hace efecto|no mejora|no le alivia)
   - (sigue igual|no mejora|no le hace nada)[^.]{0,45}(ventol[íi]n|inhalador|salbutamol)
   - (inhaler|ventolin|salbutamol|puffer|blue inhaler)[^.]{0,45}(not working|no better|still struggling|has ?n'?t helped|no improvement)
@@ -3381,7 +3596,11 @@ rules:
   reason_ar: "مادة كيميائية في العين: اغسلها بماء غزير 15 دقيقة واذهب للطوارئ الآن"
   reason_pt: "Produto químico no olho: lave com água abundante 15 minutos e vá à urgência agora"
   reason_hi: "आँख में रसायन: 15 मिनट भरपूर पानी से धोइए और अभी आपातकालीन विभाग जाइए"
+  reason_sw: "Kemikali jichoni: osha kwa maji mengi kwa dakika kumi na tano na nenda hospitali sasa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(kemikali|sabuni|asidi|dawa|petroli)[^.]{0,20}(jichoni|machoni)"
+  - "ameingiza kemikali jichoni"
   # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
   # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
   - (دخل|دخلت)[^.]{0,25}(مبيض|منظف|كلور|صابون)[^.]{0,20}(في )?(عينه|عينها|العين)
@@ -3409,7 +3628,10 @@ rules:
   reason_ar: "سرة حمراء أو متورمة أو كريهة الرائحة عند المولود: يُعرض اليوم"
   reason_pt: "Umbigo vermelho, inchado ou malcheiroso num recém-nascido: ver hoje"
   reason_hi: "नवजात की नाभि लाल, सूजी या बदबूदार: आज दिखाइए"
+  reason_sw: "Kitovu chekundu, kilichovimba au chenye harufu kwa mtoto mchanga: aonwe leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "kitovu (kimevimba|chekundu|kina harufu|kinatoka usaha)"
   # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
   # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
   - (pus|eiter|гной|قيح|صديد)[^.]{0,30}(navel|belly button|nombril|nabel|пупк\w*|السرة|umbigo|न(ा|ा)भि)
@@ -3440,7 +3662,11 @@ rules:
   reason_ar: "عدة أشخاص في البيت بصداع وغثيان: اخرجوا إلى الهواء واتصلوا — قد يكون أول أكسيد الكربون"
   reason_pt: "Várias pessoas com dor de cabeça e náuseas na mesma casa: saiam para o ar livre e liguem"
   reason_hi: "घर में कई लोगों को सिरदर्द और मतली: बाहर खुली हवा में निकलें और फ़ोन करें"
+  reason_sw: "Watu kadhaa wenye maumivu ya kichwa na kichefuchefu nyumba moja: tokeni nje na pigeni simu"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "wote tunaumwa na kichwa[^.]{0,40}(nyumbani|jiko)"
+  - "moshi wa mkaa[^.]{0,40}kichwa"
   # 17-sep-2026: la batería midió esta regla recién escrita con OTRA forma de decir lo mismo
   # y falló. Una regla nueva cubre la frase que tenía su autor en la cabeza y nada más.
   - (mon[óo]xido de carbono)
@@ -3470,7 +3696,11 @@ rules:
   reason_ar: "سقط في الماء: حتى لو بدا بخير، يُعرض اليوم"
   reason_pt: "Caiu na água: mesmo que pareça bem, ver hoje"
   reason_hi: "पानी में गिर गया: ठीक लगे तब भी आज दिखाइए"
+  reason_sw: "Ameanguka majini: hata akionekana mzima, aonwe leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ameanguka (majini|kwenye maji|ndoo)"
+  - "amezama majini"
   # 17-sep-2026: «se metió en la bañera él solo y se rió» salía como casi ahogamiento.
   # Meterse en la bañera es bañarse: lo que cuenta es CAERSE, o que lo saquen del agua.
   - (se (cay[óo]|ha ca[íi]do)|cay[óo]|se hundi[óo])[^.]{0,30}(a|en) (la )?(piscina|agua|ba[ñn]era|mar|estanque|pozo)
@@ -3510,7 +3740,11 @@ rules:
   reason_ar: "صعقة كهربائية: حتى لو بدا بخير، قد يضطرب القلب بعد ساعات — الطوارئ الآن"
   reason_pt: "Choque elétrico: mesmo que pareça bem, o coração pode alterar-se horas depois — urgência"
   reason_hi: "बिजली का झटका: ठीक लगे तब भी घंटों बाद दिल की धड़कन बिगड़ सकती है — अभी आपातकाल"
+  reason_sw: "Amepigwa na umeme: hata akionekana mzima, moyo unaweza kubadilika baadaye"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amepigwa na umeme"
+  - "umeme umemshika"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - (eletrocutou|electrocutou|levou (um )?choque)
@@ -3536,7 +3770,11 @@ rules:
   reason_ar: "شيء في الأنف أو الأذن: يُخرج اليوم، وليس بملقط في البيت"
   reason_pt: "Objeto no nariz ou no ouvido: tirar hoje, e não com pinça em casa"
   reason_hi: "नाक या कान में कुछ फँसा: आज निकलवाइए, घर पर चिमटी से नहीं"
+  reason_sw: "Ameingiza kitu puani au sikioni: kitolewe leo, si kwa kibano nyumbani"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ameingiza (kitu|punje|shanga) (puani|sikioni)"
+  - "kitu kimeingia (puani|sikioni)"
   # 17-sep-2026: al escribir tantas formas latinas, las otras tres escrituras se quedaron con
   # una red diez veces más floja. Las mismas señales, escritas en ellas.
   - (засунул\w*|запихнул\w*|положил\w*|вставил\w*)[^.]{0,30}(в нос|в ухо|в носу|в ухе)
@@ -3585,7 +3823,11 @@ rules:
   reason_ar: "لا يحرك ساقيه أو ذراعيه بعد سقوط: لا تحركه واتصل بالطوارئ الآن"
   reason_pt: "Não mexe as pernas ou os braços após uma queda: não o mova, ligue agora"
   reason_hi: "गिरने के बाद पैर या हाथ नहीं हिला रहा: हिलाइए मत, अभी आपातकालीन सेवा को फ़ोन कीजिए"
+  reason_sw: "Hasogezi miguu wala mikono baada ya kuanguka: usimsogeze, piga simu sasa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ameanguka[^.]{0,30}hasogezi (miguu|mikono)"
+  - "ameanguka na hawezi kusogeza miguu"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - (despu[ée]s de la ca[íi]da|tras la ca[íi]da|tras el golpe)[^.]{0,40}(le duele|dolor)[^.]{0,25}(el cuello|la nuca|la espalda)
@@ -3612,7 +3854,11 @@ rules:
   reason_ar: "ضربة قوية في البطن مع ألم أو شحوب: قد يكون نزيف داخلي — الطوارئ الآن"
   reason_pt: "Pancada forte na barriga com dor ou palidez: pode haver hemorragia interna — urgência"
   reason_hi: "पेट पर तेज़ चोट के साथ दर्द या पीलापन: अंदर ख़ून बह सकता है — अभी आपातकाल"
+  reason_sw: "Amepigwa tumboni kwa nguvu na ana maumivu au amepauka: kunaweza kuwa na damu ndani"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amepigwa tumboni[^.]{0,40}(maumivu|linauma|amepauka)"
+  - "amegongwa tumbo na linauma sana"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - ((coup de pied|coup|choc))[^.]{0,30}(dans le ventre|au ventre)[^.]{0,60}(p[âa]le|douleur|mal)
@@ -3640,7 +3886,11 @@ rules:
   reason_ar: "استنشق دخان حريق: قد تتورم المجاري التنفسية بعد ساعات — الطوارئ الآن"
   reason_pt: "Respirou fumo de um incêndio: a via aérea pode inchar horas depois — urgência"
   reason_hi: "आग का धुआँ अंदर गया: कुछ घंटों में साँस की नली सूज सकती है — अभी आपातकाल"
+  reason_sw: "Amevuta moshi wa moto: njia ya hewa inaweza kuvimba baada ya masaa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amevuta moshi"
+  - "alikuwa kwenye moto na anakohoa"
   - (ha respirado|respir[óo]|trag[óo]|inhal[óo])[^.]{0,30}humo
   - (humo)[^.]{0,30}(incendio|fuego|quemad)
   - (breathed|inhaled|took)[^.]{0,25}(in )?smoke
@@ -3663,7 +3913,11 @@ rules:
   reason_ar: "كدمات دون ارتطام مع شحوب أو تعب، أو ألم عظام يوقظه ليلا: تحليل دم اليوم"
   reason_pt: "Nódoas negras sem pancadas com palidez ou cansaço, ou dor nos ossos à noite: análises hoje"
   reason_hi: "बिना चोट के नील और पीलापन या थकान, या रात में हड्डी का दर्द: आज ख़ून की जाँच"
+  reason_sw: "Michubuko bila kugongwa pamoja na kupauka au uchovu: apimwe damu leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "michubuko (bila|pasipo) kugongwa"
+  - "amepauka na amechoka[^.]{0,40}michubuko"
   - (nachts|in der nacht)[^.]{0,25}knochenschmerz\w*
   - (ночью|по ночам)[^.]{0,25}(бол\w+ в костях|кости болят)
   - (रात में)[^.]{0,25}(हड्डी|हड्डियों)[^.]{0,15}(में )?दर्द
@@ -3703,7 +3957,11 @@ rules:
   reason_ar: "مريض سكري يتعرق أو يرتجف أو مشوش: سكر بالفم إن كان واعيا، واتصل"
   reason_pt: "Um diabético suado, trémulo ou confuso: açúcar pela boca se estiver acordado, e ligue"
   reason_hi: "मधुमेह वाला बच्चा पसीने में, काँपता या उलझन में: होश में हो तो चीनी दें, और फ़ोन करें"
+  reason_sw: "Mwenye kisukari anatoka jasho, anatetemeka au amechanganyikiwa: sukari mdomoni sasa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "kisukari[^.]{0,40}(anatetemeka|jasho jingi|amechanganyikiwa)"
+  - "sukari imeshuka"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - (le ha bajado el az[úu]car|az[úu]car bajo|bajada de az[úu]car)
@@ -3737,7 +3995,12 @@ rules:
   reason_ar: "ألم شديد عند طفل بفقر الدم المنجلي: هذه نوبة — تعالج اليوم"
   reason_pt: "Dor forte numa criança com anemia falciforme: é uma crise — tratar hoje"
   reason_hi: "सिकल सेल वाले बच्चे में तेज़ दर्द: यह संकट है — आज इलाज"
+  reason_sw: "Maumivu makali kwa mtoto mwenye selimundu: hii ni krisisi, tibiwa leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "selimundu[^.]{0,40}maumivu"
+  - "sickle cell[^.]{0,40}maumivu"
+  - "anaumwa sana na ana selimundu"
   - (crise douloureuse)[^.]{0,40}(dr[ée]panocyt\w*)
   - (dr[ée]panocyt\w*)[^.]{0,40}(crise)
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
@@ -3766,7 +4029,11 @@ rules:
   reason_ar: "مولود بارد ولا يدفأ: قد تكون عدوى — يُعرض اليوم"
   reason_pt: "Um recém-nascido frio que não aquece: pode ser uma infeção — ver hoje"
   reason_hi: "नवजात ठंडा है और गर्म नहीं हो रहा: संक्रमण हो सकता है — आज दिखाइए"
+  reason_sw: "Mtoto mchanga aliye baridi asiyepata joto: inaweza kuwa maambukizi"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "mchanga (ni )?baridi[^.]{0,30}(hapati joto|hana joto)"
+  - "mwili wa mchanga ni baridi"
   - (reci[ée]n nacid\w*|beb[ée] de (pocos )?d[íi]as|neonat\w*)[^.]{0,45}(est[áa] fr[íi]o|muy fr[íi]o|no entra en calor|no se calienta)
   - (est[áa] fr[íi]o|no entra en calor)[^.]{0,45}(reci[ée]n nacid\w*|beb[ée])
   - (newborn|baby)[^.]{0,40}(is )?(cold|chilly)[^.]{0,35}(won'?t warm|not warming|to touch)
@@ -3793,7 +4060,12 @@ rules:
   reason_ar: "لا يستطيع الشرب أو الرضاعة: من علامات الخطر في IMNCI — يُعرض اليوم"
   reason_pt: "Incapaz de beber ou mamar: é um sinal de perigo do IMNCI — ver hoje"
   reason_hi: "पी या स्तनपान नहीं कर पा रहा: IMNCI का ख़तरे का संकेत — आज दिखाइए"
+  reason_sw: "Ashindwa kunywa wala kunyonya: ni mojawapo ya dalili za hatari za IMNCI"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "hawezi ku(nywa|nyonya)"
+  - "hanyonyi (kabisa|tena)"
+  - "hanywi (chochote|kabisa)"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - (no (consigue|puede|logra))[^.]{0,30}(agarrar\w*|coger)[^.]{0,15}(al |el )?pecho
@@ -3824,7 +4096,11 @@ rules:
   reason_ar: "يتقيأ كل شيء ولا يحتفظ بشيء: علامة خطر — يُعرض اليوم"
   reason_pt: "Vomita tudo e não retém nada: é sinal de perigo — ver hoje"
   reason_hi: "जो भी देते हैं सब उल्टी कर देता है: ख़तरे का संकेत — आज दिखाइए"
+  reason_sw: "Anatapika kila kitu na hakibaki chochote: ni dalili ya hatari"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "anatapika kila (kitu|anachokunywa)"
+  - "hakibaki chochote tumboni"
   - (vomita|devuelve)[^.]{0,25}(todo|todo lo que)[^.]{0,40}(no retiene|no le queda|nada)?
   - (no retiene nada|no le queda nada dentro)
   - (vomits|throws up|brings up)[^.]{0,20}(everything|all of it)
@@ -3847,7 +4123,11 @@ rules:
   reason_ar: "تورم القدمين معا: علامة خطر عند الطفل — يُعرض اليوم"
   reason_pt: "Os dois pés inchados: é sinal de perigo numa criança — ver hoje"
   reason_hi: "दोनों पैर सूजे हुए: बच्चे में ख़तरे का संकेत — आज दिखाइए"
+  reason_sw: "Miguu yote miwili imevimba: ni dalili ya hatari kwa mtoto"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "miguu (yote )?(miwili )?imevimba"
+  - "amevimba miguu yote"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - (se le han hinchado|se le hincharon)[^.]{0,25}(los pies|los tobillos)[^.]{0,25}(los dos|ambos)?
@@ -3873,7 +4153,11 @@ rules:
   reason_ar: "ألم مفاجئ شديد أسفل البطن عند مراهقة: يجب استبعاد التواء اليوم"
   reason_pt: "Dor forte e repentina no baixo-ventre numa adolescente: descartar uma torção hoje"
   reason_hi: "किशोरी के पेट के निचले हिस्से में अचानक तेज़ दर्द: आज मरोड़ की जाँच ज़रूरी"
+  reason_sw: "Maumivu makali ya ghafla chini ya tumbo kwa msichana balehe: apimwe leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "msichana[^.]{0,40}maumivu makali chini ya tumbo"
+  - "tumbo la chini linauma ghafla sana"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - (dolor)[^.]{0,20}(de )?(ovario|ovarios|regla)[^.]{0,30}(muy fuerte|fort[íi]simo|de repente|de golpe)
@@ -3902,7 +4186,11 @@ rules:
   reason_ar: "هزال شديد ظاهر عند طفل: من علامات الخطر في IMNCI — يُقيَّم اليوم"
   reason_pt: "Emagrecimento visível numa criança: é um sinal de perigo do IMNCI — avaliar hoje"
   reason_hi: "बच्चे में दिखने वाला भारी दुबलापन: IMNCI का ख़तरे का संकेत — आज जाँच"
+  reason_sw: "Kukonda kupita kiasi kunakoonekana: ni mojawapo ya dalili za hatari za IMNCI"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amekonda (sana|kupita kiasi)"
+  - "mifupa inaonekana kwa kukonda"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - (ribs (are )?showing|ribs stick out|you can see his ribs|you can count his ribs)[^.]{0,60}(lost weight|losing weight|not gaining)
@@ -3929,7 +4217,11 @@ rules:
   reason_ar: "اليافوخ المنتفخ: قد يعني ضغطا داخل الرأس — يُعرض الآن"
   reason_pt: "Fontanela abaulada: pode ser pressão dentro da cabeça — ver agora"
   reason_hi: "उभरा हुआ तालू: सिर के अंदर दबाव हो सकता है — अभी दिखाइए"
+  reason_sw: "Utosi umevimba: inaweza kuwa shinikizo ndani ya kichwa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "utosi (umevimba|umejaa)"
+  - "sehemu laini ya kichwa imevimba"
   - (fontanela|mollera)[^.]{0,30}(abombad|abultad|hinchad|salida|tensa|dura|abomba|sobresale)
   - (abombad|abultad|hinchad|tensa)[^.]{0,20}(fontanela|mollera)
   - (fontanelle|soft spot)[^.]{0,30}(bulg|swollen|tense|raised|sticking out)
@@ -3958,7 +4250,11 @@ rules:
   reason_ar: "ألم في الخصية: التواء الخصية يحتاج جراحة خلال ساعات — اذهب الآن"
   reason_pt: "Dor num testículo: uma torção opera-se em horas — vá agora"
   reason_hi: "अंडकोष में दर्द: मरोड़ हो तो कुछ घंटों में ऑपरेशन चाहिए — अभी जाइए"
+  reason_sw: "Maumivu ya korodani: msokoto lazima ufanyiwe upasuaji ndani ya masaa machache"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "korodani (inauma|imevimba)"
+  - "pumbu linauma"
   # 17-sep-2026: en árabe el posesivo va pegado («خصيته») y en portugués el verbo va
   # delante con el clítico («dói-lhe um testículo»).
   - (خصيت\w*|خصيتي\w*)[^.]{0,25}(تؤلم\w*|يؤلم\w*|ألم|وجع|منتفخ\w*|متورم\w*)
@@ -3996,7 +4292,11 @@ rules:
   reason_ar: "شحوب مفاجئ: قد يدل على دورة دموية سيئة — يُعرض اليوم"
   reason_pt: "Palidez repentina: pode ser má circulação — ver hoje"
   reason_hi: "अचानक पीलापन: ख़ून का दौरा ठीक न होने का संकेत — आज दिखाइए"
+  reason_sw: "Kupauka kwa ghafla: inaweza kuwa mzunguko mbaya wa damu"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "amepauka ghafla"
+  - "amebadilika rangi ghafla"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -4046,7 +4346,11 @@ rules:
   reason_ar: "بكاء حاد أو ضعيف أو غير معتاد ليس مجرد بكاء كثير — يُعرض اليوم"
   reason_pt: "Um choro agudo, fraco ou diferente do habitual não é «chorar muito» — ver hoje"
   reason_hi: "तीखा, कमज़ोर या रोज़ से अलग रोना «बहुत रोना» नहीं है — आज दिखाइए"
+  reason_sw: "Kilio dhaifu, cha juu au kisicho cha kawaida si sawa na kulia sana"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "kilio (dhaifu|cha ajabu|si cha kawaida)"
+  - "analia kwa sauti ya ajabu"
   - (llanto|llora|llorando|grito)[^.]{0,30}(agudo|d[ée]bil|distinto|diferente|raro|quejido|quejumbroso|chillón)
   - (agudo|d[ée]bil|distinto|diferente)[^.]{0,20}(llanto|llorando)
   - cry[^.]{0,30}(high.?pitched|weak|unusual|different from|not like)
@@ -4075,7 +4379,12 @@ rules:
   reason_ar: "العرج مع الحمى: يجب استبعاد التهاب المفصل أو العظم اليوم"
   reason_pt: "Coxear com febre: é preciso descartar hoje uma infeção da articulação ou do osso"
   reason_hi: "लंगड़ाना और बुखार: जोड़ या हड्डी का संक्रमण आज ही जाँचना ज़रूरी है"
+  reason_sw: "Kuchechemea pamoja na homa: maambukizi ya mfupa au kiungo yaondolewe leo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "anachechemea[^.]{0,40}homa"
+  - "ana homa[^.]{0,40}anachechemea"
+  - "hawezi kukanyaga mguu"
   # 17-sep-2026: «no quiere apoyar el pie» en alemán, árabe y portugués.
   - (will|kann)[^.]{0,25}(das )?(bein|fu[sß])[^.]{0,20}nicht[^.]{0,15}(belasten|auftreten|aufsetzen)[^.]{0,70}(fieber|temperatur)
   - (fieber|temperatur)[^.]{0,70}(will|kann)[^.]{0,25}(das )?(bein|fu[sß])[^.]{0,20}nicht[^.]{0,15}(belasten|auftreten)
@@ -4110,7 +4419,11 @@ rules:
   reason_ar: "نزيف مع حمى: يجب الفحص اليوم — من علامات إنذار حمى الضنك"
   reason_pt: "Sangramento junto com febre: precisa ser visto hoje — é um sinal de alarme da dengue"
   reason_hi: "बुखार के साथ खून आना: आज ही दिखाएँ — यह डेंगू का चेतावनी संकेत है"
+  reason_sw: "Kutoka damu pamoja na homa: ni mojawapo ya dalili za hatari za dengue"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(damu|kutokwa damu)[^.]{0,40}homa"
+  - "ana homa na anatokwa damu (puani|fizi)"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -4156,7 +4469,12 @@ rules:
   reason_ar: "لا يستطيع فتح فمه أو لديه تشنجات عضلية: إلى الطوارئ الآن"
   reason_pt: "Não consegue abrir a boca, ou espasmos musculares: urgência agora"
   reason_hi: "मुँह नहीं खोल पा रहा या मांसपेशियों में ऐंठन: अभी आपातकाल में जाएँ"
+  reason_sw: "Ashindwa kufungua mdomo, au misuli inakaza: nenda hospitali sasa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "hawezi kufungua mdomo"
+  - "taya (limekaza|limefunga)"
+  - "misuli inakaza"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -4194,11 +4512,16 @@ rules:
   reason_ar: "ضربة شمس: برّد الطفل الآن (ظل، ماء، هواء). إذا كان مشوشاً أو لا يتعرق أو حرارته عالية جداً أو نعساناً، اتصل بالطوارئ الآن"
   reason_pt: "Insolação: arrefeça-o já (sombra, água, ar). Se estiver confuso, sem suar, muito quente ou sonolento, ligue para a emergência agora"
   reason_hi: "लू लगना: अभी ठंडा करें (छाँव, पानी, हवा)। अगर बच्चा उलझन में है, पसीना नहीं आ रहा, बहुत गरम है या सुस्त है, तो अभी आपातकालीन नंबर पर कॉल करें"
+  reason_sw: "Joto kupita kiasi: mpoze sasa. Akichanganyikiwa au kulala sana, piga simu"
   # 13-sep-2026. Rutina en las ocho lenguas, y la ficha del NHS lo dice literal: «Heatstroke is
   # a medical emergency». Urgente y no emergencia porque la palabra se usa también para el
   # agotamiento por calor; el motivo dice cuándo es emergencia. Siempre con el verbo de
   # padecerlo: «¿cómo prevengo un golpe de calor?» no puede sacar el aviso.
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "jua kali[^.]{0,40}(amechoka|amezimia)"
+  - "joto limemzidi"
+  - "amepigwa na jua"
   # 17-sep-2026: el NOMBRE de la cosa —«golpe de calor», «Hitzschlag», «لو लग गई»— fallaba
   # en siete lenguas: la regla lo pedía siempre acompañado de otra señal.
   - golpe de calor
@@ -4247,11 +4570,15 @@ rules:
   reason_ar: "رضيع بجلد أو عينين صفراوين: موعد عاجل اليوم. إذا كان عمره أقل من 24 ساعة أو نعساناً جداً أو لا يرضع أو لديه حرارة أو لا يبلل الحفاض، إلى الطوارئ الآن"
   reason_pt: "Bebé com a pele ou os olhos amarelos: consulta urgente hoje. Se tiver menos de 24 horas, estiver muito sonolento, não mamar, tiver febre ou não molhar fraldas, urgência já"
   reason_hi: "शिशु की त्वचा या आँखें पीली: आज ही डॉक्टर को दिखाएँ। अगर 24 घंटे से छोटा है, बहुत सुस्त है, दूध नहीं पी रहा, बुखार है या डायपर गीला नहीं हो रहा, तो अभी इमरजेंसी जाएँ"
+  reason_sw: "Mtoto mwenye ngozi au macho ya njano: aonwe leo"
   # 13-sep-2026. Rutina en las ocho lenguas hasta hoy; la ficha del NHS pide cita urgente tras
   # las 24 horas y emergencia antes o con signos. Piel, ojos, o la palabra ictericia: nunca
   # «amarillo» a secas, porque la caca amarilla es lo normal en un bebé de pecho y los mocos
   # amarillos son mocos (ver tests/test_newborn_jaundice.py).
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(ngozi|macho)[^.]{0,14}njano"
+  - "mchanga ana njano"
   # 17-sep-2026: los ojos amarillos en árabe con el dual («عيناه صفراوان»).
   - (عين\w*|عيناه|عيناها)[^.]{0,20}(صفراء|صفراوان|صفر|مصفرة)
   - (اصفرار|صفار)[^.]{0,20}(العينين|عينيه|عينيها)
@@ -4301,7 +4628,12 @@ rules:
   reason_ar: ملاريا مع علامات خطورة
   reason_pt: Malária com sinais de gravidade
   reason_hi: ख़तरे के लक्षणों के साथ मलेरिया
+  reason_sw: "Malaria yenye dalili za hatari"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "malaria[^.]{0,60}(amelala sana|hajitambui|degedege|hana fahamu)"
+  - "(amelala sana|hajitambui|degedege)[^.]{0,60}malaria"
+  - "malaria[^.]{0,60}mkojo (mweusi|mweusi sana|wa rangi ya giza)"
   # La OMS define el paludismo grave por la alteración de la conciencia, las convulsiones y la
   # orina oscura. Los dos órdenes, porque «tiene malaria y está muy dormido» y «está muy dormido,
   # tiene malaria» son la misma frase dicha al revés (L101).
@@ -4325,7 +4657,11 @@ rules:
   reason_ar: حمى في منطقة فيها ملاريا
   reason_pt: Febre numa zona onde há malária
   reason_hi: मलेरिया वाले इलाक़े में बुख़ार
+  reason_sw: "Homa mahali penye malaria"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "homa[^.]{0,60}(eneo|sehemu) (lenye|yenye) malaria"
+  - "(eneo|sehemu) (lenye|yenye) malaria[^.]{0,60}homa"
   # La OMS: quien tiene fiebre en una zona con paludismo necesita una prueba, y pronto. No hace
   # falta que el padre diga «paludismo»: basta con que diga dónde vive.
   - (fiebre|febril|fever|fievre|febre|fieber|температур|лихорад|حمى|حرارة|बुख़ार|बुखार)[^.]{0,80}(zona de paludismo|zona palud|zona con paludismo|zona de malaria|malaria area|malaria zone|malaria region|endemic|endemica|zone de paludisme|zone impaludee|zona de malaria|malariagebiet|малярийн|منطقة ملاريا|منطقة فيها ملاريا|منطقة موبوءة|मलेरिया क्षेत्र|मलेरिया वाले)
@@ -4342,7 +4678,12 @@ rules:
   reason_ar: شحوب في راحة اليد
   reason_pt: Palidez na palma das mãos
   reason_hi: हथेलियों का पीलापन
+  reason_sw: "Viganja vya mikono vimepauka"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "viganja[^.]{0,30}(vimepauka|ni vyeupe|vyeupe)"
+  - "kiganja[^.]{0,30}(kimepauka|ni cheupe)"
+  - "(vimepauka|vyeupe)[^.]{0,30}viganja"
   # El signo de anemia grave del IMCI, y se mira en la PALMA: es donde se ve sin depender del
   # color de la piel. Hasta hoy el triaje no lo conocía en ninguna de las ocho lenguas.
   - (palma|palmas|palm|palms|paume|paumes|handflache|handinnenflache|ладон|كف اليد|كفا يديه|كفي يديه|راحة اليد|راحتا يديه|हथेली|हथेलियां|हथेलियाँ)[^.]{0,45}(palid|pale|pâle|pales|blass|бледн|побледнел|شاحب|شاحبتان|شحوب|पीला|पीली)
@@ -4361,7 +4702,10 @@ rules:
   reason_ar: تنفس أسرع من الطبيعي لعمره
   reason_pt: Respira mais depressa do que o normal para a idade
   reason_hi: उम्र के हिसाब से साँस तेज़
+  reason_sw: "Anapumua haraka kuliko kawaida ya umri wake"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "(6[0-9]|[7-9][0-9])[^.]{0,20}(pumzi|kupumua)[^.]{0,16}(kwa dakika|dakika moja)"
   # Esta regla salta sobre todo por la cuenta que hace `respiracion_rapida`, que compara el
   # número con la edad como manda el IMCI y funciona en las ocho lenguas. Estos patrones son el
   # segundo camino, y piden 60 o más por minuto: ese número es anormal a cualquier edad de la
@@ -4382,7 +4726,12 @@ rules:
   reason_ar: إسهال مائي يشبه ماء الأرز
   reason_pt: Diarreia muito líquida, como água de arroz
   reason_hi: चावल के पानी जैसा पतला दस्त
+  reason_sw: "Kuharisha maji kama maji ya mchele"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "kinyesi[^.]{0,30}maji ya mchele"
+  - "kuhara[^.]{0,30}kama maji ya mchele"
+  - "kipindupindu[^.]{0,50}(kuhara|kutapika)"
   # La OMS: el cólera puede matar en horas. «Como agua de arroz» es la frase con la que se
   # reconoce, y hasta hoy salía como rutina en las ocho lenguas porque no había ni una ficha.
   # «Le di agua de arroz» es un padre haciéndolo bien: la OMS la admite como líquido en
@@ -4410,7 +4759,11 @@ rules:
   reason_ar: علامات جفاف شديد
   reason_pt: Sinais de desidratação grave
   reason_hi: गंभीर निर्जलीकरण के लक्षण
+  reason_sw: "Dalili za upungufu mkubwa wa maji mwilini"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "ngozi (hairudi|inarudi polepole) (nikibana|ikibanwa)"
+  - "macho yamebonyea[^.]{0,60}(hanywi|hawezi kunywa)"
   # El pliegue que tarda en volver es, él solo, el signo de deshidratación GRAVE del IMCI. Los
   # ojos hundidos, no: por eso van acompañados.
   - (pellizc\w*|pinch\w*|pliegue|la piel|a pele|the skin|his skin|her skin|la peau|die haut|кожн\w* складк\w*|кожа|الجلد|त्वचा|चमड़ी)[^.]{0,40}(tarda|vuelve muy lento|no vuelve|se queda|goes back (very )?slow|stays up|stays pinched|remains|revient (tres )?lentement|reste plissee|fica presa|demora a voltar|bleibt stehen|geht langsam|расправляется медленно|не расправ|لا يعود|يعود ببطء|धीरे लौटती|वापस नहीं)
@@ -4431,7 +4784,11 @@ rules:
   reason_ar: حصبة مع مضاعفات في العين أو الفم
   reason_pt: Sarampo com complicação nos olhos ou na boca
   reason_hi: आँख या मुँह की जटिलता के साथ खसरा
+  reason_sw: "Surua yenye matatizo ya macho au mdomo"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "surua[^.]{0,70}(macho|mdomo)[^.]{0,35}(usaha|vidonda)"
+  - "surua[^.]{0,55}(usaha|vidonda)[^.]{0,35}(macho|mdomo)"
   # El IMCI mira dos cosas en un niño con sarampión: pus saliendo del ojo y úlceras en la boca.
   # Se exige la complicación, no sólo la palabra «ojos»: «tiene sarampión y los ojos bien» no es
   # una urgencia.
@@ -4454,7 +4811,11 @@ rules:
   reason_ar: مولود توقف عن الرضاعة وتيبّس جسمه
   reason_pt: Recém-nascido que deixa de mamar e fica rígido
   reason_hi: नवजात जो दूध पीना बंद कर दे और अकड़ जाए
+  reason_sw: "Mtoto mchanga anayeacha kunyonya na kukakamaa"
   patterns:
+  # ── suajili (18-sep-2026, fase 3 de África) ──
+  - "mchanga[^.]{0,70}(ameacha kunyonya|hanyonyi)[^.]{0,50}(amekakamaa|mwili mgumu)"
+  - "mchanga[^.]{0,70}(mshtuko|misuli inakaza|amekakamaa)"
   # La OMS: en el tétanos neonatal el bebé deja de mamar, se pone rígido y tiene espasmos. Es de
   # las cosas que más matan recién nacidos donde el parto no es hospitalario, y el triaje no lo
   # conocía en ninguna lengua.
