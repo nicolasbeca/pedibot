@@ -13,9 +13,14 @@ palabras que aparecen en SUS frases mal detectadas y en las de ninguna otra —e
 buena por construcción— y se dejaron fuera a mano las que el cálculo no podía ver, como «pile»,
 que es francés y también inglés, o «dolor», que es igual en castellano y en portugués.
 
-De 120 a 21. Lo que queda son frases cortas donde el portugués y el castellano comparten casi
-todo («é diabético e está suado e confuso») y no hay marca que las separe sin robarle frases a la
-otra lengua. Por eso este candado no exige cero: exige **no empeorar**.
+De 120 a **11**. La última vuelta fue la que más enseñó: «o recém-nascido parou de mamar e está
+rígido» empataba a uno —« está » para el castellano, « recém» para el portugués— y el empate se
+lo lleva el castellano por regla, así que una emergencia portuguesa recibía el aviso en
+castellano. Pero « está » **es idéntica en las dos lenguas**: contarla sólo para una era el
+error. Contándola para las dos, el empate lo deshace lo que sí es exclusivo.
+
+Lo que queda son once frases de tres palabras donde no hay marca que separar sin robarle frases
+a la otra lengua. Por eso este candado no exige cero: exige **no empeorar**.
 """
 
 from __future__ import annotations
@@ -29,7 +34,7 @@ from pedibot.bot.retrieval import detect_lang
 
 #: Lo peor que se acepta hoy por lengua, medido el 18-sep-2026. Bajarlo es bienvenido; subirlo
 #: es una regresión y falla aquí. El día que una lengua llegue a cero, se pone cero.
-TECHO = {"es": 2, "en": 2, "fr": 8, "de": 2, "ru": 1, "ar": 1, "pt": 12, "hi": 1}
+TECHO = {"es": 1, "en": 1, "fr": 7, "de": 1, "ru": 0, "ar": 0, "pt": 1, "hi": 0}
 
 
 def _cuenta() -> collections.Counter:
@@ -55,4 +60,4 @@ def test_the_detector_does_not_get_worse(lang: str) -> None:
 
 def test_the_whole_battery_is_mostly_right() -> None:
     total = sum(len(fr) for d in (CASOS, SEGUNDA, CORTO) for fr in d.values())
-    assert sum(MAL.values()) <= 25, f"{sum(MAL.values())} de {total} mal detectadas"
+    assert sum(MAL.values()) <= 12, f"{sum(MAL.values())} de {total} mal detectadas"
