@@ -25,6 +25,10 @@ rules:
   - (reagiert seit)[^.]{0,20}(nicht)
   - (не реагирует уже|без сознания уже)
   - (لا يستجيب منذ|فاقد الوعي منذ)
+  # 18-sep-2026: en árabe la negación va delante del verbo y ES la señal: «لا يستيقظ» es «no
+  # se despierta» y «لا يستجيب» es «no responde». Sin la frase entera dentro del patrón, el
+  # guardián de la negación las callaba (L173).
+  - (لا يستيقظ|لا يفيق|لا يستجيب|لا يتحرك)
   - (n[aã]o responde h[áa])
   - (से कोई प्रतिक्रिया नहीं|से बेहोश)
   # 17-sep-2026: en castellano el «no responde» cazaba la reanimación; en inglés, no.
@@ -241,6 +245,8 @@ rules:
   - "anapumua kwa (shida|tabu) (sana|kubwa)"
   - "mbavu zin(a|ai)ingia ndani"
   - "anashindwa kupumua"
+  # «hawezi kupumua» es «no puede respirar»: la negación va dentro del verbo (18-sep-2026).
+  - "hawezi ku(pumua|vuta pumzi)"
   # 17-sep-2026, segundo intento. Pedir «al respirar» dejaba fuera la forma normal de
   # contarlo —«no tiene fiebre pero se le marcan las costillas»— y lo cazó una prueba vieja.
   # Ahora el patrón es amplio otra vez y lo que se excluye es la DELGADEZ, que es la
@@ -384,6 +390,18 @@ rules:
   - läuft blau an
   - keucht
   - ringt nach luft
+  # 18-sep-2026. «Er kann nicht atmen» —«no puede respirar»— daba RUTINA, que es la frase más
+  # urgente que un padre alemán puede escribir. El guardián de la negación veía el «nicht»
+  # delante de «atmen» y callaba la regla; en castellano, inglés y francés no pasaba porque
+  # allí el patrón EMPIEZA por la negación —«no puede respirar», «cannot breathe», «ne peut
+  # pas respirer»— y el guardián respeta eso a propósito. En alemán el verbo se va al final y
+  # la negación queda en medio, así que el patrón tiene que llevarla dentro (L173: la negación
+  # puede SER la señal).
+  - (kann|konnte) (er |sie |es |das kind |das baby )?(kaum|nicht|nicht mehr|gar nicht) (richtig )?atmen
+  - (kriegt|bekommt) (er |sie |es )?(kaum|keine|nicht genug) luft (mehr )?
+  - atmet (gar )?nicht (mehr )?
+  - hört auf zu atmen
+  - keine luft (mehr )?(bekommen|kriegen)
   - не дыш
   - тяжело дыш
   - трудно дыш
@@ -827,6 +845,9 @@ rules:
   reason_en: Deep wound with heavy bleeding that does not stop after 10 minutes of pressure
   reason_fr: Plaie profonde qui saigne abondamment malgré 10 minutes de compression
   patterns:
+  # 18-sep-2026: «الدم لا يتوقف» —la sangre no para— con la negación dentro, que en árabe
+  # es la señal y no su contrario.
+  - (الدم|النزيف|الدماء)[^.]{0,14}(لا يتوقف|لا يقف|لا ينقطع|مستمر)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "damu (haikomi|inatoka nyingi)"
   - "jeraha linatoka damu nyingi"
@@ -4080,10 +4101,24 @@ rules:
   - (unable to|not able to|cannot|can'?t)[^.]{0,20}(drink|breastfeed|feed|suck)(?![^.]{0,45}(because i|mastitis|my breast|my nipple))
   - (ne (peut|arrive) (pas )?[àa]?)[^.]{0,20}(boire|t[ée]ter)
   - (kann nicht)[^.]{0,20}(trinken|saugen|an die brust)
+  # 18-sep-2026: «trinkt nichts mehr» y «isst und trinkt nichts» son la misma cosa dicha con
+  # la negación DETRÁS del verbo, que es como se dice de verdad en alemán.
+  - (trinkt|isst)[^.]{0,14}(nichts|nicht mehr|gar nichts)
+  - (verweigert|nimmt)[^.]{0,14}(die brust|das fläschchen|keine nahrung)
   - (не может)[^.]{0,20}(пить|сосать|взять грудь)
+  # 18-sep-2026: al añadir las formas alemanas —«trinkt nichts mehr»— el candado de densidad
+  # avisó de que el ruso y el hindi se quedaban con un patrón frente a trece latinos. Estos son
+  # los mismos signos en esas dos escrituras: la negación puesta detrás del verbo, que es como
+  # se dice de verdad en las dos.
+  - (ничего не|совсем не)[^.]{0,14}(пьет|пьёт|ест|сосет|сосёт)
+  - (отказывается от|не берет|не берёт)[^.]{0,14}(груди|грудь|бутылочк|еды)
+  - (перестал|перестала)[^.]{0,14}(пить|есть|сосать)
   - (لا يستطيع)[^.]{0,20}(الشرب|الرضاعة|الرضع)
   - (n[aã]o (consegue|pode))[^.]{0,20}(beber|mamar)
   - (पी नहीं|स्तनपान नहीं)[^.]{0,20}(पा रहा|कर पा)
+  - (दूध|पानी|कुछ भी)[^.]{0,14}नहीं (पी|ले)[^.]{0,10}रह
+  - (स्तन|बोतल)[^.]{0,14}नहीं ले रह
+  - (दूध|स्तनपान)[^.]{0,14}(बंद कर दिया|छोड़ दिया)
 
 - id: vomits_everything
   level: urgent

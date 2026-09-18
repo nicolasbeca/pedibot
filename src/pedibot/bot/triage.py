@@ -557,15 +557,15 @@ CAUSAL = re.compile(
     r"(?:puede[n]? (?:dar|causar|provocar|producir)"
     r"|can (?:it |this |measles |malaria )?(?:cause|give|lead to)|could .{0,12}cause"
     r"|peut.{0,12}(?:donner|provoquer|entra[îi]ner)"
-    r"|kann .{0,14}(?:verursachen|ausl[öo]sen)"
+    r"|kann .{0,40}(?:verursachen|ausl[öo]sen)"
     r"|может ли .{0,14}(?:вызвать|дать)|вызывает ли"
     r"|هل (?:يسبب|تسبب|يؤدي)"
-    r"|क्या .{0,14}(?:हो सकता|कर सकता)"
+    r"|क्या .{0,40}(?:हो सकता|कर सकता|करता है)"
     r"|inaweza ku(?:sababisha|leta))",
     re.I | re.U,
 )
 
-#: El marco en suajili, que va al final de la frase (18-sep-2026).
+#: El marco que va al FINAL de la frase: suajili e hindi (18-sep-2026).
 #:
 #: Todos los guardianes de arriba miran lo que va DELANTE de la señal, porque en las ocho lenguas
 #: que había el «cómo evitar», el «cuáles son» y el «qué hago si» van delante. El suajili los pone
@@ -575,11 +575,16 @@ CAUSAL = re.compile(
 #: Y va lo de prevenir —«kuzuia»— con una excepción escrita: «kuzuia damu» es «parar la
 #: hemorragia», que es una pregunta de instrucciones y a la vez una urgencia de verdad. Es la
 #: misma línea que se trazó con «cómo paro la hemorragia» cuando se escribió RECONOCER.
-SW_MARCO = re.compile(
+MARCO_AL_FINAL = re.compile(
     r"(?:\bni nini\b|\bni zipi\b|\bni ipi\b|\bni gani\b"
     r"|nitajua\w*|nawezaje|ninawezaje|jinsi ya"
     r"|nimeambiwa|nimesoma|nimeambiwa kwamba"
-    r"|kuzuia(?! damu| kutokwa))",
+    r"|kuzuia(?! damu| kutokwa)"
+    # Hindi: «गंभीर निर्जलीकरण के लक्षण क्या हैं» es «¿cuáles son los signos de la
+    # deshidratación grave?», y el «क्या हैं» va detrás, igual que en suajili.
+    r"|(?:लक्षण|संकेत|निशानी)[^।?]{0,16}क्या (?:ह|होत)"
+    r"|कैसे (?:रोक|बचा|पहचान)"
+    r"|मुझे बताया गया|मैंने पढ़ा)",
     re.I | re.U,
 )
 
@@ -669,7 +674,7 @@ for _nombre in (
     # casaba, porque el texto del padre llega ya con ة→ه y el patrón seguía con la forma culta.
     "RECONOCER",
     "CAUSAL",
-    "SW_MARCO",
+    "MARCO_AL_FINAL",
 ):
     _rx = globals()[_nombre]
     globals()[_nombre] = re.compile(aplana(_rx.pattern), _rx.flags)
@@ -771,20 +776,35 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
     # cosas, y en la oración entera porque el «puede dar» puede ir delante o detrás de la señal.
     # el suajili no escribe el signo: marca la pregunta con «je» delante, igual que el
     # castellano la marca con «¿». Sin esto, «je surua inaweza kusababisha vidonda?» daba alarma.
+    # 18-sep-2026, midiendo las reglas africanas en las cuatro lenguas que faltaban: un padre
+    # que escribe una pregunta **no siempre pone el signo**, y en cuatro de las nueve lenguas la
+    # pregunta no se marca con un signo sino con una pieza de la propia frase:
+    #
+    #     هل تسبب الحصبة تقرحات       la partícula «هل» delante
+    #     क्या खसरा छाले कर सकता है     la partícula «क्या» delante
+    #     может ли корь вызвать...    la partícula «ли»
+    #     kann Masern Geschwüre...    el verbo en primer lugar, que en alemán ES la pregunta
+    #
+    # Las cuatro daban alarma de sarampión complicado por no llevar «?». Se añaden las piezas,
+    # que es más seguro que quitar el requisito entero: sin él, «el golpe le puede dar una
+    # hemorragia y está sangrando mucho» se callaría por el «puede dar» de la primera mitad.
     es_pregunta = (
         "?" in frase
         or "؟" in frase
         or "¿" in texto[max(0, inicio - 60) : inicio]
         or re.match(r"\s*je\b", frase, re.I) is not None
+        or re.search(r"هل|क्या|\bли\b", frase) is not None
+        or re.match(r"\s*(?:kann|ist|hat|kommt|muss|darf|soll|wird)\b", frase, re.I) is not None
     )
     if es_pregunta and CAUSAL.search(frase):
         return True
-    # El suajili pone el interrogativo AL FINAL: «degedege la homa NI NINI» es «¿qué es una
+    # El suajili y el hindi ponen el interrogativo AL FINAL: «degedege la homa NI NINI» es
+    # «¿qué es una
     # convulsión febril?» y «dalili za homa ya uti wa mgongo NI ZIPI» es «¿cuáles son los
     # signos?». Ninguna de las otras ocho lenguas lo hace, y todos los guardianes de arriba
     # miran lo que va DELANTE de la señal, así que aquí no ven nada: las dos frases daban
     # emergencia. Por eso esta mira la oración entera.
-    return bool(SW_MARCO.search(frase))
+    return bool(MARCO_AL_FINAL.search(frase))
 
 
 def _negada(texto: str, inicio: int, fin: int) -> bool:

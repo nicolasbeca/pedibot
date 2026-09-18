@@ -44,7 +44,7 @@ DECLARADOS = {
     # —«degedege la homa NI NINI» es «¿qué es una convulsión febril?»— y todos los demás
     # guardianes miran lo que va DELANTE de la señal. Las otras ocho lenguas no lo necesitan
     # porque en todas ellas el marco va delante, y cada una ya lo tiene en su guardián.
-    "SW_MARCO": "es el marco interrogativo del suajili, que va al final de la frase; el suajili se escribe sólo en alfabeto latino y las otras ocho lenguas llevan su marco en los guardianes de siempre",
+    "MARCO_AL_FINAL": "es el marco interrogativo de las dos lenguas que lo ponen al final de la frase, el suajili y el hindi; cirílico y árabe no lo necesitan porque en esas dos el marco va delante y ya lo llevan los guardianes de siempre",
     "_LATINA": "es latino A PROPÓSITO: marca dónde se quita la tilde, y el árabe y el "
     "devanagari no llevan tildes sino letras — quitarles la marca combinante rompe la "
     "palabra (las matras de «बुखार»). El cirílico se trata aparte, fundiendo sólo la ё",

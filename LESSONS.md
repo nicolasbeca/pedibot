@@ -595,3 +595,31 @@ más no se ve en ninguna pantalla —cuando falla un guardián el fallo es un si
 regla de fondo: lo que en una lengua marca distancia en el tiempo puede no marcarla en otra;
 antes de traducir un guardián hay que preguntarse qué significa de verdad la pieza gramatical
 que se está copiando.
+
+## L187 · La negación de cada lengua va en un sitio distinto, y el guardián no lo sabe (18-sep-2026)
+Midiendo las reglas africanas en las cuatro lenguas que faltaban apareció, de rebote, esto:
+
+    er kann nicht atmen        →  RUTINA
+
+«No puede respirar», en alemán, la frase más urgente que un padre puede escribir. Y con ella «er
+kann nicht atmen und wird blau».
+
+La causa es la misma de L173 vista por el otro lado. El guardián de la negación tiene una
+excepción escrita a propósito: **no cuenta la negación que forma parte de la propia coincidencia**
+—«no puede respirar», «cannot breathe», «ne peut pas respirer» empiezan por ella y siguen
+saltando—. Pero eso sólo funciona si el patrón la lleva dentro, y en alemán el verbo se va al
+final: el patrón casaba «atmen», la negación quedaba fuera, delante, y el guardián la callaba.
+
+Al barrer esa familia en las cuatro lenguas que colocan la negación de otra manera salieron tres
+más: «sie trinkt nichts mehr», «لا يستيقظ» (no se despierta) y «الدم لا يتوقف» (la sangre no
+para). Cuatro emergencias mudas, en cuatro lenguas, y ninguna se veía en ninguna pantalla.
+
+**La regla**: cuando una regla necesita la negación para significar lo que significa, el patrón
+tiene que llevarla DENTRO, en cada lengua y con el orden de esa lengua. Y hay que ir a buscarlo a
+propósito: las cuatro salieron de un barrido de una tarde, no de un informe.
+
+Y el corolario que costó dos idas y venidas: **al escribir esos patrones se ensancha una regla, y
+el candado de densidad avisa de que las otras escrituras se han quedado cortas**. Hacerle caso es
+el trabajo, no el obstáculo: al escribir el ruso y el hindi del «no toma nada» apareció que «खाना
+छोड़ दिया» —ha dejado de comer— es el trastorno alimentario de una adolescente y no el signo de
+peligro de un lactante. Dos alarmas distintas en la misma frase, y sólo se ve escribiéndola.
