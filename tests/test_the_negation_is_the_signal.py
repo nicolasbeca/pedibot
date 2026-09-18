@@ -264,3 +264,55 @@ def test_the_urgency_said_in_the_negative_still_fires(
     assert regla in ids or orden[r.level] >= orden[_nivel_de(regla)], (
         f"[{lang}] «{texto}» → {ids or 'nada'} ({r.level})"
     )
+
+
+#: El apóstrofo que un padre se come al escribir deprisa en el móvil (18-sep-2026).
+#:
+#: Salió verificando lo anterior contra la web: escribí «la plaie ne sarrete pas de saigner» sin
+#: apóstrofo, como se teclea de verdad, y no saltó nada. El francés entero lo daba por seguro:
+#: «il setouffe» —se está ahogando— también daba rutina.
+#:
+#: Es la misma familia que la hamza árabe que `aplana` ya normaliza (L138) y que el nuqta
+#: devanagari: lo que se cae al escribir deprisa. Aquí no se podía arreglar en `aplana`, porque
+#: quitarle el apóstrofo a los patrones convertiría `can(?:'?t| ?not)` en una expresión inválida;
+#: se arregla haciéndolo opcional en los 81 patrones que lo llevaban obligatorio.
+SIN_APOSTROFO = [
+    ("fr", "la plaie ne s'arrête pas de saigner", "severe_bleeding"),
+    ("fr", "la plaie ne sarrete pas de saigner", "severe_bleeding"),
+    ("fr", "il n'arrive pas à le réveiller", "not_responding"),
+    ("fr", "il narrive pas a le reveiller", "not_responding"),
+    ("fr", "il s'étouffe", "choking"),
+    ("fr", "il setouffe", "choking"),
+    ("fr", "on voit l'os", "open_fracture"),
+    ("fr", "on voit los", "open_fracture"),
+    ("en", "he can't breathe", "severe_breathing"),
+    ("en", "he cant breathe", "severe_breathing"),
+]
+
+
+@pytest.mark.parametrize("lang,texto,regla", SIN_APOSTROFO, ids=lambda x: str(x)[:30])
+def test_it_fires_with_and_without_the_apostrophe(
+    triaje: Triage, lang: str, texto: str, regla: str
+) -> None:
+    ids = [m.id for m in triaje.assess(texto).matched]
+    assert regla in ids, f"[{lang}] «{texto}» → {ids or 'nada'}"
+
+
+#: Y el control, porque hacer opcional un carácter en 81 patrones es ensanchar.
+CORRIENTES_CON_ELISION = [
+    ("fr", "il a un rhume et tousse un peu"),
+    ("fr", "elle fait ses dents et bave beaucoup"),
+    ("fr", "quand est-ce que je peux donner des fruits"),
+    ("fr", "mon fils joue dans le jardin"),
+    ("fr", "il est tombé mais il va bien"),
+    ("en", "he has a runny nose and a mild cough"),
+    ("en", "she is teething and drooling a lot"),
+]
+
+
+@pytest.mark.parametrize("lang,texto", CORRIENTES_CON_ELISION, ids=lambda x: str(x)[:30])
+def test_the_optional_apostrophe_does_not_widen_too_far(
+    triaje: Triage, lang: str, texto: str
+) -> None:
+    r = triaje.assess(texto)
+    assert r.level == "routine", f"[{lang}] «{texto}» → {r.level} por {[m.id for m in r.matched]}"

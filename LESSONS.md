@@ -623,3 +623,24 @@ el candado de densidad avisa de que las otras escrituras se han quedado cortas**
 el trabajo, no el obstáculo: al escribir el ruso y el hindi del «no toma nada» apareció que «खाना
 छोड़ दिया» —ha dejado de comer— es el trastorno alimentario de una adolescente y no el signo de
 peligro de un lactante. Dos alarmas distintas en la misma frase, y sólo se ve escribiéndola.
+
+## L188 · El apóstrofo se cae al escribir deprisa, y el francés entero lo daba por seguro (18-sep-2026)
+Verificando contra la web lo que acababa de arreglar, escribí la frase francesa **sin apóstrofo**
+—«la plaie ne sarrete pas de saigner»— porque es como se teclea en un móvil. No saltó nada. Ni
+eso ni «il setouffe», que es «se está ahogando».
+
+Es la misma familia que la hamza árabe que `aplana` normaliza desde el 17-sep (L138) y que el
+nuqta devanagari: **lo que se cae al escribir deprisa**. En francés se cae el apóstrofo de la
+elisión, que está en casi todas sus frases de urgencia: «s'étouffe», «n'arrive pas», «ne
+s'arrête pas», «l'os».
+
+Y no se podía arreglar donde se arregló el árabe. `aplana` se aplica al texto **y a los
+patrones**, y quitarle el apóstrofo a un patrón inglés como `can(?:'?t| ?not)` lo convierte en
+`can(?:?t| ?not)`, que es una expresión regular inválida. Se arregla en el otro sitio: haciéndolo
+opcional —`s'?`— en los 81 patrones que lo llevaban obligatorio.
+
+**La regla**: cada escritura tiene su carácter que se cae, y hay que ir a buscarlo a propósito.
+El árabe pierde la hamza, el devanagari el nuqta, el castellano y el francés las tildes, el
+francés además el apóstrofo, y el alemán convierte la diéresis en dos letras. Lo que se cae nunca
+está en la frase de ejemplo que uno escribe: aparece cuando se prueba **escribiendo como escribe
+un padre a las tres de la mañana**, sin teclado cómodo y con una mano.

@@ -13,7 +13,7 @@ rules:
   patterns:
   # 18-sep-2026: «no consigo despertarlo» en seis lenguas. En inglés ya saltaba por otra vía y
   # en las demás no había nada: es la misma frase y el mismo miedo.
-  - "(n'arrive pas|ne r[ée]ussis pas|impossible)[^.]{0,20}(à le r[ée]veiller|à la r[ée]veiller)"
+  - "(n'?arrive pas|ne r[ée]ussis pas|impossible)[^.]{0,20}(à le r[ée]veiller|à la r[ée]veiller)"
   - "kann (ihn|sie|es)[^.]{0,20}nicht[^.]{0,12}(wach|aufwecken|wecken)"
   - "не мог[уа][^.]{0,20}разбудить"
   - "(n[ãa]o consigo|n[ãa]o consegue)[^.]{0,20}(acord[áa]|despert)"
@@ -349,7 +349,7 @@ rules:
   - (lips|skin) (are |is )?(blue|purple|grey|gray)
   - turning blue
   - ne peut pas respirer
-  - n'arrive pas [aà] respirer
+  - n'?arrive pas [aà] respirer
   - du mal [aà] respirer
   - difficult[ée] [aà] respirer
   - difficult[ée]s [aà] respirer
@@ -658,7 +658,7 @@ rules:
   # 17-sep-2026: «se atragantó CON algo» —con el objeto, que es como se cuenta— no casaba
   # en cuatro lenguas: los patrones pedían además que se dijera que no respira.
   - (choked|choking)[^.]{0,15}on[^.]{0,30}(a |the )?(piece|bit|grape|nut|toy|food|apple)
-  - (s'est [ée]touff[ée]|s'[ée]touffe)[^.]{0,20}avec[^.]{0,30}(un |une |du |de la )?(morceau|bout|bonbon|jouet|cacahu[èe]te)
+  - (s'?est [ée]touff[ée]|s'?[ée]touffe)[^.]{0,20}avec[^.]{0,30}(un |une |du |de la )?(morceau|bout|bonbon|jouet|cacahu[èe]te)
   - (hat sich|sich)[^.]{0,15}(an|mit)[^.]{0,30}(st[üu]ck|bissen|traube|spielzeug)[^.]{0,20}verschluckt
   - verschluckt[^.]{0,20}(st[üu]ck|bissen|essen)
   - (اختنق|اختنقت|شرق|شرقت|غص)[^.]{0,30}(بقطعة|بحبة|بلقمة|بطعام|بلعبة)
@@ -668,7 +668,7 @@ rules:
   - se est[aá] ahogando
   - choking
   - something stuck in (his|her|their) throat
-  - s'[ée]touffe
+  - s'?[ée]touffe
   - '[ée]touffement'
   - fausse route
   - aval[ée] de travers
@@ -857,11 +857,11 @@ rules:
   reason_en: Deep wound with heavy bleeding that does not stop after 10 minutes of pressure
   reason_fr: Plaie profonde qui saigne abondamment malgré 10 minutes de compression
   patterns:
-  # 18-sep-2026: «the wound will not stop bleeding» y «la plaie ne s'arrête pas de saigner» no
+  # 18-sep-2026: «the wound will not stop bleeding» y «la plaie ne s'?arrête pas de saigner» no
   # saltaban. La negación es la señal y tiene que ir DENTRO del patrón (L173, L187).
   - "(wound|cut|bleeding)[^.]{0,20}(will not|won't|does ?n'?t|is not) stop"
-  - "(ne s'arr[êe]te pas|n'arr[êe]te pas)[^.]{0,20}(de saigner|le sang)"
-  - "(le sang|la plaie)[^.]{0,25}(ne s'arr[êe]te pas|ne cesse pas)"
+  - "(ne s'?arr[êe]te pas|n'?arr[êe]te pas)[^.]{0,20}(de saigner|le sang)"
+  - "(le sang|la plaie)[^.]{0,25}(ne s'?arr[êe]te pas|ne cesse pas)"
   - "(jeraha|damu)[^.]{0,20}(halikomi|haikomi|haiachi)"
   # 18-sep-2026: «الدم لا يتوقف» —la sangre no para— con la negación dentro, que en árabe
   # es la señal y no su contrario.
@@ -908,7 +908,7 @@ rules:
   - won'?t stop bleeding
   - can(?:'?t| ?not) stop (the )?bleeding
   - saigne (beaucoup|sans arr[eê]t|abondamment)
-  - n'arr[eê]te pas de saigner
+  - n'?arr[eê]te pas de saigner
   - h[ée]morragie
   - blutet stark
   - starke blutung
@@ -948,7 +948,7 @@ rules:
   source: seup_acudir_urgencias
   reason_es: Fractura abierta (se ve el hueso)
   reason_en: Open fracture (bone is visible)
-  reason_fr: Fracture ouverte (l'os est visible)
+  reason_fr: Fracture ouverte (l'?os est visible)
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "mfupa (umetoka nje|unaonekana)"
@@ -970,7 +970,7 @@ rules:
   - bone (is )?(sticking|showing|visible)
   - open fracture
   - fracture ouverte
-  - on voit l'os
+  - on voit l'?os
   - knochen sichtbar
   - offener bruch
   - knochen schaut raus
@@ -999,14 +999,14 @@ rules:
   source: seup_fiebre
   reason_es: Manchas en la piel que no desaparecen al presionar (posible sepsis/meningitis)
   reason_en: Spots on the skin that do not fade when pressed (possible sepsis/meningitis)
-  reason_fr: Taches sur la peau qui ne s'effacent pas à la pression (possible sepsis/méningite)
+  reason_fr: Taches sur la peau qui ne s'?effacent pas à la pression (possible sepsis/méningite)
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "madoa[^.]{0,25}(hayapotei|hayaondoki)[^.]{0,20}(nikibonyeza|yakibonyezwa|glasi)"
   - "madoa mekundu hayapotei"
-  # 17-sep-2026: «taches qui ne s'effacent pas» y «दाने जो नहीं मिटते» — la prueba del
+  # 17-sep-2026: «taches qui ne s'?effacent pas» y «दाने जो नहीं मिटते» — la prueba del
   # vaso dicha con otro verbo.
-  - (taches|boutons|points|p[ée]t[ée]chies)[^.]{0,30}(ne )?s'effacent pas
+  - (taches|boutons|points|p[ée]t[ée]chies)[^.]{0,30}(ne )?s'?effacent pas
   - (taches|boutons)[^.]{0,30}(ne )?(part|partent|disparaissent) pas[^.]{0,25}(pression|appuie|verre)?
   - (दाने|धब्बे|चकत्ते)[^.]{0,25}(जो )?(नहीं मिटते|नहीं जाते|दबाने पर नहीं)
   # 17-sep-2026: la palabra técnica —petequias— en árabe e hindi.
@@ -1023,11 +1023,11 @@ rules:
   - (spots|rash).{0,60}(don'?t|do not|doesn'?t) (fade|disappear|go away).{0,30}press
   - petechia
   - glass test
-  - taches.{0,60}ne (disparaissent|partent|s'effacent) pas.{0,40}(appuie|pression|presse)
+  - taches.{0,60}ne (disparaissent|partent|s'?effacent) pas.{0,40}(appuie|pression|presse)
   - p[ée]t[ée]chie
-  - (taches|[ée]ruption|boutons|rougeurs|plaques).{0,70}ne s'(estompe|estompent|att[ée]nue|att[ée]nuent) pas
-  - ne s'(estompe|estompent) pas
-  - ne s'(effacent?|estompent?).{0,10}pas.{0,40}(verre|appui|pression|presse)
+  - (taches|[ée]ruption|boutons|rougeurs|plaques).{0,70}ne s'?(estompe|estompent|att[ée]nue|att[ée]nuent) pas
+  - ne s'?(estompe|estompent) pas
+  - ne s'?(effacent?|estompent?).{0,10}pas.{0,40}(verre|appui|pression|presse)
   - flecken.{0,40}nicht weg
   - flecken.{0,40}nicht verschwind
   - (flecken|punkte|ausschlag|pünktchen).{0,80}verschwinden nicht
@@ -1454,7 +1454,7 @@ rules:
   # que la contracción inglesa me muerde en un día (ver `suicidal_ideation`).
   - ((has|have|had)\s*n(?:'|o)?t|will not|won'?t|refus\w*)[^.]{0,20}(drunk|drinking|drink)[^.]{0,25}(anything|any fluids|at all|since|all day)
   - (not drinking)[^.]{0,15}(anything|at all)
-  - (ne (boit|veut boire)|n'a rien bu)[^.]{0,25}(rien|d'eau|depuis|de la journ[ée]e)?
+  - (ne (boit|veut boire)|n'?a rien bu)[^.]{0,25}(rien|d'?eau|depuis|de la journ[ée]e)?
   - (refuse)[^.]{0,15}de boire
   - (trinkt)[^.]{0,25}(nichts|nicht mehr|kaum etwas)[^.]{0,25}(seit|den ganzen tag)?
   - (verweigert)[^.]{0,20}(das trinken|die flasche|jede fl[üu]ssigkeit)
@@ -1479,7 +1479,7 @@ rules:
   - sin (pis|pip[íi]|orina|pa[ñn]al mojado)[^.]{0,30}(desde|en) 
   - no (ha hecho|hace|ha mojado)[^.]{0,20}(pis|pip[íi]|pa[ñn]al)
   - (pas de|sans) (pipi|urine|couche mouill[ée]e)[^.]{0,30}(depuis|en) 
-  - (n'a pas|ne fait pas)[^.]{0,20}(pipi|uriner|mouill[ée] sa couche)
+  - (n'?a pas|ne fait pas)[^.]{0,20}(pipi|uriner|mouill[ée] sa couche)
   - (لم|ما) (يتبول|تتبول|بال|بالت)[^.]{0,30}(منذ|من)
   - (بدون|بلا) (بول|تبول|حفاض مبلل)
   - sem (xixi|urina|fralda molhada)[^.]{0,30}(desde|h[áa]) 
@@ -1522,10 +1522,10 @@ rules:
   - dehydrat
   - yeux enfonc[ée]s
   - ne fait plus pipi
-  - n'a pas urin[ée]
+  - n'?a pas urin[ée]
   - couche s[eè]che
   - pas mouill[eé] sa couche
-  - n'a pas fait pipi depuis
+  - n'?a pas fait pipi depuis
   - sans larmes
   - d[ée]shydrat
   - eingesunkene augen
@@ -1719,7 +1719,7 @@ rules:
   source: seup_acudir_urgencias
   reason_es: Pila de botón tragada — quema el esófago en horas, urgencias inmediatas
   reason_en: Button battery swallowed — it burns the oesophagus within hours, go now
-  reason_fr: Pile bouton avalée — elle brûle l'œsophage en quelques heures, urgences immédiates
+  reason_fr: Pile bouton avalée — elle brûle l'?œsophage en quelques heures, urgences immédiates
   reason_de: Knopfbatterie verschluckt — sie verätzt die Speiseröhre in Stunden, sofort in die Klinik
   reason_ru: Проглочена батарейка-таблетка — она прожигает пищевод за часы, немедленно в больницу
   reason_ar: ابتلع بطارية قرصية — تحرق المريء خلال ساعات، إلى الطوارئ فورًا
@@ -1761,7 +1761,7 @@ rules:
   source: seup_acudir_urgencias
   reason_es: Ingesta de un objeto (sobre todo pilas o imanes)
   reason_en: Swallowed an object (especially batteries or magnets)
-  reason_fr: Ingestion d'un objet (surtout piles ou aimants)
+  reason_fr: Ingestion d'?un objet (surtout piles ou aimants)
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "(amemeza|kameza|alimeza)[^.]{0,14}(sarafu|sumaku|kitu|kifungo|shanga|mbegu)"
@@ -1770,7 +1770,7 @@ rules:
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
   - ingesta de (un )?objeto
-  - ingestion d'un objet
+  - ingestion d'?un objet
   - gegenstand verschluckt
   - ingest[ãa]o de (um )?objeto
   - (कोई )?चीज़ निगल
@@ -2098,7 +2098,7 @@ rules:
   source: seup_acudir_urgencias
   reason_es: Bebé menor de 1 mes que rechaza las tomas
   reason_en: Baby under 1 month refusing feeds
-  reason_fr: Bébé de moins d'un mois qui refuse de téter
+  reason_fr: Bébé de moins d'?un mois qui refuse de téter
   patterns:
   # 18-sep-2026: «recusa a mama» no estaba en portugués.
   - "(recusa|rejeita)[^.]{0,20}(a mama|o peito|o seio|a mamada)"
@@ -2126,7 +2126,7 @@ rules:
   - trinkt gar nichts
   - (men(os|or) de (un|1) mes|de pocos d[ií]as|reci[eé]n nacid).{0,70}(no (quiere )?(come|mama|toma)|rechaz|no se agarra)
   - under (one|1) month.{0,70}(refus|won'?t (feed|eat)|not feeding|not eating)
-  - moins d'un mois.{0,70}(refuse|ne (veut pas )?(t[ée]ter|boire))
+  - moins d'?un mois.{0,70}(refuse|ne (veut pas )?(t[ée]ter|boire))
   - unter (einem|1) monat.{0,70}(trinkt nicht|verweigert|will nicht)
   - (меньше|младше) месяца.{0,70}(не ест|отказыва|не бер[ёе]т)
   - (أقل من|دون) شهر.{0,70}(يرفض|لا يرضع|ترفض)
@@ -2337,7 +2337,7 @@ rules:
   - (rechte\w*)[^.]{0,15}(bauchseite|bauch|seite)[^.]{0,35}(schmerz|gewandert|weh)
   # 17-sep-2026: el dolor que SE MUEVE al lado derecho —el signo clásico de la apendicitis,
   # y como lo cuenta un padre— faltaba en cinco lenguas.
-  - (douleur)[^.]{0,30}(est pass[ée]e?|a migr[ée]|s'est d[ée]plac[ée]e?)[^.]{0,30}(droit|c[ôo]t[ée] droit)
+  - (douleur)[^.]{0,30}(est pass[ée]e?|a migr[ée]|s'?est d[ée]plac[ée]e?)[^.]{0,30}(droit|c[ôo]t[ée] droit)
   - (schmerz\w*)[^.]{0,35}(gewandert|verlagert|nach rechts)[^.]{0,25}(rechte|rechts)
   - (rechte\w* (bauch)?seite|rechts)[^.]{0,30}(schmerz\w*)[^.]{0,25}(schlimmer|st[äa]rker|gewandert)
   - (боль)[^.]{0,30}(переместилась|сместилась|перешла)[^.]{0,25}(в правую|справа)
@@ -2376,7 +2376,7 @@ rules:
   source: seup_tca
   reason_es: Señales de un trastorno de la conducta alimentaria
   reason_en: Signs of an eating disorder
-  reason_fr: Signes d'un trouble du comportement alimentaire
+  reason_fr: Signes d'?un trouble du comportement alimentaire
   reason_de: Anzeichen einer Essstörung
   reason_ru: Признаки расстройства пищевого поведения
   reason_ar: علامات اضطراب في سلوك الأكل
@@ -2500,7 +2500,7 @@ rules:
   - (weakness|weak) (on|down) one side
   - (mueve mal|no puede mover).{0,20}(brazo|pierna|mano|un lado)
   - (habla|hablar) (con dificultad|raro|arrastrando|mal de repente)
-  - (bouche|visage).{0,20}(tordu|de travers|tombe d'un c[oô]t[ée])
+  - (bouche|visage).{0,20}(tordu|de travers|tombe d'?un c[oô]t[ée])
   - d[ée]sorient
   - ne sait plus o[uù] il est
   - verwirrtheit
@@ -2531,7 +2531,7 @@ rules:
   - (लड़खड़ा|डगमगा).{0,20}(चल|चलत)
   - (soudain|tout [àa] coup).{0,30}(voit|ne voit plus|vision)
   - voit soudain (flou|double|mal)
-  - (voit|vision).{0,20}(flou|double).{0,25}(soudain|d'un coup)
+  - (voit|vision).{0,20}(flou|double).{0,25}(soudain|d'?un coup)
   - (pl[öo]tzlich).{0,30}(verschwommen|doppelt|sieht nichts)
   - (внезапно|вдруг).{0,35}(плохо видит|стал плохо видеть|двоится)
   - двоится в глазах
@@ -2578,10 +2578,10 @@ rules:
   # francés e hindi faltaban en una regla de EMERGENCIA: quien escribiera «le bras ne
   # bouge plus» o «हाथ नहीं हिला रहा» no recibía ninguna alarma (7-sep-2026)
   - (ne bouge (pas|plus)).{0,25}(bras|jambe|main|côté)
-  - (parle).{0,20}(bizarrement|difficilement|mal d'un coup)
-  - (bouche|visage).{0,20}(de travers|qui tombe|tombée d'un côté)
-  - (voit double|vision double|voit flou).{0,20}(d'un coup|soudain|tout à coup)?
-  - (faiblesse).{0,25}(d'un côté|d'un seul côté)
+  - (parle).{0,20}(bizarrement|difficilement|mal d'?un coup)
+  - (bouche|visage).{0,20}(de travers|qui tombe|tombée d'?un côté)
+  - (voit double|vision double|voit flou).{0,20}(d'?un coup|soudain|tout à coup)?
+  - (faiblesse).{0,25}(d'?un côté|d'?un seul côté)
   - (हाथ|पैर|बाँह).{0,25}(नहीं हिला|नहीं चल|हिला नहीं)
   - (बोलने|बोलना).{0,15}(दिक्कत|मुश्किल|तकलीफ़|तकलीफ)
   - (मुँह|मुंह|चेहरा).{0,20}(टेढ़ा|टेढ़ी|लटक)
@@ -2592,7 +2592,7 @@ rules:
   source: seup_cefalea
   reason_es: Dolor de cabeza con signos de alarma — la hoja de cefalea de la SEUP pide consultar si le despierta por la noche, va a más o no cede al tratamiento habitual
   reason_en: Headache with warning signs — waking at night, getting worse, or not responding to the usual treatment
-  reason_fr: Céphalée avec signes d'alerte — réveille la nuit, s'aggrave, ou ne cède pas au traitement habituel
+  reason_fr: Céphalée avec signes d'?alerte — réveille la nuit, s'?aggrave, ou ne cède pas au traitement habituel
   reason_de: Kopfschmerz mit Warnzeichen — weckt nachts, wird stärker, spricht nicht auf die übliche Behandlung an
   reason_ru: Головная боль с тревожными признаками — будит ночью, усиливается или не проходит от обычного лечения
   reason_ar: صداع مع علامات تحذيرية — يوقظه ليلاً أو يزداد أو لا يستجيب للعلاج المعتاد
@@ -2614,7 +2614,7 @@ rules:
   # faltaba en cinco lenguas.
   - (dolor de cabeza|cefalea)[^.]{0,45}(a peor|peor cada d[ií]a|empeora|va aumentando)
   - (empeora|a peor|cada d[ií]a m[áa]s)[^.]{0,45}(dolor de cabeza|cefalea)
-  - (mal de t[êe]te|c[ée]phal[ée]e|maux de t[êe]te)[^.]{0,45}(empire|s'aggrave|de pire en pire)
+  - (mal de t[êe]te|c[ée]phal[ée]e|maux de t[êe]te)[^.]{0,45}(empire|s'?aggrave|de pire en pire)
   - (kopfschmerz\w*)[^.]{0,45}(werden schlimmer|verschlimmern|jeden tag schlimmer)
   - (головн\w+ бол\w+)[^.]{0,45}(сильнее|усиливается|хуже с каждым)
   - (dor de cabe[çc]a|cefaleia)[^.]{0,45}(piora|pior a cada dia|est[áa] a piorar)
@@ -2764,7 +2764,7 @@ rules:
   - (has been|is|keeps?)[^.]{0,15}cutting[^.]{0,20}(her|his|their)[^.]{0,10}(arms?|legs?|wrists?)
   - (cut|cuts|marks|scars)[^.]{0,20}on (her|his|their)[^.]{0,10}(arms?|wrists?|legs?)
   - (se (fait|faire))[^.]{0,20}(des )?(entailles|coupures|scarifications)
-  - (se scarifie|se coupe|s'automutile|se mutile)
+  - (se scarifie|se coupe|s'?automutile|se mutile)
   - (режет|порезы|царапает|ранит)[^.]{0,20}(себе|себя)
   - (себе|себя)[^.]{0,20}(режет|порезы|царапает|ранит)
   - (تجرح|يجرح|تؤذي|يؤذي|تقطع|يقطع)[^.]{0,20}(نفسها|نفسه|ذراعيها|ذراعيه|يديها)
@@ -2834,7 +2834,7 @@ rules:
   - ригидност\w*[^.]{0,25}(затылочн\w*|мышц|шеи)
   # 17-sep-2026: la rigidez de nuca sólo sabía decirse en castellano, inglés, árabe y
   # portugués. En francés, alemán, ruso e hindi —cuatro de ocho— salía RUTINA.
-  - (ne peut pas|n'arrive pas [àa]|refuse de)[^.]{0,20}(plier|bouger|tourner)[^.]{0,15}(le |son )?(cou|nuque)
+  - (ne peut pas|n'?arrive pas [àa]|refuse de)[^.]{0,20}(plier|bouger|tourner)[^.]{0,15}(le |son )?(cou|nuque)
   - (nuque|cou)[^.]{0,20}(raide|rigide|bloqu[ée])
   - (kann|will)[^.]{0,20}(den )?(nacken|hals|kopf)[^.]{0,20}nicht[^.]{0,15}(beugen|bewegen|drehen)
   - (nackensteif|steifer nacken|nackenstarre|steifen nacken)
@@ -3014,8 +3014,8 @@ rules:
   - no (puede|consigue) tragar (ni )?la saliva
   - (drool\w*|dribbl\w*)[^.]{0,40}(can'?t|cannot|unable to|struggling to|difficulty)[^.]{0,15}swallow
   - (can'?t|cannot|unable to|struggling to)[^.]{0,15}swallow[^.]{0,40}(drool|dribbl|saliva)
-  - (bave|salive)[^.]{0,40}(ne peut|n'arrive|du mal)[^.]{0,20}avaler
-  - (ne peut|n'arrive|du mal)[^.]{0,20}[àa] avaler[^.]{0,40}(bave|salive)
+  - (bave|salive)[^.]{0,40}(ne peut|n'?arrive|du mal)[^.]{0,20}avaler
+  - (ne peut|n'?arrive|du mal)[^.]{0,20}[àa] avaler[^.]{0,40}(bave|salive)
   - (speichel|sabber)\w*[^.]{0,40}(nicht schlucken|schlucken kann|schluckbeschwerden)
   - (слюн\w+)[^.]{0,40}(не может глотать|трудно глотать)
   - (لعاب|يسيل)[^.]{0,40}(لا يستطيع البلع|صعوبة في البلع)
@@ -3068,7 +3068,7 @@ rules:
   source: seup_acudir_urgencias
   reason_es: "Hinchazón o enrojecimiento detrás de la oreja, u oreja desplazada hacia delante: hay que verlo hoy"
   reason_en: "Swelling or redness behind the ear, or the ear pushed forward: it should be seen today"
-  reason_fr: "Gonflement ou rougeur derrière l'oreille, ou oreille poussée vers l'avant : à voir aujourd'hui"
+  reason_fr: "Gonflement ou rougeur derrière l'?oreille, ou oreille poussée vers l'?avant : à voir aujourd'hui"
   reason_de: "Schwellung oder Rötung hinter dem Ohr, oder abstehendes Ohr: heute ansehen lassen"
   reason_ru: "Отёк или покраснение за ухом, либо ухо оттопырено вперёд: показать сегодня"
   reason_ar: "تورم أو احمرار خلف الأذن، أو الأذن مدفوعة إلى الأمام: يجب أن يُفحص اليوم"
@@ -3098,9 +3098,9 @@ rules:
   - (swelling|swollen|redness|lump).{0,25}(around|behind) the ear
   - ear (is )?(pushed|sticking) (forward|out)
   - mastoiditis
-  - (gonflement|rougeur|douleur|bosse).{0,40}derri[eè]re l'oreille
-  - derri[eè]re l'oreille.{0,40}(gonfl|rouge|douloureu)
-  - oreille (pouss[ée]e|d[ée]coll[ée]e) (vers l'avant)?
+  - (gonflement|rougeur|douleur|bosse).{0,40}derri[eè]re l'?oreille
+  - derri[eè]re l'?oreille.{0,40}(gonfl|rouge|douloureu)
+  - oreille (pouss[ée]e|d[ée]coll[ée]e) (vers l'?avant)?
   - masto[iï]dite
   - (schwellung|r[öo]tung|schmerz|beule).{0,40}hinter dem ohr
   - hinter dem ohr.{0,40}(geschwollen|rot|schmerz)
@@ -3128,7 +3128,7 @@ rules:
   source: seup_acudir_urgencias
   reason_es: "Sangre en el pis: hay que verlo, no es normal a ninguna edad"
   reason_en: "Blood in the pee: it needs looking at, it is not normal at any age"
-  reason_fr: "Du sang dans les urines : à faire voir, ce n'est normal à aucun âge"
+  reason_fr: "Du sang dans les urines : à faire voir, ce n'?est normal à aucun âge"
   reason_de: "Blut im Urin: muss angesehen werden, in keinem Alter normal"
   reason_ru: "Кровь в моче: нужно показать врачу, это не норма ни в каком возрасте"
   reason_ar: "دم في البول: يحتاج فحصا، وليس طبيعيا في أي عمر"
@@ -3155,7 +3155,7 @@ rules:
   - (pee|urine|wee).{0,25}(is |looks )?(bloody|pink|red|dark brown)
   - haematuria
   - hematuria
-  - sang dans (les |l')?(urines|pipi)
+  - sang dans (les |l'?)?(urines|pipi)
   - (urines|pipi).{0,25}(avec du sang|rouge|ros[ée]|brun fonc)
   - h[ée]maturie
   - blut im (urin|pipi)
@@ -3189,11 +3189,11 @@ rules:
   - "(damu|maji)[^.]{0,20}(sikioni|puani)[^.]{0,45}kichwa"
   - "(ame|aka|ali|ku)gonga kichwa[^.]{0,45}(damu|maji)[^.]{0,20}(sikioni|puani)"
   # 17-sep-2026: la sangre por el oído tras una caída, en francés.
-  - (sang|liquide)[^.]{0,20}sort[^.]{0,25}(de (son |l')?)?(oreille|nez)[^.]{0,40}(chute|choc|coup|tomb[ée])
+  - (sang|liquide)[^.]{0,20}sort[^.]{0,25}(de (son |l'?)?)?(oreille|nez)[^.]{0,40}(chute|choc|coup|tomb[ée])
   - (chute|choc|coup)[^.]{0,40}(sang|liquide)[^.]{0,20}(sort|coule)[^.]{0,20}(oreille|nez)
   # 17-sep-2026: el líquido claro por la nariz tras un golpe no se reconocía en francés
   # ni en árabe. Es una de las señales de fractura de base de cráneo.
-  - (liquide|l[íi]quide)[^.]{0,15}(clair|transparent)[^.]{0,30}(sort|coule|s'[ée]coule)[^.]{0,30}(nez|oreille)
+  - (liquide|l[íi]quide)[^.]{0,15}(clair|transparent)[^.]{0,30}(sort|coule|s'?[ée]coule)[^.]{0,30}(nez|oreille)
   - (nez|oreille)[^.]{0,30}(coule|sort)[^.]{0,25}(liquide clair|sang)[^.]{0,40}(choc|coup|chute)
   - (سائل|سايل)[^.]{0,15}(صاف|شفاف)[^.]{0,30}(من)[^.]{0,15}(أنف\w*|أذن\w*)
   - (يخرج|يسيل|ينزل)[^.]{0,25}(سائل|دم)[^.]{0,20}(من)[^.]{0,15}(أنف\w*|أذن\w*)
@@ -3329,7 +3329,7 @@ rules:
   source: who_en_rabies
   reason_es: "Mordedura de un animal: hay que lavarla y que la vea un médico HOY, por la rabia y el tétanos"
   reason_en: "Animal bite: wash it and have a doctor see it TODAY — rabies and tetanus"
-  reason_fr: "Morsure d'animal : laver et faire voir par un médecin AUJOURD'HUI — rage et tétanos"
+  reason_fr: "Morsure d'?animal : laver et faire voir par un médecin AUJOURD'HUI — rage et tétanos"
   reason_de: "Tierbiss: auswaschen und HEUTE ärztlich ansehen lassen — Tollwut und Tetanus"
   reason_ru: "Укус животного: промыть и показать врачу СЕГОДНЯ — бешенство и столбняк"
   reason_ar: "عضة حيوان: اغسلها واعرضها على طبيب اليوم — داء الكلب والكزاز"
@@ -3348,7 +3348,7 @@ rules:
   # patrón cazaba «bit» suelto, y «a bit of» es media lengua inglesa.
   - (animal|dog|cat|rat|monkey) bite
   - (bitten|was bit) by[^.]{0,20}(a )?(dog|cat|animal|rat|monkey|fox|snake)
-  - morsure (d'un )?(animal|chien|chat)
+  - morsure (d'?un )?(animal|chien|chat)
   - (tier|hunde|katzen)biss
   - укус (животного|собаки|кошки)
   - (عضة|عضّة)[^.]{0,15}(حيوان|كلب|قطة)
@@ -3409,7 +3409,7 @@ rules:
   source: ecimed_pediatria_2016
   reason_es: "Ruido al coger aire (estridor): la vía aérea está estrechada, hay que verlo ahora"
   reason_en: "Noisy breathing on breathing in (stridor): the airway is narrowed — get seen now"
-  reason_fr: "Bruit à l'inspiration (stridor) : les voies respiratoires sont rétrécies — maintenant"
+  reason_fr: "Bruit à l'?inspiration (stridor) : les voies respiratoires sont rétrécies — maintenant"
   reason_de: "Geräusch beim Einatmen (Stridor): die Atemwege sind eng — jetzt vorstellen"
   reason_ru: "Шум на вдохе (стридор): дыхательные пути сужены — показать сейчас"
   reason_ar: "صوت عند الشهيق (صرير): مجرى الهواء ضيق — يُعرض الآن"
@@ -3430,7 +3430,7 @@ rules:
   - stridor
   - (noisy|whistl\w*|harsh)[^.]{0,25}(breathing|breath)[^.]{0,30}(in|inwards|at rest|when he breathes in|when she breathes in)
   - (barking cough)[^.]{0,45}(noisy|stridor|struggl\w*|whistl\w*)
-  - (bruit|sifflement)[^.]{0,25}(à l'inspiration|quand il inspire|en inspirant)
+  - (bruit|sifflement)[^.]{0,25}(à l'?inspiration|quand il inspire|en inspirant)
   - (toux aboyante)[^.]{0,45}(bruit|stridor|siffle)
   - (stridor|ger[äa]usch beim einatmen|pfeifen beim einatmen)
   - (bellender husten)[^.]{0,45}(ger[äa]usch|stridor|pfeif)
@@ -3588,7 +3588,7 @@ rules:
   - (tos|toser)[^.]{0,25}(de (repente|golpe)|s[úu]bita)[^.]{0,45}(comiendo|mientras com|con un fruto seco|con una uva)
   - (eating|chewing)[^.]{0,40}(nuts?|peanut|almond|popcorn|grape|carrot|sweet)[^.]{0,45}(cough\w*|chok\w*|splutter)
   - (sudden\w*)[^.]{0,20}(cough\w*)[^.]{0,45}(while eating|with a nut|with a peanut|with a grape)
-  - (mangeait|en mangeant)[^.]{0,40}(cacahu[èe]te|noix|amande|raisin|bonbon)[^.]{0,45}(tousse|toux|s'[ée]touffe)
+  - (mangeait|en mangeant)[^.]{0,40}(cacahu[èe]te|noix|amande|raisin|bonbon)[^.]{0,45}(tousse|toux|s'?[ée]touffe)
   - (a[sß])[^.]{0,35}(nuss|erdnuss|traube|popcorn)[^.]{0,45}(husten|hustet|verschluckt)
   - (ел|ела|жевал\w*)[^.]{0,35}(орех\w*|арахис|виноград|попкорн)[^.]{0,45}(кашел|закашля)
   - (كان يأكل|أثناء الأكل)[^.]{0,40}(مكسرات|فول سوداني|عنب|فشار)[^.]{0,45}(سعال|يسعل|اختنق)
@@ -3601,7 +3601,7 @@ rules:
   source: ecimed_pediatria_2016
   reason_es: "El inhalador no le hace efecto: una crisis de asma que no responde es urgencia ahora"
   reason_en: "The inhaler is not working: an asthma attack that does not respond is an emergency now"
-  reason_fr: "L'inhalateur ne fait pas effet : une crise d'asthme qui ne répond pas est une urgence"
+  reason_fr: "L'?inhalateur ne fait pas effet : une crise d'?asthme qui ne répond pas est une urgence"
   reason_de: "Das Spray wirkt nicht: ein Asthmaanfall, der nicht anspricht, ist ein Notfall"
   reason_ru: "Ингалятор не помогает: приступ астмы, который не отвечает на лечение — неотложно"
   reason_ar: "البخاخ لا يفيد: نوبة ربو لا تستجيب هي حالة طارئة الآن"
@@ -3610,7 +3610,7 @@ rules:
   reason_sw: "Dawa ya pumzi haifanyi kazi: shambulio la pumu lisilojibu ni dharura"
   patterns:
   # 18-sep-2026: en francés, árabe, portugués e hindi no saltaba.
-  - "(ventoline|inhalateur|a[ée]rosol)[^.]{0,25}(ne fait (plus )?rien|ne fait plus d'effet|n'agit plus)"
+  - "(ventoline|inhalateur|a[ée]rosol)[^.]{0,25}(ne fait (plus )?rien|ne fait plus d'?effet|n'?agit plus)"
   - "(البخاخ|بخاخ الربو)[^.]{0,20}(لا ينفع|لا يفيد|لا يعمل)"
   - "(bombinha|inalador|puff)[^.]{0,25}(n[ãa]o[^.]{0,12}(faz|fez|est[áa] a fazer) efeito|n[ãa]o adianta)"
   - "(इन्हेलर|पंप)[^.]{0,20}(काम नहीं|असर नहीं)"
@@ -3622,7 +3622,7 @@ rules:
   - (sigue igual|no mejora|no le hace nada)[^.]{0,45}(ventol[íi]n|inhalador|salbutamol)
   - (inhaler|ventolin|salbutamol|puffer|blue inhaler)[^.]{0,45}(not working|no better|still struggling|has ?n'?t helped|no improvement)
   - (still|not any better)[^.]{0,30}(after|despite)[^.]{0,20}(the )?(inhaler|ventolin|puffer)
-  - (ventoline|inhalateur|salbutamol)[^.]{0,45}(ne fait rien|n'am[ée]liore|toujours pareil|sans effet)
+  - (ventoline|inhalateur|salbutamol)[^.]{0,45}(ne fait rien|n'?am[ée]liore|toujours pareil|sans effet)
   - (spray|inhalator|salbutamol)[^.]{0,45}(wirkt nicht|hilft nicht|keine besserung|unver[äa]ndert)
   - (ингалятор|вентолин|сальбутамол)[^.]{0,45}(не помога|без эффекта|не легче)
   - (بخاخ|فنتولين|سالبوتامول)[^.]{0,45}(لا يفيد|بلا فائدة|ما تحسن|لم يتحسن)
@@ -3636,7 +3636,7 @@ rules:
   source: andalucia_cuidame_guia
   reason_es: "Producto químico en el ojo: lávalo con agua abundante 15 minutos y ve a urgencias ahora"
   reason_en: "Chemical in the eye: rinse with plenty of water for 15 minutes and go to emergency now"
-  reason_fr: "Produit chimique dans l'œil : rincez à grande eau 15 minutes et allez aux urgences"
+  reason_fr: "Produit chimique dans l'?œil : rincez à grande eau 15 minutes et allez aux urgences"
   reason_de: "Chemikalie im Auge: 15 Minuten mit viel Wasser spülen und sofort in die Notaufnahme"
   reason_ru: "Химическое вещество в глазу: промывайте водой 15 минут и сразу в больницу"
   reason_ar: "مادة كيميائية في العين: اغسلها بماء غزير 15 دقيقة واذهب للطوارئ الآن"
@@ -3736,7 +3736,7 @@ rules:
   source: andalucia_cuidame_guia
   reason_es: "Se ha caído al agua: aunque parezca estar bien, hay que verlo hoy — el pulmón puede resentirse horas después"
   reason_en: "Fell into water: even if he seems fine, get seen today — the lungs can suffer hours later"
-  reason_fr: "Tombé dans l'eau : même s'il a l'air bien, à faire voir aujourd'hui"
+  reason_fr: "Tombé dans l'?eau : même s'?il a l'?air bien, à faire voir aujourd'hui"
   reason_de: "Ins Wasser gefallen: auch wenn es gut aussieht, heute vorstellen"
   reason_ru: "Упал в воду: даже если выглядит хорошо, показать сегодня"
   reason_ar: "سقط في الماء: حتى لو بدا بخير، يُعرض اليوم"
@@ -3780,7 +3780,7 @@ rules:
   source: ecimed_pediatria_2016
   reason_es: "Descarga eléctrica: aunque parezca estar bien, el corazón puede alterarse horas después — urgencias ahora"
   reason_en: "Electric shock: even if he seems fine, the heart can go off rhythm hours later — emergency now"
-  reason_fr: "Choc électrique : même s'il a l'air bien, le cœur peut se dérégler des heures après — urgences"
+  reason_fr: "Choc électrique : même s'?il a l'?air bien, le cœur peut se dérégler des heures après — urgences"
   reason_de: "Stromschlag: auch wenn es gut aussieht, kann das Herz Stunden später aus dem Takt geraten — Notaufnahme"
   reason_ru: "Удар током: даже если выглядит хорошо, сердце может сбиться через часы — неотложно"
   reason_ar: "صعقة كهربائية: حتى لو بدا بخير، قد يضطرب القلب بعد ساعات — الطوارئ الآن"
@@ -3810,7 +3810,7 @@ rules:
   source: ecimed_pediatria_2016
   reason_es: "Algo metido en la nariz o el oído: hay que sacarlo hoy, y no con pinzas en casa — puede irse más adentro"
   reason_en: "Something pushed into the nose or ear: it has to come out today, and not with tweezers at home"
-  reason_fr: "Objet dans le nez ou l'oreille : à retirer aujourd'hui, pas avec une pince à la maison"
+  reason_fr: "Objet dans le nez ou l'?oreille : à retirer aujourd'hui, pas avec une pince à la maison"
   reason_de: "Gegenstand in Nase oder Ohr: muss heute raus, und nicht zu Hause mit der Pinzette"
   reason_ru: "Предмет в носу или ухе: достать сегодня, и не пинцетом дома"
   reason_ar: "شيء في الأنف أو الأذن: يُخرج اليوم، وليس بملقط في البيت"
@@ -3842,16 +3842,16 @@ rules:
   - (حبة|خرزة)[^.]{0,20}(في (أذنه|الأذن|أنفه|الأنف))
   - (no (ouvido|nariz))[^.]{0,25}(gr[ãa]o|bolinha|missanga|objeto|feij[ãa]o)
   - (gr[ãa]o|bolinha)[^.]{0,20}(no (ouvido|nariz))
-  - (dans l'oreille|dans le nez)[^.]{0,25}(graine|perle|bille|objet)
-  - (graine|perle|bille)[^.]{0,20}(dans l'oreille|dans le nez)
+  - (dans l'?oreille|dans le nez)[^.]{0,25}(graine|perle|bille|objet)
+  - (graine|perle|bille)[^.]{0,20}(dans l'?oreille|dans le nez)
   - (im ohr|in der nase)[^.]{0,25}(erbse|perle|kn[öo]pfchen|etwas)
   - (erbse|perle)[^.]{0,20}(im ohr|in der nase)
   - (se (ha )?metido|tiene|se puso)[^.]{0,30}(en (la )?nariz|en el o[íi]do)
   - (en (la )?nariz|en el o[íi]do)[^.]{0,25}(una |un )?(pipa|bolita|canica|garbanzo|cuenta|papel|juguete|pila|semilla)
   - (pushed|put|stuck|shoved)[^.]{0,30}(up (his|her|the) nose|in (his|her|the) (ear|nose))
   - (something|a bead|a pea|a battery|a toy)[^.]{0,25}(in|up)[^.]{0,12}(his|her|the)?[^.]{0,6}(nose|ear)
-  - (dans (le )?nez|dans l'oreille)[^.]{0,30}(perle|bille|graine|objet|papier)
-  - (a mis|a enfonc[ée])[^.]{0,25}(dans (le )?nez|dans l'oreille)
+  - (dans (le )?nez|dans l'?oreille)[^.]{0,30}(perle|bille|graine|objet|papier)
+  - (a mis|a enfonc[ée])[^.]{0,25}(dans (le )?nez|dans l'?oreille)
   - (in (die|der) nase|ins ohr|im ohr)[^.]{0,30}(perle|erbse|kn[öo]pfchen|spielzeug|gesteckt)
   - (в нос|в ухо|в носу|в ухе)[^.]{0,30}(бусин\w*|горошин\w*|игрушк\w*|засунул\w*)
   - (في (أنفه|الأنف|أذنه|الأذن))[^.]{0,30}(خرزة|حبة|شيء|لعبة|أدخل)
@@ -3926,7 +3926,7 @@ rules:
   source: ecimed_pediatria_2016
   reason_es: "Ha respirado humo de un incendio: la vía aérea puede hincharse horas después — urgencias ahora"
   reason_en: "Breathed in smoke from a fire: the airway can swell hours later — emergency now"
-  reason_fr: "A respiré de la fumée d'un incendie : les voies respiratoires peuvent gonfler — urgences"
+  reason_fr: "A respiré de la fumée d'?un incendie : les voies respiratoires peuvent gonfler — urgences"
   reason_de: "Hat Rauch eingeatmet: die Atemwege können Stunden später anschwellen — Notaufnahme"
   reason_ru: "Надышался дымом при пожаре: дыхательные пути могут отечь через часы — сейчас"
   reason_ar: "استنشق دخان حريق: قد تتورم المجاري التنفسية بعد ساعات — الطوارئ الآن"
@@ -3997,7 +3997,7 @@ rules:
   source: ecimed_pediatria_2016
   reason_es: "Un diabético sudoroso, tembloroso o confuso: azúcar por boca ahora si está consciente, y llama"
   reason_en: "A diabetic who is sweaty, shaky or confused: sugar by mouth now if awake, and call"
-  reason_fr: "Un diabétique en sueur, tremblant ou confus : du sucre par la bouche s'il est conscient, et appelez"
+  reason_fr: "Un diabétique en sueur, tremblant ou confus : du sucre par la bouche s'?il est conscient, et appelez"
   reason_de: "Ein Diabetiker, der schwitzt, zittert oder verwirrt ist: sofort Zucker oral, wenn wach, und anrufen"
   reason_ru: "Диабетик в поту, с дрожью или спутанный: сахар в рот, если в сознании, и звоните"
   reason_ar: "مريض سكري يتعرق أو يرتجف أو مشوش: سكر بالفم إن كان واعيا، واتصل"
@@ -4035,7 +4035,7 @@ rules:
   source: ecimed_pediatria_2016
   reason_es: "Dolor fuerte en un niño con anemia falciforme: es una crisis, hay que tratarla hoy sin esperar"
   reason_en: "Severe pain in a child with sickle cell disease: this is a crisis — treat today, do not wait"
-  reason_fr: "Douleur forte chez un enfant drépanocytaire : c'est une crise, à traiter aujourd'hui"
+  reason_fr: "Douleur forte chez un enfant drépanocytaire : c'?est une crise, à traiter aujourd'hui"
   reason_de: "Starke Schmerzen bei einem Kind mit Sichelzellkrankheit: eine Krise — heute behandeln"
   reason_ru: "Сильная боль у ребёнка с серповидноклеточной анемией: это криз — лечить сегодня"
   reason_ar: "ألم شديد عند طفل بفقر الدم المنجلي: هذه نوبة — تعالج اليوم"
@@ -4100,7 +4100,7 @@ rules:
   source: nhm_in_imnci_chart_booklet
   reason_es: "No PUEDE beber ni agarrarse al pecho: es uno de los signos de peligro del IMNCI, hay que verlo hoy"
   reason_en: "Unable to drink or breastfeed: it is one of the IMNCI danger signs — get seen today"
-  reason_fr: "Incapable de boire ou de téter : c'est un signe de danger de l'IMNCI — aujourd'hui"
+  reason_fr: "Incapable de boire ou de téter : c'?est un signe de danger de l'?IMNCI — aujourd'hui"
   reason_de: "Kann nicht trinken oder saugen: eines der IMNCI-Gefahrenzeichen — heute vorstellen"
   reason_ru: "Не может пить или сосать грудь: один из опасных признаков IMNCI — сегодня"
   reason_ar: "لا يستطيع الشرب أو الرضاعة: من علامات الخطر في IMNCI — يُعرض اليوم"
@@ -4115,7 +4115,7 @@ rules:
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - (no (consigue|puede|logra))[^.]{0,30}(agarrar\w*|coger)[^.]{0,15}(al |el )?pecho
-  - (n'arrive pas)[^.]{0,25}([àa] boire|[àa] t[ée]ter)
+  - (n'?arrive pas)[^.]{0,25}([àa] boire|[àa] t[ée]ter)
   - (لا (تستطيع|يستطيع))[^.]{0,30}(الرضاعة|الشرب)
   - no puede (beber|mamar|agarrar\w* (al|el) pecho|tragar l[íi]quidos)(?![^.]{0,45}(porque tengo|porque me|mastitis|mi pecho|mi pez[óo]n))
   - (no (consigue|logra))[^.]{0,20}(beber|mamar|agarrar\w* el pecho)
@@ -4150,7 +4150,7 @@ rules:
   source: nhm_in_imnci_chart_booklet
   reason_es: "Vomita TODO lo que toma y no retiene nada: es signo de peligro, hay que verlo hoy"
   reason_en: "Vomits everything and keeps nothing down: it is a danger sign — get seen today"
-  reason_fr: "Vomit tout et ne garde rien : c'est un signe de danger — aujourd'hui"
+  reason_fr: "Vomit tout et ne garde rien : c'?est un signe de danger — aujourd'hui"
   reason_de: "Erbricht alles und behält nichts bei sich: ein Gefahrenzeichen — heute"
   reason_ru: "Рвёт всем, что даёте, ничего не удерживает: опасный признак — сегодня"
   reason_ar: "يتقيأ كل شيء ولا يحتفظ بشيء: علامة خطر — يُعرض اليوم"
@@ -4177,7 +4177,7 @@ rules:
   source: nhm_in_imnci_chart_booklet
   reason_es: "Los dos pies hinchados: es signo de peligro en un niño, hay que verlo hoy"
   reason_en: "Both feet swollen: it is a danger sign in a child — get seen today"
-  reason_fr: "Les deux pieds gonflés : c'est un signe de danger chez l'enfant — aujourd'hui"
+  reason_fr: "Les deux pieds gonflés : c'?est un signe de danger chez l'?enfant — aujourd'hui"
   reason_de: "Beide Füße geschwollen: ein Gefahrenzeichen beim Kind — heute"
   reason_ru: "Обе стопы отекли: опасный признак у ребёнка — сегодня"
   reason_ar: "تورم القدمين معا: علامة خطر عند الطفل — يُعرض اليوم"
@@ -4240,7 +4240,7 @@ rules:
   source: nhm_in_imnci_chart_booklet
   reason_es: "Adelgazamiento visible en un niño: es uno de los signos de peligro del IMNCI, hay que valorarlo hoy"
   reason_en: "Visible severe thinness in a child: it is one of the IMNCI danger signs — assess today"
-  reason_fr: "Maigreur visible chez un enfant : c'est un signe de danger de l'IMNCI — à évaluer aujourd'hui"
+  reason_fr: "Maigreur visible chez un enfant : c'?est un signe de danger de l'?IMNCI — à évaluer aujourd'hui"
   reason_de: "Sichtbare starke Abmagerung bei einem Kind: ein IMNCI-Gefahrenzeichen — heute abklären"
   reason_ru: "Видимое сильное истощение у ребёнка: опасный признак IMNCI — оценить сегодня"
   reason_ar: "هزال شديد ظاهر عند طفل: من علامات الخطر في IMNCI — يُقيَّم اليوم"
@@ -4304,7 +4304,7 @@ rules:
   source: ecimed_pediatria_2016
   reason_es: "Dolor en un testículo: si es una torsión se opera en horas, hay que ir ahora"
   reason_en: "Pain in a testicle: a torsion has to be operated within hours — go now"
-  reason_fr: "Douleur d'un testicule : une torsion s'opère en quelques heures — allez-y maintenant"
+  reason_fr: "Douleur d'?un testicule : une torsion s'?opère en quelques heures — allez-y maintenant"
   reason_de: "Schmerz im Hoden: eine Hodentorsion muss binnen Stunden operiert werden — sofort hin"
   reason_ru: "Боль в яичке: при перекруте операция нужна в первые часы — ехать сейчас"
   reason_ar: "ألم في الخصية: التواء الخصية يحتاج جراحة خلال ساعات — اذهب الآن"
@@ -4378,8 +4378,8 @@ rules:
   - (p[áa]lido|p[áa]lida)[^.]{0,30}(y (muy )?flojo|y (muy )?flojito|y (muy )?blandito|y fr[íi]o)
   - (suddenly|all of a sudden)[^.]{0,30}(pale|grey|gray|white|ashen)
   - (pale|grey|ashen)[^.]{0,30}(and (very )?floppy|and limp|all of a sudden|suddenly)
-  - (p[âa]le|blanc)[^.]{0,25}(d'un coup|tout [àa] coup|soudain)
-  - (d'un coup|tout [àa] coup|soudain\w*)[^.]{0,25}(p[âa]le|tout blanc)
+  - (p[âa]le|blanc)[^.]{0,25}(d'?un coup|tout [àa] coup|soudain)
+  - (d'?un coup|tout [àa] coup|soudain\w*)[^.]{0,25}(p[âa]le|tout blanc)
   - (bl[äa]ss|wei[sß])[^.]{0,25}(pl[öo]tzlich|auf einmal)
   - pl[öo]tzlich[^.]{0,30}(bl[äa]ss|wei[sß]|grau)
   - (побледнел|бледн\w+)[^.]{0,25}(вдруг|внезапно|резко)
@@ -4400,7 +4400,7 @@ rules:
   source: nhs_en_colic
   reason_es: "Un llanto agudo, débil o distinto del suyo no es llorar mucho: hay que verlo hoy"
   reason_en: "A weak, high-pitched or unusual cry is not the same as crying a lot — get seen today"
-  reason_fr: "Un cri aigu, faible ou inhabituel n'est pas « pleurer beaucoup » : à faire voir aujourd'hui"
+  reason_fr: "Un cri aigu, faible ou inhabituel n'?est pas « pleurer beaucoup » : à faire voir aujourd'hui"
   reason_de: "Ein schriller, schwacher oder ungewohnter Schrei ist nicht «viel weinen» — heute ansehen lassen"
   reason_ru: "Пронзительный, слабый или непривычный крик — это не «много плачет»: показать сегодня"
   reason_ar: "بكاء حاد أو ضعيف أو غير معتاد ليس مجرد بكاء كثير — يُعرض اليوم"
@@ -4462,8 +4462,8 @@ rules:
   - (fiebre|d[ée]cimas|temperatura|3[89][.,]?\d? ?°?)[^.]{0,80}(cojea|cojeando|cojera|renquea|no (apoya|quiere apoyar)[^.]{0,20}(pie|pierna|piern)|no quiere (andar|caminar|ponerse de pie))
   - (limping|limps|walking with a limp|a limp\b|(wo?n'?t|will not|refuses to|can'?t) (walk|stand|put weight|bear weight)|not (bearing|putting) weight)[^.]{0,80}(fever|temperature|3[89] ?°?|10[0-4] ?°?)
   - (fever|temperature|3[89] ?°?|10[0-4] ?°?)[^.]{0,80}(limping|limps|walking with a limp|a limp\b|(wo?n'?t|will not|refuses to|can'?t) (walk|stand|put weight|bear weight)|not (bearing|putting) weight)
-  - (boite|boitement|boiterie|clopine|(ne veut pas|refuse de|n'arrive pas [àa]) (marcher|se lever)|n'appuie pas)[^.]{0,80}(fi[eè]vre|temp[ée]rature|3[89] ?°?)
-  - (fi[eè]vre|temp[ée]rature|3[89] ?°?)[^.]{0,80}(boite|boitement|boiterie|clopine|(ne veut pas|refuse de|n'arrive pas [àa]) (marcher|se lever)|n'appuie pas)
+  - (boite|boitement|boiterie|clopine|(ne veut pas|refuse de|n'?arrive pas [àa]) (marcher|se lever)|n'?appuie pas)[^.]{0,80}(fi[eè]vre|temp[ée]rature|3[89] ?°?)
+  - (fi[eè]vre|temp[ée]rature|3[89] ?°?)[^.]{0,80}(boite|boitement|boiterie|clopine|(ne veut pas|refuse de|n'?arrive pas [àa]) (marcher|se lever)|n'?appuie pas)
   - (hinkt|humpelt|lahmt|will nicht (laufen|gehen|auftreten)|kann nicht (laufen|gehen|auftreten)|belastet das bein nicht)[^.]{0,80}(fieber|temperatur|3[89] ?°?)
   - (fieber|temperatur|3[89] ?°?)[^.]{0,80}(hinkt|humpelt|lahmt|will nicht (laufen|gehen|auftreten)|kann nicht (laufen|gehen|auftreten)|belastet das bein nicht)
   - (хромает|прихрамывает|хромота|не наступает на ногу|не (хочет|может) (ходить|вставать|наступать))[^.]{0,80}(температур|жар|лихорад|3[89])
@@ -4479,7 +4479,7 @@ rules:
   source: who_en_dengue_and_severe_dengue
   reason_es: "Sangrado junto con fiebre: hay que valorarlo hoy, es uno de los signos de alarma del dengue"
   reason_en: "Bleeding together with fever needs to be seen today — it is one of the dengue warning signs"
-  reason_fr: "Saignement avec fièvre : à voir aujourd'hui, c'est un signe d'alerte de la dengue"
+  reason_fr: "Saignement avec fièvre : à voir aujourd'hui, c'?est un signe d'?alerte de la dengue"
   reason_de: "Blutung zusammen mit Fieber: heute abklären — eines der Dengue-Warnzeichen"
   reason_ru: "Кровотечение вместе с температурой: показать врачу сегодня — признак тяжёлой денге"
   reason_ar: "نزيف مع حمى: يجب الفحص اليوم — من علامات إنذار حمى الضنك"
@@ -4572,7 +4572,7 @@ rules:
   source: nhs_en_heat_exhaustion_heatstroke
   reason_es: "Golpe de calor: enfríalo ya (sombra, agua, aire). Si está confuso, no suda, tiene mucha fiebre o está adormilado, llama a emergencias ahora"
   reason_en: "Heatstroke: cool them now (shade, water, air). If confused, not sweating, very hot or drowsy, call emergency services now"
-  reason_fr: "Coup de chaleur : refroidissez-le tout de suite (ombre, eau, air). S'il est confus, ne transpire plus, très chaud ou somnolent, appelez les urgences"
+  reason_fr: "Coup de chaleur : refroidissez-le tout de suite (ombre, eau, air). S'?il est confus, ne transpire plus, très chaud ou somnolent, appelez les urgences"
   reason_de: "Hitzschlag: sofort abkühlen (Schatten, Wasser, Luft). Wenn verwirrt, schwitzt nicht mehr, sehr heiß oder schläfrig: jetzt den Notruf wählen"
   reason_ru: "Тепловой удар: охладите сейчас (тень, вода, воздух). Если спутанность, не потеет, очень горячий или сонливый — сразу звоните в скорую"
   reason_ar: "ضربة شمس: برّد الطفل الآن (ظل، ماء، هواء). إذا كان مشوشاً أو لا يتعرق أو حرارته عالية جداً أو نعساناً، اتصل بالطوارئ الآن"
@@ -4630,7 +4630,7 @@ rules:
   source: nhs_en_jaundice_in_babies
   reason_es: "Bebé con la piel o los ojos amarillos: cita urgente hoy. Si tiene menos de 24 horas, está adormilado, no come, tiene fiebre o no moja pañales, a urgencias ya"
   reason_en: "Baby with yellow skin or eyes: urgent appointment today. If under 24 hours old, very sleepy, not feeding, feverish or no wet nappies, go to emergency now"
-  reason_fr: "Bébé à la peau ou aux yeux jaunes : consultation en urgence aujourd'hui. S'il a moins de 24 heures, est très somnolent, ne tète pas, a de la fièvre ou ne mouille plus ses couches, urgences tout de suite"
+  reason_fr: "Bébé à la peau ou aux yeux jaunes : consultation en urgence aujourd'hui. S'?il a moins de 24 heures, est très somnolent, ne tète pas, a de la fièvre ou ne mouille plus ses couches, urgences tout de suite"
   reason_de: "Baby mit gelber Haut oder gelben Augen: heute dringend zum Arzt. Unter 24 Stunden alt, sehr schläfrig, trinkt nicht, Fieber oder keine nassen Windeln: sofort in die Notaufnahme"
   reason_ru: "Малыш с жёлтой кожей или глазами: срочно к врачу сегодня. Если ему меньше 24 часов, он очень сонный, не ест, у него температура или нет мокрых подгузников — сразу в неотложную помощь"
   reason_ar: "رضيع بجلد أو عينين صفراوين: موعد عاجل اليوم. إذا كان عمره أقل من 24 ساعة أو نعساناً جداً أو لا يرضع أو لديه حرارة أو لا يبلل الحفاض، إلى الطوارئ الآن"
