@@ -515,3 +515,28 @@ inglés, con fuentes que el lector puede abrir, hasta que haya material que cita
 y lo que se queda fuera se escribe en el código con su motivo. Y el candado que se interponga no
 se silencia: se le enseña la categoría nueva, para que siga cazando al que se olvide de un bloque
 sin pelearse con una decisión tomada a propósito.
+
+## L184 · En suajili lo que cambia es el principio de la palabra, y el posesivo se mete en medio (18-sep-2026)
+El suajili entró ayer con una frase por regla, que es exactamente lo que L174 llama insuficiente.
+Al escribir la segunda forma de decir lo mismo saltaron **catorce huecos de 83**, y la causa se
+repetía en casi todos:
+
+    «mwili unatetemeka»          el patrón · el cuerpo tiembla
+    «mwili WAKE unatetemeka»     lo que escribe una madre · su cuerpo tiembla
+    «ana homa, miguu baridi»     el patrón
+    «ana homa lakini miguu NI baridi»   lo que escribe una madre
+
+Dos cosas que ninguna de las otras ocho lenguas hace igual:
+
+1. **El posesivo va detrás del sustantivo y parte la pareja**: «uso wake umevimba», «kiganja
+   chake kimepauka». Un patrón que pide las dos palabras pegadas no casa nunca.
+2. **El tiempo verbal vive en el PRINCIPIO del verbo**, no en el final: `ame-`gonga (ha
+   golpeado), `aka-`gonga (y golpeó), `ali-`gonga (golpeó), `ka-`meza (se lo tragó). Escribir
+   «amegonga» cubre un tiempo de cuatro, y la narración de un accidente —que es como se cuenta
+   un golpe en la cabeza— usa justo los otros.
+
+**La regla**: al abrir una lengua, lo primero que hay que preguntarle no es su vocabulario sino
+**por dónde flexiona**. En castellano y en inglés cambia el final y se cubre con `\w*`; en árabe
+se pega el artículo delante (L138); en devanagari la vocal cuelga y rompe `\b` (L164); y en
+suajili cambia el prefijo del verbo y se cuela el posesivo. Cada familia rompe los patrones por
+un sitio distinto, y el sitio se sabe antes de escribir el primer patrón.

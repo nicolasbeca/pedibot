@@ -161,7 +161,7 @@ rules:
   - "degedege"
   - "anatetemeka (mwili|sana)"
   - "kifafa"
-  - "mwili unatetemeka"
+  - "mwili[^.]{0,12}(unatetemeka|inatetemeka)"
   # 17-sep-2026: «having a fit» en inglés y «припадок» en ruso, que son las dos palabras
   # corrientes para una convulsión.
   - (having|had|has)[^.]{0,15}a fit\b
@@ -491,7 +491,7 @@ rules:
   reason_fr: Suspicion de réaction allergique grave (gonflement des lèvres/paupières avec difficulté à respirer, vomissements ou malaise)
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
-  - "(midomo|kope|uso) (ime|zime)vimba"
+  - "(midomo|kope|uso|macho)[^.]{0,12}(ime|zime|ume)vimba"
   - "mzio (mkali|mkubwa)"
   - "amevimba uso na hapumui"
   # 17-sep-2026: «reacción alérgica» dicha por su nombre, con la cara hinchada.
@@ -759,8 +759,8 @@ rules:
   reason_fr: Coup à la tête avec perte de connaissance
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
-  - "amegonga kichwa[^.]{0,30}(amezimia|kupoteza fahamu)"
-  - "amezimia baada ya kugonga kichwa"
+  - "(ame|aka|ali)gonga kichwa[^.]{0,40}(amezimia|akazimia|(ame|aka)poteza fahamu|kupoteza fahamu)"
+  - "(amezimia|akazimia|amepoteza fahamu)[^.]{0,40}kugonga kichwa"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -963,7 +963,7 @@ rules:
   reason_fr: Taches sur la peau qui ne s'effacent pas à la pression (possible sepsis/méningite)
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
-  - "madoa (hayapotei|hayaondoki) (nikibonyeza|yakibonyezwa)"
+  - "madoa[^.]{0,25}(hayapotei|hayaondoki)[^.]{0,20}(nikibonyeza|yakibonyezwa|glasi)"
   - "madoa mekundu hayapotei"
   # 17-sep-2026: «taches qui ne s'effacent pas» y «दाने जो नहीं मिटते» — la prueba del
   # vaso dicha con otro verbo.
@@ -1557,7 +1557,7 @@ rules:
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "anatapika[^.]{0,40}kichwa kinauma (sana|mno)"
-  - "kichwa kinauma sana na anatapika"
+  - "kichwa kinauma (sana|mno)[^.]{0,25}(anatapika|ametapika)"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -1617,7 +1617,7 @@ rules:
   reason_fr: Vomissements après un coup à la tête
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
-  - "amegonga kichwa[^.]{0,40}(anatapika|ametapika)"
+  - "(ame|aka|ali|ku)gonga kichwa[^.]{0,45}(anatapika|ametapika)"
   - "ametapika baada ya kugonga kichwa"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
@@ -1725,7 +1725,7 @@ rules:
   reason_fr: Ingestion d'un objet (surtout piles ou aimants)
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
-  - "amemeza (sarafu|sumaku|kitu|kifungo)"
+  - "(amemeza|kameza|alimeza)[^.]{0,14}(sarafu|sumaku|kitu|kifungo|shanga|mbegu)"
   - "kameza kitu"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
@@ -2561,7 +2561,7 @@ rules:
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "kichwa kinauma[^.]{0,30}(usiku|kinazidi)"
-  - "maumivu ya kichwa yanazidi"
+  - "maumivu ya kichwa[^.]{0,30}(yanazidi|yanamwamsha|usiku)"
   # 17-sep-2026: el dolor de cabeza que empeora o despierta, en las tres escrituras
   - (головн\w+ бол\w+|болит голова)[^.]{0,45}(ночью|будит|просыпается)
   - (головн\w+ бол\w+)[^.]{0,45}(усиливается|сильнее с каждым|хуже)
@@ -3145,8 +3145,8 @@ rules:
   reason_sw: "Damu au maji yanatoka puani au sikioni baada ya kugonga kichwa"
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
-  - "(damu|maji)[^.]{0,20}(sikioni|puani)[^.]{0,40}kichwa"
-  - "amegonga kichwa[^.]{0,40}(damu|maji)[^.]{0,20}(sikioni|puani)"
+  - "(damu|maji)[^.]{0,20}(sikioni|puani)[^.]{0,45}kichwa"
+  - "(ame|aka|ali|ku)gonga kichwa[^.]{0,45}(damu|maji)[^.]{0,20}(sikioni|puani)"
   # 17-sep-2026: la sangre por el oído tras una caída, en francés.
   - (sang|liquide)[^.]{0,20}sort[^.]{0,25}(de (son |l')?)?(oreille|nez)[^.]{0,40}(chute|choc|coup|tomb[ée])
   - (chute|choc|coup)[^.]{0,40}(sang|liquide)[^.]{0,20}(sort|coule)[^.]{0,20}(oreille|nez)
@@ -3197,7 +3197,7 @@ rules:
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "(mikono|miguu) (ni )?baridi[^.]{0,40}homa"
-  - "ana homa[^.]{0,40}(mikono|miguu) baridi"
+  - "ana homa[^.]{0,40}(mikono|miguu)[^.]{0,12}baridi"
   # 17-sep-2026: en ruso el adjetivo va DELANTE («ледяные ноги»), y todos los patrones
   # estaban escritos al revés, como en castellano.
   - (температур\w*|3[89]|4[01])[^.]{0,45}(ледян\w*|холодн\w*|ледяны)[^.]{0,20}(ноги|руки|ножки|ручки)
@@ -3298,7 +3298,7 @@ rules:
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "ameumwa na (mbwa|paka|nyani|popo)"
-  - "mbwa amemuuma"
+  - "(mbwa|paka|nyani|popo|panya)[^.]{0,14}(amemuuma|alimuuma|kamuuma)"
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -3774,7 +3774,7 @@ rules:
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "ameingiza (kitu|punje|shanga) (puani|sikioni)"
-  - "kitu kimeingia (puani|sikioni)"
+  - "(kitu|punje|shanga|mbegu|karanga)[^.]{0,14}(imeingia|kimeingia)[^.]{0,12}(puani|sikioni)"
   # 17-sep-2026: al escribir tantas formas latinas, las otras tres escrituras se quedaron con
   # una red diez veces más floja. Las mismas señales, escritas en ellas.
   - (засунул\w*|запихнул\w*|положил\w*|вставил\w*)[^.]{0,30}(в нос|в ухо|в носу|в ухе)
@@ -3858,7 +3858,7 @@ rules:
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "amepigwa tumboni[^.]{0,40}(maumivu|linauma|amepauka)"
-  - "amegongwa tumbo na linauma sana"
+  - "(amegongwa|amepigwa)[^.]{0,14}(tumbo|tumboni)[^.]{0,45}(linauma|maumivu|amepauka)"
   # 17-sep-2026: la batería midió esta regla recién escrita con otra forma de decir lo mismo
   # y falló. Ninguna regla nace cubierta: nace cubriendo la frase de quien la escribió.
   - ((coup de pied|coup|choc))[^.]{0,30}(dans le ventre|au ventre)[^.]{0,60}(p[âa]le|douleur|mal)
@@ -4350,7 +4350,7 @@ rules:
   patterns:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "kilio (dhaifu|cha ajabu|si cha kawaida)"
-  - "analia kwa sauti ya ajabu"
+  - "analia kwa sauti[^.]{0,22}(ajabu|juu|isiyo ya kawaida)"
   - (llanto|llora|llorando|grito)[^.]{0,30}(agudo|d[ée]bil|distinto|diferente|raro|quejido|quejumbroso|chillón)
   - (agudo|d[ée]bil|distinto|diferente)[^.]{0,20}(llanto|llorando)
   - cry[^.]{0,30}(high.?pitched|weak|unusual|different from|not like)
