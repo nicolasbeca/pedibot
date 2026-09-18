@@ -474,3 +474,16 @@ sarampión complicado, tétanos neonatal, neumonía por frecuencia respiratoria)
 fase 4 (contenido clínico africano), fase 5 (WhatsApp y peso de página). Y fuera del plan: el
 catálogo de ACP dice ahora 61/69/88 en el fichero, pero el panel de Virtuals sigue con las cifras
 viejas hasta que se sincronice a mano.
+
+## 18-sep-2026 (tarde) · África, fase 2: el triaje
+- Medido antes de escribir: **29 de 41** frases con las que un padre africano cuenta una urgencia salían mal. La palidez palmar no existía en ninguna lengua; «diarrea como agua de arroz» era rutina; el paludismo con un niño somnoliento se quedaba en urgente.
+- Nueve reglas nuevas con fuente: paludismo grave, fiebre en zona palúdica, palidez palmar, respiración rápida para la edad, cólera, deshidratación grave, sarampión complicado, tétanos neonatal, y el «no puede beber ni mamar» que sube a emergencia. **83 reglas** (eran 75).
+- El cólera no tenía ni una ficha en el corpus: se añaden las cinco de la OMS (en, es, fr, ar, ru). Índice: **496 documentos, 8.548 pasajes**.
+- La frecuencia respiratoria va en Python, no en un patrón: lo que decide es el número CONTRA la edad, con los umbrales del IMCI (60/50/40 según la edad) y los mismos guardianes que protegen a los patrones (L181).
+- Y la otra mitad: de 34 trampas, **14 saltaban de más**. La peor, «le di agua de arroz para la diarrea» → emergencia de cólera, que es un padre haciendo lo que la OMS recomienda. Lo que separa el síntoma del remedio es la palabra «como».
+- Tres guardianes nuevos (RECONOCER, «me han dicho que», preguntas causales) y un candado nuevo: una alternativa no puede mezclar dos alfabetos — cazó cinco palabras mías mal tecleadas, entre ellas un «मल» que era devanagari MA + árabe LAM (L182).
+- 203 frases nuevas en las baterías, en los dos sentidos. Suite **7.106**. Desplegado y verificado contra la API viva.
+
+## 18-sep-2026 (tarde) · lo que vio el operador: «España sale siempre la primera»
+- Y era verdad, y era a propósito: la portada pone delante el país del lector, que lo saca de `navigator.language` (es-ES) o de lo que haya guardado. Para una familia marroquí en Madrid eso es justo lo que hace falta.
+- Pero no se decía en ninguna parte —sólo un borde de color—, así que parecía un fallo. La tarjeta lo dice ahora, con una etiqueta en los ocho idiomas, y debajo sigue el desplegable para cambiarlo.
