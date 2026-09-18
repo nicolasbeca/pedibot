@@ -1,6 +1,6 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-10** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-09-18** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
 > Nota de la revisión del 8-sep: la cabecera de este fichero decía «25-ago» mientras el código
 > iba por el 7-sep, con 234 commits y catorce días de trabajo sin recoger. Un estado vivo que
@@ -435,3 +435,42 @@ abierto, en orden de consecuencia:
 - Y tres cosas más: «lleva media hora sin responder» no saltaba; `has ?n'?t` no casa «has not» (tercera vez en el día que la contracción inglesa muerde); y «no quiere jugar ni levantarse del sofá» se perdió al acotar el falso positivo de la timidez.
 - Decisión escrita en la prueba: preguntar por el hijo de otra persona **sigue dando alarma**. La respuesta correcta es la misma y quien pregunta suele ser quien puede llamar.
 - Las trece baterías a cero en los dos sentidos. Suite 6.131.
+
+## 18-sep-2026 · África entra: fase 1 del plan, los datos
+El operador: «tenemos totalmente olvidado el mercado africano… estamos vendiendo que el proyecto
+es altruista y para países que no tienen acceso a pediatría tan fácil como nosotros». Medido
+antes de tocar nada: de 53 países africanos había **cuatro**, y los cuatro del norte.
+
+De un plan de cinco fases eligió empezar por los datos, y Suajili como primera lengua africana
+para la fase 3. Lo hecho hoy:
+
+| Antes | Ahora |
+|---|---|
+| 13 calendarios de vacunación | **61** (48 africanos, de la base WIISE de la OMS) |
+| 21 países con tabla de crecimiento | **69** (IMCI de OMS/UNICEF + el Road to Health Book de Sudáfrica) |
+| 40 países con número de emergencia | **88** (aviso de viaje del FCDO británico, OGL v3.0) |
+| ~1.800 páginas | **2.598** |
+| 6 calendarios con la vacuna de la malaria | **21** |
+
+Tres cosas que no existían antes y que África obligó a inventar:
+
+1. **Un país puede no tener número de emergencias.** En siete la fuente dice que no existe uno
+   nacional y en Zambia no hemos podido verificarlo. Se publican con la frase de la fuente en el
+   sitio donde iría el número. La prueba del repositorio se volvió más dura, no más blanda: sin
+   número hace falta decir por qué (L178).
+2. **La vacuna de la malaria se despliega por distritos**, y la OMS la marca SUBNATIONAL, así que
+   el filtro del generador la tiraba en los quince países donde se pone. Ahora entra etiquetada
+   «some regions only» y con lo que la fuente dice de ella.
+3. **Leer el nombre de un país es leer una palabra de otro idioma**: «Gana» es Ghana en portugués
+   y el verbo de «no gana peso», «того» es Togo y el genitivo de «тот», «чад» es Chad y el humo
+   de un incendio (L177).
+
+Las portadas se reordenaron: el inglés abre con Nigeria, Kenia, Ghana, Sudáfrica, Uganda y
+Tanzania; el francés con la RD del Congo, Costa de Marfil, Camerún y Senegal; el portugués con
+Angola y Mozambique; el árabe suma Somalia, Yibuti, Comoras y Mauritania.
+
+**Pendiente de este plan**: fase 2 (triaje africano: paludismo grave, cólera, palidez palmar,
+sarampión complicado, tétanos neonatal, neumonía por frecuencia respiratoria), fase 3 (suajili),
+fase 4 (contenido clínico africano), fase 5 (WhatsApp y peso de página). Y fuera del plan: el
+catálogo de ACP dice ahora 61/69/88 en el fichero, pero el panel de Virtuals sigue con las cifras
+viejas hasta que se sincronice a mano.
