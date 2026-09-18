@@ -540,3 +540,31 @@ Dos cosas que ninguna de las otras ocho lenguas hace igual:
 se pega el artículo delante (L138); en devanagari la vocal cuelga y rompe `\b` (L164); y en
 suajili cambia el prefijo del verbo y se cuela el posesivo. Cada familia rompe los patrones por
 un sitio distinto, y el sitio se sabe antes de escribir el primer patrón.
+
+## L185 · El aviso en la lengua que no es deja media urgencia sin resolver (18-sep-2026)
+Verificando el suajili en vivo apareció esto: «paka amemuuma mkononi» —le ha mordido el gato—
+disparaba la alarma correcta **y la escribía en inglés**. La regla funcionaba; el detector de
+idioma no reconocía la frase. Media urgencia bien resuelta no sirve de nada a las tres de la
+mañana.
+
+Al medirlo en las nueve lenguas se vio que no era cosa del suajili: **120 de 1.408 frases salían
+con el idioma equivocado, y el portugués al 31 %**. «O recém-nascido parou de mamar e está
+rígido» recibía el aviso en castellano.
+
+Dos cosas que enseñó el arreglo:
+
+1. **Las marcas de idioma se calculan, no se inventan.** Para cada lengua se buscan las palabras
+   que aparecen en SUS frases mal detectadas y en las de ninguna otra: eso es una marca buena por
+   construcción, porque si sólo existe en portugués no puede robarle una frase al francés. Tres
+   vueltas de ese cálculo llevaron de 120 a 21.
+2. **Pero el cálculo no ve lo que el corpus no tiene.** «Pile» salió como marca francesa
+   excelente y es también una palabra inglesa; «dolor» es igual en castellano y en portugués.
+   Esas se quitan a mano, y por eso el método es medir **y luego mirar**, no medir y confiar.
+
+Y la trampa de fondo, que es la misma de siempre: **una prueba que mira una muestra pasa con el
+fallo dentro**. La del detector suajili miraba veinte frases de 186 y estaba verde con 21 sin
+reconocer. Se mide todo o no se mide.
+
+**La regla**: una lengua no está soportada cuando sus reglas saltan, sino cuando el aviso llega
+escrito en ella. Y el candado que lo sujeta no exige cero —hay frases cortas que el portugués y
+el castellano comparten enteras— sino **no empeorar**, con el número de hoy escrito al lado.
