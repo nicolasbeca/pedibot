@@ -80,3 +80,28 @@ El portugués se puede abrir hoy y con licencias ya conocidas. **El hindi no**: 
 página que no he podido leer, y sin ella no hay ni un documento en hindi ni forma legal evidente
 de conseguirlo. Y en alemán se repite lo de Francia: lo bueno para padres (BZgA) está cerrado, y
 lo abierto (gesund.bund.de) es más institucional.
+
+---
+
+## Espasmos del sollozo: el tema que sólo tiene fuente en castellano (18-sep-2026)
+
+Medido sobre las **502 guías publicadas**: cada guía tiene que citar al menos una fuente que su
+lector pueda abrir —en su idioma, o en la lengua puente que el propio buscador ya reconoce (`en`
+para casi todos, `es` para el portugués)—. De las 502, **seis** no lo cumplen, y las seis son el
+mismo tema en seis lenguas: los espasmos del sollozo, en árabe, alemán, inglés, francés, hindi y
+ruso. Su única fuente en todo el corpus es la hoja de la SEUP, en castellano.
+
+Se buscó la fuente que falta, con el criterio de siempre:
+
+| Candidata | Resultado |
+|---|---|
+| **NHS** — «Breath-holding in babies and children» | La dirección devuelve **200 y la página dice "This page has been removed"**. Es L151 en vivo: un 200 no prueba que haya página. Retirada del catálogo el mismo día que se añadió. |
+| NHS, direcciones nuevas (`/conditions/breath-holding-spells/`, `/symptoms/…`, `/baby/health/…`) | 404 las tres: el NHS ha retirado el tema, no lo ha movido |
+| **NHS inform** (Escocia, misma licencia OGL) | 403 desde aquí: su cortafuegos bloquea el rastreo. Pendiente de intentar desde el VPS |
+| **MedlinePlus** — «Breath-holding spell» | Existe, pero está en `/ency/`, que es contenido de A.D.A.M. con licencia, no dominio público. De los 74 documentos de MedlinePlus que ya usamos, **ninguno** es de `/ency/`: la línea está trazada desde agosto y no se cruza por un tema. |
+
+**La foto honesta**: hoy no hay fuente abierta sobre los espasmos del sollozo fuera del castellano.
+Las seis guías se quedan publicadas —el tema asusta mucho y la información es correcta— y el hueco
+queda escrito aquí y sujeto por una prueba, para que una guía nueva no pueda nacer así sin que
+salte. Lo que lo cerraría: NHS inform desde el VPS, o la Canadian Paediatric Society, que publica
+*Caring for Kids* y cuya licencia no se ha leído todavía.
