@@ -392,3 +392,53 @@ verificar» sabe que le toca preguntar.
 
 **La regla**: cuando el dato no existe, el dato es que no existe — y entonces la prueba se hace
 más dura, no más blanda. Un país sin número tiene que traer *por qué*, o sigue siendo un hueco.
+
+## L179 · Una ficha que existe no es un dato que exista (18-sep-2026)
+Repasando lo de África con las lecciones viejas en la mano apareció el peor fallo del día, y no
+estaba en los datos nuevos sino en el código que los lee. Ocho países tienen ficha de emergencias
+y no tienen número: `emergency` es `None`. Las plantillas del aviso rojo meten esa casilla en una
+f-string sin preguntar, y `f"{None}"` es «None»:
+
+    💛 This matters and you are not alone. Call None. If your child has already done something
+       to harm themselves, go to the emergency department now.
+
+Eso leía un padre de Kinshasa que acababa de escribir que su hijo quiere morirse. Tres caminos lo
+hacían —el aviso de emergencia, el de salud mental y la lectura de una foto, que además pasaba
+por `str()` y por eso ni siquiera podía fallar—.
+
+**La regla**: al añadir un estado nuevo a un dato —«este país no tiene número»— hay que ir a
+buscar a todos los que lo leen, no sólo a los que lo escriben. La ficha existía, el diccionario
+era «verdadero», la comprobación `if found:` pasaba, y el agujero estaba una capa más abajo, en
+una interpolación que no pregunta nada. Se busca con `grep` por el nombre del campo, uno por uno,
+y cada sitio decide qué escribe cuando no hay dato.
+
+Y el corolario: **lo que se escribe cuando no hay dato no puede ser el silencio**. Un aviso que
+se calla por prudencia deja al padre igual de solo. Donde no hay número se escribe la única
+instrucción que sirve: ve al hospital o centro de salud más cercano, ahora.
+
+## L180 · El nombre de un país dentro de una palabra de todos los días (18-sep-2026)
+L177 se escribió esta misma mañana por «Gana», que es Ghana en portugués y el verbo de «mi bebé no
+gana peso». Al aplicar esa lección hacia atrás —a lo que ya estaba puesto— salieron cuatro que
+llevaban meses en producción:
+
+    «catar»  dentro de «catarro» y de «se acatarra»
+    «inde»   dentro de «Windeln», que es «pañales» en alemán
+    «usa»    dentro de «causa», «usar» y «no usa el orinal»
+    «riad»   dentro de «resfriado»
+
+El golden tiene una frase de deshidratación —«sie macht kaum Windeln nass», apenas moja pañales—
+que se leía como si dijera India. «Mi hija no usa el orinal» daba Estados Unidos. «Mi hijo tiene
+catarro» daba Catar.
+
+Tres arreglos distintos para tres problemas distintos, y conviene no confundirlos. Lo que vive
+**dentro** de otra palabra se acota con frontera de palabra. Lo que **es** otra palabra —«usa» en
+español— no se arregla con ninguna frontera: se distingue por las mayúsculas, y para eso hay que
+dejar de bajar el texto a minúsculas antes de mirarlo. Y lo que depende de lo que viene detrás
+—«guinea pig»— se mira detrás.
+
+**La regla, y esta es la que importa**: una lección nueva se aplica hacia atrás el mismo día. La
+escribí por 48 países nuevos y el fallo llevaba meses en los trece viejos. Y la señal es
+mecánica, no hace falta adivinarla: si el nombre casa con una letra pegada delante o detrás, no
+se ha leído un país. Eso ahora es una prueba, y la primera versión de esa prueba **pasaba con el
+fallo puesto** porque el corpus no contenía la palabra «catarro» — una revisión que nunca ha
+fallado no está probada (L146).

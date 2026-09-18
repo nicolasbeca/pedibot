@@ -485,7 +485,10 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         # que la lectura de una foto en alemán terminaba en «...rufen Sie your local
         # emergency number an» — el fallo que EmergencyNumbers.get documenta como arreglado.
         nums = engine.numbers.get(body.country, body.lang)
-        level, text = interpret(d, body.lang, str(nums["emergency"]))
+        # sin str(): en un país sin número nacional esto convertía None en la cadena
+        # "None" y la metía en la frase que lee el padre (18-sep-2026).
+        numero = nums["emergency"]
+        level, text = interpret(d, body.lang, numero if numero else None)
         session = body.session or secrets.token_urlsafe(16)
         ops.log_answer(
             AnswerRecord(

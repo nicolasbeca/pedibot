@@ -36,10 +36,12 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import functools
 import json
 import pathlib
 import re
 import sys
+import unicodedata
 import urllib.parse
 import urllib.request
 
@@ -604,6 +606,37 @@ def _mapa(d: dict[str, str]) -> str:
     return "{" + ", ".join(f"{lg}: {json.dumps(d[lg], ensure_ascii=False)}" for lg in IDIOMAS) + "}"
 
 
+def _slug_oms(iso3: str, nombres: dict[str, str]) -> str:
+    """El trozo de la dirección del sitio de la OMS, con el nombre que usa la OMS.
+
+    18-sep-2026. Se construía con el nombre del CLDR y salían direcciones que la OMS no usa:
+    «congo---kinshasa», «são-tomé-&-príncipe» —que devuelve 400— y «cape-verde», que la OMS
+    llama «Cabo Verde». El nombre bueno está en su propia tabla REF_COUNTRIES, campo
+    NAMEWORKEN, y se pasa a ASCII porque una dirección con tilde y con ampersand no es una
+    dirección.
+
+    Ojo con lo que este enlace NO prueba: el sitio de la OMS es una aplicación de una sola
+    página y devuelve lo mismo para «kenya» que para «atlantis». Que responda 200 no dice nada;
+    por eso el nombre se toma de la fuente en vez de inventarlo.
+    """
+    who = _nombres_oms().get(iso3)
+    base = who or nombres["en"]
+    s = unicodedata.normalize("NFD", base)
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn").lower()
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+
+@functools.lru_cache(maxsize=1)
+def _nombres_oms() -> dict[str, str]:
+    url = "https://xmart-api-public.who.int/WIISE/REF_COUNTRIES?$top=300"
+    try:
+        with urllib.request.urlopen(url, timeout=60) as r:
+            filas = json.load(r)["value"]
+    except Exception:
+        return {}
+    return {x["CODE"]: x["NAMEWORKEN"] for x in filas if x.get("CODE") and x.get("NAMEWORKEN")}
+
+
 def yaml_de(iso3: str, año: int, tabla: list[dict], regional: list[str]) -> str:
     iso2, nombres = PAISES[iso3]
     hoy = dt.date.today().strftime("%d-%m-%Y")
@@ -625,7 +658,7 @@ def yaml_de(iso3: str, año: int, tabla: list[dict], regional: list[str]) -> str
     lineas = [f"  {iso2}:"]
     lineas.append(f"    name: {_mapa(titulo)}")
     lineas.append(f'    source: "{fuente}"')
-    lineas.append(f'    source_url: "{PAGINA}{nombres["en"].lower().replace(" ", "-")}"')
+    lineas.append(f'    source_url: "{PAGINA}{_slug_oms(iso3, nombres)}"')
     lineas.append(f"    note: {_mapa(nota(iso3, regional))}")
     lineas.append("    schedule:")
     for fila in tabla:

@@ -111,3 +111,26 @@ def test_the_text_a_parent_reads_has_content_in_every_language(vac: Vaccines, la
     for pais in PAISES:
         texto = format_answer(vac, pais, 4, lang)
         assert texto and len(texto) > 40, f"{pais}/{lang}: texto vacío o mínimo"
+
+
+@pytest.mark.parametrize("pais", PAISES)
+def test_the_link_to_the_source_is_an_address_and_not_a_display_name(pais: str) -> None:
+    """18-sep-2026. El enlace a la página de la OMS se armaba con el nombre del CLDR, que es el
+    que sirve para escribir en una interfaz y no para una dirección: salieron
+    «congo---kinshasa», «côte-d'ivoire» con comilla tipográfica y «são-tomé-&-príncipe», que
+    devolvía 400 Bad Request. Ahora sale del nombre que usa la propia OMS en REF_COUNTRIES.
+
+    Esta prueba no puede comprobar que la página exista —el sitio de la OMS devuelve los mismos
+    23.555 bytes para «kenya» que para «atlantis», así que el 200 no distingue nada (L132)— pero
+    sí comprueba lo que hace que una dirección no sea una dirección: un carácter que no es ASCII,
+    un ampersand, una comilla o un guion doble de un nombre partido.
+    """
+    url = CRUDO[pais]["source_url"]
+    assert url.isascii(), f"{pais}: el enlace lleva caracteres que no son ASCII — {url}"
+    if "immunizationdata.who.int" not in url:
+        # Los trece primeros citan a su propio ministerio y ahí manda el ministerio: el PDF de
+        # la India lleva un «%20» de verdad, que es un espacio escrito como se escribe.
+        return
+    trozo = url.rsplit("/", 1)[-1]
+    for malo in ("&", "'", "’", "--", " ", "%"):
+        assert malo not in trozo, f"{pais}: «{malo}» dentro de la dirección — {url}"

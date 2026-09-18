@@ -20,7 +20,7 @@ from pedibot.bot.growth import (
 from pedibot.bot.guides import GuideIndex, GuideLink
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import Retriever, detect_lang
-from pedibot.bot.strings import LANGUAGE_NAME
+from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.triage import LEVEL_ORDER, Triage, TriageResult
 from pedibot.bot.vaccines import (
     Vaccines,
@@ -505,6 +505,20 @@ def build_banner(tr: TriageResult, lang: str, numbers: dict[str, str | None]) ->
             + (f" (या {also} पर अगर खतरा अभी है)" if also else "")
             + "। अगर बच्चे ने खुद को नुकसान पहुँचाया है, तो अभी इमरजेंसी ले जाएँ।",
         }
+    # 18-sep-2026. Ocho países —siete donde la fuente dice que NO existe número nacional y
+    # Zambia, donde no hemos podido verificarlo— tienen ficha pero no tienen número. Las
+    # plantillas de arriba lo meten en la frase sin preguntar, y `f"{None}"` es «None»: el aviso
+    # decía «💛 This matters and you are not alone. Call None.» a un padre que acababa de
+    # escribir que su hijo quiere morirse.
+    #
+    # Donde no hay número no se escribe un número. Se escribe la única instrucción que sirve
+    # cuando no hay ambulancia a la que llamar: ir al hospital o centro de salud más cercano.
+    # Se sustituye la tabla entera y no sólo el idioma pedido, para que el respaldo en inglés
+    # tampoco nombre un número que no existe.
+    if tr.level == "emergency" and not numbers.get("emergency"):
+        heads = {lg: tool_strings(lg)["banner_emergency_no_number"] for lg in STRINGS}
+    elif tr.level == "mental_health" and not (numbers.get("mental") or numbers.get("emergency")):
+        heads = {lg: tool_strings(lg)["banner_mental_no_number"] for lg in STRINGS}
     head = heads.get(lang, heads["en"])
     why = {
         "es": "Motivo",

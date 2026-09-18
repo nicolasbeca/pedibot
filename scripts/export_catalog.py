@@ -138,6 +138,11 @@ emergencias = {
         "note": v.get("note"),
         "no_national": bool(v.get("no_national")),
         "unverified": bool(v.get("unverified")),
+        # de dónde sale el número. Los 48 africanos vienen del aviso de viaje del FCDO
+        # británico, que NO es la fuente nacional de cada país, y la página tiene que decirlo:
+        # es el mismo «fuente o silencio» que gobierna las guías (18-sep-2026).
+        "source": v.get("source"),
+        "source_url": v.get("source_url"),
     }
     for k, v in numeros.items()
     if k != "default"

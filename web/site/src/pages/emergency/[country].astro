@@ -84,6 +84,13 @@ const jsonld = {
     {data.note && (
       <p class="letra"><b>{s.emgc_note}</b> <q lang="en" dir="ltr">{data.note}</q></p>
     )}
+    {data.source && (
+      <p class="letra"><b>{s.emgc_source}</b>
+        {data.source_url
+          ? <a href={data.source_url} rel="noopener nofollow" target="_blank">{data.source}</a>
+          : data.source}
+      </p>
+    )}
     <ul class="otras">
       {data.poison && <li><b>{s.mine_poison}:</b> {data.poison}</li>}
       {data.mental && <li><b>{s.mine_mental}:</b> {data.mental}</li>}

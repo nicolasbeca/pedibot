@@ -58,8 +58,15 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "स्पेन",
     ),
     # India: «Hindustan» va porque es como mucha gente escribe su país, y «भारत» es el
-    # nombre oficial en hindi, que no se parece en nada a «India» y no casaría solo
-    "IN": ("india", "inde", "indien", "индия", "инди", "الهند", "índia", "भारत", "hindustan"),
+    # nombre oficial en hindi, que no se parece en nada a «India» y no casaría solo.
+    #
+    # 18-sep-2026: «inde» y «инди» se han bajado a COUNTRY_SHORT, con frontera de palabra.
+    # «inde» vivía dentro de «Windeln» —que es «pañales» en alemán— y el golden tiene una
+    # frase de deshidratación que dice «sie macht kaum Windeln nass»: una madre alemana
+    # contando que su hija apenas moja pañales estaba siendo leída como si dijera «India».
+    # También dentro de «independiente» y de «indexado». «инди» vive dentro de
+    # «индивидуальный».
+    "IN": ("india", "indien", "الهند", "índia", "भारत", "hindustan"),
     "FR": ("francia", "france", "frankreich", "франци", "فرنسا", "frança", "फ़्रांस", "फ्रांस"),
     "DE": (
         "alemania",
@@ -93,7 +100,11 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "الولايات المتحدة",
         "eeuu",
         "अमेरिका",
-        "usa",
+        # 18-sep-2026: «usa» a secas se ha bajado, y no por la frontera de palabra sino porque
+        # es una palabra española corriente: «la CAUSA exacta del fallo», «mi hija no USA el
+        # orinal», «hay que USAR el termómetro». Treinta y dos veces en el corpus del propio
+        # proyecto. Arriba se queda lo que sólo puede ser el país; abajo, en mayúsculas, la
+        # sigla — que es como se escribe «USA» cuando se quiere decir Estados Unidos.
     ),
     "PT": ("portugal", "португали", "البرتغال", "पुर्तगाल"),
     # El Golfo y Egipto (17-sep-2026). Van también las CIUDADES que la gente nombra en lugar del
@@ -111,7 +122,7 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "السعوديه",
         "arábia saudita",
         "सऊदी अरब",
-        "riad",
+        # «riad» se lee abajo con frontera: está dentro de «resfriado». 18-sep-2026.
         "riyadh",
         "الرياض",
         "جدة",
@@ -156,7 +167,8 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "الإسكندرية",
     ),
     "QA": (
-        "catar",
+        # «catar» se lee abajo con frontera: vive dentro de «catarro» y de «se acatarra», que
+        # son de las palabras más dichas por un padre español. 18-sep-2026.
         "qatar",
         "katar",
         "катар",
@@ -318,25 +330,68 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
 #: leerlo como Estados Unidos le enseñaría a un padre colombiano el calendario que no es.
 COUNTRY_SHORT: dict[str, re.Pattern[str]] = {
     "GB": re.compile(r"\b(?:uk|u\.k\.|great britain|britain|gro(?:ß|ss)britannien)\b", re.I),
-    "US": re.compile(r"\b(?:the u\.?s\.?|u\.?s\.?a\.?)\b", re.I),
+    # «the US» y «U.S.A.» con puntos sólo pueden ser el país. La sigla sin puntos y sin
+    # artículo se lee más abajo, en COUNTRY_UPPER, y en mayúsculas.
+    "US": re.compile(r"\bthe u\.?s\.?a?\.?\b|\bu\.s\.a?\.?\b", re.I),
+    # 18-sep-2026, medido sobre el corpus del propio proyecto: estos tres vivían arriba, como
+    # subcadena, y casaban dentro de palabras que un padre dice todos los días.
+    #   «catar»  dentro de «catarro» y de «se acatarra»          (8 veces en el corpus)
+    #   «riad»   dentro de «resfriado»
+    #   «inde»   dentro de «Windeln» —pañales, en alemán—, «independiente» e «indexado» (46)
+    # El golden tiene una frase de deshidratación que dice «sie macht kaum Windeln nass»: una
+    # madre alemana contando que su hija apenas moja pañales se leía como si dijera India.
+    "SA": re.compile(r"\briad\b", re.I),
+    # «инди» está dentro de «индивидуальный»; con la frontera y como mucho cinco letras más
+    # entran «Индия», «Индии» e «индийский», y se queda fuera la palabra larga.
+    "IN": re.compile(r"\binde\b|\bинди\w{0,5}\b", re.I),
     # «قطر» es Catar y también el principio de «قطرة», que es una GOTA: la palabra con la que un
     # padre árabe cuenta el jarabe que le ha dado a su hijo. Sin el paréntesis de abajo, «كم قطرة
     # أعطيه» —«¿cuántas gotas le doy?»— se leería como una pregunta sobre Catar. Igual «مصر»
     # dentro de «مصري», «مصرية» y «مصرف».
-    "QA": re.compile(r"قطر(?![ةه])"),
+    "QA": re.compile(r"\bcatar\b|قطر(?![ةه])", re.I),
     "EG": re.compile(r"مصر(?![يةه])"),
     # ── África, 18-sep-2026: los nombres que viven dentro de otra palabra ─────────
     # «Mali» está dentro de «maligno», «maligne» y «malignant». «Niger» está dentro de
     # «Nigeria», y la frontera sí los distingue: después de «niger» viene una «i», que
     # es letra. «Чад» está dentro de «чадо», que es «criatura». Y «guinea pig» es el
     # conejillo de Indias, así que Guinea se lee sólo si detrás no viene «pig».
-    "CD": re.compile("\\b(?:rdc|drc)\\b", re.I),
-    "GH": re.compile("\\bгана\\b", re.I),
-    "GN": re.compile("\\bguinea\\b(?!\\s*(?:pig|fowl))", re.I),
-    "ML": re.compile("\\b(?:mal[ií]|мали|مالي|माली)\\b", re.I),
-    "NE": re.compile("\\b(?:n[ií]ger|нигер|النيجر|नाइजर)\\b", re.I),
-    "TD": re.compile("\\b(?:t?chad|tschad|chade|تشاد|चाड)\\b", re.I),
-    "TG": re.compile("\\b(?:togo|توغو|टोगो)\\b", re.I),
+    #
+    # Pero la frontera de palabra sólo vale para el alfabeto latino y el cirílico, y esto se
+    # escribió primero con `\b` alrededor de TODOS los nombres. Eso repitió dos fallos que ya
+    # estaban en LESSONS: en árabe el artículo y las preposiciones se pegan a la palabra
+    # —«بمالي» es «en Malí» y no tiene ninguna frontera delante (L138)— y en devanagari `\b`
+    # se define sobre `\w`, que no incluye las vocales que cuelgan de la consonante: «माली»
+    # acaba en «ी», que para `re` no es letra, así que `माली\b` no casa nunca (L164). Siete de
+    # trece frases de prueba salían vacías.
+    #
+    # Cada escritura lleva lo suyo: frontera donde la frontera existe, y el nombre desnudo en
+    # árabe y en devanagari, donde lo que hay que acotar se acota mirando alrededor.
+    "CD": re.compile(r"\b(?:rdc|drc)\b", re.I),
+    # el ruso declina y el padre escribe «в Гане», no «Гана»: la terminación entra en el
+    # patrón, y la frontera sigue dejando fuera «органа» y «органе», que es lo que se buscaba.
+    "GH": re.compile(r"\bган[аеуы]\b", re.I),
+    "GN": re.compile(r"\bguinea\b(?!\s*(?:pig|fowl))", re.I),
+    # «مالي» es Malí y también «financiero»: se pide que no lleve el artículo pegado delante
+    # —«المالي» es «el financiero»— y que no sea el principio de «ماليزيا», que es Malasia.
+    "ML": re.compile(r"\b(?:mal[ií]|мали)\b|(?<!ال)مالي(?!زيا)|माली", re.I),
+    # «в Нигере» es Níger; «Нигерия» se lee arriba, en la tabla larga, y gana por más larga
+    "NE": re.compile(r"\bn[ií]ger\b|\bнигер[аеоу]?\b|نيجر|नाइजर", re.I),
+    "TD": re.compile(r"\b(?:t?chad|tschad|chade)\b|تشاد|चाड", re.I),
+    "TG": re.compile(r"\btogo\b|توغو|टोगो", re.I),
+}
+
+
+#: Las siglas, y estas SÍ miran las mayúsculas (18-sep-2026).
+#:
+#: «USA» en mayúsculas sólo puede ser el país. En minúsculas es el verbo español más corriente
+#: que existe en este producto: «mi hija no usa el orinal», «hay que usar el termómetro», «la
+#: causa exacta» —«causa» lleva «usa» dentro—. Estaba en la tabla de subcadenas y casaba treinta
+#: y dos veces en el corpus del propio proyecto.
+#:
+#: Por eso se busca sobre el texto tal como lo escribió el padre, sin bajarlo a minúsculas: es
+#: el único dato que separa las dos cosas, y tirarlo era lo que hacía imposible distinguirlas.
+COUNTRY_UPPER: dict[str, re.Pattern[str]] = {
+    "US": re.compile(r"\bUSA\b|\bEE\.? ?UU\.?\b"),
 }
 
 
@@ -346,6 +401,11 @@ def country_in_question(text: str) -> str | None:
     Longest name wins, so "reino unido" is not read as a shorter name that happens to sit inside
     it. Only consulted when the reader picked no country: a country they wrote themselves beats a
     guess, and there is no guess to fall back on.
+
+    Three tables and the order matters. First the full names, by substring, longest first —
+    "Equatorial Guinea" beats "Guinea". Then the acronyms, ON THE ORIGINAL TEXT, because "USA"
+    is a country and "usa" is a Spanish verb. Last the short forms with a word boundary, which
+    are the ones that live inside other words.
     """
     low = text.lower()
     best: tuple[int, str] | None = None
@@ -355,6 +415,9 @@ def country_in_question(text: str) -> str | None:
                 best = (len(name), code)
     if best is not None:
         return best[1]
+    for code, rx in COUNTRY_UPPER.items():
+        if rx.search(text):
+            return code
     for code, rx in COUNTRY_SHORT.items():
         if rx.search(low):
             return code

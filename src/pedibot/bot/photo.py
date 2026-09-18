@@ -82,12 +82,16 @@ def signs_seen(d: dict[str, str], lang: str) -> str:
     return ", ".join(vistos)
 
 
-def interpret(d: dict[str, str], lang: str, emergency_number: str) -> tuple[str, str]:
+def interpret(d: dict[str, str], lang: str, emergency_number: str | None) -> tuple[str, str]:
     T = tool_strings(lang)
     if not d or d.get("quality") == "poor":
         return "unsure", T["photo_poor"]
     if d["cyanosis"] == "yes" or d["swelling"] == "yes":
         sign = T["photo_sign_cyanosis"] if d["cyanosis"] == "yes" else T["photo_sign_swelling"]
+        if not emergency_number:
+            # 18-sep-2026: en los países sin número nacional esto escribía «call None», y por
+            # la API llegaba como la cadena "None" porque se convertía con str() antes.
+            return "emergency", T["photo_emergency_no_number"].format(sign=sign)
         return "emergency", T["photo_emergency"].format(sign=sign, number=emergency_number)
     if d["petechiae"] == "yes":
         return "urgent", T["photo_petechiae"]
