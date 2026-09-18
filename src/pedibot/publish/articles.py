@@ -450,6 +450,38 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         ],
         "query": "lombrices intestinales niño desparasitación higiene deworming child intestinal worms",
     },
+    # ── África, fase 4 (18-sep-2026) ────────────────────────────────────────────────────────
+    # El plan tenía ya malaria, sarampión, neumonía, desnutrición, tétanos y anemia, que son seis
+    # de las siete cosas que más matan niños en el continente. Faltaba el cólera —que hasta hoy
+    # no tenía ni una ficha en el corpus— y faltaba lo que un padre necesita saber ANTES de que
+    # llegue a urgencias: cómo se prepara el suero oral y cómo se cuentan las respiraciones.
+    #
+    # Las tres se apoyan en documentos que ya están indexados y en ninguna receta nuestra.
+    "colera": {
+        "docs": ["who_en_cholera", "who_es_cholera", "who_fr_cholera", "who_ar_cholera"],
+        "query": (
+            "cólera niño diarrea como agua de arroz deshidratación rehidratación cholera child "
+            "watery diarrhoea rice water dehydration"
+        ),
+    },
+    "suero_oral": {
+        "docs": [
+            "who_en_diarrhoeal_disease",
+            "who_es_diarrhoeal_disease",
+            "nhs_en_diarrhoea_and_vomiting",
+        ],
+        "query": (
+            "suero oral sales de rehidratación cómo se prepara el sobre cuánto dar diarrea "
+            "oral rehydration solution ORS how to prepare how much to give"
+        ),
+    },
+    "respiracion_rapida": {
+        "docs": ["nhm_in_imnci_chart_booklet", "seup_neumonia", "who_en_pneumonia"],
+        "query": (
+            "contar respiraciones por minuto niño respiración rápida tiraje neumonía "
+            "count breaths per minute fast breathing chest indrawing pneumonia child"
+        ),
+    },
     "anemia": {
         "docs": ["who_en_anaemia", "who_ar_anaemia", "who_es_anaemia"],
         "query": "anemia niño hierro cansancio palidez anaemia child iron deficiency",
@@ -949,6 +981,9 @@ SAME_SUBJECT: tuple[frozenset[str], ...] = tuple(
         ("newborn_care_en", "recien_nacido"),
         ("screen_sleep", "sueno_pantallas"),
         ("vacunas", "vaccines_en"),
+        # 18-sep-2026: el suero oral y la gastroenteritis se rozan, pero no son lo mismo: uno
+        # explica la enfermedad y el otro cómo se prepara el sobre. Se dejan separados a
+        # propósito y esta lista queda como recordatorio de que se miró.
         ("alimentacion_complementaria", "weaning_en"),
         ("diarrhoea_vomiting", "gastroenteritis"),
         ("otitis", "ear_infection"),
