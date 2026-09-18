@@ -145,33 +145,6 @@ CORRIENTE = [
 ]
 
 
-def test_every_rule_has_a_swahili_phrase() -> None:
-    """Una regla sin frase suajili aquí es una regla que nadie ha comprobado en suajili."""
-    import yaml
-
-    reglas = yaml.safe_load((RAIZ / "config" / "red_flags.yaml").read_text(encoding="utf-8"))
-    faltan = sorted({r["id"] for r in reglas["rules"]} - set(CASOS))
-    assert not faltan, f"reglas sin frase de padre en suajili: {faltan}"
-
-
-@pytest.mark.parametrize("regla,texto", sorted(CASOS.items()), ids=lambda x: str(x)[:34])
-def test_the_rule_fires_in_swahili(triaje: Triage, regla: str, texto: str) -> None:
-    ids = [m.id for m in triaje.assess(texto).matched]
-    assert regla in ids, f"«{texto}» → {ids or 'nada'}"
-
-
-@pytest.mark.parametrize("texto", CORRIENTE, ids=lambda t: t[:34])
-def test_an_ordinary_swahili_sentence_raises_no_alarm(triaje: Triage, texto: str) -> None:
-    r = triaje.assess(texto)
-    assert r.level == "routine", f"«{texto}» → {r.level} por {[m.id for m in r.matched]}"
-
-
-@pytest.mark.parametrize("texto", sorted(CASOS.values())[:20], ids=lambda t: t[:30])
-def test_the_detector_knows_it_is_swahili(texto: str) -> None:
-    """Si el detector no lo reconoce, el aviso sale en inglés y el padre no lo lee."""
-    assert detect_lang(texto) == "sw", f"«{texto}» → {detect_lang(texto)}"
-
-
 #: La segunda forma de decirlo (L174: una manera no es cobertura).
 #:
 #: Al medirla saltaron CATORCE huecos de 83, y la causa se repetía: el suajili mete el
@@ -263,6 +236,62 @@ SEGUNDA: dict[str, str] = {
     "measles_complication": "ana surua na mdomoni kuna vidonda",
     "neonatal_tetanus": "mchanga hanyonyi na mwili mgumu",
 }
+
+
+def test_every_rule_has_a_swahili_phrase() -> None:
+    """Una regla sin frase suajili aquí es una regla que nadie ha comprobado en suajili."""
+    import yaml
+
+    reglas = yaml.safe_load((RAIZ / "config" / "red_flags.yaml").read_text(encoding="utf-8"))
+    faltan = sorted({r["id"] for r in reglas["rules"]} - set(CASOS))
+    assert not faltan, f"reglas sin frase de padre en suajili: {faltan}"
+
+
+@pytest.mark.parametrize("regla,texto", sorted(CASOS.items()), ids=lambda x: str(x)[:34])
+def test_the_rule_fires_in_swahili(triaje: Triage, regla: str, texto: str) -> None:
+    ids = [m.id for m in triaje.assess(texto).matched]
+    assert regla in ids, f"«{texto}» → {ids or 'nada'}"
+
+
+@pytest.mark.parametrize("texto", CORRIENTE, ids=lambda t: t[:34])
+def test_an_ordinary_swahili_sentence_raises_no_alarm(triaje: Triage, texto: str) -> None:
+    r = triaje.assess(texto)
+    assert r.level == "routine", f"«{texto}» → {r.level} por {[m.id for m in r.matched]}"
+
+
+@pytest.mark.parametrize(
+    "texto", sorted({*CASOS.values(), *SEGUNDA.values(), *CORRIENTE}), ids=lambda t: t[:30]
+)
+def test_the_detector_knows_it_is_swahili(texto: str) -> None:
+    """Si el detector no lo reconoce, el aviso sale en inglés y el padre no lo lee.
+
+    Se miran las 186, no una muestra: la primera versión miraba veinte y pasaba, y al medirlas
+    todas **21 no se reconocían**. Una de ellas, «paka amemuuma mkononi» —le ha mordido el
+    gato—, saltaba la alarma correcta y la escribía en inglés, que es la mitad del trabajo.
+    """
+    assert detect_lang(texto) == "sw", f"«{texto}» → {detect_lang(texto)}"
+
+
+def test_swahili_does_not_steal_the_other_languages() -> None:
+    """Y el otro sentido, que es el que se olvida (L175).
+
+    El suajili se reconoce por su morfología —«ame-» delante del verbo, «-ni» detrás del
+    sustantivo— y esas piezas son cortas. « ame» a secas se llevaba «amendoins», que es como un
+    padre portugués cuenta un atragantamiento con cacahuetes; por eso la marca lleva ahora la
+    consonante siguiente, que en suajili nunca es una ene.
+    """
+    from test_every_rule_in_every_language import CASOS as OTRAS
+    from test_every_rule_in_every_language import CORTO
+    from test_every_rule_in_every_language import SEGUNDA as OTRAS_2
+
+    robadas = [
+        (lg, f)
+        for d in (OTRAS, OTRAS_2, CORTO)
+        for frases in d.values()
+        for lg, f in frases.items()
+        if detect_lang(f) == "sw"
+    ]
+    assert not robadas, f"el suajili se lleva frases de otras lenguas: {robadas[:5]}"
 
 
 def test_every_rule_has_a_second_swahili_phrase() -> None:
