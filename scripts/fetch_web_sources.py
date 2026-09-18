@@ -941,6 +941,16 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     # 13-sep-2026: la ictericia del recién nacido, para la regla `neonatal_jaundice`: sin ficha para
     # padres, el bebé amarillo salía como rutina en las ocho lenguas.
     ("nhs", "https://www.nhs.uk/conditions/jaundice-in-babies/", "recien_nacido", "en", ["recien_nacido"]),
+    # 18-sep-2026, fase 2 de África: el cólera era la única de las enfermedades que matan niños
+    # en el continente que no tenía ni una ficha en el corpus. Sin ficha no puede haber regla de
+    # alarma —cada alarma de este proyecto cita un documento que existe— y «diarrea como agua de
+    # arroz», que es la frase con la que se reconoce, salía como rutina en todos los idiomas.
+    # La OMS no publica esta ficha en portugués; en las otras cinco sí, y las cinco dan 200.
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/cholera", "digestivo", "en", ["todas"]),
+    ("who", "https://www.who.int/es/news-room/fact-sheets/detail/cholera", "digestivo", "es", ["todas"]),
+    ("who", "https://www.who.int/fr/news-room/fact-sheets/detail/cholera", "digestivo", "fr", ["todas"]),
+    ("who", "https://www.who.int/ar/news-room/fact-sheets/detail/cholera", "digestivo", "ar", ["todas"]),
+    ("who", "https://www.who.int/ru/news-room/fact-sheets/detail/cholera", "digestivo", "ru", ["todas"]),
 ]
 
 _DATE_PATTERNS = [

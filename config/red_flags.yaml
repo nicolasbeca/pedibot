@@ -158,7 +158,10 @@ rules:
   - convulsi
   - ataque epil
   - se ha puesto rígid
-  - se (ha )?(quedad|pus|pon)[oe].{0,20}r[ií]gid
+  # 18-sep-2026: «se pone rígido» cazaba también al recién nacido que puja para hacer caca y al
+  # que se despereza, que es de las cosas que más se preguntan de un bebé y no es una convulsión.
+  # Se excluye la causa habitual, no la forma: «se ha quedado rígido» sigue saltando.
+  - se (ha )?(quedad|pus|pon)[oe].{0,20}r[ií]gid(?![^.]{0,45}(cuando (hace fuerza|puja|empuja|se estira|se despereza|caga)|al (hacer fuerza|pujar|estirarse|desperezarse)|para (hacer caca|cagar|hacer de vientre)|haciendo fuerza|con el pis|con la caca))
   - ojos en blanco
   - (los )?ojos (se le )?(han )?(ido|puesto) (en blanco|hacia atr[aá]s)
   - eyes (rolled|rolling) back
@@ -3774,8 +3777,13 @@ rules:
   - (rec[ée]m.nascid\w*)[^.]{0,45}(est[áa] frio|n[aã]o aquece)
   - (नवजात)[^.]{0,45}(ठंडा|गर्म नहीं)
 
+# 18-sep-2026: sube de urgente a emergencia. Es el PRIMERO de los signos generales de peligro
+# del cuadro del IMCI, y lo que manda hacer ese cuadro es referir al hospital sin esperar: un
+# lactante que no puede beber ni mamar se deshidrata en horas. El aviso de «hoy, sin esperar» se
+# quedaba corto para eso. Los frenos de los patrones —la mastitis de la madre— se pusieron el
+# mismo día, porque subir el nivel sin acotar el patrón es multiplicar el susto.
 - id: unable_to_drink_or_feed
-  level: urgent
+  level: emergency
   source: nhm_in_imnci_chart_booklet
   reason_es: "No PUEDE beber ni agarrarse al pecho: es uno de los signos de peligro del IMNCI, hay que verlo hoy"
   reason_en: "Unable to drink or breastfeed: it is one of the IMNCI danger signs — get seen today"
@@ -3791,9 +3799,13 @@ rules:
   - (no (consigue|puede|logra))[^.]{0,30}(agarrar\w*|coger)[^.]{0,15}(al |el )?pecho
   - (n'arrive pas)[^.]{0,25}([àa] boire|[àa] t[ée]ter)
   - (لا (تستطيع|يستطيع))[^.]{0,30}(الرضاعة|الشرب)
-  - no puede (beber|mamar|agarrar\w* (al|el) pecho|tragar l[íi]quidos)
+  - no puede (beber|mamar|agarrar\w* (al|el) pecho|tragar l[íi]quidos)(?![^.]{0,45}(porque tengo|porque me|mastitis|mi pecho|mi pez[óo]n))
   - (no (consigue|logra))[^.]{0,20}(beber|mamar|agarrar\w* el pecho)
-  - (unable to|cannot|can'?t)[^.]{0,20}(drink|breastfeed|feed|suck)
+  # 18-sep-2026: «is not able to drink or breastfeed» es LA frase del manual del IMCI y
+  # en inglés no saltaba: estaba «unable to» y no «not able to». Y el freno del final es
+  # para cuando quien no puede es la madre — «no puede mamar porque tengo mastitis» no
+  # es un signo de peligro del niño.
+  - (unable to|not able to|cannot|can'?t)[^.]{0,20}(drink|breastfeed|feed|suck)(?![^.]{0,45}(because i|mastitis|my breast|my nipple))
   - (ne (peut|arrive) (pas )?[àa]?)[^.]{0,20}(boire|t[ée]ter)
   - (kann nicht)[^.]{0,20}(trinken|saugen|an die brust)
   - (не может)[^.]{0,20}(пить|сосать|взять грудь)
@@ -4258,6 +4270,201 @@ rules:
   - '(الجلد|جلده|جلدها|عيون|عينا|عينيه|عيناه|بشرته|بشرتها|وجهه|بياض).{0,25}(أصفر|صفراء|مصفر|اصفرار)'
   - '(رضيع|مولود|حديث الولادة)\w*.{0,25}(لونه|لونها) (أصفر|اصفر)|اصفرار (الجلد|العين|العينين|البشرة)'
   - '(त्वचा|आँखें|आंखें|आँखों|आंखों|चेहरा|शरीर).{0,25}पील|(नवजात|शिशु).{0,25}पीला पड़|पीली पड़'
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════
+# África, fase 2 del plan (18-sep-2026)
+#
+# Medido antes de escribir nada: de 41 frases con las que un padre africano cuenta lo que mata
+# niños en su continente, **29 salían mal**. La palidez palmar no existía en ninguna lengua; una
+# frecuencia respiratoria contada por la madre —que es LA herramienta del IMCI donde no hay
+# radiografía— salía como rutina; «diarrea como agua de arroz» también; y el paludismo con un
+# niño somnoliento se quedaba en urgente en vez de emergencia.
+#
+# Las fuentes son las que ya estaban en el corpus, salvo el cólera, que no tenía ni una ficha y
+# se ha añadido hoy (OMS, cinco idiomas). El cuadro de procedimientos del IMNCI —la adaptación
+# india del IMCI de la OMS— es el que trae los signos generales de peligro, la palidez palmar y
+# los umbrales de respiración por edad.
+#
+# Y lo que no se ha hecho: NO se ha metido una regla por país ni por continente. Un niño con
+# palidez palmar en Madrid tiene la misma anemia que uno en Kampala, y una regla que sólo
+# saltara para África sería exactamente el racismo blando que este trabajo venía a deshacer.
+# ══════════════════════════════════════════════════════════════════════════════════════════════
+
+- id: severe_malaria
+  level: emergency
+  source: who_en_malaria
+  reason_es: Paludismo con signos de gravedad
+  reason_en: Malaria with danger signs
+  reason_fr: Paludisme avec signes de gravité
+  reason_de: Malaria mit Warnzeichen
+  reason_ru: Малярия с признаками тяжёлого течения
+  reason_ar: ملاريا مع علامات خطورة
+  reason_pt: Malária com sinais de gravidade
+  reason_hi: ख़तरे के लक्षणों के साथ मलेरिया
+  patterns:
+  # La OMS define el paludismo grave por la alteración de la conciencia, las convulsiones y la
+  # orina oscura. Los dos órdenes, porque «tiene malaria y está muy dormido» y «está muy dormido,
+  # tiene malaria» son la misma frase dicha al revés (L101).
+  - (malaria|paludismo|paludisme|palu|malaria|малярия|малярии|ملاريا|مصاب بالملاريا|मलेरिया)[^.]{0,70}(muy dormido|muy adormilado|no se despierta|no hay manera de despertarlo|somnolent|tres somnolent|sonolento|sonolenta|very sleepy|hard to wake|difficult to wake|drowsy|lethargic|unconscious|sehr schlafrig|nicht wach|خامل|لا يستيقظ|فاقد الوعي|وعيه|вял|сонлив|без сознания|заторможен|सुस्त|बेहोश|नींद से नहीं)
+  - (muy dormido|muy adormilado|no se despierta|somnolent|sonolento|very sleepy|hard to wake|drowsy|lethargic|unconscious|schlafrig|خامل|لا يستيقظ|فاقد الوعي|вял|сонлив|без сознания|सुस्त|बेहोश)[^.]{0,70}(malaria|paludismo|paludisme|palu|малярия|ملاريا|मलेरिया)
+  - (malaria|paludismo|paludisme|palu|малярия|ملاريا|मलेरिया)[^.]{0,70}(orina (muy )?oscura|orina negra|orina color coca|dark urine|black urine|urine (tres )?foncee|urine noire|urina escura|dunkler urin|بول داكن|بول غامق|بوله داكن|темная моча|тёмная моча|моча тёмная|गहरा पेशाब|काला पेशाब)
+  - (orina (muy )?oscura|dark urine|urine foncee|urina escura|dunkler urin|بول داكن|темная моча|गहरा पेशाब)[^.]{0,70}(malaria|paludismo|paludisme|palu|малярия|ملاريا|मलेरिया)
+  # «her urine is very dark» no es «dark urine»: el adjetivo va detrás y el verbo en medio. La
+  # misma idea tiene varios órdenes y hay que escribirlos todos (L101).
+  - (malaria|paludismo|paludisme|palu|малярия|ملاريا|मलेरिया)[^.]{0,70}(orina|pis|pipi|urine|urina|urin|моча|моче|بول|بوله|पेशाब|मूत्र)[^.]{0,25}(oscur|negra|dark|black|fonce|escur|dunkel|темн|черн|داكن|غامق|गहरा|काला)
+  - (orina|urine|urina|urin|моча|بول|पेशाब)[^.]{0,25}(oscur|dark|fonce|escur|dunkel|темн|داكن|غامق|गहरा)[^.]{0,70}(malaria|paludismo|paludisme|palu|малярия|ملاريا|मलेरिया)
+
+- id: malaria_area_fever
+  level: urgent
+  source: who_en_malaria
+  reason_es: Fiebre en una zona donde hay paludismo
+  reason_en: Fever in a malaria area
+  reason_fr: Fièvre dans une zone de paludisme
+  reason_de: Fieber in einem Malariagebiet
+  reason_ru: Лихорадка там, где есть малярия
+  reason_ar: حمى في منطقة فيها ملاريا
+  reason_pt: Febre numa zona onde há malária
+  reason_hi: मलेरिया वाले इलाक़े में बुख़ार
+  patterns:
+  # La OMS: quien tiene fiebre en una zona con paludismo necesita una prueba, y pronto. No hace
+  # falta que el padre diga «paludismo»: basta con que diga dónde vive.
+  - (fiebre|febril|fever|fievre|febre|fieber|температур|лихорад|حمى|حرارة|बुख़ार|बुखार)[^.]{0,80}(zona de paludismo|zona palud|zona con paludismo|zona de malaria|malaria area|malaria zone|malaria region|endemic|endemica|zone de paludisme|zone impaludee|zona de malaria|malariagebiet|малярийн|منطقة ملاريا|منطقة فيها ملاريا|منطقة موبوءة|मलेरिया क्षेत्र|मलेरिया वाले)
+  - (zona de paludismo|zona palud|malaria area|malaria zone|zone de paludisme|zona de malaria|malariagebiet|малярийн|منطقة ملاريا|منطقة موبوءة|मलेरिया क्षेत्र)[^.]{0,80}(fiebre|fever|fievre|febre|fieber|температур|лихорад|حمى|حرارة|बुख़ार|बुखार)
+
+- id: palmar_pallor
+  level: urgent
+  source: nhm_in_imnci_chart_booklet
+  reason_es: Palidez en la palma de la mano
+  reason_en: Pallor of the palms of the hands
+  reason_fr: Pâleur de la paume des mains
+  reason_de: Blässe der Handinnenflächen
+  reason_ru: Бледность ладоней
+  reason_ar: شحوب في راحة اليد
+  reason_pt: Palidez na palma das mãos
+  reason_hi: हथेलियों का पीलापन
+  patterns:
+  # El signo de anemia grave del IMCI, y se mira en la PALMA: es donde se ve sin depender del
+  # color de la piel. Hasta hoy el triaje no lo conocía en ninguna de las ocho lenguas.
+  - (palma|palmas|palm|palms|paume|paumes|handflache|handinnenflache|ладон|كف اليد|كفا يديه|كفي يديه|راحة اليد|راحتا يديه|हथेली|हथेलियां|हथेलियाँ)[^.]{0,45}(palid|pale|pâle|pales|blass|бледн|побледнел|شاحب|شاحبتان|شحوب|पीला|पीली)
+  - (palid|pale|pâle|blass|бледн|شاحب|شحوب|पीला|पीली)[^.]{0,45}(palma|palmas|palm|palms|paume|handflache|ладон|كف اليد|راحة اليد|हथेली)
+
+- id: fast_breathing_for_age
+  level: urgent
+  source: nhm_in_imnci_chart_booklet
+  requires:
+  - breathing_too_fast
+  reason_es: Respira más deprisa de lo que corresponde a su edad
+  reason_en: Breathing faster than normal for their age
+  reason_fr: Respiration plus rapide que la normale pour son âge
+  reason_de: Atmung schneller als für das Alter normal
+  reason_ru: Дыхание чаще, чем в норме для возраста
+  reason_ar: تنفس أسرع من الطبيعي لعمره
+  reason_pt: Respira mais depressa do que o normal para a idade
+  reason_hi: उम्र के हिसाब से साँस तेज़
+  patterns:
+  # Esta regla salta sobre todo por la cuenta que hace `respiracion_rapida`, que compara el
+  # número con la edad como manda el IMCI y funciona en las ocho lenguas. Estos patrones son el
+  # segundo camino, y piden 60 o más por minuto: ese número es anormal a cualquier edad de la
+  # infancia, así que se puede leer sin saber la edad.
+  - "(6[0-9]|[7-9][0-9]|1[01][0-9])[^.]{0,16}(respiracion|respiraciones|respira|breaths|breathing|respirations|respiracoes|atemzuge|atmet)[^.]{0,16}(por minuto|per minute|in a minute|par minute|pro minute|em um minuto|num minuto)"
+  - "(6[0-9]|[7-9][0-9]|1[01][0-9])[^.]{0,16}(вдох|вдохов|дыхан)[^.]{0,16}(в минуту|в мин)"
+  - "(6[0-9]|[7-9][0-9]|1[01][0-9])[^.]{0,16}(نفس|نفسا|تنفس)[^.]{0,16}(الدقيقة|دقيقة)"
+  - "(6[0-9]|[7-9][0-9]|1[01][0-9])[^.]{0,16}(साँस|सांस)[^.]{0,16}(मिनट)"
+
+- id: cholera_rice_water
+  level: emergency
+  source: who_en_cholera
+  reason_es: Diarrea muy líquida, como agua de arroz
+  reason_en: Watery diarrhoea like rice water
+  reason_fr: Diarrhée liquide en eau de riz
+  reason_de: Wässriger Durchfall wie Reiswasser
+  reason_ru: Водянистый понос, как рисовый отвар
+  reason_ar: إسهال مائي يشبه ماء الأرز
+  reason_pt: Diarreia muito líquida, como água de arroz
+  reason_hi: चावल के पानी जैसा पतला दस्त
+  patterns:
+  # La OMS: el cólera puede matar en horas. «Como agua de arroz» es la frase con la que se
+  # reconoce, y hasta hoy salía como rutina en las ocho lenguas porque no había ni una ficha.
+  # «Le di agua de arroz» es un padre haciéndolo bien: la OMS la admite como líquido en
+  # casa para la diarrea. Lo que la convierte en el signo del cólera es la comparación,
+  # la palabra «como»: la caca PARECE agua de arroz. Sin esa palabra, es una bebida.
+  - (como|parece|parecida|semejante|like|comme|wie|aussieht|похож|как|كأنه|مثل|जैसा|जैसे)[^.]{0,25}(agua de arroz|agua de arros|água de arroz|rice water|rice-water|eau de riz|reiswasser|рисовый отвар|ماء الأرز|ماء الرز|चावल के पानी|चावल का पानी)
+  - (rice.water (stool|stools|diarrh\w*))
+  # El hindi pone la comparación DETRÁS: «चावल के पानी जैसा» es «como agua de arroz», con el
+  # «como» al final. Escrito al revés no casaba con la forma natural de la lengua (L101).
+  - (चावल के पानी|चावल का पानी)[^.]{0,20}(जैसा|जैसे|जैसी)
+  - (heces|deposicion\w*|caca|stool|selles|fezes|stuhl|стул|براز|मल|दस्त)[^.]{0,30}(agua de arroz|rice water|eau de riz|reiswasser|рисовый отвар|ماء الأرز|चावल के पानी)
+  # «Cólera» a secas es también un enfado, en castellano y en portugués: se exige que venga con
+  # la diarrea o el vómito al lado para no leer un berrinche como una urgencia (L180).
+  - (colera|cholera|choléra|kolera|холера|холеры|كوليرا|कॉलरा|हैजा|हैज़ा)[^.]{0,70}(diarre|diarrh|durchfall|vomit|vomit|понос|диаре|рвот|إسهال|قيء|दस्त|उल्टी|deshidrat|desidrat|dehydrat)
+  - (diarre|diarrh|durchfall|понос|диаре|إسهال|दस्त)[^.]{0,60}(colera|cholera|choléra|холера|كوليرا|हैजा|हैज़ा)
+
+- id: severe_dehydration_signs
+  level: emergency
+  source: nhm_in_imnci_chart_booklet
+  reason_es: Signos de deshidratación grave
+  reason_en: Signs of severe dehydration
+  reason_fr: Signes de déshydratation sévère
+  reason_de: Zeichen schwerer Dehydrierung
+  reason_ru: Признаки тяжёлого обезвоживания
+  reason_ar: علامات جفاف شديد
+  reason_pt: Sinais de desidratação grave
+  reason_hi: गंभीर निर्जलीकरण के लक्षण
+  patterns:
+  # El pliegue que tarda en volver es, él solo, el signo de deshidratación GRAVE del IMCI. Los
+  # ojos hundidos, no: por eso van acompañados.
+  - (pellizc\w*|pinch\w*|pliegue|la piel|a pele|the skin|his skin|her skin|la peau|die haut|кожн\w* складк\w*|кожа|الجلد|त्वचा|चमड़ी)[^.]{0,40}(tarda|vuelve muy lento|no vuelve|se queda|goes back (very )?slow|stays up|stays pinched|remains|revient (tres )?lentement|reste plissee|fica presa|demora a voltar|bleibt stehen|geht langsam|расправляется медленно|не расправ|لا يعود|يعود ببطء|धीरे लौटती|वापस नहीं)
+  # El sustantivo y el adjetivo, separados: «les yeux SONT enfoncés», «die Augen SIND
+  # eingefallen», «os olhos ESTÃO encovados». Pedirlos pegados dejaba fuera la forma natural de
+  # cuatro lenguas, que es la misma lección de siempre sobre el orden de las palabras (L101).
+  - (ojos|los ojos|eyes|yeux|olhos|augen|глаза|глаз|عيون|عيونه|عيناه|आँखें|आंखें|आँख)[^.]{0,16}(hundid|sunken|hollow|enfonc|creus|encovad|fundos|eingefallen|eingesunken|запал|запавш|غائر|धँसी|धंसी)[^.]{0,80}(pellizc|pliegue|la piel|a pele|the skin|la peau|die haut|no bebe|no puede beber|not drinking|cannot drink|trinkt nichts|ne boit plus|nao bebe|não bebe|не пьет|не пьёт|لا يشرب|नहीं पी)
+  - (no bebe nada|no puede beber|not able to drink|cannot drink|ne boit plus rien|nao bebe nada|trinkt nichts|не пьет совсем|لا يشرب أبدا|कुछ नहीं पी)[^.]{0,80}(ojos|los ojos|eyes|yeux|olhos|augen|глаза|глаз|عيون|عيونه|عيناه|आँखें|आंखें|आँख)[^.]{0,16}(hundid|sunken|enfonc|creus|encovad|fundos|eingefallen|запал|запавш|غائر|धँसी|धंसी)
+
+- id: measles_complication
+  level: urgent
+  source: nhm_in_imnci_chart_booklet
+  reason_es: Sarampión con complicación en los ojos o en la boca
+  reason_en: Measles with eye or mouth complications
+  reason_fr: Rougeole avec complication des yeux ou de la bouche
+  reason_de: Masern mit Augen- oder Mundkomplikation
+  reason_ru: Корь с осложнением на глаза или рот
+  reason_ar: حصبة مع مضاعفات في العين أو الفم
+  reason_pt: Sarampo com complicação nos olhos ou na boca
+  reason_hi: आँख या मुँह की जटिलता के साथ खसरा
+  patterns:
+  # El IMCI mira dos cosas en un niño con sarampión: pus saliendo del ojo y úlceras en la boca.
+  # Se exige la complicación, no sólo la palabra «ojos»: «tiene sarampión y los ojos bien» no es
+  # una urgencia.
+  # El pus del pinchazo de la vacuna del sarampión no es el pus del ojo: el IMCI mira el
+  # OJO y la BOCA, así que el sitio entra en la regla.
+  - (sarampion|sarampión|sarampo|measles|rougeole|masern|корь|кори|الحصبة|حصبة|खसरा|मीज़ल्स)[^.]{0,80}(ojo|ojos|eye|eyes|yeux|oeil|olho|olhos|auge|augen|глаз|عين|عينه|आँख|आंख|boca|mouth|bouche|mund|рот|मुँह|मुंह)[^.]{0,40}(pus|supura|legan|legañ|purulent|eitrig|eiter|ulcer|ulcera|úlcera|geschwur|llaga|afta|sore|قرح|تقرح|صديد|قيح|гной|язв|मवाद|छाले|घाव)
+  - (ojo|ojos|eye|eyes|yeux|olho|auge|глаз|عين|आँख|boca|mouth|bouche|mund|рот|рту|فم|मुँह)[^.]{0,30}(pus|supura|legañ|purulent|eiter|ulcer|ulcera|geschwur|llaga|afta|قرح|صديد|гной|язв|मवाद|छाले)[^.]{0,80}(sarampion|sarampión|sarampo|measles|rougeole|masern|корь|الحصبة|खसरा)
+  # «Masern und Eiter im Auge», «корь и гной в глазу», «حصبة وصديد في العين»: en alemán, ruso y
+  # árabe el pus va delante del sitio. Es la misma frase en otro orden (L101).
+  - (sarampion|sarampión|sarampo|measles|rougeole|masern|корь|الحصبة|حصبة|खसरा)[^.]{0,60}(pus|supura|legañ|purulent|eiter|ulcer|ulcera|geschwur|llaga|afta|قرح|صديد|гной|язв|मवाद|छाले)[^.]{0,40}(ojo|ojos|eye|eyes|yeux|olho|auge|глаз|عين|आँख|boca|mouth|bouche|mund|рот|рту|فم|मुँह)
+
+- id: neonatal_tetanus
+  level: emergency
+  source: who_en_tetanus
+  reason_es: Recién nacido que deja de mamar y se pone rígido
+  reason_en: Newborn who stops feeding and becomes stiff
+  reason_fr: Nouveau-né qui cesse de téter et devient raide
+  reason_de: Neugeborenes, das nicht mehr trinkt und steif wird
+  reason_ru: Новорождённый перестал сосать и напрягся
+  reason_ar: مولود توقف عن الرضاعة وتيبّس جسمه
+  reason_pt: Recém-nascido que deixa de mamar e fica rígido
+  reason_hi: नवजात जो दूध पीना बंद कर दे और अकड़ जाए
+  patterns:
+  # La OMS: en el tétanos neonatal el bebé deja de mamar, se pone rígido y tiene espasmos. Es de
+  # las cosas que más matan recién nacidos donde el parto no es hospitalario, y el triaje no lo
+  # conocía en ninguna lengua.
+  # La rigidez sola no vale: un recién nacido se pone rígido cuando puja para hacer caca
+  # y cuando se despereza, y eso saltaba como emergencia. La OMS describe el tétanos
+  # neonatal como el bebé que DEJA DE MAMAR y se pone rígido, o que tiene espasmos.
+  - (recien nacido|recién nacido|recem nascido|recém-nascido|neonato|newborn|new-born|nouveau ne|nouveau-né|neugeborene|neugeborenes|новорожд|حديث الولادة|مولود|नवजात)[^.]{0,90}(deja de mamar|dejo de mamar|dejó de mamar|no mama|ya no mama|stopped (breastfeeding|feeding|sucking)|stops feeding|ne tete plus|ne tète plus|parou de mamar|nao mama|não mama|trinkt nicht mehr|перестал сосать|не сосет|توقف عن الرضاعة|لا يرضع|दूध पीना बंद|दूध नहीं पी)[^.]{0,70}(rigid|rígid|stiff|raide|espasmo|spasm|steif|окоченел|напряж|спазм|تيبس|متيبس|تشنج|अकड़|ऐंठन)
+  - (recien nacido|recién nacido|recem nascido|recém-nascido|neonato|newborn|nouveau ne|nouveau-né|neugeborene|новорожд|حديث الولادة|مولود|नवजात)[^.]{0,90}(espasmo|spasm|spasme|krampf|arqueado|arqueia|arches|opistoton|спазм|судорог|تشنج|ऐंठन)
+  - (espasmo|spasm|spasme|steif und|окоченел|спазм|تشنج|ऐंठन)[^.]{0,90}(recien nacido|recién nacido|recem nascido|newborn|nouveau ne|neugeborene|новорожд|مولود|नवजात)
+  - (mandibula apretada|mandíbula apretada|mandibula cerrada|no puede abrir la boca|jaw (is )?(clenched|locked|stiff)|machoire serree|mâchoire serrée|maxilar travado|boca travada|trismo|trismus|kiefersperre|тризм|сжатая челюсть|челюсть свело|فك مطبق|فكه مطبق|تشنج الفك|जबड़ा जकड़|जबड़ा बंद)
 context:
   fever:
   - fi[eè]vre

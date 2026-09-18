@@ -442,3 +442,47 @@ mecánica, no hace falta adivinarla: si el nombre casa con una letra pegada dela
 se ha leído un país. Eso ahora es una prueba, y la primera versión de esa prueba **pasaba con el
 fallo puesto** porque el corpus no contenía la palabra «catarro» — una revisión que nunca ha
 fallado no está probada (L146).
+
+## L181 · La cuenta que hace una madre con un reloj (18-sep-2026)
+Fase 2 de África. Medido antes de escribir nada: de 41 frases con las que un padre africano
+cuenta lo que mata niños en su continente, **29 salían mal**. La palidez palmar —el signo de
+anemia grave del IMCI, que se mira en la palma porque ahí se ve sin depender del color de la
+piel— no existía en ninguna de las ocho lenguas. «Diarrea como agua de arroz» tampoco. Y el
+paludismo con un niño somnoliento se quedaba en urgente.
+
+Lo que enseñó esta tanda no es que faltaran reglas, sino **de qué clase era lo que faltaba**:
+
+Contar las respiraciones de un niño durante un minuto es la herramienta del IMCI donde no hay
+radiografía ni pediatra, y **no se puede escribir como un patrón**, porque lo que decide no es el
+número sino el número contra la edad: 60 en un recién nacido es normal y 45 en un niño de tres
+años no lo es. Eso es una cuenta, y va en Python como va la dosis de paracetamol. Un triaje
+hecho sólo de expresiones regulares no puede leer lo que un padre sabe medir.
+
+Y la segunda mitad, la de siempre: al medir por dónde se salía, **catorce de treinta y cuatro
+trampas saltaban de más**, y la peor era «le di agua de arroz para la diarrea» — que es un padre
+haciendo exactamente lo que la OMS recomienda, recibiendo una alarma de cólera. Lo que separa el
+síntoma del remedio es una palabra: «COMO». La caca *parece* agua de arroz; el agua de arroz se
+*da*. Sin esa palabra en la regla, estábamos mandando a urgencias a quien lo estaba haciendo bien.
+
+**La regla**: antes de escribir una regla nueva, pregúntate si lo que vas a reconocer es una
+palabra o una medida. Y después de escribirla, pregúntate qué hace un padre que lo está haciendo
+bien y usa esas mismas palabras.
+
+## L182 · Una palabra tecleada con el alfabeto equivocado no falla: deja de encontrar (18-sep-2026)
+Dentro de la regla del sarampión se me coló esto:
+
+    ...|boca|mouth|bouche|mund|рот|фم|फम|مुँह|मुँह|مुंह)
+
+«فم» es «boca» en árabe, y ahí estaba escrito dos veces mal: una con letras cirílicas y otra con
+devanagari. Ninguna de las dos es una palabra de ninguna lengua. Y el mejor ejemplo apareció
+después: `मल`, que parecía el «heces» hindi y era **devanagari MA + árabe LAM**, invisible a
+simple vista incluso sabiendo que había algo raro.
+
+Una alternativa así no rompe nada. La regla carga, el YAML es válido, las pruebas pasan y el
+patrón entero sigue funcionando para las demás lenguas. Sólo hay un padre, en un idioma, que deja
+de recibir su aviso — y eso no se ve en ninguna pantalla.
+
+**La regla**: una alternativa no puede mezclar dos alfabetos. Es mecánico, se comprueba solo, y
+ahora lo comprueba una prueba. Misma familia que L164 y que el `\b` que no existe en devanagari:
+el código da por hecha la forma de una lengua que no es la suya, no falla, y sólo deja de
+encontrar.

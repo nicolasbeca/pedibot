@@ -92,7 +92,7 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
   </div>
 </section>
 
-<script define:vars={{ NUM: numeros, NOMBRES: nombres, CAL: conCalendario, PREF: pref, T: { call: s.mine_call, poison: s.mine_poison, mental: s.mine_mental, emg: s.emg_eyebrow, vax: s.nav_vaccines, none: s.emgc_none, unsure: s.emgc_unsure } }}>
+<script define:vars={{ NUM: numeros, NOMBRES: nombres, CAL: conCalendario, PREF: pref, T: { call: s.mine_call, poison: s.mine_poison, mental: s.mine_mental, emg: s.emg_eyebrow, vax: s.nav_vaccines, none: s.emgc_none, unsure: s.emgc_unsure, yours: s.mine_yours } }}>
   const zona = document.getElementById('mine-cards');
   const sel = document.getElementById('mine-cc');
 
@@ -131,6 +131,17 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
     if (!zona || !cc || !NUM[cc]) return;
     const el = zona.querySelector(`[data-cc="${cc}"]`) || tarjeta(cc);
     el.classList.add('tuyo');
+    // 18-sep-2026, lo vio el operador: «pongo el idioma que ponga, España sale la primera».
+    // Y era verdad y era a propósito —el país del lector va delante, que para una familia
+    // marroquí en Madrid es justo lo que hace falta— pero no se decía en ninguna parte, así
+    // que parecía un fallo. Ahora la tarjeta lo dice, y debajo está el desplegable para
+    // cambiarlo. Un borde de color no es una explicación.
+    if (!el.querySelector('.tuyo-lbl')) {
+      const lbl = document.createElement('p');
+      lbl.className = 'tuyo-lbl';
+      lbl.textContent = T.yours;
+      el.prepend(lbl);
+    }
     zona.prepend(el);
   };
 
@@ -156,6 +167,10 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
     border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; background: var(--paper);
   }
   .card.tuyo { border-color: var(--coral); }
+  .tuyo-lbl {
+    margin: 0 0 6px; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--coral); font-weight: 700;
+  }
   .card h3 { margin: 0; font-size: 1rem; }
   .num { margin: 6px 0 4px; }
   /* 18-sep-2026: hay países donde la fuente dice que no hay número nacional. En la tarjeta

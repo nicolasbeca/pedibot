@@ -98,7 +98,23 @@ def test_the_patterns_of_a_rule_with_requires_are_actually_evaluated() -> None:
     triage = Triage(RAIZ / "config" / "red_flags.yaml")
     con_ambos = [r for r in triage.rules if r.requires and r.patterns]
     assert con_ambos, "si esto se queda vacío, este candado ya no vigila nada"
+    # 18-sep-2026: el candado traía las frases del lactante escritas dentro, así que la segunda
+    # regla con `requires` —la de la respiración contada, que compara el número con la edad—
+    # fallaba por hablar de otra cosa. Cada regla trae ahora su frase, y la prueba exige que
+    # TODA regla con `requires` tenga la suya: así una tercera no puede colarse sin ejemplo.
+    frases = {
+        "infant_fever_under_3_months": ("mi lactante tiene fiebre", "у младенца температура 38"),
+        "fast_breathing_for_age": (
+            "hace 62 respiraciones por minuto",
+            "62 вдохов в минуту",
+        ),
+    }
+    sin_frase = sorted({r.id for r in con_ambos} - set(frases))
+    assert not sin_frase, (
+        f"reglas con `requires` y patrones y sin frase de ejemplo aquí: {sin_frase}. "
+        "Escríbele una, o sus patrones se quedarán de adorno sin que nadie lo note."
+    )
     for r in con_ambos:
-        assert any(triage._hits(rx, "mi lactante tiene fiebre") for rx in r.patterns) or any(
-            triage._hits(rx, "у младенца температура 38") for rx in r.patterns
+        assert any(
+            triage._hits(rx, frase) for frase in frases[r.id] for rx in r.patterns
         ), f"{r.id}: sus patrones no casan ni con las frases que los motivaron"

@@ -488,6 +488,20 @@ INTERROGATIVO = re.compile(
     r"|\bqu[ée] (?:puedo|debo) hacer\b)",
     re.I | re.U,
 )
+#: «¿cómo sé si…?», «how do I check…?». Preguntar cómo se RECONOCE un signo es una
+#: pregunta de información, y va con el interrogativo igual que `EVITAR`. Se deja
+#: fuera a propósito el verbo de actuar —«cómo PARO la hemorragia»— que es una
+#: pregunta de instrucciones y a la vez una urgencia de verdad: ese tiene que saltar.
+RECONOCER = re.compile(
+    r"(?:s[ée] si|saber si|comprobar|reconocer|distinguir"
+    r"|check if|check whether|know if|know whether|tell if|recognise|recognize"
+    r"|savoir si|v[ée]rifier|reconna[îi]tre"
+    r"|erkenn\w*|feststell\w*|merke ich"
+    r"|определить|узнать|поня(?:ть|л)"
+    r"|أعرف|أتأكد|كيف أعرف"
+    r"|कैसे पता|पता करूं|पहचान)",
+    re.I | re.U,
+)
 EVITAR = re.compile(
     r"(?:preven\w*|evit\w*|prevent\w*|avoid\w*|protect\w*|prot[ée]g\w*|[ée]vit\w*|vorbeug\w*|verhinder\w*|vermeid\w*|sch[üu]tz\w*|предотврат\w*|избеж\w*|уберечь|الوقاية|أتجنب|تجنب|أحمي|رोक\w*|बचा\w*)",
     re.I | re.U,
@@ -504,8 +518,40 @@ INFORMATIVA = re.compile(
     r"|was (?:ist|sind|bedeutet)|welche (?:sind|zeichen)|woran (?:erkenne|merke)"
     r"|что такое|каковы|какие (?:признаки|симптомы)|как (?:понять|распознать)"
     r"|ما (?:هي|هو|معنى)|كيف (?:أعرف|نعرف)"
-    r"|क्या (?:है|हैं|होता)|कौन.?से|कैसे (?:पता|जानें))"
+    r"|क्या (?:है|हैं|होता)|कौन.?से|कैसे (?:पता|जानें)"
+    # 18-sep-2026: lo que a uno LE HAN DICHO no es lo que le está pasando a su hijo. «Me han
+    # dicho que si pellizco la piel y tarda en volver es deshidratación» es una explicación que
+    # alguien le dio, y recibía una emergencia. Va aquí y no en el condicional porque lo que lo
+    # delata es quién habla, no el tiempo del verbo.
+    r"|me han dicho|me dijeron|me dijo|dicen que|he le[íi]do|leí que"
+    r"|(?:have been|was|were) told|they told me|i read that|i've read"
+    r"|on m'a dit|il para[îi]t que|j'ai lu que"
+    r"|man hat mir gesagt|ich habe gelesen"
+    r"|мне сказали|я (?:читал|читала)"
+    r"|قالوا لي|قال لي|قرأت أن"
+    r"|मुझे बताया|मैंने पढ़ा)"
     r"[^.?!]{0,60}$",
+    re.I | re.U,
+)
+
+#: «¿El sarampión puede dar úlceras en la boca?» (18-sep-2026).
+#:
+#: Preguntar si una enfermedad PUEDE CAUSAR algo es preguntar por la enfermedad, no contar lo que
+#: le pasa a un hijo. No lo cubría ninguno de los guardianes: el informativo mira sólo delante de
+#: la señal y aquí el «puede dar» va detrás, y el interrogativo pide un «cómo» que en esta frase
+#: no hay — sólo el signo de apertura.
+#:
+#: Se piden las dos cosas a la vez, el verbo de causa y la pregunta, y se mira la oración entera.
+#: Con una sola de las dos sería demasiado ancho: «le puede dar una convulsión» sin interrogación
+#: es un padre asustado contando lo que teme, y ese no se toca.
+CAUSAL = re.compile(
+    r"(?:puede[n]? (?:dar|causar|provocar|producir)"
+    r"|can (?:it |this |measles |malaria )?(?:cause|give|lead to)|could .{0,12}cause"
+    r"|peut.{0,12}(?:donner|provoquer|entra[îi]ner)"
+    r"|kann .{0,14}(?:verursachen|ausl[öo]sen)"
+    r"|может ли .{0,14}(?:вызвать|дать)|вызывает ли"
+    r"|هل (?:يسبب|تسبب|يؤدي)"
+    r"|क्या .{0,14}(?:हो सकता|कर सकता))",
     re.I | re.U,
 )
 
@@ -572,6 +618,10 @@ for _nombre in (
     "PASADO_REMOTO",
     "EVITAR",
     "INTERROGATIVO",
+    # 18-sep-2026: los tres de hoy. Se me olvidó aplanarlos y el árabe de «في الدقيقة» no
+    # casaba, porque el texto del padre llega ya con ة→ه y el patrón seguía con la forma culta.
+    "RECONOCER",
+    "CAUSAL",
 ):
     _rx = globals()[_nombre]
     globals()[_nombre] = re.compile(aplana(_rx.pattern), _rx.flags)
@@ -664,10 +714,15 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
         return True
     if INTERROGATIVO.search(antes):
         detras = texto[fin or inicio : (fin or inicio) + VENTANA_HIPOTETICA]
-        if EVITAR.search(detras):
+        if EVITAR.search(detras) or RECONOCER.search(antes) or RECONOCER.search(detras):
             return True
     frase = _frase_de(texto, inicio)
-    return bool(CONDICIONAL.search(frase) or PASADO_REMOTO.search(frase))
+    if CONDICIONAL.search(frase) or PASADO_REMOTO.search(frase):
+        return True
+    # «¿El sarampión puede dar úlceras en la boca?»: el verbo de causa Y la pregunta, las dos
+    # cosas, y en la oración entera porque el «puede dar» puede ir delante o detrás de la señal.
+    es_pregunta = "?" in frase or "؟" in frase or "¿" in texto[max(0, inicio - 60) : inicio]
+    return bool(es_pregunta and CAUSAL.search(frase))
 
 
 def _negada(texto: str, inicio: int, fin: int) -> bool:
@@ -696,6 +751,104 @@ def _negada(texto: str, inicio: int, fin: int) -> bool:
         return not NEGADORES.search(texto[inicio:fin][:14] + " ")
     return False
 
+
+
+#: Las palabras con las que un padre dice «respira», en las ocho lenguas del producto.
+_RESPIRA = re.compile(
+    r"(respira|respirac|respirando|respire|respirat|breath|breathing|atem|atmet|atmung"
+    r"|дыш|дыхан|вдох|تنفس|نفس|يتنفس|साँस|सांस)",
+    re.I,
+)
+#: «por minuto», que es lo que convierte un número suelto en una frecuencia. Con el conector,
+#: porque un padre no siempre dice «por»: cuenta «55 EN UN minuto», «58 IN A minute», «60 EM UM
+#: minuto». Sin esa forma, la manera más natural de contarlo se quedaba fuera.
+_POR_MINUTO = re.compile(
+    r"(por|per|par|pro|in a|in einer|en un[ae]?|em um|num|a|в|في|प्रति|एक)\s*"
+    r"(minuto|minute|min\.?|minuten|минуту|мин|دقيقة|الدقيقة|मिनट)",
+    re.I,
+)
+_CIFRA_RESPIRA = re.compile(r"(?<![\d,.])(\d{2,3})(?![\d,.])")
+# Mismo aplanado que los guardianes, y por lo mismo: «في الدقيقة» le llega al patrón como
+# «في الدقيقه», con la ta marbuta convertida, y la forma culta no casaba.
+_RESPIRA = re.compile(aplana(_RESPIRA.pattern), _RESPIRA.flags)
+_POR_MINUTO = re.compile(aplana(_POR_MINUTO.pattern), _POR_MINUTO.flags)
+
+#: Los umbrales del IMCI, de menor a mayor edad: (hasta cuántos meses, respiraciones por minuto).
+#: Se leen en orden y se coge el primero que cubre la edad.
+_UMBRALES_IMCI = ((2.0, 60), (12.0, 50), (60.0, 40))
+#: Sin edad no se puede clasificar, así que se pide el umbral más alto de la tabla.
+_UMBRAL_SIN_EDAD = 60
+
+
+#: «normal», en las ocho lenguas. Un padre que cuenta una urgencia no escribe esta palabra;
+#: quien pregunta cuánto es normal, sí.
+_NORMALIDAD = re.compile(
+    r"(normal\w*|normaux|üblich\w*|нормальн\w*|норм[ае]|طبيعي|طبيعية|सामान्य|habitual|usual)",
+    re.I,
+)
+
+
+def _pregunta_por_lo_normal(texto: str, fin: int) -> bool:
+    """¿Es «¿son normales 40 por minuto?» en vez de «respira 40 por minuto»?
+
+    Los guardianes de arriba no cubren esta forma: no hay negación, no hay prevención y el
+    «how» del interrogativo tampoco aparece. Pero es una pregunta de información corriente y
+    dispararía una alarma en un niño que está perfectamente.
+
+    Tres condiciones, y las tres hacen falta:
+
+    · la palabra «normal» cerca del número, ANTES o DESPUÉS. En inglés va detrás —«is 40 breaths
+      per minute normal?»— y en castellano delante —«¿son normales 40 respiraciones?»—, que es
+      otra vez la lección de que la misma idea tiene varios órdenes (L101);
+    · un signo de interrogación cerca. El de apertura va delante y el de cierre detrás, así que
+      se miran los dos lados. No vale `_frase_de`, que corta la oración justo en el «?»;
+    · que ese «normal» no venga negado: «60 por minuto, eso no es normal, ¿verdad?» es un padre
+      asustado contando lo que ve, y ese tiene que saltar.
+    """
+    ini = max(0, fin - 40)
+    cerca = texto[ini : fin + 40]
+    m = _NORMALIDAD.search(cerca)
+    if not m:
+        return False
+    if "?" not in texto[fin : fin + 60] and "¿" not in texto[max(0, fin - 60) : fin]:
+        return False
+    antes = cerca[max(0, m.start() - 14) : m.start()]
+    return not NEGADORES.search(antes)
+
+
+def respiracion_rapida(texto: str, edad_meses: float | None) -> bool:
+    """¿El padre ha contado una frecuencia respiratoria alta para la edad del niño?
+
+    `texto` ya viene aplanado por `aplana`, igual que para los patrones.
+    """
+    for m in _RESPIRA.finditer(texto):
+        ventana_ini = max(0, m.start() - 40)
+        ventana = texto[ventana_ini : m.end() + 60]
+        if not _POR_MINUTO.search(ventana):
+            continue
+        for c in _CIFRA_RESPIRA.finditer(ventana):
+            valor = int(c.group(1))
+            if not (20 <= valor <= 120):
+                continue  # ni un pulso ni un peso ni unos mililitros
+            inicio = ventana_ini + c.start()
+            fin = ventana_ini + c.end()
+            # los mismos guardianes que protegen a los patrones: una pregunta por lo que es
+            # normal, o una frecuencia de ayer, no son un niño respirando deprisa ahora
+            if _negada(texto, inicio, fin) or _hipotetica(texto, inicio, fin):
+                continue
+            if _pregunta_por_lo_normal(texto, fin):
+                continue
+            umbral = _UMBRAL_SIN_EDAD
+            if edad_meses is not None:
+                for hasta, corte in _UMBRALES_IMCI:
+                    if edad_meses < hasta:
+                        umbral = corte
+                        break
+                else:
+                    umbral = _UMBRALES_IMCI[-1][1]
+            if valor >= umbral:
+                return True
+    return False
 
 class Triage:
     def __init__(self, path: Path):
@@ -758,6 +911,10 @@ class Triage:
         flags = {
             "fever": fever,
             "age_under_3_months": age is not None and age < 3,
+            # 18-sep-2026, fase 2 de África: contar las respiraciones durante un minuto es LA
+            # herramienta del IMCI para reconocer una neumonía donde no hay radiografía. No es
+            # un patrón porque lo que decide no es el número sino el número contra la edad.
+            "breathing_too_fast": respiracion_rapida(texto, age),
         }
         matched: list[Rule] = []
         for r in self.rules:
