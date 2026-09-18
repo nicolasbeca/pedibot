@@ -306,3 +306,67 @@ def test_every_rule_has_a_second_swahili_phrase() -> None:
 def test_the_rule_also_fires_said_another_way(triaje: Triage, regla: str, texto: str) -> None:
     ids = [m.id for m in triaje.assess(texto).matched]
     assert regla in ids, f"«{texto}» → {ids or 'nada'}"
+
+
+#: Lo que NO está pasando, en suajili (L176: la señal no basta, hay que leer el marco).
+#:
+#: El suajili construye la negación, el pasado y la condición DENTRO del verbo, que es justo
+#: lo que un guardián escrito para el castellano no puede ver: «ana degedege» es tiene
+#: convulsiones, «HAna degedege» es no las tiene, «ALIkuwa na degedege» es las tuvo y
+#: «AKIpata degedege» es si le dan. No hay un «no» ni un «si» sueltos que buscar.
+#:
+#: Medido al escribirlas: **7 de 26 daban alarma**, y cinco eran el aviso rojo de convulsión.
+#: Un padre que pregunta «degedege la homa ni nini» —qué es una convulsión febril— recibía
+#: «llama ya».
+GUARDIANES: list[tuple[str, str]] = [
+    ("mtoto wangu hana homa", "negación: no tiene fiebre"),
+    ("hana degedege, ni usingizi tu", "negación: no son convulsiones"),
+    ("hakuna damu kwenye kinyesi", "negación: no hay sangre"),
+    ("hajatapika tangu asubuhi", "negación: no ha vomitado"),
+    ("ngozi haina madoa", "negación: la piel no tiene manchas"),
+    ("hapumui kwa shida, anapumua vizuri", "negación con corrección"),
+    ("alikuwa na degedege mwaka jana na hajarudia", "pasado: hace un año"),
+    ("alipata malaria mwaka jana na alipona", "pasado: se curó"),
+    ("aliumwa na mbwa miaka miwili iliyopita", "pasado: hace dos años"),
+    ("alikuwa amelazwa hospitali mwaka jana", "pasado: ingresó hace un año"),
+    ("nifanye nini akipata degedege?", "condicional: si le dan convulsiones"),
+    ("akianza kutapika nifanye nini", "condicional: si empieza a vomitar"),
+    ("kama atapata homa kali nimpeleke wapi", "condicional: si le sube la fiebre"),
+    ("nikimwona amepauka nifanye nini", "condicional: si lo veo pálido"),
+    ("nawezaje kuzuia malaria kwa watoto", "prevención: cómo evitar"),
+    ("ninawezaje kuzuia degedege la homa", "prevención: convulsión febril"),
+    ("nifanye nini kuzuia kuhara", "prevención: evitar la diarrea"),
+    ("jinsi ya kuzuia kuungua jikoni", "prevención: quemaduras"),
+    ("dalili za homa ya uti wa mgongo ni zipi", "información: cuáles son los signos"),
+    ("degedege la homa ni nini", "información: qué es"),
+    ("nitajuaje kama ana upungufu wa maji", "información: cómo saber"),
+    ("ni dalili zipi za hatari kwa mtoto mchanga", "información: signos de peligro"),
+    ("nimeambiwa kwamba degedege la homa si hatari", "referido: me han dicho"),
+    ("nimesoma kwamba kuhara kunaweza kusababisha upungufu wa maji", "referido: he leído"),
+    ("je chanjo ya surua inaweza kusababisha homa", "pregunta causal: la vacuna"),
+    ("je malaria inaweza kusababisha degedege", "pregunta causal: la enfermedad"),
+]
+
+
+@pytest.mark.parametrize("texto,marco", GUARDIANES, ids=lambda x: str(x)[:34])
+def test_what_is_not_happening_raises_no_alarm_in_swahili(
+    triaje: Triage, texto: str, marco: str
+) -> None:
+    r = triaje.assess(texto)
+    assert r.level == "routine", f"[{marco}] «{texto}» → {r.level} por {[m.id for m in r.matched]}"
+
+
+def test_the_swahili_past_prefix_is_not_a_remote_past(triaje: Triage) -> None:
+    """La corrección que costó dos emergencias silenciadas.
+
+    La primera versión del guardián del pasado metió el prefijo suajili «ali-» por analogía con
+    el «hace dos años» castellano, y está mal: **«ali-» no marca distancia**, es el pasado de
+    cualquier cosa que ya ocurrió, incluido lo de hace cinco minutos. Con él dentro, estas dos
+    frases dejaron de dar alarma. Cuando falla un guardián, el fallo es un silencio.
+    """
+    for texto, regla in (
+        ("alianguka akagonga kichwa na akapoteza fahamu", "head_injury_loss_consciousness"),
+        ("alikuwa kwenye moto na anakohoa sana", "smoke_inhalation"),
+    ):
+        ids = [m.id for m in triaje.assess(texto).matched]
+        assert regla in ids, f"«{texto}» → {ids or 'nada'}: el pasado narrativo no es un pasado remoto"

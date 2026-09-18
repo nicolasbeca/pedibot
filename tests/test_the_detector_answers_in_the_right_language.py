@@ -19,8 +19,12 @@ lo lleva el castellano por regla, así que una emergencia portuguesa recibía el
 castellano. Pero « está » **es idéntica en las dos lenguas**: contarla sólo para una era el
 error. Contándola para las dos, el empate lo deshace lo que sí es exclusivo.
 
-Lo que queda son once frases de tres palabras donde no hay marca que separar sin robarle frases
-a la otra lengua. Por eso este candado no exige cero: exige **no empeorar**.
+De 120 a **una**: «no responde», dos palabras sin ninguna marca. Y la última vuelta dejó dos
+regresiones mías que enseñan lo mismo por tercera vez: metí « match» y « vomit » como marcas
+francesas y son palabras inglesas, así que «heatstroke after the match» y «there is blood in his
+vomit» pasaron a francés. Una marca se comprueba en las OTRAS lenguas antes de entrar.
+
+Por eso este candado no exige cero en todas: exige **no empeorar**, con el número de hoy al lado.
 """
 
 from __future__ import annotations
@@ -34,7 +38,7 @@ from pedibot.bot.retrieval import detect_lang
 
 #: Lo peor que se acepta hoy por lengua, medido el 18-sep-2026. Bajarlo es bienvenido; subirlo
 #: es una regresión y falla aquí. El día que una lengua llegue a cero, se pone cero.
-TECHO = {"es": 1, "en": 1, "fr": 7, "de": 1, "ru": 0, "ar": 0, "pt": 1, "hi": 0}
+TECHO = {"es": 1, "en": 0, "fr": 0, "de": 0, "ru": 0, "ar": 0, "pt": 0, "hi": 0}
 
 
 def _cuenta() -> collections.Counter:
@@ -60,4 +64,4 @@ def test_the_detector_does_not_get_worse(lang: str) -> None:
 
 def test_the_whole_battery_is_mostly_right() -> None:
     total = sum(len(fr) for d in (CASOS, SEGUNDA, CORTO) for fr in d.values())
-    assert sum(MAL.values()) <= 12, f"{sum(MAL.values())} de {total} mal detectadas"
+    assert sum(MAL.values()) <= 2, f"{sum(MAL.values())} de {total} mal detectadas"

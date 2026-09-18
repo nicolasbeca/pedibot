@@ -398,11 +398,19 @@ def detect_lang(text: str) -> str:
         " she ",
     ]
     fr_markers = [
+        "il vomit",
+        " failli",
+        " noyer",
+        " douloureuse",
+        " drépanocytose",
+        " choléra",
+        " nouveau-né",
+        " maintenant",
         " pile ",
         " avale une",
         " aspirine",
-        " étouffe",
-        " etouffe",
+        "étouffe",
+        "etouffe",
         " veut",
         " mourir",
         " coupe",
@@ -411,7 +419,6 @@ def detect_lang(text: str) -> str:
         " douleur",
         " testicules",
         " chaleur",
-        " match",
         " dit qu",
         " nombril",
         " mauvais",
@@ -505,6 +512,8 @@ def detect_lang(text: str) -> str:
         " le ventre",
     ]
     de_markers = [
+        " knopfzelle",
+        " verschluckt",
         " hitzschlag",
         " spiel",
         " nach ",
@@ -577,6 +586,7 @@ def detect_lang(text: str) -> str:
         " gestossen",
     ]
     pt_markers = [
+        " quase",
         " diz ",
         " quer ",
         " ouço",

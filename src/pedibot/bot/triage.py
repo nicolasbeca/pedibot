@@ -455,7 +455,16 @@ NEGADORES = re.compile(
     r"|\bsem\b|\bn[ãa]o\b"
     r"|\bбез\b|\bне\b|\bнет\b"
     r"|بدون|بلا|ليس|لا\s"
-    r"|बिना|नहीं)"
+    r"|बिना|नहीं"
+    # Suajili (18-sep-2026). La negación no es una palabra: es un prefijo pegado al verbo.
+    # «ana homa» es tiene fiebre y «HAna homa» es no tiene fiebre; «HAkuna damu» es no hay
+    # sangre; «HAjatapika» es no ha vomitado. Por eso van las formas enteras y no un «no».
+    #
+    # Y por eso NO se añade el «si» suajili —que es «no es»— a secas: en castellano, francés e
+    # italiano «si» es la condición, y meterlo aquí convertiría «si tiene fiebre» en una
+    # negación en tres lenguas. Van sólo sus parejas fijas: «si hatari», «si kawaida».
+    r"|\bhana\b|\bhakuna\b|\bhaja\w+|\bhawa(?:na|ku)\w*|\bhaina\b|\bhatuna\b"
+    r"|\bsi (?:hatari|kawaida|ya kawaida|kitu)\b)"
     r"[\s\wáéíóúüñ,]{0,18}$",
     re.I | re.U,
 )
@@ -556,6 +565,24 @@ CAUSAL = re.compile(
     re.I | re.U,
 )
 
+#: El marco en suajili, que va al final de la frase (18-sep-2026).
+#:
+#: Todos los guardianes de arriba miran lo que va DELANTE de la señal, porque en las ocho lenguas
+#: que había el «cómo evitar», el «cuáles son» y el «qué hago si» van delante. El suajili los pone
+#: detrás: «degedege la homa NI NINI» es «¿qué es una convulsión febril?» y «dalili za homa ya uti
+#: wa mgongo NI ZIPI» es «¿cuáles son los signos de la meningitis?». Las dos daban emergencia.
+#:
+#: Y va lo de prevenir —«kuzuia»— con una excepción escrita: «kuzuia damu» es «parar la
+#: hemorragia», que es una pregunta de instrucciones y a la vez una urgencia de verdad. Es la
+#: misma línea que se trazó con «cómo paro la hemorragia» cuando se escribió RECONOCER.
+SW_MARCO = re.compile(
+    r"(?:\bni nini\b|\bni zipi\b|\bni ipi\b|\bni gani\b"
+    r"|nitajua\w*|nawezaje|ninawezaje|jinsi ya"
+    r"|nimeambiwa|nimesoma|nimeambiwa kwamba"
+    r"|kuzuia(?! damu| kutokwa))",
+    re.I | re.U,
+)
+
 #: Lo que pasó hace AÑOS no es lo que está pasando (17-sep-2026).
 #:
 #: «Tuvo una convulsión hace dos años y nunca se repitió» abría el aviso rojo de llamar al 112.
@@ -578,7 +605,19 @@ PASADO_REMOTO = re.compile(
     r"|в прошлом году|на прошлой неделе"
     r"|(?:قبل|منذ)[^.]{0,12}(?:سنة|سنوات|سنتين|شهر|أشهر|شهور)"
     r"|\bh[áa]\b[^.]{0,12}\b(?:anos?|meses|semanas)\b|no ano passado"
-    r"|(?:साल|महीने|हफ़्ते|बरस)[^.]{0,8}पहले|पिछले साल",
+    r"|(?:साल|महीने|हफ़्ते|बरस)[^.]{0,8}पहले|पिछले साल"
+    # Suajili, con una corrección que costó dos emergencias silenciadas. La primera versión metió
+    # aquí el prefijo del pasado —«ALIkuwa», «ALIpata», «ALIanguka»— por analogía con el
+    # castellano, y está mal: **«ali-» no marca distancia**. Es el pasado de cualquier cosa que ya
+    # ocurrió, incluido lo de hace cinco minutos. Con él dentro, «ALIanguka akagonga kichwa na
+    # akapoteza fahamu» —se cayó, se golpeó la cabeza y perdió el conocimiento— dejó de dar
+    # alarma, y «ALIkuwa kwenye moto na anakohoa sana» también. Cuando falla un guardián, el
+    # fallo es un silencio (L176).
+    #
+    # Lo que sí marca distancia en suajili es la expresión de tiempo, y va detrás del verbo:
+    # «mwaka jana» (el año pasado), «miaka miwili ILIYOPITA» (hace dos años). Eso es lo que queda.
+    r"|mwaka jana|mwezi uliopita|wiki iliyopita"
+    r"|(?:miaka|miezi|wiki)[^.]{0,14}(?:iliyopita|ilivyopita)",
     re.I | re.U,
 )
 
@@ -599,7 +638,14 @@ CONDICIONAL = re.compile(
     r"|что делать[^.?!]{0,40}если|если[^.?!]{0,60}что делать"
     r"|ماذا أفعل[^.?!]{0,40}(?:إذا|لو)|(?:إذا|لو)[^.?!]{0,60}ماذا أفعل"
     r"|(?:अगर|यदि)[^.?!]{0,60}(?:क्या करूँ|क्या करूं|क्या करना)"
-    r"|क्या (?:करूँ|करूं)[^.?!]{0,40}(?:अगर|यदि)",
+    r"|क्या (?:करूँ|करूं)[^.?!]{0,40}(?:अगर|यदि)"
+    # Suajili: el «si» también es un prefijo. «AKIpata degedege» es «si le dan convulsiones» y
+    # «NIKImwona amepauka» es «si lo veo pálido». No hay ninguna palabra suelta que buscar, así
+    # que se busca el prefijo con su verbo, en los dos órdenes que usa la pregunta.
+    r"|nifanye nini[^.?!]{0,45}\b(?:aki|akia|niki|kama)\w*"
+    r"|\b(?:aki|niki)\w+[^.?!]{0,45}nifanye nini"
+    r"|\bkama\b[^.?!]{0,45}\bata\w+[^.?!]{0,45}(?:nifanye|nimpeleke|wapi)"
+    r"|(?:nifanye|nimpeleke)[^.?!]{0,45}\bkama\b",
     re.I | re.U,
 )
 
@@ -623,6 +669,7 @@ for _nombre in (
     # casaba, porque el texto del padre llega ya con ة→ه y el patrón seguía con la forma culta.
     "RECONOCER",
     "CAUSAL",
+    "SW_MARCO",
 ):
     _rx = globals()[_nombre]
     globals()[_nombre] = re.compile(aplana(_rx.pattern), _rx.flags)
@@ -730,7 +777,14 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
         or "¿" in texto[max(0, inicio - 60) : inicio]
         or re.match(r"\s*je\b", frase, re.I) is not None
     )
-    return bool(es_pregunta and CAUSAL.search(frase))
+    if es_pregunta and CAUSAL.search(frase):
+        return True
+    # El suajili pone el interrogativo AL FINAL: «degedege la homa NI NINI» es «¿qué es una
+    # convulsión febril?» y «dalili za homa ya uti wa mgongo NI ZIPI» es «¿cuáles son los
+    # signos?». Ninguna de las otras ocho lenguas lo hace, y todos los guardianes de arriba
+    # miran lo que va DELANTE de la señal, así que aquí no ven nada: las dos frases daban
+    # emergencia. Por eso esta mira la oración entera.
+    return bool(SW_MARCO.search(frase))
 
 
 def _negada(texto: str, inicio: int, fin: int) -> bool:

@@ -39,6 +39,12 @@ DECLARADOS = {
     "_TOKEN": "cubre las tres por otra vía: `\\w` casa cirílico y árabe, y el rango "
     "\\u0900-\\u097f añade el devanagari con sus matras, que `\\w` no reconoce",
     "_GUIONES": "son los guiones Unicode, que no son letras de ningún alfabeto",
+    # 18-sep-2026: SW_MARCO es de UNA lengua a propósito, y por eso no cubre las cuatro
+    # escrituras. Existe porque el suajili pone el interrogativo al FINAL de la frase
+    # —«degedege la homa NI NINI» es «¿qué es una convulsión febril?»— y todos los demás
+    # guardianes miran lo que va DELANTE de la señal. Las otras ocho lenguas no lo necesitan
+    # porque en todas ellas el marco va delante, y cada una ya lo tiene en su guardián.
+    "SW_MARCO": "es el marco interrogativo del suajili, que va al final de la frase; el suajili se escribe sólo en alfabeto latino y las otras ocho lenguas llevan su marco en los guardianes de siempre",
     "_LATINA": "es latino A PROPÓSITO: marca dónde se quita la tilde, y el árabe y el "
     "devanagari no llevan tildes sino letras — quitarles la marca combinante rompe la "
     "palabra (las matras de «बुखार»). El cirílico se trata aparte, fundiendo sólo la ё",

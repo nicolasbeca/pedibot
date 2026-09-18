@@ -568,3 +568,30 @@ reconocer. Se mide todo o no se mide.
 **La regla**: una lengua no está soportada cuando sus reglas saltan, sino cuando el aviso llega
 escrito en ella. Y el candado que lo sujeta no exige cero —hay frases cortas que el portugués y
 el castellano comparten enteras— sino **no empeorar**, con el número de hoy escrito al lado.
+
+## L186 · Un prefijo de pasado no es un pasado remoto (18-sep-2026)
+Los guardianes del triaje —negación, prevención, información, condicional, pasado— estaban
+escritos en las ocho lenguas y en suajili no había ninguno. Medido: de 26 frases de lo que NO
+está pasando, **7 daban alarma**, y cinco eran el aviso rojo de convulsión. Un padre que pregunta
+«degedege la homa ni nini» —qué es una convulsión febril— recibía «llama ya».
+
+Al escribirlos aparecieron dos cosas que ninguna de las otras ocho lenguas hace:
+
+**El marco va al final.** «Degedege la homa NI NINI», «dalili za meningitis NI ZIPI». Todos los
+guardianes miran la ventana ANTERIOR a la señal, porque en castellano, inglés, francés, alemán,
+ruso, árabe, portugués e hindi el «cómo evitar» y el «cuáles son» van delante. En suajili no, y
+por eso ahí no veían nada.
+
+**Y el error que costó caro**: metí el prefijo del pasado «ali-» en el guardián del pasado
+remoto, por analogía con el «hace dos años» castellano. Está mal. **«Ali-» no marca distancia**:
+es el pasado de cualquier cosa que ya ocurrió, incluido lo de hace cinco minutos. Con él dentro,
+«ALIanguka akagonga kichwa na akapoteza fahamu» —se cayó, se golpeó la cabeza y perdió el
+conocimiento— dejó de dar alarma, y «ALIkuwa kwenye moto na anakohoa» también. Dos emergencias
+silenciadas por un guardián de más, y las cazó la batería que ya existía, no yo.
+
+**La regla**: un guardián nuevo se mide en los dos sentidos **el mismo día**. Lo que calla de
+más no se ve en ninguna pantalla —cuando falla un guardián el fallo es un silencio (L176)— y la
+única defensa es que la batería de lo que SÍ tiene que saltar se ejecute justo después. Y la
+regla de fondo: lo que en una lengua marca distancia en el tiempo puede no marcarla en otra;
+antes de traducir un guardián hay que preguntarse qué significa de verdad la pieza gramatical
+que se está copiando.
