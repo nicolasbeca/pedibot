@@ -372,14 +372,39 @@ def calendario(iso3: str) -> tuple[int, list[dict], list[str]]:
     if not filas:
         raise SystemExit(f"{iso3}: la OMS no publica calendario")
     año = max(f["YEAR"] for f in filas)
-    vivas = [
-        f
-        for f in filas
-        if f["YEAR"] == año
-        and f.get("GEOAREA") == "NATIONAL"
-        and str(f.get("TARGETPOP")) not in POBLACION_FUERA
-        and str(f["VACCINECODE"]) not in VACUNAS_FUERA
-    ]
+    def _sirve(f: dict) -> bool:
+        return (
+            f["YEAR"] == año
+            and str(f.get("TARGETPOP")) not in POBLACION_FUERA
+            and str(f["VACCINECODE"]) not in VACUNAS_FUERA
+        )
+
+    # 18-sep-2026. Hasta hoy se cogía sólo lo que la OMS marca como NATIONAL, y en Europa eso no
+    # dejaba nada fuera. En África deja fuera la vacuna de la malaria en QUINCE países —Nigeria,
+    # Kenia, la RD del Congo, Uganda, Ghana, Malí, Zambia, Mozambique…— porque se despliega por
+    # distritos y la OMS la marca SUBNATIONAL. Callarla en los países donde más niños mata sería
+    # exactamente el olvido que este trabajo venía a deshacer.
+    #
+    # Pero tampoco se puede enseñar como si fuera de todo el país: un padre de Lagos leería que
+    # le toca y a lo mejor en su estado no la hay. Así que entra **con su etiqueta** —«offered in
+    # some regions only»— y con lo que la fuente dice de ella, que en Kenia es la lista de los
+    # ocho condados y en Zambia «83 de 116 distritos».
+    vivas = [f for f in filas if _sirve(f) and f.get("GEOAREA") in ("NATIONAL", "SUBNATIONAL")]
+    nacionales = {f["VACCINECODE"] for f in vivas if f.get("GEOAREA") == "NATIONAL"}
+    regionales = {f["VACCINECODE"] for f in vivas if f.get("GEOAREA") == "SUBNATIONAL"} - nacionales
+    detalle_regional: list[str] = []
+    for codigo in sorted(regionales):
+        ficha = NOMBRES.get(str(codigo))
+        comentarios = sorted(
+            {
+                str(f.get("SOURCECOMMENT")).strip()
+                for f in vivas
+                if f["VACCINECODE"] == codigo and f.get("GEOAREA") == "SUBNATIONAL"
+            }
+            - {"None", ""}
+        )
+        if ficha and comentarios:
+            detalle_regional.append(f"{ficha[0]} — {comentarios[0]}")
     fuera: list[str] = []
     # La casilla es (meses, hasta en meses, ¿es la campaña anual?). La unidad NO entra en la
     # clave: «M12» y «Y1» son la misma casilla aunque se escriban distinto. La gripe sí entra,
@@ -403,6 +428,9 @@ def calendario(iso3: str) -> tuple[int, list[dict], list[str]]:
             # El VPH saudí es sólo para niñas. Una tabla que no lo diga le promete a un padre
             # una vacuna que a su hijo no le van a poner.
             nombre += " (girls)"
+        if codigo in regionales:
+            # la línea tiene que decirlo: la tabla se lee sola, sin la nota de arriba
+            nombre += " (some regions only)"
         intervalo = lee_intervalo(f.get("AGEADMINISTERED"))
         if intervalo is not None:
             intervalos.append((codigo, intervalo))
@@ -460,11 +488,11 @@ def calendario(iso3: str) -> tuple[int, list[dict], list[str]]:
         if es_gripe:
             fila["cada_año"] = True
         salida.append(fila)
-    return año, salida, fuera
+    return año, salida, fuera, detalle_regional
 
 
 # ── el YAML ──────────────────────────────────────────────────────────────────────────────────
-def nota(iso3: str) -> dict[str, str]:
+def nota(iso3: str, regional: list[str] | None = None) -> dict[str, str]:
     """Lo que hay que saber ANTES de leer la tabla: de dónde sale y qué no dice."""
     base = {
         "en": ("This is the schedule {pais} reports to WHO, published as data under WHO's open "
@@ -538,8 +566,35 @@ def nota(iso3: str) -> dict[str, str]:
             "hi": " कुवैत दस साल से ज़्यादा समय से BCG को जन्म पर नहीं, 3 महीने पर बताता है, और स्कूल से पहले वाले बूस्टर को «3.6 साल» पर दर्ज करता है — तीसरे और चौथे जन्मदिन के बीच। दोनों यहाँ वैसे ही हैं जैसे बताए गए।",
         },
     }
+    # 18-sep-2026. La vacuna de la malaria se despliega por distritos en quince países africanos,
+    # y la OMS la marca SUBNATIONAL. Aparece en la tabla con su etiqueta, y aquí arriba va lo que
+    # la fuente anota de ella —los ocho condados de Kenia, los 83 distritos de 116 de Zambia—,
+    # en inglés y entrecomillado, porque es la frase de la fuente y no una traducción nuestra.
+    por_regiones = {
+        "en": " One of these vaccines is not given everywhere in the country, only in some regions;"
+              " the line says so. What the source records about it: ",
+        "es": " Alguna de estas vacunas no se pone en todo el país, sino sólo en algunas regiones;"
+              " la línea lo dice. Lo que la fuente anota de ella: ",
+        "fr": " L'un de ces vaccins n'est pas administré dans tout le pays, mais seulement dans"
+              " certaines régions ; la ligne le dit. Ce que la source en note : ",
+        "de": " Einer dieser Impfstoffe wird nicht im ganzen Land gegeben, sondern nur in einigen"
+              " Regionen; die Zeile sagt es. Was die Quelle dazu vermerkt: ",
+        "ru": " Одна из этих вакцин вводится не по всей стране, а только в отдельных регионах — в"
+              " строке это указано. Что об этом пишет источник: ",
+        "ar": " أحد هذه اللقاحات لا يُعطى في كل البلاد بل في مناطق بعينها، وهذا مذكور في السطر."
+              " وهذا ما يسجله المصدر عنه: ",
+        "pt": " Uma destas vacinas não é dada em todo o país, mas apenas em algumas regiões; a"
+              " linha di-lo. O que a fonte regista sobre ela: ",
+        "hi": " इनमें से एक टीका पूरे देश में नहीं, केवल कुछ क्षेत्रों में दिया जाता है — पंक्ति में यह लिखा है। स्रोत"
+              " इसके बारे में यह दर्ज करता है: ",
+    }
+    cola = ""
     nombres = PAISES[iso3][1]
-    return {lg: base[lg].format(pais=nombres[lg]) + extra.get(iso3, {}).get(lg, "") for lg in IDIOMAS}
+    salida = {lg: base[lg].format(pais=nombres[lg]) + extra.get(iso3, {}).get(lg, "") for lg in IDIOMAS}
+    if regional:
+        cola = "«" + "; ".join(regional) + "»."
+        salida = {lg: salida[lg] + por_regiones[lg] + cola for lg in IDIOMAS}
+    return salida
 
 
 def _mapa(d: dict[str, str]) -> str:
@@ -549,7 +604,7 @@ def _mapa(d: dict[str, str]) -> str:
     return "{" + ", ".join(f"{lg}: {json.dumps(d[lg], ensure_ascii=False)}" for lg in IDIOMAS) + "}"
 
 
-def yaml_de(iso3: str, año: int, tabla: list[dict]) -> str:
+def yaml_de(iso3: str, año: int, tabla: list[dict], regional: list[str]) -> str:
     iso2, nombres = PAISES[iso3]
     hoy = dt.date.today().strftime("%d-%m-%Y")
     titulo = {
@@ -571,7 +626,7 @@ def yaml_de(iso3: str, año: int, tabla: list[dict]) -> str:
     lineas.append(f"    name: {_mapa(titulo)}")
     lineas.append(f'    source: "{fuente}"')
     lineas.append(f'    source_url: "{PAGINA}{nombres["en"].lower().replace(" ", "-")}"')
-    lineas.append(f"    note: {_mapa(nota(iso3))}")
+    lineas.append(f"    note: {_mapa(nota(iso3, regional))}")
     lineas.append("    schedule:")
     for fila in tabla:
         vs = ", ".join(f'"{v}"' for v in fila["vacunas"])
@@ -593,11 +648,11 @@ def main() -> int:
     for iso3 in args.paises:
         if iso3 not in PAISES:
             raise SystemExit(f"{iso3}: añádelo a PAISES con su nombre en las ocho lenguas")
-        año, tabla, fuera = calendario(iso3)
+        año, tabla, fuera, regional = calendario(iso3)
         print(f"# {iso3}: año {año}, {len(tabla)} casillas", file=sys.stderr)
         for f in fuera:
             print(f"#   fuera: {f}", file=sys.stderr)
-        salida.append(yaml_de(iso3, año, tabla))
+        salida.append(yaml_de(iso3, año, tabla, regional))
     texto = "\n".join(salida)
     if not args.write:
         print(texto)
