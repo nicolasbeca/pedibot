@@ -487,3 +487,12 @@ viejas hasta que se sincronice a mano.
 ## 18-sep-2026 (tarde) · lo que vio el operador: «España sale siempre la primera»
 - Y era verdad, y era a propósito: la portada pone delante el país del lector, que lo saca de `navigator.language` (es-ES) o de lo que haya guardado. Para una familia marroquí en Madrid eso es justo lo que hace falta.
 - Pero no se decía en ninguna parte —sólo un borde de color—, así que parecía un fallo. La tarjeta lo dice ahora, con una etiqueta en los ocho idiomas, y debajo sigue el desplegable para cambiarlo.
+
+## 18-sep-2026 (noche) · África, fase 3: el suajili
+- Medido antes: de diez frases de urgencia en suajili, **cero** disparaban nada y el detector las tomaba por inglés o portugués. Lo hablan más de 200 millones de personas en Kenia, Tanzania, Uganda y el este del Congo.
+- **Las 83 reglas** tienen ahora motivo y patrones en suajili (195), escritos con el vocabulario de una madre y con el verbo conjugado: en suajili la negación va dentro del verbo («anapumua» / «hapumui»).
+- Los tres avisos y las 29 cadenas del motor (dosis, rehidratación, foto), en suajili. El detector, con 71 marcas; fuera a propósito «je», «sana» y «leo», que chocan con el francés y el castellano.
+- **El puente de sinónimos**: «mtoto ana homa» devolvía cero resultados; ahora devuelve la hoja del NHS sobre la fiebre. 68 términos al corpus inglés, 57 al castellano.
+- **La decisión (L183)**: el suajili NO entra en `SUPPORTED_LANGS`. Hacerlo disparó 45 candados —web, guías, golden, nombres de fármacos— y el corpus no tiene ni un documento en suajili con licencia abierta, así que la respuesta «completa» habría sido una respuesta sin fuentes. La lengua se parte en dos: **aviso en suajili, explicación en inglés**, hasta que haya material que citar. Nuevo `TRIAGE_LANGS` y el candado de paridad aprende la categoría en vez de silenciarse.
+- Nueva prueba contra el 0x08 invisible de L14, que hoy mordió cinco veces: mira 283 ficheros.
+- Suite **7.516**. Verificado contra la API viva: «mtoto wangu ana degedege» → *«🚨 Piga simu 999 sasa hivi au nenda hospitali. Sababu: Degedege…»*.
