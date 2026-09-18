@@ -510,3 +510,10 @@ viejas hasta que se sincronice a mano.
 - Queda escrito en `FUENTES/CANDIDATAS.md` y sujeto por una prueba nueva, con las seis como excepción **con motivo**: una guía nueva que nazca sin fuente legible sigue fallando.
 - Ojo con la primera versión de esa prueba: señaló 74 guías portuguesas que citan al NHS. No era un hallazgo, era convertir una preferencia de ORDEN en una regla dura sobre lo que un padre puede leer. El inglés es puente para todos y está escrito así desde el rastreo de India.
 - Suite **8.017**.
+
+## 18-sep-2026 (noche) · la negación como señal, en las nueve lenguas
+- Barriendo las reglas africanas EN CONTRA en alemán, ruso, árabe e hindi salió de rebote lo peor del día: **«er kann nicht atmen» daba RUTINA**. En alemán el verbo se va al final, el patrón casaba «atmen» y el «nicht» quedaba delante, donde el guardián lo lee como que no pasa nada. Con ella, «sie trinkt nichts mehr», «لا يستيقظ» y «الدم لا يتوقف». **Cuatro emergencias mudas** (L187).
+- El intento de hacerlo mecánico —mirar qué patrones llevan negación— se descartó al validarlo: el patrón inglés es `can(?:'?t| ?not) breathe` y «cannot» no aparece literal, así que daba falsos avisos en 35 reglas (L148). Se hizo escribiendo las frases: **12 reglas × 9 lenguas = 108 frases en negativo**, y **21 no saltaban** — entre ellas una herida que no deja de sangrar en inglés y en francés, y «no consigo despertarlo» en seis lenguas.
+- 25 patrones nuevos. Ahora 108 de 108, y las cuatro baterías adversarias siguen a cero.
+- También: la pregunta causal sin signo de interrogación (en alemán la marca el verbo en primer lugar, en ruso «ли», en árabe «هل», en hindi «क्या») y el marco interrogativo al final de la frase, que el suajili y el hindi comparten.
+- Suite **8.454**.

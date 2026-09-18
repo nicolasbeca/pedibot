@@ -11,6 +11,18 @@ rules:
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
   patterns:
+  # 18-sep-2026: «no consigo despertarlo» en seis lenguas. En inglés ya saltaba por otra vía y
+  # en las demás no había nada: es la misma frase y el mismo miedo.
+  - "(n'arrive pas|ne r[ée]ussis pas|impossible)[^.]{0,20}(à le r[ée]veiller|à la r[ée]veiller)"
+  - "kann (ihn|sie|es)[^.]{0,20}nicht[^.]{0,12}(wach|aufwecken|wecken)"
+  - "не мог[уа][^.]{0,20}разбудить"
+  - "(n[ãa]o consigo|n[ãa]o consegue)[^.]{0,20}(acord[áa]|despert)"
+  - "(जगा|उठा) नहीं पा"
+  - "siwezi ku(mwamsha|mwinua)"
+  - "(لا أستطيع|ما أقدر)[^.]{0,20}(إيقاظه|أيقظه)"
+  # y la forma francesa y suajili de «no responde cuando le hablo»
+  - "ne r[ée]pond (plus |pas )?(quand|lorsque)"
+  - "hajibu[^.]{0,22}(ninapomwita|nikimwita|namwita|nikiongea)"
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "hajitambui"
   - "hajibu (anapo|akiitwa|kabisa)"
@@ -845,6 +857,12 @@ rules:
   reason_en: Deep wound with heavy bleeding that does not stop after 10 minutes of pressure
   reason_fr: Plaie profonde qui saigne abondamment malgré 10 minutes de compression
   patterns:
+  # 18-sep-2026: «the wound will not stop bleeding» y «la plaie ne s'arrête pas de saigner» no
+  # saltaban. La negación es la señal y tiene que ir DENTRO del patrón (L173, L187).
+  - "(wound|cut|bleeding)[^.]{0,20}(will not|won't|does ?n'?t|is not) stop"
+  - "(ne s'arr[êe]te pas|n'arr[êe]te pas)[^.]{0,20}(de saigner|le sang)"
+  - "(le sang|la plaie)[^.]{0,25}(ne s'arr[êe]te pas|ne cesse pas)"
+  - "(jeraha|damu)[^.]{0,20}(halikomi|haikomi|haiachi)"
   # 18-sep-2026: «الدم لا يتوقف» —la sangre no para— con la negación dentro, que en árabe
   # es la señal y no su contrario.
   - (الدم|النزيف|الدماء)[^.]{0,14}(لا يتوقف|لا يقف|لا ينقطع|مستمر)
@@ -2082,6 +2100,8 @@ rules:
   reason_en: Baby under 1 month refusing feeds
   reason_fr: Bébé de moins d'un mois qui refuse de téter
   patterns:
+  # 18-sep-2026: «recusa a mama» no estaba en portugués.
+  - "(recusa|rejeita)[^.]{0,20}(a mama|o peito|o seio|a mamada)"
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "mchanga (anakataa|amekataa) kunyonya"
   - "hanyonyi tangu"
@@ -3589,6 +3609,11 @@ rules:
   reason_hi: "इनहेलर असर नहीं कर रहा: दमे का दौरा जो जवाब न दे, अभी आपात स्थिति है"
   reason_sw: "Dawa ya pumzi haifanyi kazi: shambulio la pumu lisilojibu ni dharura"
   patterns:
+  # 18-sep-2026: en francés, árabe, portugués e hindi no saltaba.
+  - "(ventoline|inhalateur|a[ée]rosol)[^.]{0,25}(ne fait (plus )?rien|ne fait plus d'effet|n'agit plus)"
+  - "(البخاخ|بخاخ الربو)[^.]{0,20}(لا ينفع|لا يفيد|لا يعمل)"
+  - "(bombinha|inalador|puff)[^.]{0,25}(n[ãa]o[^.]{0,12}(faz|fez|est[áa] a fazer) efeito|n[ãa]o adianta)"
+  - "(इन्हेलर|पंप)[^.]{0,20}(काम नहीं|असर नहीं)"
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "dawa ya pumzi haifanyi kazi"
   - "inhaler haisaidii"
@@ -4416,6 +4441,12 @@ rules:
   reason_hi: "लंगड़ाना और बुखार: जोड़ या हड्डी का संक्रमण आज ही जाँचना ज़रूरी है"
   reason_sw: "Kuchechemea pamoja na homa: maambukizi ya mfupa au kiungo yaondolewe leo"
   patterns:
+  # 18-sep-2026: «ne veut pas poser la jambe», «não quer pôr peso na perna», «لا يستطيع الدوس».
+  - "(ne veut pas|ne peut pas|refuse de)[^.]{0,20}(poser|appuyer)[^.]{0,20}(jambe|pied)[^.]{0,45}(fi[èe]vre|temp[ée]rature)"
+  - "(fi[èe]vre|temp[ée]rature)[^.]{0,45}(ne veut pas|ne peut pas|refuse de)[^.]{0,20}(poser|appuyer)"
+  - "(n[ãa]o quer|n[ãa]o consegue)[^.]{0,20}(p[õo]r peso|pisar|apoiar)[^.]{0,45}(febre)"
+  - "(febre)[^.]{0,45}(n[ãa]o quer|n[ãa]o consegue)[^.]{0,20}(p[õo]r peso|pisar|apoiar)"
+  - "(لا يستطيع|لا يقدر)[^.]{0,20}(الدوس|الوقوف|المشي)[^.]{0,45}(حمى|حرارة)"
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "anachechemea[^.]{0,40}homa"
   - "ana homa[^.]{0,40}anachechemea"
