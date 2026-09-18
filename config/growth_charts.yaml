@@ -191,336 +191,336 @@ countries:
   NG:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   ET:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   CD:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   TZ:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   KE:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   UG:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   GH:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   MZ:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   AO:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   CI:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   CM:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   NE:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   ML:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   BF:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   MW:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   ZM:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   SN:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   TD:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   SO:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   ZW:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   GN:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   RW:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   BJ:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   BI:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   TG:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   SL:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   LR:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   MR:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   NA:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   BW:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   LS:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   GM:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   GW:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   GQ:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   GA:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   CG:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   CF:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   SS:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   ER:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   DJ:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   KM:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   CV:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   ST:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   SC:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   MG:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   MU:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   SZ:
     calculator: who
     match: partial
-    body: "WHO/UNICEF — IMCI chart booklet (peso para la edad, estándares OMS)"
+    body: "WHO/UNICEF — IMCI chart booklet (weight-for-age, WHO standards)"
     source: "https://iris.who.int/handle/10665/104772"
     charts:
       - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   ZA:
     calculator: who
     match: partial
-    body: "National Department of Health — Road to Health Book (campaña Side-by-Side)"
+    body: "National Department of Health — Road to Health Book (Side-by-Side campaign)"
     source: "https://sidebyside.co.za/road-to-health-book/"
     charts:
       - {name: "Road to Health Booklet (built on the WHO standards)", from_months: 0, to_months: 60, who_based: true}
