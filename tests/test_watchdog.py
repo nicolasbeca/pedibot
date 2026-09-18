@@ -28,14 +28,19 @@ def test_all_active_means_no_problem():
 
 def test_inactive_unit_is_reported():
     wd = _watchdog()
-    dead = wd.dead_units(status_of=lambda u: "failed" if u == "pedibot-acp" else "active")
+    dead = wd.dead_units(
+        status_of=lambda u: "failed" if u == "pedibot-acp" else "active",
+        dormir=lambda _s: None,
+    )
     assert dead == ["pedibot-acp"]
 
 
 def test_unknown_status_counts_as_dead():
     """A systemctl call that errors out must not be read as healthy."""
     wd = _watchdog()
-    assert wd.dead_units(status_of=lambda _u: "unknown") == list(wd.UNITS)
+    assert wd.dead_units(status_of=lambda _u: "unknown", dormir=lambda _s: None) == list(
+        wd.UNITS
+    )
 
 
 def test_the_units_we_actually_run_are_watched():
@@ -138,3 +143,29 @@ def test_the_floor_is_far_below_a_real_quiet_hour():
     gente» — un vigilante que grita por poco tráfico se deja de leer."""
     wd = _watchdog()
     assert wd.ACCESS_LOG_MIN <= 10
+
+
+def test_a_restart_is_not_a_dead_service():
+    """18-sep-2026: el vigilante avisó de «Servicios parados: pedibot-telegram, pedibot-acp» y no
+    había nada parado — el despliegue los estaba reiniciando en ese mismo segundo. Del journal:
+    el vigilante arrancó a las 13:21:14, el despliegue reinició a las 13:21:16 y el vigilante
+    miró a las 13:21:17.
+
+    Un aviso que salta por un despliegue enseña al operador a ignorar el aviso, que es la mitad
+    cara de la lección de los falsos positivos. Mirar dos veces separa el reinicio de la muerte
+    sin preguntarle a nadie si hay un despliegue en marcha.
+    """
+    wd = _watchdog()
+    vistas = {"n": 0}
+
+    def reiniciando(_u: str) -> str:
+        vistas["n"] += 1
+        return "activating" if vistas["n"] <= len(wd.UNITS) else "active"
+
+    assert wd.dead_units(status_of=reiniciando, dormir=lambda _s: None) == []
+
+
+def test_a_service_that_stays_down_is_still_reported():
+    """Y la otra mitad: mirar dos veces no puede convertirse en no mirar."""
+    wd = _watchdog()
+    assert wd.dead_units(status_of=lambda _u: "failed", dormir=lambda _s: None) == list(wd.UNITS)

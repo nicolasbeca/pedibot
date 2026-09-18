@@ -14,6 +14,7 @@ import pathlib
 import shutil
 import subprocess
 import sys
+import time
 from typing import Any
 
 import httpx
@@ -43,9 +44,38 @@ def unit_status(name: str) -> str:
         return "unknown"
 
 
-def dead_units(status_of=unit_status, units: tuple[str, ...] = UNITS) -> list[str]:
-    """Units that are not `active`. Pure enough to test without systemd."""
-    return [u for u in units if status_of(u) != "active"]
+#: Cuánto se espera antes de mirar por segunda vez una unidad que parece caída.
+REINTENTO_S = float(os.environ.get("WATCHDOG_RETRY_S", "8"))
+
+
+def dead_units(
+    status_of=unit_status, units: tuple[str, ...] = UNITS, dormir=time.sleep
+) -> list[str]:
+    """Units that are not `active`, looked at TWICE. Pure enough to test without systemd.
+
+    18-sep-2026. El vigilante mandó «🚨 Servicios parados: pedibot-telegram, pedibot-acp» y no
+    había nada parado: el despliegue los estaba reiniciando en ese mismo segundo. Los tiempos,
+    del journal:
+
+        13:21:14  arranca el vigilante
+        13:21:16  el despliegue reinicia las tres unidades
+        13:21:17  el vigilante las mira y las ve caídas
+
+    Corre cada diez minutos y el reinicio dura dos segundos, así que la ventana es estrecha —y
+    aun así la encontró—. Un aviso que salta por un despliegue enseña al operador a ignorar el
+    aviso, que es la mitad cara de la lección de los falsos positivos del triaje: el rojo que no
+    significa nada acaba no significando nada el día que sí.
+
+    Mirar dos veces separa las dos cosas sin inventarse nada: un reinicio está arriba ocho
+    segundos después y un servicio muerto sigue muerto. No se pregunta si hay un despliegue en
+    marcha —eso sería fiarse de una bandera que alguien tiene que acordarse de poner— sino que
+    se vuelve a mirar el hecho.
+    """
+    sospechosas = [u for u in units if status_of(u) != "active"]
+    if not sospechosas:
+        return []
+    dormir(REINTENTO_S)
+    return [u for u in sospechosas if status_of(u) != "active"]
 
 
 def telegram(text: str) -> None:
