@@ -1,6 +1,6 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-19** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-09-20** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
 > Nota de la revisión del 8-sep: la cabecera de este fichero decía «25-ago» mientras el código
 > iba por el 7-sep, con 234 commits y catorce días de trabajo sin recoger. Un estado vivo que
@@ -166,6 +166,46 @@ Lo retirado es la insignia de las dos portadas, por dos motivos: pone una marca 
 | **URLs sin redirección** | ✅ Astro construye con `trailingSlash: 'never'` pero Caddy redirigía cada URL a la versión con barra: las 1.488 del sitemap respondían 308 antes de servir. Corregido; ambas formas dan 200 directo. |
 | **LaunchLeague (27-ago)** | ✅ Alta hecha por el operador; insignia puesta en el bloque «Dónde está PediBot» de las dos portadas (no en las 1.488 páginas, para no soltar un enlace saliente en todo el sitio). Los dos SVG son **suyos pero servidos desde nuestro dominio**: sin petición a terceros, que es lo que promete `/legal`, con cambio automático claro/oscuro. ⚠️ **La ficha todavía no aparece en su portada** (0 menciones de PediBot en el HTML, 14 productos listados y ninguno es el nuestro): o está pendiente de revisión o entra en la jornada del lunes. Valor esperado: enlace do-follow mientras dure la jornada; su público son fundadores, no padres. |
 | **Duplicado de golpe de calor** | ✅ Dos claves de tema (`heat` y `golpe_calor`) generaron dos guías inglesas del mismo asunto. Retirada una con **301** hacia la que se queda, y regla nueva para que no se repita (los `compare_*` quedan exentos). |
+
+## Trabajo del 19 y 20 de septiembre de 2026
+
+Dos días largos. Por orden de lo que más cambia el producto:
+
+**La cartilla de vacunación.** Cada visita del calendario del país lleva su casilla. Lo marcado
+sale como puesta; lo que queda sin marcar sale como **«no consta»**, en una lista aparte y con
+la frase de qué hacer con ella. La visita se identifica por la edad del calendario y nunca por
+el nombre de la vacuna. Tabla `doses`, dos endpoints y ocho pruebas.
+
+**El norte de África.** Marruecos, Túnez, Argelia, Libia y Sudán, con su calendario del almacén
+público de la OMS, y los números de urgencias de Libia (1415) y Sudán (999), este con el aviso
+de la propia fuente. **90 países con número, 66 con calendario, 54 de ellos africanos.**
+
+**La solicitud de MetaDAO, enviada el 20-sep.** Ocho respuestas en `ops/METADAO.md`, un
+comprobador (`scripts/check_metadao.py`) que relee cada cifra del fichero publicado, y el memo
+de una página en `/memo`, cuyas once cifras se cuentan solas al construirse en el servidor. La
+vía sin permiso —Backable— está entera en `ops/BACKABLE.md`, sin empezar.
+
+**Seis fallos que estaban vivos y ya no:**
+
+1. `/api/stats` servía dos respuestas del chat en siete días mientras la solicitud lo citaba
+   como prueba de 337 visitantes. Ahora sirve también las visitas (`ops/publish_stats.py`, cada
+   seis horas).
+2. 61 ficheros de guía vivían en direcciones redirigidas: la web decía 568 guías y se podían
+   abrir 507. El despliegue las resucitaba en cada subida.
+3. El bucle que retiraba guías del servidor borraba **una por despliegue**, porque `ssh` se come
+   la entrada del `while read`.
+4. La guía inglesa de la polio citaba sólo al RKI alemán. Entró la ficha inglesa de la OMS.
+5. El buscador de fuentes sellaba con la fecha de hoy 421 documentos servidos de caché, y esa
+   fecha se le enseña al lector en `/sources` como «cuándo se comprobó».
+6. «sudan» dentro de «sudando» y «oran» dentro de «llorando», cazados por el candado antes de
+   salir (L199).
+
+**Detalles de interacción**: el logo responde al ratón y al dedo, las pastillas se hunden al
+pulsar, las tarjetas se levantan dos píxeles, el número de urgencias engorda su subrayado. Todo
+por debajo de 220 ms y apagado entero con `prefers-reduced-motion`.
+
+**Difusión**: cuatro sitios verificados donde colocar un post, con sus normas leídas una a una,
+en `ops/DIFUSION.md`. El orden es PLOS primero.
 
 ## Lo que NO está hecho / conocido
 
