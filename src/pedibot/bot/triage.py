@@ -340,9 +340,23 @@ _DE_COMPUESTO = re.compile(aplana(_DE_COMPUESTO.pattern), _DE_COMPUESTO.flags)
 #:
 #: «Летн» exige prefijo a propósito: sin él, «летний» es *de verano* y no *de un año*.
 _RU_NUM = {
-    "": 1.0, "одно": 1.0, "полу": 0.5, "полутора": 1.5, "двух": 2.0, "трёх": 3.0, "трех": 3.0,
-    "четырёх": 4.0, "четырех": 4.0, "пяти": 5.0, "шести": 6.0, "семи": 7.0, "восьми": 8.0,
-    "девяти": 9.0, "десяти": 10.0, "одиннадцати": 11.0, "двенадцати": 12.0,
+    "": 1.0,
+    "одно": 1.0,
+    "полу": 0.5,
+    "полутора": 1.5,
+    "двух": 2.0,
+    "трёх": 3.0,
+    "трех": 3.0,
+    "четырёх": 4.0,
+    "четырех": 4.0,
+    "пяти": 5.0,
+    "шести": 6.0,
+    "семи": 7.0,
+    "восьми": 8.0,
+    "девяти": 9.0,
+    "десяти": 10.0,
+    "одиннадцати": 11.0,
+    "двенадцати": 12.0,
 }
 _RU_UNIDAD = {"месячн": 1.0, "недельн": 1 / 4.345, "летн": 12.0, "годовал": 12.0}
 _RU_PREFIJOS = "|".join(sorted((k for k in _RU_NUM if k), key=len, reverse=True))
@@ -807,6 +821,23 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
     return bool(MARCO_AL_FINAL.search(frase))
 
 
+#: ¿La negación que se encontró es un «ni» suelto? (19-sep-2026, ver `_negada`)
+_NI_SUELTO = re.compile(r"ni\b", re.I)
+#: Las negaciones que un «ni» castellano continúa. No entra el propio «ni»: dos «ni» seguidos
+#: —«ni come ni bebe»— son la misma construcción y no confirman nada que el primero no dijera.
+_NEGACION_PREVIA = re.compile(
+    r"(?:\bno\b|\bsin\b|\bnada de\b|\btampoco\b|\bnunca\b|\bjam[aá]s\b)", re.I | re.U
+)
+
+
+def _otra_negacion(texto: str, inicio: int) -> bool:
+    """¿Hay una negación de verdad antes del «ni», dentro de la misma frase?"""
+    frase = _frase_de(texto, inicio)
+    corte = texto.rfind(frase, 0, inicio + 1)
+    delante = texto[corte:inicio] if corte >= 0 else frase
+    return bool(_NEGACION_PREVIA.search(delante))
+
+
 def _negada(texto: str, inicio: int, fin: int) -> bool:
     """¿Hay una negación pegada justo antes de esta coincidencia?
 
@@ -828,11 +859,21 @@ def _negada(texto: str, inicio: int, fin: int) -> bool:
             cola = antes.rsplit(coma, 1)[1]
             if not CONJUNCIONES.search(cola):
                 antes = cola
-    if NEGADORES.search(antes):
+    encontrado = NEGADORES.search(antes)
+    if encontrado and _NI_SUELTO.match(encontrado.group(0)) and not _otra_negacion(texto, inicio):
+        # 19-sep-2026: «ni» es una negación en castellano y es el verbo SER en suajili.
+        # «midomo yake NI ya bluu na hajibu» —sus labios SON azules y no responde— perdía el
+        # «no responde», y «hali yake NI mbaya na ana degedege» perdía la convulsión. Del lado
+        # peor: no produce una alarma de más, produce un silencio.
+        #
+        # No se quita el «ni» castellano, que hace falta. Se le pide lo que el castellano
+        # cumple siempre y el suajili no: el «ni» CONTINÚA una negación, así que tiene que
+        # haber otra negación antes en la misma frase.
+        encontrado = None
+    if encontrado:
         # salvo que la propia coincidencia ya empiece negada
         return not NEGADORES.search(texto[inicio:fin][:14] + " ")
     return False
-
 
 
 #: Las palabras con las que un padre dice «respira», en las ocho lenguas del producto.
@@ -932,6 +973,7 @@ def respiracion_rapida(texto: str, edad_meses: float | None) -> bool:
             if valor >= umbral:
                 return True
     return False
+
 
 class Triage:
     def __init__(self, path: Path):

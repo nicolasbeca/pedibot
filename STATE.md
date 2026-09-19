@@ -1,6 +1,6 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-18** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-09-19** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
 > Nota de la revisión del 8-sep: la cabecera de este fichero decía «25-ago» mientras el código
 > iba por el 7-sep, con 234 commits y catorce días de trabajo sin recoger. Un estado vivo que
@@ -517,3 +517,14 @@ viejas hasta que se sincronice a mano.
 - 25 patrones nuevos. Ahora 108 de 108, y las cuatro baterías adversarias siguen a cero.
 - También: la pregunta causal sin signo de interrogación (en alemán la marca el verbo en primer lugar, en ruso «ли», en árabe «هل», en hindi «क्या») y el marco interrogativo al final de la frase, que el suajili y el hindi comparten.
 - Suite **8.454**.
+
+## 19-sep-2026 · el día de MetaDAO: repaso general, el logo de verdad y el país que nadie eligió
+- **El fallo del día, y estaba en producción**: el selector de país del chat no tenía opción vacía, así que el primero de la lista alfabética de códigos, **AE**, salía elegido de fábrica y viajaba en cada pregunta de quien no lo tocaba. Medido contra lo vivo, en castellano: «mi bebé de 6 meses tiene los labios azules y no responde» devolvía **«🚨 Llama ahora al 998 / 999»**, el número de Emiratos, a un padre en Madrid. Ahora la primera opción está vacía —sin país se da la frase general, que vale en cualquier sitio— y lo sujeta una prueba sobre el HTML construido (L189).
+- **«Mi hijo de 2 años no respira bien y está morado» salía RUTINA** y contestaba con espasmos del sollozo. `severe_breathing` tenía «se pone morado» y «labios morados», pero no el estado dicho del niño entero ni «no respira bien», que sí estaba hasta en suajili. Añadidos, con las exclusiones del catarro de nariz y del cardenal («un morado» en la rodilla).
+- **`\bni\b` era el «ni» castellano y en suajili es el verbo SER.** «Midomo yake NI ya bluu na hajibu» perdía el «no responde»; «hali yake NI mbaya na ana degedege» perdía la convulsión. El «ni» sólo niega si hay otra negación antes en la frase, que es lo que el castellano cumple siempre.
+- **La cianosis no existía en suajili**: cuatro patrones de respiración y ninguno de color. Añadidos, más «hajibu» a secas (pedía acompañante), con lo que un adolescente no contesta —el teléfono, los mensajes— fuera.
+- **El logo.** Era un dibujo mío que se le parecía al de `LOGOS/LOGO_PEDIBOT_CARA.jpg`. `scripts/make_icons.py` saca ahora todos los iconos del archivo real, web y app del mismo recorte; borrados `logo.svg` y `favicon.svg`. La trampa: la cara es crema (255,249,235), a seis niveles del blanco del fondo, así que el fondo se quita inundando desde las esquinas, no por umbral.
+- **Banderas y nombres de país en todas partes** (`web/site/src/countries.ts`): el chat, la portada, la herramienta de vacunas, las 88 tarjetas de emergencias y `CountryLinks.astro` en las dieciséis páginas de vacunas y crecimiento, con buscador y con los enlaces todavía escritos en el HTML para que se indexen. En Windows se ven las dos letras del país, no la bandera: Microsoft no las tiene en su fuente de emojis; por eso el nombre va siempre al lado.
+- **La tarjeta de «Tu país» ya no presenta una suposición como un hecho.** Si el país no lo eligió el lector, lo dice preguntando y trae al lado el botón de corregirlo. De ahí venía el COLOMBIA que vio el operador: `localStorage` viejo, con una etiqueta puesta ayer que le daba cara de certeza.
+- **Una llave abierta en el CSS del generador de emergencias** metía la regla de `.sin` dentro de `.ncard b`. El sitio construye sin quejarse y el minificador lo escribe como anidamiento, así que los ocho países sin número nacional enseñaban su raya en el mismo coral que un teléfono de verdad (L190). Prueba nueva sobre los 161 bloques `<style>`, validada contra el fallo reintroducido a propósito.
+- **`APP.md`**: primer borrador del plan de app (Capacitor sobre la web que ya existe, todo menos el chat sin conexión, ~5,6 MB de datos dentro), con el muro de la directriz **1.4.2 de Apple** —las calculadoras de dosis tienen que venir de un hospital, una universidad, una farmacia o un fabricante— y los 12 probadores × 14 días de Google para cuentas personales. Cuatro decisiones esperando al operador. Y su regla, anotada: **si se toca la web, se toca la app**.

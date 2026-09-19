@@ -8,6 +8,7 @@
  * issues it, its source URL and the date it was reviewed.
  */
 import Base from '../../../layouts/Base.astro';
+import CountryLinks from '../../../components/CountryLinks.astro';
 import schedules from '../../../data/vaccines.json';
 import { t } from '../../../i18n';
 
@@ -36,7 +37,6 @@ const jsonld = {
   audience: { '@type': 'Patient' },
   citation: data.source,
 };
-const others = Object.entries(schedules as any).filter(([c]) => c !== code);
 ---
 <Base lang={lang} title={`${title} — PediBot`} description={desc} path={`/es/vaccines/${code.toLowerCase()}`} jsonld={jsonld}>
   <div class="narrow" style="padding:40px 18px">
@@ -64,12 +64,7 @@ const others = Object.entries(schedules as any).filter(([c]) => c !== code);
       <a class="btn btn-ghost" href={`/es/?q=${encodeURIComponent(s.vaxcountry_ask_q)}`}>{s.ask_about}</a>
     </p>
 
-    <p class="n" style="margin-top:26px">
-      {s.vaxcountry_others}{' '}
-      {others.map(([c, d]: any) => (
-        <a href={`/es/vaccines/${c.toLowerCase()}`} style="margin-inline-end:10px">{d.name?.[lang] ?? d.name?.en ?? c}</a>
-      ))}
-    </p>
+    <CountryLinks lang={lang} codes={Object.keys(schedules).filter((c) => c !== code)} base="/vaccines" title={s.vaxcountry_others} />
   </div>
   <style>
     .sched { list-style: none; padding: 0; margin: 0; }

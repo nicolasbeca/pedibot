@@ -181,6 +181,7 @@ import Checklist from '{subir}components/Checklist.astro';
 import emergency from '{subir}data/emergency.json';
 import langCountries from '{subir}data/lang_countries.json';
 import {{ t, langPrefix }} from '{subir}i18n';
+import {{ flag }} from '{subir}countries';
 
 const lang = '{lang}'; const s = t(lang); const pref = langPrefix(lang);
 const numeros = emergency as Record<string, any>;
@@ -214,7 +215,7 @@ const jsonld = {{ '@context': 'https://schema.org', '@type': 'MedicalWebPage', n
       {{orden.map(([cc, nombre]) => (
         <a class="ncard" href={{`${{pref}}/emergency/${{cc.toLowerCase()}}`}}
            title={{numeros[cc]?.emergency ? nombre : (numeros[cc]?.no_national ? s.emgc_none : s.emgc_unsure)}}>
-          <span class="pais">{{nombre}}</span>
+          <span class="pais"><span class="bandera" aria-hidden="true">{{flag(cc)}}</span>{{nombre}}</span>
           <b class={{numeros[cc]?.emergency ? '' : 'sin'}}>{{numeros[cc]?.emergency ?? '—'}}</b>
         </a>
       ))}}
@@ -248,11 +249,18 @@ const jsonld = {{ '@context': 'https://schema.org', '@type': 'MedicalWebPage', n
   }}
   .ncard:hover {{ border-color: var(--coral); }}
   .ncard .pais {{ font-size: .92rem; }}
+  /* En el móvil, banderas; en un Windows de escritorio, las dos letras del país. Por eso el
+     nombre va siempre al lado y esto es decoración. */
+  .ncard .bandera {{ margin-inline-end: 7px; }}
+  /* 19-sep-2026. Esta llave estaba abierta y con la regla de `.sin` metida DENTRO, antes de
+     las declaraciones. El minificador lo entendió como anidamiento —`& .ncard b.sin`, que no
+     casa con nada— y el resultado era que los ocho países cuya fuente dice que NO hay número
+     nacional enseñaban su raya en el mismo coral que un teléfono de verdad. */
   .ncard b {{
-  .ncard b.sin {{ color: var(--ink-3); font-weight: 600; }}
     font-family: 'JetBrains Mono', ui-monospace, monospace; color: var(--coral);
     font-variant-numeric: tabular-nums; font-size: .98rem; white-space: nowrap;
   }}
+  .ncard b.sin {{ color: var(--ink-3); font-weight: 600; }}
 </style>
 """
 

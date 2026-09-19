@@ -370,3 +370,49 @@ def test_the_swahili_past_prefix_is_not_a_remote_past(triaje: Triage) -> None:
     ):
         ids = [m.id for m in triaje.assess(texto).matched]
         assert regla in ids, f"«{texto}» → {ids or 'nada'}: el pasado narrativo no es un pasado remoto"
+
+
+#: 19-sep-2026, encontrado preguntando a lo desplegado el día de MetaDAO. «Mtoto wangu wa miezi
+#: 6 midomo yake ni ya bluu na hajibu» —mi bebé de 6 meses tiene los labios azules y no
+#: responde— volvió RUTINA y sin ningún aviso. Dos huecos, los dos del día que entró el suajili:
+#:
+#:   · **la cianosis no existía en suajili**. Ni una sola de las formas de decir «se ha puesto
+#:     azul» disparaba nada, teniendo `severe_breathing` cuatro patrones suajilis de respiración;
+#:   · «hajibu» a secas tampoco. El patrón pedía un acompañante —«hajibu kabisa», «hajibu
+#:     nikimwita»— y un padre asustado escribe la palabra sola.
+#:
+#: Es exactamente la avería de L172 otra vez: una lengua entra con sus 83 reglas traducidas y la
+#: red le queda más estrecha que a las de al lado, porque se traduce lo que uno escribió y no lo
+#: que se dice.
+AZUL_Y_SIN_RESPUESTA: list[tuple[str, str]] = [
+    ("severe_breathing", "mtoto wangu midomo yake ni ya bluu"),
+    ("severe_breathing", "midomo yake imekuwa bluu"),
+    ("severe_breathing", "ngozi yake imekuwa ya bluu"),
+    ("severe_breathing", "midomo yake ni ya samawati"),
+    ("severe_breathing", "uso wake umekuwa bluu"),
+    ("not_responding", "mtoto wangu hajibu"),
+    ("not_responding", "mtoto wangu wa miezi 6 midomo yake ni ya bluu na hajibu"),
+]
+
+
+@pytest.mark.parametrize(("regla", "texto"), AZUL_Y_SIN_RESPUESTA)
+def test_blue_and_unresponsive_fire_in_swahili(triaje: Triage, regla: str, texto: str) -> None:
+    r = triaje.assess(texto)
+    assert r.level == "emergency", f"«{texto}» → {r.level}"
+    assert regla in [m.id for m in r.matched], f"«{texto}» → {[m.id for m in r.matched]}"
+
+
+#: Y lo que no puede saltar por haber ensanchado lo de arriba: el azul es un color y también es
+#: la ropa, y «hajibu» es lo que hace un adolescente con el móvil.
+AZUL_CORRIENTE = [
+    "amevaa nguo ya bluu leo",
+    "nimemnunulia mpira wa bluu",
+    "hajibu simu yangu",
+    "hajibu maswali ya shule",
+]
+
+
+@pytest.mark.parametrize("texto", AZUL_CORRIENTE)
+def test_blue_clothes_and_an_unanswered_phone_raise_no_alarm(triaje: Triage, texto: str) -> None:
+    r = triaje.assess(texto)
+    assert r.level == "routine", f"«{texto}» → {r.level} por {[m.id for m in r.matched]}"

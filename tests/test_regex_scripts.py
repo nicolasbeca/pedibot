@@ -67,6 +67,15 @@ DECLARADOS = {
     "lenguas dicen la edad separando el número de la unidad y las lee `_AGE_PATTERNS`, "
     "que sí cubre las tres escrituras: este detector no es una traducción a medias sino "
     "una gramática que solo existe en una lengua",
+    # 19-sep-2026. Este no lee al padre en general: sólo se consulta cuando la negación hallada
+    # es el «ni» castellano, para saber si continúa otra negación —«no tiene fiebre NI le cuesta
+    # respirar»— o si es el verbo SER suajili —«midomo yake NI ya bluu»—. Un texto en cirílico,
+    # árabe o devanagari no contiene ese «ni» latino suelto, así que la pregunta no llega a
+    # hacerse. Si algún día el disparador deja de ser una palabra latina, esta declaración deja
+    # de valer y hay que escribir las negaciones de las tres escrituras.
+    "_NEGACION_PREVIA": "sólo se consulta cuando el negador hallado es el «ni» castellano, que "
+    "es una palabra latina: un texto en otra escritura nunca llega hasta aquí. Las negaciones "
+    "de las tres escrituras están en `NEGADORES`, que sí las cubre",
 }
 
 BLOQUES = {"cirílico": ("Ѐ", "ӿ"), "árabe": ("؀", "ۿ"), "devanagari": ("ऀ", "ॿ")}

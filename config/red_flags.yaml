@@ -25,7 +25,10 @@ rules:
   - "hajibu[^.]{0,22}(ninapomwita|nikimwita|namwita|nikiongea)"
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "hajitambui"
-  - "hajibu (anapo|akiitwa|kabisa)"
+  # 19-sep-2026: pedía acompañante —«hajibu kabisa», «hajibu nikimwita»— y un padre asustado
+  # escribe la palabra sola. Lo que se excluye es lo que un adolescente no contesta: el
+  # teléfono, los mensajes y las preguntas del colegio.
+  - "hajibu\\b(?![^.]{0,15}(simu|ujumbe|meseji|barua|maswali|swali))"
   - "amepoteza fahamu"
   - "hana fahamu"
   # 17-sep-2026: «lleva media hora sin responder» salía RUTINA. La negación vuelve a ser la
@@ -259,6 +262,12 @@ rules:
   - "anashindwa kupumua"
   # «hawezi kupumua» es «no puede respirar»: la negación va dentro del verbo (18-sep-2026).
   - "hawezi ku(pumua|vuta pumzi)"
+  # 19-sep-2026, preguntando a lo desplegado: el suajili entró ayer con cuatro patrones de
+  # respiración y **ninguno de cianosis**. «Midomo yake ni ya bluu» —tiene los labios azules—
+  # salía rutina y sin aviso. Vale el préstamo inglés, que es lo que se escribe, y «samawati».
+  - "(midomo|ngozi|uso|ulimi|kucha|vidole)[^.]{0,25}(bluu|buluu|samawati|samawi)"
+  - "(bluu|buluu|samawati)[^.]{0,20}(midomo|ngozi|uso|ulimi)"
+  - "ame(kuwa|geuka|badilika)[^.]{0,12}(bluu|buluu|samawati)"
   # 17-sep-2026, segundo intento. Pedir «al respirar» dejaba fuera la forma normal de
   # contarlo —«no tiene fiebre pero se le marcan las costillas»— y lo cazó una prueba vieja.
   # Ahora el patrón es amplio otra vez y lo que se excluye es la DELGADEZ, que es la

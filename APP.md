@@ -144,6 +144,39 @@ Esta lista es, a la vez, la lista de funciones y la defensa ante la directriz 4.
 
 ---
 
+## 4 bis. La regla de oro: si se toca la web, se toca la app
+
+Tuya, del 19-sep-2026, y la pongo aquí arriba porque es la que más fácil se incumple:
+**cada vez que actualicemos la web hay que actualizar la app.** Dos productos con el mismo
+nombre que dicen cosas distintas sobre la misma vacuna es peor que tener uno solo.
+
+La buena noticia es que el diseño de §3 hace que casi todo se arrastre solo: la app lleva dentro
+**el mismo `web/site/dist`**, así que un arreglo en un componente o una guía nueva no se
+reescribe dos veces. Pero «casi todo» no es «todo», y esto es lo que hay que tener claro:
+
+| Lo que cambia | ¿Llega a la app sin publicar en la tienda? |
+|---|---|
+| Guías, textos, respuestas del chat | **Sí**, el chat y las guías se piden al servidor cuando hay red |
+| Los datos que van dentro (vacunas, emergencias, curvas, dosis) | **Sí**, si se refrescan en segundo plano — hay que construirlo así desde el primer día (§F1) |
+| La interfaz: componentes, páginas, estilos | **No**: viajan dentro del paquete. Hace falta una versión nueva |
+| Una lengua nueva, una regla de triaje nueva | La regla es del servidor y llega sola; la **traducción** de la interfaz, no |
+| Los iconos, el nombre, los permisos | **No**: versión nueva y revisión de la tienda |
+
+De ahí salen tres cosas que hay que montar y que no son opcionales:
+
+1. **Un solo origen de los datos.** Los JSON de `web/site/src/data/` son los que se empaquetan;
+   nadie copia un fichero a mano dentro de `app/`. Lo hace el script del empaquetado.
+2. **Refresco en segundo plano con fecha a la vista.** La app se trae los datos nuevos cuando hay
+   red y **escribe en pantalla de cuándo es lo que estás leyendo**. Un calendario de vacunas de
+   hace ocho meses guardado en un teléfono es peor que no tenerlo.
+3. **Una prueba que compare las dos.** Igual que hoy hay pruebas que leen el HTML construido,
+   tiene que haber una que falle si lo empaquetado en la app no coincide con lo publicado en la
+   web. Mientras no exista, esto es una promesa; con ella, es una comprobación.
+
+Y en lo operativo: la lista de despliegue (`ops/deploy.sh`) pasa a tener **dos destinos**. Hoy
+«desplegar» es el VPS; a partir de la app, desplegar es el VPS **y** decidir si eso pide una
+versión nueva en las tiendas. La columna de la tabla de arriba es esa decisión, escrita.
+
 ## 5. Lo que hay que optimizar para el móvil
 
 La web es adaptable, pero adaptable no es lo mismo que pensada para un pulgar. Lo que revisaría,

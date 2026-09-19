@@ -644,3 +644,54 @@ El árabe pierde la hamza, el devanagari el nuqta, el castellano y el francés l
 francés además el apóstrofo, y el alemán convierte la diéresis en dos letras. Lo que se cae nunca
 está en la frase de ejemplo que uno escribe: aparece cuando se prueba **escribiendo como escribe
 un padre a las tres de la mañana**, sin teclado cómodo y con una mano.
+
+## L189 · Un desplegable sin opción vacía elige por el lector, y eligió Emiratos (19-sep-2026)
+Repasando lo desplegado el día en que el proyecto se presenta en MetaDAO, miré el selector de
+país de la portada:
+
+    <select id="country"><option value="AE">AE</option><option value="AO">AO</option>…
+
+Dos averías en la misma línea. La que se ve: los códigos ISO pelados, de manera que para elegir
+España había que saberse la sigla. La que no se ve y es la grave: **sin opción vacía, un
+`<select>` viene con la primera elegida de fábrica**, y esa era AE por orden alfabético del
+código. Ese valor viajaba en cada pregunta de quien no lo tocaba, que es casi todo el mundo.
+
+Medido contra producción, en castellano, con «mi bebé de 6 meses tiene los labios azules y no
+responde»:
+
+    país AE (el de fábrica) → «🚨 Llama ahora al 998 / 999»   ← Emiratos
+    sin país                → «llama al número de tu país (112 en la UE, 911 en América)»
+    país ES                 → «🚨 Llama ahora al 112»
+
+Un padre en Madrid recibía un teléfono del Golfo, en rojo y en grande. Y el proyecto llevaba
+semanas cuidando de que el número fuera exacto en 88 países: el fallo no estaba en el dato, sino
+en **quién decidía a qué país mirar**.
+
+**La regla**: en este proyecto, un valor que el lector no ha elegido no es un valor. El
+desplegable abre vacío, la frase general vale en cualquier sitio, y lo que se deduce del
+navegador se enseña **como lo que es**, con la manera de corregirlo al lado. Lo mismo valía para
+la tarjeta de «Tu país» de la portada, que presentaba una suposición guardada en el navegador con
+la misma cara de certeza que una elección: el operador entró y leyó que su país era Colombia.
+
+## L190 · Una regla de CSS dentro de otra no da error: sólo borra el estilo (19-sep-2026)
+En el generador de las páginas de emergencias había esto, desde el día que se escribió:
+
+    .ncard b {
+    .ncard b.sin { color: var(--ink-3); font-weight: 600; }
+      font-family: 'JetBrains Mono', ui-monospace, monospace; color: var(--coral);
+    }
+
+El sitio construye sin una queja, porque el minificador lo entiende como CSS anidado y escribe
+`& .ncard b.sin`, un selector que no casa con nada. Lo que se perdía: los ocho países cuya fuente
+dice que **no hay número nacional** enseñaban su raya en el mismo coral y la misma tipografía que
+un teléfono de verdad, o sea, lo contrario de lo que esa clase existía para decir.
+
+No se ve leyendo el código —la llave descuadrada no descuadra nada, la regla intrusa está
+completa— y no se ve mirando la página, porque hay que saber que ocho países de ochenta y ocho
+tenían que verse distintos.
+
+**La regla**: aquí no se anida CSS. Cualquier regla dentro de otra que no sea una arroba
+(`@media`, `@supports`, `@keyframes`) es este fallo otra vez, y lo comprueba
+`test_no_style_block_is_left_open.py` en los 161 bloques `<style>` del sitio. Antes de darla por
+buena, la prueba se ejecutó contra el fallo reintroducido a propósito: si no falla con el fallo
+puesto, no vale.

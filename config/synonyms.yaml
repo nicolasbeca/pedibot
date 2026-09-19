@@ -672,6 +672,19 @@ es:
   - cianosis
   - espasmo del sollozo
   - dificultad respiratoria
+  # 19-sep-2026, preguntando a lo desplegado: «mi bebé tiene los labios azules y no responde»
+  # daba el aviso rojo correcto y debajo «no tengo información fiable sobre esto». La misma
+  # frase en inglés traía cuatro fuentes. No faltaba material: faltaba la palabra. El padre
+  # escribe «azul», y las hojas del SEUP dicen «cianosis» y «coloración azulada».
+  azul:
+  - cianosis
+  - coloración azulada
+  - labios morados
+  - dificultad respiratoria
+  azulad:
+  - cianosis
+  - coloración azulada
+  - dificultad respiratoria
   calor:
   - golpe de calor
   sol:
