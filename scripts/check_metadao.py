@@ -50,7 +50,7 @@ CIFRAS = {
             "countries", {}
         )
     ),
-    "502 guides": lambda: len(list((RAIZ / "web" / "content").rglob("*.md"))),
+    "568 guides": lambda: len(list((RAIZ / "web" / "content").rglob("*.md"))),
     # 19-sep-2026: el texto decía 48 y eran 49. Era la única cifra escrita a mano de todas,
     # y por eso fue la única que se quedó vieja. Aquí se cuenta como las demás.
     "49 African countries": lambda: len(
