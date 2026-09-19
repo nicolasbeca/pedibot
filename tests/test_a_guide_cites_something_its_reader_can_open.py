@@ -36,6 +36,7 @@ CONTENIDO = RAIZ / "web" / "content"
 #: El tema que hoy no tiene fuente abierta fuera del castellano, y por qué (ver CANDIDATAS.md).
 SIN_FUENTE_ABIERTA = {"espasmos_sollozo"}
 
+
 #: doc_id → idioma, del catálogo.
 def _idiomas_de_las_fuentes() -> dict[str, str]:
     out: dict[str, str] = {}
@@ -48,8 +49,14 @@ def _idiomas_de_las_fuentes() -> dict[str, str]:
 IDIOMAS = _idiomas_de_las_fuentes()
 #: Los organismos, para reconocer una cita que no lleva el doc_id escrito.
 POR_NOMBRE = (
-    ("nhs", "en"), ("cdc", "en"), ("medlineplus", "en"), ("who", "en"),
-    ("seup", "es"), ("aepap", "es"), ("aeped", "es"), ("rki", "de"),
+    ("nhs", "en"),
+    ("cdc", "en"),
+    ("medlineplus", "en"),
+    ("who", "en"),
+    ("seup", "es"),
+    ("aepap", "es"),
+    ("aeped", "es"),
+    ("rki", "de"),
 )
 
 

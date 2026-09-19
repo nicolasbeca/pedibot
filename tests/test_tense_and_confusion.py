@@ -134,8 +134,6 @@ def test_el_padre_confundido_con_la_dosis_no_es_un_signo_neurologico(
 
 
 @pytest.mark.parametrize(("lang", "texto"), TRAGAR_Y_GARGANTA)
-def test_las_ultimas_formas_de_no_poder_tragar(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_las_ultimas_formas_de_no_poder_tragar(triage: Triage, lang: str, texto: str) -> None:
     nivel = triage.assess(texto).level
     assert nivel == "emergency", f"[{lang}] «{texto}» → {nivel}"

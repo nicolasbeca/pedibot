@@ -117,9 +117,7 @@ def test_the_bottle_is_named_in_the_readers_language(client, lang: str) -> None:
     comprobador de fugas de idioma no las ve: mira las páginas construidas, y esta lista la
     pinta el navegador con lo que responde el API.
     """
-    j = client.post(
-        "/api/dose", json={"drug": "paracetamol", "weight_kg": 14, "lang": lang}
-    ).json()
+    j = client.post("/api/dose", json={"drug": "paracetamol", "weight_kg": 14, "lang": lang}).json()
     formas = " ".join(f["form"] for f in j["ml_by_form"])
     if lang != "es":
         assert "jarabe" not in formas, f"[{lang}] {formas}"

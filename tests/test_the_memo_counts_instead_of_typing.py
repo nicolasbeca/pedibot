@@ -94,6 +94,13 @@ def test_el_catalogo_se_cuenta_del_publicado_y_no_del_interno() -> None:
     assert "dataset/sources.json" in frontmatter
     assert "'../data/sources.json'" not in frontmatter
 
+    # Y las dos copias del catalogo publico son la misma, que es lo que permite contar de la de
+    # `public/` (la unica que viaja al servidor) y citar la otra sin que se separen nunca.
+    publicado = RAIZ / "web" / "site" / "public" / "dataset" / "sources.json"
+    assert json.loads(publicado.read_text(encoding="utf-8")) == json.loads(
+        (RAIZ / "dataset" / "sources.json").read_text(encoding="utf-8")
+    )
+
 
 @pytest.mark.parametrize("nombre", sorted(cifras_de_los_ficheros()))
 def test_la_pagina_construida_dice_lo_que_dicen_los_ficheros(nombre: str) -> None:

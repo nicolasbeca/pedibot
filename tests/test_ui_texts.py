@@ -99,14 +99,12 @@ def test_no_published_dose_is_out_of_reach_of_the_dropdown(strings) -> None:
     """The tool matches an age to a slot within its own tolerance. An age in a calendar that no
     option comes near is a dose a parent cannot ask about."""
     options = [
-        float(v) for k, v in strings["es"].items()
-        if re.fullmatch(r"vax_ages\[\d+\]\[0\]", k) and v
+        float(v) for k, v in strings["es"].items() if re.fullmatch(r"vax_ages\[\d+\]\[0\]", k) and v
     ]
     cal = yaml.safe_load((ROOT / "config" / "vaccines.yaml").read_text(encoding="utf-8"))
     ages = {float(s["age"]) for c in cal["countries"].values() for s in c["schedule"]}
     unreachable = [
-        a for a in sorted(ages)
-        if not any(abs(a - o) <= (1.5 if a < 24 else 6.0) for o in options)
+        a for a in sorted(ages) if not any(abs(a - o) <= (1.5 if a < 24 else 6.0) for o in options)
     ]
     assert not unreachable, f"edades sin opción que las alcance: {unreachable}"
 
@@ -145,9 +143,7 @@ def test_a_placeholder_is_in_every_language_or_none(strings) -> None:
     ph = re.compile(r"\{(\w+)\}")
     bad: list[str] = []
     for key in strings["en"]:
-        seen = {
-            lang: frozenset(ph.findall(s[key])) for lang, s in strings.items() if key in s
-        }
+        seen = {lang: frozenset(ph.findall(s[key])) for lang, s in strings.items() if key in s}
         if len(set(seen.values())) > 1:
             bad.append(f"{key}: " + ", ".join(f"{k}={sorted(v)}" for k, v in seen.items()))
     assert not bad, "\n".join(bad)

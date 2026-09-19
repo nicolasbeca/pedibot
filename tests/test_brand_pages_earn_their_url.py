@@ -55,7 +55,10 @@ SLUGS = sorted({b["slug"] for b in _marcas()})
 def test_la_pagina_responde_la_pregunta_que_se_escribe(slug: str):
     """Un `<h2>` como mínimo, y la pregunta con el nombre de la marca dentro."""
     h = _pagina(slug)
-    h2 = [html.unescape(re.sub(r"<[^>]+>", "", x)).strip() for x in re.findall(r"<h2[^>]*>(.*?)</h2>", h, re.S)]
+    h2 = [
+        html.unescape(re.sub(r"<[^>]+>", "", x)).strip()
+        for x in re.findall(r"<h2[^>]*>(.*?)</h2>", h, re.S)
+    ]
     assert h2, f"/dose/{slug} no tiene ni un encabezado: es un título y una tabla"
     nombre = next(b["name"] for b in _marcas() if b["slug"] == slug)
     primera = nombre.split(" ")[0].split("/")[0]

@@ -36,9 +36,7 @@ GOLDEN = ROOT / "eval" / "golden.jsonl"
 
 def cases() -> list[dict]:
     return [
-        json.loads(line)
-        for line in GOLDEN.read_text(encoding="utf-8").splitlines()
-        if line.strip()
+        json.loads(line) for line in GOLDEN.read_text(encoding="utf-8").splitlines() if line.strip()
     ]
 
 

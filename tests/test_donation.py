@@ -145,7 +145,8 @@ def test_solana_is_gone_from_the_whole_site():
     guilty = [
         f.relative_to(DIST).as_posix()
         for f in DIST.rglob("*.html")
-        if "jqEx2Q1qFnGH7pr8kAqcdTmuaWdgwhbNUm5VQFMo5h1" in f.read_text(encoding="utf-8", errors="replace")
+        if "jqEx2Q1qFnGH7pr8kAqcdTmuaWdgwhbNUm5VQFMo5h1"
+        in f.read_text(encoding="utf-8", errors="replace")
     ]
     assert not guilty, f"la dirección de Solana sigue en {guilty[:4]}"
 

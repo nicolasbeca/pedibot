@@ -122,9 +122,7 @@ def test_no_country_name_is_read_inside_a_longer_word(code: str) -> None:
                 antes = low[i - 1] if i > 0 else " "
                 despues = low[i + len(nombre)] if i + len(nombre) < len(low) else " "
                 if LETRA.match(antes) or LETRA.match(despues):
-                    palabra = re.search(
-                        r"[^\W\d_]*" + re.escape(nombre) + r"[^\W\d_]*", low
-                    )
+                    palabra = re.search(r"[^\W\d_]*" + re.escape(nombre) + r"[^\W\d_]*", low)
                     pillados.append(
                         f"«{nombre}» ({code}) dentro de «{palabra.group(0) if palabra else nombre}»"
                         f" — {frase[:60]}"

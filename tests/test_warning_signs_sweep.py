@@ -43,77 +43,180 @@ def triage() -> Triage:
 
 
 SITUACIONES = [
- ("convulsión", "emergency", {
-  "en":"my child is having a seizure","es":"mi hijo está teniendo una convulsión",
-  "fr":"mon enfant fait une convulsion","de":"mein Kind hat einen Krampfanfall",
-  "ru":"у ребёнка судороги","ar":"طفلي عنده تشنجات",
-  "pt":"meu filho está tendo uma convulsão","hi":"मेरे बच्चे को दौरा पड़ रहा है"}),
- ("no responde", "emergency", {
-  "en":"my child is unresponsive","es":"mi hijo no responde",
-  "fr":"mon enfant ne réagit pas","de":"mein Kind reagiert nicht",
-  "ru":"ребёнок не реагирует","ar":"طفلي لا يستجيب",
-  "pt":"meu filho não responde","hi":"मेरा बच्चा प्रतिक्रिया नहीं दे रहा"}),
- ("manchas que no desaparecen", "emergency", {
-  "en":"a rash that doesn't fade when I press it","es":"unas manchas que no desaparecen al apretar",
-  "fr":"des taches qui ne disparaissent pas à la pression","de":"Flecken, die beim Draufdrücken nicht verschwinden",
-  "ru":"сыпь не бледнеет при надавливании","ar":"طفح لا يختفي عند الضغط عليه",
-  "pt":"manchas que não somem quando aperto","hi":"दबाने पर न मिटने वाले दाने"}),
- ("reacción alérgica grave", "emergency", {
-  "en":"his lips and face are swelling up after eating","es":"se le están hinchando los labios y la cara",
-  "fr":"ses lèvres et son visage gonflent","de":"seine Lippen und sein Gesicht schwellen an",
-  "ru":"у него отекают губы и лицо","ar":"شفتاه ووجهه ينتفخان",
-  "pt":"os lábios e o rosto dele estão inchando","hi":"उसके होंठ और चेहरा सूज रहे हैं"}),
- ("ha tragado un producto", "urgent", {
-  "en":"my child drank bleach","es":"mi hijo se ha bebido lejía",
-  "fr":"mon enfant a bu de l'eau de javel","de":"mein Kind hat Bleichmittel getrunken",
-  "ru":"ребёнок выпил отбеливатель","ar":"طفلي شرب مبيّض الكلور",
-  "pt":"meu filho bebeu água sanitária","hi":"मेरे बच्चे ने ब्लीच पी लिया"}),
- ("pila de botón", "emergency", {
-  "en":"my daughter swallowed a button battery","es":"mi hija se ha tragado una pila de botón",
-  "fr":"ma fille a avalé une pile bouton","de":"meine Tochter hat eine Knopfbatterie verschluckt",
-  "ru":"дочь проглотила батарейку-таблетку","ar":"ابنتي بلعت بطارية زر",
-  "pt":"minha filha engoliu uma pilha botão","hi":"मेरी बेटी ने बटन सेल निगल ली"}),
- ("deshidratación", "urgent", {
-  "en":"she hasn't had a wet nappy in 12 hours","es":"lleva 12 horas sin mojar el pañal",
-  "fr":"elle n'a pas mouillé sa couche depuis 12 heures","de":"sie hat seit 12 Stunden keine nasse Windel",
-  "ru":"12 часов подгузник сухой","ar":"لم تبلل الحفاض منذ 12 ساعة",
-  "pt":"faz 12 horas que não molha a fralda","hi":"12 घंटे से डायपर गीला नहीं हुआ"}),
- ("cuello rígido", "emergency", {
-  "en":"stiff neck and he can't stand the light","es":"tiene el cuello rígido y le molesta la luz",
-  "fr":"la nuque raide et la lumière le gêne","de":"steifer Nacken und Licht stört ihn",
-  "ru":"ригидность затылка и светобоязнь","ar":"تيبس في الرقبة وحساسية للضوء",
-  "pt":"pescoço rígido e a luz incomoda","hi":"गर्दन अकड़ी है और रोशनी चुभती है"}),
- ("ideación suicida", "mental_health", {
-  "en":"my daughter says she wants to die","es":"mi hija dice que se quiere morir",
-  "fr":"ma fille dit qu'elle veut mourir","de":"meine Tochter sagt, sie will sterben",
-  "ru":"дочь говорит, что хочет умереть","ar":"ابنتي تقول إنها تريد أن تموت",
-  "pt":"minha filha diz que quer morrer","hi":"मेरी बेटी कहती है कि वह मरना चाहती है"}),
- ("recién nacido no come", "urgent", {
-  "en":"my 5-day-old refuses to feed","es":"mi bebé de 5 días rechaza las tomas",
-  "fr":"mon bébé de 5 jours refuse de téter","de":"mein 5 Tage altes Baby trinkt nicht",
-  "ru":"новорождённый отказывается от еды","ar":"مولودي الجديد يرفض الرضاعة",
-  "pt":"meu bebê de 5 dias recusa mamar","hi":"मेरा नवजात दूध नहीं पी रहा"}),
+    (
+        "convulsión",
+        "emergency",
+        {
+            "en": "my child is having a seizure",
+            "es": "mi hijo está teniendo una convulsión",
+            "fr": "mon enfant fait une convulsion",
+            "de": "mein Kind hat einen Krampfanfall",
+            "ru": "у ребёнка судороги",
+            "ar": "طفلي عنده تشنجات",
+            "pt": "meu filho está tendo uma convulsão",
+            "hi": "मेरे बच्चे को दौरा पड़ रहा है",
+        },
+    ),
+    (
+        "no responde",
+        "emergency",
+        {
+            "en": "my child is unresponsive",
+            "es": "mi hijo no responde",
+            "fr": "mon enfant ne réagit pas",
+            "de": "mein Kind reagiert nicht",
+            "ru": "ребёнок не реагирует",
+            "ar": "طفلي لا يستجيب",
+            "pt": "meu filho não responde",
+            "hi": "मेरा बच्चा प्रतिक्रिया नहीं दे रहा",
+        },
+    ),
+    (
+        "manchas que no desaparecen",
+        "emergency",
+        {
+            "en": "a rash that doesn't fade when I press it",
+            "es": "unas manchas que no desaparecen al apretar",
+            "fr": "des taches qui ne disparaissent pas à la pression",
+            "de": "Flecken, die beim Draufdrücken nicht verschwinden",
+            "ru": "сыпь не бледнеет при надавливании",
+            "ar": "طفح لا يختفي عند الضغط عليه",
+            "pt": "manchas que não somem quando aperto",
+            "hi": "दबाने पर न मिटने वाले दाने",
+        },
+    ),
+    (
+        "reacción alérgica grave",
+        "emergency",
+        {
+            "en": "his lips and face are swelling up after eating",
+            "es": "se le están hinchando los labios y la cara",
+            "fr": "ses lèvres et son visage gonflent",
+            "de": "seine Lippen und sein Gesicht schwellen an",
+            "ru": "у него отекают губы и лицо",
+            "ar": "شفتاه ووجهه ينتفخان",
+            "pt": "os lábios e o rosto dele estão inchando",
+            "hi": "उसके होंठ और चेहरा सूज रहे हैं",
+        },
+    ),
+    (
+        "ha tragado un producto",
+        "urgent",
+        {
+            "en": "my child drank bleach",
+            "es": "mi hijo se ha bebido lejía",
+            "fr": "mon enfant a bu de l'eau de javel",
+            "de": "mein Kind hat Bleichmittel getrunken",
+            "ru": "ребёнок выпил отбеливатель",
+            "ar": "طفلي شرب مبيّض الكلور",
+            "pt": "meu filho bebeu água sanitária",
+            "hi": "मेरे बच्चे ने ब्लीच पी लिया",
+        },
+    ),
+    (
+        "pila de botón",
+        "emergency",
+        {
+            "en": "my daughter swallowed a button battery",
+            "es": "mi hija se ha tragado una pila de botón",
+            "fr": "ma fille a avalé une pile bouton",
+            "de": "meine Tochter hat eine Knopfbatterie verschluckt",
+            "ru": "дочь проглотила батарейку-таблетку",
+            "ar": "ابنتي بلعت بطارية زر",
+            "pt": "minha filha engoliu uma pilha botão",
+            "hi": "मेरी बेटी ने बटन सेल निगल ली",
+        },
+    ),
+    (
+        "deshidratación",
+        "urgent",
+        {
+            "en": "she hasn't had a wet nappy in 12 hours",
+            "es": "lleva 12 horas sin mojar el pañal",
+            "fr": "elle n'a pas mouillé sa couche depuis 12 heures",
+            "de": "sie hat seit 12 Stunden keine nasse Windel",
+            "ru": "12 часов подгузник сухой",
+            "ar": "لم تبلل الحفاض منذ 12 ساعة",
+            "pt": "faz 12 horas que não molha a fralda",
+            "hi": "12 घंटे से डायपर गीला नहीं हुआ",
+        },
+    ),
+    (
+        "cuello rígido",
+        "emergency",
+        {
+            "en": "stiff neck and he can't stand the light",
+            "es": "tiene el cuello rígido y le molesta la luz",
+            "fr": "la nuque raide et la lumière le gêne",
+            "de": "steifer Nacken und Licht stört ihn",
+            "ru": "ригидность затылка и светобоязнь",
+            "ar": "تيبس في الرقبة وحساسية للضوء",
+            "pt": "pescoço rígido e a luz incomoda",
+            "hi": "गर्दन अकड़ी है और रोशनी चुभती है",
+        },
+    ),
+    (
+        "ideación suicida",
+        "mental_health",
+        {
+            "en": "my daughter says she wants to die",
+            "es": "mi hija dice que se quiere morir",
+            "fr": "ma fille dit qu'elle veut mourir",
+            "de": "meine Tochter sagt, sie will sterben",
+            "ru": "дочь говорит, что хочет умереть",
+            "ar": "ابنتي تقول إنها تريد أن تموت",
+            "pt": "minha filha diz que quer morrer",
+            "hi": "मेरी बेटी कहती है कि वह मरना चाहती है",
+        },
+    ),
+    (
+        "recién nacido no come",
+        "urgent",
+        {
+            "en": "my 5-day-old refuses to feed",
+            "es": "mi bebé de 5 días rechaza las tomas",
+            "fr": "mon bébé de 5 jours refuse de téter",
+            "de": "mein 5 Tage altes Baby trinkt nicht",
+            "ru": "новорождённый отказывается от еды",
+            "ar": "مولودي الجديد يرفض الرضاعة",
+            "pt": "meu bebê de 5 dias recusa mamar",
+            "hi": "मेरा नवजात दूध नहीं पी रहा",
+        },
+    ),
 ]
 NORMALES = [
- ("catarro", {
-  "en":"my child has a runny nose and a mild cough","es":"mi hijo tiene mocos y algo de tos",
-  "fr":"mon enfant a le nez qui coule et un peu de toux","de":"mein Kind hat Schnupfen und etwas Husten",
-  "ru":"у ребёнка насморк и небольшой кашель","ar":"طفلي عنده زكام وسعال خفيف",
-  "pt":"meu filho está com coriza e tosse leve","hi":"मेरे बच्चे को नाक बह रही है और हल्की खाँसी है"}),
- ("dientes", {
-  "en":"my baby is teething and drooling a lot","es":"a mi bebé le están saliendo los dientes",
-  "fr":"mon bébé fait ses dents","de":"mein Baby bekommt Zähne",
-  "ru":"у малыша режутся зубки","ar":"طفلي يسنّن",
-  "pt":"meu bebê está nascendo dentes","hi":"मेरे बच्चे के दाँत निकल रहे हैं"}),
+    (
+        "catarro",
+        {
+            "en": "my child has a runny nose and a mild cough",
+            "es": "mi hijo tiene mocos y algo de tos",
+            "fr": "mon enfant a le nez qui coule et un peu de toux",
+            "de": "mein Kind hat Schnupfen und etwas Husten",
+            "ru": "у ребёнка насморк и небольшой кашель",
+            "ar": "طفلي عنده زكام وسعال خفيف",
+            "pt": "meu filho está com coriza e tosse leve",
+            "hi": "मेरे बच्चे को नाक बह रही है और हल्की खाँसी है",
+        },
+    ),
+    (
+        "dientes",
+        {
+            "en": "my baby is teething and drooling a lot",
+            "es": "a mi bebé le están saliendo los dientes",
+            "fr": "mon bébé fait ses dents",
+            "de": "mein Baby bekommt Zähne",
+            "ru": "у малыша режутся зубки",
+            "ar": "طفلي يسنّن",
+            "pt": "meu bebê está nascendo dentes",
+            "hi": "मेरे बच्चे के दाँत निकल रहे हैं",
+        },
+    ),
 ]
+
 
 @pytest.mark.parametrize(
     ("etiqueta", "esperado", "lang", "pregunta"),
-    [
-        (e, esp, idioma, preg[idioma])
-        for e, esp, preg in SITUACIONES
-        for idioma in IDIOMAS
-    ],
+    [(e, esp, idioma, preg[idioma]) for e, esp, preg in SITUACIONES for idioma in IDIOMAS],
 )
 def test_a_warning_sign_is_read_in_every_language(
     triage: Triage, etiqueta: str, esperado: str, lang: str, pregunta: str

@@ -30,8 +30,7 @@ DIST = SITE / "dist"
 
 def _lastmods(xml: str) -> dict[str, str]:
     return {
-        loc: mod
-        for loc, mod in re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>", xml)
+        loc: mod for loc, mod in re.findall(r"<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>", xml)
     }
 
 
@@ -49,7 +48,11 @@ def test_rebuilding_without_changes_does_not_move_a_single_date():
     try:
         r = subprocess.run(
             "npx astro build --outDir .sitemap-check",
-            cwd=SITE, capture_output=True, text=True, timeout=900, shell=True,
+            cwd=SITE,
+            capture_output=True,
+            text=True,
+            timeout=900,
+            shell=True,
         )
         if r.returncode != 0:
             pytest.skip(f"la construcción de comprobación no arrancó: {r.stderr[-200:]}")
@@ -95,15 +98,13 @@ def test_every_date_comes_from_a_file_and_not_from_the_clock():
                 # mismo mtime y se llevaban 1 ms de diferencia. Una fecha sacada del reloj de la
                 # construcción no coincide con ningún fichero ni al segundo, que es lo que importa
                 mtimes.add(
-                    dt.datetime.fromtimestamp(f.stat().st_mtime, dt.UTC)
-                    .isoformat(timespec="seconds")
+                    dt.datetime.fromtimestamp(f.stat().st_mtime, dt.UTC).isoformat(
+                        timespec="seconds"
+                    )
                 )
 
     huerfanas = sorted(
-        f
-        for f in fechas
-        if not f.endswith("T00:00:00.000Z")
-        and f[:19] + "+00:00" not in mtimes
+        f for f in fechas if not f.endswith("T00:00:00.000Z") and f[:19] + "+00:00" not in mtimes
     )
     assert not huerfanas, (
         "estas fechas del sitemap no son ni la de una guía ni la de ningún fichero fuente, "

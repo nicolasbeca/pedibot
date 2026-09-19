@@ -55,19 +55,71 @@ IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
 #: ISO3 → (ISO2, el nombre del país en las ocho lenguas del sitio)
 PAISES: dict[str, tuple[str, dict[str, str]]] = {
-    "SAU": ("SA", {"en": "Saudi Arabia", "es": "Arabia Saudí", "fr": "Arabie saoudite",
-                   "de": "Saudi-Arabien", "ru": "Саудовская Аравия", "ar": "السعودية",
-                   "pt": "Arábia Saudita", "hi": "सऊदी अरब"}),
-    "ARE": ("AE", {"en": "United Arab Emirates", "es": "Emiratos Árabes Unidos",
-                   "fr": "Émirats arabes unis", "de": "Vereinigte Arabische Emirate",
-                   "ru": "ОАЭ", "ar": "الإمارات العربية المتحدة", "pt": "Emirados Árabes Unidos",
-                   "hi": "संयुक्त अरब अमीरात"}),
-    "EGY": ("EG", {"en": "Egypt", "es": "Egipto", "fr": "Égypte", "de": "Ägypten",
-                   "ru": "Египет", "ar": "مصر", "pt": "Egito", "hi": "मिस्र"}),
-    "QAT": ("QA", {"en": "Qatar", "es": "Catar", "fr": "Qatar", "de": "Katar",
-                   "ru": "Катар", "ar": "قطر", "pt": "Catar", "hi": "क़तर"}),
-    "KWT": ("KW", {"en": "Kuwait", "es": "Kuwait", "fr": "Koweït", "de": "Kuwait",
-                   "ru": "Кувейт", "ar": "الكويت", "pt": "Kuwait", "hi": "कुवैत"}),
+    "SAU": (
+        "SA",
+        {
+            "en": "Saudi Arabia",
+            "es": "Arabia Saudí",
+            "fr": "Arabie saoudite",
+            "de": "Saudi-Arabien",
+            "ru": "Саудовская Аравия",
+            "ar": "السعودية",
+            "pt": "Arábia Saudita",
+            "hi": "सऊदी अरब",
+        },
+    ),
+    "ARE": (
+        "AE",
+        {
+            "en": "United Arab Emirates",
+            "es": "Emiratos Árabes Unidos",
+            "fr": "Émirats arabes unis",
+            "de": "Vereinigte Arabische Emirate",
+            "ru": "ОАЭ",
+            "ar": "الإمارات العربية المتحدة",
+            "pt": "Emirados Árabes Unidos",
+            "hi": "संयुक्त अरब अमीरात",
+        },
+    ),
+    "EGY": (
+        "EG",
+        {
+            "en": "Egypt",
+            "es": "Egipto",
+            "fr": "Égypte",
+            "de": "Ägypten",
+            "ru": "Египет",
+            "ar": "مصر",
+            "pt": "Egito",
+            "hi": "मिस्र",
+        },
+    ),
+    "QAT": (
+        "QA",
+        {
+            "en": "Qatar",
+            "es": "Catar",
+            "fr": "Qatar",
+            "de": "Katar",
+            "ru": "Катар",
+            "ar": "قطر",
+            "pt": "Catar",
+            "hi": "क़तर",
+        },
+    ),
+    "KWT": (
+        "KW",
+        {
+            "en": "Kuwait",
+            "es": "Kuwait",
+            "fr": "Koweït",
+            "de": "Kuwait",
+            "ru": "Кувейт",
+            "ar": "الكويت",
+            "pt": "Kuwait",
+            "hi": "कुवैत",
+        },
+    ),
     # ── África, 18-sep-2026 ────────────────────────────────────────────────────────────
     # El operador: «tenemos totalmente olvidado el mercado africano… estamos vendiendo que el
     # proyecto es altruista y para países que no tienen acceso fácil a pediatría, y en cambio
@@ -77,54 +129,630 @@ PAISES: dict[str, tuple[str, dict[str, str]]] = {
     #
     # Los nombres salen de `Intl.DisplayNames` (CLDR, vía Node), no escritos a mano: 48 países
     # por ocho lenguas son 384 nombres y a mano se cuela una errata segura.
-    "AGO": ("AO", {"en": "Angola", "es": "Angola", "fr": "Angola", "de": "Angola", "ru": "Ангола", "ar": "أنغولا", "pt": "Angola", "hi": "अंगोला"}),
-    "BDI": ("BI", {"en": "Burundi", "es": "Burundi", "fr": "Burundi", "de": "Burundi", "ru": "Бурунди", "ar": "بوروندي", "pt": "Burundi", "hi": "बुरुंडी"}),
-    "BEN": ("BJ", {"en": "Benin", "es": "Benín", "fr": "Bénin", "de": "Benin", "ru": "Бенин", "ar": "بنين", "pt": "Benin", "hi": "बेनिन"}),
-    "BFA": ("BF", {"en": "Burkina Faso", "es": "Burkina Faso", "fr": "Burkina Faso", "de": "Burkina Faso", "ru": "Буркина-Фасо", "ar": "بوركينا فاسو", "pt": "Burquina Faso", "hi": "बुर्किना फ़ासो"}),
-    "BWA": ("BW", {"en": "Botswana", "es": "Botsuana", "fr": "Botswana", "de": "Botsuana", "ru": "Ботсвана", "ar": "بوتسوانا", "pt": "Botsuana", "hi": "बोत्स्वाना"}),
-    "CAF": ("CF", {"en": "Central African Republic", "es": "República Centroafricana", "fr": "République centrafricaine", "de": "Zentralafrikanische Republik", "ru": "Центрально-Африканская Республика", "ar": "جمهورية أفريقيا الوسطى", "pt": "República Centro-Africana", "hi": "मध्य अफ़्रीकी गणराज्य"}),
-    "CIV": ("CI", {"en": "Côte d’Ivoire", "es": "Côte d’Ivoire", "fr": "Côte d’Ivoire", "de": "Côte d’Ivoire", "ru": "Кот-д’Ивуар", "ar": "ساحل العاج", "pt": "Costa do Marfim", "hi": "कोत दिवुआर"}),
-    "CMR": ("CM", {"en": "Cameroon", "es": "Camerún", "fr": "Cameroun", "de": "Kamerun", "ru": "Камерун", "ar": "الكاميرون", "pt": "Camarões", "hi": "कैमरून"}),
-    "COD": ("CD", {"en": "Congo - Kinshasa", "es": "República Democrática del Congo", "fr": "Congo-Kinshasa", "de": "Kongo-Kinshasa", "ru": "Конго - Киншаса", "ar": "الكونغو - كينشاسا", "pt": "Congo - Kinshasa", "hi": "कांगो - किंशासा"}),
-    "COG": ("CG", {"en": "Congo - Brazzaville", "es": "Congo", "fr": "Congo-Brazzaville", "de": "Kongo-Brazzaville", "ru": "Конго - Браззавиль", "ar": "الكونغو - برازافيل", "pt": "República do Congo", "hi": "कांगो – ब्राज़ाविल"}),
-    "COM": ("KM", {"en": "Comoros", "es": "Comoras", "fr": "Comores", "de": "Komoren", "ru": "Коморы", "ar": "جزر القمر", "pt": "Comores", "hi": "कोमोरोस"}),
-    "CPV": ("CV", {"en": "Cape Verde", "es": "Cabo Verde", "fr": "Cap-Vert", "de": "Cabo Verde", "ru": "Кабо-Верде", "ar": "الرأس الأخضر", "pt": "Cabo Verde", "hi": "केप वर्ड"}),
-    "DJI": ("DJ", {"en": "Djibouti", "es": "Yibuti", "fr": "Djibouti", "de": "Dschibuti", "ru": "Джибути", "ar": "جيبوتي", "pt": "Djibuti", "hi": "जिबूती"}),
-    "ERI": ("ER", {"en": "Eritrea", "es": "Eritrea", "fr": "Érythrée", "de": "Eritrea", "ru": "Эритрея", "ar": "إريتريا", "pt": "Eritreia", "hi": "इरिट्रिया"}),
-    "ETH": ("ET", {"en": "Ethiopia", "es": "Etiopía", "fr": "Éthiopie", "de": "Äthiopien", "ru": "Эфиопия", "ar": "إثيوبيا", "pt": "Etiópia", "hi": "इथियोपिया"}),
-    "GAB": ("GA", {"en": "Gabon", "es": "Gabón", "fr": "Gabon", "de": "Gabun", "ru": "Габон", "ar": "الغابون", "pt": "Gabão", "hi": "गैबॉन"}),
-    "GHA": ("GH", {"en": "Ghana", "es": "Ghana", "fr": "Ghana", "de": "Ghana", "ru": "Гана", "ar": "غانا", "pt": "Gana", "hi": "घाना"}),
-    "GIN": ("GN", {"en": "Guinea", "es": "Guinea", "fr": "Guinée", "de": "Guinea", "ru": "Гвинея", "ar": "غينيا", "pt": "Guiné", "hi": "गिनी"}),
-    "GMB": ("GM", {"en": "Gambia", "es": "Gambia", "fr": "Gambie", "de": "Gambia", "ru": "Гамбия", "ar": "غامبيا", "pt": "Gâmbia", "hi": "गाम्बिया"}),
-    "GNB": ("GW", {"en": "Guinea-Bissau", "es": "Guinea-Bisáu", "fr": "Guinée-Bissau", "de": "Guinea-Bissau", "ru": "Гвинея-Бисау", "ar": "غينيا بيساو", "pt": "Guiné-Bissau", "hi": "गिनी-बिसाउ"}),
-    "GNQ": ("GQ", {"en": "Equatorial Guinea", "es": "Guinea Ecuatorial", "fr": "Guinée équatoriale", "de": "Äquatorialguinea", "ru": "Экваториальная Гвинея", "ar": "غينيا الاستوائية", "pt": "Guiné Equatorial", "hi": "इक्वेटोरियल गिनी"}),
-    "KEN": ("KE", {"en": "Kenya", "es": "Kenia", "fr": "Kenya", "de": "Kenia", "ru": "Кения", "ar": "كينيا", "pt": "Quênia", "hi": "केन्या"}),
-    "LBR": ("LR", {"en": "Liberia", "es": "Liberia", "fr": "Liberia", "de": "Liberia", "ru": "Либерия", "ar": "ليبيريا", "pt": "Libéria", "hi": "लाइबेरिया"}),
-    "LSO": ("LS", {"en": "Lesotho", "es": "Lesoto", "fr": "Lesotho", "de": "Lesotho", "ru": "Лесото", "ar": "ليسوتو", "pt": "Lesoto", "hi": "लेसोथो"}),
-    "MDG": ("MG", {"en": "Madagascar", "es": "Madagascar", "fr": "Madagascar", "de": "Madagaskar", "ru": "Мадагаскар", "ar": "مدغشقر", "pt": "Madagascar", "hi": "मेडागास्कर"}),
-    "MLI": ("ML", {"en": "Mali", "es": "Mali", "fr": "Mali", "de": "Mali", "ru": "Мали", "ar": "مالي", "pt": "Mali", "hi": "माली"}),
-    "MOZ": ("MZ", {"en": "Mozambique", "es": "Mozambique", "fr": "Mozambique", "de": "Mosambik", "ru": "Мозамбик", "ar": "موزمبيق", "pt": "Moçambique", "hi": "मोज़ांबिक"}),
-    "MRT": ("MR", {"en": "Mauritania", "es": "Mauritania", "fr": "Mauritanie", "de": "Mauretanien", "ru": "Мавритания", "ar": "موريتانيا", "pt": "Mauritânia", "hi": "मॉरिटानिया"}),
-    "MUS": ("MU", {"en": "Mauritius", "es": "Mauricio", "fr": "Maurice", "de": "Mauritius", "ru": "Маврикий", "ar": "موريشيوس", "pt": "Maurício", "hi": "मॉरीशस"}),
-    "MWI": ("MW", {"en": "Malawi", "es": "Malaui", "fr": "Malawi", "de": "Malawi", "ru": "Малави", "ar": "ملاوي", "pt": "Malaui", "hi": "मलावी"}),
-    "NAM": ("NA", {"en": "Namibia", "es": "Namibia", "fr": "Namibie", "de": "Namibia", "ru": "Намибия", "ar": "ناميبيا", "pt": "Namíbia", "hi": "नामीबिया"}),
-    "NER": ("NE", {"en": "Niger", "es": "Níger", "fr": "Niger", "de": "Niger", "ru": "Нигер", "ar": "النيجر", "pt": "Níger", "hi": "नाइजर"}),
-    "NGA": ("NG", {"en": "Nigeria", "es": "Nigeria", "fr": "Nigeria", "de": "Nigeria", "ru": "Нигерия", "ar": "نيجيريا", "pt": "Nigéria", "hi": "नाइजीरिया"}),
-    "RWA": ("RW", {"en": "Rwanda", "es": "Ruanda", "fr": "Rwanda", "de": "Ruanda", "ru": "Руанда", "ar": "رواندا", "pt": "Ruanda", "hi": "रवांडा"}),
-    "SEN": ("SN", {"en": "Senegal", "es": "Senegal", "fr": "Sénégal", "de": "Senegal", "ru": "Сенегал", "ar": "السنغال", "pt": "Senegal", "hi": "सेनेगल"}),
-    "SLE": ("SL", {"en": "Sierra Leone", "es": "Sierra Leona", "fr": "Sierra Leone", "de": "Sierra Leone", "ru": "Сьерра-Леоне", "ar": "سيراليون", "pt": "Serra Leoa", "hi": "सिएरा लियोन"}),
-    "SOM": ("SO", {"en": "Somalia", "es": "Somalia", "fr": "Somalie", "de": "Somalia", "ru": "Сомали", "ar": "الصومال", "pt": "Somália", "hi": "सोमालिया"}),
-    "SSD": ("SS", {"en": "South Sudan", "es": "Sudán del Sur", "fr": "Soudan du Sud", "de": "Südsudan", "ru": "Южный Судан", "ar": "جنوب السودان", "pt": "Sudão do Sul", "hi": "दक्षिण सूडान"}),
-    "STP": ("ST", {"en": "São Tomé & Príncipe", "es": "Santo Tomé y Príncipe", "fr": "Sao Tomé-et-Principe", "de": "São Tomé und Príncipe", "ru": "Сан-Томе и Принсипи", "ar": "ساو تومي وبرينسيبي", "pt": "São Tomé e Príncipe", "hi": "साओ टोम और प्रिंसिपे"}),
-    "SWZ": ("SZ", {"en": "Eswatini", "es": "Esuatini", "fr": "Eswatini", "de": "Eswatini", "ru": "Эсватини", "ar": "إسواتيني", "pt": "Essuatíni", "hi": "एस्वाटिनी"}),
-    "SYC": ("SC", {"en": "Seychelles", "es": "Seychelles", "fr": "Seychelles", "de": "Seychellen", "ru": "Сейшельские о-ва", "ar": "سيشل", "pt": "Seicheles", "hi": "सेशेल्स"}),
-    "TCD": ("TD", {"en": "Chad", "es": "Chad", "fr": "Tchad", "de": "Tschad", "ru": "Чад", "ar": "تشاد", "pt": "Chade", "hi": "चाड"}),
-    "TGO": ("TG", {"en": "Togo", "es": "Togo", "fr": "Togo", "de": "Togo", "ru": "Того", "ar": "توغو", "pt": "Togo", "hi": "टोगो"}),
-    "TZA": ("TZ", {"en": "Tanzania", "es": "Tanzania", "fr": "Tanzanie", "de": "Tansania", "ru": "Танзания", "ar": "تنزانيا", "pt": "Tanzânia", "hi": "तंज़ानिया"}),
-    "UGA": ("UG", {"en": "Uganda", "es": "Uganda", "fr": "Ouganda", "de": "Uganda", "ru": "Уганда", "ar": "أوغندا", "pt": "Uganda", "hi": "युगांडा"}),
-    "ZAF": ("ZA", {"en": "South Africa", "es": "Sudáfrica", "fr": "Afrique du Sud", "de": "Südafrika", "ru": "Южно-Африканская Республика", "ar": "جنوب أفريقيا", "pt": "África do Sul", "hi": "दक्षिण अफ़्रीका"}),
-    "ZMB": ("ZM", {"en": "Zambia", "es": "Zambia", "fr": "Zambie", "de": "Sambia", "ru": "Замбия", "ar": "زامبيا", "pt": "Zâmbia", "hi": "ज़ाम्बिया"}),
-    "ZWE": ("ZW", {"en": "Zimbabwe", "es": "Zimbabue", "fr": "Zimbabwe", "de": "Simbabwe", "ru": "Зимбабве", "ar": "زيمبابوي", "pt": "Zimbábue", "hi": "ज़िम्बाब्वे"}),
+    "AGO": (
+        "AO",
+        {
+            "en": "Angola",
+            "es": "Angola",
+            "fr": "Angola",
+            "de": "Angola",
+            "ru": "Ангола",
+            "ar": "أنغولا",
+            "pt": "Angola",
+            "hi": "अंगोला",
+        },
+    ),
+    "BDI": (
+        "BI",
+        {
+            "en": "Burundi",
+            "es": "Burundi",
+            "fr": "Burundi",
+            "de": "Burundi",
+            "ru": "Бурунди",
+            "ar": "بوروندي",
+            "pt": "Burundi",
+            "hi": "बुरुंडी",
+        },
+    ),
+    "BEN": (
+        "BJ",
+        {
+            "en": "Benin",
+            "es": "Benín",
+            "fr": "Bénin",
+            "de": "Benin",
+            "ru": "Бенин",
+            "ar": "بنين",
+            "pt": "Benin",
+            "hi": "बेनिन",
+        },
+    ),
+    "BFA": (
+        "BF",
+        {
+            "en": "Burkina Faso",
+            "es": "Burkina Faso",
+            "fr": "Burkina Faso",
+            "de": "Burkina Faso",
+            "ru": "Буркина-Фасо",
+            "ar": "بوركينا فاسو",
+            "pt": "Burquina Faso",
+            "hi": "बुर्किना फ़ासो",
+        },
+    ),
+    "BWA": (
+        "BW",
+        {
+            "en": "Botswana",
+            "es": "Botsuana",
+            "fr": "Botswana",
+            "de": "Botsuana",
+            "ru": "Ботсвана",
+            "ar": "بوتسوانا",
+            "pt": "Botsuana",
+            "hi": "बोत्स्वाना",
+        },
+    ),
+    "CAF": (
+        "CF",
+        {
+            "en": "Central African Republic",
+            "es": "República Centroafricana",
+            "fr": "République centrafricaine",
+            "de": "Zentralafrikanische Republik",
+            "ru": "Центрально-Африканская Республика",
+            "ar": "جمهورية أفريقيا الوسطى",
+            "pt": "República Centro-Africana",
+            "hi": "मध्य अफ़्रीकी गणराज्य",
+        },
+    ),
+    "CIV": (
+        "CI",
+        {
+            "en": "Côte d’Ivoire",
+            "es": "Côte d’Ivoire",
+            "fr": "Côte d’Ivoire",
+            "de": "Côte d’Ivoire",
+            "ru": "Кот-д’Ивуар",
+            "ar": "ساحل العاج",
+            "pt": "Costa do Marfim",
+            "hi": "कोत दिवुआर",
+        },
+    ),
+    "CMR": (
+        "CM",
+        {
+            "en": "Cameroon",
+            "es": "Camerún",
+            "fr": "Cameroun",
+            "de": "Kamerun",
+            "ru": "Камерун",
+            "ar": "الكاميرون",
+            "pt": "Camarões",
+            "hi": "कैमरून",
+        },
+    ),
+    "COD": (
+        "CD",
+        {
+            "en": "Congo - Kinshasa",
+            "es": "República Democrática del Congo",
+            "fr": "Congo-Kinshasa",
+            "de": "Kongo-Kinshasa",
+            "ru": "Конго - Киншаса",
+            "ar": "الكونغو - كينشاسا",
+            "pt": "Congo - Kinshasa",
+            "hi": "कांगो - किंशासा",
+        },
+    ),
+    "COG": (
+        "CG",
+        {
+            "en": "Congo - Brazzaville",
+            "es": "Congo",
+            "fr": "Congo-Brazzaville",
+            "de": "Kongo-Brazzaville",
+            "ru": "Конго - Браззавиль",
+            "ar": "الكونغو - برازافيل",
+            "pt": "República do Congo",
+            "hi": "कांगो – ब्राज़ाविल",
+        },
+    ),
+    "COM": (
+        "KM",
+        {
+            "en": "Comoros",
+            "es": "Comoras",
+            "fr": "Comores",
+            "de": "Komoren",
+            "ru": "Коморы",
+            "ar": "جزر القمر",
+            "pt": "Comores",
+            "hi": "कोमोरोस",
+        },
+    ),
+    "CPV": (
+        "CV",
+        {
+            "en": "Cape Verde",
+            "es": "Cabo Verde",
+            "fr": "Cap-Vert",
+            "de": "Cabo Verde",
+            "ru": "Кабо-Верде",
+            "ar": "الرأس الأخضر",
+            "pt": "Cabo Verde",
+            "hi": "केप वर्ड",
+        },
+    ),
+    "DJI": (
+        "DJ",
+        {
+            "en": "Djibouti",
+            "es": "Yibuti",
+            "fr": "Djibouti",
+            "de": "Dschibuti",
+            "ru": "Джибути",
+            "ar": "جيبوتي",
+            "pt": "Djibuti",
+            "hi": "जिबूती",
+        },
+    ),
+    "ERI": (
+        "ER",
+        {
+            "en": "Eritrea",
+            "es": "Eritrea",
+            "fr": "Érythrée",
+            "de": "Eritrea",
+            "ru": "Эритрея",
+            "ar": "إريتريا",
+            "pt": "Eritreia",
+            "hi": "इरिट्रिया",
+        },
+    ),
+    "ETH": (
+        "ET",
+        {
+            "en": "Ethiopia",
+            "es": "Etiopía",
+            "fr": "Éthiopie",
+            "de": "Äthiopien",
+            "ru": "Эфиопия",
+            "ar": "إثيوبيا",
+            "pt": "Etiópia",
+            "hi": "इथियोपिया",
+        },
+    ),
+    "GAB": (
+        "GA",
+        {
+            "en": "Gabon",
+            "es": "Gabón",
+            "fr": "Gabon",
+            "de": "Gabun",
+            "ru": "Габон",
+            "ar": "الغابون",
+            "pt": "Gabão",
+            "hi": "गैबॉन",
+        },
+    ),
+    "GHA": (
+        "GH",
+        {
+            "en": "Ghana",
+            "es": "Ghana",
+            "fr": "Ghana",
+            "de": "Ghana",
+            "ru": "Гана",
+            "ar": "غانا",
+            "pt": "Gana",
+            "hi": "घाना",
+        },
+    ),
+    "GIN": (
+        "GN",
+        {
+            "en": "Guinea",
+            "es": "Guinea",
+            "fr": "Guinée",
+            "de": "Guinea",
+            "ru": "Гвинея",
+            "ar": "غينيا",
+            "pt": "Guiné",
+            "hi": "गिनी",
+        },
+    ),
+    "GMB": (
+        "GM",
+        {
+            "en": "Gambia",
+            "es": "Gambia",
+            "fr": "Gambie",
+            "de": "Gambia",
+            "ru": "Гамбия",
+            "ar": "غامبيا",
+            "pt": "Gâmbia",
+            "hi": "गाम्बिया",
+        },
+    ),
+    "GNB": (
+        "GW",
+        {
+            "en": "Guinea-Bissau",
+            "es": "Guinea-Bisáu",
+            "fr": "Guinée-Bissau",
+            "de": "Guinea-Bissau",
+            "ru": "Гвинея-Бисау",
+            "ar": "غينيا بيساو",
+            "pt": "Guiné-Bissau",
+            "hi": "गिनी-बिसाउ",
+        },
+    ),
+    "GNQ": (
+        "GQ",
+        {
+            "en": "Equatorial Guinea",
+            "es": "Guinea Ecuatorial",
+            "fr": "Guinée équatoriale",
+            "de": "Äquatorialguinea",
+            "ru": "Экваториальная Гвинея",
+            "ar": "غينيا الاستوائية",
+            "pt": "Guiné Equatorial",
+            "hi": "इक्वेटोरियल गिनी",
+        },
+    ),
+    "KEN": (
+        "KE",
+        {
+            "en": "Kenya",
+            "es": "Kenia",
+            "fr": "Kenya",
+            "de": "Kenia",
+            "ru": "Кения",
+            "ar": "كينيا",
+            "pt": "Quênia",
+            "hi": "केन्या",
+        },
+    ),
+    "LBR": (
+        "LR",
+        {
+            "en": "Liberia",
+            "es": "Liberia",
+            "fr": "Liberia",
+            "de": "Liberia",
+            "ru": "Либерия",
+            "ar": "ليبيريا",
+            "pt": "Libéria",
+            "hi": "लाइबेरिया",
+        },
+    ),
+    "LSO": (
+        "LS",
+        {
+            "en": "Lesotho",
+            "es": "Lesoto",
+            "fr": "Lesotho",
+            "de": "Lesotho",
+            "ru": "Лесото",
+            "ar": "ليسوتو",
+            "pt": "Lesoto",
+            "hi": "लेसोथो",
+        },
+    ),
+    "MDG": (
+        "MG",
+        {
+            "en": "Madagascar",
+            "es": "Madagascar",
+            "fr": "Madagascar",
+            "de": "Madagaskar",
+            "ru": "Мадагаскар",
+            "ar": "مدغشقر",
+            "pt": "Madagascar",
+            "hi": "मेडागास्कर",
+        },
+    ),
+    "MLI": (
+        "ML",
+        {
+            "en": "Mali",
+            "es": "Mali",
+            "fr": "Mali",
+            "de": "Mali",
+            "ru": "Мали",
+            "ar": "مالي",
+            "pt": "Mali",
+            "hi": "माली",
+        },
+    ),
+    "MOZ": (
+        "MZ",
+        {
+            "en": "Mozambique",
+            "es": "Mozambique",
+            "fr": "Mozambique",
+            "de": "Mosambik",
+            "ru": "Мозамбик",
+            "ar": "موزمبيق",
+            "pt": "Moçambique",
+            "hi": "मोज़ांबिक",
+        },
+    ),
+    "MRT": (
+        "MR",
+        {
+            "en": "Mauritania",
+            "es": "Mauritania",
+            "fr": "Mauritanie",
+            "de": "Mauretanien",
+            "ru": "Мавритания",
+            "ar": "موريتانيا",
+            "pt": "Mauritânia",
+            "hi": "मॉरिटानिया",
+        },
+    ),
+    "MUS": (
+        "MU",
+        {
+            "en": "Mauritius",
+            "es": "Mauricio",
+            "fr": "Maurice",
+            "de": "Mauritius",
+            "ru": "Маврикий",
+            "ar": "موريشيوس",
+            "pt": "Maurício",
+            "hi": "मॉरीशस",
+        },
+    ),
+    "MWI": (
+        "MW",
+        {
+            "en": "Malawi",
+            "es": "Malaui",
+            "fr": "Malawi",
+            "de": "Malawi",
+            "ru": "Малави",
+            "ar": "ملاوي",
+            "pt": "Malaui",
+            "hi": "मलावी",
+        },
+    ),
+    "NAM": (
+        "NA",
+        {
+            "en": "Namibia",
+            "es": "Namibia",
+            "fr": "Namibie",
+            "de": "Namibia",
+            "ru": "Намибия",
+            "ar": "ناميبيا",
+            "pt": "Namíbia",
+            "hi": "नामीबिया",
+        },
+    ),
+    "NER": (
+        "NE",
+        {
+            "en": "Niger",
+            "es": "Níger",
+            "fr": "Niger",
+            "de": "Niger",
+            "ru": "Нигер",
+            "ar": "النيجر",
+            "pt": "Níger",
+            "hi": "नाइजर",
+        },
+    ),
+    "NGA": (
+        "NG",
+        {
+            "en": "Nigeria",
+            "es": "Nigeria",
+            "fr": "Nigeria",
+            "de": "Nigeria",
+            "ru": "Нигерия",
+            "ar": "نيجيريا",
+            "pt": "Nigéria",
+            "hi": "नाइजीरिया",
+        },
+    ),
+    "RWA": (
+        "RW",
+        {
+            "en": "Rwanda",
+            "es": "Ruanda",
+            "fr": "Rwanda",
+            "de": "Ruanda",
+            "ru": "Руанда",
+            "ar": "رواندا",
+            "pt": "Ruanda",
+            "hi": "रवांडा",
+        },
+    ),
+    "SEN": (
+        "SN",
+        {
+            "en": "Senegal",
+            "es": "Senegal",
+            "fr": "Sénégal",
+            "de": "Senegal",
+            "ru": "Сенегал",
+            "ar": "السنغال",
+            "pt": "Senegal",
+            "hi": "सेनेगल",
+        },
+    ),
+    "SLE": (
+        "SL",
+        {
+            "en": "Sierra Leone",
+            "es": "Sierra Leona",
+            "fr": "Sierra Leone",
+            "de": "Sierra Leone",
+            "ru": "Сьерра-Леоне",
+            "ar": "سيراليون",
+            "pt": "Serra Leoa",
+            "hi": "सिएरा लियोन",
+        },
+    ),
+    "SOM": (
+        "SO",
+        {
+            "en": "Somalia",
+            "es": "Somalia",
+            "fr": "Somalie",
+            "de": "Somalia",
+            "ru": "Сомали",
+            "ar": "الصومال",
+            "pt": "Somália",
+            "hi": "सोमालिया",
+        },
+    ),
+    "SSD": (
+        "SS",
+        {
+            "en": "South Sudan",
+            "es": "Sudán del Sur",
+            "fr": "Soudan du Sud",
+            "de": "Südsudan",
+            "ru": "Южный Судан",
+            "ar": "جنوب السودان",
+            "pt": "Sudão do Sul",
+            "hi": "दक्षिण सूडान",
+        },
+    ),
+    "STP": (
+        "ST",
+        {
+            "en": "São Tomé & Príncipe",
+            "es": "Santo Tomé y Príncipe",
+            "fr": "Sao Tomé-et-Principe",
+            "de": "São Tomé und Príncipe",
+            "ru": "Сан-Томе и Принсипи",
+            "ar": "ساو تومي وبرينسيبي",
+            "pt": "São Tomé e Príncipe",
+            "hi": "साओ टोम और प्रिंसिपे",
+        },
+    ),
+    "SWZ": (
+        "SZ",
+        {
+            "en": "Eswatini",
+            "es": "Esuatini",
+            "fr": "Eswatini",
+            "de": "Eswatini",
+            "ru": "Эсватини",
+            "ar": "إسواتيني",
+            "pt": "Essuatíni",
+            "hi": "एस्वाटिनी",
+        },
+    ),
+    "SYC": (
+        "SC",
+        {
+            "en": "Seychelles",
+            "es": "Seychelles",
+            "fr": "Seychelles",
+            "de": "Seychellen",
+            "ru": "Сейшельские о-ва",
+            "ar": "سيشل",
+            "pt": "Seicheles",
+            "hi": "सेशेल्स",
+        },
+    ),
+    "TCD": (
+        "TD",
+        {
+            "en": "Chad",
+            "es": "Chad",
+            "fr": "Tchad",
+            "de": "Tschad",
+            "ru": "Чад",
+            "ar": "تشاد",
+            "pt": "Chade",
+            "hi": "चाड",
+        },
+    ),
+    "TGO": (
+        "TG",
+        {
+            "en": "Togo",
+            "es": "Togo",
+            "fr": "Togo",
+            "de": "Togo",
+            "ru": "Того",
+            "ar": "توغو",
+            "pt": "Togo",
+            "hi": "टोगो",
+        },
+    ),
+    "TZA": (
+        "TZ",
+        {
+            "en": "Tanzania",
+            "es": "Tanzania",
+            "fr": "Tanzanie",
+            "de": "Tansania",
+            "ru": "Танзания",
+            "ar": "تنزانيا",
+            "pt": "Tanzânia",
+            "hi": "तंज़ानिया",
+        },
+    ),
+    "UGA": (
+        "UG",
+        {
+            "en": "Uganda",
+            "es": "Uganda",
+            "fr": "Ouganda",
+            "de": "Uganda",
+            "ru": "Уганда",
+            "ar": "أوغندا",
+            "pt": "Uganda",
+            "hi": "युगांडा",
+        },
+    ),
+    "ZAF": (
+        "ZA",
+        {
+            "en": "South Africa",
+            "es": "Sudáfrica",
+            "fr": "Afrique du Sud",
+            "de": "Südafrika",
+            "ru": "Южно-Африканская Республика",
+            "ar": "جنوب أفريقيا",
+            "pt": "África do Sul",
+            "hi": "दक्षिण अफ़्रीका",
+        },
+    ),
+    "ZMB": (
+        "ZM",
+        {
+            "en": "Zambia",
+            "es": "Zambia",
+            "fr": "Zambie",
+            "de": "Sambia",
+            "ru": "Замбия",
+            "ar": "زامبيا",
+            "pt": "Zâmbia",
+            "hi": "ज़ाम्बिया",
+        },
+    ),
+    "ZWE": (
+        "ZW",
+        {
+            "en": "Zimbabwe",
+            "es": "Zimbabue",
+            "fr": "Zimbabwe",
+            "de": "Simbabwe",
+            "ru": "Зимбабве",
+            "ar": "زيمبابوي",
+            "pt": "Zimbábue",
+            "hi": "ज़िम्बाब्वे",
+        },
+    ),
 }
 
 #: El código de la OMS → el nombre con el que la vacuna se conoce, y la familia a la que
@@ -192,37 +820,93 @@ NOMBRES: dict[str, tuple[str, str]] = {
 #: Comprobado contra India: el refuerzo de DPT de los 5-6 años viaja como B_CHILD_W, así que
 #: descartarlo le quitaría a la tabla india una vacuna que sí se pone.
 POBLACION_FUERA = {
-    "RISKGROUPS", "ADULTS", "PW", "HW", "TRAVELLERS", "SYRINGE", "PLANNED",
-    "CATCHUP_C", "CATCHUP_A", "POSTPARTUM", "CB_AGED_WOMEN",
+    "RISKGROUPS",
+    "ADULTS",
+    "PW",
+    "HW",
+    "TRAVELLERS",
+    "SYRINGE",
+    "PLANNED",
+    "CATCHUP_C",
+    "CATCHUP_A",
+    "POSTPARTUM",
+    "CB_AGED_WOMEN",
 }
 #: Lo que no es una cita sino una campaña que vuelve cada temporada.
 CADA_AÑO = {"INFLUENZA_PEDIATRIC"}
 #: Vacunas que no son de la infancia por mucho que aparezcan en la tabla del país.
 VACUNAS_FUERA = {
-    "TT", "TD_A", "INFLUENZA_ADULT", "COVID19", "HEPB_ADULT", "PPV23", "ZOSTER", "RABIES",
-    "YF", "CHOLERA", "MPOX", "RSV", "TYPHOID_PS", "JE_INACTD", "HEPA_ADULT",
+    "TT",
+    "TD_A",
+    "INFLUENZA_ADULT",
+    "COVID19",
+    "HEPB_ADULT",
+    "PPV23",
+    "ZOSTER",
+    "RABIES",
+    "YF",
+    "CHOLERA",
+    "MPOX",
+    "RSV",
+    "TYPHOID_PS",
+    "JE_INACTD",
+    "HEPA_ADULT",
 }
 
 # ── cómo se dice una edad en ocho lenguas ────────────────────────────────────────────────────
 #: singular, «pocos» (2-4, que es lo que pide el ruso), plural
 _UNIDADES: dict[str, dict[str, tuple[str, str, str]]] = {
-    "W": {"en": ("week", "weeks", "weeks"), "es": ("semana", "semanas", "semanas"),
-          "fr": ("semaine", "semaines", "semaines"), "de": ("Woche", "Wochen", "Wochen"),
-          "ru": ("неделя", "недели", "недель"), "ar": ("أسبوع", "أسابيع", "أسبوعا"),
-          "pt": ("semana", "semanas", "semanas"), "hi": ("हफ़्ता", "हफ़्ते", "हफ़्ते")},
-    "M": {"en": ("month", "months", "months"), "es": ("mes", "meses", "meses"),
-          "fr": ("mois", "mois", "mois"), "de": ("Monat", "Monate", "Monate"),
-          "ru": ("месяц", "месяца", "месяцев"), "ar": ("شهر", "أشهر", "شهرا"),
-          "pt": ("mês", "meses", "meses"), "hi": ("महीना", "महीने", "महीने")},
-    "Y": {"en": ("year", "years", "years"), "es": ("año", "años", "años"),
-          "fr": ("an", "ans", "ans"), "de": ("Jahr", "Jahre", "Jahre"),
-          "ru": ("год", "года", "лет"), "ar": ("سنة", "سنوات", "سنة"),
-          "pt": ("ano", "anos", "anos"), "hi": ("साल", "साल", "साल")},
+    "W": {
+        "en": ("week", "weeks", "weeks"),
+        "es": ("semana", "semanas", "semanas"),
+        "fr": ("semaine", "semaines", "semaines"),
+        "de": ("Woche", "Wochen", "Wochen"),
+        "ru": ("неделя", "недели", "недель"),
+        "ar": ("أسبوع", "أسابيع", "أسبوعا"),
+        "pt": ("semana", "semanas", "semanas"),
+        "hi": ("हफ़्ता", "हफ़्ते", "हफ़्ते"),
+    },
+    "M": {
+        "en": ("month", "months", "months"),
+        "es": ("mes", "meses", "meses"),
+        "fr": ("mois", "mois", "mois"),
+        "de": ("Monat", "Monate", "Monate"),
+        "ru": ("месяц", "месяца", "месяцев"),
+        "ar": ("شهر", "أشهر", "شهرا"),
+        "pt": ("mês", "meses", "meses"),
+        "hi": ("महीना", "महीने", "महीने"),
+    },
+    "Y": {
+        "en": ("year", "years", "years"),
+        "es": ("año", "años", "años"),
+        "fr": ("an", "ans", "ans"),
+        "de": ("Jahr", "Jahre", "Jahre"),
+        "ru": ("год", "года", "лет"),
+        "ar": ("سنة", "سنوات", "سنة"),
+        "pt": ("ano", "anos", "anos"),
+        "hi": ("साल", "साल", "साल"),
+    },
 }
-_AL_NACER = {"en": "At birth", "es": "Al nacer", "fr": "À la naissance", "de": "Bei der Geburt",
-             "ru": "При рождении", "ar": "عند الولادة", "pt": "Ao nascer", "hi": "जन्म के समय"}
-_DESDE = {"en": "From {x}", "es": "Desde los {x}", "fr": "À partir de {x}", "de": "Ab {x}",
-          "ru": "С {x}", "ar": "من عمر {x}", "pt": "A partir dos {x}", "hi": "{x} से"}
+_AL_NACER = {
+    "en": "At birth",
+    "es": "Al nacer",
+    "fr": "À la naissance",
+    "de": "Bei der Geburt",
+    "ru": "При рождении",
+    "ar": "عند الولادة",
+    "pt": "Ao nascer",
+    "hi": "जन्म के समय",
+}
+_DESDE = {
+    "en": "From {x}",
+    "es": "Desde los {x}",
+    "fr": "À partir de {x}",
+    "de": "Ab {x}",
+    "ru": "С {x}",
+    "ar": "من عمر {x}",
+    "pt": "A partir dos {x}",
+    "hi": "{x} से",
+}
 _DUAL_AR = {"W": "أسبوعان", "M": "شهران", "Y": "سنتان"}
 
 
@@ -291,9 +975,16 @@ def frase_edad(n: float, unidad: str, lang: str, hasta: float | None, desde: boo
 
 #: Lo que se le añade a la etiqueta de la gripe. Sin esto, «desde los 6 meses» parece una cita
 #: única y es una campaña que se repite cada temporada mientras el niño esté en esa edad.
-_CADA_AÑO = {"en": "{x}, every year", "es": "{x}, todos los años", "fr": "{x}, chaque année",
-             "de": "{x}, jedes Jahr", "ru": "{x}, каждый год", "ar": "{x}، كل عام",
-             "pt": "{x}, todos os anos", "hi": "{x}, हर साल"}
+_CADA_AÑO = {
+    "en": "{x}, every year",
+    "es": "{x}, todos los años",
+    "fr": "{x}, chaque année",
+    "de": "{x}, jedes Jahr",
+    "ru": "{x}, каждый год",
+    "ar": "{x}، كل عام",
+    "pt": "{x}, todos os anos",
+    "hi": "{x}, हर साल",
+}
 
 
 def etiqueta(
@@ -374,6 +1065,7 @@ def calendario(iso3: str) -> tuple[int, list[dict], list[str]]:
     if not filas:
         raise SystemExit(f"{iso3}: la OMS no publica calendario")
     año = max(f["YEAR"] for f in filas)
+
     def _sirve(f: dict) -> bool:
         return (
             f["YEAR"] == año
@@ -471,6 +1163,7 @@ def calendario(iso3: str) -> tuple[int, list[dict], list[str]]:
                 break
 
     salida = []
+
     # 18-sep-2026, con los datos africanos: dos casillas pueden compartir edad y diferir en el
     # rango —una «a los 9 meses» y otra «de 9 a 12»— y entonces Python compara None con un
     # número al ordenar. El orden lo da la edad; el rango ausente se trata como el más corto.
@@ -497,44 +1190,60 @@ def calendario(iso3: str) -> tuple[int, list[dict], list[str]]:
 def nota(iso3: str, regional: list[str] | None = None) -> dict[str, str]:
     """Lo que hay que saber ANTES de leer la tabla: de dónde sale y qué no dice."""
     base = {
-        "en": ("This is the schedule {pais} reports to WHO, published as data under WHO's open "
-               "licence — not a copy of the ministry's own page. The ministry can change a date "
-               "without WHO's file changing the same week, so if your health centre says "
-               "something different, your health centre is right. Two products on one line are "
-               "alternatives for a single injection, not two."),
-        "es": ("Este es el calendario que {pais} le reporta a la OMS, publicado como datos con la "
-               "licencia abierta de la OMS; no es una copia de la página del ministerio. El "
-               "ministerio puede cambiar una fecha sin que el fichero de la OMS cambie esa misma "
-               "semana, así que si tu centro de salud dice otra cosa, manda tu centro de salud. "
-               "Dos productos en la misma línea son alternativas para un pinchazo, no dos."),
-        "fr": ("Voici le calendrier que {pais} déclare à l'OMS, publié comme données sous la "
-               "licence ouverte de l'OMS ; ce n'est pas une copie de la page du ministère. Le "
-               "ministère peut changer une date sans que le fichier de l'OMS change la même "
-               "semaine : si votre centre de santé dit autre chose, c'est lui qui a raison. Deux "
-               "produits sur une ligne sont des alternatives pour une seule injection."),
-        "de": ("Das ist der Impfkalender, den {pais} der WHO meldet, veröffentlicht als Daten "
-               "unter der offenen Lizenz der WHO — keine Kopie der Ministeriumsseite. Das "
-               "Ministerium kann ein Datum ändern, ohne dass sich die WHO-Datei in derselben "
-               "Woche ändert; sagt Ihre Gesundheitsstelle etwas anderes, gilt sie. Zwei Produkte "
-               "in einer Zeile sind Alternativen für eine Impfung, nicht zwei."),
-        "ru": ("Это календарь, который {pais} сообщает ВОЗ, опубликованный как данные под "
-               "открытой лицензией ВОЗ, а не копия страницы министерства. Министерство может "
-               "изменить дату, а файл ВОЗ обновится не в ту же неделю; если в вашей поликлинике "
-               "говорят иначе, правы они. Два препарата в одной строке — это варианты одной "
-               "прививки, а не две."),
-        "ar": ("هذا هو التقويم الذي تبلغ به {pais} منظمة الصحة العالمية، منشورا بيانات برخصة "
-               "المنظمة المفتوحة، لا نسخة من صفحة الوزارة. وقد تغير الوزارة موعدا دون أن يتغير "
-               "ملف المنظمة في الأسبوع نفسه، فإن قال المركز الصحي غير هذا فالقول قوله. وإذا ظهر "
-               "منتجان في سطر واحد فهما بديلان لحقنة واحدة، لا حقنتان."),
-        "pt": ("Este é o calendário que {pais} reporta à OMS, publicado como dados sob a licença "
-               "aberta da OMS; não é uma cópia da página do ministério. O ministério pode mudar "
-               "uma data sem que o ficheiro da OMS mude na mesma semana; se o seu centro de saúde "
-               "disser outra coisa, manda o seu centro de saúde. Dois produtos na mesma linha são "
-               "alternativas para uma injeção, não duas."),
-        "hi": ("यह वह अनुसूची है जो {pais} विश्व स्वास्थ्य संगठन को बताता है — WHO के खुले लाइसेंस के तहत डेटा "
-               "के रूप में प्रकाशित, मंत्रालय के पन्ने की नक़ल नहीं। मंत्रालय कोई तारीख़ बदल सकता है और WHO की "
-               "फ़ाइल उसी हफ़्ते न बदले; अगर आपका स्वास्थ्य केंद्र कुछ और कहे, तो वही सही है। एक ही पंक्ति में दो "
-               "उत्पाद हों तो वे एक ही टीके के विकल्प हैं, दो टीके नहीं।"),
+        "en": (
+            "This is the schedule {pais} reports to WHO, published as data under WHO's open "
+            "licence — not a copy of the ministry's own page. The ministry can change a date "
+            "without WHO's file changing the same week, so if your health centre says "
+            "something different, your health centre is right. Two products on one line are "
+            "alternatives for a single injection, not two."
+        ),
+        "es": (
+            "Este es el calendario que {pais} le reporta a la OMS, publicado como datos con la "
+            "licencia abierta de la OMS; no es una copia de la página del ministerio. El "
+            "ministerio puede cambiar una fecha sin que el fichero de la OMS cambie esa misma "
+            "semana, así que si tu centro de salud dice otra cosa, manda tu centro de salud. "
+            "Dos productos en la misma línea son alternativas para un pinchazo, no dos."
+        ),
+        "fr": (
+            "Voici le calendrier que {pais} déclare à l'OMS, publié comme données sous la "
+            "licence ouverte de l'OMS ; ce n'est pas une copie de la page du ministère. Le "
+            "ministère peut changer une date sans que le fichier de l'OMS change la même "
+            "semaine : si votre centre de santé dit autre chose, c'est lui qui a raison. Deux "
+            "produits sur une ligne sont des alternatives pour une seule injection."
+        ),
+        "de": (
+            "Das ist der Impfkalender, den {pais} der WHO meldet, veröffentlicht als Daten "
+            "unter der offenen Lizenz der WHO — keine Kopie der Ministeriumsseite. Das "
+            "Ministerium kann ein Datum ändern, ohne dass sich die WHO-Datei in derselben "
+            "Woche ändert; sagt Ihre Gesundheitsstelle etwas anderes, gilt sie. Zwei Produkte "
+            "in einer Zeile sind Alternativen für eine Impfung, nicht zwei."
+        ),
+        "ru": (
+            "Это календарь, который {pais} сообщает ВОЗ, опубликованный как данные под "
+            "открытой лицензией ВОЗ, а не копия страницы министерства. Министерство может "
+            "изменить дату, а файл ВОЗ обновится не в ту же неделю; если в вашей поликлинике "
+            "говорят иначе, правы они. Два препарата в одной строке — это варианты одной "
+            "прививки, а не две."
+        ),
+        "ar": (
+            "هذا هو التقويم الذي تبلغ به {pais} منظمة الصحة العالمية، منشورا بيانات برخصة "
+            "المنظمة المفتوحة، لا نسخة من صفحة الوزارة. وقد تغير الوزارة موعدا دون أن يتغير "
+            "ملف المنظمة في الأسبوع نفسه، فإن قال المركز الصحي غير هذا فالقول قوله. وإذا ظهر "
+            "منتجان في سطر واحد فهما بديلان لحقنة واحدة، لا حقنتان."
+        ),
+        "pt": (
+            "Este é o calendário que {pais} reporta à OMS, publicado como dados sob a licença "
+            "aberta da OMS; não é uma cópia da página do ministério. O ministério pode mudar "
+            "uma data sem que o ficheiro da OMS mude na mesma semana; se o seu centro de saúde "
+            "disser outra coisa, manda o seu centro de saúde. Dois produtos na mesma linha são "
+            "alternativas para uma injeção, não duas."
+        ),
+        "hi": (
+            "यह वह अनुसूची है जो {pais} विश्व स्वास्थ्य संगठन को बताता है — WHO के खुले लाइसेंस के तहत डेटा "
+            "के रूप में प्रकाशित, मंत्रालय के पन्ने की नक़ल नहीं। मंत्रालय कोई तारीख़ बदल सकता है और WHO की "
+            "फ़ाइल उसी हफ़्ते न बदले; अगर आपका स्वास्थ्य केंद्र कुछ और कहे, तो वही सही है। एक ही पंक्ति में दो "
+            "उत्पाद हों तो वे एक ही टीके के विकल्प हैं, दो टीके नहीं।"
+        ),
     }
     extra = {
         "SAU": {
@@ -574,25 +1283,27 @@ def nota(iso3: str, regional: list[str] | None = None) -> dict[str, str]:
     # en inglés y entrecomillado, porque es la frase de la fuente y no una traducción nuestra.
     por_regiones = {
         "en": " One of these vaccines is not given everywhere in the country, only in some regions;"
-              " the line says so. What the source records about it: ",
+        " the line says so. What the source records about it: ",
         "es": " Alguna de estas vacunas no se pone en todo el país, sino sólo en algunas regiones;"
-              " la línea lo dice. Lo que la fuente anota de ella: ",
+        " la línea lo dice. Lo que la fuente anota de ella: ",
         "fr": " L'un de ces vaccins n'est pas administré dans tout le pays, mais seulement dans"
-              " certaines régions ; la ligne le dit. Ce que la source en note : ",
+        " certaines régions ; la ligne le dit. Ce que la source en note : ",
         "de": " Einer dieser Impfstoffe wird nicht im ganzen Land gegeben, sondern nur in einigen"
-              " Regionen; die Zeile sagt es. Was die Quelle dazu vermerkt: ",
+        " Regionen; die Zeile sagt es. Was die Quelle dazu vermerkt: ",
         "ru": " Одна из этих вакцин вводится не по всей стране, а только в отдельных регионах — в"
-              " строке это указано. Что об этом пишет источник: ",
+        " строке это указано. Что об этом пишет источник: ",
         "ar": " أحد هذه اللقاحات لا يُعطى في كل البلاد بل في مناطق بعينها، وهذا مذكور في السطر."
-              " وهذا ما يسجله المصدر عنه: ",
+        " وهذا ما يسجله المصدر عنه: ",
         "pt": " Uma destas vacinas não é dada em todo o país, mas apenas em algumas regiões; a"
-              " linha di-lo. O que a fonte regista sobre ela: ",
+        " linha di-lo. O que a fonte regista sobre ela: ",
         "hi": " इनमें से एक टीका पूरे देश में नहीं, केवल कुछ क्षेत्रों में दिया जाता है — पंक्ति में यह लिखा है। स्रोत"
-              " इसके बारे में यह दर्ज करता है: ",
+        " इसके बारे में यह दर्ज करता है: ",
     }
     cola = ""
     nombres = PAISES[iso3][1]
-    salida = {lg: base[lg].format(pais=nombres[lg]) + extra.get(iso3, {}).get(lg, "") for lg in IDIOMAS}
+    salida = {
+        lg: base[lg].format(pais=nombres[lg]) + extra.get(iso3, {}).get(lg, "") for lg in IDIOMAS
+    }
     if regional:
         cola = "«" + "; ".join(regional) + "»."
         salida = {lg: salida[lg] + por_regiones[lg] + cola for lg in IDIOMAS}
@@ -644,9 +1355,14 @@ def yaml_de(iso3: str, año: int, tabla: list[dict], regional: list[str]) -> str
         lg: nombres[lg]
         + " — "
         + {
-            "en": "national schedule", "es": "calendario nacional", "fr": "calendrier national",
-            "de": "nationaler Impfkalender", "ru": "национальный календарь",
-            "ar": "التقويم الوطني", "pt": "calendário nacional", "hi": "राष्ट्रीय टीकाकरण अनुसूची",
+            "en": "national schedule",
+            "es": "calendario nacional",
+            "fr": "calendrier national",
+            "de": "nationaler Impfkalender",
+            "ru": "национальный календарь",
+            "ar": "التقويم الوطني",
+            "pt": "calendário nacional",
+            "hi": "राष्ट्रीय टीकाकरण अनुसूची",
         }[lg]
         + f" ({año})"
         for lg in IDIOMAS

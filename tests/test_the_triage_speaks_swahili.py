@@ -33,7 +33,6 @@ def triaje() -> Triage:
 
 #: Una frase de padre por regla. No es el patrón con otras comas: es una frase entera.
 CASOS: dict[str, str] = {
-
     "not_responding": "mtoto wangu hajitambui kabisa",
     "seizure": "mtoto wangu ana degedege sasa hivi",
     "severe_breathing": "mtoto wangu hapumui vizuri na mbavu zinaingia ndani",
@@ -369,7 +368,9 @@ def test_the_swahili_past_prefix_is_not_a_remote_past(triaje: Triage) -> None:
         ("alikuwa kwenye moto na anakohoa sana", "smoke_inhalation"),
     ):
         ids = [m.id for m in triaje.assess(texto).matched]
-        assert regla in ids, f"«{texto}» → {ids or 'nada'}: el pasado narrativo no es un pasado remoto"
+        assert regla in ids, (
+            f"«{texto}» → {ids or 'nada'}: el pasado narrativo no es un pasado remoto"
+        )
 
 
 #: 19-sep-2026, encontrado preguntando a lo desplegado el día de MetaDAO. «Mtoto wangu wa miezi

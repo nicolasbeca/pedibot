@@ -56,11 +56,7 @@ def test_there_is_something_to_look_at() -> None:
 @pytest.mark.parametrize("fichero", FICHEROS, ids=lambda f: f.name)
 def test_no_control_character_sneaked_into_the_file(fichero: pathlib.Path) -> None:
     texto = fichero.read_text(encoding="utf-8", errors="replace")
-    malos = [
-        (i, ord(c))
-        for i, c in enumerate(texto)
-        if ord(c) < 0x20 and ord(c) not in PERMITIDOS
-    ]
+    malos = [(i, ord(c)) for i, c in enumerate(texto) if ord(c) < 0x20 and ord(c) not in PERMITIDOS]
     if not malos:
         return
     i, code = malos[0]

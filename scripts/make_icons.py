@@ -120,7 +120,9 @@ def main() -> int:
             img = img.quantize(colors=colores, method=Image.Quantize.FASTOCTREE)
         destino.parent.mkdir(parents=True, exist_ok=True)
         img.save(destino, optimize=True)
-        hechos.append(f"{destino.relative_to(RAIZ)} ({lado}px, {destino.stat().st_size / 1024:.1f} kB)")
+        hechos.append(
+            f"{destino.relative_to(RAIZ)} ({lado}px, {destino.stat().st_size / 1024:.1f} kB)"
+        )
 
     # ── la web ────────────────────────────────────────────────────────────────────────────────
     guarda(WEB / "logo.png", 512, colores=64)

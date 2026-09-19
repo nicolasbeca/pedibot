@@ -104,7 +104,9 @@ def test_the_dose_index_names_both_medicines_in_its_own_language(lang: str):
     page = _dose_index(lang)
     if not page.exists():
         pytest.skip("el sitio no está construido en esta copia")
-    med = [b for b in _blocks(page.read_text(encoding="utf-8")) if b.get("@type") == "MedicalWebPage"]
+    med = [
+        b for b in _blocks(page.read_text(encoding="utf-8")) if b.get("@type") == "MedicalWebPage"
+    ]
     assert med, f"/{lang}/dose no lleva MedicalWebPage"
     about = med[0].get("about")
     assert isinstance(about, list), (
@@ -124,7 +126,9 @@ def test_every_brand_page_says_its_active_ingredient_in_its_own_language(lang: s
         pytest.skip("el sitio no está construido en esta copia")
     genericos = set(_generics(lang))
     for p in paginas:
-        med = [b for b in _blocks(p.read_text(encoding="utf-8")) if b.get("@type") == "MedicalWebPage"]
+        med = [
+            b for b in _blocks(p.read_text(encoding="utf-8")) if b.get("@type") == "MedicalWebPage"
+        ]
         about = med[0].get("about") if med else None
         nodo = about[0] if isinstance(about, list) else about
         assert isinstance(nodo, dict), f"{p.relative_to(DIST)} sin `about`"

@@ -37,12 +37,12 @@ def test_the_country_the_parent_wrote_is_read(code: str, pregunta: str) -> None:
 
 
 NO_ES_UN_PAIS = [
-    "mere bacche ko bukhar hai",           # «bukhar» lleva «uk» dentro
+    "mere bacche ko bukhar hai",  # «bukhar» lleva «uk» dentro
     "please tell us what vaccines are due",  # «us», el pronombre inglés
     "just tell us the dose",
     "because he has a fever, what should I do",  # «us» dentro de «because»
-    "my child is in Ukraine",              # no tenemos calendario de Ucrania
-    "vacunas en América Latina",           # el continente, no Estados Unidos
+    "my child is in Ukraine",  # no tenemos calendario de Ucrania
+    "vacunas en América Latina",  # el continente, no Estados Unidos
     "meu filho está na América do Sul",
 ]
 

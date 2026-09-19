@@ -36,7 +36,7 @@ def test_la_comprobacion_firma_cuando_llega_al_final() -> None:
     texto = SMOKE.read_text(encoding="utf-8")
     assert 'FIRMA = "SMOKE-FIN"' in texto, "la firma ha cambiado de nombre o ha desaparecido"
     # una sola línea la imprime, y está después de decidir si hay fallos
-    assert texto.count("print(f\"{FIRMA}") == 1, (
+    assert texto.count('print(f"{FIRMA}') == 1, (
         "la firma debe imprimirse en un único sitio, al final de main(), o dejará de significar "
         "«he llegado hasta aquí»"
     )

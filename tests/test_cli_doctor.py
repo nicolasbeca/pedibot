@@ -69,8 +69,8 @@ def test_mira_todo_lo_que_dice_mirar():
     _, salida, _ = corre()
     bajo = salida.lower()
     faltan = [k for k in COMPROBACIONES if k not in bajo]
-    assert not faltan, (
-        "la revisión no comprueba " + ", ".join(f"«{k}» ({COMPROBACIONES[k]})" for k in faltan)
+    assert not faltan, "la revisión no comprueba " + ", ".join(
+        f"«{k}» ({COMPROBACIONES[k]})" for k in faltan
     )
 
 

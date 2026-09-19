@@ -27,7 +27,9 @@ import yaml
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 DIST = RAIZ / "web" / "site" / "dist"
 NUMEROS = yaml.safe_load((RAIZ / "config" / "emergency_numbers.yaml").read_text(encoding="utf-8"))
-IDIOMA_PAISES = yaml.safe_load((RAIZ / "config" / "lang_countries.yaml").read_text(encoding="utf-8"))
+IDIOMA_PAISES = yaml.safe_load(
+    (RAIZ / "config" / "lang_countries.yaml").read_text(encoding="utf-8")
+)
 IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 PAISES = sorted(k for k in NUMEROS if k != "default")
 sin_sitio = pytest.mark.skipif(not DIST.exists(), reason="no hay build en web/site/dist")
@@ -67,8 +69,7 @@ def test_the_home_page_opens_with_your_countries_not_with_britain(lang: str) -> 
     html = pagina(lang, "/")
     escritos = re.findall(r'data-cc="([A-Z]{2})"', html)
     assert escritos[: len(IDIOMA_PAISES[lang])] == IDIOMA_PAISES[lang], (
-        f"{lang}: la portada abre con {escritos[:3]} y debería abrir con "
-        f"{IDIOMA_PAISES[lang][:3]}"
+        f"{lang}: la portada abre con {escritos[:3]} y debería abrir con {IDIOMA_PAISES[lang][:3]}"
     )
 
 
@@ -137,7 +138,9 @@ def test_the_country_pages_are_in_the_sitemap() -> None:
 def test_the_site_data_matches_the_config() -> None:
     """La web lee un JSON exportado; si se queda viejo, la página miente con cara de verdad."""
     datos = json.loads((RAIZ / "web/site/src/data/lang_countries.json").read_text(encoding="utf-8"))
-    assert datos == IDIOMA_PAISES, "lang_countries.json no es lo que dice config/lang_countries.yaml"
+    assert datos == IDIOMA_PAISES, (
+        "lang_countries.json no es lo que dice config/lang_countries.yaml"
+    )
 
 
 # ── un idioma oficial en varios países no puede abrir con uno solo ───────────────────────────

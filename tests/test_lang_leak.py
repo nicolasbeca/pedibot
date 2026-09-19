@@ -56,9 +56,7 @@ def test_the_scan_now_catches_the_title_that_slipped_past_it() -> None:
     )
     assert leaks(french_on_a_german_page, "de")
     assert leaks("<title>Guides pour les parents — PediBot</title>", "ru")
-    assert leaks(
-        "<title>Soutenir PediBot — gratuit pour toutes les familles</title>", "ar"
-    )
+    assert leaks("<title>Soutenir PediBot — gratuit pour toutes les familles</title>", "ar")
     # and none of it fires on the page it actually belongs to
     assert not leaks(french_on_a_german_page, "fr")
 

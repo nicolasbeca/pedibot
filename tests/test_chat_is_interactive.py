@@ -64,7 +64,9 @@ def test_sin_pais_no_se_inventa_un_numero():
 def test_la_api_declara_el_campo():
     from pedibot.api import AskOut
 
-    assert "call" in AskOut.model_fields, "AskOut no tiene `call`: el cliente no puede pintar el botón"
+    assert "call" in AskOut.model_fields, (
+        "AskOut no tiene `call`: el cliente no puede pintar el botón"
+    )
     assert AskOut.model_fields["call"].default is None
 
 
@@ -76,7 +78,9 @@ def test_una_respuesta_rapida_pregunta_en_vez_de_votar(chat: str):
     pos_voto = manejador.find("/api/feedback")
     assert pos_opt != -1, "los botones `.opt` no se atienden: caen al voto con answer_id=NaN"
     assert pos_opt < pos_voto, "`.opt` se comprueba después del voto, así que nunca llega"
-    assert re.search(r"contains\('opt'\)\)\s*\{[^}]*\bask\(", manejador), "un `.opt` tiene que llamar a ask()"
+    assert re.search(r"contains\('opt'\)\)\s*\{[^}]*\bask\(", manejador), (
+        "un `.opt` tiene que llamar a ask()"
+    )
 
 
 def test_las_cadenas_de_error_viajan_al_cliente(chat: str):
@@ -123,4 +127,6 @@ def test_el_sitio_construido_lleva_el_boton():
     if not dist.exists():
         pytest.skip("el sitio no está construido en esta copia")
     js = "".join(f.read_text(encoding="utf-8") for f in (dist / "_astro").glob("*.js"))
-    assert "tel:" in js and "asked_age" in js, "el chat construido no lleva el botón de llamada ni las edades"
+    assert "tel:" in js and "asked_age" in js, (
+        "el chat construido no lleva el botón de llamada ni las edades"
+    )

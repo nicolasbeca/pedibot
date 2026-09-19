@@ -32,7 +32,9 @@ import pytest
 import yaml
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
-PAISES = yaml.safe_load((RAIZ / "config" / "vaccines.yaml").read_text(encoding="utf-8"))["countries"]
+PAISES = yaml.safe_load((RAIZ / "config" / "vaccines.yaml").read_text(encoding="utf-8"))[
+    "countries"
+]
 ARABES = ("SA", "AE", "EG", "QA", "KW")
 IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
@@ -117,13 +119,19 @@ def test_two_products_in_one_slot_are_one_injection(pais: str, edad: float, fami
     """Emiratos reporta PCV20 y PCV15 en la misma casilla, y Kuwait la hexavalente y la
     pentavalente. Si la tabla los imprime en dos líneas, el padre lee dos pinchazos."""
     de_esa_familia = [v for v in vacunas_de(pais, edad) if familia.lower() in v.lower()]
-    assert len(de_esa_familia) == 1, f"{pais} a los {edad} m: {familia} en {len(de_esa_familia)} líneas"
+    assert len(de_esa_familia) == 1, (
+        f"{pais} a los {edad} m: {familia} en {len(de_esa_familia)} líneas"
+    )
     assert " or " in de_esa_familia[0], f"{pais}: {de_esa_familia[0]} no ofrece la alternativa"
 
 
 def test_the_flu_slot_says_it_comes_back_every_year() -> None:
     for pais in ARABES:
-        gripe = [s for s in PAISES[pais]["schedule"] if any("influenza" in v.lower() for v in s["vaccines"])]
+        gripe = [
+            s
+            for s in PAISES[pais]["schedule"]
+            if any("influenza" in v.lower() for v in s["vaccines"])
+        ]
         assert gripe, f"{pais}: sin gripe estacional"
         for s in gripe:
             assert s.get("every_year"), f"{pais}: la gripe no está marcada como anual"

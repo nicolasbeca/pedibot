@@ -33,7 +33,9 @@ import pytest
 import yaml
 
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
-PAISES = yaml.safe_load((RAIZ / "config" / "vaccines.yaml").read_text(encoding="utf-8"))["countries"]
+PAISES = yaml.safe_load((RAIZ / "config" / "vaccines.yaml").read_text(encoding="utf-8"))[
+    "countries"
+]
 LANGS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
 
@@ -48,8 +50,7 @@ def _citas(india: dict) -> dict[float, str]:
     «(fIPV)-1», y lo que se vigila es qué vacuna y qué dosis, no el estilo de los paréntesis."""
     fuera = str.maketrans("", "", " ()")
     return {
-        float(s["age"]): " ".join(s["vaccines"]).lower().translate(fuera)
-        for s in india["schedule"]
+        float(s["age"]): " ".join(s["vaccines"]).lower().translate(fuera) for s in india["schedule"]
     }
 
 

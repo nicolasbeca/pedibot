@@ -103,17 +103,13 @@ def test_la_boca_y_la_garganta_hinchadas_son_anafilaxia(
 
 
 @pytest.mark.parametrize(("lang", "texto"), DETRAS_DE_LA_OREJA)
-def test_la_hinchazon_detras_de_la_oreja_se_ve_hoy(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_la_hinchazon_detras_de_la_oreja_se_ve_hoy(triage: Triage, lang: str, texto: str) -> None:
     resultado = triage.assess(texto)
     assert resultado.level != "routine", f"[{lang}] «{texto}» → rutina"
 
 
 @pytest.mark.parametrize(("lang", "texto"), ABDOMEN_DURO)
-def test_el_abdomen_duro_o_distendido_no_es_rutina(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_el_abdomen_duro_o_distendido_no_es_rutina(triage: Triage, lang: str, texto: str) -> None:
     resultado = triage.assess(texto)
     assert resultado.level != "routine", f"[{lang}] «{texto}» → rutina"
 
@@ -124,6 +120,5 @@ def test_el_dolor_de_oido_y_la_barriga_sensible_no_avisan(
 ) -> None:
     resultado = triage.assess(texto)
     assert resultado.level == "routine", (
-        f"[{lang}] «{texto}» → {resultado.level} por "
-        f"{[r.id for r in resultado.matched]}"
+        f"[{lang}] «{texto}» → {resultado.level} por {[r.id for r in resultado.matched]}"
     )

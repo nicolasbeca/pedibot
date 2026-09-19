@@ -21,9 +21,7 @@ DIST = ROOT / "web" / "site" / "dist"
 SRC = ROOT / "web" / "site" / "src"
 
 #: de dónde puede cargar recursos una página: de sí misma y de nadie más
-_EXTERNO = re.compile(
-    r"""(?:src|href)\s*=\s*["']https?://(?!pedibot\.xyz)([a-z0-9.-]+)""", re.I
-)
+_EXTERNO = re.compile(r"""(?:src|href)\s*=\s*["']https?://(?!pedibot\.xyz)([a-z0-9.-]+)""", re.I)
 #: enlaces que un humano pulsa a propósito (nuestras cuentas, las fuentes citadas) no son
 #: peticiones automáticas: lo que se prohíbe es que el navegador salga solo
 _CARGA = re.compile(

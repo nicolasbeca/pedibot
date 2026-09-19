@@ -139,7 +139,9 @@ def test_the_pattern_lives_in_one_place() -> None:
     without closing a circle — which is how the answer path ended up with no guard at all. Two
     copies of a list like this drift, and the copy that drifts is the one nobody is looking at."""
     articles = (ROOT / "src" / "pedibot" / "publish" / "articles.py").read_text(encoding="utf-8")
-    assert "FOREIGN_SERVICE = re.compile" not in articles, "el generador ha vuelto a definir el suyo"
+    assert "FOREIGN_SERVICE = re.compile" not in articles, (
+        "el generador ha vuelto a definir el suyo"
+    )
     assert "foreign_service_problem" in articles, "el generador ya no usa el guardián compartido"
     assert FOREIGN_SERVICE.search("call NHS 111"), "el patrón compartido no funciona"
 

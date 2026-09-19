@@ -25,9 +25,7 @@ from pedibot.publish.articles import DOCTOR_WORDS, FAQ_HEADING, _structure_probl
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CONTENT = ROOT / "web" / "content"
-SOURCES_H = re.compile(
-    r"^## (?:Sources|Fuentes|Quellen|Источники|المصادر|Fontes|स्रोत)$", re.M
-)
+SOURCES_H = re.compile(r"^## (?:Sources|Fuentes|Quellen|Источники|المصادر|Fontes|स्रोत)$", re.M)
 
 
 def draft_of(path: pathlib.Path) -> tuple[str, bool]:

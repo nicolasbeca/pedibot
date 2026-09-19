@@ -27,6 +27,8 @@ import { pathToFileURL } from 'node:url';
  * `scripts/check_metadao.py`, no de un fichero parecido. El primer intento contaba las reglas
  * en `checklist.json` (salieron 5 en vez de 83) y los documentos en el catalogo interno del
  * sitio (499, que incluye tres que no se pueden redistribuir y por eso no estan en el publico).
+ * Se lee la copia de `public/`, que es la que se sirve en /dataset/sources.json y la unica
+ * que viaja en el despliegue: en el servidor no hay `dataset/`, y el build se caia alli.
  * Rutas relativas al fichero, no al directorio de trabajo, que cambia segun quien lance el build.
  */
 const raiz = (() => {
@@ -63,7 +65,7 @@ const paisesEmergencia = Object.keys(numeros).length;
 const sinServicioNacional = Object.values(numeros).filter((n) => n.no_national).length;
 const paisesVacunas = Object.keys(vaccines as Record<string, unknown>).length;
 const paisesCurvas = Object.keys(charts as Record<string, unknown>).length;
-const documentos = (JSON.parse(leer('dataset/sources.json')) as unknown[]).length;
+const documentos = (JSON.parse(leer('web/site/public/dataset/sources.json')) as unknown[]).length;
 const guias = contarMarkdown(new URL('web/content/', raiz));
 const reglas = (leer('config/red_flags.yaml').match(/^- id:/gm) ?? []).length;
 

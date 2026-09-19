@@ -36,7 +36,7 @@ def test_the_country_the_parent_wrote(question: str, expected: str) -> None:
 
 
 def test_a_longer_name_wins() -> None:
-    """"Reino Unido" must not be read as something shorter sitting inside it, and "United
+    """ "Reino Unido" must not be read as something shorter sitting inside it, and "United
     States" must not lose to "usa" appearing in another word."""
     assert country_in_question("vacunas en el Reino Unido") == "GB"
     assert country_in_question("vaccines in the United States") == "US"
@@ -133,9 +133,13 @@ def test_a_fever_question_is_not_a_vaccine_question(lang: str) -> None:
     from pedibot.bot.vaccines import is_vaccine_question
 
     fever = {
-        "en": "my child has a fever", "es": "mi hijo tiene fiebre",
-        "fr": "mon enfant a de la fièvre", "de": "mein Kind hat Fieber",
-        "ru": "у ребёнка температура", "ar": "طفلي عنده حرارة",
-        "pt": "meu filho está com febre", "hi": "मेरे बच्चे को बुखार है",
+        "en": "my child has a fever",
+        "es": "mi hijo tiene fiebre",
+        "fr": "mon enfant a de la fièvre",
+        "de": "mein Kind hat Fieber",
+        "ru": "у ребёнка температура",
+        "ar": "طفلي عنده حرارة",
+        "pt": "meu filho está com febre",
+        "hi": "मेरे बच्चे को बुखार है",
     }
     assert not is_vaccine_question(fever[lang]), f"[{lang}] confunde fiebre con vacunas"

@@ -105,7 +105,9 @@ print(f"{len(vraw)} vaccine schedules → {target4}")
 
 
 # tablas de crecimiento por país → web/site/src/data/growth_charts.json (páginas /growth/{país})
-graw = yaml.safe_load((ROOT / "config" / "growth_charts.yaml").read_text(encoding="utf-8"))["countries"]
+graw = yaml.safe_load((ROOT / "config" / "growth_charts.yaml").read_text(encoding="utf-8"))[
+    "countries"
+]
 target_g = ROOT / "web" / "site" / "src" / "data" / "growth_charts.json"
 target_g.write_text(json.dumps(graw, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"{len(graw)} growth-chart countries → {target_g}")
@@ -148,7 +150,9 @@ emergencias = {
     if k != "default"
 }
 target8 = ROOT / "web" / "site" / "src" / "data" / "emergency.json"
-target8.write_text(json.dumps(emergencias, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
+target8.write_text(
+    json.dumps(emergencias, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8"
+)
 print(f"emergency.json: {len(emergencias)} países con su número")
 
 # idioma → países donde se habla → web/site/src/data/lang_countries.json (17-sep-2026).
@@ -161,7 +165,9 @@ desconocidos = sorted({c for cs in idiomas.values() for c in cs} - set(emergenci
 assert not desconocidos, f"lang_countries.yaml nombra países sin número: {desconocidos}"
 target9 = ROOT / "web" / "site" / "src" / "data" / "lang_countries.json"
 target9.write_text(json.dumps(idiomas, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
-print(f"lang_countries.json: {sum(len(v) for v in idiomas.values())} países en {len(idiomas)} idiomas")
+print(
+    f"lang_countries.json: {sum(len(v) for v in idiomas.values())} países en {len(idiomas)} idiomas"
+)
 
 
 # tema → categoría de la taxonomía → web/site/src/data/topic_category.json

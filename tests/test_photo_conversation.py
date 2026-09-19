@@ -35,7 +35,13 @@ RESPUESTA = {
     "hi": "दबाने पर नहीं मिटते",
 }
 
-VISTO_MANCHAS = {"petechiae": "yes", "cyanosis": "no", "swelling": "no", "quality": "ok", "note": ""}
+VISTO_MANCHAS = {
+    "petechiae": "yes",
+    "cyanosis": "no",
+    "swelling": "no",
+    "quality": "ok",
+    "note": "",
+}
 
 
 @pytest.fixture(scope="module")

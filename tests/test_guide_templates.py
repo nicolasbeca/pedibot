@@ -61,14 +61,18 @@ def test_the_template_strips_its_own_slug_prefix(lang: str) -> None:
     """
     mine = re.findall(r"\b[gr]\.id\.replace\(/\^(\w+)\\/", template(lang))
     assert mine, f"[{lang}] no encuentro ningún recorte de prefijo propio"
-    assert set(mine) == {lang}, f"[{lang}] recorta {sorted(set(mine) - {lang})} en sus propios enlaces"
+    assert set(mine) == {lang}, (
+        f"[{lang}] recorta {sorted(set(mine) - {lang})} en sus propios enlaces"
+    )
 
 
 @pytest.mark.parametrize("lang", LANGS)
 def test_the_ask_button_goes_to_its_own_edition(lang: str) -> None:
     r"""It read `/es?q=…` in every language but English: a German reader who finished a German
     guide and pressed the button landed on the Spanish site with a German question typed in."""
-    m = re.search(r"href=\{`(/\w*)\?q=\$\{encodeURIComponent\(g\.data\.title\)\}`\}", template(lang))
+    m = re.search(
+        r"href=\{`(/\w*)\?q=\$\{encodeURIComponent\(g\.data\.title\)\}`\}", template(lang)
+    )
     assert m, f"[{lang}] no encuentro el botón de preguntar"
     assert m.group(1) == ("/" if lang == "en" else f"/{lang}"), (
         f"[{lang}] el botón lleva a '{m.group(1)}'"
@@ -115,7 +119,8 @@ def test_the_guide_never_claims_a_medical_review(lang: str) -> None:
     # that fires at its own documentation teaches people to stop documenting. Same trap as the
     # ternary guard, twice in one day.
     code = "\n".join(
-        line.split("//")[0] for line in template(lang).splitlines()
+        line.split("//")[0]
+        for line in template(lang).splitlines()
         if not line.lstrip().startswith(("//", "/*", "*"))
     )
     for claim in ("reviewedBy", "lastReviewed"):

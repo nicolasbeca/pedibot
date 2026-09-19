@@ -32,7 +32,9 @@ def test_ningun_desplegable_se_abre_sin_ofrecer_nada():
         pytest.skip("el sitio no está construido en esta copia")
     vacios = []
     for p in paginas:
-        m = re.search(r'<details class="langsel"[^>]*>(.*?)</details>', p.read_text(encoding="utf-8"), re.S)
+        m = re.search(
+            r'<details class="langsel"[^>]*>(.*?)</details>', p.read_text(encoding="utf-8"), re.S
+        )
         if m and not re.search(r"<a[^>]*hreflang=", m.group(1)):
             vacios.append(str(p.parent.relative_to(DIST)).replace("\\", "/"))
     assert not vacios, (

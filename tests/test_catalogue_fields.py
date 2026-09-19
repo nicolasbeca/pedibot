@@ -25,8 +25,21 @@ FILES = sorted((ROOT / "config").glob("fuentes*.yaml"))
 #: Every field a catalogue entry is allowed to have. Adding one here is a deliberate act; finding
 #: one that is not here means a comma ate a value.
 ALLOWED = {
-    "doc_id", "file", "url", "org", "org_full", "title", "year", "lang", "topic", "doc_type",
-    "evidence", "usage", "age_groups", "notes", "dose_source",
+    "doc_id",
+    "file",
+    "url",
+    "org",
+    "org_full",
+    "title",
+    "year",
+    "lang",
+    "topic",
+    "doc_type",
+    "evidence",
+    "usage",
+    "age_groups",
+    "notes",
+    "dose_source",
 }
 
 

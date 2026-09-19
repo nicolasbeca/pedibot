@@ -77,13 +77,10 @@ def test_las_manchas_que_no_desaparecen_son_emergencia(
     resultado = triage.assess(texto)
     assert resultado.level == "emergency", f"[{lang}/{quien}] «{texto}» → {resultado.level}"
     assert any(r.id == "petechiae_fever" for r in resultado.matched), (
-        f"[{lang}/{quien}] salta, pero por otra regla: "
-        f"{[r.id for r in resultado.matched]}"
+        f"[{lang}/{quien}] salta, pero por otra regla: {[r.id for r in resultado.matched]}"
     )
 
 
 @pytest.mark.parametrize(("lang", "texto"), SI_DESAPARECEN)
-def test_las_manchas_que_si_desaparecen_no_alarman(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_las_manchas_que_si_desaparecen_no_alarman(triage: Triage, lang: str, texto: str) -> None:
     assert triage.assess(texto).level != "emergency", f"[{lang}] «{texto}» alarma"

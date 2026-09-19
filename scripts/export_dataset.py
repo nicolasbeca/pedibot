@@ -55,8 +55,16 @@ def main() -> int:
     with_url = sum(1 for d in rows if d["url"])
     with_year = sum(1 for d in rows if d["year"])
 
-    LANG_NAME = {"es": "Spanish", "en": "English", "fr": "French", "de": "German",
-                 "ru": "Russian", "ar": "Arabic", "pt": "Portuguese", "it": "Italian"}
+    LANG_NAME = {
+        "es": "Spanish",
+        "en": "English",
+        "fr": "French",
+        "de": "German",
+        "ru": "Russian",
+        "ar": "Arabic",
+        "pt": "Portuguese",
+        "it": "Italian",
+    }
 
     lines: list[str] = [
         "# Paediatric guidance for parents — an open catalogue",
@@ -109,7 +117,9 @@ def main() -> int:
         # The commonest spelling, not the first one in the file: SEUP has 28 documents under its
         # plain name and one under "(Grupo de Trabajo de Intoxicaciones)", and picking whichever
         # came first put a single working group's name on the whole society.
-        spellings = collections.Counter(d["org_full"] for d in rows if d["org"] == org and d["org_full"])
+        spellings = collections.Counter(
+            d["org_full"] for d in rows if d["org"] == org and d["org_full"]
+        )
         full = spellings.most_common(1)[0][0] if spellings else ""
         lines.append(f"| {org}{f' — {full}' if full and full != org else ''} | {n} |")
 

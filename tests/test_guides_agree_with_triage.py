@@ -37,9 +37,7 @@ from pedibot.bot.triage import Triage
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 
 #: La cabecera de la sección de advertencias, en los ocho idiomas.
-_CABECERA = re.compile(
-    r"^##\s+.*(cu[aá]ndo|when|quand|wann|когда|متى|quando|कब).*$", re.I | re.M
-)
+_CABECERA = re.compile(r"^##\s+.*(cu[aá]ndo|when|quand|wann|когда|متى|quando|कब).*$", re.I | re.M)
 
 
 @pytest.fixture(scope="module")
@@ -150,7 +148,11 @@ def test_lo_que_una_guia_advierte_el_triaje_lo_ve(triage: Triage) -> None:
 #: El otro lado del candado: ensanchar los patrones del color casi convierte un moratón en una
 #: emergencia. Estas frases tienen que quedarse donde están.
 _NO_ES_ALARMA = [
-    ("fr", "«des bleus» son moratones", "une éruption cutanée, un gonflement ou des bleus inhabituels sur les jambes"),
+    (
+        "fr",
+        "«des bleus» son moratones",
+        "une éruption cutanée, un gonflement ou des bleus inhabituels sur les jambes",
+    ),
     ("fr", "un moratón tras una caída", "il a un bleu sur la peau après être tombé du canapé"),
     ("de", "piel más pálida, sola", "blassere Haut als normal"),
     ("en", "pálido y jugando", "my son looks a bit pale today but he is playing"),
@@ -213,8 +215,6 @@ def test_ensanchar_el_color_no_convierte_un_moraton_en_emergencia(
 
 
 @pytest.mark.parametrize(("lang", "texto"), _PRISA_ES_URGENTE)
-def test_respirar_deprisa_es_urgente_no_emergencia(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_respirar_deprisa_es_urgente_no_emergencia(triage: Triage, lang: str, texto: str) -> None:
     nivel = triage.assess(texto).level
     assert nivel == "urgent", f"[{lang}] «{texto}» → {nivel}"

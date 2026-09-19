@@ -15,7 +15,7 @@ from pathlib import Path
 PAGES = Path(__file__).resolve().parents[1] / "web" / "site" / "src" / "pages"
 IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
-PLANTILLA = '''---
+PLANTILLA = """---
 /**
  * Los números de emergencia de un país, uno por página (17-sep-2026; África, 18-sep-2026).
  *
@@ -163,7 +163,7 @@ const jsonld = {{
   .sitio {{ margin-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }}
   .lista {{ display: flex; flex-wrap: wrap; gap: 10px 16px; font-size: .92rem; }}
 </style>
-'''
+"""
 
 
 INDICE = """---

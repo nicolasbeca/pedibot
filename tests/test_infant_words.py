@@ -115,6 +115,6 @@ def test_the_patterns_of_a_rule_with_requires_are_actually_evaluated() -> None:
         "Escríbele una, o sus patrones se quedarán de adorno sin que nadie lo note."
     )
     for r in con_ambos:
-        assert any(
-            triage._hits(rx, frase) for frase in frases[r.id] for rx in r.patterns
-        ), f"{r.id}: sus patrones no casan ni con las frases que los motivaron"
+        assert any(triage._hits(rx, frase) for frase in frases[r.id] for rx in r.patterns), (
+            f"{r.id}: sus patrones no casan ni con las frases que los motivaron"
+        )

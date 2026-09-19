@@ -99,25 +99,19 @@ def test_sangre_o_liquido_por_la_nariz_o_el_oido_es_emergencia(
 
 
 @pytest.mark.parametrize(("lang", "texto"), NO_PARA)
-def test_el_sangrado_que_no_para_es_emergencia(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_el_sangrado_que_no_para_es_emergencia(triage: Triage, lang: str, texto: str) -> None:
     nivel = triage.assess(texto).level
     assert nivel == "emergency", f"[{lang}] «{texto}» → {nivel}"
 
 
 @pytest.mark.parametrize(("lang", "texto"), EN_EL_PIS)
-def test_la_sangre_en_el_pis_no_es_rutina(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_la_sangre_en_el_pis_no_es_rutina(triage: Triage, lang: str, texto: str) -> None:
     nivel = triage.assess(texto).level
     assert nivel != "routine", f"[{lang}] «{texto}» → rutina"
 
 
 @pytest.mark.parametrize(("lang", "texto"), LO_CORRIENTE)
-def test_el_sangrado_corriente_no_avisa(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_el_sangrado_corriente_no_avisa(triage: Triage, lang: str, texto: str) -> None:
     resultado = triage.assess(texto)
     assert resultado.level == "routine", (
         f"[{lang}] «{texto}» → {resultado.level} por {[r.id for r in resultado.matched]}"

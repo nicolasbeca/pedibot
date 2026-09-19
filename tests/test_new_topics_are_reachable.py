@@ -26,43 +26,76 @@ from pedibot.settings import ROOT, get_settings
 
 #: tema → (trozo del doc_id que debería salir, pregunta por idioma)
 CASOS: dict[str, tuple[str, dict[str, str]]] = {
-    "malaria": ("malaria", {
-        "en": "my child has a fever and we live in a malaria area",
-        "es": "mi hijo tiene fiebre y vivimos en zona de malaria",
-        "ar": "ابني مصاب بالحمى ونعيش في منطقة بها ملاريا",
-        "hi": "मेरे बच्चे को बुखार है और हम मलेरिया वाले इलाके में रहते हैं",
-        "fr": "mon enfant a de la fièvre et nous vivons en zone de paludisme",
-    }),
-    "dengue": ("dengue", {
-        "en": "is this dengue in my child", "es": "puede ser dengue en mi hijo",
-        "ar": "هل هذه حمى الضنك عند طفلي", "hi": "क्या मेरे बच्चे को डेंगू है",
-        "fr": "est-ce la dengue chez mon enfant",
-    }),
-    "typhoid": ("typhoid", {
-        "en": "typhoid fever in children", "es": "fiebre tifoidea en niños",
-        "ar": "حمى التيفوئيد عند الأطفال", "hi": "बच्चों में टाइफाइड बुखार",
-        "fr": "fièvre typhoïde chez l'enfant",
-    }),
-    "anaemia": ("anaemia", {
-        "en": "my child is anaemic", "es": "mi hijo tiene anemia",
-        "ar": "طفلي مصاب بفقر الدم", "hi": "मेरे बच्चे को एनीमिया है",
-        "fr": "mon enfant est anémique",
-    }),
-    "snakebite": ("snakebite", {
-        "en": "my child was bitten by a snake", "es": "a mi hijo le ha mordido una serpiente",
-        "ar": "لدغت أفعى ابني", "hi": "मेरे बच्चे को साँप ने काट लिया",
-        "fr": "mon enfant a été mordu par un serpent",
-    }),
-    "helminths": ("helminth", {
-        "en": "intestinal worms in my child", "es": "lombrices intestinales en mi hijo",
-        "ar": "ديدان معوية عند طفلي", "hi": "मेरे बच्चे के पेट में कीड़े",
-        "fr": "vers intestinaux chez mon enfant",
-    }),
-    "scabies": ("scabies", {
-        "en": "my child has scabies", "es": "mi hijo tiene sarna",
-        "ar": "طفلي مصاب بالجرب", "hi": "मेरे बच्चे को खुजली की बीमारी है",
-        "fr": "mon enfant a la gale",
-    }),
+    "malaria": (
+        "malaria",
+        {
+            "en": "my child has a fever and we live in a malaria area",
+            "es": "mi hijo tiene fiebre y vivimos en zona de malaria",
+            "ar": "ابني مصاب بالحمى ونعيش في منطقة بها ملاريا",
+            "hi": "मेरे बच्चे को बुखार है और हम मलेरिया वाले इलाके में रहते हैं",
+            "fr": "mon enfant a de la fièvre et nous vivons en zone de paludisme",
+        },
+    ),
+    "dengue": (
+        "dengue",
+        {
+            "en": "is this dengue in my child",
+            "es": "puede ser dengue en mi hijo",
+            "ar": "هل هذه حمى الضنك عند طفلي",
+            "hi": "क्या मेरे बच्चे को डेंगू है",
+            "fr": "est-ce la dengue chez mon enfant",
+        },
+    ),
+    "typhoid": (
+        "typhoid",
+        {
+            "en": "typhoid fever in children",
+            "es": "fiebre tifoidea en niños",
+            "ar": "حمى التيفوئيد عند الأطفال",
+            "hi": "बच्चों में टाइफाइड बुखार",
+            "fr": "fièvre typhoïde chez l'enfant",
+        },
+    ),
+    "anaemia": (
+        "anaemia",
+        {
+            "en": "my child is anaemic",
+            "es": "mi hijo tiene anemia",
+            "ar": "طفلي مصاب بفقر الدم",
+            "hi": "मेरे बच्चे को एनीमिया है",
+            "fr": "mon enfant est anémique",
+        },
+    ),
+    "snakebite": (
+        "snakebite",
+        {
+            "en": "my child was bitten by a snake",
+            "es": "a mi hijo le ha mordido una serpiente",
+            "ar": "لدغت أفعى ابني",
+            "hi": "मेरे बच्चे को साँप ने काट लिया",
+            "fr": "mon enfant a été mordu par un serpent",
+        },
+    ),
+    "helminths": (
+        "helminth",
+        {
+            "en": "intestinal worms in my child",
+            "es": "lombrices intestinales en mi hijo",
+            "ar": "ديدان معوية عند طفلي",
+            "hi": "मेरे बच्चे के पेट में कीड़े",
+            "fr": "vers intestinaux chez mon enfant",
+        },
+    ),
+    "scabies": (
+        "scabies",
+        {
+            "en": "my child has scabies",
+            "es": "mi hijo tiene sarna",
+            "ar": "طفلي مصاب بالجرب",
+            "hi": "मेरे बच्चे को खुजली की बीमारी है",
+            "fr": "mon enfant a la gale",
+        },
+    ),
 }
 
 
@@ -87,6 +120,5 @@ def test_la_pregunta_llega_a_su_documento(buscador: Retriever, tema: str, lang: 
     hits, _ = buscador.search(preguntas[lang], lang=lang)
     salieron = [h.chunk.doc_id for h in hits]
     assert any(pista in d for d in salieron), (
-        f"«{preguntas[lang]}» ({lang}) no alcanza ninguna ficha de {tema}; "
-        f"salió: {salieron[:4]}"
+        f"«{preguntas[lang]}» ({lang}) no alcanza ninguna ficha de {tema}; salió: {salieron[:4]}"
     )

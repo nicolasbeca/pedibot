@@ -50,9 +50,7 @@ def test_every_vaccine_link_exists(lang: str) -> None:
 
 def test_every_guide_link_exists() -> None:
     gi = GuideIndex(RAIZ / "web" / "content")
-    rotos = [
-        (lg, g.url) for lg, guias in gi.by_lang.items() for g in guias if not _existe(g.url)
-    ]
+    rotos = [(lg, g.url) for lg, guias in gi.by_lang.items() for g in guias if not _existe(g.url)]
     assert not rotos, f"guías cuyo enlace no existe: {rotos[:10]}"
 
 

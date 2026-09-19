@@ -82,8 +82,18 @@ def test_the_check_can_still_see_a_desert() -> None:
     inventada = {
         "id": "prueba",
         "level": "urgent",
-        "patterns": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho",
-                     "не дышит", "لا يتنفس"],
+        "patterns": [
+            "uno",
+            "dos",
+            "tres",
+            "cuatro",
+            "cinco",
+            "seis",
+            "siete",
+            "ocho",
+            "не дышит",
+            "لا يتنفس",
+        ],
     }
     c = _cuenta(inventada)
     assert c["latino"] == 8 and c["cirílico"] == 1 and c["árabe"] == 1

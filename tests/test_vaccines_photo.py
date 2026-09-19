@@ -215,7 +215,6 @@ def test_every_schedule_says_which_edition_it_transcribes(vax):
     raiz = Path(__file__).resolve().parents[1]
     raw = yaml.safe_load((raiz / "config" / "vaccines.yaml").read_text(encoding="utf-8"))
     sin_año = [
-        code for code, c in raw["countries"].items()
-        if not re.search(r"\b20\d\d\b", c["source"])
+        code for code, c in raw["countries"].items() if not re.search(r"\b20\d\d\b", c["source"])
     ]
     assert not sin_año, f"calendarios sin año en la cita: {sin_año}"

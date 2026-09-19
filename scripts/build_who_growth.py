@@ -69,7 +69,11 @@ def main(carpeta: pathlib.Path) -> None:
     if cdc.exists():
         import csv
 
-        for fichero, nombre in (("wtage.csv", "cdc_wfa"), ("statage.csv", "cdc_hfa"), ("bmiagerev.csv", "cdc_bmi")):
+        for fichero, nombre in (
+            ("wtage.csv", "cdc_wfa"),
+            ("statage.csv", "cdc_hfa"),
+            ("bmiagerev.csv", "cdc_bmi"),
+        ):
             filas: dict[str, list[list[float]]] = {"m": [], "f": []}
             for r in csv.DictReader((cdc / fichero).open(encoding="utf-8")):
                 if not r.get("Sex") or not r["Sex"].strip().isdigit():

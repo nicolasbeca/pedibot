@@ -38,9 +38,7 @@ def test_inactive_unit_is_reported():
 def test_unknown_status_counts_as_dead():
     """A systemctl call that errors out must not be read as healthy."""
     wd = _watchdog()
-    assert wd.dead_units(status_of=lambda _u: "unknown", dormir=lambda _s: None) == list(
-        wd.UNITS
-    )
+    assert wd.dead_units(status_of=lambda _u: "unknown", dormir=lambda _s: None) == list(wd.UNITS)
 
 
 def test_the_units_we_actually_run_are_watched():

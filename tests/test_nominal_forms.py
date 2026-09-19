@@ -113,17 +113,13 @@ def test_la_incapacidad_de_tragar_dicha_como_nombre_es_emergencia(
 
 
 @pytest.mark.parametrize(("lang", "texto"), FRIOS_CON_FIEBRE)
-def test_manos_y_pies_frios_con_fiebre_avisan(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_manos_y_pies_frios_con_fiebre_avisan(triage: Triage, lang: str, texto: str) -> None:
     nivel = triage.assess(texto).level
     assert nivel != "routine", f"[{lang}] «{texto}» → rutina"
 
 
 @pytest.mark.parametrize(("lang", "texto"), FRIOS_SIN_FIEBRE)
-def test_manos_y_pies_frios_sin_fiebre_no_avisan(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_manos_y_pies_frios_sin_fiebre_no_avisan(triage: Triage, lang: str, texto: str) -> None:
     resultado = triage.assess(texto)
     assert resultado.level == "routine", (
         f"[{lang}] «{texto}» → {resultado.level} por {[r.id for r in resultado.matched]}"

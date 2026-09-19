@@ -67,7 +67,11 @@ TRAMPAS: list[tuple[str, str, str]] = [
     ("es", "preferencia", "no quiere beber agua, sólo zumo"),
     ("es", "condicional", "¿qué hago si no puede beber nada?"),
     # ── la deshidratación explicada, no vista
-    ("es", "información", "me han dicho que si pellizco la piel y tarda en volver es deshidratación"),
+    (
+        "es",
+        "información",
+        "me han dicho que si pellizco la piel y tarda en volver es deshidratación",
+    ),
     ("en", "información", "how do I check if the skin goes back slowly?"),
     # ── corrientes
     ("es", "catarro", "mi hijo de 3 años tiene mocos y está comiendo bien"),

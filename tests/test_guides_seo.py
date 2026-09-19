@@ -32,9 +32,7 @@ def _built(lang: str) -> list[tuple[pathlib.Path, pathlib.Path]]:
 
 
 def _jsonld(html: str) -> list[dict]:
-    blocks = re.findall(
-        r'<script type="application/ld\+json">(.*?)</script>', html, re.S
-    )
+    blocks = re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S)
     found: list[dict] = []
     for b in blocks:
         data = json.loads(b)
@@ -73,7 +71,5 @@ def test_no_guide_is_an_island():
             continue
         for md, html in pairs:
             body = html.read_text(encoding="utf-8")
-            links = {
-                m for m in re.findall(rf'href="{prefix}([a-z0-9_]+)"', body) if m != md.stem
-            }
+            links = {m for m in re.findall(rf'href="{prefix}([a-z0-9_]+)"', body) if m != md.stem}
             assert links, f"{md.stem} does not link to any other guide"

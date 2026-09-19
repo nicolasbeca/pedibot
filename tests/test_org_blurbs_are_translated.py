@@ -34,9 +34,7 @@ def _band(lang: str) -> dict[str, str]:
     h = p.read_text(encoding="utf-8")
     m = re.search(r'<div class="orgs"[^>]*>(.*?)</div>\s*<p', h, re.S)
     assert m, f"la portada {lang} no tiene banda de organismos"
-    pares = re.findall(
-        r'<b[^>]*>([^<]+)</b>\s*<span class="que"[^>]*>([^<]*)', m.group(1)
-    )
+    pares = re.findall(r'<b[^>]*>([^<]+)</b>\s*<span class="que"[^>]*>([^<]*)', m.group(1))
     return {html.unescape(n): html.unescape(q) for n, q in pares}
 
 

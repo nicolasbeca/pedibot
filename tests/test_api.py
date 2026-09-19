@@ -73,9 +73,7 @@ def client(tmp_path: Path, config_dir):
     # the same header the chat sends. Without it a request is `unknown` and the panel does not
     # count it as a reader, which is the whole point of test_who_asked.py — here we are standing
     # in for the front end, so we say so.
-    return TestClient(
-        create_app(engine, ops, cfg), headers={"x-pedibot-client": "web"}
-    ), ops
+    return TestClient(create_app(engine, ops, cfg), headers={"x-pedibot-client": "web"}), ops
 
 
 def test_health(client):
@@ -148,7 +146,10 @@ def test_validation(client):
 
     # one real request per side: the rate limiter would answer 429 to six of them, and the full
     # list is checked against the pattern in test_i18n_parity without spending the quota
-    assert c.post("/api/ask", json={"question": "hola", "lang": SUPPORTED_LANGS[-1]}).status_code == 200
+    assert (
+        c.post("/api/ask", json={"question": "hola", "lang": SUPPORTED_LANGS[-1]}).status_code
+        == 200
+    )
     # A code that will never be a language of this site, rather than the next one on the roadmap:
     # this line said "pt" and broke the day Portuguese shipped, which is the same trap in miniature
     # as the German one above.
@@ -273,7 +274,9 @@ def test_the_dose_endpoint_hands_the_page_a_figure_not_a_band(client):
     # le da la edad en vez de aflojar aquello.
     j = c.post("/api/dose", json={"drug": "dalsy", "weight_kg": 12, "age_months": 36}).json()
     assert j["mg"] == 120, j
-    two_percent = next(f for f in j["ml_by_form"] if "2 %" in f["form"] or "100 mg/5 ml" in f["form"])
+    two_percent = next(
+        f for f in j["ml_by_form"] if "2 %" in f["form"] or "100 mg/5 ml" in f["form"]
+    )
     assert two_percent["ml"] == 6.0, two_percent  # what the Dalsy leaflet gives for 12 kg
     assert (j["mg_min"], j["mg_max"]) == (60, 120)
     for f in j["ml_by_form"]:

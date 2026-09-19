@@ -37,19 +37,19 @@ def triaje() -> Triage:
 
 #: Está pasando ahora, o ha pasado hoy: tiene que saltar.
 AHORA = [
-    ('es', 'está convulsionando'),
-    ('es', 'acaba de tener una convulsión, hace diez minutos'),
-    ('es', 'lleva media hora sin responder'),
-    ('en', 'he is having a seizure right now'),
-    ('en', 'he had a seizure ten minutes ago'),
-    ('de', 'er krampft gerade'),
-    ('ar', 'يتشنج الآن'),
-    ('es', 'al hijo de mi hermana le dio una convulsión, ¿es grave?'),
-    ('en', "my friend's son had a seizure, what does it mean?"),
-    ('en', "my sister's baby has a bulging fontanelle, is that bad?"),
-    ('es', 'esta mañana tuvo una convulsión'),
-    ('es', 'se ha tragado una pila hace un rato'),
-    ('en', 'he had a seizure this morning'),
+    ("es", "está convulsionando"),
+    ("es", "acaba de tener una convulsión, hace diez minutos"),
+    ("es", "lleva media hora sin responder"),
+    ("en", "he is having a seizure right now"),
+    ("en", "he had a seizure ten minutes ago"),
+    ("de", "er krampft gerade"),
+    ("ar", "يتشنج الآن"),
+    ("es", "al hijo de mi hermana le dio una convulsión, ¿es grave?"),
+    ("en", "my friend's son had a seizure, what does it mean?"),
+    ("en", "my sister's baby has a bulging fontanelle, is that bad?"),
+    ("es", "esta mañana tuvo una convulsión"),
+    ("es", "se ha tragado una pila hace un rato"),
+    ("en", "he had a seizure this morning"),
 ]
 
 
@@ -61,23 +61,23 @@ def test_what_is_happening_now_still_fires(triaje: Triage, lang: str, texto: str
 
 #: Pasó hace años, o es una pregunta de «¿y si…?»: no puede saltar.
 NO_ESTA_PASANDO = [
-    ('es', 'tuvo una convulsión hace dos años y nunca se repitió'),
-    ('es', 'de bebé tuvo una bronquiolitis con dificultad para respirar'),
-    ('es', 'el año pasado se tragó una pila y todo salió bien'),
-    ('en', 'he had a febrile seizure two years ago and never again'),
-    ('en', 'she swallowed a battery last year and was fine'),
-    ('fr', 'il a fait une convulsion il y a deux ans'),
-    ('de', 'er hatte vor zwei jahren einen fieberkrampf'),
-    ('pt', 'teve uma convulsão há dois anos'),
-    ('es', '¿qué hago si le da una convulsión?'),
-    ('es', '¿qué tengo que hacer si se atraganta?'),
-    ('en', 'what should I do if he has a seizure?'),
-    ('en', 'what do I do if my baby chokes?'),
-    ('fr', "que faire s'il fait une convulsion ?"),
-    ('de', 'was mache ich, wenn er einen krampfanfall hat?'),
-    ('ru', 'что делать, если у ребёнка судороги?'),
-    ('ar', 'ماذا أفعل إذا أصيب بتشنج؟'),
-    ('hi', 'अगर दौरा पड़े तो क्या करूँ?'),
+    ("es", "tuvo una convulsión hace dos años y nunca se repitió"),
+    ("es", "de bebé tuvo una bronquiolitis con dificultad para respirar"),
+    ("es", "el año pasado se tragó una pila y todo salió bien"),
+    ("en", "he had a febrile seizure two years ago and never again"),
+    ("en", "she swallowed a battery last year and was fine"),
+    ("fr", "il a fait une convulsion il y a deux ans"),
+    ("de", "er hatte vor zwei jahren einen fieberkrampf"),
+    ("pt", "teve uma convulsão há dois anos"),
+    ("es", "¿qué hago si le da una convulsión?"),
+    ("es", "¿qué tengo que hacer si se atraganta?"),
+    ("en", "what should I do if he has a seizure?"),
+    ("en", "what do I do if my baby chokes?"),
+    ("fr", "que faire s'il fait une convulsion ?"),
+    ("de", "was mache ich, wenn er einen krampfanfall hat?"),
+    ("ru", "что делать, если у ребёнка судороги?"),
+    ("ar", "ماذا أفعل إذا أصيب بتشنج؟"),
+    ("hi", "अगर दौरा पड़े तो क्या करूँ?"),
 ]
 
 

@@ -47,7 +47,7 @@ def test_a_verb_written_for_a_boy_also_fires_for_a_girl(triage: Triage) -> None:
 
 
 def test_the_dual_is_an_age(triage: Triage) -> None:
-    """"شهران" means exactly two months. It is not "2 months", and the age parser reads digits —
+    """ "شهران" means exactly two months. It is not "2 months", and the age parser reads digits —
     so the most important age rule in the checklist was silent for the age it exists for."""
     assert parse_age_months("ابني عمره شهران") == 2.0
     assert parse_age_months("ابنتي عمرها سنتان") == 24.0

@@ -26,9 +26,7 @@ import yaml
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 INDICE = RAIZ / "index" / "pedibot.db"
 
-pytestmark = pytest.mark.skipif(
-    not INDICE.exists(), reason="sin índice construido (make ingest)"
-)
+pytestmark = pytest.mark.skipif(not INDICE.exists(), reason="sin índice construido (make ingest)")
 
 
 def _catalogo() -> dict[str, dict]:
@@ -84,7 +82,9 @@ def test_the_catalogue_and_the_index_agree_on_the_licence() -> None:
     ve. Es el patrón del clon podrido aplicado a una regla legal."""
     cat, idx = _catalogo(), _indice()
     discrepan = [
-        (d, cat[d].get("usage"), idx[d]) for d in sorted(idx) if d in cat and cat[d].get("usage") != idx[d]
+        (d, cat[d].get("usage"), idx[d])
+        for d in sorted(idx)
+        if d in cat and cat[d].get("usage") != idx[d]
     ]
     assert not discrepan, f"el catálogo y el índice discrepan: {discrepan}"
 

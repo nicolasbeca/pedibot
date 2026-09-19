@@ -66,7 +66,9 @@ def test_ninguna_pagina_del_sitio_dice_que_hay_revisor():
 def test_las_cifras_de_la_pagina_son_las_del_catalogo():
     """Un número inventado en la página del método se lleva por delante la página entera."""
     h = _pagina("en")
-    fuentes = json.loads((ROOT / "web" / "site" / "src" / "data" / "sources.json").read_text("utf-8"))
+    fuentes = json.loads(
+        (ROOT / "web" / "site" / "src" / "data" / "sources.json").read_text("utf-8")
+    )
     publicos = [f for f in fuentes if f.get("usage") != "excluido"]
     orgs = {f["org"] for f in publicos}
     assert str(len(publicos)) in h, f"la página no dice los {len(publicos)} documentos del catálogo"

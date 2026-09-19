@@ -83,24 +83,18 @@ LO_CORRIENTE = [
 
 
 @pytest.mark.parametrize(("lang", "texto"), NO_TRAGA)
-def test_no_poder_tragar_con_babeo_es_emergencia(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_no_poder_tragar_con_babeo_es_emergencia(triage: Triage, lang: str, texto: str) -> None:
     nivel = triage.assess(texto).level
     assert nivel == "emergency", f"[{lang}] «{texto}» → {nivel}"
 
 
 @pytest.mark.parametrize(("lang", "texto"), GARGANTA_CERRADA)
-def test_la_garganta_que_se_cierra_es_emergencia(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_la_garganta_que_se_cierra_es_emergencia(triage: Triage, lang: str, texto: str) -> None:
     nivel = triage.assess(texto).level
     assert nivel == "emergency", f"[{lang}] «{texto}» → {nivel}"
 
 
 @pytest.mark.parametrize(("lang", "texto"), LO_CORRIENTE)
-def test_la_amigdalitis_y_los_dientes_no_alarman(
-    triage: Triage, lang: str, texto: str
-) -> None:
+def test_la_amigdalitis_y_los_dientes_no_alarman(triage: Triage, lang: str, texto: str) -> None:
     nivel = triage.assess(texto).level
     assert nivel == "routine", f"[{lang}] «{texto}» → {nivel}"

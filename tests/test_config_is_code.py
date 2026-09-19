@@ -34,8 +34,18 @@ FICHEROS = sorted(CONFIG.glob("*.yaml"))
 #: Listas cuyo contenido son palabras que el motor va a unir, comparar o compilar. Un número
 #: suelto aquí es un olvido de comillas, no un dato.
 LISTAS_DE_TEXTO = {
-    "patterns", "terms", "aliases", "forms", "keywords", "words", "markers",
-    "topics", "subtopics", "docs", "items", "sources",
+    "patterns",
+    "terms",
+    "aliases",
+    "forms",
+    "keywords",
+    "words",
+    "markers",
+    "topics",
+    "subtopics",
+    "docs",
+    "items",
+    "sources",
 }
 
 

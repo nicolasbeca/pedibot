@@ -565,10 +565,10 @@ def test_the_chat_tells_the_three_failures_apart() -> None:
     ternario con las DOS ramas iguales —`r.status === 503 ? S.err_server : S.err_server`—,
     señal de que alguien quiso distinguir el 503 y no terminó.
     """
-    chat = (ROOT / "web" / "site" / "src" / "components" / "Chat.astro").read_text(
-        encoding="utf-8"
+    chat = (ROOT / "web" / "site" / "src" / "components" / "Chat.astro").read_text(encoding="utf-8")
+    assert "S.err_server : S.err_server" not in chat, (
+        "vuelve a haber un ternario con dos ramas iguales"
     )
-    assert "S.err_server : S.err_server" not in chat, "vuelve a haber un ternario con dos ramas iguales"
     assert chat.count("S.err_busy") >= 2, "el límite de peticiones no se distingue"
     assert chat.count("S.err_unavailable") >= 2, "el «ahora no puedo» no se distingue"
 

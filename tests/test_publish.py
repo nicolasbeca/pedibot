@@ -263,7 +263,9 @@ def test_a_batch_does_not_publish_two_guides_on_the_same_subject(tmp_path: Path)
     assert "hives" in first and "urticaria" in first  # both offered while nothing is published
 
     _publish_stub(content, "en", "one", "hives")
-    assert "urticaria" not in pending_topics(content, "en"), "same subject as the one just published"
+    assert "urticaria" not in pending_topics(content, "en"), (
+        "same subject as the one just published"
+    )
     assert "breastfeeding" in pending_topics(content, "en"), "a different subject must survive"
 
 

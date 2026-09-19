@@ -33,12 +33,32 @@ TPLS = sorted((ROOT / "web" / "site" / "src" / "pages").glob("**/dose/[[]slug[]]
 
 #: qué es cada nombre comercial, de verdad
 PARACETAMOL = {
-    "apiretal", "termalgin", "gelocatil", "efferalgan", "doliprane", "tachipirina",
-    "panadol", "tylenol", "calpol", "tempra", "ben", "ben-u-ron", "benuron",
+    "apiretal",
+    "termalgin",
+    "gelocatil",
+    "efferalgan",
+    "doliprane",
+    "tachipirina",
+    "panadol",
+    "tylenol",
+    "calpol",
+    "tempra",
+    "ben",
+    "ben-u-ron",
+    "benuron",
 }
 IBUPROFENO = {
-    "dalsy", "junifen", "nurofen", "advil", "motrin", "alivium", "apirofeno",
-    "nureflex", "brufen", "algifor", "ibufen",
+    "dalsy",
+    "junifen",
+    "nurofen",
+    "advil",
+    "motrin",
+    "alivium",
+    "apirofeno",
+    "nureflex",
+    "brufen",
+    "algifor",
+    "ibufen",
 }
 
 #: no se dosifican en casa, así que no deben reconocerse
@@ -135,8 +155,14 @@ def test_the_title_promises_a_calculator_in_every_language() -> None:
     gente escribe: «calculadora apiretal» es la consulta que más nos muestra sin ser de marca."""
     i18n = (ROOT / "web" / "site" / "src" / "i18n.ts").read_text(encoding="utf-8")
     word = {
-        "en": "calculator", "es": "Calculadora", "fr": "Calculateur", "de": "rechner",
-        "ru": "Калькулятор", "ar": "حاسبة", "pt": "Calculadora", "hi": "कैलकुलेटर",
+        "en": "calculator",
+        "es": "Calculadora",
+        "fr": "Calculateur",
+        "de": "rechner",
+        "ru": "Калькулятор",
+        "ar": "حاسبة",
+        "pt": "Calculadora",
+        "hi": "कैलकुलेटर",
     }
     bad: list[str] = []
     for lang, w in word.items():
@@ -161,12 +187,12 @@ def test_millilitres_never_round_up() -> None:
     from pedibot.api import _ml
 
     casos = [
-        (75, 100, 0.7),      # el bebé de 5 kg: 0.75 exactos, jamás 0.8
-        (600, 32, 18.7),     # 18.75 exactos
-        (105, 100, 1.0),     # 1.05 exactos
-        (195, 100, 1.9),     # 1.95 exactos
-        (90, 100, 0.9),      # exacto, se queda igual
-        (250, 20, 12.5),     # exacto con decimal
+        (75, 100, 0.7),  # el bebé de 5 kg: 0.75 exactos, jamás 0.8
+        (600, 32, 18.7),  # 18.75 exactos
+        (105, 100, 1.0),  # 1.05 exactos
+        (195, 100, 1.9),  # 1.95 exactos
+        (90, 100, 0.9),  # exacto, se queda igual
+        (250, 20, 12.5),  # exacto con decimal
     ]
     for mg, conc, esperado in casos:
         assert _ml(mg, conc) == esperado, f"{mg} mg a {conc} mg/ml → {_ml(mg, conc)}, no {esperado}"
@@ -174,4 +200,6 @@ def test_millilitres_never_round_up() -> None:
     # y la propiedad, no solo los ejemplos: nunca por encima del valor exacto
     for mg in range(25, 1001, 5):
         for conc in (20, 24, 30, 32, 40, 50, 100, 200):
-            assert _ml(mg, conc) <= mg / conc + 1e-9, f"{mg} mg a {conc} mg/ml redondea hacia arriba"
+            assert _ml(mg, conc) <= mg / conc + 1e-9, (
+                f"{mg} mg a {conc} mg/ml redondea hacia arriba"
+            )

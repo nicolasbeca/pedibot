@@ -62,7 +62,9 @@ def test_ninguna_fila_publicada_pide_ir_al_medico_sin_decirlo(tabla: dict):
     """Una fila con `refer` es una que NO debe enseñar cifra. Si aparece alguna, el componente
     tiene que saber tratarla; hoy no hay ninguna y esto avisa el día que la haya."""
     con_refer = [kg for kg, f in tabla["rows"].items() if f["refer"]]
-    assert not con_refer, f"pesos que la calculadora deriva al médico y la tabla publica: {con_refer}"
+    assert not con_refer, (
+        f"pesos que la calculadora deriva al médico y la tabla publica: {con_refer}"
+    )
 
 
 def test_dice_de_donde_sale_y_cada_cuanto(tabla: dict):

@@ -78,7 +78,9 @@ def test_no_overlap_means_no_link(tmp_path: pathlib.Path) -> None:
 def test_a_draft_is_never_offered(tmp_path: pathlib.Path) -> None:
     write(tmp_path, "es", "fiebre", "fiebre", "Fiebre")
     f = tmp_path / "es" / "fiebre.md"
-    f.write_text(f.read_text(encoding="utf-8").replace("draft: false", "draft: true"), encoding="utf-8")
+    f.write_text(
+        f.read_text(encoding="utf-8").replace("draft: false", "draft: true"), encoding="utf-8"
+    )
     assert GuideIndex(tmp_path).best_for(["seup_fiebre#1"], "es") is None
 
 

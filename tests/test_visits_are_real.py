@@ -44,7 +44,9 @@ def _linea(ip: str, ua: str, uri: str, ts: float = 1_789_000_000.0, status: int 
     )
 
 
-CHROME = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140"
+CHROME = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140"
+)
 
 
 def test_quien_solo_pide_el_html_no_es_una_visita():

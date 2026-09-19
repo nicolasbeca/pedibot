@@ -74,11 +74,16 @@ def test_the_faq_heading_is_known_in_every_language() -> None:
     it cost French that in July and German, Russian and Arabic until this was written."""
     site = ROOT / "web" / "site" / "src"
     headings = (site / "guides.ts").read_text(encoding="utf-8")
-    block = headings[headings.index("FAQ_HEADINGS = [") : headings.index("];", headings.index("FAQ_HEADINGS = ["))]
+    block = headings[
+        headings.index("FAQ_HEADINGS = [") : headings.index(
+            "];", headings.index("FAQ_HEADINGS = [")
+        )
+    ]
     langs = re.findall(
         r"'(\w+)'",
         re.search(
-            r"export const LANGS: Lang\[\] = \[(.*?)\]", (site / "i18n.ts").read_text(encoding="utf-8")
+            r"export const LANGS: Lang\[\] = \[(.*?)\]",
+            (site / "i18n.ts").read_text(encoding="utf-8"),
         ).group(1),
     )
     # one alternative per language, and each language's guides must actually match one of them
@@ -91,11 +96,13 @@ def test_the_faq_heading_is_known_in_every_language() -> None:
         if not guides:
             continue
         hit = sum(1 for g in guides if pattern.search(g.read_text(encoding="utf-8")))
-        assert hit > len(guides) // 2, f"{lang}: solo {hit}/{len(guides)} guías con bloque de preguntas"
+        assert hit > len(guides) // 2, (
+            f"{lang}: solo {hit}/{len(guides)} guías con bloque de preguntas"
+        )
 
 
 def test_a_citation_never_names_a_section_the_document_lacks() -> None:
-    """"Introducción" is the label the chunker gives the text before the first heading — our
+    """ "Introducción" is the label the chunker gives the text before the first heading — our
     word, not the document's. It travelled into 119 citations of English and Russian documents,
     sending anyone who checked us to a section that is not there."""
     offenders = []
@@ -118,7 +125,9 @@ def test_the_citation_scaffolding_is_in_the_guide_s_own_language() -> None:
     from pedibot.bot.strings import CITATION_WORDS
 
     langs = {d.name for d in CONTENT.iterdir() if d.is_dir()}
-    assert langs <= set(CITATION_WORDS), f"faltan palabras de cita para {langs - set(CITATION_WORDS)}"
+    assert langs <= set(CITATION_WORDS), (
+        f"faltan palabras de cita para {langs - set(CITATION_WORDS)}"
+    )
 
     for lang in sorted(langs - {"en", "fr"}):  # fr uses the same two words as English
         word = CITATION_WORDS[lang][0]
@@ -155,8 +164,14 @@ def test_both_prompts_name_the_headings_in_every_language(lang: str) -> None:
     from pedibot.publish.articles import load_prompt
 
     names = {
-        "en": "English", "es": "Spanish", "fr": "French", "de": "German",
-        "ru": "Russian", "ar": "Arabic", "pt": "Portuguese", "hi": "Hindi",
+        "en": "English",
+        "es": "Spanish",
+        "fr": "French",
+        "de": "German",
+        "ru": "Russian",
+        "ar": "Arabic",
+        "pt": "Portuguese",
+        "hi": "Hindi",
     }
     assert lang in names, f"[{lang}] añade su nombre en inglés a este mapa"
     for version in ("article_v1", "article_compare_v1"):

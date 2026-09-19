@@ -27,9 +27,7 @@ from pedibot.settings import get_settings
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
 INDICE = RAIZ / "index" / "pedibot.db"
 
-pytestmark = pytest.mark.skipif(
-    not INDICE.exists(), reason="sin índice construido (make ingest)"
-)
+pytestmark = pytest.mark.skipif(not INDICE.exists(), reason="sin índice construido (make ingest)")
 
 
 def test_every_supported_language_has_a_question() -> None:
