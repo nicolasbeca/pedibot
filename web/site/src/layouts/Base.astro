@@ -15,8 +15,12 @@ interface Props { lang: Lang; title: string; description: string; path: string; 
   // Guides have a different slug per language, so the page passes the real counterparts here:
   // { es: '/es/guides/…', fr: null } — an explicit null means "not translated yet", and that
   // language gets neither an hreflang nor a switch link. Omit the prop and the path is derived.
-  others?: Partial<Record<Lang, string | null>> }
-const { lang, title, description, path, jsonld, others } = Astro.props;
+  others?: Partial<Record<Lang, string | null>>;
+  // 19-sep-2026: para las páginas que son un ESTADO y no contenido — hoy sólo /offline, que
+  // sirve el service worker cuando no hay red. No se indexan, no van al sitemap y el grafo de
+  // enlaces no las cuenta como huérfanas, igual que ya hacía con las redirecciones.
+  noindex?: boolean }
+const { lang, title, description, path, jsonld, others, noindex } = Astro.props;
 const s = t(lang);
 /**
  * Lo que enseña un resultado de búsqueda son unos 60 caracteres de título. Medido el
@@ -87,6 +91,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <meta name="color-scheme" content="light" />
   <title>{tituloDoc}</title>
   <meta name="description" content={description} />
+  {noindex && <meta name="robots" content="noindex, follow" />}
   <link rel="canonical" href={canonical} />
   <link rel="alternate" hreflang={lang} href={canonical} />
   {enHref !== null && (
@@ -101,6 +106,13 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <link rel="icon" href="/favicon.ico" sizes="32x32" />
   <link rel="icon" type="image/png" href="/logo-192.png" sizes="192x192" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  {/* 19-sep-2026, F1 del plan de APP.md: el sitio se puede instalar y funciona sin cobertura
+      para lo que ya se abrió y para los números de emergencia. El color de tema es el menta
+      del logo, que es lo que pinta Android alrededor de la ventana. */}
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#A9DED2" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="PediBot" />
   <link rel="alternate" type="application/rss+xml" title="PediBot guides" href={`${langPrefix(lang)}/rss.xml`} />
   {/* The map written for the assistants that answer questions from the web. It was
       orphaned — mentioned only in a robots.txt COMMENT, which no crawler reads — and in
@@ -263,6 +275,15 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && langsel?.open) { langsel.open = false; langsel.querySelector('summary')?.focus(); }
     });
+  </script>
+  {/* El trabajador que hace que esto funcione sin cobertura. Va al final y dentro de `load`
+      para que no le quite un milisegundo a la primera pintura, que es lo que se nota en un
+      teléfono barato. Las páginas van SIEMPRE a la red primero: la copia guardada sólo
+      aparece cuando la red falla (ver public/sw.js). */}
+  <script is:inline>
+    if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      addEventListener('load', () => { navigator.serviceWorker.register('/sw.js').catch(() => {}); });
+    }
   </script>
 </body>
 </html>

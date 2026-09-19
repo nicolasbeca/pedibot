@@ -70,3 +70,22 @@ def test_a_broken_config_is_not_applied_in_silence() -> None:
     assert "caddy validate" in deploy
     assert "EL CADDYFILE NO VALIDA" in deploy, "el fallo de validación vuelve a ser mudo"
     assert "caddy validate --config /etc/caddy/Caddyfile >/dev/null 2>&1" not in deploy
+
+
+def test_the_manifest_is_served_as_a_manifest() -> None:
+    """19-sep-2026. La cabecera `X-Content-Type-Options: nosniff` está puesta desde el principio
+    y es buena, pero convierte el tipo en obligatorio: Caddy deduce el tipo de la extensión y
+    `.webmanifest` no está en su tabla, así que saldría como `octet-stream` y Chrome lo
+    rechazaría. Efecto: la web dejaría de poder instalarse, en silencio y sólo en móviles."""
+    assert "nosniff" in CADDY, "si esto se cae, el tipo del manifiesto deja de ser crítico"
+    assert 'Content-Type "application/manifest+json"' in CADDY, (
+        "el manifiesto tiene que salir con su tipo o el teléfono no lo acepta"
+    )
+
+
+def test_the_service_worker_is_never_cached_for_long() -> None:
+    """Es el interruptor de emergencia: si algún día hay que apagar el modo sin conexión, se
+    despliega un `sw.js` que se desregistra. Servido con caché larga, esa orden tardaría un año
+    en llegar a quien ya lo tiene instalado."""
+    assert "/sw.js" in CADDY, "el trabajador no tiene regla propia de caché"
+    assert 'Cache-Control "no-cache, max-age=0"' in CADDY

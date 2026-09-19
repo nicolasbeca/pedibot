@@ -1,0 +1,32 @@
+{
+  "id": "/",
+  "name": "PediBot — paediatric answers for parents",
+  "short_name": "PediBot",
+  "description": "Emergency numbers, vaccination schedules, growth charts and paediatric guidance from published guidelines. Free, no account, works without a signal.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFFDF9",
+  "theme_color": "#A9DED2",
+  "categories": ["health", "medical", "education"],
+  "icons": [
+    { "src": "/logo-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Emergency numbers",
+      "short_name": "Emergency",
+      "url": "/emergency",
+      "icons": [{ "src": "/logo-192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Vaccination schedule",
+      "short_name": "Vaccines",
+      "url": "/vaccines",
+      "icons": [{ "src": "/logo-192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ]
+}

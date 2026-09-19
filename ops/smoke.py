@@ -47,6 +47,10 @@ PAGINAS = (
     "/dose", "/vaccines", "/guides", "/emergency", "/legal", "/support",
     "/kit", "/diary", "/sources", "/llms.txt", "/rss.xml", "/robots.txt",
     "/sitemap-index.xml",
+    # 19-sep-2026: las tres piezas de funcionar sin cobertura. Si el trabajador o el manifiesto
+    # dejan de servirse, el sitio sigue viéndose perfecto con red y sólo falla donde no hay,
+    # que es justo donde no vamos a estar mirando.
+    "/sw.js", "/manifest.webmanifest", "/offline",
 )
 
 

@@ -203,8 +203,9 @@ Los días son días de trabajo míos, seguidos, sin contar lo que tarda la tiend
 
 | Fase | Qué | Días |
 |---|---|---|
-| **F0** | Iconos desde el logo real | **hecho hoy** |
-| **F1** | La web se vuelve PWA de verdad: `manifest.webmanifest`, service worker, datos empaquetados, pantalla de «sin conexión». Esto ya mejora la web aunque la app no llegue nunca. | 2 |
+| **F0** | Iconos desde el logo real | **hecho el 19-sep** |
+| **F1** | La web se vuelve PWA: `manifest.webmanifest`, service worker, pantalla de «sin conexión» en los ocho idiomas, instalable desde el móvil. | **hecho el 19-sep** |
+| **F1b** | Empaquetar los datos (vacunas, emergencias, curvas, dosis) para que estén ANTES de que el lector visite esa página, y refrescarlos en segundo plano con la fecha a la vista. | 2 |
 | **F2** | Carcasa Capacitor: proyectos Android e iOS, iconos, pantalla de arranque, que abra y navegue. | 2 |
 | **F3** | Lo nativo: llamada de un toque, compartir, cámara, y el diario en el dispositivo. | 2 |
 | **F4** | Recordatorios de vacunas (fecha de nacimiento local, notificaciones, el ajuste para apagarlos). | 3 |
@@ -215,6 +216,26 @@ Los días son días de trabajo míos, seguidos, sin contar lo que tarda la tiend
 
 **En claro: unas tres semanas de trabajo y entre cuatro y seis semanas de calendario**, mandando
 casi todo la espera obligatoria de Google.
+
+### Lo que ya está funcionando (19-sep-2026)
+
+La F1 se hizo el mismo día que este documento, porque es la que mejora la web aunque la app
+tardara en llegar. En pedibot.xyz, hoy:
+
+- **el sitio se puede instalar** desde el móvil (manifiesto, iconos del logo de verdad, color de
+  tema, atajos a los números de emergencia y al calendario);
+- **lo ya visitado se abre sin cobertura**, y con él los números de emergencia, que se guardan
+  desde la primera visita aunque nadie los haya abierto;
+- **la página de «sin conexión» habla las ocho lenguas a la vez**, porque quien llega a ella no
+  tiene red para cambiar de idioma;
+- **las páginas van siempre a la red primero**: la copia guardada sólo aparece cuando la red
+  falla. Un calendario de vacunas de hace ocho meses servido desde el teléfono sería peor que no
+  tener nada;
+- **la API no se guarda nunca**: una respuesta del chat es para una pregunta, un niño y un
+  momento.
+
+Y hay interruptor de emergencia: `/sw.js` se sirve sin caché, así que desplegarlo con un
+`unregister()` dentro apaga todo esto en la siguiente carga de cualquiera.
 
 ---
 
@@ -307,20 +328,22 @@ No lo decido yo: es §10, decisión 2.
 
 ---
 
-## 10. Lo que necesito que decidas tú
+## 10. Decisiones del operador (19-sep-2026, contestadas en el chat)
 
-1. **¿Cuenta de desarrollador personal o de organización?** La de organización se salta los 12
-   probadores y los 14 días, pero pide documentación de la entidad y tarda más en verificarse.
-   *Mi recomendación: personal, y empezamos la prueba cerrada el primer día.* De cualquiera de
-   las dos, las cuentas tienen que ir a tu nombre: llevan tu identidad y tu forma de pago.
-2. **iOS: ¿con o sin calculadora de dosis?** (§8). *Mi recomendación: la versión 1 sin ella, y
-   pedimos el respaldo de la sociedad en paralelo.*
-3. **¿Recordatorios de vacunas en la versión 1?** Implica guardar la fecha de nacimiento en el
-   teléfono, aunque no salga de ahí. *Mi recomendación: sí, es la función que hace que alguien
-   deje la app instalada.*
-4. **¿Las dos tiendas a la vez o Android primero?** *Mi recomendación: Android primero, porque es
-   donde están India, Nigeria y Kenia, y porque la revisión de Apple es la que puede pedir
-   cambios.*
+Las cuatro salieron por donde tenían que salir: preguntadas, no supuestas. Quedan aquí escritas
+con su motivo, porque dentro de tres semanas nadie se acordará de por qué iOS sale sin
+calculadora.
+
+| # | Decisión | Lo que implica |
+|---|---|---|
+| **D-A1** | **Cuenta de Play personal** | 25 $ una vez, pero **12 probadores apuntados 14 días seguidos** antes de producción. Se empieza el primer día, en paralelo con todo lo demás, y se apunta a 15 o 16 por si alguno desinstala. Las cuentas van a nombre del operador. |
+| **D-A2** | **iOS v1 sin calculadora de dosis** | La directriz 1.4.2 pide que venga de un hospital, universidad, farmacia o fabricante, y viene de nosotros. En iPhone se enseña la tabla como lo que dice la fuente, sin calcular por peso. **Android y la web la mantienen igual.** El respaldo de la AEPap o la SEUP se puede pedir después, sin bloquear el lanzamiento. |
+| **D-A3** | **Recordatorios de vacunas en la v1** | La fecha de nacimiento se guarda **sólo en el teléfono** y nunca viaja. Aviso tres días antes de cada cita del calendario del país elegido. ~3 días de trabajo (F4) y es lo que hace que la app siga instalada. |
+| **D-A4** | **Android primero, iOS detrás** | Es donde están India, Nigeria y Kenia, que es a donde apunta el proyecto, y la revisión de Apple es la que puede pedir cambios. iOS va después, con lo aprendido y ya sin calculadora. |
+
+Lo que queda pendiente de él, y no es una decisión sino un trámite: abrir las dos cuentas
+(Play, 25 $ una vez; Apple, 99 $ al año) y reunir los 12 probadores. Sin la cuenta de Play no
+empieza el reloj de los 14 días, que es el camino largo de todo el calendario.
 
 ---
 
@@ -346,5 +369,11 @@ Lo del logo ya está arreglado y no era un detalle: llevabas razón, el de la we
 parecido al tuyo. Ahora todos los iconos, los de la web y los de la app, salen del JPG que me
 diste, con una sola línea de código.
 
-Lo que me falta de ti son las cuatro decisiones de §10. Con las dos primeras contestadas empiezo
-por la F1, que además mejora la web aunque la app tardara.
+Las cuatro decisiones están contestadas desde el mismo 19-sep y escritas en §10: cuenta personal
+en Play —con lo que el reloj de los 12 probadores y los 14 días manda el calendario—, iOS sin
+calculadora, recordatorios de vacunas dentro de la primera versión y Android primero. Con eso, el
+trabajo empieza por la F1, que es la que hace que la web funcione sin cobertura y que mejora el
+sitio aunque la app tardara en llegar.
+
+Lo único que hace falta de ti para que arranque el reloj es abrir la cuenta de Google Play y
+juntar doce probadores. Todo lo demás se puede ir construyendo mientras.

@@ -36,12 +36,21 @@ def canon(path: str) -> str:
 #: en Google o en el marcador de alguien— y lleva `noindex`, así que no cuenta en el grafo.
 REDIRECCION = re.compile(r'<meta http-equiv="refresh"', re.I)
 
+#: Y una página que pide no ser indexada tampoco está en el grafo (19-sep-2026). Hoy hay una
+#: sola: `/offline`, que **no es contenido, es un estado** — la sirve el service worker cuando el
+#: lector se queda sin red, así que por definición no la enlaza nadie y no la busca nadie. Se
+#: excluye por el mismo motivo que la redirección y con la misma señal, la del propio HTML: si
+#: mañana alguien marca `noindex` una página de verdad, también saldrá del sitemap, y entonces
+#: que no cuente aquí es lo coherente.
+NOINDEX = re.compile(r'<meta name="robots" content="noindex', re.I)
+
 
 def graph() -> tuple[dict[str, set[str]], collections.Counter]:
     pages: dict[str, pathlib.Path] = {}
     for f in DIST.rglob("index.html"):
         rel = f.relative_to(DIST).parent.as_posix()
-        if REDIRECCION.search(f.read_text(encoding="utf-8", errors="replace")[:600]):
+        cabeza = f.read_text(encoding="utf-8", errors="replace")[:1200]
+        if REDIRECCION.search(cabeza) or NOINDEX.search(cabeza):
             continue
         pages[canon("" if rel == "." else rel)] = f
     out: dict[str, set[str]] = {}

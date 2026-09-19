@@ -1,0 +1,54 @@
+---
+/**
+ * La página que se ve cuando no hay red (19-sep-2026, F1 del plan de APP.md).
+ *
+ * La sirve `public/sw.js` como último recurso: primero intenta la red, luego la copia guardada de
+ * esa misma página, y sólo si no hay ninguna de las dos llega aquí.
+ *
+ * Está en los OCHO idiomas a la vez, y no es un capricho de maquetación: quien acaba aquí no
+ * tiene conexión para cambiar de idioma, y puede haber llegado desde cualquiera de las ocho
+ * ediciones. Un aviso de «sin conexión» que el lector no entiende es una pantalla en blanco con
+ * más pasos.
+ *
+ * `noindex` a propósito: esta página no es contenido, es un estado.
+ */
+import Base from '../layouts/Base.astro';
+import { t, langPrefix, dirFor, LANGS, LANG_NAMES, type Lang } from '../i18n';
+const lang = 'en';
+const s = t(lang);
+// Esta página existe UNA vez y habla las ocho lenguas, así que no tiene contrapartes que
+// declarar: sin este `others`, el layout prometía /es/offline y siete más que no existen.
+const ninguna = Object.fromEntries(LANGS.filter((l) => l !== lang).map((l) => [l, null])) as
+  Partial<Record<Lang, string | null>>;
+---
+<Base lang={lang} title="No connection — PediBot" description="PediBot works without a signal for what you have already opened, and for the emergency numbers." path="/offline" others={ninguna} noindex>
+  <div class="narrow" style="padding:40px 18px">
+    <img src="/logo-144.png" width="72" height="72" alt="" style="display:block;margin:0 auto 18px" />
+    {LANGS.map((l) => {
+      const x = t(l);
+      return (
+        <section class="aviso" lang={l} dir={dirFor(l)}>
+          <h2>{x.offline_h1}</h2>
+          <p>{x.offline_p}</p>
+          <p class="ir">
+            <a href={`${langPrefix(l)}/emergency`}>{x.nav_emergency} →</a>
+            <a href={`${langPrefix(l)}/vaccines`}>{x.nav_vaccines} →</a>
+            <span class="idioma">{LANG_NAMES[l]}</span>
+          </p>
+        </section>
+      );
+    })}
+    <p class="n" style="margin-top:28px">{s.legal_line}</p>
+  </div>
+</Base>
+
+<style>
+  .aviso {
+    border-top: 1px solid var(--line); padding: 16px 0;
+  }
+  .aviso:first-of-type { border-top: 0; }
+  .aviso h2 { margin: 0 0 4px; font-size: 1.05rem; }
+  .aviso p { margin: 0; color: var(--ink-2); }
+  .ir { margin-top: 8px !important; display: flex; gap: 14px; flex-wrap: wrap; font-size: .9rem; }
+  .ir .idioma { color: var(--ink-3); font-size: .8rem; align-self: center; }
+</style>
