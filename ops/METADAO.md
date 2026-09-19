@@ -10,13 +10,17 @@
 > hace en un minuto. Regla de la casa, y ya salvó un error: yo había escrito «ocho países sin
 > número de emergencias» y son siete, más uno donde no pudimos verificarlo.
 >
-> Estado: **P1 y P2 aprobadas por el operador.** Falta la tercera pregunta.
+> Estado: **las tres aprobadas por el operador.** Listas para pegar.
+>
+> Un arreglo del 19-sep que vale para las tres: «las tres de la mañana» aparecía cuatro
+> veces —lo vio él— y una imagen repetida deja de ser una imagen. Queda **una sola vez**, en
+> el cierre de P2, que es donde remata.
 
 ---
 
 ## P1 · Who are you, what is your background, and why are you the right person/team to build this?
 
-*(8.000 caracteres · este texto: 4.968)*
+*(8.000 caracteres · este texto: 5.509)*
 
 My name is Nicolás Beca. I am an architect, I am not a doctor, and I do not have a team.
 
@@ -42,7 +46,7 @@ You are here to make money, and you should be. Most of what you fund has to make
 
 There are seven countries where PediBot cannot give an emergency number, because the government source says plainly that no national emergency service exists. Not "we could not find it": there isn't one. In an eighth, Zambia, we could not verify the number we found, so the page says that too. Every time I open that list I think about what it means to be the parent on the other side of it.
 
-Those seven countries, and the fifty-odd others we added this month, are not a market. Nobody is going to monetise a mother in Kisumu at three in the morning with no credit on her phone, and anyone who tells you otherwise is selling you something. She is not a user. She is someone who needs to know whether the way her daughter is breathing is normal, and who has nobody to ask. That is the same thing I needed, in a worse place, with less.
+Those seven countries, and the fifty-odd others we added this month, are not a market. Nobody is going to monetise a mother in Kisumu with no credit left on her phone, and anyone who tells you otherwise is selling you something. She is not a user. She is someone who needs to know whether the way her daughter is breathing is normal, and who has nobody to ask. That is the same thing I needed, in a worse place, with less.
 
 So that is what this is. Something that answers her, for free, in her language, with the source attached so she can check it, and that keeps working when her signal does not, because the emergency numbers for all 88 countries sit inside her phone.
 
@@ -54,7 +58,7 @@ Everything is at https://pedibot.xyz. The sources page lists every document. The
 
 ## P2 · What are you building, and who is it for?
 
-*(8.000 caracteres · este texto: 5.716)*
+*(8.000 caracteres · este texto: 5.070)*
 
 PediBot is a free site that answers parents' questions about a sick child using only what paediatric societies, health ministries and the WHO already publish for families, and that shows where every answer comes from. It does not diagnose. It quotes, it names the document, it links the original, and it says when it does not know.
 
@@ -66,9 +70,9 @@ Since this week there is also an optional account. You save each child's date of
 
 And all of it except the chat works with no signal. The emergency numbers for all 88 countries, the red flags, the schedules and the growth tables sit inside the phone. With no connection it still opens and tells you what it knows. Only the chat needs the network, because a model writes it.
 
-Who is it for. First, the parent who at three in the morning has nobody to ask. That happens everywhere, including in rich countries: the paediatrician does not answer the phone at night and the hospital is half an hour away.
+Who is it for. First, the parent who in the middle of the night has nobody to ask. That happens everywhere, including in rich countries: the paediatrician does not answer the phone at night and the hospital is half an hour away.
 
-But mostly it is for the places where there is no paediatrician to call at three in the morning or at eleven. That is why the eight languages are not English and Spanish with decoration: there is Arabic, Hindi, Russian and Portuguese, and the safety layer also reads Swahili. That is why 48 African countries have their emergency number and their schedule in it. And that is why each page weighs under twenty kilobytes and the data lives inside the phone: because the mother this is actually for runs out of credit halfway through the month.
+But mostly it is for the places where there is no paediatrician to call at night, or at eleven in the morning either. That is why the eight languages are not English and Spanish with decoration: there is Arabic, Hindi, Russian and Portuguese, and the safety layer also reads Swahili. That is why 48 African countries have their emergency number and their schedule in it. And that is why each page weighs under twenty kilobytes and the data lives inside the phone: because the mother this is actually for runs out of credit halfway through the month.
 
 It is also for families living where nobody speaks their language. A Moroccan family in Madrid needs the Spanish number and the explanation in Arabic, and that is written into the code: the country shown first is the reader's, not the language's.
 
@@ -82,10 +86,31 @@ And when they do, this is who is on the other side: a mother in Kisumu at three 
 
 ---
 
-## P3 · [pendiente]
+## P3 · Who are your main competitors. and why do you beat them?
 
-Cuando llegue la tercera pregunta: primero en español para el visto bueno, después en inglés, y
-aquí.
+*(8.000 caracteres · este texto: 5.498)*
+
+My real competitors are not other apps. There are three of them, and two I am not going to beat.
+
+The first and biggest is Google at four in the morning. That is where a frightened parent goes, and what they find is forums, sites built to place advertising, and pages that answer everything with total confidence and cite nothing. That is the real competitor, it is free, and right now it is winning. I do not beat it by being cleverer. I beat it on the only thing that matters at that hour: every sentence in my answer carries the body that says it, the document, and a link to check it. A parent who has already read four contradictory things does not need a fifth opinion. They need to see who signs it.
+
+The second is ChatGPT and the other assistants, and that is the serious one. Millions of parents already ask them whether their child needs a hospital, and they often answer well. Where they fail is where it hurts most: they do not cite a source, so nothing can be checked; they do not know the emergency number for the country the parent is in, or the vaccination schedule that applies to that child, because none of that lives in a model, it lives in a ministry's PDF; and above all they always have an answer. A model does not know how to stay quiet. PediBot does: when nothing in its sources supports an answer, it says so instead of filling the gap.
+
+There is also a difference that is not about quality but about architecture. In PediBot the urgency is not decided by the model. It is decided by a layer of 83 fixed rules that runs first, and drug doses are never generated: they are looked up in published tables, by weight, with the brands sold in each country. A general assistant cannot promise that, because its answer is always a generation.
+
+But I am not kidding myself: I do not beat the assistants, I complement them. That is why the catalogue of 496 documents is public domain and downloadable, and why there is a machine-readable map of the project written for them. If ChatGPT answers these questions tomorrow citing my sources, I have won. The goal is not that people come to my site. The goal is that a parent does not get an invented answer.
+
+The third group is the health services and the paediatric societies: the NHS, the CDC, the Spanish Paediatric Association, the ministries. They are better than me at what they do and I will not pretend otherwise. They are the source, and in fact they are my sources. Where they fall short is in form. Each covers one country and one or two languages, their material is scattered across dozens of PDFs, and nobody navigates an institutional site at night looking for the bronchiolitis leaflet. What I do is gather 88 countries in eight languages, read them, transcribe them with their source and their date, and answer in the language of the person asking. Nobody was doing that for free.
+
+Then there are the symptom checkers, such as Ada, K Health, Infermedica or Mediktor. They are serious and some of them are good, but they play a different game: they give a diagnostic orientation, they ask for an account, and they have to monetise, through subscriptions, insurers, or licensing the technology. I do not give a diagnosis and I have nothing to monetise, which removes the conflict of interest they carry. It is also worth looking at how Babylon Health ended, after raising hundreds of millions: in this field it is usually the business model that kills the product, not the medicine.
+
+And the baby tracking apps, the ones with the growth curves and the feeds, used by millions of parents. Those I do watch closely, because I have just built the same thing. They do one thing well: recording. What they do not do is answer. You note the weight and you get a dot on a curve, but when at night you type "his ribs are pulling in when he breathes", there is nobody on the other side. PediBot does both: your child's curve on the WHO bands, and an answer with its source when you need one. And with no advertising inside, which is the first thing you see when you open any of them.
+
+There are two more things none of the above has. It works with no signal: the emergency numbers for all 88 countries, the red flags, the schedules and the growth tables sit inside the phone, and with no connection it still opens. And it asks for no account, charges nothing, carries no advertising and sells no data, and it never will, because a project whose entire argument is that it sells nothing cannot start selling something without becoming the thing it was built against.
+
+Where I lose, which is worth saying too. I lose on conversational speed against a general model. I lose on brand: nobody knows me, I am not in the app stores, and I have been findable for three weeks. I lose to the NHS on authority about England, and I lose to a real paediatrician every single time, which is what the site repeats on every page. And my answer is never better than the documents I hold: where there is no openly licensed paediatric source, and in Swahili there is none, I say so and answer in English.
+
+So the honest answer to "why do you beat them" is that I do not beat most of them, and the ones that matter I do not want to beat: I want them to use my catalogue. The one I do beat, because it is the one answering those parents today and should not be, is the sourceless forum and the page built to place advertising. That is the competitor. Bringing a single parent back to what their own health service actually says already justifies this.
 
 ---
 
