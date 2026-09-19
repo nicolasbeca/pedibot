@@ -308,4 +308,3 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
     lines.append(T["dose_source"].format(source=d.source))
     lines.append(T["dose_check"])
     return "\n".join(lines)
-

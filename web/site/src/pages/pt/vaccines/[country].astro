@@ -10,6 +10,7 @@
 import Base from '../../../layouts/Base.astro';
 import CountryLinks from '../../../components/CountryLinks.astro';
 import schedules from '../../../data/vaccines.json';
+import vaxNames from '../../../data/vaccine_names.json';
 import { t } from '../../../i18n';
 
 const lang = 'pt'; const s = t(lang);
@@ -49,7 +50,7 @@ const jsonld = {
         {data.schedule.map((row: any) => (
           <li>
             <b>{label(row)}</b>
-            <span>{(row.vaccines ?? []).map((v: any) => (typeof v === 'string' ? v : v[lang] ?? v.name)).join(' · ')}</span>
+            <span>{(row.vaccines ?? []).map((v: any) => (typeof v === 'string' ? ((vaxNames as any).names?.[v]?.[lang] ?? v) : v[lang] ?? v.name)).join(' · ')}</span>
           </li>
         ))}
       </ul>

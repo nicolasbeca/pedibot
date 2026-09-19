@@ -1,0 +1,532 @@
+# Los nombres de las vacunas, en las ocho lenguas del sitio (20-sep-2026).
+#
+# El problema que resuelve: el almacén de la OMS da los nombres en inglés, y 58 de los 66
+# calendarios salen de ahí. Un padre marroquí preguntando en árabe leía «Polio, oral (OPV)» y
+# «Vitamin A (a supplement, not a vaccine)» dentro de una respuesta en su idioma. Son justo los
+# países a los que va dirigido esto.
+#
+# **La regla de la que sale todo lo demás: la SIGLA no se traduce.** BCG, OPV, IPV, MMR, DTP,
+# HPV y Hib es lo que está impreso en la cartilla de papel de la madre, en Nairobi y en Sevilla,
+# y es lo que le van a decir en el centro de salud. Traducir la sigla sería alejar el texto del
+# papel que tiene en la mano. Lo que se traduce es lo que la explica: «oral», «inactivada»,
+# «pentavalente», «un suplemento, no una vacuna», «sólo niñas».
+#
+# Lo que NO está aquí se queda como está, y eso es a propósito: los ocho calendarios transcritos
+# a mano del documento nacional —España, Portugal, Brasil, Reino Unido, EE. UU., Francia,
+# Alemania e India— usan las palabras del propio ministerio, y ésas mandan sobre cualquier
+# traducción que yo pueda hacer.
+#
+# **Pendiente de revisión por hablantes nativos**, sobre todo el árabe y el hindi. Está en la
+# partida de 15.000 $ del plan de financiación, y hasta que ocurra esto es lo mejor que hay, no
+# lo definitivo. Si alguien ve un error, `pedibot.ai@gmail.com`.
+
+names:
+  "BCG (tuberculosis)":
+    en: "BCG (tuberculosis)"
+    es: "BCG (tuberculosis)"
+    fr: "BCG (tuberculose)"
+    de: "BCG (Tuberkulose)"
+    ru: "БЦЖ (туберкулёз)"
+    ar: "BCG (السل)"
+    pt: "BCG (tuberculose)"
+    hi: "BCG (टीबी)"
+
+  "Polio, oral (OPV)":
+    en: "Polio, oral (OPV)"
+    es: "Polio oral (OPV)"
+    fr: "Polio oral (VPO)"
+    de: "Polio, oral (OPV)"
+    ru: "Полиомиелит, оральная (ОПВ)"
+    ar: "شلل الأطفال، فموي (OPV)"
+    pt: "Poliomielite oral (VOP)"
+    hi: "पोलियो, मुँह से (OPV)"
+
+  "Polio, inactivated (IPV)":
+    en: "Polio, inactivated (IPV)"
+    es: "Polio inyectable (VPI)"
+    fr: "Polio injectable (VPI)"
+    de: "Polio, inaktiviert (IPV)"
+    ru: "Полиомиелит, инактивированная (ИПВ)"
+    ar: "شلل الأطفال، معطّل (IPV)"
+    pt: "Poliomielite inativada (VIP)"
+    hi: "पोलियो, इंजेक्शन (IPV)"
+
+  "Hepatitis B":
+    en: "Hepatitis B"
+    es: "Hepatitis B"
+    fr: "Hépatite B"
+    de: "Hepatitis B"
+    ru: "Гепатит B"
+    ar: "التهاب الكبد B"
+    pt: "Hepatite B"
+    hi: "हेपेटाइटिस बी"
+
+  "Hepatitis A":
+    en: "Hepatitis A"
+    es: "Hepatitis A"
+    fr: "Hépatite A"
+    de: "Hepatitis A"
+    ru: "Гепатит A"
+    ar: "التهاب الكبد A"
+    pt: "Hepatite A"
+    hi: "हेपेटाइटिस ए"
+
+  "Measles":
+    en: "Measles"
+    es: "Sarampión"
+    fr: "Rougeole"
+    de: "Masern"
+    ru: "Корь"
+    ar: "الحصبة"
+    pt: "Sarampo"
+    hi: "खसरा"
+
+  "MR (measles, rubella)":
+    en: "MR (measles, rubella)"
+    es: "SR (sarampión, rubéola)"
+    fr: "RR (rougeole, rubéole)"
+    de: "MR (Masern, Röteln)"
+    ru: "КК (корь, краснуха)"
+    ar: "MR (الحصبة والحصبة الألمانية)"
+    pt: "SR (sarampo, rubéola)"
+    hi: "MR (खसरा, रूबेला)"
+
+  "MMR (measles, mumps, rubella)":
+    en: "MMR (measles, mumps, rubella)"
+    es: "Triple vírica (sarampión, paperas, rubéola)"
+    fr: "ROR (rougeole, oreillons, rubéole)"
+    de: "MMR (Masern, Mumps, Röteln)"
+    ru: "КПК (корь, паротит, краснуха)"
+    ar: "MMR (الحصبة والنكاف والحصبة الألمانية)"
+    pt: "Tríplice viral (sarampo, papeira, rubéola)"
+    hi: "MMR (खसरा, कण्ठमाला, रूबेला)"
+
+  "Varicella (chickenpox)":
+    en: "Varicella (chickenpox)"
+    es: "Varicela"
+    fr: "Varicelle"
+    de: "Varizellen (Windpocken)"
+    ru: "Ветряная оспа"
+    ar: "الجدري المائي"
+    pt: "Varicela"
+    hi: "चिकनपॉक्स"
+
+  "Rotavirus, 2-dose course":
+    en: "Rotavirus, 2-dose course"
+    es: "Rotavirus (pauta de 2 dosis)"
+    fr: "Rotavirus (schéma à 2 doses)"
+    de: "Rotaviren (2-Dosen-Schema)"
+    ru: "Ротавирус (курс из 2 доз)"
+    ar: "الروتا (جرعتان)"
+    pt: "Rotavírus (esquema de 2 doses)"
+    hi: "रोटावायरस (2 खुराक)"
+
+  "Rotavirus, 3-dose course":
+    en: "Rotavirus, 3-dose course"
+    es: "Rotavirus (pauta de 3 dosis)"
+    fr: "Rotavirus (schéma à 3 doses)"
+    de: "Rotaviren (3-Dosen-Schema)"
+    ru: "Ротавирус (курс из 3 доз)"
+    ar: "الروتا (ثلاث جرعات)"
+    pt: "Rotavírus (esquema de 3 doses)"
+    hi: "रोटावायरस (3 खुराक)"
+
+  "DTwP-Hib-HepB (pentavalent)":
+    en: "DTwP-Hib-HepB (pentavalent)"
+    es: "DTPw-Hib-HepB (pentavalente)"
+    fr: "DTC-Hib-HepB (pentavalent)"
+    de: "DTwP-Hib-HepB (Fünffachimpfstoff)"
+    ru: "АКДС-Hib-ГепB (пятивалентная)"
+    ar: "DTwP-Hib-HepB (اللقاح الخماسي)"
+    pt: "DTPw-Hib-HepB (pentavalente)"
+    hi: "DTwP-Hib-HepB (पेंटावैलेंट)"
+
+  "DTaP-Hib-HepB (pentavalent)":
+    en: "DTaP-Hib-HepB (pentavalent)"
+    es: "DTPa-Hib-HepB (pentavalente)"
+    fr: "DTCa-Hib-HepB (pentavalent)"
+    de: "DTaP-Hib-HepB (Fünffachimpfstoff)"
+    ru: "АаКДС-Hib-ГепB (пятивалентная)"
+    ar: "DTaP-Hib-HepB (اللقاح الخماسي)"
+    pt: "DTPa-Hib-HepB (pentavalente)"
+    hi: "DTaP-Hib-HepB (पेंटावैलेंट)"
+
+  "DTaP-Hib-HepB-IPV (hexavalent)":
+    en: "DTaP-Hib-HepB-IPV (hexavalent)"
+    es: "DTPa-Hib-HepB-VPI (hexavalente)"
+    fr: "DTCa-Hib-HepB-VPI (hexavalent)"
+    de: "DTaP-Hib-HepB-IPV (Sechsfachimpfstoff)"
+    ru: "АаКДС-Hib-ГепB-ИПВ (шестивалентная)"
+    ar: "DTaP-Hib-HepB-IPV (اللقاح السداسي)"
+    pt: "DTPa-Hib-HepB-VIP (hexavalente)"
+    hi: "DTaP-Hib-HepB-IPV (हेक्सावैलेंट)"
+
+  "DTwP-Hib-HepB-IPV (hexavalent)":
+    en: "DTwP-Hib-HepB-IPV (hexavalent)"
+    es: "DTPw-Hib-HepB-VPI (hexavalente)"
+    fr: "DTC-Hib-HepB-VPI (hexavalent)"
+    de: "DTwP-Hib-HepB-IPV (Sechsfachimpfstoff)"
+    ru: "АКДС-Hib-ГепB-ИПВ (шестивалентная)"
+    ar: "DTwP-Hib-HepB-IPV (اللقاح السداسي)"
+    pt: "DTPw-Hib-HepB-VIP (hexavalente)"
+    hi: "DTwP-Hib-HepB-IPV (हेक्सावैलेंट)"
+
+  "DTwP (diphtheria, tetanus, pertussis)":
+    en: "DTwP (diphtheria, tetanus, pertussis)"
+    es: "DTPw (difteria, tétanos, tosferina)"
+    fr: "DTC (diphtérie, tétanos, coqueluche)"
+    de: "DTwP (Diphtherie, Tetanus, Keuchhusten)"
+    ru: "АКДС (дифтерия, столбняк, коклюш)"
+    ar: "DTwP (الخناق والكزاز والسعال الديكي)"
+    pt: "DTPw (difteria, tétano, tosse convulsa)"
+    hi: "DTwP (डिप्थीरिया, टिटनेस, काली खाँसी)"
+
+  "DTaP (diphtheria, tetanus, pertussis)":
+    en: "DTaP (diphtheria, tetanus, pertussis)"
+    es: "DTPa (difteria, tétanos, tosferina)"
+    fr: "DTCa (diphtérie, tétanos, coqueluche)"
+    de: "DTaP (Diphtherie, Tetanus, Keuchhusten)"
+    ru: "АаКДС (дифтерия, столбняк, коклюш)"
+    ar: "DTaP (الخناق والكزاز والسعال الديكي)"
+    pt: "DTPa (difteria, tétano, tosse convulsa)"
+    hi: "DTaP (डिप्थीरिया, टिटनेस, काली खाँसी)"
+
+  "DT (diphtheria, tetanus, children's dose)":
+    en: "DT (diphtheria, tetanus, children's dose)"
+    es: "DT (difteria, tétanos, dosis infantil)"
+    fr: "DT (diphtérie, tétanos, dose pédiatrique)"
+    de: "DT (Diphtherie, Tetanus, Kinderdosis)"
+    ru: "АДС (дифтерия, столбняк, детская доза)"
+    ar: "DT (الخناق والكزاز، جرعة الأطفال)"
+    pt: "DT (difteria, tétano, dose infantil)"
+    hi: "DT (डिप्थीरिया, टिटनेस, बच्चों की ख़ुराक)"
+
+  "Td booster (tetanus, diphtheria)":
+    en: "Td booster (tetanus, diphtheria)"
+    es: "Td de recuerdo (tétanos, difteria)"
+    fr: "Rappel dT (tétanos, diphtérie)"
+    de: "Td-Auffrischung (Tetanus, Diphtherie)"
+    ru: "АДС-М, ревакцинация (столбняк, дифтерия)"
+    ar: "جرعة Td المعزّزة (الكزاز والخناق)"
+    pt: "Reforço Td (tétano, difteria)"
+    hi: "Td बूस्टर (टिटनेस, डिप्थीरिया)"
+
+  "Tdap booster (tetanus, diphtheria, pertussis)":
+    en: "Tdap booster (tetanus, diphtheria, pertussis)"
+    es: "dTpa de recuerdo (tétanos, difteria, tosferina)"
+    fr: "Rappel dTca (tétanos, diphtérie, coqueluche)"
+    de: "Tdap-Auffrischung (Tetanus, Diphtherie, Keuchhusten)"
+    ru: "АаКДС-М, ревакцинация (столбняк, дифтерия, коклюш)"
+    ar: "جرعة Tdap المعزّزة (الكزاز والخناق والسعال الديكي)"
+    pt: "Reforço Tdpa (tétano, difteria, tosse convulsa)"
+    hi: "Tdap बूस्टर (टिटनेस, डिप्थीरिया, काली खाँसी)"
+
+  "Tdap-IPV booster":
+    en: "Tdap-IPV booster"
+    es: "dTpa-VPI de recuerdo"
+    fr: "Rappel dTca-VPI"
+    de: "Tdap-IPV-Auffrischung"
+    ru: "АаКДС-М-ИПВ, ревакцинация"
+    ar: "جرعة Tdap-IPV المعزّزة"
+    pt: "Reforço Tdpa-VIP"
+    hi: "Tdap-IPV बूस्टर"
+
+  "Hib":
+    en: "Hib"
+    es: "Hib (Haemophilus influenzae b)"
+    fr: "Hib (Haemophilus influenzae b)"
+    de: "Hib (Haemophilus influenzae b)"
+    ru: "Hib (гемофильная инфекция типа b)"
+    ar: "Hib (المستدمية النزلية ب)"
+    pt: "Hib (Haemophilus influenzae b)"
+    hi: "Hib (हीमोफ़िलस इन्फ़्लुएंज़ा बी)"
+
+  "Pneumococcal conjugate, 10-valent":
+    en: "Pneumococcal conjugate, 10-valent"
+    es: "Neumococo conjugada, 10-valente"
+    fr: "Pneumocoque conjugué, 10-valent"
+    de: "Pneumokokken-Konjugat, 10-valent"
+    ru: "Пневмококковая конъюгированная, 10-валентная"
+    ar: "المكورات الرئوية المقترنة، عشارية التكافؤ"
+    pt: "Pneumocócica conjugada, 10-valente"
+    hi: "न्यूमोकोकल कॉन्जुगेट, 10-वैलेंट"
+
+  "Pneumococcal conjugate, 13-valent":
+    en: "Pneumococcal conjugate, 13-valent"
+    es: "Neumococo conjugada, 13-valente"
+    fr: "Pneumocoque conjugué, 13-valent"
+    de: "Pneumokokken-Konjugat, 13-valent"
+    ru: "Пневмококковая конъюгированная, 13-валентная"
+    ar: "المكورات الرئوية المقترنة، ثلاثية عشرية التكافؤ"
+    pt: "Pneumocócica conjugada, 13-valente"
+    hi: "न्यूमोकोकल कॉन्जुगेट, 13-वैलेंट"
+
+  "Pneumococcal conjugate, 15-valent":
+    en: "Pneumococcal conjugate, 15-valent"
+    es: "Neumococo conjugada, 15-valente"
+    fr: "Pneumocoque conjugué, 15-valent"
+    de: "Pneumokokken-Konjugat, 15-valent"
+    ru: "Пневмококковая конъюгированная, 15-валентная"
+    ar: "المكورات الرئوية المقترنة، خماسية عشرية التكافؤ"
+    pt: "Pneumocócica conjugada, 15-valente"
+    hi: "न्यूमोकोकल कॉन्जुगेट, 15-वैलेंट"
+
+  "Pneumococcal conjugate, 20-valent":
+    en: "Pneumococcal conjugate, 20-valent"
+    es: "Neumococo conjugada, 20-valente"
+    fr: "Pneumocoque conjugué, 20-valent"
+    de: "Pneumokokken-Konjugat, 20-valent"
+    ru: "Пневмококковая конъюгированная, 20-валентная"
+    ar: "المكورات الرئوية المقترنة، عشرينية التكافؤ"
+    pt: "Pneumocócica conjugada, 20-valente"
+    hi: "न्यूमोकोकल कॉन्जुगेट, 20-वैलेंट"
+
+  "Meningococcal A, conjugate":
+    en: "Meningococcal A, conjugate"
+    es: "Meningococo A conjugada"
+    fr: "Méningocoque A conjugué"
+    de: "Meningokokken A, konjugiert"
+    ru: "Менингококковая A, конъюгированная"
+    ar: "المكورات السحائية A المقترنة"
+    pt: "Meningocócica A conjugada"
+    hi: "मेनिंगोकोकल A कॉन्जुगेट"
+
+  "Meningococcal ACWY, conjugate":
+    en: "Meningococcal ACWY, conjugate"
+    es: "Meningococo ACWY conjugada"
+    fr: "Méningocoque ACWY conjugué"
+    de: "Meningokokken ACWY, konjugiert"
+    ru: "Менингококковая ACWY, конъюгированная"
+    ar: "المكورات السحائية ACWY المقترنة"
+    pt: "Meningocócica ACWY conjugada"
+    hi: "मेनिंगोकोकल ACWY कॉन्जुगेट"
+
+  "Meningococcal AC, polysaccharide":
+    en: "Meningococcal AC, polysaccharide"
+    es: "Meningococo AC de polisacáridos"
+    fr: "Méningocoque AC polyosidique"
+    de: "Meningokokken AC, Polysaccharid"
+    ru: "Менингококковая AC, полисахаридная"
+    ar: "المكورات السحائية AC عديدة السكاريد"
+    pt: "Meningocócica AC polissacarídica"
+    hi: "मेनिंगोकोकल AC पॉलीसैकराइड"
+
+  "HPV, 2-valent (girls)":
+    en: "HPV, 2-valent (girls)"
+    es: "VPH bivalente (niñas)"
+    fr: "HPV bivalent (filles)"
+    de: "HPV, 2-valent (Mädchen)"
+    ru: "ВПЧ, двухвалентная (девочки)"
+    ar: "فيروس الورم الحليمي، ثنائي التكافؤ (للفتيات)"
+    pt: "HPV bivalente (raparigas)"
+    hi: "HPV, 2-वैलेंट (लड़कियाँ)"
+
+  "HPV, 4-valent (girls)":
+    en: "HPV, 4-valent (girls)"
+    es: "VPH tetravalente (niñas)"
+    fr: "HPV quadrivalent (filles)"
+    de: "HPV, 4-valent (Mädchen)"
+    ru: "ВПЧ, четырёхвалентная (девочки)"
+    ar: "فيروس الورم الحليمي، رباعي التكافؤ (للفتيات)"
+    pt: "HPV quadrivalente (raparigas)"
+    hi: "HPV, 4-वैलेंट (लड़कियाँ)"
+
+  "HPV, 4-valent":
+    en: "HPV, 4-valent"
+    es: "VPH tetravalente"
+    fr: "HPV quadrivalent"
+    de: "HPV, 4-valent"
+    ru: "ВПЧ, четырёхвалентная"
+    ar: "فيروس الورم الحليمي، رباعي التكافؤ"
+    pt: "HPV quadrivalente"
+    hi: "HPV, 4-वैलेंट"
+
+  "HPV, 9-valent":
+    en: "HPV, 9-valent"
+    es: "VPH nonavalente"
+    fr: "HPV nonavalent"
+    de: "HPV, 9-valent"
+    ru: "ВПЧ, девятивалентная"
+    ar: "فيروس الورم الحليمي، تساعي التكافؤ"
+    pt: "HPV nonavalente"
+    hi: "HPV, 9-वैलेंट"
+
+  "Seasonal influenza":
+    en: "Seasonal influenza"
+    es: "Gripe estacional"
+    fr: "Grippe saisonnière"
+    de: "Saisonale Grippe"
+    ru: "Сезонный грипп"
+    ar: "الإنفلونزا الموسمية"
+    pt: "Gripe sazonal"
+    hi: "मौसमी फ़्लू"
+
+  "Typhoid, conjugate":
+    en: "Typhoid, conjugate"
+    es: "Fiebre tifoidea conjugada"
+    fr: "Typhoïde conjugué"
+    de: "Typhus, konjugiert"
+    ru: "Брюшной тиф, конъюгированная"
+    ar: "التيفوئيد المقترن"
+    pt: "Febre tifoide conjugada"
+    hi: "टाइफ़ाइड कॉन्जुगेट"
+
+  "Malaria (RTS,S / R21)":
+    en: "Malaria (RTS,S / R21)"
+    es: "Malaria (RTS,S / R21)"
+    fr: "Paludisme (RTS,S / R21)"
+    de: "Malaria (RTS,S / R21)"
+    ru: "Малярия (RTS,S / R21)"
+    ar: "الملاريا (RTS,S / R21)"
+    pt: "Malária (RTS,S / R21)"
+    hi: "मलेरिया (RTS,S / R21)"
+
+  "Vitamin A (a supplement, not a vaccine)":
+    en: "Vitamin A (a supplement, not a vaccine)"
+    es: "Vitamina A (un suplemento, no una vacuna)"
+    fr: "Vitamine A (un complément, pas un vaccin)"
+    de: "Vitamin A (ein Präparat, kein Impfstoff)"
+    ru: "Витамин A (добавка, а не вакцина)"
+    ar: "فيتامين أ (مكمّل غذائي، وليس لقاحا)"
+    pt: "Vitamina A (um suplemento, não uma vacina)"
+    hi: "विटामिन ए (पूरक, टीका नहीं)"
+
+  "Tetanus & adult Diphtheria (Td)":
+    en: "Tetanus & adult Diphtheria (Td)"
+    es: "Tétanos y difteria de adulto (Td)"
+    fr: "Tétanos et diphtérie adulte (dT)"
+    de: "Tetanus und Diphtherie für Erwachsene (Td)"
+    ru: "Столбняк и дифтерия для взрослых (АДС-М)"
+    ar: "الكزاز والخناق للبالغين (Td)"
+    pt: "Tétano e difteria do adulto (Td)"
+    hi: "टिटनेस और वयस्क डिप्थीरिया (Td)"
+
+  "DTaP-IPV":
+    en: "DTaP-IPV"
+    es: "DTPa-VPI"
+    fr: "DTCa-VPI"
+    de: "DTaP-IPV"
+    ru: "АаКДС-ИПВ"
+    ar: "DTaP-IPV"
+    pt: "DTPa-VIP"
+    hi: "DTaP-IPV"
+
+  "DTaP-Hib-IPV (pentavalent)":
+    en: "DTaP-Hib-IPV (pentavalent)"
+    es: "DTPa-Hib-VPI (pentavalente)"
+    fr: "DTCa-Hib-VPI (pentavalent)"
+    de: "DTaP-Hib-IPV (Fünffachimpfstoff)"
+    ru: "АаКДС-Hib-ИПВ (пятивалентная)"
+    ar: "DTaP-Hib-IPV (اللقاح الخماسي)"
+    pt: "DTPa-Hib-VIP (pentavalente)"
+    hi: "DTaP-Hib-IPV (पेंटावैलेंट)"
+
+# Las coletillas que el generador de la OMS añade a un nombre. Se traducen aparte porque se
+# pegan a cualquiera de los de arriba, y repetirlas en cada entrada sería copiar cuarenta veces
+# la misma frase y equivocarse en una.
+suffixes:
+  " (some regions only)":
+    en: " (some regions only)"
+    es: " (sólo en algunas regiones)"
+    fr: " (certaines régions seulement)"
+    de: " (nur in einigen Regionen)"
+    ru: " (только в некоторых регионах)"
+    ar: " (في بعض المناطق فقط)"
+    pt: " (apenas em algumas regiões)"
+    hi: " (केवल कुछ क्षेत्रों में)"
+
+# La palabra que une dos productos que son alternativas para un mismo pinchazo.
+or_word:
+  en: " or "
+  es: " o "
+  fr: " ou "
+  de: " oder "
+  ru: " или "
+  ar: " أو "
+  pt: " ou "
+  hi: " या "
+
+# «— 2nd dose 1 months later». El número va donde diga {n} y la unidad se elige por el idioma.
+second_dose:
+  en: " — 2nd dose {n} {unit} later"
+  es: " — 2.ª dosis {n} {unit} después"
+  fr: " — 2ᵉ dose {n} {unit} plus tard"
+  de: " — 2. Dosis {n} {unit} später"
+  ru: " — 2-я доза через {n} {unit}"
+  ar: " — الجرعة الثانية بعد {n} {unit}"
+  pt: " — 2.ª dose {n} {unit} depois"
+  hi: " — दूसरी ख़ुराक {n} {unit} बाद"
+
+units:
+  months:
+    en: "months"
+    es: "meses"
+    fr: "mois"
+    de: "Monate"
+    ru: "месяца"
+    ar: "أشهر"
+    pt: "meses"
+    hi: "महीने"
+  years:
+    en: "years"
+    es: "años"
+    fr: "ans"
+    de: "Jahre"
+    ru: "года"
+    ar: "سنوات"
+    pt: "anos"
+    hi: "साल"
+  weeks:
+    en: "weeks"
+    es: "semanas"
+    fr: "semaines"
+    de: "Wochen"
+    ru: "недели"
+    ar: "أسابيع"
+    pt: "semanas"
+    hi: "हफ़्ते"
+
+# El singular, porque «2.ª dosis 1 meses después» se lee como un error y lo es. Se usa cuando el
+# número es exactamente uno; las lenguas con más formas que dos (el ruso, el árabe) se quedan
+# cortas aquí y están en la lista de lo que tiene que revisar un hablante nativo.
+units_one:
+  months:
+    en: "month"
+    es: "mes"
+    fr: "mois"
+    de: "Monat"
+    ru: "месяц"
+    ar: "شهر"
+    pt: "mês"
+    hi: "महीना"
+  years:
+    en: "year"
+    es: "año"
+    fr: "an"
+    de: "Jahr"
+    ru: "год"
+    ar: "سنة"
+    pt: "ano"
+    hi: "साल"
+  weeks:
+    en: "week"
+    es: "semana"
+    fr: "semaine"
+    de: "Woche"
+    ru: "неделю"
+    ar: "أسبوع"
+    pt: "semana"
+    hi: "हफ़्ता"
+
+# La coma que separa dos vacunas de la misma visita. El árabe tiene la suya —«،», U+060C— y
+# verla latina en mitad de un texto de derecha a izquierda es como leer castellano con un punto
+# japonés: no impide entender, pero dice que el texto no se escribió para ti.
+list_sep:
+  en: ", "
+  es: ", "
+  fr: ", "
+  de: ", "
+  ru: ", "
+  ar: "، "
+  pt: ", "
+  hi: ", "

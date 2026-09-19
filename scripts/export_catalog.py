@@ -104,6 +104,45 @@ target4.write_text(json.dumps(vraw, ensure_ascii=False, indent=1), encoding="utf
 print(f"{len(vraw)} vaccine schedules → {target4}")
 
 
+# nombres de vacuna traducidos → web/site/src/data/vaccine_names.json
+#
+# El sitio pinta dos tablas con el JSON crudo de `vaccines.yaml` (la herramienta de vacunas y la
+# página de cada país), y ahí los nombres llegan tal cual vienen: en inglés para los 58
+# calendarios que salen del almacén de la OMS. La ficha del hijo no tiene este problema porque
+# la sirve la API, que ya pasa por `Vaccines.schedule()`.
+#
+# Se exporta una tabla de CONSULTA —nombre publicado → {idioma: traducción}— en vez de portar la
+# lógica a JavaScript. Dos implementaciones del mismo cálculo se separan sin que nadie lo vea, y
+# esta vez lo que se separaría es lo que un padre lee sobre una vacuna.
+#
+# Sólo se guardan los idiomas en los que el nombre CAMBIA, que deja la tabla en un tercio.
+from pedibot.bot.vaccine_names import list_separator, localise  # noqa: E402
+
+IDIOMAS_SITIO = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
+nombres_vac: dict[str, dict[str, str]] = {}
+for _pais in vraw.values():
+    for _slot in _pais["schedule"]:
+        for _n in _slot["vaccines"]:
+            _n = str(_n)
+            if _n in nombres_vac:
+                continue
+            traducciones = {lg: localise(_n, lg) for lg in IDIOMAS_SITIO}
+            distintas = {lg: v for lg, v in traducciones.items() if v != _n}
+            if distintas:
+                nombres_vac[_n] = distintas
+target_vn = ROOT / "web" / "site" / "src" / "data" / "vaccine_names.json"
+target_vn.write_text(
+    json.dumps(
+        {"names": nombres_vac, "sep": {lg: list_separator(lg) for lg in IDIOMAS_SITIO}},
+        ensure_ascii=False,
+        indent=1,
+    )
+    + chr(10),
+    encoding="utf-8",
+)
+print(f"{len(nombres_vac)} nombres de vacuna traducidos → {target_vn}")
+
+
 # tablas de crecimiento por país → web/site/src/data/growth_charts.json (páginas /growth/{país})
 graw = yaml.safe_load((ROOT / "config" / "growth_charts.yaml").read_text(encoding="utf-8"))[
     "countries"

@@ -1,5 +1,6 @@
 ---
 import vax from '../data/vaccines.json';
+import vaxNames from '../data/vaccine_names.json';
 import { t, type Lang } from '../i18n';
 import { countryOptions } from '../countries';
 interface Props { lang: Lang }
@@ -11,7 +12,7 @@ const T = s.vax;
 const countries = countryOptions(Object.keys(vax as any), lang);
 const ages = s.vax_ages;
 ---
-<div class="vax" data-lang={lang} data-t={JSON.stringify(T)} data-vax={JSON.stringify(vax)}>
+<div class="vax" data-lang={lang} data-t={JSON.stringify(T)} data-vax={JSON.stringify(vax)} data-nombres={JSON.stringify(vaxNames)}>
   <h1>{T.h}</h1>
   <p class="lede">{T.p}</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-top:20px">
@@ -32,18 +33,23 @@ const ages = s.vax_ages;
 <script>
   const box = document.querySelector('.vax') as HTMLElement; const T = JSON.parse(box.dataset.t || '{}'); const V = JSON.parse(box.dataset.vax || '{}'); const lang = box.dataset.lang || 'en';
   const out = document.getElementById('vx-out')!, cSel = document.getElementById('vx-country') as HTMLSelectElement, aSel = document.getElementById('vx-age') as HTMLSelectElement;
+  // El nombre de la vacuna en el idioma de la página. Lo que no está en la tabla sale tal cual,
+  // que son los calendarios transcritos a mano del documento del propio ministerio.
+  const NOMBRES = JSON.parse(box.dataset.nombres || '{}');
+  const nombre = (v: string) => (NOMBRES.names?.[v]?.[lang]) ?? v;
+  const sep = NOMBRES.sep?.[lang] ?? ', ';
   const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
   function render() {
     const c = V[cSel.value]; const age = aSel.value === '' ? null : Number(aSel.value);
     const tol = age !== null && age < 24 ? 1.5 : 6;
     const rows = c.schedule.map((s: any) => {
       const due = age !== null && ((!s.every_year && Math.abs(s.age - age) <= tol) || (s.every_year && s.age <= age));
-      return `<tr class="${due ? 'due' : ''}"><td>${esc(s.label[lang])}</td><td>${s.vaccines.map(esc).join(', ')}</td></tr>`;
+      return `<tr class="${due ? 'due' : ''}"><td>${esc(s.label[lang])}</td><td>${s.vaccines.map((v: string) => esc(nombre(v))).join(sep)}</td></tr>`;
     }).join('');
     let head = '';
     if (age !== null) {
       const due = c.schedule.filter((s: any) => (!s.every_year && Math.abs(s.age - age) <= tol) || (s.every_year && s.age <= age));
-      head = due.length ? `<p><b>${T.due}:</b> ${due.map((s: any) => esc(s.label[lang]) + ' — ' + s.vaccines.map(esc).join(', ')).join(' · ')}</p>` : `<p>${T.none}</p>`;
+      head = due.length ? `<p><b>${T.due}:</b> ${due.map((s: any) => esc(s.label[lang]) + ' — ' + s.vaccines.map((v: string) => esc(nombre(v))).join(sep)).join(' · ')}</p>` : `<p>${T.none}</p>`;
     }
     out.innerHTML = head + `<p class="eyebrow" style="margin-top:10px">${T.full}</p><table>${rows}</table><p class="src">${T.src}: ${esc(c.source)}. ${esc(c.note[lang])}</p>`;
   }

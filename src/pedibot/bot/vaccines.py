@@ -9,6 +9,7 @@ from pathlib import Path
 import yaml
 
 from pedibot.bot.strings import data_lang, tool_strings
+from pedibot.bot.vaccine_names import list_separator, localise
 
 #: "Is this about vaccines?" — the gate to the vaccination tables, which are the most visited
 #: pages on the site. It knew Spanish, English and French, so German, Russian, Arabic, Hindi and
@@ -658,12 +659,23 @@ class Vaccines:
         return c if c in self.raw else None
 
     def schedule(self, country: str, lang: str = "en") -> list[Slot]:
+        """El calendario de ese país, con los nombres en el idioma del que pregunta.
+
+        La traducción se hace AQUÍ y no en cada pantalla a propósito: por debajo de esta función
+        pasan el chat, la cartilla del hijo, el `.ics` del calendario del teléfono y el JSON que
+        alimenta la web. Traducir en cuatro sitios es tener cuatro sitios donde se olvida
+        (20-sep-2026: 58 de los 66 calendarios vienen en inglés del almacén de la OMS, y un padre
+        marroquí leía «Vitamin A (a supplement, not a vaccine)» dentro de su respuesta en árabe).
+        """
         out = []
         for s in self.raw[country]["schedule"]:
             lg = data_lang(s["label"], lang)
             out.append(
                 Slot(
-                    float(s["age"]), s["label"][lg], list(s["vaccines"]), bool(s.get("every_year"))
+                    float(s["age"]),
+                    s["label"][lg],
+                    [localise(str(n), lang) for n in s["vaccines"]],
+                    bool(s.get("every_year")),
                 )
             )
         return sorted(out, key=lambda x: x.age_months)
@@ -695,12 +707,13 @@ def is_vaccine_question(text: str) -> bool:
 
 def format_answer(v: Vaccines, country: str, age_months: float | None, lang: str = "en") -> str:
     T = tool_strings(lang)
+    sep = list_separator(lang)
     m = v.meta(country, lang)
     if age_months is None:
         sched = v.schedule(country, lang)
         lines = [f"{m['name']}:"]
         for s in sched:
-            lines.append(f"• {s.label}: " + ", ".join(s.vaccines))
+            lines.append(f"• {s.label}: " + sep.join(s.vaccines))
         lines.append(T["vax_source"] + m["source"] + ". " + m["note"])
         return "\n".join(lines)
     due, nxt = v.at_age(country, age_months, lang)
@@ -708,10 +721,10 @@ def format_answer(v: Vaccines, country: str, age_months: float | None, lang: str
     if due:
         lines.append(T["vax_due"])
         for s in due:
-            lines.append(f"• {s.label}: " + ", ".join(s.vaccines))
+            lines.append(f"• {s.label}: " + sep.join(s.vaccines))
     else:
         lines.append(T["vax_none"])
     if nxt:
-        lines.append(T["vax_next"].format(label=nxt.label) + ", ".join(nxt.vaccines))
+        lines.append(T["vax_next"].format(label=nxt.label) + sep.join(nxt.vaccines))
     lines.append(T["vax_source"] + m["source"] + ". " + m["note"])
     return "\n".join(lines)

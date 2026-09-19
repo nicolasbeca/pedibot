@@ -873,3 +873,29 @@ Lo que se aprende no es «cuidado con Sudán». Es que **una tabla que funciona 
 no está validada para el veintiuno**, porque lo que decide no es la tabla, es cómo suena ese
 nombre en las otras siete lenguas del sitio. Cada nombre nuevo se mide contra el corpus antes de
 entrar, y el que no pasa baja a la tabla de frontera de palabra. Nunca se quita el país.
+
+## L200 · Un dato importado trae el idioma de quien lo publicó, no el de quien lo lee (20-sep-2026)
+
+58 de los 66 calendarios de vacunas salen del almacén público de la OMS, que los da en inglés.
+Durante días, un padre marroquí preguntando en árabe recibía su calendario correcto, de su país,
+con su fuente oficial… y dentro, «Polio, oral (OPV)» y «Vitamin A (a supplement, not a vaccine)».
+Todo bien menos lo único que iba a leer.
+
+No falló nada. Ése es el punto: **importar un dato es importar también el idioma en que está
+escrito**, y eso no da error, no rompe ninguna prueba y no se ve desde el fichero de
+configuración, porque ahí el inglés parece tan neutro como una fecha.
+
+Tres decisiones al arreglarlo, y las tres se pueden discutir:
+
+1. **La sigla no desaparece, pero sí se escribe como la imprime ese país.** El inglés dice IPV,
+   España VPI, Portugal VIP y Rusia ИПВ. Son la misma vacuna vista desde la cartilla de papel que
+   la madre tiene en la mano, y ese papel manda sobre cualquier criterio de traducción.
+2. **Lo que no está en la tabla sale intacto.** Los ocho calendarios transcritos a mano del
+   documento nacional usan las palabras del propio ministerio, y no se tocan.
+3. **La traducción vive en `Vaccines.schedule()`**, por donde pasan el chat, la cartilla del
+   hijo, el `.ics` y el JSON del sitio. Traducir en cada pantalla es tener cuatro sitios donde se
+   olvida; y el sitio, que lee el JSON crudo, recibe una tabla de consulta calculada en Python en
+   vez de una segunda implementación en JavaScript.
+
+Y la coma. En árabe es «،», no «,». No impide entender nada y dice, en cada línea, que el texto
+no se escribió para quien lo está leyendo.

@@ -982,8 +982,10 @@ class Engine:
         # peso, y la tabla en el mismo servidor. Hacen falta las tres cosas: sin SEXO no hay curva
         # (la de una niña no es la de un niño) y sin edad no hay fila que mirar. Y la pregunta
         # tiene que ser de crecimiento: «pesa 7 kg y tiene fiebre» no es un percentil.
-        if self.growth is not None and tr.level == "routine" and (
-            is_growth_question(context_text) or gives_both_measurements(query)
+        if (
+            self.growth is not None
+            and tr.level == "routine"
+            and (is_growth_question(context_text) or gives_both_measurements(query))
         ):
             # **El peso y la talla salen de UN SOLO mensaje.** Leyendo la conversación entera se
             # cruzaban los datos de dos niños, y eso lo vi dos veces probando contra lo vivo: «mi

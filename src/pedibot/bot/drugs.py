@@ -76,9 +76,7 @@ class DrugCatalog:
                 return key, None
             # El ruso declina: un padre escribe «сколько парацетамолА», no el nominativo suelto.
             # Por raíz, y solo contra nombres largos, que no pescan de más.
-            if any(
-                c.startswith(g) for c in candidatos for g in genericos if len(g) >= 8
-            ):
+            if any(c.startswith(g) for c in candidatos for g in genericos if len(g) >= 8):
                 return key, None
         for key, d in self.drugs.items():
             for b in d.brands:
