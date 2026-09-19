@@ -177,6 +177,28 @@ Y en lo operativo: la lista de despliegue (`ops/deploy.sh`) pasa a tener **dos d
 «desplegar» es el VPS; a partir de la app, desplegar es el VPS **y** decidir si eso pide una
 versión nueva en las tiendas. La columna de la tabla de arriba es esa decisión, escrita.
 
+## 4 ter. Lo que viene después y hay que tener en cuenta al construir: la ficha del niño
+
+Pedido por el operador el mismo 19-sep y anotado en `IDEAS.md` (I-16 a I-19): **darse de alta,
+en la web y en la app, para guardar los datos de cada hijo y llevar su curva de peso y talla**,
+de forma que el bot los use directamente en vez de preguntarlos cada vez.
+
+No se construye ahora, pero se nombra aquí por dos motivos que sí afectan a lo de arriba:
+
+1. **La fase 1 de esa idea es la misma pieza que D-A3.** Los recordatorios de vacunas necesitan
+   una fecha de nacimiento guardada en el aparato; la ficha del niño es esa misma fecha con tres
+   campos más y un historial de medidas. Si la F4 se construye pensando en la ficha y no en «una
+   fecha suelta para las notificaciones», la idea siguiente sale casi gratis.
+2. **La fase 2, la cuenta, cambia las dos fichas de tienda.** Hoy declaramos que no hay cuenta y
+   que no se piden datos personales. Con cuenta, entran datos de salud de un menor identificado
+   —categoría especial del RGPD— y hay que rehacer el formulario de *Data safety* de Google, la
+   etiqueta de privacidad de Apple y la página `/legal` en ocho idiomas. **Mejor saberlo antes de
+   rellenar los formularios que después.**
+
+La recomendación que está escrita en `IDEAS.md`: todo en el aparato primero, sin cuenta, que es
+el 90 % del valor sin tocar la promesa del proyecto; y la cuenta sólo para no perderlo al cambiar
+de teléfono, opcional y cifrada en el cliente.
+
 ## 5. Lo que hay que optimizar para el móvil
 
 La web es adaptable, pero adaptable no es lo mismo que pensada para un pulgar. Lo que revisaría,

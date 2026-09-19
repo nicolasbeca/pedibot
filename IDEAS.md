@@ -151,3 +151,67 @@ Virtuals tiene el **Agent Commerce Protocol (ACP)**: un mercado on-chain donde a
 **Lo que este lote NO incluye, a propósito**: nada de comprar enlaces, granjas de contenido ni
 directorios de pago. La lista «nunca hacer esto» de `CLAUDE.md` ya lo cubre para el token y vale
 igual aquí.
+
+## Lote del 19-sep-2026 — la ficha del niño: darse de alta y llevar su curva
+
+> Pedido por el operador el 19-sep: «quiero que puedas darte de alta tanto en web como en app
+> para guardar datos de tus hijos y que dé los datos directamente y puedas apuntar la curva de
+> crecimiento y peso». Anotado para decidirlo después; nada de esto está construido.
+
+### Qué sería
+
+Una **ficha por hijo** —nombre o mote, fecha de nacimiento, sexo, país— y un **historial de
+medidas** (peso, talla, perímetro craneal, con su fecha). Con eso:
+
+- el chat **deja de preguntar la edad y el peso**: los sabe, y la respuesta sale directa. Hoy hay
+  dos desplegables que el padre rellena en cada pregunta, y si no los toca, la respuesta pide la
+  edad que ya estaba escrita en la frase;
+- la **calculadora de dosis** deja de necesitar que se teclee el peso;
+- la curva de crecimiento deja de ser un punto suelto y pasa a ser **la línea de ese niño**: sus
+  medidas sobre las tablas de la OMS, que es justo lo que enseña la cartilla y lo que un padre
+  quiere comparar;
+- el **calendario de vacunas** se vuelve suyo: no «a los 4 meses toca», sino «el 12 de octubre
+  toca», que es lo que hace falta para los recordatorios de la app (D-A3 en `APP.md`).
+
+### La tensión, dicha antes que nada
+
+Hoy `/legal` promete esto, con estas palabras, en las ocho lenguas: **«No account, no name, no
+e-mail. We never ask for personal data and you should not type any.»** Y es medio argumento del
+proyecto: un sitio gratis que no pide nada y del que no hay nada que perder.
+
+Lo que el operador pide es **datos de salud de un menor identificado**, que en el RGPD es
+categoría especial (artículo 9) con el consentimiento del titular de la patria potestad, y que en
+las dos tiendas cambia las declaraciones de privacidad de arriba abajo (Apple 5.1.3, el
+formulario de *Data safety* de Google). No es un no: es que la forma de hacerlo decide si esto
+suma o si nos come.
+
+### Por dónde lo haría, en dos fases
+
+**Fase 1 — la ficha vive en el aparato, sin cuenta.** Es el 90 % del valor y no toca la promesa:
+lo que está en el teléfono no lo tenemos nosotros. El diario de síntomas (`pedibot_diary`) y el
+país ya funcionan así desde agosto, y esto es lo mismo con más campos. En la app es todavía mejor,
+porque es un fichero suyo y no un `localStorage` que el navegador borra cuando quiere. Coste
+medio: la ficha, el historial, la curva dibujada con las medidas encima y el enganche con el chat
+y con la calculadora. Extiende la I-13, que ya estaba anotada.
+
+**Fase 2 — cuenta, y sólo para lo que la fase 1 no puede: cambiar de teléfono sin perderlo.** Y
+ahí, tres condiciones que yo no me saltaría:
+
+1. **Opcional siempre.** Quien no quiera cuenta sigue usándolo entero. La portada no pide
+   registrarse.
+2. **Cifrado en el aparato**, de modo que el servidor guarde un bulto que no puede leer. Si
+   nosotros no podemos leer el peso de su hija, media conversación legal desaparece y la promesa
+   de `/legal` se puede reescribir sin mentir: «no podemos ver lo que guardas».
+3. **Exportar y borrar en un botón**, y borrar que borre de verdad.
+
+Lo que costaría de más: el alta (mejor con *passkey* o enlace por correo que con contraseña), la
+recuperación —que con cifrado de extremo a extremo es el problema difícil de verdad, porque
+perder la clave es perder los datos—, reescribir `/legal` en ocho idiomas, los dos formularios de
+tienda y una política de borrado. **Alto.**
+
+| Id | Idea | Estado |
+|---|---|---|
+| I-16 | **Ficha por hijo + historial de medidas, en el aparato** (extiende I-13): el chat y la calculadora dejan de preguntar edad y peso; la curva de crecimiento se dibuja con sus medidas | nueva (pedida por el operador 19-sep) |
+| I-17 | **Curva propia sobre las tablas de la OMS**: los puntos de ese niño a lo largo del tiempo, no un percentil suelto | nueva (19-sep) |
+| I-18 | **Calendario de vacunas con fechas reales** a partir de la fecha de nacimiento, y de ahí los recordatorios de la app (D-A3) | nueva (19-sep) |
+| I-19 | **Cuenta opcional para sincronizar entre aparatos**, cifrada en el cliente, con exportar y borrar | nueva (19-sep); decide el operador, cambia `/legal` y las dos fichas de tienda |
