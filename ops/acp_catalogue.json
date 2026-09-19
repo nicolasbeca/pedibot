@@ -459,7 +459,7 @@
       "name": "childhood_vaccination_schedule",
       "price": 0.01,
       "sla_minutes": 5,
-      "description": "The official childhood vaccination schedule of a country, for 61 countries: 13 transcribed from the national ministry, from Brazil to the Gulf, and 48 African ones from the WHO's immunization schedule database. Returns every age with the vaccines due and what each protects against, the issuing body, the source URL and the review date. With the child's age it also returns what is due now and what comes next. A transcribed table, not a recollection of one.",
+      "description": "The official childhood vaccination schedule of a country, for 66 countries: 8 transcribed by hand from the ministry's own document and 58 read from the WHO's immunization schedule database, which covers all of Africa and the Gulf. Returns every age with the vaccines due and what each protects against, the issuing body, the source URL and the review date. With the child's age it also returns what is due now and what comes next. A transcribed table, not a recollection of one.",
       "requirements": {
         "type": "object",
         "required": [

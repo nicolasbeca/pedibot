@@ -195,3 +195,60 @@ def test_guessing_the_password_gets_slower(tmp_path: pathlib.Path) -> None:
         json={"email": "madre@ejemplo.com", "password": "contraseña de prueba"},
     )
     assert frenado.status_code == 429
+
+
+def test_marking_a_dose_takes_it_off_the_pending_list(cliente: TestClient) -> None:
+    """La cartilla, por la puerta que toca un navegador (20-sep-2026).
+
+    El caso de uso entero en cinco líneas: un niño de dos años y medio sin nada marcado tiene
+    visitas que no constan; se marca una; deja de constar como pendiente y pasa a puesta.
+    """
+    _alta(cliente)
+    hijo = cliente.post(
+        "/api/family/children",
+        json={"name": "Laura", "birth_date": "2024-03-12", "country": "ES"},
+    ).json()
+
+    antes = cliente.get(f"/api/family/children/{hijo['id']}/vaccines?lang=es").json()
+    assert antes["pending"], "sin cartilla, a esta edad hay visitas que no constan"
+    edad = antes["pending"][0]["age_months"]
+
+    r = cliente.post(
+        f"/api/family/children/{hijo['id']}/doses",
+        json={"age_months": edad, "given_on": "2024-04-01"},
+    )
+    assert r.status_code == 204, r.text
+
+    despues = cliente.get(f"/api/family/children/{hijo['id']}/vaccines?lang=es").json()
+    assert len(despues["pending"]) == len(antes["pending"]) - 1
+    marcada = next(c for c in despues["appointments"] if c["age_months"] == edad)
+    assert marcada["state"] == "done"
+    assert marcada["given_on"] == "2024-04-01"
+
+    assert cliente.delete(f"/api/family/children/{hijo['id']}/doses/{edad}").status_code == 204
+    otra_vez = cliente.get(f"/api/family/children/{hijo['id']}/vaccines?lang=es").json()
+    assert len(otra_vez["pending"]) == len(antes["pending"])
+
+
+def test_another_family_cannot_touch_your_card(cliente: TestClient) -> None:
+    """Una cartilla ajena no se lee ni se escribe, ni siquiera adivinando el número del hijo."""
+    _alta(cliente, "una@ejemplo.com")
+    hijo = cliente.post(
+        "/api/family/children",
+        json={"name": "Laura", "birth_date": "2024-03-12", "country": "ES"},
+    ).json()
+    cliente.post(f"/api/family/children/{hijo['id']}/doses", json={"age_months": 2})
+    cliente.post("/api/family/logout")
+
+    _alta(cliente, "otra@ejemplo.com")
+    assert cliente.get(f"/api/family/children/{hijo['id']}/vaccines").status_code == 404
+    assert (
+        cliente.post(f"/api/family/children/{hijo['id']}/doses", json={"age_months": 2}).status_code
+        == 404
+    )
+    assert cliente.delete(f"/api/family/children/{hijo['id']}/doses/2").status_code == 404
+
+
+def test_a_dose_without_an_account_is_refused(cliente: TestClient) -> None:
+    """Sin cuenta no hay cartilla que valga: es dato de un niño."""
+    assert cliente.post("/api/family/children/1/doses", json={"age_months": 2}).status_code == 401

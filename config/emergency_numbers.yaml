@@ -51,6 +51,8 @@ EG: {emergency: "123", poison: "مركز السموم (إقليمي)", mental: n
 MA: {emergency: "150 / 141", poison: "مركز مكافحة التسمم", mental: null}
 DZ: {emergency: "14 / 112", poison: "مركز السموم (إقليمي)", mental: null}
 TN: {emergency: "190", poison: "مركز السموم (إقليمي)", mental: null}
+LY: {emergency: "1415", poison: null, mental: null, source: "UK Foreign, Commonwealth & Development Office — travel advice, «Emergency medical number» (Open Government Licence v3.0)", source_url: "https://www.gov.uk/foreign-travel-advice/libya/health"}
+SD: {emergency: "999", poison: null, mental: null, note: "The source warns that emergency services in Sudan have been severely affected by the conflict and are often unresponsive. If nobody answers, go to the nearest hospital.", source: "UK Foreign, Commonwealth & Development Office — travel advice, «Emergency medical number» (Open Government Licence v3.0)", source_url: "https://www.gov.uk/foreign-travel-advice/sudan/health"}
 JO: {emergency: "911", poison: "مركز السموم (إقليمي)", mental: null}
 QA: {emergency: "999", poison: "مركز السموم (إقليمي)", mental: null}
 KW: {emergency: "112", poison: "مركز السموم (إقليمي)", mental: null}

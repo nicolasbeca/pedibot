@@ -27,6 +27,9 @@ from pedibot.settings import ROOT
 
 _VACUNAS: Vaccines | None = None
 
+#: «No marcada» tiene que distinguirse de «marcada sin fecha», y las dos serían None.
+_SIN_MARCAR: Any = object()
+
 
 def _tabla() -> Vaccines:
     global _VACUNAS
@@ -72,11 +75,17 @@ def schedule_for_child(
     lang: str = "en",
     today: dt.date | None = None,
     vaccines: Vaccines | None = None,
+    given: dict[float, str | None] | None = None,
 ) -> list[dict[str, Any]]:
     """Las citas del calendario de su país, cada una con su fecha y en qué estado está.
 
-    Estados: `past` (ya tocó), `due` (toca ahora, dentro de la tolerancia del calendario),
-    `future` (aún no) y `seasonal` (campaña anual, sin fecha).
+    Estados: `done` (el padre la marcó como puesta), `pending` (le tocaba y no consta),
+    `due` (toca ahora, dentro de la tolerancia del calendario), `future` (aún no) y
+    `seasonal` (campaña anual, sin fecha).
+
+    `given` es la cartilla: edad de la visita → fecha en que se puso, o None si se marcó sin
+    fecha. Sin cartilla, lo que antes era `past` ahora es `pending`, que no es lo mismo que
+    decir que falta: es decir que **no consta**, que es lo único que este sitio sabe.
     """
     tabla = vaccines or _tabla()
     pais = tabla.resolve_country(str(child.get("country") or "") or None)
@@ -86,6 +95,7 @@ def schedule_for_child(
     nacimiento = dt.date.fromisoformat(str(child["birth_date"]))
     edad_meses = max(0.0, (hoy - nacimiento).days / DAYS_PER_MONTH)
     tolerancia = 1.5 if edad_meses < 24 else 6.0
+    puestas = given or {}
 
     fuera: list[dict[str, Any]] = []
     for slot in tabla.schedule(pais, lang):
@@ -102,10 +112,15 @@ def schedule_for_child(
             )
             continue
         cuando = _cuando(nacimiento, slot.age_months)
-        if abs(slot.age_months - edad_meses) <= tolerancia:
+        puesta = puestas.get(float(slot.age_months), _SIN_MARCAR)
+        if puesta is not _SIN_MARCAR:
+            # Marcada gana a todo lo demás, incluso a «toca ahora»: si el padre dice que ya se
+            # puso, el sitio no está para discutírselo.
+            estado = "done"
+        elif abs(slot.age_months - edad_meses) <= tolerancia:
             estado = "due"
         elif cuando <= hoy:
-            estado = "past"
+            estado = "pending"
         else:
             estado = "future"
         fuera.append(
@@ -116,9 +131,22 @@ def schedule_for_child(
                 "date": cuando.isoformat(),
                 "every_year": False,
                 "state": estado,
+                "given_on": None if puesta is _SIN_MARCAR else puesta,
             }
         )
     return fuera
+
+
+def pending(citas: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Lo que le tocaba y no consta, de lo más antiguo a lo más reciente.
+
+    Es la lista que importa en media África y media India: un niño que llegó tarde al centro de
+    salud, o que se mudó, o cuya cartilla de papel se perdió. La pregunta no es qué le toca
+    ahora, es qué se saltó.
+    """
+    return sorted(
+        (c for c in citas if c["state"] == "pending"), key=lambda c: float(c["age_months"])
+    )
 
 
 def next_appointment(citas: list[dict[str, Any]]) -> dict[str, Any] | None:

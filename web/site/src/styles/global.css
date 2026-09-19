@@ -85,3 +85,51 @@ section.block { padding: 64px 0; border-top: 1px solid var(--line); }
 table.plain { width: 100%; border-collapse: collapse; font-size: .95rem; }
 table.plain td, table.plain th { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: start; vertical-align: top; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* ── Detalles que hacen que la página conteste (20-sep-2026) ────────────────────────────────
+   Orden del operador: «cuando pasas el ratón por encima del logo, que el logo te sonría más».
+   La idea detrás es la que importa: esta web la abre alguien asustado, y una página que
+   responde a lo que haces se siente acompañada, mientras que una que no se mueve se siente
+   muerta. Pero el movimiento aquí tiene un techo, porque nada de esto puede parecer un juguete
+   cuando lo que hay debajo es un niño con fiebre.
+
+   Tres reglas propias:
+   · nada dura más de 220 ms, que es el límite por debajo del cual el ojo lo lee como respuesta
+     y no como animación;
+   · nada se mueve más de 2 px ni crece más de un 4 %, para que el texto no baile;
+   · todo se apaga entero con `prefers-reduced-motion`, que no es un detalle de accesibilidad
+     sino gente a la que el movimiento le marea de verdad.
+
+   Y nada de esto toca el chat ni las alarmas: ahí el movimiento distrae. */
+
+/* El logo: un salto corto al pasar por encima, y se hunde al pulsarlo. El dibujo es un PNG, así
+   que no se le puede cambiar la boca; lo que se puede es que dé un respingo, que es lo que hace
+   un crío cuando le saludas. */
+.brand img { transition: transform .18s cubic-bezier(.34, 1.56, .64, 1); transform-origin: 50% 70%; }
+.brand:hover img { transform: translateY(-2px) rotate(-6deg) scale(1.04); }
+.brand:active img { transform: translateY(0) rotate(0) scale(.96); transition-duration: .08s; }
+
+/* Las pastillas de la barra y los botones: se hunden al pulsar. Es el gesto que en una pantalla
+   táctil dice «te he oído» antes de que cargue la página siguiente, y en móvil eso vale más que
+   en ratón, porque ahí la espera se nota. */
+.pill, button, .btn, a.btn { transition: transform .12s ease, background-color .18s ease, border-color .18s ease; }
+.pill:active, button:active, .btn:active, a.btn:active { transform: scale(.97); }
+
+/* Las tarjetas se levantan un pelo. Un pelo: dos píxeles y una sombra algo más abierta. */
+.card { transition: transform .18s ease, box-shadow .18s ease; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 14px 34px rgba(43, 58, 53, .10); }
+:root.night .card:hover { box-shadow: 0 14px 34px rgba(0, 0, 0, .42); }
+
+/* Un número de urgencias al que se puede llamar no debería parecer texto. Al pasar por encima
+   se subraya y engorda el subrayado, que es lo que hace un teléfono de verdad en una tarjeta. */
+.num a { text-decoration-thickness: 1px; text-underline-offset: 3px;
+         transition: text-decoration-thickness .15s ease, text-underline-offset .15s ease; }
+.num a:hover { text-decoration-thickness: 3px; text-underline-offset: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .brand img, .brand:hover img, .brand:active img,
+  .pill, .pill:active, button, button:active, .btn, .btn:active,
+  .card, .card:hover, .num a, .num a:hover {
+    transition: none; transform: none;
+  }
+}

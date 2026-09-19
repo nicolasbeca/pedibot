@@ -237,6 +237,33 @@ La recomendación que está escrita en `IDEAS.md`: todo en el aparato primero, s
 el 90 % del valor sin tocar la promesa del proyecto; y la cuenta sólo para no perderlo al cambiar
 de teléfono, opcional y cifrada en el cliente.
 
+## 4 quinquies. La cartilla de vacunación — **ya construida en la web** (20-sep-2026)
+
+Cada visita del calendario del país tiene una casilla: el padre marca lo que ya le han puesto y
+lo que queda sin marcar sale como **«no consta»**, con una lista aparte y una frase que dice qué
+hacer con ella («llévala al centro de salud, lo que falte se puede poner al día»).
+
+Por qué importa para la app más que para la web, que es lo que hay que recordar cuando se
+construya:
+
+1. **Es la pantalla que se usa sin cobertura.** Un padre en una sala de espera marcando cuatro
+   visitas no tiene wifi. En la web hace falta red para guardar; en la app esto tiene que
+   guardarse en el aparato y sincronizar cuando haya señal. Si se construye al revés, la función
+   deja de servir justo donde más falta hace.
+2. **Es lo que da sentido a los recordatorios (D-A3).** Avisar de una vacuna que ya se puso es la
+   forma más rápida de que el padre apague los avisos. Con la cartilla, el aviso sabe callarse.
+3. **La visita se identifica por la EDAD, nunca por el nombre de la vacuna.** El ministerio
+   cambia de producto y el nombre cambia con él; la edad del calendario no. Una cartilla guardada
+   por nombre se rompe sola el día que el país pase de pentavalente a hexavalente, y con ella el
+   histórico de cada niño. Esto ya está así en la web y la app **tiene que copiarlo tal cual**.
+4. **Nada de esto regaña.** «No consta» y no «atrasada»: mientras el padre no marque, lo único
+   que sabemos es que no lo sabemos. En una notificación esa diferencia es aún más grande que en
+   una pantalla.
+
+Por dentro: tabla `doses` en `data/pedibot_familias.db`, endpoints `POST`/`DELETE` en
+`/api/family/children/{id}/doses`, estados `done` · `pending` · `due` · `future` · `seasonal` en
+`schedule_for_child()`, y el `.ics` ya no repite lo que está puesto.
+
 ## 5. Lo que hay que optimizar para el móvil
 
 La web es adaptable, pero adaptable no es lo mismo que pensada para un pulgar. Lo que revisaría,

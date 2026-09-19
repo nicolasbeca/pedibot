@@ -101,3 +101,69 @@ Reddit devuelve 403 a las peticiones desde aquí, así que **no he verificado ho
 suscriptores ni las normas de cada sub**. Todo lo de arriba sale de lo que sé, no de haberlo
 leído esta tarde. Antes de publicar en cualquiera: leer sus reglas fijadas, que casi todos exigen
 haber participado antes de enlazar.
+
+---
+
+# Blogs donde colocar un post (20-sep-2026)
+
+Buscados y **verificados uno a uno** contra su propia página de normas. Fuera de aquí se queda
+todo el primer resultado de Google, que es una industria entera de «parenting guest posting
+sites» que cobra por publicar: eso no es difusión, es comprar enlaces, y en un sitio de salud
+además es la forma más rápida de que Google te mire mal. Si en algún momento sale un «200+ sitios
+que aceptan guest post», es de esos.
+
+Van por orden de lo que valen para nosotros, no por lo fáciles que son.
+
+## 1 · Speaking of Medicine and Health, el blog de las revistas médicas de PLOS
+
+Lo lee gente de investigación y de política sanitaria, que es exactamente quien puede citarnos, y
+citar es lo único que nos mueve de la página siete de Google.
+
+Lo que piden, de su guía de autores: **800 palabras o menos**, título de diez palabras o menos,
+tono no académico, **enlaces incrustados en vez de citas**, biografía de dos líneas y **declarar
+conflictos de interés al final de la biografía**. Se manda por correo a `speakingofmedicine@plos.org`.
+
+Buscan experiencias de campo y opiniones sobre práctica de salud pública, así que el ángulo no
+es «mira mi web». Es: **qué pasa cuando intentas contestar a un padre usando sólo fuentes con
+licencia abierta**. Los ocho países sin número nacional de urgencias, los tres meses leyendo
+licencias una por una, y el catálogo en dominio público para que otro no tenga que repetirlo.
+El conflicto de interés que hay que declarar: el sitio es nuestro y es gratis.
+
+## 2 · ICTworks
+
+Tecnología para el desarrollo, con lectores que llevan años en esto. Es **el mejor encaje para el
+continente africano**, que es adonde vamos.
+
+Normas verificadas: **750 palabras o menos**, con subtítulos y listas, una imagen de al menos 640
+píxeles de ancho, y se manda por un formulario suyo. Avisan de dos cosas: **nada de marketing**, y
+nada de explicar lo básico, porque sus lectores llevan cinco años o más. A las tres publicaciones
+te dan firma propia. Entre sus temas prioritarios están la soberanía del dato, la salud y la
+«innovación inversa», que es literalmente lo que hacemos.
+
+Ángulo: **una web de salud infantil que funciona sin cobertura y pesa menos de veinte kilobytes
+por página**, con los 49 países africanos que tienen su número de urgencias y su calendario
+dentro del teléfono. Nada de «nuestra misión»: la decisión técnica y por qué, que es lo que su
+lector quiere.
+
+## 3 · Maternal Health Task Force, de la Escuela de Salud Pública de Harvard
+
+Aceptan contribuciones de gente del campo y tienen guía propia para ello. Se pregunta a
+`MHTF@hsph.harvard.edu`. El ángulo tiene que ser materno-neonatal, que es su tema: los primeros
+días del recién nacido, lo que las guías oficiales dicen y dónde una madre puede leerlo en su
+idioma.
+
+## 4 · Global Health Unfiltered
+
+Más informal y con voz de gente del sur global, que es el público al que servimos. Menos alcance
+académico y más probabilidad de que lo publiquen. Sirve para contar lo mismo que a PLOS pero sin
+el corsé.
+
+---
+
+**Lo que hay que saber antes de escribir ninguno.** En los cuatro, lo que se publica es el
+hallazgo, no el producto: el enlace va en la biografía o incrustado una vez, y ya está. Un post
+que sea un folleto lo rechazan los cuatro, y además no serviría, porque quien lo lee huele el
+folleto en dos frases.
+
+Y el orden importa: **PLOS primero**, porque si sale, los otros tres se abren solos y porque una
+cita de ahí vale más que cualquier cosa que podamos comprar.

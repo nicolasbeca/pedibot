@@ -172,24 +172,41 @@ const paises = countryOptions(countryCodes as string[], lang);
       const cuando = c.date
         ? new Date(c.date + 'T00:00:00').toLocaleDateString(lang, { year: 'numeric', month: 'short', day: 'numeric' })
         : T.vax_yearly;
-      const etiqueta = c.state === 'due' ? `<b class="ahora">${esc(T.vax_due)}</b> ` : '';
-      return `<li class="${c.state}">${etiqueta}<span class="cuando">${esc(cuando)}</span>
+      const etiqueta = c.state === 'due' ? `<b class="ahora">${esc(T.vax_due)}</b> `
+        : c.state === 'pending' ? `<b class="nocons">${esc(T.vax_pending)}</b> ` : '';
+      // La campaña anual no se marca: «cada otoño» no es una visita del calendario, es una
+      // costumbre, y una casilla ahí no significaría nada.
+      const casilla = c.every_year ? '' :
+        `<label class="marca" title="${esc(T.vax_mark)}"><input type="checkbox" data-edad="${c.age_months}"${c.state === 'done' ? ' checked' : ''}><span class="visto" aria-hidden="true"></span><span class="sr">${esc(T.vax_mark)}</span></label>`;
+      const puesta = c.given_on
+        ? `<span class="puesta">${esc(T.vax_done)}: ${esc(new Date(c.given_on + 'T00:00:00').toLocaleDateString(lang, { year: 'numeric', month: 'short', day: 'numeric' }))}</span>`
+        : '';
+      return `<li class="${c.state}">${casilla}<span class="col">${etiqueta}<span class="cuando">${esc(cuando)}</span>
         <span class="quees">${esc(c.label)}</span>
-        <span class="quepone">${esc(c.vaccines.join(', '))}</span></li>`;
+        <span class="quepone">${esc(c.vaccines.join(', '))}</span>${puesta}</span></li>`;
     };
-    // Lo que ya pasó no se esconde —quien llega tarde a una vacuna es quien más necesita
-    // verla— pero se pliega, que si no la lista de un niño de cuatro años es un muro.
-    const pasadas = datos.appointments.filter((c: any) => c.state === 'past');
-    const resto = datos.appointments.filter((c: any) => c.state !== 'past');
+    // Lo que se pliega cambia de sentido con la cartilla. Antes se plegaba lo pasado, que era
+    // ruido; ahora lo pasado puede querer decir «le falta», y eso es lo contrario de ruido. Así
+    // que arriba queda lo que pide algo —lo que toca y lo que no consta— y se pliega **lo que
+    // ya está puesto**, que es lo único que se puede mirar una vez y olvidar.
+    const puestas = datos.appointments.filter((c: any) => c.state === 'done');
+    const resto = datos.appointments.filter((c: any) => c.state !== 'done');
     // La app avisará con una notificación local; un navegador no puede programar un aviso para
     // dentro de cuatro meses. Lo que sí puede es dárselo al calendario del propio teléfono.
     const siguiente = datos.next
       ? `<p class="siguiente">📅 <b>${esc(T.vax_next)}:</b> ${esc(datos.next.label)} — ${esc(datos.next.vaccines.join(', '))}
           <a class="ics" href="/api/family/children/${datos.child_id}/vaccines.ics?lang=${lang}">${esc(T.vax_ics)} ↓</a></p>`
       : '';
-    return `<p class="eyebrow">${esc(T.vax_cal)}</p>${siguiente}
+    // La lista de lo que no consta va delante de todo y con su frase: es lo único de esta
+    // pantalla que pide salir de casa, y en media África y media India es LA pregunta.
+    const faltan = (datos.pending || []) as any[];
+    const aviso = faltan.length
+      ? `<p class="faltan"><b>${esc(T.vax_missing)} (${faltan.length}):</b> ${esc(faltan.map((c: any) => c.label).join(' · '))}<br><span class="n">${esc(T.vax_ask)}</span></p>`
+      : '';
+    return `<p class="eyebrow">${esc(T.vax_cal)}</p>${siguiente}${aviso}
+      <p class="n marcar">${esc(T.vax_mark)}</p>
       <ul class="vacunas">${resto.map(cita).join('')}</ul>
-      ${pasadas.length ? `<details class="pasadas"><summary>${esc(T.vax_past)} (${pasadas.length})</summary><ul class="vacunas">${pasadas.map(cita).join('')}</ul></details>` : ''}`;
+      ${puestas.length ? `<details class="pasadas"><summary>${esc(T.vax_card)} (${puestas.length})</summary><ul class="vacunas">${puestas.map(cita).join('')}</ul></details>` : ''}`;
   }
 
   async function pintaHijo(hijo: any) {
@@ -264,6 +281,30 @@ const paises = countryOptions(countryCodes as string[], lang);
         recarga();
       })
     );
+    // La cartilla. Ver el comentario de arriba: esta es la única cosa de la pantalla que NO
+    // recarga, porque se usa en tandas y una recarga por casilla la haría inservible.
+    caja.querySelectorAll('.marca input').forEach((el) => {
+      const casilla = el as HTMLInputElement;
+      casilla.addEventListener('change', async () => {
+        const edad = casilla.dataset.edad;
+        const marcada = casilla.checked;
+        const fila = casilla.closest('li');
+        fila?.classList.toggle('done', marcada);
+        const r = marcada
+          ? await api(`/api/family/children/${hijo.id}/doses`, {
+              method: 'POST',
+              body: JSON.stringify({ age_months: Number(edad) }),
+            })
+          : await api(`/api/family/children/${hijo.id}/doses/${edad}`, { method: 'DELETE' });
+        if (!r || !r.ok) {
+          // Se deshace lo que se había pintado: una casilla que se queda marcada sin haberse
+          // guardado es peor que no tener casilla, porque el padre se fía de ella.
+          casilla.checked = !marcada;
+          fila?.classList.toggle('done', !marcada);
+          alert(T.error);
+        }
+      });
+    });
     caja.querySelector('form.nueva')!.addEventListener('submit', async (e) => {
       e.preventDefault();
       const f = new FormData(e.target as HTMLFormElement);
@@ -343,6 +384,33 @@ const paises = countryOptions(countryCodes as string[], lang);
 </script>
 
 <style>
+  /* La cartilla (20-sep-2026). `:global` porque estas filas las dibuja JavaScript y el CSS con
+     ámbito de Astro no llega a lo que no estaba en el HTML al construir (L194: se perdió una
+     tarde entera por esto). */
+  .fam :global(.vacunas li) { display: flex; align-items: flex-start; gap: 10px; }
+  .fam :global(.vacunas .col) { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-width: 0; }
+  .fam :global(.marca) { flex: 0 0 auto; display: inline-flex; align-items: center; cursor: pointer;
+                         /* 44 px de lado: el dedo de alguien que marca ocho seguidas, de noche */
+                         min-width: 44px; min-height: 44px; justify-content: center; margin: -10px 0 -10px -10px; }
+  .fam :global(.marca input) { position: absolute; opacity: 0; width: 24px; height: 24px; margin: 0; }
+  .fam :global(.marca .visto) { width: 22px; height: 22px; border: 2px solid var(--line); border-radius: 7px;
+                                display: inline-block; position: relative; background: var(--paper);
+                                transition: background-color .15s ease, border-color .15s ease; }
+  .fam :global(.marca input:checked + .visto) { background: var(--sage); border-color: var(--sage); }
+  .fam :global(.marca input:checked + .visto::after) { content: '✓'; color: #fff; font-size: 16px; line-height: 19px;
+                                                       position: absolute; inset: 0; text-align: center; }
+  .fam :global(.marca input:focus-visible + .visto) { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .fam :global(.vacunas li.done) { opacity: .62; }
+  .fam :global(.vacunas li.done .quees) { text-decoration: line-through; }
+  .fam :global(.nocons) { color: var(--coral); font-weight: 700; }
+  .fam :global(.puesta) { color: var(--sage); font-size: .86rem; }
+  .fam :global(.faltan) { background: var(--coral-soft); border-radius: 14px; padding: 12px 14px; margin: 10px 0; }
+  .fam :global(.marcar) { margin: 6px 0 2px; }
+  /* Lo que sólo tiene que leer un lector de pantalla */
+  .fam :global(.sr) { position: absolute; width: 1px; height: 1px; overflow: hidden;
+                      clip: rect(0 0 0 0); white-space: nowrap; }
+  @media (prefers-reduced-motion: reduce) { .fam :global(.marca .visto) { transition: none; } }
+
   /* Ojo con lo que sigue, que costó un pantallazo del operador (19-sep-2026).
 
      Astro limita el CSS de un componente al HTML que escribe ÉL: le pone a cada etiqueta un

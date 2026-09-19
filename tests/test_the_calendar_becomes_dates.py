@@ -41,10 +41,16 @@ def test_every_slot_gets_a_real_date() -> None:
 
 
 def test_what_is_past_is_marked_and_not_hidden() -> None:
-    """Quien llega tarde a una vacuna es justo quien necesita verla."""
+    """Quien llega tarde a una vacuna es justo quien necesita verla.
+
+    20-sep-2026: el estado se llamaba `past` y ahora se llama `pending`. No es un cambio de
+    palabra: `past` hablaba del calendario —esa fecha quedó atrás— y `pending` habla del niño
+    —eso no consta puesto—, que es lo único que pide hacer algo. Con la cartilla marcada, la
+    misma fila sale como `done`.
+    """
     hoy = dt.date(2026, 9, 19)
     citas = schedule_for_child(_hija(), lang="es", today=hoy)
-    pasadas = [c for c in citas if c["state"] == "past"]
+    pasadas = [c for c in citas if c["state"] == "pending"]
     futuras = [c for c in citas if c["state"] == "future"]
     assert pasadas and futuras, "una niña de dos años y medio tiene de las dos"
     assert all(c["date"] <= "2026-09-19" for c in pasadas)

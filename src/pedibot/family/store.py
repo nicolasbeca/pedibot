@@ -71,6 +71,18 @@ CREATE TABLE IF NOT EXISTS measurements (
     note TEXT
 );
 CREATE INDEX IF NOT EXISTS measurements_child ON measurements(child_id, date);
+-- La cartilla de vacunación: una fila por visita del calendario que ya se puso.
+-- La visita se identifica por la EDAD en meses a la que toca, que es lo que el calendario
+-- del país nombra y lo único estable: el nombre de la vacuna cambia de un año para otro
+-- cuando el ministerio cambia de producto, y la edad no.
+CREATE TABLE IF NOT EXISTS doses (
+    child_id INTEGER NOT NULL REFERENCES children(id) ON DELETE CASCADE,
+    age_months REAL NOT NULL,
+    given_on TEXT,
+    created TEXT NOT NULL,
+    PRIMARY KEY (child_id, age_months)
+);
+CREATE INDEX IF NOT EXISTS doses_child ON doses(child_id);
 CREATE TABLE IF NOT EXISTS sessions (
     token_hash TEXT PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -390,6 +402,46 @@ class FamilyStore:
                 (measurement_id, child_id),
             )
             return cur.rowcount > 0
+
+    # ── la cartilla ──────────────────────────────────────────────────────────────────────────
+
+    def mark_dose(
+        self, user_id: int, child_id: int, age_months: float, given_on: str | None = None
+    ) -> bool:
+        """Marca como puesta la visita de esa edad. Volver a marcarla sólo cambia la fecha."""
+        if self.child(user_id, child_id) is None:
+            return False
+        if given_on:
+            dt.date.fromisoformat(given_on)
+        with self._con() as con:
+            con.execute(
+                "INSERT INTO doses (child_id, age_months, given_on, created) VALUES (?,?,?,?)"
+                " ON CONFLICT(child_id, age_months) DO UPDATE SET given_on = excluded.given_on",
+                (child_id, float(age_months), given_on, _now()),
+            )
+        return True
+
+    def unmark_dose(self, user_id: int, child_id: int, age_months: float) -> bool:
+        """Desmarcar tiene que ser tan fácil como marcar: aquí se equivoca uno con el dedo."""
+        if self.child(user_id, child_id) is None:
+            return False
+        with self._con() as con:
+            cur = con.execute(
+                "DELETE FROM doses WHERE child_id = ? AND age_months = ?",
+                (child_id, float(age_months)),
+            )
+            return cur.rowcount > 0
+
+    def doses(self, user_id: int, child_id: int) -> dict[float, str | None]:
+        """Edad de la visita → fecha en que se puso (o None si se marcó sin fecha)."""
+        if self.child(user_id, child_id) is None:
+            return {}
+        with self._con() as con:
+            filas = con.execute(
+                "SELECT age_months, given_on FROM doses WHERE child_id = ? ORDER BY age_months",
+                (child_id,),
+            ).fetchall()
+        return {float(f["age_months"]): f["given_on"] for f in filas}
 
     # ── el boletín, y las dos cosas que la ley y el sentido común piden ───────────────────────
 

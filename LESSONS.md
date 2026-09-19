@@ -854,3 +854,22 @@ Un enlace de «compruébalo tú mismo» que enseña la peor mitad de la verdad c
 enseñar nada: el lector no concluye «esto es una parte», concluye «me han contado lo bueno». Se
 arregló por el lado bueno, que es que el contador enseñe también las visitas, en vez de por el
 cómodo, que era cambiar la frase.
+
+## L199 · El nombre de un país vive dentro de una palabra que un padre dice llorando (20-sep-2026)
+
+Al añadir el norte de África, «sudan» entró en la tabla de países que se reconocen por
+subcadena, que es donde ya vivían «egipto» y «marruecos» sin dar problemas. El candado saltó en
+el acto: **«sudan» casa dentro de «sudando»**, y esa palabra está en una regla de alarma de
+diabetes, «sudoroso, sudando, con sed». Un padre contando que su hijo suda se leía como si
+hubiera dicho Sudán, y se le habría contestado con el calendario de vacunas sudanés.
+
+«oran», por Orán, vivía dentro de «llorando», de «piorando» y del «malodorant» francés.
+
+Es la familia del «ni» suajili y del «catar» dentro de «catarro», con una diferencia que vale la
+pena anotar: **aquel salió a producción y éste no salió de la máquina**. La prueba genérica que
+compara cada nombre contra el corpus entero ya existía, y lo que hizo fue exactamente su trabajo.
+
+Lo que se aprende no es «cuidado con Sudán». Es que **una tabla que funciona para veinte países
+no está validada para el veintiuno**, porque lo que decide no es la tabla, es cómo suena ese
+nombre en las otras siete lenguas del sitio. Cada nombre nuevo se mide contra el corpus antes de
+entrar, y el que no pasa baja a la tabla de frontera de palabra. Nunca se quita el país.

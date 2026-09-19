@@ -55,6 +55,71 @@ IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
 #: ISO3 → (ISO2, el nombre del país en las ocho lenguas del sitio)
 PAISES: dict[str, tuple[str, dict[str, str]]] = {
+    "MAR": (
+        "MA",
+        {
+            "en": "Morocco",
+            "es": "Marruecos",
+            "fr": "Maroc",
+            "de": "Marokko",
+            "ru": "Марокко",
+            "ar": "المغرب",
+            "pt": "Marrocos",
+            "hi": "मोरक्को",
+        },
+    ),
+    "TUN": (
+        "TN",
+        {
+            "en": "Tunisia",
+            "es": "Túnez",
+            "fr": "Tunisie",
+            "de": "Tunesien",
+            "ru": "Тунис",
+            "ar": "تونس",
+            "pt": "Tunísia",
+            "hi": "ट्यूनीशिया",
+        },
+    ),
+    "DZA": (
+        "DZ",
+        {
+            "en": "Algeria",
+            "es": "Argelia",
+            "fr": "Algérie",
+            "de": "Algerien",
+            "ru": "Алжир",
+            "ar": "الجزائر",
+            "pt": "Argélia",
+            "hi": "अल्जीरिया",
+        },
+    ),
+    "LBY": (
+        "LY",
+        {
+            "en": "Libya",
+            "es": "Libia",
+            "fr": "Libye",
+            "de": "Libyen",
+            "ru": "Ливия",
+            "ar": "ليبيا",
+            "pt": "Líbia",
+            "hi": "लीबिया",
+        },
+    ),
+    "SDN": (
+        "SD",
+        {
+            "en": "Sudan",
+            "es": "Sudán",
+            "fr": "Soudan",
+            "de": "Sudan",
+            "ru": "Судан",
+            "ar": "السودان",
+            "pt": "Sudão",
+            "hi": "सूडान",
+        },
+    ),
     "SAU": (
         "SA",
         {
@@ -1205,14 +1270,14 @@ def nota(iso3: str, regional: list[str] | None = None) -> dict[str, str]:
             "Dos productos en la misma línea son alternativas para un pinchazo, no dos."
         ),
         "fr": (
-            "Voici le calendrier que {pais} déclare à l'OMS, publié comme données sous la "
+            "Voici le calendrier que ce pays déclare à l'OMS, publié comme données sous la "
             "licence ouverte de l'OMS ; ce n'est pas une copie de la page du ministère. Le "
             "ministère peut changer une date sans que le fichier de l'OMS change la même "
             "semaine : si votre centre de santé dit autre chose, c'est lui qui a raison. Deux "
             "produits sur une ligne sont des alternatives pour une seule injection."
         ),
         "de": (
-            "Das ist der Impfkalender, den {pais} der WHO meldet, veröffentlicht als Daten "
+            "Das ist der Impfkalender, den dieses Land der WHO meldet, veröffentlicht als Daten "
             "unter der offenen Lizenz der WHO — keine Kopie der Ministeriumsseite. Das "
             "Ministerium kann ein Datum ändern, ohne dass sich die WHO-Datei in derselben "
             "Woche ändert; sagt Ihre Gesundheitsstelle etwas anderes, gilt sie. Zwei Produkte "
@@ -1232,7 +1297,7 @@ def nota(iso3: str, regional: list[str] | None = None) -> dict[str, str]:
             "منتجان في سطر واحد فهما بديلان لحقنة واحدة، لا حقنتان."
         ),
         "pt": (
-            "Este é o calendário que {pais} reporta à OMS, publicado como dados sob a licença "
+            "Este é o calendário que este país reporta à OMS, publicado como dados sob a licença "
             "aberta da OMS; não é uma cópia da página do ministério. O ministério pode mudar "
             "uma data sem que o ficheiro da OMS mude na mesma semana; se o seu centro de saúde "
             "disser outra coisa, manda o seu centro de saúde. Dois produtos na mesma linha são "

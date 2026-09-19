@@ -25,13 +25,26 @@ from pydantic import BaseModel, Field
 
 from pedibot.bot.growth import DAYS_PER_MONTH, Growth
 from pedibot.family.store import MIN_PASSWORD, FamilyStore
-from pedibot.family.vaccines import next_appointment, schedule_for_child, to_ics
+from pedibot.family.vaccines import next_appointment, pending, schedule_for_child, to_ics
 from pedibot.settings import ROOT
 
 COOKIE = "pedibot_family"
 #: Un año y pico. Quien apunta el peso de su hija una vez al mes no tiene que volver a entrar
 #: cada semana, y la cookie se puede cerrar desde el propio sitio.
 COOKIE_MAX_AGE = 400 * 24 * 3600
+
+
+class DoseIn(BaseModel):
+    """La visita se identifica por la EDAD a la que toca, no por el nombre de la vacuna.
+
+    El ministerio cambia de producto y el nombre cambia con él; la edad del calendario no. Una
+    cartilla guardada por nombre se rompería sola el día que el país pase de pentavalente a
+    hexavalente, y con ella el histórico de cada niño.
+    """
+
+    age_months: float = Field(ge=0, le=252)
+    #: opcional a propósito: quien se acuerda del día lo pone, quien no, marca y sigue
+    given_on: str | None = None
 
 
 class RegisterIn(BaseModel):
@@ -301,12 +314,44 @@ def family_router(
         hijo = store.child(usuario["id"], child_id)
         if hijo is None:
             raise HTTPException(404, "no such child")
-        citas = schedule_for_child(hijo, lang=lang)
+        puestas = store.doses(usuario["id"], child_id)
+        citas = schedule_for_child(hijo, lang=lang, given=puestas)
         return {
             "country": hijo.get("country"),
             "appointments": citas,
             "next": next_appointment(citas),
+            # Lo que le tocaba y no consta. Va aparte y no mezclado en la lista porque es la
+            # única parte del calendario que pide hacer algo hoy.
+            "pending": pending(citas),
         }
+
+    @router.post("/api/family/children/{child_id}/doses", status_code=204)
+    def mark_dose(
+        child_id: int,
+        body: DoseIn,
+        usuario: dict[str, Any] = Depends(actual),
+    ) -> Response:
+        """Marcar una visita del calendario como puesta (20-sep-2026).
+
+        La cartilla de papel se moja, se pierde y se queda en el pueblo. Esta no. Se marca la
+        visita entera y no la vacuna suelta, porque una visita es lo que ocurre de verdad: se va
+        al centro, se ponen las que tocan ese día y se vuelve.
+        """
+        if not store.mark_dose(usuario["id"], child_id, body.age_months, body.given_on):
+            raise HTTPException(404, "no such child")
+        return Response(status_code=204)
+
+    @router.delete("/api/family/children/{child_id}/doses/{age_months}", status_code=204)
+    def unmark_dose(
+        child_id: int,
+        age_months: float,
+        usuario: dict[str, Any] = Depends(actual),
+    ) -> Response:
+        """Desmarcar. Tiene que costar lo mismo que marcar: aquí se falla con el dedo."""
+        if store.child(usuario["id"], child_id) is None:
+            raise HTTPException(404, "no such child")
+        store.unmark_dose(usuario["id"], child_id, age_months)
+        return Response(status_code=204)
 
     @router.get("/api/family/children/{child_id}/vaccines.ics")
     def child_vaccines_ics(
@@ -323,7 +368,9 @@ def family_router(
         hijo = store.child(usuario["id"], child_id)
         if hijo is None:
             raise HTTPException(404, "no such child")
-        ics = to_ics(hijo, schedule_for_child(hijo, lang=lang))
+        # con la cartilla delante: lo que ya está puesto no tiene que volver a sonar
+        puestas = store.doses(usuario["id"], child_id)
+        ics = to_ics(hijo, schedule_for_child(hijo, lang=lang, given=puestas))
         nombre = "".join(ch for ch in str(hijo["name"]) if ch.isalnum()) or "pedibot"
         return Response(
             ics,
