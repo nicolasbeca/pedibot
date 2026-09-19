@@ -10,7 +10,7 @@
 > hace en un minuto. Regla de la casa, y ya salvó un error: yo había escrito «ocho países sin
 > número de emergencias» y son siete, más uno donde no pudimos verificarlo.
 >
-> Estado: **las cinco aprobadas por el operador.** Listas para pegar.
+> Estado: **las siete aprobadas por el operador.** Listas para pegar, de arriba abajo.
 >
 > Un arreglo del 19-sep que vale para las tres: «las tres de la mañana» aparecía cuatro
 > veces —lo vio él— y una imagen repetida deja de ser una imagen. Queda **una sola vez**, en
@@ -147,6 +147,62 @@ Revenue: zero today. The path I have in mind is not charging parents, because th
 On the other side of the ledger: I have spent 0.22 dollars on model calls since August, and the server costs a few euros a month. Everything else is deterministic. The triage is rules, the doses are tables, the percentiles are worked out on the reader's device and the schedules are transcriptions. This does not need funding to keep existing. What it needs is for anyone to know that it is there.
 
 All of this can be checked. The usage figures are published at https://pedibot.xyz/api/stats, and that counter deliberately excludes my own tests.
+
+---
+
+## P6 · Have you raised before? If yes, how much, from who, and on what terms?
+
+*(8.000 caracteres · este texto: 3.119)*
+
+In the normal sense of the question, no: I have never raised money. There are no investors, no previous round, no debt, no side agreements, no options, and nobody holds any rights over the project. I have paid for all of it myself.
+
+But there is something you would find in two minutes, so I will tell you myself, with the numbers in front of me.
+
+In November 2025 I launched a token, $PDBT, on Virtuals, on Base. It was the only place I knew where somebody working alone could try to get some money to keep working on the idea. I got nothing. The token exists, it graduated to Uniswap and it is still there, with about 3,900 holders, a fully diluted valuation of roughly 25,000 dollars and a daily volume in the double digits. What is left of it is speculators.
+
+The allocation is the Virtuals standard, not something I designed: 38.7 per cent in the liquidity pool, 25 per cent as a team allocation on vesting that has not unlocked yet, with the first unlock on 27 October 2026, almost 25 per cent in the protocol's own automated capital formation vault, programmed to sell in tranches between 2 and 160 million of fully diluted valuation, and the rest in ecosystem airdrops. If you look at the concentration you will see ten addresses holding 97 per cent of the supply: nine of those ten are protocol contracts. That is what a Virtuals launch looks like, and that vault has never sold a single token, because its first order sits eighty times above where the token trades.
+
+What is mine, exactly: I put 1,000 dollars of my own money into the initial buy at launch, and that is the only money that has ever moved between that token and me. I have sold part of it trying to get those 1,000 dollars back, and I have not got them back. My wallet holds 0.6 per cent of the supply today. All of it is on chain, and I would rather you saw it from me.
+
+In terms of what that token is and is not: it gives no ownership of the project. It gives no right to revenue. It gives no vote. It buys access to nothing and it never has, which is a red line written into the repository's own rules from the first day, because a health service you can unlock by paying stops being the thing I wanted to build. In September I removed every mention of the token from the site, zero appearances across the whole thing, and left an automated test that fails if one comes back.
+
+The team allocation starts unlocking on 27 October. If that is a problem for what you propose, tell me what you need and I will do it: lock it, burn it, or hand it over. I am not going to defend a position that was created before the product existed.
+
+And what I learned from all that is exactly why I am here in this way. Asking for money before you have something is not fundraising, it is noise, and nothing gets built on top of noise. I did it too early, with the product half made, and it went the way it had to go. Afterwards I went quiet, paid for it myself, and I come to you now with the thing working, eighty-eight countries of data inside it and 8,876 tests holding it up. This time I am not showing you an idea. I am showing you what is already built.
+
+---
+
+## P7 · How much are you looking to raise, and why do you need the capital?
+
+En el campo pequeño de la cantidad va, sin puntos ni comas: 210000
+
+*(8.000 caracteres · este texto: 4.028)*
+
+210,000 dollars, with a monthly budget of about 17,500, and I will not accept more than that even if more is committed. I know your average is well above this. I am asking for what I can spend well in a year and can justify line by line, and I would rather come up short and come back with results than take too much and have to invent something to spend it on.
+
+Where it goes.
+
+Clinical review by paediatricians, 40,000. This is the most important item on the list. Paying practising paediatricians to go through the 83 red flags one by one, to review a sample of the guides, and above all to measure how closely my triage agrees with the classification they would make of the same cases. Today the triage is tested against itself, with 8,876 automated tests, and that proves it does what it says, not that what it says is right. Only a clinician closes that gap.
+
+Native-speaker review of the eight languages, 15,000. Arabic, Hindi and Swahili above all, which are the ones I cannot judge. This month I found out that a Kenyan parent writing that his child's lips are blue was getting no warning, because a Swahili word happens to match a Spanish negation. I found it by accident. I do not want to find the next one by accident.
+
+My own time for a year, 90,000. Until now this has been built in the hours I steal from my job, and it has got this far. With a full year it gets to where it should be.
+
+A second person, half time, 40,000. Someone to take on the transcription and verification of schedules and emergency numbers, country by country, which is slow, boring and absolutely critical work: every number copied wrong is a call to a phone that does not exist.
+
+Legal and regulatory work, 15,000. Before the triage engine can be offered to hospitals and insurers, somebody has to settle which category it falls into in the European Union, and draft the contracts and the data processing terms. It is unexciting money and it is what separates an idea about sustainability from an actual source of revenue.
+
+Infrastructure and model calls for a year, 8,000, with room for a hundred times today's traffic. And 2,000 for the e-mail provider, the app stores and loose ends.
+
+Why the capital is needed, precisely: it is not so that this keeps existing. This keeps existing without you. It costs a few euros of server a month and I have spent 0.22 dollars on model calls since August, because almost all of it is deterministic. If you give me nothing tomorrow, the site stays up and I keep working on it in my spare hours.
+
+The money buys two things that spare hours do not. The first is clinical credibility: that a paediatrician has reviewed every rule, and that there is a published number for how closely the triage agrees with their judgement. Without that, this will always be a well meaning amateur's project, however well it is built. The second is reach: more languages, more countries, the app on Android, and the first pilot with an institution.
+
+And there is a third, which is the one that pays the rest of you back: the clinical review is also the requirement for licensing the engine to insurers and hospitals. Without that work, the only revenue path this project has cannot even be offered. With it, this stops depending on somebody paying for it and can stay free for the people who need it.
+
+What it will not be spent on: not one dollar on advertising, on token incentives, on offices or on growth agencies. If this grows it will be because somebody cites it, not because I bought it.
+
+And what you should hold me to in twelve months, which is how I think this ought to be judged: the triage measured against paediatricians' classifications and the number published, good or bad; the data in all eight languages reviewed by native speakers; the app working on Android; one pilot signed with an institution; and the usage figures still public at the same address where they are today, updated and unpolished. If those five things are not there in a year, I will have failed, and I want that to be easy to check.
 
 ---
 
