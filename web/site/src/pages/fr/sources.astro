@@ -10,5 +10,10 @@ const lang = 'fr'; const s = t(lang);
     <h1 style="margin-top:8px">{s.srcpage_h1}</h1>
     <p class="lede">{s.srcpage_lede}</p>
     <SourcesTable lang={lang} />
+    {/* 19-sep-2026: el enlace vivía en el pie de TODAS las páginas y el operador
+        preguntó qué era. Aquí es donde encaja, y dicho con palabras. Tiene que seguir
+        existiendo como enlace: estuvo huérfano treinta días y ningún rastreador lo
+        visitó nunca, porque el rastreo sigue los enlaces. */}
+    <p class="n" style="margin-top:26px">{s.srcpage_llms}<a href="/llms.txt">llms.txt</a></p>
   </div>
 </Base>

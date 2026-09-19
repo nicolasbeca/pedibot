@@ -768,3 +768,38 @@ global y bajo `@media (pointer: coarse)`, que es el dedo: con ratón el diseño 
 un componente nuevo puede fijarle a su campo un tamaño propio y saltarse la regla general, la
 prueba vuelve a medir los bloques `<style>` de los 161 componentes en vez de mirar sólo que la
 regla exista.
+
+## L194 · El CSS de un componente no alcanza lo que pinta JavaScript (19-sep-2026)
+El operador mandó pantallazos de la ficha de su hijo y se veía tosca: las etiquetas pegadas a los
+campos, las medidas sin rejilla, las dos curvas ocupando media pantalla. Yo lo leí como una queja
+de tamaño —«las curvas podrían ser más pequeñas»— y el tamaño era lo de menos.
+
+**Astro limita el CSS de cada componente al HTML que escribe él**: pone un `data-astro-cid-…` en
+cada etiqueta de la plantilla y reescribe los selectores para que sólo casen con eso. Las fichas
+de los hijos las pinta el navegador con `innerHTML`, así que nacen sin ese atributo. Medido en lo
+construido: **cero reglas** para `.kid`, `.medidas`, `.vacunas`, `.curva`, `.rejilla` y `.f`. La
+pantalla no estaba mal diseñada; estaba sin diseñar.
+
+Lo que más escuece: ya estaba escrito en este repositorio. `Chat.astro` usa `:global(...)` para
+las burbujas y lleva su comentario explicando por qué, de cuando pasó lo mismo con la tarjeta de
+temporada. Lo tenía delante y escribí el componente nuevo sin acordarme.
+
+**La regla**: si la etiqueta se crea en el `<script>`, su estilo va en `:global(...)`; si está en
+la plantilla, no. Y como esto no da ningún error —se ve mal y ya está—, lo comprueba
+`test_the_styles_reach_what_javascript_draws.py`, que por cada clase que sólo existe dentro de un
+`<script>` exige una regla en el CSS construido.
+
+## L195 · Lo que el operador no entiende de su propia web, un lector no lo pregunta (19-sep-2026)
+Leyendo el pie de su sitio: «¿qué es eso de llms.txt?». Es un mapa del proyecto escrito para los
+asistentes que contestan preguntas de salud, y llevaba semanas en el pie de las 2.600 páginas,
+entre «Bluesky» y «Fuentes», con su nombre de fichero por toda explicación.
+
+Si lo pregunta quien paga el servidor, un padre no lo pregunta: lo lee, no entiende nada y sigue.
+Y cada línea que no se entiende gasta un poco de la confianza que la página necesita para que
+alguien se crea lo demás.
+
+No se borró, porque el candado que lo protege existe por un motivo medido —estuvo huérfano
+treinta días y ningún rastreador lo visitó, porque el rastreo sigue los enlaces—. Se mudó a
+`/sources`, que es la página de «de dónde sale esto», con una frase delante que dice lo que es.
+El candado se reescribió para defender **que el enlace exista**, no dónde está: una prueba que
+fija el sitio exacto impide justamente esta clase de arreglo.

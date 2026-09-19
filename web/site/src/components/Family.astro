@@ -130,7 +130,7 @@ const paises = countryOptions(countryCodes as string[], lang);
     const tope = Math.max(24, Math.min(228, Math.ceil(hijo.age_months / 12) * 12 + 6));
     const { ok, datos } = await api(`/api/growth/bands?sex=${hijo.sex}&indicator=${indicador}&to_months=${tope}`);
     if (!ok || !datos) return '';
-    const W = 660, H = 300, M = { t: 10, r: 10, b: 26, l: 34 };
+    const W = 660, H = 190, M = { t: 8, r: 8, b: 22, l: 32 };
     const xs = datos.ages as number[];
     const todos = [...Object.values(datos.bands).flat() as number[], ...puntos.map((p) => p[campo])];
     const yMin = Math.min(...todos) * 0.92, yMax = Math.max(...todos) * 1.05;
@@ -174,7 +174,8 @@ const paises = countryOptions(countryCodes as string[], lang);
         : T.vax_yearly;
       const etiqueta = c.state === 'due' ? `<b class="ahora">${esc(T.vax_due)}</b> ` : '';
       return `<li class="${c.state}">${etiqueta}<span class="cuando">${esc(cuando)}</span>
-        <span class="quees">${esc(c.label)}</span> ${esc(c.vaccines.join(', '))}</li>`;
+        <span class="quees">${esc(c.label)}</span>
+        <span class="quepone">${esc(c.vaccines.join(', '))}</span></li>`;
     };
     // Lo que ya pasó no se esconde —quien llega tarde a una vacuna es quien más necesita
     // verla— pero se pliega, que si no la lista de un niño de cuatro años es un muro.
@@ -217,9 +218,10 @@ const paises = countryOptions(countryCodes as string[], lang);
         </div>
         <p class="acciones"><button class="btn btn-ghost" type="submit">${esc(T.saved)}</button></p>
       </form>
-      ${peso ? `<p class="eyebrow">${esc(T.weight_for_age)}</p>${peso}` : ''}
-      ${talla ? `<p class="eyebrow">${esc(T.height_for_age)}</p>${talla}` : ''}
-      ${peso || talla ? `<p class="n">${esc(T.who_note)}</p>` : ''}
+      ${peso || talla ? `<div class="curvas">
+        ${peso ? `<div><p class="curva-t">${esc(T.weight_for_age)}</p>${peso}</div>` : ''}
+        ${talla ? `<div><p class="curva-t">${esc(T.height_for_age)}</p>${talla}</div>` : ''}
+      </div><p class="nota">${esc(T.who_note)}</p>` : ''}
       ${pintaVacunas(vacunas)}
       <ul class="medidas">${lista.length ? lista.map(filaMedida).join('') : `<li class="n">${esc(T.no_measures)}</li>`}</ul>
       <form class="nueva">
@@ -341,56 +343,106 @@ const paises = countryOptions(countryCodes as string[], lang);
 </script>
 
 <style>
+  /* Ojo con lo que sigue, que costó un pantallazo del operador (19-sep-2026).
+
+     Astro limita el CSS de un componente al HTML que escribe ÉL: le pone a cada etiqueta un
+     `data-astro-cid-…` y reescribe los selectores para que sólo casen con eso. Las fichas de
+     los hijos las pinta JavaScript con `innerHTML`, así que nacen sin ese atributo y no les
+     llega ninguna regla: se veían sin rejilla, sin bordes y con las etiquetas pegadas a los
+     campos. Por eso todo lo que dibuja el navegador va en `:global(...)`, igual que las
+     burbujas del chat en `Chat.astro`, donde ya estaba escrito con su comentario.
+
+     Regla para el que venga: si la etiqueta se crea en el `<script>`, su estilo va en
+     `:global`. Si está aquí arriba en el HTML, no. */
   .fam { max-width: 780px; margin: 0 auto; }
   .lede { color: var(--ink-2); }
-  .opt { border-inline-start: 3px solid var(--mint-2); padding-inline-start: 12px; margin: 14px 0 22px; }
-  .card { border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: var(--paper); margin-top: 16px; }
-  .f { display: grid; gap: 4px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .85rem; }
-  /* El perímetro craneal se guarda y se exporta, pero no se dibuja: las tablas de la OMS
-     para eso no están en el proyecto (I-23). El campo lo dice en vez de dejar que se
-     suponga. */
-  .f small { font-weight: 400; color: var(--ink-3); font-size: .78rem; }
-  .f input, .f select {
+  .opt {
+    border-inline-start: 3px solid var(--mint-2); padding-inline-start: 12px;
+    margin: 14px 0 22px; color: var(--ink-2); font-size: .95rem;
+  }
+  .card, .fam :global(.card) {
+    border: 1px solid var(--line); border-radius: 16px; padding: 18px;
+    background: var(--paper); margin-top: 16px;
+  }
+  .f, .fam :global(.f) {
+    display: grid; gap: 4px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .85rem;
+  }
+  /* El perímetro craneal se guarda y se exporta, pero no se dibuja: las tablas de la OMS para
+     eso no están en el proyecto (I-23). El campo lo dice en vez de dejar que se suponga. */
+  .f small, .fam :global(.f small) {
+    display: block; font-weight: 400; color: var(--ink-3); font-size: .78rem;
+  }
+  .f input, .f select, .fam :global(.f input), .fam :global(.f select) {
     font: inherit; font-weight: 400; font-family: "Atkinson Hyperlegible", sans-serif;
     border: 1px solid var(--line); background: var(--paper); color: var(--ink);
-    border-radius: 12px; padding: 10px 12px; min-width: 0;
+    border-radius: 12px; padding: 10px 12px; min-width: 0; width: 100%;
   }
   .form .f + .f { margin-top: 12px; }
-  .rejilla { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .rejilla, .fam :global(.rejilla) {
+    display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
   .check { display: flex; gap: 8px; align-items: start; margin-top: 14px; font-size: .88rem; color: var(--ink-2); }
-  .acciones { margin: 16px 0 0; display: flex; gap: 10px; flex-wrap: wrap; }
+  .acciones, .fam :global(.acciones) { margin: 16px 0 0; display: flex; gap: 10px; flex-wrap: wrap; }
   .aviso { color: var(--coral); font-weight: 700; min-height: 1.2em; margin: 10px 0 0; }
   .quien { display: flex; gap: 10px; align-items: baseline; color: var(--ink-3); font-size: .9rem; }
-  .lnk { background: none; border: 0; padding: 0; font: inherit; color: var(--coral); cursor: pointer; text-decoration: underline; }
-  .lnk.peligro { color: #b3402a; }
-  .kid header { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
-  .kid h2 { margin: 0; font-size: 1.15rem; }
-  .kid .edad { color: var(--ink-3); font-size: .9rem; }
-  .kid header .editar { margin-inline-start: auto; font-size: .8rem; }
-  .kid header .quitar { font-size: .8rem; }
-  form.ficha { margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 12px; }
-  /* La curva: ancho completo y sin biblioteca. Se lee igual en un móvil estrecho porque el
-     viewBox escala y las bandas no llevan texto dentro. */
-  .curva { width: 100%; height: auto; display: block; margin: 6px 0 4px; color: var(--ink); }
-  .medidas { list-style: none; padding: 0; margin: 12px 0 0; font-size: .9rem; }
-  .medidas li { padding: 6px 0; border-top: 1px solid var(--line); display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
-  .medidas .cuando { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .82rem; color: var(--ink-3); }
-  .medidas li .lnk { margin-inline-start: auto; }
-  form.nueva { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 14px; }
-  .vacunas { list-style: none; padding: 0; margin: 8px 0 0; font-size: .88rem; }
-  .vacunas li { padding: 5px 0; border-top: 1px solid var(--line); }
-  .vacunas .cuando { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .8rem; color: var(--ink-3); margin-inline-end: 8px; }
-  .vacunas .quees { font-family: Nunito, sans-serif; font-weight: 700; margin-inline-end: 6px; }
-  /* Lo que toca ahora, en coral; lo que ya pasó, más apagado y plegado. */
-  .vacunas li.due { background: var(--mint); border-radius: 8px; padding-inline: 8px; }
-  .vacunas .ahora { color: var(--coral); margin-inline-end: 6px; }
-  .vacunas li.past, .vacunas li.seasonal { color: var(--ink-2); }
-  .siguiente { margin: 8px 0 0; font-size: .92rem; }
-  .siguiente .ics { margin-inline-start: 8px; font-size: .86rem; white-space: nowrap; }
-  details.pasadas { margin-top: 10px; font-size: .88rem; }
-  details.pasadas summary { cursor: pointer; color: var(--ink-3); }
+  .lnk, .fam :global(.lnk) {
+    background: none; border: 0; padding: 0; font: inherit; color: var(--coral); cursor: pointer;
+    text-decoration: underline;
+  }
+  .lnk.peligro, .fam :global(.lnk.peligro) { color: #b3402a; }
+  .fam :global(.kid header) { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .fam :global(.kid h2) { margin: 0; font-size: 1.15rem; }
+  .fam :global(.kid .edad) { color: var(--ink-3); font-size: .9rem; }
+  .fam :global(.kid header .editar) { margin-inline-start: auto; font-size: .8rem; }
+  .fam :global(.kid header .quitar) { font-size: .8rem; }
+  .fam :global(form.ficha) { margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 12px; }
+
+  /* Las curvas, más pequeñas. Dicho por el operador mirando la suya: «ocupan mucho». Y es
+     verdad: dos gráficos de 300 px de alto empujaban el calendario de vacunas fuera de la
+     pantalla, y lo que se mira a diario es el calendario. En una pantalla ancha van las dos
+     una al lado de la otra; en el móvil, una debajo de otra y con menos alto. */
+  .fam :global(.curvas) { display: grid; gap: 14px; margin-top: 10px; }
+  @media (min-width: 640px) { .fam :global(.curvas) { grid-template-columns: 1fr 1fr; } }
+  .fam :global(.curva) { width: 100%; height: auto; display: block; color: var(--ink); }
+  .fam :global(.curva-t) {
+    margin: 0; font-family: Nunito, sans-serif; font-weight: 700; font-size: .78rem;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--sage);
+  }
+
+  .fam :global(.medidas) { list-style: none; padding: 0; margin: 12px 0 0; font-size: .9rem; }
+  .fam :global(.medidas li) {
+    padding: 6px 0; border-top: 1px solid var(--line); display: flex; gap: 8px; flex-wrap: wrap;
+    align-items: baseline;
+  }
+  .fam :global(.medidas .cuando) {
+    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .82rem; color: var(--ink-3);
+  }
+  .fam :global(.medidas li .lnk) { margin-inline-start: auto; }
+  .fam :global(form.nueva) { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 14px; }
+
+  .fam :global(.vacunas) { list-style: none; padding: 0; margin: 8px 0 0; font-size: .88rem; }
+  .fam :global(.vacunas li) {
+    padding: 6px 0; border-top: 1px solid var(--line); display: flex; gap: 10px; flex-wrap: wrap;
+    align-items: baseline;
+  }
+  .fam :global(.vacunas .cuando) {
+    font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .8rem; color: var(--ink-3);
+    min-width: 8.5em;
+  }
+  .fam :global(.vacunas .quees) { font-family: Nunito, sans-serif; font-weight: 700; }
+  .fam :global(.vacunas .quepone) { color: var(--ink-2); flex: 1 1 14em; }
+  /* Lo que toca ahora, en menta; lo que ya pasó, apagado y plegado. */
+  .fam :global(.vacunas li.due) { background: var(--mint); border-radius: 8px; padding-inline: 8px; }
+  .fam :global(.vacunas .ahora) { color: var(--coral); font-weight: 700; }
+  .fam :global(.vacunas li.past), .fam :global(.vacunas li.seasonal) { color: var(--ink-2); }
+  .fam :global(.siguiente) { margin: 8px 0 0; font-size: .92rem; }
+  .fam :global(.siguiente .ics) { margin-inline-start: 8px; font-size: .86rem; white-space: nowrap; }
+  .fam :global(details.pasadas) { margin-top: 10px; font-size: .88rem; }
+  .fam :global(details.pasadas summary) { cursor: pointer; color: var(--ink-3); }
+  .fam :global(.nota) { margin: 8px 0 0; font-size: .82rem; color: var(--ink-3); }
+
   details.nuevo summary { cursor: pointer; font-family: Nunito, sans-serif; font-weight: 700; }
   details.nuevo form { margin-top: 14px; }
-  .vacio { margin-top: 16px; }
+  .vacio, .fam :global(.vacio) { margin-top: 16px; color: var(--ink-2); }
   .pie { margin-top: 26px; font-size: .88rem; color: var(--ink-3); }
 </style>

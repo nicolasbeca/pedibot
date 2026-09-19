@@ -452,3 +452,21 @@ class FamilyStore:
         hijo = dict(fila)
         hijo.pop("user_id", None)
         return hijo
+
+    def counts(self) -> dict[str, int]:
+        """Cuántas cuentas, hijos y medidas hay. **Sólo números.**
+
+        Lo pidió el operador para el panel —«debe aparecer cuántas cuentas se han creado»— y por
+        eso devuelve esto y no las filas: el panel se mira en sitios donde alguien puede estar
+        mirando por encima del hombro, y estas tablas tienen dentro el nombre de un niño y su
+        fecha de nacimiento. Contar no es enseñar.
+        """
+        with self._con() as con:
+            return {
+                "accounts": int(con.execute("SELECT count(*) FROM users").fetchone()[0]),
+                "children": int(con.execute("SELECT count(*) FROM children").fetchone()[0]),
+                "measurements": int(con.execute("SELECT count(*) FROM measurements").fetchone()[0]),
+                "newsletter": int(
+                    con.execute("SELECT count(*) FROM users WHERE newsletter = 1").fetchone()[0]
+                ),
+            }

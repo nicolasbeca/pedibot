@@ -1,0 +1,36 @@
+---
+/**
+ * «La app, en camino» (19-sep-2026).
+ *
+ * Decisión del operador ese mismo día: **Android primero, y un cartel mientras tanto** — «vemos
+ * si cuando haya más tracción nos compensa el desembolso», que son 25 $ de Play y 99 $ al año de
+ * Apple más catorce días de prueba obligatoria. Así que antes de pagar nada se mide si alguien
+ * la quiere.
+ *
+ * Lo que este cartel NO hace, y es lo que lo separa de los mil «coming soon» que no dicen nada:
+ * no promete fecha y no pide el correo para avisar, porque el proyecto todavía no tiene por
+ * dónde mandar un correo (I-20). Lo que hace es contar lo que YA se puede hacer hoy: instalar
+ * esta web en el móvil, que se abre sin cobertura. Eso es cierto desde esta mañana y es, de
+ * hecho, casi toda la app.
+ */
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+---
+
+<section class="block appsoon">
+  <div class="wrap">
+    <p class="linea"><b>{s.app_soon_h}.</b> {s.app_soon_p} {s.app_soon_now}</p>
+  </div>
+</section>
+
+<style>
+  /* 19-sep-2026, segunda versión. La primera era una caja con el logo y tres párrafos, y el
+     operador la vio y dijo lo que había que decir: «no le des tanta importancia». Anunciar algo
+     que todavía no existe no merece una caja; merece una línea al final, después de todo lo que
+     sí existe. */
+  .appsoon { padding: 4px 0 18px; }
+  .linea { margin: 0; color: var(--ink-3); font-size: .88rem; max-width: 74ch; }
+  .linea b { color: var(--ink-2); }
+</style>

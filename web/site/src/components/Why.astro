@@ -26,6 +26,11 @@ const pref = langPrefix(lang);
   <div class="wrap">
     <p class="eyebrow">{s.why_eyebrow}</p>
     <h2 style="margin-top:8px">{s.why_h2}</h2>
+    {/* 19-sep-2026, pedida por el operador antes de presentar en MetaDAO. No es un eslogan:
+        nombra los tres motivos por los que un padre se queda de verdad sin respuesta —el
+        dinero, la distancia y el idioma— y los tres se pueden comprobar en esta misma
+        página. */}
+    <p class="credo">{s.why_creed}</p>
     <p class="lede">{s.why_p}</p>
     <ul class="hechos">
       <li>{s.why_f1}</li>
@@ -36,6 +41,12 @@ const pref = langPrefix(lang);
 </section>
 
 <style>
+  .credo {
+    margin: 14px 0 0; font-family: Nunito, sans-serif; font-weight: 700;
+    font-size: clamp(1.05rem, 2.4vw, 1.3rem); line-height: 1.45; color: var(--ink);
+    max-width: 34ch; border-inline-start: 4px solid var(--mint-2); padding-inline-start: 16px;
+  }
+  @media (min-width: 720px) { .credo { max-width: 46ch; } }
   .why .lede { max-width: 62ch; }
   .hechos {
     list-style: none; padding: 0; margin: 18px 0 0;

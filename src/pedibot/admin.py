@@ -394,6 +394,54 @@ def _unanswered_card(items: list[dict[str, Any]]) -> str:
     )
 
 
+def family_counts(path: pathlib.Path | None = None) -> dict[str, int]:
+    """Cuántas cuentas, hijos y medidas hay (19-sep-2026).
+
+    Vive aquí y no en `report.py` porque lee **otra base de datos**: las cuentas están en
+    `pedibot_familias.db` y no en la de operación, y esa separación es la que permite que
+    aquélla siga prometiendo que no guarda datos personales.
+
+    El primer día no hay ni fichero, y eso son ceros y no un error: el panel se abre igual.
+
+    Sólo `COUNT(*)`. Lo que hay en esas tablas es el nombre de un niño y su fecha de nacimiento,
+    y el panel se mira en sitios donde alguien puede estar mirando por encima del hombro.
+    """
+    if path is None:
+        from pedibot.settings import get_settings
+
+        path = pathlib.Path(get_settings().family_db_path)
+    vacio = {"accounts": 0, "children": 0, "measurements": 0, "newsletter": 0}
+    if not pathlib.Path(path).exists():
+        return vacio
+    try:
+        con = sqlite3.connect(f"file:{path}?mode=ro", uri=True)
+    except sqlite3.Error:
+        return vacio
+    try:
+        fuera = dict(vacio)
+        fuera["accounts"] = int(con.execute("SELECT count(*) FROM users").fetchone()[0])
+        fuera["children"] = int(con.execute("SELECT count(*) FROM children").fetchone()[0])
+        fuera["measurements"] = int(con.execute("SELECT count(*) FROM measurements").fetchone()[0])
+        fuera["newsletter"] = int(
+            con.execute("SELECT count(*) FROM users WHERE newsletter = 1").fetchone()[0]
+        )
+        return fuera
+    except sqlite3.Error:
+        # una base a medio crear no puede tumbar el panel entero
+        return vacio
+    finally:
+        con.close()
+
+
+def family_kpis(c: dict[str, int]) -> str:
+    """Las tres casillas de la fila de indicadores. Números, nunca personas."""
+    return (
+        _kpi("cuentas", c["accounts"])
+        + _kpi("hijos apuntados", c["children"])
+        + _kpi("medidas", c["measurements"])
+    )
+
+
 def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> str:
     """`include_test` shows our own traffic too, and says on every card which is which.
 
@@ -472,6 +520,9 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
         + _kpi("pulgar arriba", q["up"])
         + _kpi("pulgar abajo", down, warn=down > 0)
         + _kpi("guías publicadas", g)
+        # 19-sep-2026: las cuentas de familia, que viven en otra base. Van al final de la
+        # fila porque son lo más nuevo, y son sólo cifras: el panel no enseña a nadie.
+        + family_kpis(family_counts())
         + "</div>"
     )
 

@@ -164,11 +164,17 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
         pedibot
       </a>
       <nav class="hide-sm">
+        {/* 19-sep-2026, orden del operador: «debería aparecer arriba lo de tus hijos también.
+            Es más importante eso que las fuentes, por ejemplo, que puede ser secundario». Y es
+            verdad: la ficha de un hijo es a lo que se vuelve cada semana, y el catálogo de
+            fuentes se visita una vez y se agradece desde el pie. Así que «Tus hijos» entra en
+            la barra con la misma prioridad que las dosis y las guías, y «Fuentes» sale de ella
+            —sigue en el menú de móvil, en el pie y enlazada desde cada respuesta—. */}
+        <a class="pill" href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a>
         <a class="pill" href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a>
         <a class="pill" href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a>
         <a class="pill md-only" href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a>
         <a class="pill md-only" href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a>
-        <a class="pill md-only" href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a>
         <a class="pill sm-only" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a>
         {/* the short label here on purpose: a nav pill is a noun, not a sentence. The full
             question — "Soll ich in die Notaufnahme?" — is 28 characters and pushed the German
@@ -177,6 +183,29 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
         <a class="pill" href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency_short}</a>
       </nav>
       <div class="bar-end">
+        {/* 19-sep-2026, lo vio el operador con el móvil en la mano: «no tiene sentido tener que
+            buscar abajo del todo este tipo de páginas». Y era verdad. Por debajo de 720 px la
+            barra esconde el menú entero, y desde entonces la única forma de llegar a las
+            vacunas, a las curvas o a las dosis era bajar por toda la portada hasta el pie.
+            Ahora hay un desplegable con TODO, y a la izquierda del corazón, que es donde cae el
+            pulgar. Es un <details> como el de los idiomas: se abre sin JavaScript y responde al
+            teclado. */}
+        <details class="navmenu">
+          <summary class="pill" aria-label={s.nav_menu}><span aria-hidden="true">☰</span> {s.nav_menu}</summary>
+          <ul>
+            <li><a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a></li>
+            <li><a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a></li>
+            <li><a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a></li>
+            <li><a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a></li>
+            <li><a href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a></li>
+            <li><a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a></li>
+            <li><a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a></li>
+            <li><a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}</a></li>
+            <li><a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a></li>
+            <li><a href={`${langPrefix(lang)}/about`}>{s.about.eyebrow}</a></li>
+            <li><a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}</a></li>
+          </ul>
+        </details>
         {/* in the right-hand group and not in <nav>, because that one is hidden on phones and
             this is the page that asks for help: it has to survive on a small screen */}
         <a class="pill pill-support" href={`${langPrefix(lang)}/support`}>♥ <span class="hide-xs">{s.nav_support}</span></a>
@@ -206,7 +235,14 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <slot />
   <footer>
     <div class="wrap">
-      <b style="font-family:Nunito,sans-serif;color:var(--ink)">pedibot</b> · pedibot.ai@gmail.com · <a href="https://t.me/Pedichat_bot">Telegram</a> · <a href="https://x.com/pedibotai" rel="me">@pedibotai</a> · <a href="https://bsky.app/profile/pedibot.bsky.social" rel="me">Bluesky</a> · <a href="/llms.txt">llms.txt</a> ·
+      <b style="font-family:Nunito,sans-serif;color:var(--ink)">pedibot</b> · pedibot.ai@gmail.com · <a href="https://t.me/Pedichat_bot">Telegram</a> · <a href="https://x.com/pedibotai" rel="me">@pedibotai</a> · <a href="https://bsky.app/profile/pedibot.bsky.social" rel="me">Bluesky</a> ·
+      {/* 19-sep-2026, lo preguntó el operador leyendo su propio pie: «¿qué es eso de
+          llms.txt?». Si lo pregunta él, un padre ni lo pregunta. Es un mapa del sitio escrito
+          para los asistentes que contestan preguntas de salud —ChatGPT, Claude, Perplexity—,
+          con las tres reglas del proyecto y las direcciones que pueden citar. **Sigue
+          existiendo y sigue sirviéndose**: lo que se quita es el enlace del pie, que es para
+          humanos. Las máquinas lo encuentran por el <link rel="alternate"> de la cabecera, que
+          es donde miran, y por robots.txt. */}
       <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a> · <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a> · <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a> · <a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a> · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}</a> · <a href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a> · <a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a> · <a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a> · <a href={`${langPrefix(lang)}/support`}>{s.nav_support}</a> · <a href={`${langPrefix(lang)}/about`}>{s.about.eyebrow}</a> · <a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}</a><br />
       {s.footer_legal}
     </div>
@@ -256,6 +292,27 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     }
     .langsel a:hover { background: var(--mint); color: var(--ink); }
     .langsel .cur { color: var(--ink); font-weight: 700; }
+    /* El menú del móvil. Hereda la caja del selector de idiomas —es el mismo gesto— y sólo
+       existe por debajo de 720 px, que es donde la barra esconde sus pastillas. Por encima
+       sobra: ahí están los enlaces a la vista. */
+    .navmenu { position: relative; display: none; }
+    .navmenu > summary { list-style: none; user-select: none; }
+    .navmenu > summary::-webkit-details-marker { display: none; }
+    .navmenu[open] > summary { border-color: var(--sage); color: var(--ink); }
+    .navmenu > ul {
+      position: absolute; inset-inline-end: 0; top: calc(100% + 7px); z-index: 30; margin: 0;
+      padding: 6px; min-width: 206px; list-style: none; background: var(--paper);
+      border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
+      max-height: 70vh; overflow-y: auto;
+    }
+    .navmenu li { margin: 0; }
+    .navmenu a {
+      /* 44 px de alto: es lo que mide un dedo, y es lo que piden las dos tiendas */
+      display: block; padding: 11px 13px; border-radius: 9px; text-decoration: none;
+      font-size: .95rem; color: var(--ink-2);
+    }
+    .navmenu a:hover { background: var(--mint); color: var(--ink); }
+    @media (max-width: 720px) { .navmenu { display: block; } }
     footer { padding: 30px 0 60px; color: var(--ink-3); font-size: .86rem; border-top: 1px solid var(--line); }
     .pill-support { border-color: var(--coral-soft); color: var(--coral); }
     .pill-support:hover { background: var(--coral-soft); }
@@ -267,13 +324,20 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     tg?.addEventListener('click', () => { root.classList.toggle('night'); try { localStorage.setItem('pedibot_theme', root.classList.contains('night') ? 'night' : 'day'); } catch (e) {} label(); });
     label();
 
-    // a menu that only closes by clicking its own button is a trap on a phone
-    const langsel = document.querySelector('.langsel') as HTMLDetailsElement | null;
+    // a menu that only closes by clicking its own button is a trap on a phone.
+    // 19-sep-2026: ahora son dos, el de idiomas y el de secciones, así que esto va por los dos
+    // y además cierra uno cuando se abre el otro. Dos menús abiertos a la vez en una pantalla
+    // de teléfono se tapan.
+    const menus = Array.from(document.querySelectorAll('details.langsel, details.navmenu')) as HTMLDetailsElement[];
+    menus.forEach((m) => m.addEventListener('toggle', () => {
+      if (m.open) menus.filter((o) => o !== m && o.open).forEach((o) => { o.open = false; });
+    }));
     document.addEventListener('click', (e) => {
-      if (langsel?.open && !langsel.contains(e.target as Node)) langsel.open = false;
+      menus.forEach((m) => { if (m.open && !m.contains(e.target as Node)) m.open = false; });
     });
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && langsel?.open) { langsel.open = false; langsel.querySelector('summary')?.focus(); }
+      if (e.key !== 'Escape') return;
+      menus.forEach((m) => { if (m.open) { m.open = false; m.querySelector('summary')?.focus(); } });
     });
   </script>
   {/* El trabajador que hace que esto funcione sin cobertura. Va al final y dentro de `load`

@@ -83,7 +83,16 @@ Las 800 páginas africanas nuevas están en el sitemap, pero Google no las ha vi
 
 ---
 
-## PARA LA APP — en orden, cada uno abre el siguiente
+## PARA LA APP — **en pausa hasta que haya tracción** (decisión tuya, 19-sep)
+
+> «Ponemos un cartel tipo coming soon la app y vemos si cuando haya más tracción nos compensa el
+> desembolso.» Hecho: el cartel ya está en las ocho portadas, y dice lo que se puede hacer hoy
+> (instalar la web, que abre sin cobertura) sin prometer fecha ni pedir el correo.
+>
+> Así que **no pagues nada todavía**. Los puntos 8 a 13 quedan aquí escritos para el día que
+> decidas, y en ese orden. Lo único que conviene hacer ya es el 13, que es gratis.
+
+## PARA LA APP — cuando decidas, en este orden
 
 ### 8. Abrir la cuenta de Google Play — 30 minutos y 25 $, una sola vez
 
@@ -135,7 +144,7 @@ Con la app instalada, no montadas en Photoshop:
 4. Su calendario de vacunas con fechas.
 5. El calendario vacunal de un país con su fuente citada abajo.
 
-### 13. Comprobar la marca — 10 minutos
+### 13. Comprobar la marca — 10 minutos, **y esto sí conviene hacerlo ya**
 
 Busca **«PediBot»** en Google Play y en la App Store antes de mandar la ficha. Si hay otra app
 con ese nombre, mejor enterarse ahora que cuando te la rechacen.

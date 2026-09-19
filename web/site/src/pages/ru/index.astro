@@ -7,6 +7,7 @@ import Alerts from '../../components/Alerts.astro';
 import PopularGuides from '../../components/PopularGuides.astro';
 import Why from '../../components/Why.astro';
 import Sections from '../../components/Sections.astro';
+import AppSoon from '../../components/AppSoon.astro';
 import { t } from '../../i18n';
 const lang = 'ru';
 const s = t(lang);
@@ -20,4 +21,5 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'WebApplication', na
   <MyCountry lang={lang} />
   <Why lang={lang} />
   <Sections lang={lang} />
+  <AppSoon lang={lang} />
 </Base>

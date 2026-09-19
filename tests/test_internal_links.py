@@ -139,7 +139,16 @@ def test_the_map_for_language_models_is_not_an_orphan() -> None:
     """
     base = (ROOT / "web" / "site" / "src" / "layouts" / "Base.astro").read_text(encoding="utf-8")
     assert 'href="/llms.txt"' in base, "la cabecera ya no declara llms.txt"
-    assert ">llms.txt</a>" in base, "el pie ya no lo enlaza"
+    # 19-sep-2026: el enlace visible se mudó del pie a /sources. Lo pidió el operador leyendo su
+    # propio pie —«¿qué es eso de llms.txt?»—, y si lo pregunta él, un padre ni lo pregunta. Lo
+    # que esta prueba defiende no es DÓNDE está el enlace sino que exista uno: el rastreo sigue
+    # los enlaces y un fichero al que no apunta nada no se visita nunca.
+    fuentes = list((ROOT / "web" / "site" / "src" / "pages").glob("**/sources.astro"))
+    assert fuentes, "no hay páginas de fuentes donde colgarlo"
+    con_enlace = [f for f in fuentes if ">llms.txt</a>" in f.read_text(encoding="utf-8")]
+    assert len(con_enlace) == len(fuentes), (
+        f"sólo {len(con_enlace)} de {len(fuentes)} páginas de fuentes lo enlazan"
+    )
 
 
 #: las ocho páginas por medicamento: idénticas salvo idioma y prefijo de URL
