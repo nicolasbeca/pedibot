@@ -33,14 +33,19 @@ const F = s.fam;
 const paises = countryOptions(countryCodes as string[], lang);
 ---
 
-<section class="fam" data-lang={lang} data-t={JSON.stringify(F)}>
+<section class="fam" data-lang={lang} data-t={JSON.stringify(F)} data-paises={JSON.stringify(paises)}>
   <p class="eyebrow">{F.eyebrow}</p>
   <h1 style="margin-top:8px">{F.h1}</h1>
   <p class="lede">{F.lede}</p>
   <p class="n opt">{F.optional}</p>
 
-  <!-- ── sin cuenta ─────────────────────────────────────────────────────────────────────── -->
-  <div id="fam-out" hidden>
+  <!-- ── sin cuenta ───────────────────────────────────────────────────────────────────────
+       Esto se ve DE ENTRADA, sin esperar a saber si hay cuenta. Empezaba oculto, como el otro
+       bloque, así que la página estaba en blanco hasta que contestaba `/api/family/me`: en una
+       conexión de 2G eso son segundos de nada, y sin JavaScript era para siempre. Quien ya
+       tiene cuenta ve el formulario un instante y se cambia solo; quien no la tiene —que es
+       todo el mundo la primera vez— ve lo que ha venido a ver. (19-sep-2026) -->
+  <div id="fam-out">
     <form class="card form" id="fam-form">
       <div class="f"><label for="fam-email">{F.email}</label>
         <input id="fam-email" type="email" autocomplete="email" required /></div>
@@ -90,6 +95,7 @@ const paises = countryOptions(countryCodes as string[], lang);
   const zona = document.querySelector('.fam') as HTMLElement;
   const T = JSON.parse(zona.dataset.t || '{}');
   const lang = zona.dataset.lang || 'en';
+  const PAISES = JSON.parse(zona.dataset.paises || '[]');
   const $ = (id: string) => document.getElementById(id) as HTMLElement;
   const esc = (x: string) => String(x).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
 
@@ -197,7 +203,20 @@ const paises = countryOptions(countryCodes as string[], lang);
     const talla = await curva(hijo, 'lhfa', lista);
     caja.innerHTML = `
       <header><h2>${esc(hijo.name)}</h2><span class="edad">${edad(hijo.age_months)}</span>
+        <button class="lnk editar" type="button">${esc(T.edit_child)}</button>
         <button class="lnk peligro quitar" type="button">${esc(T.delete_child)}</button></header>
+      <form class="ficha" hidden>
+        <div class="rejilla">
+          <div class="f"><label>${esc(T.name)}</label><input name="name" value="${esc(hijo.name)}" maxlength="60" required /></div>
+          <div class="f"><label>${esc(T.birth)}</label><input name="birth_date" type="date" value="${esc(hijo.birth_date)}" required /></div>
+          <div class="f"><label>${esc(T.sex)}</label><select name="sex">
+            <option value="f"${hijo.sex === 'f' ? ' selected' : ''}>${esc(T.girl)}</option>
+            <option value="m"${hijo.sex === 'm' ? ' selected' : ''}>${esc(T.boy)}</option></select></div>
+          <div class="f"><label>${esc(T.country)}</label><select name="country">${PAISES.map((c) =>
+            `<option value="${esc(c.cc)}"${hijo.country === c.cc ? ' selected' : ''}>${esc(c.label)}</option>`).join('')}</select></div>
+        </div>
+        <p class="acciones"><button class="btn btn-ghost" type="submit">${esc(T.saved)}</button></p>
+      </form>
       ${peso ? `<p class="eyebrow">${esc(T.weight_for_age)}</p>${peso}` : ''}
       ${talla ? `<p class="eyebrow">${esc(T.height_for_age)}</p>${talla}` : ''}
       ${peso || talla ? `<p class="n">${esc(T.who_note)}</p>` : ''}
@@ -213,6 +232,25 @@ const paises = countryOptions(countryCodes as string[], lang);
         <p class="acciones"><button class="btn btn-ghost" type="submit">${esc(T.add_measure)}</button></p>
       </form>`;
     (caja.querySelector('input[name="date"]') as HTMLInputElement).value = new Date().toISOString().slice(0, 10);
+    // Corregir sin borrar. Una fecha de nacimiento mal tecleada corre toda la curva y todas
+    // las vacunas; si la única salida fuera borrar al hijo, se irían con él sus medidas.
+    caja.querySelector('.editar')!.addEventListener('click', () => {
+      const f = caja.querySelector('form.ficha') as HTMLElement;
+      f.hidden = !f.hidden;
+    });
+    caja.querySelector('form.ficha')!.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = new FormData(e.target as HTMLFormElement);
+      const cuerpo = {
+        name: String(f.get('name') || '').trim(),
+        birth_date: String(f.get('birth_date') || ''),
+        sex: String(f.get('sex') || ''),
+        country: String(f.get('country') || '') || null,
+      };
+      if (!cuerpo.name || !cuerpo.birth_date) return;
+      await api(`/api/family/children/${hijo.id}`, { method: 'PATCH', body: JSON.stringify(cuerpo) });
+      recarga();
+    });
     caja.querySelector('.quitar')!.addEventListener('click', async () => {
       if (!confirm(T.confirm)) return;
       await api(`/api/family/children/${hijo.id}`, { method: 'DELETE' });
@@ -328,7 +366,9 @@ const paises = countryOptions(countryCodes as string[], lang);
   .kid header { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
   .kid h2 { margin: 0; font-size: 1.15rem; }
   .kid .edad { color: var(--ink-3); font-size: .9rem; }
-  .kid header .quitar { margin-inline-start: auto; font-size: .8rem; }
+  .kid header .editar { margin-inline-start: auto; font-size: .8rem; }
+  .kid header .quitar { font-size: .8rem; }
+  form.ficha { margin-top: 12px; border-top: 1px dashed var(--line); padding-top: 12px; }
   /* La curva: ancho completo y sin biblioteca. Se lee igual en un móvil estrecho porque el
      viewBox escala y las bandas no llevan texto dentro. */
   .curva { width: 100%; height: auto; display: block; margin: 6px 0 4px; color: var(--ink); }

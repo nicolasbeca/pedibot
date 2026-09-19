@@ -744,3 +744,27 @@ veces al día no se lee línea a línea.
 tubería, el código de salida es el del último tramo. O `set -o pipefail`, o el fallo es mudo. Y
 cuando el fallo significa «lo que hay desplegado sigue siendo lo de antes», hay que decirlo con
 esas palabras y parar, no seguir hasta el «done».
+
+## L193 · Un campo de menos de 16 px amplía la página entera en un iPhone (19-sep-2026)
+Puliendo para el móvil la pantalla de la cuenta, recién escrita, salió un fallo que estaba en
+todo el sitio y que no se ve desde un ordenador: **Safari en iOS hace zoom sobre toda la página
+cuando enfocas un `input`, `select` o `textarea` cuyo texto mide menos de 16 px**. Es su manera
+de decir «esto no se lee». Lo que nota quien escribe es que la página se agranda sola, se
+descoloca, y al salir del campo se queda así.
+
+Medido antes de tocar nada, había once por debajo, y todos son campos que se tocan con el dedo:
+
+    13,4 px  el selector de país de la portada
+    14,4 px  la herramienta de vacunas
+    13,8 px  el buscador de guías, en las ocho lenguas
+    13,6 px  la ficha de los hijos, escrita ese mismo día
+
+Ninguno estaba puesto a mano: todos heredaban de su etiqueta, que es pequeña a propósito
+—`font-size: .85rem` en el contenedor y `font: inherit` en el campo—, que es justo el patrón que
+uno escribe sin pensar.
+
+**La regla**: el tamaño de un campo no se hereda de su etiqueta. Se arregla una vez, en el CSS
+global y bajo `@media (pointer: coarse)`, que es el dedo: con ratón el diseño no cambia. Y como
+un componente nuevo puede fijarle a su campo un tamaño propio y saltarse la regla general, la
+prueba vuelve a medir los bloques `<style>` de los 161 componentes en vez de mirar sólo que la
+regla exista.

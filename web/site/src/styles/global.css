@@ -39,6 +39,16 @@ a { color: var(--sage); }
 .mono { font-family: "JetBrains Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
 .eyebrow { font-family: Nunito, sans-serif; font-weight: 700; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--sage); }
 button, input, select, textarea { font: inherit; }
+/* 19-sep-2026. Safari en iPhone AMPLÍA la página al enfocar un campo cuyo texto mida menos de
+   16 px: la página se agranda sola, se descoloca, y al salir del campo se queda así. Medidos los
+   componentes del sitio había once por debajo — el selector de país de la portada (13,4 px), la
+   herramienta de vacunas (14,4), el buscador de guías en las ocho lenguas (13,8) y la ficha de
+   los hijos (13,6) —, y todos son campos que se tocan con el dedo.
+   Se arregla aquí una vez y sólo donde importa: `pointer: coarse` es el dedo, así que con ratón
+   el diseño no cambia. `max()` respeta a quien pida más de 16. */
+@media (pointer: coarse) {
+  input, select, textarea { font-size: max(16px, 1em); }
+}
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
 .wrap { max-width: 1040px; margin: 0 auto; padding: 0 18px; }
 .narrow { max-width: 760px; margin: 0 auto; padding: 0 18px; }
