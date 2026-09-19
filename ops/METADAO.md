@@ -10,7 +10,7 @@
 > hace en un minuto. Regla de la casa, y ya salvó un error: yo había escrito «ocho países sin
 > número de emergencias» y son siete, más uno donde no pudimos verificarlo.
 >
-> Estado: **las tres aprobadas por el operador.** Listas para pegar.
+> Estado: **las cinco aprobadas por el operador.** Listas para pegar.
 >
 > Un arreglo del 19-sep que vale para las tres: «las tres de la mañana» aparecía cuatro
 > veces —lo vio él— y una imagen repetida deja de ser una imagen. Queda **una sola vez**, en
@@ -36,7 +36,9 @@ Why me, then. Three reasons, and none of them is a credential.
 
 First, I hunt my own mistakes in public and fix them the same day. Two from this week. The country selector had no empty option, so the first country alphabetically, the United Arab Emirates, came preselected: a parent in Madrid asking about a baby with blue lips was being told to call 998. Weeks of careful data undone by a default. I found it by testing against the live site instead of reading my own code, fixed it, and wrote a test so it cannot come back. The second: the safety layer treats "ni" as a Spanish negation, because it is. In Swahili, "ni" is the verb to be. So a Kenyan parent writing "midomo yake ni ya bluu", his lips are blue, had the alarm silenced by a word meaning "is". A silence, not a false alarm. That one frightened me more than anything I have written in my life.
 
-Second, I know exactly what this is not. It is not a medical device. It is not a diagnosis. It is not a business that will make you money, and I am not going to pretend otherwise in a form where everyone else is promising you a multiple. No subscription, no advertising, no data sale, and there will not be: a project whose entire argument is that it sells nothing cannot start selling something without becoming the thing it was built against. I pay for the server myself. It is a small amount of money and it is the cheapest thing I do.
+Second, I know exactly what this is not. It is not a medical device. It is not a diagnosis. And for the parent it is free and it stays free: no subscription, no advertising, no sale of anyone's data, ever. I pay for the server myself. It is a small amount of money and it is the cheapest thing I do.
+
+That does not mean it can never pay for itself, and I would rather tell you now how I think it will. The engine underneath is deterministic on purpose: 83 written rules, each with the document behind it, deciding urgency before any model is involved, plus published dose tables and a catalogue of 496 sources. That is exactly what an institution can audit and stand behind, and it is what a general model cannot offer: a hospital cannot justify a triage decision made by something that will not say why. So the way this sustains itself, when it is ready, is licensing that engine to health insurers, hospitals and private practices for first-line triage and patient sorting, which is something they already pay for. Not the users, not their data, not the free side. The institutions pay so that the mother who needs it does not have to. Before that can happen the triage has to be measured against real clinicians' classifications, and that measurement makes the free version better too.
 
 Third, the work is already given away. The catalogue of those 496 documents, the classification, the licences, the topic taxonomy, months of reading, is published as CC0, public domain, downloadable from the site. If I disappear tomorrow, someone else picks it up. That is not generosity. It is the only honest way to build something whose value is that it exists, not that I own it.
 
@@ -102,7 +104,7 @@ But I am not kidding myself: I do not beat the assistants, I complement them. Th
 
 The third group is the health services and the paediatric societies: the NHS, the CDC, the Spanish Paediatric Association, the ministries. They are better than me at what they do and I will not pretend otherwise. They are the source, and in fact they are my sources. Where they fall short is in form. Each covers one country and one or two languages, their material is scattered across dozens of PDFs, and nobody navigates an institutional site at night looking for the bronchiolitis leaflet. What I do is gather 88 countries in eight languages, read them, transcribe them with their source and their date, and answer in the language of the person asking. Nobody was doing that for free.
 
-Then there are the symptom checkers, such as Ada, K Health, Infermedica or Mediktor. They are serious and some of them are good, but they play a different game: they give a diagnostic orientation, they ask for an account, and they have to monetise, through subscriptions, insurers, or licensing the technology. I do not give a diagnosis and I have nothing to monetise, which removes the conflict of interest they carry. It is also worth looking at how Babylon Health ended, after raising hundreds of millions: in this field it is usually the business model that kills the product, not the medicine.
+Then there are the symptom checkers, such as Ada, K Health, Infermedica or Mediktor. They are serious and some of them are good, but they play a different game: they give a diagnostic orientation, they ask for an account, and they have to monetise, through subscriptions, insurers, or licensing the technology. I do not give a diagnosis, and nothing on the parent's side is monetised or ever will be, which removes the conflict of interest they carry. If this ever pays for itself it will be by licensing the engine to institutions, not by charging the mother. It is also worth looking at how Babylon Health ended, after raising hundreds of millions: in this field it is usually the business model that kills the product, not the medicine.
 
 And the baby tracking apps, the ones with the growth curves and the feeds, used by millions of parents. Those I do watch closely, because I have just built the same thing. They do one thing well: recording. What they do not do is answer. You note the weight and you get a dot on a curve, but when at night you type "his ribs are pulling in when he breathes", there is nobody on the other side. PediBot does both: your child's curve on the WHO bands, and an answer with its source when you need one. And with no advertising inside, which is the first thing you see when you open any of them.
 
@@ -111,6 +113,40 @@ There are two more things none of the above has. It works with no signal: the em
 Where I lose, which is worth saying too. I lose on conversational speed against a general model. I lose on brand: nobody knows me, I am not in the app stores, and I have been findable for three weeks. I lose to the NHS on authority about England, and I lose to a real paediatrician every single time, which is what the site repeats on every page. And my answer is never better than the documents I hold: where there is no openly licensed paediatric source, and in Swahili there is none, I say so and answer in English.
 
 So the honest answer to "why do you beat them" is that I do not beat most of them, and the ones that matter I do not want to beat: I want them to use my catalogue. The one I do beat, because it is the one answering those parents today and should not be, is the sourceless forum and the page built to place advertising. That is the competitor. Bringing a single parent back to what their own health service actually says already justifies this.
+
+---
+
+## P4 · What stage are you at?
+
+Se marca «Live», que es la única casilla verdadera: está construido entero, en producción y
+funcionando, y no hay ingresos. No es MVP —no es un esqueleto para probar una idea— y no es
+post-revenue, porque no ha entrado un euro.
+
+(Esta pregunta es un botón, no un cuadro de texto: aquí no hay nada que pegar.)
+
+---
+
+## P5 · How many users do you have? Include revenue, volume, waitlist, or other traction if relevant.
+
+*(8.000 caracteres · este texto: 3.514)*
+
+Since it went live on 25 August, 337 people have visited with a real browser, in 531 visits and 1,943 page views. I say "real browser" because the counter only counts someone who asked for the page and then for its stylesheet or its font, which is what a browser does and a crawler does not; the other 8,727 requests I do not count as people. I would rather have a small number that is true.
+
+A third of them looked at more than one page: 104 of 337. The median time on the site is 93 seconds, and of the 150 sessions that could be timed, 82 stayed over a minute. For a three-week-old site that nobody has announced, that means the people who arrive do not bounce. They stay and read.
+
+And what they read is not only the chat. After the home page, the most visited pages are the vaccination schedules, the emergency numbers, the dosing calculator, the guides and the symptom diary. The third and fourth are the legal page and the sources page. That tells me something I did not expect and that I think is the best signal I have: people go and check who is behind it and where the data comes from before they use it. That is exactly the behaviour this site is built for.
+
+The chat, which is one tool out of seven, has answered ten questions from real people, across nine distinct sessions, in English, Spanish and Arabic; two of them came through the Telegram bot. Three of the ten triggered a red flag. I am not hiding that number, but it is not the measure either: most of what this site does is answered without asking anything. Someone who wants to know which vaccines are due at 12 months in Kenya, or the emergency number in Morocco, or what percentile their daughter is on, opens the page and sees it. There is nothing to type.
+
+Where they come from: X, and a couple of places where I have mentioned it. No launch, not one paid advert, and I have not posted it in a single parenting community yet.
+
+In search, the demand is measured and it is the right demand. Over the last 28 days Google has shown the site 1,827 times for queries like "calendario de vacunación infantil", "dosis ibuprofeno niños" and "calculadora apiretal", and given 3 clicks at an average position of 65. So people search for exactly what the site answers, the site already appears, and it appears on page seven because it is three weeks old and almost nobody links to it. That is not fixed with money. It is fixed with time and with somebody citing it.
+
+Revenue: zero today. The path I have in mind is not charging parents, because that would break the only thing that makes the project credible. It is licensing the triage engine, which is deterministic and auditable, to health insurers, hospitals and private practices for first-line patient sorting. The institutions pay so that the side that matters stays free. I have not spoken to any of them yet, because first the triage has to be measured against how a real clinician classifies the same cases, and that is what I am doing next.
+
+On the other side of the ledger: I have spent 0.22 dollars on model calls since August, and the server costs a few euros a month. Everything else is deterministic. The triage is rules, the doses are tables, the percentiles are worked out on the reader's device and the schedules are transcriptions. This does not need funding to keep existing. What it needs is for anyone to know that it is there.
+
+All of this can be checked. The usage figures are published at https://pedibot.xyz/api/stats, and that counter deliberately excludes my own tests.
 
 ---
 

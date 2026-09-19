@@ -224,3 +224,24 @@ tienda y una política de borrado. **Alto.**
 | I-21 | **Fechas reales de vacunas por hijo** y aviso antes de cada una | Es lo que convierte el calendario en algo que se usa dos veces al año en vez de leerse una | nueva; con D-A3 de `APP.md` |
 | I-22 | **La foto del hijo en su ficha** | Sale en las capturas que mandó el operador y es lo que hace que la pantalla parezca suya. Cuesta poco y obliga a decidir dónde se guarda una imagen de un menor | nueva |
 | I-23 | **Perímetro craneal sobre su tabla** | Se puede apuntar ya, pero no hay banda que dibujar: falta la tabla `hcfa` de la OMS en `who_growth.json` | nueva |
+
+### La vía que sostiene el proyecto (19-sep-2026, del operador)
+
+> «En el futuro nuestro motor se le puede vender a apps de seguros médicos, hospitales o
+> consultas privadas para el primer triaje y clasificación de pacientes, para sostener el
+> proyecto y que siga siendo gratis para quien lo necesite de verdad.»
+
+Es la primera vía de ingreso que no contradice el proyecto, y conviene entender por qué: **lo que
+se licencia es el motor, no la gente**. Las reglas, las tablas de dosis, el catálogo de fuentes y
+la clasificación de urgencia; nunca los datos de nadie, que es la línea que no se cruza y que
+`/legal` promete en ocho idiomas.
+
+Y encaja con lo que ya está construido: el triaje es determinista (83 reglas con su fuente, no un
+modelo), lo cual es justo lo que una institución necesita para poder auditarlo y responder de
+él. Un hospital no puede justificar una clasificación hecha por un modelo que no explica por qué;
+sí puede justificar una regla escrita, con su documento detrás y su prueba.
+
+| Id | Idea | Por qué | Estado |
+|---|---|---|---|
+| I-24 | **Licenciar el motor de triaje** a aseguradoras, hospitales y consultas privadas para el primer filtro y la clasificación de pacientes | Sostiene el proyecto sin tocar lo que lo hace honesto: para el padre sigue siendo gratis, sin anuncios y sin venta de datos | nueva (operador, 19-sep). Antes hace falta: medir la concordancia del triaje con la clasificación de un profesional, y decidir la forma legal (producto sanitario en la UE si se usa para decidir sobre pacientes) |
+| I-25 | **Medir el triaje contra un pediatra** en un lote de casos reales | Es el requisito de I-24 y además mejora el producto gratis: sin esa medida no hay conversación posible con una institución | nueva; necesita a los pediatras revisores de W-06 |
