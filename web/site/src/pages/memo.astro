@@ -1,0 +1,194 @@
+---
+/**
+ * El memo de una página, para quien está decidiendo si financiar esto (19-sep-2026).
+ *
+ * El formulario de MetaDAO pide un enlace a un deck, un one-pager o un memo, y admite Drive o
+ * Notion. Esto vive en **nuestro propio dominio** por tres motivos, y el tercero es el bueno:
+ * se abre sin cuenta y sin permisos (un enlace de Notion mal compartido es un 404 para quien
+ * decide), no depende de que nadie renueve nada, y **pone al lector dentro del producto**: el
+ * menú de arriba es el mismo con el que un padre busca el número de emergencias de su país.
+ *
+ * Las cifras NO se escriben a mano. Se cuentan aquí, al construir, de los mismos ficheros de
+ * los que vive el sitio, así que un memo desactualizado es imposible por construcción. Es la
+ * misma regla que el resto del proyecto: contado, nunca tecleado.
+ *
+ * `noindex`: no es contenido para buscadores, es un documento para una sala concreta.
+ */
+import Base from '../layouts/Base.astro';
+import { LANGS, type Lang } from '../i18n';
+import emergency from '../data/emergency.json';
+import vaccines from '../data/vaccines.json';
+import charts from '../data/growth_charts.json';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { pathToFileURL } from 'node:url';
+
+/**
+ * Las tres cifras que no viven en `src/data` se leen de donde las lee el comprobador
+ * `scripts/check_metadao.py`, no de un fichero parecido. El primer intento contaba las reglas
+ * en `checklist.json` (salieron 5 en vez de 83) y los documentos en el catalogo interno del
+ * sitio (499, que incluye tres que no se pueden redistribuir y por eso no estan en el publico).
+ * Rutas relativas al fichero, no al directorio de trabajo, que cambia segun quien lance el build.
+ */
+const raiz = (() => {
+  // `import.meta.url` no sirve: al construir, este fichero ya es un chunk en `dist/.prerender`
+  // y las rutas relativas apuntan a otro sitio. Se sube desde el directorio de trabajo hasta
+  // encontrar la raiz del repositorio, y si no aparece se rompe el build en vez de publicar
+  // una cifra inventada.
+  let dir = pathToFileURL(process.cwd() + '/');
+  for (let i = 0; i < 6; i++) {
+    if (existsSync(new URL('config/red_flags.yaml', dir))) return dir;
+    dir = new URL('../', dir);
+  }
+  throw new Error('memo.astro: no encuentro la raiz del repositorio desde ' + process.cwd());
+})();
+const leer = (rel: string) => readFileSync(new URL(rel, raiz), 'utf8');
+const contarMarkdown = (dir: URL): number =>
+  readdirSync(dir, { withFileTypes: true }).reduce(
+    (n, e) =>
+      n +
+      (e.isDirectory()
+        ? contarMarkdown(new URL(`${e.name}/`, dir))
+        : e.name.endsWith('.md')
+          ? 1
+          : 0),
+    0,
+  );
+
+const lang = 'en';
+const ninguna = Object.fromEntries(LANGS.filter((l) => l !== lang).map((l) => [l, null])) as
+  Partial<Record<Lang, string | null>>;
+
+const numeros = emergency as Record<string, { emergency?: string; no_national?: boolean }>;
+const paisesEmergencia = Object.keys(numeros).length;
+const sinServicioNacional = Object.values(numeros).filter((n) => n.no_national).length;
+const paisesVacunas = Object.keys(vaccines as Record<string, unknown>).length;
+const paisesCurvas = Object.keys(charts as Record<string, unknown>).length;
+const documentos = (JSON.parse(leer('dataset/sources.json')) as unknown[]).length;
+const guias = contarMarkdown(new URL('web/content/', raiz));
+const reglas = (leer('config/red_flags.yaml').match(/^- id:/gm) ?? []).length;
+
+// Africa es el mercado al que va dirigido esto, asi que la cifra se cuenta, no se teclea:
+// paises africanos que tienen A LA VEZ numero de emergencia y calendario de vacunas.
+const AFRICA = 'DZ AO BJ BW BF BI CV CM CF TD KM CD CG CI DJ EG GQ ER SZ ET GA GM GH GN GW KE LS LR LY MG MW ML MR MU MA MZ NA NE NG RW ST SN SC SL SO ZA SS SD TZ TG TN UG ZM ZW'.split(' ');
+const paisesAfrica = AFRICA.filter(
+  (c) => c in (emergency as Record<string, unknown>) && c in (vaccines as Record<string, unknown>),
+).length;
+
+const hoy = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Base
+  lang={lang}
+  title="PediBot memo — what is built, and what it needs"
+  description="What PediBot is, what is built, what it costs, and what it would do with funding. One page, with every number counted from the published files."
+  path="/memo"
+  others={ninguna}
+  noindex
+>
+  <div class="narrow memo" style="padding:40px 18px 60px">
+    <p class="eyebrow">Memo · {hoy}</p>
+    <h1 style="margin-top:8px">A free paediatric answer, with the source attached</h1>
+
+    <p class="lede">
+      PediBot answers parents' questions about a sick child using only what paediatric societies,
+      health ministries and the WHO already publish for families. Every answer names the document
+      it came from and links it. It does not diagnose, and when nothing in its sources supports an
+      answer it says so instead of filling the gap.
+    </p>
+
+    <h2>What is built</h2>
+    <p>
+      Emergency numbers for <b>{paisesEmergencia} countries</b>, each with its government source.
+      In <b>{sinServicioNacional}</b> of them the source states that no national emergency service
+      exists, and the page says that rather than invent a number. Childhood vaccination schedules
+      for <b>{paisesVacunas} countries</b>, transcribed from the official documents with the
+      issuing ministry and the date checked. WHO growth charts for <b>{paisesCurvas} countries</b>,
+      with the percentile computed on the reader's device. A weight-based dosing calculator for
+      paracetamol and ibuprofen, with the brands sold in each country. <b>{guias} guides</b> in
+      eight languages. <b>{documentos} paediatric documents</b> catalogued, each with its licence
+      read one by one.
+    </p>
+    <p>
+      Urgency is decided by <b>{reglas} fixed rules</b> that run before any language model is
+      asked anything, and doses are looked up in published tables rather than generated. The site
+      keeps working with the phone offline: the emergency numbers, the red flags, the schedules
+      and the growth tables are stored on the device. Only the chat needs the network.
+    </p>
+
+    <h2>Who it is for</h2>
+    <p>
+      The parent who, in the middle of the night, has nobody to ask. Mostly in the places where
+      there is no paediatrician to call at any hour: the eight languages include Arabic, Hindi,
+      Russian and Portuguese, the safety layer also reads Swahili, and {paisesAfrica} African countries have
+      their emergency number and their schedule in it. Each page weighs under twenty kilobytes,
+      because the mother this is for runs out of credit halfway through the month.
+    </p>
+
+    <h2>Where it stands, without dressing up</h2>
+    <p>
+      Live since 25 August, announced nowhere. In the first weeks: <b>337 people</b> with a real
+      browser, 531 visits, 1,943 page views; a third looked at more than one page and the median
+      time on the site is 93 seconds. The third and fourth most visited pages are the legal page
+      and the sources page, which is people checking whether they can trust it before using it.
+      The chat itself has answered ten questions from real people. Google has shown the site 1,827
+      times in 28 days, at an average position of 65, for queries the site answers exactly.
+      Revenue: none. Model spend since August: <b>0.22 dollars</b>, because almost nothing here is
+      generated.
+    </p>
+
+    <h2>How it sustains itself</h2>
+    <p>
+      Never by charging parents, and never with advertising or data. The engine underneath is
+      deterministic and auditable, which is what an institution can stand behind: the intended
+      revenue path is licensing it to health insurers, hospitals and private practices for
+      first-line triage. The institutions pay so that the free side stays free. The prerequisite
+      is measuring the triage against how clinicians classify the same cases, which is also what
+      makes the free version better.
+    </p>
+
+    <h2>The ask</h2>
+    <p>
+      <b>210,000 USD</b>, monthly budget around 17,500, capped: no more will be accepted even if
+      more is committed. Clinical review by paediatricians, 40,000. Native-speaker review of the
+      eight languages, 15,000. A year of the founder's time, 90,000. A second person half time,
+      40,000. Legal and regulatory work to licence the engine in the EU, 15,000. Infrastructure
+      and model calls, 8,000. E-mail, app stores and loose ends, 2,000.
+    </p>
+    <p>
+      Not a dollar on advertising, token incentives, offices or growth agencies. In twelve months:
+      the triage measured against paediatricians and the number published, good or bad; the eight
+      languages reviewed by native speakers; the app on Android; one institutional pilot signed;
+      and the usage figures still public and unpolished.
+    </p>
+
+    <h2>Who</h2>
+    <p>
+      Nicolás Beca, architect, not a doctor, no team. Built since January of this year, alone and
+      out of pocket, because his son had a difficult first few months and there was no information
+      he could trust.
+    </p>
+
+    <h2>Check it yourself</h2>
+    <p class="enlaces">
+      <a href="/">pedibot.xyz</a>
+      <a href="/sources">every document it cites</a>
+      <a href="/api/stats">usage figures, live</a>
+      <a href="/legal">what is stored and what is not</a>
+      <a href="/dataset/sources.json">the catalogue, public domain</a>
+      <a href="/emergency">emergency numbers by country</a>
+    </p>
+
+    <p class="n">
+      Every figure above is counted from the published files when this page is built, not typed in
+      by hand. If a number here is wrong, the file it came from is wrong, and that is a bug worth
+      reporting to pedibot.ai@gmail.com.
+    </p>
+  </div>
+</Base>
+
+<style>
+  .memo h2 { margin: 32px 0 6px; font-size: 1.15rem; }
+  .memo p { line-height: 1.65; }
+  .memo .lede { font-size: 1.08rem; }
+  .enlaces { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+</style>

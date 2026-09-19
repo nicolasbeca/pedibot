@@ -10,7 +10,7 @@
 > hace en un minuto. Regla de la casa, y ya salvó un error: yo había escrito «ocho países sin
 > número de emergencias» y son siete, más uno donde no pudimos verificarlo.
 >
-> Estado: **las siete aprobadas por el operador.** Listas para pegar, de arriba abajo.
+> Estado: **las ocho aprobadas por el operador.** Listas para pegar, de arriba abajo.
 >
 > Un arreglo del 19-sep que vale para las tres: «las tres de la mañana» aparecía cuatro
 > veces —lo vio él— y una imagen repetida deja de ser una imagen. Queda **una sola vez**, en
@@ -74,7 +74,7 @@ And all of it except the chat works with no signal. The emergency numbers for al
 
 Who is it for. First, the parent who in the middle of the night has nobody to ask. That happens everywhere, including in rich countries: the paediatrician does not answer the phone at night and the hospital is half an hour away.
 
-But mostly it is for the places where there is no paediatrician to call at night, or at eleven in the morning either. That is why the eight languages are not English and Spanish with decoration: there is Arabic, Hindi, Russian and Portuguese, and the safety layer also reads Swahili. That is why 48 African countries have their emergency number and their schedule in it. And that is why each page weighs under twenty kilobytes and the data lives inside the phone: because the mother this is actually for runs out of credit halfway through the month.
+But mostly it is for the places where there is no paediatrician to call at night, or at eleven in the morning either. That is why the eight languages are not English and Spanish with decoration: there is Arabic, Hindi, Russian and Portuguese, and the safety layer also reads Swahili. That is why 49 African countries have their emergency number and their schedule in it. And that is why each page weighs under twenty kilobytes and the data lives inside the phone: because the mother this is actually for runs out of credit halfway through the month.
 
 It is also for families living where nobody speaks their language. A Moroccan family in Madrid needs the Spanish number and the explanation in Arabic, and that is written into the code: the country shown first is the reader's, not the language's.
 
@@ -203,6 +203,28 @@ And there is a third, which is the one that pays the rest of you back: the clini
 What it will not be spent on: not one dollar on advertising, on token incentives, on offices or on growth agencies. If this grows it will be because somebody cites it, not because I bought it.
 
 And what you should hold me to in twelve months, which is how I think this ought to be judged: the triage measured against paediatricians' classifications and the number published, good or bad; the data in all eight languages reviewed by native speakers; the app working on Android; one pilot signed with an institution; and the usage figures still public at the same address where they are today, updated and unpolished. If those five things are not there in a year, I will have failed, and I want that to be easy to check.
+
+---
+
+## P8 · Why MetaDAO specifically?
+
+*(8.000 caracteres · este texto: 3.762)*
+
+Because it is the only place where the money is decided in the open, and this project is already built that way.
+
+The whole claim of this project is that nobody has to take my word for anything: every answer, every figure and every source can be checked by the reader without asking me, as I described above. Money deserves that same treatment. An on-chain treasury, a monthly budget, and the big decisions going through a public proposal is the same discipline applied to funding. With an ordinary round, the money is seen by whoever put it in and by nobody else.
+
+The second reason is more uncomfortable, and it is the one that actually brings me here. The hard decisions ahead are not technical. They are the ones where what suits the project and what keeps it honest pull in opposite directions. If an insurer wants the engine but asks for the parents' data. If advertising starts to look reasonable when the money runs out. If charging for something that is free today starts to look reasonable too. I know what I want to answer to all three, and I also know that somebody answering them alone, with nobody watching and an empty account, ends up answering something else. I would rather have to defend those answers in public, in front of people with money riding on the outcome, than settle them quietly with myself.
+
+The third is practical. I am asking for 210,000 dollars when your average is several million, and this is the only place where a small request, capped, with a monthly budget, is a normal thing rather than an insult to the process. Your own mechanism lets me say how much I accept even if more is committed, and I intend to use it. Anywhere else, asking for little gets you thrown out.
+
+The fourth is that I already tried the other route and I know where it ends. That episode is in the fundraising answer, so I will only say what I took from it, which is a question of order: there the ticker came first and the product afterwards, if at all. Here what is built comes first, and then it is decided whether that deserves capital. That is the right order, and it is the only one I am comfortable asking under.
+
+And there is a reason about audience that I will not dress up. The people funding this are not its users and never will be: nobody in this room is short of a paediatrician to call. But you are one of the few places where something without a business model can still be funded, on the condition of genuinely accounting for itself. That is a better deal than a foundation, which would ask me for nine months of forms, and certainly better than a fund, which would ask me how I multiply the revenue of a free service by ten.
+
+What worries me about coming here, and I would rather say it now than in three months: a token attracts people who want to watch a chart go up, and this is never going to be a chart. It is going to be a project that publishes how many countries it covers, how closely its triage agrees with a paediatrician, and how many people use it, including when those numbers are small, as they are today. Anyone arriving expecting something else will leave disappointed, and I would rather say so before they put money in.
+
+I will finish with the only thing I can really offer you. If your markets decide this is worth nothing, you will have told me in the most honest way there is, which is with money, and I will take it. The site does not depend on you either way, because I have been paying for it out of my own pocket for months and I will carry on. But if they decide otherwise, you will own a piece of something that almost nothing you fund can claim: a thing that, if it works, will be opened on a bad night by someone who will never know what MetaDAO is, and who will get an answer with a document attached.
 
 ---
 

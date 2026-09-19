@@ -91,9 +91,11 @@ export default defineConfig({
     // Dos fuentes para la misma decisión y una equivocada. Google lee las dos, así que la de más
     // no suma: resta. Las etiquetas del HTML bastan y son las que aciertan.
     sitemap({
-      // 19-sep-2026: /offline no es contenido, es un estado. La sirve el service worker cuando
-      // no hay red, y no tiene nada que hacer en un buscador.
-      filter: (page) => !/\/offline\/?$/.test(page),
+      // 19-sep-2026: dos paginas que no son contenido. /offline es un estado, la sirve el
+      // service worker cuando no hay red. /memo es un documento para una sala concreta, y va
+      // con noindex: anunciar en el sitemap una pagina que le prohibes indexar es pedirle a
+      // Google que se contradiga contigo.
+      filter: (page) => !/\/(offline|memo)\/?$/.test(page),
       serialize(item) {
         const p = new URL(item.url).pathname.replace(/\/$/, '');
         const guia = guideDates.get(p);

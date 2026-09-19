@@ -46,8 +46,30 @@ def built() -> set[str]:
     return out
 
 
+def rutas_de_la_api() -> set[str]:
+    """Las rutas que sirve el lado de Python, que no salen de `dist` pero existen.
+
+    19-sep-2026: el memo enlaza a /api/stats, que es la direccion publica de las cifras de uso y
+    la que citan los textos de fuera. El sitio estatico no la construye porque la sirve FastAPI
+    detras del mismo dominio. Se leen de los decoradores de FastAPI en vez de darlas por
+    buenas, asi que un enlace a una ruta de API que no existe sigue tirando el test.
+    """
+    fuentes = [ROOT / "src" / "pedibot" / "api.py", ROOT / "src" / "pedibot" / "family" / "api.py"]
+    decorador = re.compile(r'@(?:app|router)\.(?:get|post|put|delete)\(\s*"(/[^"]*)"')
+    rutas: set[str] = set()
+    for f in fuentes:
+        if not f.exists():
+            continue
+        for m in decorador.finditer(f.read_text(encoding="utf-8")):
+            ruta = m.group(1)
+            rutas.add(ruta if ruta.startswith("/api") else f"/api{ruta}")
+    return rutas
+
+
 def reachable(url: str, have: set[str]) -> bool:
     u = url.rstrip("/") or "/"
+    if u.startswith("/api/"):
+        return u in rutas_de_la_api()
     return u in have or f"{u}/" in have or f"{u}/index.html" in have
 
 
@@ -65,9 +87,7 @@ def test_no_internal_link_is_dead(have: set[str]) -> None:
             if not reachable(m.group(1), have):
                 bad[m.group(1)] += 1
                 where.setdefault(m.group(1), src)
-    assert not bad, "\n".join(
-        f"{n}× {u}  (p.ej. desde {where[u]})" for u, n in bad.most_common(10)
-    )
+    assert not bad, "\n".join(f"{n}× {u}  (p.ej. desde {where[u]})" for u, n in bad.most_common(10))
 
 
 def test_no_hreflang_promises_a_page_that_does_not_exist(have: set[str]) -> None:
@@ -112,7 +132,9 @@ def test_every_guide_offers_the_chat_at_the_top_and_the_bottom() -> None:
     assert len(_TPLS) == 8, f"esperaba 8 plantillas de guía, hay {len(_TPLS)}"
     for tpl in _TPLS:
         src = tpl.read_text(encoding="utf-8")
-        assert src.count('class="ask-top"') == 1, f"{tpl.name} [{_lang_of(tpl)}]: falta el de arriba"
+        assert src.count('class="ask-top"') == 1, (
+            f"{tpl.name} [{_lang_of(tpl)}]: falta el de arriba"
+        )
         assert src.count("s.ask_about") == 1, f"{tpl.name} [{_lang_of(tpl)}]: falta el de abajo"
 
 
@@ -123,7 +145,9 @@ def test_a_guide_never_sends_its_reader_to_another_language_chat() -> None:
     for tpl in _TPLS:
         lang = _lang_of(tpl)
         want = "/?q=" if lang == "en" else f"/{lang}?q="
-        found = re.findall(r"href=\{`(/[a-z]{0,2}\?q=)\$\{encodeURIComponent", tpl.read_text(encoding="utf-8"))
+        found = re.findall(
+            r"href=\{`(/[a-z]{0,2}\?q=)\$\{encodeURIComponent", tpl.read_text(encoding="utf-8")
+        )
         assert len(found) == 2, f"{tpl.name}: esperaba dos enlaces al chat, hay {len(found)}"
         bad += [f"[{lang}] apunta a {f}, debería ser {want}" for f in found if f != want]
     assert not bad, "\n".join(bad)
@@ -374,7 +398,9 @@ def test_cada_farmaco_declara_sus_ocho_ediciones_en_el_html() -> None:
         esperadas = {"en", "es", "fr", "de", "ru", "ar", "pt", "hi", "x-default"}
         if not esperadas <= idiomas:
             faltan.append(f"{f.parent.name}: sin {sorted(esperadas - idiomas)}")
-    assert not faltan, "páginas de fármaco con el grupo de idiomas incompleto:\n" + "\n".join(faltan)
+    assert not faltan, "páginas de fármaco con el grupo de idiomas incompleto:\n" + "\n".join(
+        faltan
+    )
 
 
 def test_ninguna_guia_cuelga_de_un_solo_enlace() -> None:

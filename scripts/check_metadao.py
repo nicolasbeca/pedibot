@@ -51,6 +51,77 @@ CIFRAS = {
         )
     ),
     "502 guides": lambda: len(list((RAIZ / "web" / "content").rglob("*.md"))),
+    # 19-sep-2026: el texto decía 48 y eran 49. Era la única cifra escrita a mano de todas,
+    # y por eso fue la única que se quedó vieja. Aquí se cuenta como las demás.
+    "49 African countries": lambda: len(
+        [
+            c
+            for c in [
+                "DZ",
+                "AO",
+                "BJ",
+                "BW",
+                "BF",
+                "BI",
+                "CV",
+                "CM",
+                "CF",
+                "TD",
+                "KM",
+                "CD",
+                "CG",
+                "CI",
+                "DJ",
+                "EG",
+                "GQ",
+                "ER",
+                "SZ",
+                "ET",
+                "GA",
+                "GM",
+                "GH",
+                "GN",
+                "GW",
+                "KE",
+                "LS",
+                "LR",
+                "LY",
+                "MG",
+                "MW",
+                "ML",
+                "MR",
+                "MU",
+                "MA",
+                "MZ",
+                "NA",
+                "NE",
+                "NG",
+                "RW",
+                "ST",
+                "SN",
+                "SC",
+                "SL",
+                "SO",
+                "ZA",
+                "SS",
+                "SD",
+                "TZ",
+                "TG",
+                "TN",
+                "UG",
+                "ZM",
+                "ZW",
+            ]
+            if c
+            in yaml.safe_load(
+                (RAIZ / "config" / "emergency_numbers.yaml").read_text(encoding="utf-8")
+            )
+            and c
+            in yaml.safe_load((RAIZ / "config" / "vaccines.yaml").read_text(encoding="utf-8"))[
+                "countries"
+            ]
+        ]
+    ),
     "83 red flags": lambda: len(
         yaml.safe_load((RAIZ / "config" / "red_flags.yaml").read_text(encoding="utf-8"))["rules"]
     ),
