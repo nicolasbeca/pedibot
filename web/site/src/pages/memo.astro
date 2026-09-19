@@ -165,7 +165,7 @@ const hoy = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'lon
           ? ` Google has shown the site ${n(buscador.impressions)} times in ${buscador.days} days, at an average position of ${Math.round(buscador.position)}, for queries this site answers exactly.`
           : ''}
         {' '}Revenue: none.
-        {chat ? ` Model spend since August: ${chat.cost_usd} dollars, because almost nothing here is generated.` : ''}
+        {chat ? ` Model spend since August: ${chat.cost_usd.toFixed(2)} dollars, because almost nothing here is generated.` : ''}
       </p>
     ) : (
       <p>

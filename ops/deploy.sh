@@ -44,9 +44,14 @@ else
   (cd "$ROOT" && ls web/content/*/*.md 2>/dev/null | sort) > /tmp/pedibot_local_guides
   if [ -s /tmp/pedibot_local_guides ]; then
     $SSH "cd /opt/pedibot && ls web/content/*/*.md 2>/dev/null" | tr -d '\r' | sort > /tmp/pedibot_remote_guides
-    comm -13 /tmp/pedibot_local_guides /tmp/pedibot_remote_guides | while read -r f; do
-      echo "   - retirando del servidor (ya no está aquí): $f"; $SSH "rm -f /opt/pedibot/$f"
-    done
+    # `ssh -n`: sin eso, ssh se lleva la entrada estándar del `while read` y el bucle termina
+    # después del primero. Retiraba UNA guía por despliegue, sin error y sin que nadie lo notara,
+    # con 61 pendientes (20-sep-2026). Y se borran de una vez, que son 61 conexiones si no.
+    SOBRAN=$(comm -13 /tmp/pedibot_local_guides /tmp/pedibot_remote_guides)
+    if [ -n "$SOBRAN" ]; then
+      echo "$SOBRAN" | sed 's|^|   - retirando del servidor (ya no está aquí): |'
+      echo "$SOBRAN" | sed 's|^|/opt/pedibot/|' | $SSH "xargs -r rm -f"
+    fi
   fi
 fi
 
