@@ -1,0 +1,106 @@
+---
+/**
+ * El listado de países, para que se pueda leer (19-sep-2026).
+ *
+ * El operador: «en el calendario de vacunas has puesto un listado de todos los países que es
+ * infumable. Igual para las curvas de crecimiento». Tenía razón y era culpa del crecimiento del
+ * proyecto: con trece países, una fila de enlaces separados por espacios se leía de un vistazo;
+ * con sesenta y uno, y con sesenta y nueve en las curvas, es un muro de nombres en el que nadie
+ * encuentra el suyo.
+ *
+ * Lo que NO se hace aquí, y es la razón de que esto sea una rejilla y no un desplegable: **los
+ * enlaces siguen escritos en el HTML, todos**. Esas páginas por país son la mitad del tráfico
+ * que este sitio puede tener —«vacunas en Kenia», «curva de crecimiento en Nigeria»— y un enlace
+ * que sólo existe dentro de un `<select>` no lo sigue ningún buscador ni ningún asistente. Así
+ * que se quedan los enlaces y encima se pone un buscador que esconde lo que no encaja.
+ *
+ * Sin JavaScript se ven los sesenta y uno, ordenados y con su bandera, que es exactamente lo que
+ * había antes pero legible.
+ */
+import { countryOptions } from '../countries';
+import { t, langPrefix, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  /** Los códigos ISO, en cualquier orden: aquí se ordenan por su nombre. */
+  codes: string[];
+  /** La parte de la ruta que va antes del país: '/vaccines' o '/growth'. */
+  base: string;
+  /** El encabezado, ya traducido. */
+  title: string;
+}
+
+const { lang, codes, base, title } = Astro.props;
+const s = t(lang);
+const pref = langPrefix(lang);
+const paises = countryOptions(codes, lang);
+// los dos puntos venían de cuando esto era una frase seguida de los enlaces en la misma línea
+// («Calendario completo por país: España Francia…»); ahora es un encabezado y sobran
+const rotulo = title.replace(/\s*[::]\s*$/, '');
+---
+
+<nav class="cc" aria-label={rotulo}>
+  <p class="cc-h">{rotulo}</p>
+  <label class="cc-find">
+    <span class="sr">{s.cc_search}</span>
+    <input type="search" id={`cc-q-${base.replace(/\W/g, '')}`} placeholder={s.cc_search}
+           autocomplete="off" />
+  </label>
+  <ul>
+    {paises.map((c) => (
+      <li data-name={c.name.toLowerCase()} data-cc={c.cc.toLowerCase()}>
+        <a href={`${pref}${base}/${c.cc.toLowerCase()}`}>
+          <span class="bandera" aria-hidden="true">{c.flag}</span>{c.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  document.querySelectorAll('nav.cc').forEach((nav) => {
+    const caja = nav.querySelector('input');
+    const filas = Array.from(nav.querySelectorAll('li'));
+    if (!caja) return;
+    // sin tildes en los dos lados: quien busca «peru» tiene que encontrar «Perú», y quien
+    // escribe en árabe o en devanagari no tiene tildes que quitar, así que esto no le estorba
+    const llano = (x) => x.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    caja.addEventListener('input', () => {
+      const q = llano(caja.value.trim());
+      filas.forEach((li) => {
+        const cae = !q || llano(li.dataset.name || '').includes(q) || (li.dataset.cc || '').startsWith(q);
+        li.hidden = !cae;
+      });
+    });
+  });
+</script>
+
+<style>
+  .cc { margin-top: 28px; }
+  .cc-h {
+    margin: 0 0 10px; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--ink-3); font-weight: 700;
+  }
+  .cc-find input {
+    font: inherit; padding: 9px 13px; border-radius: 12px; border: 1px solid var(--line);
+    background: var(--paper); color: var(--ink); width: min(320px, 100%);
+  }
+  .sr {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .cc ul {
+    list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 4px 14px;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  }
+  .cc li[hidden] { display: none; }
+  .cc a {
+    display: block; padding: 5px 2px; font-size: .92rem; text-decoration: none;
+    color: var(--ink-2); border-radius: 8px;
+  }
+  .cc a:hover { color: var(--coral); text-decoration: underline; }
+  /* En el móvil, que es de donde entra casi todo el público al que apunta el proyecto, esto
+     son banderas de verdad. En un Windows de escritorio salen las dos letras del país: por eso
+     el nombre va siempre escrito al lado y la bandera es decoración. */
+  .bandera { margin-inline-end: 8px; }
+</style>

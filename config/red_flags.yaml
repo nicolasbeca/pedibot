@@ -330,6 +330,17 @@ rules:
   - (labios|piel|lengua|cara|u[ñn]as).{0,30}(azul(es)?|morad|amoratad|c[aá]rdeno)
   - (azul(es)?|morad|amoratad).{0,30}(labios|piel|lengua|cara)
   - se (pone|puso|est[aá] poniendo) (azul|morado|gris)
+  # 19-sep-2026, encontrado probando contra lo vivo el día de MetaDAO. «Mi hijo de 2 años no
+  # respira bien y está morado» salía RUTINA y contestaba con espasmos del sollozo. Estaban el
+  # cambio en marcha («se pone morado») y la parte del cuerpo («labios morados»); faltaba el
+  # estado dicho del niño entero con el verbo estar, que es como se dice de verdad. Pide el
+  # sujeto delante a propósito: «tiene la pierna morada del golpe» es un cardenal, no cianosis.
+  - "(hijo|hija|beb[eé]|ni[ñn][oa]|peque[ñn][oa]|cr[ií]o|cr[ií]a)[^.]{0,20}est[aá] (muy |todo |toda )?(morad|azul|amoratad|c[aá]rden)"
+  # Y la dificultad dicha en llano. Estaba «le cuesta respirar», estaba «no puede respirar», y
+  # estaba hasta en suajili («hapumui vizuri»); en castellano, no. La exclusión no es un adorno:
+  # «no respira bien por la nariz» es un catarro, y de noche suele ser que ronca.
+  - "(no respira bien|respira mal|no respira apenas)(?![^.]{0,30}(nariz|nasal|moco|congesti|resfri|catarr|ronca|duerme|dormi))"
+  - no le entra (el )?aire
   - azulad
   - can(?:'?t| ?not) breathe
   - struggling to breathe

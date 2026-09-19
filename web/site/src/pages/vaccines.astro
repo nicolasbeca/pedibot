@@ -2,8 +2,9 @@
 import schedules from '../data/vaccines.json';
 import Base from '../layouts/Base.astro';
 import VaccinesTool from '../components/VaccinesTool.astro';
-import { t, langPrefix } from '../i18n';
-const lang = 'en'; const s = t(lang); const p = langPrefix(lang);
+import CountryLinks from '../components/CountryLinks.astro';
+import { t } from '../i18n';
+const lang = 'en'; const s = t(lang);
 // counted, never typed: this sentence used to name five countries and there are
 // seven. See the same fix for {langs} on the support page.
 const countryCount = String(Object.keys(schedules).length);
@@ -14,8 +15,6 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.nav_vaccines}</p>
     <VaccinesTool lang={lang} />
-    <p class="n" style="margin-top:26px">{s.vax_full_by_country} {Object.entries(schedules).map(([c, d]) => (
-      <a href={`${p}/vaccines/${c.toLowerCase()}`} style="margin-inline-end:10px">{d.name?.[lang] ?? d.name?.en ?? c}</a>
-    ))}</p>
+    <CountryLinks lang={lang} codes={Object.keys(schedules)} base="/vaccines" title={s.vax_full_by_country} />
   </div>
 </Base>

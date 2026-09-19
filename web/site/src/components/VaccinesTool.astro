@@ -1,18 +1,21 @@
 ---
 import vax from '../data/vaccines.json';
 import { t, type Lang } from '../i18n';
+import { countryOptions } from '../countries';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
 const T = s.vax;
-const countries = Object.keys(vax as any);
+// 19-sep-2026: sesenta y un países ordenados por su código ISO, sin bandera, es un listado que
+// hay que descifrar. Ahora van por el nombre en el idioma de la página y con la bandera delante.
+const countries = countryOptions(Object.keys(vax as any), lang);
 const ages = s.vax_ages;
 ---
 <div class="vax" data-lang={lang} data-t={JSON.stringify(T)} data-vax={JSON.stringify(vax)}>
   <h1>{T.h}</h1>
   <p class="lede">{T.p}</p>
   <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-top:20px">
-    <label class="f"><span>{T.country}</span><select id="vx-country">{countries.map(c => <option value={c} selected={c === s.vax_default_country}>{(vax as any)[c].name[lang] ?? (vax as any)[c].name.en}</option>)}</select></label>
+    <label class="f"><span>{T.country}</span><select id="vx-country">{countries.map(c => <option value={c.cc} selected={c.cc === s.vax_default_country}>{c.label}</option>)}</select></label>
     <label class="f"><span>{T.age}</span><select id="vx-age">{ages.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
   </div>
   <div id="vx-out" class="card" style="margin-top:16px" aria-live="polite"></div>

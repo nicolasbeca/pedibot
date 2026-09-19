@@ -8,13 +8,27 @@ const s = t(lang);
 // un padre en Perú no podía elegir su país y siempre recibía la frase genérica, teniendo su
 // número puesto (7-sep-2026). Un país nuevo en la configuración aparece aquí solo.
 import countryCodes from '../data/countries.json';
-const countries: [string, string][] = countryCodes.map((c: string) => [c, c === 'GB' ? 'UK' : c]);
+import { countryOptions } from '../countries';
+// 19-sep-2026, y es el fallo más gordo que ha tenido esta caja. Aquí había dos líneas:
+// el desplegable mostraba **el código ISO pelado** (AE, AO, AR…) y NO tenía opción vacía, así
+// que el primero de la lista alfabética, AE, salía elegido de fábrica y viajaba en cada
+// pregunta de quien no lo tocaba. Medido contra lo vivo ese mismo día, en castellano:
+//
+//   país AE (el de fábrica) → «🚨 Llama ahora al 998 / 999»   ← el número de Emiratos
+//   sin país                → «llama al número de tu país (112 en la UE, 911 en América)»
+//   país ES                 → «🚨 Llama ahora al 112»
+//
+// O sea: a un padre en Madrid con el niño morado le estábamos dando un teléfono del Golfo.
+// Ahora la primera opción está vacía —sin país se da la frase general, que vale en todas
+// partes— y las demás llevan bandera y nombre en el idioma de la página, que es lo que hace
+// que alguien se encuentre sin saberse su sigla.
+const countries = countryOptions(countryCodes as string[], lang);
 const ages = [['', s.not_set], ...s.chat_ages];
 ---
 <div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, tool_growth: s.tool_growth, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support`, err_busy: s.err_busy, err_unavailable: s.err_unavailable, chat_call: s.chat_call, chat_retry: s.chat_retry, ages: s.chat_ages })}>
   <div class="chat" id="thread" aria-live="polite" aria-relevant="additions text">
     <div class="welcome" id="welcome">
-      <img class="face" src="/logo.svg" width="72" height="72" alt="" />
+      <img class="face" src="/logo.png" width="72" height="72" alt="" />
       <h1>{s.welcome_h1}</h1>
       <p>{s.welcome_p}</p>
       <div class="suggest">
@@ -25,7 +39,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
   <div class="dock">
     <div class="dock-in">
       <div class="ctx">
-        <label class="pill">🌍 <select id="country" aria-label="Country">{countries.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
+        <label class="pill">🌍 <select id="country" aria-label={s.vax.country}><option value="">{s.vax.country}</option>{countries.map((c) => <option value={c.cc}>{c.label}</option>)}</select></label>
         <label class="pill">👶 {s.age} <select id="age" aria-label={s.age}>{ages.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
         <label class="pill">⚖️ {s.weight} <input id="kg" type="number" min="1" max="120" step="0.5" placeholder="kg" aria-label="kg" /></label>
       </div>

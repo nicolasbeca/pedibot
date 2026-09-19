@@ -25,6 +25,7 @@ import { t, langPrefix, type Lang } from '../i18n';
 import emergency from '../data/emergency.json';
 import vaccines from '../data/vaccines.json';
 import langCountries from '../data/lang_countries.json';
+import { countryOptions, countryName, flag } from '../countries';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -35,15 +36,18 @@ const numeros = emergency as Record<string, { emergency?: string; poison?: strin
   mental?: string; note?: string; no_national?: boolean; unverified?: boolean }>;
 const conCalendario = Object.keys(vaccines);
 const mios: string[] = (langCountries as Record<string, string[]>)[lang] ?? [];
-const resto = Object.keys(numeros).filter((cc) => !mios.includes(cc)).sort();
-
-let comoSeLlama = (cc: string) => cc;
-try {
-  const dn = new Intl.DisplayNames([lang], { type: 'region' });
-  comoSeLlama = (cc: string) => dn.of(cc) || cc;
-} catch { /* sin ICU completo se quedan los códigos, que se entienden */ }
+// 19-sep-2026: el desplegable iba ordenado por el CÓDIGO, que no es el orden del alfabeto de
+// nadie: en castellano salía Angola (AO) antes que Alemania (DE). Ahora va por el nombre, en
+// el idioma de la página, y cada país lleva su bandera delante.
+const resto = countryOptions(
+  Object.keys(numeros).filter((cc) => !mios.includes(cc)),
+  lang
+);
 const nombres: Record<string, string> = Object.fromEntries(
-  Object.keys(numeros).map((cc) => [cc, comoSeLlama(cc)])
+  Object.keys(numeros).map((cc) => [cc, countryName(cc, lang)])
+);
+const banderas: Record<string, string> = Object.fromEntries(
+  Object.keys(numeros).map((cc) => [cc, flag(cc)])
 );
 // el `tel:` se queda con el primer número cuando el país da dos («15 / 112»)
 const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0].trim();
@@ -60,7 +64,7 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
     <div class="cards" id="mine-cards">
       {mios.map((cc) => (
         <article class="card" data-cc={cc}>
-          <h3>{nombres[cc]}</h3>
+          <h3><span class="bandera" aria-hidden="true">{banderas[cc]}</span>{nombres[cc]}</h3>
           {numeros[cc]?.emergency ? (
             <p class="num">
               <span class="lbl">{s.mine_call}</span>
@@ -85,24 +89,34 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
       <label for="mine-cc">{s.mine_more}</label>
       <select id="mine-cc" aria-label={s.mine_more}>
         <option value="">—</option>
-        {resto.map((cc) => <option value={cc}>{nombres[cc]}</option>)}
+        {resto.map((c) => <option value={c.cc}>{c.label}</option>)}
       </select>
       <a class="btn btn-ghost" href={`${pref}/emergency`}>{s.emg_by_country} →</a>
     </p>
   </div>
 </section>
 
-<script define:vars={{ NUM: numeros, NOMBRES: nombres, CAL: conCalendario, PREF: pref, T: { call: s.mine_call, poison: s.mine_poison, mental: s.mine_mental, emg: s.emg_eyebrow, vax: s.nav_vaccines, none: s.emgc_none, unsure: s.emgc_unsure, yours: s.mine_yours } }}>
+<script define:vars={{ NUM: numeros, NOMBRES: nombres, BANDERAS: banderas, CAL: conCalendario, PREF: pref, T: { call: s.mine_call, poison: s.mine_poison, mental: s.mine_mental, emg: s.emg_eyebrow, vax: s.nav_vaccines, none: s.emgc_none, unsure: s.emgc_unsure, yours: s.mine_yours, guess: s.mine_guess, change: s.mine_change } }}>
   const zona = document.getElementById('mine-cards');
   const sel = document.getElementById('mine-cc');
 
+  // 19-sep-2026. El operador entró en la web y le ponía que su país era COLOMBIA. No hay
+  // geolocalización en ninguna parte del proyecto: lo que había era una SUPOSICIÓN —lo
+  // guardado en el navegador, y si no, la región de `navigator.language`— presentada con
+  // la misma cara de certeza que una elección suya, porque el día antes le puse encima una
+  // etiqueta que decía «Tu país». Una suposición con etiqueta de hecho es peor que ninguna
+  // etiqueta: el lector no sabe que hay nada que corregir.
+  //
+  // Ahora se distingue de dónde viene. Si lo eligió él, la tarjeta dice «Tu país». Si lo
+  // dedujimos nosotros, lo dice preguntando y trae al lado el enlace para cambiarlo, que
+  // lleva al desplegable y lo abre.
   const suyo = () => {
     try {
       const guardado = localStorage.getItem('pedibot_country');
-      if (guardado && NUM[guardado]) return guardado;
+      if (guardado && NUM[guardado]) return { cc: guardado, elegido: true };
     } catch (e) {}
     const delIdioma = (navigator.language || '').split('-')[1];
-    return delIdioma && NUM[delIdioma] ? delIdioma : null;
+    return delIdioma && NUM[delIdioma] ? { cc: delIdioma, elegido: false } : null;
   };
 
   const tarjeta = (cc) => {
@@ -117,7 +131,7 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
       ? `<p class="num"><span class="lbl">${T.call}</span><a href="tel:${tel}">${n.emergency}</a></p>`
       : `<p class="nohay">${n.no_national ? T.none : T.unsure}</p>`;
     el.innerHTML =
-      `<h3>${NOMBRES[cc] || cc}</h3>` + cabeza +
+      `<h3><span class="bandera" aria-hidden="true">${BANDERAS[cc] || ''}</span>${NOMBRES[cc] || cc}</h3>` + cabeza +
       linea(T.poison, n.poison) +
       linea(T.mental, n.mental) +
       `<p class="links"><a href="${PREF}/emergency/${cc.toLowerCase()}">${T.emg} →</a>` +
@@ -127,32 +141,48 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
   };
 
   // el país del lector va delante: si ya estaba escrito, se mueve; si no, se añade
-  const delante = (cc) => {
+  const delante = (cc, elegido) => {
     if (!zona || !cc || !NUM[cc]) return;
+    zona.querySelectorAll('.tuyo').forEach((otra) => {
+      otra.classList.remove('tuyo');
+      const vieja = otra.querySelector('.tuyo-lbl');
+      if (vieja) vieja.remove();
+    });
     const el = zona.querySelector(`[data-cc="${cc}"]`) || tarjeta(cc);
     el.classList.add('tuyo');
     // 18-sep-2026, lo vio el operador: «pongo el idioma que ponga, España sale la primera».
     // Y era verdad y era a propósito —el país del lector va delante, que para una familia
     // marroquí en Madrid es justo lo que hace falta— pero no se decía en ninguna parte, así
-    // que parecía un fallo. Ahora la tarjeta lo dice, y debajo está el desplegable para
-    // cambiarlo. Un borde de color no es una explicación.
-    if (!el.querySelector('.tuyo-lbl')) {
-      const lbl = document.createElement('p');
-      lbl.className = 'tuyo-lbl';
-      lbl.textContent = T.yours;
-      el.prepend(lbl);
+    // que parecía un fallo. Ahora la tarjeta lo dice. Un borde de color no es una explicación.
+    const lbl = document.createElement('p');
+    lbl.className = 'tuyo-lbl' + (elegido ? '' : ' dudosa');
+    lbl.textContent = elegido ? T.yours : T.guess;
+    if (!elegido) {
+      // la corrección, al lado de lo que hay que corregir y no veinte líneas más abajo
+      const cambiar = document.createElement('button');
+      cambiar.type = 'button';
+      cambiar.className = 'cambiar';
+      cambiar.textContent = T.change;
+      cambiar.addEventListener('click', () => {
+        if (!sel) return;
+        sel.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        sel.focus();
+      });
+      lbl.append(' ', cambiar);
     }
+    el.prepend(lbl);
     zona.prepend(el);
   };
 
-  delante(suyo());
+  const mio = suyo();
+  if (mio) delante(mio.cc, mio.elegido);
 
   if (sel) {
     sel.addEventListener('change', () => {
       const cc = sel.value;
       if (!cc) return;
       try { localStorage.setItem('pedibot_country', cc); } catch (e) {}
-      delante(cc);
+      delante(cc, true);
       sel.value = '';
     });
   }
@@ -171,7 +201,18 @@ const marcar = (cc: string) => String(numeros[cc]?.emergency ?? '').split('/')[0
     margin: 0 0 6px; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
     color: var(--coral); font-weight: 700;
   }
+  /* Una suposición no se pinta con el mismo color que una certeza: la de coral es la que el
+     lector eligió, la gris es la nuestra y lleva al lado el botón de corregirla. */
+  .tuyo-lbl.dudosa { color: var(--ink-3); text-transform: none; letter-spacing: 0; font-size: .8rem; }
+  .cambiar {
+    font: inherit; font-size: .8rem; font-weight: 700; color: var(--coral);
+    background: none; border: 0; padding: 0 2px; cursor: pointer; text-decoration: underline;
+  }
   .card h3 { margin: 0; font-size: 1rem; }
+  /* En Android, iPhone y Mac esto es la bandera. En Windows son las dos letras del país,
+     porque Microsoft no las metió en su fuente de emojis; por eso el nombre va siempre al
+     lado y la bandera es decoración (aria-hidden). */
+  .bandera { margin-inline-end: 7px; }
   .num { margin: 6px 0 4px; }
   /* 18-sep-2026: hay países donde la fuente dice que no hay número nacional. En la tarjeta
      ocupa el sitio del número, porque es la misma respuesta a la misma pregunta. */

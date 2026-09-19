@@ -78,7 +78,7 @@ const canonical = `${site}${path === '/' ? '' : path}`;
 // among the six is the same principle the rest of this file runs on.
 const everyEdition = [{ lang, href: path }, ...alternates];
 const enHref = everyEdition.find((a) => a.lang === 'en')?.href ?? null;
-const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'PediBot', url: site, logo: `${site}/logo.svg`, email: 'pedibot.ai@gmail.com', sameAs: ['https://x.com/pedibotai'] };
+const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'PediBot', url: site, logo: `${site}/logo.png`, email: 'pedibot.ai@gmail.com', sameAs: ['https://x.com/pedibotai'] };
 ---
 <html lang={lang} dir={dirFor(lang)}>
 <head>
@@ -95,7 +95,12 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   {alternates.map((a) => (
     <link rel="alternate" hreflang={a.lang} href={`${site}${a.href === '/' ? '' : a.href}`} />
   ))}
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  {/* 19-sep-2026. Hasta hoy el icono era un SVG dibujado por mí que se le parecía al logo de
+      verdad pero no lo era: la cara en otro sitio, el rabo del bocadillo en otro lado. Ahora
+      todos salen de LOGOS/LOGO_PEDIBOT_CARA.jpg con scripts/make_icons.py. */}
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/logo-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="alternate" type="application/rss+xml" title="PediBot guides" href={`${langPrefix(lang)}/rss.xml`} />
   {/* The map written for the assistants that answer questions from the web. It was
       orphaned — mentioned only in a robots.txt COMMENT, which no crawler reads — and in
@@ -143,7 +148,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <header class={`bar${LABEL_LARGO.has(lang) ? " larga" : ""}`}>
     <div class="wrap bar-in">
       <a class="brand" href={langPrefix(lang) || '/'}>
-        <img src="/logo.svg" width="34" height="34" alt="" />
+        <img src="/logo.png" width="34" height="34" alt="" />
         pedibot
       </a>
       <nav class="hide-sm">
