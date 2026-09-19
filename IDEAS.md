@@ -245,3 +245,39 @@ sí puede justificar una regla escrita, con su documento detrás y su prueba.
 |---|---|---|---|
 | I-24 | **Licenciar el motor de triaje** a aseguradoras, hospitales y consultas privadas para el primer filtro y la clasificación de pacientes | Sostiene el proyecto sin tocar lo que lo hace honesto: para el padre sigue siendo gratis, sin anuncios y sin venta de datos | nueva (operador, 19-sep). Antes hace falta: medir la concordancia del triaje con la clasificación de un profesional, y decidir la forma legal (producto sanitario en la UE si se usa para decidir sobre pacientes) |
 | I-25 | **Medir el triaje contra un pediatra** en un lote de casos reales | Es el requisito de I-24 y además mejora el producto gratis: sin esa medida no hay conversación posible con una institución | nueva; necesita a los pediatras revisores de W-06 |
+
+## I-26 · Backable, la vía sin curar de MetaDAO (20-sep-2026)
+
+La solicitud curada se envió el 20-sep-2026. Su propio acuse dice dos cosas que conviene leer
+juntas: que el proceso curado «no es muy distinto de un VC», y que **no recibir respuesta es lo
+normal**. Recomiendan la vía sin permiso, backable.biz, y ahí no hay que esperar a nadie.
+
+Mecánica, de su guía y su FAQ:
+
+- objetivo entre 10.000 y 2.000.000 $; **el 80 % va a tesorería y el 20 % a liquidez**, así que
+  lo que la empresa puede gastar es el 80 % de lo que se pide;
+- presupuesto mensual topado en **objetivo ÷ 6**, y gastar por encima del presupuesto exige una
+  propuesta aprobada por el mercado;
+- si no se llega al objetivo, cada uno reclama el 100 % de lo suyo (la reclamación no es
+  automática); los 15 $ del borrador no se devuelven;
+- el paquete del fundador se bloquea **18 meses** y luego se abre en cinco tramos a 2x, 4x, 8x,
+  16x y 32x del precio de entrada, y sólo mientras la media de tres meses aguante por encima del
+  umbral. Si nunca llega a 2x, no se abre nada;
+- la entidad legal la forma MetaLeX dentro del propio flujo, sin coste aparte;
+- una venta de la empresa o un cierre exigen propuesta, diciendo qué pasa con tesorería, paquete
+  y propiedad intelectual;
+- cada ronda publica un `agents.md` para que la lean los asistentes. Aquí ya existe `llms.txt`:
+  es el mismo gesto y encaja solo.
+
+**La cuenta que hay que hacer antes de nada.** El plan aprobado son 210.000 $ de gasto, 17.500 al
+mes durante un año. Con un objetivo de 210.000 la tesorería serían 168.000, o sea 14.000 al mes.
+Para que el plan salga tal cual está escrito, el objetivo tiene que ser **262.500 $**: el 80 % de
+eso son los 210.000 de siempre, y el resto se queda en liquidez sin llegar nunca a la empresa.
+Eso se dice en una frase y se entiende; lo que no se puede es pedir 210.000 y prometer 17.500 al
+mes, porque no salen.
+
+Los seis capítulos del asistente son Company, Raise, Pitch, Controls, Legal y Review. Los cinco
+primeros están casi escritos: el memo de /memo es el Pitch, el desglose del gasto es el Raise, y
+los riesgos ya están redactados. Lo que **no** está decidido y es suyo: qué cartera firma y si va
+sola o con varias firmas (Controls), y si se forma la entidad de MetaLeX o se usa una propia
+(Legal).

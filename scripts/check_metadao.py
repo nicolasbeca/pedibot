@@ -50,7 +50,7 @@ CIFRAS = {
             "countries", {}
         )
     ),
-    "568 guides": lambda: len(list((RAIZ / "web" / "content").rglob("*.md"))),
+    "507 guides": lambda: len(list((RAIZ / "web" / "content").rglob("*.md"))),
     # 19-sep-2026: el texto decía 48 y eran 49. Era la única cifra escrita a mano de todas,
     # y por eso fue la única que se quedó vieja. Aquí se cuenta como las demás.
     "49 African countries": lambda: len(
@@ -125,7 +125,7 @@ CIFRAS = {
     "83 red flags": lambda: len(
         yaml.safe_load((RAIZ / "config" / "red_flags.yaml").read_text(encoding="utf-8"))["rules"]
     ),
-    "496 documents": lambda: len(
+    "497 documents": lambda: len(
         json.loads((RAIZ / "dataset" / "sources.json").read_text(encoding="utf-8"))
     ),
     "seven countries": lambda: len(

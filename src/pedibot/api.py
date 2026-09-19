@@ -5,6 +5,7 @@ Bind to 127.0.0.1 behind Caddy (PRD §8). The engine is injected so tests can us
 
 from __future__ import annotations
 
+import json
 import re
 import secrets
 import time
@@ -275,7 +276,24 @@ def create_app(
 
     @app.get("/api/stats")
     def stats(days: int = 7) -> dict[str, object]:
-        return ops.stats(days=days)
+        """Lo del chat, en vivo, y lo del sitio, de lo que dejó `ops/publish_stats.py`.
+
+        19-sep-2026: esta direccion se cita fuera como «aqui estan las cifras de uso», y lo unico
+        que enseñaba eran las respuestas del chat de siete dias. El chat es una herramienta de
+        siete: quien quiere el calendario de vacunas de Kenia abre la pagina y no pregunta nada.
+        Asi que quien enlaza esto veia dos respuestas donde hay cientos de visitas, que es la
+        peor forma posible de enseñar una cifra verdadera.
+
+        Las visitas no se calculan aqui: salen del registro de Caddy con `journalctl`, que tarda
+        demasiado para una peticion publica. Si el fichero no esta, se sirve lo de siempre.
+        """
+        fuera = ops.stats(days=days)
+        publicado = ROOT / "data" / "public_stats.json"
+        try:
+            fuera |= json.loads(publicado.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            pass
+        return fuera
 
     @app.post("/api/team", status_code=204)
     async def team(request: Request) -> Response:

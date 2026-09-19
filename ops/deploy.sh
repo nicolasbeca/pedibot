@@ -50,6 +50,11 @@ else
   fi
 fi
 
+# Una guía regenerada deja una dirección redirigida, y el fichero viejo no puede viajar:
+# subirlo lo resucita en el servidor, que ya lo había retirado. Ver ops/retire_dead_guides.py.
+echo "== guías muertas (dirección redirigida)"
+(cd "$ROOT" && uv run python ops/retire_dead_guides.py)
+
 echo "== code (+ site sources for the rebuild on the server)"
 tar czf - --exclude='__pycache__' --exclude='.pytest_cache' --exclude='.mypy_cache' --exclude='.ruff_cache' \
   src config scripts eval pyproject.toml uv.lock Makefile README.md ops web/content \
@@ -80,6 +85,9 @@ sudo -u pedibot bash -c 'cd /opt/pedibot/web/site && if [ ! -d node_modules ] ||
 # carpeta web/site/scripts, que el despliegue no copiaba— el servidor se quedó con el sitio de
 # antes, el error pasó entre las demás líneas y el despliegue llegó hasta «done». Todo verde y
 # nada desplegado. Ahora manda el build: si falla, esto para aquí.
+# Las cifras de uso, antes de construir: /memo las lee del fichero al construirse, y sin esto
+# la pagina saldria con las del ultimo paso del temporizador o sin ninguna. Si falla, se sigue.
+sudo -u pedibot bash -c 'cd /opt/pedibot && ~/.local/bin/uv run --no-dev python ops/publish_stats.py' || echo '   (sin cifras de uso esta vez)'
 if ! sudo -u pedibot bash -c 'set -o pipefail; cd /opt/pedibot && ~/.local/bin/uv run --no-dev python scripts/export_catalog.py >/dev/null && cd web/site && SITE_URL=https://pedibot.xyz npm run build 2>&1 | tee /tmp/pedibot_build.log | grep -E "page\(s\)|rror"'; then
   echo "== EL SITIO NO SE HA CONSTRUIDO: lo que hay desplegado sigue siendo lo de antes"
   sudo -u pedibot tail -20 /tmp/pedibot_build.log 2>/dev/null || true
@@ -102,7 +110,7 @@ cp /opt/pedibot/ops/Caddyfile /etc/caddy/Caddyfile
 # admin panel password: created once (ops/README), hash kept outside the repo
 if [ -f /etc/caddy/admin.hash ]; then sed -i "s|__ADMIN_HASH__|$(cat /etc/caddy/admin.hash)|" /etc/caddy/Caddyfile; else sed -i '/@admin path/,/^	}/d' /etc/caddy/Caddyfile; echo '!! no /etc/caddy/admin.hash: /admin disabled'; fi
 systemctl daemon-reload
-systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-acp.service pedibot-watchdog.timer pedibot-backup.timer pedibot-token.timer pedibot-token-alert.timer pedibot-weekly.timer pedibot-daily.timer pedibot-tweets.timer pedibot-indexnow.timer pedibot-gsc.timer pedibot-social-project.timer pedibot-social-guides.timer pedibot-publish.timer >/dev/null 2>&1 || true
+systemctl enable --now pedibot-api.service pedibot-telegram.service pedibot-acp.service pedibot-watchdog.timer pedibot-backup.timer pedibot-token.timer pedibot-token-alert.timer pedibot-weekly.timer pedibot-daily.timer pedibot-tweets.timer pedibot-indexnow.timer pedibot-gsc.timer pedibot-social-project.timer pedibot-social-guides.timer pedibot-publish.timer pedibot-stats.timer >/dev/null 2>&1 || true
 systemctl restart pedibot-api.service pedibot-telegram.service pedibot-acp.service
 # Si la configuración no valida NO se recarga —eso dejaría el sitio caído— pero hay que decirlo:
 # hasta el 7-sep-2026 el error se iba a /dev/null y el despliegue seguía imprimiendo «done»,

@@ -1,0 +1,10 @@
+[Unit]
+Description=PediBot: publica las cifras de uso del sitio en data/public_stats.json
+
+[Service]
+Type=oneshot
+User=pedibot
+WorkingDirectory=/opt/pedibot
+EnvironmentFile=/opt/pedibot/.env
+Environment=PYTHONIOENCODING=utf-8
+ExecStart=/opt/pedibot/.local/bin/uv run --no-dev python ops/publish_stats.py

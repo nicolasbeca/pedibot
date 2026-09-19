@@ -652,6 +652,15 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         ["adolescente"],
     ),
     ("who", "https://www.who.int/news-room/fact-sheets/detail/malaria", "general", "en", ["todas"]),
+    # 19-sep-2026: la guía inglesa de la polio salió citando sólo al RKI alemán, que su
+    # lector no puede abrir. La ficha de la OMS ya estaba en ruso y en árabe; faltaba ésta.
+    (
+        "who",
+        "https://www.who.int/news-room/fact-sheets/detail/poliomyelitis",
+        "vacunas",
+        "en",
+        ["todas"],
+    ),
     # ---------------- العربية (fase árabe, 3-sep-2026) ----------------
     # Arabic is another of the WHO's six official languages, so the same fact sheets exist
     # under the same licence. All fifteen checked for a 200 before being listed.
@@ -2501,7 +2510,14 @@ def main() -> int:
                     "usage": org["usage"],
                     "age_groups": ages,
                     "url": url,
-                    "notes": f"licence: {org['license']}; fetched {dt.date.today().isoformat()}",
+                    # La fecha es la del FICHERO, no la de hoy. Sellar con hoy un documento
+                    # servido de la caché ponía «fetched» de hoy en 426 entradas que no se
+                    # habían vuelto a descargar, y esa fecha se le enseña al lector en
+                    # /sources como «cuándo se comprobó» (20-sep-2026).
+                    "notes": (
+                        f"licence: {org['license']}; fetched "
+                        + dt.date.fromtimestamp(path.stat().st_mtime).isoformat()
+                    ),
                 }
             )
     CATALOG.write_text(

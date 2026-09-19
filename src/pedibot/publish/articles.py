@@ -376,7 +376,15 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "hepatitis B niños transmisión vacuna hepatitis B children vaccine",
     },
     "poliomielitis": {
-        "docs": ["rki_de_ratgeber_poliomyelitis", "who_ar_poliomyelitis", "who_ru_poliomyelitis"],
+        # 20-sep-2026: sin la ficha inglesa, la guía inglesa salía citando sólo al RKI
+        # alemán, que su lector no puede abrir. La lista de anclas es la que manda aquí:
+        # tener el documento en el índice no basta si el plan del tema no lo nombra.
+        "docs": [
+            "who_en_poliomyelitis",
+            "rki_de_ratgeber_poliomyelitis",
+            "who_ar_poliomyelitis",
+            "who_ru_poliomyelitis",
+        ],
         "query": "poliomielitis vacuna parálisis niños polio vaccine paralysis",
     },
     "vacunas_atrasadas": {

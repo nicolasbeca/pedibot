@@ -803,3 +803,54 @@ treinta días y ningún rastreador lo visitó, porque el rastreo sigue los enlac
 `/sources`, que es la página de «de dónde sale esto», con una frase delante que dice lo que es.
 El candado se reescribió para defender **que el enlace exista**, no dónde está: una prueba que
 fija el sitio exacto impide justamente esta clase de arreglo.
+
+## L196 · Una cifra contada del fichero parecido está tecleada, no contada (19-sep-2026)
+
+El memo de una página se escribió con la regla de siempre: ningún número a mano, todos contados
+al construir de los ficheros de los que vive el sitio. Salió con tres mal a la vez.
+
+Las reglas de alarma las contaba en `checklist.json`, que es otra cosa y tiene cinco claves: el
+memo anunciaba **5 reglas** donde hay 83. Los documentos los contaba en el catálogo interno del
+sitio, que lleva tres que no se pueden redistribuir: **499** donde todo lo demás dice 496, tres
+que nadie podría ir a comprobar. Y «48 African countries» estaba escrito a mano, que era la única
+cifra tecleada de todas y por eso la única que se había quedado vieja: son 49.
+
+Contar no es leer un fichero con el nombre adecuado. Es leer **el mismo fichero del que lo lee
+quien lo afirma fuera**, y si hay dos copias parecidas, decidir cuál es la que se cita y atarlas
+con una prueba. Aquí el catálogo público y su copia en `public/` se comparan ahora en un test,
+porque el memo cuenta de una y la respuesta de financiación cita la otra.
+
+## L197 · Un despliegue que dice «manda lo mío» resucita lo que el servidor ya había enterrado (19-sep-2026)
+
+El publicador hace lo correcto: al regenerar una guía con mejor título, redirige la dirección
+vieja y borra el fichero viejo. En el servidor. Y `deploy.sh --no-pull` significa «la copia local
+manda», así que en cada despliegue volvían a subir los ficheros que el servidor había retirado
+semanas antes. Uno detrás de otro, hasta **61**.
+
+No se vio nunca porque la redirección gana: quien abría la dirección vieja llegaba bien a la
+nueva. Lo que salió torcido fue el recuento, que no lo mira nadie hasta que se usa fuera. La web
+decía 568 guías y las que un lector podía abrir eran 507, y esa cifra ya estaba escrita en una
+solicitud de financiación.
+
+Lo cazó el memo: como cuenta del directorio del servidor al construirse allí, dijo 568 donde el
+texto decía 502, y al ir a cuadrarlos apareció lo otro. Una cifra que se calcula sola en dos
+sitios distintos es un careo permanente; una escrita a mano no discute con nadie.
+
+La regla queda en el despliegue y no sólo en un test: un fichero de guía cuya dirección está
+redirigida está muerto por definición y se retira **antes de subir**, porque el test mira esta
+copia y lo que importa es lo que sale hacia el servidor.
+
+## L198 · Enseñar una cifra cierta de forma que parezca que escondes el resto (19-sep-2026)
+
+La solicitud decía, y es verdad, «las cifras de uso están publicadas en /api/stats». Quien abría
+esa dirección veía `{"days":7,"answers":2}`: dos respuestas del chat en siete días, justo encima
+de otra respuesta que hablaba de 337 visitantes.
+
+Las dos cifras eran ciertas. El chat es una herramienta de siete, y lo que la gente abre son los
+calendarios, las urgencias y las curvas, donde no hay nada que preguntar. Pero el enlace se daba
+como prueba, y lo que probaba era lo contrario de lo que decía el texto.
+
+Un enlace de «compruébalo tú mismo» que enseña la peor mitad de la verdad cuesta más que no
+enseñar nada: el lector no concluye «esto es una parte», concluye «me han contado lo bueno». Se
+arregló por el lado bueno, que es que el contador enseñe también las visitas, en vez de por el
+cómodo, que era cambiar la frase.

@@ -76,6 +76,30 @@ const paisesAfrica = AFRICA.filter(
   (c) => c in (emergency as Record<string, unknown>) && c in (vaccines as Record<string, unknown>),
 ).length;
 
+/**
+ * Las cifras de uso no son de un fichero de datos del sitio: las escribe `ops/publish_stats.py`
+ * cada seis horas (visitas) y `ops/gsc_refresh.py` a diario (buscador), y las dos viven en
+ * `data/`, que existe en el servidor, que es donde se construye esto. Si faltan, el parrafo se
+ * escribe sin numeros y remite al contador publico: mejor eso que publicar los de hace un mes.
+ */
+const leerJson = (rel: string): any => {
+  try {
+    return JSON.parse(leer(rel));
+  } catch {
+    return null;
+  }
+};
+const uso = leerJson('data/public_stats.json');
+const buscador = leerJson('data/gsc.json');
+const sitio = uso?.site ?? null;
+const chat = uso?.chat_all_time ?? null;
+const n = (x: number) => x.toLocaleString('en-GB');
+// la frase de «van a mirar quien hay detras antes de usarlo» solo se escribe si sigue siendo
+// verdad: se comprueba que /legal y /sources esten entre las seis paginas mas vistas
+const masVistas: string[] = (sitio?.top_pages ?? []).slice(0, 6).map((p: any) => p.page);
+const desconfian =
+  masVistas.some((u) => u.startsWith('/legal')) && masVistas.some((u) => u.startsWith('/sources'));
+
 const hoy = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 
@@ -127,16 +151,30 @@ const hoy = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'lon
     </p>
 
     <h2>Where it stands, without dressing up</h2>
-    <p>
-      Live since 25 August, announced nowhere. In the first weeks: <b>337 people</b> with a real
-      browser, 531 visits, 1,943 page views; a third looked at more than one page and the median
-      time on the site is 93 seconds. The third and fourth most visited pages are the legal page
-      and the sources page, which is people checking whether they can trust it before using it.
-      The chat itself has answered ten questions from real people. Google has shown the site 1,827
-      times in 28 days, at an average position of 65, for queries the site answers exactly.
-      Revenue: none. Model spend since August: <b>0.22 dollars</b>, because almost nothing here is
-      generated.
-    </p>
+    {sitio ? (
+      <p>
+        Live since 25 August, announced nowhere. So far: <b>{n(sitio.visitors)} people</b> with a
+        real browser, {n(sitio.visits)} visits, {n(sitio.views)} page views;
+        {' '}{n(sitio.read_more_than_one_page)} of them opened more than one page
+        {sitio.median_seconds ? `, and the median time on the site is ${sitio.median_seconds} seconds` : ''}.
+        {desconfian
+          ? ' The legal page and the sources page are among the six most visited, which is people checking whether they can trust it before they use it.'
+          : ''}
+        {chat ? ` The chat itself, which is one tool out of seven, has answered ${n(chat.answers)} questions from real people.` : ''}
+        {buscador
+          ? ` Google has shown the site ${n(buscador.impressions)} times in ${buscador.days} days, at an average position of ${Math.round(buscador.position)}, for queries this site answers exactly.`
+          : ''}
+        {' '}Revenue: none.
+        {chat ? ` Model spend since August: ${chat.cost_usd} dollars, because almost nothing here is generated.` : ''}
+      </p>
+    ) : (
+      <p>
+        Live since 25 August, announced nowhere. The usage figures are published live at
+        {' '}<a href="/api/stats">/api/stats</a>, counted from the server's own access log, and
+        they are small: this has not been announced anywhere yet. They are not reproduced here
+        because a number typed into a page is a number that goes stale.
+      </p>
+    )}
 
     <h2>How it sustains itself</h2>
     <p>
@@ -161,6 +199,18 @@ const hoy = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'lon
       the triage measured against paediatricians and the number published, good or bad; the eight
       languages reviewed by native speakers; the app on Android; one institutional pilot signed;
       and the usage figures still public and unpolished.
+    </p>
+
+    <h2>What could go wrong</h2>
+    <p>
+      The usage is small and it may stay small: a site nobody arrives at helps nobody, and so far
+      I have announced it nowhere. The clinical measurement may come back showing my triage
+      disagrees with paediatricians more often than I expect, and I will publish that number
+      whatever it says, which is a risk I am taking on purpose. The licensing path depends on how
+      a European regulator classifies an engine like this, and that can take longer than a year.
+      And it is one person: if I stop, the site keeps serving what it already has, but nothing
+      new gets built. Money fixes the second and third of those. It does not fix the first, and
+      I am not going to pretend otherwise by buying traffic.
     </p>
 
     <h2>Who</h2>

@@ -1,0 +1,10 @@
+[Unit]
+Description=PediBot: cifras de uso al día, cada seis horas
+
+[Timer]
+OnCalendar=*-*-* 02,08,14,20:10:00 Europe/Madrid
+Persistent=true
+Unit=pedibot-stats.service
+
+[Install]
+WantedBy=timers.target

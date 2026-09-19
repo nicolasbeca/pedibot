@@ -28,7 +28,7 @@ PediBot exists because my son had a difficult first few months and I could not f
 
 So I started building it, in January of this year, alone, in my own time and out of my own pocket. The site you can open today has been live since the end of August.
 
-Since then: emergency numbers for 88 countries, vaccination schedules for 61, WHO growth charts for 69, 568 guides in eight languages, 496 paediatric documents catalogued with their licences read one by one, and 8,876 automated tests. I describe all of it in the next answer. I mention the test count here for one reason: in this project a bug is a wrong emergency number, and the only way to stop shipping one is to make every rule prove itself on every change.
+Since then: emergency numbers for 88 countries, vaccination schedules for 61, WHO growth charts for 69, 507 guides in eight languages, 496 paediatric documents catalogued with their licences read one by one, and 8,966 automated tests. I describe all of it in the next answer. I mention the test count here for one reason: in this project a bug is a wrong emergency number, and the only way to stop shipping one is to make every rule prove itself on every change.
 
 It does not diagnose. It quotes, it names the source, it links the original, and when nothing in its sources supports an answer it says so instead of filling the gap. That last rule is the whole project. Anyone can build something that always has an answer.
 
@@ -40,7 +40,7 @@ Second, I know exactly what this is not. It is not a medical device. It is not a
 
 That does not mean it can never pay for itself. It can, from the other side: the engine underneath is deterministic on purpose, which makes it the kind of thing an institution can audit and stand behind, and that is what I would licence. The details are in the funding answer. What will not happen is charging the parent.
 
-Third, the work is already given away. The catalogue of those 496 documents, the classification, the licences, the topic taxonomy, months of reading, belongs to nobody: I put it in the public domain and anyone can download it from the site. If I disappear tomorrow, someone else picks it up. That is not generosity. It is the only honest way to build something whose value is that it exists, not that I own it.
+Third, the work is already given away. The catalogue of those 497 documents, the classification, the licences, the topic taxonomy, months of reading, belongs to nobody: I put it in the public domain and anyone can download it from the site. If I disappear tomorrow, someone else picks it up. That is not generosity. It is the only honest way to build something whose value is that it exists, not that I own it.
 
 Now the part that matters, and I will be direct with you, because you are going to read a lot of applications this month.
 
@@ -64,9 +64,9 @@ Everything is at https://pedibot.xyz. The sources page lists every document. The
 
 PediBot is a free site that answers parents' questions about a sick child using only what paediatric societies, health ministries and the WHO already publish for families. Every answer carries the document it came from and a link to it, and there is no diagnosis anywhere in it.
 
-At the centre is a chat that answers in eight languages, with each claim followed by the organisation, the document and a link the reader can open. Behind it sit 496 catalogued paediatric documents, each with its licence read one by one. But the part that matters is what happens before the model is asked anything: a layer of fixed rules, 83 red flags, decides urgency first. If what the parent describes matches one, the first thing they see is the warning and their country's emergency number, not a paragraph. And drug doses never come from a model at all. They are looked up in published tables, by weight, with the brands actually sold in each country.
+At the centre is a chat that answers in eight languages, with each claim followed by the organisation, the document and a link the reader can open. Behind it sit 497 catalogued paediatric documents, each with its licence read one by one. But the part that matters is what happens before the model is asked anything: a layer of fixed rules, 83 red flags, decides urgency first. If what the parent describes matches one, the first thing they see is the warning and their country's emergency number, not a paragraph. And drug doses never come from a model at all. They are looked up in published tables, by weight, with the brands actually sold in each country.
 
-Around that there is a set of tools that are just data, carefully transcribed and always attributed. Emergency numbers for 88 countries, each with the government source it came from, including the handful where the honest answer is that there is no number to give. Childhood vaccination schedules for 61 countries, transcribed from the official documents, with the ministry that issues each one and the date it was checked. WHO growth charts for 69 countries, with the percentile worked out on the device. A dosing calculator for paracetamol and ibuprofen. And 568 guides in eight languages, every one citing documents a reader can open.
+Around that there is a set of tools that are just data, carefully transcribed and always attributed. Emergency numbers for 88 countries, each with the government source it came from, including the handful where the honest answer is that there is no number to give. Childhood vaccination schedules for 61 countries, transcribed from the official documents, with the ministry that issues each one and the date it was checked. WHO growth charts for 69 countries, with the percentile worked out on the device. A dosing calculator for paracetamol and ibuprofen. And 507 guides in eight languages, every one citing documents a reader can open.
 
 Since this week there is also an optional account. You save each child's date of birth, and then you ask "what vaccines are due for Laura?" and it answers for Laura's age. You can record her weight and height and see her own curve on the WHO bands, and send her next appointments to your phone's calendar. The account is optional, nothing else on the site needs one, and you can download everything or delete it from a button.
 
@@ -78,11 +78,11 @@ But mostly it is for the places where there is no paediatrician to call at night
 
 It is also for families living where nobody speaks their language. A Moroccan family in Madrid needs the Spanish number and the explanation in Arabic, and that is written into the code: the country shown first is the reader's, not the language's.
 
-And there is a second audience you will care about more. Millions of parents are already putting these questions to a language model, and it answers with whatever it happens to hold. If it is going to answer anyway, let it cite something real. That is why the catalogue of 496 documents is published as CC0, public domain, downloadable from the site; why there is a machine-readable map of the project written for those assistants; and why PediBot offers its tools as an agent on an agent marketplace. Anyone can take all of that and build on it without asking me.
+And there is a second audience you will care about more. Millions of parents are already putting these questions to a language model, and it answers with whatever it happens to hold. If it is going to answer anyway, let it cite something real. That is why the catalogue of 497 documents is published as CC0, public domain, downloadable from the site; why there is a machine-readable map of the project written for those assistants; and why PediBot offers its tools as an agent on an agent marketplace. Anyone can take all of that and build on it without asking me.
 
 Who it is not for. It is not for someone looking for a diagnosis, because it does not give one. It is not a clinical tool and it is not aimed at professionals. It does not replace a paediatrician or an emergency department, and it says so on every page and in every answer. If your health service says something different, your health service is right.
 
-Where this actually stands today, with no dressing up. I finished this week's work this week, and I have announced it nowhere. In the last seven days two real people used it. I am not going to sell you traction that does not exist. What exists is the thing itself, built, running and tested to the point of obsession, and eighty-eight countries' worth of data that nobody had gathered in one free place in eight languages. What is missing is for anyone to know it is there.
+Where this actually stands today, with no dressing up. There has been no launch, no advertising and not one post in a parenting community, and even so a few hundred parents have found it in three weeks and the ones who arrive stay and read, which is the part I did not take for granted. The figures are in the traction answer and I have not rounded any of them up. What the chat itself has handled is a handful of conversations, and I am not going to dress that up either: the tools around it are what people actually open. What exists is the thing itself, built, running and tested to the point of obsession, and eighty-eight countries' worth of data that nobody had gathered in one free place in eight languages. What is missing is for people to know it is there.
 
 And when they do, this is who is on the other side: a mother in Kisumu at three in the morning, with no credit on her phone, watching how her daughter is breathing and with nobody to ask. That is not a market. That is the person it is built for.
 
@@ -168,7 +168,7 @@ In terms of what that token is and is not: it gives no ownership of the project.
 
 The team allocation starts unlocking on 27 October. If that is a problem for what you propose, tell me what you need and I will do it: lock it, burn it, or hand it over. I am not going to defend a position that was created before the product existed.
 
-And what I learned from all that is exactly why I am here in this way. Asking for money before you have something is not fundraising, it is noise, and nothing gets built on top of noise. I did it too early, with the product half made, and it went the way it had to go. Afterwards I went quiet, paid for it myself, and I come to you now with the thing working, eighty-eight countries of data inside it and 8,876 tests holding it up. This time I am not showing you an idea. I am showing you what is already built.
+And what I learned from all that is exactly why I am here in this way. Asking for money before you have something is not fundraising, it is noise, and nothing gets built on top of noise. I did it too early, with the product half made, and it went the way it had to go. Afterwards I went quiet, paid for it myself, and I come to you now with the thing working, eighty-eight countries of data inside it and 8,966 tests holding it up. This time I am not showing you an idea. I am showing you what is already built.
 
 ---
 
@@ -182,7 +182,7 @@ En el campo pequeño de la cantidad va, sin puntos ni comas: 210000
 
 Where it goes.
 
-Clinical review by paediatricians, 40,000. This is the most important item on the list. Paying practising paediatricians to go through the 83 red flags one by one, to review a sample of the guides, and above all to measure how closely my triage agrees with the classification they would make of the same cases. Today the triage is tested against itself, with 8,876 automated tests, and that proves it does what it says, not that what it says is right. Only a clinician closes that gap.
+Clinical review by paediatricians, 40,000. This is the most important item on the list. Paying practising paediatricians to go through the 83 red flags one by one, to review a sample of the guides, and above all to measure how closely my triage agrees with the classification they would make of the same cases. Today the triage is tested against itself, with 8,966 automated tests, and that proves it does what it says, not that what it says is right. Only a clinician closes that gap.
 
 Native-speaker review of the eight languages, 15,000. Arabic, Hindi and Swahili above all, which are the ones I cannot judge myself. The Swahili bug I described earlier, the one that silenced a warning about a child with blue lips, I found by accident. I do not want to find the next one by accident.
 

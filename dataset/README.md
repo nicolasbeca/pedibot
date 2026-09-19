@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**496 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**497 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,18 +30,18 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (178 of 496 do) |
+| `year` | where the document states one (178 of 497 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (448 of 496 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (449 of 497 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
 
 | organisation | documents |
 |---|---|
-| WHO — World Health Organization | 213 |
+| WHO — World Health Organization | 214 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 74 |
 | NHS — NHS (National Health Service, England) | 69 |
 | CDC — Centers for Disease Control and Prevention (USA) | 38 |
@@ -67,7 +67,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 188 |
+| English (`en`) | 189 |
 | Spanish (`es`) | 102 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 49 |
@@ -84,7 +84,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `digestivo` | 62 |
 | `piel` | 54 |
 | `accidentes` | 46 |
-| `vacunas` | 42 |
+| `vacunas` | 43 |
 | `general` | 33 |
 | `alimentacion` | 28 |
 | `desarrollo` | 22 |

@@ -215,6 +215,8 @@ _REVISADAS = {
     # 16-sep-2026, con las guías regeneradas: «нос» coge «носа», que es su propio genitivo
     # («de la nariz»). «gehör» NO se queda: cogía «gehören», que es pertenecer.
     "нос",
+    # 19-sep-2026, con las 66 guías traídas del servidor: «piqûre» coge «piqûres», su plural.
+    "piqûre",
 }
 
 
