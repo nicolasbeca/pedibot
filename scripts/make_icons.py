@@ -100,17 +100,35 @@ def main() -> int:
     (APP).mkdir(parents=True, exist_ok=True)
     hechos: list[str] = []
 
-    def guarda(destino: pathlib.Path, lado: int, fondo: tuple[int, int, int] | None = None) -> None:
+    def guarda(
+        destino: pathlib.Path,
+        lado: int,
+        fondo: tuple[int, int, int] | None = None,
+        colores: int = 0,
+    ) -> None:
         img = limpio.resize((lado, lado), Image.LANCZOS)
         if fondo is not None:
             img = _sobre_fondo(img, fondo)
+        elif colores:
+            # A 512 px, un PNG en color de 24 bits de este dibujo pesa 168 kB. El dibujo tiene
+            # CUATRO colores; los once mil que cuenta Pillow son el degradado del antialiasing
+            # en los bordes. Con paleta baja el peso a la vigésima parte y a simple vista no
+            # cambia nada. No es una manía: la portada entera pesa 17,8 kB comprimida y este
+            # proyecto va a Lagos y a Delhi, donde un icono de 168 kB es media página.
+            # FASTOCTREE y no MEDIANCUT: es el único de Pillow que sabe cuantizar con canal
+            # alfa, y aquí la transparencia es la mitad del icono
+            img = img.quantize(colors=colores, method=Image.Quantize.FASTOCTREE)
         destino.parent.mkdir(parents=True, exist_ok=True)
-        img.save(destino)
-        hechos.append(f"{destino.relative_to(RAIZ)} ({lado}px)")
+        img.save(destino, optimize=True)
+        hechos.append(f"{destino.relative_to(RAIZ)} ({lado}px, {destino.stat().st_size / 1024:.1f} kB)")
 
     # ── la web ────────────────────────────────────────────────────────────────────────────────
-    guarda(WEB / "logo.png", 512)
-    guarda(WEB / "logo-192.png", 192)
+    guarda(WEB / "logo.png", 512, colores=64)
+    guarda(WEB / "logo-192.png", 192, colores=64)
+    # el de la cabecera se pinta a 34 px y el de la bienvenida a 72: pedir el de 512 para eso
+    # es mandar medio megabyte por una cara del tamaño de una uña
+    guarda(WEB / "logo-144.png", 144, colores=32)
+    guarda(WEB / "logo-72.png", 72, colores=32)
     # apple-touch-icon no admite transparencia: iOS la pinta de negro
     guarda(WEB / "apple-touch-icon.png", 180, fondo=(255, 255, 255))
     limpio.resize((256, 256), Image.LANCZOS).save(
