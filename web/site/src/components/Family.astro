@@ -208,7 +208,7 @@ const paises = countryOptions(countryCodes as string[], lang);
           <div class="f"><label>${esc(T.date)}</label><input type="date" name="date" required /></div>
           <div class="f"><label>${esc(T.weight)} (kg)</label><input type="number" name="weight_kg" step="0.01" min="0.5" max="150" /></div>
           <div class="f"><label>${esc(T.height)} (cm)</label><input type="number" name="height_cm" step="0.1" min="20" max="230" /></div>
-          <div class="f"><label>${esc(T.head)} (cm)</label><input type="number" name="head_cm" step="0.1" min="20" max="80" /></div>
+          <div class="f"><label>${esc(T.head)} (cm) <small>${esc(T.head_note)}</small></label><input type="number" name="head_cm" step="0.1" min="20" max="80" /></div>
         </div>
         <p class="acciones"><button class="btn btn-ghost" type="submit">${esc(T.add_measure)}</button></p>
       </form>`;
@@ -308,6 +308,10 @@ const paises = countryOptions(countryCodes as string[], lang);
   .opt { border-inline-start: 3px solid var(--mint-2); padding-inline-start: 12px; margin: 14px 0 22px; }
   .card { border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: var(--paper); margin-top: 16px; }
   .f { display: grid; gap: 4px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .85rem; }
+  /* El perímetro craneal se guarda y se exporta, pero no se dibuja: las tablas de la OMS
+     para eso no están en el proyecto (I-23). El campo lo dice en vez de dejar que se
+     suponga. */
+  .f small { font-weight: 400; color: var(--ink-3); font-size: .78rem; }
   .f input, .f select {
     font: inherit; font-weight: 400; font-family: "Atkinson Hyperlegible", sans-serif;
     border: 1px solid var(--line); background: var(--paper); color: var(--ink);

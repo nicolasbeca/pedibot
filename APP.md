@@ -270,7 +270,7 @@ Los días son días de trabajo míos, seguidos, sin contar lo que tarda la tiend
 | **F3** | Lo nativo: llamada de un toque, compartir, cámara, y el diario en el dispositivo. | 2 |
 | **F4** | Recordatorios de vacunas (fecha de nacimiento local, notificaciones, el ajuste para apagarlos). | 3 |
 | **F5** | Pulido móvil (§5) y pruebas en pantallas pequeñas de verdad. | 3 |
-| **F6** | Fichas de tienda en los 8 idiomas, capturas, textos, formularios de privacidad. | 2 |
+| **F6** | Fichas de tienda en los 8 idiomas, capturas, textos, formularios de privacidad. | **casi hecha el 19-sep**: todo escrito y medido en `app/TIENDAS.md` (nombre, descripciones, palabras clave, los dos formularios de privacidad y las notas para el revisor de Apple). Faltan las capturas, que hay que hacer con la app delante, y seis traducciones de la descripción larga |
 | **F7** | Pruebas cerradas de Play (12 probadores, 14 días naturales) y TestFlight. | 14 días de reloj |
 | **F8** | Envío, revisión y respuesta a lo que rechacen. | 3–10 días de reloj |
 
