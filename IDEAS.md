@@ -211,7 +211,16 @@ tienda y una política de borrado. **Alto.**
 
 | Id | Idea | Estado |
 |---|---|---|
-| I-16 | **Ficha por hijo + historial de medidas, en el aparato** (extiende I-13): el chat y la calculadora dejan de preguntar edad y peso; la curva de crecimiento se dibuja con sus medidas | nueva (pedida por el operador 19-sep) |
-| I-17 | **Curva propia sobre las tablas de la OMS**: los puntos de ese niño a lo largo del tiempo, no un percentil suelto | nueva (19-sep) |
-| I-18 | **Calendario de vacunas con fechas reales** a partir de la fecha de nacimiento, y de ahí los recordatorios de la app (D-A3) | nueva (19-sep) |
-| I-19 | **Cuenta opcional para sincronizar entre aparatos**, cifrada en el cliente, con exportar y borrar | nueva (19-sep); decide el operador, cambia `/legal` y las dos fichas de tienda |
+| I-16 | **Ficha por hijo + historial de medidas** (extiende I-13): el chat deja de preguntar la edad y el peso; la curva se dibuja con sus medidas | **HECHA 19-sep**, y no «en el aparato»: el operador eligió la fase 2 directamente, con cuenta en el servidor |
+| I-17 | **Curva propia sobre las tablas de la OMS**: los puntos de ese niño a lo largo del tiempo, no un percentil suelto | **HECHA 19-sep** (`/api/growth/bands` + el SVG de `Family.astro`, sin bibliotecas) |
+| I-18 | **Calendario de vacunas con fechas reales** a partir de la fecha de nacimiento, y de ahí los recordatorios de la app (D-A3) | a medias: el chat ya contesta por la edad del hijo («¿qué vacunas le tocan a Laura?»); faltan las FECHAS en la ficha y el aviso |
+| I-19 | **Cuenta opcional**, con correo y contraseña, exportar y borrar | **HECHA 19-sep.** Decisión del operador: fase 2 directamente y sin cifrado en el cliente, «la cuenta puede ser simplemente un email y una contraseña». `/legal` reescrita en ocho idiomas: ya no dice «sin cuenta» sino «no hace falta cuenta». Queda pendiente lo que necesita correo saliente: verificar la dirección, recuperar la contraseña y el propio boletín |
+
+### Lo que la cuenta dejó pendiente (19-sep-2026)
+
+| Id | Idea | Por qué | Estado |
+|---|---|---|---|
+| I-20 | **Correo saliente** (Resend, Brevo, SES…) | Sin él no hay verificación de la dirección, ni «he olvidado mi contraseña», ni boletín: las tres cosas que la cuenta promete y todavía no puede | nueva; decide el operador el proveedor y quién paga |
+| I-21 | **Fechas reales de vacunas por hijo** y aviso antes de cada una | Es lo que convierte el calendario en algo que se usa dos veces al año en vez de leerse una | nueva; con D-A3 de `APP.md` |
+| I-22 | **La foto del hijo en su ficha** | Sale en las capturas que mandó el operador y es lo que hace que la pantalla parezca suya. Cuesta poco y obliga a decidir dónde se guarda una imagen de un menor | nueva |
+| I-23 | **Perímetro craneal sobre su tabla** | Se puede apuntar ya, pero no hay banda que dibujar: falta la tabla `hcfa` de la OMS en `who_growth.json` | nueva |

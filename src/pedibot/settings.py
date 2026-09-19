@@ -38,6 +38,15 @@ class Settings(BaseSettings):
     rate_limit_per_10min: int = 20
     rate_limit_per_day: int = 200
     ops_db_path: Path = ROOT / "data" / "pedibot_ops.db"
+    #: Las cuentas de familia, APARTE de la de operación y a propósito (19-sep-2026). La otra
+    #: abre su fichero prometiendo que no guarda datos personales, y lo cumple: sesiones
+    #: aleatorias e IP con sal. Esta guarda el nombre de un niño, su fecha de nacimiento y su
+    #: peso. Otro fichero, otro respaldo y otro borrado, y así la frase de la otra sigue siendo
+    #: verdad.
+    family_db_path: Path = ROOT / "data" / "pedibot_familias.db"
+    #: Cuántos intentos de entrar seguidos se admiten desde una IP antes de cerrar el paso un
+    #: rato. Una contraseña se adivina probando, y probar es gratis si nadie cuenta.
+    login_attempts_per_15min: int = 10
 
     # Telegram (public chatbot; alerts use TELEGRAM_BOT_TOKEN in ops/watchdog.py)
     telegram_public_bot_token: str = ""

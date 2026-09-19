@@ -695,3 +695,28 @@ tenían que verse distintos.
 `test_no_style_block_is_left_open.py` en los 161 bloques `<style>` del sitio. Antes de darla por
 buena, la prueba se ejecutó contra el fallo reintroducido a propósito: si no falla con el fallo
 puesto, no vale.
+
+## L191 · Una prueba que comparte la suposición del código no comprueba nada (19-sep-2026)
+Construyendo la curva de crecimiento de cada hijo hizo falta un extremo nuevo, `/api/growth/bands`,
+que devuelve las cinco bandas de percentiles de la OMS para poder dibujarlas. Se escribió con su
+prueba, y la prueba decía esto:
+
+    for meses, p50 in zip(datos["ages"], datos["bands"]["p50"]):
+        _, m, _ = tablas.lms("wfa_f", meses)     ← la misma tabla, con la misma unidad
+        assert p50 == pytest.approx(m)
+
+Pasaba. Y estaba mal: **las tablas de la OMS de 0 a 5 años están indexadas en DÍAS**, no en
+meses —de eso se encarga `assess`, que multiplica por 30,4375 antes de buscar—, y el extremo
+nuevo les pasaba meses. El P50 a los 18 meses salía **3,72 kg**, que es el peso de un bebé de
+dieciocho DÍAS. La prueba no lo vio porque preguntaba a la misma tabla con la misma unidad
+equivocada: comparaba el error consigo mismo.
+
+Tampoco lo vio la curva dibujada, y eso es lo más instructivo: como el gráfico reescala el eje
+vertical a lo que recibe, una curva que iba de 3,23 a 3,95 kg en cinco años **se veía
+perfectamente normal**. Lo cacé leyendo la cifra suelta en la consola después de desplegar.
+
+**La regla**: cuando lo que se comprueba es una conversión —de unidad, de escala, de formato—, la
+prueba tiene que traer el valor **de fuera**. Ahora compara contra las medianas publicadas por la
+OMS (una niña pesa 8,9 kg al año, un niño mide 87,1 cm a los dos), que cualquiera puede verificar
+sin abrir este repositorio, más un candado tonto que dice que el peso a los cinco años tiene que
+ser al menos cuatro veces el del nacimiento. Las dos habrían fallado con el fallo puesto.

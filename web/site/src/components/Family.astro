@@ -1,0 +1,311 @@
+---
+/**
+ * Tus hijos: el alta, la ficha de cada uno y su curva (19-sep-2026).
+ *
+ * Pedido por el operador: «quiero que puedas darte de alta tanto en web como en app para guardar
+ * datos de tus hijos… y poder ir apuntando por nombre de hijo y tener una curva de crecimiento».
+ * Y con dos capturas de otra aplicación: el nombre arriba con su edad, las pestañas de peso y
+ * talla, y **los puntos del niño sobre las bandas de percentiles de la OMS**. Eso es lo que hay
+ * aquí abajo.
+ *
+ * Tres cosas que decide esta pantalla:
+ *
+ * 1. **La cuenta es opcional y se dice.** Lo primero que se lee es que sin ella el sitio
+ *    funciona igual. `/legal` prometía «sin cuenta, sin nombre, sin correo» y esa frase pasa a
+ *    ser «sin cuenta OBLIGATORIA»: la diferencia hay que sostenerla en la pantalla, no en una
+ *    nota al pie.
+ * 2. **La sesión no la toca JavaScript.** Va en una cookie `HttpOnly` que pone la API; aquí no
+ *    se guarda nada en `localStorage`, porque lo que abre esto es el nombre y la fecha de
+ *    nacimiento de un niño.
+ * 3. **La curva se dibuja aquí, con SVG y sin ninguna biblioteca.** Las bandas vienen de
+ *    `/api/growth/bands` —las mismas tablas LMS que el resto del sitio— y los puntos, de las
+ *    medidas de su familia. Una biblioteca de gráficos son cien kilobytes en un sitio que pesa
+ *    diecinueve.
+ */
+import { t, type Lang } from '../i18n';
+import { countryOptions } from '../countries';
+import countryCodes from '../data/countries.json';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const F = s.fam;
+const paises = countryOptions(countryCodes as string[], lang);
+---
+
+<section class="fam" data-lang={lang} data-t={JSON.stringify(F)}>
+  <p class="eyebrow">{F.eyebrow}</p>
+  <h1 style="margin-top:8px">{F.h1}</h1>
+  <p class="lede">{F.lede}</p>
+  <p class="n opt">{F.optional}</p>
+
+  <!-- ── sin cuenta ─────────────────────────────────────────────────────────────────────── -->
+  <div id="fam-out" hidden>
+    <form class="card form" id="fam-form">
+      <div class="f"><label for="fam-email">{F.email}</label>
+        <input id="fam-email" type="email" autocomplete="email" required /></div>
+      <div class="f"><label for="fam-pass">{F.password}</label>
+        <input id="fam-pass" type="password" autocomplete="current-password" minlength="8" required /></div>
+      <label class="check" id="fam-news-wrap"><input type="checkbox" id="fam-news" /> <span>{F.newsletter}</span></label>
+      <p class="acciones">
+        <button class="btn btn-primary" type="submit" id="fam-go">{F.login}</button>
+        <button class="btn btn-ghost" type="button" id="fam-swap">{F.register}</button>
+      </p>
+      <p class="aviso" id="fam-msg" role="alert"></p>
+      <p class="n">{F.privacy}</p>
+    </form>
+  </div>
+
+  <!-- ── con cuenta ─────────────────────────────────────────────────────────────────────── -->
+  <div id="fam-in" hidden>
+    <p class="quien"><span id="fam-who"></span>
+      <button class="lnk" type="button" id="fam-logout">{F.logout}</button></p>
+
+    <div id="fam-kids"></div>
+
+    <details class="card nuevo">
+      <summary>{F.add_child}</summary>
+      <form id="fam-newkid">
+        <div class="rejilla">
+          <div class="f"><label for="k-name">{F.name}</label><input id="k-name" required maxlength="60" /></div>
+          <div class="f"><label for="k-birth">{F.birth}</label><input id="k-birth" type="date" required /></div>
+          <div class="f"><label for="k-sex">{F.sex}</label>
+            <select id="k-sex"><option value="f">{F.girl}</option><option value="m">{F.boy}</option></select></div>
+          <div class="f"><label for="k-country">{F.country}</label>
+            <select id="k-country"><option value="">—</option>
+              {paises.map((c) => <option value={c.cc}>{c.label}</option>)}</select></div>
+        </div>
+        <p class="acciones"><button class="btn btn-primary" type="submit">{F.add_child}</button></p>
+      </form>
+    </details>
+
+    <p class="pie">
+      <button class="lnk" type="button" id="fam-export">{F.export}</button> ·
+      <button class="lnk peligro" type="button" id="fam-kill">{F.delete_account}</button>
+    </p>
+  </div>
+</section>
+
+<script>
+  const zona = document.querySelector('.fam') as HTMLElement;
+  const T = JSON.parse(zona.dataset.t || '{}');
+  const lang = zona.dataset.lang || 'en';
+  const $ = (id: string) => document.getElementById(id) as HTMLElement;
+  const esc = (x: string) => String(x).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+
+  let modo: 'login' | 'register' = 'login';
+  let yo: any = null;
+
+  const api = async (ruta: string, opciones: RequestInit = {}) => {
+    const r = await fetch(ruta, {
+      credentials: 'same-origin',
+      headers: { 'content-type': 'application/json' },
+      ...opciones,
+    });
+    return { ok: r.ok, status: r.status, datos: r.status === 204 ? null : await r.json().catch(() => null) };
+  };
+
+  const edad = (meses: number) => {
+    // por debajo de dos años se dice en meses, que es como lo dice todo el mundo y como
+    // cambian las vacunas y las dosis
+    if (meses < 24) return `${Math.round(meses)} ${T.months}`;
+    // el separador decimal lo pone la lengua, no un `if`: `Intl` sabe que el español escribe
+    // 4,5 y el inglés 4.5, y sabe además lo que hacen el hindi y el árabe, que yo no
+    const a = new Intl.NumberFormat(lang, { maximumFractionDigits: 1 }).format(meses / 12);
+    return `${a} ${T.years}`;
+  };
+
+  // ── la curva, en SVG y sin bibliotecas ─────────────────────────────────────────────────────
+  const COLOR = { p3: '#e07a5f', p15: '#e9c46a', p50: '#2F6B57', p85: '#e9c46a', p97: '#e07a5f' };
+  async function curva(hijo: any, indicador: 'wfa' | 'lhfa', medidas: any[]) {
+    const campo = indicador === 'wfa' ? 'weight_kg' : 'height_cm';
+    const puntos = medidas.filter((m) => m[campo] != null);
+    if (!hijo.sex || !puntos.length) return '';
+    const tope = Math.max(24, Math.min(228, Math.ceil(hijo.age_months / 12) * 12 + 6));
+    const { ok, datos } = await api(`/api/growth/bands?sex=${hijo.sex}&indicator=${indicador}&to_months=${tope}`);
+    if (!ok || !datos) return '';
+    const W = 660, H = 300, M = { t: 10, r: 10, b: 26, l: 34 };
+    const xs = datos.ages as number[];
+    const todos = [...Object.values(datos.bands).flat() as number[], ...puntos.map((p) => p[campo])];
+    const yMin = Math.min(...todos) * 0.92, yMax = Math.max(...todos) * 1.05;
+    const px = (mes: number) => M.l + ((mes - xs[0]) / (xs[xs.length - 1] - xs[0])) * (W - M.l - M.r);
+    const py = (v: number) => H - M.b - ((v - yMin) / (yMax - yMin)) * (H - M.t - M.b);
+    const linea = (vals: number[]) => vals.map((v, i) => `${i ? 'L' : 'M'}${px(xs[i]).toFixed(1)},${py(v).toFixed(1)}`).join('');
+    const bandas = Object.entries(datos.bands as Record<string, number[]>)
+      .map(([k, v]) => `<path d="${linea(v)}" fill="none" stroke="${COLOR[k as keyof typeof COLOR]}" stroke-width="${k === 'p50' ? 1.6 : 1}" opacity="${k === 'p50' ? 0.9 : 0.55}"/>`)
+      .join('');
+    const mios = puntos
+      .map((m) => ({ x: px(m.age_months), y: py(m[campo]) }))
+      .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y));
+    const suya = `<path d="${mios.map((p, i) => `${i ? 'L' : 'M'}${p.x.toFixed(1)},${p.y.toFixed(1)}`).join('')}" fill="none" stroke="var(--coral)" stroke-width="2.4" stroke-linejoin="round"/>`;
+    const bolas = mios.map((p) => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4" fill="var(--coral)"/>`).join('');
+    const ejeY = [yMin, (yMin + yMax) / 2, yMax].map((v) => `<text x="4" y="${(py(v) + 4).toFixed(1)}" font-size="10" fill="currentColor" opacity=".55">${v.toFixed(0)}</text>`).join('');
+    const ejeX = xs.filter((_, i) => i % Math.ceil(xs.length / 6) === 0).map((mes) => `<text x="${px(mes).toFixed(1)}" y="${H - 8}" font-size="10" text-anchor="middle" fill="currentColor" opacity=".55">${Math.round(mes)}</text>`).join('');
+    return `<svg viewBox="0 0 ${W} ${H}" class="curva" role="img" aria-label="${esc(indicador === 'wfa' ? T.weight_for_age : T.height_for_age)}">
+      ${bandas}${suya}${bolas}${ejeY}${ejeX}
+      <text x="${W - M.r}" y="${H - 8}" font-size="10" text-anchor="end" fill="currentColor" opacity=".55">${esc(T.months)}</text>
+    </svg>`;
+  }
+
+  // ── la ficha de un hijo ────────────────────────────────────────────────────────────────────
+  function filaMedida(m: any) {
+    const trozos = [
+      m.weight_kg != null ? `${T.weight}: ${m.weight_kg} kg` : '',
+      m.height_cm != null ? `${T.height}: ${m.height_cm} cm` : '',
+      m.head_cm != null ? `${T.head}: ${m.head_cm} cm` : '',
+    ].filter(Boolean).join(' · ');
+    const pct = m.weight_percentile != null ? ` <b>${T.percentile} ${Math.round(m.weight_percentile)}</b>` : '';
+    return `<li><span class="cuando">${esc(m.date)}</span> ${esc(trozos)}${pct}
+      <button class="lnk peligro" data-borrar="${m.id}">×</button></li>`;
+  }
+
+  async function pintaHijo(hijo: any) {
+    const { datos: medidas } = await api(`/api/family/children/${hijo.id}/measurements`);
+    const lista = (medidas || []) as any[];
+    const caja = document.createElement('article');
+    caja.className = 'card kid';
+    caja.dataset.id = hijo.id;
+    const peso = await curva(hijo, 'wfa', lista);
+    const talla = await curva(hijo, 'lhfa', lista);
+    caja.innerHTML = `
+      <header><h2>${esc(hijo.name)}</h2><span class="edad">${edad(hijo.age_months)}</span>
+        <button class="lnk peligro quitar" type="button">${esc(T.delete_child)}</button></header>
+      ${peso ? `<p class="eyebrow">${esc(T.weight_for_age)}</p>${peso}` : ''}
+      ${talla ? `<p class="eyebrow">${esc(T.height_for_age)}</p>${talla}` : ''}
+      ${peso || talla ? `<p class="n">${esc(T.who_note)}</p>` : ''}
+      <ul class="medidas">${lista.length ? lista.map(filaMedida).join('') : `<li class="n">${esc(T.no_measures)}</li>`}</ul>
+      <form class="nueva">
+        <div class="rejilla">
+          <div class="f"><label>${esc(T.date)}</label><input type="date" name="date" required /></div>
+          <div class="f"><label>${esc(T.weight)} (kg)</label><input type="number" name="weight_kg" step="0.01" min="0.5" max="150" /></div>
+          <div class="f"><label>${esc(T.height)} (cm)</label><input type="number" name="height_cm" step="0.1" min="20" max="230" /></div>
+          <div class="f"><label>${esc(T.head)} (cm)</label><input type="number" name="head_cm" step="0.1" min="20" max="80" /></div>
+        </div>
+        <p class="acciones"><button class="btn btn-ghost" type="submit">${esc(T.add_measure)}</button></p>
+      </form>`;
+    (caja.querySelector('input[name="date"]') as HTMLInputElement).value = new Date().toISOString().slice(0, 10);
+    caja.querySelector('.quitar')!.addEventListener('click', async () => {
+      if (!confirm(T.confirm)) return;
+      await api(`/api/family/children/${hijo.id}`, { method: 'DELETE' });
+      recarga();
+    });
+    caja.querySelectorAll('[data-borrar]').forEach((b) =>
+      b.addEventListener('click', async () => {
+        await api(`/api/family/children/${hijo.id}/measurements/${(b as HTMLElement).dataset.borrar}`, { method: 'DELETE' });
+        recarga();
+      })
+    );
+    caja.querySelector('form.nueva')!.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = new FormData(e.target as HTMLFormElement);
+      const cuerpo: any = { date: f.get('date') };
+      for (const k of ['weight_kg', 'height_cm', 'head_cm']) {
+        const v = String(f.get(k) || '').trim();
+        if (v) cuerpo[k] = Number(v);
+      }
+      if (!cuerpo.weight_kg && !cuerpo.height_cm && !cuerpo.head_cm) return;
+      await api(`/api/family/children/${hijo.id}/measurements`, { method: 'POST', body: JSON.stringify(cuerpo) });
+      recarga();
+    });
+    return caja;
+  }
+
+  // ── entrar, salir, recargar ────────────────────────────────────────────────────────────────
+  async function recarga() {
+    const { ok, datos } = await api('/api/family/me');
+    yo = ok ? datos : null;
+    $('fam-out').hidden = !!yo;
+    $('fam-in').hidden = !yo;
+    if (!yo) return;
+    $('fam-who').textContent = yo.email;
+    const kids = $('fam-kids');
+    kids.innerHTML = '';
+    if (!yo.children.length) {
+      kids.innerHTML = `<p class="n vacio">${esc(T.no_children)}</p>`;
+      return;
+    }
+    for (const hijo of yo.children) kids.appendChild(await pintaHijo(hijo));
+  }
+
+  $('fam-swap').addEventListener('click', () => {
+    modo = modo === 'login' ? 'register' : 'login';
+    ($('fam-go') as HTMLButtonElement).textContent = modo === 'login' ? T.login : T.register;
+    ($('fam-swap') as HTMLButtonElement).textContent = modo === 'login' ? T.register : T.login;
+    $('fam-news-wrap').hidden = modo === 'login';
+    $('fam-msg').textContent = '';
+  });
+  $('fam-news-wrap').hidden = true;
+
+  $('fam-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = ($('fam-email') as HTMLInputElement).value.trim();
+    const password = ($('fam-pass') as HTMLInputElement).value;
+    const news = ($('fam-news') as HTMLInputElement).checked;
+    const ruta = modo === 'login' ? '/api/family/login' : '/api/family/register';
+    const cuerpo = modo === 'login' ? { email, password } : { email, password, lang, newsletter: news };
+    const { ok, status } = await api(ruta, { method: 'POST', body: JSON.stringify(cuerpo) });
+    if (ok) { ($('fam-pass') as HTMLInputElement).value = ''; recarga(); return; }
+    $('fam-msg').textContent =
+      status === 409 ? T.taken : status === 400 ? T.short_password : status === 401 ? T.wrong_login : T.error;
+  });
+
+  $('fam-logout').addEventListener('click', async () => { await api('/api/family/logout', { method: 'POST' }); recarga(); });
+  $('fam-export').addEventListener('click', () => { location.href = '/api/family/export'; });
+  $('fam-kill').addEventListener('click', async () => {
+    if (!confirm(T.confirm)) return;
+    await api('/api/family/account', { method: 'DELETE' });
+    recarga();
+  });
+
+  $('fam-newkid').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const cuerpo = {
+      name: ($('k-name') as HTMLInputElement).value.trim(),
+      birth_date: ($('k-birth') as HTMLInputElement).value,
+      sex: ($('k-sex') as HTMLSelectElement).value,
+      country: ($('k-country') as HTMLSelectElement).value || null,
+    };
+    if (!cuerpo.name || !cuerpo.birth_date) return;
+    const { ok } = await api('/api/family/children', { method: 'POST', body: JSON.stringify(cuerpo) });
+    if (ok) { ($('k-name') as HTMLInputElement).value = ''; recarga(); }
+  });
+
+  recarga();
+</script>
+
+<style>
+  .fam { max-width: 780px; margin: 0 auto; }
+  .lede { color: var(--ink-2); }
+  .opt { border-inline-start: 3px solid var(--mint-2); padding-inline-start: 12px; margin: 14px 0 22px; }
+  .card { border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: var(--paper); margin-top: 16px; }
+  .f { display: grid; gap: 4px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .85rem; }
+  .f input, .f select {
+    font: inherit; font-weight: 400; font-family: "Atkinson Hyperlegible", sans-serif;
+    border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+    border-radius: 12px; padding: 10px 12px; min-width: 0;
+  }
+  .form .f + .f { margin-top: 12px; }
+  .rejilla { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .check { display: flex; gap: 8px; align-items: start; margin-top: 14px; font-size: .88rem; color: var(--ink-2); }
+  .acciones { margin: 16px 0 0; display: flex; gap: 10px; flex-wrap: wrap; }
+  .aviso { color: var(--coral); font-weight: 700; min-height: 1.2em; margin: 10px 0 0; }
+  .quien { display: flex; gap: 10px; align-items: baseline; color: var(--ink-3); font-size: .9rem; }
+  .lnk { background: none; border: 0; padding: 0; font: inherit; color: var(--coral); cursor: pointer; text-decoration: underline; }
+  .lnk.peligro { color: #b3402a; }
+  .kid header { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .kid h2 { margin: 0; font-size: 1.15rem; }
+  .kid .edad { color: var(--ink-3); font-size: .9rem; }
+  .kid header .quitar { margin-inline-start: auto; font-size: .8rem; }
+  /* La curva: ancho completo y sin biblioteca. Se lee igual en un móvil estrecho porque el
+     viewBox escala y las bandas no llevan texto dentro. */
+  .curva { width: 100%; height: auto; display: block; margin: 6px 0 4px; color: var(--ink); }
+  .medidas { list-style: none; padding: 0; margin: 12px 0 0; font-size: .9rem; }
+  .medidas li { padding: 6px 0; border-top: 1px solid var(--line); display: flex; gap: 8px; flex-wrap: wrap; align-items: baseline; }
+  .medidas .cuando { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .82rem; color: var(--ink-3); }
+  .medidas li .lnk { margin-inline-start: auto; }
+  form.nueva { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 14px; }
+  details.nuevo summary { cursor: pointer; font-family: Nunito, sans-serif; font-weight: 700; }
+  details.nuevo form { margin-top: 14px; }
+  .vacio { margin-top: 16px; }
+  .pie { margin-top: 26px; font-size: .88rem; color: var(--ink-3); }
+</style>

@@ -1,0 +1,16 @@
+---
+/**
+ * Tus hijos (19-sep-2026). La pantalla entera está en `components/Family.astro`; esto es
+ * sólo la página por idioma, como /diary y las demás.
+ *
+ * `noindex`: es una pantalla de cuenta. No es contenido y no tiene nada que buscar en un
+ * resultado de búsqueda; además, lo que enseña sólo existe para quien ha entrado.
+ */
+import Base from '../layouts/Base.astro';
+import Family from '../components/Family.astro';
+import { t } from '../i18n';
+const lang = 'en'; const s = t(lang);
+---
+<Base lang={lang} title={s.fam.title} description={s.fam.desc} path="/family" noindex>
+  <div class="wrap" style="padding:40px 18px"><Family lang={lang} /></div>
+</Base>

@@ -61,6 +61,7 @@ select = ["E", "F", "I", "W", "UP", "B"]
 "src/pedibot/bot/answer.py" = ["E501"]   # user-facing sentences
 "src/pedibot/bot/dose.py" = ["E501"]
 "src/pedibot/cli.py" = ["E501", "B008"]  # typer idiom
+"src/pedibot/family/api.py" = ["B008"]   # el idiom de FastAPI: Depends() en el argumento
 "src/pedibot/index/store.py" = ["E501"]
 "src/pedibot/api.py" = ["E501"]
 "src/pedibot/bot/judge.py" = ["E501"]

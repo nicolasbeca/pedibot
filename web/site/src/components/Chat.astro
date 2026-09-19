@@ -25,7 +25,7 @@ import { countryOptions } from '../countries';
 const countries = countryOptions(countryCodes as string[], lang);
 const ages = [['', s.not_set], ...s.chat_ages];
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, tool_growth: s.tool_growth, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support`, err_busy: s.err_busy, err_unavailable: s.err_unavailable, chat_call: s.chat_call, chat_retry: s.chat_retry, ages: s.chat_ages })}>
+<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, tool_growth: s.tool_growth, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support`, err_busy: s.err_busy, err_unavailable: s.err_unavailable, chat_call: s.chat_call, chat_retry: s.chat_retry, chat_months: s.fam.months, chat_years: s.fam.years, ages: s.chat_ages })}>
   <div class="chat" id="thread" aria-live="polite" aria-relevant="additions text">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo-144.png" width="72" height="72" alt="" />
@@ -82,6 +82,9 @@ const ages = [['', s.not_set], ...s.chat_ages];
   .chat :global(.invite) { margin: 14px 0 0; font-size: .88rem; color: var(--ink-2);
     border-top: 1px dashed var(--line); padding-top: 10px; }
   .chat :global(.guide) { margin: 14px 0 0; font-size: .9rem; }
+  /* Con qué hijo se contestó. Discreto pero legible: está para que se note si el nombre
+     o la edad no son los que el lector tenía en la cabeza. */
+  .chat :global(.conquien) { margin: 0 0 8px; font-size: .84rem; color: var(--ink-3); }
   .chat :global(.guide a) { font-weight: 600; }
   .chat :global(.sources) { margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--line); font-size: .84rem; color: var(--ink-2); }
   .chat :global(.sources b) { color: var(--ink); }
@@ -139,6 +142,18 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // Operator decision 25-ago: no source list, no [n] markers, no per-message disclaimer.
     // The organisation is named inside the text; the legal line lives under the composer.
     let h = '<div class="who">pedibot</div>';
+    // 19-sep-2026, la cuenta de familia. Si la respuesta salió con la edad de un hijo, se dice
+    // arriba y con su nombre. No es un adorno: una edad que el lector no ve es una edad que no
+    // puede corregir, y esa lección la aprendimos esta misma mañana con el país deducido del
+    // navegador. Si dice «Laura, 18 meses» y Laura tiene cuatro años, se ve al instante.
+    if (j.child) {
+      const kg = j.child.weight_kg ? ` · ${j.child.weight_kg} kg` : '';
+      const anios = new Intl.NumberFormat(lang, { maximumFractionDigits: 1 }).format(j.child.age_months / 12);
+      const meses = j.child.age_months < 24
+        ? `${Math.round(j.child.age_months)} ${S.chat_months || 'm'}`
+        : `${anios} ${S.chat_years || 'a'}`;
+      h += `<p class="conquien">👶 <b>${esc(String(j.child.name))}</b> · ${esc(meses)}${esc(kg)}</p>`;
+    }
     if (j.banner) { const lines = String(j.banner).split('\n'); h += `<div class="banner ${j.level}" role="alert">${esc(lines[0])}<small>${esc(lines.slice(1).join(' '))}</small></div>`; }
     // Con el niño en brazos, marcar tiene que ser un toque: la API manda el número sólo con
     // nivel emergencia y país conocido, y aquí se pinta como tel:.

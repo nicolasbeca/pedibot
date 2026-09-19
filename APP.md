@@ -5,9 +5,11 @@
 > adaptación y de publicación en Google Store y Apple Store. El logo debe ser LOGO_PEDIBOT_CARA
 > no uno inventado».
 >
-> Los iconos ya están hechos y salen de tu JPG (`scripts/make_icons.py`, ver §2). Lo demás es
-> plan: nada de esto está construido todavía. Al final, en §10, están las cuatro cosas que
-> necesito que decidas tú y que no puedo decidir yo, con mi recomendación en cada una.
+> **Actualizado esa misma tarde.** Lo que empezó siendo todo plan ya no lo es del todo: los
+> iconos salen de tu JPG (§2), la web funciona sin cobertura y se puede instalar (F1, §6), y la
+> cuenta de familia con los hijos y su curva está construida y desplegada (§4 ter). Sigue siendo
+> plan la carcasa nativa y todo lo de las tiendas. Tus cuatro decisiones están en §10, ya
+> contestadas.
 
 ---
 
@@ -177,7 +179,43 @@ Y en lo operativo: la lista de despliegue (`ops/deploy.sh`) pasa a tener **dos d
 «desplegar» es el VPS; a partir de la app, desplegar es el VPS **y** decidir si eso pide una
 versión nueva en las tiendas. La columna de la tabla de arriba es esa decisión, escrita.
 
-## 4 ter. Lo que viene después y hay que tener en cuenta al construir: la ficha del niño
+## 4 ter. La ficha del niño — **ya construida en la web** (19-sep-2026)
+
+> Esto se escribió por la mañana como «lo que viene después». Por la tarde el operador decidió
+> hacerlo, y saltándose la fase 1: «fase 2 directamente. La cuenta puede ser simplemente un email
+> y una contraseña». Así que ya está en pedibot.xyz y la app se lo encuentra hecho.
+
+Lo que hay hoy en la web, y que la carcasa de §3 hereda sin escribir una línea:
+
+- **cuenta opcional** con correo y contraseña (`/family` en los ocho idiomas), sesión en cookie
+  `HttpOnly`, contraseña guardada como `scrypt`;
+- **una ficha por hijo** —nombre, fecha de nacimiento, sexo, país— y su historial de medidas;
+- **su curva** sobre las bandas de percentiles de la OMS, dibujada en SVG sin bibliotecas;
+- **el chat contesta por su edad**: «¿qué vacunas le tocan a Laura?» sale respondida por la edad
+  de Laura, y la respuesta dice con qué hijo y con qué edad contestó;
+- **descargar y borrar** en un botón, y el boletín como casilla aparte.
+
+Lo que eso cambia en este plan:
+
+1. **D-A3 (recordatorios de vacunas) ya tiene de dónde salir.** La fecha de nacimiento está en
+   la cuenta, así que la F4 deja de ser «guardar una fecha en el teléfono» y pasa a ser «pedir
+   las fechas al servidor y programar la notificación local». Menos trabajo y sin datos
+   duplicados en dos sitios.
+2. **Las dos fichas de tienda cambian, y ya sabemos exactamente cómo.** Hay cuenta, hay correo y
+   hay datos de salud de un menor identificado: en el formulario de *Data safety* de Google eso
+   se declara como *Personal info → Email address* y *Health and fitness → Health info*, con
+   «recogido», «no compartido con terceros» —salvo lo que ya se declaraba del proveedor del
+   modelo para el texto del chat— y con borrado a petición del usuario, que es cierto porque el
+   botón existe. En la etiqueta de Apple, *Health & Fitness* y *Contact Info*, **vinculados a la
+   identidad** (hay cuenta), sin seguimiento.
+3. **Falta una pieza para poder prometer lo normal de una cuenta**: verificar el correo,
+   recuperar una contraseña olvidada y mandar el boletín necesitan un proveedor de correo
+   saliente, que el proyecto no tiene. Está anotado como I-20 en `IDEAS.md` y es una decisión del
+   operador (proveedor y quién paga). Mientras tanto, el alta funciona en el acto y quien pierda
+   la contraseña no puede recuperarla: eso hay que resolverlo **antes** de anunciar la cuenta a
+   mucha gente.
+
+## 4 quater. Lo que viene después: lo que la ficha dejó a medias
 
 Pedido por el operador el mismo 19-sep y anotado en `IDEAS.md` (I-16 a I-19): **darse de alta,
 en la web y en la app, para guardar los datos de cada hijo y llevar su curva de peso y talla**,

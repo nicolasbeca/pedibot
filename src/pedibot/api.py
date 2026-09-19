@@ -21,10 +21,15 @@ from pedibot import __version__
 from pedibot.bot.answer import SUPPORTED_LANGS, Answer, Engine
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.followups import Followups
-from pedibot.bot.growth import Growth, load_countries
+from pedibot.bot.growth import DAYS_PER_MONTH, Growth, load_countries
 from pedibot.bot.llm import LLMUnavailable
 from pedibot.bot.strings import data_lang
 from pedibot.bot.vaccines import Vaccines
+from pedibot.family.api import COOKIE as FAMILY_COOKIE
+from pedibot.family.api import age_months as child_age_months
+from pedibot.family.api import family_router
+from pedibot.family.recognise import child_in_question, fresh_weight, with_child_context
+from pedibot.family.store import FamilyStore
 from pedibot.ops.store import AnswerRecord, OpsStore
 from pedibot.settings import ROOT
 
@@ -99,6 +104,13 @@ class ToolOut(BaseModel):
     url: str
 
 
+class ChildOut(BaseModel):
+    id: int
+    name: str
+    age_months: float
+    weight_kg: float | None = None
+
+
 class AskOut(BaseModel):
     answer_id: int
     session: str
@@ -121,6 +133,10 @@ class AskOut(BaseModel):
     #: respuesta. Cada una tiene fuente en el corpus (config/followups.yaml y su prueba).
     #: Vacío sin fuente o con nivel emergencia: ahí el padre tiene que estar llamando.
     followups: list[str] = []
+    #: Con qué hijo se contestó, cuando quien pregunta tiene cuenta y ha nombrado a uno
+    #: (19-sep-2026). Va en la respuesta a propósito: el chat lo enseña encima del texto,
+    #: porque una edad que el lector no ve es una edad que no puede corregir.
+    child: ChildOut | None = None
     #: Fiebre sin edad: se ha respondido, y el chat ofrece los botones de edad debajo.
     ask_age: bool = False
     #: True exactly once, on a calm fifth question of the day: an invitation to the support page.
@@ -198,7 +214,13 @@ def next_questions(engine: Engine, table: Followups, question: str, a: Answer) -
     return table.for_topic(topic, a.lang, asked=question)
 
 
-def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) -> FastAPI:  # type: ignore[no-untyped-def]
+def create_app(
+    engine: Engine,
+    ops: OpsStore,
+    cfg: ApiConfig,
+    vision_fn=None,  # type: ignore[no-untyped-def]
+    family: FamilyStore | None = None,
+) -> FastAPI:
     from pedibot.bot.llm import vision_json
     from pedibot.bot.vaccines import format_answer
 
@@ -212,9 +234,16 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
     app.add_middleware(
         CORSMiddleware,
         allow_origins=cfg.allowed_origins,
-        allow_methods=["POST", "GET"],
+        # 19-sep-2026: PATCH y DELETE llegan con la cuenta de familia (cambiar un hijo, borrar
+        # una medida, irse del todo). Sin ellos el navegador ni siquiera manda la petición.
+        allow_methods=["POST", "GET", "PATCH", "DELETE"],
         allow_headers=["content-type", "x-pedibot-client"],
+        allow_credentials=True,
     )
+    # Las cuentas de familia, si las hay. Van en su propio router y su propia base de datos:
+    # es lo único del proyecto que sabe quién pregunta (19-sep-2026).
+    if family is not None:
+        app.include_router(family_router(family, _growth))
 
     def client_source(req: Request) -> str:
         """Who is asking, for the panel — never for the answer, which is the same for everybody.
@@ -277,16 +306,45 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 429, "Too many questions from this connection. Please try again later."
             )
         session = body.session or secrets.token_urlsafe(16)
+        # 19-sep-2026, la cuenta de familia. Si quien pregunta tiene una y ha nombrado a un hijo
+        # suyo, a la pregunta se le pone delante la misma línea de contexto que escribe el
+        # desplegable del chat —«Edad: 18 meses. Peso: 11,2 kg.»— y de ahí para adentro no
+        # cambia nada: el mismo triaje, la misma dosis, el mismo calendario.
+        #
+        # Dos cosas a propósito. El peso sólo viaja si todavía vale para su edad (`fresh_weight`:
+        # un peso de hace tres meses en un lactante es una dosis mal calculada). Y lo que se
+        # GUARDA luego en la base de operación es la pregunta tal como la escribió el padre, sin
+        # la línea de contexto: aquella base promete no tener datos personales y los sigue sin
+        # tener.
+        pregunta, hijo = body.question, None
+        if family is not None:
+            usuario = family.user_for(request.cookies.get(FAMILY_COOKIE) or "")
+            if usuario:
+                hijos = [
+                    {**h, "age_months": round(child_age_months(h["birth_date"]), 1)}
+                    for h in family.children(usuario["id"])
+                ]
+                hijo = child_in_question(body.question, hijos)
+                if hijo:
+                    hijo = {
+                        **hijo,
+                        "weight_kg": fresh_weight(
+                            hijo, family.measurements(usuario["id"], hijo["id"])
+                        ),
+                    }
+                    pregunta = with_child_context(
+                        body.question, hijo, body.lang or usuario.get("lang") or "en"
+                    )
         degraded = ops.cost_today_usd() >= cfg.max_daily_llm_usd
         t0 = time.perf_counter()
         if degraded:
             # spending cap reached: retrieval-only answer (no LLM) — PRD §8 "tope de gasto"
-            a = engine.answer_without_model(body.question, body.country, body.lang, "degraded")
+            a = engine.answer_without_model(pregunta, body.country, body.lang, "degraded")
         else:
             hist = ops.history(session) if body.session else []
             try:
                 a = engine.ask(
-                    body.question,
+                    pregunta,
                     country=body.country,
                     lang=body.lang,
                     history=hist,
@@ -299,7 +357,7 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
                 # así que no había forma de saber cuántas veces pasaba. Se contesta como sin
                 # presupuesto, pero con OTRA etiqueta: aquello lo decidimos nosotros, esto es una
                 # avería y tiene que poder contarse aparte.
-                a = engine.answer_without_model(body.question, body.country, body.lang, "no_model")
+                a = engine.answer_without_model(pregunta, body.country, body.lang, "no_model")
         latency = int((time.perf_counter() - t0) * 1000)
         rec = AnswerRecord(
             session=session,
@@ -355,6 +413,16 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
             ),
             followups=next_questions(engine, followups, body.question, a),
             ask_age=a.ask_age,
+            child=(
+                ChildOut(
+                    id=int(hijo["id"]),
+                    name=str(hijo["name"]),
+                    age_months=float(hijo["age_months"]),
+                    weight_kg=hijo.get("weight_kg"),
+                )
+                if hijo
+                else None
+            ),
         )
 
     @app.get("/api/drugs")
@@ -695,6 +763,82 @@ def create_app(engine: Engine, ops: OpsStore, cfg: ApiConfig, vision_fn=None) ->
         return out
 
     # ── para agentes (y para quien quiera): lo que PediBot ya hace sin modelo (13-sep-2026) ──
+    @app.get("/api/growth/bands")
+    def growth_bands(
+        sex: str = Query(pattern="^[mfMF]$"),
+        indicator: str = Query(default="wfa", pattern="^(wfa|lhfa|hc)$"),
+        from_months: float = Query(default=0, ge=0, le=228),
+        to_months: float = Query(default=60, ge=1, le=228),
+    ) -> dict[str, object]:
+        """Las cinco bandas de percentiles de la OMS, para poder DIBUJAR la curva (19-sep-2026).
+
+        Hasta hoy el sitio sabía decir «percentil 63» y no sabía enseñar por dónde pasa el 63.
+        Esto son las mismas tablas LMS de `/api/growth`, invertidas: x = M·(1 + L·S·z)^(1/L) con
+        z fijo en los cinco percentiles que la propia OMS dibuja en sus láminas.
+
+        No guarda nada ni sabe de quién es la curva: los puntos del niño los pone el navegador
+        encima, y vienen de la cuenta de su familia.
+        """
+        import math
+
+        z_de = {"p3": -1.88079, "p15": -1.03643, "p50": 0.0, "p85": 1.03643, "p97": 1.88079}
+        s = sex.lower()
+
+        def tabla_y_clave(meses: float) -> tuple[str, float]:
+            """Qué tabla toca a esa edad y CON QUÉ UNIDAD se busca en ella.
+
+            19-sep-2026, y es el fallo que casi se va desplegado: **las tablas de la OMS de 0 a
+            5 años están indexadas en DÍAS**, no en meses; las de 5 a 19, en meses. La primera
+            versión de esto pasaba meses a las dos, así que el P50 a los 18 meses salía 3,72 kg
+            —el peso de un bebé de dieciocho DÍAS— con toda la naturalidad del mundo.
+
+            Se vio mirando la cifra, no ejecutando la prueba: la prueba comparaba contra la
+            misma tabla con la misma unidad equivocada y pasaba tan contenta. Por eso la de
+            ahora compara contra los valores PUBLICADOS por la OMS.
+            """
+            dias = meses * DAYS_PER_MONTH
+            if indicator == "wfa":
+                if dias <= 1856:
+                    return f"wfa_{s}", dias
+                return f"wfa510_{s}", meses  # el peso para la edad se acaba a los 10 años
+            if dias <= 1856:
+                return f"lhfa_{s}", dias
+            return f"hfa519_{s}", meses
+
+        # Un punto por mes hasta los dos años y uno cada tres a partir de ahí. El paso cambia
+        # DENTRO de la misma curva y no según dónde acabe: el primer año es donde la línea se
+        # dobla, y dibujarlo a saltos de tres meses por tener el niño tres años convierte la
+        # curva en un palo.
+        edades: list[float] = []
+        x = max(0.0, from_months)
+        while x <= to_months + 1e-9:
+            try:
+                tabla, clave = tabla_y_clave(x)
+                lo, hi = _growth.range(tabla)
+            except KeyError:
+                break
+            if not lo <= clave <= hi:
+                break
+            edades.append(round(x, 2))
+            x += 1.0 if x < 24 else 3.0
+        if len(edades) < 2:
+            raise HTTPException(422, "el tramo de edad está vacío")
+        bandas: dict[str, list[float]] = {k: [] for k in z_de}
+        for edad in edades:
+            tabla, clave = tabla_y_clave(edad)
+            L, M, S = _growth.lms(tabla, clave)
+            for nombre, z in z_de.items():
+                valor = M * pow(1 + L * S * z, 1 / L) if abs(L) > 1e-9 else M * math.exp(S * z)
+                bandas[nombre].append(round(valor, 3))
+        return {
+            "indicator": indicator,
+            "sex": sex.lower(),
+            "unit": "kg" if indicator == "wfa" else "cm",
+            "ages": edades,
+            "bands": bandas,
+            "source": "WHO Child Growth Standards",
+        }
+
     @app.get("/api/growth/countries")
     def growth_countries() -> dict[str, object]:
         """Qué tabla de crecimiento usa la cartilla de cada país, con su fuente oficial."""
@@ -831,4 +975,7 @@ def app_from_settings() -> FastAPI:
         rate_limit_per_day=s.rate_limit_per_day,
         max_daily_llm_usd=s.max_daily_llm_usd,
     )
-    return create_app(engine, OpsStore(s.ops_db_path), cfg)
+    # Las cuentas de familia van en su propia base, aparte de la de operación y a propósito
+    # (19-sep-2026): aquélla promete no guardar datos personales y ésta guarda el nombre de
+    # un niño y su fecha de nacimiento.
+    return create_app(engine, OpsStore(s.ops_db_path), cfg, family=FamilyStore(s.family_db_path))
