@@ -1,0 +1,26 @@
+{
+  "appId": "xyz.pedibot.app",
+  "appName": "PediBot",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "https",
+    "hostname": "pedibot.xyz"
+  },
+  "android": {
+    "allowMixedContent": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "launchShowDuration": 600,
+      "backgroundColor": "#FFFDF9",
+      "androidSplashResourceName": "splash",
+      "showSpinner": false
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_pedibot",
+      "iconColor": "#2F6B57"
+    }
+  }
+}

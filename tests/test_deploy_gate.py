@@ -21,6 +21,7 @@ sólo se escribe **al llegar al final** — una firma cuya ausencia es imposible
 
 from __future__ import annotations
 
+import json
 import pathlib
 import re
 import subprocess
@@ -78,3 +79,27 @@ def test_las_tres_ramas_deciden_lo_que_deben() -> None:
     assert _rama("OPENSSL_Uplink(...): no OPENSSL_Applink", 1) == "ciegas"
     # y el caso que más engaña: muere devolviendo 0
     assert _rama("", 0) == "ciegas"
+
+
+def test_a_broken_site_build_stops_the_deploy() -> None:
+    """19-sep-2026, familia de la L33.
+
+    La línea que construye el sitio en el servidor acababa en `| grep`, así que el código de
+    salida era el del grep y no el del build. El día que el build falló de verdad —faltaba una
+    carpeta que el despliegue no copiaba— el servidor se quedó con el sitio de antes, el error
+    pasó entre las demás líneas y el despliegue llegó hasta «done». Todo verde, nada desplegado.
+    """
+    deploy = (RAIZ / "ops" / "deploy.sh").read_text(encoding="utf-8")
+    assert "set -o pipefail" in deploy, "sin esto, el código de salida es el del grep"
+    assert "EL SITIO NO SE HA CONSTRUIDO" in deploy, "el fallo vuelve a ser mudo"
+
+
+def test_the_deploy_carries_what_the_build_needs() -> None:
+    """El paso `prebuild` vive en web/site/scripts/. Si esa carpeta no viaja, el build del
+    servidor se rompe justo ahí — y eso es lo que pasó."""
+    deploy = (RAIZ / "ops" / "deploy.sh").read_text(encoding="utf-8")
+    assert "web/site/scripts" in deploy
+    paquete = json.loads((RAIZ / "web" / "site" / "package.json").read_text(encoding="utf-8"))
+    guion = paquete["scripts"].get("prebuild", "")
+    assert guion, "si se quita el prebuild, esta prueba sobra; mientras exista, tiene que viajar"
+    assert (RAIZ / "web" / "site" / "scripts").is_dir()

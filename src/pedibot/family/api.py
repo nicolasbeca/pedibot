@@ -25,6 +25,7 @@ from pydantic import BaseModel, Field
 
 from pedibot.bot.growth import DAYS_PER_MONTH, Growth
 from pedibot.family.store import MIN_PASSWORD, FamilyStore
+from pedibot.family.vaccines import next_appointment, schedule_for_child, to_ics
 from pedibot.settings import ROOT
 
 COOKIE = "pedibot_family"
@@ -284,6 +285,51 @@ def family_router(
                 }
             )
         return fuera
+
+    @router.get("/api/family/children/{child_id}/vaccines")
+    def child_vaccines(
+        child_id: int,
+        lang: str = "en",
+        usuario: dict[str, Any] = Depends(actual),
+    ) -> dict[str, Any]:
+        """El calendario de su país, con las FECHAS de este niño (19-sep-2026).
+
+        Es el mismo calendario oficial que ya contesta el chat, con su fecha de nacimiento
+        sumada. Lo que toca ahora, lo que queda atrás —marcado, no escondido— y lo que viene.
+        De aquí saldrán los recordatorios de la app.
+        """
+        hijo = store.child(usuario["id"], child_id)
+        if hijo is None:
+            raise HTTPException(404, "no such child")
+        citas = schedule_for_child(hijo, lang=lang)
+        return {
+            "country": hijo.get("country"),
+            "appointments": citas,
+            "next": next_appointment(citas),
+        }
+
+    @router.get("/api/family/children/{child_id}/vaccines.ics")
+    def child_vaccines_ics(
+        child_id: int,
+        lang: str = "en",
+        usuario: dict[str, Any] = Depends(actual),
+    ) -> Response:
+        """Las citas que vienen, para el calendario del teléfono (19-sep-2026).
+
+        La app avisará con una notificación local. La web no puede programar un aviso para dentro
+        de cuatro meses, así que da el dato en el formato que entiende cualquier calendario y que
+        avise él. Es la respuesta honesta a esa diferencia.
+        """
+        hijo = store.child(usuario["id"], child_id)
+        if hijo is None:
+            raise HTTPException(404, "no such child")
+        ics = to_ics(hijo, schedule_for_child(hijo, lang=lang))
+        nombre = "".join(ch for ch in str(hijo["name"]) if ch.isalnum()) or "pedibot"
+        return Response(
+            ics,
+            media_type="text/calendar; charset=utf-8",
+            headers={"content-disposition": f'attachment; filename="{nombre}-vacunas.ics"'},
+        )
 
     @router.post("/api/family/children/{child_id}/measurements")
     def add_measurement(

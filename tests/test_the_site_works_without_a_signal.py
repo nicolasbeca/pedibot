@@ -134,6 +134,46 @@ def test_a_hashed_asset_is_not_asked_for_twice() -> None:
     más que cualquier milisegundo.
     """
     codigo = SW.read_text(encoding="utf-8")
-    assert re.search(
-        r"if \(guardada && INMUTABLE\.test\([^)]*\)\) return guardada;", codigo
-    ), "lo inmutable, si está guardado, se devuelve sin volver a pedirlo"
+    assert re.search(r"if \(guardada && INMUTABLE\.test\([^)]*\)\) return guardada;", codigo), (
+        "lo inmutable, si está guardado, se devuelve sin volver a pedirlo"
+    )
+
+
+#: Los datos que el trabajador guarda al instalarse. Es lo que hace que «funciona sin cobertura»
+#: signifique algo el día que a alguien se le acaban los datos: los 88 países con su número, los
+#: 61 calendarios y las 69 tablas, dentro del teléfono antes de hacer falta.
+DATOS_SIN_RED = (
+    "emergency.json",
+    "vaccines.json",
+    "growth_charts.json",
+    "checklist.json",
+    "drugs.json",
+    "dose_table.json",
+)
+
+
+@pytest.mark.skipif(not DIST.exists(), reason="no hay build en web/site/dist")
+@pytest.mark.parametrize("fichero", DATOS_SIN_RED)
+def test_the_data_is_published_as_files(fichero: str) -> None:
+    """Los JSON de `src/data/` los usa Astro al construir y acaban DENTRO del HTML. Eso vale con
+    red y no vale sin ella, así que además se publican como ficheros y el trabajador se los
+    guarda al instalarse (F1b)."""
+    f = DIST / "offline-data" / fichero
+    assert f.exists(), f"{fichero} no se publicó: el paso `prebuild` no corrió"
+    assert f.stat().st_size > 1000, f"{fichero} se publicó vacío"
+    json.loads(f.read_text(encoding="utf-8"))
+
+
+def test_the_worker_asks_for_all_of_them_on_install() -> None:
+    codigo = SW.read_text(encoding="utf-8")
+    faltan = [f for f in DATOS_SIN_RED if f"/offline-data/{f}" not in codigo]
+    assert not faltan, f"el trabajador no guarda {faltan}: sin red, esas páginas no tendrán datos"
+    assert "/emergency" in codigo, "los números de emergencia son lo primero que hay que tener"
+
+
+def test_the_prebuild_step_is_wired_in() -> None:
+    """Si el paso se cae del package.json, el sitio sigue construyendo perfecto y la promesa de
+    funcionar sin cobertura se queda en nada, en silencio."""
+    paquete = json.loads((SITE / "package.json").read_text(encoding="utf-8"))
+    assert "prebuild" in paquete["scripts"], "sin `prebuild` los datos no se publican"
+    assert "publish-offline-data" in paquete["scripts"]["prebuild"]

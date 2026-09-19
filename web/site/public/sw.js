@@ -21,11 +21,29 @@
  */
 
 //: Se sube la versión para invalidar todo lo guardado. Al activarse, las demás se borran.
-const VERSION = 'pedibot-v1';
+const VERSION = 'pedibot-v2';
 
-//: Lo poco que se guarda al instalar. No es la web entera: son las dos páginas que un padre sin
-//: cobertura necesita abrir aunque nunca las haya visitado.
-const CIMIENTOS = ['/offline', '/emergency'];
+//: Lo que se guarda al instalar, sin esperar a que nadie lo visite. No es la web entera: es lo
+//: que un padre sin cobertura necesita abrir **aunque nunca haya entrado ahí**.
+//:
+//: 19-sep-2026 (F1b del plan de APP.md). La primera versión guardaba sólo las páginas visitadas,
+//: y eso deja fuera justo el caso que importa: alguien instala el sitio un martes con wifi y el
+//: viernes, sin saldo y a las tres de la mañana, busca el número de su país por primera vez.
+const CIMIENTOS = [
+  '/offline',
+  '/emergency',
+  '/vaccines',
+  '/growth',
+  // Y los datos, que son de lo que está hecho todo lo de arriba: 88 países con su número, los
+  // 61 calendarios, las 69 tablas de crecimiento, las dosis y los signos de alarma. Pesan unos
+  // 700 kB juntos y son lo único del sitio que sigue valiendo sin red.
+  '/offline-data/emergency.json',
+  '/offline-data/vaccines.json',
+  '/offline-data/growth_charts.json',
+  '/offline-data/checklist.json',
+  '/offline-data/drugs.json',
+  '/offline-data/dose_table.json',
+];
 
 //: Lo que lleva un hash en el nombre o no cambia nunca: se sirve de la caché sin preguntar.
 const INMUTABLE = /^\/(?:_astro|fonts)\//;

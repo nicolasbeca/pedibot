@@ -54,7 +54,7 @@ echo "== code (+ site sources for the rebuild on the server)"
 tar czf - --exclude='__pycache__' --exclude='.pytest_cache' --exclude='.mypy_cache' --exclude='.ruff_cache' \
   src config scripts eval pyproject.toml uv.lock Makefile README.md ops web/content \
   web/site/src web/site/public web/site/package.json web/site/package-lock.json \
-  web/site/astro.config.mjs web/site/tsconfig.json \
+  web/site/astro.config.mjs web/site/tsconfig.json web/site/scripts \
   | $SSH "tar xzf - -C /opt/pedibot"
 
 if [ $NO_INDEX -eq 0 ]; then
@@ -75,7 +75,16 @@ chmod o+x /opt/pedibot /opt/pedibot/web /opt/pedibot/web/site
 [ -f /opt/pedibot/.env ] || echo "!! /opt/pedibot/.env missing — copy it first (chmod 600)"
 sudo -u pedibot bash -c 'cd /opt/pedibot && ~/.local/bin/uv sync --no-dev -q'
 sudo -u pedibot bash -c 'cd /opt/pedibot/web/site && if [ ! -d node_modules ] || ! cmp -s package-lock.json node_modules/.package-lock.json; then npm ci --no-audit --no-fund --silent; fi'
-sudo -u pedibot bash -c 'cd /opt/pedibot && ~/.local/bin/uv run --no-dev python scripts/export_catalog.py >/dev/null && cd web/site && SITE_URL=https://pedibot.xyz npm run build 2>&1 | grep -E "page\(s\)|rror"'
+# 19-sep-2026, familia de la L33 otra vez. Esta orden acababa en `| grep`, así que el código de
+# salida era el del GREP y no el del build. El día que el build falló de verdad —faltaba la
+# carpeta web/site/scripts, que el despliegue no copiaba— el servidor se quedó con el sitio de
+# antes, el error pasó entre las demás líneas y el despliegue llegó hasta «done». Todo verde y
+# nada desplegado. Ahora manda el build: si falla, esto para aquí.
+if ! sudo -u pedibot bash -c 'set -o pipefail; cd /opt/pedibot && ~/.local/bin/uv run --no-dev python scripts/export_catalog.py >/dev/null && cd web/site && SITE_URL=https://pedibot.xyz npm run build 2>&1 | tee /tmp/pedibot_build.log | grep -E "page\(s\)|rror"'; then
+  echo "== EL SITIO NO SE HA CONSTRUIDO: lo que hay desplegado sigue siendo lo de antes"
+  sudo -u pedibot tail -20 /tmp/pedibot_build.log 2>/dev/null || true
+  exit 1
+fi
 chmod -R o+rX /opt/pedibot/web/site/dist
 # A unit deleted from the repo has to disappear from the server too. The upload does not
 # delete, so removing pedibot-publish.* from git left it running and a deploy reinstalled it

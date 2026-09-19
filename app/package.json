@@ -1,0 +1,27 @@
+{
+  "name": "pedibot-app",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "La carcasa nativa de PediBot: el mismo sitio de web/site, empaquetado con Capacitor para Android e iOS. Ver APP.md.",
+  "scripts": {
+    "sync": "node scripts/copy-web.mjs && cap sync",
+    "copy": "node scripts/copy-web.mjs",
+    "android": "cap open android",
+    "ios": "cap open ios",
+    "doctor": "cap doctor"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/app": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0",
+    "@capacitor/local-notifications": "^7.0.0",
+    "@capacitor/preferences": "^7.0.0",
+    "@capacitor/share": "^7.0.0",
+    "@capacitor/splash-screen": "^7.0.0"
+  }
+}

@@ -266,7 +266,7 @@ Los días son días de trabajo míos, seguidos, sin contar lo que tarda la tiend
 | **F0** | Iconos desde el logo real | **hecho el 19-sep** |
 | **F1** | La web se vuelve PWA: `manifest.webmanifest`, service worker, pantalla de «sin conexión» en los ocho idiomas, instalable desde el móvil. | **hecho el 19-sep** |
 | **F1b** | Empaquetar los datos (vacunas, emergencias, curvas, dosis) para que estén ANTES de que el lector visite esa página, y refrescarlos en segundo plano con la fecha a la vista. | 2 |
-| **F2** | Carcasa Capacitor: proyectos Android e iOS, iconos, pantalla de arranque, que abra y navegue. | 2 |
+| **F2** | Carcasa Capacitor: proyectos Android e iOS, iconos, pantalla de arranque, que abra y navegue. | **a medias el 19-sep**: `app/capacitor.config.json`, `app/package.json` y el empaquetado (`app/scripts/copy-web.mjs`) hechos y probados. Falta generar los proyectos nativos, y para eso hace falta la máquina (ver abajo) |
 | **F3** | Lo nativo: llamada de un toque, compartir, cámara, y el diario en el dispositivo. | 2 |
 | **F4** | Recordatorios de vacunas (fecha de nacimiento local, notificaciones, el ajuste para apagarlos). | 3 |
 | **F5** | Pulido móvil (§5) y pruebas en pantallas pequeñas de verdad. | 3 |
@@ -276,6 +276,37 @@ Los días son días de trabajo míos, seguidos, sin contar lo que tarda la tiend
 
 **En claro: unas tres semanas de trabajo y entre cuatro y seis semanas de calendario**, mandando
 casi todo la espera obligatoria de Google.
+
+### Lo que va DENTRO del paquete, y por qué no va todo (19-sep-2026)
+
+El sitio entero son **81 MB**: 2.607 páginas en ocho idiomas, cada una con su CSS y su
+navegación dentro. Meterlo todo daría una app que en Lagos o en Delhi nadie se instala con datos
+móviles, que es justo el público al que va. Así que `app/scripts/copy-web.mjs` elige, y elige por
+la pregunta que da sentido a la app: **¿qué hace falta a las tres de la mañana sin cobertura?**
+
+| Va dentro | Cuánto |
+|---|---|
+| Las 88 fichas de emergencia por país, en los ocho idiomas | 17 MB |
+| Los datos en bruto (`offline-data/`: emergencias, calendarios, curvas, dosis, signos de alarma) | 0,7 MB |
+| Las portadas, `/legal`, `/family`, `/kit`, `/diary` y la pantalla de sin conexión, en los ocho | ~2 MB |
+| Tipografías, estilos e iconos | 0,1 MB |
+| **Total** | **20,6 MB** |
+
+Fuera se quedan las guías (14 MB), las fichas de dosis por marca y los calendarios y curvas país
+por país: **siguen funcionando con red**, y el service worker guarda lo que cada uno abra. No es
+que no quepan; es que no es lo que se busca a oscuras.
+
+### Lo que falta para compilar, y no depende de escribir código
+
+En este PC hay **Java 8 y ningún SDK de Android**, así que la carcasa se puede montar pero no
+compilar. Para generar el APK hacen falta, por orden:
+
+1. **JDK 17** (Gradle 8 no arranca con el 8);
+2. **Android Studio** con el SDK de Android y las herramientas de línea de comandos;
+3. `cd app && npm install && npx cap add android && npm run sync && npm run android`.
+
+Para iOS hace falta además **un Mac con Xcode**: no hay forma de compilar para iPhone desde
+Windows, y eso no es un detalle del plan sino una condición de D-A4 (Android primero).
 
 ### Lo que ya está funcionando (19-sep-2026)
 
@@ -292,7 +323,13 @@ tardara en llegar. En pedibot.xyz, hoy:
   falla. Un calendario de vacunas de hace ocho meses servido desde el teléfono sería peor que no
   tener nada;
 - **la API no se guarda nunca**: una respuesta del chat es para una pregunta, un niño y un
-  momento.
+  momento;
+- **los datos se guardan al instalar el trabajador**, sin esperar a que nadie visite la página:
+  los 88 países con su número, los 61 calendarios, las 69 tablas, las dosis y los signos de
+  alarma. Es la diferencia entre «funciona sin cobertura si ya habías entrado ahí» y «funciona»;
+- **el calendario de vacunas de cada hijo, con fechas de verdad**, y un botón para llevárselas al
+  calendario del teléfono (`.ics`). En la app eso pasa a ser la notificación local de D-A3: el
+  dato es el mismo, cambia quién avisa.
 
 Y hay interruptor de emergencia: `/sw.js` se sirve sin caché, así que desplegarlo con un
 `unregister()` dentro apaga todo esto en la siguiente carga de cualquiera.

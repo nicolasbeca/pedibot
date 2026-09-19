@@ -159,8 +159,36 @@ const paises = countryOptions(countryCodes as string[], lang);
       <button class="lnk peligro" data-borrar="${m.id}">×</button></li>`;
   }
 
+  // ── el calendario de vacunas de ESE niño, con fechas ──────────────────────────────────────
+  function pintaVacunas(datos: any) {
+    if (!datos || !datos.appointments?.length) return '';
+    const cita = (c: any) => {
+      const cuando = c.date
+        ? new Date(c.date + 'T00:00:00').toLocaleDateString(lang, { year: 'numeric', month: 'short', day: 'numeric' })
+        : T.vax_yearly;
+      const etiqueta = c.state === 'due' ? `<b class="ahora">${esc(T.vax_due)}</b> ` : '';
+      return `<li class="${c.state}">${etiqueta}<span class="cuando">${esc(cuando)}</span>
+        <span class="quees">${esc(c.label)}</span> ${esc(c.vaccines.join(', '))}</li>`;
+    };
+    // Lo que ya pasó no se esconde —quien llega tarde a una vacuna es quien más necesita
+    // verla— pero se pliega, que si no la lista de un niño de cuatro años es un muro.
+    const pasadas = datos.appointments.filter((c: any) => c.state === 'past');
+    const resto = datos.appointments.filter((c: any) => c.state !== 'past');
+    // La app avisará con una notificación local; un navegador no puede programar un aviso para
+    // dentro de cuatro meses. Lo que sí puede es dárselo al calendario del propio teléfono.
+    const siguiente = datos.next
+      ? `<p class="siguiente">📅 <b>${esc(T.vax_next)}:</b> ${esc(datos.next.label)} — ${esc(datos.next.vaccines.join(', '))}
+          <a class="ics" href="/api/family/children/${datos.child_id}/vaccines.ics?lang=${lang}">${esc(T.vax_ics)} ↓</a></p>`
+      : '';
+    return `<p class="eyebrow">${esc(T.vax_cal)}</p>${siguiente}
+      <ul class="vacunas">${resto.map(cita).join('')}</ul>
+      ${pasadas.length ? `<details class="pasadas"><summary>${esc(T.vax_past)} (${pasadas.length})</summary><ul class="vacunas">${pasadas.map(cita).join('')}</ul></details>` : ''}`;
+  }
+
   async function pintaHijo(hijo: any) {
     const { datos: medidas } = await api(`/api/family/children/${hijo.id}/measurements`);
+    const { datos: vacunas } = await api(`/api/family/children/${hijo.id}/vaccines?lang=${lang}`);
+    if (vacunas) vacunas.child_id = hijo.id;
     const lista = (medidas || []) as any[];
     const caja = document.createElement('article');
     caja.className = 'card kid';
@@ -173,6 +201,7 @@ const paises = countryOptions(countryCodes as string[], lang);
       ${peso ? `<p class="eyebrow">${esc(T.weight_for_age)}</p>${peso}` : ''}
       ${talla ? `<p class="eyebrow">${esc(T.height_for_age)}</p>${talla}` : ''}
       ${peso || talla ? `<p class="n">${esc(T.who_note)}</p>` : ''}
+      ${pintaVacunas(vacunas)}
       <ul class="medidas">${lista.length ? lista.map(filaMedida).join('') : `<li class="n">${esc(T.no_measures)}</li>`}</ul>
       <form class="nueva">
         <div class="rejilla">
@@ -304,6 +333,18 @@ const paises = countryOptions(countryCodes as string[], lang);
   .medidas .cuando { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .82rem; color: var(--ink-3); }
   .medidas li .lnk { margin-inline-start: auto; }
   form.nueva { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 14px; }
+  .vacunas { list-style: none; padding: 0; margin: 8px 0 0; font-size: .88rem; }
+  .vacunas li { padding: 5px 0; border-top: 1px solid var(--line); }
+  .vacunas .cuando { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .8rem; color: var(--ink-3); margin-inline-end: 8px; }
+  .vacunas .quees { font-family: Nunito, sans-serif; font-weight: 700; margin-inline-end: 6px; }
+  /* Lo que toca ahora, en coral; lo que ya pasó, más apagado y plegado. */
+  .vacunas li.due { background: var(--mint); border-radius: 8px; padding-inline: 8px; }
+  .vacunas .ahora { color: var(--coral); margin-inline-end: 6px; }
+  .vacunas li.past, .vacunas li.seasonal { color: var(--ink-2); }
+  .siguiente { margin: 8px 0 0; font-size: .92rem; }
+  .siguiente .ics { margin-inline-start: 8px; font-size: .86rem; white-space: nowrap; }
+  details.pasadas { margin-top: 10px; font-size: .88rem; }
+  details.pasadas summary { cursor: pointer; color: var(--ink-3); }
   details.nuevo summary { cursor: pointer; font-family: Nunito, sans-serif; font-weight: 700; }
   details.nuevo form { margin-top: 14px; }
   .vacio { margin-top: 16px; }

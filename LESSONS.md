@@ -720,3 +720,27 @@ prueba tiene que traer el valor **de fuera**. Ahora compara contra las medianas 
 OMS (una niña pesa 8,9 kg al año, un niño mide 87,1 cm a los dos), que cualquiera puede verificar
 sin abrir este repositorio, más un candado tonto que dice que el peso a los cinco años tiene que
 ser al menos cuatro veces el del nacimiento. Las dos habrían fallado con el fallo puesto.
+
+## L192 · Un despliegue que termina en «done» no quiere decir que haya desplegado (19-sep-2026)
+Al añadir un paso previo al build del sitio —copiar los datos que la web guarda para funcionar
+sin cobertura—, el despliegue imprimió esto en medio de sus veinte líneas:
+
+    Error: Cannot find module '/opt/pedibot/web/site/scripts/publish-offline-data.mjs'
+    SMOKE-FIN fallos=0
+    DOCTOR-FIN problemas=0
+    == done: https://pedibot.xyz
+
+Dos fallos encadenados, y el segundo es el que enseña algo. El primero, tonto: la carpeta nueva
+no estaba en la lista de lo que el `tar` sube al servidor. El segundo: la orden que construye el
+sitio acababa en `| grep -E "page(s)|rror"`, **así que el código de salida era el del grep**, no
+el del build. El servidor se quedó con el sitio de antes, la prueba de humo pasó —porque el
+sitio viejo funciona perfectamente— y el despliegue llegó hasta «done» tan contento.
+
+Lo peor no es que fallara: es que **fallar y no fallar se veían igual**. La única diferencia era
+una línea de error entre otras veinte, y el despliegue de un proyecto que se despliega cinco
+veces al día no se lee línea a línea.
+
+**La regla**, que es la L33 otra vez por otro lado: cuando una orden importante acaba en una
+tubería, el código de salida es el del último tramo. O `set -o pipefail`, o el fallo es mudo. Y
+cuando el fallo significa «lo que hay desplegado sigue siendo lo de antes», hay que decirlo con
+esas palabras y parar, no seguir hasta el «done».
