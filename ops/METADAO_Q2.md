@@ -3,7 +3,9 @@
 > «Who are you, what is your background, and why are you the right person/team to build this?»
 > Máximo 8.000 caracteres. **Este texto son 5.987** (1.109 palabras), contados, no estimados.
 >
-> Cerrado el 19-sep-2026 con tus datos: Nicolás Beca, arquitecto y padre, y el motivo real.
+> Cerrado el 19-sep-2026 con tus datos: Nicolás Beca, arquitecto y padre, el motivo real y
+> **el proyecto empezado en enero de 2026** (lo de «desde el 25 de agosto» era la fecha en
+> que se puso en pie lo que hay hoy, no la de la idea; ahora el texto dice las dos).
 > **Todas las cifras están releídas hoy de los ficheros publicados**, una a una. Salió un
 > error de mi borrador anterior: yo había escrito «ocho países sin número de emergencias» y son
 > **siete** donde la fuente dice que no existe servicio nacional, más **uno** (Zambia) donde no
@@ -25,7 +27,7 @@ looking for an answer and started wanting the thing that did not exist: a place 
 what the paediatric societies actually say, names the document, and admits when it does not
 know.
 
-So I built it. Since 25 August, alone, in my own time and out of my own pocket.
+So I started building it, in January of this year, alone, in my own time and out of my own pocket. The site you can open today has been live since the end of August.
 
 Everything below is on the site right now and you can check all of it without taking my word for
 anything:
@@ -122,3 +124,101 @@ exactly what is stored and what is not. Nothing on that site needs an account.
 - **Lo único que puede que quieras cambiar**: «I pay for the server myself. It is a small amount
   of money and it is the cheapest thing I do». Si prefieres decir la cifra exacta, dilo: un
   número pequeño y real ahí dentro vale más que cualquier promesa.
+
+---
+
+## El mismo texto en español, para tu visto bueno
+
+> No es lo que se envía (el formulario es en inglés). Es para que lo leas y digas si va o no va.
+> Frase por frase, lo mismo que dice el inglés.
+
+Me llamo Nicolás Beca. Soy arquitecto, no soy médico y no tengo equipo.
+
+PediBot existe porque mi hijo tuvo unos primeros meses difíciles y yo no encontraba información
+de la que fiarme. No voy a contaros qué le pasaba, porque eso es suyo y no un argumento de
+venta. Lo que sí os cuento es cómo eran aquellas noches: una pantalla llena de foros, de webs
+hechas para colocar anuncios, de sitios que contestaban a todo con una seguridad absoluta y no
+citaban nada, y ninguno escrito por alguien que diera la cara. En algún momento de todo aquello
+dejé de buscar una respuesta y empecé a querer lo que no existía: un sitio que te diga lo que
+dicen de verdad las sociedades pediátricas, que nombre el documento, y que reconozca cuando no
+lo sabe.
+
+Así que me puse a construirlo, en enero de este año, solo, en mi tiempo y de mi bolsillo. Lo que se puede abrir hoy lleva funcionando desde finales de agosto.
+
+Todo lo de abajo está hoy en la web y se puede comprobar sin creerme a mí en nada:
+
+- Números de emergencia de 88 países, cada uno con la fuente oficial de la que sale.
+- Calendarios de vacunas infantiles de 61 países, transcritos de los documentos oficiales, cada
+  uno con su ministerio y la fecha en que se comprobó.
+- Curvas de crecimiento de la OMS para 69 países, con el percentil calculado en el propio
+  aparato, sin que intervenga ningún modelo.
+- 502 guías en ocho idiomas, todas citando documentos que el lector puede abrir.
+- Una capa de seguridad de reglas fijas, 83 signos de alarma, que decide la urgencia antes de
+  preguntarle nada a ningún modelo de lenguaje. Las dosis salen de tablas publicadas y nunca se
+  generan.
+- 496 documentos pediátricos catalogados, con sus licencias leídas una a una.
+- 8.876 pruebas automáticas. La cifra no la digo para impresionar, sino por lo que significa: en
+  este proyecto un fallo es un número de emergencias equivocado, y la única manera de no
+  publicar uno es obligar a cada regla a demostrarse en cada cambio.
+
+No diagnostica. Cita, nombra la fuente, enlaza el original, y cuando nada de lo que tiene
+sostiene una respuesta lo dice en vez de rellenar el hueco. Esa última regla es el proyecto
+entero. Cualquiera puede construir algo que siempre tenga una respuesta.
+
+Por qué yo, entonces. Tres razones, y ninguna es un título.
+
+**Primera: busco mis propios fallos en público y los arreglo el mismo día.** Dos de esta semana.
+El selector de país no tenía opción vacía, así que el primero por orden alfabético, Emiratos
+Árabes Unidos, salía elegido de fábrica: a un padre en Madrid preguntando por un bebé con los
+labios azules le estábamos diciendo que llamara al 998. Semanas de datos cuidados echadas abajo
+por un valor por defecto. Lo encontré probando contra la web viva en vez de leer mi propio
+código, lo arreglé y escribí una prueba para que no pueda volver. El segundo: la capa de
+seguridad trata «ni» como una negación castellana, porque lo es. En suajili, «ni» es el verbo
+ser. Así que un padre keniano que escribía «midomo yake ni ya bluu», sus labios están azules,
+tenía la alarma apagada por una palabra que significa «es». Un silencio, no una falsa alarma. Ese
+me dio más miedo que nada que haya escrito en mi vida.
+
+**Segunda: sé exactamente lo que esto no es.** No es un producto sanitario. No es un
+diagnóstico. No es un negocio que os vaya a dar dinero, y no voy a fingir lo contrario en un
+formulario donde todos los demás os prometen un múltiplo. Sin suscripción, sin publicidad, sin
+venta de datos, y no los va a haber: un proyecto cuyo argumento entero es que no vende nada no
+puede empezar a vender algo sin convertirse en aquello contra lo que se construyó. El servidor
+lo pago yo. Es poco dinero y es lo más barato que hago.
+
+**Tercera: el trabajo ya está regalado.** El catálogo de esos 496 documentos, la clasificación,
+las licencias, la taxonomía de temas, meses de lectura, está publicado como CC0, dominio
+público, y se descarga desde la propia web. Si mañana desaparezco, otro lo coge. Eso no es
+generosidad: es la única forma honesta de construir algo cuyo valor es que exista, no que sea
+mío.
+
+Y ahora la parte que importa, y voy a ser directo con vosotros, porque vais a leer muchas
+solicitudes este mes.
+
+Estáis aquí para ganar dinero, y hacéis bien. La mayoría de lo que financiéis tiene que ganar
+dinero o el mecanismo deja de funcionar y el año que viene no hay nada de esto. No os pido que
+finjáis otra cosa. Os pido la otra cosa.
+
+Hay siete países donde PediBot no puede dar un número de emergencias, porque la fuente oficial
+dice con todas las letras que no existe un servicio nacional. No «no lo hemos encontrado»: no lo
+hay. En un octavo, Zambia, no hemos podido verificar el número que encontramos, y la página
+también lo dice. Cada vez que abro esa lista pienso en lo que significa ser el padre que está al
+otro lado.
+
+Esos siete países, y los cincuenta y tantos que hemos añadido este mes, no son un mercado. Nadie
+va a monetizar a una madre en Kisumu a las tres de la mañana sin saldo en el móvil, y quien os
+diga lo contrario os está vendiendo algo. No es una usuaria. Es alguien que necesita saber si su
+hija está respirando como debe, y que no tiene a quién preguntar. Es lo mismo que necesitaba yo,
+en un sitio peor y con menos.
+
+Así que esto es eso. Algo que le contesta, gratis, en su idioma, con la fuente al lado para que
+pueda comprobarlo, y que sigue funcionando cuando se le va la cobertura, porque los números de
+emergencia de los 88 países están dentro de su teléfono.
+
+Podéis financiar cien cosas este año que os hagan más ricos. Vais a financiar muy pocas que
+contaríais en una cena con vuestra familia. Creo que esta es una de ellas. Creo que averiguarlo
+os cuesta casi nada. Y creo que dentro de seis meses la medida honesta de si yo era la persona
+adecuada para construirlo no será mi formación, que es la arquitectura, ni mi equipo, que no
+existe. Será si esos números son más grandes, siguen citados y siguen siendo gratis.
+
+Todo está en https://pedibot.xyz. La página de fuentes lista cada documento. La página legal
+dice exactamente qué se guarda y qué no. Nada de ese sitio necesita una cuenta.
