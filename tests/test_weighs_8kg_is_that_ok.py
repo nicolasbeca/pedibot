@@ -98,3 +98,52 @@ def test_el_suajili_con_la_unidad_delante_sigue_pendiente() -> None:
 
     _, kg, _ = measurements(PENDIENTE_SUAJILI)
     assert kg is None, "¡arreglado! quita esta prueba y mete la frase en PREGUNTAN"
+
+
+# ── cómo se escribe el resultado ─────────────────────────────────────────────────────────────
+
+
+@pytest.mark.parametrize(
+    ("valor", "esperado"),
+    [
+        (0.3, "0.3rd"),
+        (1, "1st"),
+        (2, "2nd"),
+        (3, "3rd"),
+        (4, "4th"),
+        (9, "9th"),
+        (11, "11th"),
+        (12, "12th"),
+        (13, "13th"),
+        (21, "21st"),
+        (50, "50th"),
+        (91, "91st"),
+        (99.6, "99.6th"),
+    ],
+)
+def test_el_ordinal_ingles_se_escribe_como_en_las_curvas(valor: float, esperado: str) -> None:
+    """Decía «2th percentile» y «0.3th». Las curvas publicadas escriben «2nd» y «0.4th centile».
+
+    Sale en cada respuesta de crecimiento en inglés, que es la lengua con la que este sitio
+    llega a Kenia, Nigeria, Ghana y la India.
+    """
+    from pedibot.bot.growth import _ordinal_en
+
+    assert _ordinal_en(valor) == esperado
+
+
+@pytest.mark.parametrize(
+    ("lang", "unidad"), [("ar", "كغ"), ("hi", "किग्रा"), ("ru", "кг"), ("es", "kg"), ("en", "kg")]
+)
+def test_la_unidad_se_escribe_en_el_alfabeto_del_lector(lang: str, unidad: str) -> None:
+    """«6 kg» dentro de una frase en hindi dice, en cada línea, que el texto no es para ti.
+
+    El kilogramo es un símbolo del SI y no se traduce en las lenguas latinas; el árabe, el hindi
+    y el ruso sí tienen el suyo.
+    """
+    from pedibot.bot.growth import Growth, explain
+    from pedibot.settings import ROOT
+
+    g = Growth(ROOT / "config" / "who_growth.json")
+    texto = explain(g.assess("f", 12, weight_kg=7.0), lang, "f", 12)
+    assert f"7 {unidad}" in texto, texto[:160]

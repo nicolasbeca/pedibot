@@ -640,7 +640,7 @@ def measurements(text: str) -> tuple[str | None, float | None, float | None]:
 SENTENCES: dict[str, dict[str, str]] = {
     "en": {
         "head": "According to the WHO growth standards ({who}, {age}):",
-        "line": "• {label}: {value} → {percentile}th percentile (z {z}), {flag}.",
+        "line": "• {label}: {value} → {percentile} percentile (z {z}), {flag}.",
         "girl": "girl",
         "boy": "boy",
         "ask_height": "Tell me the height too and I can also work out weight for height.",
@@ -747,9 +747,40 @@ def _age_text(age_months: float, lang: str) -> str:
     return f"{age_months / 12:g} {anios}"
 
 
-def _value_text(i: Indicator) -> str:
+#: La abreviatura de la unidad en cada alfabeto. El kilogramo y el centímetro son símbolos del
+#: SI y no se traducen en las lenguas latinas, pero el árabe, el hindi y el ruso sí tienen la
+#: suya, y verla en latín dentro de su frase dice lo mismo que una coma latina en árabe: que el
+#: texto no se escribió para quien lo está leyendo (20-sep-2026).
+_UNIDADES: dict[str, dict[str, str]] = {
+    "ar": {"kg": "كغ", "cm": "سم"},
+    "hi": {"kg": "किग्रा", "cm": "सेमी"},
+    "ru": {"kg": "кг", "cm": "см"},
+}
+
+
+def _ordinal_en(valor: float) -> str:
+    """«2nd», «0.3rd», «91st», «99.6th». El sufijo sale de la última cifra escrita.
+
+    Las curvas publicadas dicen «0.4th centile» y «2nd centile»; pegar «th» a todo da «2th», que
+    es lo que salía en cada respuesta de crecimiento en inglés, o sea en la lengua con la que
+    este sitio llega a Kenia, Nigeria, Ghana y la India (20-sep-2026).
+    """
+    texto = f"{valor:g}"
+    ultima = texto[-1]
+    # 11, 12 y 13 son «th» aunque acaben en 1, 2 y 3; con decimales manda la última cifra y esa
+    # excepción no aplica («0.11th» no existe como percentil publicado, pero 11 sí)
+    if "." not in texto:
+        entero = int(float(texto))
+        if entero % 100 in (11, 12, 13):
+            return f"{texto}th"
+    sufijo = {"1": "st", "2": "nd", "3": "rd"}.get(ultima, "th")
+    return f"{texto}{sufijo}"
+
+
+def _value_text(i: Indicator, lang: str = "en") -> str:
     """Lo medido, con su unidad: kg para el peso, cm para la talla, nada para el IMC."""
     unit = {"wfa": "kg", "wfh": "kg", "lhfa": "cm", "hfa": "cm", "bmi": ""}.get(i.name, "")
+    unit = _UNIDADES.get(lang, {}).get(unit, unit)
     return f"{i.value:g} {unit}".strip()
 
 
@@ -763,8 +794,8 @@ def explain(a: Assessment, lang: str, sex: str, age_months: float) -> str:
         partes.append(
             s["line"].format(
                 label=t[i.name],
-                value=_value_text(i),
-                percentile=f"{i.percentile:g}",
+                value=_value_text(i, lang),
+                percentile=(_ordinal_en(i.percentile) if lang == "en" else f"{i.percentile:g}"),
                 z=f"{i.z:g}".replace("-", "−"),
                 flag=t[i.flag],
             )
