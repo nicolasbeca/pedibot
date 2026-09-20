@@ -35,7 +35,10 @@ def key() -> str:
     """The key file already in public/, or a new one written there on first run."""
     existing = sorted(PUBLIC.glob("*.txt"))
     for f in existing:
-        if re.fullmatch(r"[0-9a-f]{32}", f.stem) and f.read_text(encoding="utf-8").strip() == f.stem:
+        if (
+            re.fullmatch(r"[0-9a-f]{32}", f.stem)
+            and f.read_text(encoding="utf-8").strip() == f.stem
+        ):
             return f.stem
     import secrets
 

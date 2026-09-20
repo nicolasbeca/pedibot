@@ -435,3 +435,16 @@ Mundial dice cuáles— y se puede escribir sin suponer nada.
 Queda para la siguiente tanda, después de subir lo que hay pendiente, porque implica traer un
 fichero de datos nuevo con su ingesta y sus pruebas, y no es algo que se meta a medias entre dos
 despliegues.
+
+**HECHO el mismo 20-sep-2026, esa misma tarde.** `scripts/build_income_levels.py` baja la
+clasificación del Banco Mundial y deja `config/income_levels.json` con los 72 países de renta
+baja y media-baja, con su fuente, su URL y la fecha de descarga; `src/pedibot/bot/who_first.py`
+tiene la política —reconocer una pregunta de diarrea en las ocho lenguas, sin confundirla con
+estreñimiento ni con lombrices, y sólo empujar donde la guía de la OMS es la norma—; y
+`Retriever.search` gana un `push` que es el mecanismo, con la política fuera. 37 pruebas, entre
+ellas la del cable: que el motor los pase de verdad, porque una regla correcta que nadie llama
+no arregla nada y desde fuera las dos cosas se ven igual.
+
+Lo que sigue sin hacerse, a propósito: **el zinc no lleva dosis en ningún sitio**. Hay una
+prueba que falla si alguno de los términos empujados lleva una cifra. La dosis depende de la
+edad y va por la vía de las dosis, con su tabla y su fuente, o no va.

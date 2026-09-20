@@ -1,0 +1,99 @@
+"""Donde la guía de la OMS es la norma nacional, tiene que ir delante (20-sep-2026).
+
+El corpus de este proyecto está escorado a Europa y a Estados Unidos, porque es de donde se
+puede reutilizar material con licencia clara. Eso no se nota en casi nada: una fiebre es una
+fiebre en Nairobi y en Madrid. Se nota en lo poco donde el tratamiento estándar **es distinto
+según dónde viva el niño**, y la diarrea infantil es el caso de libro.
+
+El caso que lo destapó, probando la web viva como un padre de Nairobi: «my baby is 7 months and
+has watery diarrhoea since yesterday», con Kenia seleccionada. La respuesta era correcta y
+segura —suero en cantidades pequeñas, nada de refrescos, cuándo ir al médico— citando a
+MedlinePlus y a la SEUP, y **no mencionaba el zinc**, que allí es la mitad del tratamiento.
+
+Lo importante: **el documento de la OMS ya estaba en el corpus y sí salía** cuando la pregunta
+era de tratamiento. Lo que fallaba es que, cuando el padre **describe un síntoma** en vez de
+pedir un remedio, ganan las fuentes europeas — y un padre asustado describe un síntoma.
+
+Así que esto no añade fuentes ni escribe nada en la respuesta. Empuja unos términos en la
+recuperación para que el documento que allí es la norma entre entre los pasajes que el modelo
+tiene delante. Si el modelo no lo usa, no pasa nada; si lo usa, lo cita.
+
+**De dónde sale «donde es la norma».** No de mí. La propia hoja de la OMS acota su alcance:
+«Diarrhoea due to infection is widespread throughout developing countries. In low-income
+countries, children under 3 years old experience on average three episodes of diarrhoea every
+year», y pone el suero y el zinc juntos como medidas clave de tratamiento. Esa frase se traduce
+a códigos de país con la clasificación por renta del Banco Mundial, que es pública, anual y
+descargable (`scripts/build_income_levels.py` → `config/income_levels.json`).
+
+La tentación era escribir «los africanos y los del sur de Asia». Suena razonable y es justo lo
+que no se hizo con las marcas de Etiopía y del Congo: plausible no es una fuente.
+"""
+
+from __future__ import annotations
+
+import json
+import re
+from functools import lru_cache
+
+from pedibot.settings import ROOT
+
+#: Los términos que se empujan. **Ninguno lleva una cifra, y es a propósito**: la dosis de zinc
+#: depende de la edad —distinta por encima y por debajo de los seis meses— y una cifra va por la
+#: vía de las dosis, con su tabla y su fuente, o no va. Aquí sólo se pide que el documento de la
+#: OMS compita por entrar entre los pasajes.
+WHO_DIARRHOEA_TERMS: tuple[str, ...] = (
+    "zinc",
+    "rehydration",
+    "rehidratación",
+    "réhydratation",
+    "ors",
+    "sro",
+)
+
+#: La palabra en las ocho lenguas del sitio, por prefijo. «Deposiciones líquidas» y «loose
+#: stools» entran porque es como lo escribe un padre que no usa la palabra clínica.
+_DIARREA = re.compile(
+    r"diarre|diarrh|diarré|durchfall|поно́с|понос|диаре|إسهال|اسهال|दस्त|अतिसार"
+    r"|deposiciones? l[ií]quid|heces l[ií]quid|loose stool|watery stool|selles liquides"
+    r"|wässrig|wassrig|жидкий стул|براز مائي|पतले दस्त|fezes l[ií]quidas",
+    re.I,
+)
+
+#: Lo que NO es diarrea aunque comparta el tema «digestivo» de la taxonomía. Sin esto, una
+#: pregunta de estreñimiento en Nigeria se llevaría términos de rehidratación, que es lo
+#: contrario de lo que necesita.
+_NO_ES = re.compile(
+    r"estre[ñn]i|constipat|verstopfung|запор|إمساك|कब्ज|prisão de ventre"
+    r"|lombric|oxiuro|threadworm|pinworm|oxyure|madenw[üu]rmer|острицы|ديدان|कीड़े",
+    re.I,
+)
+
+
+@lru_cache(maxsize=1)
+def _income() -> frozenset[str]:
+    d = json.loads((ROOT / "config" / "income_levels.json").read_text(encoding="utf-8"))
+    return frozenset(c.upper() for c in d["low_and_lower_middle_income"])
+
+
+LOW_INCOME: frozenset[str] = _income()
+
+
+def is_a_diarrhoea_question(text: str) -> bool:
+    """¿Habla de diarrea, y no de otra cosa del aparato digestivo?"""
+    if not text:
+        return False
+    return bool(_DIARREA.search(text)) and not _NO_ES.search(text)
+
+
+def extra_terms(text: str, country: str | None) -> list[str]:
+    """Los términos a empujar, o nada.
+
+    Sin país no se supone nada: quien no ha elegido no es «probablemente de renta baja», es
+    desconocido, y adivinarlo sería la misma clase de error que el selector de país que venía
+    con los Emiratos preseleccionados.
+    """
+    if not country or country.upper() not in LOW_INCOME:
+        return []
+    if not is_a_diarrhoea_question(text):
+        return []
+    return list(WHO_DIARRHOEA_TERMS)

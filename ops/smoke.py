@@ -43,14 +43,33 @@ PREGUNTAS = {
 }
 
 PAGINAS = (
-    "/", "/es", "/fr", "/de", "/ru", "/ar", "/pt", "/hi",
-    "/dose", "/vaccines", "/guides", "/emergency", "/legal", "/support",
-    "/kit", "/diary", "/sources", "/llms.txt", "/rss.xml", "/robots.txt",
+    "/",
+    "/es",
+    "/fr",
+    "/de",
+    "/ru",
+    "/ar",
+    "/pt",
+    "/hi",
+    "/dose",
+    "/vaccines",
+    "/guides",
+    "/emergency",
+    "/legal",
+    "/support",
+    "/kit",
+    "/diary",
+    "/sources",
+    "/llms.txt",
+    "/rss.xml",
+    "/robots.txt",
     "/sitemap-index.xml",
     # 19-sep-2026: las tres piezas de funcionar sin cobertura. Si el trabajador o el manifiesto
     # dejan de servirse, el sitio sigue viéndose perfecto con red y sólo falla donde no hay,
     # que es justo donde no vamos a estar mirando.
-    "/sw.js", "/manifest.webmanifest", "/offline",
+    "/sw.js",
+    "/manifest.webmanifest",
+    "/offline",
 )
 
 
@@ -112,7 +131,9 @@ def main() -> int:
         ok, code, cuerpo = pide(
             "POST", "/api/dose", json={"drug": "paracetamol", "weight_kg": 14, "lang": lg}
         )
-        bien = bool(ok and isinstance(cuerpo, dict) and cuerpo.get("mg") and cuerpo.get("ml_by_form"))
+        bien = bool(
+            ok and isinstance(cuerpo, dict) and cuerpo.get("mg") and cuerpo.get("ml_by_form")
+        )
         if not bien:
             fallos.append((f"dose[{lg}]", code))
         linea.append(f"{lg}:{'ok' if bien else code}")
@@ -120,7 +141,9 @@ def main() -> int:
 
     # el fármaco que no es para este niño: la respuesta NO puede traer una cifra
     ok, code, cuerpo = pide(
-        "POST", "/api/dose", json={"drug": "ibuprofen", "weight_kg": 5, "age_months": 2, "lang": "en"}
+        "POST",
+        "/api/dose",
+        json={"drug": "ibuprofen", "weight_kg": 5, "age_months": 2, "lang": "en"},
     )
     seguro = bool(
         ok
@@ -143,7 +166,14 @@ def main() -> int:
             ok, code, cuerpo = pide("POST", "/api/ask", json={"question": q})
             bien = bool(ok and isinstance(cuerpo, dict) and cuerpo.get("lang") == lg)
             if not bien:
-                fallos.append((f"ask[{lg}]", code if not ok else f"contestó en {cuerpo.get('lang') if isinstance(cuerpo, dict) else '?'}"))
+                fallos.append(
+                    (
+                        f"ask[{lg}]",
+                        code
+                        if not ok
+                        else f"contestó en {cuerpo.get('lang') if isinstance(cuerpo, dict) else '?'}",
+                    )
+                )
             linea.append(f"{lg}:{'ok' if bien else 'MAL'}")
         print("ask        " + "  ".join(linea))
 

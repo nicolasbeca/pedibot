@@ -94,6 +94,17 @@ detecta cambios y reprocesa. Los calendarios de vacunas llevan el año de la fue
 **"¿Qué modelo usa?"** — DeepSeek. No lo escondas; en HN preguntarlo es rutina y ocultarlo queda
 peor que la respuesta.
 
-**"¿Cuánta gente lo usa?"** — Casi nadie, y **no lo maquilles**: 235 impresiones en Google en 30
-días, 3 clics, posición media 75. En HN la humildad medida puntúa; un número inflado se detecta y
-hunde el hilo.
+**"¿Cuánta gente lo usa?"** — Casi nadie, y **no lo maquilles**. Medido contra Search Console y
+contra el registro del servidor el 20-sep-2026, o sea el día que se publicó:
+
+- **341 personas** han entrado desde el 25 de agosto, en 558 visitas.
+- **1.837 impresiones** en Google en 28 días y **3 clics**, con posición media 65,6. (Doce días
+  antes eran 392 impresiones y posición 74,3: Google la está enseñando cada vez más, pero en la
+  página siete, que es donde no pincha nadie.)
+- **Nueve preguntas al chat en toda su vida.** Cuatro en la última semana.
+- Lo que la gente sí busca son dosis por marca: «calculadora apiretal», «calpol dosage»,
+  «doliprane posologie». Ni una sola consulta de chat.
+
+En HN la humildad medida puntúa, y esas cifras cuentan además la historia de verdad: el producto
+no tiene un problema de producto, tiene un problema de que nadie lo enlaza. Un número inflado se
+detecta y hunde el hilo.

@@ -990,9 +990,24 @@ class Retriever:
         return extra
 
     def search(
-        self, query: str, lang: str, red_flag_boost: bool = False
+        self,
+        query: str,
+        lang: str,
+        red_flag_boost: bool = False,
+        push: list[str] | None = None,
     ) -> tuple[list[Hit], list[str]]:
+        """`push`: términos que el que llama quiere buscar aunque el padre no los haya dicho.
+
+        Se añadió el 20-sep-2026 para una cosa concreta y con una fuente detrás: donde la guía de
+        la OMS es la norma nacional, sus palabras tienen que competir por entrar en los pasajes
+        aunque el padre esté describiendo un síntoma en vez de pedir un tratamiento (ver
+        `pedibot.bot.who_first`). La política —qué términos y en qué países— vive allí; aquí sólo
+        está el mecanismo, que es el mismo que ya usaba la expansión de sinónimos.
+        """
         extra = self.expand(query, lang)
+        for t in push or []:
+            if t not in extra:
+                extra.append(t)
         topic = self.taxonomy.topic_for(query + " " + " ".join(extra)) if self.taxonomy else None
         hits = self.index.search(
             query,

@@ -124,7 +124,9 @@ def main() -> int:
         print((r.stdout or r.stderr).strip()[-200:])
 
     # la firma va al final y sólo se imprime al llegar: su ausencia es la prueba de que murió (L117)
-    print(f"PUBLISH-FIN escritas={escritas} pedidas={len(elegidas)} sitio_rehecho={int(construido)}")
+    print(
+        f"PUBLISH-FIN escritas={escritas} pedidas={len(elegidas)} sitio_rehecho={int(construido)}"
+    )
     return 0
 
 

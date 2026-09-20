@@ -73,9 +73,7 @@ def main() -> None:
         return
 
     for label, ids in plan.items():
-        con.executemany(
-            "UPDATE answers SET source=? WHERE id=?", [(label, i) for i in ids]
-        )
+        con.executemany("UPDATE answers SET source=? WHERE id=?", [(label, i) for i in ids])
     con.commit()
     left = con.execute("SELECT COUNT(*) FROM answers WHERE source='unknown'").fetchone()[0]
     print(f"\nescrito. quedan {left} sin identificar")

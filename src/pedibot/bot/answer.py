@@ -38,6 +38,7 @@ from pedibot.bot.vaccines import (
     format_answer,
     is_vaccine_question,
 )
+from pedibot.bot.who_first import extra_terms as who_first_terms
 from pedibot.index.store import Hit
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
@@ -1215,7 +1216,16 @@ class Engine:
 
         prev_user = next((t["text"] for t in reversed(history) if t.get("role") == "user"), "")
         search_q = f"{prev_user} {query}" if prev_user and len(query.split()) <= 8 else query
-        hits, extra = self.retriever.search(search_q, lang, red_flag_boost=tr.is_alarm)
+        # Donde la guía de la OMS es la norma nacional, sus palabras compiten por entrar aunque
+        # el padre no las diga: un padre asustado describe un síntoma, no pide un tratamiento, y
+        # con «mi hijo tiene diarrea» en Kenia ganaban las fuentes europeas, que no hablan de
+        # zinc porque en Europa no se usa así (20-sep-2026, ver `who_first`).
+        hits, extra = self.retriever.search(
+            search_q,
+            lang,
+            red_flag_boost=tr.is_alarm,
+            push=who_first_terms(context_text, country),
+        )
         hits = self._inject_rule_sources(tr, hits)
         if not hits:
             return Answer(
