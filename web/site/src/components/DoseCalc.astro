@@ -6,11 +6,32 @@ const s = t(lang);
 const { drug = s.dose_default_drug } = Astro.props;
 const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpol', 'Tylenol', 'Panadol', 'Apiretal', 'Termalgin', 'Gelocatil', 'Efferalgan', 'Doliprane', 'Tachipirina', 'Dalsy', 'Junifen', 'Apirofeno', 'Nurofen', 'Advil', 'Motrin', 'Alivium'];
 ---
-<div class="calc" data-lang={lang} data-strings={JSON.stringify({ every: s.dose_every, hours: s.dose_hours, max: s.dose_max, perday: s.dose_perday, check: s.dose_check, refer: s.dose_refer, only_known: s.dose_only_known })}>
+<div class="calc" data-lang={lang} data-strings={JSON.stringify({ every: s.dose_every, hours: s.dose_hours, max: s.dose_max, perday: s.dose_perday, check: s.dose_check, refer: s.dose_refer, only_known: s.dose_only_known, yours: s.dose_bottle_yours, odd: s.dose_bottle_odd })}>
   <div>
     <div class="field"><label for="drug">{s.dose_drug}</label><input id="drug" list="drugs" value={drug} autocomplete="off" /><datalist id="drugs">{names.map(n => <option value={n} />)}</datalist></div>
     <div class="field"><label for="w">{s.dose_weight}</label><input id="w" type="number" min="1" max="120" step="0.5" value={kg} /></div>
     <div class="field"><label for="m">{s.dose_age}</label><select id="m">{s.age_opts.map(([v, l]) => <option value={v} selected={v === '36'}>{l}</option>)}</select></div>
+    {/*
+      20-sep-2026. Hasta hoy el padre elegía entre las nueve presentaciones del catálogo, y si la
+      suya no estaba cogía la que más se le parecía. Eso es exactamente lo que casi pasa con las
+      gotas de Etiopía —100 mg/5 ml frente a 100 mg/ml, cinco veces— y no es un caso raro: un
+      estudio de 2025 sobre las listas nacionales de medicamentos esenciales cuenta **28
+      formulaciones distintas de paracetamol** por el mundo. Perseguirlas una a una es una
+      carrera que se pierde.
+      Con este campo deja de importar cuántas tengamos: el padre tiene el bote en la mano y lo
+      copia. Los miligramos los sigue calculando el servidor desde el peso, así que esto sólo
+      convierte a mililitros; teclear mal la concentración cambia el volumen, no la dosis.
+    */}
+    <div class="field bote">
+      <label for="conc">{s.dose_bottle} <span class="opt">({s.dose_bottle_opt})</span></label>
+      <div class="par">
+        <input id="conc" type="number" min="1" max="1000" step="1" inputmode="decimal" placeholder="120" />
+        <select id="unit">
+          <option value="5">{s.dose_bottle_per5}</option>
+          <option value="1">{s.dose_bottle_perml}</option>
+        </select>
+      </div>
+    </div>
     <button class="btn btn-primary" id="calc" type="button">{s.dose_calc}</button>
   </div>
   <div class="result" id="result" aria-live="polite"></div>
@@ -31,6 +52,13 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
   .result :global(.note) { background: var(--sky); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
   .result :global(.src) { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
   .result :global(.who) { font-family: Nunito, sans-serif; font-weight: 700; color: var(--sage); }
+  /* El bote del padre: el mismo campo que los demás, y su fila destacada en el resultado para
+     que no tenga que buscarla entre las nueve. */
+  .bote .par { display: grid; grid-template-columns: 1fr 1.3fr; gap: 8px; }
+  .bote .opt { font-weight: 400; color: var(--ink-3); }
+  .result :global(tr.suya td) { background: var(--sky); font-weight: 700; }
+  .result :global(tr.suya td:first-child) { border-start-start-radius: 8px; border-end-start-radius: 8px; padding-inline-start: 10px; }
+  .result :global(tr.suya td:last-child) { border-start-end-radius: 8px; border-end-end-radius: 8px; padding-inline-end: 10px; }
 </style>
 <script>
   const box = document.querySelector('.calc') as HTMLElement; const S = JSON.parse(box.dataset.strings || '{}'); const lang = box.dataset.lang || 'en';
@@ -59,7 +87,26 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
       out.innerHTML = h;
       return;
     }
-    h += `<div class="big">${j.mg} mg</div><p>${S.every} ${j.interval_hours[0]}–${j.interval_hours[1]} ${S.hours} · ${S.max} ${j.max_doses_per_day} ${S.perday}</p><table>`;
+    h += `<div class="big">${j.mg} mg</div><p>${S.every} ${j.interval_hours[0]}–${j.interval_hours[1]} ${S.hours} · ${S.max} ${j.max_doses_per_day} ${S.perday}</p>`;
+    // La fila del bote del padre, delante de todas y marcada. Se calcula aquí porque los
+    // miligramos ya vienen del servidor y esto es una división: mililitros = mg / (mg por ml).
+    // La guarda de abajo es la misma idea que la de la cinta del brazo («eso no parece el brazo
+    // de un niño»): 5–250 mg/ml cubre desde el jarabe más flojo que existe hasta las gotas
+    // brasileñas de 200, y fuera de ahí lo más probable es que haya confundido mg/ml con
+    // mg/5 ml, que es precisamente el error del que va todo esto.
+    const conc = parseFloat((document.getElementById('conc') as HTMLInputElement).value);
+    const por = parseFloat((document.getElementById('unit') as HTMLSelectElement).value) || 5;
+    let suya = '';
+    if (conc > 0) {
+      const mgml = conc / por;
+      if (mgml < 5 || mgml > 250) {
+        h += `<div class="warn">⚠️ ${S.odd}</div>`;
+      } else {
+        const ml = Math.round((j.mg / mgml) * 10) / 10;
+        suya = `<tr class="suya"><td>${S.yours} · ${conc} mg/${por === 1 ? '' : por + ' '}ml</td><td><b>${ml} ml</b></td></tr>`;
+      }
+    }
+    h += '<table>' + suya;
     for (const f of j.ml_by_form) h += `<tr><td>${esc(f.form)}</td><td><b>${f.ml} ml</b></td></tr>`;
     h += '</table>';
     if (j.notes) h += `<div class="note">${esc(j.notes)}</div>`;
