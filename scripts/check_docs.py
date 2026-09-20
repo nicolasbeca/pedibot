@@ -41,30 +41,71 @@ DIARIOS = {
 #: salida, el candado obligaría a borrar frases verdaderas —«390 de las 483 guías de entonces
 #: colgaban de un solo enlace»— o a mentir cambiándoles el número. Las dos son peores que el
 #: problema que resuelve.
+#: «cuando son» y «recontad…» entran por un caso que apareció al afinar esto: la nota que
+#: explica un fallo dice a la vez la cifra vieja y la buena —«decía 288 documentos cuando son
+#: 497»— y es la frase más honesta del fichero. Perseguirla obligaría a borrar la explicación
+#: del error para que el detector del error se calle.
 HISTORICA = re.compile(
     r"de entonces|al escribir esto|por entonces|en aquel momento|hasta entonces"
-    r"|contado el \d|medido el \d|\(\d{1,2}-[a-z]{3}-\d{4}\)|eran \d+ al|back then",
+    r"|contado el \d|medido el \d|\(\d{1,2}-[a-z]{3}-\d{4}\)|eran \d+ al|back then"
+    r"|cuando son \d|recontad|se recontaron|dec[íi]a \d+ [a-záéíóúñ]+ cuando",
     re.I,
 )
 
-#: cifra de DATOS.md → cómo aparece escrita en la prosa. El patrón pide la palabra al lado para
-#: no confundir «90 países» con «90 % de las veces».
-PATRONES: list[tuple[str, str]] = [
+#: cifra de DATOS.md → cómo aparece escrita en la prosa, y qué palabras en la MISMA FRASE
+#: significan que ese número es de otra fila y hay que dejarlo en paz.
+#:
+#: Lo tercero hizo falta el mismo día: «For Africa that means all 54 countries have their
+#: emergency number» es verdad —son los 54 del continente— y el candado la señalaba como si
+#: dijera que hay 54 países en total. Antes el descarte miraba 40 caracteres **después** del
+#: número, y ahí «África» iba delante. Un candado que grita cuando la frase es correcta se acaba
+#: ignorando, y entonces deja de servir para lo que se hizo.
+#:
+#: Y el fallo contrario, el mismo día: `ops/SHOW_HN.md` decía «a corpus of 288 **published**
+#: documents from 18 bodies» —son 497 y 21— y el candado no lo vio, porque el patrón pedía el
+#: número pegado al sustantivo y ahí había un adjetivo en medio. Un candado silencioso es peor
+#: que no tener candado, porque además da confianza. De ahí `_ADJ`: hasta dos palabras entre la
+#: cifra y el sustantivo, que es lo que cabe en «497 documentos públicos catalogados».
+_ADJ = r"(?:\s+[a-záéíóúñ]+){0,2}\s*"
+
+PATRONES: list[tuple[str, str, str]] = [
     (
         "países con número de emergencia",
-        r"(\d{2,3})\s*(?:países|paises|countries)(?![^.]{0,40}"
-        r"(?:vacun|calendar|schedul|curva|chart|marca|brand|africa|áfrica))",
+        rf"(\d{{2,3}}){_ADJ}(?:países|paises|countries)",
+        r"vacun|calendar|schedul|curva|chart|marca|brand|africa|áfrica|continente|continent"
+        r"|gu[íi]a|guide|documento|document",
     ),
-    ("calendarios de vacunas", r"(\d{2,3})\s*(?:calendarios|vaccination schedules)"),
+    (
+        "calendarios de vacunas",
+        rf"(\d{{1,3}}){_ADJ}(?:calendarios|vaccination schedules)"
+        rf"|(?:vaccination schedules?|calendarios de vacunas)\s*(?:for|de|para)\s*(\d{{1,3}})",
+        r"africa|áfrica",
+    ),
     (
         "tablas de crecimiento por país",
-        r"(\d{2,3})\s*(?:curvas|growth charts|tablas de crecimiento)",
+        rf"(\d{{2,3}}){_ADJ}(?:curvas|growth charts|tablas de crecimiento)",
+        r"africa|áfrica",
     ),
-    ("reglas de alarma", r"(\d{2,3})\s*(?:reglas de alarma|red flags|reglas fijas)"),
-    ("documentos del catálogo público", r"(\d{3,4})\s*(?:documentos|documents)"),
-    ("guías publicadas", r"(\d{3,4})\s*(?:guías|guides|guias)"),
-    ("marcas de medicamento", r"(\d{2,3})\s*(?:marcas|brands)"),
+    ("reglas de alarma", rf"(\d{{2,3}}){_ADJ}(?:reglas de alarma|red flags|reglas fijas)", r""),
+    (
+        "documentos del catálogo público",
+        rf"(\d{{3,4}}){_ADJ}(?:documentos|documents)",
+        r"interno|internal|pasaje|passage",
+    ),
+    ("guías publicadas", rf"(\d{{3,4}}){_ADJ}(?:guías|guides|guias)", r""),
+    (
+        "marcas de medicamento",
+        rf"(\d{{2,3}}){_ADJ}(?:marcas|brands)",
+        r"africa|áfrica|país|countries",
+    ),
 ]
+
+
+def _frase(texto: str, ini: int, fin: int) -> str:
+    """La frase que contiene el número, para poder mirar también lo que va delante."""
+    abre = max(texto.rfind(".", 0, ini), texto.rfind("\n\n", 0, ini)) + 1
+    cierra = texto.find(".", fin)
+    return texto[abre : cierra if cierra != -1 else fin + 120]
 
 
 def _verdades() -> dict[str, int]:
@@ -84,13 +125,21 @@ def revisa(verdades: dict[str, int] | None = None) -> list[str]:
         if f.name in DIARIOS:
             continue
         texto = f.read_text(encoding="utf-8")
-        for clave, patron in PATRONES:
+        for clave, patron, ajenas in PATRONES:
             real = verdades.get(clave)
             if not real:
                 continue
             for m in re.finditer(patron, texto, re.I):
-                dicho = int(m.group(1))
+                # algunos patrones tienen dos formas («66 calendarios» / «schedules for 66»), y la
+                # que no ha casado deja su grupo a None.
+                capturado = next((g for g in m.groups() if g), None)
+                if capturado is None:
+                    continue
+                dicho = int(capturado)
                 if dicho == real:
+                    continue
+                # ¿la frase habla de otra fila —África, el catálogo interno— y no de ésta?
+                if ajenas and re.search(ajenas, _frase(texto, m.start(), m.end()), re.I):
                     continue
                 # ¿la frase dice que esa cifra es de otro momento? Entonces es historia.
                 alrededor = texto[max(0, m.start() - 90) : m.end() + 90]

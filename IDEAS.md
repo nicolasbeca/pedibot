@@ -365,3 +365,73 @@ y los ficheros de trabajo. Cumple los requisitos de las becas, da la credibilida
 no regala ni la infraestructura ni la estrategia. Falta comprobar una cosa antes de nada: que no
 haya quedado ninguna clave en el histórico, porque abrir un repositorio publica también su
 pasado.
+
+## I-30 · El zinc, y por qué en Kenia la OMS tiene que ir delante (21-sep-2026)
+
+Probando la web viva como un padre en los mercados a los que vamos, con preguntas escritas como
+las escribe un padre y no como las escribe un programador. El caso: *«my baby is 7 months and has
+watery diarrhoea since yesterday»*, con Kenia seleccionada.
+
+La respuesta es correcta y segura: suero de rehidratación en cantidades pequeñas y frecuentes,
+nada de refrescos ni preparados caseros, no dar antidiarreicos, y cuándo ir al médico. Cita a
+MedlinePlus y a la SEUP.
+
+**Lo que no dice: el zinc.** Y en Kenia, en Nigeria, en Etiopía y en la India, el zinc no es un
+detalle: es la mitad del tratamiento estándar. La OMS lo recomienda de 10 a 14 días, acorta el
+episodio alrededor de un 25 % y reduce el volumen de heces alrededor de un 30 %, y es política
+nacional en esos países. Que no aparezca en una respuesta sobre diarrea a un lactante allí es un
+hueco real.
+
+**Lo comprobado antes de proponer nada, que es lo que cambia el diagnóstico:**
+
+- El documento de la OMS **sí está en el corpus**, en tres idiomas, con su ficha y su cita.
+- Y **sí sale** cuando la pregunta es de tratamiento: preguntando «should I give my child zinc
+  for diarrhoea» contesta con la OMS delante y las dos cifras. Preguntando «my 1 year old has had
+  diarrhoea for 3 days in Kenya, what treatment» también lo menciona.
+- O sea que **no falta información y no hay que añadir fuentes.** Lo que pasa es que cuando el
+  padre describe un síntoma en vez de pedir un tratamiento, ganan las fuentes europeas, que no
+  hablan de zinc porque en Europa no se usa así.
+
+**Lo que habría que hacer, y es pequeño:** cuando la pregunta es de diarrea en un menor de cinco
+años **y el país es uno donde la diarrea sigue siendo causa mayor de muerte infantil**, empujar
+los términos de la OMS en la recuperación —suero de rehidratación y zinc— aunque el padre no los
+haya nombrado. No es inventar nada ni cambiar el texto: es que el documento que en ese país es la
+norma nacional entre entre los pasajes que el modelo tiene delante.
+
+**Lo que NO hay que hacer:** meter el zinc a mano en la respuesta. La dosis depende de la edad
+—son distintas por debajo y por encima de los seis meses— y eso es una cifra, o sea que va por la
+vía de las dosis, con su fuente, o no va. Una recomendación de suplemento sin dosis y sin fuente
+es exactamente lo que este proyecto no hace.
+
+**Y la lección de método, que vale más que el caso:** esto no salió leyendo código. Salió
+escribiendo la pregunta como la escribe un padre de Nairobi a las tres de la mañana. Es la
+séptima vez que ese método encuentra algo y el código no.
+
+**Y por qué NO lo he aplicado hoy, aunque el resto de mejoras de esta tanda sí se han aplicado
+directas:** porque el empujón necesita saber *en qué países* la norma es la de la OMS, y esa
+lista no existe en el repositorio ni la he encontrado en una fuente que se pueda citar. Podría
+escribir «los 54 africanos y los del sur de Asia» y sonaría razonable, pero sería exactamente lo
+que no se hizo con las marcas de Etiopía y del Congo: **plausible no es una fuente.** Y la
+alternativa de meter el documento de la OMS siempre, en todos los países, cambia también la
+respuesta en España, donde el zinc no es práctica habitual, y eso ya es criterio clínico y no
+mío.
+
+Lo que hace falta para desbloquearlo es una sola cosa citable: una lista de países donde el zinc
+en la diarrea infantil sea política nacional, o una clasificación de renta que se pueda citar y
+descargar. Con eso, el cambio son veinte líneas y una prueba.
+
+**Actualización de media hora después, porque la fuente estaba dentro del propio documento.** El
+texto de la OMS que ya tenemos indexado acota él mismo dónde aplica: *«Diarrhoea due to infection
+is widespread throughout developing countries. In low-income countries, children under 3 years
+old experience on average three episodes of diarrhoea every year»*, y pone el zinc y el suero
+juntos como las medidas clave de tratamiento. O sea que **no hay que inventarse el criterio: lo
+da la fuente**.
+
+Lo que falta entonces es sólo traducir «low-income countries» a una lista, y de eso sí hay una
+publicada, anual y descargable: la clasificación por renta del Banco Mundial (renta baja y
+media-baja). Con eso el cambio queda sostenido de punta a punta —la OMS dice dónde, el Banco
+Mundial dice cuáles— y se puede escribir sin suponer nada.
+
+Queda para la siguiente tanda, después de subir lo que hay pendiente, porque implica traer un
+fichero de datos nuevo con su ingesta y sus pruebas, y no es algo que se meta a medias entre dos
+despliegues.

@@ -1,8 +1,11 @@
 # Show HN — borrador para publicar
 
 Guardado aquí porque la vez anterior se redactó en una conversación y se perdió con ella.
-Cifras comprobadas el 6-sep-2026 contra el índice y el contenido; si pasan meses, vuelve a
-contarlas antes de publicar (`ops/weekly_tweets.py` usa `facts()`, que las cuenta solas).
+**Las cifras se releen antes de publicar.** Se recontaron el 21-sep-2026 contra `DATOS.md`:
+decía 288 documentos cuando son 497, 18 organismos cuando son 21 y 7 calendarios cuando son 66,
+porque el texto se escribió el 6 de septiembre y el candado de `scripts/check_docs.py` no lo
+cogía por una palabra en medio («288 **published** documents»). Eso ya está arreglado, pero
+vuelve a mirarlas igual.
 
 **Cuándo publicar:** martes a jueves, entre las 8:00 y las 10:00 hora de la costa este de EE. UU.
 (14:00-16:00 en España). Y quédate una hora disponible para responder comentarios: en Show HN,
@@ -33,7 +36,7 @@ resuelve la web, así que el resto del texto ya no tiene que argumentar: solo cu
 I built this when I became a father for the first time. What I found when I went looking for
 answers was contradictory and hard to trust, and I wanted one place I could go.
 
-It answers only from a corpus of 288 published documents from 18 bodies — NHS, WHO, CDC, RKI,
+It answers only from a corpus of 497 published documents from 21 bodies — NHS, WHO, CDC, RKI,
 SEUP, MedlinePlus, AAP and others. Three things make it different from asking a general chatbot:
 
 1. Retrieval first, and when nothing in the corpus covers the question it says so instead of
@@ -43,12 +46,14 @@ answering. That was the hardest part to get right and it is still the thing I ch
 guard blocks any answer containing a mg or ml quantity unless an authorised dosing source is
 among its citations. A language model is not allowed near a milligram figure.
 
-3. A rule-based triage reads the question for red flags before any answer is produced and puts a
+3. A rule-based check reads the question for red flags before any answer is produced and puts a
 banner above it. It runs before retrieval, so it fires even when the corpus has nothing to say.
+It does not diagnose: it says what the warning sign means and when a child needs to be seen.
 
 There are also 507 guides in 8 languages built from the same corpus, where every statement
 carries the number of the document it came from, listed at the foot with organisation, title and
-page. Plus vaccination schedules for 7 countries, each citing its own national authority.
+page. Plus the national vaccination schedule for 66 countries and the emergency number for 90,
+each citing its own national authority.
 
 What it is not: no clinician has reviewed any of this, and I am not a doctor. It is a reading aid
 pointed at primary sources, not medical advice, and it says so on every page. If that disqualifies
@@ -78,7 +83,7 @@ anything.
 recuperados delante. Un verificador relee la respuesta y la rechaza si cita una fuente que no
 usó, si nombra un organismo que no está entre las citadas, o si suelta una cifra de dosis sin una
 fuente de dosis autorizada. Lo rechazado se vuelve a pedir una vez. **Dato honesto y medido:
-alrededor del 10% de las respuestas se regeneran.**
+el 11% de las respuestas se regeneran** (lo dice `doctor` contra el servidor; reléelo antes de publicar).
 
 **"¿Quién lo ha revisado?"** — Nadie. Dilo tal cual. Es lo que más credibilidad te va a dar ahí, y
 mentir en eso sería la única mentira que de verdad podría hacer daño.

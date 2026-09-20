@@ -1148,3 +1148,29 @@ comercial.
 
 En solicitudes cortas, donde no cabe la distinción, sigue valiendo lo otro: decir lo que hace y
 no la etiqueta que lo regula.
+
+## L210 · Un trámite no sólo abre puertas: cierra otras, y el orden cuesta dinero (21-sep-2026)
+
+Repasando ayudas de Sevilla y Andalucía llegué a una conclusión limpia y la iba a escribir tal
+cual: «cuatro de estas seis se caen porque piden entidad, y eso se arregla dándote de alta de
+autónomo». Cierto, barato, y me faltaba media hora de lectura.
+
+La siguiente convocatoria que miré, Innovactiva, da **9.000 €**, **admite expresamente a la
+persona empresaria individual autónoma**, y excluye a **«las personas autónomas que no estén
+dadas de alta antes de la convocatoria»**. O sea que el consejo que acababa de escribir —hazte
+autónomo ya, que así llegas a la feria de noviembre— **le habría costado nueve mil euros** por
+darse de alta tres meses antes de tiempo.
+
+Lo que falla aquí no es la comprobación, que la hice: es que comprobé **qué abre** el trámite y
+no **qué cierra**. Un alta, un registro, una constitución de sociedad, publicar un repositorio,
+anunciar algo: todos son puertas de una sola dirección, y las convocatorias están llenas de
+requisitos que dicen «no haberlo hecho antes».
+
+La regla, y va pegada a L206: **antes de recomendar un paso administrativo, leer las bases de
+todo lo demás que esté en la lista buscando la palabra "antes".** Y cuando el orden importa, el
+consejo no es el trámite, es el calendario.
+
+Hay un segundo trozo, más incómodo: la respuesta correcta dependía de un dato que no tengo —su
+edad, porque Innovactiva es hasta los 35—. Cuando una recomendación se bifurca en algo que no
+puedo mirar, lo honesto es escribir las dos ramas enteras y preguntar lo mínimo, no elegir la
+rama que me parece más probable y presentarla como la respuesta.

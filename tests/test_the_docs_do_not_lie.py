@@ -88,3 +88,72 @@ def test_los_diarios_estan_fuera_y_se_dice_por_que() -> None:
     for fichero in ("LESSONS.md", "STATE.md", "IDEAS.md", "METADAO.md"):
         assert fichero in DIARIOS, f"{fichero} debería estar exento"
         assert len(DIARIOS[fichero]) > 20, f"{fichero} está exento sin explicar por qué"
+
+
+def test_el_candado_no_grita_cuando_la_cifra_es_de_africa() -> None:
+    """«los 54 países del continente» es verdad y no es la cifra mundial.
+
+    Salto el 21-sep-2026 con una frase correcta del borrador de Emergent Ventures. El descarte
+    miraba sólo lo que iba **después** del número, y ahí «For Africa» iba delante. Un candado que
+    grita cuando la frase es correcta se acaba ignorando, y entonces deja de servir.
+    """
+    from scripts.check_docs import revisa
+
+    verdades = {"países con número de emergencia": 90, "marcas de medicamento": 35}
+    frases = [
+        "For Africa that means all 54 countries have their emergency number.",
+        "En África son 54 países con número, y 31 países con alguna marca.",
+        "Las marcas llegan a 31 países de África.",
+    ]
+    for frase in frases:
+        assert not _revisa_texto(revisa, verdades, frase), f"no debería señalar: {frase}"
+
+
+def test_el_candado_sigue_cogiendo_una_cifra_mundial_mal() -> None:
+    """Y la otra mitad: que el arreglo de arriba no lo haya dejado ciego."""
+    from scripts.check_docs import revisa
+
+    verdades = {"países con número de emergencia": 90}
+    problemas = _revisa_texto(revisa, verdades, "El proyecto cubre 88 países con su número.")
+    assert problemas, "una cifra mundial equivocada tiene que seguir saltando"
+
+
+def _revisa_texto(revisa, verdades: dict[str, int], frase: str) -> list[str]:
+    """Escribe la frase en un `.md` de verdad, porque el candado lee del disco."""
+    prueba = ROOT / "ops" / "_candado_de_prueba.md"
+    prueba.write_text(frase + "\n", encoding="utf-8")
+    try:
+        return [p for p in revisa(verdades) if "_candado_de_prueba" in p]
+    finally:
+        prueba.unlink()
+
+
+def test_el_candado_ve_la_cifra_aunque_haya_un_adjetivo_en_medio() -> None:
+    """«288 published documents» era mentira y el candado no la veía.
+
+    El fallo contrario al de arriba y peor: un candado silencioso da confianza. El texto del
+    Show HN llevaba desde el 6-sep-2026 diciendo 288 documentos de 18 organismos —son 497 y 21—
+    y el patrón no casaba porque entre el número y el sustantivo había un adjetivo.
+    """
+    from scripts.check_docs import revisa
+
+    verdades = {"documentos del catálogo público": 497, "calendarios de vacunas": 66}
+    mentiras = [
+        "a corpus of 288 published documents from 18 bodies",
+        "un corpus de 288 documentos publicados",
+        "Plus vaccination schedules for 7 countries.",
+    ]
+    for frase in mentiras:
+        assert _revisa_texto(revisa, verdades, frase), f"debería señalar: {frase}"
+
+
+def test_el_candado_perdona_la_nota_que_explica_un_fallo() -> None:
+    """«decía 288 documentos cuando son 497» es la frase más honesta del fichero.
+
+    Si el detector del error obliga a borrar la explicación del error, sobra el detector.
+    """
+    from scripts.check_docs import revisa
+
+    verdades = {"documentos del catálogo público": 497}
+    frase = "Se recontaron el 21-sep-2026: decía 288 documentos cuando son 497"
+    assert not _revisa_texto(revisa, verdades, frase)

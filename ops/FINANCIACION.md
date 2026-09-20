@@ -65,8 +65,17 @@ consecuencias regulatorias en Europa, y la estamos usando en los textos que mand
 | antes del **2 de noviembre** | **Y Combinator W2027**, si se decide ir | 0 |
 | en paralelo, cualquier mes | **Awesome Foundation**, para algo concreto de 1.000 $ | 0 |
 | cuando haya una tarde | **Bien público digital (DPGA)**: no da dinero, abre puertas | 0 |
+| **antes de nada** | decir **si tiene 35 años o menos**: decide el orden de todo lo de Andalucía | 0 |
+| **domingo 5 de octubre** | **InproInnova**, la feria de IA de la Diputación de Sevilla — sólo si lo de arriba dice que sí | por confirmar |
 
 ---
+
+> **Lo de casa va aparte, en `ops/ANDALUCIA.md`**: premios y ayudas de Sevilla y Andalucía,
+> comprobados uno a uno. Entran por las dos puertas a la vez —jurados pequeños que leen, y
+> prensa local que expone— y lo que los cierra casi siempre no es el proyecto, es que piden
+> entidad con actividad económica. Ahí está la única cosa abierta con fecha esta semana, y
+> también la trampa que casi le cuesta 9.000 €: **el alta de autónomo abre cuatro puertas y
+> cierra una**, y cuál conviene depende de su edad (L210).
 
 ## 1 · MetaDAO, vía curada — **enviada el 20-sep-2026**
 
