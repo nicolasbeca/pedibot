@@ -1133,8 +1133,18 @@ sustituye a un médico» no cambia el uso previsto**: cuenta lo que el programa 
 presenta, no lo que dice la letra pequeña.
 
 Lo que el sitio hace hoy —explicar qué significan los signos de alarma, con la guía delante, y
-dar el número de emergencias— cae del lado bueno. Lo que puede morderle es **el vocabulario que
-usamos fuera**: en el memo y en las solicitudes lo llamamos «motor de triaje», y «triaje» es
-literalmente la palabra que activa la clase IIa. Dentro de casa da igual y es el término exacto.
-Fuera, hasta que haya evaluación clínica, hay que decir lo que hace y no la etiqueta que lo
-regula.
+dar el número de emergencias— cae del lado bueno. Donde puede morderle es en **el vocabulario que
+usamos fuera**: en el memo y en las solicitudes lo llamábamos «motor de triaje» sin distinguir.
+
+Y aquí está el matiz que casi me salto al escribir esto, que es el que de verdad vale. La
+respuesta **no** es tachar la palabra: el negocio que defiende el memo es precisamente licenciar
+el motor a instituciones para el primer filtro, o sea que ahí la palabra es exacta y borrarla
+dejaría la tesis más floja y menos honesta. La respuesta es **separar los dos productos en una
+frase**, porque son dos: lo que el padre usa hoy, que explica y cita y no diagnostica, y lo que
+una institución licenciaría, que sí es una decisión clínica y en Europa es producto sanitario con
+todo lo que eso lleva detrás. Puesto así, el memo gana: explica por qué hay una partida de
+regulación en el presupuesto y por qué la medición clínica va antes que la primera visita
+comercial.
+
+En solicitudes cortas, donde no cabe la distinción, sigue valiendo lo otro: decir lo que hace y
+no la etiqueta que lo regula.

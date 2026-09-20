@@ -128,10 +128,10 @@ Por qué encaja mejor que casi nada de lo demás:
 - Sus regiones prioritarias **son nuestros mercados**, literalmente.
 - Y pide nombre real, que desde hoy ya no es un problema.
 
-**Lo que hay que preparar:** casi nada nuevo. El memo de `/memo` y la respuesta de «quién eres» de
-MetaDAO ya lo dicen todo; hay que recortarlo a unos párrafos y quitarle el tono de ronda. Lo que
-sí conviene decir ahí y no en otros sitios: que esto se hizo con fondos propios, y que el dinero
-compra **la revisión clínica**, que es la única cosa que las horas libres no compran.
+**Lo que hay que preparar: nada. Ya está escrito en `ops/EMERGENT_VENTURES.md`**, en inglés y
+listo para pegar, con 25.000 $ de petición desglosada y con lo del token contado por delante.
+Sólo hay que releerlo y mandarlo. Avisan de que **sólo se admite una solicitud por persona y
+proyecto** y de que no dan respuesta individual ni estado, o sea que se manda una vez y bien.
 
 ---
 
@@ -294,7 +294,13 @@ hace hoy —información con la fuente, y «llama a este número si ves esto»�
 Pero en los textos que mandamos fuera lo llamamos **«motor de triaje»**, y «triaje» es justamente
 la palabra que en Europa significa clase IIa, con sistema de calidad certificado y evaluación
 clínica detrás. Eso no es un problema hoy, con el sitio como está y sin vender a instituciones;
-sí lo es el día que se licencie a una aseguradora europea, que es la vía 8. Conclusión práctica:
-seguir hablando de triaje dentro de casa, y **fuera decir lo que de verdad hace** —explica qué
-significan los signos de alarma y cuándo hay que ir a urgencias, con la guía delante— hasta que
-haya una evaluación clínica que respalde la otra palabra.
+sí lo es el día que se licencie a una aseguradora europea, que es la vía 8.
+
+La salida **no** es tachar la palabra, y esto lo corrigí el mismo día que lo escribí: el negocio
+que defiende el memo es exactamente licenciar el motor para el primer filtro, así que ahí la
+palabra es la exacta y quitarla dejaría la tesis más floja. La salida es **decir que son dos
+productos**, porque lo son: lo que el padre usa hoy, que explica y cita y no diagnostica; y lo
+que una institución licenciaría, que sí es una decisión clínica y en Europa es producto sanitario
+con sistema de calidad certificado detrás. El memo ya lo dice así desde el 21-sep-2026, y de paso
+explica por qué hay una partida de regulación en el presupuesto. En solicitudes cortas, donde esa
+distinción no cabe, se dice lo que hace y no la etiqueta que lo regula.
