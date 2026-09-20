@@ -15,26 +15,40 @@
 
 ---
 
-## Lo primero, porque es la conclusión
+## Lo primero, porque es la conclusión: **esto está cerrado, y no pasa nada**
 
-> **Resuelto el 20-sep-2026: nació en 1988**, o sea 37 años. Innovactiva es hasta los 35, así que
-> **esa vía se cae y con ella la trampa de orden** que tenía este documento en pie. El alta de
-> autónomo ya no cierra nada, y por tanto se decide sólo por lo que abre. Se deja escrita la
-> sección de Innovactiva porque la lección de orden sigue valiendo para la siguiente.
+> **Resuelto el 20-sep-2026, con dos respuestas suyas.** Nació en 1988, o sea 37 años, así que
+> Innovactiva queda fuera por edad. Y sobre lo demás: *«yo no soy ni empresa ni autónomo ni
+> pretendo serlo en el corto plazo»*.
+>
+> Con eso, **las siete convocatorias de este fichero se caen**, y conviene decirlo claro en vez
+> de dejarlas ahí dando la sensación de que hay algo que hacer.
 
-Siete convocatorias miradas una por una. Con la edad ya resuelta, el plan queda corto y claro:
+| | por qué se cae |
+|---|---|
+| InproInnova | pide «empresa constituida con una antigüedad máxima de 7 años» |
+| El Cubo / Andalucía Open Future | pide equipo de 3 personas, 2 a jornada completa |
+| Innovactiva 9000 | hasta los 35 años |
+| Compra pública en pediatría (PIAPPA) | hay que poder contratar con la administración |
+| Premios Emprendemos TOP50 | pide actividad iniciada |
+| Andalucía TRADE, FAST, Neotec | para empresas, y Neotec además empresa de base tecnológica |
+| Concurso de Ideas de la Universidad de Sevilla | el único que quizá no lo pida, pero exige ser de la comunidad universitaria y cerró en abril |
 
-1. **InproInnova, antes del 5 de octubre.** Es lo único con fecha. Un correo de tres líneas
-   preguntando si admiten autónomo y si cuesta algo, y según la respuesta se prepara la memoria.
-2. **El Cubo queda fuera** por el mínimo de tres personas, y no es interpretable.
-3. **Innovactiva queda fuera** por edad.
-4. **Emprendemos TOP50** vuelve a finales de enero, y ahí sí conviene llegar con el alta hecha.
-5. Y por debajo de todo, la que más dinero tiene: **la compra pública de innovación en
-   pediatría**, que no depende de papeles sino de la medición contra pediatras.
+**Lo importante, y es lo que hay que leer de esta tabla:** ninguna se cae por el proyecto. Se
+caen todas por la misma casilla administrativa. O sea que **el mapa de Andalucía no es una lista
+de tareas, es una lista que se reactiva sola el día que haya una entidad**, si alguna vez la hay,
+y no antes. Mientras tanto no hay nada pendiente aquí y no hay ninguna fecha que se esté
+escapando.
 
-O sea que **el alta de autónomo pasa a ser una decisión limpia**: abre InproInnova, Emprendemos,
-Andalucía TRADE y la posibilidad de facturar una licencia; cuesta una cuota mensual con tarifa
-plana andaluza y una declaración trimestral; y ya no cierra nada.
+**Y lo que NO se cierra con esa decisión**, que es lo que de verdad importa: las vías que admiten
+a una persona sin nada detrás siguen todas abiertas, y son justo las mejores de
+`ops/FINANCIACION.md`. **Emergent Ventures** admite a cualquiera de 13 años para arriba. **La
+Awesome Foundation** dice expresamente «particular u organización». **CHIFA** es un foro de
+personas. El reconocimiento de **bien público digital** es del proyecto, no de una empresa. Y
+MetaDAO ya está enviada.
+
+Dicho de otra forma: **darse de alta no era el camino, era un peaje**, y ese peaje sólo compensa
+el día que haya dinero o un cliente esperando al otro lado. Hoy no lo hay.
 
 ---
 

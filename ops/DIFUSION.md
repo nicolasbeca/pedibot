@@ -23,6 +23,49 @@ inmediato, y en la otra mitad estaríamos metiendo una herramienta entre un padr
 respuesta que ya le están dando. Si alguien pregunta en un hilo general qué usamos, se contesta.
 Si alguien está describiendo a su hijo, no.
 
+## CHIFA, lo primero de todo (20-sep-2026)
+
+Entra aquí porque el operador descartó Hacker News ese día con una frase que estaba bien puesta:
+*«olvídate de Hacker News, no es nuestro público»*. Buscando dónde sí lo está, apareció esto, y
+es mejor por todos lados.
+
+**Qué es.** CHIFA —Child Healthcare Information For All— es uno de los foros de HIFA, una campaña
+global por el acceso a información sanitaria fiable: más de 20.000 miembros en 180 países, cuatro
+idiomas y más de 400 organizaciones detrás. CHIFA es el foro **dedicado a la salud infantil**:
+**3.600 miembros en más de 140 países**, y sus miembros son padres, personal sanitario,
+investigadores y responsables públicos **de países en desarrollo**.
+
+**Y su visión, palabra por palabra:** *«un mundo donde cada niño, cada padre y cada trabajador
+sanitario tenga acceso a la información de salud que necesita»*. Es casi la frase del proyecto.
+
+**Cómo funciona.** Es una lista de correo. Apuntarse es gratis, y para escribir se manda un
+correo a `chifa@hifaforums.org`. Dicen expresamente que los miembros pueden «dar a conocer su
+organización, sus actividades y sus servicios», así que contar lo que uno ha construido no es
+colarse: es para lo que está.
+
+**Por qué es mejor que lo que había antes en este fichero.** Las tres cosas que necesitamos a la
+vez, y ningún otro sitio las junta:
+
+1. **Es el público.** No lectores técnicos occidentales que miran el código y no vuelven:
+   trabajadores sanitarios que ven padres todos los días en los países a los que vamos.
+2. **Es una auditoría de verdad.** Ahí hay gente que sabe de IMCI, de desnutrición y de
+   rehidratación más que nadie a quien hayamos enseñado esto. Si hay algo mal, lo dicen. Es el
+   único sitio encontrado donde el riesgo de que te corrijan es también la razón de ir.
+3. **Y da el enlace que falta.** La medición de Search Console dice que las páginas de dosis
+   están en la posición 80 porque nadie las enlaza. Los archivos de HIFA son públicos.
+
+**Lo que hay que respetar, que es la regla de arriba de este fichero:** se reparte el hallazgo,
+no el enlace. A esa gente no le interesa que exista una web más; le interesa que las gotas de
+paracetamol de Etiíopa sean 100 mg/5 ml y las españolas 100 mg/ml, y que por eso la calculadora
+ahora deja escribir lo que pone el bote. Eso es una conversación; «mirad mi web» no lo es.
+
+**El texto está escrito** al final de `ops/SHOW_HN.md`, que se conserva por eso: lo de las tres
+barreras entre la pregunta y la respuesta, lo de que nadie lo ha revisado y las cifras de uso sin
+maquillar sirven tal cual. Lo único que cambia es el primer párrafo, que estaba escrito para
+programadores.
+
+---
+
 ## Por orden de lo que más puede traer
 
 ### 1. Hacker News, como Show HN

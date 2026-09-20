@@ -73,7 +73,12 @@ PATRONES: list[tuple[str, str, str]] = [
         "países con número de emergencia",
         rf"(\d{{2,3}}){_ADJ}(?:países|paises|countries)",
         r"vacun|calendar|schedul|curva|chart|marca|brand|africa|áfrica|continente|continent"
-        r"|gu[íi]a|guide|documento|document",
+        r"|gu[íi]a|guide|documento|document"
+        # Y las cifras que son de OTRO: «20.000 miembros en 180 países» es de HIFA, no nuestra.
+        # Apareció el 20-sep-2026 al escribir lo de CHIFA en `ops/DIFUSION.md`, y es el mismo
+        # fallo que el de los 54 de África: el candado mira un número junto a la palabra
+        # «países» y no sabe de quién habla la frase.
+        r"|miembro|member|HIFA|CHIFA|foro|forum|organizaci|organisation|idiomas|languages",
     ),
     (
         "calendarios de vacunas",

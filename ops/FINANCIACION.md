@@ -56,25 +56,47 @@ consecuencias regulatorias en Europa, y la estamos usando en los textos que mand
 
 ## El orden recomendado
 
-| cuándo | qué | cuesta |
-|---|---|---|
+Con una columna nueva desde el 20-sep-2026, que es la que de verdad ordena: **si hace falta ser
+algo**. El operador no es empresa ni autónomo y no piensa serlo a corto plazo, así que lo que lo
+pida se queda esperando, no se descarta.
+
+| cuándo | qué | ¿hace falta ser algo? | cuesta |
+|---|---|---|---|
+| esta semana | **CHIFA**, el foro de salud infantil de HIFA — el correo está escrito | no, es un foro de personas | 0 |
+| esta semana | **Emergent Ventures** — lo lee una persona, y el borrador está listo | no, de 13 años para arriba | 0 |
+| viernes 2 de octubre | se deja de esperar a **MetaDAO** | ya enviada | — |
+| en paralelo, cualquier mes | **Awesome Foundation**, para algo concreto de 1.000 $ | no: «particular u organización» | 0 |
+| cuando haya una tarde | **Bien público digital (DPGA)** | no, es del proyecto | 0 |
+| a partir del 2 de octubre | **Backable**, y con 75.000 | la entidad la pone la plataforma | 15 $ |
+| — | **Y Combinator** | **sí**: invierten en una sociedad, y son tres meses en San Francisco | 0 |
+| — | todo lo de **Andalucía** (`ops/ANDALUCIA.md`) | **sí**, las siete | — |
+
+Las dos últimas filas no se borran: se quedan ahí por si algún día cambia la situación. Pero
+hoy no hay nada que hacer en ellas y **no hay ninguna fecha escapándose** por ese lado.
+
+---|---|---|
 | esta semana | **Emergent Ventures** — gratis, rolling, lo lee una persona | 0 |
 | viernes 2 de octubre | se deja de esperar a **MetaDAO** | — |
 | a partir del 2 de octubre | **Backable**, y con 75.000, no con 262.500 | 15 $ |
 | antes del **2 de noviembre** | **Y Combinator W2027**, si se decide ir | 0 |
 | en paralelo, cualquier mes | **Awesome Foundation**, para algo concreto de 1.000 $ | 0 |
 | cuando haya una tarde | **Bien público digital (DPGA)**: no da dinero, abre puertas | 0 |
-| **antes de nada** | decir **si tiene 35 años o menos**: decide el orden de todo lo de Andalucía | 0 |
-| **domingo 5 de octubre** | **InproInnova**, la feria de IA de la Diputación de Sevilla — sólo si lo de arriba dice que sí | por confirmar |
+| esta semana | **CHIFA**, el foro de salud infantil de HIFA — el correo está escrito | 0 |
 
 ---
 
-> **Lo de casa va aparte, en `ops/ANDALUCIA.md`**: premios y ayudas de Sevilla y Andalucía,
-> comprobados uno a uno. Entran por las dos puertas a la vez —jurados pequeños que leen, y
-> prensa local que expone— y lo que los cierra casi siempre no es el proyecto, es que piden
-> entidad con actividad económica. Ahí está la única cosa abierta con fecha esta semana, y
-> también la trampa que casi le cuesta 9.000 €: **el alta de autónomo abre cuatro puertas y
-> cierra una**, y cuál conviene depende de su edad (L210).
+> **Lo de casa, en `ops/ANDALUCIA.md`, está CERRADO y conviene saber por qué.** Se miraron
+> siete convocatorias de Sevilla y Andalucía con las bases leídas una a una, y **las siete se
+> caen por la misma casilla**: piden empresa, autónomo, equipo de tres o menos de 36 años. El
+> operador no es ninguna de esas cosas y no piensa serlo a corto plazo (20-sep-2026). Ninguna se
+> cae por el proyecto. Ese fichero no es una lista de tareas: es una lista que se reactiva sola
+> el día que haya una entidad, y no antes.
+>
+> **Lo que eso deja en pie, que es este fichero:** las vías que admiten a una persona sin nada
+> detrás. Emergent Ventures (de 13 años para arriba), la Awesome Foundation («particular u
+> organización»), CHIFA, el reconocimiento de bien público digital y la propia MetaDAO. O sea
+> que **darse de alta no era el camino, era un peaje**, y sólo compensa el día que haya dinero o
+> un cliente esperando al otro lado.
 
 ## ¿Hay que esperar a MetaDAO para lo demás? No, y conviene saber por qué
 
@@ -132,24 +154,30 @@ Desde aquí DexScreener devuelve 403.
 
 ---
 
-## 2 · Show HN en Hacker News — **PUBLICADO el 20-sep-2026**
+## 2 · La puerta de la exposición — **Hacker News descartado; hay que buscarla donde están los padres**
 
-Lo mandó el operador esa misma tarde. El texto que se publicó está en `ops/SHOW_HN.md`, con las
-cifras recontadas ese día (decía 288 documentos de 18 organismos, que eran 497 de 21).
+**20-sep-2026, decisión del operador:** *«olvídate de Hacker News, no es nuestro público»*. Y es
+verdad: es un público técnico y occidental, y esto sirve a padres en Nairobi, Lagos, El Cairo y
+Patna. Un pico de un día de gente que mira el código y no vuelve no es tracción.
 
-Era la puerta de la exposición: volumen, gente que prueba en vez de leer, y sobre todo **enlaces
-entrantes**, que es justo lo que le falta al dominio según la medición de Search Console de ese
-mismo día (`ops/INDEXAR.md`): las páginas de dosis están bien hechas y en la posición 80 porque
-nadie las enlaza.
+**Lo que no desaparece con esa decisión, y hay que resolver igual:** la medición de Search
+Console de ese día dice que las páginas de dosis están bien hechas —mil palabras, la tabla
+entera, la AEPap citada— y están en la posición 80 **porque nadie las enlaza**. Con 1.837
+impresiones y 3 clics, la gente ya está buscando lo que tenemos: «calculadora apiretal», «calpol
+dosage», «doliprane posologie». No falta público: falta autoridad de dominio.
 
-**Lo que toca ahora, y es de él:** quedarse disponible para contestar comentarios. En Show HN un
-autor que responde sube el hilo mucho más que el propio texto, y lo que van a preguntar está
-previsto una por una al final de `ops/SHOW_HN.md` —quién lo ha revisado (nadie, y se dice), qué
-modelo usa (DeepSeek, y no se esconde), cuánta gente lo usa (casi nadie, y no se maquilla)—.
+**Dónde buscar ese enlace, y que además sea nuestro público:**
 
-**Y lo que hay que medir en los próximos días**, porque es la primera vez que hay con qué
-comparar: visitantes y preguntas en `/api/stats`, y a las dos o tres semanas si han aparecido
-enlaces y si las páginas de dosis se mueven de la posición 80.
+- **el registro de bienes públicos digitales** (vía 7), que es un enlace que Google respeta y el
+  vocabulario con el que hablan los ministerios;
+- **blogs y sociedades de pediatría**, que era lo que el operador pedía hace dos semanas;
+- **ONG y oficinas de país** que ya reparten material a padres en esos idiomas;
+- y los **ayuntamientos de la provincia** por la vía de InproInnova, que tienen página propia y
+  población a la que esto le sirve.
+
+Lo que estaba escrito para Hacker News se conserva en `ops/SHOW_HN.md` porque **sirve casi entero
+para cualquiera de esos sitios**: lo de las tres barreras entre la pregunta y la respuesta, lo de
+que nadie lo ha revisado y las cifras de uso sin maquillar se reaprovechan tal cual.
 
 ## 3 · Emergent Ventures — **gratis, rolling, y lo lee una persona**
 

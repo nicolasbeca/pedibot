@@ -1,4 +1,24 @@
-# Show HN — borrador para publicar
+# Show HN — DESCARTADO el 20-sep-2026
+
+> **Decisión del operador, y es suya: «olvídate de Hacker News, no es nuestro público».**
+>
+> Tiene razón en lo principal. El público de ahí es técnico y occidental, y este proyecto sirve
+> a padres en Nairobi, Lagos, El Cairo y Patna. Un pico de un día de gente que mira el código y
+> no vuelve no es tracción: es una gráfica bonita.
+>
+> El matiz, para que quede escrito y no se pierda: **yo no iba buscando usuarios, iba buscando
+> enlaces.** La medición de Search Console del 20-sep dice que las páginas de dosis están bien
+> hechas y en la posición 80 porque el dominio tiene tres semanas y **nadie lo enlaza**. Eso
+> sigue siendo el cuello de botella con Hacker News o sin él, y hay que resolverlo en otro sitio.
+> Lo que se busca es un enlace desde una página que Google respete, y eso puede venir del
+> registro de bienes públicos digitales, de una sociedad de pediatría, de una ONG o de un blog
+> médico, que además sí son nuestro público.
+>
+> El texto de abajo se conserva porque **sirve casi entero para cualquier otro sitio**: la
+> explicación de las tres barreras entre la pregunta y la respuesta, lo de que nadie lo ha
+> revisado y lo de cuánta gente lo usa se reaprovechan tal cual. Sólo hay que cambiar el tono
+> del primer párrafo, que está escrito para programadores.
+
 
 Guardado aquí porque la vez anterior se redactó en una conversación y se perdió con ella.
 **Las cifras se releen antes de publicar.** Se recontaron el 20-sep-2026 contra `DATOS.md`:
@@ -108,3 +128,69 @@ contra el registro del servidor el 20-sep-2026, o sea el día que se publicó:
 En HN la humildad medida puntúa, y esas cifras cuentan además la historia de verdad: el producto
 no tiene un problema de producto, tiene un problema de que nadie lo enlaza. Un número inflado se
 detecta y hunde el hilo.
+
+---
+
+# El texto para CHIFA (20-sep-2026)
+
+Esto es lo que sustituye al Show HN. Va a `chifa@hifaforums.org` después de apuntarse (gratis).
+Escrito para personal sanitario y padres de países de renta baja, no para programadores: **se
+reparte el hallazgo, no el enlace**, y el hallazgo aquí es concreto y de los suyos.
+
+**Asunto:** Paracetamol drops: 100 mg/5 mL in Ethiopia, 100 mg/mL in Spain
+
+```
+Dear CHIFA colleagues,
+
+I want to share something I got wrong, because I suspect it is not only my problem.
+
+I run a free site that answers parents' questions about their sick child from published
+paediatric guidelines, in eight languages, with the source shown beside every sentence. Part of
+it is a dose calculator by weight for paracetamol and ibuprofen. Until last week it offered a
+list of the bottle strengths I knew about, and the parent picked theirs.
+
+Then I read the EFDA list of medicines allowed over the counter in Ethiopia, and found that
+paracetamol drops there are 100 mg/5 mL. In Spain, Portugal and India, drops are 100 mg/mL —
+five times stronger. My list only had the second one. A parent in Addis Ababa holding their
+bottle would read "drops" on the label, find "drops 100 mg/mL" on my page, and give five times
+the volume that bottle needs.
+
+I fixed it, and then made it worse: the new, weaker strength sorted to the top of the list, so a
+parent in Spain with the concentrated drops could have taken the first line and overdosed by
+five. I found that by looking at the page the way a parent looks at it, not by reading my code.
+All my tests were green.
+
+What I have done since is stop trying to know every bottle. A 2025 study of national essential
+medicines lists counts 28 different paracetamol formulations worldwide. So the calculator now
+has a field where the parent types what their own bottle says, in mg per 5 mL or mg per mL, and
+that line is shown first. The milligrams are still computed from the child's weight by a fixed
+published table; the typed number only converts to millilitres, so a mistyped concentration
+changes the volume and not the dose. Out of a plausible band it refuses to give a number and
+asks them to check whether the bottle says per mL or per 5 mL.
+
+Two questions for this forum, and they are the reason I am writing:
+
+1. Is this confusion something you see in practice? I only found it because I went looking for
+   Ethiopian brand names and found strengths instead.
+2. Are there national over-the-counter or essential medicines lists you would point me to for
+   your own country? I have Ethiopia, and I am missing most of sub-Saharan Africa. I will only
+   add a country when I can read its own regulator's document; I am not willing to guess.
+
+The site is pedibot.xyz, free, no account, no advertising, and it works on a phone with no
+signal after the first visit. No clinician has reviewed any of it and I am not a doctor, which
+is the main thing wrong with it and the reason I am asking here.
+
+Thank you,
+[nombre]
+```
+
+**Notas para ti, no para ellos:**
+
+- **Abre con un error propio, y es deliberado.** En una lista de profesionales, llegar diciendo
+  «he construido una cosa» es ruido; llegar diciendo «me equivoqué así y puede que os pase» es
+  una conversación. Y además es verdad.
+- **Las dos preguntas del final son de verdad**, no retóricas. Si alguien contesta con el
+  registro de su país, eso vale más que cien visitas: son los países que faltan.
+- **Lo de que nadie lo ha revisado va dentro.** Es lo que más credibilidad da ahí y ocultarlo en
+  una lista de sanitarios sería el peor sitio posible para ocultarlo.
+- El enlace va una sola vez y al final, detrás de todo lo que sí aporta.

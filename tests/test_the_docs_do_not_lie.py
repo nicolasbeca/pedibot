@@ -157,3 +157,24 @@ def test_el_candado_perdona_la_nota_que_explica_un_fallo() -> None:
     verdades = {"documentos del catálogo público": 497}
     frase = "Se recontaron el 20-sep-2026: decía 288 documentos cuando son 497"
     assert not _revisa_texto(revisa, verdades, frase)
+
+
+def test_el_candado_no_cuenta_los_paises_de_otro() -> None:
+    """«20.000 miembros en 180 países» es de HIFA, no nuestra.
+
+    Tercera vez que este candado grita con una frase correcta, y las tres por lo mismo: mira un
+    número junto a la palabra «países» y no sabe de quién habla la frase. Se afina cuando pasa,
+    porque la alternativa —quitar el patrón— dejaría pasar las que sí son mentira.
+    """
+    from scripts.check_docs import revisa
+
+    verdades = {"países con número de emergencia": 90}
+    ajenas = [
+        "HIFA tiene más de 20.000 miembros en 180 países y cuatro idiomas.",
+        "CHIFA reúne 3.600 miembros en más de 140 países.",
+        "Esa organización trabaja en 120 países.",
+    ]
+    for frase in ajenas:
+        assert not _revisa_texto(revisa, verdades, frase), f"no debería señalar: {frase}"
+    # y que siga cogiendo la nuestra
+    assert _revisa_texto(revisa, verdades, "PediBot cubre 88 países con su número de emergencia.")
