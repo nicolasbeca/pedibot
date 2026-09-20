@@ -9,7 +9,7 @@ eran. Reescrito el 7-sep con el catálogo delante.
 
 ## Lo que de verdad hay publicado (contado el 7-sep-2026)
 
-**20 marcas con su concentración**, y no solo españolas: Alemania, Brasil, Estados Unidos,
+**las marcas publicadas con su concentración** (cuántas hoy, en `DATOS.md`; eran 20 al escribir esto), y no solo españolas: Alemania, Brasil, Estados Unidos,
 Francia, Italia, México, Argentina, Chile, Colombia, Reino Unido, Irlanda y Portugal.
 
 Este documento decía ayer que no se podían publicar concentraciones de otros mercados porque la

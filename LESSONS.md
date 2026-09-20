@@ -1069,3 +1069,72 @@ para cualquier sitio donde haya que pagar o registrarse:
 
 La mecánica sólo importa si las cuatro salen bien. Y los quince dólares no son el coste: el
 coste es el tiempo preparándolo y el golpe de fallar en público.
+
+## L207 · Que mueva dinero no basta: tiene que haber alguien decidiendo (21-sep-2026)
+
+Ayer aprendí a comprobar si una plataforma ha financiado algo antes de recomendarla (L206). Hoy
+el operador añadió la mitad que faltaba, y es la que de verdad decide:
+
+> «Las rondas gratis ya sabemos que tienen un problema. Ya lo hemos visto en Liquid Lounge y en
+> otros sitios: hay tanto meme y tanta basura que es imposible destacarse. La razón de ir a
+> MetaDAO es que hay alguien vigilando y alguien que filtra proyectos decentes de verdad.»
+
+Yo acababa de proponer Gitcoin **porque es gratis y ha repartido 50 millones**, que son los dos
+datos que pedía la lección de ayer. Los dos son ciertos y no sirven, porque su mecanismo es
+financiación cuadrática: **gana quien trae más donantes, no quien trae mejor proyecto.** Sin
+comunidad detrás, un sitio de pediatría con diez preguntas al mes saca cero por muy bien escrito
+que esté el perfil. Gratis no significa sin coste: significa que el coste es el tiempo y que el
+resultado esperado también es cero.
+
+El criterio completo, para cualquier sitio donde presentarse:
+
+1. ¿ha financiado algo, y de qué tamaño? *(L206)*
+2. ¿cómo se liquida: todo o nada, o lo que haya? *(L206)*
+3. **¿hay alguien decidiendo, o gana el que hace más ruido?**
+4. ¿el público de ahí tiene algo que ver con esto?
+
+La tercera es la que ordena las demás. Un jurado pequeño que lee todas las solicitudes —aunque
+dé mil dólares— vale más para este proyecto que una plataforma con un fondo de millones donde
+hay que ganar un concurso de popularidad contra monedas de perros. **Lo que aquí no tenemos es
+multitud; lo que tenemos es un producto que aguanta que lo miren de cerca.** Hay que ir a donde
+miran de cerca.
+
+## L208 · Hay dos puertas, y con una basta: que alguien decida, o que alguien te vea (21-sep-2026)
+
+Escribí L207 y me pasé de frenada: la reduje a «o hay un filtro humano o no vale». El operador lo
+corrigió media hora después:
+
+> «O alguien lee y decide, o por lo menos el proyecto tiene una incubación donde la gente puede
+> verlo y estudiarlo, que tenga volumen para que haya gente detrás. A lo mejor alguien no mete
+> dinero en PediBot, pero sí lo empieza a usar cuando ve que es gratis. Entonces eso nos da
+> exposición al fin y al cabo.»
+
+El fallo mío es de encuadre: yo estaba puntuando cada sitio por **cuánto dinero puede salir de
+ahí**, y para este proyecto ése no es el único marcador. Esto **no vende una promesa, vende una
+cosa que ya funciona y es gratis**. Un sitio con volumen y con gente que prueba lo que ve deja
+usuarios aunque no deje un euro, y los usuarios son justo lo que falta para todo lo demás:
+para Gitcoin, para contárselo a un ministerio, para que un pediatra lo audite.
+
+Así que la pregunta 3 tiene dos mitades y basta con una:
+
+- **¿hay alguien decidiendo?** — Emergent Ventures, Awesome Foundation, MetaDAO, Y Combinator.
+- **¿o hay volumen y se puede ver y probar?** — Show HN, y cualquier sitio con público real.
+
+Lo que se cae sigue siendo lo mismo, y ahora por las dos a la vez: donde reparte la popularidad
+**y** el público no tiene nada que ver con esto. Ahí ni deciden ni te ven.
+
+## L209 · Un descargo de responsabilidad no cambia lo que el programa hace (21-sep-2026)
+
+Salió mirando financiación europea, y es de las que hay que tener escritas antes de que importen.
+En Europa un programa que a partir de síntomas devuelve una recomendación de a dónde ir es
+producto sanitario, y la regla 11 lo pone en **clase IIa** en cuanto la salida es una decisión
+clínica en vez de información general. La doctrina es explícita en que **el aviso de «esto no
+sustituye a un médico» no cambia el uso previsto**: cuenta lo que el programa hace y cómo se
+presenta, no lo que dice la letra pequeña.
+
+Lo que el sitio hace hoy —explicar qué significan los signos de alarma, con la guía delante, y
+dar el número de emergencias— cae del lado bueno. Lo que puede morderle es **el vocabulario que
+usamos fuera**: en el memo y en las solicitudes lo llamamos «motor de triaje», y «triaje» es
+literalmente la palabra que activa la clase IIa. Dentro de casa da igual y es el término exacto.
+Fuera, hasta que haya evaluación clínica, hay que decir lo que hace y no la etiqueta que lo
+regula.

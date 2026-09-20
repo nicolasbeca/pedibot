@@ -1,5 +1,9 @@
 # WEB.md — la web de PediBot: decisiones, pendientes y mejoras
 
+> **Las cifras de este documento no se escriben a mano.** `DATOS.md` lleva todas,
+> contadas de los ficheros de datos, y `scripts/check_docs.py` avisa si aquí aparece
+> una que ya no sea verdad. El 21-sep-2026 había 107 repartidas por los `.md`.
+
 > Cuaderno vivo de **pedibot.xyz**: lo que se decidió y por qué, lo que está en marcha solo, y lo
 > que queda. El estado general del proyecto vive en `STATE.md`; los fallos aprendidos en
 > `LESSONS.md`; las ideas sin decidir en `IDEAS.md`. Aquí va lo que es de la web.
@@ -14,8 +18,8 @@
 | | |
 |---|---|
 | Páginas | **792** en el sitemap, 8 idiomas (en, es, fr, de, ru, ar, pt, hi) |
-| Corpus | **419 documentos, 7.934 pasajes**. Por idioma: en 166, es 93, fr 40, ar 38, ru 38, de 30, pt 14, **hi 0** |
-| Capa de seguridad | **44 reglas de alarma** en 8 lenguas, todas con documento que las respalda (auditado). Fuera de Europa: 25 de 25 |
+| Corpus | **el corpus entero** (cuántos documentos y pasajes, en `DATOS.md`). Por idioma: en 166, es 93, fr 40, ar 38, ru 38, de 30, pt 14, **hi 0** |
+| Capa de seguridad | **las reglas de alarma** (cuántas, en `DATOS.md`) en 8 lenguas, todas con documento que las respalda (auditado). Fuera de Europa: 25 de 25 |
 | Alcance árabe / hindi | Diez preguntas por mercado: árabe **9 de 10** (era 2), hindi **10 de 10** (era 7) |
 | Marcas reconocidas | **32** (eran 20): añadidas India, Golfo, Egipto y Levante. 18 de 20 preguntas por marca del mercado objetivo dan dosis |
 | Páginas | **900** (eran 792 esta mañana) |
@@ -41,7 +45,7 @@ La última fila es la que manda sobre todas las demás: **el cuello de botella n
 | 1-sep | La pestaña de apoyo va **fuera del `<nav>`**, en el grupo derecho | El `<nav>` se oculta en móvil y es justo la página que pide ayuda |
 | 2-sep | **Sin `i18n` en el sitemap** | Calculaba hreflang por prefijo y el slug cambia con la lengua: contradecía al HTML |
 | 2-sep | Insignia de LaunchLeague retirada | Medida: 20 visitantes en 7 días y **cero** consultas al bot |
-| 9-sep | **Anillo de enlaces** entre guías, no «las más recientes» | 390 de 483 guías colgaban de un solo enlace; el relleno por recencia concentra |
+| 9-sep | **Anillo de enlaces** entre guías, no «las más recientes» | 390 de las 483 guías de entonces colgaban de un solo enlace; el relleno por recencia concentra |
 | 10-sep | `Substance`, nunca `Drug`, en los datos estructurados | `Drug` hereda de `Product`: Google pedía precio o valoración de un jarabe infantil |
 | 10-sep | `lastmod` sale del **contenido**, no de la construcción | Declaraba 296 páginas cambiadas cada día y arrastraba a IndexNow |
 | 11-sep | **Una visita exige la prueba del navegador** | El panel contaba 3.227 visitantes donde había 201 |

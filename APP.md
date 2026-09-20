@@ -1,5 +1,9 @@
 # APP.md — PediBot en el móvil, de verdad
 
+> **Las cifras de este documento no se escriben a mano.** `DATOS.md` lleva todas,
+> contadas de los ficheros de datos, y `scripts/check_docs.py` avisa si aquí aparece
+> una que ya no sea verdad. El 21-sep-2026 había 107 repartidas por los `.md`.
+
 > Primer borrador, 19-sep-2026, escrito para que lo revises tú. Lo que pediste: «vamos a crear
 > una app basada en el web. Mismas herramientas, etc, pero optimizado para móvil. Haz un plan de
 > adaptación y de publicación en Google Store y Apple Store. El logo debe ser LOGO_PEDIBOT_CARA
@@ -28,9 +32,9 @@ la buena noticia es que ese algo existe y es grande:
 
 **Sin cobertura, la web es una pantalla en blanco. La app no.**
 
-Piensa en dónde queremos estar: India, el mundo árabe, África. El proyecto tiene desde esta
-semana 88 países con número de emergencias, 61 calendarios de vacunas y 69 tablas de
-crecimiento, y una parte enorme de las madres a las que eso les sirve tienen un Android barato
+Piensa en dónde queremos estar: India, el mundo árabe, África. El proyecto llega ya a
+noventa países con su número de emergencias, con calendario de vacunas y con tabla de
+crecimiento (las cifras exactas, siempre en `DATOS.md`), y una parte enorme de las madres a las que eso les sirve tienen un Android barato
 con datos que se acaban a mitad de mes. Una madre en Kisumu a las tres de la mañana, sin saldo,
 no puede abrir una web. Pero puede abrir una app que ya tiene dentro el número al que llamar en
 Kenia, los signos de alarma que significan ir ya, y la fecha de la próxima vacuna de su hija.
@@ -39,12 +43,12 @@ Lo medí antes de proponerlo. Todo lo que el proyecto sabe, menos el chat, cabe 
 
 | Lo que se guardaría dentro | Tamaño |
 |---|---|
-| `vaccines.json` — 61 calendarios | 568 KB |
+| `vaccines.json` — los calendarios | 568 KB |
 | `checklist.json` — los signos de alarma, en 8 idiomas | 29 KB |
 | `emergency.json` — 88 países | 29 KB |
 | `growth_charts.json` + tablas OMS | 26 KB |
 | `drugs.json` + `dose_table.json` | 24 KB |
-| Las 502 guías en markdown (las 8 lenguas) | 4,9 MB |
+| Las guías en markdown (las 8 lenguas) | 4,9 MB |
 | **Total, con todas las lenguas** | **~5,6 MB** |
 
 Una app de menos de 20 MB con todo eso dentro. Si además se descargan las guías sólo del idioma
@@ -130,8 +134,8 @@ Identificador: `xyz.pedibot.app` en las dos tiendas, para que coincida con el do
 
 Esta lista es, a la vez, la lista de funciones y la defensa ante la directriz 4.2 de Apple.
 
-1. **Todo menos el chat, sin conexión.** Números de emergencia de los 88 países, los signos de
-   alarma, los 61 calendarios, las 69 curvas, las tablas de dosis y las 502 guías. Sin red, la
+1. **Todo menos el chat, sin conexión.** Los números de emergencia de todos los países, los signos de
+   alarma, los calendarios, las curvas, las tablas de dosis y las guías. Sin red, la
    app abre igual y lo dice arriba: «sin conexión: esto es lo que llevas dentro».
 2. **Recordatorios de vacunas.** Metes la fecha de nacimiento **en el teléfono, que no sale de
    ahí**, y la app avisa tres días antes de cada cita del calendario de tu país. Es lo que más
@@ -376,7 +380,7 @@ tardara en llegar. En pedibot.xyz, hoy:
 - **la API no se guarda nunca**: una respuesta del chat es para una pregunta, un niño y un
   momento;
 - **los datos se guardan al instalar el trabajador**, sin esperar a que nadie visite la página:
-  los 88 países con su número, los 61 calendarios, las 69 tablas, las dosis y los signos de
+  los países con su número, los calendarios, las tablas de crecimiento, las dosis y los signos de
   alarma. Es la diferencia entre «funciona sin cobertura si ya habías entrado ahí» y «funciona»;
 - **el calendario de vacunas de cada hijo, con fechas de verdad**, y un botón para llevárselas al
   calendario del teléfono (`.ics`). En la app eso pasa a ser la notificación local de D-A3: el
@@ -499,8 +503,8 @@ empieza el reloj de los 14 días, que es el camino largo de todo el calendario.
 
 La app tiene sentido, pero no porque la web se vea mal en el móvil, que se ve bien. Tiene sentido
 porque **sin cobertura la web no existe y la app sí**, y porque los países a los que apuntamos son
-justo donde la cobertura se acaba. Todo lo que el proyecto sabe —88 países con su número de
-emergencias, 61 calendarios, 69 curvas, 502 guías— cabe en cinco megas dentro del teléfono; sólo
+justo donde la cobertura se acaba. Todo lo que el proyecto sabe —los países con su número de
+emergencias, los calendarios, las curvas y las guías— cabe en cinco megas dentro del teléfono; sólo
 el chat necesita red.
 
 El camino es empaquetar la web que ya existe con Capacitor, no reescribir nada, y añadirle lo

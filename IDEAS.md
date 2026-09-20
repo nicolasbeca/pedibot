@@ -341,3 +341,27 @@ Lo que sí se hizo mientras tanto, y no necesitaba datos nuevos: **los botes que
 país salen primero** aunque no escribas la marca, dándole la vuelta a la tabla de marcas. En
 Marruecos, Argelia y Túnez eso sube la única concentración que se vende allí desde el fondo de
 una lista de ocho.
+
+## I-29 · Abrir el repositorio: qué abre y qué cuesta (21-sep-2026)
+
+Sale al mirar financiación con el nombre ya expuesto, y es una decisión del operador, no mía.
+Hoy el repositorio es privado: comprobado el 21-sep-2026, `github.com/nicolasbeca/pedibot`
+devuelve 404 a quien no tenga permiso.
+
+**Lo que se abre si se abre.** El reconocimiento de bien público digital lo exige, y con él el
+vocabulario con el que hablan UNICEF, la OMS y los ministerios. NLnet lo exige —de 5.000 a
+50.000 €, y un particular puede pedirlo—. Una parte grande de las becas de software libre lo
+exige. Y en el Show HN, que es la vía de exposición más barata que hay, «el código está aquí»
+cambia cómo se lee todo lo demás: ese público audita antes de creer.
+
+**Lo que cuesta.** El trabajo de años queda copiable en una tarde. Aunque conviene mirar bien
+qué se copia: las reglas de alarma salen de guías públicas, y el catálogo de fuentes ya está en
+dominio público y se descarga entero desde el sitio. Lo que no es copiable es haberlas reunido,
+cruzado por país y probado; eso es el histórico de commits, no un fichero.
+
+**Un término medio que probablemente es la respuesta:** abrir el motor —triaje, dosis, crecimiento,
+vacunas, con sus pruebas— y dejar fuera lo operativo: despliegue, claves, el panel, `ops/` entero
+y los ficheros de trabajo. Cumple los requisitos de las becas, da la credibilidad del Show HN, y
+no regala ni la infraestructura ni la estrategia. Falta comprobar una cosa antes de nada: que no
+haya quedado ninguna clave en el histórico, porque abrir un repositorio publica también su
+pasado.

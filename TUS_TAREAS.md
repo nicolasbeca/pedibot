@@ -8,6 +8,25 @@
 
 ---
 
+## FECHAS QUE NO SE TE PUEDEN PASAR
+
+*(anotadas el 21-sep-2026)*
+
+| cuándo | qué | por qué esa fecha |
+|---|---|---|
+| **miércoles 23 de septiembre** | se acaban las 72 horas de MetaDAO | Su acuse dice que escriben en ~72 h **sólo si tienen preguntas**. Lo enviaste el domingo 20, así que el reloj empieza el lunes. Si no escriben, no pasa nada: ellos mismos avisan de que no contestar es lo normal. |
+| **viernes 2 de octubre** | dejar de esperar a MetaDAO | Diez días hábiles. A partir de ahí, silencio es silencio, y no significa que el proyecto sea malo: significa que no llegó a la mesa. |
+| **a partir del 2 de octubre** | decidir lo de Backable | No antes: si aparecen con preguntas mientras tienes una ronda abierta, la conversación se complica sin ganar nada. El borrador sí se puede preparar ya, que es gratis hasta los 15 $ del final. |
+| **esta semana, cuando quieras** | el Show HN de Hacker News | No tiene fecha límite, y por eso se queda para nunca. El texto lleva escrito desde hace semanas en `ops/SHOW_HN.md`. Es lo que más exposición da de todo lo que hay en la lista y cuesta cero. |
+| **lunes 2 de noviembre, 20:00 en California** | cierre de Y Combinator, tanda de invierno 2027 | Es hora del Pacífico, o sea las 5 de la madrugada del martes aquí. Contestan el 11 de diciembre y la tanda es en San Francisco, de enero a marzo. Presentarse es gratis y lo lee gente: entra en la lista sólo desde que dijiste que el anonimato ya da igual. Entero, con sus pegas, en `ops/FINANCIACION.md`. |
+
+**Y un aviso sobre Backable que cambia el número**: sus once rondas financiadas tienen un techo
+de 200.000 $ y **es todo o nada** —si no llegas al objetivo no recibes nada—. La cifra que
+encaja ahí son **75.000 $**, no los 262.500 que te dije primero. Está en `ops/BACKABLE.md` con
+los números de cada ronda.
+
+---
+
 ## HOY
 
 ### 1. Probar la web antes de MetaDAO — 10 minutos
@@ -173,7 +192,7 @@ inglés.
 
 ### 17. El catálogo del agente ACP
 
-El fichero dice 61 calendarios, 69 curvas y 88 países; el panel de Virtuals sigue con las cifras
+El fichero se puso al día el 20-sep-2026 y lo comprueba una prueba; el panel de Virtuals sigue con las cifras
 viejas. La sincronización se lanza desde el servidor y la puedo hacer yo: **dime si quiero que la
 lance** y lo hago. Lo que no puedo es ocultar en el panel cuatro recursos viejos con
 descripciones caducadas, porque la herramienta no los deja ni editar ni borrar. Eso es un clic

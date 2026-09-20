@@ -46,7 +46,7 @@ among its citations. A language model is not allowed near a milligram figure.
 3. A rule-based triage reads the question for red flags before any answer is produced and puts a
 banner above it. It runs before retrieval, so it fires even when the corpus has nothing to say.
 
-There are also 483 guides in 8 languages built from the same corpus, where every statement
+There are also 507 guides in 8 languages built from the same corpus, where every statement
 carries the number of the document it came from, listed at the foot with organisation, title and
 page. Plus vaccination schedules for 7 countries, each citing its own national authority.
 

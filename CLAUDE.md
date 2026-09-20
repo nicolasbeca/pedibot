@@ -1,6 +1,6 @@
 # CLAUDE.md — PediBot
 
-> Documento "alma" del proyecto. Claude Code lo lee al arrancar cada sesión, junto con `PRD.md`, `STATE.md` y `LESSONS.md`. Aquí vive **cómo se trabaja**. El "qué/por qué" detallado vive en `PRD.md`. El estado vivo en `STATE.md`. Los fallos pasados en `LESSONS.md`. Las ideas sin decidir en `IDEAS.md`.
+> Documento "alma" del proyecto. Claude Code lo lee al arrancar cada sesión, junto con `PRD.md`, `STATE.md` y `LESSONS.md`. Aquí vive **cómo se trabaja**. El "qué/por qué" detallado vive en `PRD.md`. El estado vivo en `STATE.md`. Los fallos pasados en `LESSONS.md`. Las ideas sin decidir en `IDEAS.md`. **Las cifras del proyecto, contadas y nunca tecleadas, en `DATOS.md`** (lo genera `scripts/build_datos.py`; ningún documento vuelve a escribir un número a mano). Las vías de financiación, todas juntas, en `ops/FINANCIACION.md`.
 
 ## Qué es PediBot
 

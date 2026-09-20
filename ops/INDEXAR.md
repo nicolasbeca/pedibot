@@ -106,7 +106,7 @@ https://pedibot.xyz/dose/nurofen
 https://pedibot.xyz/dose/panadol
 ```
 
-(más otros 23 calendarios ya indexados)
+(más otras 23 páginas de calendario ya indexadas)
 
 ## Lo que esto NO hace
 
