@@ -11,9 +11,14 @@ intentionally conservative. Every number here has a unit test.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
+from typing import TYPE_CHECKING
 
 from pedibot.bot.strings import tool_strings
+
+if TYPE_CHECKING:  # sólo para el tipo: en marcha no hace falta y evita el círculo
+    from pedibot.bot.drugs import Brand
 
 
 @dataclass(frozen=True)
@@ -223,6 +228,37 @@ _FORMA = {
 }
 
 
+def _mg_por_ml(texto: str) -> float | None:
+    """La concentración que lleva dentro una etiqueta, sea nuestra o de una marca.
+
+    «jarabe 125 mg/5 ml» → 25. «suspensión 2,4 % (120 mg/5 ml)» → 24. «gotas 100 mg/ml» → 100.
+    Se compara por número y no por texto porque la misma concentración se escribe de cinco
+    formas distintas según quién la imprima.
+    """
+    m = re.search(r"(\d+(?:[.,]\d+)?)\s*mg\s*/\s*(\d+(?:[.,]\d+)?)?\s*ml", texto, re.I)
+    if not m:
+        return None
+    mg = float(m.group(1).replace(",", "."))
+    ml = float(m.group(2).replace(",", ".")) if m.group(2) else 1.0
+    return mg / ml if ml else None
+
+
+def _misma_concentracion(presentacion: str, brand: Brand) -> bool:
+    objetivo = _mg_por_ml(presentacion)
+    if objetivo is None:
+        return False
+    return any((c := _mg_por_ml(f)) is not None and abs(c - objetivo) < 0.05 for f in brand.forms)
+
+
+def _suya_primero(ml: dict[str, float], brand: Brand | None) -> list[tuple[str, float]]:
+    """Las presentaciones de su marca delante, en el mismo orden relativo que tenían."""
+    filas = list(ml.items())
+    if not brand:
+        return filas
+    suyas = [f for f in filas if _misma_concentracion(f[0], brand)]
+    return suyas + [f for f in filas if f not in suyas] if suyas else filas
+
+
 def presentation_label(name: str, lang: str) -> str:
     """La etiqueta de una presentación genérica en el idioma del lector.
 
@@ -314,7 +350,12 @@ def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) 
     )
 
 
-def format_result(r: DoseResult, lang: str = "en") -> str:
+def format_result(
+    r: DoseResult,
+    lang: str = "en",
+    brand: Brand | None = None,
+    brand_key: str | None = None,
+) -> str:
     """La dosis para un padre. Cuando `refer` está puesto, SIN los números.
 
     Decisión del operador (8-sep-2026). Hasta hoy esta función escribía «no dar sin consultar:
@@ -347,8 +388,18 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
             max_doses=r.max_doses_per_day,
         )
     )
-    for pname, millilitres in r.ml.items():
-        lines.append(f"  – {presentation_label(pname, lang)}: {millilitres:g} ml")
+    # 21-sep-2026: Dalsy es ibuprofeno a 40 mg/ml y el paracetamol tiene una presentación a
+    # 40 mg/ml. Sin esto, preguntar por paracetamol nombrando Dalsy ponía «Dalsy» encima de una
+    # fila de paracetamol: decirle a un padre que su bote lleva otra cosa. Lo cazó su prueba.
+    if brand is not None and brand_key is not None and brand_key != r.drug.key:
+        brand = None
+    for pname, millilitres in _suya_primero(r.ml, brand):
+        etiqueta = presentation_label(pname, lang)
+        if brand and _misma_concentracion(pname, brand):
+            # con el nombre de su caja delante: ocho líneas de mililitros parecidos es donde se
+            # lee la que no es, y «6,2» y «6» están una encima de otra (21-sep-2026)
+            etiqueta = f"{brand.name}, {etiqueta}"
+        lines.append(f"  – {etiqueta}: {millilitres:g} ml")
     # the band the guide publishes, so a different figure from a paediatrician is
     # visibly inside it rather than looking like a contradiction
     lines.append(T["dose_band"].format(mg_min=r.mg_min, mg_max=r.mg_max))

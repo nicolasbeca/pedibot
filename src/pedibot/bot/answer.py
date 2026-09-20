@@ -578,6 +578,27 @@ _SIGNOS = ",.;:!?¿¡()[]«»\"'/\\-" + "،؛؟۔।॥" + "\u2013\u2014"
 _A_ESPACIO = str.maketrans({c: " " for c in _SIGNOS})
 
 
+def brand_in_query(query: str, drugs: DrugCatalog | None) -> tuple[str, object] | None:
+    """(molécula, marca) de lo que el padre ha escrito, si el catálogo lo conoce.
+
+    Devuelve las dos cosas y no sólo la marca **a propósito**: Dalsy es ibuprofeno y el
+    paracetamol tiene una presentación con su misma concentración, así que sin la molécula al
+    lado se puede acabar poniendo el nombre de un bote encima de la fila de otro fármaco.
+
+    Mismo barrido por espacios que `dose_intent`, por el mismo motivo: `\\w` parte el devanagari
+    en trozos de una letra. Devuelve la marca, no la molécula: la molécula ya la saca la otra.
+    """
+    if drugs is None:
+        return None
+    for tok in (query or "").lower().translate(_A_ESPACIO).split():
+        if len(tok) < 4:
+            continue
+        r = drugs.resolve(tok)
+        if r and r[1] is not None:
+            return (r[0], r[1])
+    return None
+
+
 def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, float] | None:
     """(drug_key, weight_kg) when the message is a dose question with an explicit weight.
 
@@ -983,7 +1004,15 @@ class Engine:
         )
         if intent and tr.level == "routine":
             drug, kg = intent
-            text = format_result(calculate(drug, kg, tr.age_months), lang)
+            # La marca que el padre ha escrito, para poner SU bote el primero. El catálogo ya la
+            # resolvía para elegir la molécula y el dato se tiraba (21-sep-2026).
+            encontrada = brand_in_query(query, self.drugs) or brand_in_query(
+                context_text, self.drugs
+            )
+            clave, marca = encontrada if encontrada else (None, None)
+            text = format_result(
+                calculate(drug, kg, tr.age_months), lang, brand=marca, brand_key=clave
+            )
             return Answer(
                 text,
                 tr.level,
