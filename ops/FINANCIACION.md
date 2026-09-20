@@ -77,6 +77,40 @@ consecuencias regulatorias en Europa, y la estamos usando en los textos que mand
 > también la trampa que casi le cuesta 9.000 €: **el alta de autónomo abre cuatro puertas y
 > cierra una**, y cuál conviene depende de su edad (L210).
 
+## ¿Hay que esperar a MetaDAO para lo demás? No, y conviene saber por qué
+
+Pregunta del operador el 21-sep-2026: *«entiendo que podemos pedir más cosas cuando nos digan que
+no de MetaDAO, ¿no?»*. La respuesta es que **ni siquiera hay que esperar a que lo digan**.
+
+**Lo comprobado, releído en `ops/METADAO.md`:** lo que se mandó es un formulario de solicitud. No
+hay contrato, no hay exclusividad, no hay dinero de por medio y en la propia respuesta se declara
+que «no hay inversores, ni ronda anterior, ni deuda, ni acuerdos paralelos, ni opciones, y nadie
+tiene derechos sobre el proyecto». Nada de eso ata a nada.
+
+**Y el motivo de fondo para no esperar:** su propio acuse dice que escriben en 72 horas **sólo si
+tienen preguntas**, y que no contestar es lo normal. Es decir, **el «no» probablemente no va a
+llegar nunca en forma de «no»**. Quien se sienta a esperarlo pierde el otoño entero. Por eso la
+fecha del 2 de octubre no significa «cuándo nos dirán que no», significa **«cuándo dejamos de
+contar con ello»**.
+
+Así que de esta lista, **lo único que conviene retrasar es Backable**, y no por una regla suya
+sino por sentido práctico: es una ronda de verdad, y tener una ronda abierta mientras los otros
+pueden aparecer con preguntas complica una conversación sin ganar nada. Todo lo demás —Show HN,
+Emergent Ventures, el correo a InproInnova, Awesome Foundation, el reconocimiento de bien
+público— se puede hacer esta semana y **no hay ninguna razón para no hacerlo**.
+
+**Las dos únicas cosas que no se pueden repetir**, y por eso no se disparan a la ligera:
+
+- **Emergent Ventures**: avisan de que sólo se admite **una solicitud por persona y proyecto**. Ahí
+  no vale el «ya lo intentaremos otra vez». Se manda una vez y bien, con el borrador releído.
+- **El Show HN**: técnicamente se puede repetir, pero una portada quemada con el sitio a medias no
+  se recupera. Se publica cuando las cifras estén releídas y con una hora libre para contestar.
+
+Lo demás se puede volver a intentar el año que viene, MetaDAO incluida y con más cosas que
+enseñar.
+
+---
+
 ## 1 · MetaDAO, vía curada — **enviada el 20-sep-2026**
 
 Lo enviado está en `ops/METADAO.md`, palabra por palabra, y no se toca: reescribirlo sería
