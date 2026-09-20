@@ -387,12 +387,14 @@ const paises = countryOptions(countryCodes as string[], lang);
   /* La cartilla (20-sep-2026). `:global` porque estas filas las dibuja JavaScript y el CSS con
      ámbito de Astro no llega a lo que no estaba en el HTML al construir (L194: se perdió una
      tarde entera por esto). */
-  .fam :global(.vacunas li) { display: flex; align-items: flex-start; gap: 10px; }
-  .fam :global(.vacunas .col) { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-width: 0; }
+  .fam :global(.vacunas .col) { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-width: 0; flex: 1 1 14em; }
   .fam :global(.marca) { flex: 0 0 auto; display: inline-flex; align-items: center; cursor: pointer;
-                         /* 44 px de lado: el dedo de alguien que marca ocho seguidas, de noche */
-                         min-width: 44px; min-height: 44px; justify-content: center; margin: -10px 0 -10px -10px; }
-  .fam :global(.marca input) { position: absolute; opacity: 0; width: 24px; height: 24px; margin: 0; }
+                         /* 44 px de lado: el dedo de alguien que marca ocho seguidas, de noche.
+                            El margen negativo recupera el hueco que eso deja, y va en LÓGICO:
+                            en árabe la columna está al otro lado. */
+                         min-width: 44px; min-height: 44px; justify-content: center;
+                         position: relative; margin-block: -10px; margin-inline-start: -10px; }
+  .fam :global(.marca input) { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
   .fam :global(.marca .visto) { width: 22px; height: 22px; border: 2px solid var(--line); border-radius: 7px;
                                 display: inline-block; position: relative; background: var(--paper);
                                 transition: background-color .15s ease, border-color .15s ease; }
@@ -490,8 +492,11 @@ const paises = countryOptions(countryCodes as string[], lang);
 
   .fam :global(.vacunas) { list-style: none; padding: 0; margin: 8px 0 0; font-size: .88rem; }
   .fam :global(.vacunas li) {
-    padding: 6px 0; border-top: 1px solid var(--line); display: flex; gap: 10px; flex-wrap: wrap;
-    align-items: baseline;
+    padding: 6px 0; border-top: 1px solid var(--line); display: flex; gap: 10px;
+    /* `center` y no `baseline` desde que hay casilla: una caja de 44 px alineada por la línea
+       base del texto se ve torcida. Y sin `wrap`, que mandaba la casilla a su propia fila en
+       cuanto el nombre de la vacuna era largo (21-sep-2026). */
+    align-items: center; flex-wrap: nowrap;
   }
   .fam :global(.vacunas .cuando) {
     font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .8rem; color: var(--ink-3);
@@ -502,7 +507,10 @@ const paises = countryOptions(countryCodes as string[], lang);
   /* Lo que toca ahora, en menta; lo que ya pasó, apagado y plegado. */
   .fam :global(.vacunas li.due) { background: var(--mint); border-radius: 8px; padding-inline: 8px; }
   .fam :global(.vacunas .ahora) { color: var(--coral); font-weight: 700; }
-  .fam :global(.vacunas li.past), .fam :global(.vacunas li.seasonal) { color: var(--ink-2); }
+  .fam :global(.vacunas li.seasonal) { color: var(--ink-2); }
+  /* Lo que no consta: la fila que pide hacer algo, y la única que se quedaba sin marcar de
+     ninguna forma porque el estilo seguía llamándose `past` (21-sep-2026). */
+  .fam :global(.vacunas li.pending) { background: var(--coral-soft); border-radius: 8px; padding-inline: 8px; }
   .fam :global(.siguiente) { margin: 8px 0 0; font-size: .92rem; }
   .fam :global(.siguiente .ics) { margin-inline-start: 8px; font-size: .86rem; white-space: nowrap; }
   .fam :global(details.pasadas) { margin-top: 10px; font-size: .88rem; }

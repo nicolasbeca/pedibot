@@ -203,3 +203,42 @@ def test_millilitres_never_round_up() -> None:
             assert _ml(mg, conc) <= mg / conc + 1e-9, (
                 f"{mg} mg a {conc} mg/ml redondea hacia arriba"
             )
+
+
+def test_ninguna_marca_esta_escrita_dos_veces() -> None:
+    """Dos filas con el mismo nombre y países distintos: gana la primera y la otra no existe.
+
+    21-sep-2026, metiendo las marcas africanas: añadí «Nurofen for Children» con siete países de
+    África sin ver que ya estaba arriba con siete de Europa. `resolve()` devuelve la primera, así
+    que una madre en Nairobi escribía «nurofen» y el sitio le decía que eso se vende en Reino
+    Unido, Irlanda y Australia. No falla nada, no avisa nadie, y la fila de abajo es tinta.
+    """
+    import collections
+
+    repetidas: list[str] = []
+    for key, drug in CAT.items():
+        cuenta = collections.Counter(b["name"] for b in drug.get("brands", []))
+        repetidas += [f"[{key}] «{n}» × {v}" for n, v in cuenta.items() if v > 1]
+    assert not repetidas, (
+        "marcas escritas dos veces; junta los países en una sola fila:\n  " + "\n  ".join(repetidas)
+    )
+
+
+def test_africa_tiene_marcas_de_verdad() -> None:
+    """De 54 países africanos, el calculador conocía marcas de UNO: Egipto (medido 21-sep-2026).
+
+    Una madre en Lagos, en Nairobi o en Casablanca tiene un bote en la mano, escribe el nombre
+    de la caja y el sitio no lo reconoce, aunque sepa dosificar esa misma molécula desde el
+    primer día. Este número no es un objetivo de cobertura: es el recordatorio de que el hueco
+    de África no era de datos clínicos, era de no haber mirado qué hay en sus estanterías.
+    """
+    africa = set(
+        "DZ AO BJ BW BF BI CV CM CF TD KM CD CG CI DJ EG GQ ER SZ ET GA GM GH GN GW KE LS LR LY "
+        "MG MW ML MR MU MA MZ NA NE NG RW ST SN SC SL SO ZA SS SD TZ TG TN UG ZM ZW".split()
+    )
+    con_marca = {
+        c for drug in CAT.values() for b in drug.get("brands", []) for c in b.get("countries", [])
+    } & africa
+    assert len(con_marca) >= 30, (
+        f"sólo {len(con_marca)} países africanos tienen alguna marca: {sorted(con_marca)}"
+    )

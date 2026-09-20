@@ -14,10 +14,10 @@ drugs:
       - {name: "Termalgin", countries: [ES], forms: ["jarabe 120 mg/5 ml"]}
       - {name: "Gelocatil", countries: [ES], forms: ["gotas 100 mg/ml", "jarabe 120 mg/5 ml"]}
       - {name: "Efferalgan", countries: [ES, FR, IT], forms: ["jarabe 150 mg/5 ml (3 %)"]}
-      - {name: "Doliprane", countries: [FR], forms: ["suspensión 2,4 %  (120 mg/5 ml)"]}
-      - {name: "Calpol", countries: [GB, IE], forms: ["infant 120 mg/5 ml", "six plus 250 mg/5 ml"]}
+      - {name: "Doliprane", countries: [FR, MA, DZ, TN, SN, CI, CM, ML, BF, NE, TD, GA, CG, BJ, TG, GN, MR], forms: ["suspensión 2,4 %  (120 mg/5 ml)"]}
+      - {name: "Calpol", countries: [GB, IE, KE, UG, TZ, NG, GH, ZA, ZM, MW], forms: ["infant 120 mg/5 ml", "six plus 250 mg/5 ml"]}
       - {name: "Tylenol Children's / Infants'", countries: [US, CA], forms: ["160 mg/5 ml"]}
-      - {name: "Panadol Children", countries: [AU, NZ, GB], forms: ["baby drops 100 mg/ml", "1-5 years 120 mg/5 ml", "5-12 years 250 mg/5 ml"]}
+      - {name: "Panadol Children", countries: [AU, NZ, GB, ZA, KE, NG, GH, UG, TZ, ZM, ZW, BW, NA, MU, EG], forms: ["baby drops 100 mg/ml", "1-5 years 120 mg/5 ml", "5-12 years 250 mg/5 ml"]}
       - {name: "Tempra / Tylenol", countries: [MX, AR, CL, CO], forms: ["gotas 100 mg/ml", "jarabe 160 mg/5 ml"]}
       - {name: "Tachipirina", countries: [IT], forms: ["jarabe 120 mg/5 ml", "gotas 100 mg/ml"]}
       - {name: "Ben-u-ron", countries: [DE, PT], forms: ["jarabe 200 mg/5 ml (4 %)"]}
@@ -34,6 +34,15 @@ drugs:
       - {name: "Cetal", countries: [EG], forms: ["gotas 100 mg/ml", "jarabe 125 mg/5 ml"]}
       - {name: "Abimol", countries: [EG], forms: ["jarabe 120 mg/5 ml"]}
       - {name: "Tylol", countries: [TR, JO, LB], forms: ["suspensión 120 mg/5 ml"]}
+      # ── África, 21-sep-2026. De 54 países el calculador conocía marcas de UNO, Egipto.
+      # Cada una con dónde se comprueba; las concentraciones salen del registro, no de mí.
+      # Panado es el paracetamol infantil de Sudáfrica, de Adcock Ingram: prospecto aprobado
+      # en el repositorio de la SAHPRA, registro V/2.8/208, 120 mg/5 ml.
+      - {name: "Panado Paediatric", countries: [ZA, NA, BW, SZ, LS], forms: ["jarabe 120 mg/5 ml"]}
+      # Emzor se fabrica en Lagos y está en todas partes. En el «greenbook» público de la
+      # NAFDAC a 125 mg/5 ml: CIENTO VEINTICINCO, no ciento veinte, y esos cinco miligramos
+      # son justo los que hacen que un padre coja el bote de al lado por error.
+      - {name: "Emzor Paracetamol", countries: [NG], forms: ["jarabe 125 mg/5 ml"]}
     strengths_mg_per_ml: [100, 24, 25, 30, 32, 40, 50, 200]
     per_dose_mg_per_kg: [10, 15]
     interval_hours: [4, 6]
@@ -60,7 +69,7 @@ drugs:
       - {name: "Dalsy", countries: [ES], forms: ["suspensión 2 % (100 mg/5 ml)", "suspensión 4 % (200 mg/5 ml)"]}
       - {name: "Junifen", countries: [ES], forms: ["2 % (100 mg/5 ml)", "4 % (200 mg/5 ml)"]}
       - {name: "Apirofeno", countries: [ES], forms: ["2 % (100 mg/5 ml)", "4 % (200 mg/5 ml)"]}
-      - {name: "Nurofen for Children", countries: [GB, IE, AU, NZ, DE, IT, PT], forms: ["100 mg/5 ml"]}
+      - {name: "Nurofen for Children", countries: [GB, IE, AU, NZ, DE, IT, PT, ZA, KE, NG, GH, UG, TZ, MU], forms: ["100 mg/5 ml"]}
       - {name: "Advil Children's / Infants'", countries: [US, CA, FR], forms: ["children 100 mg/5 ml", "infant drops 200 mg/5 ml (40 mg/ml)"]}
       - {name: "Motrin Children's / Infants'", countries: [US, CA, MX], forms: ["children 100 mg/5 ml", "infant drops 40 mg/ml"]}
       - {name: "Advil Pediátrico / Ibupirac", countries: [AR, CL, CO, MX], forms: ["2 % (100 mg/5 ml)", "4 % (200 mg/5 ml)"]}
@@ -68,6 +77,10 @@ drugs:
       - {name: "Brufen", countries: [IN, AE, SA, EG], forms: ["jarabe 100 mg/5 ml"]}
       - {name: "Ibugesic", countries: [IN], forms: ["suspensión 100 mg/5 ml"]}
       - {name: "Profinal", countries: [AE, SA, QA, KW], forms: ["suspensión 100 mg/5 ml", "forte 200 mg/5 ml"]}
+      # África, 21-sep-2026: el ibuprofeno infantil que se encuentra allí de verdad. El
+      # calculador conocía marcas de un solo país africano, Egipto, y una madre con el bote
+      # en la mano escribía el nombre de la caja y no se reconocía.
+      - {name: "Advil / Ibuprofène sirop", countries: [MA, DZ, TN, SN, CI, CM], forms: ["jarabe 2 % (100 mg/5 ml)"]}
     strengths_mg_per_ml: [20, 40, 50]
     per_dose_mg_per_kg: [5, 10]
     interval_hours: [6, 8]

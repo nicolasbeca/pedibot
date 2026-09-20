@@ -986,3 +986,33 @@ no tiene por qué mandar.
 Queda escrito lo que no se arregló: el suajili dice «uzito wa kilo 8», con la unidad delante, y
 el lector espera el número primero. Está en una prueba que **falla el día que se arregle**, para
 que alguien venga a quitarla.
+
+## L204 · El hueco de África no era clínico: era no haber mirado sus estanterías (21-sep-2026)
+
+Medido, país por país, antes de decidir qué hacer:
+
+    urgencias:  54/54
+    calendario: 54/54
+    curvas:     49/54
+    marcas:      1/54   ← Egipto
+
+Cincuenta y cuatro países con su número de emergencias comprobado uno a uno y su calendario
+oficial transcrito, y el calculador de dosis conocía **una** marca africana. Una madre en Lagos,
+en Nairobi o en Casablanca tiene un bote en la mano, teclea lo que pone en la caja y el sitio no
+lo reconoce, aunque sepa dosificar esa misma molécula desde el primer día.
+
+Lo que enseña no es «faltaban marcas». Es que **la cobertura se mide en la lista que uno ya
+sabe llevar**. Las urgencias y los calendarios se contaban desde el principio porque eran el
+trabajo; las marcas no se contaban, así que el mapa se veía lleno mientras la herramienta más
+usada de madrugada estaba vacía para un continente entero.
+
+Ahora son 31 países, con Panado en Sudáfrica (prospecto aprobado por la SAHPRA), Emzor en
+Nigeria (registro público de la NAFDAC, 125 mg/5 ml y no 120: esos cinco miligramos son justo
+los que hacen coger el bote de al lado), Calpol en el África oriental anglófona y Doliprane en
+todo el Magreb y el Sahel francófono.
+
+Y un error mío de camino, que también dice algo: metí «Nurofen for Children» con siete países
+africanos sin ver que ya estaba arriba con siete europeos. `resolve()` devuelve la primera, así
+que la fila de abajo era tinta y una madre en Nairobi habría leído que eso se vende en Reino
+Unido. **Añadir a ciegas a un catálogo que ya tiene la entrada es un fallo que no avisa**, y
+ahora hay una prueba que lo caza.
