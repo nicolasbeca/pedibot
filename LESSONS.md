@@ -899,3 +899,33 @@ Tres decisiones al arreglarlo, y las tres se pueden discutir:
 
 Y la coma. En árabe es «،», no «,». No impide entender nada y dice, en cada línea, que el texto
 no se escribió para quien lo está leyendo.
+
+## L201 · El texto negaba el número que el aviso estaba dando (20-sep-2026)
+
+Probando el sitio vivo como un padre en Nigeria, con un niño atragantado. Lo que llegó a la
+pantalla, entero y en este orden:
+
+    🚨 Call 112 now or go to the emergency department.
+       Reason: Choking with breathing difficulty
+
+    I can't give you an emergency number — that depends on the country you are in, and my
+    sources only mention the number for Spain.
+
+Nada había fallado. El aviso es nuestro, determinista, y sacó bien el 112 de Nigeria. Y el modelo
+estaba **obedeciendo** la regla 9 —no mandes al lector a un servicio que sólo existe donde se
+escribió la fuente— sólo que, en vez de callarse sobre números, la explicó en voz alta.
+
+Dos cosas que aprender, y la segunda es la que vale:
+
+1. Una regla escrita para el modelo se puede cumplir *hablando de ella*. «No des un número
+   extranjero» y «no digas que no puedes dar un número» son dos reglas, no una, y sólo la
+   primera estaba escrita.
+2. **Las dos mitades de una respuesta se escriben en sitios distintos y nadie las lee juntas.**
+   El aviso lo pinta Python desde una tabla; el texto lo escribe el modelo desde unos pasajes.
+   Cada mitad es correcta por separado y la pantalla es una contradicción. Lo único que lo
+   encuentra es abrirla como la abre un padre, que es como han salido los siete fallos de estos
+   dos días.
+
+El prompt lo prohíbe desde hoy, pero eso es una petición. El candado es un verificador: si el
+texto niega tener un número, la respuesta se rechaza y se vuelve a escribir, como ya se hacía con
+los servicios extranjeros y con las dosis inventadas.

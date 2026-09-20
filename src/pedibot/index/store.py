@@ -23,7 +23,18 @@ THIN_LANG_BOOST = 1.6  # see `thin_lang` in Index.search
 #:
 #: Es un empujón a la lengua puente, nunca un castigo a las demás — castigar al otro lado se
 #: midió en agosto y rompió la dirección inglés→castellano de la que vive el corpus.
-READABLE_FALLBACK = {"hi": "en", "ar": "en", "ru": "en", "de": "en", "fr": "en", "pt": "es"}
+#: El suajili entra el 20-sep-2026 y es el caso más claro de todos: no tiene ni un
+#: documento con licencia abierta en el corpus, y su explicación ya se escribe en inglés
+#: desde que existe (L183). Estaba fuera de esta tabla sólo porque nadie lo había puesto.
+READABLE_FALLBACK = {
+    "hi": "en",
+    "ar": "en",
+    "ru": "en",
+    "de": "en",
+    "fr": "en",
+    "sw": "en",
+    "pt": "es",
+}
 FALLBACK_BOOST = 1.4
 
 _SCHEMA = """

@@ -11,7 +11,7 @@ intentionally conservative. Every number here has a unit test.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 from pedibot.bot.strings import tool_strings
 
@@ -45,6 +45,10 @@ class Drug:
     min_weight_kg: float
     presentations: tuple[Presentation, ...]
     source: str
+    #: idioma → (organismo, título, enlace) de una ficha que ESE lector puede abrir sobre
+    #: esta medicina. No es la fuente de la tabla —ésa es `source` y no cambia—, es la
+    #: puerta para quien no lee el idioma de la fuente. Hoy sólo hay del NHS, en inglés.
+    read_more: dict[str, tuple[str, str, str]] = field(default_factory=dict)
 
 
 PARACETAMOL = Drug(
@@ -86,6 +90,13 @@ PARACETAMOL = Drug(
         Presentation("gotas 200 mg/ml", 200.0),
     ),
     source="AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos",
+    read_more={
+        "en": (
+            "NHS",
+            "Paracetamol for children",
+            "https://www.nhs.uk/medicines/paracetamol-for-children/",
+        )
+    },
 )
 
 IBUPROFENO = Drug(
@@ -115,7 +126,40 @@ IBUPROFENO = Drug(
         Presentation("gotas 50 mg/ml", 50.0),
     ),
     source="AEPap — Guía rápida de dosificación práctica en pediatría (3.ª ed.), tabla analgésicos/antitérmicos",
+    read_more={
+        "en": (
+            "NHS",
+            "Ibuprofen for children",
+            "https://www.nhs.uk/medicines/ibuprofen-for-children/",
+        )
+    },
 )
+
+
+def leer_mas(d: Drug, lang: str) -> str:
+    """«Más sobre el paracetamol en niños: NHS — …», cuando ese lector tiene dónde.
+
+    Vacío cuando no hay ficha en su idioma, que hoy es casi siempre. Un enlace en una lengua
+    que no lee no es una puerta: es una puerta pintada en la pared.
+    """
+    ficha = d.read_more.get(lang)
+    if not ficha:
+        # La lengua puente que este proyecto ya tiene decidida: un lector de hindi, árabe, ruso,
+        # alemán o francés puede abrir una ficha en inglés, y el portugués una en español. No es
+        # una suposición mía, es la misma tabla con la que el buscador elige qué subir al tercer
+        # puesto cuando la lengua del lector no tiene material propio (L183).
+        from pedibot.index.store import READABLE_FALLBACK
+
+        puente = READABLE_FALLBACK.get(lang)
+        ficha = d.read_more.get(puente) if puente else None
+    if not ficha:
+        return ""
+    org, titulo, url = ficha
+    plantilla = tool_strings(lang).get("dose_read_more")
+    if not plantilla:
+        return ""
+    return plantilla.format(org=org, title=titulo, url=url)
+
 
 DRUGS: dict[str, Drug] = {
     "paracetamol": PARACETAMOL,
@@ -290,6 +334,9 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
             T["dose_refer"] + ", ".join(T["dose_warn"].get(w, w) for w in r.warnings) + "."
         )
         lines.append(T["dose_source"].format(source=d.source))
+        mas = leer_mas(d, lang)
+        if mas:
+            lines.append(mas)
         lines.append(T["dose_check"])
         return "\n".join(lines)
     lines.append(
@@ -306,5 +353,8 @@ def format_result(r: DoseResult, lang: str = "en") -> str:
     # visibly inside it rather than looking like a contradiction
     lines.append(T["dose_band"].format(mg_min=r.mg_min, mg_max=r.mg_max))
     lines.append(T["dose_source"].format(source=d.source))
+    mas = leer_mas(d, lang)
+    if mas:
+        lines.append(mas)
     lines.append(T["dose_check"])
     return "\n".join(lines)

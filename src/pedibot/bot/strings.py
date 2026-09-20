@@ -32,6 +32,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• Dose: {mg:g} mg every {h0}–{h1} h (max {max_doses} doses/day).",
         "dose_band": "The guide allows {mg_min:g}–{mg_max:g} mg; this is the usual dose for fever.",
         "dose_source": "Source: {source}.",
+        "dose_read_more": "More about this medicine, from {org}: {title} — {url}",
         "dose_check": "Always check the concentration on the bottle. Under 3 months, ask a doctor before giving anything.",
         "dose_warn": {
             "under_3_months_refer": "under 3 months old",
@@ -72,6 +73,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• Dosis: {mg:g} mg cada {h0}–{h1} h (máx. {max_doses} dosis/día).",
         "dose_band": "La guía admite de {mg_min:g} a {mg_max:g} mg; esta es la dosis habitual para la fiebre.",
         "dose_source": "Fuente: {source}.",
+        "dose_read_more": "Más sobre esta medicina, de {org}: {title} — {url}",
         "dose_check": "Comprueba siempre la concentración del envase. Si tiene menos de 3 meses, consulta antes de dar nada.",
         "dose_warn": {
             "under_3_months_refer": "menor de 3 meses",
@@ -110,6 +112,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• Dose : {mg:g} mg toutes les {h0}–{h1} h (max. {max_doses} doses par jour).",
         "dose_band": "Le guide admet {mg_min:g}–{mg_max:g} mg ; c'est la dose habituelle contre la fièvre.",
         "dose_source": "Source : {source}.",
+        "dose_read_more": "En savoir plus sur ce médicament, de {org} : {title} — {url}",
         "dose_check": "Vérifiez toujours la concentration inscrite sur le flacon. Avant 3 mois, demandez à un médecin avant de donner quoi que ce soit.",
         "dose_warn": {
             "under_3_months_refer": "moins de 3 mois",
@@ -148,6 +151,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• Dosis: {mg:g} mg alle {h0}–{h1} h (höchstens {max_doses} Dosen pro Tag).",
         "dose_band": "Die Leitlinie erlaubt {mg_min:g}–{mg_max:g} mg; dies ist die übliche Dosis bei Fieber.",
         "dose_source": "Quelle: {source}.",
+        "dose_read_more": "Mehr zu diesem Medikament, von {org}: {title} — {url}",
         "dose_check": "Prüfen Sie immer die auf Ihrer Flasche angegebene Konzentration. Unter 3 Monaten nichts ohne ärztlichen Rat geben.",
         "dose_warn": {
             "under_3_months_refer": "unter 3 Monate alt",
@@ -186,6 +190,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• Доза: {mg:g} мг каждые {h0}–{h1} ч (не более {max_doses} доз в сутки).",
         "dose_band": "Руководство допускает {mg_min:g}–{mg_max:g} мг; это обычная доза при температуре.",
         "dose_source": "Источник: {source}.",
+        "dose_read_more": "Подробнее об этом лекарстве, от {org}: {title} — {url}",
         "dose_check": "Всегда проверяйте концентрацию, указанную на вашем флаконе. До 3 месяцев ничего не давайте без назначения врача.",
         "dose_warn": {
             "under_3_months_refer": "младше 3 месяцев",
@@ -224,6 +229,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• الجرعة: {mg:g} ملغ كل {h0}–{h1} ساعة (بحد أقصى {max_doses} جرعات في اليوم).",
         "dose_band": "يسمح الدليل بـ {mg_min:g}–{mg_max:g} ملغ؛ وهذه هي الجرعة المعتادة للحرارة.",
         "dose_source": "المصدر: {source}.",
+        "dose_read_more": "مزيد عن هذا الدواء، من {org}: {title} — {url}",
         "dose_check": "تحقق دائما من التركيز المطبوع على عبوتك. وقبل عمر 3 أشهر لا تعطِ أي دواء دون وصفة.",
         "dose_warn": {
             "under_3_months_refer": "أقل من 3 أشهر",
@@ -262,6 +268,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• Dose: {mg:g} mg a cada {h0}–{h1} h (máx. {max_doses} doses/dia).",
         "dose_band": "O guia admite de {mg_min:g} a {mg_max:g} mg; esta é a dose habitual para a febre.",
         "dose_source": "Fonte: {source}.",
+        "dose_read_more": "Mais sobre este medicamento, de {org}: {title} — {url}",
         "dose_check": "Confira sempre a concentração impressa na embalagem. Com menos de 3 meses, não dê nada sem orientação médica.",
         "dose_warn": {
             "under_3_months_refer": "menor de 3 meses",
@@ -300,6 +307,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• खुराक: {mg:g} मिग्रा, हर {h0}–{h1} घंटे में (दिन में ज़्यादा से ज़्यादा {max_doses} खुराक)।",
         "dose_band": "दिशानिर्देश {mg_min:g} से {mg_max:g} मिग्रा तक मानता है; बुखार के लिए यही आम खुराक है।",
         "dose_source": "स्रोत: {source}।",
+        "dose_read_more": "इस दवा के बारे में और, {org} से: {title} — {url}",
         "dose_check": "डिब्बे पर लिखी ताक़त हमेशा जाँच लें। तीन महीने से छोटे बच्चे को डॉक्टर की सलाह के बिना कुछ न दें।",
         "dose_warn": {
             "under_3_months_refer": "तीन महीने से छोटा",
@@ -343,6 +351,7 @@ STRINGS: dict[str, Table] = {
         "dose_line": "• Kipimo: miligramu {mg:g} kila saa {h0}–{h1} (isizidi dozi {max_doses} kwa siku).",
         "dose_band": "Mwongozo unaruhusu miligramu {mg_min:g}–{mg_max:g}; hiki ndicho kipimo cha kawaida cha homa.",
         "dose_source": "Chanzo: {source}.",
+        "dose_read_more": "Zaidi kuhusu dawa hii, kutoka {org}: {title} — {url}",
         "dose_check": "Angalia daima kiwango kilichoandikwa kwenye chupa. Chini ya miezi mitatu, muulize daktari kabla ya kumpa chochote.",
         "dose_warn": {
             "under_3_months_refer": "ana chini ya miezi mitatu",

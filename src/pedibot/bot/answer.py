@@ -685,6 +685,38 @@ FOREIGN_SERVICE = re.compile(
 )
 
 
+#: El texto negando tener un número de urgencias, en las ocho lenguas. El aviso de arriba SÍ
+#: lo tiene —es nuestro, sale de la tabla de 90 países y va en el idioma del lector—, así que
+#: una frase así no es humildad: es una contradicción dentro de la misma pantalla, y encima le
+#: cuenta al padre cómo funciona esto por dentro. Visto en vivo el 20-sep-2026 con Nigeria y
+#: un niño atragantado.
+NIEGA_NUMERO = re.compile(
+    r"(?:can'?t|cannot|unable to|am not able to)[^.]{0,40}(?:give|provide|tell)[^.]{0,30}(?:emergency|number)"
+    r"|(?:no puedo|no me es posible)[^.]{0,40}(?:dar|darte|proporcionar)[^.]{0,30}(?:número|numero)"
+    r"|(?:je ne peux pas|je ne suis pas en mesure)[^.]{0,40}(?:donner|fournir)[^.]{0,30}num[ée]ro"
+    r"|(?:kann ich|ich kann)[^.]{0,40}(?:keine|nicht)[^.]{0,30}(?:Notrufnummer|Nummer)"
+    r"|(?:не могу)[^.]{0,40}(?:дать|сообщить)[^.]{0,30}(?:номер)"
+    r"|(?:لا أستطيع|لا يمكنني)[^.]{0,40}(?:إعطاء|تقديم)[^.]{0,30}(?:رقم)"
+    r"|(?:não posso|não consigo)[^.]{0,40}(?:dar|fornecer)[^.]{0,30}(?:número|numero)"
+    r"|my sources only (?:mention|cover|include)[^.]{0,40}(?:number|country)"
+    r"|(?:mis|las) fuentes s[óo]lo (?:mencionan|cubren)[^.]{0,40}(?:n[úu]mero|pa[íi]s)",
+    re.I,
+)
+
+
+def denies_the_number_problem(text: str) -> str | None:
+    """El mensaje de rechazo para un texto que niega lo que el aviso de arriba ya dice."""
+    m = NIEGA_NUMERO.search(text)
+    if not m:
+        return None
+    return (
+        f"denies_the_number ({m.group(0)!r}): the banner above your text already carries the"
+        " reader's own emergency number. Never write that you cannot give one, or that your"
+        " sources only cover one country. Say nothing about numbers: write what the sources"
+        " say to do while help arrives."
+    )
+
+
 def foreign_service_problem(text: str) -> str | None:
     """The verification message for a text that sends the reader somewhere they cannot go."""
     m = FOREIGN_SERVICE.search(text)
@@ -774,6 +806,9 @@ def verify_answer(text: str, hits: list[Hit]) -> list[str]:
     found = foreign_service_problem(text)
     if found:
         problems.append(found)
+    niega = denies_the_number_problem(text)
+    if niega:
+        problems.append(niega)
     counts = _org_mentions(text, hits)
     if not names_a_source(text, hits):
         problems.append(
