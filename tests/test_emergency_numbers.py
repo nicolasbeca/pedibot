@@ -113,7 +113,13 @@ def test_a_country_entry_always_carries_an_emergency_number(code: str) -> None:
         assert not ficha.get("emergency"), (
             f"{code} dice que no hay número nacional y a la vez trae uno: no puede ser las dos"
         )
-        assert (ficha.get("note") or "").strip(), (
+        # 20-sep-2026: la nota pasó de ser una cadena inglesa a un mapa por idiomas, porque
+        # salía en inglés dentro de respuestas en árabe y en hindi, y veintitrés de las
+        # veinticinco notas son de países africanos. Aquí sirven las dos formas: lo que se
+        # exige es que haya explicación, no en qué formato está guardada.
+        nota = ficha.get("note")
+        texto = nota.get("en", "") if isinstance(nota, dict) else (nota or "")
+        assert texto.strip(), (
             f"{code} se queda sin número y sin explicación: eso es un hueco, no un dato"
         )
         return

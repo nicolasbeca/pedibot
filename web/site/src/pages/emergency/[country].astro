@@ -66,6 +66,11 @@ const jsonld = {
   about: { '@type': 'MedicalCondition', name: s.emg_about },
   audience: { '@type': 'Patient' },
 };
+// La nota de la fuente, en el idioma de esta página. Hasta el 20-sep-2026 era una
+// sola cadena inglesa y salía así en las ocho; es la frase más consecuente de la
+// página, la que dice si va a venir alguien o hay que buscarse la vida.
+const nota = typeof data.note === 'string' ? data.note : (data.note?.['en'] ?? data.note?.en);
+
 ---
 <Base lang={lang} title={`${h1} — PediBot`} description={desc} path={`${pref}/emergency/${code.toLowerCase()}`} jsonld={jsonld}>
   <div class="wrap" style="padding:40px 18px">
@@ -82,7 +87,7 @@ const jsonld = {
       <p class="nohay">{data.no_national ? s.emgc_none : s.emgc_unsure}</p>
     )}
     {data.note && (
-      <p class="letra"><b>{s.emgc_note}</b> <q lang="en" dir="ltr">{data.note}</q></p>
+      <p class="letra"><b>{s.emgc_note}</b> <q>{nota}</q></p>
     )}
     {data.source && (
       <p class="letra"><b>{s.emgc_source}</b>

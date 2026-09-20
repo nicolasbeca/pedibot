@@ -74,6 +74,13 @@ def format_numbers(datos: dict[str, Any], pais_nombre: str, lang: str) -> str:
     if datos.get("mental"):
         lineas.append(T["emgq_mental"].format(number=datos["mental"]))
     nota = datos.get("note")
+    if isinstance(nota, dict):
+        # 20-sep-2026: las 25 notas estaban en inglés y salían dentro de respuestas en español,
+        # árabe e hindi. Son la parte más consecuente de la página —«puede que no venga nadie,
+        # organiza tú el transporte»— y veintitrés de las veinticinco son de países africanos.
+        from pedibot.bot.strings import data_lang
+
+        nota = nota[data_lang(nota, lang)]
     if nota:
         lineas.append(str(nota))
     fuente = datos.get("source")

@@ -111,4 +111,8 @@ def test_a_country_without_a_number_is_not_a_country_without_an_entry(code: str)
     assert ficha.get("no_national") or ficha.get("unverified"), (
         f"{code} se ha quedado sin número sin decir si es que no lo hay o que no lo sabemos"
     )
-    assert (ficha.get("note") or "").strip(), f"{code}: sin número y sin explicación"
+    # La nota es un mapa por idiomas desde el 20-sep-2026; aquí lo que se exige es que
+    # haya explicación, no en qué formato se guarda.
+    nota = ficha.get("note")
+    texto = nota.get("en", "") if isinstance(nota, dict) else (nota or "")
+    assert texto.strip(), f"{code}: sin número y sin explicación"
