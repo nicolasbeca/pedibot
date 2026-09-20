@@ -309,3 +309,35 @@ Lo que hace falta es leer, por país, qué curva trae su cartilla:
 
 Es trabajo de leer y transcribir, no de programar, y es exactamente la clase de cosa que la
 partida de «segunda persona a media jornada» del plan de financiación paga.
+
+## I-28 · Etiopía, el Congo, Angola y Mozambique: qué falta y qué NO se ha inventado (21-sep-2026)
+
+Las marcas africanas pasaron de 1 país a 31. Los cuatro grandes que siguen sin ninguna suman
+unos 300 millones de personas: **Etiopía (126 M), RD Congo (102 M), Angola (36 M) y Mozambique
+(33 M)**.
+
+Lo que se buscó y lo que salió, para que nadie repita el trabajo:
+
+- **Etiopía tiene registro público y sirve.** La EFDA publica la *List of Medicines for Drug
+  Shop* y una lista de medicamentos sin receta. Leídas: incluyen «Acetaminophen/Paracetamol
+  Drops 100mg/ml» y «Ibuprofen Oral liquid 100mg/5ml». Hay además productos registrados con
+  nombre propio, como **Parakant** (solución pediátrica 120 mg/5 ml, con su ficha en la EFDA).
+  Falta decidir si una marca de ese tamaño merece entrar o si lo que ayuda allí son las
+  concentraciones, que es lo que un padre lee en la caja de un genérico.
+- **RD Congo**: sólo aparecen farmacias francesas vendiendo Doliprane y la Lista Nacional de
+  Medicamentos Esenciales de 2020 (alojada en la OMS). Doliprane es LA marca del África
+  francófona y sería cómodo extenderla, pero **no se ha hecho**: no encontré una fuente
+  congoleña que lo diga, y el Congo es demasiado grande para añadirlo de oído.
+- **Angola y Mozambique**: nada concluyente. Salen cadenas de farmacias reales —Mecofarma en
+  Luanda, Farmácias de Moçambique en Maputo— y Bluepharma distribuyendo allí desde 2011, pero
+  ninguna fuente que diga qué jarabe pediátrico se vende. Ben-u-ron es portugués y es plausible;
+  plausible no es una fuente.
+
+**La regla que se siguió, y que conviene no aflojar**: una marca dice al padre «esto que tienes
+en la mano es esto». Meter un país de oído convierte esa frase en una suposición, y la frase
+entera deja de valer. Es mejor no reconocer el bote que reconocerlo mal.
+
+Lo que sí se hizo mientras tanto, y no necesitaba datos nuevos: **los botes que se venden en tu
+país salen primero** aunque no escribas la marca, dándole la vuelta a la tabla de marcas. En
+Marruecos, Argelia y Túnez eso sube la única concentración que se vende allí desde el fondo de
+una lista de ocho.

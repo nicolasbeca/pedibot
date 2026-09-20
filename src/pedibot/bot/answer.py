@@ -8,7 +8,7 @@ from pathlib import Path
 
 import yaml
 
-from pedibot.bot.dose import DRUGS, calculate, format_result
+from pedibot.bot.dose import DRUGS, bottles_in_country, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.emergency_question import (
     country_name,
@@ -1015,7 +1015,11 @@ class Engine:
             )
             clave, marca = encontrada if encontrada else (None, None)
             text = format_result(
-                calculate(drug, kg, tr.age_months), lang, brand=marca, brand_key=clave
+                calculate(drug, kg, tr.age_months),
+                lang,
+                brand=marca,
+                brand_key=clave,
+                country_forms=bottles_in_country(self.drugs, drug, country),
             )
             return Answer(
                 text,

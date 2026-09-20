@@ -250,6 +250,38 @@ def _misma_concentracion(presentacion: str, brand: Brand) -> bool:
     return any((c := _mg_por_ml(f)) is not None and abs(c - objetivo) < 0.05 for f in brand.forms)
 
 
+def bottles_in_country(drugs: object, drug_key: str, country: str | None) -> list[str]:
+    """Las etiquetas de los botes que se venden en ese país, según el catálogo de marcas.
+
+    Es la tabla de marcas del revés: cada marca dice en qué países está y con qué formatos, así
+    que agrupando por país sale qué hay en la estantería de allí. Cero datos nuevos.
+    """
+    if not country or drugs is None:
+        return []
+    cc = country.upper()
+    fuera: list[str] = []
+    for marca in getattr(drugs, "brands_for", lambda *_: [])(drug_key):
+        if cc in getattr(marca, "countries", ()):
+            fuera += [f for f in getattr(marca, "forms", ())]
+    return fuera
+
+
+def _del_pais_primero(ml: dict[str, float], formas_del_pais: list[str]) -> list[tuple[str, float]]:
+    """Las presentaciones que allí se venden delante, conservando su orden relativo."""
+    filas = list(ml.items())
+    if not formas_del_pais:
+        return filas
+    concentraciones = {c for f in formas_del_pais if (c := _mg_por_ml(f)) is not None}
+    if not concentraciones:
+        return filas
+    aqui = [
+        f
+        for f in filas
+        if (c := _mg_por_ml(f[0])) is not None and any(abs(c - x) < 0.05 for x in concentraciones)
+    ]
+    return aqui + [f for f in filas if f not in aqui] if aqui else filas
+
+
 def _suya_primero(ml: dict[str, float], brand: Brand | None) -> list[tuple[str, float]]:
     """Las presentaciones de su marca delante, en el mismo orden relativo que tenían."""
     filas = list(ml.items())
@@ -355,6 +387,7 @@ def format_result(
     lang: str = "en",
     brand: Brand | None = None,
     brand_key: str | None = None,
+    country_forms: list[str] | None = None,
 ) -> str:
     """La dosis para un padre. Cuando `refer` está puesto, SIN los números.
 
@@ -393,7 +426,15 @@ def format_result(
     # fila de paracetamol: decirle a un padre que su bote lleva otra cosa. Lo cazó su prueba.
     if brand is not None and brand_key is not None and brand_key != r.drug.key:
         brand = None
-    for pname, millilitres in _suya_primero(r.ml, brand):
+    # Si ha escrito su marca, manda la suya. Si no, mandan los botes que se venden en su país,
+    # que es el mismo criterio con menos información: enseñar primero lo que puede tener en la
+    # mano (21-sep-2026).
+    filas = (
+        _suya_primero(r.ml, brand)
+        if brand is not None
+        else _del_pais_primero(r.ml, country_forms or [])
+    )
+    for pname, millilitres in filas:
         etiqueta = presentation_label(pname, lang)
         if brand and _misma_concentracion(pname, brand):
             # con el nombre de su caja delante: ocho líneas de mililitros parecidos es donde se

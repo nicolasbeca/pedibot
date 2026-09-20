@@ -92,3 +92,64 @@ def test_el_motor_le_pasa_la_marca() -> None:
     clave, marca = brand_in_query("how much emzor syrup for a 10 kg baby?", catalogo)
     assert clave == "paracetamol" and marca.name == "Emzor Paracetamol"
     assert brand_in_query("how much paracetamol for 10 kg?", catalogo) is None
+
+
+# ── y si no dice la marca, pero sabemos el país ──────────────────────────────────────────────
+
+
+@pytest.mark.parametrize(
+    ("pais", "primera"),
+    [
+        # en el Magreb sólo se vende Doliprane, que es el 2,4 %: una línea de ocho
+        ("MA", "120 mg/5 ml"),
+        ("DZ", "120 mg/5 ml"),
+        ("TN", "120 mg/5 ml"),
+    ],
+)
+def test_el_bote_que_se_vende_en_su_pais_va_delante(pais: str, primera: str) -> None:
+    """El sitio ya sabe el país: está en el desplegable y viaja en cada pregunta.
+
+    No es un dato nuevo: es la tabla de marcas del revés. Cada marca dice en qué países se vende
+    y con qué botes, así que agrupando por país sale qué hay en la estantería de allí.
+    """
+    from pedibot.bot.dose import bottles_in_country
+
+    catalogo = DrugCatalog(ROOT / "config" / "drugs.yaml")
+    formas = bottles_in_country(catalogo, "paracetamol", pais)
+    assert formas, f"{pais} debería tener alguna marca conocida"
+    texto = format_result(calculate("paracetamol", 10, 24), "en", country_forms=formas)
+    fila = next(line for line in texto.split("\n") if line.strip().startswith("–"))
+    assert primera.replace(" ", "") in fila.replace(" ", ""), fila
+
+
+def test_un_pais_sin_marcas_no_cambia_el_orden() -> None:
+    """Etiopía todavía no tiene ninguna, y eso tiene que dejar la lista como estaba."""
+    from pedibot.bot.dose import bottles_in_country
+
+    catalogo = DrugCatalog(ROOT / "config" / "drugs.yaml")
+    assert bottles_in_country(catalogo, "paracetamol", "ET") == []
+    con = format_result(calculate("paracetamol", 10, 24), "en", country_forms=[])
+    sin = format_result(calculate("paracetamol", 10, 24), "en")
+    assert con == sin
+
+
+def test_ninguna_presentacion_desaparece_por_el_reordenado() -> None:
+    """Se cambia el orden, nunca la lista: en un país se vende más de un bote y el padre puede
+    tener uno traído de fuera."""
+    from pedibot.bot.dose import bottles_in_country
+
+    catalogo = DrugCatalog(ROOT / "config" / "drugs.yaml")
+    formas = bottles_in_country(catalogo, "paracetamol", "MA")
+    con = [
+        x
+        for x in format_result(calculate("paracetamol", 10, 24), "en", country_forms=formas).split(
+            "\n"
+        )
+        if x.strip().startswith("–")
+    ]
+    sin = [
+        x
+        for x in format_result(calculate("paracetamol", 10, 24), "en").split("\n")
+        if x.strip().startswith("–")
+    ]
+    assert sorted(con) == sorted(sin)
