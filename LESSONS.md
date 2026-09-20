@@ -1311,3 +1311,37 @@ Tres cosas que sacar de aquí:
 
 Y el patrón de todo el día otra vez: la prueba que usaba Etiopía como ejemplo de «país sin nada»
 dejó de valer. No se borró la aserción: se cambió el ejemplo a Burundi y se escribió por qué.
+
+## L216 · El arreglo abrió un agujero peor que el que cerraba (20-sep-2026)
+
+Media hora después de añadir las gotas etíopes de 100 mg/5 ml, comprobando la web viva —no el
+código— miré el orden de la tabla **sin país seleccionado** y ahí estaba:
+
+    – drops 100 mg/5 ml: 7.5 ml     ← la primera línea
+    – syrup 120 mg/5 ml: 6.2 ml
+    ...
+    – drops 100 mg/ml: 1.5 ml
+
+Un padre en España con Apiretal —gotas de 100 mg/**ml**— que no hubiera elegido país veía
+«drops» en la primera línea, le daba 7,5 ml, y eran **750 mg en vez de 150**. Cinco veces de más,
+y esta vez en la dirección mala: sobredosis, no defecto.
+
+El arreglo que acababa de cerrar un riesgo de cinco veces en Etiopía abría otro de cinco veces
+en todos los países que no eligen país. La causa es tonta y por eso es peligrosa: la tabla estaba
+ordenada de menos a más concentrada, y la etíope es la más diluida de todas, así que se puso
+arriba sola.
+
+**Lo que hay que sacar de aquí, y es lo importante:**
+
+1. **Un cambio de seguridad no termina cuando pasa la suite.** Todas mis pruebas nuevas pasaban.
+   Lo que falló no era una aserción, era el orden, que ninguna miraba. Lo encontré mirando la
+   salida como la mira un padre.
+2. **Al tocar una tabla de dosis, hay que mirar quién ve qué DESPUÉS**, no sólo si lo nuevo está.
+   Añadir una fila cambia la primera línea que lee todo el mundo.
+3. Y el arreglo bueno no fue mover una fila: fue **agrupar por forma farmacéutica**. Ahora las
+   tres presentaciones de gotas van seguidas, así que quien busca «gotas» las ve juntas y tiene
+   que leer la concentración para elegir. Se le obliga a la comparación en vez de confiar en
+   que la haga.
+
+Con dos pruebas que lo sujetan: la tabla no puede abrir con unas gotas, y las gotas tienen que ir
+seguidas.

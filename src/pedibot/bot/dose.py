@@ -79,18 +79,21 @@ PARACETAMOL = Drug(
     max_daily_mg=4000,
     min_age_months=0,
     min_weight_kg=0,
-    # Todas las del catálogo, de la más diluida a la más concentrada. Hasta el 7-sep-2026 el chat
-    # solo conocía tres de las siete: quien tuviera gotas de 200 mg/ml —la presentación brasileña,
-    # que está en el catálogo y tiene su página en la web— no veía su bote, y si cogía por error
-    # la línea de las de 100 mg/ml se pasaba al doble.
+    # Los JARABES primero y las GOTAS después, y dentro de cada grupo de la más diluida a la más
+    # concentrada. Hasta el 7-sep-2026 el chat solo conocía tres de las siete: quien tuviera
+    # gotas de 200 mg/ml —la presentación brasileña, que está en el catálogo y tiene su página en
+    # la web— no veía su bote, y si cogía por error la línea de las de 100 mg/ml se pasaba al
+    # doble.
+    #
+    # **Por qué agrupadas por forma y no sólo por concentración (20-sep-2026).** Al añadir las
+    # gotas etíopes de 100 mg/5 ml, el orden puramente ascendente las ponía LAS PRIMERAS de la
+    # tabla, y ahí aparecía un riesgo nuevo mirando la web viva: un padre en España con Apiretal
+    # —gotas de 100 mg/**ml**— que no hubiera elegido país veía «gotas» en la primera línea, le
+    # daba los 7,5 ml de esa fila y eran 750 mg en vez de 150. **Cinco veces de más, y en la
+    # dirección mala.** Agrupadas, las tres presentaciones de gotas quedan seguidas: quien busca
+    # «gotas» las ve juntas y tiene que leer la concentración para elegir, que es exactamente lo
+    # que hay que obligarle a hacer.
     presentations=(
-        # 100 mg/5 ml son las GOTAS de Etiopía, según la lista de medicamentos sin receta de su
-        # regulador (EFDA), y faltaban. Probablemente sea la fila más importante de esta tabla
-        # por lo que evita: las gotas de más abajo son 100 mg/**ml**, cinco veces más
-        # concentradas, y un padre en Adís Abeba con su bote en la mano leía «gotas», encontraba
-        # «gotas 100 mg/ml» y le daba cinco veces la dosis. La etiqueta lleva la concentración
-        # entera justo para que las dos no puedan confundirse leyéndolas (20-sep-2026).
-        Presentation("gotas 100 mg/5 ml", 20.0),
         Presentation("jarabe 120 mg/5 ml", 24.0),
         # 125 mg/5 ml es el jarabe infantil estándar de India (Crocin, Dolo, Metacin,
         # Pyrigesic) y de Egipto (Cetal). Faltaba: un padre indio no podía elegir su bote,
@@ -100,6 +103,11 @@ PARACETAMOL = Drug(
         Presentation("jarabe 160 mg/5 ml", 32.0),
         Presentation("jarabe 200 mg/5 ml (4 %)", 40.0),
         Presentation("jarabe 250 mg/5 ml", 50.0),
+        # Y las gotas, las tres seguidas. La primera son las de Etiopía, según la lista de
+        # medicamentos sin receta de su regulador (EFDA), y faltaban: sin ellas, un padre de
+        # Adís Abeba cogía la de 100 mg/ml y le daba cinco veces la dosis. La etiqueta lleva la
+        # concentración entera justo para que las tres no puedan confundirse leyéndolas.
+        Presentation("gotas 100 mg/5 ml", 20.0),
         Presentation("gotas 100 mg/ml", 100.0),
         Presentation("gotas 200 mg/ml", 200.0),
     ),

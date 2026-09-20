@@ -155,3 +155,39 @@ def test_ninguna_concentracion_esta_dos_veces() -> None:
     for key in ("paracetamol", "ibuprofeno"):
         fuerzas = [p.mg_per_ml for p in DRUGS[key].presentations]
         assert len(fuerzas) == len(set(fuerzas)), f"{key}: {fuerzas}"
+
+
+def test_las_gotas_van_juntas_y_no_abren_la_tabla() -> None:
+    """La corrección de mi propio fallo, media hora después y mirando la web viva.
+
+    Al añadir las gotas etíopes, el orden puramente ascendente las puso LAS PRIMERAS. Y ahí
+    aparecía un riesgo nuevo, peor que el que venía a arreglar: un padre en España con Apiretal
+    —gotas de 100 mg/**ml**— que no hubiera elegido país veía «gotas» en la primera línea, le
+    daba los 7,5 ml de esa fila, y eran 750 mg en vez de 150. Cinco veces de más, y esta vez en
+    la dirección mala.
+
+    Agrupadas por forma, las tres presentaciones de gotas quedan seguidas: quien busca «gotas»
+    las ve juntas y tiene que leer la concentración para elegir, que es lo que hay que obligarle
+    a hacer.
+    """
+    for key in ("paracetamol", "ibuprofeno"):
+        nombres = [p.name for p in DRUGS[key].presentations]
+        assert not nombres[0].startswith("gotas"), (
+            f"{key}: la tabla no puede abrir con unas gotas; la primera línea es la que se lee "
+            f"sin leer. {nombres}"
+        )
+        indices = [i for i, n in enumerate(nombres) if n.startswith("gotas")]
+        if len(indices) > 1:
+            assert indices == list(range(indices[0], indices[0] + len(indices))), (
+                f"{key}: las gotas tienen que ir seguidas para que se comparen. {nombres}"
+            )
+
+
+def test_dentro_de_cada_forma_van_de_menos_a_mas_concentrada() -> None:
+    """Agrupar no puede servir de excusa para desordenar: dentro del grupo, ascendente."""
+    for key in ("paracetamol", "ibuprofeno"):
+        grupos: dict[str, list[float]] = {}
+        for p in DRUGS[key].presentations:
+            grupos.setdefault(p.name.split(" ")[0], []).append(p.mg_per_ml)
+        for forma, fuerzas in grupos.items():
+            assert fuerzas == sorted(fuerzas), f"{key} / {forma}: {fuerzas}"
