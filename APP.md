@@ -529,3 +529,57 @@ sitio aunque la app tardara en llegar.
 
 Lo único que hace falta de ti para que arranque el reloj es abrir la cuenta de Google Play y
 juntar doce probadores. Todo lo demás se puede ir construyendo mientras.
+
+---
+
+## La decisión del 21-sep-2026: la app de Android no va todavía, y por qué
+
+El operador: *«creo que lo siguiente gordo es la app de Android. Si es que no queda nada
+mejorable en la web. Dime tú»*. Lo medí antes de opinar, y la respuesta es que no.
+
+**Las cifras de lo vivo, sacadas ese día de `/api/stats` y de Search Console:**
+
+| | |
+|---|---:|
+| personas que han entrado desde el 25 de agosto | 341 |
+| preguntas contestadas en los últimos 7 días | **4** |
+| preguntas contestadas en toda la vida del chat | **9** |
+| impresiones en Google, 28 días | 1.837 |
+| clics en Google, 28 días | **3** |
+
+Y las diez páginas más leídas son el menú: portada, vacunas, emergencias, **aviso legal**,
+fuentes, apoyo, dosis, guías. Ninguna guía concreta aparece. Ése no es el perfil de padres
+usándola: es el de gente mirando el sitio por encima.
+
+**Por qué una app no arregla nada de eso:**
+
+1. **Sería una segunda puerta a una tienda que nadie ha encontrado.** Al Play Store no llega
+   nadie buscando una app de salud desconocida; el descubrimiento orgánico ahí es prácticamente
+   cero.
+2. **Una URL se pega en un comentario, en un grupo de WhatsApp o en un resultado de Google. Una
+   app no.** Y todo el tráfico que hoy existe viene de Google.
+3. **La web ya es una app instalable**, y eso está comprobado: `manifest.webmanifest` en modo
+   `standalone`, iconos, `sw.js` y funcionamiento sin cobertura. Se añade a la pantalla de inicio
+   y se abre como una aplicación. La parte de «app» que de verdad le sirve a una madre en Kano ya
+   está hecha. Lo que la tienda añade encima es una ficha, y una ficha sin descargas no la ve
+   nadie.
+4. **Y el coste no es sólo de dinero:** 25 $ de la cuenta, política de privacidad, formulario de
+   seguridad de datos, y las normas de Google para aplicaciones de salud, que con algo que valora
+   síntomas son exigentes. Es semanas de trabajo que no traen un solo usuario.
+
+**Lo que sí es lo siguiente, en orden:**
+
+1. **Que exista para alguien.** El Show HN lleva escrito desde el 6 de septiembre sin mandarse, y
+   es lo más barato y lo que más tráfico puede traer de golpe. Luego los blogs de pediatría.
+2. **La medición clínica contra pediatras.** Desbloquea la compra pública andaluza, el
+   licenciamiento y todas las solicitudes de financiación.
+3. **Enlaces entrantes.** Las páginas de dosis están bien hechas y en la posición 80 porque el
+   dominio es nuevo y nadie lo enlaza (`ops/INDEXAR.md`, medición del 21-sep).
+
+**Cuándo se revisa esta decisión, y con qué número, para no discutirlo de oído otra vez:** el día
+que la web pase de **cien preguntas a la semana** o de **mil visitantes al mes**. Con eso hay
+gente a la que ofrecerle una app, y la ficha del Play Store deja de ser un escaparate vacío.
+
+**Y lo que del plan de esta página sí sigue vivo:** todo lo de funcionamiento sin cobertura, el
+tamaño de los ficheros y la cartilla de vacunación. Eso no era trabajo de app, era trabajo de
+web, y ya está hecho y sirviendo.

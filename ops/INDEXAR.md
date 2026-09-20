@@ -116,3 +116,51 @@ con 780 páginas de las que solo 45 han salido alguna vez, existir es el primer 
 
 Bing, Yandex, Seznam y Naver no necesitan nada de esto: `ops/indexnow.py` les avisa solo cada
 mañana. Google es el único que exige la sesión del operador.
+
+---
+
+## Medido el 21-sep-2026, contra Search Console, y cambia la conclusión
+
+Preguntado a Google directamente con la clave del proyecto, ventana de 28 días hasta el 17 de
+septiembre, y comparado con la medición anterior (28 días hasta el 5 de septiembre):
+
+| | 5-sep | 17-sep |
+|---|---:|---:|
+| impresiones | 392 | **1.837** |
+| posición media | 74,3 | **65,6** |
+| clics | 3 | 3 |
+
+**La indexación no es el problema.** Las impresiones se han multiplicado casi por cinco en doce
+días y la posición media ha subido nueve puestos, sin pedir nada a mano. El anillo de enlaces
+internos del 9-sep y el tiempo están haciendo su trabajo solos.
+
+**Lo que sí dice este dato, y es lo importante:** Google ya sabe qué es esta web y a quién
+enseñársela. Lo que busca la gente que la ve es **dosis por marca**, y con diferencia:
+
+| página | impresiones | posición |
+|---|---:|---:|
+| `/dose/nurofen` | 207 | 52,9 |
+| `/es/dose/apiretal` | 152 | 78,0 |
+| `/es/dose/dalsy` | 131 | 81,2 |
+| `/dose/panadol` | 55 | 54,8 |
+| `/fr/dose/doliprane` | 34 | 70,2 |
+| `/de/dose/calpol` | 26 | **10,2** |
+
+Y las consultas son exactamente eso: «calculadora apiretal», «calculadora dalsy», «dosis
+ibuprofeno niños», «calpol dosage», «doliprane posologie», «dosage paracétamol par kg», «advil
+dosage». Ni una sola consulta de chat, ni una sola de triaje. **Los padres buscan cuánto darle a
+su hijo, y eso es justo lo que la web calcula con una tabla fija y la fuente delante.**
+
+**Por qué están en la página 5 u 8 y no es por calidad.** Miré `/es/dose/dalsy` entera: 1.050
+palabras, título y descripción correctos, seis preguntas que coinciden con lo que la gente
+escribe, la tabla completa de 5 a 40 kg por concentración, y la AEPap citada. La página está
+bien. Está en la posición 81 porque **el dominio tiene tres semanas y ningún enlace entrante**, y
+compite contra el fabricante, los vademécums y los portales grandes. Eso no se arregla
+escribiendo más: se arregla con tiempo y con que alguien enlace.
+
+O sea que el cuello de botella **no está en la web**. Está en que nadie la enlaza todavía.
+
+**Lo único con una acción clara aquí:** `/de/dose/calpol` está en la posición 10,2 para «calpol
+deutsch», a un puesto de la primera página, y es lo más cerca que ha estado esto de tener sus
+primeros clics de verdad. No es el gran salto —son 22 impresiones al mes—, pero es la única
+página que está a un empujón.
