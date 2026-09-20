@@ -610,3 +610,69 @@ viejas hasta que se sincronice a mano.
 - **El panel cuenta las cuentas**, que es lo que pidió: cuentas, hijos apuntados y medidas. Lee la otra base en sólo lectura y **sólo `COUNT(*)`**: el panel enseña números, nunca un correo ni el nombre de un niño. Con prueba que lo fija.
 - **La frase que faltaba**, antes de MetaDAO: «ningún padre debería quedarse sin una respuesta pediátrica por no poder pagarla, por vivir lejos de un centro de salud o porque allí nadie habla su idioma». En los ocho idiomas, debajo del título de «por qué existe esto». Nombra los tres motivos reales y los tres se comprueban en la misma página.
 - Suite **8.876**.
+
+## 20-sep-2026 · el día de las dosis: dos riesgos del quíntuple, y el mapa de financiación reescrito
+
+Día largo. Lo agrupo por lo que importa, no por el orden en que pasó.
+
+### Lo que puede hacer daño, que es lo primero
+
+- **Las gotas de Etiopía.** Buscando marcas para los 23 países africanos sin ninguna, el registro
+  de su regulador (EFDA) no da marcas: da concentraciones. Y las gotas de paracetamol allí son
+  **100 mg/5 ml**, mientras que en España, Portugal o la India son **100 mg/ml**, cinco veces más
+  concentradas. La calculadora sólo tenía la segunda. Un padre en Adís Abeba leía «gotas» en su
+  bote, encontraba «gotas 100 mg/ml» y **se quedaba corto por cinco**.
+- **Y el arreglo abrió uno peor.** La fila nueva era la más diluida de la tabla, que iba ordenada
+  por concentración, así que se puso la primera. Un padre en España sin país elegido veía «drops»
+  arriba del todo y **se pasaba por cinco**. Lo encontré mirando la web como la mira un padre,
+  con las 9.538 pruebas en verde. Arreglado agrupando por forma: jarabes, luego gotas, y las tres
+  de gotas seguidas para obligar a comparar (L216).
+- **Y mi propio valor por defecto era el tercero.** El campo nuevo donde el padre escribe su
+  concentración traía «mg por 5 ml» preseleccionado. Un padre con Apiretal escribe 100, no toca
+  el desplegable **porque ya viene puesto**, y se pasa por cinco. Ahora arranca vacío y sin
+  elegir no se enseña ninguna cifra (L217).
+
+### Lo que cambia el problema de raíz
+
+- **El padre puede escribir lo que pone su bote.** Un estudio de 2025 cuenta **28 formulaciones
+  distintas de paracetamol** en las listas nacionales del mundo; nosotros teníamos nueve.
+  Perseguir países es una carrera perdida. Ahora su fila sale la primera y destacada, los
+  miligramos los sigue calculando el servidor desde el peso, y fuera de 5–250 mg/ml no se da
+  ninguna cifra. En las ocho lenguas.
+- **Cinco países leídos a ojo**: Etiopía, Ruanda, Mozambique, el Congo y Madagascar a medias,
+  cada uno con la frase exacta anotada. El ibuprofeno del Congo es **200 mg/5 ml**, el doble de
+  lo habitual. El paracetamol de Madagascar **no entra**: su lista dice «125 mg/ml» y no se puede
+  saber si es real o una errata, y las dos posibilidades piden lo contrario.
+- **Nueve países más con curva de crecimiento** —Pakistán, Sudán, Irak, Afganistán, Marruecos,
+  Yemen, Túnez, Omán y Palestina—, con las páginas de la OMS sobre implantación del IMCI leídas
+  una a una. De 69 a **78**, y África de 49 a **52 de 54**.
+- **El zinc.** Donde la guía de la OMS es la norma nacional —72 países de renta baja o media-baja
+  según el Banco Mundial— sus palabras compiten por entrar en los pasajes aunque el padre
+  describa un síntoma. Comprobado en vivo: Kenia, Nigeria e India lo dicen; España no.
+
+### Lo que dejó de escribirse a mano
+
+- **`DATOS.md` + `scripts/check_docs.py` + su prueba.** Se midieron **107 cifras escritas a mano**
+  en los `.md` que ya no eran verdad. El candado ha cazado cinco desfases reales en un día,
+  incluido el memo construido y el catálogo del agente. Y ha gritado **tres veces con frases
+  correctas**, afinado cada vez.
+- **Y 57 fechas mías mal puestas**: fechaba todo como 21-sep siendo 20, en 26 ficheros, mientras
+  el fichero generado tenía la fecha bien al lado (L211).
+
+### Financiación y difusión, con dos decisiones suyas
+
+- **Fuera Hacker News**: «no es nuestro público». En su lugar **CHIFA**, el foro de salud infantil
+  de HIFA: 3.600 miembros en 140 países, padres y sanitarios de países en desarrollo. El correo
+  está escrito entero en `ops/SHOW_HN.md`.
+- **Fuera Andalucía entera**: «no soy ni empresa ni autónomo ni pretendo serlo». Las siete
+  convocatorias piden eso, ninguna se cae por el proyecto. `ops/ANDALUCIA.md` pasa a ser una
+  lista que se reactiva sola el día que haya entidad.
+- **Lo que queda en pie** admite a una persona sin nada detrás: Emergent Ventures (borrador
+  escrito), Awesome Foundation, CHIFA, el bien público digital y MetaDAO, ya enviada.
+
+### Lo pendiente de él, y son dos cosas
+
+1. **Mandar el correo a CHIFA.** Escrito y listo para pegar.
+2. **Esperar a MetaDAO hasta el viernes 2 de octubre.**
+
+Suite **9.561**. Sitio **2.885 páginas**.
