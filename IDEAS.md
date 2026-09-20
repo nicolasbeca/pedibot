@@ -493,3 +493,22 @@ aflojar:
 OMS responda, y con cada una que abra, añadir ese país con su URL como `source` y `match:
 partial`, igual que los 47. Por orden de a cuánta gente afecta: Pakistán, Bangladesh, Marruecos,
 Sudán. Argelia y Libia se quedan fuera hasta que aparezca algo que las nombre.
+
+**Comprobado contra lo vivo el 20-sep-2026, después del segundo despliegue**, que es lo único
+que cuenta. Misma pregunta —«my baby is 7 months and has watery diarrhoea since yesterday»— en
+cuatro países:
+
+| país | ¿dice el zinc? | fuentes |
+|---|---|---|
+| Kenia | **sí** | SEUP + OMS «Prevention and treatment» + OMS «Overview» |
+| Nigeria | **sí** | las mismas |
+| India | **sí** | las mismas |
+| España | no | MedlinePlus + SEUP |
+
+Y lo que hacía falta comprobar además de que saliera: que **no se colara una dosis**. No se cuela.
+Lo que dice es «shorten the episode by about 25% and reduce stool volume by about 30%», que son
+las dos cifras de eficacia del propio pasaje de la OMS, literales, no una pauta. Cantidad y
+duración siguen sin aparecer, que es como tiene que ser.
+
+Control, porque un cambio que mejora una cosa y rompe otra no es una mejora: estreñimiento en
+Kenia sigue contestando con la SEUP y sin una palabra de zinc.
