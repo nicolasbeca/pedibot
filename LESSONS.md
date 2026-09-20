@@ -956,3 +956,33 @@ De regalo, un problema que llevaba escondido desde el principio: Python no sabí
 sostenía. Node sí lo sabe, con `Intl`, y es **la misma fuente con la que la web pinta sus
 desplegables**: ahora los dos lados dicen el mismo nombre por construcción, generado y no
 escrito a mano, que son noventa países por nueve lenguas.
+
+## L203 · Un padre no dice «percentil». Dice «¿está bien?» (20-sep-2026)
+
+Probando el sitio vivo con Kenia elegido:
+
+    my son is 18 months and weighs 8 kg, is that ok?
+    → «I can't tell from your son's weight alone whether it's okay…»
+
+Ocho kilos a los dieciocho meses está **por debajo del percentil 3**, y la tabla de la OMS que lo
+dice estaba en el mismo servidor, en el mismo proceso. Lo mismo en hindi con una niña de ocho
+meses y seis kilos, y en árabe con una de un año y siete. Tres madres de tres continentes
+preguntando lo mismo y recibiendo las tres un «no puedo saberlo».
+
+Lo que fallaba **no era el lector**: sacaba el sexo y el peso de las tres frases, en tres
+alfabetos. Fallaba la PUERTA, que pedía la palabra «percentil» o las dos medidas en el mismo
+mensaje. Y la puerta se escribió mirando cómo pregunta alguien que ya sabe lo que quiere.
+
+La regla, que vale para todas las herramientas: **una condición de entrada escrita desde dentro
+sólo deja pasar a quien ya habla como el sistema.** Las dos medidas juntas son una forma de
+preguntar; la otra, la que usa todo el mundo, es un número y «¿está bien?».
+
+Y detrás de la puerta apareció el segundo agujero, que sólo se ve cuando la abres: el lector
+conocía los sustantivos —hija, daughter, बेटी, ابنتي— y no los pronombres. «She weighs 6 kg»
+entraba y se quedaba sin sexo, o sea sin curva. El pronombre se mira ahora en último lugar y
+nunca discute con un sustantivo: un «ella» puede ser la madre, y mientras haya una palabra mejor
+no tiene por qué mandar.
+
+Queda escrito lo que no se arregló: el suajili dice «uzito wa kilo 8», con la unidad delante, y
+el lector espera el número primero. Está en una prueba que **falla el día que se arregle**, para
+que alguien venga a quitarla.

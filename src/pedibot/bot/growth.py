@@ -253,6 +253,40 @@ def is_growth_question(text: str) -> bool:
     return bool(_GROWTH.search(text))
 
 
+#: «¿Está bien?», «is that ok?», «هل هذا طبيعي؟», «क्या यह ठीक है?». Lo que un padre escribe
+#: detrás de un número cuando lo que quiere saber es si ese número es normal. Va junto al peso o
+#: a la talla, nunca solo: sin medida no hay nada que mirar en la tabla.
+_ESTA_BIEN = re.compile(
+    r"(?:is|are)\s+(?:that|this|it|he|she|they)?\s*(?:ok|okay|fine|normal|healthy|right|alright)"
+    r"|\bis\s+(?:that|this|it)\s+enough|\btoo\s+(?:little|low|small|light|thin)"
+    r"|est[áa]\s+bien|es\s+normal|es\s+poco|es\s+adecuado|est[áa]\s+correcto|ser[áa]\s+normal"
+    r"|c'?est\s+(?:normal|bien|correct)|est-ce\s+normal|est-ce\s+que\s+c'?est\s+normal"
+    r"|ist\s+das\s+(?:normal|in\s+ordnung|richtig|okay|ok)|normalgewicht"
+    r"|это\s+нормально|в\s+норме|нормально\s+ли|мало\s+ли"
+    r"|هل\s+هذا\s+(?:طبيعي|عادي|جيد)|هل\s+هو\s+طبيعي|هل\s+وزنها\s+طبيعي|هل\s+وزنه\s+طبيعي"
+    r"|isso\s+[ée]\s+normal|est[áa]\s+bem|[ée]\s+normal"
+    r"|यह\s+ठीक\s+है|क्या\s+यह\s+सही\s+है|सामान्य\s+है|ठीक\s+है\s+क्या"
+    r"|ni\s+sawa|ni\s+kawaida",
+    re.I,
+)
+
+
+def asks_if_a_measure_is_normal(text: str) -> bool:
+    """Una medida y la pregunta de si está bien. Eso es un percentil aunque no diga la palabra.
+
+    20-sep-2026, probando el sitio vivo: «my son is 18 months and weighs 8 kg, is that ok?» con
+    Kenia elegido devolvía «no puedo saberlo con el peso solo». Ocho kilos a los dieciocho meses
+    está por debajo del percentil 3 y la tabla estaba en el mismo servidor.
+
+    Hace falta la medida: sin ella no hay fila que mirar, y «¿está bien?» a secas puede ser
+    cualquier cosa.
+    """
+    _, kg, cm = measurements(text)
+    if kg is None and cm is None:
+        return False
+    return bool(_ESTA_BIEN.search(text or ""))
+
+
 def gives_both_measurements(text: str) -> bool:
     """El peso Y la talla en el mismo mensaje: eso es una pregunta de crecimiento aunque no
     lleve la palabra.
@@ -542,14 +576,33 @@ HEIGHT_M = re.compile(
 #: niño. Palabras enteras, con prefijo donde la lengua declina («дочь/дочка», «बेटी/बेटे»).
 _FEMALE = re.compile(
     r"\b(?:ni[ñn]a|nena|hija|chica|muchacha|girl|daughter|fille|m[äa]dchen|tochter"
-    r"|menina|filha|garota)\b|дочь|доч[кеи]\w*|девочк\w*|بنتي|ابنتي|طفلتي|بنت"
+    r"|menina|filha|garota|binti)\b|дочь|доч[кеи]\w*|девочк\w*|بنتي|ابنتي|طفلتي|بنت"
     r"|बेटी|लड़की|बच्ची",
     re.I,
 )
 _MALE = re.compile(
-    r"\b(?:ni[ñn]o|nene|hijo|chico|muchacho|var[óo]n|boy|son|gar[çc]on|junge|sohn"
+    # «fils» faltaba, que es la palabra que usa un padre francés; «garçon» estaba y es la que
+    # usa un desconocido. Lo vio la prueba de «mon fils pèse 8 kg» (20-sep-2026).
+    r"\b(?:ni[ñn]o|nene|hijo|chico|muchacho|var[óo]n|boy|son|fils|gar[çc]on|junge|sohn"
     r"|menino|filho|garoto)\b|сын\w*|мальчик\w*|ابني|ولدي|طفلي|ولد"
     r"|बेटा|बेटे|लड़का|बच्चा",
+    re.I,
+)
+
+#: El pronombre, que es el ÚLTIMO recurso y nunca discute con un sustantivo.
+#:
+#: 20-sep-2026: «she weighs 6 kg at 8 months, is that normal?» abría la curva y se quedaba sin
+#: sexo, o sea sin curva. Un padre nombra al hijo una vez y sigue con «él» o «ella», y en un
+#: mensaje suelto eso es todo lo que hay.
+#:
+#: Se mira sólo si no hubo sustantivo porque un «ella» puede ser la madre; mientras exista una
+#: palabra mejor, el pronombre no tiene ocasión de mandar.
+_FEMALE_PRON = re.compile(
+    r"\b(?:she|her|ella|elle|sie\b|ela)\b|\bона\b|\bوزنها\b|\bطولها\b|\bعمرها\b|उसकी",
+    re.I,
+)
+_MALE_PRON = re.compile(
+    r"\b(?:he|him|his|[ée]l|il\b|er\b|ele)\b|\bон\b|\bوزنه\b|\bطوله\b|\bعمره\b|उसका",
     re.I,
 )
 
@@ -565,6 +618,9 @@ def measurements(text: str) -> tuple[str | None, float | None, float | None]:
     semanas y años, y es la misma que usan las dosis."""
     t = text.translate(DIGITS)
     female, male = _FEMALE.search(t), _MALE.search(t)
+    if not female and not male:
+        # nadie ha dicho hija ni hijo: se mira el pronombre, que es el último recurso
+        female, male = _FEMALE_PRON.search(t), _MALE_PRON.search(t)
     sex = None
     if female and not male:
         sex = "f"

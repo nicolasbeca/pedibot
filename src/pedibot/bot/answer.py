@@ -17,6 +17,7 @@ from pedibot.bot.emergency_question import (
 )
 from pedibot.bot.growth import (
     Growth,
+    asks_if_a_measure_is_normal,
     explain,
     gives_both_measurements,
     is_growth_question,
@@ -1051,7 +1052,15 @@ class Engine:
         if (
             self.growth is not None
             and tr.level == "routine"
-            and (is_growth_question(context_text) or gives_both_measurements(query))
+            and (
+                is_growth_question(context_text)
+                or gives_both_measurements(query)
+                # 20-sep-2026: «pesa 8 kg, ¿está bien?» es esta pregunta, y es como se
+                # hace de verdad. La puerta pedía la palabra «percentil» o las dos
+                # medidas, y un keniano con un hijo de 18 meses y 8 kilos —por debajo
+                # del percentil 3— recibía «no puedo saberlo con el peso solo».
+                or asks_if_a_measure_is_normal(query)
+            )
         ):
             # **El peso y la talla salen de UN SOLO mensaje.** Leyendo la conversación entera se
             # cruzaban los datos de dos niños, y eso lo vi dos veces probando contra lo vivo: «mi
@@ -1212,7 +1221,11 @@ class Engine:
             tool = tool_link("dose", lang)
         # «está muy delgado y no gana peso», «¿qué percentil tiene?»: la curva de la OMS,
         # calculada, contesta mejor que la prosa (13-sep-2026)
-        elif is_growth_question(context_text) or gives_both_measurements(context_text):
+        elif (
+            is_growth_question(context_text)
+            or gives_both_measurements(context_text)
+            or asks_if_a_measure_is_normal(context_text)
+        ):
             tool = tool_link("growth", lang, country or country_in_question(context_text))
         text = result.text.strip()
         if ask_age:
