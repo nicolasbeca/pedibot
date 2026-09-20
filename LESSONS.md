@@ -1042,3 +1042,30 @@ absurdo y además ocuparía el sitio de la respuesta que necesita.
 De propina, el `\b` que no existe detrás del devanagari, que ya estaba anotado en `triage.py` y
 volvió a aparecer aquí: «सेमी» acaba en una marca combinante y no hay transición que detectar.
 `(?!\w)` sí funciona, porque mira el carácter siguiente en vez de buscar un borde.
+
+## L206 · Antes de recomendar pagar, mirar si eso ha servido para alguien (21-sep-2026)
+
+Escribí el plan entero de Backable —mecánica verificada, seis capítulos, una cifra recomendada
+de 262.500 $— **sin comprobar si en esa plataforma se había financiado algo alguna vez**. Lo
+preguntó el operador antes de gastar quince dólares: «¿hay proyectos recaudando ahí o es una web
+muerta para sacar quince dólares al que se queda insatisfecho?».
+
+Mirado, la respuesta tiene dos mitades y sólo la primera es la que uno espera:
+
+- **No es una web muerta**: once empresas financiadas, 698.000 $ entre las nueve que enseña.
+- **Pero es todo o nada, y su techo histórico son 200.000 $.** Con eso, la cifra que yo había
+  recomendado era la forma más segura de acabar en cero, con una página pública de ronda fallida
+  y los quince dólares gastados.
+
+Lo que enseña no es «comprobar más». Es **qué se comprueba primero**. Yo empecé por la mecánica
+—cómo funciona el reparto, el desbloqueo, la entidad legal— que es lo interesante, y dejé para
+el final lo aburrido: si ahí entra dinero y cuánto. El orden correcto es el contrario, y vale
+para cualquier sitio donde haya que pagar o registrarse:
+
+1. ¿ha funcionado para alguien, y de qué tamaño?
+2. ¿cuál es el techo observado?
+3. ¿cómo se liquida: todo o nada, o lo que haya?
+4. ¿quién está al otro lado?
+
+La mecánica sólo importa si las cuatro salen bien. Y los quince dólares no son el coste: el
+coste es el tiempo preparándolo y el golpe de fallar en público.

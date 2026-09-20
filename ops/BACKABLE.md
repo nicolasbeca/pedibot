@@ -68,6 +68,61 @@ idea no se copió del formulario.
 
 ---
 
+## ¿Está vivo? Lo que ha financiado de verdad (mirado el 21-sep-2026)
+
+**No es una web muerta.** Once empresas financiadas, con el dinero movido y las rondas
+cerradas. Las nueve que la plataforma enseña, por lo que recaudaron:
+
+    Jurassic Finance ...... 200.000 $   (FDV al lanzar: 516.000)
+    ordr.trade ............ 150.000 $   (387.000)
+    HiveBits .............. 140.000 $   (180.600)
+    Kimia .................. 60.000 $   (154.800)
+    Futardio cult .......... 50.000 $    (89.500)
+    Superclaw .............. 50.000 $    (74.500)
+    GeSIM .................. 28.000 $    (72.200)
+    ACCRUE ................. 10.000 $    (12.900)
+    LFOWN .................. 10.000 $    (12.900)
+
+Suman 698.000 $ entre las nueve, y hay dos más que no enseña. **Rondas abiertas ahora mismo:
+cero** —«No raises are open right now»—, que encaja con que las entradas estén pausadas.
+
+Y ahora las dos cosas que de verdad deciden:
+
+**1. Es todo o nada.** Si la ronda termina por debajo del objetivo, el fundador **no recibe
+nada** y cada uno reclama su dinero. Sus palabras: *«If it ends below that goal, your money is
+still yours: you come back to the raise page, press claim, and the escrow program releases it to
+your wallet in full»*. No hay «me llevo lo que haya».
+
+**2. El techo observado son 200.000 $.** La mayor ronda de la historia de la plataforma. La
+mediana anda por los 50.000.
+
+Las dos juntas cambian el plan: **pedir 262.500 $ ahí sería pedir más de lo que nunca ha
+salido, con liquidación de todo o nada.** El resultado más probable no es «recaudo menos»: es
+cero, más una página pública de ronda fallida, más los 15 $.
+
+Hay una tercera cosa, que no es del mecanismo y pesa igual: los nombres. Jurassic Finance,
+Futardio cult, Superclaw, HiveBits. El público de ahí son operadores de cripto, y una web de
+pediatría no tiene ninguna comunidad natural en esa sala. Eso no lo arregla un buen texto.
+
+---
+
+## Entonces, ¿cuánto se pide?
+
+La cifra se elige donde el dinero APARECE, no donde al plan le gustaría. Y la buena noticia es
+que hay una respuesta que no rebaja el proyecto:
+
+**Objetivo 75.000 $.** Deja 60.000 de tesorería —el 80 %— y eso compra exactamente la única
+cosa que este proyecto no puede conseguir con horas libres: **la revisión clínica por pediatras
+(40.000)** y el principio de la revisión por hablantes nativos (15.000), con 5.000 de margen.
+Está dentro del rango que esa plataforma ha financiado cuatro veces, y por debajo de su techo.
+
+Presupuesto mensual: 75.000 ÷ 6 = 12.500 de tope programado. Pidiendo 5.000 al mes, un año
+entero, y sobra. Un techo que uno se pone muy por debajo del que le dan se lee solo.
+
+Lo que **no** se hace: partir el plan de 210.000 en trozos para que quepa. Las otras partidas
+—el año de trabajo, la segunda persona, lo legal— siguen siendo verdad y siguen haciendo falta;
+lo que pasa es que esa sala no da para eso, y fingir lo contrario acaba en cero.
+
 ## Los números, y la cuenta que hay que hacer antes de nada
 
 El plan aprobado para MetaDAO son **210.000 $ de gasto**, 17.500 al mes durante un año, con siete
@@ -76,8 +131,9 @@ porque el 20 % se queda en liquidez: la tesorería serían 168.000, o sea 14.000
 
 Dos formas de resolverlo, y sólo una mantiene lo que ya está escrito y enviado:
 
-**A · Objetivo 262.500 $** (recomendada). El 80 % son los **210.000** de siempre, y el plan entra
-tal cual, con los mismos 17.500 al mes y los mismos doce meses. Los 52.500 restantes van a
+**A · Objetivo 262.500 $** (~~recomendada~~ **descartada el 21-sep-2026**, ver la sección de
+arriba: es más de lo que esa plataforma ha financiado nunca, y allí es todo o nada). El 80 %
+serían los **210.000** de siempre, y el plan entraría tal cual, con los mismos 17.500 al mes. Los 52.500 restantes van a
 liquidez, que no es dinero perdido: es lo que hace que quien puso dinero pueda salir. Se explica
 en una frase, y la frase es verdad: *«pido 262.500 porque una quinta parte no llega nunca a la
 empresa; el presupuesto de la compañía son los mismos 210.000 que tengo detallados».*
