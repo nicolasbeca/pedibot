@@ -29,10 +29,10 @@ The specific thing it does that general-purpose chatbots do not: **it knows wher
 A parent in Lagos and a parent in Madrid asking the same question get the same medicine but a
 different bottle, a different emergency number, and a different vaccine schedule, because those
 things genuinely differ. Today it carries the emergency number for 90 countries, 66 national
-vaccine schedules, 69 country growth charts, 83 red-flag rules and 507 guides, all cited. The
+vaccine schedules, 78 country growth charts, 83 red-flag rules and 507 guides, all cited. The
 catalogue of 497 source documents behind it is published under CC0 and can be downloaded whole.
 For Africa that means all 54 countries have their emergency number and their vaccine schedule,
-49 have their growth charts, and 31 have the paracetamol and ibuprofen brands that are actually
+52 have their growth charts, and 31 have the paracetamol and ibuprofen brands that are actually
 sold there, at the concentration printed on that country's bottle, so a parent can recognise the
 bottle in their hand rather than read a dose for a product they cannot buy.
 

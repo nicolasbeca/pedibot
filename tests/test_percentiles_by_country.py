@@ -131,13 +131,36 @@ def test_la_segunda_ronda_de_paises(paises: dict):
 
     Fuera, por no haber leído un documento oficial: Turquía, Italia, Marruecos, Túnez, Argelia,
     Líbano y los países del Golfo salvo Arabia Saudí.
+
+    **20-sep-2026: Marruecos, Túnez y Omán salen de esa lista, y conviene decir por qué, porque
+    aflojar un candado es la forma más fácil de estropear un proyecto.** No se han relajado los
+    criterios: se ha leído su fuente, que era lo que faltaba. La OMS publica en su oficina del
+    Mediterráneo Oriental una página por país con el historial de implantación del IMCI, y en las
+    tres consta el refrendo ministerial con fecha y la versión nacional adaptada de las guías
+    clínicas — Marruecos en marzo de 1997, Túnez en marzo de 2000, Omán en enero de 2001 dentro
+    de su Sexto Plan de Desarrollo Sanitario. Es la misma clase de evidencia que ya sostenía a
+    los 47 países subsaharianos de esta lista.
+
+    **Argelia y el Líbano siguen fuera, y los del Golfo salvo Arabia Saudí también**, porque su
+    página no existe en ese sitio y no aparecen en ninguna lista. Ésa es la parte del candado que
+    no se toca: lo que separa «lo he comprobado» de «me suena razonable».
     """
     assert {"CA", "CO", "CL", "AU", "IE", "NZ", "EG", "AR", "PE", "JO"} <= set(paises)
     assert all(paises[c]["match"] == "full" for c in ("CA", "CO", "CL", "AU"))
     assert paises["AU"]["calculator"] == "cdc"
     assert all(paises[c]["match"] == "partial" for c in ("IE", "NZ", "EG", "AR", "PE", "JO"))
-    for fuera in ("TR", "IT", "MA", "TN", "DZ", "LB", "AE", "QA", "KW", "BH", "OM"):
+    for fuera in ("TR", "IT", "DZ", "LB", "AE", "QA", "KW", "BH"):
         assert fuera not in paises, f"{fuera} sin fuente oficial leída"
+
+    # Y los que entraron el 20-sep-2026, con la condición que los deja entrar: que el enlace que
+    # se le enseña al padre sea la página de la OMS que se leyó, y que el `match` diga lo que esa
+    # página realmente documenta —la adopción, no la cobertura de hoy—.
+    for dentro in ("MA", "TN", "OM", "PK", "SD", "IQ", "AF", "YE", "PS"):
+        assert dentro in paises, f"{dentro} debería estar: su página de la OMS se leyó"
+        assert paises[dentro]["source"].startswith("https://www.emro.who.int/"), dentro
+        assert paises[dentro]["match"] == "partial", (
+            f"{dentro}: esa página documenta la adopción, no la cobertura de hoy"
+        )
 
 
 def test_cada_pais_dice_que_tabla_usa_y_de_donde_sale(paises: dict):

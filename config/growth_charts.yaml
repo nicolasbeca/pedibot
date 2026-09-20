@@ -13,6 +13,76 @@
 # Las tablas nacionales con derechos (UK90, IAP 2015, Saudí 2005, AFPA-CRESS/Inserm 2018,
 # Kromeyer-Hauschild 2001, Fundación Orbegozo 2011) se nombran y se enlazan, nunca se copian.
 countries:
+  # Los nueve de abajo se añadieron el 20-sep-2026 con la misma clase de fuente que los 47
+  # subsaharianos: la OMS publica una página por país con el historial de implantación del
+  # IMCI, y en cada una consta el refrendo ministerial y la versión adaptada de las guías
+  # clínicas de ese país. Se leyeron una por una. Documentan la ADOPCIÓN, con fechas que
+  # llegan hasta 2009, no la cobertura de hoy: por eso `partial`, que es lo que la página
+  # ya le dice al padre. Argelia y Libia no están porque su página no existe; Bangladesh
+  # tampoco, porque lo que hay viene de terceros y no de la OMS.
+  PK:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, Pakistan-adapted clinical guidelines (Urdu, 1999)"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-pakistan.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  AF:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, Afghanistan-adapted guidelines (Dari and Pashto)"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-afghanistan.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  YE:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, Yemen-adapted clinical guidelines"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-yemen.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  SD:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, Sudanese-adapted guidelines (English and Arabic)"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-sudan.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  IQ:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, Iraq-adapted clinical guidelines"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-iraq.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  MA:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, version marocaine adaptée des directives cliniques"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-morocco.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  TN:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, version tunisienne adaptée (PCIME)"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-tunisia.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  PS:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, Palestine-adapted clinical guidelines"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-palestine.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
+  OM:
+    calculator: who
+    match: partial
+    body: "WHO/UNICEF — IMCI, Oman (Sixth Health Development Plan, 2001-2005)"
+    source: "https://www.emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-oman.html"
+    charts:
+      - {name: "WHO Child Growth Standards (2006)", from_months: 0, to_months: 60, who_based: true}
   US:
     calculator: cdc
     match: full

@@ -257,7 +257,7 @@
       "name": "child_growth_percentile",
       "price": 0.01,
       "sla_minutes": 1,
-      "description": "Where a child sits on the growth charts, calculated exactly from the WHO LMS tables (Child Growth Standards 2006, Growth Reference 2007) and, for the United States and Australia after age 2, the CDC 2000 charts: weight, height, weight-for-height and BMI percentiles and z-scores, with the WHO cut-offs (wasting, stunting, overweight, thinness). Severe acute malnutrition is flagged as urgent. With a country, it says which chart that country's health record uses; 69 countries covered.",
+      "description": "Where a child sits on the growth charts, calculated exactly from the WHO LMS tables (Child Growth Standards 2006, Growth Reference 2007) and, for the United States and Australia after age 2, the CDC 2000 charts: weight, height, weight-for-height and BMI percentiles and z-scores, with the WHO cut-offs (wasting, stunting, overweight, thinness). Severe acute malnutrition is flagged as urgent. With a country, it says which chart that country's health record uses; 78 countries covered.",
       "requirements": {
         "type": "object",
         "required": [

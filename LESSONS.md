@@ -1228,3 +1228,53 @@ Y la salida barata era saltársela cuando el `dist/` estuviera viejo. La descart
 correría casi nunca, que es otra forma de no avisar. Se arregló construyendo **dos veces** y
 comparando las dos entre sí — veintiocho segundos, y ya prueba lo que promete pase lo que pase
 en el disco.
+
+## L213 · Un 502 puede ser del intermediario, no del servidor (20-sep-2026)
+
+Buscando la fuente de las curvas de crecimiento que faltaban, las páginas de la OMS me
+devolvieron **502 Bad Gateway** dos veces, en http y en https. Escribí en `IDEAS.md` que la
+fuente existía pero no se podía leer, y dejé los nueve países sin añadir con esta frase: «citar
+una fuente que no he podido abrir es exactamente lo que este proyecto no hace».
+
+Eso último sigue siendo verdad y me alegro de haberlo escrito. Lo que estaba mal es la premisa.
+Una hora después probé con `curl` directo y **salieron todas a la primera**. El 502 lo ponía la
+herramienta que hace de intermediario, no el servidor de la OMS.
+
+Resultado de insistir con otra herramienta: **nueve países añadidos, unos 470 millones de
+personas**, entre ellos Pakistán con 240. Estuvieron a punto de quedarse fuera por un código de
+error que no era suyo.
+
+La regla: **antes de dar por inaccesible una fuente, probar por otra vía.** Un 502, un 403 o un
+timeout dicen algo del camino, no necesariamente del destino. Aquí hay dos formas de pedir una
+página y una hoja de cálculo mental de cuál falla por qué; usarlas cuesta treinta segundos y la
+alternativa fue estar a punto de dejar sin curva de crecimiento a un país de doscientos cuarenta
+millones de habitantes.
+
+Y el matiz que salva lo demás: **lo correcto fue no añadirlos mientras no pude leer la fuente.**
+El fallo no fue la prudencia, fue no agotar las vías antes de aplicarla.
+
+## L214 · Añadir nueve países hizo saltar tres candados, y los tres tenían razón (20-sep-2026)
+
+Al meter Pakistán, Marruecos, Sudán y seis más en las curvas de crecimiento, la suite cantó tres
+sitios donde la cifra vieja seguía escrita. Ninguno era daño colateral: los tres eran el sistema
+funcionando, y juntos dan la medida de cuántos sitios repiten un número en un proyecto así.
+
+1. **El memo construido** decía 69 donde los ficheros dicen 78. Reconstruí y seguía fallando, así
+   que no era el `dist/` viejo: el memo lee `src/data/growth_charts.json`, un intermedio que
+   genera `export_catalog.py` dentro de la cadena del despliegue y no `astro build`. Sin ese
+   candado, el documento que se le manda a quien nos financia habría salido con una cifra vieja.
+2. **El catálogo del agente ACP** decía «69 countries covered» en la descripción que se publica
+   en el mercado, o sea hacia fuera y donde no lo mira nadie a diario.
+3. **La prueba del registro de países** afirmaba que Marruecos, Túnez y Omán estaban fuera «por
+   no haber leído un documento oficial».
+
+El tercero es el interesante y es donde se puede estropear un proyecto en dos minutos: **la
+tentación es borrar la comprobación que molesta.** Lo correcto era mirar si la razón por la que
+el candado los excluía seguía siendo cierta, y no lo era: había leído su fuente esa misma tarde.
+Así que se actualizó **la razón**, escrita entera en la propia prueba, y se dejó intacta la parte
+que sigue valiendo — Argelia, Líbano y el Golfo salvo Arabia Saudí siguen fuera.
+
+La regla, y sirve para cualquier candado: **cuando una prueba falla por un cambio legítimo, se
+cambia su premisa y se escribe por qué; no se borra la aserción.** La diferencia se ve a los seis
+meses, cuando alguien lee la prueba y entiende qué se comprobó, en vez de encontrar un hueco sin
+explicación.

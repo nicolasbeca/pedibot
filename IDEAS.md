@@ -512,3 +512,33 @@ duración siguen sin aparecer, que es como tiene que ser.
 
 Control, porque un cambio que mejora una cosa y rompe otra no es una mejora: estreñimiento en
 Kenia sigue contestando con la SEUP y sin una palabra de zinc.
+
+**HECHO el mismo 20-sep-2026, una hora después de escribir lo de arriba.** Las páginas de la OMS
+sí responden: el 502 era del intermediario que usaba, no del servidor. Con `curl` directo salen
+todas. Se leyeron una por una, no por buscador, y cada una trae lo mismo: refrendo ministerial
+con fecha, adaptación nacional de las guías clínicas y fase de expansión.
+
+**Nueve países añadidos**, y el orden por población dice por qué importaba: Pakistán (240 M),
+Sudán, Irak, Afganistán, Marruecos, Yemen, Túnez, Omán y Palestina. Unos 470 millones de
+personas que hasta hoy recibían un 404 en su página de curva de crecimiento.
+
+De 69 países con curva a **78**, y África de 49 a **52 de 54**. El sitio pasa de 2.693 páginas a
+2.765: nueve países por ocho idiomas.
+
+**Lo que se queda fuera y no por descuido:**
+
+- **Argelia y Libia.** Su página no existe en el sitio de la OMS —devuelve una redirección— y no
+  aparecen en ninguna lista. Son las dos únicas de África que faltan, y prefiero que falten a
+  inventarlas.
+- **Bangladesh.** Hay indicios buenos, y de peso: adoptó el IMCI en 1998 y en 2008 estaba en los
+  64 distritos y en 420 de los 483 subdistritos. Pero eso viene de terceros —Exemplars, icddr,b—
+  y la página de la OMS sobre Bangladesh no menciona el IMCI. 170 millones de personas esperando
+  a una fuente que todavía no tengo.
+
+**Y una cosa que salió por el camino y vale la pena tener escrita:** al añadirlos, la prueba del
+memo cantó que la página construida decía 69 donde los ficheros dicen 78. Reconstruí y seguía
+fallando, así que no era el `dist/` viejo. Era un fichero intermedio: el memo lee
+`src/data/growth_charts.json`, que lo genera `export_catalog.py` dentro de la cadena del
+despliegue y no `astro build`. **El candado hizo exactamente su trabajo**, y encontró un desfase
+que sin él habría llegado a producción diciendo una cifra vieja en el documento que se manda a
+quien nos financia.
