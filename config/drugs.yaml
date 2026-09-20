@@ -114,6 +114,20 @@ drugs:
 # Esto NO se le enseña al padre como una marca. Sólo hace que las presentaciones que se venden
 # en su país salgan las primeras de la tabla de dosis (`_del_pais_primero`).
 country_forms:
+  # Leídos a ojo del PDF, uno por uno, después de que el barrido automático fallara: el script
+  # decía «Mozambique: paracetamol 10 mg/ml» y su lista dice 125 y 250 mg/5 ml. Ver L218.
+  RW:
+    source: "Rwanda — National List of Essential Medicines for Paediatrics, 2nd edition 2022 (repositorio de nEML de la OMS)"
+    url: "https://cdn.who.int/media/docs/default-source/essential-medicines/national-essential-medicines-lists-(neml)/afro_neml/rwanda_neml_ped_2022.pdf"
+    leido: "2026-09-20, tabla de analgésicos: «Paracetamol Syrup 125 mg/5 ml», «Ibuprofen Susp. 100 mg/5 ml»"
+    paracetamol: ["jarabe 125 mg/5 ml"]
+    ibuprofeno: ["jarabe 2 % (100 mg/5 ml)"]
+  MZ:
+    source: "Moçambique — Lista Nacional de Medicamentos Essenciais 2023 (repositorio de nEML de la OMS)"
+    url: "https://cdn.who.int/media/docs/default-source/essential-medicines/national-essential-medicines-lists-(neml)/afro_neml/mozambique-updated-lista-nacional-de-medicamentos-essenciais-2023.pdf"
+    leido: "2026-09-20: «Paracetamol … Suspensão Oral Fr. 100 mL 125mg/5 mL … 250 mg/5 mL», «Ibuprofeno … Suspensão Oral 100 mg/5 mL»"
+    paracetamol: ["jarabe 125 mg/5 ml", "jarabe 250 mg/5 ml"]
+    ibuprofeno: ["jarabe 2 % (100 mg/5 ml)"]
   ET:
     source: "EFDA — Ethiopian Food and Drug Authority, list of medicines allowed OTC"
     url: "https://www.efda.gov.et/wp-content/uploads/2022/09/OTC-medicines-list.pdf"

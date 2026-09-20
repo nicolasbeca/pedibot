@@ -542,3 +542,35 @@ fallando, así que no era el `dist/` viejo. Era un fichero intermedio: el memo l
 despliegue y no `astro build`. **El candado hizo exactamente su trabajo**, y encontró un desfase
 que sin él habría llegado a producción diciendo una cifra vieja en el documento que se manda a
 quien nos financia.
+
+## I-32 · Las 46 listas nacionales africanas, localizadas y a falta de leerlas (20-sep-2026)
+
+En abril de 2025 la OMS abrió un **repositorio de listas nacionales de medicamentos esenciales**:
+150 países de seis regiones, y **46 de la región africana**. Está aquí, y las URL de los PDF son
+directas y estables:
+
+    https://www.who.int/teams/health-product-policy-and-standards/
+        assistive-and-medical-technology/essential-medicines/national-emls
+
+Eso resuelve la parte difícil del problema de África, que no era leer un PDF: era **encontrar el
+documento de cada país**. Con Etiopía tardé una tarde en dar con el suyo. Ahora están los 46 en
+una página.
+
+**Lo que ya está hecho:** Etiopía, Ruanda y Mozambique, los tres leídos con los ojos y con la
+frase exacta anotada en su entrada de `config/drugs.yaml`.
+
+**Lo que NO se va a hacer, y por qué está escrito aquí:** automatizar la lectura. Se intentó el
+mismo día y el barrido devolvió 18 países que parecían buenos hasta que se contrastó con el
+único que ya estaba leído a mano — y estaba mal (L218). Una tabla de PDF no tiene columnas,
+tiene texto en un orden que se le parece, y en una tabla de dosis eso significa mezclar la fila
+del paracetamol con la del ibuprofeno. **No se meten mililitros leídos así.**
+
+**Cómo seguir, entonces:** uno por uno, abriendo el PDF y mirando la tabla, por orden de
+población. Los que más pesan de los que faltan son el Congo, Angola, Madagascar, Sudán, Somalia
+y Malaui. Cada uno son unos minutos, y lo que se busca es sólo una línea: qué presentaciones
+líquidas de paracetamol y de ibuprofeno publica ese país.
+
+Y hay un premio escondido en el barrido que sí conviene mirar despacio: **Guinea-Bissau** parece
+listar más presentaciones de las habituales, y **Eritrea** y **Lesoto** dan números que no
+coinciden con ninguna concentración conocida. Puede ser ruido del extractor —casi seguro— o
+puede ser otra Etiopía. Se sabrá leyendo, no adivinando.

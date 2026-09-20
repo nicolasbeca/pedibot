@@ -1371,3 +1371,37 @@ Es la segunda vez hoy que un arreglo mío abre un agujero por optimizar para el 
 mismo y conviene tenerlo escrito así: **lo cómodo para la mayoría es peligroso para la minoría
 cuando el precio de equivocarse no es simétrico.** Un padre que tiene que elegir pierde dos
 segundos. Un padre al que le eligen mal le da a su hijo cinco veces la dosis.
+
+## L218 · El script funcionaba, y lo que sacaba era basura (20-sep-2026)
+
+La OMS abrió en abril de 2025 un repositorio con las listas nacionales de medicamentos
+esenciales, **46 de ellas de la región africana**. Eso pone al alcance, de golpe, lo que con
+Etiopía me costó una tarde: qué concentraciones publica cada país.
+
+Escribí un barrido: bajar los PDF, buscar «paracetamol» e «ibuprofeno», y leer las
+concentraciones que aparecen detrás. Corrió sin un error y devolvió **18 países con datos**.
+Parecía el mejor rato del día.
+
+Entonces miré Mozambique, que es el único de esos 18 cuyo PDF había leído antes con los ojos.
+El script decía **«paracetamol 10 mg/ml»**. La lista dice **125 mg/5 ml y 250 mg/5 ml**. En el
+único caso que podía contrastar, el script estaba mal.
+
+Con eso, mirando el resto se ve solo: ibuprofeno a 120 mg/5 ml en Chad, paracetamol a 125
+mg/**ml** en Lesoto, paracetamol a 100 mg/2 ml. No existen. Son cifras de columnas de al lado,
+porque una tabla de PDF no tiene columnas: tiene texto en un orden que parece el de la tabla y no
+lo es.
+
+**Lo que hay que sacar de esto, y no es «los scripts fallan»:**
+
+1. **Un barrido que no tiene con qué contrastarse no es una medición, es una lista de números.**
+   Lo único que convirtió esto en un hallazgo fue tener un caso leído a mano antes. Sin
+   Mozambique, habría metido dieciocho países de datos de dosis inventados por un `regex`.
+2. **La tentación era enorme y hay que nombrarla**: dieciocho países de un tirón, después de
+   pelear uno solo. Cuanto mejor parece el resultado de un atajo, más hay que buscarle el caso
+   de control.
+3. Y aquí no es un documento con una cifra vieja: **son mililitros que un padre le da a su
+   hijo**. El listón no es «probablemente correcto».
+
+Lo que sí se hizo: añadir **Ruanda y Mozambique**, leídos del PDF con los ojos, uno por uno,
+como Etiopía. Tres países de tres, y cada uno con la frase exacta que se leyó anotada en el
+`leido:` de su entrada. Los otros 43 están localizados y esperan la misma lectura.
