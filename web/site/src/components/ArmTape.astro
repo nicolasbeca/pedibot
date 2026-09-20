@@ -1,0 +1,129 @@
+---
+/**
+ * La cinta del brazo, en una página (21-sep-2026).
+ *
+ * La herramienta ya existía en el chat, y eso deja fuera a media África por dos motivos que no
+ * son de idioma: **hace falta red** para preguntarle al chat, y **hace falta saber preguntar**.
+ * Una página se guarda en el teléfono con el resto del sitio y se abre sin cobertura, que es la
+ * situación normal de quien usa una cinta de papel.
+ *
+ * Los tres cortes se calculan aquí, en el navegador, sin llamar a nadie: son dos comparaciones.
+ * Los números vienen del mismo sitio que los del chat —`src/pedibot/bot/muac.py`, con la guía de
+ * la OMS de 2013 detrás— y están repetidos aquí a propósito, con su prueba, porque una llamada a
+ * la API para comparar dos números rompería lo único que hace esta página distinta: funcionar
+ * cuando no hay red.
+ *
+ * Lo que NO hace, y se dice en la propia página: no sustituye a la báscula —la cinta y la curva
+ * de peso para la talla encuentran niños distintos, y la OMS pide las dos— y no dice cómo tratar.
+ */
+import { t, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const T = s.muac;
+---
+
+<div class="muac" data-lang={lang} data-t={JSON.stringify(T)}>
+  <h1>{T.h}</h1>
+  <p class="lede">{T.p}</p>
+
+  <div class="caja">
+    <label class="f">
+      <span>{T.age}</span>
+      <select id="mu-age">
+        <option value="in">{T.age_in}</option>
+        <option value="out">{T.age_out}</option>
+      </select>
+    </label>
+    <label class="f">
+      <span>{T.measure}</span>
+      <input id="mu-mm" type="number" inputmode="decimal" min="50" max="250" step="0.1"
+             placeholder="115" />
+    </label>
+    <label class="f">
+      <span>{T.unit}</span>
+      <select id="mu-unit">
+        <option value="mm">{T.unit_mm}</option>
+        <option value="cm">{T.unit_cm}</option>
+      </select>
+    </label>
+  </div>
+
+  <div id="mu-out" class="out" role="status" aria-live="polite"></div>
+
+  <h2>{T.how_h}</h2>
+  <ol class="how">
+    <li>{T.how_1}</li>
+    <li>{T.how_2}</li>
+    <li>{T.how_3}</li>
+  </ol>
+
+  <h2>{T.bands_h}</h2>
+  <ul class="bands">
+    <li><b class="rojo">&lt; 115 mm</b> — {T.severe}</li>
+    <li><b class="ambar">115 – 125 mm</b> — {T.moderate}</li>
+    <li><b class="verde">≥ 125 mm</b> — {T.ok}</li>
+  </ul>
+
+  <p class="n">{T.also}</p>
+  <p class="n">{T.src}: <a href={T.src_url} rel="nofollow noopener" target="_blank">{T.src_name}</a>.</p>
+</div>
+
+<script>
+  const box = document.querySelector('.muac') as HTMLElement;
+  const T = JSON.parse(box.dataset.t || '{}');
+  const out = document.getElementById('mu-out')!;
+  const campo = document.getElementById('mu-mm') as HTMLInputElement;
+  const unidad = document.getElementById('mu-unit') as HTMLSelectElement;
+  const edad = document.getElementById('mu-age') as HTMLSelectElement;
+
+  const esc = (x: string) =>
+    x.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string);
+
+  function pinta() {
+    const crudo = parseFloat(campo.value.replace(',', '.'));
+    if (!isFinite(crudo)) { out.innerHTML = ''; return; }
+    const mm = unidad.value === 'cm' ? crudo * 10 : crudo;
+    // Un brazo de niño está entre 7 y 25 cm. Fuera de ahí hay un error de unidad o un número
+    // mal copiado, y adivinar cuál de los dos sería inventar.
+    if (mm < 70 || mm > 250) { out.innerHTML = `<p class="raro">${esc(T.odd)}</p>`; return; }
+    if (edad.value === 'out') { out.innerHTML = `<p class="raro">${esc(T.age_no)}</p>`; return; }
+
+    const banda = mm < 115 ? 'severe' : mm < 125 ? 'moderate' : 'ok';
+    const color = banda === 'severe' ? 'rojo' : banda === 'moderate' ? 'ambar' : 'verde';
+    const ir = banda === 'ok' ? '' : `<p class="ir">${esc(T.go)}</p>`;
+    out.innerHTML =
+      `<p class="lectura"><b class="${color}">${mm % 1 === 0 ? mm : mm.toFixed(1)} mm</b> ` +
+      `(${(mm / 10) % 1 === 0 ? mm / 10 : (mm / 10).toFixed(1)} cm) — ${esc(T[banda])}</p>${ir}`;
+  }
+
+  [campo, unidad, edad].forEach((el) => {
+    el.addEventListener('input', pinta);
+    el.addEventListener('change', pinta);
+  });
+</script>
+
+<style>
+  .muac .lede { font-size: 1.05rem; color: var(--ink-2); }
+  .muac .caja { display: flex; gap: 12px; flex-wrap: wrap; align-items: end; margin-top: 20px; }
+  .muac .f { display: flex; flex-direction: column; gap: 4px; font-size: .86rem; color: var(--ink-2); }
+  .muac .f input, .muac .f select {
+    font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px;
+    background: var(--paper); color: var(--ink); min-width: 9em;
+  }
+  .muac .out { margin-top: 18px; min-height: 2.5em; }
+  .muac .lectura { font-size: 1.15rem; margin: 0; }
+  .muac .ir { background: var(--coral-soft); border-radius: 14px; padding: 12px 14px; margin: 10px 0 0; }
+  .muac .raro { color: var(--ink-3); margin: 0; }
+  .muac .rojo { color: var(--coral); }
+  .muac .ambar { color: #8a6a1f; }
+  .muac .verde { color: var(--sage-deep); }
+  :root.night .muac .ambar { color: var(--amber); }
+  .muac h2 { margin: 30px 0 8px; font-size: 1.1rem; }
+  .muac .how, .muac .bands { padding-inline-start: 1.2em; line-height: 1.7; }
+  .muac .bands { list-style: none; padding-inline-start: 0; }
+  .muac .bands li { padding: 5px 0; border-bottom: 1px solid var(--line); }
+  .muac .bands li:last-child { border-bottom: 0; }
+  .muac .n { color: var(--ink-3); font-size: .88rem; }
+</style>

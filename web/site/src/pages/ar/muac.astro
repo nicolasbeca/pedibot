@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import ArmTape from '../../components/ArmTape.astro';
+import { t } from '../../i18n';
+const lang = 'ar'; const s = t(lang);
+---
+<Base lang={lang} title={s.muac.title} description={s.muac.desc} path="/ar/muac">
+  <div class="narrow" style="padding:40px 18px"><ArmTape lang={lang} /></div>
+</Base>

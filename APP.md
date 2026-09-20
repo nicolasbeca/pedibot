@@ -264,6 +264,30 @@ Por dentro: tabla `doses` en `data/pedibot_familias.db`, endpoints `POST`/`DELET
 `/api/family/children/{id}/doses`, estados `done` · `pending` · `due` · `future` · `seasonal` en
 `schedule_for_child()`, y el `.ics` ya no repite lo que está puesto.
 
+## 4 sexies. La cinta del brazo — **ya construida en la web** (21-sep-2026)
+
+`/muac`, en los ocho idiomas, más la herramienta dentro del chat. Los tres cortes de la guía de
+la OMS de 2013: por debajo de 115 mm, entre 115 y 125, y por encima.
+
+Lo que la app tiene que copiar tal cual, y por qué:
+
+1. **El cálculo va en el aparato.** Son dos comparaciones. Quien usa una cinta de papel está
+   normalmente donde no hay cobertura, así que una llamada a la API rompería justo el caso de
+   uso. En la web ya está así y la página entra en la precarga del service worker.
+2. **La unidad se lee, nunca se supone.** Las cintas vienen marcadas en milímetros y en
+   centímetros, y los padres copian lo que ven. «11,5» y «115» son el mismo niño; «11,5» leído
+   como milímetros es otro que no existe.
+3. **Fuera de 6 a 59 meses no hay respuesta.** No una cifra aproximada: no hay respuesta, porque
+   los cortes no se calcularon para esas edades.
+4. **La cámara es la tentación y hay que resistirla.** En una app es fácil pensar en medir el
+   brazo con la cámara. No: eso sería una medida inventada por un modelo en el sitio donde el
+   proyecto entero ha decidido no dejar que un modelo ponga números.
+
+Por dentro: `src/pedibot/bot/muac.py` (cortes, lectura de la unidad, franjas y motivo del aviso),
+`web/site/src/components/ArmTape.astro` (la misma tabla en el navegador, sin red), y el aviso
+rojo sale de `TriageResult.reasons_override`, porque el hallazgo es una medida y no un síntoma
+escrito.
+
 ## 5. Lo que hay que optimizar para el móvil
 
 La web es adaptable, pero adaptable no es lo mismo que pensada para un pulgar. Lo que revisaría,

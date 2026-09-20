@@ -34,6 +34,9 @@ const CIMIENTOS = [
   '/emergency',
   '/vaccines',
   '/growth',
+  // 21-sep-2026: de todas las herramientas, la que más falta hace sin red. Quien mide con una
+  // cinta de papel suele estar justo donde no hay cobertura.
+  '/muac',
   // Y los datos, que son de lo que está hecho todo lo de arriba: 88 países con su número, los
   // 61 calendarios, las 69 tablas de crecimiento, las dosis y los signos de alarma. Pesan unos
   // 700 kB juntos y son lo único del sitio que sigue valiendo sin red.

@@ -281,3 +281,31 @@ primeros están casi escritos: el memo de /memo es el Pitch, el desglose del gas
 los riesgos ya están redactados. Lo que **no** está decidido y es suyo: qué cartera firma y si va
 sola o con varias firmas (Controls), y si se forma la entidad de MetaLeX o se usa una propia
 (Legal).
+
+## I-27 · Las curvas de los cinco del norte de África (21-sep-2026)
+
+`config/growth_charts.yaml` cubre 69 países, 49 de ellos africanos. Faltan **Marruecos, Argelia,
+Túnez, Libia y Sudán**, que son justo los cinco que entraron esta semana con calendario de
+vacunas.
+
+Lo que **no** falta, y conviene tenerlo claro antes de tocar nada: el percentil ya se calcula
+bien para ellos. Una madre marroquí que escribe «mi hija de 18 meses pesa 9 kg, ¿está bien?»
+recibe hoy su percentil 14,5 con las tablas de la OMS. Lo que falta es la página `/growth/ma`,
+que es la que dice **qué tabla usa la cartilla de su país**, para que pueda comparar el número
+de aquí con el papel que tiene en casa.
+
+Los 49 africanos que sí están usan el cuadernillo AIEPI de la OMS/UNICEF como fuente, con
+`match: partial`. Sería cómodo extender eso a los cinco y cerrar el mapa, y **no se ha hecho a
+propósito**: el propio fichero dice que no se añade un país por suposición, y no he encontrado
+confirmación de que esos cinco usen ese cuadernillo. Egipto, que sí está, tiene su propia fuente
+del Ministerio de Salud y Población.
+
+Lo que hace falta es leer, por país, qué curva trae su cartilla:
+
+- Marruecos: «carnet de santé de l'enfant» del Ministère de la Santé;
+- Túnez y Argelia: el carnet de santé de sus ministerios;
+- Sudán y Libia: el registro infantil del ministerio, o la implantación regional de AIEPI
+  documentada por la oficina de la OMS para el Mediterráneo Oriental.
+
+Es trabajo de leer y transcribir, no de programar, y es exactamente la clase de cosa que la
+partida de «segunda persona a media jornada» del plan de financiación paga.
