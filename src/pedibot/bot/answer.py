@@ -25,6 +25,9 @@ from pedibot.bot.growth import (
 )
 from pedibot.bot.guides import GuideIndex, GuideLink
 from pedibot.bot.llm import LLMProvider, LLMResult
+from pedibot.bot.muac import assess as muac_assess
+from pedibot.bot.muac import explain as muac_explain
+from pedibot.bot.muac import is_muac_question, read_mm
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.triage import LEVEL_ORDER, Triage, TriageResult
@@ -1072,6 +1075,30 @@ class Engine:
                     tool=tool_link("vaccines", lang, c),
                 )
             # no tabulated schedule for this country → fall through to the sources
+
+        # La cinta del brazo (21-sep-2026). Donde va este proyecto no siempre hay báscula: hay
+        # una cinta de papel, y la mide un agente comunitario o la propia madre. Es el método
+        # que la OMS recomienda para cribar en la comunidad, y aquí no estaba.
+        #
+        # Va ANTES de la curva a propósito: «el brazo le mide 11 cm» trae una medida en
+        # centímetros, y la curva la leería como una talla de 11 cm, que no existe.
+        if is_muac_question(query):
+            mm = read_mm(query)
+            edad_muac = tr_now.age_months if tr_now.age_months is not None else tr.age_months
+            lectura = muac_assess(mm, edad_muac) if mm is not None else None
+            if lectura is not None:
+                return Answer(
+                    muac_explain(lectura, lang),
+                    lectura.level,
+                    build_banner(tr, lang_aviso, nums) if lectura.level == "routine" else None,
+                    [],
+                    lang,
+                    None,
+                    None,
+                    [],
+                    "muac",
+                    tool=tool_link("growth", lang, country or country_in_question(context_text)),
+                )
 
         # La curva de la OMS, calculada aquí y no descrita (16-sep-2026). Hasta hoy el chat
         # contestaba «no puedo decirte el percentil exacto» teniendo delante el sexo, la edad y el

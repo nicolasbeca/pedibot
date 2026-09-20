@@ -1016,3 +1016,29 @@ africanos sin ver que ya estaba arriba con siete europeos. `resolve()` devuelve 
 que la fila de abajo era tinta y una madre en Nairobi habría leído que eso se vende en Reino
 Unido. **Añadir a ciegas a un catálogo que ya tiene la entrada es un fallo que no avisa**, y
 ahora hay una prueba que lo caza.
+
+## L205 · La misma puerta mal escrita, doce horas después (21-sep-2026)
+
+Ayer: la curva de crecimiento pedía la palabra «percentil», y un padre dice «¿está bien?» (L203).
+
+Hoy, escribiendo la cinta del brazo desde cero, la primera versión de su puerta pedía
+«perímetro braquial», «MUAC» o «mid-upper arm circumference». O sea, **pedía que el padre
+supiera cómo lo llama la guía de la OMS**. Un padre escribe «el brazo le mide 11 cm», y una
+madre keniana «mkono wake ni sentimita 11».
+
+El mismo error, en el mismo proyecto, por la misma mano, con la lección escrita el día anterior
+tres archivos más allá. No se aprende leyendo la lección: se aprende cambiando **cómo se
+escribe una puerta**, y el orden correcto es al revés del natural. No «qué palabra usaría yo
+para buscar esto», sino:
+
+1. ¿qué cosa del mundo está mirando el padre? (el brazo, un número, una unidad);
+2. ¿qué otra cosa se parece y NO es esto? (un golpe, un chichón, una fractura);
+3. y sólo al final, si acaso, el nombre técnico.
+
+La tercera condición vale tanto como la primera: «se dio un golpe en el brazo y tiene un chichón
+de 3 cm» trae la palabra y trae la medida, y contestarle con una franja de desnutrición sería
+absurdo y además ocuparía el sitio de la respuesta que necesita.
+
+De propina, el `\b` que no existe detrás del devanagari, que ya estaba anotado en `triage.py` y
+volvió a aparecer aquí: «सेमी» acaba en una marca combinante y no hay transición que detectar.
+`(?!\w)` sí funciona, porque mira el carácter siguiente en vez de buscar un borde.
