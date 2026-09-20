@@ -28,6 +28,7 @@ from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.muac import assess as muac_assess
 from pedibot.bot.muac import explain as muac_explain
 from pedibot.bot.muac import is_muac_question, read_mm
+from pedibot.bot.muac import reason as muac_reason
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.triage import LEVEL_ORDER, Triage, TriageResult
@@ -1087,10 +1088,21 @@ class Engine:
             edad_muac = tr_now.age_months if tr_now.age_months is not None else tr.age_months
             lectura = muac_assess(mm, edad_muac) if mm is not None else None
             if lectura is not None:
+                # El aviso se construye con la CINTA como hallazgo, no con el triaje: el
+                # mensaje del padre no trae ningún síntoma de alarma, trae una medida, así que
+                # `build_banner(tr, …)` devolvía None y una respuesta marcada como urgente salía
+                # sin el recuadro rojo, que es lo primero que se mira (21-sep-2026).
+                aviso = TriageResult(
+                    level=lectura.level,
+                    matched=[],
+                    age_months=tr.age_months,
+                    has_fever=tr.has_fever,
+                    reasons_override=[muac_reason(lectura, lang_aviso)],
+                )
                 return Answer(
                     muac_explain(lectura, lang),
                     lectura.level,
-                    build_banner(tr, lang_aviso, nums) if lectura.level == "routine" else None,
+                    build_banner(aviso, lang_aviso, nums),
                     [],
                     lang,
                     None,

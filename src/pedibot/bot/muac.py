@@ -155,10 +155,48 @@ def explain(r: MuacResult, lang: str) -> str:
     from pedibot.bot.strings import tool_strings
 
     T = tool_strings(lang)
-    medida = f"{r.mm:g} mm ({r.mm / 10:g} cm)"
+    # La unidad en el alfabeto de quien lee, con la misma tabla que las curvas: «100 mm» dentro
+    # de una frase en árabe dice, en cada línea, que el texto no se escribió para ti.
+    from pedibot.bot.growth import _UNIDADES
+
+    mm_u = _UNIDADES.get(lang, {}).get("mm", "mm")
+    cm_u = _UNIDADES.get(lang, {}).get("cm", "cm")
+    medida = f"{r.mm:g} {mm_u} ({r.mm / 10:g} {cm_u})"
     lineas = [T["muac_head"].format(mm=medida), T[f"muac_{r.band}"]]
     if r.band != "ok":
         lineas.append(T["muac_go"])
     lineas.append(T["muac_also"])
     lineas.append(T["vax_source"] + SOURCE + f" — {SOURCE_URL}.")
     return "\n".join(lineas)
+
+
+#: Lo que el aviso rojo dice como motivo. La cinta es el hallazgo: no hay síntoma que contar.
+REASON: dict[str, dict[str, str]] = {
+    "severe": {
+        "en": "Arm circumference below 115 mm: severe acute malnutrition",
+        "es": "Perímetro del brazo por debajo de 115 mm: desnutrición aguda grave",
+        "fr": "Périmètre brachial inférieur à 115 mm : malnutrition aiguë sévère",
+        "de": "Oberarmumfang unter 115 mm: schwere akute Mangelernährung",
+        "ru": "Окружность плеча меньше 115 мм: тяжёлая острая недостаточность питания",
+        "ar": "محيط الذراع أقل من 115 مم: سوء تغذية حاد وخيم",
+        "pt": "Perímetro do braço abaixo de 115 mm: desnutrição aguda grave",
+        "hi": "बाजू की परिधि 115 मिमी से कम: गंभीर तीव्र कुपोषण",
+        "sw": "Mzunguko wa mkono chini ya mm 115: utapiamlo mkali sana",
+    },
+    "moderate": {
+        "en": "Arm circumference between 115 and 125 mm: moderate acute malnutrition",
+        "es": "Perímetro del brazo entre 115 y 125 mm: desnutrición aguda moderada",
+        "fr": "Périmètre brachial entre 115 et 125 mm : malnutrition aiguë modérée",
+        "de": "Oberarmumfang zwischen 115 und 125 mm: mäßige akute Mangelernährung",
+        "ru": "Окружность плеча от 115 до 125 мм: умеренная острая недостаточность питания",
+        "ar": "محيط الذراع بين 115 و125 مم: سوء تغذية حاد متوسط",
+        "pt": "Perímetro do braço entre 115 e 125 mm: desnutrição aguda moderada",
+        "hi": "बाजू की परिधि 115 से 125 मिमी: मध्यम तीव्र कुपोषण",
+        "sw": "Mzunguko wa mkono kati ya mm 115 na 125: utapiamlo mkali wa wastani",
+    },
+}
+
+
+def reason(r: MuacResult, lang: str) -> str:
+    """El motivo, para el recuadro rojo. Vacío cuando la medida no cae en ninguna franja."""
+    return (REASON.get(r.band) or {}).get(lang) or (REASON.get(r.band) or {}).get("en", "")

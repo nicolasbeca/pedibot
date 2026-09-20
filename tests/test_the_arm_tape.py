@@ -133,3 +133,27 @@ def test_el_motor_la_usa() -> None:
     from pedibot.bot.answer import is_muac_question as enchufada
 
     assert enchufada("el brazo le mide 11 cm")
+
+
+@pytest.mark.parametrize("lang", IDIOMAS)
+def test_el_aviso_rojo_dice_por_que(lang: str) -> None:
+    """21-sep-2026, en vivo: la respuesta salía marcada urgente y **sin recuadro rojo**.
+
+    El aviso lo construye el triaje a partir de las reglas que han saltado, y aquí no ha saltado
+    ninguna: el mensaje del padre no trae un síntoma, trae una medida. Sin un motivo propio, una
+    urgencia se quedaba sin lo primero que se mira.
+    """
+    from pedibot.bot.muac import reason
+
+    assert reason(assess(100, 24), lang), f"sin motivo en {lang}"
+    assert reason(assess(120, 24), lang)
+    assert reason(assess(140, 24), lang) == "", "la franja verde no lleva aviso"
+
+
+@pytest.mark.parametrize(
+    ("lang", "unidad"), [("ar", "مم"), ("hi", "मिमी"), ("ru", "мм"), ("es", "mm")]
+)
+def test_la_unidad_va_en_el_alfabeto_del_lector(lang: str, unidad: str) -> None:
+    """«100 mm» dentro de una frase en árabe dice, en cada línea, que el texto no es para ti."""
+    texto = explain(assess(100, 24), lang)
+    assert f"100 {unidad}" in texto, texto.split("\n")[0]

@@ -278,8 +278,16 @@ class TriageResult:
     matched: list[Rule]
     age_months: float | None
     has_fever: bool
+    #: Un motivo que no viene de una regla. Lo usa la cinta del brazo (21-sep-2026): el hallazgo
+    #: es una MEDIDA, no un síntoma escrito, así que no hay regla que lo haya encontrado y aun
+    #: así el aviso tiene que decir por qué. Sin esto, la alternativa era inventar una regla
+    #: falsa o un segundo sistema de avisos, y las dos son peores.
+    reasons_override: list[str] | None = None
 
     def reasons(self, lang: str = "en") -> list[str]:
+        if self.reasons_override is not None:
+            return [r for r in self.reasons_override if r]
+
         def pick(r: Rule) -> str:
             # a lookup, not a ladder of ifs: a new language used to mean remembering to add
             # a branch here, and forgetting meant silently answering in English
