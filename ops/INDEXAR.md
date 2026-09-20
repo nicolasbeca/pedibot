@@ -119,7 +119,7 @@ mañana. Google es el único que exige la sesión del operador.
 
 ---
 
-## Medido el 21-sep-2026, contra Search Console, y cambia la conclusión
+## Medido el 20-sep-2026, contra Search Console, y cambia la conclusión
 
 Preguntado a Google directamente con la clave del proyecto, ventana de 28 días hasta el 17 de
 septiembre, y comparado con la medición anterior (28 días hasta el 5 de septiembre):

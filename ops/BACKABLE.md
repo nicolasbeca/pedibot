@@ -68,7 +68,7 @@ idea no se copió del formulario.
 
 ---
 
-## ¿Está vivo? Lo que ha financiado de verdad (mirado el 21-sep-2026)
+## ¿Está vivo? Lo que ha financiado de verdad (mirado el 20-sep-2026)
 
 **No es una web muerta.** Once empresas financiadas, con el dinero movido y las rondas
 cerradas. Las nueve que la plataforma enseña, por lo que recaudaron:
@@ -131,7 +131,7 @@ porque el 20 % se queda en liquidez: la tesorería serían 168.000, o sea 14.000
 
 Dos formas de resolverlo, y sólo una mantiene lo que ya está escrito y enviado:
 
-**A · Objetivo 262.500 $** (~~recomendada~~ **descartada el 21-sep-2026**, ver la sección de
+**A · Objetivo 262.500 $** (~~recomendada~~ **descartada el 20-sep-2026**, ver la sección de
 arriba: es más de lo que esa plataforma ha financiado nunca, y allí es todo o nada). El 80 %
 serían los **210.000** de siempre, y el plan entraría tal cual, con los mismos 17.500 al mes. Los 52.500 restantes van a
 liquidez, que no es dinero perdido: es lo que hace que quien puso dinero pueda salir. Se explica

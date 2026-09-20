@@ -282,7 +282,7 @@ los riesgos ya están redactados. Lo que **no** está decidido y es suyo: qué c
 sola o con varias firmas (Controls), y si se forma la entidad de MetaLeX o se usa una propia
 (Legal).
 
-## I-27 · Las curvas de los cinco del norte de África (21-sep-2026)
+## I-27 · Las curvas de los cinco del norte de África (20-sep-2026)
 
 `config/growth_charts.yaml` cubre 69 países, 49 de ellos africanos. Faltan **Marruecos, Argelia,
 Túnez, Libia y Sudán**, que son justo los cinco que entraron esta semana con calendario de
@@ -310,7 +310,7 @@ Lo que hace falta es leer, por país, qué curva trae su cartilla:
 Es trabajo de leer y transcribir, no de programar, y es exactamente la clase de cosa que la
 partida de «segunda persona a media jornada» del plan de financiación paga.
 
-## I-28 · Etiopía, el Congo, Angola y Mozambique: qué falta y qué NO se ha inventado (21-sep-2026)
+## I-28 · Etiopía, el Congo, Angola y Mozambique: qué falta y qué NO se ha inventado (20-sep-2026)
 
 Las marcas africanas pasaron de 1 país a 31. Los cuatro grandes que siguen sin ninguna suman
 unos 300 millones de personas: **Etiopía (126 M), RD Congo (102 M), Angola (36 M) y Mozambique
@@ -342,10 +342,10 @@ país salen primero** aunque no escribas la marca, dándole la vuelta a la tabla
 Marruecos, Argelia y Túnez eso sube la única concentración que se vende allí desde el fondo de
 una lista de ocho.
 
-## I-29 · Abrir el repositorio: qué abre y qué cuesta (21-sep-2026)
+## I-29 · Abrir el repositorio: qué abre y qué cuesta (20-sep-2026)
 
 Sale al mirar financiación con el nombre ya expuesto, y es una decisión del operador, no mía.
-Hoy el repositorio es privado: comprobado el 21-sep-2026, `github.com/nicolasbeca/pedibot`
+Hoy el repositorio es privado: comprobado el 20-sep-2026, `github.com/nicolasbeca/pedibot`
 devuelve 404 a quien no tenga permiso.
 
 **Lo que se abre si se abre.** El reconocimiento de bien público digital lo exige, y con él el
@@ -366,7 +366,7 @@ no regala ni la infraestructura ni la estrategia. Falta comprobar una cosa antes
 haya quedado ninguna clave en el histórico, porque abrir un repositorio publica también su
 pasado.
 
-## I-30 · El zinc, y por qué en Kenia la OMS tiene que ir delante (21-sep-2026)
+## I-30 · El zinc, y por qué en Kenia la OMS tiene que ir delante (20-sep-2026)
 
 Probando la web viva como un padre en los mercados a los que vamos, con preguntas escritas como
 las escribe un padre y no como las escribe un programador. El caso: *«my baby is 7 months and has

@@ -1,6 +1,6 @@
 # Cómo se financia esto — todas las vías, con lo comprobado de cada una
 
-> 21-sep-2026. Hasta hoy lo de financiación estaba repartido entre `ops/METADAO.md` (el texto
+> 20-sep-2026. Hasta hoy lo de financiación estaba repartido entre `ops/METADAO.md` (el texto
 > enviado), `ops/BACKABLE.md` (el plan de la ronda), `ops/VIRTUALS_APRENDIDO.md` (lo que salió
 > mal con el token) y media docena de ideas sueltas en `IDEAS.md`. Esto es el mapa: **una vía por
 > sección, con qué se ha comprobado de ella, qué cuesta y cuándo toca.**
@@ -34,7 +34,7 @@ Lo que se cae por las dos puertas a la vez: **cualquier sitio donde el dinero lo
 popularidad y el público no tenga nada que ver con esto.** Ahí ni deciden ni te ven: un proyecto
 que le importa a padres pierde contra una moneda de perros, y encima nadie lo prueba.
 
-## Lo que cambió el 21-sep-2026, y abre media lista
+## Lo que cambió el 20-sep-2026, y abre media lista
 
 Dos cosas del operador, dichas el mismo día:
 
@@ -58,7 +58,6 @@ consecuencias regulatorias en Europa, y la estamos usando en los textos que mand
 
 | cuándo | qué | cuesta |
 |---|---|---|
-| esta semana | **Show HN en Hacker News** — el texto ya está escrito en `ops/SHOW_HN.md` | 0 |
 | esta semana | **Emergent Ventures** — gratis, rolling, lo lee una persona | 0 |
 | viernes 2 de octubre | se deja de esperar a **MetaDAO** | — |
 | a partir del 2 de octubre | **Backable**, y con 75.000, no con 262.500 | 15 $ |
@@ -79,7 +78,7 @@ consecuencias regulatorias en Europa, y la estamos usando en los textos que mand
 
 ## ¿Hay que esperar a MetaDAO para lo demás? No, y conviene saber por qué
 
-Pregunta del operador el 21-sep-2026: *«entiendo que podemos pedir más cosas cuando nos digan que
+Pregunta del operador el 20-sep-2026: *«entiendo que podemos pedir más cosas cuando nos digan que
 no de MetaDAO, ¿no?»*. La respuesta es que **ni siquiera hay que esperar a que lo digan**.
 
 **Lo comprobado, releído en `ops/METADAO.md`:** lo que se mandó es un formulario de solicitud. No
@@ -133,25 +132,24 @@ Desde aquí DexScreener devuelve 403.
 
 ---
 
-## 2 · Show HN en Hacker News — **la puerta de la exposición, gratis y hoy**
+## 2 · Show HN en Hacker News — **PUBLICADO el 20-sep-2026**
 
-Ésta es la que responde literalmente a lo que pedía: **volumen, gente que lo mira y lo estudia, y
-que lo empieza a usar porque es gratis.** No da un euro y probablemente es lo más valioso de esta
-lista ahora mismo.
+Lo mandó el operador esa misma tarde. El texto que se publicó está en `ops/SHOW_HN.md`, con las
+cifras recontadas ese día (decía 288 documentos de 18 organismos, que eran 497 de 21).
 
-**Por qué encaja:** un Show HN que llega a portada son decenas de miles de visitas en un día, de
-un público que prueba las cosas en vez de leerlas, que pincha en las fuentes, y que si algo está
-mal lo dice en público en diez minutos. Eso último es lo que más falta hace: nadie ha auditado
-esto desde fuera todavía.
+Era la puerta de la exposición: volumen, gente que prueba en vez de leer, y sobre todo **enlaces
+entrantes**, que es justo lo que le falta al dominio según la medición de Search Console de ese
+mismo día (`ops/INDEXAR.md`): las páginas de dosis están bien hechas y en la posición 80 porque
+nadie las enlaza.
 
-**Lo que ya está hecho:** el texto está escrito en `ops/SHOW_HN.md`. Lo único pendiente es leerlo
-otra vez con las cifras de hoy (`DATOS.md`) y decidir el día. Martes o miércoles por la mañana en
-California, que es la tarde de aquí.
+**Lo que toca ahora, y es de él:** quedarse disponible para contestar comentarios. En Show HN un
+autor que responde sube el hilo mucho más que el propio texto, y lo que van a preguntar está
+previsto una por una al final de `ops/SHOW_HN.md` —quién lo ha revisado (nadie, y se dice), qué
+modelo usa (DeepSeek, y no se esconde), cuánta gente lo usa (casi nadie, y no se maquilla)—.
 
-**El riesgo honesto:** también puede no pasar nada, que es lo normal. Cuesta cero y se puede
-repetir con otro ángulo más adelante.
-
----
+**Y lo que hay que medir en los próximos días**, porque es la primera vez que hay con qué
+comparar: visitantes y preguntas en `/api/stats`, y a las dos o tres semanas si han aparecido
+enlaces y si las páginas de dosis se mueven de la posición 80.
 
 ## 3 · Emergent Ventures — **gratis, rolling, y lo lee una persona**
 
@@ -220,7 +218,7 @@ textos de seguridad, que hoy es el agujero más claro que tenemos y cabe en esa 
 
 El plan entero está en `ops/BACKABLE.md`. Lo esencial, que es lo que cambia la decisión:
 
-**Lo comprobado el 21-sep-2026:** no es una web muerta. **Once empresas financiadas**, 698.000 $
+**Lo comprobado el 20-sep-2026:** no es una web muerta. **Once empresas financiadas**, 698.000 $
 entre las nueve que enseña. Pero:
 
 - **es todo o nada**: si la ronda acaba por debajo del objetivo, el fundador no recibe nada;
@@ -247,7 +245,7 @@ sanidad. Un proyecto reconocido como bien público digital deja de tener que exp
 cada correo, y eso es hoy lo que más cuesta.
 
 **El requisito que hoy no se cumple:** piden **código abierto**, y el repositorio es privado
-(comprobado el 21-sep-2026: GitHub devuelve 404). Abrirlo es una decisión con dos caras y no la
+(comprobado el 20-sep-2026: GitHub devuelve 404). Abrirlo es una decisión con dos caras y no la
 tomo yo; queda anotada en `IDEAS.md`. A favor: abre esta puerta, la de NLnet y media docena más,
 y el catálogo de fuentes ya es público de todos modos. En contra: el trabajo de años queda
 copiable en una tarde, y lo que tiene valor aquí no son las reglas, es haberlas reunido.
@@ -288,7 +286,7 @@ donantes**. Sin comunidad, el resultado esperado es cero, y el coste no es cero:
 Volvería a tener sentido el día que haya gente usando esto dispuesta a poner cinco dólares,
 porque entonces el mecanismo juega a favor. Hoy no es ese día.
 
-**Plataformas de memes tipo pump.fun.** Dicho por el operador el 21-sep-2026 y anotado para no
+**Plataformas de memes tipo pump.fun.** Dicho por el operador el 20-sep-2026 y anotado para no
 repetirlo: ni deciden ni te ven. Ahí no hay filtro y no hay público que tenga nada que ver con
 esto.
 
@@ -344,6 +342,6 @@ que defiende el memo es exactamente licenciar el motor para el primer filtro, as
 palabra es la exacta y quitarla dejaría la tesis más floja. La salida es **decir que son dos
 productos**, porque lo son: lo que el padre usa hoy, que explica y cita y no diagnostica; y lo
 que una institución licenciaría, que sí es una decisión clínica y en Europa es producto sanitario
-con sistema de calidad certificado detrás. El memo ya lo dice así desde el 21-sep-2026, y de paso
+con sistema de calidad certificado detrás. El memo ya lo dice así desde el 20-sep-2026, y de paso
 explica por qué hay una partida de regulación en el presupuesto. En solicitudes cortas, donde esa
 distinción no cabe, se dice lo que hace y no la etiqueta que lo regula.

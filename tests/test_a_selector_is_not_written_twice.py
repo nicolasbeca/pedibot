@@ -1,4 +1,4 @@
-"""Un selector escrito dos veces en el mismo fichero se contradice en silencio (21-sep-2026).
+"""Un selector escrito dos veces en el mismo fichero se contradice en silencio (20-sep-2026).
 
 Repasando la cartilla de vacunación: `.vacunas li` estaba definido **dos veces** en
 `Family.astro`, una arriba con `align-items: flex-start` y otra doscientas líneas más abajo con

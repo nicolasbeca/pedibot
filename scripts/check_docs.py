@@ -1,4 +1,4 @@
-"""¿Qué documento dice una cifra que ya no es verdad? (21-sep-2026)
+"""¿Qué documento dice una cifra que ya no es verdad? (20-sep-2026)
 
 Medido el día que el operador dijo que los `.md` se contradecían: **107 cifras escritas a mano**
 que no cuadraban con los ficheros de datos. APP.md decía 88 países en tres sitios y 61

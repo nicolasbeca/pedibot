@@ -208,7 +208,7 @@ def test_millilitres_never_round_up() -> None:
 def test_ninguna_marca_esta_escrita_dos_veces() -> None:
     """Dos filas con el mismo nombre y países distintos: gana la primera y la otra no existe.
 
-    21-sep-2026, metiendo las marcas africanas: añadí «Nurofen for Children» con siete países de
+    20-sep-2026, metiendo las marcas africanas: añadí «Nurofen for Children» con siete países de
     África sin ver que ya estaba arriba con siete de Europa. `resolve()` devuelve la primera, así
     que una madre en Nairobi escribía «nurofen» y el sitio le decía que eso se vende en Reino
     Unido, Irlanda y Australia. No falla nada, no avisa nadie, y la fila de abajo es tinta.
@@ -225,7 +225,7 @@ def test_ninguna_marca_esta_escrita_dos_veces() -> None:
 
 
 def test_africa_tiene_marcas_de_verdad() -> None:
-    """De 54 países africanos, el calculador conocía marcas de UNO: Egipto (medido 21-sep-2026).
+    """De 54 países africanos, el calculador conocía marcas de UNO: Egipto (medido 20-sep-2026).
 
     Una madre en Lagos, en Nairobi o en Casablanca tiene un bote en la mano, escribe el nombre
     de la caja y el sitio no lo reconoce, aunque sepa dosificar esa misma molécula desde el

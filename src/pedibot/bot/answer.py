@@ -1009,7 +1009,7 @@ class Engine:
         if intent and tr.level == "routine":
             drug, kg = intent
             # La marca que el padre ha escrito, para poner SU bote el primero. El catálogo ya la
-            # resolvía para elegir la molécula y el dato se tiraba (21-sep-2026).
+            # resolvía para elegir la molécula y el dato se tiraba (20-sep-2026).
             encontrada = brand_in_query(query, self.drugs) or brand_in_query(
                 context_text, self.drugs
             )
@@ -1081,7 +1081,7 @@ class Engine:
                 )
             # no tabulated schedule for this country → fall through to the sources
 
-        # La cinta del brazo (21-sep-2026). Donde va este proyecto no siempre hay báscula: hay
+        # La cinta del brazo (20-sep-2026). Donde va este proyecto no siempre hay báscula: hay
         # una cinta de papel, y la mide un agente comunitario o la propia madre. Es el método
         # que la OMS recomienda para cribar en la comunidad, y aquí no estaba.
         #
@@ -1095,7 +1095,7 @@ class Engine:
                 # El aviso se construye con la CINTA como hallazgo, no con el triaje: el
                 # mensaje del padre no trae ningún síntoma de alarma, trae una medida, así que
                 # `build_banner(tr, …)` devolvía None y una respuesta marcada como urgente salía
-                # sin el recuadro rojo, que es lo primero que se mira (21-sep-2026).
+                # sin el recuadro rojo, que es lo primero que se mira (20-sep-2026).
                 aviso = TriageResult(
                     level=lectura.level,
                     matched=[],

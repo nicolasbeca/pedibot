@@ -421,14 +421,14 @@ def format_result(
             max_doses=r.max_doses_per_day,
         )
     )
-    # 21-sep-2026: Dalsy es ibuprofeno a 40 mg/ml y el paracetamol tiene una presentación a
+    # 20-sep-2026: Dalsy es ibuprofeno a 40 mg/ml y el paracetamol tiene una presentación a
     # 40 mg/ml. Sin esto, preguntar por paracetamol nombrando Dalsy ponía «Dalsy» encima de una
     # fila de paracetamol: decirle a un padre que su bote lleva otra cosa. Lo cazó su prueba.
     if brand is not None and brand_key is not None and brand_key != r.drug.key:
         brand = None
     # Si ha escrito su marca, manda la suya. Si no, mandan los botes que se venden en su país,
     # que es el mismo criterio con menos información: enseñar primero lo que puede tener en la
-    # mano (21-sep-2026).
+    # mano (20-sep-2026).
     filas = (
         _suya_primero(r.ml, brand)
         if brand is not None
@@ -438,7 +438,7 @@ def format_result(
         etiqueta = presentation_label(pname, lang)
         if brand and _misma_concentracion(pname, brand):
             # con el nombre de su caja delante: ocho líneas de mililitros parecidos es donde se
-            # lee la que no es, y «6,2» y «6» están una encima de otra (21-sep-2026)
+            # lee la que no es, y «6,2» y «6» están una encima de otra (20-sep-2026)
             etiqueta = f"{brand.name}, {etiqueta}"
         lines.append(f"  – {etiqueta}: {millilitres:g} ml")
     # the band the guide publishes, so a different figure from a paediatrician is

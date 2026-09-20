@@ -752,7 +752,7 @@ def _age_text(age_months: float, lang: str) -> str:
 #: suya, y verla en latín dentro de su frase dice lo mismo que una coma latina en árabe: que el
 #: texto no se escribió para quien lo está leyendo (20-sep-2026).
 _UNIDADES: dict[str, dict[str, str]] = {
-    # «mm» entra con la cinta del brazo (21-sep-2026), que es la única herramienta que mide en
+    # «mm» entra con la cinta del brazo (20-sep-2026), que es la única herramienta que mide en
     # milímetros. La tabla vive aquí porque la comparten las dos y una segunda copia se separa.
     "ar": {"kg": "كغ", "cm": "سم", "mm": "مم"},
     "hi": {"kg": "किग्रा", "cm": "सेमी", "mm": "मिमी"},

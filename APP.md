@@ -2,7 +2,7 @@
 
 > **Las cifras de este documento no se escriben a mano.** `DATOS.md` lleva todas,
 > contadas de los ficheros de datos, y `scripts/check_docs.py` avisa si aquí aparece
-> una que ya no sea verdad. El 21-sep-2026 había 107 repartidas por los `.md`.
+> una que ya no sea verdad. El 20-sep-2026 había 107 repartidas por los `.md`.
 
 > Primer borrador, 19-sep-2026, escrito para que lo revises tú. Lo que pediste: «vamos a crear
 > una app basada en el web. Mismas herramientas, etc, pero optimizado para móvil. Haz un plan de
@@ -268,7 +268,7 @@ Por dentro: tabla `doses` en `data/pedibot_familias.db`, endpoints `POST`/`DELET
 `/api/family/children/{id}/doses`, estados `done` · `pending` · `due` · `future` · `seasonal` en
 `schedule_for_child()`, y el `.ics` ya no repite lo que está puesto.
 
-## 4 sexies. La cinta del brazo — **ya construida en la web** (21-sep-2026)
+## 4 sexies. La cinta del brazo — **ya construida en la web** (20-sep-2026)
 
 `/muac`, en los ocho idiomas, más la herramienta dentro del chat. Los tres cortes de la guía de
 la OMS de 2013: por debajo de 115 mm, entre 115 y 125, y por encima.
@@ -532,7 +532,7 @@ juntar doce probadores. Todo lo demás se puede ir construyendo mientras.
 
 ---
 
-## La decisión del 21-sep-2026: la app de Android no va todavía, y por qué
+## La decisión del 20-sep-2026: la app de Android no va todavía, y por qué
 
 El operador: *«creo que lo siguiente gordo es la app de Android. Si es que no queda nada
 mejorable en la web. Dime tú»*. Lo medí antes de opinar, y la respuesta es que no.

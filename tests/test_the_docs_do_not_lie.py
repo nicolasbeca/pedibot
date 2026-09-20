@@ -1,4 +1,4 @@
-"""Ningún documento dice una cifra que ya no es verdad (21-sep-2026).
+"""Ningún documento dice una cifra que ya no es verdad (20-sep-2026).
 
 El operador, repasando el proyecto: «nuestros archivos base, los `.md`, a veces tienen poca
 consistencia, hay contradicciones entre ellos». Se midió antes de opinar: **107 cifras escritas
@@ -93,7 +93,7 @@ def test_los_diarios_estan_fuera_y_se_dice_por_que() -> None:
 def test_el_candado_no_grita_cuando_la_cifra_es_de_africa() -> None:
     """«los 54 países del continente» es verdad y no es la cifra mundial.
 
-    Salto el 21-sep-2026 con una frase correcta del borrador de Emergent Ventures. El descarte
+    Salto el 20-sep-2026 con una frase correcta del borrador de Emergent Ventures. El descarte
     miraba sólo lo que iba **después** del número, y ahí «For Africa» iba delante. Un candado que
     grita cuando la frase es correcta se acaba ignorando, y entonces deja de servir.
     """
@@ -155,5 +155,5 @@ def test_el_candado_perdona_la_nota_que_explica_un_fallo() -> None:
     from scripts.check_docs import revisa
 
     verdades = {"documentos del catálogo público": 497}
-    frase = "Se recontaron el 21-sep-2026: decía 288 documentos cuando son 497"
+    frase = "Se recontaron el 20-sep-2026: decía 288 documentos cuando son 497"
     assert not _revisa_texto(revisa, verdades, frase)

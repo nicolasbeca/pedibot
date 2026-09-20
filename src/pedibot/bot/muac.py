@@ -1,6 +1,6 @@
 """La cinta del brazo: cómo se mide de verdad la desnutrición donde va este proyecto.
 
-21-sep-2026. El sitio ya calcula el peso para la talla con las tablas de la OMS y avisa de la
+20-sep-2026. El sitio ya calcula el peso para la talla con las tablas de la OMS y avisa de la
 desnutrición aguda grave. Eso sirve si hay una báscula y un tallímetro. En media África lo que
 hay es **una cinta de papel**: el agente de salud comunitario, y muchas veces la propia madre,
 mide el perímetro del brazo y lee un color. Es el método que la OMS recomienda para cribar en la
@@ -68,7 +68,7 @@ _MEDIDA_AL_REVES = re.compile(rf"({_UNIDADES})\s*(\d{{1,3}}(?:[.,]\d)?)", re.I)
 
 #: La palabra «brazo» en las nueve lenguas, más los nombres técnicos de la medida.
 #:
-#: 21-sep-2026: la primera versión de esto pedía «perímetro braquial» o «MUAC», o sea que el
+#: 20-sep-2026: la primera versión de esto pedía «perímetro braquial» o «MUAC», o sea que el
 #: padre supiera cómo lo llama la guía. Es el mismo fallo que la palabra «percentil» (L203),
 #: repetido doce horas después. Un padre dice «el brazo le mide 11 cm».
 _BRAZO = re.compile(

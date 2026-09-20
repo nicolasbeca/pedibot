@@ -3,7 +3,7 @@
 > **Este fichero se genera. No se edita a mano.**
 > `uv run python scripts/build_datos.py` lo reescribe leyendo los ficheros de datos de verdad.
 >
-> Existe porque el 21-sep-2026 se midió cuántas cifras escritas a mano en los `.md` ya no eran
+> Existe porque el 20-sep-2026 se midió cuántas cifras escritas a mano en los `.md` ya no eran
 > verdad: **107**. Ninguna estaba mal el día que se escribió. Una cifra tecleada no discute con
 > nadie: el dato cambia y la frase se queda, y cuanto más útil es el documento más veces se ha
 > copiado esa frase.
@@ -30,7 +30,7 @@ Contado el **2026-09-20**.
 | documentos del catálogo público | **497** | dataset/sources.json (CC0) |
 | documentos del catálogo interno | **500** | incluye los que no se pueden redistribuir |
 | guías publicadas | **507** | web/content/*/*.md |
-| pruebas automáticas | **9.466** | `uv run pytest --collect-only` |
+| pruebas automáticas | **9.485** | `uv run pytest --collect-only` |
 | África: países con número | **54** | los 54 del continente |
 | África: con calendario | **54** | los 54 del continente |
 | África: con curva | **49** | los 54 del continente |

@@ -2,7 +2,7 @@
 
 > **Las cifras de este documento no se escriben a mano.** `DATOS.md` lleva todas,
 > contadas de los ficheros de datos, y `scripts/check_docs.py` avisa si aquí aparece
-> una que ya no sea verdad. El 21-sep-2026 había 107 repartidas por los `.md`.
+> una que ya no sea verdad. El 20-sep-2026 había 107 repartidas por los `.md`.
 
 > Cuaderno vivo de **pedibot.xyz**: lo que se decidió y por qué, lo que está en marcha solo, y lo
 > que queda. El estado general del proyecto vive en `STATE.md`; los fallos aprendidos en

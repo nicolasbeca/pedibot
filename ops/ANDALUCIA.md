@@ -1,6 +1,6 @@
 # Sevilla y Andalucía — lo que hay cerca de casa, comprobado una por una
 
-> 21-sep-2026. Idea del operador: *«busca también ayudas económicas en Sevilla o Andalucía que
+> 20-sep-2026. Idea del operador: *«busca también ayudas económicas en Sevilla o Andalucía que
 > presentando proyectos relacionados con la tecnología o con IA ganas premios económicos. Ahí hay
 > oportunidad»*.
 >
@@ -17,7 +17,7 @@
 
 ## Lo primero, porque es la conclusión
 
-> **Resuelto el 21-sep-2026: nació en 1988**, o sea 37 años. Innovactiva es hasta los 35, así que
+> **Resuelto el 20-sep-2026: nació en 1988**, o sea 37 años. Innovactiva es hasta los 35, así que
 > **esa vía se cae y con ella la trampa de orden** que tenía este documento en pie. El alta de
 > autónomo ya no cierra nada, y por tanto se decide sólo por lo que abre. Se deja escrita la
 > sección de Innovactiva porque la lección de orden sigue valiendo para la siguiente.

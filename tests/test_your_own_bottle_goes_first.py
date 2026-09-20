@@ -1,4 +1,4 @@
-"""Si el padre dice su marca, su bote va el primero (21-sep-2026).
+"""Si el padre dice su marca, su bote va el primero (20-sep-2026).
 
 Probando las marcas africanas recién metidas: «how much Emzor paracetamol syrup for a 10 kg
 baby?» devolvía la dosis correcta y ocho líneas de concentraciones, con la suya —125 mg/5 ml— en

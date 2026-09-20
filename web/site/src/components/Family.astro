@@ -495,7 +495,7 @@ const paises = countryOptions(countryCodes as string[], lang);
     padding: 6px 0; border-top: 1px solid var(--line); display: flex; gap: 10px;
     /* `center` y no `baseline` desde que hay casilla: una caja de 44 px alineada por la línea
        base del texto se ve torcida. Y sin `wrap`, que mandaba la casilla a su propia fila en
-       cuanto el nombre de la vacuna era largo (21-sep-2026). */
+       cuanto el nombre de la vacuna era largo (20-sep-2026). */
     align-items: center; flex-wrap: nowrap;
   }
   .fam :global(.vacunas .cuando) {
@@ -509,7 +509,7 @@ const paises = countryOptions(countryCodes as string[], lang);
   .fam :global(.vacunas .ahora) { color: var(--coral); font-weight: 700; }
   .fam :global(.vacunas li.seasonal) { color: var(--ink-2); }
   /* Lo que no consta: la fila que pide hacer algo, y la única que se quedaba sin marcar de
-     ninguna forma porque el estilo seguía llamándose `past` (21-sep-2026). */
+     ninguna forma porque el estilo seguía llamándose `past` (20-sep-2026). */
   .fam :global(.vacunas li.pending) { background: var(--coral-soft); border-radius: 8px; padding-inline: 8px; }
   .fam :global(.siguiente) { margin: 8px 0 0; font-size: .92rem; }
   .fam :global(.siguiente .ics) { margin-inline-start: 8px; font-size: .86rem; white-space: nowrap; }

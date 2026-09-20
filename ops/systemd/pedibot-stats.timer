@@ -1,8 +1,13 @@
 [Unit]
-Description=PediBot: cifras de uso al día, cada seis horas
+Description=PediBot: cifras de uso al día, cada hora
+# 20-sep-2026: era cada seis horas, y el día que se publicó el Show HN se vio por qué no basta.
+# `/api/stats` se cita fuera como «aquí están las cifras de uso», y la parte de visitas es una
+# foto de la última vez que corrió esto, no algo en vivo: en pleno lanzamiento devolvía números
+# de seis horas antes, que es justo cuando hacen falta al día. El trabajo es leer el registro de
+# Caddy con journalctl y tarda unos segundos, así que cada hora no cuesta nada y quita la venda.
 
 [Timer]
-OnCalendar=*-*-* 02,08,14,20:10:00 Europe/Madrid
+OnCalendar=*-*-* *:10:00 Europe/Madrid
 Persistent=true
 Unit=pedibot-stats.service
 

@@ -1,7 +1,7 @@
 # Show HN — borrador para publicar
 
 Guardado aquí porque la vez anterior se redactó en una conversación y se perdió con ella.
-**Las cifras se releen antes de publicar.** Se recontaron el 21-sep-2026 contra `DATOS.md`:
+**Las cifras se releen antes de publicar.** Se recontaron el 20-sep-2026 contra `DATOS.md`:
 decía 288 documentos cuando son 497, 18 organismos cuando son 21 y 7 calendarios cuando son 66,
 porque el texto se escribió el 6 de septiembre y el candado de `scripts/check_docs.py` no lo
 cogía por una palabra en medio («288 **published** documents»). Eso ya está arreglado, pero

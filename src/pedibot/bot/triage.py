@@ -278,7 +278,7 @@ class TriageResult:
     matched: list[Rule]
     age_months: float | None
     has_fever: bool
-    #: Un motivo que no viene de una regla. Lo usa la cinta del brazo (21-sep-2026): el hallazgo
+    #: Un motivo que no viene de una regla. Lo usa la cinta del brazo (20-sep-2026): el hallazgo
     #: es una MEDIDA, no un síntoma escrito, así que no hay regla que lo haya encontrado y aun
     #: así el aviso tiene que decir por qué. Sin esto, la alternativa era inventar una regla
     #: falsa o un segundo sistema de avisos, y las dos son peores.

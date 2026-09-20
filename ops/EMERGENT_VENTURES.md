@@ -1,6 +1,6 @@
 # Emergent Ventures — el borrador, listo para pegar
 
-> 21-sep-2026. La vía número 3 de `ops/FINANCIACION.md`, y la primera que cuesta cero y tiene a
+> 20-sep-2026. La vía número 3 de `ops/FINANCIACION.md`, y la primera que cuesta cero y tiene a
 > alguien leyendo: **Tyler Cowen lee personalmente todas las solicitudes**. De 1.000 a 50.000 $,
 > sin participación, sin coste, y el formulario tiene un desplegable de región con **India,
 > África, el Caribe y Ucrania**, que es literalmente donde está este proyecto.

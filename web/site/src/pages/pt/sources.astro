@@ -10,6 +10,16 @@ const lang = 'pt'; const s = t(lang);
     <h1 style="margin-top:8px">{s.srcpage_h1}</h1>
     <p class="lede">{s.srcpage_lede}</p>
     <SourcesTable lang={lang} />
+    {/* 20-sep-2026: el día del Show HN se comprobó lo obvio y no estaba. El catálogo se
+        puede descargar entero —lo dice el memo, lo dice la portada y es un requisito para
+        que esto sea un bien público digital— pero LA PÁGINA DE FUENTES no lo enlazaba.
+        Quien llega aquí queriendo los datos es justo quien no los encontraba. El CSV sí
+        colgaba de la portada; el JSON, de ningún sitio salvo el memo, que es noindex. */}
+    <p class="n bajar">
+      {s.srcpage_get_a}
+      <a href="/dataset/sources.csv" download>CSV</a>{s.srcpage_get_or}<a
+        href="/dataset/sources.json" download>JSON</a>{s.srcpage_get_b}
+    </p>
     {/* 19-sep-2026: el enlace vivía en el pie de TODAS las páginas y el operador
         preguntó qué era. Aquí es donde encaja, y dicho con palabras. Tiene que seguir
         existiendo como enlace: estuvo huérfano treinta días y ningún rastreador lo
@@ -17,3 +27,9 @@ const lang = 'pt'; const s = t(lang);
     <p class="n" style="margin-top:26px">{s.srcpage_llms}<a href="/llms.txt">llms.txt</a></p>
   </div>
 </Base>
+
+<style>
+  /* Astro encapsula los estilos por página, y esto se repite en las ocho. */
+  .bajar { margin-top: 26px; }
+  .bajar a { font-weight: 600; }
+</style>

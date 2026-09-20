@@ -34,41 +34,67 @@ def _lastmods(xml: str) -> dict[str, str]:
     }
 
 
+def _construye(nombre: str) -> pathlib.Path | None:
+    """Construye el sitio a una carpeta aparte y devuelve su sitemap, o None si no arrancó.
+
+    Dentro del propio sitio a propósito: con `--outDir` a la carpeta temporal del sistema, npx
+    se cae en Windows con una aserción de libuv antes de construir nada.
+    """
+    salida = SITE / nombre
+    shutil.rmtree(salida, ignore_errors=True)
+    r = subprocess.run(  # noqa: S602 — comando fijo, sin nada del exterior
+        f"npx astro build --outDir {nombre}",
+        cwd=SITE,
+        capture_output=True,
+        text=True,
+        timeout=900,
+        shell=True,
+    )
+    if r.returncode != 0:
+        return None
+    sitemap = salida / "sitemap-0.xml"
+    return sitemap if sitemap.exists() else None
+
+
 def test_rebuilding_without_changes_does_not_move_a_single_date():
-    antes = DIST / "sitemap-0.xml"
-    if not antes.exists():
-        pytest.skip("el sitio no está construido en esta copia")
+    """Se construye DOS VECES y se comparan entre sí, no contra el `dist/` de la copia.
+
+    20-sep-2026, y es una corrección de esta misma prueba. Antes comparaba una construcción
+    nueva contra el `dist/` que hubiera en el disco, y eso sólo mide lo que dice su nombre
+    —«reconstruir sin tocar nada»— **si ese `dist/` está al día**. El día del Show HN, al añadir
+    el enlace de descarga a la página de fuentes, tocar `src/i18n.ts` movió 2.184 fechas y esto
+    cantó un fallo donde había un cambio legítimo: justo lo que la otra prueba de este fichero
+    ya explica que ocurre, porque en `i18n.ts` vive el texto visible de todas las páginas.
+
+    Un candado que salta con cualquier cambio normal se acaba ignorando, y entonces deja de
+    avisar el día que el fallo es de verdad. La salida barata era saltársela cuando el `dist/`
+    estuviera viejo, pero entonces no correría casi nunca, que es otra forma de no avisar. Dos
+    construcciones seguidas sí prueban la propiedad pase lo que pase en el disco, y cuestan unos
+    segundos cada una.
+    """
     if shutil.which("npx") is None:
         pytest.skip("sin Node en esta máquina")
 
-    # dentro del propio sitio a propósito: con --outDir a la carpeta temporal del sistema, npx
-    # se cae en Windows con una aserción de libuv antes de construir nada
-    salida = SITE / ".sitemap-check"
-    shutil.rmtree(salida, ignore_errors=True)
+    uno = dos = None
     try:
-        r = subprocess.run(
-            "npx astro build --outDir .sitemap-check",
-            cwd=SITE,
-            capture_output=True,
-            text=True,
-            timeout=900,
-            shell=True,
-        )
-        if r.returncode != 0:
-            pytest.skip(f"la construcción de comprobación no arrancó: {r.stderr[-200:]}")
+        uno = _construye(".sitemap-check-a")
+        if uno is None:
+            pytest.skip("la construcción de comprobación no arrancó")
+        dos = _construye(".sitemap-check-b")
+        if dos is None:
+            pytest.skip("la segunda construcción de comprobación no arrancó")
 
-        sitemap = salida / "sitemap-0.xml"
-        assert sitemap.exists(), "la construcción no dejó sitemap"
-
-        a = _lastmods(antes.read_text(encoding="utf-8"))
-        b = _lastmods(sitemap.read_text(encoding="utf-8"))
+        a = _lastmods(uno.read_text(encoding="utf-8"))
+        b = _lastmods(dos.read_text(encoding="utf-8"))
+        assert a, "la construcción no dejó fechas en el sitemap"
         movidas = sorted(u for u in a.keys() & b.keys() if a[u] != b[u])
         assert not movidas, (
             f"{len(movidas)} URLs cambian de fecha al reconstruir sin tocar nada, y el sitemap "
             f"deja de ser creíble: {movidas[:4]}"
         )
     finally:
-        shutil.rmtree(salida, ignore_errors=True)
+        for n in (".sitemap-check-a", ".sitemap-check-b"):
+            shutil.rmtree(SITE / n, ignore_errors=True)
 
 
 def test_every_date_comes_from_a_file_and_not_from_the_clock():

@@ -1,4 +1,4 @@
-"""La cinta del brazo, que es como se mide la desnutrición donde va esto (21-sep-2026).
+"""La cinta del brazo, que es como se mide la desnutrición donde va esto (20-sep-2026).
 
 El sitio ya calculaba el peso para la talla con las tablas de la OMS. Eso sirve **si hay una
 báscula y un tallímetro**. En media África lo que hay es una cinta de papel: el agente de salud
@@ -137,7 +137,7 @@ def test_el_motor_la_usa() -> None:
 
 @pytest.mark.parametrize("lang", IDIOMAS)
 def test_el_aviso_rojo_dice_por_que(lang: str) -> None:
-    """21-sep-2026, en vivo: la respuesta salía marcada urgente y **sin recuadro rojo**.
+    """20-sep-2026, en vivo: la respuesta salía marcada urgente y **sin recuadro rojo**.
 
     El aviso lo construye el triaje a partir de las reglas que han saltado, y aquí no ha saltado
     ninguna: el mensaje del padre no trae un síntoma, trae una medida. Sin un motivo propio, una

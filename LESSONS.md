@@ -987,7 +987,7 @@ Queda escrito lo que no se arregló: el suajili dice «uzito wa kilo 8», con la
 el lector espera el número primero. Está en una prueba que **falla el día que se arregle**, para
 que alguien venga a quitarla.
 
-## L204 · El hueco de África no era clínico: era no haber mirado sus estanterías (21-sep-2026)
+## L204 · El hueco de África no era clínico: era no haber mirado sus estanterías (20-sep-2026)
 
 Medido, país por país, antes de decidir qué hacer:
 
@@ -1017,7 +1017,7 @@ que la fila de abajo era tinta y una madre en Nairobi habría leído que eso se 
 Unido. **Añadir a ciegas a un catálogo que ya tiene la entrada es un fallo que no avisa**, y
 ahora hay una prueba que lo caza.
 
-## L205 · La misma puerta mal escrita, doce horas después (21-sep-2026)
+## L205 · La misma puerta mal escrita, doce horas después (20-sep-2026)
 
 Ayer: la curva de crecimiento pedía la palabra «percentil», y un padre dice «¿está bien?» (L203).
 
@@ -1043,7 +1043,7 @@ De propina, el `\b` que no existe detrás del devanagari, que ya estaba anotado 
 volvió a aparecer aquí: «सेमी» acaba en una marca combinante y no hay transición que detectar.
 `(?!\w)` sí funciona, porque mira el carácter siguiente en vez de buscar un borde.
 
-## L206 · Antes de recomendar pagar, mirar si eso ha servido para alguien (21-sep-2026)
+## L206 · Antes de recomendar pagar, mirar si eso ha servido para alguien (20-sep-2026)
 
 Escribí el plan entero de Backable —mecánica verificada, seis capítulos, una cifra recomendada
 de 262.500 $— **sin comprobar si en esa plataforma se había financiado algo alguna vez**. Lo
@@ -1070,7 +1070,7 @@ para cualquier sitio donde haya que pagar o registrarse:
 La mecánica sólo importa si las cuatro salen bien. Y los quince dólares no son el coste: el
 coste es el tiempo preparándolo y el golpe de fallar en público.
 
-## L207 · Que mueva dinero no basta: tiene que haber alguien decidiendo (21-sep-2026)
+## L207 · Que mueva dinero no basta: tiene que haber alguien decidiendo (20-sep-2026)
 
 Ayer aprendí a comprobar si una plataforma ha financiado algo antes de recomendarla (L206). Hoy
 el operador añadió la mitad que faltaba, y es la que de verdad decide:
@@ -1099,7 +1099,7 @@ hay que ganar un concurso de popularidad contra monedas de perros. **Lo que aqu�
 multitud; lo que tenemos es un producto que aguanta que lo miren de cerca.** Hay que ir a donde
 miran de cerca.
 
-## L208 · Hay dos puertas, y con una basta: que alguien decida, o que alguien te vea (21-sep-2026)
+## L208 · Hay dos puertas, y con una basta: que alguien decida, o que alguien te vea (20-sep-2026)
 
 Escribí L207 y me pasé de frenada: la reduje a «o hay un filtro humano o no vale». El operador lo
 corrigió media hora después:
@@ -1123,7 +1123,7 @@ Así que la pregunta 3 tiene dos mitades y basta con una:
 Lo que se cae sigue siendo lo mismo, y ahora por las dos a la vez: donde reparte la popularidad
 **y** el público no tiene nada que ver con esto. Ahí ni deciden ni te ven.
 
-## L209 · Un descargo de responsabilidad no cambia lo que el programa hace (21-sep-2026)
+## L209 · Un descargo de responsabilidad no cambia lo que el programa hace (20-sep-2026)
 
 Salió mirando financiación europea, y es de las que hay que tener escritas antes de que importen.
 En Europa un programa que a partir de síntomas devuelve una recomendación de a dónde ir es
@@ -1149,7 +1149,7 @@ comercial.
 En solicitudes cortas, donde no cabe la distinción, sigue valiendo lo otro: decir lo que hace y
 no la etiqueta que lo regula.
 
-## L210 · Un trámite no sólo abre puertas: cierra otras, y el orden cuesta dinero (21-sep-2026)
+## L210 · Un trámite no sólo abre puertas: cierra otras, y el orden cuesta dinero (20-sep-2026)
 
 Repasando ayudas de Sevilla y Andalucía llegué a una conclusión limpia y la iba a escribir tal
 cual: «cuatro de estas seis se caen porque piden entidad, y eso se arregla dándote de alta de
@@ -1174,3 +1174,57 @@ Hay un segundo trozo, más incómodo: la respuesta correcta dependía de un dato
 edad, porque Innovactiva es hasta los 35—. Cuando una recomendación se bifurca en algo que no
 puedo mirar, lo honesto es escribir las dos ramas enteras y preguntar lo mínimo, no elegir la
 rama que me parece más probable y presentarla como la respuesta.
+
+## L211 · Una fecha también es un dato, y la escribí a mano 57 veces (20-sep-2026)
+
+Hoy monté `DATOS.md` y `scripts/check_docs.py` porque **una cifra tecleada no discute con nadie**:
+el dato cambia, la frase se queda, y cuanto más útil es el documento más veces se ha copiado.
+Encontré 107 cifras así y las arreglé.
+
+Y mientras tanto fechaba todo el trabajo del día como **21-sep-2026**. Es 20. Cincuenta y siete
+veces, en veintiséis ficheros, incluidos comentarios de código y docstrings de pruebas. En el
+mismo commit en que escribí la regla.
+
+Lo que hace esto peor que un despiste: **el fichero generado tenía la fecha bien al lado**.
+`DATOS.md` decía «Contado el 2026-09-20», porque la saca del sistema; yo escribí 21 en su
+cabecera. Tenía la respuesta correcta en pantalla y escribí la otra.
+
+Por qué pasó: arrastré la fecha de un resumen de contexto anterior y no la comprobé, porque «la
+fecha» no me pareció un dato. Lo es. Un `.md` que dice «medido el 21-sep» cuando se midió el 20
+es exactamente la clase de frase que el candado existe para cazar, y el candado no mira fechas.
+
+**La regla:** antes de fechar nada, `date`. Y si aparece una fecha en más de dos sitios en una
+sesión, sale de una variable o de un fichero generado, no de la memoria.
+
+Lo que NO voy a hacer, y lo dejo escrito para no caer: **no voy a extender el candado a las
+fechas.** Los diarios están llenos de fechas legítimamente viejas, y un detector que persiga eso
+generaría cien falsos positivos por cada acierto — que es justo el fallo que arreglé esta mañana
+con lo de los 54 países de África. El arreglo aquí no es más máquina: es mirar el reloj.
+
+## L212 · El tercer candado que gritaba con una frase correcta, el mismo día (20-sep-2026)
+
+Tres veces hoy, y las tres del mismo tipo, así que ya no es casualidad sino una forma de
+equivocarme que conviene tener escrita.
+
+1. `check_docs.py` señalaba «all 54 countries have their emergency number» —los 54 del
+   continente— porque sólo miraba lo que iba **detrás** del número.
+2. El mismo candado **callaba** con «288 published documents» porque el patrón pedía la cifra
+   pegada al sustantivo y había un adjetivo en medio.
+3. Y `test_sitemap_lastmod.py`, que se llama «reconstruir sin tocar nada no puede mover ni una
+   fecha», comparaba una construcción nueva contra el `dist/` **que hubiera en el disco**. Al
+   añadir el enlace de descarga a la página de fuentes toqué `i18n.ts`, movieron 2.184 fechas, y
+   cantó un fallo donde había un cambio legítimo.
+
+Lo del tercero duele más porque **el propio fichero ya lo explicaba**: la segunda prueba de ahí
+dice, con todas las letras, que tocar `i18n.ts` cambia de verdad las 792 páginas y que la primera
+versión de ese candado se cayó justo por eso. Se arregló una prueba y se dejó la de al lado con
+el mismo fallo.
+
+El patrón: **una prueba mide lo que dice su nombre sólo si controla las condiciones de las que
+depende.** Ésa comparaba contra un estado del disco que no establecía, así que en realidad medía
+«reconstruir después de lo que haya en el árbol», que no es una propiedad de nada.
+
+Y la salida barata era saltársela cuando el `dist/` estuviera viejo. La descarté: entonces no
+correría casi nunca, que es otra forma de no avisar. Se arregló construyendo **dos veces** y
+comparando las dos entre sí — veintiocho segundos, y ya prueba lo que promete pase lo que pase
+en el disco.

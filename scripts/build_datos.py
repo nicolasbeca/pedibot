@@ -1,4 +1,4 @@
-"""DATOS.md: todas las cifras del proyecto, contadas y nunca tecleadas (21-sep-2026).
+"""DATOS.md: todas las cifras del proyecto, contadas y nunca tecleadas (20-sep-2026).
 
 El operador, repasando los `.md`: «a veces tienen poca consistencia, hay contradicciones entre
 ellos». Medido antes de opinar: **107 cifras escritas a mano no cuadraban** con lo que dicen los
@@ -129,7 +129,7 @@ CABECERA = """# DATOS.md — las cifras del proyecto, contadas
 > **Este fichero se genera. No se edita a mano.**
 > `uv run python scripts/build_datos.py` lo reescribe leyendo los ficheros de datos de verdad.
 >
-> Existe porque el 21-sep-2026 se midió cuántas cifras escritas a mano en los `.md` ya no eran
+> Existe porque el 20-sep-2026 se midió cuántas cifras escritas a mano en los `.md` ya no eran
 > verdad: **107**. Ninguna estaba mal el día que se escribió. Una cifra tecleada no discute con
 > nadie: el dato cambia y la frase se queda, y cuanto más útil es el documento más veces se ha
 > copiado esa frase.
