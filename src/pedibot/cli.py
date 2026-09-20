@@ -22,6 +22,7 @@ LANGS_PUBLICADAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
 app = typer.Typer(help="PediBot v2 — pediatric assistant grounded in verified guidelines.")
 
+
 #: Errores que son del USUARIO, no del programa: se dicen en una línea y se sale con 2, que es
 #: lo que usa `typer` para «me has pedido algo imposible». Una traza de Python de veinte líneas
 #: dice «esto está roto», y no lo está: le han pedido un fármaco que no existe (11-sep-2026).
@@ -41,7 +42,11 @@ def _version_callback(valor: bool) -> None:
 @app.callback()
 def _raiz(
     version_: bool = typer.Option(
-        None, "--version", "-V", callback=_version_callback, is_eager=True,
+        None,
+        "--version",
+        "-V",
+        callback=_version_callback,
+        is_eager=True,
         help="Qué código está corriendo de verdad.",
     ),
 ) -> None:
@@ -114,7 +119,7 @@ def ingest(
     # viejos y devolvía 0: doce timers miran `$?` y habrían dado la ingesta por buena
     # (11-sep-2026). Es la L127 por el otro lado — allí conté un código de salida como si
     # fuera un resultado; aquí el código de salida no contaba el resultado.
-    fallidos = by_status.get('error', 0) + by_status.get('no_text', 0)
+    fallidos = by_status.get("error", 0) + by_status.get("no_text", 0)
     if fallidos:
         typer.secho(
             f"ingesta incompleta: {fallidos} de {len(reports)} documentos sin procesar",
@@ -184,6 +189,7 @@ def dose(drug: str, kg: float, months: float | None = None, lang: str = "en") ->
         typer.echo(format_result(calculate(drug, kg, months), lang))
     except DoseError as e:
         raise _falla(str(e), "fármacos: " + ", ".join(sorted(DRUGS))) from None
+
 
 @app.command()
 def ask(
@@ -354,9 +360,7 @@ def publish(
             typer.echo(f"    social: {res or 'no providers configured'}")
 
 
-def _llm_eval(
-    golden: Path, report_dir: Path, use_judge: bool = False, repeat: int = 1
-) -> None:
+def _llm_eval(golden: Path, report_dir: Path, use_judge: bool = False, repeat: int = 1) -> None:
     """Con `repeat > 1` se ejecuta N veces y se promedia.
 
     Hace falta porque la medición NO es reproducible: el mismo prompt, medido dos veces sin
@@ -566,6 +570,7 @@ def broadcast(
     # la firma va al final a propósito: si el proceso muere antes, su ausencia es la prueba (L117)
     typer.echo(f"BROADCAST-FIN {what} publicadas={len(posts)}")
 
+
 @app.command()
 def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
     """Revisión de la instalación: ¿casa cada pieza con las demás?
@@ -625,13 +630,18 @@ def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
     if catalogo and indexados:
         huerfanos = sorted(indexados - set(catalogo))
         if huerfanos:
-            mal("huérfanos", f"{len(huerfanos)} indexados sin catálogo (sin licencia): {huerfanos[:4]}")
+            mal(
+                "huérfanos",
+                f"{len(huerfanos)} indexados sin catálogo (sin licencia): {huerfanos[:4]}",
+            )
         else:
             ok("huérfanos", "ninguno; todo lo indexado tiene licencia registrada")
 
     # ── capa de seguridad ─────────────────────────────────────────────────────────────────
     try:
-        reglas = yaml.safe_load((s.config_dir / "red_flags.yaml").read_text(encoding="utf-8"))["rules"]
+        reglas = yaml.safe_load((s.config_dir / "red_flags.yaml").read_text(encoding="utf-8"))[
+            "rules"
+        ]
         sin_fuente = [r["id"] for r in reglas if not r.get("source")]
         rotas = [
             (r["id"], r["source"])
@@ -639,7 +649,10 @@ def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
             if r.get("source") and catalogo and r["source"] not in catalogo
         ]
         if sin_fuente or rotas:
-            mal("alarmas", f"{len(reglas)} reglas; sin fuente {sin_fuente}, fuente inexistente {rotas}")
+            mal(
+                "alarmas",
+                f"{len(reglas)} reglas; sin fuente {sin_fuente}, fuente inexistente {rotas}",
+            )
         else:
             ok("alarmas", f"{len(reglas)} reglas, todas con una ficha que existe detrás")
     except Exception as e:  # noqa: BLE001
@@ -649,27 +662,38 @@ def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
     try:
         from pedibot.bot.dose import DRUGS
 
-        drugs_yaml = yaml.safe_load((s.config_dir / "drugs.yaml").read_text(encoding="utf-8"))["drugs"]
+        drugs_yaml = yaml.safe_load((s.config_dir / "drugs.yaml").read_text(encoding="utf-8"))[
+            "drugs"
+        ]
         parejas = {"paracetamol": "paracetamol", "ibuprofen": "ibuprofeno"}
         desajuste = []
         for clave_y, clave_c in parejas.items():
             del_cat = {float(x) for x in drugs_yaml[clave_y]["strengths_mg_per_ml"]}
             de_calc = {p.mg_per_ml for p in DRUGS[clave_c].presentations}
             if del_cat != de_calc:
-                desajuste.append(f"{clave_y}: catálogo {sorted(del_cat)} ≠ calculadora {sorted(de_calc)}")
+                desajuste.append(
+                    f"{clave_y}: catálogo {sorted(del_cat)} ≠ calculadora {sorted(de_calc)}"
+                )
         marcas = sum(len(v.get("brands") or []) for v in drugs_yaml.values())
         if desajuste:
             mal("dosis", "; ".join(desajuste))
         else:
-            ok("dosis", f"{marcas} marcas, y las concentraciones del catálogo son las que se ofrecen")
+            ok(
+                "dosis",
+                f"{marcas} marcas, y las concentraciones del catálogo son las que se ofrecen",
+            )
     except Exception as e:  # noqa: BLE001
         mal("dosis", f"no se pueden comprobar: {e}")
 
     # ── emergencias ───────────────────────────────────────────────────────────────────────
     try:
-        numeros = yaml.safe_load((s.config_dir / "emergency_numbers.yaml").read_text(encoding="utf-8"))
+        numeros = yaml.safe_load(
+            (s.config_dir / "emergency_numbers.yaml").read_text(encoding="utf-8")
+        )
         paises = {k for k in numeros if k != "default"}
-        drugs_yaml = yaml.safe_load((s.config_dir / "drugs.yaml").read_text(encoding="utf-8"))["drugs"]
+        drugs_yaml = yaml.safe_load((s.config_dir / "drugs.yaml").read_text(encoding="utf-8"))[
+            "drugs"
+        ]
         servidos = {
             c
             for v in drugs_yaml.values()
@@ -727,6 +751,7 @@ def doctor(verbose: bool = typer.Option(False, "--verbose", "-v")) -> None:
         finally:
             con.close()
         if total:
+
             def pct(k: str) -> str:
                 return f"{100 * veredictos.get(k, 0) / total:.0f} %"
 

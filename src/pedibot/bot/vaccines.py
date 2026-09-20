@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import datetime as _dt
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -687,6 +688,9 @@ class Vaccines:
             "source": c["source"],
             "source_url": c.get("source_url", ""),
             "note": c["note"][data_lang(c["note"], lang)],
+            # En ISO, siempre. La cita no lo lleva dentro a propósito: «consultado el» es
+            # nuestro, no del documento, y cada pantalla lo escribe en su idioma.
+            "checked": str(c.get("checked") or ""),
         }
 
     def at_age(
@@ -705,6 +709,174 @@ def is_vaccine_question(text: str) -> bool:
     return bool(_VACC.search(text))
 
 
+def fecha_comprobada(meta: dict[str, str], lang: str) -> str:
+    """« (comprobado el 18 de septiembre de 2026)», o nada si no consta.
+
+    El día y el mes en cifras se leen al revés en medio mundo: «09-18» es septiembre para un
+    lector y el 9 de un mes dieciocho que no existe para el otro. Con el mes escrito no hay
+    forma de equivocarse, y es una línea de pie que se lee una vez.
+    """
+    iso = meta.get("checked")
+    if not iso:
+        return ""
+    T = tool_strings(lang)
+    plantilla = T.get("vax_checked")
+    if not plantilla:
+        return ""
+    try:
+        dia = _dt.date.fromisoformat(iso)
+    except ValueError:
+        return ""
+    return plantilla.format(date=_fecha_larga(dia, lang))
+
+
+#: Los meses, escritos, en las ocho lenguas. `Intl` hace esto en el navegador; aquí no hay
+#: navegador, y `locale` depende de lo que tenga instalado el servidor, que no es de fiar.
+_MESES: dict[str, tuple[str, ...]] = {
+    "en": (
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+    ),
+    "es": (
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre",
+    ),
+    "fr": (
+        "janvier",
+        "février",
+        "mars",
+        "avril",
+        "mai",
+        "juin",
+        "juillet",
+        "août",
+        "septembre",
+        "octobre",
+        "novembre",
+        "décembre",
+    ),
+    "de": (
+        "Januar",
+        "Februar",
+        "März",
+        "April",
+        "Mai",
+        "Juni",
+        "Juli",
+        "August",
+        "September",
+        "Oktober",
+        "November",
+        "Dezember",
+    ),
+    "ru": (
+        "января",
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "октября",
+        "ноября",
+        "декабря",
+    ),
+    "ar": (
+        "يناير",
+        "فبراير",
+        "مارس",
+        "أبريل",
+        "مايو",
+        "يونيو",
+        "يوليو",
+        "أغسطس",
+        "سبتمبر",
+        "أكتوبر",
+        "نوفمبر",
+        "ديسمبر",
+    ),
+    "pt": (
+        "janeiro",
+        "fevereiro",
+        "março",
+        "abril",
+        "maio",
+        "junho",
+        "julho",
+        "agosto",
+        "setembro",
+        "outubro",
+        "novembro",
+        "dezembro",
+    ),
+    "hi": (
+        "जनवरी",
+        "फ़रवरी",
+        "मार्च",
+        "अप्रैल",
+        "मई",
+        "जून",
+        "जुलाई",
+        "अगस्त",
+        "सितंबर",
+        "अक्तूबर",
+        "नवंबर",
+        "दिसंबर",
+    ),  # El suajili entra por la capa de seguridad y todavía no tiene web; la fecha sí la
+    # escribe, porque el triaje le contesta y una fecha en inglés ahí canta igual.
+    "sw": (
+        "Januari",
+        "Februari",
+        "Machi",
+        "Aprili",
+        "Mei",
+        "Juni",
+        "Julai",
+        "Agosti",
+        "Septemba",
+        "Oktoba",
+        "Novemba",
+        "Desemba",
+    ),
+}
+
+
+def _fecha_larga(dia: _dt.date, lang: str) -> str:
+    meses = _MESES.get(lang) or _MESES["en"]
+    mes = meses[dia.month - 1]
+    if lang == "en":
+        return f"{mes} {dia.day}, {dia.year}"
+    if lang == "de":
+        return f"{dia.day}. {mes} {dia.year}"
+    if lang in ("ru", "ar", "hi", "sw"):
+        return f"{dia.day} {mes} {dia.year}"
+    if lang == "fr":
+        return f"{dia.day} {mes} {dia.year}"
+    return f"{dia.day} de {mes} de {dia.year}"
+
+
 def format_answer(v: Vaccines, country: str, age_months: float | None, lang: str = "en") -> str:
     T = tool_strings(lang)
     sep = list_separator(lang)
@@ -714,7 +886,7 @@ def format_answer(v: Vaccines, country: str, age_months: float | None, lang: str
         lines = [f"{m['name']}:"]
         for s in sched:
             lines.append(f"• {s.label}: " + sep.join(s.vaccines))
-        lines.append(T["vax_source"] + m["source"] + ". " + m["note"])
+        lines.append(T["vax_source"] + m["source"] + fecha_comprobada(m, lang) + ". " + m["note"])
         return "\n".join(lines)
     due, nxt = v.at_age(country, age_months, lang)
     lines = []
@@ -726,5 +898,5 @@ def format_answer(v: Vaccines, country: str, age_months: float | None, lang: str
         lines.append(T["vax_none"])
     if nxt:
         lines.append(T["vax_next"].format(label=nxt.label) + sep.join(nxt.vaccines))
-    lines.append(T["vax_source"] + m["source"] + ". " + m["note"])
+    lines.append(T["vax_source"] + m["source"] + fecha_comprobada(m, lang) + ". " + m["note"])
     return "\n".join(lines)

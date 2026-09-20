@@ -1415,7 +1415,6 @@ def _nombres_oms() -> dict[str, str]:
 
 def yaml_de(iso3: str, año: int, tabla: list[dict], regional: list[str]) -> str:
     iso2, nombres = PAISES[iso3]
-    hoy = dt.date.today().strftime("%d-%m-%Y")
     titulo = {
         lg: nombres[lg]
         + " — "
@@ -1432,14 +1431,19 @@ def yaml_de(iso3: str, año: int, tabla: list[dict], regional: list[str]) -> str
         + f" ({año})"
         for lg in IDIOMAS
     }
+    # La cita nombra un documento real y no se traduce. La fecha de consulta, en cambio, la
+    # escribimos nosotros, así que va en su propio campo y cada pantalla la pone en el idioma
+    # de quien lee: hasta el 20-sep-2026 decía «(consultado el 18-09-2026)» EN ESPAÑOL dentro de
+    # una cita en inglés, y así se servía a un padre en hindi, en árabe y en ruso.
     fuente = (
         f"WHO/UNICEF — national immunization schedule as reported by {nombres['en']} to WHO; "
-        f"WIISE public dataset AD_SCHEDULES, {año} reporting year (consultado el {hoy})"
+        f"WIISE public dataset AD_SCHEDULES, {año} reporting year"
     )
     lineas = [f"  {iso2}:"]
     lineas.append(f"    name: {_mapa(titulo)}")
     lineas.append(f'    source: "{fuente}"')
     lineas.append(f'    source_url: "{PAGINA}{_slug_oms(iso3, nombres)}"')
+    lineas.append(f'    checked: "{dt.date.today().isoformat()}"')
     lineas.append(f"    note: {_mapa(nota(iso3, regional))}")
     lineas.append("    schedule:")
     for fila in tabla:

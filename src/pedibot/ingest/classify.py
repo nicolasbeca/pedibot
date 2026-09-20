@@ -62,6 +62,4 @@ def _compile(kws: list[str]) -> re.Pattern[str]:
     # pasa de un término a tres, así que esto decidía si una pregunta árabe llegaba a su
     # ficha o a nada. Un clítico opcional delante (ver `_AR_CLITICS` en index/store.py);
     # delante de una clave latina no puede aparecer, porque son letras árabes.
-    return re.compile(
-        r"\b(?:وال|فال|بال|كال|لل|ال|و|ب|ل|ف|ك)?(" + "|".join(trozos) + r")", re.I
-    )
+    return re.compile(r"\b(?:وال|فال|بال|كال|لل|ال|و|ب|ل|ف|ك)?(" + "|".join(trozos) + r")", re.I)

@@ -159,9 +159,7 @@ def _guides_by_lang() -> dict[str, list[tuple[str, str, str]]]:
     return out
 
 
-def weekly_guides(
-    state_path: pathlib.Path | None = None, advance: bool = True
-) -> list[Post]:
+def weekly_guides(state_path: pathlib.Path | None = None, advance: bool = True) -> list[Post]:
     """Una guía por idioma, la que lleve más tiempo sin salir."""
     p = state_path or _default_state()
     st = _state(p)

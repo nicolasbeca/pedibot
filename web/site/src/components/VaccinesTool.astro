@@ -38,6 +38,16 @@ const ages = s.vax_ages;
   const NOMBRES = JSON.parse(box.dataset.nombres || '{}');
   const nombre = (v: string) => (NOMBRES.names?.[v]?.[lang]) ?? v;
   const sep = NOMBRES.sep?.[lang] ?? ', ';
+  // «(comprobado el 18 de septiembre de 2026)». La fecha nunca en cifras: «09-18» y «18-09»
+  // son el mismo día y dos días distintos según quién lo lea, y aquí sí hay `Intl` para
+  // escribirlo como lo escribe cada lengua.
+  const comprobado = (iso?: string) => {
+    if (!iso) return '';
+    const d = new Date(iso + 'T00:00:00');
+    if (isNaN(d.getTime())) return '';
+    const dia = d.toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
+    return (T.checked || ' (checked on {d})').replace('{d}', dia);
+  };
   const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
   function render() {
     const c = V[cSel.value]; const age = aSel.value === '' ? null : Number(aSel.value);
@@ -51,7 +61,7 @@ const ages = s.vax_ages;
       const due = c.schedule.filter((s: any) => (!s.every_year && Math.abs(s.age - age) <= tol) || (s.every_year && s.age <= age));
       head = due.length ? `<p><b>${T.due}:</b> ${due.map((s: any) => esc(s.label[lang]) + ' — ' + s.vaccines.map((v: string) => esc(nombre(v))).join(sep)).join(' · ')}</p>` : `<p>${T.none}</p>`;
     }
-    out.innerHTML = head + `<p class="eyebrow" style="margin-top:10px">${T.full}</p><table>${rows}</table><p class="src">${T.src}: ${esc(c.source)}. ${esc(c.note[lang])}</p>`;
+    out.innerHTML = head + `<p class="eyebrow" style="margin-top:10px">${T.full}</p><table>${rows}</table><p class="src">${T.src}: ${esc(c.source)}${esc(comprobado(c.checked))}. ${esc(c.note[lang])}</p>`;
   }
   cSel.addEventListener('change', render); aSel.addEventListener('change', render); render();
   try { const cc = localStorage.getItem('pedibot_country'); if (cc && V[cc]) { cSel.value = cc; render(); } } catch (e) {}

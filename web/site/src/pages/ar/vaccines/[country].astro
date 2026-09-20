@@ -38,6 +38,16 @@ const jsonld = {
   audience: { '@type': 'Patient' },
   citation: data.source,
 };
+// La fecha en que se comprobó la fuente, escrita como la escribe esta lengua.
+// No va dentro de la cita: la cita nombra un documento real y «comprobado el» es
+// nuestro, no suyo (20-sep-2026).
+const checked = data.checked
+  ? ' (روجع في {d})'.replace(
+      '{d}',
+      new Date(data.checked + 'T00:00:00').toLocaleDateString('ar', { year: 'numeric', month: 'long', day: 'numeric' }),
+    )
+  : '';
+
 ---
 <Base lang={lang} title={`${title} — PediBot`} description={desc} path={`/ar/vaccines/${code.toLowerCase()}`} jsonld={jsonld}>
   <div class="narrow" style="padding:40px 18px">
@@ -56,7 +66,7 @@ const jsonld = {
       </ul>
       {(data.note?.[lang] ?? data.note?.en) && <p class="note">{data.note[lang] ?? data.note.en}</p>}
       <p class="src">
-        {data.source}{data.source_url && <> · <a href={data.source_url} rel="nofollow noopener" target="_blank">{s.vaxcountry_official}</a></>}
+        {data.source}{checked}{data.source_url && <> · <a href={data.source_url} rel="nofollow noopener" target="_blank">{s.vaxcountry_official}</a></>}
       </p>
     </div>
 
