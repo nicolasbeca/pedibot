@@ -122,15 +122,36 @@ def test_el_bote_que_se_vende_en_su_pais_va_delante(pais: str, primera: str) -> 
     assert primera.replace(" ", "") in fila.replace(" ", ""), fila
 
 
-def test_un_pais_sin_marcas_no_cambia_el_orden() -> None:
-    """Etiopía todavía no tiene ninguna, y eso tiene que dejar la lista como estaba."""
+def test_un_pais_sin_nada_conocido_no_cambia_el_orden() -> None:
+    """Un país del que no sabemos qué se vende deja la lista exactamente como estaba.
+
+    20-sep-2026: el ejemplo era Etiopía, y ha dejado de servir porque **ahora sí tiene**: la
+    lista de medicamentos sin receta de su regulador publica las concentraciones aunque no dé
+    marcas, y de ahí salieron las gotas de 100 mg/5 ml que faltaban
+    (`tests/test_the_ethiopian_drops.py`). No se toca la comprobación, se cambia el ejemplo:
+    Burundi sigue sin marca y sin registro leído, que es lo que esta prueba quiere medir.
+    """
     from pedibot.bot.dose import bottles_in_country
 
     catalogo = DrugCatalog(ROOT / "config" / "drugs.yaml")
-    assert bottles_in_country(catalogo, "paracetamol", "ET") == []
+    assert bottles_in_country(catalogo, "paracetamol", "BI") == []
     con = format_result(calculate("paracetamol", 10, 24), "en", country_forms=[])
     sin = format_result(calculate("paracetamol", 10, 24), "en")
     assert con == sin
+
+
+def test_etiopia_ya_no_esta_vacia_y_por_las_dos_moleculas() -> None:
+    """Y la otra mitad: que entre por los dos nombres con los que llega la misma molécula.
+
+    El catálogo la llama «ibuprofen» y el chat «ibuprofeno». Sin normalizar, media llamada no
+    encontraría nada y nadie se enteraría, que es la peor forma de fallar.
+    """
+    from pedibot.bot.dose import bottles_in_country
+
+    catalogo = DrugCatalog(ROOT / "config" / "drugs.yaml")
+    assert bottles_in_country(catalogo, "paracetamol", "ET")
+    assert bottles_in_country(catalogo, "ibuprofen", "ET")
+    assert bottles_in_country(catalogo, "ibuprofeno", "ET")
 
 
 def test_ninguna_presentacion_desaparece_por_el_reordenado() -> None:

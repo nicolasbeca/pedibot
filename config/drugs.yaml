@@ -43,7 +43,7 @@ drugs:
       # NAFDAC a 125 mg/5 ml: CIENTO VEINTICINCO, no ciento veinte, y esos cinco miligramos
       # son justo los que hacen que un padre coja el bote de al lado por error.
       - {name: "Emzor Paracetamol", countries: [NG], forms: ["jarabe 125 mg/5 ml"]}
-    strengths_mg_per_ml: [100, 24, 25, 30, 32, 40, 50, 200]
+    strengths_mg_per_ml: [20, 100, 24, 25, 30, 32, 40, 50, 200]
     per_dose_mg_per_kg: [10, 15]
     interval_hours: [4, 6]
     max_mg_per_kg_day: 60
@@ -102,3 +102,21 @@ drugs:
 
 # Deliberately NOT included (parents ask, guidelines say no or "doctor only"): aspirin (Reye syndrome),
 # cough syrups (AEP: not under 6), antihistamines, antibiotics, codeine.
+
+# ── Lo que se vende en cada país, cuando hay registro pero no hay marca dominante ───────────
+#
+# 20-sep-2026. Buscando marcas para los 23 países africanos que no tenían ninguna, aparece un
+# patrón: en muchos el regulador publica **qué concentraciones se dispensan**, pero ninguna marca
+# manda lo bastante como para escribirla. Meter una marca de oído sería lo que aquí no se hace;
+# tirar la lista del regulador por no traer nombres sería tirar el dato más útil de los dos,
+# porque lo que hace daño no es el nombre del bote, es la concentración.
+#
+# Esto NO se le enseña al padre como una marca. Sólo hace que las presentaciones que se venden
+# en su país salgan las primeras de la tabla de dosis (`_del_pais_primero`).
+country_forms:
+  ET:
+    source: "EFDA — Ethiopian Food and Drug Authority, list of medicines allowed OTC"
+    url: "https://www.efda.gov.et/wp-content/uploads/2022/09/OTC-medicines-list.pdf"
+    leido: "2026-09-20, apartado 3.3, página 18 del PDF"
+    paracetamol: ["gotas 100 mg/5 ml", "jarabe 120 mg/5 ml", "jarabe 250 mg/5 ml"]
+    ibuprofeno: ["jarabe 2 % (100 mg/5 ml)"]

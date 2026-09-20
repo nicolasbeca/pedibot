@@ -1278,3 +1278,36 @@ La regla, y sirve para cualquier candado: **cuando una prueba falla por un cambi
 cambia su premisa y se escribe por qué; no se borra la aserción.** La diferencia se ve a los seis
 meses, cuando alguien lee la prueba y entiende qué se comprobó, en vez de encontrar un hueco sin
 explicación.
+
+## L215 · Lo que hace daño no es el nombre del bote, es la concentración (20-sep-2026)
+
+Buscando marcas para los 23 países africanos que no tenían ninguna, el registro del regulador
+etíope —la EFDA, lista de medicamentos sin receta— no da marcas. Da algo mejor, y estuve a punto
+de descartarlo por no ser lo que buscaba:
+
+    5. Paracetamol
+       100mg/5ml             Drops    1 bottle
+       120mg/5ml, 250mg/5ml  Syrup    1 bottle
+
+Los dos jarabes ya estaban. **Las gotas no.** Y ahí no había un hueco de cobertura, había un
+riesgo: en Etiopía las gotas de paracetamol son 100 mg/5 ml —20 mg/ml— y en España, Portugal o
+la India son 100 mg/**ml**, cinco veces más concentradas. La calculadora sólo ofrecía la segunda.
+
+O sea que un padre en Adís Abeba con su bote en la mano leía «gotas» en el envase, encontraba
+«gotas 100 mg/ml» en nuestra lista y **le daba cinco veces la dosis**. No es rebuscado: es lo que
+hace cualquiera que busca en una lista la palabra que pone en su frasco.
+
+Tres cosas que sacar de aquí:
+
+1. **Iba buscando marcas y lo valioso era otra cosa.** Cuando una fuente no trae lo que fuiste a
+   buscar, hay que mirar qué trae antes de cerrarla. La cabecera de `config/drugs.yaml` lo decía
+   desde el principio: «la concentración es lo que cambia y lo que los padres confunden».
+2. **Un hueco de cobertura y un riesgo se parecen mucho por fuera.** «Etiopía no tiene marcas»
+   suena a que falta un adorno. Lo que faltaba era la única fila que impedía un error por cinco.
+3. Y de paso apareció un `KeyError` en `brands_for` ante una clave desconocida —la misma molécula
+   llega como «ibuprofen» y como «ibuprofeno»—, o sea que **la calculadora de dosis podía
+   caerse** por un nombre. Ahora devuelve vacío, que es lo que debe hacer una consulta que no
+   encuentra nada.
+
+Y el patrón de todo el día otra vez: la prueba que usaba Etiopía como ejemplo de «país sin nada»
+dejó de valer. No se borró la aserción: se cambió el ejemplo a Burundi y se escribió por qué.

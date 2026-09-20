@@ -86,7 +86,17 @@ class DrugCatalog:
         return None
 
     def brands_for(self, key: str, country: str | None = None) -> list[Brand]:
-        bs = list(self.drugs[key].brands)
+        """Las marcas de esa molécula, o ninguna si no se la conoce por ese nombre.
+
+        20-sep-2026: esto reventaba con un `KeyError` ante una clave desconocida, y la misma
+        molécula llega por dos nombres —el catálogo la llama «ibuprofen» y el resto del código
+        «ibuprofeno»—. Una consulta que no encuentra nada devuelve nada; no tumba la calculadora
+        de dosis, que es de lo último que puede caerse en esta web.
+        """
+        d = self.drugs.get(key) or self.drugs.get(key.lower())
+        if d is None:
+            return []
+        bs = list(d.brands)
         if country:
             c = country.upper()
             bs.sort(key=lambda b: (c not in b.countries, b.name))

@@ -13,9 +13,11 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from functools import lru_cache
 from typing import TYPE_CHECKING
 
 from pedibot.bot.strings import tool_strings
+from pedibot.settings import ROOT
 
 if TYPE_CHECKING:  # sólo para el tipo: en marcha no hace falta y evita el círculo
     from pedibot.bot.drugs import Brand
@@ -82,6 +84,13 @@ PARACETAMOL = Drug(
     # que está en el catálogo y tiene su página en la web— no veía su bote, y si cogía por error
     # la línea de las de 100 mg/ml se pasaba al doble.
     presentations=(
+        # 100 mg/5 ml son las GOTAS de Etiopía, según la lista de medicamentos sin receta de su
+        # regulador (EFDA), y faltaban. Probablemente sea la fila más importante de esta tabla
+        # por lo que evita: las gotas de más abajo son 100 mg/**ml**, cinco veces más
+        # concentradas, y un padre en Adís Abeba con su bote en la mano leía «gotas», encontraba
+        # «gotas 100 mg/ml» y le daba cinco veces la dosis. La etiqueta lleva la concentración
+        # entera justo para que las dos no puedan confundirse leyéndolas (20-sep-2026).
+        Presentation("gotas 100 mg/5 ml", 20.0),
         Presentation("jarabe 120 mg/5 ml", 24.0),
         # 125 mg/5 ml es el jarabe infantil estándar de India (Crocin, Dolo, Metacin,
         # Pyrigesic) y de Egipto (Cetal). Faltaba: un padre indio no podía elegir su bote,
@@ -250,11 +259,31 @@ def _misma_concentracion(presentacion: str, brand: Brand) -> bool:
     return any((c := _mg_por_ml(f)) is not None and abs(c - objetivo) < 0.05 for f in brand.forms)
 
 
-def bottles_in_country(drugs: object, drug_key: str, country: str | None) -> list[str]:
-    """Las etiquetas de los botes que se venden en ese país, según el catálogo de marcas.
+@lru_cache(maxsize=1)
+def _formas_por_pais() -> dict[str, dict[str, list[str]]]:
+    """Lo que el regulador de cada país publica, cuando no hay una marca que escribir.
 
-    Es la tabla de marcas del revés: cada marca dice en qué países está y con qué formatos, así
-    que agrupando por país sale qué hay en la estantería de allí. Cero datos nuevos.
+    20-sep-2026. Buscando marcas para los 23 países africanos que no tenían ninguna aparece un
+    patrón: en muchos el regulador publica **qué concentraciones se dispensan**, pero ninguna
+    marca manda lo bastante como para escribirla. Inventarse una marca sería lo que aquí no se
+    hace; tirar la lista del regulador por no traer nombres sería tirar el dato más útil de los
+    dos, porque **lo que hace daño no es el nombre del bote, es la concentración**.
+    """
+    import yaml  # noqa: PLC0415 — sólo si alguien pregunta por un país
+
+    d = yaml.safe_load((ROOT / "config" / "drugs.yaml").read_text(encoding="utf-8"))
+    fuera: dict[str, dict[str, list[str]]] = {}
+    for code, v in (d.get("country_forms") or {}).items():
+        fuera[code.upper()] = {k: list(x) for k, x in v.items() if isinstance(x, list)}
+    return fuera
+
+
+def bottles_in_country(drugs: object, drug_key: str, country: str | None) -> list[str]:
+    """Las etiquetas de los botes que se venden en ese país.
+
+    Dos orígenes, y los dos son datos ya escritos en otro sitio: el catálogo de marcas leído del
+    revés —cada marca dice en qué países está y con qué formatos—, y las concentraciones que
+    publica el regulador del país, para los que tienen registro pero no una marca dominante.
     """
     if not country or drugs is None:
         return []
@@ -263,6 +292,10 @@ def bottles_in_country(drugs: object, drug_key: str, country: str | None) -> lis
     for marca in getattr(drugs, "brands_for", lambda *_: [])(drug_key):
         if cc in getattr(marca, "countries", ()):
             fuera += [f for f in getattr(marca, "forms", ())]
+    # La misma molécula entra por dos nombres —«ibuprofen» desde el catálogo y «ibuprofeno» desde
+    # el chat— y sin normalizar, media llamada no encontraría nada y nadie se enteraría.
+    canonico = DRUGS[k].key if (k := drug_key.lower()) in DRUGS else k
+    fuera += _formas_por_pais().get(cc, {}).get(canonico, [])
     return fuera
 
 
