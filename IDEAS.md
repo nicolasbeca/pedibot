@@ -574,3 +574,34 @@ Y hay un premio escondido en el barrido que sí conviene mirar despacio: **Guine
 listar más presentaciones de las habituales, y **Eritrea** y **Lesoto** dan números que no
 coinciden con ninguna concentración conocida. Puede ser ruido del extractor —casi seguro— o
 puede ser otra Etiopía. Se sabrá leyendo, no adivinando.
+
+**Avance del mismo 20-sep-2026, leyendo uno a uno.** De los seis grandes que faltaban:
+
+| país | qué dice su lista | qué se ha hecho |
+|---|---|---|
+| **R.D. del Congo** (110 M) | paracetamol 125 mg/5 ml; **ibuprofeno 200 mg/5 ml**, el doble de lo habitual | añadido |
+| **Madagascar** (31 M) | ibuprofeno 20 mg/ml; paracetamol «Sirop … 125 mg/ml» | **sólo el ibuprofeno** |
+| **Angola** (37 M) | — | PDF escaneado, sin capa de texto: ilegible |
+| **Malaui** (21 M) | — | PDF escaneado: ilegible |
+
+Dos cosas que salieron de ahí y valen más que los países:
+
+**El ibuprofeno del Congo es 200 mg/5 ml en su lista infantil**, el doble de la presentación
+habitual. Un padre congoleño que cogiera la fila de 100 mg/5 ml le daría la mitad de lo que
+necesita. No es el error peligroso —quedarse corto no hace daño— pero es el error, y ahora su
+fila sale primera.
+
+**Y el paracetamol de Madagascar se queda fuera a propósito.** Su lista dice, en el texto crudo
+y sin ambigüedad: «Paracétamol Sirop avec système de mesure dose/kg **125 mg/ml**». Eso serían
+625 mg por cada 5 ml, cinco veces el jarabe normal. Desde aquí no se puede saber si es un
+producto real o una errata del documento —un *sirop avec système de mesure dose/kg* es el
+formato francés, que suele ser 24 mg/ml—, y **las dos posibilidades piden lo contrario**: si es
+real falta la fila, y si es errata añadirla crea una confundible con «125 mg/5 ml» que llevaría
+a multiplicar por cinco. Espera a una segunda fuente.
+
+Y ahí se ve para qué sirve el campo nuevo de la calculadora: mientras esa duda no se resuelva,
+**un padre de Madagascar con ese bote puede escribir su concentración y salir del paso**. Hace
+una semana no habría podido.
+
+**Dos PDF escaneados de los seis**, o sea un tercio. Para ésos hace falta otra fuente: el
+formulario nacional, el registro del regulador, o pedirlo por correo.

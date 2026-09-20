@@ -116,6 +116,29 @@ drugs:
 country_forms:
   # Leídos a ojo del PDF, uno por uno, después de que el barrido automático fallara: el script
   # decía «Mozambique: paracetamol 10 mg/ml» y su lista dice 125 y 250 mg/5 ml. Ver L218.
+  CD:
+    source: "R.D. du Congo — Liste nationale des médicaments essentiels 2020, 2ème partie: les médicaments pour enfants (repositorio de nEML de la OMS)"
+    url: "https://cdn.who.int/media/docs/default-source/essential-medicines/national-essential-medicines-lists-(neml)/afro_neml/democratic-republic-of-congo_neml_2020.pdf"
+    leido: "2026-09-20, seccion 3.1 de la lista infantil: «3.1.2 Ibuprofène 200 mg / 5 ml Suspension» y «3.1.5 Paracétamol 125 mg/ 5 ml Solution buvable»"
+    # Ojo al ibuprofeno: en su lista infantil es 200 mg/5 ml, el DOBLE de lo habitual. Un padre
+    # congoles que cogiera la fila de 100 mg/5 ml le daria la mitad de lo que necesita; por eso
+    # importa que la suya salga primera.
+    paracetamol: ["jarabe 125 mg/5 ml"]
+    ibuprofeno: ["jarabe 4 % (200 mg/5 ml)"]
+  MG:
+    source: "Madagascar — Liste nationale des médicaments essentiels et intrants de santé 2023-2026 (repositorio de nEML de la OMS)"
+    url: "https://cdn.who.int/media/docs/default-source/essential-medicines/national-essential-medicines-lists-(neml)/afro_neml/madagascar_lnmeis-2023-2026.pdf"
+    leido: "2026-09-20, pagina 9: «Ibuprofène Suspension buvable ; Sirop 20 mg/ml»"
+    # SOLO el ibuprofeno, y el paracetamol NO, a proposito. Su lista dice, literal y sin
+    # ambiguedad en el texto crudo: «Paracétamol Sirop avec système de mesure dose/kg 125 mg/ml».
+    # Eso serian 625 mg por cada 5 ml, cinco veces el jarabe normal. Desde aqui no puedo saber si
+    # es un producto real o una errata del propio documento —un sirop «avec système de mesure
+    # dose/kg» es el formato frances, que suele ser 24 mg/ml—, y las dos posibilidades piden lo
+    # contrario: si es real falta la fila, y si es errata anadirla crea una fila confundible con
+    # «125 mg/5 ml» que llevaria a multiplicar por cinco.
+    # Se queda fuera hasta tener una segunda fuente. Y mientras tanto no deja a nadie tirado:
+    # un padre de alli con ese bote puede escribir su concentracion en la calculadora.
+    ibuprofeno: ["jarabe 2 % (100 mg/5 ml)"]
   RW:
     source: "Rwanda — National List of Essential Medicines for Paediatrics, 2nd edition 2022 (repositorio de nEML de la OMS)"
     url: "https://cdn.who.int/media/docs/default-source/essential-medicines/national-essential-medicines-lists-(neml)/afro_neml/rwanda_neml_ped_2022.pdf"
