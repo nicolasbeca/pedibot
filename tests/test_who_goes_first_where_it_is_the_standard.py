@@ -186,3 +186,34 @@ def test_lo_que_la_pregunta_anterior_dijo_tambien_cuenta() -> None:
     """
     assert is_a_diarrhoea_question("mi hijo tiene diarrea ¿y qué le doy de comer?")
     assert extra_terms("tiene diarrea desde ayer y ahora vomita", "NG")
+
+
+def test_la_nota_al_redactor_solo_aparece_donde_toca() -> None:
+    """El empujon de la recuperacion funciono y no basto, y esa es la mitad interesante.
+
+    Con Kenia, el pasaje «Prevention and treatment» de la OMS ya entraba entre las fuentes —se
+    comprobo contra lo vivo— y el modelo contaba de el el suero, la alimentacion y el lavado de
+    manos, y se saltaba el zinc. No es mala fe: la regla 6 del prompt le pide 110 palabras y algo
+    tiene que caerse. Asi que hay que decirle QUE no se cae.
+    """
+    from pedibot.bot.who_first import prompt_note
+
+    assert prompt_note("my baby has watery diarrhoea", "KE")
+    assert prompt_note("mi hijo tiene diarrea", "NG")
+    assert prompt_note("mi hijo tiene diarrea", "ES") == ""
+    assert prompt_note("my child has a fever", "KE") == ""
+    assert prompt_note("mi hijo tiene diarrea", None) == ""
+
+
+def test_la_nota_no_afirma_nada_ni_lleva_cifras() -> None:
+    """Le dice que no se deje la mitad de su fuente, no que escriba algo que la fuente no dice.
+
+    Si el pasaje de la OMS no esta entre los que le han tocado, no tiene nada que obedecer.
+    """
+    import re
+
+    from pedibot.bot.who_first import PROMPT_NOTE
+
+    assert "If a WHO passage among your sources says so" in PROMPT_NOTE
+    assert not re.search(r"\d", PROMPT_NOTE), "una nota con cifras se convierte en una dosis"
+    assert "no amount and no duration" in PROMPT_NOTE

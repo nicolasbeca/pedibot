@@ -39,6 +39,7 @@ from pedibot.bot.vaccines import (
     is_vaccine_question,
 )
 from pedibot.bot.who_first import extra_terms as who_first_terms
+from pedibot.bot.who_first import prompt_note as who_first_note
 from pedibot.index.store import Hit
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
@@ -1237,6 +1238,7 @@ class Engine:
             f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
             "the sources may be in another language, translate faithfully.\n"
             f"{_age_context(tr)}"
+            f"{who_first_note(context_text, country)}"
             f"{_history_block(history)}"
             f"{CHILD_MODE if mode == 'child' else ''}"
             f"PARENT MESSAGE:\n{query}\n\nSOURCES:\n{_format_sources(hits)}"

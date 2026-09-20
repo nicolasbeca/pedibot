@@ -448,3 +448,48 @@ no arregla nada y desde fuera las dos cosas se ven igual.
 Lo que sigue sin hacerse, a propósito: **el zinc no lleva dosis en ningún sitio**. Hay una
 prueba que falla si alguno de los términos empujados lleva una cifra. La dosis depende de la
 edad y va por la vía de las dosis, con su tabla y su fuente, o no va.
+
+## I-31 · Las curvas que faltan: dónde está la fuente y por qué hoy no se añade ninguna (20-sep-2026)
+
+Retomando I-27. Hay 69 países con curva de crecimiento y el hueco no es el que yo creía. Mirando
+quién falta de verdad, lo que más pesa no es el Magreb: **faltan Pakistán y Bangladesh**, que
+son cuatrocientos millones de personas en el mercado al que vamos. También Irak, Emiratos,
+Turquía, Irán, Argelia, Libia, Marruecos, Túnez y Sudán. Hoy `pedibot.xyz/growth/ma` devuelve un
+404 y `/growth/ke` funciona.
+
+**Cómo está sostenido lo que sí existe**, que es lo que marca el listón: cada país tiene **su
+documento**. Egipto, la cartilla infantil de su Ministerio de Salud de 2018. Jordania, sus
+centros de salud materno-infantil. La India, la Academia India de Pediatría. Y 47 países
+subsaharianos, el **manual de cuadros del IMCI de OMS/UNICEF**, que usa los estándares de la OMS
+para peso-para-la-edad. Ninguno lleva una curva propia del país: llevan `calculator: who` y la
+prueba de que allí eso es lo que se usa.
+
+**Lo que se ha encontrado hoy, y no es poco.** La cadena que justifica a esos 47 es: la OMS dice
+que ese país implanta el IMCI → el manual del IMCI usa los estándares de la OMS → el niño de ahí
+se valora contra esos estándares. Y esa misma cadena **existe documentada** para varios de los
+que faltan:
+
+- la OMS tiene **páginas propias por país** sobre la implantación del IMCI en su oficina
+  regional del Mediterráneo Oriental, incluidas las de Marruecos y Sudán:
+  `emro.who.int/child-health/strategy-implementation/implementation-of-imci-in-<pais>.html`;
+- Marruecos aprobó la estrategia en marzo de 1997 y entró en fase de expansión en diciembre de
+  2000;
+- **Bangladesh** la adoptó en 1998 y en 2008 estaba en los 64 distritos y en 420 de los 483
+  subdistritos;
+- **Pakistán** aparece entre los países que la implantan, en fase tardía.
+
+**Y por qué aun así hoy no se añade ninguno.** Dos razones, y las dos son de las que no hay que
+aflojar:
+
+1. **Las páginas de la OMS devolvían 502** al intentar leerlas, las dos, en http y en https. O
+   sea que lo de arriba lo sé por un buscador y no por la fuente. Citar una fuente que no he
+   podido abrir es exactamente lo que este proyecto no hace.
+2. **La evidencia es desigual y hay que tratarla como tal.** Túnez aparece con un 8 % de los
+   centros de atención primaria en 2005, que no es «allí se usa esto». Y **Argelia y Libia no
+   aparecen en ninguna lista**. Meterlos a los cinco de golpe porque «son del Magreb» sería la
+   misma suposición de siempre con otra ropa.
+
+**Lo que queda por hacer, y es corto:** volver a intentar esas páginas cuando el servidor de la
+OMS responda, y con cada una que abra, añadir ese país con su URL como `source` y `match:
+partial`, igual que los 47. Por orden de a cuánta gente afecta: Pakistán, Bangladesh, Marruecos,
+Sudán. Argelia y Libia se quedan fuera hasta que aparezca algo que las nombre.

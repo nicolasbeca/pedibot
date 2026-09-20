@@ -85,6 +85,28 @@ def is_a_diarrhoea_question(text: str) -> bool:
     return bool(_DIARREA.search(text)) and not _NO_ES.search(text)
 
 
+#: La nota que se le da al redactor. **No afirma nada**, y eso es deliberado: le dice que no se
+#: deje la mitad de lo que su propia fuente citada enumera. Si el pasaje de la OMS no está entre
+#: los que le han tocado, no tiene nada que obedecer y la nota no hace nada.
+#:
+#: Hizo falta porque el empujón de la recuperación funcionó y no bastó: con Kenia, el pasaje
+#: «Prevention and treatment» de la OMS ya entraba entre las fuentes y el modelo contaba de él el
+#: suero, la alimentación y el lavado de manos, y se saltaba el zinc. No es mala fe: la regla 6
+#: del prompt le pide 110 palabras, y algo tiene que caerse. Esto le dice qué no.
+PROMPT_NOTE = (
+    "LOCAL STANDARD: this parent's country follows WHO guidance for childhood diarrhoea, where "
+    "oral rehydration salts and zinc supplements are BOTH listed as key treatment measures. If a "
+    "WHO passage among your sources says so, do not present rehydration as the only one and do "
+    "not drop the zinc — it is not optional there. Give no amount and no duration unless a "
+    "passage states them literally.\n"
+)
+
+
+def prompt_note(text: str, country: str | None) -> str:
+    """La nota para el redactor, o cadena vacía. Mismas condiciones que `extra_terms`."""
+    return PROMPT_NOTE if extra_terms(text, country) else ""
+
+
 def extra_terms(text: str, country: str | None) -> list[str]:
     """Los términos a empujar, o nada.
 
