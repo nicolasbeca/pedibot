@@ -1345,3 +1345,29 @@ arriba sola.
 
 Con dos pruebas que lo sujetan: la tabla no puede abrir con unas gotas, y las gotas tienen que ir
 seguidas.
+
+## L217 · Un valor por defecto es una decisión que tomas tú por alguien que no mira (20-sep-2026)
+
+Al montar el campo donde el padre escribe lo que pone su bote, puse el desplegable de unidades
+con **«mg por 5 ml» preseleccionado**. El razonamiento parecía bueno: es lo que pone la inmensa
+mayoría de los botes infantiles del mundo, y las cinco presentaciones que recomienda la OMS van
+todas así. Optimizar para el caso común.
+
+Lo vi media hora después releyendo el código ya desplegado. Un padre en España con Apiretal
+—**100 mg por ml**— escribe 100, **no toca el desplegable porque ya viene puesto**, y le salen
+7,5 ml en vez de 1,5. Cinco veces de más. Por no tocar nada, que es exactamente lo que hace todo
+el mundo con un valor por defecto: confiar en que está bien.
+
+Y lo peor es que con el número 100 **no se puede adivinar cuál quiso decir**, porque las dos
+lecturas existen de verdad: las gotas etíopes son 20 mg/ml y las españolas 100. No hay heurística
+que salve esto. Sólo puede decirlo él.
+
+**La regla:** en una entrada donde equivocarse cambia una dosis, **no hay valor por defecto**.
+Se deja vacío, no se calcula nada hasta que elige, y el que no elige no recibe un número
+plausible: no recibe ninguno.
+
+Es la segunda vez hoy que un arreglo mío abre un agujero por optimizar para el caso común
+—la primera fue poner las gotas más diluidas arriba del todo (L216)—. El patrón compartido es el
+mismo y conviene tenerlo escrito así: **lo cómodo para la mayoría es peligroso para la minoría
+cuando el precio de equivocarse no es simétrico.** Un padre que tiene que elegir pierde dos
+segundos. Un padre al que le eligen mal le da a su hijo cinco veces la dosis.

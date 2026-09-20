@@ -26,7 +26,19 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
       <label for="conc">{s.dose_bottle} <span class="opt">({s.dose_bottle_opt})</span></label>
       <div class="par">
         <input id="conc" type="number" min="1" max="1000" step="1" inputmode="decimal" placeholder="120" />
+        {/*
+          Sin unidad preseleccionada, y es lo más importante de este campo. La primera versión
+          traía «mg por 5 ml» ya puesto porque es lo que pone la mayoría de los botes — y ahí
+          estaba el fallo: un padre en España con Apiretal, que es 100 mg por **ml**, escribe
+          100, no toca el desplegable porque ya viene puesto, y le salen 7,5 ml en vez de 1,5.
+          Cinco veces de más **por no tocar nada**, que es lo que hace todo el mundo con un valor
+          por defecto. Y con el número 100 no se puede adivinar cuál quiso decir: las dos
+          lecturas existen de verdad (las gotas etíopes son 20 mg/ml y las españolas 100). Así
+          que tiene que elegir él, a conciencia, y mientras no elija no se le enseña ninguna
+          cifra.
+        */}
         <select id="unit">
+          <option value="" selected>{s.dose_bottle_pick}</option>
           <option value="5">{s.dose_bottle_per5}</option>
           <option value="1">{s.dose_bottle_perml}</option>
         </select>
@@ -95,9 +107,11 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
     // brasileñas de 200, y fuera de ahí lo más probable es que haya confundido mg/ml con
     // mg/5 ml, que es precisamente el error del que va todo esto.
     const conc = parseFloat((document.getElementById('conc') as HTMLInputElement).value);
-    const por = parseFloat((document.getElementById('unit') as HTMLSelectElement).value) || 5;
+    // Sin `|| 5`: si no ha elegido unidad, `por` es NaN y no se enseña ninguna fila. Un valor
+    // por defecto aquí es una sobredosis esperando a alguien que no toque el desplegable.
+    const por = parseFloat((document.getElementById('unit') as HTMLSelectElement).value);
     let suya = '';
-    if (conc > 0) {
+    if (conc > 0 && por > 0) {
       const mgml = conc / por;
       if (mgml < 5 || mgml > 250) {
         h += `<div class="warn">⚠️ ${S.odd}</div>`;

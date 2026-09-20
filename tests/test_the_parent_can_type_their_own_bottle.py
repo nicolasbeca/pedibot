@@ -37,6 +37,7 @@ CLAVES = (
     "dose_bottle_opt",
     "dose_bottle_per5",
     "dose_bottle_perml",
+    "dose_bottle_pick",
     "dose_bottle_yours",
     "dose_bottle_odd",
 )
@@ -61,15 +62,30 @@ def test_el_campo_existe_en_la_calculadora() -> None:
     assert "dose_bottle_per5" in t and "dose_bottle_perml" in t
 
 
-def test_las_dos_unidades_estan_y_por_5_ml_va_primera() -> None:
-    """Por 5 ml es lo que pone la inmensa mayoría de los botes infantiles del mundo.
+def test_no_hay_unidad_preseleccionada() -> None:
+    """Lo más importante del campo, y es la corrección de mi primera versión.
 
-    Las cinco presentaciones que recomienda la OMS van todas en mg/5 ml, así que es lo que más
-    veces va a ser correcto por defecto.
+    La primera traía «mg por 5 ml» ya puesto, porque es lo que pone la mayoría de los botes. Ahí
+    estaba el fallo: un padre en España con Apiretal —100 mg por **ml**— escribe 100, no toca el
+    desplegable porque ya viene puesto, y le salen 7,5 ml en vez de 1,5. **Cinco veces de más por
+    no tocar nada**, que es exactamente lo que hace todo el mundo con un valor por defecto.
+
+    Y con el número 100 no se puede adivinar cuál quiso decir: las dos lecturas existen de verdad
+    —las gotas etíopes son 20 mg/ml y las españolas 100—. Así que elige él, y mientras no elija
+    no se le enseña ninguna cifra.
     """
     t = CALC.read_text(encoding="utf-8")
+    assert '<option value="" selected>{s.dose_bottle_pick}</option>' in t, (
+        "la primera opción tiene que estar vacía y seleccionada"
+    )
     opciones = re.findall(r'<option value="([15])">\{s\.(dose_bottle_per\w+)\}', t)
     assert opciones == [("5", "dose_bottle_per5"), ("1", "dose_bottle_perml")], opciones
+    # `.value) || 5` y no sólo `|| 5`: lo segundo lo cazaba el comentario que explica por qué no
+    # se hace, y una prueba que falla por su propia explicación no sirve para nada.
+    assert ".value) || 5" not in t, (
+        "un valor por defecto en el código es la misma sobredosis por otra puerta"
+    )
+    assert "conc > 0 && por > 0" in t, "sin unidad elegida no se calcula nada"
 
 
 def test_hay_guarda_para_lo_que_no_parece_un_bote_infantil() -> None:
