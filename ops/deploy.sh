@@ -93,7 +93,7 @@ sudo -u pedibot bash -c 'cd /opt/pedibot/web/site && if [ ! -d node_modules ] ||
 # Las cifras de uso, antes de construir: /memo las lee del fichero al construirse, y sin esto
 # la pagina saldria con las del ultimo paso del temporizador o sin ninguna. Si falla, se sigue.
 sudo -u pedibot bash -c 'cd /opt/pedibot && ~/.local/bin/uv run --no-dev python ops/publish_stats.py' || echo '   (sin cifras de uso esta vez)'
-if ! sudo -u pedibot bash -c 'set -o pipefail; cd /opt/pedibot && ~/.local/bin/uv run --no-dev python scripts/export_catalog.py >/dev/null && cd web/site && SITE_URL=https://pedibot.xyz npm run build 2>&1 | tee /tmp/pedibot_build.log | grep -E "page\(s\)|rror"'; then
+if ! sudo -u pedibot bash -c 'set -o pipefail; cd /opt/pedibot && ~/.local/bin/uv run --no-dev python scripts/export_catalog.py >/dev/null && cd web/site && node scripts/export-country-names.mjs >/dev/null && SITE_URL=https://pedibot.xyz npm run build 2>&1 | tee /tmp/pedibot_build.log | grep -E "page\(s\)|rror"'; then
   echo "== EL SITIO NO SE HA CONSTRUIDO: lo que hay desplegado sigue siendo lo de antes"
   sudo -u pedibot tail -20 /tmp/pedibot_build.log 2>/dev/null || true
   exit 1

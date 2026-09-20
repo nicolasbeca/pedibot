@@ -929,3 +929,30 @@ Dos cosas que aprender, y la segunda es la que vale:
 El prompt lo prohíbe desde hoy, pero eso es una petición. El candado es un verificador: si el
 texto niega tener un número, la respuesta se rechaza y se vuelve a escribir, como ya se hacía con
 los servicios extranjeros y con las dosis inventadas.
+
+## L202 · Teníamos el dato de 90 países y la pregunta se iba al corpus (20-sep-2026)
+
+«What is the emergency number here?», con Nigeria elegido. Respuesta del chat: *«no tengo
+información fiable sobre esto en mis fuentes»*. Mientras tanto, el aviso de arriba —el nuestro,
+el determinista— llevaba el 112 escrito, sacado de la tabla que costó semanas.
+
+El corpus son fichas de sociedades pediátricas sobre fiebre, vómitos o bronquiolitis. Ninguna
+dice cuál es el número de urgencias de Nigeria, y no tiene por qué: eso está **en una tabla
+nuestra**, no en un documento clínico. La pregunta más básica de todo el sitio estaba pasando
+por el camino de las preguntas clínicas.
+
+Lo que hay detrás: **el reflejo de mandarlo todo al modelo**. Las vacunas y las dosis ya tenían
+su atajo —si la pregunta es lo que contesta una tabla, contesta la tabla— y a las urgencias
+nadie se lo puso, porque el aviso ya daba el número y parecía cubierto. No lo estaba: el aviso
+sólo aparece cuando el triaje dispara, y un padre que pregunta con calma no dispara nada.
+
+La condición que hace esto seguro, y que es la mitad interesante: **sólo con `routine`**. Si el
+niño se está atragantando, «¿cuál es el número?» no es una consulta de datos. El aviso ya manda
+llamar, y lo que el texto tiene que decir es qué hacer mientras llega la ayuda. Leer la ficha de
+teléfonos ahí sería contestar a la letra de la pregunta en vez de a lo que está pasando.
+
+De regalo, un problema que llevaba escondido desde el principio: Python no sabía decir
+«Marruecos». `locale` depende de lo que tenga instalado el servidor y una dependencia más no se
+sostenía. Node sí lo sabe, con `Intl`, y es **la misma fuente con la que la web pinta sus
+desplegables**: ahora los dos lados dicen el mismo nombre por construcción, generado y no
+escrito a mano, que son noventa países por nueve lenguas.

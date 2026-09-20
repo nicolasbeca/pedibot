@@ -10,6 +10,11 @@ import yaml
 
 from pedibot.bot.dose import DRUGS, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
+from pedibot.bot.emergency_question import (
+    country_name,
+    format_numbers,
+    is_emergency_number_question,
+)
 from pedibot.bot.growth import (
     Growth,
     explain,
@@ -425,7 +430,7 @@ class ToolLink:
     coming out of the engine would be a ninth copy waiting to drift.
     """
 
-    kind: str  # "vaccines" | "dose"
+    kind: str  # "vaccines" | "dose" | "growth" | "emergency"
     url: str
 
 
@@ -447,6 +452,9 @@ def tool_link(kind: str, lang: str, country: str | None = None) -> ToolLink:
     prefix = "" if lang == "en" else f"/{lang}"
     if kind == "vaccines":
         tail = f"/vaccines/{country.lower()}" if country else "/vaccines"
+    elif kind == "emergency":
+        # /emergency/{país} existe para los 90; sin país, el índice, que es una tabla entera
+        tail = f"/emergency/{country.lower()}" if country else "/emergency"
     elif kind == "growth":
         # la página del país sólo si el país tiene página: un 404 bajo una respuesta de salud no
         tail = (
@@ -987,6 +995,29 @@ class Engine:
                 "dose_calculator",
                 tool=tool_link("dose", lang),
             )
+
+        # El número de urgencias, de la tabla y no del corpus (20-sep-2026). Probado en vivo:
+        # un padre en Nigeria preguntaba el número y el chat contestaba «no tengo información
+        # fiable sobre esto en mis fuentes» mientras el aviso de arriba llevaba el 112 escrito.
+        # Teníamos el dato de 90 países, comprobado uno a uno, y la pregunta más básica de todas
+        # se iba a buscar un pasaje que no existe.
+        if tr.level == "routine" and is_emergency_number_question(context_text):
+            cc = (country or "").upper() or (country_in_question(context_text) or "").upper()
+            datos = self.numbers.raw.get(cc) if cc else None
+            if datos:
+                return Answer(
+                    format_numbers(dict(datos), country_name(cc, lang), lang),
+                    tr.level,
+                    None,
+                    [],
+                    lang,
+                    None,
+                    None,
+                    [],
+                    "emergency_number",
+                    tool=tool_link("emergency", lang, cc),
+                )
+            # sin país elegido no se adivina: se cae al corpus, que dirá que no lo sabe
 
         if self.vaccines is not None and tr.level == "routine" and is_vaccine_question(query):
             # "Quels vaccins pour un bébé de 3 mois EN FRANCE ?" used to fall through to the
