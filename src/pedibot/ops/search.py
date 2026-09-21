@@ -137,6 +137,8 @@ def collect(days: int = 28, key_file: pathlib.Path | None = None) -> dict[str, A
         "pages": top("page", 20),
         "countries": top("country", 10),
         "close": close[:20],
+        # clics por día, para la línea de Google de la gráfica del panel (21-sep-2026)
+        "per_day": {r["keys"][0]: int(r["clicks"]) for r in query(tok, ["date"], s, e, 500)},
     }
 
 

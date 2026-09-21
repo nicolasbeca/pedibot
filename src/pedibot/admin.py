@@ -6,8 +6,8 @@ makes it worth nothing however correct it is. Now it opens with one chart of the
 puts the pages and the languages side by side as bars, and gives most of the room to the thing
 that actually needs reading: what people asked and what PediBot answered.
 
-The token block is gone. It has its own alert on Telegram the moment anything trades, and it was
-the only part of this page nobody needed to check.
+The token block is gone: the token was retired, and so, on 21-sep-2026, were the Telegram
+reports. The operator: «tengo el panel para entrar cuando quiera». This page is the report.
 
 Server-rendered HTML with inline SVG and no library, matching the site: a dashboard that needs a
 CDN is a dashboard that breaks the day the CDN does.
@@ -89,6 +89,9 @@ table.t .mono{font-family:ui-monospace,monospace;color:var(--ink2);white-space:n
 .k.warn b{color:var(--coral)}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:16px}
 .two{display:grid;grid-template-columns:1.15fr 1fr;gap:16px}
+.three{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px 22px}
+.gcard summary{list-style:none}.gcard summary::before{content:"▸ ";color:var(--ink3)}
+.gcard[open] summary::before{content:"▾ "}
 @media(max-width:880px){.two{grid-template-columns:1fr}}
 .bars{display:grid;gap:7px}
 .brow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;font-size:.9rem}
@@ -143,13 +146,24 @@ def _kpi(label: str, value: object, warn: bool = False) -> str:
     )
 
 
-def _chart(visits: dict[str, int], questions: dict[str, int], days: int) -> str:
-    """One picture of the period: visits as an area, questions as bars on the same days.
+def _chart(
+    visits: dict[str, int],
+    questions: dict[str, int],
+    days: int,
+    google: dict[str, int] | None = None,
+) -> str:
+    """One picture of the period: people as an area, questions as bars on the same days.
 
     Drawn as inline SVG because the two series only make sense together — a day with visitors and
     no questions means something different from a quiet day, and two separate lists never showed
     that.
+
+    `visits` are distinct people per day. Until 21-sep-2026 they were page views, labelled
+    «visitas»: one reader opening ten guides drew ten. `google` is Google's clicks per day, a
+    dashed line on the same scale because a click is a visit too; impressions are not, and would
+    flatten everything else.
     """
+    google = google or {}
     end = dt.date.today()
     if days > 0:
         span = [(end - dt.timedelta(days=i)).isoformat() for i in range(days - 1, -1, -1)]
@@ -163,11 +177,12 @@ def _chart(visits: dict[str, int], questions: dict[str, int], days: int) -> str:
         span = [(start + dt.timedelta(days=i)).isoformat() for i in range((end - start).days + 1)]
     v = [visits.get(d, 0) for d in span]
     q = [questions.get(d, 0) for d in span]
+    gc = [google.get(d, 0) for d in span]
     if not any(v) and not any(q):
         return '<p class="empty">Todavía no hay nada que dibujar en este periodo.</p>'
 
     W, H, PAD = 1100, 190, 26
-    top = max(max(v), 1)
+    top = max(max(v), max(gc), 1)
     inner_w, inner_h = W - PAD * 2, H - PAD * 2
     step = inner_w / max(len(span) - 1, 1)
 
@@ -176,6 +191,14 @@ def _chart(visits: dict[str, int], questions: dict[str, int], days: int) -> str:
 
     pts = " ".join(f"{PAD + i * step:.1f},{y(n):.1f}" for i, n in enumerate(v))
     area = f"{PAD},{PAD + inner_h} {pts} {PAD + inner_w},{PAD + inner_h}"
+
+    gline = ""
+    if any(gc):
+        gpts = " ".join(f"{PAD + i * step:.1f},{y(n):.1f}" for i, n in enumerate(gc))
+        gline = (
+            f'<polyline points="{gpts}" fill="none" stroke="#C9822B" stroke-width="2"'
+            ' stroke-dasharray="6 4"/>'
+        )
 
     qtop = max(max(q), 1)
     bar_w = max(2.0, step * 0.34)
@@ -193,13 +216,15 @@ def _chart(visits: dict[str, int], questions: dict[str, int], days: int) -> str:
         for i in range(0, len(span), every)
     )
     return (
-        '<div class="legend"><span><i style="background:#C8E9E0"></i>visitas</span>'
-        '<span><i style="background:#2F6B57"></i>consultas</span></div>'
-        f'<svg viewBox="0 0 {W} {H}" width="100%" height="{H}" role="img" aria-label="visitas y consultas por día">'
+        '<div class="legend"><span><i style="background:#C8E9E0"></i>personas</span>'
+        '<span><i style="background:#2F6B57"></i>consultas</span>'
+        + ('<span><i style="background:#C9822B"></i>clics desde Google</span>' if gline else "")
+        + "</div>"
+        f'<svg viewBox="0 0 {W} {H}" width="100%" height="{H}" role="img" aria-label="personas y consultas por día">'
         f'<polyline points="{area}" fill="#EAF7F2" stroke="none"/>'
-        f'<polyline points="{pts}" fill="none" stroke="#C8E9E0" stroke-width="2.5"/>'
-        f"{bars}{ticks}"
-        f'<text x="{PAD}" y="{PAD - 8}" font-size="11" fill="#8A9992">máx {top} visitas/día</text>'
+        f'<polyline points="{pts}" fill="none" stroke="#9FD3C4" stroke-width="2.5"/>'
+        f"{gline}{bars}{ticks}"
+        f'<text x="{PAD}" y="{PAD - 8}" font-size="11" fill="#8A9992">máx {top} personas/día</text>'
         "</svg>"
     )
 
@@ -266,6 +291,117 @@ def _dwell_sentence(w: dict[str, Any]) -> str:
     )
 
 
+#: Los idiomas del navegador, en castellano: el panel lo lee una persona, no un programa.
+_IDIOMA = {
+    "es": "español",
+    "en": "inglés",
+    "hi": "hindi",
+    "ar": "árabe",
+    "fr": "francés",
+    "de": "alemán",
+    "pt": "portugués",
+    "ru": "ruso",
+    "it": "italiano",
+    "sw": "suajili",
+    "zh": "chino",
+    "bn": "bengalí",
+    "ur": "urdu",
+    "nl": "neerlandés",
+    "pl": "polaco",
+    "tr": "turco",
+    "id": "indonesio",
+    "ja": "japonés",
+    "ko": "coreano",
+    "ca": "catalán",
+    "gl": "gallego",
+    "eu": "euskera",
+    "ha": "hausa",
+    "yo": "yoruba",
+    "am": "amárico",
+    "ta": "tamil",
+    "te": "telugu",
+    "mr": "maratí",
+    "fa": "persa",
+    "uk": "ucraniano",
+}
+
+
+def _pais(code: str) -> str:
+    """El nombre del país en castellano, del mismo fichero que usa el chat; si no está, el código."""
+    try:
+        nombres = json.loads(
+            (
+                pathlib.Path(__file__).resolve().parents[2] / "config" / "country_names.json"
+            ).read_text(encoding="utf-8")
+        )
+    except (OSError, ValueError):
+        return code
+    return (nombres.get("es") or {}).get(code) or (nombres.get("en") or {}).get(code) or code
+
+
+def _web_card(w: dict[str, Any]) -> str:
+    """La web por dentro: de dónde llega la gente, con qué, en qué idioma y qué usa (21-sep-2026).
+
+    El operador: «el panel está muy centrado en Google». Todo sale del registro del servidor, sin
+    cookies. Cada persona cuenta una vez; en herramientas, una vez por herramienta que abrió.
+    """
+    if not w or not w.get("sources"):
+        return (
+            '<div class="card"><h2>La web</h2>'
+            '<p class="empty">Todavía no hay visitas en este periodo.</p></div>'
+        )
+
+    def bloque(titulo: str, items: list[tuple[str, int]], nota: str = "") -> str:
+        extra = f'<p class="period">{nota}</p>' if nota else ""
+        return f"<div><h2>{html.escape(titulo)}</h2>{extra}{_bars(items, 8)}</div>"
+
+    return (
+        '<div class="card"><h2 style="font-size:1.15rem;color:var(--ink)">La web</h2>'
+        '<div class="three">'
+        + bloque(
+            "De dónde llegan",
+            list(w["sources"].items()),
+            "«Directo»: escribieron la dirección, un marcador o una app que no lo dice.",
+        )
+        + bloque("Qué herramientas usan", list(w.get("tools", {}).items()))
+        + bloque("Por dónde entran", list(w.get("entries", [])))
+        + bloque("Móvil u ordenador", list(w.get("devices", {}).items()))
+        + bloque(
+            "Idioma del navegador",
+            [(_IDIOMA.get(k, k), n) for k, n in w.get("browser_langs", {}).items()],
+        )
+        + bloque(
+            "País del navegador",
+            [(_pais(k), n) for k, n in w.get("regions", {}).items()],
+            "Lo que dice su idioma (es-MX, en-IN), no dónde están: aproximado.",
+        )
+        + "</div></div>"
+    )
+
+
+def _sources_card(path: pathlib.Path | None = None) -> str:
+    """Fuentes rotas o caducadas, del fichero que deja `ops/sources_check.py` cada domingo.
+
+    Sin nada que contar, no hay tarjeta: el panel no se llena de «todo bien».
+    """
+    if path is None:
+        from pedibot.settings import ROOT
+
+        path = ROOT / "data" / "sources_check.json"
+    try:
+        d = json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return ""
+    lines = [x for x in d.get("lines") or [] if x.strip()]
+    if not lines:
+        return ""
+    return (
+        '<div class="card"><h2>Fuentes que revisar '
+        f'<span class="bnum">(comprobado el {html.escape(_day(d.get("checked")))})</span></h2>'
+        f"<pre>{html.escape(chr(10).join(lines))}</pre></div>"
+    )
+
+
 def _google_card(g: dict[str, Any] | None) -> str:
     """Lo que Google enseña de nosotros. Del fichero que deja el timer, nunca de la red: una
     llamada a Google dentro de un render convierte una página de 200 ms en una que a veces tarda
@@ -277,9 +413,10 @@ def _google_card(g: dict[str, Any] | None) -> str:
             "de <code>gsc_key.json</code> ha dejado de valer.</p></div>"
         )
     out = [
-        '<div class="card"><h2>Google '
-        f'<span class="bnum">({html.escape(str(g["from"]))} → {html.escape(str(g["to"]))})</span>'
-        "</h2>",
+        '<details class="card gcard"><summary><h2 style="display:inline">Google '
+        f'<span class="bnum">({html.escape(str(g["from"]))} → {html.escape(str(g["to"]))}) · '
+        f"{g['impressions']} impresiones · {g['clicks']} clics</span>"
+        "</h2></summary>",
         '<p class="period">Google publica con dos o tres días de retraso, así que esto nunca '
         "llega hasta hoy. <b>Impresiones</b> son las veces que nos ha mostrado; los clics, las "
         "que además nos pincharon.</p>",
@@ -318,7 +455,7 @@ def _google_card(g: dict[str, Any] | None) -> str:
                 f"<td>{html.escape(str(r['key'])[:60])}</td></tr>"
             )
         out.append("</table>")
-    out.append("</div>")
+    out.append("</details>")
     return "".join(out)
 
 
@@ -433,10 +570,15 @@ def family_counts(path: pathlib.Path | None = None) -> dict[str, int]:
         con.close()
 
 
+#: El operador, 21-sep-2026: el proveedor de correo espera «a tener 20 altas por lo menos».
+ACCOUNTS_FOR_EMAIL = 20
+
+
 def family_kpis(c: dict[str, int]) -> str:
     """Las tres casillas de la fila de indicadores. Números, nunca personas."""
+    toca = c["accounts"] >= ACCOUNTS_FOR_EMAIL
     return (
-        _kpi("cuentas", c["accounts"])
+        _kpi("cuentas · toca montar el correo" if toca else "cuentas", c["accounts"], warn=toca)
         + _kpi("hijos apuntados", c["children"])
         + _kpi("medidas", c["measurements"])
     )
@@ -530,7 +672,12 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
         '<div class="card"><h2>'
         + ("Visitas y consultas por día" if days > 0 else "Por día, desde el principio")
         + "</h2>"
-        + _chart(w["per_day"], q["per_day"], days)
+        + _chart(
+            w.get("visitors_per_day", {}),
+            q["per_day"],
+            days,
+            google=(search.load() or {}).get("per_day"),
+        )
         + "</div>"
     )
 
@@ -549,6 +696,8 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     # y el contador de arriba («sin fuente: N») nunca dijo cuál de las dos.
     h.append(_unanswered_card(sin_respuesta))
 
+    h.append(_sources_card())
+    h.append(_web_card(w.get("web", {})))
     h.append(_google_card(search.load()))
 
     h.append(

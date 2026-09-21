@@ -160,6 +160,125 @@ def web_visits(days: int = 7) -> dict[str, Any]:
     return count_visits(out.splitlines())
 
 
+# ── la web, más allá de Google (21-sep-2026) ─────────────────────────────────────────────────
+# El operador: «quiero saber más cosas en general de la web». Todo sale del mismo registro que ya
+# cuenta las visitas, sin cookies: la cabecera Referer de la primera página, el agente y el
+# Accept-Language. Se cuentan personas, cada una una vez.
+
+_BUSCADORES = {
+    "Google": ("google.",),
+    "Bing": ("bing.com",),
+    "otros buscadores": (
+        "duckduckgo.",
+        "yandex.",
+        "baidu.",
+        "ecosia.",
+        "yahoo.",
+        "brave.com",
+        "qwant.",
+        "naver.",
+        "seznam.",
+    ),
+    "redes sociales": (
+        "t.co",
+        "x.com",
+        "twitter.",
+        "facebook.",
+        "fb.",
+        "instagram.",
+        "bsky.",
+        "reddit.",
+        "linkedin.",
+        "whatsapp.",
+        "telegram.",
+        "t.me",
+        "youtube.",
+        "tiktok.",
+    ),
+    "asistentes de IA": (
+        "chatgpt.",
+        "openai.",
+        "perplexity.",
+        "claude.ai",
+        "gemini.",
+        "copilot.",
+        "deepseek.",
+    ),
+}
+
+#: Cada herramienta, por el primer trozo de la dirección después del idioma.
+_HERRAMIENTAS = {
+    "dose": "calculadora de dosis",
+    "growth": "percentiles",
+    "emergency": "urgencias",
+    "vaccines": "vacunas",
+    "muac": "cinta del brazo",
+    "guides": "guías",
+    "family": "cuenta de familia",
+    "diary": "cuenta de familia",
+    "kit": "botiquín",
+    "sources": "fuentes",
+}
+_IDIOMAS_WEB = {"es", "en", "fr", "de", "ru", "ar", "pt", "hi"}
+
+
+def _origen(ref: str) -> str:
+    host = re.sub(r"^https?://", "", ref.lower()).split("/")[0]
+    if not host or host.endswith("pedibot.xyz"):
+        return "directo"
+    for nombre, marcas in _BUSCADORES.items():
+        if any(host == m or host.startswith(m) or f".{m}" in f".{host}" for m in marcas):
+            return nombre
+    return "otras webs"
+
+
+def _herramienta(uri: str) -> str | None:
+    trozos = [x for x in uri.split("/") if x]
+    if trozos and trozos[0] in _IDIOMAS_WEB:
+        trozos = trozos[1:]
+    if not trozos:
+        return "chat"
+    return _HERRAMIENTAS.get(trozos[0])
+
+
+def _cuenta(valores: list[str]) -> dict[str, int]:
+    out: dict[str, int] = {}
+    for v in valores:
+        out[v] = out.get(v, 0) + 1
+    return dict(sorted(out.items(), key=lambda kv: (-kv[1], kv[0])))
+
+
+def _la_web(
+    llegada: dict[str, tuple[float, str, str, str, str]],
+    reales: dict[str, list[tuple[str, float]]],
+) -> dict[str, Any]:
+    idiomas, regiones = [], []
+    for _ts, _uri, _ref, _ua, al in llegada.values():
+        primero = al.split(",")[0].split(";")[0].strip()
+        if not primero or primero == "*":
+            continue
+        partes = primero.replace("_", "-").split("-")
+        idiomas.append(partes[0].lower())
+        if len(partes) > 1 and len(partes[1]) == 2:
+            regiones.append(partes[1].upper())
+    herramientas: list[str] = []
+    for vistas in reales.values():
+        herramientas += sorted({h for uri, _ in vistas if (h := _herramienta(uri))})
+    movil = re.compile(r"Mobi|Android|iPhone|iPad", re.I)
+    return {
+        "sources": _cuenta([_origen(x[2]) for x in llegada.values()]),
+        "devices": _cuenta(
+            ["móvil" if movil.search(x[3]) else "ordenador" for x in llegada.values()]
+        ),
+        "browser_langs": _cuenta(idiomas),
+        "regions": _cuenta(regiones),
+        "tools": _cuenta(herramientas),
+        "entries": sorted(
+            _cuenta([x[1] for x in llegada.values()]).items(), key=lambda kv: (-kv[1], kv[0])
+        )[:10],
+    }
+
+
 def count_visits(lines: list[str]) -> dict[str, Any]:
     """Cuenta visitas de verdad, y dice aparte cuántas peticiones hubo en bruto.
 
@@ -182,6 +301,7 @@ def count_visits(lines: list[str]) -> dict[str, Any]:
     ours = _team_marks(lines)
     brutas = 0
     paginas: dict[str, list[tuple[str, float]]] = {}
+    llegada: dict[str, tuple[float, str, str, str, str]] = {}
     estaticos: set[str] = set()
     for line in lines:
         if '"handled request"' not in line:
@@ -207,12 +327,23 @@ def count_visits(lines: list[str]) -> dict[str, Any]:
             estaticos.add(who)
             continue
         brutas += 1
-        paginas.setdefault(who, []).append((uri.split("?")[0], float(j.get("ts", 0))))
+        ts_pag = float(j.get("ts", 0))
+        paginas.setdefault(who, []).append((uri.split("?")[0], ts_pag))
+        h = req.get("headers", {})
+        if who not in llegada or ts_pag < llegada[who][0]:
+            llegada[who] = (
+                ts_pag,
+                uri.split("?")[0],
+                (h.get("Referer") or [""])[0],
+                ua,
+                (h.get("Accept-Language") or [""])[0],
+            )
 
     reales = {w: v for w, v in paginas.items() if w in estaticos}
     views, chat = 0, 0
     top: dict[str, int] = {}
     per_day: dict[str, int] = {}
+    people_day: dict[str, set[str]] = {}
     seen_at: dict[str, list[float]] = {}
     for who, vistas in reales.items():
         for uri, ts in vistas:
@@ -222,6 +353,7 @@ def count_visits(lines: list[str]) -> dict[str, Any]:
             top[uri] = top.get(uri, 0) + 1
             day = dt.datetime.fromtimestamp(ts, dt.UTC).date().isoformat()
             per_day[day] = per_day.get(day, 0) + 1
+            people_day.setdefault(day, set()).add(who)
             seen_at.setdefault(who, []).append(ts)
     return {
         "views": views,
@@ -234,6 +366,9 @@ def count_visits(lines: list[str]) -> dict[str, Any]:
         "chat_pageviews": chat,
         "top": sorted(top.items(), key=lambda kv: -kv[1])[:10],
         "per_day": dict(sorted(per_day.items())),
+        # personas distintas cada día: la gráfica del panel sumaba páginas y lo llamaba visitas
+        "visitors_per_day": {d: len(w) for d, w in sorted(people_day.items())},
+        "web": _la_web({w: llegada[w] for w in reales if w in llegada}, reales),
         # lo que el registro tenía de verdad, para que el panel no llame total a un log rotado
         "covers": (min(per_day), max(per_day)) if per_day else (),
     }

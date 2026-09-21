@@ -1,10 +1,10 @@
 [Unit]
-Description=PediBot weekly report: Sunday 08:00 Europe/Madrid
+Description=PediBot sources check: Sunday 08:00 Europe/Madrid
 
 [Timer]
 OnCalendar=Sun *-*-* 08:00:00 Europe/Madrid
 Persistent=true
-Unit=pedibot-weekly.service
+Unit=pedibot-sources.service
 
 [Install]
 WantedBy=timers.target
