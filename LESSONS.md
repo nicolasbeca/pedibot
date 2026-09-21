@@ -1405,3 +1405,47 @@ lo es.
 Lo que sí se hizo: añadir **Ruanda y Mozambique**, leídos del PDF con los ojos, uno por uno,
 como Etiopía. Tres países de tres, y cada uno con la frase exacta que se leyó anotada en el
 `leido:` de su entrada. Los otros 43 están localizados y esperan la misma lectura.
+
+## L219 · «Dos preguntas, dos desastres»: el operador tenía razón, y la medida dijo dónde (21-sep-2026)
+
+Con el móvil y el panel delante: *«Mira qué mal. Dos preguntas, dos desastres. Deberíamos meter
+un filtro de IA que interprete la pregunta y ayude a buscar, porque por palabras o raíces es un
+maldito desastre. Si ya tenemos pocas visitas y las que tenemos no funcionan…»*
+
+Era un padre de verdad, desde Italia, con la web en inglés: su hijo de 15 años con un tobillo
+escayolado. Fallaron cuatro cosas a la vez: le contestó **en inglés**; la búsqueda trajo **la
+página brasileña de la polio** porque «gesso» también es escayola en portugués; citó al
+Ministério da Saúde por algo que ese documento dice de la polio; y a «Puoi scrivere in
+italiano?» lo trató como pregunta médica y citó salud mental, chikunguña y alcohol.
+
+**Antes de construir, se midió**, con ocho preguntas como las escribe un padre y la clave real.
+Y la medida afinó la idea en vez de confirmarla entera:
+
+- en las lenguas que NO tenemos, la IA arregla la búsqueda de forma brutal: holandés «fiebre y
+  tos» pasaba de traer **VIH** a traer la fiebre infantil del NHS;
+- la detección de idioma por palabras fallaba justo ahí: italiano como español, holandés como
+  inglés, polaco como francés;
+- en las que SÍ tenemos, la búsqueda de siempre ya iba bien y la IA a veces la empeoraba;
+- y el caso italiano **no lo arregla ninguna búsqueda**, porque no hay ningún documento sobre
+  escayolas y músculo. Lo correcto era «no lo sé», y el fallo de verdad era haber citado la polio.
+
+Así que se construyó lo que la medida pedía y no lo que sonaba bien: la IA **lee** la pregunta
+—lengua, intención y la frase en inglés y castellano médicos— y **no contesta nunca**; la
+respuesta sigue saliendo de las fuentes. Reescribe la búsqueda sólo fuera de las ocho lenguas.
+Decide el idioma en todas. Y el redactor contesta la señal `NO_SOURCE` cuando ningún pasaje
+responde, en vez de explicar en prosa por qué no sirven y citarlos igual.
+
+Dos cosas que salieron por el camino y valen más que el arreglo:
+
+1. **La alarma en italiano no sacaba el cartel rojo.** «Non respira bene e ha le labbra blu»:
+   el triaje no sabe italiano. Pasaba desde siempre. Ahora el triaje lee también la traducción
+   de la IA, **sumada** al original para que sólo pueda añadir alarmas, nunca quitarlas.
+2. **«Eso es básico», dicho del idioma, y tenía razón en todos los caminos**, no sólo en la
+   respuesta redactada: el «no tengo información» y el «¿qué edad tiene?» eran frases fijas que
+   sólo existían en ocho lenguas. Ahora se traducen —son lo único que el modelo traduce, porque
+   no llevan cifras— y si la traducción trae un número distinto del original, se tira.
+
+Y lo que el operador añadió después y también era correcto: *«que no vaya a responder el motor
+de IA, tiene que seguir tirando de las fuentes»*. Así está. Lo que sí contesta con texto propio
+son dos cosas, y con texto FIJO y revisado: «¿qué es PediBot?» y «eso no es de salud infantil».
+Nunca cuando el triaje ve la menor alarma: pila, lejía, imán y pastillas lo paran antes.

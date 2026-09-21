@@ -4,13 +4,27 @@ from pathlib import Path
 
 import pytest
 
+from pedibot.bot.answer import TRADUCE as _TRADUCE
 from pedibot.bot.answer import EmergencyNumbers, Engine, verify
+from pedibot.bot.interpret import SYSTEM as _LECTURA
 from pedibot.bot.llm import FakeProvider
 from pedibot.bot.retrieval import Retriever, Synonyms, detect_lang
 from pedibot.bot.triage import Triage
 from pedibot.index.store import Hit, Index, build_index
 from pedibot.ingest.classify import Taxonomy
 from pedibot.ingest.schema import Chunk
+
+
+def _redaccion(llm):  # noqa: ANN001, ANN202
+    """Las llamadas al modelo que REDACTAN una respuesta.
+
+    21-sep-2026: desde ese día el motor hace antes una lectura de la pregunta —en qué lengua
+    escribe el padre, y qué pregunta de verdad (`pedibot.bot.interpret`)— y, si hace falta,
+    traduce una frase fija. Estas pruebas hablaban de «la primera llamada» o de «ninguna llamada»
+    queriendo decir «la redacción», y eso es lo que siguen comprobando: se cambia la premisa, no
+    la aserción.
+    """
+    return [c for c in llm.calls if c[0] not in (_LECTURA, _TRADUCE)]
 
 
 def _chunk(cid, text, red=False, dose=False, url=None, dose_source=False):
@@ -105,7 +119,7 @@ def test_routine_answer_with_sources(engine_factory):
     rendered = a.render()
     assert "Fuentes:" not in rendered and "[1]" not in rendered
     assert "Fuentes:" in a.render_debug() and "no sustituye" in a.render_debug()
-    assert "SOURCES:" in llm.calls[0][1] and "[1] SEUP" in llm.calls[0][1]
+    assert "SOURCES:" in _redaccion(llm)[0][1] and "[1] SEUP" in _redaccion(llm)[0][1]
 
 
 def test_fever_without_age_answers_and_then_asks(engine_factory):
@@ -134,20 +148,22 @@ def test_mental_health_banner_uses_helpline(engine_factory):
 def test_no_source_means_silence(engine_factory):
     eng, llm = engine_factory("hallucination [1]")
     a = eng.ask("¿mi perro puede tomar chocolate?")
-    assert a.verification == "no_source" and llm.calls == []
+    assert a.verification == "no_source" and _redaccion(llm) == []
     assert "No tengo información fiable" in a.text
 
 
 def test_bad_citation_triggers_regeneration_then_fallback(engine_factory):
     eng, llm = engine_factory("Respuesta sin citas.")
     a = eng.ask("mi hijo de 4 años tiene fiebre")
-    assert a.verification == "fallback" and len(llm.calls) == 2
+    assert a.verification == "fallback" and len(_redaccion(llm)) == 2
     assert "No tengo información fiable" in a.text
 
 
 def test_regeneration_succeeds(engine_factory):
+    # la lectura de la pregunta también es una llamada al modelo (21-sep-2026); el iterador
+    # tiene que ser sólo del redactor, o se lo come la lectura y el primer borrador sale bueno
     answers = iter(["Sin cita.", "Con cita de la SEUP [1]."])
-    eng, llm = engine_factory(lambda s, u: next(answers))
+    eng, llm = engine_factory(lambda s, u: "no es json" if s == _LECTURA else next(answers))
     a = eng.ask("mi hijo de 4 años tiene fiebre")
     assert a.verification == "regenerated" and a.text == "Con cita de la SEUP [1]."
 
@@ -181,7 +197,11 @@ def test_dose_intent_parsing():
 def test_dose_question_routes_to_calculator_without_llm(engine_factory):
     eng, llm = engine_factory("should not be called")
     a = eng.ask("cuánto paracetamol le doy a mi hijo de 3 años que pesa 14 kg", country="ES")
-    assert a.verification == "dose_calculator" and llm.calls == []
+    # La garantía de verdad es que la dosis no la escribe nunca el modelo, y sigue en pie: no
+    # hay NINGUNA llamada de redacción. Lo único que el modelo hace aquí, desde el 21-sep-2026,
+    # es leer en qué lengua escribió el padre, para contestarle en ella.
+    assert a.verification == "dose_calculator" and _redaccion(llm) == []
+    assert all(c[0] == _LECTURA for c in llm.calls), "sólo puede haber leído la pregunta"
     assert "140" in a.text and "210" in a.text and "AEPap" in a.text
 
 
@@ -194,14 +214,14 @@ def test_dose_question_infant_refers(engine_factory):
 def test_prompt_carries_age_context_for_young_infants(engine_factory):
     eng, llm = engine_factory("Fiebre en bebé pequeño: acuda a urgencias [1].")
     eng.ask("mi bebé de 2 meses tiene 38,2 de fiebre", country="ES")
-    user_msg = llm.calls[0][1]
+    user_msg = _redaccion(llm)[0][1]
     assert "UNDER 3 MONTHS" in user_msg and "Do NOT suggest giving any medication" in user_msg
     assert "ANSWER LANGUAGE: Spanish" in user_msg
     eng2, llm2 = engine_factory("[1]")
     eng2.ask("my 4 year old has a fever")
     assert (
-        "CHILD AGE: 48 months" in llm2.calls[0][1]
-        and "ANSWER LANGUAGE: English" in llm2.calls[0][1]
+        "CHILD AGE: 48 months" in _redaccion(llm2)[0][1]
+        and "ANSWER LANGUAGE: English" in _redaccion(llm2)[0][1]
     )
 
 
@@ -211,7 +231,7 @@ def test_triage_rule_source_is_injected_as_first_hit(engine_factory):
     # the seizure rule cites seup_acudir_urgencias, absent from the tiny test index → no injection,
     # but the vomiting red-flag chunk (seup_vomitos) must still be among the hits
     assert any("seup_vomitos" in c for c in a.chunk_ids)
-    assert "[WARNING SIGNS]" in llm.calls[0][1]
+    assert "[WARNING SIGNS]" in _redaccion(llm)[0][1]
 
 
 def test_history_gives_age_and_context_to_follow_up(engine_factory):
@@ -222,7 +242,7 @@ def test_history_gives_age_and_context_to_follow_up(engine_factory):
     ]
     a = eng.ask("¿y si además vomita?", country="ES", history=hist)
     assert a.verification == "ok"
-    user_msg = llm.calls[0][1]
+    user_msg = _redaccion(llm)[0][1]
     assert "CONVERSATION SO FAR" in user_msg and "4 años" in user_msg
     assert "CHILD AGE: 48 months" in user_msg  # age taken from the earlier turn
     assert any("seup_vomitos" in c for c in a.chunk_ids)  # follow-up retrieved vomiting leaflet
@@ -251,7 +271,7 @@ def test_age_from_history_still_triggers_infant_rule(engine_factory):
 def test_child_mode_adds_instruction(engine_factory):
     eng, llm = engine_factory("Tu cuerpo está luchando [1].")
     eng.ask("mi hijo de 6 años tiene fiebre", country="ES", mode="child")
-    assert "EXPLAIN TO THE CHILD" in llm.calls[0][1]
+    assert "EXPLAIN TO THE CHILD" in _redaccion(llm)[0][1]
 
 
 def test_clean_text_strips_citation_markers(engine_factory):

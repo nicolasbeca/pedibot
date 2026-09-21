@@ -24,6 +24,7 @@ from pedibot.bot.growth import (
     measurements,
 )
 from pedibot.bot.guides import GuideIndex, GuideLink
+from pedibot.bot.interpret import interpret
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.muac import assess as muac_assess
 from pedibot.bot.muac import explain as muac_explain
@@ -154,6 +155,22 @@ def looks_like_medication_dose(text: str) -> bool:
 # Every language the engine will answer in. Adding one here is not enough on its own: it needs
 # its triage patterns in red_flags.yaml and its texts below, or the safety layer goes silent.
 #: Los idiomas en los que este producto contesta ENTEROS: web, guías, fuentes y respuesta.
+#: Las respuestas que son una frase FIJA nuestra, sin cifras ni contenido médico nuevo, y que por
+#: eso se pueden traducir con el modelo a una lengua que el sitio no tiene (21-sep-2026). Las de
+#: las herramientas —dosis, calendarios, curvas, teléfonos— no están aquí a propósito: ésas no
+#: las toca el modelo nunca.
+def _dice_sin_fuente(texto: str) -> bool:
+    """¿El redactor ha contestado la señal de «ningún pasaje responde a esto»?"""
+    return texto.strip().strip(".").strip().upper() == "NO_SOURCE"
+
+
+_FRASES_FIJAS = frozenset({"no_source", "fallback", "clarify", "asked_age", "about", "off_topic"})
+
+TRADUCE = (
+    "Translate the text into the language named on the first line. Output only the "
+    "translation, nothing else. Keep emojis, numbers and phone numbers exactly as they are."
+)
+
 SUPPORTED_LANGS = ("es", "en", "fr", "de", "ru", "ar", "pt", "hi")
 
 #: Y los que la capa de seguridad sabe leer y escribir, aunque la respuesta larga todavía no
@@ -190,6 +207,33 @@ NO_SOURCE = {
     "ar": "لا توجد في مصادري معلومات موثوقة عن هذا، ولا أريد التخمين. من فضلك تحدث إلى طبيب طفلك. وإذا بدا على طفلك تعب شديد، فتوجّه إلى قسم الطوارئ.",
     "hi": "मेरे स्रोतों में इसके बारे में भरोसेमंद जानकारी नहीं है, और मैं अंदाज़ा नहीं लगाना चाहता। कृपया अपने डॉक्टर से बात करें। अगर बच्चा बहुत बीमार लग रहा है, तो इमरजेंसी में जाएँ।",
     "pt": "Não tenho informação confiável sobre isso nas minhas fontes e prefiro não adivinhar. Procure o seu pediatra. Se a criança parecer estar mal, vá ao pronto-socorro.",
+}
+#: «¿Qué es PediBot?» (21-sep-2026). Un texto FIJO y revisado, no una respuesta redactada por el
+#: modelo: lo que el sitio dice de sí mismo no puede depender de cómo le salga ese día. Sin
+#: cifras a propósito —cuántos países, cuántos documentos—, porque ésas cambian y un texto fijo
+#: con una cifra es una cifra que envejece sin que nadie se entere (ver `DATOS.md`).
+ABOUT_PEDIBOT = {
+    "en": "PediBot is a free service that answers questions about children's health using only guidelines published by health ministries, the WHO and paediatric societies, and it shows which document each sentence comes from. It does not diagnose and does not replace your paediatrician: it explains what the guidelines say, when a child needs to be seen and which emergency number to call in your country. It works without an account and without asking for personal data. Tell me what is worrying you about your child.",
+    "es": "PediBot es un servicio gratuito que contesta dudas sobre la salud de los niños usando sólo guías publicadas por ministerios de sanidad, la OMS y sociedades de pediatría, y enseña de qué documento sale cada frase. No diagnostica ni sustituye a tu pediatra: explica qué dicen las guías, cuándo hay que llevar al niño al médico y a qué número de emergencias llamar en tu país. Funciona sin cuenta y sin pedir datos personales. Cuéntame qué te preocupa de tu hijo.",
+    "fr": "PediBot est un service gratuit qui répond aux questions sur la santé des enfants en s'appuyant uniquement sur les recommandations publiées par les ministères de la santé, l'OMS et les sociétés de pédiatrie, et il indique de quel document vient chaque phrase. Il ne pose pas de diagnostic et ne remplace pas votre pédiatre : il explique ce que disent les recommandations, quand un enfant doit être vu par un médecin et quel numéro d'urgence appeler dans votre pays. Il fonctionne sans compte et sans demander de données personnelles. Dites-moi ce qui vous inquiète chez votre enfant.",
+    "de": "PediBot ist ein kostenloser Dienst, der Fragen zur Gesundheit von Kindern ausschließlich anhand von Leitlinien beantwortet, die Gesundheitsministerien, die WHO und kinderärztliche Fachgesellschaften veröffentlicht haben, und er zeigt, aus welchem Dokument jeder Satz stammt. Er stellt keine Diagnosen und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt: Er erklärt, was die Leitlinien sagen, wann ein Kind ärztlich gesehen werden muss und welche Notrufnummer in Ihrem Land gilt. Er funktioniert ohne Konto und ohne persönliche Daten. Erzählen Sie mir, was Sie bei Ihrem Kind beunruhigt.",
+    "ru": "PediBot — бесплатный сервис, который отвечает на вопросы о здоровье детей, опираясь только на рекомендации, опубликованные министерствами здравоохранения, ВОЗ и педиатрическими обществами, и показывает, из какого документа взята каждая фраза. Он не ставит диагнозов и не заменяет вашего педиатра: он объясняет, что говорят рекомендации, когда ребёнка нужно показать врачу и по какому номеру звонить в экстренных случаях в вашей стране. Он работает без регистрации и не просит личных данных. Расскажите, что вас беспокоит в состоянии ребёнка.",
+    "ar": "PediBot خدمة مجانية تجيب عن أسئلة صحة الأطفال بالاعتماد فقط على الإرشادات التي تنشرها وزارات الصحة ومنظمة الصحة العالمية وجمعيات طب الأطفال، وتبيّن من أي وثيقة أُخذت كل جملة. لا تشخّص ولا تغني عن طبيب طفلك: تشرح ما تقوله الإرشادات، ومتى يجب أن يراه الطبيب، وبأي رقم طوارئ تتصل في بلدك. تعمل من دون حساب ومن دون طلب بيانات شخصية. أخبرني بما يقلقك بشأن طفلك.",
+    "pt": "O PediBot é um serviço gratuito que responde a dúvidas sobre a saúde das crianças usando apenas diretrizes publicadas por ministérios da saúde, pela OMS e por sociedades de pediatria, e mostra de que documento vem cada frase. Não faz diagnósticos nem substitui o seu pediatra: explica o que dizem as diretrizes, quando a criança precisa ser vista por um médico e para que número de emergência ligar no seu país. Funciona sem conta e sem pedir dados pessoais. Conte-me o que o preocupa no seu filho.",
+    "hi": "PediBot एक मुफ़्त सेवा है जो बच्चों के स्वास्थ्य से जुड़े सवालों के जवाब सिर्फ़ स्वास्थ्य मंत्रालयों, विश्व स्वास्थ्य संगठन और बाल रोग संस्थाओं के प्रकाशित दिशानिर्देशों से देती है, और बताती है कि हर वाक्य किस दस्तावेज़ से लिया गया है। यह न तो निदान करती है और न ही आपके डॉक्टर की जगह लेती है: यह बताती है कि दिशानिर्देश क्या कहते हैं, बच्चे को कब डॉक्टर को दिखाना चाहिए और आपके देश में आपातकालीन नंबर क्या है। इसके लिए न खाता चाहिए, न कोई निजी जानकारी। बताइए, आपको अपने बच्चे के बारे में क्या चिंता है।",
+}
+#: Lo que no tiene nada que ver con la salud de un niño (21-sep-2026): se dice con amabilidad y
+#: se invita a preguntar lo que sí. Antes caía en «no tengo información, consulta a tu pediatra»,
+#: que para «¿mi perro puede comer chocolate?» es una respuesta absurda.
+OFF_TOPIC = {
+    "en": "That's outside what PediBot does: I only answer questions about the health of babies and children, from published paediatric guidelines. If you have one about your child, ask me.",
+    "es": "Eso se sale de lo que hace PediBot: sólo contesto dudas sobre la salud de bebés y niños, con guías pediátricas publicadas. Si tienes alguna sobre tu hijo, pregúntame.",
+    "fr": "Cela sort de ce que fait PediBot : je ne réponds qu'aux questions sur la santé des bébés et des enfants, à partir de recommandations pédiatriques publiées. Si vous en avez une sur votre enfant, posez-la-moi.",
+    "de": "Das gehört nicht zu dem, was PediBot macht: Ich beantworte nur Fragen zur Gesundheit von Babys und Kindern, anhand veröffentlichter kinderärztlicher Leitlinien. Wenn Sie eine zu Ihrem Kind haben, fragen Sie mich.",
+    "ru": "Это не входит в то, чем занимается PediBot: я отвечаю только на вопросы о здоровье малышей и детей, опираясь на опубликованные педиатрические рекомендации. Если у вас есть вопрос о ребёнке, задайте его.",
+    "ar": "هذا خارج ما يقدمه PediBot: أجيب فقط عن أسئلة صحة الرضّع والأطفال، اعتمادًا على إرشادات طب الأطفال المنشورة. إن كان لديك سؤال عن طفلك، فاسألني.",
+    "pt": "Isso não é o que o PediBot faz: só respondo a dúvidas sobre a saúde de bebês e crianças, com diretrizes pediátricas publicadas. Se tiver alguma sobre o seu filho, pergunte-me.",
+    "hi": "यह PediBot के दायरे से बाहर है: मैं सिर्फ़ शिशुओं और बच्चों के स्वास्थ्य से जुड़े सवालों के जवाब देता हूँ, प्रकाशित बाल रोग दिशानिर्देशों के आधार पर। अगर आपके बच्चे के बारे में कोई सवाल है, तो पूछिए।",
 }
 #: Lo que se dice cuando se ha agotado el tope de gasto del día y la respuesta sale sin modelo.
 #: Estaba en dos idiomas —inglés, y español para los otros seis—, así que un padre alemán recibía
@@ -942,20 +986,115 @@ class Engine:
         mode: str = "parent",
     ) -> Answer:
         """`history`: previous turns, oldest first, [{"role": "user"|"assistant", "text": ...}].
-        Only the last MAX_TURNS are used (PRD §5.4)."""
+        Only the last MAX_TURNS are used (PRD §5.4).
+
+        21-sep-2026: una envoltura sobre `_ask`, por dos cosas que tienen que pasar pase lo que
+        pase dentro. Una, que **la respuesta salga en la lengua en que escribió el padre** —«eso es
+        básico», dicho por el operador con el panel delante—, también cuando lo que se devuelve es
+        una frase fija nuestra y el padre escribe en una lengua que el sitio no tiene. Y dos, que
+        lo que cuesta leer la pregunta y traducir esas frases se sume al gasto de la respuesta,
+        porque el tope diario de gasto mira ese número. `ctx` es de cada llamada y no del motor:
+        la API atiende varias a la vez desde hilos distintos.
+        """
+        ctx: dict = {"costes": [], "fuera": None}
+        a = self._ask(query, country, lang, history, mode, ctx)
+        if ctx["fuera"] and a.verification in _FRASES_FIJAS:
+            a.text = self._traduce(a.text, ctx["fuera"], ctx)
+        if ctx["costes"]:
+            ti = sum(c[0] for c in ctx["costes"])
+            to = sum(c[1] for c in ctx["costes"])
+            usd = sum(c[2] for c in ctx["costes"])
+            if a.llm is None:
+                a.llm = LLMResult("", ti, to, usd, "interpret")
+            else:
+                a.llm.tokens_in += ti
+                a.llm.tokens_out += to
+                a.llm.cost_usd += usd
+        return a
+
+    def _traduce(self, texto: str, idioma: str, ctx: dict) -> str:
+        """Una frase FIJA nuestra a una lengua que el sitio no tiene, o la frase tal cual.
+
+        Sólo pasan por aquí las que no llevan contenido médico nuevo ni cifras —«no tengo
+        información fiable», «¿qué edad tiene?»—. Lo que lleva una dosis, un calendario o un
+        número de teléfono **no se traduce nunca con el modelo**, y por si acaso: si la traducción
+        trae una sola cifra distinta de las del original, se tira y se devuelve el original.
+        """
+        if self.llm is None or not texto.strip():
+            return texto
+        try:
+            r = self.llm.complete(
+                TRADUCE, f"LANGUAGE: {idioma}\n\n{texto}", temperature=0.0, max_tokens=500
+            )
+        except Exception:  # noqa: BLE001 — sin traducción, la frase en inglés es mejor que nada
+            return texto
+        ctx["costes"].append((r.tokens_in, r.tokens_out, r.cost_usd))
+        out = (r.text or "").strip()
+        if not out or sorted(re.findall(r"\d+", out)) != sorted(re.findall(r"\d+", texto)):
+            return texto
+        return out
+
+    def _ask(
+        self,
+        query: str,
+        country: str | None,
+        lang: str | None,
+        history: list[dict[str, str]] | None,
+        mode: str,
+        ctx: dict,
+    ) -> Answer:
         history = (history or [])[-MAX_TURNS:]
         prior_user = " ".join(t["text"] for t in history if t.get("role") == "user")
         context_text = f"{prior_user} {query}".strip() if prior_user else query
         lang = lang or detect_lang(query)
+        # Una IA lee la pregunta antes que nada (21-sep-2026, ver `interpret`). El idioma venía
+        # de la web y no del texto: un padre con la web en inglés que escribía en italiano
+        # recibía inglés. Y la detección por palabras fallaba justo en las lenguas que no
+        # tenemos: el italiano salía como español, el holandés como inglés, el polaco como
+        # francés. Si escribe en una de las ocho, todo pasa a esa: avisos, herramientas y textos
+        # fijos. Si escribe en otra, se le redacta en la suya y las frases fijas se traducen.
+        # Tres palabras como mínimo para cambiar de idioma: «Dalsy 5 ml?» no dice nada de nadie.
+        leida = interpret(self.llm, query)
+        largo = len(query.split()) >= 3
+        if leida is not None:
+            ctx["costes"].append((leida.tokens_in, leida.tokens_out, leida.cost_usd))
+            if leida.intent == "language_request":
+                # Quien pide «Puoi scrivere in italiano?» lo pide en italiano: si la lectura no
+                # dice qué lengua quiere, es la del mensaje. Se quedaba en inglés por eso.
+                pedida = leida.requested_lang or leida.lang
+                nombre = leida.requested_name or leida.lang_name
+                if pedida in SUPPORTED_LANGS:
+                    lang = pedida
+                elif nombre:
+                    ctx["fuera"] = nombre
+            elif largo and leida.lang in SUPPORTED_LANGS and leida.lang != lang:
+                lang = leida.lang
+            elif largo and leida.lang not in SUPPORTED_LANGS and leida.lang_name:
+                ctx["fuera"] = leida.lang_name
         # El idioma del AVISO y el de la RESPUESTA pueden ser distintos, y con el suajili lo
         # son: el triaje lo lee y lo escribe, el corpus todavía no. Al padre se le da el aviso
         # rojo en su lengua —que es la parte que dice qué hacer— y la explicación en inglés,
         # con fuentes que puede abrir, en vez de un suajili sin nada detrás que citar.
         lang_aviso = lang if lang in TRIAGE_LANGS else "en"
+        if leida is not None and largo and leida.intent != "language_request":
+            if leida.lang in TRIAGE_LANGS:
+                lang_aviso = leida.lang
         if lang not in SUPPORTED_LANGS:
             lang = "en"
-        tr = self.triage.assess(context_text)
-        tr_now = self.triage.assess(query)
+        # El triaje no sabe italiano, ni holandés, ni polaco. «Mio figlio di 2 anni non respira
+        # bene e ha le labbra blu» no sacaba el cartel rojo (21-sep-2026): la respuesta redactada
+        # sí decía que había que llamar ya, pero sin el aviso ni el número. Si el padre escribe
+        # en una lengua que el triaje no lee, se le pasa además la frase que la IA ha traducido
+        # al inglés. Se SUMA al original, no lo sustituye: así sólo puede añadir alarmas, nunca
+        # quitarlas, y una alarma de más es mucho menos grave que una de menos. El cartel sale
+        # en inglés con el número del país, que el modelo no toca nunca.
+        traducida = (
+            f" {leida.query_en}"
+            if leida is not None and leida.lang not in TRIAGE_LANGS and leida.query_en
+            else ""
+        )
+        tr = self.triage.assess(context_text + traducida)
+        tr_now = self.triage.assess(query + traducida)
         # Una regla que ya saltaba con lo de ANTES no vuelve a dar el aviso cada turno: al padre
         # ya se lo dijimos y repetirlo enseña a ignorarlo. Pero una regla que salta al juntar lo
         # de antes con lo de ahora **es información nueva**, y esa es la que hay que avisar.
@@ -1187,12 +1326,42 @@ class Engine:
         # vague first message -> offer options. The topic is read from the query PLUS its synonym
         # expansion, the same as retrieval does: "se ha desmayado" or "llora sin parar" are clear
         # questions that the taxonomy does not name literally, and clarifying them is a bad answer.
+        # «¿Qué es PediBot?» y lo que no tiene que ver con la salud de un niño (21-sep-2026).
+        # Las dos se contestan con un texto FIJO nuestro, nunca redactado por el modelo. Y sólo
+        # cuando el triaje no ha visto nada: si hay la menor señal de alarma, la pregunta es de
+        # salud diga lo que diga la lectura. Para «fuera de tema» se pide además que la lista de
+        # temas no reconozca nada ni en la pregunta ni en lo que la IA entendió de ella: un
+        # «mi hijo se ha tragado una pila» mal leído como «otra cosa» no puede recibir un «eso no
+        # es de PediBot».
+        if leida is not None and tr.level == "routine" and not tr.is_alarm:
+            if leida.intent == "about_pedibot":
+                return Answer(
+                    ABOUT_PEDIBOT[lang], tr.level, banner, [], lang, None, None, [], "about"
+                )
+            if leida.intent == "other" and (
+                self.retriever.taxonomy is None
+                # las palabras del padre y la frase médica de la IA, pero no su lista de palabras
+                # clave: para «¿mi perro puede comer chocolate?» la IA añade «toxicity», que la
+                # lista de temas reconoce, y la pregunta del perro acababa en «consulta a tu
+                # pediatra». Lo peligroso de verdad —pilas, lejía, pastillas— ya lo para el
+                # triaje antes de llegar aquí (comprobado el 21-sep-2026).
+                or self.retriever.taxonomy.topic_for(f"{query} {leida.search_text}") is None
+            ):
+                return Answer(
+                    OFF_TOPIC[lang], tr.level, banner, [], lang, None, None, [], "off_topic"
+                )
+
+        # 21-sep-2026: y con lo que la IA ha entendido de la pregunta, si la ha leído. «My son broke
+        # his ankle and has a cast» caía aquí, en «descríbemelo mejor», porque la lista de temas
+        # no conoce «broke» ni «cast»; la lectura dice «ankle fracture, fractura de tobillo», y
+        # eso sí lo conoce. Una pregunta clara no se contesta con otra pregunta.
+        leido_tema = f" {leida.search_text} {' '.join(leida.keywords)}" if leida else ""
         if (
             tr.level == "routine"
             and not history
             and self.retriever.taxonomy is not None
             and self.retriever.taxonomy.topic_for(
-                query + " " + " ".join(self.retriever.expand(query, lang))
+                query + " " + " ".join(self.retriever.expand(query, lang)) + leido_tema
             )
             is None
             and (len(query.split()) <= 3 or _mentions_child(query))
@@ -1221,11 +1390,48 @@ class Engine:
         # el padre no las diga: un padre asustado describe un síntoma, no pide un tratamiento, y
         # con «mi hijo tiene diarrea» en Kenia ganaban las fuentes europeas, que no hablan de
         # zinc porque en Europa no se usa así (20-sep-2026, ver `who_first`).
+        push = who_first_terms(context_text, country)
+        search_lang = lang
+        answer_lang = LANGUAGE_NAME.get(lang, "English")
+        draft_q = query
+
+        # Una IA lee la pregunta antes de buscar (21-sep-2026, ver `interpret`). Un padre desde
+        # Italia, con la web en inglés, recibió en inglés una respuesta sacada de la página
+        # brasileña de la polio: «gesso» es escayola también en portugués. Medido antes de
+        # construirlo: en las lenguas que el sitio no tiene, reescribir la pregunta pasa de traer
+        # VIH o fiebre tifoidea a traer la fiebre infantil del NHS; en las que sí tiene, la
+        # búsqueda de siempre ya va bien y la reescritura a veces la empeora. Así que se reescribe
+        # sólo fuera de las ocho, y en todas se contesta en la lengua en que escribió el padre.
+        # El triaje ya ha corrido, sobre el texto original: esto no decide nada de seguridad.
+        previa = None
+        if leida is not None:
+            if leida.intent == "language_request" and prev_user:
+                # «Puoi scrivere in italiano?»: no es una pregunta médica, es la de antes en otra
+                # lengua. Tratarla como médica buscó salud mental, chikunguña y alcohol.
+                if leida.requested_name or leida.lang_name:
+                    answer_lang = leida.requested_name or leida.lang_name
+                draft_q = prev_user
+                search_q = prev_user
+                previa = interpret(self.llm, prev_user)
+                if previa is not None:
+                    ctx["costes"].append((previa.tokens_in, previa.tokens_out, previa.cost_usd))
+                if previa is not None and previa.lang not in SUPPORTED_LANGS:
+                    search_q, search_lang = previa.search_text, "en"
+                    push = [*push, *previa.keywords]
+            else:
+                # Tres palabras como mínimo para cambiar de idioma: «Dalsy 5 ml?» no dice en qué
+                # lengua escribe nadie, y la web ya sabe cuál tiene puesta.
+                if leida.lang_name and leida.lang != lang and len(query.split()) >= 3:
+                    answer_lang = leida.lang_name
+                if leida.lang not in SUPPORTED_LANGS and leida.intent == "health":
+                    search_q, search_lang = leida.search_text, "en"
+                    push = [*push, *leida.keywords]
+
         hits, extra = self.retriever.search(
             search_q,
-            lang,
+            search_lang,
             red_flag_boost=tr.is_alarm,
-            push=who_first_terms(context_text, country),
+            push=push,
         )
         hits = self._inject_rule_sources(tr, hits)
         if not hits:
@@ -1233,7 +1439,6 @@ class Engine:
                 NO_SOURCE[lang], tr.level, banner, [], lang, None, None, [], "no_source", extra
             )
 
-        answer_lang = LANGUAGE_NAME.get(lang, "English")
         user = (
             f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
             "the sources may be in another language, translate faithfully.\n"
@@ -1241,9 +1446,26 @@ class Engine:
             f"{who_first_note(context_text, country)}"
             f"{_history_block(history)}"
             f"{CHILD_MODE if mode == 'child' else ''}"
-            f"PARENT MESSAGE:\n{query}\n\nSOURCES:\n{_format_sources(hits)}"
+            f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"
         )
         result = self.llm.complete(self.prompt, user, temperature=0.2)
+        # «NO_SOURCE»: el redactor dice que ninguno de los pasajes contesta (regla 1 del prompt).
+        # Antes lo decía en prosa y citaba igual los pasajes que no servían para explicarlo, y al
+        # padre le salían debajo «Poliomielite», «Chikungunya» y «alcohol» por una pregunta sobre
+        # un tobillo escayolado (21-sep-2026). Ahora se le da el aviso de siempre, sin fuentes.
+        if _dice_sin_fuente(result.text):
+            return Answer(
+                NO_SOURCE[lang],
+                tr.level,
+                banner,
+                [],
+                lang,
+                self.prompt_version,
+                result,
+                [h.chunk.chunk_id for h in hits],
+                "no_source",
+                extra,
+            )
         problems = verify_answer(result.text, hits)
         verification = "ok"
         if problems:
@@ -1261,7 +1483,7 @@ class Engine:
             # gets its one retry and then ships as written. Turning a medically sound answer into
             # "I have no reliable information on this" because it reads stiffly would be a far
             # worse failure than the stiffness.
-            if verify(retry.text, hits):
+            if _dice_sin_fuente(retry.text) or verify(retry.text, hits):
                 return Answer(
                     NO_SOURCE[lang],
                     tr.level,
@@ -1313,7 +1535,11 @@ class Engine:
             tool = tool_link("growth", lang, country or country_in_question(context_text))
         text = result.text.strip()
         if ask_age:
-            text += "\n\n" + AGE_REFINES[lang]
+            text += "\n\n" + (
+                self._traduce(AGE_REFINES["en"], ctx["fuera"], ctx)
+                if ctx["fuera"]
+                else AGE_REFINES[lang]
+            )
         return Answer(
             text,
             tr.level,
