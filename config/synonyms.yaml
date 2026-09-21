@@ -395,6 +395,22 @@ en:
   - colegio
   - contagio
 es:
+  # 21-sep-2026, preguntas del operador: «se le cae mucho el pelo» se buscaba como una caída al
+  # suelo (traumatismo craneal), y «legañas» u «ojos rojos» no llegaban a la conjuntivitis del
+  # NHS, que estaba en el corpus. El padre dice legañas; la guía, conjunctivitis.
+  cae el pelo: [alopecia, caída del cabello, tiña, hair loss, ringworm, scalp]
+  cae mucho el pelo: [alopecia, caída del cabello, tiña, hair loss, ringworm, scalp]
+  caída del pelo: [alopecia, caída del cabello, tiña, hair loss, ringworm, scalp]
+  caída de pelo: [alopecia, caída del cabello, tiña, hair loss, ringworm, scalp]
+  poco pelo: [alopecia, caída del cabello, hair loss]
+  pierde pelo: [alopecia, caída del cabello, hair loss]
+  alopecia: [alopecia, caída del cabello, tiña, hair loss, ringworm]
+  calva: [alopecia, tiña, hair loss, ringworm]
+  legañ: [conjuntivitis, conjunctivitis, sticky eyes, watering eyes, blocked tear duct]
+  ojos rojos: [conjuntivitis, conjunctivitis, red eye, pink eye]
+  ojo rojo: [conjuntivitis, conjunctivitis, red eye, pink eye]
+  ojos llorosos: [lagrimeo, watering eyes, conjunctivitis, blocked tear duct]
+  lagrim: [lagrimeo, watering eyes, blocked tear duct]
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
   # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.

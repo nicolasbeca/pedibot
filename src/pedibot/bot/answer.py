@@ -160,8 +160,14 @@ def looks_like_medication_dose(text: str) -> bool:
 #: las herramientas —dosis, calendarios, curvas, teléfonos— no están aquí a propósito: ésas no
 #: las toca el modelo nunca.
 def _dice_sin_fuente(texto: str) -> bool:
-    """¿El redactor ha contestado la señal de «ningún pasaje responde a esto»?"""
-    return texto.strip().strip(".").strip().upper() == "NO_SOURCE"
+    """¿El redactor ha contestado la señal de «ningún pasaje responde a esto»?
+
+    El prompt pide la palabra sola, y el modelo a veces la adorna: «No encuentro en las fuentes
+    información sobre un dedo roto. NO_SOURCE» (21-sep-2026). Así no se reconocía, la respuesta
+    caía en la verificación por no citar y la segunda búsqueda no llegaba a lanzarse. Cuenta
+    como señal si aparece y el texto no cita nada: con citas, es una respuesta de verdad.
+    """
+    return "NO_SOURCE" in texto.upper() and not _CIT.search(texto)
 
 
 _FRASES_FIJAS = frozenset({"no_source", "fallback", "clarify", "asked_age", "about", "off_topic"})

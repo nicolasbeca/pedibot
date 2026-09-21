@@ -1880,6 +1880,15 @@ rules:
   reason_en: Swallowed an object (especially batteries or magnets)
   reason_fr: Ingestion d'?un objet (surtout piles ou aimants)
   patterns:
+  # 21-sep-2026: «ha comido pescado y no para de toser, ¿puede tener una espina clavada?» salía
+  # RUTINA. Una espina en la garganta no se queda sola, y la tos que no para es el aviso.
+  - espina[^.]{0,40}(clavad|atascad|atragant|garganta|tragad)
+  - (clavad|atascad|atragant|tragad)\w*[^.]{0,30}espina
+  - (pescado|pez)[^.]{0,60}(no para de toser|tose sin parar|se ha atragantado|se atragant)
+  - fish ?bone[^.]{0,40}(stuck|throat|swallow)
+  - (stuck|swallowed)[^.]{0,30}fish ?bone
+  - ar[êe]te[^.]{0,40}(coinc[ée]e|gorge|aval[ée]e)
+  - espinha[^.]{0,40}(presa|entalada|garganta|engoli)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "(amemeza|kameza|alimeza)[^.]{0,14}(sarafu|sumaku|kitu|kifungo|shanga|mbegu)"
   - "kameza kitu"

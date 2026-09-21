@@ -68,3 +68,21 @@ def test_without_a_reading_there_is_no_second_search() -> None:
     _con_borradores(motor, ["NO_SOURCE"])
     motor.ask("mi hijo tiene fiebre desde ayer", lang="es")
     assert len(visto["busquedas"]) == 1
+
+
+def test_the_signal_counts_even_when_the_model_adds_a_sentence() -> None:
+    """«No encuentro en las fuentes información sobre un dedo roto. NO_SOURCE»."""
+    from pedibot.bot.answer import _dice_sin_fuente
+
+    assert _dice_sin_fuente("NO_SOURCE")
+    assert _dice_sin_fuente("No encuentro información sobre un dedo roto. NO_SOURCE")
+    assert not _dice_sin_fuente("Según el NHS [1], NO_SOURCE no aplica.")
+    assert not _dice_sin_fuente("La fiebre suele durar tres días, según la SEUP [1].")
+
+
+def test_an_adorned_signal_also_triggers_the_second_search() -> None:
+    motor, visto = _motor(LEIDA)
+    _con_borradores(motor, ["No lo encuentro. NO_SOURCE", "Most fevers get better, NHS [1]."])
+    a = motor.ask(CHULETA, lang="es")
+    assert len(visto["busquedas"]) == 2
+    assert a.verification != "no_source"
