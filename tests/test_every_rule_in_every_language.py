@@ -238,6 +238,16 @@ CASOS: dict[str, dict[str, str]] = {
         "pt": "vomita muito e tem uma dor de cabeça forte",
         "hi": "उसे बार-बार उल्टी हो रही है और सिर में तेज़ दर्द है",
     },
+    "drowsy_after_head_injury": {
+        "es": "se cayó del sofá y ahora está muy adormilado",
+        "en": "he fell off the bed and now he is very drowsy",
+        "fr": "il est tombé et maintenant il est somnolent",
+        "de": "er ist hingefallen und jetzt ganz schläfrig",
+        "ru": "упал с кровати и теперь сонливый",
+        "ar": "وقع من السرير وصار نعسان",
+        "pt": "caiu da cama e agora está sonolento",
+        "hi": "वह गिर गया और अब सुस्त है",
+    },
     "vomiting_after_head_injury": {
         "es": "se dio un golpe en la cabeza y ha vomitado dos veces",
         "en": "he banged his head and has vomited twice",
@@ -1199,6 +1209,16 @@ SEGUNDA: dict[str, dict[str, str]] = {
         "ar": "عندها صداع وتقيأت ثلاث مرات",
         "pt": "tem dor de cabeça e vomitou três vezes",
         "hi": "सिर में दर्द है और तीन बार उल्टी हुई",
+    },
+    "drowsy_after_head_injury": {
+        "es": "se dio un golpe y no hay quien lo despierte",
+        "en": "she hit her head and is hard to wake",
+        "fr": "elle s'est cognée et a du mal à se réveiller",
+        "de": "sie ist gestürzt und schwer zu wecken",
+        "ru": "ударился головой, теперь трудно разбудить",
+        "ar": "ضرب رأسه ويصعب إيقاظه",
+        "pt": "bateu a cabeça e está difícil de acordar",
+        "hi": "सिर पर चोट के बाद जाग नहीं रहा",
     },
     "vomiting_after_head_injury": {
         "es": "vomitó después del golpe en la cabeza",

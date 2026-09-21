@@ -1449,3 +1449,21 @@ Y lo que el operador añadió después y también era correcto: *«que no vaya a
 de IA, tiene que seguir tirando de las fuentes»*. Así está. Lo que sí contesta con texto propio
 son dos cosas, y con texto FIJO y revisado: «¿qué es PediBot?» y «eso no es de salud infantil».
 Nunca cuando el triaje ve la menor alarma: pila, lejía, imán y pastillas lo paran antes.
+
+## L220 · Diez preguntas seguidas no son una conversación (21-sep-2026)
+
+El operador probó el chat haciendo diez preguntas distintas en la misma ventana, como las hace
+cualquiera que prueba algo. El motor junta la conversación a propósito —«tiene manchas» y luego
+«no desaparecen al apretar» es el meningococo contado en dos frases—, y juntó también las que no
+tenían nada que ver: el bebé que lloraba salió con el motivo «vómitos tras un golpe en la
+cabeza», el Dalsy y los ojos rojos heredaron sus «dos meses». Nadie lo había visto porque todas
+las pruebas de conversación eran de UN problema contado en varios mensajes.
+
+La misma lectura de IA que ya leía cada pregunta ahora mira también la anterior y dice si es
+otro problema. Medido con el modelo real antes de desplegar: 11 de 11, incluidos los cinco casos
+que tienen que seguir juntos. Sólo un «sí» explícito separa; ante la duda, se junta.
+
+Y en la misma tanda, la otra mitad de la lección: **«se ha caído y ahora está somnoliento» salía
+rutina**. El triaje tenía el golpe con vómitos y el golpe con pérdida de conocimiento, pero no la
+somnolencia, que es por la que MedlinePlus manda llamar a emergencias. Una prueba de diez frases
+escritas como las escribe un padre encontró lo que 1.700 casos de batería no tenían.

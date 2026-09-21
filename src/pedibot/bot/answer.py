@@ -1054,10 +1054,19 @@ class Engine:
         # francés. Si escribe en una de las ocho, todo pasa a esa: avisos, herramientas y textos
         # fijos. Si escribe en otra, se le redacta en la suya y las frases fijas se traducen.
         # Tres palabras como mínimo para cambiar de idioma: «Dalsy 5 ml?» no dice nada de nadie.
-        leida = interpret(self.llm, query)
+        anterior = next((t["text"] for t in reversed(history) if t.get("role") == "user"), None)
+        leida = interpret(self.llm, query, previous=anterior)
         largo = len(query.split()) >= 3
         if leida is not None:
             ctx["costes"].append((leida.tokens_in, leida.tokens_out, leida.cost_usd))
+            # Otro problema, conversación nueva (21-sep-2026). El operador hizo diez preguntas
+            # seguidas, cada una de una cosa, y se fueron sumando: el bebé que lloraba salió con
+            # «vómitos tras un golpe en la cabeza» porque el golpe era de la pregunta anterior, y
+            # los ojos rojos heredaron sus dos meses. Sólo con un «sí» explícito de la lectura: si
+            # no lo sabe, se junta como siempre, porque el meningococo se cuenta en dos frases.
+            # «Puedes escribir en italiano» no es otro problema: es el mismo, en otra lengua.
+            if leida.new_topic and leida.intent != "language_request":
+                history, prior_user, context_text = [], "", query
             if leida.intent == "language_request":
                 # Quien pide «Puoi scrivere in italiano?» lo pide en italiano: si la lectura no
                 # dice qué lengua quiere, es la del mensaje. Se quedaba en inglés por eso.
@@ -1338,14 +1347,20 @@ class Engine:
                 return Answer(
                     ABOUT_PEDIBOT[lang], tr.level, banner, [], lang, None, None, [], "about"
                 )
-            if leida.intent == "other" and (
-                self.retriever.taxonomy is None
-                # las palabras del padre y la frase médica de la IA, pero no su lista de palabras
-                # clave: para «¿mi perro puede comer chocolate?» la IA añade «toxicity», que la
-                # lista de temas reconoce, y la pregunta del perro acababa en «consulta a tu
-                # pediatra». Lo peligroso de verdad —pilas, lejía, pastillas— ya lo para el
-                # triaje antes de llegar aquí (comprobado el 21-sep-2026).
-                or self.retriever.taxonomy.topic_for(f"{query} {leida.search_text}") is None
+            # «Mi» —enviado sin querer— recibía «eso no es de PediBot»: con menos de tres
+            # palabras no hay pregunta que juzgar, y se le pide que la cuente
+            if (
+                leida.intent == "other"
+                and largo
+                and (
+                    self.retriever.taxonomy is None
+                    # las palabras del padre y la frase médica de la IA, pero no su lista de palabras
+                    # clave: para «¿mi perro puede comer chocolate?» la IA añade «toxicity», que la
+                    # lista de temas reconoce, y la pregunta del perro acababa en «consulta a tu
+                    # pediatra». Lo peligroso de verdad —pilas, lejía, pastillas— ya lo para el
+                    # triaje antes de llegar aquí (comprobado el 21-sep-2026).
+                    or self.retriever.taxonomy.topic_for(f"{query} {leida.search_text}") is None
+                )
             ):
                 return Answer(
                     OFF_TOPIC[lang], tr.level, banner, [], lang, None, None, [], "off_topic"

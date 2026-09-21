@@ -38,7 +38,8 @@ const ages = [['', s.not_set], ...s.chat_ages];
   </div>
   <div class="dock">
     <div class="dock-in">
-      <div class="ctx">
+      <button type="button" class="ctx-toggle" id="ctx-toggle" aria-expanded="false" aria-controls="ctx">👶 <span id="ctx-sum">{s.ctx_toggle}</span> <span aria-hidden="true">▾</span></button>
+      <div class="ctx" id="ctx">
         <label class="pill">🌍 <select id="country" aria-label={s.vax.country}><option value="">{s.vax.country}</option>{countries.map((c) => <option value={c.cc}>{c.label}</option>)}</select></label>
         <label class="pill">👶 {s.age} <select id="age" aria-label={s.age}>{ages.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
         <label class="pill">⚖️ {s.weight} <input id="kg" type="number" min="1" max="120" step="0.5" placeholder="kg" aria-label="kg" /></label>
@@ -107,6 +108,18 @@ const ages = [['', s.not_set], ...s.chat_ages];
   .ctx { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
   .ctx .pill { background: var(--cream); }
   .ctx input { width: 64px; border: 0; background: transparent; color: inherit; }
+  /* 21-sep-2026, el operador: «en el móvil hay tantas tarjetas de peso, edad, etc., que el chat
+     queda diluido». País, edad y peso ocupaban dos filas fijas encima de la caja de escribir,
+     y con la línea legal era un tercio de la pantalla. En el móvil se pliegan en un botón que dice
+     lo que ya está puesto. La línea legal no se toca: lleva el enlace a urgencias. */
+  .ctx-toggle { display: none; }
+  @media (max-width: 560px) {
+    .dock { padding: 10px 10px 8px; }
+    .ctx-toggle { display: inline-flex; gap: 6px; align-items: center; border: 1px solid var(--line); background: var(--cream); color: var(--ink-2); border-radius: 999px; padding: 4px 12px; font-size: .82rem; margin-bottom: 6px; cursor: pointer; max-width: 100%; }
+    .ctx-toggle #ctx-sum { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .ctx { display: none; }
+    .ctx.open { display: flex; }
+  }
   .composer { display: flex; align-items: flex-end; gap: 8px; background: var(--paper); border: 1px solid var(--line); border-radius: 26px; padding: 8px 8px 8px 18px; box-shadow: var(--shadow); }
   .composer textarea { flex: 1; border: 0; background: transparent; color: var(--ink); resize: none; max-height: 140px; padding: 8px 0; line-height: 1.5; }
   .mic { width: 40px; height: 40px; border: 0; border-radius: 50%; background: var(--cream); cursor: pointer; font-size: 1rem; }
@@ -128,6 +141,25 @@ const ages = [['', s.not_set], ...s.chat_ages];
   const thread = document.getElementById('thread')!, welcome = document.getElementById('welcome')!;
   const form = document.getElementById('composer') as HTMLFormElement, input = document.getElementById('input') as HTMLTextAreaElement;
   const countrySel = document.getElementById('country') as HTMLSelectElement, ageSel = document.getElementById('age') as HTMLSelectElement, kgIn = document.getElementById('kg') as HTMLInputElement;
+  // el botón que pliega país, edad y peso en el móvil, con lo que ya está puesto como resumen
+  const ctxBox = document.getElementById('ctx'), ctxBtn = document.getElementById('ctx-toggle'), ctxSum = document.getElementById('ctx-sum');
+  const ctxLabel = ctxSum?.textContent || '';
+  const ctxResume = () => {
+    if (!ctxSum) return;
+    const partes = [
+      countrySel?.value ? countrySel.options[countrySel.selectedIndex].text : '',
+      ageSel?.value ? ageSel.options[ageSel.selectedIndex].text : '',
+      kgIn?.value ? `${kgIn.value} kg` : '',
+    ].filter(Boolean);
+    ctxSum.textContent = partes.length ? partes.join(' · ') : ctxLabel;
+  };
+  ctxBtn?.addEventListener('click', () => {
+    const abierto = ctxBox?.classList.toggle('open') ?? false;
+    ctxBtn.setAttribute('aria-expanded', String(abierto));
+  });
+  [countrySel, ageSel, kgIn].forEach((el) => el?.addEventListener('change', ctxResume));
+  kgIn?.addEventListener('input', ctxResume);
+  setTimeout(ctxResume, 0); setTimeout(ctxResume, 800);
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Un navegador que abrió /admin es del equipo: pregunta como `test` y no sale en el panel.
   const CLIENT = (() => { try { return localStorage.getItem('pedibot_team') ? 'test' : 'web'; } catch (e) { return 'web'; } })();

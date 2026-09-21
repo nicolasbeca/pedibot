@@ -57,7 +57,7 @@ def test_the_chart_says_people_not_visits_of_pages() -> None:
 def test_google_clicks_are_a_parallel_dashed_line_on_the_same_scale() -> None:
     h = _chart({_hoy(1): 5}, {}, 7, google={_hoy(2): 10})
     assert "clics desde Google" in h
-    assert 'stroke-dasharray' in h
+    assert "stroke-dasharray" in h
     assert "máx 10" in h, "una sola escala: si Google trae más, el techo es el suyo"
 
 

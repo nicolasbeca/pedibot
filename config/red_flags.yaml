@@ -801,6 +801,33 @@ rules:
   reason_pt: "Coloração ruim (palidez extrema, pele mosqueada, azulada ou acinzentada)"
   reason_hi: "त्वचा का रंग बिगड़ना (बहुत पीला, चितकबरा, नीला या भूरा)"
   reason_sw: "Rangi ya ngozi si ya kawaida: amepauka sana, ngozi ina madoa au ni ya bluu"
+# 21-sep-2026: «se ha caído de una silla y ahora está somnoliento» salía RUTINA. La regla del
+# golpe sólo conocía los vómitos y la pérdida de conocimiento. MedlinePlus manda llamar a
+# emergencias si tras el golpe está «very sleepy or hard to wake»; la SEUP, a urgencias.
+- id: drowsy_after_head_injury
+  level: emergency
+  source: seup_tce
+  reason_es: "Somnolencia después de un golpe o una caída: llama a emergencias o ve a urgencias ya"
+  reason_en: "Drowsy after a knock or a fall: call emergency services or go to the emergency department now"
+  reason_fr: "Somnolence après un coup ou une chute : appelez les urgences ou allez aux urgences maintenant"
+  reason_de: "Schläfrig nach einem Sturz oder Schlag: jetzt den Notruf wählen oder in die Notaufnahme"
+  reason_ru: "Сонливость после удара или падения: вызовите скорую или езжайте в приёмное отделение сейчас"
+  reason_ar: "نعاس بعد ضربة أو سقوط: اتصل بالطوارئ أو اذهب إلى الطوارئ الآن"
+  reason_pt: "Sonolência depois de uma pancada ou queda: ligue para a emergência ou vá às urgências já"
+  reason_hi: "चोट या गिरने के बाद सुस्ती: अभी आपातकालीन नंबर पर कॉल करें या इमरजेंसी जाएँ"
+  reason_sw: "Usingizi mwingi baada ya kuanguka au kugongwa: piga simu ya dharura au nenda hospitali sasa"
+  patterns:
+  - (golpe|ca[ií]d[oa]|cay[oó]|se dio|porrazo|coscorr[oó]n).{0,100}(somnolient|adormilad|muy dormid|no hay quien l[oa] despierte|no se despierta|cuesta despertarl)
+  - (somnolient|adormilad|muy dormid)[^.]{0,60}(desde que|despu[eé]s de|tras)[^.]{0,20}(golpe|ca[ií]d|cay[oó])
+  - (fell|fall|falling|hit|bang\w*|bump\w*|knock\w*).{0,100}(drowsy|very sleepy|hard to wake|difficult to wake|won'?t wake|lethargic)
+  - (drowsy|very sleepy|hard to wake)[^.]{0,40}(since|after)[^.]{0,30}(fell|fall|hit|bump|knock)
+  - (tomb[ée]|chute|cogn[ée]|choc).{0,100}(somnolent|du mal [àa] (se )?r[ée]veiller|ne se r[ée]veille)
+  - (caiu|queda|bateu|pancada).{0,100}(sonolent|dif[ií]cil de acordar|n[ãa]o acorda)
+  - (sturz|gest[üu]rzt|gefallen|gesto[ßs]en|hingefallen).{0,100}(schl[äa]frig|benommen|schwer zu wecken|kaum wach)
+  - (упал|удар|ударил).{0,100}(сонлив|трудно разбудить|не просыпается)
+  - (سقط|وقع|طاح|ضرب|ارتطم).{0,80}(نعسان|نعس|يصعب إيقاظه|لا يستيقظ)
+  - (गिर|चोट).{0,80}(सुस्त|उनींद|जाग नहीं)
+  - (ameanguka|alianguka|akaanguka|amegonga kichwa|aligonga kichwa).{0,80}(anasinzia|usingizi mwingi|haamki)
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce

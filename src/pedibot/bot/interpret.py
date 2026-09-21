@@ -47,7 +47,12 @@ SYSTEM = (
     "medical terms (for example 'ankle fracture', 'plaster cast', 'muscle wasting'), keeping the "
     "child's age and anything the parent said about how long or how bad,\n"
     '  "query_es": the same sentence in Spanish,\n'
-    '  "keywords": 6 to 10 search keywords, half English and half Spanish, condition names first.\n'
+    '  "keywords": 6 to 10 search keywords, half English and half Spanish, condition names first,\n'
+    '  "new_topic": only when a PREVIOUS MESSAGE is given: true if the CURRENT MESSAGE is about a '
+    "different problem (a new symptom, accident or question unrelated to the previous one); "
+    "false if it continues it (more detail, how it evolved, the child's age or weight, a "
+    "follow-up about the same problem, or anything you are unsure about). null otherwise.\n"
+    "Every other key describes the CURRENT MESSAGE only. "
     "Do not answer the question. Do not add facts that are not in the message."
 )
 
@@ -72,6 +77,8 @@ class Interpretation:
     keywords: tuple[str, ...]
     #: lo que costó leerla, para sumarlo al gasto de la respuesta: el tope diario de gasto en el
     #: modelo mira ese número, y una llamada que no se apunta es una llamada que no se controla
+    #: el padre ha cambiado de problema respecto al mensaje anterior (ver `interpret`)
+    new_topic: bool = False
     tokens_in: int = 0
     tokens_out: int = 0
     cost_usd: float = 0.0
@@ -90,12 +97,23 @@ def _iso(v: object) -> str | None:
     return v.strip().lower() if isinstance(v, str) and _ISO.match(v.strip().lower()) else None
 
 
-def interpret(llm: object, text: str) -> Interpretation | None:
-    """La lectura de la pregunta, o `None` si no hay una en la que se pueda confiar."""
+def interpret(llm: object, text: str, previous: str | None = None) -> Interpretation | None:
+    """La lectura de la pregunta, o `None` si no hay una en la que se pueda confiar.
+
+    `previous` es el mensaje anterior del padre, si lo hay. Sirve sólo para `new_topic`: diez
+    preguntas distintas en la misma conversación se iban sumando, y la de los ojos rojos heredaba
+    la edad de la del bebé que lloraba (21-sep-2026). Sólo un `true` explícito cuenta como tema
+    nuevo; ante la duda, la conversación se sigue juntando como siempre.
+    """
     if llm is None or not text or not text.strip():
         return None
+    entrada = (
+        f"PREVIOUS MESSAGE:\n{previous[:1000]}\n\nCURRENT MESSAGE:\n{text[:2000]}"
+        if previous and previous.strip()
+        else text[:2000]
+    )
     try:
-        res = llm.complete(SYSTEM, text[:2000], temperature=0.0, max_tokens=400)  # type: ignore[attr-defined]
+        res = llm.complete(SYSTEM, entrada, temperature=0.0, max_tokens=400)  # type: ignore[attr-defined]
     except Exception:  # noqa: BLE001 — si el modelo no está, se busca como siempre
         return None
     out = getattr(res, "text", "")
@@ -135,6 +153,7 @@ def interpret(llm: object, text: str) -> Interpretation | None:
         query_en=query_en.strip()[:300],
         query_es=query_es.strip()[:300],
         keywords=keywords,
+        new_topic=bool(previous and previous.strip()) and d.get("new_topic") is True,
         tokens_in=int(getattr(res, "tokens_in", 0) or 0),
         tokens_out=int(getattr(res, "tokens_out", 0) or 0),
         cost_usd=float(getattr(res, "cost_usd", 0.0) or 0.0),
