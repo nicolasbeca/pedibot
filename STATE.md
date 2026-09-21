@@ -20,6 +20,21 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 21-sep-2026 (madrugada) · la última batería, 300 preguntas más
+
+- Batería total del operador: 823 preguntas en `eval/bateria_operador/` (04_ultima_300.txt).
+- Triaje: 88 reglas (+ pupila blanca). Alarmas nuevas: no querer estar vivo, debilidad súbita de un
+  brazo, pérdida súbita de visión, líquido claro por la nariz tras un golpe, clavo en el pie,
+  diente movido o empujado, nariz torcida, dedo que no se mueve, tragar agua en la piscina, hambre
+  con pérdida de peso, gel desinfectante, enjuague bucal, medicina de un hermano, fiebre al volver
+  de un viaje. Falsas alarmas fuera: atragantamientos ya resueltos, sangrado de nariz sin golpe,
+  «se corta con papel», heces negras con hierro, recién nacido «sin fiebre», «alternate».
+- Chat: con un aviso encima, el texto nunca dice «no es urgente» (comprobación de seguridad); sin
+  fuente bajo un aviso, «haz lo que dice el aviso»; la primera frase «no hay información sobre X»
+  convierte la respuesta en «no tengo información fiable»; el sí/no sólo si una fuente lo dice;
+  «¿por qué me hablas en inglés?» como primer mensaje pide que cuente qué pasa.
+- Corpus: 559 documentos. Última vuelta de las 300: rellenos 0, contradicciones con el aviso 0.
+
 ## 21-sep-2026 (noche) · depuración con 523 preguntas del operador
 
 - El operador escribió 523 preguntas como las escribe un padre, en veinte lenguas, con faltas y

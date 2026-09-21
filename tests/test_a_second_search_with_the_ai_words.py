@@ -94,3 +94,49 @@ def test_a_short_refusal_in_words_is_the_same_signal() -> None:
 
     assert _dice_sin_fuente("No puedo responder a esa pregunta con la información que tengo.")
     assert _dice_sin_fuente("Nein, einem 9 Monate alten Baby darf man keinen Honig geben.")
+
+
+def test_under_a_red_banner_no_source_backs_the_banner() -> None:
+    """«Lleva media hora sin responder» salía con «prefiero no adivinar, consulta con tu pediatra»
+    debajo del aviso rojo. Sin fuente que añadir, el texto sólo apoya el aviso."""
+    from pedibot.bot.answer import SIGUE_EL_AVISO
+
+    motor, _ = _motor(_json(lang="es", lang_name="Spanish"))
+    _con_borradores(motor, ["NO_SOURCE"])
+    a = motor.ask("mi hijo lleva media hora sin responder", lang="es")
+    assert a.level == "emergency"
+    assert a.text == SIGUE_EL_AVISO["es"]
+    assert "pediatra" not in a.text
+
+
+def test_the_banner_text_exists_in_every_language() -> None:
+    from pedibot.bot.answer import NO_SOURCE, SIGUE_EL_AVISO
+
+    assert set(SIGUE_EL_AVISO) == set(NO_SOURCE)
+
+
+def test_an_answer_that_still_opens_with_no_information_is_no_source() -> None:
+    """«No hay ningún dato en la información disponible que explique un pecho hinchado en un
+    recién nacido. Lo que sí describen las fuentes es la ingurgitación mamaria de la madre…»"""
+    relleno = (
+        "No hay ningún dato en la información disponible sobre esto. Lo que sí describen es la "
+        "ingurgitación mamaria de la madre a los dos o tres días del parto, según la Junta de "
+        "Andalucía [1]."
+    )
+    motor, _ = _motor(_json(lang="es", lang_name="Spanish"))
+    _con_borradores(motor, [relleno, relleno, relleno, relleno])
+    a = motor.ask("mi bebe tiene un pecho un poco hinchado desde que nacio", lang="es")
+    assert a.verification == "no_source"
+
+
+def test_under_a_warning_the_text_never_says_it_is_not_urgent() -> None:
+    """«Arena en el ojo»: cartel de urgencias y debajo «No, no es una urgencia por sí solo»."""
+    from pedibot.bot.answer import SIGUE_EL_AVISO
+
+    malo = "No, no es una urgencia por sí solo, según la SEUP [1]."
+    motor, _ = _motor(_json(lang="es", lang_name="Spanish"))
+    _con_borradores(motor, [malo, malo, malo, malo])
+    a = motor.ask("mi hija se ha metido arena en el ojo y no deja de llorar", lang="es")
+    assert a.level == "urgent"
+    assert "no es una urgencia" not in a.text
+    assert a.text == SIGUE_EL_AVISO["es"]

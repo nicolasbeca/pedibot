@@ -143,3 +143,20 @@ def test_a_concrete_message_is_not_asked_again() -> None:
     motor, visto = _motor(_json(lang="es", lang_name="Spanish", vague=False))
     a = motor.ask("mi hija se chupa mucho el dedo, como hago para que pare?", lang="es")
     assert a.verification != "clarify"
+
+
+def test_asking_for_a_language_first_gets_tell_me_in_that_language() -> None:
+    """«Puoi scrivere in italiano?» como primer mensaje se contestaba con gastroenteritis."""
+    motor, visto = _motor(
+        _json(lang="es", lang_name="Spanish", intent="language_request", requested_lang="es")
+    )
+    a = motor.ask("¿Por qué me hablas en inglés ahora?", lang="es")
+    assert a.verification == "clarify"
+    assert not visto["redactor"]
+
+
+def test_a_message_without_letters_is_asked_to_describe() -> None:
+    motor, visto = _motor(_json(lang="en", lang_name="English"))
+    a = motor.ask("??? ??????? ?? ????", lang="es")
+    assert a.verification == "clarify"
+    assert not visto["redactor"]

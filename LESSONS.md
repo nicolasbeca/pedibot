@@ -1483,3 +1483,17 @@ sarampión; la regla «no rellenes» convirtió respuestas buenas en «no puedo 
 vio porque la batería se volvió a pasar entera después de cada tanda y se comparó pregunta a
 pregunta (`eval/bateria_operador/compara.py`). Un arreglo de prompt se mide contra todo, no
 contra el caso que lo motivó.
+
+## L222 · El texto no puede quitarle la razón al aviso (21-sep-2026)
+
+«Mi hija se ha metido arena en el ojo y no deja de llorar»: el triaje sacó el aviso de urgencias,
+y debajo el redactor escribió «No, no es una urgencia por sí solo». Nadie lo había visto porque
+cada pieza hacía bien lo suyo: el triaje avisaba, el redactor citaba una fuente real (la SEUP sí
+dice que el ojo rojo no es una urgencia). Lo que fallaba era la costura entre las dos. Ahora es
+una comprobación de seguridad, no de estilo: con un aviso encima, un borrador que diga «no es
+urgente» se reescribe, y si lo repite no sale; sale «haz lo que dice el aviso de arriba».
+
+La misma tarde salió su pariente: una regla del prompt pensada para contestar primero lo que se
+pregunta («¿puedo darle miel?» → «No, …») acabó inventando veredictos («No hay ningún problema en
+que siga con el biberón») que ninguna fuente daba. Cada regla que empuja al modelo hacia una
+forma de frase le empuja también a rellenarla cuando no tiene con qué.

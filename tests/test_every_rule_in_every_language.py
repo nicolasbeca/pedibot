@@ -278,6 +278,16 @@ CASOS: dict[str, dict[str, str]] = {
         "pt": "tem uma risca vermelha a subir pelo braço",
         "hi": "कटे हुए घाव से लाल लकीर ऊपर हाथ की ओर जा रही है",
     },
+    "white_pupil": {
+        "es": "mi bebé tiene una pupila blanca en las fotos con flash",
+        "en": "my baby's eye reflects white in photos",
+        "fr": "la pupille de mon bébé est blanche sur les photos",
+        "de": "mein Baby hat auf Fotos eine weiße Pupille",
+        "ru": "у малыша на фото белый зрачок",
+        "ar": "بؤبؤ عين طفلي أبيض في الصور",
+        "pt": "a pupila do meu bebé fica branca nas fotos",
+        "hi": "फ़ोटो में मेरे बच्चे की सफ़ेद पुतली दिखती है",
+    },
     "vomiting_after_head_injury": {
         "es": "se dio un golpe en la cabeza y ha vomitado dos veces",
         "en": "he banged his head and has vomited twice",
@@ -1279,6 +1289,16 @@ SEGUNDA: dict[str, dict[str, str]] = {
         "ar": "الاحمرار حول اللدغة ينتشر",
         "pt": "a picada do meu filho está a espalhar-se e ficou vermelha e quente",
         "hi": "काटे की जगह पर लाली फैल रही है",
+    },
+    "white_pupil": {
+        "es": "le vemos un brillo blanco en el ojo con la luz",
+        "en": "there is a white reflex in his pupil",
+        "fr": "sa pupille paraît blanche quand il y a de la lumière",
+        "de": "seine Pupille sieht im Licht weiß aus",
+        "ru": "зрачок кажется белым при свете",
+        "ar": "حدقة عينه تبدو بيضاء في الضوء",
+        "pt": "a pupila dele parece branca com a luz",
+        "hi": "रोशनी में उसकी पुतली सफ़ेद दिखती है",
     },
     "vomiting_after_head_injury": {
         "es": "vomitó después del golpe en la cabeza",

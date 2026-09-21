@@ -220,6 +220,17 @@ NO_SOURCE = {
     "hi": "मेरे स्रोतों में इसके बारे में भरोसेमंद जानकारी नहीं है, और मैं अंदाज़ा नहीं लगाना चाहता। कृपया अपने डॉक्टर से बात करें। अगर बच्चा बहुत बीमार लग रहा है, तो इमरजेंसी में जाएँ।",
     "pt": "Não tenho informação confiável sobre isso nas minhas fontes e prefiro não adivinhar. Procure o seu pediatra. Se a criança parecer estar mal, vá ao pronto-socorro.",
 }
+#: Lo que va debajo de un aviso urgente o de emergencia cuando no hay fuente que añadir.
+SIGUE_EL_AVISO = {
+    "en": "Do what the warning above says, now. I have no further detail on this exact situation in my guidelines, so I won't add anything that could hold you up.",
+    "es": "Haz ahora lo que dice el aviso de arriba. No tengo en mis guías más detalle sobre esta situación concreta, así que no voy a añadir nada que pueda retrasarte.",
+    "fr": "Faites maintenant ce que dit l'avertissement ci-dessus. Je n'ai pas plus de détails sur cette situation précise dans mes recommandations, donc je n'ajoute rien qui pourrait vous retarder.",
+    "de": "Tun Sie jetzt, was im Hinweis oben steht. Zu genau dieser Situation habe ich in meinen Leitlinien keine weiteren Details, deshalb füge ich nichts hinzu, was Sie aufhalten könnte.",
+    "ru": "Сделайте сейчас то, что сказано в предупреждении выше. Подробностей именно об этой ситуации в моих рекомендациях нет, поэтому я не буду добавлять ничего, что может вас задержать.",
+    "ar": "افعل الآن ما يقوله التنبيه في الأعلى. لا توجد في إرشاداتي تفاصيل أخرى عن هذه الحالة بالتحديد، لذلك لن أضيف شيئًا قد يؤخرك.",
+    "hi": "ऊपर की चेतावनी में जो लिखा है, वह अभी कीजिए। इस ख़ास स्थिति पर मेरे दिशानिर्देशों में और जानकारी नहीं है, इसलिए मैं ऐसा कुछ नहीं जोड़ूँगा जिससे आपको देर हो।",
+    "pt": "Faça agora o que diz o aviso acima. Não tenho nas minhas orientações mais detalhes sobre esta situação concreta, por isso não vou acrescentar nada que o possa atrasar.",
+}
 #: «¿Qué es PediBot?» (21-sep-2026). Un texto FIJO y revisado, no una respuesta redactada por el
 #: modelo: lo que el sitio dice de sí mismo no puede depender de cómo le salga ese día. Sin
 #: cifras a propósito —cuántos países, cuántos documentos—, porque ésas cambian y un texto fijo
@@ -921,9 +932,51 @@ _HABLA_DE_FUENTES = re.compile(
     r"\b(las fuentes|mis fuentes|estas fuentes|the sources|my sources|these sources|les sources|"
     r"mes sources|die quellen|meinen quellen|as fontes|nas fontes|minhas fontes|"
     r"la informaci[oó]n (que tengo|de la que dispongo|disponible)|the information i have|"
-    r"lo que s[ií] (describen|dicen|indican)|what the sources)\b",
+    r"lo que s[ií] (describen|dicen|indican)|what the sources|ning[uú]n (pasaje|documento|dato)|"
+    r"no (passage|document))\b",
     re.I,
 )
+
+
+#: Una primera frase que dice que lo preguntado no está cubierto. Si sobrevive al reintento, la
+#: respuesta entera es relleno de otra cosa (ver el final del bucle de redacción).
+_EMPIEZA_SIN_INFO = re.compile(
+    r"(no hay (ning[uú]n dato|informaci[oó]n|nada)|no encuentro|no aparece(n)? (descrit|en)|"
+    r"ninguna de las fuentes|informaci[oó]n disponible|ning[uú]n (pasaje|documento|dato)|"
+    r"there is no information|none of the (information|sources)|is not (something|described|covered)|"
+    r"the sources (do not|don'?t)|information here|"
+    r"il n'y a pas d'information|aucune (des )?information|"
+    r"keine (informationen|angaben)|n[ãa]o h[áa] informa[çc][ãa]o|нет (информации|данных))",
+    re.I,
+)
+
+
+def _primera_frase(texto: str) -> str:
+    return re.split(r"(?<=[.!?])\s", texto.strip(), maxsplit=1)[0]
+
+
+#: Con un aviso urgente o de emergencia encima, el texto no puede decir que no es urgente. «Mi
+#: hija se ha metido arena en el ojo»: cartel de urgencias y, debajo, «No, no es una urgencia por
+#: sí solo» (batería del 21-sep-2026). Es de SEGURIDAD: si el reintento lo repite, no sale.
+_QUITA_URGENCIA = re.compile(
+    r"(no es (una )?urgen|no es grave|no hace falta (ir|acudir)|no es una emergencia|"
+    r"(is )?not (an )?(urgent|emergency)|no need to (go|rush|worry)|isn'?t (urgent|an emergency)|"
+    r"(ce )?n'est pas (une )?urgen|kein notfall|nicht dringend|n[ãa]o [ée] (uma )?urg[êe]n|"
+    r"не (срочно|экстренн)|ليست? (حالة )?طارئ|आपातकाल नहीं)",
+    re.I,
+)
+CONTRADICE_AVISO = (
+    "contradicts_the_warning: a warning above your text already tells the parent this needs to"
+    " be seen now; never write that it is not urgent or not an emergency"
+)
+
+
+def _insegura(texto: str, hits: list[Hit], alarma: bool) -> list[str]:
+    """Los problemas de SEGURIDAD de un borrador: `verify`, más no contradecir el aviso."""
+    problemas = verify(texto, hits)
+    if alarma and _QUITA_URGENCIA.search(texto):
+        problemas.append(CONTRADICE_AVISO)
+    return problemas
 
 
 def verify_answer(text: str, hits: list[Hit]) -> list[str]:
@@ -947,7 +1000,7 @@ def verify_answer(text: str, hits: list[Hit]) -> list[str]:
             "no_organisation_named: name the organisation in words the first time you use a"
             " source (SEUP, NHS, WHO, CDC, MedlinePlus…), with the fact first"
         )
-    if _HABLA_DE_FUENTES.search(text):
+    if _HABLA_DE_FUENTES.search(text) or _EMPIEZA_SIN_INFO.search(_primera_frase(text)):
         problems.append(
             "talks_about_the_sources: do not tell the parent what 'the sources' do or do not say,"
             " and do not add material about a different situation. Answer with what the"
@@ -1057,6 +1110,16 @@ class Engine:
         """
         ctx: dict = {"costes": [], "fuera": None}
         a = self._ask(query, country, lang, history, mode, ctx)
+        # Con un aviso rojo encima, «prefiero no adivinar, consulta con tu pediatra» debajo le
+        # quita fuerza al aviso justo cuando más importa: «pierde el conocimiento», «le ha dado
+        # la corriente», «lleva media hora sin responder» salían así (batería del 21-sep-2026).
+        # Si no hay fuente que añadir, el texto sólo apoya el aviso.
+        if (
+            a.banner
+            and a.level in ("urgent", "emergency")
+            and a.verification in ("no_source", "fallback")
+        ):
+            a.text = SIGUE_EL_AVISO.get(a.lang, SIGUE_EL_AVISO["en"])
         if ctx["fuera"] and a.verification in _FRASES_FIJAS:
             a.text = self._traduce(a.text, ctx["fuera"], ctx)
         if ctx["costes"]:
@@ -1401,6 +1464,18 @@ class Engine:
         if query.strip().lower() == CLARIFY_OPTIONS[lang][-1].strip().lower():
             return Answer(DESCRIBE_IT[lang], tr.level, banner, [], lang, None, None, [], "clarify")
 
+        # 21-sep-2026, batería: «Puoi scrivere in italiano?» o «¿por qué me hablas en inglés?»
+        # como PRIMER mensaje no traen pregunta que repetir, y se contestaban con pasajes al azar
+        # sobre gastroenteritis. Se le dice que sí, en su lengua, y que cuente qué pasa. Y lo
+        # mismo a un mensaje sin una sola letra («???», que llegó así al registro).
+        pide_idioma = (
+            leida is not None
+            and leida.intent == "language_request"
+            and not any(t.get("role") == "user" for t in history)
+        )
+        if tr.level == "routine" and (pide_idioma or not re.search(r"[^\W\d_]", query)):
+            return Answer(DESCRIBE_IT[lang], tr.level, banner, [], lang, None, None, [], "clarify")
+
         # vague first message -> offer options. The topic is read from the query PLUS its synonym
         # expansion, the same as retrieval does: "se ha desmayado" or "llora sin parar" are clear
         # questions that the taxonomy does not name literally, and clarifying them is a bad answer.
@@ -1555,6 +1630,7 @@ class Engine:
             and bool(leida.search_text)
             and search_q != leida.search_text
         )
+        alarma = tr.level in ("urgent", "emergency")
         for intento in (1, 2):
             hits, extra = self.retriever.search(
                 search_q,
@@ -1589,6 +1665,34 @@ class Engine:
                 search_q = f"{leida.search_text} {' '.join(leida.keywords)}"
                 push = [*push, *leida.keywords]
                 continue
+            problems: list[str] = []
+            retry: LLMResult | None = None
+            if not _dice_sin_fuente(result.text):
+                problems = verify_answer(result.text, hits)
+                if alarma and _QUITA_URGENCIA.search(result.text):
+                    problems.append(CONTRADICE_AVISO)
+                if problems:
+                    retry = self.llm.complete(
+                        self.prompt
+                        + "\n\nYour previous draft failed verification: "
+                        + ", ".join(problems)
+                        + ". Fix it.",
+                        user,
+                        temperature=0.0,
+                    )
+                    # La reescritura tampoco vale: antes de rendirse, la segunda búsqueda. «Darf
+                    # ich meinem 9 Monate alten Baby Honig geben?» acababa así en «no sé» teniendo
+                    # el NHS la respuesta (batería del 21-sep-2026).
+                    if (
+                        otra_vez
+                        and leida is not None
+                        and (_dice_sin_fuente(retry.text) or _insegura(retry.text, hits, alarma))
+                    ):
+                        for r_ in (result, retry):
+                            ctx["costes"].append((r_.tokens_in, r_.tokens_out, r_.cost_usd))
+                        search_q = f"{leida.search_text} {' '.join(leida.keywords)}"
+                        push = [*push, *leida.keywords]
+                        continue
             break
         # «NO_SOURCE»: el redactor dice que ninguno de los pasajes contesta (regla 1 del prompt).
         # Antes lo decía en prosa y citaba igual los pasajes que no servían para explicarlo, y al
@@ -1607,24 +1711,15 @@ class Engine:
                 "no_source",
                 extra,
             )
-        problems = verify_answer(result.text, hits)
         verification = "ok"
-        if problems:
+        if problems and retry is not None:
             verification = "regenerated"
-            retry = self.llm.complete(
-                self.prompt
-                + "\n\nYour previous draft failed verification: "
-                + ", ".join(problems)
-                + ". Fix it.",
-                user,
-                temperature=0.0,
-            )
             # `verify`, not `verify_answer`: only the SAFETY checks can send an answer to the
             # fallback. A style problem — the same body named three times, nobody named at all —
             # gets its one retry and then ships as written. Turning a medically sound answer into
             # "I have no reliable information on this" because it reads stiffly would be a far
             # worse failure than the stiffness.
-            if _dice_sin_fuente(retry.text) or verify(retry.text, hits):
+            if _dice_sin_fuente(retry.text) or _insegura(retry.text, hits, alarma):
                 return Answer(
                     NO_SOURCE[lang],
                     tr.level,
@@ -1635,6 +1730,25 @@ class Engine:
                     retry,
                     [h.chunk.chunk_id for h in hits],
                     "fallback",
+                    extra,
+                    problems=problems,
+                )
+            # Excepción a lo de arriba, y sólo una: si después del reintento la PRIMERA frase
+            # sigue diciendo que la información no cubre lo preguntado, lo que viene detrás es
+            # relleno de otra cosa —la ingurgitación de la madre para el pecho del recién nacido,
+            # la otitis para el bebé que se frota la cabeza (batería del 21-sep-2026)—. Mejor el
+            # «no tengo información fiable» honesto que media respuesta sobre otra cosa.
+            if _EMPIEZA_SIN_INFO.search(_primera_frase(retry.text)):
+                return Answer(
+                    NO_SOURCE[lang],
+                    tr.level,
+                    banner,
+                    [],
+                    lang,
+                    self.prompt_version,
+                    retry,
+                    [h.chunk.chunk_id for h in hits],
+                    "no_source",
                     extra,
                     problems=problems,
                 )

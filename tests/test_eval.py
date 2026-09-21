@@ -95,7 +95,14 @@ def test_run_eval_metrics(tmp_path, config_dir):
 
 def test_run_llm_eval_measures_verification(tmp_path, config_dir):
     # del largo de una respuesta: una frase corta sin cita es una negativa, no un borrador malo
-    rep = run_llm_eval(_engine(tmp_path, config_dir, "La fiebre es un mecanismo de defensa del cuerpo frente a las infecciones y en la mayoría de los niños dura entre dos y cuatro días, conviene ofrecer líquidos, vigilar el estado general y consultar si aparece cualquier signo que preocupe a la familia o si no mejora."), GOLDEN)
+    rep = run_llm_eval(
+        _engine(
+            tmp_path,
+            config_dir,
+            "La fiebre es un mecanismo de defensa del cuerpo frente a las infecciones y en la mayoría de los niños dura entre dos y cuatro días, conviene ofrecer líquidos, vigilar el estado general y consultar si aparece cualquier signo que preocupe a la familia o si no mejora.",
+        ),
+        GOLDEN,
+    )
     s = rep.summary()
     assert s["n"] == 2  # asked_age case skipped
     assert s["citation_validity"] == 0.0  # every draft fell back

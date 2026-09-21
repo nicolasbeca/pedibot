@@ -387,6 +387,26 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("nhs", "https://www.nhs.uk/conditions/type-1-diabetes/symptoms/", "general", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/coeliac-disease/", "digestivo", "en", ["todas"]),
     # (bottle-feeding/ es una página índice sin texto propio: 0 pasajes; fuera)
+    # 21-sep-2026, tercera tanda: lo que siguió sin fuente tras la última vuelta de la batería
+    ("nhs", "https://www.nhs.uk/symptoms/bad-breath/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/nail-problems/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/neck-pain-and-stiff-neck/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/foot-pain/heel-pain/", "accidentes", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/tics/", "neurologia", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/stammering/", "desarrollo", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/balanitis/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/phimosis/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/gynaecomastia/", "general", "en", ["escolar"]),
+    ("nhs", "https://www.nhs.uk/symptoms/chest-pain/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/chest-infection/", "respiratorio", "en", ["todas"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/conditions/flat-head-syndrome-plagiocephaly-brachycephaly/",
+        "lactante",
+        "en",
+        ["lactante"],
+    ),
+    ("nhs", "https://www.nhs.uk/conditions/craniosynostosis/", "lactante", "en", ["lactante"]),
     # 21-sep-2026: las preguntas del operador que se quedaron sin fuente porque no había
     # documento, no porque el buscador no lo encontrara: un dedo roto, algo en el ojo, se le cae
     # el pelo, los ojos que lloran, qué no dar a un bebé (cacahuetes, salchichas enteras).
