@@ -146,7 +146,7 @@ I want to share something I got wrong, because I suspect it is not only my probl
 
 I run a free site that answers parents' questions about their sick child from published
 paediatric guidelines, in eight languages, with the source shown beside every sentence. Part of
-it is a dose calculator by weight for paracetamol and ibuprofen. Until last week it offered a
+it is a dose calculator by weight for paracetamol and ibuprofen. Until this week it offered a
 list of the bottle strengths I knew about, and the parent picked theirs.
 
 Then I read the EFDA list of medicines allowed over the counter in Ethiopia, and found that
@@ -172,9 +172,12 @@ Two questions for this forum, and they are the reason I am writing:
 
 1. Is this confusion something you see in practice? I only found it because I went looking for
    Ethiopian brand names and found strengths instead.
-2. Are there national over-the-counter or essential medicines lists you would point me to for
-   your own country? I have Ethiopia, and I am missing most of sub-Saharan Africa. I will only
-   add a country when I can read its own regulator's document; I am not willing to guess.
+2. I have since read the national essential medicines lists of Ethiopia, Rwanda, Mozambique
+   and DR Congo myself. Madagascar's list gives paracetamol syrup as 125 mg/mL, which would be
+   five times the usual strength, so I have not added it: I cannot tell whether it is a real
+   product or a typo. If anyone here works in Madagascar, or in Angola or Malawi, whose lists I
+   could not read, I would be grateful for a pointer. I will only add a country when I can read
+   its own document; I am not willing to guess.
 
 The site is pedibot.xyz, free, no account, no advertising, and it works on a phone with no
 signal after the first visit. No clinician has reviewed any of it and I am not a doctor, which

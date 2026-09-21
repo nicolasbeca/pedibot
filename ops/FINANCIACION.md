@@ -74,15 +74,6 @@ pida se queda esperando, no se descarta.
 Las dos últimas filas no se borran: se quedan ahí por si algún día cambia la situación. Pero
 hoy no hay nada que hacer en ellas y **no hay ninguna fecha escapándose** por ese lado.
 
----|---|---|
-| esta semana | **Emergent Ventures** — gratis, rolling, lo lee una persona | 0 |
-| viernes 2 de octubre | se deja de esperar a **MetaDAO** | — |
-| a partir del 2 de octubre | **Backable**, y con 75.000, no con 262.500 | 15 $ |
-| antes del **2 de noviembre** | **Y Combinator W2027**, si se decide ir | 0 |
-| en paralelo, cualquier mes | **Awesome Foundation**, para algo concreto de 1.000 $ | 0 |
-| cuando haya una tarde | **Bien público digital (DPGA)**: no da dinero, abre puertas | 0 |
-| esta semana | **CHIFA**, el foro de salud infantil de HIFA — el correo está escrito | 0 |
-
 ---
 
 > **Lo de casa, en `ops/ANDALUCIA.md`, está CERRADO y conviene saber por qué.** Se miraron
