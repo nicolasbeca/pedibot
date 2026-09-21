@@ -1,83 +1,75 @@
-# Emergent Ventures — el borrador, listo para pegar
+# Emergent Ventures — la solicitud tal y como pide el formulario
 
-> 20-sep-2026. La vía número 3 de `ops/FINANCIACION.md`, y la primera que cuesta cero y tiene a
-> alguien leyendo: **Tyler Cowen lee personalmente todas las solicitudes**. De 1.000 a 50.000 $,
-> sin participación, sin coste, y el formulario tiene un desplegable de región con **India,
-> África, el Caribe y Ucrania**, que es literalmente donde está este proyecto.
+> 21-sep-2026. Reescrita sobre el formulario de verdad, que el operador pegó entero: una
+> propuesta de hasta 1.500 palabras en cinco partes y en este orden —quién eres, **una opinión de
+> consenso que compartes del todo** (su «pregunta trampa»), la idea, un presupuesto con de dónde
+> saldrían los ingresos, y cuánto tiempo llevas y con quién—, más un tuit. El borrador anterior no
+> contestaba la segunda. Ésta tiene 964 palabras.
 >
-> El formulario no publica sus preguntas, así que esto está escrito como el texto libre que
-> siempre piden: quién eres, qué has hecho, qué harías con el dinero. Si el formulario pide algo
-> más corto, se recorta desde abajo: los tres primeros párrafos aguantan solos.
+> Queda un hueco que sólo puede rellenar él: **[your profession]**, en la primera línea.
 >
-> **Una cosa importante y es la razón de que no diga «triaje» en ningún sitio**: en Europa esa
-> palabra tiene consecuencias regulatorias (L209). Aquí se dice lo que el sitio hace, que además
-> es más concreto y se entiende mejor.
->
-> Región del desplegable: **India** o **África**. Yo pondría África, porque es donde las cifras
-> son más fuertes (los 54 países) y donde menos competencia de solicitudes hay.
+> Sólo se admite una solicitud por persona y proyecto: se manda una vez y bien.
 
----
+## Cómo se rellena cada casilla
 
-## El texto, en inglés
+| casilla | qué poner |
+|---|---|
+| Affected Region | **Africa** |
+| Project Topic | Other (o Health, si aparece) |
+| Where are you located | Spain · Andalucía · Sevilla |
+| How do you describe your idea in a tweet? | el tuit de abajo (255 caracteres) |
+| Tell us about your proposal | la propuesta de abajo, entera |
+| Supporting documentation | nada: no admiten PDF y la propuesta tiene que sostenerse sola |
+| Multimedia URL | https://pedibot.xyz/memo |
 
-I built and run [pedibot.xyz](https://pedibot.xyz), a free site that answers a parent's questions
-about their sick child in eight languages, always with the guideline it came from shown next to
-the answer. No account, no ads, no payment, nothing to install. I am one person, in Spain, and I
-have paid for all of it myself.
+## El tuit
 
-The specific thing it does that general-purpose chatbots do not: **it knows where the child is.**
-A parent in Lagos and a parent in Madrid asking the same question get the same medicine but a
-different bottle, a different emergency number, and a different vaccine schedule, because those
-things genuinely differ. Today it carries the emergency number for 90 countries, 66 national
-vaccine schedules, 78 country growth charts, 83 red-flag rules and 507 guides, all cited. The
-catalogue of 497 source documents behind it is published under CC0 and can be downloaded whole.
-For Africa that means all 54 countries have their emergency number and their vaccine schedule,
-52 have their growth charts, and 31 have the paracetamol and ibuprofen brands that are actually
-sold there, at the concentration printed on that country's bottle, so a parent can recognise the
-bottle in their hand rather than read a dose for a product they cannot buy.
+```
+A free site that answers parents' questions about a sick child in their own language, cites the guideline behind every sentence, knows their country's emergency number, vaccines and medicine bottles, says 'I don't know' when it doesn't, and works offline.
+```
 
-It is built for the phone that a parent in Kano or Patna actually owns. The whole thing is a
-static site of about five megabytes that keeps working with no signal after the first visit, and
-the parts that matter most in an emergency — the warning signs, the dose, the arm tape for
-malnutrition, the emergency number — are computed on the device without a round trip to a server
-or a language model.
+## La propuesta
 
-What it does **not** do is diagnose, and I am careful about this. It explains what a warning sign
-means, what the guideline says, and when a child needs to be seen today rather than tomorrow, and
-it shows the source so a parent can take it to a clinic and point at it.
+```
+ABOUT ME
 
-**What the money would buy.** The single thing that separates this from being trustworthy is a
-number I do not have: how its answers compare with what practising paediatricians would say about
-the same cases. I want to hire a panel of paediatricians to grade a few hundred real questions
-blind, publish the agreement rate whatever it turns out to be, and fix what the disagreements
-expose. I would also pay native Arabic and Hindi speakers to review the safety-critical text,
-which today is the weakest part of the project and the part where a translation error is most
-expensive. That is roughly $25,000: about $18,000 for the clinical review, $5,000 for the
-language review, and the rest for a year of hosting and the medical literature I have to buy.
+I am [your profession] in Seville, Spain, and I am not a doctor. I started this when I became a father for the first time and went looking for answers at night. What I found was contradictory, hard to trust, and almost never said where it came from. I wanted one place that would tell me what the paediatric guideline says and show me the guideline. It did not exist, so I built it in the evenings over the last year, and I have paid for all of it myself.
 
-**About me, and one thing I would rather you heard from me.** I am not a doctor and not a
-funded founder. I have built this in evenings over the last year because the version of it I
-wanted for my own use did not exist. In November 2025 I launched a token for the project on a
-crypto platform, before there was a product worth funding. It raised nothing and I retired it;
-it takes two minutes to find, so I would rather tell you first. What I learned from it is the
-reason the site is now free, has no token in it anywhere, and is built so that the money, if it
-ever arrives, comes from institutions and not from the parent.
+What matters more about me than credentials is how I work: I measure before I believe, and I hunt my own mistakes. A few days ago, reading Ethiopia's official list of over-the-counter medicines, I found that paracetamol drops there are 100 mg per 5 ml, while in Spain and India drops are 100 mg per ml, five times stronger. My dose calculator only knew the second, so a parent in Addis Ababa could have given a fifth of the dose. My first fix then put the weaker drops at the top of the list, where a parent in Madrid could have given five times too much. My tests were green both times. I found both problems by looking at the page the way a parent looks at it, and the calculator now lets the parent type what their own bottle says.
 
----
+One more thing I would rather you heard from me. In November 2025 I launched a token for the project on a crypto platform, before there was a product worth funding. It raised nothing and I retired it. It is the reason the site is now free, has no token anywhere, and is built so that money, if it comes, comes from institutions and not from parents.
 
-## Notas para ti, no para ellos
+A CONSENSUS VIEW I ABSOLUTELY AGREE WITH
 
-- **La cifra de 25.000 $ es la que yo defendería**, y está pensada para que cada dólar tenga un
-  entregable. Es alta para su mediana pero muy por debajo de su techo de 50.000, y lo que pides
-  es exactamente lo que ellos llaman «de cero a uno»: un número que hoy no existe en ningún sitio.
-- **Lo del token va dentro a propósito.** Se encuentra en dos minutos y encontrarlo por su cuenta
-  vale mucho más que leerlo de ti. Contado así deja de ser un riesgo y pasa a ser la explicación
-  de por qué el proyecto está construido como está.
-- **No pone «motor de triaje» en ninguna parte** y no es por suavizarlo: es por L209. La frase
-  «explica qué significa un signo de alarma y cuándo hay que ir hoy» describe lo mismo, se
-  entiende mejor y no te mete en la clase IIa europea.
-- **Las cifras salen de `DATOS.md`**, contadas el 20-sep-2026. Si pasan semanas antes de que lo
-  mandes, regenera (`uv run python scripts/build_datos.py`) y cámbialas; son las únicas de este
-  texto que envejecen.
-- **Avisan de que no dan respuesta individual ni estado de la solicitud**, y de que sólo se puede
-  mandar una por persona y proyecto. O sea que esto se manda una vez y bien.
+Oral rehydration solution is one of the most important medical advances of the last century. Clean water, salt and sugar in the right proportion, costing a few cents, turned diarrhoea from one of the biggest killers of small children into something a parent can treat at home. I agree with this completely, and it is the whole idea of this project in miniature: much of what saves children is already known, cheap and published. What fails is getting the right sentence to the right parent, in their language, at three in the morning.
+
+THE IDEA
+
+Every night millions of parents ask whether their child needs a hospital, and more and more of them ask a chatbot. Chatbots often answer well, but they cite nothing, so nothing can be checked. They do not know that the emergency number is 112 in Nigeria and 123 in Egypt, which vaccine schedule applies to this child, or which medicine bottle is actually sold where the parent lives, because none of that lives in a model: it lives in a ministry's PDF. And above all, a chatbot always answers. It does not know how to stay quiet.
+
+PediBot (pedibot.xyz) is built the other way round.
+
+It knows where the child is. It carries the emergency number of 90 countries, 66 national vaccine schedules and 78 country growth charts, including 52 of the 54 African countries. For medicines, it reads what each country's regulator lists, one document at a time, and does not guess where it cannot read.
+
+It answers only from 497 published documents by health ministries, the WHO and paediatric societies, shows the source beside every sentence, and says "I don't have reliable information" when the documents do not cover the question. The catalogue of sources is public domain and anyone can download it.
+
+The dangerous parts are not written by a language model. Warning signs, doses, the arm tape that detects malnutrition and emergency numbers are computed by fixed, tested rules, on the phone itself. The whole site is about five megabytes and keeps working with no signal after the first visit, because it is built for the phone a parent in Kano or Patna actually has. It is in eight languages and answers in the language the parent writes in.
+
+What is new is not any single piece. It is the combination: a free service that is local, cited, honest about what it does not know, and that works offline, for the parents general-purpose tools serve worst.
+
+Where it stands: it went live on 25 August 2026. Usage is still small, a few hundred people, because I have barely announced it. That is the next problem, and it is not one money solves.
+
+BUDGET
+
+About $25,000 for one year.
+
+- Clinical review, about $18,000. This is the one thing that separates the project from being trustworthy: a panel of practising paediatricians grading a few hundred real questions blind, the agreement rate published whatever it turns out to be, and the disagreements fixed.
+- Native-speaker review of the Arabic and Hindi safety text, about $5,000. It is the weakest part of the project today and the one where a translation error costs most.
+- Hosting, model calls and medical literature, about $2,000.
+
+Revenue today is zero, on purpose: parents will never pay, and there are no ads and no data sales. The path to self-sufficiency is licensing the rule-based engine to health insurers, clinics and hospitals as a first filter, so that institutions pay and the parent side stays free. The clinical measurement is the prerequisite for that, which is why it comes first.
+
+TIME AND SUPPORT
+
+About a year of work, part time, in evenings and at weekends. No co-founders, no investors and no formal partners yet. This week I wrote to CHIFA, the child-health forum of Healthcare Information For All, to ask health workers in low-income countries to check it and point me to their national medicine lists.
+```
