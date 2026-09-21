@@ -20,6 +20,18 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 21-sep-2026 (noche) · depuración con 523 preguntas del operador
+
+- El operador escribió 523 preguntas como las escribe un padre, en veinte lenguas, con faltas y
+  mezcladas con cosas ajenas; quedan en `eval/bateria_operador/` para repetirlas tras cada cambio.
+- Primera vuelta → última: fallidas 30 → 13, «¿qué le pasa?» a preguntas claras 15 → 2, falsas
+  alarmas de salud mental 3 → 0, avisos urgentes 72 → 87 y de emergencia 50 → 52. Las «no tengo
+  información fiable» suben de 34 a 48: son las que antes rellenaban con otra enfermedad.
+- Triaje: 87 reglas (+ infección de piel que se extiende); decenas de patrones nuevos y diez
+  falsas alarmas fuera. Prompt `answer_v7`. Corpus: 546 documentos (+50).
+- Queda: revisar las 48 sin fuente buscando huecos del corpus, y las 11 respuestas que todavía
+  hablan de «las fuentes».
+
 ## 21-sep-2026 (tarde) · el chat, repasado con las preguntas del operador
 
 - **Panel:** sin informes a Telegram (queda sólo el vigilante de caídas). Gráfica de personas por
