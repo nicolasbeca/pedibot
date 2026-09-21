@@ -20,9 +20,9 @@ contestarte por correo: CHIFA, Emergent Ventures, Immunize.org, Vikaspedia e ICT
 escribe cualquiera, me reenvías el correo tal cual y yo preparo lo que toque. Emergent Ventures
 avisa de que no da respuesta individual, así que su silencio no significa nada.
 
-**Bajado de prioridad, con su razón:** el proveedor de correo (tarea 3). Hoy sólo hay una cuenta
-de padre y es la tuya, así que recuperar la contraseña no le falta a nadie todavía. Vuelve a subir
-el día que haya cuentas de verdad.
+**En espera, decidido por ti:** el proveedor de correo (tarea 3) no se monta hasta que haya **al
+menos 20 altas**. Hoy sólo hay una cuenta y es la tuya, así que recuperar la contraseña no le
+falta a nadie todavía.
 
 **Descartado hoy, para no volver a mirarlo:** la Awesome Foundation, que no tiene ninguna
 delegación en España, África o la India ni ninguna de salud (`ops/FINANCIACION.md`).
@@ -71,7 +71,7 @@ Lo tuyo. Yo no toco nada ahí.
 
 ## ESTA SEMANA — lo que destraba trabajo mío
 
-### 3. Decidir el proveedor de correo — 15 minutos, y es el más importante
+### 3. ⏸ EN ESPERA hasta 20 altas (decidido el 21-sep) — Decidir el proveedor de correo
 
 Sin esto, **quien pierda su contraseña no la puede recuperar**, y el boletín que querías no se
 puede mandar. Es la única cosa de la cuenta que está prometida y no funciona.
