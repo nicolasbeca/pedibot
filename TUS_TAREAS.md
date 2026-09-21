@@ -8,13 +8,33 @@
 
 ---
 
+## 21-sep-2026 · lo que hiciste hoy y lo que queda
+
+**Hecho, las seis tareas del día:** el correo a CHIFA, la solicitud a Emergent Ventures, las diez
+páginas pedidas en Search Console, los dos correos de permisos (Immunize.org para el suajili y
+Vikaspedia para el hindi), los tuits nuevos (publicándose poco a poco) y la propuesta de
+artículo a ICTworks.
+
+**Lo que queda de tu parte es sólo esperar y reenviarme lo que llegue.** Cinco sitios pueden
+contestarte por correo: CHIFA, Emergent Ventures, Immunize.org, Vikaspedia e ICTworks. Si
+escribe cualquiera, me reenvías el correo tal cual y yo preparo lo que toque. Emergent Ventures
+avisa de que no da respuesta individual, así que su silencio no significa nada.
+
+**Bajado de prioridad, con su razón:** el proveedor de correo (tarea 3). Hoy sólo hay una cuenta
+de padre y es la tuya, así que recuperar la contraseña no le falta a nadie todavía. Vuelve a subir
+el día que haya cuentas de verdad.
+
+**Descartado hoy, para no volver a mirarlo:** la Awesome Foundation, que no tiene ninguna
+delegación en España, África o la India ni ninguna de salud (`ops/FINANCIACION.md`).
+
+---
+
 ## FECHAS QUE NO SE TE PUEDEN PASAR
 
 *(anotadas el 20-sep-2026)*
 
 | cuándo | qué | por qué esa fecha |
 |---|---|---|
-| **cuando quieras, y cuanto antes mejor** | apuntarte a **CHIFA** y mandar el correo | Sustituye a lo de Hacker News, que descartaste con razón. CHIFA es el foro de salud infantil de HIFA: 3.600 miembros en más de 140 países, padres y personal sanitario **de países en desarrollo**, gratis, y su lema es casi el tuyo. Apuntarse en hifa.org y escribir a `chifa@hifaforums.org`. **El correo está escrito entero**, en inglés y listo para pegar, al final de `ops/SHOW_HN.md`. Abre contándoles el fallo de las gotas etíopes, que es lo que a ellos les interesa, y acaba preguntándoles por el registro de medicamentos de su país, que es lo que a nosotros nos falta. |
 | **miércoles 23 de septiembre** | se acaban las 72 horas de MetaDAO | Su acuse dice que escriben en ~72 h **sólo si tienen preguntas**. Lo enviaste el domingo 20, así que el reloj empieza el lunes. Si no escriben, no pasa nada: ellos mismos avisan de que no contestar es lo normal. |
 | **viernes 2 de octubre** | dejar de esperar a MetaDAO | Diez días hábiles. A partir de ahí, silencio es silencio, y no significa que el proyecto sea malo: significa que no llegó a la mesa. |
 | **a partir del 2 de octubre** | decidir lo de Backable | No antes: si aparecen con preguntas mientras tienes una ronda abierta, la conversación se complica sin ganar nada. El borrador sí se puede preparar ya, que es gratis hasta los 15 $ del final. |
@@ -29,7 +49,7 @@ los números de cada ronda.
 
 ## HOY
 
-### 1. Probar la web antes de MetaDAO — 10 minutos
+### 1. ✅ HECHO — Probar la web antes de MetaDAO
 
 Con el móvil, no con el ordenador, que es donde la va a abrir la gente.
 
@@ -43,7 +63,7 @@ Con el móvil, no con el ordenador, que es donde la va a abrir la gente.
    tiene que poner su nombre y su edad.
 8. Si algo falla o chirría, apúntalo y me lo dices. **Eso es lo único que necesito.**
 
-### 2. Publicar en MetaDAO
+### 2. ✅ HECHO el 20-sep — Publicar en MetaDAO
 
 Lo tuyo. Yo no toco nada ahí.
 
@@ -64,7 +84,7 @@ puede mandar. Es la única cosa de la cuenta que está prometida y no funciona.
 4. Yo monto: verificación del correo al registrarse, «he olvidado mi contraseña» y el envío del
    boletín con su baja en un clic.
 
-### 4. Los tres posts de Reddit y Hacker News — 20 minutos
+### 4. ❌ DESCARTADO — Los posts de Reddit y Hacker News (Hacker News «no es nuestro público», 20-sep)
 
 Te los mandé a Telegram: tres títulos y tres cuerpos, en mensajes separados para copiar y pegar.
 
@@ -76,12 +96,12 @@ Te los mandé a Telegram: tres títulos y tres cuerpos, en mensajes separados pa
    golpe dispara los detectores de IA.
 4. No los publiques los tres el mismo día. Uno, y a los dos días el siguiente.
 
-### 5. Los cinco tuits — 5 minutos
+### 5. ✅ HECHO el 21-sep — Los tuits (seis nuevos, publicándose poco a poco)
 
 Te los acabo de mandar a Telegram, uno por mensaje. Yo los separaría un par de horas entre ellos,
 y el primero lo pondría cuando tengas rato de contestar, porque puede traer respuestas.
 
-### 6. Los dos correos de permisos — 10 minutos
+### 6. ✅ HECHO el 21-sep — Los dos correos de permisos (Immunize.org y vikaspedia@cdac.in)
 
 Están escritos enteros en `ops/PERMISOS.md`, listos para copiar y pegar.
 
@@ -90,7 +110,7 @@ Están escritos enteros en `ops/PERMISOS.md`, listos para copiar y pegar.
 2. **Vikaspedia (C-DAC)** → por su formulario web, no por correo. Es el hindi.
 3. Si contestan, me pasas la respuesta y yo hago lo que toque.
 
-### 7. Search Console — 10 minutos
+### 7. ✅ HECHO el 21-sep — Search Console (diez páginas pedidas)
 
 Las 800 páginas africanas nuevas están en el sitemap, pero Google no las ha visto todas.
 

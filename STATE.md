@@ -1,10 +1,24 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-20** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-09-21** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
 > Nota de la revisión del 8-sep: la cabecera de este fichero decía «25-ago» mientras el código
 > iba por el 7-sep, con 234 commits y catorce días de trabajo sin recoger. Un estado vivo que
 > se queda quieto miente con más eficacia que no tener ninguno.
+
+## 21-sep-2026 · la IA lee la pregunta, y el día de trámites
+
+- **Chat:** una IA lee la pregunta antes de buscar (`bot/interpret.py`), pero no la contesta:
+  la respuesta sigue saliendo sólo de las fuentes. La lectura fija la lengua (se contesta en la
+  del padre, también en italiano, polaco u holandés, con las frases fijas traducidas), reescribe
+  la búsqueda para lenguas que el buscador no conoce y pasa la traducción al triaje, que sólo
+  puede añadir alarmas. Si ningún pasaje contesta, el modelo dice `NO_SOURCE` y sale «no tengo
+  información fiable» sin fuentes. «¿Qué es PediBot?» y las preguntas que no son de salud tienen
+  su texto fijo en 8 lenguas. Todo comprobado en vivo.
+- **Memo:** sin cifra de petición; cada solicitud pone la suya.
+- **Hecho por el operador:** CHIFA, Emergent Ventures, Search Console (10 páginas), correos de
+  permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
+- **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
 ## Fase actual
 
