@@ -30,6 +30,10 @@ Si alguien está describiendo a su hijo, no.
 > presentación a hifa@hifaforums.org (517 documentos, 90 números, 66 calendarios, 78 curvas,
 > ocho lenguas; pide documentos oficiales y listas de medicamentos que falten). La lista es
 > moderada: puede tardar un día en salir. Si alguien contesta con un documento, va al corpus.
+>
+> Aclarado el mismo día: el mensaje del 20-sep fue a **CHIFA** y está en su cola de moderación
+> (aviso automático del 21-sep, 8:47). Neil dio de alta en **HIFA** y ofreció CHIFA; se le pide
+> que añada también a CHIFA y que apruebe ese mensaje. La presentación en HIFA la aprobó él.
 
 Entra aquí porque el operador descartó Hacker News ese día con una frase que estaba bien puesta:
 *«olvídate de Hacker News, no es nuestro público»*. Buscando dónde sí lo está, apareció esto, y
