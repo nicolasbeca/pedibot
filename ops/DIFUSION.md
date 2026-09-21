@@ -25,6 +25,12 @@ Si alguien está describiendo a su hijo, no.
 
 ## CHIFA, lo primero de todo (20-sep-2026)
 
+> **21-sep-2026, hecho:** alta en HIFA confirmada por Neil (resumen diario). Enviados por el
+> operador: la corrección del perfil («founder of PediBot… Seville, Spain») a neil@hifa.org y la
+> presentación a hifa@hifaforums.org (517 documentos, 90 números, 66 calendarios, 78 curvas,
+> ocho lenguas; pide documentos oficiales y listas de medicamentos que falten). La lista es
+> moderada: puede tardar un día en salir. Si alguien contesta con un documento, va al corpus.
+
 Entra aquí porque el operador descartó Hacker News ese día con una frase que estaba bien puesta:
 *«olvídate de Hacker News, no es nuestro público»*. Buscando dónde sí lo está, apareció esto, y
 es mejor por todos lados.
