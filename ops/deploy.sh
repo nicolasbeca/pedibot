@@ -65,7 +65,10 @@ tar czf - --exclude='__pycache__' --exclude='.pytest_cache' --exclude='.mypy_cac
   src config scripts eval pyproject.toml uv.lock Makefile README.md ops web/content \
   web/site/src web/site/public web/site/package.json web/site/package-lock.json \
   web/site/astro.config.mjs web/site/tsconfig.json web/site/scripts \
-  | $SSH "tar xzf - -C /opt/pedibot"
+  | $SSH "rm -rf /opt/pedibot/ops/systemd && tar xzf - -C /opt/pedibot"
+# ↑ ops/systemd se borra antes de descomprimir: tar no borra nunca, y la poda de unidades de más
+# abajo compara con esta carpeta. Sin esto, quitar del repositorio los informes de Telegram
+# (21-sep-2026) los dejaba vivos en el servidor, porque su copia vieja seguía aquí.
 
 if [ $NO_INDEX -eq 0 ]; then
   echo "== index ($(du -h index/pedibot.db | cut -f1))"
