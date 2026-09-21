@@ -20,6 +20,22 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 21-sep-2026 (tarde) · el chat, repasado con las preguntas del operador
+
+- **Panel:** sin informes a Telegram (queda sólo el vigilante de caídas). Gráfica de personas por
+  día con los clics de Google en paralelo; tarjeta «La web» (de dónde llegan, herramientas, por
+  dónde entran, móvil u ordenador, idioma y país del navegador); Google plegado; fuentes rotas
+  de los domingos en su tarjeta; la casilla de cuentas se pone en rojo a las 20.
+- **Chat:** una pregunta nueva ya no arrastra la anterior (la lectura de IA dice si es otro
+  problema); segunda búsqueda con las palabras de la IA cuando la primera no contesta; el
+  «NO_SOURCE» adornado se reconoce; «Otra cosa» y dos palabras no cambian el idioma.
+- **Triaje:** reglas nuevas para somnolencia tras un golpe (emergencia), algo en el ojo, caída
+  por las escaleras o llanto que no para tras un golpe, dedo roto, espina de pescado.
+- **Corpus:** 517 documentos (+20: alergias, fracturas, ojo, pelo, qué no dar a un bebé).
+- **Móvil:** país, edad y peso plegados en un botón.
+- **Pendiente:** la astilla, la caída del pelo en niños y el golpe en el dedo del pie no tienen
+  documento oficial en el corpus; «¿cuándo le doy una chuleta?» contesta unas veces sí y otras no.
+
 ## Fase actual
 
 **F1–F3 HECHAS. F4 Despliegue — HECHO el 25-ago**: VPS Hetzner `46.225.74.13` (1 vCPU / 2 GB, Ubuntu 24.04, hostname `pedibot`), Caddy con certificado Let's Encrypt para `pedibot.xyz` (DNS en Cloudflare, nube gris), units `pedibot-api`, `pedibot-telegram` (@Pedichat_bot), watchdog cada 10 min (alertas a @Pedibot_ops_bot), backup 05:30, guías lunes/jueves 07:00. Despliegue desde el PC: `bash ops/deploy.sh 46.225.74.13` (tar sobre SSH; la web se construye en el PC con `make web-build`). **F5 beta cerrada EN MARCHA desde el 26-ago** (primer probador externo: un amigo del operador; objetivo 10-20 padres, revisar TODAS las conversaciones en `/admin` y marcar las malas con el botón de flag).

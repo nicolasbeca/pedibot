@@ -1876,9 +1876,9 @@ rules:
 - id: foreign_body_ingestion
   level: urgent
   source: seup_acudir_urgencias
-  reason_es: Ingesta de un objeto (sobre todo pilas o imanes)
-  reason_en: Swallowed an object (especially batteries or magnets)
-  reason_fr: Ingestion d'?un objet (surtout piles ou aimants)
+  reason_es: Se ha tragado un objeto o se le ha clavado algo al tragar (pilas, imanes, una espina)
+  reason_en: Swallowed an object or something is stuck in the throat (batteries, magnets, a fish bone)
+  reason_fr: Ingestion d'?un objet ou quelque chose coincé dans la gorge (piles, aimants, une arête)
   patterns:
   # 21-sep-2026: «ha comido pescado y no para de toser, ¿puede tener una espina clavada?» salía
   # RUTINA. Una espina en la garganta no se queda sola, y la tos que no para es el aviso.
