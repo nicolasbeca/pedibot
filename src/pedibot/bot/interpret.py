@@ -48,8 +48,9 @@ SYSTEM = (
     "child's age and anything the parent said about how long or how bad,\n"
     '  "query_es": the same sentence in Spanish,\n'
     '  "keywords": 6 to 10 search keywords, half English and half Spanish, condition names first,\n'
-    '  "new_topic": only when a PREVIOUS MESSAGE is given: true if the CURRENT MESSAGE is about a '
-    "different problem (a new symptom, accident or question unrelated to the previous one); "
+    '  "new_topic": only when PREVIOUS MESSAGES are given: true if the CURRENT MESSAGE is about a '
+    "different problem (a new symptom, accident or question unrelated to the previous ones; "
+    "ignore stray fragments such as a single word sent by mistake); "
     "false if it continues it (more detail, how it evolved, the child's age or weight, a "
     "follow-up about the same problem, or anything you are unsure about). null otherwise.\n"
     "Every other key describes the CURRENT MESSAGE only. "
@@ -108,7 +109,7 @@ def interpret(llm: object, text: str, previous: str | None = None) -> Interpreta
     if llm is None or not text or not text.strip():
         return None
     entrada = (
-        f"PREVIOUS MESSAGE:\n{previous[:1000]}\n\nCURRENT MESSAGE:\n{text[:2000]}"
+        f"PREVIOUS MESSAGES:\n{previous[-1000:]}\n\nCURRENT MESSAGE:\n{text[:2000]}"
         if previous and previous.strip()
         else text[:2000]
     )

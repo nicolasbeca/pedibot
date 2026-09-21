@@ -81,3 +81,50 @@ def test_a_single_word_is_not_off_topic() -> None:
     motor, _ = _motor(_json(lang="es", lang_name="Spanish", intent="other", query_en=""))
     a = motor.ask("Mi", lang="es")
     assert a.verification != "off_topic"
+
+
+def test_a_stray_word_in_between_does_not_hide_the_old_topic() -> None:
+    """Caída, «Mi» suelto, bebé que llora: la lectura tiene que ver la caída, no sólo el «Mi»."""
+    motor, _ = _motor(_json(lang="es", lang_name="Spanish", new_topic=True))
+    vistos: list[str] = []
+    original = motor.llm.complete
+
+    def mira(system, user, **k):  # noqa: ANN001, ANN003, ANN202
+        vistos.append(user)
+        return original(system, user, **k)
+
+    motor.llm.complete = mira  # type: ignore[method-assign]
+    historia = [*CAIDA, {"role": "user", "text": "Mi"}, {"role": "assistant", "text": "¿?"}]
+    motor.ask(LLORA, lang="es", history=historia)
+    assert "caído de una silla" in vistos[0]
+
+
+def test_the_something_else_button_never_changes_the_language() -> None:
+    """«Otra cosa» salió una vez con la respuesta en inglés, en una conversación en castellano."""
+    motor, _ = _motor(
+        _json(lang="en", lang_name="English", intent="language_request", requested_lang=None)
+    )
+    a = motor.ask("Otra cosa", lang="es")
+    assert a.lang == "es"
+    assert a.verification == "clarify"
+
+
+def test_two_words_do_not_switch_the_language_unless_they_name_one() -> None:
+    motor, visto = _motor(_json(lang="en", lang_name="English", intent="language_request"))
+    motor.ask("vale gracias", lang="es")
+    assert all("ANSWER LANGUAGE: English" not in r for r in visto["redactor"])
+
+
+def test_why_english_repeats_the_last_real_question_not_a_button() -> None:
+    """«¿Por qué me hablas en inglés ahora?» llegó tras «Otra cosa», y se contestó «Otra cosa»."""
+    motor, visto = _motor(
+        _json(lang="es", lang_name="Spanish", intent="language_request", requested_lang="es")
+    )
+    historia = [
+        {"role": "user", "text": "Mi hijo de 3 años tiene muy poco pelo"},
+        {"role": "assistant", "text": "¿Qué es lo principal que le pasa?"},
+        {"role": "user", "text": "Otra cosa"},
+        {"role": "assistant", "text": "I don't have reliable information."},
+    ]
+    motor.ask("¿Por qué me hablas en inglés ahora?", lang="es", history=historia)
+    assert "PARENT MESSAGE:\nMi hijo de 3 años tiene muy poco pelo" in visto["redactor"][-1]

@@ -213,14 +213,14 @@ NO_SOURCE = {
 #: cifras a propósito —cuántos países, cuántos documentos—, porque ésas cambian y un texto fijo
 #: con una cifra es una cifra que envejece sin que nadie se entere (ver `DATOS.md`).
 ABOUT_PEDIBOT = {
-    "en": "PediBot is a free service that answers questions about children's health using only guidelines published by health ministries, the WHO and paediatric societies, and it shows which document each sentence comes from. It does not diagnose and does not replace your paediatrician: it explains what the guidelines say, when a child needs to be seen and which emergency number to call in your country. It works without an account and without asking for personal data. Tell me what is worrying you about your child.",
-    "es": "PediBot es un servicio gratuito que contesta dudas sobre la salud de los niños usando sólo guías publicadas por ministerios de sanidad, la OMS y sociedades de pediatría, y enseña de qué documento sale cada frase. No diagnostica ni sustituye a tu pediatra: explica qué dicen las guías, cuándo hay que llevar al niño al médico y a qué número de emergencias llamar en tu país. Funciona sin cuenta y sin pedir datos personales. Cuéntame qué te preocupa de tu hijo.",
-    "fr": "PediBot est un service gratuit qui répond aux questions sur la santé des enfants en s'appuyant uniquement sur les recommandations publiées par les ministères de la santé, l'OMS et les sociétés de pédiatrie, et il indique de quel document vient chaque phrase. Il ne pose pas de diagnostic et ne remplace pas votre pédiatre : il explique ce que disent les recommandations, quand un enfant doit être vu par un médecin et quel numéro d'urgence appeler dans votre pays. Il fonctionne sans compte et sans demander de données personnelles. Dites-moi ce qui vous inquiète chez votre enfant.",
-    "de": "PediBot ist ein kostenloser Dienst, der Fragen zur Gesundheit von Kindern ausschließlich anhand von Leitlinien beantwortet, die Gesundheitsministerien, die WHO und kinderärztliche Fachgesellschaften veröffentlicht haben, und er zeigt, aus welchem Dokument jeder Satz stammt. Er stellt keine Diagnosen und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt: Er erklärt, was die Leitlinien sagen, wann ein Kind ärztlich gesehen werden muss und welche Notrufnummer in Ihrem Land gilt. Er funktioniert ohne Konto und ohne persönliche Daten. Erzählen Sie mir, was Sie bei Ihrem Kind beunruhigt.",
-    "ru": "PediBot — бесплатный сервис, который отвечает на вопросы о здоровье детей, опираясь только на рекомендации, опубликованные министерствами здравоохранения, ВОЗ и педиатрическими обществами, и показывает, из какого документа взята каждая фраза. Он не ставит диагнозов и не заменяет вашего педиатра: он объясняет, что говорят рекомендации, когда ребёнка нужно показать врачу и по какому номеру звонить в экстренных случаях в вашей стране. Он работает без регистрации и не просит личных данных. Расскажите, что вас беспокоит в состоянии ребёнка.",
-    "ar": "PediBot خدمة مجانية تجيب عن أسئلة صحة الأطفال بالاعتماد فقط على الإرشادات التي تنشرها وزارات الصحة ومنظمة الصحة العالمية وجمعيات طب الأطفال، وتبيّن من أي وثيقة أُخذت كل جملة. لا تشخّص ولا تغني عن طبيب طفلك: تشرح ما تقوله الإرشادات، ومتى يجب أن يراه الطبيب، وبأي رقم طوارئ تتصل في بلدك. تعمل من دون حساب ومن دون طلب بيانات شخصية. أخبرني بما يقلقك بشأن طفلك.",
-    "pt": "O PediBot é um serviço gratuito que responde a dúvidas sobre a saúde das crianças usando apenas diretrizes publicadas por ministérios da saúde, pela OMS e por sociedades de pediatria, e mostra de que documento vem cada frase. Não faz diagnósticos nem substitui o seu pediatra: explica o que dizem as diretrizes, quando a criança precisa ser vista por um médico e para que número de emergência ligar no seu país. Funciona sem conta e sem pedir dados pessoais. Conte-me o que o preocupa no seu filho.",
-    "hi": "PediBot एक मुफ़्त सेवा है जो बच्चों के स्वास्थ्य से जुड़े सवालों के जवाब सिर्फ़ स्वास्थ्य मंत्रालयों, विश्व स्वास्थ्य संगठन और बाल रोग संस्थाओं के प्रकाशित दिशानिर्देशों से देती है, और बताती है कि हर वाक्य किस दस्तावेज़ से लिया गया है। यह न तो निदान करती है और न ही आपके डॉक्टर की जगह लेती है: यह बताती है कि दिशानिर्देश क्या कहते हैं, बच्चे को कब डॉक्टर को दिखाना चाहिए और आपके देश में आपातकालीन नंबर क्या है। इसके लिए न खाता चाहिए, न कोई निजी जानकारी। बताइए, आपको अपने बच्चे के बारे में क्या चिंता है।",
+    "en": "PediBot is a free service that answers questions about children's health using only guidelines published by health ministries, the WHO and paediatric societies, and it shows which document each sentence comes from. It does not diagnose and does not replace your paediatrician: it explains what the guidelines say, when a child needs to be seen and which emergency number to call in your country. It works without an account and without asking for personal data. Tell me what is worrying you about your child.\n\nWho makes it and how it is funded: pedibot.xyz/about",
+    "es": "PediBot es un servicio gratuito que contesta dudas sobre la salud de los niños usando sólo guías publicadas por ministerios de sanidad, la OMS y sociedades de pediatría, y enseña de qué documento sale cada frase. No diagnostica ni sustituye a tu pediatra: explica qué dicen las guías, cuándo hay que llevar al niño al médico y a qué número de emergencias llamar en tu país. Funciona sin cuenta y sin pedir datos personales. Cuéntame qué te preocupa de tu hijo.\n\nQuién lo hace y cómo se financia: pedibot.xyz/es/about",
+    "fr": "PediBot est un service gratuit qui répond aux questions sur la santé des enfants en s'appuyant uniquement sur les recommandations publiées par les ministères de la santé, l'OMS et les sociétés de pédiatrie, et il indique de quel document vient chaque phrase. Il ne pose pas de diagnostic et ne remplace pas votre pédiatre : il explique ce que disent les recommandations, quand un enfant doit être vu par un médecin et quel numéro d'urgence appeler dans votre pays. Il fonctionne sans compte et sans demander de données personnelles. Dites-moi ce qui vous inquiète chez votre enfant.\n\nQui le fait et comment il est financé : pedibot.xyz/fr/about",
+    "de": "PediBot ist ein kostenloser Dienst, der Fragen zur Gesundheit von Kindern ausschließlich anhand von Leitlinien beantwortet, die Gesundheitsministerien, die WHO und kinderärztliche Fachgesellschaften veröffentlicht haben, und er zeigt, aus welchem Dokument jeder Satz stammt. Er stellt keine Diagnosen und ersetzt nicht Ihre Kinderärztin oder Ihren Kinderarzt: Er erklärt, was die Leitlinien sagen, wann ein Kind ärztlich gesehen werden muss und welche Notrufnummer in Ihrem Land gilt. Er funktioniert ohne Konto und ohne persönliche Daten. Erzählen Sie mir, was Sie bei Ihrem Kind beunruhigt.\n\nWer es macht und wie es finanziert wird: pedibot.xyz/de/about",
+    "ru": "PediBot — бесплатный сервис, который отвечает на вопросы о здоровье детей, опираясь только на рекомендации, опубликованные министерствами здравоохранения, ВОЗ и педиатрическими обществами, и показывает, из какого документа взята каждая фраза. Он не ставит диагнозов и не заменяет вашего педиатра: он объясняет, что говорят рекомендации, когда ребёнка нужно показать врачу и по какому номеру звонить в экстренных случаях в вашей стране. Он работает без регистрации и не просит личных данных. Расскажите, что вас беспокоит в состоянии ребёнка.\n\nКто это делает и на что: pedibot.xyz/ru/about",
+    "ar": "PediBot خدمة مجانية تجيب عن أسئلة صحة الأطفال بالاعتماد فقط على الإرشادات التي تنشرها وزارات الصحة ومنظمة الصحة العالمية وجمعيات طب الأطفال، وتبيّن من أي وثيقة أُخذت كل جملة. لا تشخّص ولا تغني عن طبيب طفلك: تشرح ما تقوله الإرشادات، ومتى يجب أن يراه الطبيب، وبأي رقم طوارئ تتصل في بلدك. تعمل من دون حساب ومن دون طلب بيانات شخصية. أخبرني بما يقلقك بشأن طفلك.\n\nمن يصنعه وكيف يُموَّل: pedibot.xyz/ar/about",
+    "pt": "O PediBot é um serviço gratuito que responde a dúvidas sobre a saúde das crianças usando apenas diretrizes publicadas por ministérios da saúde, pela OMS e por sociedades de pediatria, e mostra de que documento vem cada frase. Não faz diagnósticos nem substitui o seu pediatra: explica o que dizem as diretrizes, quando a criança precisa ser vista por um médico e para que número de emergência ligar no seu país. Funciona sem conta e sem pedir dados pessoais. Conte-me o que o preocupa no seu filho.\n\nQuem o faz e como é financiado: pedibot.xyz/pt/about",
+    "hi": "PediBot एक मुफ़्त सेवा है जो बच्चों के स्वास्थ्य से जुड़े सवालों के जवाब सिर्फ़ स्वास्थ्य मंत्रालयों, विश्व स्वास्थ्य संगठन और बाल रोग संस्थाओं के प्रकाशित दिशानिर्देशों से देती है, और बताती है कि हर वाक्य किस दस्तावेज़ से लिया गया है। यह न तो निदान करती है और न ही आपके डॉक्टर की जगह लेती है: यह बताती है कि दिशानिर्देश क्या कहते हैं, बच्चे को कब डॉक्टर को दिखाना चाहिए और आपके देश में आपातकालीन नंबर क्या है। इसके लिए न खाता चाहिए, न कोई निजी जानकारी। बताइए, आपको अपने बच्चे के बारे में क्या चिंता है।\n\nइसे कौन बनाता है और पैसा कहाँ से आता है: pedibot.xyz/hi/about",
 }
 #: Lo que no tiene nada que ver con la salud de un niño (21-sep-2026): se dice con amabilidad y
 #: se invita a preguntar lo que sí. Antes caía en «no tengo información, consulta a tu pediatra»,
@@ -1054,8 +1054,16 @@ class Engine:
         # francés. Si escribe en una de las ocho, todo pasa a esa: avisos, herramientas y textos
         # fijos. Si escribe en otra, se le redacta en la suya y las frases fijas se traducen.
         # Tres palabras como mínimo para cambiar de idioma: «Dalsy 5 ml?» no dice nada de nadie.
-        anterior = next((t["text"] for t in reversed(history) if t.get("role") == "user"), None)
-        leida = interpret(self.llm, query, previous=anterior)
+        # todo lo que el padre ha dicho antes, no sólo el último mensaje: entre la caída y el bebé
+        # que lloraba, el operador mandó un «Mi» suelto, y comparado con «Mi» nada es tema nuevo
+        anterior = " / ".join(t["text"] for t in history if t.get("role") == "user") or None
+        # «Otra cosa» es un botón nuestro, no una frase del padre: no se le pide opinión a la IA.
+        # Salió una vez en inglés, y es la única respuesta de la conversación que ya sabemos.
+        boton = (
+            query.strip().lower()
+            == CLARIFY_OPTIONS.get(lang, CLARIFY_OPTIONS["en"])[-1].strip().lower()
+        )
+        leida = None if boton else interpret(self.llm, query, previous=anterior)
         largo = len(query.split()) >= 3
         if leida is not None:
             ctx["costes"].append((leida.tokens_in, leida.tokens_out, leida.cost_usd))
@@ -1070,8 +1078,10 @@ class Engine:
             if leida.intent == "language_request":
                 # Quien pide «Puoi scrivere in italiano?» lo pide en italiano: si la lectura no
                 # dice qué lengua quiere, es la del mensaje. Se quedaba en inglés por eso.
-                pedida = leida.requested_lang or leida.lang
-                nombre = leida.requested_name or leida.lang_name
+                # Con menos de tres palabras, sólo si nombra la lengua: dos palabras no dicen
+                # en qué idioma escribe nadie, y la web ya sabe cuál tiene puesta.
+                pedida = leida.requested_lang or (leida.lang if largo else None)
+                nombre = leida.requested_name or (leida.lang_name if largo else None)
                 if pedida in SUPPORTED_LANGS:
                     lang = pedida
                 elif nombre:
@@ -1425,6 +1435,16 @@ class Engine:
                 # lengua. Tratarla como médica buscó salud mental, chikunguña y alcohol.
                 if leida.requested_name or leida.lang_name:
                     answer_lang = leida.requested_name or leida.lang_name
+                # la última pregunta de verdad, no el último mensaje: «¿por qué me hablas en
+                # inglés?» llegó después de un «Otra cosa», y se volvió a contestar «Otra cosa»
+                prev_user = next(
+                    (
+                        t["text"]
+                        for t in reversed(history)
+                        if t.get("role") == "user" and len(t["text"].split()) >= 3
+                    ),
+                    prev_user,
+                )
                 draft_q = prev_user
                 search_q = prev_user
                 previa = interpret(self.llm, prev_user)
@@ -1442,28 +1462,55 @@ class Engine:
                     search_q, search_lang = leida.search_text, "en"
                     push = [*push, *leida.keywords]
 
-        hits, extra = self.retriever.search(
-            search_q,
-            search_lang,
-            red_flag_boost=tr.is_alarm,
-            push=push,
+        # Segunda búsqueda, con las palabras de la IA (21-sep-2026). «¿Cuándo puedo darle una
+        # chuleta?», «¿y una salchicha?», «¿y cacahuetes?» salieron las tres sin fuente, y el
+        # corpus tiene las guías de alimentación complementaria: el padre dice «chuleta» y la guía
+        # dice «carne». En las ocho lenguas la búsqueda por las palabras del padre va primero,
+        # porque medido es la mejor; pero si no encuentra nada, o el redactor dice que lo
+        # encontrado no contesta, se busca UNA vez más con la frase médica que leyó la IA. Sólo
+        # puede convertir un «no tengo información» en una respuesta con fuente, nunca cambiar
+        # una que ya la tenía.
+        segunda = (
+            leida is not None
+            and leida.intent == "health"
+            and bool(leida.search_text)
+            and search_q != leida.search_text
         )
-        hits = self._inject_rule_sources(tr, hits)
-        if not hits:
-            return Answer(
-                NO_SOURCE[lang], tr.level, banner, [], lang, None, None, [], "no_source", extra
+        for intento in (1, 2):
+            hits, extra = self.retriever.search(
+                search_q,
+                search_lang,
+                red_flag_boost=tr.is_alarm,
+                push=push,
             )
+            hits = self._inject_rule_sources(tr, hits)
+            otra_vez = intento == 1 and segunda and leida is not None
+            if not hits:
+                if otra_vez and leida is not None:
+                    search_q = f"{leida.search_text} {' '.join(leida.keywords)}"
+                    push = [*push, *leida.keywords]
+                    continue
+                return Answer(
+                    NO_SOURCE[lang], tr.level, banner, [], lang, None, None, [], "no_source", extra
+                )
 
-        user = (
-            f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
-            "the sources may be in another language, translate faithfully.\n"
-            f"{_age_context(tr)}"
-            f"{who_first_note(context_text, country)}"
-            f"{_history_block(history)}"
-            f"{CHILD_MODE if mode == 'child' else ''}"
-            f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"
-        )
-        result = self.llm.complete(self.prompt, user, temperature=0.2)
+            user = (
+                f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
+                "the sources may be in another language, translate faithfully.\n"
+                f"{_age_context(tr)}"
+                f"{who_first_note(context_text, country)}"
+                f"{_history_block(history)}"
+                f"{CHILD_MODE if mode == 'child' else ''}"
+                f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"
+            )
+            result = self.llm.complete(self.prompt, user, temperature=0.2)
+            if otra_vez and leida is not None and _dice_sin_fuente(result.text):
+                # el borrador tirado también se paga: va al gasto del día
+                ctx["costes"].append((result.tokens_in, result.tokens_out, result.cost_usd))
+                search_q = f"{leida.search_text} {' '.join(leida.keywords)}"
+                push = [*push, *leida.keywords]
+                continue
+            break
         # «NO_SOURCE»: el redactor dice que ninguno de los pasajes contesta (regla 1 del prompt).
         # Antes lo decía en prosa y citaba igual los pasajes que no servían para explicarlo, y al
         # padre le salían debajo «Poliomielite», «Chikungunya» y «alcohol» por una pregunta sobre

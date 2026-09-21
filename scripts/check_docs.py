@@ -33,6 +33,8 @@ DIARIOS = {
     "STATE.md": "diario de estado: cada entrada es de su fecha",
     "IDEAS.md": "cuaderno de ideas fechadas",
     "METADAO.md": "el texto tal y como se envió; reescribirlo sería falsificarlo",
+    "EMERGENT_VENTURES.md": "la solicitud tal y como se envió el 21-sep-2026",
+    "SHOW_HN.md": "borrador descartado el 20-sep-2026: no se va a enviar",
     "PRD.md": "el plan original: sus cifras describen lo que había al escribirlo",
     "DATOS.md": "es el generado",
 }

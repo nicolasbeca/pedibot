@@ -744,6 +744,30 @@
   "notes": ""
  },
  {
+  "doc_id": "mlp_es_allergy",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Alergia",
+  "year": "",
+  "lang": "es",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/spanish/allergy.html",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
+ },
+ {
+  "doc_id": "mlp_es_foodallergy",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Alergia a los alimentos",
+  "year": "",
+  "lang": "es",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/spanish/foodallergy.html",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
+ },
+ {
   "doc_id": "mlp_en_allergy",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -754,6 +778,18 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/allergy.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_es_anaphylaxis",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Anafilaxia",
+  "year": "",
+  "lang": "es",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/spanish/anaphylaxis.html",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
  {
   "doc_id": "mlp_es_asthmainchildren",
@@ -1068,6 +1104,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_es_eczema",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Eccema",
+  "year": "",
+  "lang": "es",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/spanish/eczema.html",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
+ },
+ {
   "doc_id": "mlp_en_eczema",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1284,6 +1332,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_es_drugreactions",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Interacciones y efectos secundarios de los medicamentos",
+  "year": "",
+  "lang": "es",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/spanish/drugreactions.html",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
+ },
+ {
   "doc_id": "mlp_es_breastfeeding",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1440,6 +1500,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_es_hayfever",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Rinitis alérgica",
+  "year": "",
+  "lang": "es",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/spanish/hayfever.html",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
+ },
+ {
   "doc_id": "mlp_es_childrenshealth",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1594,6 +1666,18 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/urinarytractinfections.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_es_hives",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Urticaria",
+  "year": "",
+  "lang": "es",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/spanish/hives.html",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
  {
   "doc_id": "mlp_es_childhoodvaccines",
@@ -1836,6 +1920,30 @@
   "notes": ""
  },
  {
+  "doc_id": "nhs_en_allergic_rhinitis",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Allergic rhinitis",
+  "year": 2026,
+  "lang": "en",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/allergic-rhinitis/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_allergies",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Allergies",
+  "year": 2026,
+  "lang": "en",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/allergies/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_anaphylaxis",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -1860,6 +1968,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_atopic_eczema",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Atopic eczema",
+  "year": 2024,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/atopic-eczema/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_baby_teething_symptoms",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -1882,6 +2002,30 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/symptoms/bedwetting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_broken_arm_or_wrist",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Broken arm or wrist",
+  "year": 2023,
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/broken-arm-or-wrist/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_broken_finger",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Broken finger or thumb",
+  "year": 2025,
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/broken-finger/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_bronchiolitis",
@@ -2028,6 +2172,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_eye_injuries",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Eye injuries",
+  "year": 2026,
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/eye-injuries/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_febrile_seizures",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2052,6 +2208,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_food_allergies_in_babies_and_young_children",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Food allergies in babies and young children",
+  "year": 2024,
+  "lang": "en",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/baby/weaning-and-feeding/food-allergies-in-babies-and-young-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_food_allergy",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2062,6 +2230,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/food-allergy/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_foods_to_avoid_giving_babies_and_young_children",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Foods to avoid giving babies and young children",
+  "year": 2026,
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_glue_ear",
@@ -2088,6 +2268,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_hair_loss",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Hair loss",
+  "year": 2024,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/hair-loss/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_hand_foot_mouth_disease",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2098,6 +2290,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/hand-foot-mouth-disease/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_hay_fever",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Hay fever",
+  "year": 2025,
+  "lang": "en",
+  "topic": "alergia",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/hay-fever/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_head_injury_and_concussion",
@@ -2484,6 +2688,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_ringworm",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Ringworm",
+  "year": 2023,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/ringworm/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_roseola",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2556,6 +2772,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_sprains_and_strains",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Sprains and strains",
+  "year": 2024,
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/sprains-and-strains/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_sudden_infant_death_syndrome_sids",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2626,6 +2854,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/washing-and-bathing-your-baby/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
+ },
+ {
+  "doc_id": "nhs_en_watering_eyes",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Watering eyes",
+  "year": 2024,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/watering-eyes/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_whooping_cough",

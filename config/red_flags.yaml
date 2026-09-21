@@ -828,6 +828,76 @@ rules:
   - (سقط|وقع|طاح|ضرب|ارتطم).{0,80}(نعسان|نعس|يصعب إيقاظه|لا يستيقظ)
   - (गिर|चोट).{0,80}(सुस्त|उनींद|जाग नहीं)
   - (ameanguka|alianguka|akaanguka|amegonga kichwa|aligonga kichwa).{0,80}(anasinzia|usingizi mwingi|haamki)
+# 21-sep-2026: «creo que tiene una astilla clavada en el ojo» salía RUTINA y sin fuente. Lo que
+# tenía el triaje del ojo eran los productos químicos.
+- id: eye_foreign_body_or_injury
+  level: urgent
+  source: seup_acudir_urgencias
+  reason_es: "Algo clavado o metido en el ojo, o un golpe en el ojo: no lo frotes ni intentes sacarlo, que lo vean hoy en urgencias"
+  reason_en: "Something stuck in the eye, or a blow to the eye: do not rub it or try to remove it; get it seen in the emergency department today"
+  reason_fr: "Quelque chose dans l'œil, ou un coup à l'œil : ne pas frotter ni essayer de l'enlever, consultez aux urgences aujourd'hui"
+  reason_de: "Etwas im Auge oder ein Schlag aufs Auge: nicht reiben, nicht selbst entfernen, heute in die Notaufnahme"
+  reason_ru: "Что-то попало в глаз или удар по глазу: не трите и не пытайтесь достать, сегодня в приёмное отделение"
+  reason_ar: "شيء عالق في العين أو ضربة على العين: لا تفركها ولا تحاول إخراجه، اذهب إلى الطوارئ اليوم"
+  reason_pt: "Algo espetado ou dentro do olho, ou uma pancada no olho: não esfregue nem tente tirar, vá hoje à urgência"
+  reason_hi: "आँख में कुछ चला गया या आँख पर चोट: मलिए नहीं, खुद निकालने की कोशिश मत कीजिए, आज ही इमरजेंसी में दिखाइए"
+  reason_sw: "Kitu kimeingia jichoni au amepigwa jichoni: usisugue wala usijaribu kukitoa, nenda hospitali leo"
+  patterns:
+  - (astilla|cristal|vidrio|arena|piedra|palo|metal|cuerpo extra[ñn]o|algo)[^.]{0,30}(en el|en su|del|dentro del) ojo
+  - (golpe|pelotazo|pu[ñn]etazo|se ha dado|se dio|le han dado|le dieron)[^.]{0,30}en el ojo
+  - (se ha clavado|se clav[oó]|se le ha clavado)[^.]{0,30}ojo
+  - (splinter|glass|sand|something|object|stick|metal|grit)[^.]{0,30}(in|into|stuck in) (his|her|the|their|my child'?s?) eyes?
+  - (hit|poked|punched|struck|jabbed)[^.]{0,30}(in the|his|her|their) eye
+  - ([ée]charde|verre|sable|quelque chose|objet|corps [ée]tranger)[^.]{0,30}dans l'?(œil|oeil)
+  - (coup|choc)[^.]{0,20}(à|dans|sur) l'?(œil|oeil)
+  - (splitter|glas|sand|etwas|fremdk[öo]rper)[^.]{0,30}im auge
+  - (schlag|stoß)[^.]{0,20}(aufs|ins|auf das) auge
+  - (заноз\w*|стекл\w*|песок|что-то|соринк\w*|предмет)[^.]{0,30}в глаз
+  - удар\w*[^.]{0,20}(в|по) глаз
+  - (شظية|زجاج|رمل|شيء|جسم غريب)[^.]{0,30}(في|داخل) (عينه|عينها|العين)
+  - (ضرب\w*|ضربة)[^.]{0,20}(على|في) (عينه|عينها|العين)
+  - (farpa|lasca|vidro|areia|algo|objeto|corpo estranho)[^.]{0,30}(no|dentro do) olho
+  - (pancada|batida|bateu)[^.]{0,20}no olho
+  - (कुछ|काँच|कांच|रेत|तिनका|किरच)[^.]{0,25}(आँख|आंख) में
+  - (आँख|आंख) में[^.]{0,20}(कुछ|काँच|कांच|रेत|तिनका|किरच)
+  - (आँख|आंख) (पर|में) चोट
+  - (kitu|kibanzi|kioo|mchanga|kijiti)[^.]{0,30}(jichoni|machoni)
+  - (amepigwa|amegongwa) jichoni
+# 21-sep-2026: «se ha caído por las escaleras y no deja de llorar» salía RUTINA. La hoja de la
+# SEUP para padres pide consultar si la caída fue de más de un metro o por las escaleras, y si el
+# llanto no se calma o el comportamiento preocupa.
+- id: fall_stairs_or_inconsolable
+  level: urgent
+  source: seup_tce
+  reason_es: "Caída por las escaleras o de más de un metro, o llanto que no se calma tras un golpe: que lo vea un médico hoy"
+  reason_en: "A fall down stairs or from more than a metre, or crying that will not settle after a knock: get a doctor to see them today"
+  reason_fr: "Chute dans les escaliers ou de plus d'un mètre, ou pleurs qui ne se calment pas après un coup : faites-le voir par un médecin aujourd'hui"
+  reason_de: "Sturz die Treppe hinunter oder aus mehr als einem Meter, oder Weinen, das sich nach einem Stoß nicht beruhigt: heute zum Arzt"
+  reason_ru: "Падение с лестницы или с высоты больше метра, или плач, который не успокаивается после удара: сегодня к врачу"
+  reason_ar: "سقوط على الدرج أو من أكثر من متر، أو بكاء لا يهدأ بعد ضربة: يجب أن يراه طبيب اليوم"
+  reason_pt: "Queda pelas escadas ou de mais de um metro, ou choro que não acalma depois de uma pancada: que um médico o veja hoje"
+  reason_hi: "सीढ़ियों से या एक मीटर से ज़्यादा ऊँचाई से गिरना, या चोट के बाद रोना बंद न होना: आज ही डॉक्टर को दिखाइए"
+  reason_sw: "Ameanguka ngazi au kutoka juu zaidi ya mita moja, au analia bila kunyamaza baada ya kugongwa: aonwe na daktari leo"
+  patterns:
+  - (ca[ií]d[oa]|cay[oó]|caerse|rodado)[^.]{0,25}(por|de|desde) (las|la|unas) escaleras?
+  - (ca[ií]d[oa]|cay[oó]|golpe|se dio)[^.]{0,40}(no (deja|para) de llorar|llanto (inconsolable|que no (cesa|para))|no hay (quien|forma de|manera de) (calmarl|consolarl))
+  - (ca[ií]d[oa]|cay[oó])[^.]{0,30}(desde|de) (m[aá]s de )?(un|1|dos|2|tres|3) metros?
+  - (fell|fall|tumbled|falling)[^.]{0,20}down (the |some )?stairs
+  - (fell|fall|hit|bump\w*|knock\w*)[^.]{0,40}(won'?t stop crying|can'?t be (consoled|settled|calmed)|inconsolabl|crying non-?stop)
+  - (tomb[ée]\w*|chute)[^.]{0,25}(dans|des|de l') ?(les |l')?escaliers?
+  - (tomb[ée]\w*|chute|cogn[ée]\w*)[^.]{0,40}(n'arr[êe]te pas de pleurer|pleure sans arr[êe]t|inconsolable)
+  - (treppe|stufen)[^.]{0,25}(hinunter|runter|herunter)?[^.]{0,10}(gefallen|gest[üu]rzt)
+  - (gefallen|gest[üu]rzt|gesto[ßs]en)[^.]{0,40}(h[öo]rt nicht auf zu weinen|weint ununterbrochen|nicht zu beruhigen|untr[öo]stlich)
+  - упал\w*[^.]{0,20}(с лестницы|по лестнице|со ступенек)
+  - (упал|ударил)\w*[^.]{0,40}(не перестаёт плакать|не перестает плакать|плачет не переставая|невозможно успокоить)
+  - (سقط|وقع|طاح)[^.]{0,20}(من|على) (الدرج|السلالم|الدرجات)
+  - (سقط|وقع|طاح)[^.]{0,40}(لا يتوقف عن البكاء|يبكي بلا توقف|لا يهدأ)
+  - (caiu|queda|rolou)[^.]{0,20}(da|das|pela|pelas) escadas?
+  - (caiu|bateu|queda)[^.]{0,40}(n[ãa]o para de chorar|choro inconsol[áa]vel|n[ãa]o se acalma)
+  - सीढ़ि\w*[^.]{0,20}गिर
+  - गिर\w*[^.]{0,40}(रोना बंद नहीं|लगातार रो|चुप नहीं)
+  - (ameanguka|alianguka)[^.]{0,20}ngazi
+  - (ameanguka|alianguka)[^.]{0,40}(analia bila kukoma|haachi kulia|hanyamazi)
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce
@@ -2074,10 +2144,17 @@ rules:
 - id: deformity_fracture
   level: urgent
   source: seup_acudir_urgencias
-  reason_es: Traumatismo con deformidad aparente / herida que precisa sutura
-  reason_en: Injury with visible deformity / wound that needs stitches
-  reason_fr: Traumatisme avec déformation visible / plaie qui nécessite des points
+  reason_es: Posible hueso roto (deformidad, dolor fuerte o no lo puede mover) o herida que precisa sutura
+  reason_en: Possible broken bone (deformity, severe pain or cannot move it) or a wound that needs stitches
+  reason_fr: Possible fracture (déformation, douleur forte ou ne peut pas bouger) ou plaie qui nécessite des points
   patterns:
+  # 21-sep-2026: «creo que tiene un dedo roto» salía RUTINA: la regla pedía la deformidad.
+  - (dedo|brazo|pierna|mu[ñn]eca|tobillo|hueso|pie|mano|codo|clav[ií]cula|nariz)[^.]{0,6} (rot[oa]|fracturad[oa])
+  - (se ha|se habr[aá]) (roto|fracturado) (el|la|un|una) (dedo|brazo|pierna|mu[ñn]eca|tobillo|hueso|pie|mano|codo|clav[ií]cula)
+  - (broken|fractured) (his |her |their |a |the )?(finger|toe|arm|leg|wrist|ankle|bone|hand|foot|collarbone|elbow)
+  - (finger|toe|arm|leg|wrist|ankle|hand|foot|collarbone|elbow) (is |might be |may be |could be )?(broken|fractured)
+  - (doigt|bras|jambe|poignet|cheville|os|main|pied|coude|clavicule)[^.]{0,6} (cass[ée]e?|fractur[ée]e?)
+  - (dedo|bra[çc]o|perna|pulso|tornozelo|osso|m[aã]o|p[ée]|cotovelo|clav[íi]cula)[^.]{0,6} (partid[oa]|quebrad[oa]|fraturad[oa])
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "(mkono|mguu) (umepinda|umevunjika)"
   - "jeraha linahitaji kushonwa"

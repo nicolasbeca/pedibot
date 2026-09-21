@@ -986,6 +986,127 @@ sources:
   - lactante
   url: https://www.nhs.uk/conditions/cradle-cap/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-02'
+- doc_id: nhs_en_broken_finger
+  file: web/nhs_en_broken_finger.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Broken finger or thumb
+  year: 2025
+  lang: en
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/broken-finger/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_broken_arm_or_wrist
+  file: web/nhs_en_broken_arm_or_wrist.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Broken arm or wrist
+  year: 2023
+  lang: en
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/broken-arm-or-wrist/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_sprains_and_strains
+  file: web/nhs_en_sprains_and_strains.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Sprains and strains
+  year: 2024
+  lang: en
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/sprains-and-strains/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_eye_injuries
+  file: web/nhs_en_eye_injuries.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Eye injuries
+  year: 2026
+  lang: en
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/eye-injuries/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_watering_eyes
+  file: web/nhs_en_watering_eyes.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Watering eyes
+  year: 2024
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/symptoms/watering-eyes/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_hair_loss
+  file: web/nhs_en_hair_loss.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Hair loss
+  year: 2024
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/symptoms/hair-loss/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_ringworm
+  file: web/nhs_en_ringworm.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Ringworm
+  year: 2023
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/ringworm/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_foods_to_avoid_giving_babies_and_young_children
+  file: web/nhs_en_foods_to_avoid_giving_babies_and_young_children.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Foods to avoid giving babies and young children
+  year: 2026
+  lang: en
+  topic: alimentacion
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  - preescolar
+  url: https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
 - doc_id: nhs_en_paracetamol_for_children
   file: web/nhs_en_paracetamol_for_children.html
   org: NHS
@@ -1786,6 +1907,187 @@ sources:
   - todas
   url: https://medlineplus.gov/spanish/fever.html
   notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02'
+- doc_id: mlp_es_allergy
+  file: web/mlp_es_allergy.html
+  org: MedlinePlus
+  org_full: MedlinePlus (U.S. National Library of Medicine)
+  title: Alergia
+  year: null
+  lang: es
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://medlineplus.gov/spanish/allergy.html
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21'
+- doc_id: mlp_es_hayfever
+  file: web/mlp_es_hayfever.html
+  org: MedlinePlus
+  org_full: MedlinePlus (U.S. National Library of Medicine)
+  title: Rinitis alérgica
+  year: null
+  lang: es
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://medlineplus.gov/spanish/hayfever.html
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21'
+- doc_id: mlp_es_foodallergy
+  file: web/mlp_es_foodallergy.html
+  org: MedlinePlus
+  org_full: MedlinePlus (U.S. National Library of Medicine)
+  title: Alergia a los alimentos
+  year: null
+  lang: es
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://medlineplus.gov/spanish/foodallergy.html
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21'
+- doc_id: mlp_es_hives
+  file: web/mlp_es_hives.html
+  org: MedlinePlus
+  org_full: MedlinePlus (U.S. National Library of Medicine)
+  title: Urticaria
+  year: null
+  lang: es
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://medlineplus.gov/spanish/hives.html
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21'
+- doc_id: mlp_es_drugreactions
+  file: web/mlp_es_drugreactions.html
+  org: MedlinePlus
+  org_full: MedlinePlus (U.S. National Library of Medicine)
+  title: Interacciones y efectos secundarios de los medicamentos
+  year: null
+  lang: es
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://medlineplus.gov/spanish/drugreactions.html
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21'
+- doc_id: mlp_es_anaphylaxis
+  file: web/mlp_es_anaphylaxis.html
+  org: MedlinePlus
+  org_full: MedlinePlus (U.S. National Library of Medicine)
+  title: Anafilaxia
+  year: null
+  lang: es
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://medlineplus.gov/spanish/anaphylaxis.html
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21'
+- doc_id: mlp_es_eczema
+  file: web/mlp_es_eczema.html
+  org: MedlinePlus
+  org_full: MedlinePlus (U.S. National Library of Medicine)
+  title: Eccema
+  year: null
+  lang: es
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://medlineplus.gov/spanish/eczema.html
+  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21'
+- doc_id: nhs_en_hay_fever
+  file: web/nhs_en_hay_fever.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Hay fever
+  year: 2025
+  lang: en
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/hay-fever/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_allergies
+  file: web/nhs_en_allergies.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Allergies
+  year: 2026
+  lang: en
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/allergies/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_allergic_rhinitis
+  file: web/nhs_en_allergic_rhinitis.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Allergic rhinitis
+  year: 2026
+  lang: en
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/allergic-rhinitis/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_atopic_eczema
+  file: web/nhs_en_atopic_eczema.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Atopic eczema
+  year: 2024
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/atopic-eczema/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_food_allergies_in_babies_and_young_children
+  file: web/nhs_en_food_allergies_in_babies_and_young_children.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Food allergies in babies and young children
+  year: 2024
+  lang: en
+  topic: alergia
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  - preescolar
+  url: https://www.nhs.uk/baby/weaning-and-feeding/food-allergies-in-babies-and-young-children/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
 - doc_id: mlp_es_commoncold
   file: web/mlp_es_commoncold.html
   org: MedlinePlus

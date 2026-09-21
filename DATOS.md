@@ -23,14 +23,14 @@ Contado el **2026-09-21**.
 | de ellos, sin número nacional | **8** | los marcados `no_national` o `unverified` |
 | calendarios de vacunas | **66** | config/vaccines.yaml |
 | tablas de crecimiento por país | **78** | config/growth_charts.yaml |
-| reglas de alarma | **84** | config/red_flags.yaml |
+| reglas de alarma | **86** | config/red_flags.yaml |
 | marcas de medicamento | **35** | config/drugs.yaml |
 | países con alguna marca | **57** | los `countries` de esas marcas |
 | nombres de vacuna traducidos | **40** | config/vaccine_names.yaml |
-| documentos del catálogo público | **497** | dataset/sources.json (CC0) |
-| documentos del catálogo interno | **500** | incluye los que no se pueden redistribuir |
+| documentos del catálogo público | **517** | dataset/sources.json (CC0) |
+| documentos del catálogo interno | **520** | incluye los que no se pueden redistribuir |
 | guías publicadas | **507** | web/content/*/*.md |
-| pruebas automáticas | **9.692** | `uv run pytest --collect-only` |
+| pruebas automáticas | **9.751** | `uv run pytest --collect-only` |
 | África: países con número | **54** | los 54 del continente |
 | África: con calendario | **54** | los 54 del continente |
 | África: con curva | **52** | los 54 del continente |

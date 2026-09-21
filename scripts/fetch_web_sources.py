@@ -341,6 +341,23 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ),
     ("nhs", "https://www.nhs.uk/conditions/growing-pains/", "general", "en", ["escolar"]),
     ("nhs", "https://www.nhs.uk/conditions/cradle-cap/", "piel", "en", ["lactante"]),
+    # 21-sep-2026: las preguntas del operador que se quedaron sin fuente porque no había
+    # documento, no porque el buscador no lo encontrara: un dedo roto, algo en el ojo, se le cae
+    # el pelo, los ojos que lloran, qué no dar a un bebé (cacahuetes, salchichas enteras).
+    ("nhs", "https://www.nhs.uk/conditions/broken-finger/", "accidentes", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/broken-arm-or-wrist/", "accidentes", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/sprains-and-strains/", "accidentes", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/eye-injuries/", "accidentes", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/watering-eyes/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/hair-loss/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/ringworm/", "piel", "en", ["todas"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
+        "alimentacion",
+        "en",
+        ["lactante", "preescolar"],
+    ),
     (
         "nhs",
         "https://www.nhs.uk/medicines/paracetamol-for-children/",
@@ -438,6 +455,26 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ),
     # ---------------- MedlinePlus ES (LatAm-friendly Spanish) ----------------
     ("mlp", "https://medlineplus.gov/spanish/fever.html", "fiebre", "es", ["todas"]),
+    # 21-sep-2026, el operador: «también descarga temas de alergias». «¿Cómo sé si es alérgico
+    # al olivo?» no tenía nada sobre polen ni fiebre del heno, en ninguna lengua.
+    ("mlp", "https://medlineplus.gov/spanish/allergy.html", "alergia", "es", ["todas"]),
+    ("mlp", "https://medlineplus.gov/spanish/hayfever.html", "alergia", "es", ["todas"]),
+    ("mlp", "https://medlineplus.gov/spanish/foodallergy.html", "alergia", "es", ["todas"]),
+    ("mlp", "https://medlineplus.gov/spanish/hives.html", "alergia", "es", ["todas"]),
+    ("mlp", "https://medlineplus.gov/spanish/drugreactions.html", "alergia", "es", ["todas"]),
+    ("mlp", "https://medlineplus.gov/spanish/anaphylaxis.html", "alergia", "es", ["todas"]),
+    ("mlp", "https://medlineplus.gov/spanish/eczema.html", "piel", "es", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/hay-fever/", "alergia", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/allergies/", "alergia", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/allergic-rhinitis/", "alergia", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/atopic-eczema/", "piel", "en", ["todas"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/weaning-and-feeding/food-allergies-in-babies-and-young-children/",
+        "alergia",
+        "en",
+        ["lactante", "preescolar"],
+    ),
     ("mlp", "https://medlineplus.gov/spanish/commoncold.html", "respiratorio", "es", ["todas"]),
     (
         "mlp",
