@@ -2232,6 +2232,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_dandruff",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Dandruff",
+  "year": 2029,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/dandruff/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_dehydration",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2277,6 +2289,18 @@
   "topic": "orl",
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/symptoms/earache/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_earwax_build_up",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Earwax build-up",
+  "year": 2024,
+  "lang": "en",
+  "topic": "orl",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/earwax-build-up/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
@@ -2409,6 +2433,18 @@
   "topic": "piel",
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/fungal-nail-infection/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_glandular_fever",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Glandular fever",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/glandular-fever/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
@@ -3012,6 +3048,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_vitiligo",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Overview - Vitiligo",
+  "year": 2023,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/vitiligo/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_paracetamol_for_children",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3046,6 +3094,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/poisoning/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_priapism_painful_erections",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Priapism (painful erections)",
+  "year": 2023,
+  "lang": "en",
+  "topic": "urgencias",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/priapism-painful-erections/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_rashes_babies_and_children",
@@ -3108,6 +3168,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_scabies",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Scabies",
+  "year": 2023,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/scabies/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_scarlet_fever",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3120,6 +3192,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_selective_mutism",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Selective mutism",
+  "year": 2023,
+  "lang": "en",
+  "topic": "salud_mental",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/mental-health/conditions/selective-mutism/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_sepsis",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3130,6 +3214,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/sepsis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_signs_in_children",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Signs of autism in children",
+  "year": 2026,
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/autism/signs-in-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_slapped_cheek_syndrome",
@@ -3300,6 +3396,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_trichotillomania",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Trichotillomania (hair pulling disorder)",
+  "year": 2024,
+  "lang": "en",
+  "topic": "salud_mental",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/mental-health/conditions/trichotillomania/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_umbilical_hernia",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3324,6 +3432,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_unintentional_weight_loss",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Unintentional weight loss",
+  "year": 2025,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/unintentional-weight-loss/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_urinary_tract_infections_utis",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3334,6 +3454,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/urinary-tract-infections-utis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_vaginal_discharge",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Vaginal discharge",
+  "year": 2024,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/vaginal-discharge/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_warts_and_verrucas",

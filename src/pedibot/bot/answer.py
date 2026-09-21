@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -959,7 +960,9 @@ def _primera_frase(texto: str) -> str:
 #: hija se ha metido arena en el ojo»: cartel de urgencias y, debajo, «No, no es una urgencia por
 #: sí solo» (batería del 21-sep-2026). Es de SEGURIDAD: si el reintento lo repite, no sale.
 _QUITA_URGENCIA = re.compile(
-    r"(no es (una )?urgen|no es grave|no hace falta (ir|acudir)|no es una emergencia|"
+    r"(no es (una )?urgen|no es grave|no es (una (dosis|cantidad) )?peligros|no (hay|supone) (ning[uú]n )?peligro|"
+    r"(is )?not (a )?dangerous|isn'?t (a )?dangerous|not harmful|n'est pas dangereu|nicht gef[äa]hrlich|"
+    r"n[ãa]o [ée] perigos|не опасн|no hace falta (ir|acudir)|no es una emergencia|"
     r"(is )?not (an )?(urgent|emergency)|no need to (go|rush|worry)|isn'?t (urgent|an emergency)|"
     r"(ce )?n'est pas (une )?urgen|kein notfall|nicht dringend|n[ãa]o [ée] (uma )?urg[êe]n|"
     r"не (срочно|экстренн)|ليست? (حالة )?طارئ|आपातकाल नहीं)",
@@ -977,6 +980,70 @@ def _insegura(texto: str, hits: list[Hit], alarma: bool) -> list[str]:
     if alarma and _QUITA_URGENCIA.search(texto):
         problemas.append(CONTRADICE_AVISO)
     return problemas
+
+
+REVISA = """You review one answer from a children's health chatbot before a parent sees it. The
+chatbot must answer only from cited guidelines. You get the parent's MESSAGE, the WARNING LEVEL it
+showed, and the ANSWER. Return ONLY a JSON object:
+  "answers_question": false only if the answer is about something other than what the parent
+      asked or described (another symptom, another age group, another situation),
+  "padding": true if a sizeable part talks about a different condition than the parent's,
+  "invented_verdict": true if it states a verdict ("it's normal", "no problem", "yes you can",
+      "it is not serious") that none of its cited sentences supports,
+  "note": one short English sentence telling the writer exactly what to fix, or "".
+Be strict about relevance and verdicts, and do not complain about length, tone or style."""
+
+
+@dataclass(frozen=True)
+class Revision:
+    contesta: bool
+    relleno: bool
+    veredicto: bool
+    nota_en: str
+    coste: tuple[int, int, float]
+
+    @property
+    def hay_que_rehacer(self) -> bool:
+        return (not self.contesta) or self.relleno or self.veredicto
+
+
+def revisa_respuesta(llm: object, pregunta: str, nivel: str, texto: str) -> Revision | None:
+    """La lectura de revisión. `None` si no hay modelo o contesta algo que no se puede leer:
+    entonces la respuesta sale como estaba, nunca peor."""
+    if llm is None or not texto.strip():
+        return None
+    try:
+        r = llm.complete(  # type: ignore[attr-defined]
+            REVISA,
+            f"MESSAGE:\n{pregunta[:1500]}\n\nWARNING LEVEL: {nivel}\n\nANSWER:\n{texto[:2500]}",
+            temperature=0.0,
+            max_tokens=200,
+        )
+    except Exception:  # noqa: BLE001 — sin revisión, la respuesta tal cual
+        return None
+    m = re.search(r"\{.*\}", getattr(r, "text", "") or "", re.S)
+    if not m:
+        return None
+    try:
+        d = json.loads(m.group(0))
+    except (json.JSONDecodeError, TypeError):
+        return None
+    if not isinstance(d, dict):
+        return None
+    nota = d.get("note") if isinstance(d.get("note"), str) else ""
+    return Revision(
+        contesta=d.get("answers_question") is not False,
+        relleno=d.get("padding") is True,
+        veredicto=d.get("invented_verdict") is True,
+        nota_en=(nota or "Answer only what the sources say about the parent's exact question.")[
+            :300
+        ],
+        coste=(
+            int(getattr(r, "tokens_in", 0) or 0),
+            int(getattr(r, "tokens_out", 0) or 0),
+            float(getattr(r, "cost_usd", 0.0) or 0.0),
+        ),
+    )
 
 
 def verify_answer(text: str, hits: list[Hit]) -> list[str]:
@@ -1753,6 +1820,46 @@ class Engine:
                     problems=problems,
                 )
             result = retry
+
+        # La revisión (21-sep-2026). Una lectura corta de lo ya redactado, con la pregunta al
+        # lado: ¿contesta lo que se preguntó?, ¿mete otra enfermedad?, ¿se inventa un veredicto?
+        # Salió de revisar 300 respuestas con este mismo criterio: «le tiembla la barbilla al
+        # llorar» contestado con cólicos, «¿le faltan vitaminas?» con el sarampión, «no hay
+        # ningún problema en que siga con el biberón» sin fuente que lo diga. Si falla, un
+        # reintento con la nota concreta; si el reintento tampoco contesta lo preguntado, el
+        # «no tengo información fiable» honesto. Nunca toca el aviso, que es del triaje.
+        revision = revisa_respuesta(self.llm, query, tr.level, result.text)
+        if revision is not None:
+            ctx["costes"].append(revision.coste)
+        if revision is not None and revision.hay_que_rehacer:
+            otra = self.llm.complete(
+                self.prompt + "\n\nA reviewer read your draft: " + revision.nota_en + " Fix it.",
+                user,
+                temperature=0.0,
+            )
+            ctx["costes"].append((result.tokens_in, result.tokens_out, result.cost_usd))
+            fallida = (
+                _dice_sin_fuente(otra.text)
+                or bool(_insegura(otra.text, hits, alarma))
+                or bool(_EMPIEZA_SIN_INFO.search(_primera_frase(otra.text)))
+            )
+            if fallida and not revision.contesta:
+                return Answer(
+                    NO_SOURCE[lang],
+                    tr.level,
+                    banner,
+                    [],
+                    lang,
+                    self.prompt_version,
+                    otra,
+                    [h.chunk.chunk_id for h in hits],
+                    "no_source",
+                    extra,
+                    problems=[*problems, "review: " + revision.nota_en],
+                )
+            if not fallida:
+                result = otra
+                verification = "regenerated"
 
         cited = sorted({int(n) for n in _CIT.findall(result.text)})
         sources = [

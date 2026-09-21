@@ -4,6 +4,7 @@ from pathlib import Path
 
 import pytest
 
+from pedibot.bot.answer import REVISA as _REVISA
 from pedibot.bot.answer import TRADUCE as _TRADUCE
 from pedibot.bot.answer import EmergencyNumbers, Engine, verify
 from pedibot.bot.interpret import SYSTEM as _LECTURA
@@ -24,7 +25,7 @@ def _redaccion(llm):  # noqa: ANN001, ANN202
     queriendo decir «la redacción», y eso es lo que siguen comprobando: se cambia la premisa, no
     la aserción.
     """
-    return [c for c in llm.calls if c[0] not in (_LECTURA, _TRADUCE)]
+    return [c for c in llm.calls if c[0] not in (_LECTURA, _TRADUCE, _REVISA)]
 
 
 def _chunk(cid, text, red=False, dose=False, url=None, dose_source=False):
@@ -171,7 +172,9 @@ def test_regeneration_succeeds(engine_factory):
             "Con cita de la SEUP [1].",
         ]
     )
-    eng, llm = engine_factory(lambda s, u: "no es json" if s == _LECTURA else next(answers))
+    eng, llm = engine_factory(
+        lambda s, u: "no es json" if s in (_LECTURA, _REVISA) else next(answers)
+    )
     a = eng.ask("mi hijo de 4 años tiene fiebre")
     assert a.verification == "regenerated" and a.text == "Con cita de la SEUP [1]."
 

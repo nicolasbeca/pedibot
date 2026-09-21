@@ -20,6 +20,20 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 22-sep-2026 (noche) · repaso completo antes de la tanda del operador
+
+- Revisión dentro del chat: tras redactar, una lectura corta comprueba si la respuesta contesta
+  lo preguntado, si rellena con otra enfermedad y si se inventa un veredicto; si falla, un
+  reintento con la nota; si sigue sin contestar, «no tengo información fiable». En las 300
+  últimas: rellenos 43 → 32, veredictos inventados 25 → 13, marcadas por el revisor 98 → 81.
+- Con aviso encima, el texto tampoco puede decir «no es peligroso» (la dosis de Dalsy por error).
+- Triaje: 93 reglas. Nuevas: priapismo, parafimosis, picadura en boca/garganta/ojo, cacas
+  pálidas; y voz rara o cara hinchada tras cacahuetes, babeo con voz apagada, sobredosis por
+  error, silbido en ruso/hindi/suajili, golpe de calor.
+- Corpus: 570 documentos (+11: priapismo, flujo vaginal, tricotilomanía, mutismo selectivo,
+  autismo, pérdida de peso, caspa, vitíligo, sarna, cerumen, mononucleosis).
+- `eval/bateria_operador/revisor.py`: el revisor con modelo que ordena la lectura humana.
+
 ## 21-sep-2026 (madrugada) · la última batería, 300 preguntas más
 
 - Batería total del operador: 823 preguntas en `eval/bateria_operador/` (04_ultima_300.txt).

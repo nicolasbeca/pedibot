@@ -155,7 +155,7 @@ def _motor(  # noqa: ANN202
     El modelo contesta el JSON cuando le llama la lectura, y un borrador con cita cuando le llama
     el redactor. Así se ve qué búsqueda se hizo y qué idioma se le pidió al redactor.
     """
-    from pedibot.bot.answer import TRADUCE, EmergencyNumbers, Engine
+    from pedibot.bot.answer import REVISA, TRADUCE, EmergencyNumbers, Engine
     from pedibot.bot.drugs import DrugCatalog
     from pedibot.bot.interpret import SYSTEM as LECTURA
     from pedibot.bot.triage import Triage
@@ -188,6 +188,8 @@ def _motor(  # noqa: ANN202
         def complete(self, system, user, temperature=0.2, max_tokens=1500):  # noqa: ANN001, ANN202
             if system == LECTURA:
                 return LLMResult(lectura_json or "no es json", 5, 5, 0.001, "fake")
+            if system == REVISA:
+                return LLMResult('{"answers_question": true}', 5, 5, 0.0, "fake")
             if system == TRADUCE:
                 visto.setdefault("traducido", []).append(user)
                 return LLMResult(traduccion or "", 5, 5, 0.002, "fake")

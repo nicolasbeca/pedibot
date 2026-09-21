@@ -389,6 +389,31 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     # (bottle-feeding/ es una página índice sin texto propio: 0 pasajes; fuera)
     # 21-sep-2026, tercera tanda: lo que siguió sin fuente tras la última vuelta de la batería
     ("nhs", "https://www.nhs.uk/symptoms/bad-breath/", "general", "en", ["todas"]),
+    # «mi hijo de 4 años tiene una erección durante mucho rato»: la fuente de la regla priapism
+    ("nhs", "https://www.nhs.uk/symptoms/priapism-painful-erections/", "urgencias", "en", ["todas"]),
+    # 21-sep-2026, cuarta tanda: lo que siguió sin fuente en la batería de 300
+    ("nhs", "https://www.nhs.uk/symptoms/vaginal-discharge/", "general", "en", ["todas"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/mental-health/conditions/trichotillomania/",
+        "salud_mental",
+        "en",
+        ["escolar"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/mental-health/conditions/selective-mutism/",
+        "salud_mental",
+        "en",
+        ["preescolar", "escolar"],
+    ),
+    ("nhs", "https://www.nhs.uk/conditions/autism/signs-in-children/", "desarrollo", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/unintentional-weight-loss/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/dandruff/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/vitiligo/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/scabies/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/earwax-build-up/", "orl", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/glandular-fever/", "general", "en", ["escolar"]),
     ("nhs", "https://www.nhs.uk/symptoms/nail-problems/", "piel", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/symptoms/neck-pain-and-stiff-neck/", "general", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/symptoms/foot-pain/heel-pain/", "accidentes", "en", ["todas"]),

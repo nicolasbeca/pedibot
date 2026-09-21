@@ -540,6 +540,10 @@ rules:
   reason_en: Suspected severe allergic reaction (swollen lips/eyelids with breathing difficulty, vomiting or dizziness)
   reason_fr: Suspicion de réaction allergique grave (gonflement des lèvres/paupières avec difficulté à respirer, vomissements ou malaise)
   patterns:
+  # 21-sep-2026, revisión de 823 respuestas: voz rara o cara hinchada después de comer cacahuetes salían rutina
+  - (voz|voix|voice|stimme|голос)[^.]{0,30}(rara|extra[ñn]a|bizarre|strange|weird|hoarse|ronca|seltsam|heiser|странн|хрипл)[^.]{0,40}(despu[eé]s de|tras|apr[eè]s|after|nach|после)[^.]{0,30}(comer|cacahuet|man[ií]|frutos secos|huevo|mang[ée]|eating|peanut|nut|egg|erdn[üu]ss|арахис|орех|яйц)
+  - (uvimbe|kuvimba)[^.]{0,20}(usoni|midomo|uso)[^.]{0,40}(baada ya kula|karanga|yai)
+  - (cara|face|visage|gesicht|лицо|وجه)[^.]{0,20}(hinchad|swollen|gonfl|geschwollen|опухл|منتفخ)[^.]{0,40}(despu[eé]s de|after|apr[eè]s|nach|после|بعد)[^.]{0,30}(comer|eating|mang|essen|еды|الأكل|cacahuet|peanut|huevo|egg)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "(midomo|kope|uso|macho)[^.]{0,12}(ime|zime|ume)vimba"
   - "mzio (mkali|mkubwa)"
@@ -971,6 +975,117 @@ rules:
   - (सफ़ेद|सफेद) (पुतली|चमक)
   - पुतली[^.]{0,30}(सफ़ेद|सफेद)
   - mboni[^.]{0,30}nyeupe
+# 21-sep-2026, batería del operador: «mi hijo tiene una erección durante mucho rato y tiene 4
+# años» salía rutina, y el redactor escribió «no es una urgencia por sí sola». El NHS dice lo
+# contrario: más de 3 o 4 horas (o más de 1 hora y dolorosa con drepanocitosis), a urgencias ya.
+- id: priapism
+  level: emergency
+  source: nhs_en_priapism_painful_erections
+  reason_es: "Erección que dura mucho rato o duele: hay que tratarla en el hospital cuanto antes para evitar daños"
+  reason_en: "An erection that lasts a long time or is painful: it needs hospital treatment as soon as possible to avoid damage"
+  reason_fr: "Une érection qui dure longtemps ou qui fait mal : elle doit être traitée à l'hôpital au plus vite pour éviter des lésions"
+  reason_de: "Eine Erektion, die lange anhält oder schmerzt: muss so schnell wie möglich im Krankenhaus behandelt werden"
+  reason_ru: "Эрекция, которая длится долго или болезненна: её нужно как можно скорее лечить в больнице"
+  reason_ar: "انتصاب يستمر طويلًا أو مؤلم: يجب علاجه في المستشفى بأسرع وقت لتجنب الضرر"
+  reason_pt: "Uma ereção que dura muito tempo ou dói: tem de ser tratada no hospital o mais depressa possível"
+  reason_hi: "लंबे समय तक रहने वाला या दर्द वाला इरेक्शन: नुकसान से बचाने के लिए जल्द से जल्द अस्पताल में इलाज ज़रूरी है"
+  reason_sw: "Uume kusimama kwa muda mrefu au kwa maumivu: unahitaji matibabu hospitalini haraka iwezekanavyo"
+  patterns:
+  - erecci[oó]n[^.]{0,40}(mucho rato|horas|no (se le )?baja|no desaparece|dolorosa|le duele)
+  - (pene|pito|pilila|colita)[^.]{0,30}(duro|erecto|tieso)[^.]{0,30}(horas|mucho rato|no (se le )?baja)
+  - erection[^.]{0,40}(for hours|won'?t go (away|down)|hours|a long time|painful|hurts)
+  - (painful|prolonged|persistent) erection
+  - priapism
+  - priapismo
+  - "[ée]rection[^.]{0,40}(heures|longtemps|douloureuse|ne part pas)"
+  - erektion[^.]{0,40}(stunden|lange|schmerzhaft|geht nicht weg)
+  - (stunden|schmerzhafte?n?|lange)[^.]{0,25}erektion
+  - (болезненн\w*|долг\w*)[^.]{0,15}эрекци\w*
+  - (दर्द वाला|दर्दनाक|घंटों से)[^.]{0,20}(इरेक्शन)
+  - (horas|dolorosa)[^.]{0,20}ere[çc][ãa]o
+  - эрекци\w*[^.]{0,40}(часами|долго|не проходит|болезненн)
+  - (انتصاب)[^.]{0,40}(ساعات|طويل|مؤلم|لا يزول)
+  - ere[çc][ãa]o[^.]{0,40}(horas|muito tempo|dolorosa|n[ãa]o passa)
+  - (इरेक्शन|लिंग)[^.]{0,40}(घंटों|देर तक|दर्द|सख़्त|सख्त)
+  - uume[^.]{0,40}(umesimama|kusimama)[^.]{0,30}(saa|muda mrefu|maumivu)
+# 21-sep-2026, revisión de la batería: «my toddler's foreskin is stuck behind the glans» salía
+# rutina. El NHS: el prepucio que se queda atascado detrás del glande es una emergencia.
+- id: paraphimosis
+  level: emergency
+  source: nhs_en_phimosis
+  reason_es: "Prepucio atascado detrás del glande (parafimosis): es una emergencia, puede cortar el riego del pene"
+  reason_en: "Foreskin stuck behind the head of the penis (paraphimosis): this is an emergency, it can cut off the blood supply"
+  reason_fr: "Prépuce coincé derrière le gland (paraphimosis) : c'est une urgence, il peut couper la circulation"
+  reason_de: "Vorhaut hinter der Eichel eingeklemmt (Paraphimose): ein Notfall, die Durchblutung kann abgeschnürt werden"
+  reason_ru: "Крайняя плоть застряла за головкой (парафимоз): это неотложное состояние, может нарушиться кровоснабжение"
+  reason_ar: "القلفة عالقة خلف رأس القضيب (البارافيموسيس): حالة طارئة، قد تقطع تدفق الدم"
+  reason_pt: "Prepúcio preso atrás da glande (parafimose): é uma emergência, pode cortar a circulação"
+  reason_hi: "लिंग की चमड़ी पीछे जाकर अटक गई है (पैराफ़िमोसिस): यह आपात स्थिति है, ख़ून का बहाव रुक सकता है"
+  reason_sw: "Govi limekwama nyuma ya kichwa cha uume: ni dharura, linaweza kuzuia damu kufika"
+  patterns:
+  - prepucio[^.]{0,40}(atascad|atrapad|no (se puede|puedo|podemos) (bajar|volver)|no vuelve|se ha quedado)
+  - (parafimosis|paraphimosis|paraphimose|парафимоз|parafimose)
+  - foreskin[^.]{0,40}(stuck|trapped|won'?t (go|come) back|can'?t (pull|get) (it )?back)
+  - pr[ée]puce[^.]{0,40}(coinc[ée]|bloqu[ée]|ne revient pas)
+  - vorhaut[^.]{0,40}(eingeklemmt|steckt fest|geht nicht zur[üu]ck)
+  - (geht|kommt) (die )?vorhaut nicht (mehr )?zur[üu]ck
+  - крайн\w* плот\w*[^.]{0,40}(застрял|не возвращается|зажат)
+  - القلفة[^.]{0,40}(عالقة|علقت|لا تعود)
+  - prep[úu]cio[^.]{0,40}(preso|n[ãa]o volta|encravado)
+  - (चमड़ी|त्वचा)[^.]{0,40}(अटक|फँस|वापस नहीं)
+  - govi[^.]{0,40}(limekwama|halirudi)
+# 21-sep-2026, revisión de la batería: «mi hijo ha sido picado por una abeja dentro de la boca»
+# salía rutina. El NHS pide cita urgente si la picadura es en la boca, la garganta o cerca del ojo.
+- id: sting_mouth_throat_eye
+  level: urgent
+  source: nhs_en_insect_bites_and_stings
+  reason_es: "Picadura en la boca, la garganta o cerca del ojo: que lo vea un médico hoy; si se le hinchan los labios o la lengua o le cuesta respirar, llama a emergencias"
+  reason_en: "A sting in the mouth, throat or near the eye: get it seen today; if the lips or tongue swell or breathing gets hard, call emergency services"
+  reason_fr: "Piqûre dans la bouche, la gorge ou près de l'œil : consultez aujourd'hui ; si les lèvres ou la langue gonflent ou s'il respire mal, appelez les urgences"
+  reason_de: "Stich im Mund, im Hals oder am Auge: heute ärztlich ansehen lassen; bei Schwellung von Lippen oder Zunge oder Atemnot den Notruf wählen"
+  reason_ru: "Укус во рту, в горле или возле глаза: покажите врачу сегодня; если отекают губы или язык или трудно дышать, вызывайте скорую"
+  reason_ar: "لسعة في الفم أو الحلق أو قرب العين: يجب أن يراه طبيب اليوم، وإذا تورمت الشفتان أو اللسان أو صعب التنفس فاتصل بالطوارئ"
+  reason_pt: "Picada na boca, na garganta ou perto do olho: que um médico a veja hoje; se os lábios ou a língua incharem ou custar a respirar, ligue para a emergência"
+  reason_hi: "मुँह, गले या आँख के पास डंक: आज ही डॉक्टर को दिखाइए; होंठ या जीभ सूजे या साँस लेने में दिक़्क़त हो तो आपातकालीन नंबर पर कॉल करें"
+  reason_sw: "Kuumwa na mdudu mdomoni, kooni au karibu na jicho: aonwe na daktari leo; midomo au ulimi ukivimba au akishindwa kupumua, piga simu ya dharura"
+  patterns:
+  - (picad\w*|picado|pic[oó])[^.]{0,40}(dentro de la boca|en la boca|en la lengua|en la garganta|(en|cerca de)l? (el )?ojo|en el p[áa]rpado)
+  - (stung|sting|bitten)[^.]{0,40}(in|inside) (the |his |her |their )?(mouth|throat|tongue)
+  - (stung|sting)[^.]{0,30}(near|on) (the |his |her )?(eye|eyelid)
+  - piq[uû]\w*[^.]{0,40}(dans la bouche|sur la langue|dans la gorge|pr[èe]s de l'?(œil|oeil))
+  - gestochen[^.]{0,40}(im mund|in den mund|in die zunge|im hals|am auge)
+  - (im mund|in den mund|in die zunge|im hals|am auge)[^.]{0,20}gestochen
+  - (ужал\w*|укусил\w*)[^.]{0,40}(во рту|в язык|в горло|в глаз|возле глаза)
+  - (لسع\w*|لدغ\w*)[^.]{0,40}(في الفم|في اللسان|في الحلق|قرب العين)
+  - (picad\w*|picou)[^.]{0,40}(na boca|na l[íi]ngua|na garganta|perto do olho)
+  - (डंक|काट)[^.]{0,40}(मुँह|मुंह|जीभ|गले|आँख)
+  - (मुँह|मुंह|जीभ|गले|आँख)[^.]{0,25}(डंक|काट)
+  - (ameumwa|kuumwa)[^.]{0,40}(mdomoni|ulimini|kooni|karibu na jicho)
+# 21-sep-2026, revisión de 823 respuestas: «las cacas son casi blancas» y «стул очень светлый,
+# почти белый» salían rutina. El NHS pide consulta urgente si un bebé hace cacas pálidas.
+- id: pale_stools
+  level: urgent
+  source: nhs_en_jaundice_in_babies
+  reason_es: "Cacas muy pálidas, blanquecinas o color masilla: que lo vea un médico hoy, puede ser un problema del hígado"
+  reason_en: "Very pale, white or chalky poo: get it seen by a doctor today, it can be a liver problem"
+  reason_fr: "Selles très pâles, blanches ou couleur mastic : consultez un médecin aujourd'hui, cela peut venir du foie"
+  reason_de: "Sehr heller, weißlicher oder kittfarbener Stuhl: heute ärztlich abklären lassen, kann von der Leber kommen"
+  reason_ru: "Очень светлый, белый или сероватый стул: покажите врачу сегодня, это может быть связано с печенью"
+  reason_ar: "براز شاحب جدًا أو أبيض: يجب أن يراه طبيب اليوم، قد تكون مشكلة في الكبد"
+  reason_pt: "Fezes muito pálidas, brancas ou cor de massa: que um médico o veja hoje, pode ser um problema do fígado"
+  reason_hi: "बहुत हल्का, सफ़ेद या मटमैला मल: आज ही डॉक्टर को दिखाइए, यह लिवर की समस्या हो सकती है"
+  reason_sw: "Kinyesi cheupe sana au kilichofifia: aonwe na daktari leo, inaweza kuwa tatizo la ini"
+  patterns:
+  - (caca|cacas|heces|deposici\w*)[^.]{0,30}(casi )?(blanc|p[aá]lid|color masilla|grisace)
+  - (pale|white|chalky|grey|putty)[^.]{0,15}(poo|poop|stool|stools)
+  - (poo|poop|stool|stools)[^.]{0,20}(is |are |looks )?(very )?(pale|white|chalky)
+  - selles[^.]{0,20}(blanch|p[âa]les|d[ée]color)
+  - stuhl[^.]{0,20}(wei[ßs]|hell|entf[äa]rbt|lehmfarben)
+  - (стул|кал)[^.]{0,30}(бел\w*|светл\w*|обесцвеч\w*)
+  - براز[^.]{0,20}(أبيض|شاحب|فاتح)
+  - fezes[^.]{0,20}(brancas|p[áa]lidas|claras|esbranqui)
+  - मल[^.]{0,20}(सफ़ेद|सफेद|हल्का|फीका)
+  - kinyesi[^.]{0,20}(cheupe|kilichofifia|kimefifia)
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce
@@ -1388,6 +1503,12 @@ rules:
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
+  # 21-sep-2026, revisión de 823 respuestas: el silbido al respirar en ruso, hindi y suajili salía rutina (en castellano saltaba)
+  - свист\w*[^.]{0,20}(при дыхании|когда дышит)
+  - (при дыхании|когда дышит)[^.]{0,20}свист\w*
+  - (सांस|साँस)[^.]{0,30}सीटी
+  - सीटी[^.]{0,30}(सांस|साँस)
+  - (anapumua|kupumua)[^.]{0,20}kwa mlio
   # 21-sep-2026, tercera batería del operador: «kifua kinazama» en suajili salía rutina
   - kifua (kinazama|kinaingia|kinavutwa)
   - (tummy|stomach|belly|abdomen) (feels |is |looks )?(very )?(hard|swollen|tense|distended)
@@ -2043,6 +2164,11 @@ rules:
   reason_en: Ingestion of toxic products or medication overdose
   reason_fr: Ingestion de produits toxiques ou surdose de médicaments
   patterns:
+  # 21-sep-2026, revisión de 823 respuestas: «ha tomado 7 ml de Dalsy por error» contestaba la calculadora de dosis; la SEUP: sobredosificación, a urgencias
+  - (por error|por equivocaci[oó]n|sin querer|de m[aá]s|dosis doble|doble dosis)[^.]{0,40}(apiretal|dalsy|paracetamol|ibuprofeno|jarabe|dosis|ml)
+  - (apiretal|dalsy|paracetamol|ibuprofeno|jarabe|\d+ ?ml)[^.]{0,40}(por error|por equivocaci[oó]n|de m[aá]s)
+  - (by mistake|accidentally|too much|double dose|overdose)[^.]{0,40}(calpol|nurofen|paracetamol|ibuprofen|syrup|medicine|dose|ml)
+  - (calpol|nurofen|paracetamol|ibuprofen|syrup|\d+ ?ml)[^.]{0,40}(by mistake|accidentally|too much)
   # 21-sep-2026, última batería del operador: gel desinfectante, enjuague bucal y el antihistamínico de la hermana salían rutina
   - (bebi[oó]|bebido|trag[oó]|tragado)[^.]{0,25}(colutorio|enjuague bucal|gel (hidroalcoh[oó]lico|desinfectante)|alcohol de manos)
   - \b(ate|drank|swallowed|licked)\b[^.]{0,20}(some )?(hand sanitizer|sanitiser|sanitizer|mouthwash)
@@ -3275,6 +3401,9 @@ rules:
   reason_hi: "निगल नहीं पा रहा और लार बह रही है: साँस का रास्ता ख़तरे में हो सकता है"
   reason_sw: "Ashindwa kumeza na anadondosha mate: njia ya hewa inaweza kuwa hatarini"
   patterns:
+  # 21-sep-2026, revisión de 823 respuestas: «tiene la voz apagada y babea más de lo normal» salía rutina
+  - (voz (apagada|de patata)|muffled voice|hot potato voice|voix (étouffée|etouffee))[^.]{0,40}(babea|drool|bave)
+  - (babea|drool\w*|bave)[^.]{0,40}(voz (apagada|de patata)|muffled voice|voix (étouffée|etouffee))
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "hawezi kumeza[^.]{0,30}mate"
   - "anadondosha mate na hawezi kumeza"
@@ -4897,6 +5026,10 @@ rules:
   # agotamiento por calor; el motivo dice cuándo es emergencia. Siempre con el verbo de
   # padecerlo: «¿cómo prevengo un golpe de calor?» no puede sacar el aviso.
   patterns:
+  # 21-sep-2026, revisión de la batería: fiebre tras un día de playa o de calor, y fiebre sin sudar, salían rutina
+  - (playa|sol|calor|piscina|heat|sun|beach)[^.]{0,60}(fiebre|temperatura de|temperature of|3[89]|4[01])
+  - (fiebre|temperatura|fever|calor)[^.]{0,40}(dejado de sudar|no suda|ya no suda|stopped sweating|not sweating)
+  - (fiebre|fever|temperature)[^.]{0,60}(al sol|en la playa|todo el d[ií]a (al sol|en la playa)|in the (heat|sun)|at the beach)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "jua kali[^.]{0,40}(amechoka|amezimia)"
   - "joto limemzidi"

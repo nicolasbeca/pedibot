@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**559 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**570 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,11 +30,11 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (233 of 559 do) |
+| `year` | where the document states one (244 of 570 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (511 of 559 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (522 of 570 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -42,7 +42,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | organisation | documents |
 |---|---|
 | WHO — World Health Organization | 214 |
-| NHS — NHS (National Health Service, England) | 124 |
+| NHS — NHS (National Health Service, England) | 135 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 81 |
 | CDC — Centers for Disease Control and Prevention (USA) | 38 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
@@ -67,7 +67,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 244 |
+| English (`en`) | 255 |
 | Spanish (`es`) | 109 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 49 |
@@ -80,21 +80,21 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | topic | documents |
 |---|---|
+| `piel` | 69 |
 | `respiratorio` | 67 |
-| `piel` | 66 |
 | `digestivo` | 63 |
-| `general` | 57 |
+| `general` | 60 |
 | `accidentes` | 52 |
 | `vacunas` | 43 |
 | `alimentacion` | 29 |
-| `desarrollo` | 23 |
-| `salud_mental` | 20 |
+| `desarrollo` | 24 |
+| `salud_mental` | 22 |
 | `fiebre` | 17 |
+| `orl` | 16 |
 | `neurologia` | 16 |
 | `recien_nacido` | 15 |
-| `orl` | 15 |
 | `alergia` | 15 |
-| `urgencias` | 12 |
+| `urgencias` | 13 |
 | `medicamentos` | 10 |
 | `intoxicacion` | 10 |
 | `crianza` | 8 |

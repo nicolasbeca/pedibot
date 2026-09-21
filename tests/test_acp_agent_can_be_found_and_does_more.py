@@ -221,7 +221,11 @@ def test_la_respuesta_para_agentes_acepta_el_modo_nino(cliente, monkeypatch):
         headers={"x-api-key": "k"},
     )
     assert r.status_code == 200
-    assert "EXPLAIN TO THE CHILD" in llm.calls[-1][1], "el modo niño no llega al motor"
+    # la última llamada es ahora la revisión (21-sep-2026): se mira la de redactar
+    from pedibot.bot.answer import REVISA
+
+    redaccion = [c for c in llm.calls if c[0] != REVISA]
+    assert "EXPLAIN TO THE CHILD" in redaccion[-1][1], "el modo niño no llega al motor"
 
 
 # ── 2. el catálogo versionado ─────────────────────────────────────────────────────────────

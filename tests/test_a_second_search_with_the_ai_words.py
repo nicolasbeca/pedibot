@@ -10,6 +10,7 @@ from __future__ import annotations
 from test_the_ai_reads_the_question_first import _json, _motor
 
 from pedibot.bot.interpret import SYSTEM as LECTURA
+from pedibot.bot.answer import REVISA
 
 CHULETA = "¿Cuándo puedo darle una chuleta a mi hijo?"
 LEIDA = _json(
@@ -27,7 +28,7 @@ def _con_borradores(motor, borradores: list[str]) -> list[str]:  # noqa: ANN001
     pedidos: list[str] = []
 
     def completa(system, user, **k):  # noqa: ANN001, ANN003, ANN202
-        if system == LECTURA:
+        if system in (LECTURA, REVISA):
             return original(system, user, **k)
         pedidos.append(user)
         r = original(system, user, **k)
