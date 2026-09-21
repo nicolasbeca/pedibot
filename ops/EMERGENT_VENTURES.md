@@ -6,7 +6,9 @@
 > saldrían los ingresos, y cuánto tiempo llevas y con quién—, más un tuit. El borrador anterior no
 > contestaba la segunda. Ésta tiene 964 palabras.
 >
-> Queda un hueco que sólo puede rellenar él: **[your profession]**, en la primera línea.
+> Sin huecos: los datos personales los dio él el 21-sep-2026 —arquitecto, en Sevilla, a tiempo
+> parcial; la idea en octubre de 2025, en serio desde enero de 2026— y la historia de su hijo
+> es la de `ops/METADAO.md`, para que las dos solicitudes cuenten lo mismo.
 >
 > Sólo se admite una solicitud por persona y proyecto: se manda una vez y bien.
 
@@ -33,11 +35,15 @@ A free site that answers parents' questions about a sick child in their own lang
 ```
 ABOUT ME
 
-I am [your profession] in Seville, Spain, and I am not a doctor. I started this when I became a father for the first time and went looking for answers at night. What I found was contradictory, hard to trust, and almost never said where it came from. I wanted one place that would tell me what the paediatric guideline says and show me the guideline. It did not exist, so I built it in the evenings over the last year, and I have paid for all of it myself.
+My name is Nicolás Beca. I am an architect in Seville, Spain. I am not a doctor, and I do not have a team.
+
+PediBot exists because my son had a difficult first few months and I could not find information I could trust. I will not tell you what was wrong with him, because that is his and not a pitch. What I can tell you is what those nights were like: a screen full of forums and sites that answered everything with total confidence and cited nothing. Somewhere in there I stopped looking for an answer and started wanting the thing that did not exist: a place that tells you what the paediatric guidelines actually say, names the document, and admits when it does not know.
+
+The idea came in October 2025. I started building it in earnest in January 2026, alone, in my free time and at weekends, because I need my job as an architect to live, and the biggest push came this summer, when I had more time. I have paid for all of it myself. It has been live since 25 August 2026.
 
 What matters more about me than credentials is how I work: I measure before I believe, and I hunt my own mistakes. A few days ago, reading Ethiopia's official list of over-the-counter medicines, I found that paracetamol drops there are 100 mg per 5 ml, while in Spain and India drops are 100 mg per ml, five times stronger. My dose calculator only knew the second, so a parent in Addis Ababa could have given a fifth of the dose. My first fix then put the weaker drops at the top of the list, where a parent in Madrid could have given five times too much. My tests were green both times. I found both problems by looking at the page the way a parent looks at it, and the calculator now lets the parent type what their own bottle says.
 
-One more thing I would rather you heard from me. In November 2025 I launched a token for the project on a crypto platform, before there was a product worth funding. It raised nothing and I retired it. It is the reason the site is now free, has no token anywhere, and is built so that money, if it comes, comes from institutions and not from parents.
+One more thing I would rather you heard from me. In November 2025, a month after the idea, I launched a token for the project on a crypto platform. It was the only way I knew for someone working alone to try to fund an idea, and it was too early: there was no product yet. It raised nothing and I retired it. It is the reason the site is now free, has no token anywhere, and is built so that money, if it comes, comes from institutions and not from parents.
 
 A CONSENSUS VIEW I ABSOLUTELY AGREE WITH
 
@@ -57,7 +63,7 @@ The dangerous parts are not written by a language model. Warning signs, doses, t
 
 What is new is not any single piece. It is the combination: a free service that is local, cited, honest about what it does not know, and that works offline, for the parents general-purpose tools serve worst.
 
-Where it stands: it went live on 25 August 2026. Usage is still small, a few hundred people, because I have barely announced it. That is the next problem, and it is not one money solves.
+Where it stands: usage is still small, a few hundred people, because I have barely announced it. Google already shows it for exactly the right searches, such as dose calculators by brand name, but on page seven, because the site is new and almost nobody links to it yet. That is the next problem, and it is not one money solves.
 
 BUDGET
 
@@ -65,11 +71,11 @@ About $25,000 for one year.
 
 - Clinical review, about $18,000. This is the one thing that separates the project from being trustworthy: a panel of practising paediatricians grading a few hundred real questions blind, the agreement rate published whatever it turns out to be, and the disagreements fixed.
 - Native-speaker review of the Arabic and Hindi safety text, about $5,000. It is the weakest part of the project today and the one where a translation error costs most.
-- Hosting, model calls and medical literature, about $2,000.
+- Hosting, model calls and medical literature, about $2,000. It stays small because almost nothing here is generated: since August, answering real parents has cost 24 cents in model calls.
 
 Revenue today is zero, on purpose: parents will never pay, and there are no ads and no data sales. The path to self-sufficiency is licensing the rule-based engine to health insurers, clinics and hospitals as a first filter, so that institutions pay and the parent side stays free. The clinical measurement is the prerequisite for that, which is why it comes first.
 
 TIME AND SUPPORT
 
-About a year of work, part time, in evenings and at weekends. No co-founders, no investors and no formal partners yet. This week I wrote to CHIFA, the child-health forum of Healthcare Information For All, to ask health workers in low-income countries to check it and point me to their national medicine lists.
+The idea dates from October 2025, and I have been building it since January 2026, part time, in my free time and at weekends, because I need my job to live. The biggest push came in the summer of 2026. No co-founders, no investors and no formal partners yet. This week I wrote to CHIFA, the child-health forum of Healthcare Information For All, to ask health workers in low-income countries to check it and point me to their national medicine lists.
 ```
