@@ -72,9 +72,10 @@ lengua de triaje a lengua completa (`SUPPORTED_LANGS` en `src/pedibot/bot/answer
 
 ## 2. Vikaspedia (C-DAC) — el hindi
 
-Pendiente desde el 11-sep. Su política exige permiso por correo y su página de contacto es un
-formulario (`https://vikaspedia.in/contactus`), sin dirección publicada, así que este texto va
-pegado en ese formulario.
+Pendiente desde el 11-sep. Su política exige permiso por correo. El 11-sep su página de
+contacto era sólo un formulario; **el 21-sep ya publica dirección: `vikaspedia@cdac.in`**
+(escrita como «vikaspedia[at]cdac[dot]in»). Va por correo, que admite el texto entero —el
+formulario corta a 300 caracteres— y deja copia. No por las dos vías a la vez.
 
 **Asunto:** Permission request: Vikaspedia health content for a free paediatric information service
 
