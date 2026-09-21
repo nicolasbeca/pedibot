@@ -65,7 +65,6 @@ pida se queda esperando, no se descarta.
 | esta semana | **CHIFA**, el foro de salud infantil de HIFA — el correo está escrito | no, es un foro de personas | 0 |
 | esta semana | **Emergent Ventures** — lo lee una persona, y el borrador está listo | no, de 13 años para arriba | 0 |
 | viernes 2 de octubre | se deja de esperar a **MetaDAO** | ya enviada | — |
-| en paralelo, cualquier mes | **Awesome Foundation**, para algo concreto de 1.000 $ | no: «particular u organización» | 0 |
 | cuando haya una tarde | **Bien público digital (DPGA)** | no, es del proyecto | 0 |
 | a partir del 2 de octubre | **Backable**, y con 75.000 | la entidad la pone la plataforma | 15 $ |
 | — | **Y Combinator** | **sí**: invierten en una sociedad, y son tres meses en San Francisco | 0 |
@@ -216,22 +215,16 @@ un formulario y un vídeo de un minuto. Y si sale, cambia la escala entera.
 
 ---
 
-## 5 · Awesome Foundation — **gratis, un mes, y se puede pedir hoy**
+## 5 · Awesome Foundation — **DESCARTADA el 21-sep-2026, y conviene saber por qué**
 
-**Lo comprobado:** cada delegación junta 1.000 $ al mes entre diez personas y se los dan a un
-proyecto, **sin ataduras y sin quedarse nada**: «no deseamos que los fondos se devuelvan». Puede
-pedirlo cualquiera, particular u organización, hay delegaciones por todo el mundo y **no cobran
-por presentarse**. La mayoría decide mensualmente.
-
-Mil dólares no cambian el proyecto. Lo que sí cambia es lo que ese sí significa en las demás
-salas: es el primer dinero de alguien que no eres tú, y se puede contar.
-
-**Lo que no encaja:** avisan de que no financian «esfuerzos existentes que no vayan a notar mucho
-un aporte pequeño». Hay que pedirlo **para algo concreto que mil dólares sí resuelven**, no para
-«el proyecto». Por ejemplo: la revisión por un hablante nativo de árabe y otro de hindi de los
-textos de seguridad, que hoy es el agujero más claro que tenemos y cabe en esa cifra.
-
----
+La recomendé el 20-sep por lo que dice de sí misma —mil dólares al mes, sin ataduras, puede
+pedirlo un particular— **sin mirar sus delegaciones**, que es lo único que decide si sirve. Al
+ir a rellenarla con el operador: no hay ninguna en España, ni en África, ni en la India, ni
+ninguna dedicada a salud o a infancia. Las delegaciones son de ciudades concretas —casi todas en
+Estados Unidos, Canadá y Australia, y en Europa sólo Países Bajos, Glasgow y Armenia— y financian
+proyectos de su ciudad. Las cuatro que no tienen ciudad son de clima, discapacidad, *Dragon
+Dreaming* y agua. Es L206 otra vez: lo primero es mirar si ese sitio puede servirte a ti, y
+después el texto.
 
 ## 6 · Backable — **a partir del 2 de octubre, y con otro número**
 

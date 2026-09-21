@@ -1,5 +1,9 @@
 # Permisos por escribir — dos puertas cerradas que un correo puede abrir (18-sep-2026)
 
+> Puestos al día el 21-sep-2026: las cifras de entonces se habían quedado viejas (496
+> documentos, 48 países africanos) y ahora los firma él con su nombre, que desde MetaDAO ya no
+> es un problema y en una petición de permiso da más confianza que una marca.
+
 Los dos rastreos de licencias que acabaron en «hay material bueno y está cerrado» terminan en lo
 mismo: un correo. Están redactados abajo, listos para copiar y enviar. **Los manda el operador**,
 no el proyecto: nada sale hacia fuera sin su visto bueno.
@@ -22,15 +26,17 @@ Qué se pide en los dos casos, y qué NO:
 > Dear Immunize.org team,
 >
 > I write on behalf of PediBot (https://pedibot.xyz), a free, non-commercial information service
-> for parents of young children. It answers questions in eight languages using a corpus of 496
+> for parents of young children. It answers questions in eight languages using a corpus of 497
 > documents — the NHS, the CDC, MedlinePlus, the WHO and several national paediatric societies —
 > and every answer cites the document it came from, with a link, so a parent can check it. The
 > licence of every source is recorded in the catalogue before it is indexed; nothing goes in
 > without one.
 >
-> We have just extended the service to Africa: 48 African countries now have their childhood
-> vaccination schedule, their emergency numbers and their growth charts on the site, and the
-> safety layer — the part that tells a parent when to go to hospital now — understands Swahili.
+> We have just extended the service to Africa: all 54 African countries now have their childhood
+> vaccination schedule and their emergency number on the site, 52 have their growth charts, and
+> the safety layer — the part that tells a parent when to go to hospital now — understands Swahili.
+> Since this week the service also answers in the language the parent writes in, Swahili included,
+> but the sources behind those answers are still in English and Spanish.
 >
 > What we could not find is a paediatric corpus in Swahili with an open licence. We checked
 > MedlinePlus, the WHO, WHO AFRO, Hesperian and others. The best Swahili material for parents
@@ -55,7 +61,8 @@ Qué se pide en los dos casos, y qué NO:
 >
 > With thanks for the work you do,
 >
-> — PediBot · pedibot.ai@gmail.com · https://pedibot.xyz
+> Nicolás Beca
+> PediBot · https://pedibot.xyz · pedibot.ai@gmail.com
 
 **Si contestan que sí:** el material entra por `scripts/fetch_web_sources.py` como cualquier otra
 fuente, con `notes: "licence: permission granted by Immunize.org, <fecha>"`, y el suajili pasa de
@@ -100,7 +107,8 @@ pegado en ese formulario.
 >
 > With thanks,
 >
-> — PediBot · pedibot.ai@gmail.com · https://pedibot.xyz
+> Nicolás Beca
+> PediBot · https://pedibot.xyz · pedibot.ai@gmail.com
 
 **Si contestan que sí:** mismo camino, y además se puede cerrar la deuda de que el hindi es la
 única de las ocho lenguas sin documentos propios (L154).
