@@ -128,3 +128,18 @@ def test_why_english_repeats_the_last_real_question_not_a_button() -> None:
     ]
     motor.ask("¿Por qué me hablas en inglés ahora?", lang="es", history=historia)
     assert "PARENT MESSAGE:\nMi hijo de 3 años tiene muy poco pelo" in visto["redactor"][-1]
+
+
+def test_a_vague_message_is_asked_what_is_wrong() -> None:
+    """«Mi hijo está malo» se contestaba hablando de fiebre: la IA le añadía «fever» de palabra clave."""
+    motor, visto = _motor(_json(lang="es", lang_name="Spanish", vague=True, keywords=["fiebre"]))
+    a = motor.ask("mi hijo está malo", lang="es")
+    assert a.verification == "clarify"
+    assert not visto["redactor"]
+
+
+def test_a_concrete_message_is_not_asked_again() -> None:
+    """«Se chupa mucho el dedo, ¿cómo hago para que pare?» recibía «¿qué le pasa?»."""
+    motor, visto = _motor(_json(lang="es", lang_name="Spanish", vague=False))
+    a = motor.ask("mi hija se chupa mucho el dedo, como hago para que pare?", lang="es")
+    assert a.verification != "clarify"

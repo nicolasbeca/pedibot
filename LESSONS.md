@@ -1467,3 +1467,19 @@ Y en la misma tanda, la otra mitad de la lección: **«se ha caído y ahora est�
 rutina**. El triaje tenía el golpe con vómitos y el golpe con pérdida de conocimiento, pero no la
 somnolencia, que es por la que MedlinePlus manda llamar a emergencias. Una prueba de diez frases
 escritas como las escribe un padre encontró lo que 1.700 casos de batería no tenían.
+
+## L221 · 523 preguntas escritas a mano valen más que 1.700 casos de batería (21-sep-2026)
+
+El operador escribió 523 preguntas como las escribe un padre —«mi bebe 8m 39f fiebre apiretal 5ml
+hace 2h ahora 39.5 q hago», en veinte lenguas, con recetas y bitcoin por medio— y pidió «depura
+al máximo, no hay prisa». La batería automática del triaje tenía más de 1.700 frases y pasaba
+entera. Estas encontraron en una tarde lo que aquélla no: la fiebre con el cuello «muy» rígido
+(la regla pedía «cuello rígido» seguido), el alemán «Baby» leído como lactante, cuatro lenguas
+donde tragarse unas pastillas no avisaba de nada.
+
+Y la otra mitad, que es la que duele: **mis propios arreglos de ese día empeoraron cosas.** La
+regla «contesta primero sí o no» produjo «No, no es sarampión» a quien no había preguntado por el
+sarampión; la regla «no rellenes» convirtió respuestas buenas en «no puedo responder». Sólo se
+vio porque la batería se volvió a pasar entera después de cada tanda y se comparó pregunta a
+pregunta (`eval/bateria_operador/compara.py`). Un arreglo de prompt se mide contra todo, no
+contra el caso que lo motivó.

@@ -86,3 +86,11 @@ def test_an_adorned_signal_also_triggers_the_second_search() -> None:
     a = motor.ask(CHULETA, lang="es")
     assert len(visto["busquedas"]) == 2
     assert a.verification != "no_source"
+
+
+def test_a_short_refusal_in_words_is_the_same_signal() -> None:
+    """«No puedo responder a esa pregunta con la información de la que dispongo»."""
+    from pedibot.bot.answer import _dice_sin_fuente
+
+    assert _dice_sin_fuente("No puedo responder a esa pregunta con la información que tengo.")
+    assert _dice_sin_fuente("Nein, einem 9 Monate alten Baby darf man keinen Honig geben.")

@@ -153,7 +153,10 @@ def test_no_source_means_silence(engine_factory):
 
 
 def test_bad_citation_triggers_regeneration_then_fallback(engine_factory):
-    eng, llm = engine_factory("Respuesta sin citas.")
+    # un borrador del largo de una respuesta de verdad: los cortos sin cita son una negativa
+    eng, llm = engine_factory(
+        "La fiebre es un mecanismo de defensa del cuerpo frente a las infecciones y en la mayoría de los niños dura entre dos y cuatro días, conviene ofrecer líquidos, vigilar el estado general y consultar si aparece cualquier signo que preocupe a la familia o si no mejora."
+    )
     a = eng.ask("mi hijo de 4 años tiene fiebre")
     assert a.verification == "fallback" and len(_redaccion(llm)) == 2
     assert "No tengo información fiable" in a.text
@@ -162,7 +165,12 @@ def test_bad_citation_triggers_regeneration_then_fallback(engine_factory):
 def test_regeneration_succeeds(engine_factory):
     # la lectura de la pregunta también es una llamada al modelo (21-sep-2026); el iterador
     # tiene que ser sólo del redactor, o se lo come la lectura y el primer borrador sale bueno
-    answers = iter(["Sin cita.", "Con cita de la SEUP [1]."])
+    answers = iter(
+        [
+            "La fiebre es un mecanismo de defensa del cuerpo frente a las infecciones y en la mayoría de los niños dura entre dos y cuatro días, conviene ofrecer líquidos, vigilar el estado general y consultar si aparece cualquier signo que preocupe a la familia o si no mejora.",
+            "Con cita de la SEUP [1].",
+        ]
+    )
     eng, llm = engine_factory(lambda s, u: "no es json" if s == _LECTURA else next(answers))
     a = eng.ask("mi hijo de 4 años tiene fiebre")
     assert a.verification == "regenerated" and a.text == "Con cita de la SEUP [1]."

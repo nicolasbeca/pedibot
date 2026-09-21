@@ -166,8 +166,14 @@ def _dice_sin_fuente(texto: str) -> bool:
     información sobre un dedo roto. NO_SOURCE» (21-sep-2026). Así no se reconocía, la respuesta
     caía en la verificación por no citar y la segunda búsqueda no llegaba a lanzarse. Cuenta
     como señal si aparece y el texto no cita nada: con citas, es una respuesta de verdad.
+
+    Y lo mismo una frase corta sin ninguna cita: «No puedo responder a esa pregunta con la
+    información de la que dispongo» es la misma señal dicha con palabras (batería del
+    21-sep-2026, veintiséis respuestas acabaron así en «fallback» sin segunda búsqueda).
     """
-    return "NO_SOURCE" in texto.upper() and not _CIT.search(texto)
+    if _CIT.search(texto):
+        return False
+    return "NO_SOURCE" in texto.upper() or len(texto.split()) < 40
 
 
 _FRASES_FIJAS = frozenset({"no_source", "fallback", "clarify", "asked_age", "about", "off_topic"})
@@ -474,7 +480,7 @@ class EmergencyNumbers:
         return default
 
 
-def load_prompt(version: str = "answer_v6") -> tuple[str, str]:
+def load_prompt(version: str = "answer_v7") -> tuple[str, str]:
     text = (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
     return version, text
 
@@ -701,10 +707,29 @@ def _mentions_child(text: str) -> bool:
     return bool(_CHILD.search(text))
 
 
-def _age_context(tr: TriageResult) -> str:
+#: Lo que dice que el niño no es un lactante aunque no dé la edad (21-sep-2026). «Mi hijo tiene
+#: 39.8 pero está jugando», «my toddler has a fever», «bebé 8m 39 fiebre»: las tres empezaban por
+#: «si tiene menos de 3 meses, que lo vea un médico hoy», que a ese padre no le dice nada.
+_PARECE_MAYOR = re.compile(
+    r"toddler|preschool|school|\bcole\b|colegio|guarder[ií]a|kindergarten|[ée]cole|creche|"
+    r"corr(e|iendo|eteando)|running around|runs? around|jugando|juega|playing|spielt|joue|"
+    r"brinca|camina|anda ya|walks|walking|\b\d{1,2}\s*(años|years?|ans|jahre?|anos|anni)\b|"
+    # el niño que habla no es un lactante: «me ha dicho que quiere ver dibujos», «says it hurts»
+    r"me ha dicho|me dice|dice que|se queja|says|told me|complains|sagt|dit qu|diz que|"
+    r"\b([3-9]|1[0-9]|2[0-4])\s?m\b(?!\s*(de altura|etro))",
+    re.I,
+)
+
+
+def _age_context(tr: TriageResult, texto: str = "") -> str:
     """Age line for the prompt. Under 3 months: home medication advice is never appropriate."""
     if tr.age_months is None and not tr.has_fever:
         return "CHILD AGE: unknown\n"
+    if tr.age_months is None and _PARECE_MAYOR.search(texto):
+        return (
+            "CHILD AGE: not given, but the message shows the child is not a young baby. Do NOT "
+            "mention babies under 3 months. Give NO specific medication dose (no mg, no ml).\n"
+        )
     if tr.age_months is None:
         # Sólo con fiebre. Del 12 al 13-sep-2026 esta orden iba en toda respuesta sin edad y el
         # modelo la obedecía: el queroseno o el escozor al orinar abrían hablando de fiebre.
@@ -714,12 +739,20 @@ def _age_context(tr: TriageResult) -> str:
             "medication dose (no mg, no ml): the dose depends on the age and weight you do not "
             "have.\n"
         )
-    if tr.age_months < 3:
+    if tr.age_months < 3 and (tr.has_fever or tr.level != "routine"):
         return (
             f"CHILD AGE: {tr.age_months:g} months — UNDER 3 MONTHS. Do NOT suggest giving any "
             "medication at home (no paracetamol, no ibuprofen); do not describe home management "
             "of fever. Say that babies this young must be assessed by a doctor the same day and "
             "keep the answer short.\n"
+        )
+    if tr.age_months < 3:
+        # 21-sep-2026: «mi bebé de 2 semanas estornuda mucho pero no tiene mocos» recibía «que lo
+        # vea un médico hoy mismo». Sin fiebre ni alarma, lo de «hoy» sobra y asusta.
+        return (
+            f"CHILD AGE: {tr.age_months:g} months — UNDER 3 MONTHS. Do NOT suggest giving any "
+            "medication at home. Answer what was asked; if a source says when a baby this young "
+            "should see a doctor, say it.\n"
         )
     if tr.age_months < 6:
         return (
@@ -880,6 +913,19 @@ def verify(text: str, hits: list[Hit]) -> list[str]:
     return problems
 
 
+#: El padre no necesita oír hablar de «las fuentes» (21-sep-2026). La regla 15 del prompt lo
+#: pide y el modelo lo seguía haciendo en 17 de 260 respuestas, casi siempre en la forma «no hay
+#: información en las fuentes sobre X; lo que sí describen es Y», con Y de otra cosa. Es de
+#: estilo, no de seguridad: da un reintento con la nota concreta, nunca manda al «no sé».
+_HABLA_DE_FUENTES = re.compile(
+    r"\b(las fuentes|mis fuentes|estas fuentes|the sources|my sources|these sources|les sources|"
+    r"mes sources|die quellen|meinen quellen|as fontes|nas fontes|minhas fontes|"
+    r"la informaci[oó]n (que tengo|de la que dispongo|disponible)|the information i have|"
+    r"lo que s[ií] (describen|dicen|indican)|what the sources)\b",
+    re.I,
+)
+
+
 def verify_answer(text: str, hits: list[Hit]) -> list[str]:
     """`verify` plus the guard on services that only exist in one country.
 
@@ -901,6 +947,13 @@ def verify_answer(text: str, hits: list[Hit]) -> list[str]:
             "no_organisation_named: name the organisation in words the first time you use a"
             " source (SEUP, NHS, WHO, CDC, MedlinePlus…), with the fact first"
         )
+    if _HABLA_DE_FUENTES.search(text):
+        problems.append(
+            "talks_about_the_sources: do not tell the parent what 'the sources' do or do not say,"
+            " and do not add material about a different situation. Answer with what the"
+            " organisations say about THIS situation, naming them; if nothing covers it, reply"
+            " NO_SOURCE"
+        )
     worst = max(counts.items(), key=lambda kv: kv[1], default=("", 0))
     if worst[1] > MAX_SAME_ORG:
         problems.append(
@@ -918,7 +971,7 @@ class Engine:
         triage: Triage,
         llm: LLMProvider,
         numbers: EmergencyNumbers,
-        prompt_version: str = "answer_v6",
+        prompt_version: str = "answer_v7",
         drugs: DrugCatalog | None = None,
         vaccines: Vaccines | None = None,
         guides: GuideIndex | None = None,
@@ -1368,6 +1421,10 @@ class Engine:
             if (
                 leida.intent == "other"
                 and largo
+                # «¿puedo darle apiretal y cómo se hace una bechamel?» salió «fuera de tema»: un
+                # medicamento nombrado es una pregunta de salud aunque venga con una receta
+                and not _DRUG.search(query)
+                and dose_intent(query, self.drugs) is None
                 and (
                     self.retriever.taxonomy is None
                     # las palabras del padre y la frase médica de la IA, pero no su lista de palabras
@@ -1387,15 +1444,31 @@ class Engine:
         # no conoce «broke» ni «cast»; la lectura dice «ankle fracture, fractura de tobillo», y
         # eso sí lo conoce. Una pregunta clara no se contesta con otra pregunta.
         leido_tema = f" {leida.search_text} {' '.join(leida.keywords)}" if leida else ""
+        # Y si la IA la ha leído como una pregunta de salud CONCRETA, no se pregunta nada: la
+        # batería del operador (21-sep-2026) dio «¿qué es lo principal que le pasa?» a quince
+        # preguntas claras —se chupa el dedo, un ganglio desde hace 3 semanas, pus en una uña,
+        # hipo desde hace 40 minutos— porque la lista de temas no las conoce. Quien decide si
+        # es vaga es quien la ha leído.
+        concreta = leida is not None and leida.intent == "health" and not leida.vague
+        # Y al revés: si la IA dice que es vaga —«mi hijo está malo»—, se pregunta, aunque la
+        # lista de temas encuentre algo en las palabras clave que la propia IA le ha añadido
+        # («fiebre» para «está malo»): esa pregunta se contestaba hablando de fiebre.
+        vaga = leida is not None and leida.intent == "health" and leida.vague
         if (
             tr.level == "routine"
             and not history
-            and self.retriever.taxonomy is not None
-            and self.retriever.taxonomy.topic_for(
-                query + " " + " ".join(self.retriever.expand(query, lang)) + leido_tema
+            and not concreta
+            and (
+                vaga
+                or (
+                    self.retriever.taxonomy is not None
+                    and self.retriever.taxonomy.topic_for(
+                        query + " " + " ".join(self.retriever.expand(query, lang)) + leido_tema
+                    )
+                    is None
+                    and (len(query.split()) <= 3 or _mentions_child(query))
+                )
             )
-            is None
-            and (len(query.split()) <= 3 or _mentions_child(query))
         ):
             return Answer(
                 CLARIFY[lang],
@@ -1503,7 +1576,7 @@ class Engine:
             user = (
                 f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
                 "the sources may be in another language, translate faithfully.\n"
-                f"{_age_context(tr)}"
+                f"{_age_context(tr, context_text)}"
                 f"{who_first_note(context_text, country)}"
                 f"{_history_block(history)}"
                 f"{CHILD_MODE if mode == 'child' else ''}"

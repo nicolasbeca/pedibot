@@ -1,5 +1,5 @@
 ---
-import { t, langPrefix, type Lang } from '../i18n';
+import { t, langPrefix, LANGS, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
@@ -24,8 +24,16 @@ import { countryOptions } from '../countries';
 // que alguien se encuentre sin saberse su sigla.
 const countries = countryOptions(countryCodes as string[], lang);
 const ages = [['', s.not_set], ...s.chat_ages];
+// Lo que rodea a una respuesta, en las ocho lenguas: el padre puede escribir en una distinta de
+// la de la página, y los botones van con la respuesta (ver `render`).
+const answerStrings = Object.fromEntries(
+  LANGS.map((l) => {
+    const x = t(l);
+    return [l, { helpful: x.helpful, not_helpful: x.not_helpful, share: x.share, copied: x.copied, child: x.child, listen: x.listen, guide_cta: x.guide_cta, tool_dose: x.dosedrug_open_calc, tool_vaccines: x.vaxcountry_by_age, tool_growth: x.tool_growth, invite_support: x.invite_support, nav_support: x.nav_support, support_href: `${langPrefix(l)}/support`, chat_call: x.chat_call, chat_months: x.fam.months, chat_years: x.fam.years, ages: x.chat_ages, speech_locale: x.speech_locale }];
+  }),
+);
 ---
-<div class="stage" data-lang={lang} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, tool_growth: s.tool_growth, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support`, err_busy: s.err_busy, err_unavailable: s.err_unavailable, chat_call: s.chat_call, chat_retry: s.chat_retry, chat_months: s.fam.months, chat_years: s.fam.years, ages: s.chat_ages })}>
+<div class="stage" data-lang={lang} data-answer-strings={JSON.stringify(answerStrings)} data-strings={JSON.stringify({ sources: s.sources, helpful: s.helpful, not_helpful: s.not_helpful, share: s.share, copied: s.copied, err_rate: s.err_rate, err_server: s.err_server, err_net: s.err_net, photo_hint: s.photo_hint, child: s.child, listen: s.listen, sug: s.sug, sug_winter: s.sug_winter, sug_summer: s.sug_summer, chat_age_note: s.chat_age_note, chat_weight_note: s.chat_weight_note, speech_locale: s.speech_locale, guide_cta: s.guide_cta, tool_dose: s.dosedrug_open_calc, tool_vaccines: s.vaxcountry_by_age, tool_growth: s.tool_growth, invite_support: s.invite_support, nav_support: s.nav_support, support_href: `${langPrefix(lang)}/support`, err_busy: s.err_busy, err_unavailable: s.err_unavailable, chat_call: s.chat_call, chat_retry: s.chat_retry, chat_months: s.fam.months, chat_years: s.fam.years, ages: s.chat_ages })}>
   <div class="chat" id="thread" aria-live="polite" aria-relevant="additions text">
     <div class="welcome" id="welcome">
       <img class="face" src="/logo-144.png" width="72" height="72" alt="" />
@@ -138,6 +146,8 @@ const ages = [['', s.not_set], ...s.chat_ages];
   const stage = document.querySelector('.stage') as HTMLElement;
   const lang = stage.dataset.lang || 'en';
   const S = JSON.parse(stage.dataset.strings || '{}');
+  const S0 = S;
+  const PORLENGUA: Record<string, Record<string, unknown>> = JSON.parse(stage.dataset.answerStrings || '{}');
   const thread = document.getElementById('thread')!, welcome = document.getElementById('welcome')!;
   const form = document.getElementById('composer') as HTMLFormElement, input = document.getElementById('input') as HTMLTextAreaElement;
   const countrySel = document.getElementById('country') as HTMLSelectElement, ageSel = document.getElementById('age') as HTMLSelectElement, kgIn = document.getElementById('kg') as HTMLInputElement;
@@ -171,6 +181,10 @@ const ages = [['', s.not_set], ...s.chat_ages];
   const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
   function bubble(cls: string, html: string) { welcome.style.display = 'none'; const d = document.createElement('div'); d.className = 'msg ' + cls; d.innerHTML = html; thread.appendChild(d); d.scrollIntoView({ block: 'end', behavior: reduced ? 'auto' : 'smooth' }); return d; }
   function render(j: any) {
+    // 21-sep-2026, el operador con la web en inglés y preguntando en castellano: la respuesta
+    // salía en castellano y sus botones —«Full guide», «Copy link», «Listen»— en inglés. Los
+    // botones de cada respuesta van en la lengua de ESA respuesta, no en la de la página.
+    const S = { ...S0, ...(PORLENGUA[j.lang] || {}) };
     // Operator decision 25-ago: no source list, no [n] markers, no per-message disclaimer.
     // The organisation is named inside the text; the legal line lives under the composer.
     let h = '<div class="who">pedibot</div>';
@@ -214,7 +228,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // Las preguntas que vienen después: la API las manda según el asunto de la respuesta, en la
     // lengua del padre, y cada una tiene fuente (config/followups.yaml). Van por `.opt` → ask().
     if (Array.isArray(j.followups) && j.followups.length) h += '<div class="opts next">' + j.followups.map((o: string) => `<button class="fb opt" type="button" data-q="${esc(o)}">${esc(o)}</button>`).join(' ') + '</div>';
-    h += `<div class="foot"><span></span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button> <button class="fb share" data-id="${j.answer_id}" type="button">🔗 ${S.share}</button>${j.verification === 'ok' || j.verification === 'regenerated' ? ` <button class="fb child" data-q="${esc(j.question || '')}" type="button">🧸 ${S.child}</button> <button class="fb listen" type="button">🔊 ${S.listen}</button>` : ''}</span></div>`;
+    h += `<div class="foot"><span></span><span><button class="fb" data-v="1" data-id="${j.answer_id}" type="button" aria-label="${S.helpful}">👍</button> <button class="fb" data-v="-1" data-id="${j.answer_id}" type="button" aria-label="${S.not_helpful}">👎</button> <button class="fb share" data-id="${j.answer_id}" type="button">🔗 ${S.share}</button>${j.verification === 'ok' || j.verification === 'regenerated' ? ` <button class="fb child" data-q="${esc(j.question || '')}" type="button">🧸 ${S.child}</button>` : ''}</span></div>`;
     return h;
   }
   function context(q: string) {
@@ -253,12 +267,7 @@ const ages = [['', s.not_set], ...s.chat_ages];
     // Reintentar: se quita el error y la pregunta que lo provocó, y se vuelve a mandar.
     if (b.classList.contains('retry')) { const m = b.closest('.msg') as HTMLElement; const prev = m.previousElementSibling; if (prev?.classList.contains('user')) prev.remove(); m.remove(); ask(b.dataset.q || ''); return; }
     if (b.classList.contains('child')) { ask(b.dataset.q || '', 'child'); return; }
-    if (b.classList.contains('listen')) {
-      // Lee la respuesta, no los botones («📄 Guía…», «📞 Llamar…»); un segundo toque la calla.
-      if (speechSynthesis.speaking) { speechSynthesis.cancel(); return; }
-      const msg = b.closest('.msg') as HTMLElement; const txt = msg.querySelector('.txt') as HTMLElement | null; const text = txt ? txt.innerText : msg.innerText.replace(/^pedibot/, '').replace(/👍.*$/s, '');
-      const u = new SpeechSynthesisUtterance(text); u.lang = S.speech_locale; speechSynthesis.speak(u); return;
-    }
+    // 21-sep-2026: el botón «Escuchar» se quitó a petición del operador («es irrelevante ahora»).
     await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json', 'x-pedibot-client': CLIENT }, body: JSON.stringify({ answer_id: Number(b.dataset.id), session, value: Number(b.dataset.v) }) });
     b.parentElement!.querySelectorAll('.fb').forEach(x => (x as HTMLButtonElement).disabled = true); b.textContent += ' ✓';
   });

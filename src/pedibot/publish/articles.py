@@ -618,7 +618,9 @@ def gather_hits(index: Index, topic: str, max_chunks: int = 10, lang: str = "es"
     plan = TOPIC_PLAN[topic]
     # Se mira el doble de hondo cuando hay que encontrar material que ese lector pueda abrir: con
     # 40, del NHS sobre la fiebre casaba UN pasaje y la guía hindi salía entera del SEUP.
-    hondo = 40 if lang == "es" else 90
+    # 90 hasta el 21-sep-2026: con veinte documentos más, un pasaje del NHS sobre la fiebre cayó
+    # por debajo y la guía árabe se quedó con dos fuentes legibles. Se mira más hondo.
+    hondo = 40 if lang == "es" else 120
     hits = index.search(str(plan["query"]), top_k=hondo, prefer_parent_leaflets=True)
     wanted: list[str] = list(plan["docs"])  # type: ignore[call-overload]
     anchored = [h for h in hits if h.chunk.doc_id in wanted and h.chunk.usage == "publico"]

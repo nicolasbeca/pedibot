@@ -986,6 +986,442 @@ sources:
   - lactante
   url: https://www.nhs.uk/conditions/cradle-cap/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-02'
+- doc_id: nhs_en_motion_sickness
+  file: web/nhs_en_motion_sickness.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Motion sickness
+  year: 2023
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/motion-sickness/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_hiccups
+  file: web/nhs_en_hiccups.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Hiccups
+  year: 2023
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/symptoms/hiccups/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_swollen_glands
+  file: web/nhs_en_swollen_glands.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Swollen glands
+  year: 2023
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/symptoms/swollen-glands/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_fungal_nail_infection
+  file: web/nhs_en_fungal_nail_infection.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Fungal nail infection
+  year: 2024
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/fungal-nail-infection/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_squint
+  file: web/nhs_en_squint.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Overview - Squint
+  year: 2023
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/squint/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_lazy_eye
+  file: web/nhs_en_lazy_eye.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Lazy eye
+  year: 2026
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/lazy-eye/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_night_terrors
+  file: web/nhs_en_night_terrors.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Night terrors and nightmares
+  year: 2025
+  lang: en
+  topic: crianza
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/night-terrors/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_oral_thrush_mouth_thrush
+  file: web/nhs_en_oral_thrush_mouth_thrush.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Oral thrush (mouth thrush)
+  year: 2023
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/oral-thrush-mouth-thrush/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_mouth_ulcers
+  file: web/nhs_en_mouth_ulcers.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Mouth ulcers
+  year: 2024
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/mouth-ulcers/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_tongue_tie
+  file: web/nhs_en_tongue_tie.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Tongue-tie
+  year: 2024
+  lang: en
+  topic: lactante
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/conditions/tongue-tie/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_hernia
+  file: web/nhs_en_hernia.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Hernia
+  year: 2026
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/hernia/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_umbilical_hernia
+  file: web/nhs_en_umbilical_hernia.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Umbilical hernia
+  year: 2025
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/conditions/umbilical-hernia/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_undescended_testicles
+  file: web/nhs_en_undescended_testicles.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Undescended testicles
+  year: 2025
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/conditions/undescended-testicles/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_birthmarks
+  file: web/nhs_en_birthmarks.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Birthmarks
+  year: 2023
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/birthmarks/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_moles
+  file: web/nhs_en_moles.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Moles
+  year: 2023
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/moles/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_teeth_grinding
+  file: web/nhs_en_teeth_grinding.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Teeth grinding (bruxism)
+  year: 2026
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/symptoms/teeth-grinding/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_fainting
+  file: web/nhs_en_fainting.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Fainting
+  year: 2026
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/symptoms/fainting/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_heart_palpitations
+  file: web/nhs_en_heart_palpitations.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Heart palpitations
+  year: 2026
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/symptoms/heart-palpitations/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_earache
+  file: web/nhs_en_earache.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Earache
+  year: 2025
+  lang: en
+  topic: orl
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/symptoms/earache/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_hip_pain_children_irritable_hip
+  file: web/nhs_en_hip_pain_children_irritable_hip.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Hip pain in children (irritable hip)
+  year: 2024
+  lang: en
+  topic: accidentes
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - preescolar
+  - escolar
+  url: https://www.nhs.uk/symptoms/hip-pain-children-irritable-hip/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_excessive_sweating_hyperhidrosis
+  file: web/nhs_en_excessive_sweating_hyperhidrosis.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Excessive sweating (hyperhidrosis)
+  year: 2023
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/excessive-sweating-hyperhidrosis/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_flat_feet
+  file: web/nhs_en_flat_feet.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Flat feet
+  year: 2025
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/flat-feet/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_athletes_foot
+  file: web/nhs_en_athletes_foot.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Athlete's foot
+  year: 2024
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/athletes-foot/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_warts_and_verrucas
+  file: web/nhs_en_warts_and_verrucas.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Warts and verrucas
+  year: 2023
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/warts-and-verrucas/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_cellulitis
+  file: web/nhs_en_cellulitis.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Cellulitis
+  year: 2024
+  lang: en
+  topic: piel
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/cellulitis/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_kawasaki_disease
+  file: web/nhs_en_kawasaki_disease.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Kawasaki disease
+  year: 2026
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/kawasaki-disease/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_conditions_retinoblastoma_symptoms
+  file: web/nhs_en_conditions_retinoblastoma_symptoms.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Symptoms of retinoblastoma
+  year: 2026
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/conditions/retinoblastoma/symptoms/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_conditions_type_1_diabetes_symptoms
+  file: web/nhs_en_conditions_type_1_diabetes_symptoms.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Symptoms of type 1 diabetes and how it's diagnosed
+  year: 2024
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/type-1-diabetes/symptoms/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
+- doc_id: nhs_en_coeliac_disease
+  file: web/nhs_en_coeliac_disease.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: Overview - Coeliac disease
+  year: 2023
+  lang: en
+  topic: digestivo
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.nhs.uk/conditions/coeliac-disease/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-21'
 - doc_id: nhs_en_broken_finger
   file: web/nhs_en_broken_finger.html
   org: NHS

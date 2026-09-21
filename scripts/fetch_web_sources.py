@@ -341,6 +341,52 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ),
     ("nhs", "https://www.nhs.uk/conditions/growing-pains/", "general", "en", ["escolar"]),
     ("nhs", "https://www.nhs.uk/conditions/cradle-cap/", "piel", "en", ["lactante"]),
+    # 21-sep-2026, segunda tanda: los temas que siguieron sin fuente en las baterías del operador
+    # (460 preguntas): mareo en el coche, hipo, ganglios, hongos en la uña, bizqueo, terrores
+    # nocturnos, llagas y muguet, hernias, manchas de nacimiento y lunares, rechinar de dientes,
+    # desmayos, palpitaciones, dolor de oído, cadera irritable, sudor excesivo, pie plano.
+    ("nhs", "https://www.nhs.uk/conditions/motion-sickness/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/hiccups/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/swollen-glands/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/fungal-nail-infection/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/squint/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/lazy-eye/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/night-terrors/", "crianza", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/oral-thrush-mouth-thrush/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/mouth-ulcers/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/tongue-tie/", "lactante", "en", ["lactante"]),
+    ("nhs", "https://www.nhs.uk/conditions/hernia/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/umbilical-hernia/", "general", "en", ["lactante"]),
+    ("nhs", "https://www.nhs.uk/conditions/undescended-testicles/", "general", "en", ["lactante"]),
+    ("nhs", "https://www.nhs.uk/conditions/birthmarks/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/moles/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/teeth-grinding/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/fainting/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/heart-palpitations/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/symptoms/earache/", "orl", "en", ["todas"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/symptoms/hip-pain-children-irritable-hip/",
+        "accidentes",
+        "en",
+        ["preescolar", "escolar"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/conditions/excessive-sweating-hyperhidrosis/",
+        "piel",
+        "en",
+        ["todas"],
+    ),
+    ("nhs", "https://www.nhs.uk/conditions/flat-feet/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/athletes-foot/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/warts-and-verrucas/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/cellulitis/", "piel", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/kawasaki-disease/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/retinoblastoma/symptoms/", "general", "en", ["lactante"]),
+    ("nhs", "https://www.nhs.uk/conditions/type-1-diabetes/symptoms/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/coeliac-disease/", "digestivo", "en", ["todas"]),
+    # (bottle-feeding/ es una página índice sin texto propio: 0 pasajes; fuera)
     # 21-sep-2026: las preguntas del operador que se quedaron sin fuente porque no había
     # documento, no porque el buscador no lo encontrara: un dedo roto, algo en el ojo, se le cae
     # el pelo, los ojos que lloran, qué no dar a un bebé (cacahuetes, salchichas enteras).
@@ -2456,7 +2502,7 @@ def doc_id_for(key: str, url: str, lang: str) -> str:
     parts = [p for p in url.rstrip("/").split("/")[3:] if p]
     last = parts[-1].replace(".html", "").replace(".htm", "")
     if (
-        last in ("index", "about", "detail") and len(parts) >= 2
+        last in ("index", "about", "detail", "symptoms") and len(parts) >= 2
     ):  # cdc .../rsv/about/index.html → rsv_about
         last = (
             "_".join(

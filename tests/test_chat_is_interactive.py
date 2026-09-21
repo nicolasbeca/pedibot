@@ -116,7 +116,8 @@ def test_la_palabra_llamar_esta_en_cada_lengua(lang: str):
 
 # ── que no se rompa lo que ya estaba ─────────────────────────────────────────────────────
 def test_las_otras_respuestas_rapidas_siguen_ahi(chat: str):
-    for clase in ("share", "child", "listen"):
+    # «listen» se quitó el 21-sep-2026 a petición del operador
+    for clase in ("share", "child"):
         assert f"classList.contains('{clase}')" in chat, f"se ha perdido el botón «{clase}»"
 
 

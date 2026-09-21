@@ -1968,6 +1968,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_athletes_foot",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Athlete's foot",
+  "year": 2024,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/athletes-foot/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_atopic_eczema",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2002,6 +2014,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/symptoms/bedwetting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_birthmarks",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Birthmarks",
+  "year": 2023,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/birthmarks/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_broken_arm_or_wrist",
@@ -2062,6 +2086,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_cellulitis",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Cellulitis",
+  "year": 2024,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/cellulitis/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_chickenpox",
@@ -2172,6 +2208,30 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_earache",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Earache",
+  "year": 2025,
+  "lang": "en",
+  "topic": "orl",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/earache/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_excessive_sweating_hyperhidrosis",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Excessive sweating (hyperhidrosis)",
+  "year": 2023,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/excessive-sweating-hyperhidrosis/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_eye_injuries",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2181,6 +2241,18 @@
   "topic": "accidentes",
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/eye-injuries/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_fainting",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Fainting",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/fainting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
@@ -2194,6 +2266,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/febrile-seizures/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_flat_feet",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Flat feet",
+  "year": 2025,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/flat-feet/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_flu",
@@ -2241,6 +2325,18 @@
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_fungal_nail_infection",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Fungal nail infection",
+  "year": 2024,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/fungal-nail-infection/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
@@ -2340,6 +2436,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_heart_palpitations",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Heart palpitations",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/heart-palpitations/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_heat_exhaustion_heatstroke",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2364,6 +2472,30 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
  {
+  "doc_id": "nhs_en_hernia",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Hernia",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/hernia/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_hiccups",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Hiccups",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/hiccups/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_fever_in_children",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2374,6 +2506,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/symptoms/fever-in-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_hip_pain_children_irritable_hip",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Hip pain in children (irritable hip)",
+  "year": 2024,
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/hip-pain-children-irritable-hip/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_hives",
@@ -2520,6 +2664,30 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-13"
  },
  {
+  "doc_id": "nhs_en_kawasaki_disease",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Kawasaki disease",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/kawasaki-disease/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_lazy_eye",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Lazy eye",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/lazy-eye/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_measles",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2544,6 +2712,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_moles",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Moles",
+  "year": 2023,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/moles/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_molluscum_contagiosum",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2554,6 +2734,30 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/molluscum-contagiosum/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_motion_sickness",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Motion sickness",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/motion-sickness/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_mouth_ulcers",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Mouth ulcers",
+  "year": 2024,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/mouth-ulcers/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_mumps",
@@ -2592,6 +2796,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
  {
+  "doc_id": "nhs_en_night_terrors",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Night terrors and nightmares",
+  "year": 2025,
+  "lang": "en",
+  "topic": "crianza",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/night-terrors/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_norovirus",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2614,6 +2830,42 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/nosebleed/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_oral_thrush_mouth_thrush",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Oral thrush (mouth thrush)",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/oral-thrush-mouth-thrush/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_coeliac_disease",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Overview - Coeliac disease",
+  "year": 2023,
+  "lang": "en",
+  "topic": "digestivo",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/coeliac-disease/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_squint",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Overview - Squint",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/squint/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_paracetamol_for_children",
@@ -2808,6 +3060,54 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_swollen_glands",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Swollen glands",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/swollen-glands/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_conditions_retinoblastoma_symptoms",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Symptoms of retinoblastoma",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/retinoblastoma/symptoms/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_conditions_type_1_diabetes_symptoms",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Symptoms of type 1 diabetes and how it's diagnosed",
+  "year": 2024,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/type-1-diabetes/symptoms/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_teeth_grinding",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Teeth grinding (bruxism)",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/symptoms/teeth-grinding/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_threadworms",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2818,6 +3118,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/threadworms/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_tongue_tie",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Tongue-tie",
+  "year": 2024,
+  "lang": "en",
+  "topic": "lactante",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/tongue-tie/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_tonsillitis",
@@ -2832,6 +3144,30 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_umbilical_hernia",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Umbilical hernia",
+  "year": 2025,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/umbilical-hernia/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_undescended_testicles",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Undescended testicles",
+  "year": 2025,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/undescended-testicles/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
   "doc_id": "nhs_en_urinary_tract_infections_utis",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2842,6 +3178,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/urinary-tract-infections-utis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_warts_and_verrucas",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Warts and verrucas",
+  "year": 2023,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/warts-and-verrucas/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
   "doc_id": "nhs_en_washing_and_bathing_your_baby",

@@ -179,7 +179,7 @@ cifras se cuentan solas al construirse: no hay forma de que la página de la ron
 el sitio otra. Lo que hay que añadir del formulario:
 
 - **el producto, enlazado y abierto**: no hay que pedir cuenta para probar nada;
-- **la prueba**: `/sources` con los 517 documentos y sus licencias, `/api/stats` con las cifras de
+- **la prueba**: `/sources` con los 546 documentos y sus licencias, `/api/stats` con las cifras de
   uso en vivo, `/legal` con lo que se guarda y lo que no, y `/dataset/sources.json` con el
   catálogo entero en dominio público;
 - **el uso de los fondos con su fuente**, que es el desglose de siete partidas ya escrito;

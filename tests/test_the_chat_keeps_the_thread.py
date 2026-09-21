@@ -179,14 +179,11 @@ def test_la_edad_escrita_se_reconoce_en_cada_lengua(chat: str, forma: str):
     )
 
 
-def test_leer_en_alto_lee_la_respuesta_y_no_los_botones(chat: str):
-    assert 'class="txt"' in chat, "la respuesta no está separada de los botones: se leen los dos"
-    m = _manejador(chat)
-    escucha = m[m.index("contains('listen')") :][:500]
-    assert "'.txt'" in escucha or '".txt"' in escucha, (
-        "«leer en alto» sigue leyendo todo el mensaje"
-    )
-    assert "speechSynthesis.speaking" in escucha, "un segundo toque no calla la lectura"
+def test_el_boton_de_escuchar_ya_no_esta(chat: str):
+    """21-sep-2026, el operador: «el botón escuchar elimínalo, es irrelevante ahora»."""
+    assert 'class="txt"' in chat, "la respuesta no está separada de los botones"
+    assert "fb listen" not in chat
+    assert "speechSynthesis" not in chat
 
 
 def test_hay_reintento_cuando_falla_la_red(chat: str):

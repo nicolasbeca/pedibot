@@ -27,7 +27,7 @@ Si alguien está describiendo a su hijo, no.
 
 > **21-sep-2026, hecho:** alta en HIFA confirmada por Neil (resumen diario). Enviados por el
 > operador: la corrección del perfil («founder of PediBot… Seville, Spain») a neil@hifa.org y la
-> presentación a hifa@hifaforums.org (517 documentos, 90 números, 66 calendarios, 78 curvas,
+> presentación a hifa@hifaforums.org (517 documentos de entonces, 90 números, 66 calendarios, 78 curvas,
 > ocho lenguas; pide documentos oficiales y listas de medicamentos que falten). La lista es
 > moderada: puede tardar un día en salir. Si alguien contesta con un documento, va al corpus.
 >

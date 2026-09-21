@@ -207,7 +207,7 @@ rules:
   - des convulsions
   - krampf
   - krampfanfall
-  - zuckt
+  - zuckt(?![^.]{0,40}im schlaf)
   - zuckungen
   - anfall
   - fieberkrampf
@@ -335,10 +335,10 @@ rules:
   - "تحول.{0,30}(ال)?(شفاه|وجه|أظافر)"
   - "(ال)?(شفاه|وجه|أظافر|جلد).{0,30}(أزرق|زرقاء|الأزرق|زرقة|يزرق)"
   - deja de respirar
-  - (labios|piel) (azul|morad)
-  - (labios|piel|lengua|cara|u[ñn]as).{0,30}(azul(es)?|morad|amoratad|c[aá]rdeno)
+  - (labios|piel) (azul|morad)(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar))
+  - (labios|piel|lengua|cara|u[ñn]as).{0,30}(azul(es)?|morad|amoratad|c[aá]rdeno)(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar))
   - (azul(es)?|morad|amoratad).{0,30}(labios|piel|lengua|cara)
-  - se (pone|puso|est[aá] poniendo) (azul|morado|gris)
+  - se (pone|puso|est[aá] poniendo) (azul|morado|gris)(?![^.]{0,50}(cuando|al|mientras) llora)
   # 19-sep-2026, encontrado probando contra lo vivo el día de MetaDAO. «Mi hijo de 2 años no
   # respira bien y está morado» salía RUTINA y contestaba con espasmos del sollozo. Estaban el
   # cambio en marcha («se pone morado») y la parte del cuerpo («labios morados»); faltaba el
@@ -350,7 +350,7 @@ rules:
   # «no respira bien por la nariz» es un catarro, y de noche suele ser que ronca.
   - "(no respira bien|respira mal|no respira apenas)(?![^.]{0,30}(nariz|nasal|moco|congesti|resfri|catarr|ronca|duerme|dormi))"
   - no le entra (el )?aire
-  - azulad
+  - azulad(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar))
   - can(?:'?t| ?not) breathe
   - struggling to breathe
   - difficulty breathing
@@ -817,6 +817,10 @@ rules:
   reason_hi: "चोट या गिरने के बाद सुस्ती: अभी आपातकालीन नंबर पर कॉल करें या इमरजेंसी जाएँ"
   reason_sw: "Usingizi mwingi baada ya kuanguka au kugongwa: piga simu ya dharura au nenda hospitali sasa"
   patterns:
+  # 21-sep-2026, batería del operador: «fell from the bed and now he wants to sleep» y «vom Sofa gefallen und jetzt schläft»
+  - (fell|fall|hit|bump\w*|knock\w*)[^.]{0,60}(wants to sleep|keeps? falling asleep|sleepy)
+  - (ca[ií]d[oa]|cay[oó]|golpe)[^.]{0,60}(quiere dormir|tiene (mucho )?sueño|se (ha )?quedado dormid)
+  - (gefallen|gest[üu]rzt|gesto[ßs]en)[^.]{0,50}(schl[äa]ft|m[üu]de|will schlafen)
   - (golpe|ca[ií]d[oa]|cay[oó]|se dio|porrazo|coscorr[oó]n).{0,100}(somnolient|adormilad|muy dormid|no hay quien l[oa] despierte|no se despierta|cuesta despertarl)
   - (somnolient|adormilad|muy dormid)[^.]{0,60}(desde que|despu[eé]s de|tras)[^.]{0,20}(golpe|ca[ií]d|cay[oó])
   - (fell|fall|falling|hit|bang\w*|bump\w*|knock\w*).{0,100}(drowsy|very sleepy|hard to wake|difficult to wake|won'?t wake|lethargic)
@@ -898,6 +902,41 @@ rules:
   - गिर\w*[^.]{0,40}(रोना बंद नहीं|लगातार रो|चुप नहीं)
   - (ameanguka|alianguka)[^.]{0,20}ngazi
   - (ameanguka|alianguka)[^.]{0,40}(analia bila kukoma|haachi kulia|hanyamazi)
+# 21-sep-2026, tercera batería del operador: «un roten Streifen, der vom Schnitt am Finger nach
+# oben geht» y «una picadura que se ha hecho mucho más grande en 24 horas y está caliente» salían
+# rutina. El NHS pide ver a un médico ese mismo día.
+- id: spreading_skin_infection
+  level: urgent
+  source: nhs_en_cellulitis
+  reason_es: "Una herida o picadura con enrojecimiento que se extiende, calor o una raya roja que sube: que la vea un médico hoy"
+  reason_en: "A wound or bite with spreading redness, heat or a red streak going up: get it seen by a doctor today"
+  reason_fr: "Une plaie ou une piqûre avec une rougeur qui s'étend, de la chaleur ou une traînée rouge qui monte : consultez un médecin aujourd'hui"
+  reason_de: "Wunde oder Stich mit sich ausbreitender Rötung, Wärme oder einem roten Streifen nach oben: heute ärztlich ansehen lassen"
+  reason_ru: "Рана или укус с расползающимся покраснением, жаром или красной полосой вверх: покажите врачу сегодня"
+  reason_ar: "جرح أو لدغة مع احمرار ينتشر أو سخونة أو خط أحمر يصعد: يجب أن يراه طبيب اليوم"
+  reason_pt: "Ferida ou picada com vermelhidão que se espalha, calor ou uma risca vermelha a subir: que um médico a veja hoje"
+  reason_hi: "घाव या काटे की जगह पर फैलती लाली, गर्माहट या ऊपर जाती लाल लकीर: आज ही डॉक्टर को दिखाइए"
+  reason_sw: "Kidonda au kuumwa na mdudu chenye wekundu unaoenea, joto au mstari mwekundu unaopanda: aonwe na daktari leo"
+  patterns:
+  - (raya|l[ií]nea|estr[ií]a) roj\w*[^.]{0,50}(sube|subiendo|hacia arriba|por el brazo|por la pierna)
+  - (picadura|herida|corte|ara[ñn]azo)[^.]{0,60}(m[aá]s grande|crece|creciendo|se extiende|extendiendo)[^.]{0,40}(caliente|roj)
+  - (picadura|herida|corte)[^.]{0,40}(roj\w*|hinchad\w*)[^.]{0,20}y (caliente|con calor)
+  - red (streak|line)[^.]{0,50}(up|spreading|going|arm|leg)
+  - (bite|wound|cut|scratch|sting)[^.]{0,60}(spreading|keeps spreading|getting bigger|growing)
+  - roten? streifen[^.]{0,60}(nach oben|hoch|arm|bein)
+  - (stich|wunde|schnitt)[^.]{0,60}(breitet sich aus|wird gr[öo][ßs]er)[^.]{0,30}(rot|warm|hei[ßs])
+  - tra[îi]n[ée]e rouge[^.]{0,50}(monte|remonte|bras|jambe)
+  - (piq[uû]re|plaie|coupure)[^.]{0,60}(s'?[ée]tend|grossit|s'agrandit)
+  - красн\w* полос\w*[^.]{0,50}(вверх|поднима|по руке|по ноге)
+  - (укус|рана|порез)[^.]{0,60}(расползается|увеличивается|растёт|растет)
+  - خط أحمر[^.]{0,50}(يصعد|يمتد|الذراع|الساق)
+  - (لدغة|جرح)[^.]{0,60}(ينتشر|يكبر|يتسع)
+  - (risca|linha|estria) vermelha[^.]{0,50}(sobe|subindo|pelo bra[çc]o|pela perna)
+  - (picada|ferida|corte)[^.]{0,60}(espalha|aumenta|cresce)[^.]{0,30}(quente|vermelh)
+  - लाल (लकीर|धारी)[^.]{0,50}(ऊपर|बढ़|हाथ|पैर)
+  - (घाव|कटा|कटे|काटा|काटे)[^.]{0,60}(फैल रही|फैल रहा|बढ़ रही|बढ़ रहा)
+  - mstari mwekundu[^.]{0,50}(unapanda|juu|mkono|mguu)
+  - (kidonda|kuumwa)[^.]{0,60}(unaenea|inaenea|kinakua|kinaongezeka)
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce
@@ -1118,6 +1157,13 @@ rules:
   reason_en: Spots on the skin that do not fade when pressed (possible sepsis/meningitis)
   reason_fr: Taches sur la peau qui ne s'?effacent pas à la pression (possible sepsis/méningite)
   patterns:
+  # 21-sep-2026, batería del operador: «manchas roxas e febre» salía rutina
+  - manchas roxas[^.]{0,40}febre
+  - febre[^.]{0,40}manchas roxas
+  - manchas moradas[^.]{0,40}fiebre
+  - fiebre[^.]{0,40}manchas moradas
+  - purple (spots|marks|patches)[^.]{0,40}fever
+  - fever[^.]{0,40}purple (spots|marks|patches)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "madoa[^.]{0,25}(hayapotei|hayaondoki)[^.]{0,20}(nikibonyeza|yakibonyezwa|glasi)"
   - "madoa mekundu hayapotei"
@@ -1212,12 +1258,10 @@ rules:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "mtoto (mchanga|wa miezi (miwili|mmoja))[^.]{0,30}ana homa"
   - "mchanga ana homa"
-  - baby.{0,30}fieber
   - ([1-9]|1[0-2]) semanas.{0,60}(fiebre|d[ée]cimas|calent|temperatura)
   - (reci[eé]n nacido|beb[eé] de [1-2] meses?|lactante).{0,50}(fiebre|calent|temperatura)
   - \b([1-9]|1[0-2]) weeks? old.{0,60}(fever|temperature|hot|warm)
   - (newborn|\b[1-2] months? old).{0,50}(fever|temperature|feels hot)
-  - beb[ée] de ([1-9]|1[0-2]) semanas
   - ([1-9]|1[0-2]) semaines.{0,60}(fi[eè]vre|chaud|temp[ée]rature)
   - ([1-9]|1[0-2]) wochen.{0,60}(fieber|warm|temperatur)
   - säugling.{0,30}fieber
@@ -1310,6 +1354,13 @@ rules:
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
+  # 21-sep-2026, tercera batería del operador: «kifua kinazama» en suajili salía rutina
+  - kifua (kinazama|kinaingia|kinavutwa)
+  - (tummy|stomach|belly|abdomen) (feels |is |looks )?(very )?(hard|swollen|tense|distended)
+  # 21-sep-2026, batería del operador: «tos y se le hunde el pecho» y «breathing very fast» salían rutina
+  - se le hunde el pecho
+  - hunde el pecho al respirar
+  - breathing (very |really |so )?(fast|quickly|rapidly)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "anapumua (haraka|kwa shida)(?![^.]{0,60}(cuando (corre|juega|salta)|al (correr|jugar)|akikimbia|akicheza|when (he|she) runs|while running|quand il court|en courant|beim (laufen|spielen)|когда бегает|عندما يجري|दौड़)[^.]{0,40}(pero|se le pasa|luego|lakini|inaisha|but|then|mais|aber|но|لكن|फिर))"
   - "kupumua kwa shida"
@@ -1339,7 +1390,7 @@ rules:
   - respira[^.]{0,20}(depressa|r[áa]pido|acelerado)(?![^.]{0,60}(cuando (corre|juega|salta)|al (correr|jugar)|akikimbia|akicheza|when (he|she) runs|while running|quand il court|en courant|beim (laufen|spielen)|когда бегает|عندما يجري|दौड़)[^.]{0,40}(pero|se le pasa|luego|lakini|inaisha|but|then|mais|aber|но|لكن|फिर))
   # 17-sep-2026: las sibilancias dichas como las dice un padre —«le silba el pecho»,
   # «pfeift beim atmen», «tem pieira»— no estaban en cuatro idiomas.
-  - (silba|silbid\w*|pit\w*)[^.]{0,25}(pecho|al respirar|cuando respira)
+  - (silba|silbid\w*|pit\w*)[^.]{0,25}(pecho|al respirar|cuando respira)(?![^.]{0,50}(ejercicio|deporte|al correr|cuando corre))
   - (pecho|respirar)[^.]{0,20}(le )?(silba|pita)
   - (pfeift|pfeifend\w*|giemen|brummen)[^.]{0,20}(beim atmen|atmung|atmet)
   - (صدره|صدرها)[^.]{0,20}(يصفر|تصفر|صفير)
@@ -1351,7 +1402,7 @@ rules:
   - respira con pitos
   - (con|hace) pitos
   - pitido
-  - silbido
+  - silbido(?![^.]{0,50}(ejercicio|deporte|al correr|cuando corre))
   - breathing fast
   - fast breathing
   - breathing (is )?faster than (normal|usual)
@@ -1553,6 +1604,11 @@ rules:
   reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
   reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
   patterns:
+  # 21-sep-2026, batería del operador: «la fontanela un poco hundida» salía rutina
+  - (fontanela|mollera)[^.]{0,25}hundida
+  - hundida[^.]{0,20}(fontanela|mollera)
+  - sunken (soft spot|fontanelle)
+  - (soft spot|fontanelle)[^.]{0,20}sunken
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "macho yamebonyea"
   - "mkojo (kidogo|haupo)"
@@ -1772,6 +1828,8 @@ rules:
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
   patterns:
+  # 21-sep-2026, tercera batería del operador: «упал с кровати и теперь его вырвало» salía rutina
+  - упал\w*[^.]{0,50}(вырвал\w*|рвот\w*|рвёт|рвет)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "(ame|aka|ali|ku)gonga kichwa[^.]{0,45}(anatapika|ametapika)"
   - "ametapika baada ya kugonga kichwa"
@@ -1901,6 +1959,10 @@ rules:
   - ingest[ãa]o de (um )?objeto
   - (कोई )?चीज़ निगल
   - (se ha tragado|ha tragado|trag[oó]).{0,40}(pila|im[aá]n|moneda|objeto|bater[ií]a)
+  # 21-sep-2026: «creo que se ha tragado una canica» salía RUTINA: sólo conocía pilas,
+  # imanes y monedas. La SEUP pide consultar por cualquier objeto tragado.
+  - (se ha tragado|ha tragado|trag[oó]|tragarse)\w*.{0,20}(canica|bolita|bot[oó]n|tornillo|clavo|piedra|anillo|pendiente|pieza|juguete|tap[oó]n|chincheta|imperdible|horquilla|alfiler|llave|cuenta|lego|cristal|tuerca)
+  - (swallowed|swallow).{0,20}(a |an |the )?(marble|bead|button|screw|nail|stone|ring|earring|toy|lego|pin|key|bottle cap)
   - (pila|im[aá]n|moneda).{0,40}(trag|comid)
   - swallowed.{0,40}(battery|magnet|coin|object|toy)
   - (battery|magnet|coin).{0,40}swallow
@@ -1947,6 +2009,16 @@ rules:
   reason_en: Ingestion of toxic products or medication overdose
   reason_fr: Ingestion de produits toxiques ou surdose de médicaments
   patterns:
+  # 21-sep-2026, tercera batería del operador: pastilla desconocida en inglés y hierro o detergente en hindi, suajili y árabe salían rutina
+  - (ate|swallowed|took|taken|had|eaten)[^.]{0,25}(pill|pills|tablet|tablets|medicine|medication)
+  - (डिटर्जेंट|ब्लीच|केरोसिन|मिट्टी का तेल|दवा|दवाई|गोली|गोलियां|गोलियाँ|कीटनाशक)[^.]{0,40}(पी लिया|पी ली|खा लिया|खा ली|निगल|मुंह में डाल)
+  - (amemeza|amekunywa|alimeza|kameza)[^.]{0,20}(vidonge|dawa|sabuni|mafuta ya taa|jiki)
+  - (أخذ|بلع|شرب|ابتلع)[^.]{0,30}(حبة|حبتين|حبوب|دواء|أقراص)
+  # 21-sep-2026, batería del operador: cerveza por accidente y «eine Tablette von meiner Medizin genommen» salían rutina
+  - (bebido|tomado|tragado|bebi[oó])[^.]{0,30}(cerveza|vino|alcohol|whisky|licor|ginebra|ron|vodka|cava)
+  - (drank|drunk|swallowed|had)[^.]{0,30}(beer|wine|alcohol|vodka|whisky|spirits|liquor)
+  - (tablette|tabletten|pille|pillen|medikament\w*)[^.]{0,40}(genommen|geschluckt|gegessen)
+  - (genommen|geschluckt)[^.]{0,30}(tablette|pille|medikament)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "amekunywa (sumu|dawa nyingi|kemikali)"
   - "amemeza sumu"
@@ -2415,6 +2487,11 @@ rules:
   reason_hi: कालेे लुक जैसे या लाल ख़ून वाले मल — डॉक्टर को दिखाने का दर्ज कारण
   reason_sw: "Kinyesi cheusi kama lami au chenye damu"
   patterns:
+  # 21-sep-2026, batería del operador: «dos días con diarrea y ahora tiene sangre» salía rutina
+  - diarrea[^.]{0,40}sangre
+  - sangre[^.]{0,30}(caca|heces|diarrea|deposici)
+  - (diarrh?o?ea|diarrhea|poo|stool)[^.]{0,40}blood
+  - blood[^.]{0,20}(in )?(his |her |the )?(poo|stool|diarrh)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "damu (kwenye|katika) kinyesi"
   - "kinyesi (cheusi|chenye damu)"
@@ -2555,7 +2632,8 @@ rules:
   - (skipping|skips|skipped).{0,15}meals
   - (stopped eating|not eating).{0,30}(weeks?|months?)
   - (obsess\w*|fixated).{0,25}(weight|calories|food|body)
-  - (vomits?|throws up|purg\w*).{0,35}(after (eating|meals)|to lose weight|on purpose)
+  - (vomits?|throws up|purg\w*).{0,35}(to lose weight|on purpose)
+  - (vomits|throws up) after (every |her |his )?(meals?|eating)\b(?! \w+ (mushrooms|fish|egg))
   - (anorexi|bulimi|binge eating)
   - (saute|sauté|saute des).{0,15}repas
   # 17-sep-2026: pedía sólo «ne mange plus rien», y así un niño pequeño con catarro que no
@@ -2589,7 +2667,8 @@ rules:
   - (anorexi|bulimi)
   - (खाना).{0,25}(छोड़ दिया|नहीं खा रह)
   - (वज़न|वजन|कैलोरी).{0,25}(जुनून|की चिंता|लेकर परेशान)
-  - (खाने के बाद).{0,20}(उल्टी|वमन)
+  - (खाने के बाद)[^.]{0,20}(जानबूझकर|खुद से|ख़ुद) (उल्टी|वमन)
+  - (खाने के बाद)[^.]{0,20}(उल्टी|वमन)[^.]{0,40}(मोटी|मोटा|वज़न|वजन)
 
 - id: neuro_deficit
   level: emergency
@@ -2979,7 +3058,7 @@ rules:
   # La tortícolis no es meningitis: es de lo más común y se va sola. Lo cazó una prueba que
   # ya existía, y la regla se queda sin ella — lo que sí vale es la rigidez que NO viene de
   # haber dormido mal, y eso ya está escrito arriba.
-  - (nuca|cuello) (r[ií]gid|t[ie]s[oa]|agarrotad|duro)
+  - (nuca|cuello) (muy |tan |bastante |un poco |algo )?(r[ií]gid|t[ie]s[oa]|agarrotad|duro)
   - no puede (bajar|doblar|mover) (la |el )?(cabeza|barbilla|cuello|nuca)
   - no consigue (bajar|doblar) (la |el )?(barbilla|cuello)
   - le duele (al |cuando )?(bajar|doblar) (la |el )?(cabeza|cuello)
@@ -3665,6 +3744,16 @@ rules:
   reason_hi: "बहुत पानी पीना और बार-बार पेशाब, वज़न घटना: आज ही मधुमेह जाँचना ज़रूरी है"
   reason_sw: "Kunywa maji sana na kukojoa sana huku akipungua uzito: kisukari kiondolewe leo"
   patterns:
+  # 21-sep-2026: el cirílico tenía un patrón para quince latinos
+  - (много|постоянно|всё время|все время) (пьёт|пьет)[^.]{0,40}(писает|мочится|в туалет)
+  - (писает|мочится)[^.]{0,30}(много|постоянно|часто)[^.]{0,40}(пьёт|пьет|жажд)
+  - (сильная )?жажда[^.]{0,40}(похудел|мочится|писает)
+  - похудел\w*[^.]{0,40}(много пьёт|много пьет|жажд)
+  # 21-sep-2026, tercera batería del operador: «orina muchísimo y pide agua todo el rato» salía rutina
+  - (orina|orinando|hace pis|mea)[^.]{0,30}(much[ií]simo|todo el rato|sin parar|a todas horas)[^.]{0,60}(agua|sed|beber|bebe)
+  - (sed|agua)[^.]{0,40}(todo el rato|much[ií]sim)[^.]{0,40}(orina|pis)
+  - (pee\w*|wee\w*|urinat\w*)[^.]{0,30}(a lot|all the time|constantly|so much)[^.]{0,60}(thirst\w*|drink\w*)
+  - anakunywa maji mengi[^.]{0,40}(kukojoa|anakojoa)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "ananywa maji sana[^.]{0,40}(anakojoa|amepungua uzito)"
   - "anakojoa sana na amekonda"
@@ -4108,7 +4197,7 @@ rules:
   - (blaue flecken|h[äa]matome)[^.]{0,50}(blass|m[üu]de|schlapp)
   - (moratones|morados|hematomas|cardenales)[^.]{0,40}(sin (darse )?golpes|sin motivo|sin causa|sin haberse dado)
   - (moratones|hematomas)[^.]{0,50}(p[áa]lid|cansad|sin fuerzas|decaíd)
-  - (dolor|le duelen)[^.]{0,20}(de )?(huesos|piernas)[^.]{0,40}(por la noche|de noche|le despierta)
+  - (dolor|le duelen)[^.]{0,20}(de )?(huesos|piernas)[^.]{0,40}(le despiertan?|se despierta)
   - (bruis\w*)[^.]{0,40}(without|no)[^.]{0,20}(knock|bump|injury|reason|cause)
   - (bruis\w*)[^.]{0,50}(pale|tired|exhausted|no energy)
   - (bone pain|aching bones|leg pain)[^.]{0,40}(at night|wakes (him|her) up)
@@ -4445,6 +4534,9 @@ rules:
   reason_hi: "अंडकोष में दर्द: मरोड़ हो तो कुछ घंटों में ऑपरेशन चाहिए — अभी जाइए"
   reason_sw: "Maumivu ya korodani: msokoto lazima ufanyiwe upasuaji ndani ya masaa machache"
   patterns:
+  # 21-sep-2026, tercera batería del operador: «sudden severe testicular pain but says it feels better now» salía rutina
+  - testic\w*[^.]{0,25}(pain|hurt\w*|ache|swell\w*)
+  - (pain|hurt\w*|ache)[^.]{0,25}(testic\w*|balls|scrotum)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "korodani (inauma|imevimba)"
   - "pumbu linauma"
@@ -5027,6 +5119,9 @@ rules:
   - (mandibula apretada|mandíbula apretada|mandibula cerrada|no puede abrir la boca|jaw (is )?(clenched|locked|stiff)|machoire serree|mâchoire serrée|maxilar travado|boca travada|trismo|trismus|kiefersperre|тризм|сжатая челюсть|челюсть свело|فك مطبق|فكه مطبق|تشنج الفك|जबड़ा जकड़|जबड़ा बंद)
 context:
   fever:
+  # 21-sep-2026: la cifra sola, «tiene 38.1 rectal», «has 38.0», «hat 39»
+  - (tiene|tenía|has|had|hat|a|tem|está con|esta con|com)\s+(3[89]|4[0-2])([,\.]\d)?\b
+  - \b(3[89]|4[0-2])([,\.]\d)?\s*(º|°|grados|degrees|rectal|axilar)
   - fi[eè]vre
   - temp[ée]rature de
   - \b3[89][,\.]?\d?\s*degr[ée]s

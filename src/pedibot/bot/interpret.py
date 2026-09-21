@@ -39,7 +39,9 @@ SYSTEM = (
     'vaccines, growth, feeding or development; "about_pedibot" if it asks what this service '
     "is, how it works, who made it, where its information comes from or whether it is free; "
     '"language_request" if it only asks to be answered in another language; "other" if it has '
-    "nothing to do with children's health (a pet, homework, the weather, a recipe),\n"
+    "nothing to do with children's health (a pet, homework, the weather, a recipe). A message "
+    'that mixes a child-health question with something unrelated is "health", and query_en '
+    "and query_es then contain ONLY the health part,\n"
     '  "requested_lang": ISO 639-1 code if the parent asks to be answered in a language, '
     "else null,\n"
     '  "requested_name": that language\'s name in English, else null,\n'
@@ -53,6 +55,9 @@ SYSTEM = (
     "ignore stray fragments such as a single word sent by mistake); "
     "false if it continues it (more detail, how it evolved, the child's age or weight, a "
     "follow-up about the same problem, or anything you are unsure about). null otherwise.\n"
+    '  "vague": true only if it is a health message that does not say what the problem is '
+    '("my child is ill", "help", "something is wrong with my baby"); false if it names a '
+    "symptom, a body part, a medicine, a food or a concrete question, however unusual.\n"
     "Every other key describes the CURRENT MESSAGE only. "
     "Do not answer the question. Do not add facts that are not in the message."
 )
@@ -76,10 +81,12 @@ class Interpretation:
     query_en: str
     query_es: str
     keywords: tuple[str, ...]
-    #: lo que costó leerla, para sumarlo al gasto de la respuesta: el tope diario de gasto en el
-    #: modelo mira ese número, y una llamada que no se apunta es una llamada que no se controla
     #: el padre ha cambiado de problema respecto al mensaje anterior (ver `interpret`)
     new_topic: bool = False
+    #: una pregunta de salud que no dice qué le pasa: la única que merece «¿qué le pasa?»
+    vague: bool = False
+    #: lo que costó leerla, para sumarlo al gasto de la respuesta: el tope diario de gasto en el
+    #: modelo mira ese número, y una llamada que no se apunta es una llamada que no se controla
     tokens_in: int = 0
     tokens_out: int = 0
     cost_usd: float = 0.0
@@ -155,6 +162,7 @@ def interpret(llm: object, text: str, previous: str | None = None) -> Interpreta
         query_es=query_es.strip()[:300],
         keywords=keywords,
         new_topic=bool(previous and previous.strip()) and d.get("new_topic") is True,
+        vague=d.get("vague") is True,
         tokens_in=int(getattr(res, "tokens_in", 0) or 0),
         tokens_out=int(getattr(res, "tokens_out", 0) or 0),
         cost_usd=float(getattr(res, "cost_usd", 0.0) or 0.0),

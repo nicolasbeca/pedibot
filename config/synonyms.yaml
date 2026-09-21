@@ -395,6 +395,16 @@ en:
   - colegio
   - contagio
 es:
+  # 21-sep-2026, batería del operador: «dolor al hacer pis» y «le pica al hacer pis» se
+  # quedaban sin fuente teniendo las páginas de infección de orina del NHS y MedlinePlus.
+  al hacer pis: [infección de orina, infección urinaria, urinary tract infection, UTI, cistitis]
+  al orinar: [infección de orina, infección urinaria, urinary tract infection, UTI, cistitis]
+  escozor al: [infección de orina, urinary tract infection, UTI]
+  pica al hacer: [infección de orina, vulvovaginitis, urinary tract infection]
+  hipo: [hipo, hiccups]
+  ganglio: [adenopatía, ganglio linfático, swollen glands, lymph nodes]
+  bulto en el cuello: [adenopatía, ganglio linfático, swollen glands, lymph nodes]
+  chupa el dedo: [chuparse el dedo, thumb sucking, succión del pulgar]
   # 21-sep-2026, preguntas del operador: «se le cae mucho el pelo» se buscaba como una caída al
   # suelo (traumatismo craneal), y «legañas» u «ojos rojos» no llegaban a la conjuntivitis del
   # NHS, que estaba en el corpus. El padre dice legañas; la guía, conjunctivitis.

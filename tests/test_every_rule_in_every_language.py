@@ -268,6 +268,16 @@ CASOS: dict[str, dict[str, str]] = {
         "pt": "o meu filho caiu das escadas",
         "hi": "वह सीढ़ियों से गिर गया",
     },
+    "spreading_skin_infection": {
+        "es": "tiene una raya roja que sube por el brazo desde el corte",
+        "en": "there is a red streak going up his arm from the cut",
+        "fr": "il a une traînée rouge qui monte le long du bras",
+        "de": "er hat einen roten Streifen, der vom Schnitt nach oben geht",
+        "ru": "от пореза идёт красная полоса вверх по руке",
+        "ar": "يوجد خط أحمر يصعد من الجرح إلى الذراع",
+        "pt": "tem uma risca vermelha a subir pelo braço",
+        "hi": "कटे हुए घाव से लाल लकीर ऊपर हाथ की ओर जा रही है",
+    },
     "vomiting_after_head_injury": {
         "es": "se dio un golpe en la cabeza y ha vomitado dos veces",
         "en": "he banged his head and has vomited twice",
@@ -1259,6 +1269,16 @@ SEGUNDA: dict[str, dict[str, str]] = {
         "ar": "سقط ولا يتوقف عن البكاء",
         "pt": "caiu e não para de chorar",
         "hi": "गिरने के बाद से रोना बंद नहीं कर रहा",
+    },
+    "spreading_skin_infection": {
+        "es": "la picadura se ha hecho mucho más grande y está roja y caliente",
+        "en": "the bite is red and the redness keeps spreading",
+        "fr": "la piqûre est rouge et s'étend depuis hier",
+        "de": "der Stich breitet sich aus und ist rot und warm",
+        "ru": "покраснение вокруг укуса расползается",
+        "ar": "الاحمرار حول اللدغة ينتشر",
+        "pt": "a picada do meu filho está a espalhar-se e ficou vermelha e quente",
+        "hi": "काटे की जगह पर लाली फैल रही है",
     },
     "vomiting_after_head_injury": {
         "es": "vomitó después del golpe en la cabeza",
