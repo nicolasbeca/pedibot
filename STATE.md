@@ -55,6 +55,8 @@ una foto de la erupción?», «¿guarda las conversaciones?», «¿entiende hind
   40 urgentes → 26, 4 de salud mental → 0, y las 26 apagadas son una por una las falsas; ninguna
   alarma nueva. El conjunto dorado, igual que antes de tocar nada (triaje 0,975, fuentes 0,953).
 - **Corpus: 630 documentos** (+60 en el día).
+- Suite **10.134**, toda en verde. Sitio **2.887 páginas**. Desplegado y verificado contra la
+  API viva: la ficha, las cuatro alarmas nuevas, el biberón, la dentición y el sueño boca arriba.
 - **Lo que queda pendiente, con nombre**: el revisor marca 38 respuestas que contestan del tema
   pero no de la pregunta, y casi todas son de crianza sin fuente exacta —«cómo le quito la
   costumbre de dormirse agarrado a mi pelo» contestado con las horas de sueño de la OMS—. Ahí lo
