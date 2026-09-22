@@ -2850,6 +2850,21 @@ sources:
   - todas
   url: https://medlineplus.gov/ency/article/002445.htm
   notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22'
+- doc_id: nhs_en_making_up_baby_formula
+  file: web/nhs_en_making_up_baby_formula.html
+  org: NHS
+  org_full: NHS (National Health Service, England)
+  title: How to make up baby formula
+  year: 2023
+  lang: en
+  topic: alimentacion
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - lactante
+  url: https://www.nhs.uk/conditions/baby/breastfeeding-and-bottle-feeding/bottle-feeding/making-up-baby-formula/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: mlp_en_fever
   file: web/mlp_en_fever.html
   org: MedlinePlus

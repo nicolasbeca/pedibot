@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**630 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**631 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,11 +30,11 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (266 of 630 do) |
+| `year` | where the document states one (267 of 631 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (582 of 630 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (583 of 631 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -42,7 +42,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | organisation | documents |
 |---|---|
 | WHO — World Health Organization | 214 |
-| NHS — NHS (National Health Service, England) | 157 |
+| NHS — NHS (National Health Service, England) | 158 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 119 |
 | CDC — Centers for Disease Control and Prevention (USA) | 38 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
@@ -67,7 +67,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 315 |
+| English (`en`) | 316 |
 | Spanish (`es`) | 109 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 49 |
@@ -87,7 +87,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `accidentes` | 53 |
 | `vacunas` | 48 |
 | `desarrollo` | 37 |
-| `alimentacion` | 36 |
+| `alimentacion` | 37 |
 | `salud_mental` | 22 |
 | `orl` | 19 |
 | `neurologia` | 17 |

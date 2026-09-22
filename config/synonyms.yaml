@@ -731,6 +731,12 @@ es:
   - estreñimiento
   - deposiciones
 es_en:
+  biberon preparado: [make up baby formula, made-up formula, bottle feeding]
+  biberón preparado: [make up baby formula, made-up formula, bottle feeding]
+  preparar el biberon: [make up baby formula, bottle feeding]
+  preparar el biberón: [make up baby formula, bottle feeding]
+  leche de formula: [infant formula, baby formula, bottle feeding]
+  leche de fórmula: [infant formula, baby formula, bottle feeding]
   vitamina d: [vitamins for children, vitamin D]
   vitaminas: [vitamins for children, vitamin D]
   suplemento: [vitamins for children, supplements]
@@ -3455,6 +3461,8 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  سقط على رأسه: [head injury, concussion, head trauma, skull]
+  على رأسه: [head injury, concussion, head trauma]
   # 16-sep-2026, franco-árabe (el árabe tecleado en letras latinas, lo normal en el Golfo
   # y en Egipto): las diez preguntas de prueba no encontraban NADA. Las claves van en la
   # forma que deja el normalizador: sin cifras, sin letras repetidas y con o→u, e→i.
@@ -3624,7 +3632,7 @@ ar_en:
   الفراش: [bedwetting]
   مغلي: [scald, burns]
   الكاز: [kerosene, poisoning]
-  فقد الوعي: [fainting, faint, syncope, passed out, unconscious]
+  فقد الوعي: [fainting, syncope, unconscious]
   يتكلم: [speech, language development, milestones]
   الشاشة: [screen time, sedentary screen time]
   # 12-sep-2026: las preguntas siguientes que el chat ofrece bajo cada respuesta tienen

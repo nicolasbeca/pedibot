@@ -674,6 +674,15 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ),
     ("mlp", "https://medlineplus.gov/ency/article/002405.htm", "alimentacion", "en", ["todas"]),
     ("mlp", "https://medlineplus.gov/ency/article/002445.htm", "alimentacion", "en", ["todas"]),
+    # 22-sep-2026, quinta vuelta: «he dejado un biberón preparado fuera dos horas» no tenía
+    # fuente y es la pregunta de cualquier noche.
+    (
+        "nhs",
+        "https://www.nhs.uk/conditions/baby/breastfeeding-and-bottle-feeding/bottle-feeding/making-up-baby-formula/",
+        "alimentacion",
+        "en",
+        ["lactante"],
+    ),
     # ---------------- MedlinePlus EN ----------------
     ("mlp", "https://medlineplus.gov/fever.html", "fiebre", "en", ["todas"]),
     ("mlp", "https://medlineplus.gov/commoncold.html", "respiratorio", "en", ["todas"]),
