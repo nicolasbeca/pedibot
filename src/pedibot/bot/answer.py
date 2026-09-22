@@ -1426,6 +1426,7 @@ class Engine:
                 brand=marca,
                 brand_key=clave,
                 country_forms=bottles_in_country(self.drugs, drug, country),
+                country_name=country_name(country.upper(), lang) if country else None,
             )
             return Answer(
                 text,

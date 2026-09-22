@@ -20,6 +20,18 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 22-sep-2026 (mediodía) · el mensaje de las gotas, publicado en CHIFA
+
+CHIFA distribuyó a las 11:13 el mensaje del operador: «Paracetamol drops: 100 mg/5 mL in
+Ethiopia, 100 mg/mL in Spain». Con él fuera, la calculadora tiene lectores que van a mirarla.
+
+- **Las presentaciones del país, agrupadas bajo el nombre del país** («Se venden en Etiopía:») y
+  las demás debajo, en «Otras concentraciones». Ponerlas primero —lo del 20-sep— dejaba dos
+  líneas que empiezan por «gotas», con 9 ml y 1,8 ml al lado, y nada decía cuál era la suya.
+- Las nueve siguen estando: el bote que trajo la abuela de otro país también existe.
+- La web ya lo había resuelto mejor ese mismo día, con el campo donde el padre copia la
+  concentración de su bote. El chat se quedó atrás dos días (L228).
+
 ## 22-sep-2026 (mañana) · la tanda de 854 preguntas
 
 El operador mandó el lote de la mañana: 854 preguntas escritas de una tirada, de recién nacido a

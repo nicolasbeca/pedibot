@@ -1573,3 +1573,21 @@ Lo que falló no fue la deducción sino el orden: **la explicación llegó antes
 y encajaba**. Un fichero que reaparece después de borrarlo es la señal de que alguien lo está
 poniendo ahí, y la respuesta estaba a un `grep content ops/deploy.sh`. Regla: cuando algo vuelve
 solo, no lo vuelvas a borrar — averigua quién lo pone.
+
+## L228 · Ponerlo primero no es decir cuál es (22-sep-2026)
+
+El 20 de septiembre, al descubrir que las gotas de paracetamol son 100 mg/5 ml en Etiopía y
+100 mg/ml en España —cinco veces—, la calculadora empezó a poner delante las presentaciones que
+se venden en el país del padre. Parecía suficiente. No lo era: la lista sigue teniendo nueve
+líneas y dos de ellas empiezan por «gotas», con 9 ml y 1,8 ml al lado, y **nada dice cuál es la
+suya**. El orden es una pista; a las tres de la madrugada, con un niño con fiebre, una pista no
+es una instrucción.
+
+Ahora las de su país van bajo un encabezado con el nombre del país —«Se venden en Etiopía:»— y
+el resto debajo, en «Otras concentraciones». Las nueve siguen estando, porque el bote que trajo
+la abuela de otro país también existe.
+
+La regla general: **cuando el error posible es de un factor cinco, la diferencia tiene que estar
+escrita, no ordenada.** Y la web ya lo había resuelto mejor ese mismo día, pidiendo la
+concentración del bote en un campo; el chat se quedó atrás dos días porque nadie volvió a mirar
+la otra mitad del producto.

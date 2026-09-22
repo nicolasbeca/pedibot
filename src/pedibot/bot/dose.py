@@ -323,6 +323,20 @@ def _del_pais_primero(ml: dict[str, float], formas_del_pais: list[str]) -> list[
     return aqui + [f for f in filas if f not in aqui] if aqui else filas
 
 
+def _cuantas_del_pais(filas: list[tuple[str, float]], formas_del_pais: list[str]) -> int:
+    """Cuántas de las primeras filas se venden en su país, con el criterio que las ordenó."""
+    concentraciones = {c for f in formas_del_pais if (c := _mg_por_ml(f)) is not None}
+    if not concentraciones:
+        return 0
+    n = 0
+    for pname, _ in filas:
+        c = _mg_por_ml(pname)
+        if c is None or not any(abs(c - x) < 0.05 for x in concentraciones):
+            break
+        n += 1
+    return n
+
+
 def _suya_primero(ml: dict[str, float], brand: Brand | None) -> list[tuple[str, float]]:
     """Las presentaciones de su marca delante, en el mismo orden relativo que tenían."""
     filas = list(ml.items())
@@ -429,6 +443,7 @@ def format_result(
     brand: Brand | None = None,
     brand_key: str | None = None,
     country_forms: list[str] | None = None,
+    country_name: str | None = None,
 ) -> str:
     """La dosis para un padre. Cuando `refer` está puesto, SIN los números.
 
@@ -475,13 +490,27 @@ def format_result(
         if brand is not None
         else _del_pais_primero(r.ml, country_forms or [])
     )
-    for pname, millilitres in filas:
+
+    def fila(pname: str, millilitres: float) -> str:
         etiqueta = presentation_label(pname, lang)
         if brand and _misma_concentracion(pname, brand):
             # con el nombre de su caja delante: ocho líneas de mililitros parecidos es donde se
             # lee la que no es, y «6,2» y «6» están una encima de otra (20-sep-2026)
             etiqueta = f"{brand.name}, {etiqueta}"
-        lines.append(f"  – {etiqueta}: {millilitres:g} ml")
+        return f"  – {etiqueta}: {millilitres:g} ml"
+
+    # 22-sep-2026, y esto lo contó el operador en CHIFA con su propio error delante: las gotas
+    # de paracetamol son 100 mg/5 ml en Etiopía y 100 mg/ml en España, CINCO VECES más fuertes.
+    # Ponerlas primero (20-sep) ayuda y no basta: en la lista siguen saliendo dos líneas que
+    # empiezan por «gotas» y nada dice cuál es la suya. Se agrupan bajo el nombre del país.
+    del_pais = _cuantas_del_pais(filas, country_forms or [])
+    if country_name and del_pais and brand is None and del_pais < len(filas):
+        lines.append(T["dose_sold_in"].format(country=country_name))
+        lines += [fila(*f) for f in filas[:del_pais]]
+        lines.append(T["dose_other_strengths"])
+        lines += [fila(*f) for f in filas[del_pais:]]
+    else:
+        lines += [fila(*f) for f in filas]
     # the band the guide publishes, so a different figure from a paediatrician is
     # visibly inside it rather than looking like a contradiction
     lines.append(T["dose_band"].format(mg_min=r.mg_min, mg_max=r.mg_max))
