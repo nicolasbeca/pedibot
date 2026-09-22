@@ -1525,3 +1525,34 @@ el sistema que está corriendo. Dos cosas que no se ven venir: la mitad de esas 
 cosas que PediBot **no** puede hacer, y decirlo en la primera frase vale más que cualquier
 descripción; y un test que compruebe que la ficha sigue siendo verdad es obligatorio, porque una
 ficha que envejece mal se le enseña al padre con la misma cara de certeza que una verdadera.
+
+## L225 · El conjunto dorado lleva nueve días sin mirarse y no lo sabías (22-sep-2026)
+
+Arreglando diecisiete falsas alarmas medí el conjunto dorado y salió peor: `triage_exact` 0,958
+donde el 13-sep había 1,0. La primera reacción fue correcta —he roto algo— y la segunda también:
+**cuánto de eso es mío**. Con el triaje de ayer puesto en su sitio (`git stash` de dos ficheros
+y volver a medir), el dorado ya daba 0,975: siete de los nueve fallos venían de los cambios de
+la noche anterior, que nadie volvió a medir. Míos eran dos, y los dos reales:
+
+- «Diarrea desde hace 2 días, ojos hundidos y casi no hace pis» dejó de ser deshidratación
+  porque yo había metido `d[íi]as?` en el pasado remoto. **«Hace dos días» es ahora**, no un
+  recuerdo; el pasado remoto empieza en las semanas.
+- El espasmo del sollozo que apagué se llevó por delante «se pone MORADO y deja de respirar»,
+  que el dorado marca como emergencia. La exclusión correcta no era la del llanto: era «sin
+  cianosis y sin pérdida de conocimiento».
+
+La lección no es «mide»: es **mide antes de empezar**, porque una medición que sólo se hace al
+final no distingue tu regresión de la que ya estaba, y la tentación de contarlas todas como
+heredadas es exactamente igual de fuerte que la de contarlas como propias.
+
+## L226 · La pregunta sobre el producto es una pregunta de producto (22-sep-2026)
+
+Las 220 preguntas sobre PediBot no se arreglaron con un texto mejor. Se arreglaron con las
+mismas tres piezas que las de salud: una fuente (la ficha), la prohibición de salirse de ella, y
+un test que comprueba que la fuente sigue siendo verdad. Lo que cambió el resultado no fue la
+redacción sino **haber escrito los hechos en un sitio**: hasta entonces vivían repartidos entre
+el código, la página legal y la cabeza de quien lo hizo, y por eso la respuesta era un folleto.
+
+Y un detalle que sólo se ve probando en otra lengua: el modelo, al traducir, tradujo también las
+direcciones —`pedibot.xyz/it/dose`— y las inventó para idiomas que el sitio no tiene. Una URL es
+un dato, no una palabra.

@@ -1002,7 +1002,7 @@ _QUITA_URGENCIA = re.compile(
     r"n[ãa]o [ée] perigos|не опасн|no hace falta (ir|acudir)|no es una emergencia|"
     r"(is )?not (an )?(urgent|emergency)|no need to (go|rush|worry)|isn'?t (urgent|an emergency)|"
     r"(ce )?n'est pas (une )?urgen|kein notfall|nicht dringend|n[ãa]o [ée] (uma )?urg[êe]n|"
-    r"не (срочно|экстренн)|ليست? (حالة )?طارئ|आपातकाल नहीं)",
+    r"не (срочно|экстренн)|ليست? (حالة )?طارئ|आपातकाल नहीं|(es|son|esto es|eso es) (algo )?(normal|habitual|frecuente|lo normal)(?![^.]{0,80}(pero|aun as[íi]|de todas formas|hay que acudir|hay que ir))|no hay (ning[uú]n )?(motivo|raz[oó]n) (de|para) (alarma|preocupaci[oó]n)|no hay (ning[uú]n )?problema|no hay ingesti[oó]n|no ha pasado nada|(is|are) normal (in|for) (babies|children|infants)|(this|that) is normal\b(?![^.]{0,80}(but|still|even so))|(there is|there's) no (cause|reason) for (alarm|concern|worry)|nothing to worry about|c'est normal(?![^.]{0,80}(mais|quand m[êe]me))|il n'y a pas lieu de s'inqui[ée]ter|(das )?ist normal(?![^.]{0,80}(aber|trotzdem))|kein grund zur sorge|это нормальн\w*(?![^.]{0,80}(но|всё же))|нет повода для беспокойств)",
     re.I,
 )
 CONTRADICE_AVISO = (
