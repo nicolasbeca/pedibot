@@ -9,8 +9,8 @@ from __future__ import annotations
 
 from test_the_ai_reads_the_question_first import _json, _motor
 
-from pedibot.bot.interpret import SYSTEM as LECTURA
 from pedibot.bot.answer import REVISA
+from pedibot.bot.interpret import SYSTEM as LECTURA
 
 CHULETA = "¿Cuándo puedo darle una chuleta a mi hijo?"
 LEIDA = _json(

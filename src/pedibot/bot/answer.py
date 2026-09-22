@@ -9,6 +9,7 @@ from pathlib import Path
 
 import yaml
 
+from pedibot.bot.about import ficha_de, responde_sobre
 from pedibot.bot.dose import DRUGS, bottles_in_country, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.emergency_question import (
@@ -33,7 +34,7 @@ from pedibot.bot.muac import is_muac_question, read_mm
 from pedibot.bot.muac import reason as muac_reason
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
-from pedibot.bot.triage import LEVEL_ORDER, Triage, TriageResult
+from pedibot.bot.triage import ASISTENTE, LEVEL_ORDER, Triage, TriageResult
 from pedibot.bot.vaccines import (
     Vaccines,
     country_in_question,
@@ -246,6 +247,42 @@ ABOUT_PEDIBOT = {
     "pt": "O PediBot é um serviço gratuito que responde a dúvidas sobre a saúde das crianças usando apenas diretrizes publicadas por ministérios da saúde, pela OMS e por sociedades de pediatria, e mostra de que documento vem cada frase. Não faz diagnósticos nem substitui o seu pediatra: explica o que dizem as diretrizes, quando a criança precisa ser vista por um médico e para que número de emergência ligar no seu país. Funciona sem conta e sem pedir dados pessoais. Conte-me o que o preocupa no seu filho.\n\nQuem o faz e como é financiado: pedibot.xyz/pt/about",
     "hi": "PediBot एक मुफ़्त सेवा है जो बच्चों के स्वास्थ्य से जुड़े सवालों के जवाब सिर्फ़ स्वास्थ्य मंत्रालयों, विश्व स्वास्थ्य संगठन और बाल रोग संस्थाओं के प्रकाशित दिशानिर्देशों से देती है, और बताती है कि हर वाक्य किस दस्तावेज़ से लिया गया है। यह न तो निदान करती है और न ही आपके डॉक्टर की जगह लेती है: यह बताती है कि दिशानिर्देश क्या कहते हैं, बच्चे को कब डॉक्टर को दिखाना चाहिए और आपके देश में आपातकालीन नंबर क्या है। इसके लिए न खाता चाहिए, न कोई निजी जानकारी। बताइए, आपको अपने बच्चे के बारे में क्या चिंता है।\n\nइसे कौन बनाता है और पैसा कहाँ से आता है: pedibot.xyz/hi/about",
 }
+#: Cuando la pregunta es de dosis, trae el peso y NO dice qué medicamento (22-sep-2026).
+#: «Mi hijo pesa 16 kg y el bote dice 100mg/5ml, ¿cuánto le toca?» se contestaba con «no tengo
+#: información fiable sobre esto en mis fuentes», que es la peor respuesta posible: el padre
+#: tiene el bote en la mano y sólo falta una palabra. Y adivinarla es lo único que aquí no se
+#: puede hacer —100 mg/5 ml es la concentración del ibuprofeno infantil y también existe en
+#: paracetamol—, así que se pregunta.
+WHICH_DRUG = {
+    "en": "Tell me which medicine it is — paracetamol (Calpol, Tylenol) or ibuprofen (Nurofen, "
+    "Advil) — and I will work out the dose for that weight, in ml for your bottle.",
+    "es": "Dime cuál de los dos es —paracetamol (Apiretal, Termalgin) o ibuprofeno (Dalsy, "
+    "Junifen)— y te calculo la dosis para ese peso, en ml para tu bote.",
+    "fr": "Dites-moi lequel c'est — paracétamol (Doliprane, Efferalgan) ou ibuprofène (Advil, "
+    "Nurofen) — et je calcule la dose pour ce poids, en ml pour votre flacon.",
+    "de": "Sagen Sie mir, welches es ist — Paracetamol (ben-u-ron) oder Ibuprofen (Nurofen) — "
+    "und ich rechne die Dosis für dieses Gewicht aus, in ml für Ihre Flasche.",
+    "ru": "Скажите, какое это лекарство — парацетамол или ибупрофен, — и я рассчитаю дозу для "
+    "этого веса, в мл для вашего флакона.",
+    "ar": "أخبرني أي دواء هو — الباراسيتامول أو الإيبوبروفين — وسأحسب الجرعة لهذا الوزن، "
+    "بالمليلتر حسب زجاجتك.",
+    "pt": "Diga-me qual dos dois é — paracetamol (Ben-u-ron) ou ibuprofeno (Brufen) — e calculo "
+    "a dose para esse peso, em ml para o seu frasco.",
+    "hi": "बताइए कौन-सी दवा है — पैरासिटामोल या आइबुप्रोफेन — और मैं उस वज़न के लिए खुराक "
+    "निकाल दूँगा, आपकी बोतल के हिसाब से मिली में।",
+}
+#: Y cómo se reconoce esa pregunta: pide una dosis, sin nombrar ningún medicamento.
+_ASKS_DOSE = re.compile(
+    r"cu[áa]nt[oa]\s+(le\s+)?(doy|toca|tengo que dar|debo dar|pongo|jarabe|ml|mililitros)"
+    r"|qu[ée]\s+dosis|dosis\s+(le\s+)?(doy|toca|corresponde|para)"
+    r"|how (much|many ml)[^.?!]{0,30}(give|dose|syrup)|what dose"
+    r"|quelle dose|combien (de )?ml|welche dosis|wie viel ml"
+    r"|как[ауой]* доз|сколько (мл|давать)|كم (الجرعة|جرعة)|ما الجرعة"
+    r"|कितनी (खुराक|दवा|मिली)|खुराक कितनी",
+    re.I | re.U,
+)
+
+
 #: Lo que no tiene nada que ver con la salud de un niño (21-sep-2026): se dice con amabilidad y
 #: se invita a preguntar lo que sí. Antes caía en «no tengo información, consulta a tu pediatra»,
 #: que para «¿mi perro puede comer chocolate?» es una respuesta absurda.
@@ -1106,6 +1143,26 @@ class Engine:
         self.vaccines = vaccines
         self.guides = guides
         self.growth = growth
+        self._ficha: str | None = None
+
+    def ficha_sobre_pedibot(self) -> str:
+        """La ficha de hechos del servicio, con los números del sistema que está corriendo.
+
+        No se escriben a mano en la ficha: un número escrito a mano envejece mal, y esta ficha
+        se le enseña al padre como si fuera cierta. Se cuentan una vez y se guardan.
+        """
+        if self._ficha is None:
+            try:
+                docs = self.retriever.index.documents()
+            except Exception:  # noqa: BLE001 — un número que falta no impide contestar
+                docs = 0
+            self._ficha = ficha_de(
+                docs=docs,
+                rules=len(self.triage.rules),
+                countries=len([k for k in self.numbers.raw if k != "default"]),
+                vax=len(self.vaccines.countries) if self.vaccines is not None else 0,
+            )
+        return self._ficha
 
     def _inject_rule_sources(self, tr: TriageResult, hits: list[Hit]) -> list[Hit]:
         """When a triage rule fired, put the warning-signs chunk of the rule's own source first,
@@ -1383,6 +1440,35 @@ class Engine:
                 tool=tool_link("dose", lang),
             )
 
+        # Pide una dosis, da el peso y no dice de qué: falta una palabra y la tiene él.
+        if (
+            tr.level == "routine"
+            and intent is None
+            and _WEIGHT.search(query)
+            and _ASKS_DOSE.search(query)
+            and not _DRUG.search(query)
+            and not (
+                self.drugs
+                and any(
+                    self.drugs.resolve(x)
+                    for x in query.lower().translate(_A_ESPACIO).split()
+                    if len(x) >= 4
+                )
+            )
+        ):
+            return Answer(
+                WHICH_DRUG[lang],
+                tr.level,
+                None,
+                [],
+                lang,
+                None,
+                None,
+                [],
+                "which_drug",
+                tool=tool_link("dose", lang),
+            )
+
         # El número de urgencias, de la tabla y no del corpus (20-sep-2026). Probado en vivo:
         # un padre en Nigeria preguntaba el número y el chat contestaba «no tengo información
         # fiable sobre esto en mis fuentes» mientras el aviso de arriba llevaba el 112 escrito.
@@ -1554,9 +1640,33 @@ class Engine:
         # «mi hijo se ha tragado una pila» mal leído como «otra cosa» no puede recibir un «eso no
         # es de PediBot».
         if leida is not None and tr.level == "routine" and not tr.is_alarm:
-            if leida.intent == "about_pedibot":
+            # 22-sep-2026: preguntarle AL CHAT si sabe hacer algo es una pregunta sobre el chat,
+            # aunque lo que se le pida no tenga que ver con la salud de un niño. «¿Puede decirme
+            # dónde está el hospital infantil más cercano?» recibía «eso no es de PediBot» en vez
+            # de un «no, no sé buscar sitios cerca de ti; esto sí sé hacerlo».
+            preguntan_por_el = leida.intent == "about_pedibot" or (
+                leida.intent == "other" and ASISTENTE.search(query) is not None
+            )
+            if preguntan_por_el:
+                # 22-sep-2026: se contesta LA pregunta, con la ficha de hechos del servicio.
+                # Antes, «¿puedo subirle una foto de la erupción?» y «¿guarda mis
+                # conversaciones?» recibían las dos el párrafo de presentación.
+                nombre = (
+                    LANGUAGE_NAME.get(lang, "English")
+                    if leida.lang in SUPPORTED_LANGS
+                    else (leida.lang_name or LANGUAGE_NAME.get(lang, "English"))
+                )
+                dicho = responde_sobre(self.llm, query, nombre, self.ficha_sobre_pedibot())
                 return Answer(
-                    ABOUT_PEDIBOT[lang], tr.level, banner, [], lang, None, None, [], "about"
+                    dicho or ABOUT_PEDIBOT[lang],
+                    tr.level,
+                    banner,
+                    [],
+                    lang,
+                    None,
+                    None,
+                    [],
+                    "about",
                 )
             # «Mi» —enviado sin querer— recibía «eso no es de PediBot»: con menos de tres
             # palabras no hay pregunta que juzgar, y se le pide que la cuente
@@ -1567,6 +1677,13 @@ class Engine:
                 # medicamento nombrado es una pregunta de salud aunque venga con una receta
                 and not _DRUG.search(query)
                 and dose_intent(query, self.drugs) is None
+                # 22-sep-2026: si en la pregunta hay un hijo, la pregunta es de aquí. «Mi hija
+                # llora cuando se acaba la batería del móvil», «mi hijo se pone nervioso si no
+                # hay wifi», «tiene miedo después de ver un vídeo de monstruos»: cinco preguntas
+                # de crianza recibieron «eso no es de PediBot». Este texto se escribió para el
+                # perro que come chocolate y para la bechamel, y ésos no nombran a ningún niño.
+                # Si no hay fuente, ya hay una respuesta honesta para eso, y no echa a nadie.
+                and not _mentions_child(query)
                 and (
                     self.retriever.taxonomy is None
                     # las palabras del padre y la frase médica de la IA, pero no su lista de palabras

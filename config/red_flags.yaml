@@ -68,7 +68,10 @@ rules:
   - ne reprend pas connaissance
   - (has not|hasn'?t|did not|didn'?t) (come round|come to|regained? consciousness)
   - tarda en (recuperar|volver en s[ií])
-  - no responde
+  # 22-sep-2026: «no responde siempre cuando le llamamos por su nombre», de un bebé de
+  # 8 meses, daba EMERGENCIA. Es la pregunta con la que empieza la sospecha de sordera o
+  # de autismo, y la hace un padre asustado: lo que menos necesita es una ambulancia.
+  - no responde(?![^.]{0,45}(cuando (le|lo|la) llam|a su nombre|al llamarl|si le llam|por su nombre))
   - no reacciona
   - inconsciente
   - no se despierta
@@ -191,7 +194,7 @@ rules:
   # 18-sep-2026: «se pone rígido» cazaba también al recién nacido que puja para hacer caca y al
   # que se despereza, que es de las cosas que más se preguntan de un bebé y no es una convulsión.
   # Se excluye la causa habitual, no la forma: «se ha quedado rígido» sigue saltando.
-  - se (ha )?(quedad|pus|pon)[oe].{0,20}r[ií]gid(?![^.]{0,45}(cuando (hace fuerza|puja|empuja|se estira|se despereza|caga)|al (hacer fuerza|pujar|estirarse|desperezarse)|para (hacer caca|cagar|hacer de vientre)|haciendo fuerza|con el pis|con la caca))
+  - se (ha )?(quedad|pus|pon)[oe].{0,20}r[ií]gid(?![^.]{0,45}(cuando (hace fuerza|puja|empuja|se estira|se despereza|caga|est[áa] (muy )?(excitad|contento|emocionad|nervios)|se emociona|se r[íi]e)|al (hacer fuerza|pujar|estirarse|desperezarse)|para (hacer caca|cagar|hacer de vientre)|haciendo fuerza|con el pis|con la caca))
   - ojos en blanco
   - (los )?ojos (se le )?(han )?(ido|puesto) (en blanco|hacia atr[aá]s)
   - eyes (rolled|rolling) back
@@ -334,7 +337,12 @@ rules:
   - "مشكلة (في )?(ال)?تنفس"
   - "تحول.{0,30}(ال)?(شفاه|وجه|أظافر)"
   - "(ال)?(شفاه|وجه|أظافر|جلد).{0,30}(أزرق|زرقاء|الأزرق|زرقة|يزرق)"
-  - deja de respirar
+  # 22-sep-2026: «se tira al suelo y deja de respirar unos segundos cuando llora
+  # muchísimo» es el espasmo del sollozo: asusta muchísimo y es benigno (MedlinePlus,
+  # breath-holding spell). Recibía «llama a una ambulancia».
+  - deja de respirar(?![^.]{0,60}(cuando llora|al llorar|llorando|con el llanto|con las rabietas|cuando se enfada|unos segundos cuando))
+  - (morad|azul|cianosis|p[áa]lid)[^.]{0,60}deja de respirar
+  - deja de respirar[^.]{0,60}(morad|azul|cianosis|p[áa]lid|desmay|no responde)
   - (labios|piel) (azul|morad)(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar))
   - (labios|piel|lengua|cara|u[ñn]as).{0,30}(azul(es)?|morad|amoratad|c[aá]rdeno)(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar))
   - (azul(es)?|morad|amoratad).{0,30}(labios|piel|lengua|cara)
@@ -681,14 +689,14 @@ rules:
   - engasgo
   # 17-sep-2026: «se atragantó CON algo» —con el objeto, que es como se cuenta— no casaba
   # en cuatro lenguas: los patrones pedían además que se dijera que no respira.
-  - (choked|choking)[^.]{0,15}on[^.]{0,30}(a |the )?(piece|bit|grape|nut|toy|food|apple)(?![^.]{0,60}(coughed it out|spat it out|now (he|she)'?s? (breathing|fine|ok)|ahora respira|lo (ha )?(expulsad|escupi|tosid)|de vez en cuando|a veces|pero no con|sometimes|once|una vez))
+  - (choked|choking)[^.]{0,15}on[^.]{0,30}(a |the )?(piece|bit|grape|nut|toy|food|apple)(?![^.]{0,60}(coughed it out|spat it out|now (he|she)'?s? (breathing|fine|ok)|ahora (est[áa]|se encuentra) (normal|bien|perfect)|ya est[áa] (normal|bien)|se le (ha )?pasad|sigue comiendo|luego come|pero come bien|ahora respira|lo (ha )?(expulsad|escupi|tosid)|de vez en cuando|a veces|pero no con|sometimes|once|una vez))
   - (s'?est [ée]touff[ée]|s'?[ée]touffe)[^.]{0,20}avec[^.]{0,30}(un |une |du |de la )?(morceau|bout|bonbon|jouet|cacahu[èe]te)
   - (hat sich|sich)[^.]{0,15}(an|mit)[^.]{0,30}(st[üu]ck|bissen|traube|spielzeug)[^.]{0,20}verschluckt
   - verschluckt[^.]{0,20}(st[üu]ck|bissen|essen)
   - (اختنق|اختنقت|شرق|شرقت|غص)[^.]{0,30}(بقطعة|بحبة|بلقمة|بطعام|بلعبة)
   # 17-sep-2026: el verbo en árabe («اختنق») no estaba; sólo el sustantivo.
   - (اختنق|اختنقت|يختنق|تختنق|شرق|شرقت)[^.]{0,40}(لا (يستطيع|تستطيع)|ما يقدر|التنفس)
-  - (?<!una vez se )(?<!miedo de )atragant(?![^.]{0,60}(coughed it out|spat it out|now (he|she)'?s? (breathing|fine|ok)|ahora respira|lo (ha )?(expulsad|escupi|tosid)|de vez en cuando|a veces|pero no con|sometimes|once|una vez))
+  - (?<!una vez se )(?<!miedo de )(?<!hace como que se )(?<!parece que se )atragant(?![^.]{0,60}(coughed it out|spat it out|now (he|she)'?s? (breathing|fine|ok)|ahora (est[áa]|se encuentra) (normal|bien|perfect)|ya est[áa] (normal|bien)|se le (ha )?pasad|sigue comiendo|luego come|pero come bien|ahora respira|lo (ha )?(expulsad|escupi|tosid)|de vez en cuando|a veces|pero no con|sometimes|once|una vez))
   - se est[aá] ahogando
   - choking
   - something stuck in (his|her|their) throat
@@ -1086,6 +1094,132 @@ rules:
   - fezes[^.]{0,20}(brancas|p[áa]lidas|claras|esbranqui)
   - मल[^.]{0,20}(सफ़ेद|सफेद|हल्का|फीका)
   - kinyesi[^.]{0,20}(cheupe|kilichofifia|kimefifia)
+# 22-sep-2026, revisión de las 854: «un dolor de cabeza que le despierta por la noche» es el
+# signo que el NHS pone en la lista de los que hay que mirar hoy, y salía rutina. Lo mismo el
+# dolor de cabeza al despertarse todos los días.
+- id: headache_wakes_child
+  level: urgent
+  source: nhs_en_headaches_in_children
+  reason_es: "Dolor de cabeza que despierta de noche o está al despertarse: que lo vea un médico"
+  reason_en: "A headache that wakes the child at night or is there on waking: get it seen"
+  reason_fr: "Mal de tête qui réveille la nuit ou présent au réveil : à faire examiner"
+  reason_de: "Kopfschmerz, der nachts weckt oder beim Aufwachen da ist: ärztlich abklären lassen"
+  reason_ru: "Головная боль, которая будит ночью или есть при пробуждении: покажите врачу"
+  reason_ar: "صداع يوقظ الطفل ليلاً أو موجود عند الاستيقاظ: يجب أن يراه طبيب"
+  reason_pt: "Dor de cabeça que acorda à noite ou está presente ao acordar: que um médico o veja"
+  reason_hi: "सिरदर्द जो रात में नींद से जगा दे या जागते ही हो: डॉक्टर को दिखाइए"
+  reason_sw: "Maumivu ya kichwa yanayomwamsha usiku au yaliyopo anapoamka: aonwe na daktari"
+  patterns:
+  - (dolor de cabeza|cefalea|le duele la cabeza)[^.]{0,40}(le despierta|se despierta|por la noche despierta|al despertar|por las ma[ñn]anas)
+  - (dolor de cabeza|cefalea|le duele la cabeza)[^.]{0,40}(nada m[áa]s despertar|al levantarse|reci[ée]n despierto|cada ma[ñn]ana)
+  - (mal [àa] la t[êe]te)[^.]{0,40}(au r[ée]veil|le r[ée]veille|la nuit|le matin)
+  - (голова болит|болит голова)[^.]{0,40}(по утрам|когда просыпается|ночью|будит)
+  - (सुबह|रात)[^.]{0,30}(उठते ही|जगा)[^.]{0,30}(सिरदर्द|सिर दर्द)
+  - (उठते ही)[^.]{0,30}(सिरदर्द|सिर दर्द)
+  - (se despierta|despierta)[^.]{0,30}(por|con|de)[^.]{0,20}(dolor de cabeza|cefalea)
+  - headache[^.]{0,40}(wakes (him|her|them|the child) up|on waking|first thing in the morning|wakes at night)
+  - (wakes|woken)[^.]{0,30}(up )?(at night |in the night )?(with|by)[^.]{0,20}headache
+  - (mal de t[êe]te|c[ée]phal[ée]e)[^.]{0,40}(le r[ée]veille|au r[ée]veil|la nuit)
+  - kopfschmerz\w*[^.]{0,40}(weckt|beim aufwachen|nachts auf)
+  - (головн\w* бол\w*|болит голова)[^.]{0,40}(будит|просыпается|по утрам|ночью)
+  - (صداع|ألم في الرأس)[^.]{0,40}(يوقظه|عند الاستيقاظ|في الليل|الصباح)
+  - (dor de cabe[çc]a|cefaleia)[^.]{0,40}(acorda|ao acordar|de noite|de manh[ãa])
+  - (सिरदर्द|सिर दर्द)[^.]{0,40}(जगा|उठते ही|रात में|सुबह)
+  - maumivu ya kichwa[^.]{0,40}(yanamwamsha|anapoamka|usiku)
+# 22-sep-2026: «moratones también en la espalda y no recuerdo ningún golpe» y «un moratón enorme
+# después de una caída pequeña». Un hematoma donde no se golpea uno, o desproporcionado, es de
+# los pocos signos que piden analítica: puede ser un problema de coagulación.
+- id: unexplained_bruising
+  level: urgent
+  source: nhs_en_rashes_babies_and_children
+  reason_es: "Moratones sin golpe, en sitios raros o desproporcionados: que lo vea un médico"
+  reason_en: "Bruises with no knock, in odd places or out of proportion: get it seen by a doctor"
+  reason_fr: "Bleus sans choc, à des endroits inhabituels ou disproportionnés : à faire examiner"
+  reason_de: "Blaue Flecken ohne Sturz, an ungewöhnlichen Stellen: ärztlich abklären lassen"
+  reason_ru: "Синяки без ушиба, в необычных местах: покажите врачу"
+  reason_ar: "كدمات بلا صدمة أو في أماكن غير معتادة: يجب أن يراه طبيب"
+  reason_pt: "Nódoas negras sem pancada ou em sítios estranhos: que um médico o veja"
+  reason_hi: "बिना चोट के या अजीब जगहों पर नील: डॉक्टर को दिखाइए"
+  reason_sw: "Michubuko bila kugongwa au sehemu zisizo za kawaida: aonwe na daktari"
+  patterns:
+  - (morat[oó]n|moratones|hematoma|cardenal|manchas moradas)[^.]{0,60}(sin (ning[uú]n )?golpe|no recuerdo|sin haberse golpeado|no se ha golpeado|sin motivo|aparecen solos)
+  - (sin (ning[uú]n )?golpe|no recuerdo (ning[uú]n )?golpe)[^.]{0,40}(morat[oó]n|moratones|hematoma|cardenal)
+  - (morat[oó]n|moratones|hematoma)[^.]{0,40}(en la espalda|en el pecho|en la tripa|en el abdomen|en las orejas)
+  # y el desproporcionado: «un moratón enorme después de una caída pequeña»
+  - (morat[oó]n|hematoma|cardenal)[^.]{0,30}(enorme|muy grande|gigante|enormes)[^.]{0,60}(golpe|ca[íi]da|caerse|tropez)[^.]{0,20}(peque[ñn]|tont|leve|sin importancia)
+  - (huge|enormous|very large) bruis\w+[^.]{0,60}(small|minor|little)[^.]{0,20}(fall|knock|bump)
+  - (bruis\w+)[^.]{0,60}(without|no)[^.]{0,20}(knock|bump|injury|fall|reason)
+  - (bruis\w+)[^.]{0,40}(on (his|her|their) (back|chest|tummy|ears))
+  - (bleu\w*|ecchymose\w*)[^.]{0,60}(sans (choc|coup|raison)|je ne me souviens)
+  - (bleu\w*|ecchymose\w*)[^.]{0,60}sans (aucun |aucune )?(choc|coup|raison|chute)
+  - (blaue[nr]? fleck\w*|h[äa]matom\w*)[^.]{0,60}(ohne (sturz|sto[ßs]|grund)|erinnere mich nicht)
+  - (синяк\w*|синяки|гематом\w*)[^.]{0,60}(без (удара|причин)|не помню)
+  - (كدمات|كدمة)[^.]{0,60}(بدون (صدمة|سبب)|لا أذكر)
+  - (n[óo]doas negras|hematoma\w*|roxo\w*)[^.]{0,60}(sem (pancada|motivo)|n[ãa]o me lembro)
+  - (नील|चोट के निशान)[^.]{0,60}(बिना|याद नहीं)
+  - (बिना चोट|बिना किसी चोट|बिना गिरे)[^.]{0,40}(नील|निशान)
+  - michubuko[^.]{0,60}(bila (kugongwa|sababu)|sikumbuki)
+# 22-sep-2026: una pupila más grande que la otra, de aparición nueva, es un signo neurológico.
+- id: unequal_pupils
+  level: urgent
+  source: nhs_en_head_injury_and_concussion
+  reason_es: "Una pupila más grande que la otra: que lo vea un médico hoy"
+  reason_en: "One pupil bigger than the other: get it seen by a doctor today"
+  reason_fr: "Une pupille plus grande que l'autre : à faire examiner aujourd'hui"
+  reason_de: "Eine Pupille größer als die andere: heute ärztlich abklären lassen"
+  reason_ru: "Один зрачок больше другого: покажите врачу сегодня"
+  reason_ar: "حدقة أكبر من الأخرى: يجب أن يراه طبيب اليوم"
+  reason_pt: "Uma pupila maior do que a outra: que um médico o veja hoje"
+  reason_hi: "एक पुतली दूसरी से बड़ी: आज ही डॉक्टर को दिखाइए"
+  reason_sw: "Mboni moja kubwa kuliko nyingine: aonwe na daktari leo"
+  patterns:
+  - (pupila|ni[ñn]a del ojo)[^.]{0,40}(m[áa]s grande|mayor|distinta|diferente)[^.]{0,25}(que la otra|que el otro)
+  - (una pupila|la pupila)[^.]{0,30}(dilatada|m[áa]s grande)
+  - (one pupil|pupil)[^.]{0,30}(bigger|larger|wider|more dilated)[^.]{0,20}than the other
+  - (une pupille|la pupille)[^.]{0,30}(plus grande|dilat[ée]e)[^.]{0,20}que l'autre
+  - (sa pupille|la pupille)[^.]{0,30}(est )?dilat[ée]e
+  - (eine pupille|pupille)[^.]{0,30}(gr[öo][ßs]er|weiter)[^.]{0,20}als die andere
+  - (зрачок|один зрачок)[^.]{0,30}(больше|шире)[^.]{0,20}(другого)
+  - (حدقة|بؤبؤ)[^.]{0,30}(أكبر|أوسع)[^.]{0,20}(من الأخرى|من الآخر)
+  - (pupila)[^.]{0,30}(maior|mais dilatada)[^.]{0,20}(que a outra)
+  - (पुतली)[^.]{0,40}(बड़ी|फैली)
+  - mboni[^.]{0,30}(kubwa)[^.]{0,20}(kuliko nyingine)
+# 22-sep-2026: cojera después de una caída, o que no se le pasa. La cadera del niño que cojea es
+# una consulta de hoy: puede ser una fractura que no se ve o una infección de la articulación.
+- id: limp_after_fall
+  level: urgent
+  source: nhs_en_hip_pain_children_irritable_hip
+  reason_es: "Cojea, o no apoya una pierna: que lo vea un médico hoy"
+  reason_en: "Limping, or not putting weight on a leg: get it seen by a doctor today"
+  reason_fr: "Il boite ou ne pose pas le pied : à faire examiner aujourd'hui"
+  reason_de: "Er hinkt oder belastet das Bein nicht: heute ärztlich abklären lassen"
+  reason_ru: "Хромает или не наступает на ногу: покажите врачу сегодня"
+  reason_ar: "يعرج أو لا يستند على ساقه: يجب أن يراه طبيب اليوم"
+  reason_pt: "Manca ou não apoia a perna: que um médico o veja hoje"
+  reason_hi: "लंगड़ा रहा है या पैर पर वज़न नहीं डालता: आज डॉक्टर को दिखाइए"
+  reason_sw: "Anachechemea au hatuami mguu: aonwe na daktari leo"
+  patterns:
+  - (cojea|cojeando|renquea)[^.]{0,60}(desde|despu[ée]s de|tras)[^.]{0,30}(ca[íi]da|golpe|caer|se cay[óo])
+  - (se ha ca[íi]do|ca[íi]da|golpe)[^.]{0,60}(y (ahora )?)?(cojea|cojeando|no apoya)
+  - (no apoya|no quiere apoyar|no pisa)[^.]{0,30}(la pierna|el pie|una pierna)
+  - (limp\w*)[^.]{0,60}(after|since)[^.]{0,30}(a )?(fall|fell|knock)
+  - (fell|fall)[^.]{0,60}(and (now )?)?(limping|limps|won'?t walk|will not walk)
+  - (not (putting|bearing) weight|won'?t put weight)[^.]{0,30}(on (his|her|the) (leg|foot))
+  - (boite|boiter)[^.]{0,60}(depuis|apr[èe]s)[^.]{0,30}(chute|est tomb)
+  - (hinkt|humpelt)[^.]{0,60}(seit|nach)[^.]{0,30}(sturz|gefallen)
+  - (gest[üu]rzt|gefallen|hingefallen)[^.]{0,40}(hinkt|humpelt)
+  - (se (ha )?ca[íi]do|se cay[óo]|ca[íi]da)[^.]{0,40}(cojea|cojeando|no apoya|renquea)
+  - (est tomb[ée]|chute)[^.]{0,40}(boite|boiter|boitille)
+  - (caiu|queda)[^.]{0,40}(manca|coxeia)
+  - (गिरा|गिरने)[^.]{0,40}(लंगड़ा|लंगड़ाकर)
+  - (упал|падени)[^.]{0,40}(хромает|прихрамывает)
+  - (хромает|прихрамывает)[^.]{0,60}(после|с тех пор)[^.]{0,30}(падени|упал)
+  - (يعرج|يعرِج)[^.]{0,60}(بعد|منذ)[^.]{0,30}(سقوط|وقع)
+  - (سقط|وقع)[^.]{0,40}(يعرج|لا يستطيع المشي|لا يستند)
+  - (لا يستند|لا يضع وزنه)[^.]{0,30}(على ساقه|على رجله|على قدمه)
+  - (manca|coxeia)[^.]{0,60}(desde|depois de)[^.]{0,30}(queda|caiu)
+  - (लंगड़ा|लंगड़ाकर)[^.]{0,60}(गिरने के बाद|गिरा)
+  - anachechemea[^.]{0,60}(baada ya|tangu)[^.]{0,30}(kuanguka|alianguka)
 - id: head_injury_loss_consciousness
   level: emergency
   source: seup_tce
@@ -1632,7 +1766,10 @@ rules:
   # dibujos» salían como decaimiento. La señal no es dejar de hacer UNA cosa: es el estado
   # general —no juega a nada, no sonríe, está apagado—, y «no me mira» pide los ojos.
   - (no (quiere )?(juega|jugar))[^.]{0,30}(a nada|con nada|ni quiere|ni (levantarse|moverse|salir|hablar)|est[áa] (apagad|decaíd|raro|ido))
-  - (no sonr[íi]e|no responde a nada|no reacciona a nada|est[áa] ido|est[áa] apagad[oa]|apátic[oa]|sin ganas de nada|ni se mueve del sof[áa])
+  # 22-sep-2026: «tiene 2 meses y medio y no sonríe cuando le hablo pero sí cuando ve la
+  # lámpara» daba aviso de niño decaído. Es una pregunta de desarrollo, y la respuesta
+  # tranquila que necesita no cabe debajo de un aviso rojo.
+  - (no sonr[íi]e(?![^.]{0,60}(pero s[íi]|cuando le hablo|a veces s[íi]|s[íi] cuando))|no responde a nada|no reacciona a nada|est[áa] ido|est[áa] apagad[oa]|apátic[oa]|sin ganas de nada|ni se mueve del sof[áa])
   - (no me mira)[^.]{0,25}(a los ojos|cuando le hablo|est[áa] ido)
   - (decaíd[oa]|abatid[oa]|flojit[oa])[^.]{0,25}(y|,)?
   - (not (playing|smiling|interested)|does ?n'?t want to play|wo?n'?t play|just lies there|listless|lethargic|not himself|not herself|no interest in anything)
@@ -1777,7 +1914,9 @@ rules:
   - no (bebe|toma|quiere beber|ha bebido)[^.]{0,12}(nada|ni agua|l[íi]quidos?)(?![^.]{0,25}(much|suficiente|bastante|demasiad))
   - no (bebe|toma)[^.]{0,15}(nada)[^.]{0,30}(desde|en todo el d[íi]a|ni una gota)
   - (lleva|llev[óo])[^.]{0,20}(sin (beber|tomar (nada|l[íi]quidos)))
-  - (se niega|rechaza)[^.]{0,20}(a )?(beber|el agua|los l[íi]quidos|el biber[óo]n)
+  # 22-sep-2026: un bebé que rechaza el agua y mama bien no está deshidratado; hasta los
+  # seis meses el agua no le hace falta.
+  - (se niega|rechaza)[^.]{0,20}(a )?(beber|el agua|los l[íi]quidos|el biber[óo]n)(?![^.]{0,60}(pero (toma|mama|come)|toma (el )?pecho bien|mama bien|come bien))
   # 17-sep-2026: «has ?n'?t» no casa «has not», que es como se escribe entero. Tercera vez
   # que la contracción inglesa me muerde en un día (ver `suicidal_ideation`).
   - ((has|have|had)\s*n(?:'|o)?t|will not|won'?t|refus\w*)[^.]{0,20}(drunk|drinking|drink)[^.]{0,25}(anything|any fluids|at all|since|all day)
@@ -1895,7 +2034,9 @@ rules:
   - n[aã]o molha a fralda
   - n[aã]o molhou a fralda
   - horas sem (fazer xixi|molhar)
-  - boca seca
+  # 22-sep-2026: «se despierta con la boca seca todos los días» es respirar por la boca
+  # mientras duerme, no deshidratación.
+  - boca seca(?![^.]{0,40}(al despertar|por las ma[ñn]anas|todos los d[íi]as|al levantar|cuando se despierta))
   - desidratad
   - n[aã]o consegue beber
   - n[aã]o segura l[ií]quido
@@ -2179,7 +2320,9 @@ rules:
   - (amemeza|amekunywa|alimeza|kameza)[^.]{0,20}(vidonge|dawa|sabuni|mafuta ya taa|jiki)
   - (أخذ|بلع|شرب|ابتلع)[^.]{0,30}(حبة|حبتين|حبوب|دواء|أقراص)
   # 21-sep-2026, batería del operador: cerveza por accidente y «eine Tablette von meiner Medizin genommen» salían rutina
-  - (bebido|tomado|tragado|bebi[oó])[^.]{0,30}(cerveza|vino|alcohol|whisky|licor|ginebra|ron|vodka|cava)
+  # 22-sep-2026: «ha tomado un biberón que llevaba dos horas fuera» daba INTOXICACIÓN
+  # ETÍLICA, porque «ron» estaba escrito sin límites de palabra y vive dentro de «biberón».
+  - (bebido|tomado|tragado|bebi[oó])[^.]{0,30}\b(cerveza|vino|alcohol|whisky|licor|ginebra|ron|vodka|cava)\b
   - (drank|drunk|swallowed|had)[^.]{0,30}(beer|wine|alcohol|vodka|whisky|spirits|liquor)
   - (tablette|tabletten|pille|pillen|medikament\w*)[^.]{0,40}(genommen|geschluckt|gegessen)
   - (genommen|geschluckt)[^.]{0,30}(tablette|pille|medikament)
@@ -2558,7 +2701,11 @@ rules:
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
   - verbrennung|verbr[üu]hung
   - (जलना|जल गया|जल गयी|झुलस)
-  - quemad
+  # 22-sep-2026: «se ha quemado con el sol en los hombros» daba el aviso de una quemadura
+  # que hay que ver hoy. Una quemadura solar sin más se cuida en casa; lo que el NHS pide
+  # ver son las ampollas, los escalofríos, la fiebre o el bebé.
+  - quemad(?![^.]{0,30}(con el sol|por el sol|de sol|solar|del sol))
+  - quemad[^.]{0,30}(con el sol|por el sol|de sol|solar|del sol)[^.]{0,90}(ampolla|escalofr[íi]|fiebre|v[óo]mit|mucho dolor|se encuentra mal|beb[ée])
   - escaldad
   - burn(ed|t)? (his|her|their|him|self)
   - scald
@@ -2670,7 +2817,10 @@ rules:
   - "damu (kwenye|katika) kinyesi"
   - "kinyesi (cheusi|chenye damu)"
   - "anaharisha damu"
-  - (caca|heces|deposicion\w*|pañal|popo).{0,30}(negra|negras|sangre|sanguinolent|alquitr)
+  # 22-sep-2026: «hace caca con moco pero sin sangre» saltaba por la palabra «sangre», que
+  # la propia frase estaba negando, y «toma hierro y sus cacas están casi negras» saltaba
+  # aunque el hierro las pone negras y eso lo dice hasta el prospecto.
+  - ^(?!.*(hierro|sulfato ferroso|gotas de hierro)).*(caca|heces|deposicion\w*|pañal|popo)(?![^.]{0,40}(sin sangre|no hay sangre|no tiene sangre|no es sangre)).{0,30}(negra|negras|sangre|sanguinolent|alquitr)
   - (sangre|negra como alquitr).{0,30}(caca|heces|deposicion|pañal)
   - melena[s]?\b
   - (stool|poo|poop|nappy|diaper|bowel motion).{0,30}(black|tarry|blood|bloody|red blood)
@@ -2800,7 +2950,11 @@ rules:
   - (se salta|salta|se est[aá] saltando).{0,20}(las )?comidas
   - (deja|ha dejado|dejado) de comer.{0,40}(semana|mes|d[ií]as)
   - (obsesion|obsesionad|preocupad).{0,30}(peso|calor[ií]as|comida|figura|cuerpo)
-  - vomita.{0,40}(despu[ée]s de comer|para no engordar|a prop[oó]sito)
+  # 22-sep-2026: «mi bebé de 11 meses vomita después de comer huevo», «vomita leche cuajada
+  # una hora después de comer» y «vomita sólo cuando corre después de comer» recibían los
+  # tres el aviso de un trastorno de la conducta alimentaria. Vomitar después de comer es lo
+  # que hace un lactante; lo que señala un trastorno es hacerlo a propósito o para no engordar.
+  - vomita(?![^.]{0,40}(leche|cuajad|el pecho|biber|teta|corre|salta|jugar|juega))[^.]{0,40}(despu[ée]s de comer(?![^.]{0,30}(huevo|pl[áa]tano|leche|carne|pescado|fresa|marisco|correr))|para no engordar|a prop[oó]sito)
   - (se provoca|provocarse).{0,15}(el )?v[oó]mito
   - (anorexia|bulimia|atrac[oó]n|atracones)
   - (skipping|skips|skipped).{0,15}meals
@@ -3498,7 +3652,10 @@ rules:
   - (خلف|وراء)[^.]{0,15}(أذن\w*)[^.]{0,25}(تورم|ورم|انتفاخ|احمرار)
   - (تورم|ورم|انتفاخ)[^.]{0,20}(خلف|وراء)[^.]{0,15}(الأذن|أذنه|أذنها)
   - (الأذن|أذنه|أذنها)[^.]{0,20}(بارزة|للأمام|مدفوعة)
-  - (hinchaz[oó]n|hinchad|rojez|enrojecimiento|bulto|dolor).{0,40}detr[aá]s de la oreja
+  # 22-sep-2026: «un bulto pequeño detrás de la oreja desde hace semanas» es un ganglio, y
+  # recibía el aviso de una mastoiditis. La mastoiditis duele, está roja y empuja la oreja.
+  - (hinchaz[oó]n|hinchad|rojez|enrojecimiento|dolor).{0,40}detr[aá]s de la oreja
+  - (hinchaz[oó]n|hinchad|rojez|enrojecimiento|bulto|dolor).{0,40}detr[aá]s de la oreja[^.]{0,60}(roj|caliente|duele|dolor|fiebre|pus|crece)
   - detr[aá]s de la oreja.{0,40}(hinchad|roj|inflamad|bulto)
   - oreja (despegad|desplazada|hacia delante|separada)
   - mastoiditis
@@ -3777,7 +3934,9 @@ rules:
   - (عضة|عضّة)[^.]{0,15}(حيوان|كلب|قطة)
   - mordedura de (animal|c[ãa]o|gato)|mordida de (animal|cachorro)
   - (जानवर|कुत्ते|बिल्ली)[^.]{0,12}(के )?(काटने|काट)
-  - "(perro|gato|murci[ée]lago|mono|zorro|rata).{0,40}(mordi|ha mordido)"
+  # 22-sep-2026: «tiene miedo al perro de los vecinos aunque nunca le ha mordido» daba aviso
+  # de mordedura: la negación iba dentro de la propia coincidencia.
+  - '(perro|gato|murci[ée]lago|mono|zorro|rata)(?![^.]{0,40}(\bnunca\b|\bjam[áa]s\b|\bno le ha\b|\bno me ha\b|sin morder)).{0,40}(mordi|ha mordido)'
   - "(mordi|ha mordido).{0,40}(perro|gato|murci[ée]lago|mono|zorro|rata)"
   - "(dog|cat|bat|monkey|fox|rat).{0,40}(bit|bitten)"
   # 17-sep-2026: dos trampas en una línea. «A BIT of shampoo» cazaba «bit» y «the BATh»
@@ -4285,7 +4444,10 @@ rules:
   - (graine|perle|bille)[^.]{0,20}(dans l'?oreille|dans le nez)
   - (im ohr|in der nase)[^.]{0,25}(erbse|perle|kn[öo]pfchen|etwas)
   - (erbse|perle)[^.]{0,20}(im ohr|in der nase)
-  - (se (ha )?metido|tiene|se puso)[^.]{0,30}(en (la )?nariz|en el o[íi]do)
+  # 22-sep-2026: «tiene una costra amarilla en la nariz que no se quita» daba cuerpo extraño.
+  # «Tiene» a secas abarca cualquier cosa que un niño tenga en la cara.
+  - (se (ha )?metido|se puso|se ha introducido)[^.]{0,30}(en (la )?nariz|en el o[íi]do)
+  - (tiene|le hemos visto|le vimos)[^.]{0,20}(una? )?(pieza|bolita|bola|canica|lego|garbanzo|guisante|pila|bot[óo]n|semilla|pipa|piedra|algod[óo]n|cuenta|goma|objeto|juguete|palo|algo)[^.]{0,25}(en (la )?nariz|en el o[íi]do)
   - (en (la )?nariz|en el o[íi]do)[^.]{0,25}(una |un )?(pipa|bolita|canica|garbanzo|cuenta|papel|juguete|pila|semilla)
   - (pushed|put|stuck|shoved)[^.]{0,30}(up (his|her|the) nose|in (his|her|the) (ear|nose))
   - (something|a bead|a pea|a battery|a toy)[^.]{0,25}(in|up)[^.]{0,12}(his|her|the)?[^.]{0,6}(nose|ear)
@@ -5027,7 +5189,9 @@ rules:
   # padecerlo: «¿cómo prevengo un golpe de calor?» no puede sacar el aviso.
   patterns:
   # 21-sep-2026, revisión de la batería: fiebre tras un día de playa o de calor, y fiebre sin sudar, salían rutina
-  - (playa|sol|calor|piscina|heat|sun|beach)[^.]{0,60}(fiebre|temperatura de|temperature of|3[89]|4[01])
+  # 22-sep-2026: «ha estado en la piscina y ahora tiembla PERO NO TIENE FIEBRE» daba golpe
+  # de calor, por la palabra «fiebre» que la propia frase estaba negando.
+  - (playa|sol|calor|piscina|heat|sun|beach)[^.]{0,60}(?<!no tiene )(?<!sin )(fiebre|temperatura de|temperature of|3[89]|4[01])
   - (fiebre|temperatura|fever|calor)[^.]{0,40}(dejado de sudar|no suda|ya no suda|stopped sweating|not sweating)
   - (fiebre|fever|temperature)[^.]{0,60}(al sol|en la playa|todo el d[ií]a (al sol|en la playa)|in the (heat|sun)|at the beach)
   # ── suajili (18-sep-2026, fase 3 de África) ──

@@ -384,18 +384,19 @@ def test_y_en_una_lengua_que_no_tenemos_ese_aviso_sale_traducido() -> None:
 
 
 # ── «¿qué es PediBot?» y lo que no tiene nada que ver ───────────────────────────────────────
-def test_que_es_pedibot_se_contesta_con_el_texto_fijo() -> None:
+def test_que_es_pedibot_se_contesta_con_la_ficha() -> None:
     """Petición del operador: «si pregunta qué es PediBot, sí debería contestar bien».
 
-    Con un texto FIJO nuestro y revisado, no con lo que al modelo le salga ese día.
+    Era un texto FIJO nuestro, el mismo para todas. El 22-sep-2026, con 220 preguntas distintas
+    sobre el servicio en una sola tanda, se vio lo que eso significaba: «¿puedo subirle una foto
+    de la erupción?» recibía la descripción del servicio. Ahora se redacta la respuesta A ESA
+    pregunta, con una ficha de hechos nuestra y sólo con ella — que es la misma regla que con
+    las guías. Lo que no cambia: el redactor de salud no toca esto, y no se busca en el corpus.
     """
-    from pedibot.bot.answer import ABOUT_PEDIBOT
-
     motor, visto = _motor(_json(lang="es", lang_name="Spanish", intent="about_pedibot"))
     a = motor.ask("¿qué es pedibot y de dónde saca la información?", lang="es")
     assert a.verification == "about"
-    assert a.text == ABOUT_PEDIBOT["es"]
-    assert visto["redactor"] == [], "el modelo no puede redactar lo que el sitio dice de sí mismo"
+    assert visto["busquedas"] == [], "una pregunta sobre PediBot no se busca en las guías"
 
 
 def test_lo_que_no_es_de_salud_infantil_se_contesta_con_amabilidad() -> None:
@@ -439,13 +440,26 @@ def test_si_la_pregunta_nombra_un_tema_de_salud_no_es_fuera_de_tema() -> None:
 
 
 def test_en_una_lengua_que_no_tenemos_tambien_sale_en_la_suya() -> None:
-    motor, _ = _motor(
-        _json(intent="about_pedibot"),
-        traduccion="PediBot è un servizio gratuito che risponde alle domande sulla salute dei bambini.",
-    )
+    """Un padre italiano con la web en inglés recibe la respuesta en italiano.
+
+    Antes se traducía el párrafo fijo; ahora se le pide al redactor de la ficha que escriba en
+    la lengua en que preguntó, que es lo mismo que se hace con una respuesta de salud.
+    """
+    from pedibot.bot.about import SOBRE
+
+    motor, _ = _motor(_json(intent="about_pedibot"))
+    pedido: list[str] = []
+    original = motor.llm.complete
+
+    def completa(system, user, **k):  # noqa: ANN001, ANN003, ANN202
+        if system.startswith(SOBRE[:40]):
+            pedido.append(system)
+        return original(system, user, **k)
+
+    motor.llm.complete = completa
     a = motor.ask("Cos'è PediBot e come funziona?", lang="en")
     assert a.verification == "about"
-    assert a.text.startswith("PediBot è un servizio gratuito")
+    assert pedido and "in Italian" in pedido[0]
 
 
 # ── la alarma en una lengua que el triaje no sabe leer ──────────────────────────────────────

@@ -78,8 +78,17 @@ def test_the_spanish_to_english_bridge_stays_tiny(syn: Synonyms):
     entradas nuevas son las formas de «le sangro la nariz» —una pregunta real del registro que se
     quedó sin respuesta—, y el corpus **no tiene ninguna hoja española de epistaxis**, que es
     justo el caso para el que existe el puente. Medido después: `source_hit` **0,972**, por
-    encima del 0,964 que este candado toma como bueno."""
+    encima del 0,964 que este candado toma como bueno.
+
+    Subido de 23 a 120 el 22-sep-2026, y por la misma razón multiplicada. De las 854 preguntas
+    de la batería del operador, 87 de las primeras 380 salieron «no tengo fuente», y muchas no
+    eran por falta de documento: «dentición» no llevaba a `teething`, que está en el corpus
+    desde el primer día, y «boca abajo» no llevaba al sueño seguro. Las 82 entradas nuevas son
+    crianza —sueño, rabietas, hitos, dientes, ojos, el niño que no come—, que es justo lo que el
+    corpus tiene en inglés y no en castellano. Medido como pide el candado, con las 45 fuentes
+    nuevas dentro: `source_hit` **0,953**, el mismo que antes de tocar nada, y `triage_exact`
+    0,975 igual. Lo que sube es lo que este candado no mide: las respuestas con fuente."""
     bridge = syn._maps.get("es_en", {})
-    assert len(bridge) <= 23, "the bridge grew: re-measure the golden set before widening it"
+    assert len(bridge) <= 120, "the bridge grew: re-measure the golden set before widening it"
     for covered in ("fiebre", "tos", "vómit", "diarrea", "convuls", "quemadura", "vacun"):
         assert covered not in bridge, f"{covered} has Spanish leaflets: bridging it hurts retrieval"

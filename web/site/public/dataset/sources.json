@@ -840,6 +840,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_001585",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Bowlegs",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/001585.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_breastfeeding",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -852,6 +864,30 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_000967",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Breath-holding spell",
+  "year": "",
+  "lang": "en",
+  "topic": "neurologia",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/000967.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_007213",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Bruise",
+  "year": "",
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/007213.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_burns",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -862,6 +898,30 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/burns.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_002445",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Caffeine in the diet",
+  "year": "",
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002445.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_001006",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Chalazion",
+  "year": "",
+  "lang": "en",
+  "topic": "ojos",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/001006.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_en_chickenpox",
@@ -948,6 +1008,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_002070",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Colds and flu - antibiotics",
+  "year": "",
+  "lang": "en",
+  "topic": "medicamentos",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002070.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_commoncold",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1032,6 +1104,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_007594",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "DTaP (diphtheria, tetanus, and pertussis) vaccine - what you need to know",
+  "year": "",
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/007594.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_dehydration",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1044,6 +1128,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_002213",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Dental care - child",
+  "year": "",
+  "lang": "en",
+  "topic": "dental",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002213.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_es_dehydration",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1054,6 +1150,42 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/spanish/dehydration.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_002002",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Developmental milestones record",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002002.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_002011",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Developmental milestones record - 18 months",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002011.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_002012",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Developmental milestones record - 2 years",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002012.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_es_diarrhea",
@@ -1078,6 +1210,18 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/diarrhea.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_002211",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Discipline in children",
+  "year": "",
+  "lang": "en",
+  "topic": "crianza",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002211.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_en_earinfections",
@@ -1140,6 +1284,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_001649",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Enlarged adenoids",
+  "year": "",
+  "lang": "en",
+  "topic": "orl",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/001649.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_es_poisoning",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1150,6 +1306,18 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/spanish/poisoning.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_002084",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Eye - foreign object in",
+  "year": "",
+  "lang": "en",
+  "topic": "ojos",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002084.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_en_fainting",
@@ -1198,6 +1366,18 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/foodallergy.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_003140",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Frequent or urgent urination",
+  "year": "",
+  "lang": "en",
+  "topic": "urinario",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/003140.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_en_gastroenteritis",
@@ -1284,6 +1464,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_002004",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Infant - newborn development",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002004.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_infantandnewborncare",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1306,6 +1498,18 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/infantandnewbornnutrition.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_002447",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Infant formulas",
+  "year": "",
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002447.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_es_earinfections",
@@ -1368,6 +1572,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_007603",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "MMR (measles, mumps, and rubella) vaccine - what you need to know",
+  "year": "",
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/007603.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_measles",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1404,6 +1620,30 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_000809",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Night terrors in children",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/000809.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_003209",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Nightmares",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/003209.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_es_infantandnewbornnutrition",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1414,6 +1654,30 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/spanish/infantandnewbornnutrition.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_002208",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Over-the-counter medicines",
+  "year": "",
+  "lang": "en",
+  "topic": "medicamentos",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002208.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_001538",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Pica",
+  "year": "",
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/001538.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_en_pinkeye",
@@ -1440,6 +1704,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_007605",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Pneumococcal conjugate vaccine - what you need to know",
+  "year": "",
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/007605.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_pneumonia",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1462,6 +1738,18 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/poisoning.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_002013",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Preschooler development",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002013.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_es_burns",
@@ -1510,6 +1798,18 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/spanish/hayfever.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
+ },
+ {
+  "doc_id": "mlp_en_007608",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Rotavirus vaccine - what you need to know",
+  "year": "",
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/007608.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_es_childrenshealth",
@@ -1596,6 +1896,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_001542",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Separation anxiety in children",
+  "year": "",
+  "lang": "en",
+  "topic": "crianza",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/001542.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_sorethroat",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1606,6 +1918,30 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/sorethroat.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_001430",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Speech disorders - children",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/001430.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_003074",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Stridor",
+  "year": "",
+  "lang": "en",
+  "topic": "respiratorio",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/003074.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_en_suicide",
@@ -1644,6 +1980,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
  {
+  "doc_id": "mlp_en_001922",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Temper tantrums",
+  "year": "",
+  "lang": "en",
+  "topic": "crianza",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/001922.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_en_toddlerhealth",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1654,6 +2002,54 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/toddlerhealth.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_002010",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Toddler development",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002010.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_000944",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Toilet training tips",
+  "year": "",
+  "lang": "en",
+  "topic": "crianza",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/patientinstructions/000944.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_001925",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Traveler's guide to avoiding infectious diseases",
+  "year": "",
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/001925.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_002427",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Traveling with children",
+  "year": "",
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002427.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_en_urinarytractinfections",
@@ -1680,6 +2076,18 @@
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
  {
+  "doc_id": "mlp_en_002024",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Vaccines - immunizations",
+  "year": "",
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002024.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
   "doc_id": "mlp_es_childhoodvaccines",
   "org": "MedlinePlus",
   "org_full": "MedlinePlus (U.S. National Library of Medicine)",
@@ -1702,6 +2110,54 @@
   "doc_type": "hoja_padres",
   "url": "https://medlineplus.gov/spanish/chickenpox.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "mlp_en_003029",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Vision problems",
+  "year": "",
+  "lang": "en",
+  "topic": "ojos",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/003029.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_002405",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Vitamin D",
+  "year": "",
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/002405.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_000897",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Vulvovaginitis",
+  "year": "",
+  "lang": "en",
+  "topic": "urinario",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/000897.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
+ },
+ {
+  "doc_id": "mlp_en_003084",
+  "org": "MedlinePlus",
+  "org_full": "MedlinePlus (U.S. National Library of Medicine)",
+  "title": "Weight gain – unintentional",
+  "year": "",
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "url": "https://medlineplus.gov/ency/article/003084.htm",
+  "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
  {
   "doc_id": "mlp_en_whoopingcough",
@@ -1944,6 +2400,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_anal_fissure",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Anal fissure",
+  "year": 2025,
+  "lang": "en",
+  "topic": "digestivo",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/anal-fissure/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
   "doc_id": "nhs_en_anaphylaxis",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2160,6 +2628,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_taking_care_of_childrens_teeth",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Children's teeth",
+  "year": 2025,
+  "lang": "en",
+  "topic": "dental",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/live-well/healthy-teeth-and-gums/taking-care-of-childrens-teeth/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
   "doc_id": "nhs_en_colic",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2256,6 +2736,30 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_dental_abscess",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Dental abscess",
+  "year": 2026,
+  "lang": "en",
+  "topic": "dental",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/dental-abscess/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
+  "doc_id": "nhs_en_developmental_dysplasia_of_the_hip",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Developmental dysplasia of the hip",
+  "year": 2026,
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/developmental-dysplasia-of-the-hip/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
   "doc_id": "nhs_en_diarrhoea_and_vomiting",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2266,6 +2770,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/symptoms/diarrhoea-and-vomiting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_double_vision",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Double vision",
+  "year": 2024,
+  "lang": "en",
+  "topic": "ojos",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/double-vision/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_ear_infections",
@@ -2326,6 +2842,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/eye-injuries/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_eye_tests_for_children",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Eye tests for children",
+  "year": 2023,
+  "lang": "en",
+  "topic": "ojos",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/eye-tests-for-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_fainting",
@@ -2434,6 +2962,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/fungal-nail-infection/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_fussy_eaters",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Fussy eaters",
+  "year": 2023,
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/baby/weaning-and-feeding/fussy-eaters/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_glandular_fever",
@@ -2578,6 +3118,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_heat_rash_prickly_heat",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Heat rash (prickly heat)",
+  "year": 2024,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/heat-rash-prickly-heat/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_heel_pain",
@@ -2808,6 +3360,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_labial_fusion",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Labial fusion",
+  "year": 2025,
+  "lang": "en",
+  "topic": "urinario",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/labial-fusion/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
   "doc_id": "nhs_en_lazy_eye",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -2830,6 +3394,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/measles/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_medicines_for_babies_and_children",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Medicines for babies and children",
+  "year": 2025,
+  "lang": "en",
+  "topic": "medicamentos",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/baby/health/medicines-for-babies-and-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_meningitis",
@@ -2952,6 +3528,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_night_sweats",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Night sweats",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/night-sweats/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
   "doc_id": "nhs_en_night_terrors",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3000,6 +3588,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_antibiotics",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Overview - Antibiotics",
+  "year": 2022,
+  "lang": "en",
+  "topic": "medicamentos",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/antibiotics/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
   "doc_id": "nhs_en_coeliac_disease",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3010,6 +3610,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/coeliac-disease/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_scoliosis",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Overview - Scoliosis",
+  "year": 2023,
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/scoliosis/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_squint",
@@ -3216,6 +3828,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_short_sightedness",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Short-sightedness (myopia)",
+  "year": 2025,
+  "lang": "en",
+  "topic": "ojos",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/short-sightedness/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
   "doc_id": "nhs_en_signs_in_children",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3238,6 +3862,54 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/slapped-cheek-syndrome/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_sleep_apnoea",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Sleep apnoea",
+  "year": 2026,
+  "lang": "en",
+  "topic": "orl",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/sleep-apnoea/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
+  "doc_id": "nhs_en_sleepwalking",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Sleepwalking",
+  "year": 2025,
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/sleepwalking/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
+  "doc_id": "nhs_en_snoring",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Snoring",
+  "year": 2023,
+  "lang": "en",
+  "topic": "orl",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/snoring/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
+  "doc_id": "nhs_en_soiling_child_pooing_their_pants",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Soiling (child pooing their pants)",
+  "year": 2023,
+  "lang": "en",
+  "topic": "digestivo",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/soiling-child-pooing-their-pants/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_soothing_a_crying_baby",
@@ -3274,6 +3946,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/sprains-and-strains/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_stye",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Stye",
+  "year": 2024,
+  "lang": "en",
+  "topic": "ojos",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/stye/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_sudden_infant_death_syndrome_sids",
@@ -3348,6 +4032,18 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_temper_tantrums",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Temper tantrums",
+  "year": 2024,
+  "lang": "en",
+  "topic": "crianza",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/baby/babys-development/behaviour/temper-tantrums/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
   "doc_id": "nhs_en_threadworms",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3394,6 +4090,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/conditions/tonsillitis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_toothache",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Toothache",
+  "year": 2024,
+  "lang": "en",
+  "topic": "dental",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/conditions/toothache/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_trichotillomania",
@@ -3466,6 +4174,18 @@
   "doc_type": "hoja_padres",
   "url": "https://www.nhs.uk/symptoms/vaginal-discharge/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_vitamins_for_children",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Vitamins for children",
+  "year": 2024,
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "url": "https://www.nhs.uk/baby/weaning-and-feeding/vitamins-for-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
  {
   "doc_id": "nhs_en_warts_and_verrucas",

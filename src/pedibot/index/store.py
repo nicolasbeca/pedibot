@@ -959,6 +959,15 @@ class Index:
         row = self.con.execute("SELECT v FROM meta WHERE k='n_chunks'").fetchone()
         return int(row[0]) if row else 0
 
+    def documents(self) -> int:
+        """Cuántos documentos distintos hay, que es lo que se le dice a un padre.
+
+        `size()` cuenta trozos —8.898 hoy—, un número que no significa nada fuera de aquí. Lo que
+        la ficha de «¿de dónde sacas la información?» tiene que decir es cuántos documentos.
+        """
+        row = self.con.execute("SELECT COUNT(DISTINCT doc_id) FROM chunks").fetchone()
+        return int(row[0]) if row else 0
+
     def get(self, chunk_id: str) -> Chunk | None:
         row = self.con.execute("SELECT data FROM chunks WHERE chunk_id=?", (chunk_id,)).fetchone()
         return Chunk.model_validate_json(row[0]) if row else None

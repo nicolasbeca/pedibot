@@ -1497,3 +1497,31 @@ La misma tarde salió su pariente: una regla del prompt pensada para contestar p
 pregunta («¿puedo darle miel?» → «No, …») acabó inventando veredictos («No hay ningún problema en
 que siga con el biberón») que ninguna fuente daba. Cada regla que empuja al modelo hacia una
 forma de frase le empuja también a rellenarla cuando no tiene con qué.
+
+## L223 · «ron» vive dentro de «biberón» (22-sep-2026)
+
+«Mi bebé ha tomado un biberón que llevaba dos horas fuera» recibía el aviso de **intoxicación
+etílica**. El patrón de alcohol listaba `ron` sin límites de palabra, y `ron` está dentro de
+`bibeRON`. Media hora después, el mismo error con otra cara: la exclusión que acababa de escribir
+para «el perro de los vecinos NUNCA le ha mordido» tenía `no le ha`, que está dentro de
+«el gato del veciNO LE HA arañado», y apagó una mordedura de verdad.
+
+Las dos veces el patrón era mío y las dos veces el fallo fue el mismo: **una palabra corta sin
+`\b` no es una palabra, es una subcadena**. Y no basta con escribirlo: entre comillas **dobles**,
+YAML lee `\b` como un retroceso y el patrón llega al motor sin sus límites — con comillas simples
+o sin comillas llega entero. El síntoma es desconcertante, porque el fichero se ve bien y la
+regla se comporta como si no lo estuviera.
+
+## L224 · Doscientas veinte preguntas sobre nosotros, y un folleto para todas (22-sep-2026)
+
+De las 854 preguntas de la batería del operador, 220 no eran de salud: eran sobre PediBot. «¿Puedo
+subirle una foto de la erupción?», «¿guarda las conversaciones?», «¿entiende hindi?», «¿puede
+buscar una farmacia abierta?», «¿recuerda lo que le dije hace diez minutos?». Las 220 recibían el
+**mismo párrafo de presentación**, que no contesta a ninguna.
+
+Se arregla igual que una pregunta de salud: una ficha de hechos (`config/sobre_pedibot.md`), la
+regla de siempre —lo que la ficha no dice, no se dice— y los números sin escribir, rellenados por
+el sistema que está corriendo. Dos cosas que no se ven venir: la mitad de esas preguntas son
+cosas que PediBot **no** puede hacer, y decirlo en la primera frase vale más que cualquier
+descripción; y un test que compruebe que la ficha sigue siendo verdad es obligatorio, porque una
+ficha que envejece mal se le enseña al padre con la misma cara de certeza que una verdadera.

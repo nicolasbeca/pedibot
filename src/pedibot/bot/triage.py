@@ -499,6 +499,33 @@ NEGADORES = re.compile(
 #: Va aparte de `NEGADORES` porque es otra cosa: no niega el hecho, lo pone en hipotético. Y se
 #: exige el INTERROGATIVO delante («cómo», «how to», «كيف») a propósito: «no pude evitar que se
 #: tragara una pila» lleva «evitar» y tiene que seguir saltando, porque ahí la pila ya está dentro.
+#: Preguntarle AL CHAT qué sabe hacer (22-sep-2026). «¿Puede decirme qué hacer ante una
+#: convulsión?» es un padre conociendo la herramienta un martes por la tarde, no una convulsión.
+#: Nunca basta por sí sola: hace falta además que la frase hable en general (`EN_GENERAL`), para
+#: que «¿me ayudas? mi hijo se ha atragantado» siga siendo lo que es.
+ASISTENTE = re.compile(
+    r"(?:me )?(?:puedes?|pod[ée]is|podr[íi]as?|podr[íi]a|sabes|sabr[íi]as)\s+"
+    r"(?:decirme|explicarme|contarme|indicarme|orientarme|ayudarme|ense[ñn]arme|darme)"
+    r"|(?:can|could) you (?:tell|explain|help|show|say|give)"
+    r"|(?:peux|pouvez)[- ](?:tu|vous)\s+(?:me )?(?:dire|expliquer|aider|montrer)"
+    r"|(?:kannst du|k[öo]nnen sie|kannst)\s+(?:mir )?(?:sagen|erkl[äa]ren|helfen|zeigen)"
+    r"|(?:можешь|можете)\s+(?:ли\s+)?(?:мне\s+)?(?:сказать|объяснить|помочь|подсказать)"
+    r"|(?:pode|podes|poderia|podia)\s+(?:me\s+)?(?:dizer|explicar|ajudar|mostrar)"
+    r"|هل يمكنك|هل تستطيع|ممكن تخبرني"
+    r"|क्या आप\s+\S*\s*(?:बता|समझा|मदद|दिखा)",
+    re.I | re.U,
+)
+#: Y la mitad que lo hace seguro: la frase habla de un caso cualquiera, no del que está pasando.
+EN_GENERAL = re.compile(
+    r"\bqu[ée] hacer\b|\bqu[ée] hago\b|\bante\b|\ben caso de\b|\bdiferencia entre\b|\bsi\b"
+    r"|\bwhat to do\b|\bin case of\b|\bdifference between\b|\bif\b"
+    r"|\bque faire\b|\ben cas de\b|\bdiff[ée]rence entre\b|\bs['i]\b"
+    r"|\bwas man\b|\bwas tun\b|\bbei einem?\b|\bunterschied zwischen\b|\bwenn\b"
+    r"|что делать|в случае|разниц\w* между|если"
+    r"|ماذا أفعل|في حال|الفرق بين|إذا"
+    r"|क्या करें|के मामले में|अंतर|अगर",
+    re.I | re.U,
+)
 HIPOTETICA = re.compile(
     r"(?:c[óo]mo|como|how (?:to|do i|can i)|comment|wie (?:kann|man)|как|كيف|कैसे)"
     r"[^.]{0,25}"
@@ -620,7 +647,9 @@ MARCO_AL_FINAL = re.compile(
 #: esta mañana» es de hoy y hay que verlo. Meses y años, no.
 PASADO_REMOTO = re.compile(
     r"(?:hace|desde hace)[^.]{0,12}(?:\d+|un|una|dos|tres|cuatro|cinco|seis|varios|varias|muchos)"
-    r"[^.]{0,6}(?:a[ñn]os?|meses|semanas)"
+    # 22-sep-2026: «tuvo fiebre hace UNA SEMANA y ahora tiene granitos» —el exantema súbito,
+    # de libro— daba aviso de lactante con fiebre: el plural estaba escrito y el singular no.
+    r"[^.]{0,6}(?:a[ñn]os?|mes(?:es)?|semanas?)"
     r"|(?:el|los) a[ñn]os? pasad|la semana pasada|el mes pasado"
     r"|\bde beb[ée]\b|cuando era (?:beb[ée]|peque|m[áa]s peque)"
     r"|(?:\d+|a|one|two|three|four|five|six|several|many)[^.]{0,6}"
@@ -654,7 +683,10 @@ PASADO_REMOTO = re.compile(
 #: de estar preparado. Y es tan común que no filtrarla convierte el aviso rojo en ruido: de las
 #: nueve lenguas probadas, las nueve daban emergencia.
 CONDICIONAL = re.compile(
-    r"(?:qu[ée] (?:hago|hacer|debo hacer|tengo que hacer)|c[óo]mo act[úu]o)[^.?!]{0,40}"
+    # 22-sep-2026: «¿qué pasa si…?» pregunta por un supuesto, en las ocho lenguas
+    r"(?:qu[ée] pasa|qu[ée] ocurre|what happens|que se passe|was passiert|что будет|что происходит"
+    r"|ماذا يحدث|क्या होता है)[^.?!]{0,40}\b(?:si|if|s['i]|wenn|если|إذا|अगर)\b"
+    r"|(?:qu[ée] (?:hago|hacer|debo hacer|tengo que hacer)|c[óo]mo act[úu]o)[^.?!]{0,40}"
     r"\b(?:si|cuando)\b"
     r"|\bsi\b[^.?!]{0,60}(?:qu[ée] (?:hago|hacer|debo))"
     r"|what (?:should|do|would) i do[^.?!]{0,40}\bif\b"
@@ -793,6 +825,9 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
             return True
     frase = _frase_de(texto, inicio)
     if CONDICIONAL.search(frase) or PASADO_REMOTO.search(frase):
+        return True
+    # preguntarle al chat qué sabe hacer, hablando de un caso cualquiera: las dos cosas
+    if ASISTENTE.search(frase) and EN_GENERAL.search(frase):
         return True
     # «¿El sarampión puede dar úlceras en la boca?»: el verbo de causa Y la pregunta, las dos
     # cosas, y en la oración entera porque el «puede dar» puede ir delante o detrás de la señal.

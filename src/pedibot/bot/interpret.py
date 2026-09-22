@@ -36,8 +36,21 @@ SYSTEM = (
     '  "lang": ISO 639-1 code of the language the parent wrote in (two lowercase letters),\n'
     '  "lang_name": that language\'s name in English (e.g. "Italian"),\n'
     '  "intent": "health" if it asks about a baby\'s or child\'s health, symptoms, medicines, '
-    'vaccines, growth, feeding or development; "about_pedibot" if it asks what this service '
-    "is, how it works, who made it, where its information comes from or whether it is free; "
+    'vaccines, growth, feeding or development; "about_pedibot" if it asks about this service '
+    "itself — what it is, how it works, who made it, where its information comes from, whether "
+    "it is free, what it can or cannot do, what it keeps or remembers, which languages it "
+    "understands, what happens if it is given odd input, or which tools the site has. A question "
+    'addressed to the assistant about whether it is able to do something — "can you find a '
+    'pharmacy that is open?", "can you read my child\'s test results?", "do you understand voice '
+    'messages?" — is "about_pedibot" too, even when the thing asked about has nothing to do with '
+    "children's health: the parent is asking what this service can do. BUT a "
+    'question of the form "can you help me with X", "can you tell me about X" or "can you '
+    'explain X", where X is a child-health subject, is "health", not "about_pedibot": the parent '
+    "wants the answer about X, not a description of the service. That includes asking what "
+    'something means ("what does every 8 hours mean?", "what is mg/ml?"), when to do something '
+    '("when do I go to A&E and when do I ask for an appointment?"), or how to do something ("how '
+    'do I make a baby\'s room safe?", "what should I tell the paediatrician?"): those are '
+    '"health" whoever they are addressed to; '
     '"language_request" if it only asks to be answered in another language; "other" if it has '
     "nothing to do with children's health (a pet, homework, the weather, a recipe). A message "
     'that mixes a child-health question with something unrelated is "health", and query_en '

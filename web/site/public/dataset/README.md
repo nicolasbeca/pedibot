@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**570 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**630 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,11 +30,11 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (244 of 570 do) |
+| `year` | where the document states one (266 of 630 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (522 of 570 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (582 of 630 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -42,8 +42,8 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | organisation | documents |
 |---|---|
 | WHO — World Health Organization | 214 |
-| NHS — NHS (National Health Service, England) | 135 |
-| MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 81 |
+| NHS — NHS (National Health Service, England) | 157 |
+| MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 119 |
 | CDC — Centers for Disease Control and Prevention (USA) | 38 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
 | SEUP — Sociedad Española de Urgencias de Pediatría | 29 |
@@ -67,7 +67,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 255 |
+| English (`en`) | 315 |
 | Spanish (`es`) | 109 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 49 |
@@ -76,32 +76,33 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | Portuguese (`pt`) | 14 |
 | hi (`hi`) | 10 |
 
-## By topic (22 topics)
+## By topic (23 topics)
 
 | topic | documents |
 |---|---|
-| `piel` | 69 |
-| `respiratorio` | 67 |
-| `digestivo` | 63 |
-| `general` | 60 |
-| `accidentes` | 52 |
-| `vacunas` | 43 |
-| `alimentacion` | 29 |
-| `desarrollo` | 24 |
+| `piel` | 70 |
+| `respiratorio` | 68 |
+| `digestivo` | 65 |
+| `general` | 63 |
+| `accidentes` | 53 |
+| `vacunas` | 48 |
+| `desarrollo` | 37 |
+| `alimentacion` | 36 |
 | `salud_mental` | 22 |
+| `orl` | 19 |
+| `neurologia` | 17 |
 | `fiebre` | 17 |
-| `orl` | 16 |
-| `neurologia` | 16 |
 | `recien_nacido` | 15 |
 | `alergia` | 15 |
+| `medicamentos` | 14 |
+| `crianza` | 13 |
 | `urgencias` | 13 |
-| `medicamentos` | 10 |
+| `ojos` | 12 |
 | `intoxicacion` | 10 |
-| `crianza` | 8 |
+| `dental` | 9 |
 | `lactante` | 8 |
-| `ojos` | 5 |
-| `dental` | 5 |
 | `auto` | 3 |
+| `urinario` | 3 |
 
 ## How it was put together
 

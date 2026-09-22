@@ -20,6 +20,47 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 22-sep-2026 (mañana) · la tanda de 854 preguntas
+
+El operador mandó el lote de la mañana: 854 preguntas escritas de una tirada, de recién nacido a
+escolar, con un bloque final de 220 que no son de salud sino **sobre PediBot** («¿puedo subirle
+una foto de la erupción?», «¿guarda las conversaciones?», «¿entiende hindi?»). Guardadas en
+`eval/bateria_operador/05_sexta_600.txt`.
+
+- **Las 220 sobre PediBot recibían todas el mismo párrafo de presentación.** Ahora hay una ficha
+  de hechos (`config/sobre_pedibot.md`), el modelo contesta LA pregunta con ella y sólo con ella,
+  y los números —documentos, reglas, países— los rellena el sistema que está corriendo. La mitad
+  de esas preguntas son cosas que no se pueden hacer, y eso se dice en la primera frase.
+- **Diecisiete falsas alarmas del triaje**, y las peores no eran raras: un bebé de 8 meses que
+  «no responde cuando le llamamos por su nombre» → emergencia; un bebé que vomita tras el huevo →
+  aviso de trastorno alimentario; un biberón que llevaba dos horas fuera → intoxicación etílica,
+  porque «ron» vive dentro de «bibeRON».
+- **Preguntar al chat qué sabe hacer ya no es una urgencia**: «¿puede decirme qué hacer ante una
+  convulsión?» llevaba encima «llama a una ambulancia».
+- **45 fuentes nuevas** (570 → 615 documentos): sueño, conducta, hitos por edad, dientes, ojos,
+  el niño que no come, y la medicina que se da mal en casa. Ahí estaban 87 de los «no tengo
+  fuente» de las primeras 380 respuestas.
+- **El puente castellano→inglés** tenía media crianza sin cruzar: «dentición» no llevaba a
+  `teething`, que está en el corpus desde el primer día. Y «boca abajo» no llevaba al sueño
+  seguro.
+- **Una pregunta con un hijo dentro no es «fuera de tema»**: «mi hija llora cuando se acaba la
+  batería del móvil» recibía «eso no es de PediBot».
+- **Dosis con peso y sin nombre del medicamento**: se pregunta cuál de los dos es, en vez de
+  «no tengo información».
+- **Cuatro alarmas que faltaban**, de leer lo que marcó el revisor: el dolor de cabeza que
+  despierta de noche, los moratones sin golpe o desproporcionados, una pupila más grande que la
+  otra y la cojera después de una caída. Triaje: 96 reglas.
+- **Medido sobre las 854, antes y después**: sin fuente 154 → 118, «eso no es de PediBot» 37 →
+  12, «descríbemelo mejor» 15 → 4, respuestas con fuente 305 → 355. Avisos: 15 emergencias → 7,
+  40 urgentes → 26, 4 de salud mental → 0, y las 26 apagadas son una por una las falsas; ninguna
+  alarma nueva. El conjunto dorado, igual que antes de tocar nada (triaje 0,975, fuentes 0,953).
+- **Corpus: 630 documentos** (+60 en el día).
+- **Lo que queda pendiente, con nombre**: el revisor marca 38 respuestas que contestan del tema
+  pero no de la pregunta, y casi todas son de crianza sin fuente exacta —«cómo le quito la
+  costumbre de dormirse agarrado a mi pelo» contestado con las horas de sueño de la OMS—. Ahí lo
+  honesto es decir que las guías no dicen cómo hacerlo y contar lo que sí dicen, que es lo que
+  ya hacen algunas. Es lo siguiente.
+
 ## 22-sep-2026 (noche) · repaso completo antes de la tanda del operador
 
 - Revisión dentro del chat: tras redactar, una lectura corta comprueba si la respuesta contesta
