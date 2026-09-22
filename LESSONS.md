@@ -1556,3 +1556,20 @@ el código, la página legal y la cabeza de quien lo hizo, y por eso la respuest
 Y un detalle que sólo se ve probando en otra lengua: el modelo, al traducir, tradujo también las
 direcciones —`pedibot.xyz/it/dose`— y las inventó para idiomas que el sitio no tiene. Una URL es
 un dato, no una palabra.
+
+## L227 · «Lo ha escrito un test» explicaba lo que veía, y era falso (22-sep-2026)
+
+Al comprometer, aparecieron dos guías nuevas en `web/content` —ahogamiento en árabe, percentiles
+en alemán— con la fecha de hoy. Supuse que las había generado la prueba de publicación al correr
+la batería, las saqué del repo con un commit que decía «aquí no entra nada hacia fuera sin que el
+operador lo lea», y volvieron a aparecer en el commit siguiente. Las borré otra vez.
+
+No las escribía ningún test. Las escribe el temporizador `pedibot-publish` **en el servidor**, y
+`deploy.sh` se las trae en cada despliegue a propósito: su cabecera lo dice en la línea 15, «the
+server writes new guides, so normally its web/content wins». Es decir: estuve borrando contenido
+del producto dos veces seguidas, con una razón que sonaba responsable.
+
+Lo que falló no fue la deducción sino el orden: **la explicación llegó antes que la comprobación,
+y encajaba**. Un fichero que reaparece después de borrarlo es la señal de que alguien lo está
+poniendo ahí, y la respuesta estaba a un `grep content ops/deploy.sh`. Regla: cuando algo vuelve
+solo, no lo vuelvas a borrar — averigua quién lo pone.
