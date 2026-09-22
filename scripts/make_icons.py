@@ -146,6 +146,22 @@ def main() -> int:
     for lado in (48, 72, 96, 144, 192):
         guarda(APP / f"android/mipmap-{lado}.png", lado)
 
+    # 22-sep-2026: y la tarjeta de compartir, que se quedó fuera tres días y siguió enseñando el
+    # dibujo viejo en cada enlace que alguien pegaba. Vive en su propio script porque es un
+    # cartel, no un icono, pero sale del mismo logo y se rehace a la vez.
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("make_og", RAIZ / "scripts" / "make_og.py")
+    assert spec and spec.loader
+    make_og = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(make_og)
+    tarjeta = make_og.construye()
+    for destino in make_og.DESTINOS:
+        tarjeta.save(destino, optimize=True)
+        hechos.append(
+            f"{destino.relative_to(RAIZ)} (1200x630, {destino.stat().st_size / 1024:.1f} kB)"
+        )
+
     print(f"{len(hechos)} ficheros desde {ORIGEN.name}:")
     for h in hechos:
         print("  ", h)

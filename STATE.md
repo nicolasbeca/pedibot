@@ -20,6 +20,21 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 22-sep-2026 (tarde) · la foto que sí se puede, y la tarjeta
+
+- **La ficha decía que PediBot no puede ver fotos. Puede.** `/api/photo` lleva meses vivo: el
+  botón de la cámara comprueba tres signos de la SEUP en una foto de piel, labios o cara y nunca
+  dice qué erupción es. Lo cazó el operador leyendo un tuit mío que repetía la frase falsa.
+  Probado en producción antes de tocar nada: funciona. Ficha corregida, y el candado ahora mira
+  también lo que la ficha NIEGA (L229).
+- **La tarjeta de compartir tenía el logo antiguo**: `make_icons.py` sacaba todos los iconos del
+  logo de verdad desde el 19-sep y la tarjeta se quedó fuera. Nueva `scripts/make_og.py`: fondo
+  verde hondo, la cara de verdad grande, el nombre en crema, y WHO · NHS · CDC · AEP en cápsulas.
+  Cada color se mide contra su fondo antes de pintarlo, y el script falla si un texto se sale.
+- Al rehacerla, la cara salió **verde sobre verde** —el recorte por umbral se comió el crema de
+  dentro— que es justo lo que el operador acababa de señalar del logo original. Hay un test que
+  mira el píxel del centro de la cara.
+
 ## 22-sep-2026 (mediodía) · el mensaje de las gotas, publicado en CHIFA
 
 CHIFA distribuyó a las 11:13 el mensaje del operador: «Paracetamol drops: 100 mg/5 mL in

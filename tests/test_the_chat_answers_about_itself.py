@@ -67,7 +67,10 @@ def test_the_card_carries_the_real_numbers() -> None:
 
 def test_the_card_says_what_it_cannot_do() -> None:
     f = ficha_de(docs=1, rules=1, countries=1, vax=1)
-    for no_puede in ("photographs", "pharmacy", "pregnancy", "reminders"):
+    # 22-sep-2026: aquí ponía «photographs», y lo que había detrás era la frase falsa de que no
+    # puede ver fotos. Sí puede, para tres señales de alarma, desde hace meses. Se comprueban
+    # las cosas que de verdad no hace.
+    for no_puede in ("prescription", "pharmacy", "pregnancy", "reminders"):
         assert no_puede in f
 
 

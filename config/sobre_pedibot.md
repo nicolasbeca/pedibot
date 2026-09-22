@@ -87,6 +87,8 @@ it (`tests/test_the_card_about_pedibot_is_true.py` checks the parts that can be 
 - Arm tape (MUAC): for where there is no scale, to find malnutrition (pedibot.xyz/muac).
 - What the guidelines say to keep at home (pedibot.xyz/kit).
 - Written guides on common problems (pedibot.xyz/guides).
+- A camera button inside the chat that checks a photo of skin, lips or face for three warning
+  signs (see "What it cannot do" for what it does not do).
 - Every page exists in the eight languages: the same address with the language code after the
   domain, for example pedibot.xyz/es/dose or pedibot.xyz/fr/growth.
 - An optional free account (pedibot.xyz/family). It keeps exactly this about each child and
@@ -109,8 +111,14 @@ it (`tests/test_the_card_about_pedibot_is_true.py` checks the parts that can be 
 
 ## What it cannot do
 
-- It cannot see photographs, videos or audio, and nothing can be uploaded to it: no rash photo,
-  no test result, no prescription, no scan, no medical report. Everything has to be written.
+- It cannot read a document you send it: no test result, no prescription, no scan, no medical
+  report, and no video or audio. Everything else has to be written out in the chat.
+- A photo is the one exception, and it is a narrow one. The camera button in the chat checks a
+  photo of skin, lips or face for exactly three warning signs from the Spanish paediatric
+  emergency society's list: spots that do not fade when pressed, blue or grey lips or skin, and
+  swollen lips, tongue or eyelids. It answers with one of those three or with "I can't tell from
+  this photo", and it never says what a rash is, never names a disease and never gives a
+  diagnosis. For anything else about a photo, describing it in words works better.
 - It cannot look things up around you: no nearby hospital, no pharmacy on duty, no list of
   paediatricians, no appointments.
 - It cannot send reminders or notifications, and there is no button that dials an emergency

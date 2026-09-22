@@ -1591,3 +1591,26 @@ La regla general: **cuando el error posible es de un factor cinco, la diferencia
 escrita, no ordenada.** Y la web ya lo había resuelto mejor ese mismo día, pidiendo la
 concentración del bote en un campo; el chat se quedó atrás dos días porque nadie volvió a mirar
 la otra mitad del producto.
+
+## L229 · La ficha negaba una herramienta que el producto tiene (22-sep-2026)
+
+Esta mañana escribí `config/sobre_pedibot.md` para que el chat pudiera contestar preguntas sobre
+sí mismo, con un test que comprobara que sigue siendo verdad. Dentro puse: «no puede ver
+fotografías, vídeos ni audio, y no se le puede subir nada». Por la tarde, el operador leyó un
+tuit que yo había escrito repitiéndolo: **«una de las primeras cosas que hiciste fue meter esa
+herramienta. Si no funciona quítala del chatbot»**.
+
+Tenía razón. `/api/photo` lleva meses vivo: el botón de la cámara del chat manda la foto a un
+modelo de visión que busca tres signos de la lista de la SEUP —manchas que no se borran al
+presionar, labios azules, hinchazón— y nunca dice qué erupción es. Probado en producción en ese
+momento: contesta, y con una imagen lisa dice «no puedo valorar esta foto». Funciona.
+
+Durante medio día el chat le dijo a cada padre que preguntó por una foto que no podía mirarla,
+teniendo el botón al lado. Y el test que escribí para que la ficha no mintiera comprobaba **las
+páginas, los idiomas, los medicamentos y las 24 horas de memoria: todo lo que la ficha AFIRMA, y
+nada de lo que NIEGA.** Una negación falsa es peor que un número viejo, porque le quita al padre
+algo que existe y no deja rastro de haberlo hecho.
+
+Dos reglas. Una: **el inventario de un producto se lee del producto** —los endpoints, los
+botones, los ajustes— y no de lo que uno recuerda haber construido. Y dos: **lo que un documento
+niega se comprueba igual que lo que afirma**; si no se puede comprobar, no se escribe.

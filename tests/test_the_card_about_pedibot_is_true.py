@@ -63,3 +63,25 @@ def test_the_holes_are_filled_and_none_is_left() -> None:
     assert "{" not in f and "}" not in f
     for n in ("570", "92", "91", "66"):
         assert n in f
+
+
+def test_what_the_card_denies_is_really_denied() -> None:
+    """La ficha dijo que PediBot no puede ver fotos, y PediBot lleva meses mirando fotos.
+
+    Lo cazó el operador el 22-sep-2026, el mismo día, leyendo un tuit que yo había escrito con
+    esa frase dentro: «una de las primeras cosas que hiciste fue meter esa herramienta». El test
+    que escribí esa mañana comprobaba las páginas, los idiomas, los medicamentos y las 24 horas
+    de memoria — todo lo que la ficha AFIRMA— y ni una de las cosas que NIEGA. Una negación
+    falsa es peor que un número viejo: le quita al padre una herramienta que existe.
+
+    Esto comprueba la única que se puede comprobar desde aquí, que además es la que falló.
+    """
+    from pedibot.settings import get_settings
+
+    mira_fotos = get_settings().photo_enabled
+    dice_que_no = "cannot see photographs" in TEXTO or "no rash photo" in TEXTO
+    assert not (mira_fotos and dice_que_no), (
+        "photo_enabled está puesto y la ficha dice que no puede ver fotos"
+    )
+    if mira_fotos:
+        assert "photo of skin, lips or face" in TEXTO, "la ficha no cuenta la comprobación de foto"
