@@ -1,14 +1,88 @@
-# PediBot v2
+# PediBot
 
-Asistente pediátrico en español que responde **solo** a partir de guías médicas verificadas (AEP, SEUP, AEPap, OMS, AAP, Ministerio de Sanidad…) citando la fuente concreta, y que remite a urgencias ante cualquier señal de alarma. Gratis, sin registro, web.
+**A paediatric answer for a worried parent, with the source attached.** Live at
+[pedibot.xyz](https://pedibot.xyz) — free, no account, eight languages.
 
-- Cómo se trabaja: [CLAUDE.md](CLAUDE.md)
-- Plan completo: [PRD.md](PRD.md)
-- Estado vivo: [STATE.md](STATE.md)
-- Lecciones: [LESSONS.md](LESSONS.md)
-- Ideas sin decidir: [IDEAS.md](IDEAS.md)
-- Fuentes: [FUENTES/CATALOGO.md](FUENTES/CATALOGO.md)
+A parent whose child has a fever at eleven at night gets a search results page. PediBot gives
+them the paragraph the guideline actually writes about that, in their own language, with the
+document it came from named and linked. When nothing in its library supports an answer, it says
+so instead of filling the gap.
 
-Estructura prevista (`PRD.md` §4-8): `ingest/` · `bot/` · `web/` · `publish/` · `ops/` · `eval/` · `config/` · `index/`.
+It does not diagnose. It is not a medical service. It says so on every answer.
 
-⚠️ No es un servicio médico. No sustituye al pediatra.
+---
+
+## What is built
+
+Every number below is counted from the files in this repository, never typed by hand — see
+[DATOS.md](DATOS.md), which is generated, and `scripts/check_docs.py`, which fails the build if a
+document repeats one of them wrongly.
+
+- **645 paediatric documents** from paediatric societies, health ministries and the WHO, each
+  with its licence read and recorded, and each answer cites the ones it used.
+- **Emergency numbers for 90 countries**, each from the page of the body that publishes it. In
+  eight of them the source states that no national service exists, and the page says that rather
+  than invent a number.
+- **Childhood vaccination schedules for 66 countries**, transcribed from the official document,
+  with the issuing ministry and the date it was last checked.
+- **96 red-flag rules** in nine languages, each one backed by a document that says so.
+- **Paracetamol and ibuprofen dosing by weight**, from fixed tables, calculated in the page
+  without a model, for the strength of the bottle the parent has in their hand.
+- **WHO growth standards**: percentiles and z-scores, plus MUAC for acute malnutrition.
+- **511 guides** written from the corpus, in eight languages.
+
+## How an answer is made
+
+    triage → retrieval → drafting → verification → assembly
+
+1. **Triage** runs first and offline, on rules, not on a model: anything that looks like an
+   emergency gets the banner and the local emergency number before a single token is generated.
+2. **Retrieval** searches the indexed corpus (SQLite FTS5 plus vectors), with a cross-lingual
+   bridge so that a question in Spanish reaches an English leaflet.
+3. **Drafting** is the only step a language model touches, and it is handed the retrieved
+   passages and told to use nothing else.
+4. **Verification** rejects a draft with no citation, with a citation that points nowhere, or
+   with a medicine dose that does not come from the sanctioned dosing table. A rejected draft is
+   regenerated once; if it fails again, the answer is a refusal, not a guess.
+5. **Assembly** puts the banner first, the answer second and the sources at the end.
+
+The result of that last rule, measured on the live service: of the answers given, about 3% end
+in "I have no reliable source for this". That number is the point of the whole design.
+
+## Running it
+
+    uv sync
+    uv run pedibot ingest FUENTES --out index    # build the corpus index
+    uv run pedibot ask "my 2 year old has a fever of 38.5"
+    uv run pytest                                # 10.328 tests
+    uv run pedibot eval                          # the golden set, end to end
+
+The chat needs an API key for a language model; everything else — triage, doses, vaccination
+schedules, emergency numbers, growth charts — works offline and without one.
+
+## Licences, and why there are three
+
+- **The code** is [AGPL-3.0-or-later](LICENSE). Use it, study it, run it. If you offer it as a
+  service over a network, publish your changes too.
+- **The catalogue** — the selection of documents, the classification and the metadata — is
+  [CC0](dataset/LICENSE): public domain, take it. It is served as
+  [sources.json](https://pedibot.xyz/dataset/sources.json) and listed, document by document with
+  its licence, at [pedibot.xyz/sources](https://pedibot.xyz/sources).
+- **The documents themselves** belong to the bodies that wrote them. The catalogue points at
+  them and records each one's licence; it does not relicense them. Three documents in the
+  corpus cannot be redistributed at all, and the public catalogue says so.
+
+## For the curious, in Spanish
+
+The project's own record is written in Spanish, because that is the language it is worked in:
+
+- [STATE.md](STATE.md) — what was done, day by day.
+- [LESSONS.md](LESSONS.md) — every mistake worth remembering, with what it cost and what it
+  changed. It is the most useful file here if you want to know how this really went.
+- [PRD.md](PRD.md) — the original plan.
+- [CLAUDE.md](CLAUDE.md) — how the work is done.
+
+---
+
+⚠️ **This is not medical advice and it does not replace a paediatrician.** If you think a child
+is seriously ill, call your local emergency number.
