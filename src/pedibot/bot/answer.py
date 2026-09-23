@@ -43,6 +43,7 @@ from pedibot.bot.vaccines import (
 )
 from pedibot.bot.who_first import extra_terms as who_first_terms
 from pedibot.bot.who_first import prompt_note as who_first_note
+from pedibot.bot.who_first import tropical_note
 from pedibot.index.store import Hit
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
@@ -1498,9 +1499,16 @@ class Engine:
             # corpus and come back as "I have no reliable information", with the country sitting
             # in the sentence the whole time. Read only when the reader picked none, and only a
             # name they wrote themselves — never inferred from the language.
-            c = self.vaccines.resolve_country(country) or self.vaccines.resolve_country(
-                country_in_question(context_text)
-            )
+            # 23-sep-2026, del registro: «cual es el calendario de vacunas CHILENO» devolvió el
+            # de España, porque el selector iba primero y Chile no se reconocía. Escribir el
+            # país es lo más explícito que hace un padre: manda sobre lo que eligió en la
+            # pantalla. Y si ese país no está entre los transcritos, no se le sirve el de al
+            # lado: se sigue al corpus, que dirá lo que tenga o que no tiene nada.
+            escrito = country_in_question(context_text)
+            if escrito is not None:
+                c = self.vaccines.resolve_country(escrito)
+            else:
+                c = self.vaccines.resolve_country(country)
             if c is not None:
                 text = format_answer(self.vaccines, c, tr.age_months, lang)
                 return Answer(
@@ -1839,6 +1847,7 @@ class Engine:
                 "the sources may be in another language, translate faithfully.\n"
                 f"{_age_context(tr, context_text)}"
                 f"{who_first_note(context_text, country)}"
+                f"{tropical_note(context_text, country)}"
                 f"{_history_block(history)}"
                 f"{CHILD_MODE if mode == 'child' else ''}"
                 f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"

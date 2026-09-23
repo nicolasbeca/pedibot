@@ -257,10 +257,16 @@ def test_the_panel_opens_on_the_totals(client, monkeypatch):
     assert "desde el 25 ago" in landing
     assert "no guarda desde siempre" in landing
 
-    week = c.get("/admin?days=7").text
-    assert 'href="/admin?days=7" class="on"' in week
-    assert "últimos 7 días" in week
-    assert "consultas por día" in week
+    # 23-sep-2026, el operador: «las tarjetas de 7, 30 y 60 días no funcionan. Quiero una que
+    # sea el total histórico y otra las últimas 24 horas. Lo demás no me importa». Los otros
+    # periodos siguen respondiendo si alguien escribe la dirección, pero ya no hay botón.
+    assert 'href="/admin?days=1"' in landing
+    assert "days=7" not in landing and "days=90" not in landing
+
+    dia = c.get("/admin?days=1").text
+    assert 'href="/admin?days=1" class="on"' in dia
+    assert "últimas 24 horas" in dia
+    assert "consultas por día" in dia
 
 
 def test_the_dose_endpoint_hands_the_page_a_figure_not_a_band(client):

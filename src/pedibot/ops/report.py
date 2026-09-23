@@ -442,6 +442,25 @@ def questions(con: sqlite3.Connection, days: int = 7, include_test: bool = False
             (since,),
         ).fetchall()
     )
+    # 23-sep-2026: por día, no sólo del periodo. El operador quiere pasar el ratón por la
+    # gráfica y ver qué pasó ESE día, y lo que cambia lo que hace son dos cosas: cuántos avisos
+    # rojos salieron y cuántas preguntas se quedaron sin fuente.
+    alarms_per_day = dict(
+        q(
+            "SELECT substr(ts,1,10), COUNT(*) FROM answers WHERE ts>=?"
+            + only
+            + " AND level<>'routine' GROUP BY 1 ORDER BY 1",
+            (since,),
+        ).fetchall()
+    )
+    no_source_per_day = dict(
+        q(
+            "SELECT substr(ts,1,10), COUNT(*) FROM answers WHERE ts>=?"
+            + only
+            + " AND verification IN ('no_source','fallback') GROUP BY 1 ORDER BY 1",
+            (since,),
+        ).fetchall()
+    )
     first = q("SELECT MIN(substr(ts,1,10)) FROM answers WHERE ts>=?" + only, (since,)).fetchone()[0]
     return {
         "first_day": first,
@@ -459,6 +478,8 @@ def questions(con: sqlite3.Connection, days: int = 7, include_test: bool = False
         "langs": langs,
         "levels": levels,
         "per_day": per_day,
+        "alarms_per_day": alarms_per_day,
+        "no_source_per_day": no_source_per_day,
     }
 
 

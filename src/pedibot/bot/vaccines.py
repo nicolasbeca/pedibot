@@ -48,6 +48,29 @@ COUNTRY_ALIASES = {"UK": "GB", "EN": "GB", "USA": "US", "SPAIN": "ES", "ESPAÑA"
 #: may be in Belgium, Canada or Switzerland, and handing a Belgian family the French calendar
 #: would be worse than saying nothing, because it would look right.
 COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
+    # 23-sep-2026, del registro: «cual es el calendario de vacunas CHILENO» devolvió el de
+    # España. Chile no estaba escrito en ninguna de las tres tablas, así que la pregunta no
+    # nombraba ningún país para el sistema y mandaba el selector. Se añade América Latina
+    # entera, con el gentilicio, que es como se pregunta («el calendario mexicano»). Tener el
+    # nombre no significa tener el calendario: significa poder decir que no lo tenemos.
+    "CL": ("chile", "chilen", "chili"),
+    "MX": ("méxico", "mexico", "mexican", "mejicano", "mexique", "mexiko"),
+    "AR": ("argentina", "argentino", "argentine", "argentinien"),
+    "CO": ("colombia", "colombian", "colombie", "kolumbien"),
+    "PE": ("perú", "peru", "peruan", "pérou"),
+    "VE": ("venezuela", "venezolan", "vénézuéla"),
+    "EC": ("ecuador", "ecuatorian", "équateur"),
+    "BO": ("bolivia", "bolivian", "bolivie"),
+    "PY": ("paraguay", "paraguay"),
+    "UY": ("uruguay", "uruguay"),
+    "CR": ("costa rica", "costarricense"),
+    "PA": ("panamá", "panama", "panameñ", "panamen"),
+    "DO": ("república dominicana", "republica dominicana", "dominican"),
+    "GT": ("guatemala", "guatemaltec"),
+    "HN": ("honduras", "hondureñ", "hondureno"),
+    "NI": ("nicaragua", "nicaragüens", "nicaraguens"),
+    "SV": ("el salvador", "salvadoreñ", "salvadoren"),
+    "CU": ("cuba", "cuban"),
     "ES": (
         "españa",
         "espana",

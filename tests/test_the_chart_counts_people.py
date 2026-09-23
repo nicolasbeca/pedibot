@@ -64,4 +64,6 @@ def test_google_clicks_are_a_parallel_dashed_line_on_the_same_scale() -> None:
 def test_without_google_data_there_is_no_google_line() -> None:
     h = _chart({_hoy(1): 5}, {}, 7)
     assert "Google" not in h
-    assert "stroke-dasharray" not in h
+    # el color de Google, no el guionado: desde el 23-sep-2026 la línea guía del ratón también
+    # va a trazos, y buscar «stroke-dasharray» a secas la encontraba a ella
+    assert "#C9822B" not in h

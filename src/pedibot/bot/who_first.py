@@ -119,3 +119,92 @@ def extra_terms(text: str, country: str | None) -> list[str]:
     if not is_a_diarrhoea_question(text):
         return []
     return list(WHO_DIARRHOEA_TERMS)
+
+
+# ── Y la mitad simétrica: lo tropical donde no lo hay (23-sep-2026) ──────────────────────────
+#
+# Del registro: «My 8 year old has vomiting, fever and a red rash», con Estados Unidos elegido.
+# La respuesta hablaba de la SEUP y después del DENGUE, con sus signos de alarma. La hoja de la
+# OMS está en el corpus, encaja con esas tres palabras y el modelo la usó. Para ese padre no es
+# información: es un susto y una pista falsa, y mientras lee eso no está mirando si las manchas
+# se borran al presionar.
+#
+# Esto no quita la hoja ni la esconde: le dice al redactor dónde vive el niño. Donde el dengue
+# ES endémico no se dice nada, y un viaje mencionado lo reabre — que es cuando de verdad hay que
+# nombrarlo.
+TROPICALES = ("dengue", "malaria", "paludismo", "chikun", "zika", "tifoidea", "typhoid")
+
+#: Países donde estas enfermedades NO son endémicas. Lista corta y explícita a propósito: lo que
+#: no está aquí no recibe la nota, porque equivocarse en este sentido es peor.
+SIN_ENDEMIA = frozenset(
+    {
+        "US",
+        "CA",
+        "GB",
+        "IE",
+        "ES",
+        "PT",
+        "FR",
+        "DE",
+        "IT",
+        "NL",
+        "BE",
+        "LU",
+        "CH",
+        "AT",
+        "SE",
+        "NO",
+        "DK",
+        "FI",
+        "IS",
+        "PL",
+        "CZ",
+        "SK",
+        "HU",
+        "RO",
+        "BG",
+        "GR",
+        "HR",
+        "SI",
+        "EE",
+        "LV",
+        "LT",
+        "RU",
+        "UA",
+        "BY",
+        "NZ",
+        "JP",
+        "KR",
+    }
+)
+
+_VIAJE = re.compile(
+    r"\b(viaj\w+|volvimos de|venimos de|hemos estado en|estuvimos en|de vacaciones en"
+    r"|travel\w*|trip|came back from|just returned|holiday in|voyage|revenons de"
+    r"|reise|urlaub in|поездк\w*|путешеств\w*|سفر|यात्रा)\b",
+    re.I | re.U,
+)
+
+TROPICAL_NOTE = (
+    "WHERE THE CHILD IS: this family is in a country where dengue, malaria, chikungunya, Zika "
+    "and typhoid are NOT endemic, and they have not mentioned any travel. If a passage is about "
+    "one of those, do not offer it as a possible cause of what the parent describes. Use the "
+    "passages about what is common where they are. Say nothing about this instruction.\n"
+)
+
+
+def tropical_note(text: str, country: str | None) -> str:
+    """La nota sobre enfermedades tropicales, o cadena vacía.
+
+    Sin país no se supone nada, igual que arriba: quien no ha elegido país no está «seguramente
+    en Europa».
+    """
+    if not country or country.upper() not in SIN_ENDEMIA:
+        return ""
+    if _VIAJE.search(text or ""):
+        return ""
+    # sólo cuando la pregunta podría traerse una de esas hojas: fiebre con algo más
+    bajo = (text or "").lower()
+    if not re.search(r"fiebre|fever|fi[èe]vre|fieber|температур|حمى|febre|बुखार", bajo):
+        return ""
+    return TROPICAL_NOTE

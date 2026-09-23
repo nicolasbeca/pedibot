@@ -101,6 +101,14 @@ table.t .mono{font-family:ui-monospace,monospace;color:var(--ink2);white-space:n
 .bnum{font-family:"JetBrains Mono",monospace;color:var(--ink2);font-size:.85rem}
 .legend{display:flex;gap:16px;font-size:.82rem;color:var(--ink3);margin-bottom:6px}
 .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.chartwrap{position:relative}
+.chartwrap .hit:hover{fill:rgba(47,107,87,.04)}
+.tip{position:absolute;top:6px;pointer-events:none;background:var(--paper);border:1px solid var(--line);
+border-radius:12px;padding:9px 12px;box-shadow:0 6px 20px rgba(43,58,53,.13);font-size:.82rem;min-width:172px;z-index:5}
+.tip .tday{font-family:Nunito,sans-serif;font-weight:800;color:var(--ink);margin-bottom:5px;font-size:.86rem}
+.tip .trow{display:grid;grid-template-columns:12px 1fr auto;gap:7px;align-items:center;color:var(--ink2);line-height:1.7}
+.tip .trow i{width:9px;height:9px;border-radius:3px;display:inline-block}
+.tip .trow b{font-family:"JetBrains Mono",monospace;color:var(--ink)}
 .qa{border-top:1px solid var(--line);padding:14px 0}
 .qa:first-of-type{border-top:0}
 .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:.78rem;color:var(--ink3);margin-bottom:6px}
@@ -151,6 +159,8 @@ def _chart(
     questions: dict[str, int],
     days: int,
     google: dict[str, int] | None = None,
+    alarms: dict[str, int] | None = None,
+    no_source: dict[str, int] | None = None,
 ) -> str:
     """One picture of the period: people as an area, questions as bars on the same days.
 
@@ -162,8 +172,14 @@ def _chart(
     «visitas»: one reader opening ten guides drew ten. `google` is Google's clicks per day, a
     dashed line on the same scale because a click is a visit too; impressions are not, and would
     flatten everything else.
+
+    23-sep-2026, el operador: «que fuera una gráfica más dinámica, donde pudiera ponerme encima
+    con el ratón y que me diera datos». Cada día lleva ahora una banda invisible con sus cinco
+    números colgados; el JavaScript de `_hover` pinta la línea y el recuadro. Sin ratón —en el
+    móvil, o si el script no corre— la gráfica se ve exactamente igual que antes, que es la
+    razón de hacerlo con bandas y no con una librería.
     """
-    google = google or {}
+    google, alarms, no_source = google or {}, alarms or {}, no_source or {}
     end = dt.date.today()
     if days > 0:
         span = [(end - dt.timedelta(days=i)).isoformat() for i in range(days - 1, -1, -1)]
@@ -208,6 +224,12 @@ def _chart(
         for i, n in enumerate(q)
         if n
     )
+    # los puntos de la línea de personas, para que el ojo encuentre el día
+    dots = "".join(
+        f'<circle cx="{PAD + i * step:.1f}" cy="{y(n):.1f}" r="2.6" fill="#6FBFA6"/>'
+        for i, n in enumerate(v)
+        if n
+    )
     # a label every few days, so the axis stays legible at 7, 30 and 90
     every = max(1, len(span) // 9)
     ticks = "".join(
@@ -215,18 +237,74 @@ def _chart(
         f"{span[i][8:10]}/{span[i][5:7]}</text>"
         for i in range(0, len(span), every)
     )
+    # una banda por día, invisible, con los números colgados: es lo que lee el ratón
+    ancho_banda = max(step, 6.0)
+    hits = "".join(
+        f'<rect class="hit" x="{PAD + i * step - ancho_banda / 2:.1f}" y="{PAD - 14:.1f}"'
+        f' width="{ancho_banda:.1f}" height="{inner_h + 14:.1f}" fill="transparent"'
+        f' data-d="{d}" data-v="{visits.get(d, 0)}" data-q="{questions.get(d, 0)}"'
+        f' data-g="{google.get(d, 0)}" data-a="{alarms.get(d, 0)}" data-n="{no_source.get(d, 0)}"'
+        f' data-x="{PAD + i * step:.1f}"/>'
+        for i, d in enumerate(span)
+    )
     return (
         '<div class="legend"><span><i style="background:#C8E9E0"></i>personas</span>'
         '<span><i style="background:#2F6B57"></i>consultas</span>'
         + ('<span><i style="background:#C9822B"></i>clics desde Google</span>' if gline else "")
         + "</div>"
-        f'<svg viewBox="0 0 {W} {H}" width="100%" height="{H}" role="img" aria-label="personas y consultas por día">'
+        '<div class="chartwrap">'
+        f'<svg id="chart" viewBox="0 0 {W} {H}" width="100%" height="{H}" role="img"'
+        ' aria-label="personas y consultas por día">'
         f'<polyline points="{area}" fill="#EAF7F2" stroke="none"/>'
         f'<polyline points="{pts}" fill="none" stroke="#9FD3C4" stroke-width="2.5"/>'
-        f"{gline}{bars}{ticks}"
+        f"{gline}{bars}{dots}{ticks}"
+        f'<line id="guide" x1="0" y1="{PAD - 14}" x2="0" y2="{PAD + inner_h}" stroke="#2F6B57"'
+        ' stroke-width="1" opacity="0" stroke-dasharray="3 3"/>'
+        f"{hits}"
         f'<text x="{PAD}" y="{PAD - 8}" font-size="11" fill="#8A9992">máx {top} personas/día</text>'
         "</svg>"
+        '<div id="tip" class="tip" hidden></div></div>' + _hover(bool(gline))
     )
+
+
+def _hover(con_google: bool) -> str:
+    """El script del ratón. Vive aquí y no en un fichero aparte porque el panel es una sola
+    página servida entera desde Python, sin build ni estáticos propios."""
+    linea_google = (
+        "    if(t.getAttribute('data-g')!=='0') html+=fila('clics desde Google',"
+        " t.getAttribute('data-g'), '#C9822B');\n"
+        if con_google
+        else ""
+    )
+    return """<script>
+(function(){
+  var svg=document.getElementById('chart'), tip=document.getElementById('tip'),
+      guide=document.getElementById('guide'), wrap=svg&&svg.parentElement;
+  if(!svg||!tip||!wrap) return;
+  var meses=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  function fecha(d){var p=d.split('-');return p[2]+' '+meses[+p[1]-1]+' '+p[0];}
+  function fila(etiqueta,valor,color){
+    return '<div class="trow"><i style="background:'+color+'"></i>'+etiqueta+
+           '<b>'+valor+'</b></div>';}
+  svg.addEventListener('mousemove', function(e){
+    var t=e.target;
+    if(!t.classList||!t.classList.contains('hit')){return;}
+    var d=t.getAttribute('data-d');
+    var html='<div class="tday">'+fecha(d)+'</div>'+
+      fila('personas', t.getAttribute('data-v'), '#9FD3C4')+
+      fila('consultas', t.getAttribute('data-q'), '#2F6B57');
+@@GOOGLE@@    if(t.getAttribute('data-a')!=='0') html+=fila('con aviso', t.getAttribute('data-a'), '#C2452D');
+    if(t.getAttribute('data-n')!=='0') html+=fila('sin fuente', t.getAttribute('data-n'), '#8A9992');
+    tip.innerHTML=html; tip.hidden=false;
+    var caja=wrap.getBoundingClientRect();
+    var x=e.clientX-caja.left;
+    tip.style.left=Math.min(Math.max(x-70,4), caja.width-190)+'px';
+    var gx=t.getAttribute('data-x');
+    guide.setAttribute('x1',gx); guide.setAttribute('x2',gx); guide.setAttribute('opacity','.55');
+  });
+  svg.addEventListener('mouseleave', function(){tip.hidden=true; guide.setAttribute('opacity','0');});
+})();
+</script>""".replace("@@GOOGLE@@", linea_google)
 
 
 def _bars(items: list[tuple[str, int]], limit: int = 10) -> str:
@@ -606,7 +684,10 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
 
     # what each block of numbers is counting, said out loud. The two are not the same period:
     # questions are every one ever asked; visits are what the journal still had.
-    if days > 0:
+    if days == 1:
+        period = "últimas 24 horas"
+        covered = period
+    elif days > 0:
         period = f"últimos {days} días"
         covered = period
     else:
@@ -625,7 +706,10 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
         "<script>try{localStorage.setItem('pedibot_team','1')}catch(e){}</script>"
         f"<style>{_CSS}</style></head><body><main>",
         '<div class="top"><h1>PediBot · panel</h1>'
-        f'<div class="range">{link(0, "total")}{link(7)}{link(30)}{link(90)}</div></div>',
+        # 23-sep-2026, el operador: «se han quedado las tarjetas de 7, 30 y 60 días y no
+        # funcionan. Yo quiero ver una tarjeta que sea el total histórico y otra que sea el
+        # último día, las últimas 24 horas. Lo demás no me importa».
+        f'<div class="range">{link(0, "total")}{link(1, "últimas 24 h")}</div></div>',
     ]
 
     down = q["down"]
@@ -677,6 +761,8 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
             q["per_day"],
             days,
             google=(search.load() or {}).get("per_day"),
+            alarms=q.get("alarms_per_day"),
+            no_source=q.get("no_source_per_day"),
         )
         + "</div>"
     )

@@ -1614,3 +1614,24 @@ algo que existe y no deja rastro de haberlo hecho.
 Dos reglas. Una: **el inventario de un producto se lee del producto** —los endpoints, los
 botones, los ajustes— y no de lo que uno recuerda haber construido. Y dos: **lo que un documento
 niega se comprueba igual que lo que afirma**; si no se puede comprobar, no se escribe.
+
+## L230 · Diecisiete consultas reales valen más que ochocientas inventadas (23-sep-2026)
+
+Dos días seguidos puliendo el chat con 854 preguntas escritas por el operador. Al día siguiente
+llegaron **diecisiete de padres de verdad**, y traían cuatro fallos que ninguna de las 854 había
+tocado:
+
+- el calendario de vacunas de un país que no tenemos, servido con el de otro;
+- «le **está** costando respirar», que no es «le cuesta respirar» para una expresión regular;
+- una calculadora prometida para un medicamento que no calcula — y el padre **volvió a
+  escribir** para decirlo, que es el único informe de errores que este producto va a recibir;
+- dengue a un niño de Ohio.
+
+Las baterías escritas a propósito buscan donde uno ya sospecha. Un padre real pregunta por el
+salbutamol de su hijo asmático un domingo por la mañana, escribe la perífrasis que usa en su
+casa, y pide el calendario de su país estando en otro. **El registro del día anterior es el
+mejor banco de pruebas que existe, y es gratis.** Leerlo entero cuesta veinte minutos.
+
+Y una cosa más, que es la que da miedo: de esos cuatro, tres habrían pasado desapercibidos sin
+leer la conversación **completa**. El fallo del salbutamol sólo se ve en el mensaje siguiente,
+cuando el padre dice «pero me dijiste que…».

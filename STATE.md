@@ -20,6 +20,35 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 23-sep-2026 · las diecisiete consultas de ayer, leídas una a una
+
+El operador: «cuando veo las consultas, por ejemplo en hindi, no sé si ha contestado bien o mal.
+Repasa las consultas reales que hicieron ayer, porque esas son las más importantes para que
+quien entra por primera vez tenga una buena sensación».
+
+Diecisiete de padres (el resto del registro eran pruebas mías): cinco en hindi, cinco en inglés,
+siete en español. **Las cinco de hindi están bien**, incluida «¿puedo bañarlo para bajarle la
+fiebre?» → no, según la SEUP. Cuatro fallos, tres de ellos feos:
+
+- **«el calendario de vacunas chileno» devolvió el español.** Chile no está entre los 66
+  calendarios y, en vez de decirlo, se sirvió el del selector. Ahora lo escrito manda sobre lo
+  elegido, y un país que no tenemos no se contesta con otro. Añadida América Latina a los
+  nombres que el sistema reconoce, con gentilicios.
+- **«es asmatico y le esta costando respirar» salió sin aviso.** «Le cuesta respirar» estaba;
+  la perífrasis con la que se dice de verdad, no.
+- **Le prometimos una calculadora de salbutamol que no existe** y el padre volvió a decírnoslo.
+  La regla 4 del prompt mandaba a la calculadora para cualquier fármaco; ahora, sólo para los
+  dos que cubre.
+- **Dengue a un niño de 8 años en Estados Unidos** con fiebre, vómitos y sarpullido. Con país no
+  endémico y sin viaje mencionado, las hojas tropicales ya no se ofrecen como causa.
+
+### El panel, como lo pidió
+
+- Dos periodos y no cinco: **total** y **últimas 24 horas**.
+- La gráfica, con ratón: cada día tiene su banda, su línea guía y un recuadro con personas,
+  consultas, clics desde Google, cuántas llevaron aviso y cuántas se quedaron sin fuente. Las
+  dos últimas series no existían en el informe.
+
 ## 22-sep-2026 (tarde) · la foto que sí se puede, y la tarjeta
 
 - **La ficha decía que PediBot no puede ver fotos. Puede.** `/api/photo` lleva meses vivo: el

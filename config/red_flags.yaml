@@ -358,6 +358,14 @@ rules:
   # «no respira bien por la nariz» es un catarro, y de noche suele ser que ronca.
   - "(no respira bien|respira mal|no respira apenas)(?![^.]{0,30}(nariz|nasal|moco|congesti|resfri|catarr|ronca|duerme|dormi))"
   - no le entra (el )?aire
+  # 23-sep-2026, del registro del día anterior: «es asmatico y le esta costando respirar» se
+  # fue SIN AVISO. «Le cuesta respirar» estaba escrito desde el principio; la perífrasis con
+  # la que se dice de verdad —«le está costando»— no, y tampoco «le cuesta trabajo». La
+  # exclusión es la misma de siempre: por la nariz es un catarro.
+  - (le |les )?(est[áa] costando|cuesta trabajo|cuesta mucho|le cuesta)[^.]{0,15}respirar(?![^.]{0,30}(nariz|nasal|moco|congesti|resfri|catarr|ronca))
+  - cost[áa]ndole[^.]{0,10}respirar
+  - a hard time breathing
+  - est[áa][^.]{0,25}(dificultad|problemas) para respirar
   - azulad(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar))
   - can(?:'?t| ?not) breathe
   - struggling to breathe
