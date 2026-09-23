@@ -284,6 +284,37 @@ _ASKS_DOSE = re.compile(
 )
 
 
+#: Cuando el padre pide el calendario de un país que no está transcrito (23-sep-2026). Antes
+#: caía en el «no tengo información fiable» genérico, que no dice si falla su pregunta, su país
+#: o el sitio entero — y países sin calendario hay muchos: toda América Latina menos Brasil.
+NO_SCHEDULE = {
+    "en": "I don't have {country}'s vaccination schedule transcribed, so I'd rather not guess: "
+    "the ages and the vaccines change from one country to the next. The ones I do have are "
+    "listed on the vaccines page, linked below. Your health centre or ministry has yours.",
+    "es": "No tengo transcrito el calendario de vacunación de {country}, y prefiero no adivinar: "
+    "las edades y las vacunas cambian de un país a otro. Los que sí tengo están en la página de "
+    "vacunas, enlazada debajo. El tuyo lo tiene tu centro de salud o tu ministerio.",
+    "fr": "Je n'ai pas le calendrier vaccinal de {country}, et je préfère ne pas deviner : les "
+    "âges et les vaccins changent d'un pays à l'autre. Ceux que j'ai sont sur la page des "
+    "vaccins, en lien ci-dessous. Le vôtre est chez votre centre de santé ou votre ministère.",
+    "de": "Den Impfkalender von {country} habe ich nicht, und raten möchte ich nicht: Alter und "
+    "Impfstoffe unterscheiden sich von Land zu Land. Die vorhandenen stehen auf der "
+    "Impfseite, unten verlinkt. Ihren bekommen Sie bei Ihrer Praxis oder Ihrem Ministerium.",
+    "ru": "У меня нет календаря прививок страны {country}, и угадывать я не буду: возраст и "
+    "вакцины различаются от страны к стране. Те, что есть, собраны на странице вакцин по ссылке "
+    "ниже. Ваш календарь есть в вашей поликлинике или министерстве.",
+    "ar": "ليس لدي جدول التطعيمات الخاص بـ{country}، ولا أريد التخمين: الأعمار واللقاحات تختلف من "
+    "بلد إلى آخر. الجداول المتوفرة في صفحة اللقاحات أسفل هذه الإجابة، وجدول بلدك لدى مركزك "
+    "الصحي أو وزارتك.",
+    "pt": "Não tenho o calendário de vacinação de {country} transcrito e prefiro não adivinhar: "
+    "as idades e as vacinas mudam de país para país. Os que tenho estão na página de vacinas, "
+    "ligada abaixo. O seu está no seu centro de saúde ou no seu ministério.",
+    "hi": "मेरे पास {country} का टीकाकरण कैलेंडर नहीं है, और मैं अंदाज़ा नहीं लगाना चाहता: "
+    "उम्र और टीके हर देश में अलग होते हैं। जो मेरे पास हैं वे नीचे दिए टीकों वाले पेज पर हैं। "
+    "आपके देश का कैलेंडर आपके स्वास्थ्य केंद्र या मंत्रालय के पास है।",
+}
+
+
 #: Lo que no tiene nada que ver con la salud de un niño (21-sep-2026): se dice con amabilidad y
 #: se invita a preguntar lo que sí. Antes caía en «no tengo información, consulta a tu pediatra»,
 #: que para «¿mi perro puede comer chocolate?» es una respuesta absurda.
@@ -1509,6 +1540,20 @@ class Engine:
                 c = self.vaccines.resolve_country(escrito)
             else:
                 c = self.vaccines.resolve_country(country)
+            if c is None and escrito is not None:
+                # nombró un país y no lo tenemos: se dice cuál falta, no «no tengo información»
+                return Answer(
+                    NO_SCHEDULE[lang].format(country=country_name(escrito, lang)),
+                    tr.level,
+                    None,
+                    [],
+                    lang,
+                    None,
+                    None,
+                    [],
+                    "no_schedule",
+                    tool=tool_link("vaccines", lang, None),
+                )
             if c is not None:
                 text = format_answer(self.vaccines, c, tr.age_months, lang)
                 return Answer(
