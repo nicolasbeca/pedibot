@@ -27,7 +27,23 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 SOURCES = ROOT / "web" / "site" / "public" / "sources.json"
 OUT = ROOT / "dataset"
 
-FIELDS = ["doc_id", "org", "org_full", "title", "year", "lang", "topic", "doc_type", "url", "notes"]
+#: 23-sep-2026: faltaba `usage`, que es lo que dice qué se puede hacer con cada documento
+#: —`publico` o `citar_solo`—. Sin esa columna, quien se descargue el catálogo no tiene forma
+#: de saber cuál de los 645 puede reproducir y cuál sólo citar, que es justo lo que va a
+#: querer saber. La licencia concreta es la de cada organismo; `usage` es la consecuencia.
+FIELDS = [
+    "doc_id",
+    "org",
+    "org_full",
+    "title",
+    "year",
+    "lang",
+    "topic",
+    "doc_type",
+    "usage",
+    "url",
+    "notes",
+]
 
 
 def main() -> int:
@@ -52,6 +68,8 @@ def main() -> int:
     by_org = collections.Counter(d["org"] for d in rows)
     by_lang = collections.Counter(d["lang"] for d in rows)
     by_topic = collections.Counter(d["topic"] for d in rows)
+    publicos = sum(1 for d in rows if d["usage"] == "publico")
+    citables = sum(1 for d in rows if d["usage"] == "citar_solo")
     with_url = sum(1 for d in rows if d["url"])
     with_year = sum(1 for d in rows if d["year"])
 
@@ -80,7 +98,8 @@ def main() -> int:
         "## What is in here, and what is not",
         "",
         "**In:** the catalogue. Organisation, full name of the organisation, document title, year,",
-        "language, topic, document type and the URL of the original.",
+        "language, topic, document type, the URL of the original, and `usage` — what may be done",
+        "with that document.",
         "",
         "**Not in:** the documents themselves, or any text extracted from them. They belong to",
         "the NHS, the WHO, the CDC, the AAP, the RKI and the rest. Pointing at them is a service",
@@ -104,6 +123,8 @@ def main() -> int:
         "| `lang` | ISO 639-1 of the document itself |",
         "| `topic` | our classification, see below |",
         "| `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |",
+        f"| `usage` | `publico` ({publicos}) may be reproduced under its publisher's terms; "
+        f"`citar_solo` ({citables}) may be cited and linked, not reproduced |",
         f"| `url` | link to the original ({with_url} of {len(rows)} are online; the rest are books "
         "and printed manuals, identified in `notes`) |",
         "| `notes` | ISBN, edition, or how to find a document that has no URL |",

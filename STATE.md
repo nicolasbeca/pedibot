@@ -20,6 +20,59 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 23-sep-2026 (noche) · lo que dicen los números de visitas, y el giro que provocan
+
+El operador preguntó qué más se podía hacer. Antes de opinar, se midió lo vivo:
+
+| | |
+|---|---:|
+| visitantes, en total | **422** |
+| preguntas reales al chat, en total | **26** |
+| impresiones en Google (28 días) | **1.848** |
+| clics | **3** |
+| posición media | **65,5** |
+
+Y el dato que ordena todo lo demás: para «calculadora dalsy» estamos en el **puesto 51** con una
+página que se titula exactamente así, tiene descripción propia y 1.200 palabras. Google ya
+entiende de qué va el sitio —nos muestra para «calculadora apiretal», «dosis ibuprofeno niños»,
+«doliprane posologie», «impftabelle kinder»—, pero un dominio nuevo sin enlaces no sube. **El
+producto va muy por delante de su público**, y otra tanda de 500 preguntas mejoraría algo que
+hoy usan 26 personas.
+
+Así que el trabajo se mueve a conseguir que llegue gente, y el operador decidió dos cosas:
+**repositorio público** y **licencia AGPL-3.0**.
+
+### La auditoría antes de abrir nada
+
+Publicar un repositorio expone el historial para siempre. Los 515 commits, revisados:
+
+- **Sin una sola clave** en todo el historial (el candado que ya existía sólo miraba el árbol
+  actual, no el pasado).
+- **Sin datos de padres**: `data/` y las bases de datos están fuera de git desde el principio.
+  Lo único son frases anónimas citadas en este diario, sin nombre, sesión ni IP.
+- La IP del servidor aparece aquí, pero **ya la da el DNS** de pedibot.xyz: no añade nada.
+- El repositorio remoto **no existía**: nunca se había subido nada, así que todo se podía
+  decidir todavía.
+
+Y tres cosas que sólo se podían arreglar antes del primer envío, y se arreglaron:
+
+1. **No había licencia de código.** Un repositorio público sin licencia es «todos los derechos
+   reservados»: inusable para cualquiera y rechazado de entrada por la DPGA. Ahora AGPL-3.0.
+2. **Los 515 commits iban firmados con los correos personales del operador.** Reescritos a
+   `pedibot.ai@gmail.com`, que ya es público. Después del primer `push` habría sido imposible.
+3. **Un enlace compartido no se podía retirar.** Lleva `noindex` y un identificador que no se
+   adivina, pero eso no es lo mismo que poder deshacerlo: un padre que se da cuenta de que
+   escribió el nombre de su hija en la pregunta no tenía a quién pedírselo. Ahora hay botón, en
+   las ocho lenguas, y la política legal lo cuenta en las ocho.
+
+### Lo preparado para que él sólo tenga que pulsar
+
+[`ops/DPGA.md`](ops/DPGA.md) lleva la solicitud de bien público digital escrita entera, indicador
+por indicador, y **ninguna respuesta afirma nada que no esté en el repositorio o vivo en la web**.
+Con ella, los pasos de GitHub, Hugging Face (`dataset/HUGGINGFACE.md`, tarjeta lista) y Zenodo
+para el DOI. De paso, el catálogo publica ahora la columna `usage`, que es lo que dice qué se
+puede reproducir y qué sólo citar: la tarjeta lo prometía y el fichero no lo llevaba.
+
 ## 23-sep-2026 (noche) · la octava tanda: 500 más, y dos cosas que tranquilizaban de más
 
 `eval/bateria_operador/07_octava_500.txt`. Las 500 pasaron por el motor y por el revisor entero

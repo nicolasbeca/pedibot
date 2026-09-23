@@ -166,6 +166,10 @@ class ShareIn(BaseModel):
     session: str
 
 
+class UnshareIn(BaseModel):
+    session: str
+
+
 class FeedbackIn(BaseModel):
     answer_id: int
     session: str
@@ -687,6 +691,64 @@ def create_app(
             raise HTTPException(404, "answer not found for this session")
         return {"token": token, "path": f"/a/{token}"}
 
+    @app.delete("/api/share/{token}")
+    def unshare(token: str, body: UnshareIn) -> dict[str, bool]:
+        """Retirar un enlace compartido (23-sep-2026).
+
+        La página lleva `noindex` y un identificador que no se adivina, pero eso no es lo mismo
+        que poder deshacerla. Un padre que se da cuenta de que escribió el nombre de su hija en
+        la pregunta tiene que poder quitarla, y hasta hoy no tenía a quién pedírselo.
+        """
+        if not ops.delete_share(token, body.session):
+            raise HTTPException(404, "share not found for this session")
+        return {"removed": True}
+
+    #: Retirar el enlace, dicho en las ocho lenguas (23-sep-2026): el botón, el «ya está» y el
+    #: «esto no lo compartiste tú». Van aparte de SHARED para no reescribir sus ocho tuplas, y
+    #: aquí valen las mismas reglas: ninguna lengua recibe la rama inglesa por descarte.
+    RETIRAR = {
+        "en": (
+            "Remove this link",
+            "Removed. This page no longer exists.",
+            "Only whoever shared it can remove it.",
+        ),
+        "es": (
+            "Retirar este enlace",
+            "Retirado. Esta página ya no existe.",
+            "Solo quien lo compartió puede retirarlo.",
+        ),
+        "fr": (
+            "Retirer ce lien",
+            "Retiré. Cette page n'existe plus.",
+            "Seule la personne qui l'a partagé peut le retirer.",
+        ),
+        "de": (
+            "Diesen Link zurückziehen",
+            "Zurückgezogen. Diese Seite gibt es nicht mehr.",
+            "Nur wer sie geteilt hat, kann sie zurückziehen.",
+        ),
+        "ru": (
+            "Удалить эту ссылку",
+            "Удалено. Этой страницы больше нет.",
+            "Удалить может только тот, кто поделился.",
+        ),
+        "ar": (
+            "إزالة هذا الرابط",
+            "تمت الإزالة. لم تعد هذه الصفحة موجودة.",
+            "لا يمكن الإزالة إلا لمن شارك الرابط.",
+        ),
+        "pt": (
+            "Retirar esta ligação",
+            "Retirado. Esta página já não existe.",
+            "Só quem partilhou pode retirar.",
+        ),
+        "hi": (
+            "यह लिंक हटाएँ",
+            "हटा दिया गया। यह पेज अब मौजूद नहीं है।",
+            "जिसने साझा किया था, केवल वही हटा सकता है।",
+        ),
+    }
+
     #: El envoltorio de una respuesta compartida, en los ocho idiomas. Estaba escrito
     #: `"…" if lang != "es" else "…"`, la forma exacta que el candado del i18n prohíbe en la web:
     #: seis de los ocho idiomas recibían la rama inglesa. Un padre alemán compartía su respuesta
@@ -735,6 +797,7 @@ def create_app(
 
         lang = str(d["lang"])
         title, note = SHARED.get(lang, SHARED["en"])
+        quitar, hecho, ajeno = RETIRAR.get(lang, RETIRAR["en"])
         # El árabe se lee de derecha a izquierda. La web lo sabe desde el primer día
         # (`dirFor(lang)` en Base.astro) y esta página, que es HTML escrito a mano aparte, no:
         # una respuesta árabe compartida salía maquetada al revés.
@@ -743,7 +806,17 @@ def create_app(
         q = html.escape(str(d["question"]))
         return f"""<!doctype html><html lang="{lang}" dir="{direction}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>{title}</title>
 <style>body{{margin:0;background:#FFFDF9;color:#2B3A35;font-family:"Atkinson Hyperlegible",system-ui,sans-serif;line-height:1.6}}main{{max-width:720px;margin:0 auto;padding:32px 18px}}.q{{background:#E3F4EF;border-radius:18px;padding:14px 18px;margin-bottom:14px}}.a{{background:#fff;border:1px solid #EAE4DA;border-radius:18px;padding:16px 20px;box-shadow:0 10px 30px rgba(43,58,53,.07)}}.n{{color:#8A9992;font-size:.85rem;margin-top:14px}}a{{color:#2F6B57}}</style></head>
-<body><main><p><a href="/">← pedibot.xyz</a></p><div class="q">{q}</div><div class="a">{body_html}</div><p class="n">{note}</p></main></body></html>"""
+<body><main><p><a href="/">← pedibot.xyz</a></p><div class="q">{q}</div><div class="a">{body_html}</div><p class="n">{note}</p>
+<p class="n"><button id="q" type="button">{quitar}</button> <span id="m"></span></p>
+<script>
+document.getElementById("q").onclick=async function(){{
+  var s="";try{{s=localStorage.getItem("pedibot_session")||""}}catch(e){{}}
+  var r=await fetch("/api/share/{token}",{{method:"DELETE",headers:{{"Content-Type":"application/json"}},body:JSON.stringify({{session:s}})}});
+  var m=document.getElementById("m");
+  if(r.ok){{document.querySelector("main").innerHTML='<p>'+{hecho!r}+'</p>'}}else{{m.textContent={ajeno!r}}}
+}};
+</script>
+</main></body></html>"""
 
     @app.get("/api/growth")
     def growth(

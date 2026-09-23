@@ -1743,3 +1743,42 @@ encuentra usted aquí», «Divulga la Web: Cartel-recortable…»). Eso es texto
 motor que cita puede acabar poniéndole a un padre un cartel descargable como fuente. Cada sitio
 nuevo trae su plantilla, y mirar los primeros trozos indexados de una fuente nueva —a ojo, una
 vez— cuesta un minuto y es la única forma de verlo.
+
+## L237 · Trescientas mejoras para veintiséis personas (23-sep-2026)
+
+Llevo días midiendo la calidad de las respuestas —el 3 % sin fuente, el conjunto dorado en
+0,953, mil preguntas revisadas a mano en un día— y no había medido nunca **cuánta gente las
+lee**. Cuando el operador preguntó qué más se podía hacer, lo miré por primera vez:
+
+    422 visitantes · 26 preguntas reales al chat · 1.848 impresiones en Google · 3 clics
+
+Y el dato que lo explica: para «calculadora dalsy» estamos en el puesto **51**, con una página
+que se titula exactamente así, tiene su propia descripción y 1.200 palabras. La página está
+bien. Lo que falta no es contenido, es que nadie con autoridad nos enlaza.
+
+Lo incómodo de esto es que **las dos cosas que sé medir apuntaban al mismo lado y las dos
+estaban ciegas**: la suite mide si el código hace lo que digo, el conjunto dorado mide si las
+respuestas son buenas, y ninguna de las dos sabe si alguien las lee. Se puede tener el 100 % de
+las dos y cero usuarios, y no salta ninguna alarma.
+
+La regla que me llevo: **cuando lleves varios días seguidos mejorando lo mismo, mide una vez lo
+que está fuera de tu bucle**. Si el número que justifica el trabajo (usuarios, respuestas,
+lecturas) no se ha mirado en una semana, el trabajo puede llevar una semana sin importar.
+
+## L238 · Lo que sólo se puede hacer antes del primer `push` (23-sep-2026)
+
+Al preparar el repositorio para hacerlo público encontré tres cosas, y **las tres tienen fecha
+de caducidad en el mismo instante**: el primer envío a GitHub.
+
+1. **Sin licencia**, un repositorio público es «todos los derechos reservados»: legalmente
+   inusable y rechazado de entrada como bien público digital. Añadirla después es fácil, pero
+   entre medias cualquiera que lo clone tiene una copia que no puede usar.
+2. **Los 515 commits iban firmados con dos correos personales.** Reescribirlos ahora costó un
+   minuto; después del primer `push` es imposible de verdad, porque el historial ya está en los
+   clones de otros.
+3. **El candado de secretos que ya existía sólo miraba el árbol actual**, no el historial. Para
+   publicar hay que revisar los 515 commits, que es otra pregunta distinta: no «¿hay una clave
+   ahora?», sino «¿hubo alguna vez?».
+
+Vale para cualquier cosa que se abra al público: **la lista de lo irreversible se escribe antes,
+no después**. Y el repositorio remoto no existía todavía, que fue la suerte de la tarde.

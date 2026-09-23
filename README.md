@@ -54,11 +54,19 @@ in "I have no reliable source for this". That number is the point of the whole d
     uv sync
     uv run pedibot ingest FUENTES --out index    # build the corpus index
     uv run pedibot ask "my 2 year old has a fever of 38.5"
-    uv run pytest                                # 10.328 tests
+    uv run pytest                                # 10.336 tests
     uv run pedibot eval                          # the golden set, end to end
 
 The chat needs an API key for a language model; everything else — triage, doses, vaccination
 schedules, emergency numbers, growth charts — works offline and without one.
+
+## No lock-in
+
+The chat talks to any OpenAI-compatible endpoint: `OpenAICompatibleProvider` takes a `base_url`,
+so a local server — Ollama, vLLM, llama.cpp — works in place of a hosted model, and the corpus,
+the index and every rule stay on your machine. Triage, doses, vaccination schedules, emergency
+numbers, growth charts and MUAC need no model at all. The index is SQLite, the catalogue is JSON
+and CSV, the site is static files. Nothing here needs a proprietary service to run.
 
 ## Licences, and why there are three
 
@@ -81,6 +89,16 @@ The project's own record is written in Spanish, because that is the language it 
   changed. It is the most useful file here if you want to know how this really went.
 - [PRD.md](PRD.md) — the original plan.
 - [CLAUDE.md](CLAUDE.md) — how the work is done.
+
+---
+
+## Ownership
+
+Copyright © 2026 Nicolás Beca. The code is licensed under AGPL-3.0-or-later; the catalogue is
+dedicated to the public domain under CC0. The name PediBot and the logo belong to the author and
+are not covered by either licence: fork the code freely, but call your fork something else.
+
+Contact: pedibot.ai@gmail.com
 
 ---
 

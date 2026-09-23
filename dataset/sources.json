@@ -8,6 +8,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "guia_clinica",
+  "usage": "citar_solo",
   "url": "",
   "notes": ""
  },
@@ -20,6 +21,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "guia_clinica",
+  "usage": "citar_solo",
   "url": "",
   "notes": ""
  },
@@ -32,6 +34,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "guia_clinica",
+  "usage": "citar_solo",
   "url": "",
   "notes": ""
  },
@@ -44,6 +47,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "guia_clinica",
+  "usage": "citar_solo",
   "url": "",
   "notes": ""
  },
@@ -56,6 +60,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://cima.aemps.es/cima/pdfs/es/p/59877/59877_p.pdf",
   "notes": "posología del suero oral por edad; documento regulatorio público"
  },
@@ -68,6 +73,7 @@
   "lang": "es",
   "topic": "recien_nacido",
   "doc_type": "guia_clinica",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -80,6 +86,7 @@
   "lang": "es",
   "topic": "alimentacion",
   "doc_type": "guia_clinica",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -92,6 +99,7 @@
   "lang": "es",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.familiaysalud.es/medicinas/farmacos/antitermicos-para-la-fiebre",
   "notes": "licence: CC BY-NC-ND 3.0 España (pie de familiaysalud.es); fetched 2026-09-23"
  },
@@ -104,6 +112,7 @@
   "lang": "es",
   "topic": "medicamentos",
   "doc_type": "guia_clinica",
+  "usage": "citar_solo",
   "url": "",
   "notes": "fuente de la calculadora de dosis"
  },
@@ -116,6 +125,7 @@
   "lang": "es",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.familiaysalud.es/salud-y-escuela/educacion-infantil-0/los-problemas-de-salud/sobre-enfermedades-de-los-ninos/cuales",
   "notes": "licence: CC BY-NC-ND 3.0 España (pie de familiaysalud.es); fetched 2026-09-23"
  },
@@ -128,6 +138,7 @@
   "lang": "es",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.familiaysalud.es/medicinas/farmacos/sobre-los-medicamentos/hay-que-leer-los-prospectos-de-los-medicamentos",
   "notes": "licence: CC BY-NC-ND 3.0 España (pie de familiaysalud.es); fetched 2026-09-23"
  },
@@ -140,6 +151,7 @@
   "lang": "es",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.familiaysalud.es/medicinas/farmacos/sobre-los-medicamentos/por-que-hay-que-cumplir-los-tratamientos",
   "notes": "licence: CC BY-NC-ND 3.0 España (pie de familiaysalud.es); fetched 2026-09-23"
  },
@@ -152,6 +164,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/chickenpox/about/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -164,6 +177,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/hand-foot-mouth/about/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -176,6 +190,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/lice/about/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -188,6 +203,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/norovirus/about/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -200,6 +216,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/rsv/about/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -212,6 +229,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/rotavirus/about/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -224,6 +242,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/pertussis/about/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -236,6 +255,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/act-early/milestones/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -248,6 +268,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/heads-up/about/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -260,6 +281,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/ear-infection/about/",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-11"
  },
@@ -272,6 +294,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/flu/highrisk/children.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -284,6 +307,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/infant-toddler-nutrition/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -296,6 +320,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/common-cold/treatment/",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-11"
  },
@@ -308,6 +333,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/measles/signs-symptoms/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -320,6 +346,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/child-development/positive-parenting-tips/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -332,6 +359,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/drowning/prevention/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -344,6 +372,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/rsv/infants-young-children/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -356,6 +385,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/vaccines/imz-schedules/child-easyread.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -368,6 +398,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.cdc.gov/heads-up/signs-symptoms/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
  },
@@ -380,6 +411,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_dtap.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. difteria, tétanos y tosferina."
  },
@@ -392,6 +424,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_flu_inactive.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. gripe estacional."
  },
@@ -404,6 +437,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_hepatitis_a.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. hepatitis A."
  },
@@ -416,6 +450,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_hepatitis_b.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. hepatitis B."
  },
@@ -428,6 +463,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_hib.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. Haemophilus influenzae tipo b."
  },
@@ -440,6 +476,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_mmr.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. sarampión, paperas y rubéola."
  },
@@ -452,6 +489,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_meningococcal.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. enfermedad meningocócica."
  },
@@ -464,6 +502,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_rotavirus.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. rotavirus."
  },
@@ -476,6 +515,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/arabic_varicella.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. varicela."
  },
@@ -488,6 +528,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_dtap.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. difteria, tétanos y tosferina."
  },
@@ -500,6 +541,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_flu_inactive.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. gripe estacional."
  },
@@ -512,6 +554,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_hepatitis_a.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. hepatitis A."
  },
@@ -524,6 +567,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_hepatitis_b.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. hepatitis B."
  },
@@ -536,6 +580,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_hib.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. Haemophilus influenzae tipo b."
  },
@@ -548,6 +593,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_mmr.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. sarampión, paperas y rubéola."
  },
@@ -560,6 +606,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_meningococcal.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. enfermedad meningocócica."
  },
@@ -572,6 +619,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_pcv13.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. enfermedad neumocócica."
  },
@@ -584,6 +632,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_rotavirus.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. rotavirus."
  },
@@ -596,6 +645,7 @@
   "lang": "hi",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_varicella.pdf",
   "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. varicela."
  },
@@ -608,6 +658,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "manual",
+  "usage": "citar_solo",
   "url": "",
   "notes": ""
  },
@@ -620,6 +671,7 @@
   "lang": "es",
   "topic": "auto",
   "doc_type": "libro",
+  "usage": "citar_solo",
   "url": "",
   "notes": "obra editorial de otro sistema sanitario; solo respaldo"
  },
@@ -632,6 +684,7 @@
   "lang": "fr",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/commotions-cerebrales-signes-symptomes.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -644,6 +697,7 @@
   "lang": "fr",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/coqueluche-toux-coquelucheuse.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -656,6 +710,7 @@
   "lang": "fr",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/grippe-influenza.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -668,6 +723,7 @@
   "lang": "fr",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/maladie-lyme.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -680,6 +736,7 @@
   "lang": "fr",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/oreillons.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -692,6 +749,7 @@
   "lang": "fr",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/rougeole.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -704,6 +762,7 @@
   "lang": "fr",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/rubeole.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -716,6 +775,7 @@
   "lang": "fr",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-canada/services/securite-soleil.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -728,6 +788,7 @@
   "lang": "fr",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/vaccinations-pour-enfants.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -740,6 +801,7 @@
   "lang": "fr",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/virus-respiratoire-syncytial-vrs.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
@@ -752,6 +814,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "libro",
+  "usage": "citar_solo",
   "url": "",
   "notes": "ISBN 978-84-16732-74-6"
  },
@@ -764,6 +827,7 @@
   "lang": "es",
   "topic": "medicamentos",
   "doc_type": "guia_clinica",
+  "usage": "citar_solo",
   "url": "",
   "notes": "el bot nunca recomienda antibióticos; solo contexto"
  },
@@ -776,6 +840,7 @@
   "lang": "es",
   "topic": "crianza",
   "doc_type": "manual",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -788,6 +853,7 @@
   "lang": "es",
   "topic": "recien_nacido",
   "doc_type": "manual",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -800,6 +866,7 @@
   "lang": "es",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/allergy.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
@@ -812,6 +879,7 @@
   "lang": "es",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/foodallergy.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
@@ -824,6 +892,7 @@
   "lang": "en",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/allergy.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -836,6 +905,7 @@
   "lang": "es",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/anaphylaxis.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
@@ -848,6 +918,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/asthmainchildren.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -860,6 +931,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/asthmainchildren.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -872,6 +944,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/choking.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -884,6 +957,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/autismspectrumdisorder.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -896,6 +970,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/001585.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -908,6 +983,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/breastfeeding.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -920,6 +996,7 @@
   "lang": "en",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/000967.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -932,6 +1009,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/007213.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -944,6 +1022,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/burns.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -956,6 +1035,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002445.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -968,6 +1048,7 @@
   "lang": "en",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/001006.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -980,6 +1061,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/chickenpox.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -992,6 +1074,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/childdevelopment.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1004,6 +1087,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/bedwetting.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1016,6 +1100,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/childsafety.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1028,6 +1113,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/childhoodvaccines.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-11"
  },
@@ -1040,6 +1126,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/childrenshealth.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1052,6 +1139,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/choking.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1064,6 +1152,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002070.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1076,6 +1165,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/commoncold.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1088,6 +1178,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/concussion.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1100,6 +1191,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/constipation.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1112,6 +1204,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/cough.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1124,6 +1217,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/croup.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1136,6 +1230,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/croup.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1148,6 +1243,7 @@
   "lang": "es",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/infantandnewborncare.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1160,6 +1256,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/007594.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1172,6 +1269,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/dehydration.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1184,6 +1282,7 @@
   "lang": "en",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002213.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1196,6 +1295,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/dehydration.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1208,6 +1308,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002002.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1220,6 +1321,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002011.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1232,6 +1334,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002012.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1244,6 +1347,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/diarrhea.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1256,6 +1360,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/diarrhea.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1268,6 +1373,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002211.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1280,6 +1386,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/earinfections.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1292,6 +1399,7 @@
   "lang": "en",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/eatingdisorders.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1304,6 +1412,7 @@
   "lang": "es",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/eczema.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
@@ -1316,6 +1425,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/eczema.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1328,6 +1438,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/heatillness.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1340,6 +1451,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/001649.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1352,6 +1464,7 @@
   "lang": "es",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/poisoning.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1364,6 +1477,7 @@
   "lang": "en",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002084.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1376,6 +1490,7 @@
   "lang": "en",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/fainting.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1388,6 +1503,7 @@
   "lang": "en",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/fever.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1400,6 +1516,7 @@
   "lang": "es",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/fever.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1412,6 +1529,7 @@
   "lang": "en",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/foodallergy.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1424,6 +1542,7 @@
   "lang": "en",
   "topic": "urinario",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/003140.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1436,6 +1555,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/gastroenteritis.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1448,6 +1568,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/gastroenteritis.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1460,6 +1581,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/headinjuries.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1472,6 +1594,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/headlice.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1484,6 +1607,7 @@
   "lang": "en",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/headache.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1496,6 +1620,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/heatillness.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1508,6 +1633,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/impetigo.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1520,6 +1646,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002004.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1532,6 +1659,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/infantandnewborncare.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1544,6 +1672,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/infantandnewbornnutrition.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1556,6 +1685,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002447.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1568,6 +1698,7 @@
   "lang": "es",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/earinfections.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1580,6 +1711,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/insectbitesandstings.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1592,6 +1724,7 @@
   "lang": "es",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/drugreactions.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
@@ -1604,6 +1737,7 @@
   "lang": "es",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/breastfeeding.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1616,6 +1750,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/headinjuries.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1628,6 +1763,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/007603.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1640,6 +1776,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/measles.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1652,6 +1789,7 @@
   "lang": "en",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/meningitis.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1664,6 +1802,7 @@
   "lang": "es",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/meningitis.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1676,6 +1815,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/000809.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1688,6 +1828,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/003209.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1700,6 +1841,7 @@
   "lang": "es",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/infantandnewbornnutrition.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1712,6 +1854,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002208.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1724,6 +1867,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/001538.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1736,6 +1880,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/pinkeye.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1748,6 +1893,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/pinworms.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1760,6 +1906,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/007605.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1772,6 +1919,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/pneumonia.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1784,6 +1932,7 @@
   "lang": "en",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/poisoning.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1796,6 +1945,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002013.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1808,6 +1958,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/burns.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1820,6 +1971,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/rashes.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1832,6 +1984,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/commoncold.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1844,6 +1997,7 @@
   "lang": "es",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/hayfever.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
@@ -1856,6 +2010,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/007608.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1868,6 +2023,7 @@
   "lang": "es",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/childrenshealth.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1880,6 +2036,7 @@
   "lang": "es",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/toddlerhealth.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1892,6 +2049,7 @@
   "lang": "es",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/teenmentalhealth.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1904,6 +2062,7 @@
   "lang": "es",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/measles.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1916,6 +2075,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/childsafety.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1928,6 +2088,7 @@
   "lang": "en",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/seizures.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1940,6 +2101,7 @@
   "lang": "en",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/selfharm.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1952,6 +2114,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/001542.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1964,6 +2127,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/sorethroat.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -1976,6 +2140,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/001430.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -1988,6 +2153,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/003074.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2000,6 +2166,7 @@
   "lang": "en",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/suicide.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -2012,6 +2179,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/sunexposure.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -2024,6 +2192,7 @@
   "lang": "en",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/teenmentalhealth.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -2036,6 +2205,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/001922.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2048,6 +2218,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/toddlerhealth.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -2060,6 +2231,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002010.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2072,6 +2244,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/patientinstructions/000944.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2084,6 +2257,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/001925.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2096,6 +2270,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002427.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2108,6 +2283,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/urinarytractinfections.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -2120,6 +2296,7 @@
   "lang": "es",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/hives.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-21"
  },
@@ -2132,6 +2309,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002024.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2144,6 +2322,7 @@
   "lang": "es",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/childhoodvaccines.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-11"
  },
@@ -2156,6 +2335,7 @@
   "lang": "es",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/spanish/chickenpox.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -2168,6 +2348,7 @@
   "lang": "en",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/003029.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2180,6 +2361,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/002405.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2192,6 +2374,7 @@
   "lang": "en",
   "topic": "urinario",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/000897.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2204,6 +2387,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/ency/article/003084.htm",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-22"
  },
@@ -2216,6 +2400,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://medlineplus.gov/whoopingcough.html",
   "notes": "licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02"
  },
@@ -2228,6 +2413,7 @@
   "lang": "es",
   "topic": "vacunas",
   "doc_type": "calendario",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -2240,6 +2426,7 @@
   "lang": "pt",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/aedes-aegypti",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2252,6 +2439,7 @@
   "lang": "pt",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/caxumba",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2264,6 +2452,7 @@
   "lang": "pt",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/chikungunya",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2276,6 +2465,7 @@
   "lang": "pt",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/coqueluche",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2288,6 +2478,7 @@
   "lang": "pt",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/dengue",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2300,6 +2491,7 @@
   "lang": "pt",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/febre-amarela",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2312,6 +2504,7 @@
   "lang": "pt",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/hepatites-virais",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2324,6 +2517,7 @@
   "lang": "pt",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/meningite",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2336,6 +2530,7 @@
   "lang": "pt",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/poliomielite",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2348,6 +2543,7 @@
   "lang": "pt",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/raiva",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2360,6 +2556,7 @@
   "lang": "pt",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/rubeola",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2372,6 +2569,7 @@
   "lang": "pt",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/sarampo",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2384,6 +2582,7 @@
   "lang": "pt",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/tuberculose",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2396,6 +2595,7 @@
   "lang": "pt",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "citar_solo",
   "url": "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/vacinacao",
   "notes": "licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11"
  },
@@ -2408,6 +2608,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "guia_clinica",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -2420,6 +2621,7 @@
   "lang": "en",
   "topic": "urgencias",
   "doc_type": "guia_clinica",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -2432,6 +2634,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/amoxicillin/about-amoxicillin/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -2444,6 +2647,7 @@
   "lang": "en",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/allergic-rhinitis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2456,6 +2660,7 @@
   "lang": "en",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/allergies/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2468,6 +2673,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/anal-fissure/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -2480,6 +2686,7 @@
   "lang": "en",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/anaphylaxis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2492,6 +2699,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/asthma/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2504,6 +2712,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/athletes-foot/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2516,6 +2725,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/atopic-eczema/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2528,6 +2738,7 @@
   "lang": "en",
   "topic": "lactante",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/babys-development/teething/baby-teething-symptoms/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2540,6 +2751,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/bad-breath/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2552,6 +2764,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/balanitis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2564,6 +2777,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/bedwetting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2576,6 +2790,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/birthmarks/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2588,6 +2803,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/broken-arm-or-wrist/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2600,6 +2816,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/broken-finger/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2612,6 +2829,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/bronchiolitis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2624,6 +2842,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/burns-and-scalds/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2636,6 +2855,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2648,6 +2868,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/cellulitis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2660,6 +2881,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/chest-infection/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2672,6 +2894,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/chest-pain/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2684,6 +2907,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/chickenpox/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2696,6 +2920,7 @@
   "lang": "en",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/live-well/healthy-teeth-and-gums/taking-care-of-childrens-teeth/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -2708,6 +2933,7 @@
   "lang": "en",
   "topic": "lactante",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/colic/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2720,6 +2946,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/amoxicillin/common-questions-about-amoxicillin/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -2732,6 +2959,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/conjunctivitis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2744,6 +2972,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/constipation/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2756,6 +2985,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/cradle-cap/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2768,6 +2998,7 @@
   "lang": "en",
   "topic": "lactante",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/craniosynostosis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2780,6 +3011,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/croup/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2792,6 +3024,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/dandruff/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2804,6 +3037,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/dehydration/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2816,6 +3050,7 @@
   "lang": "en",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/dental-abscess/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -2828,6 +3063,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/developmental-dysplasia-of-the-hip/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -2840,6 +3076,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/diarrhoea-and-vomiting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2852,6 +3089,7 @@
   "lang": "en",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/double-vision/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -2864,6 +3102,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/ear-infections/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2876,6 +3115,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/earache/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2888,6 +3128,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/earwax-build-up/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2900,6 +3141,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/excessive-sweating-hyperhidrosis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2912,6 +3154,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/eye-injuries/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2924,6 +3167,7 @@
   "lang": "en",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/eye-tests-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -2936,6 +3180,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/fainting/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2948,6 +3193,7 @@
   "lang": "en",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/febrile-seizures/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2960,6 +3206,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/flat-feet/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2972,6 +3219,7 @@
   "lang": "en",
   "topic": "lactante",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/flat-head-syndrome-plagiocephaly-brachycephaly/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -2984,6 +3232,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/flu/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -2996,6 +3245,7 @@
   "lang": "en",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/weaning-and-feeding/food-allergies-in-babies-and-young-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3008,6 +3258,7 @@
   "lang": "en",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/food-allergy/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3020,6 +3271,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3032,6 +3284,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/fungal-nail-infection/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3044,6 +3297,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/weaning-and-feeding/fussy-eaters/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -3056,6 +3310,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/glandular-fever/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3068,6 +3323,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/glue-ear/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3080,6 +3336,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/growing-pains/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3092,6 +3349,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/gynaecomastia/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3104,6 +3362,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/hair-loss/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3116,6 +3375,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/hand-foot-mouth-disease/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3128,6 +3388,7 @@
   "lang": "en",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/hay-fever/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3140,6 +3401,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/head-injury-and-concussion/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3152,6 +3414,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/head-lice-and-nits/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3164,6 +3427,7 @@
   "lang": "en",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/headaches-in-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3176,6 +3440,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/heart-palpitations/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3188,6 +3453,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/heat-exhaustion-heatstroke/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3200,6 +3466,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/heat-rash-prickly-heat/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -3212,6 +3479,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/foot-pain/heel-pain/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3224,6 +3492,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/helping-your-baby-to-sleep/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3236,6 +3505,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/hernia/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3248,6 +3518,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/hiccups/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3260,6 +3531,7 @@
   "lang": "en",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/fever-in-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3272,6 +3544,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/hip-pain-children-irritable-hip/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3284,6 +3557,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/hives/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3296,6 +3570,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/amoxicillin/how-and-when-to-take-amoxicillin/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -3308,6 +3583,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/how-to-change-your-babys-nappy/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3320,6 +3596,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/baby/breastfeeding-and-bottle-feeding/bottle-feeding/making-up-baby-formula/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -3332,6 +3609,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/ibuprofen-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3344,6 +3622,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/ibuprofen-for-children/about-ibuprofen-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3356,6 +3635,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/ibuprofen-for-children/who-can-and-cannot-take-ibuprofen-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3368,6 +3648,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/ibuprofen-for-children/how-and-when-to-give-ibuprofen-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3380,6 +3661,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/ibuprofen-for-children/side-effects-of-ibuprofen-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3392,6 +3674,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/ibuprofen-for-children/taking-ibuprofen-for-children-with-other-medicines-and-herbal-supplements/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3404,6 +3687,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/ibuprofen-for-children/common-questions-about-ibuprofen-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3416,6 +3700,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/impetigo/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3428,6 +3713,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/insect-bites-and-stings/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3440,6 +3726,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/jaundice-in-babies/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-13"
  },
@@ -3452,6 +3739,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/kawasaki-disease/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3464,6 +3752,7 @@
   "lang": "en",
   "topic": "urinario",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/labial-fusion/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -3476,6 +3765,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/lazy-eye/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3488,6 +3778,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/measles/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3500,6 +3791,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/baby/health/medicines-for-babies-and-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -3512,6 +3804,7 @@
   "lang": "en",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/meningitis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3524,6 +3817,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/moles/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3536,6 +3830,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/molluscum-contagiosum/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3548,6 +3843,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/motion-sickness/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3560,6 +3856,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/mouth-ulcers/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3572,6 +3869,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/mumps/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3584,6 +3882,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/vaccinations/nhs-vaccinations-and-when-to-have-them/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3596,6 +3895,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/nail-problems/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3608,6 +3908,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/nappy-rash/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -3620,6 +3921,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/neck-pain-and-stiff-neck/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3632,6 +3934,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/night-sweats/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -3644,6 +3947,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/night-terrors/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3656,6 +3960,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/norovirus/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3668,6 +3973,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/nosebleed/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3680,6 +3986,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/oral-thrush-mouth-thrush/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3692,6 +3999,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/antibiotics/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -3704,6 +4012,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/coeliac-disease/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3716,6 +4025,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/scoliosis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -3728,6 +4038,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/squint/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3740,6 +4051,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/stammering/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3752,6 +4064,7 @@
   "lang": "en",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/tics/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3764,6 +4077,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/vitiligo/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3776,6 +4090,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/paracetamol-for-children/about-paracetamol-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -3788,6 +4103,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/paracetamol-for-children/who-can-and-cannot-take-paracetamol-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -3800,6 +4116,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/paracetamol-for-children/how-and-when-to-give-paracetamol-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -3812,6 +4129,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/paracetamol-for-children/side-effects-of-paracetamol-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -3824,6 +4142,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/paracetamol-for-children/taking-paracetamol-for-children-with-other-medicines-and-herbal-supplements/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -3836,6 +4155,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/paracetamol-for-children/common-questions-about-paracetamol-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -3848,6 +4168,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/paracetamol-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3860,6 +4181,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/pneumonia/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3872,6 +4194,7 @@
   "lang": "en",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/poisoning/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3884,6 +4207,7 @@
   "lang": "en",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/priapism-painful-erections/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3896,6 +4220,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/rashes-babies-and-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3908,6 +4233,7 @@
   "lang": "en",
   "topic": "lactante",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/reflux-in-babies/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3920,6 +4246,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/respiratory-syncytial-virus-rsv/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3932,6 +4259,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/ringworm/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3944,6 +4272,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/roseola/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3956,6 +4285,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/scabies/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3968,6 +4298,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/scarlet-fever/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -3980,6 +4311,7 @@
   "lang": "en",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/mental-health/conditions/selective-mutism/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -3992,6 +4324,7 @@
   "lang": "en",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/sepsis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4004,6 +4337,7 @@
   "lang": "en",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/short-sightedness/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4016,6 +4350,7 @@
   "lang": "en",
   "topic": "medicamentos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/medicines/amoxicillin/side-effects-of-amoxicillin/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-23"
  },
@@ -4028,6 +4363,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/autism/signs-in-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4040,6 +4376,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/slapped-cheek-syndrome/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4052,6 +4389,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/sleep-apnoea/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4064,6 +4402,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/sleepwalking/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4076,6 +4415,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/snoring/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4088,6 +4428,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/soiling-child-pooing-their-pants/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4100,6 +4441,7 @@
   "lang": "en",
   "topic": "lactante",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/soothing-a-crying-baby/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -4112,6 +4454,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/sore-throat/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4124,6 +4467,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/sprains-and-strains/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4136,6 +4480,7 @@
   "lang": "en",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/stye/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4148,6 +4493,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/sudden-infant-death-syndrome-sids/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -4160,6 +4506,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/sunburn/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4172,6 +4519,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/swollen-glands/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4184,6 +4532,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/retinoblastoma/symptoms/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4196,6 +4545,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/type-1-diabetes/symptoms/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4208,6 +4558,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/teeth-grinding/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4220,6 +4571,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/babys-development/behaviour/temper-tantrums/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4232,6 +4584,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/threadworms/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4244,6 +4597,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/phimosis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4256,6 +4610,7 @@
   "lang": "en",
   "topic": "lactante",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/tongue-tie/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4268,6 +4623,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/tonsillitis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4280,6 +4636,7 @@
   "lang": "en",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/toothache/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4292,6 +4649,7 @@
   "lang": "en",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/mental-health/conditions/trichotillomania/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4304,6 +4662,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/umbilical-hernia/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4316,6 +4675,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/undescended-testicles/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4328,6 +4688,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/unintentional-weight-loss/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4340,6 +4701,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/urinary-tract-infections-utis/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4352,6 +4714,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/vaginal-discharge/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4364,6 +4727,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/weaning-and-feeding/vitamins-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
  },
@@ -4376,6 +4740,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/warts-and-verrucas/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4388,6 +4753,7 @@
   "lang": "en",
   "topic": "crianza",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/caring-for-a-newborn/washing-and-bathing-your-baby/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
@@ -4400,6 +4766,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/symptoms/watering-eyes/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
@@ -4412,6 +4779,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/conditions/whooping-cough/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4424,6 +4792,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
@@ -4436,6 +4805,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-13"
  },
@@ -4448,6 +4818,7 @@
   "lang": "en",
   "topic": "auto",
   "doc_type": "manual",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4460,6 +4831,7 @@
   "lang": "es",
   "topic": "auto",
   "doc_type": "manual",
+  "usage": "citar_solo",
   "url": "",
   "notes": ""
  },
@@ -4472,6 +4844,7 @@
   "lang": "de",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Adenovirus_Konjunktivitis.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4484,6 +4857,7 @@
   "lang": "de",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_COVID-19.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4496,6 +4870,7 @@
   "lang": "de",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Campylobacter.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4508,6 +4883,7 @@
   "lang": "de",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Diphtherie.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4520,6 +4896,7 @@
   "lang": "de",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_EHEC.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4532,6 +4909,7 @@
   "lang": "de",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_FSME.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4544,6 +4922,7 @@
   "lang": "de",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HaemophilusInfluenzae.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4556,6 +4935,7 @@
   "lang": "de",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HFMK.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4568,6 +4948,7 @@
   "lang": "de",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HepatitisA.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4580,6 +4961,7 @@
   "lang": "de",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Influenza_saisonal.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4592,6 +4974,7 @@
   "lang": "de",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Pertussis.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4604,6 +4987,7 @@
   "lang": "de",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Kopflausbefall.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4616,6 +5000,7 @@
   "lang": "de",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_LymeBorreliose.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4628,6 +5013,7 @@
   "lang": "de",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Masern.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4640,6 +5026,7 @@
   "lang": "de",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Meningokokken.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4652,6 +5039,7 @@
   "lang": "de",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Mumps.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4664,6 +5052,7 @@
   "lang": "de",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Noroviren.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4676,6 +5065,7 @@
   "lang": "de",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Pneumokokken.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4688,6 +5078,7 @@
   "lang": "de",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Poliomyelitis.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4700,6 +5091,7 @@
   "lang": "de",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_RSV.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4712,6 +5104,7 @@
   "lang": "de",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Rotaviren.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4724,6 +5117,7 @@
   "lang": "de",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Roeteln.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4736,6 +5130,7 @@
   "lang": "de",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Salmonellose.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4748,6 +5143,7 @@
   "lang": "de",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Skabies.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4760,6 +5156,7 @@
   "lang": "de",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Streptococcus_pyogenes.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4772,6 +5169,7 @@
   "lang": "de",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Tetanus.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4784,6 +5182,7 @@
   "lang": "de",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Toxoplasmose.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4796,6 +5195,7 @@
   "lang": "de",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Tuberkulose.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4808,6 +5208,7 @@
   "lang": "de",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Varizellen.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4820,6 +5221,7 @@
   "lang": "de",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Zytomegalievirus.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
  },
@@ -4832,6 +5234,7 @@
   "lang": "es",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4844,6 +5247,7 @@
   "lang": "es",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4856,6 +5260,7 @@
   "lang": "es",
   "topic": "alergia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4868,6 +5273,7 @@
   "lang": "es",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4880,6 +5286,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4892,6 +5299,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4904,6 +5312,7 @@
   "lang": "es",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4916,6 +5325,7 @@
   "lang": "es",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4928,6 +5338,7 @@
   "lang": "es",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4940,6 +5351,7 @@
   "lang": "es",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4952,6 +5364,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4964,6 +5377,7 @@
   "lang": "es",
   "topic": "lactante",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4976,6 +5390,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -4988,6 +5403,7 @@
   "lang": "es",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5000,6 +5416,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5012,6 +5429,7 @@
   "lang": "es",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://seup.org/wp-content/uploads/2025/05/15_Fiebre.pdf",
   "notes": ""
  },
@@ -5024,6 +5442,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5036,6 +5455,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5048,6 +5468,7 @@
   "lang": "es",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5060,6 +5481,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5072,6 +5494,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5084,6 +5507,7 @@
   "lang": "es",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5096,6 +5520,7 @@
   "lang": "es",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5108,6 +5533,7 @@
   "lang": "es",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5120,6 +5546,7 @@
   "lang": "es",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5132,6 +5559,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5144,6 +5572,7 @@
   "lang": "es",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5156,6 +5585,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5168,6 +5598,7 @@
   "lang": "es",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://seup.org/pdf_public/pub/hojas_padres/acudir_urgencias.pdf",
   "notes": ""
  },
@@ -5180,6 +5611,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/drinking-water",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5192,6 +5624,7 @@
   "lang": "es",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/infant-and-young-child-feeding",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5204,6 +5637,7 @@
   "lang": "fr",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/infant-and-young-child-feeding",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5216,6 +5650,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/anaemia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5228,6 +5663,7 @@
   "lang": "es",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/anaemia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5240,6 +5676,7 @@
   "lang": "es",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/sickle-cell-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5252,6 +5689,7 @@
   "lang": "fr",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/anaemia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5264,6 +5702,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/asthma",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5276,6 +5715,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/asthma",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5288,6 +5728,7 @@
   "lang": "fr",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/asthma",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5300,6 +5741,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5312,6 +5754,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "informe",
+  "usage": "citar_solo",
   "url": "",
   "notes": "CC BY-NC-SA 3.0 IGO; informe de reunión, no reproducible en artículos (licencia resuelta 26-ago-2026)"
  },
@@ -5324,6 +5767,7 @@
   "lang": "fr",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/autism-spectrum-disorders",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5336,6 +5780,7 @@
   "lang": "es",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/autism-spectrum-disorders",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5348,6 +5793,7 @@
   "lang": "en",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5360,6 +5806,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/questions-and-answers/item/child-growth-standards",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13"
  },
@@ -5372,6 +5819,7 @@
   "lang": "en",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/child-maltreatment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5384,6 +5832,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/cholera",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-18"
  },
@@ -5396,6 +5845,7 @@
   "lang": "fr",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/cholera",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-18"
  },
@@ -5408,6 +5858,7 @@
   "lang": "es",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/immunization-coverage",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5420,6 +5871,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/household-air-pollution-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5432,6 +5884,7 @@
   "lang": "fr",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/immunization-coverage",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5444,6 +5897,7 @@
   "lang": "fr",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/blindness-and-visual-impairment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5456,6 +5910,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/cholera",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-18"
  },
@@ -5468,6 +5923,7 @@
   "lang": "en",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/deafness-and-hearing-loss",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5480,6 +5936,7 @@
   "lang": "en",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5492,6 +5949,7 @@
   "lang": "fr",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/dengue-and-severe-dengue",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5504,6 +5962,7 @@
   "lang": "es",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/dengue-and-severe-dengue",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5516,6 +5975,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/diarrhoeal-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5528,6 +5988,7 @@
   "lang": "es",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/diphtheria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5540,6 +6001,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/diphtheria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5552,6 +6014,7 @@
   "lang": "fr",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/diphtheria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5564,6 +6027,7 @@
   "lang": "es",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/blindness-and-visual-impairment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5576,6 +6040,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/drinking-water",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5588,6 +6053,7 @@
   "lang": "fr",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/sickle-cell-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5600,6 +6066,7 @@
   "lang": "fr",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/drinking-water",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5612,6 +6079,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/diarrhoeal-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5624,6 +6092,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/snakebite-envenoming",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5636,6 +6105,7 @@
   "lang": "fr",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/snakebite-envenoming",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5648,6 +6118,7 @@
   "lang": "en",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/epilepsy",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5660,6 +6131,7 @@
   "lang": "es",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/epilepsy",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5672,6 +6144,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/typhoid",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5684,6 +6157,7 @@
   "lang": "fr",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/typhoid",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5696,6 +6170,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/food-safety",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5708,6 +6183,7 @@
   "lang": "fr",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/scabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5720,6 +6196,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/soil-transmitted-helminth-infections",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5732,6 +6209,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/influenza-(seasonal)",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5744,6 +6222,7 @@
   "lang": "fr",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/influenza-(seasonal)",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5756,6 +6235,7 @@
   "lang": "en",
   "topic": "desarrollo",
   "doc_type": "guia_clinica",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -5768,6 +6248,7 @@
   "lang": "fr",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/soil-transmitted-helminth-infections",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5780,6 +6261,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/hiv-aids",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5792,6 +6274,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/hepatitis-a",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5804,6 +6287,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/hepatitis-a",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5816,6 +6300,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5828,6 +6313,7 @@
   "lang": "fr",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/hepatitis-a",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5840,6 +6326,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/immunization-coverage",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5852,6 +6339,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5864,6 +6352,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/influenza-(seasonal)",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5876,6 +6365,7 @@
   "lang": "es",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/food-safety",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -5888,6 +6378,7 @@
   "lang": "es",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/lead-poisoning-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5900,6 +6391,7 @@
   "lang": "fr",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/lead-poisoning-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5912,6 +6404,7 @@
   "lang": "es",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/adolescent-mental-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5924,6 +6417,7 @@
   "lang": "en",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/lead-poisoning-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5936,6 +6430,7 @@
   "lang": "fr",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/diarrhoeal-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5948,6 +6443,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/malaria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5960,6 +6456,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/malnutrition",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5972,6 +6469,7 @@
   "lang": "fr",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/malnutrition",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -5984,6 +6482,7 @@
   "lang": "fr",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/child-maltreatment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -5996,6 +6495,7 @@
   "lang": "es",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/child-maltreatment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6008,6 +6508,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/measles",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -6020,6 +6521,7 @@
   "lang": "en",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/adolescent-mental-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -6032,6 +6534,7 @@
   "lang": "es",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/preterm-birth",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6044,6 +6547,7 @@
   "lang": "fr",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/preterm-birth",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6056,6 +6560,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/pneumonia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -6068,6 +6573,7 @@
   "lang": "fr",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/questions-and-answers/item/child-growth-standards",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13"
  },
@@ -6080,6 +6586,7 @@
   "lang": "es",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/obesity-and-overweight",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6092,6 +6599,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6104,6 +6612,7 @@
   "lang": "fr",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/obesity-and-overweight",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6116,6 +6625,7 @@
   "lang": "en",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/oral-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6128,6 +6638,7 @@
   "lang": "fr",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/malaria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6140,6 +6651,7 @@
   "lang": "es",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/malaria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6152,6 +6664,7 @@
   "lang": "es",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/questions-and-answers/item/child-growth-standards",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13"
  },
@@ -6164,6 +6677,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/pneumonia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -6176,6 +6690,7 @@
   "lang": "fr",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/pneumonia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -6188,6 +6703,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/poliomyelitis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-20"
  },
@@ -6200,6 +6716,7 @@
   "lang": "fr",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/household-air-pollution-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6212,6 +6729,7 @@
   "lang": "en",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/preterm-birth",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6224,6 +6742,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/rabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6236,6 +6755,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/rabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6248,6 +6768,7 @@
   "lang": "fr",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/rabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6260,6 +6781,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/road-traffic-injuries",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6272,6 +6794,7 @@
   "lang": "fr",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/measles",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -6284,6 +6807,7 @@
   "lang": "es",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/oral-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6296,6 +6820,7 @@
   "lang": "fr",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/oral-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6308,6 +6833,7 @@
   "lang": "fr",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/adolescent-mental-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -6320,6 +6846,7 @@
   "lang": "es",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/measles",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-02"
  },
@@ -6332,6 +6859,7 @@
   "lang": "es",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/scabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6344,6 +6872,7 @@
   "lang": "en",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/scabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6356,6 +6885,7 @@
   "lang": "en",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/sepsis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6368,6 +6898,7 @@
   "lang": "es",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/sepsis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6380,6 +6911,7 @@
   "lang": "fr",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/sepsis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6392,6 +6924,7 @@
   "lang": "en",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/sickle-cell-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6404,6 +6937,7 @@
   "lang": "en",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/snakebite-envenoming",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6416,6 +6950,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/soil-transmitted-helminth-infections",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6428,6 +6963,7 @@
   "lang": "es",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/deafness-and-hearing-loss",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6440,6 +6976,7 @@
   "lang": "fr",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/deafness-and-hearing-loss",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6452,6 +6989,7 @@
   "lang": "fr",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/food-safety",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6464,6 +7002,7 @@
   "lang": "fr",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/tobacco",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6476,6 +7015,7 @@
   "lang": "es",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/tobacco",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6488,6 +7028,7 @@
   "lang": "en",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/tetanus",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6500,6 +7041,7 @@
   "lang": "en",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/tobacco",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6512,6 +7054,7 @@
   "lang": "fr",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/road-traffic-injuries",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6524,6 +7067,7 @@
   "lang": "es",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6536,6 +7080,7 @@
   "lang": "en",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/news-room/fact-sheets/detail/typhoid",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6548,6 +7093,7 @@
   "lang": "es",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/tetanus",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6560,6 +7106,7 @@
   "lang": "fr",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/tetanus",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6572,6 +7119,7 @@
   "lang": "fr",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/hiv-aids",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6584,6 +7132,7 @@
   "lang": "es",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/hiv-aids",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6596,6 +7145,7 @@
   "lang": "en",
   "topic": "alimentacion",
   "doc_type": "guia_clinica",
+  "usage": "publico",
   "url": "",
   "notes": ""
  },
@@ -6608,6 +7158,7 @@
   "lang": "fr",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/epilepsy",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6620,6 +7171,7 @@
   "lang": "ru",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/anaemia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6632,6 +7184,7 @@
   "lang": "ru",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/asthma",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6644,6 +7197,7 @@
   "lang": "ru",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/autism-spectrum-disorders",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6656,6 +7210,7 @@
   "lang": "ru",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/food-safety",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6668,6 +7223,7 @@
   "lang": "ru",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/rabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6680,6 +7236,7 @@
   "lang": "ru",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/typhoid",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6692,6 +7249,7 @@
   "lang": "ru",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/hiv-aids",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6704,6 +7262,7 @@
   "lang": "ru",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/hepatitis-a",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6716,6 +7275,7 @@
   "lang": "ru",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/hepatitis-b",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6728,6 +7288,7 @@
   "lang": "ru",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/deafness-and-hearing-loss",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6740,6 +7301,7 @@
   "lang": "ru",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/influenza-(seasonal)",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6752,6 +7314,7 @@
   "lang": "ru",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/dengue-and-severe-dengue",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6764,6 +7327,7 @@
   "lang": "ru",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/diarrhoeal-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6776,6 +7340,7 @@
   "lang": "ru",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/diphtheria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6788,6 +7353,7 @@
   "lang": "ru",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/road-traffic-injuries",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6800,6 +7366,7 @@
   "lang": "ru",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/child-maltreatment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6812,6 +7379,7 @@
   "lang": "ru",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/household-air-pollution-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6824,6 +7392,7 @@
   "lang": "ru",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/measles",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6836,6 +7405,7 @@
   "lang": "ru",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/rubella",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6848,6 +7418,7 @@
   "lang": "ru",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/malaria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6860,6 +7431,7 @@
   "lang": "ru",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/meningitis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6872,6 +7444,7 @@
   "lang": "ru",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/malnutrition",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6884,6 +7457,7 @@
   "lang": "ru",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/obesity-and-overweight",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6896,6 +7470,7 @@
   "lang": "ru",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/burns",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6908,6 +7483,7 @@
   "lang": "ru",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/lead-poisoning-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -6920,6 +7496,7 @@
   "lang": "ru",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/immunization-coverage",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6932,6 +7509,7 @@
   "lang": "ru",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/oral-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6944,6 +7522,7 @@
   "lang": "ru",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/falls",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6956,6 +7535,7 @@
   "lang": "ru",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/soil-transmitted-helminth-infections",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6968,6 +7548,7 @@
   "lang": "ru",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/infant-and-young-child-feeding",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -6980,6 +7561,7 @@
   "lang": "ru",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/drinking-water",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -6992,6 +7574,7 @@
   "lang": "ru",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/pneumonia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7004,6 +7587,7 @@
   "lang": "ru",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/poliomyelitis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7016,6 +7600,7 @@
   "lang": "ru",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/snakebite-envenoming",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7028,6 +7613,7 @@
   "lang": "ru",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/preterm-birth",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7040,6 +7626,7 @@
   "lang": "ru",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/adolescent-mental-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7052,6 +7639,7 @@
   "lang": "ru",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/sepsis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7064,6 +7652,7 @@
   "lang": "ru",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/sickle-cell-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7076,6 +7665,7 @@
   "lang": "ru",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/blindness-and-visual-impairment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7088,6 +7678,7 @@
   "lang": "ru",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/questions-and-answers/item/child-growth-standards",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13"
  },
@@ -7100,6 +7691,7 @@
   "lang": "ru",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/tetanus",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7112,6 +7704,7 @@
   "lang": "ru",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/tobacco",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7124,6 +7717,7 @@
   "lang": "ru",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/tuberculosis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7136,6 +7730,7 @@
   "lang": "ru",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/drowning",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7148,6 +7743,7 @@
   "lang": "ru",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/cholera",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-18"
  },
@@ -7160,6 +7756,7 @@
   "lang": "ru",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/scabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7172,6 +7769,7 @@
   "lang": "ru",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ru/news-room/fact-sheets/detail/epilepsy",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7184,6 +7782,7 @@
   "lang": "ar",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/child-maltreatment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7196,6 +7795,7 @@
   "lang": "ar",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/influenza-(seasonal)",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7208,6 +7808,7 @@
   "lang": "ar",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/road-traffic-injuries",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7220,6 +7821,7 @@
   "lang": "ar",
   "topic": "urgencias",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/sepsis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7232,6 +7834,7 @@
   "lang": "ar",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/pneumonia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7244,6 +7847,7 @@
   "lang": "ar",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/tobacco",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7256,6 +7860,7 @@
   "lang": "ar",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/snakebite-envenoming",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7268,6 +7873,7 @@
   "lang": "ar",
   "topic": "intoxicacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/lead-poisoning-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7280,6 +7886,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/immunization-coverage",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7292,6 +7899,7 @@
   "lang": "ar",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/meningitis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7304,6 +7912,7 @@
   "lang": "ar",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/hepatitis-a",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7316,6 +7925,7 @@
   "lang": "ar",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/hepatitis-b",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7328,6 +7938,7 @@
   "lang": "ar",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/autism-spectrum-disorders",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7340,6 +7951,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/tetanus",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7352,6 +7964,7 @@
   "lang": "ar",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/typhoid",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7364,6 +7977,7 @@
   "lang": "ar",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/scabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7376,6 +7990,7 @@
   "lang": "ar",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/burns",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7388,6 +8003,7 @@
   "lang": "ar",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/measles",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7400,6 +8016,7 @@
   "lang": "ar",
   "topic": "piel",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/rubella",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7412,6 +8029,7 @@
   "lang": "ar",
   "topic": "vacunas",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/diphtheria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7424,6 +8042,7 @@
   "lang": "ar",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/asthma",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7436,6 +8055,7 @@
   "lang": "ar",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/tuberculosis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7448,6 +8068,7 @@
   "lang": "ar",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/obesity-and-overweight",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7460,6 +8081,7 @@
   "lang": "ar",
   "topic": "neurologia",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/epilepsy",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7472,6 +8094,7 @@
   "lang": "ar",
   "topic": "orl",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/deafness-and-hearing-loss",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7484,6 +8107,7 @@
   "lang": "ar",
   "topic": "ojos",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/blindness-and-visual-impairment",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7496,6 +8120,7 @@
   "lang": "ar",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/drowning",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7508,6 +8133,7 @@
   "lang": "ar",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/cholera",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-18"
  },
@@ -7520,6 +8146,7 @@
   "lang": "ar",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/malaria",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7532,6 +8159,7 @@
   "lang": "ar",
   "topic": "recien_nacido",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/preterm-birth",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7544,6 +8172,7 @@
   "lang": "ar",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/infant-and-young-child-feeding",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7556,6 +8185,7 @@
   "lang": "ar",
   "topic": "respiratorio",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/household-air-pollution-and-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7568,6 +8198,7 @@
   "lang": "ar",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/falls",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7580,6 +8211,7 @@
   "lang": "ar",
   "topic": "fiebre",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/dengue-and-severe-dengue",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7592,6 +8224,7 @@
   "lang": "ar",
   "topic": "accidentes",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/rabies",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7604,6 +8237,7 @@
   "lang": "ar",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/food-safety",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7616,6 +8250,7 @@
   "lang": "ar",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/malnutrition",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7628,6 +8263,7 @@
   "lang": "ar",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/poliomyelitis",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7640,6 +8276,7 @@
   "lang": "ar",
   "topic": "dental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/oral-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7652,6 +8289,7 @@
   "lang": "ar",
   "topic": "salud_mental",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/adolescent-mental-health",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7664,6 +8302,7 @@
   "lang": "ar",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/soil-transmitted-helminth-infections",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7676,6 +8315,7 @@
   "lang": "ar",
   "topic": "alimentacion",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/anaemia",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7688,6 +8328,7 @@
   "lang": "ar",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/hiv-aids",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
@@ -7700,6 +8341,7 @@
   "lang": "ar",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/diarrhoeal-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-03"
  },
@@ -7712,6 +8354,7 @@
   "lang": "ar",
   "topic": "general",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/sickle-cell-disease",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-12"
  },
@@ -7724,6 +8367,7 @@
   "lang": "ar",
   "topic": "desarrollo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/questions-and-answers/item/child-growth-standards",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-13"
  },
@@ -7736,6 +8380,7 @@
   "lang": "ar",
   "topic": "digestivo",
   "doc_type": "hoja_padres",
+  "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/drinking-water",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  }

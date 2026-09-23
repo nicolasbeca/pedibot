@@ -340,6 +340,24 @@ class OpsStore:
         self.con.commit()
         return token
 
+    def delete_share(self, token: str, session: str) -> bool:
+        """Retirar un enlace compartido. 23-sep-2026: se podía crear y no se podía deshacer.
+
+        Se exige la MISMA sesión que lo creó, igual que para crearlo: quien comparte es quien
+        puede arrepentirse. Se borra el enlace, no la respuesta — el registro de calidad, que es
+        anónimo y es para lo que se guarda, sigue igual.
+        """
+        fila = self.con.execute(
+            "SELECT 1 FROM shares s JOIN answers a ON a.id = s.answer_id"
+            " WHERE s.token=? AND a.session=?",
+            (token, session),
+        ).fetchone()
+        if not fila:
+            return False
+        self.con.execute("DELETE FROM shares WHERE token=?", (token,))
+        self.con.commit()
+        return True
+
     def get_share(self, token: str) -> dict[str, object] | None:
         row = self.con.execute(
             "SELECT a.question, a.answer, a.level, a.lang, a.ts FROM shares s"

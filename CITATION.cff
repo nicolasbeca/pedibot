@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: "PediBot — a paediatric answer with the source attached"
+message: "If you use this software or its catalogue, please cite it."
+type: software
+authors:
+  - family-names: Beca
+    given-names: Nicolás
+    email: pedibot.ai@gmail.com
+repository-code: "https://github.com/nicolasbeca/pedibot"
+url: "https://pedibot.xyz"
+abstract: >-
+  PediBot answers parents' questions about a sick child using only what paediatric
+  societies, health ministries and the WHO already publish for families, citing the
+  document each sentence comes from. Rule-based triage runs before any model and puts the
+  local emergency number first; a verification step rejects any draft without a valid
+  citation, so when nothing in the corpus supports an answer the system says so instead of
+  guessing. It ships emergency numbers for 90 countries, childhood vaccination schedules
+  for 66, WHO growth standards, MUAC screening and paracetamol/ibuprofen dosing from fixed
+  tables, in eight languages.
+keywords:
+  - paediatrics
+  - child health
+  - health information
+  - retrieval-augmented generation
+  - open data
+  - digital public good
+  - multilingual
+license: AGPL-3.0-or-later
+version: 2.0.0a0
+date-released: "2026-09-23"

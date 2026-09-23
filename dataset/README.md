@@ -10,7 +10,8 @@ it is scattered: there is no single machine-readable index of it. This is one.
 ## What is in here, and what is not
 
 **In:** the catalogue. Organisation, full name of the organisation, document title, year,
-language, topic, document type and the URL of the original.
+language, topic, document type, the URL of the original, and `usage` — what may be done
+with that document.
 
 **Not in:** the documents themselves, or any text extracted from them. They belong to
 the NHS, the WHO, the CDC, the AAP, the RKI and the rest. Pointing at them is a service
@@ -34,6 +35,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
+| `usage` | `publico` (597) may be reproduced under its publisher's terms; `citar_solo` (48) may be cited and linked, not reproduced |
 | `url` | link to the original (597 of 645 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 

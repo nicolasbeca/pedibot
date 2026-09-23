@@ -30,7 +30,7 @@ Contado el **2026-09-23**.
 | documentos del catálogo público | **645** | dataset/sources.json (CC0) |
 | documentos del catálogo interno | **648** | incluye los que no se pueden redistribuir |
 | guías publicadas | **511** | web/content/*/*.md |
-| pruebas automáticas | **10.328** | `uv run pytest --collect-only` |
+| pruebas automáticas | **10.336** | `uv run pytest --collect-only` |
 | África: países con número | **54** | los 54 del continente |
 | África: con calendario | **54** | los 54 del continente |
 | África: con curva | **52** | los 54 del continente |
