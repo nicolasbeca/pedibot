@@ -67,4 +67,8 @@ with ThreadPoolExecutor(6) as ex, salida.open("w", encoding="utf-8") as f:
     for r in ex.map(una, enumerate(preguntas)):
         f.write(json.dumps(r, ensure_ascii=False) + "\n")
         f.flush()
-        print(r["i"], r.get("level"), r.get("ver"), r["q"][:60], flush=True)
+        # 23-sep-2026: la consola de Windows es cp1252 y la corrida MURIÓ en la pregunta 249
+        # —la primera en ruso— al imprimirla. Media tanda perdida por una traza de progreso.
+        linea = f"{r['i']} {r.get('level')} {r.get('ver')} {r['q'][:60]}"
+        sys.stdout.buffer.write(linea.encode("utf-8", "replace") + b"\n")
+        sys.stdout.flush()

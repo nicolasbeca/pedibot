@@ -90,8 +90,8 @@ rules:
   - (प्रतिक्रिया|होश).{0,15}(का अभाव|नहीं)
   - p[ée]rdida (de|del) (conocimiento|conciencia)
   - (ha )?perdi[oó] (el conocimiento|la conciencia)
-  - (ha )?perdido (el conocimiento|la conciencia)
-  - pierde (el conocimiento|la conciencia)
+  - (?!.{0,90}(no (ha |había )?(perdid|perdi[oó])|sin perder|no perdi[oó]|nunca (ha )?perdid))(ha )?perdido (el conocimiento|la conciencia)
+  - (?!.{0,90}(no (ha |había )?(perdid|perdi[oó])|sin perder|no perdi[oó]|nunca (ha )?perdid))pierde (el conocimiento|la conciencia)
   - está perdiendo (el conocimiento|la conciencia)
   - loses? consciousness
   - losing consciousness
@@ -296,7 +296,7 @@ rules:
   # 16-sep-2026, dialecto: «شفايفه زرقا» son los labios azules del Golfo y Egipto.
   - "(شفايف|شفايفه|شفايفها|شفتيه).{0,20}(زرق|زرقا|زرقاء|زرقه)"
   - no puede respirar
-  - le cuesta (mucho )?respirar
+  - le cuesta (mucho )?respirar(?![^.]{0,45}(solo cuando corre|s[óo]lo cuando corre|al correr|corriendo|cuando hace ejercicio|haciendo deporte|jugando al f[úu]tbol))
   - dificultad (grave |seria )?para respirar
   - dificultades para respirar
   - respira con dificultad
@@ -341,18 +341,18 @@ rules:
   # muchísimo» es el espasmo del sollozo: asusta muchísimo y es benigno (MedlinePlus,
   # breath-holding spell). Recibía «llama a una ambulancia».
   - deja de respirar(?![^.]{0,60}(cuando llora|al llorar|llorando|con el llanto|con las rabietas|cuando se enfada|unos segundos cuando))
-  - (morad|azul|cianosis|p[áa]lid)[^.]{0,60}deja de respirar
-  - deja de respirar[^.]{0,60}(morad|azul|cianosis|p[áa]lid|desmay|no responde)
+  - (morad|azul|cianosis|p[áa]lid)[^.]{0,60}deja de respirar(?![^.]{0,70}(labios (est[áa]n )?normal|labios rosas|solo (las )?manos|solo (los )?pies))
+  - deja de respirar[^.]{0,60}(morad|azul|cianosis|p[áa]lid|desmay|no responde)(?![^.]{0,70}(labios (est[áa]n )?normal|labios rosas|solo (las )?manos|solo (los )?pies))
   - (labios|piel) (azul|morad)(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar))
-  - (labios|piel|lengua|cara|u[ñn]as).{0,30}(azul(es)?|morad|amoratad|c[aá]rdeno)(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar))
-  - (azul(es)?|morad|amoratad).{0,30}(labios|piel|lengua|cara)
+  - (labios|piel|lengua|cara|u[ñn]as).{0,30}(azul(es)?|morad|amoratad|c[aá]rdeno)(?![^.]{0,60}(espalda|nalga|culete|desde (el )?naci|de nacimiento|cuando llora|al llorar|despu[ée]s de llorar|tras llorar|ya (est[áa]n?|se le pas|son) (normal|rosa|bien)|y ya est[áa]n normal))
+  - (azul(es)?|morad|amoratad).{0,30}(labios|piel|lengua|cara)(?![^.]{0,70}(ya (est[áa]n?|se (le )?)?(normal|rosa|bien|pas[óo])|despu[ée]s de llorar|al llorar|cuando llora|del llanto))(?![^.]{0,25}(est[áa]n? )?(normal|rosa|bien))
   - se (pone|puso|est[aá] poniendo) (azul|morado|gris)(?![^.]{0,50}(cuando|al|mientras) llora)
   # 19-sep-2026, encontrado probando contra lo vivo el día de MetaDAO. «Mi hijo de 2 años no
   # respira bien y está morado» salía RUTINA y contestaba con espasmos del sollozo. Estaban el
   # cambio en marcha («se pone morado») y la parte del cuerpo («labios morados»); faltaba el
   # estado dicho del niño entero con el verbo estar, que es como se dice de verdad. Pide el
   # sujeto delante a propósito: «tiene la pierna morada del golpe» es un cardenal, no cianosis.
-  - "(hijo|hija|beb[eé]|ni[ñn][oa]|peque[ñn][oa]|cr[ií]o|cr[ií]a)[^.]{0,20}est[aá] (muy |todo |toda )?(morad|azul|amoratad|c[aá]rden)"
+  - "(hijo|hija|beb[eé]|ni[ñn][oa]|peque[ñn][oa]|cr[ií]o|cr[ií]a)[^.]{0,20}est[aá] (muy |todo |toda )?(morad|azul|amoratad|c[aá]rden)(?![^.]{0,70}(labios (est[áa]n )?normal|labios rosas|solo (las )?manos|solo (los )?pies))"
   # Y la dificultad dicha en llano. Estaba «le cuesta respirar», estaba «no puede respirar», y
   # estaba hasta en suajili («hapumui vizuri»); en castellano, no. La exclusión no es un adorno:
   # «no respira bien por la nariz» es un catarro, y de noche suele ser que ronca.
@@ -362,7 +362,7 @@ rules:
   # fue SIN AVISO. «Le cuesta respirar» estaba escrito desde el principio; la perífrasis con
   # la que se dice de verdad —«le está costando»— no, y tampoco «le cuesta trabajo». La
   # exclusión es la misma de siempre: por la nariz es un catarro.
-  - (le |les )?(est[áa] costando|cuesta trabajo|cuesta mucho|le cuesta)[^.]{0,15}respirar(?![^.]{0,30}(nariz|nasal|moco|congesti|resfri|catarr|ronca))
+  - (le |les )?(est[áa] costando|cuesta trabajo|cuesta mucho|le cuesta)[^.]{0,15}respirar(?![^.]{0,45}(nariz|nasal|moco|congesti|resfri|catarr|ronca|solo cuando corre|s[óo]lo cuando corre|al correr|cuando hace ejercicio))
   - cost[áa]ndole[^.]{0,10}respirar
   - a hard time breathing
   - est[áa][^.]{0,25}(dificultad|problemas) para respirar
@@ -556,6 +556,14 @@ rules:
   reason_en: Suspected severe allergic reaction (swollen lips/eyelids with breathing difficulty, vomiting or dizziness)
   reason_fr: Suspicion de réaction allergique grave (gonflement des lèvres/paupières avec difficulté à respirer, vomissements ou malaise)
   patterns:
+  # 23-sep-2026, séptima tanda: «tiene ronchas y además dice que nota rara la garganta»
+  # salía RUTINA. Es como un niño cuenta que se le está cerrando la garganta, y con habones
+  # al lado es el cuadro de libro. La palabra «anafilaxia» no la dice nadie en su casa.
+  - (roncha|habon|urticaria|granos por el cuerpo)[^.]{0,60}(garganta|tragar|voz|lengua|pecho cerrado)
+  - (garganta|tragar|voz|lengua)[^.]{0,60}(roncha|habon|urticaria)
+  - (nota|siente|dice que tiene)[^.]{0,20}(rara|rar[oa]|cerrada|apretada|un nudo)[^.]{0,15}(la )?garganta
+  - (throat|tongue)[^.]{0,40}(feels? (funny|weird|tight|strange)|itchy|closing)
+  - (hives|rash)[^.]{0,50}(throat|tongue|swallow)
   # 21-sep-2026, revisión de 823 respuestas: voz rara o cara hinchada después de comer cacahuetes salían rutina
   - (voz|voix|voice|stimme|голос)[^.]{0,30}(rara|extra[ñn]a|bizarre|strange|weird|hoarse|ronca|seltsam|heiser|странн|хрипл)[^.]{0,40}(despu[eé]s de|tras|apr[eè]s|after|nach|после)[^.]{0,30}(comer|cacahuet|man[ií]|frutos secos|huevo|mang[ée]|eating|peanut|nut|egg|erdn[üu]ss|арахис|орех|яйц)
   - (uvimbe|kuvimba)[^.]{0,20}(usoni|midomo|uso)[^.]{0,40}(baada ya kula|karanga|yai)
@@ -762,8 +770,8 @@ rules:
   - "ngozi ya bluu"
   # 17-sep-2026: los labios que SE PONEN azules —con verbo, que es como se cuenta— sólo
   # se reconocían en dos lenguas; estaba el adjetivo suelto.
-  - (labios|boca|u[ñn]as)[^.]{0,25}(se (le )?han puesto|se (le )?pusieron|est[aá]n)[^.]{0,15}(morad|azul|violet|p[áa]lid)
-  - (se (le )?han puesto|se (le )?pusieron)[^.]{0,20}(los labios|la boca)[^.]{0,15}(morad|azul)
+  - (labios|boca|u[ñn]as)[^.]{0,25}(se (le )?han puesto|se (le )?pusieron|est[aá]n)[^.]{0,15}(morad|azul|violet|p[áa]lid)(?![^.]{0,70}(ya (est[áa]n?|se (le )?)?(normal|rosa|bien|pas[óo])|despu[ée]s de llorar|al llorar|cuando llora|del llanto))
+  - (se (le )?han puesto|se (le )?pusieron)[^.]{0,20}(los labios|la boca)[^.]{0,15}(morad|azul)(?![^.]{0,70}(ya (est[áa]n?|se (le )?)?(normal|rosa|bien|pas[óo])|despu[ée]s de llorar|al llorar|cuando llora|del llanto))
   - (lips|mouth|nails)[^.]{0,25}(have |has |went |turned |going )[^.]{0,10}(blue|purple|grey|gray)
   - (turned|went)[^.]{0,15}(blue|purple)[^.]{0,20}(lips|around the mouth)
   - (l[èe]vres|bouche)[^.]{0,25}(sont devenues|deviennent|vir[ée]es?)[^.]{0,12}(bleu|violet)
@@ -1150,7 +1158,7 @@ rules:
   reason_hi: "बिना चोट के या अजीब जगहों पर नील: डॉक्टर को दिखाइए"
   reason_sw: "Michubuko bila kugongwa au sehemu zisizo za kawaida: aonwe na daktari"
   patterns:
-  - (morat[oó]n|moratones|hematoma|cardenal|manchas moradas)[^.]{0,60}(sin (ning[uú]n )?golpe|no recuerdo|sin haberse golpeado|no se ha golpeado|sin motivo|aparecen solos)
+  - (morat[oó]n|moratones|hematoma|cardenal|manchas moradas)[^.]{0,60}(sin (ning[uú]n )?golpe|no recuerdo|sin haberse golpeado|no se ha golpeado|sin motivo|aparecen solos)(?![^.]{0,70}(labios (est[áa]n )?normal|labios rosas|solo (las )?manos|solo (los )?pies))
   - (sin (ning[uú]n )?golpe|no recuerdo (ning[uú]n )?golpe)[^.]{0,40}(morat[oó]n|moratones|hematoma|cardenal)
   - (morat[oó]n|moratones|hematoma)[^.]{0,40}(en la espalda|en el pecho|en la tripa|en el abdomen|en las orejas)
   # y el desproporcionado: «un moratón enorme después de una caída pequeña»
@@ -1263,7 +1271,7 @@ rules:
   # días y un aviso que salta siempre deja de leerse.
   - "(وقع|طاح|انضرب).{0,25}(راسه|راسها|رأسه|الراس).{0,45}(مو صاحي|ما يصحى|فقد الوعي|اغمي|أغمي|مغمى|ما يرد)"
   - "(مو صاحي|ما يصحى|فقد الوعي|اغمي|أغمي|مغمى).{0,45}(وقع|طاح|انضرب).{0,25}(راسه|راسها|رأسه)"
-  - (golpe|cabeza|ca[ií]d|cay[oó]).{0,80}(perdi[oó] el conocimiento|(ha )?perdido el conocimiento|(ha )?perdido la conciencia|inconsciente|desmay)
+  - (?!.{0,90}(no (ha |había )?(perdid|perdi[oó])|sin perder|no perdi[oó]|nunca (ha )?perdid))(golpe|cabeza|ca[ií]d|cay[oó]).{0,80}(perdi[oó] el conocimiento|(ha )?perdido el conocimiento|(ha )?perdido la conciencia|inconsciente|desmay)
   - (golpe|cabeza|ca[ií]d|cay[oó]|traumatismo).{0,80}p[ée]rdida (de|del) (conocimiento|conciencia)
   - p[ée]rdida (de|del) (conocimiento|conciencia).{0,80}(golpe|cabeza|ca[ií]d|cay[oó]|traumatismo)
   - (head|fell|fall|hit|blow).{0,80}loss of consciousness
@@ -1330,7 +1338,7 @@ rules:
   - (गहर\w*)[^.]{0,20}(घाव|चोट)[^.]{0,45}(ख़ून|खून)[^.]{0,20}(बंद नहीं|रुक नहीं)
   - sangra (mucho|sin parar|a chorro)
   - no (para|deja) de sangrar
-  - (sangra|sangrado|hemorragia).{0,40}(m[aá]s de|lleva).{0,15}(10|15|20|diez|quince|veinte)
+  - (sangra|sangrado|hemorragia).{0,40}(m[aá]s de|lleva).{0,15}(10|15|20|diez|quince|veinte)(?![^.]{0,30}(fuera|en la calle|afuera|de temperatura exterior|outside|dehors|draußen))
   - sangrado (parece |es )?(excesiv|abundante|muy fuerte)
   - (no para|no cesa|sigue sangrando).{0,30}(desde hace|m[aá]s de).{0,15}(minut|hora)
   - (bleeding|nosebleed).{0,40}(lasts?|longer than|more than).{0,15}(10|15|20|ten|fifteen)
@@ -1448,11 +1456,23 @@ rules:
   reason_en: Spots on the skin that do not fade when pressed (possible sepsis/meningitis)
   reason_fr: Taches sur la peau qui ne s'?effacent pas à la pression (possible sepsis/méningite)
   patterns:
+  # 23-sep-2026: «tiene manchas moradas en las piernas desde ayer» salía RUTINA porque esta
+  # regla pedía fiebre. Una púrpura sin fiebre sigue siendo una púrpura. Se excluye lo que
+  # de verdad es otra cosa: el golpe, la mancha de nacimiento y el moratón de una caída.
+  - (manchas|puntos|puntitos)(?![^.]{0,20}\bni\b)[^.]{0,15}(morad|violet|p[úu]rpur)(?![^.]{0,60}(golpe|ca[íi]da|se cay[óo]|desde (el )?naci|de nacimiento|mongol|vacuna))
+  - (purple|violet) (spots|patches|marks)(?![^.]{0,60}(bump|fall|fell|birth|birthmark))
+  - (taches|points) (violet|pourpre)s?(?![^.]{0,60}(chute|coup|naissance))
+  - (lila|violette?) (flecken|punkte)(?![^.]{0,60}(sturz|sto[ßs]|geburt))
+  - (фиолетов\w*|багров\w*) (пятн\w*|точк\w*)
+  - (بقع|نقاط)[^.]{0,15}(بنفسجية|أرجوانية)
+  - (manchas|pontos)[^.]{0,15}(roxas|roxos|violeta)
+  - (बैंगनी|नीले)[^.]{0,15}(धब्बे|दाग)
+  - (madoa)[^.]{0,15}(ya zambarau)
   # 21-sep-2026, batería del operador: «manchas roxas e febre» salía rutina
   - manchas roxas[^.]{0,40}febre
   - febre[^.]{0,40}manchas roxas
-  - manchas moradas[^.]{0,40}fiebre
-  - fiebre[^.]{0,40}manchas moradas
+  - manchas moradas[^.]{0,40}fiebre(?![^.]{0,70}(labios (est[áa]n )?normal|labios rosas|solo (las )?manos|solo (los )?pies))
+  - fiebre[^.]{0,40}manchas moradas(?![^.]{0,70}(labios (est[áa]n )?normal|labios rosas|solo (las )?manos|solo (los )?pies))
   - purple (spots|marks|patches)[^.]{0,40}fever
   - fever[^.]{0,40}purple (spots|marks|patches)
   # ── suajili (18-sep-2026, fase 3 de África) ──
@@ -1586,6 +1606,8 @@ rules:
   reason_en: Fever above 40.5 °C (105 °F)
   reason_fr: Fièvre au-dessus de 40,5 °C
   patterns:
+  # 23-sep-2026, séptima tanda: «hace 42 grados FUERA, cómo enfrío la habitación del bebé»
+  # daba aviso de fiebre muy alta. El termómetro del pasillo no es el del niño.
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "homa (kali sana|imezidi sana)"
   - "joto limepanda sana"
@@ -1609,15 +1631,15 @@ rules:
   - 4[12]([.,]\d)?[^.]{0,18}(de febre|febre)
   - (बुखार|तापमान)[^.]{0,18}4[12]([.,]\d)?(?![\d%])
   - 4[12]([.,]\d)?[^.]{0,18}(बुखार|तापमान)
-  - 4[1-2][,\.]?\d?\s*(°|º|grados|ºc|°c)
-  - 40[,\.][5-9]\s*(°|º|grados|ºc|°c)?
+  - 4[1-2][,\.]?\d?\s*(°|º|grados|ºc|°c)(?![^.]{0,30}(fuera|en la calle|afuera|outside|dehors|drau))
+  - 40[,\.][5-9]\s*(°|º|grados|ºc|°c)?(?![^.]{0,30}(fuera|en la calle|afuera|de temperatura exterior|outside|dehors|draußen))
   - 10[5-7](\.\d)?\s*(°|º)?\s*f\b
   - 4[1-2][,\.]?\d?\s*degr[ée]s
   - 40[,\.][5-9]\s*degr[ée]s
   - 4[01][,\.]\d\s*grad
-  - über 40 grad
-  - 41 grad
-  - 42 grad
+  - über 40 grad(?![^.]{0,30}(fuera|en la calle|afuera|de temperatura exterior|outside|dehors|draußen))
+  - 41 grad(?![^.]{0,30}(fuera|en la calle|afuera|de temperatura exterior|outside|dehors|draußen))
+  - 42 grad(?![^.]{0,30}(fuera|en la calle|afuera|de temperatura exterior|outside|dehors|draußen))
   - 4[01][,\.]\d\s*(°|градус)
   - выше 40
   - температура 41
@@ -1645,6 +1667,13 @@ rules:
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
+  # 23-sep-2026, séptima tanda: «no le cuesta respirar, SOLO se le hunde un poco debajo de
+  # las costillas al dormir». El padre niega la palabra y describe el signo — el tiraje
+  # subcostal, que es donde se ve primero. «Se le hunde el pecho» estaba; esto no.
+  - se le hunde[^.]{0,30}(debajo de las costillas|entre las costillas|bajo las costillas)
+  - (se (le )?)?hunde[^.]{0,20}(la piel|la tripa|el abdomen)[^.]{0,25}(costillas|respirar)
+  - (sucking in|drawing in|pulling in)[^.]{0,25}(under|between)[^.]{0,15}ribs
+  - (se (le )?marca|marcad)[^.]{0,20}costillas[^.]{0,20}(al respirar|cuando respira)
   # 21-sep-2026, revisión de 823 respuestas: el silbido al respirar en ruso, hindi y suajili salía rutina (en castellano saltaba)
   - свист\w*[^.]{0,20}(при дыхании|когда дышит)
   - (при дыхании|когда дышит)[^.]{0,20}свист\w*
@@ -1761,6 +1790,13 @@ rules:
   reason_en: Excessive irritability or drowsiness
   reason_fr: Irritabilité ou somnolence excessives
   patterns:
+  # 23-sep-2026, séptima tanda: «no tiene fiebre pero está como dormido todo el día» y
+  # «somnoliento y no juega» salían rutina. «Muy decaído» saltaba; el mismo niño contado con
+  # las palabras de su madre, no. Sin fiebre que lo explique, la somnolencia pesa más.
+  - (como )?dormid[oa][^.]{0,25}(todo el d[íi]a|toda la ma[ñn]ana|toda la tarde|m[áa]s de lo normal)
+  - (adormilad|amodorrad|somnolient|aletargad)[oa]
+  - (m[áa]s dormid[oa] de lo normal|duerme much[íi]simo m[áa]s)
+  - (sleepy|drowsy|lethargic)[^.]{0,30}(all day|more than usual|won'?t play)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "amelala (sana|kupita kiasi)"
   - "hataki kuamka"
@@ -1904,6 +1940,12 @@ rules:
   reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
   reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
   patterns:
+  # 23-sep-2026: «tiene diarrea y los labios secos pero no parece enfermo». Los labios secos
+  # con diarrea son deshidratación empezando, y «no parece enfermo» es lo que hace esperar.
+  - labios (muy )?secos[^.]{0,40}(diarrea|vomit|gastro)
+  - (diarrea|vomit\w*|gastroenteritis)[^.]{0,40}labios (muy )?secos
+  - (dry lips|lips are dry)[^.]{0,40}(diarrh|vomit)
+  - (diarrh\w*|vomit\w*)[^.]{0,40}(dry lips|lips are dry)
   # 21-sep-2026, batería del operador: «la fontanela un poco hundida» salía rutina
   - (fontanela|mollera)[^.]{0,25}hundida
   - hundida[^.]{0,20}(fontanela|mollera)
@@ -1985,6 +2027,12 @@ rules:
   - sin mojar el pañal
   - no (ha )?mojado el pañal
   - \d{1,2} horas sin (hacer pis|mojar)
+  # 23-sep-2026, séptima tanda: «lleva todo el día sin hacer pis pero está jugando».
+  # Con número saltaba; sin número, no. Y jugar no descarta una deshidratación.
+  - sin (hacer )?(pis|pip[íi]|orina)[^.]{0,30}(todo el d[íi]a|desde|en toda la noche)
+  - (lleva|llevamos)[^.]{0,25}sin (hacer )?(pis|pip[íi]|orinar|mojar)
+  - (all day|whole day)[^.]{0,20}(without|no)[^.]{0,15}(pee|wee|urin|wet nappy|wet diaper)
+  - (hasn'?t|has not)[^.]{0,20}(peed|weed|urinated|had a wet nappy)[^.]{0,25}all day
   - sin l[aá]grimas
   - deshidrat
   - sunken eyes
@@ -2772,6 +2820,17 @@ rules:
   reason_hi: हरी, भूरी या खून वाली उल्टी — डॉक्टर को दिखाने का दर्ज कारण
   reason_sw: "Matapishi ya kijani, kahawia au yenye damu"
   patterns:
+  # 23-sep-2026: la sangre en el VÓMITO no estaba en ningún sitio, y el padre la cuenta
+  # quitándole importancia («solo una rayita»), que es precisamente cuando hay que verla.
+  - (vomit\w*|devuelto|potado)[^.]{0,30}(con |de )?sangre
+  - sangre[^.]{0,25}(en el |del )?v[óo]mito
+  - (posos de caf[ée]|color caf[ée])[^.]{0,20}vomit
+  - (blood|bloody)[^.]{0,20}(in (the )?)?vomit
+  - vomit\w*[^.]{0,20}blood
+  - (sang|sanguin\w*)[^.]{0,25}vomi
+  - blut[^.]{0,20}erbroch
+  - (кров\w*)[^.]{0,25}рвот
+  - دم[^.]{0,25}(قيء|القيء|تقيؤ)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "anatapika (damu|kijani)"
   - "matapishi yana damu"
@@ -2816,6 +2875,9 @@ rules:
   reason_hi: कालेे लुक जैसे या लाल ख़ून वाले मल — डॉक्टर को दिखाने का दर्ज कारण
   reason_sw: "Kinyesi cheusi kama lami au chenye damu"
   patterns:
+  - sangue[^.]{0,25}(no )?v[óo]mito
+  - (उल्टी)[^.]{0,25}(खून|ख़ून)
+  - (khun|damu)[^.]{0,25}(kutapika|matapishi)
   # 21-sep-2026, batería del operador: «dos días con diarrea y ahora tiene sangre» salía rutina
   - diarrea[^.]{0,40}sangre
   - sangre[^.]{0,30}(caca|heces|diarrea|deposici)
@@ -3781,7 +3843,7 @@ rules:
   - (golpe|ca[ií]d|cay[oó])[^.]{0,60}(sangre|l[ií]quido)[^.]{0,20}(por|de) (la )?nariz
   - (o[ií]do|nariz|oreja).{0,45}(sale|sangra|supura).{0,25}(sangre|l[ií]quido claro)
   - le sale (sangre|l[ií]quido).{0,30}(del o[ií]do|de la nariz|de los o[ií]dos)
-  - sangrado (comenz[oó]|empez[oó]|apareci[oó]).{0,40}(golpe|ca[ií]d|traumatismo).{0,25}cabeza
+  - sangrado (comenz[oó]|empez[oó]|apareci[oó]).{0,40}(golpe|ca[ií]d|traumatismo).{0,25}cabeza(?![^.]{0,30}(fuera|en la calle|afuera|de temperatura exterior|outside|dehors|draußen))
   - (blood|clear fluid).{0,45}(from|out of).{0,12}(the )?ears?
   - clear (fluid|liquid).{0,45}(from|out of|coming out).{0,12}(the |his |her )?nose
   - (hit|bang\w*|knock\w*|fell)[^.]{0,40}nose[^.]{0,40}clear (fluid|liquid)
@@ -4582,7 +4644,7 @@ rules:
   - (हड्डी|हड्डियों)[^.]{0,20}(में)?[^.]{0,15}दर्द[^.]{0,35}(रात|जग)
   - (синяк\w*)[^.]{0,50}(бледн\w*|уста[ёе]т|слабост)
   - (blaue flecken|h[äa]matome)[^.]{0,50}(blass|m[üu]de|schlapp)
-  - (moratones|morados|hematomas|cardenales)[^.]{0,40}(sin (darse )?golpes|sin motivo|sin causa|sin haberse dado)
+  - (moratones|morados|hematomas|cardenales)[^.]{0,40}(sin (darse )?golpes|sin motivo|sin causa|sin haberse dado)(?![^.]{0,70}(labios (est[áa]n )?normal|labios rosas|solo (las )?manos|solo (los )?pies))
   - (moratones|hematomas)[^.]{0,50}(p[áa]lid|cansad|sin fuerzas|decaíd)
   - (dolor|le duelen)[^.]{0,20}(de )?(huesos|piernas)[^.]{0,40}(le despiertan?|se despierta)
   - (bruis\w*)[^.]{0,40}(without|no)[^.]{0,20}(knock|bump|injury|reason|cause)
@@ -4932,7 +4994,7 @@ rules:
   - (خصيت\w*|خصيتي\w*)[^.]{0,25}(تؤلم\w*|يؤلم\w*|ألم|وجع|منتفخ\w*|متورم\w*)
   - (ألم|وجع|تورم)[^.]{0,20}(خصيت\w*|الخصيتين)
   - (d[óo]i|doem|d[óo]i.?lhe|doeu)[^.]{0,25}(um |o |os )?(test[íi]culos?|escroto)
-  - (testículo|testiculo|escroto|huevo)[^.]{0,40}(duele|dolor|hinchad|inflamad|morado|duro)
+  - (testículo|testiculo|escroto|huevo)[^.]{0,40}(duele|dolor|hinchad|inflamad|morado|duro)(?![^.]{0,70}(labios (est[áa]n )?normal|labios rosas|solo (las )?manos|solo (los )?pies))
   - (duele|dolor|hinchaz[oó]n|inflamaci[oó]n)[^.]{0,30}(testículo|testiculo|escroto)
   - (testicle|testicles|scrotum|ball)[^.]{0,40}(pain|painful|hurts|swollen|sore|tender)
   - (pain|swelling|swollen)[^.]{0,30}(testicle|scrotum)

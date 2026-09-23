@@ -211,10 +211,20 @@ def test_con_el_nino_atragantado_NO_contesta_la_tabla(motor) -> None:
 
 
 def test_sin_pais_no_se_adivina(motor) -> None:
-    """Ni inferido del idioma ni por la primera opción de una lista: se cae al corpus."""
+    """Sin país no se inventa el suyo — pero tampoco se calla (23-sep-2026).
+
+    Este candado decía «se cae al corpus», y en la séptima tanda se vio lo que eso significaba:
+    «¿qué número de emergencias tengo que llamar?» recibía «no tengo información fiable sobre
+    esto en mis fuentes», que es la peor respuesta posible a la pregunta más básica que existe.
+    Lo que no se puede hacer es adivinar SU número; lo que sí, decir los generales y pedirle el
+    país en una línea. Eso es lo que se comprueba ahora.
+    """
     engine, _ = motor(lambda *a, **k: "TEXT: No tengo fuentes para esto.")
     r = engine.ask("what is the emergency number here?", country=None, lang="en")
-    assert r.verification != "emergency_number"
+    assert r.verification == "emergency_number"
+    assert "112" in r.text and "911" in r.text
+    # y ninguno presentado como «el tuyo»
+    assert "no tengo información" not in r.text.lower()
 
 
 def test_la_tabla_de_nombres_cubre_todos_los_paises() -> None:

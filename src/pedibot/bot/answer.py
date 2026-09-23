@@ -315,6 +315,40 @@ NO_SCHEDULE = {
 }
 
 
+#: Cuando preguntan el número de emergencias y no hay país (23-sep-2026, séptima tanda). Se
+#: arregló el 20-sep para quien había elegido país; quien no lo había elegido seguía recibiendo
+#: «no tengo información fiable sobre esto en mis fuentes» a la pregunta más básica que existe.
+#: Sin país no hay un número, y eso no es no saber nada: están los generales, y falta un dato
+#: que el padre tiene en la punta de la lengua.
+NUMBER_NO_COUNTRY = {
+    "en": "Tell me which country you are in and I'll give you its number. In the meantime: 112 "
+    "works across the European Union, 911 in the United States and Canada, 999 in the United "
+    "Kingdom and in much of Africa and Asia. All of them are on the emergency page below.",
+    "es": "Dime en qué país estás y te doy el suyo. Mientras tanto: el 112 funciona en toda la "
+    "Unión Europea, el 911 en Estados Unidos y Canadá, y el 999 en el Reino Unido y en buena "
+    "parte de África y Asia. Están todos en la página de urgencias de aquí abajo.",
+    "fr": "Dites-moi dans quel pays vous êtes et je vous donne le sien. En attendant : le 112 "
+    "fonctionne dans toute l'Union européenne, le 911 aux États-Unis et au Canada, le 999 au "
+    "Royaume-Uni et dans une grande partie de l'Afrique et de l'Asie. Ils sont tous sur la page "
+    "des urgences ci-dessous.",
+    "de": "Sagen Sie mir, in welchem Land Sie sind, dann nenne ich Ihnen die Nummer. Bis dahin: "
+    "112 gilt in der ganzen EU, 911 in den USA und Kanada, 999 im Vereinigten Königreich und in "
+    "weiten Teilen Afrikas und Asiens. Alle stehen auf der Notfallseite unten.",
+    "ru": "Скажите, в какой вы стране, и я назову её номер. А пока: 112 действует во всём "
+    "Евросоюзе, 911 — в США и Канаде, 999 — в Великобритании и во многих странах Африки и Азии. "
+    "Все они есть на странице экстренной помощи ниже.",
+    "ar": "أخبرني في أي بلد أنت وسأعطيك رقمه. في هذه الأثناء: 112 يعمل في كل الاتحاد الأوروبي، "
+    "و911 في الولايات المتحدة وكندا، و999 في المملكة المتحدة وفي كثير من أفريقيا وآسيا. كلها في "
+    "صفحة الطوارئ بالأسفل.",
+    "pt": "Diga-me em que país está e dou-lhe o número. Entretanto: o 112 funciona em toda a "
+    "União Europeia, o 911 nos Estados Unidos e no Canadá, e o 999 no Reino Unido e em boa parte "
+    "de África e da Ásia. Estão todos na página de urgências abaixo.",
+    "hi": "बताइए आप किस देश में हैं और मैं वहाँ का नंबर दे दूँगा। तब तक: 112 पूरे यूरोपीय संघ "
+    "में चलता है, 911 अमेरिका और कनाडा में, और 999 ब्रिटेन तथा अफ़्रीका और एशिया के बड़े हिस्से "
+    "में। सभी नीचे दिए आपातकालीन पेज पर हैं।",
+}
+
+
 #: Lo que no tiene nada que ver con la salud de un niño (21-sep-2026): se dice con amabilidad y
 #: se invita a preguntar lo que sí. Antes caía en «no tengo información, consulta a tu pediatra»,
 #: que para «¿mi perro puede comer chocolate?» es una respuesta absurda.
@@ -784,6 +818,79 @@ _CHILD = re.compile(
 )
 
 
+#: Lenguas que ya se escriben en alfabeto latino: a ésas no hay que pedirles nada. Se comparan
+#: por el nombre en inglés, que es como el redactor recibe la lengua.
+ESCRITURA_LATINA = frozenset(
+    {
+        "Spanish",
+        "English",
+        "French",
+        "German",
+        "Portuguese",
+        "Italian",
+        "Dutch",
+        "Polish",
+        "Romanian",
+        "Swahili",
+        "Catalan",
+        "Galician",
+        "Basque",
+        "Turkish",
+        "Indonesian",
+        "Malay",
+        "Vietnamese",
+        "Swedish",
+        "Norwegian",
+        "Danish",
+        "Finnish",
+        "Icelandic",
+        "Czech",
+        "Slovak",
+        "Hungarian",
+        "Croatian",
+        "Slovenian",
+        "Estonian",
+        "Latvian",
+        "Lithuanian",
+        "Albanian",
+        "Filipino",
+        "Tagalog",
+        "Somali",
+        "Hausa",
+        "Yoruba",
+        "Igbo",
+        "Zulu",
+        "Xhosa",
+        "Afrikaans",
+        "Quechua",
+        "Guarani",
+    }
+)
+
+
+def escritura_latina(texto: str) -> bool:
+    """¿El padre escribió en alfabeto latino?
+
+    23-sep-2026, séptima tanda: «bachay ko bukhar hai aur doodh kam pee raha hai» recibió la
+    respuesta en urdu **en escritura árabe**, y «bukhar hai lekin thermometer nahi funciona» en
+    devanagari. Media India y medio Pakistán escriben su lengua en teclado latino — la tabla de
+    sinónimos tiene las formas romanizadas desde agosto — y quien escribe «bukhar» con letras
+    latinas puede no leer nastaliq.
+
+    Se cuentan las letras, no las palabras: una palabra inglesa dentro de una frase en devanagari
+    no la vuelve latina, y una palabra urdu dentro de una frase inglesa tampoco al revés.
+    """
+    latinas = otras = 0
+    for c in texto or "":
+        if not c.isalpha():
+            continue
+        if "a" <= c.lower() <= "z" or "\u00c0" <= c <= "\u024f":
+            latinas += 1
+        else:
+            otras += 1
+    return latinas > otras
+
+
 def _mentions_child(text: str) -> bool:
     return bool(_CHILD.search(text))
 
@@ -1034,7 +1141,11 @@ _QUITA_URGENCIA = re.compile(
     r"n[ãa]o [ée] perigos|не опасн|no hace falta (ir|acudir)|no es una emergencia|"
     r"(is )?not (an )?(urgent|emergency)|no need to (go|rush|worry)|isn'?t (urgent|an emergency)|"
     r"(ce )?n'est pas (une )?urgen|kein notfall|nicht dringend|n[ãa]o [ée] (uma )?urg[êe]n|"
-    r"не (срочно|экстренн)|ليست? (حالة )?طارئ|आपातकाल नहीं|(es|son|esto es|eso es) (algo )?(normal|habitual|frecuente|lo normal)(?![^.]{0,80}(pero|aun as[íi]|de todas formas|hay que acudir|hay que ir))|no hay (ning[uú]n )?(motivo|raz[oó]n) (de|para) (alarma|preocupaci[oó]n)|no hay (ning[uú]n )?problema|no hay ingesti[oó]n|no ha pasado nada|(is|are) normal (in|for) (babies|children|infants)|(this|that) is normal\b(?![^.]{0,80}(but|still|even so))|(there is|there's) no (cause|reason) for (alarm|concern|worry)|nothing to worry about|c'est normal(?![^.]{0,80}(mais|quand m[êe]me))|il n'y a pas lieu de s'inqui[ée]ter|(das )?ist normal(?![^.]{0,80}(aber|trotzdem))|kein grund zur sorge|это нормальн\w*(?![^.]{0,80}(но|всё же))|нет повода для беспокойств)",
+    # 23-sep-2026, séptima tanda: dos respuestas con el cartel rojo encima empezaban por
+    # «No es una dificultad para respirar» y «no aparece como signo de alarma». Ninguna dice
+    # «no es urgente»; dicen que el signo por el que saltó el aviso no es un signo, que es
+    # peor, porque suena a explicación.
+    r"no (es|son) (una? )?(dificultad|signo|se[ñn]al|motivo)|no (aparece|figura|est[áa])[^.]{0,25}(como )?(signo|se[ñn]al|motivo) de (alarma|consulta)|no (es|son) (un |una )?(signo|se[ñn]al)[^.]{0,20}(de alarma|preocupante|grave)|no (es|hay) motivo de (alarma|consulta|preocupaci[óo]n)|(is|are) not (a |an )?(warning sign|sign of|cause for)|(n'est pas|ne sont pas) (un |une )?(signe|motif)|kein (warnzeichen|alarmzeichen)|не (является )?(признак\\w*|тревожн\\w*)|не (срочно|экстренн)|ليست? (حالة )?طارئ|आपातकाल नहीं|(es|son|esto es|eso es) (algo )?(normal|habitual|frecuente|lo normal)(?![^.]{0,80}(pero|aun as[íi]|de todas formas|hay que acudir|hay que ir))|no hay (ning[uú]n )?(motivo|raz[oó]n) (de|para) (alarma|preocupaci[oó]n)|no hay (ning[uú]n )?problema|no hay ingesti[oó]n|no ha pasado nada|(is|are) normal (in|for) (babies|children|infants)|(this|that) is normal\b(?![^.]{0,80}(but|still|even so))|(there is|there's) no (cause|reason) for (alarm|concern|worry)|nothing to worry about|c'est normal(?![^.]{0,80}(mais|quand m[êe]me))|il n'y a pas lieu de s'inqui[ée]ter|(das )?ist normal(?![^.]{0,80}(aber|trotzdem))|kein grund zur sorge|это нормальн\w*(?![^.]{0,80}(но|всё же))|нет повода для беспокойств)",
     re.I,
 )
 CONTRADICE_AVISO = (
@@ -1510,6 +1621,20 @@ class Engine:
         if tr.level == "routine" and is_emergency_number_question(context_text):
             cc = (country or "").upper() or (country_in_question(context_text) or "").upper()
             datos = self.numbers.raw.get(cc) if cc else None
+            if not datos:
+                # sin país no hay un número suyo, y eso no es no saber nada
+                return Answer(
+                    NUMBER_NO_COUNTRY[lang],
+                    tr.level,
+                    None,
+                    [],
+                    lang,
+                    None,
+                    None,
+                    [],
+                    "emergency_number",
+                    tool=tool_link("emergency", lang, None),
+                )
             if datos:
                 return Answer(
                     format_numbers(dict(datos), country_name(cc, lang), lang),
@@ -1890,7 +2015,16 @@ class Engine:
             user = (
                 f"ANSWER LANGUAGE: {answer_lang} — the parent wrote in {answer_lang}; "
                 "the sources may be in another language, translate faithfully.\n"
-                f"{_age_context(tr, context_text)}"
+                # 23-sep-2026: y en el alfabeto en que escribió él. Un padre que teclea
+                # «bachay ko bukhar hai» en letras latinas recibía urdu en escritura árabe.
+                + (
+                    "SCRIPT: the parent wrote in the Latin alphabet. Write your whole answer in "
+                    "the Latin alphabet too, even if this language is normally written in "
+                    "another script.\n"
+                    if escritura_latina(draft_q) and answer_lang not in ESCRITURA_LATINA
+                    else ""
+                )
+                + f"{_age_context(tr, context_text)}"
                 f"{who_first_note(context_text, country)}"
                 f"{tropical_note(context_text, country)}"
                 f"{_history_block(history)}"

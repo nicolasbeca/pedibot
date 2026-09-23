@@ -196,15 +196,23 @@ TROPICAL_NOTE = (
 def tropical_note(text: str, country: str | None) -> str:
     """La nota sobre enfermedades tropicales, o cadena vacía.
 
-    Sin país no se supone nada, igual que arriba: quien no ha elegido país no está «seguramente
-    en Europa».
+    23-sep-2026, segunda vuelta. La primera versión pedía país conocido Y la palabra «fiebre» en
+    la pregunta, y por eso no se aplicó a «respira rápido pero no tiene fiebre y está tranquilo»,
+    que recibió los signos de gravedad del dengue como explicación. Ahora la nota se pone
+    siempre, salvo en los tres casos en que esas hojas sí vienen a cuento:
+
+    - el niño está en un país donde eso es endémico (sólo se calla donde se sabe que lo es);
+    - el padre cuenta un viaje;
+    - el padre nombra la enfermedad, y entonces la pregunta ES esa.
+
+    Quien no ha elegido país sigue sin ser «seguramente europeo». Pero ofrecerle dengue para
+    explicarle un síntoma suelto no le ayuda en ningún país del mundo.
     """
-    if not country or country.upper() not in SIN_ENDEMIA:
-        return ""
-    if _VIAJE.search(text or ""):
-        return ""
-    # sólo cuando la pregunta podría traerse una de esas hojas: fiebre con algo más
     bajo = (text or "").lower()
-    if not re.search(r"fiebre|fever|fi[èe]vre|fieber|температур|حمى|febre|बुखार", bajo):
+    if country and country.upper() not in SIN_ENDEMIA:
+        return ""
+    if _VIAJE.search(bajo):
+        return ""
+    if any(n in bajo for n in TROPICALES):
         return ""
     return TROPICAL_NOTE

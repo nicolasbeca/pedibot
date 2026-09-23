@@ -20,6 +20,43 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 23-sep-2026 (tarde) · la séptima tanda: 500 preguntas contra las costuras
+
+`eval/bateria_operador/06_septima_500.txt`. Escritas por el operador con el mapa de las trece
+superficies delante: la misma señal dicha de diez maneras, negada, pasada, hipotética, y cruzada
+con idiomas, países y conversaciones de varios mensajes.
+
+**Del triaje en seco, que no cuesta nada:** cinco alarmas que faltaban —la anafilaxia contada
+como «nota rara la garganta», la sangre en el vómito (que no estaba en NINGUNA lengua), el día
+entero sin orinar, las manchas moradas sin fiebre— y cinco falsas: «hace 42 grados FUERA» leído
+como fiebre, «pero NO ha perdido el conocimiento» como pérdida de conocimiento, los labios
+morados que ya son rosas, las manos moradas con los labios normales, y el ahogo sólo al correr.
+
+**De leer las respuestas:**
+
+- «no le cuesta respirar, SOLO se le hunde debajo de las costillas» salía rutina. El padre niega
+  la palabra y describe el tiraje subcostal.
+- El dengue otra vez, ahora sin país: la nota del 22-sep pedía país conocido Y la palabra
+  «fiebre». Demasiado estrecho. Ahora sólo se callan donde se sabe que son endémicas.
+- Dos respuestas contradiciendo su propio aviso rojo con una forma nueva: «No es una dificultad
+  para respirar», «no aparece como signo de alarma».
+- «¿Qué número de emergencias tengo que llamar?» **sin país elegido** → «no tengo información
+  fiable». Se arregló el 20-sep para quien tenía país; para quien no, no. Ahora da los generales
+  y pide el país en una línea.
+- **Quien escribe hindi o urdu en letras latinas recibía la respuesta en árabe o devanagari.**
+  Ahora la escritura del padre manda: «bachay ko bukhar hai» se contesta en urdu romanizado.
+- «Como dormido todo el día» y «labios secos con diarrea» no saltaban.
+- El puente de vacunas: «bulto duro en el sitio del pinchazo» recuperaba la hoja del
+  **estreñimiento**. Treinta entradas nuevas, y el vómito tras la vacuna oral ya llega al
+  rotavirus.
+
+**Medido:** sin fuente 43 de 500 (8,6 %; en la tanda anterior era el 23 %). El revisor marca 94,
+la mayoría por pedir más urgencia en preguntas informativas.
+
+**Y dos herramientas rotas por lo mismo:** el runner de la batería murió en la pregunta 249 —la
+primera en ruso— al imprimirla en la consola de Windows, y el revisor murió igual al escribir su
+resumen. Media tanda perdida por una traza de progreso.
+
 ## 23-sep-2026 · las diecisiete consultas de ayer, leídas una a una
 
 El operador: «cuando veo las consultas, por ejemplo en hindi, no sé si ha contestado bien o mal.

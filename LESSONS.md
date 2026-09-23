@@ -1635,3 +1635,31 @@ mejor banco de pruebas que existe, y es gratis.** Leerlo entero cuesta veinte mi
 Y una cosa más, que es la que da miedo: de esos cuatro, tres habrían pasado desapercibidos sin
 leer la conversación **completa**. El fallo del salbutamol sólo se ve en el mensaje siguiente,
 cuando el padre dice «pero me dijiste que…».
+
+## L231 · La escritura del padre no es la escritura de su lengua (23-sep-2026)
+
+«bachay ko bukhar hai aur doodh kam pee raha hai» recibió la respuesta en urdu **en escritura
+árabe**. «bukhar hai lekin thermometer nahi funciona», en devanagari. Los dos padres habían
+escrito en letras latinas, que es como teclea media India y medio Pakistán — cosa que este
+proyecto ya sabía: la tabla de sinónimos tiene las formas romanizadas desde agosto, precisamente
+porque la búsqueda no las encontraba.
+
+La lectura hace bien su trabajo (detecta urdu, detecta hindi) y el redactor también (escribe en
+esa lengua). Lo que faltaba era una pregunta que nadie había hecho: **¿en qué alfabeto?** Quien
+escribe «bukhar» con teclado latino puede no leer nastaliq, y le estábamos devolviendo una
+respuesta que no puede leer con la conciencia tranquila de haber contestado en su idioma.
+
+Se arregla contando letras, no palabras, y diciéndoselo al redactor. Y es de código y no de
+modelo a propósito: el modelo ya «sabía» el idioma y por eso fallaba con tanta seguridad.
+
+## L232 · Dos herramientas muertas por una traza de progreso (23-sep-2026)
+
+La corrida de 500 preguntas murió en la 249 —la primera en ruso— porque el runner imprimía cada
+pregunta en la consola de Windows, que es cp1252. Media tanda perdida y una hora de reloj. Una
+hora después, el revisor murió por lo mismo, al escribir su resumen final: esa vez los datos ya
+estaban en el fichero y no se perdió nada, pero fue el mismo fallo dos veces en la misma tarde.
+
+Lo que hay que recordar no es «usa utf-8»: es que **una línea de progreso puede tirar el trabajo
+entero**. Escribe el resultado primero, imprime después, y que lo que imprimes no pueda fallar
+(`sys.stdout.buffer.write(linea.encode("utf-8", "replace"))`). Un proceso de hora y media no
+puede depender de la página de códigos de la terminal.

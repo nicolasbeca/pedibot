@@ -72,6 +72,9 @@ topics:
                  prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz,
+                 atrasada, atrasadas, retraso vacunal, catch-up, late vaccination,
+                 vacinas atrasadas, impfungen nachholen, rattrapage vaccinal,
+                 наверстывающая вакцинация, تطعيمات متأخرة, छूटे टीके,
                  تطعيم, لقاح, تحصين, टीका, टीकाकरण, вакцин, прививк,
                  difteria, diphtheria, diphtérie, diphtherie, الخناق, डिप्थीरिया, дифтерия, tétanos, tetanus, كزاز, टिटनेस, столбняк,
                  poliomielitis, poliomyelitis, poliomyélite, kinderlähmung, полиомиелит, полиомиелита, شلل الأطفال, पोलियो, "polio$"]

@@ -50,3 +50,28 @@ def test_it_is_caught(t: str) -> None:
 @pytest.mark.parametrize("t", NO_CONTRADICEN)
 def test_a_normal_sentence_is_left_alone(t: str) -> None:
     assert not _QUITA_URGENCIA.search(t), t
+
+
+DESMIENTEN_EL_AVISO = [
+    "No es una dificultad para respirar: en la bronquiolitis eso puede aparecer",
+    "Respirar rápido sin fiebre no aparece como signo de alarma en las guías",
+    "eso no es un signo de alarma",
+    "no es motivo de consulta si por lo demás está bien",
+    "no es motivo de alarma",
+    "that is not a warning sign",
+    "this is not a sign of anything serious",
+    "ce n'est pas un signe d'alarme",
+]
+
+
+@pytest.mark.parametrize("t", DESMIENTEN_EL_AVISO)
+def test_saying_the_sign_is_not_a_sign_also_contradicts(t: str) -> None:
+    """23-sep-2026, séptima tanda. Dos respuestas nuevas se colaron con el aviso rojo encima:
+
+        «No es una dificultad para respirar: en la bronquiolitis…»
+        «Respirar rápido… no aparece como signo de alarma en las guías»
+
+    Ninguna dice «no es urgente» ni «es normal». Dicen algo peor: que el signo por el que ha
+    saltado el aviso no es un signo. Es la misma contradicción con otra puerta.
+    """
+    assert _QUITA_URGENCIA.search(t), t

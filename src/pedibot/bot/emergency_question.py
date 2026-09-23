@@ -42,6 +42,15 @@ _PREGUNTA = re.compile(
     r"|\bرقم (?:الطوارئ|الإسعاف)\b"
     r"|\bn[úu]mero d[eo] (?:emerg[êe]ncia|urg[êe]ncia|ambul[âa]ncia)\b"
     r"|(?:आपातकालीन|एम्बुलेंस)[^.?]{0,20}(?:नंबर|नम्बर)"
+    # 23-sep-2026, séptima tanda: «a qué número llamo si se pone peor?». Estaban «número de
+    # urgencias» y «qué número de emergencias», pero no la forma corta, que es la que sale
+    # cuando hay prisa. Pide el verbo llamar al lado para no confundirla con «¿cuántos
+    # mililitros?» ni con un número de teléfono cualquiera.
+    r"|a qu[ée] n[úu]mero[^.?]{0,20}\b(?:llam|marc|telefon)"
+    r"|\bqu[ée] n[úu]mero[^.?]{0,15}\b(?:llam|marc)"
+    r"|\b(?:which|what) number[^.?]{0,15}\b(?:do i call|to call|should i call)"
+    r"|\bquel num[ée]ro[^.?]{0,15}\bappeler"
+    r"|\bwelche nummer[^.?]{0,15}\b(?:anrufen|w[äa]hlen)"
     r"|\bnamba ya (?:dharura|ambulensi)\b",
     re.I,
 )
