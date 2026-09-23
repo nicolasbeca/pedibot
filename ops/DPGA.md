@@ -194,10 +194,11 @@ se sube tal cual como `README.md` del dataset, junto a `sources.csv` y `sources.
 
 ### 3 · Zenodo (hace falta él: conectar la cuenta)
 
-Zenodo se conecta a GitHub una vez y, a partir de ahí, **cada versión publicada recibe un DOI
-automáticamente**. Un DOI hace el proyecto citable en literatura académica y lo mete en los
-buscadores científicos, que es otro sitio donde las ONG miran. Con el repositorio ya público:
-Zenodo → GitHub → activar `nicolasbeca/pedibot` → en GitHub, publicar la versión `v2.0.0`.
+**Paso a paso escrito aparte, en [`ops/ZENODO.md`](ZENODO.md)**, con la pantalla exacta de cada
+clic. En corto: conectar la cuenta, activar el interruptor de `pedibot`, y **después** publicar
+la versión en GitHub — ese orden, porque Zenodo archiva lo que se publica a partir de la
+activación. El `.zenodo.json` ya está en el repositorio con los metadatos comprobados contra el
+vocabulario de Zenodo.
 
 ### Lo que NO hay que hacer
 
