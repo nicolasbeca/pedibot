@@ -51,7 +51,7 @@
 {"id": "g51", "q": "cuánto paracetamol le doy, pesa 14 kg y tiene 3 años", "lang": "es", "level": "routine", "expect": "dose_calculator"}
 {"id": "g52", "q": "ibuprofen dose for 20 kg", "lang": "en", "level": "routine", "expect": "dose_calculator"}
 {"id": "g53", "q": "¿Puedo darle ibuprofeno a un bebé de 2 meses?", "lang": "es", "level": "routine", "docs": ["aepap_guia_dosificacion_3ed", "seup_fiebre"]}
-{"id": "g54", "q": "¿Mi perro puede comer chocolate?", "lang": "es", "level": "routine", "expect": "no_source"}
+{"id": "g54", "q": "¿Mi perro puede comer chocolate?", "lang": "es", "level": "routine", "expect": "off_topic"}
 {"id": "g55", "q": "What is the capital of France?", "lang": "en", "level": "routine", "expect": "no_source"}
 {"id": "g56", "q": "Mi hijo de 4 años tiene mocos y algo de tos, está contento", "lang": "es", "level": "routine", "docs": ["seup_catarro"]}
 {"id": "g57", "q": "My 3 year old has a runny nose and a cough but is playing normally", "lang": "en", "level": "routine", "docs": ["seup_catarro", "mlp_en_commoncold", "cdc_en_colds"]}

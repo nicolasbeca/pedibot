@@ -42,3 +42,28 @@ padre, y traen dos cosas que las anteriores no tenían:
 De las primeras 380 respuestas, 87 salieron «no tengo fuente». Casi ninguna era por falta de
 documento raro: faltaba la mitad de la crianza en el corpus (45 fuentes nuevas) y faltaba el
 puente castellano→inglés para llegar a la otra mitad («dentición» no llevaba a `teething`).
+
+
+## La séptima y la octava: 1.000 preguntas en un día (23-sep-2026)
+
+`06_septima_500.txt` y `07_octava_500.txt`. Escritas con el mapa de las trece superficies
+delante: la misma señal dicha de diez maneras, negada («no tiene manchas»), pasada («la semana
+pasada»), hipotética («¿y si algún día…?»), preguntada al chat («¿tú qué haces si…?») y mezclada
+con la vida real («estoy en una isla sin pediatra»).
+
+Sin fuentes: **4,6 %** en la séptima y **3,4 %** en la octava, contra el 23 % de la primera.
+
+Lo que encontraron no fue falta de documentos, sino **bordes**: frases que hacían saltar una
+alarma que no tocaba («¿puedo mandarte una foto de labios azules?»), frases que no la hacían
+saltar y debían («se ha puesto azul»), y dos respuestas que tranquilizaban sin base — un peso de
+14 kg a los 6 meses llamado «dentro de lo normal», y un percentil de talla dado sin decir que
+faltaba el peso.
+
+Cómo se corre, de principio a fin:
+
+    uv run python eval/bateria_operador/correr.py 07_octava_500.txt r14_07.jsonl
+    uv run python eval/bateria_operador/revisor.py r14_07.jsonl rev14.jsonl
+    uv run python eval/bateria_operador/resumen.py r14_07.jsonl
+
+Y después se leen. El revisor marca de más —discute umbrales que tienen fuente y fecha—, así que
+su lista es por dónde empezar a leer, no la lista de arreglos.

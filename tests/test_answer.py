@@ -148,7 +148,9 @@ def test_mental_health_banner_uses_helpline(engine_factory):
 
 def test_no_source_means_silence(engine_factory):
     eng, llm = engine_factory("hallucination [1]")
-    a = eng.ask("¿mi perro puede tomar chocolate?")
+    # 23-sep-2026: antes esto se preguntaba por un perro. Ahora un perro se contesta como lo
+    # que es, fuera de tema, así que el ejemplo de «sin fuentes» tiene que ser un niño.
+    a = eng.ask("mi hijo de 3 años ronca por las noches")
     assert a.verification == "no_source" and _redaccion(llm) == []
     assert "No tengo información fiable" in a.text
 

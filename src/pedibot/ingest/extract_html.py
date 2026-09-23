@@ -52,6 +52,13 @@ _SKIP_TEXT = (
     "Video:",
     "Watch this video",
     "Media last reviewed",
+    # 23-sep-2026, Familia y Salud: su menú y su pie entraron como si fueran la hoja. «Divulga
+    # la Web» encabeza una lista de carteles descargables; «Se encuentra usted aquí» es la miga
+    # de pan. Ninguna de las dos es información para un padre, y las dos son citables si se
+    # quedan dentro.
+    "Divulga la Web",
+    "Se encuentra usted aquí",
+    "Noticias Quienes somos",
 )
 _HEADING_SIZE = {"h1": 20.0, "h2": 15.0, "h3": 13.0, "h4": 12.0}
 BODY_SIZE = 10.0
@@ -69,7 +76,11 @@ def _main_node(soup: BeautifulSoup) -> Tag:
         "body",
     ):
         node = soup.select_one(sel)
-        if node is not None:
+        # 23-sep-2026: y que TENGA texto. Las fichas de Familia y Salud abren con
+        # `<a id="main-content"></a>`, un ancla de accesibilidad de cero caracteres, y las cuatro
+        # se perdieron enteras detrás de ella: la ingesta las rechazó por «needs OCR», que para
+        # un HTML ni siquiera es verdad. Existir no es ser el contenido.
+        if node is not None and len(node.get_text(" ", strip=True)) >= 200:
             return node
     return soup
 

@@ -258,6 +258,10 @@ rules:
   reason_en: Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)
   reason_fr: Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)
   patterns:
+  # 23-sep-2026, octava tanda: «se ha puesto azul» no saltaba. Estaban «se pone morado» y
+  # «labios azules», pero no el azul dicho solo, que es como se cuenta cuando pasa.
+  - se (ha )?(puesto|quedado) azul(?![^.]{0,40}(de fr[íi]o|cuando llora|al llorar))
+  - (turned|went|going) blue(?![^.]{0,40}(from the cold|when crying|while crying))
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "hapumui (vizuri|kabisa)"
   - "anapumua kwa (shida|tabu) (sana|kubwa)"
@@ -295,7 +299,7 @@ rules:
   - respira muito (depressa|r[aá]pido|rapidamente)
   # 16-sep-2026, dialecto: «شفايفه زرقا» son los labios azules del Golfo y Egipto.
   - "(شفايف|شفايفه|شفايفها|شفتيه).{0,20}(زرق|زرقا|زرقاء|زرقه)"
-  - no puede respirar
+  - no puede respirar(?![^.]{0,45}(por la nariz|nasal|moco|congesti|resfri|catarr|ronca|tiene la nariz))
   - le cuesta (mucho )?respirar(?![^.]{0,45}(solo cuando corre|s[óo]lo cuando corre|al correr|corriendo|cuando hace ejercicio|haciendo deporte|jugando al f[úu]tbol))
   - dificultad (grave |seria )?para respirar
   - dificultades para respirar
@@ -1644,7 +1648,7 @@ rules:
   - выше 40
   - температура 41
   - температура 42
-  - 4[01][٫,\.]\d
+  - 4[01]٫\d
   - حرارته 41
   - حرارته 42
   - أعلى من 40

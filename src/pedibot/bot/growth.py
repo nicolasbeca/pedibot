@@ -25,10 +25,22 @@ DAYS_PER_MONTH = 30.4375
 _RESTRICTED = {"wfa", "wfh", "bmi"}
 
 #: cortes de la OMS por indicador: (z máximo excluyente, etiqueta), de abajo arriba
+#:
+#: Por arriba, el peso para la edad y la talla para la edad no clasifican nada —la OMS avisa de
+#: que el sobrepeso se mira con el peso para la talla o el IMC, no con el peso para la edad—, y
+#: por eso durante meses cualquier z alto salió «dentro de lo normal». Eso es lo que hizo que
+#: «6 meses, 14 kilos» recibiera un «percentil 100 (z 5.77), dentro de lo normal» (23-sep-2026,
+#: octava tanda). No clasificar no es tranquilizar: por encima de +3 DE se dice que el dato se
+#: sale de la gráfica, que es lo que la propia OMS marca con esa línea.
 _CUTS: dict[str, list[tuple[float, str]]] = {
-    "wfa": [(-3, "severely_underweight"), (-2, "underweight"), (math.inf, "normal")],
-    "lhfa": [(-3, "severely_stunted"), (-2, "stunted"), (math.inf, "normal")],
-    "hfa": [(-3, "severely_stunted"), (-2, "stunted"), (math.inf, "normal")],
+    "wfa": [
+        (-3, "severely_underweight"),
+        (-2, "underweight"),
+        (3, "normal"),
+        (math.inf, "above_3sd"),
+    ],
+    "lhfa": [(-3, "severely_stunted"), (-2, "stunted"), (3, "normal"), (math.inf, "above_3sd")],
+    "hfa": [(-3, "severely_stunted"), (-2, "stunted"), (3, "normal"), (math.inf, "above_3sd")],
     "wfh": [
         (-3, "severely_wasted"),
         (-2, "wasted"),
@@ -327,6 +339,7 @@ LABELS: dict[str, dict[str, str]] = {
         "severely_thin": "severe thinness (below −3 SD)",
         "below_p3": "below the 3rd percentile",
         "above_p97": "above the 97th percentile",
+        "above_3sd": "above +3 SD — off the chart, check the measurement with your paediatrician",
         "cdc_underweight": "underweight (below the 5th percentile)",
         "cdc_overweight": "overweight (85th–95th percentile)",
         "cdc_obese": "obesity (95th percentile or above)",
@@ -351,6 +364,9 @@ LABELS: dict[str, dict[str, str]] = {
         "severely_thin": "delgadez grave (por debajo de −3 DE)",
         "below_p3": "por debajo del percentil 3",
         "above_p97": "por encima del percentil 97",
+        "above_3sd": (
+            "por encima de +3 DE — se sale de la gráfica, comprueba la medida con tu pediatra"
+        ),
         "cdc_underweight": "bajo peso (por debajo del percentil 5)",
         "cdc_overweight": "sobrepeso (percentil 85 a 95)",
         "cdc_obese": "obesidad (percentil 95 o más)",
@@ -375,6 +391,9 @@ LABELS: dict[str, dict[str, str]] = {
         "severely_thin": "maigreur sévère (sous −3 ET)",
         "below_p3": "sous le 3e percentile",
         "above_p97": "au-dessus du 97e percentile",
+        "above_3sd": (
+            "au-dessus de +3 ET — hors du graphique, vérifiez la mesure avec votre pédiatre"
+        ),
         "cdc_underweight": "insuffisance pondérale (sous le 5e percentile)",
         "cdc_overweight": "surpoids (85e à 95e percentile)",
         "cdc_obese": "obésité (95e percentile ou plus)",
@@ -401,6 +420,7 @@ LABELS: dict[str, dict[str, str]] = {
         "severely_thin": "schweres Untergewicht (unter −3 SD)",
         "below_p3": "unter der 3. Perzentile",
         "above_p97": "über der 97. Perzentile",
+        "above_3sd": "über +3 SD — außerhalb der Kurve, Messung mit der Kinderärztin prüfen",
         "cdc_underweight": "Untergewicht (unter der 5. Perzentile)",
         "cdc_overweight": "Übergewicht (85.–95. Perzentile)",
         "cdc_obese": "Adipositas (ab der 95. Perzentile)",
@@ -428,6 +448,7 @@ LABELS: dict[str, dict[str, str]] = {
         "severely_thin": "выраженная худоба (ниже −3 SD)",
         "below_p3": "ниже 3-го перцентиля",
         "above_p97": "выше 97-го перцентиля",
+        "above_3sd": "выше +3 SD — за пределами графика, проверьте измерение с педиатром",
         "cdc_underweight": "недостаточный вес (ниже 5-го перцентиля)",
         "cdc_overweight": "избыточный вес (85–95-й перцентиль)",
         "cdc_obese": "ожирение (95-й перцентиль и выше)",
@@ -452,6 +473,7 @@ LABELS: dict[str, dict[str, str]] = {
         "severely_thin": "نحافة شديدة (أقل من −3 انحراف معياري)",
         "below_p3": "أقل من المئين الثالث",
         "above_p97": "أعلى من المئين 97",
+        "above_3sd": "أعلى من +3 انحراف معياري — خارج المخطط، تحقق من القياس مع طبيب الأطفال",
         "cdc_underweight": "نقص الوزن (أقل من المئين الخامس)",
         "cdc_overweight": "زيادة الوزن (المئين 85 إلى 95)",
         "cdc_obese": "سمنة (المئين 95 فأكثر)",
@@ -476,6 +498,7 @@ LABELS: dict[str, dict[str, str]] = {
         "severely_thin": "magreza grave (abaixo de −3 DP)",
         "below_p3": "abaixo do percentil 3",
         "above_p97": "acima do percentil 97",
+        "above_3sd": "acima de +3 DP — fora do gráfico, confirme a medida com o pediatra",
         "cdc_underweight": "baixo peso (abaixo do percentil 5)",
         "cdc_overweight": "excesso de peso (percentil 85 a 95)",
         "cdc_obese": "obesidade (percentil 95 ou mais)",
@@ -500,6 +523,7 @@ LABELS: dict[str, dict[str, str]] = {
         "severely_thin": "गंभीर दुबलापन (−3 SD से नीचे)",
         "below_p3": "तीसरे पर्सेंटाइल से नीचे",
         "above_p97": "97वें पर्सेंटाइल से ऊपर",
+        "above_3sd": "+3 SD से ऊपर — ग्राफ़ से बाहर, माप डॉक्टर से जाँच लें",
         "cdc_underweight": "कम वज़न (5वें पर्सेंटाइल से नीचे)",
         "cdc_overweight": "अधिक वज़न (85वें से 95वें पर्सेंटाइल)",
         "cdc_obese": "मोटापा (95वाँ पर्सेंटाइल या उससे ऊपर)",
@@ -644,6 +668,9 @@ SENTENCES: dict[str, dict[str, str]] = {
         "girl": "girl",
         "boy": "boy",
         "ask_height": "Tell me the height too and I can also work out weight for height.",
+        "ask_weight": (
+            "Tell me the weight too and I can work out weight for age and weight for height."
+        ),
         "curve": "One measurement says little on its own: what matters is the curve over time, "
         "and your paediatrician has it.",
         "source": "Source: {sources}.",
@@ -655,6 +682,7 @@ SENTENCES: dict[str, dict[str, str]] = {
         "girl": "niña",
         "boy": "niño",
         "ask_height": "Dime también la talla y calculo el peso para la talla.",
+        "ask_weight": "Dime también el peso y calculo el peso para la edad y para la talla.",
         "curve": "Un solo dato dice poco: lo que importa es la curva a lo largo del tiempo, y esa "
         "la tiene tu pediatra.",
         "source": "Fuente: {sources}.",
@@ -666,6 +694,9 @@ SENTENCES: dict[str, dict[str, str]] = {
         "girl": "fille",
         "boy": "garçon",
         "ask_height": "Donnez-moi aussi la taille et je calcule le poids pour la taille.",
+        "ask_weight": (
+            "Donnez-moi aussi le poids et je calcule le poids pour l'âge et pour la taille."
+        ),
         "curve": "Une seule mesure dit peu de chose : ce qui compte est la courbe dans le temps, "
         "et votre pédiatre l'a.",
         "source": "Source : {sources}.",
@@ -677,6 +708,9 @@ SENTENCES: dict[str, dict[str, str]] = {
         "girl": "Mädchen",
         "boy": "Junge",
         "ask_height": "Nennen Sie mir auch die Größe, dann berechne ich Gewicht für Größe.",
+        "ask_weight": (
+            "Nennen Sie mir auch das Gewicht, dann berechne ich Gewicht für Alter und für Größe."
+        ),
         "curve": "Ein einzelner Wert sagt wenig: Es zählt die Kurve über die Zeit, und die hat "
         "Ihre Kinderärztin oder Ihr Kinderarzt.",
         "source": "Quelle: {sources}.",
@@ -688,6 +722,7 @@ SENTENCES: dict[str, dict[str, str]] = {
         "girl": "девочка",
         "boy": "мальчик",
         "ask_height": "Скажите ещё рост, и я посчитаю вес по росту.",
+        "ask_weight": "Скажите ещё вес, и я посчитаю вес по возрасту и вес по росту.",
         "curve": "Одно измерение говорит мало: важна кривая во времени, и она есть у вашего "
         "педиатра.",
         "source": "Источник: {sources}.",
@@ -699,6 +734,7 @@ SENTENCES: dict[str, dict[str, str]] = {
         "girl": "بنت",
         "boy": "ولد",
         "ask_height": "أخبرني بالطول أيضا وأحسب الوزن حسب الطول.",
+        "ask_weight": "أخبرني بالوزن أيضا وأحسب الوزن حسب العمر وحسب الطول.",
         "curve": "قياس واحد لا يكفي: المهم هو المنحنى عبر الوقت، وهو موجود عند طبيب الأطفال.",
         "source": "المصدر: {sources}.",
         "see": "⚠️ {warning} راجع طبيبا قريبا.",
@@ -709,6 +745,7 @@ SENTENCES: dict[str, dict[str, str]] = {
         "girl": "menina",
         "boy": "menino",
         "ask_height": "Diga-me também a altura e calculo o peso para a altura.",
+        "ask_weight": "Diga-me também o peso e calculo o peso para a idade e para a altura.",
         "curve": "Uma única medida diz pouco: o que importa é a curva ao longo do tempo, e o seu "
         "pediatra tem-na.",
         "source": "Fonte: {sources}.",
@@ -720,6 +757,7 @@ SENTENCES: dict[str, dict[str, str]] = {
         "girl": "बच्ची",
         "boy": "बच्चा",
         "ask_height": "लंबाई भी बताइए तो मैं लंबाई के हिसाब से वजन भी निकाल दूँगा।",
+        "ask_weight": "वजन भी बताइए तो मैं उम्र और लंबाई के हिसाब से वजन निकाल दूँगा।",
         "curve": "एक बार का माप बहुत कुछ नहीं कहता: मायने रखता है समय के साथ का वक्र, जो आपके "
         "बाल रोग विशेषज्ञ के पास होता है।",
         "source": "स्रोत: {sources}।",
@@ -804,7 +842,11 @@ def explain(a: Assessment, lang: str, sex: str, age_months: float) -> str:
         )
     if a.level == "urgent":
         partes.append(s["see"].format(warning=t["urgent"]))
-    if "height" in a.missing:
+    # 23-sep-2026: se pedía la talla que falta y se callaba el peso que falta, y un padre que
+    # dijo «no sé cuánto pesa» recibió el percentil de talla y ni una palabra del otro.
+    if "weight" in a.missing:
+        partes.append(s["ask_weight"])
+    elif "height" in a.missing:
         partes.append(s["ask_height"])
     partes.append(s["curve"])
     partes.append(s["source"].format(sources="; ".join(a.sources)))

@@ -180,7 +180,10 @@ def test_an_article_in_the_requested_language_passes(tmp_path: Path, monkeypatch
         "TITLE: What vaccines does my child need?\n"
         "SUMMARY: A clear guide to the childhood immunisation schedule.\n"
         "BODY:\n## What it is\nVaccines protect your child from serious illness before they are "
-        "exposed to it [1]. The schedule gives several doses during the first year [1].\n"
+        # «Spanish» no es decoración: las fuentes de este borrador son de la SEUP, y desde
+        # el 23-sep-2026 una guía que describe el calendario de un país sin nombrarlo no se
+        # publica
+        "exposed to it [1]. The Spanish schedule gives several doses during the first year [1].\n"
         "## What you can do at home\nKeep the record up to date [1].\n"
         "## When to see a doctor or go to the emergency department\nHigh fever after a dose [1].\n"
         "## Common questions\nCan doses be combined? Yes [1].\n"

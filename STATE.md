@@ -20,6 +20,72 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 23-sep-2026 (noche) · la octava tanda: 500 más, y dos cosas que tranquilizaban de más
+
+`eval/bateria_operador/07_octava_500.txt`. Las 500 pasaron por el motor y por el revisor entero
+(nada murió a mitad esta vez: L232 ya está arreglado). **Sin fuentes: 17 de 500 (3,4 %)**, contra
+el 4,6 % de la séptima y el 23 % de la primera. El revisor marcó 151 con alguna pega; leídas una
+a una, la mayoría son criterio suyo contra reglas nuestras que tienen fuente y umbral escrito
+—40,5 °C, no 40—. Lo que sí era nuestro:
+
+- **«¿Puedo mandarte una foto de labios azules?» daba EMERGENCIA.** No es un niño morado: es
+  alguien preguntando qué acepta la cámara. Y quien más escribe esas frases es quien evalúa.
+- **«Se ha puesto azul» no saltaba.** Estaban «se pone morado» y «labios azules»; faltaba el azul
+  dicho solo, que es justo como se cuenta cuando pasa de verdad.
+- **«No puede respirar por la nariz» saltaba** como dificultad respiratoria: la exclusión existía
+  y no llegaba hasta ahí.
+- **«40.1» alarmaba** por un patrón escrito para los decimales árabes, cuando la propia regla
+  dice 40,5 con su fuente al lado.
+- **Una reacción a una vacuna puesta en Francia devolvía el calendario francés entero**, efecto
+  del arreglo de ayer: el país escrito manda, pero sólo cuando lo que se pide ES un calendario.
+- **«La pregunta es sobre mí, no sobre mi hijo» recibió la fiebre infantil**, y «mi perro tiene
+  diarrea», un «no tengo información fiable». Cuando el padre dice que no es un niño, se le cree.
+- **«6 meses, 14 kilos» → «percentil 100 (z 5.77), dentro de lo normal».** El peso para la edad
+  no clasifica el sobrepeso —eso es de la OMS y es correcto—, pero no clasificar no es
+  tranquilizar (L233). Por encima de +3 DE ahora dice que se sale de la gráfica.
+- **Se pedía la talla que falta y se callaba el peso que falta**: un padre que dijo «no sé cuánto
+  pesa» recibió el percentil de talla y ni una palabra del otro.
+
+Y una que no venía de la tanda sino de la suite: **el servidor publicó anoche una guía portuguesa
+con las edades del calendario español sin nombrar a España**. El candado existía desde el 7-sep y
+miraba lo ya publicado, o sea que avisó catorce horas tarde (L234). Las tablas viven ahora en
+`pedibot/publish/paises.py`, el publicador se niega antes de escribir el fichero, y el candado
+viejo las importa de allí.
+
+**El hueco, con número:** de las 17 sin fuente, **cinco son la misma cosa** — el medicamento ya
+en casa: «vomitó después de tomarlo», «se la di dos veces porque mi marido no sabía», «dejé de
+dárselo ayer, ¿reinicio?», «se la di una hora antes», «creo que era otra concentración». El
+corpus tiene cómo calcular la dosis y no tiene qué hacer cuando la dosis ya salió mal, que es
+cuando el padre escribe a las once de la noche. Otras tres son la respiración según la postura
+(«normal sentado, raro tumbado», «hace pausas dormido»).
+
+**Y el hueco, tapado esa misma noche.** Catorce hojas nuevas: las cinco subpáginas de
+paracetamol infantil del NHS (del ibuprofeno estaban las seis y de éste sólo la portada), las
+cuatro de amoxicilina —que son las que dicen qué hacer con una dosis olvidada y con un
+tratamiento dejado a medias—, la de cómo dar medicinas a un bebé, y cuatro fichas de **Familia y
+Salud (AEPap)**, primera vez que entra esa fuente: es la única del corpus que contesta «vomitó
+después de tomarlo», y lo hace con un número —«se podría repetir la dosis si el niño vomita antes
+de 10 a 15 minutos»—. Licencia CC BY-NC-ND, así que entra como `citar_solo`, igual que el
+Ministério da Saúde brasileño: se cita con su enlace y el generador de guías no puede
+reproducirla.
+
+Dos cosas que se arreglaron por el camino, las dos generales y no de esas fichas:
+
+- **La ingesta rechazaba sus cuatro páginas por «needs OCR»**, que para un HTML ni siquiera es
+  verdad. Su plantilla abre con `<a id="main-content"></a>`, un ancla de accesibilidad vacía, y
+  el extractor la elegía por tener el id bueno: la página entera se perdía detrás de cero
+  caracteres. Ahora se exige que el contenedor traiga texto.
+- **Y entraron con el menú dentro** («Noticias Quienes somos Se encuentra usted aquí», «Divulga
+  la Web: Cartel-recortable…»), que es texto citable que no es información para nadie.
+
+Medido después, con todo dentro: `source_hit` **0,953** y `triage_exact` **0,975**, los mismos
+de antes de tocar nada; el catálogo pasa de 631 a 645 documentos. Y la pregunta literal de la
+tanda, preguntada al motor de verdad, ya no contesta «no tengo información fiable».
+
+**Anotado y sin hacer:** el aviso del
+`msan_calendario` por delante de la hoja del rotavirus, la coletilla de la edad en urdu escrita
+en alfabeto árabe y la etiqueta `lang` guardada como «en» en swahili y urdu.
+
 ## 23-sep-2026 (tarde) · la séptima tanda: 500 preguntas contra las costuras
 
 `eval/bateria_operador/06_septima_500.txt`. Escritas por el operador con el mapa de las trece

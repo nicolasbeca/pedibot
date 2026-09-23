@@ -92,8 +92,12 @@ def test_the_spanish_to_english_bridge_stays_tiny(syn: Synonyms):
     23-sep-2026: treinta entradas más, todas del bloque de vacunas, porque «le ha salido un
     bulto duro en el sitio del pinchazo» recuperaba la hoja del ESTREÑIMIENTO. Medido otra
     vez con las doce reglas nuevas de la séptima tanda dentro: `source_hit` **0,953** y
-    `triage_exact` **0,975**, los mismos de ayer."""
+    `triage_exact` **0,975**, los mismos de ayer.
+
+    23-sep-2026 (noche): cinco entradas más —el tope sube de 150 a 155— para la medicina que ya
+    se dio mal, con las catorce hojas nuevas dentro (diez del NHS, cuatro de Familia y Salud).
+    Medido como pide el candado: los números están en el docstring de la prueba de abajo."""
     bridge = syn._maps.get("es_en", {})
-    assert len(bridge) <= 150, "the bridge grew: re-measure the golden set before widening it"
+    assert len(bridge) <= 155, "the bridge grew: re-measure the golden set before widening it"
     for covered in ("fiebre", "tos", "vómit", "diarrea", "convuls", "quemadura", "vacun"):
         assert covered not in bridge, f"{covered} has Spanish leaflets: bridging it hurts retrieval"

@@ -18,6 +18,7 @@ from pedibot.bot.retrieval import detect_lang
 from pedibot.index.store import Hit, Index
 from pedibot.ingest.pipeline import slug as make_slug
 from pedibot.lang_markers import foreign_markers
+from pedibot.publish.paises import ES_DE_UN_PAIS, nombra_el_pais, pais_de_las_fuentes
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 _CIT = re.compile(r"\[(\d{1,2})\]")
@@ -744,7 +745,13 @@ def _structure_problems(body: str, lang: str, compare: bool) -> list[str]:
 
 
 def _problems(
-    title: str, body: str, hits: list[Hit], lang: str, compare: bool = False
+    title: str,
+    body: str,
+    hits: list[Hit],
+    lang: str,
+    compare: bool = False,
+    topic: str = "",
+    fuentes: list[tuple[str, str]] | None = None,
 ) -> list[str]:
     """Verification of the draft: citations and doses (shared with the answer engine) plus the
     language. A Spanish guide written into web/content/en carries `lang: en` in its frontmatter,
@@ -775,6 +782,23 @@ def _problems(
             )
             break
     problems.extend(_structure_problems(body, lang, compare))
+    # Y de qué país es el calendario. 23-sep-2026: el servidor publicó una guía portuguesa con
+    # las edades del calendario español sin nombrar a España. El candado existía desde el 7-sep
+    # y miraba las guías YA publicadas: saltó en mi máquina catorce horas después. Aquí impide.
+    if any(k in topic.lower() for k in ES_DE_UN_PAIS):
+        if fuentes is None:
+            citadas = sorted({int(n) for n in _CIT.findall(body)})
+            fuentes = [
+                (hits[n - 1].chunk.org, hits[n - 1].chunk.doc_title)
+                for n in citadas
+                if 1 <= n <= len(hits)
+            ]
+        pais = pais_de_las_fuentes(fuentes)
+        if pais and not nombra_el_pais(body, pais, lang):
+            problems.append(
+                f"country_not_named ({pais}): the schedule you describe is that country's."
+                " Say so in the text — a parent will otherwise take it for their own"
+            )
     return problems
 
 
@@ -807,7 +831,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
     room = DRAFT_TOKENS.get(lang, DRAFT_TOKENS_DEFAULT)
     result = llm.complete(system, user, temperature=0.3, max_tokens=room)
     title, summary, body = parse_output(result.text)
-    problems = _problems(title, body, hits, lang, compare)
+    problems = _problems(title, body, hits, lang, compare, topic=topic)
     verification = "ok"
     if problems:
         retry = llm.complete(
@@ -820,7 +844,7 @@ def generate_article(index: Index, llm: LLMProvider, topic: str, lang: str = "en
             max_tokens=room,
         )
         title, summary, body = parse_output(retry.text)
-        if _problems(title, body, hits, lang, compare):
+        if _problems(title, body, hits, lang, compare, topic=topic):
             raise ValueError(f"article for {topic} failed verification twice: {problems}")
         result, verification = retry, "regenerated"
     cited = sorted({int(n) for n in _CIT.findall(body)})

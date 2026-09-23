@@ -732,6 +732,40 @@ def is_vaccine_question(text: str) -> bool:
     return bool(_VACC.search(text))
 
 
+#: 23-sep-2026, octava tanda: «mi hijo tiene una reacción después de una vacuna que recibió en
+#: Francia» devolvió el CALENDARIO francés. Es efecto de lo que se arregló el día anterior —el
+#: país escrito manda sobre el elegido— cruzado con lo de siempre: que cualquier pregunta con la
+#: palabra «vacuna» y un país dentro sacaba la tabla.
+#:
+#: El país escrito sigue mandando. Lo que se pide ahora es que lo que se pregunta SEA un
+#: calendario: qué toca, cuándo, a qué edad. Una reacción, un retraso o una duda sobre una
+#: vacuna concreta se contestan con las guías, como cualquier otra pregunta de salud.
+_PIDE_CALENDARIO = re.compile(
+    r"calendar\w*|calendrier|impfkalender|schedule|programa de vacina\w*"
+    r"|(?:qu[ée]|cu[áa]les?|which|what|quels?|quelles?|quais|welche)[^.?!]{0,40}"
+    r"(?:vacun\w*|vaccin\w*|impf\w*|vacina\w*)[^.?!]{0,40}"
+    r"(?:toca|tocan|corresponde|necesita|pone|ponen|due|needs?|faut|braucht"
+    # La edad, dicha como la dice cada lengua. 23-sep-2026: el patrón se escribió y se midió en
+    # castellano («a los 2 meses») y tiró tres casos del conjunto dorado que llevaban meses en
+    # verde — «de 3 mois», «mit 2 Monaten», «aos 4 meses». Una regla medida en una sola lengua
+    # no está medida (L235).
+    r"|(?:a los|aos?|con|de|at|à|a|mit|im|nach)\s*\d"
+    r"|\d\s*(?:mes(?:es)?|month|mois|monat|meses|a[ñn]os?|years?|ans|jahre)"
+    r")"
+    r"|(?:vacun\w*|vaccin\w*|impf\w*|vacina\w*)[^.?!]{0,25}"
+    r"(?:a los|aos?|con|at|à|mit)\s*\d"
+    r"|прививочн\w* календар|календар\w* прививок"
+    r"|(?:جدول|روزنامة)[^.?!]{0,20}(?:التطعيم|اللقاح)"
+    r"|टीकाकरण[^.?!]{0,15}(?:कैलेंडर|अनुसूची|सूची)",
+    re.I | re.U,
+)
+
+
+def pide_calendario(text: str) -> bool:
+    """¿Lo que se pregunta es el calendario, y no otra cosa que lleva la palabra «vacuna»?"""
+    return bool(_PIDE_CALENDARIO.search(text or ""))
+
+
 def fecha_comprobada(meta: dict[str, str], lang: str) -> str:
     """« (comprobado el 18 de septiembre de 2026)», o nada si no consta.
 

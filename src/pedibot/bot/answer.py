@@ -40,6 +40,7 @@ from pedibot.bot.vaccines import (
     country_in_question,
     format_answer,
     is_vaccine_question,
+    pide_calendario,
 )
 from pedibot.bot.who_first import extra_terms as who_first_terms
 from pedibot.bot.who_first import prompt_note as who_first_note
@@ -891,6 +892,29 @@ def escritura_latina(texto: str) -> bool:
     return latinas > otras
 
 
+#: Cuando la pregunta dice, con todas las letras, que no es sobre un niño (23-sep-2026, octava
+#: tanda). «Tengo fiebre, pero la pregunta es sobre mí, no sobre mi hijo» recibió la respuesta
+#: de la fiebre infantil, empezando por «si el niño tiene menos de 3 meses». Y «mi perro tiene
+#: diarrea» acabó en «no tengo información fiable en mis fuentes», que para un perro es absurdo.
+#:
+#: Pide una marca EXPLÍCITA. Un padre que escribe «tengo un bebé con fiebre» o «me preocupa mi
+#: hija» no está hablando de sí mismo, y ésos no se tocan.
+_NO_ES_UN_NINO = re.compile(
+    r"(?:la (?:pregunta|consulta|duda) es (?:sobre|para) m[íi]|es para m[íi] |para m[íi], no)"
+    r"|no (?:es )?(?:sobre|para) (?:mi|el|la) (?:hijo|hija|ni[ñn][oa]|beb[ée])"
+    r"|soy yo (?:el|la) que"
+    r"|\bmi (?:perro|perra|gato|gata|mascota|conejo|h[áa]mster|loro)\b"
+    r"|(?:my|our) (?:dog|cat|pet)\b"
+    r"|(?:the )?question is about me\b|it'?s for me, not",
+    re.I | re.U,
+)
+
+
+def no_es_un_nino(texto: str) -> bool:
+    """¿El propio texto dice que no pregunta por un niño?"""
+    return bool(_NO_ES_UN_NINO.search(texto or ""))
+
+
 def _mentions_child(text: str) -> bool:
     return bool(_CHILD.search(text))
 
@@ -1661,8 +1685,13 @@ class Engine:
             # pantalla. Y si ese país no está entre los transcritos, no se le sirve el de al
             # lado: se sigue al corpus, que dirá lo que tenga o que no tiene nada.
             escrito = country_in_question(context_text)
-            if escrito is not None:
+            # el país escrito manda, pero sólo cuando lo que se pide es un calendario: «una
+            # reacción a una vacuna que recibió en Francia» no es pedir el calendario francés
+            if escrito is not None and pide_calendario(context_text):
                 c = self.vaccines.resolve_country(escrito)
+            elif escrito is not None and not pide_calendario(context_text):
+                c = None
+                escrito = None
             else:
                 c = self.vaccines.resolve_country(country)
             if c is None and escrito is not None:
@@ -1818,6 +1847,11 @@ class Engine:
         # temas no reconozca nada ni en la pregunta ni en lo que la IA entendió de ella: un
         # «mi hijo se ha tragado una pila» mal leído como «otra cosa» no puede recibir un «eso no
         # es de PediBot».
+        # 23-sep-2026: el padre ha dicho que no es un niño. Se le cree, y se le dice que no con
+        # amabilidad en vez de contarle la fiebre infantil o dejarle sin fuentes.
+        if tr.level == "routine" and not tr.is_alarm and no_es_un_nino(query):
+            return Answer(OFF_TOPIC[lang], tr.level, banner, [], lang, None, None, [], "off_topic")
+
         if leida is not None and tr.level == "routine" and not tr.is_alarm:
             # 22-sep-2026: preguntarle AL CHAT si sabe hacer algo es una pregunta sobre el chat,
             # aunque lo que se le pida no tenga que ver con la salud de un niño. «¿Puede decirme

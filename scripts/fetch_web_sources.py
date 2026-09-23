@@ -81,6 +81,21 @@ ORGS = {
         "evidence": "organismo_publico",
         "usage": "publico",
     },
+    # 23-sep-2026. La pregunta que más se repitió en la octava tanda —«vomitó después de tomar
+    # el medicamento»— no la contesta ninguna hoja del corpus, y sí la contesta ésta, de los
+    # pediatras de atención primaria españoles: «Se podría repetir la dosis si el niño vomita
+    # antes de 10 a 15 minutos tras la ingesta».
+    #
+    # Licencia leída en el pie de sus propias fichas: CC BY-NC-ND 3.0 España. ND = citar sí,
+    # reelaborar no, así que entra como `citar_solo`, igual que el Ministério da Saúde: el bot
+    # la cita con su enlace y el generador de guías no puede reproducirla.
+    "fys": {
+        "org": "AEPap",
+        "org_full": "Familia y Salud — Asociación Española de Pediatría de Atención Primaria",
+        "license": "CC BY-NC-ND 3.0 España (pie de familiaysalud.es)",
+        "evidence": "sociedad_cientifica",
+        "usage": "citar_solo",
+    },
     "who": {
         "org": "WHO",
         "org_full": "World Health Organization",
@@ -308,6 +323,115 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "https://www.nhs.uk/medicines/ibuprofen-for-children/common-questions-about-ibuprofen-for-children/",
         "medicamentos",
         "en",
+        ["todas"],
+    ),
+    # 23-sep-2026. De las 500 preguntas de la octava tanda, 17 se quedaron sin fuente y CINCO
+    # eran la misma cosa: el medicamento que ya está en casa y salió mal. «Vomitó después de
+    # tomarlo», «se la di dos veces porque mi marido no sabía que ya se la había dado», «dejé de
+    # dárselo ayer, ¿reinicio?», «se la di una hora antes», «creo que era otra concentración».
+    # El corpus sabía calcular la dosis y no sabía nada de lo que pasa después, que es cuando el
+    # padre escribe a las once de la noche.
+    #
+    # Del paracetamol infantil sólo teníamos la portada, mientras que del ibuprofeno estaban las
+    # seis páginas. La amoxicilina entra por la dosis olvidada y por el tratamiento que se deja
+    # a medias, que es la otra mitad de las preguntas. Y «medicines for babies and children» es
+    # la que dice, con estas palabras, que una cucharilla de cocina no mide una dosis.
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/paracetamol-for-children/about-paracetamol-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/paracetamol-for-children/who-can-and-cannot-take-paracetamol-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/paracetamol-for-children/how-and-when-to-give-paracetamol-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/paracetamol-for-children/side-effects-of-paracetamol-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/paracetamol-for-children/taking-paracetamol-for-children-with-other-medicines-and-herbal-supplements/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/paracetamol-for-children/common-questions-about-paracetamol-for-children/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/amoxicillin/about-amoxicillin/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/amoxicillin/how-and-when-to-take-amoxicillin/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/amoxicillin/side-effects-of-amoxicillin/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/medicines/amoxicillin/common-questions-about-amoxicillin/",
+        "medicamentos",
+        "en",
+        ["todas"],
+    ),
+    (
+        "fys",
+        "https://www.familiaysalud.es/medicinas/farmacos/antitermicos-para-la-fiebre",
+        "medicamentos",
+        "es",
+        ["todas"],
+    ),
+    (
+        "fys",
+        "https://www.familiaysalud.es/medicinas/farmacos/sobre-los-medicamentos/por-que-hay-que-cumplir-los-tratamientos",
+        "medicamentos",
+        "es",
+        ["todas"],
+    ),
+    (
+        "fys",
+        "https://www.familiaysalud.es/medicinas/farmacos/sobre-los-medicamentos/hay-que-leer-los-prospectos-de-los-medicamentos",
+        "medicamentos",
+        "es",
+        ["todas"],
+    ),
+    (
+        "fys",
+        "https://www.familiaysalud.es/salud-y-escuela/educacion-infantil-0/los-problemas-de-salud/sobre-enfermedades-de-los-ninos/cuales",
+        "medicamentos",
+        "es",
         ["todas"],
     ),
     ("nhs", "https://www.nhs.uk/conditions/anaphylaxis/", "alergia", "en", ["todas"]),

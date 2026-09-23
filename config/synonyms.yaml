@@ -756,6 +756,14 @@ es_en:
   puede vacunarse: [vaccine contraindications, who should not get]
   puede ponerse la vacuna: [vaccine contraindications, who should not get]
   # y la medicina que se da mal en casa, que salió igual de seca
+  # 23-sep-2026, octava tanda: cinco de las 17 preguntas sin fuente eran la dosis que YA se
+  # dio mal. Las hojas están (NHS: paracetamol infantil, amoxicilina, dar medicinas a un bebé),
+  # pero en inglés, y sin estas líneas no las alcanza nadie que escriba en castellano.
+  dos veces la misma dosis: [too much paracetamol, extra dose, overdose]
+  doble dosis: [too much paracetamol, extra dose, overdose]
+  vomitó después de tomar: [antitérmicos, repetir la dosis, giving medicines to children]
+  vomito despues de tomar: [antitérmicos, repetir la dosis, giving medicines to children]
+  otra concentración: [strength, oral suspension, how to give paracetamol]
   jeringa: [oral syringe, giving medicines to children, measuring dose]
   se durmió antes de terminar: [giving medicines to children, missed dose]
   escupió el jarabe: [giving medicines to children, spat out dose]
@@ -852,7 +860,7 @@ es_en:
   antibióticos: [antibiotics]
   jarabe: [medicines for children, syrup, liquid medicine]
   se me ha olvidado la dosis: [missed dose, medicines for children]
-  vomitó la medicina: [medicines for children, missed dose]
+  vomitó la medicina: [antitérmicos, repetir la dosis, medicines for children]
   espasmo del sollozo: [breath-holding spell]
   deja de respirar cuando llora: [breath-holding spell]
   ruido al respirar: [stridor, noisy breathing]

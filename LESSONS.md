@@ -1663,3 +1663,77 @@ Lo que hay que recordar no es «usa utf-8»: es que **una línea de progreso pue
 entero**. Escribe el resultado primero, imprime después, y que lo que imprimes no pueda fallar
 (`sys.stdout.buffer.write(linea.encode("utf-8", "replace"))`). Un proceso de hora y media no
 puede depender de la página de códigos de la terminal.
+
+## L233 · No clasificar no es tranquilizar (23-sep-2026)
+
+«Mi hijo tiene 6 meses y pesa 14 kilos, dime el percentil» recibió:
+
+    • Peso para la edad: 14 kg → percentil 100 (z 5.77), dentro de lo normal.
+
+El corte de abajo estaba (−2, −3 DE) y el de arriba no, y estaba bien razonado: la OMS dice
+expresamente que el peso para la edad **no sirve** para clasificar el sobrepeso, que para eso
+están el peso para la talla y el IMC. Así que el código no clasificaba por arriba, y la etiqueta
+por defecto era «normal».
+
+El razonamiento era correcto y el resultado, el peor posible. «Este indicador no distingue el
+sobrepeso» y «este peso es normal» son cosas distintas, y en un padre con un niño de 14 kilos a
+los 6 meses sólo caben dos explicaciones —se equivocó al teclear, o su hijo tiene algo que
+mirar— y en las dos la respuesta útil es la misma: ese número se sale de la gráfica.
+
+Vale para cualquier valor por defecto de un clasificador: **«no lo sé» nunca se escribe como
+«está bien»**. Cuando falte una categoría, la salida es decir que falta, no la categoría buena.
+
+## L234 · El candado que mira lo publicado avisa tarde (23-sep-2026)
+
+Anoche el servidor publicó una guía portuguesa que daba las edades del calendario español sin
+nombrar a España. El candado que lo prohíbe existe desde el 7-sep y saltó… esta mañana, en mi
+máquina, catorce horas después de que la guía estuviera viva y leída.
+
+Es exactamente la forma de L227 y la de la fuga de idioma del 16-sep: la comprobación vivía
+*después* de publicar. Un guardián que corre sobre lo ya publicado sirve para enterarse; para
+impedir tiene que correr donde se decide. Las tablas se mudaron a `pedibot/publish/paises.py`,
+el publicador las usa antes de escribir el fichero y el test las importa de allí: una sola lista.
+
+La regla, para la próxima vez que escriba una comprobación: **preguntar dónde puede decir que
+no**. Si la respuesta es «en la suite, mañana», la comprobación está en el sitio equivocado.
+
+## L235 · Una regla medida en una sola lengua no está medida (23-sep-2026)
+
+La guardia nueva del calendario —«el país escrito manda, pero sólo cuando lo que se pide ES un
+calendario»— la escribí en castellano y la probé en castellano: «¿qué vacunas le tocan a los 2
+meses?». El patrón buscaba, entre otras cosas, «a los N».
+
+Un padre francés escribe «pour un bébé de 3 mois». Uno alemán, «mit 2 Monaten». Uno brasileño,
+«aos 4 meses». Los tres se quedaron fuera y los tres eran casos del conjunto dorado que llevaban
+meses en verde: `routing` cayó de 1.0 a 0.765 y sólo lo vi porque el conjunto se mide antes de
+desplegar. La suite entera —10.304 pruebas— pasó sin enterarse.
+
+Dos cosas que llevarme:
+
+1. **Cada vez que un patrón nuevo mire cómo se dice algo, hay que escribirlo en las lenguas en
+   las que el producto contesta**, y la edad es lo que más cambia de forma: `a los`, `aos`, `de`,
+   `at`, `à`, `mit`, y el número delante de la unidad en vez de detrás.
+2. **El conjunto dorado es el que ve esto.** Una suite verde con 10.304 pruebas no sustituye 120
+   casos medidos de punta a punta: las pruebas comprueban lo que alguien pensó, el conjunto mide
+   lo que pasa. Se mide antes de cada despliegue, no cuando parece que hace falta (L225).
+
+## L236 · «Needs OCR» para un HTML, y la página detrás de un ancla vacía (23-sep-2026)
+
+Las cuatro fichas de Familia y Salud entraron y la ingesta las rechazó las cuatro:
+
+    no_text scanned or protected PDF — needs OCR
+
+Para un fichero `.html` ese mensaje ya es imposible, y ahí estaba la pista. El extractor recorre
+una lista de selectores —`#topic-summary`, `main`, `article`, `#maincontent`, `#main-content`,
+`body`— y se queda con el primero que EXISTA. Su plantilla abre con `<a id="main-content"></a>`,
+el ancla de accesibilidad de «saltar al contenido», que existe y mide cero caracteres. Ocho mil
+setecientos caracteres de hoja pediátrica se perdieron detrás de un ancla vacía.
+
+**Existir no es ser el contenido.** Cuando una heurística elige entre candidatos, el criterio
+tiene que incluir que el candidato sirva, no sólo que esté. Una línea: `len(texto) >= 200`.
+
+Y la segunda mitad: cuando entraron, entraron con el menú dentro («Noticias Quienes somos Se
+encuentra usted aquí», «Divulga la Web: Cartel-recortable…»). Eso es texto **citable**, y un
+motor que cita puede acabar poniéndole a un padre un cartel descargable como fuente. Cada sitio
+nuevo trae su plantilla, y mirar los primeros trozos indexados de una fuente nueva —a ojo, una
+vez— cuesta un minuto y es la única forma de verlo.

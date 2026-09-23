@@ -499,12 +499,48 @@ NEGADORES = re.compile(
 #: Va aparte de `NEGADORES` porque es otra cosa: no niega el hecho, lo pone en hipotético. Y se
 #: exige el INTERROGATIVO delante («cómo», «how to», «كيف») a propósito: «no pude evitar que se
 #: tragara una pila» lleva «evitar» y tiene que seguir saltando, porque ahí la pila ya está dentro.
+#: Preguntar qué acepta o cómo funciona la herramienta, con las palabras del peligro dentro
+#: (23-sep-2026, octava tanda). «¿Puedo mandarte una foto de labios azules?» daba EMERGENCIA;
+#: «¿puedes saber si está deshidratado por una foto?», urgente. Ninguna es un niño: son las
+#: preguntas que escribe quien está probando el sitio — y quien evalúa una beca.
+#:
+#: A diferencia de `ASISTENTE`, ésta basta sola: nadie cuenta una urgencia diciendo «¿puedo
+#: mandarte una foto de…?». Y si la cuenta en la frase siguiente, esa frase es otra oración y
+#: este guardián no la toca.
+PREGUNTA_POR_LA_HERRAMIENTA = re.compile(
+    r"(?:puedo|podr[íi]a|se puede|es posible)\s+(?:mandar|enviar|subir|adjuntar|pasar)"
+    r"|(?:can|could) i (?:send|upload|share|attach)"
+    r"|(?:puedes?|podr[íi]as?|sabes)\s+(?:saber|ver|decirme|identificar|valorar|reconocer)"
+    r"[^.?!]{0,40}(?:por|con|en|de)\s+(?:una?\s+)?(?:foto|imagen|fotograf[íi]a|v[íi]deo|video)"
+    r"|(?:foto|imagen|fotograf[íi]a)[^.?!]{0,25}(?:para que|y me dices|y dime)"
+    r"|c[óo]mo distingu\w+|c[óo]mo diferenci\w+"
+    r"|si digo[^.?!]{0,70}(?:qu[ée] (?:haces|har[íi]as|pasa)|cu[áa]l)"
+    r"|qu[ée] (?:haces|har[íi]as) (?:si|cuando)"
+    # las otras tres escrituras, que el candado de `test_regex_scripts` exige y con razón: un
+    # padre ruso, árabe o indio también pregunta qué acepta esto antes de contarte nada
+    r"|(?:могу|можно) ли[^.?!]{0,30}(?:отправить|прислать|загрузить)"
+    r"|(?:можешь|можете)[^.?!]{0,30}(?:по|на) фото"
+    r"|чем отличается[^.?!]{0,40}от"
+    r"|هل (?:يمكنني|أستطيع)[^.?!]{0,30}(?:إرسال|رفع|تحميل)"
+    r"|هل (?:يمكنك|تستطيع)[^.?!]{0,40}(?:من|عبر) (?:صورة|الصورة)"
+    r"|ما الفرق بين"
+    r"|क्या मैं[^.?!]{0,30}(?:भेज|अपलोड)"
+    r"|क्या आप[^.?!]{0,40}(?:तस्वीर|फ़ोटो|फोटो)[^.?!]{0,20}(?:से|देख)"
+    r"|में क्या (?:फ़र्क|फर्क|अंतर) है",
+    re.I | re.U,
+)
+
+
 #: Preguntarle AL CHAT qué sabe hacer (22-sep-2026). «¿Puede decirme qué hacer ante una
 #: convulsión?» es un padre conociendo la herramienta un martes por la tarde, no una convulsión.
 #: Nunca basta por sí sola: hace falta además que la frase hable en general (`EN_GENERAL`), para
 #: que «¿me ayudas? mi hijo se ha atragantado» siga siendo lo que es.
 ASISTENTE = re.compile(
-    r"(?:me )?(?:puedes?|pod[ée]is|podr[íi]as?|podr[íi]a|sabes|sabr[íi]as)\s+"
+    # 23-sep-2026, octava tanda: «¿puedo mandarte una foto de labios azules?» daba
+    # EMERGENCIA. No es un niño morado: es un padre preguntando qué acepta la cámara.
+    r"(?:puedo|podr[íi]a|se puede)\s+(?:mandar|enviar|subir|adjuntar|pasar)\w*"
+    r"|(?:can|could) i (?:send|upload|share|attach)"
+    r"|(?:me )?(?:puedes?|pod[ée]is|podr[íi]as?|podr[íi]a|sabes|sabr[íi]as)\s+"
     r"(?:decirme|explicarme|contarme|indicarme|orientarme|ayudarme|ense[ñn]arme|darme)"
     r"|(?:can|could) you (?:tell|explain|help|show|say|give)"
     r"|(?:peux|pouvez)[- ](?:tu|vous)\s+(?:me )?(?:dire|expliquer|aider|montrer)"
@@ -571,6 +607,11 @@ EVITAR = re.compile(
 INFORMATIVA = re.compile(
     r"(?:qu[ée] (?:es|son|significa)|cu[áa]les son|c[óo]mo se (?:sabe|reconoce|detecta)"
     r"|en qu[ée] consiste"
+    # 23-sep-2026: «¿cómo distingues "hace ruido" de "le cuesta respirar"?» y «si digo "se
+    # ahoga" pero en realidad solo tose, ¿qué haces?». Las dos preguntan por el sistema.
+    r"|c[óo]mo distingu\w+|c[óo]mo diferenci\w+|qu[ée] diferencia hay"
+    r"|si digo[^.?!]{0,60}(qu[ée] (haces|har[íi]as|pasa)|cu[áa]l)"
+    r"|qu[ée] (haces|har[íi]as) si"
     r"|what (?:is|are|does)|which are|how (?:do (?:i|you) (?:know|tell)|can i tell)|signs? of what"
     r"|qu'est.ce que|quels sont|quelles sont|comment (?:savoir|reconna[îi]tre)"
     r"|was (?:ist|sind|bedeutet)|welche (?:sind|zeichen)|woran (?:erkenne|merke)"
@@ -686,7 +727,7 @@ CONDICIONAL = re.compile(
     # 22-sep-2026: «¿qué pasa si…?» pregunta por un supuesto, en las ocho lenguas
     r"(?:qu[ée] pasa|qu[ée] ocurre|what happens|que se passe|was passiert|что будет|что происходит"
     r"|ماذا يحدث|क्या होता है)[^.?!]{0,40}\b(?:si|if|s['i]|wenn|если|إذا|अगर)\b"
-    r"|(?:qu[ée] (?:hago|hacer|debo hacer|tengo que hacer)|c[óo]mo act[úu]o)[^.?!]{0,40}"
+    r"|(?:q(?:u[ée])? (?:hago|hacer|debo hacer|tengo que hacer)|c[óo]mo act[úu]o)[^.?!]{0,40}"
     r"\b(?:si|cuando)\b"
     r"|\bsi\b[^.?!]{0,60}(?:qu[ée] (?:hago|hacer|debo))"
     r"|what (?:should|do|would) i do[^.?!]{0,40}\bif\b"
@@ -828,6 +869,9 @@ def _hipotetica(texto: str, inicio: int, fin: int = 0) -> bool:
         return True
     # preguntarle al chat qué sabe hacer, hablando de un caso cualquiera: las dos cosas
     if ASISTENTE.search(frase) and EN_GENERAL.search(frase):
+        return True
+    # y preguntar qué acepta la herramienta, que basta sola (23-sep-2026)
+    if PREGUNTA_POR_LA_HERRAMIENTA.search(frase):
         return True
     # «¿El sarampión puede dar úlceras en la boca?»: el verbo de causa Y la pregunta, las dos
     # cosas, y en la oración entera porque el «puede dar» puede ir delante o detrás de la señal.

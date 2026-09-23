@@ -11,7 +11,11 @@ legítimo mientras la guía **diga que es el español**. Si no lo dice, un padre
 casa el calendario de otro país creyendo que es el suyo, y encima contradice el calendario alemán
 que la propia web publica en `/de/vaccines/de`.
 
-Las ocho guías lo dicen hoy. Este candado existe para que la novena no se olvide — es el error
+Las tablas de autoridades y gentilicios se mudaron a `pedibot.publish.paises` el 23-sep-2026,
+cuando la novena guía se olvidó y esta prueba la vio catorce horas tarde: ahora el publicador usa
+las mismas listas y puede negarse a escribirla. Esto sigue mirando lo que ya está publicado.
+
+Este candado existe para que la décima no se olvide — es el error
 que no avisa: el texto sería verdadero, estaría bien citado, y aun así estaría mal.
 """
 
@@ -22,59 +26,9 @@ import re
 
 import pytest
 
+from pedibot.publish.paises import AUTORIDAD, NOMBRES
+
 RAIZ = pathlib.Path(__file__).resolve().parents[1]
-
-#: La autoridad que firma cada fuente, y el país al que pertenece.
-AUTORIDAD = {
-    "Ministerio de Sanidad": "ES",
-    "Consejo Interterritorial": "ES",
-    "AEPap": "ES",
-    "SEUP": "ES",
-    "CDC": "US",
-    "NHS": "GB",
-    "RKI": "DE",
-    "STIKO": "DE",
-    "Santé publique France": "FR",
-    "Direção-Geral da Saúde": "PT",
-    "Ministério da Saúde": "BR",
-}
-
-#: Cómo se nombra cada país en cada idioma, **con las formas adjetivas**: la guía alemana dice
-#: «das spanische Gesundheitsministerium», no «Spanien», y una primera versión de esta comprobación
-#: la dio por culpable por buscar solo el sustantivo. Un candado que no conoce el idioma en el que
-#: mira acusa a quien no debe.
-NOMBRES: dict[str, dict[str, tuple[str, ...]]] = {
-    "ES": {
-        "es": ("España", "español", "española"),
-        "en": ("Spain", "Spanish"),
-        "fr": ("Espagne", "espagnol", "espagnole"),
-        "de": ("Spanien", "spanisch"),
-        "pt": ("Espanha", "espanhol", "espanhola"),
-        "ru": ("Испани", "испанск"),
-        "ar": ("إسبانيا", "الإسباني", "الإسبانية"),
-        "hi": ("स्पेन", "स्पेनिश", "स्पैनिश"),
-    },
-    "GB": {
-        "es": ("Reino Unido", "británic", "NHS", "inglés"),
-        "en": ("UK", "United Kingdom", "NHS", "British"),
-        "fr": ("Royaume-Uni", "NHS", "britannique"),
-        "de": ("Vereinigten Königreich", "NHS", "britisch"),
-        "pt": ("Reino Unido", "NHS", "britânic"),
-        "ru": ("Великобритани", "NHS", "британск"),
-        "ar": ("المملكة المتحدة", "NHS"),
-        "hi": ("यूनाइटेड किंगडम", "NHS", "ब्रिटिश"),
-    },
-    "US": {
-        "es": ("Estados Unidos", "CDC", "estadounidense"),
-        "en": ("United States", "CDC", "US "),
-        "fr": ("États-Unis", "CDC"),
-        "de": ("Vereinigten Staaten", "CDC", "USA"),
-        "pt": ("Estados Unidos", "CDC"),
-        "ru": ("США", "CDC"),
-        "ar": ("الولايات المتحدة", "CDC"),
-        "hi": ("संयुक्त राज्य", "CDC"),
-    },
-}
 
 
 def _guias_de_vacunas() -> list[pathlib.Path]:

@@ -1,6 +1,6 @@
 # Paediatric guidance for parents — an open catalogue
 
-**631 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**645 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -30,11 +30,11 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (267 of 631 do) |
+| `year` | where the document states one (277 of 645 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `url` | link to the original (583 of 631 are online; the rest are books and printed manuals, identified in `notes`) |
+| `url` | link to the original (597 of 645 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -42,19 +42,19 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | organisation | documents |
 |---|---|
 | WHO — World Health Organization | 214 |
-| NHS — NHS (National Health Service, England) | 158 |
+| NHS — NHS (National Health Service, England) | 168 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 119 |
 | CDC — Centers for Disease Control and Prevention (USA) | 38 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
 | SEUP — Sociedad Española de Urgencias de Pediatría | 29 |
 | Ministério da Saúde — Ministério da Saúde (Brasil) | 14 |
 | Gouvernement du Canada — Gouvernement du Canada / Government of Canada (santé publique) | 10 |
+| AEPap — Familia y Salud — Asociación Española de Pediatría de Atención Primaria | 5 |
 | AAP — American Academy of Pediatrics | 4 |
 | AEP — Asociación Española de Pediatría — Protocolos de Neonatología (Doménech, González, Rodríguez-Alarcón) | 2 |
 | Junta de Andalucía — Consejería de Salud de la Junta de Andalucía | 2 |
 | NHM — National Health Mission, Ministry of Health & Family Welfare, Government of India | 2 |
 | AEMPS — Agencia Española de Medicamentos y Productos Sanitarios — CIMA (prospecto autorizado) | 1 |
-| AEPap — Asociación Española de Pediatría de Atención Primaria | 1 |
 | College of the Canyons — College of the Canyons — Open Educational Resource (Paris, Ricardo, Rymond) | 1 |
 | Ecimed — Editorial Ciencias Médicas (La Habana) | 1 |
 | H. Niño Jesús — Hospital Infantil Universitario Niño Jesús (Casado Flores, Jiménez García) | 1 |
@@ -67,8 +67,8 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 316 |
-| Spanish (`es`) | 109 |
+| English (`en`) | 326 |
+| Spanish (`es`) | 113 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 49 |
 | Russian (`ru`) | 47 |
@@ -88,13 +88,13 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `vacunas` | 48 |
 | `desarrollo` | 37 |
 | `alimentacion` | 37 |
+| `medicamentos` | 28 |
 | `salud_mental` | 22 |
 | `orl` | 19 |
 | `neurologia` | 17 |
 | `fiebre` | 17 |
 | `recien_nacido` | 15 |
 | `alergia` | 15 |
-| `medicamentos` | 14 |
 | `crianza` | 13 |
 | `urgencias` | 13 |
 | `ojos` | 12 |
