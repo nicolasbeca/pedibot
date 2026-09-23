@@ -65,6 +65,13 @@ Y tres cosas que sólo se podían arreglar antes del primer envío, y se arregla
    escribió el nombre de su hija en la pregunta no tenía a quién pedírselo. Ahora hay botón, en
    las ocho lenguas, y la política legal lo cuenta en las ocho.
 
+### Publicado (23-sep-2026, 18:40)
+
+<https://github.com/nicolasbeca/pedibot> está **vivo y público**. Comprobado contra la API de
+GitHub, no contra la copia local: visibilidad `public`, licencia AGPL-3.0 reconocida, 516
+commits, los cien más recientes firmados con `pedibot.ai@gmail.com` y ninguno con un correo
+personal, y `.env` devolviendo 404.
+
 ### Lo preparado para que él sólo tenga que pulsar
 
 [`ops/DPGA.md`](ops/DPGA.md) lleva la solicitud de bien público digital escrita entera, indicador

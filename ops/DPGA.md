@@ -171,15 +171,20 @@ páginas están bien escritas —«calculadora dalsy» nos muestra en el puesto 
 lleva ese título exacto y 1.200 palabras—, así que lo que falta no es contenido: es que ningún
 sitio con autoridad nos enlaza todavía.
 
-### 1 · GitHub (hace falta él: crear el repositorio)
+### 1 · GitHub — **HECHO** (23-sep-2026)
 
-El repositorio local está listo: licencia AGPL-3.0, README escrito para quien llega de fuera,
-`CITATION.cff` para que sea citable, y **el historial ya revisado** — 515 commits sin una sola
-clave, sin datos de padres, y con la autoría reescrita a `pedibot.ai@gmail.com` para que los
-correos personales no queden públicos.
+<https://github.com/nicolasbeca/pedibot> — público, AGPL-3.0 reconocida por GitHub, 516 commits.
+Comprobado contra la API después de subirlo: los cien commits más recientes van firmados con
+`pedibot.ai@gmail.com` y ninguno con un correo personal; `.env` da 404, que es lo que debe dar.
 
-    # en github.com: New repository → nicolasbeca/pedibot → Public → sin README ni licencia
-    git push -u origin master
+**Queda un minuto de trabajo suyo**, en el botón «About» del repositorio (arriba a la derecha):
+
+- **Description:** `A paediatric answer for a worried parent, with the source attached. Answers only from published paediatric guidelines, and names the document every time.`
+- **Website:** `https://pedibot.xyz`
+- **Topics:** `paediatrics` `child-health` `health` `open-data` `digital-public-good` `multilingual` `rag` `global-health`
+
+No es decoración: la descripción y los topics son lo que se lee en las búsquedas de GitHub y lo
+que copian los directorios cuando enlazan un proyecto.
 
 ### 2 · Hugging Face (hace falta él: la cuenta)
 
