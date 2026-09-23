@@ -1697,6 +1697,12 @@ el publicador las usa antes de escribir el fichero y el test las importa de all�
 La regla, para la próxima vez que escriba una comprobación: **preguntar dónde puede decir que
 no**. Si la respuesta es «en la suite, mañana», la comprobación está en el sitio equivocado.
 
+**Y la corrección a mano se perdió sola, en el mismo día.** Arreglé el texto en mi copia, hice el
+commit, desplegué… y el despliegue se trae `web/content` del servidor antes de subir, así que la
+versión del servidor —la mala— volvió a pisar la mía y la guía siguió viva sin nombrar a España.
+Es literalmente lo que L227 ya decía y aun así caí. Lo que hay que hacer es escribir en el
+servidor, que es donde vive el original, y desplegar después para que se lo traiga corregido.
+
 ## L235 · Una regla medida en una sola lengua no está medida (23-sep-2026)
 
 La guardia nueva del calendario —«el país escrito manda, pero sólo cuando lo que se pide ES un

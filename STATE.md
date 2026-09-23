@@ -82,6 +82,16 @@ Medido después, con todo dentro: `source_hit` **0,953** y `triage_exact` **0,97
 de antes de tocar nada; el catálogo pasa de 631 a 645 documentos. Y la pregunta literal de la
 tanda, preguntada al motor de verdad, ya no contesta «no tengo información fiable».
 
+**Desplegado y comprobado en vivo** (16:51): el percentil de 14 kg ya dice que se sale de la
+gráfica, «se ha puesto azul» es emergencia, la foto de labios azules ya no lo es, la reacción a
+la vacuna francesa contesta de reacciones y no del calendario, «la pregunta es sobre mí» se
+contesta como lo que es, y la dosis doble de paracetamol responde con el NHS en vez de con un
+«no tengo información fiable». El memo vivo dice 645 documentos, contados solos al construir.
+
+La corrección de la guía portuguesa se perdió una vez por el camino: la hice en local, y el
+despliegue se trae `web/content` del servidor antes de subir, así que volvió la mala. Se
+reescribió en el servidor y se volvió a desplegar; ahora la página viva nombra a España.
+
 **Anotado y sin hacer:** el aviso del
 `msan_calendario` por delante de la hoja del rotavirus, la coletilla de la edad en urdu escrita
 en alfabeto árabe y la etiqueta `lang` guardada como «en» en swahili y urdu.
