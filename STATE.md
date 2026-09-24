@@ -76,6 +76,17 @@ redactor: en las lenguas de fuera se traduce aparte y a «tradúcelo al urdu» e
 en nastaliq, así que la respuesta salía en urdu latino y remataba con una línea que ese padre
 puede no leer (L242). Trece días con el arreglo a medias.
 
+**Comprobado en la base del servidor**, que es donde vive el dato: las consultas de prueba en
+italiano y en suajili se guardan como `it` y `sw`. El campo `lang` de la respuesta HTTP sigue
+diciendo el idioma de la interfaz —«es» para el italiano, porque el detector los confunde—, y
+está bien que lo haga: son dos datos distintos y sólo uno sirve para saber en qué lengua escribe
+la gente.
+
+De paso, el motor tiene **seis** `return Answer(...)` y la primera versión de esto cubría sólo el
+último: una respuesta en italiano salía por otra rama y se guardaba como española. Ahora se fija
+en el envoltorio, por donde pasan todas, con una prueba que falla si alguien vuelve a ponerlo en
+un return suelto.
+
 **Queda uno:** el aviso del calendario del Ministerio por delante de la hoja del rotavirus. Es
 orden de recuperación y merece medirse, no un parche.
 
