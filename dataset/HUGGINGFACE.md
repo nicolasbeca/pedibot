@@ -53,7 +53,8 @@ using only these documents and cites the one each sentence came from. The catalo
 from the same files the service runs on, so it is not a snapshot someone curated once — it is
 what the system is actually reading today.
 
-Code: [github.com/nicolasbeca/pedibot](https://github.com/nicolasbeca/pedibot) (AGPL-3.0).
+Code: [github.com/nicolasbeca/pedibot](https://github.com/nicolasbeca/pedibot) (AGPL-3.0),
+archived on Zenodo with DOI [10.5281/zenodo.22932517](https://doi.org/10.5281/zenodo.22932517).
 
 ## Using it
 
@@ -73,5 +74,18 @@ The catalogue — the selection, the classification, the topic taxonomy and the 
 dedicated to the public domain under [CC0 1.0](LICENSE). The documents it points at are not: each
 row carries its organisation and its `usage`, and the licence that governs a document is the one
 its organisation publishes.
+
+## Citation
+
+```bibtex
+@software{beca_pedibot,
+  author    = {Beca, Nicolás},
+  title     = {PediBot — a paediatric answer with the source attached},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22932517},
+  url       = {https://pedibot.xyz}
+}
+```
 
 ⚠️ This is a catalogue of health information, not health advice. Nothing here replaces a doctor.

@@ -194,9 +194,10 @@ que copian los directorios cuando enlazan un proyecto.
 
 ### 2 · Hugging Face (hace falta él: la cuenta)
 
-El catálogo como dataset, que es donde lo busca quien construye algo parecido.
-[`dataset/HUGGINGFACE.md`](../dataset/HUGGINGFACE.md) es la tarjeta, ya con su cabecera YAML:
-se sube tal cual como `README.md` del dataset, junto a `sources.csv` y `sources.json`.
+**Paso a paso en [`ops/HUGGINGFACE.md`](HUGGINGFACE.md)**, con cada pantalla. Unos diez minutos:
+crear el dataset con licencia `cc0-1.0` y subir tres ficheros arrastrándolos. El tercero,
+[`dataset/HUGGINGFACE.md`](../dataset/HUGGINGFACE.md), **hay que renombrarlo a `README.md`** al
+subirlo, porque es de donde Hugging Face lee la tarjeta y las etiquetas.
 
 ### 3 · Zenodo — **HECHO** (24-sep-2026)
 

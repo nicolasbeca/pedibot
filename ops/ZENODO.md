@@ -1,5 +1,9 @@
 # Zenodo, paso a paso
 
+> **Hecho el 24-sep-2026.** DOI de concepto `10.5281/zenodo.22932517`,
+> registro en <https://zenodo.org/records/22932518>. Esto queda como guion para la próxima
+> versión: a partir de ahora basta con publicar la release en GitHub, Zenodo la archiva sola.
+
 **Para qué sirve.** Zenodo es el archivo abierto del CERN. Conectado a GitHub, cada versión que
 publiques queda archivada y recibe un **DOI**: un identificador permanente que hace el proyecto
 citable en literatura académica y lo mete en los buscadores científicos. Es gratis, no pide ser
