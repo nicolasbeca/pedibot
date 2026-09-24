@@ -29,8 +29,8 @@ Contado el **2026-09-24**.
 | nombres de vacuna traducidos | **40** | config/vaccine_names.yaml |
 | documentos del catálogo público | **632** | dataset/sources.json (CC0) |
 | documentos del catálogo interno | **635** | incluye los que no se pueden redistribuir |
-| guías publicadas | **511** | web/content/*/*.md |
-| pruebas automáticas | **10.346** | `uv run pytest --collect-only` |
+| guías publicadas | **513** | web/content/*/*.md |
+| pruebas automáticas | **10.360** | `uv run pytest --collect-only` |
 | África: países con número | **54** | los 54 del continente |
 | África: con calendario | **54** | los 54 del continente |
 | África: con curva | **52** | los 54 del continente |

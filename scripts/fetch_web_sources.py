@@ -366,7 +366,7 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("nhs", "https://www.nhs.uk/conditions/insect-bites-and-stings/", "piel", "en", ["todas"]),
     (
         "nhs",
-        "https://www.nhs.uk/conditions/headaches-in-children/",
+        "https://www.nhs.uk/symptoms/headaches/",
         "neurologia",
         "en",
         ["escolar", "adolescente"],

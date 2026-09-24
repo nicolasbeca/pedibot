@@ -37,7 +37,7 @@
 {"id": "g37", "q": "Se ha desmayado en el colegio, tiene 12 años", "lang": "es", "level": "routine", "docs": ["seup_sincope"]}
 {"id": "g38", "q": "Se pone morado y deja de respirar cuando llora, tiene 1 año", "lang": "es", "level": "emergency", "docs": ["seup_espasmos_sollozo"], "rules": ["severe_breathing"], "note": "acceptable: breath-holding spells match the severe breathing rule"}
 {"id": "g39", "q": "Dolor de cabeza frecuente, tiene 10 años", "lang": "es", "level": "routine", "docs": ["seup_cefalea"]}
-{"id": "g40", "q": "Headache and vomiting several times, he is 8", "lang": "en", "level": "urgent", "docs": ["seup_cefalea", "nhs_en_headaches_in_children"], "rules": ["vomiting_headache"]}
+{"id": "g40", "q": "Headache and vomiting several times, he is 8", "lang": "en", "level": "urgent", "docs": ["seup_cefalea", "nhs_en_headaches"], "rules": ["vomiting_headache"]}
 {"id": "g41", "q": "Está muy adormilado y cuesta despertarle, tiene 3 años", "lang": "es", "level": "urgent", "docs": ["seup_acudir_urgencias", "seup_fiebre"], "rules": ["drowsy_irritable"]}
 {"id": "g42", "q": "Tiene manchas rojas que no desaparecen al presionar", "lang": "es", "level": "emergency", "docs": ["seup_fiebre", "seup_acudir_urgencias"], "rules": ["petechiae_fever"]}
 {"id": "g43", "q": "Golpe de calor: ha estado al sol y está mareado y con 39", "lang": "es", "level": "routine", "docs": ["seup_golpe_calor"]}

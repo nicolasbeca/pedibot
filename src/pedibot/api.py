@@ -383,7 +383,9 @@ def create_app(
         latency = int((time.perf_counter() - t0) * 1000)
         rec = AnswerRecord(
             session=session,
-            lang=a.lang,
+            # la lengua en que lo lee el padre, no aquella en la que se buscó: una respuesta en
+            # suajili se apuntaba como inglesa y borraba la única señal de que alguien la pedía
+            lang=a.written_lang,
             country=body.country,
             question=body.question,
             answer=a.render_debug(),

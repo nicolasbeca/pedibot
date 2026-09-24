@@ -519,6 +519,66 @@ ASK_AGE = {
 }
 
 
+#: Las lenguas que el sitio NO habla pero en las que sí contesta, con su código ISO 639-1.
+#: No es una lista de idiomas soportados: es para que el registro anónimo diga la verdad sobre en
+#: qué lengua escribió el padre, que es el dato que dice en cuál merece la pena crecer.
+OTRAS_LENGUAS = {
+    "swahili": "sw",
+    "urdu": "ur",
+    "bengali": "bn",
+    "italian": "it",
+    "polish": "pl",
+    "turkish": "tr",
+    "romanian": "ro",
+    "ukrainian": "uk",
+    "chinese": "zh",
+    "mandarin": "zh",
+    "japanese": "ja",
+    "korean": "ko",
+    "dutch": "nl",
+    "greek": "el",
+    "hebrew": "he",
+    "persian": "fa",
+    "farsi": "fa",
+    "punjabi": "pa",
+    "tamil": "ta",
+    "telugu": "te",
+    "marathi": "mr",
+    "gujarati": "gu",
+    "vietnamese": "vi",
+    "thai": "th",
+    "indonesian": "id",
+    "malay": "ms",
+    "tagalog": "tl",
+    "filipino": "tl",
+    "amharic": "am",
+    "somali": "so",
+    "hausa": "ha",
+    "yoruba": "yo",
+    "igbo": "ig",
+    "zulu": "zu",
+    "afrikaans": "af",
+    "wolof": "wo",
+    "lingala": "ln",
+    "kinyarwanda": "rw",
+    "nepali": "ne",
+    "sinhala": "si",
+    "pashto": "ps",
+    "kurdish": "ku",
+    "albanian": "sq",
+    "serbian": "sr",
+    "croatian": "hr",
+    "bulgarian": "bg",
+    "czech": "cs",
+    "slovak": "sk",
+    "hungarian": "hu",
+    "swedish": "sv",
+    "norwegian": "no",
+    "danish": "da",
+    "finnish": "fi",
+}
+
+
 @dataclass
 class Answer:
     text: str
@@ -544,6 +604,24 @@ class Answer:
     # Fiebre sin edad: se ha respondido con la regla del lactante por delante, y se pide la
     # edad para afinar. El chat pinta los botones de edad DEBAJO de la respuesta.
     ask_age: bool = False
+    #: La lengua en la que se ESCRIBIÓ la respuesta, cuando no es la de búsqueda. 24-sep-2026:
+    #: una consulta en suajili se buscaba en inglés —el corpus está en inglés— y se apuntaba
+    #: «en» en el registro aunque la respuesta fuera en suajili. Ese campo es el único sitio
+    #: donde se ve en qué lenguas escribe la gente, y decía que nadie escribía en suajili.
+    wrote_in: str | None = None
+
+    @property
+    def written_lang(self) -> str:
+        """El código de la lengua en la que lo lee el padre.
+
+        Sin nada dicho, es el idioma de búsqueda. Con una lengua que el sitio no habla, su
+        código ISO; y si tampoco lo conocemos, su nombre en minúsculas, que es feo pero cierto:
+        un registro con «quechua» se puede contar, y uno con «en» esconde la pregunta.
+        """
+        if not self.wrote_in:
+            return self.lang
+        nombre = self.wrote_in.strip().lower()
+        return OTRAS_LENGUAS.get(nombre, nombre)
 
     @property
     def clean_text(self) -> str:
@@ -867,6 +945,24 @@ ESCRITURA_LATINA = frozenset(
         "Guarani",
     }
 )
+
+
+def instruccion_de_alfabeto(sistema: str, idioma: str, latino: bool) -> str:
+    """La instrucción de traducir, con el alfabeto del padre dentro cuando hace falta.
+
+    24-sep-2026. El redactor sabe desde L231 que a quien escribe «bukhar hai» hay que
+    contestarle en alfabeto latino. La coletilla del final no lo sabía: en las lenguas que el
+    sitio no habla se traduce con el modelo, y a «tradúcelo al urdu» contesta en nastaliq. La
+    respuesta salía en urdu latino y remataba con una línea que ese padre puede no leer.
+
+    A una lengua que ya se escribe en latino no se le dice nada: sería ruido en el prompt.
+    """
+    if not latino or idioma in ESCRITURA_LATINA:
+        return sistema
+    return (
+        sistema + " The reader wrote in the Latin alphabet, so write the translation in the Latin "
+        "alphabet too, even if this language is normally written in another script."
+    )
 
 
 def escritura_latina(texto: str) -> bool:
@@ -1425,7 +1521,7 @@ class Engine:
                 a.llm.cost_usd += usd
         return a
 
-    def _traduce(self, texto: str, idioma: str, ctx: dict) -> str:
+    def _traduce(self, texto: str, idioma: str, ctx: dict, latino: bool = False) -> str:
         """Una frase FIJA nuestra a una lengua que el sitio no tiene, o la frase tal cual.
 
         Sólo pasan por aquí las que no llevan contenido médico nuevo ni cifras —«no tengo
@@ -1437,7 +1533,10 @@ class Engine:
             return texto
         try:
             r = self.llm.complete(
-                TRADUCE, f"LANGUAGE: {idioma}\n\n{texto}", temperature=0.0, max_tokens=500
+                instruccion_de_alfabeto(TRADUCE, idioma, latino),
+                f"LANGUAGE: {idioma}\n\n{texto}",
+                temperature=0.0,
+                max_tokens=500,
             )
         except Exception:  # noqa: BLE001 — sin traducción, la frase en inglés es mejor que nada
             return texto
@@ -2238,7 +2337,9 @@ class Engine:
         text = result.text.strip()
         if ask_age:
             text += "\n\n" + (
-                self._traduce(AGE_REFINES["en"], ctx["fuera"], ctx)
+                self._traduce(
+                    AGE_REFINES["en"], ctx["fuera"], ctx, latino=escritura_latina(context_text)
+                )
                 if ctx["fuera"]
                 else AGE_REFINES[lang]
             )
@@ -2257,4 +2358,7 @@ class Engine:
             problems=problems,
             tool=tool,
             ask_age=ask_age,
+            # en qué lengua se escribió, cuando no es una de las ocho: el registro anónimo es el
+            # único sitio donde se ve que alguien escribe en suajili (24-sep-2026)
+            wrote_in=(answer_lang if answer_lang != LANGUAGE_NAME.get(lang, "English") else None),
         )

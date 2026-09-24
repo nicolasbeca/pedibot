@@ -58,6 +58,29 @@ generales. Cambió de tema y no de sitio, y la referencian una regla de alarma y
 dorado: merece decisión, no reemplazo automático. Lo mismo con el VIS de neumococo en hindi,
 que pasó de `pcv13` a `pcv`.
 
+## 24-sep-2026 (tarde) · lo que quedaba anotado, rematado
+
+Tres cosas llevaban días en la lista de «anotado y sin hacer». Dos están hechas.
+
+**El registro decía que nadie escribía en suajili.** Una consulta en una lengua fuera de las
+ocho se busca en inglés —el corpus está en inglés— y se apuntaba «en», aunque la respuesta
+fuera en suajili o en urdu. Ese campo es el único sitio donde se ve en qué lenguas escribe la
+gente, o sea el dato que diría en cuál merece la pena crecer, y decía cero (L241). Ahora `lang`
+sigue siendo la lengua de la búsqueda —que es lo que explica qué fuentes salieron— y
+`written_lang` dice en cuál se escribió. Una lengua que no conocemos se guarda con su nombre,
+«quechua», en vez de con un «en» corto y falso.
+
+**La coletilla de la edad ya respeta el alfabeto.** L231 arregló que a quien escribe «bukhar
+hai» se le conteste en alfabeto latino… en el cuerpo. La coda del final no pasa por el
+redactor: en las lenguas de fuera se traduce aparte y a «tradúcelo al urdu» el modelo contesta
+en nastaliq, así que la respuesta salía en urdu latino y remataba con una línea que ese padre
+puede no leer (L242). Trece días con el arreglo a medias.
+
+**Queda uno:** el aviso del calendario del Ministerio por delante de la hoja del rotavirus. Es
+orden de recuperación y merece medirse, no un parche.
+
+Y dos hojas nuevas que publicó el servidor de madrugada: **513 guías**.
+
 ## 23-sep-2026 (noche) · lo que dicen los números de visitas, y el giro que provocan
 
 El operador preguntó qué más se podía hacer. Antes de opinar, se midió lo vivo:

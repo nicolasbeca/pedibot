@@ -441,10 +441,13 @@ sources:
     - lactante
     - preescolar
     - escolar
-    url: https://www.immunize.org/wp-content/uploads/vis/hindi_pcv13.pdf
+    url: https://www.immunize.org/wp-content/uploads/vis/hindi_pcv.pdf
     notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
       la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
-      como citar_solo. enfermedad neumocócica.
+      como citar_solo. enfermedad neumocócica. 24-sep-2026:Immunize.org renombró el fichero de
+      hindi_pcv13.pdf a hindi_pcv.pdf y el texto es byte a byte el mismo (comprobado), así que sólo
+      cambia el enlace; el doc_id y el fichero local conservan el nombre viejo a propósito, para no
+      romper lo que ya está indexado.
   - doc_id: cdcvis_hi_rotavirus
     file: vis/vis_hindi_rotavirus.pdf
     org: CDC

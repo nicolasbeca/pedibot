@@ -1823,3 +1823,39 @@ convierte las tres decisiones en un gesto.
 
 La regla general: **cuando un sistema tiene una lista y una copia de la lista, hay que
 comprobar las dos direcciones**. Yo había escrito una y me quedé tranquilo.
+
+## L241 · El registro decía que nadie escribía en suajili (24-sep-2026)
+
+Las consultas se guardan de forma anónima con su idioma, y ese campo es el único sitio donde se
+ve en qué lenguas escribe la gente. Para las ocho que el sitio habla decía la verdad. Para el
+resto, no: el motor busca en inglés —porque el corpus está en inglés— y **apuntaba «en» aunque
+hubiera contestado en suajili o en urdu**.
+
+Lo que se pierde ahí no es un detalle de registro. Es la única señal de que alguien está
+escribiendo en una lengua que la web no ofrece todavía, o sea **el dato que diría en qué idioma
+merece la pena crecer**. Y decía cero.
+
+`lang` sigue siendo la lengua con la que se buscó, porque eso explica qué fuentes salieron;
+`written_lang` dice en cuál se escribió la respuesta, que es lo que leyó el padre. Y una lengua
+que no conocemos se guarda con su nombre —«quechua»— en vez de con un «en» corto y falso: un
+registro feo se puede contar, uno cómodo esconde la pregunta.
+
+La regla: **cuando un campo sirve para tomar decisiones, hay que preguntarse qué dice cuando el
+caso se sale de lo previsto**. Si en ese caso miente en la dirección cómoda —«todo es inglés»—,
+la decisión que sostiene ya está tomada de antemano.
+
+## L242 · Arreglé el texto y no el remate (24-sep-2026)
+
+L231 fue: quien escribe «bukhar hai lekin bacha khel raha hai» teclea urdu con alfabeto latino y
+puede no leer nastaliq, así que se le contesta en el alfabeto en el que escribió. Lo arreglé en
+el redactor y lo di por hecho.
+
+La coletilla del final —«¿qué edad tiene? con la edad afino la respuesta»— no pasa por el
+redactor: en las lenguas que el sitio no habla se traduce aparte, con el modelo, y a «tradúcelo
+al urdu» contesta en nastaliq. La respuesta salía entera en urdu latino y **remataba con una
+línea que ese padre puede no leer**.
+
+Un arreglo de idioma no se acaba en el sitio donde se escribe el cuerpo. Hay que recorrer todo
+lo que acaba delante del lector —codas, botones, avisos, plantillas— y preguntarse si cada
+trozo sabe lo mismo que sabe el redactor. Aquí eran dos frases y una de ellas se me escapó
+trece días.

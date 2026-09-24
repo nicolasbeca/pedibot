@@ -245,7 +245,7 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
     },
     "nosebleed": {"docs": ["nhs_en_nosebleed"], "query": "nosebleed children how to stop"},
     "headache_en": {
-        "docs": ["nhs_en_headaches_in_children", "mlp_en_headache", "seup_cefalea"],
+        "docs": ["nhs_en_headaches", "mlp_en_headache", "seup_cefalea"],
         "query": "headaches children when to worry",
     },
     "bedwetting": {

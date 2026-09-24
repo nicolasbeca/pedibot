@@ -1119,7 +1119,7 @@ rules:
 # dolor de cabeza al despertarse todos los días.
 - id: headache_wakes_child
   level: urgent
-  source: nhs_en_headaches_in_children
+  source: nhs_en_headaches
   reason_es: "Dolor de cabeza que despierta de noche o está al despertarse: que lo vea un médico"
   reason_en: "A headache that wakes the child at night or is there on waking: get it seen"
   reason_fr: "Mal de tête qui réveille la nuit ou présent au réveil : à faire examiner"

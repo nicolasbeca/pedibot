@@ -939,8 +939,8 @@ sources:
   - todas
   url: https://www.nhs.uk/conditions/insect-bites-and-stings/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-02'
-- doc_id: nhs_en_headaches_in_children
-  file: web/nhs_en_headaches_in_children.html
+- doc_id: nhs_en_headaches
+  file: web/nhs_en_headaches.html
   org: NHS
   org_full: NHS (National Health Service, England)
   title: Headaches
@@ -953,8 +953,8 @@ sources:
   age_groups:
   - escolar
   - adolescente
-  url: https://www.nhs.uk/conditions/headaches-in-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-02'
+  url: https://www.nhs.uk/symptoms/headaches/
+  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-24'
 - doc_id: nhs_en_head_lice_and_nits
   file: web/nhs_en_head_lice_and_nits.html
   org: NHS
