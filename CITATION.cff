@@ -6,6 +6,10 @@ authors:
   - family-names: Beca
     given-names: Nicolás
     email: pedibot.ai@gmail.com
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22932517"
+    description: "The concept DOI: always resolves to the latest version."
 repository-code: "https://github.com/nicolasbeca/pedibot"
 url: "https://pedibot.xyz"
 abstract: >-

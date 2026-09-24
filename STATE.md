@@ -72,6 +72,18 @@ GitHub, no contra la copia local: visibilidad `public`, licencia AGPL-3.0 recono
 commits, los cien más recientes firmados con `pedibot.ai@gmail.com` y ninguno con un correo
 personal, y `.env` devolviendo 404.
 
+### Con DOI (24-sep-2026)
+
+<https://zenodo.org/records/22932518>. El operador conectó Zenodo, activó el repositorio y
+publicó la versión `v2.0.0`; el archivado tardó menos de un minuto y respetó entero el
+`.zenodo.json` —título, autoría, licencia `agpl-3.0-or-later`, tipo *Software*, palabras clave y
+los enlaces a la web y al catálogo—, con la versión tomada de la etiqueta, que era la idea.
+
+**DOI de concepto: `10.5281/zenodo.22932517`**, que es el que apunta siempre a la última versión
+y el que se usa en todas partes. Ya está en el distintivo del README, en `CITATION.cff` y en la
+respuesta del indicador 3 de la solicitud de bien público digital, donde un registro con fecha,
+autoría y licencia que no depende de nosotros vale más que una frase.
+
 ### Lo preparado para que él sólo tenga que pulsar
 
 [`ops/DPGA.md`](ops/DPGA.md) lleva la solicitud de bien público digital escrita entera, indicador

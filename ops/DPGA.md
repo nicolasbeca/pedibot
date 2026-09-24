@@ -53,6 +53,12 @@ Copyright © 2026 Nicolás Beca, declarado en el [README](../README.md#ownership
 PediBot y el logotipo son del autor y no van con la licencia: el código se puede bifurcar, la
 marca no. Contacto público: `pedibot.ai@gmail.com`, que aparece en la web y firma el dominio.
 
+El proyecto está **archivado en Zenodo (CERN) con DOI**, que para este indicador vale más que
+cualquier frase: es un registro con fecha, autoría y licencia que no depende de nosotros.
+
+- DOI de concepto (siempre la última versión): **10.5281/zenodo.22932517** — <https://doi.org/10.5281/zenodo.22932517>
+- Versión 2.0.0, archivada el 24-sep-2026: **10.5281/zenodo.22932518**
+
 ## 4 · Independencia de plataforma
 
 Nada de lo que hace PediBot depende de un servicio cerrado:
@@ -192,13 +198,15 @@ El catálogo como dataset, que es donde lo busca quien construye algo parecido.
 [`dataset/HUGGINGFACE.md`](../dataset/HUGGINGFACE.md) es la tarjeta, ya con su cabecera YAML:
 se sube tal cual como `README.md` del dataset, junto a `sources.csv` y `sources.json`.
 
-### 3 · Zenodo (hace falta él: conectar la cuenta)
+### 3 · Zenodo — **HECHO** (24-sep-2026)
 
-**Paso a paso escrito aparte, en [`ops/ZENODO.md`](ZENODO.md)**, con la pantalla exacta de cada
-clic. En corto: conectar la cuenta, activar el interruptor de `pedibot`, y **después** publicar
-la versión en GitHub — ese orden, porque Zenodo archiva lo que se publica a partir de la
-activación. El `.zenodo.json` ya está en el repositorio con los metadatos comprobados contra el
-vocabulario de Zenodo.
+<https://zenodo.org/records/22932518> — archivado, con el `.zenodo.json` respetado entero:
+título, autoría, licencia `agpl-3.0-or-later`, tipo *Software*, palabras clave y los enlaces a la
+web y al catálogo. La versión la tomó de la etiqueta `v2.0.0`, como estaba previsto.
+
+**El DOI que se usa en todas partes es el de concepto, 10.5281/zenodo.22932517**, porque apunta
+siempre a la última versión; el de la 2.0.0 en concreto es 10.5281/zenodo.22932518. El paso a paso,
+por si hay que repetirlo en la próxima versión, sigue en [`ops/ZENODO.md`](ZENODO.md).
 
 ### Lo que NO hay que hacer
 

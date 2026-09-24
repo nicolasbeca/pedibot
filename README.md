@@ -3,6 +3,9 @@
 **A paediatric answer for a worried parent, with the source attached.** Live at
 [pedibot.xyz](https://pedibot.xyz) — free, no account, eight languages.
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22932517.svg)](https://doi.org/10.5281/zenodo.22932517)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
+
 A parent whose child has a fever at eleven at night gets a search results page. PediBot gives
 them the paragraph the guideline actually writes about that, in their own language, with the
 document it came from named and linked. When nothing in its library supports an answer, it says
