@@ -20,6 +20,44 @@
   permisos a Immunize.org y Vikaspedia, tuits nuevos (poco a poco) y propuesta a ICTworks.
 - **Esperando:** respuestas de esos cinco; MetaDAO hasta el 2-oct.
 
+## 24-sep-2026 · trece documentos que eran cuatro, y una retirada que no retiraba
+
+Repaso de lo pendiente en la web. El barrido de enlaces internos salió limpio —ninguno roto en
+2.769 páginas—, pero el informe de fuentes traía tres cosas y al tirar del hilo apareció algo
+más gordo.
+
+**El NHS ha unificado sus páginas de medicamentos.** `/medicines/paracetamol-for-children/about-…`
+y sus cinco hermanas ya no existen: redirigen todas a una sola página. El recolector las siguió
+sin rechistar y guardó **seis ficheros byte a byte idénticos** del paracetamol, seis del
+ibuprofeno y uno más de MedlinePlus, cuya hoja de enuresis hoy es la de desarrollo infantil.
+Trece documentos que eran cuatro, y diez de ellos los traje yo ayer.
+
+Lo que hacía, que es peor que ocupar sitio: **el índice los puntuaba por separado**. Una pregunta
+sobre paracetamol recuperaba tres pasajes idénticos que desplazaban a tres fuentes distintas, y
+la respuesta citaba tres veces la misma hoja. Se vio ayer en una búsqueda —los tres primeros
+resultados eran el mismo párrafo— y no se interpretó (L239).
+
+**Y al quitarlos apareció lo serio: retirar una fuente no la retiraba.** Quitadas del recolector,
+borrados sus ficheros, regenerado el catálogo, reindexado con `--force`… y las trece seguían
+dentro, citables, porque sus `.jsonl` seguían en `index/chunks/` y nadie los miraba. El candado
+que existía comprueba que el catálogo no prometa lo que el índice no tiene; faltaba la dirección
+contraria, que es la que tiene consecuencias legales (L240).
+
+**Además, 37 fuentes funcionaban por redirección** —hace tres días eran 22—. Brasil movió las
+quince suyas en bloque (reorganizaron su sitio por letra inicial) y varias del NHS cambiaron de
+sección. Actualizadas las 23 que mantienen contenido y nombre; comprobado que las nuevas
+responden directo, sin redirección.
+
+**Resultado:** el corpus pasa de 645 a **632 documentos reales**, de 9.360 a 9.203 pasajes.
+`source_hit` **0,953** y `triage_exact` **0,975**, los mismos: quitar ruido no cuesta nada y la
+recuperación mejora donde importa —la pregunta de la dosis doble ahora trae la sección que
+responde y una guía distinta, en vez de tres copias—.
+
+**Sin tocar, a propósito:** la hoja de cefalea infantil del NHS, que redirige a la de cefaleas
+generales. Cambió de tema y no de sitio, y la referencian una regla de alarma y el conjunto
+dorado: merece decisión, no reemplazo automático. Lo mismo con el VIS de neumococo en hindi,
+que pasó de `pcv13` a `pcv`.
+
 ## 23-sep-2026 (noche) · lo que dicen los números de visitas, y el giro que provocan
 
 El operador preguntó qué más se podía hacer. Antes de opinar, se midió lo vivo:

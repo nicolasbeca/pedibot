@@ -1782,3 +1782,44 @@ de caducidad en el mismo instante**: el primer envío a GitHub.
 
 Vale para cualquier cosa que se abra al público: **la lista de lo irreversible se escribe antes,
 no después**. Y el repositorio remoto no existía todavía, que fue la suerte de la tarde.
+
+## L239 · Seis copias de la misma hoja, y yo las traje ayer (24-sep-2026)
+
+El NHS ha unificado sus páginas de medicamentos. `/medicines/paracetamol-for-children/about-…/`,
+`/…/side-effects-of-…/`, `/…/common-questions-about-…/` **ya no existen como páginas separadas**:
+todas redirigen a `/medicines/paracetamol-for-children/`. El recolector las siguió sin rechistar
+y guardó **seis ficheros byte a byte idénticos** del paracetamol, seis del ibuprofeno, y uno más
+de MedlinePlus cuya hoja de enuresis hoy es la de desarrollo infantil.
+
+Trece documentos que eran cuatro.
+
+Lo peor no es que sobren. Es que **el índice los puntúa por separado**: una pregunta sobre
+paracetamol recuperaba tres pasajes idénticos que desplazaban a tres fuentes distintas, y la
+respuesta citaba «[1] [2] [3]» siendo la misma hoja tres veces. Lo vi ayer —los tres primeros
+resultados de una búsqueda eran el mismo párrafo— y no lo interpreté: me pareció que el corpus
+estaba de acuerdo consigo mismo.
+
+**Un fichero que llega por una redirección no avisa de nada. El hash sí**, y cuesta cuatro
+líneas: `test_no_two_sources_are_the_same_page.py`.
+
+Y la lección de fondo, que vale para cualquier recolector: **200 no significa que exista lo que
+pediste**. Significa que el servidor te ha dado algo. Lo que pediste puede llevar años muerto.
+
+## L240 · Retirar una fuente no la retiraba (24-sep-2026)
+
+Al limpiar esos trece duplicados: se quitaron del recolector, se borraron sus ficheros, se
+regeneró el catálogo y se reindexó con `--force`. El índice siguió diciendo 645 documentos.
+Las trece seguían dentro, con sus pasajes, disponibles para ser citadas.
+
+`--force` rehace lo que encuentra; no borra lo que ya no está. Los `.jsonl` de cada documento
+seguían en `index/chunks/` y `load_all_chunks` los cargaba todos sin preguntarle a nadie.
+
+El candado que existía —`test_index_has_no_orphans`— comprueba que **el catálogo no prometa lo
+que el índice no tiene**. Faltaba la otra dirección, que es la que tiene consecuencias legales:
+**que el índice no guarde lo que el catálogo ya no tiene**. Una fuente se retira por tres
+motivos —su licencia no permite redistribuirla, el organismo la retiró, o ha dejado de ser
+cierta— y en los tres el documento tiene que desaparecer de verdad. Un índice que la conserva
+convierte las tres decisiones en un gesto.
+
+La regla general: **cuando un sistema tiene una lista y una copia de la lista, hay que
+comprobar las dos direcciones**. Yo había escrito una y me quedé tranquilo.

@@ -385,9 +385,25 @@ def run_ingest(
     return reports
 
 
-def load_all_chunks(out_dir: Path) -> list[Chunk]:
+def load_all_chunks(out_dir: Path, catalogo: set[str] | None = None) -> list[Chunk]:
+    """Los pasajes que van al índice, y sólo los de documentos que siguen en el catálogo.
+
+    24-sep-2026. Retirar una fuente no la retiraba: se quitaba del catálogo, se borraba su
+    fichero, se reindexaba con `--force`… y seguía dentro, citable, porque su `.jsonl` seguía
+    aquí y nadie lo miraba. Se vio al quitar trece duplicados, pero el caso que importa es el
+    otro: una fuente se retira porque su licencia no permite redistribuirla, porque el organismo
+    la retiró o porque ha dejado de ser cierta, y en los tres el documento tiene que desaparecer
+    de verdad.
+
+    El `.jsonl` huérfano se borra además de ignorarse, para que no reviva en la siguiente
+    ingesta que se haga sin catálogo a mano.
+    """
     chunks: list[Chunk] = []
     for f in sorted((out_dir / "chunks").glob("*.jsonl")):
+        if catalogo is not None and f.stem not in catalogo:
+            logger.info("{}: retirado del catálogo, se borra del índice", f.stem)
+            f.unlink()
+            continue
         with f.open(encoding="utf-8") as fh:
             for line in fh:
                 if line.strip():

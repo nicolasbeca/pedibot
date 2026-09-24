@@ -26,7 +26,7 @@ configs:
 
 # Paediatric guidance for parents — an open catalogue
 
-**645 documents from 21 organisations**, in 8 languages, each classified by topic and linked to
+**632 documents from 21 organisations**, in 8 languages, each classified by topic and linked to
 its original. CC0: take it.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about a rash,

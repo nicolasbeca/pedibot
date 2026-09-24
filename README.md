@@ -21,7 +21,7 @@ Every number below is counted from the files in this repository, never typed by 
 [DATOS.md](DATOS.md), which is generated, and `scripts/check_docs.py`, which fails the build if a
 document repeats one of them wrongly.
 
-- **645 paediatric documents** from paediatric societies, health ministries and the WHO, each
+- **632 paediatric documents** from paediatric societies, health ministries and the WHO, each
   with its licence read and recorded, and each answer cites the ones it used.
 - **Emergency numbers for 90 countries**, each from the page of the body that publishes it. In
   eight of them the source states that no national service exists, and the page says that rather

@@ -110,7 +110,8 @@ def ingest(
         if r.status in ("error", "no_text"):
             typer.echo(f"  ! {r.file}: {r.status} {r.detail}")
     if not no_index:
-        chunks = load_all_chunks(out)
+        # con el catálogo delante, para que lo retirado se vaya de verdad (24-sep-2026)
+        chunks = load_all_chunks(out, catalogo={r.doc_id for r in reports if r.doc_id != "?"})
         n = build_index(chunks, s.index_db_path)
         typer.echo(f"index: {n} chunks → {s.index_db_path}  {dump_index_stats(s.index_db_path)}")
 

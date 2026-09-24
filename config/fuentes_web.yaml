@@ -699,186 +699,6 @@ sources:
   - lactante
   url: https://www.nhs.uk/baby/caring-for-a-newborn/sudden-infant-death-syndrome-sids/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
-- doc_id: nhs_en_about_ibuprofen_for_children
-  file: web/nhs_en_about_ibuprofen_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Ibuprofen for children - Common brand: Nurofen for children'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/ibuprofen-for-children/about-ibuprofen-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
-- doc_id: nhs_en_who_can_and_cannot_take_ibuprofen_for_children
-  file: web/nhs_en_who_can_and_cannot_take_ibuprofen_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Ibuprofen for children - Common brand: Nurofen for children'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/ibuprofen-for-children/who-can-and-cannot-take-ibuprofen-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
-- doc_id: nhs_en_how_and_when_to_give_ibuprofen_for_children
-  file: web/nhs_en_how_and_when_to_give_ibuprofen_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Ibuprofen for children - Common brand: Nurofen for children'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/ibuprofen-for-children/how-and-when-to-give-ibuprofen-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
-- doc_id: nhs_en_side_effects_of_ibuprofen_for_children
-  file: web/nhs_en_side_effects_of_ibuprofen_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Ibuprofen for children - Common brand: Nurofen for children'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/ibuprofen-for-children/side-effects-of-ibuprofen-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
-- doc_id: nhs_en_taking_ibuprofen_for_children_with_other_medicines_and_herbal_s
-  file: web/nhs_en_taking_ibuprofen_for_children_with_other_medicines_and_herbal_s.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Ibuprofen for children - Common brand: Nurofen for children'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/ibuprofen-for-children/taking-ibuprofen-for-children-with-other-medicines-and-herbal-supplements/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
-- doc_id: nhs_en_common_questions_about_ibuprofen_for_children
-  file: web/nhs_en_common_questions_about_ibuprofen_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Ibuprofen for children - Common brand: Nurofen for children'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/ibuprofen-for-children/common-questions-about-ibuprofen-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-16'
-- doc_id: nhs_en_about_paracetamol_for_children
-  file: web/nhs_en_about_paracetamol_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Paracetamol for children (Calpol) - Other common brands: Panadol'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/paracetamol-for-children/about-paracetamol-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-23'
-- doc_id: nhs_en_who_can_and_cannot_take_paracetamol_for_children
-  file: web/nhs_en_who_can_and_cannot_take_paracetamol_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Paracetamol for children (Calpol) - Other common brands: Panadol'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/paracetamol-for-children/who-can-and-cannot-take-paracetamol-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-23'
-- doc_id: nhs_en_how_and_when_to_give_paracetamol_for_children
-  file: web/nhs_en_how_and_when_to_give_paracetamol_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Paracetamol for children (Calpol) - Other common brands: Panadol'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/paracetamol-for-children/how-and-when-to-give-paracetamol-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-23'
-- doc_id: nhs_en_side_effects_of_paracetamol_for_children
-  file: web/nhs_en_side_effects_of_paracetamol_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Paracetamol for children (Calpol) - Other common brands: Panadol'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/paracetamol-for-children/side-effects-of-paracetamol-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-23'
-- doc_id: nhs_en_taking_paracetamol_for_children_with_other_medicines_and_herbal
-  file: web/nhs_en_taking_paracetamol_for_children_with_other_medicines_and_herbal.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Paracetamol for children (Calpol) - Other common brands: Panadol'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/paracetamol-for-children/taking-paracetamol-for-children-with-other-medicines-and-herbal-supplements/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-23'
-- doc_id: nhs_en_common_questions_about_paracetamol_for_children
-  file: web/nhs_en_common_questions_about_paracetamol_for_children.html
-  org: NHS
-  org_full: NHS (National Health Service, England)
-  title: 'Paracetamol for children (Calpol) - Other common brands: Panadol'
-  year: 2025
-  lang: en
-  topic: medicamentos
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - todas
-  url: https://www.nhs.uk/medicines/paracetamol-for-children/common-questions-about-paracetamol-for-children/
-  notes: 'licence: Open Government Licence v3.0; fetched 2026-09-23'
 - doc_id: nhs_en_about_amoxicillin
   file: web/nhs_en_about_amoxicillin.html
   org: NHS
@@ -2173,7 +1993,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/snoring/
+  url: https://www.nhs.uk/symptoms/snoring/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: nhs_en_sleep_apnoea
   file: web/nhs_en_sleep_apnoea.html
@@ -2203,7 +2023,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/night-sweats/
+  url: https://www.nhs.uk/symptoms/night-sweats/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: nhs_en_temper_tantrums
   file: web/nhs_en_temper_tantrums.html
@@ -2266,7 +2086,7 @@ sources:
   age_groups:
   - preescolar
   - escolar
-  url: https://www.nhs.uk/conditions/soiling-child-pooing-their-pants/
+  url: https://www.nhs.uk/symptoms/soiling-child-pooing-their-pants/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: nhs_en_anal_fissure
   file: web/nhs_en_anal_fissure.html
@@ -2328,7 +2148,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/double-vision/
+  url: https://www.nhs.uk/symptoms/double-vision/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: nhs_en_eye_tests_for_children
   file: web/nhs_en_eye_tests_for_children.html
@@ -2358,7 +2178,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/toothache/
+  url: https://www.nhs.uk/symptoms/toothache/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: nhs_en_dental_abscess
   file: web/nhs_en_dental_abscess.html
@@ -2404,7 +2224,7 @@ sources:
   age_groups:
   - lactante
   - preescolar
-  url: https://www.nhs.uk/conditions/baby/health/medicines-for-babies-and-children/
+  url: https://www.nhs.uk/baby/health/medicines-for-babies-and-children/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: nhs_en_antibiotics
   file: web/nhs_en_antibiotics.html
@@ -2419,7 +2239,7 @@ sources:
   usage: publico
   age_groups:
   - todas
-  url: https://www.nhs.uk/conditions/antibiotics/
+  url: https://www.nhs.uk/medicines/antibiotics/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: nhs_en_scoliosis
   file: web/nhs_en_scoliosis.html
@@ -3073,7 +2893,7 @@ sources:
   usage: publico
   age_groups:
   - lactante
-  url: https://www.nhs.uk/conditions/baby/breastfeeding-and-bottle-feeding/bottle-feeding/making-up-baby-formula/
+  url: https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/making-up-baby-formula/
   notes: 'licence: Open Government Licence v3.0; fetched 2026-09-22'
 - doc_id: mlp_en_fever
   file: web/mlp_en_fever.html
@@ -3813,22 +3633,6 @@ sources:
   - preescolar
   - escolar
   url: https://medlineplus.gov/pinworms.html
-  notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02'
-- doc_id: mlp_en_bedwetting
-  file: web/mlp_en_bedwetting.html
-  org: MedlinePlus
-  org_full: MedlinePlus (U.S. National Library of Medicine)
-  title: Child Development
-  year: 2025
-  lang: en
-  topic: desarrollo
-  doc_type: hoja_padres
-  evidence: organismo_publico
-  usage: publico
-  age_groups:
-  - preescolar
-  - escolar
-  url: https://medlineplus.gov/bedwetting.html
   notes: 'licence: Public domain (U.S. Government work; health-topic summaries); fetched 2026-09-02'
 - doc_id: mlp_es_fever
   file: web/mlp_es_fever.html
@@ -7768,7 +7572,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/dengue
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/dengue
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_sarampo
   file: web/govbr_pt_sarampo.html
@@ -7783,7 +7587,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/sarampo
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/sarampo
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_coqueluche
   file: web/govbr_pt_coqueluche.html
@@ -7798,7 +7602,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/coqueluche
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/coqueluche
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_caxumba
   file: web/govbr_pt_caxumba.html
@@ -7813,7 +7617,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/caxumba
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/caxumba
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_rubeola
   file: web/govbr_pt_rubeola.html
@@ -7828,7 +7632,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/rubeola
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/r/rubeola
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_tuberculose
   file: web/govbr_pt_tuberculose.html
@@ -7843,7 +7647,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/tuberculose
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/t/tuberculose
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_hepatites_virais
   file: web/govbr_pt_hepatites_virais.html
@@ -7858,7 +7662,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/hepatites-virais
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/h/hepatites-virais
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_raiva
   file: web/govbr_pt_raiva.html
@@ -7873,7 +7677,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/raiva
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/r/raiva
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_aedes_aegypti
   file: web/govbr_pt_aedes_aegypti.html
@@ -7888,7 +7692,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/aedes-aegypti
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/aedes-aegypti
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_chikungunya
   file: web/govbr_pt_chikungunya.html
@@ -7903,7 +7707,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/chikungunya
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/chikungunya
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_febre_amarela
   file: web/govbr_pt_febre_amarela.html
@@ -7918,7 +7722,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/febre-amarela
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/f/febre-amarela
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_meningite
   file: web/govbr_pt_meningite.html
@@ -7933,7 +7737,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/meningite
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/m/meningite
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_poliomielite
   file: web/govbr_pt_poliomielite.html
@@ -7948,7 +7752,7 @@ sources:
   usage: citar_solo
   age_groups:
   - todas
-  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/poliomielite
+  url: https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/p/poliomielite
   notes: 'licence: CC BY-ND 3.0 (Atribuição-SemDerivações, Não Adaptada); fetched 2026-09-11'
 - doc_id: govbr_pt_vacinacao
   file: web/govbr_pt_vacinacao.html

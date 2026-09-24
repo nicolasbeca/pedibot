@@ -85,7 +85,7 @@ Nada de lo que hace PediBot depende de un servicio cerrado:
 
 El catálogo entero se publica en formatos no propietarios y sin nada personal dentro:
 
-- <https://pedibot.xyz/dataset/sources.json> — JSON, CC0, 645 documentos.
+- <https://pedibot.xyz/dataset/sources.json> — JSON, CC0, 632 documentos.
 - `dataset/sources.csv` — el mismo, en CSV.
 - <https://pedibot.xyz/sources> — la misma lista, legible, con el organismo de cada documento.
 

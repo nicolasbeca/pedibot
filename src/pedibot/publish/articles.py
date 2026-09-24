@@ -249,7 +249,9 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "headaches children when to worry",
     },
     "bedwetting": {
-        "docs": ["nhs_en_bedwetting", "mlp_en_bedwetting"],
+        # 24-sep-2026: MedlinePlus retiró su hoja de enuresis —hoy redirige a desarrollo
+        # infantil, que ya está en el corpus—, así que el tema se queda con la del NHS.
+        "docs": ["nhs_en_bedwetting"],
         "query": "bedwetting children",
     },
     "growing_pains": {"docs": ["nhs_en_growing_pains"], "query": "growing pains legs night"},

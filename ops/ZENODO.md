@@ -47,7 +47,7 @@ release**:
 - **Release title:** `PediBot 2.0.0`
 - **Describe this release:** vale con dos líneas. Por ejemplo:
 
-      First public release. Answers parents' questions from 645 published paediatric
+      First public release. Answers parents' questions from 632 published paediatric
       documents, citing the source of every clinical sentence. Emergency numbers for 90
       countries, vaccination schedules for 66, WHO growth standards and MUAC, in eight
       languages.
