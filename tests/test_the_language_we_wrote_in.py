@@ -135,3 +135,25 @@ def test_the_eight_languages_keep_their_code() -> None:
             verification="ok",
         )
         assert a.written_lang == codigo
+
+
+def test_every_exit_of_the_engine_carries_it() -> None:
+    """El motor tiene seis salidas y la primera versión de esto sólo cubría la última.
+
+    Se vio en vivo: «mio figlio ha la febbre e ha due anni» salió en italiano —bien— y se
+    guardó como española, porque el detector confunde el italiano con el español y esa
+    respuesta salía por otra rama. Ahora se pone en el envoltorio, que es por donde pasan
+    todas.
+    """
+    import inspect
+
+    from pedibot.bot import answer as mod
+
+    fuente = inspect.getsource(mod.Engine.ask)
+    assert 'ctx["fuera"]' in fuente and "wrote_in" in fuente, (
+        "el idioma escrito tiene que fijarse en el envoltorio, no en un return suelto"
+    )
+    cuerpo = inspect.getsource(mod.Engine._ask)
+    assert "wrote_in=" not in cuerpo, (
+        "si vuelve a un `return Answer(...)` concreto, las otras cinco salidas se quedan fuera"
+    )

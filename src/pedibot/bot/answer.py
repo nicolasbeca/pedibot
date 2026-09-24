@@ -1497,6 +1497,12 @@ class Engine:
         """
         ctx: dict = {"costes": [], "fuera": None}
         a = self._ask(query, country, lang, history, mode, ctx)
+        # En qué lengua se ESCRIBIÓ, cuando no es una de las ocho. Va aquí y no en cada `return
+        # Answer(...)` porque hay seis, y la primera versión de esto sólo cubría el último: una
+        # pregunta en italiano se guardaba como española y el registro seguía sin enterarse de
+        # que alguien escribe en italiano (24-sep-2026).
+        if ctx.get("fuera"):
+            a.wrote_in = ctx["fuera"]
         # Con un aviso rojo encima, «prefiero no adivinar, consulta con tu pediatra» debajo le
         # quita fuerza al aviso justo cuando más importa: «pierde el conocimiento», «le ha dado
         # la corriente», «lleva media hora sin responder» salían así (batería del 21-sep-2026).
@@ -2358,7 +2364,4 @@ class Engine:
             problems=problems,
             tool=tool,
             ask_age=ask_age,
-            # en qué lengua se escribió, cuando no es una de las ocho: el registro anónimo es el
-            # único sitio donde se ve que alguien escribe en suajili (24-sep-2026)
-            wrote_in=(answer_lang if answer_lang != LANGUAGE_NAME.get(lang, "English") else None),
         )
