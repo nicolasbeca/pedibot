@@ -58,6 +58,46 @@ generales. Cambió de tema y no de sitio, y la referencian una regla de alarma y
 dorado: merece decisión, no reemplazo automático. Lo mismo con el VIS de neumococo en hindi,
 que pasó de `pcv13` a `pcv`.
 
+## 25-sep-2026 · el último pendiente era la punta de algo mayor
+
+Quedaba uno anotado: «el aviso del calendario sale por delante de la hoja del rotavirus».
+Tirando del hilo salieron tres cosas, cada una mayor que la anterior.
+
+**El pasaje que ganaba cualquier pregunta sobre vacunas era la leyenda de la tabla** del
+calendario español —«Administración sistemática», «Con rayas», «aprobado por el Consejo
+Interterritorial»—: 232 palabras explicando los colores de una tabla, que acumulan justo los
+términos que la expansión añade a toda pregunta sobre vacunas. En un documento que es una tabla,
+la cabecera dice cómo leerla; lo que contesta son las notas de cada vacuna.
+
+**El limpiador no reconocía los pies numerados.** Quitaba cabeceras y pies repetidos comparando
+el texto tal cual, así que «Página 1 de 3» y «Página 2 de 3» le parecían dos líneas distintas
+vistas una vez cada una. Con los números sustituidos por un hueco se fueron **39 pasajes** de pie
+de página de todo el corpus.
+
+**Y la de verdad: buscar «rotavirus» devolvía cero**, con la hoja del CDC y el VIS de MedlinePlus
+dentro del índice. No es un fallo, es la regla de «fuente o silencio»: exige tres términos
+coincidentes cuando la pregunta no cae en ningún tema de la taxonomía, para que «mi perro comió
+chocolate» no traiga la hoja de la laringitis. La regla es buena; lo que nadie había medido es a
+quién deja fuera. **148 documentos de 632 —uno de cada cuatro— tenían un título que no caía en
+ningún tema**: el rotavirus, el norovirus, el VRS, la conmoción, la celulitis, la roséola, el
+chalazión, la vulvovaginitis. Y `bronchiolitis`, que en castellano sí estaba: faltaba la palabra
+inglesa (L243).
+
+**111 términos nuevos en la taxonomía**, sólo nombres de afección o de signo —nada de «pain»,
+«head» o «agua», que convertirían cualquier frase en pediátrica y dejarían el filtro sin
+filtrar—, con una prueba de 21 casos concretos y su mitad contraria: «perro», «coche» e
+«hipoteca» siguen sin tema. El candado de prefijos hizo su trabajo y obligó a revisar nueve
+claves una a una.
+
+Comprobado: «rotavirus» trae la hoja del CDC, «norovirus» la del CDC y la del NHS, «concussion»
+las dos de conmoción. Y la pregunta que lo empezó todo —«vomitó después de la vacuna del
+rotavirus, ¿hay que repetirla?»— pasa de «no tengo información fiable» a contestar que no se
+repite y se sigue el calendario; hicieron falta tres entradas más en el puente, porque el que
+había pedía «vomitó la vacuna» y nadie lo dice así.
+
+Conjunto dorado medido tres veces por el camino: `source_hit` **0,953**, `triage_exact` **0,975**,
+`routing` **1.0**. Los mismos.
+
 ## 24-sep-2026 (tarde) · lo que quedaba anotado, rematado
 
 Tres cosas llevaban días en la lista de «anotado y sin hacer». Dos están hechas.

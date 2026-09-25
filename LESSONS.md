@@ -1859,3 +1859,34 @@ Un arreglo de idioma no se acaba en el sitio donde se escribe el cuerpo. Hay que
 lo que acaba delante del lector —codas, botones, avisos, plantillas— y preguntarse si cada
 trozo sabe lo mismo que sabe el redactor. Aquí eran dos frases y una de ellas se me escapó
 trece días.
+
+## L243 · «Rotavirus» devolvía cero teniendo la hoja dentro (25-sep-2026)
+
+El último pendiente anotado era pequeño: «el aviso del calendario sale por delante de la hoja del
+rotavirus». Tirando del hilo salieron tres cosas, cada una mayor que la anterior.
+
+**Una.** El pasaje que ganaba cualquier pregunta sobre vacunas era la **leyenda** de la tabla del
+calendario español: «Administración sistemática», «Con rayas», «aprobado por el Consejo
+Interterritorial». Doscientas treinta y dos palabras explicando los colores de una tabla, que
+acumulan justo los términos que la expansión añade a cualquier pregunta sobre vacunas. En un
+documento que es una tabla, la cabecera dice cómo leerla; lo que contesta son las notas de cada
+vacuna.
+
+**Dos.** El limpiador ya quitaba cabeceras y pies repetidos, pero comparaba el texto tal cual, y
+`Página 1 de 3` y `Página 2 de 3` le parecían dos líneas distintas vistas una vez cada una. Con
+los números sustituidos por un hueco, se fueron 39 pasajes de pie de página del corpus. **Un pie
+no deja de serlo porque cambie el número.**
+
+**Y tres, la buena.** Buscar `rotavirus` devolvía **cero**, con la hoja del CDC y el VIS de
+MedlinePlus dentro del índice. No era un fallo: es la regla de «fuente o silencio», que exige
+**tres** términos coincidentes cuando la pregunta no cae en ningún tema de la taxonomía, para que
+«mi perro comió chocolate» no traiga la hoja de la laringitis por la palabra «perro». La regla es
+buena. Lo que nadie había medido es a quién deja fuera: **148 documentos de 632 —uno de cada
+cuatro— tenían un título que no caía en ningún tema**, y con ellos el rotavirus, el norovirus, el
+VRS, la conmoción, la celulitis, la roséola, el chalazión, la vulvovaginitis. Y `bronchiolitis`,
+que en castellano sí estaba: faltaba la palabra inglesa.
+
+Lo que me llevo, y vale para cualquier filtro de seguridad: **un filtro se justifica por lo que
+impide y se paga con lo que descarta, y casi nunca se mide lo segundo**. «Fuente o silencio»
+llevaba meses escrito, razonado y con su comentario explicando el caso del perro. Nadie —yo—
+había contado cuántas hojas buenas se quedaban detrás de la puerta.

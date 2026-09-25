@@ -96,7 +96,12 @@ def test_the_spanish_to_english_bridge_stays_tiny(syn: Synonyms):
 
     23-sep-2026 (noche): cinco entradas más —el tope sube de 150 a 155— para la medicina que ya
     se dio mal, con las catorce hojas nuevas dentro (diez del NHS, cuatro de Familia y Salud).
-    Medido como pide el candado: los números están en el docstring de la prueba de abajo."""
+    Medido como pide el candado: los números están en el docstring de la prueba de abajo.
+
+    25-sep-2026: tres más, «vomitó después de la vacuna» y sus variantes, que es como se dice de
+    verdad —la línea que había pedía «vomitó la vacuna»— y dejaba sin fuente una pregunta que el
+    VIS del rotavirus contesta. Medido con las 111 palabras nuevas de la taxonomía dentro:
+    `source_hit` **0,953**, `triage_exact` **0,975** y `routing` **1.0**, los mismos."""
     bridge = syn._maps.get("es_en", {})
     assert len(bridge) <= 155, "the bridge grew: re-measure the golden set before widening it"
     for covered in ("fiebre", "tos", "vómit", "diarrea", "convuls", "quemadura", "vacun"):

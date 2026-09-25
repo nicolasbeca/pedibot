@@ -148,6 +148,18 @@ _PALABRA = re.compile(r"\w{3,}", re.U)
 #: casa flexiones de su propia raíz, no palabras ajenas. Se listan para que el candado de abajo
 #: señale sólo lo que nadie ha mirado todavía.
 _REVISADAS = {
+    # 25-sep-2026: «bronchiolit» coge bronchiolitis y bronchiolite, que son la misma palabra en
+    # inglés y en francés. Es su propia raíz, que es justo lo que el prefijo debe coger.
+    "bronchiolit",
+    "cellulit",  # cellulitis; en castellano ya está «celulitis» entera
+    "vulvovaginit",  # vulvovaginitis, vulvovaginite
+    "hyperhidros",  # hyperhidrosis; y su gemela castellana «hiperhidros»
+    "hiperhidros",
+    "plagiocefal",  # plagiocefalia, plagiocefálica
+    "plagiocephal",
+    "braquicefal",
+    "brachycephal",
+    "celiaqu",  # celiaquía, celiaquia
     "tos",  # tosse, toser, tosferina — todo es tos
     "vacuna",
     "vaccin",

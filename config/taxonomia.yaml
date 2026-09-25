@@ -4,12 +4,16 @@ topics:
                  malaria, paludisme, ملاريا, मलेरिया, малярия, malária, dengue, الضنك, डेंगू, денге, tifoidea, typhoid, typhoïde, تيفوئيد, टाइफाइड, тиф, tifoide, تيفود, تيفية]
   respiratorio: [tos, bronquiolitis, laringitis, crup, asma, neumonía, neumonia, catarro, mocos, sibilancia, pitos, respirar, respiración, disnea, cough, wheez, breath, pneumonia, croup, asthma, cold,
         humo, leña, biomasa, carbón, estufa, cocina de leña, contaminación del aire, "air pollution", "wood smoke", "indoor smoke", fumée, rauch, дым, дровах, دخان, حطب, تلوث الهواء, धुआं, धुएं, लकड़ी, चूल्हा, वायु प्रदूषण, tabaco, tabaquismo, fumar, tobacco, smoking, tabac, tabak, табак, курени, تدخين, تبغ, يدخن, يدخّن, تدخن, مدخن, धूम्रपान, तंबाकू,
-        atme, atmung, "schwer luft", "respire mal", "respira mal"]
+        atme, atmung, "schwer luft", "respire mal", "respira mal",
+        # 25-sep-2026, ver la nota del final del fichero
+        bronchiolit, bronchiolite, stridor, estridor, gripe, influenza, flu$, syncytial, sincitial, vrs$, rsv$, resfrío, resfrio]
   digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat,
              lombrices, oxiuros, lombriz, threadworm, pinworm, oxyures, madenwürmer, madenwurmer,
              острицы, острица, ديدان, कीड़े, vomit, diarrh, constipat, stomach, dehydrat,
                  lombrices, helminth, oxiuros, desparasit, vers intestinaux, ديدان, कीड़े, гельминт, глист, "agua potable", "drinking water", "eau potable", "مياه الشرب", "पीने का पानी", "питьевая вода", "seguridad alimentaria", "food safety", "sécurité sanitaire des aliments", "سلامة الأغذية", hepatitis, التهاب الكبد, हेपेटाइटिस, гепатит,
-        rehydrat, réhydrat, إماهة, ओआरएस, "ors$", "sro$", oralpädon]
+        rehydrat, réhydrat, إماهة, ओआरएस, "ors$", "sro$", oralpädon,
+        # 25-sep-2026, ver la nota del final del fichero
+        rotavirus, norovirus, cólera, colera, cholera, choléra, холер, كوليرا, celiaquía, celiaqu, celíac, celiac, coeliac, zöliakie, целиаки, fisura anal, anal fissure, encopresis, soiling]
   neurologia: [meningitis, meningite, meningitis, hirnhautentzündung, hirnhautentzundung,
                менингит, менингита, التهاب السحايا, سحايا, मेनिन्जाइटिस,
                convulsión, convulsion, cefalea, dolor de cabeza, migraña, síncope, sincope, desmayo, sollozo, epilep, seizure, headache, faint, breath-holding,
@@ -19,7 +23,9 @@ topics:
                  serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство, كلب, عضة, "عضّ",
         ударил, ушиб, рану, "рана$", раны, зашив, швы, stitch, sutur, "puntos de sutura", genäht, nähen, verbrennung, verbrüh, "kopf gestoßen", gestoßen,
         "ماء مغلي", مغلي,
-        احترق, انحرق, حروق]
+        احترق, انحرق, حروق,
+        # 25-sep-2026, ver la nota del final del fichero
+        concussion, conmoción, conmocion, commotion cérébrale, gehirnerschütterung, сотрясение, ارتجاج, heatstroke, heat exhaustion, esguince, sprain]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic,
         plomo, saturnismo, lead, plomb, blei$, свинец, свинца, رصاص, التسمم بالرصاص, सीसा, सीसे,
         "मिट्टी का तेल", केरोसिन, कीटनाशक, "चूहे मारने", الكاز, كيروسين, "سم الفئران"]
@@ -35,7 +41,9 @@ topics:
          picadura, picaduras, mosquito, insect bite, piqûre, piqure, insektenstich, укус, لدغة, काटने,
                  sarna, scabies, gale$, krätze, الجرب, खुजली, чесотка, escabiosis,
         picor, picazón, picazon, itch, juck, prurit, démangeaison, demangeaison, зуд, чеш, чесал, comich, coceira, حكة, दाने, दानों, चकत्त, "glass test", "prueba del vaso", "test du verre", glastest, стакан, गिलास,
-        जूँ, जुएँ, लीख]
+        जूँ, जुएँ, लीख,
+        # 25-sep-2026, ver la nota del final del fichero
+        cellulit, celulitis, roseola, roséola, ringworm, tiña, tinea, dandruff, caspa, verruga, wart, verruca, vitiligo, vitíligo, hyperhidros, hiperhidros, impétigo, impetigo]
   orl: [otitis, oído, oido, garganta, amigdalitis, faringitis, ear$, ears$, earache, earwax,
         throat, tonsil,
         # La nariz no estaba en ninguna categoría, y «le sangro la nariz un momento y ya
@@ -48,14 +56,18 @@ topics:
   salud_mental: ["salud mental", "mental health", "santé mentale", "sante mentale",
                  "psychische gesundheit", "психическое здоровье", "الصحة النفسية",
                  "मानसिक स्वास्थ्य", adolescente, adolescent, ansiedad, autolesi, suicid, conducta, alimentaria, anorexia, bulimia, depresión, depresion, anxiety, self-harm, suicid, eating disorder, depress,
-        maltrato infantil, malos tratos, abuso, child maltreatment, child abuse, maltraitance, kindesmisshandlung, жестокое обращение, إساءة معاملة الأطفال, سوء معاملة, बाल दुर्व्यवहार, बच्चों से दुर्व्यवहार]
+        maltrato infantil, malos tratos, abuso, child maltreatment, child abuse, maltraitance, kindesmisshandlung, жестокое обращение, إساءة معاملة الأطفال, سوء معاملة, बाल दुर्व्यवहार, बच्चों से दुर्व्यवहार,
+        # 25-sep-2026, ver la nota del final del fichero
+        mutismo, mutism, tricotilomanía, trichotillomania]
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids,
                  desnutrición, desnutricion, malnutrición, malnutricion, malnutrition, dénutri, denutri, mangelernährung, mangelernahrung,
                  недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao,
                  anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение, رضاع, أرضع, هزال, نحيف,
         appetite, apetito, appétit, appetit, аппетит, شهية, भूख, صلب, diversifica, beikost, stillen, allaite, allaitement, amamentar, amamentação, aleitamento, "грудное вскармливание", прикорм, स्तनपान, "ठोस आहार", "पूरक आहार", "الطعام الصلب", الفطام, फार्मूला, "दूध पिलाना",
         "क्या खिलाना", "खिलाना शुरू", "क्या खिलाऊँ", "ठोस खाना", "فقر دم",
-        "no gana peso", "no engorda", "no sube de peso", "weight gain", "gaining weight", skinny, underweight, "prise de poids", "prend pas de poids", "nimmt nicht zu", gewichtszunahme, "набирает вес", "набор веса", "يزداد وزنه", "يزيد وزنه", "वजन नहीं बढ़", "वज़न नहीं बढ़", "ganha peso", "ganho de peso"]
+        "no gana peso", "no engorda", "no sube de peso", "weight gain", "gaining weight", skinny, underweight, "prise de poids", "prend pas de poids", "nimmt nicht zu", gewichtszunahme, "набирает вес", "набор веса", "يزداد وزنه", "يزيد وزنه", "वजन नहीं बढ़", "वज़न नहीं बढ़", "ganha peso", "ganho de peso",
+        # 25-sep-2026, ver la nota del final del fichero
+        pica$, picacismo]
   recien_nacido: [recién nacido, recien nacido, neonat, cordón, cordon, ictericia, newborn, umbilical, jaundice,
                  # 16-sep-2026: el color de la caca del bebé es de las preguntas más frecuentes de
                  # los primeros meses, y la frase no tenía NINGUNA palabra de la taxonomía: sin
@@ -70,7 +82,9 @@ topics:
                  "पॉटी", "cocô", "cocó", "fezes$", meconio, meconium, méconium, mekonium,
                  меконий, العقي, मेकोनियम,
                  prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
-  lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux]
+  lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux,
+        # 25-sep-2026, ver la nota del final del fichero
+        craneosinostosis, craniosynostosis, plagiocefal, plagiocephal, braquicefal, brachycephal, anquiloglosia, tongue-tie, frenillo lingual]
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz,
                  atrasada, atrasadas, retraso vacunal, catch-up, late vaccination,
                  vacinas atrasadas, impfungen nachholen, rattrapage vaccinal,
@@ -82,7 +96,9 @@ topics:
                wachstumsschmerzen, "боли роста", "آلام النمو", desarrollo, hitos, autismo, tdah, hiperactividad, down, sueño, sedentarismo, actividad física, development, milestone, autism, adhd, sleep, screen,
                  autismo, autism, autisme, التوحد, ऑटिज़्म, аутизм,
         मोबाइल, स्क्रीन, "बोलता नहीं", "बोल नहीं", "बोलना नहीं", الشاشة, الشاشات, "لا يتكلم", "لا تتكلم", "تأخر الكلام", "تأخر النطق",
-        percentil, percentile, centile, perzentil, перцентил, процентил, مئين, المئين, المئوي, पर्सेंटाइल, प्रतिशतक, "growth chart", "curva de crecimiento", "curvas de crecimiento", "courbe de croissance", wachstumskurve, "кривая роста", "منحنى النمو", "ग्रोथ चार्ट", "curva de crescimento"]
+        percentil, percentile, centile, perzentil, перцентил, процентил, مئين, المئين, المئوي, पर्सेंटाइल, प्रतिशतक, "growth chart", "curva de crecimiento", "curvas de crecimiento", "courbe de croissance", wachstumskurve, "кривая роста", "منحنى النمو", "ग्रोथ चार्ट", "curva de crescimento",
+        # 25-sep-2026, ver la nota del final del fichero
+        terrores nocturnos, night terror, pesadilla, nightmare, escoliosis, scoliosis, tartamud, stammer, stutter]
   medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
   urinario: [orina, urinaria, urinario, infección de orina, infeccion de orina, cistitis, pis$,
              pipí, pipi, enuresis, mojar la cama, urine, urinary, uti$, utis$, wee$, bedwetting,
@@ -90,16 +106,22 @@ topics:
              моча, мочевой, недержание, بول, التبول, पेशाब, मूत्र,
         "يبلل الفراش", "تبلل الفراش", "التبول اللاإرادي", "التبول الليلي", "يبول في الفراش",
         "बिस्तर गीला", "बिस्तर पर पेशाब", "bistar geela",
-        "حرقة عند التبول", "حرقة البول", "عند التبول", "पेशाब में जलन", "पेशाब करते", "pees", "peeing", "burns when"]
+        "حرقة عند التبول", "حرقة البول", "عند التبول", "पेशाब में जलन", "पेशाब करते", "pees", "peeing", "burns when",
+        # 25-sep-2026, ver la nota del final del fichero
+        vulvovaginit, sinequia, labial fusion, labial adhesion]
   ojos: [conjuntivitis, ojo, ojos, legañas, lagrimeo, conjunctivitis, pink eye, eye,
          conjonctivite, œil, oeil, bindehautentzündung, bindehautentzundung, auge,
          конъюнктивит, глаз, التهاب الملتحمة, عين, आँख, कंजंक्टिवाइटिस,
         ceguera, ciego, visión, vista, discapacidad visual, blindness, "visual impairment", cécité, malvoyance, blindheit, sehbehinderung, слепот, зрени, عمى, إعاقة بصرية, ضعف البصر, अंधापन, दृष्टि, नज़र,
-        "عيون حمراء", "عينه حمراء", "عينها حمراء", "عين حمراء", "احمرار العين", رمد]
+        "عيون حمراء", "عينه حمراء", "عينها حمراء", "عين حمراء", "احمرار العين", رمد,
+        # 25-sep-2026, ver la nota del final del fichero
+        chalazion, chalazión, orzuelo, stye, miopía, miopia, myopia, short-sighted, estrabismo, squint]
   dental: [dentición, denticion, diente, dientes, muela, teething, tooth, teeth,
            poussée dentaire, dent$, dents$, zahnen, zahn, прорезывание зубов, зуб, تسنين, أسنان,
            दांत, दाँत,
-        "दाँत निकल", "दांत निकल", يسنن, التسنين, "ظهور الأسنان"]
+        "दाँत निकल", "दांत निकल", يسنن, التسنين, "ظهور الأسنان",
+        # 25-sep-2026, ver la nota del final del fichero
+        absceso dental, dental abscess, bucodental]
   urgencias: [urgencias, "112", emergencia, sedoanalgesia, emergency, "911", "999",
                  sepsis, septicemia, septicémie, "تعفن الدم", सेप्सिस, сепсис]
   crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]
@@ -115,7 +137,15 @@ subtopics:
   contagio: [contagio, contagios, guardería, guarderia, colegio, contagious, daycare, school]
 
 age_groups:
-  lactante: [lactante, bebé, bebe, recién nacido, recien nacido, meses de edad, menor de 2 años, menores de 2 años, infant, baby, newborn, months old, under 2]
+  lactante: [lactante, bebé, bebe, recién nacido, recien nacido, meses de edad, menor de 2 años, menores de 2 años, infant, baby, newborn, months old, under 2,
+        # 25-sep-2026, ver la nota del final del fichero
+        craneosinostosis, craniosynostosis, plagiocefal, plagiocephal, braquicefal, brachycephal, anquiloglosia, tongue-tie, frenillo lingual]
   preescolar: [preescolar, 2 a 5 años, guardería, guarderia, preschool, toddler]
   escolar: [escolar, colegio, 6 a 12 años, school-age, school age]
   adolescente: [adolescente, adolescencia, adolescent, teen]
+
+# 25-sep-2026: las palabras de aquí abajo salieron de medir qué documentos NO alcanza una
+# pregunta corta. El recuperador exige tres términos cuando la pregunta no cae en ningún
+# tema —para que «mi perro comió chocolate» no traiga la hoja de la laringitis—, así que una
+# enfermedad ausente de esta lista es inalcanzable escribiendo su nombre: «rotavirus»
+# devolvía cero con la hoja del CDC dentro del índice. Eran 148 documentos de 632.

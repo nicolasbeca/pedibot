@@ -15,7 +15,7 @@
 > son diarios. Una cifra de hace un mes ahí no es un error, es lo que pasó ese día.
 
 
-Contado el **2026-09-24**.
+Contado el **2026-09-25**.
 
 | | cifra | de dónde sale |
 |---|---:|---|
@@ -30,7 +30,7 @@ Contado el **2026-09-24**.
 | documentos del catálogo público | **632** | dataset/sources.json (CC0) |
 | documentos del catálogo interno | **635** | incluye los que no se pueden redistribuir |
 | guías publicadas | **513** | web/content/*/*.md |
-| pruebas automáticas | **10.360** | `uv run pytest --collect-only` |
+| pruebas automáticas | **10.393** | `uv run pytest --collect-only` |
 | África: países con número | **54** | los 54 del continente |
 | África: con calendario | **54** | los 54 del continente |
 | África: con curva | **52** | los 54 del continente |

@@ -16,7 +16,7 @@ from pedibot.ingest.clean import clean
 from pedibot.ingest.extract import extract_pdf, file_sha256
 from pedibot.ingest.extract_html import extract_html
 from pedibot.ingest.schema import Chunk, SourceDoc
-from pedibot.ingest.sections import split_sections
+from pedibot.ingest.sections import LEAD_SECTION, split_sections
 
 _SLUG = re.compile(r"[^a-z0-9]+")
 
@@ -291,6 +291,15 @@ def build_chunks(doc: SourceDoc, pdf: Path, tax: Taxonomy) -> tuple[list[Chunk],
         rep.detail = "scanned or protected PDF — needs OCR"
         return [], rep
     sections = split_sections(ex)
+    # 25-sep-2026. En un documento que es una TABLA, el texto de cabecera es la leyenda: explica
+    # los colores y los símbolos y no contesta a nada. La del calendario español —«Administración
+    # sistemática», «Con rayas», «aprobado por el Consejo Interterritorial»— ganaba CUALQUIER
+    # pregunta sobre una vacuna, porque acumula justo las palabras que la expansión añade, y
+    # detrás de ella no cabía la hoja que sí responde. Lo que contesta de un calendario son sus
+    # notas por vacuna, que están en sus secciones; y la tabla en sí se sirve estructurada desde
+    # `config/vaccines.yaml`, no de aquí.
+    if doc.doc_type == "calendario":
+        sections = [s for s in sections if s.title != LEAD_SECTION]
     rep.n_sections = len(sections)
     chunks: list[Chunk] = []
     seen: dict[str, int] = {}

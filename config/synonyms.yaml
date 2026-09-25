@@ -743,6 +743,11 @@ es_en:
   escupió la vacuna: [rotavirus, spit, repeat dose, vaccine reaction]
   escupio la vacuna: [rotavirus, spit, repeat dose, vaccine reaction]
   vomitó la vacuna: [rotavirus, vomit after dose, vaccine reaction]
+  # 25-sep-2026: «vomitó DESPUÉS de la vacuna» es como se dice de verdad, y no casaba con la
+  # línea de arriba; la pregunta se quedaba sin fuente teniendo el VIS del rotavirus dentro.
+  vomitó después de la vacuna: [rotavirus, vomit after dose, repeat dose]
+  vomito despues de la vacuna: [rotavirus, vomit after dose, repeat dose]
+  vomitó tras la vacuna: [rotavirus, vomit after dose, repeat dose]
   vomito la vacuna: [rotavirus, vomit after dose, vaccine reaction]
   vacuna repetida: [extra dose, duplicate dose, vaccination schedule]
   dos veces la misma vacuna: [extra dose, duplicate dose]
