@@ -32,7 +32,7 @@ document repeats one of them wrongly.
 - **Paracetamol and ibuprofen dosing by weight**, from fixed tables, calculated in the page
   without a model, for the strength of the bottle the parent has in their hand.
 - **WHO growth standards**: percentiles and z-scores, plus MUAC for acute malnutrition.
-- **513 guides** written from the corpus, in eight languages.
+- **515 guides** written from the corpus, in eight languages.
 
 ## How an answer is made
 

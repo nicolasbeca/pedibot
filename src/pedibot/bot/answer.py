@@ -1779,7 +1779,19 @@ class Engine:
                 )
             # sin país elegido no se adivina: se cae al corpus, que dirá que no lo sabe
 
-        if self.vaccines is not None and tr.level == "routine" and is_vaccine_question(query):
+        # 25-sep-2026. La puerta de entrada era «la pregunta menciona una vacuna», y eso servía
+        # la tabla entera a cualquier duda sobre una vacuna concreta en cuanto hubiera un país
+        # —el del selector, que es lo normal—: «vomitó después de la vacuna del rotavirus, ¿hay
+        # que repetirla?» devolvía 23 líneas de calendario español y ninguna respuesta. El 23-sep
+        # se arregló esto mismo para el país ESCRITO en la pregunta y se quedó a medias: la regla
+        # es la misma para el elegido, y es la de siempre —se sirve el calendario a quien pide un
+        # calendario—. Lo demás va al corpus, que tiene las hojas de cada vacuna.
+        if (
+            self.vaccines is not None
+            and tr.level == "routine"
+            and is_vaccine_question(query)
+            and pide_calendario(context_text)
+        ):
             # "Quels vaccins pour un bébé de 3 mois EN FRANCE ?" used to fall through to the
             # corpus and come back as "I have no reliable information", with the country sitting
             # in the sentence the whole time. Read only when the reader picked none, and only a

@@ -98,6 +98,20 @@ había pedía «vomitó la vacuna» y nadie lo dice así.
 Conjunto dorado medido tres veces por el camino: `source_hit` **0,953**, `triage_exact` **0,975**,
 `routing` **1.0**. Los mismos.
 
+### Y una de hace dos días, que estaba a medias
+
+Comprobando lo anterior contra el servidor —con el país puesto, como lo tiene un padre—:
+
+    «mi hijo vomitó después de la vacuna del rotavirus, ¿hay que repetirla?»  (país: España)
+    → «España — calendario común 2026: • Al nacer: Hepatitis B…»
+
+El 23-sep arreglé esto para el país ESCRITO en la pregunta y lo di por cerrado. La puerta de
+entrada seguía siendo «la pregunta menciona una vacuna», así que con el país del selector
+cualquier duda sobre una vacuna concreta seguía sacando la tabla entera: 23 líneas de calendario
+para alguien con el niño vomitando. Puse la condición en la rama por la que entraba aquel caso,
+y no en la puerta donde se decide; y la prueba que escribí entraba por ese mismo pasillo, así que
+pasaba (L244). Ahora está donde debe, probado en las dos direcciones.
+
 ## 24-sep-2026 (tarde) · lo que quedaba anotado, rematado
 
 Tres cosas llevaban días en la lista de «anotado y sin hacer». Dos están hechas.

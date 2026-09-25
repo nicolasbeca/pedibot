@@ -1890,3 +1890,29 @@ Lo que me llevo, y vale para cualquier filtro de seguridad: **un filtro se justi
 impide y se paga con lo que descarta, y casi nunca se mide lo segundo**. «Fuente o silencio»
 llevaba meses escrito, razonado y con su comentario explicando el caso del perro. Nadie —yo—
 había contado cuántas hojas buenas se quedaban detrás de la puerta.
+
+## L244 · Arreglé quién elige el país y no si servir la tabla (25-sep-2026)
+
+El 23-sep, octava tanda: «mi hijo tiene una reacción después de una vacuna que recibió en
+Francia» devolvía el calendario francés entero. Lo arreglé, lo probé, lo desplegué y lo di por
+cerrado. Lo que arreglé fue **qué país** se usa: el escrito en la pregunta sólo manda cuando lo
+que se pide ES un calendario.
+
+Hoy, comprobando otra cosa en vivo:
+
+    «mi hijo vomitó después de la vacuna del rotavirus, ¿hay que repetirla?»  (país: España)
+    → «España — calendario común 2026: • Al nacer: Hepatitis B…»
+
+La puerta de entrada seguía siendo «la pregunta menciona una vacuna». Con el país en el selector
+—que es lo normal, porque la web lo pone— cualquier duda sobre una vacuna concreta seguía
+sacando la tabla. Un padre con el niño vomitando recibía 23 líneas de calendario.
+
+**Puse la condición en la rama y no en la puerta.** El caso que tenía delante entraba por la
+rama del país escrito, lo arreglé ahí, y como la prueba que escribí usaba ese mismo camino, pasó.
+La regla verdadera —«se sirve el calendario a quien pide un calendario»— tenía que estar en la
+condición de entrada, donde se decide si esta pregunta es de calendario o no.
+
+Lo que me llevo: **cuando un arreglo es una regla, hay que preguntarse dónde vive la decisión, no
+dónde estaba el ejemplo**. Y la prueba tiene que entrar por la puerta principal, no por el pasillo
+que usó el caso que lo destapó: la mía comprobaba el país escrito, cuando lo normal es el
+elegido.

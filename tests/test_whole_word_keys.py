@@ -160,6 +160,10 @@ _REVISADAS = {
     "braquicefal",
     "brachycephal",
     "celiaqu",  # celiaquía, celiaquia
+    # 25-sep-2026: saltaron al publicarse guías nuevas que pasaron el umbral de 15 apariciones.
+    # Las dos son flexiones de su propia raíz: immunization de «immuniz», вакцины de «вакцин».
+    "immuniz",
+    "вакцин",
     "tos",  # tosse, toser, tosferina — todo es tos
     "vacuna",
     "vaccin",

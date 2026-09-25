@@ -95,3 +95,39 @@ def test_the_ages_are_said_differently_in_every_language() -> None:
         "mein Kind hat eine Schwellung nach der Impfung",
     ):
         assert not pide_calendario(q), q
+
+
+def test_the_selected_country_does_not_serve_the_calendar_either() -> None:
+    """25-sep-2026. El 23 se arregló a medias y hoy se vio en vivo.
+
+    Aquel día: «una reacción a una vacuna que recibió en Francia» devolvía el calendario
+    francés, y se corrigió que **el país escrito** sólo mande cuando lo que se pide ES un
+    calendario. Pero la puerta de entrada seguía siendo «la pregunta menciona una vacuna», así
+    que con el país puesto en el selector —lo normal— cualquier duda sobre una vacuna concreta
+    seguía devolviendo la tabla entera:
+
+        «mi hijo vomitó después de la vacuna del rotavirus, ¿hay que repetirla?»
+        → «España — calendario común 2026: • Al nacer: Hepatitis B…»
+
+    Un padre con el niño vomitando recibía 23 líneas de tabla y ninguna respuesta.
+    """
+    motor = _motor_con_calendarios()
+    for q in (
+        "mi hijo vomitó después de la vacuna del rotavirus, ¿hay que repetirla?",
+        "le ha salido un bulto donde le pusieron la vacuna",
+        "tiene fiebre desde la vacuna de ayer",
+    ):
+        a = motor.ask(q, lang="es", country="ES")
+        assert a.verification != "vaccine_schedule", f"{q} → {a.text[:80]}"
+
+
+def test_and_asking_for_it_with_the_selector_still_works() -> None:
+    """Y lo que sí es pedir el calendario sigue dándolo, con el país del selector."""
+    motor = _motor_con_calendarios()
+    for q in (
+        "qué vacunas le tocan a los 4 meses",
+        "el calendario de vacunas",
+        "calendario vacunal",
+    ):
+        a = motor.ask(q, lang="es", country="ES")
+        assert a.verification == "vaccine_schedule", q
