@@ -23,6 +23,16 @@ inmediato, y en la otra mitad estaríamos metiendo una herramienta entre un padr
 respuesta que ya le están dando. Si alguien pregunta en un hilo general qué usamos, se contesta.
 Si alguien está describiendo a su hijo, no.
 
+> **28-sep-2026, enviado desde pedibot.ai@gmail.com (con permiso del operador):**
+> - HIFA: seguimiento a HIFA-admin (respuesta al aviso de moderación): la presentación del 21-sep
+>   no aparece en ningún resumen; se pregunta si sigue pendiente o si hay que cambiar algo.
+> - PLOS *Speaking of Medicine*: propuesta corta (no el texto) — «What happens when you answer
+>   parents only from openly licensed guidance». Si dicen que sí, el borrador lo ve el operador.
+> - Maternal Health Task Force (Harvard): propuesta corta — «Newborn danger signs: what official
+>   guidance says, and where a mother can read it in her own language». Ídem.
+> - **SEUP: no enviado a propósito.** Sus 29 hojas se usan sin licencia verificada (el campo
+>   está vacío desde agosto); el correo tiene que ser una petición de permiso y lo decide el operador.
+
 ## CHIFA, lo primero de todo (20-sep-2026)
 
 > **21-sep-2026, hecho:** alta en HIFA confirmada por Neil (resumen diario). Enviados por el
