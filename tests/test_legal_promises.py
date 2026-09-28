@@ -116,3 +116,26 @@ def test_stop_really_stops_the_notices_and_nothing_else() -> None:
     # y las preguntas siguen: nada consulta opted_out para decidir si responder
     responder = bot[bot.index("def handle_message(") :]
     assert "opted_out" not in responder, "la baja de avisos está bloqueando también las respuestas"
+
+
+#: Lo que la política tiene que nombrar para que se sepa bajo qué ley se cumple (28-sep-2026).
+#: La DPGA lo pide para el indicador 7, y un padre tiene derecho a saber a quién reclamar.
+LEY = ("Nicolás Beca", "2016/679", "3/2018", "aepd.es")
+IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
+
+
+def test_every_language_names_the_controller_the_laws_and_where_to_complain() -> None:
+    bloques = re.split(r"\n  ([a-z]{2}): \{", I18N)
+    por_idioma = dict(zip(bloques[1::2], bloques[2::2], strict=True))
+    for lang in IDIOMAS:
+        m = re.search(r"legal_law: (['\"])(.*?)\1,", por_idioma[lang], re.S)
+        assert m, f"{lang}: falta legal_law"
+        faltan = [x for x in LEY if x not in m.group(2)]
+        assert not faltan, f"{lang}: legal_law no nombra {faltan}"
+
+
+def test_every_legal_page_shows_the_law_paragraph() -> None:
+    pages = ROOT / "web" / "site" / "src" / "pages"
+    for lang in IDIOMAS:
+        page = pages / ("legal.astro" if lang == "en" else f"{lang}/legal.astro")
+        assert "s.legal_law" in page.read_text(encoding="utf-8"), f"{page} no la muestra"
