@@ -26,7 +26,7 @@ configs:
 
 # Paediatric guidance for parents — an open catalogue
 
-**632 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**642 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -57,12 +57,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (264 of 632 do) |
+| `year` | where the document states one (264 of 642 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `usage` | `publico` (584) may be reproduced under its publisher's terms; `citar_solo` (48) may be cited and linked, not reproduced |
-| `url` | link to the original (584 of 632 are online; the rest are books and printed manuals, identified in `notes`) |
+| `usage` | `publico` (594) may be reproduced under its publisher's terms; `citar_solo` (48) may be cited and linked, not reproduced |
+| `url` | link to the original (594 of 642 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -75,8 +75,8 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | CDC — Centers for Disease Control and Prevention (USA) | 38 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
 | SEUP — Sociedad Española de Urgencias de Pediatría | 29 |
+| Gouvernement du Canada — Gouvernement du Canada / Government of Canada (santé publique) | 20 |
 | Ministério da Saúde — Ministério da Saúde (Brasil) | 14 |
-| Gouvernement du Canada — Gouvernement du Canada / Government of Canada (santé publique) | 10 |
 | AEPap — Familia y Salud — Asociación Española de Pediatría de Atención Primaria | 5 |
 | AAP — American Academy of Pediatrics | 4 |
 | AEP — Asociación Española de Pediatría — Protocolos de Neonatología (Doménech, González, Rodríguez-Alarcón) | 2 |
@@ -95,7 +95,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 313 |
+| English (`en`) | 323 |
 | Spanish (`es`) | 113 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 49 |
@@ -108,12 +108,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | topic | documents |
 |---|---|
-| `piel` | 70 |
-| `respiratorio` | 68 |
+| `piel` | 73 |
+| `respiratorio` | 71 |
 | `digestivo` | 65 |
-| `general` | 63 |
-| `accidentes` | 53 |
-| `vacunas` | 48 |
+| `general` | 64 |
+| `accidentes` | 55 |
+| `vacunas` | 49 |
 | `alimentacion` | 37 |
 | `desarrollo` | 36 |
 | `salud_mental` | 22 |

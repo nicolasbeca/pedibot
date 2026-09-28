@@ -620,8 +620,8 @@
   "topic": "vacunas",
   "doc_type": "hoja_padres",
   "usage": "citar_solo",
-  "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_pcv13.pdf",
-  "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. enfermedad neumocócica."
+  "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_pcv.pdf",
+  "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. enfermedad neumocócica. 24-sep-2026:Immunize.org renombró el fichero de hindi_pcv13.pdf a hindi_pcv.pdf y el texto es byte a byte el mismo (comprobado), así que sólo cambia el enlace; el doc_id y el fichero local conservan el nombre viejo a propósito, para no romper lo que ya está indexado."
  },
  {
   "doc_id": "cdcvis_hi_rotavirus",
@@ -689,6 +689,19 @@
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
  {
+  "doc_id": "canada_en_concussion_sign_symptoms",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Concussion: Symptoms and treatment",
+  "year": "",
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/diseases/concussion-sign-symptoms.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
+ },
+ {
   "doc_id": "canada_fr_coqueluche_toux_coquelucheuse",
   "org": "Gouvernement du Canada",
   "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
@@ -700,6 +713,19 @@
   "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/coqueluche-toux-coquelucheuse.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "canada_en_flu_influenza",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Flu (seasonal influenza): Symptoms and treatment",
+  "year": "",
+  "lang": "en",
+  "topic": "respiratorio",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/diseases/flu-influenza.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
  },
  {
   "doc_id": "canada_fr_grippe_influenza",
@@ -715,6 +741,19 @@
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
  {
+  "doc_id": "canada_en_lyme_disease",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Lyme disease: Symptoms and treatment",
+  "year": "",
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/diseases/lyme-disease.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
+ },
+ {
   "doc_id": "canada_fr_maladie_lyme",
   "org": "Gouvernement du Canada",
   "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
@@ -726,6 +765,32 @@
   "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/maladie-lyme.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "canada_en_measles",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Measles: Symptoms and treatment",
+  "year": "",
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/diseases/measles.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
+ },
+ {
+  "doc_id": "canada_en_mumps",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Mumps: Symptoms and treatment",
+  "year": "",
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/diseases/mumps.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
  },
  {
   "doc_id": "canada_fr_oreillons",
@@ -741,6 +806,19 @@
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
  {
+  "doc_id": "canada_en_respiratory_syncytial_virus_rsv",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Respiratory syncytial virus (RSV): Symptoms and treatment",
+  "year": "",
+  "lang": "en",
+  "topic": "respiratorio",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/diseases/respiratory-syncytial-virus-rsv.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
+ },
+ {
   "doc_id": "canada_fr_rougeole",
   "org": "Gouvernement du Canada",
   "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
@@ -752,6 +830,19 @@
   "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/rougeole.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "canada_en_rubella",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Rubella",
+  "year": "",
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/diseases/rubella.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
  },
  {
   "doc_id": "canada_fr_rubeole",
@@ -767,6 +858,19 @@
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
  },
  {
+  "doc_id": "canada_en_sun_safety",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Sun safety",
+  "year": "",
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/health-canada/services/sun-safety.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
+ },
+ {
   "doc_id": "canada_fr_securite_soleil",
   "org": "Gouvernement du Canada",
   "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
@@ -778,6 +882,19 @@
   "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-canada/services/securite-soleil.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "canada_en_vaccination_children",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Vaccines for children: About vaccines",
+  "year": "",
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/vaccination-children.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
  },
  {
   "doc_id": "canada_fr_vaccinations_pour_enfants",
@@ -804,6 +921,19 @@
   "usage": "publico",
   "url": "https://www.canada.ca/fr/sante-publique/services/maladies/virus-respiratoire-syncytial-vrs.html",
   "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "canada_en_whooping_cough_pertussis",
+  "org": "Gouvernement du Canada",
+  "org_full": "Gouvernement du Canada / Government of Canada (santé publique)",
+  "title": "Whooping cough (pertussis): Symptoms and treatment",
+  "year": "",
+  "lang": "en",
+  "topic": "respiratorio",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.canada.ca/en/public-health/services/diseases/whooping-cough-pertussis.html",
+  "notes": "licence: Reproduction non commerciale autorisée sans permission, avec exactitude, titre, auteur et URL d'origine (Avis, canada.ca); fetched 2026-09-28"
  },
  {
   "doc_id": "ninojesus_primeros_auxilios",
@@ -3406,7 +3536,7 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
-  "doc_id": "nhs_en_headaches_in_children",
+  "doc_id": "nhs_en_headaches",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
   "title": "Headaches",
@@ -3415,8 +3545,8 @@
   "topic": "neurologia",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/headaches-in-children/",
-  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+  "url": "https://www.nhs.uk/symptoms/headaches/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-24"
  },
  {
   "doc_id": "nhs_en_heart_palpitations",
