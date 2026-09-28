@@ -116,6 +116,20 @@ rules:
   - ne se r[ée]veille pas
   - perte de connaissance
   - perd (connaissance|conscience)
+  # 28-sep-2026: la consciencia ALTERADA, no sólo la perdida. La guía árabe de malaria pone
+  # «اضطراب في الوعي» entre los signos de urgencia (el «impaired consciousness» de la malaria
+  # grave, OMS/CDC) y salía rutina; ninguna lengua lo conocía. tests/test_altered_consciousness.py
+  - (alteraci[oó]n|disminuci[oó]n|trastorno)( del nivel)? de (la )?(consciencia|conciencia)
+  - (nivel de )?(consciencia|conciencia) (alterad|disminuid)[oa]
+  - (impaired|altered|reduced|decreased|depressed) (level of )?consciousness
+  - troubles? de (la )?conscience
+  - conscience alt[ée]r[ée]e
+  - bewusstseinsst[öo]rung
+  - (getr[üu]btes|eingeschr[äa]nktes) bewusstsein
+  - (нарушени\w*|угнетени\w*|спутанн\w*) сознани
+  - (اضطراب|تغير|تغيّر|انخفاض|ضعف) (في )?(مستوى )?الوعي
+  - (altera[çc][ãa]o|diminui[çc][ãa]o|rebaixamento)( do n[íi]vel)? da consci[êe]ncia
+  - चेतना में (बदलाव|कमी|गड़बड़ी)
   - a perdu connaissance
   - ne reprend pas connaissance
   - '[ée]vanoui'
