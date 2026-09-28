@@ -54,6 +54,9 @@ in "I have no reliable source for this". That number is the point of the whole d
 
 ## Running it
 
+**Full guide, checked step by step from a fresh clone: [docs/INSTALL.md](docs/INSTALL.md)** —
+engine, API and website, with no API key needed to try it.
+
     uv sync
     uv run pedibot ingest FUENTES --out index    # build the corpus index
     uv run pedibot ask "my 2 year old has a fever of 38.5"

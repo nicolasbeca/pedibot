@@ -13,6 +13,16 @@ import yaml
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+# 28-sep-2026: `web/site/src/data` está en .gitignore, así que en un clon limpio no existe y este
+# guion —el primer paso para construir la web— moría en la primera escritura. En el PC de siempre
+# la carpeta estaba de antes y nadie lo vio; lo encontró la prueba de instalar desde cero que
+# pide la DPGA.
+(ROOT / "web" / "site" / "src" / "data").mkdir(parents=True, exist_ok=True)
+# Y la portada importa los avisos de salud pública, que escribe `ops/alerts_fetch.py` en el
+# servidor. Sin ellos la web no se construye; vacíos es lo que ese guion deja cuando falla.
+_alerts = ROOT / "web" / "site" / "src" / "data" / "alerts.json"
+if not _alerts.exists():
+    _alerts.write_text("[]", encoding="utf-8")
 docs = yaml.safe_load((ROOT / "config" / "fuentes.yaml").read_text(encoding="utf-8"))["sources"]
 _web = ROOT / "config" / "fuentes_web.yaml"
 if _web.exists():
