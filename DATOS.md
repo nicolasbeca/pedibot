@@ -19,9 +19,9 @@ Contado el **2026-09-28**.
 
 | | cifra | de dónde sale |
 |---|---:|---|
-| países con número de emergencia | **90** | config/emergency_numbers.yaml |
+| países con número de emergencia | **92** | config/emergency_numbers.yaml |
 | de ellos, sin número nacional | **8** | los marcados `no_national` o `unverified` |
-| calendarios de vacunas | **66** | config/vaccines.yaml |
+| calendarios de vacunas | **68** | config/vaccines.yaml |
 | tablas de crecimiento por país | **78** | config/growth_charts.yaml |
 | reglas de alarma | **96** | config/red_flags.yaml |
 | marcas de medicamento | **35** | config/drugs.yaml |
@@ -30,7 +30,7 @@ Contado el **2026-09-28**.
 | documentos del catálogo público | **632** | dataset/sources.json (CC0) |
 | documentos del catálogo interno | **635** | incluye los que no se pueden redistribuir |
 | guías publicadas | **521** | web/content/*/*.md |
-| pruebas automáticas | **10.427** | `uv run pytest --collect-only` |
+| pruebas automáticas | **10.443** | `uv run pytest --collect-only` |
 | África: países con número | **54** | los 54 del continente |
 | África: con calendario | **54** | los 54 del continente |
 | África: con curva | **52** | los 54 del continente |

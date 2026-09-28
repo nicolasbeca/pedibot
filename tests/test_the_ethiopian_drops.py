@@ -233,10 +233,12 @@ def test_las_gotas_etiopes_van_por_delante_de_las_otras_gotas() -> None:
     assert 0 <= suyas < otras, f"suyas en {suyas}, las otras gotas en {otras}"
 
 
-def test_en_el_congo_el_ibuprofeno_fuerte_va_primero() -> None:
-    """Su lista infantil dice 200 mg/5 ml, el DOBLE de lo habitual.
+@pytest.mark.parametrize("pais", ["CD", "DO", "HT"])
+def test_donde_el_ibuprofeno_es_fuerte_va_primero(pais: str) -> None:
+    """Sus listas dicen 200 mg/5 ml, el DOBLE de lo habitual (el Congo, 20-sep; la República
+    Dominicana y Haití, 28-sep).
 
-    Un padre congoleño que cogiera la fila de 100 mg/5 ml le daría la mitad de lo que necesita.
+    Un padre que cogiera la fila de 100 mg/5 ml le daría la mitad de lo que necesita.
     No es el error peligroso —quedarse corto no hace daño— pero es el error, y se evita.
     """
     from pedibot.bot.dose import format_result
@@ -245,7 +247,7 @@ def test_en_el_congo_el_ibuprofeno_fuerte_va_primero() -> None:
 
     cat = DrugCatalog(ROOT / "config" / "drugs.yaml")
     r = calculate("ibuprofeno", 10.0, 24)
-    texto = format_result(r, "en", country_forms=bottles_in_country(cat, "ibuprofeno", "CD"))
+    texto = format_result(r, "en", country_forms=bottles_in_country(cat, "ibuprofeno", pais))
     primera = next(x.strip() for x in texto.split("\n") if x.strip().startswith("–"))
     assert "200 mg/5 ml" in primera, primera
 

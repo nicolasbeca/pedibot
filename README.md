@@ -23,10 +23,10 @@ document repeats one of them wrongly.
 
 - **632 paediatric documents** from paediatric societies, health ministries and the WHO, each
   with its licence read and recorded, and each answer cites the ones it used.
-- **Emergency numbers for 90 countries**, each from the page of the body that publishes it. In
+- **Emergency numbers for 92 countries**, each from the page of the body that publishes it. In
   eight of them the source states that no national service exists, and the page says that rather
   than invent a number.
-- **Childhood vaccination schedules for 66 countries**, transcribed from the official document,
+- **Childhood vaccination schedules for 68 countries**, transcribed from the official document,
   with the issuing ministry and the date it was last checked.
 - **96 red-flag rules** in nine languages, each one backed by a document that says so.
 - **Paracetamol and ibuprofen dosing by weight**, from fixed tables, calculated in the page

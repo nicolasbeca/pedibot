@@ -65,7 +65,18 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
     "UY": ("uruguay", "uruguay"),
     "CR": ("costa rica", "costarricense"),
     "PA": ("panamá", "panama", "panameñ", "panamen"),
-    "DO": ("república dominicana", "republica dominicana", "dominican"),
+    "DO": (
+        "república dominicana",
+        "republica dominicana",
+        "dominican",
+        "dominicain",
+        "доминикан",
+        "الدومينيكان",
+        "डोमिनिकन",
+    ),
+    # 28-sep-2026: Haití, con el calendario que reporta a la OMS. «haitian» y «haïtien» son el
+    # gentilicio; el criollo dice «Ayiti».
+    "HT": ("haití", "haiti", "haïti", "haitian", "haïtien", "haitien", "ayiti", "гаити", "هايتي", "हैती"),
     "GT": ("guatemala", "guatemaltec"),
     "HN": ("honduras", "hondureñ", "hondureno"),
     "NI": ("nicaragua", "nicaragüens", "nicaraguens"),

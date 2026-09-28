@@ -48,8 +48,8 @@ release**:
 - **Describe this release:** vale con dos líneas. Por ejemplo:
 
       First public release. Answers parents' questions from 632 published paediatric
-      documents, citing the source of every clinical sentence. Emergency numbers for 90
-      countries, vaccination schedules for 66, WHO growth standards and MUAC, in eight
+      documents, citing the source of every clinical sentence. Emergency numbers for 92
+      countries, vaccination schedules for 68, WHO growth standards and MUAC, in eight
       languages.
 
 - **Publish release**.

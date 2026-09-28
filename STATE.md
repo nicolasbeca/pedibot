@@ -1,6 +1,22 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-21** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-09-28** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 28-sep-2026 · la ley en la política, la consciencia alterada y dos países nuevos
+
+- **Web:** sección «Cómo comprobar lo que decimos» (GitHub, Zenodo, Hugging Face) y `sameAs` con
+  las cuatro identidades. La política de privacidad nombra RGPD, LOPDGDD, responsable y AEPD en
+  las ocho lenguas (lo pide el indicador 7 de la DPGA).
+- **Triaje:** «consciencia alterada» es emergencia en todas las lenguas; sólo se conocía la
+  PERDIDA. Lo destapó la guía árabe de malaria del servidor. `tests/test_altered_consciousness.py`.
+- **Dependencias:** fuera `eth-account` y `virtuals-acp`: nada las importaba (el agente de ACP va
+  por la CLI `acp`). Salió al leer el SBOM de GitHub para la DPGA.
+- **República Dominicana y Haití** (fuentes de Frank Brightwell, Somos Amigos Medical Missions):
+  calendario de la OMS/WIISE, 911 y 116 (FCDO, OGL) y concentraciones de sus listas nacionales:
+  en los dos el ibuprofeno líquido es 200 mg/5 ml, el doble del habitual, y sale primero.
+  **Curvas: fuera** hasta tener fuente de qué cartilla usan; se le pregunta a Frank.
+- **DPGA:** respuestas en inglés en `ops/DPGA_FORM_EN.md`. La envía el operador.
+- **Esperando:** Frank (¿francés o criollo?, ¿qué cartilla?), DPGA cuando se envíe.
 
 > Nota de la revisión del 8-sep: la cabecera de este fichero decía «25-ago» mientras el código
 > iba por el 7-sep, con 234 commits y catorce días de trabajo sin recoger. Un estado vivo que

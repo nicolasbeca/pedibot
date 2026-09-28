@@ -151,6 +151,20 @@ country_forms:
     leido: "2026-09-20: «Paracetamol … Suspensão Oral Fr. 100 mL 125mg/5 mL … 250 mg/5 mL», «Ibuprofeno … Suspensão Oral 100 mg/5 mL»"
     paracetamol: ["jarabe 125 mg/5 ml", "jarabe 250 mg/5 ml"]
     ibuprofeno: ["jarabe 2 % (100 mg/5 ml)"]
+  # 28-sep-2026: las dos listas nos las señaló Frank Brightwell (Somos Amigos Medical Missions).
+  # En las dos, como en el Congo, el ibuprofeno liquido es de 200 mg/5 ml: el DOBLE del habitual.
+  DO:
+    source: "República Dominicana — Cuadro Básico de Medicamentos Esenciales 2024, DIGEMAPS (repositorio de nEML de la OMS)"
+    url: "https://cdn.who.int/media/docs/default-source/essential-medicines/national-essential-medicines-lists-(neml)/paho_neml/rep.-dominicana-neml-2024.pdf"
+    leido: "2026-09-28, páginas 28-29: «acetaminofen (paracetamol) Líquido oral: 125 mg/5 ml», «Solución para administrar en gotas: 100 mg/ml», «ibuprofeno Líquido oral: 200mg/5ml»"
+    paracetamol: ["gotas 100 mg/ml", "jarabe 125 mg/5 ml"]
+    ibuprofeno: ["jarabe 4 % (200 mg/5 ml)"]
+  HT:
+    source: "Haïti — Liste nationale des médicaments essentiels, 2e édition (MSPP, 2020)"
+    url: "http://www.mspp.gouv.ht/sites/default/files/2025-12/Liste%20Nationale%20des%20M%C3%A9dicaments%20Essentiels%202e%20%C3%A9dition_publication%202022%20(1).pdf"
+    leido: "2026-09-28, página 21: «Paracétamol (acétaminophène) Sirop 120 mg/5 ml ; 125 mg/5 ml», «Ibuprofène* Sirop 200 mg/5 ml». La lista no trae gotas."
+    paracetamol: ["jarabe 120 mg/5 ml", "jarabe 125 mg/5 ml"]
+    ibuprofeno: ["jarabe 4 % (200 mg/5 ml)"]
   ET:
     source: "EFDA — Ethiopian Food and Drug Authority, list of medicines allowed OTC"
     url: "https://www.efda.gov.et/wp-content/uploads/2022/09/OTC-medicines-list.pdf"

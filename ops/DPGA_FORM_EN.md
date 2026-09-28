@@ -26,9 +26,9 @@ A free paediatric answer for a worried parent, built only from published paediat
 
 PediBot answers the questions families ask when a child is ill — fever, dosing, rashes, vaccines, growth, when to go to hospital — using only what paediatric societies, ministries of health and the WHO already publish for parents, and citing the document each sentence comes from. It is free, needs no account, and works in eight languages (English, Spanish, French, Portuguese, German, Russian, Hindi and Arabic).
 
-Before any language model is involved, a rule-based triage checks 96 red-flag rules and, when one fires, puts the local emergency number first (90 countries, including all 54 in Africa). Doses come from an authorised table, not from the model. A verification step rejects any draft that does not cite, cites something that does not exist, or states a dose outside the table; if the second attempt also fails, the answer is a refusal.
+Before any language model is involved, a rule-based triage checks 96 red-flag rules and, when one fires, puts the local emergency number first (92 countries, including all 54 in Africa). Doses come from an authorised table, not from the model. A verification step rejects any draft that does not cite, cites something that does not exist, or states a dose outside the table; if the second attempt also fails, the answer is a refusal.
 
-Vaccination schedules (66 countries), growth charts (78 countries) and MUAC screening work with no model at all. The catalogue of 632 source documents is published as open data (CC0).
+Vaccination schedules (68 countries), growth charts (78 countries) and MUAC screening work with no model at all. The catalogue of 632 source documents is published as open data (CC0).
 
 ---
 
