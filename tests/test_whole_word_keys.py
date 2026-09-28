@@ -152,6 +152,9 @@ _REVISADAS = {
     # inglés y en francés. Es su propia raíz, que es justo lo que el prefijo debe coger.
     "bronchiolit",
     "cellulit",  # cellulitis; en castellano ya está «celulitis» entera
+    # 28-sep-2026: «autism» coge autismo, autisme y autismus: la misma palabra en cada lengua.
+    # Saltó cuando la guía portuguesa de autismo metió la palabra en el corpus.
+    "autism",
     "vulvovaginit",  # vulvovaginitis, vulvovaginite
     "hyperhidros",  # hyperhidrosis; y su gemela castellana «hiperhidros»
     "hiperhidros",

@@ -919,8 +919,8 @@
   "topic": "vacunas",
   "doc_type": "hoja_padres",
   "usage": "citar_solo",
-  "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_pcv13.pdf",
-  "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. enfermedad neumocócica."
+  "url": "https://www.immunize.org/wp-content/uploads/vis/hindi_pcv.pdf",
+  "notes": "Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va como citar_solo. enfermedad neumocócica. 24-sep-2026:Immunize.org renombró el fichero de hindi_pcv13.pdf a hindi_pcv.pdf y el texto es byte a byte el mismo (comprobado), así que sólo cambia el enlace; el doc_id y el fichero local conservan el nombre viejo a propósito, para no romper lo que ya está indexado."
  },
  {
   "doc_id": "cdcvis_hi_rotavirus",
@@ -1755,7 +1755,7 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
-  "doc_id": "nhs_en_headaches_in_children",
+  "doc_id": "nhs_en_headaches",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
   "title": "Headaches",
@@ -1764,8 +1764,8 @@
   "topic": "neurologia",
   "doc_type": "hoja_padres",
   "usage": "publico",
-  "url": "https://www.nhs.uk/conditions/headaches-in-children/",
-  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+  "url": "https://www.nhs.uk/symptoms/headaches/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-24"
  },
  {
   "doc_id": "nhs_en_head_lice_and_nits",

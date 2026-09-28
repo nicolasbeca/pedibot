@@ -71,7 +71,9 @@ The only external service is the language model that writes the final answer, an
 
 Evidence: https://github.com/nicolasbeca/pedibot#no-lock-in
 
-SBOM: [attach the file exported from GitHub → Insights → Dependency graph → Export SBOM]
+SBOM: attached (exported from GitHub's dependency graph).
+
+A note on what the SBOM shows: a few NVIDIA CUDA packages with proprietary licences appear in it. They come only through the optional `embeddings` extra (`sentence-transformers` → PyTorch's GPU build) and are not needed to run PediBot: the default install does not include that extra, and where embeddings are wanted, PyTorch's CPU build — fully open (BSD) — works in their place with no code change.
 
 ---
 
@@ -86,7 +88,7 @@ To run it locally:
     uv run pedibot ask "my 2 year old has a fever of 38.5"
     uv run pytest
 
-The repository has 10,398 automated tests and a golden set that is measured end to end before every deployment.
+The repository has 10,427 automated tests and a golden set that is measured end to end before every deployment.
 
 ---
 
@@ -107,7 +109,7 @@ They are generated from the catalogue with `uv run python scripts/export_dataset
 
 Privacy policy: https://pedibot.xyz/legal (published in all eight languages)
 
-Laws: [to be filled in once the policy names them — see the note in the chat of 28-sep-2026]
+Laws: EU General Data Protection Regulation (Regulation (EU) 2016/679, GDPR); Spain's Organic Law 3/2018 on Data Protection (LOPDGDD). The policy names both, identifies the data controller (Nicolás Beca, pedibot.ai@gmail.com) and states the user's rights of access, rectification, erasure and portability, and the right to complain to the Spanish Data Protection Agency (aepd.es).
 
 What the system does:
 

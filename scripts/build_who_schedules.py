@@ -55,6 +55,34 @@ IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
 #: ISO3 → (ISO2, el nombre del país en las ocho lenguas del sitio)
 PAISES: dict[str, tuple[str, dict[str, str]]] = {
+    # 28-sep-2026: la República Dominicana y Haití, que no tenían nada. Las fuentes nos las mandó
+    # Frank Brightwell (Somos Amigos Medical Missions), que atiende a los dos en su clínica.
+    "DOM": (
+        "DO",
+        {
+            "en": "Dominican Republic",
+            "es": "República Dominicana",
+            "fr": "République dominicaine",
+            "de": "Dominikanische Republik",
+            "ru": "Доминиканская Республика",
+            "ar": "جمهورية الدومينيكان",
+            "pt": "República Dominicana",
+            "hi": "डोमिनिकन गणराज्य",
+        },
+    ),
+    "HTI": (
+        "HT",
+        {
+            "en": "Haiti",
+            "es": "Haití",
+            "fr": "Haïti",
+            "de": "Haiti",
+            "ru": "Гаити",
+            "ar": "هايتي",
+            "pt": "Haiti",
+            "hi": "हैती",
+        },
+    ),
     "MAR": (
         "MA",
         {
