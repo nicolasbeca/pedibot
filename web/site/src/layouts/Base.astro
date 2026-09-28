@@ -82,7 +82,7 @@ const canonical = `${site}${path === '/' ? '' : path}`;
 // among the six is the same principle the rest of this file runs on.
 const everyEdition = [{ lang, href: path }, ...alternates];
 const enHref = everyEdition.find((a) => a.lang === 'en')?.href ?? null;
-const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'PediBot', url: site, logo: `${site}/logo.png`, email: 'pedibot.ai@gmail.com', sameAs: ['https://x.com/pedibotai'] };
+const org = { '@context': 'https://schema.org', '@type': 'Organization', name: 'PediBot', url: site, logo: `${site}/logo.png`, email: 'pedibot.ai@gmail.com', sameAs: ['https://x.com/pedibotai', 'https://github.com/nicolasbeca/pedibot', 'https://doi.org/10.5281/zenodo.22932517', 'https://huggingface.co/datasets/PediBot/pedibot-sources'] };
 ---
 <html lang={lang} dir={dirFor(lang)}>
 <head>

@@ -38,6 +38,14 @@ const fill = (text: string) =>
     .replace(/\{langs\}/g, counts.langs)
     .replace(/\{email\}/g, MAIL);
 
+//: Enlaces, no sellos: cada uno lleva a un sitio donde se ve el trabajo, y sólo entra lo que
+//: es comprobable hoy. Un foro al que se ha escrito no es un aval y no está aquí (28-sep-2026).
+const comprobables: [string, string][] = [
+  [T.check_code, 'https://github.com/nicolasbeca/pedibot'],
+  [T.check_doi, 'https://doi.org/10.5281/zenodo.22932517'],
+  [T.check_data, 'https://huggingface.co/datasets/PediBot/pedibot-sources'],
+];
+
 const cifras: [string, string][] = [
   [counts.docs, T.n_docs],
   [counts.orgs, T.n_orgs],
@@ -72,6 +80,14 @@ const cifras: [string, string][] = [
   <h2>{T.not_h}</h2>
   <ul class="no">
     {T.not_points.map((line: string) => <li>{line}</li>)}
+  </ul>
+
+  <h2>{T.check_h}</h2>
+  <p>{T.check_p}</p>
+  <ul class="no">
+    {comprobables.map(([texto, url]) => (
+      <li><a href={url} rel="noopener">{texto}</a></li>
+    ))}
   </ul>
 
   <h2>{T.mistakes_h}</h2>
