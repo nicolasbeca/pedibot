@@ -21,7 +21,7 @@ Every number below is counted from the files in this repository, never typed by 
 [DATOS.md](DATOS.md), which is generated, and `scripts/check_docs.py`, which fails the build if a
 document repeats one of them wrongly.
 
-- **632 paediatric documents** from paediatric societies, health ministries and the WHO, each
+- **642 paediatric documents** from paediatric societies, health ministries and the WHO, each
   with its licence read and recorded, and each answer cites the ones it used.
 - **Emergency numbers for 92 countries**, each from the page of the body that publishes it. In
   eight of them the source states that no national service exists, and the page says that rather
@@ -104,6 +104,12 @@ The project's own record is written in Spanish, because that is the language it 
 Copyright © 2026 Nicolás Beca. The code is licensed under AGPL-3.0-or-later; the catalogue is
 dedicated to the public domain under CC0. The name PediBot and the logo belong to the author and
 are not covered by either licence: fork the code freely, but call your fork something else.
+
+**Other licences.** The AGPL requires anyone who offers PediBot, or a modified version of it, as
+a service to publish their full source code under the same licence. If that does not suit your
+organisation, a separate commercial licence for the code can be discussed with the author.
+Contributions are welcome; to keep that option open, contributors may be asked to agree that the
+author can also license their contribution this way.
 
 Contact: pedibot.ai@gmail.com
 

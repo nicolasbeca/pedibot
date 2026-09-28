@@ -1565,6 +1565,19 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "fr",
         ["todas"],
     ),
+    # 28-sep-2026: las diez gemelas en inglés. La licencia era la misma y estaba aprobada desde el
+    # 2-sep; sólo se había traído la mitad francesa. URLs leídas del conmutador de idioma de cada
+    # página francesa, mismos temas y edades.
+    ("canada", "https://www.canada.ca/en/public-health/services/diseases/respiratory-syncytial-virus-rsv.html", "respiratorio", "en", ["lactante"]),
+    ("canada", "https://www.canada.ca/en/public-health/services/diseases/measles.html", "piel", "en", ["todas"]),
+    ("canada", "https://www.canada.ca/en/public-health/services/diseases/whooping-cough-pertussis.html", "respiratorio", "en", ["lactante", "todas"]),
+    ("canada", "https://www.canada.ca/en/public-health/services/diseases/flu-influenza.html", "respiratorio", "en", ["todas"]),
+    ("canada", "https://www.canada.ca/en/public-health/services/diseases/mumps.html", "general", "en", ["todas"]),
+    ("canada", "https://www.canada.ca/en/public-health/services/diseases/rubella.html", "piel", "en", ["todas"]),
+    ("canada", "https://www.canada.ca/en/public-health/services/diseases/lyme-disease.html", "piel", "en", ["todas"]),
+    ("canada", "https://www.canada.ca/en/public-health/services/diseases/concussion-sign-symptoms.html", "accidentes", "en", ["todas"]),
+    ("canada", "https://www.canada.ca/en/health-canada/services/sun-safety.html", "accidentes", "en", ["todas"]),
+    ("canada", "https://www.canada.ca/en/public-health/services/vaccination-children.html", "vacunas", "en", ["todas"]),
     # ---------------- OMS: lote del 11-sep-2026 ----------------
     # 23 fichas en cinco idiomas (115 documentos). Salen de atacar en serio India y los países
     # árabes: el corpus estaba hecho de pediatría europea y no tenía malaria, dengue, tifoidea,

@@ -13,6 +13,13 @@ Disallow: /api/
 Disallow: /a/
 Disallow: /admin
 
+# SEO-tool crawlers, blocked entirely (28-sep-2026): 1,715 requests in seven days and not one
+# visitor behind them. A second group is safe here only because it disallows everything; see the
+# warning above before adding any group that ALLOWS something.
+User-agent: AhrefsBot
+User-agent: SemrushBot
+Disallow: /
+
 Sitemap: https://pedibot.xyz/sitemap-index.xml
 
 # A map of the site for the crawlers that read it to answer questions, generated from the content
