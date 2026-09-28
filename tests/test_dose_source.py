@@ -21,7 +21,7 @@ from pedibot.ingest.schema import Chunk
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
-def _hit(dose_table: bool, dose_source: bool) -> Hit:
+def _hit(dose_table: bool, dose_source: bool, text: str = "dexametasona 1 mg/kg dosis única") -> Hit:
     return Hit(
         Chunk(
             chunk_id="d#1",
@@ -32,7 +32,7 @@ def _hit(dose_table: bool, dose_source: bool) -> Hit:
             lang="es",
             section="S",
             pages=[1],
-            text="dexametasona 1 mg/kg dosis única",
+            text=text,
             topic="medicamentos",
             doc_type="libro",  # type: ignore[arg-type]
             evidence="editorial",
@@ -55,7 +55,32 @@ def test_a_textbook_dose_table_does_not_unlock_a_dose():
 
 
 def test_the_sanctioned_dosing_source_does_unlock_it():
-    assert verify(_TEXT, [_hit(dose_table=True, dose_source=True)]) == []
+    tabla = _hit(dose_table=True, dose_source=True, text="paracetamol 250 mg cada 8 horas")
+    assert verify(_TEXT, [tabla]) == []
+
+
+# 28-sep-2026: la tabla autorizada entre las fuentes no basta; la CIFRA tiene que salir de ella.
+# El README y la solicitud de la DPGA lo prometían así («a dose that does not come from the
+# sanctioned dosing table») y el código sólo miraba que la tabla estuviera. Medido antes de
+# endurecerlo: ninguna de las 521 guías lleva una cifra en mg, y de 873 respuestas sólo 2, las
+# dos de la calculadora, que calcula y no redacta.
+_AEPAP = "Paracetamol: 10-15 mg/kg/dosis cada 4-6 horas. Máximo 60 mg/kg/día. Ibuprofeno 5-10 mg/kg."
+
+
+def test_a_dose_copied_wrong_from_the_table_is_rejected():
+    tabla = _hit(dose_table=True, dose_source=True, text=_AEPAP)
+    assert "dose_off_table" in verify("Paracetamol a 25 mg/kg cada 6 horas [1].", [tabla])
+
+
+def test_a_dose_that_is_in_the_table_passes_ranges_included():
+    tabla = _hit(dose_table=True, dose_source=True, text=_AEPAP)
+    assert verify("Paracetamol, 10–15 mg/kg por dosis, sin pasar de 60 mg/kg al día [1].", [tabla]) == []
+
+
+def test_the_table_must_be_one_of_the_sources_it_cites_not_any_table():
+    buena = _hit(dose_table=True, dose_source=True, text=_AEPAP)
+    libro = _hit(dose_table=True, dose_source=False, text="amoxicilina 80 mg/kg/día")
+    assert "dose_off_table" in verify("Amoxicilina a 80 mg/kg al día [1].", [buena, libro])
 
 
 def test_the_catalogue_marks_exactly_the_dosing_guide():

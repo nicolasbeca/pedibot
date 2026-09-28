@@ -1215,10 +1215,34 @@ def verify(text: str, hits: list[Hit]) -> list[str]:
     for n in nums:
         if n < 1 or n > len(hits):
             problems.append(f"bad_citation_{n}")
-    sanctioned = any(h.chunk.is_dose_table and h.chunk.is_dose_source for h in hits)
-    if looks_like_medication_dose(text) and not sanctioned:
-        problems.append("dose_without_table")
+    tablas = [h.chunk.text for h in hits if h.chunk.is_dose_table and h.chunk.is_dose_source]
+    if looks_like_medication_dose(text):
+        if not tablas:
+            problems.append("dose_without_table")
+        # 28-sep-2026: que la tabla esté entre las fuentes no basta; la cifra tiene que salir de
+        # ella. Un «15 mg/kg» copiado como «25 mg/kg» pasaba con la tabla delante.
+        elif _cifras_mg(text) - set().union(*(_cifras_mg(t) for t in tablas)):
+            problems.append("dose_off_table")
     return problems
+
+
+#: Una cifra en miligramos, sola o como extremo de un rango («10-15 mg/kg», «10 a 15 mg»), en las
+#: cuatro escrituras del sitio.
+_MG_NUM = re.compile(
+    r"(\d+(?:[.,]\d+)?)(?:\s*(?:-|–|a|to|à|bis|до|إلى)\s*(\d+(?:[.,]\d+)?))?\s*"
+    rf"(?:mg\b|мг{_NO_LETRA}|(?:ملغ|مغ|ملغم){_NO_LETRA}|(?:मिग्रा|मिलीग्राम){_NO_LETRA})",
+    re.I,
+)
+
+
+def _cifras_mg(texto: str) -> set[float]:
+    """Las cifras en mg de un texto, para compararlas con las de la tabla autorizada."""
+    return {
+        float(g.replace(",", "."))
+        for m in _MG_NUM.finditer(texto)
+        for g in (m.group(1), m.group(2))
+        if g
+    }
 
 
 #: El padre no necesita oír hablar de «las fuentes» (21-sep-2026). La regla 15 del prompt lo

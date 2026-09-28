@@ -305,6 +305,33 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "docs": ["nhs_en_asthma", "mlp_en_asthmainchildren", "seup_crisis_asma"],
         "query": "asthma children inhaler attack",
     },
+    # 28-sep-2026: el asma en general, en las siete lenguas que no la tenían. `asthma_en` lleva el
+    # sufijo que el generador salta fuera del inglés; ésta es la misma guía con fuentes también en
+    # la lengua del lector (MedlinePlus en castellano, la ficha de la OMS en cuatro más).
+    "asma": {
+        "docs": [
+            "mlp_es_asthmainchildren",
+            "who_es_asthma",
+            "who_fr_asthma",
+            "who_ar_asthma",
+            "who_ru_asthma",
+            "nhs_en_asthma",
+            "mlp_en_asthmainchildren",
+        ],
+        "query": "asma niño inhalador asthma children inhaler",
+    },
+    # 28-sep-2026: cómo dar paracetamol e ibuprofeno, en las siete lenguas que no lo tenían. Son
+    # guías de dosis y por eso se esperó a que `verify()` exigiera que cada cifra en mg salga de la
+    # tabla autorizada; ninguna de estas fuentes lo es, así que la guía no puede dar mg y remite
+    # a la calculadora, que es lo que hace ya la inglesa.
+    "paracetamol": {
+        "docs": ["nhs_en_paracetamol_for_children", "seup_fiebre", "nhs_en_fever_in_children", "mlp_es_fever"],
+        "query": "paracetamol niño cómo dar paracetamol for children how to give",
+    },
+    "ibuprofeno": {
+        "docs": ["nhs_en_ibuprofen_for_children", "seup_fiebre", "nhs_en_fever_in_children", "mlp_es_fever"],
+        "query": "ibuprofeno niño cómo dar ibuprofen for children how to give",
+    },
     "paracetamol_en": {
         "docs": ["nhs_en_paracetamol_for_children"],
         "query": "paracetamol for children how to give",
@@ -1006,6 +1033,9 @@ SAME_SUBJECT: tuple[frozenset[str], ...] = tuple(
     frozenset(pair)
     for pair in (
         ("anafilaxia", "anaphylaxis_en"),
+        ("asma", "asthma_en"),
+        ("paracetamol", "paracetamol_en"),
+        ("ibuprofeno", "ibuprofen_en"),
         ("catarro", "common_cold"),
         ("cefalea", "headache_en"),
         ("constipation", "estrenimiento"),

@@ -104,7 +104,8 @@ def test_verify_rules():
     # professional textbook in the corpus would unlock antibiotic and corticoid doses (26-ago)
     textbook = [Hit(_chunk("a#s#1", "x", dose=True), 1.0, 1)]
     assert "dose_without_table" in verify("Dale 150 mg [1].", textbook)
-    dose_hits = [Hit(_chunk("a#s#1", "x", dose=True, dose_source=True), 1.0, 1)]
+    # y desde el 28-sep la cifra tiene que estar en esa tabla, no basta con que la tabla esté
+    dose_hits = [Hit(_chunk("a#s#1", "150 mg", dose=True, dose_source=True), 1.0, 1)]
     assert verify("Dale 150 mg [1].", dose_hits) == []
     # rehydration volumes are not a medication dose and never needed a table
     assert verify("Ofrece 5 ml de suero cada 10 minutos [1].", hits) == []
