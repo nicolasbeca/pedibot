@@ -54,8 +54,12 @@ const answerStrings = Object.fromEntries(
       </div>
       <form class="composer" id="composer">
         <textarea id="input" rows="1" placeholder={s.placeholder} aria-label={s.placeholder}></textarea>
+        {/* 28-sep-2026: la cámara sólo si la web se construye con PUBLIC_PHOTO_ENABLED=true (y el
+            servidor con PHOTO_ENABLED=true). Ver tests/test_photo_is_off.py. */}
+        {import.meta.env.PUBLIC_PHOTO_ENABLED === 'true' && (<>
         <button class="mic" type="button" id="photo-btn" aria-label={s.photo} title={s.photo}>📷</button>
         <input id="photo-in" type="file" accept="image/*" capture="environment" hidden />
+        </>)}
         <button class="mic" type="button" id="mic" aria-label={s.voice} title={s.voice}>🎤</button>
         <button class="send" type="submit" aria-label={s.send}>➤</button>
       </form>
@@ -278,9 +282,9 @@ const answerStrings = Object.fromEntries(
   const pre = new URLSearchParams(location.search).get('q'); if (pre) { input.value = pre; }
 
   // photo check (warning signs only): resize in the browser, send base64, render as a bot message
-  const photoBtn = document.getElementById('photo-btn') as HTMLButtonElement, photoIn = document.getElementById('photo-in') as HTMLInputElement;
-  photoBtn.addEventListener('click', () => { if (confirm(S.photo_hint)) photoIn.click(); });
-  photoIn.addEventListener('change', async () => {
+  const photoBtn = document.getElementById('photo-btn') as HTMLButtonElement | null, photoIn = document.getElementById('photo-in') as HTMLInputElement | null;
+  if (photoBtn && photoIn) photoBtn.addEventListener('click', () => { if (confirm(S.photo_hint)) photoIn.click(); });
+  if (photoIn) photoIn.addEventListener('change', async () => {
     const file = photoIn.files?.[0]; if (!file) return; photoIn.value = '';
     const img = new Image(); img.src = URL.createObjectURL(file); await img.decode();
     const max = 1024, k = Math.min(1, max / Math.max(img.width, img.height));

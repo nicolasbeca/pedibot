@@ -19,7 +19,9 @@ class Settings(BaseSettings):
     deepseek_api_key: str = ""
     deepseek_model: str = "deepseek-v4-flash"
     deepseek_vision_model: str = "deepseek-v4-flash-vision-exp"
-    photo_enabled: bool = True
+    # 28-sep-2026: apagada por defecto. Manda la foto del niño a un proveedor externo y la
+    # política no lo decía; volver a encenderla es una decisión (tests/test_photo_is_off.py).
+    photo_enabled: bool = False
     deepseek_base_url: str = "https://api.deepseek.com"
     # USD per 1M tokens (cache miss). Updated by hand; see PRD §11.
     llm_price_in_per_m: float = 0.14

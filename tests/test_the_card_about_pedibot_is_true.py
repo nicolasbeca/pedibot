@@ -85,3 +85,7 @@ def test_what_the_card_denies_is_really_denied() -> None:
     )
     if mira_fotos:
         assert "photo of skin, lips or face" in TEXTO, "la ficha no cuenta la comprobación de foto"
+    else:
+        # 28-sep-2026: las fotos se apagan (iban a un proveedor externo sin decirlo en la política
+        # de privacidad). Entonces la ficha tampoco puede prometerlas.
+        assert "camera button" not in TEXTO, "las fotos están apagadas y la ficha ofrece la cámara"

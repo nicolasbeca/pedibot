@@ -139,3 +139,13 @@ def test_every_legal_page_shows_the_law_paragraph() -> None:
     for lang in IDIOMAS:
         page = pages / ("legal.astro" if lang == "en" else f"{lang}/legal.astro")
         assert "s.legal_law" in page.read_text(encoding="utf-8"), f"{page} no la muestra"
+
+
+def test_every_language_says_the_question_goes_to_the_model_provider() -> None:
+    """La pregunta sale del servidor hacia el proveedor del modelo, y la política no lo decía
+    (28-sep-2026, al rellenar la DPGA). Sin datos de la cuenta y sin la IP, pero sale."""
+    bloques = re.split(r"\n  ([a-z]{2}): \{", I18N)
+    por_idioma = dict(zip(bloques[1::2], bloques[2::2], strict=True))
+    for lang in IDIOMAS:
+        m = re.search(r"legal_priv: \[(.*?)\],\n", por_idioma[lang], re.S)
+        assert m and "DeepSeek" in m.group(1), f"{lang}: la política no nombra al proveedor del modelo"
