@@ -28,6 +28,16 @@ Y el atajo que resolvió el ruso, el árabe y el francés —«si la OMS publica
 corpus abierto garantizado»— **no existe para el portugués ni para el hindi**: no son lenguas
 oficiales de la OMS. Para esos dos hay que abrir camino nuevo.
 
+> **Corrección del 28-sep-2026 sobre la OPS/OPAS (fila de abajo).** La CC BY-NC-SA 3.0 IGO cubre
+> las **publicaciones** de la OPS desde el 6-dic-2019 (lo dice su página de permisos, que se
+> titula precisamente «Publications — Permissions and licensing»), **no su web**: las páginas de
+> `paho.org/es/temas/…` llevan al pie «© Organización Panamericana de la Salud. Todos los
+> derechos reservados». Y lo que sí está bajo licencia es casi todo para profesionales (manuales
+> AIEPI, algoritmos clínicos, informes). Lo que escribe para el público —el cartel «Signos de
+> alarma del dengue» de 2023, el folleto de vacunas de Haití de 2024— no lleva licencia impresa.
+> **Resultado: la OPS no es fuente para familias** salvo pidiendo permiso. El desbloqueo del
+> portugués vino después de `gov.br/saude`, que ya aporta 14 documentos.
+
 ## Verificado hoy: abiertas ✅
 
 | Fuente | Quién es | Licencia leída | Qué aporta |
