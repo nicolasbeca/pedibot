@@ -40,7 +40,7 @@ Arrastra estos tres, de la carpeta `dataset/` del repositorio:
 
 | fichero local | cómo se llama al subirlo | qué es |
 |---|---|---|
-| `dataset/sources.csv` | `sources.csv` | el catálogo, 645 filas |
+| `dataset/sources.csv` | `sources.csv` | el catálogo, 632 filas |
 | `dataset/sources.json` | `sources.json` | el mismo, en JSON |
 | `dataset/HUGGINGFACE.md` | **`README.md`** ← renómbralo | la tarjeta que se lee en la página |
 
