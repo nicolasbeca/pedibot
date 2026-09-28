@@ -122,6 +122,7 @@ def test_stop_really_stops_the_notices_and_nothing_else() -> None:
 #: La DPGA lo pide para el indicador 7, y un padre tiene derecho a saber a quién reclamar.
 LEY = ("Nicolás Beca", "2016/679", "3/2018", "aepd.es")
 IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
+CHINA = {"en": "China", "es": "China", "fr": "Chine", "de": "China", "ru": "Кита", "ar": "الصين", "pt": "China", "hi": "चीन"}
 
 
 def test_every_language_names_the_controller_the_laws_and_where_to_complain() -> None:
@@ -149,3 +150,6 @@ def test_every_language_says_the_question_goes_to_the_model_provider() -> None:
     for lang in IDIOMAS:
         m = re.search(r"legal_priv: \[(.*?)\],\n", por_idioma[lang], re.S)
         assert m and "DeepSeek" in m.group(1), f"{lang}: la política no nombra al proveedor del modelo"
+        # y dónde: DeepSeek guarda y procesa en China (su propia política, 10-feb-2026). Se decidió
+        # seguir con él el 28-sep-2026 y decirlo; si cambia de proveedor, cambia esta frase.
+        assert CHINA[lang] in m.group(1), f"{lang}: la política no dice que la pregunta va a China"

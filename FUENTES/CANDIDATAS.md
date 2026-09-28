@@ -38,6 +38,14 @@ oficiales de la OMS. Para esos dos hay que abrir camino nuevo.
 > **Resultado: la OPS no es fuente para familias** salvo pidiendo permiso. El desbloqueo del
 > portugués vino después de `gov.br/saude`, que ya aporta 14 documentos.
 
+> **Corrección del 28-sep-2026 sobre gesund.bund.de (fila de abajo): descartada.** El aviso legal
+> dice entero: «Die Wiedergabe von textlichen Informationen … als Zitat in anderen Medien ist …
+> zulässig, dass die Informationen unverändert und vollständig mit Quellenangabe wiedergegeben
+> werden. **Die Wiedergabe ist auf einzelne Zitate beschränkt. Im Übrigen bleiben alle Rechte
+> vorbehalten.**» Sólo citas sueltas y literales. El chat resume y traduce lo que recupera, también
+> lo `citar_solo`, así que no cabe; y sus páginas enteras tampoco podrían ir en el repositorio
+> público. El 10-sep se leyó la primera frase y no las dos últimas.
+
 ## Verificado hoy: abiertas ✅
 
 | Fuente | Quién es | Licencia leída | Qué aporta |

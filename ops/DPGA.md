@@ -106,7 +106,7 @@ Política pública en <https://pedibot.xyz/es/legal>, en los ocho idiomas. Sujet
 - Las preguntas se guardan **de forma anónima** (sesión aleatoria, **sin IP**) para evaluar la
   calidad. La memoria de conversación dura 24 horas y se borra sola.
 - La IP se usa **sólo como hash con sal** para limitar peticiones; no se guarda en claro.
-- **Sin rastreadores publicitarios**, sin anuncios y sin cesión a terceros.
+- **Sin rastreadores publicitarios**, sin anuncios y sin venta de datos. Para redactar la respuesta, la pregunta (sin cuenta ni IP) va al proveedor del modelo, DeepSeek, que la procesa en China; la política lo dice desde el 28-sep-2026. Se decidió seguir con él y cambiar si la DPGA pone pegas (ver `STATE.md`).
 
 ## 8 · Estándares abiertos y buenas prácticas
 

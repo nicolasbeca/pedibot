@@ -16,7 +16,16 @@
   en los dos el ibuprofeno líquido es 200 mg/5 ml, el doble del habitual, y sale primero.
   **Curvas: fuera** hasta tener fuente de qué cartilla usan; se le pregunta a Frank.
 - **DPGA:** respuestas en inglés en `ops/DPGA_FORM_EN.md`. La envía el operador.
-- **Esperando:** Frank (¿francés o criollo?, ¿qué cartilla?), DPGA cuando se envíe.
+- **DPGA enviada** (GID0094286, 28-sep). Al rellenarla salieron y se arreglaron: guía de
+  instalación comprobada desde un clon limpio (`docs/INSTALL.md`; la web no se construía en uno),
+  `CODE_OF_CONDUCT.md`, las **fotos del niño apagadas por defecto** (iban al modelo de visión de un
+  tercero sin decirlo) y `verify()` exigiendo que cada cifra en mg salga de la tabla autorizada.
+- **Decisión del operador sobre DeepSeek (28-sep):** su propia política dice que procesa y guarda en
+  China, y no ofrece a clientes de la API contrato de encargo ni cláusulas tipo. **Se sigue con él**
+  y la política lo dice entero en ocho lenguas (China, fuera de la UE, sus condiciones, puede
+  entrenar); **si la DPGA pone pegas, se cambia** a un proveedor con servidores en la UE (Mistral,
+  Scaleway, OVHcloud: el cambio es de configuración), midiendo antes la calidad en ocho lenguas.
+- **Esperando:** Frank (¿francés o criollo?, ¿qué cartilla?).
 
 > Nota de la revisión del 8-sep: la cabecera de este fichero decía «25-ago» mientras el código
 > iba por el 7-sep, con 234 commits y catorce días de trabajo sin recoger. Un estado vivo que

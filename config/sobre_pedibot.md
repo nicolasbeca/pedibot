@@ -128,6 +128,9 @@ it (`tests/test_the_card_about_pedibot_is_true.py` checks the parts that can be 
 ## Privacy
 
 - Without an account nothing personal is asked and nothing personal should be written.
+- To write an answer, the question is sent to the company whose language model drafts it,
+  DeepSeek, which processes and stores it in China, outside the European Union, under its own
+  terms. It goes without the account and without the IP address, but with whatever was typed.
 - Questions and answers are kept anonymously — a random session identifier, no IP address — to
   measure and improve quality. The IP is used only as a salted hash to limit how many questions
   come from one place.

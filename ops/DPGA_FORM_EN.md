@@ -117,7 +117,7 @@ What the system does:
 - With an account (optional): e-mail, a hashed password and, for each child, name, date of birth, sex, country and the measurements the parent notes. Everything can be downloaded, and the account deleted, from the user's own page without asking anyone.
 - Questions and answers are stored anonymously (random session token, no IP address) to evaluate quality. Conversation memory lasts 24 hours.
 - The IP address is used only as a salted hash for rate limiting and is not stored in clear.
-- No advertising trackers, no ads, no data sold or shared with third parties.
+- No advertising trackers, no ads, no data sold. To draft an answer, the question (without account data or IP) is sent to the language-model provider, DeepSeek, which processes it in China; the privacy policy says so since 28-Sep-2026.
 
 ---
 
