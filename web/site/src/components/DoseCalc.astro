@@ -6,7 +6,7 @@ const s = t(lang);
 const { drug = s.dose_default_drug } = Astro.props;
 const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpol', 'Tylenol', 'Panadol', 'Apiretal', 'Termalgin', 'Gelocatil', 'Efferalgan', 'Doliprane', 'Tachipirina', 'Dalsy', 'Junifen', 'Apirofeno', 'Nurofen', 'Advil', 'Motrin', 'Alivium'];
 ---
-<div class="calc" data-lang={lang} data-strings={JSON.stringify({ every: s.dose_every, hours: s.dose_hours, max: s.dose_max, perday: s.dose_perday, check: s.dose_check, refer: s.dose_refer, only_known: s.dose_only_known, yours: s.dose_bottle_yours, odd: s.dose_bottle_odd })}>
+<div class="calc" data-lang={lang} data-strings={JSON.stringify({ every: s.dose_every, hours: s.dose_hours, max: s.dose_max, perday: s.dose_perday, check: s.dose_check, refer: s.dose_refer, only_known: s.dose_only_known, in_country: s.dose_in_country, yours: s.dose_bottle_yours, odd: s.dose_bottle_odd })}>
   <div>
     <div class="field"><label for="drug">{s.dose_drug}</label><input id="drug" list="drugs" value={drug} autocomplete="off" /><datalist id="drugs">{names.map(n => <option value={n} />)}</datalist></div>
     <div class="field"><label for="w">{s.dose_weight}</label><input id="w" type="number" min="1" max="120" step="0.5" value={kg} /></div>
@@ -71,6 +71,8 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
   .result :global(tr.suya td) { background: var(--sky); font-weight: 700; }
   .result :global(tr.suya td:first-child) { border-start-start-radius: 8px; border-end-start-radius: 8px; padding-inline-start: 10px; }
   .result :global(tr.suya td:last-child) { border-start-end-radius: 8px; border-end-end-radius: 8px; padding-inline-end: 10px; }
+  .result :global(tr.aqui td) { font-weight: 700; }
+  .result :global(tr.aqui small) { font-weight: 400; color: var(--muted, inherit); }
 </style>
 <script>
   const box = document.querySelector('.calc') as HTMLElement; const S = JSON.parse(box.dataset.strings || '{}'); const lang = box.dataset.lang || 'en';
@@ -121,7 +123,8 @@ const names = ['Paracetamol', 'Acetaminophen', 'Ibuprofen', 'Ibuprofeno', 'Calpo
       }
     }
     h += '<table>' + suya;
-    for (const f of j.ml_by_form) h += `<tr><td>${esc(f.form)}</td><td><b>${f.ml} ml</b></td></tr>`;
+    // 28-sep-2026: el bote que se vende en su país viene primero y dice que es el suyo.
+    for (const f of j.ml_by_form) h += `<tr${f.in_country ? ' class="aqui"' : ''}><td>${esc(f.form)}${f.in_country ? ` <small>· ${S.in_country}</small>` : ''}</td><td><b>${f.ml} ml</b></td></tr>`;
     h += '</table>';
     if (j.notes) h += `<div class="note">${esc(j.notes)}</div>`;
     h += `<p class="src">${esc(j.source)}. ${S.check}</p>`;

@@ -469,7 +469,13 @@ def create_app(
 
     @app.post("/api/dose")
     def dose(body: DoseIn) -> dict[str, object]:
-        from pedibot.bot.dose import DoseError, calculate, presentation_label
+        from pedibot.bot.dose import (
+            DoseError,
+            bottles_in_country,
+            calculate,
+            forms_in_country_first,
+            presentation_label,
+        )
         from pedibot.bot.strings import tool_strings
 
         cat = engine.drugs
@@ -483,14 +489,19 @@ def create_app(
         forms = brand.strengths_mg_per_ml() if brand else []
         if not forms:
             forms = [(p.name, p.mg_per_ml) for p in r.drug.presentations]
+        # El bote que se vende en el país del padre, delante y marcado. La página mandaba el país
+        # desde siempre y aquí se tiraba (28-sep-2026): en la República Dominicana, Haití y el
+        # Congo el ibuprofeno es de 200 mg/5 ml y la primera fila era la de 100.
+        del_pais = bottles_in_country(cat, key, body.country)
         ml_by_form = [
             {
                 "form": presentation_label(label, body.lang),
                 "ml": _ml(r.mg, mg_ml),
                 "ml_min": _ml(r.mg_min, mg_ml),
                 "ml_max": _ml(r.mg_max, mg_ml),
+                "in_country": en_su_pais,
             }
-            for label, mg_ml in forms
+            for label, mg_ml, en_su_pais in forms_in_country_first(forms, del_pais)
         ]
         info = cat.drugs[key] if cat else None
         # Cuando el fármaco no es para este niño, la respuesta no lleva la cifra. Decisión del

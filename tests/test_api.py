@@ -289,6 +289,34 @@ def test_the_dose_endpoint_hands_the_page_a_figure_not_a_band(client):
         assert isinstance(f["ml"], (int, float)), "una dosis es un número, no una banda"
 
 
+@pytest.mark.parametrize("pais", ["DO", "HT", "CD"])
+def test_the_calculator_puts_the_bottle_sold_in_the_country_first(client, pais):
+    """La calculadora de la web mandaba el país y la API lo tiraba (28-sep-2026).
+
+    El chat ya ponía delante el bote que se vende en el país del padre; la calculadora no. En la
+    República Dominicana, Haití y el Congo el ibuprofeno líquido es de 200 mg/5 ml, el doble del
+    habitual, y la primera fila que veía el padre era la de 100 mg/5 ml.
+    """
+    c, _ = client
+    j = c.post(
+        "/api/dose",
+        json={"drug": "ibuprofeno", "weight_kg": 10, "age_months": 24, "country": pais},
+    ).json()
+    primera = j["ml_by_form"][0]
+    assert "200 mg/5 ml" in primera["form"], j["ml_by_form"]
+    assert primera["in_country"] is True
+    assert not any(f["in_country"] for f in j["ml_by_form"][1:]), j["ml_by_form"]
+
+
+def test_without_a_country_the_calculator_order_does_not_change(client):
+    c, _ = client
+    base = {"drug": "ibuprofeno", "weight_kg": 10, "age_months": 24}
+    sin = c.post("/api/dose", json=base).json()["ml_by_form"]
+    desconocido = c.post("/api/dose", json={**base, "country": "ZZ"}).json()["ml_by_form"]
+    assert [f["form"] for f in sin] == [f["form"] for f in desconocido]
+    assert not any(f["in_country"] for f in sin + desconocido)
+
+
 def test_the_panel_can_name_every_language_and_level() -> None:
     """`_LANG_NAME` is a hand-written list and Hindi shipped in it as a bare "hi". A list of
     languages typed by hand always exempts the one just added — which is the one most likely to

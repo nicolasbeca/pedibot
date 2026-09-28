@@ -323,6 +323,24 @@ def _del_pais_primero(ml: dict[str, float], formas_del_pais: list[str]) -> list[
     return aqui + [f for f in filas if f not in aqui] if aqui else filas
 
 
+def forms_in_country_first(
+    forms: list[tuple[str, float]], formas_del_pais: list[str]
+) -> list[tuple[str, float, bool]]:
+    """Lo mismo que `_del_pais_primero`, para la calculadora de la web (28-sep-2026).
+
+    Allí las filas llegan como (etiqueta, mg por ml) y la página tiene que saber cuáles marcar,
+    así que cada una sale con su «se vende en tu país». Mismo criterio: por concentración.
+    """
+    concentraciones = {c for f in formas_del_pais if (c := _mg_por_ml(f)) is not None}
+
+    def aqui(mg_ml: float) -> bool:
+        return any(abs(mg_ml - x) < 0.05 for x in concentraciones)
+
+    return [(e, m, True) for e, m in forms if aqui(m)] + [
+        (e, m, False) for e, m in forms if not aqui(m)
+    ]
+
+
 def _cuantas_del_pais(filas: list[tuple[str, float]], formas_del_pais: list[str]) -> int:
     """Cuántas de las primeras filas se venden en su país, con el criterio que las ordenó."""
     concentraciones = {c for f in formas_del_pais if (c := _mg_por_ml(f)) is not None}
