@@ -30,8 +30,13 @@ Si alguien está describiendo a su hijo, no.
 >   parents only from openly licensed guidance». Si dicen que sí, el borrador lo ve el operador.
 > - Maternal Health Task Force (Harvard): propuesta corta — «Newborn danger signs: what official
 >   guidance says, and where a mother can read it in her own language». Ídem.
-> - **SEUP: no enviado a propósito.** Sus 29 hojas se usan sin licencia verificada (el campo
->   está vacío desde agosto); el correo tiene que ser una petición de permiso y lo decide el operador.
+> - **SEUP** (`secretaria@seup.org`, leído en su página de contacto): petición de permiso,
+>   aprobada por el operador. Sus 29 hojas se usan sin licencia verificada (el campo estaba vacío
+>   desde agosto): se pregunta si podemos seguir resumiéndolas con cita y enlace.
+> - **AEPap** (`aepap@aepap.org`, leído en el aviso legal de Familia y Salud): permiso para resumir
+>   los artículos de Familia y Salud (CC BY-NC-ND 3.0 ES: un resumen puede ser obra derivada) y
+>   para la Guía rápida de dosificación en la que se apoya la calculadora.
+> - Se paró en cinco a propósito: diez envíos el mismo día es el patrón de spam de abajo.
 
 ## CHIFA, lo primero de todo (20-sep-2026)
 
