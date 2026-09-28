@@ -88,6 +88,8 @@ El catálogo entero se publica en formatos no propietarios y sin nada personal d
 - <https://pedibot.xyz/dataset/sources.json> — JSON, CC0, 632 documentos.
 - `dataset/sources.csv` — el mismo, en CSV.
 - <https://pedibot.xyz/sources> — la misma lista, legible, con el organismo de cada documento.
+- <https://huggingface.co/datasets/PediBot/pedibot-sources> — publicado además como dataset abierto, con
+  su tabla navegable, para quien construya algo parecido.
 
 Se regeneran con `uv run python scripts/export_dataset.py`. No hay ningún dato de usuario en
 ellos, ni ninguna forma de que lo haya: salen del catálogo de fuentes, no del registro de uso.
@@ -192,12 +194,12 @@ Comprobado contra la API después de subirlo: los cien commits más recientes va
 No es decoración: la descripción y los topics son lo que se lee en las búsquedas de GitHub y lo
 que copian los directorios cuando enlazan un proyecto.
 
-### 2 · Hugging Face (hace falta él: la cuenta)
+### 2 · Hugging Face — **HECHO** (28-sep-2026)
 
 **Paso a paso en [`ops/HUGGINGFACE.md`](HUGGINGFACE.md)**, con cada pantalla. Unos diez minutos:
-crear el dataset con licencia `cc0-1.0` y subir tres ficheros arrastrándolos. El tercero,
-[`dataset/HUGGINGFACE.md`](../dataset/HUGGINGFACE.md), **hay que renombrarlo a `README.md`** al
-subirlo, porque es de donde Hugging Face lee la tarjeta y las etiquetas.
+crear el dataset con licencia `cc0-1.0` y arrastrar los tres ficheros de `dataset/` tal y como
+están. Los genera `scripts/export_dataset.py` desde el catálogo —la cabecera que Hugging Face
+lee para las etiquetas incluida—, así que no hay nada que escribir ni que renombrar.
 
 ### 3 · Zenodo — **HECHO** (24-sep-2026)
 

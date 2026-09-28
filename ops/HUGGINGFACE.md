@@ -1,5 +1,8 @@
 # Hugging Face, paso a paso
 
+> **Hecho el 28-sep-2026:** <https://huggingface.co/datasets/PediBot/pedibot-sources>
+> Queda como guion para la próxima vez que haya que actualizar el catálogo.
+
 **Para qué sirve.** Hugging Face es donde busca conjuntos de datos quien construye algo con
 modelos de lenguaje: investigadores, ONG que montan su propio asistente, gente que necesita
 fuentes de salud infantil ya clasificadas. Publicar ahí el catálogo pone a PediBot delante de
@@ -8,9 +11,9 @@ ese público y deja un enlace desde un dominio con autoridad, que es lo que hoy 
 **Cuánto lleva:** unos diez minutos, y la página está viva el mismo día. No hace falta instalar
 nada: se sube arrastrando ficheros.
 
-> **Ojo con los dos ficheros que se llaman igual.** Éste es el guion de pasos.
-> [`dataset/HUGGINGFACE.md`](../dataset/HUGGINGFACE.md) es **la tarjeta del dataset**: el texto
-> que se sube y que la gente lee en Hugging Face. Ya está escrito, con su cabecera YAML.
+> Éste es el guion de pasos. Lo que se sube son los **tres ficheros de `dataset/`** tal y como
+> están: los genera `scripts/export_dataset.py` desde el catálogo, cabecera de Hugging Face
+> incluida, así que no hay nada que escribir ni que renombrar.
 
 ---
 
@@ -38,16 +41,17 @@ crear nada.
 En el dataset recién creado → pestaña **Files and versions** → **Add file** → **Upload files**.
 Arrastra estos tres, de la carpeta `dataset/` del repositorio:
 
-| fichero local | cómo se llama al subirlo | qué es |
-|---|---|---|
-| `dataset/sources.csv` | `sources.csv` | el catálogo, 632 filas |
-| `dataset/sources.json` | `sources.json` | el mismo, en JSON |
-| `dataset/HUGGINGFACE.md` | **`README.md`** ← renómbralo | la tarjeta que se lee en la página |
+| fichero local | qué es |
+|---|---|
+| `dataset/sources.csv` | el catálogo, 632 filas |
+| `dataset/sources.json` | el mismo, en JSON |
+| `dataset/README.md` | la tarjeta que se lee en la página |
 
-> **El tercero es el importante y hay que renombrarlo.** Hugging Face lee la tarjeta del fichero
-> `README.md` y de ningún otro: si lo subes con su nombre original, la página sale vacía y el
-> dataset no aparece en las búsquedas por idioma ni por licencia, porque esos datos van en la
-> cabecera de ese fichero.
+> Los tres van con su propio nombre: no hay que renombrar nada. Hugging Face lee la tarjeta del
+> fichero `README.md` y de ningún otro, y su cabecera —licencia, idiomas, etiquetas— es lo que
+> pone las etiquetas de la página y la tabla navegable del CSV. Hasta el 28-sep-2026 esa tarjeta
+> era un fichero aparte que había que renombrar al subirlo, y mantenerla a mano ya había dejado
+> una cifra vieja dentro; ahora la escribe el generador.
 
 Pesan 170 KB y 280 KB, así que van por el navegador sin problema. Escribe un mensaje de commit
 —«first upload» vale— y **Commit changes to main**.
@@ -73,10 +77,11 @@ digital, que es justo el que pide un mecanismo de extracción de datos sin infor
 
 ## Cuando el catálogo cambie
 
-El dataset no se actualiza solo. Cuando entren fuentes nuevas —como las catorce del 23-sep—, hay
-que volver a subir `sources.csv` y `sources.json`: **Files and versions** → el fichero →
-**Edit** → arrastrar el nuevo encima → commit. Hugging Face guarda el histórico, así que quien
-lo hubiera descargado antes puede ver qué cambió.
+El dataset no se actualiza solo. Cuando entren fuentes nuevas —como las catorce del 23-sep—, se
+regenera con `uv run python scripts/export_dataset.py` y se vuelven a subir **los tres**:
+**Files and versions** → el fichero → **Edit** → arrastrar el nuevo encima → commit. El README
+también, porque sus cifras y sus tablas cambian con el catálogo. Hugging Face guarda el
+histórico, así que quien lo hubiera descargado antes puede ver qué cambió.
 
 Si algún día se hace a menudo, se automatiza con `huggingface_hub` desde el propio repositorio;
 hoy, a mano y cuando cambie de verdad, sobra.

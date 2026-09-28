@@ -77,8 +77,9 @@ and CSV, the site is static files. Nothing here needs a proprietary service to r
   service over a network, publish your changes too.
 - **The catalogue** — the selection of documents, the classification and the metadata — is
   [CC0](dataset/LICENSE): public domain, take it. It is served as
-  [sources.json](https://pedibot.xyz/dataset/sources.json) and listed, document by document with
-  its licence, at [pedibot.xyz/sources](https://pedibot.xyz/sources).
+  [sources.json](https://pedibot.xyz/dataset/sources.json), listed document by document at
+  [pedibot.xyz/sources](https://pedibot.xyz/sources), and published as a dataset at
+  [huggingface.co/datasets/PediBot/pedibot-sources](https://huggingface.co/datasets/PediBot/pedibot-sources).
 - **The documents themselves** belong to the bodies that wrote them. The catalogue points at
   them and records each one's licence; it does not relicense them. Three documents in the
   corpus cannot be redistributed at all, and the public catalogue says so.

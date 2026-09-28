@@ -1,3 +1,29 @@
+---
+license: cc0-1.0
+language:
+  - ar
+  - de
+  - en
+  - es
+  - fr
+  - hi
+  - pt
+  - ru
+tags:
+  - paediatrics
+  - child-health
+  - health
+  - catalogue
+  - multilingual
+  - digital-public-good
+pretty_name: Paediatric guidance for parents — an open catalogue
+size_categories:
+  - n<1K
+configs:
+  - config_name: default
+    data_files: sources.csv
+---
+
 # Paediatric guidance for parents — an open catalogue
 
 **632 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
@@ -132,6 +158,28 @@ The catalogue — the classification, the topic taxonomy, the curation — is re
 **CC0 1.0**: use it for anything, no attribution required, though a link back is
 appreciated. This applies to the catalogue only. **The documents it points to are the
 property of their publishers** and are governed by whatever terms each of them sets.
+
+## Using it
+
+```python
+from datasets import load_dataset
+
+d = load_dataset("csv", data_files="sources.csv")["train"]
+print(d[0]["org"], d[0]["title"], d[0]["usage"], d[0]["url"])
+```
+
+## Citation
+
+```bibtex
+@software{beca_pedibot,
+  author    = {Beca, Nicolás},
+  title     = {PediBot — a paediatric answer with the source attached},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.22932517},
+  url       = {https://pedibot.xyz}
+}
+```
 
 ## Not medical advice
 

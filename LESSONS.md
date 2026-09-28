@@ -1916,3 +1916,24 @@ Lo que me llevo: **cuando un arreglo es una regla, hay que preguntarse dónde vi
 dónde estaba el ejemplo**. Y la prueba tiene que entrar por la puerta principal, no por el pasillo
 que usó el caso que lo destapó: la mía comprobaba el país escrito, cuando lo normal es el
 elegido.
+
+## L245 · «¿Y ese README no vale?» (28-sep-2026)
+
+Le di al operador el guion para subir el catálogo a Hugging Face y preguntó lo obvio: en
+`dataset/` ya hay un `README.md`, ¿ése no sirve? No servía, porque le faltaba la cabecera YAML
+que Hugging Face lee para poner las etiquetas de licencia e idioma y la tabla navegable. Por eso
+yo había escrito **otra** tarjeta al lado, `HUGGINGFACE.md`, y el guion pedía renombrarla al
+subirla.
+
+Dos ficheros contando lo mismo, uno generado y otro a mano. Duró cuatro días y en ese tiempo el
+guion ya decía 645 documentos cuando eran 632: la cifra a mano se quedó atrás en cuanto el
+catálogo adelgazó. Y el paso de renombrar sólo puede fallar de una manera —en silencio: la página
+sale vacía y nadie se entera—.
+
+Lo que había que hacer, y es lo que pedía la pregunta: **que el generador escriba la cabecera**.
+Un fichero, se sube tal cual, se actualiza solo, y el guion pierde su único paso delicado.
+
+La lección no es sobre Hugging Face: cuando un formato exige algo que un generador no produce,
+la salida fácil es escribir a mano el fichero que lo cumple, y esa copia empieza a envejecer el
+mismo día. **Lo que hay que cambiar es el generador.** Y quien mira el trabajo con ojos limpios
+lo ve antes que quien lo escribió: aquí lo vio él con una pregunta de siete palabras.

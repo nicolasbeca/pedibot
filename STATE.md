@@ -58,6 +58,24 @@ generales. Cambió de tema y no de sitio, y la referencian una regla de alarma y
 dorado: merece decisión, no reemplazo automático. Lo mismo con el VIS de neumococo en hindi,
 que pasó de `pcv13` a `pcv`.
 
+## 28-sep-2026 · el catálogo, publicado como dataset
+
+<https://huggingface.co/datasets/PediBot/pedibot-sources> — público, CC0, con los ocho idiomas
+como etiquetas y los tres ficheros dentro. Comprobado contra su API, no contra la pantalla.
+
+**Lo destapó una pregunta suya de siete palabras**: «en la carpeta de dataset también hay un
+readme, ¿ése no vale?». No valía, porque le faltaba la cabecera que Hugging Face lee para poner
+las etiquetas y la tabla navegable, y por eso yo había escrito otra tarjeta al lado, a mano, que
+el guion mandaba renombrar al subirla. Dos ficheros contando lo mismo: duraron cuatro días y en
+ese tiempo el guion ya decía 645 documentos cuando eran 632 (L245).
+
+Arreglado donde tocaba: **el generador escribe la cabecera**, así que hay un solo fichero, se
+sube tal cual y se actualiza solo. El guion pierde su único paso delicado.
+
+También el error que salió al subir —«the requested file could not be read»— era mío: regeneré
+los tres ficheros mientras él los tenía ya seleccionados en el navegador, que se quedó con una
+referencia muerta. Se resolvió quitándolos de la lista y volviendo a arrastrarlos.
+
 ## 25-sep-2026 · el último pendiente era la punta de algo mayor
 
 Quedaba uno anotado: «el aviso del calendario sale por delante de la hoja del rotavirus».
