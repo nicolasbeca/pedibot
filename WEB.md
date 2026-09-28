@@ -112,9 +112,9 @@ sin que nadie se enterara.
 | Id | Qué | Medida que lo justifica |
 |---|---|---|
 | S-02 | Página de «quién está detrás» + revisor médico | En salud (YMYL) es el techo de fondo. `reviewedBy` y `lastReviewed` **solo** cuando un pediatra revise de verdad |
-| S-03 | Deshacer los pares de páginas de marca casi idénticas | 97 % de solapamiento entre apirofeno y junifen; 11 pares por encima del 70 % |
+| ~~S-03~~ | **Cerrado, sin rellenar (28-sep).** Medido: 33 pares de 34 páginas pasan del 70 %, porque muchas son el mismo medicamento con la misma concentración (Advil/Motrin, Cetal/Metacin). Rellenarlas sería paja (decisión del 11-sep, `SameMedicine.astro`), y fundirlas quitaría la página a cada búsqueda de marca, que son las que más impresiones traen | — |
 | S-04 | Acortar 157 títulos de más de 60 caracteres | Se cortan en el resultado; el CTR está en 0,29 % |
-| S-05 | ¿Bloquear AhrefsBot y SemrushBot? | 1.715 peticiones en 7 días que no traen a nadie |
+| ~~S-05~~ | **Hecho (28-sep):** AhrefsBot y SemrushBot bloqueados en `robots.txt` | 1.715 peticiones en 7 días que no traían a nadie |
 
 ### 4.3 · Sin decidir
 
@@ -124,9 +124,8 @@ sin que nadie se enterara.
   exigiera que cada cifra en mg salga de la tabla autorizada (antes bastaba con que estuviera).
   Ojo al medir esto: otras cinco parecían sólo inglesas por el nombre del tema y ya estaban
   enlazadas con sus siete gemelas desde el 2-sep; se cuenta lo que ve el lector (`hreflang`).
-- **Fuentes nuevas** con licencia ya verificada y sin usar (`FUENTES/CANDIDATAS.md`):
-  `gesund.bund.de` como `citar_solo` y Canada.ca en inglés, que ya está aprobada y de la que solo
-  se usan las 10 páginas francesas. `gov.br/saude` ya aporta 14. **La OPS/OPAS no**: su licencia
+- ✅ **Fuentes nuevas (28-sep):** Canada.ca en inglés, 10 páginas, ya en el índice (642 documentos).
+  `gesund.bund.de` descartada: su aviso sólo permite citas sueltas y literales. `gov.br/saude` ya aporta 14. **La OPS/OPAS no**: su licencia
   abierta es de sus publicaciones, no de su web (corregido el 28-sep).
 - **Volumen en Bluesky**: hoy son ~1 al día más una ráfaga de 8 los martes. Si resulta ruidoso,
   la ráfaga se reparte o se deja solo en inglés.
