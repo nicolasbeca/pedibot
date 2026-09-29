@@ -113,7 +113,7 @@ sin que nadie se enterara.
 |---|---|---|
 | S-02 | Página de «quién está detrás» + revisor médico | En salud (YMYL) es el techo de fondo. `reviewedBy` y `lastReviewed` **solo** cuando un pediatra revise de verdad |
 | ~~S-03~~ | **Cerrado, sin rellenar (28-sep).** Medido: 33 pares de 34 páginas pasan del 70 %, porque muchas son el mismo medicamento con la misma concentración (Advil/Motrin, Cetal/Metacin). Rellenarlas sería paja (decisión del 11-sep, `SameMedicine.astro`), y fundirlas quitaría la página a cada búsqueda de marca, que son las que más impresiones traen | — |
-| S-04 | Acortar 157 títulos de más de 60 caracteres | Se cortan en el resultado; el CTR está en 0,29 % |
+| ~~S-04~~ | **Hecho el 11-sep** (la plantilla quita «— PediBot» y, si no basta, corta por una pausa del título). Remedido el 29-sep: **0 de 2.821** páginas pasan de 60; las únicas largas son los reenvíos de direcciones viejas, que llevan `noindex` y 301 | — |
 | ~~S-05~~ | **Hecho (28-sep):** AhrefsBot y SemrushBot bloqueados en `robots.txt` | 1.715 peticiones en 7 días que no traían a nadie |
 
 ### 4.3 · Sin decidir
