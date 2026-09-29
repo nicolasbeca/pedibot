@@ -1,0 +1,49 @@
+---
+/**
+ * Las señales de alarma del chat, por síntoma (I-17, 29-sep-2026).
+ *
+ * El texto de cada señal es el motivo de su regla en config/red_flags.yaml, el mismo que enseña
+ * el chat cuando salta: aquí no se redacta nada. Los grupos salen de config/warning_signs.yaml y
+ * los datos los escribe scripts/export_catalog.py.
+ */
+import data from '../data/warning_signs.json';
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang) as any;
+const etiqueta: Record<string, string> = { emergency: s.ws_now, urgent: s.ws_today, mental_health: s.ws_help };
+const groups = (data as any).groups as any[];
+---
+<nav class="ws-jump" aria-label={s.ws_jump}>
+  {groups.map((g) => <a href={`#${g.cat}`}>{g.label[lang]}</a>)}
+</nav>
+{groups.map((g) => (
+  <section class="ws-group" id={g.cat}>
+    <h2>{g.label[lang]}</h2>
+    <ul>
+      {g.signs.map((x: any) => (
+        <li class={`sign ${x.level}`}>
+          <span class="lvl">{etiqueta[x.level]}</span>
+          <span class="txt">{x.reason[lang]}</span>
+          <span class="src">{s.ws_source}: {x.source.url && x.source.url.startsWith('http')
+            ? <a href={x.source.url} target="_blank" rel="noopener">{x.source.org} — {x.source.title}</a>
+            : <>{x.source.org} — {x.source.title}</>}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+))}
+<style>
+  .ws-jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 8px; }
+  .ws-jump a { font-size: .9rem; padding: 6px 12px; border-radius: 999px; background: var(--mint); text-decoration: none; }
+  .ws-group { margin-top: 30px; }
+  .ws-group h2 { font-size: 1.2rem; }
+  .ws-group ul { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+  .sign { border-radius: var(--r); padding: 14px 18px; border-inline-start: 6px solid; display: grid; gap: 4px; }
+  .sign.emergency { background: var(--coral-soft); border-color: var(--coral); }
+  .sign.urgent { background: var(--amber-soft); border-color: var(--amber); }
+  .sign.mental_health { background: var(--mint); border-color: var(--mint-2); }
+  .lvl { font-family: Nunito, sans-serif; font-weight: 700; font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; color: var(--ink-3); }
+  .txt { font-size: 1rem; }
+  .src { font-size: .82rem; color: var(--ink-3); overflow-wrap: anywhere; }
+</style>

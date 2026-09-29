@@ -22,6 +22,8 @@
 | I-13 | **Historial multi-hijo con edades** (local) para no repetir la edad cada vez | Fricción menor | Bajo | nueva |
 | I-14 | **Alertas estacionales** en la home (bronquiolitis en invierno, golpe de calor en verano, gastroenteritis) | Contenido fresco sin esfuerzo | Bajo | nueva |
 | I-15 | **Traducción a inglés / portugués** con las mismas fuentes | LatAm / Brasil; e5 es multilingüe | Medio | nueva; después de España |
+| I-16 | **Mapa del cuerpo para preguntar sin escribir** (visto en Peds Clue, 29-sep): el padre toca la zona y la edad, y sale lo de siempre —las señales de alarma de esa zona y la guía que toca—, nunca diagnósticos | Para quien describe mal un síntoma o escribe en otra lengua | Medio-alto | **aparcada por el operador (29-sep)**: «una persona que no sepa escribir tampoco va a tener acceso a internet y a un móvil». Hay que pensar bien cómo y si merece la pena; se vuelve a mirar cuando haya uso real y se vea si la gente se atasca al describir |
+| I-17 | **Señales de alarma publicadas como páginas** (visto en Peds Clue, 29-sep): las reglas de `config/red_flags.yaml`, con su motivo y su fuente, ordenadas para consultarlas sin preguntar nada | Contenido útil y sin IA; hoy sólo se ven cuando saltan en el chat | Bajo | **aceptada 29-sep → en curso** |
 
 ## Fuentes
 

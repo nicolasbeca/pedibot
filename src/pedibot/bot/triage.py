@@ -94,7 +94,8 @@ _AGE_PATTERNS = [
     ),
     (
         re.compile(
-            r"(\d{1,2})\s*(?:d[ií]as|d[ií]a|days?|jours?|tage?)\s*(?:de (?:vida|edad|nacid|vie)|old|alt)",
+            r"(\d{1,2})\s*(?:d[ií]as|d[ií]a|days?|jours?|tage?)"
+            r"\s*(?:de (?:vida|edad|nacid|vie)|old|alt)",
             re.I,
         ),
         1 / 30.4,

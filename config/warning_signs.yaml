@@ -1,0 +1,29 @@
+# Las señales de alarma del chat, publicadas como página (I-17, 29-sep-2026).
+#
+# La idea salió de Peds Clue: las alarmas ordenadas por síntoma, para consultarlas sin preguntar
+# nada. Las reglas viven en red_flags.yaml con su motivo en ocho lenguas y su fuente; aquí sólo se
+# dice en qué grupo va cada una. Nada de este fichero se redacta: el texto de cada señal es el
+# mismo que enseña el chat cuando salta. Una regla nueva sin grupo tumba la prueba
+# (tests/test_warning_signs_page.py).
+#
+# Los grupos son los de la hoja de la SEUP de /emergency (checklist) más dos que ella no tiene.
+categories:
+  fiebre: {es: "Fiebre", en: "Fever", fr: "Fièvre", de: "Fieber", ru: "Температура", ar: "الحرارة", pt: "Febre", hi: "बुखार"}
+  respiracion: {es: "Respiración", en: "Breathing", fr: "Respiration", de: "Atmung", ru: "Дыхание", ar: "التنفس", pt: "Respiração", hi: "साँस"}
+  piel: {es: "Piel y color", en: "Skin and colour", fr: "Peau et teint", de: "Haut und Hautfarbe", ru: "Кожа и цвет кожи", ar: "الجلد واللون", pt: "Pele e cor", hi: "त्वचा और रंग"}
+  comportamiento: {es: "Cabeza y comportamiento", en: "Head and behaviour", fr: "Tête et comportement", de: "Kopf und Verhalten", ru: "Голова и поведение", ar: "الرأس والسلوك", pt: "Cabeça e comportamento", hi: "सिर और व्यवहार"}
+  gastrointestinal: {es: "Tripa, vómitos y cosas tragadas", en: "Tummy, vomiting and swallowed things", fr: "Ventre, vomissements et objets avalés", de: "Bauch, Erbrechen und Verschlucktes", ru: "Живот, рвота и проглоченные предметы", ar: "البطن والقيء والأشياء المبتلعة", pt: "Barriga, vômitos e coisas engolidas", hi: "पेट, उल्टी और निगली हुई चीज़ें"}
+  accidentes: {es: "Accidentes y golpes", en: "Accidents and injuries", fr: "Accidents et blessures", de: "Unfälle und Verletzungen", ru: "Травмы и несчастные случаи", ar: "الحوادث والإصابات", pt: "Acidentes e pancadas", hi: "दुर्घटनाएँ और चोटें"}
+  recien_nacido: {es: "Recién nacidos", en: "Newborn babies", fr: "Nouveau-nés", de: "Neugeborene", ru: "Новорождённые", ar: "حديثو الولادة", pt: "Recém-nascidos", hi: "नवजात शिशु"}
+  salud_mental: {es: "Salud mental", en: "Mental health", fr: "Santé mentale", de: "Psychische Gesundheit", ru: "Психическое здоровье", ar: "الصحة النفسية", pt: "Saúde mental", hi: "मानसिक स्वास्थ्य"}
+  otro: {es: "Otras señales", en: "Other signs", fr: "Autres signes", de: "Weitere Anzeichen", ru: "Другие признаки", ar: "علامات أخرى", pt: "Outros sinais", hi: "अन्य संकेत"}
+rules:
+  fiebre: [infant_fever_under_3_months, very_high_fever, cold_extremities_with_fever, bleeding_with_fever, limp_with_fever, malaria_area_fever, severe_malaria]
+  respiracion: [severe_breathing, choking, moderate_breathing, stridor, cannot_swallow_drooling, inhaled_foreign_body, asthma_not_responding, fast_breathing_for_age]
+  piel: [mottled_skin, anaphylaxis, petechiae_fever, spreading_skin_infection, unexplained_bruising, bruising_and_pallor, sudden_pallor, palmar_pallor, measles_complication]
+  comportamiento: [not_responding, seizure, drowsy_irritable, headache_wakes_child, unequal_pupils, neuro_deficit, headache_warning_signs, neck_stiffness, meningitis_signs, bulging_fontanelle, unusual_cry, lockjaw_spasms]
+  gastrointestinal: [dehydration, severe_dehydration_signs, vomiting_headache, vomits_everything, unable_to_drink_or_feed, button_battery, foreign_body_ingestion, poisoning, severe_abdominal_pain, abdominal_pain_localised_or_worsening, intussusception, bilious_or_bloody_vomit, blood_in_stool, pale_stools, projectile_vomiting_infant, cholera_rice_water]
+  accidentes: [head_injury_loss_consciousness, drowsy_after_head_injury, vomiting_after_head_injury, fluid_from_ear_or_nose, fall_stairs_or_inconsolable, spinal_injury, severe_bleeding, open_fracture, deformity_fracture, limp_after_fall, deep_wound, burn, blunt_abdominal_trauma, eye_foreign_body_or_injury, chemical_in_eye, foreign_body_nose_or_ear, sting_mouth_throat_eye, snakebite, mammal_bite, near_drowning, electric_shock, smoke_inhalation, carbon_monoxide, heatstroke]
+  recien_nacido: [newborn_refusing_feeds, newborn_cold, neonatal_jaundice, omphalitis, neonatal_tetanus]
+  salud_mental: [suicidal_ideation, self_harm, eating_disorder_signs]
+  otro: [white_pupil, testicular_pain, priapism, paraphimosis, blood_in_urine, mastoiditis, bilateral_oedema, visible_severe_wasting, new_diabetes_signs, hypoglycaemia, sickle_cell_crisis, sudden_pelvic_pain_adolescent]

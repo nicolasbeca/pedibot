@@ -60,14 +60,17 @@ def test_the_menu_carries_the_sections_that_matter(rel: str) -> None:
         assert f'href="{prefijo}/{seccion}"' in trozo, f"{rel}: al menú le falta /{seccion}"
 
 
-def test_the_menu_only_shows_where_it_is_needed() -> None:
-    """Por encima de 720 px la barra ya enseña sus pastillas: dos menús para lo mismo confunden."""
-    assert ".navmenu { position: relative; display: none; }" in BASE
-    assert "@media (max-width: 720px) { .navmenu { display: block; } }" in BASE
-    assert "@media (max-width: 720px) { .bar .hide-sm { display: none; } }" in BASE, (
-        "esta prueba supone que la barra se esconde a 720; si cambia, el menú tiene que "
-        "aparecer en el mismo punto o queda un hueco sin navegación"
-    )
+def test_the_menu_is_there_at_every_width() -> None:
+    """29-sep-2026: el menú está siempre, también en el ordenador.
+
+    Hasta hoy sólo aparecía por debajo de 720 px, con la idea de que por encima «la barra ya
+    enseña sus pastillas». No las enseña todas en ningún ancho —la cinta MUAC, el diario, las
+    fuentes o las señales de alarma no han estado nunca en la barra— y entre 720 y 900 px
+    escondía botiquín, curvas y vacunas sin que apareciera el menú: esas tres sólo se alcanzaban
+    desde el pie. Lo vio el operador en el PC al preguntar dónde estaba /warning-signs.
+    """
+    assert ".navmenu { position: relative; display: block; }" in BASE
+    assert "{ .navmenu { display: none; } }" not in BASE, "el menú no se esconde en ningún ancho"
 
 
 def test_it_opens_without_javascript() -> None:

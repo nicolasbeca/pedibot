@@ -54,6 +54,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
     </div>
 
     <Checklist lang={lang} />
+    <p style="margin-top:18px"><a href={`${pref}/warning-signs`}>{s.ws_link} →</a></p>
   </div>
   <script is:inline define:vars={{ query: s.emg_map_q }}>
     document.getElementById('near')?.addEventListener('click', () => {

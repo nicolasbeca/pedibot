@@ -194,6 +194,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
           <summary class="pill" aria-label={s.nav_menu}><span aria-hidden="true">☰</span> {s.nav_menu}</summary>
           <ul>
             <li><a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a></li>
+            <li><a href={`${langPrefix(lang)}/warning-signs`}>{s.ws_eyebrow}</a></li>
             <li><a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a></li>
             <li><a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a></li>
             <li><a href={`${langPrefix(lang)}/muac`}>{s.muac.h}</a></li>
@@ -244,7 +245,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
           existiendo y sigue sirviéndose**: lo que se quita es el enlace del pie, que es para
           humanos. Las máquinas lo encuentran por el <link rel="alternate"> de la cabecera, que
           es donde miran, y por robots.txt. */}
-      <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a> · <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a> · <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a> · <a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a> · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}</a> · <a href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a> · <a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a> · <a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a> · <a href={`${langPrefix(lang)}/muac`}>{s.muac.h}</a> · <a href={`${langPrefix(lang)}/support`}>{s.nav_support}</a> · <a href={`${langPrefix(lang)}/about`}>{s.about.eyebrow}</a> · <a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}</a><br />
+      <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a> · <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a> · <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a> · <a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a> · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href={`${langPrefix(lang)}/warning-signs`}>{s.ws_eyebrow}</a> · <a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}</a> · <a href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a> · <a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a> · <a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a> · <a href={`${langPrefix(lang)}/muac`}>{s.muac.h}</a> · <a href={`${langPrefix(lang)}/support`}>{s.nav_support}</a> · <a href={`${langPrefix(lang)}/about`}>{s.about.eyebrow}</a> · <a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}</a><br />
       {s.footer_legal}
     </div>
   </footer>
@@ -293,10 +294,11 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     }
     .langsel a:hover { background: var(--mint); color: var(--ink); }
     .langsel .cur { color: var(--ink); font-weight: 700; }
-    /* El menú del móvil. Hereda la caja del selector de idiomas —es el mismo gesto— y sólo
-       existe por debajo de 720 px, que es donde la barra esconde sus pastillas. Por encima
-       sobra: ahí están los enlaces a la vista. */
-    .navmenu { position: relative; display: none; }
+    /* El menú con TODAS las secciones. Hereda la caja del selector de idiomas —es el mismo
+       gesto—. Hasta el 29-sep-2026 sólo existía por debajo de 720 px; pero la barra no enseña
+       todo en ningún ancho (MUAC, diario, fuentes, señales de alarma) y entre 720 y 900 px
+       escondía tres pastillas sin menú que las sustituyera. Ahora está siempre. */
+    .navmenu { position: relative; display: block; }
     .navmenu > summary { list-style: none; user-select: none; }
     .navmenu > summary::-webkit-details-marker { display: none; }
     .navmenu[open] > summary { border-color: var(--sage); color: var(--ink); }
@@ -313,7 +315,6 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
       font-size: .95rem; color: var(--ink-2);
     }
     .navmenu a:hover { background: var(--mint); color: var(--ink); }
-    @media (max-width: 720px) { .navmenu { display: block; } }
     footer { padding: 30px 0 60px; color: var(--ink-3); font-size: .86rem; border-top: 1px solid var(--line); }
     .pill-support { border-color: var(--coral-soft); color: var(--coral); }
     .pill-support:hover { background: var(--coral-soft); }

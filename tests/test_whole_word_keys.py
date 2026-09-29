@@ -231,6 +231,9 @@ _REVISADAS = {
     "atme",
     "itch",
     "allaite",
+    # 29-sep-2026, con la guía comparativa de antitérmicos reescrita: «antitérmico» coge
+    # «antitérmicos», su plural.
+    "antitérmico",
     # 16-sep-2026, con las guías regeneradas: «нос» coge «носа», que es su propio genitivo
     # («de la nariz»). «gehör» NO se queda: cogía «gehören», que es pertenecer.
     "нос",

@@ -91,6 +91,45 @@ target3 = ROOT / "web" / "site" / "src" / "data" / "checklist.json"
 target3.write_text(json.dumps(raw, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"{len(raw['items'])} checklist items → {target3}")
 
+# Las señales de alarma del chat → web/site/src/data/warning_signs.json (I-17, 29-sep-2026).
+# El texto de cada señal es el motivo de su regla, el mismo que enseña el chat: aquí no se
+# redacta nada, sólo se agrupa (config/warning_signs.yaml) y se le pone la fuente del catálogo.
+_reglas = {
+    r["id"]: r
+    for r in yaml.safe_load((ROOT / "config" / "red_flags.yaml").read_text(encoding="utf-8"))[
+        "rules"
+    ]
+}
+_grupos = yaml.safe_load((ROOT / "config" / "warning_signs.yaml").read_text(encoding="utf-8"))
+_por_doc = {d["doc_id"]: d for d in docs}
+_orden_nivel = {"emergency": 0, "mental_health": 1, "urgent": 2}
+_LANGS_WS = ("es", "en", "fr", "de", "ru", "ar", "pt", "hi")
+ws_groups = []
+for _cat, _ids in _grupos["rules"].items():
+    _senales = []
+    for _id in _ids:
+        _r = _reglas[_id]
+        _doc = _por_doc.get(_r["source"], {})
+        _senales.append(
+            {
+                "id": _id,
+                "level": _r["level"],
+                "reason": {lg: _r.get(f"reason_{lg}") for lg in _LANGS_WS},
+                "source": {
+                    "org": _doc.get("org"),
+                    "title": _doc.get("title"),
+                    "url": _doc.get("url"),
+                },
+            }
+        )
+    _senales.sort(key=lambda s: _orden_nivel.get(s["level"], 9))
+    ws_groups.append({"cat": _cat, "label": _grupos["categories"][_cat], "signs": _senales})
+target_ws = ROOT / "web" / "site" / "src" / "data" / "warning_signs.json"
+target_ws.write_text(
+    json.dumps({"groups": ws_groups}, ensure_ascii=False, indent=1), encoding="utf-8"
+)
+print(f"{sum(len(g['signs']) for g in ws_groups)} warning signs → {target_ws}")
+
 # same-subject topic pairs → web/site/src/data/same_subject.json
 # `topic` is what the language switcher matches on, and the same subject has two keys when the
 # English guide was anchored on English sources (constipation/estrenimiento, otitis/ear_infection).

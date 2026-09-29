@@ -25,6 +25,20 @@
   **30-oct**. Ese día comprobar que el enlace a pedibot.xyz está y es do-follow.
 - Suite **10.467**. Desplegado; smoke y doctor limpios; los dos trabajos relanzados y en verde.
 
+### Señales de alarma publicadas, y el menú en el PC (29-sep, tarde)
+
+- **`/warning-signs` en las ocho lenguas** (I-17, idea sacada de Peds Clue): las 96 reglas del
+  chat por síntoma, con su nivel y su fuente. `/emergency` sólo enseñaba las 34 de la SEUP. Nada
+  redactado: el texto es el motivo de cada regla. Grupos en `config/warning_signs.yaml`; una regla
+  sin grupo no pasa (`test_warning_signs_page.py`).
+- **El «☰ Menú» se ve en todos los anchos.** Sólo existía por debajo de 720 px, y entre 720 y
+  900 px la barra escondía botiquín, curvas y vacunas sin menú que las sustituyera. Lo vio el
+  operador en el PC.
+- **Bajo el cuadro del chat**: urgencias · señales de alarma · guías · dosis · Telegram.
+- **12 guías reescritas con la ficha de su lengua** (ar, ru, es comparativas, en percentiles), con
+  301 reales desde las direcciones viejas.
+- **I-16, mapa del cuerpo: aparcada** por el operador hasta que haya uso real.
+
 ### Y la octava tanda, releída (29-sep, tarde)
 
 La nota de «38 respuestas que contestan el tema y no la pregunta» era de antes de la octava tanda.

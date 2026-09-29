@@ -142,3 +142,12 @@ sin que nadie se enterara.
   «9,8 % CTR»; no se repiten hasta que la v2 los mida.
 - **El aviso de urgencias no baja de posición por estética.**
 - Nada de enlaces comprados, granjas de contenido ni directorios de pago.
+- **Toda regla de alarma nueva sale también en `/warning-signs`** (29-sep-2026, pedido por el
+  operador). Se hace sola: la página se construye de `config/red_flags.yaml`, pero la regla
+  tiene que tener grupo en `config/warning_signs.yaml`, y `test_warning_signs_page.py` no deja
+  pasar ninguna sin él.
+- **La web va enlazada entre sus herramientas** (dicho por el operador varias veces, la última el
+  29-sep-2026: «que no se te escapen estos detalles»). Cada página nueva se enlaza desde donde la
+  buscaría un padre —el desplegable «☰ Menú», el pie y la página hermana más cercana— y bajo el
+  cuadro del chat van las que más se necesitan con prisa: urgencias, señales de alarma, guías y
+  dosis.

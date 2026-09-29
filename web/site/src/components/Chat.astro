@@ -63,7 +63,9 @@ const answerStrings = Object.fromEntries(
         <button class="mic" type="button" id="mic" aria-label={s.voice} title={s.voice}>🎤</button>
         <button class="send" type="submit" aria-label={s.send}>➤</button>
       </form>
-      <p class="legal">{s.legal_line} · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href="https://t.me/Pedichat_bot" target="_blank" rel="noopener">{s.nav_telegram}</a></p>
+      {/* 29-sep-2026, el operador: bajo el cuadro, lo que se necesita con prisa. Urgencias
+          abre con el número de cada país, que es el «llama a tu número local». */}
+      <p class="legal">{s.legal_line} · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href={`${langPrefix(lang)}/warning-signs`}>{s.ws_eyebrow}</a> · <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a> · <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a> · <a href="https://t.me/Pedichat_bot" target="_blank" rel="noopener">{s.nav_telegram}</a></p>
     </div>
   </div>
 </div>

@@ -121,6 +121,7 @@ const jsonld = {{
     </p>
 
     <Checklist lang={{lang}} />
+    <p style="margin-top:18px"><a href={{`${{pref}}/warning-signs`}}>{{s.ws_link}} →</a></p>
 
     <h2 style="margin-top:34px">{{s.emgc_others}}</h2>
     <p class="lista">
@@ -222,6 +223,7 @@ const jsonld = {{ '@context': 'https://schema.org', '@type': 'MedicalWebPage', n
     </div>
 
     <Checklist lang={{lang}} />
+    <p style="margin-top:18px"><a href={{`${{pref}}/warning-signs`}}>{{s.ws_link}} →</a></p>
   </div>
   <script is:inline define:vars={{{{ query: s.emg_map_q }}}}>
     document.getElementById('near')?.addEventListener('click', () => {{
