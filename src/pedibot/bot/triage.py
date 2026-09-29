@@ -94,7 +94,31 @@ _AGE_PATTERNS = [
     ),
     (
         re.compile(
-            r"(\d{1,2})\s*(?:d[ií]as|d[ií]a|days?|jours?)\s*(?:de (?:vida|edad|nacid|vie)|old)",
+            r"(\d{1,2})\s*(?:d[ií]as|d[ií]a|days?|jours?|tage?)\s*(?:de (?:vida|edad|nacid|vie)|old|alt)",
+            re.I,
+        ),
+        1 / 30.4,
+    ),
+    # 29-sep-2026: «mi bebé tiene 20 días y tiene fiebre» salía sin edad —y sin la alarma del
+    # lactante— porque arriba se exige «de vida» u «old» detrás. Con el niño DELANTE los días son
+    # su edad, salvo que detrás venga «de/con + otra cosa»: «mi bebé tiene 20 días de fiebre» son
+    # días de fiebre (test_infant_fever_as_parents_write.py).
+    (
+        re.compile(
+            r"(?:bebe|bebes|nene|nena|hij[oa]|nin[oa]|filh[oa]|baby|son|daughter|fils|fille)"
+            r"\s+(?:tiene|tem|com|has|is|a)\s+(\d{1,2})\s*(?:dias?|days?|jours?)\b"
+            r"(?!\s+(?:de|con|with|of|avec|com)\s+(?!vida|edad|nacid|vie))",
+            re.I,
+        ),
+        1 / 30.4,
+    ),
+    # «bebé de 15 días con 38,3»: con «de» delante es la edad aunque detrás venga «con»; sólo
+    # «de N días de fiebre» sería otra cosa
+    (
+        re.compile(
+            r"(?:bebe|bebes|nene|nena|hij[oa]|nin[oa]|filh[oa]|baby|fils|fille)"
+            r"\s+(?:de|of)\s+(\d{1,2})\s*(?:dias?|days?|jours?)\b"
+            r"(?!\s+(?:de|of)\s+(?!vida|edad|nacid|vie))",
             re.I,
         ),
         1 / 30.4,
@@ -550,6 +574,33 @@ ASISTENTE = re.compile(
     r"|هل يمكنك|هل تستطيع|ممكن تخبرني"
     r"|क्या आप\s+\S*\s*(?:बता|समझा|मदद|दिखा)",
     re.I | re.U,
+)
+#: 29-sep-2026: pedir qué HACER, o la diferencia entre dos síntomas, es pedir lo que dicen las
+#: guías aunque se le pregunte al chat. «Estoy en una isla sin pediatra, ¿qué hago?» recibía la
+#: ficha del servicio (test_what_do_i_do_is_not_about_pedibot.py).
+PIDE_QUE_HACER = re.compile(
+    r"\bqu[ée] (?:hago|hacer|debo hacer|puedo hacer|hacemos)\b|\bdistingu\w*|\bdiferencia entre\b"
+    r"|\bwhat (?:should|do|can) (?:i|we) do\b|\bwhat to do\b|\bdifference between\b|\btell apart\b"
+    r"|\bque (?:faire|dois-je faire)\b|\bdiff[ée]rence entre\b"
+    r"|\bwas (?:soll|kann) ich tun\b|\bwas tun\b|\bunterschied zwischen\b"
+    r"|что (?:мне )?делать|разниц\w* между"
+    r"|ماذا أفعل|الفرق بين"
+    r"|\bo que (?:fa[çc]o|fazer|devo fazer)\b|\bdiferen[çc]a entre\b"
+    r"|क्या करूँ|क्या करें|फ़र्क|अंतर",
+    re.I | re.U,
+)
+#: …salvo que la pregunta sea sobre el propio servicio: que lo nombre («¿qué hago si PediBot no me
+#: contesta?»), que hable del idioma o de lo que no está disponible, o que pregunte qué SABE hacer
+#: («¿puede distinguir una emergencia…?»). Pedirle que lo diga («¿puedes decirme qué hacer…?»)
+#: no es preguntarle qué sabe hacer.
+NOMBRA_SERVICIO = re.compile(
+    r"pedibot|este chat|esta web|this (?:chat|site|app|bot)|ce (?:chat|site)|dieser? (?:chat|seite)"
+    r"|\bdisponible\b|\bnot available\b|\bidioma\b|\blanguage\b|\bsprache\b|\blangue\b"
+    r"|\bschreibe auf\b|\bescribo en\b"
+    r"|этот (?:чат|сайт|бот)|язык|هذا (?:الموقع|البوت)|هذه الدردشة|اللغة|यह (?:चैट|साइट|बॉट)|भाषा"
+    r"|^\W*(?:puede|puedes|puedo|podr[ií]as?|can (?:you|it|i)|kann (?:es|man)|peux-tu|pode)\s+"
+    r"(?!(?:me\s+)?(?:decirme|explicarme|contarme|indicarme|decir(?:me)? qu|tell me|explain))",
+    re.I,
 )
 #: Y la mitad que lo hace seguro: la frase habla de un caso cualquiera, no del que está pasando.
 EN_GENERAL = re.compile(

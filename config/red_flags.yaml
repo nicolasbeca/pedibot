@@ -341,6 +341,10 @@ rules:
   - (сереет|посерел)
   - (кожа|губы|язык).{0,30}(син|сер|бледн).{0,12}(или|,)
   - pausas? (en la|de) respiraci
+  # 29-sep-2026, octava tanda: «hace pausas al respirar mientras duerme» salía rutina; y «respira
+  # peor», que en inglés («breathing is getting worse») ya estaba aquí
+  - pausas? (al|cuando) respira
+  - respira (cada vez |mucho )?peor
   # 16-sep-2026, salidas de las guías regeneradas: la apnea sólo estaba en castellano y en
   # alemán, y el francés tenía «pauses respiratoires» pero no «pauses dans sa respiration».
   - pauses? (when|while|in).{0,25}breath
@@ -586,6 +590,8 @@ rules:
   - (voz|voix|voice|stimme|голос)[^.]{0,30}(rara|extra[ñn]a|bizarre|strange|weird|hoarse|ronca|seltsam|heiser|странн|хрипл)[^.]{0,40}(despu[eé]s de|tras|apr[eè]s|after|nach|после)[^.]{0,30}(comer|cacahuet|man[ií]|frutos secos|huevo|mang[ée]|eating|peanut|nut|egg|erdn[üu]ss|арахис|орех|яйц)
   - (uvimbe|kuvimba)[^.]{0,20}(usoni|midomo|uso)[^.]{0,40}(baada ya kula|karanga|yai)
   - (cara|face|visage|gesicht|лицо|وجه)[^.]{0,20}(hinchad|swollen|gonfl|geschwollen|опухл|منتفخ)[^.]{0,40}(despu[eé]s de|after|apr[eè]s|nach|после|بعد)[^.]{0,30}(comer|eating|mang|essen|еды|الأكل|cacahuet|peanut|huevo|egg)
+  # 29-sep-2026, octava tanda: «tiene dos ojos hinchados y acaba de comer algo» salía rutina
+  - (ojos|p[aá]rpados|eyes|eyelids)[^.]{0,20}(hinchad|swollen)[^.]{0,40}(acaba de|despu[eé]s de|tras|just|after)[^.]{0,15}(comer|comido|probar|eating|ate|eaten)
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "(midomo|kope|uso|macho)[^.]{0,12}(ime|zime|ume)vimba"
   - "mzio (mkali|mkubwa)"
@@ -2384,6 +2390,13 @@ rules:
   - (apiretal|dalsy|paracetamol|ibuprofeno|jarabe|\d+ ?ml)[^.]{0,40}(por error|por equivocaci[oó]n|de m[aá]s)
   - (by mistake|accidentally|too much|double dose|overdose)[^.]{0,40}(calpol|nurofen|paracetamol|ibuprofen|syrup|medicine|dose|ml)
   - (calpol|nurofen|paracetamol|ibuprofen|syrup|\d+ ?ml)[^.]{0,40}(by mistake|accidentally|too much)
+  # 29-sep-2026, octava tanda: quien da el mismo fármaco dos veces no sabe que se ha equivocado, así
+  # que nunca escribe «por error». Escribe lo que descubre: que el otro jarabe también lo llevaba,
+  # o que creía que eran distintos. Dalsy y Nurofen son los dos ibuprofeno.
+  - tambi[eé]n (lleva|llevaba|tiene|tenia|ten[ií]a|contiene|conten[ií]a|es|era) (ibuprofeno|paracetamol)
+  - (pensaba|cre[ií]a|no sab[ií]a)[^.]{0,20}(que )?(eran|era) (diferentes|distint\w*|otr[oa] cosa)
+  - also (contain\w*|ha[sd]|had) (ibuprofen|paracetamol|acetaminophen)
+  - thought (they|it) (were|was) (different|something else)
   # 21-sep-2026, última batería del operador: gel desinfectante, enjuague bucal y el antihistamínico de la hermana salían rutina
   - (bebi[oó]|bebido|trag[oó]|tragado)[^.]{0,25}(colutorio|enjuague bucal|gel (hidroalcoh[oó]lico|desinfectante)|alcohol de manos)
   - \b(ate|drank|swallowed|licked)\b[^.]{0,20}(some )?(hand sanitizer|sanitiser|sanitizer|mouthwash)
@@ -4096,6 +4109,9 @@ rules:
   - estridor
   - (ruido|pitido|silbido|chirrido)[^.]{0,30}(al |cuando )?(coger|tomar|coge|toma) (el )?aire
   - (ruido|pitido)[^.]{0,25}(al inspirar|al respirar)[^.]{0,30}(en reposo|quieto|dormido)
+  # 29-sep-2026, octava tanda: «hace ruido al respirar incluso estando tranquilo» salía rutina.
+  # «Incluso» es lo que lo separa de «pero no cuando está tranquilo», que es el llanto normal.
+  - (ruido|pitido)[^.]{0,25}(al inspirar|al respirar)[^.]{0,15}(incluso|hasta|tambi[eé]n|aun) (estando |cuando est[aá] )?(tranquil|quiet|en reposo|dormid)
   - (tos perruna|tos de perro)[^.]{0,45}(ruido|estridor|pitido|le cuesta|silba)
   - stridor
   - (noisy|whistl\w*|harsh)[^.]{0,25}(breathing|breath)[^.]{0,30}(in|inwards|at rest|when he breathes in|when she breathes in)
@@ -5598,7 +5614,13 @@ rules:
 context:
   fever:
   # 21-sep-2026: la cifra sola, «tiene 38.1 rectal», «has 38.0», «hat 39»
-  - (tiene|tenía|has|had|hat|a|tem|está con|esta con|com)\s+(3[89]|4[0-2])([,\.]\d)?\b
+  # 29-sep-2026: con `\b` delante —la «a» final de «pesa 38,5 kg» contaba como el verbo— y sin
+  # unidades de peso, talla o semanas detrás
+  - \b(tiene|tenía|has|had|hat|a|tem|está con|esta con|com)\s+(3[89]|4[0-2])([,\.]\d)?\b(?!\s*(kg|kilo|cm|mm|semana|week|semaine|woche|lb))
+  # 29-sep-2026: con decimales y sin nada más, «39.2 + bebe de 2 meses». A las tres de la mañana no
+  # se escribe ni el verbo ni los grados; una cifra de 38,0 a 42,9 con su decimal es una temperatura
+  # salvo que lleve detrás otra unidad
+  - \b(3[89]|4[0-2])[,\.]\d\b(?!\s*(kg|kilo|cm|mm|semana|week|semaine|woche|lb|%))
   - \b(3[89]|4[0-2])([,\.]\d)?\s*(º|°|grados|degrees|rectal|axilar)
   - fi[eè]vre
   - temp[ée]rature de

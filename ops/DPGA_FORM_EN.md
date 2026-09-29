@@ -28,7 +28,7 @@ PediBot answers the questions families ask when a child is ill — fever, dosing
 
 Before any language model is involved, a rule-based triage checks 96 red-flag rules and, when one fires, puts the local emergency number first (92 countries, including all 54 in Africa). Doses come from an authorised table, not from the model. A verification step rejects any draft that does not cite, cites something that does not exist, or states a dose outside the table; if the second attempt also fails, the answer is a refusal.
 
-Vaccination schedules (68 countries), growth charts (78 countries) and MUAC screening work with no model at all. The catalogue of 642 source documents is published as open data (CC0).
+Vaccination schedules (68 countries), growth charts (78 countries) and MUAC screening work with no model at all. The catalogue of 642 source documents (contado el 28-sep, lo que se envió) is published as open data (CC0).
 
 ---
 
@@ -96,7 +96,7 @@ The repository has 10,427 automated tests and a golden set that is measured end 
 
 PediBot's non-personal data is its catalogue of sources, published in full, in non-proprietary formats, under CC0:
 
-- JSON: https://pedibot.xyz/dataset/sources.json (642 documents)
+- JSON: https://pedibot.xyz/dataset/sources.json (642 documents, contado el 28-sep)
 - CSV: https://github.com/nicolasbeca/pedibot/blob/master/dataset/sources.csv
 - Hugging Face, with a browsable table: https://huggingface.co/datasets/PediBot/pedibot-sources
 - Human-readable list: https://pedibot.xyz/sources

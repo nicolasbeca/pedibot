@@ -26,7 +26,7 @@ configs:
 
 # Paediatric guidance for parents — an open catalogue
 
-**642 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**648 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -57,19 +57,19 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (264 of 642 do) |
+| `year` | where the document states one (264 of 648 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `usage` | `publico` (594) may be reproduced under its publisher's terms; `citar_solo` (48) may be cited and linked, not reproduced |
-| `url` | link to the original (594 of 642 are online; the rest are books and printed manuals, identified in `notes`) |
+| `usage` | `publico` (600) may be reproduced under its publisher's terms; `citar_solo` (48) may be cited and linked, not reproduced |
+| `url` | link to the original (600 of 648 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
 
 | organisation | documents |
 |---|---|
-| WHO — World Health Organization | 214 |
+| WHO — World Health Organization | 220 |
 | NHS — NHS (National Health Service, England) | 156 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 118 |
 | CDC — Centers for Disease Control and Prevention (USA) | 38 |
@@ -95,10 +95,10 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 323 |
-| Spanish (`es`) | 113 |
+| English (`en`) | 325 |
+| Spanish (`es`) | 115 |
 | Arabic (`ar`) | 56 |
-| French (`fr`) | 49 |
+| French (`fr`) | 51 |
 | Russian (`ru`) | 47 |
 | German (`de`) | 30 |
 | Portuguese (`pt`) | 14 |
@@ -108,10 +108,10 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | topic | documents |
 |---|---|
+| `respiratorio` | 74 |
 | `piel` | 73 |
-| `respiratorio` | 71 |
+| `general` | 67 |
 | `digestivo` | 65 |
-| `general` | 64 |
 | `accidentes` | 55 |
 | `vacunas` | 49 |
 | `alimentacion` | 37 |

@@ -34,7 +34,14 @@ from pedibot.bot.muac import is_muac_question, read_mm
 from pedibot.bot.muac import reason as muac_reason
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
-from pedibot.bot.triage import ASISTENTE, LEVEL_ORDER, Triage, TriageResult
+from pedibot.bot.triage import (
+    ASISTENTE,
+    LEVEL_ORDER,
+    NOMBRA_SERVICIO,
+    PIDE_QUE_HACER,
+    Triage,
+    TriageResult,
+)
 from pedibot.bot.vaccines import (
     Vaccines,
     country_in_question,
@@ -1998,8 +2005,12 @@ class Engine:
             # aunque lo que se le pida no tenga que ver con la salud de un niño. «¿Puede decirme
             # dónde está el hospital infantil más cercano?» recibía «eso no es de PediBot» en vez
             # de un «no, no sé buscar sitios cerca de ti; esto sí sé hacerlo».
-            preguntan_por_el = leida.intent == "about_pedibot" or (
-                leida.intent == "other" and ASISTENTE.search(query) is not None
+            preguntan_por_el = (
+                leida.intent == "about_pedibot"
+                or (leida.intent == "other" and ASISTENTE.search(query) is not None)
+            ) and not (
+                # 29-sep-2026: «estoy en una isla sin pediatra, ¿qué hago?» recibía la ficha
+                PIDE_QUE_HACER.search(query) and not NOMBRA_SERVICIO.search(query)
             )
             if preguntan_por_el:
                 # 22-sep-2026: se contesta LA pregunta, con la ficha de hechos del servicio.

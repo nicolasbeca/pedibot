@@ -642,6 +642,14 @@ COUNTRY_UPPER: dict[str, re.Pattern[str]] = {
 }
 
 
+#: Lo que va delante del país al que se muda la familia: «a Chile», «to Kenya», «nach
+#: Deutschland», «vers la France», «para o Brasil».
+_HACIA = re.compile(
+    r"(?:\ba|\bal|\bhacia|\bpara(?: (?:o|a))?|\bto|\binto|\bnach|\bvers(?: la| le| l')?|\ben"
+    r"|(?:^|\s)(?:в|во)|إلى|الى|(?:^|\s)को)\s*$"
+)
+
+
 def country_in_question(text: str) -> str | None:
     """The country the question names out loud, or None.
 
@@ -656,10 +664,18 @@ def country_in_question(text: str) -> str | None:
     """
     low = text.lower()
     best: tuple[int, str] | None = None
+    destinos: set[str] = set()
     for code, names in COUNTRY_IN_TEXT.items():
         for name in names:
             if name in low and (best is None or len(name) > best[0]):
                 best = (len(name), code)
+            for m in re.finditer(re.escape(name), low):
+                if _HACIA.search(low[max(0, m.start() - 12) : m.start()]):
+                    destinos.add(code)
+    # 29-sep-2026: en una mudanza manda el destino. «De España a Chile» devolvía España, que es
+    # el nombre más largo (test_moving_country_is_the_destination.py)
+    if best is not None and len(destinos) == 1 and best[1] not in destinos:
+        return next(iter(destinos))
     if best is not None:
         return best[1]
     for code, rx in COUNTRY_UPPER.items():

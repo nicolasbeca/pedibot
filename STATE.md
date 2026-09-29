@@ -25,6 +25,33 @@
   **30-oct**. Ese día comprobar que el enlace a pedibot.xyz está y es do-follow.
 - Suite **10.467**. Desplegado; smoke y doctor limpios; los dos trabajos relanzados y en verde.
 
+### Y la octava tanda, releída (29-sep, tarde)
+
+La nota de «38 respuestas que contestan el tema y no la pregunta» era de antes de la octava tanda.
+En esa (500, del 23-sep) el revisor marca otras cosas: **42 por nivel de urgencia** y 17 que no
+contestan. Leídas una a una:
+
+- **Dos rompían la regla 5** (menor de 3 meses con fiebre), comprobado en vivo: «mi bebé tiene
+  20 días y tiene fiebre» (la edad en días sólo se leía con «de vida» u «old» detrás) y «39.2 +
+  bebe de 2 meses» (la cifra sin verbo ni grados no era fiebre). Y de paso: **«pesa 38,5 kg»
+  contaba como fiebre** —la «a» de «pesa» valía de verbo—. `test_infant_fever_as_parents_write.py`.
+- **Cinco alarmas** a las que les faltaba la forma del padre: pausas al respirar dormido, estridor
+  «incluso tranquilo», «respira peor», ojos hinchados tras comer y **el doble ibuprofeno** («otro
+  jarabe que también lleva ibuprofeno», «pensaba que eran diferentes»: quien se equivoca no
+  escribe «por error»). `test_triage_octava_tanda.py`.
+- Medido sobre **2.790 preguntas** (ocho tandas y el dorado): cambian de nivel exactamente esas 8,
+  todas hacia arriba.
+- **«¿Qué hago?» no recibe la ficha del servicio**: «estoy en una isla sin pediatra», «el hospital
+  está a tres horas», «¿cómo distingues ruido de dificultad?». Sobre las 1.053 que recibieron la
+  ficha, salen esas 3 y ninguna más (la primera versión sacaba 7 que sí eran del servicio).
+- **En una mudanza manda el destino**: «de España a Chile» daba el calendario español.
+- El resto de las 42 de urgencia es ruido del revisor (fiebre de 39 a los 8 meses es rutina según
+  las guías). Las de calendario que no contestaban ya estaban arregladas el 25-sep.
+- **Queda, con nombre**: la edad corregida del prematuro, qué peso usar si hay dos, el percentil de
+  peso sin peso, la temperatura axilar contra la de oído, el número de urgencias de un crucero,
+  «tengo fiebre yo, no mi hijo» y los 125 mm de la cinta MUAC. Son preguntas de texto, no de
+  alarma: piden fuentes o frases, no reglas.
+
 ## 28-sep-2026 · la ley en la política, la consciencia alterada y dos países nuevos
 
 - **Web:** sección «Cómo comprobar lo que decimos» (GitHub, Zenodo, Hugging Face) y `sameAs` con

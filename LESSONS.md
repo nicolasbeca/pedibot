@@ -1950,3 +1950,17 @@ crece cada día leído entero: funcionó mientras fue pequeño. El de `jwt` era 
 llegaba de rebote: la suite pasó porque en el PC seguía instalada. **Lo que funciona por
 casualidad deja de funcionar sin avisar.** Los candados se ponen sobre la regla (nada se importa
 sin declararlo, nada se lee entero si crece, todo trabajo fallido avisa), no sobre el caso.
+
+## L247 · Quien se equivoca no escribe «por error» (29-sep-2026)
+
+La regla de intoxicación conocía «le di Dalsy por error», «dosis doble», «de más». Ninguna de las
+dos frases de la octava tanda con doble ibuprofeno decía nada de eso: «le di ibuprofeno y después
+otro jarabe que también lleva ibuprofeno» y «le di Dalsy y luego Nurofen porque pensaba que eran
+diferentes». Quien sabe que se ha equivocado ya está llamando a Toxicología; el que escribe al
+chat es el que acaba de descubrirlo y no está seguro. Sus palabras son las del descubrimiento
+—«también lleva», «pensaba que eran distintos»—, no las del error.
+
+Lo mismo con el bebé de 20 días: la salvaguarda contra «3 días de fiebre» era correcta y dejaba
+fuera la forma más corriente de decir la edad de un recién nacido. **Una regla de alarma se
+escribe con las palabras de quien todavía no sabe que es una alarma.** Y cada ampliación se mide
+contra todas las preguntas que hay: 2.790, y cambian ocho.

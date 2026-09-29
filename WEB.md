@@ -124,7 +124,7 @@ sin que nadie se enterara.
   exigiera que cada cifra en mg salga de la tabla autorizada (antes bastaba con que estuviera).
   Ojo al medir esto: otras cinco parecían sólo inglesas por el nombre del tema y ya estaban
   enlazadas con sus siete gemelas desde el 2-sep; se cuenta lo que ve el lector (`hreflang`).
-- ✅ **Fuentes nuevas (28-sep):** Canada.ca en inglés, 10 páginas, ya en el índice (642 documentos).
+- ✅ **Fuentes nuevas (28-sep):** Canada.ca en inglés, 10 páginas, ya en el índice (642 documentos, contado el 28-sep).
   `gesund.bund.de` descartada: su aviso sólo permite citas sueltas y literales. `gov.br/saude` ya aporta 14. **La OPS/OPAS no**: su licencia
   abierta es de sus publicaciones, no de su web (corregido el 28-sep).
 - **Volumen en Bluesky**: hoy son ~1 al día más una ráfaga de 8 los martes. Si resulta ruidoso,

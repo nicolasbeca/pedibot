@@ -6253,6 +6253,32 @@
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
  },
  {
+  "doc_id": "who_en_hepatitis_b",
+  "org": "WHO",
+  "org_full": "World Health Organization",
+  "title": "Hepatitis B",
+  "year": "",
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.who.int/news-room/fact-sheets/detail/hepatitis-b",
+  "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29"
+ },
+ {
+  "doc_id": "who_es_hepatitis_b",
+  "org": "WHO",
+  "org_full": "World Health Organization",
+  "title": "Hepatitis B",
+  "year": "",
+  "lang": "es",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.who.int/es/news-room/fact-sheets/detail/hepatitis-b",
+  "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29"
+ },
+ {
   "doc_id": "who_en_household_air_pollution_and_health",
   "org": "WHO",
   "org_full": "World Health Organization",
@@ -6277,6 +6303,19 @@
   "usage": "publico",
   "url": "https://www.who.int/fr/news-room/fact-sheets/detail/hepatitis-a",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
+ },
+ {
+  "doc_id": "who_fr_hepatitis_b",
+  "org": "WHO",
+  "org_full": "World Health Organization",
+  "title": "Hépatite B",
+  "year": "",
+  "lang": "fr",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.who.int/fr/news-room/fact-sheets/detail/hepatitis-b",
+  "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29"
  },
  {
   "doc_id": "who_en_immunization_coverage",
@@ -7031,6 +7070,45 @@
   "usage": "publico",
   "url": "https://www.who.int/es/news-room/fact-sheets/detail/road-traffic-injuries",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
+ },
+ {
+  "doc_id": "who_fr_tuberculosis",
+  "org": "WHO",
+  "org_full": "World Health Organization",
+  "title": "Tuberculose",
+  "year": "",
+  "lang": "fr",
+  "topic": "respiratorio",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.who.int/fr/news-room/fact-sheets/detail/tuberculosis",
+  "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29"
+ },
+ {
+  "doc_id": "who_en_tuberculosis",
+  "org": "WHO",
+  "org_full": "World Health Organization",
+  "title": "Tuberculosis",
+  "year": "",
+  "lang": "en",
+  "topic": "respiratorio",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.who.int/news-room/fact-sheets/detail/tuberculosis",
+  "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29"
+ },
+ {
+  "doc_id": "who_es_tuberculosis",
+  "org": "WHO",
+  "org_full": "World Health Organization",
+  "title": "Tuberculosis",
+  "year": "",
+  "lang": "es",
+  "topic": "respiratorio",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.who.int/es/news-room/fact-sheets/detail/tuberculosis",
+  "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29"
  },
  {
   "doc_id": "who_en_typhoid",
