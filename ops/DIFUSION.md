@@ -252,3 +252,8 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   ninguna en la lista; por correo, la clínica de la República Dominicana (sin nombrar a Frank). Se le
 >   propone una pregunta concreta para la lista —qué hacen las familias en los siete países sin
 >   número de urgencias— y se le pregunta si va a HIFA o a CHIFA. **Esperando su respuesta.**
+> - **Frank Brightwell (Somos Amigos), 29-sep:** contesta que pasará calendarios, indicaciones y
+>   la cartilla de crecimiento por su **equipo clínico** y volverá con detalles. Se le mandó un
+>   acuse de dos líneas (sin preguntas). **Darle un toque hacia el 20-oct** si no ha escrito antes;
+>   hasta entonces, no escribirle. Sigue sin contestar si sus pacientes haitianos leen francés o
+>   criollo.

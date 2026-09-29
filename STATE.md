@@ -38,6 +38,7 @@
 - **12 guías reescritas con la ficha de su lengua** (ar, ru, es comparativas, en percentiles), con
   301 reales desde las direcciones viejas.
 - **I-16, mapa del cuerpo: aparcada** por el operador hasta que haya uso real.
+- **Frank (Somos Amigos):** su equipo clínico va a revisar lo de la República Dominicana y Haití. **Toque hacia el 20-oct** si no ha escrito; antes, nada.
 
 ### Y la octava tanda, releída (29-sep, tarde)
 
