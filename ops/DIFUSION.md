@@ -193,7 +193,7 @@ conflictos de interés al final de la biografía**. Se manda por correo a `speak
 
 Buscan experiencias de campo y opiniones sobre práctica de salud pública, así que el ángulo no
 es «mira mi web». Es: **qué pasa cuando intentas contestar a un padre usando sólo fuentes con
-licencia abierta**. Los ocho países sin número nacional de urgencias, los tres meses leyendo
+licencia abierta**. Los siete países sin número nacional de urgencias (se decía ocho: la octava coincidencia era un comentario del fichero, releído el 29-sep), los tres meses leyendo
 licencias una por una, y el catálogo en dominio público para que otro no tenga que repetirlo.
 El conflicto de interés que hay que declarar: el sitio es nuestro y es gratis.
 
@@ -235,3 +235,14 @@ folleto en dos frases.
 
 Y el orden importa: **PLOS primero**, porque si sale, los otros tres se abren solos y porque una
 cita de ahí vale más que cualquier cosa que podamos comprar.
+
+> **29-sep-2026, enviado desde pedibot.ai@gmail.com (aprobado por el operador):**
+> - **Hesperian** (`permissions@hesperian.org`; su política exige permiso escrito para cualquier
+>   uso digital): permiso para citar sus guías de salud infantil en hindi, suajili, árabe y criollo
+>   haitiano, con cita y enlace, sin uso comercial y retirando lo que pidan.
+> - **Think Global Health** (CFR, `submissions@thinkglobalhealth.org`, propuesta de ≤400
+>   palabras): «Call emergency services, in a country with no emergency number». Los siete países
+>   sin número general de urgencias según el FCDO. **Sus normas prohíben que la IA sustituya al
+>   autor**: si aceptan, el artículo lo escribe el operador, con datos y esquema preparados.
+> - Mirados y aparcados: Global Health Unfiltered (pide el artículo entero, no propuesta), Healthy
+>   Newborn Network (sólo formulario), En Familia de la AEP (no publica licencia ni correo).
