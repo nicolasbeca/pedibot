@@ -246,3 +246,9 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   autor**: si aceptan, el artículo lo escribe el operador, con datos y esquema preparados.
 > - Mirados y aparcados: Global Health Unfiltered (pide el artículo entero, no propuesta), Healthy
 >   Newborn Network (sólo formulario), En Familia de la AEP (no publica licencia ni correo).
+> - **HIFA, 29-sep:** Neil contesta que la presentación **sí se distribuyó el 21-sep**
+>   (https://www.hifa.org/dgroups-rss/introduction-pedibot-free-child-health-answers-parents-cited-and-offline;
+>   se sigue en hifa.org/read, no en el resumen diario) y pregunta si ha habido reacciones. Respondido:
+>   ninguna en la lista; por correo, la clínica de la República Dominicana (sin nombrar a Frank). Se le
+>   propone una pregunta concreta para la lista —qué hacen las familias en los siete países sin
+>   número de urgencias— y se le pregunta si va a HIFA o a CHIFA. **Esperando su respuesta.**
