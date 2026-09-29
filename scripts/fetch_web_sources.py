@@ -1042,6 +1042,45 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "en",
         ["todas"],
     ),
+    # 29-sep-2026: el publicador llevaba días diciendo «no sources for topic tuberculosis» y
+    # «hepatitis_b» en inglés. Las dos fichas estaban sólo en árabe y en ruso desde el 3-sep; las
+    # guías de esos dos temas no podían escribirse en ninguna de las otras seis lenguas.
+    (
+        "who",
+        "https://www.who.int/news-room/fact-sheets/detail/tuberculosis",
+        "respiratorio",
+        "en",
+        ["todas"],
+    ),
+    (
+        "who",
+        "https://www.who.int/es/news-room/fact-sheets/detail/tuberculosis",
+        "respiratorio",
+        "es",
+        ["todas"],
+    ),
+    (
+        "who",
+        "https://www.who.int/fr/news-room/fact-sheets/detail/tuberculosis",
+        "respiratorio",
+        "fr",
+        ["todas"],
+    ),
+    ("who", "https://www.who.int/news-room/fact-sheets/detail/hepatitis-b", "general", "en", ["todas"]),
+    (
+        "who",
+        "https://www.who.int/es/news-room/fact-sheets/detail/hepatitis-b",
+        "general",
+        "es",
+        ["todas"],
+    ),
+    (
+        "who",
+        "https://www.who.int/fr/news-room/fact-sheets/detail/hepatitis-b",
+        "general",
+        "fr",
+        ["todas"],
+    ),
     # ---------------- العربية (fase árabe, 3-sep-2026) ----------------
     # Arabic is another of the WHO's six official languages, so the same fact sheets exist
     # under the same licence. All fifteen checked for a 200 before being listed.

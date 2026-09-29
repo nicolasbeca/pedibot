@@ -4691,6 +4691,96 @@ sources:
   - todas
   url: https://www.who.int/news-room/fact-sheets/detail/poliomyelitis
   notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-20'
+- doc_id: who_en_tuberculosis
+  file: web/who_en_tuberculosis.html
+  org: WHO
+  org_full: World Health Organization
+  title: Tuberculosis
+  year: null
+  lang: en
+  topic: respiratorio
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/news-room/fact-sheets/detail/tuberculosis
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29'
+- doc_id: who_es_tuberculosis
+  file: web/who_es_tuberculosis.html
+  org: WHO
+  org_full: World Health Organization
+  title: Tuberculosis
+  year: null
+  lang: es
+  topic: respiratorio
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/es/news-room/fact-sheets/detail/tuberculosis
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29'
+- doc_id: who_fr_tuberculosis
+  file: web/who_fr_tuberculosis.html
+  org: WHO
+  org_full: World Health Organization
+  title: Tuberculose
+  year: null
+  lang: fr
+  topic: respiratorio
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/fr/news-room/fact-sheets/detail/tuberculosis
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29'
+- doc_id: who_en_hepatitis_b
+  file: web/who_en_hepatitis_b.html
+  org: WHO
+  org_full: World Health Organization
+  title: Hepatitis B
+  year: null
+  lang: en
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/news-room/fact-sheets/detail/hepatitis-b
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29'
+- doc_id: who_es_hepatitis_b
+  file: web/who_es_hepatitis_b.html
+  org: WHO
+  org_full: World Health Organization
+  title: Hepatitis B
+  year: null
+  lang: es
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/es/news-room/fact-sheets/detail/hepatitis-b
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29'
+- doc_id: who_fr_hepatitis_b
+  file: web/who_fr_hepatitis_b.html
+  org: WHO
+  org_full: World Health Organization
+  title: Hépatite B
+  year: null
+  lang: fr
+  topic: general
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://www.who.int/fr/news-room/fact-sheets/detail/hepatitis-b
+  notes: 'licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-29'
 - doc_id: who_ar_measles
   file: web/who_ar_measles.html
   org: WHO

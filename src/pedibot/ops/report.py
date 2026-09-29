@@ -10,6 +10,7 @@ import re
 import sqlite3
 import subprocess
 import sys
+from collections.abc import Iterable
 from typing import Any
 
 from pedibot.ops.store import NOT_REAL, REAL_ONLY
@@ -54,8 +55,8 @@ def _who(ip: object, ua: str) -> str:
 TEAM_WINDOW = 7 * 86_400.0
 
 
-def _team_marks(lines: list[str]) -> dict[str, list[float]]:
-    """Las IP que son nuestras, con los momentos en que lo demostraron (13-sep-2026).
+def _team_mark(j: dict[str, Any]) -> bool:
+    """¿Esta petición prueba que su IP es nuestra? (13-sep-2026)
 
     Dos pruebas, y las dos son de nosotros por construcción:
 
@@ -67,23 +68,11 @@ def _team_marks(lines: list[str]) -> dict[str, list[float]]:
     Antes se descartaba el navegador exacto (IP + agente) que abrió el panel. El operador en su
     móvil, en la misma wifi, contaba como visita; ahora cuenta la IP entera.
     """
-    out: dict[str, list[float]] = {}
-    for line in lines:
-        if '"handled request"' not in line or (
-            "/admin" not in line and "pedibot-client" not in line.lower()
-        ):
-            continue
-        try:
-            j = json.loads(line)
-        except json.JSONDecodeError:
-            continue
-        req = j.get("request", {})
-        headers = {str(k).lower(): v for k, v in (req.get("headers") or {}).items()}
-        panel = j.get("status") == 200 and str(req.get("uri", "")).startswith("/admin")
-        prueba = "test" in [str(v).lower() for v in headers.get("x-pedibot-client") or []]
-        if panel or prueba:
-            out.setdefault(str(req.get("remote_ip")), []).append(float(j.get("ts", 0)))
-    return out
+    req = j.get("request", {})
+    if j.get("status") == 200 and str(req.get("uri", "")).startswith("/admin"):
+        return True
+    headers = {str(k).lower(): v for k, v in (req.get("headers") or {}).items()}
+    return "test" in [str(v).lower() for v in headers.get("x-pedibot-client") or []]
 
 
 def _es_nuestra(marks: dict[str, list[float]], ip: object, ts: float) -> bool:
@@ -134,13 +123,21 @@ def web_visits(days: int = 7) -> dict[str, Any]:
     A year is the ceiling either way — beyond that the read costs more than the answer is worth.
     """
     since = f"-{days}d" if days > 0 else "-365d"
+    # Leído como un tubo (29-sep-2026): un año de registro son 220 MB, y cargarlo entero con
+    # `subprocess.run` llevó `publish_stats` a 1,26 GB y al OOM killer cada hora desde el 26-sep.
     try:
-        out = subprocess.run(
+        with subprocess.Popen(
             ["journalctl", "-u", "caddy", "--since", since, "-o", "cat", "--no-pager"],
-            capture_output=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
             text=True,
-            timeout=120,
-        ).stdout
+            encoding="utf-8",
+            errors="replace",
+        ) as proc:
+            assert proc.stdout is not None
+            resultado = count_visits(proc.stdout)
+            proc.wait(timeout=120)
+        return resultado
     except Exception as e:  # noqa: BLE001
         print("journalctl failed:", e, file=sys.stderr)
         return {
@@ -157,7 +154,6 @@ def web_visits(days: int = 7) -> dict[str, Any]:
             "per_day": {},
             "covers": (),
         }
-    return count_visits(out.splitlines())
 
 
 # ── la web, más allá de Google (21-sep-2026) ─────────────────────────────────────────────────
@@ -279,7 +275,7 @@ def _la_web(
     }
 
 
-def count_visits(lines: list[str]) -> dict[str, Any]:
+def count_visits(lines: Iterable[str]) -> dict[str, Any]:
     """Cuenta visitas de verdad, y dice aparte cuántas peticiones hubo en bruto.
 
     El operador lo notó antes que nadie: demasiadas visitas para tan pocas consultas. Sobre
@@ -296,13 +292,11 @@ def count_visits(lines: list[str]) -> dict[str, Any]:
     No es perfecto y no pretende serlo — un rastreador que renderice de verdad sigue pareciendo
     un navegador. Es defendible, que es lo que se le pide a un número que se mira para decidir.
     """
-    # quiénes somos, antes de contar a nadie (ver _team_marks). Cuesta una pasada más y ninguna
-    # configuración.
-    ours = _team_marks(lines)
-    brutas = 0
-    paginas: dict[str, list[tuple[str, float]]] = {}
-    llegada: dict[str, tuple[float, str, str, str, str]] = {}
-    estaticos: set[str] = set()
+    # Una sola pasada (29-sep-2026): `lines` puede ser la salida de journalctl según llega, y
+    # un año de registro son 220 MB. Lo que puede ser una visita se guarda en corto; quiénes
+    # somos se decide al final, porque la marca del panel puede llegar después de la visita.
+    ours: dict[str, list[float]] = {}
+    candidatas: list[tuple[str, object, float, str, bool, str, str, str]] = []
     for line in lines:
         if '"handled request"' not in line:
             continue
@@ -311,33 +305,46 @@ def count_visits(lines: list[str]) -> dict[str, Any]:
         except json.JSONDecodeError:
             continue
         req = j.get("request", {})
+        ts = float(j.get("ts", 0))
+        ip = req.get("remote_ip")
+        if _team_mark(j):
+            ours.setdefault(str(ip), []).append(ts)
         uri, status = req.get("uri", ""), j.get("status", 0)
         if status != 200 or req.get("method") != "GET":
             continue
         ua = (req.get("headers", {}).get("User-Agent") or [""])[0]
-        ip = req.get("remote_ip")
         if _BOT_UA.search(ua) or _de_rastreador(ip):
             continue
-        who = _who(ip, ua)
-        if _es_nuestra(ours, ip, float(j.get("ts", 0))):
-            # el operador mirando su propio sitio no es una visita, y con este tráfico una
-            # persona abriéndolo dos veces al día sería casi todo el número que está mirando
-            continue
-        if _STATIC.search(uri):
-            estaticos.add(who)
-            continue
-        brutas += 1
-        ts_pag = float(j.get("ts", 0))
-        paginas.setdefault(who, []).append((uri.split("?")[0], ts_pag))
         h = req.get("headers", {})
-        if who not in llegada or ts_pag < llegada[who][0]:
-            llegada[who] = (
-                ts_pag,
+        candidatas.append(
+            (
+                _who(ip, ua),
+                ip,
+                ts,
                 uri.split("?")[0],
+                bool(_STATIC.search(uri)),
                 (h.get("Referer") or [""])[0],
                 ua,
                 (h.get("Accept-Language") or [""])[0],
             )
+        )
+
+    brutas = 0
+    paginas: dict[str, list[tuple[str, float]]] = {}
+    llegada: dict[str, tuple[float, str, str, str, str]] = {}
+    estaticos: set[str] = set()
+    for who, ip, ts_pag, uri, estatico, ref, ua, lang in candidatas:
+        if _es_nuestra(ours, ip, ts_pag):
+            # el operador mirando su propio sitio no es una visita, y con este tráfico una
+            # persona abriéndolo dos veces al día sería casi todo el número que está mirando
+            continue
+        if estatico:
+            estaticos.add(who)
+            continue
+        brutas += 1
+        paginas.setdefault(who, []).append((uri, ts_pag))
+        if who not in llegada or ts_pag < llegada[who][0]:
+            llegada[who] = (ts_pag, uri, ref, ua, lang)
 
     reales = {w: v for w, v in paginas.items() if w in estaticos}
     views, chat = 0, 0

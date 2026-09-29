@@ -984,6 +984,18 @@ class Index:
             ).fetchone()
         return Chunk.model_validate_json(row[0]) if row else None
 
+    def document_hits(self, doc_id: str, limit: int = 4) -> list[Hit]:
+        """Los primeros pasajes de un documento, en su orden, sin buscar nada (29-sep-2026).
+
+        Para cuando alguien ya decidió qué documento hace falta —un ancla del plan de temas— y la
+        búsqueda léxica no puede encontrarlo porque la consulta está en otra lengua. Puntuación
+        cero: no compiten con lo que sí se encontró buscando.
+        """
+        rows = self.con.execute(
+            "SELECT data FROM chunks WHERE doc_id=? ORDER BY chunk_id LIMIT ?", (doc_id, limit)
+        ).fetchall()
+        return [Hit(Chunk.model_validate_json(r[0]), 0.0, 0) for r in rows]
+
     def search(
         self,
         query: str,

@@ -206,7 +206,22 @@ def test_the_operator_is_not_one_of_his_own_visitors(monkeypatch) -> None:
             _caddy("192.0.2.7", "/favicon.ico"),
         ]
     )
-    monkeypatch.setattr(subprocess, "run", lambda *a, **k: type("R", (), {"stdout": log})())
+    import io
+
+    class _Journal:  # journalctl se lee como un tubo desde el 29-sep (test_visits_stream.py)
+        def __init__(self, *a, **k):
+            self.stdout = io.StringIO(log)
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *exc):
+            return False
+
+        def wait(self, timeout=None):
+            return 0
+
+    monkeypatch.setattr(subprocess, "Popen", _Journal)
     w = report.web_visits(7)
     # the reader, and the scanner that failed the password: two, not one. Guessing the scanner
     # away would shrink the number in the flattering direction, which is the failure this whole

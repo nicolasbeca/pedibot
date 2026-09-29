@@ -1937,3 +1937,16 @@ La lección no es sobre Hugging Face: cuando un formato exige algo que un genera
 la salida fácil es escribir a mano el fichero que lo cumple, y esa copia empieza a envejecer el
 mismo día. **Lo que hay que cambiar es el generador.** Y quien mira el trabajo con ojos limpios
 lo ve antes que quien lo escribió: aquí lo vio él con una pregunta de siete palabras.
+
+## L246 · Lo que corre solo también se cae solo (29-sep-2026)
+
+Dos trabajos de los timers llevaban fallando días —las cifras públicas desde el 26-sep, Search
+Console desde esta mañana— y nadie lo sabía: el vigilante miraba los cuatro servicios que están
+siempre en marcha y ninguno de los que arrancan y terminan. `systemctl --failed` los enseñaba en
+rojo a quien mirara, y nadie miraba.
+
+Y los dos fallos tenían la misma forma que otros anteriores. El de memoria era un fichero que
+crece cada día leído entero: funcionó mientras fue pequeño. El de `jwt` era una dependencia que
+llegaba de rebote: la suite pasó porque en el PC seguía instalada. **Lo que funciona por
+casualidad deja de funcionar sin avisar.** Los candados se ponen sobre la regla (nada se importa
+sin declararlo, nada se lee entero si crece, todo trabajo fallido avisa), no sobre el caso.

@@ -1,6 +1,29 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-28** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-09-29** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 29-sep-2026 · dos trabajos caídos sin aviso, y las guías que no usaban su propia lengua
+
+- **Cifras públicas congeladas desde el 26-sep a las 22:10.** `publish_stats` moría cada hora a
+  manos del OOM killer: cargaba el registro de Caddy de un año (220 MB) tres veces en memoria y
+  llegaba a 1,26 GB en una máquina de 2 GB sin swap. El panel `/admin` hace la misma lectura
+  dentro de la API. Ahora `journalctl` se lee como un tubo y se cuenta en una pasada:
+  **263 MB, 10 s**. `/api/stats` vuelve a dar cifras de hoy. `tests/test_visits_stream.py`.
+- **Search Console caído el 29-sep** por lo del 28: al quitar `eth-account` se fue PyJWT, que
+  `ops/search.py` importaba sin declararlo. Declarado, y candado nuevo
+  `tests/test_dependencies_declared.py`: todo import de terceros en `src/` y `ops/` sale de una
+  dependencia de `[project]`, no de rebote.
+- **El vigilante no miraba los trabajos de los timers.** Ahora avisa de cualquier `pedibot-*` en
+  `failed` (`failed_jobs`).
+- **Fichas de la OMS de tuberculosis y hepatitis B** en inglés, castellano y francés: sólo
+  estaban en árabe y ruso, y el publicador llevaba días con «no sources for topic». 648 documentos.
+- **Las guías no usaban la ficha de su propia lengua**: en 38 de 145 pares tema-lengua el plan la
+  nombraba y la búsqueda (léxica, con consulta en castellano e inglés) no la traía; 21 eran
+  árabes. `gather_hits` pone delante las anclas en la lengua del lector, las encuentre o no la
+  búsqueda. `tests/test_anchors_in_their_language.py`. Las guías ya publicadas no se reescriben.
+- **ProductWatch:** alta gratuita hecha por el operador, sin insignia y sin pagar; sale hacia el
+  **30-oct**. Ese día comprobar que el enlace a pedibot.xyz está y es do-follow.
+- Suite **10.467**. Desplegado; smoke y doctor limpios; los dos trabajos relanzados y en verde.
 
 ## 28-sep-2026 · la ley en la política, la consciencia alterada y dos países nuevos
 

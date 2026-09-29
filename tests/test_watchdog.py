@@ -167,3 +167,40 @@ def test_a_service_that_stays_down_is_still_reported():
     """Y la otra mitad: mirar dos veces no puede convertirse en no mirar."""
     wd = _watchdog()
     assert wd.dead_units(status_of=lambda _u: "failed", dormir=lambda _s: None) == list(wd.UNITS)
+
+
+# --------------------------------------------------------------------------------------------
+# Los trabajos de los timers (29-sep-2026)
+#
+# El vigilante miraba los cuatro servicios que están siempre en marcha y ninguno de los trabajos
+# que arrancan los timers. `pedibot-stats` murió cada hora durante dos días y medio a manos del
+# OOM killer, y `pedibot-gsc` un día entero por un `import jwt`, con las dos unidades en `failed`
+# a la vista de `systemctl --failed` y sin un solo aviso. Un trabajo que falla en silencio deja
+# en la web una cifra congelada que nadie distingue de una cifra de verdad.
+# --------------------------------------------------------------------------------------------
+
+
+def test_a_failed_timer_job_is_reported():
+    wd = _watchdog()
+    salida = (
+        "pedibot-gsc.service   loaded failed failed PediBot: refresh Search Console data\n"
+        "pedibot-stats.service loaded failed failed PediBot: publica las cifras de uso\n"
+    )
+    assert wd.failed_jobs(correr=_respuesta(salida)) == ["pedibot-gsc", "pedibot-stats"]
+
+
+def test_nothing_failed_means_nothing_reported():
+    wd = _watchdog()
+    assert wd.failed_jobs(correr=_respuesta("")) == []
+
+
+def test_only_our_units_are_asked_about():
+    wd = _watchdog()
+    pedido: dict[str, list[str]] = {}
+
+    def correr(cmd, **k):
+        pedido["cmd"] = cmd
+        return _respuesta("")()
+
+    wd.failed_jobs(correr=correr)
+    assert "--failed" in pedido["cmd"] and "pedibot-*" in pedido["cmd"]

@@ -394,7 +394,13 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "prevenir ahogamiento niños agua piscina supervisión drowning prevention",
     },
     "tuberculosis": {
-        "docs": ["who_ar_tuberculosis", "who_ru_tuberculosis"],
+        "docs": [
+            "who_en_tuberculosis",
+            "who_es_tuberculosis",
+            "who_fr_tuberculosis",
+            "who_ar_tuberculosis",
+            "who_ru_tuberculosis",
+        ],
         "query": "tuberculosis en niños síntomas tos prolongada contacto tuberculosis children symptoms cough",
     },
     "malaria": {
@@ -402,7 +408,13 @@ TOPIC_PLAN: dict[str, dict[str, object]] = {
         "query": "malaria niño fiebre zona endémica mosquitera urgente malaria child fever",
     },
     "hepatitis_b": {
-        "docs": ["who_ar_hepatitis_b", "who_ru_hepatitis_b"],
+        "docs": [
+            "who_en_hepatitis_b",
+            "who_es_hepatitis_b",
+            "who_fr_hepatitis_b",
+            "who_ar_hepatitis_b",
+            "who_ru_hepatitis_b",
+        ],
         "query": "hepatitis B niños transmisión vacuna hepatitis B children vaccine",
     },
     "poliomielitis": {
@@ -654,6 +666,22 @@ def gather_hits(index: Index, topic: str, max_chunks: int = 10, lang: str = "es"
     hits = index.search(str(plan["query"]), top_k=hondo, prefer_parent_leaflets=True)
     wanted: list[str] = list(plan["docs"])  # type: ignore[call-overload]
     anchored = [h for h in hits if h.chunk.doc_id in wanted and h.chunk.usage == "publico"]
+    # Un ancla en la lengua del lector se usa aunque la búsqueda no la encuentre (29-sep-2026).
+    # La consulta del plan está en castellano e inglés y el buscador es léxico: en 38 de 145
+    # pares tema-lengua la ficha propia no salía nunca, 21 de ellos árabes. Va delante porque
+    # es la única que ese lector puede abrir seguro (test_anchors_in_their_language.py).
+    # Y delante también cuando la búsqueda sí la encontró: en asma/fr, cólera/fr y seguridad
+    # alimentaria/es salía, pero detrás de otras diez y el tope la cortaba.
+    vistos = {h.chunk.doc_id for h in anchored}
+    encontradas = [h for h in anchored if h.chunk.lang == lang]
+    traidas = [
+        h
+        for d in wanted
+        if d not in vistos
+        for h in index.document_hits(d)
+        if h.chunk.lang == lang and h.chunk.usage == "publico"
+    ]
+    anchored = encontradas + traidas + [h for h in anchored if h.chunk.lang != lang]
     topics = {h.chunk.topic for h in anchored}
     others = [
         h

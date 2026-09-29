@@ -132,6 +132,28 @@ def access_log_lines(desde: str = "-2 hours", correr: Any = None) -> int:
     return len([x for x in (r.stdout or "").splitlines() if x.strip()])
 
 
+def failed_jobs(correr: Any = None) -> list[str]:
+    """Nuestras unidades en `failed`, las de los timers incluidas (29-sep-2026).
+
+    `dead_units` mira lo que tiene que estar siempre en marcha; esto mira lo que arranca y
+    termina. Un trabajo de timer que falla se queda en `failed` hasta que vuelve a salir bien,
+    así que el aviso dura lo que dura la avería y el mensaje de recuperación llega solo.
+    """
+    ejecutar = correr or subprocess.run
+    r = ejecutar(
+        ["systemctl", "list-units", "--failed", "--plain", "--no-legend", "pedibot-*"],
+        capture_output=True,
+        text=True,
+        timeout=10,
+    )
+    out = []
+    for linea in (r.stdout or "").splitlines():
+        trozos = linea.replace("●", " ").split()
+        if trozos:
+            out.append(trozos[0].removesuffix(".service"))
+    return sorted(out)
+
+
 def main() -> int:
     problems: dict[str, str] = {}
     # 1. API health
@@ -167,6 +189,16 @@ def main() -> int:
         problems["units"] = (
             f"🚨 Servicios parados: {', '.join(dead)}. Arranca con: systemctl restart {dead[0]}"
         )
+    # 3b. los trabajos de los timers, que fallaban sin que nadie lo viera (29-sep-2026)
+    try:
+        caidos = failed_jobs()
+        if caidos:
+            problems["jobs"] = (
+                f"⚠️ Trabajos fallidos: {', '.join(caidos)}. "
+                f"Mira: journalctl -u {caidos[0]} -n 30"
+            )
+    except Exception as e:  # noqa: BLE001
+        problems["jobs_check"] = f"⚠️ No se pudieron revisar los trabajos: {e}"
     # 4. el modelo falló y contestamos sin él
     #
     # Desde el 7-sep-2026 una avería de DeepSeek ya no tumba la respuesta: se contesta con los
