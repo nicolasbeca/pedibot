@@ -209,7 +209,12 @@ en:
   itch:
   - picor
   - urticaria
-  ear:
+  # palabra entera: por prefijo, «ear» casaba con «early» y «born 6 weeks early» acababa en
+  # la hoja de otitis (30-sep-2026)
+  ear$:
+  - oído
+  - otitis
+  ears$:
   - oído
   - otitis
   otitis:

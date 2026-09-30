@@ -36,6 +36,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "Sold in {country}:",
         "dose_other_strengths": "Other strengths:",
         "dose_check": "Always check the concentration on the bottle. Under 3 months, ask a doctor before giving anything.",
+        "dose_two_weights": "You mentioned two weights, {a:g} kg and {b:g} kg, and the dose depends on the weight. Which one should I use?",
         "dose_warn": {
             "under_3_months_refer": "under 3 months old",
             "below_min_age": "below the minimum age for this drug",
@@ -90,6 +91,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "Se venden en {country}:",
         "dose_other_strengths": "Otras concentraciones:",
         "dose_check": "Comprueba siempre la concentración del envase. Si tiene menos de 3 meses, consulta antes de dar nada.",
+        "dose_two_weights": "Has escrito dos pesos, {a:g} kg y {b:g} kg, y la dosis depende del peso. ¿Con cuál calculo?",
         "dose_warn": {
             "under_3_months_refer": "menor de 3 meses",
             "below_min_age": "por debajo de la edad mínima del fármaco",
@@ -142,6 +144,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "Vendus en {country} :",
         "dose_other_strengths": "Autres concentrations :",
         "dose_check": "Vérifiez toujours la concentration inscrite sur le flacon. Avant 3 mois, demandez à un médecin avant de donner quoi que ce soit.",
+        "dose_two_weights": "Vous avez indiqué deux poids, {a:g} kg et {b:g} kg, et la dose dépend du poids. Lequel dois-je utiliser ?",
         "dose_warn": {
             "under_3_months_refer": "moins de 3 mois",
             "below_min_age": "en dessous de l'âge minimum de ce médicament",
@@ -194,6 +197,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "In {country} erhältlich:",
         "dose_other_strengths": "Andere Konzentrationen:",
         "dose_check": "Prüfen Sie immer die auf Ihrer Flasche angegebene Konzentration. Unter 3 Monaten nichts ohne ärztlichen Rat geben.",
+        "dose_two_weights": "Sie haben zwei Gewichte angegeben, {a:g} kg und {b:g} kg, und die Dosis hängt vom Gewicht ab. Mit welchem soll ich rechnen?",
         "dose_warn": {
             "under_3_months_refer": "unter 3 Monate alt",
             "below_min_age": "unter dem Mindestalter für dieses Medikament",
@@ -246,6 +250,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "Продаются в стране {country}:",
         "dose_other_strengths": "Другие концентрации:",
         "dose_check": "Всегда проверяйте концентрацию, указанную на вашем флаконе. До 3 месяцев ничего не давайте без назначения врача.",
+        "dose_two_weights": "Вы указали два веса, {a:g} кг и {b:g} кг, а доза зависит от веса. По какому из них считать?",
         "dose_warn": {
             "under_3_months_refer": "младше 3 месяцев",
             "below_min_age": "младше минимального возраста для этого препарата",
@@ -298,6 +303,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "المتوفر في {country}:",
         "dose_other_strengths": "تركيزات أخرى:",
         "dose_check": "تحقق دائما من التركيز المطبوع على عبوتك. وقبل عمر 3 أشهر لا تعطِ أي دواء دون وصفة.",
+        "dose_two_weights": "ذكرت وزنين، {a:g} كغ و{b:g} كغ، والجرعة تعتمد على الوزن. بأيهما أحسب؟",
         "dose_warn": {
             "under_3_months_refer": "أقل من 3 أشهر",
             "below_min_age": "أقل من العمر الأدنى لهذا الدواء",
@@ -350,6 +356,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "Vendidos em {country}:",
         "dose_other_strengths": "Outras concentrações:",
         "dose_check": "Confira sempre a concentração impressa na embalagem. Com menos de 3 meses, não dê nada sem orientação médica.",
+        "dose_two_weights": "Indicou dois pesos, {a:g} kg e {b:g} kg, e a dose depende do peso. Com qual devo calcular?",
         "dose_warn": {
             "under_3_months_refer": "menor de 3 meses",
             "below_min_age": "abaixo da idade mínima do medicamento",
@@ -402,6 +409,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "{country} में मिलने वाले:",
         "dose_other_strengths": "अन्य सांद्रताएँ:",
         "dose_check": "डिब्बे पर लिखी ताक़त हमेशा जाँच लें। तीन महीने से छोटे बच्चे को डॉक्टर की सलाह के बिना कुछ न दें।",
+        "dose_two_weights": "आपने दो वज़न लिखे हैं, {a:g} किग्रा और {b:g} किग्रा, और खुराक वज़न पर निर्भर करती है। किस वज़न से हिसाब लगाऊँ?",
         "dose_warn": {
             "under_3_months_refer": "तीन महीने से छोटा",
             "below_min_age": "दवा की कम से कम उम्र से छोटा",
@@ -459,6 +467,7 @@ STRINGS: dict[str, Table] = {
         "dose_sold_in": "Zinazouzwa {country}:",
         "dose_other_strengths": "Viwango vingine:",
         "dose_check": "Angalia daima kiwango kilichoandikwa kwenye chupa. Chini ya miezi mitatu, muulize daktari kabla ya kumpa chochote.",
+        "dose_two_weights": "Umetaja uzito mbili, kilo {a:g} na kilo {b:g}, na dozi inategemea uzito. Nitumie upi?",
         "dose_warn": {
             "under_3_months_refer": "ana chini ya miezi mitatu",
             "below_min_age": "umri wake ni chini ya unaoruhusiwa kwa dawa hii",

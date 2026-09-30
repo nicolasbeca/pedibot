@@ -60,6 +60,17 @@ ORGS = {
         "evidence": "organismo_publico",
         "usage": "publico",
     },
+    # Irlanda del Norte. Licencia leída en su página «Crown copyright» (30-sep-2026): «You may use
+    # and re-use the information featured on this website (not including logos) free of charge
+    # in any format or medium, under the terms of the Open Government Licence». Su ficha de
+    # vacunas del prematuro es el folleto de la UKHSA y el NHS hecho página web.
+    "nidirect": {
+        "org": "nidirect",
+        "org_full": "nidirect (Northern Ireland Government Services)",
+        "license": "Open Government Licence v3.0",
+        "evidence": "organismo_publico",
+        "usage": "publico",
+    },
     "cdc": {
         "org": "CDC",
         "org_full": "Centers for Disease Control and Prevention (USA)",
@@ -107,6 +118,44 @@ ORGS = {
 
 # (key, url, topic, lang, age_groups)
 WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
+    # El prematuro (30-sep-2026): vacunas con la edad real, hitos con la corregida.
+    (
+        "nidirect",
+        "https://www.nidirect.gov.uk/articles/childhood-immunisation-programme",
+        "vacunas",
+        "en",
+        ["lactante"],
+    ),
+    (
+        "cdc",
+        "https://www.cdc.gov/act-early/digital-online-checklist/2-months.html",
+        "desarrollo",
+        "en",
+        ["lactante"],
+    ),
+    # Cómo tomar la temperatura, y la madre que está enferma y da el pecho (30-sep-2026): las
+    # dos preguntas se contestaban citando fichas que no decían lo contestado.
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/health/how-to-take-your-babys-temperature/",
+        "general",
+        "en",
+        ["lactante", "preescolar"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding-and-lifestyle/medicines/",
+        "alimentacion",
+        "en",
+        ["lactante"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/breastfeeding/can-i-breastfeed-if-im/having-covid-19-symptoms-or-vaccine/",
+        "alimentacion",
+        "en",
+        ["lactante"],
+    ),
     # ---------------- NHS (England) ----------------
     # Direcciones revisadas el 6-sep-2026 contra el sitio real: ninguna de las 243 del corpus
     # estaba rota, pero 17 respondían por una redirección y la redirección de hoy es el 404 de

@@ -486,3 +486,9 @@ sources:
     notes: Vaccine Information Statement del CDC (obra del gobierno de EE. UU., dominio público); la traducción
       la produce y aloja Immunize.org, que no publica un permiso explícito de redistribución, así que va
       como citar_solo. varicela.
+
+  # El prematuro y las curvas (30-sep-2026). Módulo de formación del CDC, obra del gobierno de
+  # EE. UU. (dominio público). Es para sanitarios, pero es la única fuente abierta encontrada que
+  # dice con todas las letras hasta cuándo se corrige la edad: «The gestation-adjusted age should
+  # continue to be used for all plots up to 24 months of age», con un ejemplo resuelto.
+  - {doc_id: cdc_en_growth_charts_overview, file: web/cdc_en_growth_charts_overview.pdf, org: CDC, org_full: Centers for Disease Control and Prevention (USA), title: "Overview of the CDC Growth Charts (training module), pp. 13-15: premature and very low birth weight infants", year: 2002, lang: en, topic: desarrollo, doc_type: guia_clinica, evidence: organismo_publico, usage: publico, age_groups: [lactante], url: "https://stacks.cdc.gov/view/cdc/29075/cdc_29075_DS1.pdf", notes: "licence: Public domain (U.S. Government work); fetched 2026-09-30; only pp. 13-15 indexed (the whole module crowded out parent pages on every percentile question)"}

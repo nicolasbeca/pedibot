@@ -26,7 +26,7 @@ configs:
 
 # Paediatric guidance for parents — an open catalogue
 
-**648 documents from 21 organisations**, in 8 languages, each classified by topic and linked to its original.
+**654 documents from 22 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -57,12 +57,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (264 of 648 do) |
+| `year` | where the document states one (267 of 654 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `usage` | `publico` (600) may be reproduced under its publisher's terms; `citar_solo` (48) may be cited and linked, not reproduced |
-| `url` | link to the original (600 of 648 are online; the rest are books and printed manuals, identified in `notes`) |
+| `usage` | `publico` (606) may be reproduced under its publisher's terms; `citar_solo` (48) may be cited and linked, not reproduced |
+| `url` | link to the original (606 of 654 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -70,9 +70,9 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | organisation | documents |
 |---|---|
 | WHO — World Health Organization | 220 |
-| NHS — NHS (National Health Service, England) | 156 |
+| NHS — NHS (National Health Service, England) | 159 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 118 |
-| CDC — Centers for Disease Control and Prevention (USA) | 38 |
+| CDC — Centers for Disease Control and Prevention (USA) | 40 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
 | SEUP — Sociedad Española de Urgencias de Pediatría | 29 |
 | Gouvernement du Canada — Gouvernement du Canada / Government of Canada (santé publique) | 20 |
@@ -90,12 +90,13 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | Ministerio de Sanidad — Ministerio de Sanidad (España) — Consejo Interterritorial del SNS | 1 |
 | NHSRC — National Health Systems Resource Centre, Ministry of Health & Family Welfare, Government of India | 1 |
 | PUC Chile — Pontificia Universidad Católica de Chile — Escuela de Medicina | 1 |
+| nidirect — nidirect (Northern Ireland Government Services) | 1 |
 
 ## By language
 
 | language | documents |
 |---|---|
-| English (`en`) | 325 |
+| English (`en`) | 331 |
 | Spanish (`es`) | 115 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 51 |
@@ -110,12 +111,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 |---|---|
 | `respiratorio` | 74 |
 | `piel` | 73 |
-| `general` | 67 |
+| `general` | 68 |
 | `digestivo` | 65 |
 | `accidentes` | 55 |
-| `vacunas` | 49 |
-| `alimentacion` | 37 |
-| `desarrollo` | 36 |
+| `vacunas` | 50 |
+| `alimentacion` | 39 |
+| `desarrollo` | 38 |
 | `salud_mental` | 22 |
 | `orl` | 19 |
 | `neurologia` | 17 |

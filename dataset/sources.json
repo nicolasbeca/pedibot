@@ -156,6 +156,19 @@
   "notes": "licence: CC BY-NC-ND 3.0 España (pie de familiaysalud.es); fetched 2026-09-23"
  },
  {
+  "doc_id": "cdc_en_2_months",
+  "org": "CDC",
+  "org_full": "Centers for Disease Control and Prevention (USA)",
+  "title": "2 Month Online Milestone Checklist",
+  "year": "",
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.cdc.gov/act-early/digital-online-checklist/2-months.html",
+  "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-30"
+ },
+ {
   "doc_id": "cdc_en_chickenpox_about_index",
   "org": "CDC",
   "org_full": "Centers for Disease Control and Prevention (USA)",
@@ -336,6 +349,19 @@
   "usage": "publico",
   "url": "https://www.cdc.gov/measles/signs-symptoms/index.html",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-02"
+ },
+ {
+  "doc_id": "cdc_en_growth_charts_overview",
+  "org": "CDC",
+  "org_full": "Centers for Disease Control and Prevention (USA)",
+  "title": "Overview of the CDC Growth Charts (training module), pp. 13-15: premature and very low birth weight infants",
+  "year": 2002,
+  "lang": "en",
+  "topic": "desarrollo",
+  "doc_type": "guia_clinica",
+  "usage": "publico",
+  "url": "https://stacks.cdc.gov/view/cdc/29075/cdc_29075_DS1.pdf",
+  "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-30; only pp. 13-15 indexed (the whole module crowded out parent pages on every percentile question)"
  },
  {
   "doc_id": "cdc_en_child_development_positive_parenting_tips_index",
@@ -2912,6 +2938,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_medicines",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Breastfeeding and medicines",
+  "year": 2026,
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding-and-lifestyle/medicines/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-30"
+ },
+ {
   "doc_id": "nhs_en_broken_arm_or_wrist",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3497,6 +3536,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_having_covid_19_symptoms_or_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Having COVID-19 symptoms or the vaccine",
+  "year": "",
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/breastfeeding/can-i-breastfeed-if-im/having-covid-19-symptoms-or-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-30"
+ },
+ {
   "doc_id": "nhs_en_hay_fever",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3716,6 +3768,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/making-up-baby-formula/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
+  "doc_id": "nhs_en_how_to_take_your_babys_temperature",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "How to take your baby's temperature",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/baby/health/how-to-take-your-babys-temperature/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-30"
  },
  {
   "doc_id": "nhs_en_ibuprofen_for_children",
@@ -8422,5 +8487,18 @@
   "usage": "publico",
   "url": "https://www.who.int/ar/news-room/fact-sheets/detail/drinking-water",
   "notes": "licence: CC BY-NC-SA 3.0 IGO; fetched 2026-09-11"
+ },
+ {
+  "doc_id": "nidirect_en_childhood_immunisation_programme",
+  "org": "nidirect",
+  "org_full": "nidirect (Northern Ireland Government Services)",
+  "title": "Childhood immunisation programme",
+  "year": "",
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nidirect.gov.uk/articles/childhood-immunisation-programme",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-09-30"
  }
 ]

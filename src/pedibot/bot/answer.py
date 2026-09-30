@@ -862,6 +862,19 @@ def brand_in_query(query: str, drugs: DrugCatalog | None) -> tuple[str, object] 
     return None
 
 
+def weights_in(query: str) -> list[float]:
+    """Todos los pesos distintos de la pregunta, en el orden en que aparecen.
+
+    `dose_intent` se queda con el primero; esto existe para saber si había otro. «7,2 kg en el
+    centro y 7,8 en casa» se calculaba con 7,2 sin decir que había dos (30-sep-2026)."""
+    vistos: list[float] = []
+    for m in _WEIGHT.finditer(query.translate(_DIGITOS)):
+        kg = float(m.group(1).replace(",", "."))
+        if kg not in vistos:
+            vistos.append(kg)
+    return vistos
+
+
 def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, float] | None:
     """(drug_key, weight_kg) when the message is a dose question with an explicit weight.
 
@@ -1715,6 +1728,29 @@ class Engine:
             )
             else None
         )
+        # Dos pesos distintos: se pregunta cuál, no se elige por el padre. Decisión del operador
+        # el 30-sep-2026, entre preguntar, calcular con los dos o usar el menor.
+        pesos = weights_in(query)
+        # …y la respuesta a esa pregunta —«7,8 kg», sin medicamento— lleva a la dosis: el
+        # fármaco sale del turno anterior y el peso, de éste. Sólo cuando el turno anterior
+        # traía dos pesos, para no inventar una pregunta de dosis donde no la había.
+        if intent is None and len(pesos) == 1 and len(weights_in(context_text or "")) >= 2:
+            previa = dose_intent(context_text, self.drugs)
+            if previa:
+                intent = (previa[0], pesos[0])
+        if intent and tr.level == "routine" and len(pesos) >= 2:
+            return Answer(
+                tool_strings(lang)["dose_two_weights"].format(a=pesos[0], b=pesos[1]),
+                tr.level,
+                None,
+                [],
+                lang,
+                None,
+                None,
+                [],
+                "dose_two_weights",
+                tool=tool_link("dose", lang),
+            )
         if intent and tr.level == "routine":
             drug, kg = intent
             # La marca que el padre ha escrito, para poner SU bote el primero. El catálogo ya la

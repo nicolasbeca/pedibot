@@ -15,7 +15,7 @@
 > son diarios. Una cifra de hace un mes ahí no es un error, es lo que pasó ese día.
 
 
-Contado el **2026-09-29**.
+Contado el **2026-09-30**.
 
 | | cifra | de dónde sale |
 |---|---:|---|
@@ -27,10 +27,10 @@ Contado el **2026-09-29**.
 | marcas de medicamento | **35** | config/drugs.yaml |
 | países con alguna marca | **57** | los `countries` de esas marcas |
 | nombres de vacuna traducidos | **40** | config/vaccine_names.yaml |
-| documentos del catálogo público | **648** | dataset/sources.json (CC0) |
-| documentos del catálogo interno | **651** | incluye los que no se pueden redistribuir |
+| documentos del catálogo público | **654** | dataset/sources.json (CC0) |
+| documentos del catálogo interno | **657** | incluye los que no se pueden redistribuir |
 | guías publicadas | **523** | web/content/*/*.md |
-| pruebas automáticas | **10.537** | `uv run pytest --collect-only` |
+| pruebas automáticas | **10.598** | `uv run pytest --collect-only` |
 | África: países con número | **54** | los 54 del continente |
 | África: con calendario | **54** | los 54 del continente |
 | África: con curva | **52** | los 54 del continente |

@@ -1,6 +1,47 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-29** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 30-sep-2026 · títulos que se cortaban, el prematuro, «early» no es «ear» y los dos pesos
+
+- **Títulos.** Los «157 títulos de más de 60» del 10-sep ya estaban resueltos desde el 11-sep
+  (0 de 2.821). Lo que había era otra cosa: **231 títulos acababan en «…» a media frase**, 208
+  de la curva por país. «Growth chart in Chad» queda por debajo del suelo de 24 caracteres del
+  recorte, así que la pausa de los dos puntos no valía. Plantillas más cortas en las ocho
+  lenguas, más dosis por marca (es, fr, pt), el diario (fr) y dos portadas. Quedan 15, todas
+  guías (título del modelo). Candado nuevo en `test_titles_fit_in_a_result.py`.
+- **Francés:** «Courbe de croissance en Tchad» (y «en Canada», «en Brésil»): las cuatro frases de
+  la curva por país, sin preposición. `test_french_country_preposition.py`.
+- **El prematuro, edad real o corregida.** Se callaba: en el corpus sólo estaba la ficha general
+  de la OMS. Tres fuentes abiertas: **nidirect** (OGL; su página del calendario infantil: «from
+  eight weeks after birth, no matter how premature» → vacunas con la edad REAL), **CDC, hitos de
+  los 2 meses** (dominio público: con la CORREGIDA si nació más de 3 semanas antes) y **CDC,
+  guía de las curvas, sólo pp. 13-15** (corregida hasta los 24 meses). El módulo entero (30
+  trozos) se comía cualquier pregunta de percentiles —la de portugués dejó de llegar a la ficha
+  del NHS—, así que se indexan sólo las tres páginas y la cita apunta al documento entero.
+  `test_preterm_corrected_age.py`.
+- **«early» casaba con «ear».** El sinónimo del oído iba por prefijo: «born 6 weeks early»
+  devolvía cuatro veces la hoja de otitis. Ahora `ear# STATE.md — estado vivo de PediBot v2
+
+Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+ y `ears# STATE.md — estado vivo de PediBot v2
+
+Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+, palabra entera.
+- **Temperatura y lactancia con la madre enferma.** «¿Axila u oído?» y «tengo fiebre yo, ¿sigo
+  dando el pecho?» se contestaban citando fichas que no decían lo contestado. Tres páginas del
+  NHS (OGL): cómo tomar la temperatura del bebé, medicinas y lactancia, y dar el pecho
+  encontrándose mal. La cuarta, «how do I take someone’s temperature», se probó y se quitó: casaba
+  tanto con «temperature» que echaba a la ficha de tifoidea de «बच्चों में टाइफाइड बुखार». `test_temperature_and_breastfeeding_when_ill.py`. **Queda:** con
+  «fiebre» en la frase ganan las fichas de antitérmicos infantiles; hay que mirarlo en vivo.
+- **Dos pesos, se pregunta cuál** (decisión del operador, opción a). Antes calculaba con el
+  primero sin avisar. Frase en las nueve lenguas; la respuesta «7,8 kg» del turno siguiente
+  lleva a la dosis con el fármaco del turno anterior. `test_two_weights_ask_which.py`.
+- **Defecto anotado:** la ingesta decide «sin cambios» por el hash del fichero, así que cambiar el
+  tema o el título de una fuente en el catálogo NO llega al índice. Hubo que borrar sus
+  `index/chunks/*.jsonl` a mano.
+- Corpus: 654 documentos (ver DATOS.md). README, DPGA.md y BACKABLE.md: el «648» de la solicitud
+  queda marcado como «de entonces».
 
 ## 29-sep-2026 · dos trabajos caídos sin aviso, y las guías que no usaban su propia lengua
 
