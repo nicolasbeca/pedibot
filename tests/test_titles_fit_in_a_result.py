@@ -92,3 +92,19 @@ def test_y_siguen_diciendo_algo():
         pytest.skip("el sitio no está construido en esta copia")
     cortos = [(r, t) for r, t in titulos if len(t) < 18]
     assert not cortos, f"títulos que se han quedado en nada: {cortos[:5]}"
+
+
+def test_las_paginas_nuestras_no_necesitan_puntos_suspensivos():
+    """30-sep-2026: 231 títulos acababan en «…», 208 de ellos de la curva por país.
+    «Growth chart in Chad» se queda por debajo del suelo del corte, así que la pausa de los dos
+    puntos no valía y el título se cortaba a media frase («…las tablas que usa la…»). Un
+    título que escribimos nosotros tiene que caber entero o cortarse por su propia pausa."""
+    titulos = _titulos()
+    if not titulos:
+        pytest.skip("el sitio no está construido en esta copia")
+    con_puntos = [
+        (r, t)
+        for r, t in titulos
+        if "/guides/" not in f"/{r}/" and t.endswith("…")
+    ]
+    assert not con_puntos, f"{len(con_puntos)} títulos nuestros cortados: {con_puntos[:6]}"
