@@ -266,7 +266,7 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   Immunize.org (ofrece «sólo enlazar» como mínimo) y Vikaspedia (pide la dirección buena si no
 >   es ésa). Si en dos semanas no hay nada, se dan por perdidos.
 > - **Diario de Sevilla: descartado por ahora** (operador, 30-sep); borrador borrado. **KPA: enviado** con su sí.
-> - **Borradores de la tarde, esperando su sí** (las ideas que se dejaron el 29-sep para hoy):
+> - **Enviados por la tarde con su sí** (las ideas que se dejaron el 29-sep para hoy):
 >   Last Mile Health (`info@lastmilehealth.org`, su página de contacto): Liberia sin número
 >   nacional, se les pregunta qué debe leer ahí un padre. Living Goods (`info@livinggoods.org`):
 >   Kenia y Uganda, que sus promotores sepan que existe y digan qué falta. Quedan Healthy Newborn
