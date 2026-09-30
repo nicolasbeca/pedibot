@@ -257,3 +257,20 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   acuse de dos líneas (sin preguntas). **Darle un toque hacia el 20-oct** si no ha escrito antes;
 >   hasta entonces, no escribirle. Sigue sin contestar si sus pacientes haitianos leen francés o
 >   criollo.
+
+> **30-sep-2026:**
+> - **Hesperian dice que no** (Tawnia Litwin, directora de proyectos digitales, 29-sep): «not
+>   interested at this time; find the needed information elsewhere». No había nada suyo en el
+>   índice; puerta cerrada, no se insiste.
+> - **Recordatorios enviados** (seguimiento de lo aprobado el 21-sep, en el mismo hilo, breves):
+>   Immunize.org (ofrece «sólo enlazar» como mínimo) y Vikaspedia (pide la dirección buena si no
+>   es ésa). Si en dos semanas no hay nada, se dan por perdidos.
+> - **Borradores en Gmail, esperando el sí del operador:**
+>   - **Diario de Sevilla** (`redaccion@diariodesevilla.es`, leído en su página de contacto hoy):
+>     primera prensa local. Ángulo: familias recién llegadas a Sevilla que preguntan en su lengua
+>     y reciben las guías españolas con el 112; el dato de las gotas (España 5× Etiopía).
+>   - **Kenya Paediatric Association** (`admin@kenyapaediatric.org`, su página de contacto): se
+>     les pide que revisen las fichas de Kenia (calendario y 999). Es auditoría y difusión a la vez.
+> - Candidatos vistos para otra ronda: ABC Sevilla (`sevilla@abc.es`, sólo en un registro de
+>   empresas, sin verificar en su web), El Correo de Andalucía, Cadena SER Sevilla, Global Health
+>   NOW (Johns Hopkins; acepta ideas, pero su web bloquea la lectura y no se ve la dirección).
