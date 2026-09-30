@@ -2,6 +2,26 @@
 
 Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 30-sep-2026 (noche, 2) · una tarjeta por página y la página de urgencias rehecha
+
+- **Tarjetas al compartir, una por tipo de página y lengua** (120; `web/site/scripts/make-og-cards.mjs`,
+  todo en `ops/TARJETAS.md`). El operador: «las tarjetas me siguen pareciendo pobres; deberían
+  ser más visuales, con letras grandes e iconos. La de herramientas debe ser la más importante,
+  es la que quiero enlazar en Twitter». Hasta hoy, una para las 2.900 páginas. Se pintan con
+  Chrome (las fuentes de la web, el árabe y el hindi salen solos) y se guardan en JPEG: 5 MB las
+  120, frente a 32 MB en PNG. Base.astro elige la tarjeta por la dirección; sin tipo, la general.
+  Iconos compartidos con /tools en `src/icons.ts`. `test_every_page_has_its_card.py`.
+- **/emergency rehecha** (el operador: «infumable, todo ahí al mogollón»). Arriba el número del
+  lector, grande y marcable (lo que eligió en la web, o la región del navegador dicha como
+  pregunta); debajo, desplegable doble continente → país; en pantallas anchas, el mapamundi
+  (Natural Earth 110 m, Equal Earth, `public/world.svg`, 76 kB, sólo se descarga en escritorio).
+  Las 95 páginas de país siguen enlazadas, plegadas en «Todos los países». Continentes del mapa
+  de 50 m (`src/data/continents.json`, `scripts/build_world_map.py`). `test_emergency_finder.py`.
+- **Queda:** el percentil del prematuro en castellano llega a SENeo pero el modelo no entiende
+  «EC» = edad corregida y contesta «no hay una respuesta única»; y el catálogo ACP del mercado
+  sin sincronizar (el simulacro decía que *crearía* tres servicios que ya existen: mirarlo antes
+  de `--apply`).
+
 ## 30-sep-2026 (noche) · la barra, el panel del menú y la página de herramientas
 
 - **Idea y decisión del operador**: las herramientas no se repiten en la barra y en el menú. La

@@ -10,6 +10,8 @@ const OG_LOCALE: Record<string, string> = {
   ru: 'ru_RU', ar: 'ar_SA', pt: 'pt_PT', hi: 'hi_IN',
 };
 import '../styles/global.css';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import { t, langPrefix, dirFor, LANGS, LANG_NAMES, type Lang } from '../i18n';
 interface Props { lang: Lang; title: string; description: string; path: string; jsonld?: object;
   // Guides have a different slug per language, so the page passes the real counterparts here:
@@ -74,6 +76,18 @@ const alternates = otherLangs
   })
   .filter((x): x is { lang: Lang; href: string } => x !== null);
 const canonical = `${site}${path === '/' ? '' : path}`;
+// La tarjeta que se ve al compartir el enlace, una por tipo de página y lengua (30-sep-2026,
+// scripts/make-og-cards.mjs; todo en ops/TARJETAS.md). Se elige por la dirección: la primera
+// parte tras la lengua. Si no hay tarjeta para ese tipo, la general de siempre.
+const OG_TIPOS = new Set(['tools', 'emergency', 'warning-signs', 'dose', 'growth', 'vaccines', 'muac',
+  'diary', 'family', 'kit', 'guides', 'sources', 'about']);
+const tramos = path.split('/').filter(Boolean);
+if (tramos[0] === lang) tramos.shift();
+const ogTipo = tramos.length === 0 ? 'home'
+  : tramos[0] === 'emergency' && tramos.length > 1 ? 'numbers'
+  : OG_TIPOS.has(tramos[0]) ? tramos[0] : null;
+const ogImage = ogTipo && existsSync(join(process.cwd(), 'public', 'og', lang, `${ogTipo}.jpg`))
+  ? `${site}/og/${lang}/${ogTipo}.jpg` : `${site}/og.png`;
 // x-default names the edition to serve a reader Google cannot place by language. Without it
 // Google picks one on its own, and it was missing from all 571 pages. English at the root is
 // this site's default; a page with no English counterpart claims none rather than lying.
@@ -122,7 +136,8 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <meta property="og:description" content={description} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={`${site}/og.png`} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:image" content={ogImage} />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content={title} />

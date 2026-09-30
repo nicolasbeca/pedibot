@@ -52,3 +52,6 @@ gsc_key.json
 web/site/public/offline-data/
 app/www/
 app/node_modules/
+
+# mapas de Natural Earth en bruto (scripts/build_world_map.py los baja; se versiona lo generado)
+FUENTES/geo/

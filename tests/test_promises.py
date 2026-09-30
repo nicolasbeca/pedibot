@@ -125,7 +125,9 @@ def test_un_enlace_compartido_se_ve_como_una_tarjeta() -> None:
         html = f.read_text(encoding="utf-8")
         assert 'content="summary_large_image"' in html, f"{rel}: sin tarjeta grande"
         assert 'name="twitter:site" content="@pedibotai"' in html, f"{rel}: sin cuenta"
-        assert re.search(r'property="og:image" content="https://[^"]+/og\.png"', html), (
-            f"{rel}: la imagen de la tarjeta no es una dirección absoluta"
-        )
-    assert (SITE / "public" / "og.png").exists(), "la imagen de la tarjeta no existe"
+        # 30-sep-2026: una tarjeta por tipo de página (ops/TARJETAS.md), así que ya no es
+        # siempre og.png; lo que no cambia es que sea absoluta y que exista.
+        m = re.search(r'property="og:image" content="https://pedibot\.xyz/([^"]+\.(?:png|jpg))"', html)
+        assert m, f"{rel}: la imagen de la tarjeta no es una dirección absoluta"
+        assert (SITE / "public" / m.group(1)).exists(), f"{rel}: la imagen {m.group(1)} no existe"
+    assert (SITE / "public" / "og.png").exists(), "la tarjeta general no existe"

@@ -118,13 +118,16 @@ def test_each_country_page_is_titled_with_the_country_not_with_its_code(lang: st
 @sin_sitio
 @pytest.mark.parametrize("lang", IDIOMAS)
 def test_the_index_lists_every_country_with_its_number(lang: str) -> None:
+    # 30-sep-2026: la rejilla de 95 tarjetas se sustituyó por el buscador (número del lector
+    # arriba, continente → país, mapamundi) y la lista quedó plegada en «Todos los países»,
+    # por continente. La regla de «los países del idioma primero» existía para que el lector
+    # árabe encontrara el suyo; ahora lo encuentra arriba, en la tarjeta grande. Lo que sigue
+    # siendo obligatorio es que estén los 95, enlazados.
     html = pagina(lang, "/emergency")
-    enlaces = re.findall(r'class="ncard" href="([^"]+)"', html)
-    codigos = [u.rsplit("/", 1)[-1].upper() for u in enlaces]
+    lista = html[html.index('class="all"') :]
+    enlaces = re.findall(r'href="[^"]*/emergency/([a-z]{2})"', lista)
+    codigos = [u.upper() for u in enlaces]
     assert sorted(codigos) == PAISES, f"{lang}: la lista no tiene los {len(PAISES)} países"
-    assert codigos[: len(IDIOMA_PAISES[lang])] == IDIOMA_PAISES[lang], (
-        f"{lang}: la lista no empieza por los países del idioma"
-    )
 
 
 @sin_sitio
