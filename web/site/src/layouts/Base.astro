@@ -159,57 +159,24 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
 <body>
   <header class={`bar${LABEL_LARGO.has(lang) ? " larga" : ""}`}>
     <div class="wrap bar-in">
-      <a class="brand" href={langPrefix(lang) || '/'}>
+      <a class="brand" href={langPrefix(lang) || '/'} aria-label="pedibot">
         <img src="/logo-72.png" width="34" height="34" alt="" />
-        pedibot
+        <span class="hide-xs">pedibot</span>
       </a>
-      <nav class="hide-sm">
-        {/* 19-sep-2026, orden del operador: «debería aparecer arriba lo de tus hijos también.
-            Es más importante eso que las fuentes, por ejemplo, que puede ser secundario». Y es
-            verdad: la ficha de un hijo es a lo que se vuelve cada semana, y el catálogo de
-            fuentes se visita una vez y se agradece desde el pie. Así que «Tus hijos» entra en
-            la barra con la misma prioridad que las dosis y las guías, y «Fuentes» sale de ella
-            —sigue en el menú de móvil, en el pie y enlazada desde cada respuesta—. */}
-        <a class="pill" href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a>
-        <a class="pill" href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a>
-        <a class="pill" href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a>
-        <a class="pill md-only" href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a>
-        <a class="pill md-only" href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a>
-        <a class="pill sm-only" href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a>
-        {/* the short label here on purpose: a nav pill is a noun, not a sentence. The full
-            question — "Soll ich in die Notaufnahme?" — is 28 characters and pushed the German
-            and French bars past the 1040px column, cutting the last pill in half. The whole
-            question still reads in the footer and under the chat box, where it fits. */}
-        <a class="pill" href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency_short}</a>
+      {/* 30-sep-2026, operador: «no entiendo tener duplicadas herramientas en el menú superior y
+          en el desplegable», y el desplegable con barra de desplazamiento «es incomodísimo».
+          La barra se queda en tres zonas: la marca, en el centro lo principal —Herramientas,
+          Guías y «¿Voy a urgencias?», la única herramienta que un padre asustado no debe tener
+          que buscar— y a la derecha lo de servicio, con el menú en la esquina. Las herramientas
+          viven en /tools y en el panel del menú, no repartidas por la barra. */}
+      <nav class="mid" aria-label={s.tools.nav}>
+        <a class="pill hide-sm" href={`${langPrefix(lang)}/tools`} aria-current={path.endsWith('/tools') ? 'page' : undefined}>{s.tools.nav}</a>
+        <a class="pill hide-sm" href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a>
+        <a class="pill pill-er" href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency_short}</a>
       </nav>
       <div class="bar-end">
-        {/* 19-sep-2026, lo vio el operador con el móvil en la mano: «no tiene sentido tener que
-            buscar abajo del todo este tipo de páginas». Y era verdad. Por debajo de 720 px la
-            barra esconde el menú entero, y desde entonces la única forma de llegar a las
-            vacunas, a las curvas o a las dosis era bajar por toda la portada hasta el pie.
-            Ahora hay un desplegable con TODO, y a la izquierda del corazón, que es donde cae el
-            pulgar. Es un <details> como el de los idiomas: se abre sin JavaScript y responde al
-            teclado. */}
-        <details class="navmenu">
-          <summary class="pill" aria-label={s.nav_menu}><span aria-hidden="true">☰</span> {s.nav_menu}</summary>
-          <ul>
-            <li><a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a></li>
-            <li><a href={`${langPrefix(lang)}/warning-signs`}>{s.ws_eyebrow}</a></li>
-            <li><a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a></li>
-            <li><a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a></li>
-            <li><a href={`${langPrefix(lang)}/muac`}>{s.muac.h}</a></li>
-            <li><a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a></li>
-            <li><a href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a></li>
-            <li><a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a></li>
-            <li><a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a></li>
-            <li><a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}</a></li>
-            <li><a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a></li>
-            <li><a href={`${langPrefix(lang)}/about`}>{s.about.eyebrow}</a></li>
-            <li><a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}</a></li>
-          </ul>
-        </details>
-        {/* in the right-hand group and not in <nav>, because that one is hidden on phones and
-            this is the page that asks for help: it has to survive on a small screen */}
+        {/* in the right-hand group and not in <nav>, because this is the page that asks for help:
+            it has to survive on a small screen */}
         <a class="pill pill-support" href={`${langPrefix(lang)}/support`}>♥ <span class="hide-xs">{s.nav_support}</span></a>
         {/* a menu, not one pill per language: its width no longer grows with the language
             list, and <details> means it opens with no JavaScript and answers the keyboard */}
@@ -231,6 +198,38 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
           </details>
         )}
         <button class="pill" id="theme" type="button" aria-label="Night mode">🌙</button>
+        {/* El menú con TODO, en un panel ancho de tres columnas sin barra de desplazamiento
+            (30-sep-2026). Sigue siendo un <details>: se abre sin JavaScript y con el teclado. */}
+        <details class="navmenu">
+          <summary class="pill" aria-label={s.nav_menu}><span aria-hidden="true">☰</span> <span class="hide-xs">{s.nav_menu}</span></summary>
+          <div class="panel">
+            <div class="pcol urgent">
+              <p class="ph">{s.tools.p_urgent}</p>
+              <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}<small>{s.tools.t_er}</small></a>
+              <a href={`${langPrefix(lang)}/warning-signs`}>{s.ws_eyebrow}<small>{s.tools.t_signs}</small></a>
+              <a href={`${langPrefix(lang)}/emergency#by-country`}>{s.tools.numbers}<small>{s.tools.t_numbers}</small></a>
+            </div>
+            <div class="pcol">
+              <p class="ph">{s.tools.p_tools}</p>
+              <a href={`${langPrefix(lang) || ''}/#composer`}>{s.tools.ask}<small>{s.tools.ask_tip}</small></a>
+              <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}<small>{s.tools.t_dose}</small></a>
+              <a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}<small>{s.tools.t_growth}</small></a>
+              <a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}<small>{s.tools.t_vax}</small></a>
+              <a href={`${langPrefix(lang)}/muac`}>{s.muac.h}<small>{s.tools.t_muac}</small></a>
+              <a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}<small>{s.tools.t_diary}</small></a>
+              <a href={`${langPrefix(lang)}/family`}>{s.fam.h1}<small>{s.tools.t_kids}</small></a>
+              <a class="all" href={`${langPrefix(lang)}/tools`}>{s.tools.all} →</a>
+            </div>
+            <div class="pcol">
+              <p class="ph">{s.tools.p_more}</p>
+              <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}<small>{s.tools.t_guides}</small></a>
+              <a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}<small>{s.tools.t_home}</small></a>
+              <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}<small>{s.tools.t_sources}</small></a>
+              <a href={`${langPrefix(lang)}/about`}>{s.about.eyebrow}<small>{s.tools.t_about}</small></a>
+              <a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}<small>{s.tools.t_legal}</small></a>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
   </header>
@@ -245,7 +244,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
           existiendo y sigue sirviéndose**: lo que se quita es el enlace del pie, que es para
           humanos. Las máquinas lo encuentran por el <link rel="alternate"> de la cabecera, que
           es donde miran, y por robots.txt. */}
-      <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a> · <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a> · <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a> · <a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a> · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href={`${langPrefix(lang)}/warning-signs`}>{s.ws_eyebrow}</a> · <a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}</a> · <a href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a> · <a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a> · <a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a> · <a href={`${langPrefix(lang)}/muac`}>{s.muac.h}</a> · <a href={`${langPrefix(lang)}/support`}>{s.nav_support}</a> · <a href={`${langPrefix(lang)}/about`}>{s.about.eyebrow}</a> · <a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}</a><br />
+      <a href={`${langPrefix(lang)}/tools`}>{s.tools.nav}</a> · <a href={`${langPrefix(lang)}/sources`}>{s.nav_sources}</a> · <a href={`${langPrefix(lang)}/guides`}>{s.nav_guides}</a> · <a href={`${langPrefix(lang)}/dose`}>{s.nav_dose}</a> · <a href={`${langPrefix(lang)}/kit`}>{s.nav_kit}</a> · <a href={`${langPrefix(lang)}/emergency`}>{s.nav_emergency}</a> · <a href={`${langPrefix(lang)}/warning-signs`}>{s.ws_eyebrow}</a> · <a href={`${langPrefix(lang)}/diary`}>{s.nav_diary}</a> · <a href={`${langPrefix(lang)}/family`}>{s.fam.h1}</a> · <a href={`${langPrefix(lang)}/vaccines`}>{s.nav_vaccines}</a> · <a href={`${langPrefix(lang)}/growth`}>{s.nav_growth}</a> · <a href={`${langPrefix(lang)}/muac`}>{s.muac.h}</a> · <a href={`${langPrefix(lang)}/support`}>{s.nav_support}</a> · <a href={`${langPrefix(lang)}/about`}>{s.about.eyebrow}</a> · <a href={`${langPrefix(lang)}/legal`}>{s.nav_legal}</a><br />
       {s.footer_legal}
     </div>
   </footer>
@@ -254,7 +253,12 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     :global(html[dir='rtl']) h1, :global(html[dir='rtl']) h2, :global(html[dir='rtl']) h3,
     :global(html[dir='rtl']) .brand { font-family: 'Noto Sans Arabic', Nunito, sans-serif; }
     .bar { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
-    .bar-in { height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .bar-in { height: 60px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; }
+    .bar-in > .brand { justify-self: start; }
+    .bar-end { justify-self: end; }
+    .pill-er { background: var(--coral-soft); border-color: transparent; color: var(--coral); font-weight: 700; }
+    .pill-er:hover { border-color: var(--coral); }
+    .bar nav .pill[aria-current="page"] { background: var(--mint); border-color: var(--mint-2); color: var(--ink); font-weight: 700; }
     .brand { display: flex; align-items: center; gap: 9px; text-decoration: none; color: var(--ink); font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.2rem; }
     /* Lo que no cabe DESAPARECE; no se corta ni se arrastra. Con `overflow-x: auto` la barra
        alemana —«Dosisrechner», «Wachstumskurve», «Impfungen»— enseñaba la última pastilla
@@ -302,19 +306,34 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
     .navmenu > summary { list-style: none; user-select: none; }
     .navmenu > summary::-webkit-details-marker { display: none; }
     .navmenu[open] > summary { border-color: var(--sage); color: var(--ink); }
-    .navmenu > ul {
-      position: absolute; inset-inline-end: 0; top: calc(100% + 7px); z-index: 30; margin: 0;
-      padding: 6px; min-width: 206px; list-style: none; background: var(--paper);
-      border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
-      max-height: 70vh; overflow-y: auto;
+    .navmenu > .panel {
+      position: absolute; inset-inline-end: 0; top: calc(100% + 7px); z-index: 30;
+      width: min(880px, calc(100vw - 32px)); padding: 18px; display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 26px; background: var(--paper);
+      border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 12px 32px rgb(0 0 0 / 14%);
     }
-    .navmenu li { margin: 0; }
-    .navmenu a {
-      /* 44 px de alto: es lo que mide un dedo, y es lo que piden las dos tiendas */
-      display: block; padding: 11px 13px; border-radius: 9px; text-decoration: none;
-      font-size: .95rem; color: var(--ink-2);
+    .pcol { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .ph { margin: 0 0 4px; padding: 0 10px; font-family: Nunito, sans-serif; font-weight: 800; font-size: .74rem;
+      letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
+    .pcol.urgent .ph { color: var(--coral); }
+    .navmenu .pcol a {
+      display: block; padding: 8px 10px; border-radius: 12px; text-decoration: none;
+      font-size: .95rem; font-weight: 700; color: var(--ink);
     }
-    .navmenu a:hover { background: var(--mint); color: var(--ink); }
+    .navmenu .pcol a small { display: block; font-weight: 400; font-size: .8rem; line-height: 1.3; color: var(--ink-3); margin-top: 1px; }
+    .navmenu .pcol a:hover { background: var(--mint); }
+    .navmenu .pcol.urgent a:hover { background: var(--coral-soft); }
+    .navmenu .pcol a.all { color: var(--sage); }
+    /* En el teléfono: dos columnas, sin las explicaciones, y lo urgente arriba a lo ancho. Cabe
+       en una pantalla sin barra de desplazamiento; el tope es sólo por si el lector agranda
+       mucho la letra. */
+    @media (max-width: 720px) {
+      .navmenu > .panel { grid-template-columns: 1fr 1fr; gap: 10px 12px; padding: 14px; max-height: calc(100vh - 80px); overflow-y: auto; }
+      .pcol.urgent { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; }
+      .pcol.urgent .ph { flex-basis: 100%; }
+      .navmenu .pcol a { padding: 9px 10px; font-size: .92rem; }
+      .navmenu .pcol a small { display: none; }
+    }
     footer { padding: 30px 0 60px; color: var(--ink-3); font-size: .86rem; border-top: 1px solid var(--line); }
     .pill-support { border-color: var(--coral-soft); color: var(--coral); }
     .pill-support:hover { background: var(--coral-soft); }

@@ -955,11 +955,24 @@
   "title": "Overview of the CDC Growth Charts (training module), pp. 13-15: premature and very low birth weight infants",
   "year": 2002,
   "lang": "en",
-  "topic": "desarrollo",
+  "topic": "recien_nacido",
   "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://stacks.cdc.gov/view/cdc/29075/cdc_29075_DS1.pdf",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-30; only pp. 13-15 indexed (the whole module crowded out parent pages on every percentile question)"
+ },
+ {
+  "doc_id": "seneo_es_prematuro_tardio_crecimiento",
+  "org": "SENeo",
+  "org_full": "Sociedad Española de Neonatología (con la AEPap)",
+  "title": "Recomendaciones de seguimiento del prematuro tardío, pp. 14-16: crecimiento y nutrición",
+  "year": 2017,
+  "lang": "es",
+  "topic": "recien_nacido",
+  "doc_type": "guia_clinica",
+  "usage": "citar_solo",
+  "url": "https://www.aepap.org/sites/default/files/documento/archivos-adjuntos/protocolo_prematuro_tardio.pdf",
+  "notes": "licence: CC BY-NC-ND 4.0; fetched 2026-09-30; only pp. 14-16 indexed"
  },
  {
   "doc_id": "cavaep_es_cap_10",
@@ -998,6 +1011,19 @@
   "doc_type": "hoja_padres",
   "usage": "publico",
   "url": "https://www.cdc.gov/act-early/digital-online-checklist/2-months.html",
+  "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-30"
+ },
+ {
+  "doc_id": "cdc_en_cruise_ship",
+  "org": "CDC",
+  "org_full": "Centers for Disease Control and Prevention (USA)",
+  "title": "Cruise Ship Travel | Travelers' Health",
+  "year": 2026,
+  "lang": "en",
+  "topic": "urgencias",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://wwwnc.cdc.gov/travel/page/cruise-ship",
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-30"
  },
  {

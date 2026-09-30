@@ -351,6 +351,32 @@ def _hash_of_existing(out_file: Path) -> str | None:
     return json.loads(first).get("source_hash")
 
 
+def _catalogue_matches(out_file: Path, doc: SourceDoc) -> bool:
+    """¿Los fragmentos guardados llevan lo que hoy dice el catálogo? (30-sep-2026)
+
+    El hash es del fichero, y cambiar el tema o el título de una fuente no cambia el fichero:
+    esos cambios no llegaban nunca al índice. Se compara con el primer fragmento, que lleva
+    copiados los campos del catálogo. El tema y las edades sólo cuando el catálogo los fija;
+    con «auto» los pone el clasificador por trozo y no hay nada que comparar."""
+    with out_file.open(encoding="utf-8") as f:
+        first = json.loads(f.readline() or "{}")
+    esperado: dict[str, object] = {
+        "org": doc.org,
+        "doc_title": doc.title,
+        "year": doc.year,
+        "lang": doc.lang,
+        "doc_type": doc.doc_type,
+        "evidence": doc.evidence,
+        "usage": doc.usage,
+        "source_url": doc.url,
+    }
+    if doc.topic != "auto":
+        esperado["topic"] = doc.topic
+    if doc.age_groups != ["auto"]:
+        esperado["age_groups"] = doc.age_groups
+    return all(first.get(k) == v for k, v in esperado.items())
+
+
 def run_ingest(
     sources_dir: Path, out_dir: Path, catalog_path: Path, taxonomy_path: Path, force: bool = False
 ) -> list[DocReport]:
@@ -373,7 +399,11 @@ def run_ingest(
             reports.append(DocReport(doc.doc_id, name, "skipped_excluded"))
             continue
         out_file = chunks_dir / f"{doc.doc_id}.jsonl"
-        if not force and _hash_of_existing(out_file) == file_sha256(pdf):
+        if (
+            not force
+            and _hash_of_existing(out_file) == file_sha256(pdf)
+            and _catalogue_matches(out_file, doc)
+        ):
             reports.append(DocReport(doc.doc_id, name, "unchanged"))
             continue
         try:

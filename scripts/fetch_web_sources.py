@@ -150,6 +150,9 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "en",
         ["lactante"],
     ),
+    # En un barco, primero el centro médico de a bordo (30-sep-2026): la cita del texto fijo
+    # SHIP_FIRST de answer.py, para que esté en el catálogo como las demás.
+    ("cdc", "https://wwwnc.cdc.gov/travel/page/cruise-ship", "urgencias", "en", ["todas"]),
     # Cómo tomar la temperatura, y la madre que está enferma y da el pecho (30-sep-2026): las
     # dos preguntas se contestaban citando fichas que no decían lo contestado.
     (

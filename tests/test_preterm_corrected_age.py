@@ -116,3 +116,23 @@ def test_el_motor_entero_llega_a_la_ficha_del_prematuro(motor, pregunta: str):
     a = motor.ask(pregunta)
     docs = {c.split("#")[0] for c in a.chunk_ids}
     assert docs & {VACUNAS, VACUNAS_ES}, f"no llega a la ficha del prematuro; usa {sorted(docs)}"
+
+
+CURVAS_ES = "seneo_es_prematuro_tardio_crecimiento"
+
+
+@pytest.mark.parametrize(
+    "pregunta",
+    [
+        "Mi hijo nació de 33 semanas y tiene 5 meses. ¿Con qué edad miro su percentil de peso, "
+        "la real o la corregida?",
+        "Prematuro de 34 semanas: ¿las curvas de crecimiento se miran con la edad corregida?",
+    ],
+)
+def test_el_percentil_del_prematuro_en_castellano(motor, pregunta: str):
+    """En castellano contestaba lo de las vacunas y del percentil decía «estas fuentes no lo
+    tratan»: la guía de los CDC está en inglés. SENeo/AEPap (2017) lo dice en castellano: curvas
+    de la OMS con la edad corregida hasta los 2 años."""
+    a = motor.ask(pregunta)
+    docs = {c.split("#")[0] for c in a.chunk_ids}
+    assert docs & {CURVAS_ES, CURVAS}, f"no llega a las curvas del prematuro; usa {sorted(docs)}"

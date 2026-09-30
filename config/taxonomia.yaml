@@ -81,7 +81,10 @@ topics:
                  "selles$", stuhlgang, "stuhl$", "kot$", "кал$", "стул$", براز, "मल$", "टट्टी",
                  "पॉटी", "cocô", "cocó", "fezes$", meconio, meconium, méconium, mekonium,
                  меконий, العقي, मेकोनियम,
-                 prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен]
+                 prematuro, preterm, prématuré, frühgeburt, الخداج, "समय से पहले", недоношен,
+                 # 30-sep-2026: «nació de 33 semanas… ¿la real o la corregida?» no dice «prematuro».
+                 edad corregida, la corregida, corrected age, âge corrigé, idade corrigida,
+                 korrigiertes alter, скорректированн, العمر المصحح, semanas de gestación, weeks gestation]
   lactante: [cólico, colico, lactante, llanto, reflujo, colic, infant$, infants$, infancy$, crying, reflux,
         # 25-sep-2026, ver la nota del final del fichero
         craneosinostosis, craniosynostosis, plagiocefal, plagiocephal, braquicefal, brachycephal, anquiloglosia, tongue-tie, frenillo lingual]

@@ -2,6 +2,55 @@
 
 Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 30-sep-2026 (noche) · la barra, el panel del menú y la página de herramientas
+
+- **Idea y decisión del operador**: las herramientas no se repiten en la barra y en el menú. La
+  barra queda en tres zonas: la marca; en el centro **Herramientas, Guías y Urgencias** (la única
+  herramienta que no se debe tener que buscar); a la derecha Apoyo, idioma, noche y el menú. En
+  el móvil, la palabra «pedibot» se esconde y queda el logo.
+- **El menú es un panel ancho de tres columnas** (Urgente · Herramientas · Saber más), cada
+  entrada con una línea de lo que hace; en el móvil, dos columnas sin esas líneas. Sin barra de
+  desplazamiento (lo pidió: «incomodísimo»). Sigue siendo un `<details>`.
+- **`/tools` en las ocho lenguas** (`ToolsHub.astro`): el logo en el centro es el chat, las diez
+  herramientas cuelgan de cables de puntos, lo urgente arriba y en coral. Cada cable con su forma
+  (el operador: «todos se curvan igual, parece una hélice»). Posiciones calculadas al construir,
+  sin JavaScript; el script sólo enciende el cable señalado. En el móvil no hay cables: el chat es
+  una tarjeta, lo urgente va en filas anchas y el resto en dos columnas bajo «Para el día a día».
+  Boceto previo aprobado: https://claude.ai/artifact/LL1FK6miv2M6j1sgCCESEy
+- Ancla `#by-country` en las ocho páginas de urgencias; «Herramientas» en el pie.
+  `test_tools_page_and_bar.py`.
+- **Yemen y Líbano (ruso) no casaban**: un script escribió un retroceso real en vez de `\b`. La
+  prueba de «existe una regla para cada país» no lo vio; ahora hay una que las usa.
+
+## 30-sep-2026 (tarde) · los pendientes de la lista, de una tanda
+
+- **La madre con fiebre.** «I have a fever myself, can I still breastfeed?» abría con la regla
+  del lactante febril y acababa preguntando la edad del niño. Detector de fiebre en primera
+  persona en las ocho lenguas (`fiebre_del_adulto`): con él no se pide esa frase ni la edad.
+  «Tengo un bebé con fiebre» y «tengo miedo de que tenga fiebre» siguen siendo del niño.
+  `test_the_fever_is_the_parents.py`.
+- **El percentil del prematuro en castellano:** SENeo con la AEPap (2017, CC BY-NC-ND 4.0,
+  `citar_solo`), sólo pp. 14-16: «curvas de la OMS de acuerdo con la edad corregida hasta los 2
+  años». Las dos fuentes de curvas del prematuro (esta y la de los CDC) pasan al tema
+  `recien_nacido` —donde la taxonomía ya ponía «prematuro»—: con `desarrollo` se colaban en
+  cualquier pregunta de percentiles y echaban a la ficha del NHS en portugués. Taxonomía y
+  sinónimos: «edad corregida / la corregida» en las ocho lenguas.
+- **El crucero.** Texto fijo: en un barco, primero el centro médico de a bordo (CDC, Travelers
+  Health: «report your symptoms to the ship's medical center»); debajo, los números del país,
+  que sirven en puerto. `test_on_a_ship.py`.
+- **Países árabes: la deuda estaba vieja.** «Ningún calendario de un país árabe»: había 14 de 22.
+  Se añaden los siete que faltaban desde la OMS (Baréin, Irak, Jordania, Líbano, Omán, Siria,
+  Yemen): 75 calendarios. Números del FCDO para Irak (122), Yemen (191, con el aviso del
+  conflicto) y Siria (sin número: «severely impacted… could be unresponsive»). Omán se lee con
+  frontera: vive en «woman» y «роман», y «عمان» es también Ammán. **Palestina queda fuera a
+  propósito**: el nombre (OMS «territorio palestino ocupado», ONU «Estado de Palestina») lo
+  decide el operador.
+- **La ingesta ya nota los cambios del catálogo.** Compara el primer fragmento con lo que dice el
+  catálogo (título, organismo, licencia, lengua, URL; tema y edades si están fijados) y rehace
+  si no coincide. Al estrenarlo no había ninguna fuente desfasada; el cambio de tema de las dos
+  fuentes del prematuro ya se rehízo solo. `test_catalogue_change_reaches_the_index.py`.
+- ACP: la descripción del calendario dice 75 (hay que sincronizarla al mercado).
+
 ## 30-sep-2026 · títulos que se cortaban, el prematuro, «early» no es «ear» y los dos pesos
 
 - **Títulos.** Los «157 títulos de más de 60» del 10-sep ya estaban resueltos desde el 11-sep

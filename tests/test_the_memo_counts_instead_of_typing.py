@@ -68,6 +68,10 @@ def cuerpo_de_la_plantilla() -> str:
     """
     partes = MEMO.read_text(encoding="utf-8").split("---")
     plantilla = "---".join(partes[2:])
+    # 30-sep-2026: el CSS y los atributos no son prosa. Con Siria, los países sin servicio
+    # nacional pasaron a ser 8, y «margin-top:8px» salía como una cifra escrita a mano.
+    plantilla = re.sub(r"(?s)<style[^>]*>.*?</style>", " ", plantilla)
+    plantilla = re.sub(r"<[^>]*>", " ", plantilla)
     return re.sub(r"\{[^{}]*\}", " ", plantilla)
 
 

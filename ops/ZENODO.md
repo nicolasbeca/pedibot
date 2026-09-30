@@ -49,7 +49,7 @@ release**:
 
       First public release. Answers parents' questions from 642 (contado el 28-sep, texto de la primera versión) published paediatric
       documents, citing the source of every clinical sentence. Emergency numbers for 92
-      countries, vaccination schedules for 68, WHO growth standards and MUAC, in eight
+      countries, vaccination schedules for 68 (de entonces), WHO growth standards and MUAC, in eight
       languages.
 
 - **Publish release**.

@@ -286,6 +286,12 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "الكويت",
         "कुवैत",
     ),
+    # ── Los siete países árabes que faltaban, 30-sep-2026 (Omán, abajo con frontera) ──────
+    "BH": ("bahrain", "baréin", "barein", "bahreïn", "bahrein", "бахрейн", "البحرين", "बहरीन"),
+    "IQ": ("iraq", "irak", "iraque", "ирак", "العراق", "इराक"),
+    "JO": ("jordan", "jordania", "jordanie", "jordanien", "jordânia", "иордани", "الأردن", "जॉर्डन"),
+    "LB": ("lebanon", "líbano", "libano", "liban", "libanon", "لبنان", "लेबनान"),
+    "SY": ("syria", "siria", "syrie", "syrien", "síria", "сири", "سوريا", "سورية", "सीरिया"),
     "BR": (
         "brasil",
         "brazil",
@@ -596,6 +602,13 @@ COUNTRY_SHORT: dict[str, re.Pattern[str]] = {
     # أعطيه» —«¿cuántas gotas le doy?»— se leería como una pregunta sobre Catar. Igual «مصر»
     # dentro de «مصري», «مصرية» y «مصرف».
     "QA": re.compile(r"\bcatar\b|قطر(?![ةه])", re.I),
+    # 30-sep-2026: «oman» vive dentro de «woman» y «роман» (novela), y en árabe «عمان» es a la
+    # vez Omán y Ammán, la capital de Jordania: sin la palabra «سلطنة» no se sabe cuál es.
+    # «ливан» vive en «надавливании» (al presionar, en una alarma rusa); «iemen» en el alemán
+    # «Giemen» (pitos al respirar), y «اليمن» en «اليمنى» (la derecha). 30-sep-2026.
+    "LB": re.compile(r"\bливан\w{0,2}\b", re.I),
+    "YE": re.compile(r"\b(?:yemen|y[ée]men|jemen|i[ée]men|йемен\w{0,2})\b|اليمن(?![ىي])|यमन", re.I),
+    "OM": re.compile(r"\bom[aáã]n\b|\bomã\b|\bоман\w{0,2}\b|سلطنة عمان|ओमान", re.I),
     "EG": re.compile(r"مصر(?![يةه])"),
     # ── África, 18-sep-2026: los nombres que viven dentro de otra palabra ─────────
     # «Mali» está dentro de «maligno», «maligne» y «malignant». «Niger» está dentro de

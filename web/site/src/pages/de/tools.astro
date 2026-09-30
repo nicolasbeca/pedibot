@@ -1,0 +1,15 @@
+---
+import Base from '../../layouts/Base.astro';
+import ToolsHub from '../../components/ToolsHub.astro';
+import { t } from '../../i18n';
+const lang = 'de'; const s = t(lang);
+---
+<Base lang={lang} title={s.tools.title} description={s.tools.desc} path="/de/tools">
+  <main class="wrap" style="padding:34px 18px 56px">
+    <div style="text-align:center;max-width:36rem;margin:0 auto">
+      <h1 style="margin:0;text-wrap:balance">{s.tools.h1}</h1>
+      <p class="lede" style="margin-top:10px">{s.tools.lede}</p>
+    </div>
+    <ToolsHub lang={lang} />
+  </main>
+</Base>

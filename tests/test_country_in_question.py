@@ -143,3 +143,42 @@ def test_a_fever_question_is_not_a_vaccine_question(lang: str) -> None:
         "hi": "मेरे बच्चे को बुखार है",
     }
     assert not is_vaccine_question(fever[lang]), f"[{lang}] confunde fiebre con vacunas"
+
+
+@pytest.mark.parametrize(
+    "texto,esperado",
+    [
+        ("vacunas en Omán", "OM"),
+        ("vaccines in Oman", "OM"),
+        ("vacinas no Omã", "OM"),
+        ("вакцины в Омане", "OM"),
+        ("لقاحات في سلطنة عمان", "OM"),
+        ("the woman at the clinic said", None),
+        ("читаю роман", None),
+        ("مستشفى في عمان", None),  # Ammán, la capital de Jordania, se escribe igual
+    ],
+)
+def test_oman_con_frontera(texto: str, esperado: str | None) -> None:
+    """30-sep-2026: «oman» vive en «woman» y «роман», y «عمان» es también Ammán."""
+    assert country_in_question(texto) == esperado
+
+
+@pytest.mark.parametrize(
+    "texto,esperado",
+    [
+        ("vacunas en Yemen", "YE"),
+        ("Impfungen im Jemen", "YE"),
+        ("vaccins au Yémen", "YE"),
+        ("прививки в Йемене", "YE"),
+        ("لقاحات في اليمن", "YE"),
+        ("यमन में टीके", "YE"),
+        ("прививки в Ливане", "LB"),
+        ("das Kind hat Giemen beim Atmen", None),
+        ("ألم في الجهة اليمنى", None),
+        ("боль при надавливании", None),
+    ],
+)
+def test_yemen_y_libano_con_frontera(texto: str, esperado: str | None) -> None:
+    """30-sep-2026: estas reglas se escribieron con un retroceso real en lugar de «\b» y no
+    casaban con nada; la prueba de «existe una regla» no lo vio. Ésta las usa."""
+    assert country_in_question(texto) == esperado

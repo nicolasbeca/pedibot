@@ -46,6 +46,21 @@ sources:
   - lactante
   url: https://www.cdc.gov/act-early/digital-online-checklist/2-months.html
   notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-30'
+- doc_id: cdc_en_cruise_ship
+  file: web/cdc_en_cruise_ship.html
+  org: CDC
+  org_full: Centers for Disease Control and Prevention (USA)
+  title: Cruise Ship Travel | Travelers' Health
+  year: 2026
+  lang: en
+  topic: urgencias
+  doc_type: hoja_padres
+  evidence: organismo_publico
+  usage: publico
+  age_groups:
+  - todas
+  url: https://wwwnc.cdc.gov/travel/page/cruise-ship
+  notes: 'licence: Public domain (U.S. Government work); fetched 2026-09-30'
 - doc_id: nhs_en_how_to_take_your_babys_temperature
   file: web/nhs_en_how_to_take_your_babys_temperature.html
   org: NHS

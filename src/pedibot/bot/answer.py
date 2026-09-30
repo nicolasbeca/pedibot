@@ -328,6 +328,47 @@ NO_SCHEDULE = {
 #: «no tengo información fiable sobre esto en mis fuentes» a la pregunta más básica que existe.
 #: Sin país no hay un número, y eso no es no saber nada: están los generales, y falta un dato
 #: que el padre tiene en la punta de la lengua.
+#: En un barco, primero el centro médico de a bordo (30-sep-2026). «¿A qué número llamo si hay
+#: una urgencia en el crucero?» recibía el 112 de España, que en alta mar no suena. El CDC
+#: (Travelers' Health, dominio público): «If you feel sick during your voyage, report your
+#: symptoms to the ship's medical center and follow their recommendations».
+_BARCO = re.compile(
+    r"crucero|\bbarco\b|\bcruise\b|\bship\b|croisi[èe]re|\bbateau\b|kreuzfahrt|\bschiff\b|"
+    r"cruzeiro|\bnavio\b|круиз|корабл|лайнер|رحلة بحرية|سفينة|क्रूज़|क्रूज|जहाज़|जहाज",
+    re.I | re.U,
+)
+_CDC_CRUCERO = "https://wwwnc.cdc.gov/travel/page/cruise-ship"
+SHIP_FIRST = {
+    "en": "On a ship, go first to the ship's medical centre: report the symptoms there and follow "
+    "their advice (CDC, Travelers' Health — " + _CDC_CRUCERO + "). The numbers below work in port "
+    "or on land.",
+    "es": "En un barco, lo primero es el centro médico de a bordo: avisa allí de los síntomas y "
+    "sigue sus indicaciones (CDC, Travelers' Health — " + _CDC_CRUCERO + "). Los números de "
+    "abajo sirven en puerto o en tierra.",
+    "fr": "Sur un bateau, allez d'abord au centre médical de bord : signalez-y les symptômes et "
+    "suivez ses conseils (CDC, Travelers' Health — " + _CDC_CRUCERO + "). Les numéros ci-dessous "
+    "fonctionnent au port ou à terre.",
+    "de": "Auf einem Schiff zuerst zum Bordhospital (medizinisches Zentrum an Bord): dort die "
+    "Beschwerden melden und den Anweisungen folgen (CDC, Travelers' Health — " + _CDC_CRUCERO + "). "
+    "Die Nummern unten gelten im Hafen oder an Land.",
+    "ru": "На судне в первую очередь обратитесь в медицинский центр на борту: сообщите там о "
+    "симптомах и следуйте их указаниям (CDC, Travelers' Health — " + _CDC_CRUCERO + "). Номера "
+    "ниже работают в порту или на суше.",
+    "ar": "على متن السفينة، توجّه أولاً إلى المركز الطبي في السفينة: أبلغهم بالأعراض واتبع "
+    "تعليماتهم (CDC، Travelers' Health — " + _CDC_CRUCERO + "). الأرقام أدناه تعمل في الميناء أو على اليابسة.",
+    "pt": "Num navio, o primeiro é o centro médico de bordo: informe lá os sintomas e siga as suas "
+    "indicações (CDC, Travelers' Health — " + _CDC_CRUCERO + "). Os números abaixo servem no "
+    "porto ou em terra.",
+    "hi": "जहाज़ पर सबसे पहले जहाज़ के मेडिकल सेंटर जाएँ: वहाँ लक्षण बताएँ और उनकी सलाह मानें "
+    "(CDC, Travelers' Health — " + _CDC_CRUCERO + ")। नीचे दिए नंबर बंदरगाह या ज़मीन पर काम करते हैं।",
+}
+
+
+def en_un_barco(texto: str) -> bool:
+    """¿La pregunta dice que están en un barco o un crucero?"""
+    return bool(_BARCO.search(texto or ""))
+
+
 NUMBER_NO_COUNTRY = {
     "en": "Tell me which country you are in and I'll give you its number. In the meantime: 112 "
     "works across the European Union, 911 in the United States and Canada, 999 in the United "
@@ -1031,6 +1072,33 @@ def no_es_un_nino(texto: str) -> bool:
     return bool(_NO_ES_UN_NINO.search(texto or ""))
 
 
+#: La fiebre es del padre o de la madre, en primera persona (30-sep-2026). «I feel unwell with a
+#: fever. Should I carry on breastfeeding?» empezaba por «si tu bebé tiene menos de 3 meses, la
+#: fiebre necesita un médico hoy» y acababa preguntando la edad del niño, que no tiene fiebre. No
+#: es «fuera de tema» —dar el pecho enferma es crianza—: sólo que la fiebre no es del niño.
+#: Primera persona explícita: «tengo un bebé con fiebre» o «tengo miedo de que tenga fiebre» NO.
+_FIEBRE_DEL_ADULTO = re.compile(
+    r"\bI(?:'ve| have|'m| am)?\s+(?:got\s+|running\s+|feel(?:ing)?\s+unwell\s+with\s+)?"
+    r"(?:a\s+)?(?:high\s+)?(?:fever|temperature)\b(?!.{0,15}\b(?:thermometer)\b)"
+    r"|\bI\s+feel\s+unwell\s+with\s+a\s+fever"
+    r"|\bmy\s+own\s+fever"
+    r"|(?:\byo\s+tengo|\btengo)\s+(?:(?:mucha|algo\s+de)\s+)?fiebre(?!\s+(?:mi|el|la)\s)"
+    r"|\bestoy\s+con\s+fiebre|\btengo\s+fiebre\s+yo"
+    r"|\bj'ai\s+(?:de\s+la\s+)?fi[èe]vre"
+    r"|\bich\s+habe\s+fieber"
+    r"|\b(?:estou\s+com|tenho)\s+febre"
+    r"|у\s+меня\s+(?:высокая\s+)?(?:температура|жар)"
+    r"|عندي\s+(?:حمى|حرارة)|أعاني\s+من\s+الحمى"
+    r"|मुझे\s+बुखार",
+    re.I | re.U,
+)
+
+
+def fiebre_del_adulto(texto: str) -> bool:
+    """¿Dice el texto, en primera persona, que la fiebre es de quien escribe?"""
+    return bool(_FIEBRE_DEL_ADULTO.search(texto or ""))
+
+
 def _mentions_child(text: str) -> bool:
     return bool(_CHILD.search(text))
 
@@ -1053,6 +1121,12 @@ def _age_context(tr: TriageResult, texto: str = "") -> str:
     """Age line for the prompt. Under 3 months: home medication advice is never appropriate."""
     if tr.age_months is None and not tr.has_fever:
         return "CHILD AGE: unknown\n"
+    if tr.age_months is None and fiebre_del_adulto(texto):
+        return (
+            "CHILD AGE: not relevant. The fever is the parent's own (for example a breastfeeding "
+            "mother), not the child's. Do NOT mention babies under 3 months or a child's fever; "
+            "answer about the parent's situation. Give NO specific medication dose (no mg, no ml).\n"
+        )
     if tr.age_months is None and _PARECE_MAYOR.search(texto):
         return (
             "CHILD AGE: not given, but the message shows the child is not a young baby. Do NOT "
@@ -1106,7 +1180,8 @@ def _history_block(history: list[dict[str, str]]) -> str:
 
 def _needs_age(query: str, tr: TriageResult) -> bool:
     """Fever without age: answer with the under-3-months rule first, then ask the age to refine."""
-    return tr.has_fever and tr.age_months is None
+    # la fiebre de la madre no pide la edad del niño (30-sep-2026)
+    return tr.has_fever and tr.age_months is None and not fiebre_del_adulto(query)
 
 
 def _format_sources(hits: list[Hit]) -> str:
@@ -1817,10 +1892,11 @@ class Engine:
         if tr.level == "routine" and is_emergency_number_question(context_text):
             cc = (country or "").upper() or (country_in_question(context_text) or "").upper()
             datos = self.numbers.raw.get(cc) if cc else None
+            barco = SHIP_FIRST.get(lang, SHIP_FIRST["en"]) + "\n\n" if en_un_barco(query) else ""
             if not datos:
                 # sin país no hay un número suyo, y eso no es no saber nada
                 return Answer(
-                    NUMBER_NO_COUNTRY[lang],
+                    barco + NUMBER_NO_COUNTRY[lang],
                     tr.level,
                     None,
                     [],
@@ -1833,7 +1909,7 @@ class Engine:
                 )
             if datos:
                 return Answer(
-                    format_numbers(dict(datos), country_name(cc, lang), lang),
+                    barco + format_numbers(dict(datos), country_name(cc, lang), lang),
                     tr.level,
                     None,
                     [],

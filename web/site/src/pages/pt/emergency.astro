@@ -42,7 +42,7 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
     <p class="lede">{s.emg_lede}</p>
     <p style="margin-top:14px"><button class="btn btn-ghost" id="near" type="button">📍 {s.emg_near}</button> <span id="near-hint" class="n"></span></p>
 
-    <h2 style="margin-top:34px">{s.emg_by_country}</h2>
+    <h2 id="by-country" style="margin-top:34px">{s.emg_by_country}</h2>
     <div class="nums">
       {orden.map(([cc, nombre]) => (
         <a class="ncard" href={`${pref}/emergency/${cc.toLowerCase()}`}

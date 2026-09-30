@@ -55,6 +55,100 @@ IDIOMAS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
 #: ISO3 → (ISO2, el nombre del país en las ocho lenguas del sitio)
 PAISES: dict[str, tuple[str, dict[str, str]]] = {
+    # 30-sep-2026: los siete países árabes que faltaban (Palestina queda fuera a propósito: el
+    # nombre es una decisión política —«territorio palestino ocupado» en la OMS, «Estado de
+    # Palestina» en la ONU— y la toma el operador).
+    "BHR": (
+        "BH",
+        {
+            "en": "Bahrain",
+            "es": "Baréin",
+            "fr": "Bahreïn",
+            "de": "Bahrain",
+            "ru": "Бахрейн",
+            "ar": "البحرين",
+            "pt": "Barein",
+            "hi": "बहरीन",
+        },
+    ),
+    "IRQ": (
+        "IQ",
+        {
+            "en": "Iraq",
+            "es": "Irak",
+            "fr": "Irak",
+            "de": "Irak",
+            "ru": "Ирак",
+            "ar": "العراق",
+            "pt": "Iraque",
+            "hi": "इराक",
+        },
+    ),
+    "JOR": (
+        "JO",
+        {
+            "en": "Jordan",
+            "es": "Jordania",
+            "fr": "Jordanie",
+            "de": "Jordanien",
+            "ru": "Иордания",
+            "ar": "الأردن",
+            "pt": "Jordânia",
+            "hi": "जॉर्डन",
+        },
+    ),
+    "LBN": (
+        "LB",
+        {
+            "en": "Lebanon",
+            "es": "Líbano",
+            "fr": "Liban",
+            "de": "Libanon",
+            "ru": "Ливан",
+            "ar": "لبنان",
+            "pt": "Líbano",
+            "hi": "लेबनान",
+        },
+    ),
+    "OMN": (
+        "OM",
+        {
+            "en": "Oman",
+            "es": "Omán",
+            "fr": "Oman",
+            "de": "Oman",
+            "ru": "Оман",
+            "ar": "عُمان",
+            "pt": "Omã",
+            "hi": "ओमान",
+        },
+    ),
+    "SYR": (
+        "SY",
+        {
+            "en": "Syria",
+            "es": "Siria",
+            "fr": "Syrie",
+            "de": "Syrien",
+            "ru": "Сирия",
+            "ar": "سوريا",
+            "pt": "Síria",
+            "hi": "सीरिया",
+        },
+    ),
+    "YEM": (
+        "YE",
+        {
+            "en": "Yemen",
+            "es": "Yemen",
+            "fr": "Yémen",
+            "de": "Jemen",
+            "ru": "Йемен",
+            "ar": "اليمن",
+            "pt": "Iémen",
+            "hi": "यमन",
+        },
+    ),
     # 28-sep-2026: la República Dominicana y Haití, que no tenían nada. Las fuentes nos las mandó
     # Frank Brightwell (Somos Amigos Medical Missions), que atiende a los dos en su clínica.
     "DOM": (

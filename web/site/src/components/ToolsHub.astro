@@ -1,0 +1,177 @@
+---
+/* La página de herramientas (30-sep-2026, idea del operador): el bot en el centro y cada
+   herramienta colgando de un cable. El logo ES el chat. Las posiciones se calculan aquí, al
+   construir, y no en el navegador: la página sale completa sin JavaScript y sin saltos. El
+   script de abajo sólo enciende el cable de la herramienta que se señala.
+   En el teléfono no hay cables: el chat es una tarjeta y debajo van dos bloques con título,
+   «Urgente» y «Para el día a día». Una leyenda de cables sin cables no explica nada (lo vio el
+   operador en el boceto). */
+import { t, langPrefix, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const s = t(lang);
+const T = s.tools;
+const p = langPrefix(lang);
+
+const ICON: Record<string, string> = {
+  er: '<path d="M12 3 2.5 20h19z"/><path d="M12 9v5M12 17h.01"/>',
+  signs: '<circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5h.01"/>',
+  phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/>',
+  dose: '<path d="M9 3h6v4H9zM8 7h8v13a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1z"/><path d="M8 12h8M10.5 15h3"/>',
+  growth: '<path d="M4 20V4M4 20h16"/><path d="M7 16c3-1 5-4 6-7s3-4 6-4"/>',
+  vax: '<path d="m15 3 6 6M18 6l-9.5 9.5M13 5l6 6M7 14l3 3-4.5 4.5-3-3zM11 9l4 4"/>',
+  muac: '<rect x="3" y="8" width="18" height="8" rx="2"/><path d="M7 8v3M11 8v4M15 8v3M19 8v2"/>',
+  diary: '<path d="M6 3h11a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H6z"/><path d="M6 3v18M9 8h6M9 12h6M9 16h4"/>',
+  kids: '<circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.3"/><path d="M3.5 20c.5-3.5 2.8-5.5 5.5-5.5s5 2 5.5 5.5M14.5 20c.3-2.3 1.5-3.8 3-3.8s2.7 1.5 3 3.8"/>',
+  home: '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 15h4M12 13v4"/>',
+};
+
+// En el orden del reloj empezando arriba a la izquierda: lo urgente arriba.
+const TOOLS = [
+  { k: 'er', name: s.nav_emergency, tip: T.t_er, href: `${p}/emergency`, tone: 'coral', urgent: true },
+  { k: 'signs', name: s.ws_eyebrow, tip: T.t_signs, href: `${p}/warning-signs`, tone: 'coral', urgent: true },
+  { k: 'dose', name: s.nav_dose, tip: T.t_dose, href: `${p}/dose`, tone: 'mint' },
+  { k: 'growth', name: s.nav_growth, tip: T.t_growth, href: `${p}/growth`, tone: 'sky' },
+  { k: 'vax', name: s.nav_vaccines, tip: T.t_vax, href: `${p}/vaccines`, tone: 'lavender' },
+  { k: 'muac', name: s.muac.h, tip: T.t_muac, href: `${p}/muac`, tone: 'amber' },
+  { k: 'diary', name: s.nav_diary, tip: T.t_diary, href: `${p}/diary`, tone: 'peach' },
+  { k: 'kids', name: s.fam.h1, tip: T.t_kids, href: `${p}/family`, tone: 'mint' },
+  { k: 'home', name: s.nav_kit, tip: T.t_home, href: `${p}/kit`, tone: 'sky' },
+  { k: 'phone', name: T.numbers, tip: T.t_numbers, href: `${p}/emergency#by-country`, tone: 'coral', urgent: true },
+];
+
+// El dibujo mide 1000 × 640 y la caja guarda esa proporción: los porcentajes caen justo.
+const W = 1000, H = 640, CX = W / 2, CY = H / 2, RX = 400, RY = 250, n = TOOLS.length;
+const start = -Math.PI / 2 - (Math.PI * 2) / n;
+const BENDS: [number, number][] = [
+  [0.22, 0.1], [-0.06, 0.12], [0.02, -0.02], [-0.24, -0.08], [0.16, -0.14],
+  [-0.1, -0.2], [0.05, 0.25], [-0.18, 0.06], [0.28, 0.04], [-0.03, -0.12],
+];
+const placed = TOOLS.map((tool, i) => {
+  const a = start + (i * Math.PI * 2) / n;
+  const x = CX + RX * Math.cos(a), y = CY + RY * Math.sin(a);
+  const sx = CX + 100 * Math.cos(a), sy = CY + 100 * Math.sin(a);
+  const ex = x - 42 * Math.cos(a), ey = y - 42 * Math.sin(a);
+  // Cada cable con su forma (30-sep-2026, operador: «todos se curvan igual, parece una
+  // hélice»). Dos puntos de control a lo largo del cable, cada uno desviado a un lado u otro
+  // en perpendicular: fijos por cable, no al azar, para que el dibujo no cambie en cada
+  // construcción. Signos iguales hacen una curva; signos opuestos, una S; cerca de cero, casi recto.
+  const [b1, b2] = BENDS[i % BENDS.length];
+  const dx = ex - sx, dy = ey - sy, len = Math.hypot(dx, dy), nx = -dy / len, ny = dx / len;
+  const c1x = sx + dx * 0.33 + nx * len * b1, c1y = sy + dy * 0.33 + ny * len * b1;
+  const c2x = sx + dx * 0.66 + nx * len * b2, c2y = sy + dy * 0.66 + ny * len * b2;
+  const f = (v: number) => v.toFixed(1);
+  const d = `M${f(sx)} ${f(sy)} C${f(c1x)} ${f(c1y)} ${f(c2x)} ${f(c2y)} ${f(ex)} ${f(ey)}`;
+  return { ...tool, left: (x / W) * 100, top: (y / H) * 100, d };
+});
+// En el teléfono el día a día va en dos columnas: si son impares, la última va a lo ancho.
+const everyday = placed.filter((tl) => !tl.urgent);
+const solo = everyday.length % 2 ? everyday[everyday.length - 1] : null;
+const chatHref = `${p || ''}/#composer`;
+---
+<div class="hub" data-hub>
+  <svg class="cables" viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
+    {placed.map((tl, i) => <path d={tl.d} data-i={i} class={tl.urgent ? 'urgent' : ''} />)}
+  </svg>
+  <a class="core" href={chatHref}>
+    <img src="/logo-144.png" width="78" height="78" alt="" />
+    <span class="lbl-s" aria-hidden="true">{T.core}</span>
+    <span class="core-txt"><b>{T.ask}</b><small>{T.ask_tip}</small></span>
+  </a>
+  <p class="group u">{T.legend_u}</p>
+  <p class="group d">{T.legend_d}</p>
+  {placed.map((tl, i) => (
+    <a class={`node${tl.urgent ? ' urgent' : ''}${tl === solo ? ' solo' : ''}`} href={tl.href} data-i={i}
+       style={`left:${tl.left.toFixed(2)}%;top:${tl.top.toFixed(2)}%`}>
+      <span class={`icon t-${tl.tone}`}>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={ICON[tl.k]} />
+      </span>
+      <span class="txt"><span class="name">{tl.name}</span><span class="tip">{tl.tip}</span></span>
+    </a>
+  ))}
+</div>
+<p class="legend" aria-hidden="true"><span><i class="u"></i>{T.legend_u}</span><span><i></i>{T.legend_d}</span></p>
+
+<style>
+  .hub { position: relative; width: 100%; max-width: 1000px; aspect-ratio: 1000 / 640; margin: 18px auto 0; }
+  .cables { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  .cables path { fill: none; stroke: var(--mint-2); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 2 7; }
+  .cables path.urgent { stroke: color-mix(in srgb, var(--coral) 45%, var(--ground)); }
+  .cables path.on { stroke: var(--sage); stroke-dasharray: none; }
+  .cables path.urgent.on { stroke: var(--coral); }
+
+  .core { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 176px; height: 176px;
+    border-radius: 50%; background: var(--paper); border: 2px solid var(--mint-2); display: grid; place-items: center;
+    text-decoration: none; box-shadow: var(--shadow); z-index: 2; }
+  .core::before { content: ""; position: absolute; inset: -14px; border-radius: 50%; border: 2px dashed var(--mint-2); }
+  .core img { width: 78px; height: 78px; }
+  .core .lbl-s { position: absolute; bottom: 26px; font-family: Nunito, 'Noto Sans Arabic', sans-serif; font-weight: 800; font-size: .9rem; color: var(--sage-deep); }
+  .core .core-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .core:hover { border-color: var(--sage); }
+
+  .node { position: absolute; transform: translate(-50%, -50%); width: 132px; display: flex; flex-direction: column;
+    align-items: center; gap: 6px; text-decoration: none; text-align: center; z-index: 2; }
+  .icon { width: 64px; height: 64px; border-radius: 22px; display: grid; place-items: center; color: var(--sage-deep);
+    border: 2px solid transparent; transition: transform .18s ease, border-color .18s ease; }
+  .icon svg { width: 30px; height: 30px; }
+  .name { font-family: Nunito, 'Noto Sans Arabic', sans-serif; font-weight: 800; font-size: .92rem; line-height: 1.15; color: var(--ink); }
+  .node:hover .icon, .node:focus-visible .icon { transform: translateY(-3px); border-color: var(--sage); }
+  .node.urgent .icon { color: var(--coral); }
+  .node.urgent:hover .icon, .node.urgent:focus-visible .icon { border-color: var(--coral); }
+  .t-mint { background: var(--mint); } .t-peach { background: var(--peach); } .t-lavender { background: var(--lavender); }
+  .t-sky { background: var(--sky); } .t-coral { background: var(--coral-soft); } .t-amber { background: var(--amber-soft); }
+  .tip { position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%); width: 214px;
+    background: var(--ink); color: var(--ground); font-size: .82rem; line-height: 1.35; padding: 8px 11px;
+    border-radius: 12px; opacity: 0; pointer-events: none; transition: opacity .15s ease; z-index: 5; }
+  .node:hover .tip, .node:focus-visible .tip { opacity: 1; }
+  .group { display: none; }
+  .txt { display: contents; }
+
+  .legend { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; color: var(--ink-3); font-size: .85rem; margin: 6px 0 0; }
+  .legend i { display: inline-block; width: 22px; border-top: 3px dotted var(--mint-2); vertical-align: middle; margin-inline-end: 6px; }
+  .legend i.u { border-top-color: var(--coral); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .cables path { animation: draw .9s ease-out both; }
+    @keyframes draw { from { stroke-dashoffset: 60; } to { stroke-dashoffset: 0; } }
+  }
+
+  @media (max-width: 760px) {
+    .hub { aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 12px; margin-top: 20px; }
+    .cables, .legend { display: none; }
+    .core { position: relative; left: auto; top: auto; transform: none; grid-column: 1 / -1; width: auto; height: auto;
+      border-radius: var(--r); display: flex; align-items: center; gap: 14px; padding: 14px 16px; text-align: start; order: 0; }
+    .core::before, .core .lbl-s { display: none; }
+    .core img { width: 52px; height: 52px; flex: none; }
+    .core .core-txt { position: static; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal;
+      display: flex; flex-direction: column; gap: 2px; }
+    .core .core-txt b { font-family: Nunito, 'Noto Sans Arabic', sans-serif; font-weight: 800; font-size: 1.05rem; color: var(--sage-deep); }
+    .core .core-txt small { font-size: .84rem; color: var(--ink-2); }
+    .group { display: block; grid-column: 1 / -1; font-family: Nunito, 'Noto Sans Arabic', sans-serif; font-weight: 800; font-size: .78rem;
+      letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); margin: 8px 0 -6px; }
+    .group.u { color: var(--coral); order: 1; }
+    .group.d { order: 3; }
+    .node { position: relative; left: auto !important; top: auto !important; transform: none; width: auto; padding: 4px; order: 4; }
+    /* lo urgente, en filas anchas: el icono a un lado y lo que hace al otro */
+    .node.urgent { order: 2; grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 14px; text-align: start; }
+    .node.urgent .icon { flex: none; width: 56px; height: 56px; }
+    .node.urgent .name, .node.urgent .tip { display: block; }
+    .node.urgent .txt { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .node.solo { grid-column: 1 / -1; justify-self: center; max-width: 60%; }
+    .tip { position: static; transform: none; width: auto; opacity: 1; background: none; color: var(--ink-3); padding: 0; font-size: .8rem; }
+  }
+</style>
+
+<script>
+  // Sólo enciende el cable de la herramienta señalada; sin esto la página ya está completa.
+  for (const hub of document.querySelectorAll<HTMLElement>('[data-hub]')) {
+    for (const node of hub.querySelectorAll<HTMLElement>('.node')) {
+      const path = hub.querySelector(`.cables path[data-i="${node.dataset.i}"]`);
+      const on = (v: boolean) => path?.classList.toggle('on', v);
+      node.addEventListener('mouseenter', () => on(true));
+      node.addEventListener('mouseleave', () => on(false));
+      node.addEventListener('focus', () => on(true));
+      node.addEventListener('blur', () => on(false));
+    }
+  }
+</script>
