@@ -5,6 +5,7 @@ Headings become "bigger" lines so the section splitter treats them as titles."""
 
 from __future__ import annotations
 
+import re
 from pathlib import Path
 
 from bs4 import BeautifulSoup, Tag
@@ -60,6 +61,12 @@ _SKIP_TEXT = (
     "Se encuentra usted aquí",
     "Noticias Quienes somos",
 )
+#: «shared» no es «share»: el Manual de Inmunizaciones de la AEP guarda el capítulo entero en
+#: `field-field-shared-body` y se perdía (30-sep-2026). Se probó buscar las pistas como palabra
+#: y no como trozo, y dejaba pasar 2.000 clases de ruido —«submenu», «cookiebanner»,
+#: «breadcrumbs», «socialmedia-icons»— en las 580 páginas: la subcadena hace un trabajo útil y
+#: la excepción es sólo ésta.
+_NO_ES_RUIDO = re.compile(r"shared")
 _HEADING_SIZE = {"h1": 20.0, "h2": 15.0, "h3": 13.0, "h4": 12.0}
 BODY_SIZE = 10.0
 
@@ -93,6 +100,7 @@ def _drop_noise(node: Tag) -> None:
             continue
         raw_cls = t.get("class")
         cls = " ".join(raw_cls).lower() if isinstance(raw_cls, list) else str(raw_cls or "").lower()
+        cls = _NO_ES_RUIDO.sub(" ", cls)
         if any(h in cls for h in _DROP_CLASS_HINTS):
             t.decompose()
 

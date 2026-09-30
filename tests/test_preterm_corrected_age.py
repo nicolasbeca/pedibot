@@ -26,6 +26,7 @@ from pedibot.settings import get_settings
 VACUNAS = "nidirect_en_childhood_immunisation_programme"
 HITOS = "cdc_en_2_months"
 CURVAS = "cdc_en_growth_charts_overview"
+VACUNAS_ES = "cavaep_es_cap_10"  # Manual de Inmunizaciones de la AEP, cap. 10: el prematuro
 
 PREGUNTAS: dict[str, str] = {
     "My baby was born premature at 32 weeks. Does she get her vaccines at her actual age "
@@ -71,3 +72,47 @@ def test_y_el_oido_se_sigue_encontrando(frase: str):
     s = get_settings()
     sin = Synonyms(s.config_dir / "synonyms.yaml", s.config_dir / "drugs.yaml")
     assert "otitis" in sin.expand(frase, "en")
+
+
+@pytest.fixture(scope="module")
+def motor():
+    from pedibot.bot.answer import EmergencyNumbers, Engine
+    from pedibot.bot.drugs import DrugCatalog
+    from pedibot.bot.growth import Growth
+    from pedibot.bot.llm import FakeProvider
+    from pedibot.bot.triage import Triage
+    from pedibot.bot.vaccines import Vaccines
+
+    s = get_settings()
+    llm = FakeProvider(lambda sys_, user: "Fake draft based on the sources [1].")
+    return Engine(
+        Retriever(
+            Index(s.index_db_path),
+            Synonyms(s.config_dir / "synonyms.yaml", s.config_dir / "drugs.yaml"),
+            top_k=s.retrieval_top_k,
+            taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
+        ),
+        Triage(s.config_dir / "red_flags.yaml"),
+        llm,
+        EmergencyNumbers(s.config_dir / "emergency_numbers.yaml"),
+        drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
+        vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
+        growth=Growth(s.config_dir / "who_growth.json"),
+    )
+
+
+@pytest.mark.parametrize(
+    "pregunta",
+    [
+        "Mi hija nació prematura de 32 semanas y ahora tiene 4 meses. ¿Qué edad uso para las "
+        "vacunas, la real o la corregida?",
+        "My daughter was born at 32 weeks and is now 4 months old. Do I use her actual age or "
+        "corrected age for vaccines?",
+    ],
+)
+def test_el_motor_entero_llega_a_la_ficha_del_prematuro(motor, pregunta: str):
+    """El buscador solo la encontraba; el motor, con su desvío a los calendarios de vacunas
+    («vaccines» + «age»), no la veía, y en producción el verificador acababa en silencio."""
+    a = motor.ask(pregunta)
+    docs = {c.split("#")[0] for c in a.chunk_ids}
+    assert docs & {VACUNAS, VACUNAS_ES}, f"no llega a la ficha del prematuro; usa {sorted(docs)}"

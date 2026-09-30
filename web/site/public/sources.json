@@ -962,6 +962,19 @@
   "notes": "licence: Public domain (U.S. Government work); fetched 2026-09-30; only pp. 13-15 indexed (the whole module crowded out parent pages on every percentile question)"
  },
  {
+  "doc_id": "cavaep_es_cap_10",
+  "org": "CAV-AEP",
+  "org_full": "Comité Asesor de Vacunas de la Asociación Española de Pediatría — Manual de Inmunizaciones en línea",
+  "title": "10. Inmunizaciones en niños prematuros y recién nacidos de riesgo",
+  "year": null,
+  "lang": "es",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "citar_solo",
+  "url": "https://vacunasaep.org/documentos/manual/cap-10",
+  "notes": "licence: CC BY-NC-ND 4.0 (pie de vacunasaep.org); fetched 2026-09-30"
+ },
+ {
   "doc_id": "nidirect_en_childhood_immunisation_programme",
   "org": "nidirect",
   "org_full": "nidirect (Northern Ireland Government Services)",

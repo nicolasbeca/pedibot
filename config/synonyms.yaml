@@ -11,6 +11,31 @@
 # Arabic triggers appear bare and with the article: the match is a prefix on the token, and
 # "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
+  # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
+  "premature":
+  - premature
+  - prematurely
+  - corrected age
+  "preterm":
+  - premature
+  - prematurely
+  - corrected age
+  "prematurely":
+  - premature
+  - prematurely
+  - corrected age
+  "corrected age":
+  - premature
+  - prematurely
+  - corrected age
+  "born early":
+  - premature
+  - prematurely
+  - corrected age
+  "adjusted age":
+  - premature
+  - prematurely
+  - corrected age
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
   # pasajes de la fontanela abombada. El aviso sin la explicación deja al padre a medias.
@@ -979,6 +1004,15 @@ fr:
   - bronchiolite
   - virus respiratoire syncytial
 fr_en:
+  # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
+  "prématur":
+  - premature
+  - prematurely
+  - corrected age
+  "âge corrigé":
+  - premature
+  - prematurely
+  - corrected age
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   selles:
@@ -1630,6 +1664,19 @@ de_es:
   - urgencias
   - '112'
 de_en:
+  # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
+  "frühgebor":
+  - premature
+  - prematurely
+  - corrected age
+  "frühchen":
+  - premature
+  - prematurely
+  - corrected age
+  "korrigiertes alter":
+  - premature
+  - prematurely
+  - corrected age
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   stuhlgang:
@@ -2490,6 +2537,15 @@ ru_es:
   - respiración
   - dificultad respiratoria
 ru_en:
+  # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
+  "недонош":
+  - premature
+  - prematurely
+  - corrected age
+  "скорректированн":
+  - premature
+  - prematurely
+  - corrected age
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   стул$:
@@ -3512,6 +3568,19 @@ ar_es:
   - sedentarismo
   - actividad física
 ar_en:
+  # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
+  "خديج":
+  - premature
+  - prematurely
+  - corrected age
+  "مبتسر":
+  - premature
+  - prematurely
+  - corrected age
+  "العمر المصحح":
+  - premature
+  - prematurely
+  - corrected age
   سقط على رأسه: [head injury, concussion, head trauma, skull]
   على رأسه: [head injury, concussion, head trauma]
   # 16-sep-2026, franco-árabe (el árabe tecleado en letras latinas, lo normal en el Golfo
@@ -4621,6 +4690,15 @@ pt_es:
   - urgencias
   - '112'
 pt_en:
+  # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
+  "prematur":
+  - premature
+  - prematurely
+  - corrected age
+  "idade corrigida":
+  - premature
+  - prematurely
+  - corrected age
   # 16-sep-2026: las heces, para llegar a las fichas que explican el color de la caca del
   # bebé (el pañal del NHS en inglés, el «Cuídame» de Andalucía en castellano).
   cocô:
@@ -5609,6 +5687,15 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
+  "समय से पहले":
+  - premature
+  - prematurely
+  - corrected age
+  "प्रीमैच्योर":
+  - premature
+  - prematurely
+  - corrected age
   # 16-sep-2026: hindi en letras latinas, que es como teclea media India. Estas tres
   # faltaban y sus preguntas no encontraban nada.
   vajan:

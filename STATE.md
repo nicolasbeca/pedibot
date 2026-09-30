@@ -37,11 +37,26 @@
 - **Dos pesos, se pregunta cuál** (decisión del operador, opción a). Antes calculaba con el
   primero sin avisar. Frase en las nueve lenguas; la respuesta «7,8 kg» del turno siguiente
   lleva a la dosis con el fármaco del turno anterior. `test_two_weights_ask_which.py`.
+- **Segunda vuelta, tras verlo en vivo:** el prematuro seguía en silencio en producción. El motor
+  entero desviaba «vaccines» + «age» a los calendarios y nunca veía la ficha. Arreglado con
+  sinónimos de «premature / prematuro» en siete lenguas hacia el inglés, y en castellano con una
+  fuente propia: **CAV-AEP, Manual de Inmunizaciones, cap. 10** (CC BY-NC-ND 4.0, `citar_solo`):
+  «el prematuro debe ser vacunado de acuerdo con su edad cronológica… iniciar la vacunación a los
+  2 meses». El puente es→en tiene tope y no se amplió: la fuente en castellano lo hace innecesario.
+- **Extractor HTML: «shared» no es «share».** La pista de ruido «share» (botones de compartir)
+  se buscaba como subcadena y tiraba `field-field-shared-body`, el cuerpo entero del manual de la
+  AEP: salía un fragmento de menú. Se probó buscar las pistas como palabra y dejaba pasar ~2.000
+  clases de ruido en las 580 páginas; la excepción es sólo «shared», que cambia esa página y
+  ninguna más. `test_shared_is_not_share.py`.
+- **Taxonomía:** «agua segura» (guía nueva del servidor, `agua_segura_bebe`, sin categoría).
+- **Queda:** la madre con fiebre que da el pecho recibe delante la regla fija «si tu bebé tiene
+  menos de 3 meses, la fiebre necesita un médico», porque lee «fiebre» + «bebé» aunque la fiebre
+  sea de ella. Seguro, pero confunde.
 - **Defecto anotado:** la ingesta decide «sin cambios» por el hash del fichero, así que cambiar el
   tema o el título de una fuente en el catálogo NO llega al índice. Hubo que borrar sus
   `index/chunks/*.jsonl` a mano.
-- Corpus: 654 documentos (ver DATOS.md). README, DPGA.md y BACKABLE.md: el «648» de la solicitud
-  queda marcado como «de entonces».
+- Corpus: ver DATOS.md. README al día; en DPGA.md y BACKABLE.md el «648» de la solicitud queda
+  marcado como «de entonces». 10.599 pruebas.
 
 ## 29-sep-2026 · dos trabajos caídos sin aviso, y las guías que no usaban su propia lengua
 

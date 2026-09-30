@@ -26,7 +26,7 @@ configs:
 
 # Paediatric guidance for parents — an open catalogue
 
-**654 documents from 22 organisations**, in 8 languages, each classified by topic and linked to its original.
+**655 documents from 23 organisations**, in 8 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -57,12 +57,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (267 of 654 do) |
+| `year` | where the document states one (267 of 655 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `usage` | `publico` (606) may be reproduced under its publisher's terms; `citar_solo` (48) may be cited and linked, not reproduced |
-| `url` | link to the original (606 of 654 are online; the rest are books and printed manuals, identified in `notes`) |
+| `usage` | `publico` (606) may be reproduced under its publisher's terms; `citar_solo` (49) may be cited and linked, not reproduced |
+| `url` | link to the original (607 of 655 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -83,6 +83,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | Junta de Andalucía — Consejería de Salud de la Junta de Andalucía | 2 |
 | NHM — National Health Mission, Ministry of Health & Family Welfare, Government of India | 2 |
 | AEMPS — Agencia Española de Medicamentos y Productos Sanitarios — CIMA (prospecto autorizado) | 1 |
+| CAV-AEP — Comité Asesor de Vacunas de la Asociación Española de Pediatría — Manual de Inmunizaciones en línea | 1 |
 | College of the Canyons — College of the Canyons — Open Educational Resource (Paris, Ricardo, Rymond) | 1 |
 | Ecimed — Editorial Ciencias Médicas (La Habana) | 1 |
 | H. Niño Jesús — Hospital Infantil Universitario Niño Jesús (Casado Flores, Jiménez García) | 1 |
@@ -97,7 +98,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | language | documents |
 |---|---|
 | English (`en`) | 331 |
-| Spanish (`es`) | 115 |
+| Spanish (`es`) | 116 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 51 |
 | Russian (`ru`) | 47 |
@@ -114,7 +115,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `general` | 68 |
 | `digestivo` | 65 |
 | `accidentes` | 55 |
-| `vacunas` | 50 |
+| `vacunas` | 51 |
 | `alimentacion` | 39 |
 | `desarrollo` | 38 |
 | `salud_mental` | 22 |

@@ -100,6 +100,16 @@ ORGS = {
     # Licencia leída en el pie de sus propias fichas: CC BY-NC-ND 3.0 España. ND = citar sí,
     # reelaborar no, así que entra como `citar_solo`, igual que el Ministério da Saúde: el bot
     # la cita con su enlace y el generador de guías no puede reproducirla.
+    # Comité Asesor de Vacunas de la AEP, Manual de Inmunizaciones en línea. Licencia leída en
+    # el pie de cada capítulo (30-sep-2026): CC BY-NC-ND 4.0. Sin derivadas: se cita, no se
+    # reelabora, así que entra como `citar_solo`, igual que Familia y Salud.
+    "cavaep": {
+        "org": "CAV-AEP",
+        "org_full": "Comité Asesor de Vacunas de la Asociación Española de Pediatría — Manual de Inmunizaciones en línea",
+        "license": "CC BY-NC-ND 4.0 (pie de vacunasaep.org)",
+        "evidence": "sociedad_cientifica",
+        "usage": "citar_solo",
+    },
     "fys": {
         "org": "AEPap",
         "org_full": "Familia y Salud — Asociación Española de Pediatría de Atención Primaria",
@@ -119,6 +129,13 @@ ORGS = {
 # (key, url, topic, lang, age_groups)
 WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     # El prematuro (30-sep-2026): vacunas con la edad real, hitos con la corregida.
+    (
+        "cavaep",
+        "https://vacunasaep.org/documentos/manual/cap-10",
+        "vacunas",
+        "es",
+        ["recien_nacido", "lactante"],
+    ),
     (
         "nidirect",
         "https://www.nidirect.gov.uk/articles/childhood-immunisation-programme",

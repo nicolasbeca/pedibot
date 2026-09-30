@@ -21,7 +21,7 @@ Every number below is counted from the files in this repository, never typed by 
 [DATOS.md](DATOS.md), which is generated, and `scripts/check_docs.py`, which fails the build if a
 document repeats one of them wrongly.
 
-- **654 paediatric documents** from paediatric societies, health ministries and the WHO, each
+- **655 paediatric documents** from paediatric societies, health ministries and the WHO, each
   with its licence read and recorded, and each answer cites the ones it used.
 - **Emergency numbers for 92 countries**, each from the page of the body that publishes it. In
   eight of them the source states that no national service exists, and the page says that rather
@@ -32,7 +32,7 @@ document repeats one of them wrongly.
 - **Paracetamol and ibuprofen dosing by weight**, from fixed tables, calculated in the page
   without a model, for the strength of the bottle the parent has in their hand.
 - **WHO growth standards**: percentiles and z-scores, plus MUAC for acute malnutrition.
-- **523 guides** written from the corpus, in eight languages.
+- **525 guides** written from the corpus, in eight languages.
 
 ## How an answer is made
 
