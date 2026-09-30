@@ -1,0 +1,129 @@
+---
+/* Elegir país: continente → país y, en pantallas anchas, el mapamundi (30-sep-2026).
+   Lo usan la página de urgencias y la de vacunas; cada una hace lo suyo con el país elegido.
+
+   Cómo se habla con él: al elegir (y al arrancar, con el país del lector) deja el país en
+   `data-cc` / `data-elegido` del propio elemento y lanza en `document` el evento
+   `pedibot:country` con { id, cc, elegido }. Quien lo use lee primero el `data-cc` —puede que
+   su script corra después— y luego escucha el evento.
+
+   El país del lector: el que eligió en la web (`pedibot_country`), y si no, la región del
+   navegador; y si tampoco, `fallback`. Sólo lo que elige él cuenta como elegido: lo demás se
+   enseña como pregunta. Sin JavaScript, el desplegable lleva todos los países agrupados. */
+import continents from '../data/continents.json';
+import { t, type Lang } from '../i18n';
+interface Props { lang: Lang; id: string; codes: string[]; fallback?: string }
+const { lang, id, codes, fallback = '' } = Astro.props;
+const E = t(lang).emf;
+const cont = continents as Record<string, string>;
+const ORDEN = ['africa', 'asia', 'europe', 'north_america', 'south_america', 'oceania'] as const;
+let nombreDe = (cc: string) => cc;
+try {
+  const dn = new Intl.DisplayNames([lang], { type: 'region' });
+  nombreDe = (cc: string) => dn.of(cc) || cc;
+} catch (e) {}
+const grupos = ORDEN.map((c) => ({
+  c,
+  paises: codes.filter((cc) => cont[cc] === c).map((cc) => ({ cc, nombre: nombreDe(cc) }))
+    .sort((a, b) => a.nombre.localeCompare(b.nombre, lang)),
+})).filter((g) => g.paises.length);
+const NOMBRES = Object.fromEntries(codes.map((cc) => [cc, nombreDe(cc)]));
+---
+<div class="cpick" id={id} data-fallback={fallback}>
+  <div class="pick">
+    <label>{E.continent}
+      <select class="cp-cont">
+        <option value="">—</option>
+        {grupos.map((g) => <option value={g.c}>{E[g.c]}</option>)}
+      </select>
+    </label>
+    <label>{E.country}
+      <select class="cp-cc">
+        <option value="">{E.choose}</option>
+        {grupos.map((g) => (
+          <optgroup label={E[g.c]} data-c={g.c}>
+            {g.paises.map((p) => <option value={p.cc}>{p.nombre}</option>)}
+          </optgroup>
+        ))}
+      </select>
+    </label>
+  </div>
+  <div class="map" hidden>
+    <p class="map-hint">{E.map}</p>
+    <div class="map-box"></div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ ID: id, CODES: codes, CONT: cont, NOMBRES }}>
+  (() => {
+    const raiz = document.getElementById(ID);
+    if (!raiz) return;
+    const selC = raiz.querySelector('.cp-cont'), selP = raiz.querySelector('.cp-cc');
+    const tiene = (cc) => CODES.includes(cc);
+
+    const filtra = () => {
+      const c = selC.value;
+      selP.querySelectorAll('optgroup').forEach((g) => { const fuera = Boolean(c) && g.dataset.c !== c; g.hidden = fuera; g.disabled = fuera; });
+    };
+    const marca = (cc) => {
+      raiz.querySelectorAll('path.sel').forEach((p) => p.classList.remove('sel'));
+      raiz.querySelectorAll(`path[data-cc="${cc}"]`).forEach((p) => p.classList.add('sel'));
+    };
+    const pon = (cc, elegido) => {
+      if (!tiene(cc)) return;
+      selC.value = CONT[cc] || ''; filtra(); selP.value = cc; marca(cc);
+      raiz.dataset.cc = cc; raiz.dataset.elegido = elegido ? '1' : '';
+      document.dispatchEvent(new CustomEvent('pedibot:country', { detail: { id: ID, cc, elegido } }));
+    };
+    const elige = (cc) => {
+      if (!tiene(cc)) return;
+      try { localStorage.setItem('pedibot_country', cc); } catch (e) {}
+      pon(cc, true);
+    };
+
+    selC.addEventListener('change', () => { filtra(); selP.value = ''; });
+    selP.addEventListener('change', () => { if (selP.value) elige(selP.value); });
+
+    let ini = null;
+    try { const g = localStorage.getItem('pedibot_country'); if (g && tiene(g)) ini = [g, true]; } catch (e) {}
+    if (!ini) { const r = ((navigator.language || '').split('-')[1] || '').toUpperCase(); if (tiene(r)) ini = [r, false]; }
+    if (!ini && tiene(raiz.dataset.fallback)) ini = [raiz.dataset.fallback, false];
+    if (ini) pon(ini[0], ini[1]);
+
+    // el mapa, sólo en pantallas anchas; se encienden los países de esta página
+    const caja = raiz.querySelector('.map');
+    if (caja && window.matchMedia('(min-width: 760px)').matches) {
+      fetch('/world.svg').then((r) => (r.ok ? r.text() : '')).then((svg) => {
+        if (!svg) return;
+        const box = raiz.querySelector('.map-box');
+        box.innerHTML = svg;
+        caja.hidden = false;
+        box.querySelectorAll('path[data-cc]').forEach((p) => {
+          const cc = p.dataset.cc;
+          if (!tiene(cc)) return;
+          p.classList.add('on');
+          const ti = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+          ti.textContent = NOMBRES[cc] || cc;
+          p.appendChild(ti);
+          p.addEventListener('click', () => elige(cc));
+        });
+        if (raiz.dataset.cc) marca(raiz.dataset.cc);
+      }).catch(() => {});
+    }
+  })();
+</script>
+
+<style>
+  .pick { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .pick label { display: flex; flex-direction: column; gap: 4px; font-size: .85rem; font-weight: 700; color: var(--ink-2); flex: 1 1 220px; min-width: 0; }
+  .pick select { font: inherit; font-weight: 400; font-size: 1rem; padding: 10px 12px; border: 1px solid var(--line);
+    border-radius: 12px; background: var(--paper); color: var(--ink); width: 100%; }
+  .map { margin-top: 18px; }
+  .map-hint { margin: 0 0 8px; color: var(--ink-3); font-size: .88rem; }
+  .map-box { max-width: 820px; margin: 0 auto; }
+  .map-box :global(svg) { width: 100%; height: auto; display: block; }
+  .map-box :global(path.c) { fill: var(--line); stroke: var(--ground); stroke-width: .6; }
+  .map-box :global(path.on) { fill: var(--mint-2); cursor: pointer; transition: fill .12s ease; }
+  .map-box :global(path.on:hover) { fill: var(--coral-soft); }
+  .map-box :global(path.sel) { fill: var(--coral); }
+</style>

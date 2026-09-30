@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import pytest
-from hypothesis import given
+from hypothesis import HealthCheck, given, settings
 from hypothesis import strategies as st
 
 from pedibot.bot.dose import DoseError, calculate, format_result
@@ -75,6 +75,10 @@ def test_unknown_drug_and_bad_weight():
         calculate("paracetamol", 0.5)
 
 
+# 30-sep-2026: con la suite en seis procesos, hypothesis abortó dos veces por «Input generation
+# is slow» (4 ejemplos en 2,85 s). Es una comprobación de velocidad de la máquina, no de las
+# dosis: se quita sólo ésa y los topes se siguen comprobando igual.
+@settings(suppress_health_check=[HealthCheck.too_slow])
 @given(
     st.floats(min_value=1, max_value=120),
     st.one_of(st.none(), st.floats(min_value=0, max_value=216)),

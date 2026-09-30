@@ -46,3 +46,21 @@ def test_la_portada_ofrece_cada_pais_y_lo_enlaza(lang: str) -> None:
     assert opciones == PAISES, sorted(PAISES ^ opciones)
     faltan = [cc for cc in PAISES if f'href="{pref}/emergency/{cc.lower()}"' not in html]
     assert not faltan, f"páginas de país sin enlace desde la portada: {faltan[:6]}"
+
+
+@pytest.mark.parametrize("lang", ["", "es", "ar"])
+def test_vacunas_usa_el_mismo_buscador(lang: str) -> None:
+    """30-sep-2026: vacunas pasó al mismo buscador (continente → país y mapamundi) y su
+    rejilla de enlaces a cada país quedó plegada."""
+    f = SITE / "dist" / lang / "vaccines" / "index.html"
+    if not f.exists():
+        pytest.skip("el sitio no está construido en esta copia")
+    html = f.read_text(encoding="utf-8")
+    vac = set(yaml.safe_load((RAIZ / "config" / "vaccines.yaml").read_text(encoding="utf-8"))["countries"])
+    pick = html[html.index('id="vx-pick"') :]
+    opciones = set(re.findall(r'<option value="([A-Z]{2})"', pick))
+    assert opciones == vac, sorted(opciones ^ vac)
+    assert 'class="allc"' in html, "los enlaces a cada país ya no están plegados"
+    pref = f"/{lang}" if lang else ""
+    faltan = [cc for cc in vac if f'href="{pref}/vaccines/{cc.lower()}"' not in html]
+    assert not faltan, faltan[:6]

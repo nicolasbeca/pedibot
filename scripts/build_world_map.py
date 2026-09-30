@@ -75,8 +75,11 @@ def _equal_earth(lon: float, lat: float) -> tuple[float, float]:
 
 
 def main() -> int:
+    # Los países de las dos páginas que usan el buscador: urgencias y vacunas (30-sep-2026). El
+    # mapa marca todos los que tienen algo; cada página enciende los suyos.
     numeros = yaml.safe_load((RAIZ / "config" / "emergency_numbers.yaml").read_text(encoding="utf-8"))
-    paises = {k for k in numeros if k != "default"}
+    vacunas = yaml.safe_load((RAIZ / "config" / "vaccines.yaml").read_text(encoding="utf-8"))["countries"]
+    paises = {k for k in numeros if k != "default"} | set(vacunas)
 
     # continentes, del mapa de 50 m
     cont: dict[str, str] = {}
@@ -125,8 +128,7 @@ def main() -> int:
             for anillo in poli:
                 d += anillo_d(anillo)
         attrs = f' data-cc="{cc}"' if cc in paises else ""
-        clase = "c on" if cc in paises else "c"
-        trazos.append(f'<path class="{clase}"{attrs} d="{d}"/>')
+        trazos.append(f'<path class="c"{attrs} d="{d}"/>')
     y_sur = ymax * esc - _equal_earth(0, -58)[1] * esc
     SVG.write_text(
         f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 {round(y_sur)}" role="img">'

@@ -3,6 +3,7 @@ import vax from '../data/vaccines.json';
 import vaxNames from '../data/vaccine_names.json';
 import { t, type Lang } from '../i18n';
 import { countryOptions } from '../countries';
+import CountryPicker from './CountryPicker.astro';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const s = t(lang);
@@ -11,15 +12,20 @@ const T = s.vax;
 // hay que descifrar. Ahora van por el nombre en el idioma de la página y con la bandera delante.
 const countries = countryOptions(Object.keys(vax as any), lang);
 const ages = s.vax_ages;
+const etiquetas = Object.fromEntries(countries.map((c) => [c.cc, c.label]));
 ---
-<div class="vax" data-lang={lang} data-t={JSON.stringify(T)} data-vax={JSON.stringify(vax)} data-nombres={JSON.stringify(vaxNames)}>
+<div class="vax" data-lang={lang} data-t={JSON.stringify(T)} data-vax={JSON.stringify(vax)} data-nombres={JSON.stringify(vaxNames)}
+     data-etiquetas={JSON.stringify(etiquetas)} data-who={JSON.stringify({ yours: s.mine_yours, guess: s.mine_guess, change: s.mine_change, hint: s.emf.age_hint })}>
   <h1>{T.h}</h1>
   <p class="lede">{T.p}</p>
+  {/* 30-sep-2026: la edad arriba —es lo que convierte un calendario en «qué le toca»— y el
+      país con el mismo buscador que urgencias (continente → país y mapamundi), debajo. */}
   <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-top:20px">
-    <label class="f"><span>{T.country}</span><select id="vx-country">{countries.map(c => <option value={c.cc} selected={c.cc === s.vax_default_country}>{c.label}</option>)}</select></label>
     <label class="f"><span>{T.age}</span><select id="vx-age">{ages.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
   </div>
   <div id="vx-out" class="card" style="margin-top:16px" aria-live="polite"></div>
+  <h2 class="vx-other">{T.country}</h2>
+  <CountryPicker lang={lang} id="vx-pick" codes={Object.keys(vax as any)} fallback={s.vax_default_country} />
 </div>
 <style>
   .f { display: grid; gap: 4px; font-family: Nunito, sans-serif; font-weight: 700; font-size: .9rem; }
@@ -28,11 +34,31 @@ const ages = s.vax_ages;
   #vx-out :global(td) { padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
   #vx-out :global(td:first-child) { white-space: nowrap; font-family: Nunito, sans-serif; font-weight: 700; width: 160px; }
   #vx-out :global(.due) { background: var(--mint); }
+  #vx-out :global(.who) { margin: 0; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
+  #vx-out :global(.who.dudosa) { color: var(--ink-3); }
+  #vx-out :global(.pais) { margin: 4px 0 0; font-size: 1.35rem; }
+  #vx-out :global(.ahora) { margin-top: 12px; border-radius: 14px; background: var(--mint); padding: 14px 16px; }
+  #vx-out :global(.ahora b) { display: block; font-family: Nunito, sans-serif; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--sage-deep); }
+  #vx-out :global(.ahora p) { margin: 6px 0 0; font-family: Nunito, sans-serif; font-weight: 800; font-size: 1.25rem; line-height: 1.3; }
+  .vx-other { margin-top: 30px; font-size: 1.1rem; }
+  #vx-out :global(.who a) { color: var(--sage); text-transform: none; letter-spacing: 0; font-weight: 700; }
+  #vx-out :global(.ahora.sin) { background: var(--cream); }
+  #vx-out :global(.ahora.sin p) { font-weight: 400; font-family: "Atkinson Hyperlegible", sans-serif; font-size: 1rem; color: var(--ink-2); }
+  /* en el teléfono, la edad encima y las vacunas debajo, a lo ancho: con la edad en una columna
+     de 160 px, las vacunas quedaban en una tira de tres palabras por línea */
+  @media (max-width: 560px) {
+    #vx-out :global(tr), #vx-out :global(td) { display: block; }
+    #vx-out :global(td:first-child) { width: auto; border-bottom: 0; padding-bottom: 0; }
+  }
   #vx-out :global(.src) { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
 </style>
 <script>
   const box = document.querySelector('.vax') as HTMLElement; const T = JSON.parse(box.dataset.t || '{}'); const V = JSON.parse(box.dataset.vax || '{}'); const lang = box.dataset.lang || 'en';
-  const out = document.getElementById('vx-out')!, cSel = document.getElementById('vx-country') as HTMLSelectElement, aSel = document.getElementById('vx-age') as HTMLSelectElement;
+  const out = document.getElementById('vx-out')!, aSel = document.getElementById('vx-age') as HTMLSelectElement;
+  // el país lo elige CountryPicker (continente → país y mapamundi); aquí sólo se pinta
+  const ETQ = JSON.parse(box.dataset.etiquetas || '{}'), WHO = JSON.parse(box.dataset.who || '{}');
+  const pick = document.getElementById('vx-pick') as HTMLElement | null;
+  let cc = pick?.dataset.cc || '', elegido = pick?.dataset.elegido === '1';
   // El nombre de la vacuna en el idioma de la página. Lo que no está en la tabla sale tal cual,
   // que son los calendarios transcritos a mano del documento del propio ministerio.
   const NOMBRES = JSON.parse(box.dataset.nombres || '{}');
@@ -50,7 +76,7 @@ const ages = s.vax_ages;
   };
   const esc = (s: string) => s.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
   function render() {
-    const c = V[cSel.value]; const age = aSel.value === '' ? null : Number(aSel.value);
+    const c = V[cc]; if (!c) return; const age = aSel.value === '' ? null : Number(aSel.value);
     const tol = age !== null && age < 24 ? 1.5 : 6;
     const rows = c.schedule.map((s: any) => {
       const due = age !== null && ((!s.every_year && Math.abs(s.age - age) <= tol) || (s.every_year && s.age <= age));
@@ -59,10 +85,18 @@ const ages = s.vax_ages;
     let head = '';
     if (age !== null) {
       const due = c.schedule.filter((s: any) => (!s.every_year && Math.abs(s.age - age) <= tol) || (s.every_year && s.age <= age));
-      head = due.length ? `<p><b>${T.due}:</b> ${due.map((s: any) => esc(s.label[lang]) + ' — ' + s.vaccines.map((v: string) => esc(nombre(v))).join(sep)).join(' · ')}</p>` : `<p>${T.none}</p>`;
+      head = due.length
+        ? `<div class="ahora"><b>${T.due}</b>${due.map((s: any) => `<p>${esc(s.label[lang])} — ${s.vaccines.map((v: string) => esc(nombre(v))).join(sep)}</p>`).join('')}</div>`
+        : `<div class="ahora"><p>${T.none}</p></div>`;
     }
-    out.innerHTML = head + `<p class="eyebrow" style="margin-top:10px">${T.full}</p><table>${rows}</table><p class="src">${T.src}: ${esc(c.source)}${esc(comprobado(c.checked))}. ${esc(c.note[lang])}</p>`;
+    // «Cambiar» al lado del país: con el calendario completo debajo, el buscador queda lejos
+    const cabeza = `<p class="who ${elegido ? '' : 'dudosa'}">${esc(elegido ? WHO.yours : WHO.guess)} · <a href="#vx-pick">${esc(WHO.change)}</a></p><h3 class="pais">${esc(ETQ[cc] || cc)}</h3>`;
+    if (age === null) head = `<div class="ahora sin"><p>${esc(WHO.hint)}</p></div>`;
+    out.innerHTML = cabeza + head + `<p class="eyebrow" style="margin-top:10px">${T.full}</p><table>${rows}</table><p class="src">${T.src}: ${esc(c.source)}${esc(comprobado(c.checked))}. ${esc(c.note[lang])}</p>`;
   }
-  cSel.addEventListener('change', render); aSel.addEventListener('change', render); render();
-  try { const cc = localStorage.getItem('pedibot_country'); if (cc && V[cc]) { cSel.value = cc; render(); } } catch (e) {}
+  aSel.addEventListener('change', render); render();
+  document.addEventListener('pedibot:country', (e: Event) => {
+    const d = (e as CustomEvent).detail;
+    if (d.id === 'vx-pick') { cc = d.cc; elegido = d.elegido; render(); }
+  });
 </script>

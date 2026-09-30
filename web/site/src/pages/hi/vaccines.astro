@@ -15,6 +15,8 @@ const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', na
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.nav_vaccines}</p>
     <VaccinesTool lang={lang} />
-    <CountryLinks lang={lang} codes={Object.keys(schedules)} base="/vaccines" title={s.vax_full_by_country} />
+    <details class="allc" style="margin-top:26px"><summary style="cursor:pointer;font-weight:700;color:var(--sage)">{s.emf.all}</summary>
+      <CountryLinks lang={lang} codes={Object.keys(schedules)} base="/vaccines" title={s.vax_full_by_country} />
+    </details>
   </div>
 </Base>

@@ -2,6 +2,19 @@
 
 Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 30-sep-2026 (noche, 3) · vacunas con el mismo buscador que urgencias
+
+- El buscador pasa a ser una pieza común, `CountryPicker.astro` (continente → país y, en
+  pantallas anchas, el mapamundi), que usan urgencias y vacunas. Deja el país en `data-cc` y
+  avisa con el evento `pedibot:country`; cada página hace lo suyo. El mapa marca todos los
+  países con algo y cada página enciende los suyos.
+- **/vaccines**: la edad arriba; la tarjeta del país con «Le toca ahora» grande (o el aviso de
+  elegir la edad); «Cambiar» junto al país, porque con la tabla completa el buscador queda
+  lejos; en el móvil cada fila con la edad encima y las vacunas a lo ancho; los 75 enlaces por
+  país, plegados. `test_emergency_finder.py`.
+- `test_dose.py::test_never_exceeds_hard_caps` abortaba a veces con la suite en paralelo por
+  «Input generation is slow»: se le quita sólo esa comprobación de velocidad.
+
 ## 30-sep-2026 (noche, 2) · una tarjeta por página y la página de urgencias rehecha
 
 - **Tarjetas al compartir, una por tipo de página y lengua** (120; `web/site/scripts/make-og-cards.mjs`,
