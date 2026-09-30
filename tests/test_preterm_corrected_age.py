@@ -136,3 +136,16 @@ def test_el_percentil_del_prematuro_en_castellano(motor, pregunta: str):
     a = motor.ask(pregunta)
     docs = {c.split("#")[0] for c in a.chunk_ids}
     assert docs & {CURVAS_ES, CURVAS}, f"no llega a las curvas del prematuro; usa {sorted(docs)}"
+
+
+def test_llega_la_frase_y_la_definicion_de_ec(motor):
+    """SENeo escribe «según la EC hasta los 2 años» y define EC sólo en su glosario (p. 40). Con
+    la frase sin la definición, el modelo contestó «no hay una respuesta única» (30-sep-2026):
+    tienen que llegar las dos."""
+    a = motor.ask(
+        "Mi hijo nació de 33 semanas y tiene 5 meses. ¿Con qué edad miro su percentil de peso, "
+        "la real o la corregida?"
+    )
+    ids = set(a.chunk_ids)
+    assert ids & {f"{CURVAS_ES}#6_2_herramientas_de_seguimiento#1", f"{CURVAS_ES}#6_3_recomendaciones#2"}, ids
+    assert f"{CURVAS_ES}#13_glosario_de_siglas#1" in ids, ids

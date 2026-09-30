@@ -167,7 +167,7 @@
     {
       "name": "paediatric_warning_sign_check",
       "price": 0.01,
-      "sla_minutes": 1,
+      "sla_minutes": 5,
       "description": "Checks a description of a child's symptoms against 46 fixed warning-sign rules, each tied to a published parent sheet, in eight languages and four scripts: breathing difficulty, seizures, meningitis signs, dehydration, poisoning including kerosene, snake and dog bites, heatstroke, newborn jaundice and more. Returns the level, the rules that fired with their source, the warning text and the country's emergency number. No model involved: the same result every time.",
       "requirements": {
         "type": "object",
@@ -256,7 +256,7 @@
     {
       "name": "child_growth_percentile",
       "price": 0.01,
-      "sla_minutes": 1,
+      "sla_minutes": 5,
       "description": "Where a child sits on the growth charts, calculated exactly from the WHO LMS tables (Child Growth Standards 2006, Growth Reference 2007) and, for the United States and Australia after age 2, the CDC 2000 charts: weight, height, weight-for-height and BMI percentiles and z-scores, with the WHO cut-offs (wasting, stunting, overweight, thinness). Severe acute malnutrition is flagged as urgent. With a country, it says which chart that country's health record uses; 78 countries covered.",
       "requirements": {
         "type": "object",
@@ -614,7 +614,7 @@
     {
       "name": "paediatric_guide_finder",
       "price": 0.01,
-      "sla_minutes": 1,
+      "sla_minutes": 5,
       "description": "Finds PediBot's published parent guides on a topic, in the requested language: title, topic and link. Each guide is written only from published guidelines and names the organisation behind every clinical sentence. Useful for agents that want to hand a parent something to read rather than a paragraph: fever, cough, vomiting, rashes, head injury, vaccines, first foods, screens and sleep, development milestones and more, in eight languages.",
       "requirements": {
         "type": "object",

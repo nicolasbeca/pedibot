@@ -337,3 +337,12 @@ def test_los_argumentos_llevan_los_esquemas_enteros(catalogo: dict):
     args = s.offering_args(o)
     assert json.loads(args[args.index("--requirements") + 1]) == o["requirements"]
     assert "--no-hidden" in args and args[args.index("--price-value") + 1] == "0.01"
+
+
+def test_ninguna_oferta_baja_del_plazo_minimo_del_mercado() -> None:
+    """30-sep-2026: tres ofertas del catálogo (señales de alarma, percentil y buscador de guías)
+    llevaban un plazo de 1 minuto y el mercado exige 5: `acp offering create` las rechazaba, y
+    desde el 13-sep no existían en el mercado aunque el diario las diera por publicadas."""
+    catalogo = json.loads((ROOT / "ops" / "acp_catalogue.json").read_text(encoding="utf-8"))
+    cortas = [o["name"] for o in catalogo["offerings"] if o["sla_minutes"] < 5]
+    assert not cortas, f"el mercado rechaza plazos de menos de 5 minutos: {cortas}"

@@ -426,8 +426,8 @@ en:
   - contagio
 es:
   # 30-sep-2026: «nació de 33 semanas… ¿el percentil con la real o la corregida?»
-  "edad corregida": [edad corregida, prematuro, prematuros]
-  "la corregida": [edad corregida, prematuro, prematuros]
+  "edad corregida": [edad corregida, prematuro, prematuros, EC, curvas de crecimiento]
+  "la corregida": [edad corregida, prematuro, prematuros, EC, curvas de crecimiento]
   # 21-sep-2026, batería del operador: «dolor al hacer pis» y «le pica al hacer pis» se
   # quedaban sin fuente teniendo las páginas de infección de orina del NHS y MedlinePlus.
   al hacer pis: [infección de orina, infección urinaria, urinary tract infection, UTI, cistitis]

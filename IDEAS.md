@@ -607,3 +607,27 @@ una semana no habría podido.
 
 **Dos PDF escaneados de los seis**, o sea un tercio. Para ésos hace falta otra fuente: el
 formulario nacional, el registro del regulador, o pedirlo por correo.
+
+## I-33 · Publicar PediBot en otras redes de agentes, además de ACP (30-sep-2026) — SIN DECIDIR
+
+Preguntado por el operador: «¿existen otras webs de publicación de agentes interconectados tipo
+ACP donde podamos crear nuestro perfil?». Decisión suya: anotarlo y decidir más adelante.
+
+Lo que hay, mirado el 30-sep-2026 (ninguno pide pagar):
+
+1. **Registro oficial de MCP** — https://registry.modelcontextprotocol.io/ . MCP es el estándar con
+   el que Claude, ChatGPT y otros asistentes se conectan a herramientas. Haría falta un servidor
+   MCP de PediBot (dosis, vacunas, curvas, números de urgencias, señales de alarma y el chat),
+   encima de la API que ya existe (`/api/dose`, `/api/vaccines`, `/api/growth`, `/api/agent/ask`…),
+   servido en `pedibot.xyz/mcp`. El nombre se verifica con el dominio o con GitHub. Directorios
+   como PulseMCP y Glama copian el registro solos. **Es el que se recomendó**: una pieza, muchos
+   escaparates.
+2. **Registro A2A** — https://www.a2a-registry.org/ . Pide la ficha del agente en
+   `/.well-known/agent.json`. Un fichero pequeño; iría con lo anterior.
+3. **Agentverse (Fetch.ai)** — https://www.fetch.ai/agentverse . El más grande (millones de
+   agentes; su chat ASI:One enruta preguntas a agentes registrados). Mismo mundo cripto que
+   Virtuals: se dejó para después.
+
+Lo que hay que tener presente al decidir: el agente de Virtuals ACP lleva publicado desde el
+26-ago con **cero trabajos**. Ningún registro garantiza que alguien llame: sólo vale si hay
+público que lo use o alguien que lea y decida.
