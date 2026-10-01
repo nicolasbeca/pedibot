@@ -76,9 +76,9 @@ Kindermedizin mit Quellen, Impfungen und Notrufnummern. Kostenlos, offline.
 إجابات طب الأطفال بمصادرها، التطعيمات وأرقام الطوارئ. مجانا وبلا إنترنت.
 ```
 
-**Portugués** (76):
+**Portugués** (79):
 ```
-Respostas pediátricas com fontes, vacinas e urgências. Grátis e sem ligação.
+Respostas pediátricas com fontes, vacinas e emergências. Grátis e sem internet.
 ```
 
 **Hindi** (76):
@@ -88,7 +88,7 @@ Respostas pediátricas com fontes, vacinas e urgências. Grátis e sem ligação
 
 ### Descripción completa (4.000 caracteres)
 
-**Español** (1998):
+**Español** (2005):
 
 ```
 PediBot contesta preguntas sobre la salud de tu hijo con lo que dicen las guías pediátricas publicadas, y te enseña de dónde sale cada respuesta.
@@ -97,7 +97,7 @@ No es un médico y no diagnostica. Es la parte que suele faltar a las tres de la
 
 QUÉ HACE
 
-• Responde en ocho idiomas citando a 26 organismos, entre ellos la SEUP, la AEP, el NHS, los CDC y la OMS.
+• Responde en ocho idiomas citando a 26 organismos; en español, la SEUP, la AEP, la OMS y MedlinePlus en español.
 • Avisa cuando lo que cuentas encaja con un signo de alarma, y te da el número de emergencias de tu país.
 • Calendario de vacunas de 75 países, transcrito de los documentos oficiales, con su fuente y su fecha.
 • Curvas de crecimiento de la OMS: peso y talla de tu hijo, con su percentil.
@@ -121,7 +121,7 @@ No diagnostica. No sustituye a tu pediatra ni a urgencias. No tiene anuncios, no
 Cada respuesta dice qué organismo lo dice, y la lista completa de documentos, con su año y su enlace, está en la propia app. Puedes comprobarlo.
 ```
 
-**Inglés** (2048):
+**Inglés** (2019):
 
 ```
 PediBot answers questions about your child's health using published paediatric guidance, and shows you where every answer comes from.
@@ -130,7 +130,7 @@ It is not a doctor and it does not diagnose. It is the part that tends to be mis
 
 WHAT IT DOES
 
-• Answers in eight languages, quoting 26 health bodies, among them the NHS, the CDC, the WHO, the AAP and the Spanish paediatric societies.
+• Answers in eight languages, quoting 26 health bodies; in English, the NHS, the CDC, MedlinePlus and the WHO.
 • Warns you when what you describe matches a red flag, and gives you your country's emergency number.
 • Vaccination schedules for 75 countries, transcribed from the official documents, with source and date.
 • WHO growth charts: your child's weight and height, with percentile.
@@ -154,9 +154,211 @@ It does not diagnose. It does not replace your paediatrician or the emergency de
 Every answer names the body that says it, and the full list of documents, with their year and link, is inside the app. You can check it.
 ```
 
-> Las otras seis lenguas salen de traducir **estos dos**, no de escribirlos otra vez: la ficha
-> tiene que decir lo mismo en las ocho. Se hace cuando la cuenta de Play esté abierta, porque
-> Play permite pegarlas una a una y hasta entonces no hay dónde.
+> 1-oct-2026: el operador aprobó las dos de arriba y pidió que **cada lengua nombre las fuentes
+> que tiene en esa lengua**. Sacado del catálogo (`dataset/sources.json`, documentos por lengua):
+> fr — OMS 41, Gobierno de Canadá 10 · de — RKI 30 · ru — OMS 47 · ar — OMS 47, Immunize.org 9 ·
+> pt — Ministério da Saúde 14 · hi — Vikaspedia 19, Immunize.org 10 · es — OMS 40, MedlinePlus 31,
+> SEUP 29, AEP · en — NHS 159, MedlinePlus 87, OMS 45, CDC 22. Las seis de abajo son traducción
+> de la inglesa, con eso cambiado, el nombre de la niña del ejemplo puesto en cada lengua y
+> «urgencias» dicho como se dice allí.
+
+**Francés** (2209):
+
+```
+PediBot répond aux questions sur la santé de votre enfant à partir des recommandations pédiatriques publiées, et vous montre d'où vient chaque réponse.
+
+Ce n'est pas un médecin et il ne pose pas de diagnostic. C'est ce qui manque souvent à trois heures du matin : ce que disent vraiment les sociétés de pédiatrie et les services de santé sur ce qui se passe, dans votre langue, en nommant qui le dit.
+
+CE QU'IL FAIT
+
+• Répond en huit langues en citant 26 organismes de santé ; en français, l'OMS et le gouvernement du Canada.
+• Vous prévient quand ce que vous décrivez correspond à un signe d'alerte, et vous donne le numéro d'urgence de votre pays.
+• Calendriers vaccinaux de 75 pays, transcrits des documents officiels, avec leur source et leur date.
+• Courbes de croissance de l'OMS : le poids et la taille de votre enfant, avec son percentile.
+• Doses de paracétamol et d'ibuprofène selon le poids, avec les marques vendues dans votre pays.
+• Journal des symptômes et liste « dois-je aller aux urgences ? ».
+
+IL FONCTIONNE SANS RÉSEAU
+
+La première fois que vous l'ouvrez avec une connexion, il garde sur votre téléphone les numéros d'urgence de 95 pays, les signes d'alerte, les calendriers vaccinaux et les tables de croissance. Ensuite, il s'ouvre sans réseau et vous dit ce qu'il sait. Seul le chat a besoin d'internet.
+
+VOS ENFANTS, SI VOUS LE SOUHAITEZ
+
+Vous pouvez créer un compte gratuit et enregistrer la date de naissance de chaque enfant. Vous demandez alors « quels vaccins pour Léa ? » et il répond selon l'âge de Léa. Vous pouvez noter son poids et sa taille, voir sa courbe et envoyer les prochains rendez-vous dans l'agenda de votre téléphone.
+
+Le compte est facultatif : tout fonctionne sans lui. Ce que vous enregistrez, vous pouvez le télécharger ou l'effacer quand vous voulez, depuis l'application.
+
+CE QU'IL NE FAIT PAS
+
+Il ne pose pas de diagnostic. Il ne remplace ni votre pédiatre ni les urgences. Pas de publicité, pas de revente de données, rien à payer. Si votre service de santé dit autre chose, c'est lui qui a raison.
+
+Chaque réponse nomme l'organisme qui le dit, et la liste complète des documents, avec leur année et leur lien, est dans l'application. Vous pouvez vérifier.
+```
+
+**Alemán** (2121):
+
+```
+PediBot beantwortet Fragen zur Gesundheit Ihres Kindes mit dem, was veröffentlichte kinderärztliche Leitlinien sagen, und zeigt Ihnen, woher jede Antwort stammt.
+
+Es ist kein Arzt und stellt keine Diagnosen. Es ist das, was um drei Uhr nachts oft fehlt: was Fachgesellschaften und Gesundheitsbehörden wirklich zu dem sagen, was gerade passiert, in Ihrer Sprache und mit dem Namen dessen, der es sagt.
+
+WAS ES KANN
+
+• Antwortet in acht Sprachen und zitiert 26 Gesundheitsorganisationen; auf Deutsch das Robert Koch-Institut.
+• Warnt Sie, wenn das Beschriebene zu einem Warnzeichen passt, und nennt Ihnen die Notrufnummer Ihres Landes.
+• Impfkalender für 75 Länder, aus den offiziellen Dokumenten übertragen, mit Quelle und Datum.
+• WHO-Wachstumskurven: Gewicht und Größe Ihres Kindes, mit Perzentile.
+• Paracetamol- und Ibuprofen-Dosis nach Gewicht, mit den Marken, die in Ihrem Land verkauft werden.
+• Symptomtagebuch und die Liste „Muss ich in die Notaufnahme?“.
+
+ES FUNKTIONIERT OHNE NETZ
+
+Beim ersten Öffnen mit Verbindung speichert es auf Ihrem Telefon die Notrufnummern von 95 Ländern, die Warnzeichen, die Impfkalender und die Wachstumstabellen. Danach öffnet es sich auch ohne Netz und sagt Ihnen, was es weiß. Nur der Chat braucht Internet.
+
+IHRE KINDER, WENN SIE MÖCHTEN
+
+Sie können ein kostenloses Konto anlegen und das Geburtsdatum jedes Kindes speichern. Dann fragen Sie „Welche Impfungen braucht Lena jetzt?“ und es antwortet passend zu Lenas Alter. Sie können Gewicht und Größe notieren, ihre Kurve sehen und die nächsten Termine in den Kalender Ihres Telefons übernehmen.
+
+Das Konto ist freiwillig: Ohne funktioniert alles genauso. Was Sie speichern, können Sie jederzeit in der App herunterladen oder löschen.
+
+WAS ES NICHT TUT
+
+Es stellt keine Diagnosen. Es ersetzt weder Ihre Kinderärztin oder Ihren Kinderarzt noch die Notaufnahme. Keine Werbung, kein Verkauf von Daten, nichts zu bezahlen. Wenn Ihre Gesundheitsstelle etwas anderes sagt, gilt sie.
+
+Jede Antwort nennt die Organisation, die es sagt, und die vollständige Liste der Dokumente, mit Jahr und Link, ist in der App. Sie können es nachprüfen.
+```
+
+**Ruso** (1954):
+
+```
+PediBot отвечает на вопросы о здоровье вашего ребёнка по опубликованным педиатрическим рекомендациям и показывает, откуда взят каждый ответ.
+
+Это не врач, и он не ставит диагнозов. Это то, чего часто не хватает в три часа ночи: что на самом деле говорят педиатрические общества и службы здравоохранения о происходящем, на вашем языке и с указанием, кто это говорит.
+
+ЧТО ОН УМЕЕТ
+
+• Отвечает на восьми языках, ссылаясь на 26 организаций здравоохранения; по-русски — на Всемирную организацию здравоохранения (ВОЗ).
+• Предупреждает, если описанное похоже на тревожный признак, и даёт номер экстренной помощи вашей страны.
+• Календари прививок 75 стран, переписанные из официальных документов, с источником и датой.
+• Кривые роста ВОЗ: вес и рост вашего ребёнка с перцентилем.
+• Дозы парацетамола и ибупрофена по весу, с марками, которые продаются в вашей стране.
+• Дневник симптомов и список «нужно ли ехать в больницу?».
+
+РАБОТАЕТ БЕЗ СВЯЗИ
+
+При первом открытии с интернетом он сохраняет в телефоне номера экстренных служб 95 стран, тревожные признаки, календари прививок и таблицы роста. После этого он открывается без связи и говорит то, что знает. Интернет нужен только для чата.
+
+ВАШИ ДЕТИ, ЕСЛИ ХОТИТЕ
+
+Можно создать бесплатный аккаунт и сохранить дату рождения каждого ребёнка. Тогда вы спрашиваете «какие прививки нужны Маше?», и он отвечает по возрасту Маши. Можно записывать её вес и рост, смотреть её кривую и добавлять следующие визиты в календарь телефона.
+
+Аккаунт не обязателен: без него всё работает так же. Всё сохранённое можно скачать или удалить в любой момент прямо в приложении.
+
+ЧЕГО ОН НЕ ДЕЛАЕТ
+
+Он не ставит диагнозов. Он не заменяет вашего педиатра и приёмное отделение. Без рекламы, без продажи данных, ничего платить не нужно. Если в вашей поликлинике говорят иначе, права поликлиника.
+
+Каждый ответ называет организацию, которая это говорит, а полный список документов с годом и ссылкой есть в приложении. Это можно проверить.
+```
+
+**Árabe** (1493):
+
+```
+يجيب PediBot عن أسئلتك حول صحة طفلك بما تقوله إرشادات طب الأطفال المنشورة، ويُريك من أين جاءت كل إجابة.
+
+ليس طبيبا ولا يشخّص. إنه ما يغيب عادة في الثالثة فجرا: ما تقوله فعلا جمعيات طب الأطفال والجهات الصحية عمّا يحدث، بلغتك، مع ذكر من يقوله.
+
+ماذا يفعل
+
+• يجيب بثماني لغات مستشهدا بـ 26 جهة صحية؛ وبالعربية: منظمة الصحة العالمية، ونشرات معلومات اللقاحات المترجمة إلى العربية من Immunize.org.
+• ينبّهك عندما يطابق ما تصفه علامة خطر، ويعطيك رقم الطوارئ في بلدك.
+• جداول التطعيم لـ 75 بلدا، منقولة من الوثائق الرسمية، مع مصدرها وتاريخها.
+• منحنيات النمو لمنظمة الصحة العالمية: وزن طفلك وطوله مع المئين.
+• جرعات الباراسيتامول والإيبوبروفين حسب الوزن، مع الأسماء التجارية المبيعة في بلدك.
+• مفكرة للأعراض وقائمة «هل أذهب إلى الطوارئ؟».
+
+يعمل بلا إنترنت
+
+في أول مرة تفتحه وأنت متصل، يحفظ في هاتفك أرقام الطوارئ في 95 بلدا وعلامات الخطر وجداول التطعيم وجداول النمو. بعدها يفتح بلا إنترنت ويخبرك بما يعرفه. المحادثة وحدها تحتاج إلى الشبكة.
+
+أطفالك، إن شئت
+
+يمكنك إنشاء حساب مجاني وحفظ تاريخ ميلاد كل طفل. ثم تسأل «ما اللقاحات المستحقة لليلى؟» فيجيب حسب عمر ليلى. ويمكنك تسجيل وزنها وطولها ورؤية منحناها، وإضافة المواعيد القادمة إلى تقويم هاتفك.
+
+الحساب اختياري: كل شيء يعمل من دونه. ما تحفظه يمكنك تنزيله أو حذفه متى شئت من داخل التطبيق.
+
+ما لا يفعله
+
+لا يشخّص. لا يغني عن طبيب طفلك ولا عن قسم الطوارئ. لا إعلانات، لا بيع للبيانات، لا شيء تدفعه. إذا قال لك مركزك الصحي غير ذلك، فالقول قوله.
+
+كل إجابة تذكر الجهة التي تقول ذلك، والقائمة الكاملة للوثائق، بسنتها ورابطها، موجودة في التطبيق. يمكنك التحقق.
+```
+
+**Portugués** (1989):
+
+```
+O PediBot responde a perguntas sobre a saúde do seu filho com o que dizem as diretrizes pediátricas publicadas, e mostra de onde vem cada resposta.
+
+Não é um médico e não faz diagnósticos. É o que costuma faltar às três da manhã: o que as sociedades de pediatria e os serviços de saúde dizem de verdade sobre o que está acontecendo, na sua língua e dizendo quem o diz.
+
+O QUE FAZ
+
+• Responde em oito línguas citando 26 organismos de saúde; em português, o Ministério da Saúde do Brasil.
+• Avisa quando o que você descreve corresponde a um sinal de alarme, e dá o número de emergência do seu país.
+• Calendários de vacinação de 75 países, transcritos dos documentos oficiais, com fonte e data.
+• Curvas de crescimento da OMS: o peso e a altura do seu filho, com o percentil.
+• Doses de paracetamol e ibuprofeno pelo peso, com as marcas vendidas no seu país.
+• Diário de sintomas e a lista «preciso ir ao pronto-socorro?».
+
+FUNCIONA SEM SINAL
+
+Na primeira vez que você abre o app com conexão, ele guarda no celular os números de emergência de 95 países, os sinais de alarme, os calendários de vacinação e as tabelas de crescimento. A partir daí, abre sem sinal e diz o que sabe. Só o chat precisa de internet.
+
+OS SEUS FILHOS, SE QUISER
+
+Você pode criar uma conta gratuita e guardar a data de nascimento de cada filho. Depois pergunta «quais vacinas a Ana precisa tomar?» e ele responde pela idade da Ana. Você pode registrar o peso e a altura, ver a curva e enviar as próximas consultas para a agenda do celular.
+
+A conta é opcional: sem ela tudo funciona igual. O que você guardar pode ser baixado ou apagado quando quiser, dentro do próprio app.
+
+O QUE NÃO FAZ
+
+Não faz diagnósticos. Não substitui o seu pediatra nem o pronto-socorro. Sem anúncios, sem venda de dados, nada a pagar. Se o seu serviço de saúde disser outra coisa, vale o que ele diz.
+
+Cada resposta diz o organismo que o afirma, e a lista completa dos documentos, com o ano e o link, está dentro do app. Você pode conferir.
+```
+
+**Hindi** (2074):
+
+```
+PediBot आपके बच्चे की सेहत से जुड़े सवालों का जवाब प्रकाशित बाल-रोग दिशानिर्देशों के आधार पर देता है, और दिखाता है कि हर जवाब कहाँ से आया है।
+
+यह डॉक्टर नहीं है और बीमारी का निदान नहीं करता। यह वह चीज़ है जो रात के तीन बजे अक्सर नहीं मिलती: बाल-रोग संस्थाएँ और स्वास्थ्य सेवाएँ जो हो रहा है उसके बारे में सच में क्या कहती हैं, आपकी भाषा में, और यह बताते हुए कि कौन कह रहा है।
+
+यह क्या करता है
+
+• आठ भाषाओं में जवाब देता है और 26 स्वास्थ्य संस्थाओं का हवाला देता है; हिंदी में विकासपीडिया (भारत सरकार का पोर्टल) और Immunize.org के हिंदी टीका-सूचना पत्रक।
+• जब आपकी बताई बात किसी ख़तरे के संकेत से मेल खाती है तो चेतावनी देता है, और आपके देश का आपातकालीन नंबर बताता है।
+• 75 देशों की टीकाकरण अनुसूची, आधिकारिक दस्तावेज़ों से उतारी हुई, स्रोत और तारीख़ के साथ।
+• विश्व स्वास्थ्य संगठन के विकास चार्ट: आपके बच्चे का वज़न और लंबाई, पर्सेंटाइल के साथ।
+• वज़न के हिसाब से पैरासिटामोल और आइबुप्रोफ़ेन की ख़ुराक, आपके देश में बिकने वाले ब्रांडों के साथ।
+• लक्षणों की डायरी और «क्या मुझे अस्पताल की इमरजेंसी जाना चाहिए?» सूची।
+
+बिना नेटवर्क के भी चलता है
+
+जब आप इसे पहली बार इंटरनेट के साथ खोलते हैं, तो यह आपके फ़ोन में 95 देशों के आपातकालीन नंबर, ख़तरे के संकेत, टीकाकरण अनुसूचियाँ और विकास तालिकाएँ रख लेता है। उसके बाद यह बिना नेटवर्क के भी खुलता है और बताता है कि उसे क्या पता है। सिर्फ़ चैट को इंटरनेट चाहिए।
+
+आपके बच्चे, अगर आप चाहें
+
+आप मुफ़्त खाता बनाकर हर बच्चे की जन्मतिथि सहेज सकते हैं। फिर आप पूछते हैं «प्रिया को कौन-से टीके लगने हैं?» और यह प्रिया की उम्र के हिसाब से जवाब देता है। आप उसका वज़न और लंबाई लिख सकते हैं, उसका चार्ट देख सकते हैं, और अगली तारीख़ें फ़ोन के कैलेंडर में भेज सकते हैं।
+
+खाता वैकल्पिक है: उसके बिना भी सब कुछ वैसे ही चलता है। जो भी आप सहेजें, उसे ऐप के अंदर से जब चाहें डाउनलोड या मिटा सकते हैं।
+
+यह क्या नहीं करता
+
+यह निदान नहीं करता। यह आपके बाल-रोग डॉक्टर या अस्पताल की इमरजेंसी की जगह नहीं लेता। कोई विज्ञापन नहीं, डेटा की बिक्री नहीं, कोई भुगतान नहीं। अगर आपका स्वास्थ्य केंद्र कुछ और कहे, तो वही सही है।
+
+हर जवाब बताता है कि यह बात कौन-सी संस्था कहती है, और सभी दस्तावेज़ों की पूरी सूची, साल और लिंक के साथ, ऐप में ही है। आप जाँच सकते हैं।
+```
 
 ### Gráfico destacado (1.024 × 500)
 
