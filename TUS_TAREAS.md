@@ -8,6 +8,26 @@
 
 ---
 
+## 1-oct-2026 · dónde estamos
+
+**Hecho hoy por ti:** clave de la app guardada y copiada fuera del PC; nombre «PediBot» libre en
+Google Play; sí a la TWA; ya tienes Android; los 5 recursos viejos del agente ocultos en Virtuals;
+las siete páginas de dosis pedidas en Search Console; la tarjeta de `/es/tools` sale bien en X.
+
+**Lo que queda:**
+1. **Cuenta de Play** (play.google.com/console): personal, 25 $, documento de identidad.
+2. **App «Play Console» en tu Android**, con la misma cuenta: es la verificación del móvil.
+3. **Probar el APK** `D:\Nicolas\pedibot-android\PediBot-1.0.0-prueba.apk` en el Android, también
+   en modo avión.
+4. **Avisarme cuando la cuenta esté verificada**: pongo la huella de Google en la web y subo el
+   AAB a la prueba cerrada.
+5. **La lista de 15 probadores** (Gmail y Android).
+6. **Backable**: este fin de semana (3-4 oct). Cifra: 75.000 $, todo o nada (`ops/BACKABLE.md`).
+
+**Esperando a otros:** HIFA (los siete países sin número de urgencias), Tanzania, la IAP.
+
+---
+
 ## 21-sep-2026 · lo que hiciste hoy y lo que queda
 
 **Hecho, las seis tareas del día:** el correo a CHIFA, la solicitud a Emergent Ventures, las diez
