@@ -249,13 +249,13 @@ rules:
   - tremendo todo
   - revirando os olhos
   - espasmos
-  - दौरा
-  - दौरे
-  - दौरों
+  # «दौरा» es «ataque» en general: el de asma (दमा का दौरा) y la circulación (ख़ून का दौरा)
+  # no son convulsiones (1-oct-2026, tests/test_an_asthma_attack_is_not_a_seizure.py)
+  - "(?<!दमा का )(?<!दमे का )(?<!अस्थमा का )(?<!ख़ून का )(?<!खून का )दौर(?:ा|े|ों)"
   - मिर्गी
   - झटके आ रहे
   - अकड़ गया
-  - daura
+  - "(?<!dama ka )(?<!dame ka )(?<!asthma ka )(?<!khoon ka )(?<!khun ka )daur[ae]"
   - jhatke
   - mirgi
   - fits

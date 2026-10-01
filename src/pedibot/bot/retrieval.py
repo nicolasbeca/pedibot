@@ -12,7 +12,15 @@ from pedibot.bot.llm import LLMProvider
 # El MISMO conversor de guiones que usa el triaje, no una copia: son los dos sitios
 # que leen lo que escribe el padre, y la L65 salió justo de arreglarlo en uno solo.
 from pedibot.bot.triage import _GUIONES
-from pedibot.index.store import READABLE_FALLBACK, Hit, Index, fold, query_terms
+from pedibot.index.store import (
+    _TOKEN,
+    READABLE_FALLBACK,
+    Hit,
+    Index,
+    fold,
+    query_terms,
+    term_matches,
+)
 from pedibot.ingest.classify import Taxonomy
 
 # The Devanagari range is spelled out because Python's `\w` excludes combining vowel signs:
@@ -956,6 +964,35 @@ def _one_readable_up_front(hits: list[Hit], lang: str) -> list[Hit]:
     return hits
 
 
+def _own_language_second(
+    hits: list[Hit], propias: list[Hit], lang: str, topic: str, suyas: list[str]
+) -> list[Hit]:
+    """Un pasaje en la lengua del padre, del mismo tema, sube al segundo puesto (1-oct-2026).
+
+    Con Vikaspedia, la página hindi de la diarrea quedaba en el puesto 12: la pregunta casa con
+    una palabra suya y con las cinco de la expansión inglesa en la página inglesa, y el índice ni
+    la tenía entre sus 30 candidatos. `propias` es una búsqueda aparte, sólo en esa lengua. Sube
+    UNA, la mejor del mismo tema, y el resto se queda en su orden. Si ya hay una entre las tres
+    primeras, o ninguna es del tema, no se toca nada
+    (tests/test_the_parents_own_language_comes_up.py).
+
+    Y del mismo tema no basta: medido sobre la batería del operador, subían la malaria y el dengue
+    de la OMS a la fiebre de un bebé de dos meses en francés y en ruso. La página tiene que tratar
+    de lo que se pregunta: una palabra DEL PADRE (`suyas`, sin la expansión) en su título. La
+    firma «— स्रोत: …» de Vikaspedia no cuenta como título.
+    """
+    if any(h.chunk.lang == lang for h in hits[:3]):
+        return hits
+    ya = {h.chunk.chunk_id for h in hits}
+    for p in propias:
+        titulo = p.chunk.doc_title.split(" — स्रोत:")[0]
+        palabras = [fold(w) for w in _TOKEN.findall(titulo.lower())]
+        de_lo_suyo = any(term_matches(t, palabras) for t in suyas)
+        if p.chunk.topic == topic and de_lo_suyo and p.chunk.chunk_id not in ya:
+            return [*hits[:1], p, *hits[1:]][: max(len(hits), 2)]
+    return hits
+
+
 class Retriever:
     def __init__(
         self,
@@ -1028,6 +1065,17 @@ class Retriever:
             return [], extra
         min_matched = 1 if topic else 3
         good = [h for h in hits if h.matched_terms >= min_matched]
+        if topic and lang in self.thin_langs and good:
+            propias = self.index.search(
+                query,
+                top_k=3,
+                extra_terms=extra,
+                red_flag_boost=red_flag_boost,
+                boost_topic=topic,
+                only_lang=lang,
+            )
+            propias = [h for h in propias if h.matched_terms >= min_matched]
+            good = _own_language_second(good, propias, lang, topic, query_terms(query))
         # NOTE (26-ago-2026): a relevance floor was measured here and REJECTED. Neither an absolute
         # bm25 threshold nor a term-coverage ratio separates "the corpus covers this" from "it does
         # not": legitimate questions match as little as 1 term of 7 (g23) and score 20, while

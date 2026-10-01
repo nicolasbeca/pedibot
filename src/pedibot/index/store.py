@@ -1040,6 +1040,7 @@ class Index:
         boost_topic: str | None = None,
         thin_lang: str | None = None,
         fallback_lang: str | None = None,
+        only_lang: str | None = None,
     ) -> list[Hit]:
         terms = query_terms(query, extra_terms)
         if not terms:
@@ -1054,6 +1055,10 @@ class Index:
         if topic:
             sql += "AND c.topic = ? "
             params.append(topic)
+        if only_lang:
+            # sólo los pasajes de esa lengua: ver `_own_language_second` en bot/retrieval.py
+            sql += "AND json_extract(c.data, '$.lang') = ? "
+            params.append(only_lang)
         sql += "ORDER BY r LIMIT ?"
         params.append(top_k * 5)
         rows = self.con.execute(sql, params).fetchall()

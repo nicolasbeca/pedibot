@@ -66,3 +66,30 @@ def test_a_language_without_a_corpus_is_searched_in_english_as_before() -> None:
     q, lang, _ = visto["busquedas"][0]
     assert lang == "en"
     assert "febbre" not in q
+
+
+def test_surua_finds_the_mmr_sheet_that_says_ukambi() -> None:
+    """La madre escribe «surua»; la hoja de la triple vírica de Immunize.org dice «ukambi».
+
+    Medido el 1-oct: la hoja salía quinta, por detrás de la varicela y la gripe. Contra el índice
+    de verdad, con la misma búsqueda que hace el motor para el suajili.
+    """
+    from pedibot.bot.retrieval import Retriever, Synonyms
+    from pedibot.index.store import Index
+    from pedibot.ingest.classify import Taxonomy
+    from pedibot.settings import get_settings
+
+    s = get_settings()
+    r = Retriever(
+        Index(s.index_db_path),
+        Synonyms(s.config_dir / "synonyms.yaml", s.config_dir / "drugs.yaml"),
+        top_k=6,
+        taxonomy=Taxonomy(s.config_dir / "taxonomia.yaml"),
+    )
+    hits, _ = r.search(
+        f"{PREGUNTA} When does my one-year-old need the measles vaccine?",
+        "sw",
+        push=["measles vaccine", "MMR"],
+    )
+    top = [h.chunk.doc_id for h in hits[:3]]
+    assert any(d in ("cdcvis_sw_mmr", "cdcvis_sw_mmrv") for d in top), top

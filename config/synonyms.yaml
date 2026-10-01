@@ -6945,6 +6945,13 @@ ar:
 # «no tengo fuente» para todo. Las claves son las palabras de una madre, no las
 # del hospital, y van en la forma conjugada porque en suajili lo que cambia es
 # el principio de la palabra y el buscador casa por prefijo.
+#: Suajili → suajili (1-oct-2026). Desde que están las hojas de vacunas de Immunize.org hay
+#: texto en suajili con el que casar, y no siempre usa la palabra de la madre: la hoja de la
+#: triple vírica dice «ukambi» y en Kenia se dice mucho «surua».
+sw:
+  surua: ["ukambi"]
+  ukambi: ["surua"]
+
 sw_en:
   homa: ["fever", "high temperature", "temperature"]
   ana homa: ["fever in children", "high temperature"]
