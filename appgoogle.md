@@ -185,3 +185,26 @@ ir en paralelo con G2 a G5.
 |---|---|---|
 | D-G1 | ¿TWA (25 $, sin código nativo) en vez de Capacitor? | pendiente |
 | D-A1 | Cuenta de Play personal (de `APP.md`) | sí, 19-sep |
+
+## 10. Sin Android en casa (1-oct-2026)
+
+El operador tiene iPhone y no conoce a nadie con Android. Dos cosas distintas:
+
+- **Probar la app nosotros: el emulador del PC, gratis.** Montado en `D:/Nicolas/android-tools`
+  (Android 15 con Play Store, móvil virtual `pedibot35`, aceleración WHPX de Windows; el PC tiene
+  8 GB, justo pero va). Arranque sin ventana y capturas con `adb exec-out screencap -p`. Primera
+  prueba: la app abre **a pantalla completa, sin barra de Chrome** (o sea, `assetlinks.json`
+  funciona) y **sin el botón ♥ Apoyar** (el modo app funciona). Capturas en
+  `D:/Nicolas/pedibot-android/`. Truco: en un Android recién creado Chrome enseña su bienvenida;
+  se salta con `--disable-fre` en `/data/local/tmp/chrome-command-line` y
+  `am set-debug-app --persistent com.android.chrome`.
+- **Lo que el emulador NO cubre, y es obligatorio:** las cuentas personales nuevas tienen que
+  verificar acceso a **un Android físico** (Android 10 o más, sin root) entrando en la app «Play
+  Console» (support.google.com/googleplay/android-developer/answer/14316361). Una sola vez. Y los
+  probadores cuentan con **Android de verdad**: según las guías de 2026, el emulador no cuenta y
+  Google mira si usaron la app. Los probadores **pueden ser desconocidos** (la página oficial
+  propone comunidades y público, no sólo amigos).
+- **Recomendado:** un Android de segunda mano (Android 10+, 40-60 €). Verifica la cuenta, prueba
+  en real y hace de probador. **No pagar los 25 $ antes de saber de dónde sale ese Android.**
+- La contraseña de la clave de subida ya existe (generada, en `LEEME-clave.txt`): el operador sólo
+  tiene que guardarla en su gestor y copiar la carpeta fuera del PC.
