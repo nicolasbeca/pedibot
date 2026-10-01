@@ -8,7 +8,7 @@
   el 29-oct-2021 se pone en todo el país (PIB, PRID 1767478; Gavi). Corregido en las tres dosis y
   en la nota en ocho lenguas (`test_india_pcv_is_nationwide.py`); comprobado en vivo. Se vio al
   preparar el correo a la Indian Academy of Pediatrics.
-- **Borradores en Gmail, esperando el sí del operador:** Paediatric Association of Tanzania
+- **Enviados con su sí (1-oct):** Paediatric Association of Tanzania
   (`info@paed.tz`, leído en paed.tz) y Indian Academy of Pediatrics (`centraloffice@iapindia.org`,
   leído en su página de contacto). Los dos piden revisar las páginas de su país.
 
