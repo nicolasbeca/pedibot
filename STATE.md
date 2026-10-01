@@ -31,10 +31,21 @@
   servidor publicó esta madrugada entran en el repo. README: 697 documentos, 527 guías.
 - **Desplegado y comprobado en vivo:** suajili (rotavirus) contesta en suajili citando la hoja
   de Immunize.org con su PDF; /sources enlaza vikaspedia.in. Suite: 10.877 en verde.
-- **Queda (L248):** en vivo, las preguntas en hindi contestan bien pero todavía no citan
-  Vikaspedia (lactancia: OMS y AEP en castellano; diarrea: OMS en inglés). La página hindi casa
-  con una palabra y la inglesa con las cinco de la expansión. Arreglarlo es tocar el orden de
-  todas las lenguas pequeñas y se mide con la batería entera antes.
+- **La página en la lengua del padre ya llega al modelo** (`_own_language_second`): búsqueda
+  aparte en la lengua pequeña; si un pasaje es del mismo tema y una palabra DEL PADRE está en el
+  título de su documento, sube al segundo puesto. Con sólo «mismo tema» subían la malaria y el
+  dengue a la fiebre de un bebé (27 preguntas de la batería, casi todas a peor); con el título
+  no cambia ninguna de las 2.674, y en hindi la diarrea, el asma, las vacunas, el polio, la
+  neumonía, la lactancia y el recién nacido traen su página de Vikaspedia entre las tres primeras.
+- **Que el modelo la CITE no se ha conseguido (L248).** Medido con el modelo real sobre 229
+  preguntas fuera del castellano y el inglés, dos corridas: v7 la cita 14 de 72 veces. Una regla
+  nueva en el redactor (`answer_v8`, en el repo y NO activada) sube a 20 de 70 pero deja 13 sin
+  fuente frente a 7; ponerla primera en vez de segunda, 17 de 72, dentro del ruido (v7 contra sí
+  misma va de 9 a 14). Se queda v7 y el segundo puesto.
+- **«दमा का दौरा» (crisis de asma) sacaba el aviso de CONVULSIÓN** en hindi, en las dos
+  escrituras: «दौरा» es «ataque» en general. Arreglado con lookbehind en `red_flags.yaml`
+  (`test_an_asthma_attack_is_not_a_seizure.py`); comprobado en vivo. Y «surua»/«ukambi» en un
+  mapa `sw:` de sinónimos: el sarampión en suajili cita ya la hoja de la triple vírica.
 - Ojo al probar el API desde Git Bash: `curl -d` con devanagari llega roto al servidor y el bot
   contesta «clarify» en persa. Probar con Python/httpx.
 

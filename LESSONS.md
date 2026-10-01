@@ -1979,3 +1979,9 @@ Y en la misma ingesta salió un carácter que no se ve: Vikaspedia escribe «द
 dentro, y el tokenizador la partía en dos palabras que no casaban con nada. **Lo que entra se
 comprueba buscándolo como lo buscaría un padre**, no contando trozos: la ingesta decía «ok» en
 las 59.
+
+Segunda parte, el mismo día. Que la página llegue al modelo se arregló (segundo puesto, si una
+palabra del padre está en su título). Que el modelo la CITE, no: una regla nueva en el redactor
+dobló las citas en hindi y dejó a seis padres más sin respuesta, y la v7 contra sí misma variaba
+casi lo mismo que la mejora. **Una mejora más pequeña que el ruido no es una mejora, y para saber
+cuánto es el ruido hay que correr dos veces lo de siempre**, no sólo lo nuevo.
