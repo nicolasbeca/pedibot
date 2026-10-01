@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import json
 import pathlib
 import re
 import sys
@@ -17,6 +18,7 @@ import time
 import httpx
 import yaml
 from bs4 import BeautifulSoup
+from html import escape as html_escape
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 OUT = ROOT / "FUENTES" / "web"
@@ -117,6 +119,18 @@ ORGS = {
         "evidence": "sociedad_cientifica",
         "usage": "citar_solo",
     },
+    # India, en hindi. Permiso por correo de Vikaspedia (C-DAC) del 1-oct-2026: uso no
+    # comercial citando a quien aporta el contenido y con enlace a la página; prefieren un enlace
+    # a Vikaspedia «en los sitios apropiados» y el aviso de que no sustituye al consejo médico.
+    # Al pie de la letra en ops/PERMISOS.md. Quien aporta cada página va en su título
+    # (`vikaspedia_page`), porque el título viaja con la cita a todas partes.
+    "vikaspedia": {
+        "org": "Vikaspedia",
+        "org_full": "Vikaspedia (C-DAC, Government of India)",
+        "license": "Written permission from Vikaspedia (C-DAC), 2026-10-01: non-commercial use, citing the content contributor and the Vikaspedia page (conditions in ops/PERMISOS.md)",
+        "evidence": "organismo_publico",
+        "usage": "publico",
+    },
     "who": {
         "org": "WHO",
         "org_full": "World Health Organization",
@@ -126,8 +140,61 @@ ORGS = {
     },
 }
 
+#: La dirección de Vikaspedia va en devanagari (o en su código hexadecimal), y `doc_id_for`
+#: sacaba de ella una cadena vacía. El doc_id sale del número de página de Vikaspedia.
+VIKASPEDIA_IDS: dict[str, int] = {}
+
+
+def _vk(page_id: int, path: str) -> str:
+    url = f"https://health.vikaspedia.in/viewcontent{path}?lgn=hi"
+    VIKASPEDIA_IDS[url] = page_id
+    return url
+
+
 # (key, url, topic, lang, age_groups)
 WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
+    # ---------------- Vikaspedia (hindi), 1-oct-2026 ----------------
+    # De «बाल स्वास्थ्य» (salud infantil), lo que es para padres. Fuera: los capítulos de manual
+    # de psicología del desarrollo, una recopilación que mezcla un periódico (OneIndia), la de
+    # los hitos (viene de NDTV) y una que la web sirve vacía.
+    # बच्चों में दस्त से होने वाली मौतों से बचाव
+    ("vikaspedia", _vk(5791, "/health/child-health/बच्चों-में-दस्\u200dत-से-होने-वाली-मौतों-से-बचाव"), "digestivo", "hi", ["lactante", "preescolar"]),
+    # बच्चों को होने वाली आम बीमारियॉं
+    ("vikaspedia", _vk(5799, "/health/child-health/92c91a94d91a94b902-91594b-93994b928947-93593e932940-90692e-92c94092e93e93093f92f949902"), "general", "hi", ["todas"]),
+    # शिशु तथा बाल पोषण पर राष्ट्रीय दिशा-निर्देश
+    ("vikaspedia", _vk(6820, "/health/child-health/93693f936941-92492593e-92c93e932-92a94b937923-92a930-93093e93794d91f94d93094092f-92693f93693e-92893f93094d926947936"), "alimentacion", "hi", ["lactante", "preescolar"]),
+    # स्तनपान एवं पोषण
+    ("vikaspedia", _vk(7113, "/health/child-health/93894d92492892a93e928-90f935902-92a94b937923"), "alimentacion", "hi", ["lactante"]),
+    # स्तनपान : स्वास्थ्यवर्द्धक और जीवनरक्षक पहल
+    ("vikaspedia", _vk(7115, "/health/child-health/93894d92492892a93e928-93894d93593e93894d92594d92f93593094d92694d927915-914930-91c94093592893091594d937915-92a939932"), "alimentacion", "hi", ["lactante"]),
+    # दमा
+    ("vikaspedia", _vk(7255, "/health/child-health/adolescent-health"), "respiratorio", "hi", ["todas"]),
+    # प्रतिरक्षण
+    ("vikaspedia", _vk(7354, "/health/child-health/immunization"), "vacunas", "hi", ["todas"]),
+    # पोलियो की  रोकथाम
+    ("vikaspedia", _vk(5583, "/health/child-health/92a94b93293f92f94b/92a94b93293f92f94b-915940-93094b91592593e92e"), "vacunas", "hi", ["lactante", "preescolar"]),
+    # पोलियो के बारे में कुछ आधारभूत सवाल-जबाव
+    ("vikaspedia", _vk(5585, "/health/child-health/92a94b93293f92f94b/92a94b93293f92f94b-915947-92c93e930947-92e947902-91594191b-90692793e93092d942924-93893593e932-91c92c93e935"), "vacunas", "hi", ["lactante", "preescolar"]),
+    # टीकाकरण
+    ("vikaspedia", _vk(5143, "/health/child-health/93094b917-92a94d93092493f93091594d937923/91f94091593e915930923"), "vacunas", "hi", ["lactante", "preescolar"]),
+    # तीव्र श्वसन रोग
+    ("vikaspedia", _vk(5224, "/health/child-health/93094b917-92a94d93092493f93091594d937923/तीव्र-श्\u200dवसन-रोग"), "respiratorio", "hi", ["lactante", "preescolar"]),
+    # राष्ट्रीय टीकाकरण कार्यक्रम: रोग प्रतिरक्षण तालिका
+    ("vikaspedia", _vk(6545, "/health/child-health/93094b917-92a94d93092493f93091594d937923/93093e93794d91f94d93094092f-91f94091593e915930923-91593e93094d92f91594d93092e-93094b917-92a94d93092493f93091594d937923-92493e93293f91593e"), "vacunas", "hi", ["todas"]),
+    # राष्ट्रीय टीकाकरण कार्यक्रम से अलग दिए जाने वाले टीके
+    ("vikaspedia", _vk(6546, "/health/child-health/93094b917-92a94d93092493f93091594d937923/93093e93794d91f94d93094092f-91f94091593e915930923-91593e93094d92f91594d93092e-938947-905932917-92693f90f-91c93e928947-93593e932947-91f940915947"), "vacunas", "hi", ["todas"]),
+    # रोग प्रतिरक्षण के बारे में कुछ सामान्य प्रश्न तथा भ्रांतियां
+    ("vikaspedia", _vk(6614, "/health/child-health/93094b917-92a94d93092493f93091594d937923/93094b917-92a94d93092493f93091594d937923-915947-92c93e930947-92e947902-91594191b-93893e92e93e92894d92f-92a94d93093694d928-92492593e-92d94d93093e90292493f92f93e902"), "vacunas", "hi", ["todas"]),
+    # वैक्सीन्स की प्रभावशीलता, सुरक्षा तथा दुष्प्रभाव
+    ("vikaspedia", _vk(6764, "/health/child-health/93094b917-92a94d93092493f93091594d937923/93594891594d93894092894d938-915940-92a94d93092d93e93593694093292493e-93894193091594d93793e-92492593e-92694193794d92a94d93092d93e935"), "vacunas", "hi", ["todas"]),
+    # सार्वभौमिक टीकाकरण कार्यक्रम : बच्चों व गर्भवती महिलाओं के लिए जीवनरक्षक टीकाकरण
+    ("vikaspedia", _vk(422713, "/health/child-health/सार्वभौमिक-टीकाकरण-कार्यक्रम-बच्चों-व-गर्भवती-महिलाओं-के-लिए-जीवनरक्षक-टीकाकरण"), "vacunas", "hi", ["todas"]),
+    # किशोर मस्तिष्क को समझना: माता-पिता के लिए एक गाइड
+    ("vikaspedia", _vk(421783, "/health/child-health/92694393794d91f93f-91594d93792493f91794d93093894d924-92c91a94d91a94b902-915947-93293f90f-92e93e93094d91792693094d93693f91593e/किशोर-मस्तिष्क-को-समझना-माता-पिता-के-लिए-एक-गाइड"), "crianza", "hi", ["adolescente"]),
+    # बच्चे का शारीरिक और मानसिक विकास
+    ("vikaspedia", _vk(5785, "/health/child-health/92c91a94d91a947-91593e-93693e93094093093f915-914930-92e93e92893893f915-93593f91593e938"), "desarrollo", "hi", ["todas"]),
+    # नवजात शैशवावस्था (जन्म से एक माह तक)
+    ("vikaspedia", _vk(5352, "/health/child-health/93694893693593e93593894d92593e-93693e93094093093f915-92a94793694092f-90f935902-93894d92893e92f93593f915-93593f91593e938/92893591c93e924-93694893693593e93593894d92593e-91c92894d92e-938947-90f915-92e93e939-924915"), "recien_nacido", "hi", ["lactante"]),
     # El prematuro (30-sep-2026): vacunas con la edad real, hitos con la corregida.
     (
         "cavaep",
@@ -2917,7 +2984,64 @@ _DATE_PATTERNS = [
 ]
 
 
+#: La firma al pie de cada página de Vikaspedia: «स्त्रोत:» o «स्रोत:» (las dos grafías), a
+#: principio de línea y con dos puntos, y el nombre en la misma línea o en la siguiente. La
+#: última que haya: «जलस्रोत» (fuente de agua) en mitad del texto no es una firma.
+_VK_FIRMA = re.compile(r"^\s*(?:स्त्रोत|स्रोत|source)\s*[:：]\s*(.*)$", re.I | re.M)
+_JOINERS = str.maketrans("", "", "‌‍")
+
+
+def vikaspedia_page(html: str) -> tuple[str, str, str]:
+    """Una página de Vikaspedia → (HTML limpio para guardar, título, quién aporta el contenido).
+
+    Vikaspedia es una aplicación Next.js: el HTML trae sólo el título y el texto viene dentro del
+    JSON `__NEXT_DATA__`. Se guarda ese contenido envuelto en `<main>` con su título, que es lo
+    que el extractor de HTML sabe leer. Quien aporta el contenido es la última firma
+    «स्रोत: …» del pie; sin firma, la página es de la propia Vikaspedia.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    datos = json.loads(soup.find("script", id="__NEXT_DATA__").string)
+    pagina = datos["props"]["pageProps"]["ssrPageContent"]
+    titulo = " ".join(pagina["title"].translate(_JOINERS).split())
+    contenido = pagina["content"]
+    texto = BeautifulSoup(contenido, "html.parser").get_text("\n", strip=True).translate(_JOINERS)
+    autor = "Vikaspedia"
+    firmas = list(_VK_FIRMA.finditer(texto))
+    if firmas:
+        # la firma puede venir partida en varias etiquetas («WHO», «, », «IAP»): se toma lo que
+        # queda hasta el final; si es largo, es que debajo hay texto, y vale sólo la primera línea
+        resto = texto[firmas[-1].start(1) :].strip()
+        if len(resto) > 250:
+            resto = resto.split("\n")[0]
+        resto = re.sub(r"\s*,\s*", ", ", " ".join(resto.split()))
+        autor = resto.strip(" -–।,") or autor
+    actualizada = pagina.get("updated_at") or pagina.get("created_at")
+    if isinstance(actualizada, (int, float)):
+        actualizada = dt.date.fromtimestamp(actualizada / 1000).isoformat()
+    limpio = (
+        '<!doctype html><html lang="hi"><head><meta charset="utf-8">'
+        f"<title>{html_escape(titulo)}</title>"
+        f'<meta name="pedibot-contributor" content="{html_escape(autor)}">'
+        f'<meta name="pedibot-updated" content="{html_escape(str(actualizada or ""))[:10]}"></head>'
+        f"<body><main><h1>{html_escape(titulo)}</h1>\n{contenido}\n</main></body></html>"
+    )
+    return limpio, titulo, autor
+
+
+def saved_contributor(html: str) -> str | None:
+    m = BeautifulSoup(html, "html.parser").find("meta", attrs={"name": "pedibot-contributor"})
+    return m["content"] if m else None
+
+
+def saved_year(html: str) -> int | None:
+    m = BeautifulSoup(html, "html.parser").find("meta", attrs={"name": "pedibot-updated"})
+    y = re.match(r"(20\d\d)", m["content"]) if m else None
+    return int(y.group(1)) if y else None
+
+
 def doc_id_for(key: str, url: str, lang: str) -> str:
+    if key == "vikaspedia":
+        return f"vikaspedia_{lang}_{VIKASPEDIA_IDS[url]}"
     parts = [p for p in url.rstrip("/").split("/")[3:] if p]
     last = parts[-1].replace(".html", "").replace(".htm", "")
     if (
@@ -2988,6 +3112,8 @@ def main() -> int:
                     r = client.get(url)
                     r.raise_for_status()
                     html = r.text
+                    if key == "vikaspedia":
+                        html, _, _ = vikaspedia_page(html)
                     path.write_text(html, encoding="utf-8")
                     ok += 1
                     time.sleep(args.sleep)
@@ -2997,6 +3123,10 @@ def main() -> int:
                     continue
             title, year = page_meta(html)
             title = TITULOS_CORREGIDOS.get(did, title)
+            if key == "vikaspedia":
+                # condición del permiso: quien aporta el contenido viaja con la cita
+                title = f"{title} — स्रोत: {saved_contributor(html) or 'Vikaspedia'}"
+                year = year or saved_year(html)
             entries.append(
                 {
                     "doc_id": did,

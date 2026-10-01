@@ -1964,3 +1964,18 @@ Lo mismo con el bebé de 20 días: la salvaguarda contra «3 días de fiebre» e
 fuera la forma más corriente de decir la edad de un recién nacido. **Una regla de alarma se
 escribe con las palabras de quien todavía no sabe que es una alarma.** Y cada ampliación se mide
 contra todas las preguntas que hay: 2.790, y cambian ocho.
+
+## L248 · Un permiso mete el documento en el índice, no en la respuesta (1-oct-2026)
+
+Immunize.org y Vikaspedia dijeron que sí el mismo día y entraron 40 documentos: los primeros en
+suajili y los primeros en hindi escritos para padres en la India. El índice los tiene, y aun así
+una pregunta en hindi por la diarrea sigue citando a la OMS en inglés: la página de Vikaspedia,
+que es justo sobre eso, queda en el puesto 12 con la mitad de puntos que la sexta. No es un fallo
+de la ingesta. La pregunta en hindi casa con una sola palabra en la página hindi y con las cinco
+que el buscador añade en inglés en la página inglesa, y el impulso a las lenguas pequeñas (×1,6)
+no compensa un ×2. Antes de hoy no se veía porque no había páginas en hindi que perder.
+
+Y en la misma ingesta salió un carácter que no se ve: Vikaspedia escribe «दस्‍त» con un ZWJ
+dentro, y el tokenizador la partía en dos palabras que no casaban con nada. **Lo que entra se
+comprueba buscándolo como lo buscaría un padre**, no contando trozos: la ingesta decía «ok» en
+las 59.

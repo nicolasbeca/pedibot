@@ -34,7 +34,9 @@ PREGUNTAS: dict[str, str] = {
     "मेरे बच्चे को कुत्ते ने काट लिया, क्या करूँ?": "rabies",
     "क्या मेरे बच्चे को टाइफाइड है?": "typhoid",
     "मेरा बच्चा बहुत दुबला है और वजन नहीं बढ़ रहा": "malnutrition",
-    "मुझे अपने बच्चे को कब तक स्तनपान कराना चाहिए?": "feeding",
+    # 1-oct-2026: desde que está Vikaspedia, la lactancia la contesta su página EN HINDI
+    # (7115, 6820 o 7113), que es mejor respuesta que la ficha inglesa
+    "मुझे अपने बच्चे को कब तक स्तनपान कराना चाहिए?": "feeding|vikaspedia_hi_7115|vikaspedia_hi_6820|vikaspedia_hi_7113",
     "मेरे बच्चे को साँप ने काट लिया": "snakebite",
 }
 
@@ -56,6 +58,6 @@ def test_la_pregunta_hindi_llega_a_su_ficha(buscador: Retriever, pregunta: str):
     hits, _ = buscador.search(pregunta, "hi")
     docs = [h.chunk.doc_id for h in hits[:4]]
     assert docs, f"«{pregunta}» no devuelve NADA, y hay ficha de «{esperado}» indexada"
-    assert any(esperado in d for d in docs), (
+    assert any(e in d for e in esperado.split("|") for d in docs), (
         f"«{pregunta}» no alcanza ninguna ficha de «{esperado}»; devuelve {docs}"
     )

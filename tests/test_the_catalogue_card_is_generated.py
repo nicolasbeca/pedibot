@@ -30,7 +30,9 @@ def _cabecera() -> dict:
 def test_the_generated_card_carries_its_header() -> None:
     d = _cabecera()
     assert d["license"] == "cc0-1.0", d.get("license")
-    assert len(d["language"]) == 8, d.get("language")
+    # 9 desde el 1-oct-2026: las hojas de vacunas de Immunize.org traen el suajili al catálogo
+    assert len(d["language"]) == 9, d.get("language")
+    assert "sw" in d["language"]
     assert d["configs"][0]["data_files"] == "sources.csv", d.get("configs")
     assert "paediatrics" in d["tags"]
 

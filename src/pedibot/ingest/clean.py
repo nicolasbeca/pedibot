@@ -16,8 +16,19 @@ _PAGE_NUM = re.compile(r"^\s*(página\s+)?\d{1,3}(\s*/\s*\d{1,3})?\s*$", re.I)
 _DIGITOS = re.compile(r"\d+")
 
 
+#: El ZWJ y el ZWNJ sólo deciden cómo se dibuja una conjunción devanagari, y el tokenizador
+#: partía «दस्‍त» en «दस्» + «त» (Vikaspedia, 1-oct-2026; tests/test_the_invisible_joiner…).
+_JOINERS = str.maketrans("", "", "‌‍")
+
+
+#: Los caracteres de control que traen algunos PDF (la viñeta de las VIS sale como \x07) acababan
+#: en la cita que ve el padre. Espacio, no nada: «palabra\x07palabra» son dos palabras.
+_CONTROL = re.compile(r"[\x00-\x1f\x7f]")
+
+
 def normalize_line(text: str) -> str:
-    text = text.replace("ﬁ", "fi").replace("ﬂ", "fl")
+    text = text.replace("ﬁ", "fi").replace("ﬂ", "fl").translate(_JOINERS)
+    text = _CONTROL.sub(" ", text)
     text = _WS.sub(" ", text).strip()
     return text
 

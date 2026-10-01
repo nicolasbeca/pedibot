@@ -9,6 +9,7 @@ language:
   - hi
   - pt
   - ru
+  - sw
 tags:
   - paediatrics
   - child-health
@@ -26,7 +27,7 @@ configs:
 
 # Paediatric guidance for parents — an open catalogue
 
-**657 documents from 24 organisations**, in 8 languages, each classified by topic and linked to its original.
+**697 documents from 26 organisations**, in 9 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -57,12 +58,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (269 of 657 do) |
+| `year` | where the document states one (309 of 697 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `usage` | `publico` (607) may be reproduced under its publisher's terms; `citar_solo` (50) may be cited and linked, not reproduced |
-| `url` | link to the original (609 of 657 are online; the rest are books and printed manuals, identified in `notes`) |
+| `usage` | `publico` (666) may be reproduced under its publisher's terms; `citar_solo` (31) may be cited and linked, not reproduced |
+| `url` | link to the original (649 of 697 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -72,10 +73,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | WHO — World Health Organization | 220 |
 | NHS — NHS (National Health Service, England) | 159 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 118 |
-| CDC — Centers for Disease Control and Prevention (USA) | 41 |
+| Immunize.org — Immunize.org — translation of the CDC Vaccine Information Statement | 40 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
 | SEUP — Sociedad Española de Urgencias de Pediatría | 29 |
+| CDC — Centers for Disease Control and Prevention (USA) | 22 |
 | Gouvernement du Canada — Gouvernement du Canada / Government of Canada (santé publique) | 20 |
+| Vikaspedia — Vikaspedia (C-DAC, Government of India) | 19 |
 | Ministério da Saúde — Ministério da Saúde (Brasil) | 14 |
 | AEPap — Familia y Salud — Asociación Española de Pediatría de Atención Primaria | 5 |
 | AAP — American Academy of Pediatrics | 4 |
@@ -104,30 +107,31 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | French (`fr`) | 51 |
 | Russian (`ru`) | 47 |
 | German (`de`) | 30 |
+| hi (`hi`) | 29 |
+| sw (`sw`) | 21 |
 | Portuguese (`pt`) | 14 |
-| hi (`hi`) | 10 |
 
 ## By topic (23 topics)
 
 | topic | documents |
 |---|---|
-| `respiratorio` | 74 |
+| `vacunas` | 81 |
+| `respiratorio` | 76 |
 | `piel` | 73 |
-| `general` | 68 |
-| `digestivo` | 65 |
+| `general` | 69 |
+| `digestivo` | 66 |
 | `accidentes` | 55 |
-| `vacunas` | 51 |
-| `alimentacion` | 39 |
-| `desarrollo` | 37 |
+| `alimentacion` | 42 |
+| `desarrollo` | 38 |
 | `salud_mental` | 22 |
 | `orl` | 19 |
-| `recien_nacido` | 17 |
+| `recien_nacido` | 18 |
 | `neurologia` | 17 |
 | `fiebre` | 17 |
 | `medicamentos` | 16 |
 | `alergia` | 15 |
 | `urgencias` | 14 |
-| `crianza` | 13 |
+| `crianza` | 14 |
 | `ojos` | 12 |
 | `intoxicacion` | 10 |
 | `dental` | 9 |

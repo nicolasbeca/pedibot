@@ -18,6 +18,82 @@ Qué se pide en los dos casos, y qué NO:
 
 ---
 
+## Concedidos — las condiciones que nos han puesto, al pie de la letra
+
+Lo que una fuente nos pide al dar permiso no se cumple de memoria: está aquí, citado del correo,
+y cada condición dice dónde se cumple en el código. Si se toca ese sitio, se relee esto.
+
+### Immunize.org — 30-sep-2026
+
+Kayla Ohlde, Operations Administrator (`admin@immunize.org`, kayla.ohlde@immunize.org), en el
+hilo «Permission request: Swahili VIS translations…». Agradecido el 1-oct.
+
+> Our printable immunization materials at https://www.immunize.org/clinical/a-z/ are
+> copyright-free and we encourage people to use them. If you change a piece, please provide an
+> adapted credit on the document consistent with our guidelines on our web page "Citing
+> Immunize.org," located at https://www.immunize.org/content-review/.
+>
+> Please do not co-brand your organization's name on our educational piece without our express
+> permission to do so in writing. […]
+>
+> As we update our materials frequently, it is best always to check the website to make sure you
+> have the most recent version of a piece.
+>
+> Please credit/attribute it to us and include a link to our website to the full PDF document.
+
+Vale para todas sus traducciones de las VIS, no sólo el suajili (el permiso es de «our printable
+immunization materials»). Condiciones:
+
+1. **Atribuir a Immunize.org y enlazar el PDF completo.** En `config/fuentes.yaml` las 40 hojas
+   (árabe, hindi y suajili) llevan `org: Immunize.org` —hasta el 1-oct decían «CDC», que
+   incumplía esto— y como `url` el PDF de `immunize.org/wp-content/uploads/vis/…`. Además, el
+   encabezado «Immunize.org» de /sources enlaza a https://www.immunize.org/
+   (`web/site/src/components/SourcesTable.astro`, `ORG_HOME`).
+2. **No modificar las hojas; si algún día se adapta una, crédito «adaptado de»** según
+   https://www.immunize.org/content-review/. Hoy no se adapta ninguna: se indexa el texto tal cual.
+   Al pasar a `publico`, las guías de la web pueden apoyarse en ellas citándolas con su enlace,
+   como en cualquier fuente; eso es citar, no publicar una versión cambiada de su hoja. Si algún
+   día se maquetara una hoja suya, aplica el crédito «adaptado de».
+3. **No poner la marca PediBot sobre sus hojas** sin permiso escrito. No se republican sus PDF
+   con nuestro logo; se citan y se enlazan.
+4. **Versión más reciente.** Las actualizan a menudo: al volver a bajar las fuentes, se bajan de
+   su web, nunca de una copia guardada; `notes` del catálogo lleva la fecha del permiso.
+   Comprobado el 1-oct: el texto de las 19 que ya teníamos es idéntico al que publican hoy (los
+   bytes cambian en cada descarga; el texto no). Repetir la comprobación cada pocos meses.
+
+### Vikaspedia (C-DAC) — 1-oct-2026
+
+Equipo de Vikaspedia (`vikaspedia@cdac.in`, con copia a vijayab@cdac.in), en el hilo «Permission
+request: Vikaspedia health content…». Agradecido el 1-oct; en el agradecimiento nos comprometimos
+a las tres cosas y, además, a enlazar Vikaspedia desde la página de fuentes.
+
+> We would be happy to permit the non-commercial use of the health content with proper citation
+> of the source of the content contirbutor and the Vikaspedia page link. It would be preferred if
+> you can also provide a backlink to Vikaspedia at appropriate places. It is also best to include
+> a disclaimer that the information provided is for informational purposes only and does not
+> substitute for professional medical advice, diagnosis or treatment.
+
+Condiciones:
+
+1. **Uso no comercial.** PediBot es gratis, sin anuncios y no vende nada. Si eso cambiara, este
+   permiso no cubre el contenido de Vikaspedia.
+2. **Citar al autor del contenido («content contributor») y enlazar la página de Vikaspedia.**
+   Cada página firma al pie quién la aporta («स्रोत: स्वास्थ्य विभाग, झारखण्ड सरकार»). Ese
+   nombre va en el TÍTULO del documento —«… — स्रोत: <quién>»—, porque el título acompaña a la
+   cita en el chat, en /sources y en el catálogo descargable; `org` es «Vikaspedia» y la `url`
+   es la de la página concreta. Lo hace `vikaspedia_page` en `scripts/fetch_web_sources.py`
+   (`tests/test_vikaspedia_cites_its_contributor.py`). Sin firma al pie, «स्रोत: Vikaspedia».
+3. **Enlace a Vikaspedia «en los sitios apropiados»** (lo prefieren, no lo exigen; en el
+   agradecimiento nos comprometimos a la página de fuentes): el encabezado de Vikaspedia en
+   /sources, en las ocho lenguas, enlaza https://vikaspedia.in/ (`SourcesTable.astro`,
+   `ORG_HOME`; `tests/test_sources_page_links_who_asked.py`).
+4. **Aviso de que la información no sustituye al consejo médico.** Está en el pie de todas las
+   páginas (`footer_legal`) y en la línea legal bajo el chat (`legal_line`, en `i18n.ts`); NO
+   en cada mensaje, por decisión del 25-ago. No se quita mientras haya contenido de
+   Vikaspedia.
+
+---
+
 ## 1. Immunize.org — las 36 hojas de vacunas en suajili
 
 **A:** `admin@immunize.org` (de su página de contacto, 18-sep-2026)

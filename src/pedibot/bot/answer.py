@@ -204,12 +204,20 @@ SUPPORTED_LANGS = ("es", "en", "fr", "de", "ru", "ar", "pt", "hi")
 #: Kisumu que escribe «mtoto wangu ana degedege» recibe el aviso rojo en su lengua, que es la
 #: parte que dice qué hacer y la que no se puede permitir llegar tarde.
 #:
-#: Lo que NO tiene todavía es corpus: no hay ni un documento en suajili con licencia abierta en el
-#: índice, así que la explicación larga y sus fuentes salen en inglés —lengua oficial en Kenia,
-#: Tanzania y Uganda— en vez de en un suajili sin nada detrás que citar. Prometer la respuesta
-#: entera en suajili hoy sería prometer fuentes que no existen, que es justo lo que este proyecto
-#: no hace (L147, L167). Sube a la lista de arriba el día que haya material que citar.
+#: Lo que NO tenía es corpus: ni un documento en suajili con licencia abierta en el índice, así
+#: que la explicación larga y sus fuentes salían en inglés —lengua oficial en Kenia, Tanzania y
+#: Uganda— en vez de en un suajili sin nada detrás que citar (L147, L167). Desde el 1-oct-2026
+#: tiene las hojas de vacunas de Immunize.org (ver CORPUS_LANGS); la web en suajili sigue sin
+#: existir, y por eso no sube a la lista de arriba.
 TRIAGE_LANGS = (*SUPPORTED_LANGS, "sw")
+
+#: Las que tienen documentos propios en el índice aunque la web no las hable (1-oct-2026). El
+#: suajili dejó de estar sin corpus el 30-sep: Immunize.org nos dio permiso para sus hojas de
+#: vacunas traducidas y entraron 21 (ops/PERMISOS.md). Una pregunta en una de estas lenguas se
+#: busca con las palabras del padre Y su reescritura inglesa, y con su lengua, para que el
+#: índice prefiera sus documentos sin dejar de llegar a lo que sólo está en inglés. La web en
+#: suajili —interfaz, guías, calculadoras— es otra decisión y no viene con esto.
+CORPUS_LANGS = ("sw",)
 
 DISCLAIMER = {
     "en": "PediBot gives information from official paediatric guidelines. It is not medical advice and does not replace your paediatrician.",
@@ -2273,7 +2281,10 @@ class Engine:
                 # lengua escribe nadie, y la web ya sabe cuál tiene puesta.
                 if leida.lang_name and leida.lang != lang and len(query.split()) >= 3:
                     answer_lang = leida.lang_name
-                if leida.lang not in SUPPORTED_LANGS and leida.intent == "health":
+                if leida.lang in CORPUS_LANGS and leida.intent == "health":
+                    search_q, search_lang = f"{query} {leida.search_text}", leida.lang
+                    push = [*push, *leida.keywords]
+                elif leida.lang not in SUPPORTED_LANGS and leida.intent == "health":
                     search_q, search_lang = leida.search_text, "en"
                     push = [*push, *leida.keywords]
 

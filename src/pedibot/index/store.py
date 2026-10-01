@@ -735,6 +735,37 @@ STOP = {
     "करना",
     "करूँ",
     "करूं",
+    # 1-oct-2026: con la primera prosa en hindi del índice (Vikaspedia), «करता» sola subía
+    # tres páginas ajenas por encima de la enuresis (tests/test_hindi_helper_verbs_are_not_terms.py)
+    "करता",
+    "करती",
+    "करते",
+    "करें",
+    "करे",
+    "कर",
+    "होते",
+    "होना",
+    "हुआ",
+    "हुई",
+    "हुए",
+    "गए",
+    "गई",
+    "जाती",
+    "जाते",
+    "चाहिए",
+    "सकता",
+    "सकती",
+    "सकते",
+    "अपने",
+    "अपना",
+    "अपनी",
+    "कोई",
+    "कुछ",
+    "जब",
+    "तो",
+    "ने",
+    "इस",
+    "उस",
     "क्या",
     "कौन",
     "कहाँ",
@@ -909,6 +940,8 @@ _LATINA = re.compile(r"[a-zA-Z]")
 def fold(texto: str) -> str:
     """El texto sin las marcas que el índice tampoco guarda."""
     fuera: list[str] = []
+    # el ZWJ/ZWNJ de «दस्‍त» no es parte de la palabra: partía el token (ver ingest/clean.py)
+    texto = texto.replace("‌", "").replace("‍", "")
     for c in unicodedata.normalize("NFD", texto):
         if unicodedata.combining(c):
             if fuera and _LATINA.match(fuera[-1]):
@@ -920,7 +953,7 @@ def fold(texto: str) -> str:
 
 
 def query_terms(query: str, extra: list[str] | None = None) -> list[str]:
-    terms = [fold(t.lower()) for t in _TOKEN.findall(query)]
+    terms = [fold(t.lower()) for t in _TOKEN.findall(fold(query))]
     terms = [t for t in terms if len(t) >= 3 and t not in STOP]
     terms = [ar_stem(t) if _AR.search(t) else t for t in terms]
     for e in extra or []:

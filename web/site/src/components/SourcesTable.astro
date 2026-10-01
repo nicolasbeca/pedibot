@@ -8,10 +8,16 @@ const groups: Record<string, any[]> = {};
 for (const d of docs) (groups[d.org_full || d.org] ??= []).push(d);
 const s = t(lang);
 const usageLabel = (u: string) => (u === 'publico' ? s.src_use_public : s.src_use_ref);
+// Las que nos pidieron un enlace a su web al darnos permiso (1-oct-2026, ops/PERMISOS.md):
+// Vikaspedia, «a backlink to Vikaspedia at appropriate places»; Immunize.org, enlazar su web.
+const ORG_HOME: Record<string, string> = {
+  'Vikaspedia (C-DAC, Government of India)': 'https://vikaspedia.in/',
+  'Immunize.org — translation of the CDC Vaccine Information Statement': 'https://www.immunize.org/',
+};
 ---
 {Object.entries(groups).map(([org, ds]) => (
   <section style="margin-top:32px">
-    <h2 style="font-size:1.2rem">{org} <span class="n">({ds.length})</span></h2>
+    <h2 style="font-size:1.2rem">{ORG_HOME[org] ? <a href={ORG_HOME[org]} target="_blank" rel="noopener">{org}</a> : org} <span class="n">({ds.length})</span></h2>
     <div style="overflow-x:auto"><table class="plain">
       <thead><tr><th>{s.src_col_doc}</th><th>{s.src_col_year}</th><th>{s.src_col_lang}</th><th>{s.src_col_use}</th></tr></thead>
       <tbody>{ds.map((d: any) => <tr><td>{d.url ? <a href={d.url} target="_blank" rel="noopener">{d.title}</a> : d.title}</td><td class="mono">{d.year ?? '—'}</td><td>{d.lang}</td><td>{usageLabel(d.usage)}</td></tr>)}</tbody>

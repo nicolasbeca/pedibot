@@ -120,7 +120,10 @@ def test_catalog_loads_and_covers_all_pdfs(config_dir):
     # lengua. Verificados uno por uno antes de catalogarlos, como manda la L128: entre 77 y
     # 89 % del texto está en su escritura. Van como `citar_solo`: el contenido de base es
     # dominio público (obra del gobierno de EE. UU.) pero la traducción no publica permiso.
-    assert len(pdf_docs) == 72
+    # 93 desde el 1-oct-2026: +21 VIS en suajili, el primer material nativo en suajili. Ese
+    # día las 40 pasaron a `publico`: Immunize.org nos dio permiso por escrito el 30-sep, con
+    # condiciones (ops/PERMISOS.md).
+    assert len(pdf_docs) == 93
     assert len(docs) >= 49 + 150  # + curated web pages (config/fuentes_web.yaml)
     by_file = catalog_by_file(docs)
     assert len(by_file) == len(docs)

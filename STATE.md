@@ -2,6 +2,42 @@
 
 Última actualización: **2026-10-01** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 1-oct-2026 (2) · Immunize.org y Vikaspedia dicen que sí: suajili e hindi con fuentes propias
+
+- **Los permisos y sus condiciones, citados del correo y con dónde se cumple cada una:**
+  `ops/PERMISOS.md`, sección «Concedidos». Agradecidos los dos el 1-oct.
+- **Immunize.org (30-sep):** sus materiales están libres de derechos si se les atribuye con
+  enlace al PDF, sin poner nuestra marca y bajando siempre la versión vigente. Entran **21 VIS en
+  suajili** (las 23 de su página menos zóster y viruela/mpox), y las 19 en árabe e hindi pasan
+  de `citar_solo` a `publico` con `org: Immunize.org` (antes decían «CDC»). El texto de esas 19
+  es idéntico al publicado hoy.
+- **El suajili busca en suajili** (`CORPUS_LANGS` en `answer.py`): la pregunta se busca con las
+  palabras del padre más su reescritura inglesa, en `sw`. Sigue fuera de `SUPPORTED_LANGS`: la
+  web en suajili es otra decisión. Medido: rotavirus y polio pasan a citar su hoja en suajili; la
+  fiebre sigue en el NHS; el sarampión trae su hoja quinta (la VIS dice «ukambi», no «surua»).
+- **Vikaspedia (1-oct):** uso no comercial citando a quien aporta cada página. Entran **19
+  páginas de «बाल स्वास्थ्य»** (diarrea, lactancia, asma, IRA, vacunas, polio, desarrollo).
+  La página es Next.js: `vikaspedia_page` saca el texto del JSON y la firma «स्रोत: …» del pie,
+  que va en el título de la cita. /sources enlaza a vikaspedia.in e immunize.org (`ORG_HOME`).
+- **El ZWJ partía palabras en hindi** («दस्‍त» → «दस्» + «त»): se quita al limpiar y al
+  plegar (`test_the_invisible_joiner_does_not_split_words.py`).
+- **Dos arreglos que sacó la primera prosa en hindi:** faltaban los auxiliares en las palabras
+  vacías («करता» sola subía tres páginas ajenas por encima de la enuresis;
+  `test_hindi_helper_verbs_are_not_terms.py`), y los caracteres de control de los PDF (la viñeta
+  de las VIS, `\x07`) salían en la cita en vivo: se cambian por espacio al limpiar. Estaban en 221
+  pasajes de 48 documentos, reindexados; ahora cero.
+- Immunize.org y Vikaspedia, descritos en las ocho lenguas en la banda de la portada; la ficha
+  del dataset declara 9 lenguas (entra `sw`). Dos guías de asma (fr, hi) que el temporizador del
+  servidor publicó esta madrugada entran en el repo. README: 697 documentos, 527 guías.
+- **Desplegado y comprobado en vivo:** suajili (rotavirus) contesta en suajili citando la hoja
+  de Immunize.org con su PDF; /sources enlaza vikaspedia.in. Suite: 10.877 en verde.
+- **Queda (L248):** en vivo, las preguntas en hindi contestan bien pero todavía no citan
+  Vikaspedia (lactancia: OMS y AEP en castellano; diarrea: OMS en inglés). La página hindi casa
+  con una palabra y la inglesa con las cinco de la expansión. Arreglarlo es tocar el orden de
+  todas las lenguas pequeñas y se mide con la batería entera antes.
+- Ojo al probar el API desde Git Bash: `curl -d` con devanagari llega roto al servidor y el bot
+  contesta «clarify» en persa. Probar con Python/httpx.
+
 ## 1-oct-2026 · las páginas de medicamento, para Google
 
 - **El diagnóstico** (Search Console, 28 días): 1.837 impresiones, 5 clics, posición media 65.
