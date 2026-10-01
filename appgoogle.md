@@ -33,7 +33,7 @@ Lo que se pierde frente a Capacitor, dicho claro: notificaciones locales de vacu
 selector de fotos de Android, que ya abre la cámara) si se ve que hacen falta. Si un día se va a
 Apple, la carcasa de Capacitor de `app/` sigue ahí, sin tocar.
 
-**Propuesta: TWA.** Pendiente del sí del operador (§9, D-G1).
+**Decidido: TWA** (sí del operador, 1-oct; §9, D-G1).
 
 ## 2. Lo que cuesta, entero
 
@@ -183,7 +183,7 @@ ir en paralelo con G2 a G5.
 
 | # | Pregunta | Respuesta |
 |---|---|---|
-| D-G1 | ¿TWA (25 $, sin código nativo) en vez de Capacitor? | pendiente |
+| D-G1 | ¿TWA (25 $, sin código nativo) en vez de Capacitor? | **sí, 1-oct** («si se permite y funciona bien») |
 | D-A1 | Cuenta de Play personal (de `APP.md`) | sí, 19-sep |
 
 ## 9 bis. La ficha y las capturas (1-oct-2026, noche)
@@ -226,3 +226,10 @@ El operador tiene iPhone y no conoce a nadie con Android. Dos cosas distintas:
   en real y hace de probador. **No pagar los 25 $ antes de saber de dónde sale ese Android.**
 - La contraseña de la clave de subida ya existe (generada, en `LEEME-clave.txt`): el operador sólo
   tiene que guardarla en su gestor y copiar la carpeta fuera del PC.
+
+## 11. 1-oct-2026, noche
+
+- **El operador ya tiene un Android.** Se desbloquea G6: abrir la cuenta de Play y verificarla desde ese móvil.
+- **Nombre libre:** buscando «pedibot» en Google Play no sale ninguna app con ese nombre (captura del operador). Lo más parecido es «Pedi Help» (CreaBooSoft), que no se confunde.
+- **Clave de subida guardada** por el operador en su gestor, con copia de la carpeta fuera del PC.
+- Ruso, árabe e hindi de la ficha: sin revisor nativo; el operador da por buenas mis traducciones.
