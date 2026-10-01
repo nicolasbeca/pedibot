@@ -133,13 +133,15 @@ systemctl is-active pedibot-api.service pedibot-telegram.service caddy | tr '\n'
 # The API was restarted a moment ago and takes a few seconds to open its port. A single curl
 # after `sleep 3` raced it: the deploy did everything right and still exited 7 (curl: could not
 # connect), which reads exactly like a failed deploy. Wait for it before calling it broken.
+# 1-oct-2026: con el índice de 56 MB el API tarda 21 s en arrancar y la espera de 20 cortaba un
+# despliegue bueno. Sesenta, con margen.
 OUT=""
-for _ in $(seq 1 20); do
+for _ in $(seq 1 60); do
   OUT=$(curl -s --max-time 3 http://127.0.0.1:8601/api/health || true)
   if [ -n "$OUT" ]; then break; fi
   sleep 1
 done
-if [ -n "$OUT" ]; then echo "$OUT"; else echo "!! el API no responde tras 20 s"; exit 1; fi
+if [ -n "$OUT" ]; then echo "$OUT"; else echo "!! el API no responde tras 60 s"; exit 1; fi
 REMOTE
 # La comprobación del sitio vivo, no solo del proceso. El health del final dice que el API está
 # en pie; esto dice si cada cosa que un padre puede tocar responde, en los ocho idiomas. Son dos

@@ -168,6 +168,10 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   <script type="application/ld+json" set:html={JSON.stringify(org)} />
   {jsonld && <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />}
   <script is:inline>try{if(localStorage.getItem('pedibot_theme')==='night')document.documentElement.classList.add('night')}catch(e){}</script>
+  {/* Modo app (1-oct-2026, appgoogle.md §3): la app de Android abre la web con ?source=android.
+      sessionStorage y no localStorage, porque Chrome comparte el almacenamiento entre la app y
+      el navegador y el modo app se colaría en la web normal. */}
+  <script is:inline>try{var s=sessionStorage;if(location.search.indexOf('source=android')>=0||document.referrer.indexOf('android-app://xyz.pedibot.app')===0)s.setItem('pb-app','android');if(s.getItem('pb-app'))document.documentElement.classList.add('in-app')}catch(e){}</script>
   <!-- del equipo (abrió /admin): se avisa, y ni su sesión ni su IP salen en el panel como lector -->
   <script is:inline>try{if(localStorage.getItem('pedibot_team'))fetch('/api/team',{method:'POST',keepalive:true,headers:{'content-type':'application/json','x-pedibot-client':'test'},body:JSON.stringify({session:localStorage.getItem('pedibot_session')})})}catch(e){}</script>
 </head>

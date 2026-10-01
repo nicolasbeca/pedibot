@@ -1,0 +1,61 @@
+{
+  "packageId": "xyz.pedibot.app",
+  "host": "pedibot.xyz",
+  "name": "PediBot",
+  "launcherName": "PediBot",
+  "display": "standalone",
+  "themeColor": "#A9DED2",
+  "themeColorDark": "#000000",
+  "navigationColor": "#FFFDF9",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#EDE6D8",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#FFFDF9",
+  "enableNotifications": false,
+  "startUrl": "/?source=android",
+  "iconUrl": "https://pedibot.xyz/logo.png",
+  "maskableIconUrl": "https://pedibot.xyz/logo-maskable.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "D:/Nicolas/android-keys/pedibot-upload.keystore",
+    "alias": "pedibot-upload"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [
+    {
+      "name": "Emergency numbers",
+      "shortName": "Emergency",
+      "url": "https://pedibot.xyz/emergency?source=android",
+      "chosenIconUrl": "https://pedibot.xyz/logo-192.png"
+    },
+    {
+      "name": "Vaccination schedule",
+      "shortName": "Vaccines",
+      "url": "https://pedibot.xyz/vaccines?source=android",
+      "chosenIconUrl": "https://pedibot.xyz/logo-192.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://pedibot.xyz/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://pedibot.xyz/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "",
+  "displayOverride": [],
+  "enableLocationDelegation": false,
+  "appVersion": "1.0.0"
+}

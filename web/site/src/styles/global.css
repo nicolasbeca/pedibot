@@ -133,3 +133,10 @@ table.plain td, table.plain th { padding: 8px 6px; border-bottom: 1px solid var(
     transition: none; transform: none;
   }
 }
+
+/* Modo app (1-oct-2026, appgoogle.md §3.2). Dentro de la app de Google Play no se ve lo que Play
+   no admite: pedir dinero por fuera de su cobro (todo enlace a /support) ni los bloques marcados
+   con data-no-app (donaciones, token, el cartel de «la app, en camino»).
+   tests/test_app_mode_hides_what_play_forbids.py */
+html.in-app a[href$="/support"],
+html.in-app [data-no-app] { display: none !important; }

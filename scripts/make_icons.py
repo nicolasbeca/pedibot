@@ -133,6 +133,16 @@ def main() -> int:
     guarda(WEB / "logo-72.png", 72, colores=32)
     # apple-touch-icon no admite transparencia: iOS la pinta de negro
     guarda(WEB / "apple-touch-icon.png", 180, fondo=(255, 255, 255))
+    # 1-oct-2026, la app de Google Play (appgoogle.md): Android recorta los iconos «maskable» en
+    # círculo, gota o cuadrado, y lo que quede fuera del 80 % central se pierde. La cara va al
+    # 70 % sobre el fondo de la web, en 512, que es lo que pide la app.
+    cara = limpio.resize((358, 358), Image.LANCZOS)
+    mascara = Image.new("RGBA", (512, 512), (255, 253, 249, 255))
+    mascara.alpha_composite(cara, ((512 - 358) // 2, (512 - 358) // 2))
+    mascara.convert("RGB").quantize(colors=64, method=Image.Quantize.MEDIANCUT).save(
+        WEB / "logo-maskable.png", optimize=True
+    )
+    hechos.append("web/site/public/logo-maskable.png (512px, maskable)")
     limpio.resize((256, 256), Image.LANCZOS).save(
         WEB / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)]
     )

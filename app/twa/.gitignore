@@ -1,0 +1,16 @@
+# Lo regenera `bubblewrap update` desde twa-manifest.json (appgoogle.md §4)
+app/
+gradle/
+build.gradle
+settings.gradle
+gradle.properties
+gradlew
+gradlew.bat
+.gradle/
+build/
+# lo compilado y los registros (el de build lleva la contraseña)
+*.apk
+*.aab
+*.idsig
+*.log
+*.keystore
