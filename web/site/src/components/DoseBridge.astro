@@ -1,0 +1,44 @@
+---
+/* De las guías de fiebre y dolor a las calculadoras de dosis (30-sep-2026).
+
+   Las páginas de marca son las más buscadas del sitio y, para Google, de las menos importantes:
+   casi nada las enlazaba desde dentro. Search Console las tenía en la página 8-9 («calculadora
+   dalsy», posición 81). Es el mismo puente que ya se hizo el 7-sep entre las guías de vacunas y
+   los calendarios: quien acaba de leer sobre la fiebre busca lo siguiente la dosis de su bote.
+
+   Sólo en las guías cuyo tema es de fiebre, medicamentos, oído-garganta o dientes, y sólo con
+   las marcas que se venden en los países de esa lengua: la guía francesa no enlaza el Apiretal. */
+import topicCategory from '../data/topic_category.json';
+import langCountries from '../data/lang_countries.json';
+import { medicines } from '../dosepages';
+import { t, langPrefix, type Lang } from '../i18n';
+interface Props { lang: Lang; topic: string }
+const { lang, topic } = Astro.props;
+const s = t(lang);
+const CATEGORIAS = new Set(['fiebre', 'medicamentos', 'orl', 'dental']);
+const cat = (topicCategory as Record<string, string>)[topic];
+const paises = new Set((langCountries as Record<string, string[]>)[lang] ?? []);
+const todos = medicines();
+const genericos = todos.filter((m) => !m.isBrand);
+const marcas = todos
+  .filter((m) => m.isBrand && m.countries.some((c) => paises.has(c)))
+  .sort((a, b) => a.name_by[lang].localeCompare(b.name_by[lang], lang));
+const lista = [...genericos, ...marcas];
+const p = langPrefix(lang);
+---
+{CATEGORIAS.has(cat) && lista.length > 0 && (
+  <nav class="dbridge">
+    <h2>{s.nav_dose}</h2>
+    <ul>
+      {lista.map((m) => <li><a href={`${p}/dose/${m.slug_by[lang]}`}>{m.name_by[lang]}</a></li>)}
+    </ul>
+  </nav>
+)}
+<style>
+  .dbridge { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .dbridge h2 { margin: 0 0 10px; font-size: 1.1rem; }
+  .dbridge ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .dbridge a { display: inline-block; padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+    text-decoration: none; font-weight: 600; font-size: .92rem; background: var(--paper); }
+  .dbridge a:hover { border-color: var(--sage); }
+</style>

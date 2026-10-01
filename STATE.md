@@ -1,6 +1,27 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-01** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 1-oct-2026 · las páginas de medicamento, para Google
+
+- **El diagnóstico** (Search Console, 28 días): 1.837 impresiones, 5 clics, posición media 65.
+  `/es/dose/dalsy` indexada y en la posición 81 (página 9); «pedibot» a secas, entre la 4 y la 7.
+  Si «pedibot dosis dalsy» no sale, lo probable es que Google corrija «pedibot» por otra palabra:
+  para él es un nombre que casi nadie busca. Las causas de fondo: dominio de cinco semanas, casi
+  ningún enlace de fuera, tema de salud (lo más exigente) y páginas de marca casi idénticas entre
+  sí (Dalsy, Junifen y Apirofeno, el mismo ibuprofeno, hasta un 97 % de solapamiento).
+- **Cada medicamento dice su concentración como la lee el padre** (`DoseStrengths.astro`):
+  «Dalsy 20 mg/ml o Dalsy 40 mg/ml: no son lo mismo», con los mililitros de 10 kg sacados de
+  su propia tabla. Una marca de una sola concentración se compara con la marca del mismo
+  medicamento que se vende en su país con la más distinta (Apiretal 100 mg/ml frente a Termalgin
+  24 mg/ml: «con los mismos mililitros, uno da 4,2 veces la dosis del otro», sin dirección, porque
+  el peligro está en los dos sentidos). Las búsquedas reales —«dalsy 40»— ya casan con la página.
+- **Las guías de fiebre, medicamentos, oído-garganta y dientes enlazan las calculadoras**
+  (`DoseBridge.astro`), sólo las marcas que se venden en los países de esa lengua: 9 guías por
+  lengua. El mismo puente que el 7-sep se hizo de las guías de vacunas a los calendarios.
+- `test_brand_pages_say_their_strength.py`.
+- **Del operador queda**: pedir «Solicitar indexación» en Search Console de las páginas de marca
+  más buscadas.
 
 ## 30-sep-2026 (noche, 3) · vacunas con el mismo buscador que urgencias
 
@@ -105,10 +126,10 @@
 - **«early» casaba con «ear».** El sinónimo del oído iba por prefijo: «born 6 weeks early»
   devolvía cuatro veces la hoja de otitis. Ahora `ear# STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-01** — **EN PRODUCCIÓN en https://pedibot.xyz**.
  y `ears# STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-09-30** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-01** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 , palabra entera.
 - **Temperatura y lactancia con la madre enferma.** «¿Axila u oído?» y «tengo fiebre yo, ¿sigo
   dando el pecho?» se contestaban citando fichas que no decían lo contestado. Tres páginas del

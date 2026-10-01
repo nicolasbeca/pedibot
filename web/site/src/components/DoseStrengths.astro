@@ -1,0 +1,88 @@
+---
+/* Las concentraciones de un medicamento, dichas como las lee el padre en la caja (30-sep-2026).
+
+   Search Console trae «dosis dalsy 40 calculadora», «calculadora dalsy 40», «calculadora
+   apiretal»… y la página de cada marca decía «suspensión 4 % (200 mg/5 ml)», que nadie escribe.
+   Además, las páginas de marcas de la misma molécula se parecían tanto (hasta un 97 %) que para
+   Google eran copias. Esto es lo que cada una tiene de propio: SUS concentraciones, en mg/ml, y
+   el error de verdad que cabe entre ellas —con los mismos mililitros, la de más mg/ml da más
+   dosis—, con un ejemplo de su propia tabla.
+
+   Ninguna cifra se escribe a mano: mg/ml de `m.forms`, mg y ml de `weightTable`. Si la marca
+   sólo tiene una concentración, se compara con la marca del mismo medicamento que se vende en su
+   país con la concentración más distinta; si no hay ninguna, no sale nada. */
+import { weightTable, formLabel, medicines, type Medicine } from '../dosepages';
+import { t, type Lang } from '../i18n';
+interface Props { m: Medicine; lang: Lang }
+const { m, lang } = Astro.props;
+const s = t(lang);
+const S = s.strengths;
+const name = m.name_by[lang];
+const generic = (m.d.generic[lang] ?? m.d.generic.en) as string;
+const O: Record<string, string> = { en: 'or', es: 'o', fr: 'ou', de: 'oder', ru: 'или', ar: 'أو', pt: 'ou', hi: 'या' };
+const num = (x: number) => x.toLocaleString(lang, { maximumFractionDigits: 1 });
+
+// una entrada por concentración distinta (dos nombres con los mismos mg/ml son la misma)
+type Fila = { nombre: string; mg_per_ml: number; label: string; ml: (fila: { mg: number; ml: string[] }) => string };
+const vistos = new Set<number>();
+let formas: Fila[] = m.forms
+  .map((f, i) => ({ nombre: name, mg_per_ml: f.mg_per_ml, label: f.label, ml: (r: { ml: string[] }) => r.ml[i] }))
+  .filter((f) => (vistos.has(f.mg_per_ml) ? false : (vistos.add(f.mg_per_ml), true)))
+  .sort((a, b) => a.mg_per_ml - b.mg_per_ml);
+
+// Una marca con UNA concentración: el riesgo es el bote de otra marca del mismo medicamento que
+// se vende al lado y tiene otra (Apiretal, gotas de 100 mg/ml, frente a los jarabes de 24 mg/ml).
+// Se compara con la más distinta de las que comparten país con ella.
+let otra: { nombre: string; mg_per_ml: number } | null = null;
+if (formas.length === 1 && m.isBrand) {
+  const mia = formas[0].mg_per_ml;
+  const cands = medicines()
+    .filter((o) => o.key === m.key && o.isBrand && o.slug !== m.slug && o.countries.some((c) => m.countries.includes(c)))
+    .flatMap((o) => o.forms.map((f) => ({ nombre: o.name_by[lang], mg_per_ml: f.mg_per_ml, label: f.label })))
+    .filter((c) => c.mg_per_ml !== mia)
+    .sort((a, b) => Math.max(b.mg_per_ml / mia, mia / b.mg_per_ml) - Math.max(a.mg_per_ml / mia, mia / a.mg_per_ml));
+  if (cands.length) {
+    const c = cands[0];
+    otra = c;
+    formas = [...formas, { nombre: c.nombre, mg_per_ml: c.mg_per_ml, label: c.label,
+      // los mismos mg de la tabla, en el bote de la otra marca, redondeando igual que weightTable
+      ml: (r: { mg: number }) => String(Math.floor((r.mg / c.mg_per_ml) * 10) / 10) }];
+  }
+}
+const hay = formas.length >= 2;
+const lo = hay ? Math.min(...formas.map((f) => f.mg_per_ml)) : 0;
+const hi = hay ? Math.max(...formas.map((f) => f.mg_per_ml)) : 0;
+const nombres = formas.map((f) => `${f.nombre} ${num(f.mg_per_ml)} mg/ml`);
+const lista = nombres.length > 1 ? `${nombres.slice(0, -1).join(', ')} ${O[lang] ?? 'or'} ${nombres[nombres.length - 1]}` : nombres[0];
+// el ejemplo, con el peso de 10 kg de su propia tabla (el más buscado, ver DoseFaq)
+const tabla = weightTable(m);
+const fila = hay ? tabla.find((r) => r.kg === 10) ?? tabla[0] : null;
+const mine = formas[0]?.mg_per_ml ?? 0;
+const fill = (x: string) => x.replaceAll('{list}', lista).replaceAll('{name}', name).replaceAll('{n}', String(formas.length))
+  .replaceAll('{hi}', num(hi)).replaceAll('{lo}', num(lo)).replaceAll('{x}', num(hi / lo)).replaceAll('{generic}', generic.toLowerCase())
+  .replaceAll('{mine}', num(mine)).replaceAll('{other}', otra?.nombre ?? '').replaceAll('{their}', num(otra?.mg_per_ml ?? 0));
+---
+{hay && fila && (
+  <section class="str card">
+    <h2>{fill(S.h)}</h2>
+    <p>{fill(otra ? S.p2 : S.p)}</p>
+    <p class="ex">{S.ex.replace('{kg}', String(fila.kg)).replace('{mg}', String(fila.mg))}</p>
+    <ul>
+      {formas.map((f) => (
+        <li><span>{f.nombre} {num(f.mg_per_ml)} mg/ml <small>({formLabel(f.label, lang)})</small></span><b>{f.ml(fila)} ml</b></li>
+      ))}
+    </ul>
+    <p class="check">⚠️ {S.check}</p>
+  </section>
+)}
+<style>
+  .str { margin-top: 24px; }
+  .str h2 { margin: 0; font-size: 1.2rem; }
+  .str p { margin: 8px 0 0; }
+  .str .ex { font-weight: 700; margin-top: 14px; }
+  .str ul { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; }
+  .str li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 10px; border-radius: 10px; background: var(--cream); }
+  .str li small { color: var(--ink-3); }
+  .str li b { font-family: 'JetBrains Mono', ui-monospace, monospace; white-space: nowrap; }
+  .str .check { background: var(--amber-soft); border-radius: 10px; padding: 10px 12px; margin-top: 12px; font-size: .92rem; }
+</style>
