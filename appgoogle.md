@@ -186,6 +186,24 @@ ir en paralelo con G2 a G5.
 | D-G1 | ¿TWA (25 $, sin código nativo) en vez de Capacitor? | pendiente |
 | D-A1 | Cuenta de Play personal (de `APP.md`) | sí, 19-sep |
 
+## 9 bis. La ficha y las capturas (1-oct-2026, noche)
+
+- **Ficha revisada** en `app/TIENDAS.md` §2: cifras releídas de `DATOS.md` (75 calendarios, 95
+  países, 26 organismos); «sin cobertura» dicho como funciona en la TWA; y fuera una promesa que
+  no era verdad («todas las respuestas llevan la fuente con su año y su enlace»: el chat nombra al
+  organismo y la lista de documentos está en /sources). Formulario de datos completado con el
+  identificador de la conversación y el recuento de visitas; respuestas de la declaración de
+  salud y del cuestionario IARC escritas para pegar.
+- **Gráfico destacado** 1024 × 500: `app/assets/play-feature-1024x500.png`, de `make_icons.py`.
+- **Cinco capturas** del emulador en `app/assets/play-screens/` (lista en `TIENDAS.md` §4).
+- **Un fallo de verdad, encontrado al hacer la captura sin red:** la app abre las páginas con
+  `?source=android` y el service worker buscaba la dirección exacta, así que `/emergency`, guardada
+  al instalar, salía como «sin conexión». Arreglado en `sw.js` (`ignoreSearch` al buscar sin red,
+  la portada guardada al instalar y la caché a `pedibot-v3`), desplegado y comprobado en modo
+  avión. `tests/test_offline_survives_the_app_mark.py`.
+- Falta: traducir la descripción larga a las otras seis lenguas (después de que el operador lea
+  la española y la inglesa) y las capturas en otros idiomas si se quiere.
+
 ## 10. Sin Android en casa (1-oct-2026)
 
 El operador tiene iPhone y no conoce a nadie con Android. Dos cosas distintas:

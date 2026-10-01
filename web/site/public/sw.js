@@ -21,7 +21,7 @@
  */
 
 //: Se sube la versión para invalidar todo lo guardado. Al activarse, las demás se borran.
-const VERSION = 'pedibot-v2';
+const VERSION = 'pedibot-v3';
 
 //: Lo que se guarda al instalar, sin esperar a que nadie lo visite. No es la web entera: es lo
 //: que un padre sin cobertura necesita abrir **aunque nunca haya entrado ahí**.
@@ -30,6 +30,9 @@ const VERSION = 'pedibot-v2';
 //: y eso deja fuera justo el caso que importa: alguien instala el sitio un martes con wifi y el
 //: viernes, sin saldo y a las tres de la mañana, busca el número de su país por primera vez.
 const CIMIENTOS = [
+  // 1-oct-2026: la portada también. La app de Android arranca en ella y, sin red la primera vez
+  // que alguien la abre después de instalarla, tiene que abrir.
+  '/',
   '/offline',
   '/emergency',
   '/vaccines',
@@ -99,7 +102,9 @@ self.addEventListener('fetch', (e) => {
           return fresca;
         } catch (err) {
           // sin red: primero esta misma página si ya se vio, luego la de «sin conexión»
-          const guardada = await caches.match(req);
+          // ignoreSearch (1-oct-2026): la app de Android abre las páginas con ?source=android
+          // y lo guardado al instalar no lleva marca; sin esto, /emergency no aparecía sin red.
+          const guardada = (await caches.match(req)) || (await caches.match(req, { ignoreSearch: true }));
           if (guardada) return guardada;
           const aviso = await caches.match('/offline');
           if (aviso) return aviso;

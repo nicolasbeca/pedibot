@@ -26,6 +26,16 @@
 
 ## 2. Google Play
 
+> **1-oct-2026: revisada para la app que de verdad se publica**, la TWA de `appgoogle.md` (la web
+> abierta por Chrome, no la carcasa de Capacitor de septiembre). Cambia: las cifras (releídas de
+> `DATOS.md`: 75 calendarios, 95 países con número, 26 organismos), lo de «sin cobertura» (lo
+> guarda la web la primera vez que se abre con conexión, no viene dentro del paquete) y el
+> formulario de datos (faltaban el identificador de la conversación y el recuento de visitas).
+> Y una frase que no era verdad: «todas las respuestas llevan la fuente, con su año y su enlace».
+> Desde el 25-ago el chat nombra al organismo dentro del texto y no enseña lista de fuentes; los
+> documentos con su año y su enlace están en /sources. Google revisa que la ficha diga lo que
+> hace la app, así que se dice lo que hace.
+
 ### Nombre de la app (30 caracteres)
 
 ```
@@ -78,25 +88,25 @@ Respostas pediátricas com fontes, vacinas e urgências. Grátis e sem ligação
 
 ### Descripción completa (4.000 caracteres)
 
-**Español** (1912):
+**Español** (1998):
 
 ```
 PediBot contesta preguntas sobre la salud de tu hijo con lo que dicen las guías pediátricas publicadas, y te enseña de dónde sale cada respuesta.
 
-No es un médico y no diagnostica. Es la parte que suele faltar a las tres de la mañana: qué dicen las sociedades pediátricas y los servicios de salud sobre lo que te está pasando, dicho en tu idioma y con el enlace al documento original al lado.
+No es un médico y no diagnostica. Es la parte que suele faltar a las tres de la mañana: qué dicen las sociedades pediátricas y los servicios de salud sobre lo que te está pasando, dicho en tu idioma y nombrando quién lo dice.
 
 QUÉ HACE
 
-• Responde en ocho idiomas citando a la SEUP, la AEP, el NHS, los CDC, la OMS y otras dos docenas de organismos.
+• Responde en ocho idiomas citando a 26 organismos, entre ellos la SEUP, la AEP, el NHS, los CDC y la OMS.
 • Avisa cuando lo que cuentas encaja con un signo de alarma, y te da el número de emergencias de tu país.
-• Calendario de vacunas de 61 países, transcrito de los documentos oficiales, con su fuente y su fecha.
+• Calendario de vacunas de 75 países, transcrito de los documentos oficiales, con su fuente y su fecha.
 • Curvas de crecimiento de la OMS: peso y talla de tu hijo, con su percentil.
 • Calculadora de dosis de paracetamol e ibuprofeno por peso, con las marcas de tu país.
 • Diario de síntomas y lista de «¿tengo que ir a urgencias?».
 
 FUNCIONA SIN COBERTURA
 
-Los números de emergencia de 88 países, los signos de alarma, los calendarios de vacunas y las tablas de crecimiento están dentro de la app. Sin conexión abre igual y te dice lo que sabe. Sólo el chat necesita red.
+La primera vez que la abres con conexión, guarda en el teléfono los números de emergencia de 95 países, los signos de alarma, los calendarios de vacunas y las tablas de crecimiento. Desde entonces abre sin cobertura y te dice lo que sabe. Sólo el chat necesita red.
 
 TUS HIJOS, SI QUIERES
 
@@ -108,28 +118,28 @@ LO QUE NO HACE
 
 No diagnostica. No sustituye a tu pediatra ni a urgencias. No tiene anuncios, no vende datos y no pide dinero. Si tu centro de salud dice otra cosa, tu centro de salud tiene razón.
 
-Todas las respuestas llevan la fuente, con su año y su enlace. Puedes comprobarlas.
+Cada respuesta dice qué organismo lo dice, y la lista completa de documentos, con su año y su enlace, está en la propia app. Puedes comprobarlo.
 ```
 
-**Inglés** (1957):
+**Inglés** (2048):
 
 ```
 PediBot answers questions about your child's health using published paediatric guidance, and shows you where every answer comes from.
 
-It is not a doctor and it does not diagnose. It is the part that tends to be missing at three in the morning: what the paediatric societies and health services actually say about what is happening, in your language, with the link to the original document beside it.
+It is not a doctor and it does not diagnose. It is the part that tends to be missing at three in the morning: what the paediatric societies and health services actually say about what is happening, in your language, naming who says it.
 
 WHAT IT DOES
 
-• Answers in eight languages, quoting the NHS, the CDC, the WHO, the AAP, Spanish and French paediatric societies and two dozen more.
+• Answers in eight languages, quoting 26 health bodies, among them the NHS, the CDC, the WHO, the AAP and the Spanish paediatric societies.
 • Warns you when what you describe matches a red flag, and gives you your country's emergency number.
-• Vaccination schedules for 61 countries, transcribed from the official documents, with source and date.
+• Vaccination schedules for 75 countries, transcribed from the official documents, with source and date.
 • WHO growth charts: your child's weight and height, with percentile.
 • Paracetamol and ibuprofen dosing by weight, with the brands sold in your country.
 • Symptom diary and a "should I go to A&E?" checklist.
 
 IT WORKS WITHOUT A SIGNAL
 
-Emergency numbers for 88 countries, the red-flag checklist, the vaccination schedules and the growth tables are inside the app. With no connection it still opens and tells you what it knows. Only the chat needs the network.
+The first time you open it with a connection, it keeps on your phone the emergency numbers for 95 countries, the red-flag checklist, the vaccination schedules and the growth tables. From then on it opens with no signal and tells you what it knows. Only the chat needs the network.
 
 YOUR CHILDREN, IF YOU WANT
 
@@ -141,7 +151,7 @@ WHAT IT DOES NOT DO
 
 It does not diagnose. It does not replace your paediatrician or the emergency department. No ads, no data selling, no payments. If your health service says something different, your health service is right.
 
-Every answer carries its source, with the year and the link. You can check it.
+Every answer names the body that says it, and the full list of documents, with their year and link, is inside the app. You can check it.
 ```
 
 > Las otras seis lenguas salen de traducir **estos dos**, no de escribirlos otra vez: la ficha
@@ -150,8 +160,9 @@ Every answer carries its source, with the year and the link. You can check it.
 
 ### Gráfico destacado (1.024 × 500)
 
-Se genera con `scripts/make_og_image.py` cambiando el tamaño: el mismo logo y la misma frase que
-la tarjeta de compartir, que ya está aprobada por el operador. **Pendiente.**
+**Hecho el 1-oct-2026:** `app/assets/play-feature-1024x500.png`. Es la tarjeta de compartir (ya
+aprobada por el operador) reencuadrada; la saca `scripts/make_icons.py` junto con los iconos, así
+que si cambia el logo cambia con él.
 
 ### Formulario «Data safety»
 
@@ -163,9 +174,17 @@ Lo que hay que marcar, y por qué. Esto no se improvisa el día del envío:
 | Personal info → Email address | Recogido · obligatorio sólo si el usuario crea cuenta · para gestionar la cuenta · **no compartido** |
 | Personal info → Name | Recogido (el nombre del hijo, que lo escribe el usuario) · opcional · funcionalidad de la app · **no compartido** |
 | Health and fitness → Health info | Recogido (la pregunta del chat, el peso y la talla) · para funcionalidad de la app · **compartido con un proveedor de modelo de lenguaje** para redactar la respuesta |
+| Device or other IDs | Recogido (el identificador de la conversación que el chat guarda en el teléfono para unir una pregunta con la siguiente) · funcionalidad de la app · **no compartido** |
+| App activity → App interactions | Recogido (páginas vistas y si una respuesta fue útil; las visitas se cuentan con una huella de IP y navegador sacada del registro del servidor, sin herramienta de terceros) · **analítica** · **no compartido** |
 | ¿Cifrado en tránsito? | Sí, todo por HTTPS |
-| ¿Se puede pedir el borrado? | **Sí**, desde la propia app, sin escribirnos |
+| ¿Se puede pedir el borrado? | **Sí**, desde la propia app, sin escribirnos (cuenta, hijos y medidas) |
 | ¿Hay publicidad o analítica de terceros? | No |
+
+> 1-oct-2026: añadidas las dos filas de arriba. En septiembre se declaraba sólo correo, nombre y
+> salud, y la app guarda además el identificador de la conversación y cuenta visitas. Google
+> pide declarar también lo que se recoge para uso propio, aunque no salga del servidor.
+> Pendiente de confirmar al rellenarlo: si Google pide declarar la IP del registro del servidor
+> como dato aparte; hoy sólo se usa para contar visitantes, cifrada en una huella.
 
 ### Declaración de app de salud
 
@@ -173,10 +192,27 @@ Categoría: **información de salud**, no app clínica. PediBot transcribe y cit
 no diagnostica, no mide nada con los sensores del teléfono y no sustituye a un profesional. La
 página `https://pedibot.xyz/legal` lo dice con esas palabras y en los ocho idiomas.
 
+En el formulario de Play («Health apps»), la casilla que encaja es **«Health & fitness → Medical
+reference and education»** (información y referencia médica). NO marcar «diagnóstico», «gestión
+de enfermedades» ni «dispositivo médico». Si pide aviso legal: «PediBot provides general
+information from published paediatric guidelines. It is not medical advice, does not diagnose,
+and does not replace your paediatrician.» (es el `footer_legal` de la web, palabra por palabra).
+
 ### Clasificación por edad (IARC)
 
 Hay «información médica o de tratamiento» → sale una edad recomendada más alta. No es un
 problema: es una casilla y hay que responderla como es.
+
+Respuestas del cuestionario, para no improvisarlas:
+
+| Pregunta | Respuesta |
+|---|---|
+| Categoría | **Referencia, noticias o educación** (no «juego», no «red social») |
+| Violencia, sexo, lenguaje, drogas, apuestas | **No** a todo |
+| ¿Los usuarios pueden interactuar o intercambiar contenido entre ellos? | **No** (el chat es con PediBot; nadie ve lo de otro) |
+| ¿Comparte la ubicación del usuario? | **No** (el país lo elige el usuario; no se pide la ubicación) |
+| ¿Permite compras digitales? | **No** |
+| ¿Contiene información médica o de tratamiento? | **Sí** |
 
 ---
 
@@ -245,7 +281,24 @@ Test account, if you want one: (crear una en la propia app; no hay verificación
 
 ---
 
-## 4. Las capturas, que son lo que falta
+## 4. Las capturas
+
+> **Google Play, hechas el 1-oct-2026** en el emulador (Android 15, 1080 × 2400), con la app de
+> verdad instalada, en inglés. En `app/assets/play-screens/`, en este orden:
+>
+> 1. `play-0-chat.png` — el chat contestando una fiebre de 39 en un niño de 2 años, nombrando a
+>    la SEUP.
+> 2. `play-1-urgencias.png` — urgencias de Kenia: 999, de dónde sale el número y los signos de
+>    alarma.
+> 3. `play-2-vacunas.png` — el calendario de Kenia por edades.
+> 4. `play-3-dosis.png` — la calculadora: Calpol para 14 kg, en mg y en ml por concentración, con
+>    la guía de la AEPap citada.
+> 5. `play-5-sin-red.png` — **en modo avión** (se ve el avión arriba): el buscador de urgencias
+>    con el número del país. Es la que dice que esto es una app y no una web.
+>
+> Los ceros salen tachados («1Ø»): es la tipografía Atkinson Hyperlegible, hecha para baja visión,
+> que tacha el cero a propósito. Igual que en la web; no es un fallo. Lo de abajo es el plan de
+> septiembre, para cuando se haga la versión de iPhone.
 
 Cinco por plataforma, en este orden, y hay que hacerlas **con la app funcionando**, no montadas:
 

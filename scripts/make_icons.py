@@ -171,6 +171,13 @@ def main() -> int:
         hechos.append(
             f"{destino.relative_to(RAIZ)} (1200x630, {destino.stat().st_size / 1024:.1f} kB)"
         )
+    # 1-oct-2026: el gráfico destacado de Google Play (1024 × 500, appgoogle.md). Es la misma
+    # tarjeta reencuadrada: a 1024 de ancho mide 538 de alto y se recortan 18 px arriba y 20
+    # abajo, donde sólo hay fondo; la línea del pie queda a 30 px del borde.
+    alta = tarjeta.resize((1024, 538), Image.LANCZOS)
+    destacado = alta.crop((0, 18, 1024, 518))
+    destacado.convert("RGB").save(APP / "play-feature-1024x500.png", optimize=True)
+    hechos.append("app/assets/play-feature-1024x500.png (1024x500)")
 
     print(f"{len(hechos)} ficheros desde {ORIGEN.name}:")
     for h in hechos:
