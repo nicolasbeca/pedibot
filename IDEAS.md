@@ -622,6 +622,11 @@ Lo que hay, mirado el 30-sep-2026 (ninguno pide pagar):
    servido en `pedibot.xyz/mcp`. El nombre se verifica con el dominio o con GitHub. Directorios
    como PulseMCP y Glama copian el registro solos. **Es el que se recomendó**: una pieza, muchos
    escaparates.
+   **Decidido por el operador el 1-oct-2026: se hace, empezando el 2-oct.** «Crear el agente en
+   MCP para vincularlo con IA genéricas.» Regime ya lo hizo el 1-oct (`feed.regimetoken.xyz/mcp`,
+   registro `xyz.regimetoken/regime`, medido en el informe semanal): copiar el camino. Las
+   herramientas, las mismas del agente de ACP, leyendo los mismos ficheros, para que los dos
+   canales no puedan dar cifras distintas; servicio aparte de la API; medirlo en el informe.
 2. **Registro A2A** — https://www.a2a-registry.org/ . Pide la ficha del agente en
    `/.well-known/agent.json`. Un fichero pequeño; iría con lo anterior.
 3. **Agentverse (Fetch.ai)** — https://www.fetch.ai/agentverse . El más grande (millones de

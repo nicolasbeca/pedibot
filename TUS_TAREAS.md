@@ -24,6 +24,10 @@ las siete páginas de dosis pedidas en Search Console; la tarjeta de `/es/tools`
 5. **La lista de 15 probadores** (Gmail y Android).
 6. **Backable**: este fin de semana (3-4 oct). Cifra: 75.000 $, todo o nada (`ops/BACKABLE.md`).
 
+**Mío, el 2-oct:** el servidor MCP de PediBot, para que Claude, ChatGPT y otros asistentes usen sus
+herramientas (`IDEAS.md`, «Registro oficial de MCP»). Hoy, sincronizados los 8 servicios del
+agente en Virtuals.
+
 **Esperando a otros:** HIFA (los siete países sin número de urgencias), Tanzania, la IAP.
 
 ---
