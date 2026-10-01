@@ -280,3 +280,12 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 > - Candidatos vistos para otra ronda: ABC Sevilla (`sevilla@abc.es`, sólo en un registro de
 >   empresas, sin verificar en su web), El Correo de Andalucía, Cadena SER Sevilla, Global Health
 >   NOW (Johns Hopkins; acepta ideas, pero su web bloquea la lectura y no se ve la dirección).
+
+> **1-oct-2026:**
+> - **Immunize.org y Vikaspedia dicen que sí** (condiciones en `ops/PERMISOS.md`); agradecidos.
+> - **Neil (HIFA)** confirma que el segundo mensaje se distribuyó el 30-sep. No se le contesta
+>   hasta que haya respuestas en la lista.
+> - **Borradores, esperando el sí del operador:** Paediatric Association of Tanzania
+>   (`info@paed.tz`; la de Gmail que da el buscador no sale en su web) y Indian Academy of
+>   Pediatrics (`centraloffice@iapindia.org`). Revisión de las páginas de su país; a la IAP, además,
+>   si tiene un calendario para padres que se pueda enlazar junto al del gobierno.

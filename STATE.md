@@ -2,6 +2,16 @@
 
 Última actualización: **2026-10-01** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 1-oct-2026 (3) · el neumococo es nacional en la India
+
+- La página de la India decía «PCV (selected states only)», copiado del PDF del NHM de 2018. Desde
+  el 29-oct-2021 se pone en todo el país (PIB, PRID 1767478; Gavi). Corregido en las tres dosis y
+  en la nota en ocho lenguas (`test_india_pcv_is_nationwide.py`); comprobado en vivo. Se vio al
+  preparar el correo a la Indian Academy of Pediatrics.
+- **Borradores en Gmail, esperando el sí del operador:** Paediatric Association of Tanzania
+  (`info@paed.tz`, leído en paed.tz) y Indian Academy of Pediatrics (`centraloffice@iapindia.org`,
+  leído en su página de contacto). Los dos piden revisar las páginas de su país.
+
 ## 1-oct-2026 (2) · Immunize.org y Vikaspedia dicen que sí: suajili e hindi con fuentes propias
 
 - **Los permisos y sus condiciones, citados del correo y con dónde se cumple cada una:**
