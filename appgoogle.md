@@ -118,10 +118,10 @@ Android barato de verdad, no en el emulador.
 | # | Qué | Quién | Coste |
 |---|---|---|---|
 | G1 | Este documento y la decisión TWA | yo / operador decide | 0 |
-| G2 | Modo app en la web, con su prueba, y desplegado | yo | 0 |
-| G3 | Herramientas en este PC (JDK 17, SDK) y `twa-manifest.json` | yo | 0 |
-| G4 | Clave de subida y primer AAB compilado | yo (la contraseña la elige el operador) | 0 |
-| G5 | `assetlinks.json` en la web | yo | 0 |
+| G2 | Modo app en la web, con su prueba, y desplegado | yo — **hecho 1-oct** | 0 |
+| G3 | Herramientas en este PC (JDK 17, SDK) y `twa-manifest.json` | yo — **hecho 1-oct** | 0 |
+| G4 | Clave de subida y primer AAB compilado | yo — **hecho 1-oct** (contraseña en `LEEME-clave.txt`) | 0 |
+| G5 | `assetlinks.json` en la web | yo — **hecho 1-oct** (falta la huella de Play) | 0 |
 | G6 | Abrir la cuenta de Play y verificarla | **operador** | **25 $** |
 | G7 | Lista de 15 probadores | **operador** | 0 |
 | G8 | Ficha, capturas, formularios | yo, y el operador los pega en la consola | 0 |
@@ -149,6 +149,35 @@ ir en paralelo con G2 a G5.
   regla de oro. Comprobado: el manifiesto web ya sirve para la TWA (standalone, icono de 512,
   atajos); falta `assetlinks.json` (da 404). En este PC hay Node 24 y Java 8; Bubblewrap pide JDK
   17 y el SDK de Android, gratis.
+- **1-oct-2026, tarde. Primera versión compilada (G2 a G5 hechos).**
+  - **Modo app (G2), desplegado:** guion en la cabecera de todas las páginas
+    (`layouts/Base.astro`), regla en `styles/global.css` que esconde todo enlace a `/support` y lo
+    marcado `data-no-app` (cartel de la app, bloque de apoyo de la portada, donaciones).
+    `tests/test_app_mode_hides_what_play_forbids.py`. Fuera de /support y /memo no hay token ni
+    direcciones; /memo no se enlaza desde ninguna página.
+  - **Herramientas (G3), gratis, fuera del repo:** `D:/Nicolas/android-tools` (JDK 17 Temurin, SDK
+    con plataforma 36 y build-tools 36.1.0, que es la que pide Bubblewrap 1.25). Configuración de
+    Bubblewrap en `~/.bubblewrap/config.json`. Tres trampas: Bubblewrap busca `sdk/tools` (se hizo
+    un enlace a `cmdline-tools/latest`); esta sesión tiene `NoDefaultCurrentDirectoryInExePath`,
+    que le impide encontrar `gradlew.bat` (compilar con `env -u NoDefaultCurrentDirectoryInExePath`);
+    y `jarsigner` no está en el PATH, así que el AAB se firma a mano con el del JDK 17.
+  - **`app/twa/`**: `make-manifest.mjs` genera `twa-manifest.json` desde el manifiesto vivo
+    (`xyz.pedibot.app`, `?source=android` también en los atajos, barra de navegación del color
+    de la web). El proyecto Gradle lo regenera `bubblewrap update` y no va a git.
+  - **Icono maskable** nuevo en la web (`logo-maskable.png`, 512, la cara al 70 % sobre el fondo),
+    sacado de `scripts/make_icons.py` como todos; sustituye en el manifiesto al de Apple de 180.
+  - **Clave de subida (G4):** `D:/Nicolas/android-keys/pedibot-upload.keystore`, contraseña en
+    `LEEME-clave.txt` al lado. **Fuera del repo.** SHA-256
+    `ED:3E:01:F0:D9:C1:2D:DD:2E:D2:EA:F6:46:76:D9:A0:4B:68:FD:8F:6C:CF:0A:3E:E4:AA:B6:72:2E:21:EB:EB`.
+    Ojo: `bubblewrap build` escribe la contraseña en su registro; se borra al acabar.
+  - **Compilado:** APK firmado de 1,6 MB y AAB de 1,8 MB, `targetSdkVersion 36`,
+    `minSdkVersion 21`. Copias en `D:/Nicolas/pedibot-android/` (`PediBot-1.0.0-prueba.apk` para
+    instalar a mano, `PediBot-1.0.0.aab` para Play).
+  - **`assetlinks.json` (G5), desplegado** y validado con la API de Google (Digital Asset Links):
+    devuelve `xyz.pedibot.app` con nuestra huella.
+    `tests/test_assetlinks_lets_the_app_open_full_screen.py`. Cuando exista la cuenta se añade
+    la huella de Play App Signing (la da la consola en «Integridad de la app»).
+  - De paso: el despliegue esperaba 20 s a la API y ya tarda 21 en arrancar; ahora espera 60.
 
 ## 9. Decisiones del operador
 
