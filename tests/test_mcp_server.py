@@ -268,3 +268,14 @@ def test_every_tool_says_when_to_use_it_and_names_a_sibling(tmp_path):
         assert line.startswith("Use when"), t["name"]
         assert line in t["description"]
         assert any(other in line for other in names - {t["name"]}), t["name"]
+
+
+def test_the_glama_claim_is_valid_json():
+    """Glama verifica el dominio leyendo /.well-known/glama.json (2-oct-2026). Si deja de ser
+    JSON válido o se borra, se pierde la ficha verificada."""
+    import re as _re
+
+    p = ROOT / "web" / "site" / "public" / ".well-known" / "glama.json"
+    data = json.loads(p.read_text(encoding="utf-8"))
+    assert data["$schema"] == "https://glama.ai/mcp/schemas/connector.json"
+    assert _re.fullmatch(r"glama_claim_[A-Za-z0-9_-]{32}", data["claim"])
