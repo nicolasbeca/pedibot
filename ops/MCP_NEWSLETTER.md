@@ -1,4 +1,4 @@
-# Correo a MCP Newsletter — BORRADOR, sin enviar (2-oct-2026)
+# Correo a MCP Newsletter — pasado a Telegram el 2-oct-2026 con su sí; lo envía el operador desde pedibot.ai@gmail.com (la sesión no tenía Gmail)
 
 > **Nada sale sin el sí del operador.** Dirección leída en mcpnewsletter.com/submit:
 > `contact@mcpnewsletter.com` (también tienen formulario). Regime les escribió el mismo día con
