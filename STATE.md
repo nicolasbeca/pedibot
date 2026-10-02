@@ -16,7 +16,7 @@
     «que en el oído», «temperatura en/del oído», «termómetro de oído»: «en el oído» a secas
     llevaba el dolor de oído al termómetro).
 - Las cuatro preguntas, en `eval/bateria_operador/09_reales_2oct.txt`.
-- **L14 otra vez** (LESSONS): las barras dobles de un heredoc llegan como una sola; un `` se
+- **L14 otra vez** (LESSONS): las barras dobles de un heredoc llegan como una sola; un `` se
   volvió retroceso en la regex nueva. Regex con el editor y comprobar `chr(8)`.
 - Borrador del correo a MCP Newsletter en `ops/MCP_NEWSLETTER.md`, **sin enviar**.
 
