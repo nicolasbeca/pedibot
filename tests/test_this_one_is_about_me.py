@@ -21,6 +21,10 @@ NO_ES_UN_NIÑO = [
     "soy yo el que tiene el dolor de garganta, no mi hija",
     "mi perro tiene diarrea, ¿qué le doy?",
     "mi gato ha vomitado tres veces, que hago?",
+    # 2-oct-2026, comprobado en vivo: la forma corta recibía la fiebre para adultos sacada de
+    # fichas pediátricas
+    "tengo fiebre yo, no mi hijo",
+    "es a mí a quien le duele la garganta, a mí, no a mi hija",
 ]
 
 
@@ -40,6 +44,8 @@ def test_a_child_with_the_same_words_is_untouched() -> None:
         "mi hijo tiene fiebre desde ayer",
         "tengo un bebé de 3 meses con fiebre",
         "me preocupa mi hija, tiene diarrea",
+        "yo no sé si mi hijo tiene fiebre",
+        "no sé por qué mi hijo no come",
     ):
         a = motor.ask(q, lang="es")
         assert a.verification != "off_topic", q

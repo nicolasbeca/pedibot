@@ -2020,3 +2020,12 @@ que un test habría cazado:
   mal deja el mismo día dos cosas: un test en `tests/` y su línea en
   `eval/bateria_operador/09_reales_2oct.txt`**. Un arreglo sin test vuelve; uno sin la pregunta
   real en la batería no se mide con el modelo de verdad.
+
+**Añadido el mismo día, por la tarde (L14 otra vez):** al escribir código con un `python - <<'EOF'`
+lanzado desde la herramienta de comandos de Claude, las barras dobles llegan a Python ya
+convertidas en una sola: la barra-barra-b del texto acaba como barra-b dentro de una cadena
+normal, que es un RETROCESO (chr(8)). Pasó en la regex de «también» y la suite estaba en verde
+porque el caso probado no dependía de esa frontera de palabra; y la primera versión de esta
+misma nota se rompió igual. **Las regex se escriben con el editor (Edit/Write), nunca
+generadas desde un heredoc**; si hace falta generar, la barra va como `chr(92)`. Y después,
+siempre: `chr(8) not in texto`.

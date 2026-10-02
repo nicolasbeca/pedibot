@@ -53,3 +53,26 @@ def test_la_pregunta_llega_a_la_pagina_que_lo_dice(buscador: Retriever, pregunta
     hits, _ = buscador.search(pregunta, "en")
     docs = [h.chunk.doc_id for h in hits[:6]]  # los 6 que usa el motor (retrieval_top_k)
     assert esperados & set(docs), f"«{pregunta}» no alcanza {esperados}; devuelve {docs}"
+
+
+# 2-oct-2026, comprobado en vivo: en castellano la pregunta no llegaba a la página del NHS y la
+# respuesta hablaba de axila y recto (PUC Chile) sin decir nada del oído.
+EN_CASTELLANO = [
+    "¿es igual la temperatura en la axila que en el oído?",
+    "¿el termómetro de oído es fiable en un bebé?",
+]
+
+
+@pytest.mark.parametrize("pregunta", EN_CASTELLANO)
+def test_en_castellano_tambien_llega(buscador: Retriever, pregunta: str):
+    hits, _ = buscador.search(pregunta, "es")
+    docs = [h.chunk.doc_id for h in hits[:6]]
+    assert TEMP_BEBE in docs, docs
+
+
+@pytest.mark.parametrize("pregunta", ["a mi hijo le duele mucho en el oído", "tiene pus en el oído"])
+def test_el_dolor_de_oido_sigue_en_las_fichas_de_oido(buscador: Retriever, pregunta: str):
+    hits, _ = buscador.search(pregunta, "es")
+    docs = [h.chunk.doc_id for h in hits[:6]]
+    assert TEMP_BEBE not in docs[:2], docs
+    assert any("ear" in d or "oido" in d or "otitis" in d for d in docs[:3]), docs

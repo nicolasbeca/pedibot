@@ -431,6 +431,15 @@ en:
   - colegio
   - contagio
 es:
+  # 2-oct-2026: «¿es igual la temperatura en la axila que en el oído?» no llegaba a la página
+  # del NHS que dice que el termómetro de oído no es fiable en un bebé.
+  "que en el oído": [ear thermometer, tympanic thermometer, other types of thermometer, take your baby's temperature]
+  "que en el oido": [ear thermometer, tympanic thermometer, other types of thermometer, take your baby's temperature]
+  "temperatura en el oído": [ear thermometer, tympanic thermometer, other types of thermometer, take your baby's temperature]
+  "temperatura en el oido": [ear thermometer, tympanic thermometer, other types of thermometer, take your baby's temperature]
+  "temperatura del oído": [ear thermometer, tympanic thermometer, other types of thermometer, take your baby's temperature]
+  "termómetro de oído": [ear thermometer, tympanic thermometer, other types of thermometer, take your baby's temperature]
+  "termometro de oido": [ear thermometer, tympanic thermometer, other types of thermometer, take your baby's temperature]
   # 30-sep-2026: «nació de 33 semanas… ¿el percentil con la real o la corregida?»
   "edad corregida": [edad corregida, prematuro, prematuros, EC, curvas de crecimiento]
   "la corregida": [edad corregida, prematuro, prematuros, EC, curvas de crecimiento]

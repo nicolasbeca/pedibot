@@ -1070,6 +1070,9 @@ _NO_ES_UN_NINO = re.compile(
     r"(?:la (?:pregunta|consulta|duda) es (?:sobre|para) m[íi]|es para m[íi] |para m[íi], no)"
     r"|no (?:es )?(?:sobre|para) (?:mi|el|la) (?:hijo|hija|ni[ñn][oa]|beb[ée])"
     r"|soy yo (?:el|la) que"
+    # 2-oct-2026: la forma corta, «tengo fiebre yo, no mi hijo», «a mí, no a mi hija»
+    r"|(?:\byo|\ba m[íi]),?\s+no (?:a )?(?:mi|el|la) (?:hijo|hija|ni[ñn][oa]|beb[ée])\b"
+    r"|\bme,?\s+not\s+(?:my|the)\s+(?:son|daughter|child|kid|baby|toddler)\b"
     r"|\bmi (?:perro|perra|gato|gata|mascota|conejo|h[áa]mster|loro)\b"
     r"|(?:my|our) (?:dog|cat|pet)\b"
     r"|(?:the )?question is about me\b|it'?s for me, not",
@@ -1102,6 +1105,21 @@ _FIEBRE_DEL_ADULTO = re.compile(
     r"|मुझे\s+बुखार",
     re.I | re.U,
 )
+
+
+#: Y el bebé TAMBIÉN: «tengo fiebre y mi bebé también tiene fiebre». Basta con que lo diga con
+#: «también» o con que la fiebre salga dos veces: ante la duda, el aviso sale.
+_TAMBIEN = re.compile(
+    r"\b(?:también|tambien|too|also|as\s+well|aussi|auch|também|тоже|также)\b|أيضا|भी", re.I | re.U
+)
+_FIEBRE_PALABRA = re.compile(
+    r"fiebre|fever|temperature|fi[èe]vre|fieber|febre|температур|жар|حمى|حرارة|बुखार", re.I | re.U
+)
+
+
+def bebe_tambien_con_fiebre(texto: str) -> bool:
+    t = texto or ""
+    return bool(_TAMBIEN.search(t)) or len(_FIEBRE_PALABRA.findall(t)) >= 2
 
 
 def fiebre_del_adulto(texto: str) -> bool:
@@ -1801,6 +1819,17 @@ class Engine:
             tr.level = max(
                 (r.level for r in tr.matched), key=lambda lv: LEVEL_ORDER[lv], default="routine"
             )
+        # 2-oct-2026: «tengo fiebre y estoy dando el pecho a mi bebé de 2 meses» sacaba «acudir a
+        # urgencias hoy: bebé menor de 3 meses con fiebre». La fiebre era de la madre. Si quien
+        # escribe dice que la fiebre es suya y nada dice que el bebé también la tenga, esa regla
+        # no salta (las demás, sí). `test_the_mothers_fever_is_not_the_babys.py`.
+        if fiebre_del_adulto(query) and not bebe_tambien_con_fiebre(query):
+            sin = [r for r in tr.matched if r.id != "infant_fever_under_3_months"]
+            if len(sin) != len(tr.matched):
+                tr.matched = sin
+                tr.level = max(
+                    (r.level for r in tr.matched), key=lambda lv: LEVEL_ORDER[lv], default="routine"
+                )
         nums = self.numbers.get(country, lang_aviso)
         banner = build_banner(tr, lang_aviso, nums)
 

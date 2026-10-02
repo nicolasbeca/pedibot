@@ -2,6 +2,24 @@
 
 Última actualización: **2026-10-02** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 2-oct-2026 (4) · los pendientes del chat, probados en vivo
+
+- De los siete anotados, cuatro ya estaban bien en vivo (crucero, MUAC 125 mm, percentil sin
+  peso, cómo tomar la temperatura). Arreglados los otros tres:
+  - **La fiebre de la madre no es la del bebé:** «tengo fiebre y estoy dando el pecho a mi bebé
+    de 2 meses» sacaba «acudir a urgencias hoy: bebé menor de 3 meses con fiebre». Si la fiebre
+    es de quien escribe y nada dice que el bebé también la tenga, esa regla no salta
+    (`test_the_mothers_fever_is_not_the_babys.py`; con «también» o la fiebre dos veces, sí).
+    Queda flojo: para «puede seguir con el pecho» cita también la hoja de dolor abdominal.
+  - **«Tengo fiebre yo, no mi hijo»** → el no amable (`test_this_one_is_about_me.py`).
+  - **Axila frente a oído en castellano** llega a la página del NHS (sinónimos sólo para
+    «que en el oído», «temperatura en/del oído», «termómetro de oído»: «en el oído» a secas
+    llevaba el dolor de oído al termómetro).
+- Las cuatro preguntas, en `eval/bateria_operador/09_reales_2oct.txt`.
+- **L14 otra vez** (LESSONS): las barras dobles de un heredoc llegan como una sola; un `` se
+  volvió retroceso en la regex nueva. Regex con el editor y comprobar `chr(8)`.
+- Borrador del correo a MCP Newsletter en `ops/MCP_NEWSLETTER.md`, **sin enviar**.
+
 ## 2-oct-2026 (3) · las herramientas del agente prometen lo que el código cumple (Glama)
 
 - **Registro oficial publicado y Glama verificado** (cuenta del operador, la misma de Regime;
