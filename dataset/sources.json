@@ -3809,6 +3809,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_hpv_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "HPV vaccine",
+  "year": 2023,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/hpv-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-02"
+ },
+ {
   "doc_id": "nhs_en_hair_loss",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -5107,6 +5120,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/whooping-cough/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_why_vaccination_is_safe_and_important",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Why vaccination is important and the safest way to protect yourself",
+  "year": 2025,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/vaccinations/why-vaccination-is-safe-and-important/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-02"
  },
  {
   "doc_id": "nhs_en_babys_first_solid_foods",

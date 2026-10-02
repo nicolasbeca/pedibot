@@ -27,7 +27,7 @@ configs:
 
 # Paediatric guidance for parents — an open catalogue
 
-**697 documents from 26 organisations**, in 9 languages, each classified by topic and linked to its original.
+**699 documents from 26 organisations**, in 9 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -58,12 +58,12 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (309 of 697 do) |
+| `year` | where the document states one (311 of 699 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `usage` | `publico` (666) may be reproduced under its publisher's terms; `citar_solo` (31) may be cited and linked, not reproduced |
-| `url` | link to the original (649 of 697 are online; the rest are books and printed manuals, identified in `notes`) |
+| `usage` | `publico` (668) may be reproduced under its publisher's terms; `citar_solo` (31) may be cited and linked, not reproduced |
+| `url` | link to the original (651 of 699 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
@@ -71,7 +71,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | organisation | documents |
 |---|---|
 | WHO — World Health Organization | 220 |
-| NHS — NHS (National Health Service, England) | 159 |
+| NHS — NHS (National Health Service, England) | 161 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 118 |
 | Immunize.org — Immunize.org — translation of the CDC Vaccine Information Statement | 40 |
 | RKI — Robert Koch-Institut (Deutschland) | 30 |
@@ -101,7 +101,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | language | documents |
 |---|---|
-| English (`en`) | 332 |
+| English (`en`) | 334 |
 | Spanish (`es`) | 117 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 51 |
@@ -115,7 +115,7 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | topic | documents |
 |---|---|
-| `vacunas` | 81 |
+| `vacunas` | 83 |
 | `respiratorio` | 76 |
 | `piel` | 73 |
 | `general` | 69 |

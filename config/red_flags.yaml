@@ -222,11 +222,13 @@ rules:
   - crise d'?[ée]pilepsie
   - tout raide
   - des convulsions
-  - krampf
+  # 2-oct-2026: «Muskelkrampf» es un calambre y «Asthmaanfall»/«Hustenanfall» una crisis de asma
+  # o de tos; no son convulsiones (tests/test_a_word_inside_another_is_not_an_alarm.py)
+  - (?<!muskel)(?<!bauch)(?<!magen)(?<!waden)krampf
   - krampfanfall
   - zuckt(?![^.]{0,40}im schlaf)
   - zuckungen
-  - anfall
+  - (?<!asthma)(?<!husten)(?<!wut)(?<!lach)anfall
   - fieberkrampf
   - epilep
   - судорог
@@ -248,7 +250,7 @@ rules:
   - ataque epil[eé]ptico
   - tremendo todo
   - revirando os olhos
-  - espasmos
+  - (?<!bronco)espasmos
   # «दौरा» es «ataque» en general: el de asma (दमा का दौरा) y la circulación (ख़ून का दौरा)
   # no son convulsiones (1-oct-2026, tests/test_an_asthma_attack_is_not_a_seizure.py)
   - "(?<!दमा का )(?<!दमे का )(?<!अस्थमा का )(?<!ख़ून का )(?<!खून का )दौर(?:ा|े|ों)"
@@ -258,7 +260,8 @@ rules:
   - "(?<!dama ka )(?<!dame ka )(?<!asthma ka )(?<!khoon ka )(?<!khun ka )daur[ae]"
   - jhatke
   - mirgi
-  - fits
+  # 2-oct-2026, consulta real: «…risks as well as bene-FITS» recibió «Call 999 now — seizure»
+  - (?<![a-z])fits(?![a-z])
   reason_de: Auffällige Bewegungen / Krampfanfall
   reason_ru: Необычные движения / судороги
   reason_ar: حركات غير طبيعية / تشنجات
@@ -490,7 +493,7 @@ rules:
   - (рёбр|ребр|ключиц)\w*.{0,30}втягива
   - остановк.{0,15}дыхан
   - перестал[а]? дышать
-  - хрип
+  - (?<!о)хрип  # «охриплость» es ronquera (2-oct-2026)
   - لا يتنفس
   - صعوبة في التنفس
   - صعوب(ة|ات) (في )?التنفس
@@ -1745,7 +1748,7 @@ rules:
   - (pfeift|pfeifend\w*|giemen|brummen)[^.]{0,20}(beim atmen|atmung|atmet)
   - (صدره|صدرها)[^.]{0,20}(يصفر|تصفر|صفير)
   - صفير[^.]{0,25}(الصدر|التنفس)
-  - (pieira|chiado|chia)[^.]{0,25}(no peito|quando respira|ao respirar)?
+  - (?<![a-z])(pieira|chiado|chia)[^.]{0,25}(no peito|quando respira|ao respirar)?  # «psy-chia-tric» (2-oct-2026)
   - respira (r[aá]pido|muy r[aá]pido|agitad)(?![^.]{0,60}(cuando (corre|juega|salta)|al (correr|jugar)|akikimbia|akicheza|when (he|she) runs|while running|quand il court|en courant|beim (laufen|spielen)|когда бегает|عندما يجري|दौड़)[^.]{0,40}(pero|se le pasa|luego|lakini|inaisha|but|then|mais|aber|но|لكن|फिर))
   - respiraci[oó]n m[aá]s r[aá]pida de lo normal
   - pitos? al respirar
@@ -2457,7 +2460,7 @@ rules:
   - (a bu|a aval[ée]|a pris).{0,60}(javel|d[ée]tergent|produit m[ée]nager|comprim[ée]s|m[ée]dicament|sirop|alcool|parfum|essence|plante|lessive)
   - intoxiqu
   - surdose
-  - vergiftung
+  - (?<!lebensmittel)(?<!blei)vergiftung  # intoxicación alimentaria o por plomo: no es ingesta
   - putzmittel getrunken
   - (bleichmittel|chlorreiniger|rohrreiniger|sp[üu]lmaschinentab|wc.reiniger|lauge|putzmittel|reiniger|waschmittel).{0,25}(getrunken|geschluckt|gegessen)
   - (getrunken|geschluckt).{0,25}(bleichmittel|chlor|lauge)
@@ -2502,7 +2505,7 @@ rules:
   - intoxica[cç][aã]o
   - tomou rem[eé]dio demais
   - engoliu (um )?rem[eé]dio
-  - "[aá]lcool"
+  - "(?<!hidro)(?<!hydro)[aá]lcool"  # el gel hidroalcohólico no es una ingesta (2-oct-2026)
   - ज़हर
   - जहर खा
   - फिनाइल पी
@@ -2799,7 +2802,7 @@ rules:
   - \bburn\b
   - br[uû]l
   - '[ée]bouillant'
-  - verbrannt
+  - (?<!sonnen)verbrannt  # «sonnenverbrannt» es quemado por el sol (2-oct-2026)
   - verbrühung
   - verbrüht
   - heißes wasser über
@@ -5253,7 +5256,7 @@ rules:
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
   - (no puede|cannot|can'?t) (abrir|open)[^.]{0,20}(la )?(boca|mouth)
-  - (espasmos|spasms|kr[äa]mpfe|спазмы|تشنجات|ऐंठन)[^.]{0,20}(musculares|muscle|muskel)?
+  - (?<!bronco)(?<!broncho)(?<!fieber)(?<!affekt)(espasmos|spasms|kr[äa]mpfe|спазмы|تشنجات|ऐंठन)[^.]{0,20}(musculares|muscle|muskel)?  # 2-oct-2026: el broncoespasmo no es trismo
   # 17-sep-2026: la mandíbula «bloqueada» —con adjetivo— en cuatro lenguas.
   - (m[âa]choire)[^.]{0,20}(bloqu[ée]e?|serr[ée]e?|verrouill[ée]e?|crisp[ée]e?)
   - (kiefer)[^.]{0,20}(verkrampft|blockiert|klemmt|gesperrt)

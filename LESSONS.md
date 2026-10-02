@@ -2029,3 +2029,28 @@ porque el caso probado no dependía de esa frontera de palabra; y la primera ver
 misma nota se rompió igual. **Las regex se escriben con el editor (Edit/Write), nunca
 generadas desde un heredoc**; si hace falta generar, la barra va como `chr(92)`. Y después,
 siempre: `chr(8) not in texto`.
+
+## L250 · «Benefits» llamó al 999 (2-oct-2026)
+
+Consulta real, Reino Unido: «what are the side effects of HPV vaccine to females. Tell me the
+risks as well as benefits from research data» recibió «🚨 Call 999 now — Abnormal movements /
+seizure». La regla de convulsión buscaba «fits», y «bene-fits» lo lleva dentro. Las reglas del
+triaje casan como trozo de texto, no como palabra, y nadie había pasado nunca los patrones por
+un vocabulario real para ver dónde casan.
+
+Pasados por las palabras de las 529 guías: 23 patrones casan en mitad de otra palabra. La
+mayoría están bien (el árabe pega el artículo, «الجفاف»; el alemán compone «Fieberkrampf»),
+pero siete eran falsas alarmas del mismo tipo: Asthmaanfall y Hustenanfall (convulsión),
+Muskelkrampf (convulsión), broncoespasmos (convulsión y trismo), охриплость (ronquera →
+dificultad respiratoria grave), psychiatric (dificultad respiratoria), sonnenverbrannt,
+Lebensmittelvergiftung y gel hidroalcohólico. Arreglados con el patrón; sobre las 2.807
+preguntas de las baterías no cambia ni una (`test_a_word_inside_another_is_not_an_alarm.py`).
+
+**Una falsa alarma no es «el lado seguro».** A quien pregunta por los efectos de una vacuna, un
+«llama al 999» le dice que la vacuna provoca convulsiones. **El candado:** todo patrón nuevo que
+case dentro de otra palabra del corpus hace fallar la suite hasta que alguien lo revise.
+
+Y Glama, el mismo día, encontró que la descripción de esa misma herramienta decía «46 reglas»
+cuando eran 96, y la de la dosis «32 marcas en 27 países» cuando eran 35 en 57. **Lo que se
+publica hacia fuera se cuenta, no se escribe**
+(`test_the_tool_descriptions_count_instead_of_typing.py`).

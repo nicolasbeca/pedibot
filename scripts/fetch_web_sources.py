@@ -220,6 +220,17 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     # En un barco, primero el centro médico de a bordo (30-sep-2026): la cita del texto fijo
     # SHIP_FIRST de answer.py, para que esté en el catálogo como las demás.
     ("cdc", "https://wwwnc.cdc.gov/travel/page/cruise-ship", "urgencias", "en", ["todas"]),
+    # La vacuna del VPH (2-oct-2026, consulta real desde Reino Unido): «side effects of HPV
+    # vaccine… risks and benefits» se quedó sin fuente. No había ni una página en inglés sobre
+    # ella. Y la de seguridad de las vacunas, para «he leído que perjudica…».
+    ("nhs", "https://www.nhs.uk/vaccinations/hpv-vaccine/", "vacunas", "en", ["escolar", "adolescente"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/conditions/vaccinations/why-vaccination-is-safe-and-important/",
+        "vacunas",
+        "en",
+        ["todas"],
+    ),
     # Cómo tomar la temperatura, y la madre que está enferma y da el pecho (30-sep-2026): las
     # dos preguntas se contestaban citando fichas que no decían lo contestado.
     (

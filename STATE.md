@@ -2,6 +2,24 @@
 
 Última actualización: **2026-10-02** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 2-oct-2026 (5) · «benefits» llamaba al 999, y la vacuna del VPH tiene su página (L250)
+
+- **Consulta real (Reino Unido, 09:28):** «side effects of HPV vaccine… risks as well as
+  benefits» → «🚨 Call 999 — seizure». El patrón «fits» casaba dentro de «bene-fits». Pasadas
+  todas las reglas por el vocabulario de las guías, siete falsas alarmas del mismo tipo
+  arregladas (Asthmaanfall, Hustenanfall, Muskelkrampf, broncoespasmos, охриплость, psychiatric,
+  sonnenverbrannt, Lebensmittelvergiftung, hidroalcohólico). Ninguna de las 2.807 preguntas de
+  las baterías cambia. Candado: un patrón nuevo que case dentro de otra palabra del corpus
+  hace fallar la suite (`test_a_word_inside_another_is_not_an_alarm.py`).
+- **Sin la alarma, la pregunta se quedaba sin fuente:** no había ninguna página en inglés sobre
+  la vacuna del VPH. Entran del NHS (OGL) `nhs_en_hpv_vaccine` y
+  `nhs_en_why_vaccination_is_safe_and_important`. 699 documentos. Comprobado en vivo: las dos
+  preguntas del VPH de esta mañana contestan con el NHS.
+- **Glama: A, 4,5/5** (guías 4,3; alarmas 4,4; dosis 4,8). Su lectura sacó dos cifras viejas en
+  las descripciones: «46 reglas» (son 96) y «32 marcas en 27 países» (35 en 57). Ahora se
+  cuentan en un test (`test_the_tool_descriptions_count_instead_of_typing.py`); las guías dicen
+  que devuelven hasta cinco o una lista vacía. ACP sincronizado otra vez; MCP las sirve.
+
 ## 2-oct-2026 (4) · los pendientes del chat, probados en vivo
 
 - De los siete anotados, cuatro ya estaban bien en vivo (crucero, MUAC 125 mm, percentil sin
