@@ -30,7 +30,7 @@ DISK_WARN_PCT = 85
 #: un hipo de red; varias seguidas es DeepSeek caído, y ahí hay que enterarse sin abrir el panel.
 NO_MODEL_WARN = int(os.environ.get("NO_MODEL_WARN", "3"))
 OPS_DB = ROOT / "data" / "pedibot_ops.db"
-UNITS = ("pedibot-api", "pedibot-telegram", "pedibot-acp", "caddy")
+UNITS = ("pedibot-api", "pedibot-telegram", "pedibot-acp", "pedibot-mcp", "caddy")
 
 
 def unit_status(name: str) -> str:

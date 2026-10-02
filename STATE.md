@@ -1,6 +1,30 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-10-01** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-02** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 2-oct-2026 · servidor MCP: las herramientas del agente, para cualquier asistente
+
+- **Vivo en https://pedibot.xyz/mcp** (`ops/mcp_server.py`, `pedibot-mcp.service`, puerto 8603
+  detrás de Caddy; el 8602 lo usa otro servicio del mismo VPS). Copia el camino de Regime: HTTP
+  «streamable» mínimo, JSON-RPC por POST, GET da 405, sin sesiones.
+- **Las ocho herramientas son las ofertas de ACP**: esquemas de `ops/acp_catalogue.json` y el
+  enrutado de `ops/acp_worker.py`, que llama a la misma API local. Los dos canales no pueden
+  dar cifras distintas.
+- **Lo que el worker no necesitaba:** cada herramienta llega a SU endpoint o a ninguno
+  (`ENDPOINT`; una dosis sin peso con país acababa en el calendario de vacunas) y sólo se pasan
+  los campos de su esquema (una «question» colada no la convierte en chat). Las dos que gastan
+  modelo tienen tope propio: 100 al día y 10 por IP y hora (`PEDIBOT_MCP_MODEL_PER_DAY`,
+  `..._PER_IP_HOUR`); el contador del día se rehace del registro al arrancar. La IP vive sólo
+  en memoria.
+- **Se mide** en `data/mcp_uso.jsonl` (hora, herramienta, cliente declarado, sin dato) y en la
+  tarjeta «Asistentes (MCP)» del panel, que sale también con cero. Las preguntas por MCP siguen
+  apuntándose en la base como `agent`, igual que ACP: el registro propio es el que separa.
+- Vigilante: `pedibot-mcp` entra en `UNITS`. Tests: `test_mcp_server.py`, `test_panel_mcp_card.py`.
+- **Comprobado en vivo** desde fuera: initialize, tools/list (8) y las ocho herramientas; dosis
+  sin peso → error con los campos que faltan; una pregunta en castellano contesta con la SEUP.
+- **Registro oficial: pendiente del operador** (el control de permisos no me deja publicar
+  hacia fuera). `ops/mcp/server.json` valida (`xyz.pedibot/pedibot`); la prueba de dominio está
+  en `/.well-known/mcp-registry-auth` y la clave privada en `~/.ssh/pedibot_mcp_registry.pem`.
 
 ## 1-oct-2026 (3) · el neumococo es nacional en la India
 

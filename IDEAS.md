@@ -627,6 +627,8 @@ Lo que hay, mirado el 30-sep-2026 (ninguno pide pagar):
    registro `xyz.regimetoken/regime`, medido en el informe semanal): copiar el camino. Las
    herramientas, las mismas del agente de ACP, leyendo los mismos ficheros, para que los dos
    canales no puedan dar cifras distintas; servicio aparte de la API; medirlo en el informe.
+   **Hecho el 2-oct-2026:** vivo en `pedibot.xyz/mcp`, medido en el panel (STATE.md). Falta
+   el alta en el registro, que la da el operador.
 2. **Registro A2A** — https://www.a2a-registry.org/ . Pide la ficha del agente en
    `/.well-known/agent.json`. Un fichero pequeño; iría con lo anterior.
 3. **Agentverse (Fetch.ai)** — https://www.fetch.ai/agentverse . El más grande (millones de

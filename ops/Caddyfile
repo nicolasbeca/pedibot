@@ -26,6 +26,13 @@ pedibot.xyz {
 		reverse_proxy 127.0.0.1:8601
 	}
 
+	# Servidor MCP (2-oct-2026): las herramientas del agente para Claude, ChatGPT y demás
+	# asistentes. Servicio aparte de la API (ops/mcp_server.py, pedibot-mcp.service).
+	@mcp path /mcp
+	handle @mcp {
+		reverse_proxy 127.0.0.1:8603
+	}
+
 	# Access log → journald (stderr); the weekly report counts page views from it
 	log {
 		output stderr

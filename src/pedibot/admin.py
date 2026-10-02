@@ -480,6 +480,64 @@ def _sources_card(path: pathlib.Path | None = None) -> str:
     )
 
 
+def _mcp_card(days: int, path: pathlib.Path | None = None) -> str:
+    """Las llamadas de los asistentes por MCP (`ops/mcp_server.py`, 2-oct-2026).
+
+    Sale siempre, también con cero: el canal se montó para ver si alguien llama, y el agente de
+    ACP pasó dieciocho días con cero trabajos sin que ninguna pantalla lo dijera.
+    """
+    if path is None:
+        from pedibot.settings import ROOT
+
+        path = ROOT / "data" / "mcp_uso.jsonl"
+    since = (
+        (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).strftime("%Y-%m-%d %H:%M:%S")
+        if days > 0
+        else ""
+    )
+    rows: list[dict[str, Any]] = []
+    try:
+        for line in pathlib.Path(path).read_text(encoding="utf-8").splitlines():
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            if str(r.get("ts", "")) >= since:
+                rows.append(r)
+    except OSError:
+        pass
+    tools: dict[str, int] = {}
+    clients: dict[str, int] = {}
+    for r in rows:
+        tools[str(r.get("tool") or "?")] = tools.get(str(r.get("tool") or "?"), 0) + 1
+        c = str(r.get("client") or "?")
+        clients[c] = clients.get(c, 0) + 1
+    n, nc = len(rows), len(clients)
+    no_data = sum(1 for r in rows if r.get("no_data"))
+    head = (
+        f"<b>{n} llamada{'s' if n != 1 else ''}</b> de {nc} cliente{'s' if nc != 1 else ''}, "
+        f"{no_data} sin dato"
+    )
+    body = ""
+    if rows:
+        body = (
+            '<div class="two"><div><h2>Por herramienta</h2>'
+            + _bars(sorted(tools.items(), key=lambda kv: -kv[1]), 8)
+            + "</div><div><h2>Por cliente</h2>"
+            + _bars(sorted(clients.items(), key=lambda kv: -kv[1]), 8)
+            + "</div></div>"
+        )
+    return (
+        '<div class="card"><h2>Asistentes (MCP)</h2>'
+        f"<p>{head}.</p>{body}"
+        '<details class="howto"><summary>Cómo se cuenta</summary><p>'
+        "Cada vez que un asistente (Claude, ChatGPT, Cursor…) usa una herramienta de "
+        "https://pedibot.xyz/mcp. El cliente es el nombre que el asistente declara de sí mismo; "
+        "«sin dato» es una llamada a la que faltaban campos, que pasó el tope diario o que la "
+        "API no pudo contestar. No se guardan ni la IP ni lo que se preguntó.</p></details></div>"
+    )
+
+
 def _google_card(g: dict[str, Any] | None) -> str:
     """Lo que Google enseña de nosotros. Del fichero que deja el timer, nunca de la red: una
     llamada a Google dentro de un render convierte una página de 200 ms en una que a veces tarda
@@ -783,6 +841,7 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     h.append(_unanswered_card(sin_respuesta))
 
     h.append(_sources_card())
+    h.append(_mcp_card(days))
     h.append(_web_card(w.get("web", {})))
     h.append(_google_card(search.load()))
 
