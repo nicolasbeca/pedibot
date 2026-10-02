@@ -102,7 +102,8 @@ USE_WHEN = {
     "paediatric_warning_sign_check": (
         "Use when symptoms are described, first, to know if the child needs emergency care, "
         "a visit today or home care. For the full explanation afterwards use "
-        "paediatric_question_with_sources."
+        "paediatric_question_with_sources; for fluids in vomiting or diarrhoea with no danger "
+        "sign, oral_rehydration_plan."
     ),
     "child_growth_percentile": (
         "Use when you have a child's sex, age and weight or height and want the percentile. "
@@ -119,8 +120,9 @@ USE_WHEN = {
         "vaccine does or its side effects use paediatric_question_with_sources."
     ),
     "oral_rehydration_plan": (
-        "Use when a child is vomiting or has diarrhoea and you know the weight. Check danger "
-        "signs first with paediatric_warning_sign_check."
+        "Use when a child is vomiting or has diarrhoea; only the age is needed. If there are "
+        "signs of dehydration (no urine for hours, very sleepy, sunken eyes, no tears) or blood, "
+        "check paediatric_warning_sign_check first."
     ),
     "paediatric_guide_finder": (
         "Use when the user wants something to read or share on a topic. To answer a specific "
@@ -186,6 +188,64 @@ def _now() -> dt.datetime:
     return dt.datetime.now(dt.timezone.utc)
 
 
+class ToolProblem(Exception):
+    """El manejador rechazó un valor: el mensaje es para el asistente, que puede corregirlo."""
+
+
+def problem_text(path: str, status: int, detail: str, drug_names: list[str]) -> str:
+    """Lo que se le dice al asistente cuando el manejador dice que no (2-oct-2026).
+
+    Antes, una marca desconocida o un país sin calendario devolvían «could not answer right
+    now», que parece una avería, y el asistente no tenía con qué corregir la llamada."""
+    if path.startswith("/api/dose") and "unknown drug" in detail:
+        nombre = detail.split(":", 1)[-1].strip()
+        marcas = ", ".join(drug_names)
+        return (
+            f"Unknown medicine '{nombre}'. PediBot covers only paracetamol (acetaminophen) and "
+            f"ibuprofen. Generic names and these brands are accepted: {marcas}."
+        )
+    if path.startswith("/api/vaccines") and status == 404:
+        pais = path.split("country=", 1)[-1].split("&", 1)[0]
+        return (
+            f"No vaccination schedule for '{pais}'. The countries with one are the values of the "
+            "'country' enum in this tool's input schema."
+        )
+    return f"PediBot could not use these values: {detail}"
+
+
+def call_api(r: Any) -> dict[str, Any] | None:
+    """La API local, como `acp_worker.serve`, pero un 4xx trae su motivo (ToolProblem) en vez de
+    perderse como «sin respuesta»."""
+    import httpx
+
+    headers = {"content-type": "application/json"}
+    if acp_worker.API_KEY:
+        headers["x-api-key"] = acp_worker.API_KEY
+    try:
+        if r.method == "GET":
+            resp = httpx.get(f"{acp_worker.API}{r.path}", headers=headers, timeout=90)
+        else:
+            resp = httpx.post(f"{acp_worker.API}{r.path}", headers=headers, json=r.payload, timeout=90)
+    except Exception:  # noqa: BLE001 — la red o la API caídas: sin respuesta, no un motivo
+        return None
+    if 400 <= resp.status_code < 500:
+        try:
+            detail = resp.json().get("detail")
+        except ValueError:
+            detail = resp.text
+        nombres: list[str] = []
+        if r.path.startswith("/api/dose"):
+            try:
+                drugs = httpx.get(f"{acp_worker.API}/api/drugs", timeout=30).json()
+                nombres = sorted({b["name"] for d in drugs.values() for b in d["brands"]})
+            except Exception:  # noqa: BLE001
+                nombres = []
+        raise ToolProblem(problem_text(r.path, resp.status_code, str(detail), nombres))
+    if resp.status_code >= 300:
+        return None
+    return dict(resp.json())
+
+
 class Server:
     """El protocolo, sin HTTP: un mensaje entra, una respuesta (o nada) sale."""
 
@@ -197,7 +257,7 @@ class Server:
         model_per_day: int = MODEL_PER_DAY,
         model_per_ip_hour: int = MODEL_PER_IP_HOUR,
     ):
-        self.serve = serve or (lambda r: acp_worker.serve(r))
+        self.serve = serve or call_api
         self.log = log
         self.model_per_day = model_per_day
         self.model_per_ip_hour = model_per_ip_hour
@@ -248,8 +308,8 @@ class Server:
 
     # ── lo que se apunta ──
     def _note(self, tool: str, client: str | None, no_data: bool, ms: int) -> None:
-        if self.log is None:
-            return
+        if self.log is None or (client or "").lower().startswith("pedibot-"):
+            return  # nuestras propias comprobaciones no son uso (2-oct-2026)
         row = {
             "ts": _now().strftime("%Y-%m-%d %H:%M:%S"),
             "tool": tool,
@@ -283,10 +343,8 @@ class Server:
         schema = self._schemas[name]
         # sólo los campos de ESTA herramienta: lo demás no puede desviarla a otro endpoint
         form = {k: v for k, v in args.items() if k in schema.get("properties", {})}
-        if name == "child_friendly_health_explanation":
-            form["mode"] = "child"
         t0 = time.monotonic()
-        r = acp_worker.route(form)
+        r = acp_worker.route(form, name)
         if r is None or not r.path.startswith(ENDPOINT[name]):
             need = ", ".join(schema.get("required", []))
             out = self._result(None, f"Missing or invalid fields for {name}. Required: {need}.")
@@ -295,11 +353,14 @@ class Server:
             if refusal:
                 out = self._result(None, refusal)
             else:
-                got = self.serve(r)
-                out = self._result(
-                    got if isinstance(got, dict) else None,
-                    f"PediBot could not answer right now; the website is at {SITE}.",
-                )
+                try:
+                    got = self.serve(r)
+                    out = self._result(
+                        got if isinstance(got, dict) else None,
+                        f"PediBot could not answer right now; the website is at {SITE}.",
+                    )
+                except ToolProblem as e:
+                    out = self._result(None, str(e))
         self._note(name, client, out["isError"], int((time.monotonic() - t0) * 1000))
         return out
 

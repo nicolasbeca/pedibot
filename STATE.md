@@ -2,6 +2,30 @@
 
 Última actualización: **2026-10-02** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 2-oct-2026 (3) · las herramientas del agente prometen lo que el código cumple (Glama)
+
+- **Registro oficial publicado y Glama verificado** (cuenta del operador, la misma de Regime;
+  `/.well-known/glama.json`). Glama aún no ha puntuado («Not tested»): leer la nota por
+  herramienta en glama.ai/mcp/connectors/xyz.pedibot/pedibot/tools/<nombre> cuando salga.
+- **El esquema, con los límites del manejador** (`test_tool_schemas_keep_their_promises.py`):
+  dosis 1-120 kg (los de `calculate`, no los de `DoseIn`) y 0-216 meses; curvas 0-240 meses
+  (228 con la OMS, 240 sólo con el CDC de EE. UU.), peso 0,5-200 y talla 30-220 exclusivos;
+  países de dos letras; longitudes de texto; las vacunas, con los 75 países como `enum` sacado
+  de `vaccines.yaml` (el parámetro decía ocho).
+- **Lo que no cumplía y se arregló:** el suero exigía un peso que `/api/ors` no lee y no
+  ofrecía `vomiting`, que sí cambia la respuesta («by weight and age» → «by age»); la dosis no
+  pasaba el país y el bote de 200 mg/5 ml de Haití no salía primero por ACP ni MCP; la
+  explicación para niños exigía `mode` con un solo valor (fuera).
+- **Enrutado por oferta** (`route_for_offering` en `acp_worker.py`): cuando se sabe qué oferta
+  es —la descripción del trabajo en ACP, el nombre de la herramienta en MCP— decide ella, no los
+  campos. El enrutado por campos sigue para lo demás.
+- **MCP dice por qué rechaza:** marca desconocida → la lista de marcas que conoce; país sin
+  calendario → que mire el `enum`; edad fuera de la curva → el motivo. Antes, «could not answer».
+- Nuestras pruebas (cliente `pedibot-…`) ya no se apuntan como uso. Uso real a la hora de cerrar:
+  cero llamadas.
+- **Catálogo ACP sincronizado** con el esquema nuevo (8 actualizadas, 0 creadas), leído de
+  vuelta del mercado. Comprobado en vivo por MCP: KE, XX, aspirina, HT, suero con vómito, 235 meses.
+
 ## 2-oct-2026 (2) · las consultas reales que fallaron, arregladas con candado (L249)
 
 - **Leídas las consultas reales del 30-sep y el 1-oct.** Fallaron dos personas:

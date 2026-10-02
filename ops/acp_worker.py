@@ -168,8 +168,101 @@ def _num(value: Any) -> float | None:
 SUPPORTED_LANGS = ("en", "es", "fr", "de", "ru", "ar", "pt", "hi")
 
 
-def route(req: dict[str, Any]) -> Route | None:
-    """Which endpoint answers this form. None if the form cannot be served."""
+def _truthy(value: Any) -> bool:
+    return str(value).strip().lower() in ("1", "true", "yes", "y", "si", "sí")
+
+
+def route_for_offering(offering: str, req: dict[str, Any]) -> Route | None:
+    """The endpoint of THIS offering, or None if its form lacks what it needs (2-oct-2026).
+
+    The field-based `route` below guesses the offering from the fields, and guessed wrong in two
+    ways: a dose without a weight but with a country became a vaccination schedule, and a
+    question slipped into any form went to the model. When the market (the job's description)
+    or MCP (the tool's name) says which offering it is, that decides, not the fields.
+    """
+    req = {k.lower(): v for k, v in (req or {}).items()}
+    asked = str(req.get("lang") or "en").lower()[:2]
+    lang = asked if asked in SUPPORTED_LANGS else "en"
+    country = str(req.get("country") or "").strip().upper()[:2]
+    age = _num(req.get("age_months"))
+    weight = _num(req.get("weight_kg") or req.get("weight"))
+    text = str(req.get("question") or "").strip()
+    if offering in ("paediatric_question_with_sources", "child_friendly_health_explanation"):
+        if not text:
+            return None
+        mode = "child" if offering == "child_friendly_health_explanation" else "parent"
+        return Route(
+            "/api/agent/ask",
+            "POST",
+            {"question": text[:1500], "lang": lang, "country": country or "GB", "mode": mode},
+        )
+    if offering == "paediatric_warning_sign_check":
+        symptoms = str(req.get("symptoms") or "").strip()
+        if not symptoms:
+            return None
+        q = urlencode({"text": symptoms[:1500], "lang": lang, **({"country": country} if country else {})})
+        return Route(f"/api/triage?{q}", "GET", {})
+    if offering == "child_growth_percentile":
+        sex = str(req.get("sex") or "").strip().lower()[:1]
+        height = _num(req.get("height_cm") or req.get("height"))
+        if sex not in ("m", "f") or age is None or (weight is None and height is None):
+            return None
+        params: dict[str, Any] = {"sex": sex, "age_months": age, "lang": lang}
+        if weight is not None:
+            params["weight_kg"] = weight
+        if height is not None:
+            params["height_cm"] = height
+        if country:
+            params["country"] = country
+        return Route(f"/api/growth?{urlencode(params)}", "GET", {})
+    if offering == "child_medicine_dose":
+        drug = str(req.get("drug") or "").strip()
+        if not drug or weight is None:
+            return None
+        payload: dict[str, Any] = {"drug": drug[:40], "weight_kg": weight, "lang": lang}
+        if age is not None:
+            payload["age_months"] = age
+        if country:
+            payload["country"] = country  # the bottle sold there comes first (200 mg/5 ml in HT)
+        return Route("/api/dose", "POST", payload)
+    if offering == "childhood_vaccination_schedule":
+        if not country:
+            return None
+        tail = f"&age_months={age:g}" if age is not None else ""
+        return Route(f"/api/vaccines?country={country}{tail}&lang={lang}", "GET", {})
+    if offering == "oral_rehydration_plan":
+        # /api/ors reads age and vomiting; the weight never changed the answer (2-oct-2026)
+        params = {"lang": lang, "vomiting": "true" if _truthy(req.get("vomiting")) else "false"}
+        if age is not None:
+            params["age_months"] = f"{age:g}"
+        return Route(f"/api/ors?{urlencode(params)}", "GET", {})
+    if offering == "paediatric_guide_finder":
+        topic = str(req.get("topic") or "").strip()
+        if not topic:
+            return None
+        return Route(f"/api/guides?{urlencode({'q': topic[:200], 'lang': lang})}", "GET", {})
+    return None
+
+
+OFFERINGS = (
+    "paediatric_question_with_sources",
+    "child_friendly_health_explanation",
+    "paediatric_warning_sign_check",
+    "child_growth_percentile",
+    "child_medicine_dose",
+    "childhood_vaccination_schedule",
+    "oral_rehydration_plan",
+    "paediatric_guide_finder",
+)
+
+
+def route(req: dict[str, Any], offering: str | None = None) -> Route | None:
+    """Which endpoint answers this form. None if the form cannot be served.
+
+    With the offering's name, that offering's endpoint or nothing (`route_for_offering`).
+    Without it, the fields decide, as before."""
+    if offering in OFFERINGS:
+        return route_for_offering(offering, req)
     req = {k.lower(): v for k, v in (req or {}).items()}
     question = str(req.get("question") or req.get("query") or req.get("prompt") or "").strip()
     country = str(req.get("country") or "").strip().upper()
@@ -221,9 +314,9 @@ def route(req: dict[str, Any]) -> Route | None:
         # con edad, las vacunas que tocan a esa edad; sin ella, el calendario entero
         tail = f"&age_months={age:g}" if age is not None else ""
         return Route(f"/api/vaccines?country={country[:2]}{tail}&lang={lang}", "GET", {})
-    if weight is not None:
-        tail = f"&age_months={int(age)}" if age is not None else ""
-        return Route(f"/api/ors?weight_kg={weight}{tail}&lang={lang}", "GET", {})
+    if weight is not None or "vomiting" in req:
+        # el suero: /api/ors lee la edad y si vomita; el peso nunca cambió la respuesta
+        return route_for_offering("oral_rehydration_plan", req)
     return None
 
 
@@ -354,7 +447,8 @@ def handle(
     # state file can be lost with a redeploy, and a subscription job can arrive already paid.
     if status == "funded" and not st.get("submitted"):
         req = job_requirement(job, job_id)
-        r = route(req)
+        # ACP v2: the job's description IS the offering's name; it decides over the fields
+        r = route(req, str(job.get("description") or "") or None)
         if r is None:
             logger.warning("job {}: the form does not match any offering; leaving it", job_id)
             return

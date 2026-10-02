@@ -300,6 +300,8 @@ def test_el_trabajador_sabe_servir_cada_formulario(catalogo: dict):
     for o in catalogo["offerings"]:
         ejemplo = o["example"]
         assert w.route(ejemplo) is not None, (o["name"], ejemplo)
+        # y por su nombre, que es como llega de verdad (ACP v2: la descripción del trabajo)
+        assert w.route(ejemplo, o["name"]) is not None, (o["name"], ejemplo)
 
 
 # ── la sincronización con el mercado ──────────────────────────────────────────────────────

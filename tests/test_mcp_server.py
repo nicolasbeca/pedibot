@@ -279,3 +279,47 @@ def test_the_glama_claim_is_valid_json():
     data = json.loads(p.read_text(encoding="utf-8"))
     assert data["$schema"] == "https://glama.ai/mcp/schemas/connector.json"
     assert _re.fullmatch(r"glama_claim_[A-Za-z0-9_-]{32}", data["claim"])
+
+
+# ── cuando el manejador dice que no ──────────────────────────────────────────
+# Una marca desconocida o un país sin calendario devolvían «PediBot could not answer right now»,
+# que parece una avería. El asistente necesita el motivo para corregir la llamada (2-oct-2026).
+
+
+def test_a_refused_value_reaches_the_assistant_with_its_reason(tmp_path):
+    m = _mod()
+
+    def refuses(r):
+        raise m.ToolProblem("No vaccination schedule for 'XX'.")
+
+    srv = m.Server(serve=refuses, log=tmp_path / "u.jsonl")
+    res = _call(srv, "childhood_vaccination_schedule", {"country": "KE"})["result"]
+    assert res["isError"] is True
+    assert "No vaccination schedule for 'XX'." in res["content"][0]["text"]
+
+
+def test_the_messages_for_what_the_handlers_refuse():
+    m = _mod()
+    t = m.problem_text("/api/dose", 422, "unknown drug: aspirina", ["Calpol", "Dalsy"])
+    assert "aspirina" in t and "paracetamol" in t and "Calpol, Dalsy" in t
+    t = m.problem_text("/api/vaccines?country=XX", 404, "no schedule for XX; available: [...]", [])
+    assert "XX" in t and "enum" in t
+    t = m.problem_text("/api/growth?age_months=235", 422, "age: 0–228 months", [])
+    assert "0–228" in t
+
+
+def test_the_dose_route_carries_the_country(tmp_path):
+    api = FakeAPI()
+    _, srv = _server(tmp_path, api)
+    _call(srv, "child_medicine_dose", {"drug": "Calpol", "weight_kg": 14, "country": "HT"})
+    assert api.calls[-1].payload["country"] == "HT"
+
+
+def test_our_own_probes_are_not_counted(tmp_path):
+    """Las pruebas propias (cliente «pedibot-…») no entran en la medida: el 2-oct hubo que
+    borrar dos veces a mano las llamadas de comprobación del registro de uso."""
+    _, srv = _server(tmp_path)
+    _call(srv, "oral_rehydration_plan", {"age_months": 24}, client="pedibot-probe")
+    assert not (tmp_path / "mcp_uso.jsonl").exists()
+    _call(srv, "oral_rehydration_plan", {"age_months": 24}, client="claude-ai")
+    assert (tmp_path / "mcp_uso.jsonl").exists()

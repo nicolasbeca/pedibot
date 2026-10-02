@@ -16,7 +16,9 @@
         "properties": {
           "question": {
             "type": "string",
-            "description": "The question in plain words, e.g. 'my 2 year old has had a fever of 39 for two days'"
+            "description": "The question in plain words, e.g. 'my 2 year old has had a fever of 39 for two days'",
+            "minLength": 2,
+            "maxLength": 1500
           },
           "lang": {
             "type": "string",
@@ -35,7 +37,10 @@
           },
           "country": {
             "type": "string",
-            "description": "ISO 3166-1 alpha-2 of the parent's country, so the emergency number is the right one"
+            "description": "ISO 3166-1 alpha-2 of the parent's country, so the emergency number is the right one",
+            "pattern": "^[A-Za-z]{2}$",
+            "minLength": 2,
+            "maxLength": 2
           }
         }
       },
@@ -89,21 +94,15 @@
       "requirements": {
         "type": "object",
         "required": [
-          "question",
-          "mode"
+          "question"
         ],
         "description": "What the child should understand, and that the answer is for the child.",
         "properties": {
           "question": {
             "type": "string",
-            "description": "What to explain, e.g. 'why do I have a fever?' or 'what is a vaccine?'"
-          },
-          "mode": {
-            "type": "string",
-            "enum": [
-              "child"
-            ],
-            "description": "Always 'child': the answer is written for a 5 to 10 year old"
+            "description": "What to explain, e.g. 'why do I have a fever?' or 'what is a vaccine?'",
+            "minLength": 2,
+            "maxLength": 1500
           },
           "lang": {
             "type": "string",
@@ -122,7 +121,10 @@
           },
           "country": {
             "type": "string",
-            "description": "ISO 3166-1 alpha-2, used if the triage finds a warning sign"
+            "description": "ISO 3166-1 alpha-2, used if the triage finds a warning sign",
+            "pattern": "^[A-Za-z]{2}$",
+            "minLength": 2,
+            "maxLength": 2
           }
         }
       },
@@ -160,7 +162,6 @@
       },
       "example": {
         "question": "why do I have a fever?",
-        "mode": "child",
         "lang": "en"
       }
     },
@@ -178,7 +179,9 @@
         "properties": {
           "symptoms": {
             "type": "string",
-            "description": "The description, e.g. 'my baby is breathing fast and his lips look blue'"
+            "description": "The description, e.g. 'my baby is breathing fast and his lips look blue'",
+            "minLength": 2,
+            "maxLength": 1500
           },
           "lang": {
             "type": "string",
@@ -197,7 +200,10 @@
           },
           "country": {
             "type": "string",
-            "description": "ISO 3166-1 alpha-2, to return the right emergency number"
+            "description": "ISO 3166-1 alpha-2, to return the right emergency number",
+            "pattern": "^[A-Za-z]{2}$",
+            "minLength": 2,
+            "maxLength": 2
           }
         }
       },
@@ -276,19 +282,28 @@
           },
           "age_months": {
             "type": "number",
-            "description": "Age in months, 0 to 228 (240 with the CDC charts)"
+            "description": "Age in months, 0 to 240. The WHO charts go to 228 months (19 years); 229 to 240 need country US, whose CDC charts reach 20 years.",
+            "minimum": 0,
+            "maximum": 240
           },
           "weight_kg": {
             "type": "number",
-            "description": "Weight in kilograms"
+            "description": "Weight in kilograms. Give weight_kg, height_cm or both: at least one is needed.",
+            "exclusiveMinimum": 0.5,
+            "exclusiveMaximum": 200
           },
           "height_cm": {
             "type": "number",
-            "description": "Length (under 2, lying down) or height in centimetres"
+            "description": "Length (under 2, lying down) or height in centimetres. Give weight_kg, height_cm or both.",
+            "exclusiveMinimum": 30,
+            "exclusiveMaximum": 220
           },
           "country": {
             "type": "string",
-            "description": "ISO 3166-1 alpha-2: picks the chart the country uses when PediBot has it, and reports which one it uses"
+            "description": "ISO 3166-1 alpha-2: picks the chart the country uses when PediBot has it, and reports which one it uses",
+            "pattern": "^[A-Za-z]{2}$",
+            "minLength": 2,
+            "maxLength": 2
           },
           "lang": {
             "type": "string",
@@ -370,15 +385,21 @@
         "properties": {
           "drug": {
             "type": "string",
-            "description": "Brand printed on the bottle or the generic name"
+            "description": "Brand printed on the bottle (Calpol, Tylenol, Crocin, Panadol, Apiretal, Dalsy, Nurofen, Advil…) or the generic name: paracetamol (acetaminophen) or ibuprofen. Only those two medicines are covered; an unknown name returns an error that lists the names it accepts.",
+            "minLength": 2,
+            "maxLength": 40
           },
           "weight_kg": {
             "type": "number",
-            "description": "The child's weight in kilograms; the dose is calculated from it"
+            "description": "The child's weight in kilograms, 1 to 120; the dose is calculated from it",
+            "minimum": 1,
+            "maximum": 120
           },
           "age_months": {
-            "type": "integer",
-            "description": "Age in months, if known: it changes the warnings and can refuse the dose"
+            "type": "number",
+            "description": "Age in months, if known: it changes the warnings and can refuse the dose",
+            "minimum": 0,
+            "maximum": 216
           },
           "lang": {
             "type": "string",
@@ -394,6 +415,13 @@
             ],
             "default": "en",
             "description": "Language of the warnings"
+          },
+          "country": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 of where the bottle was bought: the strength sold there is listed first (in Haiti and the Dominican Republic children's ibuprofen is 200 mg/5 ml, twice the usual)",
+            "pattern": "^[A-Za-z]{2}$",
+            "minLength": 2,
+            "maxLength": 2
           }
         }
       },
@@ -469,11 +497,90 @@
         "properties": {
           "country": {
             "type": "string",
-            "description": "ISO 3166-1 alpha-2: BR, PT, ES, GB, US, FR, DE or IN"
+            "enum": [
+              "AE",
+              "AO",
+              "BF",
+              "BH",
+              "BI",
+              "BJ",
+              "BR",
+              "BW",
+              "CD",
+              "CF",
+              "CG",
+              "CI",
+              "CM",
+              "CV",
+              "DE",
+              "DJ",
+              "DO",
+              "DZ",
+              "EG",
+              "ER",
+              "ES",
+              "ET",
+              "FR",
+              "GA",
+              "GB",
+              "GH",
+              "GM",
+              "GN",
+              "GQ",
+              "GW",
+              "HT",
+              "IN",
+              "IQ",
+              "JO",
+              "KE",
+              "KM",
+              "KW",
+              "LB",
+              "LR",
+              "LS",
+              "LY",
+              "MA",
+              "MG",
+              "ML",
+              "MR",
+              "MU",
+              "MW",
+              "MZ",
+              "NA",
+              "NE",
+              "NG",
+              "OM",
+              "PT",
+              "QA",
+              "RW",
+              "SA",
+              "SC",
+              "SD",
+              "SL",
+              "SN",
+              "SO",
+              "SS",
+              "ST",
+              "SY",
+              "SZ",
+              "TD",
+              "TG",
+              "TN",
+              "TZ",
+              "UG",
+              "US",
+              "YE",
+              "ZA",
+              "ZM",
+              "ZW"
+            ],
+            "description": "ISO 3166-1 alpha-2 code, upper case, of one of the 75 countries with a schedule (the enum). For any other country there is no schedule and the tool says so."
           },
           "age_months": {
             "type": "number",
-            "description": "The child's age in months, to return what is due now and next"
+            "description": "The child's age in months, to return what is due now and next",
+            "minimum": 0,
+            "maximum": 216
           },
           "lang": {
             "type": "string",
@@ -541,21 +648,22 @@
       "name": "oral_rehydration_plan",
       "price": 0.01,
       "sla_minutes": 5,
-      "description": "How much oral rehydration solution to offer a child who is vomiting or has diarrhoea: volume per intake, how often, and what to do when the child brings it back up. By weight and age, from the AEMPS leaflet for the solution, the SEUP parent sheet on vomiting and the UK Dioralyte leaflet. These are fluids, not medicine, and the figures come from the leaflets, never from a model.",
+      "description": "How much oral rehydration solution to offer a child who is vomiting or has diarrhoea: volume per intake, how often, and what to do when the child brings it back up. By age, from the AEMPS leaflet for the solution, the SEUP parent sheet on vomiting and the UK Dioralyte leaflet. These are fluids, not medicine, and the figures come from the leaflets, never from a model.",
       "requirements": {
         "type": "object",
-        "required": [
-          "weight_kg"
-        ],
-        "description": "The child's weight and, if known, age.",
+        "required": [],
+        "description": "The child's age and whether they are vomiting. Without an age, the guidance for every age band is returned, each one named.",
         "properties": {
-          "weight_kg": {
-            "type": "number",
-            "description": "The child's weight in kilograms"
-          },
           "age_months": {
-            "type": "integer",
-            "description": "Age in months: under and over one year get different volumes"
+            "type": "number",
+            "minimum": 0,
+            "maximum": 216,
+            "description": "Age in months: under 1 month, under and over one year get different guidance"
+          },
+          "vomiting": {
+            "type": "boolean",
+            "default": false,
+            "description": "True if the child is vomiting: adds what to do when the solution is brought back up"
           },
           "lang": {
             "type": "string",
@@ -606,8 +714,8 @@
         }
       },
       "example": {
-        "weight_kg": 12,
         "age_months": 24,
+        "vomiting": true,
         "lang": "en"
       }
     },
@@ -625,7 +733,9 @@
         "properties": {
           "topic": {
             "type": "string",
-            "description": "A few words about the subject, e.g. 'fever', 'head lice', 'first solid foods'"
+            "description": "A few words about the subject, e.g. 'fever', 'head lice', 'first solid foods'",
+            "minLength": 2,
+            "maxLength": 200
           },
           "lang": {
             "type": "string",
