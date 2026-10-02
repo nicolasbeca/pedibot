@@ -8,6 +8,23 @@
 
 ---
 
+## 2-oct-2026 · dónde estamos
+
+**Hecho hoy:** el servidor MCP vivo en https://pedibot.xyz/mcp y **dado de alta en el registro
+oficial** (`xyz.pedibot/pedibot`, lo publiqué yo con tu permiso); las pruebas mías borradas del
+panel; tú pediste la indexación en Search Console de las páginas de marca.
+
+**Lo tuyo que queda:**
+1. **Glama:** cuando nos liste (copia el registro oficial, un día o dos), entra en nuestra ficha
+   con tu cuenta, abre «Claim» y pégame el token que empieza por `glama_claim_`. No es una
+   contraseña ni da acceso a tu cuenta: es un código que se publica en
+   `pedibot.xyz/.well-known/glama.json` y demuestra que el dominio es nuestro. Lo publico yo.
+2. **Backable**, este fin de semana (3-4 oct).
+
+**En pausa hasta que tú avises:** la app de Google Play (cuenta, probar el APK, probadores).
+
+---
+
 ## 1-oct-2026 · dónde estamos
 
 **Hecho hoy por ti:** clave de la app guardada y copiada fuera del PC; nombre «PediBot» libre en

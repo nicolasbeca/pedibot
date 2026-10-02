@@ -47,8 +47,8 @@
 - Vigilante: `pedibot-mcp` entra en `UNITS`. Tests: `test_mcp_server.py`, `test_panel_mcp_card.py`.
 - **Comprobado en vivo** desde fuera: initialize, tools/list (8) y las ocho herramientas; dosis
   sin peso → error con los campos que faltan; una pregunta en castellano contesta con la SEUP.
-- **Registro oficial: pendiente del operador** (el control de permisos no me deja publicar
-  hacia fuera). `ops/mcp/server.json` valida (`xyz.pedibot/pedibot`); la prueba de dominio está
+- **Registro oficial: publicado el 2-oct** con permiso explícito del operador (activo en
+  registry.modelcontextprotocol.io). `ops/mcp/server.json` valida (`xyz.pedibot/pedibot`); la prueba de dominio está
   en `/.well-known/mcp-registry-auth` y la clave privada en `~/.ssh/pedibot_mcp_registry.pem`.
 
 ## 1-oct-2026 (3) · el neumococo es nacional en la India
