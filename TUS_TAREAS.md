@@ -15,10 +15,7 @@ oficial** (`xyz.pedibot/pedibot`, lo publiqué yo con tu permiso); las pruebas m
 panel; tú pediste la indexación en Search Console de las páginas de marca.
 
 **Lo tuyo que queda:**
-1. **Glama:** cuando nos liste (copia el registro oficial, un día o dos), entra en nuestra ficha
-   con tu cuenta, abre «Claim» y pégame el token que empieza por `glama_claim_`. No es una
-   contraseña ni da acceso a tu cuenta: es un código que se publica en
-   `pedibot.xyz/.well-known/glama.json` y demuestra que el dominio es nuestro. Lo publico yo.
+1. ✅ **Glama: verificado el 2-oct** (con tu cuenta, la misma de Regime).
 2. **Backable**, este fin de semana (3-4 oct).
 
 **En pausa hasta que tú avises:** la app de Google Play (cuenta, probar el APK, probadores).
