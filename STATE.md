@@ -2,6 +2,31 @@
 
 Última actualización: **2026-10-02** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 2-oct-2026 (2) · las consultas reales que fallaron, arregladas con candado (L249)
+
+- **Leídas las consultas reales del 30-sep y el 1-oct.** Fallaron dos personas:
+  - «Vis translations» / «Vaccine information statements» (EE. UU., casi seguro Immunize.org el
+    día de su permiso) → «no puedo confirmar que tengamos eso». La ficha del chat no nombraba
+    Immunize.org, el RKI ni Vikaspedia. Ahora sí, y un test exige nombrar toda organización con
+    10 documentos o más. «VIS» es sinónimo de palabra entera (`vis$`) de las hojas de vacunas: con
+    dos palabras el chat pedía «¿qué te pasa?» (`test_vis_is_a_vaccine_sheet.py`). Y quien
+    pregunta por las VIS recibe la lista de hojas con su enlace, sin modelo (`bot/vis.py`,
+    verificación `vis_list`), de la lengua que pida o de las tres. Comprobado en vivo.
+  - Un padre de EE. UU. recibió sólo °C, y «110 degree celsius» no se leyó como °F.
+    `bot/temperature.py`: en países de Fahrenheit (EE. UU. y territorios, Liberia, Belice…) o si
+    el padre escribe en °F, cada °C lleva su °F; una cifra que sólo cabe en °F (95-115) abre la
+    respuesta con «110 °F = 43.3 °C». Sin modelo. También «39C» sin símbolo, que salió en vivo.
+  - La 918 en modo niño no era fallo: botón «explícaselo a mi hijo».
+- **La regla nueva:** las consultas reales se leen al empezar cada sesión; cada una mala deja el
+  mismo día su test y su línea en `eval/bateria_operador/09_reales_2oct.txt`.
+- **Las dos guías del temporizador** (tuberculosis en inglés, asma en castellano) habían entrado
+  sin sus pasos: tema `tuberculosis` en la taxonomía, exportadores, DATOS.md, README (529 guías).
+- **Tuits con menciones:** `config/x_handles.yaml` (@vikaspedia, @hifa_org, @kenyapaeds,
+  comprobadas en su web). El generador semanal sólo deja pasar esas, una por tuit y en su tema.
+  Somos Amigos e Immunize.org no tienen X.
+- **MCP:** cada herramienta dice cuándo usarla y qué hermana usar (`USE_WHEN`), lo que Glama puntúa.
+  Lo demás que hizo Regime (Glama, MCP Newsletter), en IDEAS.md.
+
 ## 2-oct-2026 · servidor MCP: las herramientas del agente, para cualquier asistente
 
 - **Vivo en https://pedibot.xyz/mcp** (`ops/mcp_server.py`, `pedibot-mcp.service`, puerto 8603

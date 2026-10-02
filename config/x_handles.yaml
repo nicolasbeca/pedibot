@@ -1,0 +1,29 @@
+# Cuentas de X que un tuit de PediBot puede mencionar (2-oct-2026, petición del operador).
+#
+# «Mencionar a cuentas no demasiado grandes que puedan hacernos un poco más de caso; a la OMS
+# no.» Cada una está comprobada en la web de la propia organización (verified_from): un handle
+# inventado desde la cuenta de una web sanitaria señala a quien no es. Una mención por tuit,
+# sólo en un tuit sobre su tema (`topics`: al menos una de esas palabras tiene que estar en el
+# texto). Antes de añadir una: que exista, que sea pequeña o mediana y que hable de eso.
+#
+# Sin X, y por eso fuera: Somos Amigos Medical Missions (Instagram @somosamigosmedical,
+# Facebook), Immunize.org (Facebook, Instagram, LinkedIn). Comprobado el 2-oct-2026.
+handles:
+  - handle: vikaspedia
+    name: Vikaspedia
+    about: Government of India portal whose Hindi child-health pages PediBot cites, with permission
+    topics: [hindi, india, vikaspedia]
+    verified_from: https://vikaspedia.in
+    verified_on: 2026-10-02
+  - handle: hifa_org
+    name: HIFA
+    about: Healthcare Information For All, the global forum on reliable health information for everyone
+    topics: [health information, low-income, offline, hifa, countries]
+    verified_from: https://www.hifa.org
+    verified_on: 2026-10-02
+  - handle: kenyapaeds
+    name: Kenya Paediatric Association
+    about: paediatricians' association of Kenya
+    topics: [kenya, swahili]
+    verified_from: https://kenyapaediatric.org
+    verified_on: 2026-10-02

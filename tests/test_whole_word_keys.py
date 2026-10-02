@@ -184,6 +184,9 @@ _REVISADAS = {
     "deshidrat",
     "allerg",
     "alérgic",
+    # 2-oct-2026: «alergia» coge «alergias», su plural; saltó con la guía del asma del servidor
+    "alergia",
+    "tuberculo",  # tuberculosis, tuberculose: su propia raíz (2-oct-2026)
     "milestone",
     "development",
     "adolescent",

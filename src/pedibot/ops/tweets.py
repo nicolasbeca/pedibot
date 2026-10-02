@@ -156,7 +156,19 @@ def facts(root: pathlib.Path, index_db: pathlib.Path) -> dict[str, Any]:
             f"{SITE}/guides — every guide",
             *links,
         ],
+        "mentions": mentions(root),
     }
+
+
+def mentions(root: pathlib.Path) -> list[dict[str, Any]]:
+    """Las cuentas de X que se pueden mencionar (config/x_handles.yaml, 2-oct-2026)."""
+    import yaml
+
+    p = root / "config" / "x_handles.yaml"
+    if not p.exists():
+        return []
+    data = yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+    return [dict(h) for h in data.get("handles") or []]
 
 
 def allowed_numbers(f: dict[str, Any]) -> set[str]:
@@ -212,6 +224,11 @@ def fact_sheet(f: dict[str, Any]) -> str:
             *(f"  · {t}" for t in f["guide_titles_english"][:40]),
             "- pages you may link, copied EXACTLY as written (the part before the dash):",
             *(f"  · {x}" for x in f.get("links", [])[:40]),
+            "- accounts you may mention (handle — who they are — the topic a post must be about):",
+            *(
+                f"  · @{h['handle']} — {h['name']}, {h['about']} — {', '.join(h['topics'])}"
+                for h in f.get("mentions", [])
+            ),
         ]
     )
 
@@ -244,7 +261,10 @@ anything. Nobody has. Saying so would be the one lie that matters.
   away. When you use one, copy it EXACTLY from the list of pages below — never invent a
   URL, never link a page that is not listed, never put a link in the middle of a sentence,
   and never use a shortener. Link the page that is actually about what the post says.
-- No @handles.
+- MENTIONS: in about one post in four, you may mention ONE account, and only one from the list
+  of accounts below, in a post that is about that account's topic and says something useful to
+  them. Never mention any other account, never two in one post, and never tag an account just
+  to thank it.
 - Never mention a token, a coin, crypto, a wallet or a chain. These are posted from the account
   of a children's health site and have nothing to do with any of that.
 - At most 280 characters each, counted exactly.
@@ -303,7 +323,18 @@ def problems(text: str, f: dict[str, Any]) -> list[str]:
             out.append("el enlace va al final, no en medio de la frase")
     if m := FORBIDDEN.search(t):
         out.append(f"afirmación prohibida: «{m.group(0)}»")
-    if "@" in t:
+    # 2-oct-2026: menciones, sólo de la lista comprobada, una y en su tema
+    citadas = re.findall(r"@(\w+)", t)
+    lista = {str(h["handle"]).lower(): h for h in f.get("mentions", [])}
+    if len(citadas) > 1:
+        out.append(f"{len(citadas)} menciones; como mucho una")
+    for c in citadas:
+        h = lista.get(c.lower())
+        if h is None:
+            out.append(f"menciona una cuenta que no está en la lista: @{c}")
+        elif not any(str(w).lower() in t.lower().replace(f"@{c.lower()}", "") for w in h["topics"]):
+            out.append(f"menciona a @{c} en un tuit que no es de su tema")
+    if "@" in t and not citadas:
         out.append("menciona una cuenta")
     if m := TOKEN_TALK.search(t):
         out.append(f"habla del token desde la cuenta de la web sanitaria: «{m.group(0)}»")

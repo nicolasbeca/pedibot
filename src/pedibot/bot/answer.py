@@ -34,6 +34,7 @@ from pedibot.bot.muac import is_muac_question, read_mm
 from pedibot.bot.muac import reason as muac_reason
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
+from pedibot.bot.temperature import con_fahrenheit, lee_en_fahrenheit, nota_de_conversion
 from pedibot.bot.triage import (
     ASISTENTE,
     LEVEL_ORDER,
@@ -49,6 +50,7 @@ from pedibot.bot.vaccines import (
     is_vaccine_question,
     pide_calendario,
 )
+from pedibot.bot.vis import lista_vis, pide_vis
 from pedibot.bot.who_first import extra_terms as who_first_terms
 from pedibot.bot.who_first import prompt_note as who_first_note
 from pedibot.bot.who_first import tropical_note
@@ -1642,6 +1644,13 @@ class Engine:
             a.text = SIGUE_EL_AVISO.get(a.lang, SIGUE_EL_AVISO["en"])
         if ctx["fuera"] and a.verification in _FRASES_FIJAS:
             a.text = self._traduce(a.text, ctx["fuera"], ctx)
+        # 2-oct-2026: los grados en las unidades del padre (bot/temperature.py). Después de
+        # traducir, que la traducción tira lo que trae cifras nuevas.
+        if lee_en_fahrenheit(query, country):
+            a.text = con_fahrenheit(a.text)
+            nota = nota_de_conversion(query)
+            if nota and not a.text.startswith(nota):
+                a.text = f"{nota}.\n\n{a.text}"
         if ctx["costes"]:
             ti = sum(c[0] for c in ctx["costes"])
             to = sum(c[1] for c in ctx["costes"])
@@ -2092,6 +2101,15 @@ class Engine:
         # de verdad que empiece igual.
         if query.strip().lower() == CLARIFY_OPTIONS[lang][-1].strip().lower():
             return Answer(DESCRIBE_IT[lang], tr.level, banner, [], lang, None, None, [], "clarify")
+
+        # 2-oct-2026: «VIS in Swahili», «Vis translations» (consultas reales, L249). La lista de
+        # hojas sale del catálogo con su enlace; no la redacta el modelo (bot/vis.py).
+        if tr.level == "routine" and not tr.is_alarm and pide_vis(query):
+            from pedibot.settings import ROOT as _ROOT
+
+            texto = lista_vis(query, lang, _ROOT / "config" / "fuentes.yaml")
+            if texto:
+                return Answer(texto, tr.level, banner, [], lang, None, None, [], "vis_list")
 
         # 21-sep-2026, batería: «Puoi scrivere in italiano?» o «¿por qué me hablas en inglés?»
         # como PRIMER mensaje no traen pregunta que repetir, y se contestaban con pasajes al azar

@@ -67,3 +67,11 @@ Cómo se corre, de principio a fin:
 
 Y después se leen. El revisor marca de más —discute umbrales que tienen fuente y fecha—, así que
 su lista es por dónde empezar a leer, no la lista de arreglos.
+
+
+## La novena: las reales que fallaron (2-oct-2026)
+
+`09_reales_2oct.txt`. No las escribió nadie: son las consultas reales del 30-sep y el 1-oct que
+salieron mal (L249), y alguna variante de la misma forma. Se corre con el país que toque
+(`US` para las de Fahrenheit). **Cada consulta real que salga mal entra aquí el mismo día**,
+además de su test en `tests/`.

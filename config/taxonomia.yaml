@@ -6,7 +6,9 @@ topics:
         humo, leña, biomasa, carbón, estufa, cocina de leña, contaminación del aire, "air pollution", "wood smoke", "indoor smoke", fumée, rauch, дым, дровах, دخان, حطب, تلوث الهواء, धुआं, धुएं, लकड़ी, चूल्हा, वायु प्रदूषण, tabaco, tabaquismo, fumar, tobacco, smoking, tabac, tabak, табак, курени, تدخين, تبغ, يدخن, يدخّن, تدخن, مدخن, धूम्रपान, तंबाकू,
         atme, atmung, "schwer luft", "respire mal", "respira mal",
         # 25-sep-2026, ver la nota del final del fichero
-        bronchiolit, bronchiolite, stridor, estridor, gripe, influenza, flu$, syncytial, sincitial, vrs$, rsv$, resfrío, resfrio]
+        bronchiolit, bronchiolite, stridor, estridor, gripe, influenza, flu$, syncytial, sincitial, vrs$, rsv$, resfrío, resfrio,
+        # 2-oct-2026: la guía de tuberculosis que publicó el temporizador no tenía tema
+        tuberculo, tuberkulo, туберкул, السل$, टीबी, "tb$"]
   digestivo: [vómito, vomito, diarrea, gastroenteritis, deshidrat, estreñimiento, estreñido, abdominal, barriga, tripa, suero, rehidrat,
              lombrices, oxiuros, lombriz, threadworm, pinworm, oxyures, madenwürmer, madenwurmer,
              острицы, острица, ديدان, कीड़े, vomit, diarrh, constipat, stomach, dehydrat,
@@ -89,6 +91,7 @@ topics:
         # 25-sep-2026, ver la nota del final del fichero
         craneosinostosis, craniosynostosis, plagiocefal, plagiocephal, braquicefal, brachycephal, anquiloglosia, tongue-tie, frenillo lingual]
   vacunas: [vacuna, inmunización, inmunizacion, calendario vacunal, vaccin, immuniz,
+        "vis$",  # 2-oct-2026: Vaccine Information Statements (consulta real, L249)
                  atrasada, atrasadas, retraso vacunal, catch-up, late vaccination,
                  vacinas atrasadas, impfungen nachholen, rattrapage vaccinal,
                  наверстывающая вакцинация, تطعيمات متأخرة, छूटे टीके,

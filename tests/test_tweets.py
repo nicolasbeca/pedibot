@@ -54,6 +54,11 @@ FACTS = {
         "https://pedibot.xyz/dose — the weight-based dose calculator",
         "https://pedibot.xyz/guides/fever — What should I do if my child has a fever?",
     ],
+    # 2-oct-2026: las cuentas que se pueden mencionar (config/x_handles.yaml)
+    "mentions": [
+        {"handle": "vikaspedia", "name": "Vikaspedia", "about": "Hindi pages",
+         "topics": ["hindi"], "verified_from": "https://vikaspedia.in"},
+    ],
 }
 OK = allowed_numbers(FACTS)
 
@@ -388,3 +393,40 @@ def test_nombrar_el_sitio_sin_enlace_tampoco():
 
     f = _hechos_con_enlaces()
     assert problems("Everything is on pedibot.xyz", f)
+
+
+# ── menciones (petición del operador, 2-oct-2026) ────────────────────────────
+# «Mencionar a cuentas no demasiado grandes que puedan hacernos un poco más de caso.» Sólo las
+# de config/x_handles.yaml, comprobadas en la web de cada organización; una por tuit y en su tema.
+
+
+def test_a_listed_account_on_its_topic_passes():
+    f = _hechos_con_enlaces()
+    t = "The chat now cites Hindi child-health pages from @vikaspedia when a parent writes in Hindi."
+    assert problems(t, f) == []
+
+
+def test_an_unlisted_account_is_dropped():
+    f = _hechos_con_enlaces()
+    assert any("cuenta" in x for x in problems("Thanks to @WHO for the guidelines.", f))
+
+
+def test_a_listed_account_off_its_topic_is_dropped():
+    f = _hechos_con_enlaces()
+    fallos = problems("Every guide names its sources. Thanks @kenyapaeds", f)
+    assert any("tema" in x for x in fallos), fallos
+
+
+def test_two_mentions_are_dropped():
+    f = _hechos_con_enlaces()
+    t = "Swahili in Kenya and Hindi in India: @kenyapaeds @vikaspedia"
+    assert any("menciones" in x for x in problems(t, f))
+
+
+def test_the_list_is_in_the_fact_sheet_and_every_entry_was_checked():
+    f = _hechos_con_enlaces()
+    sheet = fact_sheet(f)
+    for h in f["mentions"]:
+        assert f"@{h['handle']}" in sheet
+        assert h["verified_from"].startswith("https://")
+        assert h["topics"]

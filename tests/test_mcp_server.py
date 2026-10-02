@@ -66,7 +66,7 @@ def test_the_tools_are_the_acp_offerings(tmp_path):
     assert set(tools) == {o["name"] for o in CATALOGUE["offerings"]}
     for o in CATALOGUE["offerings"]:
         t = tools[o["name"]]
-        assert t["description"] == o["description"]
+        assert t["description"].startswith(o["description"])
         assert t["inputSchema"]["type"] == "object"
         assert t["inputSchema"]["properties"] == o["requirements"]["properties"]
         assert t["annotations"]["readOnlyHint"] is True
@@ -252,3 +252,19 @@ def test_the_registry_file_points_here():
     assert len(sj["description"]) <= 100
     auth = ROOT / "web" / "site" / "public" / ".well-known" / "mcp-registry-auth"
     assert auth.read_text(encoding="utf-8").startswith("v=MCPv1; k=ed25519; p=")
+
+
+# ── lo que puntúan los catálogos ─────────────────────────────────────────────
+# Glama puntúa cada herramienta; en Regime (2-oct) flojeaban todas en lo mismo: no decían cuándo
+# usarlas ni qué hermana usar en su lugar. La línea viaja sólo por MCP (ACP corta en 500).
+
+
+def test_every_tool_says_when_to_use_it_and_names_a_sibling(tmp_path):
+    m, srv = _server(tmp_path)
+    assert set(m.USE_WHEN) == set(m.ENDPOINT)
+    names = set(m.ENDPOINT)
+    for t in srv.tools:
+        line = m.USE_WHEN[t["name"]]
+        assert line.startswith("Use when"), t["name"]
+        assert line in t["description"]
+        assert any(other in line for other in names - {t["name"]}), t["name"]

@@ -89,3 +89,34 @@ def test_what_the_card_denies_is_really_denied() -> None:
         # 28-sep-2026: las fotos se apagan (iban a un proveedor externo sin decirlo en la política
         # de privacidad). Entonces la ficha tampoco puede prometerlas.
         assert "camera button" not in TEXTO, "las fotos están apagadas y la ficha ofrece la cámara"
+
+
+# 2-oct-2026: «Vaccine information statements» y «Vis translations», desde EE. UU. el 30-sep,
+# el día que Immunize.org nos dio permiso, recibieron «no puedo confirmar que PediBot tenga
+# eso». Teníamos 40 hojas suyas. La ficha nombraba a las fuentes de agosto y nadie la volvió a
+# mirar al añadir Immunize.org, el Robert Koch Institut y Vikaspedia.
+COMO_SE_LLAMA_EN_LA_FICHA = {
+    "WHO": "World Health Organization",
+    "Ministério da Saúde": "Brazilian health ministry",
+    "Gouvernement du Canada": "Canadian public health",
+    "RKI": "Robert Koch",
+}
+
+
+def test_it_names_every_organisation_with_ten_documents_or_more() -> None:
+    import collections
+
+    import yaml
+
+    cuenta: collections.Counter[str] = collections.Counter()
+    for f in ("fuentes.yaml", "fuentes_web.yaml"):
+        data = yaml.safe_load((ROOT / "config" / f).read_text(encoding="utf-8"))
+        cuenta.update(str(s.get("org")) for s in data["sources"] if s.get("org"))
+    for org, n in cuenta.items():
+        if n >= 10:
+            assert COMO_SE_LLAMA_EN_LA_FICHA.get(org, org) in TEXTO, (org, n)
+
+
+def test_it_knows_the_translated_vaccine_sheets() -> None:
+    assert "Vaccine Information Statements" in TEXTO
+    assert "Swahili" in TEXTO

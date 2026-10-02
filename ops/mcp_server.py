@@ -88,6 +88,48 @@ ENDPOINT = {
 """Adónde tiene que llegar cada herramienta. Si el enrutado del worker la manda a otro sitio, es
 que faltan campos: se contesta con el error, no con otra cosa."""
 
+USE_WHEN = {
+    "paediatric_question_with_sources": (
+        "Use when a parent asks a free-form question about a baby's or child's health. For a "
+        "medicine dose use child_medicine_dose; for a vaccination calendar use "
+        "childhood_vaccination_schedule; to screen symptoms for danger use "
+        "paediatric_warning_sign_check, which is faster and uses no AI."
+    ),
+    "child_friendly_health_explanation": (
+        "Use when the answer will be read by or to a child aged 5 to 10. For the parent's own "
+        "question use paediatric_question_with_sources."
+    ),
+    "paediatric_warning_sign_check": (
+        "Use when symptoms are described, first, to know if the child needs emergency care, "
+        "a visit today or home care. For the full explanation afterwards use "
+        "paediatric_question_with_sources."
+    ),
+    "child_growth_percentile": (
+        "Use when you have a child's sex, age and weight or height and want the percentile. "
+        "For malnutrition with an arm measurement, or general questions about growth, use "
+        "paediatric_question_with_sources."
+    ),
+    "child_medicine_dose": (
+        "Use when asked how much paracetamol (acetaminophen) or ibuprofen to give a child; "
+        "needs the weight. For fluids in vomiting or diarrhoea use oral_rehydration_plan; for "
+        "any other medicine use paediatric_question_with_sources."
+    ),
+    "childhood_vaccination_schedule": (
+        "Use when asked which vaccines a child gets, or are due, in a given country. For what a "
+        "vaccine does or its side effects use paediatric_question_with_sources."
+    ),
+    "oral_rehydration_plan": (
+        "Use when a child is vomiting or has diarrhoea and you know the weight. Check danger "
+        "signs first with paediatric_warning_sign_check."
+    ),
+    "paediatric_guide_finder": (
+        "Use when the user wants something to read or share on a topic. To answer a specific "
+        "question use paediatric_question_with_sources."
+    ),
+}
+"""Cuándo usar cada herramienta y qué hermana usar en su lugar. Sólo viaja por MCP: ACP corta
+la descripción en 500 caracteres. Los catálogos (Glama) puntúan justo esto."""
+
 MODEL_PATH = "/api/agent/ask"
 MODEL_PER_DAY = int(os.environ.get("PEDIBOT_MCP_MODEL_PER_DAY") or 100)
 MODEL_PER_IP_HOUR = int(os.environ.get("PEDIBOT_MCP_MODEL_PER_IP_HOUR") or 10)
@@ -122,7 +164,7 @@ def tools() -> list[dict[str, Any]]:
         out.append({
             "name": o["name"],
             "title": _title(o["name"]),
-            "description": o["description"],
+            "description": f"{o['description']}\n\n{USE_WHEN[o['name']]}",
             "inputSchema": {**o["requirements"], "type": "object"},
             "outputSchema": {**o["deliverable"], "type": "object"},
             "annotations": {

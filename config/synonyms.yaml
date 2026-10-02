@@ -11,6 +11,12 @@
 # Arabic triggers appear bare and with the article: the match is a prefix on the token, and
 # "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
+  # 2-oct-2026: «Vis translations», consulta real desde EE. UU. VIS son las Vaccine Information
+  # Statements de los CDC; palabra entera, que «visible» o «visit» no son vacunas.
+  "vis$":
+  - vaccine information statement
+  - vaccine
+  - vaccination
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "premature":
   - premature

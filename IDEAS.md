@@ -629,6 +629,20 @@ Lo que hay, mirado el 30-sep-2026 (ninguno pide pagar):
    canales no puedan dar cifras distintas; servicio aparte de la API; medirlo en el informe.
    **Hecho el 2-oct-2026:** vivo en `pedibot.xyz/mcp`, medido en el panel (STATE.md). Falta
    el alta en el registro, que la da el operador.
+   **Lo que hizo Regime después (1 y 2-oct), para repetirlo aquí:**
+   - El registro oficial se propaga solo: en un día unos 30 catálogos y sondas (Glama, mcpbeat,
+     MCPWatch, BrickBlue, agentprobe…) pedían `initialize` y `tools/list`, ~230 al día. **Llamadas
+     reales: cero.** Estar listado no es que te usen: se mide en el panel antes de opinar.
+   - **Glama** puntúa cada herramienta (TDQS). Regime flojeaba en «cuándo usarla» y en los
+     valores cerrados. Hecho aquí el 2-oct: cada herramienta lleva su línea «Use when…» con la
+     hermana que usar en su lugar (`USE_WHEN`, sólo por MCP). Falta mirar la nota cuando Glama
+     nos lea.
+   - **Reclamar la ficha de Glama:** `/.well-known/glama.json` con un token. Necesita una cuenta
+     del operador en Glama (gratis); el token se copia de su panel de «claim» y lo publico yo.
+   - **MCP Newsletter** (`contact@mcpnewsletter.com`, mcpnewsletter.com/submit): piden servidores
+     nuevos. Correo uno a uno, con su sí. PulseMCP tiene los envíos pausados.
+   - Para PediBot vale además buscar catálogos o listas de salud digital (p. ej. las que lee HIFA)
+     cuando el servidor esté en el registro.
 2. **Registro A2A** — https://www.a2a-registry.org/ . Pide la ficha del agente en
    `/.well-known/agent.json`. Un fichero pequeño; iría con lo anterior.
 3. **Agentverse (Fetch.ai)** — https://www.fetch.ai/agentverse . El más grande (millones de

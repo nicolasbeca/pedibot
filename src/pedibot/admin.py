@@ -860,6 +860,7 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
             "dose_calculator",
             "vaccine_schedule",
             "growth_chart",
+            "vis_list",  # la lista de hojas de vacunas, del catálogo (2-oct-2026)
         )
         flag = (
             '<form method=post action="/admin/flag" style="display:inline">'

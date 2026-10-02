@@ -34,8 +34,13 @@ it (`tests/test_the_card_about_pedibot_is_true.py` checks the parts that can be 
   Pediatrics (United States), the Spanish Association of Paediatrics (AEP), its primary care
   branch (AEPap) and the Spanish paediatric emergency society (SEUP), the Spanish medicines
   agency (AEMPS) and regional health services, ECIMED (Cuba), the Catholic University of Chile,
-  the National Health Mission (India), the Brazilian health ministry, MedlinePlus and Canadian
-  public health.
+  the National Health Mission (India), the Brazilian health ministry, MedlinePlus,
+  Canadian public health, and the Robert Koch Institute (Germany) for German.
+- Yes, it has translated vaccine sheets: the CDC's Vaccine Information Statements (VIS) in
+  Swahili, Arabic and Hindi. The translations are Immunize.org's own, and Immunize.org gave
+  PediBot permission to cite them. The chat cites them when a parent asks about a vaccine in one
+  of those languages, with a link to the sheet itself, and they are listed at pedibot.xyz/sources.
+- Child health pages in Hindi from Vikaspedia (Government of India), also with permission.
 - Every document it is allowed to quote is listed, with organisation, title, year, language and a
   link to the original, at pedibot.xyz/sources.
 - The documents are checked once a week to see whether the original page has changed.

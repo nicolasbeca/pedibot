@@ -1985,3 +1985,38 @@ palabra del padre está en su título). Que el modelo la CITE, no: una regla nue
 dobló las citas en hindi y dejó a seis padres más sin respuesta, y la v7 contra sí misma variaba
 casi lo mismo que la mejora. **Una mejora más pequeña que el ruido no es una mejora, y para saber
 cuánto es el ruido hay que correr dos veces lo de siempre**, no sólo lo nuevo.
+
+## L249 · Cinco personas preguntan y dos se van con una respuesta mala (2-oct-2026)
+
+El operador leyó las últimas consultas reales y no le salieron las cuentas: «no puede ser que
+cada vez que cinco personas nos pregunten, tres respuestas estén mal». Leídas una a una (30-sep y
+1-oct, sin contar los ejemplos de la portada ni mis pruebas), fallaron dos personas, y por fallos
+que un test habría cazado:
+
+1. **«Vis translations» y «Vaccine information statements»** (EE. UU., 30-sep, 14:20, casi seguro
+   alguien de Immunize.org mirándonos el día que nos dio permiso): «no puedo confirmar que PediBot
+   tenga eso». Teníamos 40 hojas suyas. La pregunta se leyó como «sobre PediBot» y la ficha que
+   usa el chat para hablar de sí mismo (`config/sobre_pedibot.md`) nombraba las fuentes de agosto:
+   **al añadir Immunize.org, el RKI y Vikaspedia nadie la tocó.** Arreglo con candado: toda
+   organización con 10 documentos o más tiene que estar nombrada en la ficha
+   (`test_the_card_about_pedibot_is_true.py`), y las hojas traducidas, también.
+2. **«fever of 39» desde EE. UU.** recibió sólo °C, y **«110 degree celsius»** recibió «110 °C no
+   existe, mide otra vez», sin decir lo evidente: 110 sólo cabe en °F (43,3 °C). Las guías están
+   en Celsius y nadie pensó en quién lee en Fahrenheit, aunque EE. UU. es de donde más nos
+   visitan. Arreglo sin modelo (`bot/temperature.py`): cada °C lleva su °F para quien está en un
+   país de Fahrenheit o escribe en °F, y una cifra que sólo cabe en °F abre la respuesta con su
+   conversión (`test_fahrenheit_for_who_reads_it.py`).
+
+(La 918, en modo niño, no fue un fallo: es el botón «explícaselo a mi hijo» pulsado.)
+
+**Lo que cambia en la forma de trabajar, para que no se repita:**
+
+- **Al añadir una fuente, un país o una lengua, se repasa todo lo que habla de lo que tenemos:**
+  la ficha del chat, `/sources`, `/about`, el README y la hoja de los tuits. Ya hay candado para
+  la ficha; para lo demás, esta lista.
+- **Se piensa en quién lee, no en quién escribió la guía:** unidades (°F, lb, oz), formato de
+  fecha, el número de urgencias, la marca de su farmacia. La guía está en Celsius; el padre, no.
+- **Las consultas reales se leen al empezar cada sesión**, como el correo, y **cada una que salga
+  mal deja el mismo día dos cosas: un test en `tests/` y su línea en
+  `eval/bateria_operador/09_reales_2oct.txt`**. Un arreglo sin test vuelve; uno sin la pregunta
+  real en la batería no se mide con el modelo de verdad.
