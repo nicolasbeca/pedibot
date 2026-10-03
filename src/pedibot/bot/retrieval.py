@@ -964,6 +964,26 @@ def _one_readable_up_front(hits: list[Hit], lang: str) -> list[Hit]:
     return hits
 
 
+#: Palabras que dicen de quién se habla o cómo está, no de qué: no bastan para que un título
+#: «trate de lo que se pregunta». «My child got shampoo in his eye and is crying» subía «Soothing
+#: a crying baby», y «my baby is 2 months old and has 100.8 F», «Baby teething symptoms»
+#: (3-oct-2026). Ya plegadas, como las compara `term_matches`.
+_QUIEN_Y_COMO = frozenset(
+    fold(w)
+    for w in (
+        "baby babies babys child children childs kid kids toddler toddlers son daughter boy girl "
+        "infant infants newborn newborns teen teenager teenagers crying cries cry old year years "
+        "month months week weeks day days feeding eating normal normally sleep sleeping "
+        "bebé bebés niño niña niños hijo hija hijos lactante recién nacido llora llorando "
+        "enfant bébé kind baby kinder sohn tochter criança filho filha bebê"
+    ).split()
+)
+
+
+#: La palabra que sigue a una negación: «breathing very fast but no fever» no trata de la fiebre.
+_NEGADA = re.compile(r"\b(?:no|not|without|sin|pas de|kein|keine|sem|без)\s+(\w+)", re.I)
+
+
 def _own_language_second(
     hits: list[Hit], propias: list[Hit], lang: str, topic: str, suyas: list[str]
 ) -> list[Hit]:
@@ -987,7 +1007,9 @@ def _own_language_second(
     for p in propias:
         titulo = p.chunk.doc_title.split(" — स्रोत:")[0]
         palabras = [fold(w) for w in _TOKEN.findall(titulo.lower())]
-        de_lo_suyo = any(term_matches(t, palabras) for t in suyas)
+        de_lo_suyo = any(
+            term_matches(t, palabras) for t in suyas if fold(t) not in _QUIEN_Y_COMO
+        )
         if p.chunk.topic == topic and de_lo_suyo and p.chunk.chunk_id not in ya:
             return [*hits[:1], p, *hits[1:]][: max(len(hits), 2)]
     return hits
@@ -1065,14 +1087,15 @@ class Retriever:
             return [], extra
         min_matched = 1 if topic else 3
         good = [h for h in hits if h.matched_terms >= min_matched]
-        # Y en las demás lenguas, sólo en vacunas (3-oct-2026). Consulta real desde Reino Unido:
-        # «should I vaccinate my child polio vaccine?» se ampliaba con «bebé», «vacuna»,
+        # Y en todas las demás lenguas menos el castellano (3-oct-2026). Consulta real desde Reino
+        # Unido: «should I vaccinate my child polio vaccine?» se ampliaba con «bebé», «vacuna»,
         # «calendario de vacunación», y seis pasajes en castellano enterraban las páginas del
-        # NHS, que ni entraban entre los seis. Aplicarlo a todos los temas se midió sobre las
-        # 2.687 preguntas de las baterías: 38 cambiaban y siete a peor («labios hinchados tras
-        # comer huevo» → trastornos de la alimentación, por «eating» en el título). En vacunas
-        # el título es el nombre de la vacuna, y la palabra del padre no engaña.
-        if topic and good and (lang in self.thin_langs or topic == "vacunas"):
+        # NHS, que ni entraban entre los seis. La primera vez que se generalizó, siete de 38 iban
+        # a peor: tres por «eating» (sinónimo arreglado), dos por palabras de quién y cómo en el
+        # título («crying baby», «baby teething»: `_QUIEN_Y_COMO`), una por una palabra negada
+        # («no fever» subía la fiebre) y las del castellano, que no lo necesita: su corpus es el
+        # grande, y subía capítulos hospitalarios de antibióticos.
+        if topic and good and lang != "es":
             propias = self.index.search(
                 query,
                 top_k=3,
@@ -1082,7 +1105,9 @@ class Retriever:
                 only_lang=lang,
             )
             propias = [h for h in propias if h.matched_terms >= min_matched]
-            good = _own_language_second(good, propias, lang, topic, query_terms(query))
+            negadas = {fold(w) for w in _NEGADA.findall(query.lower())}
+            suyas = [t for t in query_terms(query, extra) if fold(t) not in negadas]
+            good = _own_language_second(good, propias, lang, topic, suyas)
         # NOTE (26-ago-2026): a relevance floor was measured here and REJECTED. Neither an absolute
         # bm25 threshold nor a term-coverage ratio separates "the corpus covers this" from "it does
         # not": legitimate questions match as little as 1 term of 7 (g23) and score 20, while

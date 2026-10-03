@@ -152,21 +152,40 @@ en:
   - barriga
   constipat:
   - estreñimiento
+  - constipation
   poop:
   - deposiciones
   - heces
   - estreñimiento
+  # 3-oct-2026: y el término inglés, para que un padre que escribe en inglés llegue a la
+  # página del NHS («Constipation») y no sólo a la de la SEUP
   not pooed:
   - estreñimiento
   - deposiciones
+  - constipation
   not pooped:
   - estreñimiento
   - deposiciones
+  - constipation
   hasn't pooed:
   - estreñimiento
   - deposiciones
+  - constipation
+  hasn't pooped:
+  - estreñimiento
+  - constipation
+  hasnt pooped:
+  - estreñimiento
+  - constipation
+  hasnt pooed:
+  - estreñimiento
+  - constipation
+  holds it:
+  - estreñimiento
+  - constipation
   dehydrat:
   - deshidratación
+  - dehydration
   - suero
   - rehidratación
   seizure:
@@ -177,6 +196,7 @@ en:
   headache:
   - cefalea
   - dolor de cabeza
+  - headaches
   faint:
   - síncope
   - desmayo
@@ -210,6 +230,7 @@ en:
   - herida
   chok:
   - atragantamiento
+  - choking
   poison:
   - intoxicación
   - tóxico
@@ -245,9 +266,11 @@ en:
   ear$:
   - oído
   - otitis
+  - ear infection
   ears$:
   - oído
   - otitis
+  - ear infection
   otitis:
   - otitis
   throat:
@@ -333,6 +356,7 @@ en:
   - sol
   heat:
   - golpe de calor
+  - heat exhaustion
   anxi:
   - ansiedad
   self:

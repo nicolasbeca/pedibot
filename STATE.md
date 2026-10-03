@@ -2,6 +2,24 @@
 
 Última actualización: **2026-10-03** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 3-oct-2026 (3) · el padre que escribe en inglés recibe la página inglesa que existe
+
+- **De 385 preguntas en inglés, 107 sin ninguna fuente en inglés**, y en muchas la página del
+  NHS estaba en el índice. Dos arreglos, medidos sobre las 2.688 preguntas de las baterías:
+  - `_own_language_second` vale ya para todas las lenguas menos el castellano, sin palabras de
+    quién y cómo en el título (`_QUIEN_Y_COMO`: baby, crying…) y sin las que el padre niega
+    («no fever»). 17 cambian, las 17 a mejor; la referencia sigue en 103 de 106.
+  - La tabla `en:` de sinónimos sólo tendía puente al castellano: ahora lleva también el término
+    inglés en estreñimiento, atragantamiento, cefalea, calor, deshidratación y oído. 13 cambian:
+    estreñimiento (5), golpe de calor y atragantamiento a mejor; lo del oído queda igual de flojo
+    que antes («piel agrietada detrás de las orejas» → otitis, antes en castellano, ahora en
+    inglés). `test_an_english_parent_gets_an_english_page.py`.
+- **Revisado de paso:** ningún 👎 en las consultas reales; temporizadores en verde; en los
+  registros, sólo caídas momentáneas del mercado de Virtuals. El aviso semanal «calendario PT
+  puede estar caducado» es falso: la página de la DGS dice 2026 por el despacho que adopta el
+  Livro Azul, y el esquema general (Quadro nº 1) sigue con última actualización 03/10/2025, la
+  edición que citamos. **Pendiente:** que `sources_check` no vuelva a avisar de lo ya revisado.
+
 ## 3-oct-2026 (2) · el redactor sabe que hay aviso; «eating» ya no es anorexia; vectores, medidos y fuera
 
 - **El texto rebajaba el aviso rojo** («consulta si aparece dificultad de verdad» bajo «llama al
