@@ -2,6 +2,23 @@
 
 Última actualización: **2026-10-03** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 3-oct-2026 (2) · el redactor sabe que hay aviso; «eating» ya no es anorexia; vectores, medidos y fuera
+
+- **El texto rebajaba el aviso rojo** («consulta si aparece dificultad de verdad» bajo «llama al
+  112»). Desde la v6 el redactor no sabía que había aviso. Ahora recibe «WARNING ALREADY SHOWN
+  ABOVE YOUR TEXT» con el nivel y el motivo (`_warning_note`). Medido con un juez sobre 150
+  preguntas con aviso: borradores que rebajan, de 56/141 (40 %) a 27/146 (18 %); los que repiten
+  el aviso, 6 y 6. `test_the_writer_knows_the_warning_is_there.py`.
+  **Descartado antes:** que lo mirase el revisor (`softens_warning`) marcaba 162 de 315 y
+  reescribía la mitad de las respuestas sin quitar los condicionales.
+- **«eating» → «conducta alimentaria»** desde el primer commit: «swollen lips after eating egg»
+  traía la ficha de anorexia y el tema de salud mental. Ahora sólo «eating disorder»,
+  «anorexia», «bulimia», «binge eating»… Siete preguntas de las baterías cambian, las siete a
+  mejor; el huevo trae alergia y anafilaxia del NHS. `test_eating_is_not_an_eating_disorder.py`.
+- **Búsqueda por significado: medida y descartada por ahora** (IDEAS I-34, con la tabla). Ni
+  MiniLM ni e5-small mejoran sin meter basura; y la mitad de lo que «falta» es que no hay
+  documento en la lengua del padre sobre ese tema.
+
 ## 3-oct-2026 · la IA confirma las alarmas, el revisor sabe el país, el calendario es el del lector (L251)
 
 - **Consultas reales:** ninguna nueva desde el 2-oct 09:30. Repasadas las tres de ese padre del

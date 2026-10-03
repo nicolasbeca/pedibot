@@ -652,3 +652,31 @@ Lo que hay, mirado el 30-sep-2026 (ninguno pide pagar):
 Lo que hay que tener presente al decidir: el agente de Virtuals ACP lleva publicado desde el
 26-ago con **cero trabajos**. Ningún registro garantiza que alguien llame: sólo vale si hay
 público que lo use o alguien que lea y decida.
+
+## I-34 · Búsqueda por significado: medida y descartada por ahora (3-oct-2026)
+
+**El problema que la motivó:** de 385 preguntas en inglés de las baterías, sólo 161-163 traen
+alguna fuente en inglés entre las seis; el padre recibe hojas en castellano que no puede abrir.
+
+**Lo medido** (guiones en el scratchpad de la sesión; 106 preguntas de `eval/golden.jsonl` con
+documentos esperados, y un juez de IA que dice si un pasaje trata del problema preguntado):
+
+| variante | referencia (de 106) | inglés con fuente legible (de 385) | notas |
+|---|---|---|---|
+| hoy (léxica + sinónimos) | 103 | 161 | |
+| MiniLM-L12 multilingüe, mezcla RRF | 97 | 259 | mezcla sarna con alergias |
+| e5-small multilingüe, mezcla RRF | 93 | 264 | «quiere morir» en ar/pt/hi → rotavirus, rabia |
+| e5-small, sólo subir UNA legible si falta | 102 | — | 177 de 930 subidas relevantes (19 %); con umbral 0,88, 47 % |
+| la frase médica de la IA lectora, sólo en la lengua del padre | — | — | 85 de 194 relevantes (44 %) |
+
+**Por qué no:** ningún umbral separa lo bueno de lo malo, y leyendo los fallos la causa es
+otra: en muchas de esas preguntas **no hay ningún documento en la lengua del padre que trate
+de eso** (medusas, sudor en la cabeza, celos entre hermanos). Subir algo en su lengua sube algo
+que no viene a cuento. Es cobertura, no búsqueda.
+
+**Lo que sí se arregló el mismo día, por palabras:** «eating» → trastornos alimentarios
+(`test_eating_is_not_an_eating_disorder.py`) y las vacunas del NHS.
+
+**Cuándo volver:** con un modelo grande (e5-large, bge-m3) que no cabe en el VPS de 2 GB, o
+con embeddings por API (cuesta dinero y alta: decisión del operador). Y antes, medir cuántas
+de las 224 sin fuente legible tienen de verdad un documento en inglés que trate el tema.

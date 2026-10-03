@@ -75,6 +75,8 @@ def test_the_real_alarm_still_fires(triage: Triage, texto: str, regla: str) -> N
 REVISADOS = {
     "جفاف", "حرق(?!ه|ان)|حروق", "krampf", "anfall", "تسمم", "انتحار", "اختناق", "تشنج",
     "ازرقاق", "تشوش", "شرق", "يرقان", "scald", "stridor", "vergiftung", "verbrannt", "espasmos", "хрип",
+    # «وازيزا», «y sibilancias», en la guía de asma árabe del 3-oct-2026: la conjunción pegada
+    "ازيز",
 }
 
 

@@ -340,9 +340,23 @@ en:
   suicid:
   - suicida
   - conducta suicida
-  eating:
+  # «eating» a secas llevaba desde el primer día a los trastornos de la conducta alimentaria:
+  # «swollen lips after eating egg» y «orange stool after eating carrots» salían con fichas de
+  # anorexia y tema de salud mental (3-oct-2026). Sólo las frases que hablan del trastorno.
+  eating disorder:
   - conducta alimentaria
-  - alimentación
+  - trastorno de la conducta alimentaria
+  disordered eating:
+  - conducta alimentaria
+  anorex:
+  - anorexia
+  - conducta alimentaria
+  bulimi:
+  - bulimia
+  - conducta alimentaria
+  binge eating:
+  - atracón
+  - conducta alimentaria
   autis:
   - autismo
   adhd:

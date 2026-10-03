@@ -1146,6 +1146,26 @@ _PARECE_MAYOR = re.compile(
 )
 
 
+def _warning_note(tr: TriageResult) -> str:
+    """Al redactor: hay un aviso encima de su texto, y cuál (3-oct-2026).
+
+    Desde la v6 no recibe el nivel, para que no repita la urgencia. Pero sin saberlo escribía
+    «consulta en urgencias si aparece dificultad para respirar de verdad» bajo un cartel de
+    «llama ahora al 112». Se le dice que está y qué dice; la regla 8 del prompt sigue: no lo
+    repite.
+    """
+    if not tr.is_alarm or tr.level == "mental_health":
+        return ""
+    ahora = "call the emergency number now" if tr.level == "emergency" else "be seen today"
+    motivos = "; ".join(tr.reasons("en"))
+    return (
+        f"WARNING ALREADY SHOWN ABOVE YOUR TEXT: {ahora} ({motivos}). Do not repeat it. Do not "
+        "contradict it either: never make going to care depend on new or worse signs, and never "
+        "describe what the parent reports as not real, mild or not yet a problem. Write what the "
+        "sources say to do now and on the way.\n"
+    )
+
+
 def _schedule_note(texto: str, country: str | None) -> str:
     """El país del lector, para el redactor, en las preguntas de vacunas (3-oct-2026).
 
@@ -2463,6 +2483,7 @@ class Engine:
                 f"{who_first_note(context_text, country)}"
                 f"{tropical_note(context_text, country)}"
                 f"{_schedule_note(context_text, country)}"
+                f"{_warning_note(tr)}"
                 f"{_history_block(history)}"
                 f"{CHILD_MODE if mode == 'child' else ''}"
                 f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"
