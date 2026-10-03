@@ -2054,3 +2054,31 @@ Y Glama, el mismo día, encontró que la descripción de esa misma herramienta d
 cuando eran 96, y la de la dosis «32 marcas en 27 países» cuando eran 35 en 57. **Lo que se
 publica hacia fuera se cuenta, no se escribe**
 (`test_the_tool_descriptions_count_instead_of_typing.py`).
+
+## L251 · La IA leía la pregunta y no podía tocar la alarma; el revisor no sabía el país (3-oct-2026)
+
+El operador, tras la consulta del VPH que llamó al 999: «¿no estamos metiendo un filtro de IA que
+lee las preguntas? ¿no debería haber otro de salida?». Había los dos, y ninguno podía parar
+aquello:
+
+- **La lectura de entrada** (21-sep) se diseñó para **sólo añadir** alarmas, nunca quitarlas.
+  Y una alarma de emergencia no pasa por la redacción ni por la revisión: sale el cartel solo.
+  Ahora las reglas corren antes de la lectura y la misma llamada —sin espera ni coste nuevos—
+  dice si **la palabra que casó** se usó en sentido médico. Sólo un `false` explícito la quita.
+- **Lo que se le enseña importa más que la pregunta.** Con el MOTIVO de la regla, la IA quitaba
+  12 de las 321 alarmas de las baterías: «testículos un poco hinchados» (el motivo dice
+  «dolor»), «respira raro pero está jugando», «le cuesta respirar pero no mucho». Lee al pie de
+  la letra y se cree al padre que quita importancia. Con la PALABRA casada y su contexto, quita
+  0 de 316 y las dos accidentales («bene-fits», «the jacket fits»), estable en dos pasadas.
+  → **Antes de dejar que una IA quite una alarma, medirla con el modelo real sobre todas las
+  alarmas de las baterías y leer una a una las que quitaría.**
+- **El revisor de salida** (21-sep) ya preguntaba si la respuesta contesta lo preguntado. El
+  calendario español a un padre británico lo contestaba. Ahora recibe el país y marca
+  `wrong_country`.
+
+Y debajo, la causa de la 988: una pregunta en inglés se amplía con «bebé», «vacuna», «calendario
+de vacunación», y seis pasajes en castellano enterraban las páginas del NHS. Subir siempre un
+pasaje en la lengua del padre se midió en las 2.687 preguntas: 38 cambiaban y siete a peor
+(«labios hinchados tras comer huevo» → trastornos de la alimentación, por «eating»). Se quedó
+sólo para vacunas, donde el título es el nombre de la vacuna: 4 cambian, ninguna a peor. **Un
+arreglo de búsqueda se mide sobre las baterías enteras antes de generalizarlo.**

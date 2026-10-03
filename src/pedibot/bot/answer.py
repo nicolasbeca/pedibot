@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
+from loguru import logger
 
 from pedibot.bot.about import ficha_de, responde_sobre
 from pedibot.bot.dose import DRUGS, bottles_in_country, calculate, format_result
@@ -54,7 +55,7 @@ from pedibot.bot.vis import lista_vis, pide_vis
 from pedibot.bot.who_first import extra_terms as who_first_terms
 from pedibot.bot.who_first import prompt_note as who_first_note
 from pedibot.bot.who_first import tropical_note
-from pedibot.index.store import Hit
+from pedibot.index.store import Hit, query_terms
 
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 MAX_TURNS = 6  # PRD §5.4: short window
@@ -1145,6 +1146,22 @@ _PARECE_MAYOR = re.compile(
 )
 
 
+def _schedule_note(texto: str, country: str | None) -> str:
+    """El país del lector, para el redactor, en las preguntas de vacunas (3-oct-2026).
+
+    Al padre británico se le contestó «in Spain's routine schedule…»: el redactor no sabía dónde
+    vivía quien preguntaba. Las edades y las dosis cambian de un país a otro.
+    """
+    if not country or not is_vaccine_question(texto):
+        return ""
+    nombre = country_name(country.upper(), "en")
+    return (
+        f"READER'S COUNTRY: {nombre}. Vaccination schedules (ages, doses) differ between "
+        f"countries. If a source gives another country's schedule, do not present its ages as "
+        f"this parent's: say that the ages follow {nombre}'s national schedule.\n"
+    )
+
+
 def _age_context(tr: TriageResult, texto: str = "") -> str:
     """Age line for the prompt. Under 3 months: home medication advice is never appropriate."""
     if tr.age_months is None and not tr.has_fever:
@@ -1437,6 +1454,9 @@ showed, and the ANSWER. Return ONLY a JSON object:
   "padding": true if a sizeable part talks about a different condition than the parent's,
   "invented_verdict": true if it states a verdict ("it's normal", "no problem", "yes you can",
       "it is not serious") that none of its cited sentences supports,
+  "wrong_country": only when READER'S COUNTRY is given: true if the answer presents another
+      country's vaccination schedule, health services, phone numbers or rules as if they applied
+      to this parent (naming another country only as a comparison is fine),
   "note": one short English sentence telling the writer exactly what to fix, or "".
 Be strict about relevance and verdicts, and do not complain about length, tone or style."""
 
@@ -1448,21 +1468,30 @@ class Revision:
     veredicto: bool
     nota_en: str
     coste: tuple[int, int, float]
+    #: da por suyo el calendario, los servicios o los números de otro país (3-oct-2026)
+    pais_ajeno: bool = False
 
     @property
     def hay_que_rehacer(self) -> bool:
-        return (not self.contesta) or self.relleno or self.veredicto
+        return (not self.contesta) or self.relleno or self.veredicto or self.pais_ajeno
 
 
-def revisa_respuesta(llm: object, pregunta: str, nivel: str, texto: str) -> Revision | None:
+def revisa_respuesta(
+    llm: object, pregunta: str, nivel: str, texto: str, pais: str | None = None
+) -> Revision | None:
     """La lectura de revisión. `None` si no hay modelo o contesta algo que no se puede leer:
-    entonces la respuesta sale como estaba, nunca peor."""
+    entonces la respuesta sale como estaba, nunca peor.
+
+    `pais`: el nombre del país del lector, en inglés. Sin él, el calendario español a un padre
+    británico pasaba la revisión: contestaba lo preguntado (3-oct-2026)."""
     if llm is None or not texto.strip():
         return None
+    linea_pais = f"READER'S COUNTRY: {pais}\n\n" if pais else ""
     try:
         r = llm.complete(  # type: ignore[attr-defined]
             REVISA,
-            f"MESSAGE:\n{pregunta[:1500]}\n\nWARNING LEVEL: {nivel}\n\nANSWER:\n{texto[:2500]}",
+            f"{linea_pais}MESSAGE:\n{pregunta[:1500]}\n\nWARNING LEVEL: {nivel}\n\n"
+            f"ANSWER:\n{texto[:2500]}",
             temperature=0.0,
             max_tokens=200,
         )
@@ -1482,6 +1511,7 @@ def revisa_respuesta(llm: object, pregunta: str, nivel: str, texto: str) -> Revi
         contesta=d.get("answers_question") is not False,
         relleno=d.get("padding") is True,
         veredicto=d.get("invented_verdict") is True,
+        pais_ajeno=bool(pais) and d.get("wrong_country") is True,
         nota_en=(nota or "Answer only what the sources say about the parent's exact question.")[
             :300
         ],
@@ -1590,6 +1620,37 @@ class Engine:
                 injected.append(Hit(c, 99.0, 1))
                 present.add(rule.source)
         return (injected + hits)[: max(len(hits), 6) + len(injected)]
+
+    def _own_schedule(self, text: str, country: str | None, hits: list[Hit]) -> list[Hit]:
+        """En una pregunta de vacunas, el calendario es el del país del lector (3-oct-2026).
+
+        Consulta real desde Reino Unido: «should I vaccinate my child polio vaccine?» →
+        «In Spain's routine schedule… 2, 4 and 11 months». No pide un calendario, así que no
+        entra en la tabla y va a las guías, donde el PDF del Ministerio de Sanidad ganaba. El
+        documento de calendario de otro país sale; el del lector, si está en el índice, entra
+        delante con su pasaje más cercano a la pregunta. Sin país elegido no se toca nada.
+        """
+        if self.vaccines is None or not country or not is_vaccine_question(text):
+            return hits
+        quien = country.upper()
+        ajenos = {d for d, c in self.vaccines.schedule_docs().items() if c != quien}
+        hits = [h for h in hits if h.chunk.doc_id not in ajenos]
+        propio = self.vaccines.corpus_doc(quien)
+        if propio is None or any(h.chunk.doc_id == propio for h in hits):
+            return hits
+        de_un_documento = getattr(self.retriever.index, "document_hits", None)
+        pasajes = de_un_documento(propio, limit=50) if de_un_documento else []
+        if not pasajes:
+            return hits
+        palabras = set(query_terms(text))
+
+        def cercania(h: Hit) -> tuple[int, int]:
+            dentro = h.chunk.text.lower()
+            # a igualdad, el pasaje principal: el que lleva el título del documento por sección
+            return (sum(p in dentro for p in palabras), h.chunk.section == h.chunk.doc_title)
+
+        mejor = max(pasajes, key=cercania)
+        return [Hit(mejor.chunk, 99.0, 1), *hits]
 
     def answer_without_model(
         self, query: str, country: str | None = None, lang: str | None = None, why: str = "no_model"
@@ -1735,7 +1796,14 @@ class Engine:
             query.strip().lower()
             == CLARIFY_OPTIONS.get(lang, CLARIFY_OPTIONS["en"])[-1].strip().lower()
         )
-        leida = None if boton else interpret(self.llm, query, previous=anterior)
+        # Las reglas antes que la lectura (3-oct-2026): son instantáneas, y si saltan, la misma
+        # llamada de lectura dice si el mensaje habla de eso de verdad. «Side effects of the HPV
+        # vaccine… risks and benefits» sacó «llama al 999: convulsión» por «bene-FITS».
+        casadas = self.triage.matched_words(context_text).items()
+        alarmas = {r: f'matched "{p}" in "…{t}…"' for r, (p, t) in casadas} or None
+        leida = (
+            None if boton else interpret(self.llm, query, previous=anterior, alarms=alarmas)
+        )
         largo = len(query.split()) >= 3
         if leida is not None:
             ctx["costes"].append((leida.tokens_in, leida.tokens_out, leida.cost_usd))
@@ -1826,6 +1894,16 @@ class Engine:
         if fiebre_del_adulto(query) and not bebe_tambien_con_fiebre(query):
             sin = [r for r in tr.matched if r.id != "infant_fever_under_3_months"]
             if len(sin) != len(tr.matched):
+                tr.matched = sin
+                tr.level = max(
+                    (r.level for r in tr.matched), key=lambda lv: LEVEL_ORDER[lv], default="routine"
+                )
+        # La lectura dice que una alarma no viene a cuento (3-oct-2026, ver arriba). Sólo con un
+        # `false` explícito para un id que se le preguntó: la duda deja el aviso como estaba.
+        if leida is not None and leida.false_alarms:
+            sin = [r for r in tr.matched if r.id not in leida.false_alarms]
+            if len(sin) != len(tr.matched):
+                logger.info("alarma descartada por la lectura: {}", sorted(leida.false_alarms))
                 tr.matched = sin
                 tr.level = max(
                     (r.level for r in tr.matched), key=lambda lv: LEVEL_ORDER[lv], default="routine"
@@ -2358,6 +2436,7 @@ class Engine:
                 push=push,
             )
             hits = self._inject_rule_sources(tr, hits)
+            hits = self._own_schedule(context_text, country, hits)
             otra_vez = intento == 1 and segunda and leida is not None
             if not hits:
                 if otra_vez and leida is not None:
@@ -2383,6 +2462,7 @@ class Engine:
                 + f"{_age_context(tr, context_text)}"
                 f"{who_first_note(context_text, country)}"
                 f"{tropical_note(context_text, country)}"
+                f"{_schedule_note(context_text, country)}"
                 f"{_history_block(history)}"
                 f"{CHILD_MODE if mode == 'child' else ''}"
                 f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"
@@ -2490,7 +2570,13 @@ class Engine:
         # ningún problema en que siga con el biberón» sin fuente que lo diga. Si falla, un
         # reintento con la nota concreta; si el reintento tampoco contesta lo preguntado, el
         # «no tengo información fiable» honesto. Nunca toca el aviso, que es del triaje.
-        revision = revisa_respuesta(self.llm, query, tr.level, result.text)
+        revision = revisa_respuesta(
+            self.llm,
+            query,
+            tr.level,
+            result.text,
+            pais=country_name(country.upper(), "en") if country else None,
+        )
         if revision is not None:
             ctx["costes"].append(revision.coste)
         if revision is not None and revision.hay_que_rehacer:

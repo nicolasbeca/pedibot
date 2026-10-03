@@ -1065,7 +1065,14 @@ class Retriever:
             return [], extra
         min_matched = 1 if topic else 3
         good = [h for h in hits if h.matched_terms >= min_matched]
-        if topic and lang in self.thin_langs and good:
+        # Y en las demás lenguas, sólo en vacunas (3-oct-2026). Consulta real desde Reino Unido:
+        # «should I vaccinate my child polio vaccine?» se ampliaba con «bebé», «vacuna»,
+        # «calendario de vacunación», y seis pasajes en castellano enterraban las páginas del
+        # NHS, que ni entraban entre los seis. Aplicarlo a todos los temas se midió sobre las
+        # 2.687 preguntas de las baterías: 38 cambiaban y siete a peor («labios hinchados tras
+        # comer huevo» → trastornos de la alimentación, por «eating» en el título). En vacunas
+        # el título es el nombre de la vacuna, y la palabra del padre no engaña.
+        if topic and good and (lang in self.thin_langs or topic == "vacunas"):
             propias = self.index.search(
                 query,
                 top_k=3,

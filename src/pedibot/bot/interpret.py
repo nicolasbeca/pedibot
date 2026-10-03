@@ -71,6 +71,14 @@ SYSTEM = (
     '  "vague": true only if it is a health message that does not say what the problem is '
     '("my child is ill", "help", "something is wrong with my baby"); false if it names a '
     "symptom, a body part, a medicine, a food or a concrete question, however unusual.\n"
+    '  "alarms": only when KEYWORD WARNINGS are given, an object with each warning id as key: '
+    "each warning shows the words a keyword rule matched and the text around them. This is NOT "
+    "a judgement of how serious it is. Answer false ONLY if the match is an accident: the "
+    "matched letters are part of another word, or the words are used in a non-medical sense, "
+    'such as "fits" inside "benefits" or "it fits in his hand". If the words are used about a '
+    "child's body or health in any way — mildly, in passing, playing it down (\"a bit\", \"not "
+    'much", "but he is playing"), as a question, or as something that might happen — the '
+    "answer is true. When unsure, true. null when no warnings are given.\n"
     "Every other key describes the CURRENT MESSAGE only. "
     "Do not answer the question. Do not add facts that are not in the message."
 )
@@ -98,6 +106,9 @@ class Interpretation:
     new_topic: bool = False
     #: una pregunta de salud que no dice qué le pasa: la única que merece «¿qué le pasa?»
     vague: bool = False
+    #: las alarmas de las reglas que la lectura dice que no vienen a cuento (3-oct-2026): sólo
+    #: ids que se le preguntaron y con un `false` explícito
+    false_alarms: frozenset[str] = frozenset()
     #: lo que costó leerla, para sumarlo al gasto de la respuesta: el tope diario de gasto en el
     #: modelo mira ese número, y una llamada que no se apunta es una llamada que no se controla
     tokens_in: int = 0
@@ -118,7 +129,12 @@ def _iso(v: object) -> str | None:
     return v.strip().lower() if isinstance(v, str) and _ISO.match(v.strip().lower()) else None
 
 
-def interpret(llm: object, text: str, previous: str | None = None) -> Interpretation | None:
+def interpret(
+    llm: object,
+    text: str,
+    previous: str | None = None,
+    alarms: dict[str, str] | None = None,
+) -> Interpretation | None:
     """La lectura de la pregunta, o `None` si no hay una en la que se pueda confiar.
 
     `previous` es el mensaje anterior del padre, si lo hay. Sirve sólo para `new_topic`: diez
@@ -133,6 +149,11 @@ def interpret(llm: object, text: str, previous: str | None = None) -> Interpreta
         if previous and previous.strip()
         else text[:2000]
     )
+    if alarms:
+        # 3-oct-2026: las reglas del triaje ya han corrido y han saltado. La misma lectura dice
+        # si el mensaje habla de eso de verdad: «bene-FITS» no es una convulsión.
+        lineas = "\n".join(f"- {i}: {motivo}" for i, motivo in alarms.items())
+        entrada += f"\n\nKEYWORD WARNINGS:\n{lineas}"
     try:
         res = llm.complete(SYSTEM, entrada, temperature=0.0, max_tokens=400)  # type: ignore[attr-defined]
     except Exception:  # noqa: BLE001 — si el modelo no está, se busca como siempre
@@ -176,6 +197,11 @@ def interpret(llm: object, text: str, previous: str | None = None) -> Interpreta
         keywords=keywords,
         new_topic=bool(previous and previous.strip()) and d.get("new_topic") is True,
         vague=d.get("vague") is True,
+        false_alarms=frozenset(
+            i
+            for i, v in (d.get("alarms") if isinstance(d.get("alarms"), dict) else {}).items()
+            if alarms and i in alarms and v is False
+        ),
         tokens_in=int(getattr(res, "tokens_in", 0) or 0),
         tokens_out=int(getattr(res, "tokens_out", 0) or 0),
         cost_usd=float(getattr(res, "cost_usd", 0.0) or 0.0),

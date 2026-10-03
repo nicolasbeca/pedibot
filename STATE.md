@@ -1,6 +1,42 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-10-02** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-03** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 3-oct-2026 · la IA confirma las alarmas, el revisor sabe el país, el calendario es el del lector (L251)
+
+- **Consultas reales:** ninguna nueva desde el 2-oct 09:30. Repasadas las tres de ese padre del
+  Reino Unido: la del VPH (987) ya estaba arreglada; la de la polio (988) **seguía mal en vivo**:
+  «In Spain's routine schedule… 2, 4 and 11 months» a un padre británico. Desde el principio:
+  70 consultas reales, 10 con alarma, 9 bien puestas y 1 falsa (la 987).
+- **Filtro de entrada:** las reglas del triaje corren antes de la lectura de la IA; si saltan
+  por una palabra, la misma llamada dice si esa palabra se usó en sentido médico
+  (`Triage.matched_words`, `interpret(..., alarms=)`, `Interpretation.false_alarms`). Sólo un
+  `false` explícito quita la alarma; las de edad y fiebre no se preguntan. Medido con el modelo
+  real: 0 de 316 alarmas de las baterías quitadas, las dos accidentales sí (dos pasadas). Se
+  apunta en el log del servidor («alarma descartada por la lectura»).
+  `test_the_ai_checks_the_alarm.py`.
+- **Filtro de salida:** el revisor recibe el país del lector y marca `wrong_country` si se da
+  por suyo el calendario, los servicios o los números de otro país → reescritura.
+  `test_the_reviewer_knows_the_country.py`.
+- **El calendario del lector:** `corpus_doc` en vaccines.yaml (ES y GB, los dos únicos con
+  documento en el índice). En preguntas de vacunas con país, el calendario de otro país sale de
+  las fuentes y el propio entra; el redactor recibe «READER'S COUNTRY».
+  `test_the_readers_own_schedule.py`.
+- **14 páginas del NHS** de vacunas (6 en 1, rotavirus, MenB, neumococo, hepatitis B, MMRV, MMR,
+  4 en 1, 3 en 1, MenACWY, gripe infantil, BCG, varicela) y la de la polio. 713 documentos.
+- **En vacunas, un pasaje en la lengua del padre sube al segundo puesto** aunque la lengua no sea
+  de las «finas». Generalizarlo a todos los temas empeoraba siete preguntas; queda para
+  vacunas (4 cambian en las baterías, ninguna a peor).
+- **Flojo, anotado:** «is the 6-in-1 vaccine safe for my 8 week old baby?» no llega a la página
+  del 6 en 1 («6-in-1» se trocea en números). Y en general, **muchas preguntas en inglés no
+  traen ninguna fuente en inglés** (las siete de arriba): pide una búsqueda semántica, no otro
+  parche léxico.
+- **Comprobado en vivo tras desplegar:** polio desde GB → calendario del NHS (8, 12, 16 semanas…);
+  desde KE → «las edades siguen el calendario nacional de Kenia», sin España; VPH → NHS sin
+  alarma; «having a seizure right now», «testículos un poco hinchados» y «le cuesta respirar
+  pero no mucho» siguen con el aviso rojo. Visto de paso: en la última, el texto termina con
+  «consulta en urgencias si aparece dificultad de verdad» bajo un cartel de «llama al 112»;
+  rebaja el aviso sin decir «no es urgente», y `_QUITA_URGENCIA` no lo caza. Pendiente.
 
 ## 2-oct-2026 (5) · «benefits» llamaba al 999, y la vacuna del VPH tiene su página (L250)
 

@@ -722,6 +722,19 @@ class Vaccines:
         c = COUNTRY_ALIASES.get(country.upper(), country.upper())
         return c if c in self.raw else None
 
+    def schedule_docs(self) -> dict[str, str]:
+        """Documento del índice → el país cuyo calendario es (3-oct-2026).
+
+        Un padre británico recibió el calendario español citando el PDF del Ministerio de
+        Sanidad: la búsqueda no sabía que ese documento sólo vale para España. Lo dice
+        `corpus_doc` en vaccines.yaml, junto al calendario que transcribe.
+        """
+        return {v["corpus_doc"]: c for c, v in self.raw.items() if v.get("corpus_doc")}
+
+    def corpus_doc(self, country: str | None) -> str | None:
+        c = self.resolve_country(country)
+        return self.raw[c].get("corpus_doc") if c else None
+
     def schedule(self, country: str, lang: str = "en") -> list[Slot]:
         """El calendario de ese país, con los nombres en el idioma del que pregunta.
 

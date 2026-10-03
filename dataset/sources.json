@@ -3068,6 +3068,32 @@
   "notes": ""
  },
  {
+  "doc_id": "nhs_en_4_in_1_preschool_booster_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "4-in-1 pre-school booster vaccine",
+  "year": 2023,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/4-in-1-preschool-booster-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
+ },
+ {
+  "doc_id": "nhs_en_6_in_1_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "6-in-1 vaccine",
+  "year": 2023,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/6-in-1-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
+ },
+ {
   "doc_id": "nhs_en_about_amoxicillin",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3170,6 +3196,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/atopic-eczema/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_bcg_vaccine_for_tuberculosis_tb",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "BCG vaccine for tuberculosis (TB)",
+  "year": 2023,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/bcg-vaccine-for-tuberculosis-tb/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
  },
  {
   "doc_id": "nhs_en_baby_teething_symptoms",
@@ -3365,6 +3404,32 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/chickenpox/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_chickenpox_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Chickenpox vaccine",
+  "year": 2024,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/chickenpox-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
+ },
+ {
+  "doc_id": "nhs_en_child_flu_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Children's flu vaccine",
+  "year": 2023,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/child-flu-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
  },
  {
   "doc_id": "nhs_en_taking_care_of_childrens_teeth",
@@ -3978,6 +4043,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-16"
  },
  {
+  "doc_id": "nhs_en_hepatitis_b_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Hepatitis B vaccine",
+  "year": 2024,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/hepatitis-b-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
+ },
+ {
   "doc_id": "nhs_en_hernia",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -4186,6 +4264,32 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_mmr_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "MMR (measles, mumps and rubella) vaccine",
+  "year": 2024,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/mmr-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
+ },
+ {
+  "doc_id": "nhs_en_mmrv_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "MMRV (measles, mumps, rubella and chickenpox) vaccine",
+  "year": 2025,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/mmrv-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
+ },
+ {
   "doc_id": "nhs_en_measles",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -4210,6 +4314,32 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/baby/health/medicines-for-babies-and-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
+  "doc_id": "nhs_en_menacwy_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "MenACWY vaccine",
+  "year": 2024,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/menacwy-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
+ },
+ {
+  "doc_id": "nhs_en_menb_vaccine_for_children",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "MenB vaccine for children",
+  "year": 2024,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/menb-vaccine-for-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
  },
  {
   "doc_id": "nhs_en_meningitis",
@@ -4511,6 +4641,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_pneumococcal_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Pneumococcal vaccine",
+  "year": 2023,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/pneumococcal-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
+ },
+ {
   "doc_id": "nhs_en_pneumonia",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -4535,6 +4678,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/poisoning/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_polio",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Polio",
+  "year": 2026,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/polio/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
  },
  {
   "doc_id": "nhs_en_priapism_painful_erections",
@@ -4613,6 +4769,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/roseola/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_rotavirus_vaccine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Rotavirus vaccine",
+  "year": 2023,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/rotavirus-vaccine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
  },
  {
   "doc_id": "nhs_en_scabies",
@@ -4886,6 +5055,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/type-1-diabetes/symptoms/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_td_ipv_vaccine_3_in_1_teenage_booster",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Td/IPV vaccine (3-in-1 teenage booster)",
+  "year": 2024,
+  "lang": "en",
+  "topic": "vacunas",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/vaccinations/td-ipv-vaccine-3-in-1-teenage-booster/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-03"
  },
  {
   "doc_id": "nhs_en_teeth_grinding",

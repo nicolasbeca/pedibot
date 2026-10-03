@@ -224,6 +224,47 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     # vaccine… risks and benefits» se quedó sin fuente. No había ni una página en inglés sobre
     # ella. Y la de seguridad de las vacunas, para «he leído que perjudica…».
     ("nhs", "https://www.nhs.uk/vaccinations/hpv-vaccine/", "vacunas", "en", ["escolar", "adolescente"]),
+    # Cada vacuna del calendario del NHS (3-oct-2026, la misma consulta real): «should I
+    # vaccinate my child polio vaccine?» se contestó con el calendario español. El NHS dice
+    # «6-in-1» y no «polio»: sin la página de cada vacuna, la búsqueda no puede unirlas.
+    ("nhs", "https://www.nhs.uk/vaccinations/6-in-1-vaccine/", "vacunas", "en", ["lactante"]),
+    ("nhs", "https://www.nhs.uk/vaccinations/rotavirus-vaccine/", "vacunas", "en", ["lactante"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/vaccinations/menb-vaccine-for-children/",
+        "vacunas",
+        "en",
+        ["lactante", "preescolar"],
+    ),
+    ("nhs", "https://www.nhs.uk/vaccinations/pneumococcal-vaccine/", "vacunas", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/vaccinations/hepatitis-b-vaccine/", "vacunas", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/vaccinations/mmrv-vaccine/", "vacunas", "en", ["lactante", "preescolar"]),
+    ("nhs", "https://www.nhs.uk/vaccinations/mmr-vaccine/", "vacunas", "en", ["todas"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/vaccinations/4-in-1-preschool-booster-vaccine/",
+        "vacunas",
+        "en",
+        ["preescolar"],
+    ),
+    (
+        "nhs",
+        "https://www.nhs.uk/vaccinations/td-ipv-vaccine-3-in-1-teenage-booster/",
+        "vacunas",
+        "en",
+        ["adolescente"],
+    ),
+    ("nhs", "https://www.nhs.uk/vaccinations/menacwy-vaccine/", "vacunas", "en", ["adolescente"]),
+    ("nhs", "https://www.nhs.uk/vaccinations/child-flu-vaccine/", "vacunas", "en", ["todas"]),
+    (
+        "nhs",
+        "https://www.nhs.uk/vaccinations/bcg-vaccine-for-tuberculosis-tb/",
+        "vacunas",
+        "en",
+        ["lactante"],
+    ),
+    ("nhs", "https://www.nhs.uk/vaccinations/chickenpox-vaccine/", "vacunas", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/polio/", "vacunas", "en", ["todas"]),
     (
         "nhs",
         "https://www.nhs.uk/conditions/vaccinations/why-vaccination-is-safe-and-important/",

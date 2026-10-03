@@ -1161,6 +1161,41 @@ class Triage:
         """
         return "age_under_3_months" in requires and age is not None and age >= 3
 
+    def matched_words(self, text: str) -> dict[str, tuple[str, str]]:
+        """Para cada regla que salta POR UNA PALABRA: lo que casó y el trozo de frase alrededor,
+        con las palabras enteras (3-oct-2026).
+
+        Es lo que se le enseña a la IA lectora para que diga si fue un accidente: «fits» dentro
+        de «benefits». No se le enseña el motivo para que lo juzgue: lo leía al pie de la letra y
+        quitaba «testículos un poco hinchados» porque el motivo dice «dolor». Las reglas que
+        saltan por edad y fiebre no están aquí, y por eso no se pueden quitar.
+        """
+        texto = aplana(_GUIONES.sub(" ", text))
+        out: dict[str, tuple[str, str]] = {}
+        for r in self.assess(text).matched:
+            for rx in r.patterns:
+                m = next(
+                    (
+                        m
+                        for m in rx.finditer(texto)
+                        if not _negada(texto, m.start(), m.end())
+                        and not _hipotetica(texto, m.start(), m.end())
+                    ),
+                    None,
+                )
+                if m is None:
+                    continue
+                a, b = m.start(), m.end()
+                while a > 0 and texto[a - 1].isalnum():
+                    a -= 1
+                while b < len(texto) and texto[b].isalnum():
+                    b += 1
+                ini = texto.rfind(" ", 0, max(0, a - 25)) + 1
+                fin = texto.find(" ", min(len(texto), b + 25))
+                out[r.id] = (m.group(0).strip(), texto[ini : fin if fin != -1 else len(texto)])
+                break
+        return out
+
     def assess(self, text: str) -> TriageResult:
         # Los guiones se vuelven espacios ANTES de mirar nada, igual que en `parse_age_months`.
         # Aquello se arregló el 7-sep-2026 «en un sitio, y no en cada expresión, para que lo
