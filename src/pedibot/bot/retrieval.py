@@ -964,6 +964,46 @@ def _one_readable_up_front(hits: list[Hit], lang: str) -> list[Hit]:
     return hits
 
 
+#: Cuánto puede perder un pasaje en la lengua del padre frente al primero para ponerse delante.
+PROPIA_DELANTE = 0.6
+#: Organismos con documentos en la lengua del padre pero escritos para profesionales.
+PARA_PROFESIONALES = frozenset({"RKI"})
+
+
+def _own_language_first(hits: list[Hit], lang: str) -> list[Hit]:
+    """Lo que el padre puede leer, delante, cuando vale casi lo mismo (5-oct-2026).
+
+    Batería con el reparto de las consultas reales: 123 de 345 respuestas en inglés no citaban
+    ninguna fuente en inglés. Las dos reglas de arriba se conforman con UNA legible entre las
+    tres primeras, y el redactor cita sobre todo la primera: [SEUP, SEUP, NHS] daba una
+    respuesta en castellano traducida a un padre de EE. UU. que tenía la página del NHS al lado.
+    Aquí los pasajes en su lengua del MISMO tema que el primero, con al menos el 60 % de su
+    puntuación, pasan delante en su orden; los demás siguen detrás en el suyo. El castellano no
+    se toca: su corpus es el grande y no le hace falta.
+    """
+    # Sólo inglés: en las lenguas con poco corpus, las fichas de la OMS comparten tema sin hablar
+    # de lo mismo («طفلي فقد الوعي» subía la epilepsia por delante del desmayo), y para ellas ya
+    # está `_own_language_second`, que exige que el título trate de lo preguntado.
+    if lang != "en" or not hits or hits[0].chunk.lang == lang:
+        return hits
+    tope = hits[0].score * PROPIA_DELANTE
+    tema = hits[0].chunk.topic
+    # Los Ratgeber del RKI están en alemán pero escritos para el médico (salmonela, EHEC): subían
+    # por delante de la página de MedlinePlus para padres sobre la diarrea del bebé.
+    delante = [
+        h
+        for h in hits
+        if h.chunk.lang == lang
+        and h.chunk.topic == tema
+        and h.score >= tope
+        and h.chunk.org not in PARA_PROFESIONALES
+    ]
+    if not delante:
+        return hits
+    ids = {h.chunk.chunk_id for h in delante}
+    return [*delante, *[h for h in hits if h.chunk.chunk_id not in ids]]
+
+
 #: Palabras que dicen de quién se habla o cómo está, no de qué: no bastan para que un título
 #: «trate de lo que se pregunta». «My child got shampoo in his eye and is crying» subía «Soothing
 #: a crying baby», y «my baby is 2 months old and has 100.8 F», «Baby teething symptoms»
@@ -1114,4 +1154,4 @@ class Retriever:
         # "se hace pis en la cama" — covered by nothing — scores 10 and matches 1 of 3. The ranges
         # overlap, and an absolute score is not even comparable between corpora (it silenced every
         # test fixture). Separating them needs semantic similarity, not another threshold.
-        return _one_readable_up_front(good, lang), extra
+        return _own_language_first(_one_readable_up_front(good, lang), lang), extra

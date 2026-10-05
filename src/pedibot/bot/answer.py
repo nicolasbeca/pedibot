@@ -735,7 +735,7 @@ class EmergencyNumbers:
         return default
 
 
-def load_prompt(version: str = "answer_v7") -> tuple[str, str]:
+def load_prompt(version: str = "answer_v10") -> tuple[str, str]:
     text = (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
     return version, text
 
@@ -959,6 +959,8 @@ def _moleculas(query: str, drugs: DrugCatalog | None) -> set[str]:
         for tok in query.lower().translate(_A_ESPACIO).split():
             if len(tok) >= 4 and (r := drugs.resolve(tok)):
                 claves.add(r[0])
+        if compuesto := _alias_compuesto(query, drugs):
+            claves.add(compuesto)
     return {c for c in claves if c in DRUGS}
 
 
@@ -1004,9 +1006,25 @@ def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, floa
             if r:
                 key = r[0]
                 break
+        if key is None:
+            key = _alias_compuesto(query, drugs)
     if key is None or key not in DRUGS:
         return None
     return key, kg
+
+
+def _alias_compuesto(query: str, drugs: DrugCatalog | None) -> str | None:
+    """Los nombres con guion o espacio, que el barrido por palabras parte en trozos: «qual a dose
+    de ben-u-ron para criança de 12 kg» no llegaba a la calculadora (5-oct-2026)."""
+    if drugs is None:
+        return None
+    q = query.lower()
+    for key, d in drugs.drugs.items():
+        for a in d.aliases:
+            a = str(a).lower()
+            if (" " in a or "-" in a) and a in q:
+                return key
+    return None
 
 
 _CHILD = re.compile(
@@ -1639,7 +1657,7 @@ class Engine:
         triage: Triage,
         llm: LLMProvider,
         numbers: EmergencyNumbers,
-        prompt_version: str = "answer_v7",
+        prompt_version: str = "answer_v10",
         drugs: DrugCatalog | None = None,
         vaccines: Vaccines | None = None,
         guides: GuideIndex | None = None,
@@ -1650,6 +1668,9 @@ class Engine:
         self.llm = llm
         self.numbers = numbers
         self.prompt_version, self.prompt = load_prompt(prompt_version)
+        #: 5-oct-2026: el «cuándo consultar» del documento principal en toda respuesta
+        #: (`_inject_doc_warnings`). Un interruptor para poder medirlo con y sin.
+        self.inyecta_alarma = True
         self.drugs = drugs
         self.vaccines = vaccines
         self.guides = guides
@@ -1691,6 +1712,32 @@ class Engine:
                 injected.append(Hit(c, 99.0, 1))
                 present.add(rule.source)
         return (injected + hits)[: max(len(hits), 6) + len(injected)]
+
+    def _inject_doc_warnings(self, hits: list[Hit]) -> list[Hit]:
+        """El «cuándo consultar» del documento principal, aunque no haya saltado ninguna regla
+        (5-oct-2026). En las respuestas flojas de la batería con el reparto de las consultas
+        reales, lo que más faltaba era cuándo buscar ayuda (47 de 105) y los signos concretos (44):
+        el apartado existía en el mismo documento, pero la búsqueda no lo había traído y el
+        redactor no puede escribir lo que no tiene delante. Uno solo, el del primer documento
+        de los dos de arriba que lo tenga, y al final: no desplaza lo que sí se buscó."""
+        if not self.inyecta_alarma or not hits:
+            return hits
+        if any(h.chunk.is_red_flag for h in hits[:3]):
+            return hits
+        vistos: list[str] = []
+        for h in hits:
+            if h.chunk.doc_id not in vistos:
+                vistos.append(h.chunk.doc_id)
+            if len(vistos) == 2:
+                break
+        for doc in vistos:
+            if any(h.chunk.doc_id == doc and h.chunk.is_red_flag for h in hits):
+                return hits
+            buscar = getattr(self.retriever.index, "warning_chunk", None)
+            c = buscar(doc) if buscar else None
+            if c is not None:
+                return [*hits, Hit(c, 0.0, 0)]
+        return hits
 
     def _own_schedule(self, text: str, country: str | None, hits: list[Hit]) -> list[Hit]:
         """En una pregunta de vacunas, el calendario es el del país del lector (3-oct-2026).
@@ -2028,6 +2075,13 @@ class Engine:
         # 5-oct-2026: «¿puedo darle los dos?» devolvía otra vez la tabla de uno (pregunta_combinar)
         if intent and pregunta_combinar(query, self.drugs):
             intent = None
+        # El medicamento que se nombra AHORA, con el peso de antes (5-oct-2026): «cuánto
+        # paracetamol para 10 kilos» → «y si le doy ibuprofeno, ¿cuánto sería?» repetía el
+        # paracetamol, porque el enrutador cogía el primero de la conversación.
+        if intent and not weights_in(query):
+            ahora = _moleculas(query, self.drugs)
+            if len(ahora) == 1 and intent[0] not in ahora:
+                intent = (next(iter(ahora)), intent[1])
         # …y la respuesta a «¿qué edad tiene?» de la calculadora —«he is 2»— lleva a la dosis con
         # el peso y el medicamento del turno anterior (5-oct-2026, ver `dose_ask_age`).
         if intent is None and tr_now.age_months is not None and history:
@@ -2581,6 +2635,7 @@ class Engine:
             )
             hits = self._inject_rule_sources(tr, hits)
             hits = self._own_schedule(context_text, country, hits)
+            hits = self._inject_doc_warnings(hits)
             otra_vez = intento == 1 and segunda and leida is not None
             if not hits:
                 if otra_vez and leida is not None:

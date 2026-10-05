@@ -5,6 +5,7 @@ Cada una en su conversación, sin país (como un padre que no lo ha elegido) sal
 """
 
 import json
+import os
 import pathlib
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -31,7 +32,7 @@ PAISES = {
     "co": "CO", "argentina": "AR", "ar": "AR", "chile": "CL", "cl": "CL", "us latino": "US",
     "us (latinos)": "US", "deutschland": "DE", "de": "DE", "france": "FR", "fr": "FR",
     "sénégal": "SN", "brasil": "BR", "br": "BR", "portugal": "PT", "pt": "PT", "россия": "RU",
-    "ru": "RU", "eg / gulf": "SA",
+    "ru": "RU", "eg / gulf": "SA", "sn": "SN", "sa": "SA", "co ": "CO",
 }
 
 
@@ -62,7 +63,18 @@ s = get_settings()
 llm = provider_from_settings()
 
 
+#: 5-oct-2026: para medir un prompt o la inyección del «cuándo consultar» con y sin.
+PROMPT = os.environ.get("PEDIBOT_PROMPT", "answer_v10")
+INYECTA = os.environ.get("PEDIBOT_INYECTA", "1") == "1"
+
+
 def motor() -> Engine:
+    m = _motor()
+    m.inyecta_alarma = INYECTA
+    return m
+
+
+def _motor() -> Engine:
     return Engine(
         Retriever(
             Index(s.index_db_path),
@@ -77,6 +89,7 @@ def motor() -> Engine:
         drugs=DrugCatalog(s.config_dir / "drugs.yaml"),
         vaccines=Vaccines(s.config_dir / "vaccines.yaml"),
         growth=Growth(s.config_dir / "who_growth.json"),
+        prompt_version=PROMPT,
     )
 
 

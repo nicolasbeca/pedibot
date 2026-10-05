@@ -875,6 +875,24 @@ es:
   duro:
   - estreñimiento
   - deposiciones
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  deshidrat:
+  - deshidratación
+  - gastroenteritis
+  - suero oral
+  mojado el pañal:
+  - deshidratación
+  - gastroenteritis
+  moja el pañal:
+  - deshidratación
+  - gastroenteritis
+  pañales mojados:
+  - deshidratación
+  - gastroenteritis
+  fruta y verdura:
+  - alimentación complementaria
+  fruta y la verdura:
+  - alimentación complementaria
 es_en:
   # 23-sep-2026, séptima tanda: lo que pasa DESPUÉS de la vacuna. «Bulto en el sitio del
   # pinchazo» traía la hoja del estreñimiento.
@@ -1118,6 +1136,15 @@ fr:
   bronchiolite:
   - bronchiolite
   - virus respiratoire syncytial
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  toux rauque:
+  - laryngite
+  aboie:
+  - laryngite
+  aboyante:
+  - laryngite
+  comme un chien:
+  - laryngite
 fr_en:
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "prématur":
@@ -1317,6 +1344,17 @@ fr_en:
   brûlé:
   - burn
   - scald
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  toux rauque:
+  - croup
+  aboie:
+  - croup
+  aboyante:
+  - croup
+  comme un chien:
+  - croup
+  laryngite:
+  - croup
 de_es:
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
@@ -1778,6 +1816,10 @@ de_es:
   notfall:
   - urgencias
   - '112'
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  bellend:
+  - laringitis
+  - crup
 de_en:
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "frühgebor":
@@ -2226,6 +2268,9 @@ de_en:
   notfall:
   - emergency department
   - emergency
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  bellend:
+  - croup
 ru_es:
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
@@ -2651,6 +2696,7 @@ ru_es:
   - respirar
   - respiración
   - dificultad respiratoria
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
 ru_en:
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "недонош":
@@ -3064,6 +3110,7 @@ ru_en:
   ребр:
   - breathing
   - difficulty breathing
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
 ar_es:
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
@@ -3682,6 +3729,12 @@ ar_es:
   - pantallas
   - sedentarismo
   - actividad física
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  نباح:
+  - laringitis
+  - crup
+  مثل الكلب:
+  - laringitis
 ar_en:
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "خديج":
@@ -4380,6 +4433,11 @@ ar_en:
   - dosage
   وقت الشاش:
   - screen time
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  نباح:
+  - croup
+  مثل الكلب:
+  - croup
 pt_es:
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
@@ -4804,6 +4862,14 @@ pt_es:
   urgência:
   - urgencias
   - '112'
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  tosse de cão:
+  - laringitis
+  - crup
+  tosse canina:
+  - laringitis
+  tosse rouca:
+  - laringitis
 pt_en:
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "prematur":
@@ -5216,6 +5282,13 @@ pt_en:
   urgência:
   - emergency department
   - emergency
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  tosse de cão:
+  - croup
+  tosse canina:
+  - croup
+  tosse rouca:
+  - croup
 hi_es:
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
@@ -6889,6 +6962,10 @@ de:
 # norovirus (medido el 8-sep-2026). No es vocabulario inventado: cada entrada sale
 # de buscar el concepto —su lista de términos ingleses en fr_en— en las tablas de
 # las otras cinco lenguas y copiar la lista española que ya estaba escrita.
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  bellend:
+  - pseudokrupp
+  - krupp
 fr_es:
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los
@@ -7041,6 +7118,16 @@ fr_es:
 # enfermedad: la ficha de tifoidea dice «التيفود» 21 veces y «التيفية» 6, y la palabra que
 # escribe un padre —«التيفوئيد»— no aparece NI UNA. Sin este puente la pregunta no llegaba
 # a su ficha aunque estuviera indexada (11-sep-2026).
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252).
+  toux rauque:
+  - laringitis
+  - crup
+  aboie:
+  - laringitis
+  aboyante:
+  - laringitis
+  comme un chien:
+  - laringitis
 ar:
   تيفوئيد: [التيفود, التيفية, حمى التيفية]
   تيفود: [التيفية]

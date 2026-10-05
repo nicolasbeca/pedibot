@@ -2,6 +2,34 @@
 
 Última actualización: **2026-10-05** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 5-oct-2026 (3) · el redactor escribe lo que el padre necesita; Hispanoamérica tiene calendario
+
+- **El operador: «no puede haber tantos errores ni respuestas flojas».** Conjunto difícil:
+  las 301 flojas de las baterías 10 y 11 más 100 buenas de control (`12_flojas_y_control_5oct.txt`,
+  416 preguntas). Pasadas con el motor real y juzgadas con `util.py`:
+  A (como estaba) 50 % flojas · B (+ «cuándo consultar» del documento) 43 % · C (+ prompt v9)
+  32 %, pero con el doble de errores de hecho (10 → 20). Leídos uno a uno: signos de alarma
+  copiados de otra situación (sangrado de herida para una regla abundante, fiebre amarilla tras
+  cualquier vacuna), «vigila las próximas 24 h» a un niño YA confuso, ibuprofeno en dengue o con
+  manchas que no se blanquean. **v10** cierra las tres. (Cifras de v10: abajo.)
+- **`_inject_doc_warnings`:** a toda respuesta llega el apartado de signos de alarma de su
+  documento principal (antes, sólo si saltaba una regla). `Engine.inyecta_alarma` para medirlo.
+- **`_own_language_first` (sólo inglés):** a igualdad de tema y con el 60 % de la puntuación, la
+  página en inglés pasa delante de la hoja en castellano. 166 cambian en 3.647 preguntas; el RKI
+  queda fuera (escrito para médicos) y las lenguas con poco corpus también (subía la epilepsia
+  para «perdió el conocimiento» en árabe).
+- **Regla nueva `syncope_on_exertion`** (SEUP, hoja de síncope): desmayo con ejercicio o con
+  palpitaciones/dolor de pecho → que lo vean hoy. 97 reglas.
+- **Dosis:** «ben-u-ron» con guiones; «¿y si le doy ibuprofeno?» con el peso de antes.
+- **Sinónimos:** tos de perro en alemán, francés, portugués y árabe; «deshidratado», «no ha
+  mojado el pañal», «fruta y verdura» en castellano (13 cambian, las 13 a mejor).
+- **17 calendarios de Hispanoamérica** de la OMS (WIISE), con los nombres de vacuna que faltaban
+  (Uruguay se quedaba sin su hexavalente). 92 países. La consulta real de Chile del 22-sep ya
+  contesta. Japón, Italia, Canadá y Australia, reconocidos para poder decir «no lo tenemos».
+- **Clasificador de «cuándo consultar»** en siete lenguas más: casi no encuentra nada porque en
+  esas lenguas casi todo son fichas de la OMS y del RKI. Confirma que el hueco es de fuentes.
+- **Pendiente:** el árabe «كحة مثل نباح الكلب» trae la rabia; el RKI gana al crup en alemán.
+
 ## 5-oct-2026 (2) · baterías con el reparto de las consultas reales, y lo que encontraron (L252)
 
 - **El operador: «¿por qué damos respuestas tan malas después de probar miles de preguntas?».**

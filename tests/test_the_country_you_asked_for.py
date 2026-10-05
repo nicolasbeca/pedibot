@@ -37,8 +37,9 @@ def test_the_country_written_in_the_question_is_recognised() -> None:
 
 
 def test_a_country_we_do_not_have_is_not_answered_with_another_one() -> None:
+    # 5-oct-2026: Chile ya tiene calendario (de la OMS); el ejemplo pasa a Japón, que no.
     a = _con_calendarios().ask(
-        "cual es el calendario de vacunas chileno para los 18 meses", lang="es", country="ES"
+        "cual es el calendario de vacunas japonés para los 18 meses", lang="es", country="ES"
     )
     assert a.verification != "vaccine_schedule", a.text
     assert "Ministerio de Sanidad" not in a.text
@@ -51,3 +52,12 @@ def test_the_country_written_beats_the_one_picked() -> None:
     )
     assert a.verification == "vaccine_schedule"
     assert "Fran" in a.text or "France" in a.text
+
+
+def test_hispanoamerica_tiene_calendario() -> None:
+    """La consulta real del 22-sep, que se quedó sin respuesta: ahora contesta con el de Chile."""
+    a = _con_calendarios().ask(
+        "cual es el calendario de vacunas chileno para los 18 meses", lang="es", country="ES"
+    )
+    assert a.verification == "vaccine_schedule", a.text
+    assert "Chile" in a.text and "Ministerio de Sanidad" not in a.text

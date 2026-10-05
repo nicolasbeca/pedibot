@@ -74,3 +74,60 @@ def test_el_ruso_declina_la_marca(catalogo: DrugCatalog) -> None:
         "ibuprofen",
         12.0,
     )
+
+
+def test_una_marca_con_guiones(catalogo: DrugCatalog) -> None:
+    """«qual a dose de ben-u-ron para criança de 12 kg» no daba dosis: «ben-u-ron» se partía."""
+    assert dose_intent("qual a dose de ben-u-ron para criança de 12 kg", catalogo) == (
+        "paracetamol",
+        12.0,
+    )
+
+
+def test_el_medicamento_nuevo_con_el_peso_de_antes(tmp_path: pathlib.Path, config_dir) -> None:
+    """«cuánto paracetamol para 10 kilos» → «y si le doy ibuprofeno, ¿cuánto sería?» repetía el
+    paracetamol: el enrutador cogía el primer medicamento de la conversación."""
+    from pedibot.bot.answer import EmergencyNumbers, Engine
+    from pedibot.bot.llm import FakeProvider
+    from pedibot.bot.retrieval import Retriever, Synonyms
+    from pedibot.bot.triage import Triage
+    from pedibot.index.store import Index, build_index
+    from pedibot.ingest.classify import Taxonomy
+    from pedibot.ingest.schema import Chunk
+
+    db = tmp_path / "i.db"
+    build_index(
+        [
+            Chunk(
+                chunk_id="seup_fiebre#s#1", doc_id="seup_fiebre", org="SEUP", doc_title="Fiebre",
+                year=None, lang="es", section="S", pages=[1], text="La fiebre no es peligrosa.",
+                topic="fiebre", doc_type="hoja_padres", evidence="sociedad_cientifica",
+                usage="publico", source_hash="h", n_words=5,
+            )
+        ],
+        db,
+    )
+    motor = Engine(
+        Retriever(Index(db), Synonyms(config_dir / "synonyms.yaml"),
+                  taxonomy=Taxonomy(config_dir / "taxonomia.yaml")),
+        Triage(config_dir / "red_flags.yaml"),
+        FakeProvider("Según la SEUP, x [1]."),
+        EmergencyNumbers(config_dir / "emergency_numbers.yaml"),
+        drugs=catalogo_(),
+    )
+    a = motor.ask("cuanta dosis de paracetamol para 10 kilos", country="CL", lang="es")
+    b = motor.ask(
+        "y si le doy ibuprofeno cuanto seria",
+        country="CL",
+        lang="es",
+        history=[
+            {"role": "user", "text": "cuanta dosis de paracetamol para 10 kilos"},
+            {"role": "assistant", "text": a.text},
+        ],
+    )
+    assert b.verification == "dose_calculator", b.text
+    assert b.text.startswith("Ibuprofeno"), b.text[:80]
+
+
+def catalogo_() -> DrugCatalog:
+    return DrugCatalog(RAIZ / "config" / "drugs.yaml")

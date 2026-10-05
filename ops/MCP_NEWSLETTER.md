@@ -5,7 +5,7 @@
 > su servidor; éste es el de PediBot, aparte.
 >
 > Cifras releídas el 2-oct de lo desplegado: 8 herramientas (`tools/list` en vivo), 75 países con
-> calendario (`config/vaccines.yaml`), 96 reglas de alarma (revisión del despliegue), 8 lenguas.
+> calendario (`config/vaccines.yaml`), 96 reglas de alarma (las de entonces, revisión del despliegue), 8 lenguas.
 > Si se envía otro día, se releen.
 
 **Para:** contact@mcpnewsletter.com

@@ -129,6 +129,7 @@ CASOS: dict[str, str] = {
     "severe_dehydration_signs": "ngozi hairudi nikibana",
     "measles_complication": "ana surua na macho yanatoka usaha",
     "neonatal_tetanus": "mchanga ameacha kunyonya na amekakamaa",
+    "syncope_on_exertion": "mtoto alizimia akicheza mpira",
 }
 
 
@@ -260,6 +261,7 @@ SEGUNDA: dict[str, str] = {
     "severe_dehydration_signs": "macho yamebonyea na hawezi kunywa",
     "measles_complication": "ana surua na mdomoni kuna vidonda",
     "neonatal_tetanus": "mchanga hanyonyi na mwili mgumu",
+    "syncope_on_exertion": "alizimia wakati wa michezo shuleni",
 }
 
 

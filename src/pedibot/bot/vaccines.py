@@ -53,6 +53,12 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
     # nombraba ningún país para el sistema y mandaba el selector. Se añade América Latina
     # entera, con el gentilicio, que es como se pregunta («el calendario mexicano»). Tener el
     # nombre no significa tener el calendario: significa poder decir que no lo tenemos.
+    # 5-oct-2026: Hispanoamérica ya tiene calendario (de la OMS). Para seguir pudiendo decir
+    # «ese no lo tenemos» en vez de servir el de España, cuatro países frecuentes sin él.
+    "JP": ("japón", "japon", "japan", "japonés", "japones", "japonais"),
+    "IT": ("italia", "italy", "italie"),
+    "CA": ("canadá", "canada", "canadien", "canadian", "canadiense", "kanada"),
+    "AU": ("australia", "australian", "australie", "australien"),
     "CL": ("chile", "chilen", "chili"),
     "MX": ("méxico", "mexico", "mexican", "mejicano", "mexique", "mexiko"),
     "AR": ("argentina", "argentino", "argentine", "argentinien"),
@@ -160,7 +166,6 @@ COUNTRY_IN_TEXT: dict[str, tuple[str, ...]] = {
         "सऊदी अरब",
         # «riad» se lee abajo con frontera: está dentro de «resfriado». 18-sep-2026.
         "riyadh",
-        "الرياض",
         "جدة",
         "jeddah",
     ),
@@ -586,7 +591,9 @@ COUNTRY_SHORT: dict[str, re.Pattern[str]] = {
     #   «inde»   dentro de «Windeln» —pañales, en alemán—, «independiente» e «indexado» (46)
     # El golden tiene una frase de deshidratación que dice «sie macht kaum Windeln nass»: una
     # madre alemana contando que su hija apenas moja pañales se leía como si dijera India.
-    "SA": re.compile(r"\briad\b", re.I),
+    # 5-oct-2026: «الرياض» (Riad) vive dentro de «الرياضة» (el deporte). Con la regla nueva del
+    # desmayo haciendo deporte, «أغمي عليه أثناء الرياضة» se habría leído como Arabia Saudí.
+    "SA": re.compile(r"\briad\b|الرياض(?![ةه])", re.I),
     # 20-sep-2026, con el norte de África: «sudan» vive dentro de «sudando», y esa palabra
     # está en una alarma de diabetes («sudoroso, sudando, con sed»). Un padre contando que
     # su hijo suda se leía como si dijera Sudán. Es el mismo fallo que el «ni» suajili, y lo

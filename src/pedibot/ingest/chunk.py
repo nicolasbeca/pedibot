@@ -17,13 +17,30 @@ _RED_FLAG_TITLE = re.compile(
     r"urgencias|112|alarma|cu[aá]ndo (debo|hay que|tengo que) (consultar|acudir|ir)|"
     r"cu[aá]ndo consultar|cu[aá]ndo acudir|signos de gravedad|when to (seek|go|call)|"
     r"emergency|warning signs|urgent|get help|call 999|call 911|a&e|immediate action|"
-    r"when to (see|get|call|seek)|ask for an urgent|red flags?|danger signs",
+    r"when to (see|get|call|seek)|ask for an urgent|red flags?|danger signs|"
+    # 5-oct-2026: sólo había castellano e inglés, y ningún documento en francés, alemán,
+    # portugués, ruso, árabe, hindi o suajili tenía marcado su «cuándo consultar».
+    r"quand (consulter|appeler|faut-il|aller aux urgences)|signes d'alerte|signes de (gravit[ée]|danger)|"
+    r"wann (zum arzt|zur [äa]rztin|ärztlich|in die notaufnahme)|warnzeichen|alarmzeichen|notfall|"
+    r"quando (procurar|consultar|ir ao|levar)|sinais de (alerta|perigo|gravidade)|pronto[- ]socorro|"
+    r"когда (обращаться|обратиться|вызывать|нужно обратиться)|"
+    r"(тревожные|опасные) (симптомы|признаки)|неотложн|"
+    r"متى (يجب|ينبغي|تراجع|تذهب|تتصل)|علامات (الخطر|الخطورة|التحذير)|الطوارئ|"
+    r"कब (डॉक्टर|अस्पताल|दिखा)|खतरे के (लक्षण|संकेत)|चेतावनी के (लक्षण|संकेत)|"
+    r"dalili za hatari",
     re.I,
 )
 _RED_FLAG_TEXT = re.compile(
     r"(acud[ae]|acudir|llam[ae]|llamar)\s+(a|al)\s+(urgencias|112)|llame al 112|"
     r"de forma inmediata|urgentemente|call 999|call 911|go to a&e|emergency department|"
-    r"call an ambulance|immediately|straight away",
+    r"call an ambulance|immediately|straight away|"
+    r"appelez (le )?(15|112)|aux urgences|sans attendre|"
+    r"notruf|notaufnahme|112 (an|wählen)|"
+    r"pronto[- ]socorro|ligue (para )?(o )?192|"
+    r"вызовите скорую|немедленно обратит|"
+    r"اتصل بالإسعاف|اذهب إلى الطوارئ|على الفور إلى|"
+    r"तुरंत (डॉक्टर|अस्पताल)|"
+    r"mpeleke hospitali (mara moja|haraka)",
     re.I,
 )
 _BIBLIO = re.compile(r"\bet al\b|\bdoi:|https?://|PMID", re.I)

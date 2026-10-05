@@ -5688,6 +5688,43 @@ rules:
   - (recien nacido|recién nacido|recem nascido|recém-nascido|neonato|newborn|nouveau ne|nouveau-né|neugeborene|новорожд|حديث الولادة|مولود|नवजात)[^.]{0,90}(espasmo|spasm|spasme|krampf|arqueado|arqueia|arches|opistoton|спазм|судорог|تشنج|ऐंठन)
   - (espasmo|spasm|spasme|steif und|окоченел|спазм|تشنج|ऐंठन)[^.]{0,90}(recien nacido|recién nacido|recem nascido|newborn|nouveau ne|neugeborene|новорожд|مولود|नवजात)
   - (mandibula apretada|mandíbula apretada|mandibula cerrada|no puede abrir la boca|jaw (is )?(clenched|locked|stiff)|machoire serree|mâchoire serrée|maxilar travado|boca travada|trismo|trismus|kiefersperre|тризм|сжатая челюсть|челюсть свело|فك مطبق|فكه مطبق|تشنج الفك|जबड़ा जकड़|जबड़ा बंद)
+
+# 5-oct-2026, batería con el reparto de las consultas reales (L252): «my teenager fainted during
+# soccer practice» y «se desmayó jugando al fútbol» salían rutina. La SEUP, en su hoja de síncope:
+# consultar en urgencias «cuando el síncope se ha producido realizando ejercicio físico» o «se ha
+# acompañado de palpitaciones, dolor en el pecho».
+- id: syncope_on_exertion
+  level: urgent
+  source: seup_sincope
+  reason_es: 'Desmayo haciendo ejercicio, o con palpitaciones o dolor en el pecho: que lo vean en urgencias hoy'
+  reason_en: 'Fainting during exercise, or with palpitations or chest pain: get them seen in the emergency department today'
+  reason_fr: 'Évanouissement pendant l''effort, ou avec palpitations ou douleur dans la poitrine : à faire examiner aux urgences aujourd''hui'
+  reason_de: 'Ohnmacht beim Sport oder mit Herzrasen oder Brustschmerzen: heute in der Notaufnahme abklären lassen'
+  reason_ru: 'Обморок во время нагрузки или с сердцебиением или болью в груди: сегодня покажите врачу в приёмном отделении'
+  reason_ar: 'إغماء أثناء الرياضة أو مع خفقان أو ألم في الصدر: يجب أن يُفحص في الطوارئ اليوم'
+  reason_pt: 'Desmaio durante exercício, ou com palpitações ou dor no peito: que seja visto na urgência hoje'
+  reason_hi: 'कसरत या खेलते समय बेहोश होना, या धड़कन तेज़ होने या सीने में दर्द के साथ: आज ही इमरजेंसी में दिखाइए'
+  reason_sw: 'Kuzimia wakati wa mazoezi, au pamoja na mapigo ya moyo ya haraka au maumivu ya kifua: aonwe hospitali leo'
+  patterns:
+  - '(desmay\w*|perdi[óo] el conocimiento|s[íi]ncope)[^.]{0,50}(jugando|haciendo (deporte|ejercicio)|corriendo|entrenando|en el partido|educaci[óo]n f[íi]sica|al hacer (un )?esfuerzo)'
+  - '(jugando al|haciendo (deporte|ejercicio)|corriendo|entrenando|en el partido)[^.]{0,50}(se desmay\w*|perdi[óo] el conocimiento)'
+  - '(desmay\w*|s[íi]ncope)[^.]{0,60}(palpitaciones|dolor (en el|de) pecho)'
+  - '(faint\w*|passed out|collapsed|blacked out)[^.]{0,50}(during|while|after|at) (sports?|soccer|football|basketball|running|exercise|practice|training|pe\b|gym|a game|the game|playing)'
+  - '(while|during) (running|playing|exercising|training|practice|a game|the game)[^.]{0,40}(faint\w*|passed out|collapsed)'
+  - '(faint\w*|passed out)[^.]{0,60}(chest pain|palpitations|heart (was )?(racing|pounding))'
+  - '([ée]vanoui\w*|a fait un malaise|perdu connaissance)[^.]{0,50}(en jouant|pendant le sport|au sport|en courant|[àa] l''entra[îi]nement|en faisant du sport|pendant l''effort)'
+  - '(ohnm[äa]chtig|bewusstlos|kollabiert|umgekippt)[^.]{0,50}(beim (sport|laufen|fu[ßs]ball|training|spielen)|w[äa]hrend des sports)'
+  - 'beim (sport|laufen|fu[ßs]ball|training)[^.]{0,40}(ohnm[äa]chtig|umgekippt|kollabiert|bewusstlos)'
+  - '(desmai\w*|perdeu os sentidos|perdeu a consci[êe]ncia)[^.]{0,50}(jogando|durante o (esporte|desporto|treino|jogo)|correndo|fazendo (exerc[íi]cio|esporte))'
+  - '(потерял\w* сознание|упал\w* в обморок|обморок)[^.]{0,50}(на тренировке|во время (спорта|бега|игры|тренировки)|на физкультуре|при нагрузке)'
+  - '(на тренировке|на физкультуре|во время (бега|игры|тренировки))[^.]{0,40}(потерял\w* сознание|обморок)'
+  - '(أغمي عليها?|اغمي عليها?|فقدت? الوعي|غابت? عن الوعي)[^.]{0,50}(أثناء (اللعب|الرياضة|التمرين|الجري)|وهو يلعب|وهي تلعب|في المباراة)'
+  - '(أثناء (اللعب|الرياضة|التمرين)|وهو يلعب|وهي تلعب)[^.]{0,40}(أغمي|اغمي|فقدت? الوعي)'
+  - 'बेहोश[^।]{0,50}(खेलते (समय|हुए)|दौड़ते (समय|हुए)|कसरत|व्यायाम)'
+  - '(खेलते (समय|हुए)|दौड़ते (समय|हुए)|कसरत|व्यायाम)[^।]{0,40}बेहोश'
+  - 'behosh[^.]{0,40}(khelte|daudte|exercise)'
+  - 'alizimia[^.]{0,40}(akicheza|wakati wa michezo|akikimbia)'
+
 context:
   fever:
   # 21-sep-2026: la cifra sola, «tiene 38.1 rectal», «has 38.0», «hat 39»

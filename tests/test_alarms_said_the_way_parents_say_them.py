@@ -56,6 +56,11 @@ def triaje() -> Triage:
         ("ele caiu do sofá e vomitou duas vezes", "urgent"),
         ("मेरी बेटी बिस्तर से गिर गई और उसके बाद एक बार उल्टी हुई", "urgent"),
         ("my 2 year old is breathing with his belly moving a lot", "urgent"),
+        # regla nueva: síncope con esfuerzo (SEUP, hoja de síncope)
+        ("my teenager fainted during soccer practice", "urgent"),
+        ("mi hija se desmayo jugando al futbol pero ahora esta bien", "urgent"),
+        ("she fainted and said her heart was racing", "urgent"),
+        ("ابني أغمي عليه أثناء اللعب", "urgent"),
     ],
 )
 def test_salta(triaje: Triage, frase: str, nivel: str) -> None:
@@ -76,6 +81,8 @@ def test_salta(triaje: Triage, frase: str, nivel: str) -> None:
         "she fell ill yesterday and vomited twice",
         "the ball hit the window",
         "mi hijo tiene un poco de rigidez en el cuello por dormir mal",
+        "she fainted when she saw blood",
+        "my son is tired after soccer practice",
     ],
 )
 def test_no_salta(triaje: Triage, frase: str) -> None:

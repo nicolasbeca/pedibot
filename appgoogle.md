@@ -188,7 +188,7 @@ ir en paralelo con G2 a G5.
 
 ## 9 bis. La ficha y las capturas (1-oct-2026, noche)
 
-- **Ficha revisada** en `app/TIENDAS.md` §2: cifras releídas de `DATOS.md` (75 calendarios, 95
+- **Ficha revisada** en `app/TIENDAS.md` §2: cifras releídas de `DATOS.md` (las de entonces: 75 calendarios, 95
   países, 26 organismos); «sin cobertura» dicho como funciona en la TWA; y fuera una promesa que
   no era verdad («todas las respuestas llevan la fuente con su año y su enlace»: el chat nombra al
   organismo y la lista de documentos está en /sources). Formulario de datos completado con el

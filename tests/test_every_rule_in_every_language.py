@@ -1018,6 +1018,16 @@ CASOS: dict[str, dict[str, str]] = {
         "pt": "o recém-nascido parou de mamar e está rígido",
         "hi": "नवजात ने दूध पीना बंद कर दिया और अकड़ गया",
     },
+    "syncope_on_exertion": {
+        "es": "mi hijo se desmayó jugando al fútbol",
+        "en": "my son fainted during football practice",
+        "fr": "mon fils s'est évanoui en jouant au foot",
+        "de": "mein Sohn ist beim Fußball umgekippt",
+        "ru": "сын упал в обморок на тренировке",
+        "ar": "ابني أغمي عليه أثناء الرياضة",
+        "pt": "meu filho desmaiou jogando futebol",
+        "hi": "बेटा दौड़ते समय बेहोश हो गया",
+    },
 }
 
 
@@ -2109,6 +2119,16 @@ SEGUNDA: dict[str, dict[str, str]] = {
         "ar": "المولود عنده تشنجات",
         "pt": "o recém-nascido tem espasmos",
         "hi": "नवजात को ऐंठन हो रही है",
+    },
+    "syncope_on_exertion": {
+        "es": "se desmayó y tenía palpitaciones",
+        "en": "she passed out while running",
+        "fr": "elle a perdu connaissance pendant le sport",
+        "de": "sie ist beim Laufen ohnmächtig geworden",
+        "ru": "дочь потеряла сознание на физкультуре",
+        "ar": "بنتي فقدت الوعي وهي تلعب",
+        "pt": "minha filha desmaiou durante o treino",
+        "hi": "बेटी खेलते समय बेहोश हो गई",
     },
 }
 

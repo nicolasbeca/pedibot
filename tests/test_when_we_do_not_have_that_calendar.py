@@ -24,10 +24,11 @@ def _motor_con_calendarios():  # noqa: ANN202
 
 def test_it_says_which_country_it_is_missing() -> None:
     a = _motor_con_calendarios().ask(
-        "cual es el calendario de vacunas chileno para los 18 meses", lang="es", country="ES"
+        "cual es el calendario de vacunas japonés para los 18 meses", lang="es", country="ES"
     )
+    # 5-oct-2026: Chile ya tiene calendario (de la OMS); el ejemplo pasa a Japón, que no.
     assert a.verification == "no_schedule"
-    assert "Chile" in a.text
+    assert "Japón" in a.text
     assert "vaccines" in (a.tool.url if a.tool else "")
 
 

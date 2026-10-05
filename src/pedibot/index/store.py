@@ -1005,17 +1005,26 @@ class Index:
         row = self.con.execute("SELECT data FROM chunks WHERE chunk_id=?", (chunk_id,)).fetchone()
         return Chunk.model_validate_json(row[0]) if row else None
 
-    def red_flag_chunk(self, doc_id: str) -> Chunk | None:
-        """The warning-signs chunk of a document (for triage rules to cite their own source)."""
+    def red_flag_chunk(self, doc_id: str, strict: bool = False) -> Chunk | None:
+        """The warning-signs chunk of a document (for triage rules to cite their own source).
+
+        `strict`: only a chunk really marked as warning signs, never the first one instead
+        (5-oct-2026, para añadir a cualquier respuesta el «cuándo consultar» de su documento)."""
         row = self.con.execute(
             "SELECT data FROM chunks WHERE doc_id=? AND is_red_flag=1 ORDER BY chunk_id LIMIT 1",
             (doc_id,),
         ).fetchone()
+        if row is None and strict:
+            return None
         if row is None:
             row = self.con.execute(
                 "SELECT data FROM chunks WHERE doc_id=? ORDER BY chunk_id LIMIT 1", (doc_id,)
             ).fetchone()
         return Chunk.model_validate_json(row[0]) if row else None
+
+    def warning_chunk(self, doc_id: str) -> Chunk | None:
+        """Sólo el pasaje marcado como signos de alarma, o nada (5-oct-2026)."""
+        return self.red_flag_chunk(doc_id, strict=True)
 
     def document_hits(self, doc_id: str, limit: int = 4) -> list[Hit]:
         """Los primeros pasajes de un documento, en su orden, sin buscar nada (29-sep-2026).

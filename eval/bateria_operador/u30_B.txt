@@ -1,0 +1,17 @@
+respuestas: 416 · juzgadas: 415
+por verificación: {'dose_calculator': 18, 'ok': 190, 'regenerated': 181, 'no_source': 12, 'clarify': 1, 'dose_ask_weight': 6, 'fallback': 4, 'growth_chart': 1, 'no_schedule': 3}
+helps: {0: 12, 1: 168, 2: 234, 3: 1}
+units_ok = false: 3
+country_ok = false: 50
+urgency_ok = false: 61
+con algo 'wrong': 8
+
+lengua  n  helps≤1  sin_fuente  sin_fuente_propia
+en     215      98          9               69
+es      78      23          3                6
+hi      30      16          0               24
+pt      27      11          0               18
+fr      24      10          0               14
+de      18       9          0               11
+ru      13       7          0               11
+ar      11       6          0                6
