@@ -387,6 +387,10 @@ def _floor_ml(x: float) -> float:
     return int(x * 10) / 10
 
 
+#: El peso con el que un niño ya no puede tener menos de 3 meses (ver `calculate`).
+PESO_QUE_DESCARTA_3_MESES = 10.0
+
+
 def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) -> DoseResult:
     drug = DRUGS.get(drug_key.lower())
     if drug is None:
@@ -402,7 +406,12 @@ def calculate(drug_key: str, weight_kg: float, age_months: float | None = None) 
     if age_months is not None and age_months < drug.min_age_months:
         warnings.append("below_min_age")
         refer = True
-    if age_months is None and drug.min_age_months > 0:
+    # 5-oct-2026: con 10 kg o más no hay lactante de menos de 3 meses posible (z +4,1 a +4,5 en la
+    # curva de la OMS a los 3 meses, niño o niña): el peso ya descarta la contraindicación que la
+    # edad venía a descartar. «cuanto Dalsy le puedo dar si pesa 18 kilos» recibía «¿qué edad
+    # tiene?». Por debajo, sin edad, sigue sin cifra (decisión del 8-sep, abajo).
+    descartada_por_peso = drug.min_age_months <= 3 and weight_kg >= PESO_QUE_DESCARTA_3_MESES
+    if age_months is None and drug.min_age_months > 0 and not descartada_por_peso:
         # Sin edad no se puede descartar la contraindicación, y el desplegable de la web tiene
         # una opción que dice literalmente «no lo sé». Medido el 9-sep-2026: con esa opción, el
         # ibuprofeno a 5 kg devolvía la dosis entera, sin un solo aviso — y 5 kg es un peso de

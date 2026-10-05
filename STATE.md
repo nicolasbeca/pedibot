@@ -11,7 +11,17 @@
   32 %, pero con el doble de errores de hecho (10 → 20). Leídos uno a uno: signos de alarma
   copiados de otra situación (sangrado de herida para una regla abundante, fiebre amarilla tras
   cualquier vacuna), «vigila las próximas 24 h» a un niño YA confuso, ibuprofeno en dengue o con
-  manchas que no se blanquean. **v10** cierra las tres. (Cifras de v10: abajo.)
+  manchas que no se blanquean. **v10** cierra las tres: D (v10 + todo) 31 % flojas, 10 errores
+  (los mismos que A), urgencia mal 60 → 47; pregunta a pregunta, 104 mejor y 23 peor. Desplegado.
+  La batería 11 entera con todo lo desplegado: flojas 41 % → 20 %, urgencia mal 31 → 16. Los
+  «errores» del juez suben de 5 a 11, pero 7 son desacuerdos con las fuentes (ibuprofeno tras un
+  golpe leve, despertarle cada 4 h): el redactor no puede contradecirlas.
+- **Después, sin desplegar aún:** el RKI catalogado como `guia_clinica` (es «für Ärzte»; 16 de 89
+  preguntas en alemán cambian, casi todas a mejor); ibuprofeno sin edad con 10 kg o más da la
+  dosis (un lactante de 3 meses con 10 kg estaría en z +4; por debajo sigue sin cifra, decisión
+  del 8-sep); «baby» ya no hace alemana una pregunta inglesa (8 de 3.701, las 8 a bien);
+  sinónimos para «not eating» (Fussy eaters, NHS), nariz tapada en francés, regresión del habla;
+  11 nombres de vacuna traducidos («Meningococcal B» salía en inglés en el calendario chileno).
 - **`_inject_doc_warnings`:** a toda respuesta llega el apartado de signos de alarma de su
   documento principal (antes, sólo si saltaba una regla). `Engine.inyecta_alarma` para medirlo.
 - **`_own_language_first` (sólo inglés):** a igualdad de tema y con el 60 % de la puntuación, la

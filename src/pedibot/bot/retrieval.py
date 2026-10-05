@@ -404,6 +404,16 @@ def detect_lang(text: str) -> str:
         " daughter",
         " he ",
         " she ",
+        # 5-oct-2026: «how many ml of Tylenol for a 22 pound baby» salía alemán: «baby» es de
+        # las dos y no había otra marca inglesa. Palabras que no existen en las otras lenguas
+        # latinas del sitio.
+        " how ",
+        " much ",
+        " many ",
+        " for ",
+        " of ",
+        " and ",
+        " with ",
     ]
     fr_markers = [
         "il vomit",

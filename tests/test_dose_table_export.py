@@ -54,7 +54,9 @@ def test_solo_lleva_el_farmaco_que_se_puede_dar_sin_saber_la_edad(tabla: dict):
     """Sin edad, el ibuprofeno devuelve `refer` y no una cifra. Un deslizador de peso no sabe la
     edad, así que si alguna vez entra aquí, esto lo para antes de que salga a la portada."""
     assert tabla["drug"] == "paracetamol"
-    r = calculate("ibuprofen", 14.0, None)
+    # 5-oct-2026: con 10 kg o más el peso ya descarta los 3 meses y el ibuprofeno da cifra sin
+    # edad; por debajo, no. La tabla de la portada empieza en 4 kg, así que sigue sin poder ir.
+    r = calculate("ibuprofen", 8.0, None)
     assert r.refer, "si esto cambia, replantear si el ibuprofeno puede ir en la portada"
 
 

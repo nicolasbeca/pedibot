@@ -1719,17 +1719,15 @@ class Engine:
         reales, lo que más faltaba era cuándo buscar ayuda (47 de 105) y los signos concretos (44):
         el apartado existía en el mismo documento, pero la búsqueda no lo había traído y el
         redactor no puede escribir lo que no tiene delante. Uno solo, el del primer documento
-        de los dos de arriba que lo tenga, y al final: no desplaza lo que sí se buscó."""
+        principal, y al final: no desplaza lo que sí se buscó."""
         if not self.inyecta_alarma or not hits:
             return hits
         if any(h.chunk.is_red_flag for h in hits[:3]):
             return hits
-        vistos: list[str] = []
-        for h in hits:
-            if h.chunk.doc_id not in vistos:
-                vistos.append(h.chunk.doc_id)
-            if len(vistos) == 2:
-                break
+        # Sólo el del PRIMER documento (5-oct-2026). Con los dos de arriba se colaba la lista de
+        # otro tema: los signos de infección de orina del NHS para una fiebre de 3 años, los de
+        # anafilaxia para un párpado hinchado (batería 10, segunda pasada).
+        vistos = [hits[0].chunk.doc_id]
         for doc in vistos:
             if any(h.chunk.doc_id == doc and h.chunk.is_red_flag for h in hits):
                 return hits

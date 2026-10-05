@@ -175,3 +175,19 @@ def test_a_drug_without_a_minimum_age_still_works_without_one() -> None:
 def test_a_valid_age_is_unaffected() -> None:
     r = calculate("ibuprofeno", 20.0, 48)
     assert r.refer is False and r.mg == 200.0
+
+
+# 5-oct-2026: con 10 kg o más, ser menor de 3 meses es imposible (z +4,1 a +4,5 en la curva de
+# la OMS a los 3 meses, niño o niña), así que la contraindicación queda descartada por el peso.
+# «cuanto Dalsy le puedo dar si pesa 18 kilos» recibía «¿qué edad tiene?». Por debajo de 10 kg,
+# sin edad, sigue sin cifra.
+@pytest.mark.parametrize("kg", [10.0, 12.0, 18.0, 20.0])
+def test_with_a_weight_no_baby_under_3_months_has_the_dose_comes(kg: float) -> None:
+    r = calculate("ibuprofeno", kg, None)
+    assert r.refer is False and "age_unknown" not in r.warnings
+
+
+@pytest.mark.parametrize("kg", [5.0, 7.0, 9.5])
+def test_below_ten_kilos_the_age_is_still_needed(kg: float) -> None:
+    r = calculate("ibuprofeno", kg, None)
+    assert r.refer is True and "age_unknown" in r.warnings

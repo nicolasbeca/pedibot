@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import pytest
 
-from pedibot.bot.dose import DRUGS, DoseError, calculate
+from pedibot.bot.dose import PESO_QUE_DESCARTA_3_MESES, DRUGS, DoseError, calculate
 
 FARMACOS = ("paracetamol", "ibuprofeno")
 PESOS = [round(1.0 + 0.5 * i, 1) for i in range(239)]  # 1,0 – 120,0 kg
@@ -80,7 +80,13 @@ def test_refer_is_set_exactly_when_it_should_be(clave: str) -> None:
                 or kg < d.min_weight_kg
                 # sin edad y con edad mínima no se puede descartar la contraindicación
                 # (9-sep-2026): se avisa y no se da la cifra
-                or (edad is None and d.min_age_months > 0)
+                or (
+                    edad is None
+                    and d.min_age_months > 0
+                    # 5-oct-2026: salvo que el peso ya descarte la edad mínima (10 kg no cabe en
+                    # ningún lactante de 3 meses: z +4). Sólo vale para una edad mínima de 3 meses.
+                    and not (d.min_age_months <= 3 and kg >= PESO_QUE_DESCARTA_3_MESES)
+                )
             )
             assert bool(r.refer) is debe, f"{kg} kg / {edad} m: refer={r.refer}, esperado {debe}"
 

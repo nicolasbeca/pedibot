@@ -527,6 +527,27 @@ en:
   pink eye:
   - conjunctivitis
   - conjuntivitis
+  # 5-oct-2026, flojas que quedaban sin fuente (conjunto difícil, pasada D).
+  not eating:
+  - fussy eaters
+  "won't eat":
+  - fussy eaters
+  wont eat:
+  - fussy eaters
+  refuses to eat:
+  - fussy eaters
+  refusing food:
+  - fussy eaters
+  vomited after:
+  - paracetamol for children
+  - medicines for babies and children
+  threw it up:
+  - paracetamol for children
+  - medicines for babies and children
+  spit it out:
+  - medicines for babies and children
+  spat it out:
+  - medicines for babies and children
 es:
   # 2-oct-2026: «¿es igual la temperatura en la axila que en el oído?» no llegaba a la página
   # del NHS que dice que el termómetro de oído no es fiable en un bebé.
@@ -1084,6 +1105,10 @@ es_en:
   - physical activity
   actividad física:
   - physical activity
+  # 5-oct-2026, flojas que quedaban sin fuente (conjunto difícil, pasada D).
+  dejado de decir:
+  - developmental milestones
+  - act early
 fr:
   fièvre:
   - fièvre
@@ -1355,6 +1380,13 @@ fr_en:
   - croup
   laryngite:
   - croup
+  # 5-oct-2026, flojas que quedaban sin fuente (conjunto difícil, pasada D).
+  nez bouch:
+  - blocked nose
+  - common cold
+  tète moins:
+  - feeding
+  - common cold
 de_es:
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los

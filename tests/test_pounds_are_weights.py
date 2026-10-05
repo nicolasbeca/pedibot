@@ -135,9 +135,9 @@ def test_la_respuesta_dice_la_conversion() -> None:
 
 
 def test_sin_edad_pregunta_la_edad_y_luego_da_la_dosis(motor) -> None:
-    """«how much Motrin for 24 lbs»: el ibuprofeno necesita saber que tiene más de 3 meses. Se
+    """«how much Motrin for 18 lbs» (8,2 kg): el ibuprofeno necesita saber que tiene más de 3 meses. Se
     pregunta la edad (no se prohíbe), y con la respuesta sale la dosis con el peso de antes."""
-    a = motor.ask("how much Motrin for 24 lbs", country="US", lang="en")
+    a = motor.ask("how much Motrin for 18 lbs", country="US", lang="en")
     assert "How old is your child?" in a.text, a.text
     assert "Do not give" not in a.text
     b = motor.ask(
@@ -145,7 +145,7 @@ def test_sin_edad_pregunta_la_edad_y_luego_da_la_dosis(motor) -> None:
         country="US",
         lang="en",
         history=[
-            {"role": "user", "text": "how much Motrin for 24 lbs"},
+            {"role": "user", "text": "how much Motrin for 18 lbs"},
             {"role": "assistant", "text": a.text},
         ],
     )

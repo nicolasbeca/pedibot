@@ -5880,7 +5880,7 @@ sources:
   year: null
   lang: de
   topic: piel
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -5895,7 +5895,7 @@ sources:
   year: null
   lang: de
   topic: piel
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -5910,7 +5910,7 @@ sources:
   year: null
   lang: de
   topic: piel
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -5925,7 +5925,7 @@ sources:
   year: null
   lang: de
   topic: general
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -5940,7 +5940,7 @@ sources:
   year: null
   lang: de
   topic: respiratorio
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -5956,7 +5956,7 @@ sources:
   year: null
   lang: de
   topic: general
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -5971,7 +5971,7 @@ sources:
   year: null
   lang: de
   topic: respiratorio
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -5986,7 +5986,7 @@ sources:
   year: null
   lang: de
   topic: respiratorio
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6001,7 +6001,7 @@ sources:
   year: null
   lang: de
   topic: digestivo
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6016,7 +6016,7 @@ sources:
   year: null
   lang: de
   topic: digestivo
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6032,7 +6032,7 @@ sources:
   year: null
   lang: de
   topic: piel
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6047,7 +6047,7 @@ sources:
   year: null
   lang: de
   topic: general
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6062,7 +6062,7 @@ sources:
   year: null
   lang: de
   topic: respiratorio
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6077,7 +6077,7 @@ sources:
   year: null
   lang: de
   topic: piel
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6092,7 +6092,7 @@ sources:
   year: null
   lang: de
   topic: piel
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6107,7 +6107,7 @@ sources:
   year: null
   lang: de
   topic: digestivo
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6122,7 +6122,7 @@ sources:
   year: null
   lang: de
   topic: digestivo
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6137,7 +6137,7 @@ sources:
   year: null
   lang: de
   topic: digestivo
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6152,7 +6152,7 @@ sources:
   year: null
   lang: de
   topic: digestivo
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6167,7 +6167,7 @@ sources:
   year: null
   lang: de
   topic: piel
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6182,7 +6182,7 @@ sources:
   year: null
   lang: de
   topic: general
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6197,7 +6197,7 @@ sources:
   year: null
   lang: de
   topic: general
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6212,7 +6212,7 @@ sources:
   year: null
   lang: de
   topic: respiratorio
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6227,7 +6227,7 @@ sources:
   year: null
   lang: de
   topic: respiratorio
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6242,7 +6242,7 @@ sources:
   year: null
   lang: de
   topic: general
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6257,7 +6257,7 @@ sources:
   year: null
   lang: de
   topic: accidentes
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6272,7 +6272,7 @@ sources:
   year: null
   lang: de
   topic: respiratorio
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6287,7 +6287,7 @@ sources:
   year: null
   lang: de
   topic: respiratorio
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6302,7 +6302,7 @@ sources:
   year: null
   lang: de
   topic: general
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:
@@ -6317,7 +6317,7 @@ sources:
   year: null
   lang: de
   topic: general
-  doc_type: hoja_padres
+  doc_type: guia_clinica
   evidence: organismo_publico
   usage: publico
   age_groups:

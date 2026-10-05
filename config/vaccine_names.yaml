@@ -424,6 +424,19 @@ names:
 # Las coletillas que el generador de la OMS añade a un nombre. Se traducen aparte porque se
 # pegan a cualquiera de los de arriba, y repetirlas en cada entrada sería copiar cuarenta veces
 # la misma frase y equivocarse en una.
+  # 5-oct-2026: los que trajo Hispanoamérica, y cinco que ya faltaban (Golfo, Mauricio, Guinea).
+  "DTaP-Hib": {en: "DTaP-Hib", es: "DTPa-Hib", fr: "DTCa-Hib", de: "DTaP-Hib", ru: "АКДС-Hib (бесклеточная)", ar: "DTaP-Hib", pt: "DTPa-Hib", hi: "DTaP-Hib"}
+  "DTwP-HepB-IPV": {en: "DTwP-HepB-IPV", es: "DTPe-HepB-VPI", fr: "DTCe-HepB-VPI", de: "DTwP-HepB-IPV", ru: "АКДС-ГепB-ИПВ", ar: "DTwP-HepB-IPV", pt: "DTPw-HepB-VIP", hi: "DTwP-HepB-IPV"}
+  "Dengue": {en: "Dengue", es: "Dengue", fr: "Dengue", de: "Dengue", ru: "Денге", ar: "حمى الضنك", pt: "Dengue", hi: "डेंगू"}
+  "HPV, 2-valent": {en: "HPV, 2-valent", es: "VPH, bivalente", fr: "HPV, bivalent", de: "HPV, bivalent", ru: "ВПЧ, двухвалентная", ar: "فيروس الورم الحليمي، ثنائي التكافؤ", pt: "HPV, bivalente", hi: "HPV, द्विसंयोजी"}
+  "MMRV (measles, mumps, rubella, varicella)": {en: "MMRV (measles, mumps, rubella, varicella)", es: "Tetravírica (sarampión, paperas, rubéola, varicela)", fr: "ROR-varicelle (rougeole, oreillons, rubéole, varicelle)", de: "MMRV (Masern, Mumps, Röteln, Windpocken)", ru: "Корь, паротит, краснуха, ветрянка (КПКВ)", ar: "الحصبة والنكاف والحصبة الألمانية والجدري المائي", pt: "Tetravalente viral (sarampo, caxumba, rubéola, varicela)", hi: "MMRV (खसरा, कंठमाला, रूबेला, चिकनपॉक्स)"}
+  "Meningococcal A, polysaccharide": {en: "Meningococcal A, polysaccharide", es: "Meningococo A, polisacárida", fr: "Méningocoque A, polyosidique", de: "Meningokokken A, Polysaccharid", ru: "Менингококковая A, полисахаридная", ar: "المكورات السحائية A، عديدة السكاريد", pt: "Meningocócica A, polissacarídica", hi: "मेनिंगोकोकल A, पॉलीसैकराइड"}
+  "Meningococcal ACYWX, conjugate": {en: "Meningococcal ACYWX, conjugate", es: "Meningococo ACYWX, conjugada", fr: "Méningocoque ACYWX, conjugué", de: "Meningokokken ACYWX, konjugiert", ru: "Менингококковая ACYWX, конъюгированная", ar: "المكورات السحائية ACYWX، مقترن", pt: "Meningocócica ACYWX, conjugada", hi: "मेनिंगोकोकल ACYWX, कंजुगेट"}
+  "Meningococcal B": {en: "Meningococcal B", es: "Meningococo B", fr: "Méningocoque B", de: "Meningokokken B", ru: "Менингококковая B", ar: "المكورات السحائية B", pt: "Meningocócica B", hi: "मेनिंगोकोकल B"}
+  "Meningococcal B and C": {en: "Meningococcal B and C", es: "Meningococo B y C", fr: "Méningocoque B et C", de: "Meningokokken B und C", ru: "Менингококковая B и C", ar: "المكورات السحائية B وC", pt: "Meningocócica B e C", hi: "मेनिंगोकोकल B और C"}
+  "Polio, fractional inactivated (fIPV)": {en: "Polio, fractional inactivated (fIPV)", es: "Polio inactivada fraccionada (VPIf)", fr: "Polio inactivé fractionné (VPIf)", de: "Polio, fraktioniert inaktiviert (fIPV)", ru: "Полиомиелит, дробная инактивированная (фИПВ)", ar: "شلل الأطفال المعطل، جرعة مجزأة (fIPV)", pt: "Pólio inativada fracionada (VIPf)", hi: "पोलियो, आंशिक निष्क्रिय (fIPV)"}
+  "RSV antibody (nirsevimab)": {en: "RSV antibody (nirsevimab)", es: "Anticuerpo contra el VRS (nirsevimab)", fr: "Anticorps contre le VRS (nirsévimab)", de: "RSV-Antikörper (Nirsevimab)", ru: "Антитела против РСВ (нирсевимаб)", ar: "أجسام مضادة للفيروس المخلوي التنفسي (نيرسيفيماب)", pt: "Anticorpo contra o VSR (nirsevimabe)", hi: "RSV एंटीबॉडी (निर्सेविमैब)"}
+
 suffixes:
   " (some regions only)":
     en: " (some regions only)"
