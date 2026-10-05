@@ -22,6 +22,8 @@ no para aprobar nada.
 from __future__ import annotations
 
 import collections
+import functools
+import threading
 import json
 import re
 import sys
@@ -31,26 +33,37 @@ from pedibot.bot.llm import provider_from_settings
 from pedibot.bot.retrieval import detect_lang
 from pedibot.settings import ROOT
 
-SYSTEM = """You judge answers from a children's health chatbot for parents. It must answer ONLY
-from cited official guidance, so it may legitimately leave things out when its sources do not
-cover them — but judge what the PARENT gets. You receive the parent's MESSAGE (and earlier turns
-if any), the parent's COUNTRY if known, the WARNING LEVEL and BANNER shown above the answer, the
-ANSWER TEXT and its SOURCES. Return ONLY a JSON object:
-  "helps": 0-3. 3 = after reading it the parent knows what to do now, what to watch for and when
-      to get help, for THIS situation. 2 = useful but with a gap. 1 = mostly generic or beside the
-      point. 0 = useless or harmful.
-  "missing": up to 4 short items a careful paediatric nurse would expect in an answer to THIS
-      message and that are absent (e.g. "oral rehydration solution in small frequent sips",
-      "signs: no tears, dry mouth, no urine for 8 hours"). [] if none.
-  "wrong": short items that are factually wrong or unsafe. [] if none.
+SYSTEM = """You judge answers from a children's health chatbot for parents. The chatbot must
+answer ONLY from the official guidance PASSAGES it was given, and those passages are printed
+below. YOUR REFERENCE IS THE PASSAGES, NOT YOUR OWN CLINICAL OPINION OR YOUR COUNTRY'S PRACTICE.
+If a passage says something, the answer may say it, even if you would advise otherwise.
+You receive the parent's MESSAGE (and earlier turns if any), the COUNTRY if known, the WARNING
+LEVEL and BANNER shown above the answer (set by fixed rules, each tied to a guideline), the ANSWER
+TEXT, its SOURCES and the PASSAGES. Return ONLY a JSON object:
+  "helps": 0-3. 3 = with what the passages allow, the parent knows what to do now, what to watch
+      for and when to get help. 2 = useful but with a gap. 1 = mostly generic or beside the point.
+      0 = useless or harmful. Do not mark an answer down for something no passage covers.
+  "wrong": short items where the ANSWER contradicts or misstates the passages, attributes to a
+      source something its passage does not say, applies a passage about a different situation
+      (another condition, another age, an adult) to this child, or presents a warning list that
+      belongs to another situation. Something a passage says is NOT wrong. [] if none.
+  "missing": up to 4 short items that the PASSAGES contain, that matter for this parent, and that
+      the answer left out. Never list knowledge that is not in the passages. [] if none.
+  "gap": up to 3 short items this parent needs that NO passage covers (a gap in the sources, not
+      a fault of the answer). [] if none.
+  "check_source": items where a PASSAGE itself says something you believe is unsafe or outdated
+      for this situation, quoting the passage briefly. This is for a human to review the source; it
+      does not count against the answer. [] if none.
   "units_ok": false if the parent used °F, pounds or ounces and the answer ignores them or only
       gives °C/kg without converting; true otherwise.
-  "country_ok": false if the answer presents another country's schedule, brands, services or
-      emergency number as the parent's own; true otherwise (also when no country is known).
-  "urgency_ok": false if the warning level is clearly too low for a dangerous sign or clearly too
-      high for something benign; true otherwise.
+  "country_ok": false only if the answer presents another country's schedule, brands, services
+      or emergency number as the parent's own. Citing an organisation from another country for
+      general facts is fine.
+  "urgency_ok": false if the warning level is clearly too low or too high for this message
+      according to what the passages say about such a situation; true otherwise.
   "note": one short sentence in Spanish with the main problem, or "".
-Be strict about usefulness and concrete about what is missing. Do not rewrite the answer."""
+For answers built from a fixed table (a dose calculator or a vaccination schedule) there may be no
+passages: judge only usefulness, units and country."""
 
 #: Lo que no es una respuesta de salud y no se juzga aquí: preguntas sobre PediBot, aclaraciones
 #: pedidas, fuera de tema y lo que no encontró fuente (eso ya se cuenta aparte).
@@ -89,6 +102,29 @@ def lengua_fuentes(r: dict) -> dict[str, object]:
     return {"src_langs": lenguas, "own_lang_src": sum(1 for x in lenguas if x == r.get("lang"))}
 
 
+_CANDADO = threading.Lock()
+
+
+@functools.lru_cache(maxsize=1)
+def _indice():  # noqa: ANN202
+    from pedibot.index.store import Index
+    from pedibot.settings import get_settings
+
+    return Index(get_settings().index_db_path)
+
+
+def pasajes(ids: list[str]) -> str:
+    """El texto de los pasajes que tuvo el redactor (5-oct-2026, petición del operador: «el juez
+    debería vigilar lo que dicen las guías, no lo que digamos nosotros»)."""
+    trozos = []
+    for n, cid in enumerate(ids[:7], start=1):
+        with _CANDADO:  # una conexión sqlite, ocho hilos del juez
+            c = _indice().get(cid)
+        if c is not None:
+            trozos.append(f"[{n}] {c.org} — {c.doc_title} — {c.section}:\n{c.text[:900]}")
+    return "\n\n".join(trozos) or "(none)"
+
+
 def juzga(llm, r: dict, antes: list[dict]) -> dict:  # noqa: ANN001
     extra = lengua_fuentes(r)
     if r.get("error") or r.get("ver") in SIN_JUICIO:
@@ -98,9 +134,10 @@ def juzga(llm, r: dict, antes: list[dict]) -> dict:  # noqa: ANN001
         f"{previas}MESSAGE:\n{r['q']}\n\nCOUNTRY: {r.get('pais') or 'unknown'}\n"
         f"WARNING LEVEL: {r.get('level')}\nBANNER: {r.get('banner') or '(none)'}\n\n"
         f"ANSWER TEXT:\n{(r.get('text') or '')[:3000]}\n\nSOURCES:\n" + "\n".join(r.get("sources") or [])
+        + "\n\nPASSAGES:\n" + pasajes(r.get("chunk_ids") or [])
     )
     try:
-        res = llm.complete(SYSTEM, user, temperature=0.0, max_tokens=500)
+        res = llm.complete(SYSTEM, user, temperature=0.0, max_tokens=700)
         m = re.search(r"\{.*\}", res.text or "", re.S)
         util = json.loads(m.group(0)) if m else {"error": "sin json"}
     except Exception as e:  # noqa: BLE001
@@ -139,6 +176,10 @@ def resumen(path: str) -> None:
     for campo in ("units_ok", "country_ok", "urgency_ok"):
         print(f"{campo} = false:", sum(1 for r in juzgadas if r["util"].get(campo) is False))
     print("con algo 'wrong':", sum(1 for r in juzgadas if r["util"].get("wrong")))
+    # 5-oct-2026: lo que falta en las FUENTES (no es culpa de la respuesta) y lo que el juez
+    # cree que una fuente dice mal (para que lo revise una persona, no cuenta contra nadie)
+    print("con hueco de fuentes:", sum(1 for r in juzgadas if r["util"].get("gap")))
+    print("fuente a revisar:", sum(1 for r in juzgadas if r["util"].get("check_source")))
     por_lengua: dict[str, list[dict]] = collections.defaultdict(list)
     for r in rs:
         por_lengua[r.get("lang") or "?"].append(r)

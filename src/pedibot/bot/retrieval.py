@@ -974,6 +974,23 @@ def _one_readable_up_front(hits: list[Hit], lang: str) -> list[Hit]:
     return hits
 
 
+#: La tos en cada lengua, y la comparación con un perro que la describe (5-oct-2026).
+_TOS = re.compile(r"cough|toux|tosse|\btos\b|husten|кашл|كحة|سعال|खांसी|khansi", re.I)
+_COMO_PERRO = re.compile(
+    r"(like|as) an? (dog|seal)( barking)?|barking (dog|seal)|comme un chien|de (cão|cachorro|perro)"
+    r"|wie ein hund|как (у )?собак\w*|(مثل|زي|ك)\s*(نباح\s*)?(ال)?كلب|कुत्ते (जैसी|की तरह)",
+    re.I,
+)
+
+
+def sin_comparacion_de_perro(query: str) -> str:
+    """«كحة مثل نباح الكلب» traía la rabia: el perro era la palabra que más casaba. Si se habla de
+    tos, la comparación sobra para buscar (los sinónimos de crup ya la cubren)."""
+    if not _TOS.search(query):
+        return query
+    return " ".join(_COMO_PERRO.sub(" ", query).split())
+
+
 #: Cuánto puede perder un pasaje en la lengua del padre frente al primero para ponerse delante.
 PROPIA_DELANTE = 0.6
 #: Organismos con documentos en la lengua del padre pero escritos para profesionales.
@@ -1113,7 +1130,13 @@ class Retriever:
         `pedibot.bot.who_first`). La política —qué términos y en qué países— vive allí; aquí sólo
         está el mecanismo, que es el mismo que ya usaba la expansión de sinónimos.
         """
-        extra = self.expand(query, lang)
+        # La tos «como de perro» es el crup, no la rabia: ni la búsqueda ni los sinónimos ven el
+        # perro («الكلب» añadía «داء الكلب» y «السعار»), y se añade el crup (5-oct-2026).
+        limpia = sin_comparacion_de_perro(query)
+        extra = self.expand(limpia, lang)
+        if limpia != query:
+            extra += [t for t in ("croup", "crup", "laringitis") if t not in extra]
+        query = limpia
         for t in push or []:
             if t not in extra:
                 extra.append(t)

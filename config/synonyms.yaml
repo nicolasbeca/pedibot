@@ -64,9 +64,23 @@ en:
   skinny: [underweight, weight gain, malnutrition]
   not putting on weight: [weight gain, gaining weight, centile lines, underweight, malnutrition]
   # 13-sep-2026: «it burns when he pees» iba a quemaduras
-  pees: [urinary tract infection, UTI]
-  peeing: [urinary tract infection, UTI]
-  burns when: [urinary tract infection]
+  # 5-oct-2026: «pees»/«peeing» a secas llevaban a la infección de orina a «fever since yesterday
+  # but is drinking and peeing», que lo dice para tranquilizar. Sólo frases de un problema al orinar.
+  when he pees: [urinary tract infection, UTI]
+  when she pees: [urinary tract infection, UTI]
+  when peeing: [urinary tract infection, UTI]
+  hurts to pee: [urinary tract infection, UTI]
+  pain peeing: [urinary tract infection, UTI]
+  painful peeing: [urinary tract infection, UTI]
+  peeing a lot: [urinary tract infection, UTI]
+  pees a lot: [urinary tract infection, UTI]
+  peeing more: [urinary tract infection, UTI]
+  blood in pee: [urinary tract infection, UTI]
+  smelly pee: [urinary tract infection, UTI]
+  child pees: [urinary tract infection, UTI]
+  son pees: [urinary tract infection, UTI]
+  daughter pees: [urinary tract infection, UTI]
+  burns when: [urinary tract infection, UTI]
   # los temas del lote de la OMS del 11-sep: la pregunta de un padre y el título del
   # documento no usan la misma palabra («anaemic» / «anaemia», «worms» / «helminth»,
   # «bitten by a snake» / «snakebite envenoming»)

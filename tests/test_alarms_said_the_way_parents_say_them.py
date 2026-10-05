@@ -63,6 +63,13 @@ def triaje() -> Triage:
         ("ابني أغمي عليه أثناء اللعب", "urgent"),
         ("er erbricht seit zwei Tagen", "urgent"),
         ("mein Kind erbricht seit gestern", "urgent"),
+        # juez que compara con las guías, conjunto difícil
+        ("my daughter is crying nonstop after a fall and wont calm down", "urgent"),
+        ("mera bachcha bed se gir gaya aur ek baar ulti ki", "urgent"),
+        ("mi bebe esta vomitando y no consigue quedarse con ni siquiera pequeños sorbos", "urgent"),
+        ("mi hija tiene fiebre y respira raro", "urgent"),
+        ("the cut has heavy bleeding that won't stop", "emergency"),
+        ("my baby cannot breastfeed at all", "emergency"),
     ],
 )
 def test_salta(triaje: Triage, frase: str, nivel: str) -> None:
@@ -87,6 +94,12 @@ def test_salta(triaje: Triage, frase: str, nivel: str) -> None:
         "my son is tired after soccer practice",
         # «erbricht seit» a secas hacía urgente cualquier hora de inicio; en inglés es rutina
         "mein Baby erbricht seit heute Morgen zweimal",
+        # falsas alarmas: la regla abundante, mamar peor con la nariz tapada, un niño enfermo que
+        # no come (no es un trastorno alimentario)
+        "my daughter is 13 and started her period but has very heavy bleeding",
+        "my baby has a blocked nose and cant feed properly",
+        "my baby has a blocked nose and cannot breastfeed well",
+        "मेरे बच्चे को कल से दस्त हो रहे हैं और वह खाना नहीं खा रहा",
     ],
 )
 def test_no_salta(triaje: Triage, frase: str) -> None:

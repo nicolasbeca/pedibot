@@ -968,6 +968,8 @@ rules:
   reason_hi: "सीढ़ियों से या एक मीटर से ज़्यादा ऊँचाई से गिरना, या चोट के बाद रोना बंद न होना: आज ही डॉक्टर को दिखाइए"
   reason_sw: "Ameanguka ngazi au kutoka juu zaidi ya mita moja, au analia bila kunyamaza baada ya kugongwa: aonwe na daktari leo"
   patterns:
+  # 5-oct-2026, juez que compara con las guías (conjunto difícil): dicho así, no saltaba.
+  - '(won''?t stop crying|crying non-?stop|can''?t be (consoled|settled|calmed)|inconsolabl\w*)[^.]{0,40}(after|since)[^.]{0,20}(a |the |her |his )?(fall|fell|bump|knock)'
   # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
   - '(ca[íi]d[oa]|cay[óo])[^.]{0,40}(de|desde) (un |una |el |la )?(segundo |tercer |primer )?(piso|planta|ventana|balc[óo]n|tejado|azotea)'
   - '(fell|fall|fallen)[^.]{0,30}(from|out of|off) (a |the )?(second|third|2nd|3rd|upstairs)?[ -]?(stor(e)?y|floor|window|balcony|roof)'
@@ -1419,7 +1421,8 @@ rules:
   - hemorragia
   - sangrado (abundante|profuso|importante|que no cede|que no para)
   - (sangrado|sangre).{0,25}no (cede|para|se detiene)
-  - (heavy|profuse) bleeding
+  # 5-oct-2026: la regla abundante de una niña de 13 años salía como herida profunda, emergencia
+  - ^(?!.*\b(period|periods|menstrua\w*|menses)\b).*(heavy|profuse) bleeding
   - (bleeding|blood).{0,25}(will not|won'?t|does ?n[o']?t) stop
   - bleeding (heavily|a lot|won'?t stop)
   - won'?t stop bleeding
@@ -1731,6 +1734,9 @@ rules:
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
+  # 5-oct-2026, juez que compara con las guías (conjunto difícil): dicho así, no saltaba.
+  - 'respira (muy )?(raro|extra[ñn]o)(?![^.]{0,40}(s[óo]lo|solamente|cuando est[áa] (tumbad|acostad|dormid)|cuando duerme))'
+  - 'respiraci[óo]n (muy )?(rara|extra[ñn]a)'
   # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
   - 'breathing with (his|her|their) (belly|tummy|stomach)'
   - '(belly|tummy|stomach) (is )?moving a lot'
@@ -2258,6 +2264,9 @@ rules:
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
   patterns:
+  # 5-oct-2026, juez que compara con las guías (conjunto difícil): dicho así, no saltaba.
+  - 'gir (gaya|gayi|gaye|gya)[^.]{0,80}(ulti|vomit)'
+  - '(ulti|vomit)[^.]{0,40}(girne ke baad|gir(ne)? ke)'
   # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
   - '\b(fell|fall|falling|fallen)\b(?! asleep| ill| sick| pregnant)[^.]{0,80}(vomit\w*|threw up|was sick|been sick|throw\w* up)'
   - '(gefallen|gest[üu]rzt|sturz)[^.]{0,80}(erbroch\w*|erbricht|[üu]bergeben)'
@@ -3160,7 +3169,11 @@ rules:
   - (adolescente|filha de 1[0-9]|1[0-9] anos)[^.]{0,45}n[aã]o come (mais|nada)
   - vomita.{0,30}(depois d(as|e) (refei[çc][õo]es|comer)|para n[aã]o engordar)
   - (anorexi|bulimi)
-  - (खाना).{0,25}(छोड़ दिया|नहीं खा रह)
+  # 5-oct-2026: «कल से दस्त हो रहे हैं और वह खाना नहीं खा रहा» (diarrea y no come) sacaba el aviso
+  # de trastorno alimentario. Un niño enfermo que no come no es eso.
+  # (sin el vómito en la lista: «deja de comer y vomita después de comer» en una adolescente SÍ es
+  # la señal de un trastorno alimentario)
+  - ^(?!.*(दस्त|बुखार|खांसी|जुकाम|सर्दी|बीमार|loose motion|dast|bukhar)).*(खाना).{0,25}(छोड़ दिया|नहीं खा रह)
   - (वज़न|वजन|कैलोरी).{0,25}(जुनून|की चिंता|लेकर परेशान)
   - (खाने के बाद)[^.]{0,20}(जानबूझकर|खुद से|ख़ुद) (उल्टी|वमन)
   - (खाने के बाद)[^.]{0,20}(उल्टी|वमन)[^.]{0,40}(मोटी|मोटा|वज़न|वजन)
@@ -4899,7 +4912,9 @@ rules:
   # en inglés no saltaba: estaba «unable to» y no «not able to». Y el freno del final es
   # para cuando quien no puede es la madre — «no puede mamar porque tengo mastitis» no
   # es un signo de peligro del niño.
-  - (unable to|not able to|cannot|can'?t)[^.]{0,20}(drink|breastfeed|feed|suck)(?![^.]{0,45}(because i|mastitis|my breast|my nipple))
+  # 5-oct-2026: «can't feed properly», «cannot breastfeed well» con la nariz tapada no es el signo
+  # de peligro de la OMS («no puede beber ni mamar»), que es no poder en absoluto.
+  - (unable to|not able to|cannot|can'?t)[^.]{0,20}(drink|breastfeed|feed|suck)(?!\s*(properly|well|as much|as usual|normally|very well|as often))(?![^.]{0,45}(because i|mastitis|my breast|my nipple))
   - (ne (peut|arrive) (pas )?[àa]?)[^.]{0,20}(boire|t[ée]ter)
   - (kann nicht)[^.]{0,20}(trinken|saugen|an die brust)
   # 18-sep-2026: «trinkt nichts mehr» y «isst und trinkt nichts» son la misma cosa dicha con
@@ -4934,6 +4949,8 @@ rules:
   reason_hi: "जो भी देते हैं सब उल्टी कर देता है: ख़तरे का संकेत — आज दिखाइए"
   reason_sw: "Anatapika kila kitu na hakibaki chochote: ni dalili ya hatari"
   patterns:
+  # 5-oct-2026, juez que compara con las guías (conjunto difícil): dicho así, no saltaba.
+  - 'no (consigue|puede) (quedarse con|retener|aguantar)[^.]{0,30}(sorbos|l[íi]quidos|agua|nada)'
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "anatapika kila (kitu|anachokunywa)"
   - "hakibaki chochote tumboni"

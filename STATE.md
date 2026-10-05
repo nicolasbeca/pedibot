@@ -2,6 +2,32 @@
 
 Última actualización: **2026-10-05** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 5-oct-2026 (4) · el juez mide contra las guías (L253) y lo que eso destapó
+
+- **El operador: «el juez debería vigilar lo que dicen las guías, no lo que digamos nosotros».**
+  `util.py` recibe ahora el texto de los pasajes (`correr.py` guarda los `chunk_ids`): «wrong»
+  es sólo lo que contradice o tergiversa un pasaje; lo que el juez cree que una guía dice mal va a
+  `check_source`; lo que ninguna fuente trae, a `gap`. Repetido sobre las mismas respuestas
+  coincide en el 92 % de los veredictos de error.
+- **Con ese juez, lo desplegado** (conjunto difícil, 411): flojas 16 %, país mal 9, urgencia mal
+  35, y **129 respuestas con algo que su pasaje no dice** (mal atribuido a [n], listas de alarma
+  de otra situación, una edad inventada, un sentido invertido).
+- **Probado y retirado:** darle los pasajes al revisor (pregunta `unsupported`) + prompt v11 con
+  dos frases de fidelidad. Errores 129 → 129 (53 se arreglan, 52 aparecen), flojas 65 → 90,
+  reescrituras 185 → 337: la reescritura rehace todo y peor. El código queda, desactivado.
+- **Dos conflictos para el operador** (`check_source`): el NHS dice que en el crup no se use
+  vapor y MedlinePlus lo recomienda para la tos; y una ficha de la OMS sobre la hepatitis A
+  (paracetamol y el hígado) salía para «le di Tylenol y vomitó».
+- **Arreglos deterministas de esta vuelta** (cada uno medido sin modelo): el país del lector
+  delante (CDC/MedlinePlus para EE. UU., NHS para el Reino Unido; mismo tema, misma lengua, 80 %
+  de la puntuación y una palabra del título en común: 8 cambios, los 8 equivalentes); la tos «como
+  de perro» ya no trae la rabia (árabe, inglés, francés); «drinking and peeing» ya no es infección
+  de orina; con aviso, «vigílalo en casa», «usually mild», «follow up in 5 days» obligan a
+  reescribir; triaje: 4 falsas alarmas fuera (regla abundante, mamar peor con la nariz tapada,
+  niño enfermo que no come en hindi) y 5 alarmas que faltaban (9 cambios en 3.738, todos a bien).
+- **Vikaspedia:** revisadas cinco páginas más (fiebre, primeros auxilios…); ninguna entra:
+  pastillas ayurvédicas, aspirina en el botiquín, dosis de adulto, antídoto intravenoso.
+
 ## 5-oct-2026 (3) · el redactor escribe lo que el padre necesita; Hispanoamérica tiene calendario
 
 - **El operador: «no puede haber tantos errores ni respuestas flojas».** Conjunto difícil:

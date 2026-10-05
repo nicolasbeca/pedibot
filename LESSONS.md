@@ -2108,3 +2108,23 @@ quedaba sin ninguna fuente) y seis alarmas dichas con palabras de padre que no s
 sirve al padre, no sólo por si es segura. Y la raíz inglesa automática («-ing», «-ed») se probó y
 se quitó: «breathing» → «breath», «playing» → «play» traían páginas que no tocaban (15 de 154
 preguntas a peor). Los sinónimos, que son quirúrgicos, dieron 145 a mejor y 1 a peor.
+
+## L253 · El juez tiene que medir contra las guías, no contra su opinión (5-oct-2026)
+
+El juez de utilidad (`util.py`, L252) sólo veía los títulos de las fuentes y juzgaba con su propio
+criterio clínico. Marcaba como error lo que las guías dicen (ibuprofeno para el dolor de un golpe
+leve, despertar cada 4 h tras un golpe, no dar paracetamol e ibuprofeno a la vez) y pedía cosas que
+ninguna guía del índice trae. El operador: «el juez debería vigilar lo que dicen las guías, no lo
+que digamos nosotros».
+
+Ahora recibe el texto de los pasajes que tuvo el redactor (`correr.py` guarda los `chunk_ids`) y
+sólo puede marcar como error lo que contradice o tergiversa esos pasajes, o aplica uno de otra
+situación. Lo que el juez cree que una GUÍA dice mal va aparte (`check_source`), para que lo revise
+una persona; lo que el padre necesita y ninguna fuente trae, también (`gap`).
+
+Con ese juez la foto cambió: las flojas del conjunto difícil eran el 16 % (no el 31 %), el «país
+mal» 9 (no 44)… y apareció lo que de verdad importaba: **129 de 411 respuestas decían algo que su
+pasaje no dice** (frases atribuidas a [n] que [n] no contiene, listas de alarma cosidas con
+pasajes de otra enfermedad, edades inventadas, sentidos invertidos). La lista de alarma del
+prompt v10 lo había empujado. **Regla:** un juez de un sistema que promete «sólo lo que dicen las
+guías» mide fidelidad a las guías; su opinión clínica, si la tiene, va a un campo aparte.

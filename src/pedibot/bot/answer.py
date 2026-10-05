@@ -1013,6 +1013,53 @@ def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, floa
     return key, kg
 
 
+#: Las organizaciones de cada país, para poner delante las del lector (5-oct-2026).
+ORGS_DEL_PAIS: dict[str, frozenset[str]] = {
+    "US": frozenset({"CDC", "MedlinePlus", "AAP"}),
+    "GB": frozenset({"NHS", "nidirect"}),
+}
+
+
+_TITULO_VACIO = frozenset(
+    "in of and the a an for to about your child children childs babies baby young what is "
+    "symptoms treatment overview cough pain".split()
+)
+
+
+def _palabras_de_titulo(t: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z]{4,}", t.lower()) if w not in _TITULO_VACIO}
+
+
+def country_sources_first(hits: list[Hit], country: str | None, lang: str = "en") -> list[Hit]:
+    """Las guías del país del lector delante, cuando dicen lo mismo (5-oct-2026).
+
+    Desde que el inglés pasa delante del castellano, a un padre de EE. UU. le llegaba primero el
+    NHS: el juez lo marcó 71 veces de 415. Del mismo tema que el primero, en la lengua del padre
+    (MedlinePlus también publica en castellano) y con al menos el 80 % de su puntuación: con el 60 %
+    y sólo el tema, «le duele el pecho al respirar» subía el crup. Lo demás, en su orden."""
+    suyas = ORGS_DEL_PAIS.get((country or "").upper())
+    if not suyas or not hits or hits[0].chunk.org in suyas:
+        return hits
+    tope = hits[0].score * 0.8
+    tema = hits[0].chunk.topic
+    titulo = _palabras_de_titulo(hits[0].chunk.doc_title)
+    # y que hable de lo MISMO: una palabra con contenido en común en el título («Fever» y «High
+    # temperature (fever) in children»). Con el tema sólo, los vómitos subían el rotavirus.
+    delante = [
+        h
+        for h in hits
+        if h.chunk.org in suyas
+        and h.chunk.topic == tema
+        and h.chunk.lang == lang
+        and h.score >= tope
+        and titulo & _palabras_de_titulo(h.chunk.doc_title)
+    ]
+    if not delante:
+        return hits
+    ids = {h.chunk.chunk_id for h in delante}
+    return [*delante, *[h for h in hits if h.chunk.chunk_id not in ids]]
+
+
 def _alias_compuesto(query: str, drugs: DrugCatalog | None) -> str | None:
     """Los nombres con guion o espacio, que el barrido por palabras parte en trozos: «qual a dose
     de ben-u-ron para criança de 12 kg» no llegaba a la calculadora (5-oct-2026)."""
@@ -1318,6 +1365,14 @@ def _needs_age(query: str, tr: TriageResult) -> bool:
     return tr.has_fever and tr.age_months is None and not fiebre_del_adulto(query)
 
 
+def _pasajes_para_revisar(hits: list[Hit]) -> str:
+    """Los pasajes numerados como los vio el redactor, recortados: para el revisor (5-oct-2026)."""
+    return "\n\n".join(
+        f"[{i}] {h.chunk.org} — {h.chunk.doc_title} — {h.chunk.section}:\n{h.chunk.text[:900]}"
+        for i, h in enumerate(hits, start=1)
+    )
+
+
 def _format_sources(hits: list[Hit]) -> str:
     lines = []
     for i, h in enumerate(hits, start=1):
@@ -1521,6 +1576,20 @@ _QUITA_URGENCIA = re.compile(
     r"no (es|son) (una? )?(dificultad|signo|se[ñn]al|motivo)|no (aparece|figura|est[áa])[^.]{0,25}(como )?(signo|se[ñn]al|motivo) de (alarma|consulta)|no (es|son) (un |una )?(signo|se[ñn]al)[^.]{0,20}(de alarma|preocupante|grave)|no (es|hay) motivo de (alarma|consulta|preocupaci[óo]n)|(is|are) not (a |an )?(warning sign|sign of|cause for)|(n'est pas|ne sont pas) (un |une )?(signe|motif)|kein (warnzeichen|alarmzeichen)|не (является )?(признак\\w*|тревожн\\w*)|не (срочно|экстренн)|ليست? (حالة )?طارئ|आपातकाल नहीं|(es|son|esto es|eso es) (algo )?(normal|habitual|frecuente|lo normal)(?![^.]{0,80}(pero|aun as[íi]|de todas formas|hay que acudir|hay que ir))|no hay (ning[uú]n )?(motivo|raz[oó]n) (de|para) (alarma|preocupaci[oó]n)|no hay (ning[uú]n )?problema|no hay ingesti[oó]n|no ha pasado nada|(is|are) normal (in|for) (babies|children|infants)|(this|that) is normal\b(?![^.]{0,80}(but|still|even so))|(there is|there's) no (cause|reason) for (alarm|concern|worry)|nothing to worry about|c'est normal(?![^.]{0,80}(mais|quand m[êe]me))|il n'y a pas lieu de s'inqui[ée]ter|(das )?ist normal(?![^.]{0,80}(aber|trotzdem))|kein grund zur sorge|это нормальн\w*(?![^.]{0,80}(но|всё же))|нет повода для беспокойств)",
     re.I,
 )
+#: Mandar a esperar en casa también rebaja el aviso, aunque no diga «no es urgente» (5-oct-2026,
+#: baterías con el reparto real: un imán tragado, un bebé que pita, otro que no puede mamar).
+_MANDA_A_CASA = re.compile(
+    r"(watch|observe|monitor|keep) (him|her|them|your (child|baby)|the (child|baby))[^.]{0,25}at home"
+    r"|(can|may) (usually |often )?be (managed|treated|looked after|cared for) at home"
+    r"|(usually|often|mostly) (mild|not serious)|most cases are (mild|not serious)"
+    r"|follow[ -]up[^.]{0,30}in \d+ days"
+    r"|vig[íi]l(a|ar|alo|ala|adlo)[^.]{0,20}en casa|(se )?puede (tratar|cuidar|manejar)[^.]{0,15}en casa"
+    r"|suelen? ser lev"
+    r"|surveill(er|ez)[^.]{0,20}(à la maison|chez vous)|g[ée]n[ée]ralement b[ée]nin"
+    r"|zu hause (beobachten|behandeln)|meist harmlos"
+    r"|observ(ar|e)[^.]{0,20}em casa|(normalmente|geralmente) [ée] leve",
+    re.I,
+)
 CONTRADICE_AVISO = (
     "contradicts_the_warning: a warning above your text already tells the parent this needs to"
     " be seen now; never write that it is not urgent or not an emergency"
@@ -1530,7 +1599,7 @@ CONTRADICE_AVISO = (
 def _insegura(texto: str, hits: list[Hit], alarma: bool) -> list[str]:
     """Los problemas de SEGURIDAD de un borrador: `verify`, más no contradecir el aviso."""
     problemas = verify(texto, hits)
-    if alarma and _QUITA_URGENCIA.search(texto):
+    if alarma and (_QUITA_URGENCIA.search(texto) or _MANDA_A_CASA.search(texto)):
         problemas.append(CONTRADICE_AVISO)
     return problemas
 
@@ -1546,8 +1615,14 @@ showed, and the ANSWER. Return ONLY a JSON object:
   "wrong_country": only when READER'S COUNTRY is given: true if the answer presents another
       country's vaccination schedule, health services, phone numbers or rules as if they applied
       to this parent (naming another country only as a comparison is fine),
-  "note": one short English sentence telling the writer exactly what to fix, or "".
-Be strict about relevance and verdicts, and do not complain about length, tone or style."""
+  "unsupported": only when PASSAGES are given: true if any sentence attributes to a source [n]
+      something passage [n] does not say, reverses what it says, presents a warning list or advice
+      that the passage gives for a DIFFERENT condition, age or person (an adult, another disease),
+      or states a detail about this child that the parent never gave (an age, a diagnosis),
+  "note": one short English sentence telling the writer exactly what to fix (name the sentence),
+      or "".
+Be strict about relevance, verdicts and faithfulness to the passages, and do not complain about
+length, tone or style."""
 
 
 @dataclass(frozen=True)
@@ -1559,14 +1634,23 @@ class Revision:
     coste: tuple[int, int, float]
     #: da por suyo el calendario, los servicios o los números de otro país (3-oct-2026)
     pais_ajeno: bool = False
+    #: dice algo que su pasaje no dice, o trae la lista de alarma de otra situación (5-oct-2026)
+    sin_apoyo: bool = False
 
     @property
     def hay_que_rehacer(self) -> bool:
-        return (not self.contesta) or self.relleno or self.veredicto or self.pais_ajeno
+        return (
+            (not self.contesta) or self.relleno or self.veredicto or self.pais_ajeno or self.sin_apoyo
+        )
 
 
 def revisa_respuesta(
-    llm: object, pregunta: str, nivel: str, texto: str, pais: str | None = None
+    llm: object,
+    pregunta: str,
+    nivel: str,
+    texto: str,
+    pais: str | None = None,
+    pasajes: str | None = None,
 ) -> Revision | None:
     """La lectura de revisión. `None` si no hay modelo o contesta algo que no se puede leer:
     entonces la respuesta sale como estaba, nunca peor.
@@ -1580,9 +1664,13 @@ def revisa_respuesta(
         r = llm.complete(  # type: ignore[attr-defined]
             REVISA,
             f"{linea_pais}MESSAGE:\n{pregunta[:1500]}\n\nWARNING LEVEL: {nivel}\n\n"
-            f"ANSWER:\n{texto[:2500]}",
+            f"ANSWER:\n{texto[:2500]}"
+            # 5-oct-2026: con los pasajes delante, el revisor ve lo que el pasaje no dice. El juez
+            # de las baterías, comparando con las guías, encontró 129 de 411 respuestas con frases
+            # mal atribuidas o listas de alarma de otra situación.
+            + (f"\n\nPASSAGES:\n{pasajes}" if pasajes else ""),
             temperature=0.0,
-            max_tokens=200,
+            max_tokens=260,
         )
     except Exception:  # noqa: BLE001 — sin revisión, la respuesta tal cual
         return None
@@ -1601,6 +1689,7 @@ def revisa_respuesta(
         relleno=d.get("padding") is True,
         veredicto=d.get("invented_verdict") is True,
         pais_ajeno=bool(pais) and d.get("wrong_country") is True,
+        sin_apoyo=bool(pasajes) and d.get("unsupported") is True,
         nota_en=(nota or "Answer only what the sources say about the parent's exact question.")[
             :300
         ],
@@ -1671,6 +1760,8 @@ class Engine:
         #: 5-oct-2026: el «cuándo consultar» del documento principal en toda respuesta
         #: (`_inject_doc_warnings`). Un interruptor para poder medirlo con y sin.
         self.inyecta_alarma = True
+        #: 5-oct-2026: la temperatura del redactor, para poder medir otra sin tocar producción.
+        self.temperatura = 0.2
         self.drugs = drugs
         self.vaccines = vaccines
         self.guides = guides
@@ -2633,6 +2724,7 @@ class Engine:
             )
             hits = self._inject_rule_sources(tr, hits)
             hits = self._own_schedule(context_text, country, hits)
+            hits = country_sources_first(hits, country, lang)
             hits = self._inject_doc_warnings(hits)
             otra_vez = intento == 1 and segunda and leida is not None
             if not hits:
@@ -2665,7 +2757,7 @@ class Engine:
                 f"{CHILD_MODE if mode == 'child' else ''}"
                 f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"
             )
-            result = self.llm.complete(self.prompt, user, temperature=0.2)
+            result = self.llm.complete(self.prompt, user, temperature=self.temperatura)
             if otra_vez and leida is not None and _dice_sin_fuente(result.text):
                 # el borrador tirado también se paga: va al gasto del día
                 ctx["costes"].append((result.tokens_in, result.tokens_out, result.cost_usd))
@@ -2676,7 +2768,7 @@ class Engine:
             retry: LLMResult | None = None
             if not _dice_sin_fuente(result.text):
                 problems = verify_answer(result.text, hits)
-                if alarma and _QUITA_URGENCIA.search(result.text):
+                if alarma and (_QUITA_URGENCIA.search(result.text) or _MANDA_A_CASA.search(result.text)):
                     problems.append(CONTRADICE_AVISO)
                 if problems:
                     retry = self.llm.complete(
@@ -2774,6 +2866,12 @@ class Engine:
             tr.level,
             result.text,
             pais=country_name(country.upper(), "en") if country else None,
+            # 5-oct-2026: probado darle los pasajes al revisor (pregunta `unsupported`) y el
+            # prompt v11. Medido en 416 preguntas con el juez que compara con las guías: los
+            # errores, 129 → 129 (53 se arreglan y 52 aparecen); las flojas, 65 → 90; las
+            # reescrituras, 185 → 337. La reescritura no corrige la frase: rehace todo y peor.
+            # Desactivado; para volver a probarlo, `pasajes=_pasajes_para_revisar(hits)`.
+            pasajes=None,
         )
         if revision is not None:
             ctx["costes"].append(revision.coste)

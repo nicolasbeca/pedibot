@@ -71,6 +71,7 @@ INYECTA = os.environ.get("PEDIBOT_INYECTA", "1") == "1"
 def motor() -> Engine:
     m = _motor()
     m.inyecta_alarma = INYECTA
+    m.temperatura = float(os.environ.get("PEDIBOT_TEMP", "0.2"))
     return m
 
 
@@ -105,6 +106,9 @@ def _fila(i: int, q: str, a, pais: str | None, sigue: bool) -> dict:
         "banner": (a.banner or "").replace("\n", " | "),
         "text": a.text,
         "sources": [x[:90] for x in a.sources],
+        # 5-oct-2026: los pasajes que tuvo delante el redactor, para que el juez compare con
+        # lo que dicen las guías y no con su propio criterio (util.py).
+        "chunk_ids": list(a.chunk_ids or []),
     }
 
 
