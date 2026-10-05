@@ -2,6 +2,45 @@
 
 Última actualización: **2026-10-05** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 5-oct-2026 (2) · baterías con el reparto de las consultas reales, y lo que encontraron (L252)
+
+- **El operador: «¿por qué damos respuestas tan malas después de probar miles de preguntas?».**
+  Medido: las baterías eran un 78 % castellano y las consultas reales un 72 % inglés; y nada medía
+  si la respuesta le sirve al padre. Dos baterías nuevas escritas por otra IA con las consultas
+  reales de modelo (`10_realistas_5oct.txt` 641, `11_realistas_5oct_b.txt` 275, con país por
+  bloque y continuaciones `↳`; `correr.py` las entiende) y un juez de utilidad (`util.py`).
+- **Primera pasada (antes):** de 633 juzgadas, 167 flojas (26 %); 123 de 345 respuestas en
+  inglés sin ninguna fuente en inglés; en hindi 25 de 29, en ruso 14 de 15.
+- **Arreglado, con test:**
+  - **Libras** (`bot/weight_units.py`): «22 pound (10 kg)» a la entrada; la respuesta abre con
+    «22 lb = 10 kg». `test_pounds_are_weights.py`.
+  - **Dosis:** sin edad, el ibuprofeno **pregunta la edad** en vez de «no lo des» (la decisión
+    del 8-sep de no dar cifra se mantiene) y la respuesta lleva a la dosis; sin peso, **se
+    pregunta el peso** (`dose_ask_weight`) y la respuesta lleva a la dosis; «¿puedo darle los
+    dos?» ya no devuelve la tabla de uno (`pregunta_combinar`); Dolex, Termofren, Biogesic,
+    Цефекон, Панадол, Калпол, Нурофен (y el ruso declinado). `test_combining_is_not_a_dose_question.py`.
+  - **Peso fuera de la curva** (z < −3 o > +3 para niño Y niña): se dice debajo de la
+    respuesta, en ocho lenguas (`aviso_peso_extremo`). Era la consulta alemana de 10 kg a los
+    4 años. `test_a_weight_off_the_chart_is_said.py`.
+  - **Sinónimos ingleses** que sólo tendían puente al castellano: «threw up», «puke», «been
+    sick», «cough», «diarrhoea», «itching», «choking», «pink eye»… Medido en 3.631 preguntas:
+    68 cambian, 40 a mejor, ninguna a peor. **Probado y quitado:** raíz automática «-ing/-ed»
+    (15 a peor) y repetir «fever»/«rash» (rompía «no fever» y la malaria).
+  - **Triaje:** 30 variantes dichas como las dice un padre (no hay quien lo despierte, rigidez
+    en EL cuello, no se blanquea, confuso tras caerse, cayó de un segundo piso, menos pañales
+    mojados, pasli chal rahi, قشع بعد ما طاح, won't keep water down, no puede apoyar el pie…).
+    En las 3.631 preguntas, 41 suben de nivel, todas con motivo, ninguna falsa alarma nueva.
+    `test_alarms_said_the_way_parents_say_them.py`.
+- **Después** (las 275 de la segunda tanda, sin las reglas de triaje, que se midieron aparte):
+  flojas 105 → 84 (41 → 33 %), útiles 147 → 166, urgencia mal 31 → 21, errores 5 → 2,
+  inglés sin fuente inglesa 31 → 22.
+- **Pendiente, por orden:** (1) fuentes para padres en alemán (pedido el permiso al BIÖG hoy),
+  hindi, ruso, portugués y árabe: el código no lo arregla; (2) el redactor aún contradice el
+  aviso rojo a veces («dale salbutamol y espera» con las costillas hundidas); (3) desmayo o dolor
+  de pecho haciendo deporte no tiene regla (hace falta una nueva, con su ficha); (4) sinónimos que
+  respeten lo que el padre niega, para recuperar «fever»/«rash»; (5) «adult cough medicine» va a
+  tos ferina y no a intoxicaciones; (6) `detect_lang` lee «baby» como alemán.
+
 ## 5-oct-2026 · el panel abre en el momento
 
 - **El operador: «cuando entro en la página de admin tarda muchísimo».** Medido en el servidor:

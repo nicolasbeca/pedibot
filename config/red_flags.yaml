@@ -11,6 +11,9 @@ rules:
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - 'no hay quien (lo |la )?despierte'
+  - '(can''?t|cannot|unable to) get (him|her|them) to respond'
   # 18-sep-2026: «no consigo despertarlo» en seis lenguas. En inglés ya saltaba por otra vía y
   # en las demás no había nada: es la misma frase y el mismo miedo.
   - "(n'?arrive pas|ne r[ée]ussis pas|impossible)[^.]{0,20}(à le r[ée]veiller|à la r[ée]veiller)"
@@ -22,6 +25,11 @@ rules:
   - "(لا أستطيع|ما أقدر)[^.]{0,20}(إيقاظه|أيقظه)"
   # y la forma francesa y suajili de «no responde cuando le hablo»
   - "ne r[ée]pond (plus |pas )?(quand|lorsque)"
+  # 5-oct-2026, batería con el reparto de las consultas reales: «mon fils dort tout le temps et
+  # n'arrive pas à ouvrir les yeux» salía rutina y sin fuente. Con «dort» delante, para no
+  # confundirlo con los ojos pegados de una conjuntivitis.
+  - "(dort|endormi|somnolent)[^.]{0,60}(n['’ ]?arrive (pas|plus) [àa] (ouvrir les yeux|se r[ée]veiller)|ne se r[ée]veille (pas|plus))"
+  - "(difficile|dur|impossible) [àa] r[ée]veiller"
   - "hajibu[^.]{0,22}(ninapomwita|nikimwita|namwita|nikiongea)"
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "hajitambui"
@@ -568,6 +576,11 @@ rules:
   - sans nahi le
   - neela pad
   - pasliyan dhas
+  # 5-oct-2026: «bacche ki pasli chal rahi hai aur saas lene me taklif hai» salía rutina. La
+  # transliteración no tiene una ortografía: saas/saans/sans, me/mein/mai, taklif/takleef. Y
+  # «pasli chalna» es como se dice en la India el tiraje de las costillas.
+  - "pasli(yan|yaan|yon)? (chal|chalna|chalti|dhans|dhas|andar)"
+  - "saa?n?s lene (me|mein|mai|men|main) (dikkat|dikkath|taklee?f|takl[iī]f|pareshani|mushkil)"
   reason_de: Schwere Atemnot (Einziehungen, sehr schnelle Atmung, Atempausen, blaue Färbung)
   reason_ru: Тяжёлое нарушение дыхания (втяжения, очень частое дыхание, паузы, синюшность)
   reason_ar: صعوبة شديدة في التنفس (انسحاب الأضلاع، تنفس سريع جدا، انقطاع النفس، ازرقاق)
@@ -872,6 +885,16 @@ rules:
   reason_hi: "चोट या गिरने के बाद सुस्ती: अभी आपातकालीन नंबर पर कॉल करें या इमरजेंसी जाएँ"
   reason_sw: "Usingizi mwingi baada ya kuanguka au kugongwa: piga simu ya dharura au nenda hospitali sasa"
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - '(\b(fell|fall)\b(?! asleep| ill| sick)|hit (his|her|their) head|bump\w*|knock\w*)[^.]{0,80}(confused|acting strange\w*|not making sense|confusion)'
+  - '(golpe|ca[íi]d|cay[óo])[^.]{0,80}(confundid|desorientad|no sabe d[óo]nde est)'
+  # y en las otras escrituras, el mismo signo (candado de densidad, test_rule_density.py)
+  - '(упал|ударил\w*)[^.]{0,80}(спутан\w*|не понимает,? где|странно себя вед\w*|заторможен\w*|сонлив\w*)'
+  - '(сонлив\w*|заторможен\w*|не понимает,? где)[^.]{0,80}(после (падения|удара))'
+  - '(وقع|طاح|سقط|انضرب)[^.]{0,80}(مشوش|مرتبك|ما يعرف وين|لا يعرف أين|يتصرف بغرابة|نعسان|نعس)'
+  - '(مشوش|مرتبك|نعسان|يتصرف بغرابة)[^.]{0,80}بعد ?(ما)? ?(وقع|طاح|السقوط|الضربة)'
+  - '(गिर|सिर में चोट)[^।]{0,80}(उलझन|भ्रमित|अजीब बर्ताव|कुछ समझ नहीं|बहुत नींद|सुस्त)'
+  - '(उलझन|भ्रमित|सुस्त|बहुत नींद)[^।]{0,80}(गिरने के बाद|चोट के बाद)'
   # 21-sep-2026, batería del operador: «fell from the bed and now he wants to sleep» y «vom Sofa gefallen und jetzt schläft»
   - (fell|fall|hit|bump\w*|knock\w*)[^.]{0,60}(wants to sleep|keeps? falling asleep|sleepy)
   - (ca[ií]d[oa]|cay[oó]|golpe)[^.]{0,60}(quiere dormir|tiene (mucho )?sueño|se (ha )?quedado dormid)
@@ -902,6 +925,10 @@ rules:
   reason_hi: "आँख में कुछ चला गया या आँख पर चोट: मलिए नहीं, खुद निकालने की कोशिश मत कीजिए, आज ही इमरजेंसी में दिखाइए"
   reason_sw: "Kitu kimeingia jichoni au amepigwa jichoni: usisugue wala usijaribu kukitoa, nenda hospitali leo"
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - '(blurry|blurred|double) vision[^.]{0,60}(hit|ball|blow|bump|punch)'
+  - '(hit|ball|blow|punch)[^.]{0,60}(blurry|blurred|double vision|can''?t see)'
+  - '(blurry|blurred|double vision|can''?t see)[^.]{0,60}(hit|ball|blow|punch)'
   # 21-sep-2026, última batería del operador: «scratched his eye with a fingernail and keeps it closed»
   - (scratch\w*|poked)[^.]{0,30}(his |her |the )?eye[^.]{0,50}(closed|shut|won'?t open)
   - (ara[ñn][oó]|ara[ñn]ado|ara[ñn]azo)[^.]{0,30}(en el )?ojo
@@ -941,6 +968,9 @@ rules:
   reason_hi: "सीढ़ियों से या एक मीटर से ज़्यादा ऊँचाई से गिरना, या चोट के बाद रोना बंद न होना: आज ही डॉक्टर को दिखाइए"
   reason_sw: "Ameanguka ngazi au kutoka juu zaidi ya mita moja, au analia bila kunyamaza baada ya kugongwa: aonwe na daktari leo"
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - '(ca[íi]d[oa]|cay[óo])[^.]{0,40}(de|desde) (un |una |el |la )?(segundo |tercer |primer )?(piso|planta|ventana|balc[óo]n|tejado|azotea)'
+  - '(fell|fall|fallen)[^.]{0,30}(from|out of|off) (a |the )?(second|third|2nd|3rd|upstairs)?[ -]?(stor(e)?y|floor|window|balcony|roof)'
   - (ca[ií]d[oa]|cay[oó]|caerse|rodado)[^.]{0,25}(por|de|desde) (las|la|unas) escaleras?
   - (ca[ií]d[oa]|cay[oó]|golpe|se dio)[^.]{0,40}(no (deja|para) de llorar|llanto (inconsolable|que no (cesa|para))|no hay (quien|forma de|manera de) (calmarl|consolarl))
   - (ca[ií]d[oa]|cay[oó])[^.]{0,30}(desde|de) (m[aá]s de )?(un|1|dos|2|tres|3) metros?
@@ -1245,6 +1275,11 @@ rules:
   - (cojea|cojeando|renquea)[^.]{0,60}(desde|despu[ée]s de|tras)[^.]{0,30}(ca[íi]da|golpe|caer|se cay[óo])
   - (se ha ca[íi]do|ca[íi]da|golpe)[^.]{0,60}(y (ahora )?)?(cojea|cojeando|no apoya)
   - (no apoya|no quiere apoyar|no pisa)[^.]{0,30}(la pierna|el pie|una pierna)
+  # 5-oct-2026: «se cayó del brincolín y no puede apoyar el pie» salía rutina.
+  - no (puede|consigue|es capaz de) (apoyar|pisar)[^.]{0,30}(la pierna|el pie|el tobillo|una pierna)
+  - (can'?t|cannot|won'?t|unable to) (put|bear) (any )?weight
+  - (ne peut pas|n'?arrive pas [àa]) (poser|appuyer)[^.]{0,20}(le pied|la jambe)
+  - n[ãa]o (consegue|pode) (apoiar|pisar)[^.]{0,20}(o p[ée]|a perna)
   - (limp\w*)[^.]{0,60}(after|since)[^.]{0,30}(a )?(fall|fell|knock)
   - (fell|fall)[^.]{0,60}(and (now )?)?(limping|limps|won'?t walk|will not walk)
   - (not (putting|bearing) weight|won'?t put weight)[^.]{0,30}(on (his|her|the) (leg|foot))
@@ -1483,6 +1518,8 @@ rules:
   reason_en: Spots on the skin that do not fade when pressed (possible sepsis/meningitis)
   reason_fr: Taches sur la peau qui ne s'?effacent pas à la pression (possible sepsis/méningite)
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - '(manchas|sarpullido|erupci[oó]n|ronchas|puntitos|granitos).{0,70}no se (blanquea|borra|quita|va)'
   # 23-sep-2026: «tiene manchas moradas en las piernas desde ayer» salía RUTINA porque esta
   # regla pedía fiebre. Una púrpura sin fiebre sigue siendo una púrpura. Se excluye lo que
   # de verdad es otra cosa: el golpe, la mancha de nacimiento y el moratón de una caída.
@@ -1694,6 +1731,9 @@ rules:
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - 'breathing with (his|her|their) (belly|tummy|stomach)'
+  - '(belly|tummy|stomach) (is )?moving a lot'
   # 23-sep-2026, séptima tanda: «no le cuesta respirar, SOLO se le hunde un poco debajo de
   # las costillas al dormir». El padre niega la palabra y describe el signo — el tiraje
   # subcostal, que es donde se ve primero. «Se le hunde el pecho» estaba; esto no.
@@ -1967,6 +2007,16 @@ rules:
   reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
   reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - '(only )?(peed|wee''?d|urinated)[^.]{0,10}(once|twice)[^.]{0,25}(today|all day|in \d+ hours)'
+  - '(very little|hardly any|not much) (urine|pee|wee)'
+  - 'fewer wet (nappies|diapers)(?![^.]{0,40}(because|since|as) (he|she|they)(''s| is| are|''re)? (sleep|sleeping))'
+  - '(ne fait (presque )?plus pipi|fait (tr[èe]s )?peu pipi)'
+  - '(hace (muy )?poco pis|menos pa[ñn]ales mojados)'
+  - '(pouco xixi|menos fraldas molhadas)'
+  - '(पेशाब|सुसु)[^।.]{0,25}(कम|नहीं)'
+  - '(बहुत कम|कम|नहीं)[^।.]{0,10}(पेशाब|सुसु)'
+  - '(susu|peshab)[^.]{0,25}(kam|nahi)'
   # 23-sep-2026: «tiene diarrea y los labios secos pero no parece enfermo». Los labios secos
   # con diarrea son deshidratación empezando, y «no parece enfermo» es lo que hace esperar.
   - labios (muy )?secos[^.]{0,40}(diarrea|vomit|gastro)
@@ -2207,6 +2257,12 @@ rules:
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - '\b(fell|fall|falling|fallen)\b(?! asleep| ill| sick| pregnant)[^.]{0,80}(vomit\w*|threw up|was sick|been sick|throw\w* up)'
+  - '(gefallen|gest[üu]rzt|sturz)[^.]{0,80}(erbroch\w*|erbricht|[üu]bergeben)'
+  - '(caiu|queda)[^.]{0,80}vomit\w*'
+  - '(tomb[ée]e?|chute)[^.]{0,80}vomi'
+  - 'गिर[^।]{0,80}उल्टी'
   # 21-sep-2026, tercera batería del operador: «упал с кровати и теперь его вырвало» salía rutina
   - упал\w*[^.]{0,50}(вырвал\w*|рвот\w*|рвёт|рвет)
   # ── suajili (18-sep-2026, fase 3 de África) ──
@@ -2233,6 +2289,10 @@ rules:
   # todas partes «راسه» sin hamza. «ابني وقع على راسه» salía RUTINA y sin fuentes.
   - "(وقع|طاح).{0,30}(راسه|رأسه).{0,40}(يستفرغ|استفرغ|يرجع|بيرجع|تقيأ|يتقيأ)"
   - "(يستفرغ|بيرجع|رجع).{0,40}(بعد|من).{0,20}(وقع|طاح).{0,20}(راسه|رأسه)"
+  # 5-oct-2026: «قشع مرتين بعد ما طاح» (vomitó dos veces después de caerse) salía rutina:
+  # «قشع» es vomitar en el Golfo y el padre no repite «la cabeza» en el segundo mensaje.
+  - "(قشع|استفرغ|يستفرغ|تقيأ|يتقيأ)[^.]{0,30}بعد ?(ما)?[^.]{0,10}(طاح|وقع|سقط)"
+  - "(طاح|وقع|سقط)[^.]{0,80}(قشع|استفرغ|يستفرغ|تقيأ|يتقيأ)"
   # 17-sep-2026: «cabeza» a secas disparaba esta regla, así que un dolor de cabeza con
   # vómitos —que es otra cosa y tiene su propia regla— salía como traumatismo craneal.
   # Ahora hace falta que alguien se haya dado un golpe.
@@ -2783,6 +2843,8 @@ rules:
   reason_en: Burn (especially face, hands, genitals or large area)
   reason_fr: Brûlure (surtout au visage, aux mains, aux parties génitales ou étendue)
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - 'se (ha )?quem(ó|o|ado|ada) con (agua|aceite|la plancha|leche|caf[ée]|sopa)'
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "ameungua[^.]{0,25}(maji ya moto|moto|uso|mkono|mguu)"
   - "kuungua kwa (maji ya moto|moto)"
@@ -3253,6 +3315,9 @@ rules:
   reason_hi: सिरदर्द के चेतावनी संकेत — रात में जगा देना, बढ़ते जाना, या सामान्य इलाज से न जाना
   reason_sw: "Maumivu ya kichwa yenye dalili za hatari: yanamwamsha usiku au yanazidi"
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - '(severe |bad |terrible |strong )?headache[^.]{0,60}(wants? to sleep|wanting to sleep|sleepy|drowsy|hard to wake)'
+  - 'dolor de cabeza[^.]{0,60}(dormid|somnolient|adormilad|quiere dormir)'
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "kichwa kinauma[^.]{0,30}(usiku|kinazidi)"
   - "maumivu ya kichwa[^.]{0,30}(yanazidi|yanamwamsha|usiku)"
@@ -3486,6 +3551,8 @@ rules:
   reason_hi: "गर्दन में अकड़न: मेनिनजाइटिस की जाँच अभी ज़रूरी है"
   reason_sw: "Shingo ngumu: homa ya uti wa mgongo lazima iondolewe sasa hivi"
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - 'rigidez (de |en )?(la |el )?(nuca|cuello)(?![^.]{0,45}(dormi|almohada|postura))'
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "shingo (ngumu|imekakamaa)"
   - "hawezi kuinamisha shingo"
@@ -4873,6 +4940,10 @@ rules:
   - (no retiene nada|no le queda nada dentro)
   - (vomits|throws up|brings up)[^.]{0,20}(everything|all of it)
   - (keeps? nothing down|can'?t keep anything down)
+  # 5-oct-2026: «sick 4 times today and won't keep water down» y «vomiting and cant keep even
+  # small sips down» salían rutina: la regla pedía «anything».
+  - (vomit|sick|throw\w* up|threw up|puk)[^.]{0,80}(can'?t|cannot|won'?t|wont|unable to|not) (keep|keeping|hold|holding) [^.]{0,30}down
+  - no (retiene|aguanta|tolera)[^.]{0,15}(ni (el )?agua|l[íi]quidos|ni (el )?suero|ni (un )?sorbo)
   - (vomit tout|rend tout)[^.]{0,30}(ne garde rien)?
   - (erbricht alles|beh[äa]lt nichts)
   - (рв[ёе]т всем|ничего не удерживает|вс[ёе] обратно)
@@ -5359,6 +5430,9 @@ rules:
   # «amarillo» a secas, porque la caca amarilla es lo normal en un bebé de pecho y los mocos
   # amarillos son mocos (ver tests/test_newborn_jaundice.py).
   patterns:
+  # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
+  - '(\d+|one|two|three)[ -](week|day)s?[ -]old[^.]{0,40}(looks?|is|turn\w*|getting|gone|skin|eyes)[^.]{0,15}yellow(?! (poo|poop|stool|nappy|diaper|vomit|discharge))'
+  - '(reci[ée]n nacid\w*|\d+ (semanas|d[íi]as))[^.]{0,40}amarill'
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "(ngozi|macho)[^.]{0,14}njano"
   - "mchanga ana njano"

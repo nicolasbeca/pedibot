@@ -477,6 +477,13 @@ def format_result(
     T = tool_strings(lang)
     name = d.names.get(lang, d.names["en"])
     lines = [T["dose_for"].format(name=name, kg=r.weight_kg)]
+    if r.refer and r.warnings == ["age_unknown"]:
+        # 5-oct-2026: sin edad no hay cifra (la decisión del 8-sep sigue), pero se PREGUNTA en
+        # vez de prohibir: «Do not give without medical advice: no age given» a un padre de EE.
+        # UU. que preguntó «how much Motrin for 24 lbs» sonaba a que no podía dárselo.
+        lines.append(T["dose_ask_age"])
+        lines.append(T["dose_source"].format(source=d.source))
+        return "\n".join(lines)
     if r.refer:
         lines.append(
             T["dose_refer"] + ", ".join(T["dose_warn"].get(w, w) for w in r.warnings) + "."

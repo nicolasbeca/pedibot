@@ -84,6 +84,7 @@ en:
   - temperatura
   cough:
   - tos
+  - cough
   cold:
   - catarro
   - resfriado
@@ -99,6 +100,7 @@ en:
   - pitos
   - asma
   - bronquiolitis
+  - wheezing
   breath:
   - respirar
   - respiración
@@ -119,11 +121,32 @@ en:
   vomit:
   - vómitos
   - vomita
+  - vomiting
   throw:
+  - vómitos
+  # 5-oct-2026, batería con el reparto de las consultas reales: «my son threw up twice this
+  # morning» se quedaba sin ninguna fuente. «threw» no empieza por «throw», y la tabla inglesa
+  # sólo tendía puente al castellano: la página del NHS sobre vómitos no salía nunca.
+  threw up:
+  - vomiting
+  - vómitos
+  throw up:
+  - vomiting
+  - vómitos
+  throwing up:
+  - vomiting
+  - vómitos
+  puk:
+  - vomiting
+  - vómitos
+  been sick:
+  - vomiting
   - vómitos
   diarr:
   - diarrea
   - gastroenteritis
+  - diarrhoea
+  - diarrhea
   stomach:
   - dolor abdominal
   - barriga
@@ -191,6 +214,8 @@ en:
   seizure:
   - convulsión
   - convulsión febril
+  - seizure
+  - febrile seizures
   convuls:
   - convulsión
   headache:
@@ -220,6 +245,7 @@ en:
   - traumatismo craneal
   burn:
   - quemadura
+  - burns and scalds
   wound:
   - herida
   cut:
@@ -261,6 +287,8 @@ en:
   itch:
   - picor
   - urticaria
+  - itching
+  - itchy
   # palabra entera: por prefijo, «ear» casaba con «early» y «born 6 weeks early» acababa en
   # la hoja de otitis (30-sep-2026)
   ear$:
@@ -276,6 +304,7 @@ en:
   throat:
   - garganta
   - faringitis
+  - sore throat
   colic:
   - cólico del lactante
   - llanto
@@ -292,6 +321,7 @@ en:
   - dentición
   - diente
   - dientes
+  - teething
   newborn:
   - recién nacido
   baby:
@@ -317,6 +347,8 @@ en:
   solid:
   - alimentación complementaria
   - sólidos
+  - solid foods
+  - weaning
   wean:
   - alimentación complementaria
   - destete
@@ -468,6 +500,33 @@ en:
   school:
   - colegio
   - contagio
+  # 5-oct-2026: disparadores que no existían; la batería con el reparto de las consultas reales
+  # los usa en cada tema básico.
+  sneez:
+  - sneezing
+  - catarro
+  choking:
+  - choking
+  - choke
+  - atragantamiento
+  choked:
+  - choking
+  - choke
+  - atragantamiento
+  insect bite:
+  - insect bites and stings
+  - picadura
+  bee sting:
+  - insect bites and stings
+  - picadura
+  stung:
+  - insect bites and stings
+  - picadura
+  snor:
+  - snoring
+  pink eye:
+  - conjunctivitis
+  - conjuntivitis
 es:
   # 2-oct-2026: «¿es igual la temperatura en la axila que en el oído?» no llegaba a la página
   # del NHS que dice que el termómetro de oído no es fiable en un bebé.

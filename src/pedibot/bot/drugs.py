@@ -78,6 +78,10 @@ class DrugCatalog:
             # Por raíz, y solo contra nombres largos, que no pescan de más.
             if any(c.startswith(g) for c in candidatos for g in genericos if len(g) >= 8):
                 return key, None
+            # Y las marcas en cirílico, que declinan igual: «сколько нурофенА» (5-oct-2026).
+            cirilicos = [a for a in d.aliases if len(a) >= 6 and re.search("[а-яё]", a)]
+            if any(c.startswith(a) for c in candidatos for a in cirilicos):
+                return key, None
         for key, d in self.drugs.items():
             for b in d.brands:
                 first = b.name.lower().split(" ")[0].split("/")[0]

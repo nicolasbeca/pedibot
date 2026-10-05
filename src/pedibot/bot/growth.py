@@ -851,3 +851,99 @@ def explain(a: Assessment, lang: str, sex: str, age_months: float) -> str:
     partes.append(s["curve"])
     partes.append(s["source"].format(sources="; ".join(a.sources)))
     return "\n".join(partes)
+
+
+# ── un peso fuera de la curva, dicho aunque no se pregunte (5-oct-2026) ─────────────────
+#: Consulta real: «(Alter: 4 Jahre) (Gewicht: 10 kg)», por debajo de −3 desviaciones, y la
+#: respuesta no lo mencionó. O es una errata —y las dosis van por peso— o hay que ver a ese niño.
+_AVISO_PESO: dict[str, dict[str, str]] = {
+    "en": {
+        "low": "Note: {kg} is very low for a child of {age} on the WHO growth charts. If that "
+        "weight is right, ask your doctor to check their growth soon; if it was a typo, correct "
+        "it, because doses go by weight.",
+        "high": "Note: {kg} is very high for a child of {age} on the WHO growth charts. If it was "
+        "a typo, correct it, because doses go by weight; if it is right, mention it to your "
+        "doctor.",
+    },
+    "es": {
+        "low": "Un apunte: {kg} es un peso muy bajo para {age} según las curvas de la OMS. Si el "
+        "peso es correcto, pide a tu pediatra que revise su crecimiento pronto; si fue una "
+        "errata, corrígelo, porque las dosis van por peso.",
+        "high": "Un apunte: {kg} es un peso muy alto para {age} según las curvas de la OMS. Si fue "
+        "una errata, corrígelo, porque las dosis van por peso; si es correcto, coméntaselo a tu "
+        "pediatra.",
+    },
+    "fr": {
+        "low": "À noter : {kg}, c'est un poids très bas pour {age} d'après les courbes de l'OMS. "
+        "Si ce poids est juste, demandez à votre médecin de vérifier sa croissance bientôt ; si "
+        "c'était une faute de frappe, corrigez-le, car les doses dépendent du poids.",
+        "high": "À noter : {kg}, c'est un poids très élevé pour {age} d'après les courbes de "
+        "l'OMS. Si c'était une faute de frappe, corrigez-le, car les doses dépendent du poids ; "
+        "s'il est juste, parlez-en à votre médecin.",
+    },
+    "de": {
+        "low": "Hinweis: {kg} ist für {age} laut den WHO-Wachstumskurven sehr wenig. Wenn das "
+        "Gewicht stimmt, lassen Sie das Wachstum bald in der Kinderarztpraxis prüfen; wenn es ein "
+        "Tippfehler war, korrigieren Sie ihn, denn Dosierungen richten sich nach dem Gewicht.",
+        "high": "Hinweis: {kg} ist für {age} laut den WHO-Wachstumskurven sehr viel. Wenn es ein "
+        "Tippfehler war, korrigieren Sie ihn, denn Dosierungen richten sich nach dem Gewicht; "
+        "wenn es stimmt, sprechen Sie es in der Kinderarztpraxis an.",
+    },
+    "pt": {
+        "low": "Uma nota: {kg} é um peso muito baixo para {age} nas curvas da OMS. Se o peso "
+        "estiver certo, peça ao pediatra que avalie o crescimento em breve; se foi um erro de "
+        "digitação, corrija, porque as doses dependem do peso.",
+        "high": "Uma nota: {kg} é um peso muito alto para {age} nas curvas da OMS. Se foi um erro "
+        "de digitação, corrija, porque as doses dependem do peso; se estiver certo, comente com "
+        "o pediatra.",
+    },
+    "ru": {
+        "low": "Обратите внимание: {kg} — очень мало для возраста {age} по кривым роста ВОЗ. Если "
+        "вес указан верно, попросите врача проверить развитие ребёнка в ближайшее время; если "
+        "это опечатка, исправьте её, потому что дозы считаются по весу.",
+        "high": "Обратите внимание: {kg} — очень много для возраста {age} по кривым роста ВОЗ. "
+        "Если это опечатка, исправьте её, потому что дозы считаются по весу; если вес верный, "
+        "скажите об этом врачу.",
+    },
+    "ar": {
+        "low": "ملاحظة: {kg} وزن منخفض جدًا لطفل عمره {age} حسب منحنيات النمو لمنظمة الصحة "
+        "العالمية. إذا كان الوزن صحيحًا فاطلب من الطبيب فحص نموه قريبًا، وإذا كان خطأً في "
+        "الكتابة فصحّحه، لأن الجرعات تُحسب حسب الوزن.",
+        "high": "ملاحظة: {kg} وزن مرتفع جدًا لطفل عمره {age} حسب منحنيات النمو لمنظمة الصحة "
+        "العالمية. إذا كان خطأً في الكتابة فصحّحه، لأن الجرعات تُحسب حسب الوزن، وإذا كان صحيحًا "
+        "فأخبر الطبيب.",
+    },
+    "hi": {
+        "low": "ध्यान दें: WHO के विकास चार्ट के अनुसार {age} के बच्चे के लिए {kg} बहुत कम वज़न है। "
+        "अगर वज़न सही है तो जल्द ही डॉक्टर से बच्चे की बढ़त जँचवाएँ; अगर लिखने में गलती हुई है तो "
+        "उसे ठीक करें, क्योंकि दवा की खुराक वज़न से तय होती है।",
+        "high": "ध्यान दें: WHO के विकास चार्ट के अनुसार {age} के बच्चे के लिए {kg} बहुत ज़्यादा वज़न "
+        "है। अगर लिखने में गलती हुई है तो उसे ठीक करें, क्योंकि दवा की खुराक वज़न से तय होती है; "
+        "अगर वज़न सही है तो डॉक्टर को बताएँ।",
+    },
+}
+
+
+def aviso_peso_extremo(growth: Growth, age_months: float, kg: float, lang: str) -> str | None:
+    """Una frase si el peso queda por debajo de −3 o por encima de +3 desviaciones para la edad,
+    **sea niño o niña**: sin el sexo no hay curva, y así no hay que preguntarlo ni se avisa de
+    más. Fuera de la tabla (edad o peso imposibles para ella), nada."""
+    zs: list[float] = []
+    for sexo in ("m", "f"):
+        try:
+            a = growth.assess(sexo, age_months, weight_kg=kg)
+        except ValueError:
+            return None
+        z = next((i.z for i in a.indicators if i.name == "wfa"), None)
+        if z is None:
+            return None
+        zs.append(z)
+    if max(zs) < -3:
+        clave = "low"
+    elif min(zs) > 3:
+        clave = "high"
+    else:
+        return None
+    unidad = _UNIDADES.get(lang, {}).get("kg", "kg")
+    textos = _AVISO_PESO.get(lang, _AVISO_PESO["en"])
+    return textos[clave].format(kg=f"{kg:g} {unidad}", age=_age_text(age_months, lang))

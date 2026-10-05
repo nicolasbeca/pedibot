@@ -20,6 +20,7 @@ from pedibot.bot.emergency_question import (
 )
 from pedibot.bot.growth import (
     Growth,
+    aviso_peso_extremo,
     asks_if_a_measure_is_normal,
     explain,
     gives_both_measurements,
@@ -36,6 +37,7 @@ from pedibot.bot.muac import reason as muac_reason
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.temperature import con_fahrenheit, lee_en_fahrenheit, nota_de_conversion
+from pedibot.bot.weight_units import con_kilos, nota_de_peso
 from pedibot.bot.triage import (
     ASISTENTE,
     LEVEL_ORDER,
@@ -927,6 +929,55 @@ def weights_in(query: str) -> list[float]:
     return vistos
 
 
+#: Juntar, alternar o pasar al otro: lo que pregunta un padre cuando ya tiene la dosis de uno.
+_COMBINAR = re.compile(
+    r"\b(both|together|as well|at the same time|alternat\w*|switch\w*|instead)\b"
+    r"|\b(juntar|junto|juntos|a la vez|al mismo tiempo|alternar\w*|intercalar|combinar|en vez de"
+    r"|si no (le |se le )?(baja|quita)|tambi[ée]n)\b"
+    r"|\b(im wechsel|abwechseln\w*|gleichzeitig|zusammen|zus[äa]tzlich)\b"
+    r"|\b(altern\w*|en m[êe]me temps|ensemble|[àa] la place)\b"
+    r"|\b(ao mesmo tempo|alternar|em vez)\b"
+    r"|(чередов\w*|одновременно|вместе|вместо)"
+    r"|( مع |بالتناوب|بنفس الوقت|مع بعض|بدل)",
+    re.IGNORECASE,
+)
+
+
+#: «¿Cuánto…?» en las ocho lenguas, para saber que se pide una cantidad de un medicamento.
+_PIDE_CANTIDAD = re.compile(
+    r"\b(how much|how many|dosage|dose|dosing|cu[áa]nt[oa]s?|dosis|combien|posologie|dose"
+    r"|wie ?viel|dosierung|quant[oa]s?|dosagem)\b|сколько|доз[аиуы]|كم|الجرعة|कितना|कितनी|खुराक",
+    re.IGNORECASE,
+)
+
+
+def _moleculas(query: str, drugs: DrugCatalog | None) -> set[str]:
+    claves = {
+        _DRUG_ALIAS.get(m.group(1).lower(), m.group(1).lower()) for m in _DRUG.finditer(query)
+    }
+    if drugs is not None:
+        for tok in query.lower().translate(_A_ESPACIO).split():
+            if len(tok) >= 4 and (r := drugs.resolve(tok)):
+                claves.add(r[0])
+    return {c for c in claves if c in DRUGS}
+
+
+def pregunta_combinar(query: str, drugs: DrugCatalog | None = None) -> bool:
+    """«¿Puedo darle los dos?», «¿y si no le baja, le doy Dalsy?» (5-oct-2026).
+
+    No es una pregunta de dosis: la contestan las guías, no la tabla. El enrutador de dosis cogía
+    el primer medicamento y el peso del turno anterior y devolvía otra vez la tabla. Dos
+    moléculas en el mensaje, o una con una palabra de juntar o alternar; con un peso en el mismo
+    mensaje y una sola molécula sigue siendo una dosis («también tiene tos, ¿cuánto para 12 kg?»).
+    """
+    moleculas = _moleculas(query, drugs)
+    if len(moleculas) >= 2:
+        return True
+    if not moleculas or weights_in(query):
+        return False
+    return bool(_COMBINAR.search(query))
+
+
 def dose_intent(query: str, drugs: DrugCatalog | None = None) -> tuple[str, float] | None:
     """(drug_key, weight_kg) when the message is a dose question with an explicit weight.
 
@@ -1724,6 +1775,15 @@ class Engine:
         la API atiende varias a la vez desde hilos distintos.
         """
         ctx: dict = {"costes": [], "fuera": None}
+        # 5-oct-2026: el peso en libras lleva sus kilos al lado antes de leer nada
+        # (bot/weight_units.py): la dosis, las curvas y el redactor sólo conocen los kilos.
+        dicho = query
+        query = con_kilos(query)
+        if history:
+            history = [
+                {**t, "text": con_kilos(t.get("text", ""))} if t.get("role") == "user" else t
+                for t in history
+            ]
         a = self._ask(query, country, lang, history, mode, ctx)
         # En qué lengua se ESCRIBIÓ, cuando no es una de las ocho. Va aquí y no en cada `return
         # Answer(...)` porque hay seis, y la primera versión de esto sólo cubría el último: una
@@ -1750,6 +1810,24 @@ class Engine:
             nota = nota_de_conversion(query)
             if nota and not a.text.startswith(nota):
                 a.text = f"{nota}.\n\n{a.text}"
+        peso = nota_de_peso(dicho, a.lang)
+        if peso and a.verification not in _FRASES_FIJAS and not a.text.startswith(peso):
+            a.text = f"{peso}.\n\n{a.text}"
+        # 5-oct-2026: «(Alter: 4 Jahre) (Gewicht: 10 kg)» pasó sin comentario (consulta real).
+        # Un peso fuera de la curva se dice: o es una errata, y las dosis van por peso, o hay que
+        # ver a ese niño. La herramienta de crecimiento ya lo dice ella sola.
+        pesos = weights_in(query)
+        if (
+            self.growth is not None
+            and len(pesos) == 1
+            and a.verification not in _FRASES_FIJAS | {"growth_chart"}
+        ):
+            edad = self.triage.assess(query).age_months
+            aviso = (
+                aviso_peso_extremo(self.growth, edad, pesos[0], a.lang) if edad is not None else None
+            )
+            if aviso and aviso not in a.text:
+                a.text = f"{a.text}\n\n{aviso}"
         if ctx["costes"]:
             ti = sum(c[0] for c in ctx["costes"])
             to = sum(c[1] for c in ctx["costes"])
@@ -1947,6 +2025,52 @@ class Engine:
             )
             else None
         )
+        # 5-oct-2026: «¿puedo darle los dos?» devolvía otra vez la tabla de uno (pregunta_combinar)
+        if intent and pregunta_combinar(query, self.drugs):
+            intent = None
+        # …y la respuesta a «¿qué edad tiene?» de la calculadora —«he is 2»— lleva a la dosis con
+        # el peso y el medicamento del turno anterior (5-oct-2026, ver `dose_ask_age`).
+        if intent is None and tr_now.age_months is not None and history:
+            ultima = next((t["text"] for t in reversed(history) if t.get("role") == "assistant"), "")
+            if any(tool_strings(lg)["dose_ask_age"] in ultima for lg in SUPPORTED_LANGS):
+                intent = dose_intent(context_text, self.drugs)
+        # …y la respuesta a «¿cuánto pesa?» —«14 kg»— con el medicamento del turno anterior.
+        if intent is None and len(weights_in(query)) == 1 and history:
+            ultima = next((t["text"] for t in reversed(history) if t.get("role") == "assistant"), "")
+            if any(
+                tool_strings(lg)["dose_ask_weight"].split("{name}")[0] in ultima
+                for lg in SUPPORTED_LANGS
+            ):
+                previas = " ".join(t["text"] for t in history if t.get("role") == "user")
+                mols = _moleculas(previas, self.drugs)
+                if len(mols) == 1:
+                    intent = (next(iter(mols)), weights_in(query)[0])
+        # Cuánto de un medicamento conocido y sin peso: se pregunta el peso (5-oct-2026). «How
+        # much Calpol for a 3 year old» recibía «mira el prospecto»; la dosis va por peso.
+        if (
+            intent is None
+            and tr.level == "routine"
+            and not weights_in(context_text or query)
+            and _PIDE_CANTIDAD.search(query)
+            and not pregunta_combinar(query, self.drugs)
+        ):
+            mols = _moleculas(query, self.drugs)
+            if len(mols) == 1:
+                nombre = DRUGS[next(iter(mols))].names
+                return Answer(
+                    tool_strings(lang)["dose_ask_weight"].format(
+                        name=nombre.get(lang, nombre["en"])
+                    ),
+                    tr.level,
+                    None,
+                    [],
+                    lang,
+                    None,
+                    None,
+                    [],
+                    "dose_ask_weight",
+                    tool=tool_link("dose", lang),
+                )
         # Dos pesos distintos: se pregunta cuál, no se elige por el padre. Decisión del operador
         # el 30-sep-2026, entre preguntar, calcular con los dos o usar el menor.
         pesos = weights_in(query)

@@ -2082,3 +2082,29 @@ pasaje en la lengua del padre se midió en las 2.687 preguntas: 38 cambiaban y s
 («labios hinchados tras comer huevo» → trastornos de la alimentación, por «eating»). Se quedó
 sólo para vacunas, donde el título es el nombre de la vacuna: 4 cambian, ninguna a peor. **Un
 arreglo de búsqueda se mide sobre las baterías enteras antes de generalizarlo.**
+
+## L252 · Miles de preguntas de prueba, y no se parecían a las de verdad (5-oct-2026)
+
+Dos consultas reales de Alemania (vómitos, signos de deshidratación) salieron flojas con 2.691
+preguntas de prueba detrás. El operador: «¿por qué damos respuestas tan malas después de probar
+miles de preguntas como si fueran reales?». Medido:
+
+- **Probábamos en otra lengua.** Las baterías eran un 78 % castellano; las consultas reales, un
+  72 % inglés (sobre todo EE. UU.). En alemán había una sola pregunta sobre diarrea.
+- **Buscábamos los bordes** (alarmas negadas, frases mezcladas) y los padres preguntan lo básico,
+  donde lo que manda es tener la fuente para padres en su lengua.
+- **Medíamos si la respuesta era segura, no si servía.** El revisor (`revisor.py`) no tiene
+  pregunta para «¿sabe el padre qué hacer?»: las dos respuestas alemanas pasaban todo.
+
+Lo que cambió: baterías escritas por otra IA con las consultas reales como modelo y su reparto
+de lenguas (`10_realistas_5oct.txt`, `11_realistas_5oct_b.txt`, con país por bloque y
+continuaciones `↳`); un juez de utilidad (`util.py`: 0-3, qué falta, unidades, país); y la
+lengua de las fuentes contada por catálogo. La primera pasada encontró, entre otras cosas, que
+el motor **no conocía las libras** (siete de cada diez consultas son de EE. UU.), que la tabla
+inglesa de sinónimos sólo tendía puente al castellano en los temas básicos («threw up» se
+quedaba sin ninguna fuente) y seis alarmas dichas con palabras de padre que no saltaban.
+
+**Regla:** una batería se escribe con el reparto de las consultas reales y se juzga por si le
+sirve al padre, no sólo por si es segura. Y la raíz inglesa automática («-ing», «-ed») se probó y
+se quitó: «breathing» → «breath», «playing» → «play» traían páginas que no tocaban (15 de 154
+preguntas a peor). Los sinónimos, que son quirúrgicos, dieron 145 a mejor y 1 a peor.

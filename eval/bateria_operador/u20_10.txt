@@ -1,0 +1,17 @@
+respuestas: 641 · juzgadas: 633
+por verificación: {'ok': 338, 'regenerated': 269, 'fallback': 3, 'vaccine_schedule': 5, 'about': 4, 'clarify': 1, 'no_source': 6, 'off_topic': 1, 'dose_calculator': 12, 'growth_chart': 1, 'no_schedule': 1}
+helps: {0: 7, 1: 160, 2: 457, 3: 9}
+units_ok = false: 8
+country_ok = false: 64
+urgency_ok = false: 76
+con algo 'wrong': 13
+
+lengua  n  helps≤1  sin_fuente  sin_fuente_propia
+en     345      92          3              123
+es     162      26          2                9
+fr      30       7          0               18
+pt      30      10          1               23
+hi      29      16          0               25
+de      15       8          0               10
+ar      15       4          0               12
+ru      15       4          0               14
