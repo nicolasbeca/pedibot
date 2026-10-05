@@ -36,6 +36,49 @@ def flagged_path() -> pathlib.Path:
     return get_settings().flagged_path
 
 
+def visits_cache_path() -> pathlib.Path:
+    from pedibot.settings import get_settings
+
+    return get_settings().visits_cache_path
+
+
+def _visits(days: int) -> dict[str, Any]:
+    """Las visitas sin hacer esperar al operador (5-oct-2026).
+
+    Leer el registro de Caddy entero costaba 15 s en cada apertura. Lo cuenta cada hora el
+    temporizador de `publish_stats` y aquí sólo se lee. Vale para el total y para cualquier
+    ventana que llegue más atrás que el propio registro (el `?days=90` guardado del operador,
+    con 41 días de registro, es la misma cifra). Las 24 horas se cuentan al momento: 0,14 s.
+    Un fichero viejo se enseña con su hora; no se vuelve a leer el registro por eso."""
+    if days != 1:
+        w = report.load_visits(visits_cache_path())
+        covers = (w or {}).get("covers") or ()
+        if w is not None and (days == 0 or (len(covers) == 2 and days >= _span(covers))):
+            return w
+    return report.web_visits(days)
+
+
+def _span(covers: Any) -> int:
+    try:
+        a, b = (dt.date.fromisoformat(str(x)[:10]) for x in covers)
+    except ValueError:
+        return 10**6
+    return (b - a).days + 1
+
+
+def _read_age(w: dict[str, Any]) -> str:
+    """«leídas hace 23 min»; vacío si se contaron ahora mismo."""
+    read_at = w.get("read_at")
+    if not read_at:
+        return ""
+    try:
+        cuando = dt.datetime.fromisoformat(str(read_at))
+    except ValueError:
+        return ""
+    minutos = max(0, int((dt.datetime.now(dt.UTC) - cuando).total_seconds() // 60))
+    return f"hace {minutos} min" if minutos < 120 else f"hace {minutos // 60} h"
+
+
 def load_flagged() -> dict[int, dict[str, object]]:
     """The marked answers, by id. One entry each — it used to append a line per press, and the
     file ended up holding 189 copies of the same test answer."""
@@ -727,7 +770,7 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     questions, 103 of them test strings sent from the build machine — a panel that reports our
     own work back to us as readers is a panel that lies about the only thing it exists to say.
     """
-    w = report.web_visits(days)
+    w = _visits(days)
     q = report.questions(con, days, include_test=include_test)
     g = report.guides(days)
     rows = report.recent_answers(con, 80, include_test=include_test)
@@ -778,7 +821,9 @@ def render(con: sqlite3.Connection, days: int, include_test: bool = False) -> st
     # debajo y plegado.
     h.append(
         f'<p class="period">Consultas y guías: <b>{html.escape(period)}</b> · '
-        f"Visitas: <b>{html.escape(covered)}</b>."
+        f"Visitas: <b>{html.escape(covered)}</b>"
+        + (f" (leídas del registro {_read_age(w)})" if _read_age(w) else "")
+        + "."
         + _sin_modelo_line(q)
         + _tests_line(q, days, include_test)
         + "</p>"

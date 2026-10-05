@@ -11,6 +11,7 @@ import sqlite3
 import subprocess
 import sys
 from collections.abc import Iterable
+from pathlib import Path
 from typing import Any
 
 from pedibot.ops.store import NOT_REAL, REAL_ONLY
@@ -112,6 +113,28 @@ def _dwell(seen_at: dict[str, list[float]]) -> dict[str, Any]:
         # how many of the timed ones were more than a glance
         "over_a_minute": sum(1 for x in lasted if x >= 60),
     }
+
+
+def save_visits(w: dict[str, Any], path: Path, read_at: str | None = None) -> None:
+    """Lo que contó `web_visits`, con la hora a la que se leyó el registro (5-oct-2026).
+
+    Lo escribe `publish_stats` cada hora y lo lee el panel: leer el registro entero costaba 15 s
+    por apertura. Se escribe a un temporal y se renombra, para que el panel nunca lea medio
+    fichero."""
+    datos = dict(w)
+    datos["read_at"] = read_at or dt.datetime.now(dt.UTC).isoformat(timespec="seconds")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".tmp")
+    tmp.write_text(json.dumps(datos, ensure_ascii=False), encoding="utf-8")
+    tmp.replace(path)
+
+
+def load_visits(path: Path) -> dict[str, Any] | None:
+    try:
+        datos = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    return datos if isinstance(datos, dict) and "visitors" in datos else None
 
 
 def web_visits(days: int = 7) -> dict[str, Any]:

@@ -62,6 +62,9 @@ class Settings(BaseSettings):
     # and not a constant because the panel test posts to /admin/flag, and with a constant every
     # run of the suite appended a line to the operator's own working copy of this file.
     flagged_path: Path = ROOT / "eval" / "flagged.jsonl"
+    #: Las visitas que contó `ops/publish_stats.py` en su última pasada; el panel las lee de aquí
+    #: en vez de leer el registro de Caddy entero en cada apertura (5-oct-2026).
+    visits_cache_path: Path = ROOT / "data" / "web_visits.json"
 
 
 def get_settings() -> Settings:

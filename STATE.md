@@ -1,6 +1,25 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-10-03** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-05** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 5-oct-2026 · el panel abre en el momento
+
+- **El operador: «cuando entro en la página de admin tarda muchísimo».** Medido en el servidor:
+  13-15 s por apertura, todos en `report.web_visits`, que leía con `journalctl` el registro de
+  Caddy entero (274 MB, 261.000 líneas: 8,5 s de lectura y ~6 de recuento). Lo demás, centésimas.
+- **Ahora lo cuenta el temporizador de cada hora** (`pedibot-stats`, que ya hacía esa lectura) y
+  lo deja en `data/web_visits.json` (`report.save_visits`); el panel lo lee (`admin._visits`). Vale
+  para el total y para toda ventana más larga que el registro (`?days=90` con 41 días de registro
+  es la misma cifra). Las 24 h se cuentan al momento (0,14 s). Un fichero viejo se enseña con su
+  hora («leídas del registro hace 23 min»), sin volver a leer el registro. Pedido así: «no tengo
+  que tener el dato en tiempo real, pero cuando entro quiero verlo rápido».
+  `test_the_panel_opens_fast.py`.
+- **Consultas reales:** dos nuevas desde el 2-oct, las dos de Alemania esta mañana (vómitos y
+  signos de deshidratación, 4 años y 10 kg). Flojas: en alemán sólo hay 30 fichas del RKI, de
+  infecciosas y para médicos; la de deshidratación salió con fuentes en inglés y una lista de
+  signos incompleta. Falta una fuente alemana para padres: kindergesundheit-info.de (BIÖG) publica
+  parte de sus páginas en CC BY-NC-ND 3.0 DE; extractos sin cambios y con «(Auszug)», lo demás
+  con permiso.
 
 ## 3-oct-2026 (3) · el padre que escribe en inglés recibe la página inglesa que existe
 

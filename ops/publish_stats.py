@@ -31,8 +31,14 @@ DESTINO = ROOT / "data" / "public_stats.json"
 TODO = 0
 
 
+#: Lo que contó la última pasada de `reunir`, entero, para que `main` se lo deje al panel.
+_ULTIMA: dict[str, object] = {}
+
+
 def reunir() -> dict[str, object]:
     web = report.web_visits(TODO)
+    _ULTIMA.clear()
+    _ULTIMA.update(web)
     cubre = web.get("covers") or ()
     chat = OpsStore(get_settings().ops_db_path).stats(days=3650)
     return {
@@ -62,6 +68,9 @@ def reunir() -> dict[str, object]:
 
 def main() -> int:
     datos = reunir()
+    # Lo mismo que acaba de contar, entero, para el panel: así /admin no lee el registro en cada
+    # apertura (15 s). Sale de la caché de `report.web_visits` de esta misma pasada.
+    report.save_visits(_ULTIMA, get_settings().visits_cache_path)
     DESTINO.parent.mkdir(parents=True, exist_ok=True)
     DESTINO.write_text(json.dumps(datos, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     sitio = datos["site"]
