@@ -38,7 +38,17 @@
   contesta. Japón, Italia, Canadá y Australia, reconocidos para poder decir «no lo tenemos».
 - **Clasificador de «cuándo consultar»** en siete lenguas más: casi no encuentra nada porque en
   esas lenguas casi todo son fichas de la OMS y del RKI. Confirma que el hueco es de fuentes.
-- **Pendiente:** el árabe «كحة مثل نباح الكلب» trae la rabia; el RKI gana al crup en alemán.
+- **Segunda vuelta, desplegada:** lo de la lista de arriba («Después, sin desplegar aún»), el
+  apartado de alarma sólo del documento principal (con los dos de arriba se colaban los signos de
+  infección de orina para una fiebre), y «erbricht seit» ya no hace urgente «seit heute Morgen».
+  Batería 10, 415 preguntas comunes: flojas 104 → 68 (25 → 16 %), urgencia mal 58 → 39; 63 mejor,
+  20 peor. Catálogo del agente sincronizado (8 ofertas, 92 países).
+- **Pendiente, por orden:** (1) fuentes para padres en alemán, hindi, ruso, portugués y árabe;
+  (2) para un padre de EE. UU., preferir CDC/MedlinePlus al NHS cuando dicen lo mismo (el juez
+  lo marca: «país mal» 51 → 71 desde que el inglés pasa delante; no es información errónea);
+  (3) «fever… drinking and peeing» se va a la infección de orina; (4) el redactor aún rebaja el
+  aviso a veces (imán tragado: «vigílalo en casa»); (5) el árabe «كحة مثل نباح الكلب» trae la
+  rabia.
 
 ## 5-oct-2026 (2) · baterías con el reparto de las consultas reales, y lo que encontraron (L252)
 
