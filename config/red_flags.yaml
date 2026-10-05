@@ -2136,7 +2136,8 @@ rules:
   - seit \d{1,2} stunden .{0,20}(trocken|kein pipi)
   - trinkt nichts
   - trockener mund
-  - erbricht seit
+  # 5-oct-2026: «erbricht seit» a secas hacía urgente «seit heute Morgen» (en inglés, rutina).
+  - erbricht seit (gestern|vorgestern|tagen|\w+ tagen|der nacht und kann nichts)
   - durchfall seit
   - запавшие глаза
   - мало писает

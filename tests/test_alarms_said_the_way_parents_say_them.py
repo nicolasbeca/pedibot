@@ -61,6 +61,8 @@ def triaje() -> Triage:
         ("mi hija se desmayo jugando al futbol pero ahora esta bien", "urgent"),
         ("she fainted and said her heart was racing", "urgent"),
         ("ابني أغمي عليه أثناء اللعب", "urgent"),
+        ("er erbricht seit zwei Tagen", "urgent"),
+        ("mein Kind erbricht seit gestern", "urgent"),
     ],
 )
 def test_salta(triaje: Triage, frase: str, nivel: str) -> None:
@@ -83,6 +85,8 @@ def test_salta(triaje: Triage, frase: str, nivel: str) -> None:
         "mi hijo tiene un poco de rigidez en el cuello por dormir mal",
         "she fainted when she saw blood",
         "my son is tired after soccer practice",
+        # «erbricht seit» a secas hacía urgente cualquier hora de inicio; en inglés es rutina
+        "mein Baby erbricht seit heute Morgen zweimal",
     ],
 )
 def test_no_salta(triaje: Triage, frase: str) -> None:
