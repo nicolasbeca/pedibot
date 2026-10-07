@@ -123,3 +123,11 @@ Las seis guías se quedan publicadas —el tema asusta mucho y la información e
 queda escrito aquí y sujeto por una prueba, para que una guía nueva no pueda nacer así sin que
 salte. Lo que lo cerraría: NHS inform desde el VPS, o la Canadian Paediatric Society, que publica
 *Caring for Kids* y cuya licencia no se ha leído todavía.
+
+**7-oct-2026, revisado.** NHS inform desde el VPS ya no da 403, pero en sus sitemaps no hay ninguna
+página de espasmos del sollozo (sólo «breathing problems in children»): esa vía está cerrada. La
+página del NHS sigue retirada («This page has been removed», 200). **NHS 111 Wales** sí la tiene
+(https://111.wales.nhs.uk/breathholdingspellsinchildren), pero sus condiciones dicen «You shall
+not copy, reproduce or redistribute any material… except in accordance with our content
+authorisation policy»: hace falta pedir permiso por correo, como a la Canadian Paediatric Society
+(escrita el 7-oct a info@cps.ca).

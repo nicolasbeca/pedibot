@@ -2152,3 +2152,18 @@ LLM (que además deja 326 sin nada). En el conjunto difícil, respuestas en ingl
 inglés 72 → 33, utilidad igual (16 suben, 15 bajan). Las páginas del NHS trajeron fórmulas de
 «cuídelo en casa» que el filtro bajo aviso no conocía; añadidas. **Regla:** las decisiones del
 primer día que dependen del tamaño del corpus se vuelven a medir cuando el corpus cambia.
+
+## L256 · El pasaje que respaldaba cada aviso no decía lo que dice el aviso (7-oct-2026)
+
+Cuando salta una regla de alarma, el motor pone delante «el pasaje de alarma» de su fuente para
+que el redactor pueda citarlo. Se elegía el primero marcado del documento. Comprobado regla a
+regla con el modelo: en **75 de 97** no decía lo que dice el aviso, y en una docena era basura
+literal (al estridor, la invaginación, el monóxido o la diabetes les llegaba la prevención de
+enfermedades genéticas del manual cubano). El redactor cosía entonces listas de alarma de otra
+cosa, que es justo lo que el juez contra las guías marcaba. Ahora cada regla nombra su pasaje
+(`source_chunk`), elegido por el modelo entre candidatos y revisado a mano (cinco rechazados);
+17 reglas se quedan sin pasaje, porque mejor nada que uno equivocado. Con eso, más la frase fija
+«lo primero, haz lo que dice el aviso» cuando el texto bajo un aviso no dice prisa (29 de 107 no
+la decían), en el conjunto difícil: con algo que su guía no dice 105 → 82, flojas 78 → 58,
+urgencia mal 34 → 29. **Regla:** todo lo que el sistema inyecta «por si acaso» se comprueba
+pieza a pieza; un mecanismo que parece de seguridad puede ser la fuente del error.

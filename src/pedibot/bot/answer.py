@@ -37,6 +37,7 @@ from pedibot.bot.muac import reason as muac_reason
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.temperature import con_fahrenheit, lee_en_fahrenheit, nota_de_conversion
+from pedibot.bot.banner_lead import con_el_aviso_delante
 from pedibot.bot.steam import nota_vapor
 from pedibot.bot.weight_units import con_kilos, nota_de_peso
 from pedibot.bot.triage import (
@@ -1801,15 +1802,17 @@ class Engine:
         (faithfulness judge, 25-ago: 6 of 8 'unfaithful' were exactly this)."""
         if not tr.matched:
             return hits
-        present = {h.chunk.doc_id for h in hits if h.chunk.is_red_flag}
+        # 7-oct-2026: el pasaje comprobado de cada regla (`Rule.source_chunk`), no «el primer
+        # pasaje de alarma» de su documento, que en 75 de 97 reglas hablaba de otra cosa.
+        present = {h.chunk.chunk_id for h in hits}
         injected: list[Hit] = []
         for rule in tr.matched:
-            if rule.source in present:
+            if not rule.source_chunk or rule.source_chunk in present:
                 continue
-            c = self.retriever.index.red_flag_chunk(rule.source)
+            c = self.retriever.index.get(rule.source_chunk)
             if c is not None:
                 injected.append(Hit(c, 99.0, 1))
-                present.add(rule.source)
+                present.add(rule.source_chunk)
         return (injected + hits)[: max(len(hits), 6) + len(injected)]
 
     def _inject_doc_warnings(self, hits: list[Hit]) -> list[Hit]:
@@ -1957,6 +1960,10 @@ class Engine:
         peso = nota_de_peso(dicho, a.lang)
         if peso and a.verification not in _FRASES_FIJAS and not a.text.startswith(peso):
             a.text = f"{peso}.\n\n{a.text}"
+        # 7-oct-2026: bajo un aviso, un texto sin una palabra de prisa empieza por el aviso
+        # (bot/banner_lead.py).
+        if a.verification not in _FRASES_FIJAS:
+            a.text = con_el_aviso_delante(a.text, a.level, a.lang)
         # 7-oct-2026: el vapor, en que las guías no coinciden; se dice qué dice cada una
         # (bot/steam.py).
         vapor = nota_vapor(query, a.text, a.lang)

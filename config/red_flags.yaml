@@ -7,6 +7,7 @@ rules:
 - id: not_responding
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: No responde a estímulos
   reason_en: Not responding to stimuli
   reason_fr: Ne répond pas aux stimulations
@@ -197,6 +198,7 @@ rules:
 - id: seizure
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: Movimientos anormales / convulsión
   reason_en: Abnormal movements / seizure
   reason_fr: Mouvements anormaux / convulsion
@@ -279,6 +281,7 @@ rules:
 - id: severe_breathing
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: Dificultad para respirar grave (se marcan las costillas, respira muy rápido, pausas en la respiración, color azulado)
   reason_en: Severe breathing difficulty (ribs pulling in, very fast breathing, pauses in breathing, blue colour)
   reason_fr: Difficulté grave à respirer (côtes qui se creusent, respiration très rapide, pauses respiratoires, coloration bleutée)
@@ -590,6 +593,7 @@ rules:
 - id: anaphylaxis
   level: emergency
   source: seup_anafilaxia
+  source_chunk: "seup_anafilaxia#que_es_la_anafilaxia#1"
   reason_es: Sospecha de reacción alérgica grave (hinchazón de labios/párpados con dificultad para respirar, vómitos o mareo)
   reason_en: Suspected severe allergic reaction (swollen lips/eyelids with breathing difficulty, vomiting or dizziness)
   reason_fr: Suspicion de réaction allergique grave (gonflement des lèvres/paupières avec difficulté à respirer, vomissements ou malaise)
@@ -730,6 +734,7 @@ rules:
 - id: choking
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: Atragantamiento con dificultad para respirar
   reason_en: Choking with breathing difficulty
   reason_fr: Étouffement avec difficulté à respirer
@@ -800,6 +805,7 @@ rules:
 - id: mottled_skin
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: Mala coloración (palidez extrema, piel moteada, azul o grisácea)
   reason_en: Poor colour (extreme pallor, mottled, blue or greyish skin)
   reason_fr: Mauvaise coloration (pâleur extrême, peau marbrée, bleue ou grise)
@@ -875,6 +881,7 @@ rules:
 - id: drowsy_after_head_injury
   level: emergency
   source: seup_tce
+  source_chunk: "seup_tce#cuando_puede_volver_a_la_guarderia_escue#1"
   reason_es: "Somnolencia después de un golpe o una caída: llama a emergencias o ve a urgencias ya"
   reason_en: "Drowsy after a knock or a fall: call emergency services or go to the emergency department now"
   reason_fr: "Somnolence après un coup ou une chute : appelez les urgences ou allez aux urgences maintenant"
@@ -914,7 +921,8 @@ rules:
 # tenía el triaje del ojo eran los productos químicos.
 - id: eye_foreign_body_or_injury
   level: urgent
-  source: seup_acudir_urgencias
+  source: mlp_en_002084
+  source_chunk: "mlp_en_002084#eye_foreign_object_in#1"
   reason_es: "Algo clavado o metido en el ojo, o un golpe en el ojo: no lo frotes ni intentes sacarlo, que lo vean hoy en urgencias"
   reason_en: "Something stuck in the eye, or a blow to the eye: do not rub it or try to remove it; get it seen in the emergency department today"
   reason_fr: "Quelque chose dans l'œil, ou un coup à l'œil : ne pas frotter ni essayer de l'enlever, consultez aux urgences aujourd'hui"
@@ -958,6 +966,7 @@ rules:
 - id: fall_stairs_or_inconsolable
   level: urgent
   source: seup_tce
+  source_chunk: "seup_tce#cuando_debemos_acudir_a_un_servicio_de_u#1"
   reason_es: "Caída por las escaleras o de más de un metro, o llanto que no se calma tras un golpe: que lo vea un médico hoy"
   reason_en: "A fall down stairs or from more than a metre, or crying that will not settle after a knock: get a doctor to see them today"
   reason_fr: "Chute dans les escaliers ou de plus d'un mètre, ou pleurs qui ne se calment pas après un coup : faites-le voir par un médecin aujourd'hui"
@@ -998,6 +1007,7 @@ rules:
 - id: spreading_skin_infection
   level: urgent
   source: nhs_en_cellulitis
+  source_chunk: "nhs_en_cellulitis#cellulitis#1"
   reason_es: "Una herida o picadura con enrojecimiento que se extiende, calor o una raya roja que sube: que la vea un médico hoy"
   reason_en: "A wound or bite with spreading redness, heat or a red streak going up: get it seen by a doctor today"
   reason_fr: "Une plaie ou une piqûre avec une rougeur qui s'étend, de la chaleur ou une traînée rouge qui monte : consultez un médecin aujourd'hui"
@@ -1033,6 +1043,7 @@ rules:
 - id: white_pupil
   level: urgent
   source: nhs_en_conditions_retinoblastoma_symptoms
+  source_chunk: "nhs_en_conditions_retinoblastoma_symptoms#symptoms_of_retinoblastoma_main_symptoms#1"
   reason_es: "Pupila blanca (en fotos o con la luz): que la vea un médico hoy o mañana, sin esperar"
   reason_en: "A white pupil (in photos or in the light): get it seen by a doctor today or tomorrow, without waiting"
   reason_fr: "Pupille blanche (en photo ou à la lumière) : faites-la voir par un médecin aujourd'hui ou demain, sans attendre"
@@ -1064,6 +1075,7 @@ rules:
 - id: priapism
   level: emergency
   source: nhs_en_priapism_painful_erections
+  source_chunk: "nhs_en_priapism_painful_erections#don_t#1"
   reason_es: "Erección que dura mucho rato o duele: hay que tratarla en el hospital cuanto antes para evitar daños"
   reason_en: "An erection that lasts a long time or is painful: it needs hospital treatment as soon as possible to avoid damage"
   reason_fr: "Une érection qui dure longtemps ou qui fait mal : elle doit être traitée à l'hôpital au plus vite pour éviter des lésions"
@@ -1096,6 +1108,7 @@ rules:
 - id: paraphimosis
   level: emergency
   source: nhs_en_phimosis
+  source_chunk: "nhs_en_phimosis#complications_of_a_tight_foreskin#1"
   reason_es: "Prepucio atascado detrás del glande (parafimosis): es una emergencia, puede cortar el riego del pene"
   reason_en: "Foreskin stuck behind the head of the penis (paraphimosis): this is an emergency, it can cut off the blood supply"
   reason_fr: "Prépuce coincé derrière le gland (paraphimosis) : c'est une urgence, il peut couper la circulation"
@@ -1122,6 +1135,7 @@ rules:
 - id: sting_mouth_throat_eye
   level: urgent
   source: nhs_en_insect_bites_and_stings
+  source_chunk: "nhs_en_insect_bites_and_stings#don_t#1"
   reason_es: "Picadura en la boca, la garganta o cerca del ojo: que lo vea un médico hoy; si se le hinchan los labios o la lengua o le cuesta respirar, llama a emergencias"
   reason_en: "A sting in the mouth, throat or near the eye: get it seen today; if the lips or tongue swell or breathing gets hard, call emergency services"
   reason_fr: "Piqûre dans la bouche, la gorge ou près de l'œil : consultez aujourd'hui ; si les lèvres ou la langue gonflent ou s'il respire mal, appelez les urgences"
@@ -1149,6 +1163,7 @@ rules:
 - id: pale_stools
   level: urgent
   source: nhs_en_jaundice_in_babies
+  source_chunk: "nhs_en_jaundice_in_babies#jaundice_in_babies#1"
   reason_es: "Cacas muy pálidas, blanquecinas o color masilla: que lo vea un médico hoy, puede ser un problema del hígado"
   reason_en: "Very pale, white or chalky poo: get it seen by a doctor today, it can be a liver problem"
   reason_fr: "Selles très pâles, blanches ou couleur mastic : consultez un médecin aujourd'hui, cela peut venir du foie"
@@ -1175,6 +1190,7 @@ rules:
 - id: headache_wakes_child
   level: urgent
   source: nhs_en_headaches
+  source_chunk: "nhs_en_headaches#when_and_where_to_get_medical_help#1"
   reason_es: "Dolor de cabeza que despierta de noche o está al despertarse: que lo vea un médico"
   reason_en: "A headache that wakes the child at night or is there on waking: get it seen"
   reason_fr: "Mal de tête qui réveille la nuit ou présent au réveil : à faire examiner"
@@ -1237,7 +1253,8 @@ rules:
 # 22-sep-2026: una pupila más grande que la otra, de aparición nueva, es un signo neurológico.
 - id: unequal_pupils
   level: urgent
-  source: nhs_en_head_injury_and_concussion
+  source: mlp_en_headinjuries
+  source_chunk: "mlp_en_headinjuries#lead#1"
   reason_es: "Una pupila más grande que la otra: que lo vea un médico hoy"
   reason_en: "One pupil bigger than the other: get it seen by a doctor today"
   reason_fr: "Une pupille plus grande que l'autre : à faire examiner aujourd'hui"
@@ -1264,6 +1281,7 @@ rules:
 - id: limp_after_fall
   level: urgent
   source: nhs_en_hip_pain_children_irritable_hip
+  source_chunk: "nhs_en_hip_pain_children_irritable_hip#hip_pain_in_children_irritable_hip#1"
   reason_es: "Cojea, o no apoya una pierna: que lo vea un médico hoy"
   reason_en: "Limping, or not putting weight on a leg: get it seen by a doctor today"
   reason_fr: "Il boite ou ne pose pas le pied : à faire examiner aujourd'hui"
@@ -1302,7 +1320,8 @@ rules:
   - anachechemea[^.]{0,60}(baada ya|tangu)[^.]{0,30}(kuanguka|alianguka)
 - id: head_injury_loss_consciousness
   level: emergency
-  source: seup_tce
+  source: cdc_en_heads_up_signs_symptoms_index
+  source_chunk: "cdc_en_heads_up_signs_symptoms_index#concussion_danger_signs#1"
   reason_es: Golpe en la cabeza con pérdida de conocimiento
   reason_en: Head injury with loss of consciousness
   reason_fr: Coup à la tête avec perte de connaissance
@@ -1372,6 +1391,7 @@ rules:
 - id: severe_bleeding
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: Herida profunda con sangrado abundante que no cede tras 10 minutos de presión
   reason_en: Deep wound with heavy bleeding that does not stop after 10 minutes of pressure
   reason_fr: Plaie profonde qui saigne abondamment malgré 10 minutes de compression
@@ -1466,6 +1486,7 @@ rules:
 - id: open_fracture
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: Fractura abierta (se ve el hueso)
   reason_en: Open fracture (bone is visible)
   reason_fr: Fracture ouverte (l'?os est visible)
@@ -1517,6 +1538,7 @@ rules:
 - id: petechiae_fever
   level: emergency
   source: seup_fiebre
+  source_chunk: "seup_fiebre#cuando_debemos_consultar_en_un_servicio#1"
   reason_es: Manchas en la piel que no desaparecen al presionar (posible sepsis/meningitis)
   reason_en: Spots on the skin that do not fade when pressed (possible sepsis/meningitis)
   reason_fr: Taches sur la peau qui ne s'?effacent pas à la pression (possible sepsis/méningite)
@@ -1625,6 +1647,7 @@ rules:
 - id: infant_fever_under_3_months
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#comporta_miento#1"
   reason_es: Bebé menor de 3 meses con fiebre (≥38 °C)
   reason_en: Baby under 3 months with fever (≥38 °C / 100.4 °F)
   reason_fr: Bébé de moins de 3 mois avec de la fièvre (≥38 °C)
@@ -1669,6 +1692,7 @@ rules:
 - id: very_high_fever
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#comporta_miento#1"
   reason_es: Fiebre de más de 40,5 °C
   reason_en: Fever above 40.5 °C (105 °F)
   reason_fr: Fièvre au-dessus de 40,5 °C
@@ -1730,6 +1754,7 @@ rules:
 - id: moderate_breathing
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#comporta_miento#1"
   reason_es: 'Dificultad para respirar: respira rápido, «pitido» al respirar, se marcan las costillas'
   reason_en: 'Breathing difficulty: fast breathing, wheezing, ribs pulling in'
   reason_fr: 'Difficulté à respirer : respiration rapide, sifflements, côtes qui se creusent'
@@ -1859,6 +1884,7 @@ rules:
 - id: drowsy_irritable
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: Irritabilidad o somnolencia excesivas
   reason_en: Excessive irritability or drowsiness
   reason_fr: Irritabilité ou somnolence excessives
@@ -2009,6 +2035,7 @@ rules:
 - id: dehydration
   level: urgent
   source: seup_gastroenteritis
+  source_chunk: "seup_gastroenteritis#ofrecer_en_pequenas_cantidades_sro_dolor#1"
   reason_es: 'Signos de deshidratación: ojos hundidos, orina poco, boca seca, vómitos persistentes o diarrea abundante >24 h'
   reason_en: 'Signs of dehydration: sunken eyes, little urine, dry mouth, persistent vomiting or heavy diarrhoea >24 h'
   reason_fr: 'Signes de déshydratation : yeux enfoncés, urine rare, bouche sèche, vomissements persistants ou diarrhée abondante >24 h'
@@ -2199,6 +2226,7 @@ rules:
 - id: vomiting_headache
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#comporta_miento#1"
   reason_es: Vómitos repetidos con dolor de cabeza fuerte
   reason_en: Repeated vomiting with severe headache
   reason_fr: Vomissements répétés avec fort mal de tête
@@ -2260,6 +2288,7 @@ rules:
 - id: vomiting_after_head_injury
   level: urgent
   source: seup_tce
+  source_chunk: "seup_tce#cuando_puede_volver_a_la_guarderia_escue#1"
   reason_es: Vómitos tras un golpe en la cabeza
   reason_en: Vomiting after a head injury
   reason_fr: Vomissements après un coup à la tête
@@ -2341,6 +2370,7 @@ rules:
 - id: button_battery
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#comporta_miento#1"
   reason_es: Pila de botón tragada — quema el esófago en horas, urgencias inmediatas
   reason_en: Button battery swallowed — it burns the oesophagus within hours, go now
   reason_fr: Pile bouton avalée — elle brûle l'?œsophage en quelques heures, urgences immédiates
@@ -2383,6 +2413,7 @@ rules:
 - id: foreign_body_ingestion
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#comporta_miento#1"
   reason_es: Se ha tragado un objeto o se le ha clavado algo al tragar (pilas, imanes, una espina)
   reason_en: Swallowed an object or something is stuck in the throat (batteries, magnets, a fish bone)
   reason_fr: Ingestion d'?un objet ou quelque chose coincé dans la gorge (piles, aimants, une arête)
@@ -2454,6 +2485,7 @@ rules:
 - id: poisoning
   level: urgent
   source: seup_intoxicaciones
+  source_chunk: "seup_intoxicaciones#que_son#1"
   reason_es: Ingesta de productos tóxicos o sobredosis de medicamentos
   reason_en: Ingestion of toxic products or medication overdose
   reason_fr: Ingestion de produits toxiques ou surdose de médicaments
@@ -2596,6 +2628,7 @@ rules:
 - id: severe_abdominal_pain
   level: urgent
   source: seup_dolor_abdominal
+  source_chunk: "seup_dolor_abdominal#dolor_abdominal#1"
   reason_es: Dolor de barriga fuerte, continuo, que empeora
   reason_en: Severe, continuous, worsening abdominal pain
   reason_fr: Mal de ventre fort, continu, qui empire
@@ -2692,6 +2725,7 @@ rules:
 - id: deformity_fracture
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#comporta_miento#1"
   reason_es: Posible hueso roto (deformidad, dolor fuerte o no lo puede mover) o herida que precisa sutura
   reason_en: Possible broken bone (deformity, severe pain or cannot move it) or a wound that needs stitches
   reason_fr: Possible fracture (déformation, douleur forte ou ne peut pas bouger) ou plaie qui nécessite des points
@@ -2778,6 +2812,7 @@ rules:
 - id: newborn_refusing_feeds
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#comporta_miento#1"
   reason_es: Bebé menor de 1 mes que rechaza las tomas
   reason_en: Baby under 1 month refusing feeds
   reason_fr: Bébé de moins d'?un mois qui refuse de téter
@@ -2849,6 +2884,7 @@ rules:
 - id: burn
   level: urgent
   source: ninojesus_primeros_auxilios
+  source_chunk: "ninojesus_primeros_auxilios#que_hacer#14"
   reason_es: Quemadura (especialmente en cara, manos, genitales o extensa)
   reason_en: Burn (especially face, hands, genitals or large area)
   reason_fr: Brûlure (surtout au visage, aux mains, aux parties génitales ou étendue)
@@ -2916,6 +2952,7 @@ rules:
 - id: bilious_or_bloody_vomit
   level: urgent
   source: seup_dolor_abdominal
+  source_chunk: "seup_dolor_abdominal#dolor_abdominal#1"
   reason_es: Vómitos verdosos, marrones o con sangre — la hoja de dolor abdominal de la SEUP pide consultar
   reason_en: Green, brown or bloody vomit — a documented reason to seek care
   reason_fr: Vomissements verts, bruns ou sanglants — motif de consultation
@@ -2971,6 +3008,7 @@ rules:
 - id: blood_in_stool
   level: urgent
   source: seup_dolor_abdominal
+  source_chunk: "seup_dolor_abdominal#dolor_abdominal#1"
   reason_es: Deposiciones negras como alquitrán o con sangre roja — la hoja de dolor abdominal de la SEUP pide consultar
   reason_en: Black tarry stools or red blood in the stool — a documented reason to seek care
   reason_fr: Selles noires comme du goudron ou avec du sang rouge — motif de consultation
@@ -3017,6 +3055,7 @@ rules:
 - id: abdominal_pain_localised_or_worsening
   level: urgent
   source: seup_dolor_abdominal
+  source_chunk: "seup_dolor_abdominal#dolor_abdominal#1"
   reason_es: Dolor abdominal en el lado derecho, o continuo y cada vez más intenso — la hoja de la SEUP pide consultar
   reason_en: Abdominal pain on the right side, or continuous and getting worse — a documented reason to seek care
   reason_fr: Douleur abdominale à droite, ou continue et croissante — motif de consultation
@@ -3084,6 +3123,7 @@ rules:
 - id: eating_disorder_signs
   level: mental_health
   source: seup_tca
+  source_chunk: "seup_tca#cuando_debemos_consultar_en_un_servicio#1"
   reason_es: Señales de un trastorno de la conducta alimentaria
   reason_en: Signs of an eating disorder
   reason_fr: Signes d'?un trouble du comportement alimentaire
@@ -3181,6 +3221,7 @@ rules:
 - id: neuro_deficit
   level: emergency
   source: seup_cefalea
+  source_chunk: "seup_cefalea#cuando_debemos_consultar_en_un_servicio#1"
   reason_es: Signos neurológicos — la hoja de cefalea de la SEUP pide consultar si ve mal, no mueve bien un brazo o una pierna, o camina o habla con dificultad
   reason_en: Neurological signs — trouble seeing, moving an arm or a leg, walking or speaking
   reason_fr: Signes neurologiques — voit mal, bouge mal un bras ou une jambe, marche ou parle difficilement
@@ -3319,6 +3360,7 @@ rules:
 - id: headache_warning_signs
   level: urgent
   source: seup_cefalea
+  source_chunk: "seup_cefalea#cuando_debemos_consultar_en_un_servicio#1"
   reason_es: Dolor de cabeza con signos de alarma — la hoja de cefalea de la SEUP pide consultar si le despierta por la noche, va a más o no cede al tratamiento habitual
   reason_en: Headache with warning signs — waking at night, getting worse, or not responding to the usual treatment
   reason_fr: Céphalée avec signes d'?alerte — réveille la nuit, s'?aggrave, ou ne cède pas au traitement habituel
@@ -3383,6 +3425,7 @@ rules:
 - id: suicidal_ideation
   level: mental_health
   source: seup_conducta_suicida
+  source_chunk: "seup_conducta_suicida#que_es_la_conducta_suicida#1"
   reason_es: Expresa pensamientos suicidas
   reason_en: Expressing suicidal thoughts
   reason_fr: Exprime des pensées suicidaires
@@ -3481,6 +3524,7 @@ rules:
 - id: self_harm
   level: mental_health
   source: seup_autolesion
+  source_chunk: "seup_autolesion#que_es_la_conducta_autolesiva_no_suicida#1"
   reason_es: Conducta autolesiva
   reason_en: Self-harm
   reason_fr: Conduite auto-agressive
@@ -3555,6 +3599,7 @@ rules:
 - id: neck_stiffness
   level: emergency
   source: mlp_en_meningitis
+  source_chunk: "mlp_en_meningitis#lead#1"
   reason_es: "Rigidez de nuca: hay que descartar una meningitis ahora mismo"
   reason_en: "Neck stiffness: meningitis has to be ruled out right now"
   reason_fr: "Nuque raide : il faut écarter une méningite tout de suite"
@@ -3623,7 +3668,8 @@ rules:
   - gardan akad
 - id: meningitis_signs
   level: urgent
-  source: mlp_en_meningitis
+  source: nhs_en_headaches
+  source_chunk: "nhs_en_headaches#when_and_where_to_get_medical_help#1"
   reason_es: "Le molesta la luz junto con fiebre o dolor de cabeza: hay que valorarlo hoy"
   reason_en: "Light hurts along with fever or headache: this needs to be seen today"
   reason_fr: "La lumière le gêne avec de la fièvre ou un mal de tête : à voir aujourd'hui"
@@ -3681,6 +3727,7 @@ rules:
 - id: deep_wound
   level: urgent
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: "Herida profunda o que puede necesitar puntos: hay que verla hoy"
   reason_en: "A deep wound, or one that may need stitches: it should be seen today"
   reason_fr: "Plaie profonde ou qui peut nécessiter des points : à voir aujourd'hui"
@@ -3730,6 +3777,7 @@ rules:
 - id: cannot_swallow_drooling
   level: emergency
   source: seup_acudir_urgencias
+  source_chunk: "seup_acudir_urgencias#lead#1"
   reason_es: "No puede tragar y la saliva le cae: la vía aérea puede estar comprometida"
   reason_en: "Cannot swallow and is drooling: the airway may be compromised"
   reason_fr: "Ne peut pas avaler et bave : les voies respiratoires peuvent être menacées"
@@ -3813,7 +3861,8 @@ rules:
 
 - id: mastoiditis
   level: urgent
-  source: seup_acudir_urgencias
+  source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#does_the_child_have_an_ear_problem#1"
   reason_es: "Hinchazón o enrojecimiento detrás de la oreja, u oreja desplazada hacia delante: hay que verlo hoy"
   reason_en: "Swelling or redness behind the ear, or the ear pushed forward: it should be seen today"
   reason_fr: "Gonflement ou rougeur derrière l'?oreille, ou oreille poussée vers l'?avant : à voir aujourd'hui"
@@ -3926,6 +3975,7 @@ rules:
 - id: fluid_from_ear_or_nose
   level: emergency
   source: seup_tce
+  source_chunk: "seup_tce#cuando_puede_volver_a_la_guarderia_escue#1"
   reason_es: "Sangre o líquido claro por la nariz o los oídos después de un golpe en la cabeza"
   reason_en: "Blood or clear fluid from the nose or ears after a blow to the head"
   reason_fr: "Du sang ou un liquide clair par le nez ou les oreilles après un coup à la tête"
@@ -3990,7 +4040,11 @@ rules:
 
 - id: cold_extremities_with_fever
   level: urgent
-  source: seup_fiebre
+  # 7-oct-2026: era seup_fiebre, que no habla de manos frías; la respuesta no tenía de dónde
+  # sacarlas y no las mencionaba (es, fr, de, ru en el conjunto difícil). La del NHS sí: «has
+  # unusually cold hands and feet», entre los motivos para ir ya.
+  source: nhs_en_fever_in_children
+  source_chunk: "nhs_en_fever_in_children#don_t#1"
   reason_es: "Manos y pies fríos en un niño con fiebre: puede ser mala circulación, hay que verlo"
   reason_en: "Cold hands and feet in a child with fever: it may be poor circulation, get it checked"
   reason_fr: "Mains et pieds froids chez un enfant fiévreux : circulation possiblement mauvaise, à faire voir"
@@ -4092,6 +4146,7 @@ rules:
 - id: mammal_bite
   level: urgent
   source: who_en_rabies
+  source_chunk: "who_en_rabies#key_facts#1"
   reason_es: "Mordedura de un animal: hay que lavarla y que la vea un médico HOY, por la rabia y el tétanos"
   reason_en: "Animal bite: wash it and have a doctor see it TODAY — rabies and tetanus"
   reason_fr: "Morsure d'?animal : laver et faire voir par un médecin AUJOURD'HUI — rage et tétanos"
@@ -4174,6 +4229,7 @@ rules:
 - id: stridor
   level: emergency
   source: ecimed_pediatria_2016
+  source_chunk: "ecimed_pediatria_2016#manifestaciones_clinicas#18"
   reason_es: "Ruido al coger aire (estridor): la vía aérea está estrechada, hay que verlo ahora"
   reason_en: "Noisy breathing on breathing in (stridor): the airway is narrowed — get seen now"
   reason_fr: "Bruit à l'?inspiration (stridor) : les voies respiratoires sont rétrécies — maintenant"
@@ -4219,6 +4275,7 @@ rules:
 - id: intussusception
   level: emergency
   source: ecimed_pediatria_2016
+  source_chunk: "ecimed_pediatria_2016#234pediatria_diagnostico_y_tratamiento#1"
   reason_es: "Llanto a ratos encogiendo las piernas, o caca como jalea: puede ser una invaginación, urgencias ahora"
   reason_en: "Crying in waves while drawing the legs up, or jelly-like stool: possible intussusception — go now"
   reason_fr: "Pleurs par crises avec les jambes repliées, ou selles en gelée : invagination possible — maintenant"
@@ -4261,7 +4318,8 @@ rules:
 # que regurgita es lo más normal del mundo.
 - id: projectile_vomiting_infant
   level: urgent
-  source: ecimed_pediatria_2016
+  source: nhs_en_soothing_a_crying_baby
+  source_chunk: "nhs_en_soothing_a_crying_baby#crying_and_illness#1"
   reason_es: "Vómito a chorro después de cada toma en un bebé: hay que verlo hoy, puede ser el píloro"
   reason_en: "Projectile vomiting after every feed in a baby: needs to be seen today — it can be the pylorus"
   reason_fr: "Vomissements en jet après chaque tétée : à faire voir aujourd'hui, ce peut être le pylore"
@@ -4291,7 +4349,8 @@ rules:
 # cetoacidosis. Se exigen DOS de la tríada: beber mucho en verano, solo, no es nada.
 - id: new_diabetes_signs
   level: urgent
-  source: ecimed_pediatria_2016
+  source: mlp_en_003140
+  source_chunk: "mlp_en_003140#when_to_contact_a_medical_professional#1"
   reason_es: "Beber y orinar muchísimo, y perder peso: hay que descartar una diabetes hoy mismo"
   reason_en: "Drinking and passing urine a great deal, with weight loss: diabetes has to be ruled out today"
   reason_fr: "Boire et uriner énormément, avec perte de poids : il faut écarter un diabète aujourd'hui"
@@ -4381,7 +4440,8 @@ rules:
 # El asma que no responde al inhalador. El corpus tiene el salbutamol en 32 pasajes.
 - id: asthma_not_responding
   level: emergency
-  source: ecimed_pediatria_2016
+  source: nhs_en_asthma
+  source_chunk: "nhs_en_asthma#how_to_treat_an_asthma_attack#1"
   reason_es: "El inhalador no le hace efecto: una crisis de asma que no responde es urgencia ahora"
   reason_en: "The inhaler is not working: an asthma attack that does not respond is an emergency now"
   reason_fr: "L'?inhalateur ne fait pas effet : une crise d'?asthme qui ne répond pas est une urgence"
@@ -4416,7 +4476,8 @@ rules:
 # los cuerpos extraños en los ojos.
 - id: chemical_in_eye
   level: emergency
-  source: andalucia_cuidame_guia
+  source: nhs_en_eye_injuries
+  source_chunk: "nhs_en_eye_injuries#eye_injuries#1"
   reason_es: "Producto químico en el ojo: lávalo con agua abundante 15 minutos y ve a urgencias ahora"
   reason_en: "Chemical in the eye: rinse with plenty of water for 15 minutes and go to emergency now"
   reason_fr: "Produit chimique dans l'?œil : rincez à grande eau 15 minutes et allez aux urgences"
@@ -4712,7 +4773,8 @@ rules:
 
 - id: smoke_inhalation
   level: emergency
-  source: ecimed_pediatria_2016
+  source: mlp_en_003074
+  source_chunk: "mlp_en_003074#causes#1"
   reason_es: "Ha respirado humo de un incendio: la vía aérea puede hincharse horas después — urgencias ahora"
   reason_en: "Breathed in smoke from a fire: the airway can swell hours later — emergency now"
   reason_fr: "A respiré de la fumée d'?un incendie : les voies respiratoires peuvent gonfler — urgences"
@@ -4740,6 +4802,7 @@ rules:
 - id: bruising_and_pallor
   level: urgent
   source: puc_manual_pediatria
+  source_chunk: "puc_manual_pediatria#dolor_oseo#1"
   reason_es: "Moratones sin golpes con palidez o cansancio, o dolor de huesos que despierta de noche: hay que hacerle un análisis hoy"
   reason_en: "Bruises without knocks plus pallor or tiredness, or bone pain that wakes at night: blood tests today"
   reason_fr: "Bleus sans chocs avec pâleur ou fatigue, ou douleurs osseuses la nuit : bilan sanguin aujourd'hui"
@@ -4822,6 +4885,7 @@ rules:
 - id: sickle_cell_crisis
   level: urgent
   source: ecimed_pediatria_2016
+  source_chunk: "ecimed_pediatria_2016#manifestaciones_clinicas#109"
   reason_es: "Dolor fuerte en un niño con anemia falciforme: es una crisis, hay que tratarla hoy sin esperar"
   reason_en: "Severe pain in a child with sickle cell disease: this is a crisis — treat today, do not wait"
   reason_fr: "Douleur forte chez un enfant drépanocytaire : c'?est une crise, à traiter aujourd'hui"
@@ -4856,6 +4920,7 @@ rules:
 - id: newborn_cold
   level: urgent
   source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#treat_the_young_infant_and_counsel_the_m#1"
   reason_es: "Un recién nacido frío que no entra en calor: puede ser una infección, hay que verlo hoy"
   reason_en: "A newborn who is cold and will not warm up: it can be an infection — get seen today"
   reason_fr: "Un nouveau-né froid qui ne se réchauffe pas : ce peut être une infection — aujourd'hui"
@@ -4887,6 +4952,7 @@ rules:
 - id: unable_to_drink_or_feed
   level: emergency
   source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#use_all_boxes_that_match_the_child_s_sym#1"
   reason_es: "No PUEDE beber ni agarrarse al pecho: es uno de los signos de peligro del IMNCI, hay que verlo hoy"
   reason_en: "Unable to drink or breastfeed: it is one of the IMNCI danger signs — get seen today"
   reason_fr: "Incapable de boire ou de téter : c'?est un signe de danger de l'?IMNCI — aujourd'hui"
@@ -4939,6 +5005,7 @@ rules:
 - id: vomits_everything
   level: urgent
   source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#treat_management_of_the_sick_child_age_2#1"
   reason_es: "Vomita TODO lo que toma y no retiene nada: es signo de peligro, hay que verlo hoy"
   reason_en: "Vomits everything and keeps nothing down: it is a danger sign — get seen today"
   reason_fr: "Vomit tout et ne garde rien : c'?est un signe de danger — aujourd'hui"
@@ -5035,6 +5102,7 @@ rules:
 - id: visible_severe_wasting
   level: urgent
   source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#then_check_for_malnutrition#1"
   reason_es: "Adelgazamiento visible en un niño: es uno de los signos de peligro del IMNCI, hay que valorarlo hoy"
   reason_en: "Visible severe thinness in a child: it is one of the IMNCI danger signs — assess today"
   reason_fr: "Maigreur visible chez un enfant : c'?est un signe de danger de l'?IMNCI — à évaluer aujourd'hui"
@@ -5066,6 +5134,7 @@ rules:
 - id: bulging_fontanelle
   level: emergency
   source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#check_for_possible_bacterial_infection_j#1"
   reason_es: "Fontanela abombada: puede ser presión dentro de la cabeza, hay que verlo ahora"
   reason_en: "Bulging fontanelle: it can mean pressure inside the head — get seen now"
   reason_fr: "Fontanelle bombée : possible pression intracrânienne, à faire voir maintenant"
@@ -5099,6 +5168,7 @@ rules:
 - id: testicular_pain
   level: emergency
   source: ecimed_pediatria_2016
+  source_chunk: "ecimed_pediatria_2016#torsion_testicular#1"
   reason_es: "Dolor en un testículo: si es una torsión se opera en horas, hay que ir ahora"
   reason_en: "Pain in a testicle: a torsion has to be operated within hours — go now"
   reason_fr: "Douleur d'?un testicule : une torsion s'?opère en quelques heures — allez-y maintenant"
@@ -5144,6 +5214,7 @@ rules:
 - id: sudden_pallor
   level: urgent
   source: nhs_en_sudden_infant_death_syndrome_sids
+  source_chunk: "nhs_en_sudden_infant_death_syndrome_sids#find_out_more#1"
   reason_es: "Palidez repentina: puede ser mala circulación, hay que verlo hoy"
   reason_en: "Sudden pallor: it can mean poor circulation — get seen today"
   reason_fr: "Pâleur soudaine : circulation possiblement mauvaise, à faire voir aujourd'hui"
@@ -5198,6 +5269,7 @@ rules:
 - id: unusual_cry
   level: urgent
   source: nhs_en_colic
+  source_chunk: "nhs_en_colic#don_t#1"
   reason_es: "Un llanto agudo, débil o distinto del suyo no es llorar mucho: hay que verlo hoy"
   reason_en: "A weak, high-pitched or unusual cry is not the same as crying a lot — get seen today"
   reason_fr: "Un cri aigu, faible ou inhabituel n'?est pas « pleurer beaucoup » : à faire voir aujourd'hui"
@@ -5327,6 +5399,7 @@ rules:
 - id: lockjaw_spasms
   level: emergency
   source: who_en_tetanus
+  source_chunk: "who_en_tetanus#symptoms_and_diagnosis#1"
   reason_es: "No puede abrir la boca o tiene espasmos musculares: hay que ir a urgencias ahora"
   reason_en: "Cannot open the mouth, or muscle spasms: go to emergency now"
   reason_fr: "Ne peut pas ouvrir la bouche, ou spasmes musculaires : urgences tout de suite"
@@ -5370,6 +5443,7 @@ rules:
 - id: heatstroke
   level: urgent
   source: nhs_en_heat_exhaustion_heatstroke
+  source_chunk: "nhs_en_heat_exhaustion_heatstroke#things_you_can_do_to_cool_someone_down#1"
   reason_es: "Golpe de calor: enfríalo ya (sombra, agua, aire). Si está confuso, no suda, tiene mucha fiebre o está adormilado, llama a emergencias ahora"
   reason_en: "Heatstroke: cool them now (shade, water, air). If confused, not sweating, very hot or drowsy, call emergency services now"
   reason_fr: "Coup de chaleur : refroidissez-le tout de suite (ombre, eau, air). S'?il est confus, ne transpire plus, très chaud ou somnolent, appelez les urgences"
@@ -5434,6 +5508,7 @@ rules:
 - id: neonatal_jaundice
   level: urgent
   source: nhs_en_jaundice_in_babies
+  source_chunk: "nhs_en_jaundice_in_babies#jaundice_in_babies#1"
   reason_es: "Bebé con la piel o los ojos amarillos: cita urgente hoy. Si tiene menos de 24 horas, está adormilado, no come, tiene fiebre o no moja pañales, a urgencias ya"
   reason_en: "Baby with yellow skin or eyes: urgent appointment today. If under 24 hours old, very sleepy, not feeding, feverish or no wet nappies, go to emergency now"
   reason_fr: "Bébé à la peau ou aux yeux jaunes : consultation en urgence aujourd'hui. S'?il a moins de 24 heures, est très somnolent, ne tète pas, a de la fièvre ou ne mouille plus ses couches, urgences tout de suite"
@@ -5495,6 +5570,7 @@ rules:
 - id: severe_malaria
   level: emergency
   source: who_en_malaria
+  source_chunk: "who_en_malaria#lead#2"
   reason_es: Paludismo con signos de gravedad
   reason_en: Malaria with danger signs
   reason_fr: Paludisme avec signes de gravité
@@ -5524,6 +5600,7 @@ rules:
 - id: malaria_area_fever
   level: urgent
   source: who_en_malaria
+  source_chunk: "who_en_malaria#lead#1"
   reason_es: Fiebre en una zona donde hay paludismo
   reason_en: Fever in a malaria area
   reason_fr: Fièvre dans une zone de paludisme
@@ -5572,6 +5649,7 @@ rules:
 - id: fast_breathing_for_age
   level: urgent
   source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#check_for_possible_bacterial_infection_j#1"
   requires:
   - breathing_too_fast
   reason_es: Respira más deprisa de lo que corresponde a su edad
@@ -5598,6 +5676,7 @@ rules:
 - id: cholera_rice_water
   level: emergency
   source: who_en_cholera
+  source_chunk: "who_en_cholera#symptoms#1"
   reason_es: Diarrea muy líquida, como agua de arroz
   reason_en: Watery diarrhoea like rice water
   reason_fr: Diarrhée liquide en eau de riz
@@ -5631,6 +5710,7 @@ rules:
 - id: severe_dehydration_signs
   level: emergency
   source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#does_the_young_infant_have_diarrhoea#1"
   reason_es: Signos de deshidratación grave
   reason_en: Signs of severe dehydration
   reason_fr: Signes de déshydratation sévère
@@ -5656,6 +5736,7 @@ rules:
 - id: measles_complication
   level: urgent
   source: nhm_in_imnci_chart_booklet
+  source_chunk: "nhm_in_imnci_chart_booklet#facility_based_integrated_management_of#1"
   reason_es: Sarampión con complicación en los ojos o en la boca
   reason_en: Measles with eye or mouth complications
   reason_fr: Rougeole avec complication des yeux ou de la bouche
@@ -5683,6 +5764,7 @@ rules:
 - id: neonatal_tetanus
   level: emergency
   source: who_en_tetanus
+  source_chunk: "who_en_tetanus#symptoms_and_diagnosis#1"
   reason_es: Recién nacido que deja de mamar y se pone rígido
   reason_en: Newborn who stops feeding and becomes stiff
   reason_fr: Nouveau-né qui cesse de téter et devient raide
@@ -5714,6 +5796,7 @@ rules:
 - id: syncope_on_exertion
   level: urgent
   source: seup_sincope
+  source_chunk: "seup_sincope#cuando_debemos_consultar_en_un_servicio#1"
   reason_es: 'Desmayo haciendo ejercicio, o con palpitaciones o dolor en el pecho: que lo vean en urgencias hoy'
   reason_en: 'Fainting during exercise, or with palpitations or chest pain: get them seen in the emergency department today'
   reason_fr: 'Évanouissement pendant l''effort, ou avec palpitations ou douleur dans la poitrine : à faire examiner aux urgences aujourd''hui'

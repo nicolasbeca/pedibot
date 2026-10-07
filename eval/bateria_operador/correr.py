@@ -73,6 +73,8 @@ def motor() -> Engine:
     m.inyecta_alarma = INYECTA
     m.temperatura = float(os.environ.get("PEDIBOT_TEMP", "0.2"))
     m.suelo_relativo = float(os.environ.get("PEDIBOT_SUELO", "0"))
+    # 7-oct-2026: la búsqueda sólo en inglés delante, para el lector en inglés
+    m.retriever.ingles_primero = os.environ.get("PEDIBOT_INGLES", "0") == "1"
     return m
 
 

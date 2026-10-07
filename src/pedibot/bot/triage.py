@@ -295,6 +295,11 @@ class Rule:
     reasons_by_lang: dict[str, str] = field(default_factory=dict)
     patterns: list[re.Pattern[str]] = field(default_factory=list)
     requires: list[str] = field(default_factory=list)
+    #: 7-oct-2026: el pasaje que respalda el aviso, elegido y comprobado uno a uno. Antes se
+    #: inyectaba «el primer pasaje de alarma» de `source`, y en 75 de 97 reglas no decía lo que
+    #: dice el aviso (al estridor le llegaba la prevención de enfermedades genéticas del manual
+    #: cubano). Sin pasaje comprobado, no se inyecta nada.
+    source_chunk: str | None = None
 
 
 @dataclass
@@ -1133,6 +1138,7 @@ class Triage:
                     },
                     patterns=[re.compile(aplana(p), re.I) for p in r.get("patterns", [])],
                     requires=list(r.get("requires", [])),
+                    source_chunk=r.get("source_chunk"),
                 )
             )
         ctx = raw.get("context", {})

@@ -239,10 +239,17 @@ en:
   faint:
   - síncope
   - desmayo
-  head:
+  # 7-oct-2026: palabra entera. Por prefijo casaba «headache» y «heads», y «how do I know if my
+  # child has head lice» se ampliaba con «traumatismo craneal, golpe»: la SEUP del TCE delante.
+  "head$":
   - cabeza
   - traumatismo craneal
   - golpe
+  lice:
+  - head lice
+  - nits
+  - piojos
+  - liendres
   fell:
   - caída
   - golpe

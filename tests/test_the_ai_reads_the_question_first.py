@@ -206,6 +206,9 @@ def _motor(  # noqa: ANN202
         def red_flag_chunk(self, doc_id):  # noqa: ANN001, ANN202
             return None
 
+        def get(self, chunk_id):  # noqa: ANN001, ANN202
+            return None
+
     class Buscador:
         thin_langs: frozenset = frozenset()
         taxonomy = Taxonomy(config / "taxonomia.yaml")

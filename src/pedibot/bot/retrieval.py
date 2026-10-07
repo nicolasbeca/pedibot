@@ -1111,6 +1111,12 @@ class Retriever:
         #: Cómo se amplía con el LLM una pregunta en inglés: «es» (palabras en castellano, lo de
         #: siempre), «en» (palabras en inglés) o «none». Ver TRANSLATE_SYSTEM_EN.
         self.expansion_en = "en"
+        #: 7-oct-2026, MEDIDO Y NO ADOPTADO: para el lector en inglés, una búsqueda sólo en inglés
+        #: delante (`_ingles_delante`). Sin filtro cambiaba 393 de 918 búsquedas y subía páginas
+        #: que casan por «sleep» o «baby» (la muerte súbita a una caída de la cama). Con una
+        #: palabra del padre en el título, 230 cambios, pero «hit her nose and clear liquid» pasa
+        #: del traumatismo craneal al sangrado de nariz. Apagado hasta que se mida con el juez.
+        self.ingles_primero = False
 
     def expand(self, query: str, lang: str) -> list[str]:
         extra = self.synonyms.expand(query, lang)
@@ -1202,4 +1208,56 @@ class Retriever:
         # "se hace pis en la cama" — covered by nothing — scores 10 and matches 1 of 3. The ranges
         # overlap, and an absolute score is not even comparable between corpora (it silenced every
         # test fixture). Separating them needs semantic similarity, not another threshold.
+        if lang == "en" and self.ingles_primero:
+            good = self._ingles_delante(query, extra, topic, red_flag_boost, min_matched, good)
         return _own_language_first(_one_readable_up_front(good, lang), lang), extra
+
+    def _ingles_delante(
+        self,
+        query: str,
+        extra: list[str],
+        topic: str | None,
+        red_flag_boost: bool,
+        min_matched: int,
+        good: list[Hit],
+    ) -> list[Hit]:
+        """Lo que el lector en inglés puede leer, delante (7-oct-2026).
+
+        Los sinónimos del inglés son, casi todos, palabras en castellano: se escribieron cuando el
+        corpus era castellano. Con tres o más, el LLM ni se llama, y 79 de 1.043 preguntas en
+        inglés de las baterías no tenían un pasaje en inglés entre los tres primeros, con el NHS
+        al lado («my toddler swallowed a button battery» → la SEUP; «head lice» → traumatismo
+        craneal, por «head»). Una búsqueda aparte sólo en inglés: si trae al menos dos pasajes
+        que casen, van delante y el resto detrás.
+        """
+        propias = self.index.search(
+            query,
+            top_k=self.top_k,
+            extra_terms=extra,
+            red_flag_boost=red_flag_boost,
+            boost_topic=topic,
+            only_lang="en",
+        )
+        # Y que traten de lo preguntado: una palabra del padre en el título, como en
+        # `_own_language_second`. Sin esto subían el sonambulismo y la muerte súbita del lactante
+        # a «my son fell from the bed and now he wants to sleep».
+        negadas = {fold(w) for w in _NEGADA.findall(query.lower())}
+        suyas = [
+            x for x in query_terms(query, []) if fold(x) not in negadas and fold(x) not in _QUIEN_Y_COMO
+        ]
+
+        def de_lo_suyo(h: Hit) -> bool:
+            palabras = [fold(w) for w in _TOKEN.findall(h.chunk.doc_title.lower())]
+            return any(term_matches(x, palabras) for x in suyas)
+
+        propias = [
+            h
+            for h in propias
+            if h.matched_terms >= min_matched
+            and h.chunk.org not in PARA_PROFESIONALES
+            and de_lo_suyo(h)
+        ]
+        if len(propias) < 2:
+            return good
+        ids = {h.chunk.chunk_id for h in propias}
+        return [*propias, *[h for h in good if h.chunk.chunk_id not in ids]][: max(len(good), len(propias))]

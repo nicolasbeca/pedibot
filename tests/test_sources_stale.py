@@ -236,3 +236,53 @@ def test_the_site_name_never_counts_as_a_shared_subject() -> None:
 
     assert "medlineplus" not in _palabras("https://medlineplus.gov/bedwetting.html")
     assert "nhs" not in _palabras("https://www.nhs.uk/conditions/fever/")
+
+
+# 7-oct-2026: la página de la DGS fecha cada capítulo por separado. Los de adultos y esquemas de
+# recurso son de 2026, y el esquema general que citamos sigue siendo de 03/10/2025: el aviso
+# saltaba cada domingo. `edition_marker` dice qué frase fecha lo que citamos.
+MARCA = r"Esquema [Gg]eral [Rr]ecomendado\s*\(última\s+atualização\s+\d\d/\d\d/(20\d\d)\)"
+DGS = (
+    "Cap. 2 – PNV - Esquema geral recomendado \xa0 (última atualização 03/10/2025) "
+    "Cap. 4 – Vacinação de adultos (última atualização 29/07/2026) "
+    "Despacho n.º 2794/2026 que o adota como referencial técnico nacional do Programa"
+)
+
+
+def _con_marca(raiz: pathlib.Path) -> pathlib.Path:
+    f = raiz / "config" / "vaccines.yaml"
+    d = yaml.safe_load(f.read_text(encoding="utf-8"))
+    d["countries"]["PT"]["edition_marker"] = MARCA
+    f.write_text(yaml.safe_dump(d, allow_unicode=True), encoding="utf-8")
+    return raiz
+
+
+def test_sin_marca_los_otros_capitulos_hacian_saltar_el_aviso(catalogo) -> None:
+    raiz = catalogo({"PT": ("PNV 2025", "https://dgs.example/pnv")})
+    assert superseded(raiz, ahora=2026, traer=lambda u: pagina(DGS))
+
+
+def test_con_marca_solo_cuenta_lo_que_citamos(catalogo) -> None:
+    raiz = _con_marca(catalogo({"PT": ("PNV 2025", "https://dgs.example/pnv")}))
+    assert superseded(raiz, ahora=2026, traer=lambda u: pagina(DGS)) == []
+
+
+def test_con_marca_una_edicion_nueva_de_lo_citado_salta(catalogo) -> None:
+    raiz = _con_marca(catalogo({"PT": ("PNV 2025", "https://dgs.example/pnv")}))
+    nueva = DGS.replace("03/10/2025", "15/01/2026")
+    assert superseded(raiz, ahora=2026, traer=lambda u: pagina(nueva)) == [
+        ("calendario PT", 2025, 2026, "https://dgs.example/pnv")
+    ]
+
+
+def test_si_desaparece_la_frase_se_dice(catalogo) -> None:
+    raiz = _con_marca(catalogo({"PT": ("PNV 2025", "https://dgs.example/pnv")}))
+    ilegibles: list = []
+    assert superseded(raiz, ahora=2026, traer=lambda u: pagina("otra página"), unreadable=ilegibles) == []
+    assert ilegibles and "frase" in ilegibles[0][1]
+
+
+def test_la_entidad_html_no_esconde_la_frase(catalogo) -> None:
+    raiz = _con_marca(catalogo({"PT": ("PNV 2025", "https://dgs.example/pnv")}))
+    con_entidades = DGS.replace("última", "&uacute;ltima").replace("atualização", "atualiza&ccedil;&atilde;o")
+    assert superseded(raiz, ahora=2026, traer=lambda u: pagina(con_entidades)) == []

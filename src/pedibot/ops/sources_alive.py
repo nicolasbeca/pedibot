@@ -27,6 +27,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import pathlib
+import html
 import re
 import sqlite3
 from concurrent.futures import ThreadPoolExecutor
@@ -306,9 +307,19 @@ def superseded(
             ilegibles.append((f"calendario {code}", f"{len(texto)} bytes", url))
             continue
         visible = _texto_visible(texto)
-        candidatos = {
-            a for a in _años_de_edicion(visible) if nuestra < a <= año_actual + MARGEN_FUTURO
-        }
+        # 7-oct-2026: la página de la DGS fecha cada capítulo por separado, y los de adultos y
+        # esquemas de recurso son de 2026; el esquema general que citamos sigue siendo de
+        # 03/10/2025. Avisaba cada domingo. Con `edition_marker`, sólo cuenta el año de la frase
+        # que fecha lo que citamos; si esa frase desaparece, se dice que no se ha podido mirar.
+        marca = c.get("edition_marker")
+        if marca:
+            años = {int(m.group(1)) for m in re.finditer(marca, html.unescape(visible))}
+            if not años:
+                ilegibles.append((f"calendario {code}", "ya no está la frase que fecha la edición", url))
+                continue
+        else:
+            años = _años_de_edicion(visible)
+        candidatos = {a for a in años if nuestra < a <= año_actual + MARGEN_FUTURO}
         if candidatos:
             fuera.append((f"calendario {code}", nuestra, max(candidatos), url))
     return fuera
