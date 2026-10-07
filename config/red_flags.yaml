@@ -4255,6 +4255,11 @@ rules:
   - (tos perruna|tos de perro)[^.]{0,45}(ruido|estridor|pitido|le cuesta|silba)
   - stridor
   - (noisy|whistl\w*|harsh)[^.]{0,25}(breathing|breath)[^.]{0,30}(in|inwards|at rest|when he breathes in|when she breathes in)
+  # 7-oct-2026: «my baby makes a high pitched noise when breathing in» no encendía nada. Siempre
+  # con la respiración: un llanto agudo es otra regla (unusual_cry).
+  - (high[- ]?pitched|squeak\w*|crowing|raspy)[^.]{0,30}(noise|sound|whistle)?[^.]{0,20}(when|while|as) (he |she |they |the baby |my baby )?(breathes?|breathing) in
+  - (high[- ]?pitched|squeak\w*|crowing)[^.]{0,20}(breathing|breath)\b
+  - (noise|sound)[^.]{0,20}(when|while|as) (he |she |they |the baby |my baby )?(breathes?|breathing) in\b
   - (barking cough)[^.]{0,45}(noisy|stridor|struggl\w*|whistl\w*)
   - (bruit|sifflement)[^.]{0,25}(à l'?inspiration|quand il inspire|en inspirant)
   - (toux aboyante)[^.]{0,45}(bruit|stridor|siffle)

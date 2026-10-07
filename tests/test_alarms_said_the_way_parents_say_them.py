@@ -38,6 +38,10 @@ def triaje() -> Triage:
         ("mi hijo tiene fiebre y rigidez en el cuello", "emergency"),
         ("mi hija tiene fiebre y un sarpullido que no se blanquea al presionarlo", "emergency"),
         ("my son fell yesterday and now he is acting confused", "emergency"),
+        # 7-oct-2026: el estridor dicho como lo dice un padre inglés
+        ("my baby makes a high pitched noise when breathing in", "emergency"),
+        ("my toddler has squeaky breathing", "emergency"),
+        ("there is a sound when she breathes in", "emergency"),
         ("my son is unusually quiet and I cant get him to respond normally", "emergency"),
         ("mi hija se ha caido de un segundo piso pero parece estar bien", "urgent"),
         ("my child fell from a second story window but seems okay", "urgent"),
@@ -80,6 +84,8 @@ def test_salta(triaje: Triage, frase: str, nivel: str) -> None:
     "frase",
     [
         "my son has pink eye and woke up with his eye stuck shut",
+        "my son is breathing in a lot of dust at school",
+        "she makes a whistle sound with her nose",
         "mon fils a les yeux collés le matin et n'arrive pas à ouvrir les yeux",
         "can't keep the fever down with paracetamol",
         "je n'arrive pas à le faire dormir",
