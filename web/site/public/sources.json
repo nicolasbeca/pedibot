@@ -2236,6 +2236,84 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_acne",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Acne",
+  "year": 2026,
+  "lang": "en",
+  "topic": "piel",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/acne/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
+  "doc_id": "nhs_en_heavy_periods",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Heavy periods",
+  "year": 2024,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/heavy-periods/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
+  "doc_id": "nhs_en_cough",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Cough",
+  "year": 2025,
+  "lang": "en",
+  "topic": "respiratorio",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/symptoms/cough/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
+  "doc_id": "nhs_en_tetanus",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Tetanus",
+  "year": 2026,
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/tetanus/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
+  "doc_id": "nhs_en_drinks_and_cups_for_babies_and_young_children",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Drinks and cups for babies and young children",
+  "year": 2026,
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/baby/weaning-and-feeding/drinks-and-cups-for-babies-and-young-children/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
+  "doc_id": "nhs_en_broken_ankle",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Broken ankle",
+  "year": 2025,
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/broken-ankle/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
   "doc_id": "nhs_en_whooping_cough",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -6299,7 +6377,7 @@
   "year": null,
   "lang": "de",
   "topic": "piel",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Masern.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6312,7 +6390,7 @@
   "year": null,
   "lang": "de",
   "topic": "piel",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Varizellen.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6325,7 +6403,7 @@
   "year": null,
   "lang": "de",
   "topic": "piel",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Roeteln.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6338,7 +6416,7 @@
   "year": null,
   "lang": "de",
   "topic": "general",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Mumps.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6351,7 +6429,7 @@
   "year": null,
   "lang": "de",
   "topic": "respiratorio",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Pertussis.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6364,7 +6442,7 @@
   "year": null,
   "lang": "de",
   "topic": "general",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Streptococcus_pyogenes.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6377,7 +6455,7 @@
   "year": null,
   "lang": "de",
   "topic": "respiratorio",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_RSV.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6390,7 +6468,7 @@
   "year": null,
   "lang": "de",
   "topic": "respiratorio",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Influenza_saisonal.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6403,7 +6481,7 @@
   "year": null,
   "lang": "de",
   "topic": "digestivo",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Noroviren.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6416,7 +6494,7 @@
   "year": null,
   "lang": "de",
   "topic": "digestivo",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Rotaviren.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6429,7 +6507,7 @@
   "year": null,
   "lang": "de",
   "topic": "piel",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HFMK.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6442,7 +6520,7 @@
   "year": null,
   "lang": "de",
   "topic": "general",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Meningokokken.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6455,7 +6533,7 @@
   "year": null,
   "lang": "de",
   "topic": "respiratorio",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Pneumokokken.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6468,7 +6546,7 @@
   "year": null,
   "lang": "de",
   "topic": "piel",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Kopflausbefall.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6481,7 +6559,7 @@
   "year": null,
   "lang": "de",
   "topic": "piel",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Skabies.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6494,7 +6572,7 @@
   "year": null,
   "lang": "de",
   "topic": "digestivo",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Salmonellose.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6507,7 +6585,7 @@
   "year": null,
   "lang": "de",
   "topic": "digestivo",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Campylobacter.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6520,7 +6598,7 @@
   "year": null,
   "lang": "de",
   "topic": "digestivo",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_EHEC.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6533,7 +6611,7 @@
   "year": null,
   "lang": "de",
   "topic": "digestivo",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HepatitisA.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6546,7 +6624,7 @@
   "year": null,
   "lang": "de",
   "topic": "piel",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_LymeBorreliose.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6559,7 +6637,7 @@
   "year": null,
   "lang": "de",
   "topic": "general",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_FSME.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6572,7 +6650,7 @@
   "year": null,
   "lang": "de",
   "topic": "general",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Adenovirus_Konjunktivitis.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6585,7 +6663,7 @@
   "year": null,
   "lang": "de",
   "topic": "respiratorio",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Tuberkulose.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6598,7 +6676,7 @@
   "year": null,
   "lang": "de",
   "topic": "respiratorio",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_COVID-19.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6611,7 +6689,7 @@
   "year": null,
   "lang": "de",
   "topic": "general",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Poliomyelitis.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6624,7 +6702,7 @@
   "year": null,
   "lang": "de",
   "topic": "accidentes",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Tetanus.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6637,7 +6715,7 @@
   "year": null,
   "lang": "de",
   "topic": "respiratorio",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Diphtherie.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6650,7 +6728,7 @@
   "year": null,
   "lang": "de",
   "topic": "respiratorio",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_HaemophilusInfluenzae.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6663,7 +6741,7 @@
   "year": null,
   "lang": "de",
   "topic": "general",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Toxoplasmose.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"
@@ -6676,7 +6754,7 @@
   "year": null,
   "lang": "de",
   "topic": "general",
-  "doc_type": "hoja_padres",
+  "doc_type": "guia_clinica",
   "usage": "publico",
   "url": "https://www.rki.de/DE/Aktuelles/Publikationen/RKI-Ratgeber/Ratgeber/Ratgeber_Zytomegalievirus.html",
   "notes": "licence: Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de); fetched 2026-09-02"

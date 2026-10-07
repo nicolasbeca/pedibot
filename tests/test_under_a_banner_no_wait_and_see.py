@@ -28,6 +28,9 @@ def _rebaja(t: str) -> bool:
         "Vigílalo en casa durante las próximas horas.",
         "Suele ser leve y se puede tratar en casa.",
         "Follow up with your doctor in 5 days if it does not improve.",
+        # 7-oct-2026, las páginas del NHS
+        "You can usually look after them at home: give plenty of fluids.",
+        "Most sprains can be treated at home without seeing a doctor.",
     ],
 )
 def test_rebaja(texto: str) -> None:

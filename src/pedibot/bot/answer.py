@@ -1581,6 +1581,10 @@ _QUITA_URGENCIA = re.compile(
 _MANDA_A_CASA = re.compile(
     r"(watch|observe|monitor|keep) (him|her|them|your (child|baby)|the (child|baby))[^.]{0,25}at home"
     r"|(can|may) (usually |often )?be (managed|treated|looked after|cared for) at home"
+    # 7-oct-2026: con las páginas del NHS delante (la búsqueda en inglés ya no las entierra) el
+    # redactor copiaba «you can usually look after them at home» bajo el aviso de urgencias.
+    r"|look after (him|her|them|your (child|baby))[^.]{0,20}at home"
+    r"|treated at home without (seeing|needing) a"
     r"|(usually|often|mostly) (mild|not serious)|most cases are (mild|not serious)"
     r"|follow[ -]up[^.]{0,30}in \d+ days"
     r"|vig[íi]l(a|ar|alo|ala|adlo)[^.]{0,20}en casa|(se )?puede (tratar|cuidar|manejar)[^.]{0,15}en casa"

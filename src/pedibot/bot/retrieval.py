@@ -111,6 +111,15 @@ TRANSLATE_SYSTEM = (
     "keywords (nouns, symptoms, condition names). Output only the keywords separated by commas. "
     "No explanations."
 )
+#: 7-oct-2026: la traducción al castellano es del primer día, cuando el corpus era castellano. Hoy
+#: el inglés tiene tres veces más documentos, y a «my son has had a dry cough for three weeks» le
+#: añadía «tos seca, tos persistente, niño…»: los seis pasajes salían en castellano y portugués
+#: (la tuberculosis del Ministério da Saúde) y la página del NHS sobre la tos se quedaba fuera.
+TRANSLATE_SYSTEM_EN = (
+    "You turn a parent's question about a child's health into 5-10 English medical search "
+    "keywords (nouns, symptoms, condition names), as a paediatric leaflet would word them. "
+    "Output only the keywords separated by commas. No explanations."
+)
 
 
 #: Palabras que acompañan a una marca y no son la marca. Sin esto, una casilla futura del
@@ -1099,14 +1108,20 @@ class Retriever:
         # Languages holding less than a tenth of the corpus: measured from the index itself, so a
         # language stops being "thin" on its own once it has enough material.
         self.thin_langs = index.thin_languages()
+        #: Cómo se amplía con el LLM una pregunta en inglés: «es» (palabras en castellano, lo de
+        #: siempre), «en» (palabras en inglés) o «none». Ver TRANSLATE_SYSTEM_EN.
+        self.expansion_en = "en"
 
     def expand(self, query: str, lang: str) -> list[str]:
         extra = self.synonyms.expand(query, lang)
         if self.llm is not None and lang != "es" and len(extra) < 3:
+            if lang == "en" and self.expansion_en == "none":
+                return extra
+            sistema = (
+                TRANSLATE_SYSTEM_EN if lang == "en" and self.expansion_en == "en" else TRANSLATE_SYSTEM
+            )
             try:
-                out = self.llm.complete(
-                    TRANSLATE_SYSTEM, query, temperature=0.0, max_tokens=60
-                ).text
+                out = self.llm.complete(sistema, query, temperature=0.0, max_tokens=60).text
                 for kw in out.split(","):
                     kw = kw.strip().lower()
                     if kw and kw not in extra:

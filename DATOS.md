@@ -27,8 +27,8 @@ Contado el **2026-10-07**.
 | marcas de medicamento | **35** | config/drugs.yaml |
 | países con alguna marca | **57** | los `countries` de esas marcas |
 | nombres de vacuna traducidos | **51** | config/vaccine_names.yaml |
-| documentos del catálogo público | **713** | dataset/sources.json (CC0) |
-| documentos del catálogo interno | **716** | incluye los que no se pueden redistribuir |
+| documentos del catálogo público | **719** | dataset/sources.json (CC0) |
+| documentos del catálogo interno | **722** | incluye los que no se pueden redistribuir |
 | guías publicadas | **539** | web/content/*/*.md |
 | pruebas automáticas | **11.497** | `uv run pytest --collect-only` |
 | África: países con número | **54** | los 54 del continente |

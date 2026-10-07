@@ -93,6 +93,9 @@ ORGS = {
         "license": "Unveränderte Wiedergabe mit korrekter Quellenangabe erlaubt; kommerzielle Nutzung und Bearbeitung nur mit Zustimmung (Impressum, rki.de)",
         "evidence": "organismo_publico",
         "usage": "publico",
+        # 7-oct-2026: «RKI-Ratgeber für Ärztinnen und Ärzte». Puesto a mano en fuentes_web.yaml,
+        # se perdió la primera vez que este script volvió a escribir el fichero.
+        "doc_type": "guia_clinica",
     },
     # 23-sep-2026. La pregunta que más se repitió en la octava tanda —«vomitó después de tomar
     # el medicamento»— no la contesta ninguna hoja del corpus, y sí la contesta ésta, de los
@@ -401,6 +404,14 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ),
     ("nhs", "https://www.nhs.uk/conditions/pneumonia/", "respiratorio", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/flu/", "respiratorio", "en", ["todas"]),
+    # 7-oct-2026: los huecos que señaló el juez que compara con las guías (`gap`): preguntas de
+    # la batería con el reparto real que ninguna fuente cubría o cubría con otra enfermedad.
+    ("nhs", "https://www.nhs.uk/conditions/acne/", "piel", "en", ["adolescente"]),
+    ("nhs", "https://www.nhs.uk/conditions/heavy-periods/", "general", "en", ["adolescente"]),
+    ("nhs", "https://www.nhs.uk/symptoms/cough/", "respiratorio", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/tetanus/", "accidentes", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/baby/weaning-and-feeding/drinks-and-cups-for-babies-and-young-children/", "alimentacion", "en", ["lactante", "preescolar"]),
+    ("nhs", "https://www.nhs.uk/conditions/broken-ankle/", "accidentes", "en", ["escolar", "adolescente"]),
     ("nhs", "https://www.nhs.uk/conditions/whooping-cough/", "respiratorio", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/measles/", "piel", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/mumps/", "general", "en", ["escolar"]),
@@ -3189,7 +3200,7 @@ def main() -> int:
                     "year": year,
                     "lang": lang,
                     "topic": topic,
-                    "doc_type": "hoja_padres",
+                    "doc_type": org.get("doc_type", "hoja_padres"),
                     "evidence": org["evidence"],
                     "usage": org["usage"],
                     "age_groups": ages,

@@ -22,6 +22,7 @@ topics:
                  epilepsia, epilepsy, épilepsie, epilepsie, الصرع, मिर्गी, эпилепсия,
         बेहोश, "فقد الوعي", إغماء, "أغمي عليه", "مغمى عليه"]
   accidentes: [traumatismo, golpe, caída, caida, herida, quemadura, fractura, golpe de calor, atragantamiento, ahogamiento, primeros auxilios, head injury, burn, wound, choking, drowning, first aid, heat stroke,
+        ankle, sprain, twisted, "broken bone", "a cast", tetanus,
                  serpiente, snakebite, "snake bite", serpent, schlange, أفعى, ثعبان, साँप, змея, rabia$, rabies, rage$, tollwut, "داء الكلب", रेबीज, бешенство, كلب, عضة, "عضّ",
         ударил, ушиб, рану, "рана$", раны, зашив, швы, stitch, sutur, "puntos de sutura", genäht, nähen, verbrennung, verbrüh, "kopf gestoßen", gestoßen,
         "ماء مغلي", مغلي,
@@ -33,6 +34,7 @@ topics:
         "मिट्टी का तेल", केरोसिन, कीटनाशक, "चूहे मारने", الكاز, كيروسين, "سم الفئران"]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
   piel: [urticaria, exantema, sarpullido, eccema, dermatitis, ronchas, habones, manchas, rash, eczema, skin,
+        acne, acné, pimples, "spots on",
          sarampión, sarampion, measles, rougeole, masern, корь, кори, корью, حصبة, الحصبة, खसरा,
          varicela, chickenpox, varicelle, windpocken, ветрян, ветряной, ветрянка, جدري الماء, الجديري, جدري, चिकनपॉक्स,
          escarlatina, scarlet fever, scarlatine, scharlach, скарлатин, حمى قرمزية, الحمى القرمزية, स्कार्लेट,
@@ -62,6 +64,7 @@ topics:
         # 25-sep-2026, ver la nota del final del fichero
         mutismo, mutism, tricotilomanía, trichotillomania]
   alimentacion: [alimentación complementaria, lactancia, leche, papilla, biberón, biberon, destete, obesidad, sólidos, solidos, feeding, breastfeed, formula, weaning, obesity, solids,
+        drinks, cups, "how much water", "water to drink",
                  desnutrición, desnutricion, malnutrición, malnutricion, malnutrition, dénutri, denutri, mangelernährung, mangelernahrung,
                  недостаточное питание, неполноценное питание, سوء التغذية, कुपोषण, desnutrição, desnutricao,
                  anemia, anaemia, anémie, anämie, "فقر الدم", एनीमिया, анемия, ferropenia, obesidad, obesity, obésité, adipositas, السمنة, मोटापा, ожирение, رضاع, أرضع, هزال, نحيف,

@@ -2128,3 +2128,27 @@ pasaje no dice** (frases atribuidas a [n] que [n] no contiene, listas de alarma 
 pasajes de otra enfermedad, edades inventadas, sentidos invertidos). La lista de alarma del
 prompt v10 lo había empujado. **Regla:** un juez de un sistema que promete «sólo lo que dicen las
 guías» mide fidelidad a las guías; su opinión clínica, si la tiene, va a un campo aparte.
+
+## L254 · Bajar la página no basta, y el script borra lo puesto a mano (7-oct-2026)
+
+Para los huecos que marcó el juez (acné, agua para el bebé, tobillo, tétanos) se bajaron seis
+páginas del NHS. Dos sorpresas. Primera: las preguntas seguían sin encontrarlas, porque sin un
+tema del catálogo la búsqueda exige tres palabras que casen, y «acne», «ankle» o «drinks» no eran
+palabra de ningún tema; con ellas en `taxonomia.yaml` cambian 7 de 3.829 búsquedas, todas a mejor.
+Segunda: `fetch_web_sources.py` regenera `fuentes_web.yaml` entero, y devolvió los 30 Ratgeber del
+RKI a «hoja para padres»; el tipo estaba puesto a mano en el YAML y no en el script. Lo pilló
+`test_the_rki_is_for_doctors`. **Regla:** una fuente nueva se da por puesta cuando una pregunta
+de las baterías la encuentra, no cuando el fichero está en disco; y lo que se corrija en un
+fichero generado se corrige en su generador.
+
+## L255 · Las preguntas en inglés se ampliaban en castellano (7-oct-2026)
+
+La tos seca de tres semanas de un niño de EE. UU. se contestó con la tuberculosis del Ministério
+da Saúde. Causa: desde el primer commit, si los sinónimos traían menos de tres términos, el LLM
+añadía palabras clave EN CASTELLANO, porque el corpus era castellano. Hoy el inglés tiene 354
+documentos y el castellano 117. Medido sobre 1.043 preguntas en inglés de las baterías: sin un
+pasaje en inglés entre los tres primeros, 469 con castellano, 79 con palabras en inglés, 154 sin
+LLM (que además deja 326 sin nada). En el conjunto difícil, respuestas en inglés sin fuente en
+inglés 72 → 33, utilidad igual (16 suben, 15 bajan). Las páginas del NHS trajeron fórmulas de
+«cuídelo en casa» que el filtro bajo aviso no conocía; añadidas. **Regla:** las decisiones del
+primer día que dependen del tamaño del corpus se vuelven a medir cuando el corpus cambia.
