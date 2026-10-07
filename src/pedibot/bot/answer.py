@@ -37,6 +37,7 @@ from pedibot.bot.muac import reason as muac_reason
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.temperature import con_fahrenheit, lee_en_fahrenheit, nota_de_conversion
+from pedibot.bot.steam import nota_vapor
 from pedibot.bot.weight_units import con_kilos, nota_de_peso
 from pedibot.bot.triage import (
     ASISTENTE,
@@ -1956,6 +1957,11 @@ class Engine:
         peso = nota_de_peso(dicho, a.lang)
         if peso and a.verification not in _FRASES_FIJAS and not a.text.startswith(peso):
             a.text = f"{peso}.\n\n{a.text}"
+        # 7-oct-2026: el vapor, en que las guías no coinciden; se dice qué dice cada una
+        # (bot/steam.py).
+        vapor = nota_vapor(query, a.text, a.lang)
+        if vapor and a.verification not in _FRASES_FIJAS and vapor not in a.text:
+            a.text = f"{a.text}\n\n{vapor}"
         # 5-oct-2026: «(Alter: 4 Jahre) (Gewicht: 10 kg)» pasó sin comentario (consulta real).
         # Un peso fuera de la curva se dice: o es una errata, y las dosis van por peso, o hay que
         # ver a ese niño. La herramienta de crecimiento ya lo dice ella sola.
