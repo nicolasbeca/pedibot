@@ -131,3 +131,6 @@ página del NHS sigue retirada («This page has been removed», 200). **NHS 111 
 not copy, reproduce or redistribute any material… except in accordance with our content
 authorisation policy»: hace falta pedir permiso por correo, como a la Canadian Paediatric Society
 (escrita el 7-oct a info@cps.ca).
+**Escrito el 7-oct-2026** a NHS 111 Wales (Peci.Team@wales.nhs.uk, la dirección que su propia web da
+para consultas sobre sus páginas; su página de contacto sólo tiene formulario) pidiendo permiso
+para citar la página de los espasmos del sollozo.
