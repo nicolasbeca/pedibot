@@ -134,3 +134,10 @@ authorisation policy»: hace falta pedir permiso por correo, como a la Canadian 
 **Escrito el 7-oct-2026** a NHS 111 Wales (Peci.Team@wales.nhs.uk, la dirección que su propia web da
 para consultas sobre sus páginas; su página de contacto sólo tiene formulario) pidiendo permiso
 para citar la página de los espasmos del sollozo.
+
+**7-oct-2026 · St John Ambulance.** Las páginas de primeros auxilios del NHS (`/conditions/first-aid/`)
+redirigen a sja.org.uk, cuyo contenido es «All rights reserved… without the prior written
+permission of St John Ambulance National Headquarters». Cubrirían cuatro alarmas que hoy saltan
+sin pasaje (atragantamiento, ahogamiento, descarga eléctrica, objeto en nariz u oído). No publican
+correo de permisos; escrito a PR@sja.org.uk (su equipo de comunicación, el único correo de su
+centro de medios) pidiendo que lo pasen a la sede si no son ellos.
