@@ -735,7 +735,7 @@ class EmergencyNumbers:
         return default
 
 
-def load_prompt(version: str = "answer_v10") -> tuple[str, str]:
+def load_prompt(version: str = "answer_v12") -> tuple[str, str]:
     text = (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
     return version, text
 
@@ -1746,7 +1746,7 @@ class Engine:
         triage: Triage,
         llm: LLMProvider,
         numbers: EmergencyNumbers,
-        prompt_version: str = "answer_v10",
+        prompt_version: str = "answer_v12",
         drugs: DrugCatalog | None = None,
         vaccines: Vaccines | None = None,
         guides: GuideIndex | None = None,
@@ -1762,6 +1762,9 @@ class Engine:
         self.inyecta_alarma = True
         #: 5-oct-2026: la temperatura del redactor, para poder medir otra sin tocar producción.
         self.temperatura = 0.2
+        #: 5-oct-2026: fracción de la puntuación del primer pasaje por debajo de la cual un pasaje
+        #: no llega al redactor. 0 = apagado (experimento).
+        self.suelo_relativo = 0.0
         self.drugs = drugs
         self.vaccines = vaccines
         self.guides = guides
@@ -2722,6 +2725,11 @@ class Engine:
                 red_flag_boost=tr.is_alarm,
                 push=push,
             )
+            # 5-oct-2026, experimento (apagado: suelo_relativo = 0): fuera los pasajes que puntúan
+            # mucho menos que el primero, que suelen ser de un tema vecino.
+            if self.suelo_relativo and hits:
+                tope = max(h.score for h in hits)
+                hits = [h for h in hits if h.score >= tope * self.suelo_relativo] or hits
             hits = self._inject_rule_sources(tr, hits)
             hits = self._own_schedule(context_text, country, hits)
             hits = country_sources_first(hits, country, lang)

@@ -64,7 +64,7 @@ llm = provider_from_settings()
 
 
 #: 5-oct-2026: para medir un prompt o la inyección del «cuándo consultar» con y sin.
-PROMPT = os.environ.get("PEDIBOT_PROMPT", "answer_v10")
+PROMPT = os.environ.get("PEDIBOT_PROMPT", "answer_v12")
 INYECTA = os.environ.get("PEDIBOT_INYECTA", "1") == "1"
 
 
@@ -72,6 +72,7 @@ def motor() -> Engine:
     m = _motor()
     m.inyecta_alarma = INYECTA
     m.temperatura = float(os.environ.get("PEDIBOT_TEMP", "0.2"))
+    m.suelo_relativo = float(os.environ.get("PEDIBOT_SUELO", "0"))
     return m
 
 
