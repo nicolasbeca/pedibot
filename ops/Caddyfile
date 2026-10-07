@@ -23,14 +23,25 @@ pedibot.xyz {
 	# API + shared answers → FastAPI
 	@api path /api/* /a/*
 	handle @api {
-		reverse_proxy 127.0.0.1:8601
+		reverse_proxy 127.0.0.1:8601 {
+			# 7-oct-2026: ver el bloque del MCP.
+			lb_try_duration 10s
+			lb_try_interval 250ms
+		}
 	}
 
 	# Servidor MCP (2-oct-2026): las herramientas del agente para Claude, ChatGPT y demás
 	# asistentes. Servicio aparte de la API (ops/mcp_server.py, pedibot-mcp.service).
 	@mcp path /mcp
 	handle @mcp {
-		reverse_proxy 127.0.0.1:8603
+		# 7-oct-2026: Glama comprueba cada hora y una comprobación cayó 2 s después de que un
+		# despliegue reiniciara el servicio: 502 y «unhealthy» en el directorio. Mientras el
+		# servicio arranca (un segundo), Caddy reintenta en vez de contestar 502. Sólo reintenta
+		# si no consigue conectar, así que la petición no llega dos veces.
+		reverse_proxy 127.0.0.1:8603 {
+			lb_try_duration 10s
+			lb_try_interval 250ms
+		}
 	}
 
 	# Access log → journald (stderr); the weekly report counts page views from it

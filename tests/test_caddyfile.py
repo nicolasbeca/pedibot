@@ -89,3 +89,11 @@ def test_the_service_worker_is_never_cached_for_long() -> None:
     en llegar a quien ya lo tiene instalado."""
     assert "/sw.js" in CADDY, "el trabajador no tiene regla propia de caché"
     assert 'Cache-Control "no-cache, max-age=0"' in CADDY
+
+
+def test_a_restart_is_not_a_502() -> None:
+    """7-oct-2026: Glama marcó el MCP como «unhealthy» por un 502 en el segundo en que un
+    despliegue reiniciaba el servicio. El API y el MCP esperan a que arranque."""
+    for bloque in ("handle @api {", "handle @mcp {"):
+        trozo = CADDY[CADDY.index(bloque) : CADDY.index(bloque) + 600]
+        assert "lb_try_duration" in trozo, bloque
