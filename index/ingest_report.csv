@@ -1,723 +1,733 @@
 doc_id,file,status,pages,words,sections,chunks,red_flag,dose,detail
-seup_alteraciones_conductuales,1_alteraciones.pdf,error,0,0,0,0,0,0,file not found
-seup_anafilaxia,2_Anafilaxia.pdf,error,0,0,0,0,0,0,file not found
-seup_ansiedad,3_Ansiedad.pdf,error,0,0,0,0,0,0,file not found
-seup_bronquiolitis,4_Bronquiolitis.pdf,error,0,0,0,0,0,0,file not found
-seup_catarro,5_Catarro.pdf,error,0,0,0,0,0,0,file not found
-seup_cefalea,6_Cefalea.pdf,error,0,0,0,0,0,0,file not found
-seup_colico,7_Colico.pdf,error,0,0,0,0,0,0,file not found
-seup_autolesion,8_Autolesiva.pdf,error,0,0,0,0,0,0,file not found
-seup_conducta_suicida,9_Suicida.pdf,error,0,0,0,0,0,0,file not found
-seup_convulsion_febril,10_Convulsion.pdf,error,0,0,0,0,0,0,file not found
-seup_crisis_asma,11_Crisisasma.pdf,error,0,0,0,0,0,0,file not found
-seup_dolor_abdominal,12_Dolorabdominal.pdf,error,0,0,0,0,0,0,file not found
-seup_espasmos_sollozo,13_Sollozos.pdf,error,0,0,0,0,0,0,file not found
-seup_estrenimiento,14_Estreñimiento.pdf,error,0,0,0,0,0,0,file not found
-seup_fiebre,15_Fiebre.pdf,error,0,0,0,0,0,0,file not found
-seup_gastroenteritis,16_Gastroente.pdf,error,0,0,0,0,0,0,file not found
-seup_golpe_calor,17_Golpecalor.pdf,error,0,0,0,0,0,0,file not found
-seup_intoxicaciones,18_Intoxicacion.pdf,error,0,0,0,0,0,0,file not found
-seup_laringitis,19_Laringitis.pdf,error,0,0,0,0,0,0,file not found
-seup_neumonia,20_Neumonia.pdf,error,0,0,0,0,0,0,file not found
-seup_otitis,21_Otitis_media.pdf,error,0,0,0,0,0,0,file not found
-seup_sincope,22_Sincope.pdf,error,0,0,0,0,0,0,file not found
-seup_tca,23_GuiaConductaaliment.pdf,error,0,0,0,0,0,0,file not found
-seup_tce,24_Traumatismo-craneal_nueva.pdf,error,0,0,0,0,0,0,file not found
-seup_urticaria,25_Urticaria.pdf,error,0,0,0,0,0,0,file not found
-seup_sedoanalgesia,26_Procedimientos.pdf,error,0,0,0,0,0,0,file not found
-seup_vomitos,27_Vomitos.pdf,error,0,0,0,0,0,0,file not found
-seup_acudir_urgencias,acudir_urgencias.pdf,error,0,0,0,0,0,0,file not found
-seup_toxicos_8_no,8_ACCIONES_NO_2020.pdf,error,0,0,0,0,0,0,file not found
-ninojesus_primeros_auxilios,guia_primeros_auxilios.pdf,error,0,0,0,0,0,0,file not found
-aep_alimentacion_complementaria,recomendaciones_aep_sobre_alimentacio_n_complementaria.pdf,error,0,0,0,0,0,0,file not found
-who_complementary_feeding,Alimentacion_OMS.pdf,error,0,0,0,0,0,0,file not found
-who_physical_activity_under5,Sedentarismo_OMS.pdf,error,0,0,0,0,0,0,file not found
-who_autism_report,Autismo_OMS.pdf,error,0,0,0,0,0,0,file not found
-msan_calendario_vacunacion_2025,CalendarioVacunacion_Todalavida.pdf,error,0,0,0,0,0,0,file not found
-andalucia_cuidame_guia,3-cuidame_esp.pdf,error,0,0,0,0,0,0,file not found
-andalucia_cuidame_comienzo_vida,Guia_Cuidame_comienzo_vida.pdf,error,0,0,0,0,0,0,file not found
-aep_cuidados_recien_nacido,cuidados_recien_nacido.pdf,error,0,0,0,0,0,0,file not found
-oer_child_growth_development,ECE101_version1.2.pdf,error,0,0,0,0,0,0,file not found
-aap_obesity_cpg,Obesidad_AAP.pdf,error,0,0,0,0,0,0,file not found
-aap_adhd_cpg,Hiperactividad_AAP.pdf,error,0,0,0,0,0,0,file not found
-aap_down_syndrome,Sindromedown_AAP.pdf,error,0,0,0,0,0,0,file not found
-aap_neonatal_compendium,neonatal_AAP.pdf,error,0,0,0,0,0,0,file not found
-aepap_guia_dosificacion_3ed,Guia_dosificacion_3_edicion.pdf,error,0,0,0,0,0,0,file not found
-donostia_guia_antibiotico,Guia_Antibiotico_Pediatria.pdf,error,0,0,0,0,0,0,file not found
-puc_manual_pediatria,Manual-de-Pediatria.pdf,error,0,0,0,0,0,0,file not found
-ecimed_pediatria_2016,cub-ch-20-01-guideline-2016-esp-pediatria-completo.pdf,error,0,0,0,0,0,0,file not found
-consultas50_ap,las_50_principales_consultas_ocr.pdf,error,0,0,0,0,0,0,file not found
-consultas50_ap_escaneado,las_50_principales_consultas.pdf,error,0,0,0,0,0,0,file not found
-elsevier_dermatologia_pediatrica,dermatologia_pedi.pdf,error,0,0,0,0,0,0,file not found
-aemps_es_sueroral_hiposodico_prospecto,aemps_es_sueroral_hiposodico_prospecto.pdf,error,0,0,0,0,0,0,file not found
-nhm_in_imnci_chart_booklet,imnci_chart_booklet.pdf,error,0,0,0,0,0,0,file not found
-nhm_in_hbnc_guidelines,hbnc_operational_guidelines_2014.pdf,error,0,0,0,0,0,0,file not found
-nhsrc_in_asha_young_child_care,asha_home_based_care_young_child_en.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_dtap,vis_arabic_dtap.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_flu_inactive,vis_arabic_flu_inactive.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_hepatitis_a,vis_arabic_hepatitis_a.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_hepatitis_b,vis_arabic_hepatitis_b.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_hib,vis_arabic_hib.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_meningococcal,vis_arabic_meningococcal.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_mmr,vis_arabic_mmr.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_rotavirus,vis_arabic_rotavirus.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_ar_varicella,vis_arabic_varicella.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_dtap,vis_hindi_dtap.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_flu_inactive,vis_hindi_flu_inactive.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_hepatitis_a,vis_hindi_hepatitis_a.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_hepatitis_b,vis_hindi_hepatitis_b.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_hib,vis_hindi_hib.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_meningococcal,vis_hindi_meningococcal.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_mmr,vis_hindi_mmr.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_pcv13,vis_hindi_pcv13.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_rotavirus,vis_hindi_rotavirus.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_hi_varicella,vis_hindi_varicella.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_covid19,vis_swahili_covid-19.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_dtap,vis_swahili_dtap.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_flu_inactive,vis_swahili_flu_inactive.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_flu_live,vis_swahili_flu_live.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_hepatitis_a,vis_swahili_hepatitis_a.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_hepatitis_b,vis_swahili_hepatitis_b.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_hib,vis_swahili_hib.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_hpv,vis_swahili_hpv.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_iis_rsv,vis_swahili_iis_rsv.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_meningococcal,vis_swahili_meningococcal.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_meningococcal_b,vis_swahili_meningococcal_b.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_mmr,vis_swahili_mmr.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_mmrv,vis_swahili_mmrv.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_pcv,vis_swahili_pcv.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_polio_ipv,vis_swahili_polio_ipv.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_rabies,vis_swahili_rabies.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_rotavirus,vis_swahili_rotavirus.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_rsv,vis_swahili_rsv.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_td,vis_swahili_td.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_tdap,vis_swahili_tdap.pdf,error,0,0,0,0,0,0,file not found
-cdcvis_sw_varicella,vis_swahili_varicella.pdf,error,0,0,0,0,0,0,file not found
-cdc_en_growth_charts_overview,cdc_en_growth_charts_overview.pdf,error,0,0,0,0,0,0,file not found
-seneo_es_prematuro_tardio_crecimiento,seneo_es_prematuro_tardio_crecimiento.pdf,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_5791,vikaspedia_hi_5791.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_5799,vikaspedia_hi_5799.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_6820,vikaspedia_hi_6820.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_7113,vikaspedia_hi_7113.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_7115,vikaspedia_hi_7115.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_7255,vikaspedia_hi_7255.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_7354,vikaspedia_hi_7354.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_5583,vikaspedia_hi_5583.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_5585,vikaspedia_hi_5585.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_5143,vikaspedia_hi_5143.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_5224,vikaspedia_hi_5224.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_6545,vikaspedia_hi_6545.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_6546,vikaspedia_hi_6546.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_6614,vikaspedia_hi_6614.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_6764,vikaspedia_hi_6764.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_422713,vikaspedia_hi_422713.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_421783,vikaspedia_hi_421783.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_5785,vikaspedia_hi_5785.html,error,0,0,0,0,0,0,file not found
-vikaspedia_hi_5352,vikaspedia_hi_5352.html,error,0,0,0,0,0,0,file not found
-cavaep_es_cap_10,cavaep_es_cap_10.html,error,0,0,0,0,0,0,file not found
-nidirect_en_childhood_immunisation_programme,nidirect_en_childhood_immunisation_programme.html,error,0,0,0,0,0,0,file not found
-cdc_en_2_months,cdc_en_2_months.html,error,0,0,0,0,0,0,file not found
-cdc_en_cruise_ship,cdc_en_cruise_ship.html,error,0,0,0,0,0,0,file not found
-nhs_en_hpv_vaccine,nhs_en_hpv_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_6_in_1_vaccine,nhs_en_6_in_1_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_rotavirus_vaccine,nhs_en_rotavirus_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_menb_vaccine_for_children,nhs_en_menb_vaccine_for_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_pneumococcal_vaccine,nhs_en_pneumococcal_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_hepatitis_b_vaccine,nhs_en_hepatitis_b_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_mmrv_vaccine,nhs_en_mmrv_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_mmr_vaccine,nhs_en_mmr_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_4_in_1_preschool_booster_vaccine,nhs_en_4_in_1_preschool_booster_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_td_ipv_vaccine_3_in_1_teenage_booster,nhs_en_td_ipv_vaccine_3_in_1_teenage_booster.html,error,0,0,0,0,0,0,file not found
-nhs_en_menacwy_vaccine,nhs_en_menacwy_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_child_flu_vaccine,nhs_en_child_flu_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_bcg_vaccine_for_tuberculosis_tb,nhs_en_bcg_vaccine_for_tuberculosis_tb.html,error,0,0,0,0,0,0,file not found
-nhs_en_chickenpox_vaccine,nhs_en_chickenpox_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_polio,nhs_en_polio.html,error,0,0,0,0,0,0,file not found
-nhs_en_why_vaccination_is_safe_and_important,nhs_en_why_vaccination_is_safe_and_important.html,error,0,0,0,0,0,0,file not found
-nhs_en_how_to_take_your_babys_temperature,nhs_en_how_to_take_your_babys_temperature.html,error,0,0,0,0,0,0,file not found
-nhs_en_medicines,nhs_en_medicines.html,error,0,0,0,0,0,0,file not found
-nhs_en_having_covid_19_symptoms_or_vaccine,nhs_en_having_covid_19_symptoms_or_vaccine.html,error,0,0,0,0,0,0,file not found
-nhs_en_fever_in_children,nhs_en_fever_in_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_bronchiolitis,nhs_en_bronchiolitis.html,error,0,0,0,0,0,0,file not found
-nhs_en_croup,nhs_en_croup.html,error,0,0,0,0,0,0,file not found
-nhs_en_febrile_seizures,nhs_en_febrile_seizures.html,error,0,0,0,0,0,0,file not found
-nhs_en_head_injury_and_concussion,nhs_en_head_injury_and_concussion.html,error,0,0,0,0,0,0,file not found
-nhs_en_diarrhoea_and_vomiting,nhs_en_diarrhoea_and_vomiting.html,error,0,0,0,0,0,0,file not found
-nhs_en_constipation,nhs_en_constipation.html,error,0,0,0,0,0,0,file not found
-nhs_en_dehydration,nhs_en_dehydration.html,error,0,0,0,0,0,0,file not found
-nhs_en_norovirus,nhs_en_norovirus.html,error,0,0,0,0,0,0,file not found
-nhs_en_chickenpox,nhs_en_chickenpox.html,error,0,0,0,0,0,0,file not found
-nhs_en_hand_foot_mouth_disease,nhs_en_hand_foot_mouth_disease.html,error,0,0,0,0,0,0,file not found
-nhs_en_meningitis,nhs_en_meningitis.html,error,0,0,0,0,0,0,file not found
-nhs_en_sepsis,nhs_en_sepsis.html,error,0,0,0,0,0,0,file not found
-nhs_en_rashes_babies_and_children,nhs_en_rashes_babies_and_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_colic,nhs_en_colic.html,error,0,0,0,0,0,0,file not found
-nhs_en_reflux_in_babies,nhs_en_reflux_in_babies.html,error,0,0,0,0,0,0,file not found
-nhs_en_baby_teething_symptoms,nhs_en_baby_teething_symptoms.html,error,0,0,0,0,0,0,file not found
-nhs_en_ear_infections,nhs_en_ear_infections.html,error,0,0,0,0,0,0,file not found
-nhs_en_glue_ear,nhs_en_glue_ear.html,error,0,0,0,0,0,0,file not found
-nhs_en_sore_throat,nhs_en_sore_throat.html,error,0,0,0,0,0,0,file not found
-nhs_en_tonsillitis,nhs_en_tonsillitis.html,error,0,0,0,0,0,0,file not found
-nhs_en_scarlet_fever,nhs_en_scarlet_fever.html,error,0,0,0,0,0,0,file not found
-nhs_en_slapped_cheek_syndrome,nhs_en_slapped_cheek_syndrome.html,error,0,0,0,0,0,0,file not found
-nhs_en_impetigo,nhs_en_impetigo.html,error,0,0,0,0,0,0,file not found
-nhs_en_molluscum_contagiosum,nhs_en_molluscum_contagiosum.html,error,0,0,0,0,0,0,file not found
-nhs_en_roseola,nhs_en_roseola.html,error,0,0,0,0,0,0,file not found
-nhs_en_threadworms,nhs_en_threadworms.html,error,0,0,0,0,0,0,file not found
-nhs_en_urinary_tract_infections_utis,nhs_en_urinary_tract_infections_utis.html,error,0,0,0,0,0,0,file not found
-nhs_en_burns_and_scalds,nhs_en_burns_and_scalds.html,error,0,0,0,0,0,0,file not found
-nhs_en_poisoning,nhs_en_poisoning.html,error,0,0,0,0,0,0,file not found
-nhs_en_asthma,nhs_en_asthma.html,error,0,0,0,0,0,0,file not found
-nhs_en_respiratory_syncytial_virus_rsv,nhs_en_respiratory_syncytial_virus_rsv.html,error,0,0,0,0,0,0,file not found
-nhs_en_pneumonia,nhs_en_pneumonia.html,error,0,0,0,0,0,0,file not found
-nhs_en_flu,nhs_en_flu.html,error,0,0,0,0,0,0,file not found
-nhs_en_acne,nhs_en_acne.html,error,0,0,0,0,0,0,file not found
-nhs_en_heavy_periods,nhs_en_heavy_periods.html,error,0,0,0,0,0,0,file not found
-nhs_en_cough,nhs_en_cough.html,error,0,0,0,0,0,0,file not found
-nhs_en_tetanus,nhs_en_tetanus.html,error,0,0,0,0,0,0,file not found
-nhs_en_drinks_and_cups_for_babies_and_young_children,nhs_en_drinks_and_cups_for_babies_and_young_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_broken_ankle,nhs_en_broken_ankle.html,error,0,0,0,0,0,0,file not found
-nhs_en_whooping_cough,nhs_en_whooping_cough.html,error,0,0,0,0,0,0,file not found
-nhs_en_measles,nhs_en_measles.html,error,0,0,0,0,0,0,file not found
-nhs_en_mumps,nhs_en_mumps.html,error,0,0,0,0,0,0,file not found
-nhs_en_nhs_vaccinations_and_when_to_have_them,nhs_en_nhs_vaccinations_and_when_to_have_them.html,error,0,0,0,0,0,0,file not found
-nhs_en_babys_first_solid_foods,nhs_en_babys_first_solid_foods.html,error,0,0,0,0,0,0,file not found
-nhs_en_caring_for_a_newborn,nhs_en_caring_for_a_newborn.html,error,0,0,0,0,0,0,file not found
-nhs_en_how_to_change_your_babys_nappy,nhs_en_how_to_change_your_babys_nappy.html,error,0,0,0,0,0,0,file not found
-nhs_en_soothing_a_crying_baby,nhs_en_soothing_a_crying_baby.html,error,0,0,0,0,0,0,file not found
-nhs_en_helping_your_baby_to_sleep,nhs_en_helping_your_baby_to_sleep.html,error,0,0,0,0,0,0,file not found
-nhs_en_nappy_rash,nhs_en_nappy_rash.html,error,0,0,0,0,0,0,file not found
-nhs_en_washing_and_bathing_your_baby,nhs_en_washing_and_bathing_your_baby.html,error,0,0,0,0,0,0,file not found
-nhs_en_sudden_infant_death_syndrome_sids,nhs_en_sudden_infant_death_syndrome_sids.html,error,0,0,0,0,0,0,file not found
-nhs_en_about_amoxicillin,nhs_en_about_amoxicillin.html,error,0,0,0,0,0,0,file not found
-nhs_en_how_and_when_to_take_amoxicillin,nhs_en_how_and_when_to_take_amoxicillin.html,error,0,0,0,0,0,0,file not found
-nhs_en_side_effects_of_amoxicillin,nhs_en_side_effects_of_amoxicillin.html,error,0,0,0,0,0,0,file not found
-nhs_en_common_questions_about_amoxicillin,nhs_en_common_questions_about_amoxicillin.html,error,0,0,0,0,0,0,file not found
-fys_es_antitermicos_para_la_fiebre,fys_es_antitermicos_para_la_fiebre.html,error,0,0,0,0,0,0,file not found
-fys_es_por_que_hay_que_cumplir_los_tratamientos,fys_es_por_que_hay_que_cumplir_los_tratamientos.html,error,0,0,0,0,0,0,file not found
-fys_es_hay_que_leer_los_prospectos_de_los_medicamentos,fys_es_hay_que_leer_los_prospectos_de_los_medicamentos.html,error,0,0,0,0,0,0,file not found
-fys_es_cuales,fys_es_cuales.html,error,0,0,0,0,0,0,file not found
-nhs_en_anaphylaxis,nhs_en_anaphylaxis.html,error,0,0,0,0,0,0,file not found
-nhs_en_food_allergy,nhs_en_food_allergy.html,error,0,0,0,0,0,0,file not found
-nhs_en_hives,nhs_en_hives.html,error,0,0,0,0,0,0,file not found
-nhs_en_conjunctivitis,nhs_en_conjunctivitis.html,error,0,0,0,0,0,0,file not found
-nhs_en_nosebleed,nhs_en_nosebleed.html,error,0,0,0,0,0,0,file not found
-nhs_en_heat_exhaustion_heatstroke,nhs_en_heat_exhaustion_heatstroke.html,error,0,0,0,0,0,0,file not found
-nhs_en_sunburn,nhs_en_sunburn.html,error,0,0,0,0,0,0,file not found
-nhs_en_insect_bites_and_stings,nhs_en_insect_bites_and_stings.html,error,0,0,0,0,0,0,file not found
-nhs_en_headaches,nhs_en_headaches.html,error,0,0,0,0,0,0,file not found
-nhs_en_head_lice_and_nits,nhs_en_head_lice_and_nits.html,error,0,0,0,0,0,0,file not found
-nhs_en_bedwetting,nhs_en_bedwetting.html,error,0,0,0,0,0,0,file not found
-nhs_en_growing_pains,nhs_en_growing_pains.html,error,0,0,0,0,0,0,file not found
-nhs_en_cradle_cap,nhs_en_cradle_cap.html,error,0,0,0,0,0,0,file not found
-nhs_en_motion_sickness,nhs_en_motion_sickness.html,error,0,0,0,0,0,0,file not found
-nhs_en_hiccups,nhs_en_hiccups.html,error,0,0,0,0,0,0,file not found
-nhs_en_swollen_glands,nhs_en_swollen_glands.html,error,0,0,0,0,0,0,file not found
-nhs_en_fungal_nail_infection,nhs_en_fungal_nail_infection.html,error,0,0,0,0,0,0,file not found
-nhs_en_squint,nhs_en_squint.html,error,0,0,0,0,0,0,file not found
-nhs_en_lazy_eye,nhs_en_lazy_eye.html,error,0,0,0,0,0,0,file not found
-nhs_en_night_terrors,nhs_en_night_terrors.html,error,0,0,0,0,0,0,file not found
-nhs_en_oral_thrush_mouth_thrush,nhs_en_oral_thrush_mouth_thrush.html,error,0,0,0,0,0,0,file not found
-nhs_en_mouth_ulcers,nhs_en_mouth_ulcers.html,error,0,0,0,0,0,0,file not found
-nhs_en_tongue_tie,nhs_en_tongue_tie.html,error,0,0,0,0,0,0,file not found
-nhs_en_hernia,nhs_en_hernia.html,error,0,0,0,0,0,0,file not found
-nhs_en_umbilical_hernia,nhs_en_umbilical_hernia.html,error,0,0,0,0,0,0,file not found
-nhs_en_undescended_testicles,nhs_en_undescended_testicles.html,error,0,0,0,0,0,0,file not found
-nhs_en_birthmarks,nhs_en_birthmarks.html,error,0,0,0,0,0,0,file not found
-nhs_en_moles,nhs_en_moles.html,error,0,0,0,0,0,0,file not found
-nhs_en_teeth_grinding,nhs_en_teeth_grinding.html,error,0,0,0,0,0,0,file not found
-nhs_en_fainting,nhs_en_fainting.html,error,0,0,0,0,0,0,file not found
-nhs_en_heart_palpitations,nhs_en_heart_palpitations.html,error,0,0,0,0,0,0,file not found
-nhs_en_earache,nhs_en_earache.html,error,0,0,0,0,0,0,file not found
-nhs_en_hip_pain_children_irritable_hip,nhs_en_hip_pain_children_irritable_hip.html,error,0,0,0,0,0,0,file not found
-nhs_en_excessive_sweating_hyperhidrosis,nhs_en_excessive_sweating_hyperhidrosis.html,error,0,0,0,0,0,0,file not found
-nhs_en_flat_feet,nhs_en_flat_feet.html,error,0,0,0,0,0,0,file not found
-nhs_en_athletes_foot,nhs_en_athletes_foot.html,error,0,0,0,0,0,0,file not found
-nhs_en_warts_and_verrucas,nhs_en_warts_and_verrucas.html,error,0,0,0,0,0,0,file not found
-nhs_en_cellulitis,nhs_en_cellulitis.html,error,0,0,0,0,0,0,file not found
-nhs_en_kawasaki_disease,nhs_en_kawasaki_disease.html,error,0,0,0,0,0,0,file not found
-nhs_en_conditions_retinoblastoma_symptoms,nhs_en_conditions_retinoblastoma_symptoms.html,error,0,0,0,0,0,0,file not found
-nhs_en_conditions_type_1_diabetes_symptoms,nhs_en_conditions_type_1_diabetes_symptoms.html,error,0,0,0,0,0,0,file not found
-nhs_en_coeliac_disease,nhs_en_coeliac_disease.html,error,0,0,0,0,0,0,file not found
-nhs_en_bad_breath,nhs_en_bad_breath.html,error,0,0,0,0,0,0,file not found
-nhs_en_priapism_painful_erections,nhs_en_priapism_painful_erections.html,error,0,0,0,0,0,0,file not found
-nhs_en_vaginal_discharge,nhs_en_vaginal_discharge.html,error,0,0,0,0,0,0,file not found
-nhs_en_trichotillomania,nhs_en_trichotillomania.html,error,0,0,0,0,0,0,file not found
-nhs_en_selective_mutism,nhs_en_selective_mutism.html,error,0,0,0,0,0,0,file not found
-nhs_en_signs_in_children,nhs_en_signs_in_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_unintentional_weight_loss,nhs_en_unintentional_weight_loss.html,error,0,0,0,0,0,0,file not found
-nhs_en_dandruff,nhs_en_dandruff.html,error,0,0,0,0,0,0,file not found
-nhs_en_vitiligo,nhs_en_vitiligo.html,error,0,0,0,0,0,0,file not found
-nhs_en_scabies,nhs_en_scabies.html,error,0,0,0,0,0,0,file not found
-nhs_en_earwax_build_up,nhs_en_earwax_build_up.html,error,0,0,0,0,0,0,file not found
-nhs_en_glandular_fever,nhs_en_glandular_fever.html,error,0,0,0,0,0,0,file not found
-nhs_en_nail_problems,nhs_en_nail_problems.html,error,0,0,0,0,0,0,file not found
-nhs_en_neck_pain_and_stiff_neck,nhs_en_neck_pain_and_stiff_neck.html,error,0,0,0,0,0,0,file not found
-nhs_en_heel_pain,nhs_en_heel_pain.html,error,0,0,0,0,0,0,file not found
-nhs_en_tics,nhs_en_tics.html,error,0,0,0,0,0,0,file not found
-nhs_en_stammering,nhs_en_stammering.html,error,0,0,0,0,0,0,file not found
-nhs_en_balanitis,nhs_en_balanitis.html,error,0,0,0,0,0,0,file not found
-nhs_en_phimosis,nhs_en_phimosis.html,error,0,0,0,0,0,0,file not found
-nhs_en_gynaecomastia,nhs_en_gynaecomastia.html,error,0,0,0,0,0,0,file not found
-nhs_en_chest_pain,nhs_en_chest_pain.html,error,0,0,0,0,0,0,file not found
-nhs_en_chest_infection,nhs_en_chest_infection.html,error,0,0,0,0,0,0,file not found
-nhs_en_flat_head_syndrome_plagiocephaly_brachycephaly,nhs_en_flat_head_syndrome_plagiocephaly_brachycephaly.html,error,0,0,0,0,0,0,file not found
-nhs_en_craniosynostosis,nhs_en_craniosynostosis.html,error,0,0,0,0,0,0,file not found
-nhs_en_broken_finger,nhs_en_broken_finger.html,error,0,0,0,0,0,0,file not found
-nhs_en_broken_arm_or_wrist,nhs_en_broken_arm_or_wrist.html,error,0,0,0,0,0,0,file not found
-nhs_en_sprains_and_strains,nhs_en_sprains_and_strains.html,error,0,0,0,0,0,0,file not found
-nhs_en_eye_injuries,nhs_en_eye_injuries.html,error,0,0,0,0,0,0,file not found
-nhs_en_watering_eyes,nhs_en_watering_eyes.html,error,0,0,0,0,0,0,file not found
-nhs_en_hair_loss,nhs_en_hair_loss.html,error,0,0,0,0,0,0,file not found
-nhs_en_ringworm,nhs_en_ringworm.html,error,0,0,0,0,0,0,file not found
-nhs_en_foods_to_avoid_giving_babies_and_young_children,nhs_en_foods_to_avoid_giving_babies_and_young_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_paracetamol_for_children,nhs_en_paracetamol_for_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_ibuprofen_for_children,nhs_en_ibuprofen_for_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_sleepwalking,nhs_en_sleepwalking.html,error,0,0,0,0,0,0,file not found
-nhs_en_snoring,nhs_en_snoring.html,error,0,0,0,0,0,0,file not found
-nhs_en_sleep_apnoea,nhs_en_sleep_apnoea.html,error,0,0,0,0,0,0,file not found
-nhs_en_night_sweats,nhs_en_night_sweats.html,error,0,0,0,0,0,0,file not found
-nhs_en_temper_tantrums,nhs_en_temper_tantrums.html,error,0,0,0,0,0,0,file not found
-nhs_en_fussy_eaters,nhs_en_fussy_eaters.html,error,0,0,0,0,0,0,file not found
-mlp_en_000944,mlp_en_000944.html,error,0,0,0,0,0,0,file not found
-nhs_en_soiling_child_pooing_their_pants,nhs_en_soiling_child_pooing_their_pants.html,error,0,0,0,0,0,0,file not found
-nhs_en_anal_fissure,nhs_en_anal_fissure.html,error,0,0,0,0,0,0,file not found
-nhs_en_labial_fusion,nhs_en_labial_fusion.html,error,0,0,0,0,0,0,file not found
-nhs_en_short_sightedness,nhs_en_short_sightedness.html,error,0,0,0,0,0,0,file not found
-nhs_en_double_vision,nhs_en_double_vision.html,error,0,0,0,0,0,0,file not found
-nhs_en_eye_tests_for_children,nhs_en_eye_tests_for_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_toothache,nhs_en_toothache.html,error,0,0,0,0,0,0,file not found
-nhs_en_dental_abscess,nhs_en_dental_abscess.html,error,0,0,0,0,0,0,file not found
-nhs_en_taking_care_of_childrens_teeth,nhs_en_taking_care_of_childrens_teeth.html,error,0,0,0,0,0,0,file not found
-nhs_en_medicines_for_babies_and_children,nhs_en_medicines_for_babies_and_children.html,error,0,0,0,0,0,0,file not found
-nhs_en_antibiotics,nhs_en_antibiotics.html,error,0,0,0,0,0,0,file not found
-nhs_en_scoliosis,nhs_en_scoliosis.html,error,0,0,0,0,0,0,file not found
-nhs_en_developmental_dysplasia_of_the_hip,nhs_en_developmental_dysplasia_of_the_hip.html,error,0,0,0,0,0,0,file not found
-nhs_en_heat_rash_prickly_heat,nhs_en_heat_rash_prickly_heat.html,error,0,0,0,0,0,0,file not found
-mlp_en_000967,mlp_en_000967.html,error,0,0,0,0,0,0,file not found
-mlp_en_003074,mlp_en_003074.html,error,0,0,0,0,0,0,file not found
-mlp_en_001922,mlp_en_001922.html,error,0,0,0,0,0,0,file not found
-mlp_en_002211,mlp_en_002211.html,error,0,0,0,0,0,0,file not found
-mlp_en_001542,mlp_en_001542.html,error,0,0,0,0,0,0,file not found
-mlp_en_002004,mlp_en_002004.html,error,0,0,0,0,0,0,file not found
-mlp_en_002010,mlp_en_002010.html,error,0,0,0,0,0,0,file not found
-mlp_en_002013,mlp_en_002013.html,error,0,0,0,0,0,0,file not found
-mlp_en_002002,mlp_en_002002.html,error,0,0,0,0,0,0,file not found
-mlp_en_002011,mlp_en_002011.html,error,0,0,0,0,0,0,file not found
-mlp_en_002012,mlp_en_002012.html,error,0,0,0,0,0,0,file not found
-mlp_en_000809,mlp_en_000809.html,error,0,0,0,0,0,0,file not found
-mlp_en_003209,mlp_en_003209.html,error,0,0,0,0,0,0,file not found
-mlp_en_000897,mlp_en_000897.html,error,0,0,0,0,0,0,file not found
-mlp_en_003140,mlp_en_003140.html,error,0,0,0,0,0,0,file not found
-mlp_en_001430,mlp_en_001430.html,error,0,0,0,0,0,0,file not found
-mlp_en_001585,mlp_en_001585.html,error,0,0,0,0,0,0,file not found
-mlp_en_007213,mlp_en_007213.html,error,0,0,0,0,0,0,file not found
-mlp_en_003029,mlp_en_003029.html,error,0,0,0,0,0,0,file not found
-mlp_en_002084,mlp_en_002084.html,error,0,0,0,0,0,0,file not found
-mlp_en_002213,mlp_en_002213.html,error,0,0,0,0,0,0,file not found
-mlp_en_002208,mlp_en_002208.html,error,0,0,0,0,0,0,file not found
-mlp_en_002070,mlp_en_002070.html,error,0,0,0,0,0,0,file not found
-mlp_en_003084,mlp_en_003084.html,error,0,0,0,0,0,0,file not found
-mlp_en_002024,mlp_en_002024.html,error,0,0,0,0,0,0,file not found
-mlp_en_007594,mlp_en_007594.html,error,0,0,0,0,0,0,file not found
-mlp_en_007603,mlp_en_007603.html,error,0,0,0,0,0,0,file not found
-mlp_en_007608,mlp_en_007608.html,error,0,0,0,0,0,0,file not found
-mlp_en_007605,mlp_en_007605.html,error,0,0,0,0,0,0,file not found
-mlp_en_002427,mlp_en_002427.html,error,0,0,0,0,0,0,file not found
-mlp_en_001925,mlp_en_001925.html,error,0,0,0,0,0,0,file not found
-mlp_en_002447,mlp_en_002447.html,error,0,0,0,0,0,0,file not found
-nhs_en_stye,nhs_en_stye.html,error,0,0,0,0,0,0,file not found
-mlp_en_001006,mlp_en_001006.html,error,0,0,0,0,0,0,file not found
-mlp_en_001649,mlp_en_001649.html,error,0,0,0,0,0,0,file not found
-mlp_en_001538,mlp_en_001538.html,error,0,0,0,0,0,0,file not found
-nhs_en_vitamins_for_children,nhs_en_vitamins_for_children.html,error,0,0,0,0,0,0,file not found
-mlp_en_002405,mlp_en_002405.html,error,0,0,0,0,0,0,file not found
-mlp_en_002445,mlp_en_002445.html,error,0,0,0,0,0,0,file not found
-nhs_en_making_up_baby_formula,nhs_en_making_up_baby_formula.html,error,0,0,0,0,0,0,file not found
-mlp_en_fever,mlp_en_fever.html,error,0,0,0,0,0,0,file not found
-mlp_en_commoncold,mlp_en_commoncold.html,error,0,0,0,0,0,0,file not found
-mlp_en_cough,mlp_en_cough.html,error,0,0,0,0,0,0,file not found
-mlp_en_croup,mlp_en_croup.html,error,0,0,0,0,0,0,file not found
-mlp_en_gastroenteritis,mlp_en_gastroenteritis.html,error,0,0,0,0,0,0,file not found
-mlp_en_diarrhea,mlp_en_diarrhea.html,error,0,0,0,0,0,0,file not found
-mlp_en_dehydration,mlp_en_dehydration.html,error,0,0,0,0,0,0,file not found
-mlp_en_constipation,mlp_en_constipation.html,error,0,0,0,0,0,0,file not found
-mlp_en_seizures,mlp_en_seizures.html,error,0,0,0,0,0,0,file not found
-mlp_en_headinjuries,mlp_en_headinjuries.html,error,0,0,0,0,0,0,file not found
-mlp_en_concussion,mlp_en_concussion.html,error,0,0,0,0,0,0,file not found
-mlp_en_choking,mlp_en_choking.html,error,0,0,0,0,0,0,file not found
-mlp_en_burns,mlp_en_burns.html,error,0,0,0,0,0,0,file not found
-mlp_en_poisoning,mlp_en_poisoning.html,error,0,0,0,0,0,0,file not found
-mlp_en_infantandnewborncare,mlp_en_infantandnewborncare.html,error,0,0,0,0,0,0,file not found
-mlp_en_infantandnewbornnutrition,mlp_en_infantandnewbornnutrition.html,error,0,0,0,0,0,0,file not found
-mlp_en_breastfeeding,mlp_en_breastfeeding.html,error,0,0,0,0,0,0,file not found
-mlp_en_childdevelopment,mlp_en_childdevelopment.html,error,0,0,0,0,0,0,file not found
-mlp_en_childhoodvaccines,mlp_en_childhoodvaccines.html,error,0,0,0,0,0,0,file not found
-mlp_en_earinfections,mlp_en_earinfections.html,error,0,0,0,0,0,0,file not found
-mlp_en_sorethroat,mlp_en_sorethroat.html,error,0,0,0,0,0,0,file not found
-mlp_en_chickenpox,mlp_en_chickenpox.html,error,0,0,0,0,0,0,file not found
-mlp_en_rashes,mlp_en_rashes.html,error,0,0,0,0,0,0,file not found
-mlp_en_asthmainchildren,mlp_en_asthmainchildren.html,error,0,0,0,0,0,0,file not found
-mlp_en_toddlerhealth,mlp_en_toddlerhealth.html,error,0,0,0,0,0,0,file not found
-mlp_en_childsafety,mlp_en_childsafety.html,error,0,0,0,0,0,0,file not found
-mlp_en_heatillness,mlp_en_heatillness.html,error,0,0,0,0,0,0,file not found
-mlp_en_foodallergy,mlp_en_foodallergy.html,error,0,0,0,0,0,0,file not found
-mlp_en_allergy,mlp_en_allergy.html,error,0,0,0,0,0,0,file not found
-mlp_en_pneumonia,mlp_en_pneumonia.html,error,0,0,0,0,0,0,file not found
-mlp_en_whoopingcough,mlp_en_whoopingcough.html,error,0,0,0,0,0,0,file not found
-mlp_en_measles,mlp_en_measles.html,error,0,0,0,0,0,0,file not found
-mlp_en_meningitis,mlp_en_meningitis.html,error,0,0,0,0,0,0,file not found
-mlp_en_urinarytractinfections,mlp_en_urinarytractinfections.html,error,0,0,0,0,0,0,file not found
-mlp_en_eczema,mlp_en_eczema.html,error,0,0,0,0,0,0,file not found
-mlp_en_pinkeye,mlp_en_pinkeye.html,error,0,0,0,0,0,0,file not found
-mlp_en_headlice,mlp_en_headlice.html,error,0,0,0,0,0,0,file not found
-mlp_en_sunexposure,mlp_en_sunexposure.html,error,0,0,0,0,0,0,file not found
-mlp_en_insectbitesandstings,mlp_en_insectbitesandstings.html,error,0,0,0,0,0,0,file not found
-mlp_en_autismspectrumdisorder,mlp_en_autismspectrumdisorder.html,error,0,0,0,0,0,0,file not found
-mlp_en_teenmentalhealth,mlp_en_teenmentalhealth.html,error,0,0,0,0,0,0,file not found
-mlp_en_suicide,mlp_en_suicide.html,error,0,0,0,0,0,0,file not found
-mlp_en_selfharm,mlp_en_selfharm.html,error,0,0,0,0,0,0,file not found
-mlp_en_eatingdisorders,mlp_en_eatingdisorders.html,error,0,0,0,0,0,0,file not found
-mlp_en_childrenshealth,mlp_en_childrenshealth.html,error,0,0,0,0,0,0,file not found
-mlp_en_headache,mlp_en_headache.html,error,0,0,0,0,0,0,file not found
-mlp_en_fainting,mlp_en_fainting.html,error,0,0,0,0,0,0,file not found
-mlp_en_impetigo,mlp_en_impetigo.html,error,0,0,0,0,0,0,file not found
-mlp_en_pinworms,mlp_en_pinworms.html,error,0,0,0,0,0,0,file not found
-mlp_es_fever,mlp_es_fever.html,error,0,0,0,0,0,0,file not found
-mlp_es_allergy,mlp_es_allergy.html,error,0,0,0,0,0,0,file not found
-mlp_es_hayfever,mlp_es_hayfever.html,error,0,0,0,0,0,0,file not found
-mlp_es_foodallergy,mlp_es_foodallergy.html,error,0,0,0,0,0,0,file not found
-mlp_es_hives,mlp_es_hives.html,error,0,0,0,0,0,0,file not found
-mlp_es_drugreactions,mlp_es_drugreactions.html,error,0,0,0,0,0,0,file not found
-mlp_es_anaphylaxis,mlp_es_anaphylaxis.html,error,0,0,0,0,0,0,file not found
-mlp_es_eczema,mlp_es_eczema.html,error,0,0,0,0,0,0,file not found
-nhs_en_hay_fever,nhs_en_hay_fever.html,error,0,0,0,0,0,0,file not found
-nhs_en_allergies,nhs_en_allergies.html,error,0,0,0,0,0,0,file not found
-nhs_en_allergic_rhinitis,nhs_en_allergic_rhinitis.html,error,0,0,0,0,0,0,file not found
-nhs_en_atopic_eczema,nhs_en_atopic_eczema.html,error,0,0,0,0,0,0,file not found
-nhs_en_food_allergies_in_babies_and_young_children,nhs_en_food_allergies_in_babies_and_young_children.html,error,0,0,0,0,0,0,file not found
-mlp_es_commoncold,mlp_es_commoncold.html,error,0,0,0,0,0,0,file not found
-mlp_es_croup,mlp_es_croup.html,error,0,0,0,0,0,0,file not found
-mlp_es_gastroenteritis,mlp_es_gastroenteritis.html,error,0,0,0,0,0,0,file not found
-mlp_es_diarrhea,mlp_es_diarrhea.html,error,0,0,0,0,0,0,file not found
-mlp_es_dehydration,mlp_es_dehydration.html,error,0,0,0,0,0,0,file not found
-mlp_es_headinjuries,mlp_es_headinjuries.html,error,0,0,0,0,0,0,file not found
-mlp_es_choking,mlp_es_choking.html,error,0,0,0,0,0,0,file not found
-mlp_es_burns,mlp_es_burns.html,error,0,0,0,0,0,0,file not found
-mlp_es_poisoning,mlp_es_poisoning.html,error,0,0,0,0,0,0,file not found
-mlp_es_infantandnewborncare,mlp_es_infantandnewborncare.html,error,0,0,0,0,0,0,file not found
-mlp_es_infantandnewbornnutrition,mlp_es_infantandnewbornnutrition.html,error,0,0,0,0,0,0,file not found
-mlp_es_breastfeeding,mlp_es_breastfeeding.html,error,0,0,0,0,0,0,file not found
-mlp_es_childhoodvaccines,mlp_es_childhoodvaccines.html,error,0,0,0,0,0,0,file not found
-mlp_es_earinfections,mlp_es_earinfections.html,error,0,0,0,0,0,0,file not found
-mlp_es_chickenpox,mlp_es_chickenpox.html,error,0,0,0,0,0,0,file not found
-mlp_es_asthmainchildren,mlp_es_asthmainchildren.html,error,0,0,0,0,0,0,file not found
-mlp_es_toddlerhealth,mlp_es_toddlerhealth.html,error,0,0,0,0,0,0,file not found
-mlp_es_childsafety,mlp_es_childsafety.html,error,0,0,0,0,0,0,file not found
-mlp_es_heatillness,mlp_es_heatillness.html,error,0,0,0,0,0,0,file not found
-mlp_es_measles,mlp_es_measles.html,error,0,0,0,0,0,0,file not found
-mlp_es_meningitis,mlp_es_meningitis.html,error,0,0,0,0,0,0,file not found
-mlp_es_teenmentalhealth,mlp_es_teenmentalhealth.html,error,0,0,0,0,0,0,file not found
-mlp_es_childrenshealth,mlp_es_childrenshealth.html,error,0,0,0,0,0,0,file not found
-cdc_en_child_easyread,cdc_en_child_easyread.html,error,0,0,0,0,0,0,file not found
-cdc_en_rsv_about_index,cdc_en_rsv_about_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_rsv_infants_young_children_index,cdc_en_rsv_infants_young_children_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_hand_foot_mouth_about_index,cdc_en_hand_foot_mouth_about_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_children,cdc_en_children.html,error,0,0,0,0,0,0,file not found
-cdc_en_heads_up_about_index,cdc_en_heads_up_about_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_heads_up_signs_symptoms_index,cdc_en_heads_up_signs_symptoms_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_act_early_milestones_index,cdc_en_act_early_milestones_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_drowning_prevention_index,cdc_en_drowning_prevention_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_infant_toddler_nutrition_index,cdc_en_infant_toddler_nutrition_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_child_development_positive_parenting_tips_index,cdc_en_child_development_positive_parenting_tips_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_rotavirus_about_index,cdc_en_rotavirus_about_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_norovirus_about_index,cdc_en_norovirus_about_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_pertussis_about_index,cdc_en_pertussis_about_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_measles_signs_symptoms_index,cdc_en_measles_signs_symptoms_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_chickenpox_about_index,cdc_en_chickenpox_about_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_lice_about_index,cdc_en_lice_about_index.html,error,0,0,0,0,0,0,file not found
-cdc_en_ear_infection_about,cdc_en_ear_infection_about.html,error,0,0,0,0,0,0,file not found
-cdc_en_treatment,cdc_en_treatment.html,error,0,0,0,0,0,0,file not found
-who_en_infant_and_young_child_feeding,who_en_infant_and_young_child_feeding.html,error,0,0,0,0,0,0,file not found
-who_es_infant_and_young_child_feeding,who_es_infant_and_young_child_feeding.html,error,0,0,0,0,0,0,file not found
-who_en_diarrhoeal_disease,who_en_diarrhoeal_disease.html,error,0,0,0,0,0,0,file not found
-who_es_diarrhoeal_disease,who_es_diarrhoeal_disease.html,error,0,0,0,0,0,0,file not found
-who_en_pneumonia,who_en_pneumonia.html,error,0,0,0,0,0,0,file not found
-who_es_pneumonia,who_es_pneumonia.html,error,0,0,0,0,0,0,file not found
-who_en_measles,who_en_measles.html,error,0,0,0,0,0,0,file not found
-who_es_measles,who_es_measles.html,error,0,0,0,0,0,0,file not found
-who_en_immunization_coverage,who_en_immunization_coverage.html,error,0,0,0,0,0,0,file not found
-who_es_immunization_coverage,who_es_immunization_coverage.html,error,0,0,0,0,0,0,file not found
-who_en_malnutrition,who_en_malnutrition.html,error,0,0,0,0,0,0,file not found
-who_en_adolescent_mental_health,who_en_adolescent_mental_health.html,error,0,0,0,0,0,0,file not found
-who_es_adolescent_mental_health,who_es_adolescent_mental_health.html,error,0,0,0,0,0,0,file not found
-who_en_malaria,who_en_malaria.html,error,0,0,0,0,0,0,file not found
-who_en_poliomyelitis,who_en_poliomyelitis.html,error,0,0,0,0,0,0,file not found
-who_en_tuberculosis,who_en_tuberculosis.html,error,0,0,0,0,0,0,file not found
-who_es_tuberculosis,who_es_tuberculosis.html,error,0,0,0,0,0,0,file not found
-who_fr_tuberculosis,who_fr_tuberculosis.html,error,0,0,0,0,0,0,file not found
-who_en_hepatitis_b,who_en_hepatitis_b.html,error,0,0,0,0,0,0,file not found
-who_es_hepatitis_b,who_es_hepatitis_b.html,error,0,0,0,0,0,0,file not found
-who_fr_hepatitis_b,who_fr_hepatitis_b.html,error,0,0,0,0,0,0,file not found
-who_ar_measles,who_ar_measles.html,error,0,0,0,0,0,0,file not found
-who_ar_rubella,who_ar_rubella.html,error,0,0,0,0,0,0,file not found
-who_ar_pneumonia,who_ar_pneumonia.html,error,0,0,0,0,0,0,file not found
-who_ar_diarrhoeal_disease,who_ar_diarrhoeal_disease.html,error,0,0,0,0,0,0,file not found
-who_ar_infant_and_young_child_feeding,who_ar_infant_and_young_child_feeding.html,error,0,0,0,0,0,0,file not found
-who_ar_malnutrition,who_ar_malnutrition.html,error,0,0,0,0,0,0,file not found
-who_ar_adolescent_mental_health,who_ar_adolescent_mental_health.html,error,0,0,0,0,0,0,file not found
-who_ar_immunization_coverage,who_ar_immunization_coverage.html,error,0,0,0,0,0,0,file not found
-who_ar_meningitis,who_ar_meningitis.html,error,0,0,0,0,0,0,file not found
-who_ar_poliomyelitis,who_ar_poliomyelitis.html,error,0,0,0,0,0,0,file not found
-who_ar_hepatitis_b,who_ar_hepatitis_b.html,error,0,0,0,0,0,0,file not found
-who_ar_tuberculosis,who_ar_tuberculosis.html,error,0,0,0,0,0,0,file not found
-who_ar_drowning,who_ar_drowning.html,error,0,0,0,0,0,0,file not found
-who_ar_burns,who_ar_burns.html,error,0,0,0,0,0,0,file not found
-who_ar_falls,who_ar_falls.html,error,0,0,0,0,0,0,file not found
-who_ru_measles,who_ru_measles.html,error,0,0,0,0,0,0,file not found
-who_ru_rubella,who_ru_rubella.html,error,0,0,0,0,0,0,file not found
-who_ru_pneumonia,who_ru_pneumonia.html,error,0,0,0,0,0,0,file not found
-who_ru_diarrhoeal_disease,who_ru_diarrhoeal_disease.html,error,0,0,0,0,0,0,file not found
-who_ru_infant_and_young_child_feeding,who_ru_infant_and_young_child_feeding.html,error,0,0,0,0,0,0,file not found
-who_ru_malnutrition,who_ru_malnutrition.html,error,0,0,0,0,0,0,file not found
-who_ru_adolescent_mental_health,who_ru_adolescent_mental_health.html,error,0,0,0,0,0,0,file not found
-who_ru_immunization_coverage,who_ru_immunization_coverage.html,error,0,0,0,0,0,0,file not found
-who_ru_meningitis,who_ru_meningitis.html,error,0,0,0,0,0,0,file not found
-who_ru_poliomyelitis,who_ru_poliomyelitis.html,error,0,0,0,0,0,0,file not found
-who_ru_hepatitis_b,who_ru_hepatitis_b.html,error,0,0,0,0,0,0,file not found
-who_ru_tuberculosis,who_ru_tuberculosis.html,error,0,0,0,0,0,0,file not found
-who_ru_drowning,who_ru_drowning.html,error,0,0,0,0,0,0,file not found
-who_ru_burns,who_ru_burns.html,error,0,0,0,0,0,0,file not found
-who_ru_falls,who_ru_falls.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_masern,rki_de_ratgeber_masern.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_varizellen,rki_de_ratgeber_varizellen.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_roeteln,rki_de_ratgeber_roeteln.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_mumps,rki_de_ratgeber_mumps.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_pertussis,rki_de_ratgeber_pertussis.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_streptococcus_pyogenes,rki_de_ratgeber_streptococcus_pyogenes.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_rsv,rki_de_ratgeber_rsv.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_influenza_saisonal,rki_de_ratgeber_influenza_saisonal.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_noroviren,rki_de_ratgeber_noroviren.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_rotaviren,rki_de_ratgeber_rotaviren.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_hfmk,rki_de_ratgeber_hfmk.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_meningokokken,rki_de_ratgeber_meningokokken.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_pneumokokken,rki_de_ratgeber_pneumokokken.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_kopflausbefall,rki_de_ratgeber_kopflausbefall.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_skabies,rki_de_ratgeber_skabies.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_salmonellose,rki_de_ratgeber_salmonellose.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_campylobacter,rki_de_ratgeber_campylobacter.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_ehec,rki_de_ratgeber_ehec.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_hepatitisa,rki_de_ratgeber_hepatitisa.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_lymeborreliose,rki_de_ratgeber_lymeborreliose.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_fsme,rki_de_ratgeber_fsme.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_adenovirus_konjunktivitis,rki_de_ratgeber_adenovirus_konjunktivitis.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_tuberkulose,rki_de_ratgeber_tuberkulose.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_covid_19,rki_de_ratgeber_covid_19.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_poliomyelitis,rki_de_ratgeber_poliomyelitis.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_tetanus,rki_de_ratgeber_tetanus.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_diphtherie,rki_de_ratgeber_diphtherie.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_haemophilusinfluenzae,rki_de_ratgeber_haemophilusinfluenzae.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_toxoplasmose,rki_de_ratgeber_toxoplasmose.html,error,0,0,0,0,0,0,file not found
-rki_de_ratgeber_zytomegalievirus,rki_de_ratgeber_zytomegalievirus.html,error,0,0,0,0,0,0,file not found
-who_fr_measles,who_fr_measles.html,error,0,0,0,0,0,0,file not found
-who_fr_pneumonia,who_fr_pneumonia.html,error,0,0,0,0,0,0,file not found
-who_fr_diarrhoeal_disease,who_fr_diarrhoeal_disease.html,error,0,0,0,0,0,0,file not found
-who_fr_infant_and_young_child_feeding,who_fr_infant_and_young_child_feeding.html,error,0,0,0,0,0,0,file not found
-who_fr_adolescent_mental_health,who_fr_adolescent_mental_health.html,error,0,0,0,0,0,0,file not found
-who_fr_immunization_coverage,who_fr_immunization_coverage.html,error,0,0,0,0,0,0,file not found
-who_fr_malnutrition,who_fr_malnutrition.html,error,0,0,0,0,0,0,file not found
-canada_fr_virus_respiratoire_syncytial_vrs,canada_fr_virus_respiratoire_syncytial_vrs.html,error,0,0,0,0,0,0,file not found
-canada_fr_rougeole,canada_fr_rougeole.html,error,0,0,0,0,0,0,file not found
-canada_fr_coqueluche_toux_coquelucheuse,canada_fr_coqueluche_toux_coquelucheuse.html,error,0,0,0,0,0,0,file not found
-canada_fr_grippe_influenza,canada_fr_grippe_influenza.html,error,0,0,0,0,0,0,file not found
-canada_fr_oreillons,canada_fr_oreillons.html,error,0,0,0,0,0,0,file not found
-canada_fr_rubeole,canada_fr_rubeole.html,error,0,0,0,0,0,0,file not found
-canada_fr_maladie_lyme,canada_fr_maladie_lyme.html,error,0,0,0,0,0,0,file not found
-canada_fr_commotions_cerebrales_signes_symptomes,canada_fr_commotions_cerebrales_signes_symptomes.html,error,0,0,0,0,0,0,file not found
-canada_fr_securite_soleil,canada_fr_securite_soleil.html,error,0,0,0,0,0,0,file not found
-canada_fr_vaccinations_pour_enfants,canada_fr_vaccinations_pour_enfants.html,error,0,0,0,0,0,0,file not found
-canada_en_respiratory_syncytial_virus_rsv,canada_en_respiratory_syncytial_virus_rsv.html,error,0,0,0,0,0,0,file not found
-canada_en_measles,canada_en_measles.html,error,0,0,0,0,0,0,file not found
-canada_en_whooping_cough_pertussis,canada_en_whooping_cough_pertussis.html,error,0,0,0,0,0,0,file not found
-canada_en_flu_influenza,canada_en_flu_influenza.html,error,0,0,0,0,0,0,file not found
-canada_en_mumps,canada_en_mumps.html,error,0,0,0,0,0,0,file not found
-canada_en_rubella,canada_en_rubella.html,error,0,0,0,0,0,0,file not found
-canada_en_lyme_disease,canada_en_lyme_disease.html,error,0,0,0,0,0,0,file not found
-canada_en_concussion_sign_symptoms,canada_en_concussion_sign_symptoms.html,error,0,0,0,0,0,0,file not found
-canada_en_sun_safety,canada_en_sun_safety.html,error,0,0,0,0,0,0,file not found
-canada_en_vaccination_children,canada_en_vaccination_children.html,error,0,0,0,0,0,0,file not found
-who_ar_malaria,who_ar_malaria.html,error,0,0,0,0,0,0,file not found
-who_ar_dengue_and_severe_dengue,who_ar_dengue_and_severe_dengue.html,error,0,0,0,0,0,0,file not found
-who_ar_typhoid,who_ar_typhoid.html,error,0,0,0,0,0,0,file not found
-who_ar_hepatitis_a,who_ar_hepatitis_a.html,error,0,0,0,0,0,0,file not found
-who_ar_preterm_birth,who_ar_preterm_birth.html,error,0,0,0,0,0,0,file not found
-who_ar_anaemia,who_ar_anaemia.html,error,0,0,0,0,0,0,file not found
-who_ar_asthma,who_ar_asthma.html,error,0,0,0,0,0,0,file not found
-who_ar_epilepsy,who_ar_epilepsy.html,error,0,0,0,0,0,0,file not found
-who_ar_autism_spectrum_disorders,who_ar_autism_spectrum_disorders.html,error,0,0,0,0,0,0,file not found
-who_ar_sepsis,who_ar_sepsis.html,error,0,0,0,0,0,0,file not found
-who_ar_snakebite_envenoming,who_ar_snakebite_envenoming.html,error,0,0,0,0,0,0,file not found
-who_ar_road_traffic_injuries,who_ar_road_traffic_injuries.html,error,0,0,0,0,0,0,file not found
-who_ar_food_safety,who_ar_food_safety.html,error,0,0,0,0,0,0,file not found
-who_ar_drinking_water,who_ar_drinking_water.html,error,0,0,0,0,0,0,file not found
-who_ar_soil_transmitted_helminth_infections,who_ar_soil_transmitted_helminth_infections.html,error,0,0,0,0,0,0,file not found
-who_ar_scabies,who_ar_scabies.html,error,0,0,0,0,0,0,file not found
-who_ar_obesity_and_overweight,who_ar_obesity_and_overweight.html,error,0,0,0,0,0,0,file not found
-who_ar_influenza_seasonal,who_ar_influenza_seasonal.html,error,0,0,0,0,0,0,file not found
-who_ar_rabies,who_ar_rabies.html,error,0,0,0,0,0,0,file not found
-who_ar_tetanus,who_ar_tetanus.html,error,0,0,0,0,0,0,file not found
-who_ar_hiv_aids,who_ar_hiv_aids.html,error,0,0,0,0,0,0,file not found
-who_ar_diphtheria,who_ar_diphtheria.html,error,0,0,0,0,0,0,file not found
-who_ar_oral_health,who_ar_oral_health.html,error,0,0,0,0,0,0,file not found
-who_en_dengue_and_severe_dengue,who_en_dengue_and_severe_dengue.html,error,0,0,0,0,0,0,file not found
-who_en_typhoid,who_en_typhoid.html,error,0,0,0,0,0,0,file not found
-who_en_hepatitis_a,who_en_hepatitis_a.html,error,0,0,0,0,0,0,file not found
-who_en_preterm_birth,who_en_preterm_birth.html,error,0,0,0,0,0,0,file not found
-who_en_anaemia,who_en_anaemia.html,error,0,0,0,0,0,0,file not found
-who_en_asthma,who_en_asthma.html,error,0,0,0,0,0,0,file not found
-who_en_epilepsy,who_en_epilepsy.html,error,0,0,0,0,0,0,file not found
-who_en_autism_spectrum_disorders,who_en_autism_spectrum_disorders.html,error,0,0,0,0,0,0,file not found
-who_en_sepsis,who_en_sepsis.html,error,0,0,0,0,0,0,file not found
-who_en_snakebite_envenoming,who_en_snakebite_envenoming.html,error,0,0,0,0,0,0,file not found
-who_en_road_traffic_injuries,who_en_road_traffic_injuries.html,error,0,0,0,0,0,0,file not found
-who_en_food_safety,who_en_food_safety.html,error,0,0,0,0,0,0,file not found
-who_en_drinking_water,who_en_drinking_water.html,error,0,0,0,0,0,0,file not found
-who_en_soil_transmitted_helminth_infections,who_en_soil_transmitted_helminth_infections.html,error,0,0,0,0,0,0,file not found
-who_en_scabies,who_en_scabies.html,error,0,0,0,0,0,0,file not found
-who_en_obesity_and_overweight,who_en_obesity_and_overweight.html,error,0,0,0,0,0,0,file not found
-who_en_influenza_seasonal,who_en_influenza_seasonal.html,error,0,0,0,0,0,0,file not found
-who_en_rabies,who_en_rabies.html,error,0,0,0,0,0,0,file not found
-who_en_tetanus,who_en_tetanus.html,error,0,0,0,0,0,0,file not found
-who_en_hiv_aids,who_en_hiv_aids.html,error,0,0,0,0,0,0,file not found
-who_en_diphtheria,who_en_diphtheria.html,error,0,0,0,0,0,0,file not found
-who_en_oral_health,who_en_oral_health.html,error,0,0,0,0,0,0,file not found
-who_es_malaria,who_es_malaria.html,error,0,0,0,0,0,0,file not found
-who_es_dengue_and_severe_dengue,who_es_dengue_and_severe_dengue.html,error,0,0,0,0,0,0,file not found
-who_es_typhoid,who_es_typhoid.html,error,0,0,0,0,0,0,file not found
-who_es_hepatitis_a,who_es_hepatitis_a.html,error,0,0,0,0,0,0,file not found
-who_es_preterm_birth,who_es_preterm_birth.html,error,0,0,0,0,0,0,file not found
-who_es_anaemia,who_es_anaemia.html,error,0,0,0,0,0,0,file not found
-who_es_asthma,who_es_asthma.html,error,0,0,0,0,0,0,file not found
-who_es_epilepsy,who_es_epilepsy.html,error,0,0,0,0,0,0,file not found
-who_es_autism_spectrum_disorders,who_es_autism_spectrum_disorders.html,error,0,0,0,0,0,0,file not found
-who_es_sepsis,who_es_sepsis.html,error,0,0,0,0,0,0,file not found
-who_es_snakebite_envenoming,who_es_snakebite_envenoming.html,error,0,0,0,0,0,0,file not found
-who_es_road_traffic_injuries,who_es_road_traffic_injuries.html,error,0,0,0,0,0,0,file not found
-who_es_food_safety,who_es_food_safety.html,error,0,0,0,0,0,0,file not found
-who_es_drinking_water,who_es_drinking_water.html,error,0,0,0,0,0,0,file not found
-who_es_soil_transmitted_helminth_infections,who_es_soil_transmitted_helminth_infections.html,error,0,0,0,0,0,0,file not found
-who_es_scabies,who_es_scabies.html,error,0,0,0,0,0,0,file not found
-who_es_obesity_and_overweight,who_es_obesity_and_overweight.html,error,0,0,0,0,0,0,file not found
-who_es_influenza_seasonal,who_es_influenza_seasonal.html,error,0,0,0,0,0,0,file not found
-who_es_rabies,who_es_rabies.html,error,0,0,0,0,0,0,file not found
-who_es_tetanus,who_es_tetanus.html,error,0,0,0,0,0,0,file not found
-who_es_hiv_aids,who_es_hiv_aids.html,error,0,0,0,0,0,0,file not found
-who_es_diphtheria,who_es_diphtheria.html,error,0,0,0,0,0,0,file not found
-who_es_oral_health,who_es_oral_health.html,error,0,0,0,0,0,0,file not found
-who_fr_malaria,who_fr_malaria.html,error,0,0,0,0,0,0,file not found
-who_fr_dengue_and_severe_dengue,who_fr_dengue_and_severe_dengue.html,error,0,0,0,0,0,0,file not found
-who_fr_typhoid,who_fr_typhoid.html,error,0,0,0,0,0,0,file not found
-who_fr_hepatitis_a,who_fr_hepatitis_a.html,error,0,0,0,0,0,0,file not found
-who_fr_preterm_birth,who_fr_preterm_birth.html,error,0,0,0,0,0,0,file not found
-who_fr_anaemia,who_fr_anaemia.html,error,0,0,0,0,0,0,file not found
-who_fr_asthma,who_fr_asthma.html,error,0,0,0,0,0,0,file not found
-who_fr_epilepsy,who_fr_epilepsy.html,error,0,0,0,0,0,0,file not found
-who_fr_autism_spectrum_disorders,who_fr_autism_spectrum_disorders.html,error,0,0,0,0,0,0,file not found
-who_fr_sepsis,who_fr_sepsis.html,error,0,0,0,0,0,0,file not found
-who_fr_snakebite_envenoming,who_fr_snakebite_envenoming.html,error,0,0,0,0,0,0,file not found
-who_fr_road_traffic_injuries,who_fr_road_traffic_injuries.html,error,0,0,0,0,0,0,file not found
-who_fr_food_safety,who_fr_food_safety.html,error,0,0,0,0,0,0,file not found
-who_fr_drinking_water,who_fr_drinking_water.html,error,0,0,0,0,0,0,file not found
-who_fr_soil_transmitted_helminth_infections,who_fr_soil_transmitted_helminth_infections.html,error,0,0,0,0,0,0,file not found
-who_fr_scabies,who_fr_scabies.html,error,0,0,0,0,0,0,file not found
-who_fr_obesity_and_overweight,who_fr_obesity_and_overweight.html,error,0,0,0,0,0,0,file not found
-who_fr_influenza_seasonal,who_fr_influenza_seasonal.html,error,0,0,0,0,0,0,file not found
-who_fr_rabies,who_fr_rabies.html,error,0,0,0,0,0,0,file not found
-who_fr_tetanus,who_fr_tetanus.html,error,0,0,0,0,0,0,file not found
-who_fr_hiv_aids,who_fr_hiv_aids.html,error,0,0,0,0,0,0,file not found
-who_fr_diphtheria,who_fr_diphtheria.html,error,0,0,0,0,0,0,file not found
-who_fr_oral_health,who_fr_oral_health.html,error,0,0,0,0,0,0,file not found
-who_ru_malaria,who_ru_malaria.html,error,0,0,0,0,0,0,file not found
-who_ru_dengue_and_severe_dengue,who_ru_dengue_and_severe_dengue.html,error,0,0,0,0,0,0,file not found
-who_ru_typhoid,who_ru_typhoid.html,error,0,0,0,0,0,0,file not found
-who_ru_hepatitis_a,who_ru_hepatitis_a.html,error,0,0,0,0,0,0,file not found
-who_ru_preterm_birth,who_ru_preterm_birth.html,error,0,0,0,0,0,0,file not found
-who_ru_anaemia,who_ru_anaemia.html,error,0,0,0,0,0,0,file not found
-who_ru_asthma,who_ru_asthma.html,error,0,0,0,0,0,0,file not found
-who_ru_epilepsy,who_ru_epilepsy.html,error,0,0,0,0,0,0,file not found
-who_ru_autism_spectrum_disorders,who_ru_autism_spectrum_disorders.html,error,0,0,0,0,0,0,file not found
-who_ru_sepsis,who_ru_sepsis.html,error,0,0,0,0,0,0,file not found
-who_ru_snakebite_envenoming,who_ru_snakebite_envenoming.html,error,0,0,0,0,0,0,file not found
-who_ru_road_traffic_injuries,who_ru_road_traffic_injuries.html,error,0,0,0,0,0,0,file not found
-who_ru_food_safety,who_ru_food_safety.html,error,0,0,0,0,0,0,file not found
-who_ru_drinking_water,who_ru_drinking_water.html,error,0,0,0,0,0,0,file not found
-who_ru_soil_transmitted_helminth_infections,who_ru_soil_transmitted_helminth_infections.html,error,0,0,0,0,0,0,file not found
-who_ru_scabies,who_ru_scabies.html,error,0,0,0,0,0,0,file not found
-who_ru_obesity_and_overweight,who_ru_obesity_and_overweight.html,error,0,0,0,0,0,0,file not found
-who_ru_influenza_seasonal,who_ru_influenza_seasonal.html,error,0,0,0,0,0,0,file not found
-who_ru_rabies,who_ru_rabies.html,error,0,0,0,0,0,0,file not found
-who_ru_tetanus,who_ru_tetanus.html,error,0,0,0,0,0,0,file not found
-who_ru_hiv_aids,who_ru_hiv_aids.html,error,0,0,0,0,0,0,file not found
-who_ru_diphtheria,who_ru_diphtheria.html,error,0,0,0,0,0,0,file not found
-who_ru_oral_health,who_ru_oral_health.html,error,0,0,0,0,0,0,file not found
-govbr_pt_dengue,govbr_pt_dengue.html,error,0,0,0,0,0,0,file not found
-govbr_pt_sarampo,govbr_pt_sarampo.html,error,0,0,0,0,0,0,file not found
-govbr_pt_coqueluche,govbr_pt_coqueluche.html,error,0,0,0,0,0,0,file not found
-govbr_pt_caxumba,govbr_pt_caxumba.html,error,0,0,0,0,0,0,file not found
-govbr_pt_rubeola,govbr_pt_rubeola.html,error,0,0,0,0,0,0,file not found
-govbr_pt_tuberculose,govbr_pt_tuberculose.html,error,0,0,0,0,0,0,file not found
-govbr_pt_hepatites_virais,govbr_pt_hepatites_virais.html,error,0,0,0,0,0,0,file not found
-govbr_pt_raiva,govbr_pt_raiva.html,error,0,0,0,0,0,0,file not found
-govbr_pt_aedes_aegypti,govbr_pt_aedes_aegypti.html,error,0,0,0,0,0,0,file not found
-govbr_pt_chikungunya,govbr_pt_chikungunya.html,error,0,0,0,0,0,0,file not found
-govbr_pt_febre_amarela,govbr_pt_febre_amarela.html,error,0,0,0,0,0,0,file not found
-govbr_pt_meningite,govbr_pt_meningite.html,error,0,0,0,0,0,0,file not found
-govbr_pt_poliomielite,govbr_pt_poliomielite.html,error,0,0,0,0,0,0,file not found
-govbr_pt_vacinacao,govbr_pt_vacinacao.html,error,0,0,0,0,0,0,file not found
-who_ar_household_air_pollution_and_health,who_ar_household_air_pollution_and_health.html,error,0,0,0,0,0,0,file not found
-who_en_household_air_pollution_and_health,who_en_household_air_pollution_and_health.html,error,0,0,0,0,0,0,file not found
-who_es_household_air_pollution_and_health,who_es_household_air_pollution_and_health.html,error,0,0,0,0,0,0,file not found
-who_fr_household_air_pollution_and_health,who_fr_household_air_pollution_and_health.html,error,0,0,0,0,0,0,file not found
-who_ru_household_air_pollution_and_health,who_ru_household_air_pollution_and_health.html,error,0,0,0,0,0,0,file not found
-who_ar_sickle_cell_disease,who_ar_sickle_cell_disease.html,error,0,0,0,0,0,0,file not found
-who_en_sickle_cell_disease,who_en_sickle_cell_disease.html,error,0,0,0,0,0,0,file not found
-who_es_sickle_cell_disease,who_es_sickle_cell_disease.html,error,0,0,0,0,0,0,file not found
-who_fr_sickle_cell_disease,who_fr_sickle_cell_disease.html,error,0,0,0,0,0,0,file not found
-who_ru_sickle_cell_disease,who_ru_sickle_cell_disease.html,error,0,0,0,0,0,0,file not found
-who_ar_lead_poisoning_and_health,who_ar_lead_poisoning_and_health.html,error,0,0,0,0,0,0,file not found
-who_en_lead_poisoning_and_health,who_en_lead_poisoning_and_health.html,error,0,0,0,0,0,0,file not found
-who_es_lead_poisoning_and_health,who_es_lead_poisoning_and_health.html,error,0,0,0,0,0,0,file not found
-who_fr_lead_poisoning_and_health,who_fr_lead_poisoning_and_health.html,error,0,0,0,0,0,0,file not found
-who_ru_lead_poisoning_and_health,who_ru_lead_poisoning_and_health.html,error,0,0,0,0,0,0,file not found
-who_ar_deafness_and_hearing_loss,who_ar_deafness_and_hearing_loss.html,error,0,0,0,0,0,0,file not found
-who_en_deafness_and_hearing_loss,who_en_deafness_and_hearing_loss.html,error,0,0,0,0,0,0,file not found
-who_es_deafness_and_hearing_loss,who_es_deafness_and_hearing_loss.html,error,0,0,0,0,0,0,file not found
-who_fr_deafness_and_hearing_loss,who_fr_deafness_and_hearing_loss.html,error,0,0,0,0,0,0,file not found
-who_ru_deafness_and_hearing_loss,who_ru_deafness_and_hearing_loss.html,error,0,0,0,0,0,0,file not found
-who_ar_blindness_and_visual_impairment,who_ar_blindness_and_visual_impairment.html,error,0,0,0,0,0,0,file not found
-who_en_blindness_and_visual_impairment,who_en_blindness_and_visual_impairment.html,error,0,0,0,0,0,0,file not found
-who_es_blindness_and_visual_impairment,who_es_blindness_and_visual_impairment.html,error,0,0,0,0,0,0,file not found
-who_fr_blindness_and_visual_impairment,who_fr_blindness_and_visual_impairment.html,error,0,0,0,0,0,0,file not found
-who_ru_blindness_and_visual_impairment,who_ru_blindness_and_visual_impairment.html,error,0,0,0,0,0,0,file not found
-who_ar_tobacco,who_ar_tobacco.html,error,0,0,0,0,0,0,file not found
-who_en_tobacco,who_en_tobacco.html,error,0,0,0,0,0,0,file not found
-who_es_tobacco,who_es_tobacco.html,error,0,0,0,0,0,0,file not found
-who_fr_tobacco,who_fr_tobacco.html,error,0,0,0,0,0,0,file not found
-who_ru_tobacco,who_ru_tobacco.html,error,0,0,0,0,0,0,file not found
-who_ar_child_maltreatment,who_ar_child_maltreatment.html,error,0,0,0,0,0,0,file not found
-who_en_child_maltreatment,who_en_child_maltreatment.html,error,0,0,0,0,0,0,file not found
-who_es_child_maltreatment,who_es_child_maltreatment.html,error,0,0,0,0,0,0,file not found
-who_fr_child_maltreatment,who_fr_child_maltreatment.html,error,0,0,0,0,0,0,file not found
-who_ru_child_maltreatment,who_ru_child_maltreatment.html,error,0,0,0,0,0,0,file not found
-who_en_child_growth_standards,who_en_child_growth_standards.html,error,0,0,0,0,0,0,file not found
-who_es_child_growth_standards,who_es_child_growth_standards.html,error,0,0,0,0,0,0,file not found
-who_fr_child_growth_standards,who_fr_child_growth_standards.html,error,0,0,0,0,0,0,file not found
-who_ru_child_growth_standards,who_ru_child_growth_standards.html,error,0,0,0,0,0,0,file not found
-who_ar_child_growth_standards,who_ar_child_growth_standards.html,error,0,0,0,0,0,0,file not found
-nhs_en_baby_height_and_weight,nhs_en_baby_height_and_weight.html,error,0,0,0,0,0,0,file not found
-nhs_en_jaundice_in_babies,nhs_en_jaundice_in_babies.html,error,0,0,0,0,0,0,file not found
-who_en_cholera,who_en_cholera.html,error,0,0,0,0,0,0,file not found
-who_es_cholera,who_es_cholera.html,error,0,0,0,0,0,0,file not found
-who_fr_cholera,who_fr_cholera.html,error,0,0,0,0,0,0,file not found
-who_ar_cholera,who_ar_cholera.html,error,0,0,0,0,0,0,file not found
-who_ru_cholera,who_ru_cholera.html,error,0,0,0,0,0,0,file not found
+seup_alteraciones_conductuales,1_alteraciones.pdf,unchanged,0,0,0,0,0,0,
+seup_anafilaxia,2_Anafilaxia.pdf,unchanged,0,0,0,0,0,0,
+seup_ansiedad,3_Ansiedad.pdf,unchanged,0,0,0,0,0,0,
+seup_bronquiolitis,4_Bronquiolitis.pdf,unchanged,0,0,0,0,0,0,
+seup_catarro,5_Catarro.pdf,unchanged,0,0,0,0,0,0,
+seup_cefalea,6_Cefalea.pdf,unchanged,0,0,0,0,0,0,
+seup_colico,7_Colico.pdf,unchanged,0,0,0,0,0,0,
+seup_autolesion,8_Autolesiva.pdf,unchanged,0,0,0,0,0,0,
+seup_conducta_suicida,9_Suicida.pdf,unchanged,0,0,0,0,0,0,
+seup_convulsion_febril,10_Convulsion.pdf,unchanged,0,0,0,0,0,0,
+seup_crisis_asma,11_Crisisasma.pdf,unchanged,0,0,0,0,0,0,
+seup_dolor_abdominal,12_Dolorabdominal.pdf,unchanged,0,0,0,0,0,0,
+seup_espasmos_sollozo,13_Sollozos.pdf,unchanged,0,0,0,0,0,0,
+seup_estrenimiento,14_Estreñimiento.pdf,unchanged,0,0,0,0,0,0,
+seup_fiebre,15_Fiebre.pdf,unchanged,0,0,0,0,0,0,
+seup_gastroenteritis,16_Gastroente.pdf,unchanged,0,0,0,0,0,0,
+seup_golpe_calor,17_Golpecalor.pdf,unchanged,0,0,0,0,0,0,
+seup_intoxicaciones,18_Intoxicacion.pdf,unchanged,0,0,0,0,0,0,
+seup_laringitis,19_Laringitis.pdf,unchanged,0,0,0,0,0,0,
+seup_neumonia,20_Neumonia.pdf,unchanged,0,0,0,0,0,0,
+seup_otitis,21_Otitis_media.pdf,unchanged,0,0,0,0,0,0,
+seup_sincope,22_Sincope.pdf,unchanged,0,0,0,0,0,0,
+seup_tca,23_GuiaConductaaliment.pdf,unchanged,0,0,0,0,0,0,
+seup_tce,24_Traumatismo-craneal_nueva.pdf,unchanged,0,0,0,0,0,0,
+seup_urticaria,25_Urticaria.pdf,unchanged,0,0,0,0,0,0,
+seup_sedoanalgesia,26_Procedimientos.pdf,unchanged,0,0,0,0,0,0,
+seup_vomitos,27_Vomitos.pdf,unchanged,0,0,0,0,0,0,
+seup_acudir_urgencias,acudir_urgencias.pdf,unchanged,0,0,0,0,0,0,
+seup_toxicos_8_no,8_ACCIONES_NO_2020.pdf,unchanged,0,0,0,0,0,0,
+ninojesus_primeros_auxilios,guia_primeros_auxilios.pdf,unchanged,0,0,0,0,0,0,
+aep_alimentacion_complementaria,recomendaciones_aep_sobre_alimentacio_n_complementaria.pdf,unchanged,0,0,0,0,0,0,
+who_complementary_feeding,Alimentacion_OMS.pdf,unchanged,0,0,0,0,0,0,
+who_physical_activity_under5,Sedentarismo_OMS.pdf,unchanged,0,0,0,0,0,0,
+who_autism_report,Autismo_OMS.pdf,unchanged,0,0,0,0,0,0,
+msan_calendario_vacunacion_2025,CalendarioVacunacion_Todalavida.pdf,unchanged,0,0,0,0,0,0,
+andalucia_cuidame_guia,3-cuidame_esp.pdf,unchanged,0,0,0,0,0,0,
+andalucia_cuidame_comienzo_vida,Guia_Cuidame_comienzo_vida.pdf,unchanged,0,0,0,0,0,0,
+aep_cuidados_recien_nacido,cuidados_recien_nacido.pdf,unchanged,0,0,0,0,0,0,
+oer_child_growth_development,ECE101_version1.2.pdf,unchanged,0,0,0,0,0,0,
+aap_obesity_cpg,Obesidad_AAP.pdf,unchanged,0,0,0,0,0,0,
+aap_adhd_cpg,Hiperactividad_AAP.pdf,unchanged,0,0,0,0,0,0,
+aap_down_syndrome,Sindromedown_AAP.pdf,unchanged,0,0,0,0,0,0,
+aap_neonatal_compendium,neonatal_AAP.pdf,unchanged,0,0,0,0,0,0,
+aepap_guia_dosificacion_3ed,Guia_dosificacion_3_edicion.pdf,unchanged,0,0,0,0,0,0,
+donostia_guia_antibiotico,Guia_Antibiotico_Pediatria.pdf,unchanged,0,0,0,0,0,0,
+puc_manual_pediatria,Manual-de-Pediatria.pdf,unchanged,0,0,0,0,0,0,
+ecimed_pediatria_2016,cub-ch-20-01-guideline-2016-esp-pediatria-completo.pdf,unchanged,0,0,0,0,0,0,
+consultas50_ap,las_50_principales_consultas_ocr.pdf,skipped_excluded,0,0,0,0,0,0,
+consultas50_ap_escaneado,las_50_principales_consultas.pdf,skipped_excluded,0,0,0,0,0,0,
+elsevier_dermatologia_pediatrica,dermatologia_pedi.pdf,skipped_excluded,0,0,0,0,0,0,
+aemps_es_sueroral_hiposodico_prospecto,aemps_es_sueroral_hiposodico_prospecto.pdf,unchanged,0,0,0,0,0,0,
+nhm_in_imnci_chart_booklet,imnci_chart_booklet.pdf,unchanged,0,0,0,0,0,0,
+nhm_in_hbnc_guidelines,hbnc_operational_guidelines_2014.pdf,unchanged,0,0,0,0,0,0,
+nhsrc_in_asha_young_child_care,asha_home_based_care_young_child_en.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_dtap,vis_arabic_dtap.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_flu_inactive,vis_arabic_flu_inactive.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_hepatitis_a,vis_arabic_hepatitis_a.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_hepatitis_b,vis_arabic_hepatitis_b.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_hib,vis_arabic_hib.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_meningococcal,vis_arabic_meningococcal.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_mmr,vis_arabic_mmr.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_rotavirus,vis_arabic_rotavirus.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_ar_varicella,vis_arabic_varicella.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_dtap,vis_hindi_dtap.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_flu_inactive,vis_hindi_flu_inactive.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_hepatitis_a,vis_hindi_hepatitis_a.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_hepatitis_b,vis_hindi_hepatitis_b.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_hib,vis_hindi_hib.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_meningococcal,vis_hindi_meningococcal.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_mmr,vis_hindi_mmr.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_pcv13,vis_hindi_pcv13.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_rotavirus,vis_hindi_rotavirus.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_hi_varicella,vis_hindi_varicella.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_covid19,vis_swahili_covid-19.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_dtap,vis_swahili_dtap.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_flu_inactive,vis_swahili_flu_inactive.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_flu_live,vis_swahili_flu_live.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_hepatitis_a,vis_swahili_hepatitis_a.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_hepatitis_b,vis_swahili_hepatitis_b.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_hib,vis_swahili_hib.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_hpv,vis_swahili_hpv.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_iis_rsv,vis_swahili_iis_rsv.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_meningococcal,vis_swahili_meningococcal.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_meningococcal_b,vis_swahili_meningococcal_b.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_mmr,vis_swahili_mmr.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_mmrv,vis_swahili_mmrv.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_pcv,vis_swahili_pcv.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_polio_ipv,vis_swahili_polio_ipv.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_rabies,vis_swahili_rabies.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_rotavirus,vis_swahili_rotavirus.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_rsv,vis_swahili_rsv.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_td,vis_swahili_td.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_tdap,vis_swahili_tdap.pdf,unchanged,0,0,0,0,0,0,
+cdcvis_sw_varicella,vis_swahili_varicella.pdf,unchanged,0,0,0,0,0,0,
+cdc_en_growth_charts_overview,cdc_en_growth_charts_overview.pdf,unchanged,0,0,0,0,0,0,
+seneo_es_prematuro_tardio_crecimiento,seneo_es_prematuro_tardio_crecimiento.pdf,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_5791,vikaspedia_hi_5791.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_5799,vikaspedia_hi_5799.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_6820,vikaspedia_hi_6820.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_7113,vikaspedia_hi_7113.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_7115,vikaspedia_hi_7115.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_7255,vikaspedia_hi_7255.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_7354,vikaspedia_hi_7354.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_5583,vikaspedia_hi_5583.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_5585,vikaspedia_hi_5585.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_5143,vikaspedia_hi_5143.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_5224,vikaspedia_hi_5224.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_6545,vikaspedia_hi_6545.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_6546,vikaspedia_hi_6546.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_6614,vikaspedia_hi_6614.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_6764,vikaspedia_hi_6764.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_422713,vikaspedia_hi_422713.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_421783,vikaspedia_hi_421783.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_5785,vikaspedia_hi_5785.html,unchanged,0,0,0,0,0,0,
+vikaspedia_hi_5352,vikaspedia_hi_5352.html,unchanged,0,0,0,0,0,0,
+cavaep_es_cap_10,cavaep_es_cap_10.html,unchanged,0,0,0,0,0,0,
+nidirect_en_childhood_immunisation_programme,nidirect_en_childhood_immunisation_programme.html,unchanged,0,0,0,0,0,0,
+cdc_en_2_months,cdc_en_2_months.html,unchanged,0,0,0,0,0,0,
+cdc_en_cruise_ship,cdc_en_cruise_ship.html,unchanged,0,0,0,0,0,0,
+nhs_en_hpv_vaccine,nhs_en_hpv_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_6_in_1_vaccine,nhs_en_6_in_1_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_rotavirus_vaccine,nhs_en_rotavirus_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_menb_vaccine_for_children,nhs_en_menb_vaccine_for_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_pneumococcal_vaccine,nhs_en_pneumococcal_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_hepatitis_b_vaccine,nhs_en_hepatitis_b_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_mmrv_vaccine,nhs_en_mmrv_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_mmr_vaccine,nhs_en_mmr_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_4_in_1_preschool_booster_vaccine,nhs_en_4_in_1_preschool_booster_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_td_ipv_vaccine_3_in_1_teenage_booster,nhs_en_td_ipv_vaccine_3_in_1_teenage_booster.html,unchanged,0,0,0,0,0,0,
+nhs_en_menacwy_vaccine,nhs_en_menacwy_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_child_flu_vaccine,nhs_en_child_flu_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_bcg_vaccine_for_tuberculosis_tb,nhs_en_bcg_vaccine_for_tuberculosis_tb.html,unchanged,0,0,0,0,0,0,
+nhs_en_chickenpox_vaccine,nhs_en_chickenpox_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_polio,nhs_en_polio.html,unchanged,0,0,0,0,0,0,
+nhs_en_why_vaccination_is_safe_and_important,nhs_en_why_vaccination_is_safe_and_important.html,unchanged,0,0,0,0,0,0,
+nhs_en_how_to_take_your_babys_temperature,nhs_en_how_to_take_your_babys_temperature.html,unchanged,0,0,0,0,0,0,
+nhs_en_medicines,nhs_en_medicines.html,unchanged,0,0,0,0,0,0,
+nhs_en_having_covid_19_symptoms_or_vaccine,nhs_en_having_covid_19_symptoms_or_vaccine.html,unchanged,0,0,0,0,0,0,
+nhs_en_fever_in_children,nhs_en_fever_in_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_bronchiolitis,nhs_en_bronchiolitis.html,unchanged,0,0,0,0,0,0,
+nhs_en_croup,nhs_en_croup.html,unchanged,0,0,0,0,0,0,
+nhs_en_febrile_seizures,nhs_en_febrile_seizures.html,unchanged,0,0,0,0,0,0,
+nhs_en_head_injury_and_concussion,nhs_en_head_injury_and_concussion.html,unchanged,0,0,0,0,0,0,
+nhs_en_diarrhoea_and_vomiting,nhs_en_diarrhoea_and_vomiting.html,unchanged,0,0,0,0,0,0,
+nhs_en_constipation,nhs_en_constipation.html,unchanged,0,0,0,0,0,0,
+nhs_en_dehydration,nhs_en_dehydration.html,unchanged,0,0,0,0,0,0,
+nhs_en_norovirus,nhs_en_norovirus.html,unchanged,0,0,0,0,0,0,
+nhs_en_chickenpox,nhs_en_chickenpox.html,unchanged,0,0,0,0,0,0,
+nhs_en_hand_foot_mouth_disease,nhs_en_hand_foot_mouth_disease.html,unchanged,0,0,0,0,0,0,
+nhs_en_meningitis,nhs_en_meningitis.html,unchanged,0,0,0,0,0,0,
+nhs_en_sepsis,nhs_en_sepsis.html,unchanged,0,0,0,0,0,0,
+nhs_en_rashes_babies_and_children,nhs_en_rashes_babies_and_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_colic,nhs_en_colic.html,unchanged,0,0,0,0,0,0,
+nhs_en_reflux_in_babies,nhs_en_reflux_in_babies.html,unchanged,0,0,0,0,0,0,
+nhs_en_baby_teething_symptoms,nhs_en_baby_teething_symptoms.html,unchanged,0,0,0,0,0,0,
+nhs_en_ear_infections,nhs_en_ear_infections.html,unchanged,0,0,0,0,0,0,
+nhs_en_glue_ear,nhs_en_glue_ear.html,unchanged,0,0,0,0,0,0,
+nhs_en_sore_throat,nhs_en_sore_throat.html,unchanged,0,0,0,0,0,0,
+nhs_en_tonsillitis,nhs_en_tonsillitis.html,unchanged,0,0,0,0,0,0,
+nhs_en_scarlet_fever,nhs_en_scarlet_fever.html,unchanged,0,0,0,0,0,0,
+nhs_en_slapped_cheek_syndrome,nhs_en_slapped_cheek_syndrome.html,unchanged,0,0,0,0,0,0,
+nhs_en_impetigo,nhs_en_impetigo.html,unchanged,0,0,0,0,0,0,
+nhs_en_molluscum_contagiosum,nhs_en_molluscum_contagiosum.html,unchanged,0,0,0,0,0,0,
+nhs_en_roseola,nhs_en_roseola.html,unchanged,0,0,0,0,0,0,
+nhs_en_threadworms,nhs_en_threadworms.html,unchanged,0,0,0,0,0,0,
+nhs_en_urinary_tract_infections_utis,nhs_en_urinary_tract_infections_utis.html,unchanged,0,0,0,0,0,0,
+nhs_en_burns_and_scalds,nhs_en_burns_and_scalds.html,unchanged,0,0,0,0,0,0,
+nhs_en_poisoning,nhs_en_poisoning.html,unchanged,0,0,0,0,0,0,
+nhs_en_asthma,nhs_en_asthma.html,unchanged,0,0,0,0,0,0,
+nhs_en_respiratory_syncytial_virus_rsv,nhs_en_respiratory_syncytial_virus_rsv.html,unchanged,0,0,0,0,0,0,
+nhs_en_pneumonia,nhs_en_pneumonia.html,unchanged,0,0,0,0,0,0,
+nhs_en_flu,nhs_en_flu.html,unchanged,0,0,0,0,0,0,
+nhs_en_acne,nhs_en_acne.html,unchanged,0,0,0,0,0,0,
+nhs_en_heavy_periods,nhs_en_heavy_periods.html,unchanged,0,0,0,0,0,0,
+nhs_en_cough,nhs_en_cough.html,unchanged,0,0,0,0,0,0,
+nhs_en_tetanus,nhs_en_tetanus.html,unchanged,0,0,0,0,0,0,
+nhs_en_drinks_and_cups_for_babies_and_young_children,nhs_en_drinks_and_cups_for_babies_and_young_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_broken_ankle,nhs_en_broken_ankle.html,unchanged,0,0,0,0,0,0,
+nhs_en_carbon_monoxide_poisoning,nhs_en_carbon_monoxide_poisoning.html,unchanged,0,0,0,0,0,0,
+nhs_en_low_blood_sugar_hypoglycaemia,nhs_en_low_blood_sugar_hypoglycaemia.html,unchanged,0,0,0,0,0,0,
+nhs_en_blood_in_urine,nhs_en_blood_in_urine.html,ok,1,467,6,4,0,0,
+nhs_en_snake_bites,nhs_en_snake_bites.html,unchanged,0,0,0,0,0,0,
+nhs_en_pelvic_pain,nhs_en_pelvic_pain.html,unchanged,0,0,0,0,0,0,
+nhs_en_septic_arthritis,nhs_en_septic_arthritis.html,unchanged,0,0,0,0,0,0,
+nhs_en_osteomyelitis,nhs_en_osteomyelitis.html,unchanged,0,0,0,0,0,0,
+nhs_en_dengue,nhs_en_dengue.html,unchanged,0,0,0,0,0,0,
+nhs_en_oedema,nhs_en_oedema.html,unchanged,0,0,0,0,0,0,
+nhs_en_iron_deficiency_anaemia,nhs_en_iron_deficiency_anaemia.html,unchanged,0,0,0,0,0,0,
+nhs_en_whooping_cough,nhs_en_whooping_cough.html,unchanged,0,0,0,0,0,0,
+nhs_en_measles,nhs_en_measles.html,unchanged,0,0,0,0,0,0,
+nhs_en_mumps,nhs_en_mumps.html,unchanged,0,0,0,0,0,0,
+nhs_en_nhs_vaccinations_and_when_to_have_them,nhs_en_nhs_vaccinations_and_when_to_have_them.html,unchanged,0,0,0,0,0,0,
+nhs_en_babys_first_solid_foods,nhs_en_babys_first_solid_foods.html,unchanged,0,0,0,0,0,0,
+nhs_en_caring_for_a_newborn,nhs_en_caring_for_a_newborn.html,unchanged,0,0,0,0,0,0,
+nhs_en_how_to_change_your_babys_nappy,nhs_en_how_to_change_your_babys_nappy.html,unchanged,0,0,0,0,0,0,
+nhs_en_soothing_a_crying_baby,nhs_en_soothing_a_crying_baby.html,unchanged,0,0,0,0,0,0,
+nhs_en_helping_your_baby_to_sleep,nhs_en_helping_your_baby_to_sleep.html,unchanged,0,0,0,0,0,0,
+nhs_en_nappy_rash,nhs_en_nappy_rash.html,unchanged,0,0,0,0,0,0,
+nhs_en_washing_and_bathing_your_baby,nhs_en_washing_and_bathing_your_baby.html,unchanged,0,0,0,0,0,0,
+nhs_en_sudden_infant_death_syndrome_sids,nhs_en_sudden_infant_death_syndrome_sids.html,unchanged,0,0,0,0,0,0,
+nhs_en_about_amoxicillin,nhs_en_about_amoxicillin.html,unchanged,0,0,0,0,0,0,
+nhs_en_how_and_when_to_take_amoxicillin,nhs_en_how_and_when_to_take_amoxicillin.html,unchanged,0,0,0,0,0,0,
+nhs_en_side_effects_of_amoxicillin,nhs_en_side_effects_of_amoxicillin.html,unchanged,0,0,0,0,0,0,
+nhs_en_common_questions_about_amoxicillin,nhs_en_common_questions_about_amoxicillin.html,unchanged,0,0,0,0,0,0,
+fys_es_antitermicos_para_la_fiebre,fys_es_antitermicos_para_la_fiebre.html,unchanged,0,0,0,0,0,0,
+fys_es_por_que_hay_que_cumplir_los_tratamientos,fys_es_por_que_hay_que_cumplir_los_tratamientos.html,unchanged,0,0,0,0,0,0,
+fys_es_hay_que_leer_los_prospectos_de_los_medicamentos,fys_es_hay_que_leer_los_prospectos_de_los_medicamentos.html,unchanged,0,0,0,0,0,0,
+fys_es_cuales,fys_es_cuales.html,unchanged,0,0,0,0,0,0,
+nhs_en_anaphylaxis,nhs_en_anaphylaxis.html,unchanged,0,0,0,0,0,0,
+nhs_en_food_allergy,nhs_en_food_allergy.html,unchanged,0,0,0,0,0,0,
+nhs_en_hives,nhs_en_hives.html,unchanged,0,0,0,0,0,0,
+nhs_en_conjunctivitis,nhs_en_conjunctivitis.html,unchanged,0,0,0,0,0,0,
+nhs_en_nosebleed,nhs_en_nosebleed.html,unchanged,0,0,0,0,0,0,
+nhs_en_heat_exhaustion_heatstroke,nhs_en_heat_exhaustion_heatstroke.html,unchanged,0,0,0,0,0,0,
+nhs_en_sunburn,nhs_en_sunburn.html,unchanged,0,0,0,0,0,0,
+nhs_en_insect_bites_and_stings,nhs_en_insect_bites_and_stings.html,unchanged,0,0,0,0,0,0,
+nhs_en_headaches,nhs_en_headaches.html,unchanged,0,0,0,0,0,0,
+nhs_en_head_lice_and_nits,nhs_en_head_lice_and_nits.html,unchanged,0,0,0,0,0,0,
+nhs_en_bedwetting,nhs_en_bedwetting.html,unchanged,0,0,0,0,0,0,
+nhs_en_growing_pains,nhs_en_growing_pains.html,unchanged,0,0,0,0,0,0,
+nhs_en_cradle_cap,nhs_en_cradle_cap.html,unchanged,0,0,0,0,0,0,
+nhs_en_motion_sickness,nhs_en_motion_sickness.html,unchanged,0,0,0,0,0,0,
+nhs_en_hiccups,nhs_en_hiccups.html,unchanged,0,0,0,0,0,0,
+nhs_en_swollen_glands,nhs_en_swollen_glands.html,unchanged,0,0,0,0,0,0,
+nhs_en_fungal_nail_infection,nhs_en_fungal_nail_infection.html,unchanged,0,0,0,0,0,0,
+nhs_en_squint,nhs_en_squint.html,unchanged,0,0,0,0,0,0,
+nhs_en_lazy_eye,nhs_en_lazy_eye.html,unchanged,0,0,0,0,0,0,
+nhs_en_night_terrors,nhs_en_night_terrors.html,unchanged,0,0,0,0,0,0,
+nhs_en_oral_thrush_mouth_thrush,nhs_en_oral_thrush_mouth_thrush.html,unchanged,0,0,0,0,0,0,
+nhs_en_mouth_ulcers,nhs_en_mouth_ulcers.html,unchanged,0,0,0,0,0,0,
+nhs_en_tongue_tie,nhs_en_tongue_tie.html,unchanged,0,0,0,0,0,0,
+nhs_en_hernia,nhs_en_hernia.html,unchanged,0,0,0,0,0,0,
+nhs_en_umbilical_hernia,nhs_en_umbilical_hernia.html,unchanged,0,0,0,0,0,0,
+nhs_en_undescended_testicles,nhs_en_undescended_testicles.html,unchanged,0,0,0,0,0,0,
+nhs_en_birthmarks,nhs_en_birthmarks.html,unchanged,0,0,0,0,0,0,
+nhs_en_moles,nhs_en_moles.html,unchanged,0,0,0,0,0,0,
+nhs_en_teeth_grinding,nhs_en_teeth_grinding.html,unchanged,0,0,0,0,0,0,
+nhs_en_fainting,nhs_en_fainting.html,unchanged,0,0,0,0,0,0,
+nhs_en_heart_palpitations,nhs_en_heart_palpitations.html,unchanged,0,0,0,0,0,0,
+nhs_en_earache,nhs_en_earache.html,unchanged,0,0,0,0,0,0,
+nhs_en_hip_pain_children_irritable_hip,nhs_en_hip_pain_children_irritable_hip.html,unchanged,0,0,0,0,0,0,
+nhs_en_excessive_sweating_hyperhidrosis,nhs_en_excessive_sweating_hyperhidrosis.html,unchanged,0,0,0,0,0,0,
+nhs_en_flat_feet,nhs_en_flat_feet.html,unchanged,0,0,0,0,0,0,
+nhs_en_athletes_foot,nhs_en_athletes_foot.html,unchanged,0,0,0,0,0,0,
+nhs_en_warts_and_verrucas,nhs_en_warts_and_verrucas.html,unchanged,0,0,0,0,0,0,
+nhs_en_cellulitis,nhs_en_cellulitis.html,unchanged,0,0,0,0,0,0,
+nhs_en_kawasaki_disease,nhs_en_kawasaki_disease.html,unchanged,0,0,0,0,0,0,
+nhs_en_conditions_retinoblastoma_symptoms,nhs_en_conditions_retinoblastoma_symptoms.html,unchanged,0,0,0,0,0,0,
+nhs_en_conditions_type_1_diabetes_symptoms,nhs_en_conditions_type_1_diabetes_symptoms.html,unchanged,0,0,0,0,0,0,
+nhs_en_coeliac_disease,nhs_en_coeliac_disease.html,unchanged,0,0,0,0,0,0,
+nhs_en_bad_breath,nhs_en_bad_breath.html,unchanged,0,0,0,0,0,0,
+nhs_en_priapism_painful_erections,nhs_en_priapism_painful_erections.html,unchanged,0,0,0,0,0,0,
+nhs_en_vaginal_discharge,nhs_en_vaginal_discharge.html,unchanged,0,0,0,0,0,0,
+nhs_en_trichotillomania,nhs_en_trichotillomania.html,unchanged,0,0,0,0,0,0,
+nhs_en_selective_mutism,nhs_en_selective_mutism.html,unchanged,0,0,0,0,0,0,
+nhs_en_signs_in_children,nhs_en_signs_in_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_unintentional_weight_loss,nhs_en_unintentional_weight_loss.html,unchanged,0,0,0,0,0,0,
+nhs_en_dandruff,nhs_en_dandruff.html,unchanged,0,0,0,0,0,0,
+nhs_en_vitiligo,nhs_en_vitiligo.html,unchanged,0,0,0,0,0,0,
+nhs_en_scabies,nhs_en_scabies.html,unchanged,0,0,0,0,0,0,
+nhs_en_earwax_build_up,nhs_en_earwax_build_up.html,unchanged,0,0,0,0,0,0,
+nhs_en_glandular_fever,nhs_en_glandular_fever.html,unchanged,0,0,0,0,0,0,
+nhs_en_nail_problems,nhs_en_nail_problems.html,unchanged,0,0,0,0,0,0,
+nhs_en_neck_pain_and_stiff_neck,nhs_en_neck_pain_and_stiff_neck.html,unchanged,0,0,0,0,0,0,
+nhs_en_heel_pain,nhs_en_heel_pain.html,unchanged,0,0,0,0,0,0,
+nhs_en_tics,nhs_en_tics.html,unchanged,0,0,0,0,0,0,
+nhs_en_stammering,nhs_en_stammering.html,unchanged,0,0,0,0,0,0,
+nhs_en_balanitis,nhs_en_balanitis.html,unchanged,0,0,0,0,0,0,
+nhs_en_phimosis,nhs_en_phimosis.html,unchanged,0,0,0,0,0,0,
+nhs_en_gynaecomastia,nhs_en_gynaecomastia.html,unchanged,0,0,0,0,0,0,
+nhs_en_chest_pain,nhs_en_chest_pain.html,unchanged,0,0,0,0,0,0,
+nhs_en_chest_infection,nhs_en_chest_infection.html,unchanged,0,0,0,0,0,0,
+nhs_en_flat_head_syndrome_plagiocephaly_brachycephaly,nhs_en_flat_head_syndrome_plagiocephaly_brachycephaly.html,unchanged,0,0,0,0,0,0,
+nhs_en_craniosynostosis,nhs_en_craniosynostosis.html,unchanged,0,0,0,0,0,0,
+nhs_en_broken_finger,nhs_en_broken_finger.html,unchanged,0,0,0,0,0,0,
+nhs_en_broken_arm_or_wrist,nhs_en_broken_arm_or_wrist.html,unchanged,0,0,0,0,0,0,
+nhs_en_sprains_and_strains,nhs_en_sprains_and_strains.html,unchanged,0,0,0,0,0,0,
+nhs_en_eye_injuries,nhs_en_eye_injuries.html,unchanged,0,0,0,0,0,0,
+nhs_en_watering_eyes,nhs_en_watering_eyes.html,unchanged,0,0,0,0,0,0,
+nhs_en_hair_loss,nhs_en_hair_loss.html,unchanged,0,0,0,0,0,0,
+nhs_en_ringworm,nhs_en_ringworm.html,unchanged,0,0,0,0,0,0,
+nhs_en_foods_to_avoid_giving_babies_and_young_children,nhs_en_foods_to_avoid_giving_babies_and_young_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_paracetamol_for_children,nhs_en_paracetamol_for_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_ibuprofen_for_children,nhs_en_ibuprofen_for_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_sleepwalking,nhs_en_sleepwalking.html,unchanged,0,0,0,0,0,0,
+nhs_en_snoring,nhs_en_snoring.html,unchanged,0,0,0,0,0,0,
+nhs_en_sleep_apnoea,nhs_en_sleep_apnoea.html,unchanged,0,0,0,0,0,0,
+nhs_en_night_sweats,nhs_en_night_sweats.html,unchanged,0,0,0,0,0,0,
+nhs_en_temper_tantrums,nhs_en_temper_tantrums.html,unchanged,0,0,0,0,0,0,
+nhs_en_fussy_eaters,nhs_en_fussy_eaters.html,unchanged,0,0,0,0,0,0,
+mlp_en_000944,mlp_en_000944.html,unchanged,0,0,0,0,0,0,
+nhs_en_soiling_child_pooing_their_pants,nhs_en_soiling_child_pooing_their_pants.html,unchanged,0,0,0,0,0,0,
+nhs_en_anal_fissure,nhs_en_anal_fissure.html,unchanged,0,0,0,0,0,0,
+nhs_en_labial_fusion,nhs_en_labial_fusion.html,unchanged,0,0,0,0,0,0,
+nhs_en_short_sightedness,nhs_en_short_sightedness.html,unchanged,0,0,0,0,0,0,
+nhs_en_double_vision,nhs_en_double_vision.html,unchanged,0,0,0,0,0,0,
+nhs_en_eye_tests_for_children,nhs_en_eye_tests_for_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_toothache,nhs_en_toothache.html,unchanged,0,0,0,0,0,0,
+nhs_en_dental_abscess,nhs_en_dental_abscess.html,unchanged,0,0,0,0,0,0,
+nhs_en_taking_care_of_childrens_teeth,nhs_en_taking_care_of_childrens_teeth.html,unchanged,0,0,0,0,0,0,
+nhs_en_medicines_for_babies_and_children,nhs_en_medicines_for_babies_and_children.html,unchanged,0,0,0,0,0,0,
+nhs_en_antibiotics,nhs_en_antibiotics.html,unchanged,0,0,0,0,0,0,
+nhs_en_scoliosis,nhs_en_scoliosis.html,unchanged,0,0,0,0,0,0,
+nhs_en_developmental_dysplasia_of_the_hip,nhs_en_developmental_dysplasia_of_the_hip.html,unchanged,0,0,0,0,0,0,
+nhs_en_heat_rash_prickly_heat,nhs_en_heat_rash_prickly_heat.html,unchanged,0,0,0,0,0,0,
+mlp_en_000967,mlp_en_000967.html,unchanged,0,0,0,0,0,0,
+mlp_en_003074,mlp_en_003074.html,unchanged,0,0,0,0,0,0,
+mlp_en_001922,mlp_en_001922.html,unchanged,0,0,0,0,0,0,
+mlp_en_002211,mlp_en_002211.html,unchanged,0,0,0,0,0,0,
+mlp_en_001542,mlp_en_001542.html,unchanged,0,0,0,0,0,0,
+mlp_en_002004,mlp_en_002004.html,unchanged,0,0,0,0,0,0,
+mlp_en_002010,mlp_en_002010.html,unchanged,0,0,0,0,0,0,
+mlp_en_002013,mlp_en_002013.html,unchanged,0,0,0,0,0,0,
+mlp_en_002002,mlp_en_002002.html,unchanged,0,0,0,0,0,0,
+mlp_en_002011,mlp_en_002011.html,unchanged,0,0,0,0,0,0,
+mlp_en_002012,mlp_en_002012.html,unchanged,0,0,0,0,0,0,
+mlp_en_000809,mlp_en_000809.html,unchanged,0,0,0,0,0,0,
+mlp_en_003209,mlp_en_003209.html,unchanged,0,0,0,0,0,0,
+mlp_en_000897,mlp_en_000897.html,unchanged,0,0,0,0,0,0,
+mlp_en_003140,mlp_en_003140.html,unchanged,0,0,0,0,0,0,
+mlp_en_001430,mlp_en_001430.html,unchanged,0,0,0,0,0,0,
+mlp_en_001585,mlp_en_001585.html,unchanged,0,0,0,0,0,0,
+mlp_en_007213,mlp_en_007213.html,unchanged,0,0,0,0,0,0,
+mlp_en_003029,mlp_en_003029.html,unchanged,0,0,0,0,0,0,
+mlp_en_002084,mlp_en_002084.html,unchanged,0,0,0,0,0,0,
+mlp_en_002213,mlp_en_002213.html,unchanged,0,0,0,0,0,0,
+mlp_en_002208,mlp_en_002208.html,unchanged,0,0,0,0,0,0,
+mlp_en_002070,mlp_en_002070.html,unchanged,0,0,0,0,0,0,
+mlp_en_003084,mlp_en_003084.html,unchanged,0,0,0,0,0,0,
+mlp_en_002024,mlp_en_002024.html,unchanged,0,0,0,0,0,0,
+mlp_en_007594,mlp_en_007594.html,unchanged,0,0,0,0,0,0,
+mlp_en_007603,mlp_en_007603.html,unchanged,0,0,0,0,0,0,
+mlp_en_007608,mlp_en_007608.html,unchanged,0,0,0,0,0,0,
+mlp_en_007605,mlp_en_007605.html,unchanged,0,0,0,0,0,0,
+mlp_en_002427,mlp_en_002427.html,unchanged,0,0,0,0,0,0,
+mlp_en_001925,mlp_en_001925.html,unchanged,0,0,0,0,0,0,
+mlp_en_002447,mlp_en_002447.html,unchanged,0,0,0,0,0,0,
+nhs_en_stye,nhs_en_stye.html,unchanged,0,0,0,0,0,0,
+mlp_en_001006,mlp_en_001006.html,unchanged,0,0,0,0,0,0,
+mlp_en_001649,mlp_en_001649.html,unchanged,0,0,0,0,0,0,
+mlp_en_001538,mlp_en_001538.html,unchanged,0,0,0,0,0,0,
+nhs_en_vitamins_for_children,nhs_en_vitamins_for_children.html,unchanged,0,0,0,0,0,0,
+mlp_en_002405,mlp_en_002405.html,unchanged,0,0,0,0,0,0,
+mlp_en_002445,mlp_en_002445.html,unchanged,0,0,0,0,0,0,
+nhs_en_making_up_baby_formula,nhs_en_making_up_baby_formula.html,unchanged,0,0,0,0,0,0,
+mlp_en_fever,mlp_en_fever.html,unchanged,0,0,0,0,0,0,
+mlp_en_commoncold,mlp_en_commoncold.html,unchanged,0,0,0,0,0,0,
+mlp_en_cough,mlp_en_cough.html,unchanged,0,0,0,0,0,0,
+mlp_en_croup,mlp_en_croup.html,unchanged,0,0,0,0,0,0,
+mlp_en_gastroenteritis,mlp_en_gastroenteritis.html,unchanged,0,0,0,0,0,0,
+mlp_en_diarrhea,mlp_en_diarrhea.html,unchanged,0,0,0,0,0,0,
+mlp_en_dehydration,mlp_en_dehydration.html,unchanged,0,0,0,0,0,0,
+mlp_en_constipation,mlp_en_constipation.html,unchanged,0,0,0,0,0,0,
+mlp_en_seizures,mlp_en_seizures.html,unchanged,0,0,0,0,0,0,
+mlp_en_headinjuries,mlp_en_headinjuries.html,unchanged,0,0,0,0,0,0,
+mlp_en_concussion,mlp_en_concussion.html,unchanged,0,0,0,0,0,0,
+mlp_en_choking,mlp_en_choking.html,unchanged,0,0,0,0,0,0,
+mlp_en_burns,mlp_en_burns.html,unchanged,0,0,0,0,0,0,
+mlp_en_poisoning,mlp_en_poisoning.html,unchanged,0,0,0,0,0,0,
+mlp_en_infantandnewborncare,mlp_en_infantandnewborncare.html,unchanged,0,0,0,0,0,0,
+mlp_en_infantandnewbornnutrition,mlp_en_infantandnewbornnutrition.html,unchanged,0,0,0,0,0,0,
+mlp_en_breastfeeding,mlp_en_breastfeeding.html,unchanged,0,0,0,0,0,0,
+mlp_en_childdevelopment,mlp_en_childdevelopment.html,unchanged,0,0,0,0,0,0,
+mlp_en_childhoodvaccines,mlp_en_childhoodvaccines.html,unchanged,0,0,0,0,0,0,
+mlp_en_earinfections,mlp_en_earinfections.html,unchanged,0,0,0,0,0,0,
+mlp_en_sorethroat,mlp_en_sorethroat.html,unchanged,0,0,0,0,0,0,
+mlp_en_chickenpox,mlp_en_chickenpox.html,unchanged,0,0,0,0,0,0,
+mlp_en_rashes,mlp_en_rashes.html,unchanged,0,0,0,0,0,0,
+mlp_en_asthmainchildren,mlp_en_asthmainchildren.html,unchanged,0,0,0,0,0,0,
+mlp_en_toddlerhealth,mlp_en_toddlerhealth.html,unchanged,0,0,0,0,0,0,
+mlp_en_childsafety,mlp_en_childsafety.html,unchanged,0,0,0,0,0,0,
+mlp_en_heatillness,mlp_en_heatillness.html,unchanged,0,0,0,0,0,0,
+mlp_en_foodallergy,mlp_en_foodallergy.html,unchanged,0,0,0,0,0,0,
+mlp_en_allergy,mlp_en_allergy.html,unchanged,0,0,0,0,0,0,
+mlp_en_pneumonia,mlp_en_pneumonia.html,unchanged,0,0,0,0,0,0,
+mlp_en_whoopingcough,mlp_en_whoopingcough.html,unchanged,0,0,0,0,0,0,
+mlp_en_measles,mlp_en_measles.html,unchanged,0,0,0,0,0,0,
+mlp_en_meningitis,mlp_en_meningitis.html,unchanged,0,0,0,0,0,0,
+mlp_en_urinarytractinfections,mlp_en_urinarytractinfections.html,unchanged,0,0,0,0,0,0,
+mlp_en_eczema,mlp_en_eczema.html,unchanged,0,0,0,0,0,0,
+mlp_en_pinkeye,mlp_en_pinkeye.html,unchanged,0,0,0,0,0,0,
+mlp_en_headlice,mlp_en_headlice.html,unchanged,0,0,0,0,0,0,
+mlp_en_sunexposure,mlp_en_sunexposure.html,unchanged,0,0,0,0,0,0,
+mlp_en_insectbitesandstings,mlp_en_insectbitesandstings.html,unchanged,0,0,0,0,0,0,
+mlp_en_autismspectrumdisorder,mlp_en_autismspectrumdisorder.html,unchanged,0,0,0,0,0,0,
+mlp_en_teenmentalhealth,mlp_en_teenmentalhealth.html,unchanged,0,0,0,0,0,0,
+mlp_en_suicide,mlp_en_suicide.html,unchanged,0,0,0,0,0,0,
+mlp_en_selfharm,mlp_en_selfharm.html,unchanged,0,0,0,0,0,0,
+mlp_en_eatingdisorders,mlp_en_eatingdisorders.html,unchanged,0,0,0,0,0,0,
+mlp_en_childrenshealth,mlp_en_childrenshealth.html,unchanged,0,0,0,0,0,0,
+mlp_en_headache,mlp_en_headache.html,unchanged,0,0,0,0,0,0,
+mlp_en_fainting,mlp_en_fainting.html,unchanged,0,0,0,0,0,0,
+mlp_en_impetigo,mlp_en_impetigo.html,unchanged,0,0,0,0,0,0,
+mlp_en_pinworms,mlp_en_pinworms.html,unchanged,0,0,0,0,0,0,
+mlp_es_fever,mlp_es_fever.html,unchanged,0,0,0,0,0,0,
+mlp_es_allergy,mlp_es_allergy.html,unchanged,0,0,0,0,0,0,
+mlp_es_hayfever,mlp_es_hayfever.html,unchanged,0,0,0,0,0,0,
+mlp_es_foodallergy,mlp_es_foodallergy.html,unchanged,0,0,0,0,0,0,
+mlp_es_hives,mlp_es_hives.html,unchanged,0,0,0,0,0,0,
+mlp_es_drugreactions,mlp_es_drugreactions.html,unchanged,0,0,0,0,0,0,
+mlp_es_anaphylaxis,mlp_es_anaphylaxis.html,unchanged,0,0,0,0,0,0,
+mlp_es_eczema,mlp_es_eczema.html,unchanged,0,0,0,0,0,0,
+nhs_en_hay_fever,nhs_en_hay_fever.html,unchanged,0,0,0,0,0,0,
+nhs_en_allergies,nhs_en_allergies.html,unchanged,0,0,0,0,0,0,
+nhs_en_allergic_rhinitis,nhs_en_allergic_rhinitis.html,unchanged,0,0,0,0,0,0,
+nhs_en_atopic_eczema,nhs_en_atopic_eczema.html,unchanged,0,0,0,0,0,0,
+nhs_en_food_allergies_in_babies_and_young_children,nhs_en_food_allergies_in_babies_and_young_children.html,unchanged,0,0,0,0,0,0,
+mlp_es_commoncold,mlp_es_commoncold.html,unchanged,0,0,0,0,0,0,
+mlp_es_croup,mlp_es_croup.html,unchanged,0,0,0,0,0,0,
+mlp_es_gastroenteritis,mlp_es_gastroenteritis.html,unchanged,0,0,0,0,0,0,
+mlp_es_diarrhea,mlp_es_diarrhea.html,unchanged,0,0,0,0,0,0,
+mlp_es_dehydration,mlp_es_dehydration.html,unchanged,0,0,0,0,0,0,
+mlp_es_headinjuries,mlp_es_headinjuries.html,unchanged,0,0,0,0,0,0,
+mlp_es_choking,mlp_es_choking.html,unchanged,0,0,0,0,0,0,
+mlp_es_burns,mlp_es_burns.html,unchanged,0,0,0,0,0,0,
+mlp_es_poisoning,mlp_es_poisoning.html,unchanged,0,0,0,0,0,0,
+mlp_es_infantandnewborncare,mlp_es_infantandnewborncare.html,unchanged,0,0,0,0,0,0,
+mlp_es_infantandnewbornnutrition,mlp_es_infantandnewbornnutrition.html,unchanged,0,0,0,0,0,0,
+mlp_es_breastfeeding,mlp_es_breastfeeding.html,unchanged,0,0,0,0,0,0,
+mlp_es_childhoodvaccines,mlp_es_childhoodvaccines.html,unchanged,0,0,0,0,0,0,
+mlp_es_earinfections,mlp_es_earinfections.html,unchanged,0,0,0,0,0,0,
+mlp_es_chickenpox,mlp_es_chickenpox.html,unchanged,0,0,0,0,0,0,
+mlp_es_asthmainchildren,mlp_es_asthmainchildren.html,unchanged,0,0,0,0,0,0,
+mlp_es_toddlerhealth,mlp_es_toddlerhealth.html,unchanged,0,0,0,0,0,0,
+mlp_es_childsafety,mlp_es_childsafety.html,unchanged,0,0,0,0,0,0,
+mlp_es_heatillness,mlp_es_heatillness.html,unchanged,0,0,0,0,0,0,
+mlp_es_measles,mlp_es_measles.html,unchanged,0,0,0,0,0,0,
+mlp_es_meningitis,mlp_es_meningitis.html,unchanged,0,0,0,0,0,0,
+mlp_es_teenmentalhealth,mlp_es_teenmentalhealth.html,unchanged,0,0,0,0,0,0,
+mlp_es_childrenshealth,mlp_es_childrenshealth.html,unchanged,0,0,0,0,0,0,
+cdc_en_child_easyread,cdc_en_child_easyread.html,unchanged,0,0,0,0,0,0,
+cdc_en_rsv_about_index,cdc_en_rsv_about_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_rsv_infants_young_children_index,cdc_en_rsv_infants_young_children_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_hand_foot_mouth_about_index,cdc_en_hand_foot_mouth_about_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_children,cdc_en_children.html,unchanged,0,0,0,0,0,0,
+cdc_en_heads_up_about_index,cdc_en_heads_up_about_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_heads_up_signs_symptoms_index,cdc_en_heads_up_signs_symptoms_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_act_early_milestones_index,cdc_en_act_early_milestones_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_drowning_prevention_index,cdc_en_drowning_prevention_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_infant_toddler_nutrition_index,cdc_en_infant_toddler_nutrition_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_child_development_positive_parenting_tips_index,cdc_en_child_development_positive_parenting_tips_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_rotavirus_about_index,cdc_en_rotavirus_about_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_norovirus_about_index,cdc_en_norovirus_about_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_pertussis_about_index,cdc_en_pertussis_about_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_measles_signs_symptoms_index,cdc_en_measles_signs_symptoms_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_chickenpox_about_index,cdc_en_chickenpox_about_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_lice_about_index,cdc_en_lice_about_index.html,unchanged,0,0,0,0,0,0,
+cdc_en_ear_infection_about,cdc_en_ear_infection_about.html,unchanged,0,0,0,0,0,0,
+cdc_en_treatment,cdc_en_treatment.html,unchanged,0,0,0,0,0,0,
+who_en_infant_and_young_child_feeding,who_en_infant_and_young_child_feeding.html,unchanged,0,0,0,0,0,0,
+who_es_infant_and_young_child_feeding,who_es_infant_and_young_child_feeding.html,unchanged,0,0,0,0,0,0,
+who_en_diarrhoeal_disease,who_en_diarrhoeal_disease.html,unchanged,0,0,0,0,0,0,
+who_es_diarrhoeal_disease,who_es_diarrhoeal_disease.html,unchanged,0,0,0,0,0,0,
+who_en_pneumonia,who_en_pneumonia.html,unchanged,0,0,0,0,0,0,
+who_es_pneumonia,who_es_pneumonia.html,unchanged,0,0,0,0,0,0,
+who_en_measles,who_en_measles.html,unchanged,0,0,0,0,0,0,
+who_es_measles,who_es_measles.html,unchanged,0,0,0,0,0,0,
+who_en_immunization_coverage,who_en_immunization_coverage.html,unchanged,0,0,0,0,0,0,
+who_es_immunization_coverage,who_es_immunization_coverage.html,unchanged,0,0,0,0,0,0,
+who_en_malnutrition,who_en_malnutrition.html,unchanged,0,0,0,0,0,0,
+who_en_adolescent_mental_health,who_en_adolescent_mental_health.html,unchanged,0,0,0,0,0,0,
+who_es_adolescent_mental_health,who_es_adolescent_mental_health.html,unchanged,0,0,0,0,0,0,
+who_en_malaria,who_en_malaria.html,unchanged,0,0,0,0,0,0,
+who_en_poliomyelitis,who_en_poliomyelitis.html,unchanged,0,0,0,0,0,0,
+who_en_tuberculosis,who_en_tuberculosis.html,unchanged,0,0,0,0,0,0,
+who_es_tuberculosis,who_es_tuberculosis.html,unchanged,0,0,0,0,0,0,
+who_fr_tuberculosis,who_fr_tuberculosis.html,unchanged,0,0,0,0,0,0,
+who_en_hepatitis_b,who_en_hepatitis_b.html,unchanged,0,0,0,0,0,0,
+who_es_hepatitis_b,who_es_hepatitis_b.html,unchanged,0,0,0,0,0,0,
+who_fr_hepatitis_b,who_fr_hepatitis_b.html,unchanged,0,0,0,0,0,0,
+who_ar_measles,who_ar_measles.html,unchanged,0,0,0,0,0,0,
+who_ar_rubella,who_ar_rubella.html,unchanged,0,0,0,0,0,0,
+who_ar_pneumonia,who_ar_pneumonia.html,unchanged,0,0,0,0,0,0,
+who_ar_diarrhoeal_disease,who_ar_diarrhoeal_disease.html,unchanged,0,0,0,0,0,0,
+who_ar_infant_and_young_child_feeding,who_ar_infant_and_young_child_feeding.html,unchanged,0,0,0,0,0,0,
+who_ar_malnutrition,who_ar_malnutrition.html,unchanged,0,0,0,0,0,0,
+who_ar_adolescent_mental_health,who_ar_adolescent_mental_health.html,unchanged,0,0,0,0,0,0,
+who_ar_immunization_coverage,who_ar_immunization_coverage.html,unchanged,0,0,0,0,0,0,
+who_ar_meningitis,who_ar_meningitis.html,unchanged,0,0,0,0,0,0,
+who_ar_poliomyelitis,who_ar_poliomyelitis.html,unchanged,0,0,0,0,0,0,
+who_ar_hepatitis_b,who_ar_hepatitis_b.html,unchanged,0,0,0,0,0,0,
+who_ar_tuberculosis,who_ar_tuberculosis.html,unchanged,0,0,0,0,0,0,
+who_ar_drowning,who_ar_drowning.html,unchanged,0,0,0,0,0,0,
+who_ar_burns,who_ar_burns.html,unchanged,0,0,0,0,0,0,
+who_ar_falls,who_ar_falls.html,unchanged,0,0,0,0,0,0,
+who_ru_measles,who_ru_measles.html,unchanged,0,0,0,0,0,0,
+who_ru_rubella,who_ru_rubella.html,unchanged,0,0,0,0,0,0,
+who_ru_pneumonia,who_ru_pneumonia.html,unchanged,0,0,0,0,0,0,
+who_ru_diarrhoeal_disease,who_ru_diarrhoeal_disease.html,unchanged,0,0,0,0,0,0,
+who_ru_infant_and_young_child_feeding,who_ru_infant_and_young_child_feeding.html,unchanged,0,0,0,0,0,0,
+who_ru_malnutrition,who_ru_malnutrition.html,unchanged,0,0,0,0,0,0,
+who_ru_adolescent_mental_health,who_ru_adolescent_mental_health.html,unchanged,0,0,0,0,0,0,
+who_ru_immunization_coverage,who_ru_immunization_coverage.html,unchanged,0,0,0,0,0,0,
+who_ru_meningitis,who_ru_meningitis.html,unchanged,0,0,0,0,0,0,
+who_ru_poliomyelitis,who_ru_poliomyelitis.html,unchanged,0,0,0,0,0,0,
+who_ru_hepatitis_b,who_ru_hepatitis_b.html,unchanged,0,0,0,0,0,0,
+who_ru_tuberculosis,who_ru_tuberculosis.html,unchanged,0,0,0,0,0,0,
+who_ru_drowning,who_ru_drowning.html,unchanged,0,0,0,0,0,0,
+who_ru_burns,who_ru_burns.html,unchanged,0,0,0,0,0,0,
+who_ru_falls,who_ru_falls.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_masern,rki_de_ratgeber_masern.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_varizellen,rki_de_ratgeber_varizellen.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_roeteln,rki_de_ratgeber_roeteln.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_mumps,rki_de_ratgeber_mumps.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_pertussis,rki_de_ratgeber_pertussis.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_streptococcus_pyogenes,rki_de_ratgeber_streptococcus_pyogenes.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_rsv,rki_de_ratgeber_rsv.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_influenza_saisonal,rki_de_ratgeber_influenza_saisonal.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_noroviren,rki_de_ratgeber_noroviren.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_rotaviren,rki_de_ratgeber_rotaviren.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_hfmk,rki_de_ratgeber_hfmk.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_meningokokken,rki_de_ratgeber_meningokokken.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_pneumokokken,rki_de_ratgeber_pneumokokken.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_kopflausbefall,rki_de_ratgeber_kopflausbefall.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_skabies,rki_de_ratgeber_skabies.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_salmonellose,rki_de_ratgeber_salmonellose.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_campylobacter,rki_de_ratgeber_campylobacter.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_ehec,rki_de_ratgeber_ehec.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_hepatitisa,rki_de_ratgeber_hepatitisa.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_lymeborreliose,rki_de_ratgeber_lymeborreliose.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_fsme,rki_de_ratgeber_fsme.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_adenovirus_konjunktivitis,rki_de_ratgeber_adenovirus_konjunktivitis.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_tuberkulose,rki_de_ratgeber_tuberkulose.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_covid_19,rki_de_ratgeber_covid_19.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_poliomyelitis,rki_de_ratgeber_poliomyelitis.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_tetanus,rki_de_ratgeber_tetanus.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_diphtherie,rki_de_ratgeber_diphtherie.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_haemophilusinfluenzae,rki_de_ratgeber_haemophilusinfluenzae.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_toxoplasmose,rki_de_ratgeber_toxoplasmose.html,unchanged,0,0,0,0,0,0,
+rki_de_ratgeber_zytomegalievirus,rki_de_ratgeber_zytomegalievirus.html,unchanged,0,0,0,0,0,0,
+who_fr_measles,who_fr_measles.html,unchanged,0,0,0,0,0,0,
+who_fr_pneumonia,who_fr_pneumonia.html,unchanged,0,0,0,0,0,0,
+who_fr_diarrhoeal_disease,who_fr_diarrhoeal_disease.html,unchanged,0,0,0,0,0,0,
+who_fr_infant_and_young_child_feeding,who_fr_infant_and_young_child_feeding.html,unchanged,0,0,0,0,0,0,
+who_fr_adolescent_mental_health,who_fr_adolescent_mental_health.html,unchanged,0,0,0,0,0,0,
+who_fr_immunization_coverage,who_fr_immunization_coverage.html,unchanged,0,0,0,0,0,0,
+who_fr_malnutrition,who_fr_malnutrition.html,unchanged,0,0,0,0,0,0,
+canada_fr_virus_respiratoire_syncytial_vrs,canada_fr_virus_respiratoire_syncytial_vrs.html,unchanged,0,0,0,0,0,0,
+canada_fr_rougeole,canada_fr_rougeole.html,unchanged,0,0,0,0,0,0,
+canada_fr_coqueluche_toux_coquelucheuse,canada_fr_coqueluche_toux_coquelucheuse.html,unchanged,0,0,0,0,0,0,
+canada_fr_grippe_influenza,canada_fr_grippe_influenza.html,unchanged,0,0,0,0,0,0,
+canada_fr_oreillons,canada_fr_oreillons.html,unchanged,0,0,0,0,0,0,
+canada_fr_rubeole,canada_fr_rubeole.html,unchanged,0,0,0,0,0,0,
+canada_fr_maladie_lyme,canada_fr_maladie_lyme.html,unchanged,0,0,0,0,0,0,
+canada_fr_commotions_cerebrales_signes_symptomes,canada_fr_commotions_cerebrales_signes_symptomes.html,unchanged,0,0,0,0,0,0,
+canada_fr_securite_soleil,canada_fr_securite_soleil.html,unchanged,0,0,0,0,0,0,
+canada_fr_vaccinations_pour_enfants,canada_fr_vaccinations_pour_enfants.html,unchanged,0,0,0,0,0,0,
+canada_en_respiratory_syncytial_virus_rsv,canada_en_respiratory_syncytial_virus_rsv.html,unchanged,0,0,0,0,0,0,
+canada_en_measles,canada_en_measles.html,unchanged,0,0,0,0,0,0,
+canada_en_whooping_cough_pertussis,canada_en_whooping_cough_pertussis.html,unchanged,0,0,0,0,0,0,
+canada_en_flu_influenza,canada_en_flu_influenza.html,unchanged,0,0,0,0,0,0,
+canada_en_mumps,canada_en_mumps.html,unchanged,0,0,0,0,0,0,
+canada_en_rubella,canada_en_rubella.html,unchanged,0,0,0,0,0,0,
+canada_en_lyme_disease,canada_en_lyme_disease.html,unchanged,0,0,0,0,0,0,
+canada_en_concussion_sign_symptoms,canada_en_concussion_sign_symptoms.html,unchanged,0,0,0,0,0,0,
+canada_en_sun_safety,canada_en_sun_safety.html,unchanged,0,0,0,0,0,0,
+canada_en_vaccination_children,canada_en_vaccination_children.html,unchanged,0,0,0,0,0,0,
+who_ar_malaria,who_ar_malaria.html,unchanged,0,0,0,0,0,0,
+who_ar_dengue_and_severe_dengue,who_ar_dengue_and_severe_dengue.html,unchanged,0,0,0,0,0,0,
+who_ar_typhoid,who_ar_typhoid.html,unchanged,0,0,0,0,0,0,
+who_ar_hepatitis_a,who_ar_hepatitis_a.html,unchanged,0,0,0,0,0,0,
+who_ar_preterm_birth,who_ar_preterm_birth.html,unchanged,0,0,0,0,0,0,
+who_ar_anaemia,who_ar_anaemia.html,unchanged,0,0,0,0,0,0,
+who_ar_asthma,who_ar_asthma.html,unchanged,0,0,0,0,0,0,
+who_ar_epilepsy,who_ar_epilepsy.html,unchanged,0,0,0,0,0,0,
+who_ar_autism_spectrum_disorders,who_ar_autism_spectrum_disorders.html,unchanged,0,0,0,0,0,0,
+who_ar_sepsis,who_ar_sepsis.html,unchanged,0,0,0,0,0,0,
+who_ar_snakebite_envenoming,who_ar_snakebite_envenoming.html,unchanged,0,0,0,0,0,0,
+who_ar_road_traffic_injuries,who_ar_road_traffic_injuries.html,unchanged,0,0,0,0,0,0,
+who_ar_food_safety,who_ar_food_safety.html,unchanged,0,0,0,0,0,0,
+who_ar_drinking_water,who_ar_drinking_water.html,unchanged,0,0,0,0,0,0,
+who_ar_soil_transmitted_helminth_infections,who_ar_soil_transmitted_helminth_infections.html,unchanged,0,0,0,0,0,0,
+who_ar_scabies,who_ar_scabies.html,unchanged,0,0,0,0,0,0,
+who_ar_obesity_and_overweight,who_ar_obesity_and_overweight.html,unchanged,0,0,0,0,0,0,
+who_ar_influenza_seasonal,who_ar_influenza_seasonal.html,unchanged,0,0,0,0,0,0,
+who_ar_rabies,who_ar_rabies.html,unchanged,0,0,0,0,0,0,
+who_ar_tetanus,who_ar_tetanus.html,unchanged,0,0,0,0,0,0,
+who_ar_hiv_aids,who_ar_hiv_aids.html,unchanged,0,0,0,0,0,0,
+who_ar_diphtheria,who_ar_diphtheria.html,unchanged,0,0,0,0,0,0,
+who_ar_oral_health,who_ar_oral_health.html,unchanged,0,0,0,0,0,0,
+who_en_dengue_and_severe_dengue,who_en_dengue_and_severe_dengue.html,unchanged,0,0,0,0,0,0,
+who_en_typhoid,who_en_typhoid.html,unchanged,0,0,0,0,0,0,
+who_en_hepatitis_a,who_en_hepatitis_a.html,unchanged,0,0,0,0,0,0,
+who_en_preterm_birth,who_en_preterm_birth.html,unchanged,0,0,0,0,0,0,
+who_en_anaemia,who_en_anaemia.html,unchanged,0,0,0,0,0,0,
+who_en_asthma,who_en_asthma.html,unchanged,0,0,0,0,0,0,
+who_en_epilepsy,who_en_epilepsy.html,unchanged,0,0,0,0,0,0,
+who_en_autism_spectrum_disorders,who_en_autism_spectrum_disorders.html,unchanged,0,0,0,0,0,0,
+who_en_sepsis,who_en_sepsis.html,unchanged,0,0,0,0,0,0,
+who_en_snakebite_envenoming,who_en_snakebite_envenoming.html,unchanged,0,0,0,0,0,0,
+who_en_road_traffic_injuries,who_en_road_traffic_injuries.html,unchanged,0,0,0,0,0,0,
+who_en_food_safety,who_en_food_safety.html,unchanged,0,0,0,0,0,0,
+who_en_drinking_water,who_en_drinking_water.html,unchanged,0,0,0,0,0,0,
+who_en_soil_transmitted_helminth_infections,who_en_soil_transmitted_helminth_infections.html,unchanged,0,0,0,0,0,0,
+who_en_scabies,who_en_scabies.html,unchanged,0,0,0,0,0,0,
+who_en_obesity_and_overweight,who_en_obesity_and_overweight.html,unchanged,0,0,0,0,0,0,
+who_en_influenza_seasonal,who_en_influenza_seasonal.html,unchanged,0,0,0,0,0,0,
+who_en_rabies,who_en_rabies.html,unchanged,0,0,0,0,0,0,
+who_en_tetanus,who_en_tetanus.html,unchanged,0,0,0,0,0,0,
+who_en_hiv_aids,who_en_hiv_aids.html,unchanged,0,0,0,0,0,0,
+who_en_diphtheria,who_en_diphtheria.html,unchanged,0,0,0,0,0,0,
+who_en_oral_health,who_en_oral_health.html,unchanged,0,0,0,0,0,0,
+who_es_malaria,who_es_malaria.html,unchanged,0,0,0,0,0,0,
+who_es_dengue_and_severe_dengue,who_es_dengue_and_severe_dengue.html,unchanged,0,0,0,0,0,0,
+who_es_typhoid,who_es_typhoid.html,unchanged,0,0,0,0,0,0,
+who_es_hepatitis_a,who_es_hepatitis_a.html,unchanged,0,0,0,0,0,0,
+who_es_preterm_birth,who_es_preterm_birth.html,unchanged,0,0,0,0,0,0,
+who_es_anaemia,who_es_anaemia.html,unchanged,0,0,0,0,0,0,
+who_es_asthma,who_es_asthma.html,unchanged,0,0,0,0,0,0,
+who_es_epilepsy,who_es_epilepsy.html,unchanged,0,0,0,0,0,0,
+who_es_autism_spectrum_disorders,who_es_autism_spectrum_disorders.html,unchanged,0,0,0,0,0,0,
+who_es_sepsis,who_es_sepsis.html,unchanged,0,0,0,0,0,0,
+who_es_snakebite_envenoming,who_es_snakebite_envenoming.html,unchanged,0,0,0,0,0,0,
+who_es_road_traffic_injuries,who_es_road_traffic_injuries.html,unchanged,0,0,0,0,0,0,
+who_es_food_safety,who_es_food_safety.html,unchanged,0,0,0,0,0,0,
+who_es_drinking_water,who_es_drinking_water.html,unchanged,0,0,0,0,0,0,
+who_es_soil_transmitted_helminth_infections,who_es_soil_transmitted_helminth_infections.html,unchanged,0,0,0,0,0,0,
+who_es_scabies,who_es_scabies.html,unchanged,0,0,0,0,0,0,
+who_es_obesity_and_overweight,who_es_obesity_and_overweight.html,unchanged,0,0,0,0,0,0,
+who_es_influenza_seasonal,who_es_influenza_seasonal.html,unchanged,0,0,0,0,0,0,
+who_es_rabies,who_es_rabies.html,unchanged,0,0,0,0,0,0,
+who_es_tetanus,who_es_tetanus.html,unchanged,0,0,0,0,0,0,
+who_es_hiv_aids,who_es_hiv_aids.html,unchanged,0,0,0,0,0,0,
+who_es_diphtheria,who_es_diphtheria.html,unchanged,0,0,0,0,0,0,
+who_es_oral_health,who_es_oral_health.html,unchanged,0,0,0,0,0,0,
+who_fr_malaria,who_fr_malaria.html,unchanged,0,0,0,0,0,0,
+who_fr_dengue_and_severe_dengue,who_fr_dengue_and_severe_dengue.html,unchanged,0,0,0,0,0,0,
+who_fr_typhoid,who_fr_typhoid.html,unchanged,0,0,0,0,0,0,
+who_fr_hepatitis_a,who_fr_hepatitis_a.html,unchanged,0,0,0,0,0,0,
+who_fr_preterm_birth,who_fr_preterm_birth.html,unchanged,0,0,0,0,0,0,
+who_fr_anaemia,who_fr_anaemia.html,unchanged,0,0,0,0,0,0,
+who_fr_asthma,who_fr_asthma.html,unchanged,0,0,0,0,0,0,
+who_fr_epilepsy,who_fr_epilepsy.html,unchanged,0,0,0,0,0,0,
+who_fr_autism_spectrum_disorders,who_fr_autism_spectrum_disorders.html,unchanged,0,0,0,0,0,0,
+who_fr_sepsis,who_fr_sepsis.html,unchanged,0,0,0,0,0,0,
+who_fr_snakebite_envenoming,who_fr_snakebite_envenoming.html,unchanged,0,0,0,0,0,0,
+who_fr_road_traffic_injuries,who_fr_road_traffic_injuries.html,unchanged,0,0,0,0,0,0,
+who_fr_food_safety,who_fr_food_safety.html,unchanged,0,0,0,0,0,0,
+who_fr_drinking_water,who_fr_drinking_water.html,unchanged,0,0,0,0,0,0,
+who_fr_soil_transmitted_helminth_infections,who_fr_soil_transmitted_helminth_infections.html,unchanged,0,0,0,0,0,0,
+who_fr_scabies,who_fr_scabies.html,unchanged,0,0,0,0,0,0,
+who_fr_obesity_and_overweight,who_fr_obesity_and_overweight.html,unchanged,0,0,0,0,0,0,
+who_fr_influenza_seasonal,who_fr_influenza_seasonal.html,unchanged,0,0,0,0,0,0,
+who_fr_rabies,who_fr_rabies.html,unchanged,0,0,0,0,0,0,
+who_fr_tetanus,who_fr_tetanus.html,unchanged,0,0,0,0,0,0,
+who_fr_hiv_aids,who_fr_hiv_aids.html,unchanged,0,0,0,0,0,0,
+who_fr_diphtheria,who_fr_diphtheria.html,unchanged,0,0,0,0,0,0,
+who_fr_oral_health,who_fr_oral_health.html,unchanged,0,0,0,0,0,0,
+who_ru_malaria,who_ru_malaria.html,unchanged,0,0,0,0,0,0,
+who_ru_dengue_and_severe_dengue,who_ru_dengue_and_severe_dengue.html,unchanged,0,0,0,0,0,0,
+who_ru_typhoid,who_ru_typhoid.html,unchanged,0,0,0,0,0,0,
+who_ru_hepatitis_a,who_ru_hepatitis_a.html,unchanged,0,0,0,0,0,0,
+who_ru_preterm_birth,who_ru_preterm_birth.html,unchanged,0,0,0,0,0,0,
+who_ru_anaemia,who_ru_anaemia.html,unchanged,0,0,0,0,0,0,
+who_ru_asthma,who_ru_asthma.html,unchanged,0,0,0,0,0,0,
+who_ru_epilepsy,who_ru_epilepsy.html,unchanged,0,0,0,0,0,0,
+who_ru_autism_spectrum_disorders,who_ru_autism_spectrum_disorders.html,unchanged,0,0,0,0,0,0,
+who_ru_sepsis,who_ru_sepsis.html,unchanged,0,0,0,0,0,0,
+who_ru_snakebite_envenoming,who_ru_snakebite_envenoming.html,unchanged,0,0,0,0,0,0,
+who_ru_road_traffic_injuries,who_ru_road_traffic_injuries.html,unchanged,0,0,0,0,0,0,
+who_ru_food_safety,who_ru_food_safety.html,unchanged,0,0,0,0,0,0,
+who_ru_drinking_water,who_ru_drinking_water.html,unchanged,0,0,0,0,0,0,
+who_ru_soil_transmitted_helminth_infections,who_ru_soil_transmitted_helminth_infections.html,unchanged,0,0,0,0,0,0,
+who_ru_scabies,who_ru_scabies.html,unchanged,0,0,0,0,0,0,
+who_ru_obesity_and_overweight,who_ru_obesity_and_overweight.html,unchanged,0,0,0,0,0,0,
+who_ru_influenza_seasonal,who_ru_influenza_seasonal.html,unchanged,0,0,0,0,0,0,
+who_ru_rabies,who_ru_rabies.html,unchanged,0,0,0,0,0,0,
+who_ru_tetanus,who_ru_tetanus.html,unchanged,0,0,0,0,0,0,
+who_ru_hiv_aids,who_ru_hiv_aids.html,unchanged,0,0,0,0,0,0,
+who_ru_diphtheria,who_ru_diphtheria.html,unchanged,0,0,0,0,0,0,
+who_ru_oral_health,who_ru_oral_health.html,unchanged,0,0,0,0,0,0,
+govbr_pt_dengue,govbr_pt_dengue.html,unchanged,0,0,0,0,0,0,
+govbr_pt_sarampo,govbr_pt_sarampo.html,unchanged,0,0,0,0,0,0,
+govbr_pt_coqueluche,govbr_pt_coqueluche.html,unchanged,0,0,0,0,0,0,
+govbr_pt_caxumba,govbr_pt_caxumba.html,unchanged,0,0,0,0,0,0,
+govbr_pt_rubeola,govbr_pt_rubeola.html,unchanged,0,0,0,0,0,0,
+govbr_pt_tuberculose,govbr_pt_tuberculose.html,unchanged,0,0,0,0,0,0,
+govbr_pt_hepatites_virais,govbr_pt_hepatites_virais.html,unchanged,0,0,0,0,0,0,
+govbr_pt_raiva,govbr_pt_raiva.html,unchanged,0,0,0,0,0,0,
+govbr_pt_aedes_aegypti,govbr_pt_aedes_aegypti.html,unchanged,0,0,0,0,0,0,
+govbr_pt_chikungunya,govbr_pt_chikungunya.html,unchanged,0,0,0,0,0,0,
+govbr_pt_febre_amarela,govbr_pt_febre_amarela.html,unchanged,0,0,0,0,0,0,
+govbr_pt_meningite,govbr_pt_meningite.html,unchanged,0,0,0,0,0,0,
+govbr_pt_poliomielite,govbr_pt_poliomielite.html,unchanged,0,0,0,0,0,0,
+govbr_pt_vacinacao,govbr_pt_vacinacao.html,unchanged,0,0,0,0,0,0,
+who_ar_household_air_pollution_and_health,who_ar_household_air_pollution_and_health.html,unchanged,0,0,0,0,0,0,
+who_en_household_air_pollution_and_health,who_en_household_air_pollution_and_health.html,unchanged,0,0,0,0,0,0,
+who_es_household_air_pollution_and_health,who_es_household_air_pollution_and_health.html,unchanged,0,0,0,0,0,0,
+who_fr_household_air_pollution_and_health,who_fr_household_air_pollution_and_health.html,unchanged,0,0,0,0,0,0,
+who_ru_household_air_pollution_and_health,who_ru_household_air_pollution_and_health.html,unchanged,0,0,0,0,0,0,
+who_ar_sickle_cell_disease,who_ar_sickle_cell_disease.html,unchanged,0,0,0,0,0,0,
+who_en_sickle_cell_disease,who_en_sickle_cell_disease.html,unchanged,0,0,0,0,0,0,
+who_es_sickle_cell_disease,who_es_sickle_cell_disease.html,unchanged,0,0,0,0,0,0,
+who_fr_sickle_cell_disease,who_fr_sickle_cell_disease.html,unchanged,0,0,0,0,0,0,
+who_ru_sickle_cell_disease,who_ru_sickle_cell_disease.html,unchanged,0,0,0,0,0,0,
+who_ar_lead_poisoning_and_health,who_ar_lead_poisoning_and_health.html,unchanged,0,0,0,0,0,0,
+who_en_lead_poisoning_and_health,who_en_lead_poisoning_and_health.html,unchanged,0,0,0,0,0,0,
+who_es_lead_poisoning_and_health,who_es_lead_poisoning_and_health.html,unchanged,0,0,0,0,0,0,
+who_fr_lead_poisoning_and_health,who_fr_lead_poisoning_and_health.html,unchanged,0,0,0,0,0,0,
+who_ru_lead_poisoning_and_health,who_ru_lead_poisoning_and_health.html,unchanged,0,0,0,0,0,0,
+who_ar_deafness_and_hearing_loss,who_ar_deafness_and_hearing_loss.html,unchanged,0,0,0,0,0,0,
+who_en_deafness_and_hearing_loss,who_en_deafness_and_hearing_loss.html,unchanged,0,0,0,0,0,0,
+who_es_deafness_and_hearing_loss,who_es_deafness_and_hearing_loss.html,unchanged,0,0,0,0,0,0,
+who_fr_deafness_and_hearing_loss,who_fr_deafness_and_hearing_loss.html,unchanged,0,0,0,0,0,0,
+who_ru_deafness_and_hearing_loss,who_ru_deafness_and_hearing_loss.html,unchanged,0,0,0,0,0,0,
+who_ar_blindness_and_visual_impairment,who_ar_blindness_and_visual_impairment.html,unchanged,0,0,0,0,0,0,
+who_en_blindness_and_visual_impairment,who_en_blindness_and_visual_impairment.html,unchanged,0,0,0,0,0,0,
+who_es_blindness_and_visual_impairment,who_es_blindness_and_visual_impairment.html,unchanged,0,0,0,0,0,0,
+who_fr_blindness_and_visual_impairment,who_fr_blindness_and_visual_impairment.html,unchanged,0,0,0,0,0,0,
+who_ru_blindness_and_visual_impairment,who_ru_blindness_and_visual_impairment.html,unchanged,0,0,0,0,0,0,
+who_ar_tobacco,who_ar_tobacco.html,unchanged,0,0,0,0,0,0,
+who_en_tobacco,who_en_tobacco.html,unchanged,0,0,0,0,0,0,
+who_es_tobacco,who_es_tobacco.html,unchanged,0,0,0,0,0,0,
+who_fr_tobacco,who_fr_tobacco.html,unchanged,0,0,0,0,0,0,
+who_ru_tobacco,who_ru_tobacco.html,unchanged,0,0,0,0,0,0,
+who_ar_child_maltreatment,who_ar_child_maltreatment.html,unchanged,0,0,0,0,0,0,
+who_en_child_maltreatment,who_en_child_maltreatment.html,unchanged,0,0,0,0,0,0,
+who_es_child_maltreatment,who_es_child_maltreatment.html,unchanged,0,0,0,0,0,0,
+who_fr_child_maltreatment,who_fr_child_maltreatment.html,unchanged,0,0,0,0,0,0,
+who_ru_child_maltreatment,who_ru_child_maltreatment.html,unchanged,0,0,0,0,0,0,
+who_en_child_growth_standards,who_en_child_growth_standards.html,unchanged,0,0,0,0,0,0,
+who_es_child_growth_standards,who_es_child_growth_standards.html,unchanged,0,0,0,0,0,0,
+who_fr_child_growth_standards,who_fr_child_growth_standards.html,unchanged,0,0,0,0,0,0,
+who_ru_child_growth_standards,who_ru_child_growth_standards.html,unchanged,0,0,0,0,0,0,
+who_ar_child_growth_standards,who_ar_child_growth_standards.html,unchanged,0,0,0,0,0,0,
+nhs_en_baby_height_and_weight,nhs_en_baby_height_and_weight.html,unchanged,0,0,0,0,0,0,
+nhs_en_jaundice_in_babies,nhs_en_jaundice_in_babies.html,unchanged,0,0,0,0,0,0,
+who_en_cholera,who_en_cholera.html,unchanged,0,0,0,0,0,0,
+who_es_cholera,who_es_cholera.html,unchanged,0,0,0,0,0,0,
+who_fr_cholera,who_fr_cholera.html,unchanged,0,0,0,0,0,0,
+who_ar_cholera,who_ar_cholera.html,unchanged,0,0,0,0,0,0,
+who_ru_cholera,who_ru_cholera.html,unchanged,0,0,0,0,0,0,

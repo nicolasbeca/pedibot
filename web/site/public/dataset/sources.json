@@ -3289,6 +3289,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_blood_in_urine",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Blood in urine",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/blood-in-urine/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
   "doc_id": "nhs_en_medicines",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -3365,6 +3378,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/burns-and-scalds/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_carbon_monoxide_poisoning",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Carbon monoxide poisoning",
+  "year": 2025,
+  "lang": "en",
+  "topic": "intoxicacion",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/carbon-monoxide-poisoning/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
  },
  {
   "doc_id": "nhs_en_caring_for_a_newborn",
@@ -3599,6 +3625,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/dehydration/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_dengue",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Dengue",
+  "year": 2026,
+  "lang": "en",
+  "topic": "fiebre",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/dengue/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
  },
  {
   "doc_id": "nhs_en_dental_abscess",
@@ -4277,6 +4316,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_iron_deficiency_anaemia",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Iron deficiency anaemia",
+  "year": 2024,
+  "lang": "en",
+  "topic": "alimentacion",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/iron-deficiency-anaemia/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
   "doc_id": "nhs_en_jaundice_in_babies",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -4327,6 +4379,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/lazy-eye/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
+ },
+ {
+  "doc_id": "nhs_en_low_blood_sugar_hypoglycaemia",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Low blood sugar (hypoglycaemia)",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/low-blood-sugar-hypoglycaemia/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
  },
  {
   "doc_id": "nhs_en_mmr_vaccine",
@@ -4602,6 +4667,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-21"
  },
  {
+  "doc_id": "nhs_en_osteomyelitis",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Osteomyelitis",
+  "year": 2023,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/osteomyelitis/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
   "doc_id": "nhs_en_antibiotics",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -4704,6 +4782,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/medicines/paracetamol-for-children/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_pelvic_pain",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Pelvic pain",
+  "year": 2025,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/pelvic-pain/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
  },
  {
   "doc_id": "nhs_en_pneumococcal_vaccine",
@@ -4901,6 +4992,19 @@
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
  },
  {
+  "doc_id": "nhs_en_septic_arthritis",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Septic arthritis",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/septic-arthritis/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
+ },
+ {
   "doc_id": "nhs_en_short_sightedness",
   "org": "NHS",
   "org_full": "NHS (National Health Service, England)",
@@ -4977,6 +5081,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/sleepwalking/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-22"
+ },
+ {
+  "doc_id": "nhs_en_snake_bites",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Snake bites",
+  "year": 2026,
+  "lang": "en",
+  "topic": "accidentes",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/snake-bites/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
  },
  {
   "doc_id": "nhs_en_snoring",
@@ -5081,6 +5198,19 @@
   "usage": "publico",
   "url": "https://www.nhs.uk/conditions/sunburn/",
   "notes": "licence: Open Government Licence v3.0; fetched 2026-09-02"
+ },
+ {
+  "doc_id": "nhs_en_oedema",
+  "org": "NHS",
+  "org_full": "NHS (National Health Service, England)",
+  "title": "Swollen ankles, feet and legs (oedema)",
+  "year": 2026,
+  "lang": "en",
+  "topic": "general",
+  "doc_type": "hoja_padres",
+  "usage": "publico",
+  "url": "https://www.nhs.uk/conditions/oedema/",
+  "notes": "licence: Open Government Licence v3.0; fetched 2026-10-07"
  },
  {
   "doc_id": "nhs_en_swollen_glands",

@@ -30,6 +30,7 @@ topics:
         # 25-sep-2026, ver la nota del final del fichero
         concussion, conmoción, conmocion, commotion cérébrale, gehirnerschütterung, сотрясение, ارتجاج, heatstroke, heat exhaustion, esguince, sprain]
   intoxicacion: [intoxicación, intoxicacion, tóxico, toxico, veneno, ingesta accidental, lejía, medicamento por error, poison, ingest, toxic,
+        "carbon monoxide", "monóxido de carbono", "monoxido de carbono", "monoxyde de carbone",
         plomo, saturnismo, lead, plomb, blei$, свинец, свинца, رصاص, التسمم بالرصاص, सीसा, सीसे,
         "मिट्टी का तेल", केरोसिन, कीटनाशक, "चूहे मारने", الكاز, كيروسين, "سم الفئران"]
   alergia: [anafilaxia, alergia, alérgic, alergic, adrenalina, urticaria, anaphylaxis, allerg, hives, epinephrine]
@@ -110,6 +111,7 @@ topics:
         terrores nocturnos, night terror, pesadilla, nightmare, escoliosis, scoliosis, tartamud, stammer, stutter]
   medicamentos: [dosis, dosificación, paracetamol, ibuprofeno, antibiótico, antibiotico, amoxicilina, jarabe, mg/kg, dose, dosing, acetaminophen, ibuprofen, antibiotic]
   urinario: [orina, urinaria, urinario, infección de orina, infeccion de orina, cistitis, pis$,
+        "blood in his pee", "blood in her pee", "blood in pee", "blood in the urine", hematuria, haematuria,
              pipí, pipi, enuresis, mojar la cama, urine, urinary, uti$, utis$, wee$, bedwetting,
              urinaire, pipi au lit, harnwege, blasenentzündung, blasenentzundung, bettnässen,
              моча, мочевой, недержание, بول, التبول, पेशाब, मूत्र,
@@ -135,6 +137,7 @@ topics:
                  sepsis, septicemia, septicémie, "تعفن الدم", सेप्सिस, сепсис]
   crianza: [crianza, cuidados, higiene, baño, pañal, chupete, parenting, care, bath, diaper]
   general: [
+        diabetic, diabetes, "low blood sugar", "blood sugar", hypoglyc, hipoglucem, limping, limps, cojea, cojera,
         drepanocitosis, anemia falciforme, células falciformes, sickle cell, drépanocytose, sichelzell, серповидно, فقر الدم المنجلي, منجلي, सिकल सेल]
 
 subtopics:

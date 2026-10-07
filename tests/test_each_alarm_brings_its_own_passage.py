@@ -23,7 +23,7 @@ REGLAS = Triage(S.config_dir / "red_flags.yaml").rules
 
 
 def test_la_mayoria_tiene_su_pasaje() -> None:
-    assert sum(1 for r in REGLAS if r.source_chunk) >= 80
+    assert sum(1 for r in REGLAS if r.source_chunk) >= 87
 
 
 @pytest.mark.skipif(not S.index_db_path.exists(), reason="sin índice")

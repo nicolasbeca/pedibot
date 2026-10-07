@@ -3925,7 +3925,8 @@ rules:
 
 - id: blood_in_urine
   level: urgent
-  source: seup_acudir_urgencias
+  source: nhs_en_blood_in_urine
+  source_chunk: "nhs_en_blood_in_urine#blood_in_urine#1"
   reason_es: "Sangre en el pis: hay que verlo, no es normal a ninguna edad"
   reason_en: "Blood in the pee: it needs looking at, it is not normal at any age"
   reason_fr: "Du sang dans les urines : à faire voir, ce n'?est normal à aucun âge"
@@ -4104,7 +4105,8 @@ rules:
 # preguntas salían como rutina y tres categorías no tenían ninguna regla.
 - id: snakebite
   level: emergency
-  source: who_en_snakebite_envenoming
+  source: nhs_en_snake_bites
+  source_chunk: "nhs_en_snake_bites#snake_bites#1"
   reason_es: "Mordedura de serpiente: hay que ir a urgencias ahora, sin torniquete y sin cortar la herida"
   reason_en: "Snake bite: go to emergency now — no tourniquet, no cutting the wound"
   reason_fr: "Morsure de serpent : urgences tout de suite, sans garrot et sans inciser"
@@ -4548,7 +4550,8 @@ rules:
 # Monóxido de carbono: la pista es que le pasa A VARIOS de la casa y hay una estufa o un brasero.
 - id: carbon_monoxide
   level: emergency
-  source: ecimed_pediatria_2016
+  source: nhs_en_carbon_monoxide_poisoning
+  source_chunk: "nhs_en_carbon_monoxide_poisoning#what_to_do_if_you_think_you_have_carbon#1"
   reason_es: "Varios con dolor de cabeza y náuseas en la misma casa: salid al aire libre y llamad, puede ser monóxido"
   reason_en: "Several people with headache and nausea in the same house: get outside and call — it may be carbon monoxide"
   reason_fr: "Plusieurs personnes avec maux de tête et nausées dans la même maison : sortez et appelez"
@@ -4715,7 +4718,8 @@ rules:
 
 - id: spinal_injury
   level: emergency
-  source: ecimed_pediatria_2016
+  source: mlp_en_headinjuries
+  source_chunk: "mlp_en_headinjuries#lead#1"
   reason_es: "No mueve las piernas o los brazos tras un golpe: no lo muevas, llama a emergencias ahora"
   reason_en: "Not moving legs or arms after a fall: do not move him, call emergency services now"
   reason_fr: "Ne bouge plus les jambes ou les bras après une chute : ne le bougez pas, appelez maintenant"
@@ -4851,7 +4855,8 @@ rules:
 
 - id: hypoglycaemia
   level: emergency
-  source: ecimed_pediatria_2016
+  source: nhs_en_low_blood_sugar_hypoglycaemia
+  source_chunk: "nhs_en_low_blood_sugar_hypoglycaemia#how_to_treat_severe_low_blood_sugar#1"
   reason_es: "Un diabético sudoroso, tembloroso o confuso: azúcar por boca ahora si está consciente, y llama"
   reason_en: "A diabetic who is sweaty, shaky or confused: sugar by mouth now if awake, and call"
   reason_fr: "Un diabétique en sueur, tremblant ou confus : du sucre par la bouche s'?il est conscient, et appelez"
@@ -5307,7 +5312,8 @@ rules:
 
 - id: limp_with_fever
   level: urgent
-  source: puc_manual_pediatria
+  source: nhs_en_septic_arthritis
+  source_chunk: "nhs_en_septic_arthritis#septic_arthritis#1"
   reason_es: "Cojera con fiebre: hay que descartar una infección de la articulación o del hueso hoy mismo"
   reason_en: "Limping with a fever: a joint or bone infection has to be ruled out today"
   reason_fr: "Boiterie avec fièvre : il faut écarter aujourd'hui une infection articulaire ou osseuse"
@@ -5354,6 +5360,7 @@ rules:
 - id: bleeding_with_fever
   level: urgent
   source: who_en_dengue_and_severe_dengue
+  source_chunk: "who_en_dengue_and_severe_dengue#symptoms#1"
   reason_es: "Sangrado junto con fiebre: hay que valorarlo hoy, es uno de los signos de alarma del dengue"
   reason_en: "Bleeding together with fever needs to be seen today — it is one of the dengue warning signs"
   reason_fr: "Saignement avec fièvre : à voir aujourd'hui, c'?est un signe d'?alerte de la dengue"

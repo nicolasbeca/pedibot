@@ -412,6 +412,18 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
     ("nhs", "https://www.nhs.uk/conditions/tetanus/", "accidentes", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/baby/weaning-and-feeding/drinks-and-cups-for-babies-and-young-children/", "alimentacion", "en", ["lactante", "preescolar"]),
     ("nhs", "https://www.nhs.uk/conditions/broken-ankle/", "accidentes", "en", ["escolar", "adolescente"]),
+    # 7-oct-2026: alarmas que saltaban sin un pasaje que las respaldara (test_each_alarm_brings_
+    # its_own_passage). Los primeros auxilios del NHS redirigen a St John Ambulance, que no es OGL.
+    ("nhs", "https://www.nhs.uk/conditions/carbon-monoxide-poisoning/", "intoxicacion", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/low-blood-sugar-hypoglycaemia/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/blood-in-urine/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/snake-bites/", "accidentes", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/pelvic-pain/", "general", "en", ["adolescente"]),
+    ("nhs", "https://www.nhs.uk/conditions/septic-arthritis/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/osteomyelitis/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/dengue/", "fiebre", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/oedema/", "general", "en", ["todas"]),
+    ("nhs", "https://www.nhs.uk/conditions/iron-deficiency-anaemia/", "alimentacion", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/whooping-cough/", "respiratorio", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/measles/", "piel", "en", ["todas"]),
     ("nhs", "https://www.nhs.uk/conditions/mumps/", "general", "en", ["escolar"]),
