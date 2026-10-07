@@ -21,3 +21,12 @@ def test_los_ratgeber_no_son_hojas_para_padres() -> None:
     rki = [f for f in lista if str(f.get("doc_id", "")).startswith("rki_de_")]
     assert len(rki) >= 30
     assert all(f["doc_type"] == "guia_clinica" for f in rki)
+
+
+def test_y_pesan_menos_que_una_pagina_para_padres() -> None:
+    """7-oct-2026: aun como guía clínica ganaban en alemán sólo por la lengua («Husten seit einer
+    Woche» → tos ferina, tuberculosis, VRS y covid). Con 0,6, de 81 preguntas en alemán cambian 16,
+    casi todas a la página para padres (vómitos de la SEUP, crup y VRS del NHS)."""
+    from pedibot.index.store import ORG_WEIGHT
+
+    assert ORG_WEIGHT["RKI"] < 1

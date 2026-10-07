@@ -1,0 +1,12 @@
+respuestas: 29 · juzgadas: 29
+por verificación: {'dose_calculator': 1, 'regenerated': 18, 'ok': 10}
+helps: {1: 6, 2: 20, 3: 3}
+units_ok = false: 0
+country_ok = false: 0
+urgency_ok = false: 3
+con algo 'wrong': 9
+con hueco de fuentes: 27
+fuente a revisar: 0
+
+lengua  n  helps≤1  sin_fuente  sin_fuente_propia
+en      29       6          0               11

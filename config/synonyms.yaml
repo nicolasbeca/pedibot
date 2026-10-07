@@ -2317,6 +2317,13 @@ de_en:
   # 5-oct-2026, batería con el reparto de las consultas reales (L252).
   bellend:
   - croup
+  # 7-oct-2026: «mein Baby hat seit heute gelbe Haut, er ist 6 Tage alt» traía la muerte súbita.
+  gelb:
+  - jaundice in babies
+  - jaundice
+  gelbsucht:
+  - jaundice in babies
+  - jaundice
 ru_es:
   # 17-sep-2026: el triaje ya avisaba de estos dos, pero el texto contestaba «no tengo
   # información» teniendo el material: el capítulo «Escroto agudo en la infancia» y los

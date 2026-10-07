@@ -810,6 +810,12 @@ _DOSE_QUERY = re.compile(
 )
 
 
+#: 7-oct-2026: los Ratgeber del RKI son para médicos («für Ärztinnen und Ärzte») y en alemán ganaban
+#: sólo por la lengua: «Husten seit einer Woche» traía tos ferina, tuberculosis, VRS y covid;
+#: «schläfrig und schwer zu wecken», el meningococo. Siguen saliendo cuando la pregunta es de su
+#: enfermedad; para un síntoma general, antes la página para padres en otra lengua.
+ORG_WEIGHT = {"RKI": 0.6}
+
 DOC_TYPE_WEIGHT = {
     "hoja_padres": 1.6,
     "calendario": 1.3,
@@ -1090,6 +1096,7 @@ class Index:
             matched = sum(1 for t in terms if term_matches(t, palabras))
             if prefer_parent_leaflets:
                 score *= DOC_TYPE_WEIGHT.get(ch.doc_type, 1.0)
+                score *= ORG_WEIGHT.get(ch.org, 1.0)
             if thin_lang and ch.lang == thin_lang:
                 # A language with a handful of documents needs its own material to surface: the
                 # cross-lingual bridge is so much bigger that it buries it (French pertussis lost
