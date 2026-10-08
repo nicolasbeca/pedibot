@@ -36,7 +36,16 @@ petición del 5-oct a poststelle@bioeg.de. Condiciones, citadas:
 - «…dass unsere Seite sowie unsere Inhalte absolut werbefrei sind und bleiben.» → PediBot no
   lleva publicidad; si eso cambiara algún día, sus páginas salen del índice.
 
-**Estado:** nada suyo en el índice todavía; falta el ejemplo.
+**8-oct, ejemplo enviado** (mismo hilo, a su dirección, en el hilo «Kooperation»): respuesta real del motor a «Mein
+Kind hat Erbrechen. Was kann ich tun? (Alter: 4 Jahre)» con un índice que sólo tenía su página
+«Erbrechen von Babys und Kleinkindern», sin retocar. Les señalamos nosotros dos fallos y
+**nos comprometimos a corregirlos antes de publicar**: (1) la lista «Wann bei Erbrechen ein
+Arztbesuch dringend ist» salió sin «wenn es Ihnen nicht gelingt, Ihr Kind zum Trinken zu
+bewegen» (en otra tirada faltaban otros tres: el redactor recorta listas de alarma); (2) «meist
+harmlos» donde ellos dicen «oft harmlose Ursachen». Guion del ejemplo: se rehace con
+`build_chunks` + `build_index` sobre un índice aparte.
+
+**Estado:** esperando su respuesta; nada suyo en el índice hasta que digan que sí.
 
 ### Immunize.org — 30-sep-2026
 
