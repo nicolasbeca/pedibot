@@ -32,10 +32,10 @@
   y descartado: quitar la cabecera del prompt (L261).
 - **Senegal: 1515, no 15** (L262; el Ministerio de Salud manda sobre la FCDO). Pendiente: cotejar
   los 107 números con la autoridad de cada país, empezando por África francófona.
-- **Para el operador (`check_source`):** manos frías con fiebre. El NHS las pone entre los motivos
-  para ir ya; la SEUP dice que al subir la fiebre es normal tener frío y manos moteadas. La regla
-  `cold_extremities_with_fever` sigue el NHS y el redactor cita la SEUP: la respuesta se cae al
-  texto fijo. Decidir qué guía manda.
+- **Guías que discrepan: se dicen las dos** (decisión del operador, para siempre; CLAUDE.md regla 9).
+  Registro en `src/pedibot/bot/guides_differ.py`: el vapor y, desde hoy, las manos frías con
+  fiebre (SEUP «normal al subir la fiebre» / NHS «Call 999»). El aviso se queda; la nota va debajo,
+  también tras un texto fijo.
 - **Siguiente:** medir Search Console otra vez hacia el 29-oct (`ops/gsc_inspect.py`). El modo
   «Auszug» espera a la jefatura del BIÖG (recordatorio a Claudia el 16-oct si no escriben).
 - **El 7-oct** (no se anotó aquí; detalle en L254-L256): cada aviso con su pasaje comprobado

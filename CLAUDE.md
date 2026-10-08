@@ -38,6 +38,7 @@ Esto no son recomendaciones. Son gates que el código y los tests hacen cumplir.
 6. **Salud mental (autolesión, ideación suicida)**: respuesta con protocolo fijo (teléfono 024, 112, hoja SEUP) antes de cualquier otra cosa.
 7. **Disclaimer visible** en cada conversación y en cada artículo. Consentimiento explícito de "esto no es consejo médico" en el primer uso.
 8. **Sin datos personales.** No se pide nombre, ni fecha de nacimiento exacta, ni se guardan IPs en claro. Las conversaciones se guardan anonimizadas con fines de evaluación (hash de sesión, sin identificadores). Privacidad por diseño: RGPD desde el día 1.
+9. **Si las guías no coinciden, se dicen las dos** (decisión del operador, 8-oct-2026). No se elige una por el padre: la respuesta añade qué dice cada organización, en su lengua. Cada conflicto es una entrada de `src/pedibot/bot/guides_differ.py` con su test (hoy: el vapor en el crup, las manos frías con fiebre). Un aviso de alarma que una de las dos respalda se queda; la nota va debajo.
 
 ## Reglas de calidad del motor
 

@@ -38,7 +38,7 @@ from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.temperature import con_fahrenheit, lee_en_fahrenheit, nota_de_conversion
 from pedibot.bot.banner_lead import con_el_aviso_delante
-from pedibot.bot.steam import nota_vapor
+from pedibot.bot.guides_differ import notas as notas_discrepancia
 from pedibot.bot.weight_units import con_kilos, nota_de_peso
 from pedibot.bot.triage import (
     ASISTENTE,
@@ -1964,11 +1964,16 @@ class Engine:
         # (bot/banner_lead.py).
         if a.verification not in _FRASES_FIJAS:
             a.text = con_el_aviso_delante(a.text, a.level, a.lang)
-        # 7-oct-2026: el vapor, en que las guías no coinciden; se dice qué dice cada una
-        # (bot/steam.py).
-        vapor = nota_vapor(query, a.text, a.lang)
-        if vapor and a.verification not in _FRASES_FIJAS and vapor not in a.text:
-            a.text = f"{a.text}\n\n{vapor}"
+        # Cuando las guías no coinciden se dice qué dice cada una (bot/guides_differ.py): el vapor
+        # (7-oct-2026) y las manos frías con fiebre (8-oct-2026). Decisión del operador para
+        # todo conflicto entre fuentes. Algunas notas van también tras un texto fijo: era justo
+        # el conflicto lo que tumbaba la respuesta.
+        if a.verification not in {"clarify", "asked_age", "about", "off_topic"}:
+            fija = a.verification in _FRASES_FIJAS
+            saltadas = [r.id for r in self.triage.assess(query).matched]
+            for nota in notas_discrepancia(saltadas, query, a.text, a.lang, fija=fija):
+                if nota not in a.text:
+                    a.text = f"{a.text}\n\n{nota}"
         # 5-oct-2026: «(Alter: 4 Jahre) (Gewicht: 10 kg)» pasó sin comentario (consulta real).
         # Un peso fuera de la curva se dice: o es una errata, y las dosis van por peso, o hay que
         # ver a ese niño. La herramienta de crecimiento ya lo dice ella sola.
