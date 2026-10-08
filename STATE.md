@@ -27,6 +27,13 @@
 - **Países:** urgencias, calendarios y curvas se indexan sólo en las lenguas del país y en
   inglés (`src/countrylangs.mjs`); sitemap 2.965 → 1.271. Guías no indexadas: no son duplicados,
   son sobre todo rusas sin fuente rusa; lo arregla tener fuentes en ruso, no código.
+- **Triaje, tarde del 8-oct:** quemadura pequeña ya no manda a urgencias (L260); «can't catch
+  his breath», «short of breath» → que lo vean hoy; fiebre con «malaria» nombrada → prueba. Probado
+  y descartado: quitar la cabecera del prompt (L261).
+- **Para el operador (`check_source`):** manos frías con fiebre. El NHS las pone entre los motivos
+  para ir ya; la SEUP dice que al subir la fiebre es normal tener frío y manos moteadas. La regla
+  `cold_extremities_with_fever` sigue el NHS y el redactor cita la SEUP: la respuesta se cae al
+  texto fijo. Decidir qué guía manda.
 - **Siguiente:** medir Search Console otra vez hacia el 29-oct (`ops/gsc_inspect.py`). El modo
   «Auszug» espera a la jefatura del BIÖG (recordatorio a Claudia el 16-oct si no escriben).
 - **El 7-oct** (no se anotó aquí; detalle en L254-L256): cada aviso con su pasaje comprobado

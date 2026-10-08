@@ -1831,6 +1831,14 @@ rules:
   - fast breathing
   - breathing (is )?faster than (normal|usual)
   - breathes faster than (normal|usual)
+  # 8-oct-2026, batería difícil: «he feels like he can't catch his breath» daba rutina. Las
+  # formas habladas de la falta de aire, menos al correr o con ejercicio.
+  - (can'?t|cannot|can not|unable to) catch (his|her|their|my|its)? ?breath(?![^.]{0,40}(run|running|ran|exercis|sport|football|soccer|playing|park|stairs))
+  - \bshort of breath(?![^.]{0,40}(run|running|ran|exercis|sport|football|soccer|playing))
+  - \bout of breath(?![^.]{0,40}(when (he|she|they) (run|play|exercis)|after (running|playing|football|sport|exercis|practice|climbing)|running|playing))
+  - (hard|difficult) (for (him|her|them) )?to breathe
+  - le falta (el )?aire(?![^.]{0,40}(corr|ejercicio|deporte|f[úu]tbol|jugando))
+  - manque d'air|a du mal [àa] reprendre (son )?souffle
   - wheez
   - whistling
   - respire (vite|tr[eè]s vite|rapidement)(?![^.]{0,60}(cuando (corre|juega|salta)|al (correr|jugar)|akikimbia|akicheza|when (he|she) runs|while running|quand il court|en courant|beim (laufen|spielen)|когда бегает|عندما يجري|दौड़)[^.]{0,40}(pero|se le pasa|luego|lakini|inaisha|but|then|mais|aber|но|لكن|फिर))
@@ -5657,6 +5665,10 @@ rules:
   - (viaje|viajar|trip|travel)[^.]{0,40}(africa|[áa]frica|india|thailand|tailandia|egipto|egypt|marruecos|morocco)[^.]{0,60}(fiebre|fever)
   - (fiebre|fever)[^.]{0,40}(viajar|viaje|travel\w*|trip)[^.]{0,20}(a |to )?(egipto|egypt|marruecos|morocco|africa|[áa]frica|india)
   - homa baada ya kusafiri
+  # 8-oct-2026, batería difícil: «my 3 year old has malaria fever or maybe teething» daba
+  # rutina. Fiebre y la palabra paludismo juntas piden la prueba; con la vacuna, no.
+  - (malaria|paludism\w*|mal[áa]ria|малярия|ملاريا|मलेरिया)(?![^.]{0,25}(vaccin|vacun|impf|shot|jab|прививк|لقاح|टीक))[^.]{0,50}(fever|fiebre|fi[èe]vre|febre|fieber|температур|лихорад|حمى|बुखार|बुख़ार)
+  - (fever|fiebre|fi[èe]vre|febre|fieber|температур|лихорад|حمى|बुखार|बुख़ार)(?![^.]{0,40}(vaccin|vacun|impf|shot|jab))[^.]{0,50}(malaria|paludism\w*|mal[áa]ria|малярия|ملاريا|मलेरिया)(?![^.]{0,25}(vaccin|vacun|impf|shot|jab|прививк|لقاح|टीक))
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "homa[^.]{0,60}(eneo|sehemu) (lenye|yenye) malaria"
   - "(eneo|sehemu) (lenye|yenye) malaria[^.]{0,60}homa"
