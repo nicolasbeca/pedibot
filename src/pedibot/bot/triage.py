@@ -300,6 +300,12 @@ class Rule:
     #: dice el aviso (al estridor le llegaba la prevención de enfermedades genéticas del manual
     #: cubano). Sin pasaje comprobado, no se inyecta nada.
     source_chunk: str | None = None
+    #: 8-oct-2026: lo que dice que es leve («small burn») y lo que la hace grave aunque se diga
+    #: leve (la cara, una quemadura química). La regla deja de saltar sólo con lo primero y nada
+    #: de lo segundo. «My son got a small burn from hot water on his arm» daba urgencias hoy; el
+    #: NHS dice que una pequeña se cura en casa.
+    mild_if: list[re.Pattern[str]] = field(default_factory=list)
+    serious_if: list[re.Pattern[str]] = field(default_factory=list)
 
 
 @dataclass
@@ -1144,6 +1150,8 @@ class Triage:
                     patterns=[re.compile(aplana(p), re.I) for p in r.get("patterns", [])],
                     requires=list(r.get("requires", [])),
                     source_chunk=r.get("source_chunk"),
+                    mild_if=[re.compile(aplana(p), re.I) for p in r.get("mild_if", [])],
+                    serious_if=[re.compile(aplana(p), re.I) for p in r.get("serious_if", [])],
                 )
             )
         ctx = raw.get("context", {})
@@ -1246,6 +1254,13 @@ class Triage:
                 matched.append(r)
                 continue
             if not any(self._hits(rx, frase) for rx in r.patterns):
+                continue
+            if (
+                r.mild_if
+                and any(rx.search(frase) for rx in r.mild_if)
+                and not any(rx.search(frase) for rx in r.serious_if)
+                and not (age is not None and age < 12)
+            ):
                 continue
             if r.requires and self._contradicted(r.requires, age):
                 continue

@@ -2888,7 +2888,36 @@ rules:
   reason_es: Quemadura (especialmente en cara, manos, genitales o extensa)
   reason_en: Burn (especially face, hands, genitals or large area)
   reason_fr: Brûlure (surtout au visage, aux mains, aux parties génitales ou étendue)
+  # 8-oct-2026: «a small burn from hot water on his arm» daba urgencias. El NHS: «can often be
+  # treated at home if they're small»; A&E si «very large or deep», «face, genitals or bottom»,
+  # química o eléctrica. Deja de saltar sólo si el padre dice que es pequeña y nada de esto; en
+  # un bebé (menos de 12 meses) salta siempre. Fijado en test_a_small_burn_is_cared_for_at_home.
+  mild_if:
+  - \b(small|little|tiny|minor|slight)\b[^.]{0,20}\b(burn|scald)
+  - \b(burn|scald)\w*[^.]{0,15}\b(is|was|looks)\b[^.]{0,10}\b(small|little|tiny|minor)\b
+  - quemad\w*[^.]{0,6}(peque[ñn]\w*|leve|chiquit\w*)
+  - (peque[ñn]\w*|leve|chiquit\w*)[^.]{0,6}quemad
+  - petite?s? br[uû]l
+  - br[uû]l\w*[^.]{0,6}(l[ée]g[eè]re?s?|petite?s?)
+  - kleine\w*[^.]{0,10}(verbrennung|verbr[üu]hung|brandwunde)
+  serious_if:
+  - face|cara|visage|gesicht|lips?\b|labio|mouth|boca|eye|ojo|œil|yeux|auge
+  - genital|privates|bottom|nalga|culete|fesse|\bpo\b|intim
+  - \bhands?\b|\bmanos?\b|\bmains?\b|finger.{0,10}blist
+  - blister|ampolla|cloque|blase|bulle
+  - chemical|bleach|acid|qu[ií]mic|lej[ií]a|[áa]cido|chimique|javel|chemisch|s[äa]ure
+  - electric|el[ée]ctric|socket|enchufe|prise|steckdose|strom
+  - white|charred|black|blanc|negr|wei[sß]|no (pain|duele)|doesn'?t hurt|pas mal|keine schmerz
+  - deep|profund|tief
+  - baby|bebé|beb[eê]|nourrisson|s[äa]ugling|newborn|reci[ée]n nacid
+  - large|big|extens|grande|gro[sß]
   patterns:
+  # 8-oct-2026: «my son got burned with boiling water» no daba NADA: había «burn», «burnt his»
+  # y «scald», pero no «burned with». Ni el agua hirviendo dicha en inglés.
+  - \bburn(ed|t)?\b(?![^.]{0,25}(by the sun|in the sun|from the sun))
+  # «burns» es también «escuece»: «it burns when he pees» es orina, no una quemadura
+  - (?<!it )\bburns\b(?![^.]{0,30}(pee|urin|wee|poo|when he|when she|when i))
+  - boiling (water|milk|oil|tea|soup)
   # 5-oct-2026, batería con el reparto de las consultas reales (L252): dicho así, no saltaba.
   - 'se (ha )?quem(ó|o|ado|ada) con (agua|aceite|la plancha|leche|caf[ée]|sopa)'
   # ── suajili (18-sep-2026, fase 3 de África) ──

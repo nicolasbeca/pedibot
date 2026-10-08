@@ -2211,3 +2211,16 @@ algo que la guía no dice 95 → 89. Una variante sin la lista bajo aviso perdi�
 ganado y no quitó los fallbacks, que no venían de ahí. **Regla:** una restricción de forma («una
 frase») decide en silencio qué se queda fuera; se mide qué se pierde antes de ponerla, y la
 fuente que lee el ejemplo lo ve antes que nosotros.
+
+## L260 · Una alarma de más también deja al padre sin respuesta (8-oct-2026)
+
+Buscando por qué el v14 mandaba cuatro respuestas al texto fijo («haz lo que dice el aviso»), la
+primera no era un fallo del redactor sino del triaje: «a small burn from hot water on his arm»
+sacaba el aviso de urgencias (la regla `burn` saltaba con cualquier quemadura). El redactor
+escribía lo que el NHS dice para una quemadura pequeña —agua fría 20 minutos, film—, eso
+contradecía el aviso, el filtro de seguridad lo tumbaba y el padre se quedaba sin un solo
+consejo. Ahora una regla puede llevar `mild_if` y `serious_if`: deja de saltar sólo si el padre
+dice que es leve y nada de lo que la hace grave (cara, manos, ampollas, química, eléctrica,
+profunda, extensa, bebé; y con menos de 12 meses, siempre salta). De paso, «burned with boiling
+water» no daba nada y ahora sí. 1 cambio en 3.848 preguntas de las baterías, a bien. **Regla:** un
+fallback bajo aviso se lee antes de tocar el redactor; a veces lo que sobra es el aviso.
