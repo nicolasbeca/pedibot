@@ -56,6 +56,11 @@ momento y no se pueden aprobar una a una; mientras decide su jefatura, ofrecemos
 **extractos literales con «(Auszug)», fuente y enlace**, sin resumen propio (lo que sus normas
 permiten sin más permiso), o sólo enlazar si lo prefieren. Se le invita a probar pedibot.xyz.
 
+**8-oct, 14:12, su respuesta:** «das hatte ich übersehen»: el punto de no conseguir que beba
+**sí va**, la lista entera. «Ich melde mich sobald ich die Info habe. Bis dahin bitten die
+Seiten so nutzen, wie es unsere Nutzungsregeln ohne weitere Erlaubnis vorsehen» (= extractos
+literales con «(Auszug)», fuente y enlace). No se le contesta: queda en que escribe ella.
+
 **Estado:** nada suyo en el índice. Ojo: el redactor hoy siempre resume; usar sus páginas como
 «Auszug» exige un modo de cita literal que no existe. No se indexa hasta que contesten.
 
