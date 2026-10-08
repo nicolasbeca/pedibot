@@ -24,7 +24,10 @@
   literales con «(Auszug)» (`ops/PERMISOS.md`). Enviados además Kinderärzte im Netz, SPP, Medic.
 - **Prompt v14** (L259): la lista de «cuándo consultar» entera; motivos que llegan 34 % → 52 %,
   urgencia mal 30 → 20. Juez nuevo `eval/bateria_operador/alarma_completa.py`.
-- **Siguiente:** las 32 guías que Google no indexa; calendarios de vacunas cortos. El modo
+- **Países:** urgencias, calendarios y curvas se indexan sólo en las lenguas del país y en
+  inglés (`src/countrylangs.mjs`); sitemap 2.965 → 1.271. Guías no indexadas: no son duplicados,
+  son sobre todo rusas sin fuente rusa; lo arregla tener fuentes en ruso, no código.
+- **Siguiente:** medir Search Console otra vez hacia el 29-oct (`ops/gsc_inspect.py`). El modo
   «Auszug» espera a la jefatura del BIÖG (recordatorio a Claudia el 16-oct si no escriben).
 - **El 7-oct** (no se anotó aquí; detalle en L254-L256): cada aviso con su pasaje comprobado
   (87 de 97 reglas), búsqueda en inglés con palabras en inglés, 16 páginas del NHS para huecos, el

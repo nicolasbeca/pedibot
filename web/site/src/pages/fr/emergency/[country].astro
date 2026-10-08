@@ -21,6 +21,7 @@
  * scripts/build_emergency_pages.py; editar una copia a mano la deja desparejada de las otras.
  */
 import Base from '../../../layouts/Base.astro';
+import { countryIndexedIn, countryIndexedLangs } from '../../../countrylangs.mjs';
 import Checklist from '../../../components/Checklist.astro';
 import emergency from '../../../data/emergency.json';
 import vaccines from '../../../data/vaccines.json';
@@ -67,7 +68,7 @@ const jsonld = {
   audience: { '@type': 'Patient' },
 };
 ---
-<Base lang={lang} title={`${h1} — PediBot`} description={desc} path={`${pref}/emergency/${code.toLowerCase()}`} jsonld={jsonld}>
+<Base lang={lang} title={`${h1} — PediBot`} description={desc} path={`${pref}/emergency/${code.toLowerCase()}`} jsonld={jsonld} indexedLangs={countryIndexedLangs(code)} noindex={!countryIndexedIn(code, lang)}>
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.emg_eyebrow}</p>
     <h1 style="margin-top:8px">{h1}</h1>

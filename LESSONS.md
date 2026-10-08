@@ -2189,6 +2189,12 @@ entre un 60 y un 90 %, y con un sitio joven Google indexa una parte y elige él 
 marca se indexa sólo en las lenguas de sus países y en inglés (`src/brandlangs.mjs`); el resto
 sigue abierto, con `noindex`, fuera del sitemap y del hreflang. El sitemap pasa de 3.157 a 2.965.
 De paso, el test «nada del sitemap lleva noindex» encontró las ocho /family, que estaban en él.
+Por la tarde, lo mismo a mayor escala: 2.216 de las 2.965 URLs eran tablas país × lengua
+(urgencias, calendarios, curvas), y Google dejaba fuera /es/vaccines/es mientras indexaba
+/es/vaccines/gb. Un país se indexa ahora en inglés y en las lenguas que se hablan allí
+(`src/countrylangs.mjs`, que usan también las marcas). Sitemap 2.965 → 1.271; lo que pasa a
+noindex sumaba 176 impresiones en 90 días y ningún clic. Las guías no indexadas no son
+duplicados: son sobre todo rusas (12 de 14), traducciones de páginas inglesas del NHS.
 **Regla:** cuando Google elige qué indexar entre páginas parecidas, se le dice cuáles importan;
 y lo que se mide en Search Console se mide por URL, no por el total del correo.
 

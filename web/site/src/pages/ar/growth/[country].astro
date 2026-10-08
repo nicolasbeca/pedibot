@@ -5,6 +5,7 @@
  * config/growth_charts.yaml y tests/test_percentiles_by_country.py.
  */
 import Base from '../../../layouts/Base.astro';
+import { countryIndexedIn, countryIndexedLangs } from '../../../countrylangs.mjs';
 import Growth from '../../../components/Growth.astro';
 import CountryLinks from '../../../components/CountryLinks.astro';
 import charts from '../../../data/growth_charts.json';
@@ -24,7 +25,7 @@ const years = (c: any) => s.growthc_years.replace('{from}', String(Math.round(c.
 const sentence = data.match === 'full' ? s.growthc_full : data.match === 'national' ? s.growthc_national : s.growthc_partial;
 const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: fill(s.growthc_title), about: { '@type': 'MedicalTest', name: 'Growth chart percentiles' }, audience: { '@type': 'Patient' }, spatialCoverage: { '@type': 'Country', name } };
 ---
-<Base lang={lang} title={fill(s.growthc_title)} description={fill(s.growthc_desc)} path={`${langPrefix(lang)}/growth/${code.toLowerCase()}`} jsonld={jsonld}>
+<Base lang={lang} title={fill(s.growthc_title)} description={fill(s.growthc_desc)} path={`${langPrefix(lang)}/growth/${code.toLowerCase()}`} jsonld={jsonld} indexedLangs={countryIndexedLangs(code)} noindex={!countryIndexedIn(code, lang)}>
   <div class="wrap" style="padding-top:40px">
     <p class="eyebrow">{s.nav_growth} · {name}</p>
     <Growth lang={lang} country={code} />

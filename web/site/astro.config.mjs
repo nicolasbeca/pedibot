@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { brandIndexedIn } from './src/brandlangs.mjs';
+import { countryIndexedIn } from './src/countrylangs.mjs';
 
 /**
  * Last-modified date per URL, so the sitemap says what changed.
@@ -101,7 +102,10 @@ export default defineConfig({
         // /family es una pantalla de cuenta con noindex, y estaba en el sitemap (lo pilló el test)
         if (/\/(offline|memo|family)\/?$/.test(page)) return false;
         const m = new URL(page).pathname.match(/^\/(?:([a-z]{2})\/)?dose\/([^/]+)\/?$/);
-        return !m || brandIndexedIn(m[2], LOCALES.has(m[1]) ? m[1] : 'en');
+        if (m) return brandIndexedIn(m[2], LOCALES.has(m[1]) ? m[1] : 'en');
+        // y el país en una lengua que no se habla allí (src/countrylangs.mjs)
+        const p = new URL(page).pathname.match(/^\/(?:([a-z]{2})\/)?(?:emergency|vaccines|growth)\/([a-z]{2})\/?$/);
+        return !p || countryIndexedIn(p[2], LOCALES.has(p[1]) ? p[1] : 'en');
       },
       serialize(item) {
         const p = new URL(item.url).pathname.replace(/\/$/, '');

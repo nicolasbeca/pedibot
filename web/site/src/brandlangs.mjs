@@ -12,22 +12,7 @@
  */
 import drugs from './data/drugs.json' with { type: 'json' };
 
-/** Las lenguas del sitio que lee un padre en cada país donde vendemos alguna marca. Sólo hacen
- *  falta los países de drugs.json; un país que no está aquí no añade ninguna lengua. EE. UU.
- *  lleva el castellano: «dosis de tylenol para niños» se busca allí. */
-export const LANGS_OF_COUNTRY = {
-  US: ['en', 'es'], CA: ['en', 'fr'], GB: ['en'], IE: ['en'], AU: ['en'], NZ: ['en'],
-  IN: ['en', 'hi'],
-  KE: ['en'], NG: ['en'], GH: ['en'], UG: ['en'], TZ: ['en'], ZA: ['en'], ZM: ['en'], ZW: ['en'],
-  MW: ['en'], BW: ['en'], LS: ['en'], NA: ['en'], SZ: ['en'], MU: ['en', 'fr'],
-  ES: ['es'], MX: ['es'], AR: ['es'], CL: ['es'], CO: ['es'],
-  FR: ['fr'], BF: ['fr'], BJ: ['fr'], CG: ['fr'], CI: ['fr'], CM: ['fr'], GA: ['fr'], GN: ['fr'],
-  ML: ['fr'], NE: ['fr'], SN: ['fr'], TD: ['fr'], TG: ['fr'],
-  DZ: ['ar', 'fr'], MA: ['ar', 'fr'], TN: ['ar', 'fr'], MR: ['ar', 'fr'],
-  AE: ['ar'], BH: ['ar'], KW: ['ar'], OM: ['ar'], QA: ['ar'], SA: ['ar'], EG: ['ar'], JO: ['ar'],
-  LB: ['ar'],
-  DE: ['de'], PT: ['pt'], BR: ['pt'],
-};
+import { LANGS_OF_COUNTRY } from './countrylangs.mjs';
 
 /** slug de marca → países donde se vende (drugs.json repite una marca por país). */
 const BRAND_COUNTRIES = new Map();
