@@ -46,3 +46,10 @@ def test_the_temperature_itself_still_reads(triage):
     t = triage.assess("my son has a fever of 41.5")
     assert "very_high_fever" in [r.id for r in t.matched]
     assert triage.assess("my baby has 38.5 fever").has_fever
+
+
+def test_the_ai_reader_sees_the_same_words(triage):
+    # `matched_words` es lo que se enseña a la IA que confirma las alarmas; tiene que ver la
+    # misma coincidencia que `assess`, o la regla le llega sin palabras
+    w = triage.matched_words("my son has a fever of 39.5 and his hands and feet are cold")
+    assert "cold_extremities_with_fever" in w

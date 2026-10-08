@@ -1181,7 +1181,9 @@ class Triage:
         quitaba «testículos un poco hinchados» porque el motivo dice «dolor». Las reglas que
         saltan por edad y fiebre no están aquí, y por eso no se pueden quitar.
         """
-        texto = aplana(_GUIONES.sub(" ", text))
+        # la misma coma decimal que `assess`: misma longitud, así que el trozo de alrededor sale
+        # igual salvo por esa coma
+        texto = _PUNTO_DECIMAL.sub(",", aplana(_GUIONES.sub(" ", text)))
         out: dict[str, tuple[str, str]] = {}
         for r in self.assess(text).matched:
             for rx in r.patterns:
