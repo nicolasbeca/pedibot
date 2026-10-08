@@ -307,3 +307,9 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   para resumir con cita y enlace la sección de salud infantil en ruso, árabe, hindi, suajili y
 >   portugués. Es la fuente que llenaría el hueco ruso y árabe (sólo fichas de la OMS hoy). En el
 >   catálogo entraría como `evidence: editorial`. Su formulario pide teléfono: se dio el del operador.
+> - **Números de urgencias, 8-oct (con su sí: «manda hoy 2, el lunes 3 y el martes 2»):**
+>   Sociedad Boliviana de Pediatría (`sobope_2007@hotmail.com`, cc `ipepe63@yahoo.com`, los que
+>   publica su revista en SciELO): ¿118 o el 168 del Ministerio? OMS Mozambique (`afwcomz@who.int`,
+>   su página de país): ¿848888 / 823388 o 117? Para Camerún, Madagascar, Etiopía, Togo y Chad no
+>   hay dirección publicada ni de la sociedad de pediatría ni de la OMS (formularios o webs caídas):
+>   no se adivina ninguna. Gmail por la API no programa envíos.
