@@ -64,7 +64,7 @@ llm = provider_from_settings()
 
 
 #: 5-oct-2026: para medir un prompt o la inyección del «cuándo consultar» con y sin.
-PROMPT = os.environ.get("PEDIBOT_PROMPT", "answer_v12")
+PROMPT = os.environ.get("PEDIBOT_PROMPT", "answer_v14")
 INYECTA = os.environ.get("PEDIBOT_INYECTA", "1") == "1"
 
 

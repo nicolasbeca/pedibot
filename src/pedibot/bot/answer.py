@@ -737,7 +737,7 @@ class EmergencyNumbers:
         return default
 
 
-def load_prompt(version: str = "answer_v12") -> tuple[str, str]:
+def load_prompt(version: str = "answer_v14") -> tuple[str, str]:
     text = (PROMPTS_DIR / f"{version}.md").read_text(encoding="utf-8")
     return version, text
 
@@ -1752,7 +1752,7 @@ class Engine:
         triage: Triage,
         llm: LLMProvider,
         numbers: EmergencyNumbers,
-        prompt_version: str = "answer_v12",
+        prompt_version: str = "answer_v14",
         drugs: DrugCatalog | None = None,
         vaccines: Vaccines | None = None,
         guides: GuideIndex | None = None,

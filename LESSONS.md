@@ -2191,3 +2191,17 @@ sigue abierto, con `noindex`, fuera del sitemap y del hreflang. El sitemap pasa 
 De paso, el test «nada del sitemap lleva noindex» encontró las ocho /family, que estaban en él.
 **Regla:** cuando Google elige qué indexar entre páginas parecidas, se le dice cuáles importan;
 y lo que se mide en Search Console se mide por URL, no por el total del correo.
+
+## L259 · «Cuándo consultar» en una frase dejaba fuera dos tercios de la lista (8-oct-2026)
+
+Al preparar un ejemplo para el BIÖG salió que el redactor recortaba su lista de siete motivos
+para ir al pediatra: en cada tirada faltaban uno o tres distintos. El prompt v12 pedía «when to
+get help: one sentence» desde que el 7-oct se quitó la lista con viñetas (cosía signos de otra
+enfermedad). Medido con un juez nuevo (`alarma_completa.py`: qué motivos del pasaje de alarma
+aplican a este niño y cuáles llegan), sobre la batería difícil: llegaba el **34 %**, y 198 de 252
+respuestas con lista la dejaban incompleta. El v14 pide todos los que pueden aplicar, sólo del
+pasaje de esta situación, y prohíbe suavizar además de endurecer: 52 %, urgencia mal 30 → 20,
+algo que la guía no dice 95 → 89. Una variante sin la lista bajo aviso perdió la mitad de lo
+ganado y no quitó los fallbacks, que no venían de ahí. **Regla:** una restricción de forma («una
+frase») decide en silencio qué se queda fuera; se mide qué se pierde antes de ponerla, y la
+fuente que lee el ejemplo lo ve antes que nosotros.

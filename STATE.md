@@ -19,6 +19,13 @@
   fuera /dose/tylenol y metía /de/dose/apirofeno: la marca se indexa ahora sólo en las lenguas de
   sus países y en inglés; /family fuera del sitemap. **Repetir la medida hacia el 29-oct.**
   Pendiente: las páginas de vacunas son cortas (/vaccines/us, 261 palabras) y no entran.
+- **BIÖG (kindergesundheit-info.de):** sí con condiciones; ejemplo enviado y aceptado; lista de
+  alarma completa; para resumir más necesitan a su jefatura; hasta entonces sólo extractos
+  literales con «(Auszug)» (`ops/PERMISOS.md`). Enviados además Kinderärzte im Netz, SPP, Medic.
+- **Prompt v14** (L259): la lista de «cuándo consultar» entera; motivos que llegan 34 % → 52 %,
+  urgencia mal 30 → 20. Juez nuevo `eval/bateria_operador/alarma_completa.py`.
+- **Siguiente:** modo «Auszug» (cita literal) para fuentes que sólo permiten eso; las 32 guías
+  que Google no indexa; calendarios de vacunas cortos.
 - **El 7-oct** (no se anotó aquí; detalle en L254-L256): cada aviso con su pasaje comprobado
   (87 de 97 reglas), búsqueda en inglés con palabras en inglés, 16 páginas del NHS para huecos, el
   vapor en el crup con lo que dice cada guía, y permisos pedidos a St John Ambulance, NHS 111
