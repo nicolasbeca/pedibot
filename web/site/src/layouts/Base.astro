@@ -21,8 +21,11 @@ interface Props { lang: Lang; title: string; description: string; path: string; 
   // 19-sep-2026: para las páginas que son un ESTADO y no contenido — hoy sólo /offline, que
   // sirve el service worker cuando no hay red. No se indexan, no van al sitemap y el grafo de
   // enlaces no las cuenta como huérfanas, igual que ya hacía con las redirecciones.
-  noindex?: boolean }
-const { lang, title, description, path, jsonld, others, noindex } = Astro.props;
+  noindex?: boolean;
+  // 8-oct-2026: las ediciones que se indexan, cuando no son todas (la marca en las lenguas donde
+  // se vende). El hreflang anuncia sólo esas; el selector de idioma sigue llevando a todas.
+  indexedLangs?: Lang[] }
+const { lang, title, description, path, jsonld, others, noindex, indexedLangs } = Astro.props;
 const s = t(lang);
 /**
  * Lo que enseña un resultado de búsqueda son unos 60 caracteres de título. Medido el
@@ -111,7 +114,7 @@ const org = { '@context': 'https://schema.org', '@type': 'Organization', name: '
   {enHref !== null && (
     <link rel="alternate" hreflang="x-default" href={`${site}${enHref === '/' ? '' : enHref}`} />
   )}
-  {alternates.map((a) => (
+  {alternates.filter((a) => !indexedLangs || indexedLangs.includes(a.lang)).map((a) => (
     <link rel="alternate" hreflang={a.lang} href={`${site}${a.href === '/' ? '' : a.href}`} />
   ))}
   {/* 19-sep-2026. Hasta hoy el icono era un SVG dibujado por mí que se le parecía al logo de

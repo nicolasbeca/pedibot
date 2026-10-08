@@ -2178,3 +2178,16 @@ público principal. Arreglo en `assess`: para las reglas, el punto entre cifras 
 edad y la fiebre siguen leyendo el original. En las baterías, 3 de 47 preguntas con decimal
 cambian, las 3 a bien (inglés, ruso, árabe). **Regla:** un separador que el patrón da por fin de
 frase hay que comprobarlo contra cómo se escriben los números en cada país.
+
+## L258 · Google se quedaba con las páginas de marca equivocadas (8-oct-2026)
+
+Search Console avisaba de «páginas no indexadas» sin decir cuáles. Preguntado URL a URL (URL
+Inspection API, 297 páginas, `ops/gsc_inspect.py`): fuera /dose/tylenol, /dose/calpol,
+/dose/nurofen, /es/dose/ibuprofeno; dentro /de/dose/apirofeno (marca que sólo se vende en España,
+en alemán) y /fr/dose/tachipirina. 32 marcas por ocho lenguas son 256 páginas que se parecen
+entre un 60 y un 90 %, y con un sitio joven Google indexa una parte y elige él cuál. Ahora la
+marca se indexa sólo en las lenguas de sus países y en inglés (`src/brandlangs.mjs`); el resto
+sigue abierto, con `noindex`, fuera del sitemap y del hreflang. El sitemap pasa de 3.157 a 2.965.
+De paso, el test «nada del sitemap lleva noindex» encontró las ocho /family, que estaban en él.
+**Regla:** cuando Google elige qué indexar entre páginas parecidas, se le dice cuáles importan;
+y lo que se mide en Search Console se mide por URL, no por el total del correo.

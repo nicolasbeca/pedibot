@@ -391,11 +391,24 @@ def test_cada_farmaco_declara_sus_ocho_ediciones_en_el_html() -> None:
     Se comprueba justo en las páginas donde la rebanada cambia con la lengua, que son las que
     rompieron las dos veces.
     """
+    # 8-oct-2026: una marca se indexa sólo en las lenguas donde se vende (src/brandlangs.mjs), y
+    # el hreflang no anuncia una edición con noindex. Lo que se exige son todas las INDEXADAS:
+    # las que existen y no piden quedarse fuera. Los genéricos siguen teniendo las ocho.
+    noindex = re.compile(r'<meta name="robots" content="noindex', re.I)
     faltan = []
     for f in sorted((DIST / "dose").glob("*/index.html")):
         html = f.read_text(encoding="utf-8")
         idiomas = set(re.findall(r'rel="alternate" hreflang="([a-z-]+)"', html))
-        esperadas = {"en", "es", "fr", "de", "ru", "ar", "pt", "hi", "x-default"}
+        # la página es la inglesa, que siempre se indexa; las demás ediciones se buscan por el
+        # selector de idioma, único sitio de la página que enlaza a /<lengua>/dose/...
+        esperadas = {"en", "x-default"}
+        for lang in ("es", "fr", "de", "ru", "ar", "pt", "hi"):
+            hrefs = re.findall(rf'href="(/{lang}/dose/[^"/#?]+)"', html)
+            destino = next((h for h in hrefs if (DIST / h.strip("/") / "index.html").exists()), None)
+            if destino and not noindex.search((DIST / destino.strip("/") / "index.html").read_text("utf-8")[:4000]):
+                esperadas.add(lang)
+        if f.parent.name in ("paracetamol", "ibuprofen"):
+            esperadas = {"en", "es", "fr", "de", "ru", "ar", "pt", "hi", "x-default"}
         if not esperadas <= idiomas:
             faltan.append(f"{f.parent.name}: sin {sorted(esperadas - idiomas)}")
     assert not faltan, "páginas de fármaco con el grupo de idiomas incompleto:\n" + "\n".join(

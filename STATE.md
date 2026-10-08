@@ -13,6 +13,12 @@
 - **Triaje:** «fever of 39.5 and cold hands» daba rutina: el punto decimal cortaba los `[^.]` de
   1.408 patrones. Ahora, para las reglas, el punto entre cifras es coma. 3 de 47 preguntas con
   decimal de las baterías cambian, las 3 a bien. Desplegado y comprobado en el servidor.
+- **Search Console, URL a URL** (L258, `ops/gsc_inspect.py`; la medida de hoy en el servidor,
+  `data/gsc_inspect_2026-10-08.json`): de 297, 138 indexadas, 87 rastreadas sin indexar (34 dosis,
+  32 guías, 17 vacunas), 1 «duplicada» que es una dirección vieja ya redirigida. Google dejaba
+  fuera /dose/tylenol y metía /de/dose/apirofeno: la marca se indexa ahora sólo en las lenguas de
+  sus países y en inglés; /family fuera del sitemap. **Repetir la medida hacia el 29-oct.**
+  Pendiente: las páginas de vacunas son cortas (/vaccines/us, 261 palabras) y no entran.
 - **El 7-oct** (no se anotó aquí; detalle en L254-L256): cada aviso con su pasaje comprobado
   (87 de 97 reglas), búsqueda en inglés con palabras en inglés, 16 páginas del NHS para huecos, el
   vapor en el crup con lo que dice cada guía, y permisos pedidos a St John Ambulance, NHS 111
