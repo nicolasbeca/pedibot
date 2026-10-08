@@ -2224,3 +2224,12 @@ dice que es leve y nada de lo que la hace grave (cara, manos, ampollas, química
 profunda, extensa, bebé; y con menos de 12 meses, siempre salta). De paso, «burned with boiling
 water» no daba nada y ahora sí. 1 cambio en 3.848 preguntas de las baterías, a bien. **Regla:** un
 fallback bajo aviso se lee antes de tocar el redactor; a veces lo que sobra es el aviso.
+
+## L261 · La historia del prompt también instruye (8-oct-2026)
+
+El prompt v14 lleva 1.100 palabras de comentarios (por qué existe cada regla) de 2.706, y el
+modelo las leía en cada respuesta. Quitarlas parecía obvio: más barato y sin la regla vieja
+citada encima de la nueva. Medido en la batería difícil, empeora: flojas 61 → 73, utilidad 42
+suben y 56 bajan, «no tengo fuente» 6 → 15 (sólo mejora «algo que la guía no dice», 89 → 77).
+Sin el porqué, el modelo se vuelve más miedoso. No se desplegó. **Regla:** lo que parece ruido en
+un prompt se mide antes de quitarlo; los ejemplos de fallos pasados son instrucciones.
