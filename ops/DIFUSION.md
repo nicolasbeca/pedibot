@@ -302,3 +302,8 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   qué serviría y qué falta. Sin petición formal.
 > - **BIÖG contesta que sí** (ver `ops/PERMISOS.md`): falta mandarles un ejemplo antes de indexar.
 
+> - **Manual MSD, versión para el público** (`msdmanualspermissions@msd.com`, su página de
+>   permisos; con el visto bueno del operador, que acepta una fuente publicada por Merck): permiso
+>   para resumir con cita y enlace la sección de salud infantil en ruso, árabe, hindi, suajili y
+>   portugués. Es la fuente que llenaría el hueco ruso y árabe (sólo fichas de la OMS hoy). En el
+>   catálogo entraría como `evidence: editorial`. Su formulario pide teléfono: se dio el del operador.
