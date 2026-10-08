@@ -1,6 +1,22 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-10-05** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-08** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 8-oct-2026 · el punto decimal cerraba la frase (L257)
+
+- **Correo:** ninguna respuesta de las peticiones abiertas. Glama avisó el 7-oct de un 502 en el
+  MCP (arreglado ese día: Caddy espera al API y al MCP); hoy responde 200, sin reinicios. Search
+  Console avisa de páginas «duplicadas, Google eligió otra canónica»: canónicos y redirecciones
+  comprobados en vivo (www, http y barra final van a la buena).
+- **Consultas reales desde el 5-oct:** dos. Nurofen para 14 kg (140 mg, bien) y una dirección de
+  correo escrita en el chat en francés (pide aclarar, bien). Ninguna mala.
+- **Triaje:** «fever of 39.5 and cold hands» daba rutina: el punto decimal cortaba los `[^.]` de
+  1.408 patrones. Ahora, para las reglas, el punto entre cifras es coma. 3 de 47 preguntas con
+  decimal de las baterías cambian, las 3 a bien. Desplegado y comprobado en el servidor.
+- **El 7-oct** (no se anotó aquí; detalle en L254-L256): cada aviso con su pasaje comprobado
+  (87 de 97 reglas), búsqueda en inglés con palabras en inglés, 16 páginas del NHS para huecos, el
+  vapor en el crup con lo que dice cada guía, y permisos pedidos a St John Ambulance, NHS 111
+  Wales, CPS (Caring for Kids) y Santé publique France.
 
 ## 5-oct-2026 (4) · el juez mide contra las guías (L253) y lo que eso destapó
 

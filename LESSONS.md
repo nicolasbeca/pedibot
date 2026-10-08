@@ -2167,3 +2167,14 @@ cosa, que es justo lo que el juez contra las guías marcaba. Ahora cada regla no
 la decían), en el conjunto difícil: con algo que su guía no dice 105 → 82, flojas 78 → 58,
 urgencia mal 34 → 29. **Regla:** todo lo que el sistema inyecta «por si acaso» se comprueba
 pieza a pieza; un mecanismo que parece de seguridad puede ser la fuente del error.
+
+## L257 · El punto de «39.5» cerraba la frase (8-oct-2026)
+
+1.408 patrones del triaje separan sus dos mitades con `[^.]{0,N}`, para que una alarma no se arme
+con palabras de dos frases. El punto decimal también es un punto: «fever of 39.5 and his hands
+and feet are cold» daba rutina y «fever of 39» daba urgente. Lo enseñó la batería del 7-oct en
+árabe. En EE. UU. toda temperatura lleva punto («102.5»), así que el agujero era sobre todo el del
+público principal. Arreglo en `assess`: para las reglas, el punto entre cifras pasa a coma; la
+edad y la fiebre siguen leyendo el original. En las baterías, 3 de 47 preguntas con decimal
+cambian, las 3 a bien (inglés, ruso, árabe). **Regla:** un separador que el patrón da por fin de
+frase hay que comprobarlo contra cómo se escriben los números en cada país.

@@ -409,6 +409,11 @@ _RU_COMPUESTO = re.compile(aplana(_RU_COMPUESTO.pattern), _RU_COMPUESTO.flags)
 #: de texto. Todos separan el número de la unidad exactamente igual que un espacio.
 _GUIONES = re.compile(r"[-\u2010\u2011\u2012\u2013\u2014\u2015\u2212]+")
 
+#: El punto entre dos cifras (\u00ab39.5\u00bb, \u00ab102.5\u00bb) no termina ninguna frase, pero los patrones que
+#: separan sus mitades con `[^.]` lo tomaban por uno (8-oct-2026). Para las reglas se escribe con
+#: coma, que los patrones de temperatura ya aceptan (`[.,]`); la edad y la fiebre leen el original.
+_PUNTO_DECIMAL = re.compile(r"(?<=\d)\.(?=\d)")
+
 
 #: «Menos de», delante de una edad, la invierte. En las ocho lenguas.
 #:
@@ -1221,6 +1226,7 @@ class Triage:
             # un patrón porque lo que decide no es el número sino el número contra la edad.
             "breathing_too_fast": respiracion_rapida(texto, age),
         }
+        frase = _PUNTO_DECIMAL.sub(",", texto)
         matched: list[Rule] = []
         for r in self.rules:
             # Dos caminos independientes hacia la misma alarma, y hasta el 8-sep-2026 el segundo
@@ -1237,7 +1243,7 @@ class Triage:
             if r.requires and all(flags.get(k, False) for k in r.requires):
                 matched.append(r)
                 continue
-            if not any(self._hits(rx, texto) for rx in r.patterns):
+            if not any(self._hits(rx, frase) for rx in r.patterns):
                 continue
             if r.requires and self._contradicted(r.requires, age):
                 continue
