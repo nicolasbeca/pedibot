@@ -76,3 +76,19 @@ def test_fever_with_malaria_named_asks_for_a_test(triage, text):
 )
 def test_malaria_without_a_feverish_child_is_not_an_alarm(triage, text):
     assert "malaria_area_fever" not in _ids(triage, text), text
+
+
+def test_senegal_calls_its_own_samu_not_the_french_one(config_dir):
+    """A una madre de Senegal con fiebre y manchas moradas el aviso le decía «Appelez le 15»:
+    el SAMU de Francia. La FCDO británica, de donde salía, dice «Call 15»; el Ministerio de Salud
+    de Senegal dice «SAMU Composer le 1515» (sante.gouv.sn). Manda la autoridad del país."""
+    import json
+    import pathlib
+
+    from pedibot.bot.answer import EmergencyNumbers
+
+    sn = EmergencyNumbers(config_dir / "emergency_numbers.yaml").get("SN", "fr")
+    assert sn["emergency"] == "1515"
+    assert "sante.gouv.sn" in (sn.get("source_url") or "")
+    web = pathlib.Path(__file__).resolve().parents[1] / "web" / "site" / "src" / "data" / "emergency.json"
+    assert json.loads(web.read_text("utf-8"))["SN"]["emergency"] == "1515"

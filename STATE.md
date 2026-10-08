@@ -30,6 +30,8 @@
 - **Triaje, tarde del 8-oct:** quemadura pequeña ya no manda a urgencias (L260); «can't catch
   his breath», «short of breath» → que lo vean hoy; fiebre con «malaria» nombrada → prueba. Probado
   y descartado: quitar la cabecera del prompt (L261).
+- **Senegal: 1515, no 15** (L262; el Ministerio de Salud manda sobre la FCDO). Pendiente: cotejar
+  los 107 números con la autoridad de cada país, empezando por África francófona.
 - **Para el operador (`check_source`):** manos frías con fiebre. El NHS las pone entre los motivos
   para ir ya; la SEUP dice que al subir la fiebre es normal tener frío y manos moteadas. La regla
   `cold_extremities_with_fever` sigue el NHS y el redactor cita la SEUP: la respuesta se cae al

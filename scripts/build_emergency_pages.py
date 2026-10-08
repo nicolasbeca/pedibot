@@ -38,6 +38,8 @@ PLANTILLA = """---
  * scripts/build_emergency_pages.py; editar una copia a mano la deja desparejada de las otras.
  */
 import Base from '{subir}layouts/Base.astro';
+// 8-oct-2026: un país se indexa sólo en sus lenguas y en inglés (src/countrylangs.mjs)
+import {{ countryIndexedIn, countryIndexedLangs }} from '{subir}countrylangs.mjs';
 import Checklist from '{subir}components/Checklist.astro';
 import emergency from '{subir}data/emergency.json';
 import vaccines from '{subir}data/vaccines.json';
@@ -84,7 +86,7 @@ const jsonld = {{
   audience: {{ '@type': 'Patient' }},
 }};
 ---
-<Base lang={{lang}} title={{`${{h1}} — PediBot`}} description={{desc}} path={{`${{pref}}/emergency/${{code.toLowerCase()}}`}} jsonld={{jsonld}}>
+<Base lang={{lang}} title={{`${{h1}} — PediBot`}} description={{desc}} path={{`${{pref}}/emergency/${{code.toLowerCase()}}`}} jsonld={{jsonld}} indexedLangs={{countryIndexedLangs(code)}} noindex={{!countryIndexedIn(code, lang)}}>
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{{s.emg_eyebrow}}</p>
     <h1 style="margin-top:8px">{{h1}}</h1>

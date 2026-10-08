@@ -2233,3 +2233,14 @@ citada encima de la nueva. Medido en la batería difícil, empeora: flojas 61 �
 suben y 56 bajan, «no tengo fuente» 6 → 15 (sólo mejora «algo que la guía no dice», 89 → 77).
 Sin el porqué, el modelo se vuelve más miedoso. No se desplegó. **Regla:** lo que parece ruido en
 un prompt se mide antes de quitarlo; los ejemplos de fallos pasados son instrucciones.
+
+## L262 · Un número de urgencias de una fuente extranjera (8-oct-2026)
+
+A una madre de Senegal con fiebre y manchas moradas el aviso le decía «Appelez le 15». Lo sacamos
+de la FCDO británica («Call 15»), que es fuente abierta y fiable para casi todo; pero el 15 es el
+SAMU de Francia y el Ministerio de Salud de Senegal dice «SAMU Composer le 1515». Lo destapó el
+juez marcando «país mal» en la batería; casi todas sus otras marcas de país eran falsas (leía «999»
+en los pasajes, no en la respuesta). Malí y Níger, también con 15, están bien. De paso, regenerar
+las páginas de urgencias borró el noindex por país de esta tarde: el generador
+(`build_emergency_pages.py`) no lo tenía. **Regla:** para un número de urgencias manda la
+autoridad del propio país; y lo que se añade a un fichero generado se añade a su generador.
