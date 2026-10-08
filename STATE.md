@@ -24,8 +24,8 @@
   literales con «(Auszug)» (`ops/PERMISOS.md`). Enviados además Kinderärzte im Netz, SPP, Medic.
 - **Prompt v14** (L259): la lista de «cuándo consultar» entera; motivos que llegan 34 % → 52 %,
   urgencia mal 30 → 20. Juez nuevo `eval/bateria_operador/alarma_completa.py`.
-- **Siguiente:** modo «Auszug» (cita literal) para fuentes que sólo permiten eso; las 32 guías
-  que Google no indexa; calendarios de vacunas cortos.
+- **Siguiente:** las 32 guías que Google no indexa; calendarios de vacunas cortos. El modo
+  «Auszug» espera a la jefatura del BIÖG (recordatorio a Claudia el 16-oct si no escriben).
 - **El 7-oct** (no se anotó aquí; detalle en L254-L256): cada aviso con su pasaje comprobado
   (87 de 97 reglas), búsqueda en inglés con palabras en inglés, 16 páginas del NHS para huecos, el
   vapor en el crup con lo que dice cada guía, y permisos pedidos a St John Ambulance, NHS 111

@@ -61,6 +61,11 @@ permiten sin más permiso), o sólo enlazar si lo prefieren. Se le invita a prob
 Seiten so nutzen, wie es unsere Nutzungsregeln ohne weitere Erlaubnis vorsehen» (= extractos
 literales con «(Auszug)», fuente y enlace). No se le contesta: queda en que escribe ella.
 
+**Decisión del operador (8-oct):** no se construye el modo «Auszug» todavía; se espera a la
+Referatsleitung. **Si el viernes 16-oct no han escrito, recordatorio breve a Claudia** (excepción
+pedida por el operador a «sin recordatorios»). Si dicen que no a resumir, entonces se construye el
+modo de cita literal y se clasifican las fuentes en «resumible» y «sólo cita literal».
+
 **Estado:** nada suyo en el índice. Ojo: el redactor hoy siempre resume; usar sus páginas como
 «Auszug» exige un modo de cita literal que no existe. No se indexa hasta que contesten.
 
