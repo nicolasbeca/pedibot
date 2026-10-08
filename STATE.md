@@ -30,8 +30,14 @@
 - **Triaje, tarde del 8-oct:** quemadura pequeña ya no manda a urgencias (L260); «can't catch
   his breath», «short of breath» → que lo vean hoy; fiebre con «malaria» nombrada → prueba. Probado
   y descartado: quitar la cabecera del prompt (L261).
-- **Senegal: 1515, no 15** (L262; el Ministerio de Salud manda sobre la FCDO). Pendiente: cotejar
-  los 107 números con la autoridad de cada país, empezando por África francófona.
+- **Números de urgencias cotejados con el propio país** (L262; el país manda sobre la FCDO).
+  Corregidos: Senegal 15 → 1515, Ruanda 112 → 912 (SAMU), Benín 118 (bomberos) → 112 (SAMU),
+  Burkina «18 desde Uagadugú» → 15 (SAMU), Zimbabue → 999 / 112 Econet / 114 NetOne; Marruecos con
+  el 141 delante. Bien: Malí, Níger, Mauritania, Lesoto. **Dudosos sin fuente oficial, sin tocar:**
+  Camerún (112 / 119 del SAMU / 911 previsto), Madagascar (117 policía; ¿124 ambulancia?), Togo
+  (8200; ¿111?), Chad (1212; no hay SAMU), Bolivia (118; el Ministerio anunció el 168),
+  Mozambique (números de Maputo; ¿117?), Etiopía (907 / 939). Vía buena: pedirlo a la sociedad de
+  pediatría de cada país, como a Kenia, Tanzania e India.
 - **Guías que discrepan: se dicen las dos** (decisión del operador, para siempre; CLAUDE.md regla 9).
   Registro en `src/pedibot/bot/guides_differ.py`: el vapor y, desde hoy, las manos frías con
   fiebre (SEUP «normal al subir la fiebre» / NHS «Call 999»). El aviso se queda; la nota va debajo,
