@@ -45,7 +45,19 @@ bewegen» (en otra tirada faltaban otros tres: el redactor recorta listas de ala
 harmlos» donde ellos dicen «oft harmlose Ursachen». Guion del ejemplo: se rehace con
 `build_chunks` + `build_index` sobre un índice aparte.
 
-**Estado:** esperando su respuesta; nada suyo en el índice hasta que digan que sí.
+**8-oct, su respuesta:** ese ejemplo, sí; «die Liste wann ein Arzt dringend ist bitte aber
+vollständig übernehmen»; y «den Punkt wenn es Ihnen nicht gelingt, Ihr Kind zum Trinken zu
+bewegen bitte weglassen» (contradice lo anterior: se le ha preguntado). Para más respuestas que
+cambien su texto necesita el visto bueno de la Referatsleitung (de vacaciones), y «die Antworten
+müssten dann wahrscheinlich immer von uns vorher abgesegnet werden».
+
+**8-oct, contestado con el sí del operador:** se le explica que las respuestas se escriben en el
+momento y no se pueden aprobar una a una; mientras decide su jefatura, ofrecemos usar sólo
+**extractos literales con «(Auszug)», fuente y enlace**, sin resumen propio (lo que sus normas
+permiten sin más permiso), o sólo enlazar si lo prefieren. Se le invita a probar pedibot.xyz.
+
+**Estado:** nada suyo en el índice. Ojo: el redactor hoy siempre resume; usar sus páginas como
+«Auszug» exige un modo de cita literal que no existe. No se indexa hasta que contesten.
 
 ### Immunize.org — 30-sep-2026
 
