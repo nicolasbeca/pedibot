@@ -23,6 +23,21 @@ Qué se pide en los dos casos, y qué NO:
 Lo que una fuente nos pide al dar permiso no se cumple de memoria: está aquí, citado del correo,
 y cada condición dice dónde se cumple en el código. Si se toca ese sitio, se relee esto.
 
+### BIÖG (kindergesundheit-info.de) — 8-oct-2026
+
+Claudia Thienel (`su dirección, en el hilo «Kooperation»`, «i.A.», Ref. Q5 – Kinder und Heranwachsende; contesta
+por encargo del Bundesinstitut für Öffentliche Gesundheit), hilo «Kooperation», respuesta a la
+petición del 5-oct a poststelle@bioeg.de. Condiciones, citadas:
+
+- «Gerne dürfen Sie unsere Seite https://www.kindergesundheit-info.de/ als Quelle nutzen.»
+- «Sobald Sie die Texte unserer Seite jedoch in irgendeiner Weise bearbeiten/stark kürzen,
+  bitten wir Sie, uns vorab ein Beispiel zukommen zu lassen.» → **antes de indexar, mandarles un
+  ejemplo de respuesta resumida y esperar su visto bueno.**
+- «…dass unsere Seite sowie unsere Inhalte absolut werbefrei sind und bleiben.» → PediBot no
+  lleva publicidad; si eso cambiara algún día, sus páginas salen del índice.
+
+**Estado:** nada suyo en el índice todavía; falta el ejemplo.
+
 ### Immunize.org — 30-sep-2026
 
 Kayla Ohlde, Operations Administrator (`admin@immunize.org`, kayla.ohlde@immunize.org), en el

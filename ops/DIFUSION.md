@@ -289,3 +289,16 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   (`info@paed.tz`; la de Gmail que da el buscador no sale en su web) y Indian Academy of
 >   Pediatrics (`centraloffice@iapindia.org`). Revisión de las páginas de su país; a la IAP, además,
 >   si tiene un calendario para padres que se pueda enlazar junto al del gobierno.
+
+> **8-oct-2026, enviados con su sí («manda los 3»):**
+> - **Kinder- und Jugendärzte im Netz** (BVKJ y Monks – Ärzte im Netz GmbH;
+>   `support@kinderaerzte-im-netz.de`, leído en su Impressum, que exige permiso previo): permiso
+>   para resumir sus páginas para padres con cita y enlace; se ofrece mandar un ejemplo.
+> - **Sociedade Portuguesa de Pediatria** (`secretariado@spp.pt`, su página de contactos):
+>   permiso para la sección «Para os Pais». La SBP de Brasil quedó fuera: su web devuelve 403 y no
+>   se pudo verificar ninguna dirección.
+> - **Medic / Community Health Toolkit** (`hello@medic.org`, su página de contacto): la API y el
+>   MCP para apps de promotores de salud; se pide que alguien que trabaje en Kenia o Uganda diga
+>   qué serviría y qué falta. Sin petición formal.
+> - **BIÖG contesta que sí** (ver `ops/PERMISOS.md`): falta mandarles un ejemplo antes de indexar.
+
