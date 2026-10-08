@@ -313,3 +313,9 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   su página de país): ¿848888 / 823388 o 117? Para Camerún, Madagascar, Etiopía, Togo y Chad no
 >   hay dirección publicada ni de la sociedad de pediatría ni de la OMS (formularios o webs caídas):
 >   no se adivina ninguna. Gmail por la API no programa envíos.
+>   **Borradores en Gmail para programar** (la API no programa envíos; los programa el operador):
+>   lunes 12-oct: UNICEF Madagascar (`antananarivo@unicef.org`), Cruz Roja Etíope
+>   (`ercsinfo@redcrosseth.org`, lleva el 907) y UNICEF Chad (`ndjamena@unicef.org`), las tres
+>   leídas en sus webs (UNICEF esconde las direcciones con Cloudflare: se descifran). Martes 13-oct:
+>   Cruz Roja de Camerún (`cameroon_redcross@yahoo.fr`) y de Togo (`crgt@laposte.tg`), del directorio
+>   de ACNUR, que no se pudo abrir para confirmarlas: pueden rebotar.
