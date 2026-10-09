@@ -17,6 +17,11 @@
 - **Vídeo para inversores en /memo** (`public/video/pedibot-pitch.mp4`, 7,4 MB, portada 26 KB):
   `preload="none"`, nada se descarga hasta el play, y el service worker no guarda `/video/`
   (`tests/test_the_memo_video_costs_nothing_until_played.py`). Comprobado en vivo, con rangos 206.
+- **Correo pendiente de enviar, aprobado en principio, esperando a tener Gmail:** Unión de
+  Pediatras de Rusia (`info@pediatr-russia.ru`, su web exige permiso del administrador para copiar),
+  permiso para citar su sección «Информация для родителей». Texto en `ops/DIFUSION.md` (9-oct).
+  El Ministerio de Sanidad saudí se descarta por ahora (todos los derechos reservados, sólo
+  formulario o buzón de quejas); para el árabe, esperar al Manual MSD.
 - **Pendiente:** una respuesta en inglés coló «antitérmico» (prueba 1053, pregunta de la fiebre en
   las piernas): falta un control de palabras castellanas en respuestas de otra lengua.
 - **Calendario:** lunes 12-oct comprobar que salieron los borradores de Madagascar, Etiopía y Chad

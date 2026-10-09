@@ -319,3 +319,26 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >   leídas en sus webs (UNICEF esconde las direcciones con Cloudflare: se descifran). Martes 13-oct:
 >   Cruz Roja de Camerún (`cameroon_redcross@yahoo.fr`) y de Togo (`crgt@laposte.tg`), del directorio
 >   de ACNUR, que no se pudo abrir para confirmarlas: pueden rebotar.
+
+> **9-oct-2026, BORRADOR esperando a Gmail (el operador dará acceso; mandar con su sí al texto):**
+> - **Unión de Pediatras de Rusia** (`info@pediatr-russia.ru`, contactos de pediatr-russia.ru; su
+>   web dice «копирование… только с согласия администратора»). Hueco: folletos para padres en
+>   ruso (hoy casi todo fichas de la OMS). Asunto: «Permission request: quoting your parent
+>   materials in a free paediatric information service». Cuerpo:
+>
+>   Dear colleagues,
+>
+>   I run PediBot (https://pedibot.xyz), a free, non-commercial service that answers parents' questions about their children's health using only materials published by paediatric societies, health ministries and the WHO. Every answer names and links the document it comes from, it never diagnoses, and when no source supports an answer it says so. It works in eight languages, Russian among them.
+>
+>   Today our Russian answers rely mostly on WHO fact sheets, which are written for professionals rather than for parents. The materials in your "Информация для родителей" section are exactly what a Russian-speaking parent needs. Your website says reproduction requires the administrator's consent, so I am writing to ask for it.
+>
+>   What we would do: quote or summarise short passages, always with the Union of Pediatricians of Russia named as the source and a link to the original page. We would not republish full documents, and we would follow any conditions you set. I am happy to send an example of how an answer would look before anything goes live.
+>
+>   Thank you for your time.
+>
+>   Kind regards,
+>   Nicolas Beca
+>   https://pedibot.xyz
+>
+> - Descartado por ahora: Ministerio de Sanidad saudí (moh.gov.sa, «All Rights Reserved», sólo
+>   formulario y `937@moh.gov.sa`, que es de quejas). Para el árabe, esperar al Manual MSD.
