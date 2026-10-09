@@ -177,6 +177,24 @@ def _brand_terms(drugs_path: Path) -> dict[str, dict[str, str]]:
     return fuera
 
 
+#: Una negación y la palabra negada, con su artículo si lo lleva («not a fever», «sin fiebre»,
+#: «pas de fièvre», «kein Fieber», «sem febre», «без температуры»). La palabra va en el grupo 1.
+_NIEGA_EN_SINONIMOS = re.compile(
+    r"\b(?:no|not|without|never|sin|nunca|pas de|sans|kein|keine|keinen|ohne|sem|nao|без|нет)"
+    r"\s+(?:(?:a|an|any|the|un|una|ningun|ninguna|de|einen|eine)\s+)?(\w+)",
+    re.I,
+)
+
+
+#: Lo que un padre niega para decir que no es para tanto: fiebre, erupción, tos, diarrea, vómitos.
+_SE_NIEGA_PARA_TRANQUILIZAR = re.compile(
+    r"(fever|feverish|temperature|rash|cough|coughing|diarrh|vomit|fiebre|calentura|temperatura"
+    r"|erupcion|ronchas|manchas|tos$|diarrea|vomit|fievre|toux|diarrhee|fieber|ausschlag|husten"
+    r"|durchfall|erbrech|febre|tosse|diarreia|vomit|температур|сып|кашл|понос|рвот)",
+    re.I,
+)
+
+
 class Synonyms:
     def __init__(self, path: Path, drugs: Path | None = None):
         raw = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
@@ -226,7 +244,22 @@ class Synonyms:
         # justo por el guion. Eran doce disparadores que NO PODÍAN casar nunca, y entre ellos el
         # recién nacido en francés y en portugués (8-sep-2026).
         low = fold(_GUIONES.sub(" ", query.lower()))
-        tokens = [c for t in _TOKEN.findall(low) for c in self._candidates(t)]
+        # 9-oct-2026: lo que el padre niega no se amplía. «fever since yesterday but no rash»
+        # sumaba exantema, manchas y urticaria a la búsqueda de la erupción que acababa de
+        # descartar. Se quita la palabra negada de los tokens; las expresiones de varias palabras
+        # se siguen buscando en la frase entera, porque algunas llevan la negación dentro y son
+        # justo el problema («not gaining weight», «no gana peso»).
+        # Sólo los síntomas que se niegan para tranquilizar: medido sobre las 3.849 preguntas de
+        # las baterías, negar en general rompía las ausencias que SON el síntoma —«keinen
+        # Stuhlgang», «keine Zähne», «llora sin lágrimas»—.
+        negadas = {
+            m.group(1)
+            for m in _NIEGA_EN_SINONIMOS.finditer(low)
+            if _SE_NIEGA_PARA_TRANQUILIZAR.match(m.group(1))
+        }
+        tokens = [
+            c for t in _TOKEN.findall(low) if t not in negadas for c in self._candidates(t)
+        ]
         extra: list[str] = []
         # Las marcas, antes que nada. Un padre escribe lo que pone en el
         # bote —«Dalsy», «Apiretal», «Alivium»— y el corpus habla de «ibuprofeno» y
