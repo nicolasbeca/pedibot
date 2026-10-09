@@ -2,6 +2,22 @@
 
 Última actualización: **2026-10-09** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 9-oct-2026 · tarde
+
+- **Consulta real 1053** (EE. UU., «fever in his legs»): respuesta correcta salvo «after an
+  antitérmico» en inglés, palabra de la hoja de la SEUP sin traducir. Arreglado en
+  `bot/stray_words.py` (en/fr/de; el portugués la tiene como propia), enganchado antes de los °F.
+  Test `test_no_spanish_word_in_the_answer.py` y línea en la batería. Desplegado y verificado.
+- **Dos guías nuevas del temporizador** (ibuprofeno, fr e hi) sin pasar por la cadena: 5 tests
+  rojos. Exportadores, DATOS.md, README 541 → 543 y web rehecha; las dos páginas dan 200.
+- **Correo:** el conector de Gmail reescribe todo enlace a `google.com/url?q=…` (probado en RAW);
+  lo llevan los ~25 correos enviados con él desde el 28-sep. Enviados hoy: Madagascar (UNICEF),
+  Rusia (Unión de Pediatras), Togo (contact@croixrouge-togolaise.org, tras rebotar crgt@laposte.tg)
+  y Camerún (unicefcameroon@gmail.com, el de la web de UNICEF, tras rebotar la Cruz Roja).
+  Etiopía y Chad siguen de borrador: el clasificador de permisos bloqueó el envío. St John
+  Ambulance (Jane Cameron) pregunta visitas del Reino Unido, lanzamiento y si somos humanos o IA:
+  respuesta escrita, esperando el sí del operador. Bolivia rebotó (sobope_2007@hotmail.com).
+
 ## 9-oct-2026 · revisión de la mañana
 
 - **Consultas reales desde el 8-oct:** una, y es el ejemplo de la portada «fever of 38.8 °C»

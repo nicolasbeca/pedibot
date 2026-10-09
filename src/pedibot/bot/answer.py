@@ -36,6 +36,7 @@ from pedibot.bot.muac import is_muac_question, read_mm
 from pedibot.bot.muac import reason as muac_reason
 from pedibot.bot.retrieval import Retriever, detect_lang
 from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
+from pedibot.bot.stray_words import sin_palabras_sueltas
 from pedibot.bot.temperature import con_fahrenheit, lee_en_fahrenheit, nota_de_conversion
 from pedibot.bot.banner_lead import con_el_aviso_delante
 from pedibot.bot.guides_differ import notas as notas_discrepancia
@@ -1952,6 +1953,8 @@ class Engine:
             a.text = self._traduce(a.text, ctx["fuera"], ctx)
         # 2-oct-2026: los grados en las unidades del padre (bot/temperature.py). Después de
         # traducir, que la traducción tira lo que trae cifras nuevas.
+        # 9-oct-2026: una palabra española sin traducir (bot/stray_words.py).
+        a.text = sin_palabras_sueltas(a.text, a.lang)
         if lee_en_fahrenheit(query, country):
             a.text = con_fahrenheit(a.text)
             nota = nota_de_conversion(query)
