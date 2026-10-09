@@ -1028,6 +1028,16 @@ CASOS: dict[str, dict[str, str]] = {
         "pt": "meu filho desmaiou jogando futebol",
         "hi": "बेटा दौड़ते समय बेहोश हो गया",
     },
+    "palpitations_with_red_signs": {
+        "es": "mi hija tiene palpitaciones y le duele el pecho",
+        "en": "my son says his heart is racing and he feels dizzy",
+        "fr": "ma fille a des palpitations et mal à la poitrine",
+        "de": "mein Sohn hat Herzrasen und Schwindel",
+        "ru": "у сына сердцебиение и боль в груди",
+        "ar": "ابني عنده خفقان وألم في الصدر",
+        "pt": "meu filho está com palpitações e falta de ar",
+        "hi": "बेटे की धड़कन तेज़ है और सीने में दर्द है",
+    },
 }
 
 
@@ -2129,6 +2139,16 @@ SEGUNDA: dict[str, dict[str, str]] = {
         "ar": "بنتي فقدت الوعي وهي تلعب",
         "pt": "minha filha desmaiou durante o treino",
         "hi": "बेटी खेलते समय बेहोश हो गई",
+    },
+    "palpitations_with_red_signs": {
+        "es": "el corazón le late muy rápido y se marea",
+        "en": "she had palpitations and chest pain during PE",
+        "fr": "son cœur bat très vite et il a la tête qui tourne",
+        "de": "ihr Herz rast und sie hat Atemnot",
+        "ru": "сердце сильно колотится и кружится голова",
+        "ar": "قلبها يدق بسرعة وعندها دوخة",
+        "pt": "o coração dela está disparado e ela ficou tonta",
+        "hi": "दिल बहुत तेज़ धड़क रहा है और चक्कर आ रहे हैं",
     },
 }
 

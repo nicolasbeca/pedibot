@@ -1,11 +1,12 @@
 ---
 import Base from '../../layouts/Base.astro';
 import WarningSigns from '../../components/WarningSigns.astro';
+import data from '../../data/warning_signs.json';
 import { t } from '../../i18n';
 const lang = 'de'; const s = t(lang) as any;
 const jsonld = { '@context': 'https://schema.org', '@type': 'MedicalWebPage', name: s.ws_h1, about: s.emg_about };
 ---
-<Base lang={lang} title={s.ws_title} description={s.ws_desc} path="/de/warning-signs" jsonld={jsonld}>
+<Base lang={lang} title={s.ws_title} description={s.ws_desc.replace('{n}', String(data.groups.reduce((a: number, g: any) => a + g.signs.length, 0)))} path="/de/warning-signs" jsonld={jsonld}>
   <div class="wrap" style="padding:40px 18px">
     <p class="eyebrow">{s.ws_eyebrow}</p>
     <h1 style="margin-top:8px">{s.ws_h1}</h1>

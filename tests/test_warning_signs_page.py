@@ -64,6 +64,25 @@ def test_la_pagina_construida_existe_en_las_ocho_lenguas():
         assert html.count('class="sign ') == len(_reglas()), lang
 
 
+def test_la_descripcion_cuenta_las_senales_en_vez_de_escribirlas():
+    """9-oct-2026: la descripción decía «97» a mano en las ocho lenguas y la regla 98 la dejó
+    mintiendo. Ahora se cuenta al construir."""
+    i18n = (ROOT / "web" / "site" / "src" / "i18n.ts").read_text(encoding="utf-8")
+    import re
+
+    for desc in re.findall(r'ws_desc: "([^"]*)"', i18n):
+        assert "{n}" in desc and not re.search(r"\d", desc), desc
+    dist = ROOT / "web" / "site" / "dist"
+    if not dist.exists():
+        return
+    for lang in LANGS:
+        html = (dist / ("" if lang == "en" else lang) / "warning-signs" / "index.html").read_text(
+            encoding="utf-8"
+        )
+        m = re.search(r'<meta name="description" content="([^"]*)"', html)
+        assert m and str(len(_reglas())) in m.group(1) and "{n}" not in m.group(1), lang
+
+
 def test_se_llega_desde_el_menu_el_pie_y_el_chat():
     """«Que no se te escapen estos detalles» (el operador, 29-sep-2026): una página a la que no
     se llega desde donde está el padre no existe para él."""

@@ -2,6 +2,32 @@
 
 Última actualización: **2026-10-09** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 9-oct-2026 · noche · pendientes de calidad, primera tanda
+
+- **El texto ya no tranquiliza bajo un aviso rojo** (`rebaja_el_aviso`, `_TRANQUILIZA`): «is very
+  common and usually settles», «usually harmless», «can be looked after at home», «in most cases
+  linked to…», «it is normal…», y «ve a urgencias si no mejora / si la crisis no cede». Salían en
+  21 de 324 respuestas con aviso (r70-r72). Pasadas por el motor real las 13 preguntas: el bebé
+  con 105 °F dice ahora que la SEUP manda a urgencias por encima de 40,5 °C; la cefalea fuerte con
+  sueño empieza por «needs medical help right away»; 5 de 13 acaban en el texto fijo «haz lo que
+  dice el aviso» (seguro, menos útil). La instrucción del reintento lo nombra.
+  `test_no_reassurance_under_the_warning.py`.
+- **Regla 98, `palpitations_with_red_signs`** (NHS, hoja de palpitaciones): con dolor de pecho,
+  falta de aire o mareo, que lo vean hoy. Nueve lenguas. 0 de 4.362 preguntas de las baterías la
+  disparan; la medida oficial del triaje, idéntica. El desmayo con ejercicio ya tenía regla (5-oct).
+  Dolor de pecho solo, no: el NHS lo da por muscular tras ejercicio.
+- **Jarabe o pastilla de ADULTO** tomados por el niño, en castellano, portugués y alemán → `poisoning`
+  (en inglés y francés ya saltaba). `test_adult_medicine_is_poisoning.py`.
+- **«baby» ya no es alemán** en un empate con el inglés: 7 de 3.849 preguntas cambian, las 7 a bien.
+- **/warning-signs** decía «97» a mano en ocho lenguas: ahora se cuenta al construir (98).
+- **Ya estaban hechos** (6-oct) y la lista vieja los seguía dando por pendientes: «drinking and
+  peeing», la tos de perro en árabe, CDC/MedlinePlus delante para EE. UU.
+- Desplegado y comprobado en vivo (API de triaje y la página). Ojo al probar con `curl` desde
+  Windows: la tilde no viaja en UTF-8 con `--data-urlencode`; codificarla a mano (%C3%B3).
+- **Correo:** Bolivia reenviado a sobolped@gmail.com (el de su web).
+- **Queda:** páginas de vacunas cortas que Google no indexa; `sources_check` repite avisos ya
+  revisados; sinónimos que respeten lo que el padre niega.
+
 ## 9-oct-2026 · tarde
 
 - **Consulta real 1053** (EE. UU., «fever in his legs»): respuesta correcta salvo «after an

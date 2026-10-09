@@ -1597,16 +1597,56 @@ _MANDA_A_CASA = re.compile(
     r"|observ(ar|e)[^.]{0,20}em casa|(normalmente|geralmente) [ée] leve",
     re.I,
 )
+#: Tranquilizar con frecuencias también rebaja el aviso (9-oct-2026, baterías r70-r72): «a high
+#: temperature is very common and usually settles» a un bebé con 105 °F, «a headache is very
+#: common… in most cases linked to infections» con somnolencia, «si la crisis no cede tras el
+#: tratamiento en casa, acude» a un asmático que respira mal. Si la frase vuelve al aviso ella
+#: misma («…but a baby this young needs to be checked today»), no se cuenta.
+_SIN_VUELTA = r"(?![^.]{0,90}\b(but|still|even so|however|pero|aun as[ií]|sin embargo|mais|aber|mas)\b)"
+_TRANQUILIZA = re.compile(
+    r"\b(is|are) (very |quite |really |extremely )?common\b[^.]{0,140}\b(usually|mostly|often|in most cases|most of the time)\b" + _SIN_VUELTA
+    + r"|\b(es|son) (muy )?(frecuentes?|com[uú]n(es)?)\b[^.]{0,140}\b(suelen?|normalmente|la mayor[ií]a)\b" + _SIN_VUELTA
+    + r"|\b(usually|often|normally|generally|mostly) (settles?|goes away|go away|gets? better|clears? up|heals?|resolves?|passes)\b" + _SIN_VUELTA
+    + r"|\bgets? better on (its|their) own\b" + _SIN_VUELTA
+    + r"|\bheals? at home\b"
+    + r"|\b(usually|often|generally|mostly) (harmless|mild|not serious)\b" + _SIN_VUELTA
+    + r"|\bgets? better without treatment\b" + _SIN_VUELTA
+    + r"|\b(can|could) (usually |often |generally )?(look after|treat|manage|care for)\b[^.]{0,30}\bat home\b"
+    + r"|\bsomething you can (look after|treat|manage)\b"
+    + r"|\bsuelen? (mejorar|desaparecer|curar(se)?|ceder|pasar|resolverse|irse)\b" + _SIN_VUELTA
+    + r"|\b(mejora|desaparece|se cura|se pasa) (solo|sola|por s[ií] (mism[oa]|sola))\b"
+    + r"|\bin most cases\b[^.]{0,80}\b(mild|minor|harmless|not serious|linked|caused|due)\b"
+    + r"|\ben la mayor[ií]a de (los )?casos\b[^.]{0,80}\b(leve|benign|se debe|causad|relacionad)"
+    # «It is normal for them to have little appetite» es un consejo de cuidado, no un juicio
+    # sobre la urgencia; el apetito se deja pasar.
+    + r"|(^|[.!?]\s+)(it is|it's|this is|that is|esto es) (completely |perfectly |quite |totalmente |muy )?(normal|expected|esperable|lo normal)\b"
+    + r"(?![^.]{0,60}\b(appetite|eat|apetito|coma|comer)\b)" + _SIN_VUELTA
+    + r"|\bif (it|the (attack|crisis|symptoms?|fever|wheez\w*|breathing|pain)|symptoms|they|he|she) (does not|doesn't|do not|don't|is not|isn't|are not|aren't) (improve|settle|get better|ease|stop|go away|respond)\w*[^.]{0,80}\b(seek|go|call|take|get|see)\b"
+    + r"|\bsi (la crisis|los s[ií]ntomas|la fiebre|el dolor|la tos|no)( no)? (cede|mejora|desaparece|se pasa)\w*[^.]{0,80}\b(acud[ae]|consult[ae]|ve |vaya|llam[ae]|ll[eé]v[ae]l[oa])",
+    re.I | re.M,
+)
+
+
+def rebaja_el_aviso(texto: str) -> bool:
+    """¿Dice el texto, de alguna forma, que lo del aviso rojo de encima puede esperar?"""
+    return bool(
+        _QUITA_URGENCIA.search(texto) or _MANDA_A_CASA.search(texto) or _TRANQUILIZA.search(texto)
+    )
+
+
 CONTRADICE_AVISO = (
     "contradicts_the_warning: a warning above your text already tells the parent this needs to"
-    " be seen now; never write that it is not urgent or not an emergency"
+    " be seen now; never write that it is not urgent or not an emergency, never reassure with how"
+    " common it is or how it usually goes (\"usually settles\", \"usually harmless\", \"can be looked"
+    " after at home\"), and never make going to care depend on it not improving. Say what to do"
+    " now and on the way"
 )
 
 
 def _insegura(texto: str, hits: list[Hit], alarma: bool) -> list[str]:
     """Los problemas de SEGURIDAD de un borrador: `verify`, más no contradecir el aviso."""
     problemas = verify(texto, hits)
-    if alarma and (_QUITA_URGENCIA.search(texto) or _MANDA_A_CASA.search(texto)):
+    if alarma and rebaja_el_aviso(texto):
         problemas.append(CONTRADICE_AVISO)
     return problemas
 
@@ -2801,7 +2841,7 @@ class Engine:
             retry: LLMResult | None = None
             if not _dice_sin_fuente(result.text):
                 problems = verify_answer(result.text, hits)
-                if alarma and (_QUITA_URGENCIA.search(result.text) or _MANDA_A_CASA.search(result.text)):
+                if alarma and rebaja_el_aviso(result.text):
                     problems.append(CONTRADICE_AVISO)
                 if problems:
                     retry = self.llm.complete(

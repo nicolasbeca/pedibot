@@ -2550,6 +2550,12 @@ rules:
   - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado).{0,60}(lej[ií]a|detergente|amoniaco|producto de limpieza|pastillas|medicament|jarabe entero|alcohol|colonia|gasolina|pila|planta)
   - intoxica
   - (ha ingerido|ingiri[oó]|ingesta de).{0,40}(im[aá]n|imanes|pila|bater[ií]a|objeto|producto|t[oó]xic|medicament|pastilla)
+  # 9-oct-2026: el jarabe o la pastilla de un ADULTO, en castellano, portugués y alemán (en inglés
+  # y francés ya saltaba). «se tomó su jarabe» no: es el suyo.
+  - (se )?(ha tomado|tom[oó]|ha bebido|bebi[oó]|trag[oó]|se ha tragado)[^.?]{0,40}(jarabe|pastilla|medicina|medicamento|comprimido)s?[^.?]{0,30}(de (un )?adultos?|para adultos|de (su|mi|la|el|tu) (padre|madre|pap[aá]|mam[aá]|abuel[oa]|t[ií][oa]|herman[oa] mayor))
+  - (tomou|bebeu|engoliu)[^.?]{0,40}(xarope|comprimido|rem[ée]dio|medicamento)s?[^.?]{0,30}(de adultos?|para adultos|d[ao] (pai|m[ãa]e|av[óô]))
+  - (hustensaft|tablette|medikament|sirup)\w*[^.?]{0,30}(f[üu]r erwachsene|von (papa|mama|oma|opa|seinem vater|ihrer mutter))[^.?]{0,40}(getrunken|geschluckt|genommen|eingenommen)
+  - (getrunken|geschluckt|genommen)[^.?]{0,40}(hustensaft|tablette|medikament)\w*[^.?]{0,20}f[üu]r erwachsene
   - (ha bebido|bebi[oó]|ha tomado|tom[oó]|trag[oó]|se ha tomado|ha chupado).{0,70}(armario|debajo del fregadero|bajo el fregadero|producto|l[ií]quido|bote|frasco)
   - (drank|swallowed|ate|got into).{0,70}(under the sink|cupboard|cabinet|bottle of|something from)
   # el tóxico no siempre se nombra: así lo dice el NHS y así lo repite nuestra guía
@@ -5878,6 +5884,37 @@ rules:
   - '(खेलते (समय|हुए)|दौड़ते (समय|हुए)|कसरत|व्यायाम)[^।]{0,40}बेहोश'
   - 'behosh[^.]{0,40}(khelte|daudte|exercise)'
   - 'alizimia[^.]{0,40}(akicheza|wakati wa michezo|akikimbia)'
+
+# 9-oct-2026, pendiente del 5-oct: «his heart races and he gets dizzy when running» salía rutina.
+# El NHS, hoja de palpitaciones: «Call 999 or go to A&E if you currently have heart palpitations
+# and … chest pain, shortness of breath, feeling faint or fainting. If you've had these symptoms but
+# they've now stopped, ask your GP surgery for an urgent appointment, call 111». El padre escribe
+# casi siempre cuando ya ha pasado: que lo vean hoy. Palpitaciones solas o dolor de pecho solo, no.
+- id: palpitations_with_red_signs
+  level: urgent
+  source: nhs_en_heart_palpitations
+  source_chunk: "nhs_en_heart_palpitations#causes_of_heart_palpitations#1"
+  reason_es: 'Palpitaciones con dolor en el pecho, falta de aire o mareo: que lo vean hoy; si siguen ahora, llama a emergencias'
+  reason_en: 'Palpitations with chest pain, shortness of breath or feeling faint: get them seen today; if it is happening now, call the emergency number'
+  reason_fr: 'Palpitations avec douleur dans la poitrine, essoufflement ou malaise : à faire examiner aujourd''hui ; si cela dure encore, appelez les urgences'
+  reason_de: 'Herzrasen mit Brustschmerzen, Atemnot oder Schwindel: heute ärztlich abklären lassen; wenn es gerade anhält, den Notruf wählen'
+  reason_ru: 'Сердцебиение с болью в груди, одышкой или предобморочным состоянием: покажите врачу сегодня; если это происходит сейчас, звоните в скорую'
+  reason_ar: 'خفقان مع ألم في الصدر أو ضيق في التنفس أو دوخة: يجب أن يُفحص اليوم؛ وإن كان مستمرًا الآن فاتصل بالطوارئ'
+  reason_pt: 'Palpitações com dor no peito, falta de ar ou tontura: que seja visto hoje; se estiver a acontecer agora, ligue para a emergência'
+  reason_hi: 'तेज़ धड़कन के साथ सीने में दर्द, सांस फूलना या चक्कर: आज ही डॉक्टर को दिखाइए; अगर अभी भी हो रहा है तो इमरजेंसी नंबर पर कॉल कीजिए'
+  reason_sw: 'Mapigo ya moyo ya haraka pamoja na maumivu ya kifua, kushindwa kupumua au kizunguzungu: aonwe na daktari leo; kama bado inaendelea, piga simu ya dharura'
+  patterns:
+  - '(palpitations?|heart (is |was )?(racing|races|raced|pounding|pounds|pounded|beating (really |very |so )?fast|going (really |very |so )?fast))[^.]{0,60}(chest (pain|hurts?|tight)|short(ness)? of breath|can''?t (catch (his|her|their) )?breath|breathless|dizz\w*|faint\w*|light ?-?headed|passed out|blacked out)'
+  - '(chest (pain|hurts?|tight)|short(ness)? of breath|breathless|dizz\w*|faint\w*|light ?-?headed)[^.]{0,60}(palpitations?|heart (is |was )?(racing|pounding|beating (really |very |so )?fast))'
+  - '(palpitaciones|taquicardia|el coraz[oó]n (le |me )?(late|lat[ií]a|va|iba) (muy |tan )?(r[aá]pido|deprisa|fuerte|a mil))[^.]{0,60}(dolor (en el|de|del) pecho|le duele el pecho|falta (de )?aire|le cuesta respirar|ahog\w*|mare\w*|desmay\w*)'
+  - '(dolor (en el|de|del) pecho|le duele el pecho|mare\w*)[^.]{0,60}(palpitaciones|taquicardia|el coraz[oó]n (le )?(late|lat[ií]a|va|iba) (muy |tan )?(r[aá]pido|deprisa|a mil))'
+  - '(palpitations|c(oe|œ)ur (qui )?(bat|battait) (tr[eè]s |si )?(vite|fort|la chamade))[^.]{0,60}(douleur (dans|à) la poitrine|mal à la poitrine|essouffl\w*|vertige|t[eê]te qui tourne|malaise|[ée]vanoui\w*)'
+  - '(herzrasen|herzklopfen|herz (rast|raste|klopft|schl[äa]gt (sehr |so )?schnell))[^.]{0,60}(brustschmerz\w*|schmerzen in der brust|atemnot|kurzatmig|schwindel\w*|ohnm[äa]chtig)'
+  - '(palpita[çc][õo]es|cora[çc][ãa]o (dele |dela |do \w+ |da \w+ )?(est[áa] |estava |ficou )?(acelerado|disparado|batendo (muito )?(r[áa]pido|forte)))[^.]{0,60}(dor no peito|falta de ar|tontura|tont[oa]|desmai\w*)'
+  - '(сердцебиени\w*|сердце (сильно |быстро )?(колотится|бь[её]тся|стучит))[^.]{0,60}(боль в груди|болит грудь|одышк\w*|не хватает воздуха|головокружени\w*|кружится голова|обморок)'
+  - '(خفقان|(قلبه|قلبها) يدق بسرعة|تسارع (في )?(ضربات )?القلب)[^.]{0,60}(ألم في الصدر|ضيق (في )?التنفس|دوخة|دوار|إغماء)'
+  - '(धड़कन तेज़|दिल (बहुत )?तेज़ धड़क)[^।]{0,60}(सीने में दर्द|छाती में दर्द|सांस फूल|चक्कर|बेहोश)'
+  - '(moyo unadunda (kwa )?haraka|mapigo ya moyo (ya )?haraka)[^.]{0,60}(maumivu ya kifua|kushindwa kupumua|kizunguzungu|kuzimia)'
 
 context:
   fever:

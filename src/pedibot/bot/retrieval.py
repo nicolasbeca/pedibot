@@ -957,7 +957,9 @@ def detect_lang(text: str) -> str:
         return "es"
     if fr == best:
         return "fr"
-    if de == best:
+    # 9-oct-2026: «baby» y «was» son de las dos lenguas; en un empate con el inglés, inglés
+    # («baby wont sleep», «my baby was sick»). Un mensaje alemán trae siempre algo más.
+    if de == best and de > en:
         return "de"
     return "en"
 

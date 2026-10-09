@@ -130,6 +130,7 @@ CASOS: dict[str, str] = {
     "measles_complication": "ana surua na macho yanatoka usaha",
     "neonatal_tetanus": "mchanga ameacha kunyonya na amekakamaa",
     "syncope_on_exertion": "mtoto alizimia akicheza mpira",
+    "palpitations_with_red_signs": "moyo unadunda kwa haraka na ana maumivu ya kifua",
 }
 
 
@@ -262,6 +263,7 @@ SEGUNDA: dict[str, str] = {
     "measles_complication": "ana surua na mdomoni kuna vidonda",
     "neonatal_tetanus": "mchanga hanyonyi na mwili mgumu",
     "syncope_on_exertion": "alizimia wakati wa michezo shuleni",
+    "palpitations_with_red_signs": "mtoto wangu ana mapigo ya moyo ya haraka na kizunguzungu",
 }
 
 

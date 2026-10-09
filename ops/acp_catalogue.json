@@ -169,7 +169,7 @@
       "name": "paediatric_warning_sign_check",
       "price": 0.01,
       "sla_minutes": 5,
-      "description": "Checks a description of a child's symptoms against 97 fixed warning-sign rules, each tied to a published parent sheet, in eight languages and four scripts: breathing difficulty, seizures, meningitis signs, dehydration, poisoning, bites, heatstroke, newborn jaundice. Returns the level (emergency, urgent, mental_health, or routine when no rule fires), the rules that fired with their source, the warning text and the country's emergency number. No model: the same result every time.",
+      "description": "Checks a description of a child's symptoms against 98 fixed warning-sign rules, each tied to a published parent sheet, in eight languages and four scripts: breathing difficulty, seizures, meningitis signs, dehydration, poisoning, bites, heatstroke, newborn jaundice. Returns the level (emergency, urgent, mental_health, or routine when no rule fires), the rules that fired with their source, the warning text and the country's emergency number. No model: the same result every time.",
       "requirements": {
         "type": "object",
         "required": [
