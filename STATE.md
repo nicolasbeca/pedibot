@@ -14,6 +14,11 @@
   **1048-1052 son pruebas mías** para escoger la escena «sin fuente»: no son reales. La plata
   coloidal, el tobillo roto y el VPH, que antes daban «sin fuente», ya tienen respuesta; la
   melatonina y la homeopatía en la dentición siguen sin fuente.
+- **Vídeo para inversores en /memo** (`public/video/pedibot-pitch.mp4`, 7,4 MB, portada 26 KB):
+  `preload="none"`, nada se descarga hasta el play, y el service worker no guarda `/video/`
+  (`tests/test_the_memo_video_costs_nothing_until_played.py`). Comprobado en vivo, con rangos 206.
+- **Pendiente:** una respuesta en inglés coló «antitérmico» (prueba 1053, pregunta de la fiebre en
+  las piernas): falta un control de palabras castellanas en respuestas de otra lengua.
 - **Calendario:** lunes 12-oct comprobar que salieron los borradores de Madagascar, Etiopía y Chad
   (martes 13, Camerún y Togo); 16-oct recordatorio a Claudia (BIÖG) si no ha escrito; 29-oct
   repetir `ops/gsc_inspect.py`.

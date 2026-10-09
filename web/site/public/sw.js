@@ -89,6 +89,9 @@ self.addEventListener('fetch', (e) => {
   if (url.pathname.startsWith('/api/') || url.pathname.startsWith('/a/') || url.pathname.startsWith('/admin')) {
     return;
   }
+  // El vídeo de la memo, fuera también: el navegador lo pide por trozos y guardarlo entero en
+  // la caché sería gastarle megas a cada lector que lo vea (9-oct-2026).
+  if (req.destination === 'video' || url.pathname.startsWith('/video/')) return;
 
   if (esNavegacion(req)) {
     e.respondWith(

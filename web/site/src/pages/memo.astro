@@ -122,6 +122,20 @@ const hoy = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'lon
       answer it says so instead of filling the gap.
     </p>
 
+    <!-- El vídeo no se descarga hasta que alguien le da al play (tests/test_the_memo_video_costs_nothing_until_played.py). -->
+    <video
+      src="/video/pedibot-pitch.mp4"
+      poster="/video/pedibot-pitch.jpg"
+      preload="none"
+      controls
+      playsinline
+      width="1920"
+      height="1080"
+      style="width:100%;height:auto;border-radius:16px;margin:8px 0 28px;background:#0B1714"
+    >
+      <a href="/video/pedibot-pitch.mp4">PediBot in under a minute (MP4)</a>
+    </video>
+
     <h2>What is built</h2>
     <p>
       Emergency numbers for <b>{paisesEmergencia} countries</b>, each with its government source.
