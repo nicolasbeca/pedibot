@@ -9,6 +9,7 @@
  */
 import Base from '../../layouts/Base.astro';
 import { countryIndexedIn, countryIndexedLangs } from '../../countrylangs.mjs';
+import VaxProtects from '../../components/VaxProtects.astro';
 import CountryLinks from '../../components/CountryLinks.astro';
 import schedules from '../../data/vaccines.json';
 import vaxNames from '../../data/vaccine_names.json';
@@ -70,6 +71,8 @@ const checked = data.checked
         {data.source}{checked}{data.source_url && <> · <a href={data.source_url} rel="nofollow noopener" target="_blank">{s.vaxcountry_official}</a></>}
       </p>
     </div>
+
+    <VaxProtects lang={lang} code={code} />
 
     <p style="margin-top:22px">
       <a class="btn btn-primary" href="/vaccines">{s.vaxcountry_by_age}</a>

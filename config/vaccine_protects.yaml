@@ -1,0 +1,77 @@
+# De qué protege cada vacuna, para las páginas /vaccines/<país> (9-oct-2026).
+#
+# La descripción de esas páginas prometía «cada edad con las vacunas que tocan y de qué
+# protegen», y la tabla sólo ponía siglas: «DTwP-Hib-HepB», «MR», «PCV». Google rastreaba 17 de
+# ellas y no las indexaba (8-oct, `ops/gsc_inspect.py`): una tabla de siglas no responde a nada.
+#
+# Aquí sólo va el NOMBRE de cada enfermedad, sin descripciones ni complicaciones: eso es lo que
+# dicen las fuentes de abajo vacuna por vacuna, y nombrar la enfermedad no es una afirmación
+# clínica nueva. Cada vacuna del calendario se reconoce por sus siglas o su nombre (`rules`), en
+# cualquiera de las lenguas en que están transcritos los calendarios. La vitamina A no está: no es
+# una vacuna, y la tabla ya lo dice.
+
+sources:
+  - org: CDC
+    title: "What diseases do these vaccines protect against? (child immunization schedule, easy-read)"
+    url: "https://www.cdc.gov/vaccines/imz-schedules/child-easyread.html"
+  - org: NHS
+    title: "BCG, HPV, MenACWY and MenB vaccine pages"
+    url: "https://www.nhs.uk/vaccinations/"
+  - org: WHO
+    title: "Fact sheets: malaria, dengue, typhoid"
+    url: "https://www.who.int/news-room/fact-sheets"
+
+diseases:
+  diphtheria: {en: "Diphtheria", es: "Difteria", fr: "Diphtérie", de: "Diphtherie", ru: "Дифтерия", ar: "الدفتيريا", pt: "Difteria", hi: "डिप्थीरिया"}
+  tetanus: {en: "Tetanus", es: "Tétanos", fr: "Tétanos", de: "Tetanus", ru: "Столбняк", ar: "الكزاز", pt: "Tétano", hi: "टेटनस"}
+  pertussis: {en: "Whooping cough (pertussis)", es: "Tos ferina", fr: "Coqueluche", de: "Keuchhusten", ru: "Коклюш", ar: "السعال الديكي", pt: "Coqueluche (tosse convulsa)", hi: "काली खांसी"}
+  hib: {en: "Hib (Haemophilus influenzae type b)", es: "Hib (Haemophilus influenzae tipo b)", fr: "Hib (Haemophilus influenzae de type b)", de: "Hib (Haemophilus influenzae Typ b)", ru: "Hib-инфекция (гемофильная палочка типа b)", ar: "المستدمية النزلية من النوع ب (Hib)", pt: "Hib (Haemophilus influenzae tipo b)", hi: "Hib (हीमोफिलस इन्फ्लुएंजा टाइप b)"}
+  hepb: {en: "Hepatitis B", es: "Hepatitis B", fr: "Hépatite B", de: "Hepatitis B", ru: "Гепатит B", ar: "التهاب الكبد B", pt: "Hepatite B", hi: "हेपेटाइटिस B"}
+  hepa: {en: "Hepatitis A", es: "Hepatitis A", fr: "Hépatite A", de: "Hepatitis A", ru: "Гепатит A", ar: "التهاب الكبد A", pt: "Hepatite A", hi: "हेपेटाइटिस A"}
+  polio: {en: "Polio", es: "Poliomielitis", fr: "Poliomyélite", de: "Kinderlähmung (Polio)", ru: "Полиомиелит", ar: "شلل الأطفال", pt: "Poliomielite", hi: "पोलियो"}
+  rotavirus: {en: "Rotavirus (severe diarrhoea)", es: "Rotavirus (diarrea grave)", fr: "Rotavirus (diarrhée sévère)", de: "Rotaviren (schwerer Durchfall)", ru: "Ротавирус (тяжёлая диарея)", ar: "فيروس الروتا (إسهال شديد)", pt: "Rotavírus (diarreia grave)", hi: "रोटावायरस (गंभीर दस्त)"}
+  pneumococcal: {en: "Pneumococcal infections", es: "Infecciones por neumococo", fr: "Infections à pneumocoque", de: "Pneumokokken-Infektionen", ru: "Пневмококковая инфекция", ar: "عدوى المكورات الرئوية", pt: "Infecções por pneumococo", hi: "न्यूमोकोकल संक्रमण"}
+  measles: {en: "Measles", es: "Sarampión", fr: "Rougeole", de: "Masern", ru: "Корь", ar: "الحصبة", pt: "Sarampo", hi: "खसरा"}
+  mumps: {en: "Mumps", es: "Paperas", fr: "Oreillons", de: "Mumps", ru: "Эпидемический паротит (свинка)", ar: "النكاف", pt: "Caxumba (papeira)", hi: "मम्प्स (कण्ठमाला)"}
+  rubella: {en: "Rubella (German measles)", es: "Rubéola", fr: "Rubéole", de: "Röteln", ru: "Краснуха", ar: "الحصبة الألمانية", pt: "Rubéola", hi: "रूबेला"}
+  varicella: {en: "Chickenpox (varicella)", es: "Varicela", fr: "Varicelle", de: "Windpocken", ru: "Ветряная оспа", ar: "جدري الماء", pt: "Varicela (catapora)", hi: "चिकनपॉक्स (छोटी माता)"}
+  flu: {en: "Flu (influenza)", es: "Gripe", fr: "Grippe", de: "Grippe (Influenza)", ru: "Грипп", ar: "الإنفلونزا", pt: "Gripe", hi: "फ्लू (इन्फ्लूएंज़ा)"}
+  covid: {en: "COVID-19", es: "COVID-19", fr: "COVID-19", de: "COVID-19", ru: "COVID-19", ar: "كوفيد-19", pt: "COVID-19", hi: "कोविड-19"}
+  rsv: {en: "RSV (respiratory syncytial virus)", es: "VRS (virus respiratorio sincitial)", fr: "VRS (virus respiratoire syncytial)", de: "RSV (Respiratorisches Synzytial-Virus)", ru: "РСВ (респираторно-синцитиальный вирус)", ar: "الفيروس المخلوي التنفسي", pt: "VSR (vírus sincicial respiratório)", hi: "RSV (रेस्पिरेटरी सिंसिटियल वायरस)"}
+  tb: {en: "Tuberculosis (TB)", es: "Tuberculosis", fr: "Tuberculose", de: "Tuberkulose", ru: "Туберкулёз", ar: "السل", pt: "Tuberculose", hi: "टीबी (क्षय रोग)"}
+  hpv: {en: "HPV (cervical and other cancers caused by HPV)", es: "VPH (cáncer de cuello de útero y otros cánceres por VPH)", fr: "HPV (cancer du col de l'utérus et autres cancers liés au HPV)", de: "HPV (Gebärmutterhalskrebs und andere HPV-bedingte Krebsarten)", ru: "ВПЧ (рак шейки матки и другие виды рака, вызванные ВПЧ)", ar: "فيروس الورم الحليمي البشري (سرطان عنق الرحم وسرطانات أخرى يسببها)", pt: "HPV (câncer do colo do útero e outros cânceres causados pelo HPV)", hi: "HPV (गर्भाशय-ग्रीवा का कैंसर और HPV से होने वाले अन्य कैंसर)"}
+  meningococcal: {en: "Meningococcal infections, such as meningitis", es: "Infecciones por meningococo, como la meningitis", fr: "Infections à méningocoque, comme la méningite", de: "Meningokokken-Infektionen, etwa Hirnhautentzündung", ru: "Менингококковая инфекция, например менингит", ar: "عدوى المكورات السحائية، مثل التهاب السحايا", pt: "Infecções por meningococo, como a meningite", hi: "मेनिंगोकोकल संक्रमण, जैसे मेनिन्जाइटिस"}
+  malaria: {en: "Malaria", es: "Malaria", fr: "Paludisme", de: "Malaria", ru: "Малярия", ar: "الملاريا", pt: "Malária", hi: "मलेरिया"}
+  yellow_fever: {en: "Yellow fever", es: "Fiebre amarilla", fr: "Fièvre jaune", de: "Gelbfieber", ru: "Жёлтая лихорадка", ar: "الحمى الصفراء", pt: "Febre amarela", hi: "पीत ज्वर (येलो फीवर)"}
+  typhoid: {en: "Typhoid fever", es: "Fiebre tifoidea", fr: "Fièvre typhoïde", de: "Typhus", ru: "Брюшной тиф", ar: "التيفوئيد", pt: "Febre tifoide", hi: "टाइफाइड"}
+  je: {en: "Japanese encephalitis", es: "Encefalitis japonesa", fr: "Encéphalite japonaise", de: "Japanische Enzephalitis", ru: "Японский энцефалит", ar: "التهاب الدماغ الياباني", pt: "Encefalite japonesa", hi: "जापानी इंसेफेलाइटिस"}
+  dengue: {en: "Dengue", es: "Dengue", fr: "Dengue", de: "Dengue-Fieber", ru: "Лихорадка денге", ar: "حمى الضنك", pt: "Dengue", hi: "डेंगू"}
+
+# Se mira el nombre de la vacuna en minúsculas. Una vacuna puede casar con varias reglas: las
+# combinadas suman. «6-in-1», «hexavalente» y «pentavalente» son las combinaciones que nombra el
+# propio calendario (Reino Unido, Francia, OMS: DTwP-Hib-HepB).
+rules:
+  - {match: '(^|[^a-z])(dtp|dpt|dtwp|dtap|tdap|dtpa|dtc|dt|td)([^a-z]|$)|(^|[^a-z])dtca|difteri|diphth|dipht|6-in-1|4-in-1|hexa|penta', diseases: [diphtheria]}
+  - {match: '(^|[^a-z])(dtp|dpt|dtwp|dtap|tdap|dtpa|dtc|dt|td)([^a-z]|$)|(^|[^a-z])dtca|t[ée]tan|6-in-1|4-in-1|hexa|penta', diseases: [tetanus]}
+  - {match: '(^|[^a-z])(dtp|dpt|dtwp|dtap|tdap|dtpa|dtc)([^a-z]|$)|(^|[^a-z])dtca|pertuss|tos ?ferina|tosse convulsa|coqueluche|6-in-1|4-in-1|hexa|penta', diseases: [pertussis]}
+  - {match: 'hib|haemophilus|6-in-1|hexa|penta', diseases: [hib]}
+  - {match: 'hepb|hep b|hepatitis b|h[ée]patite b|(^|[^a-z])hb([^a-z]|$)|6-in-1|hexa|penta', diseases: [hepb]}
+  - {match: 'hepatitis a|h[ée]patite a|hep a([^a-z]|$)', diseases: [hepa]}
+  - {match: 'polio|(^|[^a-z])(opv|ipv|fipv|vip)([^a-z]|$)|6-in-1|4-in-1|hexa', diseases: [polio]}
+  - {match: 'rota', diseases: [rotavirus]}
+  - {match: 'pneumo|neumo|(^|[^a-z])pcv', diseases: [pneumococcal]}
+  - {match: '(^|[^a-z])(mmr|mmrv|mr|ror|scr)([^a-z]|$)|measles|sarampi|sarampo|rougeole|masern|triple v[ií]rica|tr[ií]plice viral', diseases: [measles]}
+  - {match: '(^|[^a-z])(mmr|mmrv|ror|scr)([^a-z]|$)|mumps|paperas|parotid|oreillons|triple v[ií]rica|tr[ií]plice viral', diseases: [mumps]}
+  - {match: '(^|[^a-z])(mmr|mmrv|mr|ror|scr)([^a-z]|$)|rubell|rub[ée]ol|r[öo]teln|triple v[ií]rica|tr[ií]plice viral', diseases: [rubella]}
+  - {match: 'varic|chickenpox|(^|[^a-z])mmrv([^a-z]|$)', diseases: [varicella]}
+  - {match: '(?<!haemophilus )influenza|(^|[^a-z])flu([^a-z]|$)|gripe|grippe', diseases: [flu]}
+  - {match: 'covid', diseases: [covid]}
+  - {match: '(^|[^a-z])(rsv|vrs|vsr)([^a-z]|$)|nirsevimab', diseases: [rsv]}
+  - {match: 'bcg', diseases: [tb]}
+  - {match: 'hpv|papilom|papillom', diseases: [hpv]}
+  - {match: 'm[ée]ning|(^|[^a-z])men(b|c|acwy|acwyx|a)([^a-z]|$)', diseases: [meningococcal]}
+  - {match: 'malaria', diseases: [malaria]}
+  - {match: 'yellow fever|febre amarela|fiebre amarilla|fi[èe]vre jaune', diseases: [yellow_fever]}
+  - {match: 'typho|tifoid', diseases: [typhoid]}
+  - {match: 'dengue', diseases: [dengue]}
+  - {match: '(^|[^a-z])je([^a-z]|$)|japanese enceph', diseases: [je]}

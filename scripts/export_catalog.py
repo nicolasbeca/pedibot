@@ -191,6 +191,15 @@ target_vn.write_text(
 )
 print(f"{len(nombres_vac)} nombres de vacuna traducidos → {target_vn}")
 
+# de qué protege cada vacuna → web/site/src/data/vaccine_protects.json (9-oct-2026), ya
+# calculado: la página sólo lo pinta (pedibot.vaccine_protects, con el porqué)
+from pedibot.vaccine_protects import tabla_web  # noqa: E402
+
+target_vp = ROOT / "web" / "site" / "src" / "data" / "vaccine_protects.json"
+_vp = tabla_web()
+target_vp.write_text(json.dumps(_vp, ensure_ascii=False, indent=1) + chr(10), encoding="utf-8")
+print(f"{sum(len(x) for x in _vp['countries'].values())} líneas de qué protege cada vacuna → {target_vp}")
+
 
 # tablas de crecimiento por país → web/site/src/data/growth_charts.json (páginas /growth/{país})
 graw = yaml.safe_load((ROOT / "config" / "growth_charts.yaml").read_text(encoding="utf-8"))[

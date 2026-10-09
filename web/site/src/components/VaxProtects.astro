@@ -1,0 +1,66 @@
+---
+/**
+ * Debajo del calendario de un país: de qué protege cada vacuna, y las guías de PediBot sobre
+ * vacunas en esta lengua (9-oct-2026).
+ *
+ * La descripción de la página ya prometía «y de qué protegen» y la tabla sólo traía siglas. Las
+ * líneas llegan calculadas desde Python (`pedibot.vaccine_protects`, exportado por
+ * scripts/export_catalog.py): aquí sólo se pintan. Sólo nombres de enfermedades, con su fuente.
+ */
+import { getCollection } from 'astro:content';
+import data from '../data/vaccine_protects.json';
+import vaxNames from '../data/vaccine_names.json';
+import { t, langPrefix, type Lang } from '../i18n';
+
+interface Props { lang: Lang; code: string }
+const { lang, code } = Astro.props;
+const s = t(lang) as any;
+const filas = ((data as any).countries[code] ?? []) as { names: Record<string, string[]>; diseases: string[] }[];
+const enf = (data as any).diseases as Record<string, Record<string, string>>;
+const coma = ((vaxNames as any).sep?.[lang] ?? ', ') as string;
+const fuentes = (data as any).sources as { org: string; title: string; url: string }[];
+
+const guias = (await getCollection('guides', (g) => g.data.lang === lang && !g.data.draft))
+  .filter((g) => /^(vacunas|vaccines)/.test(String(g.data.topic ?? '')))
+  .map((g) => ({ title: g.data.title, href: `${langPrefix(lang)}/guides/${g.id.replace(new RegExp(`^${lang}/`), '')}` }));
+---
+
+{filas.length > 0 && (
+  <section class="card vp">
+    <h2>{s.vaxprot_h}</h2>
+    <dl>
+      {filas.map((f) => (
+        <div class="vp-row">
+          <dt>{(f.names[lang] ?? f.names.en).join(' · ')}</dt>
+          <dd>{f.diseases.map((k) => enf[k]?.[lang] ?? enf[k]?.en ?? k).join(coma)}</dd>
+        </div>
+      ))}
+    </dl>
+    <p class="src">
+      {s.vaxprot_src}{' '}
+      {fuentes.map((f, i) => (<>{i > 0 && ' · '}<a href={f.url} rel="nofollow noopener" target="_blank">{f.org}</a></>))}
+    </p>
+  </section>
+)}
+
+{guias.length > 0 && (
+  <section class="vg">
+    <h2>{s.vaxguides_h}</h2>
+    <ul>{guias.map((g) => <li><a href={g.href}>{g.title}</a></li>)}</ul>
+  </section>
+)}
+
+<style>
+  .vp { margin-top: 22px; }
+  .vp h2, .vg h2 { font-size: 1.15rem; margin: 0 0 12px; }
+  .vp dl { margin: 0; }
+  .vp-row { display: grid; grid-template-columns: minmax(130px, 40%) 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+  .vp-row:last-child { border-bottom: 0; }
+  .vp dt { font-weight: 600; color: var(--sage-deep); }
+  .vp dd { margin: 0; }
+  .vp .src { font-size: .8rem; color: var(--ink-3); margin-top: 12px; }
+  .vg { margin-top: 22px; }
+  .vg ul { margin: 0; padding-inline-start: 18px; }
+  .vg li { margin: 4px 0; }
+  @media (max-width: 520px) { .vp-row { grid-template-columns: 1fr; gap: 2px; } }
+</style>

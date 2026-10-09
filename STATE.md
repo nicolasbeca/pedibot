@@ -2,6 +2,23 @@
 
 Última actualización: **2026-10-09** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 9-oct-2026 · noche (2) · sinónimos que respetan la negación y vacunas que dicen de qué protegen
+
+- **Sinónimos:** la ampliación ya no suma lo que el padre niega para tranquilizar (fiebre,
+  erupción, tos, diarrea, vómitos, nueve lenguas). Negar en general rompía las ausencias que son
+  el síntoma («keinen Stuhlgang», «keine Zähne», «llora sin lágrimas»). 3.849 preguntas: 20
+  cambian, ~10 a mejor («tos/mocos/oído pero no fiebre» trae la hoja del síntoma), 3 a peor en el
+  tercer puesto. **Probado y descartado otra vez:** repetir fever/rash en la tabla inglesa (1 mejor,
+  2 peor). `test_synonyms_respect_what_is_denied.py`.
+- **/vaccines/<país>, en ocho lenguas:** debajo del calendario, «de qué protege cada vacuna»
+  (`config/vaccine_protects.yaml`: 24 enfermedades × 8 lenguas, sólo nombres; fuentes CDC
+  easy-read, NHS, OMS) agrupado por enfermedades, y las guías de vacunas de esa lengua. 861 líneas
+  en 92 países, ninguno vacío; la lógica en Python (`pedibot/vaccine_protects.py`), la web pinta la
+  tabla exportada. La descripción ya lo prometía. Desplegado y visto en vivo (us, es, fr, in, eg).
+  **Medir hacia el 29-oct** con `ops/gsc_inspect.py` si Google indexa ya las de vacunas.
+- **Visto:** nhm.gov.in (calendario de la India) no conecta ni desde el PC ni desde el servidor;
+  el domingo lo vuelve a mirar `sources_check`.
+
 ## 9-oct-2026 · noche · pendientes de calidad, primera tanda
 
 - **El texto ya no tranquiliza bajo un aviso rojo** (`rebaja_el_aviso`, `_TRANQUILIZA`): «is very
