@@ -9,6 +9,11 @@
 - **Sitio:** `ops/smoke.py --ask` limpio (24/24 páginas, ocho idiomas con consulta real); los
   cuatro servicios en pie, sin errores en el diario de las últimas 24 h.
 - **Correo:** no revisado: esta sesión no tenía el conector de Gmail.
+- **Vídeo de presentación** (75 s, 1920×1080, inglés; para X y /memo): proyecto Remotion en
+  `D:\Nicolas\pedibot-video` (fuera del repo), cifras con «+» de DATOS.md. Las consultas
+  **1048-1052 son pruebas mías** para escoger la escena «sin fuente»: no son reales. La plata
+  coloidal, el tobillo roto y el VPH, que antes daban «sin fuente», ya tienen respuesta; la
+  melatonina y la homeopatía en la dentición siguen sin fuente.
 - **Calendario:** lunes 12-oct comprobar que salieron los borradores de Madagascar, Etiopía y Chad
   (martes 13, Camerún y Togo); 16-oct recordatorio a Claudia (BIÖG) si no ha escrito; 29-oct
   repetir `ops/gsc_inspect.py`.
