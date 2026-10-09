@@ -1,6 +1,17 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-10-08** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-09** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 9-oct-2026 · revisión de la mañana
+
+- **Consultas reales desde el 8-oct:** una, y es el ejemplo de la portada «fever of 38.8 °C»
+  (Portugal, inglés): respuesta correcta. Ninguna mala. Nada desde el 8-oct 16:40.
+- **Sitio:** `ops/smoke.py --ask` limpio (24/24 páginas, ocho idiomas con consulta real); los
+  cuatro servicios en pie, sin errores en el diario de las últimas 24 h.
+- **Correo:** no revisado: esta sesión no tenía el conector de Gmail.
+- **Calendario:** lunes 12-oct comprobar que salieron los borradores de Madagascar, Etiopía y Chad
+  (martes 13, Camerún y Togo); 16-oct recordatorio a Claudia (BIÖG) si no ha escrito; 29-oct
+  repetir `ops/gsc_inspect.py`.
 
 ## 8-oct-2026 · el punto decimal cerraba la frase (L257)
 
