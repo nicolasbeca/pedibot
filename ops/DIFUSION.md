@@ -453,8 +453,7 @@ que habla con padres (un moderador, un editor de boletín). Un permiso no es dif
 
    ¿Os parecería útil para las personas de mediación o para las familias que acompañáis? Si os
    sirve y queréis compartirla, me haríais un favor enorme. Y si veis algo que falta o que no se
-   entiende, me encantaría saberlo. Como estamos en la misma ciudad, si os viene mejor os la
-   enseño en persona, en diez minutos y con un café.
+   entiende, me encantaría saberlo: me podéis escribir aquí mismo cuando queráis.
 
    La tenéis aquí: https://pedibot.xyz/es?r=sevilla-acoge
 
@@ -477,8 +476,7 @@ que habla con padres (un moderador, un editor de boletín). Un permiso no es dif
    Sé que trabajáis el acceso a la salud de personas migrantes aquí en Sevilla, y me preguntaba
    si algo así podría seros útil en el día a día, o a las familias que atendéis. Si os parece que
    sí, me encantaría que la probarais y me dijerais qué le falta: prefiero mil veces la opinión
-   de quien está con esas familias que la mía. Y si os apetece verla en persona, estamos a un
-   paseo.
+   de quien está con esas familias que la mía. Basta con contestar a este correo.
 
    Aquí está: https://pedibot.xyz/es?r=medicos-del-mundo
 
