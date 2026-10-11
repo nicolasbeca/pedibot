@@ -251,6 +251,17 @@ def _origen(ref: str) -> str:
     return "otras webs"
 
 
+#: El canal va en el enlace (`?r=chifa`, o el `utm_source` que añaden algunos boletines): un correo
+#: no manda Referer y todo eso caía en «directo» (11-oct-2026). Sólo nombres cortos y limpios: lo
+#: que no lo sea es ruido de quien juega con la dirección, no un canal.
+_CANAL = re.compile(r"[?&](?:r|utm_source)=([A-Za-z0-9._-]{1,40})(?:&|$)")
+
+
+def _canal(uri: str) -> str | None:
+    m = _CANAL.search(uri)
+    return m.group(1).lower() if m else None
+
+
 def _herramienta(uri: str) -> str | None:
     trozos = [x for x in uri.split("/") if x]
     if trozos and trozos[0] in _IDIOMAS_WEB:
@@ -270,6 +281,7 @@ def _cuenta(valores: list[str]) -> dict[str, int]:
 def _la_web(
     llegada: dict[str, tuple[float, str, str, str, str]],
     reales: dict[str, list[tuple[str, float]]],
+    canales: dict[str, tuple[float, str]] | None = None,
 ) -> dict[str, Any]:
     idiomas, regiones = [], []
     for _ts, _uri, _ref, _ua, al in llegada.values():
@@ -286,6 +298,7 @@ def _la_web(
     movil = re.compile(r"Mobi|Android|iPhone|iPad", re.I)
     return {
         "sources": _cuenta([_origen(x[2]) for x in llegada.values()]),
+        "channels": _cuenta([c for _ts, c in (canales or {}).values()]),
         "devices": _cuenta(
             ["móvil" if movil.search(x[3]) else "ordenador" for x in llegada.values()]
         ),
@@ -319,7 +332,7 @@ def count_visits(lines: Iterable[str]) -> dict[str, Any]:
     # un año de registro son 220 MB. Lo que puede ser una visita se guarda en corto; quiénes
     # somos se decide al final, porque la marca del panel puede llegar después de la visita.
     ours: dict[str, list[float]] = {}
-    candidatas: list[tuple[str, object, float, str, bool, str, str, str]] = []
+    candidatas: list[tuple[str, object, float, str, bool, str, str, str, str | None]] = []
     for line in lines:
         if '"handled request"' not in line:
             continue
@@ -349,6 +362,7 @@ def count_visits(lines: Iterable[str]) -> dict[str, Any]:
                 (h.get("Referer") or [""])[0],
                 ua,
                 (h.get("Accept-Language") or [""])[0],
+                _canal(uri),
             )
         )
 
@@ -356,7 +370,9 @@ def count_visits(lines: Iterable[str]) -> dict[str, Any]:
     paginas: dict[str, list[tuple[str, float]]] = {}
     llegada: dict[str, tuple[float, str, str, str, str]] = {}
     estaticos: set[str] = set()
-    for who, ip, ts_pag, uri, estatico, ref, ua, lang in candidatas:
+    # el primer canal con el que llegó cada persona: quien la trajo
+    canales: dict[str, tuple[float, str]] = {}
+    for who, ip, ts_pag, uri, estatico, ref, ua, lang, canal in candidatas:
         if _es_nuestra(ours, ip, ts_pag):
             # el operador mirando su propio sitio no es una visita, y con este tráfico una
             # persona abriéndolo dos veces al día sería casi todo el número que está mirando
@@ -366,6 +382,8 @@ def count_visits(lines: Iterable[str]) -> dict[str, Any]:
             continue
         brutas += 1
         paginas.setdefault(who, []).append((uri, ts_pag))
+        if canal and (who not in canales or ts_pag < canales[who][0]):
+            canales[who] = (ts_pag, canal)
         if who not in llegada or ts_pag < llegada[who][0]:
             llegada[who] = (ts_pag, uri, ref, ua, lang)
 
@@ -398,7 +416,11 @@ def count_visits(lines: Iterable[str]) -> dict[str, Any]:
         "per_day": dict(sorted(per_day.items())),
         # personas distintas cada día: la gráfica del panel sumaba páginas y lo llamaba visitas
         "visitors_per_day": {d: len(w) for d, w in sorted(people_day.items())},
-        "web": _la_web({w: llegada[w] for w in reales if w in llegada}, reales),
+        "web": _la_web(
+            {w: llegada[w] for w in reales if w in llegada},
+            reales,
+            {w: canales[w] for w in reales if w in canales},
+        ),
         # lo que el registro tenía de verdad, para que el panel no llame total a un log rotado
         "covers": (min(per_day), max(per_day)) if per_day else (),
     }

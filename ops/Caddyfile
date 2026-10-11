@@ -105,8 +105,17 @@ pedibot.xyz {
 	@trailingslash {
 		path_regexp tslash ^(/.+)/$
 		not path /api/* /a/* /admin /admin/*
+		expression {query} == ""
 	}
 	redir @trailingslash {re.tslash.1} permanent
+	# Con consulta, la consulta viaja (11-oct-2026): /es/?r=sevilla llegaba a /es sin su canal y
+	# el panel no podía decir qué correo trajo a esa persona.
+	@trailingslashq {
+		path_regexp tslashq ^(/.+)/$
+		not path /api/* /a/* /admin /admin/*
+		expression {query} != ""
+	}
+	redir @trailingslashq {re.tslashq.1}?{query} permanent
 
 	# Sacados del registro el 6-sep-2026: 31 peticiones a /sitemap.xml y 8 a /en/, todas 404.
 	# El sitemap se llama sitemap-index.xml, y muchos rastreadores solo prueban el nombre de

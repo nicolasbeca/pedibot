@@ -484,6 +484,11 @@ def _web_card(w: dict[str, Any]) -> str:
             list(w["sources"].items()),
             "«Directo»: escribieron la dirección, un marcador o una app que no lo dice.",
         )
+        + bloque(
+            "Por qué enlace",
+            list(w.get("channels", {}).items()),
+            "El <code>?r=</code> de cada correo o foro. Una persona, el primer enlace con el que llegó.",
+        )
         + bloque("Qué herramientas usan", list(w.get("tools", {}).items()))
         + bloque("Por dónde entran", list(w.get("entries", [])))
         + bloque("Móvil u ordenador", list(w.get("devices", {}).items()))
@@ -534,7 +539,7 @@ def _mcp_card(days: int, path: pathlib.Path | None = None) -> str:
 
         path = ROOT / "data" / "mcp_uso.jsonl"
     since = (
-        (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=days)).strftime("%Y-%m-%d %H:%M:%S")
+        (dt.datetime.now(dt.UTC) - dt.timedelta(days=days)).strftime("%Y-%m-%d %H:%M:%S")
         if days > 0
         else ""
     )

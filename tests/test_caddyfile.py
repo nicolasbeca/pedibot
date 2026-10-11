@@ -97,3 +97,13 @@ def test_a_restart_is_not_a_502() -> None:
     for bloque in ("handle @api {", "handle @mcp {"):
         trozo = CADDY[CADDY.index(bloque) : CADDY.index(bloque) + 600]
         assert "lb_try_duration" in trozo, bloque
+
+
+def test_the_slash_redirect_keeps_the_channel() -> None:
+    """/es/?r=sevilla perdía el `?r=` en el 301 y el panel no sabía qué correo la trajo (11-oct)."""
+    assert re.search(r"redir @trailingslashq \{re\.tslashq\.1\}\?\{query\} permanent", CADDY)
+    sin = CADDY[CADDY.index("@trailingslash {") : CADDY.index("redir @trailingslash ")]
+    con = CADDY[CADDY.index("@trailingslashq {") : CADDY.index("redir @trailingslashq ")]
+    assert 'expression {query} == ""' in sin
+    assert 'expression {query} != ""' in con
+    assert "not path /api/* /a/* /admin /admin/*" in con

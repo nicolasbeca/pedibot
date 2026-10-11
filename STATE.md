@@ -1,6 +1,22 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-10-09** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-11** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 11-oct-2026 · domingo · cada canal con su enlace, y cinco correos para el lunes
+
+- **Repaso:** 4 consultas desde el 9-oct (ejemplo de portada, Apiretal 14 kg bien, dos de un
+  agente «healthcare research»); ninguna mala. MCP: 25 llamadas desde el 9-oct, todas de
+  rastreadores (BrickBlueBot, rokmcp) y un evaluador python; ningún asistente de verdad.
+- **Jane Cameron (St John Ambulance)** contestada con su sí: estamos en Sevilla, gracias.
+- **Backable descartado** por el operador («es tirar dinero»): 12 de 95 rondas financiadas.
+- **Difusión, no permisos** (`ops/DIFUSION.md`, 11-oct): los tres picos de visitas son los
+  días de CHIFA; Google, 5 clics en 28 días. Cinco correos escritos para el **lunes 12-oct**
+  (CHIFA, Immunize.org/IZ Express, Switchboard, Sevilla Acoge, Médicos del Mundo Sevilla),
+  con su sí a los tres puntos; salen el lunes.
+- **«Por qué enlace»** en el panel: `?r=<canal>` (o `utm_source`) en el enlace, cada persona en
+  el primer canal con el que llegó (`report._canal`, `test_each_channel_has_its_link.py`).
+  **Caddy perdía la consulta** en el 301 de la barra final (/es/?r=x → /es): ahora la conserva
+  (`@trailingslashq`). Desplegado; visto en vivo el 301 con su `?r=` y el registro con la URI entera.
 
 ## 9-oct-2026 · noche (2) · sinónimos que respetan la negación y vacunas que dicen de qué protegen
 

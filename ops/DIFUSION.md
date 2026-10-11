@@ -377,7 +377,7 @@ que habla con padres (un moderador, un editor de boletín). Un permiso no es dif
    same name hides a very different strength?
 
    (For transparency: PediBot is my project, a free site that answers parents from official
-   guidance in eight languages, https://pedibot.xyz)
+   guidance in eight languages, https://pedibot.xyz/?r=chifa)
 
    Best wishes,
    Nicolas Beca
@@ -402,9 +402,90 @@ que habla con padres (un moderador, un editor de boletín). Un permiso no es dif
 
    Warm regards,
    Nicolas Beca
-   https://pedibot.xyz
+   https://pedibot.xyz/?r=iz-express
 
-**Siguientes, sin redactar aún (dirección por verificar):** CHW Central (formulario «submit a
-resource»), Switchboard (IRC, proveedores de refugiados en EE. UU.), Global Health NOW (Johns
-Hopkins). En Sevilla, ONG con familias recién llegadas (Sevilla Acoge, CEAR, Cruz Roja): se
-pregunta al operador, que aparcó la prensa local el 30-sep.
+> **11-oct, noche: el operador aprueba los tres puntos y que salgan 5 el lunes 12-oct** («siempre
+> un toque humano y personal; a las de Sevilla, que somos de aquí; buscar en Andalucía o
+> España»). Los cinco: los dos de arriba y los tres de abajo. Direcciones leídas hoy en sus webs.
+
+3. **Switchboard** (IRC, financiado por la ORR; `switchboard@rescue.org`, su página de contacto).
+   Proveedores de servicios a refugiados en EE. UU.: de ahí viene el 72 % de nuestras consultas.
+
+   Subject: A free tool for refugee families with sick kids, in their own language
+
+   Hello Switchboard team,
+
+   I'm Nicolas, and I build PediBot from Seville, in Spain. It's a free website with no ads and
+   no sign-up where a parent can ask about their child's health in their own language (Arabic,
+   French, Russian, Hindi, Portuguese, Spanish, German or English) and get an answer built only
+   from official guidance: CDC, NHS, WHO and paediatric societies. Every answer names its source,
+   and if something sounds urgent it says so first and gives the local emergency number.
+
+   I keep thinking about the families your network works with: a parent who has just arrived,
+   a child with a fever at 2 a.m., and every leaflet in a language they don't read yet. That's
+   exactly who I had in mind. It also works offline once it's been opened, which matters when
+   data is expensive.
+
+   Would it be useful to the caseworkers and health navigators you support? If it fits in your
+   newsletter or resource library, I'd be really grateful, and if anyone tries it and finds
+   something missing or wrong, I'd love to hear it. You can see it here:
+   https://pedibot.xyz/?r=switchboard
+
+   Thank you for the work you do,
+   Nicolas Beca
+
+4. **Sevilla Acoge** (`comunicacion@sevillaacoge.org`, su página de contacto; tienen Mediación
+   Intercultural e Infancia y juventud):
+
+   Asunto: Una web gratuita para las familias que atendéis, hecha aquí en Sevilla
+
+   Hola, equipo de Sevilla Acoge:
+
+   Me llamo Nicolas Beca y soy de aquí, de Sevilla. Llevo unos meses haciendo PediBot, una web
+   gratuita, sin anuncios y sin registro donde una madre o un padre pregunta por la salud de su
+   hijo en su idioma (árabe, francés, ruso, inglés, portugués, hindi, alemán o castellano) y
+   recibe una respuesta sacada sólo de guías oficiales de pediatría, con la fuente a la vista. Si
+   lo que cuenta suena a urgencia, se lo dice lo primero y le da el 112.
+
+   Pensé en vosotros enseguida. Una familia recién llegada con un niño con fiebre de madrugada
+   no sabe si ir a urgencias o esperar al centro de salud, y casi nada de lo que hay está en su
+   idioma. Para eso la hice.
+
+   ¿Os parecería útil para las personas de mediación o para las familias que acompañáis? Si os
+   sirve y queréis compartirla, me haríais un favor enorme. Y si veis algo que falta o que no se
+   entiende, me encantaría saberlo. Como estamos en la misma ciudad, si os viene mejor os la
+   enseño en persona, en diez minutos y con un café.
+
+   La tenéis aquí: https://pedibot.xyz/es?r=sevilla-acoge
+
+   Un abrazo y gracias por lo que hacéis,
+   Nicolas Beca
+
+5. **Médicos del Mundo Andalucía, sede de Sevilla** (`sevilla@medicosdelmundo.org`, su página de
+   Andalucía; trabajan acceso a la salud de personas migrantes en Sevilla, Málaga y Almería):
+
+   Asunto: Una herramienta gratuita de salud infantil en su idioma, desde Sevilla
+
+   Hola, equipo de Médicos del Mundo en Sevilla:
+
+   Soy Nicolas Beca, sevillano, y hago PediBot: una web gratuita y sin anuncios donde una familia
+   pregunta por la salud de su hijo en árabe, francés, ruso, inglés, portugués, hindi, alemán o
+   castellano, y recibe una respuesta construida sólo con guías oficiales (pediatras españoles,
+   NHS, OMS, CDC), con la fuente citada. No diagnostica, y ante una señal de alarma lo dice lo
+   primero y da el 112. No pide cuenta y funciona sin conexión una vez abierta.
+
+   Sé que trabajáis el acceso a la salud de personas migrantes aquí en Sevilla, y me preguntaba
+   si algo así podría seros útil en el día a día, o a las familias que atendéis. Si os parece que
+   sí, me encantaría que la probarais y me dijerais qué le falta: prefiero mil veces la opinión
+   de quien está con esas familias que la mía. Y si os apetece verla en persona, estamos a un
+   paseo.
+
+   Aquí está: https://pedibot.xyz/es?r=medicos-del-mundo
+
+   Muchas gracias por vuestro tiempo,
+   Nicolas Beca
+
+**Para otra tanda:** CHW Central (sólo formulario, https://chwcentral.org/contact/), Global Health
+NOW (Johns Hopkins, dirección sin ver), CEAR Andalucía, Cruz Roja Sevilla, Granada Acoge,
+Almería Acoge. Pediatras andaluces (SPAOYEX, APap-Andalucía): sin dirección publicada, y la AEPap
+aún no ha contestado al permiso.
