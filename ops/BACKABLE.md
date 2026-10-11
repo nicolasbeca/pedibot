@@ -1,6 +1,8 @@
 # Backable — el plan entero
 
-> Estado: **borrador de trabajo, nada enviado.** Las entradas nuevas están pausadas en su
+> **DESCARTADO el 11-oct-2026 por el operador («es tirar dinero»).** A 5-oct: 95 rondas, 12 financiadas, 82 fallidas; el público es cripto (juegos, trading). No se vuelve a mirar.
+>
+> Estado anterior: **borrador de trabajo, nada enviado.** Las entradas nuevas están pausadas en su
 > plataforma, así que preparar el borrador es gratis y es exactamente lo que toca hacer ahora.
 > Todo lo que sigue está leído de su propia documentación el 20-sep-2026, no de oídas.
 

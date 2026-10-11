@@ -342,3 +342,69 @@ cita de ahí vale más que cualquier cosa que podamos comprar.
 >
 > - Descartado por ahora: Ministerio de Sanidad saudí (moh.gov.sa, «All Rights Reserved», sólo
 >   formulario y `937@moh.gov.sa`, que es de quejas). Para el árabe, esperar al Manual MSD.
+
+---
+
+# Darnos a conocer, no pedir permisos (11-oct-2026)
+
+> El operador, el 11-oct: «por ahora sólo ha sido bueno CHIFA, lo demás son permisos. Necesitamos
+> darnos a conocer». Medido en `web_visits.json`: de ~15-20 visitantes al día, los picos son el
+> 22-sep (62), el 24-sep (56) y el 30-sep (65), los tres días en que CHIFA/HIFA distribuyó un
+> mensaje nuestro. Google: 5 clics en 28 días. Los correos de permisos no han movido nada.
+
+**La regla:** sólo cuenta como difusión lo que tiene detrás a alguien que lee y reparte a gente
+que habla con padres (un moderador, un editor de boletín). Un permiso no es difusión.
+
+**Borradores, esperando el sí del operador al texto:**
+
+1. **CHIFA** (`CHIFA@hifaforums.org`), mensaje nuevo con un hallazgo, no con el enlace:
+
+   Subject: Same medicine, five times the strength: paracetamol drops when families move
+
+   Dear CHIFA colleagues,
+
+   While building the dose tables for PediBot I ran into something I keep thinking about.
+   Paracetamol "drops" in Ethiopia are usually 100 mg per 5 ml, so 20 mg/ml. In Spain, Portugal
+   or India the drops are 100 mg per ml, five times stronger. Same word on the box, same
+   dropper, and a parent who measures the amount they are used to from home gives either a fifth
+   of the dose or five times the dose.
+
+   Our calculator only knew the European bottle at first, which is how I found it. Now it asks
+   for the strength on the label before giving any amount.
+
+   I'd love to hear from people who work with families who have moved between countries, or who
+   bring medicines from home. Have you seen mix-ups like this? Are there other medicines where the
+   same name hides a very different strength?
+
+   (For transparency: PediBot is my project, a free site that answers parents from official
+   guidance in eight languages, https://pedibot.xyz)
+
+   Best wishes,
+   Nicolas Beca
+   Seville, Spain
+
+2. **Immunize.org** (Kayla Ohlde, `kayla.ohlde@immunize.org`, en el hilo del permiso): ya nos
+   dijeron que sí y fueron cálidos. Se pregunta si cabe una mención en IZ Express (50.000
+   suscriptores, vacunadores).
+
+   Subject: Re: Permission request: Swahili VIS translations
+
+   Hi Kayla,
+
+   I hope you're well. A quick update and a small question. Your Swahili and other translated
+   sheets are now live in PediBot, and when a parent asks about a vaccine in one of those
+   languages, the answer quotes your sheet and links straight back to immunize.org.
+
+   I was wondering whether something like this could ever fit in IZ Express, maybe as a short
+   item for vaccinators who see families who don't read English well: a free site where a parent
+   can ask in their own language and get an answer built on your materials and the CDC's. If it
+   doesn't fit, no problem at all, and thank you again for saying yes back in September.
+
+   Warm regards,
+   Nicolas Beca
+   https://pedibot.xyz
+
+**Siguientes, sin redactar aún (dirección por verificar):** CHW Central (formulario «submit a
+resource»), Switchboard (IRC, proveedores de refugiados en EE. UU.), Global Health NOW (Johns
+Hopkins). En Sevilla, ONG con familias recién llegadas (Sevilla Acoge, CEAR, Cruz Roja): se
+pregunta al operador, que aparcó la prensa local el 30-sep.

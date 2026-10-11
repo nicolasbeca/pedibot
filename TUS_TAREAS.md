@@ -16,7 +16,7 @@ panel; tú pediste la indexación en Search Console de las páginas de marca.
 
 **Lo tuyo que queda:**
 1. ✅ **Glama: verificado el 2-oct** (con tu cuenta, la misma de Regime).
-2. **Backable**, este fin de semana (3-4 oct).
+2. ❌ **Backable: descartado el 11-oct** («es tirar dinero»): 12 de 95 rondas financiadas, público cripto.
 
 **En pausa hasta que tú avises:** la app de Google Play (cuenta, probar el APK, probadores).
 
