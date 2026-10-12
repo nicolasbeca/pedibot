@@ -34,7 +34,6 @@ Whooping cough is especially serious in babies [1]. About half of babies under o
 - Cover coughs and sneezes with a tissue or your upper sleeve, not your hands [4].
 - Stay home when sick [4].
 - Make sure your child rests and drinks fluids to avoid dehydration [9].
-- Do not give any medication doses without checking the dose calculator first.
 
 Antibiotics can help if given early [8]. They may make the infection less serious and shorten the time your child is contagious [7][8]. Sometimes doctors give antibiotics to family members who were exposed, to prevent the illness [4]. Talk to your doctor about whether antibiotics are right for your child.
 

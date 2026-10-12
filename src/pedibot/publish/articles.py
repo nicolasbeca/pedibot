@@ -801,6 +801,38 @@ def _structure_problems(body: str, lang: str, compare: bool) -> list[str]:
     return out
 
 
+# La calculadora de dosis hace paracetamol e ibuprofeno y nada más. El prompt de las guías decía
+# «point readers to the dose calculator instead» y el servidor lo escribió tres semanas en guías
+# de asma (salbutamol), oxiuros (mebendazol), sales de rehidratación y hasta dosis de VACUNAS
+# (12-oct-2026). El chat lo aprendió el 22-sep; las guías, no. Vale si la línea nombra uno de
+# los dos, o si la guía entera va de uno de ellos (lo dice su título).
+_CALCULATOR = re.compile(
+    r"dose calculator|calculadora de dos[ie]s|calculateur de doses?|Dosisrechner"
+    r"|калькулятор\w* доз|حاسبة الجرع|डोज़? कैलकुलेटर|खुराक कैलकुलेटर",
+    re.I,
+)
+_THE_TWO = re.compile(
+    r"paracetam|parac[ée]tamol|acetaminop|ibuprof|парацетамол|ибупрофен"
+    r"|باراسيتامول|براسيتامول|إيبوبروفين|ايبوبروفين|पैरासिटामोल|पेरासिटामोल|आइबुप्रोफ|इबुप्रोफ",
+    re.I,
+)
+
+
+def calculator_problem(prose: str, title: str = "") -> str | None:
+    if _THE_TWO.search(title):
+        return None
+    for line in prose.splitlines():
+        if line.strip().startswith(('- "[', "*", "[")):
+            continue
+        if _CALCULATOR.search(line) and not _THE_TWO.search(line):
+            return (
+                "calculator_for_another_medicine: PediBot's dose calculator is ONLY for"
+                " paracetamol and ibuprofen; for anything else say the dose is the one the"
+                f" doctor or the leaflet gives ({line.strip()[:80]!r})"
+            )
+    return None
+
+
 def _problems(
     title: str,
     body: str,
@@ -822,6 +854,9 @@ def _problems(
         line for line in body.splitlines() if not line.strip().startswith(('- "[', "*", "["))
     )
     found = foreign_service_problem(prose)
+    if found:
+        problems.append(found)
+    found = calculator_problem(prose, title)
     if found:
         problems.append(found)
     # El idioma, línea a línea y no sólo en conjunto. `detect_lang` mira el artículo entero y da

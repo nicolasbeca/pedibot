@@ -68,7 +68,7 @@ Appelez votre numéro d'urgence local ou allez aux urgences si votre enfant :
 ## Questions fréquentes
 
 **À partir de quel âge peut-on donner de l'ibuprofène ?**
-Vous pouvez donner de l'ibuprofène à un enfant de 3 mois ou plus qui pèse plus de 5 kg [4]. Une autre source indique de ne pas utiliser l'ibuprofène chez l'enfant de moins de 6 mois [7]. En cas de doute, demandez conseil à un médecin ou à un pharmacien [4].
+Vous pouvez donner de l'ibuprofène à un enfant de 3 mois ou plus qui pèse plus de 5 kg [4]. Selon MedlinePlus (États-Unis), il ne faut pas utiliser l'ibuprofène chez l'enfant de moins de 6 mois [7]. En cas de doute, demandez conseil à un médecin ou à un pharmacien [4].
 
 **Que faire si le paracétamol ne suffit pas ?**
 Si vous donnez du paracétamol mais qu'il n'aide pas, vous pouvez essayer l'ibuprofène s'il convient à votre enfant [5]. Ne donnez pas les deux en même temps [5].

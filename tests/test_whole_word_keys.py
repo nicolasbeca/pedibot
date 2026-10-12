@@ -155,6 +155,9 @@ _REVISADAS = {
     # 28-sep-2026: «autism» coge autismo, autisme y autismus: la misma palabra en cada lengua.
     # Saltó cuando la guía portuguesa de autismo metió la palabra en el corpus.
     "autism",
+    # 12-oct-2026: «туберкул» coge туберкулез, туберкулёз, туберкулезный: su propia raíz. Saltó
+    # cuando la guía rusa de tuberculosis metió la palabra en el corpus.
+    "туберкул",
     "vulvovaginit",  # vulvovaginitis, vulvovaginite
     "hyperhidros",  # hyperhidrosis; y su gemela castellana «hiperhidros»
     "hiperhidros",

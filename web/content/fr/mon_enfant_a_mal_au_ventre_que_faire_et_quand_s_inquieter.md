@@ -35,7 +35,7 @@ D'autres causes existent : intoxication alimentaire, intolérance ou allergie al
 - Proposez souvent à boire de petites quantités, pour éviter la déshydratation [6].
 - Si vous ou votre enfant avez plus de 5 ans et des signes de déshydratation, une poudre de réhydratation orale à mélanger dans l'eau peut aider [6].
 - Un pharmacien peut vous conseiller une poudre de réhydratation orale, ou un médicament pour arrêter la diarrhée pendant quelques heures, comme le lopéramide, qui ne convient pas aux enfants de moins de 12 ans [6].
-- Ne donnez pas de médicament sans demander conseil : pour les doses, utilisez le calculateur de doses.
+- Ne donnez pas de médicament sans demander conseil à un médecin ou à un pharmacien.
 - Gardez votre enfant à la maison, loin de l'école ou de la crèche, et n'allez pas rendre visite à des personnes hospitalisées ou en maison de retraite tant qu'il n'a pas été malade ou n'a pas eu de diarrhée pendant 2 jours [5].
 - Lavez-vous les mains souvent [8].
 

@@ -31,7 +31,6 @@ Según la OMS, los casos por poliovirus salvaje han disminuido más del 99 % des
 - Comprueba que tu hijo tiene todas las vacunas contra la polio según el calendario de tu país [1].
 - Si vais a viajar, revisa antes el estado de vacunación y, si hace falta, ponlo al día [5].
 - Ante síntomas como fiebre, cansancio, dolor de cabeza, vómitos, rigidez de cuello o dolor en las extremidades, consulta con tu médico [1].
-- No intentes calcular dosis de vacunas por tu cuenta: usa la calculadora de dosis o pregunta a tu profesional de salud.
 
 ## Cuándo acudir al médico o a urgencias
 

@@ -2244,3 +2244,15 @@ en los pasajes, no en la respuesta). Malí y Níger, también con 15, están bie
 las páginas de urgencias borró el noindex por país de esta tarde: el generador
 (`build_emergency_pages.py`) no lo tenía. **Regla:** para un número de urgencias manda la
 autoridad del propio país; y lo que se añade a un fichero generado se añade a su generador.
+
+## L263 · Una regla aprendida en un prompt no llega a su hermano (12-oct-2026)
+
+El 22-sep un padre preguntó por el salbutamol, el chat le mandó a la calculadora de dosis, que
+sólo hace paracetamol e ibuprofeno, y volvió a decirlo. Se arregló el prompt del chat (v7 en
+adelante) y nadie miró el de las guías, que seguía diciendo «point readers to the dose calculator
+instead». Tres semanas después había 8 guías publicadas que mandaban a la calculadora para un
+inhalador, para el mebendazol, para el suero oral y para dosis de VACUNAS (polio, vacunas
+atrasadas). Ahora la regla está en `article_v1.md`, el generador rechaza el borrador
+(`calculator_problem`) y un test recorre las publicadas. **Regla:** cuando un fallo se arregla
+en un prompt, buscar la misma instrucción en los demás (`grep` en todos los `prompts/`), y que el
+candado mire también lo ya publicado, no sólo lo que se escriba a partir de hoy.

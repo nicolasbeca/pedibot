@@ -1,6 +1,25 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-10-11** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-12** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 12-oct-2026 · lunes · la calculadora, sólo para lo que calcula
+
+- **Repaso:** ninguna consulta nueva desde la 1057 (ya revisada). MCP desde ayer: 3 llamadas,
+  todas de BrickBlueBot (rastreador).
+- **Correo:** la sesión arrancó SIN conector de Gmail; ni revisión ni los 5 de difusión del
+  lunes (CHIFA, Immunize.org, Switchboard, Sevilla Acoge, Médicos del Mundo) hasta tenerlo.
+- **6 guías nuevas del temporizador** (autismo en, ibuprofeno es y ar, tuberculosis ru y de,
+  lombrices pt), por la cadena: 549 guías, README y DATOS.md. Leídas: la de ibuprofeno en
+  castellano decía que la fiebre es «alrededor de 37 ºC» (es la normal) y «otra fuente» sin
+  nombre; la francesa igual; nombran ya a MedlinePlus, como la alemana y la rusa.
+- **La calculadora de dosis, en 8 guías para lo que no calcula** (L263): asma árabe
+  (salbutamol), oxiuros ruso (mebendazol), suero oral en hindi, polio y vacunas atrasadas
+  (¡dosis de vacunas!), tos ferina, dolor de tripa y vómitos. El prompt del chat lo aprendió el
+  22-sep; el de las guías, no. Regla en `article_v1.md`, rechazo en el generador
+  (`calculator_problem`) y `test_the_guides_calculator_is_only_for_two_medicines.py` sobre las
+  publicadas. 8 corregidas a mano.
+- **Visto, sin tocar:** muchas guías dicen «las fuentes no mencionan…» (en las comparativas es
+  correcto; en las normales suena a borrador).
 
 ## 11-oct-2026 · domingo · cada canal con su enlace, y cinco correos para el lunes
 

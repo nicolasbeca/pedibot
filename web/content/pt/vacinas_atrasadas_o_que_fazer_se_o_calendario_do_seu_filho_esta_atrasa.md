@@ -32,7 +32,7 @@ Segundo a OMS, a Agenda de Imunização 2030 é uma estratégia mundial para nã
 - Retome o calendário o quanto antes: a recomendação é que a criança receba as vacinas no momento certo, para desenvolver imunidade antes de se expor a doenças graves [3].
 - Não se preocupe com o número de vacinas em um mesmo dia: as vacinas não sobrecarregam o sistema imunológico [5].
 - Lembre-se de que, todos os dias, o sistema imunológico de uma criança saudável combate com sucesso milhares de germes, e nas vacinas os germes estão enfraquecidos ou mortos [5].
-- Se tiver dúvidas sobre quantas doses faltam ou em que idade aplicar, use a calculadora de doses e converse com o profissional de saúde que acompanha a criança [3].
+- Se tiver dúvidas sobre quantas doses faltam ou em que idade aplicar, converse com o profissional de saúde que acompanha a criança [3].
 
 ## Quando ver um médico ou ir ao pronto-socorro
 
