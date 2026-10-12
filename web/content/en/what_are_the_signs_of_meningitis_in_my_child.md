@@ -52,8 +52,8 @@ Vaccines are one of the safest and most effective ways to protect your child aga
 Call your emergency number or go to the emergency department immediately if you think your child might have meningitis [4]. Do not drive yourself to the emergency department [4]. The person who answers will give you advice about what to do [4].
 
 For a baby or child under 5 years, get immediate help if they have:
-- A very high temperature – 38C or more in babies under 3 months old, or 39C or more in babies 3 to 6 months old [4]
-- A very low temperature – less than 36C, or feels cold to the touch or is shivery [4]
+- A very high temperature – 38C (100.4 °F) or more in babies under 3 months old, or 39C (102.2 °F) or more in babies 3 to 6 months old [4]
+- A very low temperature – less than 36C (96.8 °F), or feels cold to the touch or is shivery [4]
 - A weak, high-pitched, or continuous cry [4]
 - A rash that does not fade when you press it [4]
 - Not responding like they normally do, not feeding, or is floppy, difficult to wake, or more sleepy than usual [4]

@@ -47,7 +47,7 @@ Get medical help urgently if your child is unwell and getting worse, or if you a
 - Difficulty breathing, shortness of breath, faster breathing, or long gaps between breaths [6]
 - A cough that gets worse [6]
 - Noisy breathing (wheezing) [6]
-- Your baby is under 3 months old and has a temperature of 38C or higher, or is older than 3 months and has a temperature of 39C or higher [6]
+- Your baby is under 3 months old and has a temperature of 38C (100.4 °F) or higher, or is older than 3 months and has a temperature of 39C (102.2 °F) or higher [6]
 - Your baby feels hotter than usual on their back or chest, feels sweaty, or is shivering [6]
 
 In the most severe cases, a child may need to be hospitalized and receive oxygen, IV fluids if they cannot drink enough, or a breathing tube with mechanical ventilation [1]. Most children improve with this supportive care and are discharged in a few days [2].

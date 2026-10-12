@@ -32,6 +32,7 @@ import re
 import sqlite3
 from concurrent.futures import ThreadPoolExecutor
 from typing import Any
+from urllib.parse import unquote
 
 UA = "Mozilla/5.0 (compatible; PediBot/1.0; +https://pedibot.xyz)"
 TIMEOUT = 30.0
@@ -118,7 +119,8 @@ def _probe(par: tuple[str, str]) -> tuple[str, str, str, str]:
         return que, url, "rota", f"HTTP {r.status_code}"
     if RETIRADA.search(final):
         return que, url, "retirada", final
-    if final.rstrip("/") != url.rstrip("/"):
+    # «तीव्र-श्‍वसन-रोग» y «%E0%A4%A4…» son la misma dirección (Vikaspedia, cada domingo)
+    if unquote(final).rstrip("/") != unquote(url).rstrip("/"):
         antes, ahora = _palabras(url), _palabras(final)
         # si el destino ya no comparte ninguna palabra propia, no es una mudanza: es otro tema
         clase = "tema" if antes and not (antes & ahora) else "movida"

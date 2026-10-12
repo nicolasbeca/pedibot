@@ -62,7 +62,7 @@ Get medical help if you are worried your child is seriously ill [8]. Ask for urg
 - Your child is feeding or eating much less than normal [8]
 - Your child has had a dry nappy for 12 hours or more, or shows other signs of dehydration [8]
 - Your baby feels hotter than usual when you touch their back or chest, feels sweaty or is shivering [8]
-- Your baby is under 3 months old and has a temperature of 38C, or is older than 3 months and has a temperature of 39C or higher [8]
+- Your baby is under 3 months old and has a temperature of 38C (100.4 °F), or is older than 3 months and has a temperature of 39C (102.2 °F) or higher [8]
 - Your child is very tired or irritable [8]
 - You get cold symptoms and you have a long-term medical condition, such as a heart or lung condition, or a weakened immune system [8]
 - You have difficulty breathing — you may be shorter of breath than usual [8]

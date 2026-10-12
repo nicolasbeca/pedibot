@@ -49,8 +49,8 @@ Fever usually lasts 2 to 4 days, but it can last longer without being more serio
 
 Get urgent medical advice if your child:
 
-- is under 3 months old and has a temperature of 38°C or higher, or you think they have a high temperature [1]
-- is 3 to 6 months old and has a temperature of 39°C or higher, or you think they have a high temperature [1]
+- is under 3 months old and has a temperature of 38°C (100.4 °F) or higher, or you think they have a high temperature [1]
+- is 3 to 6 months old and has a temperature of 39°C (102.2 °F) or higher, or you think they have a high temperature [1]
 - has other signs of illness, such as a rash, along with a high temperature [1]
 - has a high temperature that has lasted 5 days or more [1]
 - does not want to eat, or is not their usual self and you are worried [1]

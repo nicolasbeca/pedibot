@@ -8,6 +8,13 @@
   todas de BrickBlueBot (rastreador).
 - **Correo:** la sesión arrancó SIN conector de Gmail; ni revisión ni los 5 de difusión del
   lunes (CHIFA, Immunize.org, Switchboard, Sevilla Acoge, Médicos del Mundo) hasta tenerlo.
+  **Enviados a las ~09:15 desde otra sesión con Gmail**, con el texto aprobado; ninguno rebotó.
+  Kayla, en el hilo del permiso (admin@immunize.org, ella en copia). Bandeja: nada nuevo de
+  personas desde el 11-oct (HIFA resumen, Search Console, publicidad).
+- **Search Console, «Excluida por noindex» (12-oct, también «de un sitemap»):** recorridas en
+  vivo las 1.279 URL de sitemap-0.xml: ninguna lleva noindex, y las que lo llevan a propósito
+  (país en lengua ajena, /family) no están. Es eco de rastreos de antes del filtro del 8-oct.
+  Nada que arreglar.
 - **6 guías nuevas del temporizador** (autismo en, ibuprofeno es y ar, tuberculosis ru y de,
   lombrices pt), por la cadena: 549 guías, README y DATOS.md. Leídas: la de ibuprofeno en
   castellano decía que la fiebre es «alrededor de 37 ºC» (es la normal) y «otra fuente» sin
@@ -18,6 +25,15 @@
   22-sep; el de las guías, no. Regla en `article_v1.md`, rechazo en el generador
   (`calculator_problem`) y `test_the_guides_calculator_is_only_for_two_medicines.py` sobre las
   publicadas. 8 corregidas a mano.
+- **°F para quien lee en inglés (72 % EE. UU.):** las guías inglesas daban 38 °C a secas, también
+  las dos de fiebre. `Article._for_its_reader` pasa `con_fahrenheit` al título, resumen y cuerpo
+  en inglés; 7 guías publicadas corregidas (14 líneas). `con_fahrenheit` ya no duplica «40°C/104°F»,
+  «98.6°F (37°C)» ni abre un paréntesis dentro de otro («(less than 38C / 100.4 °F)»).
+  Recorridas en vivo las 399 páginas inglesas: **/emergency y sus 107 países** decían «above
+  39 °C» y «above 38 °C» sin °F (`config/er_checklist.yaml`, arreglado), y el ejemplo de la
+  portada era «38.8 °C» → «102 °F» (el triaje los trata igual). `test_english_guides_give_fahrenheit.py`.
+- **Vikaspedia ya no sale «movida» cada domingo:** la misma ruta en hindi, en letras o
+  codificada con %, es la misma (`sources_alive._probe` compara con `unquote`).
 - **Visto, sin tocar:** muchas guías dicen «las fuentes no mencionan…» (en las comparativas es
   correcto; en las normales suena a borrador).
 

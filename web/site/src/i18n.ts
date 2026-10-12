@@ -204,7 +204,7 @@ const strings = {
     welcome_h1: "Hi. What's going on with your little one?",
     welcome_p: 'I answer only from published paediatric guidelines, tell you where each sentence comes from, and say clearly when it\'s time to see a doctor.',
     sug: [
-      ['My 4-year-old has a fever of 38.8 °C', 'fever · what to do at home'],
+      ['My 4-year-old has a fever of 102 °F', 'fever · what to do at home'],
       ['She fell off the sofa and has vomited twice', 'head bump · warning signs'],
       ['When can I start solids with my baby?', 'feeding · 6 months'],
       ['How much Calpol for 14 kg?', 'dose · calculator, no AI'],

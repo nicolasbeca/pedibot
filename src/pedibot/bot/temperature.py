@@ -34,8 +34,9 @@ _NO_ES_TEMPERATURA = re.compile(r"pounds?|lbs?\b|libras?|kg|kilos?|cm|ml|mg", re
 #: También «39C» y «38 degrees C», que el modelo escribe a veces (en vivo, 2-oct-2026).
 _C = re.compile(
     r"(?<![\d.,])(\d{2})(?:([.,])(\d))?(\s?)(?:[°º]\s?|\s?degrees?\s)?C\b"
-    r"(?!\s*\(\s*\d+(?:[.,]\d)?\s*°F)"
+    r"(?!\s*[(/]\s*\d+(?:[.,]\d)?\s*°F)"
 )
+_F_DELANTE = re.compile(r"°\s?F\s*[(/]\s*$")
 
 
 def _f_de(c: float) -> float:
@@ -77,7 +78,14 @@ def con_fahrenheit(texto: str) -> str:
         c = float(m.group(1) + (f".{m.group(3)}" if m.group(3) else ""))
         if not 30 <= c <= 45:
             return m.group(0)
-        return f"{m.group(0)} ({_fmt(_f_de(c), coma)} °F)"
+        # «98.6°F (37°C)»: el °F ya va delante
+        if _F_DELANTE.search(texto, 0, m.start()):
+            return m.group(0)
+        f = f"{_fmt(_f_de(c), coma)} °F"
+        # «(less than 38C)»: dentro de un paréntesis, sin abrir otro
+        if texto[m.end() : m.end() + 1] == ")":
+            return f"{m.group(0)} / {f}"
+        return f"{m.group(0)} ({f})"
 
     return _C.sub(cambia, texto)
 

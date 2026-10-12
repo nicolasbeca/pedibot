@@ -47,13 +47,13 @@ Call your local emergency number if:
 - there are pauses when your child breathes [1]
 - your child's skin, tongue or lips are blue or grey — on brown or black skin, this may be easier to see on the palms of the hands, soles of the feet, lips, gums and inside the eyelids [1]
 - your child is floppy and will not wake up or stay awake [1]
-- your child is under 5 years old and has a temperature below 36C [8]
+- your child is under 5 years old and has a temperature below 36C (96.8 °F) [8]
 
 Ask your doctor for urgent advice if:
 - your child has had a cold and it is getting worse [1]
 - your child is feeding or eating much less than normal [1]
 - your child has had a dry nappy for 12 hours or more, or shows other signs of dehydration [1]
-- your baby is under 3 months and has a temperature of 38C, or is older than 3 months and has a temperature of 39C or higher [1]
+- your baby is under 3 months and has a temperature of 38C (100.4 °F), or is older than 3 months and has a temperature of 39C (102.2 °F) or higher [1]
 - your baby feels hotter than usual when you touch their back or chest, or feels sweaty [1]
 - your child has a very high or low temperature, feels hot or cold to the touch, or is shivering [1]
 - your child is very tired, irritable or does not seem themselves [1]

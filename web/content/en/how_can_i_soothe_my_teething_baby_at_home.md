@@ -22,7 +22,7 @@ Teething is when your baby's first teeth break through the gums. Most babies sta
 
 Common signs of teething include [2]:
 - Sore, red gums where the tooth is coming through
-- A slightly raised temperature (less than 38C)
+- A slightly raised temperature (less than 38C / 100.4 °F)
 - One flushed cheek
 - A rash on the face
 - Rubbing their ear
@@ -58,7 +58,7 @@ Trust your instincts if you think something is seriously wrong, especially if th
 
 ## Common questions
 **Can teething cause a fever?**  
-Teething may cause a slightly raised temperature, but it should be less than 38C. If your baby has a higher fever, that is not typical teething [2].
+Teething may cause a slightly raised temperature, but it should be less than 38C (100.4 °F). If your baby has a higher fever, that is not typical teething [2].
 
 **When do babies get their first tooth?**  
 Most babies get their first tooth around 6 months, but it can be earlier or later. Some babies are born with teeth [1].

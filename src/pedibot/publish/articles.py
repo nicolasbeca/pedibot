@@ -13,6 +13,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from pedibot.bot.answer import foreign_service_problem, verify
+from pedibot.bot.temperature import con_fahrenheit
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.retrieval import detect_lang
 from pedibot.index.store import Hit, Index
@@ -591,13 +592,18 @@ class Article:
     def slug(self) -> str:
         return make_slug(self.title, max_len=70)
 
+    def _for_its_reader(self, text: str) -> str:
+        """In English, every body temperature with its °F: most English readers are in the US,
+        where the thermometer reads °F (12-oct-2026). The chat has done it since 2-oct."""
+        return con_fahrenheit(text) if self.lang == "en" else text
+
     def frontmatter(self) -> str:
         today = dt.date.today().isoformat()
         srcs = "\n".join(f"  - {json.dumps(s, ensure_ascii=False)}" for s in self.sources)
         return (
             "---\n"
-            f"title: {json.dumps(self.title, ensure_ascii=False)}\n"
-            f"description: {json.dumps(self.summary, ensure_ascii=False)}\n"
+            f"title: {json.dumps(self._for_its_reader(self.title), ensure_ascii=False)}\n"
+            f"description: {json.dumps(self._for_its_reader(self.summary), ensure_ascii=False)}\n"
             f"lang: {self.lang}\n"
             f"topic: {self.topic}\n"
             f"date: {today}\n"
@@ -612,7 +618,8 @@ class Article:
         foot = "\n".join(f"{s}" for s in self.sources)
         disclaimer = ARTICLE_DISCLAIMER.get(self.lang, ARTICLE_DISCLAIMER["en"])
         heading = SOURCES_HEADING.get(self.lang, "Sources")
-        return f"{self.frontmatter()}\n{self.body_md.strip()}\n\n## {heading}\n\n{foot}\n\n{disclaimer}\n"
+        body = self._for_its_reader(self.body_md.strip())
+        return f"{self.frontmatter()}\n{body}\n\n## {heading}\n\n{foot}\n\n{disclaimer}\n"
 
     def public_url(self, site_url: str) -> str:
         """English is served from the root of the site; the others carry their /es or /fr prefix."""
