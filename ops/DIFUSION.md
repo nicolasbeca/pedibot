@@ -487,3 +487,137 @@ que habla con padres (un moderador, un editor de boletín). Un permiso no es dif
 NOW (Johns Hopkins, dirección sin ver), CEAR Andalucía, Cruz Roja Sevilla, Granada Acoge,
 Almería Acoge. Pediatras andaluces (SPAOYEX, APap-Andalucía): sin dirección publicada, y la AEPap
 aún no ha contestado al permiso.
+
+## Segunda tanda (13-oct-2026)
+
+> 12-oct: Sevilla Acoge contestó a las 2 horas: «Compartimos la información con nuestros
+> compañeros y compañeras para que la tengan presente en el acompañamiento y mediación». Por eso
+> esta tanda sigue en Andalucía y en España, por la red Acoge. Direcciones leídas hoy en sus
+> webs. Descartados de la lista anterior: CEAR (no publica correo en Andalucía, sólo
+> colabora@cear.es), Global Health NOW y CHW Central (sólo formulario), Cruz Roja Sevilla
+> (dirección sólo en webs de terceros). **ENVIADOS el 13-oct** con el sí del operador, texto tal cual. No mandar recordatorios.
+
+1. **Granada Acoge** (`granada@gracoge.org`, cabecera de granadaacoge.org)
+
+   Asunto: Una web gratuita de salud infantil en el idioma de cada familia
+
+   Hola, equipo de Granada Acoge:
+
+   Soy Nicolas Beca, de Sevilla, y hago PediBot, una web gratuita, sin anuncios y sin registro
+   donde una madre o un padre pregunta por la salud de su hijo en su idioma (árabe, francés,
+   ruso, inglés, portugués, hindi, alemán o castellano) y recibe una respuesta sacada sólo de
+   guías oficiales de pediatría, con la fuente a la vista. Si lo que cuenta suena a urgencia, se
+   lo dice lo primero y le da el 112.
+
+   Ayer se la enseñé a vuestros compañeros de Sevilla Acoge y la están pasando a su equipo de
+   mediación, así que pensé que a vosotros también os podía servir. Una familia que acaba de
+   llegar no sabe si una fiebre de madrugada es de urgencias o de esperar al centro de salud, y
+   casi nada de lo que hay está en su idioma.
+
+   Si os parece útil y la compartís con quien acompaña a familias, me haríais un favor enorme. Y
+   si echáis algo en falta, contestad a este correo y lo miro.
+
+   https://pedibot.xyz/es?r=granada-acoge
+
+   Gracias por lo que hacéis,
+   Nicolas Beca
+
+2. **Almería Acoge** (`almeriaacoge@almeriaacoge.org`, su página de contacto; Programa de
+   Familias, trabajo en asentamientos y en Níjar)
+
+   Asunto: Una herramienta gratuita para las familias de los asentamientos y del campo
+
+   Hola, equipo de Almería Acoge:
+
+   Me llamo Nicolas Beca, soy de Sevilla y hago PediBot: una web gratuita y sin anuncios donde
+   una familia pregunta por la salud de su hijo en árabe, francés, inglés, ruso, portugués,
+   hindi, alemán o castellano, y recibe una respuesta construida sólo con guías oficiales de
+   pediatría, con la fuente citada. No diagnostica; si algo suena a alarma lo dice lo primero y
+   da el 112.
+
+   Os escribo pensando sobre todo en vuestro trabajo en los asentamientos y en Níjar. Allí el
+   centro de salud queda lejos y los datos del móvil cuestan, y PediBot funciona sin conexión
+   una vez que se ha abierto, y no pide cuenta ni correo.
+
+   ¿Creéis que podría servirle a vuestro equipo o a las familias que acompañáis? Si es así y la
+   compartís, os lo agradecería muchísimo, y si veis algo que falta, me encantaría saberlo.
+
+   https://pedibot.xyz/es?r=almeria-acoge
+
+   Un abrazo,
+   Nicolas Beca
+
+3. **Red Acoge** (`acoge@acoge.org`, acoge.org/contacto; la federación de 18 asociaciones,
+   Sevilla Acoge entre ellas)
+
+   Asunto: Sevilla Acoge ya la usa: una web de salud infantil en el idioma de cada familia
+
+   Hola, equipo de Red Acoge:
+
+   Soy Nicolas Beca, de Sevilla. Hago PediBot, una web gratuita, sin anuncios y sin registro
+   donde una madre o un padre pregunta por la salud de su hijo en su idioma (árabe, francés,
+   ruso, inglés, portugués, hindi, alemán o castellano) y recibe una respuesta sacada sólo de
+   guías oficiales de pediatría, con la fuente a la vista y el 112 lo primero si algo suena a
+   urgencia.
+
+   Ayer se la enseñé a Sevilla Acoge y me dijeron que la comparten con su equipo de mediación.
+   Me alegró mucho, y me hizo pensar que quizá sirva en el resto de asociaciones de la red.
+
+   Si os parece bien hacerla llegar a las entidades, en un boletín o como os resulte más
+   cómodo, os lo agradecería de verdad. Y cualquier cosa que veáis mejorable, contestad aquí y
+   lo arreglo.
+
+   https://pedibot.xyz/es?r=red-acoge
+
+   Muchas gracias,
+   Nicolas Beca
+
+4. **Fundación Cepaim** (`contacto@cepaim.org`, su página de contacto; sedes en Sevilla,
+   Huelva, Granada y Almería, entre otras)
+
+   Asunto: Una web gratuita para que las familias pregunten por la salud de sus hijos en su idioma
+
+   Hola, equipo de Cepaim:
+
+   Soy Nicolas Beca y escribo desde Sevilla. Hago PediBot, una web gratuita y sin anuncios
+   donde una familia pregunta por la salud de su hijo en árabe, francés, ruso, inglés,
+   portugués, hindi, alemán o castellano, y recibe una respuesta construida sólo con guías
+   oficiales (pediatras españoles, NHS, OMS, CDC), con la fuente citada. Ante una señal de
+   alarma lo dice lo primero y da el 112. No pide cuenta y funciona sin conexión una vez abierta.
+
+   Sé que acompañáis a muchas familias recién llegadas, y la duda de «¿esto es para urgencias o
+   puede esperar?» con un niño enfermo es de las que más angustian cuando no se entiende el
+   idioma. Para eso la hice.
+
+   Si creéis que puede ser útil a vuestros equipos y la compartís, os lo agradecería mucho. Y si
+   alguien la prueba y encuentra algo que falta o que está mal, me encantaría saberlo.
+
+   https://pedibot.xyz/es?r=cepaim
+
+   Gracias por vuestro trabajo,
+   Nicolas Beca
+
+5. **Accem** (`accem@accem.es`, su web; acogida de personas refugiadas en toda España, con
+   centro en Sevilla)
+
+   Asunto: Salud infantil en el idioma de cada familia, gratis y sin registro
+
+   Hola, equipo de Accem:
+
+   Me llamo Nicolas Beca y soy de Sevilla. Llevo unos meses haciendo PediBot, una web gratuita,
+   sin anuncios y sin registro donde una madre o un padre pregunta por la salud de su hijo en
+   su idioma (árabe, francés, ruso, inglés, portugués, hindi, alemán o castellano) y recibe una
+   respuesta sacada sólo de guías oficiales de pediatría, con la fuente a la vista. Si algo
+   suena a urgencia, lo dice lo primero y da el 112.
+
+   Pienso en las familias que llegan a vuestros centros de acogida con niños pequeños: la
+   primera fiebre en un país nuevo, de noche, sin saber a quién preguntar. Ahí es donde creo que
+   puede ayudar.
+
+   ¿Os parece que podría servir a vuestros equipos de acogida? Si la compartís, me haríais un
+   favor enorme, y si veis algo que mejorar, basta con contestar a este correo.
+
+   https://pedibot.xyz/es?r=accem
+
+   Muchas gracias,
+   Nicolas Beca
