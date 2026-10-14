@@ -1038,6 +1038,16 @@ CASOS: dict[str, dict[str, str]] = {
         "pt": "meu filho está com palpitações e falta de ar",
         "hi": "बेटे की धड़कन तेज़ है और सीने में दर्द है",
     },
+    "chest_pain_breathing_coughing": {
+        "es": "a mi hijo le duele el pecho cuando respira",
+        "en": "my son has chest pain when he breathes in",
+        "fr": "mon fils a mal à la poitrine quand il tousse",
+        "de": "mein Sohn hat Brustschmerzen beim Atmen",
+        "ru": "у сына боль в груди при дыхании",
+        "ar": "ابني عنده ألم في الصدر عند التنفس",
+        "pt": "meu filho tem dor no peito ao respirar",
+        "hi": "बेटे को सांस लेते समय सीने में दर्द होता है",
+    },
 }
 
 
@@ -2149,6 +2159,16 @@ SEGUNDA: dict[str, dict[str, str]] = {
         "ar": "قلبها يدق بسرعة وعندها دوخة",
         "pt": "o coração dela está disparado e ela ficou tonta",
         "hi": "दिल बहुत तेज़ धड़क रहा है और चक्कर आ रहे हैं",
+    },
+    "chest_pain_breathing_coughing": {
+        "es": "tiene dolor de pecho al toser",
+        "en": "it hurts her chest to cough",
+        "fr": "elle a une douleur thoracique en respirant",
+        "de": "die Brust tut ihr beim Husten weh",
+        "ru": "у дочки болит грудь когда кашляет",
+        "ar": "بنتي يؤلمها صدرها عند السعال",
+        "pt": "dói o peito dela quando tosse",
+        "hi": "खांसने पर बेटी की छाती में दर्द होता है",
     },
 }
 

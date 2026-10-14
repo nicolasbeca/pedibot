@@ -28,11 +28,11 @@ document repeats one of them wrongly.
   than invent a number.
 - **Childhood vaccination schedules for 92 countries**, transcribed from the official document or read
   from the WHO's schedule database, with the issuing body and the date it was last checked.
-- **98 red-flag rules** in nine languages, each one backed by a document that says so.
+- **99 red-flag rules** in nine languages, each one backed by a document that says so.
 - **Paracetamol and ibuprofen dosing by weight**, from fixed tables, calculated in the page
   without a model, for the strength of the bottle the parent has in their hand.
 - **WHO growth standards**: percentiles and z-scores, plus MUAC for acute malnutrition.
-- **549 guides** written from the corpus, in eight languages.
+- **553 guides** written from the corpus, in eight languages.
 
 ## How an answer is made
 

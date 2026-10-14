@@ -19,7 +19,7 @@ categories:
   otro: {es: "Otras señales", en: "Other signs", fr: "Autres signes", de: "Weitere Anzeichen", ru: "Другие признаки", ar: "علامات أخرى", pt: "Outros sinais", hi: "अन्य संकेत"}
 rules:
   fiebre: [infant_fever_under_3_months, very_high_fever, cold_extremities_with_fever, bleeding_with_fever, limp_with_fever, malaria_area_fever, severe_malaria]
-  respiracion: [severe_breathing, choking, moderate_breathing, stridor, cannot_swallow_drooling, inhaled_foreign_body, asthma_not_responding, fast_breathing_for_age]
+  respiracion: [severe_breathing, choking, moderate_breathing, stridor, cannot_swallow_drooling, inhaled_foreign_body, asthma_not_responding, fast_breathing_for_age, chest_pain_breathing_coughing]
   piel: [mottled_skin, anaphylaxis, petechiae_fever, spreading_skin_infection, unexplained_bruising, bruising_and_pallor, sudden_pallor, palmar_pallor, measles_complication]
   comportamiento: [not_responding, syncope_on_exertion, palpitations_with_red_signs, seizure, drowsy_irritable, headache_wakes_child, unequal_pupils, neuro_deficit, headache_warning_signs, neck_stiffness, meningitis_signs, bulging_fontanelle, unusual_cry, lockjaw_spasms]
   gastrointestinal: [dehydration, severe_dehydration_signs, vomiting_headache, vomits_everything, unable_to_drink_or_feed, button_battery, foreign_body_ingestion, poisoning, severe_abdominal_pain, abdominal_pain_localised_or_worsening, intussusception, bilious_or_bloody_vomit, blood_in_stool, pale_stools, projectile_vomiting_infant, cholera_rice_water]

@@ -1829,6 +1829,10 @@ rules:
   - silbido(?![^.]{0,50}(ejercicio|deporte|al correr|cuando corre))
   - breathing fast
   - fast breathing
+  # 14-oct-2026, guía de dengue: «Rapid breathing» daba rutina; el sustantivo faltaba en tres lenguas.
+  - rapid breathing
+  - 'respiraci[óo]n (muy )?r[áa]pida'
+  - 'быстр\w* дыхани'
   - breathing (is )?faster than (normal|usual)
   - breathes faster than (normal|usual)
   # 8-oct-2026, batería difícil: «he feels like he can't catch his breath» daba rutina. Las
@@ -5847,6 +5851,40 @@ rules:
   - (recien nacido|recién nacido|recem nascido|recém-nascido|neonato|newborn|nouveau ne|nouveau-né|neugeborene|новорожд|حديث الولادة|مولود|नवजात)[^.]{0,90}(espasmo|spasm|spasme|krampf|arqueado|arqueia|arches|opistoton|спазм|судорог|تشنج|ऐंठन)
   - (espasmo|spasm|spasme|steif und|окоченел|спазм|تشنج|ऐंठन)[^.]{0,90}(recien nacido|recién nacido|recem nascido|newborn|nouveau ne|neugeborene|новорожд|مولود|नवजात)
   - (mandibula apretada|mandíbula apretada|mandibula cerrada|no puede abrir la boca|jaw (is )?(clenched|locked|stiff)|machoire serree|mâchoire serrée|maxilar travado|boca travada|trismo|trismus|kiefersperre|тризм|сжатая челюсть|челюсть свело|فك مطبق|فكه مطبق|تشنج الفك|जबड़ा जकड़|जबड़ा बंद)
+
+# 14-oct-2026, guía de tuberculosis en hindi: «सांस लेने या खांसने पर सीने में दर्द बढ़े» daba
+# rutina, y no había regla en ninguna lengua. El NHS, hoja de neumonía: «Ask for an urgent GP
+# appointment … if you have chest pain that comes and goes, or happens when breathing or
+# coughing». El dolor de pecho SOLO sigue siendo rutina (decidido el 9-oct, palpitaciones).
+- id: chest_pain_breathing_coughing
+  level: urgent
+  source: nhs_en_pneumonia
+  source_chunk: "nhs_en_pneumonia#symptoms_of_pneumonia#1"
+  reason_es: 'Dolor en el pecho al respirar o al toser: puede ser una neumonía, que lo vea un médico hoy'
+  reason_en: 'Chest pain when breathing or coughing: it can be pneumonia, get them seen by a doctor today'
+  reason_fr: 'Douleur dans la poitrine en respirant ou en toussant : cela peut être une pneumonie, à faire voir par un médecin aujourd''hui'
+  reason_de: 'Brustschmerzen beim Atmen oder Husten: das kann eine Lungenentzündung sein, heute ärztlich ansehen lassen'
+  reason_ru: 'Боль в груди при дыхании или кашле: это может быть пневмония, сегодня покажите врачу'
+  reason_ar: 'ألم في الصدر عند التنفس أو السعال: قد يكون التهابًا رئويًا، يجب أن يراه طبيب اليوم'
+  reason_pt: 'Dor no peito ao respirar ou ao tossir: pode ser uma pneumonia, que seja visto por um médico hoje'
+  reason_hi: 'सांस लेने या खांसने पर सीने में दर्द: यह निमोनिया हो सकता है, आज ही डॉक्टर को दिखाइए'
+  reason_sw: 'Maumivu ya kifua anapopumua au kukohoa: inaweza kuwa nimonia, aonwe na daktari leo'
+  patterns:
+  - 'chest (pain|hurts?|aches?)[^.]{0,40}(when|while|on|if)[^.]{0,15}(breath\w*|cough\w*|inhal\w*)'
+  - 'hurts? (his |her |their |my )?chest (to |when (he |she |they )?)(breathe|cough)'
+  - 'pain in (his |her |their |the )?chest[^.]{0,40}(breath|cough)'
+  - 'dolor (en el|de) pecho[^.]{0,30}(al|cuando)[^.]{0,10}(respir|tos)'
+  - 'duele el pecho[^.]{0,30}(al|cuando)[^.]{0,10}(respir|tos)'
+  - '(al|cuando) (respira|respirar|tose|toser)[^.]{0,30}duele el pecho'
+  - '(douleur|mal)[^.]{0,20}(thoracique|poitrine)[^.]{0,40}(en respirant|en toussant|quand (il|elle) (respire|tousse)|[àa] la (respiration|toux))'
+  - 'brust(schmerz\w*| tut)[^.]{0,30}(beim (atmen|husten|einatmen)|wenn (er|sie|es) (atmet|hustet))'
+  - '(бол\w* в груди|грудь болит|болит грудь)[^.]{0,30}(при (дыхании|кашле|вдохе)|когда (дышит|кашляет))'
+  - 'ألم في الصدر[^.]{0,30}عند (التنفس|السعال|الكحة)'
+  - 'يؤلم\w* صدر\w*[^.]{0,20}عند (التنفس|السعال|الكحة)'
+  - '(dor no peito|d[óo]i o peito)[^.]{0,30}(ao|quando)[^.]{0,10}(respir|tos)'
+  - '(सांस|साँस|खांस|खाँस)[^।]{0,40}(सीने|छाती)[^।]{0,10}दर्द'
+  - '(सीने|छाती)[^।]{0,10}दर्द[^।]{0,30}(सांस|साँस|खांस|खाँस)'
+  - 'maumivu ya kifua[^.]{0,30}(akipumua|anapopumua|akikohoa|anapokohoa)'
 
 # 5-oct-2026, batería con el reparto de las consultas reales (L252): «my teenager fainted during
 # soccer practice» y «se desmayó jugando al fútbol» salían rutina. La SEUP, en su hoja de síncope:

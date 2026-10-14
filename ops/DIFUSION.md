@@ -621,3 +621,136 @@ aún no ha contestado al permiso.
 
    Muchas gracias,
    Nicolas Beca
+
+## Tercera tanda (14-oct-2026)
+
+> El operador, 14-oct: «Envía los 5 correos de hoy. Proponme 5 destinatarios». Mitad EE. UU.
+> (clínicos de migrantes y temporeros) y mitad Andalucía (la red Acoge, que es la que contestó).
+> Direcciones leídas hoy en sus webs. Descartados: AAP COICFH (contacto sólo con login),
+> EthnoMed (sólo formulario), Córdoba Acoge/APIC (dos correos distintos según la fuente).
+> Cifras de config/drugs.yaml: MX gotas 100 mg/ml; Tylenol EE. UU. 160 mg/5 ml (32 mg/ml);
+> ET gotas 100 mg/5 ml (EFDA). Primera versión «muy IA» según el operador: reescrita más corta,
+> sin la lista de idiomas ni la misma estructura en los cinco. **ENVIADOS el 14-oct** con el sí del
+> operador, texto tal cual. No mandar recordatorios.
+
+1. **Migrant Clinicians Network** (`mcn@migrantclinician.org`, su página de contacto)
+
+   Subject: Tempra drops vs Tylenol, a dosing trap for families who cross the border
+
+   Hi,
+
+   I'm Nicolas, I live in Seville and for the last few months I've been building a small free
+   website for parents. While I was doing the dose tables I hit something that surprised me,
+   and I suspect your clinicians see it.
+
+   Tempra drops from Mexico are 100 mg per ml. Infants' Tylenol in the US is 160 mg per 5 ml,
+   so 32 per ml. If a mom gives the amount she's used to, but from the other bottle, it's three
+   times too much, or a third of what the child needs.
+
+   So now the site won't give a dose until the parent tells it what's printed on the label.
+   That's just one piece of it. A parent asks in Spanish or English (or Arabic, French...) and
+   the answer comes from CDC, NHS or WHO guidance with the source, and if it sounds serious it
+   tells them to call 911 first.
+
+   If you think it could help some of the families you see, here it is:
+   https://pedibot.xyz/?r=mcn
+
+   And if you've run into the Tempra/Tylenol mix-up yourselves, I'd honestly love to know.
+
+   Nicolas Beca
+
+2. **National Center for Farmworker Health** (`info@ncfh.org`, su página de contacto)
+
+   Subject: A free site for farmworker parents with a sick kid at night
+
+   Hello,
+
+   I'm Nicolas Beca, from Seville in Spain. I've been building PediBot, a free website where a
+   parent can ask about their child's health in Spanish (or English, and a few other languages)
+   and get an answer taken from official guidance, CDC, NHS, WHO, with the source shown. No ads,
+   no account.
+
+   I was looking through your language access resources and kept picturing the parent who gets
+   home late from the fields, the kid has a fever, the clinic is closed. That's pretty much the
+   situation I had in my head the whole time I was building it. It also keeps working without
+   signal once it's been opened, which I figured matters in some of the places your people work.
+
+   If you think it's useful, maybe it could go in the newsletter or the library some day:
+   https://pedibot.xyz/?r=ncfh
+
+   If someone tries it and something's off, just reply and I'll fix it.
+
+   Thanks,
+   Nicolas Beca
+
+3. **Society of Refugee Healthcare Providers** (`hello@refugeesociety.org`, la que usan en sus
+   páginas del directorio y del comité)
+
+   Subject: Same word "drops", five times the strength
+
+   Hi,
+
+   My name is Nicolas and I'm in Seville, Spain. I build PediBot, a free site where parents ask
+   about their kids' health in their own language and get answers from official guidelines,
+   with the source.
+
+   Something came up while I was doing the dose tables that I think people in your society
+   would find interesting. Paracetamol drops in Ethiopia are usually 100 mg per 5 ml. In Spain
+   or India, "drops" means 100 mg per ml. Same word on the box, five times the strength. A
+   family who just moved and doses the way they did at home can get it badly wrong, either way.
+
+   We ended up making the site ask for the strength on the label before it gives any number.
+
+   If it's useful for the families your members see, feel free to share it on the listserv:
+   https://pedibot.xyz/?r=refugeesociety
+
+   And if anyone has seen other medicines like this, where the same name hides a different
+   strength, I'd really like to hear about them.
+
+   Best,
+   Nicolas Beca
+
+4. **Málaga Acoge** (`malaga@malagaacoge.org`, la cabecera de su web)
+
+   Asunto: Desde Sevilla, por si os sirve con las familias
+
+   Hola:
+
+   Soy Nicolas Beca, de Sevilla. Estoy haciendo PediBot, una web gratis donde una madre o un
+   padre pregunta por la salud de su hijo en su idioma (árabe, francés, inglés, ruso...) y le
+   contesta con lo que dicen las guías oficiales de pediatría, diciendo de dónde lo saca. Si lo
+   que cuenta suena a urgencia, lo primero que le dice es que llame al 112. No hay anuncios ni
+   hay que registrarse.
+
+   El lunes se la mandé a Sevilla Acoge y me contestaron que se la pasan a la gente de
+   mediación. Me hizo ilusión, la verdad. Y como vosotros trabajáis con tantas familias con
+   críos, en CaixaProinfancia y en mediación educativa, he pensado escribiros también.
+
+   Os la dejo por aquí: https://pedibot.xyz/es?r=malaga-acoge
+
+   Si la usáis y veis algo que falla o que no se entiende, me lo decís y lo cambio.
+
+   Un saludo,
+   Nicolas Beca
+
+5. **Huelva Acoge** (`huelva@acoge.org`, su página de contacto)
+
+   Asunto: Una web de salud infantil para las familias que atendéis
+
+   Hola:
+
+   Me llamo Nicolas Beca y os escribo desde Sevilla. Llevo unos meses con
+   PediBot, una web gratuita donde una familia pregunta por la salud de su hijo en árabe,
+   francés, castellano u otros idiomas, y la respuesta sale de las guías oficiales de
+   pediatría, con la fuente. Si algo suena grave, le dice que llame al 112 antes que nada.
+
+   Pienso en las familias recién llegadas que pasan por vuestras oficinas: un niño con fiebre
+   de noche, el centro de salud cerrado y nada que leer en su idioma. La web no pide cuenta ni
+   correo, y una vez abierta funciona aunque se vaya la cobertura.
+
+   No sé si os encaja, pero por si acaso: https://pedibot.xyz/es?r=huelva-acoge
+
+   Cualquier cosa que echéis en falta, contestadme aquí y lo miro.
+
+   Gracias,
+   Nicolas Beca
