@@ -825,7 +825,32 @@ _THE_TWO = re.compile(
 )
 
 
+# Y la guía que desaconseja el ibuprofeno no manda a calcularlo (14-oct-2026, dengue: «ibuprofen
+# … should be avoided, because they can increase the risk of bleeding» y, al lado, «For paracetamol
+# and ibuprofen you can use our dose calculator»). La guía del propio ibuprofeno sí puede decir
+# cuándo no darlo y ofrecer la calculadora.
+_IBUPROFEN = re.compile(r"ibuprof|ибупрофен|إيبوبروفين|ايبوبروفين|आइबुप्रोफ|इबुप्रोफ", re.I)
+_AVOID_IBUPROFEN = re.compile(
+    r"(avoid|should not|do not give|don'?t give|evit\w*|no (le )?(des|dé|dar|administre)"
+    r"|n'?(utilisez|donnez) pas|[ée]vite[rz]?|nicht geben|vermeiden|не (давайте|применяйте|даём)"
+    r"|избега\w*|تجنب|لا تعط|não (dê|use|administre)|न दें|से बचें)"
+    r"[^.;\n]{0,100}(ibuprof|ибупрофен|إيبوبروفين|ايبوبروفين|आइबुप्रोफ|इबुप्रोफ|nsaid|anti-?inflammator|antiinflamatori)"
+    r"|(ibuprof|ибупрофен|nsaid|anti-?inflammator)[^.;\n]{0,100}(should be avoided|must be avoided|se deben evitar|à éviter)",
+    re.I,
+)
+_SENTENCE = re.compile(r"(?<=[.;!?।])\s+")
+
+
 def calculator_problem(prose: str, title: str = "") -> str | None:
+    if _AVOID_IBUPROFEN.search(prose) and not _IBUPROFEN.search(title):
+        for line in prose.splitlines():
+            for sentence in _SENTENCE.split(line):
+                if _CALCULATOR.search(sentence) and _IBUPROFEN.search(sentence):
+                    return (
+                        "calculator_for_a_medicine_to_avoid: this guide says to avoid ibuprofen,"
+                        " so point to the dose calculator for paracetamol only"
+                        f" ({sentence.strip()[:80]!r})"
+                    )
     if _THE_TWO.search(title):
         return None
     for line in prose.splitlines():
@@ -837,6 +862,42 @@ def calculator_problem(prose: str, title: str = "") -> str | None:
                 " paracetamol and ibuprofen; for anything else say the dose is the one the"
                 f" doctor or the leaflet gives ({line.strip()[:80]!r})"
             )
+    return None
+
+
+# El apartado de avisos no puede decir que las fuentes no lo cubren (14-oct-2026: la guía hindi
+# de antitérmicos en la fiebre lo decía, y la hoja del NHS de fiebre estaba en el índice). Fuera
+# de ese apartado la frase puede ser honesta («las fuentes no mencionan el hielo»).
+_WARNING_HEADING = re.compile(
+    r"^##\s+.*(cu[aá]ndo|when|quand|wann|когда|متى|quando|कब).*$", re.I | re.M
+)
+_SOURCES_DO_NOT = re.compile(
+    r"the sources? (do(es)? not|don'?t|doesn'?t) (mention|say|cover|specify|give|state|include)"
+    r"|las fuentes no (mencionan|dicen|indican|especifican|incluyen|recogen|dan)"
+    r"|les sources ne (mentionnent|pr[ée]cisent|disent|indiquent|donnent)"
+    r"|die Quellen (nennen|erw[äa]hnen|sagen|geben) (keine|nicht)"
+    r"|источник\w* не (указыва|упомина|приводя|говор)|в источниках не"
+    r"|المصادر لا|لا تذكر المصادر"
+    r"|as fontes não (mencionam|indicam|referem|dizem|dão)"
+    r"|स्रोतों में[^।]{0,60}(नहीं|शामिल नहीं)",
+    re.I,
+)
+
+
+def warning_section_problem(body: str) -> str | None:
+    head = _WARNING_HEADING.search(body)
+    if not head:
+        return None
+    rest = body[head.end() :]
+    end = re.search(r"^##\s", rest, re.M)
+    section = rest[: end.start()] if end else rest
+    found = _SOURCES_DO_NOT.search(section)
+    if found:
+        return (
+            "empty_warning_section: the 'when to see a doctor' section must list the warning signs"
+            " the sources give, never say the sources do not cover them"
+            f" ({section[max(0, found.start() - 20) : found.end() + 40].strip()!r})"
+        )
     return None
 
 
@@ -864,6 +925,9 @@ def _problems(
     if found:
         problems.append(found)
     found = calculator_problem(prose, title)
+    if found:
+        problems.append(found)
+    found = warning_section_problem(prose)
     if found:
         problems.append(found)
     # El idioma, línea a línea y no sólo en conjunto. `detect_lang` mira el artículo entero y da

@@ -42,7 +42,7 @@ Im Alter von 12 Jahren erhalten Kinder eine Dosis gegen Meningokokken (MenACWY) 
 
 ## Wann Sie zur Ärztin oder in die Notaufnahme sollten
 
-Die Quellen nennen keine spezifischen Warnzeichen für einen Arztbesuch nach Impfungen. Grundsätzlich gilt: Wenn Sie nach einer Impfung ungewöhnliche oder starke Reaktionen bei Ihrem Kind bemerken, wenden Sie sich an Ihre Ärztin oder Ihren Arzt. Bei schweren allergischen Reaktionen wie Atemnot oder Schwellungen im Gesicht rufen Sie sofort Ihre lokale Notrufnummer oder gehen Sie in die Notaufnahme.
+Wenn Sie nach einer Impfung ungewöhnliche oder starke Reaktionen bei Ihrem Kind bemerken, wenden Sie sich an Ihre Ärztin oder Ihren Arzt. Bei schweren allergischen Reaktionen wie Atemnot oder Schwellungen im Gesicht rufen Sie sofort Ihre lokale Notrufnummer oder gehen Sie in die Notaufnahme.
 
 ## Häufige Fragen
 

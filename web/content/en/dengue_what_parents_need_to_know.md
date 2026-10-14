@@ -25,7 +25,7 @@ Dengue is a viral infection caused by the dengue virus, which is spread to peopl
 
 Most people who get dengue have mild or no symptoms and get better in 1–2 weeks [1][4]. If symptoms do appear, they usually start 4–10 days after infection and last 2–7 days [1]. They may include high fever (40°C/104°F), severe headache, pain behind the eyes, muscle and joint pains, nausea, vomiting, swollen glands and rash [1]. Someone who is infected for a second time is at greater risk of severe dengue [1].
 
-There is no specific treatment for dengue [3][6]. Pain can be managed with paracetamol (acetaminophen) [6]. Non-steroidal anti-inflammatory medicines such as ibuprofen and aspirin should be avoided, because they can increase the risk of bleeding [6]. For paracetamol and ibuprofen you can use our dose calculator to find the right amount for your child's weight; for any other medicine, follow the dose your doctor, your pharmacist or the leaflet gives.
+There is no specific treatment for dengue [3][6]. Pain can be managed with paracetamol (acetaminophen) [6]. Non-steroidal anti-inflammatory medicines such as ibuprofen and aspirin should be avoided, because they can increase the risk of bleeding [6]. For paracetamol you can use our dose calculator to find the right amount for your child's weight.
 
 ## What you can do at home
 

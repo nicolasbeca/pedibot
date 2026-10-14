@@ -1,6 +1,35 @@
 # STATE.md — estado vivo de PediBot v2
 
-Última actualización: **2026-10-12** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+Última actualización: **2026-10-14** — **EN PRODUCCIÓN en https://pedibot.xyz**.
+
+## 14-oct-2026 · miércoles · dos avisos que el chat no veía
+
+- **Repaso:** una consulta real (1058, GB, el ejemplo de portada «102 °F»): salía «38°C (100.4 °F)
+  (about 100.4°F)». El arreglo de `con_fahrenheit` estaba escrito desde el 13-oct sin commitear
+  ni desplegar; subido y comprobado en el servidor. MCP: 14 llamadas, todas de rastreadores.
+- **Correo:** Glama avisó «unhealthy» a las 02:45; el servidor contestaba a todo (Caddy sin
+  errores) y a las 05:49 ya estaba sano. **Tercera tanda de difusión enviada** (MCN, NCFH,
+  Society of Refugee Healthcare Providers, Málaga Acoge, Huelva Acoge), reescrita más humana a
+  petición del operador; sin rebotes.
+- **4 guías nuevas del temporizador** (dengue en; tuberculosis es, fr, hi) por la cadena: 553.
+  `test_guides_agree_with_triage` encontró dos viñetas que el triaje daba por rutina:
+  **«Rapid breathing»** («fast breathing» saltaba; faltaban también «respiración rápida» y
+  «быстрое дыхание», añadidos a `moderate_breathing`) y **dolor en el pecho al respirar o toser**,
+  sin regla en ninguna lengua: regla 99 `chest_pain_breathing_coughing` (urgente, NHS neumonía),
+  ocho lenguas y suajili; el dolor de pecho solo sigue en rutina. Sobre 3.851 preguntas cambian
+  dos, ambas dolor al respirar hondo, y una ya la había marcado el juez (`urgency_mismatch`,
+  rev13). `test_chest_pain_and_rapid_breathing.py`. 12.017 tests; desplegado y visto en vivo.
+- **Leídas las 4 guías nuevas.** La de **dengue** decía «avoid ibuprofen… risk of bleeding» y al
+  lado «for paracetamol and ibuprofen you can use our dose calculator»: corregida, y
+  `calculator_problem` rechaza ya la calculadora para el ibuprofeno en una guía que lo desaconseja
+  (regla también en `article_v1.md`). Las de tuberculosis, bien.
+- **El apartado de avisos nunca vacío** (pendiente del 12-oct, «las fuentes no mencionan…»: eran
+  12 frases, no «muchas»). La guía hindi de antitérmicos en la fiebre decía en «cuándo ir al
+  médico» que sus fuentes no lo cubrían: rehecha con la hoja de fiebre del NHS (texto de la guía
+  hindi de fiebre que ya la citaba). Tres alemanas y una inglesa perdían la frase de borrador.
+  Las otras siete contestan una pregunta concreta (hielo en quemaduras, VRS dos veces) y se
+  quedan. `warning_section_problem` en el generador y `test_the_warning_section_is_never_empty.py`.
+  12.032 tests.
 
 ## 12-oct-2026 · lunes · la calculadora, sólo para lo que calcula
 
@@ -1975,4 +2004,3 @@ Día largo. Lo agrupo por lo que importa, no por el orden en que pasó.
 2. **Esperar a MetaDAO hasta el viernes 2 de octubre.**
 
 Suite **9.561**. Sitio **2.885 páginas**.
-- 2026-10-14 (dos avisos que el chat no veía) — Al entrar cuatro guías del temporizador (dengue, tuberculosis), `test_guides_agree_with_triage` encontró dos viñetas de «cuándo consultar» que el triaje daba por rutina. (1) **«Rapid breathing»**: «fast breathing» saltaba y el sustantivo con «rapid» no; faltaba también «respiración rápida» y «быстрое дыхание». Añadidos a `moderate_breathing`. (2) **Dolor en el pecho al respirar o toser**, sin regla en ninguna lengua: regla nueva `chest_pain_breathing_coughing` (urgente, NHS neumonía: «chest pain that comes and goes, or happens when breathing or coughing»), en ocho lenguas y suajili; el dolor de pecho solo sigue en rutina (9-oct). Sobre 3.851 preguntas de las baterías cambian dos, ambas dolor torácico al respirar hondo, y una ya la había marcado el juez como `urgency_mismatch` (rev13). Reglas 98 → 99. Además, desplegado el arreglo del °F repetido de la consulta real del 13-oct, que se había quedado sin commitear. 12.017 tests.

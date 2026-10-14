@@ -15,6 +15,8 @@ from __future__ import annotations
 
 import pathlib
 
+import pytest
+
 from pedibot.publish.articles import calculator_problem, load_prompt
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -59,6 +61,44 @@ def test_the_calculator_next_to_paracetamol_is_fine() -> None:
 def test_a_guide_about_ibuprofen_may_point_to_it_anywhere() -> None:
     body = "للجرعة المناسبة لطفلك، استخدم حاسبة الجرعات."
     assert calculator_problem(body, "متى يمكن إعطاء شراب الإيبوبروفين للطفل") is None
+
+
+# 14-oct-2026, guía de dengue: «Non-steroidal anti-inflammatory medicines such as ibuprofen and
+# aspirin should be avoided, because they can increase the risk of bleeding» y, en el mismo
+# párrafo, «For paracetamol and ibuprofen you can use our dose calculator». La guía que prohíbe un
+# medicamento no puede mandar a calcular su dosis.
+def test_a_guide_that_says_avoid_ibuprofen_does_not_send_it_to_the_calculator() -> None:
+    body = (
+        "Pain can be managed with paracetamol. Non-steroidal anti-inflammatory medicines such as"
+        " ibuprofen and aspirin should be avoided, because they can increase the risk of bleeding."
+        " For paracetamol and ibuprofen you can use our dose calculator."
+    )
+    assert calculator_problem(body, "Dengue: what parents need to know")
+
+
+@pytest.mark.parametrize(
+    "body",
+    [
+        "Evita el ibuprofeno en la varicela. Para el paracetamol y el ibuprofeno, usa la calculadora de dosis.",
+        "N'utilisez pas d'ibuprofène. Pour le paracétamol et l'ibuprofène, utilisez le calculateur de doses.",
+        "Не давайте ибупрофен. Для парацетамола и ибупрофена есть калькулятор доз.",
+    ],
+)
+def test_avoid_ibuprofen_and_its_calculator_in_other_languages(body: str) -> None:
+    assert calculator_problem(body, "Varicela")
+
+
+def test_avoid_ibuprofen_and_the_calculator_for_paracetamol_only_is_fine() -> None:
+    body = (
+        "Avoid ibuprofen, because it can increase the risk of bleeding."
+        " For paracetamol you can use our dose calculator."
+    )
+    assert calculator_problem(body, "Dengue: what parents need to know") is None
+
+
+def test_the_ibuprofen_guide_may_say_when_to_avoid_it() -> None:
+    body = "Do not give ibuprofen if your child has chickenpox. Use our dose calculator for ibuprofen."
+    assert calculator_problem(body, "Can I give my child ibuprofen?") is None
 
 
 def test_the_guides_prompt_says_which_two() -> None:

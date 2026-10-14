@@ -41,7 +41,7 @@ Viele Länder mit niedrigem und mittlerem Einkommen tragen eine doppelte Last: M
 
 ## Wann Sie zur Ärztin oder in die Notaufnahme sollten
 
-Die Quellen nennen keine einzelnen Warnzeichen. Suchen Sie ärztlichen Rat, wenn Sie sich Sorgen um Gewicht, Größe, Ernährung oder Entwicklung Ihres Kindes machen. Fachkräfte können das Wachstum beurteilen und Risiken früh erkennen [10]. Bei akuter Not rufen Sie Ihre lokale Notrufnummer an oder gehen Sie in die Notaufnahme.
+Suchen Sie ärztlichen Rat, wenn Sie sich Sorgen um Gewicht, Größe, Ernährung oder Entwicklung Ihres Kindes machen. Fachkräfte können das Wachstum beurteilen und Risiken früh erkennen [10]. Bei akuter Not rufen Sie Ihre lokale Notrufnummer an oder gehen Sie in die Notaufnahme.
 
 ## Häufige Fragen
 

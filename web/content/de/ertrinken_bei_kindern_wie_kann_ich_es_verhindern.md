@@ -43,7 +43,7 @@ Ertrinken ist bei Kindern im Alter von 1 bis 4 Jahren die häufigste Todesursach
 
 ## Wann Sie zur Ärztin oder in die Notaufnahme sollten
 
-Die Quellen nennen keine einzelnen Warnzeichen für Ertrinken. Sie betonen: Ertrinken passiert in Sekunden und oft lautlos [1]. Deshalb ist ständige, aufmerksame Aufsicht am Wasser die wichtigste Schutzmaßnahme [6]. Wenn ein Kind in Not gerät oder bewusstlos wird, rufen Sie Ihre lokale Notrufnummer und leisten Sie Erste Hilfe, wenn Sie dazu ausgebildet sind [8].
+Ertrinken passiert in Sekunden und oft lautlos [1]. Deshalb ist ständige, aufmerksame Aufsicht am Wasser die wichtigste Schutzmaßnahme [6]. Wenn ein Kind in Not gerät oder bewusstlos wird, rufen Sie Ihre lokale Notrufnummer und leisten Sie Erste Hilfe, wenn Sie dazu ausgebildet sind [8].
 
 ## Häufige Fragen
 
