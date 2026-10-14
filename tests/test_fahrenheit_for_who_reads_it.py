@@ -81,3 +81,22 @@ def test_celsius_written_without_the_degree_sign() -> None:
     assert con_fahrenheit("A temperature of 39C is high") == "A temperature of 39C (102.2 °F) is high"
     assert con_fahrenheit("38 degrees C or more") == "38 degrees C (100.4 °F) or more"
     assert con_fahrenheit("give 10C of water") == "give 10C of water"  # no es del cuerpo
+
+
+def test_a_fahrenheit_the_model_already_wrote_is_not_repeated() -> None:
+    # Consulta real del 13-oct-2026 (ejemplo de la portada): el modelo ya escribió el °F con
+    # «about», y salió «38°C (100.4 °F) (about 100.4°F)».
+    t = "A high temperature is 38°C (about 100.4°F) or more"
+    assert con_fahrenheit(t) == t
+    for t in (
+        "38°C (around 100.4°F)",
+        "38 °C (approximately 100.4 °F)",
+        "38°C (~100.4°F)",
+        "38°C, or 100.4°F,",
+        "38 °C / about 100.4 °F",
+        "38 °C (100.4 degrees F)",
+        "38 °C (100.4 degrees Fahrenheit)",
+    ):
+        assert con_fahrenheit(t) == t, t
+    # Y un °F que pertenece a otra cifra más adelante no cuenta
+    assert con_fahrenheit("38 °C is a fever; 104°F is high") == "38 °C (100.4 °F) is a fever; 104°F is high"

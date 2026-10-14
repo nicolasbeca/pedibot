@@ -37,6 +37,13 @@ _C = re.compile(
     r"(?!\s*[(/]\s*\d+(?:[.,]\d)?\s*°F)"
 )
 _F_DELANTE = re.compile(r"°\s?F\s*[(/]\s*$")
+#: «38°C (about 100.4°F)», «38 °C, or 100.4 °F»: el modelo ya puso el °F, con sus palabras
+#: (en vivo, 13-oct-2026, salió «38°C (100.4 °F) (about 100.4°F)»).
+_F_DETRAS = re.compile(
+    r"\s*[(/,]?\s*(?:about|around|approx(?:imately|\.)?|roughly|or|~|≈)?\s*"
+    r"\d+(?:[.,]\d)?\s*(?:°\s?|º\s?|\s?degrees?\s)?(?:F\b|fahrenheit)",
+    re.IGNORECASE,
+)
 
 
 def _f_de(c: float) -> float:
@@ -80,6 +87,8 @@ def con_fahrenheit(texto: str) -> str:
             return m.group(0)
         # «98.6°F (37°C)»: el °F ya va delante
         if _F_DELANTE.search(texto, 0, m.start()):
+            return m.group(0)
+        if _F_DETRAS.match(texto, m.end()):
             return m.group(0)
         f = f"{_fmt(_f_de(c), coma)} °F"
         # «(less than 38C)»: dentro de un paréntesis, sin abrir otro
