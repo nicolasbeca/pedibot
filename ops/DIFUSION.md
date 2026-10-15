@@ -754,3 +754,147 @@ aún no ha contestado al permiso.
 
    Gracias,
    Nicolas Beca
+
+## Cuarta tanda (15-oct-2026), sin enviar
+
+> **Sí del operador (15-oct) a tres:** Asociación Marroquí, Latino Health Access y Hispanic
+> Health Council. **Sin enviar:** la sesión no tiene Gmail y la que lo tiene está desconectada.
+> MHP Salud y la National Alliance for Hispanic Health, sin su sí todavía.
+
+> El operador, 15-oct: «Proponme los 5 correos de hoy». Medido antes de elegir (Caddy, `?r=`
+> desde el 11-oct, peticiones y no personas): chifa 3, sevilla 2, medicos-del-mundo 2, mcn 2 (al
+> día siguiente de enviarlo), switchboard, iz-express, granada-acoge y accem 1. Lo de EE. UU. abre
+> rápido: cuatro entidades hispanas de allí y la Asociación Marroquí aquí.
+> **El operador, 15-oct: se acabó la red Acoge.** «Ya le hemos escrito a varios, a los más
+> importantes de la zona, ya es suficiente… no quiero escribirle a más». Algeciras y Motril Acoge,
+> propuestos en la primera versión, fuera; no se vuelve a proponer ninguna Acoge.
+> Direcciones leídas hoy en sus webs. Descartados: Visión y Compromiso, Health Outreach Partners y
+> RHTAC (sólo formulario o ninguna dirección), Doctors of the World UK (sólo la línea de pacientes y
+> prensa). Cifras de config/drugs.yaml:
+> Doliprane MA 120 mg/5 ml (24 mg/ml); Gelocatil/Apiretal gotas ES 100 mg/ml; Tempra MX gotas
+> 100 mg/ml; Tylenol EE. UU. 160 mg/5 ml. Sin conector de Gmail en esta sesión.
+
+1. **MHP Salud** (`info@mhpsalud.org`, su página de contacto; promotoras y Parents as Teachers en
+   el sur de Texas y Florida central)
+
+   Subject: Tempra or Tylenol? A question your promotoras might get
+
+   Hi,
+
+   I'm Nicolas, from Seville in Spain. I make PediBot, a free website where a parent asks about
+   their child's health in Spanish or English and gets an answer from CDC and other official
+   guidance, with the source right there. No ads, no account.
+
+   I'm writing because of something I found while building the dose calculator, and South Texas
+   is probably where it matters most. Tempra drops from Mexico are 100 mg per ml. Infants'
+   Tylenol in the US is 160 mg per 5 ml, about a third of that. Same use, very different bottle. So
+   the site asks what's printed on the label before it gives any amount.
+
+   I thought your promotoras might find it handy when a mom has a question at 10 pm and nobody
+   to call. If it looks useful, here it is: https://pedibot.xyz/?r=mhp-salud
+
+   And if something in it is wrong or missing for the families you work with, I'd really like
+   to hear it.
+
+   Thanks,
+   Nicolas Beca
+
+2. **National Alliance for Hispanic Health** (`info@healthyamericas.org`, su página de
+   contacto; llevan la línea Su Familia, lunes a viernes de 9 a 6 ET)
+
+   Subject: For the hours when Su Familia is closed
+
+   Hello,
+
+   My name is Nicolas Beca and I live in Seville, Spain. I've spent the last months building
+   PediBot, a free site where a parent can ask in Spanish about a sick child and get an answer
+   built only from official pediatric guidance (CDC, NHS, WHO), with the source shown. If what
+   they describe sounds serious, the first thing it says is call 911.
+
+   I read about the Su Familia helpline and it made me think of the evenings and weekends, when
+   the line is closed and a kid has a fever anyway. That's exactly the moment I had in mind.
+   It doesn't replace a person, and it says so, but it can tell a worried parent whether this
+   is a 911 night or a call-the-clinic-tomorrow night, in their language.
+
+   If you think it fits, maybe your team could mention it to callers:
+   https://pedibot.xyz/?r=hispanic-health
+
+   Any feedback, just reply here.
+
+   Best,
+   Nicolas Beca
+
+3. **Asociación Marroquí para la Integración de Inmigrantes** (`acogida.asociacionmarroqui@gmail.com`,
+   la sede de Málaga en su página de contacto; también en Sevilla, Granada, Algeciras y Almería)
+
+   Asunto: Doliprane o Apiretal: una duda que seguro os llega
+
+   Hola:
+
+   Soy Nicolas Beca, de Sevilla. Hago PediBot, una web gratuita donde una madre o un padre
+   pregunta por la salud de su hijo en árabe (o en castellano, francés...) y recibe la respuesta
+   de las guías oficiales de pediatría, con la fuente. Sin anuncios y sin registrarse.
+
+   Os escribo por algo que me encontré haciendo la calculadora de dosis. El Doliprane en jarabe
+   que se usa en Marruecos lleva 120 mg en 5 ml. Las gotas de aquí, Apiretal o Gelocatil, llevan
+   100 mg en cada ml: unas cuatro veces más. Una madre recién llegada que da la cantidad de
+   siempre pero con el bote de aquí se puede pasar mucho. Por eso la web pregunta qué pone en
+   la caja antes de dar ningún número.
+
+   Si os parece útil para las familias que acompañáis, os la dejo:
+   https://pedibot.xyz/es?r=asociacion-marroqui (arriba se cambia al árabe).
+
+   Y si veis algo que falla o que no se entiende en árabe, decídmelo y lo arreglo.
+
+   Un saludo,
+   Nicolas Beca
+
+4. **Latino Health Access** (`info@latinohealthaccess.org`, su página de contacto; Santa Ana,
+   California: Promotor Learning Institute, Family Resource Center, asma en casa)
+
+   Subject: Something for your promotores' toolbox, in Spanish and free
+
+   Hi,
+
+   I'm Nicolas Beca, and I write from Seville, Spain. I've been building PediBot, a free website
+   where a parent asks about their kid's health in Spanish or English and gets an answer that
+   comes only from official guidance (CDC, NHS, WHO), with the source linked. If it sounds like
+   an emergency, it says call 911 before anything else. No ads, nothing to sign up for.
+
+   I saw your Promotor Learning Institute and the asthma work with families, and it seemed like
+   a good match. A lot of what parents ask is exactly that kind of thing: is this wheezing a
+   doctor-today thing or can it wait, how much medicine for his weight. The answer always shows
+   where it came from, so a promotor can check it too.
+
+   Here it is, in case it's useful: https://pedibot.xyz/?r=latino-health-access
+
+   If you try it and something sounds off, please tell me. I'd rather hear it from people who
+   know these families than guess.
+
+   Thanks,
+   Nicolas Beca
+
+5. **Hispanic Health Council** (`info@hispanichealthcouncil.org`, cabecera de su web; Hartford,
+   Connecticut: Maternal and Child Health Center y Family Wellness Center)
+
+   Subject: Newborn warning signs, in Spanish, with the source
+
+   Hello,
+
+   My name is Nicolas Beca. I live in Seville, Spain, and I make PediBot, a free site where a
+   mom or dad asks a question about their child in Spanish or English and gets an answer built
+   from official pediatric guidance, with the source right there. It doesn't diagnose, and when
+   something sounds serious it says so first.
+
+   I'm writing because of your Maternal and Child Health Center. The first weeks at home with a
+   newborn are when parents worry most, and the warning signs that mean "go now" are written down
+   clearly by the CDC and the NHS. Getting them to a tired mom at 3 am, in her language, was one
+   of the reasons I started this.
+
+   If you think it could help the families you see, here's the link:
+   https://pedibot.xyz/?r=hispanic-health-council
+
+   And any feedback from your team, just reply and I'll look at it.
+
+   Best,
+   Nicolas Beca
