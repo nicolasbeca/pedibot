@@ -2,7 +2,7 @@
 
 Última actualización: **2026-10-14** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
-## 15-oct-2026 · jueves · cuarta tanda: tres enviados
+## 15-oct-2026 · jueves · cuarta tanda: los cinco enviados
 
 - **Repaso:** ninguna consulta real desde la del 13-oct (ya revisada); 0 respuestas generadas
   desde el 14-oct. **MCP: 3.364 peticiones en 24 h**, pero son sondeos: 2.137 de una sola IP de AWS
@@ -16,8 +16,8 @@
   Alliance for Hispanic Health, enviados también con su sí: la tanda entera ha salido.
 - **Dos «pendientes» que no lo eran** (comprobado en Enviados): MCP Newsletter salió el 7-oct, y
   Etiopía (ercsinfo@redcrosseth.org) y Chad (ndjamena@unicef.org) el 9-oct. Ninguno ha contestado.
-  Gmail no tiene borradores. Las notas de los días 2 y 10 que los daban por parados están desfasadas. **Se acabó la red Acoge** (operador): ninguna
-  más, ni propuesta.
+  Gmail no tiene borradores. Las notas de los días 2 y 10 que los daban por parados están desfasadas.
+- **Se acabó la red Acoge** (operador): ninguna más, ni propuesta.
 
 ## 14-oct-2026 · miércoles · dos avisos que el chat no veía
 
