@@ -13,7 +13,7 @@
 - **Cuarta tanda** (`ops/DIFUSION.md`): sí del operador a la Asociación Marroquí, Latino Health
   Access y Hispanic Health Council; **enviados** en una segunda sesión con Gmail (bandeja revisada:
   nada nuevo, sin rebotes). MHP Salud y la National
-  Alliance for Hispanic Health, sin su sí todavía.
+  Alliance for Hispanic Health, enviados también con su sí: la tanda entera ha salido.
 - **Dos «pendientes» que no lo eran** (comprobado en Enviados): MCP Newsletter salió el 7-oct, y
   Etiopía (ercsinfo@redcrosseth.org) y Chad (ndjamena@unicef.org) el 9-oct. Ninguno ha contestado.
   Gmail no tiene borradores. Las notas de los días 2 y 10 que los daban por parados están desfasadas. **Se acabó la red Acoge** (operador): ninguna
