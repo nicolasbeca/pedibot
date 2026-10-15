@@ -1,4 +1,4 @@
-# Correo a MCP Newsletter — pasado a Telegram el 2-oct-2026 con su sí; lo envía el operador desde pedibot.ai@gmail.com (la sesión no tenía Gmail)
+# Correo a MCP Newsletter — ENVIADO el 7-oct-2026 desde pedibot.ai@gmail.com (comprobado en Enviados el 15-oct); sin respuesta
 
 > **Enviado el 7-oct-2026** desde pedibot.ai@gmail.com, con las cifras releídas ese día: 92 países con calendario, 97 reglas, 8 herramientas.
 
