@@ -18,6 +18,13 @@
   Etiopía (ercsinfo@redcrosseth.org) y Chad (ndjamena@unicef.org) el 9-oct. Ninguno ha contestado.
   Gmail no tiene borradores. Las notas de los días 2 y 10 que los daban por parados están desfasadas.
 - **Se acabó la red Acoge** (operador): ninguna más, ni propuesta.
+- **Los `?r=` no eran personas.** Las 15 llegadas con canal desde el 11-oct, una a una: 12 son
+  Microsoft (AS8075, el escáner de enlaces de Outlook, en el mismo minuto del envío), 1 Amazon
+  (python-requests), 1 Google y el resto pruebas nuestras (Vodafone, curl). **Ningún clic humano
+  de ningún correo.** El pico del 12 y 13-oct (179 y 87 «personas») es lo mismo: 1.110 peticiones
+  en una hora, IP de Microsoft (72.145, 72.152, 72.153, 135.232, 48.209, 4.204), Chrome/79 en
+  Windows; seguramente el escaneo del correo de CHIFA en los buzones de sus miembros. Sin ese
+  pico, unas 8-15 personas al día; Google, 15 en 7 días. El informe aún los cuenta como personas.
 
 ## 14-oct-2026 · miércoles · dos avisos que el chat no veía
 
