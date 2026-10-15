@@ -755,10 +755,11 @@ aún no ha contestado al permiso.
    Gracias,
    Nicolas Beca
 
-## Cuarta tanda (15-oct-2026), sin enviar
+## Cuarta tanda (15-oct-2026)
 
 > **Sí del operador (15-oct) a tres:** Asociación Marroquí, Latino Health Access y Hispanic
-> Health Council. **Sin enviar:** la sesión no tiene Gmail y la que lo tiene está desconectada.
+> Health Council. **ENVIADOS el 15-oct** en una segunda sesión con Gmail, texto tal cual el
+> aprobado; sin rebotes. No mandar recordatorios.
 > MHP Salud y la National Alliance for Hispanic Health, sin su sí todavía.
 
 > El operador, 15-oct: «Proponme los 5 correos de hoy». Medido antes de elegir (Caddy, `?r=`

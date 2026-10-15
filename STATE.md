@@ -2,7 +2,7 @@
 
 Última actualización: **2026-10-14** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
-## 15-oct-2026 · jueves · cuarta tanda, aprobada y sin salir
+## 15-oct-2026 · jueves · cuarta tanda: tres enviados
 
 - **Repaso:** ninguna consulta real desde la del 13-oct (ya revisada); 0 respuestas generadas
   desde el 14-oct. **MCP: 3.364 peticiones en 24 h**, pero son sondeos: 2.137 de una sola IP de AWS
@@ -11,7 +11,8 @@
 - **Correo:** sin conector de Gmail; bandeja sin revisar. Canales (`?r=`, desde el 11-oct): chifa 3,
   sevilla 2, medicos-del-mundo 2, mcn 2, y 1 cada uno switchboard, iz-express, granada-acoge, accem.
 - **Cuarta tanda** (`ops/DIFUSION.md`): sí del operador a la Asociación Marroquí, Latino Health
-  Access y Hispanic Health Council; **sin enviar por falta de Gmail**. MHP Salud y la National
+  Access y Hispanic Health Council; **enviados** en una segunda sesión con Gmail (bandeja revisada:
+  nada nuevo, sin rebotes). MHP Salud y la National
   Alliance for Hispanic Health, sin su sí todavía. **Se acabó la red Acoge** (operador): ninguna
   más, ni propuesta.
 
