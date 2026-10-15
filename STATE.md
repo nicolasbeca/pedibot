@@ -24,7 +24,14 @@
   de ningún correo.** El pico del 12 y 13-oct (179 y 87 «personas») es lo mismo: 1.110 peticiones
   en una hora, IP de Microsoft (72.145, 72.152, 72.153, 135.232, 48.209, 4.204), Chrome/79 en
   Windows; seguramente el escaneo del correo de CHIFA en los buzones de sus miembros. Sin ese
-  pico, unas 8-15 personas al día; Google, 15 en 7 días. El informe aún los cuenta como personas.
+  pico, unas 8-15 personas al día; Google, 15 en 7 días.
+- **Arreglado y desplegado:** `config/datacenter_nets.txt` (14.679 redes de Microsoft, Amazon,
+  Google Cloud, OVH, Oracle, Vultr… desde RIPEstat; `ops/datacenter_nets.py` la rehace; Apple y
+  Cloudflare fuera) y `report._de_rastreador` las descarta. En vivo: **7 días, 322 → 54 personas**
+  (Google 15, canales 0); 30 días, 849 → 280; total del panel desde agosto, 1.136 → 443.
+  `test_link_scanners_are_not_people.py`. Suite 12.040 en verde salvo `test_http_transport`,
+  que en este PC rompe el antivirus AVG (intercepta HTTP local); en el servidor el MCP da sus
+  19.946 bytes por la URL pública.
 
 ## 14-oct-2026 · miércoles · dos avisos que el chat no veía
 
