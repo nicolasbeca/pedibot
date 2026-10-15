@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import bisect
 import datetime as dt
+import functools
 import hashlib
 import ipaddress
 import json
@@ -33,13 +35,55 @@ _BOT_UA = re.compile(
 #: padre, y por dirección es evidente. 897 vistas en catorce días venían de aquí.
 _CRAWLER_NETS = (ipaddress.ip_network("66.249.64.0/19"),)
 
+#: Los centros de datos (15-oct-2026). El escáner de enlaces de Outlook abría cada correo de
+#: difusión en el minuto en que salía, cargaba la página entera desde Microsoft y contaba como
+#: persona, con su `?r=`: las 15 llegadas con canal de esa semana, ninguna humana, y un pico de
+#: 179 «personas» el 12-oct. Una casa no navega desde la nube. Apple y Cloudflare no están
+#: (Private Relay, WARP). La lista la rehace `ops/datacenter_nets.py`.
+_DATACENTER_FILE = ROOT / "config" / "datacenter_nets.txt"
 
+
+@functools.cache
+def _datacenter_nets() -> tuple[ipaddress.IPv4Network | ipaddress.IPv6Network, ...]:
+    try:
+        texto = _DATACENTER_FILE.read_text(encoding="utf-8")
+    except OSError:
+        return ()
+    return tuple(
+        ipaddress.ip_network(x) for x in (s.strip() for s in texto.splitlines()) if x and x[0] != "#"
+    )
+
+
+@functools.cache
+def _datacenter_ranges() -> dict[int, tuple[list[int], list[int]]]:
+    """Por versión de IP, los comienzos ordenados y sus finales, fusionados: dos ASN de la misma
+    empresa anuncian redes que se pisan, y con solapes la búsqueda binaria se equivoca."""
+    por_version: dict[int, list[tuple[int, int]]] = {4: [], 6: []}
+    for n in _datacenter_nets():
+        por_version[n.version].append((int(n.network_address), int(n.broadcast_address)))
+    out = {}
+    for v, rangos in por_version.items():
+        fusion: list[list[int]] = []
+        for a, b in sorted(rangos):
+            if fusion and a <= fusion[-1][1] + 1:
+                fusion[-1][1] = max(fusion[-1][1], b)
+            else:
+                fusion.append([a, b])
+        out[v] = ([a for a, _ in fusion], [b for _, b in fusion])
+    return out
+
+
+@functools.lru_cache(maxsize=65_536)
 def _de_rastreador(ip: object) -> bool:
     try:
         addr = ipaddress.ip_address(str(ip))
     except ValueError:
         return False
-    return any(addr in net for net in _CRAWLER_NETS)
+    if any(addr in net for net in _CRAWLER_NETS):
+        return True
+    inicios, finales = _datacenter_ranges()[addr.version]
+    i = bisect.bisect_right(inicios, int(addr)) - 1
+    return i >= 0 and int(addr) <= finales[i]
 
 
 def _who(ip: object, ua: str) -> str:

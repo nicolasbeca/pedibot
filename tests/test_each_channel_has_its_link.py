@@ -18,7 +18,7 @@ def _visitas():
     lineas = []
     lineas += _persona("1.1.1.1", ["/?r=chifa", "/emergency"])
     lineas += _persona("2.2.2.2", ["/es/?r=sevilla-acoge"])
-    lineas += _persona("3.3.3.3", ["/?r=chifa"])
+    lineas += _persona("6.6.6.6", ["/?r=chifa"])
     # vuelve otro día por otro enlace: sigue siendo de CHIFA, que es quien la trajo
     lineas += _persona("1.1.1.1", ["/?r=immunize"], ts=1_789_100_000.0)
     lineas += _persona("4.4.4.4", ["/es/dose"])

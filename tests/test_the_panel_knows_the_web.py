@@ -45,7 +45,7 @@ def _web():
     lineas = []
     lineas += _persona("1.1.1.1", ["/es/dose", "/es/growth/es"], ref="https://www.google.com/")
     lineas += _persona("2.2.2.2", ["/hi/", "/hi/emergency"], ua=MOVIL, lang="hi-IN,hi;q=0.9")
-    lineas += _persona("3.3.3.3", ["/es/dose"], ua=MOVIL, ref="https://t.co/abc", lang="en-NG")
+    lineas += _persona("6.6.6.6", ["/es/dose"], ua=MOVIL, ref="https://t.co/abc", lang="en-NG")
     lineas += _persona("4.4.4.4", ["/guides/fever"], ref="https://chatgpt.com/")
     lineas += _persona("5.5.5.5", ["/es/vaccines"], ref="https://pedibot.xyz/es/")
     return report.count_visits(lineas)
