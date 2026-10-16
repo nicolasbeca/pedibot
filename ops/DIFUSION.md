@@ -952,7 +952,7 @@ aún no ha contestado al permiso.
 
    Your volunteers aren't there to give medical advice, and that's exactly where I thought this
    could help. When a mum asks "is this rash something?", there's now something sensible to point
-   her to, in English or in Arabic, Urdu-speaking families aside for now, Russian, Portuguese...
+   her to, in English, Arabic, Russian, Portuguese...
 
    Here it is, in case it's useful for your local schemes: https://pedibot.xyz/?r=home-start
 
