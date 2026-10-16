@@ -900,3 +900,144 @@ aún no ha contestado al permiso.
 
    Best,
    Nicolas Beca
+
+## Quinta tanda (16-oct-2026) — PROPUESTA, sin el sí del operador
+
+> El operador, 16-oct: «Proponme los 5 correos del día». Sin conector de Gmail en esta sesión:
+> bandeja sin revisar y nada enviado. Fuera de la red Acoge y fuera de España (ya saturada).
+> Direcciones leídas hoy: Comede en su página de contacto; Parents as Teachers en la suya;
+> Home-Start UK en el registro de la Charity Commission (1108837); HealthySteps en su guía
+> oficial «Getting Started» (2023); NFP del Southern Nevada Health District en la página del
+> programa. Descartados: La Clínica del Pueblo (su web no publica correo; info@lcdp.org sólo en
+> directorios), Mary's Center (sólo teléfonos), NACHW y Nurse-Family Partnership nacional (sólo
+> formulario), National Head Start Association (sin dirección general), La Merced Migraciones
+> (jóvenes solos, no familias), Tresillian (sin correo publicado).
+> Pendiente aparte: **recordatorio a Claudia (BIÖG)**, hoy es el día si no han escrito; borrador
+> al final.
+
+1. **Comede, Comité pour la santé des exilé·e·s** (`contact@comede.org`, su página de contacto;
+   hicieron con Santé publique France los livrets de santé bilingues en 15 langues)
+
+   Objet : Une question sur la santé de l'enfant, en arabe ou en russe
+
+   Bonjour,
+
+   Je m'appelle Nicolas Beca, j'habite à Séville. Je fais PediBot, un site gratuit où un parent
+   pose une question sur la santé de son enfant, dans sa langue (arabe, russe, portugais...), et
+   reçoit une réponse tirée uniquement des recommandations pédiatriques officielles, avec la
+   source à côté. Pas de pub, pas de compte.
+
+   Je suis tombé sur vos livrets de santé bilingues, avec leur page sur la santé des enfants, et
+   je me suis dit que PediBot va un peu dans le même sens : le livret aide à parler au soignant,
+   le site aide le soir, quand il n'y a personne à qui parler et que l'enfant a de la fièvre.
+
+   Si vous pensez que ça peut servir aux familles que vous recevez :
+   https://pedibot.xyz/fr?r=comede
+
+   Et si quelque chose sonne faux dans une des langues, dites-le-moi, je corrige.
+
+   Merci,
+   Nicolas Beca
+
+2. **Home-Start UK** (`info@home-start.org.uk`, registro de la Charity Commission; voluntarios
+   que visitan en casa a familias con niños pequeños)
+
+   Subject: For the questions that come up between visits
+
+   Hi,
+
+   I'm Nicolas Beca, from Seville in Spain. I make PediBot, a free website where a parent asks
+   about their child's health and gets an answer built from NHS guidance and other official
+   sources, with the link right there. If it sounds serious, it says call 999 or 111 first.
+
+   Your volunteers aren't there to give medical advice, and that's exactly where I thought this
+   could help. When a mum asks "is this rash something?", there's now something sensible to point
+   her to, in English or in Arabic, Urdu-speaking families aside for now, Russian, Portuguese...
+
+   Here it is, in case it's useful for your local schemes: https://pedibot.xyz/?r=home-start
+
+   Any feedback, just reply.
+
+   Thanks,
+   Nicolas Beca
+
+3. **Parents as Teachers National Center** (`customerservice@parentsasteachers.org`, su página
+   de contacto; visitas a casa a familias con niños de 0 a 5 años)
+
+   Subject: A free tool your parent educators could hand to families
+
+   Hello,
+
+   My name is Nicolas Beca and I live in Seville, Spain. I've been building PediBot, a free site
+   where a parent asks about their kid's health in English or Spanish and gets an answer only
+   from official guidance (CDC, NHS, WHO), with the source shown. No ads, no sign-up.
+
+   I keep thinking about the gap between home visits. One thing I made sure of: if a baby under
+   3 months has 100.4 °F, it doesn't say "give Tylenol", it says call the doctor now, because
+   that's what the guidance says. Small things like that are what I worry about getting right.
+
+   If you think it fits, maybe it could go in the resources your parent educators share:
+   https://pedibot.xyz/?r=parents-as-teachers
+
+   And if you see something wrong, I'd really like to know.
+
+   Best,
+   Nicolas Beca
+
+4. **HealthySteps (ZERO TO THREE)** (`healthysteps@zerotothree.org`, la oficina nacional en su
+   guía «Getting Started»; especialistas dentro de las consultas de pediatría)
+
+   Subject: Could a HealthySteps Specialist check this in a minute?
+
+   Hi,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where parents
+   ask about their child's health, in English, Spanish and a few more languages, and get an
+   answer that comes only from official pediatric guidance.
+
+   The part I think matters for you: every answer shows exactly which page it came from. So a
+   HealthySteps Specialist can open it and check it in a minute, instead of wondering what a
+   parent read online at midnight.
+
+   I'm not asking you to endorse it. I'd just like someone who sees these families every day to
+   look at it and tell me what's missing: https://pedibot.xyz/?r=healthysteps
+
+   Thanks for reading,
+   Nicolas Beca
+
+5. **Nurse-Family Partnership, Southern Nevada Health District** (`nfp@snhd.org`, la página del
+   programa; enfermeras que visitan a madres primerizas en el condado de Clark)
+
+   Subject: For first-time moms at 2 am, in Spanish too
+
+   Hello,
+
+   I'm Nicolas, from Seville in Spain. I make PediBot, a free site where a parent asks about
+   their baby in English or Spanish and gets an answer from CDC and other official guidance,
+   with the source next to it. It doesn't diagnose, and when something sounds serious it says
+   call 911 first.
+
+   Your nurses know the first-time moms better than anyone, and they know the calls at 2 am.
+   A lot of what those moms worry about, how many wet diapers, is this yellow skin normal, is
+   100.4 °F a fever in a newborn, is written down clearly by the CDC. That's what PediBot gives
+   them, in their language.
+
+   If it seems useful, here it is: https://pedibot.xyz/?r=nfp-nevada
+
+   And if your nurses spot anything off, please tell me.
+
+   Thanks,
+   Nicolas Beca
+
+### Recordatorio a Claudia (BIÖG), sólo si no han escrito desde el 8-oct
+
+En el hilo «Kooperation», a su dirección:
+
+   Liebe Frau Thienel,
+
+   ich wollte mich nur kurz melden: Gibt es schon Neuigkeiten von der Referatsleitung? Bis
+   dahin nutzen wir Ihre Seiten nicht, es eilt also nicht. Ich wollte nur sichergehen, dass
+   meine Nachricht nicht untergegangen ist.
+
+   Viele Grüße aus Sevilla,
+   Nicolas Beca
