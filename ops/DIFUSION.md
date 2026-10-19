@@ -1055,3 +1055,131 @@ En el hilo «Kooperation», a su dirección:
 
    Viele Grüße aus Sevilla,
    Nicolas Beca
+
+## Sexta tanda (19-oct-2026) — PROPUESTA, sin el sí del operador
+
+> Fuera de la red Acoge y de España. Direcciones leídas en la web de cada entidad (o en la del
+> ayuntamiento que la financia). Comprobado antes de escribir: la regla `infant_fever_under_3_months`
+> (menor de 3 meses con ≥38 °C) da nivel «urgent» = «a urgencias hoy, sin esperar»; fuentes en
+> francés = OMS y Gobierno de Canadá; en alemán = RKI (el BIÖG aún no); en árabe = OMS e
+> Immunize.org; /fr, /de, /ar responden 200. Descartados: Doctors of the World UK (sólo prensa y
+> línea de pacientes), NCT (enquiries@ es para quejas), Bliss (sólo formulario y apoyo a padres),
+> Pastoral da Criança y ACCESS Dearborn (sin correo publicado), MiMi/EMZ Hannover (web caída).
+
+1. **SOLIPAM** (`contact@solipam.fr`, su página de contacto; red de matronas y trabajadoras
+   sociales en Île-de-France que acompaña a embarazadas y bebés hasta los 3 meses en gran
+   precariedad)
+
+   Objet : Quand le bébé a de la fièvre et que la maman est seule
+
+   Bonjour,
+
+   Je m'appelle Nicolas Beca, j'écris de Séville. Je fais PediBot, un site gratuit où un parent
+   pose une question sur la santé de son bébé, en français, en arabe, en russe..., et reçoit une
+   réponse tirée seulement des recommandations officielles (OMS, Santé Canada), avec la source
+   juste en dessous. Pas de compte, pas de pub.
+
+   Vous suivez les bébés jusqu'à trois mois, et c'est justement l'âge où il ne faut pas attendre.
+   Si une maman écrit que son bébé de six semaines a 38,2, PediBot ne parle pas de sirop : il dit
+   d'aller aux urgences aujourd'hui. J'ai passé beaucoup de temps sur ce genre de détail.
+
+   Si vous pensez que ça peut aider les familles que vous accompagnez :
+   https://pedibot.xyz/fr?r=solipam
+
+   Et si une sage-femme de l'équipe voit quelque chose qui cloche, je corrige tout de suite.
+
+   Bien à vous,
+   Nicolas Beca
+
+2. **Stadtteilmütter im Pestalozzi-Fröbel-Haus, Berlin** (`stadtteilmuetter@pfh-berlin.de`,
+   en la página del Jugendamt de Tempelhof-Schöneberg en berlin.de; cinco madres formadas que
+   visitan a familias migrantes, hablan árabe, alemán, inglés, farsi y turco)
+
+   Betreff: Für die Fragen, die nach Ihrem Besuch kommen
+
+   Liebes Stadtteilmütter-Team,
+
+   ich bin Nicolas Beca und schreibe aus Sevilla. Ich mache PediBot, eine kostenlose Webseite:
+   Eltern stellen eine Frage zur Gesundheit ihres Kindes und bekommen eine Antwort, die nur aus
+   offiziellen Empfehlungen stammt (RKI, WHO), mit der Quelle direkt darunter. Kein Konto,
+   keine Werbung.
+
+   Die Seite gibt es auf Deutsch und auf Arabisch. Und wer auf Türkisch oder Farsi schreibt,
+   bekommt die Antwort auch auf Türkisch oder Farsi. Ich dachte an die Mütter, die Sie besuchen,
+   abends, wenn das Kind Fieber hat und niemand zum Fragen da ist.
+
+   Falls es Ihnen nützlich erscheint: https://pedibot.xyz/de?r=stadtteilmuetter
+
+   Und wenn Ihnen etwas komisch vorkommt, schreiben Sie mir bitte, ich korrigiere es.
+
+   Viele Grüße aus Sevilla,
+   Nicolas Beca
+
+3. **National Healthy Start Association** (`info@nationalhealthystart.org`, su página de
+   contacto; red de los programas Healthy Start, familias negras y latinas hasta los 18 meses)
+
+   Subject: Something for Healthy Start families to have on their phone
+
+   Hi,
+
+   I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free website where a parent asks
+   about their baby's health in English or Spanish and gets an answer only from official
+   guidance (CDC, AAP, WHO), with the source right underneath. No ads, no account.
+
+   The part I care most about is the first months. If a mom writes that her 6-week-old has
+   100.4 °F, PediBot doesn't suggest Tylenol. It tells her to go to the ER today, because
+   that's what the guidance says.
+
+   If you think it could help, maybe it's something your programs could pass on to families:
+   https://pedibot.xyz/?r=healthy-start
+
+   And if anyone on your team sees something wrong, I really want to hear it.
+
+   Thanks,
+   Nicolas Beca
+
+4. **Reach Out and Read** (`info@reachoutandread.org`, su página de contacto, «general
+   inquiries»; pediatras que regalan un libro en cada revisión de 6 meses a 5 años)
+
+   Subject: For the questions parents think of after the checkup
+
+   Hello,
+
+   My name is Nicolas Beca and I live in Seville, Spain. I've been building PediBot, a free site
+   where a parent asks about their child's health and gets an answer built only from official
+   pediatric guidance, AAP and CDC among them. Every answer shows the exact page it came from.
+
+   I thought of you because your clinicians already hand families something good to take home.
+   The questions that come up on the drive back, or at 11 pm, are the ones I'm trying to help
+   with, in English, Spanish and a few more languages.
+
+   Here it is: https://pedibot.xyz/?r=reach-out-and-read
+
+   I'm not asking for an endorsement. If a pediatrician in your network looks at it and tells
+   me what's missing, that would already be a lot.
+
+   Best,
+   Nicolas Beca
+
+5. **Maternity Stream of Sanctuary, Yorkshire and Humber** (`info@maternity.cityofsanctuary.org`,
+   su página «About»; grupos de apoyo entre madres refugiadas y solicitantes de asilo en
+   Bradford, Hull y Leeds)
+
+   Subject: For the mums in your Bradford, Hull and Leeds groups
+
+   Hi,
+
+   I'm Nicolas, writing from Seville. I make PediBot, a free website where a parent asks about
+   their baby's health in their own language, Arabic, French, Russian, English..., and gets an
+   answer from NHS guidance and other official sources, with the link right there. If it sounds
+   serious, it says call 999 or 111 first.
+
+   I read about your peer support groups and thought of the mums who aren't sure yet how the NHS
+   works, or don't want to "bother" anyone with a question that feels small.
+
+   In case it's useful for them: https://pedibot.xyz/?r=maternity-stream
+
+   And if something reads wrong in one of the languages, please tell me.
+
+   Thank you,
+   Nicolas Beca
