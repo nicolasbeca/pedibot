@@ -2,6 +2,19 @@
 
 Última actualización: **2026-10-14** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 19-oct-2026 · lunes · sexta tanda, y el service worker inflaba el panel
+
+- **Repaso:** una consulta real desde el 16-oct (18-oct, el ejemplo de portada «She fell off the
+  sofa…», bien: urgencias hoy). MCP: 23 llamadas, todas rastreadores. Correo: nada que contestar.
+- **Sexta tanda enviada** con su sí: SOLIPAM, Stadtteilmütter (PFH Berlin), National Healthy
+  Start, Reach Out and Read, Maternity Stream YH. SOLIPAM con Mailinblack (clic del operador).
+- **El panel contaba la precarga del modo sin conexión como páginas vistas.** `sw.js` pide
+  /emergency, /growth, /vaccines, /muac y /offline al abrir cualquier página (Referer `sw.js`).
+  Siete días: vistas 579 → **139**, «vuelven» 44 → **8**, mediana 2,7 s → **19,5 s**; vacunas,
+  percentiles y cinta del brazo 41/40/38 → **4/2/1**. Visitantes casi igual (65 → 62). Las cifras
+  de visitas de antes de hoy (vistas, quién vuelve, herramientas) estaban infladas desde el
+  19-sep (el service worker nació ese día). Candado `test_visits_without_service_worker.py`.
+
 ## 16-oct-2026 · viernes · quinta tanda y Claudia
 
 - **Repaso:** ninguna consulta real el 15 ni el 16-oct (`ops/daily_review.py` en el servidor).

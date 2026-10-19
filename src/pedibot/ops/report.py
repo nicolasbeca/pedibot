@@ -301,6 +301,10 @@ def _origen(ref: str) -> str:
 _CANAL = re.compile(r"[?&](?:r|utm_source)=([A-Za-z0-9._-]{1,40})(?:&|$)")
 
 
+#: lo que pide `sw.js` llega con él de Referer; no es una página que alguien haya abierto
+_DEL_SERVICE_WORKER = re.compile(r"/sw\.js(?:\?|$)")
+
+
 def _canal(uri: str) -> str | None:
     m = _CANAL.search(uri)
     return m.group(1).lower() if m else None
@@ -396,13 +400,18 @@ def count_visits(lines: Iterable[str]) -> dict[str, Any]:
         if _BOT_UA.search(ua) or _de_rastreador(ip):
             continue
         h = req.get("headers", {})
+        estatico = bool(_STATIC.search(uri))
+        if not estatico and _DEL_SERVICE_WORKER.search((h.get("Referer") or [""])[0]):
+            # la precarga del modo sin conexión: /emergency, /growth, /vaccines... nadie las
+            # abrió, y contadas multiplicaban por cuatro las vistas (19-oct-2026)
+            continue
         candidatas.append(
             (
                 _who(ip, ua),
                 ip,
                 ts,
                 uri.split("?")[0],
-                bool(_STATIC.search(uri)),
+                estatico,
                 (h.get("Referer") or [""])[0],
                 ua,
                 (h.get("Accept-Language") or [""])[0],
