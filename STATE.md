@@ -2,6 +2,17 @@
 
 Última actualización: **2026-10-14** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+## 16-oct-2026 · viernes · quinta tanda y Claudia
+
+- **Repaso:** ninguna consulta real el 15 ni el 16-oct (`ops/daily_review.py` en el servidor).
+- **Correo:** nadie ha contestado de las tandas anteriores. **Quinta tanda enviada** con su sí
+  (Comede, Home-Start UK, Parents as Teachers, HealthySteps, NFP Nevada); Nevada es un buzón que
+  nadie lee y se sustituyó por Centro Hispano Daniel Torres (Reading, PA). Comede tiene antispam
+  (el operador hizo el clic) y Parents as Teachers acusó recibo. **Recordatorio a Claudia (BIÖG)**
+  enviado, con un error mío (decía que usamos extractos; no usamos nada) corregido en una segunda
+  línea. Regla nueva en memoria: leer el borrador aprobado antes de enviar nada. Claudia
+  contestó a las 15:54: la semana que viene vuelven todos y lo aclara. Sin respuesta nuestra.
+
 ## 15-oct-2026 · jueves · cuarta tanda: los cinco enviados
 
 - **Repaso:** ninguna consulta real desde la del 13-oct (ya revisada); 0 respuestas generadas

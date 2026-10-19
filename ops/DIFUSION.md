@@ -901,7 +901,21 @@ aún no ha contestado al permiso.
    Best,
    Nicolas Beca
 
-## Quinta tanda (16-oct-2026) — PROPUESTA, sin el sí del operador
+## Quinta tanda (16-oct-2026) — ENVIADA el 16-oct con el sí del operador
+
+> Salieron los cinco tal cual por el conector de Gmail. El recordatorio a Claudia también salió,
+> pero con otro texto (escrito antes de leer este borrador): dice que «hasta entonces usamos sólo
+> extractos literales», cuando en realidad aún no usamos nada suyo. Corregido el mismo 16-oct con
+> una segunda línea en el hilo, con el sí del operador.
+> Respuestas automáticas del mismo día: Comede tiene antispam Mailinblack (el operador hizo el
+> clic, ya entregado); Parents as Teachers acusa recibo y promete respuesta en un día hábil;
+> nfp@snhd.org es un buzón que nadie lee (sólo teléfono 702-759-0779): dar Nevada por perdido.
+> En su lugar, con el sí del operador, salió el 16-oct a **Centro Hispano Daniel Torres**
+> (Reading, PA; `info@centrohispano.org`, leído en su propia web; imparten Abriendo Puertas a
+> familias latinas con niños de 0 a 5). Asunto «For the parents in your Abriendo Puertas groups»,
+> enlace https://pedibot.xyz/?r=centro-hispano. Descartados al buscarlo: HIPPY US (sólo teléfono
+> y formulario), Healthy Families America nacional (sin correo), Abriendo Puertas nacional (sin
+> correo vigente).
 
 > El operador, 16-oct: «Proponme los 5 correos del día». Sin conector de Gmail en esta sesión:
 > bandeja sin revisar y nada enviado. Fuera de la red Acoge y fuera de España (ya saturada).
