@@ -1056,7 +1056,10 @@ En el hilo «Kooperation», a su dirección:
    Viele Grüße aus Sevilla,
    Nicolas Beca
 
-## Sexta tanda (19-oct-2026) — PROPUESTA, sin el sí del operador
+## Sexta tanda (19-oct-2026) — ENVIADA el 19-oct con el sí del operador
+
+> Salieron los cinco tal cual por el conector de Gmail (~09:17). SOLIPAM tiene antispam
+> Mailinblack, como Comede: hace falta el clic del operador. Sin rebotes al enviar.
 
 > Fuera de la red Acoge y de España. Direcciones leídas en la web de cada entidad (o en la del
 > ayuntamiento que la financia). Comprobado antes de escribir: la regla `infant_fever_under_3_months`
