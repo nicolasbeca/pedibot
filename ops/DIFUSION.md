@@ -1076,7 +1076,7 @@ En el hilo «Kooperation», a su dirección:
 
    Je m'appelle Nicolas Beca, j'écris de Séville. Je fais PediBot, un site gratuit où un parent
    pose une question sur la santé de son bébé, en français, en arabe, en russe..., et reçoit une
-   réponse tirée seulement des recommandations officielles (OMS, Santé Canada), avec la source
+   réponse tirée seulement des recommandations officielles (OMS, gouvernement du Canada), avec la source
    juste en dessous. Pas de compte, pas de pub.
 
    Vous suivez les bébés jusqu'à trois mois, et c'est justement l'âge où il ne faut pas attendre.
