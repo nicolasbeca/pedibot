@@ -2256,3 +2256,16 @@ atrasadas). Ahora la regla está en `article_v1.md`, el generador rechaza el bor
 (`calculator_problem`) y un test recorre las publicadas. **Regla:** cuando un fallo se arregla
 en un prompt, buscar la misma instrucción en los demás (`grep` en todos los `prompts/`), y que el
 candado mire también lo ya publicado, no sólo lo que se escriba a partir de hoy.
+
+## L264 · Lo que añade una pieza nueva al sitio también llega al contador (19-oct-2026)
+
+El 19-sep nació el service worker del modo sin conexión: al abrir cualquier página pide por su
+cuenta /emergency, /growth, /vaccines, /muac y /offline. El contador de visitas exigía la
+«prueba del navegador» y por eso la daba por buena: era un navegador, pero nadie había abierto
+esas páginas. Un mes contando cinco páginas de más por persona: 6.962 vistas donde había 5.293,
+245 visitantes «que vuelven» donde había 143, y en la última semana las herramientas
+(vacunas 41, percentiles 40, cinta del brazo 38) eran 4, 2 y 1. Lo delató que cuatro
+herramientas distintas tuvieran casi la misma cifra. Ahora lo que llega con `Referer: …/sw.js`
+no es una página vista (`test_visits_without_service_worker.py`). **Regla:** cuando algo del
+sitio empiece a pedir páginas solo (precarga, prefetch, un iframe), mirar el contador ese mismo
+día; y cifras gemelas en cosas distintas son una señal de que se cuenta una máquina.

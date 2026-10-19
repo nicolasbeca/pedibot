@@ -11,9 +11,11 @@
 - **El panel contaba la precarga del modo sin conexión como páginas vistas.** `sw.js` pide
   /emergency, /growth, /vaccines, /muac y /offline al abrir cualquier página (Referer `sw.js`).
   Siete días: vistas 579 → **139**, «vuelven» 44 → **8**, mediana 2,7 s → **19,5 s**; vacunas,
-  percentiles y cinta del brazo 41/40/38 → **4/2/1**. Visitantes casi igual (65 → 62). Las cifras
+  percentiles y cinta del brazo 41/40/38 → **4/2/1**. Visitantes iguales (65). Las cifras
   de visitas de antes de hoy (vistas, quién vuelve, herramientas) estaban infladas desde el
-  19-sep (el service worker nació ese día). Candado `test_visits_without_service_worker.py`.
+  19-sep (el service worker nació ese día); en todo el registro, vistas 6.962 → **5.293** y
+  «vuelven» 245 → **143**. Desplegado y medido en vivo (caché del panel y public_stats
+  refrescados). Candado `test_visits_without_service_worker.py` (L264).
 
 ## 16-oct-2026 · viernes · quinta tanda y Claudia
 
