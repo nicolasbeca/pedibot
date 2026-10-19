@@ -16,6 +16,9 @@
   19-sep (el service worker nació ese día); en todo el registro, vistas 6.962 → **5.293** y
   «vuelven» 245 → **143**. Desplegado y medido en vivo (caché del panel y public_stats
   refrescados). Candado `test_visits_without_service_worker.py` (L264).
+- **Siguiente:** páginas de vacunas más largas para Google (/vaccines/us, 261 palabras, no se
+  indexa; contenido del CDC). Search Console otra vez hacia el 29-oct. Esperando: Claudia (BIÖG)
+  esta semana, el clic de SOLIPAM y las respuestas de las seis tandas.
 
 ## 16-oct-2026 · viernes · quinta tanda y Claudia
 
