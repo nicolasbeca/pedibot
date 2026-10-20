@@ -16,6 +16,15 @@
   número de urgencias sólo sale con nivel «emergency», no con «urgent»; quité las frases que
   decían lo contrario.
 - Autorrespuesta de National Healthy Start (24-48 h). SOLIPAM sigue esperando el clic.
+- **BIÖG DENTRO Y DESPLEGADO** (20-oct, c56da17): 309 hojas de kindergesundheit-info.de, índice
+  11.415 fragmentos; en vivo, «Mein Kind hat Erbrechen (4 Jahre)» da su lista de alarma entera con
+  lo de beber. Batería alemana nueva (`13_aleman_20oct.txt`, 73): errores 22 → 15, urgencia 7 → 4,
+  sin fuente alemana 63 → 31. Con ello: `rebaja_el_aviso` en alemán y «problemas respiratórios
+  graves» (pt/es/fr) como emergencia. **Pendiente:** la 59 (tiraje) aún toma los consejos del
+  Pseudokrupp para cualquier dificultad respiratoria. El BIÖG encabeza ahora la banda de la portada
+  (309 documentos, por delante de la OMS con 220).
+- **BVKJ (Kinderärzte im Netz) dice que NO** (20-oct). Nada suyo en el índice; ops/PERMISOS.md.
+- En el PC, AVG: `env -u SSLKEYLOGFILE` para cualquier Python con HTTPS (fetch, baterías, suite).
 
 ## 19-oct-2026 · lunes · sexta tanda, y el service worker inflaba el panel
 

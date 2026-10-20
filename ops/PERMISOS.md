@@ -249,3 +249,11 @@ formulario corta a 300 caracteres— y deja copia. No por las dos vías a la vez
 - El rastreo del suajili, con las siete licencias leídas: `FUENTES/SUAJILI.md`.
 - El de la India, con la cita literal de la política del ministerio: `FUENTES/INDIA.md`.
 - La decisión de partir el suajili en lengua de aviso y lengua de respuesta: `LESSONS.md`, L183.
+
+### Kinderärzte im Netz / BVKJ (kinderaerzte-im-netz.de) — 20-oct-2026: NO
+
+Cornelia Steininger (c.steininger@monks.de), respuesta a la petición del 8-oct a
+support@kinderaerzte-im-netz.de: «das BVKJ-Redaktionsgremium hat abgelehnt». Nada suyo en el
+índice (comprobado el 20-oct: cero entradas en fuentes.yaml y fuentes_web.yaml). Cerrado; no se
+contesta salvo que el operador lo pida. Ojo: varias hojas del BIÖG citan al BVKJ como su fuente;
+eso es texto del BIÖG, publicado por el BIÖG, y entra con su permiso.
