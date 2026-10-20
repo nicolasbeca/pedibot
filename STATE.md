@@ -24,6 +24,8 @@
   Pseudokrupp para cualquier dificultad respiratoria. El BIÖG encabeza ahora la banda de la portada
   (309 documentos, por delante de la OMS con 220).
 - **BVKJ (Kinderärzte im Netz) dice que NO** (20-oct). Nada suyo en el índice; ops/PERMISOS.md.
+- **Guías: dos a la semana** desde el 20-oct (lunes y jueves 06:30, una por pasada; antes dos al día), por decisión del operador. Primera: jueves 22-oct.
+- SOLIPAM: el operador hizo el clic de Mailinblack el 20-oct.
 - En el PC, AVG: `env -u SSLKEYLOGFILE` para cualquier Python con HTTPS (fetch, baterías, suite).
 
 ## 19-oct-2026 · lunes · sexta tanda, y el service worker inflaba el panel
