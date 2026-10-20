@@ -1187,7 +1187,10 @@ En el hilo «Kooperation», a su dirección:
    Thank you,
    Nicolas Beca
 
-## Séptima tanda (20-oct-2026) — PENDIENTE del sí del operador
+## Séptima tanda (20-oct-2026) — ENVIADA el 20-oct con el sí del operador
+
+> Salieron los cinco tal cual (~08:43), más el toque a Frank en su hilo. Sin rebotes al enviar.
+> Birth Partner Project: respuesta automática, miran el buzón cada 10 días hábiles.
 
 > Direcciones leídas hoy: Aquarelle en su página de contacto (aquarelle-bru.be/contact, cifrada
 > por Cloudflare); La Maison Bleue en la suya (no tiene dirección general, cada casa tiene su
@@ -1332,7 +1335,7 @@ En su hilo «Freigabe Nutzung der Texte mit Quellenangabe»:
    Viele Grüße aus Sevilla,
    Nicolas Beca
 
-### Toque a Frank (Somos Amigos) — PENDIENTE del sí del operador
+### Toque a Frank (Somos Amigos) — ENVIADO el 20-oct
 
 En su hilo «Sources for the Dominican Republic and Haiti»:
 

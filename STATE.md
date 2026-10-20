@@ -12,7 +12,7 @@
   hoy, bien). 1060–1062 son pruebas mías (fiebre de 6 semanas en hindi y francés: «urgent»).
   MCP: sólo rastreadores (BrickBlueBot, rokmcp, FaceabotProbe, nuevo).
 - **Séptima tanda escrita** (Aquarelle, Maison Bleue, Birth Partner Project, Amma, SNEHA) y el
-  toque a Frank, al final de ops/DIFUSION.md, **esperando su sí**. Lección al escribirla: el
+  toque a Frank, al final de ops/DIFUSION.md: **ENVIADOS el 20-oct** con su sí, sin rebotes. Lección al escribirla: el
   número de urgencias sólo sale con nivel «emergency», no con «urgent»; quité las frases que
   decían lo contrario.
 - Autorrespuesta de National Healthy Start (24-48 h). SOLIPAM sigue esperando el clic.
