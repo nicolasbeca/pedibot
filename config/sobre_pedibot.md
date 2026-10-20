@@ -41,6 +41,10 @@ it (`tests/test_the_card_about_pedibot_is_true.py` checks the parts that can be 
   PediBot permission to cite them. The chat cites them when a parent asks about a vaccine in one
   of those languages, with a link to the sheet itself, and they are listed at pedibot.xyz/sources.
 - Child health pages in Hindi from Vikaspedia (Government of India), also with permission.
+- For German-speaking parents, besides the Robert Koch Institute: kindergesundheit-info.de, the
+  child health portal for parents of Germany's federal public health institute (BIÖG), with its
+  written permission (October 2026). It covers illness signs, accidents, feeding, sleep and the
+  U1–U9 check-ups.
 - Every document it is allowed to quote is listed, with organisation, title, year, language and a
   link to the original, at pedibot.xyz/sources.
 - The documents are checked once a week to see whether the original page has changed.

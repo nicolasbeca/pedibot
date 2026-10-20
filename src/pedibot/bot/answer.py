@@ -1617,6 +1617,15 @@ _TRANQUILIZA = re.compile(
     + r"|\b(mejora|desaparece|se cura|se pasa) (solo|sola|por s[ií] (mism[oa]|sola))\b"
     + r"|\bin most cases\b[^.]{0,80}\b(mild|minor|harmless|not serious|linked|caused|due)\b"
     + r"|\ben la mayor[ií]a de (los )?casos\b[^.]{0,80}\b(leve|benign|se debe|causad|relacionad)"
+    # 20-oct-2026, en alemán: con las hojas para padres del BIÖG el redactor copia su calma bajo
+    # el aviso («suchen Sie bald eine ärztliche Praxis auf», la fiebre que «meist» baja, «einen
+    # Termin vereinbaren»). «so bald wie möglich» es prisa y no cuenta.
+    + r"|(?<!so )\bbald\b[^.]{0,40}\b(arzt|[äa]rztin|[äa]rztlich\w*|praxis|termin)"
+    + r"|\btermin\w*\b[^.]{0,30}\b(vereinbaren|ausmachen)\b|\bvereinbaren sie\b[^.]{0,50}termin"
+    + r"|\b(sehr |ganz )?(h[äa]ufig|weit verbreitet)\b[^.]{0,140}\b(meist|meistens|in der regel|normalerweise)\b" + _SIN_VUELTA
+    + r"|\b(meist|meistens|oft|in der regel|normalerweise)\b[^.]{0,40}\b(von selbst|von allein|harmlos|ungef[äa]hrlich)\b" + _SIN_VUELTA
+    + r"|\bzu hause\b[^.]{0,20}\b(pflegen|versorgen|auskurieren|behandeln|beobachten)\b"
+    + r"|\bwenn\b[^.]{0,60}\bnicht (bessern|besser werden|bessert|nachlassen|nachl[äa]sst)\b[^.]{0,60}\b(arzt|[äa]rztlich\w*|praxis|notaufnahme|klinik)"
     # «It is normal for them to have little appetite» es un consejo de cuidado, no un juicio
     # sobre la urgencia; el apetito se deja pasar.
     + r"|(^|[.!?]\s+)(it is|it's|this is|that is|esto es) (completely |perfectly |quite |totalmente |muy )?(normal|expected|esperable|lo normal)\b"

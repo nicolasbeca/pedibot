@@ -100,6 +100,7 @@ COMO_SE_LLAMA_EN_LA_FICHA = {
     "Ministério da Saúde": "Brazilian health ministry",
     "Gouvernement du Canada": "Canadian public health",
     "RKI": "Robert Koch",
+    "BIÖG": "kindergesundheit-info.de",
 }
 
 

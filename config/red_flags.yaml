@@ -532,6 +532,15 @@ rules:
   - تشهق
   - n[aã]o consegue respirar
   - dificuldade (grave |s[ée]ria )?(para |de |em )?respirar
+  # 20-oct-2026: la dificultad grave dicha con sustantivo y adjetivo, como la escribe la guía
+  # portuguesa del asma («problemas respiratórios graves») y como la repite un padre. Sólo
+  # saltaba en inglés (tests/test_severe_breathing_problems_as_a_noun.py).
+  - (problemas?|dificuldade|desconforto|insufici[êe]ncia) respirat[óo]ri[oa]s? (grave|severa|s[ée]ri[oa])
+  - (grave|severa|s[ée]ri[oa])s? (problemas?|dificuldade|desconforto) respirat[óo]ri
+  - (problemas?|dificultad|dificultades|insuficiencia) respiratori[oa]s? (grave|severa|seria)
+  - (grave|severa|seria)s? (problemas?|dificultad|dificultades) respiratori
+  - (probl[èe]mes?|difficult[ée]s?|g[êe]ne) respiratoires? (grave|s[ée]v[èe]re|important)
+  - (grave|s[ée]v[èe]re)s? (probl[èe]mes?|difficult[ée]s?) respiratoires?
   - n[aã]o (est[aá] )?conseguindo respirar
   - respirar cada vez (pior|mais r[aá]pido)
   - (respira|respirando|respira[cç][aã]o).{0,25}cada vez (pior|mais r[aá]pid)

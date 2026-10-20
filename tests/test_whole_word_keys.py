@@ -245,6 +245,9 @@ _REVISADAS = {
     "нос",
     # 19-sep-2026, con las 66 guías traídas del servidor: «piqûre» coge «piqûres», su plural.
     "piqûre",
+    # 20-oct-2026, con las 8 guías del 19-oct (hepatitis B, tuberculosis…): «прививк» coge
+    # «прививки», el plural y el genitivo de «прививка» (vacuna). Su propia flexión.
+    "прививк",
 }
 
 

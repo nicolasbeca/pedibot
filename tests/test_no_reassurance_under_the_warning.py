@@ -28,6 +28,15 @@ REBAJAN = [
     "For an older baby, a high temperature is usually something you can look after at home, according to the NHS [2].",
     "Jaundice in babies is a common condition, and it is usually harmless and gets better without treatment [1].",
     "Si la crisis no cede tras el tratamiento en casa, o si le queda alguna duda, acuda lo antes posible a un centro sanitario [6].",
+    # 20-oct-2026, en alemán: con kindergesundheit-info.de en el índice el redactor tiene por fin
+    # hojas para padres en su lengua, y copia su calma bajo el aviso (batería 13_aleman, todas con
+    # aviso de urgencias encima). La frase de la fiebre es la misma que ya se cazaba en inglés.
+    "Wirkt das Kind zusätzlich ungewöhnlich schlapp oder teilnahmslos, suchen Sie bald eine ärztliche Praxis auf [6].",
+    "Für ein älteres Kind: Fieber ist bei kleinen Kindern sehr häufig, und die Temperatur geht meist innerhalb von 1 bis 4 Tagen wieder zurück [2].",
+    "Vereinbaren Sie so früh wie möglich einen Untersuchungstermin bei der Ärztin oder dem Arzt, die oder der Ihr Baby betreut [5].",
+    "Eine Mittelohrentzündung heilt meist von selbst nach wenigen Tagen ab [2].",
+    "Sie können Ihr Kind in der Regel zu Hause pflegen [3].",
+    "Wenn sich die Beschwerden nach zwei Tagen nicht bessern, gehen Sie in die kinderärztliche Praxis [4].",
     # lo de antes sigue cazado
     "This is not an emergency, but keep an eye on him.",
     "Vigílalo en casa y vuelve a consultar mañana.",
@@ -42,6 +51,11 @@ NO_REBAJAN = [
     # instrucciones mientras llega la ayuda
     "While you wait for help, lay her on her side and do not put anything in her mouth [1].",
     "Call 911 now. If he stops breathing, start CPR as the operator tells you [2].",
+    # en alemán: «so bald wie möglich» es prisa, no espera; y la frase que vuelve al aviso
+    "Wenn Ihnen geraten wird, in die Notaufnahme zu gehen, tun Sie das so bald wie möglich [1].",
+    "Fieber ist sehr häufig und geht meist zurück, aber mit diesen Zeichen muss Ihr Kind heute gesehen werden [2].",
+    "Stillen Sie Ihr Baby weiter nach Bedarf — das deckt den Durst ausreichend [4].",
+    "Bringen Sie Ihr Kind bald möglichst in die Notaufnahme [2].",
 ]
 
 

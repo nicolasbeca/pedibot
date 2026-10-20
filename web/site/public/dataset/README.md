@@ -19,7 +19,7 @@ tags:
   - digital-public-good
 pretty_name: Paediatric guidance for parents — an open catalogue
 size_categories:
-  - n<1K
+  - 1K<n<10K
 configs:
   - config_name: default
     data_files: sources.csv
@@ -27,7 +27,7 @@ configs:
 
 # Paediatric guidance for parents — an open catalogue
 
-**729 documents from 26 organisations**, in 9 languages, each classified by topic and linked to its original.
+**1038 documents from 27 organisations**, in 9 languages, each classified by topic and linked to its original.
 
 Guidance written for parents — what to do when a child has a fever, when to worry about
 a rash, how to rehydrate after vomiting — is published by health services, medical
@@ -58,18 +58,19 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | `doc_id` | stable identifier, unique in this catalogue |
 | `org` / `org_full` | the publisher, short and full |
 | `title` | as published, in the document's own language — never translated |
-| `year` | where the document states one (341 of 729 do) |
+| `year` | where the document states one (641 of 1038 do) |
 | `lang` | ISO 639-1 of the document itself |
 | `topic` | our classification, see below |
 | `doc_type` | e.g. `hoja_padres` (parent leaflet), `guia_clinica`, `ficha_tecnica` |
-| `usage` | `publico` (698) may be reproduced under its publisher's terms; `citar_solo` (31) may be cited and linked, not reproduced |
-| `url` | link to the original (681 of 729 are online; the rest are books and printed manuals, identified in `notes`) |
+| `usage` | `publico` (1007) may be reproduced under its publisher's terms; `citar_solo` (31) may be cited and linked, not reproduced |
+| `url` | link to the original (990 of 1038 are online; the rest are books and printed manuals, identified in `notes`) |
 | `notes` | ISBN, edition, or how to find a document that has no URL |
 
 ## By organisation
 
 | organisation | documents |
 |---|---|
+| BIÖG — kindergesundheit-info.de — Bundesinstitut für Öffentliche Gesundheit (BIÖG) | 309 |
 | WHO — World Health Organization | 220 |
 | NHS — NHS (National Health Service, England) | 191 |
 | MedlinePlus — MedlinePlus (U.S. National Library of Medicine) | 118 |
@@ -102,11 +103,11 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 | language | documents |
 |---|---|
 | English (`en`) | 364 |
+| German (`de`) | 339 |
 | Spanish (`es`) | 117 |
 | Arabic (`ar`) | 56 |
 | French (`fr`) | 51 |
 | Russian (`ru`) | 47 |
-| German (`de`) | 30 |
 | hi (`hi`) | 29 |
 | sw (`sw`) | 21 |
 | Portuguese (`pt`) | 14 |
@@ -115,29 +116,29 @@ to their authors; copying them would not be. Follow the `url` column to the sour
 
 | topic | documents |
 |---|---|
-| `vacunas` | 97 |
-| `respiratorio` | 77 |
-| `general` | 76 |
-| `piel` | 74 |
-| `digestivo` | 66 |
-| `accidentes` | 58 |
-| `alimentacion` | 44 |
-| `desarrollo` | 38 |
-| `salud_mental` | 22 |
+| `accidentes` | 117 |
+| `general` | 110 |
+| `alimentacion` | 106 |
+| `desarrollo` | 105 |
+| `vacunas` | 99 |
+| `piel` | 91 |
+| `respiratorio` | 82 |
+| `digestivo` | 75 |
+| `crianza` | 40 |
+| `salud_mental` | 24 |
+| `alergia` | 22 |
+| `medicamentos` | 20 |
+| `recien_nacido` | 19 |
+| `fiebre` | 19 |
 | `orl` | 19 |
-| `recien_nacido` | 18 |
-| `fiebre` | 18 |
-| `neurologia` | 17 |
-| `medicamentos` | 16 |
-| `alergia` | 15 |
-| `urgencias` | 14 |
-| `crianza` | 14 |
+| `neurologia` | 18 |
+| `dental` | 16 |
+| `urgencias` | 15 |
 | `ojos` | 12 |
+| `lactante` | 11 |
 | `intoxicacion` | 11 |
-| `dental` | 9 |
-| `lactante` | 8 |
+| `urinario` | 4 |
 | `auto` | 3 |
-| `urinario` | 3 |
 
 ## How it was put together
 

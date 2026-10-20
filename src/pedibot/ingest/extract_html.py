@@ -67,6 +67,10 @@ _SKIP_TEXT = (
 #: «breadcrumbs», «socialmedia-icons»— en las 580 páginas: la subcadena hace un trabajo útil y
 #: la excepción es sólo ésta.
 _NO_ES_RUIDO = re.compile(r"shared")
+#: 20-oct-2026, kindergesundheit-info.de: cada página cierra con «Quellen» —la bibliografía y una
+#: promoción de infektionsschutz.de— y lo que viene detrás no es información para un padre. Un
+#: título así es el final de la hoja.
+_BIBLIOGRAFIA = frozenset({"Quellen", "Quellenangaben"})
 _HEADING_SIZE = {"h1": 20.0, "h2": 15.0, "h3": 13.0, "h4": 12.0}
 BODY_SIZE = 10.0
 
@@ -122,6 +126,8 @@ def extract_html(path: Path) -> Extracted:
         if not text or len(text) < 2 or any(text.startswith(s) for s in _SKIP_TEXT):
             continue
         size = _HEADING_SIZE.get(el.name, BODY_SIZE)
+        if el.name in _HEADING_SIZE and text in _BIBLIOGRAFIA:
+            break
         lines.append(Line(text=text, size=size, bold=el.name in _HEADING_SIZE, page=1))
     return Extracted(
         path=path,
