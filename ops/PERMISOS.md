@@ -66,7 +66,13 @@ Referatsleitung. **Si el viernes 16-oct no han escrito, recordatorio breve a Cla
 pedida por el operador a «sin recordatorios»). Si dicen que no a resumir, entonces se construye el
 modo de cita literal y se clasifican las fuentes en «resumible» y «sólo cita literal».
 
-**Estado:** nada suyo en el índice. Ojo: el redactor hoy siempre resume; usar sus páginas como
+**19-oct, 14:37, LA DECISIÓN (hilo «Freigabe Nutzung der Texte mit Quellenangabe»):** «Sie können
+die Inhalte ab jetzt gerne so nutzen.» Con un aviso: su redacción no puede revisar nuestros
+textos cada vez; pueden ser una fuente, pero de lo publicado respondemos nosotros. Acuse enviado
+el 20-oct. **Siguen en pie los compromisos del 8-oct**: lista de alarma entera (con lo de beber)
+y «oft harmlose Ursachen», no «meist harmlos»; nada de publicidad.
+
+**Estado anterior (hasta el 19-oct):** nada suyo en el índice. Ojo: el redactor hoy siempre resume; usar sus páginas como
 «Auszug» exige un modo de cita literal que no existe. No se indexa hasta que contesten.
 
 ### Immunize.org — 30-sep-2026

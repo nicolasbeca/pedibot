@@ -1186,3 +1186,161 @@ En el hilo «Kooperation», a su dirección:
 
    Thank you,
    Nicolas Beca
+
+## Séptima tanda (20-oct-2026) — PENDIENTE del sí del operador
+
+> Direcciones leídas hoy: Aquarelle en su página de contacto (aquarelle-bru.be/contact, cifrada
+> por Cloudflare); La Maison Bleue en la suya (no tiene dirección general, cada casa tiene su
+> responsable: se escribe a Côte-des-Neiges, Ancuța Stan); Birth Partner Project en su página de
+> contacto («for general enquiries»); SNEHA en su página de contacto. **Amma: su web no carga
+> desde aquí (403/timeout)**; la dirección sale igual en SEIN Glasgow y Voluntary Health Scotland.
+> Comprobado antes de escribir: en vivo, en hindi, «6 हफ्ते, 38.2» da «urgent» (respuesta 1060,
+> prueba mía, no es consulta real); **el número de urgencias sólo sale con nivel «emergency»**
+> (no en «urgent», que es la fiebre del bebé): CA 911, GB 999; fuentes de India
+> = NHM (IMNCI, HBNC) y el manual de las ASHA del NHSRC, en inglés, el motor contesta en hindi.
+> Descartados: Fondation OLO (sólo direcciones de recaudación), Birth Companions de Londres
+> (sobre todo cárceles).
+
+1. **Aquarelle** (`aquarelle@stpierre-bru.be`; Bruselas, CHU Saint-Pierre; matronas y
+   trabajadoras sociales con embarazadas migrantes sin cobertura, también después del parto)
+
+   Objet : Pour les mamans que vous suivez après la maternité
+
+   Bonjour,
+
+   Je m'appelle Nicolas Beca, j'écris de Séville. Je fais PediBot, un site gratuit où un parent
+   pose une question sur la santé de son bébé dans sa langue, français, arabe, russe, anglais...,
+   et reçoit une réponse tirée seulement des recommandations officielles (OMS, gouvernement du
+   Canada), avec la source juste en dessous. Pas de compte, pas de pub.
+
+   Je pensais aux mamans que vous accompagnez quand elles rentrent chez elles avec le bébé. Si
+   l'une d'elles écrit que son bébé de six semaines a 38,2, PediBot ne parle pas de sirop : il
+   dit d'aller aux urgences aujourd'hui.
+
+   Si ça peut leur servir : https://pedibot.xyz/fr?r=aquarelle
+
+   Et si une sage-femme de l'équipe voit quelque chose qui cloche, je corrige tout de suite.
+
+   Bien à vous,
+   Nicolas Beca
+
+2. **La Maison Bleue, Côte-des-Neiges** (`coordo.cdn@maisonbleue.info`, Ancuța Stan,
+   responsable de site; périnatalidad social en Montreal, del embarazo a los 5 años, cinco casas)
+
+   Objet : Pour les questions qui arrivent entre deux rendez-vous
+
+   Bonjour Madame Stan,
+
+   Je m'appelle Nicolas Beca, j'écris de Séville. Je fais PediBot, un site gratuit où un parent
+   pose une question sur la santé de son enfant, en français, en anglais, en espagnol, en arabe...,
+   et reçoit une réponse tirée seulement des recommandations officielles, celles du gouvernement
+   du Canada parmi d'autres, avec la source juste en dessous. Pas de compte, pas de pub.
+
+   Vos familles ont déjà une équipe qui les connaît. PediBot, c'est pour le soir ou le week-end,
+   quand la question paraît trop petite pour appeler. Et quand elle ne l'est pas, il le dit
+   clairement, et en cas d'urgence vitale il donne le 911.
+
+   Si vous pensez que ça peut aider à Côte-des-Neiges, ou dans les autres maisons :
+   https://pedibot.xyz/fr?r=maison-bleue
+
+   Si quelqu'un de l'équipe voit une erreur, j'aimerais beaucoup le savoir.
+
+   Bien à vous,
+   Nicolas Beca
+
+3. **Birth Partner Project** (`info@birthpartnerproject.org`; Cardiff; acompañantes voluntarias
+   para refugiadas y solicitantes de asilo, del final del embarazo a las 8 semanas)
+
+   Subject: For the first eight weeks, and after
+
+   Hi,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about their baby's health in their own language, Arabic, French, Russian, English..., and
+   gets an answer from NHS guidance and other official sources, with the link right there. No
+   account, no ads.
+
+   Your volunteers are there for the first eight weeks. I thought PediBot might be something a
+   mum keeps on her phone for the nights in between, and for after. If her 6-week-old has a
+   temperature of 38.2, it doesn't suggest Calpol. It tells her to go to A&E today, because
+   that's what the guidance says.
+
+   In case it's useful: https://pedibot.xyz/?r=birth-partner-project
+
+   And if anything reads wrong in one of the languages, please tell me.
+
+   Thank you,
+   Nicolas Beca
+
+4. **Amma Birth Companions** (`info@ammabirthcompanions.org`; Glasgow; madres migrantes y
+   solicitantes de asilo, más de la mitad hablan poco o nada de inglés)
+
+   Subject: For the mums who don't want to bother anyone
+
+   Hi,
+
+   I'm Nicolas, from Seville. I make PediBot, a free website where a parent asks about their
+   baby's health in their own language and gets an answer only from official guidance, NHS among
+   them, with the source underneath. Someone can write in Arabic, French or Russian and get the
+   answer back in the same language.
+
+   I read that more than half of the women you support speak little or no English. PediBot can't
+   replace a companion, but it might help with the small questions at night, and say clearly
+   when it isn't small, and in an emergency it gives 999.
+
+   If you think it could help: https://pedibot.xyz/?r=amma
+
+   And if your team sees something wrong, I'd really like to know.
+
+   Thanks,
+   Nicolas Beca
+
+5. **SNEHA** (`communications@snehamumbai.org`; Bombay; salud materna y neonatal en barrios
+   informales, con el sistema público y las ASHA)
+
+   Subject: Hindi answers for parents, from India's own newborn guidelines
+
+   Hello,
+
+   My name is Nicolas Beca and I write from Seville, Spain. I make PediBot, a free website where a
+   parent asks about their child's health and gets an answer built only from official guidance.
+   For India that means the NHM's IMNCI chart booklet and Home-Based Newborn Care guidelines, and
+   the NHSRC handbook for ASHAs. A parent can write in Hindi and gets the answer in Hindi, with
+   the source underneath.
+
+   I thought of your work with mothers and newborns in Mumbai. If a mother writes that her
+   6-week-old has 38.2 °C, PediBot tells her to go to hospital today, without waiting.
+
+   Here it is: https://pedibot.xyz/hi?r=sneha
+
+   I'm not asking for an endorsement. If someone in your team tries it and tells me what's wrong
+   or missing, that would already help a lot.
+
+   Best regards,
+   Nicolas Beca
+
+### Acuse a Claudia (BIÖG) — sale directo (acuse de lo acordado)
+
+En su hilo «Freigabe Nutzung der Texte mit Quellenangabe»:
+
+   Sehr geehrte Frau Thienel,
+
+   vielen Dank, auch an Ihre Referatsleitung, für die Freigabe. Den Hinweis habe ich verstanden:
+   Für die Antworten auf PediBot sind wir selbst verantwortlich, und Ihre Seiten werden mit Quelle
+   genannt.
+
+   Viele Grüße aus Sevilla,
+   Nicolas Beca
+
+### Toque a Frank (Somos Amigos) — PENDIENTE del sí del operador
+
+En su hilo «Sources for the Dominican Republic and Haiti»:
+
+   Dear Frank,
+
+   I hope all is well at the clinic. No rush at all. I just wanted to say that whenever your
+   clinical team has had a look at the Dominican Republic and Haiti pages, I'm here, and anything
+   they find I'll fix the same day.
+
+   Warm regards,
+   Nicolas Beca

@@ -2,6 +2,21 @@
 
 Última actualización: **2026-10-14** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
+
+## 20-oct-2026 · martes · el BIÖG dice que sí, y la séptima tanda escrita
+
+- **BIÖG: SÍ** (Claudia, 19-oct 14:37): podemos usar kindergesundheit-info.de; de lo publicado
+  respondemos nosotros. Acuse enviado. **Siguiente gran tarea: indexarlo** cumpliendo lo
+  prometido el 8-oct (listas de alarma enteras, «oft harmlose Ursachen»); ops/PERMISOS.md.
+- **Consultas reales:** una sola desde el 13-oct (1059, caída del sofá + dos vómitos → urgencias
+  hoy, bien). 1060–1062 son pruebas mías (fiebre de 6 semanas en hindi y francés: «urgent»).
+  MCP: sólo rastreadores (BrickBlueBot, rokmcp, FaceabotProbe, nuevo).
+- **Séptima tanda escrita** (Aquarelle, Maison Bleue, Birth Partner Project, Amma, SNEHA) y el
+  toque a Frank, al final de ops/DIFUSION.md, **esperando su sí**. Lección al escribirla: el
+  número de urgencias sólo sale con nivel «emergency», no con «urgent»; quité las frases que
+  decían lo contrario.
+- Autorrespuesta de National Healthy Start (24-48 h). SOLIPAM sigue esperando el clic.
+
 ## 19-oct-2026 · lunes · sexta tanda, y el service worker inflaba el panel
 
 - **Repaso:** una consulta real desde el 16-oct (18-oct, el ejemplo de portada «She fell off the
