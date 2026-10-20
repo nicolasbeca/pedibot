@@ -23,7 +23,7 @@
 | Alcance árabe / hindi | Diez preguntas por mercado: árabe **9 de 10** (era 2), hindi **10 de 10** (era 7) |
 | Marcas reconocidas | **32** (eran 20): añadidas India, Golfo, Egipto y Levante. 18 de 20 preguntas por marca del mercado objetivo dan dosis |
 | Páginas | **900** (eran 792 esta mañana) |
-| Guías | 485 y subiendo: se publican solas, 2 al día |
+| Guías | se publican solas, 2 a la semana (lunes y jueves) |
 | Indexadas en Google | **557 de 779**; 194 que no conoce, 28 rastreadas y descartadas |
 | Bing | Verificado, sitemap entregado sin errores, IndexNow recibiendo — **y sin rastrear páginas** |
 | Búsqueda (90 d) | 1.045 impresiones, 3 clics, **posición media 69**. El sitio tiene 14 días a ojos de Google |
@@ -64,7 +64,7 @@ La última fila es la que manda sobre todas las demás: **el cuello de botella n
 
 | Cuándo | Qué | Unidad |
 |---|---|---|
-| Diario 06:30 | **2 guías nuevas**, en las dos lenguas más atrasadas, y reconstruye el sitio | `pedibot-publish` |
+| Lunes y jueves 06:30 | **1 guía nueva**, en la lengua más atrasada, y reconstruye el sitio | `pedibot-publish` |
 | Diario 07:15 | Avisa a Bing, Yandex, Seznam y Naver de lo que cambió | `pedibot-indexnow` |
 | Cada 2 días 10:00 | Un mensaje del proyecto en Bluesky, en inglés | `pedibot-social-project` |
 | Martes 09:00 | Una guía por idioma en Bluesky: 8 publicaciones | `pedibot-social-guides` |
