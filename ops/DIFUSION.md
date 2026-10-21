@@ -1356,7 +1356,9 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
 
 ## Octava tanda (21-oct-2026) — ENVIADA el 21-oct con el sí del operador
 
-> Salieron los cinco tal cual por el conector de Gmail. Sin rebotes ni respuestas automáticas al enviar.
+> Salieron los cinco tal cual por el conector de Gmail. Sin rebotes al enviar. Little Village
+> contestó con su respuesta automática (sólo «Help Please» en el asunto llega a una persona); con el
+> sí del operador se le reenvió en su hilo, en dos líneas, el 21-oct. Si no contesta, cerrado.
 
 > Con la lección de La Maison Bleue: grupos comunitarios, no sanitarios. Direcciones: Happy Baby
 > Community en su página de contacto; Uzazi Village en la suya; ARMMAN en su «Contact us»;
