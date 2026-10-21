@@ -1354,7 +1354,9 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
 > sistema sanitario (Santé Québec, un hospital) no puede recomendar lo que su sistema no ha
 > aprobado. Mejor grupos de madres, bancos de bebé y doulas comunitarias.
 
-## Octava tanda (21-oct-2026) — PENDIENTE del sí del operador
+## Octava tanda (21-oct-2026) — ENVIADA el 21-oct con el sí del operador
+
+> Salieron los cinco tal cual por el conector de Gmail. Sin rebotes ni respuestas automáticas al enviar.
 
 > Con la lección de La Maison Bleue: grupos comunitarios, no sanitarios. Direcciones: Happy Baby
 > Community en su página de contacto; Uzazi Village en la suya; ARMMAN en su «Contact us»;
