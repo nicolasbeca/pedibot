@@ -1381,7 +1381,8 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
 
    I thought of the mums in your groups on the nights between one Monday and the next, when a
    question about the baby feels too small to call anyone. And if it isn't small, it says so
-   clearly: a 6-week-old with a temperature of 38.2 gets "go to A&E today", not Calpol.
+   clearly: for a 6-week-old with a temperature of 38.2, it says to go to the emergency department
+   today, not to give Calpol.
 
    In case it's useful for them: https://pedibot.xyz/?r=happy-baby
 
