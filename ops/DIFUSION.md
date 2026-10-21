@@ -1347,3 +1347,140 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
 
    Warm regards,
    Nicolas Beca
+
+> **20-oct, La Maison Bleue dice que no** (Manon Lapierre, directrice des opérations): «La
+> promotion ou la recommandation de ce type de plateforme non approuvé par Santé Québec ne
+> s'inscrit pas dans notre mandat». No se contesta. **Lección para elegir:** lo que cuelga del
+> sistema sanitario (Santé Québec, un hospital) no puede recomendar lo que su sistema no ha
+> aprobado. Mejor grupos de madres, bancos de bebé y doulas comunitarias.
+
+## Octava tanda (21-oct-2026) — PENDIENTE del sí del operador
+
+> Con la lección de La Maison Bleue: grupos comunitarios, no sanitarios. Direcciones: Happy Baby
+> Community en su página de contacto; Uzazi Village en la suya; ARMMAN en su «Contact us»;
+> Ancient Song en su web y en el directorio de doulas del Ayuntamiento de Nueva York; Little
+> Village en el registro de la Charity Commission (1169735; su web no la enseña en texto).
+> Comprobado: la fiebre de un bebé de 6 semanas da «urgent» en inglés, francés e hindi; el
+> número sólo sale con nivel «emergency» (US 911, GB 999), así que ningún correo promete el
+> número para la fiebre. Descartados: Al-Dar (web caída, dirección de 2014), Club Dialog (sin
+> oferta para familias con bebés), HIPPY Deutschland (sin correo localizable), Baby Basics UK
+> (sólo una dirección personal).
+
+1. **Happy Baby Community** (`hello@happybabycommunity.org.uk`; Londres y alrededores, seis
+   sedes; madres embarazadas o con niños pequeños que han huido de la violencia o la trata y
+   piden protección en el Reino Unido)
+
+   Subject: For the mums in your Monday groups
+
+   Hi,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about their baby's health in their own language, Arabic, French, Russian, English..., and
+   gets an answer only from official guidance, NHS among them, with the source right underneath.
+   No account, no ads.
+
+   I thought of the mums in your groups on the nights between one Monday and the next, when a
+   question about the baby feels too small to call anyone. And if it isn't small, it says so
+   clearly: a 6-week-old with a temperature of 38.2 gets "go to A&E today", not Calpol.
+
+   In case it's useful for them: https://pedibot.xyz/?r=happy-baby
+
+   And if a volunteer sees anything that reads wrong, I'd really like to know.
+
+   Thank you,
+   Nicolas Beca
+
+2. **Little Village** (`hello@littlevillagehq.org`; red de bancos de bebé de Londres, que
+   reparte ropa, cunas y carritos a familias en apuros, también en alojamientos de refugiados)
+
+   Subject: Something small to tuck into the bundle
+
+   Hi,
+
+   I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free website where a parent asks a
+   question about their child's health, in English or in their own language, and gets an answer
+   only from official guidance like the NHS, with the source underneath. No account, no ads,
+   nothing to buy.
+
+   Your bundles reach families when they have the least. I wondered if a link like this could
+   travel with them, for the questions that come up at night: how much a baby should feed, a rash,
+   a fever. When it's serious, it says so first.
+
+   Here it is: https://pedibot.xyz/?r=little-village
+
+   If it doesn't fit what you do, no problem at all. And if anyone on the team tries it and
+   something reads wrong, please tell me.
+
+   Thanks,
+   Nicolas Beca
+
+3. **Ancient Song Doula Services** (`info@ancientsongdoulaservices.com`; Brooklyn; doulas
+   comunitarias para familias negras y de color, de bajos ingresos)
+
+   Subject: For the questions after your doulas go home
+
+   Hi,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about their baby's health, in English, Spanish or a few other languages, and gets an
+   answer only from official guidance (CDC, AAP, WHO), with the source right underneath. No ads,
+   no account.
+
+   Your doulas are there in the first weeks. I thought PediBot might help with the questions in
+   between visits. And with the ones that can't wait: if a mom writes that her 6-week-old has
+   100.4 °F, it doesn't suggest Tylenol. It tells her to go to the ER today, because that's what
+   the guidance says.
+
+   In case it's useful: https://pedibot.xyz/?r=ancient-song
+
+   And if one of your doulas sees something wrong, I really want to hear it.
+
+   Thank you,
+   Nicolas Beca
+
+4. **Uzazi Village** (`info@uzazivillage.org`; Kansas City; salud materna e infantil para
+   familias negras, doulas y educación al parto)
+
+   Subject: Something for Kansas City parents to have on their phone
+
+   Hello,
+
+   My name is Nicolas Beca and I live in Seville, Spain. I make PediBot, a free website where a
+   parent asks about their child's health and gets an answer built only from official guidance,
+   CDC and AAP among them. Every answer shows exactly where it came from.
+
+   You train doulas and walk families through birth and the months after. PediBot is for the
+   smaller questions at night, the ones that feel too small to call about, and it says clearly
+   when one isn't small.
+
+   Here it is: https://pedibot.xyz/?r=uzazi
+
+   I'm not asking for an endorsement. If someone on your team tries it and tells me what's
+   missing, that would already be a lot.
+
+   Best,
+   Nicolas Beca
+
+5. **ARMMAN** (`armmanindia@armman.org`; Bombay; mMitra y Kilkari, mensajes de voz con
+   información de salud a embarazadas y madres de bebés)
+
+   Subject: Hindi answers for the questions a voice message can't cover
+
+   Hello,
+
+   My name is Nicolas Beca and I write from Seville, Spain. I make PediBot, a free website where a
+   parent asks about their child's health and gets an answer built only from official guidance.
+   For India that means the NHM's IMNCI chart booklet and Home-Based Newborn Care guidelines, and
+   the NHSRC handbook for ASHAs. A mother can write in Hindi and gets the answer in Hindi, with
+   the source underneath.
+
+   Your messages reach mothers at the right moment. PediBot is for the question she has after:
+   if her 6-week-old has 38.2 °C, it tells her to go to hospital today, without waiting.
+
+   Here it is: https://pedibot.xyz/hi?r=armman
+
+   I'm not asking for an endorsement. If someone on your team tries it and tells me what's wrong
+   or missing, that would already help a lot.
+
+   Best regards,
+   Nicolas Beca
