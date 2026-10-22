@@ -1489,3 +1489,139 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
 
    Best regards,
    Nicolas Beca
+
+## Novena tanda (22-oct-2026) — el operador: «ni me preguntes, envía los que mejor te parezca»
+
+> **ENVIADA el 22-oct (~08:36).** wellcome, Mütterzentren, Mamatoto y Un Kilo de Ayuda, sin
+> rebote. **Birthing Project USA rebotó** («address couldn't be found»): no publican otra
+> dirección, sólo teléfonos de sedes; queda fuera. En su lugar salió **Hackney Children & Baby
+> Bank** (`hello@hackneybabybank.com`, en su web; ropa, pañales y carritos de 0 a 12 años, con
+> derivación de un profesional), asunto «Something small to go home with the families», enlace
+> https://pedibot.xyz/?r=hackney-baby-bank, mismo texto que el de Little Village con «how much a
+> baby should sleep» entre los ejemplos (arreglado y desplegado ese mismo día, L de 1067-1068).
+
+> Grupos comunitarios, no sanitarios (lección de La Maison Bleue). Dos en Alemania, ahora que el
+> BIÖG da hojas para padres en alemán; dos en EE. UU. (el 72 % de las visitas); uno en México.
+> Direcciones: wellcome en su página de contacto; Mütterzentren en su Impressum; Mamatoto
+> Village en el pie de su web; Birthing Project USA en el pie de su web, **con un dominio
+> distinto del de la web** («birthingprojectus.org» frente a «birthingprojectusa.org»): se manda
+> tal cual lo publican, puede rebotar; Un Kilo de Ayuda en su «Escríbenos». Comprobado en vivo:
+> la fiebre de 6 semanas da «urgent» en alemán (cita al BIÖG), en castellano con México y en
+> inglés; México tiene calendario y 911. Descartados: ANE (sólo la dirección de ventas), National
+> Diaper Bank Network (dirección antigua de otro dominio), Fundación Éxito (correo corporativo).
+
+1. **wellcome** (`info@wellcome-online.de`; Hamburgo; más de 200 sedes de voluntarias que
+   ayudan en casa durante el primer año del bebé)
+
+   Betreff: Für die Fragen, die nachts kommen
+
+   Liebes wellcome-Team,
+
+   ich bin Nicolas Beca und schreibe aus Sevilla. Ich mache PediBot, eine kostenlose Webseite:
+   Eltern stellen eine Frage zur Gesundheit ihres Babys und bekommen eine Antwort, die nur aus
+   offiziellen Empfehlungen stammt, darunter kindergesundheit-info.de des BIÖG und das RKI, mit
+   der Quelle direkt darunter. Kein Konto, keine Werbung.
+
+   Ihre Ehrenamtlichen sind im ersten Jahr da, wenn es zu Hause eng wird. Ich dachte an die
+   Fragen zwischen den Besuchen, abends oder nachts. Und an die, die nicht warten können: Hat ein
+   sechs Wochen altes Baby 38,2 Fieber, sagt PediBot, dass es heute in die Notaufnahme muss.
+
+   Falls es Ihnen für die Familien nützlich erscheint: https://pedibot.xyz/de?r=wellcome
+
+   Und wenn Ihnen etwas komisch vorkommt, schreiben Sie mir bitte, ich korrigiere es.
+
+   Viele Grüße aus Sevilla,
+   Nicolas Beca
+
+2. **Bundesverband der Mütterzentren** (`info@muetterzentren-bv.de`; Limburg; red de unos 400
+   centros de madres y familias en Alemania)
+
+   Betreff: Eine kostenlose Seite für die Fragen von Eltern, in ihrer Sprache
+
+   Sehr geehrte Damen und Herren,
+
+   mein Name ist Nicolas Beca, ich schreibe aus Sevilla. Ich mache PediBot, eine kostenlose
+   Webseite, auf der Eltern eine Frage zur Gesundheit ihres Kindes stellen und eine Antwort nur
+   aus offiziellen Empfehlungen bekommen, darunter kindergesundheit-info.de des BIÖG, mit der
+   Quelle direkt darunter. Kein Konto, keine Werbung.
+
+   Die Seite gibt es auf Deutsch, Arabisch, Russisch und in fünf weiteren Sprachen, und wer auf
+   Türkisch schreibt, bekommt die Antwort auf Türkisch. Ich dachte an die Mütter, die in Ihre
+   Zentren kommen, und an die Fragen, die sich nicht bis zum nächsten Treffen aufschieben lassen.
+
+   Falls Sie es an die Zentren weitergeben möchten: https://pedibot.xyz/de?r=muetterzentren
+
+   Ich bitte um keine Empfehlung. Wenn jemand es ausprobiert und mir sagt, was fehlt, hilft mir
+   das schon sehr.
+
+   Viele Grüße aus Sevilla,
+   Nicolas Beca
+
+3. **Mamatoto Village** (`info@mamatotovillage.org`; Washington D. C., Ward 7; acompañamiento
+   del embarazo y el posparto, lactancia y crianza, para familias negras)
+
+   Subject: For the questions between home visits
+
+   Hi,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about their baby's health and gets an answer only from official guidance (CDC, AAP, WHO),
+   with the source right underneath. No ads, no account.
+
+   Your team is there through pregnancy and the first months. I thought PediBot might help with
+   the questions in between visits, at night. And with the ones that can't wait: if a mom writes
+   that her 6-week-old has 100.4 °F, it doesn't suggest Tylenol. It tells her to go to the ER
+   today, because that's what the guidance says.
+
+   In case it's useful for your families: https://pedibot.xyz/?r=mamatoto
+
+   And if anyone on your team sees something wrong, I really want to hear it.
+
+   Thank you,
+   Nicolas Beca
+
+4. **Birthing Project USA** (`bpusa@birthingprojectus.org`, tal cual en su web; las Sister
+   Friends acompañan a embarazadas del embarazo al primer año del bebé, en unas 30 comunidades)
+
+   Subject: Something for the Sister Friends to pass on
+
+   Hello,
+
+   My name is Nicolas Beca and I live in Seville, Spain. I make PediBot, a free website where a
+   parent asks about their baby's health and gets an answer built only from official guidance,
+   CDC and AAP among them. Every answer shows exactly where it came from.
+
+   Your Sister Friends walk with moms through pregnancy and the baby's first year. PediBot is for
+   the questions that come up when nobody is around to ask, and it says clearly when one can't
+   wait.
+
+   Here it is: https://pedibot.xyz/?r=birthing-project
+
+   I'm not asking for an endorsement. If someone tries it and tells me what's missing, that would
+   already be a lot.
+
+   Best,
+   Nicolas Beca
+
+5. **Un Kilo de Ayuda** (`contacto@unkilodeayuda.org.mx`; México; desarrollo infantil temprano
+   para niñas y niños menores de cinco años en zonas rurales, indígenas y marginadas)
+
+   Asunto: Para las dudas de salud de las familias que acompañan
+
+   Hola:
+
+   Me llamo Nicolas Beca y escribo desde Sevilla. Hago PediBot, una web gratuita donde una madre o
+   un padre pregunta por la salud de su hijo y recibe una respuesta sacada solo de guías oficiales
+   (la OMS y sociedades de pediatría), con la fuente debajo. Sin registro y sin publicidad. Tiene
+   el calendario de vacunas de México y, si algo es grave, lo dice lo primero: a un bebé de seis
+   semanas con 38,2 de fiebre le dice que vaya a urgencias hoy.
+
+   Pensé en las familias con las que trabajan, y en las dudas que salen cuando no hay nadie a quien
+   preguntar.
+
+   Por si les sirve: https://pedibot.xyz/es?r=unkilo
+
+   Y si alguien de su equipo ve algo que no cuadra, me lo dicen y lo corrijo.
+
+   Un saludo,
+   Nicolas Beca
