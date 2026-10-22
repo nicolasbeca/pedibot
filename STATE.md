@@ -3,6 +3,21 @@
 Última actualización: **2026-10-14** — **EN PRODUCCIÓN en https://pedibot.xyz**.
 
 
+
+## 22-oct-2026 · jueves · el sueño del bebé, y la novena tanda
+
+- **Consultas reales del 21-oct (Reino Unido, una sesión, ~10:00, una hora después de los
+  correos a Londres):** 1066 (llora y no coge el pecho) bien; **1067-1068 «How much should my
+  baby sleep?» mal**: ni una cifra de horas, y la segunda «should not intervene» desde el manual
+  chileno. Causa: «sleep» en inglés sólo cruzaba al castellano. Arreglo en config/synonyms.yaml,
+  candado `test_how_much_sleep_reaches_the_hours.py`, línea en 09_reales_2oct.txt; desplegado y
+  en vivo da las horas del NHS y la OMS (1071).
+- **Novena tanda enviada** (ops/DIFUSION.md): wellcome, Mütterzentren, Mamatoto Village, Un Kilo
+  de Ayuda y Hackney Children & Baby Bank; Birthing Project USA rebotó y no publica otra dirección.
+- **La Maison Bleue dijo que no** el 20-oct (no aprobado por Santé Québec). Little Village:
+  reenviado con «Help Please» el 21-oct.
+- Primera guía con el ritmo nuevo (jueves): polio en alemán. 564 guías.
+
 ## 20-oct-2026 · martes · el BIÖG dice que sí, y la séptima tanda escrita
 
 - **BIÖG: SÍ** (Claudia, 19-oct 14:37): podemos usar kindergesundheit-info.de; de lo publicado
