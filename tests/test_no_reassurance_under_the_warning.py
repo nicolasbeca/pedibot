@@ -37,6 +37,11 @@ REBAJAN = [
     "Eine Mittelohrentzündung heilt meist von selbst nach wenigen Tagen ab [2].",
     "Sie können Ihr Kind in der Regel zu Hause pflegen [3].",
     "Wenn sich die Beschwerden nach zwei Tagen nicht bessern, gehen Sie in die kinderärztliche Praxis [4].",
+    # 22-oct-2026: el Pseudokrupp del BIÖG bajo un aviso de 112, y sus hermanas
+    "Wichtig zu wissen: Nur in eher seltenen Fällen wird die Atemnot so groß, dass akute Erstickungsgefahr droht [2].",
+    "Only in rare cases does the breathing difficulty become life-threatening [2].",
+    "Solo en casos poco frecuentes la dificultad respiratoria llega a ser grave [2].",
+    "Ce n'est que dans de rares cas que la gêne respiratoire devient grave [2].",
     # lo de antes sigue cazado
     "This is not an emergency, but keep an eye on him.",
     "Vigílalo en casa y vuelve a consultar mañana.",

@@ -1,0 +1,97 @@
+---
+/**
+ * El calendario de un país, resumido en palabras (22-oct-2026).
+ *
+ * Search Console, 8-oct: las páginas de vacunas de EE. UU., España, Alemania y Brasil, «rastreadas,
+ * sin indexar»: una tabla que es la del organismo oficial, y Google ya tiene la suya. Lo que añade
+ * PediBot tiene que ser de ese país y salir de esa tabla: cuántas visitas, qué se pone al nacer, la
+ * visita con más vacunas, la última y el total. Todo se cuenta aquí, de vaccines.json, sin modelo y
+ * sin una sola afirmación que la tabla no sostenga (tests/test_vaccine_pages_summarise_their_schedule.py).
+ */
+import schedules from '../data/vaccines.json';
+import vaxNames from '../data/vaccine_names.json';
+import type { Lang } from '../i18n';
+
+interface Props { lang: Lang; code: string }
+const { lang, code } = Astro.props;
+const data = (schedules as any)[code];
+const rows = (data?.schedule ?? []) as any[];
+
+const T: Record<string, Record<string, string>> = {
+  en: {
+    h: 'The schedule at a glance',
+    all: "{name} has {visits} vaccination visits in this schedule, with {total} vaccines in the table. The first is “{first}” and the last “{last}”.",
+    birth: "At birth: {list}.",
+    most: "The visit with the most is “{label}”, with {n} vaccines at the same appointment.",
+  },
+  es: {
+    h: 'El calendario de un vistazo',
+    all: "{name} tiene {visits} visitas de vacunación en este calendario, con {total} vacunas en la tabla. La primera es «{first}» y la última «{last}».",
+    birth: "Al nacer: {list}.",
+    most: "La visita con más vacunas es «{label}», con {n} en la misma cita.",
+  },
+  fr: {
+    h: 'Le calendrier en un coup d’œil',
+    all: "{name} compte {visits} rendez-vous de vaccination dans ce calendrier, avec {total} vaccins dans le tableau. Le premier est « {first} » et le dernier « {last} ».",
+    birth: "À la naissance : {list}.",
+    most: "Le rendez-vous le plus chargé est « {label} », avec {n} vaccins le même jour.",
+  },
+  de: {
+    h: 'Der Impfkalender auf einen Blick',
+    all: "{name} hat in diesem Kalender {visits} Impftermine mit {total} Impfungen in der Tabelle. Der erste ist „{first}“, der letzte „{last}“.",
+    birth: "Bei der Geburt: {list}.",
+    most: "Die meisten Impfungen gibt es beim Termin „{label}“: {n} beim selben Besuch.",
+  },
+  ru: {
+    h: 'Календарь в двух словах',
+    all: "Календарь: {name}. Число визитов для прививок: {visits}. Прививок в таблице: {total}. Первый визит — «{first}», последний — «{last}».",
+    birth: "При рождении: {list}.",
+    most: "Больше всего прививок в визит «{label}»; их число за один приём: {n}.",
+  },
+  ar: {
+    h: 'التقويم بنظرة سريعة',
+    all: "التقويم: {name}. عدد مواعيد التطعيم: {visits}. عدد اللقاحات في الجدول: {total}. أول موعد «{first}» وآخره «{last}».",
+    birth: "عند الولادة: {list}.",
+    most: "الموعد الذي فيه أكثر اللقاحات هو «{label}»، وعددها في الزيارة نفسها: {n}.",
+  },
+  pt: {
+    h: 'O calendário num relance',
+    all: "{name} tem {visits} consultas de vacinação neste calendário, com {total} vacinas na tabela. A primeira é «{first}» e a última «{last}».",
+    birth: "Ao nascer: {list}.",
+    most: "A consulta com mais vacinas é «{label}», com {n} vacinas no mesmo dia.",
+  },
+  hi: {
+    h: 'टीका कैलेंडर एक नज़र में',
+    all: "इस कैलेंडर ({name}) में टीकों के लिए {visits} बार जाना होता है, तालिका में कुल {total} टीके। पहली बार «{first}» और आख़िरी बार «{last}»।",
+    birth: "जन्म पर: {list}।",
+    most: "सबसे ज़्यादा टीके «{label}» पर लगते हैं: एक ही बार में {n} टीके।",
+  },
+};
+const tx = T[lang] ?? T.en;
+const fill = (s: string, v: Record<string, string | number>) =>
+  s.replace(/\{(\w+)\}/g, (_, k) => String(v[k] ?? ''));
+const label = (row: any) => row.label?.[lang] ?? row.label?.en ?? String(row.age);
+const vname = (v: any) =>
+  typeof v === 'string' ? ((vaxNames as any).names?.[v]?.[lang] ?? v) : (v[lang] ?? v.name);
+const sep = ((vaxNames as any).sep?.[lang] ?? ', ') as string;
+const name = String(data?.name?.[lang] ?? data?.name?.en ?? code).split(' — ')[0];
+
+const count = (r: any) => (r.vaccines ?? []).length;
+const total = rows.reduce((n, r) => n + count(r), 0);
+const birth = rows.find((r) => r.age === 0 && count(r) > 0);
+const busiest = rows.reduce((a, r) => (count(r) > count(a) ? r : a), rows[0]);
+---
+
+{rows.length > 1 && (
+  <section class="card vs" data-vax-summary>
+    <h2>{tx.h}</h2>
+    <p>{fill(tx.all, { name, visits: rows.length, first: label(rows[0]), last: label(rows[rows.length - 1]), total })}</p>
+    {birth && <p>{fill(tx.birth, { list: (birth.vaccines ?? []).map(vname).join(sep) })}</p>}
+    {busiest && count(busiest) > 1 && <p>{fill(tx.most, { label: label(busiest), n: count(busiest) })}</p>}
+  </section>
+)}
+<style>
+  .vs { margin-top: 18px; }
+  .vs h2 { font-size: 1.1rem; margin: 0 0 8px; }
+  .vs p { margin: 6px 0; }
+</style>

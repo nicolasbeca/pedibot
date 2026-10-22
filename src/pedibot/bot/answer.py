@@ -10,6 +10,7 @@ from pathlib import Path
 import yaml
 from loguru import logger
 
+from pedibot.bot.breathing_cause import NOTA_SIN_CAUSA, sin_otra_causa
 from pedibot.bot.about import ficha_de, responde_sobre
 from pedibot.bot.dose import DRUGS, bottles_in_country, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
@@ -1625,6 +1626,11 @@ _TRANQUILIZA = re.compile(
     + r"|\b(sehr |ganz )?(h[äa]ufig|weit verbreitet)\b[^.]{0,140}\b(meist|meistens|in der regel|normalerweise)\b" + _SIN_VUELTA
     + r"|\b(meist|meistens|oft|in der regel|normalerweise)\b[^.]{0,40}\b(von selbst|von allein|harmlos|ungef[äa]hrlich)\b" + _SIN_VUELTA
     + r"|\bzu hause\b[^.]{0,20}\b(pflegen|versorgen|auskurieren|behandeln|beobachten)\b"
+    # 22-oct-2026: «nur in eher seltenen Fällen… Erstickungsgefahr» (el Pseudokrupp del BIÖG bajo
+    # un aviso de 112): lo raro que es, dicho a quien ya lo tiene, también rebaja el aviso
+    + r"|\bnur in (eher |sehr )?seltenen f[äa]llen\b|\bonly in (very )?rare cases\b|\b(rarely|seldom) (becomes?|gets?) (serious|severe|life)"
+    + r"|\bs[óo]lo en (casos|ocasiones) (raros|raras|poco frecuentes|excepcionales)\b"
+    + r"|\bque dans de (tr[èe]s )?rares cas\b"
     + r"|\bwenn\b[^.]{0,60}\bnicht (bessern|besser werden|bessert|nachlassen|nachl[äa]sst)\b[^.]{0,60}\b(arzt|[äa]rztlich\w*|praxis|notaufnahme|klinik)"
     # «It is normal for them to have little appetite» es un consejo de cuidado, no un juicio
     # sobre la urgencia; el apetito se deja pasar.
@@ -2805,6 +2811,11 @@ class Engine:
                 tope = max(h.score for h in hits)
                 hits = [h for h in hits if h.score >= tope * self.suelo_relativo] or hits
             hits = self._inject_rule_sources(tr, hits)
+            # 22-oct-2026: respira mal y nadie ha dicho por qué → fuera los pasajes de una
+            # enfermedad concreta, cuyo consejo es de otra situación (bot/breathing_cause.py).
+            antes = len(hits)
+            hits = sin_otra_causa(hits, context_text, {r.id for r in tr.matched})
+            sin_causa = len(hits) < antes
             hits = self._own_schedule(context_text, country, hits)
             hits = country_sources_first(hits, country, lang)
             hits = self._inject_doc_warnings(hits)
@@ -2835,6 +2846,7 @@ class Engine:
                 f"{tropical_note(context_text, country)}"
                 f"{_schedule_note(context_text, country)}"
                 f"{_warning_note(tr)}"
+                f"{NOTA_SIN_CAUSA if sin_causa else ''}"
                 f"{_history_block(history)}"
                 f"{CHILD_MODE if mode == 'child' else ''}"
                 f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"

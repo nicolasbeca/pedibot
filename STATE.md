@@ -17,6 +17,17 @@
 - **La Maison Bleue dijo que no** el 20-oct (no aprobado por Santé Québec). Little Village:
   reenviado con «Help Please» el 21-oct.
 - Primera guía con el ritmo nuevo (jueves): polio en alemán. 564 guías.
+- **Respira mal sin causa nombrada** (bot/breathing_cause.py): bajo `severe_breathing`, si el padre
+  no nombra la causa, fuera los pasajes de tema respiratorio (el Pseudokrupp del BIÖG para un niño
+  con tiraje) y nota al redactor para que no invente qué hacer (lo hacía, con la cita de la SEUP).
+  `rebaja_el_aviso` coge «nur in seltenen Fällen» y sus hermanas en en/es/fr.
+- **Páginas de vacunas:** resumen del calendario de cada país en las ocho lenguas (VaxSummary:
+  visitas, al nacer, la visita con más, total en la tabla), calculado de vaccines.json.
+- **Pendientes que ya no lo eran** (comprobado el 22-oct): `sources_check` ya no repite el aviso de
+  Portugal desde el `edition_marker` del 7-oct (18-oct: «nada que contar»), y los sinónimos que
+  respetan lo negado están hechos (`test_synonyms_respect_what_is_denied.py`).
+- **Queda:** medir Search Console hacia el 29-oct (`ops/gsc_inspect.py`), y ver si las de vacunas
+  entran con el resumen nuevo.
 
 ## 20-oct-2026 · martes · el BIÖG dice que sí, y la séptima tanda escrita
 
