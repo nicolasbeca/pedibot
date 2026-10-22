@@ -18,8 +18,6 @@ import json
 import pathlib
 import sys
 import threading
-import urllib.error
-import urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CATALOGUE = json.loads((ROOT / "ops" / "acp_catalogue.json").read_text(encoding="utf-8"))
@@ -205,28 +203,52 @@ def test_empty_lists_for_resources_and_prompts(tmp_path):
     assert r == {"prompts": []}
 
 
+def _http(port: int, method: str, body: bytes = b"") -> tuple[int, bytes]:
+    """Una petición a mano y la respuesta leída hasta que el servidor cierra (HTTP/1.0).
+
+    22-oct-2026: con urllib este test fallaba siempre en el PC del operador. El antivirus (AVG)
+    reescribe el HTTP local: quita nuestro `Content-Length` y pone `transfer-encoding: chunked`
+    sin trocear el cuerpo, y urllib se rompe leyendo trozos que no existen (IncompleteRead). Por
+    socket llegan los 19.946 bytes enteros. Comprobado que el servidor sí manda `Content-Length`
+    (ops/mcp_server.py); lo que se prueba aquí es nuestro servidor, no el antivirus.
+    """
+    import socket
+
+    with socket.create_connection(("127.0.0.1", port), timeout=5) as s:
+        s.sendall(
+            f"{method} /mcp HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/json\r\n"
+            f"Content-Length: {len(body)}\r\nConnection: close\r\n\r\n".encode()
+            + body
+        )
+        data = b""
+        while chunk := s.recv(65536):
+            data += chunk
+    head, _, rest = data.partition(b"\r\n\r\n")
+    return int(head.split()[1]), rest
+
+
 def test_http_transport(tmp_path):
     m, srv = _server(tmp_path)
     httpd = m.serve_http(srv, port=0)
     port = httpd.server_address[1]
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     try:
-        url = f"http://127.0.0.1:{port}/mcp"
-        try:
-            urllib.request.urlopen(url, timeout=5)
-            raise AssertionError("GET should be 405")
-        except urllib.error.HTTPError as e:
-            assert e.code == 405
+        assert _http(port, "GET")[0] == 405
         body = json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/list"}).encode()
-        req = urllib.request.Request(url, data=body, headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=5) as resp:
-            assert len(json.loads(resp.read())["result"]["tools"]) == 8
+        status, data = _http(port, "POST", body)
+        assert status == 200
+        assert len(json.loads(data)["result"]["tools"]) == 8
         note = json.dumps({"jsonrpc": "2.0", "method": "notifications/initialized"}).encode()
-        req = urllib.request.Request(url, data=note, headers={"Content-Type": "application/json"})
-        with urllib.request.urlopen(req, timeout=5) as resp:
-            assert resp.status == 202
+        assert _http(port, "POST", note)[0] == 202
     finally:
         httpd.shutdown()
+
+
+def test_the_server_says_how_long_its_answer_is():
+    """Lo que el antivirus del PC quita, el servidor lo manda: sin `Content-Length` un cliente
+    HTTP/1.0 no sabe dónde acaba la respuesta (y detrás de Caddy, en vivo, llega)."""
+    fuente = (ROOT / "ops" / "mcp_server.py").read_text(encoding="utf-8")
+    assert 'self.send_header("Content-Length", str(len(data)))' in fuente
 
 
 # ── el despliegue y el registro ──────────────────────────────────────────────
