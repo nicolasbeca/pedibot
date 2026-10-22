@@ -16,3 +16,5 @@ Mein Kind hat Erbrechen. Was kann ich tun? (Alter: 4 Jahre) (Gewicht: 10 kg)
 Was sind Zeichen von Austrocknung? (Alter: 4 Jahre) (Gewicht: 10 kg)
 My 5-year-old says he has a fever in his legs. Is that possible?
 My 4-year-old has a fever of 102 °F
+# 22-oct-2026, consulta real del Reino Unido (1067-1068): sin una sola cifra de horas
+How much should my baby sleep?

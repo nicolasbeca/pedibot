@@ -11,6 +11,16 @@
 # Arabic triggers appear bare and with the article: the match is a prefix on the token, and
 # "الحمى" does not start with "حمى". Hindi appears in both scripts, as its triage patterns do.
 en:
+  # 22-oct-2026: «How much should my baby sleep?», consulta real del Reino Unido (1067-1068).
+  # «sleep» sólo cruzaba al castellano y la búsqueda no llegaba a las horas por edad del NHS ni
+  # de la OMS; «dormir» sí llevaba a «hours of sleep». Las formas de preguntar por la cantidad.
+  "how much sleep": [hours of sleep, sleep duration, total daily sleep, hours]
+  "should my baby sleep": [hours of sleep, sleep duration, total daily sleep, hours]
+  "should a baby sleep": [hours of sleep, sleep duration, total daily sleep, hours]
+  "should a newborn sleep": [hours of sleep, sleep duration, total daily sleep, hours]
+  "does a baby sleep": [hours of sleep, sleep duration, total daily sleep, hours]
+  "hours of sleep": [hours of sleep, sleep duration, total daily sleep, hours]
+  "sleep does": [hours of sleep, sleep duration, total daily sleep, hours]
   # 2-oct-2026: «Vis translations», consulta real desde EE. UU. VIS son las Vaccine Information
   # Statements de los CDC; palabra entera, que «visible» o «visit» no son vacunas.
   "vis$":
