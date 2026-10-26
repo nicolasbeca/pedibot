@@ -1332,7 +1332,7 @@ def _age_context(tr: TriageResult, texto: str = "") -> str:
             "medication at home (no paracetamol, no ibuprofen); do not describe home management "
             "of fever. Say that babies this young must be assessed by a doctor the same day and "
             "keep the answer short.\n"
-        )
+        ) + _BEBE
     if tr.age_months < 3:
         # 21-sep-2026: «mi bebé de 2 semanas estornuda mucho pero no tiene mocos» recibía «que lo
         # vea un médico hoy mismo». Sin fiebre ni alarma, lo de «hoy» sobra y asusta.
@@ -1340,13 +1340,25 @@ def _age_context(tr: TriageResult, texto: str = "") -> str:
             f"CHILD AGE: {tr.age_months:g} months — UNDER 3 MONTHS. Do NOT suggest giving any "
             "medication at home. Answer what was asked; if a source says when a baby this young "
             "should see a doctor, say it.\n"
-        )
+        ) + _BEBE
     if tr.age_months < 6:
         return (
             f"CHILD AGE: {tr.age_months:g} months — under 6 months. Do not suggest ibuprofen; "
             "any medication only if a doctor advised it.\n"
-        )
+        ) + _BEBE
+    if tr.age_months < 12:
+        return f"CHILD AGE: {tr.age_months:g} months\n" + _BEBE
     return f"CHILD AGE: {tr.age_months:g} months\n"
+
+
+#: 26-oct-2026, consulta real 1074: a un bebé de 2 meses caído del sofá, «dificuldade para falar ou
+#: andar» y «repouso físico e mental» (listas escritas para niños mayores). La regla 7c ya pedía
+#: quitarlo; con la edad sólo en número, el redactor no lo veía.
+_BEBE = (
+    "This is a baby who cannot yet talk or walk: leave out every sign and every piece of advice "
+    "that only fits an older child (trouble speaking or walking, double vision, headache, "
+    "confusion, going back to school or nursery, rest from sport or physical activity).\n"
+)
 
 
 def _history_block(history: list[dict[str, str]]) -> str:
@@ -1618,6 +1630,12 @@ _TRANQUILIZA = re.compile(
     + r"|\b(mejora|desaparece|se cura|se pasa) (solo|sola|por s[ií] (mism[oa]|sola))\b"
     + r"|\bin most cases\b[^.]{0,80}\b(mild|minor|harmless|not serious|linked|caused|due)\b"
     + r"|\ben la mayor[ií]a de (los )?casos\b[^.]{0,80}\b(leve|benign|se debe|causad|relacionad)"
+    # 26-oct-2026, consulta real 1074: «vômitos e sonolência são sintomas habituais de um
+    # traumatismo craniano» a un bebé de 2 meses que ya había vomitado dos veces
+    # Con el verbo delante: «los síntomas habituales de la meningitis son…» enumera, no calma.
+    + r"|\b(s[ãa]o|[ée]|son|es|sont|est) (des |un |une |uns |umas? |unos |unas )?(sintomas?|s[ií]ntomas?|sympt[ôo]mes?|sinais|signes?) (habitua(l|is)|habituales?|comuns?|comunes|frequentes?|frecuentes?|habituels?|fr[ée]quents?|courants?)\b" + _SIN_VUELTA
+    + r"|\b(are|is) (a |an )?(very )?(common|usual|typical) (symptoms?|signs?)\b" + _SIN_VUELTA
+    + r"|\b(sind|ist) (ein )?(h[äa]ufige|übliche|typische)s? (symptome?|anzeichen|beschwerden)\b" + _SIN_VUELTA
     # 20-oct-2026, en alemán: con las hojas para padres del BIÖG el redactor copia su calma bajo
     # el aviso («suchen Sie bald eine ärztliche Praxis auf», la fiebre que «meist» baja, «einen
     # Termin vereinbaren»). «so bald wie möglich» es prisa y no cuenta.

@@ -42,6 +42,14 @@ REBAJAN = [
     "Only in rare cases does the breathing difficulty become life-threatening [2].",
     "Solo en casos poco frecuentes la dificultad respiratoria llega a ser grave [2].",
     "Ce n'est que dans de rares cas que la gêne respiratoire devient grave [2].",
+    # 26-oct-2026, consulta real 1074 (Brasil, 2 meses, caída del sofá y dos vómitos, aviso de
+    # urgencias hoy): lo «habitual» del síntoma también tranquiliza, y la vuelta al aviso venía en
+    # la frase siguiente
+    "Vômitos e sonolência são sintomas habituais de um traumatismo craniano, segundo a SEUP [2].",
+    "Los vómitos y la somnolencia son síntomas habituales de un traumatismo craneal [2].",
+    "Vomiting and sleepiness are common symptoms after a head injury [2].",
+    "Les vomissements et la somnolence sont des symptômes fréquents après un choc à la tête [2].",
+    "Erbrechen und Müdigkeit sind häufige Symptome nach einem Sturz auf den Kopf [2].",
     # lo de antes sigue cazado
     "This is not an emergency, but keep an eye on him.",
     "Vigílalo en casa y vuelve a consultar mañana.",
@@ -53,6 +61,13 @@ NO_REBAJAN = [
     "Fever is very common and usually settles, but with these signs your child needs to be seen now [2].",
     # un consejo de cuidado, no un juicio sobre la urgencia
     "It is normal for them to have little appetite, so do not force them to eat [3].",
+    # los signos de alarma no tranquilizan, y la frase que vuelve al aviso tampoco
+    "Os sinais de alarme habituais são vômitos repetidos e sonolência [2].",
+    "Vomiting is a common symptom after a head injury, but a baby this young needs to be seen today [2].",
+    # enumerar los síntomas de algo grave no es decir que son normales
+    "Common symptoms of meningitis include a high temperature, a stiff neck and a rash that does not fade [1].",
+    "Os sintomas habituais da meningite são febre alta, rigidez de nuca e manchas que não desaparecem [1].",
+    "Los síntomas habituales de la deshidratación son boca seca y menos pañales mojados [1].",
     # instrucciones mientras llega la ayuda
     "While you wait for help, lay her on her side and do not put anything in her mouth [1].",
     "Call 911 now. If he stops breathing, start CPR as the operator tells you [2].",
