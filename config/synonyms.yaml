@@ -813,6 +813,13 @@ es:
   - otitis
   dolor de oidos:
   - otitis
+  # 26-oct-2026, consulta real 1075: «Tiene autitis», y ningún pasaje de oído
+  autitis:
+  - otitis
+  - ear infection
+  otitis:
+  - otitis
+  - ear infection
   se toca el oído:
   - otitis
   supura el oído:

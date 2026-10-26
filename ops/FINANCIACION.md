@@ -289,6 +289,64 @@ argumento.
 
 ---
 
+## 10 · Ronda del 26-oct-2026: plataformas de proyectos sociales, el Golfo y donaciones
+
+Pedido por el operador: además de pediatría, webs donde se presentan proyectos altruistas o se
+busca financiación, y que mire Arabia, «que se mueve mucho dinero». Lo comprobado en las bases,
+una a una:
+
+**MIT Solve, reto de salud global 2027 — EL QUE ENCAJA, y cierra el viernes 6-nov a las 12:00 de
+Nueva York** (18:00 en España). Abierto en todo el mundo; en el formulario, «tipo de organización»
+admite **«Not registered as any organization»**, o sea que vale un particular. Fase mínima:
+prototipo o piloto (10+ usuarios); estamos en piloto. Una de sus tres prioridades es casi nuestra
+frase: *«Expand quality primary care to vulnerable communities… reducing cost, distance, and
+administrative barriers»*. Dinero: 10.000 $ a cada seleccionado, al menos 25.000 más en salud,
+de media unos 40.000; y premios aparte a los que se opta a la vez: **Philips Foundation, 100.000 $
+para salud materno-infantil**, y dos de IA (hasta 150.000 y 100.000). Sin participación. Lo
+que pide: unas horas de formulario en inglés y una «prueba», que puede ser **un vídeo de un
+minuto** o un informe de funcionamiento. Lo que obliga si sale: finalistas, **entrevista por Zoom
+con el jurado en febrero**; seleccionados, unas 25 h en nueve meses, **dos días en Cambridge
+(14-15 de abril de 2027, con ayuda de viaje)** y la final en Nueva York en septiembre. Esto choca
+con «todo por email», y por eso la decisión es del operador. Las preguntas, en el PDF de su web
+(`2027 Global Challenges: Application Questions`).
+
+**Future Health Digital Innovation Challenge (Abu Dabi, Departamento de Salud con MBZUAI y
+Microsoft) — abierto a particulares, pero el tema no es el nuestro.** Inscripción hasta el 10-nov,
+prototipo hasta el 20-nov y premios (50.000, 35.000 y 20.000 $) en GITEX del 7 al 11-dic. Los
+temas son fertilidad, salud de la población («detectar riesgos de salud emergentes») y
+bienestar; nada de infancia. Lo único que podría entrar es la salud de la población con lo que
+preguntan los padres por país, y eso sería construir otra cosa en tres semanas. No compensa.
+
+**Arabia Saudí: hay mucho dinero, pero no hay una puerta para nosotros.** Lo que se mueve va a
+empresas que se instalan allí: la licencia de emprendedor extranjero (550 empresas de fuera
+hasta mediados de 2025), el PIF con salud entre sus prioridades, el acelerador SHIFT del
+Ministerio de Sanidad (sólo empresas saudíes, cerrado el 27-ago) y el concurso NextGen del
+Global Health Exhibition de Riad (se celebra ahora, del 26 al 29-oct; inscripción cerrada).
+KAUST tiene un centro de salud inteligente, pero es investigación propia, no convocatoria.
+Ninguna acepta a un particular de fuera con un servicio gratuito. Volvería a contar con una
+sociedad y ganas de entrar en ese mercado.
+
+**Golfo, para no volver a mirarlo:** el Zayed Sustainability Prize (categoría de salud, un
+millón) pide pyme u ONG y cerró el 15-jun-2026. WISH (Catar) no ha publicado concurso desde
+2024 y era para empresas con mercado. El Transform Fund del Banco Islámico de Desarrollo no tiene
+convocatoria desde 2019-2020.
+
+**Otras plataformas de impacto, mirado:** Echoing Green (beca para emprendedores sociales,
+admite personas; la de 2026 cerró el 8-oct; ver la de 2027 en su web oficial cuando abra).
+Elevate Prize (sólo ONG, nominaciones cerradas el 8-may). Grand Challenges de Gates (las de IA y
+salud materna de 2026 ya cerraron; la que sigue es de planificación familiar en África).
+Innovation Factory de AI for Good (UIT): la de salud fue en marzo en el MWC; hay que vigilar la
+siguiente. Manifund: casi todo es seguridad de IA y altruismo eficaz, no salud.
+
+**Donaciones: el repositorio ya es público** (comprobado el 26-oct: público, 0 estrellas).
+GitHub Sponsors (0 % de comisión en cuenta personal) u Open Collective (comisión del anfitrión
+fiscal, ~10 % en OC Europe) se pueden poner. Pero es la puerta de la popularidad: no traen
+público, sólo recogen el que ya hay. Coste casi nulo, ingreso casi nulo hasta que haya usuarios.
+**NLnet** sigue sólo con Restack y CodeSupply (infraestructura, cierre el 3-nov), y sus bases
+dicen ahora que **no aceptan proyectos ni propuestas generados por IA**. Descartado mientras sea así.
+
+---
+
 ## Lo mirado y descartado, para no volver a proponerlo
 
 **Gitcoin Grants.** Ha repartido más de 50 millones entre 3.715 proyectos y presentarse es

@@ -10,8 +10,9 @@ from pathlib import Path
 import yaml
 from loguru import logger
 
-from pedibot.bot.breathing_cause import NOTA_SIN_CAUSA, sin_otra_causa
 from pedibot.bot.about import ficha_de, responde_sobre
+from pedibot.bot.banner_lead import con_el_aviso_delante
+from pedibot.bot.breathing_cause import NOTA_SIN_CAUSA, sin_otra_causa
 from pedibot.bot.dose import DRUGS, bottles_in_country, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.emergency_question import (
@@ -21,27 +22,26 @@ from pedibot.bot.emergency_question import (
 )
 from pedibot.bot.growth import (
     Growth,
-    aviso_peso_extremo,
     asks_if_a_measure_is_normal,
+    aviso_peso_extremo,
     explain,
     gives_both_measurements,
     is_growth_question,
     measurements,
 )
 from pedibot.bot.guides import GuideIndex, GuideLink
+from pedibot.bot.guides_differ import notas as notas_discrepancia
 from pedibot.bot.interpret import interpret
 from pedibot.bot.llm import LLMProvider, LLMResult
 from pedibot.bot.muac import assess as muac_assess
 from pedibot.bot.muac import explain as muac_explain
 from pedibot.bot.muac import is_muac_question, read_mm
 from pedibot.bot.muac import reason as muac_reason
+from pedibot.bot.prescribed import PONE_CIFRA, da_cifra_del_antibiotico, nota_antibiotico
 from pedibot.bot.retrieval import Retriever, detect_lang
-from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.stray_words import sin_palabras_sueltas
+from pedibot.bot.strings import LANGUAGE_NAME, STRINGS, tool_strings
 from pedibot.bot.temperature import con_fahrenheit, lee_en_fahrenheit, nota_de_conversion
-from pedibot.bot.banner_lead import con_el_aviso_delante
-from pedibot.bot.guides_differ import notas as notas_discrepancia
-from pedibot.bot.weight_units import con_kilos, nota_de_peso
 from pedibot.bot.triage import (
     ASISTENTE,
     LEVEL_ORDER,
@@ -58,6 +58,7 @@ from pedibot.bot.vaccines import (
     pide_calendario,
 )
 from pedibot.bot.vis import lista_vis, pide_vis
+from pedibot.bot.weight_units import con_kilos, nota_de_peso
 from pedibot.bot.who_first import extra_terms as who_first_terms
 from pedibot.bot.who_first import prompt_note as who_first_note
 from pedibot.bot.who_first import tropical_note
@@ -1676,11 +1677,16 @@ CONTRADICE_AVISO = (
 )
 
 
-def _insegura(texto: str, hits: list[Hit], alarma: bool) -> list[str]:
-    """Los problemas de SEGURIDAD de un borrador: `verify`, más no contradecir el aviso."""
+def _insegura(
+    texto: str, hits: list[Hit], alarma: bool, antibiotico: bool = False
+) -> list[str]:
+    """Los problemas de SEGURIDAD de un borrador: `verify`, más no contradecir el aviso y, si la
+    pregunta es de un antibiótico, no dar su dosis (bot/prescribed.py)."""
     problemas = verify(texto, hits)
     if alarma and rebaja_el_aviso(texto):
         problemas.append(CONTRADICE_AVISO)
+    if antibiotico and da_cifra_del_antibiotico(texto):
+        problemas.append(PONE_CIFRA)
     return problemas
 
 
@@ -2834,6 +2840,8 @@ class Engine:
             antes = len(hits)
             hits = sin_otra_causa(hits, context_text, {r.id for r in tr.matched})
             sin_causa = len(hits) < antes
+            # 26-oct-2026: el antibiótico recetado, sin cifra (bot/prescribed.py)
+            nota_ab = nota_antibiotico(context_text)
             hits = self._own_schedule(context_text, country, hits)
             hits = country_sources_first(hits, country, lang)
             hits = self._inject_doc_warnings(hits)
@@ -2865,6 +2873,7 @@ class Engine:
                 f"{_schedule_note(context_text, country)}"
                 f"{_warning_note(tr)}"
                 f"{NOTA_SIN_CAUSA if sin_causa else ''}"
+                f"{nota_ab}"
                 f"{_history_block(history)}"
                 f"{CHILD_MODE if mode == 'child' else ''}"
                 f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"
@@ -2882,6 +2891,8 @@ class Engine:
                 problems = verify_answer(result.text, hits)
                 if alarma and rebaja_el_aviso(result.text):
                     problems.append(CONTRADICE_AVISO)
+                if nota_ab and da_cifra_del_antibiotico(result.text):
+                    problems.append(PONE_CIFRA)
                 if problems:
                     retry = self.llm.complete(
                         self.prompt
@@ -2897,7 +2908,10 @@ class Engine:
                     if (
                         otra_vez
                         and leida is not None
-                        and (_dice_sin_fuente(retry.text) or _insegura(retry.text, hits, alarma))
+                        and (
+                            _dice_sin_fuente(retry.text)
+                            or _insegura(retry.text, hits, alarma, bool(nota_ab))
+                        )
                     ):
                         for r_ in (result, retry):
                             ctx["costes"].append((r_.tokens_in, r_.tokens_out, r_.cost_usd))
@@ -2930,7 +2944,7 @@ class Engine:
             # gets its one retry and then ships as written. Turning a medically sound answer into
             # "I have no reliable information on this" because it reads stiffly would be a far
             # worse failure than the stiffness.
-            if _dice_sin_fuente(retry.text) or _insegura(retry.text, hits, alarma):
+            if _dice_sin_fuente(retry.text) or _insegura(retry.text, hits, alarma, bool(nota_ab)):
                 return Answer(
                     NO_SOURCE[lang],
                     tr.level,
@@ -2996,7 +3010,7 @@ class Engine:
             ctx["costes"].append((result.tokens_in, result.tokens_out, result.cost_usd))
             fallida = (
                 _dice_sin_fuente(otra.text)
-                or bool(_insegura(otra.text, hits, alarma))
+                or bool(_insegura(otra.text, hits, alarma, bool(nota_ab)))
                 or bool(_EMPIEZA_SIN_INFO.search(_primera_frase(otra.text)))
             )
             if fallida and not revision.contesta:
