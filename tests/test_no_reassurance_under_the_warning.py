@@ -50,6 +50,13 @@ REBAJAN = [
     "Vomiting and sleepiness are common symptoms after a head injury [2].",
     "Les vomissements et la somnolence sont des symptômes fréquents après un choc à la tête [2].",
     "Erbrechen und Müdigkeit sind häufige Symptome nach einem Sturz auf den Kopf [2].",
+    # 26-oct-2026, en vivo, un bebé de 6 semanas con 38,2 y el aviso encima: las otras cuatro
+    # escrituras no tenían ninguna forma de tranquilizar en la lista
+    "NHS के अनुसार बुखार शरीर का संक्रमण से लड़ने का स्वाभाविक तरीका है, और यह आमतौर पर 1 से 4 दिनों में सामान्य हो जाता है ।",
+    "Homa ni jambo la kawaida sana kwa watoto wadogo, na joto huwa hurudi katika hali ya kawaida ndani ya siku 1 hadi 4.",
+    "Kwa mtoto mkubwa zaidi, unaweza kwa kawaida kumtunza nyumbani [2].",
+    "Температура у детей встречается очень часто и обычно проходит за 1–4 дня [2].",
+    "الحمى شائعة جدا عند الأطفال وعادة ما تزول خلال 1 إلى 4 أيام [2].",
     # lo de antes sigue cazado
     "This is not an emergency, but keep an eye on him.",
     "Vigílalo en casa y vuelve a consultar mañana.",
@@ -68,6 +75,13 @@ NO_REBAJAN = [
     "Common symptoms of meningitis include a high temperature, a stiff neck and a rash that does not fade [1].",
     "Os sintomas habituais da meningite são febre alta, rigidez de nuca e manchas que não desaparecem [1].",
     "Los síntomas habituales de la deshidratación son boca seca y menos pañales mojados [1].",
+    # lo que se hace de camino, en las escrituras nuevas
+    "अस्पताल जाते समय बच्चे को स्तनपान कराती रहें [1]।",
+    "Endelea kumnyonyesha ukiwa njiani kwenda hospitali [1].",
+    "По дороге в больницу продолжайте кормить грудью [1].",
+    # «очень частое дыхание» es respirar muy deprisa, un síntoma (4 falsos positivos medidos)
+    "Если дыхание очень частое или ребёнок синеет, звоните 103 [1].",
+    "استمري في الرضاعة الطبيعية في الطريق إلى المستشفى [1].",
     # instrucciones mientras llega la ayuda
     "While you wait for help, lay her on her side and do not put anything in her mouth [1].",
     "Call 911 now. If he stops breathing, start CPR as the operator tells you [2].",

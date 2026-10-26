@@ -1625,3 +1625,177 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
 
    Un saludo,
    Nicolas Beca
+
+## Décima tanda (26-oct-2026): enviada sin enseñársela, con su permiso del 26-oct
+
+> El operador, el 26-oct: subir de 5 al día y «para correos no tan importantes puedes enviarlos
+> directamente repasando bien antes tono, idioma, etc.». Mitad boletines o redacciones con algo
+> concreto que contar (un hallazgo, una línea en su boletín), mitad grupos que reparten entre
+> familias. Direcciones leídas hoy en sus webs: NWA en su sala de prensa (Roseline Hooks,
+> directora de comunicación), Hispanic Federation en /contact, Salud America! en el pie de su
+> web (UT Health San Antonio), mothers2mothers en su página de contacto, The Better India en
+> /contact-us (editorial), Bebés y más en /contacto y Malasmadres en /contacto. Comprobado en
+> vivo antes de escribir: Tylenol por peso en EE. UU. (8 kg, 3,7 ml del de 160 mg/5 ml), Dalsy
+> por peso en España (12 kg, 120 mg: 6 ml al 2 % y 3 ml al 4 %), fiebre de 6 semanas en hindi
+> y en portugués de Mozambique con aviso, y /es/vaccines/us y /hi/vaccines/in en pie. **El
+> suajili salía sin aviso** («wa wiki 6» no se leía como edad): arreglado hoy, y mothers2mothers
+> sale después del despliegue. Descartados: Healthy Newborn Network, Global Health NOW, CHIC, La
+> Leche League y Postpartum Support International (la web bloquea o sólo hay formulario), y
+> TechCabal (cubre empresas africanas; nosotros no lo somos).
+
+1. **National WIC Association** (`rhooks@nwica.org`; voz de las 12.200 agencias WIC de EE. UU.)
+
+   Subject: A free tool for WIC families' late-night questions
+
+   Hi Roseline,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about their child's health and gets an answer built only from official guidance (CDC,
+   AAP, NHS, WHO), with the source right underneath. No ads, no account, and it works in English
+   and Spanish, among other languages.
+
+   I thought of WIC families because of the questions that come up at night, between
+   appointments. It reads °F, gives the dose of infants' and children's Tylenol by weight in ml,
+   and says clearly when something can't wait: a 6-week-old with 100.4 °F gets "go to the ER
+   today", not a dose.
+
+   If you think it could help local agencies, a line in NWA's newsletter or online community
+   would mean a lot: https://pedibot.xyz/?r=nwa
+
+   And if anyone sees something wrong, I'd really like to hear it.
+
+   Thank you,
+   Nicolas Beca
+
+2. **Hispanic Federation** (`info@hispanicfederation.org`; red de organizaciones latinas en EE. UU.)
+
+   Subject: Something free for the families your member organizations serve
+
+   Hello,
+
+   I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free website where a parent asks
+   about their child's health, in Spanish or English, and gets an answer only from official
+   guidance (CDC, AAP, WHO), with the source underneath. No ads, no account.
+
+   A mom who writes in Spanish from the US gets her answer in Spanish, with 911 and the US
+   vaccine schedule, and if it's serious it tells her that first.
+
+   In case it's useful for your member organizations: https://pedibot.xyz/es?r=hispanic-federation
+
+   I'm not asking for an endorsement. If someone tries it and tells me what's missing, that
+   already helps a lot.
+
+   Best,
+   Nicolas Beca
+
+3. **Salud America!** (`saludamerica1@gmail.com`; UT Health San Antonio, historias y
+   herramientas de salud para familias latinas y promotoras)
+
+   Subject: A free, bilingual tool for parents' health questions
+
+   Hi Salud America team,
+
+   I'm Nicolas Beca, writing from Seville, Spain. Your stories reach a lot of Latino parents and
+   promotoras, so I wanted to share something in case it fits.
+
+   PediBot is a free website where a parent asks about their child's health in Spanish or
+   English and gets an answer built only from official guidance (CDC, AAP, WHO), with the source
+   right underneath. No ads and no account. It reads °F, uses the US vaccine schedule and 911,
+   and when something can't wait it says so first: a 6-week-old with 100.4 °F gets "go to the ER
+   today".
+
+   Here it is: https://pedibot.xyz/es?r=salud-america
+
+   If you ever think it's worth a mention to your network, wonderful. And if anything looks
+   wrong, please tell me and I'll fix it.
+
+   Thank you,
+   Nicolas Beca
+
+4. **mothers2mothers** (`info@m2m.org`; Mentor Mothers en el África subsahariana)
+
+   Subject: For the questions mothers bring to your Mentor Mothers
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about their child's health and gets an answer only from official guidance (WHO, NHS,
+   CDC and others), with the source right underneath. No ads and no account.
+
+   Your Mentor Mothers answer a lot of questions about babies, and I thought PediBot could help
+   with the ones that come up between visits. It answers in English, Portuguese or Swahili, and
+   when something can't wait it says so first: a 6-week-old with a fever of 38.2 gets "take the
+   baby to a doctor today".
+
+   In case it's useful: https://pedibot.xyz/?r=m2m
+
+   If someone on your team tries it and sees something wrong or missing, I'd be very grateful
+   to hear it.
+
+   Best wishes,
+   Nicolas Beca
+
+5. **The Better India** (`editorial@thebetterindia.com`)
+
+   Subject: Story idea: the same paracetamol drops, five times the strength
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website that answers
+   parents' questions about their child's health in Hindi, English and six other languages,
+   using only official guidance, with the source under every answer. The Hindi answers draw on
+   Vikaspedia, the Government of India portal run by C-DAC, which gave us permission to use it.
+
+   While building the dose calculator I found something Indian parents might want to know.
+   Paracetamol "drops" in India are usually 100 mg per ml. In Ethiopia the drops are 100 mg per
+   5 ml, five times weaker. Same word on the box, same dropper, so a family that moves, or a
+   relative who sends medicine from abroad, can give five times the dose or a fifth of it. The
+   calculator now asks which bottle you have.
+
+   If it fits The Better India, I'm happy to share more. The site is here:
+   https://pedibot.xyz/hi?r=better-india
+
+   Best regards,
+   Nicolas Beca
+
+6. **Bebés y más** (`contacto@bebesymas.com`)
+
+   Asunto: Una idea para un artículo: el ibuprofeno al 2 % y al 4 %
+
+   Hola:
+
+   Me llamo Nicolas Beca y escribo desde Sevilla. Hago PediBot, una web gratuita donde un padre
+   o una madre pregunta por la salud de su hijo y recibe una respuesta sacada solo de guías
+   oficiales (la AEPap, la SEUP, la OMS), con la fuente debajo. Sin registro y sin publicidad.
+
+   Al hacer la calculadora de dosis me encontré con algo que creo que les interesa a sus
+   lectores. El ibuprofeno infantil se vende al 2 % y al 4 %, con nombres casi iguales. Para un
+   niño de 12 kg la dosis es la misma, 120 mg, pero son 6 ml de uno y 3 ml del otro. Quien está
+   acostumbrado a un frasco y compra el otro da el doble o la mitad sin darse cuenta.
+
+   Si les encaja para un artículo, les cuento lo que haga falta. La web es esta:
+   https://pedibot.xyz/es?r=bebesymas
+
+   Un saludo,
+   Nicolas Beca
+
+7. **Club de Malasmadres** (`hola@clubdemalasmadres.com`)
+
+   Asunto: Para las dudas de salud de las tres de la mañana
+
+   Hola:
+
+   Soy Nicolas Beca, de Sevilla. Hago PediBot, una web gratuita donde preguntas por la salud de
+   tu hijo y te contesta solo con lo que dicen las guías oficiales de pediatría (la AEPap, la
+   SEUP, la OMS), con la fuente debajo. Sin registro y sin publicidad.
+
+   Pensé en vuestra comunidad por esas dudas que salen de noche, cuando no hay a quién
+   preguntar: cuánto Dalsy para 12 kilos, o si la fiebre de un bebé de seis semanas puede
+   esperar a mañana (no puede, y te lo dice lo primero).
+
+   Por si os sirve compartirlo: https://pedibot.xyz/es?r=malasmadres
+
+   Y si alguien lo prueba y ve algo raro, me encantaría saberlo.
+
+   Un abrazo,
+   Nicolas Beca

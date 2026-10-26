@@ -295,8 +295,10 @@ Pedido por el operador: además de pediatría, webs donde se presentan proyectos
 busca financiación, y que mire Arabia, «que se mueve mucho dinero». Lo comprobado en las bases,
 una a una:
 
-**MIT Solve, reto de salud global 2027 — EL QUE ENCAJA, y cierra el viernes 6-nov a las 12:00 de
-Nueva York** (18:00 en España). Abierto en todo el mundo; en el formulario, «tipo de organización»
+**MIT Solve, reto de salud global 2027 — DESCARTADO por el operador el 26-oct: «demasiado. Cosas
+más pequeñas».** Lo que obliga (entrevista por Zoom, dos viajes, nueve meses de programa) pesa más
+que el premio. Queda la ficha por si cambia. Cerraba el viernes 6-nov a las 12:00 de
+Nueva York (18:00 en España). Abierto en todo el mundo; en el formulario, «tipo de organización»
 admite **«Not registered as any organization»**, o sea que vale un particular. Fase mínima:
 prototipo o piloto (10+ usuarios); estamos en piloto. Una de sus tres prioridades es casi nuestra
 frase: *«Expand quality primary care to vulnerable communities… reducing cost, distance, and

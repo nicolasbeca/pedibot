@@ -1633,6 +1633,17 @@ _TRANQUILIZA = re.compile(
     + r"|\ben la mayor[ií]a de (los )?casos\b[^.]{0,80}\b(leve|benign|se debe|causad|relacionad)"
     # 26-oct-2026, consulta real 1074: «vômitos e sonolência são sintomas habituais de um
     # traumatismo craniano» a un bebé de 2 meses que ya había vomitado dos veces
+    # 26-oct-2026: en hindi, suajili, ruso y árabe no había ninguna forma (bebé de 6 semanas con
+    # 38,2 en vivo: «आमतौर पर 1 से 4 दिनों में सामान्य हो जाता है» bajo el aviso)
+    + r"|आमतौर पर[^।.]{0,60}(ठीक|सामान्य|कम) हो (जाता|जाती|जाते)|बहुत (आम|सामान्य) (है|बात)"
+    + r"|घर पर (ही )?(देखभाल|इलाज)"
+    + r"|\b(huwa|kwa kawaida)\b[^.]{0,60}\b(hurudi|hupona|huisha|hupungua|hupoa)\b"
+    + r"|\bni (jambo|kitu) (la|cha) kawaida\b|\b(kumtunza|kumhudumia|kumtibu)\b[^.]{0,15}\bnyumbani\b"
+    + r"|обычно[^.]{0,60}(проход|нормализ|снижа|улучша)"
+    # «очень частое дыхание» es un síntoma (respiración muy rápida), no una frecuencia
+    + r"|(встречается|бывает) очень часто|очень часто (встречается|бывает)|(можно|можете)[^.]{0,30}\bдома\b"
+    + r"|عادة[^.]{0,60}(يزول|تزول|ينخفض|تنخفض|يتحسن|تتحسن|تعود)|شائعة? جدا"
+    + r"|(رعايته|الاعتناء به|علاجه) في المنزل"
     # Con el verbo delante: «los síntomas habituales de la meningitis son…» enumera, no calma.
     + r"|\b(s[ãa]o|[ée]|son|es|sont|est) (des |un |une |uns |umas? |unos |unas )?(sintomas?|s[ií]ntomas?|sympt[ôo]mes?|sinais|signes?) (habitua(l|is)|habituales?|comuns?|comunes|frequentes?|frecuentes?|habituels?|fr[ée]quents?|courants?)\b" + _SIN_VUELTA
     + r"|\b(are|is) (a |an )?(very )?(common|usual|typical) (symptoms?|signs?)\b" + _SIN_VUELTA

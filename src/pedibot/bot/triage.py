@@ -457,6 +457,25 @@ _MENOS_DE_DETRAS = re.compile(
 _MENOS_DE_DETRAS = re.compile(aplana(_MENOS_DE_DETRAS.pattern), _MENOS_DE_DETRAS.flags)
 
 
+#: La edad en suajili, con la unidad DELANTE del número (26-oct-2026): «mtoto wa wiki 6», «ana
+#: miezi miwili», «mwenye umri wa miaka 3». Es la edad sólo con «wa», «ana» o «mwenye» delante;
+#: «homa kwa wiki 2» o «ya siku 3» es cuánto dura, y «wiki 2 zilizopita» es hace cuánto.
+#: tests/test_swahili_ages.py
+_SW_NUM = {
+    "kumi na moja": 11, "kumi na mbili": 12,
+    "moja": 1, "mmoja": 1, "mbili": 2, "miwili": 2, "tatu": 3, "mitatu": 3, "nne": 4,
+    "minne": 4, "tano": 5, "mitano": 5, "sita": 6, "saba": 7, "nane": 8, "tisa": 9, "kumi": 10,
+}
+_SW_UNIDAD = {
+    "wiki": 1 / 4.345, "mwezi": 1.0, "miezi": 1.0, "mwaka": 12.0, "miaka": 12.0, "siku": 1 / 30.4,
+}
+_SW_EDAD = re.compile(
+    r"\b(?:wa|ana|mwenye)\s+(?:umri\s+wa\s+)?(wiki|miezi|mwezi|miaka|mwaka|siku)\s+"
+    r"(\d{1,2}(?:[.,]\d)?|" + "|".join(_SW_NUM) + r")\b"
+    r"(?!\s+(?:zilizopita|iliyopita|ilivyopita))"
+)
+
+
 def parse_age_months(text: str) -> float | None:
     """La edad en meses, si la pregunta la dice.
 
@@ -493,6 +512,11 @@ def parse_age_months(text: str) -> float | None:
         prefijo = ruso.group(1) or ruso.group(3) or ""
         unidad = ruso.group(2) or ruso.group(4)
         return _RU_NUM[prefijo.lower()] * _RU_UNIDAD[unidad.lower()]
+    suajili = _SW_EDAD.search(low)
+    if suajili:
+        cuanto = suajili.group(2)
+        numero = _SW_NUM[cuanto] if cuanto in _SW_NUM else float(cuanto.replace(",", "."))
+        return numero * _SW_UNIDAD[suajili.group(1)]
     for rx, mult in _AGE_PATTERNS:
         m = rx.search(low)
         if m:

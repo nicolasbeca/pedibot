@@ -4,6 +4,36 @@
 
 
 
+## 26-oct-2026 · lunes · el suajili sin aviso, la amoxicilina, y más correos
+
+- **Correo:** nadie ha contestado desde el 22-oct. Wix avisa de que **pedibotai.com** (el
+  dominio de la v1) está en redención hasta el 22-nov; no se usa en ningún sitio. Decide el
+  operador si lo paga.
+- **Consultas reales (1073-1075):** 1073 (Calpol, ejemplo de portada) bien. **1074 (Brasil, 2
+  meses, caída y dos vómitos):** aviso bien, texto con «sintomas habituais» y «dificuldade para
+  falar ou andar». Arreglado (142cd41): el detector de rebajas caza «son síntomas habituales» en
+  seis lenguas y a los menores de un año se les quita lo que sólo vale para mayores. En vivo, 1076
+  sale limpia. **1075 (amoxicilina recetada, otitis):** «no puedo calcularla» y nada de la otitis.
+  Decisión del operador: el antibiótico sin cifra (la tabla general de la AEPap, 25-50 mg/kg/día,
+  haría parecer sobredosis una receta correcta de otitis, 80-90). `bot/prescribed.py`: nota al
+  redactor y candado que reescribe si sale un mg/kg o unos ml (84f785f). En vivo: sin cifra,
+  farmacéutico para los ml, terminar el tratamiento. **Queda:** que hable del dolor de oído
+  («autitis» ya llega a la otitis en la búsqueda, pero los pasajes de amoxicilina la desplazan).
+- **MCP:** 37 llamadas, todas rastreadores.
+- **Encontrado al comprobar los correos:** el suajili no leía la edad («mtoto wa wiki 6 ana homa
+  ya 38.2» salía RUTINA, sin aviso). `_SW_EDAD` en triage.py (`test_swahili_ages.py`). Y bajo el
+  aviso, en hindi, ruso, árabe y suajili no se cazaba ninguna forma de tranquilizar: añadidas;
+  sobre las 79 respuestas con aviso de esas lenguas, 6 casan y las 6 son rebajas reales.
+- **Correos:** el operador sube de 5 al día y da permiso para enviar los de difusión sin
+  enseñárselos. Décima tanda en DIFUSION.md: NWA, Hispanic Federation, Salud America!, The Better
+  India, Bebés y más y Malasmadres enviados; mothers2mothers, tras el despliegue del suajili.
+- **Financiación** (FINANCIACION.md, sección 10): **MIT Solve, reto de salud 2027**, admite
+  particulares, cierra el **6-nov 12:00 de Nueva York**; premio Philips de 100.000 $ a salud
+  materno-infantil. Pide entrevista por Zoom (febrero) y viajes (abril, septiembre) si sale.
+  **Descartado por el operador** («demasiado, cosas más pequeñas»). Arabia Saudí: nada abierto
+  para un particular de fuera.
+- **pedibotai.com se abandona** (operador, 26-oct): no se paga la redención; caduca el 22-nov.
+
 ## 22-oct-2026 · jueves · el sueño del bebé, y la novena tanda
 
 - **Consultas reales del 21-oct (Reino Unido, una sesión, ~10:00, una hora después de los

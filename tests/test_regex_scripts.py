@@ -44,7 +44,11 @@ DECLARADOS = {
     # —«degedege la homa NI NINI» es «¿qué es una convulsión febril?»— y todos los demás
     # guardianes miran lo que va DELANTE de la señal. Las otras ocho lenguas no lo necesitan
     # porque en todas ellas el marco va delante, y cada una ya lo tiene en su guardián.
-    "MARCO_AL_FINAL": "es el marco interrogativo de las dos lenguas que lo ponen al final de la frase, el suajili y el hindi; cirílico y árabe no lo necesitan porque en esas dos el marco va delante y ya lo llevan los guardianes de siempre",
+    # 26-oct-2026: la edad en suajili, con la unidad DELANTE del número («wa wiki 6»). Es de
+    # una lengua a propósito: las demás ponen el número delante y las leen `_AGE_PATTERNS`,
+    # con sus entradas en cirílico, árabe y devanagari.
+    "_SW_EDAD": "es la edad en suajili, la única lengua del sitio que pone la unidad delante del número; las otras escrituras las leen las entradas de `_AGE_PATTERNS`",
+    "MARCO_AL_FINAL":"es el marco interrogativo de las dos lenguas que lo ponen al final de la frase, el suajili y el hindi; cirílico y árabe no lo necesitan porque en esas dos el marco va delante y ya lo llevan los guardianes de siempre",
     "_LATINA": "es latino A PROPÓSITO: marca dónde se quita la tilde, y el árabe y el "
     "devanagari no llevan tildes sino letras — quitarles la marca combinante rompe la "
     "palabra (las matras de «बुखार»). El cirílico se trata aparte, fundiendo sólo la ё",
