@@ -24,7 +24,7 @@
   ya 38.2» salía RUTINA, sin aviso). `_SW_EDAD` en triage.py (`test_swahili_ages.py`). Y bajo el
   aviso, en hindi, ruso, árabe y suajili no se cazaba ninguna forma de tranquilizar: añadidas;
   sobre las 79 respuestas con aviso de esas lenguas, 6 casan y las 6 son rebajas reales.
-- **Correos:** el operador sube de 5 al día y da permiso para enviar los de difusión sin
+- **Correos (los 7 ENVIADOS el 26-oct, mothers2mothers tras el despliegue):** el operador sube de 5 al día y da permiso para enviar los de difusión sin
   enseñárselos. Décima tanda en DIFUSION.md: NWA, Hispanic Federation, Salud America!, The Better
   India, Bebés y más y Malasmadres enviados; mothers2mothers, tras el despliegue del suajili.
 - **Financiación** (FINANCIACION.md, sección 10): **MIT Solve, reto de salud 2027**, admite
