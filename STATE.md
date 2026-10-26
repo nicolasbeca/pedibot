@@ -18,7 +18,7 @@
   haría parecer sobredosis una receta correcta de otitis, 80-90). `bot/prescribed.py`: nota al
   redactor y candado que reescribe si sale un mg/kg o unos ml (84f785f). En vivo: sin cifra,
   farmacéutico para los ml, terminar el tratamiento. **Queda:** que hable del dolor de oído
-  («autitis» ya llega a la otitis en la búsqueda, pero los pasajes de amoxicilina la desplazan).
+  («autitis» ya llega a la otitis en la búsqueda, pero los pasajes de amoxicilina la desplazan). Y en suajili la respuesta abre con «First, do what the warning above says.» en inglés (visto en vivo el 26-oct).
 - **MCP:** 37 llamadas, todas rastreadores.
 - **Encontrado al comprobar los correos:** el suajili no leía la edad («mtoto wa wiki 6 ana homa
   ya 38.2» salía RUTINA, sin aviso). `_SW_EDAD` en triage.py (`test_swahili_ages.py`). Y bajo el
