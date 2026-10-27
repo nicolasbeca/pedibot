@@ -1877,7 +1877,7 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
    Un abrazo,
    Nicolas Beca
 
-4. **MamásConPoder** (`mcp-info@momsrising.org`; la rama en español de MomsRising)
+4. **MamásConPoder** (`mcp-info@momsrising.org` REBOTÓ; reenviado a `info-mcp@momsrising.org`, la otra que sale en su web; la rama en español de MomsRising)
 
    Asunto: Una línea para su boletín, si les encaja
 
