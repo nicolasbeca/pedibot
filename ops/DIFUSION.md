@@ -2019,3 +2019,79 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
 
     Best,
     Nicolas Beca
+
+### Undécima tanda, segunda parte (27-oct): «revisad la ficha de vuestro país» a 8 sociedades de pediatría
+
+> Con su «Ok» del 27-oct, tras proponérselo: es el tipo de correo que contestan (Tanzania, India,
+> Kenia). Plantilla: la enviada a Tanzania el 1-oct, más corta. Direcciones leídas hoy en sus
+> webs: PAN Nigeria (/contact), UPA Uganda (portada), SAPA (paediatrics.org.za), SAP Argentina
+> (/contacto), SOCHIPE (portada), SUP Uruguay (portada), SVPP Venezuela (portada, Gmail
+> publicado por ellos), SPP Paraguay (portada). Sin dirección publicada: Ghana, Egipto,
+> Marruecos, Senegal, Zambia, Malawi, Ruanda, Costa de Marfil, Colombia, Perú. Las 16 páginas
+> enlazadas, en pie (200) hoy. Fuentes según config/: vacunas, lo declarado a la OMS (WIISE);
+> urgencias, FCDO británico salvo AR y CL, que no tienen fuente apuntada.
+
+1. **Paediatric Association of Nigeria** (`secretary@pan-ng.org`)
+2. **Uganda Paediatric Association** (`info@upauganda.org`)
+3. **South African Paediatric Association** (`info@paediatrics.org.za`)
+4. **Sociedad Argentina de Pediatría** (`sap@sap.org.ar`)
+5. **Sociedad Chilena de Pediatría** (`recepcion@sochipe.cl`)
+6. **Sociedad Uruguaya de Pediatría** (`secretaria@sup.org.uy`)
+7. **Sociedad Venezolana de Puericultura y Pediatría** (`svpediatria@gmail.com`)
+8. **Sociedad Paraguaya de Pediatría** (`secretaria@spp.org.py`)
+
+Texto en inglés (Nigeria; Uganda y Sudáfrica cambian país, enlaces y el párrafo del número):
+
+   Subject: Would a Nigerian paediatrician check our pages for Nigeria?
+
+   Dear colleagues,
+
+   My name is Nicolas Beca, from Seville, Spain. I make PediBot, a free website with no ads that
+   answers parents' questions about a sick child using only published guidance from health
+   bodies, and names the source of every sentence.
+
+   A parent in Nigeria lands on two pages, and I'd be grateful if someone who actually sees these
+   children could look at them.
+
+   Vaccine schedule: https://pedibot.xyz/vaccines/ng?r=pan
+   It is transcribed from what Nigeria reports to WHO and UNICEF. If something has changed, or a
+   parent would expect to see something that isn't there, I'd like to know.
+
+   Emergency number: https://pedibot.xyz/emergency/ng?r=pan
+   It shows 112 and, quoting the UK government's travel advice, says there is no national
+   ambulance service. If there is a number Nigerian families actually rely on for a sick child,
+   I'd rather show that one.
+
+   There is nothing to sign and nothing to buy. If something is wrong I'll fix it and, if you
+   like, credit the association on the page.
+
+   With thanks,
+   Nicolas Beca
+
+Texto en español (Argentina; los demás cambian país, enlaces y el párrafo del número; a Chile,
+además, que ya citamos el Manual de Pediatría de la PUC):
+
+   Asunto: ¿Revisaría un pediatra argentino lo que les decimos a las familias de Argentina?
+
+   Hola:
+
+   Soy Nicolas Beca, de Sevilla. Hago PediBot, una web gratuita y sin publicidad que contesta a
+   los padres cuando tienen un hijo enfermo, solo con lo que publican la OMS y las sociedades de
+   pediatría, y diciendo de dónde sale cada frase.
+
+   Una familia de Argentina llega a dos páginas, y me gustaría mucho que las mirara alguien que
+   ve a estos niños.
+
+   El calendario de vacunas: https://pedibot.xyz/es/vaccines/ar?r=sap
+   Está transcrito de lo que Argentina declara a la OMS y a UNICEF. Si algo ha cambiado, o falta
+   algo que un padre esperaría ver, me gustaría saberlo.
+
+   El número de urgencias: https://pedibot.xyz/es/emergency/ar?r=sap
+   Muestra el 911 y el 107 (SAME). Si hay otro al que las familias llaman de verdad con un niño
+   enfermo, prefiero poner ese.
+
+   No hay nada que firmar ni que comprar. Si algo está mal, lo arreglo y, si quieren, cito a la
+   Sociedad en la página.
+
+   Gracias por su tiempo,
+   Nicolas Beca

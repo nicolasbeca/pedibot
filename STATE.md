@@ -21,6 +21,10 @@
   Mother Counts, Jacaranda Health, Lwala, y al mundo cripto con querencia altruista Endaoment,
   Hypercerts, The Giving Block y Grassroots Economics. Los cripto, sólo presentación con /memo;
   **si contestan, al operador, que decide cómo darles $PDBT** (pedido el 27-oct).
+- **Segunda parte, ENVIADA** con su «Ok»: «revisad la ficha de vuestro país» a 8 sociedades de
+  pediatría (Nigeria, Uganda, Sudáfrica, Argentina, Chile, Uruguay, Venezuela, Paraguay). 18
+  correos en el día. Sin dirección publicada: Ghana, Egipto, Marruecos, Senegal, Zambia, Malawi,
+  Ruanda, Costa de Marfil, Colombia, Perú.
 
 ## 26-oct-2026 · lunes · el suajili sin aviso, la amoxicilina, y más correos
 
