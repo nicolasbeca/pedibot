@@ -4,6 +4,24 @@
 
 
 
+## 27-oct-2026 · martes · el suajili bajo el aviso, y la undécima tanda (10, cuatro al mundo cripto)
+
+- **Correo:** NHS 111 Wales (Fiona Maclean) contesta al permiso del 7-oct: retiraron la página de
+  espasmos del sollozo (la sindicaban del nhs.uk). Nada que retirar, nunca se indexó. **DPGA:** sin
+  noticias desde el acuse del 28-sep (ni aclaraciones, mirado también spam y papelera); 4 semanas
+  de las 4-8 de su plazo.
+- **Consultas reales:** ninguna desde la 1075; 1076-1084 son pruebas del 26-oct. MCP: 2 llamadas,
+  rastreadores.
+- **Suajili bajo el aviso** (96d6b7e, 3e10072): «First, do what the warning above says.» salía en
+  inglés porque el suajili se busca en inglés (`a.lang` = en). La frase va ahora en
+  `a.written_lang`; suajili en PRIMERO_EL_AVISO, SIGUE_EL_AVISO y NO_SOURCE; «sasa», «leo»,
+  «dharura» cuentan como prisa. En vivo, todo en suajili. El resto de textos fijos sigue en
+  inglés para el suajili (no es lengua de la web).
+- **Undécima tanda ENVIADA** (ops/DIFUSION.md): El Parto es Nuestro, MamásConPoder, NCT, Every
+  Mother Counts, Jacaranda Health, Lwala, y al mundo cripto con querencia altruista Endaoment,
+  Hypercerts, The Giving Block y Grassroots Economics. Los cripto, sólo presentación con /memo;
+  **si contestan, al operador, que decide cómo darles $PDBT** (pedido el 27-oct).
+
 ## 26-oct-2026 · lunes · el suajili sin aviso, la amoxicilina, y más correos
 
 - **Correo:** nadie ha contestado desde el 22-oct. Wix avisa de que **pedibotai.com** (el
