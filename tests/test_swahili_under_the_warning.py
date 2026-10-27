@@ -23,6 +23,21 @@ def test_si_el_texto_ya_dice_prisa_en_suajili_no_se_toca():
     assert con_el_aviso_delante(texto, "emergency", "sw") == texto
 
 
+def test_la_frase_sale_en_la_lengua_escrita_no_en_la_de_busqueda():
+    """El suajili se busca en inglés: a.lang es «en». Desplegado con a.lang, seguía en inglés."""
+    import inspect
+
+    from pedibot.bot import answer
+    from pedibot.bot.answer import Answer
+
+    a = Answer(
+        text="x", level="urgent", banner=None, sources=[], lang="en", prompt_version=None,
+        llm=None, chunk_ids=[], verification="ok", wrote_in="Swahili",
+    )
+    assert a.written_lang in PRIMERO_EL_AVISO
+    assert "con_el_aviso_delante(a.text, a.level, a.written_lang)" in inspect.getsource(answer)
+
+
 def test_sin_fuente_bajo_el_aviso_tambien_en_suajili():
     assert "sw" in SIGUE_EL_AVISO
     assert "warning" not in SIGUE_EL_AVISO["sw"]

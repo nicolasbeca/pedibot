@@ -2057,8 +2057,10 @@ class Engine:
             a.text = f"{peso}.\n\n{a.text}"
         # 7-oct-2026: bajo un aviso, un texto sin una palabra de prisa empieza por el aviso
         # (bot/banner_lead.py).
+        # 27-oct-2026: en la lengua en que se escribió, no en la de búsqueda (el suajili se busca
+        # en inglés y la frase salía en inglés encima de un texto en suajili).
         if a.verification not in _FRASES_FIJAS:
-            a.text = con_el_aviso_delante(a.text, a.level, a.lang)
+            a.text = con_el_aviso_delante(a.text, a.level, a.written_lang)
         # Cuando las guías no coinciden se dice qué dice cada una (bot/guides_differ.py): el vapor
         # (7-oct-2026) y las manos frías con fiebre (8-oct-2026). Decisión del operador para
         # todo conflicto entre fuentes. Algunas notas van también tras un texto fijo: era justo
