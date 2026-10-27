@@ -1799,3 +1799,223 @@ En su hilo «Sources for the Dominican Republic and Haiti»:
 
    Un abrazo,
    Nicolas Beca
+
+## Undécima tanda (27-oct-2026): 6 a familias y 4 al mundo cripto con querencia altruista
+
+> Pedido por el operador el 27-oct: los 10 del día, y caben «gente del mundo crypto que tengan
+> cierto gusto por el altruismo, solo presentando el proyecto; si contestan les damos el token en
+> base de Virtuals». O sea: el primer correo no nombra el token ni pide dinero; **si contestan,
+> se le pasa al operador** y él decide cómo darles $PDBT (contrato en CLAUDE.md). Direcciones
+> leídas hoy en sus webs (incluidas las que Cloudflare oculta, descodificadas): Jacaranda Health
+> (pie de la web), Lwala (/contact-us), El Parto es Nuestro (pie), MamásConPoder (pie, buzón de
+> MomsRising), NCT (pie), Every Mother Counts (/contact), Grassroots Economics (pie de
+> grassecon.org), Endaoment (pie), Hypercerts (/contact), The Giving Block (/contact, prensa).
+> Sin dirección publicada, descartados: Giveth, Glo Dollar, GoodDollar, Octant, impactMarket,
+> Crypto Altruists (sólo formulario o Discord). Comprobado en vivo hoy: fiebre a las 6 semanas
+> con país KE y GB da «emergency department today» citando al NHS; /vaccines/ke y /memo en pie.
+> Los de Kenia salen después de desplegar el suajili bajo el aviso (antes salía en inglés).
+
+1. **Jacaranda Health** (`hello@jacarandahealth.org`; PROMPTS, el servicio por SMS para madres en Kenia)
+
+   Subject: Could your helpdesk try this in Swahili?
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about their child's health and gets an answer only from official guidance (WHO, NHS, CDC
+   and others), with the source right underneath. No ads, no account.
+
+   I've been reading about PROMPTS and the questions mothers send you every day. PediBot also
+   answers in Swahili. If I write "Mtoto wangu wa wiki 6 ana homa ya 38.2", the first thing it
+   says is that the baby has to be seen at a hospital today, without waiting.
+
+   Swahili is the language I'm least sure of, though. Would someone on your helpdesk try a few of
+   the questions you get and tell me where it falls short? https://pedibot.xyz/?r=jacaranda
+
+   Thank you,
+   Nicolas Beca
+
+2. **Lwala Community Alliance** (`info@lwalacommunityalliance.org`; agentes comunitarios en Migori, Kenia)
+
+   Subject: For the questions that come up between CHW visits
+
+   Hello,
+
+   I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free website that answers parents'
+   questions about a sick child using only official guidance, and shows the document behind
+   every answer. No ads and no account, and the pages are tiny, because a lot of the people it's
+   for are on prepaid data.
+
+   I thought of your community health workers. It answers in English or Swahili, has Kenya's
+   official vaccine schedule (https://pedibot.xyz/vaccines/ke?r=lwala), and when something can't
+   wait it says so before anything else.
+
+   If one of your CHWs ever has five minutes to try it and tell me what's wrong or missing for
+   families in Migori, it would help me a lot.
+
+   Best wishes,
+   Nicolas Beca
+
+3. **El Parto es Nuestro** (`info@elpartoesnuestro.es`)
+
+   Asunto: Para las dudas de las primeras semanas en casa
+
+   Hola:
+
+   Soy Nicolas Beca, de Sevilla. Hago PediBot, una web gratuita donde una madre o un padre
+   pregunta por la salud de su bebé y le contesta solo con lo que dicen las guías oficiales (la
+   AEPap, la SEUP, la OMS), con la fuente debajo. Sin registro y sin publicidad.
+
+   Os escribo por el posparto, que es cuando más dudas salen y menos a quién preguntar. Si un
+   bebé de seis semanas tiene 38,2, lo primero que dice es que hay que ir a urgencias hoy, sin
+   esperar; y si es una duda de las normales, contesta con calma y dice de dónde lo saca.
+
+   Por si os sirve en vuestros grupos: https://pedibot.xyz/es?r=elpartoesnuestro
+
+   Y si alguna lo prueba y ve algo raro, me encantaría saberlo.
+
+   Un abrazo,
+   Nicolas Beca
+
+4. **MamásConPoder** (`mcp-info@momsrising.org`; la rama en español de MomsRising)
+
+   Asunto: Una línea para su boletín, si les encaja
+
+   Hola:
+
+   Me llamo Nicolas Beca y escribo desde Sevilla, España. Hago PediBot, una web gratuita donde
+   una mamá pregunta por la salud de su hijo en español y le contesta solo con guías oficiales
+   (CDC, AAP, OMS), con la fuente debajo. Sin anuncios y sin crear cuenta.
+
+   Está pensada también para quien vive en Estados Unidos: entiende °F, usa el calendario de
+   vacunas de allí y el 911, y si pregunta cuánto Tylenol para un bebé de 8 kg le da la dosis en
+   ml del frasco que tiene en casa.
+
+   Si creen que vale una línea en su boletín, este es el enlace:
+   https://pedibot.xyz/es?r=mamasconpoder
+
+   Gracias por lo que hacen,
+   Nicolas Beca
+
+5. **NCT** (`enquiries@nct.org.uk`)
+
+   Subject: Something free for parents' 3am questions
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about their child's health and gets an answer built only from published guidance, with
+   the source underneath. For a parent in the UK that mostly means NHS pages. No ads, no account.
+
+   If a 6-week-old has a temperature of 38.2, it says first, before any other advice, that the
+   baby needs to be seen at A&E today. If it's an everyday worry, it answers calmly and shows
+   where it comes from.
+
+   In case it's useful for your antenatal or postnatal groups: https://pedibot.xyz/?r=nct
+
+   And if anyone spots something wrong, I'd really like to hear it.
+
+   Best wishes,
+   Nicolas Beca
+
+6. **Every Mother Counts** (`info@everymothercounts.org`)
+
+   Subject: For the first weeks after the birth
+
+   Hello,
+
+   I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free website where a parent asks about
+   their baby's health and gets an answer only from official guidance (CDC, AAP, WHO and others),
+   with the source right underneath. No ads, no account, in English, Spanish and six other
+   languages.
+
+   You fund people who stay with mothers after the birth, and those first weeks are when the
+   scariest questions come. A newborn with 100.4 °F gets, first thing, "go to the ER today".
+
+   If it's ever useful for your grantee partners: https://pedibot.xyz/?r=everymothercounts
+
+   Thank you,
+   Nicolas Beca
+
+7. **Grassroots Economics** (`info@grassecon.org`; Sarafu Network, Kenia)
+
+   Subject: A free child-health tool, for the families in your networks
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I came across your work with community
+   currencies in Kenya and wanted to show you something I've been building.
+
+   PediBot is a free website where a parent asks about a sick child and gets an answer only from
+   official guidance (WHO, NHS, Kenya's vaccine schedule), with the source under every answer.
+   It also understands Swahili, and when something can't wait it says so first. No ads, no
+   account, open source.
+
+   Here's a one-page memo of what's built and what it needs: https://pedibot.xyz/memo?r=grassecon
+
+   If it makes sense to you, I'd love to hear what you think.
+
+   Best,
+   Nicolas Beca
+
+8. **Endaoment** (`hello@endaoment.org`)
+
+   Subject: A small public good, in case it interests you
+
+   Hello,
+
+   I'm Nicolas Beca, from Seville, Spain. I'm writing to a few people who think seriously about
+   giving onchain.
+
+   I make PediBot, a free website that answers parents' questions about a sick child using only
+   what the WHO, health ministries and paediatric societies publish, with the source attached to
+   every answer. It's open source (AGPL), the catalogue of sources is CC0, and it's archived on
+   Zenodo. No ads, no account, eight languages, and the basics keep working offline.
+
+   Everything built so far, with the real numbers: https://pedibot.xyz/memo?r=endaoment
+
+   I'm not asking for anything today. I just think it's the kind of project your community likes
+   to know exists.
+
+   Best,
+   Nicolas Beca
+
+9. **Hypercerts Foundation** (`team@hypercerts.org`)
+
+   Subject: A public good that publishes its own numbers
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent
+   asks about a sick child and gets an answer only from official guidance, with the source
+   under each answer. Open source, no ads, no account.
+
+   I'm writing because the way you think about impact fits how I've tried to run it: every
+   answer cites its document, the 1,038 documents in the catalogue are public with each licence, <!-- contado el 27-oct-2026 -->
+   and the memo gives the real numbers, small as they are, instead of a pitch.
+   https://pedibot.xyz/memo?r=hypercerts
+
+   If you find it interesting, I'd be glad to hear from you.
+
+   Best,
+   Nicolas Beca
+
+10. **The Giving Block** (`media@thegivingblock.com`)
+
+    Subject: Story idea: the paracetamol drops that are five times weaker
+
+    Hello,
+
+    I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free, open-source website that
+    answers parents' questions about a sick child using only official guidance, with the source
+    attached. No ads, no account, eight languages.
+
+    One thing it found that I think your readers would care about: paracetamol "drops" for
+    babies are usually 100 mg per ml in India, but in Ethiopia they're 100 mg per 5 ml, five
+    times weaker. Same word on the box, same dropper. The dose calculator now asks which bottle
+    you have.
+
+    In case it's a story for you, here's what's built: https://pedibot.xyz/memo?r=givingblock
+
+    Best,
+    Nicolas Beca

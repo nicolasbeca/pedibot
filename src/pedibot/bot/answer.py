@@ -248,6 +248,7 @@ NO_SOURCE = {
     "ar": "لا توجد في مصادري معلومات موثوقة عن هذا، ولا أريد التخمين. من فضلك تحدث إلى طبيب طفلك. وإذا بدا على طفلك تعب شديد، فتوجّه إلى قسم الطوارئ.",
     "hi": "मेरे स्रोतों में इसके बारे में भरोसेमंद जानकारी नहीं है, और मैं अंदाज़ा नहीं लगाना चाहता। कृपया अपने डॉक्टर से बात करें। अगर बच्चा बहुत बीमार लग रहा है, तो इमरजेंसी में जाएँ।",
     "pt": "Não tenho informação confiável sobre isso nas minhas fontes e prefiro não adivinhar. Procure o seu pediatra. Se a criança parecer estar mal, vá ao pronto-socorro.",
+    "sw": "Sina taarifa za kuaminika kuhusu hili katika vyanzo vyangu, kwa hivyo sipendi kubahatisha. Tafadhali wasiliana na daktari wa watoto au muuguzi. Ikiwa mtoto wako anaonekana mgonjwa sana, nenda kwenye idara ya dharura.",
 }
 #: Lo que va debajo de un aviso urgente o de emergencia cuando no hay fuente que añadir.
 SIGUE_EL_AVISO = {
@@ -259,6 +260,7 @@ SIGUE_EL_AVISO = {
     "ar": "افعل الآن ما يقوله التنبيه في الأعلى. لا توجد في إرشاداتي تفاصيل أخرى عن هذه الحالة بالتحديد، لذلك لن أضيف شيئًا قد يؤخرك.",
     "hi": "ऊपर की चेतावनी में जो लिखा है, वह अभी कीजिए। इस ख़ास स्थिति पर मेरे दिशानिर्देशों में और जानकारी नहीं है, इसलिए मैं ऐसा कुछ नहीं जोड़ूँगा जिससे आपको देर हो।",
     "pt": "Faça agora o que diz o aviso acima. Não tenho nas minhas orientações mais detalhes sobre esta situação concreta, por isso não vou acrescentar nada que o possa atrasar.",
+    "sw": "Fanya sasa kile ambacho onyo lililo hapo juu linasema. Sina maelezo zaidi kuhusu hali hii hasa katika miongozo yangu, kwa hivyo sitaongeza chochote kinachoweza kukuchelewesha.",
 }
 #: «¿Qué es PediBot?» (21-sep-2026). Un texto FIJO y revisado, no una respuesta redactada por el
 #: modelo: lo que el sitio dice de sí mismo no puede depender de cómo le salga ese día. Sin
