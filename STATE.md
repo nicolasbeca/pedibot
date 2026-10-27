@@ -2168,3 +2168,5 @@ Día largo. Lo agrupo por lo que importa, no por el orden en que pasó.
 2. **Esperar a MetaDAO hasta el viernes 2 de octubre.**
 
 Suite **9.561**. Sitio **2.885 páginas**.
+
+**Correos por SMTP (27-oct, tarde).** El conector de Gmail envolvía todos los enlaces en google.com/url, y así le llegaban al destinatario. Desde hoy salen con `ops/correo.py` desde el servidor, con la contraseña de aplicación en /root/.pedibot/smtp. Desde el PC no: AVG se mete en el SMTP. Probado: enlaces limpios, guardado en «Enviados».
