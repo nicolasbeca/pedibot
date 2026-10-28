@@ -2170,3 +2170,5 @@ Día largo. Lo agrupo por lo que importa, no por el orden en que pasó.
 Suite **9.561**. Sitio **2.885 páginas**.
 
 **Correos por SMTP (27-oct, tarde).** El conector de Gmail envolvía todos los enlaces en google.com/url, y así le llegaban al destinatario. Desde hoy salen con `ops/correo.py` desde el servidor, con la contraseña de aplicación en /root/.pedibot/smtp. Desde el PC no: AVG se mete en el SMTP. Probado: enlaces limpios, guardado en «Enviados».
+
+**28-oct.** Duodécima tanda: 10 correos por SMTP (CONAPEME, Reach Digital Health, Vaccinate Your Family, ParentData, NPR Global Health, Bliss, RNPI, Ekjut, PFI y PIQE en lugar de Abriendo Puertas, que rebotó; ops/DIFUSION.md). Frank (Somos Amigos) contestó el 27-oct: las fichas de RD y Haití le cuadran con su clínica; el VPH de RD estaba desfasado (desde el 11-mar-2026, nonavalente a niñas y niños de 9 a 14, una dosis) y está corregido y desplegado (tests/test_vaccines_dominican_republic.py). Su respuesta, pendiente del sí del operador. Suite **12.227**. Sitio **3.314 páginas**.
