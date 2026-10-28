@@ -351,6 +351,16 @@ names:
     pt: "HPV nonavalente"
     hi: "HPV, 9-वैलेंट"
 
+  "HPV, 9-valent (girls and boys, 1 dose)":
+    en: "HPV, 9-valent (girls and boys, 1 dose)"
+    es: "VPH nonavalente (niñas y niños, 1 dosis)"
+    fr: "HPV nonavalent (filles et garçons, 1 dose)"
+    de: "HPV, 9-valent (Mädchen und Jungen, 1 Dosis)"
+    ru: "ВПЧ, девятивалентная (девочки и мальчики, 1 доза)"
+    ar: "فيروس الورم الحليمي، تساعي التكافؤ (للبنات والبنين، جرعة واحدة)"
+    pt: "HPV nonavalente (raparigas e rapazes, 1 dose)"
+    hi: "HPV, 9-वैलेंट (लड़कियाँ और लड़के, 1 खुराक)"
+
   "Seasonal influenza":
     en: "Seasonal influenza"
     es: "Gripe estacional"

@@ -2095,3 +2095,193 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
    Gracias por su tiempo,
    Nicolas Beca
+
+
+## Duodécima tanda (28-oct-2026): enviada sin enseñársela, por SMTP desde el servidor
+
+> «Envía los 10 emails de hoy». Las sociedades de pediatría que quedaban (Ecuador, Costa Rica,
+> Guatemala, Dominicana, Panamá, Brasil, Mozambique, Líbano, Jordania, Túnez, Ghana, Zimbabue)
+> no publican dirección, así que sólo sale CONAPEME; el resto, quien reparte (NPR, ParentData,
+> Vaccinate Your Family, la RNPI) y grupos que hablan con familias (Reach/MomConnect, Abriendo
+> Puertas, Bliss, Ekjut, PFI). Direcciones leídas hoy en sus webs desde el servidor (curl):
+> CONAPEME (portada y /contacto), Reach (/contact), VYF (/contact-us), ParentData (portada),
+> NPR (página «About Us: Goats and Soda»), Abriendo Puertas (/contact), Bliss (pie), RNPI
+> (/contato), Ekjut (portada), PFI (/contact-us). Descartados: SPARADRAP, Lullaby Trust, Les
+> pros de la petite enfance, Lunetas, Pastoral da Criança, FMCSV, Supermama (sólo formulario o
+> bloquea), UnidosUS (sólo donantes) y Coram Family Lives (el buzón es la línea de ayuda a
+> padres). Comprobado en vivo hoy: fiebre a las 6 semanas con US/en, IN/hi y BR/pt da «urgent»
+> («pronto-socorro hoje» en portugués); las fichas de MX, ZA, US y BR en pie con lo citado; las
+> gotas (IN 100 mg/ml, BR 200 mg/ml, ET 100 mg/5 ml) y el Motrin infantil de 40 mg/ml, en
+> offline-data/drugs.json; los 13 enlaces, 200. Enviados a las ~11:00 con ops/correo.py.
+
+1. **Confederación Nacional de Pediatría de México (CONAPEME)** (`contacto@conapemecongresos.org`; el único que publica su web; revisión de la ficha de México)
+
+   Asunto: ¿Revisaría un pediatra mexicano lo que les decimos a las familias de México?
+
+   Hola:
+
+   Soy Nicolas Beca, de Sevilla. Hago PediBot, una web gratuita y sin publicidad que contesta a los padres cuando tienen un hijo enfermo, solo con lo que publican la OMS y las sociedades de pediatría, y diciendo de dónde sale cada frase.
+
+   Una familia de México llega a dos páginas, y me gustaría mucho que las mirara alguien que ve a estos niños.
+
+   El calendario de vacunas: https://pedibot.xyz/es/vaccines/mx?r=conapeme
+   Está transcrito de lo que México declara a la OMS. Si algo ha cambiado, o falta algo que un papá o una mamá esperaría ver, me gustaría saberlo.
+
+   El número de urgencias: https://pedibot.xyz/es/emergency/mx?r=conapeme
+   Muestra el 911, el CIAT para intoxicaciones (800 00 47 800) y la Línea de la Vida. Si hay otro al que las familias llaman de verdad con un niño enfermo, prefiero poner ese.
+
+   No hay nada que firmar ni que comprar. Si algo está mal, lo arreglo y, si quieren, cito a la Confederación en la página.
+
+   Gracias por su tiempo,
+   Nicolas Beca
+
+2. **Reach Digital Health (antes Praekelt.org; hace MomConnect en Sudáfrica)** (`info@reachdigitalhealth.org`; pregunta concreta por el número de Sudáfrica)
+
+   Subject: One question about South Africa's emergency number
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent asks about a sick child and gets an answer only from official guidance (WHO, NHS and others), with the source under every answer. No ads, no account.
+
+   You know better than anyone what mothers ask MomConnect, so I have one small, specific question I can't answer from here.
+
+   Our South Africa page tells a parent to call 112 from a mobile or 10177, taken from the UK government's travel advice: https://pedibot.xyz/emergency/za?r=reach
+
+   Is that what you would tell a mother whose baby can't breathe properly? If there's a number families actually use, I'd rather show that one. The vaccine schedule is on the same site, in case anyone has a minute: https://pedibot.xyz/vaccines/za?r=reach
+
+   Thank you,
+   Nicolas Beca
+
+3. **Vaccinate Your Family (EE. UU.)** (`info@vaccinateyourfamily.org`; una línea en su boletín)
+
+   Subject: The CDC schedule, in English and Spanish, for parents
+
+   Hi,
+
+   I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free website where parents ask about their child's health and get an answer only from official guidance, with the source right underneath. No ads, no account.
+
+   One part of it is the vaccine page. A parent picks the US and sees the CDC schedule, with what's due now for their child's age, in English or in Spanish:
+   https://pedibot.xyz/vaccines/us?r=vyf
+   https://pedibot.xyz/es/vaccines/us?r=vyf
+
+   If you think it could be useful to the families you talk to, a line in your newsletter would mean a lot. And if anything on those pages looks off to you, I'd really rather know.
+
+   Best,
+   Nicolas Beca
+
+4. **ParentData (Emily Oster)** (`ask@parentdata.org`; hallazgo de los frascos)
+
+   Subject: Same word on the box, ten times the strength
+
+   Hi,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I'm a long way from your readers, but I think this one might interest them.
+
+   I make PediBot, a free website that answers parents' questions about a sick child using only official guidance, with the source under every answer. While building the dose calculator I kept running into the same trap: liquid medicines with the same name and different strengths. In the US, infants' ibuprofen drops are 40 mg per ml and the children's suspension is 20 mg per ml. Abroad it gets worse. Paracetamol "drops" are 100 mg per ml in India, 200 mg per ml in Brazil, and 100 mg per 5 ml in Ethiopia. Same word on the box, a tenfold difference.
+
+   So the calculator now asks which bottle you have before it gives a number: https://pedibot.xyz/dose?r=parentdata
+
+   If it's ever useful for something you write about dosing mix-ups, I'm happy to share how I gathered the bottles, country by country.
+
+   Best,
+   Nicolas Beca
+
+5. **NPR Global Health (antes Goats and Soda)** (`goatsandsoda@npr.org`; idea de reportaje: las gotas)
+
+   Subject: Story idea: "drops" of paracetamol, a tenfold difference between countries
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free, open-source website that answers parents' questions about a sick child using only guidance from health ministries, the WHO and paediatric societies, with the source attached to every answer.
+
+   I'm writing because of something I found while building its dose calculator that I haven't seen reported. The word "drops" on a bottle of children's paracetamol means very different things depending on the country. In India the drops are usually 100 mg per ml. In Brazil, 200 mg per ml. In Ethiopia, according to the national medicines authority's list, 100 mg per 5 ml. That's a tenfold difference behind the same word and the same dropper, and families move, and relatives send medicine across borders.
+
+   The calculator now asks which bottle you have before giving a dose: https://pedibot.xyz/dose?r=npr
+
+   If it could be a story for Global Health, I can send the sources for each country.
+
+   Best regards,
+   Nicolas Beca
+
+6. **Abriendo Puertas / Opening Doors (talleres para padres latinos en EE. UU.)** (`info@abriendopuertas.net` REBOTÓ, 550, y es la única que publica su web; sustituido por **PIQE**, Parent Institute for Quality Education, `info@piqe.org` de su /contact, con el mismo texto cambiando «sus talleres» por «los padres de sus clases», asunto «Para las dudas de salud de las familias de sus clases» y `?r=piqe`; familias)
+
+   Asunto: Para las dudas de salud de las familias de sus talleres
+
+   Hola:
+
+   Me llamo Nicolas Beca y escribo desde Sevilla, España. Hago PediBot, una web gratuita donde una mamá o un papá pregunta por la salud de su hijo, en español o en inglés, y le contesta solo con guías oficiales (CDC, AAP, OMS), con la fuente debajo. Sin anuncios y sin crear cuenta.
+
+   Pensé en sus talleres porque está hecha para quien cría en Estados Unidos pero piensa en español. Entiende los °F, usa el 911 y el calendario de vacunas de allá, y si un bebé de seis semanas tiene 100.4 °F, lo primero que dice es que hay que ir a urgencias hoy.
+
+   Por si les sirve compartirla con sus facilitadores: https://pedibot.xyz/es?r=abriendo-puertas
+
+   Y si alguien la prueba y ve algo raro, me encantaría saberlo.
+
+   Un saludo,
+   Nicolas Beca
+
+7. **Bliss (bebés prematuros y enfermos, Reino Unido)** (`hello@bliss.org.uk`; qué nos falta para sus familias)
+
+   Subject: For parents once they are home from the neonatal unit
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent asks about their baby's health and gets an answer built only from published guidance, with the source underneath. For a parent in the UK that mostly means NHS pages. No ads, no account.
+
+   I know the families you support have been through more than most by the time they get home. If their baby is under three months and has a temperature of 38 or more, the first thing PediBot says is that the baby needs to be seen today, before any other advice.
+
+   What I'm less sure about is what I'm missing for them. If someone on your team ever has five minutes to try it with the questions parents bring you after neonatal care, and tell me where it falls short, it would help me a lot: https://pedibot.xyz/?r=bliss
+
+   Thank you,
+   Nicolas Beca
+
+8. **Rede Nacional Primeira Infância (Brasil)** (`contato@primeirainfancia.org.br`; familias, en portugués de Brasil)
+
+   Assunto: Para as dúvidas de saúde das famílias, em português
+
+   Olá,
+
+   Meu nome é Nicolas Beca e escrevo de Sevilha, na Espanha. Faço o PediBot, um site gratuito onde a mãe ou o pai pergunta sobre a saúde do filho, em português, e recebe uma resposta tirada só de orientações oficiais, com a fonte embaixo. Sem anúncios e sem cadastro.
+
+   Uma coisa que aprendi fazendo a calculadora de dose: no Brasil, o paracetamol em gotas costuma ser de 200 mg por ml. No México e na Índia, as gotas são de 100 mg por ml. Mesmo nome na caixa, o dobro da força. Por isso a calculadora pergunta qual frasco a família tem antes de dar a dose.
+
+   E se um bebê de 6 semanas está com 38,2 de febre, a primeira coisa que ele diz é que precisa ir ao pronto-socorro hoje, sem esperar.
+
+   Caso seja útil para as organizações da Rede: https://pedibot.xyz/pt?r=rnpi
+
+   Se alguém testar e achar algo errado, eu adoraria saber.
+
+   Um abraço,
+   Nicolas Beca
+
+9. **Ekjut (grupos de mujeres en Jharkhand y Odisha, India)** (`ekjutindia@gmail.com`; que una facilitadora pruebe el hindi)
+
+   Subject: Could one of your facilitators try this in Hindi?
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website that answers parents' questions about a sick child using only official guidance, with the source under every answer. It also answers in Hindi, drawing on Vikaspedia, the Government of India portal, which gave us permission to use it.
+
+   I've been reading about your women's groups. If a mother writes "मेरे 6 हफ़्ते के बच्चे को 38.2 बुखार है", the first thing PediBot tells her is that the baby has to be seen today.
+
+   Hindi is not my language, though, and I'm sure it sounds stiff in places. Would one of your facilitators try a few of the questions mothers ask in the meetings and tell me where it fails? https://pedibot.xyz/hi?r=ekjut
+
+   Thank you,
+   Nicolas Beca
+
+10. **Population Foundation of India** (`info@populationfoundation.in`; opinión sobre el hindi)
+
+    Subject: A free child-health tool in Hindi, for an honest opinion
+
+    Hello,
+
+    I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free, open-source website that answers parents' questions about their child's health using only official guidance, and shows the document behind every answer. No ads, no account.
+
+    I'm writing to you because you've thought harder than most about how health information reaches families in India, in Hindi, on a phone. PediBot answers in Hindi too, with India's vaccine schedule and 112, and the Hindi answers draw on Vikaspedia, which gave us permission.
+
+    Here it is in Hindi: https://pedibot.xyz/hi?r=pfi
+
+    If anyone on your team has a look, I'd be grateful for one honest line on what doesn't work for an Indian parent.
+
+    Best regards,
+    Nicolas Beca
