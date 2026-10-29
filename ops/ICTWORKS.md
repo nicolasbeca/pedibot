@@ -47,7 +47,7 @@ About 750 words, informal and first person, with one screenshot of the dose calc
 ## 28-oct-2026: Wayan Vota la acepta
 
 > «I love this post idea. Please share a draft of your post.» (wayan@wayan.com, 28-oct 17:20 UTC,
-> hilo «ICTworks Guest Post»). Borrador escrito el 29-oct, **pendiente del sí del operador**: va
+> hilo «ICTworks Guest Post»). Borrador escrito y **ENVIADO el 29-oct** con su sí, en el hilo: va
 > con su nombre y es de fondo. Prefieren un Google Doc.
 >
 > Un cambio respecto al resumen, a propósito: el punto 2 decía «the language model never writes

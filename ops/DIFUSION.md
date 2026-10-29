@@ -2451,3 +2451,8 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
    Best regards,
    Nicolas Beca
+
+### Respuestas del 29-oct (enviadas por SMTP, en su hilo)
+
+- **Wayan Vota (ICTworks):** el borrador entero en el cuerpo (ops/ICTWORKS.md), con el aviso del cambio en el punto 2 y la oferta de Google Doc y captura. Con el sí del operador.
+- **Frank Brightwell (Somos Amigos):** VPH de RD corregido y fijado con test (enlace `?r=somosamigos`); tomada la nota de las webs dominicanas intermitentes; las curvas de la OMS para RD y Haití, pendientes de un documento oficial del MSP o el MSPP (config/growth_charts.yaml no admite países por suposición, y el correo de una clínica no se puede enseñar al padre). Con el sí del operador.
