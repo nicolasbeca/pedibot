@@ -2285,3 +2285,169 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
     Best regards,
     Nicolas Beca
+
+## Decimotercera tanda (29-oct-2026): enviada sin enseñársela, por SMTP desde el servidor
+
+> Mitad a quien reparte (Ser Padres, EFCNI, Hebammenverband, BPNI, TechCabal), mitad a grupos de familias (APREM, FEDALMA, PSI, Lullaby Trust, Bundesverband Das frühgeborene Kind). Hilo de prematuros por el 17-nov. Direcciones: de su web o de registros oficiales (Lobbyregister, Charity Commission, memorias), MX comprobado; Best Beginnings descartada (su dominio no tiene MX). Cada frase sobre lo que hace PediBot, probada en vivo el 29-oct (respuestas 1095-1099, marcadas como test). Salieron las diez sin error hacia las 07:53 (hora de Sevilla).
+
+1. **aprem.txt** (`aprem@aprem-e.org`)
+
+   Asunto: Una pregunta sobre familias de prematuros
+
+   Hola:
+
+   Soy Nicolas Beca y escribo desde Sevilla. Hago PediBot, una web gratuita donde una madre o un padre pregunta por la salud de su hijo y le contesta solo con guías publicadas (la SEUP, la AEPap, el NHS...), con la fuente debajo. Sin anuncios y sin registrarse.
+
+   Esta mañana la probé con «mi bebé prematuro de 2 meses tiene 38 de fiebre». Lo primero que sale es un aviso rojo: a urgencias hoy, sin esperar.
+
+   Pero sé que una familia de prematuros pregunta cosas que a otras ni se les ocurren, y no tengo claro qué le falta para ellas. Si alguien de la asociación tiene cinco minutos para probarla con las dudas que os llegan y decirme dónde se queda corta, me ayudaría muchísimo: https://pedibot.xyz/es?r=aprem
+
+   Un saludo,
+   Nicolas Beca
+
+2. **fedalma.txt** (`contacta@fedalma.org`)
+
+   Asunto: Para cuando la duda ya no es de lactancia
+
+   Hola:
+
+   Me llamo Nicolas Beca y escribo desde Sevilla. Hago PediBot, una web gratuita que contesta las dudas de salud de los niños solo con guías oficiales, con la fuente debajo de cada respuesta. Sin anuncios y sin crear cuenta.
+
+   Os escribo pensando en las madres que llegan a un grupo de apoyo con el bebé con fiebre y una pregunta que ya no es de lactancia. Si un bebé de seis semanas tiene 38,2, lo primero que les dice PediBot es que hay que ir a urgencias hoy. Lo demás viene después.
+
+   Por si os sirve pasarla a los grupos de la federación: https://pedibot.xyz/es?r=fedalma
+
+   Y si alguna monitora la prueba y ve algo raro, me encantaría saberlo.
+
+   Un abrazo,
+   Nicolas Beca
+
+3. **serpadres.txt** (`serpadres@serpadres.es`)
+
+   Asunto: Mismo nombre en la caja, cinco veces más fuerte
+
+   Hola:
+
+   Soy Nicolas Beca, de Sevilla. Hago PediBot, una web gratuita que responde dudas de salud infantil con guías oficiales y la fuente debajo de cada respuesta.
+
+   Haciendo la calculadora de dosis me encontré con algo que quizá interese a vuestros lectores. En España el paracetamol en gotas suele ser de 100 mg por ml. En Etiopía, según la lista de su agencia del medicamento, es de 100 mg por 5 ml, así que el frasco español es cinco veces más fuerte. Y en Brasil las gotas son de 200 mg por ml, el doble que aquí. Con familias que viajan, que llegan de fuera o a las que un familiar les manda medicinas, el mismo nombre en la caja no es la misma dosis.
+
+   Por eso la calculadora pregunta primero qué frasco tienes: https://pedibot.xyz/es/dose?r=serpadres
+
+   Si os encaja para un artículo, os mando las fuentes de cada país.
+
+   Un saludo,
+   Nicolas Beca
+
+4. **psi.txt** (`support@postpartum.net`)
+
+   Asunto: For the 3 a.m. questions about the baby
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where a parent asks about their baby's health and gets an answer built only from official guidance (CDC, AAP, NHS), with the source underneath. No ads, no account.
+
+   I know PSI's work is about the parents themselves, not the baby's temperature. But a lot of the worry in those first months seems to come from not knowing whether something is serious. PediBot tries to answer that plainly. If a six-week-old has 100.4 °F, the first thing it says is to go to the ER today. And when something can wait, it says that too.
+
+   If you think it could help some of the families you support: https://pedibot.xyz/?r=psi
+
+   And if anyone tries it and something feels off, I'd really like to hear.
+
+   Best,
+   Nicolas Beca
+
+5. **lullaby.txt** (`office@lullabytrust.org.uk`)
+
+   Asunto: Would you check what we tell parents about safe sleep?
+
+   Hello,
+
+   I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free website that answers parents' questions about their baby's health from published guidance only, with the source under each answer. For UK parents that mostly means NHS pages.
+
+   This morning I asked it "Can my 2 month old sleep on her tummy?". It said no: always on her back, in her own cot with no toys, blankets or pillows, and in the same room as you for the first six months. I think that's in line with your advice, but I'd much rather someone who really knows this had a look, especially at the harder questions, like sharing a bed or a baby falling asleep in a car seat.
+
+   If someone on your team could try a few and tell me where it goes wrong, it would help a lot: https://pedibot.xyz/?r=lullaby
+
+   Thank you,
+   Nicolas Beca
+
+6. **efcni.txt** (`info@efcni.org`)
+
+   Asunto: A line for parents of preterm babies, ahead of 17 November
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free, open-source website that answers parents' questions about a sick child using only official guidance, and shows the document behind every answer. It works in eight languages, German, French and Spanish among them.
+
+   With 17 November coming up, I've been trying it with the questions parents of preterm babies ask. This morning, "Mi bebé prematuro de 2 meses tiene 38 de fiebre": before anything else it shows a red banner telling the family to go to the emergency department today, without waiting.
+
+   I know your network reaches parent organisations all over Europe. If you think it's useful for them, one line in a newsletter would be more than enough: https://pedibot.xyz/?r=efcni
+
+   Best regards,
+   Nicolas Beca
+
+7. **fruehgeborene.txt** (`info@fruehgeborene.de`)
+
+   Asunto: Eine Frage zu Familien von Frühgeborenen
+
+   Guten Tag,
+
+   ich heiße Nicolas Beca und schreibe aus Sevilla in Spanien. Entschuldigen Sie mein Deutsch, es ist nicht meine Sprache.
+
+   Ich mache PediBot, eine kostenlose Website: Eltern fragen nach der Gesundheit ihres Kindes und bekommen eine Antwort, die nur aus offiziellen Leitlinien stammt, mit der Quelle darunter. Auf Deutsch stützt sie sich vor allem auf kindergesundheit-info.de vom BIÖG, das uns die Erlaubnis dazu gegeben hat. Ohne Werbung, ohne Anmeldung.
+
+   Wenn ein Baby mit sechs Wochen 38,2 Fieber hat, sagt PediBot als Erstes, dass es heute in die Notaufnahme muss.
+
+   Was ich nicht gut weiß, ist, was Familien von Frühgeborenen darüber hinaus brauchen. Wenn jemand bei Ihnen fünf Minuten hat, es mit den Fragen der Eltern auszuprobieren und mir zu sagen, wo es nicht reicht, würde mir das sehr helfen: https://pedibot.xyz/de?r=fruehgeborene
+
+   Viele Grüße
+   Nicolas Beca
+
+8. **dhv.txt** (`info@hebammenverband.de`)
+
+   Asunto: Für die Fragen, die abends per Nachricht kommen
+
+   Guten Tag,
+
+   ich bin Nicolas Beca aus Sevilla, Spanien, und mache PediBot, eine kostenlose Website ohne Werbung, die Fragen von Eltern zur Gesundheit ihres Kindes nur mit offiziellen Leitlinien beantwortet, mit der Quelle unter jeder Antwort. Auf Deutsch kommt das meiste von kindergesundheit-info.de, mit Erlaubnis des BIÖG.
+
+   Ich denke an die Fragen, die Hebammen spät abends per Nachricht bekommen. Schreibt eine Mutter, dass ihr sechs Wochen altes Baby 38,2 Fieber hat, steht bei PediBot ganz oben: heute in die Notaufnahme. Erst danach kommt der Rest, weiter stillen, nicht zu warm einpacken.
+
+   Wäre es möglich, PediBot einmal kurz in einem Newsletter an Ihre Mitglieder zu erwähnen? https://pedibot.xyz/de?r=dhv
+
+   Und wenn eine Hebamme es ausprobiert und etwas falsch findet, würde ich das sehr gern erfahren.
+
+   Viele Grüße
+   Nicolas Beca
+
+9. **bpni.txt** (`bpni@bpni.org`)
+
+   Asunto: Does this say the right thing about breastfeeding, in Hindi?
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website with no ads that answers parents' questions about a sick child using only official guidance, with the source under every answer. In Hindi it draws on WHO and on Vikaspedia, which gave us permission.
+
+   I asked it "मेरा 3 महीने का बच्चा सिर्फ़ माँ का दूध पीता है, उसे दस्त हो रहे हैं". It answered with ORS and zinc, and said clearly to keep breastfeeding.
+
+   You know better than anyone how easily that message gets lost. Would someone on your team look at a few answers about breastfeeding and tell me where they're wrong? https://pedibot.xyz/hi?r=bpni
+
+   Thank you,
+   Nicolas Beca
+
+10. **techcabal.txt** (`editor@techcabal.com`)
+
+   Asunto: A child-health site that keeps working with no signal
+
+   Hello,
+
+   I'm Nicolas Beca, an architect in Seville, Spain. In my spare time I build PediBot, a free, open-source website that answers parents' questions about a sick child using only published guidance, with the source under each answer.
+
+   One thing I think could interest your readers: after the first visit, the parts that matter in an emergency keep working with no signal. The warning signs, the doses, and the emergency number and vaccine schedule of all 54 African countries are stored on the phone. A mother can also write in Swahili, and the answer comes back in Swahili.
+
+   Here it is: https://pedibot.xyz/?r=techcabal
+
+   If it fits a story, I'm happy to send more detail.
+
+   Best regards,
+   Nicolas Beca

@@ -1345,9 +1345,16 @@ def _age_context(tr: TriageResult, texto: str = "") -> str:
             "should see a doctor, say it.\n"
         ) + _BEBE
     if tr.age_months < 6:
+        # 29-oct-2026: «Do not suggest ibuprofen» a secas hacía decir «no le des ibuprofeno a un
+        # bebé de 4 meses, según la AEPap», cuando la AEPap (y el NHS, y nuestra calculadora) lo
+        # permiten desde 3 meses y 5 kg. MedlinePlus dice 6 meses: se cuentan las dos posturas.
         return (
-            f"CHILD AGE: {tr.age_months:g} months — under 6 months. Do not suggest ibuprofen; "
-            "any medication only if a doctor advised it.\n"
+            f"CHILD AGE: {tr.age_months:g} months — under 6 months. Do not recommend ibuprofen "
+            "on your own initiative; any medication only if a doctor advised it. If the parent "
+            "asks about ibuprofen, the guidelines differ at this age: the NHS and the AEPap allow "
+            "it from 3 months and 5 kg; MedlinePlus says not under 6 months. Say both, naming "
+            "each organisation, and do not decide for the parent. Never present the 3-month "
+            "limit as a reason not to give it to this child.\n"
         ) + _BEBE
     if tr.age_months < 12:
         return f"CHILD AGE: {tr.age_months:g} months\n" + _BEBE
