@@ -2456,3 +2456,173 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
 - **Wayan Vota (ICTworks):** el borrador entero en el cuerpo (ops/ICTWORKS.md), con el aviso del cambio en el punto 2 y la oferta de Google Doc y captura. Con el sí del operador.
 - **Frank Brightwell (Somos Amigos):** VPH de RD corregido y fijado con test (enlace `?r=somosamigos`); tomada la nota de las webs dominicanas intermitentes; las curvas de la OMS para RD y Haití, pendientes de un documento oficial del MSP o el MSPP (config/growth_charts.yaml no admite países por suposición, y el correo de una clínica no se puede enseñar al padre). Con el sí del operador.
+
+## Decimocuarta tanda (30-oct-2026): enviada sin enseñársela, por SMTP desde el servidor
+
+> «Revisa correo y manda los 10 de hoy». Mitad a quien reparte (Maldita Ciencia, Newtral, Chequeado, Health Policy Watch, Down To Earth), mitad a familias o a quien las atiende (FEFN, CEAPA, AFPA/mpedia, Doula UK, Mocha Moms). Direcciones leídas hoy en sus webs desde el servidor (Maldita: la de Laura García Merino, coordinadora de Maldita Ciencia, en /quienes-somos; mpedia.fr es la web de la AFPA, contacto en sus menciones legales), MX comprobado en todas. Descartados por no publicar dirección: Guía Infantil, Rest of World, Mumsnet, Gingerbread, Naître et grandir, Africa Check, Health-e, Bhekisisa, LLL GB, National Diaper Bank Network, Twins Trust; e-lactancia, porque PediBot no contesta sobre medicinas de la madre que da el pecho («no tengo información fiable»). Up To Kids (Portugal) aparcado: las respuestas en portugués salen en portugués de Brasil. Comprobado en vivo hoy (marcado test): fiebre a las 6 semanas da «urgent» en FR, PT, GB y US (100.6 °F convertido); ibuprofeno a 4 meses da las dos posturas; calculadora: 10 kg → Apiretal/Gelocatil gotas 1.5 ml, jarabe 120/5 6.2 ml, Tempra 160/5 4.6 ml, gotas 200 mg/ml 0.7 ml; 9 kg → Crocin gotas 1.3 ml, jarabe 125/5 5.4 ml; botón «Explícaselo a mi hijo» con la varicela. Los 10 enlaces, 200. Salieron las diez sin error hacia las 08:50 (hora de Sevilla).
+
+1. **maldita.txt** (`lgarcia@maldita.es`)
+
+   Asunto: Gelocatil: misma marca, cuatro veces más fuerte
+
+   Hola, Laura:
+
+   Soy Nicolas Beca y escribo desde Sevilla. Hago PediBot, una web gratuita que contesta las dudas de salud de los niños solo con guías publicadas (la AEPap, la SEUP, el NHS...) y pone la fuente debajo de cada respuesta.
+
+   Te escribo por algo que me encontré haciendo la calculadora de dosis y que creo que da para una pieza de Maldita Ciencia. El Gelocatil para niños se vende en gotas de 100 mg por ml y en jarabe de 120 mg por 5 ml. Misma marca, y las gotas son unas cuatro veces más concentradas. Para una niña de 10 kilos, la dosis habitual de paracetamol son 1,5 ml de gotas o algo más de 6 ml de jarabe. Si alguien se queda con «la última vez le di 5 ml» y cambia de frasco, el error es serio.
+
+   Por eso la calculadora pregunta primero qué frasco tienes en la mano: https://pedibot.xyz/es/dose?r=maldita
+
+   Si te interesa, te mando las fuentes de cada cifra.
+
+   Un saludo,
+   Nicolas Beca
+
+2. **newtral.txt** (`info@newtral.es`)
+
+   Asunto: Cuando dos guías oficiales dicen lo contrario
+
+   Hola:
+
+   Me llamo Nicolas Beca y escribo desde Sevilla. Hago PediBot, una web gratuita que responde dudas de salud infantil solo con guías oficiales, con la fuente debajo de cada respuesta.
+
+   Os cuento algo que quizá os sirva para una pieza. Si preguntas si se le puede dar ibuprofeno a un bebé de 4 meses, las guías no dicen lo mismo. El NHS británico y la AEPap lo permiten desde los 3 meses y los 5 kilos. MedlinePlus, de la Biblioteca Nacional de Medicina de EE. UU., dice que no antes de los 6 meses. Un padre que busca en Google encuentra una u otra según el día, y las dos suenan igual de oficiales.
+
+   En PediBot hemos decidido no elegir: cuando las guías discrepan, se dicen las dos, cada una con su nombre. Podéis probarlo aquí: https://pedibot.xyz/es?r=newtral
+
+   Si os encaja, tengo más casos así.
+
+   Un saludo,
+   Nicolas Beca
+
+3. **chequeado.txt** (`info@chequeado.com`)
+
+   Asunto: Las mismas gotas, el doble de fuertes
+
+   Hola:
+
+   Soy Nicolas Beca y escribo desde Sevilla, España. Hago PediBot, una web gratuita que contesta las dudas de salud de los chicos solo con guías publicadas, con la fuente debajo de cada respuesta. Sin publicidad y sin registrarse.
+
+   Les escribo por un dato que me encontré armando la calculadora de dosis. En Brasil, las gotas de paracetamol para bebés son de 200 mg por ml. En México o en España, de 100 mg por ml. En la caja dice lo mismo, «gotas de paracetamol», y unas son el doble de fuertes que las otras. Para un nene de 10 kilos son 0,7 ml de las brasileñas o 1,5 ml de las otras. Con familias que cruzan la frontera, o que reciben remedios que les manda un pariente, me parece un riesgo del que se habla poco.
+
+   Por eso la calculadora pregunta primero qué frasco tenés: https://pedibot.xyz/es/dose?r=chequeado
+
+   Si les sirve para una nota, les paso las fuentes de cada país.
+
+   Saludos,
+   Nicolas Beca
+
+4. **fefn.txt** (`info@familiasnumerosas.org`)
+
+   Asunto: Para el botiquín de una casa con muchos niños
+
+   Hola:
+
+   Soy Nicolas Beca, de Sevilla. Hago PediBot, una web gratuita que responde las dudas de salud de los niños solo con guías oficiales (la AEPap, la SEUP...), con la fuente debajo. Sin anuncios y sin crear cuenta.
+
+   Pienso en las casas con tres o cuatro niños, donde en el botiquín conviven el Apiretal de uno, el jarabe del otro y lo que sobró del verano. En PediBot pones el peso del niño y te dice cuántos ml son con cada frasco. Para 10 kilos, 1,5 ml de gotas o algo más de 6 ml de jarabe, que no es lo mismo.
+
+   Si os parece útil, una línea en vuestro boletín a las familias me ayudaría muchísimo: https://pedibot.xyz/es/dose?r=fefn
+
+   Un saludo,
+   Nicolas Beca
+
+5. **ceapa.txt** (`ceapa@ceapa.es`)
+
+   Asunto: Un botón para explicárselo a los niños
+
+   Hola:
+
+   Me llamo Nicolas Beca y escribo desde Sevilla. Hago PediBot, una web gratuita que contesta las dudas de salud de los niños solo con guías oficiales, con la fuente debajo de cada respuesta. No tiene anuncios ni pide registrarse.
+
+   Hay una cosa que creo que puede gustar a las familias de las AMPAs. Debajo de cada respuesta hay un botón, «Explícaselo a mi hijo», que la reescribe para que la entienda un crío. Le pregunté «¿por qué me pica tanto la varicela?» y le contó que es como cuando te pica un mosquito pero en muchos sitios a la vez, que no se rasque las ampollitas y que avise a mamá o papá si se siente mal.
+
+   Si lo veis útil para pasarlo a las federaciones, aquí está: https://pedibot.xyz/es?r=ceapa
+
+   Un saludo,
+   Nicolas Beca
+
+6. **afpa.txt** (`contact@mpedia.fr`)
+
+   Asunto: Un pédiatre pourrait-il le tester ?
+
+   Bonjour,
+
+   Je m'appelle Nicolas Beca et je vous écris de Séville, en Espagne. Pardon pour mon français, ce n'est pas ma langue.
+
+   Je fais PediBot, un site gratuit, sans publicité et sans inscription, où un parent pose une question sur la santé de son enfant et reçoit une réponse tirée uniquement de guides officiels, avec la source sous chaque réponse.
+
+   Ce matin je lui ai écrit « Mon bébé de 6 semaines a 38,2 de fièvre ». La première chose qu'il affiche est un bandeau rouge : aux urgences aujourd'hui, sans attendre.
+
+   Mais je ne suis pas médecin, et je sais que ce qu'on dit aux parents en France n'est pas toujours ce qu'on dit à Londres ou à Madrid. Est-ce qu'un pédiatre de l'AFPA aurait cinq minutes pour l'essayer avec les questions qu'il reçoit, et me dire où ça ne va pas ? https://pedibot.xyz/fr?r=afpa
+
+   Merci beaucoup,
+   Nicolas Beca
+
+7. **hpw.txt** (`info@healthpolicy-watch.org`)
+
+   Asunto: When official advice for parents disagrees
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free, open-source website that answers parents' questions about a sick child using only official guidance, with the source under every answer.
+
+   There's something I keep running into that I think could interest your readers: official guidance for parents often disagrees, and each version sounds equally final. Ask whether a 4-month-old can have ibuprofen. The NHS says yes from 3 months and 5 kg, and so does the Spanish association of primary care paediatricians. MedlinePlus, from the US National Library of Medicine, says not before 6 months. A parent searching at night gets whichever comes up first.
+
+   PediBot doesn't pick. When the guidance differs, it says what each organisation says, by name. You can try it here: https://pedibot.xyz/?r=hpw
+
+   If it's useful for a piece, I have more cases like this one.
+
+   Best regards,
+   Nicolas Beca
+
+8. **dte.txt** (`editor@downtoearth.org.in`)
+
+   Asunto: Same brand, four times stronger
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website with no ads that answers parents' questions about a sick child from official guidance only, with the source under each answer. It works in Hindi too.
+
+   While building the dose calculator I found something I think deserves more attention. Crocin for children comes as drops of 100 mg per ml and as a syrup of 125 mg per 5 ml. Same brand, and the drops are about four times stronger. For a 9 kg baby, the usual dose of paracetamol is 1.3 ml of the drops or 5.4 ml of the syrup. A parent who remembers "last time it was 5 ml" and picks up the other bottle can get it badly wrong.
+
+   So the calculator asks first which bottle you have: https://pedibot.xyz/hi/dose?r=dte
+
+   If it fits a story, I'm happy to send the sources.
+
+   Best regards,
+   Nicolas Beca
+
+9. **doulauk.txt** (`admin@doula.org.uk`)
+
+   Asunto: For the late-night messages in the first weeks
+
+   Hello,
+
+   I'm Nicolas Beca, from Seville, Spain. I make PediBot, a free website where a parent asks about their baby's health and gets an answer built only from published guidance, mostly the NHS for UK families, with the source underneath. No ads, no account.
+
+   I imagine doulas get their share of late-night messages in those first weeks. If a mum writes "my 6 week old has a temperature of 38.2", the first thing PediBot shows is a red banner: get seen in A&E today, without waiting. Then the rest: keep breastfeeding, don't bundle the baby up, no paracetamol under 2 months.
+
+   Would you consider a line about it in a members' newsletter? https://pedibot.xyz/?r=doulauk
+
+   And if a doula tries it and something feels wrong, I'd really like to know.
+
+   Best wishes,
+   Nicolas Beca
+
+10. **mochamoms.txt** (`nationaloffice@mochamoms.org`)
+
+   Asunto: It understands 100.6 °F
+
+   Hello,
+
+   I'm Nicolas Beca, writing from Seville, Spain. I make PediBot, a free website where parents ask about their child's health and get an answer drawn only from official guidance, with the source under each answer. No ads, no sign-up.
+
+   One small thing I worked hard on: it understands Fahrenheit. If a mom types "my 5 week old has a fever of 100.6", it converts it, and the first thing she sees is a red banner saying the baby needs to be seen in the emergency department today. When something can wait, it says that too.
+
+   If you think it could help the moms in your chapters, here it is: https://pedibot.xyz/?r=mochamoms
+
+   And if anyone tries it and something seems off, I'd love to hear.
+
+   Warmly,
+   Nicolas Beca
