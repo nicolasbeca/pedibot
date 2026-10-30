@@ -300,6 +300,10 @@ class Rule:
     #: dice el aviso (al estridor le llegaba la prevención de enfermedades genéticas del manual
     #: cubano). Sin pasaje comprobado, no se inyecta nada.
     source_chunk: str | None = None
+    #: 30-oct-2026: el mismo pasaje en otra lengua (`source_chunk_en` en el YAML), comprobado
+    #: igual. Al lector en inglés con fiebre a las 5 semanas le llegaban tres hojas de la SEUP en
+    #: castellano: el pasaje de la regla va delante y el redactor cita lo primero.
+    source_chunks: dict[str, str] = field(default_factory=dict)
     #: 8-oct-2026: lo que dice que es leve («small burn») y lo que la hace grave aunque se diga
     #: leve (la cara, una quemadura química). La regla deja de saltar sólo con lo primero y nada
     #: de lo segundo. «My son got a small burn from hot water on his arm» daba urgencias hoy; el
@@ -1174,6 +1178,9 @@ class Triage:
                     patterns=[re.compile(aplana(p), re.I) for p in r.get("patterns", [])],
                     requires=list(r.get("requires", [])),
                     source_chunk=r.get("source_chunk"),
+                    source_chunks={
+                        k[13:]: v for k, v in r.items() if k.startswith("source_chunk_")
+                    },
                     mild_if=[re.compile(aplana(p), re.I) for p in r.get("mild_if", [])],
                     serious_if=[re.compile(aplana(p), re.I) for p in r.get("serious_if", [])],
                 )

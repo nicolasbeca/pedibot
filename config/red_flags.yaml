@@ -1657,6 +1657,9 @@ rules:
   level: urgent
   source: seup_acudir_urgencias
   source_chunk: "seup_acudir_urgencias#comporta_miento#1"
+  # 30-oct-2026: al lector en inglés, el NHS («38C or higher if they're under 3 months old»);
+  # ninguna ficha de EE. UU. del índice dice el umbral
+  source_chunk_en: "nhs_en_how_to_take_your_babys_temperature#what_should_i_do_if_my_baby_has_a_high_t#1"
   reason_es: Bebé menor de 3 meses con fiebre (≥38 °C)
   reason_en: Baby under 3 months with fever (≥38 °C / 100.4 °F)
   reason_fr: Bébé de moins de 3 mois avec de la fièvre (≥38 °C)

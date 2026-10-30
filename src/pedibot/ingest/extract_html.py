@@ -128,7 +128,9 @@ def extract_html(path: Path) -> Extracted:
         size = _HEADING_SIZE.get(el.name, BODY_SIZE)
         if el.name in _HEADING_SIZE and text in _BIBLIOGRAFIA:
             break
-        lines.append(Line(text=text, size=size, bold=el.name in _HEADING_SIZE, page=1))
+        lines.append(
+            Line(text=text, size=size, bold=el.name in _HEADING_SIZE, page=1, item=el.name == "li")
+        )
     return Extracted(
         path=path,
         sha256=file_sha256(path),

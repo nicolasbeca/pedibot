@@ -23,7 +23,20 @@ class Section:
 
     @property
     def text(self) -> str:
-        return join_hyphenated(" ".join(ln.text for ln in self.lines)).strip()
+        return join_hyphenated(" ".join(_cerrado(ln) for ln in self.lines)).strip()
+
+
+#: Lo que ya cierra un punto de lista: no se le añade nada.
+_CIERRA = (".", ";", ":", ",", "!", "?", "…", "؟", "؛", "।", "॥")
+
+
+def _cerrado(ln: Line) -> str:
+    """Un `<li>` sin puntuación final, cerrado con «;» (30-oct-2026). Pegados con un espacio,
+    «…too many clothes or bedclothes do not give aspirin…» era una sola frase, y el redactor
+    escribió «Do not give them in too many clothes». «;» y no «.»: el separador de frases no corta
+    por él, y los pasajes conservan sus límites (tests/test_list_items_keep_their_edges.py)."""
+    t = ln.text.rstrip()
+    return f"{t};" if ln.item and not t.endswith(_CIERRA) else ln.text
 
 
 def _is_upper(text: str) -> bool:

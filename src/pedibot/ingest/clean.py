@@ -83,6 +83,6 @@ def clean(ex: Extracted) -> Extracted:
             t = normalize_line(ln.text)
             if not t or _PAGE_NUM.match(t) or _LEAFLET_HEADER.match(t) or t.lower() in noise:
                 continue
-            kept.append(Line(text=t, size=ln.size, bold=ln.bold, page=ln.page))
+            kept.append(Line(text=t, size=ln.size, bold=ln.bold, page=ln.page, item=ln.item))
         p.lines = kept
     return ex

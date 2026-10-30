@@ -20,6 +20,8 @@ class Line:
     size: float
     bold: bool = False
     page: int = 0
+    #: un punto de lista (`<li>`): al unir, se cierra con «;» si no trae puntuación (30-oct-2026)
+    item: bool = False
 
 
 @dataclass

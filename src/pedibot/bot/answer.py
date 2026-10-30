@@ -1896,7 +1896,9 @@ class Engine:
             )
         return self._ficha
 
-    def _inject_rule_sources(self, tr: TriageResult, hits: list[Hit]) -> list[Hit]:
+    def _inject_rule_sources(
+        self, tr: TriageResult, hits: list[Hit], lang: str = "es"
+    ) -> list[Hit]:
         """When a triage rule fired, put the warning-signs chunk of the rule's own source first,
         so the drafted sentence "must be seen today" can cite it instead of echoing the prompt
         (faithfulness judge, 25-ago: 6 of 8 'unfaithful' were exactly this)."""
@@ -1904,15 +1906,17 @@ class Engine:
             return hits
         # 7-oct-2026: el pasaje comprobado de cada regla (`Rule.source_chunk`), no «el primer
         # pasaje de alarma» de su documento, que en 75 de 97 reglas hablaba de otra cosa.
+        # 30-oct-2026: y el de la lengua del lector, si la regla lo tiene (`source_chunks`).
         present = {h.chunk.chunk_id for h in hits}
         injected: list[Hit] = []
         for rule in tr.matched:
-            if not rule.source_chunk or rule.source_chunk in present:
+            cid = rule.source_chunks.get(lang) or rule.source_chunk
+            if not cid or cid in present:
                 continue
-            c = self.retriever.index.get(rule.source_chunk)
+            c = self.retriever.index.get(cid)
             if c is not None:
                 injected.append(Hit(c, 99.0, 1))
-                present.add(rule.source_chunk)
+                present.add(cid)
         return (injected + hits)[: max(len(hits), 6) + len(injected)]
 
     def _inject_doc_warnings(self, hits: list[Hit]) -> list[Hit]:
@@ -2856,7 +2860,7 @@ class Engine:
             if self.suelo_relativo and hits:
                 tope = max(h.score for h in hits)
                 hits = [h for h in hits if h.score >= tope * self.suelo_relativo] or hits
-            hits = self._inject_rule_sources(tr, hits)
+            hits = self._inject_rule_sources(tr, hits, lang)
             # 22-oct-2026: respira mal y nadie ha dicho por qué → fuera los pasajes de una
             # enfermedad concreta, cuyo consejo es de otra situación (bot/breathing_cause.py).
             antes = len(hits)
