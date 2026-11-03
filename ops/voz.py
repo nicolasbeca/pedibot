@@ -6,7 +6,8 @@ que hay que hacer con un texto está en ops/VOZ.md; aquí va sólo lo que se pue
 
   - «para»: no sale. Rayas largas, listas y negritas, frases de plantilla, comillas curvas, la
     firma con tilde, un enlace a pedibot.xyz sin su `?r=`.
-  - «ojo»: sale, pero se mira. Largo, frases muy largas, «no solo… sino», vocabulario de IA.
+  - «ojo»: sale, pero se mira. Largo, frases muy largas, «no solo… sino», «soy X, no Y», más de
+    tres cifras, frases-golpe, vocabulario de IA.
 
 Sin dependencias: lo usa ops/correo.py con el Python del servidor.
 
@@ -72,6 +73,21 @@ NO_SOLO = re.compile(
     re.IGNORECASE,
 )
 
+#: «I'm an architect, not a doctor»: la frase-eslogan que se define por lo que no es. El operador,
+#: 3-nov: «ese tipo de frases como muy directas también son muy de IA»
+X_NO_Y = re.compile(
+    r"\b(?:i'?m|i am|it'?s|it is|this is|we'?re|we are)\s+(?:an?\s+|the\s+)?[\w-]+,\s+not\s+[\w-]+"
+    r"|\b(?:soy|somos|es|son)\s+(?:una?\s+)?[\w-]+,\s+no\s+(?:una?\s+)?[\w-]+",
+    re.IGNORECASE,
+)
+
+#: «Ninguna persona escribe datos muy concretos ni muy específicos» (3-nov): más de tres cifras
+#: en un texto es una ficha técnica, no alguien contando algo
+CIFRAS = 3
+#: frases de cinco palabras o menos dentro de un párrafo («That made me think.», «A lot of parents
+#: can't.»): una suelta es de persona; dos o más son el ritmo de golpe que escribe la IA
+GOLPE = 5
+
 _RAYA = re.compile(r"[—–]")
 _LISTA = re.compile(r"^\s*([-*•·]|\d{1,2}[.)])\s+\S", re.MULTILINE)
 _MARKDOWN = re.compile(r"\*\*[^*]+\*\*|^#{1,6}\s|__[^_]+__", re.MULTILINE)
@@ -113,10 +129,16 @@ def revisa(texto: str, asunto: str = "", palabras: int = PALABRAS_CORREO) -> lis
         if len(f.split()) > FRASE_LARGA:
             avisos.append(Aviso(False, "frase_larga", f[:90].replace("\n", " ") + "…"))
             break
-    for regla, patron in (("no_solo", NO_SOLO), ("palabra_de_ia", PALABRAS_DE_IA)):
+    for regla, patron in (("no_solo", NO_SOLO), ("x_no_y", X_NO_Y), ("palabra_de_ia", PALABRAS_DE_IA)):
         m = patron.search(todo)
         if m:
             avisos.append(Aviso(False, regla, _cerca(todo, m)))
+    cifras = re.findall(r"\b\d+(?:[.,]\d+)?\b", re.sub(r"https?://\S+", "", texto))
+    if len(cifras) > CIFRAS:
+        avisos.append(Aviso(False, "cifras", f"{len(cifras)} cifras: {', '.join(cifras[:6])}"))
+    golpes = _golpes(texto)
+    if len(golpes) >= 2:
+        avisos.append(Aviso(False, "frases_golpe", " / ".join(golpes[:4])))
     if texto.count("!") > 1:
         avisos.append(Aviso(False, "exclamaciones", f"{texto.count('!')} signos de exclamación"))
     if _SE_PRESENTA.search(_entrada(texto, 8)):
@@ -132,6 +154,18 @@ _SE_PRESENTA = re.compile(
     r"|chamo-me|meu nome é|sou o)\b",
     re.IGNORECASE,
 )
+
+
+def _golpes(texto: str) -> list[str]:
+    """Las frases muy cortas dentro de un párrafo de varias. El saludo, la despedida y la firma son
+    párrafos de una sola «frase», así que no cuentan."""
+    golpes = []
+    for parrafo in re.split(r"\n\s*\n", texto):
+        frases = [" ".join(f.split()) for f in re.split(r"(?<=[.!?])\s+", parrafo.strip()) if f.strip()]
+        if len(frases) < 2:
+            continue
+        golpes += [f for f in frases if f.endswith(".") and len(f.split()) <= GOLPE]
+    return golpes
 
 
 def _entrada(texto: str, n: int = 4) -> str:

@@ -4,6 +4,12 @@
 > written by AI… It sounds like a copy-paste from AI. Please add your own color to the words.» No
 > era la primera vez: el 14-oct el operador leyó la tercera tanda y dijo «a veces parece muy IA».
 > Pidió un perfil de cómo habla él y un filtro por el que pase todo lo que salga con su nombre.
+>
+> **Corregido el mismo 3-nov**, al leer el artículo reescrito con su historia (pasaba limpio):
+> «Ninguna persona escribe datos muy concretos ni muy específicos. Eso debes quitarlo. Quita
+> frases tuyas tipo la de soy arquitecto no doctor. Ese tipo de frases como muy directas también
+> son muy de IA.» Esta primera versión decía lo contrario («la cuenta hecha», «Misma marca.»):
+> lo de abajo ya está cambiado.
 
 ## Cuándo se usa
 
@@ -46,11 +52,13 @@ Los rasgos, con frases suyas:
 1. **Va al grano y abre con lo que pasa**, no con quién es. «El problema que tenemos ahora mismo es
    que ganamos muchas veces poco dinero, pero cuando perdemos, perdemos mucho.» «Lo que me preocupa
    es estar entrando mal.»
-2. **Explica con un ejemplo y la cuenta hecha.** «Sabemos que nuestras obras rondan entre 10 y 80
-   millones. Un 1 % de negociación son entre 100.000 y 800.000 € de ahorro directo.» «Hoy por hoy un
-   comparativo cuesta 4-5 días de trabajo intenso.»
-3. **Frases cortas.** Cuando se alarga, encadena hablando: «con lo cual», «es decir», «eso por un
-   lado; por otro lado», «simplemente».
+2. **Explica con un ejemplo, pero hacia fuera sin la ficha técnica.** Conmigo da cifras («un
+   comparativo cuesta 4-5 días»); en un texto para otros, el ejemplo va en palabras: «en Etiopía
+   las gotas están mucho menos concentradas que las nuestras», no «100 mg por 5 ml frente a 100 mg
+   por ml». Ninguna persona escribe tres datos exactos seguidos.
+3. **Frases encadenadas, como habla.** Sus mensajes son cortos, pero cuando cuenta algo (el audio
+   del 3-nov) las frases van enlazadas: «con lo cual», «es decir», «y bueno», «al final», «la
+   verdad es que». Nada de frases-golpe sueltas.
 4. **Dice lo que no sabe.** «No sé», «entiendo que», «creo que», «quizás». Pregunta cuando duda.
 5. **Opina claro y en corto.** «Me gusta bastante como está.» «No aporta mucho.» «Le damos demasiado
    bombo.» «No tiene sentido.»
@@ -92,6 +100,12 @@ operador ya marcó. **PARA** = `voz.py` no lo deja salir. **ojo** = avisa; se re
 - Tríos: tres adjetivos, tres cosas, tres idiomas entre paréntesis. Dos o cuatro suenan a persona.
 - Volver al final a lo que ya se dijo (el resumen de despedida).
 - Cautelas de más: «podría», «parece que», «en principio» en cada frase.
+- ojo: **«soy X, no Y»** («I'm an architect, not a doctor»): definirse por lo que no se es, en
+  frase de eslogan.
+- ojo: **frases-golpe**, dos o más de cinco palabras o menos dentro de un párrafo («That made me
+  think.», «A lot of parents can't.», «Misma marca.»). Suenan a guion, no a alguien contando.
+- ojo: **más de tres cifras** en un texto. Una cifra suelta, bien; una ristra de datos exactos
+  (54 países, 92 calendarios, 100 mg por ml, un megabyte) es una ficha, y nadie escribe así.
 - ojo: **abrir presentándose** («Soy Nicolas Beca y escribo desde Sevilla»).
 
 **La tanda** (sólo se ve juntándolos; `voz.py` con varios ficheros)
@@ -117,9 +131,10 @@ operador ya marcó. **PARA** = `voz.py` no lo deja salir. **ojo** = avisa; se re
 6. **Variar la tanda**: unos abren con el dato, otros con una pregunta, otros con lo que vi en su
    web; de 50 a 150 palabras; cierres distintos; la descripción del producto, con otras palabras
    cada vez o sin ella.
-7. **Una frase sin verbo o una coletilla** está bien («Misma marca.», «la verdad», un paréntesis).
-   Faltas de ortografía, no.
-8. **Números como los diría él**: «unas cuatro veces», «casi 300», con la cuenta hecha.
+7. **Una coletilla suya** está bien («la verdad es que», «al final», un paréntesis). Frases-golpe
+   sin verbo («Misma marca.»), no. Faltas de ortografía, tampoco.
+8. **Los menos números posibles**, y dichos en palabras: «mucho menos concentradas», «casi todos»,
+   «pesa muy poco». La cifra exacta, sólo si es lo que se pide (una dosis a un médico).
 9. **Lo de folleto, una vez y no en todos**: «gratis, sin anuncios ni registro».
 10. **Si es largo (un artículo)**: pedirle sus detalles antes de escribir, no después.
 
@@ -132,11 +147,23 @@ Antes (Maldita, 30-oct):
 > de cada respuesta. Te escribo por algo que me encontré haciendo la calculadora de dosis y que creo
 > que da para una pieza de Maldita Ciencia.
 
-Después:
+Primera corrección (30-oct), que pasaba el filtro y el operador tumbó el 3-nov por la ristra de
+cifras y la frase-golpe «Misma marca.»:
 
 > El Gelocatil para niños viene en gotas de 100 mg por ml y en jarabe de 120 mg por 5 ml. Misma
-> marca, y las gotas son unas cuatro veces más fuertes. Me di cuenta haciendo la calculadora de dosis
-> de PediBot, una web que hago desde Sevilla en mis ratos libres.
+> marca, y las gotas son unas cuatro veces más fuertes.
+
+Lo mismo en el artículo de ICTworks, 3-nov. Antes:
+
+> Paracetamol drops are the clearest example. In Spain they are 100 mg per ml. In Ethiopia, the
+> regulator's list has drops of 100 mg per 5 ml. Same word on the bottle, and the Spanish ones are
+> five times stronger.
+
+Después:
+
+> Paracetamol drops are a good example. In Ethiopia they are much less concentrated than the ones
+> we use in Spain, so a dose calculator built only with the Spanish drops would have told a parent
+> there to give far too little.
 
 ## Fuentes
 

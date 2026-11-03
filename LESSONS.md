@@ -2294,3 +2294,16 @@ uno, y juntos los diez abrían «Soy Nicolas Beca y escribo desde Sevilla» y ci
 sólo se ve mirando la tanda junta. **Regla:** el filtro se pasa a todos los correos del día a la
 vez; la primera frase es para el destinatario, no para presentarse; y la vida del operador no se
 inventa: en textos largos se le piden sus detalles.
+
+## L267 · Limpio en el filtro y con voz de ficha técnica (3-nov-2026)
+
+Con el audio del operador reescribí el artículo de ICTworks: su historia, cifras releídas en lo
+publicado y `voz.py` limpio. Lo paró en una lectura: «Ninguna persona escribe datos muy concretos
+ni muy específicos… Quita frases tuyas tipo la de soy arquitecto no doctor. Ese tipo de frases
+como muy directas también son muy de IA». El filtro no miraba ninguna de las dos cosas, y VOZ.md
+pedía lo contrario («la cuenta hecha», «Misma marca.» como ejemplo bueno), sacado de cómo me
+escribe a mí, no de cómo cuenta algo. Ahora `voz.py` avisa de más de tres cifras, de dos o más
+frases-golpe de cinco palabras o menos y de «soy X, no Y»; sobre los diez correos del día salta
+sólo en IndiaSpend (siete cifras). **Regla:** hacia fuera, los datos en palabras («mucho menos
+concentradas») y las frases encadenadas como cuando habla; la cifra exacta, sólo si es lo que se
+pide. Y su forma de hablar se saca de cuando cuenta algo, no de sus órdenes.

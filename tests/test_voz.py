@@ -131,6 +131,35 @@ def test_opening_with_who_you_are_is_flagged():
     assert "se_presenta_primero" not in _ojos("Hola, Laura:\n\nEl Gelocatil para niños se vende…")
 
 
+def test_the_ictworks_rewrite_he_turned_down_is_flagged():
+    """3-nov: el artículo reescrito con su historia pasaba limpio, y el operador lo paró: «Ninguna
+    persona escribe datos muy concretos ni muy específicos… Quita frases tuyas tipo la de soy
+    arquitecto no doctor. Ese tipo de frases como muy directas también son muy de IA»."""
+    texto = (ROOT / "tests" / "textos" / "voz_ictworks_3nov.txt").read_text(encoding="utf-8")
+    avisos = _ojos(texto, palabras=800)
+    assert {"cifras", "frases_golpe", "x_no_y"} <= avisos
+
+
+def test_too_many_exact_figures_are_flagged():
+    assert "cifras" in _ojos("Son 100 mg por ml allí, 100 mg por 5 ml aquí, 54 países y 92 calendarios.")
+    # una cifra suelta es de persona, y la de un enlace no cuenta
+    assert "cifras" not in _ojos("Tiene 39 de fiebre. Mira https://pedibot.xyz/es/dose?r=a1b2c3d4")
+
+
+def test_punchy_short_sentences_are_flagged():
+    golpe = "That made me think. I can see a doctor easily. A lot of parents can't. It grew step by step."
+    assert "frases_golpe" in _ojos(golpe)
+    # el saludo, la despedida y la firma son líneas sueltas, no frases-golpe
+    assert "frases_golpe" not in _ojos(LIMPIO)
+    assert "frases_golpe" not in _ojos("Hi Wayan,\n\nHere it is again, with my own story behind it.\n\nThanks,\nNicolas\n")
+
+
+def test_i_am_x_not_y_is_flagged():
+    assert "x_no_y" in _ojos("I'm an architect, not a doctor. I build it at night.")
+    assert "x_no_y" in _ojos("Soy arquitecto, no médico, y lo hago de noche.")
+    assert "x_no_y" not in _ojos("I'm an architect, and I build it at night.")
+
+
 def _correo():  # noqa: ANN202
     spec = importlib.util.spec_from_file_location("correo", ROOT / "ops" / "correo.py")
     m = importlib.util.module_from_spec(spec)
