@@ -164,7 +164,11 @@ Here it is again, rewritten with my own story behind it. The Hugging Face link i
 Nicolas
 ```
 
-## 3-nov-2026: segunda versión, ESPERA SU SÍ
+## 3-nov-2026: segunda versión, ENVIADA
+
+> **Enviada el 3-nov a las 10:35 UTC** a wayan@wayan.com, en su hilo («Re: ICTworks Guest Post»,
+> en respuesta a su correo del 1-nov), con la nota de abajo delante y el artículo debajo, tras el
+> «Ok mándalo así» del operador. correo.py: sólo «largo», como toca a un artículo.
 
 > La primera la paró al leerla: «Ninguna persona escribe datos muy concretos ni muy específicos…
 > Quita frases tuyas tipo la de soy arquitecto no doctor» (L267). Ésta, sin una sola cifra, con

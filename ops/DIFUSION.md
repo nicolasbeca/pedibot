@@ -2788,6 +2788,8 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 ### Respuesta a Wayan Vota (ICTworks), en su hilo
 
 > ENVIADA el 3-nov 08:47, en su hilo, SIN contárselo al operador (error: le compromete a reescribir; ver memoria). Era un acuse de lo que pide. El artículo nuevo NO sale hasta tener los detalles del operador (VOZ.md, «lo que el filtro no hace»).
+>
+> **El artículo nuevo, ENVIADO el 3-nov a las 10:35 UTC** en el mismo hilo, con su historia (audio), sin cifras y con su «Ok mándalo así»: ops/ICTWORKS.md, «segunda versión».
 
    Hi Wayan,
 

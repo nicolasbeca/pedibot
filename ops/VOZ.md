@@ -10,6 +10,10 @@
 > frases tuyas tipo la de soy arquitecto no doctor. Ese tipo de frases como muy directas también
 > son muy de IA.» Esta primera versión decía lo contrario («la cuenta hecha», «Misma marca.»):
 > lo de abajo ya está cambiado.
+>
+> Al aprobar la segunda versión: «Ok mándalo así y guarda este filtro para correos y otros
+> textos». **El modelo de lo que le vale** es ese artículo (ops/ICTWORKS.md, «segunda versión»):
+> su historia con sus palabras, ni una cifra, las frases enlazadas como cuando habla.
 
 ## Cuándo se usa
 
