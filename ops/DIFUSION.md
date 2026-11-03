@@ -2629,6 +2629,8 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
 ## Decimoquinta tanda (3-nov-2026): la primera con el filtro de voz (ops/VOZ.md)
 
+> **7 ENVIADOS** hacia las 08:47-08:49 (Salud sin Bulos, Plataforma de Infancia, CHTF, Nigeria Health Watch, IndiaSpend, Muso, Mumbai Mobile Creches). **Parados sin enviar, a la espera del operador:** Family Lives, ABM y ParentsTogether (lo pidió al preguntar por la respuesta a Wayan).
+
 > «Consultas, emails recibidos y correos de hoy». Wayan Vota (ICTworks) devolvió el 1-nov el borrador del artículo por sonar a IA; el operador pidió un perfil de su voz y un filtro, y esta tanda se escribió con él: primera frase para el destinatario (ninguno abre presentándose), una sola petición, largos distintos, sin la frase de folleto repetida. `python ops/voz.py` sobre los diez: ninguno para, la tanda no repite frases. Mitad a quien reparte (Salud sin Bulos, Plataforma de Infancia, Child Health Task Force, Nigeria Health Watch, IndiaSpend), mitad a quien habla con familias (Muso en Malí, Mumbai Mobile Creches, Family Lives, Association of Breastfeeding Mothers, ParentsTogether). Direcciones leídas en sus webs (la de la CHTF, en su ficha de presentación; la de Mumbai Mobile Creches, en su página de voluntariado; nani@ es el buzón general de ParentsTogether). Comprobado en vivo hoy: el baño frío (la SEUP dice que no), 102 °F → 38,9 °C con la lista de cuándo consultar, hindi en letras latinas contesta en letras latinas, Malí (10 citas, 23 vacunas, 15) y Nigeria (11 citas, 27 vacunas, 112), y lo que guarda el móvil (offline-data: vacunas, urgencias, dosis). Descartados por no publicar dirección: Global Health NOW, EFE Salud, D-tree, NHSA; Aos Fatos sólo da la del defensor del lector.
 
 1. **saludsinbulos.txt** (`bulos@saludsinbulos.com`)
@@ -2785,7 +2787,7 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
 ### Respuesta a Wayan Vota (ICTworks), en su hilo
 
-> Sale directa: acuse de lo que pide. El artículo nuevo NO sale hasta tener los detalles del operador (VOZ.md, «lo que el filtro no hace»).
+> ENVIADA el 3-nov 08:47, en su hilo, SIN contárselo al operador (error: le compromete a reescribir; ver memoria). Era un acuse de lo que pide. El artículo nuevo NO sale hasta tener los detalles del operador (VOZ.md, «lo que el filtro no hace»).
 
    Hi Wayan,
 
