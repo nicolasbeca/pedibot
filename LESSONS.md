@@ -2269,3 +2269,28 @@ herramientas distintas tuvieran casi la misma cifra. Ahora lo que llega con `Ref
 no es una página vista (`test_visits_without_service_worker.py`). **Regla:** cuando algo del
 sitio empiece a pedir páginas solo (precarga, prefetch, un iframe), mirar el contador ese mismo
 día; y cifras gemelas en cosas distintas son una señal de que se cuenta una máquina.
+
+## L265 · El prompt pide la lista de «cuándo ir» y una de cada tantas no sale (3-nov-2026)
+
+smartbench preguntó seis veces por el MCP «My 2 year old has had a fever of 39 degrees for two
+days. What should I do?». Cinco respuestas daban la lista del NHS (111 si dura 5 días o más, 999
+con el cuello rígido…); la sexta (1125) tenía el mismo pasaje delante, citaba el mismo documento
+por otra sección y acababa en «Watch their general condition and colour». La regla 3c del prompt
+ya lo pedía: era el modelo. Ahora decide el código (`bot/when_to_get_help.py`): si la respuesta
+usa un documento, otro pasaje de ESE documento dice cuándo pedir ayuda y ninguna frase manda al
+médico (las de la dosis no cuentan), un reintento con la nota. Medido sobre 385 respuestas sin
+aviso guardadas: dispara en 2 y las dos lo necesitaban (1125 y la 807, hindi, del 22-sep). Sin la
+condición de «ninguna frase manda al médico» disparaba en 9 y siete estaban bien. **Regla:** lo
+que el prompt pide y es de seguridad se comprueba en código; y antes de un candado nuevo, pasarlo
+por lo guardado y leer cada caso que dispara.
+
+## L266 · Correo a correo pasaba limpio; la tanda entera era una plantilla (3-nov-2026)
+
+Wayan Vota (ICTworks) devolvió el borrador del artículo: «It sounds like a copy-paste from AI».
+El operador pidió un perfil de su voz y un filtro (`ops/VOZ.md`, `ops/voz.py`; `correo.py` no
+envía si para). Al probarlo con la tanda del 30-oct, los diez correos pasaban casi limpios uno a
+uno, y juntos los diez abrían «Soy Nicolas Beca y escribo desde Sevilla» y cinco repetían
+«PediBot, una web gratuita que…». Lo que delata no es una palabra: es el esqueleto repetido, y
+sólo se ve mirando la tanda junta. **Regla:** el filtro se pasa a todos los correos del día a la
+vez; la primera frase es para el destinatario, no para presentarse; y la vida del operador no se
+inventa: en textos largos se le piden sus detalles.

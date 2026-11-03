@@ -2626,3 +2626,171 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
    Warmly,
    Nicolas Beca
+
+## Decimoquinta tanda (3-nov-2026): la primera con el filtro de voz (ops/VOZ.md)
+
+> «Consultas, emails recibidos y correos de hoy». Wayan Vota (ICTworks) devolvió el 1-nov el borrador del artículo por sonar a IA; el operador pidió un perfil de su voz y un filtro, y esta tanda se escribió con él: primera frase para el destinatario (ninguno abre presentándose), una sola petición, largos distintos, sin la frase de folleto repetida. `python ops/voz.py` sobre los diez: ninguno para, la tanda no repite frases. Mitad a quien reparte (Salud sin Bulos, Plataforma de Infancia, Child Health Task Force, Nigeria Health Watch, IndiaSpend), mitad a quien habla con familias (Muso en Malí, Mumbai Mobile Creches, Family Lives, Association of Breastfeeding Mothers, ParentsTogether). Direcciones leídas en sus webs (la de la CHTF, en su ficha de presentación; la de Mumbai Mobile Creches, en su página de voluntariado; nani@ es el buzón general de ParentsTogether). Comprobado en vivo hoy: el baño frío (la SEUP dice que no), 102 °F → 38,9 °C con la lista de cuándo consultar, hindi en letras latinas contesta en letras latinas, Malí (10 citas, 23 vacunas, 15) y Nigeria (11 citas, 27 vacunas, 112), y lo que guarda el móvil (offline-data: vacunas, urgencias, dosis). Descartados por no publicar dirección: Global Health NOW, EFE Salud, D-tree, NHSA; Aos Fatos sólo da la del defensor del lector.
+
+1. **saludsinbulos.txt** (`bulos@saludsinbulos.com`)
+
+   Asunto: El baño en agua fría para bajar la fiebre
+
+   Hola:
+
+   Sigue circulando el consejo de bañar al niño en agua fría, o de ponerle paños mojados, cuando tiene fiebre. La hoja para padres de la SEUP lo dice sin rodeos: es desagradable y no sirve para bajarla.
+
+   Esta mañana se lo he preguntado a PediBot, una web que hago desde Sevilla y que contesta sólo con guías como esa. Dice que no, cita a la SEUP y termina con cuándo hay que ir a urgencias: https://pedibot.xyz/es?r=saludsinbulos
+
+   Por si os sirve para vuestra sección de bulos. Y si veis algo que no está bien, decídmelo, que soy arquitecto y no médico.
+
+   Un saludo,
+   Nicolas Beca
+
+2. **plataformainfancia.txt** (`info@plataformadeinfancia.org`)
+
+   Asunto: Para las familias que acaban de llegar
+
+   Hola:
+
+   Muchas de vuestras entidades trabajan con familias que llevan poco tiempo aquí. Con un niño con fiebre a medianoche, saber si se puede esperar o hay que ir a urgencias ya cuesta; en un idioma que no es el tuyo, más.
+
+   Hago PediBot, una web gratis que contesta las dudas de salud de los niños con guías oficiales, como las de la AEPap o la SEUP, y dice de dónde sale cada frase. Contesta en la lengua en que le escriban, también en árabe o en ruso. Y si lo que le cuentan es un signo de alarma, lo primero que sale es un aviso en rojo con el 112.
+
+   Si tenéis un boletín para las entidades, una línea ahí me ayudaría mucho: https://pedibot.xyz/es?r=plataformainfancia
+
+   Un saludo desde Sevilla,
+   Nicolas Beca
+
+3. **chtf.txt** (`childhealthtaskforce@jsi.com`)
+
+   Asunto: Emergency numbers for 54 African countries, offline
+
+   Hello,
+
+   Something for the quarterly newsletter, if it fits.
+
+   PediBot is a small free website I build in Seville. It answers parents' questions about a sick child from published guidance only, such as WHO's and the NHS's, and shows where each sentence comes from. For every African country it has the emergency number and the national vaccine schedule. After the first visit those keep working with no signal, and so do the danger signs, the dose calculator and a MUAC tape.
+
+   https://pedibot.xyz/?r=chtf
+
+   If someone in a country team looks at their own country's page and finds a mistake, I'd really want to know.
+
+   Nicolas Beca
+
+4. **nhw.txt** (`info@nigeriahealthwatch.com`)
+
+   Asunto: Nigeria's vaccine schedule, without data
+
+   Hello,
+
+   Your newsletter reaches a lot of people working on health in Nigeria, so I thought I'd ask.
+
+   I've put Nigeria's national vaccine schedule on a page a parent can keep on their phone. It's the one Nigeria reports to WHO: 11 visits, from BCG, hepatitis B and polio at birth up to 9 years. The page says plainly that if the health centre says something different, the health centre is right. The emergency page gives 112 and warns that there's no national ambulance service. The phone keeps both, so after the first visit they work without signal.
+
+   https://pedibot.xyz/vaccines/ng?r=nhw
+
+   It's part of PediBot, a free site I make in Seville. A mention to your readers would help a lot.
+
+   Best,
+   Nicolas Beca
+
+5. **indiaspend.txt** (`respond@indiaspend.org`)
+
+   Asunto: Crocin drops are four times stronger than the syrup
+
+   Hello,
+
+   Crocin for children comes as drops, 100 mg per ml, and as syrup, 125 mg per 5 ml. Same name on the box. The drops are about four times stronger.
+
+   For a 9 kg baby that's 1.3 ml of drops or 5.4 ml of syrup. A parent who remembers "it was 5 ml last time" and picks up the drops gives nearly four times the dose.
+
+   I ran into this while building the dose calculator for PediBot, a free site I make in Seville that answers parents from official guidance, in Hindi too. Now it asks which bottle you're holding before it gives any number: https://pedibot.xyz/hi/dose?r=indiaspend
+
+   If it's useful for a story, I can send where each figure comes from.
+
+   Nicolas Beca
+
+6. **muso.txt** (`partnerships@musohealth.org`)
+
+   Asunto: Could someone check the Mali page?
+
+   Hello,
+
+   I have a page for Mali that I can't check myself, and I thought of Muso.
+
+   It has the national vaccine schedule as Mali reports it to WHO: 10 visits, 23 vaccines, malaria only in some regions. And the emergency number, 15, with the UK government's warning that capacity is very limited and families may have to arrange their own transport. Both come from international datasets. I have no way of knowing whether they match what your community health workers see every day.
+
+   https://pedibot.xyz/fr/vaccines/ml?r=muso
+
+   Would someone on your team have five minutes to look at it and tell me what's wrong? It's part of PediBot, a free site that answers parents from official guidance, in French among other languages.
+
+   Thanks,
+   Nicolas Beca
+   Seville, Spain
+
+7. **mmc.txt** (`contact@mmcmail.org.in`)
+
+   Asunto: In Hindi, for the mothers at your crèches
+
+   Hello,
+
+   I read about your crèches on construction sites in Mumbai, and it made me think of something I've been building.
+
+   On PediBot, a free website, a mother can ask about her child's health in Hindi, or type it in English letters ("mere bachche ko bukhar hai"). The answer comes from official guidance, written the same way she wrote. If what she describes is a danger sign, the first thing she sees is a red banner telling her to get help now, with 112.
+
+   Would your health team try it with the questions mothers usually bring, and tell me where it goes wrong? https://pedibot.xyz/hi?r=mmc
+
+   Nicolas Beca
+   Seville, Spain
+
+8. **familylives.txt** (`askus@coramfamilylives.org.uk`)
+
+   Asunto: A misspelt question about nappy rash
+
+   Hello,
+
+   Last Friday, just after 8 in the morning, someone in the UK typed a quick, misspelt question about a rash on their 6-month-old's bottom. PediBot answered with what the NHS says about nappy rash: what causes it, what helps, and when to see a health visitor or GP.
+
+   I build it in my spare time, from Seville. Parents ask about their child's health and get an answer only from official guidance, mostly the NHS for families in the UK, with the source underneath. It's free.
+
+   If your team ever needs somewhere to point parents for the health questions, here it is: https://pedibot.xyz/?r=familylives
+
+   Nicolas Beca
+
+9. **abm.txt** (`admin@abm.me.uk`)
+
+   Asunto: Fever in a breastfed baby
+
+   Hello,
+
+   When a mum writes that her breastfed baby has a temperature, PediBot tells her what the NHS says. Carry on breastfeeding as normal, plenty of fluids, check on the baby during the night. And which signs mean getting help. Under 3 months, the first thing she sees is a red banner to have the baby seen today.
+
+   What it won't do is answer about medicines for a breastfeeding mum. It says it has no reliable information rather than guess, and I'd rather you knew that up front.
+
+   It's a free website I build in Seville, and it answers from official guidance only. If you think your helpline volunteers could use it, here it is: https://pedibot.xyz/?r=abm
+
+   Nicolas Beca
+
+10. **parentstogether.txt** (`nani@parents-together.org`)
+
+   Asunto: A fever of 102 °F
+
+   Hello,
+
+   A parent types "my 4 year old has a fever of 102". PediBot reads it as Fahrenheit and says what helps at home, and what doesn't (cold baths don't). Then it lists the signs that mean the child needs to be seen, from a rash with the fever to a stiff neck.
+
+   It's free, I build it in Seville, and it only answers from official guidance. If your parents would use it, a mention in a newsletter would mean a lot: https://pedibot.xyz/?r=parentstogether
+
+   Nicolas Beca
+
+### Respuesta a Wayan Vota (ICTworks), en su hilo
+
+> Sale directa: acuse de lo que pide. El artículo nuevo NO sale hasta tener los detalles del operador (VOZ.md, «lo que el filtro no hace»).
+
+   Hi Wayan,
+
+   Fair enough, and thanks for saying it straight.
+
+   I'll rewrite it in my own words, with what actually happened while I was building it, and add the link to the Hugging Face datasets. I'll send it back here.
+
+   Nicolas

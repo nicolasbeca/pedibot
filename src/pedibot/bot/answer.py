@@ -59,6 +59,7 @@ from pedibot.bot.vaccines import (
 )
 from pedibot.bot.vis import lista_vis, pide_vis
 from pedibot.bot.weight_units import con_kilos, nota_de_peso
+from pedibot.bot.when_to_get_help import falta_cuando_pedir_ayuda
 from pedibot.bot.who_first import extra_terms as who_first_terms
 from pedibot.bot.who_first import prompt_note as who_first_note
 from pedibot.bot.who_first import tropical_note
@@ -2919,6 +2920,13 @@ class Engine:
                     problems.append(CONTRADICE_AVISO)
                 if nota_ab and da_cifra_del_antibiotico(result.text):
                     problems.append(PONE_CIFRA)
+                # sin aviso, cuándo deja de poder esperar (bot/when_to_get_help.py, 3-nov-2026);
+                # con aviso, eso ya lo dice el aviso
+                falta_ayuda = (
+                    None if alarma or mode == "child" else falta_cuando_pedir_ayuda(result.text, hits)
+                )
+                if falta_ayuda:
+                    problems.append(falta_ayuda)
                 if problems:
                     retry = self.llm.complete(
                         self.prompt

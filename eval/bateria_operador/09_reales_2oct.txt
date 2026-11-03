@@ -33,3 +33,7 @@ Mtoto wangu wa wiki 6 ana homa ya 38.2
 my 5 week old has a fever of 100.6
 # 30-oct-2026, prueba mía: «Do not give them in too many clothes» (la lista del NHS llegaba sin puntuación)
 My 6 week old has a temperature of 38.2
+# 1-nov-2026, smartbench por el MCP (1125): fiebre de dos días sin decir cuándo ir al médico (tenía la lista del NHS delante)
+My 2 year old has had a fever of 39 degrees for two days. What should I do?
+# 22-sep-2026, consulta real en hindi (IN, 807): bañarlo para bajar la fiebre, sin cuándo pedir ayuda (6 meses: el NHS dice 111 con 39 °C)
+क्या बुखार उतारने के लिए बच्चे को नहला सकती हूँ? (उम्र: 6 महीने) (वज़न: 5 किलो)

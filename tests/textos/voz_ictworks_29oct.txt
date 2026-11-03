@@ -1,0 +1,24 @@
+Hi Wayan,
+
+Thank you, I'm really glad you liked it. Here is the draft, about 760 words.
+
+Offline, Local and Cited: Child-Health Answers for Parents in Africa
+
+I'm an architect in Seville, Spain. In my spare time I build PediBot (pedibot.xyz), a free website that answers parents' questions about a sick child using only published paediatric guidelines, with the source beside every sentence.
+
+I'm not a doctor, and I didn't start from a theory of digital health. What I have is a list of things that went wrong while I was building it, and three design decisions that came out of them. If you're putting health information on a parent's phone, I think they travel.
+
+1. Local is a safety feature
+
+The word "drops" on a bottle of children's paracetamol means very different things depending on where you buy it.
+
+2. The model reads and writes; the guidelines decide
+
+A language model helps in two places: reading the parent's message, and turning guideline passages into plain sentences. It doesn't add medical content of its own.
+
+3. Built for the phone parents actually have
+
+The chat itself still needs a connection. I'd rather say that plainly than let anyone find out at the wrong moment.
+
+Thanks again,
+Nicolas Beca
