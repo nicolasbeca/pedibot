@@ -2527,6 +2527,13 @@ además, que ya citamos el Manual de Pediatría de la PUC):
    Un saludo,
    Nicolas Beca
 
+   > **3-nov, 09:22 UTC, contesta Carolina Macarro (Secretaría FEFN):** no tienen espacio donde
+   > publicar enlaces; lo pasa a su departamento de comunicación y a la Asociación de Familias
+   > Numerosas de Sevilla (FANUSE, `comunicacion@fanuse.es`, en copia). **Contestado el 3-nov ~10:45
+   > UTC** en el hilo, a los dos: gracias, Sevilla es donde vivo, y para FANUSE el enlace a la
+   > calculadora con su canal propio (`?r=fanuse`). voz.py limpio. Nada más a ninguno salvo que
+   > respondan.
+
 5. **ceapa.txt** (`ceapa@ceapa.es`)
 
    Asunto: Un botón para explicárselo a los niños
