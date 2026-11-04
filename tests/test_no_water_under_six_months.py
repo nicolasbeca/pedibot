@@ -37,6 +37,10 @@ from pedibot.bot.water_under_six_months import da_agua_al_lactante
         "Ni muhimu kumpa maji mengi.",
         "Usiku mpe maji mengi.",
         "Asegúrate de que toma líquidos.",
+        # la 1156, en vivo tras desplegar: «y dale muchas bebidas», además del pecho. Los líquidos
+        # cuentan siempre: rehacerlos en «pecho o fórmula» no estropea nada
+        "endelea kumnyonyesha mara nyingi zaidi, na mpe vinywaji vingi ili kuepuka upungufu wa maji.",
+        "Give them plenty of fluids – if your baby is breastfed, continue to breastfeed as normal.",
     ],
 )
 def test_water_for_a_young_baby_is_flagged(texto: str) -> None:
@@ -46,14 +50,17 @@ def test_water_for_a_young_baby_is_flagged(texto: str) -> None:
 @pytest.mark.parametrize(
     "texto",
     [
-        # con la leche en la misma frase, como lo dice el NHS
-        "Give them plenty of fluids – if your baby is breastfed, continue to breastfeed as normal.",
-        "Ofrécele el pecho más a menudo para que tome más líquido.",
+        # el pecho, sin agua ni líquidos
+        "Ofrécele el pecho más a menudo.",
         "Mpe maziwa ya mama mara kwa mara.",
         # negada
         "No le des agua ni infusiones.",
         "Don't give water to a baby under 6 months.",
         "Usimpe maji wala chai.",
+        # «sin agua»: la 1174 (4-nov), que es justo lo que se quiere
+        "Endelea kumnyonyesha — maziwa ya mama au formula tu, bila maji wala vinywaji vingine.",
+        "Solo pecho o fórmula, sin agua ni infusiones.",
+        "Only breast milk or formula, without water.",
         # el agua que no se bebe
         "No lo bañes en agua fría.",
         "Lávate las manos con agua y jabón.",
@@ -64,6 +71,12 @@ def test_water_for_a_young_baby_is_flagged(texto: str) -> None:
         "बच्चे को ज़्यादा कपड़ों में न लपेटें और न ही पानी से पोंछकर ठंडा करने की कोशिश करें ।",
         "अगर दस्त न रुके, या पानी की कमी के लक्षण दिखें, तो तुरंत चिकित्सक से संपर्क करें ।",
         "Usimsugue kwa sifongo na maji ya baridi.",
+        # los falsos avisos en vivo tras desplegar (1160-1164, 4-nov): «para que no le falte agua» es
+        # la deshidratación, y los pañales «sin mucha agua» son los secos
+        "Endelea kumnyonyesha mara nyingi zaidi ili asipungukiwe na maji.",
+        "endelea kumnyonyesha, na mpe maziwa ya formula kama kawaida, ili asipungukiwe na maji.",
+        "Angalia dalili za upungufu wa maji mwilini, kama nepi zisizokuwa na maji mengi.",
+        "Look for fewer wet nappies or nappies with less water than usual.",
         # el suero oral no es agua (bot/strings.py, «ors_after_vomit»)
         "Baada ya kutapika, mpe maji ya ORS kidogo sana.",
         "Dale suero oral a cucharaditas.",
@@ -83,6 +96,16 @@ def test_the_note_says_what_to_say_instead() -> None:
     nota = da_agua_al_lactante("Mpe maji mengi.", 0.5)
     assert nota is not None
     assert "breast milk" in nota and "formula" in nota
+
+
+def test_the_note_quotes_the_sentence() -> None:
+    """La 1163 (4-nov) se dejó el agua en dos reintentos con la nota general; con la frase delante
+    el redactor sabe cuál cambiar."""
+    texto = "Mtoto anahitaji daktari leo. Endelea kumnyonyesha, na mpe maji mengi. Usimfunike sana."
+    nota = da_agua_al_lactante(texto, 1.4)
+    assert nota is not None
+    assert "Endelea kumnyonyesha, na mpe maji mengi." in nota
+    assert "Usimfunike" not in nota
 
 
 # --- en el motor ---------------------------------------------------------------------------
@@ -148,3 +171,27 @@ def test_the_reviewers_rewrite_cannot_bring_the_water_back(motor):  # noqa: F811
     a = eng.ask("my 4 month old has a fever of 38.5, what should I do?", country="GB")
     assert "water" not in a.text
     assert "Keep breastfeeding" in a.text
+
+
+def test_a_rewrite_that_keeps_the_water_gets_one_more_try(motor):  # noqa: F811
+    """1157, en vivo (4-nov): el reintento llevaba dos notas y se dejó el agua. Uno más, con la
+    nota de que el reintento tampoco valía (a temperatura 0, la misma nota da el mismo texto)."""
+    vistas: list[str] = []
+
+    def responde(system: str, user: str) -> str:
+        if system in (_LECTURA, _REVISA):
+            return "no es json"
+        lead = _numero(user, "very common in young children")
+        lista = _numero(user, "Urgent advice")
+        cuando = f" Call for advice if it has lasted 5 days or more [{lista}]."
+        if "water_under_6_months" not in system:
+            return f"A fever is very common, according to the NHS [{lead}]. Give her water." + cuando
+        vistas.append(system)
+        if "rewrite still failed" not in system:
+            return f"A fever is common, says the NHS [{lead}]. Breastfeed and give water." + cuando
+        return f"A fever is very common, according to the NHS [{lead}]. Keep breastfeeding." + cuando
+
+    eng, _ = motor(responde)
+    a = eng.ask("my 4 month old has a fever of 38.5, what should I do?", country="GB")
+    assert "water" not in a.text
+    assert len(vistas) == 2

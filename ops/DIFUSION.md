@@ -2811,7 +2811,7 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
 > **9 ENVIADOS** el 4-nov de 09:42 a 09:45 (hora de Madrid) con ops/correo.py: cinco verificadores (Colombiacheck, Ecuador Chequea, Bolivia Verifica, Lupa, Dubawa) y cuatro a quien atiende familias (RedMadre, CINI, Mobile Creches de Delhi, MomCo). Los diez, limpios en ops/voz.py. Cada gancho preguntado en vivo antes (marcado como test) y cada frase comprobada contra la respuesta; a Lupa se le quitó «e o Ministério da Saúde»: el no al ibuprofeno en el dengue sólo lo dice la OMS en lo que tiene PediBot.
 
-> **Doris Mollel Foundation, PARADO**: dice que en suajili sale el aviso rojo, y en vivo «mtoto wangu njiti wa wiki mbili hanyonyi vizuri na ana homa» salía como rutina. Sale cuando esté desplegado el arreglo del suajili (homa como fiebre, la regla del que no mama con la edad delante, el triaje leyendo la traducción) y comprobado en vivo.
+> **Doris Mollel Foundation, ENVIADO el 4-nov a las 16:57 (hora de Madrid)**, tras desplegar y ver diez de diez respuestas en vivo en suajili, con el aviso y sin agua; «then explains what to watch for» cambiado por «then what to do on the way», que es lo que hace. Estaba parado porque decía que en suajili sale el aviso rojo, y en vivo «mtoto wangu njiti wa wiki mbili hanyonyi vizuri na ana homa» salía como rutina. Sale cuando esté desplegado el arreglo del suajili (homa como fiebre, la regla del que no mama con la edad delante, el triaje leyendo la traducción) y comprobado en vivo.
 
 > Direcciones leídas en sus webs: Colombiacheck (pie), Ecuador Chequea (pie), Bolivia Verifica (pie), Lupa (lupa@lupa.news, «Dicas? Correções?» en su boletín), Dubawa (contacto), RedMadre (contacto), CINI (sede central), Mobile Creches (pie), MomCo (pie; es la antigua MOPS), Doris Mollel (contacto). Sin dirección publicada: Animal Político/El Sabueso, Full Fact (sólo prensa), Misbar, Fatabyyano, Africa Check, Prematuridade.com (sólo formulario).
 
@@ -2934,11 +2934,11 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
 10. **dorismollel.txt** (`info@dorismollelfoundation.org`)
 
-   Asunto: A premature baby with a fever, in Swahili (PARADO)
+   Asunto: A premature baby with a fever, in Swahili
 
    Hello,
 
-   When a mother goes home with a premature baby and that night the baby isn't feeding well and feels hot, she needs to know right away that it can't wait. PediBot only uses published paediatric guidelines, it's free, and she can write to it in Swahili. For a baby that young with a fever it shows a red warning in Swahili to go to hospital the same day, and then explains what to watch for.
+   When a mother goes home with a premature baby and that night the baby isn't feeding well and feels hot, she needs to know right away that it can't wait. PediBot only uses published paediatric guidelines, it's free, and she can write to it in Swahili. For a baby that young with a fever it shows a red warning in Swahili to go to hospital the same day, and then what to do on the way.
 
    If it could help the families you support after they leave the hospital, here it is: https://pedibot.xyz/?r=dorismollel
 

@@ -2957,6 +2957,28 @@ class Engine:
                         user,
                         temperature=0.0,
                     )
+                    # el reintento con varias notas a veces se deja el agua (1157, 4-nov-2026): uno
+                    # más, diciéndole que sigue ahí; con la misma nota, a temperatura 0, saldría igual
+                    sigue = [
+                        p
+                        for p in (
+                            da_agua_al_lactante(retry.text, tr.age_months),
+                            se_pasa_al_ingles(retry.text, answer_code, answer_lang),
+                        )
+                        if p
+                    ]
+                    if sigue:
+                        ctx["costes"].append((retry.tokens_in, retry.tokens_out, retry.cost_usd))
+                        retry = self.llm.complete(
+                            self.prompt
+                            + "\n\nYour previous draft failed verification: "
+                            + ", ".join(problems)
+                            + ". Your rewrite still failed: "
+                            + ", ".join(sigue)
+                            + ". Fix it.",
+                            user,
+                            temperature=0.0,
+                        )
                     # La reescritura tampoco vale: antes de rendirse, la segunda búsqueda. «Darf
                     # ich meinem 9 Monate alten Baby Honig geben?» acababa así en «no sé» teniendo
                     # el NHS la respuesta (batería del 21-sep-2026).
