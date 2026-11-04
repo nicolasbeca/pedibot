@@ -249,7 +249,9 @@ def test_triage_rule_source_is_injected_as_first_hit(engine_factory):
 
 
 def test_history_gives_age_and_context_to_follow_up(engine_factory):
-    eng, llm = engine_factory("Ofrezca suero, según la SEUP [1].")
+    # con el cuándo ir: sin él, el candado de bot/when_to_get_help.py la rehace (4-nov-2026), y
+    # aquí se mira la edad y el contexto, no eso
+    eng, llm = engine_factory("Ofrezca suero, según la SEUP [1]. Si no lo tolera, consulte con su pediatra.")
     hist = [
         {"role": "user", "text": "mi hijo de 4 años tiene fiebre desde ayer"},
         {"role": "assistant", "text": "La fiebre no es peligrosa [1]."},

@@ -59,6 +59,8 @@ from pedibot.bot.vaccines import (
 )
 from pedibot.bot.vis import lista_vis, pide_vis
 from pedibot.bot.weight_units import con_kilos, nota_de_peso
+from pedibot.bot.answer_language import se_pasa_al_ingles
+from pedibot.bot.water_under_six_months import da_agua_al_lactante
 from pedibot.bot.when_to_get_help import falta_cuando_pedir_ayuda
 from pedibot.bot.who_first import extra_terms as who_first_terms
 from pedibot.bot.who_first import prompt_note as who_first_note
@@ -2215,9 +2217,14 @@ class Engine:
         # al inglés. Se SUMA al original, no lo sustituye: así sólo puede añadir alarmas, nunca
         # quitarlas, y una alarma de más es mucho menos grave que una de menos. El cartel sale
         # en inglés con el número del país, que el modelo no toca nunca.
+        # 4-nov-2026: el suajili también. El triaje lo lee, pero sus reglas tienen huecos que en
+        # inglés no hay: «upele mwekundu usiopotea nikibonyeza» (manchas que no se van al apretar)
+        # salía como rutina (tests/test_swahili_triage_reads_the_translation.py)
         traducida = (
             f" {leida.query_en}"
-            if leida is not None and leida.lang not in TRIAGE_LANGS and leida.query_en
+            if leida is not None
+            and (leida.lang not in TRIAGE_LANGS or leida.lang in CORPUS_LANGS)
+            and leida.query_en
             else ""
         )
         tr = self.triage.assess(context_text + traducida)
@@ -2787,6 +2794,8 @@ class Engine:
         push = who_first_terms(context_text, country)
         search_lang = lang
         answer_lang = LANGUAGE_NAME.get(lang, "English")
+        # su código, para mirar después que no se ha pasado al inglés (bot/answer_language.py)
+        answer_code: str | None = lang
         draft_q = query
 
         # Una IA lee la pregunta antes de buscar (21-sep-2026, ver `interpret`). Un padre desde
@@ -2804,6 +2813,7 @@ class Engine:
                 # lengua. Tratarla como médica buscó salud mental, chikunguña y alcohol.
                 if leida.requested_name or leida.lang_name:
                     answer_lang = leida.requested_name or leida.lang_name
+                    answer_code = leida.requested_lang if leida.requested_name else leida.lang
                 # la última pregunta de verdad, no el último mensaje: «¿por qué me hablas en
                 # inglés?» llegó después de un «Otra cosa», y se volvió a contestar «Otra cosa»
                 prev_user = next(
@@ -2827,6 +2837,7 @@ class Engine:
                 # lengua escribe nadie, y la web ya sabe cuál tiene puesta.
                 if leida.lang_name and leida.lang != lang and len(query.split()) >= 3:
                     answer_lang = leida.lang_name
+                    answer_code = leida.lang
                 if leida.lang in CORPUS_LANGS and leida.intent == "health":
                     search_q, search_lang = f"{query} {leida.search_text}", leida.lang
                     push = [*push, *leida.keywords]
@@ -2927,6 +2938,16 @@ class Engine:
                 )
                 if falta_ayuda:
                     problems.append(falta_ayuda)
+                # con aviso o sin él: «mpe maji mengi» iba debajo del aviso, a un prematuro de dos
+                # semanas (bot/water_under_six_months.py, 4-nov-2026)
+                agua = da_agua_al_lactante(result.text, tr.age_months)
+                if agua:
+                    problems.append(agua)
+                # la pregunta en suajili y la respuesta en inglés, arrastrada por los pasajes del
+                # NHS (bot/answer_language.py, 4-nov-2026)
+                ingles = se_pasa_al_ingles(result.text, answer_code, answer_lang)
+                if ingles:
+                    problems.append(ingles)
                 if problems:
                     retry = self.llm.complete(
                         self.prompt
@@ -3042,12 +3063,19 @@ class Engine:
                 temperature=0.0,
             )
             ctx["costes"].append((result.tokens_in, result.tokens_out, result.cost_usd))
+            # la reescritura rehace todo, y volvía a meter lo que los controles ya habían quitado:
+            # el agua al bebé de seis semanas (1151, 4-nov-2026). Si rompe uno, se queda la de antes
+            rompe = bool(
+                da_agua_al_lactante(otra.text, tr.age_months)
+                or se_pasa_al_ingles(otra.text, answer_code, answer_lang)
+            )
             fallida = (
-                _dice_sin_fuente(otra.text)
+                rompe
+                or _dice_sin_fuente(otra.text)
                 or bool(_insegura(otra.text, hits, alarma, bool(nota_ab)))
                 or bool(_EMPIEZA_SIN_INFO.search(_primera_frase(otra.text)))
             )
-            if fallida and not revision.contesta:
+            if fallida and not rompe and not revision.contesta:
                 return Answer(
                     NO_SOURCE[lang],
                     tr.level,

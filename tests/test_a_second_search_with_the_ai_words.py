@@ -41,7 +41,9 @@ def _con_borradores(motor, borradores: list[str]) -> list[str]:  # noqa: ANN001
 
 def test_no_source_first_then_the_ai_words_find_it() -> None:
     motor, visto = _motor(LEIDA)
-    pedidos = _con_borradores(motor, ["NO_SOURCE", "Most fevers get better, says the NHS [1]."])
+    # en español: un borrador en inglés a una pregunta en español se rehace
+    # (bot/answer_language.py, 4-nov-2026), y aquí se cuentan las redacciones
+    pedidos = _con_borradores(motor, ["NO_SOURCE", "Casi todas las fiebres se pasan, según el NHS [1]."])
     a = motor.ask(CHULETA, lang="es")
     assert len(visto["busquedas"]) == 2
     assert "carne" in visto["busquedas"][1][0]

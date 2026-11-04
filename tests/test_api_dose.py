@@ -141,7 +141,9 @@ def test_share_flow(client):
 
 def test_child_mode_reaches_prompt(client):
     j = client.post(
-        "/api/ask", json={"question": "mi hijo de 4 años tiene fiebre", "mode": "child"}
+        # en inglés, como el borrador del modelo falso: en español se rehace por la lengua
+        # (bot/answer_language.py, 4-nov-2026), y aquí se mira el modo niño
+        "/api/ask", json={"question": "my 4 year old has a fever", "mode": "child"}
     ).json()
     assert j["verification"] in ("ok", "fallback")
 

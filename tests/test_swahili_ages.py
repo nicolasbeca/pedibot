@@ -68,3 +68,46 @@ def test_the_infant_with_fever_gets_the_warning(triaje: Triage, texto: str) -> N
 
 def test_an_older_child_with_fever_does_not(triaje: Triage) -> None:
     assert triaje.assess("mtoto wangu wa miaka 3 ana homa ya 38.2").level == "routine"
+
+
+# 4-nov-2026: probado en vivo antes de escribir a la Doris Mollel Foundation (prematuros, Tanzania).
+# «mtoto wangu njiti wa wiki mbili hanyonyi vizuri na ana homa» (mi prematuro de dos semanas no mama
+# bien y tiene fiebre) salía como RUTINA. La edad se leía; la fiebre no: «homa» sin cifra no estaba
+# en la lista de fiebre de red_flags.yaml, y de esa lista depende la regla del lactante. Y la del
+# menor de un mes que no mama sólo tenía dos frases fijas en suajili.
+@pytest.mark.parametrize(
+    "texto",
+    [
+        "mtoto wangu njiti wa wiki mbili hanyonyi vizuri na ana homa",
+        "mtoto wangu wa wiki 2 ana homa",
+        "mtoto wa miezi 2 ana homa",
+        "mtoto wangu ana wiki sita na ana homa kali",
+    ],
+)
+def test_the_infant_with_fever_in_words_gets_the_warning(triaje: Triage, texto: str) -> None:
+    r = triaje.assess(texto)
+    assert r.level == "urgent", (r.level, [m.id for m in r.matched])
+    assert "infant_fever_under_3_months" in [m.id for m in r.matched]
+
+
+@pytest.mark.parametrize(
+    "texto",
+    [
+        "mtoto wangu wa wiki mbili hanyonyi vizuri",
+        "mtoto wa siku 10 anakataa kunyonya",
+        "mtoto wangu wa wiki 3 hataki kunyonya tangu jana",
+    ],
+)
+def test_the_newborn_who_will_not_feed_gets_the_warning(triaje: Triage, texto: str) -> None:
+    r = triaje.assess(texto)
+    assert r.level == "urgent", (r.level, [m.id for m in r.matched])
+    assert "newborn_refusing_feeds" in [m.id for m in r.matched]
+
+
+def test_no_fever_and_older_babies_stay_routine(triaje: Triage) -> None:
+    assert "infant_fever_under_3_months" not in [
+        m.id for m in triaje.assess("mtoto wangu wa wiki 2 hana homa, anapiga chafya").matched
+    ]
+    assert "newborn_refusing_feeds" not in [
+        m.id for m in triaje.assess("mtoto wangu wa miezi 8 hanyonyi vizuri usiku").matched
+    ]

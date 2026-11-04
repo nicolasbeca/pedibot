@@ -104,9 +104,17 @@ def test_the_answer_without_when_to_get_help_is_sent_back():
     assert "[4]" in nota  # el pasaje que tiene la lista, por su número
 
 
-def test_citing_the_list_is_enough():
+def test_saying_when_to_call_is_enough():
     texto = LA_1125 + " Call for advice if the fever has lasted 5 days or more [4]."
     assert falta_cuando_pedir_ayuda(texto, HITS) is None
+
+
+def test_citing_the_list_passage_for_something_else_is_not_enough():
+    """La 1134 (4-nov, smartbench otra vez): citaba [7], «Don't», por la aspirina y el no
+    alternar, y ese pasaje lleva dentro la lista del 111 y el 999. El candado daba la lista por
+    usada y no saltó; la respuesta acababa igual que la 1125. Lo que cuenta es lo que dice."""
+    texto = LA_1125 + " Do not give aspirin to a child under 16 [4]."
+    assert falta_cuando_pedir_ayuda(texto, HITS) is not None
 
 
 @pytest.mark.parametrize(
@@ -127,6 +135,20 @@ def test_citing_the_list_is_enough():
 def test_any_sentence_sending_them_to_a_doctor_is_enough(frase: str):
     """Ya dice cuándo ir, aunque no sea con la lista: no se rehace (de las 9 que disparaban sin
     esto, 7 eran así: «avisa a su médico», «consultar con su pediatra», «ask the doctor»)."""
+    assert falta_cuando_pedir_ayuda(LA_1125 + "\n\n" + frase, HITS) is None
+
+
+@pytest.mark.parametrize(
+    "frase",
+    [
+        # las cuatro que daban falso aviso al quitar el atajo de la cita (medido el 4-nov sobre 391)
+        "Si la crisis no cede con el tratamiento en casa, acude lo antes posible a un centro sanitario.",
+        "Se algum desses sinais aparecer, procure atendimento imediatamente.",
+        "Seek care if she is much sleepier than usual or hard to wake.",
+        "Si le preocupa haber dado una dosis de más, hable con su farmacéutico o con su médico.",
+    ],
+)
+def test_other_ways_of_saying_when_to_go_count_too(frase: str):
     assert falta_cuando_pedir_ayuda(LA_1125 + "\n\n" + frase, HITS) is None
 
 

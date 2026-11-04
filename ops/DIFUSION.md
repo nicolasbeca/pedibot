@@ -2805,3 +2805,142 @@ además, que ya citamos el Manual de Pediatría de la PUC):
    I'll rewrite it in my own words, with what actually happened while I was building it, and add the link to the Hugging Face datasets. I'll send it back here.
 
    Nicolas
+
+
+## Decimosexta tanda (4-nov-2026): enviada sin enseñársela, por SMTP desde el servidor
+
+> **9 ENVIADOS** el 4-nov de 09:42 a 09:45 (hora de Madrid) con ops/correo.py: cinco verificadores (Colombiacheck, Ecuador Chequea, Bolivia Verifica, Lupa, Dubawa) y cuatro a quien atiende familias (RedMadre, CINI, Mobile Creches de Delhi, MomCo). Los diez, limpios en ops/voz.py. Cada gancho preguntado en vivo antes (marcado como test) y cada frase comprobada contra la respuesta; a Lupa se le quitó «e o Ministério da Saúde»: el no al ibuprofeno en el dengue sólo lo dice la OMS en lo que tiene PediBot.
+
+> **Doris Mollel Foundation, PARADO**: dice que en suajili sale el aviso rojo, y en vivo «mtoto wangu njiti wa wiki mbili hanyonyi vizuri na ana homa» salía como rutina. Sale cuando esté desplegado el arreglo del suajili (homa como fiebre, la regla del que no mama con la edad delante, el triaje leyendo la traducción) y comprobado en vivo.
+
+> Direcciones leídas en sus webs: Colombiacheck (pie), Ecuador Chequea (pie), Bolivia Verifica (pie), Lupa (lupa@lupa.news, «Dicas? Correções?» en su boletín), Dubawa (contacto), RedMadre (contacto), CINI (sede central), Mobile Creches (pie), MomCo (pie; es la antigua MOPS), Doris Mollel (contacto). Sin dirección publicada: Animal Político/El Sabueso, Full Fact (sólo prensa), Misbar, Fatabyyano, Africa Check, Prematuridade.com (sólo formulario).
+
+1. **colombiacheck.txt** (`contacto@colombiacheck.com`)
+
+   Asunto: Las friegas de alcohol para la fiebre
+
+   Hola:
+
+   En muchas casas todavía se frota al niño con alcohol cuando tiene fiebre, y la hoja para padres de la Asociación Española de Pediatría de Atención Primaria dice claramente que no se haga. Se lo pregunté esta mañana a PediBot, una web gratuita que contesta solo con guías de pediatría publicadas. Responde que no, explica qué ayuda de verdad y deja la fuente debajo.
+
+   Si en algún chequeo de salud infantil les sirve como referencia, lo pueden probar aquí: https://pedibot.xyz/es?r=colombiacheck
+
+   Un saludo desde Sevilla,
+   Nicolas Beca
+
+2. **ecuadorchequea.txt** (`info@ecuadorchequea.com`)
+
+   Asunto: El jarabe para la tos en niños pequeños
+
+   Hola:
+
+   A muchos niños se les sigue dando jarabe para la tos, y las guías de pediatría lo desaconsejan, sobre todo en los más pequeños. Lo comprobé con PediBot, una web que contesta a los padres con esas guías y dice de dónde sale cada cosa. Si se le pregunta por el jarabe para un niño de un año, contesta que no con la hoja de la Sociedad Española de Urgencias de Pediatría. Luego explica lo que sí se puede hacer en casa.
+
+   Por si les sirve en su trabajo de verificación, está aquí: https://pedibot.xyz/es?r=ecuadorchequea
+
+   Saludos,
+   Nicolas Beca
+
+3. **boliviaverifica.txt** (`info@boliviaverifica.bo`)
+
+   Asunto: El agua de anís para los cólicos
+
+   Hola:
+
+   Darle agua de anís al bebé para los cólicos es de esos consejos que se pasan de una generación a otra. La Sociedad Española de Urgencias de Pediatría avisa de que algunas plantas, como el anís estrellado, pueden ser peligrosas a esa edad. En PediBot, una web que hago en mis ratos libres con guías de pediatría, a esa pregunta se responde que no. Además explica que los cólicos no tienen un tratamiento probado y dice cuándo hay que ir a urgencias.
+
+   Si alguna vez verifican algo de salud infantil, ojalá les sea útil: https://pedibot.xyz/es?r=boliviaverifica
+
+   Un saludo,
+   Nicolas Beca
+
+4. **lupa.txt** (`lupa@lupa.news`)
+
+   Asunto: Ibuprofeno e dengue em crianças
+
+   Olá,
+
+   Com a dengue, uma das dúvidas mais perigosas dos pais é se podem dar ibuprofeno ao filho com febre, e a OMS diz que não. Fiz essa pergunta ao PediBot, um site gratuito que responde só com guias oficiais. Ele responde que não, explica qual é o remédio indicado e lista os sinais de alerta da dengue grave, com a fonte embaixo.
+
+   Se for útil para alguma checagem de vocês, está aqui: https://pedibot.xyz/pt?r=lupa
+
+   Um abraço de Sevilha,
+   Nicolas Beca
+
+5. **dubawa.txt** (`contact@dubawa.org`)
+
+   Asunto: Palm oil for a child having a fit
+
+   Hello,
+
+   A child with a fever starts having a fit, and someone at home says to give palm oil. I typed exactly that into PediBot, a free website built on published paediatric guidelines. The first thing it shows is a red warning to call the emergency number. Then it says not to give the oil, and to lay the child on their side with nothing in their mouth.
+
+   If it's useful for your health fact-checks, you can try it here: https://pedibot.xyz/?r=dubawa
+
+   Best wishes,
+   Nicolas Beca
+
+6. **redmadre.txt** (`info@redmadre.es`)
+
+   Asunto: Fiebre en un recién nacido
+
+   Hola:
+
+   Para una madre primeriza, la fiebre en un recién nacido es de las dudas que más asustan y de las que no pueden esperar al día siguiente. PediBot es una web gratuita que contesta con guías de pediatría. Si una madre escribe que su bebé de tres semanas tiene fiebre, lo primero que le sale es un aviso para ir a urgencias ese mismo día. Debajo le explica lo que puede hacer mientras tanto.
+
+   Si creéis que les puede servir a las madres que acompañáis, el enlace es este: https://pedibot.xyz/es?r=redmadre
+
+   Un saludo,
+   Nicolas Beca
+
+7. **cini.txt** (`cini@cinindia.org`)
+
+   Asunto: A MUAC page in Hindi
+
+   Hello,
+
+   Your teams in the field work with arm tapes for malnutrition, and I thought a Hindi version on the phone might be handy when the reading needs explaining to a mother. PediBot, a free site I build from published guidance, has a MUAC page in Hindi. You enter the arm measurement, it tells you where it falls in the WHO ranges, and it keeps working without signal once it has been opened.
+
+   If you think it could be useful to your health workers, this is the page: https://pedibot.xyz/hi/muac?r=cini
+
+   Kind regards,
+   Nicolas Beca
+
+8. **mobilecreches.txt** (`mail@mobilecreches.org`)
+
+   Asunto: India's vaccine schedule in Hindi
+
+   Hello,
+
+   For families who move from one construction site to the next, keeping track of which vaccine comes next is hard, especially when the card goes missing. PediBot, a free site that answers parents from official guidance, has India's national schedule in Hindi, and once the page has been opened it keeps working on the phone without signal.
+
+   If your creche workers could use it with parents, a mention would help a lot: https://pedibot.xyz/hi/vaccines/in?r=mobilecreches
+
+   Best wishes from Seville,
+   Nicolas Beca
+
+9. **momco.txt** (`info@themom.co`)
+
+   Asunto: Honey for a baby's cough
+
+   Hi,
+
+   Honey for a cough is one of the first things a grandparent suggests, and before a baby's first birthday it isn't safe, because of the risk of botulism. If you ask PediBot, which answers with what the CDC and the NHS say, it says no straight away, explains why, and tells you what does help with a cough at that age.
+
+   If your groups share resources with moms, this might be a useful one: https://pedibot.xyz/?r=momco
+
+   Best,
+   Nicolas Beca
+
+10. **dorismollel.txt** (`info@dorismollelfoundation.org`)
+
+   Asunto: A premature baby with a fever, in Swahili (PARADO)
+
+   Hello,
+
+   When a mother goes home with a premature baby and that night the baby isn't feeding well and feels hot, she needs to know right away that it can't wait. PediBot only uses published paediatric guidelines, it's free, and she can write to it in Swahili. For a baby that young with a fever it shows a red warning in Swahili to go to hospital the same day, and then explains what to watch for.
+
+   If it could help the families you support after they leave the hospital, here it is: https://pedibot.xyz/?r=dorismollel
+
+   Kind regards,
+   Nicolas Beca

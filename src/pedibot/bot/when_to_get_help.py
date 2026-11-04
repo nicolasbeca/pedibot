@@ -11,7 +11,8 @@ Aquí decide el código, con dos condiciones para no rehacer lo que está bien:
   - la lista es de un documento que la respuesta YA usa (misma situación; la de otro documento
     puede ser de otra enfermedad, que es justo lo que la v12 quitó), y
   - ninguna frase de la respuesta manda al médico (las de la dosis no cuentan).
-Entonces, un reintento con la nota. Ver tests/test_answer_says_when_to_get_help.py.
+Entonces, un reintento con la nota. Citar el pasaje de la lista no cuenta como decirla (4-nov,
+consulta 1134: lo citaba por la aspirina, que va en el mismo pasaje). Ver tests/test_answer_says_when_to_get_help.py.
 """
 
 from __future__ import annotations
@@ -39,8 +40,10 @@ LISTA_DE_AYUDA = re.compile(
 MANDA_AL_MEDICO = re.compile(
     r"doctor|\bGP\b|p(a)?ediatrician|nurse|health visitor|midwife|\bA&E\b|emergenc|urgent"
     r"|hospital|ambulance|\b(111|999|911|112)\b|medical (help|advice|attention|care)"
-    r"|(get|seek) help|health ?care (provider|professional)|health professional|clinic"
-    r"|m[ée]dic|pediatra|urgencias|centro de salud|enfermer|consult|ambulancia|profesional sanitario"
+    r"|(get|seek|ask for|call for) (medical )?(help|advice|care)|health ?care (provider|professional)"
+    r"|health professional|clinic|pharmacist"
+    r"|m[ée]dic|pediatra|urgencias|centro de salud|centro sanitario|enfermer|consult|ambulancia"
+    r"|profesional sanitario|farmac[ée]utic|atendimento|atenci[óo]n m[ée]dica"
     r"|p[ée]diatre|urgences|h[ôo]pital|samu"
     r"|[äa]rzt|notaufnahme|notruf|klinik|krankenhaus|praxis|hebamme"
     r"|urg[êe]ncia|centro de sa[úu]de|sns 24|profissional de sa[úu]de"
@@ -56,6 +59,12 @@ DOSIS = re.compile(
     r"\bdos(e|es|age|is|ierung)\b|posolog|dosagem|खुराक|डोज़|جرع|доз|kipimo", re.IGNORECASE
 )
 
+#: …salvo que vaya con una condición: «si le preocupa haber dado una dosis de más, hable con su
+#: médico» sí es un cuándo ir (las 1075 y 1082, amoxicilina, 4-nov)
+CONDICION = re.compile(
+    r"\b(if|si|wenn|falls|quand|caso)\b|अगर|यदि|إذا|если|\bikiwa\b", re.IGNORECASE
+)
+
 _FRASE = re.compile(r"(?<=[.!?।؟])\s+|\n+")
 _CIT = re.compile(r"\[(\d{1,2})\]")
 
@@ -67,7 +76,8 @@ def es_lista_de_ayuda(hit: Hit) -> bool:
 
 def manda_al_medico(texto: str) -> bool:
     return any(
-        MANDA_AL_MEDICO.search(f) and not DOSIS.search(f) for f in _FRASE.split(texto)
+        MANDA_AL_MEDICO.search(f) and (not DOSIS.search(f) or CONDICION.search(f))
+        for f in _FRASE.split(texto)
     )
 
 
@@ -76,7 +86,9 @@ def falta_cuando_pedir_ayuda(texto: str, hits: list[Hit]) -> str | None:
     citados = {int(n) for n in _CIT.findall(texto)}
     usados = {hits[n - 1].chunk.doc_id for n in citados if 0 < n <= len(hits)}
     listas = [n for n, h in enumerate(hits, start=1) if es_lista_de_ayuda(h)]
-    if not usados or citados & set(listas) or manda_al_medico(texto):
+    # citar el pasaje de la lista no basta: el «Don't» del NHS lleva la aspirina y el 111 juntos, y
+    # la 1134 (4-nov) lo citaba por la aspirina sin decir cuándo ir. Cuenta lo que dice el texto
+    if not usados or manda_al_medico(texto):
         return None
     suyas = [n for n in listas if hits[n - 1].chunk.doc_id in usados]
     if not suyas:

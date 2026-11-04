@@ -176,7 +176,8 @@ def _entrada(texto: str, n: int = 4) -> str:
 
 
 def _trozos(texto: str, n: int = 5) -> set[str]:
-    w = re.findall(r"[^\W\d_]+", texto.lower())
+    # el enlace va igual en todos a propósito; «https pedibot xyz es r» no es frase de folleto (4-nov)
+    w = re.findall(r"[^\W\d_]+", re.sub(r"https?://\S+", " ", texto.lower()))
     return {" ".join(w[i : i + n]) for i in range(len(w) - n + 1)}
 
 

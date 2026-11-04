@@ -125,6 +125,19 @@ def test_the_same_product_line_in_every_email_is_flagged():
     assert "frase_repetida" in avisos
 
 
+def test_the_same_link_in_several_emails_is_not_a_repeated_phrase():
+    """4-nov: «https pedibot xyz es r» salía como frase repetida en cuatro de diez. El enlace es el
+    mismo a propósito; lo que no puede repetirse es la frase de folleto."""
+    cuerpos = [
+        "El alcohol para la fiebre sigue en muchas casas.",
+        "Al jarabe para la tos le pasa algo parecido.",
+        "Lo del anís para los cólicos viene de las abuelas.",
+        "Una madre primeriza con un bebé caliente no espera.",
+    ]
+    tanda = [f"Hola:\n\n{c}\n\nhttps://pedibot.xyz/es?r=c{i}\n" for i, c in enumerate(cuerpos)]
+    assert "frase_repetida" not in {x.regla for x in voz.revisa_tanda(tanda)}
+
+
 def test_opening_with_who_you_are_is_flagged():
     assert "se_presenta_primero" in _ojos("Hola:\n\nSoy Nicolas Beca y escribo desde Sevilla.")
     assert "se_presenta_primero" in _ojos("Hello,\n\nI'm Nicolas Beca, writing from Seville.")

@@ -2852,6 +2852,9 @@ rules:
   # ── suajili (18-sep-2026, fase 3 de África) ──
   - "mchanga (anakataa|amekataa) kunyonya"
   - "hanyonyi tangu"
+  # 4-nov-2026: con la edad delante, como en las demás lenguas. «mtoto wa wiki mbili hanyonyi
+  # vizuri» (dos semanas, no mama bien) no casaba con ninguna (tests/test_swahili_ages.py)
+  - (mchanga|\b(wa|ana) (wiki ([1-4]|moja|mbili|tatu|nne)|siku \d{1,2})\b).{0,80}(hanyonyi|ha(taki|wezi) kunyonya|a(na|me)kataa kunyonya)
   # 17-sep-2026, la etiqueta: el triaje no reconocía su PROPIA explicación de esta regla.
   # Las reglas estaban escritas en forma narrativa («le ha mordido un perro») y no en forma
   # de nombre («mordedura de animal»), que es lo que un padre copia de una nota o de Google.
@@ -6017,6 +6020,10 @@ context:
   - 'жар '
   - حرار
   - حمى
+  # 4-nov-2026: suajili. «ana homa» sin cifra no estaba, y de esta lista depende la regla del
+  # lactante: «mtoto wangu wa wiki 2 ana homa» salía como rutina (tests/test_swahili_ages.py)
+  - \bhoma\b
+  - \bana joto\b
   - \b3[89][٫,\.]?\d?\s*(°|درج)
   - \b4[0-2][٫,\.]?\d?\s*(°|درج)
   - बुखार
