@@ -63,3 +63,18 @@ def test_without_a_country_the_line_is_not_there():
     llm = FakeProvider(json.dumps({}))
     revisa_respuesta(llm, "q", "routine", "a")
     assert "READER'S COUNTRY" not in llm.calls[0][1]
+
+
+def test_foreign_medical_advice_is_not_the_wrong_country():
+    """5-nov-2026: el revisor marcaba `wrong_country` por citar al NHS en un consejo médico a un
+    padre de Kenia o Tanzania, y pedía «una guía tanzana» que no existe; en Nigeria dio por
+    europeo el 112, que es el de Nigeria. Medido sobre 74 respuestas guardadas y cuatro
+    controles: con la pregunta acotada, los dos falsos positivos desaparecen, los dos casos de
+    verdad (calendario español a un británico, «GP surgery» a un keniano) siguen saltando, y las
+    reescrituras bajan de 22 a 10. Los números de urgencias los comprueba el código."""
+    from pedibot.bot.answer import REVISA
+
+    assert "Medical advice attributed to a" in REVISA
+    assert "named foreign health body" in REVISA
+    assert "Do not judge emergency" in REVISA
+    assert "vaccination schedule" in REVISA

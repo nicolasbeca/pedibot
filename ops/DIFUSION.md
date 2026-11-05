@@ -2944,3 +2944,113 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
    Kind regards,
    Nicolas Beca
+
+## Decimoséptima tanda (5-nov-2026): enviada sin enseñársela, por SMTP desde el servidor
+
+> **8 ENVIADOS** el 5-nov hacia las 16:30 (hora de Madrid) con ops/correo.py, limpios en ops/voz.py (la tanda repetía «a free website that answers» y «PediBot, una web gratuita que»; variadas). Dos que reparten (Vishvas News en hindi, Gaon Connection) y seis que atienden familias (Cruz Roja de Tanzania, UNAF, Kidogo en Nairobi, Por Ti Mujer, Rumiñahui, Children in Crossfire en Tanzania). Cada gancho preguntado en vivo hoy (marcado test) y cada frase comprobada contra la respuesta. **Estadão Verifica (Alessandra Monnerat) espera**: su gancho era la miel en portugués, y al probarlo salió «não dê mel» sin fuente y la tos ferina; sale cuando esté desplegado el arreglo y comprobado en vivo.
+
+> Direcciones leídas en sus webs desde el servidor: Vishvas News (contacto), Gaon Connection (la de Neelesh Misra, su fundador, en la portada), Cruz Roja de Tanzania (portada), UNAF (portada), Kidogo (portada), Por Ti Mujer (portada), Rumiñahui (portada), Children in Crossfire (portada; trabaja en primera infancia en Tanzania), Estadão Verifica (la página de la sección lista a su equipo). Descartados: PesaCheck, Factly, Comprova, Cotejo, Amref, SHOFCO, Best Beginnings, Zero to Three, Tommy's (no publican dirección o la web bloquea); BOOM sólo da la de reclamaciones a verificar y la de correcciones; el té de hinojo en portugués y el gripe water contestan con honradez que las guías no hablan de ello, no sirven de gancho.
+
+1. **vishvas.txt** (`contact@vishvasnews.com`)
+
+   Asunto: Janam ghutti for a three-week-old
+
+   Hello,
+
+   Giving janam ghutti or a little water to a newborn is advice many families in India still hear from relatives. I asked PediBot about it in Hindi, for a three-week-old. It only uses published paediatric guidelines, and it's free. It says no, and that at that age the baby only needs breast milk, as often as the baby asks for it. The source is listed under the answer.
+
+   If it's ever useful for one of your health checks, you can try it here: https://pedibot.xyz/hi?r=vishvas
+
+   Kind regards,
+   Nicolas Beca
+
+2. **gaon.txt** (`neelesh@gaonconnection.com`)
+
+   Asunto: A fever of 102, asked in Hinglish
+
+   Hello Neelesh,
+
+   Many people write Hindi in English letters on their phones, so that's how I tested PediBot, a free website I build from published paediatric guidance. I typed "mere 8 mahine ke bachche ko bukhar hai 102, kya karun". It took 102 as Fahrenheit and answered in the same Roman-letter Hindi. It said to keep breastfeeding and not to sponge the child to cool them down, and then listed when to get help straight away.
+
+   If Gaon Connection ever does something on looking after a sick child at home, it might be worth a look: https://pedibot.xyz/hi?r=gaonconnection
+
+   Best wishes from Seville,
+   Nicolas Beca
+
+3. **trcs.txt** (`info@trcs.or.tz`)
+
+   Asunto: Toothpaste on a burn
+
+   Hello,
+
+   Toothpaste on a burn is still common advice in a lot of homes. I asked PediBot in Swahili about a two-year-old with a hot water burn on the hand. It's a free website built on published paediatric guidelines. It shows a warning in Swahili to take the child to hospital today, says not to put toothpaste on it, and explains how to cool the burn under running water for 15 to 20 minutes.
+
+   If your first aid volunteers could use it with families, this is the link: https://pedibot.xyz/?r=trcs
+
+   Kind regards,
+   Nicolas Beca
+
+4. **unaf.txt** (`info@unaf.org`)
+
+   Asunto: Fiebre en un bebé de seis semanas
+
+   Hola:
+
+   Un bebé de pocas semanas con fiebre, y la duda de si se puede esperar a mañana, es de lo que más asusta en una casa. Se lo pregunté a PediBot, una web gratuita que contesta con guías de pediatría publicadas. Para un bebé de seis semanas con 38,2 lo primero que sale es un aviso para ir a urgencias hoy. Debajo explica qué hacer mientras tanto, con la hoja de la SEUP como fuente.
+
+   Si os parece útil para las familias de vuestras asociaciones, el enlace es este: https://pedibot.xyz/es?r=unaf
+
+   Un saludo desde Sevilla,
+   Nicolas Beca
+
+5. **kidogo.txt** (`info@kidogo.co`)
+
+   Asunto: Diarrhoea in a toddler: what to give at home
+
+   Hello,
+
+   In a childcare centre a toddler with diarrhoea is an everyday thing, and at pick-up the parent usually asks what to give at home. I asked PediBot about an 18-month-old in Kenya. It's a free site that only uses published paediatric guidance. It answers with the WHO guidance on oral rehydration salts and zinc, says to keep feeding and breastfeeding, and lists the signs of dehydration that mean seeing a health worker.
+
+   If you think it could help your parents, here it is: https://pedibot.xyz/?r=kidogo
+
+   Best wishes,
+   Nicolas Beca
+
+6. **portimujer.txt** (`contacto@asociacionportimujer.org`)
+
+   Asunto: Si un niño se traga una pila de botón
+
+   Hola:
+
+   Una pila de botón tragada quema por dentro en pocas horas, y en ese momento cuesta pensar. Probé a escribirlo en PediBot, que hago en mis ratos libres con guías de pediatría publicadas. Lo primero que sale es llamar al 112 o ir a urgencias, y después lo que no hay que hacer mientras tanto, como provocar el vómito o darle agua o leche.
+
+   Si creéis que les puede servir a las mujeres que acompañáis, está aquí: https://pedibot.xyz/es?r=portimujer
+
+   Un saludo,
+   Nicolas Beca
+
+7. **ruminahui.txt** (`ruminahui@ruminahui.org`)
+
+   Asunto: La cartilla de vacunas de Ecuador
+
+   Hola:
+
+   Cuando una familia llega de Ecuador con la cartilla del niño, una de las primeras dudas es qué vacunas le tocaban allí y cuáles le tocan aquí. En PediBot, que hago en Sevilla con guías oficiales y es gratis, está el calendario de Ecuador tal como el país lo comunica a la OMS, y también el de España. Si se le pregunta qué le toca a un bebé de dos meses en Ecuador, lo dice, y avisa de que si el centro de salud dice otra cosa, manda el centro de salud.
+
+   Por si os sirve con las familias de la asociación: https://pedibot.xyz/es/vaccines/ec?r=ruminahui
+
+   Un saludo desde Sevilla,
+   Nicolas Beca
+
+8. **crossfire.txt** (`info@childrenincrossfire.org`)
+
+   Asunto: A six-week-old with a fever, in Swahili
+
+   Hello,
+
+   Your early childhood work in Tanzania made me think of something I've been building. On PediBot, which I build from published paediatric guidelines and which is free, a mother can write in Swahili. When I typed that a six-week-old has a temperature of 38.2, it showed a warning in Swahili to take the baby to hospital today. Then it said to keep breastfeeding on the way and not to wrap the baby up in blankets.
+
+   If it could be useful to the parents and caregivers you work with, here it is: https://pedibot.xyz/?r=crossfire
+
+   Kind regards,
+   Nicolas Beca

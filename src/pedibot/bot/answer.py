@@ -1722,8 +1722,11 @@ showed, and the ANSWER. Return ONLY a JSON object:
   "invented_verdict": true if it states a verdict ("it's normal", "no problem", "yes you can",
       "it is not serious") that none of its cited sentences supports,
   "wrong_country": only when READER'S COUNTRY is given: true if the answer presents another
-      country's vaccination schedule, health services, phone numbers or rules as if they applied
-      to this parent (naming another country only as a comparison is fine),
+      country's vaccination schedule, named health services (a helpline, a GP surgery, free
+      prescriptions) or laws as if they applied to this parent. Medical advice attributed to a
+      named foreign health body (what to do at home, warning signs, when to see a doctor) is
+      fine: often there is no guidance from the reader's own country. Do not judge emergency
+      phone numbers; they are checked elsewhere,
   "unsupported": only when PASSAGES are given: true if any sentence attributes to a source [n]
       something passage [n] does not say, reverses what it says, presents a warning list or advice
       that the passage gives for a DIFFERENT condition, age or person (an adult, another disease),

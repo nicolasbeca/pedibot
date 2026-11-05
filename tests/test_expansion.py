@@ -101,8 +101,12 @@ def test_the_spanish_to_english_bridge_stays_tiny(syn: Synonyms):
     25-sep-2026: tres más, «vomitó después de la vacuna» y sus variantes, que es como se dice de
     verdad —la línea que había pedía «vomitó la vacuna»— y dejaba sin fuente una pregunta que el
     VIS del rotavirus contesta. Medido con las 111 palabras nuevas de la taxonomía dentro:
-    `source_hit` **0,953**, `triage_exact` **0,975** y `routing` **1.0**, los mismos."""
+    `source_hit` **0,953**, `triage_exact` **0,975** y `routing` **1.0**, los mismos.
+
+    5-nov-2026: una más, «miel$», para que la miel de un bebé llegue a «nada de miel antes del
+    año» (CDC, MedlinePlus, NHS). Medido sin y con ella: `source_hit` **0,934**, `triage_exact`
+    **0,975** y `routing` **1.0**, los mismos."""
     bridge = syn._maps.get("es_en", {})
-    assert len(bridge) <= 155, "the bridge grew: re-measure the golden set before widening it"
+    assert len(bridge) <= 156, "the bridge grew: re-measure the golden set before widening it"
     for covered in ("fiebre", "tos", "vómit", "diarrea", "convuls", "quemadura", "vacun"):
         assert covered not in bridge, f"{covered} has Spanish leaflets: bridging it hurts retrieval"

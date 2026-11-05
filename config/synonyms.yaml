@@ -953,6 +953,9 @@ es:
   fruta y la verdura:
   - alimentación complementaria
 es_en:
+  # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
+  # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
+  "miel$": [honey, botulism, honey under 12 months, babies younger than 1 year]
   # 23-sep-2026, séptima tanda: lo que pasa DESPUÉS de la vacuna. «Bulto en el sitio del
   # pinchazo» traía la hoja del estreñimiento.
   pinchazo: [injection site, vaccine side effects, after vaccination, sore arm]
@@ -1209,6 +1212,9 @@ fr:
   comme un chien:
   - laryngite
 fr_en:
+  # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
+  # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
+  "miel$": [honey, botulism, honey under 12 months, babies younger than 1 year]
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "prématur":
   - premature
@@ -1891,6 +1897,9 @@ de_es:
   - laringitis
   - crup
 de_en:
+  # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
+  # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
+  honig: [honey, botulism, honey under 12 months, babies younger than 1 year]
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "frühgebor":
   - premature
@@ -2775,6 +2784,12 @@ ru_es:
   - dificultad respiratoria
   # 5-oct-2026, batería con el reparto de las consultas reales (L252).
 ru_en:
+  # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
+  # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
+  мёд: [honey, botulism, honey under 12 months, babies younger than 1 year]
+  "мед$": [honey, botulism, honey under 12 months, babies younger than 1 year]
+  "меда$": [honey, botulism, honey under 12 months, babies younger than 1 year]
+  "медом$": [honey, botulism, honey under 12 months, babies younger than 1 year]
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "недонош":
   - premature
@@ -3813,6 +3828,10 @@ ar_es:
   مثل الكلب:
   - laringitis
 ar_en:
+  # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
+  # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
+  عسل: [honey, botulism, honey under 12 months, babies younger than 1 year]
+  العسل: [honey, botulism, honey under 12 months, babies younger than 1 year]
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "خديج":
   - premature
@@ -4948,6 +4967,9 @@ pt_es:
   tosse rouca:
   - laringitis
 pt_en:
+  # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
+  # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
+  "mel$": [honey, botulism, honey under 12 months, babies younger than 1 year]
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "prematur":
   - premature
@@ -5952,6 +5974,11 @@ hi_es:
   - urgencias
   - '112'
 hi_en:
+  # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
+  # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
+  शहद: [honey, botulism, honey under 12 months, babies younger than 1 year]
+  shahad: [honey, botulism, honey under 12 months, babies younger than 1 year]
+  "sahad$": [honey, botulism, honey under 12 months, babies younger than 1 year]
   # El prematuro (30-sep-2026): edad real para vacunas, corregida para hitos y curvas.
   "समय से पहले":
   - premature
@@ -7229,6 +7256,9 @@ sw:
   ukambi: ["surua"]
 
 sw_en:
+  # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
+  # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
+  asali: [honey, botulism, honey under 12 months, babies younger than 1 year]
   homa: ["fever", "high temperature", "temperature"]
   ana homa: ["fever in children", "high temperature"]
   degedege: ["febrile seizure", "seizure", "convulsion", "fit"]

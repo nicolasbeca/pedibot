@@ -47,3 +47,5 @@ mtoto wangu njiti wa wiki mbili hanyonyi vizuri na ana homa
 Mtoto wangu wa wiki 6 ana homa ya 38.2
 # 4-nov-2026, probado en vivo (1145, 1147): manchas que no se van al apretar, aviso en suajili y la respuesta en inglés una de cada tres
 mtoto wangu ana upele mwekundu usiopotea nikibonyeza
+# 5-nov-2026, probado en vivo para un correo: «não dê mel» sin fuente y luego la tos ferina; la miel no cruzaba al inglés
+Posso dar mel para a tosse do meu bebê de 8 meses?

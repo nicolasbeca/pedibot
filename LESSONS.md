@@ -2307,3 +2307,17 @@ frases-golpe de cinco palabras o menos y de «soy X, no Y»; sobre los diez corr
 sólo en IndiaSpend (siete cifras). **Regla:** hacia fuera, los datos en palabras («mucho menos
 concentradas») y las frases encadenadas como cuando habla; la cifra exacta, sólo si es lo que se
 pide. Y su forma de hablar se saca de cuando cuenta algo, no de sus órdenes.
+
+## L268 · Lo que vi ayer en seis pruebas no era «casi todas» (5-nov-2026)
+
+El 4-nov dejé escrito que el revisor reescribía «casi todas» las preguntas en suajili por citar
+al NHS a un padre de Tanzania. Medido hoy con un espía sobre el revisor: 0 de 6 borradores de
+Tanzania, y 2 de 15 respuestas guardadas. Lo de ayer era la misma pregunta repetida (la fiebre de
+seis semanas). Y el 71 % de «regenerated» de Tanzania mezcla dos cosas: el reintento del
+verificador también se guarda como `regenerated`. Lo que sí estaba mal era otra cosa: el revisor
+llamaba «normas de otro país» a un consejo médico del NHS, pedía «una guía tanzana» que no existe
+y dio por europeo el 112 de Nigeria. Con cuatro controles escritos a mano (dos que deben saltar,
+dos que no) se vio en una pasada: el viejo fallaba los dos que no; el acotado, ninguno, y las
+reescrituras bajan de 22 a 10 sobre 74. **Regla:** una impresión de una tarde de pruebas se
+apunta como impresión, no como cifra; y una pregunta a un modelo-juez se mide con controles
+positivos y negativos antes de cambiarla.
