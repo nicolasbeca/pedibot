@@ -2947,7 +2947,7 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
 ## Decimoséptima tanda (5-nov-2026): enviada sin enseñársela, por SMTP desde el servidor
 
-> **8 ENVIADOS** el 5-nov hacia las 16:30 (hora de Madrid) con ops/correo.py, limpios en ops/voz.py (la tanda repetía «a free website that answers» y «PediBot, una web gratuita que»; variadas). Dos que reparten (Vishvas News en hindi, Gaon Connection) y seis que atienden familias (Cruz Roja de Tanzania, UNAF, Kidogo en Nairobi, Por Ti Mujer, Rumiñahui, Children in Crossfire en Tanzania). Cada gancho preguntado en vivo hoy (marcado test) y cada frase comprobada contra la respuesta. **Estadão Verifica (Alessandra Monnerat) espera**: su gancho era la miel en portugués, y al probarlo salió «não dê mel» sin fuente y la tos ferina; sale cuando esté desplegado el arreglo y comprobado en vivo.
+> **8 ENVIADOS** el 5-nov hacia las 16:30 (hora de Madrid) con ops/correo.py, limpios en ops/voz.py (la tanda repetía «a free website that answers» y «PediBot, una web gratuita que»; variadas). Dos que reparten (Vishvas News en hindi, Gaon Connection) y seis que atienden familias (Cruz Roja de Tanzania, UNAF, Kidogo en Nairobi, Por Ti Mujer, Rumiñahui, Children in Crossfire en Tanzania). Cada gancho preguntado en vivo hoy (marcado test) y cada frase comprobada contra la respuesta. **Estadão Verifica (Alessandra Monnerat), ENVIADO el 5-nov tras desplegar la miel** (f37be08): al probar su gancho salió «não dê mel» sin fuente y la tos ferina; desplegado, en vivo dice que no con los CDC. 9 en el día.
 
 > Direcciones leídas en sus webs desde el servidor: Vishvas News (contacto), Gaon Connection (la de Neelesh Misra, su fundador, en la portada), Cruz Roja de Tanzania (portada), UNAF (portada), Kidogo (portada), Por Ti Mujer (portada), Rumiñahui (portada), Children in Crossfire (portada; trabaja en primera infancia en Tanzania), Estadão Verifica (la página de la sección lista a su equipo). Descartados: PesaCheck, Factly, Comprova, Cotejo, Amref, SHOFCO, Best Beginnings, Zero to Three, Tommy's (no publican dirección o la web bloquea); BOOM sólo da la de reclamaciones a verificar y la de correcciones; el té de hinojo en portugués y el gripe water contestan con honradez que las guías no hablan de ello, no sirven de gancho.
 
@@ -3053,4 +3053,17 @@ además, que ya citamos el Manual de Pediatría de la PUC):
    If it could be useful to the parents and caregivers you work with, here it is: https://pedibot.xyz/?r=crossfire
 
    Kind regards,
+   Nicolas Beca
+
+9. **estadao.txt** (`alessandra.monnerat@estadao.com`)
+
+   Asunto: Mel para a tosse de bebê
+
+   Olá, Alessandra,
+
+   Mel para a tosse é das primeiras coisas que a avó sugere, e antes de um ano não pode, pelo risco de botulismo. Perguntei ao PediBot, um site gratuito que responde aos pais só com guias de pediatria publicadas, se podia dar mel a um bebê de 8 meses. Ele responde que não, com a fonte dos CDC, e depois explica o que ajuda com a tosse e quando procurar o médico.
+
+   Se for útil para alguma checagem do Estadão Verifica, está aqui: https://pedibot.xyz/pt?r=estadao
+
+   Um abraço de Sevilha,
    Nicolas Beca
