@@ -37,6 +37,8 @@ ASNS = {
     45090: "Tencent Cloud",
     137718: "Volcano Engine (ByteDance)",
     45102: "Alibaba Cloud",
+    136907: "Huawei Cloud",
+    55990: "Huawei Cloud",
     20473: "Vultr",
     400940: "Railway",
 }

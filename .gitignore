@@ -55,3 +55,6 @@ app/node_modules/
 
 # mapas de Natural Earth en bruto (scripts/build_world_map.py los baja; se versiona lo generado)
 FUENTES/geo/
+
+# registros de las baterías (los .jsonl sí se guardan)
+eval/bateria_operador/*.log

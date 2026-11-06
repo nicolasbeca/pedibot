@@ -2321,3 +2321,23 @@ dos que no) se vio en una pasada: el viejo fallaba los dos que no; el acotado, n
 reescrituras bajan de 22 a 10 sobre 74. **Regla:** una impresión de una tarde de pruebas se
 apunta como impresión, no como cifra; y una pregunta a un modelo-juez se mide con controles
 positivos y negativos antes de cambiarla.
+
+## L269 · Un pico que nadie celebra hasta saber quién es (6-nov-2026)
+
+El contador público pasó de 8 visitantes al día a 96 y 248 justo cuando salían las tandas de correo,
+y la lectura cómoda era «ya funciona». Abierto el registro: 24 horas exactas, unas 300 peticiones a
+la hora, 724 IP, todas `zh-CN`, en una web sin chino y sin una sola pregunta en chino en toda la
+base. El ASN de cada IP lo dijo en un minuto (Tencent, Huawei Cloud y nodos en los tres operadores
+chinos). La lista de centros de datos ya paraba Tencent; faltaba Huawei. Lo que entra por operador
+no se puede listar sin llevarse a personas, así que cuenta la conducta (zh-CN y una sola página).
+**Regla:** una cifra que salta se mira por idioma, red y hora antes de contársela a nadie, y más
+si es la que uno quería ver.
+
+## L270 · La misma frase con otra gramática se cuela (6-nov-2026)
+
+El 26-oct se cazó «son síntomas habituales» bajo el aviso, en seis lenguas. El ejemplo de la portada
+sacó el 5-nov «Vomiting is one of the usual symptoms»: misma calma, con «uno de los» delante, y el
+patrón no lo veía. Al ampliar una regex de seguridad hay que pensar en la frase, no en la cadena; y
+medirla sobre las respuestas guardadas: de 403 con aviso, las formas nuevas cazan 4 y las 4 son
+rebajas de verdad, mientras «one of the signs the SEUP lists as a reason to go», que dice lo
+contrario, se queda fuera por no llevar el adjetivo.

@@ -13,6 +13,7 @@ from loguru import logger
 from pedibot.bot.about import ficha_de, responde_sobre
 from pedibot.bot.banner_lead import con_el_aviso_delante
 from pedibot.bot.breathing_cause import NOTA_SIN_CAUSA, sin_otra_causa
+from pedibot.bot.swallowed_object import NOTA_OBJETO, sin_hoja_de_toxicos
 from pedibot.bot.dose import DRUGS, bottles_in_country, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
 from pedibot.bot.emergency_question import (
@@ -1620,7 +1621,11 @@ _MANDA_A_CASA = re.compile(
     r"|suelen? ser lev"
     r"|surveill(er|ez)[^.]{0,20}(à la maison|chez vous)|g[ée]n[ée]ralement b[ée]nin"
     r"|zu hause (beobachten|behandeln)|meist harmlos"
-    r"|observ(ar|e)[^.]{0,20}em casa|(normalmente|geralmente) [ée] leve",
+    r"|observ(ar|e)[^.]{0,20}em casa|(normalmente|geralmente) [ée] leve"
+    # 6-nov-2026, 1191: la Conducta de Ecimed es para después de que un médico lo haya localizado
+    r"|revis(a|e|ar|en|ad)\b[^.]{0,12}\bheces\b"
+    r"|\bcheck\b[^.]{0,20}\b(stools?|poo|nappy|nappies|diapers?)\b[^.]{0,30}\b(pass|passed|come|out)\b"
+    r"|v[ée]rifi(ez|er)\b[^.]{0,20}\bselles\b|verifi(que|car)\b[^.]{0,20}\bfezes\b",
     re.I,
 )
 #: Tranquilizar con frecuencias también rebaja el aviso (9-oct-2026, baterías r70-r72): «a high
@@ -1659,6 +1664,13 @@ _TRANQUILIZA = re.compile(
     # Con el verbo delante: «los síntomas habituales de la meningitis son…» enumera, no calma.
     + r"|\b(s[ãa]o|[ée]|son|es|sont|est) (des |un |une |uns |umas? |unos |unas )?(sintomas?|s[ií]ntomas?|sympt[ôo]mes?|sinais|signes?) (habitua(l|is)|habituales?|comuns?|comunes|frequentes?|frecuentes?|habituels?|fr[ée]quents?|courants?)\b" + _SIN_VUELTA
     + r"|\b(are|is) (a |an )?(very )?(common|usual|typical) (symptoms?|signs?)\b" + _SIN_VUELTA
+    # 6-nov-2026, 1200 y 665: la misma calma con «uno de los». Sólo con el adjetivo: «one of the
+    # signs the SEUP lists as a reason to go» dice lo contrario (medido sobre 403 con aviso: 2 y 2).
+    + r"|\bis one of the (most )?(common|usual|typical) (symptoms?|signs?)\b" + _SIN_VUELTA
+    + r"|\bes uno de los (s[ií]ntomas|signos) (m[aá]s )?(habituales|frecuentes|comunes)\b" + _SIN_VUELTA
+    + r"|\b[ée] um dos (sintomas|sinais) (mais )?(habituais|comuns|frequentes)\b" + _SIN_VUELTA
+    + r"|\best l['’]une? des (sympt[ôo]mes|signes) (les plus )?(habituels|fr[ée]quents|courants)\b" + _SIN_VUELTA
+    + r"|\bist eines der (h[äa]ufig(st)?en|[üu]blichen|typischen) (symptome|anzeichen)\b" + _SIN_VUELTA
     + r"|\b(sind|ist) (ein )?(h[äa]ufige|übliche|typische)s? (symptome?|anzeichen|beschwerden)\b" + _SIN_VUELTA
     # 20-oct-2026, en alemán: con las hojas para padres del BIÖG el redactor copia su calma bajo
     # el aviso («suchen Sie bald eine ärztliche Praxis auf», la fiebre que «meist» baja, «einen
@@ -2881,6 +2893,10 @@ class Engine:
             antes = len(hits)
             hits = sin_otra_causa(hits, context_text, {r.id for r in tr.matched})
             sin_causa = len(hits) < antes
+            # 6-nov-2026: un objeto tragado no es una intoxicación (bot/swallowed_object.py)
+            antes = len(hits)
+            hits = sin_hoja_de_toxicos(hits, {r.id for r in tr.matched})
+            sin_toxicos = len(hits) < antes
             # 26-oct-2026: el antibiótico recetado, sin cifra (bot/prescribed.py)
             nota_ab = nota_antibiotico(context_text)
             hits = self._own_schedule(context_text, country, hits)
@@ -2914,6 +2930,7 @@ class Engine:
                 f"{_schedule_note(context_text, country)}"
                 f"{_warning_note(tr)}"
                 f"{NOTA_SIN_CAUSA if sin_causa else ''}"
+                f"{NOTA_OBJETO if sin_toxicos else ''}"
                 f"{nota_ab}"
                 f"{_history_block(history)}"
                 f"{CHILD_MODE if mode == 'child' else ''}"

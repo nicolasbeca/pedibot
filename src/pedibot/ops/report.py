@@ -440,7 +440,14 @@ def count_visits(lines: Iterable[str]) -> dict[str, Any]:
         if who not in llegada or ts_pag < llegada[who][0]:
             llegada[who] = (ts_pag, uri, ref, ua, lang)
 
-    reales = {w: v for w, v in paginas.items() if w in estaticos}
+    # 6-nov-2026: el barrido de 24 h desde China (tests/test_visits_probe_from_china.py). La web no
+    # tiene chino: navegador zh-CN y una sola página no es una visita; con dos, sí.
+    reales = {
+        w: v
+        for w, v in paginas.items()
+        if w in estaticos
+        and not (len(v) == 1 and w in llegada and llegada[w][4].lower().startswith("zh-cn"))
+    }
     views, chat = 0, 0
     top: dict[str, int] = {}
     per_day: dict[str, int] = {}

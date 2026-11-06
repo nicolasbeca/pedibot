@@ -50,6 +50,18 @@ REBAJAN = [
     "Vomiting and sleepiness are common symptoms after a head injury [2].",
     "Les vomissements et la somnolence sont des symptômes fréquents après un choc à la tête [2].",
     "Erbrechen und Müdigkeit sind häufige Symptome nach einem Sturz auf den Kopf [2].",
+    # 6-nov-2026, la 1200 (ejemplo de la portada, caída del sofá y dos vómitos, aviso de urgencias
+    # hoy): la misma calma de la 1074 con otra gramática; y la 665, igual en castellano
+    "Vomiting is one of the usual symptoms after a knock to the head, along with headache, confusion and drowsiness, according to the SEUP [6].",
+    "La somnolencia es uno de los síntomas habituales de un golpe en la cabeza, según la SEUP [2].",
+    "O vômito é um dos sintomas habituais de uma pancada na cabeça [2].",
+    "Le vomissement est l'un des symptômes habituels après un choc à la tête [2].",
+    "Erbrechen ist eines der häufigen Symptome nach einem Sturz auf den Kopf [2].",
+    # 6-nov-2026, 1191: pila de botón, 112 encima, y «en casa, revise las heces» (la Conducta de
+    # Ecimed es para después de que un médico la haya localizado)
+    "En casa, revise las heces para comprobar que la pila sale y evite los laxantes [5].",
+    "Los padres deben revisar las heces hasta que salga [5].",
+    "At home, check his stools to make sure the coin has passed [5].",
     # 26-oct-2026, en vivo, un bebé de 6 semanas con 38,2 y el aviso encima: las otras cuatro
     # escrituras no tenían ninguna forma de tranquilizar en la lista
     "NHS के अनुसार बुखार शरीर का संक्रमण से लड़ने का स्वाभाविक तरीका है, और यह आमतौर पर 1 से 4 दिनों में सामान्य हो जाता है ।",
@@ -75,6 +87,13 @@ NO_REBAJAN = [
     "Common symptoms of meningitis include a high temperature, a stiff neck and a rash that does not fade [1].",
     "Os sintomas habituais da meningite são febre alta, rigidez de nuca e manchas que não desaparecem [1].",
     "Los síntomas habituales de la deshidratación son boca seca y menos pañales mojados [1].",
+    # «uno de los signos que la guía manda consultar» dice lo contrario que «síntoma habitual»
+    "Fainting during exercise is one of the signs the SEUP lists as a reason to go to the emergency department [1].",
+    "A rash that does not fade when you press a glass against it is one of the signs the NHS lists as needing immediate action [2].",
+    "Swelling of the lips is one of the symptoms a food allergy can cause [1].",
+    "Vomiting is one of the usual symptoms after a head injury, but with a baby this young she needs to be seen today [2].",
+    # las heces como dato para el médico, no como vigilancia en casa
+    "Tell the doctor if the stools are black or have blood in them [1].",
     # lo que se hace de camino, en las escrituras nuevas
     "अस्पताल जाते समय बच्चे को स्तनपान कराती रहें [1]।",
     "Endelea kumnyonyesha ukiwa njiani kwenda hospitali [1].",
