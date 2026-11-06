@@ -57,6 +57,13 @@ REBAJAN = [
     "O vômito é um dos sintomas habituais de uma pancada na cabeça [2].",
     "Le vomissement est l'un des symptômes habituels après un choc à la tête [2].",
     "Erbrechen ist eines der häufigen Symptome nach einem Sturz auf den Kopf [2].",
+    # 6-nov-2026, en vivo tras cazar la anterior, y la 1059: tercera gramática de la misma calma
+    "A knock on the head often causes nausea and vomiting, according to the SEUP [6].",
+    "A knock on the head from a fall often causes vomiting, along with headache and drowsiness [2].",
+    "Un golpe en la cabeza suele provocar náuseas y vómitos [2].",
+    "Uma pancada na cabeça costuma causar vômitos [2].",
+    "Un choc à la tête provoque souvent des vomissements [2].",
+    "Ein Sturz auf den Kopf verursacht oft Erbrechen [2].",
     # 6-nov-2026, 1191: pila de botón, 112 encima, y «en casa, revise las heces» (la Conducta de
     # Ecimed es para después de que un médico la haya localizado)
     "En casa, revise las heces para comprobar que la pila sale y evite los laxantes [5].",
@@ -92,6 +99,9 @@ NO_REBAJAN = [
     "A rash that does not fade when you press a glass against it is one of the signs the NHS lists as needing immediate action [2].",
     "Swelling of the lips is one of the symptoms a food allergy can cause [1].",
     "Vomiting is one of the usual symptoms after a head injury, but with a baby this young she needs to be seen today [2].",
+    # lo que causa otra cosa, o una frase que vuelve al aviso
+    "Meningitis often causes a stiff neck and a rash that does not fade [1].",
+    "A head injury often causes vomiting, but with these signs she needs to be seen today [2].",
     # las heces como dato para el médico, no como vigilancia en casa
     "Tell the doctor if the stools are black or have blood in them [1].",
     # lo que se hace de camino, en las escrituras nuevas

@@ -1634,6 +1634,11 @@ _MANDA_A_CASA = re.compile(
 #: tratamiento en casa, acude» a un asmático que respira mal. Si la frase vuelve al aviso ella
 #: misma («…but a baby this young needs to be checked today»), no se cuenta.
 _SIN_VUELTA = r"(?![^.]{0,90}\b(but|still|even so|however|pero|aun as[ií]|sin embargo|mais|aber|mas)\b)"
+_SINTOMA = (
+    r"(nausea|vomit\w*|drows\w*|sleep\w*|headaches?|n[aá]useas?|v[oóô]mitos?|somnolencia"
+    r"|sonol[êe]ncia|dolor de cabeza|dor de cabe[cç]a|vomissements?|naus[ée]es?|somnolence"
+    r"|erbrechen|[üu]belkeit)"
+)
 _TRANQUILIZA = re.compile(
     r"\b(is|are) (very |quite |really |extremely )?common\b[^.]{0,140}\b(usually|mostly|often|in most cases|most of the time)\b" + _SIN_VUELTA
     + r"|\b(es|son) (muy )?(frecuentes?|com[uú]n(es)?)\b[^.]{0,140}\b(suelen?|normalmente|la mayor[ií]a)\b" + _SIN_VUELTA
@@ -1671,6 +1676,13 @@ _TRANQUILIZA = re.compile(
     + r"|\b[ée] um dos (sintomas|sinais) (mais )?(habituais|comuns|frequentes)\b" + _SIN_VUELTA
     + r"|\best l['’]une? des (sympt[ôo]mes|signes) (les plus )?(habituels|fr[ée]quents|courants)\b" + _SIN_VUELTA
     + r"|\bist eines der (h[äa]ufig(st)?en|[üu]blichen|typischen) (symptome|anzeichen)\b" + _SIN_VUELTA
+    # 6-nov-2026, en vivo tras lo anterior, y la 1059: «a knock on the head often causes nausea and
+    # vomiting». Sólo con el síntoma detrás (sobre 403 con aviso: 1, y es esa)
+    + r"|\b(often|usually|commonly|frequently|normally) (causes?|leads? to|brings? on|produces?)\b[^.]{0,40}\b" + _SINTOMA + _SIN_VUELTA
+    + r"|\bsuelen? (causar|provocar|producir|dar)\b[^.]{0,40}\b" + _SINTOMA + _SIN_VUELTA
+    + r"|\bcostumam? (causar|provocar|dar)\b[^.]{0,40}\b" + _SINTOMA + _SIN_VUELTA
+    + r"|\b(provoque|cause) souvent\b[^.]{0,40}\b" + _SINTOMA + _SIN_VUELTA
+    + r"|\b(verursacht|f[üu]hrt) (oft|h[äa]ufig|meist)\b[^.]{0,40}\b" + _SINTOMA + _SIN_VUELTA
     + r"|\b(sind|ist) (ein )?(h[äa]ufige|übliche|typische)s? (symptome?|anzeichen|beschwerden)\b" + _SIN_VUELTA
     # 20-oct-2026, en alemán: con las hojas para padres del BIÖG el redactor copia su calma bajo
     # el aviso («suchen Sie bald eine ärztliche Praxis auf», la fiebre que «meist» baja, «einen

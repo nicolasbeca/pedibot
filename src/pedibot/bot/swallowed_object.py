@@ -30,7 +30,9 @@ NOTA_OBJETO = (
     " the way. Write only what the passages say: that this needs to be seen as the warning above"
     " says, and any sign they list that makes it more serious. Do NOT add advice about food,"
     " drink, vomiting or how much was swallowed. Do NOT tell the parent to watch at home or check"
-    " the stools: that is for after a doctor has seen the child.\n"
+    " the stools: that is for after a doctor has seen the child. Never talk about the passages or"
+    " what they leave out (\"coins are not named\", \"lists no signs\"): the parent has not seen"
+    " them; if there is little to say, say little.\n"
 )
 
 

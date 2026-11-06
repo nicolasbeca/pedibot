@@ -74,6 +74,8 @@ def test_the_note_forbids_inventing_what_the_sheet_said() -> None:
     nota = NOTA_OBJETO.lower()
     assert "not a poison" in nota
     assert "at home" in nota and "stools" in nota
+    # en vivo, 6-nov: «Coins are not named in that passage», dicho a un padre
+    assert "never talk about the passages" in nota
 
 
 def test_the_engine_does_not_show_the_sheet_for_a_coin() -> None:
