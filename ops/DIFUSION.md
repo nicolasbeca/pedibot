@@ -3087,7 +3087,7 @@ además, que ya citamos el Manual de Pediatría de la PUC):
    Kind regards,
    Nicolas Beca
 
-2. **verificat.txt** (`redaccion@verificat.cat`)
+2. **verificat.txt** (`redaccio@verificat.cat`; redaccion@ rebotó, reenviado el mismo día)
 
    Asunto: Alternar paracetamol e ibuprofeno
 
