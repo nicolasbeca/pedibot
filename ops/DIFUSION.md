@@ -3067,3 +3067,139 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
    Um abraço de Sevilha,
    Nicolas Beca
+
+## Decimoctava tanda (6-nov-2026): enviada sin enseñársela, por SMTP desde el servidor
+
+> **10 ENVIADOS** el 6-nov con ops/correo.py, limpios en ops/voz.py. Dos que reparten (BOOM en India, Verificat en Barcelona) y ocho que atienden familias (Aldeas Infantiles, Cruz Roja de Kenia y de Nigeria, Amref Kenia, Alba Lactancia, Fatherhood Institute, Breastfeeding Network, La Leche Liga de Alemania). Cada gancho preguntado en vivo el mismo día; lo de Amref, leído en la página /muac.
+
+> Direcciones leídas en sus webs desde el servidor, con MX comprobado. Descartados: el kajal para BOOM (PediBot no tiene fuente y lo dice), la madre con fiebre para Alba (mezcla consejos de un bebé con fiebre; línea en la batería), Calpol a seis semanas para Full Fact (respuesta floja y sólo press@). Sin dirección en su web: Pastoral da Criança, Correctiv, Factly, La Liga de la Leche. Aos Fatos sólo publica ouvidoria@.
+
+1. **boom.txt** (`claims@boomlive.in`)
+
+   Asunto: Mustard oil in a baby's ear
+
+   Hello,
+
+   Mustard oil in the ear for an earache is something a lot of families in India still hear from their elders. I asked PediBot about it, a free website that only answers from published paediatric guidelines. It said not to put oil or anything else in the ear, with the NHS and the Spanish paediatric emergency society as sources. Then it went on to what does help with the pain and when to see a doctor.
+
+   If one of your health checks ever touches on home remedies like this, you can try it here: https://pedibot.xyz/?r=boom
+
+   Kind regards,
+   Nicolas Beca
+
+2. **verificat.txt** (`redaccion@verificat.cat`)
+
+   Asunto: Alternar paracetamol e ibuprofeno
+
+   Hola:
+
+   Lo de alternar paracetamol e ibuprofeno para bajar la fiebre lo ha oído casi todo el mundo que tiene hijos, con lo cual me pareció buena pregunta para PediBot. Es una web gratuita que hago en Sevilla y que contesta solo con guías de pediatría publicadas. Dice que no es lo habitual, según la AEPap, porque se presta a errores con las dosis, y explica el único caso en que tiene sentido cambiar de uno a otro. Debajo de la respuesta se ve de dónde sale cada cosa.
+
+   Si alguna verificación vuestra de salud infantil toca este tema, aquí lo podéis probar: https://pedibot.xyz/es?r=verificat
+
+   Un saludo desde Sevilla,
+   Nicolas Beca
+
+3. **aldeas.txt** (`aldeasinfantiles@aldeasinfantiles.es`)
+
+   Asunto: Fiebre, baño frío y paños
+
+   Hola:
+
+   Entiendo que quien cuida a los niños en vuestras aldeas se ve con fiebres un día sí y otro también, y muchas veces de noche. Le pregunté a PediBot si a un niño de dos años con fiebre se le da un baño frío o se le ponen paños. Dice que no, que no sirve para bajarla, y luego cuenta lo que sí ayuda y cuándo hay que ir a urgencias. Es una web gratuita que hago desde Sevilla con guías de pediatría publicadas.
+
+   Si creéis que a vuestros educadores les puede venir bien, está aquí: https://pedibot.xyz/es?r=aldeas
+
+   Un saludo,
+   Nicolas Beca
+
+4. **krcs.txt** (`info@redcross.or.ke`)
+
+   Asunto: Diarrhoea, asked in Swahili
+
+   Hello,
+
+   When a volunteer is talking to a mother about a toddler with diarrhoea, I imagine it helps to have something in Swahili on the phone. I asked PediBot in Swahili what to give an 18-month-old who has had diarrhoea since the morning. It answered in Swahili: small amounts of fluid often, rehydration solution, the usual feeds, and when to get urgent help. It's free, and I build it from Seville with guidance from WHO and the NHS.
+
+   If it could be useful to your volunteers, it's here: https://pedibot.xyz/?r=krcs
+
+   Best wishes,
+   Nicolas Beca
+
+5. **nrcs.txt** (`info@redcrossnigeria.org`)
+
+   Asunto: A spoon in the mouth during a convulsion
+
+   Hello,
+
+   A spoon in the mouth during a convulsion is one of those things people still do out of fear. I put exactly that question to PediBot with Nigeria as the country. It's a free site I make from published paediatric guidance. It shows a warning to call 112 first, says not to put anything in the child's mouth, and then what to do while help comes, like protecting the head and timing the seizure.
+
+   If your first aid volunteers could use it with families, this is the link: https://pedibot.xyz/?r=nrcs
+
+   Kind regards from Seville,
+   Nicolas Beca
+
+6. **amref.txt** (`info.kenya@amref.org`)
+
+   Asunto: An arm tape page that works offline
+
+   Hello,
+
+   This may be a small thing for people who work with arm tapes every day, but PediBot, a site I make with published guidance, has a MUAC page that keeps working with the phone offline. You type in the measurement and it shows the WHO band, and it also says clearly that the tape screens and doesn't tell you a child is well fed.
+
+   If you think it might be handy for your community health workers when a reading needs explaining to a mother, it's here, and it's free: https://pedibot.xyz/muac?r=amref
+
+   Kind regards,
+   Nicolas Beca
+
+7. **alba.txt** (`alba@albalactanciamaterna.org`)
+
+   Asunto: Manzanilla para los gases
+
+   Hola:
+
+   Imagino que os preguntan a menudo por la manzanilla para los gases del bebé. Se lo pregunté a PediBot para uno de tres semanas, y dice que no hay ningún estudio que demuestre que las infusiones sirvan, citando a la SEUP. También dice que antes de darle nada de herbolario se hable con el pediatra. Luego cuenta lo que sí ayuda. Es gratis y lo hago en Sevilla con guías publicadas, y debajo de cada respuesta se ve la fuente.
+
+   Si os parece útil para las madres que os escriben, aquí está: https://pedibot.xyz/es?r=alba
+
+   Un abrazo desde Sevilla,
+   Nicolas Beca
+
+8. **fatherhood.txt** (`mail@fatherhoodinstitute.org`)
+
+   Asunto: A six-week-old with a temperature at 2am
+
+   Hello,
+
+   Plenty of dads are the ones awake with a hot baby at night, not sure whether it can wait until morning. So I tried that on PediBot, a free site I build from published paediatric guidance: a six-week-old with a temperature of 38.2 at two in the morning. It put a warning at the top straight away, said not to wait, and gave the NHS as the reason.
+
+   If it could be useful for the dads you work with, here it is: https://pedibot.xyz/?r=fatherhood
+
+   Best wishes from Seville,
+   Nicolas Beca
+
+9. **bfn.txt** (`comms@breastfeedingnetwork.org.uk`)
+
+   Asunto: Water for a breastfed baby in the heat
+
+   Hello,
+
+   I imagine you get asked every summer whether a breastfed baby needs water in the heat, usually after a relative has said so. I asked PediBot about a two-month-old and it said no, that fully breastfed babies don't need it, with the NHS and WHO as sources, and to offer the breast more often. It's a small free site I make in Seville from published guidance.
+
+   If you think it's worth passing on to your supporters, you can try it here: https://pedibot.xyz/?r=bfn
+
+   Kind regards,
+   Nicolas Beca
+
+10. **lalecheliga.txt** (`info@lalecheliga.de`)
+
+   Asunto: Wasser für ein Baby bei Hitze
+
+   Guten Tag,
+
+   die Frage, ob ein gestilltes Baby bei Hitze zusätzlich Wasser braucht, kommt bei Ihnen sicher jeden Sommer. Ich habe sie PediBot gestellt, für ein vier Monate altes Baby. Das ist eine kostenlose Website, die ich in Sevilla baue und die nur aus veröffentlichten Leitlinien antwortet. Die Antwort war: kein zusätzliches Wasser, lieber häufiger anlegen, mit dem BIÖG als Quelle.
+
+   Falls das für Ihre Stillberaterinnen nützlich sein könnte, hier können Sie es ausprobieren: https://pedibot.xyz/de?r=lalecheliga
+
+   Viele Grüße aus Sevilla,
+   Nicolas Beca
