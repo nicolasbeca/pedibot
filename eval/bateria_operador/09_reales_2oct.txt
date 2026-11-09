@@ -57,3 +57,11 @@ My 2 year old swallowed a coin, what do I do?
 Mi hija de 3 años se ha tragado una pila de botón
 # 6-nov-2026, probado para un correo: la madre con fiebre recibe consejos de un bebé con fiebre (ofrecer el pecho más a menudo)
 Tengo fiebre, ¿puedo seguir dando el pecho a mi bebé de 4 meses?
+# 9-nov-2026, probado para un correo: «the AEP advises against putting oil or ghee on the cord»; el pasaje de la AEP no habla de aceites (atribución inventada)
+Should I put oil or ghee on my newborn baby umbilical cord?
+# 9-nov-2026, probado para un correo: niño de España sin vacunas, contesta con nidirect/NHS («6 en 1 hasta los 10 años», regla del Reino Unido)
+Mi hijo de 3 años no tiene las vacunas puestas, ¿se las pueden poner ahora?
+# 9-nov-2026: la manzanilla con «para los gases» se queda sin fuente; sin esa coletilla (1230, 6-nov) sí contestaba. Gancho del correo a Alba Lactancia
+¿Puedo darle manzanilla a mi bebé de 3 semanas para los gases?
+# 9-nov-2026: pañales mojados de un recién nacido, «no hay una cifra exacta» (hueco: el NHS da la cifra)
+¿Cuántos pañales mojados tiene que hacer mi recién nacido al día?

@@ -3205,3 +3205,130 @@ además, que ya citamos el Manual de Pediatría de la PUC):
    Nicolas Beca
 
 > **9-nov · La Leche Liga Deutschland (decimoctava tanda): NO.** No lo recomiendan (sin revisión pediátrica, proyecto privado, DeepSeek fuera de la UE) y preguntaron por el `?r=lalecheliga`. Contestado en su hilo el 9-nov: el enlace era sólo para esa mail, la web no los nombra. Cerrado; no volver a escribirles.
+
+## Decimonovena tanda (9-nov-2026): enviada por SMTP desde el servidor, con su «manda tanda de hoy»
+
+> **10 ENVIADOS** el 9-nov con ops/correo.py, limpios en ops/voz.py (la tanda tampoco repite frases). Cinco que reparten (Africa Check, PesaCheck, Boatos.org, Fact Crescendo, Salud con Lupa) y cinco que atienden familias (Fundación Secretariado Gitano, Fundación Madrina, Gingerbread, Family Action, Baby Basics UK). Tras el no de La Leche Liga, nada institucional ni clínico: verificadores y grupos comunitarios.
+
+> Direcciones: fsg@gitanos.org, fundacion@madrina.org, boatos.org@gmail.com, info@factcrescendo.com (descifrada del data-cfemail de su página) e info@saludconlupa.com, leídas en sus webs desde el servidor; Gingerbread, Family Action y Baby Basics, del registro de la Charity Commission; info@africacheck.org de su página de contacto; hello@pesacheck.org de su página de contacto (subdominio de Code for Africa). MX comprobado en las diez. Cada gancho preguntado en vivo hoy. Descartados como gancho: erva-doce para la cólica y moneda en el ombligo (sin fuente), aceite o ghee en el cordón (atribuye a la AEP lo que no dice), vacunas atrasadas en España (contesta con reglas del Reino Unido), ictericia a los 10 días (sólo el aviso), pañales mojados (sin cifra), manzanilla «para los gases» (sin fuente); los cuatro fallos, a la batería. Sin dirección: Fundación Juanfe (la web no responde), Familias en Acción, Comprova, Ekjut (sólo en un PDF de terceros).
+
+1. **africacheck.txt** (`info@africacheck.org`) · Does teething cause a high fever?
+2. **pesacheck.txt** (`hello@pesacheck.org`) · Aspirin for a child's fever, asked in Swahili
+3. **boatos.txt** (`boatos.org@gmail.com`) · Dentição dá febre alta?
+4. **factcrescendo.txt** (`info@factcrescendo.com`) · A cold bath for a fever, asked in Hinglish
+5. **saludconlupa.txt** (`info@saludconlupa.com`) · Agua de anís para los cólicos
+6. **gitanos.txt** (`fsg@gitanos.org`) · Las vacunas de los 12 meses (enlace a /es/vaccines/es)
+7. **madrina.txt** (`fundacion@madrina.org`) · Fiebre en un bebé de seis semanas
+8. **gingerbread.txt** (`info@gingerbread.org.uk`) · A sleepy toddler with a fever
+9. **familyaction.txt** (`info@family-action.org.uk`) · How much Calpol for a two-year-old
+10. **babybasics.txt** (`info@baby-basics.org.uk`) · Safe sleep for a newborn
+
+### africacheck.txt
+
+   Hello,
+   
+   "It's just teething" is something a lot of parents hear when a baby has a fever, and it can make someone wait longer than they should. I asked PediBot, a free site I build from published paediatric guidance, whether teething causes a high fever. It says no: a teething baby's temperature can go up a little but stays under 38C, with the NHS as the source. It also says that under three months any fever needs a doctor the same day.
+   
+   If it's ever handy for one of your health checks, here it is: https://pedibot.xyz/?r=africacheck
+   
+   Kind regards,
+   Nicolas Beca
+
+### babybasics.txt
+
+   Hello,
+   
+   A lot of the families who get a Moses basket from you are probably also wondering how the baby should sleep in it. I asked PediBot how a newborn should sleep safely. It is free and I build it from published guidance. It answers with the NHS: their own cot or Moses basket, with no toys, pillows or blankets. And if the baby ends up in bed with you, a firm flat mattress and on their back.
+   
+   If it could help the mums you support, here it is: https://pedibot.xyz/?r=babybasics
+   
+   Kind regards,
+   Nicolas Beca
+
+### boatos.txt
+
+   Olá,
+   
+   "É dente nascendo" é das explicações que mais se ouvem quando o bebê tem febre, e às vezes faz a família esperar demais. Perguntei ao PediBot, um site gratuito que faço em Sevilha só com guias de pediatria publicadas, se a dentição dá febre alta. Ele responde que a dentição não aparece entre as causas de febre do MedlinePlus, que a maioria vem de infecções, e que com menos de 3 meses qualquer febre precisa de médico no mesmo dia.
+   
+   Se servir para alguma checagem do Boatos.org, está aqui: https://pedibot.xyz/pt?r=boatos
+   
+   Um abraço,
+   Nicolas Beca
+
+### factcrescendo.txt
+
+   Hello,
+   
+   Cooling a feverish child with a cold-water bath is advice many families in India still get from relatives. I asked PediBot about it the way a lot of people type on their phones, Hindi in English letters: kya bukhar mein bachche ko thande paani se nahla sakte hain. It answered in the same script that no, you shouldn't sponge or undress the child, with the NHS as the source, and then listed when to get help quickly. It's free and only uses published paediatric guidance.
+   
+   If it's ever useful for a health fact-check: https://pedibot.xyz/hi?r=factcrescendo
+   
+   Kind regards,
+   Nicolas Beca
+
+### familyaction.txt
+
+   Hello,
+   
+   How much Calpol to give must be one of the things parents ask most late at night. When I typed it into PediBot for a two-year-old, the first thing it did was ask the child's weight, because the dose goes by weight and not by age. Then it gives the amount in ml. It's a free site built only on published paediatric guidance.
+   
+   If it's useful for FamilyLine or the families you work with: https://pedibot.xyz/?r=familyaction
+   
+   Best wishes,
+   Nicolas Beca
+
+### gingerbread.txt
+
+   Hello,
+   
+   When you're the only adult at home and your child has a fever, there's nobody to check with before deciding whether to go in. I tried that on PediBot, which I make from published paediatric guidance and which is free: a three-year-old at 39 degrees who is very sleepy. It puts a warning first to get them seen today, then says what to do on the way and which changes to tell the staff about.
+   
+   If you think it could help the parents you support, the link is here: https://pedibot.xyz/?r=gingerbread
+   
+   Kind regards,
+   Nicolas Beca
+
+### gitanos.txt
+
+   Hola:
+   
+   Cuando una familia cambia de comunidad o vuelve después de una temporada fuera, es fácil perder la cuenta de qué vacunas le tocan al niño. PediBot es una web gratuita que hago en Sevilla con guías oficiales. Si se le pregunta qué le toca a una niña de 12 meses, saca el calendario del Ministerio de Sanidad: triple vírica, meningococo B y C, y la siguiente cita a los 15 meses. Avisa además de que cada comunidad puede ajustar edades.
+   
+   Por si os sirve con las familias que acompañáis: https://pedibot.xyz/es/vaccines/es?r=gitanos
+   
+   Un saludo desde Sevilla,
+   Nicolas Beca
+
+### madrina.txt
+
+   Hola:
+   
+   Una madre sola con un bebé de seis semanas que tiene fiebre por la noche no sabe si puede esperar a mañana. Se lo pregunté así a PediBot, una web gratuita que contesta con guías de pediatría publicadas. Lo primero que sale es un aviso para ir a urgencias hoy, y debajo qué hacer mientras tanto: no abrigarlo de más y nada de baños fríos ni paños, con la SEUP como fuente.
+   
+   Si creéis que les puede servir a las madres de la fundación, el enlace es este: https://pedibot.xyz/es?r=madrina
+   
+   Un saludo,
+   Nicolas Beca
+
+### pesacheck.txt
+
+   Hello,
+   
+   I wanted to see how PediBot copes with a question that I imagine still comes up in East Africa: giving aspirin to a small child with a fever. I wrote it in Swahili, for a two-year-old. It answered in Swahili that no, children with a fever shouldn't be given aspirin, citing MedlinePlus and the NHS, and then listed the signs that mean calling for help. It's free and it only answers from published paediatric guidelines.
+   
+   If it's useful for your health fact-checks: https://pedibot.xyz/?r=pesacheck
+   
+   Best wishes from Seville,
+   Nicolas Beca
+
+### saludconlupa.txt
+
+   Hola:
+   
+   El agua de anís para los cólicos es de esos consejos que se siguen oyendo en casa. Se lo pregunté a PediBot, una web gratuita que hago en Sevilla y que sólo contesta con guías de pediatría publicadas, para un bebé de un mes. Dice que no, que el anís estrellado puede ser peligroso a esa edad, con la SEUP como fuente, y después explica cuándo hay que ir a urgencias.
+   
+   Por si os sirve en algún reportaje sobre remedios caseros: https://pedibot.xyz/es?r=saludconlupa
+   
+   Un saludo,
+   Nicolas Beca

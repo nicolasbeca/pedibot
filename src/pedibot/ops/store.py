@@ -7,6 +7,7 @@ import datetime as dt
 import hashlib
 import json
 import sqlite3
+import threading
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -166,10 +167,64 @@ def deployment_salt(beside: Path) -> str:
     return nueva
 
 
+class _Fetched:
+    """Lo que devuelve `execute`, ya leído dentro del candado: filas, lastrowid y rowcount."""
+
+    def __init__(self, rows: list, lastrowid: int | None, rowcount: int, description: object):
+        self._rows = rows
+        self.lastrowid = lastrowid
+        self.rowcount = rowcount
+        self.description = description
+
+    def fetchone(self):  # noqa: ANN201 - la misma forma que sqlite3.Cursor
+        return self._rows.pop(0) if self._rows else None
+
+    def fetchall(self) -> list:
+        rows, self._rows = self._rows, []
+        return rows
+
+    def __iter__(self):  # noqa: ANN204
+        return iter(self.fetchall())
+
+
+class _SerializedConnection:
+    """La conexión de OpsStore, de uno en uno (9-nov-2026).
+
+    FastAPI corre los endpoints síncronos en varios hilos y todos usan esta única conexión.
+    Sin candado, dos preguntas en el mismo segundo se pisaban el cursor y una salía en 500
+    (`count_day` leyó None). Cada `execute` lee sus filas antes de soltar el candado, así que
+    quien llama puede seguir usando fetchone/fetchall/iterar como con sqlite3.
+    """
+
+    def __init__(self, con: sqlite3.Connection):
+        self._con = con
+        self._lock = threading.RLock()
+
+    def execute(self, sql: str, params: object = ()) -> _Fetched:
+        with self._lock:
+            cur = self._con.execute(sql, params)  # type: ignore[arg-type]
+            return _Fetched(cur.fetchall(), cur.lastrowid, cur.rowcount, cur.description)
+
+    def executescript(self, script: str) -> None:
+        with self._lock:
+            self._con.executescript(script)
+
+    def commit(self) -> None:
+        with self._lock:
+            self._con.commit()
+
+    def close(self) -> None:
+        with self._lock:
+            self._con.close()
+
+    def __getattr__(self, name: str) -> object:
+        return getattr(self._con, name)
+
+
 class OpsStore:
     def __init__(self, path: Path, salt: str | None = None):
         path.parent.mkdir(parents=True, exist_ok=True)
-        self.con = sqlite3.connect(path, check_same_thread=False)
+        self.con = _SerializedConnection(sqlite3.connect(path, check_same_thread=False))
         self.con.executescript(_SCHEMA)
         # the live database predates the column; its rows are labelled by ops/label_old_rows.py
         if "source" not in {r[1] for r in self.con.execute("PRAGMA table_info(answers)")}:

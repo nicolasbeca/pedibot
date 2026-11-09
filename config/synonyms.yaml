@@ -705,6 +705,17 @@ es:
   llanto:
   - llanto
   - cólico
+  # 9-nov-2026: «¿manzanilla a mi bebé de 3 semanas para los gases?» salía sin fuente; sólo
+  # «llora» y «llanto» llevaban a la hoja de cólicos de la SEUP (nada de herbolario).
+  gases:
+  - cólico del lactante
+  - cólico
+  manzanilla:
+  - cólico del lactante
+  - herbolario
+  anís:
+  - cólico del lactante
+  - herbolario
   caíd:
   - traumatismo
   - golpe
