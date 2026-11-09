@@ -3203,3 +3203,5 @@ además, que ya citamos el Manual de Pediatría de la PUC):
 
    Viele Grüße aus Sevilla,
    Nicolas Beca
+
+> **9-nov · La Leche Liga Deutschland (decimoctava tanda): NO.** No lo recomiendan (sin revisión pediátrica, proyecto privado, DeepSeek fuera de la UE) y preguntaron por el `?r=lalecheliga`. Contestado en su hilo el 9-nov: el enlace era sólo para esa mail, la web no los nombra. Cerrado; no volver a escribirles.
