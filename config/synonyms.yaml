@@ -21,6 +21,12 @@ en:
   "does a baby sleep": [hours of sleep, sleep duration, total daily sleep, hours]
   "hours of sleep": [hours of sleep, sleep duration, total daily sleep, hours]
   "sleep does": [hours of sleep, sleep duration, total daily sleep, hours]
+  # 12-nov-2026: «How many wet nappies…?» se iba a cómo cambiar un pañal; la cifra (6 a 8 al día)
+  # está en MedlinePlus («wet diapers», en inglés de EE. UU.) y en el BIÖG («nasse Windeln»).
+  "wet napp": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  "wet diaper": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  "many nappies": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  "many diapers": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   # 2-oct-2026: «Vis translations», consulta real desde EE. UU. VIS son las Vaccine Information
   # Statements de los CDC; palabra entera, que «visible» o «visit» no son vacunas.
   "vis$":
@@ -492,11 +498,32 @@ en:
   ipad:
   - pantallas
   - sedentarismo
+  # 12-nov-2026: «oil or ghee on the umbilical cord» se quedaba en el paritorio de la AEP. Cómo
+  # se cuida en casa: NHS (wash around, pat dry), Andalucía (ombligo, seco y limpio), BIÖG
+  # (Nabelpflege).
   cord:
   - cordón umbilical
   - recién nacido
+  - ombligo
+  - umbilical cord
+  - pat dry
+  - Nabelpflege
   umbilic:
   - cordón umbilical
+  - ombligo
+  - umbilical cord
+  - pat dry
+  - Nabelpflege
+  belly button:
+  - ombligo
+  - pat dry
+  - wash around
+  - Nabelpflege
+  navel:
+  - ombligo
+  - pat dry
+  - wash around
+  - Nabelpflege
   drowsy:
   - somnoliento
   - decaído
@@ -959,6 +986,11 @@ es:
   pañales mojados:
   - deshidratación
   - gastroenteritis
+  # 12-nov-2026: «¿cuántos pañales mojados…?» pide la cifra, no la deshidratación: MedlinePlus
+  # (6 a 8 «wet diapers» en 24 horas) y el BIÖG («sechs- bis achtmal nasse Windeln»).
+  cuántos pañales: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  cuantos pañales: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  pañales moja: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   fruta y verdura:
   - alimentación complementaria
   fruta y la verdura:

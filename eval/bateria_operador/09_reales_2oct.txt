@@ -65,3 +65,11 @@ Mi hijo de 3 años no tiene las vacunas puestas, ¿se las pueden poner ahora?
 ¿Puedo darle manzanilla a mi bebé de 3 semanas para los gases?
 # 9-nov-2026: pañales mojados de un recién nacido, «no hay una cifra exacta» (hueco: el NHS da la cifra)
 ¿Cuántos pañales mojados tiene que hacer mi recién nacido al día?
+# 12-nov-2026, probado para un correo: gemelos con dos pesos, «¿con cuál calculo?» en vez de las dos dosis
+My twins both have a fever. How much Calpol? One weighs 9 kg and the other 10 kg
+# 12-nov-2026, probado para un correo: «¿cuánto ORS?» en hindi para un niño de 1 año, sin cantidad (la herramienta oral_rehydration_plan del MCP sí la da)
+1 साल के बच्चे को दस्त हो रहे हैं, ORS कितना देना चाहिए?
+# 12-nov-2026: «belly button» trae la hernia umbilical antes que el cuidado del ombligo (no arreglado)
+What should I put on my newborn's belly button?
+# 12-nov-2026, gancho del correo a Polígrafo: bien (sólo leche), pero cierra con los avisos del cólico («se entre os episódios de choro…») sin venir a cuento (no arreglado)
+Posso dar água a um bebé de 2 meses quando está muito calor?

@@ -962,6 +962,36 @@ _PIDE_CANTIDAD = re.compile(
 )
 
 
+#: El suero de rehidratación oral, nombrado en las ocho lenguas y en suajili (12-nov-2026).
+_ORS = re.compile(
+    r"\b(ors|sro|oral rehydration|rehydration (solution|salts)|suero (oral|de rehidrataci[oó]n)"
+    r"|sueroral|sales de rehidrataci[oó]n|solution de r[ée]hydratation|soluté de réhydratation"
+    r"|elektrolytl[öo]sung|rehydratationsl[öo]sung|soro (oral|de reidrata[cç][aã]o|caseiro)"
+    r"|sais de reidrata[cç][aã]o)\b|регидрон|регидратац\w*|محلول (معالجة )?الجفاف|أملاح الإماهة"
+    r"|ओआरएस|ओ\.? ?आर\.? ?एस",
+    re.IGNORECASE,
+)
+_VOMITA = re.compile(
+    r"vomit\w*|throw\w* up|v[oóô]mit\w*|erbrech\w*|erbricht|рвот\w*|تقيؤ|يتقيأ|उल्टी|anatapika",
+    re.IGNORECASE,
+)
+
+
+#: Dos niños en la misma pregunta (12-nov-2026): gemelos, «uno… y el otro», «mis dos hijos»,
+#: «a cada uno», «el mayor… la pequeña». Con dos pesos y esto, son dos dosis, no una duda.
+_DOS_NINOS = re.compile(
+    r"\b(twins?|my two (kids|children|boys|girls|sons|daughters)|each of them|both kids"
+    r"|one (weighs|is)\b.{0,40}\bthe other"
+    r"|gemel[oa]s|melliz[oa]s|a cada uno|mis dos hij[oa]s|un[oa] pesa\b.{0,40}\b(el otro|la otra)"
+    r"|(el|la) mayor\b.{0,40}\b(el|la) (pequeñ[oa]|peque|menor)"
+    r"|jumeaux|jumelles|mes deux enfants|l'une? (fait|pèse)\b.{0,40}\bl'autre"
+    r"|zwillinge?|meine (beiden|zwei) kinder|eine[rs]? wiegt\b.{0,40}\b(der|die|das) andere"
+    r"|g[ée]meos|g[ée]meas|os meus dois filhos|meus dois filhos|uma? pesa\b.{0,40}\b(o outro|a outra))\b"
+    r"|близнец\w*|двойняшк\w*|توأم|التوأم|जुड़वाँ|mapacha",
+    re.IGNORECASE,
+)
+
+
 def _moleculas(query: str, drugs: DrugCatalog | None) -> set[str]:
     claves = {
         _DRUG_ALIAS.get(m.group(1).lower(), m.group(1).lower()) for m in _DRUG.finditer(query)
@@ -2392,6 +2422,38 @@ class Engine:
             previa = dose_intent(context_text, self.drugs)
             if previa:
                 intent = (previa[0], pesos[0])
+        # …salvo que sean dos niños (12-nov-2026): gemelos con 9 y 10 kg piden las dos dosis.
+        if intent and tr.level == "routine" and len(pesos) == 2 and _DOS_NINOS.search(query):
+            drug = intent[0]
+            encontrada = brand_in_query(query, self.drugs)
+            clave, marca = encontrada if encontrada else (None, None)
+            textos = [
+                format_result(
+                    calculate(drug, kg, tr.age_months),
+                    lang,
+                    brand=marca,
+                    brand_key=clave,
+                    country_forms=bottles_in_country(self.drugs, drug, country),
+                    country_name=country_name(country.upper(), lang) if country else None,
+                )
+                for kg in pesos
+            ]
+            # El pie (fuente, «leer más», «mira la concentración») es el mismo: una vez, al final.
+            fuente = tool_strings(lang)["dose_source"].split("{source}")[0]
+            primero = textos[0].split("\n")
+            corte = next((i for i, x in enumerate(primero) if x.startswith(fuente)), len(primero))
+            return Answer(
+                "\n".join(primero[:corte]) + "\n\n" + textos[1],
+                tr.level,
+                None,
+                [],
+                lang,
+                None,
+                None,
+                [],
+                "dose_calculator",
+                tool=tool_link("dose", lang),
+            )
         if intent and tr.level == "routine" and len(pesos) >= 2:
             return Answer(
                 tool_strings(lang)["dose_two_weights"].format(a=pesos[0], b=pesos[1]),
@@ -2432,6 +2494,21 @@ class Engine:
                 [],
                 "dose_calculator",
                 tool=tool_link("dose", lang),
+            )
+
+        # «¿Cuánto suero oral?» (12-nov-2026): la cantidad de la tabla de bot/ors.py, la misma de
+        # /api/ors y del MCP. El chat contestaba «pregunta a tu médico» teniéndola.
+        if tr.level == "routine" and _ORS.search(query) and _PIDE_CANTIDAD.search(query):
+            from pedibot.bot.ors import advise
+
+            plan = advise(tr.age_months, bool(_VOMITA.search(query)), lang)
+            T = tool_strings(lang)
+            texto = "\n".join(
+                [*plan.lines, *plan.warnings]
+                + [T["dose_source"].format(source=s) for s in plan.sources]
+            )
+            return Answer(
+                texto, tr.level, None, [], lang, None, None, [], "ors_plan"
             )
 
         # Pide una dosis, da el peso y no dice de qué: falta una palabra y la tiene él.

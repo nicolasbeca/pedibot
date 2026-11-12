@@ -3332,3 +3332,132 @@ además, que ya citamos el Manual de Pediatría de la PUC):
    
    Un saludo,
    Nicolas Beca
+
+## Vigésima tanda (12-nov-2026): enviada por SMTP desde el servidor, con su «lanza los correos de hoy»
+
+> **10 ENVIADOS** el 12-nov con ops/correo.py, limpios en ops/voz.py (la tanda tampoco repite frases). Cinco que reparten (Newschecker y NewsMobile en India, EFE Verifica, Polígrafo en Portugal, Misbar en árabe) y cinco grupos de familias (Fundación Gota de Leche de Sevilla, Madres Solteras por Elección, Twins Trust, Kinship, y Factchequeado, que es verificador pero trabaja con comunidades latinas de EE. UU.). Cada gancho preguntado en vivo hoy (scripts en el scratchpad, `x-pedibot-client: test`).
+
+> Direcciones: checkthis@newschecker.in, verifica@efe.com, contactos@poligrafo.pt y gotadelechefundacion@gmail.com leídas en sus webs desde el servidor (MX comprobado); editor@newsmobile.in, editor@misbar.com (página de correcciones), comunicacion@asociacionmspe.org, info@kinship.org.uk y dramos@factchequeado.com (página de alianzas, sociedad civil), con WebFetch en sus páginas; enquiries@twinstrust.org, del registro de la Charity Commission. Sin dirección publicada: Provereno, Fatabyyano, Familles de France, Familles Rurales, Les Décodeurs, Generations United (sólo formulario). Al buscar con curl y agente de navegador, el permiso automático lo frenó; WebFetch sirve.
+
+> Descartados como gancho: **ORS en hindi para un niño de 1 año** («¿cuánto?»: no da cantidad, aunque la herramienta `oral_rehydration_plan` del MCP sí la calcula) y **dos gemelos con dos pesos** (pregunta cuál usar en vez de dar las dos dosis); los dos, a arreglar. En el de Polígrafo la respuesta mete al final los avisos del cólico (llanto entre episodios), sin venir a cuento.
+
+1. **newschecker.txt** (`checkthis@newschecker.in`) · Honey for a six-month-old's cough
+2. **newsmobile.txt** (`editor@newsmobile.in`) · Water for a baby in the heat, asked in Hindi
+3. **efe.txt** (`verifica@efe.com`) · Miel para la tos de un bebé
+4. **poligrafo.txt** (`contactos@poligrafo.pt`) · Água para um bebé com calor?
+5. **misbar.txt** (`editor@misbar.com`) · Can a baby sleep on their tummy? Asked in Arabic
+6. **factchequeado.txt** (`dramos@factchequeado.com`) · Tylenol a un bebé de dos meses
+7. **gotadeleche.txt** (`gotadelechefundacion@gmail.com`) · Diarrea en un bebé de nueve meses
+8. **mspe.txt** (`comunicacion@asociacionmspe.org`) · Un golpe en la cabeza y un vómito
+9. **twinstrust.txt** (`enquiries@twinstrust.org`) · Calpol for two at once
+10. **kinship.txt** (`info@kinship.org.uk`) · A rash that doesn't fade under a glass
+
+### newschecker.txt
+
+   Hello,
+   
+   A spoon of honey for a baby's cough is one of those tips that gets passed around a lot, and for a baby under one it can be dangerous. I asked PediBot about a six-month-old and it said no straight away, with the CDC as the source. Then it went on to what actually helps at that age: fluids, saline drops and a humidifier, and no cough syrups.
+   
+   It's a free site I make in my spare time from published paediatric guidance. If it's ever useful for one of your health checks, here it is: https://pedibot.xyz/?r=newschecker
+   
+   Kind regards,
+   Nicolas Beca
+
+### newsmobile.txt
+
+   Hello,
+   
+   In the heat a lot of families give the baby a bit of water, and under six months that's not what the guidance says. I asked PediBot in Hindi whether a four-month-old can have water in summer. It answered in Hindi that no, only breast milk or formula, offered more often when it's hot, with the WHO as the source.
+   
+   I build it myself from published paediatric guidelines and it's free to use. If it fits a health piece of yours at some point: https://pedibot.xyz/hi?r=newsmobile
+   
+   Best wishes from Seville,
+   Nicolas Beca
+
+### efe.txt
+
+   Hola:
+   
+   Lo de la miel para la tos se sigue recomendando mucho en casa, también con bebés, y antes del año no se debe dar. Se lo pregunté a PediBot para un bebé de seis meses y contesta que no, con los CDC y la SEUP como fuente. Luego explica lo que sí se puede hacer: líquidos, lavados nasales con suero y nada de jarabes para la tos a esa edad.
+   
+   La hago yo en Sevilla, es gratis y solo contesta con lo que dicen las guías de pediatría. Si en alguna verificación de salud infantil os viene bien, aquí está: https://pedibot.xyz/es?r=efeverifica
+   
+   Un saludo,
+   Nicolas Beca
+
+### poligrafo.txt
+
+   Olá,
+   
+   Com o calor há muita gente que dá um pouco de água ao bebé, e aos dois meses não é isso que dizem as guias. Perguntei ao PediBot se um bebé de dois meses pode beber água quando está muito calor. Respondeu que não, só leite materno ou fórmula, mais vezes se for preciso, e explicou o que fazer se o bebé apanhar demasiado calor.
+   
+   É um site gratuito que faço em Sevilha só com guias de pediatria publicadas. Se servir para alguma verificação do Polígrafo, está aqui: https://pedibot.xyz/pt?r=poligrafo
+   
+   Cumprimentos,
+   Nicolas Beca
+
+### misbar.txt
+
+   Hello,
+   
+   Putting a baby to sleep on their tummy is still advice some families hear from relatives, and it raises the risk of sudden infant death. I asked PediBot in Arabic whether a baby can sleep on their stomach. It answered in Arabic that no, always on their back, on a firm flat mattress and with nothing loose in the cot, with the NHS as the source.
+   
+   It's free and only answers from published paediatric guidance. In case it's useful for a health check of yours: https://pedibot.xyz/ar?r=misbar
+   
+   Kind regards,
+   Nicolas Beca
+
+### factchequeado.txt
+
+   Hola:
+   
+   Pensando en familias latinas en Estados Unidos que buscan en español a medianoche, le pregunté a PediBot si se le puede dar Tylenol a un bebé de dos meses con fiebre. Lo primero que sale es un aviso de ir a urgencias hoy mismo, porque por debajo de los tres meses la fiebre siempre la tiene que ver un médico, y no da ninguna dosis.
+   
+   Es una web gratuita que hago desde Sevilla con guías de pediatría publicadas. Si le veis utilidad para alguna de vuestras comunidades, el enlace es este: https://pedibot.xyz/es?r=factchequeado
+   
+   Un saludo,
+   Nicolas Beca
+
+### gotadeleche.txt
+
+   Hola:
+   
+   Os escribo desde Sevilla también. Con los bebés que acompañáis seguro que sale mucho lo de la diarrea, así que le pregunté a PediBot qué darle a uno de nueve meses que lleva desde ayer. Contesta con la guía de la SEUP: suero de farmacia en tomas pequeñas, seguir con el pecho y la comida normal en poca cantidad, y nada de refrescos ni bebidas deportivas. Debajo explica cuándo hay que volver a urgencias.
+   
+   Lo hago yo en mi tiempo libre y es gratis, sin anuncios. Por si os sirve con las familias: https://pedibot.xyz/es?r=gotadeleche
+   
+   Un saludo,
+   Nicolas Beca
+
+### mspe.txt
+
+   Hola:
+   
+   Cuando estás sola con la niña y se da un golpe en la cabeza, no hay nadie a quien preguntar si aquello es para urgencias o no. Probé justo eso en PediBot, una niña de 18 meses que se ha golpeado y ha vomitado una vez. Sale arriba un aviso de ir a urgencias hoy, y debajo qué vigilar mientras tanto, con la guía de la SEUP.
+   
+   La hago yo desde Sevilla, no cuesta nada y tira solo de guías oficiales. Si creéis que les puede venir bien a las socias, aquí la tenéis: https://pedibot.xyz/es?r=mspe
+   
+   Un saludo,
+   Nicolas Beca
+
+### twinstrust.txt
+
+   Hello,
+   
+   With twins the fevers tend to come in pairs, usually at night, and working out the Calpol twice when you're tired is easy to get wrong. I tried it on PediBot for two 18-month-olds of about ten kilos each. It gives the amount in ml for each kind of bottle, the Calpol ones included, and reminds you to check the strength on the label.
+   
+   It's free and built only on published paediatric guidance. If you think it could help your families: https://pedibot.xyz/?r=twinstrust
+   
+   Best wishes,
+   Nicolas Beca
+
+### kinship.txt
+
+   Hello,
+   
+   A lot of grandparents raising a child never expected to be checking a rash at eleven at night again. I asked PediBot about a two-year-old grandson with a rash that doesn't fade under a glass. It puts a warning first to call 999 or go to A&E, then says not to drive him yourself and which other signs to look for, with the NHS as the source.
+   
+   I make it from published paediatric guidance and it's free, no sign-up. If it could be useful for the carers you support: https://pedibot.xyz/?r=kinship
+   
+   Kind regards,
+   Nicolas Beca

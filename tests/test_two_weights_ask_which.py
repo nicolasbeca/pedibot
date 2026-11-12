@@ -111,3 +111,40 @@ def test_y_cuando_contesta_calcula_con_el_que_dice(client):
     j = client.post("/api/ask", json={"question": "7,8 kg", "lang": "es", "session": s}).json()
     assert j["verification"] == "dose_calculator", j
     assert "7.8 kg" in j["text"] or "7,8 kg" in j["text"], j["text"]
+
+
+# 12-nov-2026: dos pesos de DOS niños no son una duda sobre el peso. «My twins both have a fever.
+# How much Calpol? One weighs 9 kg and the other 10 kg» recibía «¿con cuál calculo?», y a un
+# padre de gemelos la respuesta obvia es: las dos. La regla del 30-sep (preguntar) sigue para el
+# mismo niño pesado dos veces; aquí la pregunta nombra a dos niños.
+@pytest.mark.parametrize(
+    "lang,pregunta",
+    [
+        ("en", "My twins both have a fever. How much Calpol? One weighs 9 kg and the other 10 kg"),
+        ("en", "How much paracetamol for my two kids? One is 9 kg, the other is 14 kg"),
+        ("es", "Mis gemelos tienen fiebre, uno pesa 9 kg y el otro 10 kg. ¿Cuánto Apiretal?"),
+        ("es", "¿Cuánto ibuprofeno le doy a cada uno? El mayor pesa 14 kg y la pequeña 9 kg"),
+        ("fr", "Mes jumeaux ont de la fièvre, l'un fait 9 kg et l'autre 10 kg. Combien de paracétamol ?"),
+        ("de", "Meine Zwillinge haben Fieber, einer wiegt 9 kg und der andere 10 kg. Wie viel Paracetamol?"),
+        ("pt", "Os meus gémeos têm febre, um pesa 9 kg e o outro 10 kg. Quanto paracetamol?"),
+    ],
+)
+def test_dos_ninos_calcula_las_dos(client, lang: str, pregunta: str):
+    j = client.post("/api/ask", json={"question": pregunta, "lang": lang}).json()
+    assert j["verification"] == "dose_calculator", j
+    pesos = weights_in(pregunta)
+    for kg in pesos:
+        assert f"{kg:g} kg" in j["text"] or f"{kg:g} kg".replace(".", ",") in j["text"], j["text"]
+    assert j["text"].count(" mg") >= 2, "una dosis por niño"
+
+
+def test_la_otra_bascula_sigue_siendo_un_nino(client):
+    """«La otra» de una báscula no es otro niño: con el mismo niño se sigue preguntando."""
+    j = client.post(
+        "/api/ask",
+        json={
+            "question": "En una báscula pesa 7,2 kg y en la otra 7,8 kg. ¿Cuánto paracetamol?",
+            "lang": "es",
+        },
+    ).json()
+    assert j["verification"] == "dose_two_weights", j

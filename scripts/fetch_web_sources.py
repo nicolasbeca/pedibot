@@ -218,6 +218,15 @@ WEB_SOURCES: list[tuple[str, str, str, str, list[str]]] = [
         "es",
         ["recien_nacido", "lactante"],
     ),
+    # Vacunas atrasadas (12-nov-2026): un niño de España sin vacunas recibía las reglas del NHS
+    # («6 en 1 hasta los 10 años»). El capítulo de calendarios acelerados del mismo manual.
+    (
+        "cavaep",
+        "https://vacunasaep.org/documentos/manual/cap-11",
+        "vacunas",
+        "es",
+        ["lactante", "preescolar", "escolar", "adolescente"],
+    ),
     (
         "nidirect",
         "https://www.nidirect.gov.uk/articles/childhood-immunisation-programme",
