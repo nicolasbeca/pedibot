@@ -2210,3 +2210,8 @@ Arreglados y desplegados los dos (a40a889): (1) la ingesta pegaba los `<li>` con
 - **Visto al probar ganchos, sin arreglar (líneas en la batería):** aceite o ghee en el cordón («the AEP advises against…», la AEP no habla de aceites); vacunas atrasadas de un niño de España con reglas del NHS/nidirect: falta una fuente española de calendarios acelerados (capítulo del Manual del CAV-AEP sobre calendarios incompletos, por indexar); pañales mojados del recién nacido sin cifra.
 - El límite de 20 preguntas cada 10 minutos también me frena a mí desde 127.0.0.1, y cada 429 cuenta: para probar ganchos, en serie y desde el PC (`verify=False` por el AVG).
 - **Desplegado** (9ebe77d): suite 12.444 en verde (SUITE_EXIT=0), smoke desde el servidor 0 fallos. En vivo, cinco preguntas a la vez sin un 500, y la manzanilla y el anís «para los gases» contestan con la SEUP (nada de herbolario).
+
+**12-nov.** Correo desde el 9-nov: **FANUSE (Familias Numerosas de Sevilla) dice NO** (Blanca Civantos, 10-nov): no lo mandan a sus familias «por ser un asunto de salud» y por miedo a reclamaciones; no se contesta. **Fundación Madrina** (11-nov) pasa el correo de la fiebre de seis semanas a su equipo médico; esperar. Colombiacheck sólo reaccionó con un emoji. Search Console validó la corrección de indexación (9-nov). Lo demás, HIFA/CHIFA, Boardy, Seotrends y LaunchLeague; spam vacío; nada de la DPGA.
+- **Consultas reales desde la 1230: ninguna.** 1231-1260 son mis pruebas de ganchos del 9-nov.
+- **MCP:** 20 llamadas desde el 9-nov, todas rastreadores (BrickBlueBot 14, MCPYP 3, rokmcp 2, FaceabotProbe 1); los `no_data` son suyos.
+- Servicios (api, mcp, telegram, acp y temporizadores) activos, sin errores en el diario desde el 9-nov.
