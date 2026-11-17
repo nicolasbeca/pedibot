@@ -38,6 +38,9 @@ NO_SE_BEBE = re.compile(
     r"|nasal|nariz|pua\b|oga\b|kuoga|नहला|स्नान|पोंछ|sponge|esponj|sifongo"
     # los pañales mojados son la señal de que bebe bastante, no agua que darle (1163, 4-nov)
     r"|nepi|nappy|nappies|diaper|pañal|couche|windel|fralda|लंगोट|डायपर|حفاض|подгуз"
+    # limpiar el ombligo o la piel con agua (17-nov-2026, «clean… with cotton wool and warm water»)
+    r"|clean|limpi|limpe|nettoy|reinig|cotton wool|algod|gasa|gauze|compress|\bcord\b|umbilic"
+    r"|ombligo|umbigo|nabel|nombril|kitovu|नाभि|سرة|пупо"
     r"|ors\b|suero oral|rehidrat|rehydrat|réhydrat",
     re.IGNORECASE,
 )

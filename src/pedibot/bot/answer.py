@@ -13,6 +13,7 @@ from loguru import logger
 from pedibot.bot.about import ficha_de, responde_sobre
 from pedibot.bot.banner_lead import con_el_aviso_delante
 from pedibot.bot.breathing_cause import NOTA_SIN_CAUSA, sin_otra_causa
+from pedibot.bot.home_remedy import nota_remedio
 from pedibot.bot.swallowed_object import NOTA_OBJETO, sin_hoja_de_toxicos
 from pedibot.bot.dose import DRUGS, bottles_in_country, calculate, format_result
 from pedibot.bot.drugs import DrugCatalog
@@ -964,13 +965,40 @@ _PIDE_CANTIDAD = re.compile(
 
 #: El suero de rehidratación oral, nombrado en las ocho lenguas y en suajili (12-nov-2026).
 _ORS = re.compile(
-    r"\b(ors|sro|oral rehydration|rehydration (solution|salts)|suero (oral|de rehidrataci[oó]n)"
+    r"\b(ors|sro|oral rehydration|rehydration (solution|salts)|suero (oral|de rehidrataci[oó]n|casero)"
     r"|sueroral|sales de rehidrataci[oó]n|solution de r[ée]hydratation|soluté de réhydratation"
     r"|elektrolytl[öo]sung|rehydratationsl[öo]sung|soro (oral|de reidrata[cç][aã]o|caseiro)"
     r"|sais de reidrata[cç][aã]o)\b|регидрон|регидратац\w*|محلول (معالجة )?الجفاف|أملاح الإماهة"
     r"|ओआरएस|ओ\.? ?आर\.? ?एस",
     re.IGNORECASE,
 )
+#: El suero CASERO (17-nov-2026). Ninguna fuente del corpus da la receta de cada país (la única es
+#: la india de las ASHA, con medidas que no son las de Brasil): se dice, y se manda a pedirla, en
+#: vez de callar la mitad de la pregunta (tests/test_ors_amount_in_chat.py).
+_CASERO = re.compile(
+    r"home-?made|soro caseiro|suero casero|sro maison|solution maison|hausgemacht"
+    r"|selbst gemacht|домашн\w* (регидрат|раствор)|محلول (منزلي|بيتي)|घर (का|पर) (बना )?ओआरएस"
+    r"|घर का घोल",
+    re.IGNORECASE,
+)
+SIN_RECETA_CASERA = {
+    "en": "On homemade ORS: the guidelines I use don't give the recipe, so ask at your health centre"
+    " how to make it.",
+    "es": "Sobre el suero casero: las guías que uso no dan la receta; pide en tu centro de salud cómo"
+    " prepararlo.",
+    "fr": "Pour le SRO maison : les guides que j'utilise n'en donnent pas la recette ; demandez à"
+    " votre centre de santé comment le préparer.",
+    "de": "Zur selbst gemachten Lösung: Die Leitlinien, die ich nutze, nennen kein Rezept; fragen Sie"
+    " in Ihrer Praxis, wie man sie zubereitet.",
+    "pt": "Sobre o soro caseiro: as guias que uso não dão a receita; pergunte no posto de saúde como"
+    " prepará-lo.",
+    "ru": "О домашнем растворе: в руководствах, которыми я пользуюсь, нет рецепта; спросите в"
+    " поликлинике, как его приготовить.",
+    "ar": "عن المحلول المنزلي: الإرشادات التي أستخدمها لا تذكر طريقة تحضيره؛ اسأل في المركز الصحي"
+    " كيف تحضّره.",
+    "hi": "घर पर बने घोल के बारे में: जिन दिशानिर्देशों का मैं उपयोग करता हूँ उनमें इसकी विधि नहीं है;"
+    " स्वास्थ्य केंद्र में पूछें कि इसे कैसे बनाएं।",
+}
 _VOMITA = re.compile(
     r"vomit\w*|throw\w* up|v[oóô]mit\w*|erbrech\w*|erbricht|рвот\w*|تقيؤ|يتقيأ|उल्टी|anatapika",
     re.IGNORECASE,
@@ -2503,8 +2531,13 @@ class Engine:
 
             plan = advise(tr.age_months, bool(_VOMITA.search(query)), lang)
             T = tool_strings(lang)
+            casero = (
+                [SIN_RECETA_CASERA.get(lang, SIN_RECETA_CASERA["en"])]
+                if _CASERO.search(query)
+                else []
+            )
             texto = "\n".join(
-                [*plan.lines, *plan.warnings]
+                [*plan.lines, *casero, *plan.warnings]
                 + [T["dose_source"].format(source=s) for s in plan.sources]
             )
             return Answer(
@@ -3028,6 +3061,8 @@ class Engine:
                 f"{NOTA_SIN_CAUSA if sin_causa else ''}"
                 f"{NOTA_OBJETO if sin_toxicos else ''}"
                 f"{nota_ab}"
+                # 17-nov-2026: aceite o ghee en el ombligo sin guía que los nombre (bot/home_remedy.py)
+                f"{nota_remedio(context_text, hits)}"
                 f"{_history_block(history)}"
                 f"{CHILD_MODE if mode == 'child' else ''}"
                 f"PARENT MESSAGE:\n{draft_q}\n\nSOURCES:\n{_format_sources(hits)}"

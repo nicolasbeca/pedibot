@@ -195,3 +195,25 @@ def test_a_rewrite_that_keeps_the_water_gets_one_more_try(motor):  # noqa: F811
     a = eng.ask("my 4 month old has a fever of 38.5, what should I do?", country="GB")
     assert "water" not in a.text
     assert len(vistas) == 2
+
+
+# 17-nov-2026: «clean the area with fresh cotton wool and warm water» (cuidado del ombligo, gancho
+# del 12-nov) contaba como agua para beber; el reintento metía «Keep offering breast milk or
+# formula, more often if needed» en una respuesta sobre el cordón.
+def test_cleaning_with_water_is_not_drinking_it() -> None:
+    from pedibot.bot.water_under_six_months import da_agua_al_lactante
+
+    for frase in (
+        "When you do, clean the area with fresh cotton wool and warm water, and pat it dry.",
+        "Limpia el ombligo con una gasa y agua tibia.",
+        "Nettoyez le cordon avec de l'eau.",
+        "Den Nabel mit abgekochtem Wasser reinigen.",
+        "Limpe o umbigo com água e sabão.",
+    ):
+        assert da_agua_al_lactante(frase, 0.5) is None, frase
+
+
+def test_drinking_water_still_counts() -> None:
+    from pedibot.bot.water_under_six_months import da_agua_al_lactante
+
+    assert da_agua_al_lactante("Give him some water to drink.", 2) is not None

@@ -24,7 +24,14 @@ _PRISA = re.compile(
     r"|الآن|فور|الطوارئ|اليوم|الإسعاف|مستشفى"
     r"|तुरंत|अभी|आज|आपात|एम्बुलेंस|अस्पताल"
     r"|\bsasa\b|\bleo\b|haraka|mara moja|dharura"
-    r"|\b(911|112|999|111|061|107|123|115|15|103|108)\b",
+    # 17-nov-2026: un número seguido de una unidad no es un teléfono. «entre 7 e 15 dias» contaba
+    # como el 15 del SAMU y el texto del ombligo infectado salía sin la frase del aviso.
+    r"|\b(911|112|999|111|061|107|123|115|15|103|108)\b(?![.,]\d)"
+    r"(?!\s*(?:d[ií]as?|days?|jours?|tage?n?|semanas?|weeks?|semaines?|wochen|meses|months?"
+    r"|mois|monate?n?|anos|años|years?|ans|jahren?|horas?|hours?|heures?|stunden?|minut\w*"
+    r"|min\b|ml\b|mg\b|kg\b|g\b|°|%|cm\b|mm\b|veces|times|fois|mal\b|vezes"
+    r"|дн|недел|месяц|лет|год|час|минут|мл|кг|يوم|أيام|أسبوع|شهر|ساع|دقيق|मिली|किलो|दिन|हफ़्त|महीन|घंट|मिनट"
+    r"|siku|wiki|miezi|saa|dakika))",
     re.IGNORECASE,
 )
 

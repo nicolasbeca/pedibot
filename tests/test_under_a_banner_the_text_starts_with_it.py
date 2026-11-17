@@ -46,3 +46,37 @@ def test_no_se_pone_dos_veces() -> None:
 
 def test_todas_las_lenguas_del_chat() -> None:
     assert set(PRIMERO_EL_AVISO) >= {"en", "es", "fr", "de", "pt", "ru", "ar", "hi"}
+
+
+# 17-nov-2026: «Depois que o coto cair, entre 7 e 15 dias» bajo «pronto-socorro hoje» (ombligo
+# rojo y con mal olor, en portugués): el 15 de «15 dias» contaba como el número de urgencias de
+# Francia y Malí, y el texto salía sin la frase del aviso diciendo «consultar o profissional».
+import pytest  # noqa: E402
+
+from pedibot.bot.banner_lead import PRIMERO_EL_AVISO, con_el_aviso_delante  # noqa: E402
+
+
+@pytest.mark.parametrize(
+    ("texto", "lang"),
+    [
+        ("Depois que o coto cair, entre 7 e 15 dias, continue limpando.", "pt"),
+        ("The stump falls off in 5 to 15 days.", "en"),
+        ("Dale 15 ml cada 8 horas.", "es"),
+        ("Il pèse 15 kg.", "fr"),
+        ("Si dura más de 15 minutos, consulta.", "es"),
+    ],
+)
+def test_a_number_with_a_unit_is_not_a_phone_number(texto: str, lang: str) -> None:
+    assert con_el_aviso_delante(texto, "urgent", lang).startswith(PRIMERO_EL_AVISO[lang])
+
+
+@pytest.mark.parametrize(
+    ("texto", "lang"),
+    [
+        ("Appelez le 15.", "fr"),
+        ("Call 999 if he is not breathing.", "en"),
+        ("Llama al 112 si no respira.", "es"),
+    ],
+)
+def test_the_emergency_number_still_counts_as_hurry(texto: str, lang: str) -> None:
+    assert con_el_aviso_delante(texto, "urgent", lang) == texto

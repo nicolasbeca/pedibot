@@ -76,3 +76,11 @@ Posso dar água a um bebé de 2 meses quando está muito calor?
 # 17-nov-2026, real 1284-1285 (España): seguimiento largo tras golpe en la cabeza citaba la convulsión febril; debe citar la SEUP del traumatismo («puede dormir… despertarlo cada 4 horas»)
 Mi hijo se ha caido y se ha dado en la cabeza
 Al poco tiempo estaba como si nada jugandose y riendose. Debo mantenerlo despierto?
+# 17-nov-2026: aceite o ghee en el cordón; ninguna guía los nombra: debe decirlo, no «No, do not put oil or ghee»
+Should I put oil or ghee on my newborn baby umbilical cord?
+# 17-nov-2026: ombligo rojo con mal olor; bajo el aviso, el texto no remitía a él (el «15 dias» contaba como el 15 del SAMU)
+Meu bebê de 1 mês está com o umbigo vermelho e com cheiro ruim, o que faço?
+# 17-nov-2026: suero casero en Brasil; las guías no dan la receta: debe decirlo
+Meu bebê de 10 meses está com diarreia, quanto soro caseiro ou soro de farmácia devo dar?
+# 17-nov-2026: cuidado del ombligo; el agua de limpiar contaba como agua para beber y metía la frase de la leche
+What should I put on my newborn's belly button?

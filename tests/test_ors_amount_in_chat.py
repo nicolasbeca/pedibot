@@ -99,3 +99,27 @@ def test_lo_que_es_el_suero_sigue_yendo_a_las_guias(client):
     """Sin «cuánto» no hay cantidad que dar: la pregunta va a las guías como siempre."""
     j = client.post("/api/ask", json={"question": "What is ORS?", "lang": "en"}).json()
     assert j["verification"] != "ors_plan", j
+
+
+# 17-nov-2026: «quanto soro caseiro ou soro de farmácia devo dar?» (Brasil, probado para un correo)
+# daba la cantidad del sobre de farmacia y callaba el casero. Ninguna fuente del corpus da la receta
+# brasileña (la única es la india de las ASHA, con otras medidas): se dice, y se manda a pedirla.
+@pytest.mark.parametrize(
+    ("lang", "pregunta", "frase"),
+    [
+        ("pt", "Meu bebê de 10 meses está com diarreia, quanto soro caseiro devo dar?", "soro caseiro"),
+        ("es", "¿Cuánto suero casero le doy a mi hijo de 2 años con diarrea?", "suero casero"),
+        ("en", "How much homemade ORS should I give my 2 year old?", "homemade"),
+    ],
+)
+def test_el_suero_casero_dice_que_no_hay_receta(client, lang: str, pregunta: str, frase: str):
+    j = client.post("/api/ask", json={"question": pregunta, "lang": lang}).json()
+    assert j["verification"] == "ors_plan", j
+    assert frase in j["text"].lower(), j["text"]
+
+
+def test_sin_casero_no_se_habla_del_casero(client):
+    j = client.post(
+        "/api/ask", json={"question": "How much ORS should I give my 2 year old?", "lang": "en"}
+    ).json()
+    assert "homemade" not in j["text"].lower()
