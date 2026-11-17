@@ -3461,3 +3461,150 @@ además, que ya citamos el Manual de Pediatría de la PUC):
    
    Kind regards,
    Nicolas Beca
+
+## Vigesimoprimera tanda (17-nov-2026): enviada por SMTP desde el servidor, con su «envía también los 10 correos de hoy»
+
+> **10 ENVIADOS** el 17-nov con ops/correo.py, limpios en ops/voz.py. Cinco peticiones de revisar la ficha de vacunas de su país, al hilo de lo de Muso (la fiebre amarilla que faltaba en 33 calendarios, arreglada y desplegada ese día): ALIMA (Níger), Enfants du Monde (Burkina Faso), SFH Nigeria, Mildmay Uganda y el centro de recursos de la CBCHS (Camerún). Cinco con una pregunta comprobada en vivo ese día: CAPT (golpe en la cabeza, ¿mantenerlo despierto?, el arreglo de la consulta 1285; contesta con la SEUP, no con el NHS, y el correo no nombra fuente), Safe Kids (pila de botón a los 18 meses: «Call 911 now»), Enfance et Partage / Allô Parents Bébé (fiebre de 38,2 a los 2 meses: hoy, no mañana), FEDAEP (pañales mojados: de seis a ocho al día) y Pastoral da Criança (miel a los 8 meses: no, CDC y NHS). Ese día salió también la respuesta a Muso, en su hilo.
+
+> Direcciones: office@alima.ngo e info@edm.ch, de sus páginas de contacto (WebFetch); info@fedaep.es, de la suya; info@sfhnigeria.org (su FAQ y la MHTF), mailbox@mildmay.or.ug (portada de su web; info@mildmayuganda.or.ug, que daba un buscador, rebotó: el dominio no existe), rce@cbchealthservices.org (centro de recursos de Yaundé, en su web), safe@capt.org.uk (registro de la Charity Commission), info@safekids.org (archivo de su web y directorios), contact@enfance-et-partage.org (documento suyo de 2025) y contato@pastoraldacrianca.org.br (su sala de prensa). Descartados por ya escritos antes: APREM, Bliss y Gingerbread. Sin dirección publicada: Integrate Health (Togo), Reach Out Cameroon, Enda Santé, PIH Sierra Leona, FAME, AEEP.
+
+> Gancho descartado: **suero oral en Brasil** («quanto soro caseiro ou de farmácia?») contesta con la cantidad, pero cita el prospecto español de la AEMPS y no dice nada del suero casero. Y el ombligo rojo con mal olor en portugués saca bien el aviso, pero el texto no remite a él. A mirar.
+
+### alima.txt
+
+   Bonjour,
+   
+   Vos équipes voient tous les jours les carnets de vaccination des enfants au Niger, et moi je n'ai que des tableaux.
+   
+   J'ai une page en français avec le calendrier vaccinal du Niger tel que le pays le déclare à l'OMS. La semaine dernière, une organisation qui travaille au Mali m'a signalé que la fièvre jaune manquait sur leur page. Elle manquait en fait partout, je l'ai corrigé, mais ça m'a montré que ces tableaux peuvent se tromper sans que je le voie.
+   
+   https://pedibot.xyz/fr/vaccines/ne?r=alima
+   
+   Est-ce que quelqu'un chez ALIMA pourrait y jeter un œil et me dire ce qui ne correspond pas à ce que vous voyez sur le terrain ?
+   
+   Merci,
+   Nicolas Beca
+   Séville, Espagne
+
+### edm.txt
+
+   Bonjour,
+   
+   Je vous écris pour le Burkina Faso, où vous travaillez avec les mères et les sages-femmes.
+   
+   PediBot est un site gratuit qui répond aux parents à partir de guides pédiatriques officiels, en français entre autres. Il a une page avec le calendrier vaccinal du Burkina, tirée des données que le pays envoie à l'OMS. Je viens d'y ajouter la fièvre jaune, qui manquait, après qu'une ONG au Mali me l'a fait remarquer pour leur pays.
+   
+   https://pedibot.xyz/fr/vaccines/bf?r=edm
+   
+   Si quelqu'un de votre bureau de Ouagadougou avait cinq minutes pour la regarder, je corrigerai ce qu'il me dira.
+   
+   Bien cordialement,
+   Nicolas Beca
+
+### sfh.txt
+
+   Hello,
+   
+   Your call centre talks to Nigerian parents every day, which is why I'm writing to you rather than to anyone else.
+   
+   I have a page with Nigeria's childhood vaccine schedule, taken from what Nigeria reports to WHO, plus the emergency number. Last week a group working in Mali sent me their chart and it showed yellow fever was missing. It was missing for Nigeria too. That's fixed, but I'd rather someone who knows the clinics had a look.
+   
+   https://pedibot.xyz/vaccines/ng?r=sfh
+   
+   Could someone on your team tell me if anything on it doesn't match what mothers are told at the health centre?
+   
+   Thank you,
+   Nicolas Beca
+   Seville, Spain
+
+### mildmay.txt
+
+   Hello,
+   
+   Uganda's yellow fever dose at 9 months wasn't on my page until today, and I'd like someone at Mildmay to check what else might be off.
+   
+   It's the childhood vaccine schedule, built from the data Uganda reports to WHO, inside PediBot, a free site that answers parents from official paediatric guidance. An organisation in Mali spotted the gap on their own page last week, and Uganda had the same one. I've fixed it, but I can't tell from Seville whether the rest is right.
+   
+   https://pedibot.xyz/vaccines/ug?r=mildmay
+   
+   If anything looks wrong to your teams, I'd be very grateful to hear it.
+   
+   Best wishes,
+   Nicolas Beca
+
+### cbchs.txt
+
+   Hello,
+   
+   Your health centres see Cameroon's vaccination cards every day, so you'd know straight away if my page is wrong.
+   
+   PediBot has a page with Cameroon's childhood schedule, from the data the country reports to WHO, in English and French. Yellow fever was missing until today. A group in Mali showed me the gap on their page last week, and Cameroon had it too.
+   
+   https://pedibot.xyz/vaccines/cm?r=cbchs
+   
+   Would someone have a few minutes to look and tell me what doesn't match?
+   
+   Many thanks,
+   Nicolas Beca
+   Seville, Spain
+
+### capt.txt
+
+   Hello,
+   
+   "Keep them awake after a bump on the head" is one of those things every grandparent seems to say, and the NHS says you don't need to.
+   
+   I asked PediBot about a toddler who hit their head and was soon playing again, and whether to keep him awake. It said no, he can sleep, and listed what to watch for over the next 24 hours and when to go to A&E.
+   
+   It's a free site I build from published paediatric guidance. In case it's useful next Child Safety Week: https://pedibot.xyz/?r=capt
+   
+   Kind regards,
+   Nicolas Beca
+
+### safekids.txt
+
+   Hello,
+   
+   Button batteries are the question I test first, because getting it wrong costs so much. I asked PediBot about an 18-month-old who might have swallowed one from the remote. It put "Call 911 now" at the top, said why, and then what to watch for on the way.
+   
+   PediBot is free and only answers from published paediatric guidance. If it's ever useful to the families you reach: https://pedibot.xyz/?r=safekids
+   
+   Best,
+   Nicolas Beca
+   Seville, Spain
+
+### enfance.txt
+
+   Bonjour,
+   
+   À Allô Parents Bébé, vous devez souvent entendre : « il a de la fièvre, est-ce que je peux attendre demain ? ».
+   
+   J'ai posé exactement cette question à PediBot pour un bébé de deux mois à 38,2. Il répond non, qu'il faut le faire voir aujourd'hui, et explique quoi surveiller en attendant, avec le NHS comme source.
+   
+   C'est un site gratuit que je fais à partir de guides pédiatriques publiés, et il répond en français. Si un jour il peut servir aux parents qui vous appellent : https://pedibot.xyz/fr?r=enfanceetpartage
+   
+   Bien à vous,
+   Nicolas Beca
+
+### fedaep.txt
+
+   Hola:
+   
+   Cuántos pañales mojados tiene que hacer un recién nacido es de las preguntas que más os harán en consulta. Se la hice a PediBot y contesta lo que dicen las guías: de seis a ocho al día, a veces más al principio, y cuándo consultar si moja poco o tiene la boca seca.
+   
+   Es una web gratuita que hago en Sevilla solo con guías de pediatría publicadas. Por si a alguna enfermera le sirve para recomendársela a las familias: https://pedibot.xyz/es?r=fedaep
+   
+   Un saludo,
+   Nicolas Beca
+
+### pastoral.txt
+
+   Olá,
+   
+   As líderes da Pastoral ouvem muito a avó que manda dar mel para a tosse do bebê. Perguntei ao PediBot sobre um bebê de oito meses e ele responde que não, mel só depois de um ano, com os CDC como fonte, e explica o que ajuda nessa idade.
+   
+   É um site gratuito que faço em Sevilha só com guias de pediatria publicadas, e responde em português. Se algum dia servir para as famílias que vocês acompanham: https://pedibot.xyz/pt?r=pastoral
+   
+   Um abraço,
+   Nicolas Beca
+
