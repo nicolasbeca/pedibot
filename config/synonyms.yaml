@@ -1071,6 +1071,12 @@ es_en:
   boca arriba: [sleeping position, back to sleep, sudden infant death, safer sleep]
   postura para dormir: [sleeping position, back to sleep, safer sleep]
   dormir en el sofá: [safer sleep, sudden infant death, co-sleeping]
+  # 17-nov-2026: «se ha dado en la cabeza… ¿Debo mantenerlo despierto?», consulta real (1285).
+  # La SEUP lo dice («Puede dormir… despertarlo cada 4 horas») y el NHS («do not need to stay
+  # awake»), pero «despierto» no casa con «despertarlo». Sólo la frase de mantenerlo despierto,
+  # que es la del golpe: «despierto» suelto traería el sueño del bebé.
+  mantenerlo despierto: [puede dormir, despertarlo, cada 4 horas]
+  mantenerla despierta: [puede dormir, despertarlo, cada 4 horas]
   colecho: [co-sleeping, safer sleep, sudden infant death]
   muerte súbita: [sudden infant death, safer sleep]
   reacción a la vacuna: [vaccine side effects, after vaccination, vaccination]

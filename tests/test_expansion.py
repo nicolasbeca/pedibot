@@ -105,8 +105,12 @@ def test_the_spanish_to_english_bridge_stays_tiny(syn: Synonyms):
 
     5-nov-2026: una más, «miel$», para que la miel de un bebé llegue a «nada de miel antes del
     año» (CDC, MedlinePlus, NHS). Medido sin y con ella: `source_hit` **0,934**, `triage_exact`
-    **0,975** y `routing` **1.0**, los mismos."""
+    **0,975** y `routing` **1.0**, los mismos.
+
+    17-nov-2026: dos más, «mantenerlo despierto» y «mantenerla despierta», consulta real 1285 (golpe
+    en la cabeza): llevan al «puede dormir… despertarlo cada 4 horas» de la SEUP. Medido sin y con
+    ellas: `source_hit` **0,934**, `triage_exact` **0,975** y `routing` **1.0**, los mismos."""
     bridge = syn._maps.get("es_en", {})
-    assert len(bridge) <= 156, "the bridge grew: re-measure the golden set before widening it"
+    assert len(bridge) <= 158, "the bridge grew: re-measure the golden set before widening it"
     for covered in ("fiebre", "tos", "vómit", "diarrea", "convuls", "quemadura", "vacun"):
         assert covered not in bridge, f"{covered} has Spanish leaflets: bridging it hurts retrieval"

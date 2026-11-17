@@ -2948,6 +2948,13 @@ class Engine:
                 elif leida.lang not in SUPPORTED_LANGS and leida.intent == "health":
                     search_q, search_lang = leida.search_text, "en"
                     push = [*push, *leida.keywords]
+        # El mismo problema sigue buscando lo de antes, sea cual sea el largo (17-nov-2026).
+        # «Mi hijo se ha dado en la cabeza» → «Al poco tiempo estaba como si nada… ¿Debo mantenerlo
+        # despierto?» (13 palabras) buscó sólo el segundo mensaje y citó la convulsión febril; la
+        # lectura de la IA describe sólo el mensaje actual. Con tema nuevo, `history` ya está vacío
+        # y `prev_user` también (tests/test_a_long_followup_keeps_the_topic.py).
+        if prev_user and prev_user not in search_q and search_lang == lang:
+            search_q = f"{prev_user} {search_q}"
 
         # Segunda búsqueda, con las palabras de la IA (21-sep-2026). «¿Cuándo puedo darle una
         # chuleta?», «¿y una salchicha?», «¿y cacahuetes?» salieron las tres sin fuente, y el

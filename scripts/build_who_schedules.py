@@ -1189,6 +1189,7 @@ NOMBRES: dict[str, tuple[str, str]] = {
     "MMRV": ("MMRV (measles, mumps, rubella, varicella)", "measles"),
     "MEASLES": ("Measles", "measles"),
     "MR": ("MR (measles, rubella)", "measles"),
+    "YF": ("Yellow fever", "yf"),
     "VARICELLA": ("Varicella (chickenpox)", "varicella"),
     "PCV13": ("Pneumococcal conjugate, 13-valent", "pcv"),
     "PCV15": ("Pneumococcal conjugate, 15-valent", "pcv"),
@@ -1260,7 +1261,9 @@ VACUNAS_FUERA = {
     "PPV23",
     "ZOSTER",
     "RABIES",
-    "YF",
+    # "YF" salió de aquí el 17-nov-2026: en Mali, Nigeria, Ghana… es la vacuna de los 9 meses
+    # para todos los niños (Muso Health nos mandó la tabla de Mali y la tenía; nosotros no). La
+    # de viajeros ya cae por su población, TRAVELLERS, en POBLACION_FUERA.
     "CHOLERA",
     "MPOX",
     "RSV",

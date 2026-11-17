@@ -71,6 +71,16 @@ names:
     pt: "Hepatite A"
     hi: "हेपेटाइटिस ए"
 
+  "Yellow fever":
+    en: "Yellow fever"
+    es: "Fiebre amarilla"
+    fr: "Fièvre jaune"
+    de: "Gelbfieber"
+    ru: "Жёлтая лихорадка"
+    ar: "الحمى الصفراء"
+    pt: "Febre amarela"
+    hi: "पीत ज्वर (येलो फीवर)"
+
   "Measles":
     en: "Measles"
     es: "Sarampión"
