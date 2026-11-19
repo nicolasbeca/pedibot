@@ -197,6 +197,10 @@ def _dice_sin_fuente(texto: str) -> bool:
     información de la que dispongo» es la misma señal dicha con palabras (batería del
     21-sep-2026, veintiséis respuestas acabaron así en «fallback» sin segunda búsqueda).
     """
+    # 19-nov-2026 (prueba 1318): con citas y la señal como última palabra también es la señal;
+    # el redactor citó dos pasajes que no contestaban y el padre vio «NO_SOURCE» al final.
+    if texto.rstrip(" .\n").upper().endswith("NO_SOURCE"):
+        return True
     if _CIT.search(texto):
         return False
     return "NO_SOURCE" in texto.upper() or len(texto.split()) < 40

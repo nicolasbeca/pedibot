@@ -3608,3 +3608,157 @@ además, que ya citamos el Manual de Pediatría de la PUC):
    Um abraço,
    Nicolas Beca
 
+
+## Vigesimosegunda tanda (19-nov-2026): enviada por SMTP desde el servidor, con su «manda la tanda de hoy»
+
+> **10 ENVIADOS** el 19-nov con ops/correo.py, limpios en ops/voz.py (cuatro frases largas partidas y una frase repetida en tres correos, cambiada). Seis peticiones de revisar el calendario de su país, al hilo de lo de Muso: Wuqu' Kawoq y Primeros Pasos (Guatemala; la página dice «hexavalente o pentavalente» a los 2 meses y se les pregunta cuál), Socios En Salud (Perú), Village Health Works (Burundi), Doctors for Madagascar y One Family Health (Ruanda). Cuatro con una pregunta comprobada en vivo ese día: Naître et Vivre (bebé de 3 meses que se da la vuelta boca abajo: volverlo boca arriba, NHS), Cuidiú (agua a los 4 meses con calor: no, sólo pecho o fórmula y más tomas, NHS y OMS), Plunket (convulsión con labios azules desde Nueva Zelanda: «Call 111 now») y BMBFA (fiebre de 100.6 °F a las 3 semanas: hoy, no mañana).
+
+> Direcciones leídas en sus webs desde el servidor, MX comprobado en todas: hola@wuqukawoq.org, info@primerospasos.org, sesperu@pih.org, info@villagehealthworks.org, info@doctorsformadagascar.com, info@onefamilyhealth.org, contact@naitre-et-vivre.org, info@cuidiu.ie, plunket@plunket.org.nz, info@bmbfa.org. Sin dirección en su web: Welbodi, PIVOT, CIDRZ, Possible, ICON, Cry-sis, BASIS, Tresillian, Karitane, Best Start, First Light, BPNI, Health Builders, Circle of Parents, KellyMom. Descartados: Maternity Action (derechos laborales), Fundación Querer (neurología), Family Lives (su buzón es la línea de ayuda), LLL Alemania (ya dijo que no).
+
+> Gancho descartado: **«How do I know my breastfed newborn is getting enough milk?»** no llegaba a los 6-8 pañales mojados y dejaba ver «NO_SOURCE» al final. Arreglado el mismo día (test_enough_breast_milk.py).
+
+### wuqu.txt (El calendario de vacunas de Guatemala)
+
+   Hola:
+   
+   Vuestras promotoras ven las cartillas de vacunación de las familias de Chimaltenango y Sololá, y yo desde Sevilla solo veo tablas.
+   
+   Tengo en PediBot una página con el calendario de vacunas de Guatemala, sacado de lo que el país declara a la OMS. Hace unos días una ONG de Malí me avisó de que faltaba la fiebre amarilla en la suya. Resulta que faltaba en muchos países, con lo cual ya no me fío de que el resto esté bien. En la de Guatemala, por ejemplo, pone a los 2 meses «hexavalente o pentavalente» y no sé cuál se pone de verdad en los puestos de salud.
+   
+   https://pedibot.xyz/es/vaccines/gt?r=wuqukawoq
+   
+   ¿Alguien de vuestro equipo podría echarle un vistazo y decirme qué no cuadra?
+   
+   Muchas gracias,
+   Nicolas Beca
+
+### primeros.txt (Calendario de vacunas de Guatemala, ¿lo miráis?)
+
+   Hola:
+   
+   Os escribo porque en la clínica de Xela veis cada semana a niños con su cartilla de vacunas en la mano, y eso es justo lo que me falta a mí.
+   
+   PediBot es una web gratuita que contesta a padres con guías de pediatría publicadas, y tiene una página con el calendario de Guatemala tal como el país se lo manda a la OMS. La he ido corrigiendo con lo que me cuentan organizaciones de otros países, pero de Guatemala nadie me ha dicho nada todavía.
+   
+   https://pedibot.xyz/es/vaccines/gt?r=primerospasos
+   
+   Si a alguien del equipo médico le sobran cinco minutos para mirarla, corrijo lo que me diga.
+   
+   Un saludo,
+   Nicolas Beca
+   Sevilla
+
+### socios.txt (Calendario de vacunas del Perú)
+
+   Hola:
+   
+   El calendario de vacunas del Perú que tengo en PediBot lo saqué de los datos que el Minsa manda a la OMS. Y la verdad es que no tengo forma de saber desde aquí si coincide con lo que se pone en los centros de salud de Carabayllo o de Lima Norte.
+   
+   Lo pregunto porque la semana pasada una ONG de Malí me mandó su tabla y destapó que faltaba la fiebre amarilla en treinta y tantos países. Eso ya está arreglado, pero me hizo ver que estas páginas se pueden equivocar sin que yo me entere.
+   
+   https://pedibot.xyz/es/vaccines/pe?r=sociosensalud
+   
+   ¿Podría alguien de Socios En Salud mirarla y decirme lo que no cuadre?
+   
+   Gracias de antemano,
+   Nicolas Beca
+
+### vhw.txt (Burundi's vaccine schedule on my site)
+
+   Hello,
+   
+   Your staff in Kigutu see Burundian vaccination cards every day, which is why I'm writing to you.
+   
+   I have a page with Burundi's childhood vaccine schedule, in French and English, inside PediBot, a free site that answers parents from published paediatric guidance. It comes from what Burundi reports to WHO. A group in Mali recently showed me that yellow fever was missing on their page and on many others, so I've stopped assuming the tables are right just because they come from WHO data.
+   
+   https://pedibot.xyz/fr/vaccines/bi?r=vhw
+   
+   Would someone on the clinical team have a few minutes to look and tell me what doesn't match?
+   
+   Many thanks,
+   Nicolas Beca
+   Seville, Spain
+
+### d4m.txt (Madagascar's vaccine schedule, a quick check?)
+
+   Hello,
+   
+   Since your teams work in hospitals in Madagascar, you'd probably spot in a minute whether my page on the country's vaccine schedule is right.
+   
+   It's part of PediBot, a free site I build in Seville that answers parents from published paediatric guidance, and the page is in French. The schedule comes from the data Madagascar reports to WHO. An organisation in Mali found a gap on their page last week, yellow fever, and the same gap was in many countries. I've fixed that one, but I can't check the rest from here.
+   
+   https://pedibot.xyz/fr/vaccines/mg?r=d4m
+   
+   If anyone has a moment to look, I'll correct whatever they tell me.
+   
+   Best wishes,
+   Nicolas Beca
+
+### ofh.txt (Rwanda's vaccine schedule)
+
+   Hello,
+   
+   The nurses who run your health posts know Rwanda's vaccination schedule far better than any table I can build.
+   
+   PediBot is a free site for parents built on official children's health guides, and it has a page with Rwanda's childhood schedule taken from what the country reports to WHO. A partner in Mali recently showed me a mistake on their page, and it turned out to be on many others. So now I'm asking people on the ground to have a look.
+   
+   https://pedibot.xyz/vaccines/rw?r=onefamilyhealth
+   
+   Could someone tell me if anything on it doesn't match what mothers are told at the health post?
+   
+   Thank you,
+   Nicolas Beca
+   Seville, Spain
+
+### nev.txt (Bébé qui se retourne sur le ventre la nuit)
+
+   Bonjour,
+   
+   Le bébé de trois mois qui se retourne tout seul sur le ventre la nuit, c'est une question qui doit vous arriver souvent.
+   
+   Je l'ai posée telle quelle à PediBot. Il répond qu'il faut le remettre sur le dos tant qu'il ne sait pas se retourner seul dans les deux sens. Ensuite il parle du matelas ferme, du lit sans oreiller ni tour de lit et de ne pas trop le couvrir, avec le NHS comme source.
+   
+   C'est un site gratuit que je fais à Séville uniquement à partir de guides pédiatriques publiés, et il répond en français. Si un jour il peut servir aux familles que vous accompagnez : https://pedibot.xyz/fr?r=naitreetvivre
+   
+   Bien à vous,
+   Nicolas Beca
+
+### cuidiu.txt (Water for a young baby in hot weather)
+
+   Hello,
+   
+   With the odd hot spell, I imagine your breastfeeding counsellors get asked whether a young baby needs water too.
+   
+   I asked PediBot exactly that for a four month old. It said no, only breast milk or formula at that age, and to offer feeds more often when it's hot, quoting the NHS and the WHO.
+   
+   It's a free site I put together in Seville, and it only answers from published paediatric guidance. In case it's ever useful for the parents in your groups: https://pedibot.xyz/?r=cuidiu
+   
+   Kind regards,
+   Nicolas Beca
+
+### plunket.txt (111 for New Zealand parents)
+
+   Kia ora,
+   
+   The thing I check first for each country is the emergency number, because a parent in Auckland who reads "call 999" has lost time they don't have.
+   
+   I asked PediBot about a ten month old having a fit with blue lips, from New Zealand. It opened with "Call 111 now", then explained what makes a seizure more serious, from the NHS guidance.
+   
+   PediBot is free, and everything it says comes from published guidance for children's health. If it's ever of use to your nurses or the families who ring PlunketLine: https://pedibot.xyz/?r=plunket
+   
+   Ngā mihi,
+   Nicolas Beca
+   Seville, Spain
+
+### bmbfa.txt (A fever question at three weeks)
+
+   Hello,
+   
+   A three week old with a temperature of 100.6 at night, and a mom wondering if she can wait until morning. That's the question I tried on PediBot this morning.
+   
+   It said no, a baby under three months with 100.4 or more needs to be seen today, and while she gets ready to keep offering the breast. It also said not to give acetaminophen or ibuprofen at that age, all from the NHS.
+   
+   It's a free site that only answers from published paediatric guidance. If it's ever useful for the families you support in Detroit: https://pedibot.xyz/?r=bmbfa
+   
+   Warmly,
+   Nicolas Beca

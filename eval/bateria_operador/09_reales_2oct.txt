@@ -84,3 +84,5 @@ Meu bebê de 1 mês está com o umbigo vermelho e com cheiro ruim, o que faço?
 Meu bebê de 10 meses está com diarreia, quanto soro caseiro ou soro de farmácia devo dar?
 # 17-nov-2026: cuidado del ombligo; el agua de limpiar contaba como agua para beber y metía la frase de la leche
 What should I put on my newborn's belly button?
+# 19-nov-2026: leche suficiente con pecho; no llegaba a los 6-8 pañales mojados y dejaba ver NO_SOURCE (prueba 1318)
+How do I know my breastfed newborn is getting enough milk?

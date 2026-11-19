@@ -27,6 +27,11 @@ en:
   "wet diaper": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   "many nappies": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   "many diapers": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  # 19-nov-2026: «Is my breastfed baby getting enough milk?» no llegaba a la cifra de pañales
+  # (prueba 1318); las señales de que toma bastante son esas mismas líneas. test_enough_breast_milk.py
+  "enough milk": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  "enough breast milk": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  "enough breastmilk": [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   # 2-oct-2026: «Vis translations», consulta real desde EE. UU. VIS son las Vaccine Information
   # Statements de los CDC; palabra entera, que «visible» o «visit» no son vacunas.
   "vis$":
@@ -991,6 +996,9 @@ es:
   cuántos pañales: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   cuantos pañales: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   pañales moja: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  # 19-nov-2026: «¿toma suficiente leche?», las mismas líneas de los pañales (test_enough_breast_milk.py)
+  suficiente leche: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  leche suficiente: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   fruta y verdura:
   - alimentación complementaria
   fruta y la verdura:
@@ -5016,6 +5024,10 @@ pt_es:
   tosse rouca:
   - laringitis
 pt_en:
+  # 19-nov-2026: «está mamando o suficiente?», a la cifra de pañales (test_enough_breast_milk.py)
+  mamando o suficiente: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  leite suficiente: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
+  suficiente leite: [wet diapers, drinking enough, 24-hour period, produce, nasse Windeln, sechs bis achtmal]
   # 5-nov-2026: la miel para la tos de un bebé no llegaba a «nada de miel antes del año» (CDC,
   # MedlinePlus, NHS); test_honey_reaches_the_under_one_rule.py.
   "mel$": [honey, botulism, honey under 12 months, babies younger than 1 year]
