@@ -2237,3 +2237,9 @@ Arreglados y desplegados los dos (a40a889): (1) la ingesta pegaba los `<li>` con
   - **Suero casero:** si el padre pregunta por el casero, el plan del suero añade que las guías no dan la receta y que la pida en su centro de salud (ocho lenguas). La única receta del corpus es la india de las ASHA, con otras medidas: no se da fuera de su sitio. «suero casero» ya cuenta como suero. test_ors_amount_in_chat.py.
   - **«Belly button» y la frase de la leche:** «clean… with cotton wool and warm water» contaba como agua para beber y el reintento metía «Keep offering breast milk or formula». Limpiar, algodón, gasa, ombligo… cuentan ahora como agua que no se bebe. La hernia umbilical ya no salía. El agua a los 2 meses (Polígrafo) ya no arrastra el cólico: comprobado en vivo.
   - Las rayas largas del chat siguen esperando su decisión.
+
+**19-nov.** Apertura. Correo desde el 17-nov: nadie contesta (ni Muso sobre VAR/MR, ni la DPGA, ni la Fundación Madrina); el reenvío a Mildmay (mailbox@mildmay.or.ug) no ha rebotado; mcptry nos lista (86/100, puesto 460 de 1.859 en salud); lo demás, HIFA, Qdrant y LaunchLeague.
+- **Consultas reales desde la 1287: ninguna.** 1288-1310 son mis pruebas del 17-nov; 1311-1314, el agente de ACP («github», «hello»).
+- **MCP desde el 17-nov:** 20 llamadas, todas rastreadores (BrickBlueBot 9, agent-index 7, KitScout 3, rokmcp 1); los 9 `no_data` son suyos.
+- Lo del 17-nov por la tarde (e3b7ac7: remedios caseros, suero casero, número con unidad) está en el servidor; api, mcp y telegram activos.
+- **Queda:** las rayas largas del chat, esperando su decisión.
